@@ -55,12 +55,24 @@ Blockly.Blocks.inout_digital_read = {
   }
 };
 
+Blockly.Blocks.inout_digital_read2 = {
+  init: function() {
+    this.setColour(20);
+	this.appendValueInput("PIN", Number)
+        .appendTitle(Blockly.LKL_DIGITALREAD_PIN)
+        .setCheck(Number);
+    this.setInputsInline(true);
+    this.setOutput(true, Boolean);
+    this.setTooltip('');
+  }
+};
+
 Blockly.Blocks.inout_analog_write = {
   init: function() {
     this.setColour(20);
     this.appendDummyInput("")
         .appendTitle(Blockly.LKL_ANALOGWRITE_PIN)
-        .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+        .appendTitle(new Blockly.FieldDropdown(profile.default.pwm), "PIN");
     this.appendValueInput("NUM", Number)
         .appendTitle(Blockly.LKL_VALUE2)
         .setCheck(Number);
@@ -119,50 +131,70 @@ Blockly.Blocks.controls_attachInterrupt = {
   }
 };
 
-Blockly.Blocks.controls_tone={
-init:function(){
+Blockly.Blocks.controls_detachInterrupt = {
+  init: function() {
     this.setColour(20);
     this.appendDummyInput("")
-	    .appendTitle(Blockly.LKL_TONE_PIN)
-	    .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN")
-    this.appendValueInput('FREQUENCY')
-        .setCheck(Number)
-        //.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.LKL_FREQUENCY);
-    this.setInputsInline(true);
+        .appendTitle(Blockly.LKL_DETACHINTERRUPT_PIN)
+	    .appendTitle(new Blockly.FieldDropdown(profile.default.interrupt), "PIN");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+  },
+  onchange: function() {
+	  var dropdown_pin = this.getTitleValue('PIN');
+	  var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
+	  if(interrupt_pin=='NOT_AN_INTERRUPT'){
+		  this.setWarningText(Blockly.LKL_WARNING_INTERRUPT);
+	  }else{
+		  this.setWarningText(null);
+	  }
   }
 };
 
-Blockly.Blocks.controls_tone2={
-init:function(){
+Blockly.Blocks.inout_pulseIn = {
+  init: function() {
     this.setColour(20);
     this.appendDummyInput("")
-	    .appendTitle(Blockly.LKL_TONE_PIN)
+	    .appendTitle(Blockly.LKL_PULSEIN)
 	    .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN")
-    this.appendValueInput('FREQUENCY')
-        .setCheck(Number)
-        //.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.LKL_FREQUENCY);
-    this.appendValueInput('DURATION')
-        .setCheck(Number)
-        //.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.LKL_DURATION);
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+      	.appendTitle(Blockly.LKL_PULSEIN_STAT)
+      	.appendTitle(new Blockly.FieldDropdown([[Blockly.LKL_HIGH, "HIGH"], [Blockly.LKL_LOW, "LOW"]]), "STAT");
+    this.setOutput(true, Number);
   }
 };
 
-Blockly.Blocks.controls_notone={
-init:function(){
+Blockly.Blocks.inout_pulseIn2 = {
+  init: function() {
     this.setColour(20);
     this.appendDummyInput("")
-	    .appendTitle(Blockly.LKL_NOTONE_PIN)
+	    .appendTitle(Blockly.LKL_PULSEIN)
 	    .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+      	.appendTitle(Blockly.LKL_PULSEIN_STAT)
+      	.appendTitle(new Blockly.FieldDropdown([[Blockly.LKL_HIGH, "HIGH"], [Blockly.LKL_LOW, "LOW"]]), "STAT");
+	this.appendValueInput("TIMEOUT", Number)
+        .appendTitle(Blockly.LKL_PULSEIN_TIMEOUT)
+        .setCheck(Number);
     this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setOutput(true, Number);
+  }
+};
+
+Blockly.Blocks.inout_shiftout = {
+  init: function() {
+    this.setColour(20);
+    this.appendDummyInput("")
+        .appendTitle("ShiftOut")
+		.appendTitle(Blockly.LKL_DATAPIN)
+        .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN1")
+		.appendTitle(Blockly.LKL_CLOCKPIN)
+		.appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN2")
+		.appendTitle(Blockly.LKL_BITORDER)
+		.appendTitle(new Blockly.FieldDropdown([[Blockly.LKL_MSBFIRST, "MSBFIRST"], [Blockly.LKL_LSBFIRST, "LSBFIRST"]]), "ORDER");
+    this.appendValueInput("DATA", Number)
+        .appendTitle(Blockly.LKL_DATA)
+        .setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };

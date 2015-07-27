@@ -54,3 +54,12 @@ Blockly.Arduino.logic_null = function() {
   var code = 'NULL';
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
+
+Blockly.Arduino.logic_true_or_false = function() {
+  var a = Blockly.Arduino.valueToCode(this, 'A',Blockly.Arduino.ORDER_ATOMIC) || 'false';
+  var b = Blockly.Arduino.valueToCode(this, 'B',Blockly.Arduino.ORDER_ATOMIC) || 'false';
+  var c = Blockly.Arduino.valueToCode(this, 'C',Blockly.Arduino.ORDER_ATOMIC) || 'false';
+  var code=a+'?'+b+':'+c;
+  return [code ,Blockly.Arduino.ORDER_ATOMIC];
+};
+

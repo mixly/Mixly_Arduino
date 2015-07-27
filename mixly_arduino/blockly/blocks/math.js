@@ -5,7 +5,7 @@ goog.provide('Blockly.Blocks.math');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.math.HUE = 230;
+Blockly.Blocks.math.HUE = 260;
 
 Blockly.FieldTextInput.math_number_validator = function(text) {
   return window.isNaN(text) ? null : String(text);
@@ -101,13 +101,43 @@ Blockly.Blocks['math_trig'] = {
   }
 };
 
-//取整
+//取整等
 Blockly.Blocks['math_to_int']= {
   init: function() {
-    this.setColour(230);
+	var OPERATORS =
+        [[Blockly.LANG_MATH_TO_INT, 'int'],
+		 [Blockly.Msg.MATH_ABS, 'abs'],
+         [Blockly.Msg.MATH_SQ, 'sq'],
+         [Blockly.Msg.MATH_SQRT, 'sqrt'],
+		 [Blockly.Msg.MATH_LOG, 'log']];
+    this.setColour(Blockly.Blocks.math.HUE);
     this.appendValueInput('A')
         .setCheck(Number)
-        .appendTitle(Blockly.LANG_MATH_TO_INT);
+        .appendTitle(new Blockly.FieldDropdown(OPERATORS), 'OP');
+    this.setOutput(true, Number);
+  }
+};
+//最大最小值
+Blockly.Blocks['math_max_min']= {
+  init: function() {
+	var OPERATORS =
+        [[Blockly.LKL_MAX, 'max'],
+		 [Blockly.LKL_MIN, 'min'],
+        ];
+    this.setColour(Blockly.Blocks.math.HUE);
+    this.appendValueInput('A')
+        .setCheck(Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(new Blockly.FieldDropdown(OPERATORS), 'OP')
+		.appendTitle('(');
+	this.appendValueInput('B')
+        .setCheck(Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(',');
+	this.appendDummyInput('')
+		.setAlign(Blockly.ALIGN_RIGHT)
+		.appendTitle(')');
+	this.setInputsInline(true);
     this.setOutput(true, Number);
   }
 };
@@ -156,7 +186,7 @@ Blockly.Blocks['math_constrain'] = {
 
 Blockly.Blocks.base_map = {
   init: function() {
-    this.setColour(230);
+    this.setColour(Blockly.Blocks.math.HUE);
     this.appendValueInput("NUM", Number)
         .appendTitle(Blockly.LKL_MAP)
         .setCheck(Number);

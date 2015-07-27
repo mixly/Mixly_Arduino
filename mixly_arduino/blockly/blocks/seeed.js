@@ -5,7 +5,46 @@ goog.provide('Blockly.Blocks.seeed');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.seeed.HUE = 330;
+Blockly.Blocks.seeed.HUE = 65;
+
+Blockly.Blocks.seeed_servo_move = {
+  init: function() {
+    this.setColour(Blockly.Blocks.seeed.HUE);
+    this.appendDummyInput("")
+        .appendTitle(Blockly.LKL_SERVO)
+		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_servo.png", 30, 32))
+        .appendTitle(Blockly.LKL_PIN)
+        .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+    this.appendValueInput("DEGREE", Number)
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_DEGREE_0_180);
+    this.appendValueInput("DELAY_TIME", Number)
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_DELAY+'('+Blockly.LKL_DELAY_MS+')');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('move between 0~180 degree');
+  }
+};
+
+Blockly.Blocks.seeed_servo_read_degrees = {
+  init: function() {
+    this.setColour(Blockly.Blocks.seeed.HUE);
+    this.appendDummyInput("")
+        .appendTitle(Blockly.LKL_SERVO)
+		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_servo.png", 30, 32))
+        .appendTitle(Blockly.LKL_PIN)
+        .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+    this.appendDummyInput("")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_READ_DEGREES)
+    this.setOutput(true, Number);
+	this.setInputsInline(true);
+    this.setTooltip('return that degree with the last servo move.');
+  }
+};
 
 Blockly.Blocks.seeed_led = {
   init: function() {
@@ -78,6 +117,19 @@ Blockly.Blocks.seeed_tilt = {
   }
 };
 
+Blockly.Blocks.seeed_touch = {
+  init: function() {
+    this.setColour(Blockly.Blocks.seeed.HUE);
+    this.appendDummyInput("")
+	      .appendTitle(Blockly.LKL_DF_TOUCH)
+		  .appendField(new Blockly.FieldImage("../../media/seeed/seeed_touch.png", 32, 32))
+		  .appendTitle(Blockly.LKL_PIN)
+	      .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+    this.setOutput(true, Boolean);
+    this.setTooltip('');
+  }
+};
+
 Blockly.Blocks.seeed_rotation = {
   init: function() {
     this.setColour(Blockly.Blocks.seeed.HUE);
@@ -101,5 +153,87 @@ Blockly.Blocks.seeed_sound = {
         .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
     this.setOutput(true, Number);
     this.setTooltip('Return value between 0 and 1024');
+  }
+};
+
+Blockly.Blocks.seeed_light = {
+  init: function() {
+    this.setColour(Blockly.Blocks.seeed.HUE);
+    this.appendDummyInput("")
+        .appendTitle(Blockly.LKL_DF_LIGHT)
+		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_light.png", 31, 32))
+		.appendTitle(Blockly.LKL_PIN)
+        .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+    this.setOutput(true, Number);
+    this.setTooltip('Return value between 0 and 1024');
+  }
+};
+
+Blockly.Blocks.seeed_temperature = {
+  init: function() {
+    this.setColour(Blockly.Blocks.seeed.HUE);
+    this.appendDummyInput("")
+        .appendTitle(Blockly.LKL_DF_TEMPERATURE)
+		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_temperature.png", 37, 32))
+		.appendTitle(Blockly.LKL_PIN)
+        .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+    this.setOutput(true, Number);
+    this.setTooltip('Return value between 0 and 1024');
+  }
+};
+
+Blockly.Blocks.grove_serial_lcd_print = {
+  init: function() {
+    this.setColour(Blockly.Blocks.seeed.HUE);
+    this.appendDummyInput()
+        .appendTitle(Blockly.LKL_LCD_RGB_BACKLIGHT)
+        .appendField(new Blockly.FieldImage("../../media/seeed/seeed_lcd.png", 58, 32));
+    this.appendValueInput("TEXT", String)
+        .setCheck([String,Number])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LKL_LCD_PRINT1);
+    this.appendValueInput("TEXT2", String)
+        .setCheck([String,Number])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LKL_LCD_PRINT2)
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  }
+};
+
+Blockly.Blocks.grove_serial_lcd_setrgb = {
+  init: function() {
+    this.setColour(Blockly.Blocks.seeed.HUE);
+    this.appendDummyInput()
+        .appendTitle(Blockly.LKL_LCD_RGB_BACKLIGHT)
+        .appendField(new Blockly.FieldImage("../../media/seeed/seeed_lcd.png", 58, 32))
+		.appendTitle(Blockly.LKL_LCD_SETCOLOR);
+    this.appendValueInput("R", Number)
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("R");
+    this.appendValueInput("G", Number)
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("G")
+	this.appendValueInput("B", Number)
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("B")
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  }
+};
+
+Blockly.Blocks.grove_serial_lcd_power = {
+  init: function() {
+    this.setColour(Blockly.Blocks.seeed.HUE);
+    this.appendDummyInput()
+        .appendTitle(Blockly.LKL_LCD_RGB_BACKLIGHT)
+        .appendField(new Blockly.FieldImage("../../media/seeed/seeed_lcd.png", 58, 32))
+		.appendField(new Blockly.FieldDropdown([[Blockly.LKL_LCD_STAT_ON, "display"], [Blockly.LKL_LCD_STAT_OFF, "noDisplay"], [Blockly.LKL_LCD_STAT_CURSOR, "cursor"], [Blockly.LKL_LCD_STAT_NOCURSOR, "noCursor"], [Blockly.LKL_LCD_STAT_BLINK, "blink"], [Blockly.LKL_LCD_STAT_NOBLINK, "noBlink"], [Blockly.LKL_LCD_STAT_CLEAR, "clear"]]), "STAT");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };

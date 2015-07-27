@@ -38,35 +38,38 @@ Blockly.Blocks['text'] = {
   }
 };
 
-Blockly.Blocks['serial_print'] = {
+Blockly.Blocks['text_join'] = {
   init: function() {
-   this.setColour(Blockly.Blocks.texts.HUE);
-    this.appendValueInput("CONTENT", String)
-        .appendTitle(Blockly.LKL_SERIAL_PRINT);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip('Prints data to the console/serial port as human-readable ASCII text.');
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.appendValueInput('A')
+        .setCheck(String);
+    this.appendValueInput('B')
+        .setCheck(String)
+        .appendField(Blockly.LKL_TEXT_JOIN);
+    this.setInputsInline(true);
+	this.setOutput(true, String);
   }
 };
 
-Blockly.Blocks['serial_println'] = {
-   init: function() {
+Blockly.Blocks['text_to_number'] = {
+  init: function() {
+	var TO_INT_FLOAT =
+        [[Blockly.LKL_TO_INT, 'toInt'],
+        [Blockly.LKL_TO_FLOAT, 'toFloat']];
     this.setColour(Blockly.Blocks.texts.HUE);
-    this.appendValueInput("CONTENT", String)
-        .appendTitle(Blockly.LKL_SERIAL_PRINTLN);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip('Prints data to the console/serial port as human-readable ASCII text.');
+    this.appendValueInput('VAR')
+        .setCheck(String)
+		.appendField(new Blockly.FieldDropdown(TO_INT_FLOAT), 'TOWHAT');
+	this.setOutput(true, Number);
   }
 };
-//打印16进制数
-Blockly.Blocks['serial_print_hex'] = {
-   init: function() {
+
+Blockly.Blocks['number_to_text'] = {
+  init: function() {
     this.setColour(Blockly.Blocks.texts.HUE);
-    this.appendValueInput("CONTENT", Number)
-        .appendTitle(Blockly.LKL_SERIAL_PRINT_HEX)
-        .setCheck(Number);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+    this.appendValueInput('VAR')
+        .setCheck(Number)
+		.appendTitle(Blockly.LKL_TOSTRING);;
+	this.setOutput(true, String);
   }
 };

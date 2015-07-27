@@ -5,7 +5,7 @@ goog.provide('Blockly.Blocks.lists');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.lists.HUE = 260;
+Blockly.Blocks.lists.HUE = 210;
 
 Blockly.Blocks['lists_create_with'] = {
   /**

@@ -5,7 +5,7 @@ goog.provide('Blockly.Blocks.loops');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.loops.HUE = 120;
+Blockly.Blocks.loops.HUE = 65;
 
 Blockly.Blocks.base_setup = {
   init: function() {
@@ -19,9 +19,13 @@ Blockly.Blocks.base_setup = {
 
 Blockly.Blocks.base_delay = {
   init: function() {
+	var UNIT =
+        [[Blockly.LKL_DELAY_MS, 'delay'],
+		 [Blockly.LKL_DELAY_US, 'delayMicroseconds']];
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput("DELAY_TIME", Number)
         .appendTitle(Blockly.LKL_DELAY)
+		.appendTitle(new Blockly.FieldDropdown(UNIT), 'UNIT')
         .setCheck(Number);
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -32,7 +36,7 @@ Blockly.Blocks.base_delay = {
 
 Blockly.Blocks.controls_for = {
   init: function() {
-    this.setColour(120);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
         .appendTitle(Blockly.LANG_CONTROLS_FOR_INPUT_WITH)
         .appendTitle(new Blockly.FieldTextInput('i'), 'VAR');
@@ -66,7 +70,7 @@ Blockly.Blocks.controls_for = {
 
 Blockly.Blocks.controls_whileUntil = {
   init: function() {
-    this.setColour(120);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('BOOL')
         .setCheck(Boolean)
         .appendTitle(Blockly.LANG_CONTROLS_WHILEUNTIL_TITLE_REPEAT)
@@ -84,7 +88,7 @@ Blockly.Blocks.controls_whileUntil.OPERATORS =
 
 Blockly.Blocks.controls_flow_statements = {
   init: function() {
-    this.setColour(120);
+    this.setColour(Blockly.Blocks.loops.HUE);
     var dropdown = new Blockly.FieldDropdown(this.OPERATORS);
     this.appendDummyInput()
         .appendTitle(dropdown, 'FLOW')
@@ -123,9 +127,12 @@ Blockly.Blocks.controls_flow_statements.OPERATORS =
 	 
 Blockly.Blocks.controls_millis = {
   init: function() {
-    this.setColour(120);
+	var UNIT =
+        [[Blockly.LKL_DELAY_MS, 'millis'],
+		 [Blockly.LKL_DELAY_US, 'micros']];
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-        .appendTitle(Blockly.LKL_MILLIS);
+        .appendTitle(new Blockly.FieldDropdown(UNIT), 'UNIT');
     this.setOutput(true, Number);
   }
 };

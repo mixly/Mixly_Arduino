@@ -5,7 +5,7 @@ goog.provide('Blockly.Blocks.logic');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.logic.HUE = 210;
+Blockly.Blocks.logic.HUE = 230;
 
 Blockly.Blocks['logic_compare'] = {
   /**
@@ -157,5 +157,22 @@ Blockly.Blocks['logic_null'] = {
     this.appendDummyInput()
         .appendField(Blockly.Msg.LOGIC_NULL);
     this.setTooltip(Blockly.Msg.LOGIC_NULL_TOOLTIP);
+  }
+};
+
+
+Blockly.Blocks['logic_true_or_false'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.logic.HUE);
+    this.appendValueInput('A')
+        .setCheck([Number,Boolean]);
+    this.appendValueInput('B')
+        .setCheck([Number,Boolean])
+        .appendTitle('?');
+	this.appendValueInput('C')
+        .setCheck([Number,Boolean])
+        .appendTitle(':');
+	this.setOutput(true, [Number,Boolean]);
+    this.setInputsInline(true);
   }
 };

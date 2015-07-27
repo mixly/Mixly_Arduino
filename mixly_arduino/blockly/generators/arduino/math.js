@@ -135,7 +135,16 @@ Blockly.Arduino.math_trig = Blockly.Arduino.math_single;
 
 Blockly.Arduino.math_to_int = function() {
   var argument0 = Blockly.Arduino.valueToCode(this, 'A',Blockly.Arduino.ORDER_NONE) || '0';
-  var code='int('+argument0+')';
+  var operator = this.getTitleValue('OP');
+  var code=operator+'('+argument0+')';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.math_max_min = function() {
+  var a = Blockly.Arduino.valueToCode(this, 'A',Blockly.Arduino.ORDER_NONE) || '0';
+  var b = Blockly.Arduino.valueToCode(this, 'B',Blockly.Arduino.ORDER_NONE) || '0';
+  var operator = this.getTitleValue('OP');
+  var code=operator+'('+a+', '+b+')';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 

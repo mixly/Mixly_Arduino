@@ -5,7 +5,38 @@ goog.provide('Blockly.Blocks.dfrobot');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.dfrobot.HUE = 65;
+Blockly.Blocks.dfrobot.HUE = 20;
+
+var DF_MS=[["M1", "1"],["M2", "2"]];
+
+Blockly.Blocks.df_romeo_motor={
+init:function(){
+    this.setColour(Blockly.Blocks.dfrobot.HUE);
+    this.appendDummyInput("")
+	    .appendTitle(Blockly.LKL_ROMEO_MOTOR)
+		.appendTitle("#")
+	    .appendTitle(new Blockly.FieldDropdown(DF_MS), "PIN");
+    this.appendValueInput('speed')
+        .setCheck(Number)
+        .appendTitle(Blockly.LKL_ROMEO_MOTOR_SPEED);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+Blockly.Blocks.df_romeo_motor_stop={
+init:function(){
+    this.setColour(Blockly.Blocks.dfrobot.HUE);
+    this.appendDummyInput("")
+	    .appendTitle(Blockly.LKL_ROMEO_MOTOR)
+		.appendTitle("#")
+	    .appendTitle(new Blockly.FieldDropdown(DF_MS), "PIN")
+		.appendTitle(Blockly.LKL_STOP);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
 
 Blockly.Blocks.df_led = {
   init: function() {
@@ -376,6 +407,38 @@ Blockly.Blocks.df_relay = {
 	    .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN")
       	.appendTitle(Blockly.LKL_STAT)
       	.appendTitle(new Blockly.FieldDropdown([[Blockly.LKL_HIGH, "HIGH"], [Blockly.LKL_LOW, "LOW"]]), "STAT");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  }
+};
+
+Blockly.Blocks.df_lcd_print = {
+  init: function() {
+    this.setColour(Blockly.Blocks.dfrobot.HUE);
+    this.appendDummyInput()
+        .appendTitle(Blockly.LKL_DF_LCD)
+        .appendField(new Blockly.FieldImage("../../media/dfrobot/df_lcd.png", 70, 32));
+    this.appendValueInput("TEXT", String)
+        .setCheck([String,Number])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LKL_LCD_PRINT1);
+    this.appendValueInput("TEXT2", String)
+        .setCheck([String,Number])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LKL_LCD_PRINT2)
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  }
+};
+
+Blockly.Blocks.df_lcd_power = {
+  init: function() {
+    this.setColour(Blockly.Blocks.dfrobot.HUE);
+    this.appendDummyInput()
+        .appendTitle(Blockly.LKL_DF_LCD)
+        .appendField(new Blockly.FieldImage("../../media/dfrobot/df_lcd.png", 70, 32))
+		.appendField(new Blockly.FieldDropdown([[Blockly.LKL_LCD_STAT_ON, "display"], [Blockly.LKL_LCD_STAT_OFF, "noDisplay"], [Blockly.LKL_LCD_STAT_CURSOR, "cursor"], [Blockly.LKL_LCD_STAT_NOCURSOR, "noCursor"], [Blockly.LKL_LCD_STAT_BLINK, "blink"], [Blockly.LKL_LCD_STAT_NOBLINK, "noBlink"], [Blockly.LKL_LCD_STAT_CLEAR, "clear"]]), "STAT");
+    this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   }

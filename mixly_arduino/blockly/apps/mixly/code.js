@@ -380,7 +380,7 @@ Code.initLanguage = function() {
   languageMenu.addEventListener('change', Code.changeLanguage, true);
   
   var categories = ['catInOut', 'catControl', 'catMath', 'catText', 'catLists',
-                    'catLogic', 'catGroup', 'catVar','catFun'];
+                    'catLogic', 'catGroup','catSensor','catActuator', 'catVar','catFun'];
   for (var i = 0, cat; cat = categories[i]; i++) {
     document.getElementById(cat).setAttribute('name', MSG[cat]);
   }
@@ -388,8 +388,6 @@ Code.initLanguage = function() {
   // Inject language strings.
   //document.title += ' ' + MSG['title'];
   document.getElementById('title').textContent = MSG['title'];
-  document.getElementById('tab_blocks').textContent = MSG['blocks'];
-
   document.getElementById('linkButton').title = MSG['linkTooltip'];
   document.getElementById('runButton').title = MSG['runTooltip'];
   document.getElementById('trashButton').title = MSG['trashTooltip'];
