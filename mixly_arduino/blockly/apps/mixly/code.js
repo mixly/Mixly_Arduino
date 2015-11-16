@@ -380,7 +380,7 @@ Code.initLanguage = function() {
   languageMenu.addEventListener('change', Code.changeLanguage, true);
   
   var categories = ['catInOut', 'catControl', 'catMath', 'catText', 'catLists',
-                    'catLogic', 'catGroup','catSensor','catActuator', 'catVar','catFun'];
+                    'catLogic', 'catGroup','catStorage','catSensor','catActuator', 'catVar','catFun','catSense','catSense2'];
   for (var i = 0, cat; cat = categories[i]; i++) {
     document.getElementById(cat).setAttribute('name', MSG[cat]);
   }

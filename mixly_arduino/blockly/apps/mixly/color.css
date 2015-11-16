@@ -1,0 +1,40 @@
+.blocklyTreeRoot{
+	min-width:100px;
+}
+#tabRow>td {
+      border: 1px solid #ccc;
+	  font-family: sans-serif; 
+	  font-size:18px;
+	  border-bottom: none;
+}
+pre.content {
+  border: 1px solid #ccc;
+  overflow: scroll;
+}
+#content_xml {
+      resize: none;
+      outline: none;
+      border: none;
+	  border: 1px solid #ccc;
+      font-family: monospace;
+      overflow: scroll;
+    }
+td.tabon {
+      border-bottom-color: #ddd !important;
+      background-color: #ddd;
+	  color: #000;
+      padding: 3px 19px 3px 19px;
+	  min-width:80px;
+}
+td.taboff {
+      cursor: pointer;
+	  color: #000;
+      padding: 3px 19px 3px 19px;
+	  min-width:80px;
+}
+td.taboff:hover {
+      background-color: #eee;
+}
+.blocklyTreeIcon.blocklyTreeIconNone{
+	width:0px;
+}

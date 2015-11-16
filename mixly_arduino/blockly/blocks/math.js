@@ -8,7 +8,8 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks.math.HUE = 260;
 
 Blockly.FieldTextInput.math_number_validator = function(text) {
-  return window.isNaN(text) ? null : String(text);
+  //return window.isNaN(text) ? null : String(text);
+  return String(text);//不再校验
 };
 
 Blockly.Blocks['math_number'] = {
@@ -57,7 +58,7 @@ Blockly.Blocks['math_arithmetic'] = {
         'MINUS': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_MINUS,
         'MULTIPLY': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_MULTIPLY,
         'DIVIDE': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_DIVIDE,
-		'QUYU':'',
+		'QUYU':Blockly.Msg.MATH_MODULO_TOOLTIP,
         'POWER': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_POWER
       };
       return TOOLTIPS[mode];
@@ -115,6 +116,18 @@ Blockly.Blocks['math_to_int']= {
         .setCheck(Number)
         .appendTitle(new Blockly.FieldDropdown(OPERATORS), 'OP');
     this.setOutput(true, Number);
+	var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getFieldValue('OP');
+      var TOOLTIPS = {
+        'sqrt': Blockly.Msg.MATH_SINGLE_TOOLTIP_ROOT,
+        'abs': Blockly.Msg.MATH_SINGLE_TOOLTIP_ABS,
+        'sq': Blockly.Msg.MATH_SINGLE_TOOLTIP_SQ,
+        'log': Blockly.Msg.MATH_SINGLE_TOOLTIP_LN,
+        'int': Blockly.Msg.MATH_SINGLE_TOOLTIP_TOINT
+      };
+      return TOOLTIPS[mode];
+    });
   }
 };
 //最大最小值
@@ -139,6 +152,15 @@ Blockly.Blocks['math_max_min']= {
 		.appendTitle(')');
 	this.setInputsInline(true);
     this.setOutput(true, Number);
+	var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getFieldValue('OP');
+      var TOOLTIPS = {
+        'max': Blockly.LKL_TOOLTIP_MATH_MAX,
+        'min': Blockly.LKL_TOOLTIP_MATH_MIN
+      };
+      return TOOLTIPS[mode];
+    });
   }
 };
 
@@ -206,5 +228,6 @@ Blockly.Blocks.base_map = {
 	      .appendTitle("]");
     this.setInputsInline(true);
     this.setOutput(true);
+	this.setTooltip(Blockly.LKL_TOOLTIP_MATH_MAP);
   }
 };

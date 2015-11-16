@@ -14,6 +14,7 @@ Blockly.Blocks.base_setup = {
 	    .appendTitle(Blockly.LKL_SETUP);
 	this.appendStatementInput('DO')
         .appendTitle('');
+	this.setTooltip(Blockly.LKL_TOOLTIP_CONTROL_SETUP);
   }
 };
 
@@ -30,7 +31,7 @@ Blockly.Blocks.base_delay = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip('Delay specific time');
+    this.setTooltip(Blockly.LKL_TOOLTIP_CONTROL_DELAY);
   }
 };
 
@@ -57,6 +58,11 @@ Blockly.Blocks.controls_for = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setInputsInline(true);
+	var thisBlock = this;
+    this.setTooltip(function() {
+      return Blockly.Msg.CONTROLS_FOR_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });
   },
   getVars: function() {
     return [this.getFieldValue('VAR')];
@@ -79,6 +85,15 @@ Blockly.Blocks.controls_whileUntil = {
         .appendTitle(Blockly.LANG_CONTROLS_WHILEUNTIL_INPUT_DO);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+	var thisBlock = this;
+	this.setTooltip(function() {
+      var op = thisBlock.getFieldValue('MODE');
+      var TOOLTIPS = {
+        'WHILE': Blockly.Msg.CONTROLS_WHILEUNTIL_TOOLTIP_WHILE,
+        'UNTIL': Blockly.Msg.CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL
+      };
+      return TOOLTIPS[op];
+    });
   }
 };
 
@@ -94,6 +109,15 @@ Blockly.Blocks.controls_flow_statements = {
         .appendTitle(dropdown, 'FLOW')
         .appendTitle(Blockly.LANG_CONTROLS_FLOW_STATEMENTS_INPUT_OFLOOP);
     this.setPreviousStatement(true);
+	var thisBlock = this;
+    this.setTooltip(function() {
+      var op = thisBlock.getFieldValue('FLOW');
+      var TOOLTIPS = {
+        'BREAK': Blockly.Msg.CONTROLS_FLOW_STATEMENTS_TOOLTIP_BREAK,
+        'CONTINUE': Blockly.Msg.CONTROLS_FLOW_STATEMENTS_TOOLTIP_CONTINUE
+      };
+      return TOOLTIPS[op];
+    });
   },
   onchange: function() {
     if (!this.workspace) {
@@ -132,8 +156,10 @@ Blockly.Blocks.controls_millis = {
 		 [Blockly.LKL_DELAY_US, 'micros']];
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
+	    .appendTitle(Blockly.LKL_RUNTIME)
         .appendTitle(new Blockly.FieldDropdown(UNIT), 'UNIT');
     this.setOutput(true, Number);
+	this.setTooltip(Blockly.LKL_TOOLTIP_CONTROL_MILLIS);
   }
 };
 

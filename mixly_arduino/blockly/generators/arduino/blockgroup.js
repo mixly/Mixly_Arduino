@@ -55,7 +55,7 @@ Blockly.Arduino.serial_parseInt_Float = function() {
 
 Blockly.Arduino.ir_recv = function() {
    var variable = Blockly.Arduino.variableDB_.getName(this.getTitleValue('VAR'), Blockly.Variables.NAME_TYPE);
-   var dropdown_pin = this.getTitleValue('PIN');
+   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
    var branch = Blockly.Arduino.statementToCode(this, 'DO');
    var branch2 = Blockly.Arduino.statementToCode(this, 'DO2');
    var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'),
@@ -123,7 +123,7 @@ Blockly.Arduino.ir_send_nec = function() {
 }
 
 Blockly.Arduino.ir_recv_raw = function() {
-   var dropdown_pin = this.getTitleValue('PIN');
+   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
    Blockly.Arduino.definitions_['define_ir_recv'] = '#include <IRremote.h>\n';
    Blockly.Arduino.definitions_['var_ir_recv'+dropdown_pin] = 'IRrecv irrecv_'+dropdown_pin+'('+dropdown_pin+');\ndecode_results results_'+dropdown_pin+';\n';
    Blockly.Arduino.setups_['setup_serial_'+profile.default.serial] = 'Serial.begin('+profile.default.serial+');\n';
@@ -226,7 +226,7 @@ Blockly.Arduino.chaoshengbo2 = function() {
 }
 
 Blockly.Arduino.dht11 = function() {
-	var dropdown_pin = this.getTitleValue('PIN');
+	var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
 	var what = this.getTitleValue('WHAT');
 	Blockly.Arduino.definitions_['define_dht11'] = '#include <dht11.h>';
 	Blockly.Arduino.definitions_['var_dht11'+dropdown_pin] = 'dht11 myDHT_'+dropdown_pin+';';
@@ -241,10 +241,10 @@ Blockly.Arduino.dht11 = function() {
 }
 
 Blockly.Arduino.servo_move = function() {
-  var dropdown_pin = this.getTitleValue('PIN');
+  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
   var value_degree = Blockly.Arduino.valueToCode(this, 'DEGREE', Blockly.Arduino.ORDER_ATOMIC);
   //value_degree = value_degree.replace('(','').replace(')','')
-  var delay_time = Blockly.Arduino.valueToCode(this, 'DELAY_TIME', Blockly.Arduino.ORDER_ATOMIC) || '1000'
+  var delay_time = Blockly.Arduino.valueToCode(this, 'DELAY_TIME', Blockly.Arduino.ORDER_ATOMIC) || '0'
   //delay_time = delay_time.replace('(','').replace(')','');
   
   Blockly.Arduino.definitions_['define_servo'] = '#include <Servo.h>\n';
@@ -256,7 +256,7 @@ Blockly.Arduino.servo_move = function() {
 };
 
 Blockly.Arduino.servo_read_degrees = function() {
-  var dropdown_pin = this.getTitleValue('PIN');
+  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
   
   Blockly.Arduino.definitions_['define_servo'] = '#include <Servo.h>\n';
   Blockly.Arduino.definitions_['var_servo'+dropdown_pin] = 'Servo servo_'+dropdown_pin+';\n';
@@ -267,7 +267,7 @@ Blockly.Arduino.servo_read_degrees = function() {
 };
 
 Blockly.Arduino.controls_tone=function(){
-   var dropdown_pin = this.getTitleValue('PIN');
+   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
    var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',
       Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
    var code="tone("+dropdown_pin+","+fre+");\n";
@@ -276,7 +276,7 @@ Blockly.Arduino.controls_tone=function(){
 };
 
 Blockly.Arduino.controls_tone2=function(){
-   var dropdown_pin = this.getTitleValue('PIN');
+   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
    var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',
       Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
    var dur = Blockly.Arduino.valueToCode(this, 'DURATION',
@@ -287,8 +287,36 @@ Blockly.Arduino.controls_tone2=function(){
 };
 
 Blockly.Arduino.controls_notone=function(){
-   var dropdown_pin = this.getTitleValue('PIN');
+   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
    var code="noTone("+dropdown_pin+");\n";
    Blockly.Arduino.setups_['setup_output_'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
    return code;
+};
+
+Blockly.Arduino.group_lcd_print = function() {
+  var str1 = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || 'String(\"\")'
+  var str2 = Blockly.Arduino.valueToCode(this, 'TEXT2', Blockly.Arduino.ORDER_ATOMIC) || 'String(\"\")'
+  var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27'
+  Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>';
+  Blockly.Arduino.definitions_['define_df_lcd'] = '#include <LiquidCrystal_I2C.h>';
+  Blockly.Arduino.definitions_['var_df_lcd'] = 'LiquidCrystal_I2C df_lcd('+device+',16,2);';
+  Blockly.Arduino.setups_['setup_df_lcd1'] = 'df_lcd.init();';
+  Blockly.Arduino.setups_['setup_df_lcd2'] = 'df_lcd.backlight();';
+  var code = 'df_lcd.setCursor(0, 0);\n'
+  code+='df_lcd.print('+str1+');\n';
+  code+='df_lcd.setCursor(0, 1);\n';
+  code+='df_lcd.print('+str2+');\n';
+  return code;
+};
+
+Blockly.Arduino.group_lcd_power = function() {
+  var dropdown_stat = this.getTitleValue('STAT');
+  var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27'
+  Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>';
+  Blockly.Arduino.definitions_['define_df_lcd'] = '#include <LiquidCrystal_I2C.h>';
+  Blockly.Arduino.definitions_['var_df_lcd'] = 'LiquidCrystal_I2C df_lcd('+device+',16,2);';
+  Blockly.Arduino.setups_['setup_df_lcd1'] = 'df_lcd.init();';
+  Blockly.Arduino.setups_['setup_df_lcd2'] = 'df_lcd.backlight();';
+  var code = 'df_lcd.'+dropdown_stat+'();\n'
+  return code;
 };

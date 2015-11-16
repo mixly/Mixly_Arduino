@@ -155,6 +155,7 @@ Blockly.Blocks['lists_create_with_text'] = {
 		.appendTitle(Blockly.LKL_SPLITBYDOU);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+	this.setTooltip(Blockly.LKL_TOOLTIP_LISTS_CREATE_WITH_TEXT);
   },
   newQuote_: function(open) {
     if (open == this.RTL) {

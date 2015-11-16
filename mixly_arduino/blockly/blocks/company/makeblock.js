@@ -32,7 +32,7 @@ Blockly.Blocks.mb_servo_move = {
         .appendTitle(Blockly.LKL_DELAY+'('+Blockly.LKL_DELAY_MS+')');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip('move between 0~180 degree');
+    this.setTooltip('');
   }
 };
 
@@ -121,7 +121,7 @@ Blockly.Blocks.mb_temperature = {
 		.appendTitle("#")
         .appendTitle(new Blockly.FieldDropdown(MAKEBLOCK_SLOTS), "PIN2");
     this.setOutput(true, Number);
-    this.setTooltip('Return value between -55 and 125');
+    this.setTooltip('');
   }
 };
 
@@ -135,7 +135,7 @@ Blockly.Blocks.mb_joystick = {
 		.appendTitle("#")
         .appendTitle(new Blockly.FieldDropdown(MAKEBLOCK_PORTS), "PIN");
     this.setOutput(true, Number);
-    this.setTooltip('Return value between 0 and 980');
+    this.setTooltip('');
   }
 };
 

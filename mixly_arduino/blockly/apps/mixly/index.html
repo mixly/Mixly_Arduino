@@ -3,6 +3,7 @@
   <meta charset="utf-8">
   <title>Mixly</title>
   <script type="text/javascript" src="../../blockly_compressed.js"></script>
+  <script type="text/javascript" src="../../core/variables.js"></script>
   <script type="text/javascript" src="../../arduino.js"></script>
   <script type="text/javascript" src="code.js"></script>
   <script type="text/javascript" src="Blob.js"></script>
@@ -12,6 +13,7 @@
   <script type="text/javascript" src="digitalPinToInterrupt.js"></script>
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="myblock.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/pins.js"></script>
   <script type="text/javascript" src="../../generators/arduino/inout.js"></script>
   <script type="text/javascript" src="../../generators/arduino/control.js"></script>
   <script type="text/javascript" src="../../generators/arduino/math.js"></script>
@@ -19,11 +21,10 @@
   <script type="text/javascript" src="../../generators/arduino/lists.js"></script>
   <script type="text/javascript" src="../../generators/arduino/logic.js"></script>
   <script type="text/javascript" src="../../generators/arduino/blockgroup.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/dfrobot.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/seeed.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/makeblock.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/storage.js"></script>
   <script type="text/javascript" src="../../generators/arduino/variables.js"></script>
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
+  <script type="text/javascript" src="../../blocks/pins.js"></script>
   <script type="text/javascript" src="../../blocks/inout.js"></script>
   <script type="text/javascript" src="../../blocks/control.js"></script>
   <script type="text/javascript" src="../../blocks/math.js"></script>
@@ -31,11 +32,10 @@
   <script type="text/javascript" src="../../blocks/lists.js"></script>
   <script type="text/javascript" src="../../blocks/logic.js"></script>
   <script type="text/javascript" src="../../blocks/blockgroup.js"></script>
-  <script type="text/javascript" src="../../blocks/dfrobot.js"></script>
-  <script type="text/javascript" src="../../blocks/seeed.js"></script>
-  <script type="text/javascript" src="../../blocks/makeblock.js"></script>
+  <script type="text/javascript" src="../../blocks/storage.js"></script>
   <script type="text/javascript" src="../../blocks/variables.js"></script>
   <script type="text/javascript" src="../../blocks/procedures.js"></script>
+  <link rel="stylesheet" type="text/css" href="color.css" />
   <script>
 /**
  * List of tab names.
@@ -70,7 +70,9 @@ function tabClick(clickedName) {
       Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xmlDom);
     }
   }
-
+  if (document.getElementById('tab_blocks').className == 'tabon') {
+    Blockly.mainWorkspace.setVisible(false);
+  }
   // Deselect all tabs and hide all panes.
   for (var i = 0; i < TABS_.length; i++) {
     var name = TABS_[i];
@@ -85,6 +87,9 @@ function tabClick(clickedName) {
   document.getElementById('content_' + clickedName).style.visibility =
       'visible';
   renderContent();
+  if (clickedName == 'blocks') {
+    Blockly.mainWorkspace.setVisible(true);
+  }
   Blockly.fireUiEvent(window, 'resize');
 }
 
@@ -175,8 +180,17 @@ function init() {
 
   var toolbox = document.getElementById('toolbox');
   Blockly.inject(document.getElementById('content_blocks'),
-      {media: '../../media/',
-       toolbox: toolbox});
+      {grid:
+          {spacing: 25,
+           length: 3,
+           colour: '#ccc',
+           snap: true},
+	   media: '../../media/',
+       toolbox: toolbox,
+	   zoom:
+           {controls: true,
+            wheel: true}
+	   });
 
   auto_save_and_restore_blocks();
 
@@ -208,29 +222,7 @@ function init() {
       margin-left: 5px;
       margin-right: 5px;
     }
-
     /* Tabs */
-    #tabRow>td {
-      border: 1px solid #999;
-	  font-family: sans-serif; 
-	  font-size:18px;
-    }
-    td.tabon {
-      border-bottom-color: #999 !important;
-      background-color: #999;
-	  color: #FFFFFF;
-      padding: 3px 19px 3px 19px;
-	  min-width:80px;
-    }
-    td.taboff {
-      cursor: pointer;
-	  color: #000;
-      padding: 3px 19px 3px 19px;
-	  min-width:80px;
-    }
-    td.taboff:hover {
-      background-color: #eee;
-    }
     td.tabmin {
       border-top-style: none !important;
       border-left-style: none !important;
@@ -267,21 +259,11 @@ function init() {
       position: absolute;
       direction: ltr;
     }
-    pre.content {
-      overflow: scroll;
-    }
     #content_blocks {
       padding: 0;
     }
     .blocklySvg {
       border-top: none !important;
-    }
-    #content_xml {
-      resize: none;
-      outline: none;
-      border: none;
-      font-family: monospace;
-      overflow: scroll;
     }
     button {
       padding: 1px 1em;
@@ -344,40 +326,56 @@ function init() {
   <textarea id="content_xml" class="content" wrap="off" readonly></textarea>
 
   <xml id="toolbox" style="display: none">
-    <category name="" id="catInOut">
+    <category name="" id="catInOut" colour="20">
       <block type="inout_highlow"></block>
-      <block type="inout_digital_write"></block>
 	  <block type="inout_digital_write2">
 	    <value name="PIN">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
+          <shadow type="pins_digital"></shadow>
         </value>
 		<value name="STAT">
           <block type="inout_highlow">
           </block>
         </value>
 	  </block>
-      <block type="inout_digital_read"></block>
 	  <block type="inout_digital_read2">
 		<value name="PIN">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
+          <shadow type="pins_digital"></shadow>
         </value>
 	  </block>
       <block type="inout_analog_write">
+		<value name="PIN">
+          <shadow type="pins_pwm"></shadow>
+        </value>
 	    <value name="NUM">
           <block type="math_number">
             <field name="NUM">0</field>
           </block>
         </value>
 	  </block>
-      <block type="inout_analog_read"></block>
-	  <block type="controls_attachInterrupt"></block>
-	  <block type="controls_detachInterrupt"></block>
-	  <block type="inout_pulseIn"></block>
+      <block type="inout_analog_read">
+		<value name="PIN">
+          <shadow type="pins_analog"></shadow>
+        </value>
+	  </block>
+	  <block type="controls_attachInterrupt">
+		<value name="PIN">
+          <shadow type="pins_interrupt"></shadow>
+        </value>
+	  </block>
+	  <block type="controls_detachInterrupt">
+		<value name="PIN">
+          <shadow type="pins_interrupt"></shadow>
+        </value>
+	  </block>
+	  <block type="inout_pulseIn">
+		<value name="PIN">
+          <shadow type="pins_digital"></shadow>
+        </value>
+	  </block>
 	  <block type="inout_pulseIn2">
+		<value name="PIN">
+          <shadow type="pins_digital"></shadow>
+        </value>
 		<value name="TIMEOUT">
           <block type="math_number">
             <field name="NUM">1000000</field>
@@ -385,6 +383,12 @@ function init() {
         </value>
 	  </block>
 	  <block type="inout_shiftout">
+		<value name="PIN1">
+          <shadow type="pins_digital"></shadow>
+        </value>
+		<value name="PIN2">
+          <shadow type="pins_digital"></shadow>
+        </value>
 		<value name="DATA">
           <block type="math_number">
             <field name="NUM">0</field>
@@ -392,7 +396,7 @@ function init() {
         </value>
 	  </block>
     </category>
-    <category id="catControl">
+    <category id="catControl"  colour="65">
 	  <block type="base_setup"></block>
       <block type="base_delay">
 	    <value name="DELAY_TIME">
@@ -418,7 +422,7 @@ function init() {
 	  <block type="controls_flow_statements"></block>
 	  <block type="controls_millis"></block>
     </category>
-    <category id="catMath">
+    <category id="catMath"  colour="260">
 	  <block type="math_number"></block>
 	  <block type="math_arithmetic"></block>
 	  <block type="math_trig"></block>
@@ -471,7 +475,7 @@ function init() {
         </value>
 	  </block>
     </category>
-    <category id="catText">
+    <category id="catText"  colour="160">
       <block type="text"></block>
 	  <block type="text_join">
 	    <value name="A">
@@ -500,7 +504,7 @@ function init() {
         </value>
 	  </block>
     </category>
-	<category id="catLists">
+	<category id="catLists"  colour="210">
 	  <block type="lists_create_with"></block>
 	  <block type="lists_create_with_text"></block>
 	  <block type="lists_getIndex">
@@ -518,7 +522,7 @@ function init() {
         </value>
 	  </block>
 	</category>
-	<category id="catLogic">
+	<category id="catLogic"  colour="230">
       <block type="logic_compare"></block>
       <block type="logic_operation"></block>
       <block type="logic_negate"></block>
@@ -526,7 +530,7 @@ function init() {
 	  <block type="logic_null"></block>
 	  <block type="logic_true_or_false"></block>
     </category>
-	<category id="catGroup">
+	<category id="catGroup"  colour="120">
 	  <block type="serial_print"></block>
 	  <block type="serial_println"></block>
 	  <block type="serial_print_hex"></block>
@@ -534,6 +538,9 @@ function init() {
 	  <block type="serial_readstr"></block>
 	  <block type="serial_parseInt_Float"></block>
 	  <block type="ir_recv">
+		<value name="PIN">
+          <shadow type="pins_digital"></shadow>
+        </value>
 		<statement name="DO">
 			<block type="serial_print_hex">
 				<value name="CONTENT">
@@ -556,7 +563,11 @@ function init() {
           </block>
         </value>
 	  </block>
-	  <block type="ir_recv_raw"></block>
+	  <block type="ir_recv_raw">
+		<value name="PIN">
+          <shadow type="pins_digital"></shadow>
+        </value>
+	  </block>
 	  <block type="ir_send_raw">
 	    <value name="length">
           <block type="math_number">
@@ -574,27 +585,68 @@ function init() {
 	  <block type="i2c_master_reader2"></block>
 	  <block type="i2c_available"></block>
 	</category>
-	<category id="catSensor">
-	  <block type="chaoshengbo">
-		<field name="PIN1">1</field>
-		<field name="PIN2">2</field>
+	<category id="catStorage" colour="20">
+	  <block type="store_sd_write">
+		<value name="FILE">
+			<block type="text">
+				<field name="TEXT">file.txt</field>
+			</block>
+		</value>
+		<value name="DATA">
+			<block type="text">
+				<field name="TEXT">hello world</field>
+			</block>
+		</value>
+		<value name="NEWLINE">
+			<block type="logic_boolean">
+				<field name="BOOL">TRUE</field>
+			</block>
+		</value>
 	  </block>
+	  <block type="store_eeprom_write_long">
+		<value name="ADDRESS">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+		<value name="DATA">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+	  </block>
+	  <block type="store_eeprom_read_long">
+		<value name="ADDRESS">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+	  </block>
+	</category>
+	<category id="catSensor" colour="120">
 	  <block type="chaoshengbo2">
 		<value name="PIN1">
-			<block type="math_number">
-				<field name="NUM">1</field>
-			</block>
+			<shadow type="pins_digital">
+				<field name="PIN">1</field>
+			</shadow>
 		</value>
 		<value name="PIN2">
-			<block type="math_number">
-				<field name="NUM">2</field>
-			</block>
+			<shadow type="pins_digital">
+				<field name="PIN">2</field>
+			</shadow>
 		</value>
 	  </block>
-	  <block type="dht11"></block>
+	  <block type="dht11">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
 	</category>
-	<category id="catActuator">
+	<category id="catActuator" colour="120">
 	   <block type="servo_move">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
 	    <value name="DEGREE">
           <block type="math_number">
             <field name="NUM">0</field>
@@ -602,174 +654,63 @@ function init() {
         </value>
 		<value name="DELAY_TIME">
           <block type="math_number">
-            <field name="NUM">1000</field>
+            <field name="NUM">0</field>
           </block>
         </value>
 	  </block>
-	  <block type="servo_read_degrees"></block>
-	  <block type="controls_tone"></block>
-	  <block type="controls_tone2"></block>
-	  <block type="controls_notone"></block>
+	  <block type="servo_read_degrees">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="controls_tone">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="controls_tone2">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="controls_notone">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="group_lcd_print">
+		<value name="device">
+          <block type="math_number">
+            <field name="NUM">0x27</field>
+          </block>
+        </value>
+		<value name="TEXT">
+			<block type="text">
+				<field name="TEXT"></field>
+			</block>
+		</value>
+		<value name="TEXT2">
+			<block type="text">
+				<field name="TEXT"></field>
+			</block>
+		</value>
+	  </block>
+	  <block type="group_lcd_power">
+		<value name="device">
+          <block type="math_number">
+            <field name="NUM">0x27</field>
+          </block>
+        </value>
+	  </block>
 	</category>
 	<sep></sep>
-	<category id="catDFRobot" name="DFRobot">
-	  <block type="df_romeo_motor">
-		<value name="speed">
-          <block type="math_number">
-            <field name="NUM">0</field>
-          </block>
-        </value>
-	  </block>
-	  <block type="df_romeo_motor_stop"></block>
-	  <block type="df_led"></block>
-	  <block type="df_buzzer"></block>
-	  <block type="df_buzzer2"></block>
-	  <block type="df_buzzer3"></block>
-	  <block type="df_relay"></block>
-	  <block type="df_btn"></block>
-	  <block type="df_vibration"></block>
-	  <block type="df_tilt"></block>
-	  <block type="df_touch"></block>
-	  <block type="df_magnetic"></block>
-	  <block type="df_pyroelectric_infrared"></block>
-	  <block type="df_joystick_d"></block>
-	  <block type="df_joystick_a"></block>
-	  <block type="df_potentiometer"></block>
-	  <block type="df_rotation"></block>
-	  <block type="df_voltage"></block>
-	  <block type="df_piezo_disk_virbration"></block>
-	  <block type="df_sound"></block>
-	  <block type="df_light"></block>
-	  <block type="df_grayscale"></block>
-	  <block type="df_flame"></block>
-	  <block type="df_temperature"></block>
-	  <block type="df_accelerometer"></block>
-	  <block type="df_moisture"></block>
-	  <block type="df_water"></block>
-	  <block type="df_co"></block>
-	  <block type="df_Sharp_GP2Y0A21"></block>
-	  <block type="df_lcd_print">
-		<value name="TEXT">
-			<block type="text">
-				<field name="TEXT"></field>
-			</block>
-		</value>
-		<value name="TEXT2">
-			<block type="text">
-				<field name="TEXT"></field>
-			</block>
-		</value>
-	  </block>
-	  <block type="df_lcd_power"></block>
-	</category>
-	<category id="catSeeed" name="SeeedStudio">
-	  <block type="seeed_servo_move">
-		<value name="DEGREE">
-          <block type="math_number">
-            <field name="NUM">0</field>
-          </block>
-        </value>
-		<value name="DELAY_TIME">
-          <block type="math_number">
-            <field name="NUM">1000</field>
-          </block>
-        </value>
-	  </block>
-	  <block type="seeed_servo_read_degrees"></block>
-	  <block type="seeed_led"></block>
-	  <block type="seeed_buzzer"></block>
-	  <block type="seeed_relay"></block>
-	  <block type="seeed_btn"></block>
-	  <block type="seeed_tilt"></block>
-	  <block type="seeed_touch"></block>
-	  <block type="seeed_rotation"></block>
-	  <block type="seeed_sound"></block>
-	  <block type="seeed_light"></block>
-	  <block type="seeed_temperature"></block>
-	  <block type="grove_serial_lcd_print">
-		<value name="TEXT">
-			<block type="text">
-				<field name="TEXT"></field>
-			</block>
-		</value>
-		<value name="TEXT2">
-			<block type="text">
-				<field name="TEXT"></field>
-			</block>
-		</value>
-	  </block>
-	  <block type="grove_serial_lcd_power"></block>
-	  <block type="grove_serial_lcd_setrgb">
-		<value name="R">
-			<block type="math_number">
-				<field name="NUM">255</field>
-			</block>
-		</value>
-		<value name="G">
-			<block type="math_number">
-				<field name="NUM">255</field>
-			</block>
-		</value>
-		<value name="B">
-			<block type="math_number">
-				<field name="NUM">255</field>
-			</block>
-		</value>
-	  </block>
-	</category>
-	<category id="catMakeBlock" name="MakeBlock">
-	  <block type="mb_servo_move">
-	    <value name="DEGREE">
-          <block type="math_number">
-            <field name="NUM">0</field>
-          </block>
-        </value>
-		<value name="DELAY_TIME">
-          <block type="math_number">
-            <field name="NUM">1000</field>
-          </block>
-        </value>
-	  </block>
-	  <block type="controls_if">
-		<value name="IF0">
-		  <block type="mb_bluetooth_available"></block>
-		</value>
-		<statement name="DO0">
-		  <block type="serial_println">
-			<value name="CONTENT">
-			  <block type="mb_bluetooth_readString"></block>
-			</value>
-		  </block>
-		</statement>
-      </block>
-	  <block type="mb_display">
-	    <value name="num">
-			<block type="math_number">
-				<field name="NUM">1234</field>
-			</block>
-		</value>
-	  </block>
-	  <block type="mb_motor">
-		<value name="speed">
-			<block type="math_number">
-				<field name="NUM">0</field>
-			</block>
-		</value>
-	  </block>
-	  <block type="mb_sound"></block>
-	  <block type="mb_temperature"></block>
-	  <block type="mb_joystick"></block>
-	  <block type="mb_potentiometer"></block>
-	  <block type="mb_pyroelectric_infrared"></block>
-	  <block type="mb_chaoshengbo"></block>
-	  <block type="mb_light_grayscale"></block>
-	  <block type="mb_light_grayscale_led"></block>
-	</category>
-    <sep></sep>
-    <category id="catVar" custom="VARIABLE"></category>
-    <category id="catFun" custom="PROCEDURE"></category>
+	<category id="catVar" colour="330" custom="VARIABLE"></category>
+    <category id="catFun" custom="PROCEDURE" colour="290"></category>
   </xml>
   <script>
+	if(company_block!=null){
+		$('#toolbox').append(company_block);
+	}
     if(myblock!=null){
 		$('#toolbox').append(myblock);
 	}

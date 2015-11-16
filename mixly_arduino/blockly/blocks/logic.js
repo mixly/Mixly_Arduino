@@ -120,9 +120,12 @@ Blockly.Blocks['logic_negate'] = {
     //this.setHelpUrl(Blockly.Msg.LOGIC_NEGATE_HELPURL);
     this.setColour(Blockly.Blocks.logic.HUE);
     this.setOutput(true, Boolean);
-    this.interpolateMsg(Blockly.Msg.LOGIC_NEGATE_TITLE,
-                        ['BOOL', Boolean, Blockly.ALIGN_RIGHT],
-                        Blockly.ALIGN_RIGHT);
+	this.appendValueInput('BOOL')
+        .setCheck([Number,Boolean])
+        .appendTitle(Blockly.Msg.LOGIC_NEGATE_TITLE);
+    //this.interpolateMsg(Blockly.Msg.LOGIC_NEGATE_TITLE,
+      //                  ['BOOL', Boolean, Blockly.ALIGN_RIGHT],
+        //                Blockly.ALIGN_RIGHT);
     this.setTooltip(Blockly.Msg.LOGIC_NEGATE_TOOLTIP);
   }
 };
@@ -174,5 +177,6 @@ Blockly.Blocks['logic_true_or_false'] = {
         .appendTitle(':');
 	this.setOutput(true, [Number,Boolean]);
     this.setInputsInline(true);
+	this.setTooltip(Blockly.LKL_TOOLTIP_LOGIT_TRUEORFALSE);
   }
 };

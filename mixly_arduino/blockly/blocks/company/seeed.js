@@ -10,11 +10,11 @@ Blockly.Blocks.seeed.HUE = 65;
 Blockly.Blocks.seeed_servo_move = {
   init: function() {
     this.setColour(Blockly.Blocks.seeed.HUE);
-    this.appendDummyInput("")
-        .appendTitle(Blockly.LKL_SERVO)
-		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_servo.png", 30, 32))
-        .appendTitle(Blockly.LKL_PIN)
-        .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+	this.appendValueInput("PIN", Number)
+		.appendTitle(Blockly.LKL_SERVO)
+		.appendTitle(new Blockly.FieldImage("../../media/seeed/seeed_servo.png", 30, 32))
+		.appendTitle(Blockly.LKL_PIN)
+        .setCheck(Number);
     this.appendValueInput("DEGREE", Number)
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -25,7 +25,7 @@ Blockly.Blocks.seeed_servo_move = {
         .appendTitle(Blockly.LKL_DELAY+'('+Blockly.LKL_DELAY_MS+')');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip('move between 0~180 degree');
+    this.setTooltip('');
   }
 };
 
@@ -34,15 +34,16 @@ Blockly.Blocks.seeed_servo_read_degrees = {
     this.setColour(Blockly.Blocks.seeed.HUE);
     this.appendDummyInput("")
         .appendTitle(Blockly.LKL_SERVO)
-		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_servo.png", 30, 32))
+		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_servo.png", 30, 32));
+	this.appendValueInput("PIN", Number)
         .appendTitle(Blockly.LKL_PIN)
-        .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+        .setCheck(Number);
     this.appendDummyInput("")
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendTitle(Blockly.LKL_READ_DEGREES)
     this.setOutput(true, Number);
 	this.setInputsInline(true);
-    this.setTooltip('return that degree with the last servo move.');
+    this.setTooltip('');
   }
 };
 
@@ -51,9 +52,11 @@ Blockly.Blocks.seeed_led = {
     this.setColour(Blockly.Blocks.seeed.HUE);
     this.appendDummyInput("")
 	    .appendTitle(Blockly.LKL_DF_LED)
-		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_led.jpg", 37, 32))
-		.appendTitle(Blockly.LKL_PIN)
-	    .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_led.jpg", 37, 32));
+	this.appendValueInput("PIN", Number)
+        .appendTitle(Blockly.LKL_PIN)
+        .setCheck(Number);
+	this.appendDummyInput("")
       	.appendTitle(Blockly.LKL_STAT)
       	.appendTitle(new Blockly.FieldDropdown([[Blockly.LKL_ON, "HIGH"], [Blockly.LKL_OFF, "LOW"]]), "STAT");
     this.setPreviousStatement(true, null);
@@ -66,9 +69,11 @@ Blockly.Blocks.seeed_buzzer = {
     this.setColour(Blockly.Blocks.seeed.HUE);
     this.appendDummyInput("")
 	    .appendTitle(Blockly.LKL_DF_BUZZER)
-		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_buzzer.jpg", 30, 32))
-		.appendTitle(Blockly.LKL_PIN)
-	    .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_buzzer.jpg", 30, 32));
+	this.appendValueInput("PIN", Number)
+        .appendTitle(Blockly.LKL_PIN)
+        .setCheck(Number);
+	this.appendDummyInput("")
       	.appendTitle(Blockly.LKL_STAT)
       	.appendTitle(new Blockly.FieldDropdown([[Blockly.LKL_ON, "HIGH"], [Blockly.LKL_OFF, "LOW"]]), "STAT");
     this.setPreviousStatement(true, null);
@@ -81,9 +86,11 @@ Blockly.Blocks.seeed_relay = {
     this.setColour(Blockly.Blocks.seeed.HUE);
     this.appendDummyInput("")
 	    .appendTitle(Blockly.LKL_DF_RELAY)
-		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_relay.jpg", 45, 32))
-		.appendTitle(Blockly.LKL_PIN)
-	    .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_relay.jpg", 45, 32));
+	this.appendValueInput("PIN", Number)
+        .appendTitle(Blockly.LKL_PIN)
+        .setCheck(Number);	
+	this.appendDummyInput("")
       	.appendTitle(Blockly.LKL_STAT)
       	.appendTitle(new Blockly.FieldDropdown([[Blockly.LKL_HIGH, "HIGH"], [Blockly.LKL_LOW, "LOW"]]), "STAT");
     this.setPreviousStatement(true, null);
@@ -96,9 +103,11 @@ Blockly.Blocks.seeed_btn = {
     this.setColour(Blockly.Blocks.seeed.HUE);
     this.appendDummyInput("")
 	      .appendTitle(Blockly.LKL_DF_BTN)
-		  .appendField(new Blockly.FieldImage("../../media/seeed/seeed_btn.jpg", 38, 32))
-		  .appendTitle(Blockly.LKL_PIN)
-	      .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+		  .appendField(new Blockly.FieldImage("../../media/seeed/seeed_btn.jpg", 38, 32));
+	this.appendValueInput("PIN", Number)
+        .appendTitle(Blockly.LKL_PIN)
+        .setCheck(Number);
+	this.setInputsInline(true);
     this.setOutput(true, Boolean);
     this.setTooltip('');
   }
@@ -109,9 +118,11 @@ Blockly.Blocks.seeed_tilt = {
     this.setColour(Blockly.Blocks.seeed.HUE);
     this.appendDummyInput("")
 	      .appendTitle(Blockly.LKL_DF_TILT)
-		  .appendField(new Blockly.FieldImage("../../media/seeed/seeed_tilt.jpg", 39, 32))
-		  .appendTitle(Blockly.LKL_PIN)
-	      .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+		  .appendField(new Blockly.FieldImage("../../media/seeed/seeed_tilt.jpg", 39, 32));
+	this.appendValueInput("PIN", Number)
+        .appendTitle(Blockly.LKL_PIN)
+        .setCheck(Number);
+	this.setInputsInline(true);
     this.setOutput(true, Boolean);
     this.setTooltip('');
   }
@@ -122,9 +133,11 @@ Blockly.Blocks.seeed_touch = {
     this.setColour(Blockly.Blocks.seeed.HUE);
     this.appendDummyInput("")
 	      .appendTitle(Blockly.LKL_DF_TOUCH)
-		  .appendField(new Blockly.FieldImage("../../media/seeed/seeed_touch.png", 32, 32))
-		  .appendTitle(Blockly.LKL_PIN)
-	      .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+		  .appendField(new Blockly.FieldImage("../../media/seeed/seeed_touch.png", 32, 32));
+	this.appendValueInput("PIN", Number)
+        .appendTitle(Blockly.LKL_PIN)
+        .setCheck(Number);
+	this.setInputsInline(true);
     this.setOutput(true, Boolean);
     this.setTooltip('');
   }
@@ -135,11 +148,13 @@ Blockly.Blocks.seeed_rotation = {
     this.setColour(Blockly.Blocks.seeed.HUE);
     this.appendDummyInput("")
         .appendTitle(Blockly.LKL_DF_ROTATION)
-		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_rotation.jpg", 31, 32))
-		.appendTitle(Blockly.LKL_PIN)
-        .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_rotation.jpg", 31, 32));
+	this.appendValueInput("PIN", Number)
+        .appendTitle(Blockly.LKL_PIN)
+        .setCheck(Number);
+	this.setInputsInline(true);
     this.setOutput(true, Number);
-    this.setTooltip('Return value between 0 and 1024');
+    this.setTooltip('');
   }
 };
 
@@ -148,11 +163,13 @@ Blockly.Blocks.seeed_sound = {
     this.setColour(Blockly.Blocks.seeed.HUE);
     this.appendDummyInput("")
         .appendTitle(Blockly.LKL_DF_SOUND)
-		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_sound.jpg", 32, 32))
-		.appendTitle(Blockly.LKL_PIN)
-        .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_sound.jpg", 32, 32));
+	this.appendValueInput("PIN", Number)
+        .appendTitle(Blockly.LKL_PIN)
+        .setCheck(Number);
+	this.setInputsInline(true);
     this.setOutput(true, Number);
-    this.setTooltip('Return value between 0 and 1024');
+    this.setTooltip('');
   }
 };
 
@@ -161,11 +178,13 @@ Blockly.Blocks.seeed_light = {
     this.setColour(Blockly.Blocks.seeed.HUE);
     this.appendDummyInput("")
         .appendTitle(Blockly.LKL_DF_LIGHT)
-		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_light.png", 31, 32))
-		.appendTitle(Blockly.LKL_PIN)
-        .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_light.png", 31, 32));
+	this.appendValueInput("PIN", Number)
+        .appendTitle(Blockly.LKL_PIN)
+        .setCheck(Number);
+	this.setInputsInline(true);
     this.setOutput(true, Number);
-    this.setTooltip('Return value between 0 and 1024');
+    this.setTooltip('');
   }
 };
 
@@ -174,11 +193,13 @@ Blockly.Blocks.seeed_temperature = {
     this.setColour(Blockly.Blocks.seeed.HUE);
     this.appendDummyInput("")
         .appendTitle(Blockly.LKL_DF_TEMPERATURE)
-		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_temperature.png", 37, 32))
-		.appendTitle(Blockly.LKL_PIN)
-        .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+		.appendField(new Blockly.FieldImage("../../media/seeed/seeed_temperature.png", 37, 32));
+	this.appendValueInput("PIN", Number)
+        .appendTitle(Blockly.LKL_PIN)
+        .setCheck(Number);
+	this.setInputsInline(true);
     this.setOutput(true, Number);
-    this.setTooltip('Return value between 0 and 1024');
+    this.setTooltip('');
   }
 };
 
@@ -197,6 +218,30 @@ Blockly.Blocks.grove_serial_lcd_print = {
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.LKL_LCD_PRINT2)
     this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  }
+};
+
+Blockly.Blocks.grove_serial_lcd_print2 = {
+  init: function() {
+    this.setColour(Blockly.Blocks.seeed.HUE);
+    this.appendDummyInput()
+        .appendTitle(Blockly.LKL_LCD_RGB_BACKLIGHT)
+        .appendField(new Blockly.FieldImage("../../media/seeed/seeed_lcd.png", 58, 32));
+	this.appendValueInput("row", Number)
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LKL_LCD_ROW);
+	this.appendValueInput("column", Number)
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LKL_LCD_COLUMN);
+    this.appendValueInput("TEXT", String)
+        .setCheck([String,Number])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LKL_LCD_PRINT);
+    this.setPreviousStatement(true, null);
+	this.setInputsInline(true);
     this.setNextStatement(true, null);
   }
 };

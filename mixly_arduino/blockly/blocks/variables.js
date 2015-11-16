@@ -21,7 +21,7 @@ Blockly.Blocks['variables_declare'] = {
 	    .appendTitle(Blockly.LKL_VALUE);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setTooltip('');
+    this.setTooltip(Blockly.LKL_TOOLTIP_VARIABLES_DECLARE);
   },
   getVars: function() {
     return [this.getFieldValue('VAR')];

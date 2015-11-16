@@ -48,6 +48,7 @@ Blockly.Blocks['text_join'] = {
         .appendField(Blockly.LKL_TEXT_JOIN);
     this.setInputsInline(true);
 	this.setOutput(true, String);
+	this.setTooltip(Blockly.LKL_TOOLTIP_TEXT_JOIN);
   }
 };
 
@@ -61,6 +62,15 @@ Blockly.Blocks['text_to_number'] = {
         .setCheck(String)
 		.appendField(new Blockly.FieldDropdown(TO_INT_FLOAT), 'TOWHAT');
 	this.setOutput(true, Number);
+	var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getFieldValue('TOWHAT');
+      var TOOLTIPS = {
+        'toInt': Blockly.LKL_TOOLTIP_TEXT_TOINT,
+        'toFloat': Blockly.LKL_TOOLTIP_TEXT_TOFLOAT
+      };
+      return TOOLTIPS[mode];
+    });
   }
 };
 
@@ -71,5 +81,6 @@ Blockly.Blocks['number_to_text'] = {
         .setCheck(Number)
 		.appendTitle(Blockly.LKL_TOSTRING);;
 	this.setOutput(true, String);
+	this.setTooltip(Blockly.LKL_TOOLTIP_TEXT_TOTEXT);
   }
 };

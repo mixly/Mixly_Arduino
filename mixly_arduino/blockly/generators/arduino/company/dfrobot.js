@@ -87,7 +87,7 @@ Blockly.Arduino.df_romeo_motor_stop=function(){
 };
 
 Blockly.Arduino.df_led = function() {
-  var dropdown_pin = this.getTitleValue('PIN');
+  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_stat = this.getTitleValue('STAT');
   Blockly.Arduino.setups_['setup_output_'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
   var code = 'digitalWrite('+dropdown_pin+','+dropdown_stat+');\n'
@@ -97,7 +97,7 @@ Blockly.Arduino.df_led = function() {
 Blockly.Arduino.df_buzzer = Blockly.Arduino.df_led;
 
 Blockly.Arduino.df_buzzer2=function(){
-   var dropdown_pin = this.getTitleValue('PIN');
+   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
    var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',
       Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
    var code="tone("+dropdown_pin+","+fre+");\n";
@@ -106,7 +106,7 @@ Blockly.Arduino.df_buzzer2=function(){
 };
 
 Blockly.Arduino.df_buzzer3=function(){
-   var dropdown_pin = this.getTitleValue('PIN');
+   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
    var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',
       Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
    var dur = Blockly.Arduino.valueToCode(this, 'DURATION',
@@ -117,7 +117,7 @@ Blockly.Arduino.df_buzzer3=function(){
 };
 
 Blockly.Arduino.df_btn = function() {
-  var dropdown_pin = this.getTitleValue('PIN');
+  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.setups_['setup_input_'+dropdown_pin] = 'pinMode('+dropdown_pin+', INPUT);';
   var code = 'digitalRead('+dropdown_pin+')';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
@@ -131,7 +131,7 @@ Blockly.Arduino.df_pyroelectric_infrared = Blockly.Arduino.df_btn;
 Blockly.Arduino.df_joystick_d = Blockly.Arduino.df_btn;
 
 Blockly.Arduino.df_potentiometer = function() {
-  var dropdown_pin = this.getTitleValue('PIN');
+  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
   //Blockly.Arduino.setups_['setup_input_'+dropdown_pin] = 'pinMode('+dropdown_pin+', INPUT);';
   var code = 'analogRead('+dropdown_pin+')';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
