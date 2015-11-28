@@ -4,7 +4,9 @@ goog.provide('Blockly.Blocks.blockgroup');
 
 goog.require('Blockly.Blocks');
 
-Blockly.Blocks.blockgroup.HUE = 120;
+Blockly.Blocks.blockgroup.HUE = 65;
+Blockly.Blocks.blockgroup.HUE1 = 40;
+Blockly.Blocks.blockgroup.HUE2 = 100;
 
 Blockly.Blocks['serial_print'] = {
   init: function() {
@@ -214,7 +216,7 @@ Blockly.Blocks.i2c_available = {
 //³¬Éù²¨²â¾à
 Blockly.Blocks.chaoshengbo={
 	init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE1);
 	this.appendDummyInput("")
 	    .appendTitle(Blockly.LKL_CHAOSHENGBO)
 	    .appendTitle('Trig#')
@@ -228,7 +230,7 @@ Blockly.Blocks.chaoshengbo={
 
 Blockly.Blocks.chaoshengbo2={
 	init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE1);
 	this.appendDummyInput("")
 	    .appendTitle(Blockly.LKL_CHAOSHENGBO);
 	this.appendValueInput("PIN1", Number)
@@ -247,7 +249,7 @@ Blockly.Blocks.chaoshengbo2={
 Blockly.Blocks.dht11={
 	init: function() {
 	var WHAT = [[Blockly.LKL_DHT11_T, 'temperature'],[Blockly.LKL_DHT11_H, 'humidity']];
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE1);
 	this.appendValueInput("PIN", Number)
         .appendTitle(Blockly.LKL_DHT11)
         .setCheck(Number);
@@ -268,7 +270,7 @@ Blockly.Blocks.dht11={
 
 Blockly.Blocks.servo_move = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
 	this.appendValueInput("PIN", Number)
         .appendTitle(Blockly.LKL_SERVO)
         .appendTitle(Blockly.LKL_PIN)
@@ -289,7 +291,7 @@ Blockly.Blocks.servo_move = {
 
 Blockly.Blocks.servo_read_degrees = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
 	this.appendValueInput("PIN", Number)
         .appendTitle(Blockly.LKL_SERVO)
         .appendTitle(Blockly.LKL_PIN)
@@ -305,7 +307,7 @@ Blockly.Blocks.servo_read_degrees = {
 
 Blockly.Blocks.controls_tone={
 init:function(){
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
 	this.appendValueInput("PIN", Number)
         .appendTitle(Blockly.LKL_TONE_PIN)
         .setCheck(Number);
@@ -322,7 +324,7 @@ init:function(){
 
 Blockly.Blocks.controls_tone2={
 init:function(){
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
     this.appendValueInput("PIN", Number)
         .appendTitle(Blockly.LKL_TONE_PIN)
         .setCheck(Number);
@@ -343,7 +345,7 @@ init:function(){
 
 Blockly.Blocks.controls_notone={
 init:function(){
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
 	this.appendValueInput("PIN", Number)
         .appendTitle(Blockly.LKL_NOTONE_PIN)
         .setCheck(Number);
@@ -356,7 +358,7 @@ init:function(){
 
 Blockly.Blocks.group_lcd_print = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
 	this.appendValueInput('device')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
@@ -376,7 +378,7 @@ Blockly.Blocks.group_lcd_print = {
 
 Blockly.Blocks.group_lcd_power = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
 	this.appendValueInput('device')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)

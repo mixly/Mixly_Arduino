@@ -5,7 +5,7 @@ goog.provide('Blockly.Blocks.loops');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.loops.HUE = 65;
+Blockly.Blocks.loops.HUE = 120;
 
 Blockly.Blocks.base_setup = {
   init: function() {

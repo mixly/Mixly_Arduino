@@ -5,7 +5,7 @@ goog.provide('Blockly.Blocks.logic');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.logic.HUE = 230;
+Blockly.Blocks.logic.HUE = 210;
 
 Blockly.Blocks['logic_compare'] = {
   /**

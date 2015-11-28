@@ -1,5 +1,5 @@
 .blocklyTreeRoot{
-	min-width:100px;
+	min-width:120px;
 }
 #tabRow>td {
       border: 1px solid #ccc;
@@ -35,6 +35,15 @@ td.taboff {
 td.taboff:hover {
       background-color: #eee;
 }
-.blocklyTreeIcon.blocklyTreeIconNone{
-	width:0px;
+
+div>span.blocklyTreeIcon.blocklyTreeIconNone{
+	width:0px;height:18px;
+	float:left;
+	margin:2px;
 }
+/*
+#\:1>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../media/mark/default.png') no-repeat;
+	background-size: 100% auto; 
+}
+*/

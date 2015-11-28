@@ -50,7 +50,11 @@ Blockly.Arduino.inout_digital_read2 = function() {
     Blockly.Arduino.definitions_[funcName] = code2;
 	code = 'mixly_digitalRead('+dropdown_pin+')';
   }else{
-    Blockly.Arduino.setups_['setup_input_'+dropdown_pin] = 'pinMode('+dropdown_pin+', INPUT);';
+    if(Blockly.Arduino.setups_['setup_output_'+dropdown_pin]){
+	   //存在pinMode已设为output则不再设为input
+	}else{
+       Blockly.Arduino.setups_['setup_input_'+dropdown_pin] = 'pinMode('+dropdown_pin+', INPUT);';
+	}
 	code = 'digitalRead('+dropdown_pin+')';
   }
   return [code, Blockly.Arduino.ORDER_ATOMIC];
