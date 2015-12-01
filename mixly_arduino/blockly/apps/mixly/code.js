@@ -11,6 +11,7 @@ var Code = {};
 Code.LANGUAGE_NAME = {
   'zh-hans': '简体中文',
   'en': 'English',
+  'spa': 'Español',
 };
 
 /**
