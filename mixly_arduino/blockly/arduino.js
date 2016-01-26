@@ -78,6 +78,7 @@ var profile = {
     analog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
 	pwm:[["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"]],
 	interrupt : [["2", "2"], ["3", "3"]],
+	serial_select:[["Serial", "Serial"]],
     serial: 9600
   },
   arduino_mega: {
@@ -86,6 +87,7 @@ var profile = {
     analog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"], ["A8", "A8"], ["A9", "A9"], ["A10", "A10"], ["A11", "A11"], ["A12", "A12"], ["A13", "A13"], ["A14", "A14"], ["A15", "A15"]],
 	pwm:[["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"],["44", "44"], ["45", "45"], ["46", "46"]],
 	interrupt : [["2", "2"], ["3", "3"]],
+	serial_select:[["Serial", "Serial"],["Serial1", "Serial1"],["Serial2", "Serial2"],["Serial3", "Serial3"]],
     serial: 9600
   },
   arduino_eightanaloginputs: {
@@ -94,6 +96,7 @@ var profile = {
     analog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"]],
 	pwm:[["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"]],
 	interrupt : [["2", "2"], ["3", "3"]],
+	serial_select:[["Serial", "Serial"]],
     serial: 9600
   },
   arduino_ethernet: {
@@ -102,6 +105,7 @@ var profile = {
     analog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
 	pwm:[["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"]],
 	interrupt : [["2", "2"], ["3", "3"]],//本无
+	serial_select:[["Serial", "Serial"]],
     serial: 9600
   },
   arduino_gemma: {
@@ -110,6 +114,7 @@ var profile = {
     analog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"]],
 	pwm:[["0", "0"], ["1", "1"]],
 	interrupt : [["2", "2"], ["3", "3"]],//本无
+	serial_select:[["Serial", "Serial"]],
     serial: 9600
   },
   arduino_leonardo: {
@@ -118,6 +123,7 @@ var profile = {
     analog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"], ["A8", "A8"], ["A9", "A9"], ["A10", "A10"], ["A11", "A11"]],
 	pwm:[["3", "3"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"], ["13", "13"]],
 	interrupt : [["0", "0"], ["1", "1"],["2", "2"], ["3", "3"], ["7", "7"]],
+	serial_select:[["Serial", "Serial"],["Serial1", "Serial1"]],
     serial: 9600
   },
   arduino_robot: {
@@ -126,6 +132,7 @@ var profile = {
     analog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"], ["A8", "A8"], ["A9", "A9"], ["A10", "A10"], ["A11", "A11"]],
 	pwm:[["3", "3"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"], ["13", "13"]],
 	interrupt : [["0", "0"], ["1", "1"],["2", "2"], ["3", "3"], ["7", "7"]],
+	serial_select:[["Serial", "Serial"],["Serial1", "Serial1"]],
     serial: 9600
   },
   arduino_esp8266: { //esp8266只有wifio不符合
@@ -134,9 +141,29 @@ var profile = {
     analog: [["A0", "A0"]],
 	pwm:[["0", "0"],["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"],["16", "16"]],
 	interrupt : [["0", "0"],["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"]],
+	serial_select:[["Serial", "Serial"]],
+    serial: 9600
+  },
+  'LuBot lite': {
+    description: "lubot",
+    digital: [["O1", "O1"], ["O2", "O2"], ["O3", "O3"], ["O4", "O4"], ["I1", "I1"], ["I2", "I2"], ["I3", "I3"], ["I4", "I4"], ["I5", "I5"], ["I6", "I6"]],
+    analog: [["I1", "I1"], ["I2", "I2"], ["I3", "I3"], ["I4", "I4"], ["I5", "I5"], ["I6", "I6"]],
+	pwm:[["O1", "O1"], ["O2", "O2"], ["O3", "O3"], ["O4", "O4"]],
+	interrupt : [["2", "2"], ["3", "3"]],
+	serial_select:[["Serial", "Serial"]],
     serial: 9600
   }
 };
+profile["Arduino Yun"] =profile["Arduino Yun Mini"] =profile["Arduino Leonardo"] =profile["Arduino Leonardo ETH"] =profile["Arduino Micro"] =profile["Arduino Esplora"] =profile["LilyPad Arduino USB"] = profile["arduino_leonardo"];
+profile["Arduino Robot Control"] =profile["Arduino Robot Motor"] =profile["arduino_robot"];
+profile["Arduino Mega or Mega 2560"] =profile["Arduino Mega ADK"] =profile["arduino_mega"];
+profile["Arduino Ethernet"] =profile["arduino_ethernet"];
+profile["Arduino Gemma"] =profile["arduino_gemma"];
+profile["Arduino Uno"] =profile["Arduino Duemilanove or Diecimila"] =profile["LilyPad Arduino"] =profile["Arduino NG or older"] =profile["arduino_standard"];
+profile["Arduino Nano"] =profile["Arduino Mini"] =profile["Arduino Fio"] =profile["Arduino BT"] =profile["Arduino Pro or Pro Mini"]=profile["arduino_eightanaloginputs"];
+profile["Generic ESP8266 Module"] =profile["Adafruit HUZZAH ESP8266"] =profile["NodeMCU 0.9 (ESP-12 Module)"] =profile["NodeMCU 1.0 (ESP-12E Module)"] =profile["Olimex MOD-WIFI-ESP8266(-DEV)"]=profile["SparkFun ESP8266 Thing"]=profile["SweetPea ESP-210"]=profile["arduino_esp8266"];
+
+
 //set default profile to arduino standard-compatible board
 //profile["default"] = profile["arduino_standard"];
 //alert(profile.default.digital[0]);

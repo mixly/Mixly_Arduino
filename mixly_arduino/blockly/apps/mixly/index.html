@@ -4,13 +4,18 @@
   <title>Mixly</title>
   <script type="text/javascript" src="../../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../core/variables.js"></script>
+  <script type="text/javascript" src="../../core/blockly.js"></script>
+  <script type="text/javascript" src="../../core/zoom_controls.js"></script>
+  <script type="text/javascript" src="../../core/mycore.js"></script>
   <script type="text/javascript" src="../../arduino.js"></script>
+  <script type="text/javascript" src="company_pin.js"></script>
+  <script type="text/javascript" src="digitalPinToInterrupt.js"></script>
+  <script type="text/javascript" src="drag.js"></script>
   <script type="text/javascript" src="code.js"></script>
   <script type="text/javascript" src="Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
   <script type="text/javascript" src="FileSaver.min.js"></script>
   <script type="text/javascript" src="blockly_helper.js"></script>
-  <script type="text/javascript" src="digitalPinToInterrupt.js"></script>
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="myblock.js"></script>
   <script type="text/javascript" src="../../generators/arduino/pins.js"></script>
@@ -45,10 +50,12 @@ function sidecodeClick(){
   if(sidecodeDisplay){
 	document.getElementById('side_code_parent').style.display = 'none';
 	document.getElementById('sidebar').className='right-top';
+	document.getElementById('mid_td').style.display = 'none';
 	sidecodeDisplay=false;
   }else{
 	document.getElementById('side_code_parent').style.display = '';
 	document.getElementById('sidebar').className='right-top2';
+	document.getElementById('mid_td').style.display = '';
 	sidecodeDisplay=true;
   }
   Blockly.fireUiEvent(window, 'resize');
@@ -108,9 +115,11 @@ function tabClick(clickedName) {
 	//重新显示
 	if(sidecodeDisplay){
 	  document.getElementById('side_code_parent').style.display = '';
+	  document.getElementById('mid_td').style.display = '';
 	  document.getElementById('sidebar').className='right-top2';
     }else{
 	  document.getElementById('side_code_parent').style.display = 'none';
+	  document.getElementById('mid_td').style.display = 'none';
 	  document.getElementById('sidebar').className='right-top';
     }
 	//显示右侧悬浮按钮
@@ -121,6 +130,7 @@ function tabClick(clickedName) {
 	document.getElementById('sidebar').style.visibility = 'hidden';
    //点击代码将隐藏右侧代码，否则出现两个代码区域
 	document.getElementById('side_code_parent').style.display = 'none';
+	document.getElementById('mid_td').style.display = 'none';
   }
   Blockly.fireUiEvent(window, 'resize');
 }
@@ -246,61 +256,7 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
 	var arduinoTextarea = document.getElementById('side_code');
     arduinoTextarea.value = Blockly.Arduino.workspaceToCode();
 }
-Blockly.onKeyDown_ = function(e) {
-  if (Blockly.isTargetInput_(e)) {
-    // When focused on an HTML text input widget, don't trap any keys.
-    return;
-  }
-  var deleteBlock = false;
-  if (e.keyCode == 27) {
-    // Pressing esc closes the context menu.
-    Blockly.hideChaff();
-  } else if (e.keyCode == 8 || e.keyCode == 46) {
-    // Delete or backspace.
-    try {
-      if (Blockly.selected && Blockly.selected.isDeletable()) {
-        deleteBlock = true;
-      }
-    } finally {
-      // Stop the browser from going back to the previous page.
-      // Use a finally so that any error in delete code above doesn't disappear
-      // from the console when the page rolls back.
-      e.preventDefault();
-    }
-  } else if (e.altKey || e.ctrlKey || e.metaKey) {
-    if (Blockly.selected &&
-        Blockly.selected.isDeletable() && Blockly.selected.isMovable()) {
-      if (e.keyCode == 67) {
-        // 'c' for copy.
-        Blockly.hideChaff();
-        Blockly.copy_(Blockly.selected);
-      } else if (e.keyCode == 88) {
-        // 'x' for cut.
-        Blockly.copy_(Blockly.selected);
-        deleteBlock = true;
-      }
-    }
-    if (e.keyCode == 86) {
-      // 'v' for paste.
-      if (Blockly.clipboardXml_) {
-        Blockly.clipboardSource_.paste(Blockly.clipboardXml_);
-      }
-    }
-  }
-  if (deleteBlock) {
-    // Common code for delete and cut.
-    Blockly.hideChaff();
-    var heal = Blockly.dragMode_ != 2;
-    Blockly.selected.dispose(heal, true);
-    if (Blockly.highlightedConnection_) {
-      Blockly.highlightedConnection_.unhighlight();
-      Blockly.highlightedConnection_ = null;
-    }
-	//delete或ctrl-x时更新右侧代码框
-	var arduinoTextarea = document.getElementById('side_code');
-    arduinoTextarea.value = Blockly.Arduino.workspaceToCode();
-  }
-};
+
   </script>
   <style>
     @font-face { 
@@ -310,6 +266,9 @@ Blockly.onKeyDown_ = function(e) {
     html, body {
       height: 100%;
     }
+	textarea{
+		font-family:'courier new';
+	}
     body {
       background-color: #fff;
       font-family: sans-serif;
@@ -431,9 +390,9 @@ Blockly.onKeyDown_ = function(e) {
   </style>
 </head>
 <body onload="init()">
-  <table height="100%" width="100%">
+  <table height="100%" width="100%" id="table_whole">
     <tr>
-      <td colspan=2>
+      <td colspan=3>
         <table width="100%">
           <tr id="tabRow" height="1em">
             <td style="vertical-align: center;" id="tab_blocks" class="tabon" onclick="tabClick('blocks')"><img style="vertical-align:middle" width="25" src="media/blocks.png"/><span id="span_blocks">Blocks</span></td>
@@ -463,6 +422,7 @@ Blockly.onKeyDown_ = function(e) {
     </tr>
     <tr>
       <td height="100%" width="75%" id="content_area"></td>
+	  <td style="display:none;height:100%;width:0.3%;background: #ddd;cursor: w-resize;" id="mid_td"></td>
 	  <td width="25%" style="background-color:#eee;display:none;" id="side_code_parent"><textarea id="side_code" style="padding:5px;border:0;background-color:#eee;height:100%;width:100%;resize:none;" wrap="off" readonly></textarea></td>
 	  <div id="sidebar" class="right-top" onclick="sidecodeClick()"></div>
     </tr>
@@ -551,6 +511,7 @@ Blockly.onKeyDown_ = function(e) {
         </value>
 	  </block>
 	  <block type="controls_if"></block>
+	  <block type="controls_switch_case"></block>
 	  <block type="controls_for">
 	    <value name="FROM">
           <shadow type="math_number">
@@ -650,8 +611,9 @@ Blockly.onKeyDown_ = function(e) {
 	  </block>
     </category>
 	<category id="catLists"  colour="260">
-	  <block type="lists_create_with"></block>
-	  <block type="lists_create_with_text"></block>
+	  <block type="lists_create_with2"></block>
+	  <block type="lists_create_with_text2"></block>
+	  <block type="lists_length"></block>
 	  <block type="lists_getIndex">
 	    <value name="AT">
           <shadow type="math_number">
@@ -676,6 +638,13 @@ Blockly.onKeyDown_ = function(e) {
 	  <block type="logic_true_or_false"></block>
     </category>
 	<category id="catGroup"  colour="65">
+	  <block type="serial_begin">
+		<value name="CONTENT">
+          <shadow type="math_number">
+            <field name="NUM">9600</field>
+          </shadow>
+        </value>
+	  </block>
 	  <block type="serial_print"></block>
 	  <block type="serial_println"></block>
 	  <block type="serial_print_hex"></block>
@@ -729,14 +698,20 @@ Blockly.onKeyDown_ = function(e) {
 	  <block type="i2c_master_reader"></block>
 	  <block type="i2c_master_reader2"></block>
 	  <block type="i2c_available"></block>
+	  <block type="spi_transfer">
+		<value name="pin">
+          <shadow type="pins_digital"></shadow>
+        </value>
+		<value name="value">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+	  </block>
 	</category>
 	<category id="catStorage" colour="0">
 	  <block type="store_sd_write">
-		<value name="FILE">
-			<block type="text">
-				<field name="TEXT">file.txt</field>
-			</block>
-		</value>
+		<field name="FILE">file.txt</field>
 		<value name="DATA">
 			<block type="text">
 				<field name="TEXT">hello world</field>
@@ -844,6 +819,55 @@ Blockly.onKeyDown_ = function(e) {
 		<value name="device">
           <shadow type="math_number">
             <field name="NUM">0x27</field>
+          </shadow>
+        </value>
+	  </block>
+	  <block type="group_stepper_setup">
+		<value name="PIN1">
+			<shadow type="pins_digital"><field name="PIN">1</field></shadow>
+		</value>
+		<value name="PIN2">
+			<shadow type="pins_digital"><field name="PIN">2</field></shadow>
+		</value>
+		<value name="steps">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+		<value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+	  </block>
+	  <block type="group_stepper_setup2">
+		<value name="PIN1">
+			<shadow type="pins_digital"><field name="PIN">1</field></shadow>
+		</value>
+		<value name="PIN2">
+			<shadow type="pins_digital"><field name="PIN">2</field></shadow>
+		</value>
+		<value name="PIN3">
+			<shadow type="pins_digital"><field name="PIN">3</field></shadow>
+		</value>
+		<value name="PIN4">
+			<shadow type="pins_digital"><field name="PIN">4</field></shadow>
+		</value>
+		<value name="steps">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+		<value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+	  </block>
+	  <block type="group_stepper_move">
+		<value name="step">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
           </shadow>
         </value>
 	  </block>

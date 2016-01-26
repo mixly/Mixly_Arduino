@@ -171,10 +171,10 @@ Blockly.Blocks['logic_true_or_false'] = {
         .setCheck([Number,Boolean]);
     this.appendValueInput('B')
         .setCheck([Number,Boolean])
-        .appendTitle('?');
+        .appendTitle(Blockly.Msg.LOGIC_TERNARY_IF_TRUE);
 	this.appendValueInput('C')
         .setCheck([Number,Boolean])
-        .appendTitle(':');
+        .appendTitle(Blockly.Msg.LOGIC_TERNARY_IF_FALSE);
 	this.setOutput(true, [Number,Boolean]);
     this.setInputsInline(true);
 	this.setTooltip(Blockly.LKL_TOOLTIP_LOGIT_TRUEORFALSE);

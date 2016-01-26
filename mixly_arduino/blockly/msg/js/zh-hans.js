@@ -1,5 +1,4 @@
 // This file was automatically generated.  Do not modify.
-
 'use strict';
 
 goog.provide('Blockly.Msg.zh.hans');
@@ -10,6 +9,7 @@ Blockly.Msg.ADD_COMMENT = "添加注释";
 Blockly.Msg.AUTH = "请授权这个应用程序以保存您的作品并共享。";
 Blockly.Msg.CHANGE_VALUE_TITLE = "更改值：";
 Blockly.Msg.CHAT = "通过在此框输入与您的合作者沟通！";
+Blockly.Msg.CLEAN_UP = "清理块";
 Blockly.Msg.COLLAPSE_ALL = "折叠块";
 Blockly.Msg.COLLAPSE_BLOCK = "折叠块";
 Blockly.Msg.COLOUR_BLEND_COLOUR1 = "颜色1";
@@ -127,7 +127,7 @@ Blockly.Msg.LISTS_INLIST = "在数组中";
 Blockly.Msg.LISTS_IS_EMPTY_HELPURL = "https://github.com/google/blockly/wiki/Lists#is-empty";  // untranslated
 Blockly.Msg.LISTS_IS_EMPTY_TITLE = "%1是空的";
 Blockly.Msg.LISTS_LENGTH_HELPURL = "https://github.com/google/blockly/wiki/Lists#length-of";  // untranslated
-Blockly.Msg.LISTS_LENGTH_TITLE = "%1的长度";
+Blockly.Msg.LISTS_LENGTH_TITLE = "获取长度";
 Blockly.Msg.LISTS_LENGTH_TOOLTIP = "返回数组的长度。";
 Blockly.Msg.LISTS_REPEAT_HELPURL = "https://github.com/google/blockly/wiki/Lists#create-list-with";  // untranslated
 Blockly.Msg.LISTS_REPEAT_TITLE = "建立数组使用项 %1 重复 %2 次";
@@ -420,9 +420,9 @@ Blockly.LKL_DIGITALWRITE_PIN='数字输出 管脚#';
 Blockly.LKL_DIGITALREAD_PIN='数字输入 管脚#';
 Blockly.LKL_ANALOGWRITE_PIN='模拟输出 管脚#';
 Blockly.LKL_ANALOGREAD_PIN='模拟输入 管脚#';
-Blockly.LKL_SERIAL_PRINT='串口打印';
-Blockly.LKL_SERIAL_PRINTLN='串口打印（自动换行）';
-Blockly.LKL_SERIAL_PRINT_HEX='串口打印（16进制/自动换行）';
+Blockly.LKL_SERIAL_PRINT='打印';
+Blockly.LKL_SERIAL_PRINTLN='打印（自动换行）';
+Blockly.LKL_SERIAL_PRINT_HEX='打印（16进制/自动换行）';
 Blockly.LKL_STEP='步长为';
 Blockly.LKL_TONE_PIN='播放声音 管脚#';
 Blockly.LKL_FREQUENCY='频率';
@@ -472,6 +472,7 @@ Blockly.LANG_MATH_INT = '整数';
 Blockly.LANG_MATH_LONG = '整数';
 Blockly.LANG_MATH_FLOAT = '小数';
 Blockly.LANG_MATH_BOOLEAN = '布尔';
+Blockly.LANG_MATH_CHAR = '字符';
 Blockly.LANG_MATH_STRING = '字符串';
 Blockly.LANG_LISTS_GET_INDEX_INPUT_AT = '获取第';
 Blockly.LANG_LISTS_GET_INDEX_INPUT_IN_LIST = '项（在数组';
@@ -525,9 +526,9 @@ Blockly.LKL_IR_RECEIVE_YES='有信号';
 Blockly.LKL_IR_RECEIVE_NO='无信号';
 Blockly.LANG_VARIABLES_SET_TITLE='赋值为';
 Blockly.LKL_TEXT_JOIN='连接';
-Blockly.LKL_SERIAL_AVAILABLE='串口有数据可读吗？';
-Blockly.LKL_SERIAL_READSTR='读取串口（返回字符串）';
-Blockly.LKL_SERIAL_READ='读取串口';
+Blockly.LKL_SERIAL_AVAILABLE='有数据可读吗？';
+Blockly.LKL_SERIAL_READSTR='读取字符串';
+Blockly.LKL_SERIAL_READ='读取';
 Blockly.LKL_IR_RECIEVE_TOOLTIP='在接收到红外信号时进行用户自定义的处理。';
 Blockly.LKL_IR_SEND_NEC_TOOLTIP='发射指定类型的红外数据';
 Blockly.LKL_IR_RECIEVE_RAW_TOOLTIP='在接收到红外信号时以RAW格式打印出红外数据。';
@@ -695,6 +696,7 @@ var MSG = {
   catFun: "函数",
   catSense: "盛思(盒子)",
   catSense2: "盛思(机器人)",
+  catLuxe:"泺喜机器人",
   tab_blocks: "模块",
   tab_arduino: "代码"
 };
@@ -729,3 +731,102 @@ Blockly.LKL_TOOLTIP_BLOCKGROUP_SERVO_READ = '返回舵机当前停留的角度�
 Blockly.LKL_TOOLTIP_BLOCKGROUP_TONE = '按指定的频率播放声音。';
 Blockly.LKL_TOOLTIP_BLOCKGROUP_TONE2 = '按指定的频率和持续时间播放声音。';
 Blockly.LKL_TOOLTIP_BLOCKGROUP_NOTONE = '停止播放声音。';
+Blockly.LUXE_LED='灯 #';
+Blockly.LUXE_MOTOR='电机 #';
+Blockly.LUXE_STAT='为';
+Blockly.LUXE_SPEED='速度为';
+Blockly.LUXE_DIR='方向为';
+Blockly.LUXE_LED_ON='亮';
+Blockly.LUXE_LED_OFF='灭';
+Blockly.LUXE_MOTOR_FORWARD='顺时针';
+Blockly.LUXE_MOTOR_REVERSE='逆时针';
+Blockly.LUXE_LED_CHANGE='转换状态';
+Blockly.LUXE_MOTOR_CHANGE='改变方向';
+Blockly.LUXE_MOTOR_STOP='停止';
+Blockly.LUXE_SPEAKER_PLAYSOUND='播放声音';
+Blockly.LUXE_SPEANER_NOSOUND='停止播放声音';
+Blockly.LUXE_SPEAKER_FREQUENCY='频率';
+Blockly.LUXE_SPEAKER_DURATION='持续时间';
+
+//-----------------NOVA---------------------------------
+Blockly.LKL_NOVA_PORT = '端口';
+Blockly.LKL_NOVA_STAT = '设为';
+Blockly.LKL_NOVA_GET_STAT = '获取';
+
+// LED
+Blockly.LKL_NOVA_LED = 'LED灯';
+Blockly.LKL_NOVA_LED_ON = '开';
+Blockly.LKL_NOVA_LED_OFF = '关';
+
+// Button
+Blockly.LKL_NOVA_BUTTON_PRESSED = '按下';
+Blockly.LKL_NOVA_BUTTON_RELEASED = '松开';
+Blockly.LKL_NOVA_BTN = '按钮';
+Blockly.LKL_NOVA_ABCD = '#';
+
+Blockly.LKL_NOVA_TILTSWITCH = '倾斜开关';
+Blockly.LKL_NOVA_SOUND = '声音传感器'; 
+Blockly.LKL_NOVA_LIMISWICTH = '限位开关'; 
+Blockly.LKL_NOVA_LIGHT = '光敏'; 
+
+Blockly.LKL_NOVA_BUZZER = '蜂鸣器'; 
+Blockly.LKL_NOVA_FREQUENCY = '频率(Hz)'; 
+Blockly.LKL_NOVA_LKL_DURATION = '持续时间(ms)'; 
+
+Blockly.LKL_NOVA_MOTOR = '直流电机'; 
+Blockly.LKL_NOVA_MOTOR_SPEED = '转速(-100~100)%'; 
+
+Blockly.LKL_NOVA_ULTRASONIC = '超声波测距(cm)'; 
+
+Blockly.LKL_NOVA_DHT11 = '温湿度';
+Blockly.LKL_NOVA_TYPE = '类型';
+Blockly.LKL_NOVA_DHT11_H = '获取湿度';
+Blockly.LKL_NOVA_DHT11_T = '获取温度';
+
+Blockly.LKL_NOVA_SERVO = '舵机';
+Blockly.LKL_NOVA_DEGREE_0_180 = '角度（0~180）';
+Blockly.LKL_NOVA_DELAY = '延时';
+Blockly.LKL_NOVA_DELAY_MS = '毫秒';
+
+Blockly.LKL_NOVA_LINEFINDER = '巡线';
+Blockly.LKL_NOVA_L = '左边状态';
+Blockly.LKL_NOVA_R = '右边状态';
+Blockly.LKL_NOVA_READ = '获取黑白线状态';
+
+Blockly.LKL_NOVA_4DIGITDISPLAY = '数码管';
+Blockly.LKL_NOVA_DISPLAY_NUMBER = '显示数字';
+Blockly.LKL_NOVA_DISPLAY_HOUR= '显示小时';
+Blockly.LKL_NOVA_DISPLAY_MIN = '显示分钟';
+
+Blockly.LKL_NOVA_RTC = '时钟';
+Blockly.LKL_NOVA_RTC_SEC = '秒';
+Blockly.LKL_NOVA_RTC_MIN = '分';
+Blockly.LKL_NOVA_RTC_HOUR = '时';
+Blockly.LKL_NOVA_RTC_WEEK = '星期';
+Blockly.LKL_NOVA_RTC_DAY = '日';
+Blockly.LKL_NOVA_RTC_MON = '月';
+Blockly.LKL_NOVA_RTC_YEAR = '年';
+
+Blockly.LKL_NOVA_IR_REC = '红外接收';
+
+Blockly.LKL_NOVA_BLUETOOTH = '蓝牙';
+Blockly.LKL_NOVA_BLUETOOTH_AVAILABLE = '有数据可读？';
+Blockly.LKL_NOVA_BLUETOOTH_READ_STR = '读取数据（返回字符串）';
+Blockly.LKL_NOVA_BLUETOOTH_READ_NUM = '读取数据（返回数字）';
+
+//spi
+Blockly.TO_SPI_SLAVE_PIN='向SPI从机#';
+Blockly.SPI_TRANSFER='传输';
+
+Blockly.LKL_SERIAL_BEGIN='波特率';
+
+//stepper
+Blockly.LKL_STEPPER='步进电机';
+Blockly.LKL_STEPPER_SETUP_STEPPER='初始化步进电机';
+Blockly.LKL_STEPPER_PIN1='管脚1#';
+Blockly.LKL_STEPPER_PIN2='管脚2#';
+Blockly.LKL_STEPPER_PIN3='管脚3#';
+Blockly.LKL_STEPPER_PIN4='管脚4#';
+Blockly.LKL_STEPSPERREVOLUTION='每转步数';
+Blockly.LKL_STEPPER_SET_SPEED='设置转速';
+Blockly.LKL_STEPPER_STEP='移动步数';

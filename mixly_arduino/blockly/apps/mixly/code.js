@@ -10,6 +10,7 @@ var Code = {};
  */
 Code.LANGUAGE_NAME = {
   'zh-hans': '简体中文',
+  'zh-hant': '繁體中文',
   'en': 'English',
   'spa': 'Español',
 };
@@ -381,9 +382,11 @@ Code.initLanguage = function() {
   languageMenu.addEventListener('change', Code.changeLanguage, true);
   
   var categories = ['catInOut', 'catControl', 'catMath', 'catText', 'catLists',
-                    'catLogic', 'catGroup','catStorage','catSensor','catActuator', 'catVar','catFun','catSense','catSense2'];
+                    'catLogic', 'catGroup','catStorage','catSensor','catActuator', 'catVar','catFun','catSense','catSense2','catLuxe'];
   for (var i = 0, cat; cat = categories[i]; i++) {
-    document.getElementById(cat).setAttribute('name', MSG[cat]);
+	if(document.getElementById(cat)!=null){
+		document.getElementById(cat).setAttribute('name', MSG[cat]);
+	}
   }
 
   // Inject language strings.
@@ -405,5 +408,6 @@ Code.initLanguage = function() {
 
 // Load Blockly's language strings.
 document.write('<script src="../../msg/js/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="../../msg/js/company/' + Code.LANG + '.js"></script>\n');
 
 window.addEventListener('load', Code.init);

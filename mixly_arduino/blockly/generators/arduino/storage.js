@@ -5,7 +5,7 @@ goog.provide('Blockly.Arduino.storage');
 goog.require('Blockly.Arduino');
 
 Blockly.Arduino.store_sd_write = function() {
-	var file = Blockly.Arduino.valueToCode(this, 'FILE', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
+	var file = Blockly.Arduino.quote_(this.getFieldValue('FILE'));
 	//file=file.replace(/String/,"");
 	var data = Blockly.Arduino.valueToCode(this, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
 	//data=data.replace(/String/,"");

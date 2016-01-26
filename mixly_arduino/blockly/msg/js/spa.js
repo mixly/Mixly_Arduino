@@ -10,6 +10,7 @@ Blockly.Msg.ADD_COMMENT = "Añadir Comentario";
 Blockly.Msg.AUTH = "Por favor, autorice esta aplicación para que su trabajo se salven y para que pueda ser compartida por usted.";
 Blockly.Msg.CHANGE_VALUE_TITLE = "Cambiar valor:";
 Blockly.Msg.CHAT = "Chatea con su colaborador escribiendo en esta caja!";
+Blockly.Msg.CLEAN_UP = "Limpiar los Bloques";
 Blockly.Msg.COLLAPSE_ALL = "Contraer Bloques";
 Blockly.Msg.COLLAPSE_BLOCK = "Contraer Bloque";
 Blockly.Msg.COLOUR_BLEND_COLOUR1 = "color 1";
@@ -127,7 +128,7 @@ Blockly.Msg.LISTS_INLIST = "en la lista";
 Blockly.Msg.LISTS_IS_EMPTY_HELPURL = "https://github.com/google/blockly/wiki/Lists#is-empty";  // untranslated
 Blockly.Msg.LISTS_IS_EMPTY_TITLE = "%1 está vacía";
 Blockly.Msg.LISTS_LENGTH_HELPURL = "https://github.com/google/blockly/wiki/Lists#length-of";  // untranslated
-Blockly.Msg.LISTS_LENGTH_TITLE = "longitud de %1";
+Blockly.Msg.LISTS_LENGTH_TITLE = "longitud de";
 Blockly.Msg.LISTS_LENGTH_TOOLTIP = "Devuelve la longitud de una lista.";
 Blockly.Msg.LISTS_REPEAT_HELPURL = "https://github.com/google/blockly/wiki/Lists#create-list-with";  // untranslated
 Blockly.Msg.LISTS_REPEAT_TITLE = "crear lista con el elemento %1 repetido %2 veces";
@@ -420,9 +421,9 @@ Blockly.LKL_DIGITALWRITE_PIN='EscribeDigital PIN#';
 Blockly.LKL_DIGITALREAD_PIN='LeeDigital PIN#';
 Blockly.LKL_ANALOGWRITE_PIN='EscribeAnalógico PIN#';
 Blockly.LKL_ANALOGREAD_PIN='LeeAnalógico PIN#';
-Blockly.LKL_SERIAL_PRINT='imprime_serie';
-Blockly.LKL_SERIAL_PRINTLN='imprimeLinea_serie';
-Blockly.LKL_SERIAL_PRINT_HEX='imprimeLinea_serie(hex)';
+Blockly.LKL_SERIAL_PRINT='imprime';
+Blockly.LKL_SERIAL_PRINTLN='imprimeLinea';
+Blockly.LKL_SERIAL_PRINT_HEX='imprimeLinea(hex)';
 Blockly.LKL_STEP='paso';
 Blockly.LKL_TONE_PIN='Tono PIN#';
 Blockly.LKL_FREQUENCY='frecuencia';
@@ -470,6 +471,7 @@ Blockly.LANG_MATH_INT = 'int';
 Blockly.LANG_MATH_LONG = 'long';
 Blockly.LANG_MATH_FLOAT = 'float';
 Blockly.LANG_MATH_BOOLEAN = 'boolean';
+Blockly.LANG_MATH_CHAR = 'char';
 Blockly.LANG_MATH_STRING = 'string';
 Blockly.LANG_LISTS_GET_INDEX_INPUT_AT = 'recoge elemento en';
 Blockly.LANG_LISTS_GET_INDEX_INPUT_IN_LIST = 'en lista';
@@ -523,9 +525,9 @@ Blockly.LKL_IR_RECEIVE_YES='Recibe';
 Blockly.LKL_IR_RECEIVE_NO='NoRecibe';
 Blockly.LANG_VARIABLES_SET_TITLE='';
 Blockly.LKL_TEXT_JOIN='unir';
-Blockly.LKL_SERIAL_AVAILABLE='Esta Disponible el puerto Serie?';
-Blockly.LKL_SERIAL_READSTR='leeString PuertoSerie';
-Blockly.LKL_SERIAL_READ='Serie';
+Blockly.LKL_SERIAL_AVAILABLE='disponible?';
+Blockly.LKL_SERIAL_READSTR='leeString';
+Blockly.LKL_SERIAL_READ='';
 Blockly.LKL_IR_RECIEVE_TOOLTIP='Hacer algo al recibir señales infrarrojas.';
 Blockly.LKL_IR_SEND_NEC_TOOLTIP='Envía señales de infrarrojos del tipo especificado';
 Blockly.LKL_IR_RECIEVE_RAW_TOOLTIP='Imprimir la señal de infrarrojos de tipo RAW cuando lo recibe.';
@@ -693,6 +695,7 @@ var MSG = {
   catFun: "Funciones",
   catSense: "Labplus(Box)",
   catSense2: "Labplus(Robot)",
+  catLuxe:"LuxeRobot",
   tab_blocks: "Bloques",
   tab_arduino: "Código"
 };
@@ -727,3 +730,103 @@ Blockly.LKL_TOOLTIP_BLOCKGROUP_SERVO_READ = 'Devuelve los grados girados en el �
 Blockly.LKL_TOOLTIP_BLOCKGROUP_TONE = 'Reproduce sonido con la frecuencia especificada.';
 Blockly.LKL_TOOLTIP_BLOCKGROUP_TONE2 = 'Reproduce sonido en función de la frecuencia y la duración especificada.';
 Blockly.LKL_TOOLTIP_BLOCKGROUP_NOTONE = 'Detiene el sonido.';
+//untranslated
+Blockly.LUXE_LED='LED #';
+Blockly.LUXE_MOTOR='Motor #';
+Blockly.LUXE_STAT='Stat';
+Blockly.LUXE_SPEED='Speed';
+Blockly.LUXE_DIR='Direction';
+Blockly.LUXE_LED_ON='ON';
+Blockly.LUXE_LED_OFF='OFF';
+Blockly.LUXE_MOTOR_FORWARD='Clockwise';
+Blockly.LUXE_MOTOR_REVERSE='Counterclockwise';
+Blockly.LUXE_LED_CHANGE='change';
+Blockly.LUXE_MOTOR_CHANGE='changeDirection';
+Blockly.LUXE_MOTOR_STOP='stop';
+Blockly.LUXE_SPEAKER_PLAYSOUND='Play sound';
+Blockly.LUXE_SPEANER_NOSOUND='No sound';
+Blockly.LUXE_SPEAKER_FREQUENCY='frequency';
+Blockly.LUXE_SPEAKER_DURATION='duration';
+
+//-----------------NOVA---------------------------------
+Blockly.LKL_NOVA_PORT = 'Port';
+Blockly.LKL_NOVA_STAT = 'Set';
+Blockly.LKL_NOVA_GET_STAT = 'Get';
+
+// LED
+Blockly.LKL_NOVA_LED = 'LED';
+Blockly.LKL_NOVA_LED_ON = 'ON';
+Blockly.LKL_NOVA_LED_OFF = 'OFF';
+
+// Button
+Blockly.LKL_NOVA_BUTTON_PRESSED = 'Pressed';
+Blockly.LKL_NOVA_BUTTON_RELEASED = 'Released';
+Blockly.LKL_NOVA_BTN = 'Button ';
+Blockly.LKL_NOVA_ABCD = '#';
+
+Blockly.LKL_NOVA_TILTSWITCH = 'Tilt Switch';
+Blockly.LKL_NOVA_SOUND = 'Sound'; 
+Blockly.LKL_NOVA_LIMISWICTH = 'Limit Switch'; 
+Blockly.LKL_NOVA_LIGHT = 'Light'; 
+
+Blockly.LKL_NOVA_BUZZER = 'Buzzer'; 
+Blockly.LKL_NOVA_FREQUENCY = 'Frequency(Hz)'; 
+Blockly.LKL_NOVA_LKL_DURATION = 'Duration(ms)'; 
+
+Blockly.LKL_NOVA_MOTOR = 'DC Motor'; 
+Blockly.LKL_NOVA_MOTOR_SPEED = 'Speed(-100~100)%'; 
+
+Blockly.LKL_NOVA_ULTRASONIC = 'Ultrasonic(cm)'; 
+
+Blockly.LKL_NOVA_DHT11 = 'DHT11';
+Blockly.LKL_NOVA_TYPE = 'Type';
+Blockly.LKL_NOVA_DHT11_H = 'GetHumidity';
+Blockly.LKL_NOVA_DHT11_T = 'GetTemperature';
+
+Blockly.LKL_NOVA_SERVO = 'Servo';
+Blockly.LKL_NOVA_DEGREE_0_180 = 'Degree（0~180）';
+Blockly.LKL_NOVA_DELAY = 'Delay';
+Blockly.LKL_NOVA_DELAY_MS = 'ms';
+
+Blockly.LKL_NOVA_LINEFINDER = 'LineFinder';
+Blockly.LKL_NOVA_L = 'LeftState';
+Blockly.LKL_NOVA_R = 'RightState';
+Blockly.LKL_NOVA_READ = 'GetLineState';
+
+Blockly.LKL_NOVA_4DIGITDISPLAY = 'Digitdisplay';
+Blockly.LKL_NOVA_NUMBER = 'Number';
+Blockly.LKL_NOVA_DISPLAY_HOUR= 'Display Hour';
+Blockly.LKL_NOVA_DISPLAY_MIN = 'Display Minute';
+
+Blockly.LKL_NOVA_RTC = 'Real Time Clock';
+Blockly.LKL_NOVA_RTC_SEC = 'Sec';
+Blockly.LKL_NOVA_RTC_MIN = 'Min';
+Blockly.LKL_NOVA_RTC_HOUR = 'Hour';
+Blockly.LKL_NOVA_RTC_WEEK = 'Week';
+Blockly.LKL_NOVA_RTC_DAY = 'Day';
+Blockly.LKL_NOVA_RTC_MON = 'Mon';
+Blockly.LKL_NOVA_RTC_YEAR = 'Year';
+
+Blockly.LKL_NOVA_IR_REC = 'Infrared Receiver';
+
+Blockly.LKL_NOVA_BLUETOOTH = 'Bluetooth';
+Blockly.LKL_NOVA_BLUETOOTH_AVAILABLE = 'Available？';
+Blockly.LKL_NOVA_BLUETOOTH_READ_STR = 'ReadString';
+Blockly.LKL_NOVA_BLUETOOTH_READ_NUM = 'ReadNumber';
+
+//spi
+Blockly.TO_SPI_SLAVE_PIN='To SPI Slave PIN#';
+Blockly.SPI_TRANSFER='transfer';
+
+Blockly.LKL_SERIAL_BEGIN='velocidad en baudios';
+
+//stepper
+Blockly.LKL_STEPPER='Stepper';
+Blockly.LKL_STEPPER_SETUP_STEPPER='Setup Stepper';
+Blockly.LKL_STEPPER_PIN1='PIN1#';
+Blockly.LKL_STEPPER_PIN2='PIN2#';
+Blockly.LKL_STEPPER_PIN3='PIN3#';
+Blockly.LKL_STEPPER_PIN4='PIN4#';
+Blockly.LKL_STEPSPERREVOLUTION='steps per revolution';
+Blockly.LKL_STEPPER_SET_SPEED='setSpeed';
+Blockly.LKL_STEPPER_STEP='step';

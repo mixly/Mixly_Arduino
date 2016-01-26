@@ -121,7 +121,7 @@ Blockly.Blocks.controls_attachInterrupt = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
 	this.setTooltip(Blockly.LKL_TOOLTIP_INOUT_ATTACHINTERRUPT);
-  },
+  }/*,
   onchange: function() {
 	  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
 	  var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
@@ -130,7 +130,7 @@ Blockly.Blocks.controls_attachInterrupt = {
 	  }else{
 		  this.setWarningText(null);
 	  }
-  }
+  }*/
 };
 
 Blockly.Blocks.controls_detachInterrupt = {
@@ -142,7 +142,7 @@ Blockly.Blocks.controls_detachInterrupt = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
 	this.setTooltip(Blockly.LKL_TOOLTIP_INOUT_DETACHINTERRUPT);
-  },
+  }/*,
   onchange: function() {
 	  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
 	  var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
@@ -151,7 +151,7 @@ Blockly.Blocks.controls_detachInterrupt = {
 	  }else{
 		  this.setWarningText(null);
 	  }
-  }
+  }*/
 };
 
 Blockly.Blocks.inout_pulseIn = {

@@ -33,6 +33,25 @@ Blockly.Arduino.controls_if = function() {
   return code + '\n';
 };
 
+Blockly.Arduino.controls_switch_case = function() {
+  var n = 0;
+  var argument = Blockly.Arduino.valueToCode(this, 'IF' + n,
+      Blockly.Arduino.ORDER_NONE) || 'NULL';
+  var code = 'switch (' + argument + ') {\n';
+  for (n = 1; n <= this.elseifCount_; n++) {
+    argument = Blockly.Arduino.valueToCode(this, 'IF' + n,
+      Blockly.Arduino.ORDER_NONE) || 'NULL';
+    branch = Blockly.Arduino.statementToCode(this, 'DO' + n);
+    code += ' case ' + argument + ': \n' + branch+'  break;\n';
+  }
+  if (this.elseCount_) {
+    branch = Blockly.Arduino.statementToCode(this, 'ELSE');
+    code += ' default:\n' + branch+'  break;\n';
+  }
+  code +='}';
+  return code + '\n';
+};
+
 Blockly.Arduino.controls_for = function() {
   // For loop.
   var variable0 = Blockly.Arduino.variableDB_.getName(

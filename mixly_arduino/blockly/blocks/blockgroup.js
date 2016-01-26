@@ -8,10 +8,23 @@ Blockly.Blocks.blockgroup.HUE = 65;
 Blockly.Blocks.blockgroup.HUE1 = 40;
 Blockly.Blocks.blockgroup.HUE2 = 100;
 
+Blockly.Blocks['serial_begin'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.appendValueInput("CONTENT", Number)
+		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+		.appendTitle(Blockly.LKL_SERIAL_BEGIN)
+		.setCheck(Number);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  }
+};
+
 Blockly.Blocks['serial_print'] = {
   init: function() {
    this.setColour(Blockly.Blocks.blockgroup.HUE);
     this.appendValueInput("CONTENT", String)
+		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
         .appendTitle(Blockly.LKL_SERIAL_PRINT);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -23,6 +36,7 @@ Blockly.Blocks['serial_println'] = {
    init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE);
     this.appendValueInput("CONTENT", String)
+		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
         .appendTitle(Blockly.LKL_SERIAL_PRINTLN);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -34,6 +48,7 @@ Blockly.Blocks['serial_print_hex'] = {
    init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE);
     this.appendValueInput("CONTENT", Number)
+		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
         .appendTitle(Blockly.LKL_SERIAL_PRINT_HEX)
         .setCheck(Number);
     this.setPreviousStatement(true, null);
@@ -46,6 +61,7 @@ Blockly.Blocks['serial_available'] = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE);
 	this.appendDummyInput()
+		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
         .appendTitle(Blockly.LKL_SERIAL_AVAILABLE);
 	this.setOutput(true, Boolean);
 	this.setTooltip(Blockly.LKL_TOOLTIP_BLOCKGROUP_SERIAL_AVAILABLE);
@@ -56,6 +72,7 @@ Blockly.Blocks['serial_readstr'] = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE);
 	this.appendDummyInput()
+		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
         .appendTitle(Blockly.LKL_SERIAL_READSTR);
 	this.setOutput(true, String);
 	this.setTooltip(Blockly.LKL_TOOLTIP_BLOCKGROUP_SERIAL_READ_STR);
@@ -66,8 +83,9 @@ Blockly.Blocks['serial_parseInt_Float'] = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE);
 	this.appendDummyInput()
-        .appendTitle(Blockly.LKL_SERIAL_READ)
-		.appendTitle(new Blockly.FieldDropdown([[Blockly.LKL_SERIAL_READ_INT, "parseInt"], [Blockly.LKL_SERIAL_READ_FLOAT, "parseFloat"]]), "STAT");
+		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+        //.appendTitle(Blockly.LKL_SERIAL_READ)
+		.appendTitle(new Blockly.FieldDropdown([["read", "read"],["parseInt", "parseInt"], ["parseFloat", "parseFloat"]]), "STAT");
 	this.setOutput(true, Number);
 	var thisBlock = this;
     this.setTooltip(function() {
@@ -174,7 +192,7 @@ Blockly.Blocks.i2c_master_writer = {
 		.setAlign(Blockly.ALIGN_RIGHT)
         .appendTitle(Blockly.LKL_I2C_MASTER_WRITE);
 	this.appendValueInput('value')
-        .setCheck([Number,String])
+        .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
 		.appendTitle(Blockly.LKL_I2C_VALUE);
 	this.setPreviousStatement(true);
@@ -212,6 +230,24 @@ Blockly.Blocks.i2c_available = {
 	this.setOutput(true, Boolean);
   }
 };
+
+//SPI
+Blockly.Blocks.spi_transfer={
+	init: function() {
+    this.setColour(Blockly.Blocks.blockgroup.HUE);
+	this.appendValueInput('pin')
+        .setCheck(Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.TO_SPI_SLAVE_PIN);
+	this.appendValueInput('value')
+        .setCheck(Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+		.appendTitle(Blockly.SPI_TRANSFER);
+	this.setPreviousStatement(true);
+    this.setNextStatement(true);
+	this.setInputsInline(true);
+  }
+}
 
 //³¬Éù²¨²â¾à
 Blockly.Blocks.chaoshengbo={
@@ -390,3 +426,77 @@ Blockly.Blocks.group_lcd_power = {
     this.setNextStatement(true, null);
   }
 };
+
+Blockly.Blocks.group_stepper_setup={
+  init: function() {
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
+    this.appendDummyInput()
+		.appendTitle(Blockly.LKL_STEPPER_SETUP_STEPPER)
+        .appendTitle(new Blockly.FieldTextInput('mystepper'), 'VAR');
+	this.appendValueInput("PIN1", Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_STEPPER_PIN1)
+        .setCheck(Number);
+	this.appendValueInput("PIN2", Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_STEPPER_PIN2)
+        .setCheck(Number);
+    this.appendValueInput('steps')
+        .setCheck(Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_STEPSPERREVOLUTION);
+	this.appendValueInput('speed')
+        .setCheck(Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_STEPPER_SET_SPEED);
+  }
+}
+
+Blockly.Blocks.group_stepper_setup2={
+  init: function() {
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
+    this.appendDummyInput()
+		.appendTitle(Blockly.LKL_STEPPER_SETUP_STEPPER)
+        .appendTitle(new Blockly.FieldTextInput('mystepper'), 'VAR');
+	this.appendValueInput("PIN1", Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_STEPPER_PIN1)
+        .setCheck(Number);
+	this.appendValueInput("PIN2", Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_STEPPER_PIN2)
+        .setCheck(Number);
+	this.appendValueInput("PIN3", Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_STEPPER_PIN3)
+        .setCheck(Number);
+	this.appendValueInput("PIN4", Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_STEPPER_PIN4)
+        .setCheck(Number);
+    this.appendValueInput('steps')
+        .setCheck(Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_STEPSPERREVOLUTION);
+	this.appendValueInput('speed')
+        .setCheck(Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_STEPPER_SET_SPEED);
+  }
+}
+
+Blockly.Blocks.group_stepper_move={
+  init: function() {
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
+    this.appendDummyInput()
+		.appendTitle(Blockly.LKL_STEPPER)
+        .appendTitle(new Blockly.FieldTextInput('mystepper'), 'VAR');
+    this.appendValueInput('step')
+        .setCheck(Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_STEPPER_STEP);
+	this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+	this.setInputsInline(true);
+  }
+}

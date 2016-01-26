@@ -17,7 +17,7 @@ Blockly.Blocks['variables_declare'] = {
         .appendTitle(Blockly.LKL_DECLARE)
         .appendTitle(new Blockly.FieldTextInput('item'), 'VAR')
         .appendTitle(Blockly.LKL_AS)
-     	.appendTitle(new Blockly.FieldDropdown([[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_BOOLEAN,'boolean'],[Blockly.LANG_MATH_STRING,'String']]), "TYPE")
+     	.appendTitle(new Blockly.FieldDropdown([[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_BOOLEAN,'boolean'],[Blockly.LANG_MATH_CHAR,'char'],[Blockly.LANG_MATH_STRING,'String']]), "TYPE")
 	    .appendTitle(Blockly.LKL_VALUE);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
