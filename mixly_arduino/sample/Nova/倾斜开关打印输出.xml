@@ -1,0 +1,1 @@
+<xml board="Arduino Uno"><block type="controls_if" x="68" y="82"><value name="IF0"><block type="Nova_TiltSwitch"><field name="PIN">S0</field></block></value><statement name="DO0"><block type="serial_println"><value name="CONTENT"><block type="text"><field name="TEXT">Hello, I am Tilt Switch </field></block></value></block></statement></block></xml>

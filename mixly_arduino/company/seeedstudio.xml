@@ -1,0 +1,122 @@
+<!-- type="company" block="block/seeed.js" generator="generator/seeed.js"  lib="" -->
+<script type="text/javascript" src="../../blocks/company/seeed.js"></script>
+<script type="text/javascript" src="../../generators/arduino/company/seeed.js"></script>
+<category id="catSeeed" name="SeeedStudio" colour="65">
+	  <block type="seeed_servo_move">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+		<value name="DEGREE">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+		<value name="DELAY_TIME">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+	  </block>
+	  <block type="seeed_servo_read_degrees">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="seeed_led">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="seeed_buzzer">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="seeed_relay">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="seeed_btn">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="seeed_tilt">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="seeed_touch">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="seeed_rotation">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="seeed_sound">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="seeed_light">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="seeed_temperature">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="grove_serial_lcd_print">
+		<value name="TEXT">
+			<block type="text">
+				<field name="TEXT"></field>
+			</block>
+		</value>
+		<value name="TEXT2">
+			<block type="text">
+				<field name="TEXT"></field>
+			</block>
+		</value>
+	  </block>
+	  <block type="grove_serial_lcd_print2">
+		<value name="row">
+			<shadow type="math_number">
+				<field name="NUM">1</field>
+			</shadow>
+		</value>
+		<value name="column">
+			<shadow type="math_number">
+				<field name="NUM">1</field>
+			</shadow>
+		</value>
+		<value name="TEXT">
+			<block type="text">
+				<field name="TEXT"></field>
+			</block>
+		</value>
+	  </block>
+	  <block type="grove_serial_lcd_power"></block>
+	  <block type="grove_serial_lcd_setrgb">
+		<value name="R">
+			<shadow type="math_number">
+				<field name="NUM">255</field>
+			</shadow>
+		</value>
+		<value name="G">
+			<shadow type="math_number">
+				<field name="NUM">255</field>
+			</shadow>
+		</value>
+		<value name="B">
+			<shadow type="math_number">
+				<field name="NUM">255</field>
+			</shadow>
+		</value>
+	  </block>
+</category>

@@ -1,0 +1,1 @@
+<xml board="Arduino Uno"><block type="controls_if" x="203" y="118"><value name="IF0"><block type="Nova_LimitSwitch"><field name="PIN">S0</field><field name="STAT">1</field></block></value><statement name="DO0"><block type="serial_println"><value name="CONTENT"><block type="text"><field name="TEXT">Hello, I am Limit Switch</field></block></value></block></statement></block></xml>

@@ -1,0 +1,1 @@
+<xml board="Arduino Uno"><block type="controls_if" x="268" y="192"><value name="IF0"><block type="Nova_Sound"><field name="PIN">S0</field></block></value><statement name="DO0"><block type="serial_println"><value name="CONTENT"><block type="text"><field name="TEXT">Hello, I am Sound Sensor</field></block></value></block></statement></block></xml>

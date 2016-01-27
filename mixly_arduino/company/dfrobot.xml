@@ -1,0 +1,161 @@
+<!-- type="company" block="block/dfrobot.js" generator="generator/dfrobot.js"  lib="" media="media/dfrobot" -->
+<script type="text/javascript" src="../../blocks/company/dfrobot.js"></script>
+<script type="text/javascript" src="../../generators/arduino/company/dfrobot.js"></script>
+<category id="catDFRobot" name="DFRobot" colour="20">
+	  <block type="df_romeo_motor">
+		<value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+	  </block>
+	  <block type="df_romeo_motor_stop"></block>
+	  <block type="df_led">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="df_buzzer">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="df_buzzer2">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="df_buzzer3">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="df_relay">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="df_btn">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="df_vibration">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="df_tilt">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="df_touch">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="df_magnetic">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="df_pyroelectric_infrared">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="df_joystick_d">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="df_joystick_a">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_potentiometer">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_rotation">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_voltage">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_piezo_disk_virbration">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_sound">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_light">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_grayscale">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_flame">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_temperature">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_accelerometer">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_moisture">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_water">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_co">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_Sharp_GP2Y0A21">
+		<value name="PIN">
+			<shadow type="pins_analog"></shadow>
+		</value>
+	  </block>
+	  <block type="df_lcd_print">
+		<value name="TEXT">
+			<block type="text">
+				<field name="TEXT"></field>
+			</block>
+		</value>
+		<value name="TEXT2">
+			<block type="text">
+				<field name="TEXT"></field>
+			</block>
+		</value>
+	  </block>
+	  <block type="df_lcd_power"></block>
+</category>

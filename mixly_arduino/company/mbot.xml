@@ -1,0 +1,104 @@
+<!-- type="company" block="block/mbot.js" generator="generator/mbot.js"  lib="" -->
+<script type="text/javascript" src="../../blocks/company/mbot.js"></script>
+<script type="text/javascript" src="../../generators/arduino/company/mbot.js"></script>
+<category id="catmBot" name="mBot" colour="210">
+	  <block type="mbot_move">
+		<value name="speed">
+			<shadow type="math_number">
+				<field name="NUM">100</field>
+			</shadow>
+		</value>
+	  </block>
+	  <block type="mbot_motor">
+		<value name="speed">
+			<shadow type="math_number">
+				<field name="NUM">0</field>
+			</shadow>
+		</value>
+	  </block>
+	  <block type="mbot_servo_move">
+		<value name="DEGREE">
+			<shadow type="math_number">
+				<field name="NUM">90</field>
+			</shadow>
+		</value>
+	  </block>
+	  <block type="mbot_led">
+		<value name="R">
+			<shadow type="math_number">
+				<field name="NUM">0</field>
+			</shadow>
+		</value>
+		<value name="G">
+			<shadow type="math_number">
+				<field name="NUM">0</field>
+			</shadow>
+		</value>
+		<value name="B">
+			<shadow type="math_number">
+				<field name="NUM">0</field>
+			</shadow>
+		</value>
+	  </block>
+	  <block type="mbot_tone">
+		<value name="FREQUENCY">
+			<shadow type="math_number">
+				<field name="NUM">1000</field>
+			</shadow>
+		</value>
+	  </block>
+	  <block type="mbot_notone"></block>
+	  <block type="mbot_showface_text">
+		<value name="x">
+			<shadow type="math_number">
+				<field name="NUM">0</field>
+			</shadow>
+		</value>
+		<value name="y">
+			<shadow type="math_number">
+				<field name="NUM">0</field>
+			</shadow>
+		</value>
+		<field name="text">Hello</field>
+	  </block>
+	  <block type="mbot_showface_time">
+		<value name="h">
+			<shadow type="math_number">
+				<field name="NUM">10</field>
+			</shadow>
+		</value>
+		<value name="m">
+			<shadow type="math_number">
+				<field name="NUM">20</field>
+			</shadow>
+		</value>
+	  </block>
+	  <block type="mbot_display">
+		<value name="value">
+			<shadow type="math_number">
+				<field name="NUM">100</field>
+			</shadow>
+		</value>
+	  </block>
+	  <block type="mbot_set_light_senser_led"></block>
+	  <block type="mbot_set_camera"></block>
+	  <block type="mbot_light_sensor"></block>
+	  <block type="mbot_button"></block>
+	  <block type="mbot_chaoshengbo"></block>
+	  <block type="mbot_line_follower"></block>
+	  <block type="mbot_joystick"></block>
+	  <block type="mbot_potentiometer"></block>
+	  <block type="mbot_sound_sensor"></block>
+	  <block type="mbot_limit_switch"></block>
+	  <block type="mbot_temperature"></block>
+	  <block type="mbot_pir_motion_sensor"></block>
+	  <block type="mbot_ir_remote"></block>
+	  <block type="mbot_send_message">
+		<value name="text">
+		  <block type="text">
+            <field name="TEXT">hello</field>
+          </block>
+		</value>
+	  </block>
+	  <block type="mbot_message_received"></block>
+</category>

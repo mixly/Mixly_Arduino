@@ -1,0 +1,51 @@
+<!-- type="company" block="block/makeblock.js" generator="generator/makeblock.js"  lib="" -->
+<script type="text/javascript" src="../../blocks/company/makeblock.js"></script>
+<script type="text/javascript" src="../../generators/arduino/company/makeblock.js"></script>
+<category id="catMakeBlock" name="MakeBlock" colour="120">
+	  <block type="mb_servo_move">
+	    <value name="DEGREE">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+		<value name="DELAY_TIME">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+	  </block>
+	  <block type="controls_if">
+		<value name="IF0">
+		  <block type="mb_bluetooth_available"></block>
+		</value>
+		<statement name="DO0">
+		  <block type="serial_println">
+			<value name="CONTENT">
+			  <block type="mb_bluetooth_readString"></block>
+			</value>
+		  </block>
+		</statement>
+      </block>
+	  <block type="mb_display">
+	    <value name="num">
+			<shadow type="math_number">
+				<field name="NUM">1234</field>
+			</shadow>
+		</value>
+	  </block>
+	  <block type="mb_motor">
+		<value name="speed">
+			<shadow type="math_number">
+				<field name="NUM">0</field>
+			</shadow>
+		</value>
+	  </block>
+	  <block type="mb_sound"></block>
+	  <block type="mb_temperature"></block>
+	  <block type="mb_joystick"></block>
+	  <block type="mb_potentiometer"></block>
+	  <block type="mb_pyroelectric_infrared"></block>
+	  <block type="mb_chaoshengbo"></block>
+	  <block type="mb_light_grayscale"></block>
+	  <block type="mb_light_grayscale_led"></block>
+</category>

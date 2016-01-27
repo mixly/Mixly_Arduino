@@ -1,0 +1,1 @@
+<xml board="Arduino Uno"><block type="Nova_4DigitDisplay_Time" x="51" y="206"><field name="PIN">S5</field><value name="hour"><block type="Nova_RTC"><field name="PIN">C1</field><field name="RTC">gethour()</field></block></value><value name="min"><block type="Nova_RTC"><field name="PIN">C1</field><field name="RTC">getminute()</field></block></value></block></xml>

@@ -1,0 +1,32 @@
+<!-- type="company" block="block/labplusrobot.js" generator="generator/labplusrobot.js"  lib="" -->
+<script type="text/javascript" src="../../blocks/company/labplusrobot.js"></script>
+<script type="text/javascript" src="../../generators/arduino/company/labplusrobot.js"></script>
+<category id="catSense2" colour="330">
+	  <block type="labplusrobot_movement"></block>
+	  <block type="labplusrobot_turn">
+		<value name="degree">
+			<shadow type="math_number">
+				<field name="NUM">90</field>
+			</shadow>
+		</value>
+	  </block>
+	  <block type="labplusrobot_display"></block>
+	  <block type="labplusrobot_led_top"></block>
+	  <block type="labplusrobot_led_side">
+		<value name="R">
+			<shadow type="math_number">
+				<field name="NUM">0</field>
+			</shadow>
+		</value>
+		<value name="G">
+			<shadow type="math_number">
+				<field name="NUM">0</field>
+			</shadow>
+		</value>
+		<value name="B">
+			<shadow type="math_number">
+				<field name="NUM">0</field>
+			</shadow>
+		</value>
+	  </block>
+</category>

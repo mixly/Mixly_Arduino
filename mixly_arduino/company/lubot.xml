@@ -1,0 +1,29 @@
+<!-- type="company" hardware="hardware/lubot" block="block/luxerobot.js" generator="generator/luxerobot.js" pin="companypin/lubot" -->
+<script type="text/javascript" src="../../blocks/company/luxerobot.js"></script>
+<script type="text/javascript" src="../../generators/arduino/company/luxerobot.js"></script>
+<category name="LuBot" colour="40">
+	<block type="luxerobot_led"></block>
+	<block type="luxerobot_led_change"></block>
+	<block type="luxerobot_motor">
+		<value name="STAT">
+		<shadow type="math_number"><field name="NUM">0</field></shadow>
+		</value>
+	</block>
+	<block type="luxerobot_motor2"></block>
+	<block type="luxerobot_motor_change_dir"></block>
+	<block type="luxerobot_motor_stop"></block>
+	<block type="luxerobot_speaker_play">
+		<value name="NOTE">
+			<shadow type="luxerobot_notes"></shadow>
+		</value>
+	</block>
+	<block type="luxerobot_speaker_play_duration">
+		<value name="NOTE">
+			<shadow type="luxerobot_notes"></shadow>
+		</value>
+		<value name="DURATION">
+			<shadow type="math_number"><field name="NUM">1000</field></shadow>
+		</value>
+	</block>
+	<block type="luxerobot_speaker_nosound"></block>
+</category>
