@@ -383,23 +383,11 @@ Blockly.onKeyDown_ = function(e) {
     }
 	if(e.keyCode == 90){
 		//'z' for undo
-		if(xmlArray.length>1&&pnow>0){
-			Blockly.mainWorkspace.clear();
-			pnow--;
-            Blockly.Xml.domToWorkspace(Blockly.mainWorkspace,xmlArray[pnow]);
-		}else{
-			Blockly.mainWorkspace.clear();
-			renderContent();
-			pnow=-1;
-		}
+		undo();
     }
 	if(e.keyCode == 89){
 		//'y' for redo
-		if(xmlArray.length>0&&pnow<xmlArray.length-1){
-			Blockly.mainWorkspace.clear();
-			pnow++;
-            Blockly.Xml.domToWorkspace(Blockly.mainWorkspace,xmlArray[pnow]);
-		}
+		redo();
     }
   }
   if (deleteBlock) {
@@ -683,3 +671,22 @@ if (!goog.global['Blockly']) {
 }
 goog.global['Blockly']['getMainWorkspace'] = Blockly.getMainWorkspace;
 goog.global['Blockly']['addChangeListener'] = Blockly.addChangeListener;
+
+function undo(){
+	if(xmlArray.length>1&&pnow>0){
+		Blockly.mainWorkspace.clear();
+		pnow--;
+		Blockly.Xml.domToWorkspace(Blockly.mainWorkspace,xmlArray[pnow]);
+	}else{
+		Blockly.mainWorkspace.clear();
+		renderContent();
+		pnow=-1;
+	}
+}
+function redo(){
+	if(xmlArray.length>0&&pnow<xmlArray.length-1){
+		Blockly.mainWorkspace.clear();
+		pnow++;
+		Blockly.Xml.domToWorkspace(Blockly.mainWorkspace,xmlArray[pnow]);
+	}
+}
