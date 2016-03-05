@@ -694,6 +694,9 @@ var MSG = {
   catActuator: "执行器",
   catVar: "变量",
   catFun: "函数",
+  catEthernet:"以太网",
+  catEthernet_init:"初始化",
+  catEthernet_clinet:"客户端",
   catSense: "盛思(盒子)",
   catSense2: "盛思(机器人)",
   catLuxe:"泺喜机器人",
@@ -830,3 +833,21 @@ Blockly.LKL_STEPPER_PIN4='管脚4#';
 Blockly.LKL_STEPSPERREVOLUTION='每转步数';
 Blockly.LKL_STEPPER_SET_SPEED='设置转速';
 Blockly.LKL_STEPPER_STEP='移动步数';
+
+//-----------------Ethernet------------------------------------
+Blockly.MIXLY_ETHERNET_BEGIN='初始化 (DHCP)';
+Blockly.MIXLY_ETHERNET='以太网';
+Blockly.MIXLY_ETHERNET2='以太网2';
+Blockly.MIXLY_ETHERNET_MAC_ADDRESS='Mac地址';
+Blockly.MIXLY_ETHERNET_LOCALIP='本地IP';
+Blockly.MIXLY_ETHERNET_CLINET_CONNECT_SERVER='客户端连接到服务器';
+Blockly.MIXLY_ETHERNET_CLINET_PORT='端口';
+Blockly.MIXLY_ETHERNET_CLINET_STOP='客户端-停止';
+Blockly.MIXLY_ETHERNET_CLINET_CONNECTED='客户端-已连接';
+Blockly.MIXLY_ETHERNET_CLINET_AVAILABLE='客户端-有数据可读';
+Blockly.MIXLY_ETHERNET_CLINET_PRINT='客户端-打印';
+Blockly.MIXLY_ETHERNET_CLINET_PRINTLN='客户端-打印（自动换行）';
+Blockly.MIXLY_ETHERNET_CLINET_READ='客户端-读取';
+Blockly.MIXLY_ETHERNET_CLINET_GET_REQUEST='GET请求';
+Blockly.MIXLY_ETHERNET_CLINET_URL='URL';
+Blockly.MIXLY_ETHERNET_CLINET_SERVER='服务器';

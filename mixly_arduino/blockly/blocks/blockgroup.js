@@ -372,6 +372,8 @@ init:function(){
         .setCheck(Number)
         //.setAlign(Blockly.ALIGN_RIGHT)
         .appendTitle(Blockly.LKL_DURATION);
+	this.appendDummyInput("")
+		.appendTitle(Blockly.LKL_DELAY_MS);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);

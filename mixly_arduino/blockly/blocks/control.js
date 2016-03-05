@@ -78,7 +78,7 @@ Blockly.Blocks.controls_whileUntil = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('BOOL')
-        .setCheck(Boolean)
+        .setCheck([Boolean,Number])
         .appendTitle(Blockly.LANG_CONTROLS_WHILEUNTIL_TITLE_REPEAT)
         .appendTitle(new Blockly.FieldDropdown(this.OPERATORS), 'MODE');
     this.appendStatementInput('DO')
@@ -172,7 +172,7 @@ Blockly.Blocks['controls_if'] = {
     //this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('IF0')
-        .setCheck(Boolean)
+        .setCheck([Boolean,Number])
         .appendField(Blockly.Msg.CONTROLS_IF_MSG_IF);
     this.appendStatementInput('DO0')
         .appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
@@ -225,7 +225,7 @@ Blockly.Blocks['controls_if'] = {
     this.elseCount_ = parseInt(xmlElement.getAttribute('else'), 10);
     for (var i = 1; i <= this.elseifCount_; i++) {
       this.appendValueInput('IF' + i)
-          .setCheck(Boolean)
+          .setCheck([Boolean,Number])
           .appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSEIF);
       this.appendStatementInput('DO' + i)
           .appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
@@ -282,7 +282,7 @@ Blockly.Blocks['controls_if'] = {
         case 'controls_if_elseif':
           this.elseifCount_++;
           var ifInput = this.appendValueInput('IF' + this.elseifCount_)
-              .setCheck(Boolean)
+              .setCheck([Boolean,Number])
               .appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSEIF);
           var doInput = this.appendStatementInput('DO' + this.elseifCount_);
           doInput.appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);

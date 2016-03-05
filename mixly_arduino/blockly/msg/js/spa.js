@@ -693,6 +693,9 @@ var MSG = {
   catActuator: "Actuador",
   catVar: "Variables",
   catFun: "Funciones",
+  catEthernet:"Ethernet",
+  catEthernet_init:"Init",
+  catEthernet_clinet:"Client",
   catSense: "Labplus(Box)",
   catSense2: "Labplus(Robot)",
   catLuxe:"LuxeRobot",
@@ -830,3 +833,21 @@ Blockly.LKL_STEPPER_PIN4='PIN4#';
 Blockly.LKL_STEPSPERREVOLUTION='steps per revolution';
 Blockly.LKL_STEPPER_SET_SPEED='setSpeed';
 Blockly.LKL_STEPPER_STEP='step';
+
+//-----------------Ethernet------------------------------------
+Blockly.MIXLY_ETHERNET_BEGIN='Begin (DHCP)';
+Blockly.MIXLY_ETHERNET='Ethernet';
+Blockly.MIXLY_ETHERNET2='Ethernet2';
+Blockly.MIXLY_ETHERNET_MAC_ADDRESS='Mac Address';
+Blockly.MIXLY_ETHERNET_LOCALIP='localIP';
+Blockly.MIXLY_ETHERNET_CLINET_CONNECT_SERVER='Clinet.Connect Server';
+Blockly.MIXLY_ETHERNET_CLINET_PORT='Port';
+Blockly.MIXLY_ETHERNET_CLINET_STOP='Client.Stop';
+Blockly.MIXLY_ETHERNET_CLINET_CONNECTED='Client.Connected';
+Blockly.MIXLY_ETHERNET_CLINET_AVAILABLE='Client.available';
+Blockly.MIXLY_ETHERNET_CLINET_PRINT='Client.Print';
+Blockly.MIXLY_ETHERNET_CLINET_PRINTLN='Client.Println';
+Blockly.MIXLY_ETHERNET_CLINET_READ='Client.Read';
+Blockly.MIXLY_ETHERNET_CLINET_GET_REQUEST='GET Request';
+Blockly.MIXLY_ETHERNET_CLINET_URL='URL';
+Blockly.MIXLY_ETHERNET_CLINET_SERVER='Server';

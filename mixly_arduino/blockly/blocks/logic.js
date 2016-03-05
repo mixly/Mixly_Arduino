@@ -93,9 +93,9 @@ Blockly.Blocks['logic_operation'] = {
     this.setColour(Blockly.Blocks.logic.HUE);
     this.setOutput(true, Boolean);
     this.appendValueInput('A')
-        .setCheck(Boolean);
+        .setCheck([Boolean,Number]);
     this.appendValueInput('B')
-        .setCheck(Boolean)
+        .setCheck([Boolean,Number])
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
     this.setInputsInline(true);
     // Assign 'this' to a variable for use in the tooltip closure below.

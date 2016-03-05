@@ -27,6 +27,7 @@
   <script type="text/javascript" src="../../generators/arduino/logic.js"></script>
   <script type="text/javascript" src="../../generators/arduino/blockgroup.js"></script>
   <script type="text/javascript" src="../../generators/arduino/storage.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/ethernet.js"></script>
   <script type="text/javascript" src="../../generators/arduino/variables.js"></script>
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../blocks/pins.js"></script>
@@ -38,6 +39,7 @@
   <script type="text/javascript" src="../../blocks/logic.js"></script>
   <script type="text/javascript" src="../../blocks/blockgroup.js"></script>
   <script type="text/javascript" src="../../blocks/storage.js"></script>
+  <script type="text/javascript" src="../../blocks/ethernet.js"></script>
   <script type="text/javascript" src="../../blocks/variables.js"></script>
   <script type="text/javascript" src="../../blocks/procedures.js"></script>
   <link rel="stylesheet" type="text/css" href="color.css" />
@@ -871,6 +873,44 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
           </shadow>
         </value>
 	  </block>
+	</category>
+	<category id="catEthernet" colour="0">
+		<category id="catEthernet_init" colour="0">
+			<block type="ethernet_init_begin">
+				<value name="MAC">
+					<block type="ethernet_mac_address"></block>
+				</value>
+			</block>
+			<block type="ethernet_init_local_ip"></block>
+		</category>
+		<category id="catEthernet_clinet" colour="0">
+			<block type="ethernet_client_connect_server">
+				<value name="PORT">
+				  <shadow type="math_number">
+					<field name="NUM">80</field>
+				  </shadow>
+				</value>
+			</block>
+			<block type="ethernet_client_stop"></block>
+			<block type="ethernet_client_connected"></block>
+			<block type="ethernet_client_available"></block>
+			<block type="ethernet_client_print">
+				<value name="TEXT">
+				  <block type="text">
+					<field name="TEXT"></field>
+				  </block>
+				</value>
+			</block>
+			<block type="ethernet_client_println">
+				<value name="TEXT">
+				  <block type="text">
+					<field name="TEXT"></field>
+				  </block>
+				</value>
+			</block>
+			<block type="ethernet_client_read"></block>
+			<block type="ethernet_client_get_request"></block>
+		</category>
 	</category>
 	<sep></sep>
 	<category id="catVar" colour="330" custom="VARIABLE"></category>

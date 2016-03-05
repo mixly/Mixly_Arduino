@@ -695,6 +695,9 @@ catSensor:"感測器",
 catActuator:"執行器",
 catVar:"變數",
 catFun:"函數",
+catEthernet:"以太網",
+catEthernet_init:"初始化",
+catEthernet_clinet:"客戶端",
 catSense:"盛思（盒子）",
 catSense2:"盛思（機器人）",
 catLuxe:"濼喜機器人",
@@ -831,3 +834,22 @@ Blockly.LKL_STEPPER_PIN4='管腳4#';
 Blockly.LKL_STEPSPERREVOLUTION='每轉步數';
 Blockly.LKL_STEPPER_SET_SPEED='設置轉速';
 Blockly.LKL_STEPPER_STEP='移動步數';
+
+//-----------------Ethernet------------------------------------
+Blockly.CATA
+Blockly.MIXLY_ETHERNET_BEGIN='初始化 (DHCP)';
+Blockly.MIXLY_ETHERNET='以太網';
+Blockly.MIXLY_ETHERNET2='以太網2';
+Blockly.MIXLY_ETHERNET_MAC_ADDRESS='Mac地址';
+Blockly.MIXLY_ETHERNET_LOCALIP='本地IP';
+Blockly.MIXLY_ETHERNET_CLINET_CONNECT_SERVER='客戶端連接到服務器';
+Blockly.MIXLY_ETHERNET_CLINET_PORT='端口';
+Blockly.MIXLY_ETHERNET_CLINET_STOP='客戶端-停止';
+Blockly.MIXLY_ETHERNET_CLINET_CONNECTED='客戶端-已連接';
+Blockly.MIXLY_ETHERNET_CLINET_AVAILABLE='客戶端-有數據可讀';
+Blockly.MIXLY_ETHERNET_CLINET_PRINT='客戶端-打印';
+Blockly.MIXLY_ETHERNET_CLINET_PRINTLN='客戶端-打印（自動換行）';
+Blockly.MIXLY_ETHERNET_CLINET_READ='客戶端-讀取';
+Blockly.MIXLY_ETHERNET_CLINET_GET_REQUEST='GET請求';
+Blockly.MIXLY_ETHERNET_CLINET_URL='URL';
+Blockly.MIXLY_ETHERNET_CLINET_SERVER='服務器';
