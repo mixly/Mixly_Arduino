@@ -37,6 +37,7 @@ Blockly.Arduino.controls_switch_case = function() {
   var n = 0;
   var argument = Blockly.Arduino.valueToCode(this, 'IF' + n,
       Blockly.Arduino.ORDER_NONE) || 'NULL';
+  var branch ='';
   var code = 'switch (' + argument + ') {\n';
   for (n = 1; n <= this.elseifCount_; n++) {
     argument = Blockly.Arduino.valueToCode(this, 'IF' + n,
