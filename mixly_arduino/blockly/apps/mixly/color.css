@@ -135,6 +135,14 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../media/mark/act2.png') no-repeat;
 	background-size: 100% auto; 
 }
+#\:b>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../media/mark/net.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:b>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../media/mark/net2.png') no-repeat;
+	background-size: 100% auto; 
+}
 #\:d>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
 	background:url('../../media/mark/var.png') no-repeat;
 	background-size: 100% auto; 
