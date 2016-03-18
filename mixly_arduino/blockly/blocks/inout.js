@@ -50,7 +50,7 @@ Blockly.Blocks.inout_digital_read = {
     this.appendDummyInput("")
 	      .appendTitle(Blockly.LKL_DIGITALREAD_PIN)
 	      .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
-    this.setOutput(true, Boolean);
+    this.setOutput(true, [Boolean,Number]);
     this.setTooltip(Blockly.LKL_TOOLTIP_INOUT_DIGITAL_READ);
   }
 };
@@ -62,7 +62,7 @@ Blockly.Blocks.inout_digital_read2 = {
         .appendTitle(Blockly.LKL_DIGITALREAD_PIN)
         .setCheck(Number);
     this.setInputsInline(true);
-    this.setOutput(true, Boolean);
+    this.setOutput(true, [Boolean,Number]);
     this.setTooltip(Blockly.LKL_TOOLTIP_INOUT_DIGITAL_READ);
   }
 };
