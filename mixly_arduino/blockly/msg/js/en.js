@@ -858,3 +858,22 @@ Blockly.MIXLY_DS18B20='DS18B20 PIN#';
 Blockly.MIXLY_DS18B20_GET_TEMP='getTemperature';
 Blockly.MIXLY_DS18B20_C='°C';
 Blockly.MIXLY_DS18B20_F='°F';
+
+//GPS
+Blockly.MIXLY_GPS_INIT='GPS init';
+Blockly.MIXLY_GPS_DATA_AVAILABLE='GPS data is available';
+Blockly.MIXLY_GPS_DATA_ENCODE='GPS encode data successful';
+Blockly.MIXLY_GPS_LOCATION='location';
+Blockly.MIXLY_GPS_DATE='date';
+Blockly.MIXLY_GPS_TIME='time';
+Blockly.MIXLY_GPS_ISVALID='isValid';
+Blockly.MIXLY_GPS_GET='GPS get';
+Blockly.MIXLY_GPS_LOCATION_LAT='location-latitude';
+Blockly.MIXLY_GPS_LOCATION_LNG='location-longitude';
+Blockly.MIXLY_GPS_DATE_YEAR='date-year';
+Blockly.MIXLY_GPS_DATE_MONTH='date-month';
+Blockly.MIXLY_GPS_DATE_DAY='date-day';
+Blockly.MIXLY_GPS_TIME_HOUR='time-hour';
+Blockly.MIXLY_GPS_TIME_MINUTE='time-minute';
+Blockly.MIXLY_GPS_TIME_SECOND='time-second';
+Blockly.MIXLY_GPS_TIME_CENTISECOND='time-centisecond';

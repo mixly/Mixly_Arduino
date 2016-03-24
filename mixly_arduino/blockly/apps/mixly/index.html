@@ -27,6 +27,7 @@
   <script type="text/javascript" src="../../generators/arduino/logic.js"></script>
   <script type="text/javascript" src="../../generators/arduino/blockgroup.js"></script>
   <script type="text/javascript" src="../../generators/arduino/storage.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/sensor.js"></script>
   <script type="text/javascript" src="../../generators/arduino/ethernet.js"></script>
   <script type="text/javascript" src="../../generators/arduino/variables.js"></script>
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
@@ -39,6 +40,7 @@
   <script type="text/javascript" src="../../blocks/logic.js"></script>
   <script type="text/javascript" src="../../blocks/blockgroup.js"></script>
   <script type="text/javascript" src="../../blocks/storage.js"></script>
+  <script type="text/javascript" src="../../blocks/sensor.js"></script>
   <script type="text/javascript" src="../../blocks/ethernet.js"></script>
   <script type="text/javascript" src="../../blocks/variables.js"></script>
   <script type="text/javascript" src="../../blocks/procedures.js"></script>
@@ -773,6 +775,56 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
 		<value name="PIN">
 			<shadow type="pins_digital"></shadow>
 		</value>
+	  </block>
+	  <block type="gps_init">
+		<value name="RX">
+			<shadow type="pins_digital"></shadow>
+		</value>
+		<value name="TX">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	  </block>
+	  <block type="controls_whileUntil">
+		<field name="MODE">WHILE</field>
+		<value name="BOOL">
+		  <block type="gps_data_available"></block>
+		</value>
+		<statement name="DO">
+		  <block type="controls_if">
+			<value name="IF0">
+			  <block type="gps_data_encode"></block>
+			</value>
+			<statement name="DO0">
+			  <block type="controls_if">
+				<value name="IF0">
+				  <block type="gps_xxx_isValid">
+					<field name="WHAT">location</field>
+				  </block>
+				</value>
+				<statement name="DO0">
+				  <block type="serial_println">
+					<field name="serial_select">Serial</field>
+					<value name="CONTENT">
+					  <block type="gps_getData_xxx">
+						<field name="WHAT">location.lat</field>
+					  </block>
+					</value>
+					<next>
+					  <block type="serial_println">
+						<field name="serial_select">Serial</field>
+						<value name="CONTENT">
+						  <block type="gps_getData_xxx">
+							<field name="WHAT">location.lng</field>
+						  </block>
+						</value>
+					  </block>
+					</next>
+				  </block>
+				</statement>
+			  </block>
+			</statement>
+		  </block>
+		</statement>
 	  </block>
 	</category>
 	<category id="catActuator" colour="100">
