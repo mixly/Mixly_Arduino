@@ -8,9 +8,10 @@ Blockly.Arduino.gps_init = function() {
   Blockly.Arduino.definitions_['define_SoftwareSerial'] = '#include <SoftwareSerial.h>';
   var rx = Blockly.Arduino.valueToCode(this, 'RX',Blockly.Arduino.ORDER_ATOMIC);
   var tx = Blockly.Arduino.valueToCode(this, 'TX',Blockly.Arduino.ORDER_ATOMIC);
+  var bt = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC)
   Blockly.Arduino.definitions_['var_TinyGPSPlus_gps'] = 'TinyGPSPlus gps;';
   Blockly.Arduino.definitions_['var_SoftwareSerial_gps_ss'] = 'SoftwareSerial gps_ss('+rx+', '+tx+');';
-  Blockly.Arduino.setups_['setup_gps_ss_begin'] = 'gps_ss.begin(4800);';
+  Blockly.Arduino.setups_['setup_gps_ss_begin'] = 'gps_ss.begin('+bt+');';
   return '';
 };
 
