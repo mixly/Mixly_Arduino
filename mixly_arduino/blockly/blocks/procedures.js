@@ -27,6 +27,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
     this.setMutator(new Blockly.Mutator(['procedures_mutatorarg']));
     this.setTooltip(Blockly.Msg.PROCEDURES_DEFNORETURN_TOOLTIP);
     this.arguments_ = [];
+	this.argumentstype_ = [];//新增
     this.setStatements_(true);
     this.statementConnection_ = null;
   },
@@ -90,6 +91,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
     for (var i = 0; i < this.arguments_.length; i++) {
       var parameter = document.createElement('arg');
       parameter.setAttribute('name', this.arguments_[i]);
+	  parameter.setAttribute('vartype', this.argumentstype_[i]);//新增
       container.appendChild(parameter);
     }
 
@@ -106,9 +108,11 @@ Blockly.Blocks['procedures_defnoreturn'] = {
    */
   domToMutation: function(xmlElement) {
     this.arguments_ = [];
+	this.argumentstype_ = [];//新增
     for (var i = 0, childNode; childNode = xmlElement.childNodes[i]; i++) {
       if (childNode.nodeName.toLowerCase() == 'arg') {
         this.arguments_.push(childNode.getAttribute('name'));
+		this.argumentstype_.push(childNode.getAttribute('vartype'));//新增
       }
     }
     this.updateParams_();
@@ -141,6 +145,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
       var paramBlock = Blockly.Block.obtain(workspace, 'procedures_mutatorarg');
       paramBlock.initSvg();
       paramBlock.setFieldValue(this.arguments_[i], 'NAME');
+	  paramBlock.setFieldValue(this.argumentstype_[i], 'TYPEVAR');//新增
       // Store the old location.
       paramBlock.oldLocation = i;
       connection.connect(paramBlock.previousConnection);
@@ -148,7 +153,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
     }
     // Initialize procedure's callers with blank IDs.
     Blockly.Procedures.mutateCallers(this.getFieldValue('NAME'),
-                                     this.workspace, this.arguments_, null);
+                                     this.workspace, this.arguments_, null,this.argumentstype_);//新增
     return containerBlock;
   },
   /**
@@ -160,16 +165,18 @@ Blockly.Blocks['procedures_defnoreturn'] = {
     // Parameter list.
     this.arguments_ = [];
     this.paramIds_ = [];
+	this.argumentstype_= [];//新增
     var paramBlock = containerBlock.getInputTargetBlock('STACK');
     while (paramBlock) {
       this.arguments_.push(paramBlock.getFieldValue('NAME'));
+	  this.argumentstype_.push(paramBlock.getFieldValue('TYPEVAR'));//新增
       this.paramIds_.push(paramBlock.id);
       paramBlock = paramBlock.nextConnection &&
           paramBlock.nextConnection.targetBlock();
     }
     this.updateParams_();
     Blockly.Procedures.mutateCallers(this.getFieldValue('NAME'),
-        this.workspace, this.arguments_, this.paramIds_);
+        this.workspace, this.arguments_, this.paramIds_,this.argumentstype_);//新增
 
     // Show/hide the statement input.
     var hasStatements = containerBlock.getFieldValue('STATEMENTS');
@@ -223,7 +230,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
    * @this Blockly.Block
    */
   getProcedureDef: function() {
-    return [this.getFieldValue('NAME'), this.arguments_, false];
+    return [this.getFieldValue('NAME'), this.arguments_,this.argumentstype_, false];//新增
   },
   /**
    * Add custom menu options to this block's context menu.
@@ -240,6 +247,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
     for (var i = 0; i < this.arguments_.length; i++) {
       var xmlArg = goog.dom.createDom('arg');
       xmlArg.setAttribute('name', this.arguments_[i]);
+	  xmlArg.setAttribute('type', this.argumentstype_[i]);//新增
       xmlMutation.appendChild(xmlArg);
     }
     var xmlBlock = goog.dom.createDom('block', null, xmlMutation);
@@ -255,6 +263,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
         option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
         var xmlField = goog.dom.createDom('field', null, name);
         xmlField.setAttribute('name', 'VAR');
+		xmlField.setAttribute('type', 'TYPEVAR');//新增
         var xmlBlock = goog.dom.createDom('block', null, xmlField);
         xmlBlock.setAttribute('type', 'variables_get');
         option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
@@ -285,7 +294,7 @@ Blockly.Blocks['procedures_defreturn'] = {
     this.appendValueInput('RETURN')
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.Msg.PROCEDURES_DEFRETURN_RETURN)
-		.appendTitle(new Blockly.FieldDropdown([[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float']]), "TYPE");
+		.appendTitle(new Blockly.FieldDropdown([[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_BOOLEAN,'boolean'],[Blockly.LANG_MATH_CHAR,'char']]), "TYPE");
     this.setMutator(new Blockly.Mutator(['procedures_mutatorarg']));
     this.setTooltip(Blockly.Msg.PROCEDURES_DEFRETURN_TOOLTIP);
     this.arguments_ = [];
@@ -308,7 +317,7 @@ Blockly.Blocks['procedures_defreturn'] = {
    * @this Blockly.Block
    */
   getProcedureDef: function() {
-    return [this.getFieldValue('NAME'), this.arguments_, true];
+    return [this.getFieldValue('NAME'), this.arguments_,this.argumentstype_, true];//新增
   },
   //getVars: Blockly.Blocks['procedures_defnoreturn'].getVars,
   //renameVar: Blockly.Blocks['procedures_defnoreturn'].renameVar,
@@ -343,7 +352,8 @@ Blockly.Blocks['procedures_mutatorarg'] = {
     this.setColour(Blockly.Blocks.procedures.HUE);
     this.appendDummyInput()
         .appendField(Blockly.Msg.PROCEDURES_MUTATORARG_TITLE)
-		.appendTitle(Blockly.LKL_NUMBER+' ')
+		//.appendTitle(Blockly.LKL_NUMBER+' ')
+		.appendTitle(new Blockly.FieldDropdown([[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_BOOLEAN,'boolean'],[Blockly.LANG_MATH_CHAR,'char']]), "TYPEVAR")
         .appendField(new Blockly.FieldTextInput('x', this.validator_), 'NAME');
     this.setPreviousStatement(true);
     this.setNextStatement(true);

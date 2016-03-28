@@ -22,11 +22,10 @@ Blockly.Arduino.procedures_defreturn = function() {
   var returnType = returnValue ? type : 'void';
   var args = [];
   for (var x = 0; x < this.arguments_.length; x++) {
-    args[x] = Blockly.Arduino.variableDB_.getName(this.arguments_[x],
+    args[x] = this.argumentstype_[x]+ ' '+ Blockly.Arduino.variableDB_.getName(this.arguments_[x],
         Blockly.Variables.NAME_TYPE);
   }
-  var mark=this.arguments_.length>0?"float ":"";
-  var code = returnType + ' ' + funcName + '(' +mark+ args.join(', float ') + ') {\n' +
+  var code = returnType + ' ' + funcName + '(' + args.join(', ') + ') {\n' +
       branch + returnValue + '}\n';
   code = Blockly.Arduino.scrub_(this, code);
   Blockly.Arduino.definitions_[funcName] = code;
