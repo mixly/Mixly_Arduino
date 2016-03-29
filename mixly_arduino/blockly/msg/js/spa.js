@@ -362,6 +362,7 @@ Blockly.Msg.TEXT_PROMPT_TYPE_NUMBER = "solicitar número con el mensaje";
 Blockly.Msg.TEXT_PROMPT_TYPE_TEXT = "solicitar texto con el mensaje";
 Blockly.Msg.TEXT_TEXT_HELPURL = "https://es.wikipedia.org/wiki/Cadena_de_caracteres";
 Blockly.Msg.TEXT_TEXT_TOOLTIP = "Una letra, palabra o línea de texto.";
+Blockly.Msg.TEXT_CHAR_TOOLTIP = "A character.";
 Blockly.Msg.TEXT_TRIM_HELPURL = "https://github.com/google/blockly/wiki/Text#trimming-removing-spaces";  // untranslated
 Blockly.Msg.TEXT_TRIM_OPERATOR_BOTH = "quitar espacios de ambos lados de";
 Blockly.Msg.TEXT_TRIM_OPERATOR_LEFT = "quitar espacios iniciales de";

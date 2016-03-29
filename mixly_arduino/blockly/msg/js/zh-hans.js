@@ -361,6 +361,7 @@ Blockly.Msg.TEXT_PROMPT_TYPE_NUMBER = "输入数字并显示提示消息";
 Blockly.Msg.TEXT_PROMPT_TYPE_TEXT = "输入数字并显示提示消息";
 Blockly.Msg.TEXT_TEXT_HELPURL = "https://zh.wikipedia.org/wiki/字符串";
 Blockly.Msg.TEXT_TEXT_TOOLTIP = "一个字母、单词或一行文本。";
+Blockly.Msg.TEXT_CHAR_TOOLTIP = "一个字符。";
 Blockly.Msg.TEXT_TRIM_HELPURL = "https://github.com/google/blockly/wiki/Text#trimming-removing-spaces";  // untranslated
 Blockly.Msg.TEXT_TRIM_OPERATOR_BOTH = "消除两侧空格";
 Blockly.Msg.TEXT_TRIM_OPERATOR_LEFT = "消除左侧空格";

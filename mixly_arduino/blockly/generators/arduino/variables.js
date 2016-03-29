@@ -23,9 +23,9 @@ Blockly.Arduino.variables_declare = function() {
   }
   var varName = Blockly.Arduino.variableDB_.getName(this.getTitleValue('VAR'),
       Blockly.Variables.NAME_TYPE);
-  //Blockly.Arduino.definitions_['var_declare'+varName] = dropdown_type+' '+varName+';\n';
+  Blockly.Arduino.definitions_['var_declare'+varName] = dropdown_type+' '+varName+';\n';
   Blockly.Arduino.setups_['setup_var'+varName] = varName + ' = ' + argument0 + ';';
-  Blockly.Arduino.variableTypes_[varName] = dropdown_type;//处理变量类型
+  //Blockly.Arduino.variableTypes_[varName] = dropdown_type;//处理变量类型
   return '';
 };
 

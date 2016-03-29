@@ -38,6 +38,36 @@ Blockly.Blocks['text'] = {
   }
 };
 
+Blockly.FieldTextInput.char_validator = function(text) {
+  if(text.length>1){
+    return text.charAt(0);
+  }
+  else{
+    return String(text);
+  }
+};
+
+Blockly.Blocks['text_char'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.appendDummyInput()
+        .appendField(this.newQuote_(true))
+        .appendField(new Blockly.FieldTextInput('',Blockly.FieldTextInput.char_validator), 'TEXT')
+        .appendField(this.newQuote_(false));
+    this.setOutput(true, Number);
+    this.setTooltip(Blockly.Msg.TEXT_CHAR_TOOLTIP);
+  },
+  newQuote_: function(open) {
+    if (open == true) {
+      var file = '../../media/quote2.png';
+    } else {
+      var file = '../../media/quote3.png';
+    }
+    return new Blockly.FieldImage(file, 7, 12, '"');
+  }
+};
+
+
 Blockly.Blocks['text_join'] = {
   init: function() {
     this.setColour(Blockly.Blocks.texts.HUE);

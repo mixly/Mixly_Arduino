@@ -11,6 +11,11 @@ Blockly.Arduino.text = function() {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino.text_char = function() {
+  var code = '\''+this.getFieldValue('TEXT')+'\'';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 Blockly.Arduino.text_join = function() {
   // Text value.
   var a = Blockly.Arduino.valueToCode(this, 'A', Blockly.Arduino.ORDER_ATOMIC) || 'String(\"\")'

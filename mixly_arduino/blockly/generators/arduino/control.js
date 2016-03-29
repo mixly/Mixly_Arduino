@@ -71,13 +71,13 @@ Blockly.Arduino.controls_for = function() {
   var down = step<0;
   if (argument0.match(/^-?\d+(\.\d+)?$/) &&
       argument1.match(/^-?\d+(\.\d+)?$/)) {
-    code = 'for (' + variable0 + ' = ' + argument0 + '; ' +
+    code = 'for (int ' + variable0 + ' = ' + argument0 + '; ' +
         variable0 + (down ? ' >= ' : ' <= ') + argument1 + '; ' +
         variable0 + ' = '  + variable0 + ' + (' +step+')) {\n' +
         branch + '}\n';
   }else {
       //涉及到变量
-      code = 'for (' + variable0 + ' = (' + argument0 + '); ' +
+      code = 'for (int ' + variable0 + ' = (' + argument0 + '); ' +
       variable0 + (down ? ' >= ' : ' <= ')+'(' + argument1 + '); ' +
       variable0 + ' = '  + variable0 + ' + (' +step+')) {\n' +
       branch + '}\n';
