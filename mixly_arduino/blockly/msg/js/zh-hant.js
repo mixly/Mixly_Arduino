@@ -556,7 +556,7 @@ Blockly.LKL_LCD_PRINT1='列印第1行';
 Blockly.LKL_LCD_PRINT2='列印第2行';
 Blockly.LKL_LCD_ROW='在第';
 Blockly.LKL_LCD_COLUMN='行第';
-Blockly.LKL_LCD_PRINT='列列印';
+Blockly.LKL_LCD_PRINT='列打印';
 Blockly.LKL_LCD_SETCOLOR='設定顏色';
 Blockly.LKL_LCD_STAT_ON='開';
 Blockly.LKL_LCD_STAT_OFF='關';
@@ -682,7 +682,7 @@ Blockly.LKL_LABPLUS_ROBOT_DISPLAY_ZEBRA='斑馬紋';
 Blockly.LKL_LABPLUS_ROBOT_DISPLAY_NOTHING='黑屏';
 Blockly.LKL_LABPLUS_ROBOT_LED_TOP='設定頂燈為';
 Blockly.LKL_LABPLUS_ROBOT_LED_SIDE='設定側燈顏色為';
-Blockly.LKL_LCD_ADDRESS="液晶顯示幕設備地址";
+Blockly.LKL_LCD_ADDRESS="液晶顯示屏 設備地址";
 var MSG = {
 catInOut:"輸入/輸出",
 catControl:"控制",
