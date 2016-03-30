@@ -366,6 +366,21 @@ Blockly.Arduino.group_lcd_print = function() {
   return code;
 };
 
+Blockly.Arduino.group_lcd_print2 = function() {
+  var str = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || 'String(\"\")';
+  var row = Blockly.Arduino.valueToCode(this, 'row', Blockly.Arduino.ORDER_ATOMIC) || '1';
+  var column = Blockly.Arduino.valueToCode(this, 'column', Blockly.Arduino.ORDER_ATOMIC) || '1';
+  var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27';
+  Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>';
+  Blockly.Arduino.definitions_['define_df_lcd'] = '#include <LiquidCrystal_I2C.h>';
+  Blockly.Arduino.definitions_['var_df_lcd'] = 'LiquidCrystal_I2C df_lcd('+device+',16,2);';
+  Blockly.Arduino.setups_['setup_df_lcd1'] = 'df_lcd.init();';
+  Blockly.Arduino.setups_['setup_df_lcd2'] = 'df_lcd.backlight();';
+  var code = 'df_lcd.setCursor('+column+'-1, '+row+'-1);\n'
+  code+='df_lcd.print('+str+');\n';
+  return code;
+};
+
 Blockly.Arduino.group_lcd_power = function() {
   var dropdown_stat = this.getTitleValue('STAT');
   var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27'

@@ -429,6 +429,31 @@ Blockly.Blocks.group_lcd_print = {
   }
 };
 
+Blockly.Blocks.group_lcd_print2 = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
+    this.appendValueInput('device')
+        .setCheck(Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle(Blockly.LKL_LCD_ADDRESS);
+	this.appendValueInput("row", Number)
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LKL_LCD_ROW);
+	this.appendValueInput("column", Number)
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LKL_LCD_COLUMN);
+    this.appendValueInput("TEXT", String)
+        .setCheck([String,Number])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LKL_LCD_PRINT);
+    this.setPreviousStatement(true, null);
+	this.setInputsInline(true);
+    this.setNextStatement(true, null);
+  }
+};
+
 Blockly.Blocks.group_lcd_power = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
