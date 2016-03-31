@@ -179,6 +179,8 @@ Blockly.Blocks['math_random_int'] = {
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendTitle(Blockly.LANG_MATH_RANDOM_INT_INPUT_TO);
+    this.appendDummyInput("")
+        .appendTitle('-1');
     this.setInputsInline(true);
     this.setTooltip(Blockly.Msg.MATH_RANDOM_INT_TOOLTIP);
   }
