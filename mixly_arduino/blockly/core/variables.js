@@ -114,6 +114,9 @@ Blockly.Variables.flyoutCategory = function(workspace) {
 	xmlList.push(block);
   }
   for (var i = 0; i < variableList.length; i++) {
+    if(i==0&&!(Blockly.Arduino.definitions_['var_declare'+'item'])){
+		continue;
+	}
     if (Blockly.Blocks['variables_set']) {
       // <block type="variables_set" gap="8">
       //   <field name="VAR">item</field>

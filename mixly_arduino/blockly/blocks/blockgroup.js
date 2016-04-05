@@ -340,6 +340,23 @@ Blockly.Blocks.servo_move = {
   }
 };
 
+Blockly.Blocks.servo_writeMicroseconds = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
+	this.appendValueInput("PIN", Number)
+        .appendTitle(Blockly.LKL_SERVO)
+        .appendTitle(Blockly.LKL_PIN)
+        .setCheck(Number);
+    this.appendValueInput("DEGREE", Number)
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendTitle('writeMicroseconds');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+	this.setInputsInline(true);
+  }
+};
+
 Blockly.Blocks.servo_read_degrees = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);

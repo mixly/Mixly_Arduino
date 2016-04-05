@@ -31,6 +31,7 @@
   <script type="text/javascript" src="../../generators/arduino/ethernet.js"></script>
   <script type="text/javascript" src="../../generators/arduino/variables.js"></script>
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/factory.js"></script>
   <script type="text/javascript" src="../../blocks/pins.js"></script>
   <script type="text/javascript" src="../../blocks/inout.js"></script>
   <script type="text/javascript" src="../../blocks/control.js"></script>
@@ -44,6 +45,7 @@
   <script type="text/javascript" src="../../blocks/ethernet.js"></script>
   <script type="text/javascript" src="../../blocks/variables.js"></script>
   <script type="text/javascript" src="../../blocks/procedures.js"></script>
+  <script type="text/javascript" src="../../blocks/factory.js"></script>
   <link rel="stylesheet" type="text/css" href="color.css" />
   <script>
 var sidecodeDisplay=false;
@@ -853,6 +855,16 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
           </shadow>
         </value>
 	  </block>
+	  <block type="servo_writeMicroseconds">
+		<value name="PIN">
+			<shadow type="pins_digital"></shadow>
+		</value>
+	    <value name="DEGREE">
+          <shadow type="math_number">
+            <field name="NUM">1500</field>
+          </shadow>
+        </value>
+	  </block>
 	  <block type="servo_read_degrees">
 		<value name="PIN">
 			<shadow type="pins_digital"></shadow>
@@ -1006,6 +1018,15 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
 	<sep></sep>
 	<category id="catVar" colour="330" custom="VARIABLE"></category>
     <category id="catFun" custom="PROCEDURE" colour="290"></category>
+	<category id="catFactory" name="Factory" colour="65">
+		<block type="factory_include"></block>
+		<block type="factory_function_noreturn"></block>
+		<block type="factory_function_return"></block>
+		<block type="factory_declare"></block>
+		<block type="factory_callMethod_noreturn"></block>
+		<block type="factory_callMethod_return"></block>
+		<block type="factory_block"></block>
+	</category>
   </xml>
   <script>
 	if(company_block!=null){

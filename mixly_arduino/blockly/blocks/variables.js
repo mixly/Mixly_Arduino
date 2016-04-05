@@ -49,7 +49,15 @@ Blockly.Blocks['variables_get'] = {
     if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
       this.setFieldValue(newName, 'VAR');
     }
-  }
+  }/*,
+  onchange: function() {
+	  var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'),Blockly.Variables.NAME_TYPE);
+	  if(Blockly.Arduino.definitions_['var_declare'+varName]){
+		  this.setWarningText(null);
+	  }else{
+		  this.setWarningText(Blockly.LKL_WARNING_NOT_DECLARE);
+	  }
+  }*/
 };
 
 Blockly.Blocks['variables_set'] = {
@@ -69,5 +77,13 @@ Blockly.Blocks['variables_set'] = {
     if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
       this.setFieldValue(newName, 'VAR');
     }
-  }
+  }/*,
+  onchange: function() {
+	  var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'),Blockly.Variables.NAME_TYPE);
+	  if(Blockly.Arduino.definitions_['var_declare'+varName]){
+		  this.setWarningText(null);
+	  }else{
+		  this.setWarningText(Blockly.LKL_WARNING_NOT_DECLARE);
+	  }
+  }*/
 };

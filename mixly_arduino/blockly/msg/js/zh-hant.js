@@ -879,3 +879,9 @@ Blockly.MIXLY_GPS_TIME_HOUR='時間-時';
 Blockly.MIXLY_GPS_TIME_MINUTE='時間-分';
 Blockly.MIXLY_GPS_TIME_SECOND='時間-秒';
 Blockly.MIXLY_GPS_TIME_CENTISECOND='時間-厘秒';
+
+//factory
+Blockly.MIXLY_PARAMS = '參數';
+
+//others
+Blockly.LKL_WARNING_NOT_DECLARE='該變量未聲明';

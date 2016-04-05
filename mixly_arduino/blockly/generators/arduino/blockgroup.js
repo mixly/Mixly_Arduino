@@ -312,6 +312,16 @@ Blockly.Arduino.servo_move = function() {
   return code;
 };
 
+Blockly.Arduino.servo_writeMicroseconds = function() {
+  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
+  var value_degree = Blockly.Arduino.valueToCode(this, 'DEGREE', Blockly.Arduino.ORDER_ATOMIC);  
+  Blockly.Arduino.definitions_['define_servo'] = '#include <Servo.h>\n';
+  Blockly.Arduino.definitions_['var_servo'+dropdown_pin] = 'Servo servo_'+dropdown_pin+';\n';
+  Blockly.Arduino.setups_['setup_servo_'+dropdown_pin] = 'servo_'+dropdown_pin+'.attach('+dropdown_pin+');\n'; 
+  var code = 'servo_'+dropdown_pin+'.writeMicroseconds('+value_degree+');\n';
+  return code;
+};
+
 Blockly.Arduino.servo_read_degrees = function() {
   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
   
