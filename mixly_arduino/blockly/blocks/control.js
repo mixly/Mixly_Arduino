@@ -393,7 +393,7 @@ Blockly.Blocks['controls_switch_case'] = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('IF0')
-        .setCheck([Number,Boolean,String])
+        .setCheck([Number,Boolean])
         .appendField('switch');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -430,7 +430,7 @@ Blockly.Blocks['controls_switch_case'] = {
     this.elseCount_ = parseInt(xmlElement.getAttribute('else'), 10);
     for (var i = 1; i <= this.elseifCount_; i++) {
       this.appendValueInput('IF' + i)
-          .setCheck([Number,Boolean,String])
+          .setCheck([Number,Boolean])
           .appendField('case');
       this.appendStatementInput('DO' + i)
           .appendField('');
@@ -487,7 +487,7 @@ Blockly.Blocks['controls_switch_case'] = {
         case 'controls_case':
           this.elseifCount_++;
           var ifInput = this.appendValueInput('IF' + this.elseifCount_)
-              .setCheck([Number,Boolean,String])
+              .setCheck([Number,Boolean])
               .appendField('case');
           var doInput = this.appendStatementInput('DO' + this.elseifCount_);
           doInput.appendField('');
