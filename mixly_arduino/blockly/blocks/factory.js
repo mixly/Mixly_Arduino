@@ -176,6 +176,31 @@ Blockly.Blocks.factory_declare={
   }
 }
 
+Blockly.Blocks.factory_static_method_noreturn={
+  init: function() {
+    this.setColour(Blockly.Blocks.factory.HUE);
+	this.appendDummyInput("")
+		.appendTitle(new Blockly.FieldTextInput('Test'), 'TYPE')
+		.appendTitle("::")
+		.appendTitle(new Blockly.FieldTextInput('staticMethod()'), 'NAME')
+        .appendTitle(";");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+}
+
+Blockly.Blocks.factory_static_method_return={
+  init: function() {
+    this.setColour(Blockly.Blocks.factory.HUE);
+	this.appendDummyInput("")
+		.appendTitle(new Blockly.FieldTextInput('Test'), 'TYPE')
+		.appendTitle("::")
+		.appendTitle(new Blockly.FieldTextInput('staticMethod()'), 'NAME')
+        .appendTitle(";");
+    this.setOutput(true);
+  }
+}
+
 Blockly.Blocks.factory_callMethod_noreturn = {
   init: function() {
     this.setColour(Blockly.Blocks.factory.HUE);

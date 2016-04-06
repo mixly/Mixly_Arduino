@@ -36,6 +36,20 @@ Blockly.Arduino.factory_declare = function() {
 	return '';
 };
 
+Blockly.Arduino.factory_static_method_noreturn = function() {
+	var TYPE = this.getTitleValue('TYPE');
+	var NAME = this.getTitleValue('NAME');
+	var code = TYPE+'::'+NAME+';\n';
+	return code;
+};
+
+Blockly.Arduino.factory_static_method_return = function() {
+	var TYPE = this.getTitleValue('TYPE');
+	var NAME = this.getTitleValue('NAME');
+	var code = TYPE+'::'+NAME;
+	return [code,Blockly.Arduino.ORDER_ATOMIC];
+};
+
 Blockly.Arduino.factory_callMethod_noreturn = function() {
 	var NAME = this.getTitleValue('NAME');
 	var METHOD = this.getTitleValue('METHOD');
@@ -60,5 +74,8 @@ Blockly.Arduino.factory_callMethod_return = function() {
 
 Blockly.Arduino.factory_block = function() {
 	var VALUE = this.getTitleValue('VALUE');
+	if(!(VALUE.charAt(VALUE.length-1)==";")){
+		VALUE=VALUE+';';
+	}
 	return VALUE+'\n';
 };
