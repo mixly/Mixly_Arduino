@@ -74,8 +74,8 @@ Blockly.Arduino.factory_callMethod_return = function() {
 
 Blockly.Arduino.factory_block = function() {
 	var VALUE = this.getTitleValue('VALUE');
-	if(!(VALUE.charAt(VALUE.length-1)==";")){
-		VALUE=VALUE+';';
-	}
+	//if(!(VALUE.charAt(VALUE.length-1)==";")){
+		//VALUE=VALUE+';';
+	//}
 	return VALUE+'\n';
 };
