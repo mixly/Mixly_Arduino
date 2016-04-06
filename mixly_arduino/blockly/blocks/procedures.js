@@ -230,7 +230,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
    * @this Blockly.Block
    */
   getProcedureDef: function() {
-    return [this.getFieldValue('NAME'), this.arguments_,this.argumentstype_, false];//新增
+    return [this.getFieldValue('NAME'), this.arguments_, false];
   },
   getVars: function() {
     return this.arguments_;
@@ -342,7 +342,7 @@ Blockly.Blocks['procedures_defreturn'] = {
    * @this Blockly.Block
    */
   getProcedureDef: function() {
-    return [this.getFieldValue('NAME'), this.arguments_,this.argumentstype_, true];//新增
+    return [this.getFieldValue('NAME'), this.arguments_, true];
   },
   getVars: Blockly.Blocks['procedures_defnoreturn'].getVars,
   renameVar: Blockly.Blocks['procedures_defnoreturn'].renameVar,

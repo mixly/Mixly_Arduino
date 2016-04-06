@@ -182,11 +182,20 @@ Blockly.Blocks.factory_static_method_noreturn={
 	this.appendDummyInput("")
 		.appendTitle(new Blockly.FieldTextInput('Test'), 'TYPE')
 		.appendTitle("::")
-		.appendTitle(new Blockly.FieldTextInput('staticMethod()'), 'NAME')
-        .appendTitle(";");
+		.appendTitle(new Blockly.FieldTextInput('staticMethod'), 'NAME');
+	this.itemCount_ = 1;
+	this.arguments_ = ['x'];//add
+	this.updateShape_();
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-  }
+	this.setMutator(new Blockly.Mutator(['factory_create_with_item']));
+  },
+  mutationToDom: Blockly.Blocks.factory_function_noreturn.mutationToDom,
+  domToMutation: Blockly.Blocks.factory_function_noreturn.domToMutation,
+  decompose: Blockly.Blocks.factory_function_noreturn.decompose,
+  compose: Blockly.Blocks.factory_function_noreturn.compose,
+  saveConnections: Blockly.Blocks.factory_function_noreturn.saveConnections,
+  updateShape_: Blockly.Blocks.factory_function_noreturn.updateShape_
 }
 
 Blockly.Blocks.factory_static_method_return={
@@ -195,10 +204,19 @@ Blockly.Blocks.factory_static_method_return={
 	this.appendDummyInput("")
 		.appendTitle(new Blockly.FieldTextInput('Test'), 'TYPE')
 		.appendTitle("::")
-		.appendTitle(new Blockly.FieldTextInput('staticMethod()'), 'NAME')
-        .appendTitle(";");
+		.appendTitle(new Blockly.FieldTextInput('staticMethod'), 'NAME');
+	this.itemCount_ = 1;
+	this.arguments_ = ['x'];//add
+	this.updateShape_();
     this.setOutput(true);
-  }
+	this.setMutator(new Blockly.Mutator(['factory_create_with_item']));
+  },
+  mutationToDom: Blockly.Blocks.factory_function_noreturn.mutationToDom,
+  domToMutation: Blockly.Blocks.factory_function_noreturn.domToMutation,
+  decompose: Blockly.Blocks.factory_function_noreturn.decompose,
+  compose: Blockly.Blocks.factory_function_noreturn.compose,
+  saveConnections: Blockly.Blocks.factory_function_noreturn.saveConnections,
+  updateShape_: Blockly.Blocks.factory_function_noreturn.updateShape_
 }
 
 Blockly.Blocks.factory_callMethod_noreturn = {

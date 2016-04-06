@@ -39,15 +39,23 @@ Blockly.Arduino.factory_declare = function() {
 Blockly.Arduino.factory_static_method_noreturn = function() {
 	var TYPE = this.getTitleValue('TYPE');
 	var NAME = this.getTitleValue('NAME');
-	var code = TYPE+'::'+NAME+';\n';
-	return code;
+	var code = new Array(this.itemCount_);
+	for (var n = 0; n < this.itemCount_; n++) {
+		code[n] = Blockly.Arduino.valueToCode(this, 'ADD' + n,
+			Blockly.Arduino.ORDER_NONE) || 'NULL';
+	}
+	return TYPE+'::'+NAME+'('+code.join(', ')+');\n';
 };
 
 Blockly.Arduino.factory_static_method_return = function() {
 	var TYPE = this.getTitleValue('TYPE');
 	var NAME = this.getTitleValue('NAME');
-	var code = TYPE+'::'+NAME;
-	return [code,Blockly.Arduino.ORDER_ATOMIC];
+	var code = new Array(this.itemCount_);
+	for (var n = 0; n < this.itemCount_; n++) {
+		code[n] = Blockly.Arduino.valueToCode(this, 'ADD' + n,
+			Blockly.Arduino.ORDER_NONE) || 'NULL';
+	}
+	return [TYPE+'::'+NAME+'('+code.join(', ')+')',Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.factory_callMethod_noreturn = function() {
