@@ -450,8 +450,8 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
           <shadow type="pins_digital"></shadow>
         </value>
 		<value name="STAT">
-          <block type="inout_highlow">
-          </block>
+          <shadow type="inout_highlow">
+          </shadow>
         </value>
 	  </block>
 	  <block type="inout_digital_read2">
@@ -542,10 +542,32 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
     </category>
     <category id="catMath"  colour="230">
 	  <block type="math_number"></block>
-	  <block type="math_arithmetic"></block>
+	  <block type="math_arithmetic">
+		<value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+		<value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+	  </block>
 	  <block type="math_trig"></block>
 	  <block type="math_to_int"></block>
-	  <block type="math_max_min"></block>
+	  <block type="math_max_min">
+		<value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+		<value name="B">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+	  </block>
 	  <block type="math_random_int">
 	    <value name="FROM">
           <shadow type="math_number">
@@ -602,21 +624,21 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
 	  </block>
 	  <block type="text_join">
 	    <value name="A">
-          <block type="text">
+          <shadow type="text">
             <field name="TEXT">Hello</field>
-          </block>
+          </shadow>
         </value>
 		<value name="B">
-          <block type="text">
+          <shadow type="text">
             <field name="TEXT">Mixly</field>
-          </block>
+          </shadow>
         </value>
 	  </block>
 	  <block type="text_to_number">
 	    <value name="VAR">
-          <block type="text">
+          <shadow type="text">
             <field name="TEXT">123</field>
-          </block>
+          </shadow>
         </value>
 	  </block>
 	  <block type="number_to_text">
@@ -730,14 +752,14 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
 	  <block type="store_sd_write">
 		<field name="FILE">file.txt</field>
 		<value name="DATA">
-			<block type="text">
+			<shadow type="text">
 				<field name="TEXT">hello world</field>
-			</block>
+			</shadow>
 		</value>
 		<value name="NEWLINE">
-			<block type="logic_boolean">
+			<shadow type="logic_boolean">
 				<field name="BOOL">TRUE</field>
-			</block>
+			</shadow>
 		</value>
 	  </block>
 	  <block type="store_eeprom_write_long">
@@ -874,11 +896,26 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
 		<value name="PIN">
 			<shadow type="pins_digital"></shadow>
 		</value>
+		<value name="FREQUENCY">
+          <shadow type="math_number">
+            <field name="NUM">1500</field>
+          </shadow>
+        </value>
 	  </block>
 	  <block type="controls_tone2">
 		<value name="PIN">
 			<shadow type="pins_digital"></shadow>
 		</value>
+		<value name="FREQUENCY">
+          <shadow type="math_number">
+            <field name="NUM">1500</field>
+          </shadow>
+        </value>
+		<value name="DURATION">
+          <shadow type="math_number">
+            <field name="NUM">1000</field>
+          </shadow>
+        </value>
 	  </block>
 	  <block type="controls_notone">
 		<value name="PIN">
@@ -1028,6 +1065,7 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
 		<block type="factory_static_method_noreturn"></block>
 		<block type="factory_static_method_return"></block>
 		<block type="factory_block"></block>
+		<block type="factory_block_return"></block>
 	</category>
   </xml>
   <script>

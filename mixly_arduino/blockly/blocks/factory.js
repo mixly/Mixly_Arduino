@@ -266,10 +266,17 @@ Blockly.Blocks.factory_block = {
   init: function() {
     this.setColour(Blockly.Blocks.factory.HUE);
 	this.appendDummyInput("")
-		//.appendTitle("{")
 		.appendTitle(new Blockly.FieldTextInput('Serial.println("hello");'), 'VALUE');
-        //.appendTitle("}");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+  }
+};
+
+Blockly.Blocks.factory_block_return = {
+  init: function() {
+    this.setColour(Blockly.Blocks.factory.HUE);
+	this.appendDummyInput("")
+		.appendTitle(new Blockly.FieldTextInput('test'), 'VALUE');
+    this.setOutput(true);
   }
 };

@@ -87,3 +87,8 @@ Blockly.Arduino.factory_block = function() {
 	//}
 	return VALUE+'\n';
 };
+
+Blockly.Arduino.factory_block_return = function() {
+	var VALUE = this.getTitleValue('VALUE');
+	return [VALUE,Blockly.Arduino.ORDER_ATOMIC];
+};
