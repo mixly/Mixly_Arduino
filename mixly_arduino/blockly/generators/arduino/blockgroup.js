@@ -141,6 +141,13 @@ Blockly.Arduino.ir_send_nec = function() {
 	var bits = Blockly.Arduino.valueToCode(this, 'bits',Blockly.Arduino.ORDER_ATOMIC) || '0';
 	var type = this.getFieldValue('TYPE');
 	var code='irsend.send'+type+'('+data+','+bits+');\n';
+	for (var name in Blockly.Arduino.definitions_) {
+		var def = Blockly.Arduino.definitions_[name];
+		if (def.match(/^IRrecv irrecv_/)) {
+			var tmp=def.substring(7,def.indexOf('('));
+			code=code+tmp+'.enableIRIn();\n';
+		}
+	}
 	return code;
 }
 
