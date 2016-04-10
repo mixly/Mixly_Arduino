@@ -167,15 +167,12 @@ Blockly.Blocks['logic_null'] = {
 Blockly.Blocks['logic_true_or_false'] = {
   init: function() {
     this.setColour(Blockly.Blocks.logic.HUE);
-    this.appendValueInput('A')
-        .setCheck([Number,Boolean]);
+    this.appendValueInput('A');
     this.appendValueInput('B')
-        .setCheck([Number,Boolean])
         .appendTitle(Blockly.Msg.LOGIC_TERNARY_IF_TRUE);
 	this.appendValueInput('C')
-        .setCheck([Number,Boolean])
         .appendTitle(Blockly.Msg.LOGIC_TERNARY_IF_FALSE);
-	this.setOutput(true, [Number,Boolean]);
+	this.setOutput(true);
     this.setInputsInline(true);
 	this.setTooltip(Blockly.LKL_TOOLTIP_LOGIT_TRUEORFALSE);
   }

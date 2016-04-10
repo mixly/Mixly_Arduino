@@ -373,6 +373,21 @@ Blockly.Blocks.servo_read_degrees = {
   }
 };
 
+
+var TONE_NOTES=[["NOTE_C3", "131"],["NOTE_D3", "147"],["NOTE_E3", "165"],["NOTE_F3", "175"],["NOTE_G3", "196"],["NOTE_A3", "220"],["NOTE_B3", "247"],
+           ["NOTE_C4", "262"],["NOTE_D4", "294"],["NOTE_E4", "330"],["NOTE_F4", "349"],["NOTE_G4", "392"],["NOTE_A4", "440"],["NOTE_B4", "494"],
+           ["NOTE_C5", "532"],["NOTE_D5", "587"],["NOTE_E5", "659"],["NOTE_F5", "698"],["NOTE_G5", "784"],["NOTE_A5", "880"],["NOTE_B5", "988"]];
+
+
+Blockly.Blocks.tone_notes = {
+   init: function() {
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
+    this.appendDummyInput("")
+        .appendTitle(new Blockly.FieldDropdown(TONE_NOTES), 'STAT');
+    this.setOutput(true, Number);
+  }
+};
+
 Blockly.Blocks.controls_tone={
 init:function(){
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
