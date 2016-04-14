@@ -87,7 +87,7 @@ Blockly.Arduino.ir_recv = function() {
    //Blockly.Arduino.definitions_['var_declare'+varName] = 'long '+varName+';\n';
    Blockly.Arduino.definitions_['var_ir_recv'+dropdown_pin] = 'IRrecv irrecv_'+dropdown_pin+'('+dropdown_pin+');\ndecode_results results_'+dropdown_pin+';\n';
    Blockly.Arduino.setups_['setup_ir_recv_'+dropdown_pin] = 'irrecv_'+dropdown_pin+'.enableIRIn();';
-   var code="irrecv_"+dropdown_pin+".enableIRIn();\n"+"if (irrecv_"+dropdown_pin+".decode(&results_"+dropdown_pin+")) {\n"
+   var code="if (irrecv_"+dropdown_pin+".decode(&results_"+dropdown_pin+")) {\n"
    code += '  '+variable+'=results_'+dropdown_pin+'.value;\n';
    code += '  String type="UNKNOWN";\n';
    ////////////////////////////////////////////////////////////////
@@ -161,7 +161,7 @@ Blockly.Arduino.ir_recv_raw = function() {
 	 Blockly.Arduino.setups_['setup_serial_Serial'+profile.default.serial] = 'Serial.begin('+profile.default.serial+');'; 
    }
    Blockly.Arduino.setups_['setup_ir_recv_'+dropdown_pin] = 'irrecv_'+dropdown_pin+'.enableIRIn();\n';
-   var code="irrecv_"+dropdown_pin+".enableIRIn();\n"+"if (irrecv_"+dropdown_pin+".decode(&results_"+dropdown_pin+")) {\n"
+   var code="if (irrecv_"+dropdown_pin+".decode(&results_"+dropdown_pin+")) {\n"
    code += '  '+'dumpRaw(&results_'+dropdown_pin+');\n';
    code +='  irrecv_'+dropdown_pin+'.resume();\n'
    code +='}\n';
