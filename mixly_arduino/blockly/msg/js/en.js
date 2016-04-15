@@ -433,6 +433,7 @@ Blockly.LKL_NOTONE_PIN='noTone PIN#';
 Blockly.LKL_END_ADDITION='';
 Blockly.LKL_BLOCKGROUP_CATEGORY='BlockGroup';
 Blockly.LKL_IR_RECEIVE='IRreceive PIN#';
+Blockly.LKL_IR_RECEIVE_ENABLE='enableIRIn PIN#';
 Blockly.LKL_IR_SEND_NEC1='IRsend'
 Blockly.LKL_IR_SEND_NEC2=' PIN#'
 Blockly.LKL_IR_RECEIVE_RAW='IRreceive(Print RAW Data) PIN#';

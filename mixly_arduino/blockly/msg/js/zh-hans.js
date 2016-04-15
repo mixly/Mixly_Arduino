@@ -432,6 +432,7 @@ Blockly.LKL_NOTONE_PIN='结束声音 管脚#';
 Blockly.LKL_END_ADDITION='中）';
 Blockly.LKL_BLOCKGROUP_CATEGORY='模块组';
 Blockly.LKL_IR_RECEIVE='红外接收 管脚#';
+Blockly.LKL_IR_RECEIVE_ENABLE='红外接收使能 管脚#';
 Blockly.LKL_IR_SEND_NEC1='红外发射（';
 Blockly.LKL_IR_SEND_NEC2='） 管脚#';
 Blockly.LKL_IR_RECEIVE_RAW='红外接收并打印数据（RAW） 管脚#';

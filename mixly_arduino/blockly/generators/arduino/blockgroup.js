@@ -134,6 +134,13 @@ Blockly.Arduino.ir_recv = function() {
    return code;
 };
 
+Blockly.Arduino.ir_recv_enable = function() {
+	Blockly.Arduino.definitions_['define_ir_recv'] = '#include <IRremote.h>';
+	var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
+	var code='irrecv_'+dropdown_pin+'.enableIRIn();\n';
+	return code;
+}
+
 Blockly.Arduino.ir_send_nec = function() {
 	Blockly.Arduino.definitions_['define_ir_recv'] = '#include <IRremote.h>\n';
 	Blockly.Arduino.definitions_['var_ir_send'] = 'IRsend irsend;\n';

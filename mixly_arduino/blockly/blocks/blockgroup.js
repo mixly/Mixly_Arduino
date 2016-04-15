@@ -147,6 +147,17 @@ Blockly.Blocks.ir_send_nec={
 	}
 }
 
+//红外接收使能
+Blockly.Blocks.ir_recv_enable = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blockgroup.HUE);
+	this.appendValueInput("PIN", Number)
+        .appendTitle(Blockly.LKL_IR_RECEIVE_ENABLE);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
 //红外接收模块(raw)
 Blockly.Blocks.ir_recv_raw = {
   init: function() {
