@@ -452,6 +452,28 @@ init:function(){
   }
 };
 
+Blockly.Blocks.group_lcd_init = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
+	this.appendValueInput('device')
+        .setCheck(Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+		.appendTitle(Blockly.LKL_SETUP)
+        .appendTitle(Blockly.LKL_LCD_ADDRESS);
+    this.appendValueInput("PIN1")
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LKL_STEPPER_PIN1);
+    this.appendValueInput("PIN2")
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LKL_STEPPER_PIN1)
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+	this.setInputsInline(true);
+  }
+};
+
 Blockly.Blocks.group_lcd_print = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);

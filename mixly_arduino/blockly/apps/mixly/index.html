@@ -923,6 +923,23 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
 			<shadow type="pins_digital"></shadow>
 		</value>
 	  </block>
+	  <block type="group_lcd_init">
+		<value name="device">
+          <shadow type="math_number">
+            <field name="NUM">0x27</field>
+          </shadow>
+        </value>
+		<value name="PIN1">
+			<shadow type="pins_digital">
+			 <field name="PIN">A1</field>
+			</shadow>
+		</value>
+		<value name="PIN2">
+			<shadow type="pins_digital">
+			 <field name="PIN">A2</field>
+			</shadow>
+		</value>
+	  </block>
 	  <block type="group_lcd_print">
 		<value name="device">
           <shadow type="math_number">
