@@ -929,6 +929,13 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
             <field name="NUM">0x27</field>
           </shadow>
         </value>
+	  </block>
+	  <block type="group_lcd_init2">
+		<value name="device">
+          <shadow type="math_number">
+            <field name="NUM">0x27</field>
+          </shadow>
+        </value>
 		<value name="PIN1">
 			<shadow type="pins_digital">
 			 <field name="PIN">A1</field>
@@ -941,11 +948,6 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
 		</value>
 	  </block>
 	  <block type="group_lcd_print">
-		<value name="device">
-          <shadow type="math_number">
-            <field name="NUM">0x27</field>
-          </shadow>
-        </value>
 		<value name="TEXT">
 			<block type="text">
 				<field name="TEXT"></field>
@@ -958,11 +960,6 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
 		</value>
 	  </block>
 	  <block type="group_lcd_print2">
-		<value name="device">
-          <shadow type="math_number">
-            <field name="NUM">0x27</field>
-          </shadow>
-        </value>
 		<value name="row">
 			<shadow type="math_number">
 				<field name="NUM">1</field>
@@ -979,13 +976,7 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
 			</block>
 		</value>
 	  </block>
-	  <block type="group_lcd_power">
-		<value name="device">
-          <shadow type="math_number">
-            <field name="NUM">0x27</field>
-          </shadow>
-        </value>
-	  </block>
+	  <block type="group_lcd_power"></block>
 	  <block type="group_stepper_setup">
 		<value name="PIN1">
 			<shadow type="pins_digital"><field name="PIN">1</field></shadow>

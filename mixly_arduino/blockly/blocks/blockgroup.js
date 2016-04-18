@@ -460,14 +460,28 @@ Blockly.Blocks.group_lcd_init = {
 		.setAlign(Blockly.ALIGN_RIGHT)
 		.appendTitle(Blockly.LKL_SETUP)
         .appendTitle(Blockly.LKL_LCD_ADDRESS);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+	this.setInputsInline(true);
+  }
+};
+
+Blockly.Blocks.group_lcd_init2 = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blockgroup.HUE2);
+	this.appendValueInput('device')
+        .setCheck(Number)
+		.setAlign(Blockly.ALIGN_RIGHT)
+		.appendTitle(Blockly.LKL_SETUP)
+        .appendTitle(Blockly.LKL_LCD_ADDRESS);
     this.appendValueInput("PIN1")
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.LKL_STEPPER_PIN1);
+        .appendField('sclPin#');
     this.appendValueInput("PIN2")
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.LKL_STEPPER_PIN1)
+        .appendField('sdaPin#')
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
@@ -477,13 +491,10 @@ Blockly.Blocks.group_lcd_init = {
 Blockly.Blocks.group_lcd_print = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
-	this.appendValueInput('device')
-        .setCheck(Number)
-		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.LKL_LCD_ADDRESS);
     this.appendValueInput("TEXT", String)
         .setCheck([String,Number])
         .setAlign(Blockly.ALIGN_RIGHT)
+		.appendTitle(Blockly.LKL_DF_LCD)
         .appendField(Blockly.LKL_LCD_PRINT1);
     this.appendValueInput("TEXT2", String)
         .setCheck([String,Number])
@@ -497,13 +508,10 @@ Blockly.Blocks.group_lcd_print = {
 Blockly.Blocks.group_lcd_print2 = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
-    this.appendValueInput('device')
-        .setCheck(Number)
-		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.LKL_LCD_ADDRESS);
 	this.appendValueInput("row", Number)
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
+		.appendTitle(Blockly.LKL_DF_LCD)
         .appendField(Blockly.LKL_LCD_ROW);
 	this.appendValueInput("column", Number)
         .setCheck(Number)
@@ -522,11 +530,8 @@ Blockly.Blocks.group_lcd_print2 = {
 Blockly.Blocks.group_lcd_power = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
-	this.appendValueInput('device')
-        .setCheck(Number)
-		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.LKL_LCD_ADDRESS);
     this.appendDummyInput()
+		.appendTitle(Blockly.LKL_DF_LCD)
         .appendField(new Blockly.FieldDropdown([[Blockly.LKL_LCD_STAT_ON, "display"], [Blockly.LKL_LCD_STAT_OFF, "noDisplay"], [Blockly.LKL_LCD_STAT_CURSOR, "cursor"], [Blockly.LKL_LCD_STAT_NOCURSOR, "noCursor"], [Blockly.LKL_LCD_STAT_BLINK, "blink"], [Blockly.LKL_LCD_STAT_NOBLINK, "noBlink"], [Blockly.LKL_LCD_STAT_CLEAR, "clear"]]), "STAT");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
