@@ -75,18 +75,18 @@ Blockly.Blocks['text_join'] = {
         .setCheck(String);
     this.appendValueInput('B')
         .setCheck(String)
-        .appendField(Blockly.LKL_TEXT_JOIN);
+        .appendField(Blockly.MIXLY_TEXT_JOIN);
     this.setInputsInline(true);
 	this.setOutput(true, String);
-	this.setTooltip(Blockly.LKL_TOOLTIP_TEXT_JOIN);
+	this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_JOIN);
   }
 };
 
 Blockly.Blocks['text_to_number'] = {
   init: function() {
 	var TO_INT_FLOAT =
-        [[Blockly.LKL_TO_INT, 'toInt'],
-        [Blockly.LKL_TO_FLOAT, 'toFloat']];
+        [[Blockly.MIXLY_TO_INT, 'toInt'],
+        [Blockly.MIXLY_TO_FLOAT, 'toFloat']];
     this.setColour(Blockly.Blocks.texts.HUE);
     this.appendValueInput('VAR')
         .setCheck(String)
@@ -96,8 +96,8 @@ Blockly.Blocks['text_to_number'] = {
     this.setTooltip(function() {
       var mode = thisBlock.getFieldValue('TOWHAT');
       var TOOLTIPS = {
-        'toInt': Blockly.LKL_TOOLTIP_TEXT_TOINT,
-        'toFloat': Blockly.LKL_TOOLTIP_TEXT_TOFLOAT
+        'toInt': Blockly.MIXLY_TOOLTIP_TEXT_TOINT,
+        'toFloat': Blockly.MIXLY_TOOLTIP_TEXT_TOFLOAT
       };
       return TOOLTIPS[mode];
     });
@@ -109,8 +109,8 @@ Blockly.Blocks['number_to_text'] = {
     this.setColour(Blockly.Blocks.texts.HUE);
     this.appendValueInput('VAR')
         .setCheck(Number)
-		.appendTitle(Blockly.LKL_TOSTRING);;
+		.appendTitle(Blockly.MIXLY_TOSTRING);;
 	this.setOutput(true, String);
-	this.setTooltip(Blockly.LKL_TOOLTIP_TEXT_TOTEXT);
+	this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_TOTEXT);
   }
 };

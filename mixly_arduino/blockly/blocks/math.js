@@ -134,8 +134,8 @@ Blockly.Blocks['math_to_int']= {
 Blockly.Blocks['math_max_min']= {
   init: function() {
 	var OPERATORS =
-        [[Blockly.LKL_MAX, 'max'],
-		 [Blockly.LKL_MIN, 'min'],
+        [[Blockly.MIXLY_MAX, 'max'],
+		 [Blockly.MIXLY_MIN, 'min'],
         ];
     this.setColour(Blockly.Blocks.math.HUE);
     this.appendValueInput('A')
@@ -156,8 +156,8 @@ Blockly.Blocks['math_max_min']= {
     this.setTooltip(function() {
       var mode = thisBlock.getFieldValue('OP');
       var TOOLTIPS = {
-        'max': Blockly.LKL_TOOLTIP_MATH_MAX,
-        'min': Blockly.LKL_TOOLTIP_MATH_MIN
+        'max': Blockly.MIXLY_TOOLTIP_MATH_MAX,
+        'min': Blockly.MIXLY_TOOLTIP_MATH_MIN
       };
       return TOOLTIPS[mode];
     });
@@ -210,16 +210,16 @@ Blockly.Blocks.base_map = {
   init: function() {
     this.setColour(Blockly.Blocks.math.HUE);
     this.appendValueInput("NUM", Number)
-        .appendTitle(Blockly.LKL_MAP)
+        .appendTitle(Blockly.MIXLY_MAP)
         .setCheck(Number);
     this.appendValueInput("fromLow", Number)
-        .appendTitle(Blockly.LKL_MAP_FROM)
+        .appendTitle(Blockly.MIXLY_MAP_FROM)
         .setCheck(Number);
     this.appendValueInput("fromHigh", Number)
         .appendTitle(",")
         .setCheck(Number);
     this.appendValueInput("toLow", Number)
-        .appendTitle(Blockly.LKL_MAP_TO)
+        .appendTitle(Blockly.MIXLY_MAP_TO)
         .setCheck(Number);
     this.appendValueInput("toHigh", Number)
         .appendTitle(",")
@@ -228,6 +228,6 @@ Blockly.Blocks.base_map = {
 	      .appendTitle("]");
     this.setInputsInline(true);
     this.setOutput(true);
-	this.setTooltip(Blockly.LKL_TOOLTIP_MATH_MAP);
+	this.setTooltip(Blockly.MIXLY_TOOLTIP_MATH_MAP);
   }
 };

@@ -14,14 +14,14 @@ Blockly.Blocks['variables_declare'] = {
   init: function() {
     this.setColour(Blockly.Blocks.variables.HUE);
     this.appendValueInput('VALUE', null)
-        .appendTitle(Blockly.LKL_DECLARE)
+        .appendTitle(Blockly.MIXLY_DECLARE)
         .appendTitle(new Blockly.FieldTextInput('item'), 'VAR')
-        .appendTitle(Blockly.LKL_AS)
+        .appendTitle(Blockly.MIXLY_AS)
      	.appendTitle(new Blockly.FieldDropdown([[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_BOOLEAN,'boolean'],[Blockly.LANG_MATH_CHAR,'char'],[Blockly.LANG_MATH_STRING,'String']]), "TYPE")
-	    .appendTitle(Blockly.LKL_VALUE);
+	    .appendTitle(Blockly.MIXLY_VALUE);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setTooltip(Blockly.LKL_TOOLTIP_VARIABLES_DECLARE);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_VARIABLES_DECLARE);
   },
   getVars: function() {
     return [this.getFieldValue('VAR')];
@@ -55,7 +55,7 @@ Blockly.Blocks['variables_get'] = {
 	  if(Blockly.Arduino.definitions_['var_declare'+varName]){
 		  this.setWarningText(null);
 	  }else{
-		  this.setWarningText(Blockly.LKL_WARNING_NOT_DECLARE);
+		  this.setWarningText(Blockly.MIXLY_WARNING_NOT_DECLARE);
 	  }
   }*/
 };
@@ -83,7 +83,7 @@ Blockly.Blocks['variables_set'] = {
 	  if(Blockly.Arduino.definitions_['var_declare'+varName]){
 		  this.setWarningText(null);
 	  }else{
-		  this.setWarningText(Blockly.LKL_WARNING_NOT_DECLARE);
+		  this.setWarningText(Blockly.MIXLY_WARNING_NOT_DECLARE);
 	  }
   }*/
 };

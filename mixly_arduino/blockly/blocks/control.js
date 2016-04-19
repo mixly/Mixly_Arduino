@@ -11,27 +11,27 @@ Blockly.Blocks.base_setup = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-	    .appendTitle(Blockly.LKL_SETUP);
+	    .appendTitle(Blockly.MIXLY_SETUP);
 	this.appendStatementInput('DO')
         .appendTitle('');
-	this.setTooltip(Blockly.LKL_TOOLTIP_CONTROL_SETUP);
+	this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_SETUP);
   }
 };
 
 Blockly.Blocks.base_delay = {
   init: function() {
 	var UNIT =
-        [[Blockly.LKL_DELAY_MS, 'delay'],
-		 [Blockly.LKL_DELAY_US, 'delayMicroseconds']];
+        [[Blockly.MIXLY_DELAY_MS, 'delay'],
+		 [Blockly.MIXLY_DELAY_US, 'delayMicroseconds']];
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput("DELAY_TIME", Number)
-        .appendTitle(Blockly.LKL_DELAY)
+        .appendTitle(Blockly.MIXLY_DELAY)
 		.appendTitle(new Blockly.FieldDropdown(UNIT), 'UNIT')
         .setCheck(Number);
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip(Blockly.LKL_TOOLTIP_CONTROL_DELAY);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_DELAY);
   }
 };
 
@@ -50,7 +50,7 @@ Blockly.Blocks.controls_for = {
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendTitle(Blockly.LANG_CONTROLS_FOR_INPUT_TO);
     this.appendDummyInput()
-        .appendTitle(Blockly.LKL_STEP)
+        .appendTitle(Blockly.MIXLY_STEP)
         .appendTitle(new Blockly.FieldTextInput('1',
         Blockly.FieldTextInput.math_number_validator), 'STEP');
     this.appendStatementInput('DO')
@@ -152,14 +152,14 @@ Blockly.Blocks.controls_flow_statements.OPERATORS =
 Blockly.Blocks.controls_millis = {
   init: function() {
 	var UNIT =
-        [[Blockly.LKL_DELAY_MS, 'millis'],
-		 [Blockly.LKL_DELAY_US, 'micros']];
+        [[Blockly.MIXLY_DELAY_MS, 'millis'],
+		 [Blockly.MIXLY_DELAY_US, 'micros']];
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-	    .appendTitle(Blockly.LKL_RUNTIME)
+	    .appendTitle(Blockly.MIXLY_RUNTIME)
         .appendTitle(new Blockly.FieldDropdown(UNIT), 'UNIT');
     this.setOutput(true, Number);
-	this.setTooltip(Blockly.LKL_TOOLTIP_CONTROL_MILLIS);
+	this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MILLIS);
   }
 };
 

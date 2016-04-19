@@ -16,7 +16,7 @@ Blockly.Blocks['gps_init'] = {
 		.appendTitle("TX#")
 		.setCheck(Number);
 	this.appendValueInput("CONTENT", Number)
-		.appendTitle(Blockly.LKL_SERIAL_BEGIN)
+		.appendTitle(Blockly.MIXLY_SERIAL_BEGIN)
 		.setCheck(Number);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

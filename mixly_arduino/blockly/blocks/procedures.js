@@ -377,7 +377,7 @@ Blockly.Blocks['procedures_mutatorarg'] = {
     this.setColour(Blockly.Blocks.procedures.HUE);
     this.appendDummyInput()
         .appendField(Blockly.Msg.PROCEDURES_MUTATORARG_TITLE)
-		//.appendTitle(Blockly.LKL_NUMBER+' ')
+		//.appendTitle(Blockly.MIXLY_NUMBER+' ')
 		.appendTitle(new Blockly.FieldDropdown([[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_BOOLEAN,'boolean'],[Blockly.LANG_MATH_CHAR,'char'],[Blockly.LANG_MATH_STRING,'String']]), "TYPEVAR")
         .appendField(new Blockly.FieldTextInput('x', this.validator_), 'NAME');
     this.setPreviousStatement(true);
