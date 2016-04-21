@@ -691,6 +691,7 @@ var MSG = {
   catText: "Text",
   catLists: "Lists",
   catLogic: "Logic",
+  catSerialPort:"SerialPort",
   catGroup: "Communicate",
   catStorage:"Storage",
   catSensor: "Sensor",

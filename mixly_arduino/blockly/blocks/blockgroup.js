@@ -7,6 +7,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks.blockgroup.HUE = 65;
 Blockly.Blocks.blockgroup.HUE1 = 40;
 Blockly.Blocks.blockgroup.HUE2 = 100;
+Blockly.Blocks.blockgroup.HUE3 = 140;
 
 Blockly.Blocks['serial_begin'] = {
   init: function() {
@@ -102,7 +103,7 @@ Blockly.Blocks['serial_parseInt_Float'] = {
 //红外接收模块
 Blockly.Blocks.ir_recv = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendValueInput("PIN", Number)
 		.appendTitle(new Blockly.FieldTextInput('ir_item'), 'VAR')
         .appendTitle(Blockly.MIXLY_IR_RECEIVE)
@@ -128,7 +129,7 @@ Blockly.Blocks.ir_recv = {
 Blockly.Blocks.ir_send_nec={
 	init:function(){
 		var TYPE = [['NEC', 'NEC'],['Whynter', 'Whynter'],['Sony', 'Sony'],['RC5', 'RC5'],['RC6', 'RC6'],['DISH', 'DISH'],['SharpRaw', 'SharpRaw'],['SAMSUNG', 'SAMSUNG']];
-		this.setColour(Blockly.Blocks.blockgroup.HUE);
+		this.setColour(Blockly.Blocks.blockgroup.HUE3);
 		this.appendDummyInput("")
 			.appendTitle(Blockly.MIXLY_IR_SEND_NEC1)
 			.appendField(new Blockly.FieldDropdown(TYPE), 'TYPE')
@@ -150,7 +151,7 @@ Blockly.Blocks.ir_send_nec={
 //红外接收使能
 Blockly.Blocks.ir_recv_enable = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendValueInput("PIN", Number)
         .appendTitle(Blockly.MIXLY_IR_RECEIVE_ENABLE);
     this.setPreviousStatement(true);
@@ -161,7 +162,7 @@ Blockly.Blocks.ir_recv_enable = {
 //红外接收模块(raw)
 Blockly.Blocks.ir_recv_raw = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendValueInput("PIN", Number)
         .appendTitle(Blockly.MIXLY_IR_RECEIVE_RAW)
         .setCheck(Number);
@@ -174,7 +175,7 @@ Blockly.Blocks.ir_recv_raw = {
 //红外发射模块(raw)
 Blockly.Blocks.ir_send_raw = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendDummyInput("")
 	    .appendTitle(Blockly.MIXLY_IR_SEND_RAW)
 	    .appendTitle(new Blockly.FieldDropdown([["3", "3"]]), "PIN");
@@ -197,7 +198,7 @@ Blockly.Blocks.ir_send_raw = {
 //I2C通信
 Blockly.Blocks.i2c_master_writer = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendValueInput('device')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
@@ -212,7 +213,7 @@ Blockly.Blocks.i2c_master_writer = {
 };
 Blockly.Blocks.i2c_master_reader = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendValueInput('device')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
@@ -227,7 +228,7 @@ Blockly.Blocks.i2c_master_reader = {
 };
 Blockly.Blocks.i2c_master_reader2 = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendDummyInput()
         .appendTitle(Blockly.MIXLY_I2C_MASTER_READ2);
 	this.setOutput(true, Number);
@@ -235,7 +236,7 @@ Blockly.Blocks.i2c_master_reader2 = {
 };
 Blockly.Blocks.i2c_available = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendDummyInput()
         .appendTitle(Blockly.MIXLY_I2C_AVAILABLE);
 	this.setOutput(true, Boolean);
@@ -245,7 +246,7 @@ Blockly.Blocks.i2c_available = {
 //SPI
 Blockly.Blocks.spi_transfer={
 	init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendValueInput('pin')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)

@@ -690,6 +690,7 @@ var MSG = {
   catText: "文本",
   catLists: "数组",
   catLogic: "逻辑",
+  catSerialPort:"串口",
   catGroup: "通信",
   catStorage:"存储",
   catSensor: "传感器",
