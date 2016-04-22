@@ -435,12 +435,12 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
     <tr>
       <td height="100%" width="75%" id="content_area"></td>
 	  <td style="display:none;height:100%;width:0.3%;background: #ddd;cursor: w-resize;" id="mid_td"></td>
-	  <td width="25%" style="background-color:#eee;display:none;" id="side_code_parent"><textarea id="side_code" style="padding:5px;border:0;background-color:#eee;height:100%;width:100%;resize:none;" wrap="off" readonly></textarea></td>
+	  <td width="25%" style="background-color:#eee;display:none;" id="side_code_parent"><textarea id="side_code" wrap="off" readonly></textarea></td>
 	  <div id="sidebar" class="right-top" onclick="sidecodeClick()"></div>
     </tr>
   </table>
   <div id="content_blocks" class="content"></div>
-  <textarea id="content_arduino" class="content" wrap="off" style="resize:none;"></textarea>
+  <textarea id="content_arduino" class="content" wrap="off" ></textarea>
   <textarea id="content_xml" class="content" wrap="off" readonly></textarea>
   <xml id="toolbox" style="display: none">
     <category name="" id="catInOut" colour="20">
