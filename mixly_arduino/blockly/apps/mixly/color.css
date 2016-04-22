@@ -43,6 +43,18 @@ td.taboff:hover {
     margin: 8px;
 }
 
+
+#side_code {
+    padding:5px;
+    border:0;
+    background-color:#eee;
+    height:100%;width:100%;
+    resize:none;
+}
+#content_arduino {
+	resize:none;
+}
+
 div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	width:24px;height:24px;
 	float:left;
