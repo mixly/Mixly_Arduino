@@ -425,6 +425,7 @@ Blockly.MIXLY_ANALOGREAD_PIN='LeeAnalógico PIN#';
 Blockly.MIXLY_SERIAL_PRINT='imprime';
 Blockly.MIXLY_SERIAL_PRINTLN='imprimeLinea';
 Blockly.MIXLY_SERIAL_PRINT_HEX='imprimeLinea(hex)';
+Blockly.MIXLY_SERIAL_FLUSH='flush';
 Blockly.MIXLY_STEP='paso';
 Blockly.MIXLY_TONE_PIN='Tono PIN#';
 Blockly.MIXLY_FREQUENCY='frecuencia';

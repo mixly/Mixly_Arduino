@@ -75,6 +75,24 @@ Blockly.Arduino.serial_parseInt_Float = function() {
    return [code,Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino.serial_flush = function() {
+  var serial_select = this.getTitleValue('serial_select');
+  if(Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial]){
+  }else{
+	Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial] = serial_select+'.begin('+profile.default.serial+');';
+  }
+  var code = serial_select+'.flush();\n';
+  return code;
+};
+
+Blockly.Arduino.serial_softserial = function() {
+  var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'TX',Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'RX',Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['define_SoftwareSerial'] = '#include <SoftwareSerial.h>';
+  Blockly.Arduino.definitions_['var_SoftwareSerial'] = 'SoftwareSerial mySerial('+dropdown_pin1+','+dropdown_pin2+');';
+  return '';
+};
+
 Blockly.Arduino.ir_recv = function() {
    var variable = Blockly.Arduino.variableDB_.getName(this.getTitleValue('VAR'), Blockly.Variables.NAME_TYPE);
    Blockly.Arduino.definitions_['var_declare'+variable] = 'long '+variable+';';

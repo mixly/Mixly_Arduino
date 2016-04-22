@@ -425,6 +425,7 @@ Blockly.MIXLY_ANALOGREAD_PIN='類比輸入管脚#';
 Blockly.MIXLY_SERIAL_PRINT='打印';
 Blockly.MIXLY_SERIAL_PRINTLN='打印（自動換行）';
 Blockly.MIXLY_SERIAL_PRINT_HEX='打印（16進制/自動換行）';
+Blockly.MIXLY_SERIAL_FLUSH='清空緩存區數據';
 Blockly.MIXLY_STEP='步長為';
 Blockly.MIXLY_TONE_PIN='播放聲音管脚#';
 Blockly.MIXLY_FREQUENCY='頻率';

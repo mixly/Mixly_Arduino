@@ -690,6 +690,15 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
 	  <block type="serial_available"></block>
 	  <block type="serial_readstr"></block>
 	  <block type="serial_parseInt_Float"></block>
+	  <block type="serial_flush"></block>
+	  <block type="serial_softserial">
+		<value name="TX">
+          <shadow type="pins_digital"></shadow>
+        </value>
+		<value name="RX">
+          <shadow type="pins_digital"></shadow>
+        </value>
+	  </block>
 	</category>
 	<category id="catGroup"  colour="140">
 	  <block type="ir_recv">

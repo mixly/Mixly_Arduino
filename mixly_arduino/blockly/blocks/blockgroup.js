@@ -86,7 +86,7 @@ Blockly.Blocks['serial_parseInt_Float'] = {
 	this.appendDummyInput()
 		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
         //.appendTitle(Blockly.MIXLY_SERIAL_READ)
-		.appendTitle(new Blockly.FieldDropdown([["read", "read"],["parseInt", "parseInt"], ["parseFloat", "parseFloat"]]), "STAT");
+		.appendTitle(new Blockly.FieldDropdown([["read", "read"],["peek", "peek"],["parseInt", "parseInt"], ["parseFloat", "parseFloat"]]), "STAT");
 	this.setOutput(true, Number);
 	var thisBlock = this;
     this.setTooltip(function() {
@@ -97,6 +97,36 @@ Blockly.Blocks['serial_parseInt_Float'] = {
       };
       return TOOLTIPS[op];
     });
+  }
+};
+
+Blockly.Blocks['serial_flush'] = {
+  init: function() {
+   this.setColour(Blockly.Blocks.blockgroup.HUE);
+    this.appendDummyInput()
+		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+        .appendTitle(Blockly.MIXLY_SERIAL_FLUSH);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  }
+};
+
+Blockly.Blocks['serial_softserial'] = {
+  init: function() {
+   this.setColour(Blockly.Blocks.blockgroup.HUE);
+   this.appendValueInput("TX", Number)
+       .appendTitle(Blockly.MIXLY_SETUP)
+	   .appendTitle("SoftwareSerial")
+	   .appendTitle("TX#")
+       .setCheck(Number)
+	   .setAlign(Blockly.ALIGN_RIGHT);
+    this.appendValueInput("RX", Number)
+	   .appendTitle("RX#")
+       .setCheck(Number)
+	   .setAlign(Blockly.ALIGN_RIGHT);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+	this.setInputsInline(true);
   }
 };
 
