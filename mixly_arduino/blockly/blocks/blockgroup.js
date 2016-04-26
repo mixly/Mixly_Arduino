@@ -592,6 +592,8 @@ Blockly.Blocks.group_stepper_setup={
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
         .appendTitle(Blockly.MIXLY_STEPPER_SET_SPEED);
+	this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 }
 
@@ -625,6 +627,8 @@ Blockly.Blocks.group_stepper_setup2={
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
         .appendTitle(Blockly.MIXLY_STEPPER_SET_SPEED);
+	this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 }
 
