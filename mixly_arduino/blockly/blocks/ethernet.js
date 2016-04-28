@@ -7,12 +7,12 @@ Blockly.Blocks['ethernet_init_begin'] = {
   init: function() {
     this.setColour(Blockly.Blocks.ethernet.HUE);
     this.appendDummyInput()
-        .appendTitle(Blockly.MIXLY_ETHERNET_BEGIN)
-        .appendTitle(new Blockly.FieldDropdown([[Blockly.MIXLY_ETHERNET, 'Ethernet'],[Blockly.MIXLY_ETHERNET2,'Ethernet2']]), "Ethernet");
+        .appendField(Blockly.MIXLY_ETHERNET_BEGIN)
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ETHERNET, 'Ethernet'],[Blockly.MIXLY_ETHERNET2,'Ethernet2']]), "Ethernet");
 	 this.appendValueInput('MAC')
 		.setCheck(Array)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_ETHERNET_MAC_ADDRESS);
+        .appendField(Blockly.MIXLY_ETHERNET_MAC_ADDRESS);
     this.setOutput(true, Number);
   }
 };
@@ -22,15 +22,15 @@ Blockly.Blocks['ethernet_mac_address']={
     this.setColour(Blockly.Blocks.ethernet.HUE);
     this.appendDummyInput()
 		.appendField(new Blockly.FieldTextInput('DE'), 'VAR1')
-        .appendTitle('-')
+        .appendField('-')
 		.appendField(new Blockly.FieldTextInput('AD'), 'VAR2')
-        .appendTitle('-')
+        .appendField('-')
 		.appendField(new Blockly.FieldTextInput('BE'), 'VAR3')
-        .appendTitle('-')
+        .appendField('-')
 		.appendField(new Blockly.FieldTextInput('EF'), 'VAR4')
-        .appendTitle('-')
+        .appendField('-')
 		.appendField(new Blockly.FieldTextInput('FE'), 'VAR5')
-        .appendTitle('-')
+        .appendField('-')
 		.appendField(new Blockly.FieldTextInput('ED'), 'VAR6');
     this.setOutput(true, Array);
   }
@@ -40,7 +40,7 @@ Blockly.Blocks['ethernet_init_local_ip'] = {
   init: function() {
     this.setColour(Blockly.Blocks.ethernet.HUE);
     this.appendDummyInput()
-        .appendTitle(Blockly.MIXLY_ETHERNET_LOCALIP);
+        .appendField(Blockly.MIXLY_ETHERNET_LOCALIP);
     this.setOutput(true, 'IPAddress');
   }
 };
@@ -49,14 +49,14 @@ Blockly.Blocks['ethernet_client_connect_server']={
   init: function() {
     this.setColour(Blockly.Blocks.ethernet.HUE);
     this.appendDummyInput()
-        .appendTitle(Blockly.MIXLY_ETHERNET_CLINET_CONNECT_SERVER)
+        .appendField(Blockly.MIXLY_ETHERNET_CLINET_CONNECT_SERVER)
 		.appendField(this.newQuote_(true))
         .appendField(new Blockly.FieldTextInput('mixly.org'), 'SERVER')
         .appendField(this.newQuote_(false));
 	this.appendValueInput('PORT')
 		.setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_ETHERNET_CLINET_PORT);
+        .appendField(Blockly.MIXLY_ETHERNET_CLINET_PORT);
     this.setOutput(true, Number);
 	this.setInputsInline(true);
   },
@@ -74,7 +74,7 @@ Blockly.Blocks['ethernet_client_stop'] = {
   init: function() {
     this.setColour(Blockly.Blocks.ethernet.HUE);
     this.appendDummyInput()
-        .appendTitle(Blockly.MIXLY_ETHERNET_CLINET_STOP);
+        .appendField(Blockly.MIXLY_ETHERNET_CLINET_STOP);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   }
@@ -84,7 +84,7 @@ Blockly.Blocks['ethernet_client_connected'] = {
   init: function() {
     this.setColour(Blockly.Blocks.ethernet.HUE);
     this.appendDummyInput()
-        .appendTitle(Blockly.MIXLY_ETHERNET_CLINET_CONNECTED);
+        .appendField(Blockly.MIXLY_ETHERNET_CLINET_CONNECTED);
     this.setOutput(true, Number);
   }
 };
@@ -93,7 +93,7 @@ Blockly.Blocks['ethernet_client_available'] = {
   init: function() {
     this.setColour(Blockly.Blocks.ethernet.HUE);
     this.appendDummyInput()
-        .appendTitle(Blockly.MIXLY_ETHERNET_CLINET_AVAILABLE);
+        .appendField(Blockly.MIXLY_ETHERNET_CLINET_AVAILABLE);
     this.setOutput(true, Number);
   }
 };
@@ -103,7 +103,7 @@ Blockly.Blocks['ethernet_client_print'] = {
     this.setColour(Blockly.Blocks.ethernet.HUE);
 	this.appendValueInput('TEXT')
 		.setCheck(String)
-        .appendTitle(Blockly.MIXLY_ETHERNET_CLINET_PRINT);
+        .appendField(Blockly.MIXLY_ETHERNET_CLINET_PRINT);
 	this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   }
@@ -114,7 +114,7 @@ Blockly.Blocks['ethernet_client_println'] = {
     this.setColour(Blockly.Blocks.ethernet.HUE);
 	this.appendValueInput('TEXT')
 		.setCheck(String)
-        .appendTitle(Blockly.MIXLY_ETHERNET_CLINET_PRINTLN);
+        .appendField(Blockly.MIXLY_ETHERNET_CLINET_PRINTLN);
 	this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   }
@@ -124,7 +124,7 @@ Blockly.Blocks['ethernet_client_read'] = {
   init: function() {
     this.setColour(Blockly.Blocks.ethernet.HUE);
     this.appendDummyInput()
-        .appendTitle(Blockly.MIXLY_ETHERNET_CLINET_READ);
+        .appendField(Blockly.MIXLY_ETHERNET_CLINET_READ);
     this.setOutput(true, Number);
   }
 };
@@ -133,14 +133,14 @@ Blockly.Blocks['ethernet_client_get_request']={
   init: function() {
     this.setColour(Blockly.Blocks.ethernet.HUE);
 	this.appendDummyInput()
-        .appendTitle(Blockly.MIXLY_ETHERNET_CLINET_GET_REQUEST);
+        .appendField(Blockly.MIXLY_ETHERNET_CLINET_GET_REQUEST);
     this.appendDummyInput()
-        .appendTitle(Blockly.MIXLY_ETHERNET_CLINET_URL)
+        .appendField(Blockly.MIXLY_ETHERNET_CLINET_URL)
 		.appendField(this.newQuote_(true))
         .appendField(new Blockly.FieldTextInput(''), 'URL')
         .appendField(this.newQuote_(false));
 	this.appendDummyInput()
-        .appendTitle(Blockly.MIXLY_ETHERNET_CLINET_SERVER)
+        .appendField(Blockly.MIXLY_ETHERNET_CLINET_SERVER)
 		.appendField(this.newQuote_(true))
         .appendField(new Blockly.FieldTextInput(''), 'SERVER')
         .appendField(this.newQuote_(false));

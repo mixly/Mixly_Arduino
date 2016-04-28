@@ -114,7 +114,7 @@ Blockly.Blocks['math_to_int']= {
     this.setColour(Blockly.Blocks.math.HUE);
     this.appendValueInput('A')
         .setCheck(Number)
-        .appendTitle(new Blockly.FieldDropdown(OPERATORS), 'OP');
+        .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
     this.setOutput(true, Number);
 	var thisBlock = this;
     this.setTooltip(function() {
@@ -141,15 +141,15 @@ Blockly.Blocks['math_max_min']= {
     this.appendValueInput('A')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(new Blockly.FieldDropdown(OPERATORS), 'OP')
-		.appendTitle('(');
+        .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP')
+		.appendField('(');
 	this.appendValueInput('B')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(',');
+        .appendField(',');
 	this.appendDummyInput('')
 		.setAlign(Blockly.ALIGN_RIGHT)
-		.appendTitle(')');
+		.appendField(')');
 	this.setInputsInline(true);
     this.setOutput(true, Number);
 	var thisBlock = this;
@@ -174,11 +174,11 @@ Blockly.Blocks['math_random_int'] = {
     this.setOutput(true, Number);
     this.appendValueInput('FROM')
         .setCheck(Number)
-        .appendTitle(Blockly.LANG_MATH_RANDOM_INT_INPUT_FROM);
+        .appendField(Blockly.LANG_MATH_RANDOM_INT_INPUT_FROM);
     this.appendValueInput('TO')
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.LANG_MATH_RANDOM_INT_INPUT_TO);
+        .appendField(Blockly.LANG_MATH_RANDOM_INT_INPUT_TO);
     this.setInputsInline(true);
     this.setTooltip(Blockly.Msg.MATH_RANDOM_INT_TOOLTIP);
   }
@@ -194,13 +194,13 @@ Blockly.Blocks['math_constrain'] = {
     this.setOutput(true, Number);
     this.appendValueInput('VALUE')
         .setCheck(Number)
-        .appendTitle(Blockly.LANG_MATH_CONSTRAIN_INPUT_CONSTRAIN);
+        .appendField(Blockly.LANG_MATH_CONSTRAIN_INPUT_CONSTRAIN);
     this.appendValueInput('LOW')
         .setCheck(Number)
-        .appendTitle(Blockly.LANG_MATH_CONSTRAIN_INPUT_LOW);
+        .appendField(Blockly.LANG_MATH_CONSTRAIN_INPUT_LOW);
     this.appendValueInput('HIGH')
         .setCheck(Number)
-        .appendTitle(Blockly.LANG_MATH_CONSTRAIN_INPUT_HIGH);
+        .appendField(Blockly.LANG_MATH_CONSTRAIN_INPUT_HIGH);
     this.setInputsInline(true);
     this.setTooltip(Blockly.Msg.MATH_CONSTRAIN_TOOLTIP);
   }
@@ -210,22 +210,22 @@ Blockly.Blocks.base_map = {
   init: function() {
     this.setColour(Blockly.Blocks.math.HUE);
     this.appendValueInput("NUM", Number)
-        .appendTitle(Blockly.MIXLY_MAP)
+        .appendField(Blockly.MIXLY_MAP)
         .setCheck(Number);
     this.appendValueInput("fromLow", Number)
-        .appendTitle(Blockly.MIXLY_MAP_FROM)
+        .appendField(Blockly.MIXLY_MAP_FROM)
         .setCheck(Number);
     this.appendValueInput("fromHigh", Number)
-        .appendTitle(",")
+        .appendField(",")
         .setCheck(Number);
     this.appendValueInput("toLow", Number)
-        .appendTitle(Blockly.MIXLY_MAP_TO)
+        .appendField(Blockly.MIXLY_MAP_TO)
         .setCheck(Number);
     this.appendValueInput("toHigh", Number)
-        .appendTitle(",")
+        .appendField(",")
         .setCheck(Number);
     this.appendDummyInput("")
-	      .appendTitle("]");
+	      .appendField("]");
     this.setInputsInline(true);
     this.setOutput(true);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_MATH_MAP);

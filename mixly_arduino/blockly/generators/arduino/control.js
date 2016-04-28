@@ -56,12 +56,12 @@ Blockly.Arduino.controls_switch_case = function() {
 Blockly.Arduino.controls_for = function() {
   // For loop.
   var variable0 = Blockly.Arduino.variableDB_.getName(
-      this.getTitleValue('VAR'), Blockly.Variables.NAME_TYPE);
+      this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
   var argument0 = Blockly.Arduino.valueToCode(this, 'FROM',
       Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
   var argument1 = Blockly.Arduino.valueToCode(this, 'TO',
       Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-  var step =  window.parseFloat(this.getTitleValue('STEP'));
+  var step =  window.parseFloat(this.getFieldValue('STEP'));
   var branch = Blockly.Arduino.statementToCode(this, 'DO');
   if (Blockly.Arduino.INFINITE_LOOP_TRAP) {
     branch = Blockly.Arduino.INFINITE_LOOP_TRAP.replace(/%1/g,
@@ -94,7 +94,7 @@ Blockly.Arduino.controls_whileUntil = function() {
     branch = Blockly.Arduino.INFINITE_LOOP_TRAP.replace(/%1/g,
         '\'' + this.id + '\'') + branch;
   }
-  if (this.getTitleValue('MODE') == 'UNTIL') {
+  if (this.getFieldValue('MODE') == 'UNTIL') {
     if (!argument0.match(/^\w+$/)) {
       argument0 = '(' + argument0 + ')';
     }
@@ -105,7 +105,7 @@ Blockly.Arduino.controls_whileUntil = function() {
 
 Blockly.Arduino.controls_flow_statements = function() {
   // Flow statements: continue, break.
-  switch (this.getTitleValue('FLOW')) {
+  switch (this.getFieldValue('FLOW')) {
     case 'BREAK':
       return 'break;\n';
     case 'CONTINUE':
@@ -116,13 +116,13 @@ Blockly.Arduino.controls_flow_statements = function() {
 
 Blockly.Arduino.base_delay = function() {
   var delay_time = Blockly.Arduino.valueToCode(this, 'DELAY_TIME', Blockly.Arduino.ORDER_ATOMIC) || '1000'
-  var unit = this.getTitleValue('UNIT');
+  var unit = this.getFieldValue('UNIT');
   var code = unit+'(' + delay_time + ');\n';
   return code;
 };
 
 Blockly.Arduino.controls_millis = function(){
-  var unit = this.getTitleValue('UNIT');
+  var unit = this.getFieldValue('UNIT');
   var code=unit+"()";
   return [code,Blockly.Arduino.ORDER_ATOMIC];
 };

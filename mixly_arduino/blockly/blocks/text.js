@@ -109,7 +109,7 @@ Blockly.Blocks['number_to_text'] = {
     this.setColour(Blockly.Blocks.texts.HUE);
     this.appendValueInput('VAR')
         .setCheck(Number)
-		.appendTitle(Blockly.MIXLY_TOSTRING);;
+		.appendField(Blockly.MIXLY_TOSTRING);;
 	this.setOutput(true, String);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_TOTEXT);
   }

@@ -10,18 +10,18 @@ Blockly.Blocks.store_sd_write = {
   init: function() {
     this.setColour(Blockly.Blocks.storage.HUE);
 	this.appendDummyInput()
-		.appendTitle(Blockly.MIXLY_WRITE_SD_FILE)
+		.appendField(Blockly.MIXLY_WRITE_SD_FILE)
         .appendField(this.newQuote_(true))
         .appendField(new Blockly.FieldTextInput(''), 'FILE')
         .appendField(this.newQuote_(false));
     this.appendValueInput("DATA", String)
         .setCheck([String,Number])
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_SD_DATA);
+        .appendField(Blockly.MIXLY_SD_DATA);
     this.appendValueInput("NEWLINE", Boolean)
         .setCheck(Boolean)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_SD_NEWLINE);
+        .appendField(Blockly.MIXLY_SD_NEWLINE);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   },
@@ -40,11 +40,11 @@ Blockly.Blocks.store_eeprom_write_long = {
     this.setColour(Blockly.Blocks.storage.HUE);
     this.appendValueInput("ADDRESS", Number)
 		.setCheck(Number)
-        .appendTitle(Blockly.MIXLY_EEPROM_WRITE_LONG);
+        .appendField(Blockly.MIXLY_EEPROM_WRITE_LONG);
     this.appendValueInput("DATA", Number)
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_DATA);
+        .appendField(Blockly.MIXLY_DATA);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   }
@@ -55,7 +55,7 @@ Blockly.Blocks.store_eeprom_read_long = {
     this.setColour(Blockly.Blocks.storage.HUE);
     this.appendValueInput("ADDRESS", Number)
 		.setCheck(Number)
-        .appendTitle(Blockly.MIXLY_EEPROM_READ_LONG);
+        .appendField(Blockly.MIXLY_EEPROM_READ_LONG);
     this.setOutput(true, Number);
   }
 };

@@ -7,7 +7,7 @@ goog.require('Blockly.Arduino');
 
 Blockly.Arduino.math_number = function() {
   // Numeric value.
-  var code = (this.getTitleValue('NUM'));
+  var code = (this.getFieldValue('NUM'));
   // -4.abs() returns -4 in Dart due to strange order of operation choices.
   // -4 is actually an operator and a number.  Reflect this in the order.
   var order = code < 0 ?
@@ -17,7 +17,7 @@ Blockly.Arduino.math_number = function() {
 
 Blockly.Arduino.math_arithmetic = function() {
   // Basic arithmetic operators, and power.
-  var mode = this.getTitleValue('OP');
+  var mode = this.getFieldValue('OP');
   var tuple = Blockly.Arduino.math_arithmetic.OPERATORS[mode];
   var operator = tuple[0];
   var order = tuple[1];
@@ -48,7 +48,7 @@ Blockly.Arduino.math_arithmetic.OPERATORS = {
 
 Blockly.Arduino.math_single = function() {
   // Math operators with single operand.
-  var operator = this.getTitleValue('OP');
+  var operator = this.getFieldValue('OP');
   var code;
   var arg;
   if (operator == 'NEG') {
@@ -135,7 +135,7 @@ Blockly.Arduino.math_trig = Blockly.Arduino.math_single;
 
 Blockly.Arduino.math_to_int = function() {
   var argument0 = Blockly.Arduino.valueToCode(this, 'A',Blockly.Arduino.ORDER_NONE) || '0';
-  var operator = this.getTitleValue('OP');
+  var operator = this.getFieldValue('OP');
   var code=operator+'('+argument0+')';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
@@ -143,7 +143,7 @@ Blockly.Arduino.math_to_int = function() {
 Blockly.Arduino.math_max_min = function() {
   var a = Blockly.Arduino.valueToCode(this, 'A',Blockly.Arduino.ORDER_NONE) || '0';
   var b = Blockly.Arduino.valueToCode(this, 'B',Blockly.Arduino.ORDER_NONE) || '0';
-  var operator = this.getTitleValue('OP');
+  var operator = this.getFieldValue('OP');
   var code=operator+'('+a+', '+b+')';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

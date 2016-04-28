@@ -5,14 +5,14 @@ goog.provide('Blockly.Arduino.blockgroup');
 goog.require('Blockly.Arduino');
 
 Blockly.Arduino.serial_begin = function() {
-  var serial_select = this.getTitleValue('serial_select');
+  var serial_select = this.getFieldValue('serial_select');
   var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || profile.default.serial;
   Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial] = serial_select+'.begin('+content+');';
   return '';
 };
 
 Blockly.Arduino.serial_print = function() {
-  var serial_select = this.getTitleValue('serial_select');
+  var serial_select = this.getFieldValue('serial_select');
   var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '\"\"'
   if(Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial]){
   }else{
@@ -23,7 +23,7 @@ Blockly.Arduino.serial_print = function() {
 };
 
 Blockly.Arduino.serial_println = function() {
-  var serial_select = this.getTitleValue('serial_select');
+  var serial_select = this.getFieldValue('serial_select');
   var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '\"\"'
   if(Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial]){
   }else{
@@ -34,7 +34,7 @@ Blockly.Arduino.serial_println = function() {
 };
 
 Blockly.Arduino.serial_print_hex = function() {
-  var serial_select = this.getTitleValue('serial_select');
+  var serial_select = this.getFieldValue('serial_select');
   var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0'
   if(Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial]){
   }else{
@@ -45,7 +45,7 @@ Blockly.Arduino.serial_print_hex = function() {
 };
 
 Blockly.Arduino.serial_available = function() {
-   var serial_select = this.getTitleValue('serial_select');
+   var serial_select = this.getFieldValue('serial_select');
    if(Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial]){
    }else{
 	 Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial] = serial_select+'.begin('+profile.default.serial+');';
@@ -55,7 +55,7 @@ Blockly.Arduino.serial_available = function() {
 };
 
 Blockly.Arduino.serial_readstr = function() {
-   var serial_select = this.getTitleValue('serial_select');
+   var serial_select = this.getFieldValue('serial_select');
    if(Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial]){
    }else{
 	 Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial] = serial_select+'.begin('+profile.default.serial+');';
@@ -65,18 +65,18 @@ Blockly.Arduino.serial_readstr = function() {
 };
 
 Blockly.Arduino.serial_parseInt_Float = function() {
-   var serial_select = this.getTitleValue('serial_select');
+   var serial_select = this.getFieldValue('serial_select');
    if(Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial]){
    }else{
 	 Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial] = serial_select+'.begin('+profile.default.serial+');';
    }
-   var dropdown_stat = this.getTitleValue('STAT');
+   var dropdown_stat = this.getFieldValue('STAT');
    var code =serial_select+'.'+dropdown_stat+'()';
    return [code,Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.serial_flush = function() {
-  var serial_select = this.getTitleValue('serial_select');
+  var serial_select = this.getFieldValue('serial_select');
   if(Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial]){
   }else{
 	Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial] = serial_select+'.begin('+profile.default.serial+');';
@@ -94,7 +94,7 @@ Blockly.Arduino.serial_softserial = function() {
 };
 
 Blockly.Arduino.ir_recv = function() {
-   var variable = Blockly.Arduino.variableDB_.getName(this.getTitleValue('VAR'), Blockly.Variables.NAME_TYPE);
+   var variable = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
    Blockly.Arduino.definitions_['var_declare'+variable] = 'long '+variable+';';
    var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
    var branch = Blockly.Arduino.statementToCode(this, 'DO');
@@ -212,7 +212,7 @@ Blockly.Arduino.ir_send_raw = function() {
 	Blockly.Arduino.definitions_['var_ir_send'] = 'IRsend irsend;\n';
 	var length = Blockly.Arduino.valueToCode(this, 'length',Blockly.Arduino.ORDER_ATOMIC) || '0';
 	var freq = Blockly.Arduino.valueToCode(this, 'freq',Blockly.Arduino.ORDER_ATOMIC) || '0';
-	var text = this.getTitleValue('TEXT');
+	var text = this.getFieldValue('TEXT');
 	var code='unsigned int buf_raw['+length+']={'+text+'};\n'
 	code=code+'irsend.sendRaw(buf_raw,'+length+','+freq+');\n';
 	return code;
@@ -262,8 +262,8 @@ Blockly.Arduino.spi_transfer = function() {
 };
 
 Blockly.Arduino.chaoshengbo = function() {
-	var dropdown_pin1 = this.getTitleValue('PIN1');
-	var dropdown_pin2 = this.getTitleValue('PIN2');
+	var dropdown_pin1 = this.getFieldValue('PIN1');
+	var dropdown_pin2 = this.getFieldValue('PIN2');
 	Blockly.Arduino.setups_['setup_output_'+dropdown_pin1] = 'pinMode('+dropdown_pin1+', OUTPUT);';
 	Blockly.Arduino.setups_['setup_output_'+dropdown_pin2] = 'pinMode('+dropdown_pin2+', INPUT);';
 	var funcName='checkdistance_'+dropdown_pin1+'_'+dropdown_pin2;
@@ -297,7 +297,7 @@ Blockly.Arduino.chaoshengbo2 = function() {
 
 Blockly.Arduino.dht11 = function() {
 	var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
-	var what = this.getTitleValue('WHAT');
+	var what = this.getFieldValue('WHAT');
 	Blockly.Arduino.definitions_['define_dht11'] = '#include <dht11.h>';
 	Blockly.Arduino.definitions_['var_dht11'+dropdown_pin] = 'dht11 myDHT_'+dropdown_pin+';';
 	var funcName='dht_'+dropdown_pin+'_get'+what;
@@ -312,7 +312,7 @@ Blockly.Arduino.dht11 = function() {
 
 Blockly.Arduino.ds18b20 = function() {
 	var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
-	var unit = this.getTitleValue('UNIT');
+	var unit = this.getFieldValue('UNIT');
 	Blockly.Arduino.definitions_['define_OneWire'] = '#include <OneWire.h>';
 	Blockly.Arduino.definitions_['define_DallasTemperature'] = '#include <DallasTemperature.h>';
 	Blockly.Arduino.definitions_['var_OneWire_oneWire'] = 'OneWire oneWire'+'('+dropdown_pin+');';
@@ -367,7 +367,7 @@ Blockly.Arduino.servo_read_degrees = function() {
 };
 
 Blockly.Arduino.tone_notes = function() {
-  var code = this.getTitleValue('STAT');
+  var code = this.getFieldValue('STAT');
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -440,7 +440,7 @@ Blockly.Arduino.group_lcd_print2 = function() {
 };
 
 Blockly.Arduino.group_lcd_power = function() {
-  var dropdown_stat = this.getTitleValue('STAT');
+  var dropdown_stat = this.getFieldValue('STAT');
   Blockly.Arduino.setups_['setup_df_lcd1'] = 'df_lcd.init();';
   Blockly.Arduino.setups_['setup_df_lcd2'] = 'df_lcd.backlight();';
   var code = 'df_lcd.'+dropdown_stat+'();\n'
@@ -448,7 +448,7 @@ Blockly.Arduino.group_lcd_power = function() {
 };
 
 Blockly.Arduino.group_stepper_setup = function() {
-  var varName = Blockly.Arduino.variableDB_.getName(this.getTitleValue('VAR'),Blockly.Variables.NAME_TYPE);
+  var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'),Blockly.Variables.NAME_TYPE);
   var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'PIN1',Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'PIN2',Blockly.Arduino.ORDER_ATOMIC);
   var steps = Blockly.Arduino.valueToCode(this, 'steps',Blockly.Arduino.ORDER_ATOMIC);
@@ -460,7 +460,7 @@ Blockly.Arduino.group_stepper_setup = function() {
 };
 
 Blockly.Arduino.group_stepper_setup2 = function() {
-  var varName = Blockly.Arduino.variableDB_.getName(this.getTitleValue('VAR'),Blockly.Variables.NAME_TYPE);
+  var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'),Blockly.Variables.NAME_TYPE);
   var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'PIN1',Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'PIN2',Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_pin3 = Blockly.Arduino.valueToCode(this, 'PIN3',Blockly.Arduino.ORDER_ATOMIC);
@@ -474,7 +474,7 @@ Blockly.Arduino.group_stepper_setup2 = function() {
 };
 
 Blockly.Arduino.group_stepper_move= function(){
-  var varName = Blockly.Arduino.variableDB_.getName(this.getTitleValue('VAR'),Blockly.Variables.NAME_TYPE);
+  var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'),Blockly.Variables.NAME_TYPE);
   var step = Blockly.Arduino.valueToCode(this, 'step',Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['define_stepper'] = '#include <Stepper.h>';
   return varName+'.step('+step+');\n';

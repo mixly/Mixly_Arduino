@@ -11,9 +11,9 @@ Blockly.Blocks.base_setup = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-	    .appendTitle(Blockly.MIXLY_SETUP);
+	    .appendField(Blockly.MIXLY_SETUP);
 	this.appendStatementInput('DO')
-        .appendTitle('');
+        .appendField('');
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_SETUP);
   }
 };
@@ -25,8 +25,8 @@ Blockly.Blocks.base_delay = {
 		 [Blockly.MIXLY_DELAY_US, 'delayMicroseconds']];
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput("DELAY_TIME", Number)
-        .appendTitle(Blockly.MIXLY_DELAY)
-		.appendTitle(new Blockly.FieldDropdown(UNIT), 'UNIT')
+        .appendField(Blockly.MIXLY_DELAY)
+		.appendField(new Blockly.FieldDropdown(UNIT), 'UNIT')
         .setCheck(Number);
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -39,22 +39,22 @@ Blockly.Blocks.controls_for = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-        .appendTitle(Blockly.LANG_CONTROLS_FOR_INPUT_WITH)
-        .appendTitle(new Blockly.FieldTextInput('i'), 'VAR');
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_WITH)
+        .appendField(new Blockly.FieldTextInput('i'), 'VAR');
     this.appendValueInput('FROM')
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.LANG_CONTROLS_FOR_INPUT_FROM);
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_FROM);
     this.appendValueInput('TO')
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.LANG_CONTROLS_FOR_INPUT_TO);
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_TO);
     this.appendDummyInput()
-        .appendTitle(Blockly.MIXLY_STEP)
-        .appendTitle(new Blockly.FieldTextInput('1',
+        .appendField(Blockly.MIXLY_STEP)
+        .appendField(new Blockly.FieldTextInput('1',
         Blockly.FieldTextInput.math_number_validator), 'STEP');
     this.appendStatementInput('DO')
-        .appendTitle(Blockly.LANG_CONTROLS_FOR_INPUT_DO);
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_DO);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setInputsInline(true);
@@ -79,10 +79,10 @@ Blockly.Blocks.controls_whileUntil = {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('BOOL')
         .setCheck([Boolean,Number])
-        .appendTitle(Blockly.LANG_CONTROLS_WHILEUNTIL_TITLE_REPEAT)
-        .appendTitle(new Blockly.FieldDropdown(this.OPERATORS), 'MODE');
+        .appendField(Blockly.LANG_CONTROLS_WHILEUNTIL_TITLE_REPEAT)
+        .appendField(new Blockly.FieldDropdown(this.OPERATORS), 'MODE');
     this.appendStatementInput('DO')
-        .appendTitle(Blockly.LANG_CONTROLS_WHILEUNTIL_INPUT_DO);
+        .appendField(Blockly.LANG_CONTROLS_WHILEUNTIL_INPUT_DO);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
 	var thisBlock = this;
@@ -106,8 +106,8 @@ Blockly.Blocks.controls_flow_statements = {
     this.setColour(Blockly.Blocks.loops.HUE);
     var dropdown = new Blockly.FieldDropdown(this.OPERATORS);
     this.appendDummyInput()
-        .appendTitle(dropdown, 'FLOW')
-        .appendTitle(Blockly.LANG_CONTROLS_FLOW_STATEMENTS_INPUT_OFLOOP);
+        .appendField(dropdown, 'FLOW')
+        .appendField(Blockly.LANG_CONTROLS_FLOW_STATEMENTS_INPUT_OFLOOP);
     this.setPreviousStatement(true);
 	var thisBlock = this;
     this.setTooltip(function() {
@@ -156,8 +156,8 @@ Blockly.Blocks.controls_millis = {
 		 [Blockly.MIXLY_DELAY_US, 'micros']];
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-	    .appendTitle(Blockly.MIXLY_RUNTIME)
-        .appendTitle(new Blockly.FieldDropdown(UNIT), 'UNIT');
+	    .appendField(Blockly.MIXLY_RUNTIME)
+        .appendField(new Blockly.FieldDropdown(UNIT), 'UNIT');
     this.setOutput(true, Number);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MILLIS);
   }

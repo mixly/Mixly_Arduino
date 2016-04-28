@@ -122,7 +122,7 @@ Blockly.Blocks['logic_negate'] = {
     this.setOutput(true, Boolean);
 	this.appendValueInput('BOOL')
         .setCheck([Number,Boolean])
-        .appendTitle(Blockly.Msg.LOGIC_NEGATE_TITLE);
+        .appendField(Blockly.Msg.LOGIC_NEGATE_TITLE);
     //this.interpolateMsg(Blockly.Msg.LOGIC_NEGATE_TITLE,
       //                  ['BOOL', Boolean, Blockly.ALIGN_RIGHT],
         //                Blockly.ALIGN_RIGHT);
@@ -169,9 +169,9 @@ Blockly.Blocks['logic_true_or_false'] = {
     this.setColour(Blockly.Blocks.logic.HUE);
     this.appendValueInput('A');
     this.appendValueInput('B')
-        .appendTitle(Blockly.Msg.LOGIC_TERNARY_IF_TRUE);
+        .appendField(Blockly.Msg.LOGIC_TERNARY_IF_TRUE);
 	this.appendValueInput('C')
-        .appendTitle(Blockly.Msg.LOGIC_TERNARY_IF_FALSE);
+        .appendField(Blockly.Msg.LOGIC_TERNARY_IF_FALSE);
 	this.setOutput(true);
     this.setInputsInline(true);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_LOGIT_TRUEORFALSE);

@@ -14,11 +14,11 @@ Blockly.Blocks['variables_declare'] = {
   init: function() {
     this.setColour(Blockly.Blocks.variables.HUE);
     this.appendValueInput('VALUE', null)
-        .appendTitle(Blockly.MIXLY_DECLARE)
-        .appendTitle(new Blockly.FieldTextInput('item'), 'VAR')
-        .appendTitle(Blockly.MIXLY_AS)
-     	.appendTitle(new Blockly.FieldDropdown([[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_BOOLEAN,'boolean'],[Blockly.LANG_MATH_CHAR,'char'],[Blockly.LANG_MATH_STRING,'String']]), "TYPE")
-	    .appendTitle(Blockly.MIXLY_VALUE);
+        .appendField(Blockly.MIXLY_DECLARE)
+        .appendField(new Blockly.FieldTextInput('item'), 'VAR')
+        .appendField(Blockly.MIXLY_AS)
+     	.appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_BOOLEAN,'boolean'],[Blockly.LANG_MATH_CHAR,'char'],[Blockly.LANG_MATH_STRING,'String']]), "TYPE")
+	    .appendField(Blockly.MIXLY_VALUE);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_VARIABLES_DECLARE);
@@ -64,8 +64,8 @@ Blockly.Blocks['variables_set'] = {
   init: function() {
     this.setColour(Blockly.Blocks.variables.HUE);
     this.appendValueInput('VALUE')
-        .appendTitle(new Blockly.FieldTextInput('item'), 'VAR')
-		.appendTitle(Blockly.LANG_VARIABLES_SET_TITLE);
+        .appendField(new Blockly.FieldTextInput('item'), 'VAR')
+		.appendField(Blockly.LANG_VARIABLES_SET_TITLE);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.Msg.VARIABLES_SET_TOOLTIP);

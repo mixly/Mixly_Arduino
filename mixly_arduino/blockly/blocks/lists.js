@@ -15,12 +15,12 @@ Blockly.Blocks['lists_create_with'] = {
   init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
 	this.appendDummyInput("")
-        .appendTitle(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char']]), "TYPE")
-        .appendTitle(' ')
-        .appendTitle(new Blockly.FieldTextInput('mylist'), 'VAR')
-        .appendTitle('[')
-        .appendTitle(new Blockly.FieldTextInput('3',Blockly.FieldTextInput.math_number_validator), 'SIZE')
-        .appendTitle(']');
+        .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char']]), "TYPE")
+        .appendField(' ')
+        .appendField(new Blockly.FieldTextInput('mylist'), 'VAR')
+        .appendField('[')
+        .appendField(new Blockly.FieldTextInput('3',Blockly.FieldTextInput.math_number_validator), 'SIZE')
+        .appendField(']');
     this.itemCount_ = 3;
     this.updateShape_();
     this.setPreviousStatement(true);
@@ -142,17 +142,17 @@ Blockly.Blocks['lists_create_with_text'] = {
   init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
 	this.appendDummyInput("")
-        .appendTitle(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char']]), "TYPE")
-        .appendTitle(' ')
-        .appendTitle(new Blockly.FieldTextInput('mylist'), 'VAR')
-        .appendTitle('[')
-        .appendTitle(new Blockly.FieldTextInput('3',Blockly.FieldTextInput.math_number_validator), 'SIZE')
-        .appendTitle(']')
-	    .appendTitle(Blockly.MIXLY_MAKELISTFROM)
+        .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char']]), "TYPE")
+        .appendField(' ')
+        .appendField(new Blockly.FieldTextInput('mylist'), 'VAR')
+        .appendField('[')
+        .appendField(new Blockly.FieldTextInput('3',Blockly.FieldTextInput.math_number_validator), 'SIZE')
+        .appendField(']')
+	    .appendField(Blockly.MIXLY_MAKELISTFROM)
 		.appendField(this.newQuote_(true))
         .appendField(new Blockly.FieldTextInput('0,0,0'), 'TEXT')
         .appendField(this.newQuote_(false))
-		.appendTitle(Blockly.MIXLY_SPLITBYDOU);
+		.appendField(Blockly.MIXLY_SPLITBYDOU);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_LISTS_CREATE_WITH_TEXT);
@@ -175,12 +175,12 @@ Blockly.Blocks['lists_create_with2'] = {
   init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
 	this.appendDummyInput("")
-        .appendTitle(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char']]), "TYPE")
-        .appendTitle(' ')
-        .appendTitle(new Blockly.FieldTextInput('mylist'), 'VAR')
-        .appendTitle('[')
-        //.appendTitle(new Blockly.FieldTextInput('3',Blockly.FieldTextInput.math_number_validator), 'SIZE')
-        .appendTitle(']');
+        .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char']]), "TYPE")
+        .appendField(' ')
+        .appendField(new Blockly.FieldTextInput('mylist'), 'VAR')
+        .appendField('[')
+        //.appendField(new Blockly.FieldTextInput('3',Blockly.FieldTextInput.math_number_validator), 'SIZE')
+        .appendField(']');
     this.itemCount_ = 3;
     this.updateShape_();
     this.setPreviousStatement(true);
@@ -302,17 +302,17 @@ Blockly.Blocks['lists_create_with_text2'] = {
   init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
 	this.appendDummyInput("")
-        .appendTitle(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char']]), "TYPE")
-        .appendTitle(' ')
-        .appendTitle(new Blockly.FieldTextInput('mylist'), 'VAR')
-        .appendTitle('[')
-        //.appendTitle(new Blockly.FieldTextInput('3',Blockly.FieldTextInput.math_number_validator), 'SIZE')
-        .appendTitle(']')
-	    .appendTitle(Blockly.MIXLY_MAKELISTFROM)
+        .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char']]), "TYPE")
+        .appendField(' ')
+        .appendField(new Blockly.FieldTextInput('mylist'), 'VAR')
+        .appendField('[')
+        //.appendField(new Blockly.FieldTextInput('3',Blockly.FieldTextInput.math_number_validator), 'SIZE')
+        .appendField(']')
+	    .appendField(Blockly.MIXLY_MAKELISTFROM)
 		.appendField(this.newQuote_(true))
         .appendField(new Blockly.FieldTextInput('0,0,0'), 'TEXT')
         .appendField(this.newQuote_(false))
-		.appendTitle(Blockly.MIXLY_SPLITBYDOU);
+		.appendField(Blockly.MIXLY_SPLITBYDOU);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_LISTS_CREATE_WITH_TEXT);
@@ -364,12 +364,12 @@ Blockly.Blocks.lists_getIndex = {
     this.setOutput(true, Number);
     this.appendValueInput('AT')
         .setCheck(Number)
-        .appendTitle(Blockly.LANG_LISTS_GET_INDEX_INPUT_AT);
+        .appendField(Blockly.LANG_LISTS_GET_INDEX_INPUT_AT);
     this.appendDummyInput("")
-        .appendTitle(Blockly.LANG_LISTS_GET_INDEX_INPUT_IN_LIST)
-        .appendTitle(new Blockly.FieldTextInput('mylist'), 'VAR');
+        .appendField(Blockly.LANG_LISTS_GET_INDEX_INPUT_IN_LIST)
+        .appendField(new Blockly.FieldTextInput('mylist'), 'VAR');
     this.appendDummyInput("")
-        .appendTitle(Blockly.MIXLY_END_ADDITION);
+        .appendField(Blockly.MIXLY_END_ADDITION);
     this.setInputsInline(true);
     this.setTooltip(Blockly.LANG_LISTS_GET_INDEX_TOOLTIP);
   }
@@ -380,12 +380,12 @@ Blockly.Blocks.lists_setIndex = {
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendValueInput('AT')
         .setCheck(Number)
-        .appendTitle(Blockly.LANG_LISTS_SET_INDEX_INPUT_AT);
+        .appendField(Blockly.LANG_LISTS_SET_INDEX_INPUT_AT);
     this.appendDummyInput("")
-        .appendTitle(Blockly.LANG_LISTS_SET_INDEX_INPUT_IN_LIST)
-        .appendTitle(new Blockly.FieldTextInput('mylist'), 'VAR');
+        .appendField(Blockly.LANG_LISTS_SET_INDEX_INPUT_IN_LIST)
+        .appendField(new Blockly.FieldTextInput('mylist'), 'VAR');
     this.appendValueInput('TO')
-        .appendTitle(Blockly.LANG_LISTS_SET_INDEX_INPUT_TO);
+        .appendField(Blockly.LANG_LISTS_SET_INDEX_INPUT_TO);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -401,8 +401,8 @@ Blockly.Blocks['lists_length'] = {
   init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
 	this.appendDummyInput("")
-        .appendTitle(Blockly.Msg.LISTS_LENGTH_TITLE)
-        .appendTitle(new Blockly.FieldTextInput('mylist'), 'VAR');
+        .appendField(Blockly.Msg.LISTS_LENGTH_TITLE)
+        .appendField(new Blockly.FieldTextInput('mylist'), 'VAR');
 	this.setTooltip(Blockly.Msg.LISTS_LENGTH_TOOLTIP);
 	this.setOutput(true, Number);
   }

@@ -26,13 +26,13 @@ Blockly.Arduino.gps_data_encode = function() {
 };
 
 Blockly.Arduino.gps_xxx_isValid = function() {
-  var WHAT = this.getTitleValue('WHAT');
+  var WHAT = this.getFieldValue('WHAT');
   var code = 'gps.'+WHAT+'.isValid()';
   return [code,Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.gps_getData_xxx = function() {
-  var WHAT = this.getTitleValue('WHAT');
+  var WHAT = this.getFieldValue('WHAT');
   var code = 'gps.'+WHAT+'()';
   return [code,Blockly.Arduino.ORDER_ATOMIC];
 };

@@ -13,7 +13,7 @@ Blockly.Arduino.variables_get = function() {
 };
 
 Blockly.Arduino.variables_declare = function() {
-  var dropdown_type = this.getTitleValue('TYPE');
+  var dropdown_type = this.getFieldValue('TYPE');
   var argument0;
   //TODO: settype to variable
   if(dropdown_type=='String'){
@@ -21,7 +21,7 @@ Blockly.Arduino.variables_declare = function() {
   }else{
     argument0 = Blockly.Arduino.valueToCode(this, 'VALUE',Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
   }
-  var varName = Blockly.Arduino.variableDB_.getName(this.getTitleValue('VAR'),
+  var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'),
       Blockly.Variables.NAME_TYPE);
   Blockly.Arduino.definitions_['var_declare'+varName] = dropdown_type+' '+varName+';\n';
   Blockly.Arduino.setups_['setup_var'+varName] = varName + ' = ' + argument0 + ';';

@@ -13,8 +13,8 @@ Blockly.Blocks['serial_begin'] = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE);
     this.appendValueInput("CONTENT", Number)
-		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
-		.appendTitle(Blockly.MIXLY_SERIAL_BEGIN)
+		.appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+		.appendField(Blockly.MIXLY_SERIAL_BEGIN)
 		.setCheck(Number);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -25,8 +25,8 @@ Blockly.Blocks['serial_print'] = {
   init: function() {
    this.setColour(Blockly.Blocks.blockgroup.HUE);
     this.appendValueInput("CONTENT", String)
-		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
-        .appendTitle(Blockly.MIXLY_SERIAL_PRINT);
+		.appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+        .appendField(Blockly.MIXLY_SERIAL_PRINT);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.Msg.TEXT_PRINT_TOOLTIP);
@@ -37,8 +37,8 @@ Blockly.Blocks['serial_println'] = {
    init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE);
     this.appendValueInput("CONTENT", String)
-		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
-        .appendTitle(Blockly.MIXLY_SERIAL_PRINTLN);
+		.appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+        .appendField(Blockly.MIXLY_SERIAL_PRINTLN);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.Msg.TEXT_PRINT_TOOLTIP);
@@ -49,8 +49,8 @@ Blockly.Blocks['serial_print_hex'] = {
    init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE);
     this.appendValueInput("CONTENT", Number)
-		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
-        .appendTitle(Blockly.MIXLY_SERIAL_PRINT_HEX)
+		.appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+        .appendField(Blockly.MIXLY_SERIAL_PRINT_HEX)
         .setCheck(Number);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -62,8 +62,8 @@ Blockly.Blocks['serial_available'] = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE);
 	this.appendDummyInput()
-		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
-        .appendTitle(Blockly.MIXLY_SERIAL_AVAILABLE);
+		.appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+        .appendField(Blockly.MIXLY_SERIAL_AVAILABLE);
 	this.setOutput(true, Boolean);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERIAL_AVAILABLE);
   }
@@ -73,8 +73,8 @@ Blockly.Blocks['serial_readstr'] = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE);
 	this.appendDummyInput()
-		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
-        .appendTitle(Blockly.MIXLY_SERIAL_READSTR);
+		.appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+        .appendField(Blockly.MIXLY_SERIAL_READSTR);
 	this.setOutput(true, String);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERIAL_READ_STR);
   }
@@ -84,9 +84,9 @@ Blockly.Blocks['serial_parseInt_Float'] = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE);
 	this.appendDummyInput()
-		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
-        //.appendTitle(Blockly.MIXLY_SERIAL_READ)
-		.appendTitle(new Blockly.FieldDropdown([["read", "read"],["peek", "peek"],["parseInt", "parseInt"], ["parseFloat", "parseFloat"]]), "STAT");
+		.appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+        //.appendField(Blockly.MIXLY_SERIAL_READ)
+		.appendField(new Blockly.FieldDropdown([["read", "read"],["peek", "peek"],["parseInt", "parseInt"], ["parseFloat", "parseFloat"]]), "STAT");
 	this.setOutput(true, Number);
 	var thisBlock = this;
     this.setTooltip(function() {
@@ -104,8 +104,8 @@ Blockly.Blocks['serial_flush'] = {
   init: function() {
    this.setColour(Blockly.Blocks.blockgroup.HUE);
     this.appendDummyInput()
-		.appendTitle(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
-        .appendTitle(Blockly.MIXLY_SERIAL_FLUSH);
+		.appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+        .appendField(Blockly.MIXLY_SERIAL_FLUSH);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   }
@@ -115,13 +115,13 @@ Blockly.Blocks['serial_softserial'] = {
   init: function() {
    this.setColour(Blockly.Blocks.blockgroup.HUE);
    this.appendValueInput("TX", Number)
-       .appendTitle(Blockly.MIXLY_SETUP)
-	   .appendTitle("SoftwareSerial")
-	   .appendTitle("TX#")
+       .appendField(Blockly.MIXLY_SETUP)
+	   .appendField("SoftwareSerial")
+	   .appendField("TX#")
        .setCheck(Number)
 	   .setAlign(Blockly.ALIGN_RIGHT);
     this.appendValueInput("RX", Number)
-	   .appendTitle("RX#")
+	   .appendField("RX#")
        .setCheck(Number)
 	   .setAlign(Blockly.ALIGN_RIGHT);
     this.setPreviousStatement(true, null);
@@ -135,13 +135,13 @@ Blockly.Blocks.ir_recv = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendValueInput("PIN", Number)
-		.appendTitle(new Blockly.FieldTextInput('ir_item'), 'VAR')
-        .appendTitle(Blockly.MIXLY_IR_RECEIVE)
+		.appendField(new Blockly.FieldTextInput('ir_item'), 'VAR')
+        .appendField(Blockly.MIXLY_IR_RECEIVE)
         .setCheck(Number);
 	this.appendStatementInput('DO')
-        .appendTitle(Blockly.MIXLY_IR_RECEIVE_YES);
+        .appendField(Blockly.MIXLY_IR_RECEIVE_YES);
 	this.appendStatementInput('DO2')
-        .appendTitle(Blockly.MIXLY_IR_RECEIVE_NO);
+        .appendField(Blockly.MIXLY_IR_RECEIVE_NO);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
 	this.setTooltip(Blockly.MIXLY_IR_RECIEVE_TOOLTIP);
@@ -161,16 +161,16 @@ Blockly.Blocks.ir_send_nec={
 		var TYPE = [['NEC', 'NEC'],['Whynter', 'Whynter'],['Sony', 'Sony'],['RC5', 'RC5'],['RC6', 'RC6'],['DISH', 'DISH'],['SharpRaw', 'SharpRaw'],['SAMSUNG', 'SAMSUNG']];
 		this.setColour(Blockly.Blocks.blockgroup.HUE3);
 		this.appendDummyInput("")
-			.appendTitle(Blockly.MIXLY_IR_SEND_NEC1)
+			.appendField(Blockly.MIXLY_IR_SEND_NEC1)
 			.appendField(new Blockly.FieldDropdown(TYPE), 'TYPE')
-			.appendTitle(Blockly.MIXLY_IR_SEND_NEC2)
-			.appendTitle(new Blockly.FieldDropdown([["3", "3"]]), "PIN");
+			.appendField(Blockly.MIXLY_IR_SEND_NEC2)
+			.appendField(new Blockly.FieldDropdown([["3", "3"]]), "PIN");
 		this.appendValueInput('data')
 			.setCheck(Number)
-			.appendTitle(' '+Blockly.MIXLY_DATA);
+			.appendField(' '+Blockly.MIXLY_DATA);
 		this.appendValueInput('bits')
 			.setCheck(Number)
-			.appendTitle(' '+Blockly.MIXLY_BITS);
+			.appendField(' '+Blockly.MIXLY_BITS);
 		this.setPreviousStatement(true);
 		this.setNextStatement(true);
 		this.setInputsInline(true);
@@ -183,7 +183,7 @@ Blockly.Blocks.ir_recv_enable = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendValueInput("PIN", Number)
-        .appendTitle(Blockly.MIXLY_IR_RECEIVE_ENABLE);
+        .appendField(Blockly.MIXLY_IR_RECEIVE_ENABLE);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -194,7 +194,7 @@ Blockly.Blocks.ir_recv_raw = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendValueInput("PIN", Number)
-        .appendTitle(Blockly.MIXLY_IR_RECEIVE_RAW)
+        .appendField(Blockly.MIXLY_IR_RECEIVE_RAW)
         .setCheck(Number);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -207,17 +207,17 @@ Blockly.Blocks.ir_send_raw = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendDummyInput("")
-	    .appendTitle(Blockly.MIXLY_IR_SEND_RAW)
-	    .appendTitle(new Blockly.FieldDropdown([["3", "3"]]), "PIN");
+	    .appendField(Blockly.MIXLY_IR_SEND_RAW)
+	    .appendField(new Blockly.FieldDropdown([["3", "3"]]), "PIN");
     this.appendDummyInput("")
-        .appendTitle(' '+Blockly.MIXLY_LIST_NAME)
-        .appendTitle(new Blockly.FieldTextInput('0,0,0'), 'TEXT');
+        .appendField(' '+Blockly.MIXLY_LIST_NAME)
+        .appendField(new Blockly.FieldTextInput('0,0,0'), 'TEXT');
 	this.appendValueInput('length')
         .setCheck(Number)
-        .appendTitle(' '+Blockly.MIXLY_LIST_LENGTH);
+        .appendField(' '+Blockly.MIXLY_LIST_LENGTH);
 	this.appendValueInput('freq')
         .setCheck(Number)
-        .appendTitle(' '+Blockly.MIXLY_FREQUENCY);
+        .appendField(' '+Blockly.MIXLY_FREQUENCY);
 	this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -232,11 +232,11 @@ Blockly.Blocks.i2c_master_writer = {
 	this.appendValueInput('device')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_I2C_MASTER_WRITE);
+        .appendField(Blockly.MIXLY_I2C_MASTER_WRITE);
 	this.appendValueInput('value')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-		.appendTitle(Blockly.MIXLY_I2C_VALUE);
+		.appendField(Blockly.MIXLY_I2C_VALUE);
 	this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -247,11 +247,11 @@ Blockly.Blocks.i2c_master_reader = {
 	this.appendValueInput('device')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_I2C_MASTER_READ);
+        .appendField(Blockly.MIXLY_I2C_MASTER_READ);
 	this.appendValueInput('bytes')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-		.appendTitle(Blockly.MIXLY_I2C_BYTES);
+		.appendField(Blockly.MIXLY_I2C_BYTES);
 	this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -260,7 +260,7 @@ Blockly.Blocks.i2c_master_reader2 = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendDummyInput()
-        .appendTitle(Blockly.MIXLY_I2C_MASTER_READ2);
+        .appendField(Blockly.MIXLY_I2C_MASTER_READ2);
 	this.setOutput(true, Number);
   }
 };
@@ -268,7 +268,7 @@ Blockly.Blocks.i2c_available = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE3);
 	this.appendDummyInput()
-        .appendTitle(Blockly.MIXLY_I2C_AVAILABLE);
+        .appendField(Blockly.MIXLY_I2C_AVAILABLE);
 	this.setOutput(true, Boolean);
   }
 };
@@ -280,11 +280,11 @@ Blockly.Blocks.spi_transfer={
 	this.appendValueInput('pin')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.TO_SPI_SLAVE_PIN);
+        .appendField(Blockly.TO_SPI_SLAVE_PIN);
 	this.appendValueInput('value')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-		.appendTitle(Blockly.SPI_TRANSFER);
+		.appendField(Blockly.SPI_TRANSFER);
 	this.setPreviousStatement(true);
     this.setNextStatement(true);
 	this.setInputsInline(true);
@@ -296,11 +296,11 @@ Blockly.Blocks.chaoshengbo={
 	init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE1);
 	this.appendDummyInput("")
-	    .appendTitle(Blockly.MIXLY_CHAOSHENGBO)
-	    .appendTitle('Trig#')
-	    .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN1")
-		.appendTitle(' Echo#')
-	    .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN2");
+	    .appendField(Blockly.MIXLY_CHAOSHENGBO)
+	    .appendField('Trig#')
+	    .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN1")
+		.appendField(' Echo#')
+	    .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN2");
 	this.setOutput(true, Number);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_CHAOSHENGBO);
   }
@@ -310,12 +310,12 @@ Blockly.Blocks.chaoshengbo2={
 	init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE1);
 	this.appendDummyInput("")
-	    .appendTitle(Blockly.MIXLY_CHAOSHENGBO);
+	    .appendField(Blockly.MIXLY_CHAOSHENGBO);
 	this.appendValueInput("PIN1", Number)
-        .appendTitle('Trig#')
+        .appendField('Trig#')
         .setCheck(Number);
 	this.appendValueInput("PIN2", Number)
-        .appendTitle('Echo#')
+        .appendField('Echo#')
         .setCheck(Number);
 	this.setInputsInline(true);
 	this.setOutput(true, Number);
@@ -329,10 +329,10 @@ Blockly.Blocks.dht11={
 	var WHAT = [[Blockly.MIXLY_DHT11_T, 'temperature'],[Blockly.MIXLY_DHT11_H, 'humidity']];
     this.setColour(Blockly.Blocks.blockgroup.HUE1);
 	this.appendValueInput("PIN", Number)
-        .appendTitle(Blockly.MIXLY_DHT11)
+        .appendField(Blockly.MIXLY_DHT11)
         .setCheck(Number);
 	this.appendDummyInput("")
-	    .appendTitle(new Blockly.FieldDropdown(WHAT), "WHAT");
+	    .appendField(new Blockly.FieldDropdown(WHAT), "WHAT");
 	this.setOutput(true, Number);
 	var thisBlock = this;
     this.setTooltip(function() {
@@ -352,11 +352,11 @@ Blockly.Blocks.ds18b20={
 	var UNIT = [[Blockly.MIXLY_DS18B20_C, '0'],[Blockly.MIXLY_DS18B20_F, '1']];
     this.setColour(Blockly.Blocks.blockgroup.HUE1);
 	this.appendValueInput("PIN", Number)
-        .appendTitle(Blockly.MIXLY_DS18B20)
+        .appendField(Blockly.MIXLY_DS18B20)
         .setCheck(Number);
 	this.appendDummyInput("")
-		.appendTitle(Blockly.MIXLY_DS18B20_GET_TEMP)
-	    .appendTitle(new Blockly.FieldDropdown(UNIT), "UNIT");
+		.appendField(Blockly.MIXLY_DS18B20_GET_TEMP)
+	    .appendField(new Blockly.FieldDropdown(UNIT), "UNIT");
 	this.setOutput(true, Number);
   }
 };
@@ -365,17 +365,17 @@ Blockly.Blocks.servo_move = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
 	this.appendValueInput("PIN", Number)
-        .appendTitle(Blockly.MIXLY_SERVO)
-        .appendTitle(Blockly.MIXLY_PIN)
+        .appendField(Blockly.MIXLY_SERVO)
+        .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
     this.appendValueInput("DEGREE", Number)
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_DEGREE_0_180);
+        .appendField(Blockly.MIXLY_DEGREE_0_180);
     this.appendValueInput("DELAY_TIME", Number)
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_DELAY+'('+Blockly.MIXLY_DELAY_MS+')');
+        .appendField(Blockly.MIXLY_DELAY+'('+Blockly.MIXLY_DELAY_MS+')');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_MOVE);
@@ -386,13 +386,13 @@ Blockly.Blocks.servo_writeMicroseconds = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
 	this.appendValueInput("PIN", Number)
-        .appendTitle(Blockly.MIXLY_SERVO)
-        .appendTitle(Blockly.MIXLY_PIN)
+        .appendField(Blockly.MIXLY_SERVO)
+        .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
     this.appendValueInput("DEGREE", Number)
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle('writeMicroseconds');
+        .appendField('writeMicroseconds');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
@@ -403,12 +403,12 @@ Blockly.Blocks.servo_read_degrees = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
 	this.appendValueInput("PIN", Number)
-        .appendTitle(Blockly.MIXLY_SERVO)
-        .appendTitle(Blockly.MIXLY_PIN)
+        .appendField(Blockly.MIXLY_SERVO)
+        .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
     this.appendDummyInput("")
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_READ_DEGREES)
+        .appendField(Blockly.MIXLY_READ_DEGREES)
     this.setOutput(true, Number);
 	this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_READ);
@@ -425,7 +425,7 @@ Blockly.Blocks.tone_notes = {
    init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
     this.appendDummyInput("")
-        .appendTitle(new Blockly.FieldDropdown(TONE_NOTES), 'STAT');
+        .appendField(new Blockly.FieldDropdown(TONE_NOTES), 'STAT');
     this.setOutput(true, Number);
   }
 };
@@ -434,12 +434,12 @@ Blockly.Blocks.controls_tone={
 init:function(){
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
 	this.appendValueInput("PIN", Number)
-        .appendTitle(Blockly.MIXLY_TONE_PIN)
+        .appendField(Blockly.MIXLY_TONE_PIN)
         .setCheck(Number);
     this.appendValueInput('FREQUENCY')
         .setCheck(Number)
         //.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_FREQUENCY);
+        .appendField(Blockly.MIXLY_FREQUENCY);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -451,18 +451,18 @@ Blockly.Blocks.controls_tone2={
 init:function(){
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
     this.appendValueInput("PIN", Number)
-        .appendTitle(Blockly.MIXLY_TONE_PIN)
+        .appendField(Blockly.MIXLY_TONE_PIN)
         .setCheck(Number);
     this.appendValueInput('FREQUENCY')
         .setCheck(Number)
         //.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_FREQUENCY);
+        .appendField(Blockly.MIXLY_FREQUENCY);
     this.appendValueInput('DURATION')
         .setCheck(Number)
         //.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_DURATION);
+        .appendField(Blockly.MIXLY_DURATION);
 	this.appendDummyInput("")
-		.appendTitle(Blockly.MIXLY_DELAY_MS);
+		.appendField(Blockly.MIXLY_DELAY_MS);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -474,7 +474,7 @@ Blockly.Blocks.controls_notone={
 init:function(){
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
 	this.appendValueInput("PIN", Number)
-        .appendTitle(Blockly.MIXLY_NOTONE_PIN)
+        .appendField(Blockly.MIXLY_NOTONE_PIN)
         .setCheck(Number);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
@@ -489,8 +489,8 @@ Blockly.Blocks.group_lcd_init = {
 	this.appendValueInput('device')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-		.appendTitle(Blockly.MIXLY_SETUP)
-        .appendTitle(Blockly.MIXLY_LCD_ADDRESS);
+		.appendField(Blockly.MIXLY_SETUP)
+        .appendField(Blockly.MIXLY_LCD_ADDRESS);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
@@ -503,8 +503,8 @@ Blockly.Blocks.group_lcd_init2 = {
 	this.appendValueInput('device')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-		.appendTitle(Blockly.MIXLY_SETUP)
-        .appendTitle(Blockly.MIXLY_LCD_ADDRESS);
+		.appendField(Blockly.MIXLY_SETUP)
+        .appendField(Blockly.MIXLY_LCD_ADDRESS);
     this.appendValueInput("PIN1")
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -525,7 +525,7 @@ Blockly.Blocks.group_lcd_print = {
     this.appendValueInput("TEXT", String)
         .setCheck([String,Number])
         .setAlign(Blockly.ALIGN_RIGHT)
-		.appendTitle(Blockly.MIXLY_DF_LCD)
+		.appendField(Blockly.MIXLY_DF_LCD)
         .appendField(Blockly.MIXLY_LCD_PRINT1);
     this.appendValueInput("TEXT2", String)
         .setCheck([String,Number])
@@ -542,7 +542,7 @@ Blockly.Blocks.group_lcd_print2 = {
 	this.appendValueInput("row", Number)
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-		.appendTitle(Blockly.MIXLY_DF_LCD)
+		.appendField(Blockly.MIXLY_DF_LCD)
         .appendField(Blockly.MIXLY_LCD_ROW);
 	this.appendValueInput("column", Number)
         .setCheck(Number)
@@ -562,7 +562,7 @@ Blockly.Blocks.group_lcd_power = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
     this.appendDummyInput()
-		.appendTitle(Blockly.MIXLY_DF_LCD)
+		.appendField(Blockly.MIXLY_DF_LCD)
         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_LCD_STAT_ON, "display"], [Blockly.MIXLY_LCD_STAT_OFF, "noDisplay"], [Blockly.MIXLY_LCD_STAT_CURSOR, "cursor"], [Blockly.MIXLY_LCD_STAT_NOCURSOR, "noCursor"], [Blockly.MIXLY_LCD_STAT_BLINK, "blink"], [Blockly.MIXLY_LCD_STAT_NOBLINK, "noBlink"], [Blockly.MIXLY_LCD_STAT_CLEAR, "clear"]]), "STAT");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
@@ -574,24 +574,24 @@ Blockly.Blocks.group_stepper_setup={
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
     this.appendDummyInput()
-		.appendTitle(Blockly.MIXLY_STEPPER_SETUP_STEPPER)
-        .appendTitle(new Blockly.FieldTextInput('mystepper'), 'VAR');
+		.appendField(Blockly.MIXLY_STEPPER_SETUP_STEPPER)
+        .appendField(new Blockly.FieldTextInput('mystepper'), 'VAR');
 	this.appendValueInput("PIN1", Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_STEPPER_PIN1)
+        .appendField(Blockly.MIXLY_STEPPER_PIN1)
         .setCheck(Number);
 	this.appendValueInput("PIN2", Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_STEPPER_PIN2)
+        .appendField(Blockly.MIXLY_STEPPER_PIN2)
         .setCheck(Number);
     this.appendValueInput('steps')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_STEPSPERREVOLUTION);
+        .appendField(Blockly.MIXLY_STEPSPERREVOLUTION);
 	this.appendValueInput('speed')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_STEPPER_SET_SPEED);
+        .appendField(Blockly.MIXLY_STEPPER_SET_SPEED);
 	this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   }
@@ -601,32 +601,32 @@ Blockly.Blocks.group_stepper_setup2={
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
     this.appendDummyInput()
-		.appendTitle(Blockly.MIXLY_STEPPER_SETUP_STEPPER)
-        .appendTitle(new Blockly.FieldTextInput('mystepper'), 'VAR');
+		.appendField(Blockly.MIXLY_STEPPER_SETUP_STEPPER)
+        .appendField(new Blockly.FieldTextInput('mystepper'), 'VAR');
 	this.appendValueInput("PIN1", Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_STEPPER_PIN1)
+        .appendField(Blockly.MIXLY_STEPPER_PIN1)
         .setCheck(Number);
 	this.appendValueInput("PIN2", Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_STEPPER_PIN2)
+        .appendField(Blockly.MIXLY_STEPPER_PIN2)
         .setCheck(Number);
 	this.appendValueInput("PIN3", Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_STEPPER_PIN3)
+        .appendField(Blockly.MIXLY_STEPPER_PIN3)
         .setCheck(Number);
 	this.appendValueInput("PIN4", Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_STEPPER_PIN4)
+        .appendField(Blockly.MIXLY_STEPPER_PIN4)
         .setCheck(Number);
     this.appendValueInput('steps')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_STEPSPERREVOLUTION);
+        .appendField(Blockly.MIXLY_STEPSPERREVOLUTION);
 	this.appendValueInput('speed')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_STEPPER_SET_SPEED);
+        .appendField(Blockly.MIXLY_STEPPER_SET_SPEED);
 	this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   }
@@ -636,12 +636,12 @@ Blockly.Blocks.group_stepper_move={
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);
     this.appendDummyInput()
-		.appendTitle(Blockly.MIXLY_STEPPER)
-        .appendTitle(new Blockly.FieldTextInput('mystepper'), 'VAR');
+		.appendField(Blockly.MIXLY_STEPPER)
+        .appendField(new Blockly.FieldTextInput('mystepper'), 'VAR');
     this.appendValueInput('step')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle(Blockly.MIXLY_STEPPER_STEP);
+        .appendField(Blockly.MIXLY_STEPPER_STEP);
 	this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
