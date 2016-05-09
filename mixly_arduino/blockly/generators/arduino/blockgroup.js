@@ -11,6 +11,17 @@ Blockly.Arduino.serial_begin = function() {
   return '';
 };
 
+Blockly.Arduino.serial_write = function () {
+    var serial_select = this.getFieldValue('serial_select');
+    var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '\"\"'
+    if (Blockly.Arduino.setups_['setup_serial_' + serial_select + profile.default.serial]) {
+    } else {
+        Blockly.Arduino.setups_['setup_serial_' + serial_select + profile.default.serial] = serial_select + '.begin(' + profile.default.serial + ');';
+    }
+    var code = serial_select + '.write(' + content + ');\n';
+    return code;
+};
+
 Blockly.Arduino.serial_print = function() {
   var serial_select = this.getFieldValue('serial_select');
   var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '\"\"'

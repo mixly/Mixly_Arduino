@@ -344,6 +344,7 @@ Blockly.Msg.TEXT_LENGTH_TITLE = "longitud de %1";
 Blockly.Msg.TEXT_LENGTH_TOOLTIP = "Devuelve el número de letras (incluyendo espacios) en el texto proporcionado.";
 Blockly.Msg.TEXT_PRINT_HELPURL = "https://github.com/google/blockly/wiki/Text#printing-text";  // untranslated
 Blockly.Msg.TEXT_PRINT_TITLE = "imprimir %1";
+Blockly.Msg.TEXT_WRITE_TOOLTIP = "Escribir el texto, número u otro valor especificado.";
 Blockly.Msg.TEXT_PRINT_TOOLTIP = "Imprimir el texto, número u otro valor especificado.";
 Blockly.Msg.TEXT_PROMPT_HELPURL = "https://github.com/google/blockly/wiki/Text#getting-input-from-the-user";  // untranslated
 Blockly.Msg.TEXT_PROMPT_TOOLTIP_NUMBER = "Solicitar al usuario un número.";

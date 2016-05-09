@@ -1,4 +1,4 @@
-<html manifest=node.manifest>
+﻿<html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
   <title>Mixly</title>
@@ -559,7 +559,8 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
           </shadow>
         </value>
 	  </block>
-	  <block type="serial_print"></block>
+      <block type="serial_write"></block>
+      <block type="serial_print"></block>
 	  <block type="serial_println"></block>
 	  <block type="serial_print_hex"></block>
 	  <block type="serial_available"></block>

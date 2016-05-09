@@ -21,6 +21,18 @@ Blockly.Blocks['serial_begin'] = {
   }
 };
 
+Blockly.Blocks['serial_write'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.blockgroup.HUE);
+        this.appendValueInput("CONTENT", String)
+            .appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+            .appendField(Blockly.MIXLY_SERIAL_WRITE);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.TEXT_WRITE_TOOLTIP);
+    }
+};
+
 Blockly.Blocks['serial_print'] = {
   init: function() {
    this.setColour(Blockly.Blocks.blockgroup.HUE);
