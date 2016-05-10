@@ -19,15 +19,15 @@ Blockly.Arduino.text_char = function() {
 
 Blockly.Arduino.text_join = function() {
   // Text value.
-    var a = 'String(' + Blockly.Arduino.valueToCode(this, 'A', Blockly.Arduino.ORDER_ATOMIC) || 'String(\"\")' + ')';
-    var b = 'String(' + Blockly.Arduino.valueToCode(this, 'B', Blockly.Arduino.ORDER_ATOMIC) || 'String(\"\")' + ')';
-  return [a+' + '+b, Blockly.Arduino.ORDER_ATOMIC];
+    var a = 'String(' + Blockly.Arduino.valueToCode(this, 'A', Blockly.Arduino.ORDER_ATOMIC) + ')';
+    var b = 'String(' + Blockly.Arduino.valueToCode(this, 'B', Blockly.Arduino.ORDER_ATOMIC) + ')';
+    return [a  + ' + ' + b , Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.text_to_number = function() {
   var towhat = this.getFieldValue('TOWHAT');
-  var str = 'String(' + Blockly.Arduino.valueToCode(this, 'VAR', Blockly.Arduino.ORDER_ATOMIC) || 'String(\"\")' ;
-  return [str + ')' + '.' + towhat + '()', Blockly.Arduino.ORDER_ATOMIC];
+  var str = 'String(' + Blockly.Arduino.valueToCode(this, 'VAR', Blockly.Arduino.ORDER_ATOMIC) + ')';
+  return [str + '.' + towhat + '()', Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.number_to_text = function() {
