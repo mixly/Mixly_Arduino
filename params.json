@@ -1,6 +1,6 @@
 {
   "name": "Mixly arduino",
   "tagline": "A visual programming editor for Arduino.",
-  "body": "http://xbed.github.io/Mixly_Arduino/blob/master/mixly_arduino/blockly/apps/mixly/index.html",
+  "body": "<a href=\"http://xbed.github.io/Mixly_Arduino/mixly_arduino/blockly/apps/mixly/index.html\" class=\"btn\">Online DEMO</a>",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
