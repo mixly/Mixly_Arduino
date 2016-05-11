@@ -1,0 +1,15 @@
+{
+  "name": "LiquidCrystal_SoftI2C",
+  "keywords": "LCD, liquidcrystal, SoftI2C",
+  "description": "A library for SoftI2C  LCD displays",
+  "repository":
+  {
+    "type": "git",
+    "url": ""
+  },
+  "frameworks": "arduino",
+  "platforms":
+  [
+    "atmelavr"
+  ]
+}
