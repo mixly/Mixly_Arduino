@@ -50,12 +50,12 @@ Blockly.Arduino.ethernet_client_available = function() {
 };
 
 Blockly.Arduino.ethernet_client_print = function() {
-  var TEXT = Blockly.Arduino.valueToCode(this, 'TEXT',Blockly.Arduino.ORDER_ATOMIC);
+  var TEXT = Blockly.Arduino.valueToCode(this, 'TEXT',Blockly.Arduino.ORDER_ATOMIC)|| '\"\"';
   var code = 'client.print('+TEXT+');\n';
   return code;
 };
 Blockly.Arduino.ethernet_client_println = function() {
-  var TEXT = Blockly.Arduino.valueToCode(this, 'TEXT',Blockly.Arduino.ORDER_ATOMIC);
+  var TEXT = Blockly.Arduino.valueToCode(this, 'TEXT',Blockly.Arduino.ORDER_ATOMIC)|| '\"\"';
   var code = 'client.println('+TEXT+');\n';
   return code;
 };
