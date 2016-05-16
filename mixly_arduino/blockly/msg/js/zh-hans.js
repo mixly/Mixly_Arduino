@@ -477,6 +477,7 @@ Blockly.LANG_MATH_INT = '整数';
 Blockly.LANG_MATH_LONG = '整数';
 Blockly.LANG_MATH_FLOAT = '小数';
 Blockly.LANG_MATH_BOOLEAN = '布尔';
+Blockly.LANG_MATH_BYTE = '字节';
 Blockly.LANG_MATH_CHAR = '字符';
 Blockly.LANG_MATH_STRING = '字符串';
 Blockly.LANG_LISTS_GET_INDEX_INPUT_AT = '获取第';

@@ -478,6 +478,7 @@ Blockly.LANG_MATH_INT = 'int';
 Blockly.LANG_MATH_LONG = 'long';
 Blockly.LANG_MATH_FLOAT = 'float';
 Blockly.LANG_MATH_BOOLEAN = 'boolean';
+Blockly.LANG_MATH_BYTE = 'byte';
 Blockly.LANG_MATH_CHAR = 'char';
 Blockly.LANG_MATH_STRING = 'string';
 Blockly.LANG_LISTS_GET_INDEX_INPUT_AT = 'get item at';
