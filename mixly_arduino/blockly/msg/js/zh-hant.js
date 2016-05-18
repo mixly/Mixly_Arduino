@@ -317,6 +317,8 @@ Blockly.Msg.TEXT_CHANGECASE_TOOLTIP ="使用不同的大小寫複製這段文字
 Blockly.Msg.TEXT_CHARAT_FIRST ="獲得第一個字元";
 Blockly.Msg.TEXT_CHARAT_FROM_END ="獲得倒數第#個字元";
 Blockly.Msg.TEXT_CHARAT_FROM_START ="獲得字元#";
+Blockly.Msg.TEXT_CHARAT = "獲得第";
+Blockly.Msg.TEXT_CHARAT2 = "個字符";
 Blockly.Msg.TEXT_CHARAT_HELPURL = "https://github.com/google/blockly/wiki/Text#extracting-text";  // untranslated
 Blockly.Msg.TEXT_CHARAT_INPUT_INTEXT ="於文字中";
 Blockly.Msg.TEXT_CHARAT_LAST ="獲得最後一個字元";
@@ -891,3 +893,9 @@ Blockly.MIXLY_PARAMS = '參數';
 
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='該變量未聲明';
+Blockly.MIXLY_LENGTH ="獲取長度";
+Blockly.MIXLY_EQUALS="等於";
+Blockly.MIXLY_STARTSWITH="開始於";
+Blockly.MIXLY_ENDSWITH="結尾於";
+Blockly.MIXLY_COMPARETO="比較";
+Blockly.MIXLY_COMPARETO_HELP="按字典順序比較，相等則返回0，大於則返回大於0的值，小於則返回小於0的值";

@@ -317,6 +317,8 @@ Blockly.Msg.TEXT_CHANGECASE_TOOLTIP = "Devuelve una copia del texto en un caso d
 Blockly.Msg.TEXT_CHARAT_FIRST = "obtener la primera letra";
 Blockly.Msg.TEXT_CHARAT_FROM_END = "obtener la letra # del final";
 Blockly.Msg.TEXT_CHARAT_FROM_START = "obtener la letra #";
+Blockly.Msg.TEXT_CHARAT = "char at";  // untranslated
+Blockly.Msg.TEXT_CHARAT2 = "";
 Blockly.Msg.TEXT_CHARAT_HELPURL = "https://github.com/google/blockly/wiki/Text#extracting-text";  // untranslated
 Blockly.Msg.TEXT_CHARAT_INPUT_INTEXT = "en el texto";
 Blockly.Msg.TEXT_CHARAT_LAST = "obtener la última letra";
@@ -889,3 +891,8 @@ Blockly.MIXLY_PARAMS = 'parameters';
 
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='This variable is not declared!';
+Blockly.MIXLY_LENGTH = "longitud de";
+Blockly.MIXLY_EQUALS="equals";
+Blockly.MIXLY_STARTSWITH="startsWith";
+Blockly.MIXLY_ENDSWITH="endsWith";
+Blockly.MIXLY_COMPARETO="compareTo";

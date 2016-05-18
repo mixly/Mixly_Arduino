@@ -523,6 +523,49 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
           </shadow>
         </value>
 	  </block>
+	  <block type="text_length">
+	    <value name="VAR">
+          <shadow type="text">
+            <field name="TEXT">hello</field>
+          </shadow>
+        </value>
+	  </block>
+	  <block type="text_char_at">
+		<value name="VAR">
+          <shadow type="text">
+            <field name="TEXT">hello</field>
+          </shadow>
+        </value>
+		<value name="AT">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+	  </block>
+	  <block type="text_equals_starts_ends">
+		<value name="STR1">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+		<value name="STR2">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+	  </block>
+	  <block type="text_compareTo">
+		<value name="STR1">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+		<value name="STR2">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+	  </block>
     </category>
 	<category id="catLists"  colour="260">
 	  <block type="lists_create_with2"></block>
@@ -863,7 +906,9 @@ Blockly.Realtime.doCommand=function(cmdThunk) {
 			</block>
 		</value>
 	  </block>
-	  <block type="group_lcd_power"></block>
+	  <block type="group_lcd_power">
+		<field name="STAT">clear</field>
+	  </block>
 	  <block type="group_stepper_setup">
 		<value name="PIN1">
 			<shadow type="pins_digital"><field name="PIN">1</field></shadow>

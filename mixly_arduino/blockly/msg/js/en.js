@@ -317,6 +317,8 @@ Blockly.Msg.TEXT_CHANGECASE_TOOLTIP = "Return a copy of the text in a different 
 Blockly.Msg.TEXT_CHARAT_FIRST = "get first letter";
 Blockly.Msg.TEXT_CHARAT_FROM_END = "get letter # from end";
 Blockly.Msg.TEXT_CHARAT_FROM_START = "get letter #";
+Blockly.Msg.TEXT_CHARAT = "char at";
+Blockly.Msg.TEXT_CHARAT2 = "";
 Blockly.Msg.TEXT_CHARAT_HELPURL = "https://github.com/google/blockly/wiki/Text#extracting-text";
 Blockly.Msg.TEXT_CHARAT_INPUT_INTEXT = "in text";
 Blockly.Msg.TEXT_CHARAT_LAST = "get last letter";
@@ -890,3 +892,8 @@ Blockly.MIXLY_PARAMS = 'parameters';
 
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='This variable is not declared!';
+Blockly.MIXLY_LENGTH = "length of";
+Blockly.MIXLY_EQUALS="equals";
+Blockly.MIXLY_STARTSWITH="startsWith";
+Blockly.MIXLY_ENDSWITH="endsWith";
+Blockly.MIXLY_COMPARETO="compareTo";

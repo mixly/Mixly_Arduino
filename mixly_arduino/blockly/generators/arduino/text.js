@@ -34,3 +34,27 @@ Blockly.Arduino.number_to_text = function() {
   var str = Blockly.Arduino.valueToCode(this, 'VAR', Blockly.Arduino.ORDER_ATOMIC) || '0'
   return ['String("")+'+str, Blockly.Arduino.ORDER_ATOMIC];
 };
+
+Blockly.Arduino.text_length = function() {
+  var str = Blockly.Arduino.valueToCode(this, 'VAR', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
+  return ['String(' +str+')'+'.length()', Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.text_char_at = function() {
+  var str = Blockly.Arduino.valueToCode(this, 'VAR', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
+  var at = Blockly.Arduino.valueToCode(this, 'AT', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  return ['String(' +str+')'+'.charAt('+at+')', Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.text_equals_starts_ends = function() {
+  var str1 = 'String(' +(Blockly.Arduino.valueToCode(this, 'STR1', Blockly.Arduino.ORDER_ATOMIC) || '\"\"')+')';
+  var str2 = 'String(' +(Blockly.Arduino.valueToCode(this, 'STR2', Blockly.Arduino.ORDER_ATOMIC) || '\"\"')+')';
+  var dowhat = this.getFieldValue('DOWHAT');
+  return [str1+'.'+dowhat+'('+str2+')', Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.text_compareTo = function() {
+  var str1 = 'String(' +(Blockly.Arduino.valueToCode(this, 'STR1', Blockly.Arduino.ORDER_ATOMIC) || '\"\"')+')';
+  var str2 = 'String(' +(Blockly.Arduino.valueToCode(this, 'STR2', Blockly.Arduino.ORDER_ATOMIC) || '\"\"')+')';
+  return [str1+'.compareTo('+str2+')', Blockly.Arduino.ORDER_ATOMIC];
+};

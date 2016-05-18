@@ -114,3 +114,59 @@ Blockly.Blocks['number_to_text'] = {
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_TOTEXT);
   }
 };
+
+Blockly.Blocks['text_length']={
+init: function() {
+    this.setColour(Blockly.Blocks.texts.HUE);
+	this.appendValueInput("VAR")
+        .appendField(Blockly.MIXLY_LENGTH)
+        .setCheck(String);
+	this.setOutput(true, Number);
+  }
+}
+
+Blockly.Blocks['text_char_at']={
+init: function() {
+    this.setColour(Blockly.Blocks.texts.HUE);
+	this.appendValueInput("VAR")
+        .setCheck(String);
+	this.appendValueInput("AT")
+        .appendField(Blockly.Msg.TEXT_CHARAT)
+        .setCheck(Number);
+	this.appendDummyInput()
+		.appendField(Blockly.Msg.TEXT_CHARAT2);
+	this.setOutput(true, Number);
+	this.setInputsInline(true);
+  }
+}
+
+Blockly.Blocks['text_equals_starts_ends']={
+init: function() {
+	var TEXT_DOWHAT =
+        [[Blockly.MIXLY_EQUALS, 'equals'],
+        [Blockly.MIXLY_STARTSWITH, 'startsWith'],
+		[Blockly.MIXLY_ENDSWITH, 'endsWith']];
+    this.setColour(Blockly.Blocks.texts.HUE);
+	this.appendValueInput("STR1")
+        .setCheck(String);
+	this.appendValueInput("STR2")
+        .appendField(new Blockly.FieldDropdown(TEXT_DOWHAT), 'DOWHAT')
+        .setCheck(String);
+	this.setOutput(true, [Boolean,Number]);
+	this.setInputsInline(true);
+  }
+}
+
+Blockly.Blocks['text_compareTo']={
+init: function() {
+    this.setColour(Blockly.Blocks.texts.HUE);
+	this.appendValueInput("STR1")
+        .setCheck(String);
+	this.appendValueInput("STR2")
+        .appendField(Blockly.MIXLY_COMPARETO)
+        .setCheck(String);
+	this.setOutput(true, Number);
+	this.setInputsInline(true);
+	this.setTooltip(Blockly.MIXLY_COMPARETO_HELP);
+  }
+}
