@@ -411,7 +411,7 @@ Blockly.Arduino.controls_notone=function(){
 
 Blockly.Arduino.group_lcd_init = function() {
   var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27';
-  Blockly.Arduino.definitions_['define_i2c_lcd'] = '#include <Wire.h>';
+  Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>';
   Blockly.Arduino.definitions_['define_df_lcd'] = '#include <LiquidCrystal_I2C.h>';
   Blockly.Arduino.definitions_['var_df_lcd'] = 'LiquidCrystal_I2C df_lcd('+device+',16,2);';
   return '';
@@ -421,7 +421,7 @@ Blockly.Arduino.group_lcd_init2 = function() {
   var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27';
   var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'PIN1',Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'PIN2',Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.definitions_['define_i2c_lcd'] = '#include <SoftI2CMaster.h>';
+  Blockly.Arduino.definitions_['define_i2c'] = '#include <SoftI2CMaster.h>';
   Blockly.Arduino.definitions_['define_df_lcd'] = '#include <LiquidCrystal_SoftI2C.h>';
   Blockly.Arduino.definitions_['var_df_lcd'] = 'LiquidCrystal_SoftI2C df_lcd('+device+',16,2,'+dropdown_pin1+','+dropdown_pin2+');';
   return '';

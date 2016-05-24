@@ -187,7 +187,7 @@ Blockly.Arduino.init = function(workspace) {
   // Create a dictionary of setups to be printed before the code.
   Blockly.Arduino.setups_ = Object.create(null);
   //Blockly.Arduino.variableTypes_ = Object.create(null);//处理变量类型
-
+  
 	if (!Blockly.Arduino.variableDB_) {
 		Blockly.Arduino.variableDB_ =
 				new Blockly.Names(Blockly.Arduino.RESERVED_WORDS_);
