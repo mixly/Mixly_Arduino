@@ -294,7 +294,6 @@ Blockly.Events.Abstract = function(block) {
   }
   this.group = Blockly.Events.group_;
   this.recordUndo = Blockly.Events.recordUndo;
-  updateRightCode();
 };
 
 /**
@@ -781,9 +780,3 @@ Blockly.Events.Ui.prototype.fromJson = function(json) {
   this.element = json['element'];
   this.newValue = json['newValue'];
 };
-
-//更新右侧对比代码
-function updateRightCode(){
-  var arduinoTextarea = document.getElementById('side_code');
-  arduinoTextarea.value = Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace);
-}

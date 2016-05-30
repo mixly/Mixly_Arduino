@@ -224,7 +224,7 @@ function init() {
   window.addEventListener('resize', onresize, false);
 
   var toolbox = document.getElementById('toolbox');
-  Blockly.inject(document.getElementById('content_blocks'),
+  var masterWorkspace = Blockly.inject(document.getElementById('content_blocks'),
       {//grid:
           //{spacing: 25,
            //length: 3,
@@ -237,6 +237,17 @@ function init() {
             wheel: true}
 	   });
 
+	//实时更新右侧对比代码
+    masterWorkspace.addChangeListener(rightCodeEvent);
+	function rightCodeEvent(masterEvent) {
+	  if (masterEvent.type == Blockly.Events.UI) {
+		return;  // Don't update UI events.
+	  }
+	  //更新
+	  var arduinoTextarea = document.getElementById('side_code');
+      arduinoTextarea.value = Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace);
+	}
+	
   auto_save_and_restore_blocks();
 
   //load from url parameter (single param)
