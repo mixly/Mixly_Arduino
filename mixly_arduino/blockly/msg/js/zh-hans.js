@@ -897,3 +897,5 @@ Blockly.MIXLY_STARTSWITH="开始于";
 Blockly.MIXLY_ENDSWITH="结尾于";
 Blockly.MIXLY_COMPARETO="比较";
 Blockly.MIXLY_COMPARETO_HELP="按字典顺序比较，相等则返回0，大于则返回大于0的值，小于则返回小于0的值";
+Blockly.Msg.UNDO = "撤销";
+Blockly.Msg.REDO = "重做";

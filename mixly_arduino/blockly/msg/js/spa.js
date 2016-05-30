@@ -896,3 +896,5 @@ Blockly.MIXLY_EQUALS="equals";
 Blockly.MIXLY_STARTSWITH="startsWith";
 Blockly.MIXLY_ENDSWITH="endsWith";
 Blockly.MIXLY_COMPARETO="compareTo";
+Blockly.Msg.UNDO = "Deshacer";
+Blockly.Msg.REDO = "Rehacer";

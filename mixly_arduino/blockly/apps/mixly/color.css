@@ -1,6 +1,7 @@
 .blocklyTreeRoot{
 	min-width:120px;
 }
+
 #tabRow>td {
       border: 1px solid #ccc;
 	  font-family: sans-serif; 
@@ -183,14 +184,6 @@ right:0px;
 top: 35%;
 background-image:url("../../media/sidebar/sidebar2_red.png");
 }
-
-
-
-
-
-
-
-
 
 div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	width:24px;height:24px;

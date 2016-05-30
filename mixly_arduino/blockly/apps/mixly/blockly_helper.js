@@ -27,7 +27,7 @@ function backup_blocks() {
 function restore_blocks() {
   if ('localStorage' in window && window.localStorage.arduino) {
     var xml = Blockly.Xml.textToDom(window.localStorage.arduino);
-    Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
+    Blockly.Xml.domToWorkspace(xml,Blockly.mainWorkspace);
   }
 }
 
@@ -74,7 +74,7 @@ function load(event) {
       if (count && confirm('Replace existing blocks?\n"Cancel" will merge.')) {
         Blockly.mainWorkspace.clear();
       }
-      Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
+      Blockly.Xml.domToWorkspace(xml,Blockly.mainWorkspace);
     }
     // Reset value of input after loading because Chrome will not fire
     // a 'change' event if the same file is loaded again.
@@ -162,7 +162,7 @@ function onSuccess() {
       if (count && confirm('Replace existing blocks?\n"Cancel" will merge.')) {
         Blockly.mainWorkspace.clear();
       }
-      Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
+      Blockly.Xml.domToWorkspace(xml,Blockly.mainWorkspace);
     } else {
       alert("Server error");
     }
