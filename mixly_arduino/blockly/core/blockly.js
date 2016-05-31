@@ -304,6 +304,10 @@ Blockly.onKeyDown_ = function(e) {
       // 'z' for undo 'Z' is for redo.
       Blockly.hideChaff();
       Blockly.mainWorkspace.undo(e.shiftKey);
+    } else if(e.keyCode == 89){
+	  // 'y' for redo
+	  Blockly.hideChaff();
+      Blockly.mainWorkspace.undo(1);
     }
   }
   if (deleteBlock) {
