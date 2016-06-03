@@ -224,14 +224,6 @@ Blockly.Arduino.finish = function(code) {
     if (def.match(/^#include/)) {
       imports.push(def);
     } else {
-		//if (name === 'variables') {
-        // Replace real types of variables if given, other than the default 'long'.
-        //def = def.replace(/long (\w+);/g, function (s, v) {
-          //var type = Blockly.Arduino.variableTypes_[v];
-          //if (type && type != 'long') return type + ' ' + v + ';';
-          //else return s;
-        //});
-      //}
       definitions.push(def);
     }
   }
@@ -242,8 +234,8 @@ Blockly.Arduino.finish = function(code) {
     setups.push(Blockly.Arduino.setups_[name]);
   }
 
-  var allDefs = imports.join('\n') + '\n\n' + definitions.join('\n') + '\nvoid setup() \n{\n  '+setups.join('\n  ') + '\n}'+ '\n\n';
-  return allDefs.replace(/\n\n+/g, '\n\n').replace(/\n*$/, '\n\n\n') + code;
+  var allDefs = imports.join('\n') + '\n\n' + definitions.join('\n') + '\n\nvoid setup() \n{\n  '+setups.join('\n  ') + '\n}'+ '\n\n';
+  return allDefs.replace(/\n\n+/g, '\n\n').replace(/\n*$/, '\n\n') + code;
 };
 
 /**
