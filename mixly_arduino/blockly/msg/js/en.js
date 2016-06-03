@@ -537,6 +537,7 @@ Blockly.LANG_VARIABLES_SET_TITLE='';
 Blockly.MIXLY_TEXT_JOIN='join';
 Blockly.MIXLY_SERIAL_AVAILABLE='isAvailable?';
 Blockly.MIXLY_SERIAL_READSTR='readString';
+Blockly.MIXLY_SERIAL_READSTR_UNTIL='readStringUntil';
 Blockly.MIXLY_SERIAL_READ='';
 Blockly.MIXLY_IR_RECIEVE_TOOLTIP='Do something when receiving infrared signals.';
 Blockly.MIXLY_IR_SEND_NEC_TOOLTIP='Sends Infrared signals of the specified type';

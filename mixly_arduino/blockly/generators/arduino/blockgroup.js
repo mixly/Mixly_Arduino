@@ -75,6 +75,17 @@ Blockly.Arduino.serial_readstr = function() {
    return [code,Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino.serial_readstr_until = function() {
+   var serial_select = this.getFieldValue('serial_select');
+   var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC);
+   if(Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial]){
+   }else{
+	 Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial] = serial_select+'.begin('+profile.default.serial+');';
+   }
+   var code =serial_select+".readStringUntil("+content+")";
+   return [code,Blockly.Arduino.ORDER_ATOMIC];
+};
+
 Blockly.Arduino.serial_parseInt_Float = function() {
    var serial_select = this.getFieldValue('serial_select');
    if(Blockly.Arduino.setups_['setup_serial_'+serial_select+profile.default.serial]){

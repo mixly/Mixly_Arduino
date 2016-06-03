@@ -536,6 +536,7 @@ Blockly.LANG_VARIABLES_SET_TITLE='赋值为';
 Blockly.MIXLY_TEXT_JOIN='连接';
 Blockly.MIXLY_SERIAL_AVAILABLE='有数据可读吗？';
 Blockly.MIXLY_SERIAL_READSTR='读取字符串';
+Blockly.MIXLY_SERIAL_READSTR_UNTIL='读取字符串直到';
 Blockly.MIXLY_SERIAL_READ='读取';
 Blockly.MIXLY_IR_RECIEVE_TOOLTIP='在接收到红外信号时进行用户自定义的处理。';
 Blockly.MIXLY_IR_SEND_NEC_TOOLTIP='发射指定类型的红外数据';

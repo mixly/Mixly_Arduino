@@ -92,6 +92,17 @@ Blockly.Blocks['serial_readstr'] = {
   }
 };
 
+Blockly.Blocks['serial_readstr_until'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blockgroup.HUE);
+	this.appendValueInput("CONTENT", Number)
+		.appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+        .appendField(Blockly.MIXLY_SERIAL_READSTR_UNTIL)
+		.setCheck(Number);
+	this.setOutput(true, String);
+  }
+};
+
 Blockly.Blocks['serial_parseInt_Float'] = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE);
