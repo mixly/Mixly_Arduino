@@ -558,6 +558,8 @@ Blockly.MIXLY_LCD_RGB_BACKLIGHT='LCD RGB Backlight';
 Blockly.MIXLY_DF_LCD='LCD';
 Blockly.MIXLY_LCD_PRINT1='imprimir linea1';
 Blockly.MIXLY_LCD_PRINT2='imprimir linea2';
+Blockly.MIXLY_LCD_PRINT3='imprimir linea3';
+Blockly.MIXLY_LCD_PRINT4='imprimir linea4';
 Blockly.MIXLY_LCD_ROW='fila';
 Blockly.MIXLY_LCD_COLUMN='columna';
 Blockly.MIXLY_LCD_PRINT='imprime';
@@ -686,7 +688,7 @@ Blockly.MIXLY_LABPLUS_ROBOT_DISPLAY_ZEBRA='zebra';
 Blockly.MIXLY_LABPLUS_ROBOT_DISPLAY_NOTHING='nada';
 Blockly.MIXLY_LABPLUS_ROBOT_LED_TOP='Configura Led en la parte superior';
 Blockly.MIXLY_LABPLUS_ROBOT_LED_SIDE='Establece color en los leds\' laterales';
-Blockly.MIXLY_LCD_ADDRESS="dirección LCD";
+Blockly.MIXLY_LCD_ADDRESS="dirección";
 var MSG = {
   catInOut: "Entrada/Salida",
   catControl: "Control",

@@ -559,6 +559,8 @@ Blockly.MIXLY_LCD_RGB_BACKLIGHT='液晶RGB背光屏';
 Blockly.MIXLY_DF_LCD='液晶显示屏';
 Blockly.MIXLY_LCD_PRINT1='打印第1行';
 Blockly.MIXLY_LCD_PRINT2='打印第2行';
+Blockly.MIXLY_LCD_PRINT3='打印第3行';
+Blockly.MIXLY_LCD_PRINT4='打印第4行';
 Blockly.MIXLY_LCD_ROW='在第';
 Blockly.MIXLY_LCD_COLUMN='行第';
 Blockly.MIXLY_LCD_PRINT='列打印';
@@ -687,7 +689,7 @@ Blockly.MIXLY_LABPLUS_ROBOT_DISPLAY_ZEBRA='斑马纹';
 Blockly.MIXLY_LABPLUS_ROBOT_DISPLAY_NOTHING='黑屏';
 Blockly.MIXLY_LABPLUS_ROBOT_LED_TOP='设置顶灯为';
 Blockly.MIXLY_LABPLUS_ROBOT_LED_SIDE='设置侧灯颜色为';
-Blockly.MIXLY_LCD_ADDRESS="液晶显示屏 设备地址";
+Blockly.MIXLY_LCD_ADDRESS="设备地址";
 var MSG = {
   catInOut: "输入/输出",
   catControl: "控制",
