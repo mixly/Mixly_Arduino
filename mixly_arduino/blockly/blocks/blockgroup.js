@@ -561,6 +561,7 @@ Blockly.Blocks.group_lcd_print = {
         .setCheck([String,Number])
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.MIXLY_LCD_PRINT2);
+	/*
 	this.appendValueInput("TEXT3", String)
         .setCheck([String,Number])
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -569,6 +570,7 @@ Blockly.Blocks.group_lcd_print = {
         .setCheck([String,Number])
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.MIXLY_LCD_PRINT4);
+	*/
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   }

@@ -446,19 +446,18 @@ Blockly.Arduino.group_lcd_print = function() {
   var varName = this.getFieldValue('VAR');
   var str1 = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
   var str2 = Blockly.Arduino.valueToCode(this, 'TEXT2', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
-  var str3 = Blockly.Arduino.valueToCode(this, 'TEXT3', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
-  var str4 = Blockly.Arduino.valueToCode(this, 'TEXT4', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
+  //var str3 = Blockly.Arduino.valueToCode(this, 'TEXT3', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
+  //var str4 = Blockly.Arduino.valueToCode(this, 'TEXT4', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
   Blockly.Arduino.setups_['setup_lcd_init_'+varName] = varName+'.init();';
   Blockly.Arduino.setups_['setup_lcd_backlight_'+varName] = varName+'.backlight();';
   var code = varName+'.setCursor(0, 0);\n'
   code+=varName+'.print('+str1+');\n';
   code+=varName+'.setCursor(0, 1);\n';
-  code+=varName+'.print('+str2+');\n';
-  
-  code+=varName+'.setCursor(0, 2);\n';
-  code+=varName+'.print('+str3+');\n';
-  code+=varName+'.setCursor(0, 3);\n';
-  code+=varName+'.print('+str4+');\n';
+  code+=varName+'.print('+str2+');\n';  
+  //code+=varName+'.setCursor(0, 2);\n';
+  //code+=varName+'.print('+str3+');\n';
+  //code+=varName+'.setCursor(0, 3);\n';
+  //code+=varName+'.print('+str4+');\n';
   return code;
 };
 
