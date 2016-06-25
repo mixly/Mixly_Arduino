@@ -890,6 +890,10 @@ Blockly.MIXLY_GPS_TIME_CENTISECOND='时间-厘秒';
 //factory
 Blockly.MIXLY_PARAMS = '参数';
 
+//MsTimer2
+Blockly.MIXLY_MSTIMER2_EVERY='每隔';
+Blockly.MIXLY_MSTIMER2_DO='执行函数';
+
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='该变量未声明';
 Blockly.MIXLY_LENGTH = "获取长度";

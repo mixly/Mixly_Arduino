@@ -126,3 +126,13 @@ Blockly.Arduino.controls_millis = function(){
   var code=unit+"()";
   return [code,Blockly.Arduino.ORDER_ATOMIC];
 };
+
+Blockly.Arduino.controls_mstimer2 = function(){
+  Blockly.Arduino.definitions_['define_MsTimer2'] = '#include <MsTimer2.h>';
+  var time = Blockly.Arduino.valueToCode(this, 'TIME', Blockly.Arduino.ORDER_ATOMIC);
+  var funcName = this.getFieldValue('VAR');
+  var branch = Blockly.Arduino.statementToCode(this, 'DO' );
+  var code='void'+ ' ' + funcName + '() {\n' + branch + '}\n';
+  Blockly.Arduino.definitions_[funcName] = code;
+  return 'MsTimer2::set('+time+', '+funcName+');\n'+'MsTimer2::start();\n';
+};

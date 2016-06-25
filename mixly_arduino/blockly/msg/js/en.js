@@ -891,6 +891,10 @@ Blockly.MIXLY_GPS_TIME_CENTISECOND='time-centisecond';
 //factory
 Blockly.MIXLY_PARAMS = 'parameters';
 
+//MsTimer2
+Blockly.MIXLY_MSTIMER2_EVERY='every';
+Blockly.MIXLY_MSTIMER2_DO='do';
+
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='This variable is not declared!';
 Blockly.MIXLY_LENGTH = "length of";

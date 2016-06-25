@@ -591,3 +591,20 @@ Blockly.Blocks['controls_default'] = {
   }
 };
 
+Blockly.Blocks.controls_mstimer2 = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+	this.appendValueInput('TIME')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_MSTIMER2_EVERY);
+    this.appendDummyInput()
+		.appendField('ms')
+		.appendField(Blockly.MIXLY_MSTIMER2_DO)
+		.appendField(new Blockly.FieldTextInput('myTimerFunc'), 'VAR');
+	this.appendStatementInput('DO')
+        .appendField('');
+	this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
