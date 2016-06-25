@@ -894,7 +894,9 @@ Blockly.MIXLY_PARAMS = '參數';
 
 //MsTimer2
 Blockly.MIXLY_MSTIMER2_EVERY='每隔';
-Blockly.MIXLY_MSTIMER2_DO='執行函數';
+Blockly.MIXLY_MSTIMER2_DO='執行';
+Blockly.MIXLY_MSTIMER2_START='啟動';
+Blockly.MIXLY_MSTIMER2_STOP='停止';
 
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='該變量未聲明';

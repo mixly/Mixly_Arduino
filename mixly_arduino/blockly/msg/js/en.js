@@ -894,6 +894,8 @@ Blockly.MIXLY_PARAMS = 'parameters';
 //MsTimer2
 Blockly.MIXLY_MSTIMER2_EVERY='every';
 Blockly.MIXLY_MSTIMER2_DO='do';
+Blockly.MIXLY_MSTIMER2_START='start';
+Blockly.MIXLY_MSTIMER2_STOP='stop';
 
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='This variable is not declared!';

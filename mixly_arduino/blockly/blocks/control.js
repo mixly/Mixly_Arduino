@@ -597,13 +597,34 @@ Blockly.Blocks.controls_mstimer2 = {
 	this.appendValueInput('TIME')
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
+		.appendField('MsTimer2')
         .appendField(Blockly.MIXLY_MSTIMER2_EVERY);
     this.appendDummyInput()
-		.appendField('ms')
-		.appendField(Blockly.MIXLY_MSTIMER2_DO)
-		.appendField(new Blockly.FieldTextInput('myTimerFunc'), 'VAR');
+		.appendField('ms');
 	this.appendStatementInput('DO')
-        .appendField('');
+        .appendField(Blockly.MIXLY_MSTIMER2_DO);
+	this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Blocks.controls_mstimer2_start = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendDummyInput()
+		.appendField('MsTimer2')
+		.appendField(Blockly.MIXLY_MSTIMER2_START);
+	this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Blocks.controls_mstimer2_stop = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendDummyInput()
+		.appendField('MsTimer2')
+		.appendField(Blockly.MIXLY_MSTIMER2_STOP);
 	this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
