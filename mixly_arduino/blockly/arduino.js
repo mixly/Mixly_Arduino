@@ -218,13 +218,16 @@ Blockly.Arduino.finish = function(code) {
 
   // Convert the definitions dictionary into a list.
   var imports = [];
-  var definitions = [];
+  var definitions_var = [];//变量定义
+  var definitions_fun = [];//函数定义
   for (var name in Blockly.Arduino.definitions_) {
     var def = Blockly.Arduino.definitions_[name];
     if (def.match(/^#include/)) {
       imports.push(def);
+    } else if(name.match(/^var_declare/)){
+      definitions_var.push(def);
     } else {
-      definitions.push(def);
+      definitions_fun.push(def);
     }
   }
 
@@ -234,7 +237,7 @@ Blockly.Arduino.finish = function(code) {
     setups.push(Blockly.Arduino.setups_[name]);
   }
 
-  var allDefs = imports.join('\n') + '\n\n' + definitions.join('\n') + '\n\nvoid setup() \n{\n  '+setups.join('\n  ') + '\n}'+ '\n\n';
+  var allDefs = imports.join('\n') + '\n\n' + definitions_var.join('\n') + '\n\n' + definitions_fun.join('\n') + '\n\nvoid setup() \n{\n  '+setups.join('\n  ') + '\n}'+ '\n\n';
   return allDefs.replace(/\n\n+/g, '\n\n').replace(/\n*$/, '\n\n') + code;
 };
 
