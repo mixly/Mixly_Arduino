@@ -72,9 +72,9 @@ Blockly.Blocks['text_join'] = {
   init: function() {
     this.setColour(Blockly.Blocks.texts.HUE);
     this.appendValueInput('A')
-        .setCheck(String);
+        .setCheck([String,Number]);
     this.appendValueInput('B')
-        .setCheck(String)
+        .setCheck([String,Number])
         .appendField(Blockly.MIXLY_TEXT_JOIN);
     this.setInputsInline(true);
 	this.setOutput(true, String);
