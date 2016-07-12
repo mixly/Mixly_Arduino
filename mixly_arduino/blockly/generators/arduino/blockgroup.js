@@ -108,8 +108,8 @@ Blockly.Arduino.serial_flush = function() {
 };
 
 Blockly.Arduino.serial_softserial = function() {
-  var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'TX',Blockly.Arduino.ORDER_ATOMIC);
-  var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'RX',Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'RX',Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'TX',Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['define_SoftwareSerial'] = '#include <SoftwareSerial.h>';
   Blockly.Arduino.definitions_['var_SoftwareSerial'] = 'SoftwareSerial mySerial('+dropdown_pin1+','+dropdown_pin2+');';
   return '';

@@ -137,14 +137,14 @@ Blockly.Blocks['serial_flush'] = {
 Blockly.Blocks['serial_softserial'] = {
   init: function() {
    this.setColour(Blockly.Blocks.blockgroup.HUE);
-   this.appendValueInput("TX", Number)
+   this.appendValueInput("RX", Number)
        .appendField(Blockly.MIXLY_SETUP)
 	   .appendField("SoftwareSerial")
-	   .appendField("TX#")
+	   .appendField("RX#")
        .setCheck(Number)
 	   .setAlign(Blockly.ALIGN_RIGHT);
-    this.appendValueInput("RX", Number)
-	   .appendField("RX#")
+    this.appendValueInput("TX", Number)
+	   .appendField("TX#")
        .setCheck(Number)
 	   .setAlign(Blockly.ALIGN_RIGHT);
     this.setPreviousStatement(true, null);
