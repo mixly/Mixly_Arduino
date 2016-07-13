@@ -30,8 +30,8 @@ Blockly.Arduino.math_arithmetic = function() {
   }
   if(operator==' % '){
     //取余必须是整数
-    argument0='(int) ('+argument0+')';
-	argument1='(int) ('+argument1+')';
+    argument0='(long) ('+argument0+')';
+	argument1='(long) ('+argument1+')';
   }
   code = argument0 + operator + argument1;
   return [code, order];
