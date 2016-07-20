@@ -66,6 +66,23 @@ Blockly.Blocks['math_arithmetic'] = {
   }
 };
 
+Blockly.Blocks['math_bit'] = {
+  init: function() {
+    var OPERATORS =
+        [['&', '&'],
+         ['|', '|']];
+    this.setColour(Blockly.Blocks.math.HUE);
+    this.setOutput(true, Number);
+    this.appendValueInput('A')
+        .setCheck(Number);
+    this.appendValueInput('B')
+        .setCheck(Number)
+        .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
+    this.setInputsInline(true);
+	this.setTooltip("位运算");
+  }
+};
+
 Blockly.Blocks['math_trig'] = {
   /**
    * Block for trigonometry operators.

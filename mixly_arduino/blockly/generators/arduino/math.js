@@ -37,6 +37,15 @@ Blockly.Arduino.math_arithmetic = function() {
   return [code, order];
 };
 
+Blockly.Arduino.math_bit = function() {
+  var operator = this.getFieldValue('OP');;
+  var order = Blockly.Arduino.ORDER_ATOMIC;
+  var argument0 = Blockly.Arduino.valueToCode(this, 'A', order) || '0';
+  var argument1 = Blockly.Arduino.valueToCode(this, 'B', order) || '0';
+  var code = '('+argument0 + operator + argument1+')';
+  return [code, order];
+};
+
 Blockly.Arduino.math_arithmetic.OPERATORS = {
   ADD: [' + ', Blockly.Arduino.ORDER_ADDITIVE],
   MINUS: [' - ', Blockly.Arduino.ORDER_ADDITIVE],
