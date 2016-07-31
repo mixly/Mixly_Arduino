@@ -629,3 +629,13 @@ Blockly.Blocks.controls_mstimer2_stop = {
     this.setNextStatement(true);
   }
 };
+
+Blockly.Blocks.controls_end_program = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendDummyInput()
+	    .appendField(Blockly.MIXLY_CONTROL_END_PROGRAM);
+	this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};

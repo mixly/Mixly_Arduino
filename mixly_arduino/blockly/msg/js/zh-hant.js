@@ -908,3 +908,4 @@ Blockly.MIXLY_COMPARETO="比較";
 Blockly.MIXLY_COMPARETO_HELP="按字典順序比較，相等則返回0，大於則返回大於0的值，小於則返回小於0的值";
 Blockly.Msg.UNDO = "還原";
 Blockly.Msg.REDO = "重試";
+Blockly.MIXLY_CONTROL_END_PROGRAM = "停止程序";

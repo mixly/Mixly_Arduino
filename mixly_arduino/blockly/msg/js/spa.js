@@ -905,3 +905,4 @@ Blockly.MIXLY_ENDSWITH="endsWith";
 Blockly.MIXLY_COMPARETO="compareTo";
 Blockly.Msg.UNDO = "Deshacer";
 Blockly.Msg.REDO = "Rehacer";
+Blockly.MIXLY_CONTROL_END_PROGRAM = "fin del programa";
