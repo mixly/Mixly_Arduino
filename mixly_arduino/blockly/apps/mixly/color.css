@@ -3,7 +3,11 @@
 }
 
 a{
-text-decoration:none;
+	text-decoration:none;
+	color:#ddd;
+}
+a:hover{
+	color:#999;
 }
 
 #tabRow>td {
@@ -99,14 +103,14 @@ td.tabcoyright {
   border-top-style: none !important;
   border-left-style: none !important;
   border-right-style: none !important;
-  width: 80%;
+  width: 75%;
   text-align: center;
 }
 td.tabmode {
   border-top-style: none !important;
   border-left-style: none !important;
   border-right-style: none !important;
-  width: 15%;
+  width: 20%;
   text-align: center;
 }
 table {
