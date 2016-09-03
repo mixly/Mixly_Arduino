@@ -450,6 +450,8 @@ Code.initLanguage = function() {
   //document.getElementById('linkButton').title = MSG['linkTooltip'];
   //document.getElementById('runButton').title = MSG['runTooltip'];
   //document.getElementById('trashButton').title = MSG['trashTooltip'];
+  document.getElementById('copyright').textContent = MSG['copyright'];
+  
   var textVars = document.getElementsByClassName('textVar');
   
   for (var i = 0, textVar; textVar = textVars[i]; i++) {

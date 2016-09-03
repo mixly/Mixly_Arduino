@@ -712,7 +712,8 @@ catSense:"盛思（盒子）",
 catSense2:"盛思（機器人）",
 catLuxe:"濼喜機器人",
 tab_blocks:"模塊",
-tab_arduino:"程式碼"
+tab_arduino:"程式碼",
+copyright:"Copyright © 北師大教育學部創客教育實驗室  maker.bnu.edu.cn"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='返回高電平或低電平';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='返回指定管脚的電平值';

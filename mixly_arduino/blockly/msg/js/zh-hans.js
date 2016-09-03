@@ -711,7 +711,8 @@ var MSG = {
   catSense2: "盛思(机器人)",
   catLuxe:"泺喜机器人",
   tab_blocks: "模块",
-  tab_arduino: "代码"
+  tab_arduino: "代码",
+  copyright:"Copyright © 北师大教育学部创客教育实验室  maker.bnu.edu.cn"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='返回高电平或低电平';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='返回指定管脚的电平值';
