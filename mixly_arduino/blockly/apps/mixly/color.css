@@ -4,10 +4,27 @@
 
 a{
 	text-decoration:none;
-	color:#ddd;
+	color:#999;
 }
 a:hover{
-	color:#999;
+	color:#000;
+}
+
+a.viewLeft{
+	padding:3px 10px 3px 10px;
+	background-color: #fff;
+    border: 1px solid #aaa;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+span.viewRight{
+	padding:3px 10px 3px 10px;
+	background-color: #aaa;
+    border: 1px solid #aaa;
+    border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	color:#fff;
 }
 
 #tabRow>td {
@@ -103,14 +120,14 @@ td.tabcoyright {
   border-top-style: none !important;
   border-left-style: none !important;
   border-right-style: none !important;
-  width: 75%;
+  width: 70%;
   text-align: center;
 }
 td.tabmode {
   border-top-style: none !important;
   border-left-style: none !important;
   border-right-style: none !important;
-  width: 20%;
+  width: 25%;
   text-align: center;
 }
 table {

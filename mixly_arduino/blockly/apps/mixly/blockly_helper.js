@@ -164,7 +164,7 @@ function onSuccess() {
       }
       Blockly.Xml.domToWorkspace(xml,Blockly.mainWorkspace);
     } else {
-      alert("Server error");
+      //alert("Server error");
     }
   }
 }
