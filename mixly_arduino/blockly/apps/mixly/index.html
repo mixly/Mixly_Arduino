@@ -276,8 +276,12 @@ function init() {
 			  <span id="copyright" style="font-family:arial;font-size:12px;color:#999;">copyright</span>
             </td>
 			<td class="tabmode">
-				<a href="index_simple.html" style="font-family:arial;font-size:12px;" title="切换到普通视图">普通视图</a>&nbsp;&nbsp;<span style="font-family:arial;font-size:12px;color:#06f;">高级视图</span>
+				<a id="viewMode1" href="index_simple.html" style="font-family:arial;font-size:12px;" >普通视图</a>&nbsp;&nbsp;<span id="viewMode2" style="font-family:arial;font-size:12px;color:#06f;">高级视图</span>
 			</td>
+			<script type="text/javascript">
+				var viewMode1 = document.getElementById('viewMode1');
+				viewMode1.href = 'index_simple.html?lang='+Code.LANG;
+			</script>
 			<td class="tabmin">
 			  <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
             </td>

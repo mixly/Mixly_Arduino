@@ -713,7 +713,9 @@ var MSG = {
   catLuxe:"LuxeRobot",
   tab_blocks: "Bloques",
   tab_arduino: "Código",
-  copyright:"Copyright © Mixly Team@BNU  maker.bnu.edu.cn"
+  copyright:"Copyright © Mixly Team@BNU  maker.bnu.edu.cn",
+  viewNormal:"Normal",
+  viewAdvanced:"Advanced"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='Devuelve alta o baja tensión.';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='Devuelve un valor digital de un Pin específico';

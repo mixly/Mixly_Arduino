@@ -138,9 +138,10 @@ Code.changeLanguage = function() {
   } else {
     search = search.replace(/\?/, '?lang=' + newLang + '&');
   }
-
+  
   window.location = window.location.protocol + '//' +
       window.location.host + window.location.pathname + search;
+  
 };
 
 /**
@@ -451,6 +452,8 @@ Code.initLanguage = function() {
   //document.getElementById('runButton').title = MSG['runTooltip'];
   //document.getElementById('trashButton').title = MSG['trashTooltip'];
   document.getElementById('copyright').textContent = MSG['copyright'];
+  document.getElementById('viewMode1').textContent = MSG['viewNormal'];
+  document.getElementById('viewMode2').textContent = MSG['viewAdvanced'];
   
   var textVars = document.getElementsByClassName('textVar');
   

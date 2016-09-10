@@ -715,7 +715,9 @@ var MSG = {
   catLuxe:"LuxeRobot",
   tab_blocks: "Blocks",
   tab_arduino: "Code",
-  copyright:"Copyright © Mixly Team@BNU  maker.bnu.edu.cn"
+  copyright:"Copyright © Mixly Team@BNU  maker.bnu.edu.cn",
+  viewNormal:"Normal",
+  viewAdvanced:"Advanced"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='Returns high or low voltage.';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='Returns digital value of a specific Port';
