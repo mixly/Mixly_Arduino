@@ -59,3 +59,29 @@ Blockly.Blocks.store_eeprom_read_long = {
     this.setOutput(true, Number);
   }
 };
+
+
+Blockly.Blocks.store_eeprom_write_byte = {
+  init: function() {
+    this.setColour(Blockly.Blocks.storage.HUE);
+    this.appendValueInput("ADDRESS", Number)
+		.setCheck(Number)
+        .appendField(Blockly.MIXLY_EEPROM_WRITE_BYTE);
+    this.appendValueInput("DATA", Number)
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_DATA);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  }
+};
+
+Blockly.Blocks.store_eeprom_read_byte = {
+  init: function() {
+    this.setColour(Blockly.Blocks.storage.HUE);
+    this.appendValueInput("ADDRESS", Number)
+		.setCheck(Number)
+        .appendField(Blockly.MIXLY_EEPROM_READ_BYTE);
+    this.setOutput(true, Number);
+  }
+};

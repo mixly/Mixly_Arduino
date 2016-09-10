@@ -67,3 +67,19 @@ Blockly.Arduino.store_eeprom_read_long = function() {
     Blockly.Arduino.definitions_[funcName] = code2;
     return [code,Blockly.Arduino.ORDER_ATOMIC];
 }
+
+
+
+Blockly.Arduino.store_eeprom_write_byte = function() {
+	var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
+	var data = Blockly.Arduino.valueToCode(this, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '0';
+	Blockly.Arduino.definitions_['define_eeprom'] = '#include <EEPROM.h>';
+	return 'EEPROM.write('+address+', '+data+');\n';
+}
+
+Blockly.Arduino.store_eeprom_read_byte = function() {
+	var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
+	Blockly.Arduino.definitions_['define_eeprom'] = '#include <EEPROM.h>';
+	var code ='EEPROM.read('+address+')';
+	return [code,Blockly.Arduino.ORDER_ATOMIC];
+}
