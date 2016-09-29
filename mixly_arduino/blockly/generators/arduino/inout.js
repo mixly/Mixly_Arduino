@@ -41,7 +41,7 @@ Blockly.Arduino.inout_digital_read = function() {
 Blockly.Arduino.inout_digital_read2 = function() {
   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
   var code = "";
-  if(window.isNaN(dropdown_pin)){
+  if(window.isNaN(dropdown_pin)&&!(new RegExp("^A([0-9]|10|11|12|13|14|15)$").test(dropdown_pin))){
 	var funcName='mixly_digitalRead';
 	var code2='int'+ ' ' + funcName + '(uint8_t pin) {\n' 
 	+ '  pinMode(pin, INPUT);\n'
