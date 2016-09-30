@@ -14,6 +14,20 @@ Blockly.Blocks['inout_highlow'] = {
   }
 };
 
+Blockly.Blocks['inout_pinMode'] = {
+   init: function() {
+    this.setColour(20);
+    this.appendDummyInput("")		
+		.appendField("pinMode")
+		.appendField(Blockly.MIXLY_PIN)
+		.appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+		.appendField(Blockly.MIXLY_MODE)
+        .appendField(new Blockly.FieldDropdown([["INPUT", "INPUT"], ["OUTPUT", "OUTPUT"], ["INPUT_PULLUP", "INPUT_PULLUP"]]), 'MODE')
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  }
+};
+
 Blockly.Blocks.inout_digital_write = {
   init: function() {
     this.setColour(20);
