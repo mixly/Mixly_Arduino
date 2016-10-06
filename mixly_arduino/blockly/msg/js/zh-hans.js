@@ -405,6 +405,10 @@ Blockly.Msg.CONTROLS_IF_ELSEIF_TITLE_ELSEIF = Blockly.Msg.CONTROLS_IF_MSG_ELSEIF
 Blockly.Msg.TEXT_APPEND_VARIABLE = Blockly.Msg.VARIABLES_DEFAULT_NAME;
 Blockly.Msg.CONTROLS_IF_ELSE_TITLE_ELSE = Blockly.Msg.CONTROLS_IF_MSG_ELSE;
 //luokailiang
+Blockly.MIXLY_PINMODE = '管脚模式';
+Blockly.MIXLY_PINMODEIN = '输入';
+Blockly.MIXLY_PINMODEOUT = '输出';
+Blockly.MIXLY_PINMODEPULLUP = '上拉输入';
 Blockly.MIXLY_DECLARE='声明';
 Blockly.MIXLY_AS='为';
 Blockly.MIXLY_VALUE='并赋值';

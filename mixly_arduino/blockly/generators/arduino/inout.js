@@ -11,7 +11,7 @@ Blockly.Arduino.inout_highlow = function() {
 };
 
 Blockly.Arduino.inout_pinMode = function() {
-  var dropdown_pin = this.getFieldValue('PIN');
+  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_mode = this.getFieldValue('MODE');
   var code = 'pinMode('+dropdown_pin+', '+dropdown_mode+');\n';
   return code;
