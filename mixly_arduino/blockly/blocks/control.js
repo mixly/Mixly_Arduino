@@ -28,7 +28,6 @@ Blockly.Blocks.base_delay = {
         .appendField(Blockly.MIXLY_DELAY)
 		.appendField(new Blockly.FieldDropdown(UNIT), 'UNIT')
         .setCheck(Number);
-    this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_DELAY);
