@@ -406,10 +406,7 @@ Blockly.Msg.CONTROLS_IF_ELSEIF_TITLE_ELSEIF = Blockly.Msg.CONTROLS_IF_MSG_ELSEIF
 Blockly.Msg.TEXT_APPEND_VARIABLE = Blockly.Msg.VARIABLES_DEFAULT_NAME;
 Blockly.Msg.CONTROLS_IF_ELSE_TITLE_ELSE = Blockly.Msg.CONTROLS_IF_MSG_ELSE;
 //luokailiang
-Blockly.MIXLY_PINMODE = 'pinMode'; //untranslated
 Blockly.MIXLY_PINMODEIN = 'INPUT'; //untranslated
-Blockly.MIXLY_PINMODEOUT = 'OUTPUT'; //untranslated
-Blockly.MIXLY_PINMODEPULLUP = 'INPUT_PULLUP'; //untranslated
 Blockly.MIXLY_DECLARE='Declarar';
 Blockly.MIXLY_AS='como';
 Blockly.MIXLY_VALUE='valor';

@@ -49,10 +49,10 @@ Blockly.Blocks.controls_for = {
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_TO);
-    this.appendDummyInput()
-        .appendField(Blockly.MIXLY_STEP)
-        .appendField(new Blockly.FieldTextInput('1',
-        Blockly.FieldTextInput.math_number_validator), 'STEP');
+    this.appendValueInput('STEP')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_STEP);
     this.appendStatementInput('DO')
         .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_DO);
     this.setPreviousStatement(true);
