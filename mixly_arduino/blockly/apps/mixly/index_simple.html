@@ -152,8 +152,9 @@ function renderContent() {
     // If the workspace was changed by the XML tab, Firefox will have performed
     // an incomplete rendering due to Blockly being invisible.  Rerender.
     Blockly.mainWorkspace.render();
-	var arduinoTextarea = document.getElementById('side_code');
-    arduinoTextarea.value = Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace);
+    var arduinoTextarea = document.getElementById('side_code');
+    var code = Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace) || '';
+    arduinoTextarea.value = code.replace(/(_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
   } else if (content.id == 'content_xml') {
     var xmlTextarea = document.getElementById('content_xml');
     var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
@@ -245,7 +246,8 @@ function init() {
 	  }
 	  //更新
 	  var arduinoTextarea = document.getElementById('side_code');
-      arduinoTextarea.value = Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace);
+	  var code = Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace) || '';
+	  arduinoTextarea.value = code.replace(/(_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
 	}
 	
   auto_save_and_restore_blocks();

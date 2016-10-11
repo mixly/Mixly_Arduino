@@ -62,7 +62,7 @@ Blockly.Arduino.controls_for = function() {
   var argument1 = Blockly.Arduino.valueToCode(this, 'TO',
       Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
   var step = Blockly.Arduino.valueToCode(this, 'STEP',
-      Blockly.Arduino.ORDER_ASSIGNMENT) || '0';;
+      Blockly.Arduino.ORDER_ASSIGNMENT) || '1';;
   var branch = Blockly.Arduino.statementToCode(this, 'DO');
   if (Blockly.Arduino.INFINITE_LOOP_TRAP) {
     branch = Blockly.Arduino.INFINITE_LOOP_TRAP.replace(/%1/g,
