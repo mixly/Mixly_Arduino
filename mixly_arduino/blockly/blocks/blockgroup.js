@@ -548,6 +548,45 @@ Blockly.Blocks.group_lcd_init2 = {
   }
 };
 
+Blockly.Blocks.group_lcd_init3 = {
+    init: function () {
+        this.setColour(Blockly.Blocks.blockgroup.HUE2);
+        this.appendValueInput("PIN1")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_SETUP)
+            .appendField(Blockly.MIXLY_DF_LCD)
+            .appendField(new Blockly.FieldDropdown([['1602', '16,2'], ['2004', '20,4']]), 'TYPE')
+            .appendField(new Blockly.FieldTextInput('mylcd'), 'VAR')
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField('rs');
+        this.appendValueInput("PIN2")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField('en')
+        this.appendValueInput("PIN3")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField('d1');
+        this.appendValueInput("PIN4")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField('d2')
+        this.appendValueInput("PIN5")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField('d3');
+        this.appendValueInput("PIN6")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField('d4')
+
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(true);
+    }
+};
+
 Blockly.Blocks.group_lcd_print = {
   init: function() {
     this.setColour(Blockly.Blocks.blockgroup.HUE2);

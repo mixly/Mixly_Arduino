@@ -440,7 +440,7 @@ Blockly.Arduino.group_lcd_init = function() {
   var TYPE = this.getFieldValue('TYPE');
   var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27';
   Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>';
-  Blockly.Arduino.definitions_['define_df_lcd'] = '#include <LiquidCrystal_I2C.h>';
+  Blockly.Arduino.definitions_['define_i2c_lcd'] = '#include <LiquidCrystal_I2C.h>';
   Blockly.Arduino.definitions_['var_LiquidCrystal_I2C_'+varName] = 'LiquidCrystal_I2C '+varName+'('+device+','+TYPE+');';
   return '';
 };
@@ -451,10 +451,27 @@ Blockly.Arduino.group_lcd_init2 = function() {
   var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27';
   var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'PIN1',Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'PIN2',Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.definitions_['define_i2c'] = '#include <SoftI2CMaster.h>';
-  Blockly.Arduino.definitions_['define_df_lcd'] = '#include <LiquidCrystal_SoftI2C.h>';
-  Blockly.Arduino.definitions_['var_LiquidCrystal_I2C_'+varName] = 'LiquidCrystal_SoftI2C '+varName+'('+device+','+TYPE+','+dropdown_pin1+','+dropdown_pin2+');';
+  Blockly.Arduino.definitions_['define_softi2c'] = '#include <SoftI2CMaster.h>';
+  Blockly.Arduino.definitions_['define_softi2c_lcd'] = '#include <LiquidCrystal_SoftI2C.h>';
+  Blockly.Arduino.definitions_['var_LiquidCrystal_SoftI2C_' + varName] = 'LiquidCrystal_SoftI2C ' + varName + '(' + device + ',' + TYPE + ',' + dropdown_pin1 + ',' + dropdown_pin2 + ');';
   return '';
+};
+
+Blockly.Arduino.group_lcd_init3 = function () {
+    var varName = this.getFieldValue('VAR');
+    var TYPE = this.getFieldValue('TYPE');
+    var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
+    var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
+    var dropdown_pin3 = Blockly.Arduino.valueToCode(this, 'PIN3', Blockly.Arduino.ORDER_ATOMIC);
+    var dropdown_pin4 = Blockly.Arduino.valueToCode(this, 'PIN4', Blockly.Arduino.ORDER_ATOMIC);
+    var dropdown_pin5 = Blockly.Arduino.valueToCode(this, 'PIN5', Blockly.Arduino.ORDER_ATOMIC);
+    var dropdown_pin6 = Blockly.Arduino.valueToCode(this, 'PIN6', Blockly.Arduino.ORDER_ATOMIC);
+
+    Blockly.Arduino.definitions_['define_lcd'] = '#include <LiquidCrystal.h>';
+    Blockly.Arduino.definitions_['var_LiquidCrystal' + varName] = 'LiquidCrystal ' + varName + '(' + dropdown_pin1 + ',' + dropdown_pin2 + ',' + dropdown_pin3 + ',' + dropdown_pin4 + ',' + dropdown_pin5 + ',' + dropdown_pin6 + ');';
+    Blockly.Arduino.setups_['setup_lcd_begin_' + varName] = varName + '.begin('+TYPE+');';
+   
+    return '';
 };
 
 Blockly.Arduino.group_lcd_print = function() {
@@ -463,8 +480,10 @@ Blockly.Arduino.group_lcd_print = function() {
   var str2 = Blockly.Arduino.valueToCode(this, 'TEXT2', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
   //var str3 = Blockly.Arduino.valueToCode(this, 'TEXT3', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
   //var str4 = Blockly.Arduino.valueToCode(this, 'TEXT4', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
-  Blockly.Arduino.setups_['setup_lcd_init_'+varName] = varName+'.init();';
-  Blockly.Arduino.setups_['setup_lcd_backlight_'+varName] = varName+'.backlight();';
+  if (Blockly.Arduino.definitions_['var_LiquidCrystal_SoftI2C_' + varName] || Blockly.Arduino.definitions_['var_LiquidCrystal_I2C_' + varName]) {
+      Blockly.Arduino.setups_['setup_lcd_init_' + varName] = varName + '.init();';
+      Blockly.Arduino.setups_['setup_lcd_backlight_' + varName] = varName + '.backlight();';
+  }
   var code = varName+'.setCursor(0, 0);\n'
   code+=varName+'.print('+str1+');\n';
   code+=varName+'.setCursor(0, 1);\n';
@@ -481,8 +500,10 @@ Blockly.Arduino.group_lcd_print2 = function() {
   var str = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC) || 'String(\"\")';
   var row = Blockly.Arduino.valueToCode(this, 'row', Blockly.Arduino.ORDER_ATOMIC) || '1';
   var column = Blockly.Arduino.valueToCode(this, 'column', Blockly.Arduino.ORDER_ATOMIC) || '1';
-  Blockly.Arduino.setups_['setup_lcd_init_'+varName] = varName+'.init();';
-  Blockly.Arduino.setups_['setup_lcd_backlight_'+varName] = varName+'.backlight();';
+  if (Blockly.Arduino.definitions_['var_LiquidCrystal_SoftI2C_' + varName] || Blockly.Arduino.definitions_['var_LiquidCrystal_I2C_' + varName]) {
+      Blockly.Arduino.setups_['setup_lcd_init_' + varName] = varName + '.init();';
+      Blockly.Arduino.setups_['setup_lcd_backlight_' + varName] = varName + '.backlight();';
+  }
   var code = varName+'.setCursor('+column+'-1, '+row+'-1);\n'
   code+=varName+'.print('+str+');\n';
   return code;
@@ -491,8 +512,10 @@ Blockly.Arduino.group_lcd_print2 = function() {
 Blockly.Arduino.group_lcd_power = function() {
   var varName = this.getFieldValue('VAR');
   var dropdown_stat = this.getFieldValue('STAT');
-  Blockly.Arduino.setups_['setup_lcd_init_'+varName] = varName+'.init();';
-  Blockly.Arduino.setups_['setup_lcd_backlight_'+varName] = varName+'.backlight();';
+  if (Blockly.Arduino.definitions_['var_LiquidCrystal_SoftI2C_' + varName] || Blockly.Arduino.definitions_['var_LiquidCrystal_I2C_' + varName]) {
+      Blockly.Arduino.setups_['setup_lcd_init_' + varName] = varName + '.init();';
+      Blockly.Arduino.setups_['setup_lcd_backlight_' + varName] = varName + '.backlight();';
+  }
   var code = varName+'.'+dropdown_stat+'();\n'
   return code;
 };
