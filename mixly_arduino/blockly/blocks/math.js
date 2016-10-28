@@ -70,7 +70,9 @@ Blockly.Blocks['math_bit'] = {
   init: function() {
     var OPERATORS =
         [['&', '&'],
-         ['|', '|']];
+         ['|', '|'],
+        ['>>', '>>'],
+        ['<<', '<<']];
     this.setColour(Blockly.Blocks.math.HUE);
     this.setOutput(true, Number);
     this.appendValueInput('A')

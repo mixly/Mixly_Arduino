@@ -481,7 +481,7 @@ Blockly.LANG_CONTROLS_FLOW_STATEMENTS_OPERATOR_CONTINUE = '跳到下一個';
 Blockly.LANG_CONTROLS_FLOW_STATEMENTS_WARNING = '警告：\n' +
 '這個模塊只能\n' +
 '用在迴圈中。';
-Blockly.LANG_MATH_INT = '整數';
+Blockly.LANG_MATH_INT = '短整數';
 Blockly.LANG_MATH_LONG = '整數';
 Blockly.LANG_MATH_FLOAT = '小數';
 Blockly.LANG_MATH_BOOLEAN = '布爾';

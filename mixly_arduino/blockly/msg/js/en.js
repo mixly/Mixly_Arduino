@@ -481,8 +481,8 @@ Blockly.LANG_CONTROLS_FLOW_STATEMENTS_OPERATOR_CONTINUE = 'continue with next it
 Blockly.LANG_CONTROLS_FLOW_STATEMENTS_WARNING = 'Warning:\n' +
     'This block may only\n' +
     'be used within a loop.';
-Blockly.LANG_MATH_INT = 'int';
 Blockly.LANG_MATH_LONG = 'long';
+Blockly.LANG_MATH_INT = 'int';
 Blockly.LANG_MATH_FLOAT = 'float';
 Blockly.LANG_MATH_BOOLEAN = 'boolean';
 Blockly.LANG_MATH_BYTE = 'byte';
