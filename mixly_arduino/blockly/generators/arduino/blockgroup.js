@@ -135,36 +135,6 @@ Blockly.Arduino.ir_recv = function() {
    code += '  if(results_'+dropdown_pin+'.decode_type>=1&&results_'+dropdown_pin+'.decode_type<=13){\n';
    code += '    type=typelist[results_'+dropdown_pin+'.decode_type];\n'
    code += '  }\n';
-   ////////////////////////////////////////////////////////////////
-   //code += '  switch(results_'+dropdown_pin+'.decode_type) {\n';
-   //code += '  case NEC:\n';
-   //code += '  	type="NEC";\n';
-   //code += '  	break;\n';
-   //code += '  case WHYNTER:\n';
-   //code += '  	type="WHYNTER";\n';
-   //code += '  	break;\n';
-   //code += '  case SONY:\n';
-   //code += '  	type="SONY";\n';
-   //code += '  	break;\n';
-   //code += '  case RC5:\n';
-   //code += '  	type="RC5";\n';
-   //code += '  	break;\n';
-   //code += '  case RC6:\n';
-   //code += '  	type="RC6";\n';
-   //code += '  	break;\n';
-   //code += '  case DISH:\n';
-   //code += '  	type="DISH";\n';
-   //code += '  	break;\n';
-   //code += '  case SHARP:\n';
-   //code += '  	type="SHARP";\n';
-   //code += '  	break;\n';
-   //code += '  case SAMSUNG:\n';
-   //code += '  	type="SAMSUNG";\n';
-   //code += '  	break;\n';
-   //code += '  default:\n';
-   //code += '  	type="UNKNOWN";\n';
-   //code += '  }\n';
-   ////////////////////////////////////////////////////////////////
    code += '  Serial.print("IR TYPE:"+type+"  ");\n';
    code += branch;
    code +='  irrecv_'+dropdown_pin+'.resume();\n'
@@ -172,6 +142,15 @@ Blockly.Arduino.ir_recv = function() {
    code +=branch2;
    code +='}\n';
    return code;
+};
+
+Blockly.Arduino.serial_event = function() {
+    var serial_select = this.getFieldValue('serial_select');
+    var funcName = 'attachPinInterrupt_fun_' + serial_select;
+    var branch = Blockly.Arduino.statementToCode(this, 'DO');
+    var code2 = 'void ' + serial_select.replace('Serial', 'serialEvent') + '() {\n' + branch + '}\n';
+    Blockly.Arduino.definitions_[funcName] = code2;
+    return "";
 };
 
 Blockly.Arduino.ir_recv_enable = function() {

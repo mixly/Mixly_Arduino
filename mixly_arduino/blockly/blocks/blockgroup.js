@@ -153,6 +153,20 @@ Blockly.Blocks['serial_softserial'] = {
   }
 };
 
+Blockly.Blocks['serial_event'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.blockgroup.HUE);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+            .appendField(Blockly.MIXLY_SERIAL_EVENT);
+        this.appendStatementInput('DO')
+            .appendField(Blockly.MIXLY_DO);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+    }
+};
+
+
 //红外接收模块
 Blockly.Blocks.ir_recv = {
   init: function() {

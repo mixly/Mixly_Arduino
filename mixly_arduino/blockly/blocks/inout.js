@@ -135,16 +135,7 @@ Blockly.Blocks.controls_attachInterrupt = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
-  }/*,
-  onchange: function() {
-	  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
-	  var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
-	  if(interrupt_pin=='NOT_AN_INTERRUPT'){
-		  this.setWarningText(Blockly.MIXLY_WARNING_INTERRUPT);
-	  }else{
-		  this.setWarningText(null);
-	  }
-  }*/
+  }
 };
 
 Blockly.Blocks.controls_detachInterrupt = {
@@ -156,16 +147,36 @@ Blockly.Blocks.controls_detachInterrupt = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_DETACHINTERRUPT);
-  }/*,
-  onchange: function() {
-	  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
-	  var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
-	  if(interrupt_pin=='NOT_AN_INTERRUPT'){
-		  this.setWarningText(Blockly.MIXLY_WARNING_INTERRUPT);
-	  }else{
-		  this.setWarningText(null);
-	  }
-  }*/
+  }
+};
+
+Blockly.Blocks.controls_attachPinInterrupt = {
+    init: function () {
+        this.setColour(20);
+        this.appendValueInput("PIN", Number)
+            .appendField(Blockly.MIXLY_ATTACHPININTERRUPT_PIN)
+            .setCheck(Number);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_MODE)
+            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RISING, "RISING"], [Blockly.MIXLY_FALLING, "FALLING"], [Blockly.MIXLY_CHANGE, "CHANGE"]]), "mode");
+        this.appendStatementInput('DO')
+            .appendField(Blockly.MIXLY_DO);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
+    }
+};
+
+Blockly.Blocks.controls_detachPinInterrupt = {
+    init: function () {
+        this.setColour(20);
+        this.appendValueInput("PIN", Number)
+            .appendField(Blockly.MIXLY_DETACHPININTERRUPT_PIN)
+            .setCheck(Number);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_DETACHINTERRUPT);
+    }
 };
 
 Blockly.Blocks.inout_pulseIn = {

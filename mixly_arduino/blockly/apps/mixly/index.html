@@ -357,7 +357,17 @@ function init() {
           <shadow type="pins_interrupt"></shadow>
         </value>
 	  </block>
-	  <block type="inout_pulseIn">
+        <block type="controls_attachPinInterrupt">
+            <value name="PIN">
+                <shadow type="pins_digital"></shadow>
+            </value>
+        </block>
+        <block type="controls_detachPinInterrupt">
+            <value name="PIN">
+                <shadow type="pins_digital"></shadow>
+            </value>
+        </block>
+      <block type="inout_pulseIn">
 		<value name="PIN">
           <shadow type="pins_digital"></shadow>
         </value>
@@ -655,6 +665,7 @@ function init() {
           <shadow type="pins_digital"></shadow>
         </value>
 	  </block>
+      <block type="serial_event"></block>
 	</category>
 	<category id="catGroup"  colour="140">
 	  <block type="ir_recv">
