@@ -105,7 +105,8 @@ Blockly.Blocks['ethernet_client_print'] = {
 		.setCheck(String)
         .appendField(Blockly.MIXLY_ETHERNET_CLINET_PRINT);
 	this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+	this.setNextStatement(true, null);
+	this.setInputsInline(true);
   }
 };
 
@@ -116,7 +117,8 @@ Blockly.Blocks['ethernet_client_println'] = {
 		.setCheck(String)
         .appendField(Blockly.MIXLY_ETHERNET_CLINET_PRINTLN);
 	this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+	this.setNextStatement(true, null);
+	this.setInputsInline(true);
   }
 };
 

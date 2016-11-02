@@ -76,6 +76,7 @@ Blockly.Blocks.inout_digital_read2 = {
 	this.appendValueInput("PIN", Number)
         .appendField(Blockly.MIXLY_DIGITALREAD_PIN)
         .setCheck(Number);
+	this.setInputsInline(true);
     this.setOutput(true, [Boolean,Number]);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ);
   }
@@ -103,7 +104,8 @@ Blockly.Blocks.inout_analog_read = {
 	this.appendValueInput("PIN", Number)
         .appendField(Blockly.MIXLY_ANALOGREAD_PIN)
         .setCheck(Number);
-	 this.setOutput(true, Number);
+	this.setInputsInline(true);
+	this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_READ);
   }
 };
@@ -146,6 +148,7 @@ Blockly.Blocks.controls_detachInterrupt = {
         .setCheck(Number);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setInputsInline(true);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_DETACHINTERRUPT);
   }
 };

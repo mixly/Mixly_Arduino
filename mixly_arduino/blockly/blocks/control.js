@@ -30,6 +30,7 @@ Blockly.Blocks.base_delay = {
         .setCheck(Number);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_DELAY);
   }
 };

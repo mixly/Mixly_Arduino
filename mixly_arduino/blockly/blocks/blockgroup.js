@@ -18,6 +18,7 @@ Blockly.Blocks['serial_begin'] = {
 		.setCheck(Number);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setInputsInline(true);
   }
 };
 
@@ -99,6 +100,7 @@ Blockly.Blocks['serial_readstr_until'] = {
 		.appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
         .appendField(Blockly.MIXLY_SERIAL_READSTR_UNTIL)
 		.setCheck(Number);
+	this.setInputsInline(true);
 	this.setOutput(true, String);
   }
 };
@@ -181,6 +183,7 @@ Blockly.Blocks.ir_recv = {
         .appendField(Blockly.MIXLY_IR_RECEIVE_NO);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setInputsInline(true);
 	this.setTooltip(Blockly.MIXLY_IR_RECIEVE_TOOLTIP);
   },
   getVars: function() {
@@ -223,6 +226,7 @@ Blockly.Blocks.ir_recv_enable = {
         .appendField(Blockly.MIXLY_IR_RECEIVE_ENABLE);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setInputsInline(true);
   }
 };
 
@@ -235,6 +239,7 @@ Blockly.Blocks.ir_recv_raw = {
         .setCheck(Number);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setInputsInline(true);
 	this.setTooltip(Blockly.MIXLY_IR_RECIEVE_RAW_TOOLTIP);
   }
 };
