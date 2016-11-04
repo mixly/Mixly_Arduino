@@ -920,6 +920,55 @@ function init() {
 			<shadow type="pins_digital"></shadow>
 		</value>
 	  </block>
+	  <block type="group_stepper_setup">
+		<value name="PIN1">
+			<shadow type="pins_digital"><field name="PIN">1</field></shadow>
+		</value>
+		<value name="PIN2">
+			<shadow type="pins_digital"><field name="PIN">2</field></shadow>
+		</value>
+		<value name="steps">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+		<value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+	  </block>
+	  <block type="group_stepper_setup2">
+		<value name="PIN1">
+			<shadow type="pins_digital"><field name="PIN">1</field></shadow>
+		</value>
+		<value name="PIN2">
+			<shadow type="pins_digital"><field name="PIN">2</field></shadow>
+		</value>
+		<value name="PIN3">
+			<shadow type="pins_digital"><field name="PIN">3</field></shadow>
+		</value>
+		<value name="PIN4">
+			<shadow type="pins_digital"><field name="PIN">4</field></shadow>
+		</value>
+		<value name="steps">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+		<value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+	  </block>
+	  <block type="group_stepper_move">
+		<value name="step">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+	  </block>
 	</category>
 	<category id="catMonitor" colour="100">
 	  <block type="group_lcd_init">
@@ -1009,55 +1058,6 @@ function init() {
 	  </block>
 	  <block type="group_lcd_power">
 		<field name="STAT">clear</field>
-	  </block>
-	  <block type="group_stepper_setup">
-		<value name="PIN1">
-			<shadow type="pins_digital"><field name="PIN">1</field></shadow>
-		</value>
-		<value name="PIN2">
-			<shadow type="pins_digital"><field name="PIN">2</field></shadow>
-		</value>
-		<value name="steps">
-          <shadow type="math_number">
-            <field name="NUM">100</field>
-          </shadow>
-        </value>
-		<value name="speed">
-          <shadow type="math_number">
-            <field name="NUM">10</field>
-          </shadow>
-        </value>
-	  </block>
-	  <block type="group_stepper_setup2">
-		<value name="PIN1">
-			<shadow type="pins_digital"><field name="PIN">1</field></shadow>
-		</value>
-		<value name="PIN2">
-			<shadow type="pins_digital"><field name="PIN">2</field></shadow>
-		</value>
-		<value name="PIN3">
-			<shadow type="pins_digital"><field name="PIN">3</field></shadow>
-		</value>
-		<value name="PIN4">
-			<shadow type="pins_digital"><field name="PIN">4</field></shadow>
-		</value>
-		<value name="steps">
-          <shadow type="math_number">
-            <field name="NUM">100</field>
-          </shadow>
-        </value>
-		<value name="speed">
-          <shadow type="math_number">
-            <field name="NUM">10</field>
-          </shadow>
-        </value>
-	  </block>
-	  <block type="group_stepper_move">
-		<value name="step">
-          <shadow type="math_number">
-            <field name="NUM">10</field>
-          </shadow>
-        </value>
 	  </block>
 	</category>
 	<category id="catEthernet" colour="0">
