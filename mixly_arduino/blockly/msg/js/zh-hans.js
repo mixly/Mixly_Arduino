@@ -711,6 +711,7 @@ var MSG = {
   catStorage:"存储",
   catSensor: "传感器",
   catActuator: "执行器",
+  catMonitor:"显示器",
   catVar: "变量",
   catFun: "函数",
   catEthernet:"以太网",

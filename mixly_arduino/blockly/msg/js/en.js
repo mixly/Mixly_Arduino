@@ -712,6 +712,7 @@ var MSG = {
   catStorage:"Storage",
   catSensor: "Sensor",
   catActuator: "Actuator",
+  catMonitor:"Monitor",
   catVar: "Variables",
   catFun: "Functions",
   catEthernet:"Ethernet",
