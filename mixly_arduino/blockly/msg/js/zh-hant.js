@@ -922,3 +922,17 @@ Blockly.MIXLY_COMPARETO_HELP="按字典順序比較，相等則返回0，大於�
 Blockly.Msg.UNDO = "還原";
 Blockly.Msg.REDO = "重試";
 Blockly.MIXLY_CONTROL_END_PROGRAM = "停止程序";
+
+Blockly.Msg.texttodisplay = "顯示文本：";
+Blockly.Msg.numtodisplay = "顯示數位：";
+Blockly.Msg.todisplay = "顯示：";
+Blockly.Msg.rawx = "行座標x:(最大127)";
+Blockly.Msg.liney = "列座標y:(最大63)";
+Blockly.Msg.line1 = "第一行";
+Blockly.Msg.line2 = "第二行";
+Blockly.Msg.line3 = "第三行";
+Blockly.Msg.line4 = "第四行";
+Blockly.Msg.num1 = "數字1";
+Blockly.Msg.num2 = "數字2";
+Blockly.Msg.num3 = "數字3";
+Blockly.Msg.num4 = "數字4";
