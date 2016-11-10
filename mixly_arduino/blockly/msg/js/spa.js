@@ -919,3 +919,18 @@ Blockly.MIXLY_COMPARETO="compareTo";
 Blockly.Msg.UNDO = "Deshacer";
 Blockly.Msg.REDO = "Rehacer";
 Blockly.MIXLY_CONTROL_END_PROGRAM = "fin del programa";
+
+//oled
+Blockly.Msg.texttodisplay = "texts to display:";
+Blockly.Msg.numtodisplay = "number to display";
+Blockly.Msg.todisplay = "to display:";
+Blockly.Msg.rawx = "raw x(127 max)";
+Blockly.Msg.liney = "line y(63 max)";
+Blockly.Msg.line1 = "line1=";
+Blockly.Msg.line2 = "line2=";
+Blockly.Msg.line3 = "line3=";
+Blockly.Msg.line4 = "line4=";
+Blockly.Msg.num1 = "Number 1(at end)=";
+Blockly.Msg.num2 = "Number 2(at end)=";
+Blockly.Msg.num3 = "Number 3(at end)=";
+Blockly.Msg.num4 = "Number 4(at end)=";

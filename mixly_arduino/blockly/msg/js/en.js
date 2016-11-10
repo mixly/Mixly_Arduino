@@ -921,6 +921,7 @@ Blockly.Msg.UNDO = "Undo";
 Blockly.Msg.REDO = "Redo";
 Blockly.MIXLY_CONTROL_END_PROGRAM = "end program";
 
+//oled
 Blockly.Msg.texttodisplay = "texts to display:";
 Blockly.Msg.numtodisplay = "number to display";
 Blockly.Msg.todisplay = "to display:";
