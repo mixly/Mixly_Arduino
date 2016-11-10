@@ -317,6 +317,14 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../media/mark/act2.png') no-repeat;
 	background-size: 100% auto; 
 }
+#\:c>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../media/mark/monitor.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:c>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../media/mark/monitor2.png') no-repeat;
+	background-size: 100% auto; 
+}
 #\:d>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
 	background:url('../../media/mark/net.png') no-repeat;
 	background-size: 100% auto; 
