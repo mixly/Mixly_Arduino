@@ -8,6 +8,7 @@ Blockly.Blocks.blockgroup.HUE = 65;
 Blockly.Blocks.blockgroup.HUE1 = 40;
 Blockly.Blocks.blockgroup.HUE2 = 100;
 Blockly.Blocks.blockgroup.HUE3 = 140;
+Blockly.Blocks.blockgroup.HUE4 = 180;
 
 Blockly.Blocks['serial_begin'] = {
   init: function() {
@@ -527,7 +528,7 @@ init:function(){
 
 Blockly.Blocks.group_lcd_init = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE2);
+    this.setColour(Blockly.Blocks.blockgroup.HUE4);
 	this.appendValueInput('device')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
@@ -544,7 +545,7 @@ Blockly.Blocks.group_lcd_init = {
 
 Blockly.Blocks.group_lcd_init2 = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE2);
+    this.setColour(Blockly.Blocks.blockgroup.HUE4);
 	this.appendValueInput('device')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
@@ -569,7 +570,7 @@ Blockly.Blocks.group_lcd_init2 = {
 
 Blockly.Blocks.group_lcd_init3 = {
     init: function () {
-        this.setColour(Blockly.Blocks.blockgroup.HUE2);
+        this.setColour(Blockly.Blocks.blockgroup.HUE4);
         this.appendValueInput("PIN1")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.MIXLY_SETUP)
@@ -608,7 +609,7 @@ Blockly.Blocks.group_lcd_init3 = {
 
 Blockly.Blocks.group_lcd_print = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE2);
+      this.setColour(Blockly.Blocks.blockgroup.HUE4);
     this.appendValueInput("TEXT", String)
         .setCheck([String,Number])
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -636,7 +637,7 @@ Blockly.Blocks.group_lcd_print = {
 
 Blockly.Blocks.group_lcd_print2 = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE2);
+      this.setColour(Blockly.Blocks.blockgroup.HUE4);
 	this.appendValueInput("row", Number)
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -659,7 +660,7 @@ Blockly.Blocks.group_lcd_print2 = {
 
 Blockly.Blocks.group_lcd_power = {
   init: function() {
-    this.setColour(Blockly.Blocks.blockgroup.HUE2);
+      this.setColour(Blockly.Blocks.blockgroup.HUE4);
     this.appendDummyInput()
 		.appendField(Blockly.MIXLY_DF_LCD)
 		.appendField(new Blockly.FieldTextInput('mylcd'), 'VAR')
@@ -765,7 +766,7 @@ Blockly.Blocks.lp2i_u8g_draw_string = {
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour("#1B2944");
+        this.setColour(Blockly.Blocks.blockgroup.HUE4);
         this.setTooltip('');
       }
 };
@@ -792,7 +793,7 @@ Blockly.Blocks.lp2i_u8g_draw_4strings = {
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour("#1B2944");
+        this.setColour(Blockly.Blocks.blockgroup.HUE4);
         this.setTooltip('');
     }
 };
@@ -813,7 +814,7 @@ Blockly.Blocks.lp2i_u8g_print = {
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour("#1B2944");
+        this.setColour(Blockly.Blocks.blockgroup.HUE4);
         this.setTooltip('');
     }
 };
@@ -852,7 +853,7 @@ Blockly.Blocks.lp2i_u8g_4draw_print = {
         this.setInputsInline(false);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour("#1B2944");
+        this.setColour(Blockly.Blocks.blockgroup.HUE4);
         this.setTooltip('');
     }
 };
