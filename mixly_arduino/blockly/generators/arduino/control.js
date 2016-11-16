@@ -156,5 +156,5 @@ Blockly.Arduino.controls_interrupts = function () {
 };
 
 Blockly.Arduino.controls_nointerrupts = function () {
-    return 'nointerrupts();\n';
+    return 'noInterrupts();\n';
 };
