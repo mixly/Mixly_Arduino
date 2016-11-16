@@ -908,6 +908,9 @@ Blockly.MIXLY_MSTIMER2_EVERY='每隔';
 Blockly.MIXLY_MSTIMER2_DO='执行';
 Blockly.MIXLY_MSTIMER2_START='启动';
 Blockly.MIXLY_MSTIMER2_STOP='停止';
+//interrupts
+Blockly.MIXLY_CONTROL_INTERRUPTS = '允许中断';
+Blockly.MIXLY_CONTROL_NOINTERRUPTS = '禁止中断';
 
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='该变量未声明';

@@ -639,3 +639,23 @@ Blockly.Blocks.controls_end_program = {
     this.setNextStatement(true);
   }
 };
+
+Blockly.Blocks.controls_interrupts = {
+    init: function () {
+        this.setColour(Blockly.Blocks.loops.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_CONTROL_INTERRUPTS);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+    }
+};
+
+Blockly.Blocks.controls_nointerrupts = {
+    init: function () {
+        this.setColour(Blockly.Blocks.loops.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_CONTROL_NOINTERRUPTS);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+    }
+};

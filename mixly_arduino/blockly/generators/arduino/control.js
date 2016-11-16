@@ -151,3 +151,10 @@ Blockly.Arduino.controls_mstimer2_stop = function(){
 Blockly.Arduino.controls_end_program = function(){
   return 'while(true);\n';
 };
+Blockly.Arduino.controls_interrupts = function () {
+    return 'interrupts();\n';
+};
+
+Blockly.Arduino.controls_nointerrupts = function () {
+    return 'nointerrupts();\n';
+};

@@ -910,6 +910,10 @@ Blockly.MIXLY_MSTIMER2_EVERY='每隔';
 Blockly.MIXLY_MSTIMER2_DO='執行';
 Blockly.MIXLY_MSTIMER2_START='啟動';
 Blockly.MIXLY_MSTIMER2_STOP='停止';
+//interrupts
+Blockly.MIXLY_CONTROL_INTERRUPTS = '允許中斷';
+Blockly.MIXLY_CONTROL_NOINTERRUPTS = '禁止中斷';
+
 
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='該變量未聲明';

@@ -910,6 +910,10 @@ Blockly.MIXLY_MSTIMER2_DO='do';
 Blockly.MIXLY_MSTIMER2_START='start';
 Blockly.MIXLY_MSTIMER2_STOP='stop';
 
+//interrupts
+Blockly.MIXLY_CONTROL_INTERRUPTS = 'interrupts';
+Blockly.MIXLY_CONTROL_NOINTERRUPTS = 'nointerrupts';
+
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='This variable is not declared!';
 Blockly.MIXLY_LENGTH = "length of";

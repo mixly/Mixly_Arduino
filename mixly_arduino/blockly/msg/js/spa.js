@@ -908,7 +908,9 @@ Blockly.MIXLY_MSTIMER2_EVERY='every';
 Blockly.MIXLY_MSTIMER2_DO='do';
 Blockly.MIXLY_MSTIMER2_START='start';
 Blockly.MIXLY_MSTIMER2_STOP='stop';
-
+//interrupts
+Blockly.MIXLY_CONTROL_INTERRUPTS = 'interrupciones';
+Blockly.MIXLY_CONTROL_NOINTERRUPTS = 'no interrupciones';
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='This variable is not declared!';
 Blockly.MIXLY_LENGTH = "longitud de";
