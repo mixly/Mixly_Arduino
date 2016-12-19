@@ -938,3 +938,18 @@ Blockly.Msg.num1 = "数字1";
 Blockly.Msg.num2 = "数字2";
 Blockly.Msg.num3 = "数字3";
 Blockly.Msg.num4 = "数字4";
+// RGB
+Blockly.MIXLY_RUILONG_RGB = 'RGB灯';
+Blockly.MIXLY_RUILONG_RGB_NUM = '灯号(1~4)';
+Blockly.MIXLY_RUILONG_RGB_R = 'R值';
+Blockly.MIXLY_RUILONG_RGB_G = 'G值';
+Blockly.MIXLY_RUILONG_RGB_B = 'B值';
+
+//四位数码管
+Blockly.MIXLY_RUILONG_4DIGITDISPLAY = '四位数码管';
+Blockly.MIXLY_RUILONG_4DIGITDISPLAY_DISPLAYSTRING = '显示字符串';
+Blockly.MIXLY_RUILONG_4DIGITDISPLAY_NOMBER1 = '第';
+Blockly.MIXLY_RUILONG_4DIGITDISPLAY_NOMBER2 = '个';
+Blockly.MIXLY_RUILONG_4DIGITDISPLAY_DOT = '小数点';
+Blockly.MIXLY_RUILONG_4DIGITDISPLAY_ON = '亮';
+Blockly.MIXLY_RUILONG_4DIGITDISPLAY_OFF = '灭';
