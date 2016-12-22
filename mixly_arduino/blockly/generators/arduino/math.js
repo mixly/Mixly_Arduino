@@ -157,6 +157,12 @@ Blockly.Arduino.math_max_min = function() {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino.math_random_seed = function () {
+    // Random integer between [X] and [Y].
+    var code = 'randomSeed(micros());';
+    return [code, Blockly.Arduino.ORDER_UNARY_POSTFIX];
+};
+
 Blockly.Arduino.math_random_int = function() {
   // Random integer between [X] and [Y].
   var argument0 = Blockly.Arduino.valueToCode(this, 'FROM',

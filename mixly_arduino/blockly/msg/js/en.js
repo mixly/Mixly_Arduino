@@ -497,6 +497,7 @@ Blockly.LANG_LISTS_SET_INDEX_TOOLTIP = 'Sets the value at the specified position
 Blockly.LANG_MATH_CONSTRAIN_INPUT_CONSTRAIN = 'Constrain';
 Blockly.LANG_MATH_CONSTRAIN_INPUT_LOW = 'between (low)';
 Blockly.LANG_MATH_CONSTRAIN_INPUT_HIGH = 'and (high)';
+Blockly.LANG_MATH_RANDOM_SEED = 'random seed';
 Blockly.LANG_MATH_RANDOM_INT_INPUT_FROM = 'random integer from';
 Blockly.LANG_MATH_RANDOM_INT_INPUT_TO = 'to';
 Blockly.MIXLY_DF_LED='LED';

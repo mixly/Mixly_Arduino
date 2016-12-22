@@ -183,6 +183,16 @@ Blockly.Blocks['math_max_min']= {
   }
 };
 
+Blockly.Blocks['math_random_seed'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.math.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.LANG_MATH_RANDOM_SEED);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+    }
+};
+
 Blockly.Blocks['math_random_int'] = {
   /**
    * Block for random integer between [X] and [Y].
