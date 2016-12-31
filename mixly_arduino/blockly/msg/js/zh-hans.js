@@ -480,8 +480,8 @@ Blockly.LANG_CONTROLS_FLOW_STATEMENTS_OPERATOR_CONTINUE = '跳到下一个';
 Blockly.LANG_CONTROLS_FLOW_STATEMENTS_WARNING = '警告：\n' +
     '这个模块只能\n' +
     '用在循环中。';
-Blockly.LANG_MATH_INT = '短整数';
-Blockly.LANG_MATH_LONG = '整数';
+Blockly.LANG_MATH_INT = '整数';
+Blockly.LANG_MATH_LONG = '长整数';
 Blockly.LANG_MATH_FLOAT = '小数';
 Blockly.LANG_MATH_BOOLEAN = '布尔';
 Blockly.LANG_MATH_BYTE = '字节';

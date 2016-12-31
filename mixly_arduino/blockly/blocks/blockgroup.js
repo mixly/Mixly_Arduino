@@ -930,7 +930,7 @@ Blockly.Blocks.display_4digitdisplay_displayString = {
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_RUILONG_4DIGITDISPLAY)
         this.appendValueInput("VALUE")
-            .setCheck(String)
+//            .setCheck(String)
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.MIXLY_RUILONG_4DIGITDISPLAY_DISPLAYSTRING);
         this.setInputsInline(true);
