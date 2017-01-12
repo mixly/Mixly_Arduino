@@ -1,1 +1,1 @@
-profile["default"] = profile["Arduino Uno"];
+profile["default"] = profile["Arduino Nano"];

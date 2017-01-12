@@ -316,19 +316,19 @@ Blockly.Arduino.ds18b20 = function() {
 	var unit = this.getFieldValue('UNIT');
 	Blockly.Arduino.definitions_['define_OneWire'] = '#include <OneWire.h>';
 	Blockly.Arduino.definitions_['define_DallasTemperature'] = '#include <DallasTemperature.h>';
-	Blockly.Arduino.definitions_['var_OneWire_oneWire'] = 'OneWire oneWire'+'('+dropdown_pin+');';
-	Blockly.Arduino.definitions_['var_DallasTemperature_sensors'] = 'DallasTemperature sensors(&oneWire);';
+	Blockly.Arduino.definitions_['var_OneWire_oneWire_'+dropdown_pin] = 'OneWire oneWire_'+dropdown_pin+'('+dropdown_pin+');';
+	Blockly.Arduino.definitions_['var_DallasTemperature_sensors_'+dropdown_pin] = 'DallasTemperature sensors_'+dropdown_pin+'(&oneWire_'+dropdown_pin+');';
 	Blockly.Arduino.definitions_['var_DeviceAddress_insideThermometer'] = 'DeviceAddress insideThermometer;';
-	Blockly.Arduino.setups_['setup_sensors_getAddress'] = 'sensors.getAddress(insideThermometer, 0);';
-	Blockly.Arduino.setups_['setup_sensors_setResolution'] = 'sensors.setResolution(insideThermometer, 9);';
-	var funcName='ds18b20_getTemp';
+	Blockly.Arduino.setups_['setup_sensors_'+dropdown_pin+'_getAddress'] = 'sensors_'+dropdown_pin+'.getAddress(insideThermometer, 0);';
+	Blockly.Arduino.setups_['setup_sensors_'+dropdown_pin+'_setResolution'] = 'sensors_'+dropdown_pin+'.setResolution(insideThermometer, 9);';
+	var funcName = 'ds18b20_' + dropdown_pin + '_getTemp';
 	var code='float'+ ' ' + funcName + '(int w) {\n' 
-	+ '  sensors.requestTemperatures();\n'
-	+ '  if(w==0) {return sensors.getTempC(insideThermometer);}\n'
-	+ '  else {return sensors.getTempF(insideThermometer);}\n'
+	+ '  sensors_' + dropdown_pin + '.requestTemperatures();\n'
+	+ '  if(w==0) {return sensors_' + dropdown_pin + '.getTempC(insideThermometer);}\n'
+	+ '  else {return sensors_' + dropdown_pin + '.getTempF(insideThermometer);}\n'
 	+ '}\n';
     Blockly.Arduino.definitions_[funcName] = code;
-	return ['ds18b20_getTemp('+unit+')', Blockly.Arduino.ORDER_ATOMIC];
+    return ['ds18b20_'+dropdown_pin+'_getTemp('+unit+')', Blockly.Arduino.ORDER_ATOMIC];
 }
 
 Blockly.Arduino.servo_move = function() {
