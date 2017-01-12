@@ -941,17 +941,18 @@ Blockly.Msg.num2 = "Number 2(at end)=";
 Blockly.Msg.num3 = "Number 3(at end)=";
 Blockly.Msg.num4 = "Number 4(at end)=";
 // RGB
-Blockly.MIXLY_RUILONG_RGB = 'RGB Light';
-Blockly.MIXLY_RUILONG_RGB_NUM = 'Light number(1~4)';
-Blockly.MIXLY_RUILONG_RGB_R = 'R value';
-Blockly.MIXLY_RUILONG_RGB_G = 'G value';
-Blockly.MIXLY_RUILONG_RGB_B = 'B value';
+Blockly.MIXLY_RGB = 'RGB Light';
+Blockly.MIXLY_RGB_NUM = 'Light number';
+Blockly.MIXLY_RGB_COUNT = 'Light Count';
+Blockly.MIXLY_RGB_R = 'R value';
+Blockly.MIXLY_RGB_G = 'G value';
+Blockly.MIXLY_RGB_B = 'B value';
 
 //四位数码管
-Blockly.MIXLY_RUILONG_4DIGITDISPLAY = 'Digitdisplay';
-Blockly.MIXLY_RUILONG_4DIGITDISPLAY_DISPLAYSTRING = 'displayString';
-Blockly.MIXLY_RUILONG_4DIGITDISPLAY_NOMBER1 = 'No.';
-Blockly.MIXLY_RUILONG_4DIGITDISPLAY_NOMBER2 = '';
-Blockly.MIXLY_RUILONG_4DIGITDISPLAY_DOT = 'Dot';
-Blockly.MIXLY_RUILONG_4DIGITDISPLAY_ON = 'On';
-Blockly.MIXLY_RUILONG_4DIGITDISPLAY_OFF = 'Off';
+Blockly.MIXLY_4DIGITDISPLAY = 'Digitdisplay';
+Blockly.MIXLY_4DIGITDISPLAY_DISPLAYSTRING = 'displayString';
+Blockly.MIXLY_4DIGITDISPLAY_NOMBER1 = 'No.';
+Blockly.MIXLY_4DIGITDISPLAY_NOMBER2 = '';
+Blockly.MIXLY_4DIGITDISPLAY_DOT = 'Dot';
+Blockly.MIXLY_4DIGITDISPLAY_ON = 'On';
+Blockly.MIXLY_4DIGITDISPLAY_OFF = 'Off';

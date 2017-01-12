@@ -859,11 +859,31 @@ Blockly.Blocks.lp2i_u8g_4draw_print = {
 };
 //
 //RGB
+Blockly.Blocks.display_rgb_init = {
+    init: function () {
+        this.setColour(Blockly.Blocks.blockgroup.HUE4);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_RGB)
+        this.appendValueInput("PIN", Number)
+           .setCheck(Number)
+           .setAlign(Blockly.ALIGN_RIGHT)
+           .appendField(Blockly.MIXLY_PIN);
+        this.appendValueInput("LEDCOUNT")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_RGB_COUNT);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip('');
+    }
+};
+
 Blockly.Blocks.display_rgb = {
     init: function () {
         this.setColour(Blockly.Blocks.blockgroup.HUE4);
         this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_RUILONG_RGB)
+            .appendField(Blockly.MIXLY_RGB)
          this.appendValueInput("PIN", Number)
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -871,19 +891,19 @@ Blockly.Blocks.display_rgb = {
         this.appendValueInput("_LED_")
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MIXLY_RUILONG_RGB_NUM);
+            .appendField(Blockly.MIXLY_RGB_NUM);
         this.appendValueInput("RVALUE")
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MIXLY_RUILONG_RGB_R);
+            .appendField(Blockly.MIXLY_RGB_R);
         this.appendValueInput("GVALUE")
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MIXLY_RUILONG_RGB_G);
+            .appendField(Blockly.MIXLY_RGB_G);
         this.appendValueInput("BVALUE")
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MIXLY_RUILONG_RGB_B);
+            .appendField(Blockly.MIXLY_RGB_B);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -894,7 +914,7 @@ Blockly.Blocks.display_rgb2 = {
     init: function () {
         this.setColour(Blockly.Blocks.blockgroup.HUE4);
         this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_RUILONG_RGB)
+            .appendField(Blockly.MIXLY_RGB)
          this.appendValueInput("PIN", Number)
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -902,7 +922,7 @@ Blockly.Blocks.display_rgb2 = {
         this.appendValueInput("_LED_")
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MIXLY_RUILONG_RGB_NUM);
+            .appendField(Blockly.MIXLY_RGB_NUM);
         this.appendDummyInput("")
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(new Blockly.FieldColour("#ff0000"), "RGB_LED_COLOR");
@@ -916,7 +936,7 @@ Blockly.Blocks.display_4digitdisplay_power = {
     init: function () {
         this.setColour(Blockly.Blocks.blockgroup.HUE4);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_RUILONG_4DIGITDISPLAY)
+            .appendField(Blockly.MIXLY_4DIGITDISPLAY)
              .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_LCD_STAT_ON, "displayOn"], [Blockly.MIXLY_LCD_STAT_OFF, "displayOff"], [Blockly.MIXLY_LCD_STAT_CLEAR, "clear"]]), "STAT");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
@@ -928,11 +948,11 @@ Blockly.Blocks.display_4digitdisplay_displayString = {
     init: function () {
         this.setColour(Blockly.Blocks.blockgroup.HUE4);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_RUILONG_4DIGITDISPLAY)
+            .appendField(Blockly.MIXLY_4DIGITDISPLAY)
         this.appendValueInput("VALUE")
 //            .setCheck(String)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MIXLY_RUILONG_4DIGITDISPLAY_DISPLAYSTRING);
+            .appendField(Blockly.MIXLY_4DIGITDISPLAY_DISPLAYSTRING);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -943,12 +963,12 @@ Blockly.Blocks.display_4digitdisplay_showDot = {
     init: function () {
         this.setColour(Blockly.Blocks.blockgroup.HUE4);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_RUILONG_4DIGITDISPLAY)
-            .appendField(Blockly.MIXLY_RUILONG_4DIGITDISPLAY_NOMBER1)
+            .appendField(Blockly.MIXLY_4DIGITDISPLAY)
+            .appendField(Blockly.MIXLY_4DIGITDISPLAY_NOMBER1)
             .appendField(new Blockly.FieldDropdown([["1", "0"], ["2", "1"], ["3", "2"], ["4", "3"]]), "NO")
-            .appendField(Blockly.MIXLY_RUILONG_4DIGITDISPLAY_NOMBER2)
-            .appendField(Blockly.MIXLY_RUILONG_4DIGITDISPLAY_DOT)
-            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RUILONG_4DIGITDISPLAY_ON, "true"], [Blockly.MIXLY_RUILONG_4DIGITDISPLAY_OFF, "false"]]), "STAT");
+            .appendField(Blockly.MIXLY_4DIGITDISPLAY_NOMBER2)
+            .appendField(Blockly.MIXLY_4DIGITDISPLAY_DOT)
+            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_4DIGITDISPLAY_ON, "true"], [Blockly.MIXLY_4DIGITDISPLAY_OFF, "false"]]), "STAT");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

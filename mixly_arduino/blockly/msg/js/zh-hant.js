@@ -943,17 +943,18 @@ Blockly.Msg.num2 = "數字2";
 Blockly.Msg.num3 = "數字3";
 Blockly.Msg.num4 = "數字4";
 // RGB
-Blockly.MIXLY_RUILONG_RGB = 'RGB燈';
-Blockly.MIXLY_RUILONG_RGB_NUM = '燈號(1~4)';
-Blockly.MIXLY_RUILONG_RGB_R = 'R值';
-Blockly.MIXLY_RUILONG_RGB_G = 'G值';
-Blockly.MIXLY_RUILONG_RGB_B = 'B值';
+Blockly.MIXLY_RGB = 'RGB燈';
+Blockly.MIXLY_RGB_NUM = '燈號';
+Blockly.MIXLY_RGB_COUNT = '燈數';
+Blockly.MIXLY_RGB_R = 'R值';
+Blockly.MIXLY_RGB_G = 'G值';
+Blockly.MIXLY_RGB_B = 'B值';
 
 //四位数码管
-Blockly.MIXLY_RUILONG_4DIGITDISPLAY = '四位數碼管';
-Blockly.MIXLY_RUILONG_4DIGITDISPLAY_DISPLAYSTRING = '顯示字符串';
-Blockly.MIXLY_RUILONG_4DIGITDISPLAY_NOMBER1 = '第';
-Blockly.MIXLY_RUILONG_4DIGITDISPLAY_NOMBER2 = '個';
-Blockly.MIXLY_RUILONG_4DIGITDISPLAY_DOT = '小數點';
-Blockly.MIXLY_RUILONG_4DIGITDISPLAY_ON = '亮';
-Blockly.MIXLY_RUILONG_4DIGITDISPLAY_OFF = '滅';
+Blockly.MIXLY_4DIGITDISPLAY = '四位數碼管';
+Blockly.MIXLY_4DIGITDISPLAY_DISPLAYSTRING = '顯示字符串';
+Blockly.MIXLY_4DIGITDISPLAY_NOMBER1 = '第';
+Blockly.MIXLY_4DIGITDISPLAY_NOMBER2 = '個';
+Blockly.MIXLY_4DIGITDISPLAY_DOT = '小數點';
+Blockly.MIXLY_4DIGITDISPLAY_ON = '亮';
+Blockly.MIXLY_4DIGITDISPLAY_OFF = '滅';
