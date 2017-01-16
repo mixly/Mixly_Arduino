@@ -142,7 +142,7 @@ Blockly.Blocks['serial_softserial'] = {
    this.setColour(Blockly.Blocks.blockgroup.HUE);
    this.appendValueInput("RX", Number)
        .appendField(Blockly.MIXLY_SETUP)
-	   .appendField("SoftwareSerial")
+	   .appendField(new Blockly.FieldDropdown(profile.softserial_select), "serial_select")
 	   .appendField("RX#")
        .setCheck(Number)
 	   .setAlign(Blockly.ALIGN_RIGHT);

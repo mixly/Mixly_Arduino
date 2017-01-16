@@ -70,13 +70,14 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
  *
  */
 var profile = {
+    softserial_select: [["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
 	arduino_standard : {
 		description : "standard",
 		digital : [["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"], ["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"]],
 		analog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"]],
 		pwm : [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"]],
 		interrupt : [["2", "2"], ["3", "3"]],
-		serial_select : [["Serial", "Serial"], ["SoftwareSerial", "mySerial"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	arduino_mega : {
@@ -85,7 +86,7 @@ var profile = {
 		analog : [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"], ["A8", "A8"], ["A9", "A9"], ["A10", "A10"], ["A11", "A11"], ["A12", "A12"], ["A13", "A13"], ["A14", "A14"], ["A15", "A15"]],
 		pwm : [["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"], ["44", "44"], ["45", "45"], ["46", "46"]],
 		interrupt : [["2", "2"], ["3", "3"]],
-		serial_select : [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"], ["Serial3", "Serial3"], ["SoftwareSerial", "mySerial"]],
+		serial_select : [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"], ["Serial3", "Serial3"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSeria2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	arduino_eightanaloginputs : {
@@ -94,7 +95,7 @@ var profile = {
 		analog : [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"]],
 		pwm : [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"]],
 		interrupt : [["2", "2"], ["3", "3"]],
-		serial_select : [["Serial", "Serial"], ["SoftwareSerial", "mySerial"]],
+		serial_select : [["Serial", "Serial"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSeria2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	arduino_ethernet : {
@@ -103,7 +104,7 @@ var profile = {
 		analog : [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
 		pwm : [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"]],
 		interrupt : [["2", "2"], ["3", "3"]], //本无
-		serial_select : [["Serial", "Serial"], ["SoftwareSerial", "mySerial"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSeria2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	arduino_gemma : {
@@ -112,7 +113,7 @@ var profile = {
 		analog : [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"]],
 		pwm : [["0", "0"], ["1", "1"]],
 		interrupt : [["2", "2"], ["3", "3"]], //本无
-		serial_select : [["Serial", "Serial"], ["SoftwareSerial", "mySerial"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSeria2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	arduino_leonardo : {
@@ -121,7 +122,7 @@ var profile = {
 		analog : [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"], ["A8", "A8"], ["A9", "A9"], ["A10", "A10"], ["A11", "A11"]],
 		pwm : [["3", "3"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"], ["13", "13"]],
 		interrupt : [["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["7", "7"]],
-		serial_select : [["Serial", "Serial"], ["Serial1", "Serial1"], ["SoftwareSerial", "mySerial"]],
+		serial_select: [["Serial", "Serial"], ["Serial1", "Serial1"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSeria2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	arduino_robot : {
@@ -130,7 +131,7 @@ var profile = {
 		analog : [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"], ["A8", "A8"], ["A9", "A9"], ["A10", "A10"], ["A11", "A11"]],
 		pwm : [["3", "3"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"], ["13", "13"]],
 		interrupt : [["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["7", "7"]],
-		serial_select : [["Serial", "Serial"], ["Serial1", "Serial1"], ["SoftwareSerial", "mySerial"]],
+		serial_select: [["Serial", "Serial"], ["Serial1", "Serial1"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	arduino_esp8266 : { //esp8266只有wifio不符合
@@ -139,7 +140,7 @@ var profile = {
 		analog : [["A0", "A0"]],
 		pwm : [["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"]],
 		interrupt : [["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"]],
-		serial_select : [["Serial", "Serial"], ["SoftwareSerial", "mySerial"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	'Arduino/Genuino 101' : {
@@ -148,7 +149,7 @@ var profile = {
 		analog : [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
 		pwm : [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"]],
 		interrupt : [["2", "2"], ["5", "5"], ["7", "7"], ["8", "8"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]],
-		serial_select : [["Serial", "Serial"], ["SoftwareSerial", "mySerial"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	mixio_xia : {
@@ -157,7 +158,7 @@ var profile = {
 		analog : [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
 		pwm : [["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]],
 		interrupt : [["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]],
-		serial_select : [["Serial", "Serial"], ["SoftwareSerial", "mySerial"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	}
 };
