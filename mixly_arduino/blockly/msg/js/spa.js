@@ -925,7 +925,7 @@ Blockly.MIXLY_CONTROL_END_PROGRAM = "fin del programa";
 
 //oled
 Blockly.Msg.texttodisplay = "texts to display:";
-Blockly.Msg.numtodisplay = "number to display";
+Blockly.Msg.OLEDDISPLAY = "display";
 Blockly.Msg.todisplay = "to display:";
 Blockly.Msg.rawx = "raw x(127 max)";
 Blockly.Msg.liney = "line y(63 max)";

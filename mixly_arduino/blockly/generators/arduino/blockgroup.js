@@ -532,6 +532,7 @@ Blockly.Arduino.group_stepper_move = function () {
     Blockly.Arduino.definitions_['define_stepper'] = '#include <Stepper.h>';
     return varName + '.step(' + step + ');\n';
 };
+/*
 Blockly.Arduino.lp2i_u8g_draw_string = function () {
     var value_text = Blockly.Arduino.valueToCode(this, 'Text', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
     var x = Blockly.Arduino.valueToCode(this, 'X', Blockly.Arduino.ORDER_ATOMIC);
@@ -540,17 +541,21 @@ Blockly.Arduino.lp2i_u8g_draw_string = function () {
     //dans le setup    
     Blockly.Arduino.setups_["setup_u8g"] =
        'u8g.firstPage();\n'
-      + 'do {'
-      + 'u8g.setFont(u8g_font_unifont);\n'
-      + 'u8g.drawStr( 0, 22, "Bonjour !");\n'
-      + '} while( u8g.nextPage());\n'
-      + 'delay(1000);\n';
+      + '  do {\n'
+      + '      u8g.setFont(u8g_font_unifont);\n'
+      + '  } while( u8g.nextPage());\n'
+      + '  delay(1000);\n';
     var code = 'u8g.firstPage();\n'
-    code += 'do {\n'
-    code += 'u8g.drawStr(' + x + ', ' + y + ', ' + value_text + ');\n'
-    code += '}\n while( u8g.nextPage() );\n';
+    + 'do {\n'
+    + '    String tmpstr='+value_text+';\n'
+    + '    char tempcs[sizeof(tmpstr)];\n'
+    + '    tmpstr.toCharArray(tempcs, sizeof(tempcs));\n'
+    + '    u8g.drawStr(' + x + ', ' + y + ', tempcs);\n'
+    + '}\n' 
+    + 'while( u8g.nextPage() );\n';
     return code;
 };
+*/
 Blockly.Arduino.lp2i_u8g_draw_4strings = function () {
     var value_text_line1 = Blockly.Arduino.valueToCode(this, 'Text_line1', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
     var value_text_line2 = Blockly.Arduino.valueToCode(this, 'Text_line2', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
@@ -560,18 +565,22 @@ Blockly.Arduino.lp2i_u8g_draw_4strings = function () {
     //dans le setup    
     Blockly.Arduino.setups_["setup_u8g"] =
        'u8g.firstPage();\n'
-      + 'do {'
-      + 'u8g.setFont(u8g_font_unifont);\n'
-      + 'u8g.drawStr( 0, 22, "Bonjour !");\n'
-      + '} while( u8g.nextPage());\n'
-      + 'delay(1000);\n';
+      + '  do {\n'
+      + '      u8g.setFont(u8g_font_unifont);\n'
+      + '  } while( u8g.nextPage());\n'
+      + '  delay(1000);\n';
     var code = 'u8g.firstPage();\n'
-    code += 'do {\n'
-    code += 'u8g.drawStr(0, 12, ' + value_text_line1 + ');\n'
-    code += 'u8g.drawStr(0, 28, ' + value_text_line2 + ');\n'
-    code += 'u8g.drawStr(0, 44, ' + value_text_line3 + ');\n'
-    code += 'u8g.drawStr(0, 60, ' + value_text_line4 + ');\n'
-    code += '}\n while( u8g.nextPage() );\n';
+    + 'do {\n'
+    + '    u8g.setPrintPos(0,12);\n'
+    + '    u8g.print(' + value_text_line1 + ');\n'
+    + '    u8g.setPrintPos(0,24);\n'
+    + '    u8g.print(' + value_text_line2 + ');\n'
+    + '    u8g.setPrintPos(0,36);\n'
+    + '    u8g.print(' + value_text_line3 + ');\n'
+    + '    u8g.setPrintPos(0,48);\n'
+    + '    u8g.print(' + value_text_line4 + ');\n'
+    + '}\n'
+    +'while( u8g.nextPage() );\n';
     return code;
 };
 
@@ -583,17 +592,16 @@ Blockly.Arduino.lp2i_u8g_print = function () {
     //dans le setup    
     Blockly.Arduino.setups_["setup_u8g"] =
       'u8g.firstPage();\n'
-      + 'do {'
-      + 'u8g.setFont(u8g_font_unifont);\n'
-      + 'u8g.drawStr( 0, 22, "Bonjour !");\n'
-      + '} while( u8g.nextPage());\n'
-      + 'delay(1000);\n';
+      + '  do {\n'
+      + '      u8g.setFont(u8g_font_unifont);\n'
+      + '  } while( u8g.nextPage());\n'
+      + '  delay(1000);\n';
     var code =
       'u8g.firstPage();\n'
-    code += 'do {\n'
-    code += 'u8g.setPrintPos(' + x + ', ' + y + ');\n'
-    code += 'u8g.print(' + value_n + ');\n'
-    code += '}\n while( u8g.nextPage() );\n';
+    code += '   do {\n'
+    code += '       u8g.setPrintPos(' + x + ', ' + y + ');\n'
+    code += '       u8g.print(' + value_n + ');\n'
+    code += '   }\n while( u8g.nextPage() );\n';
     return code;
 };
 Blockly.Arduino.lp2i_u8g_4draw_print = function () {
@@ -609,26 +617,26 @@ Blockly.Arduino.lp2i_u8g_4draw_print = function () {
     //dans le setup    
     Blockly.Arduino.setups_["setup_u8g"] =
        'u8g.firstPage();\n'
-      + 'do {'
-      + 'u8g.setFont(u8g_font_unifont);\n'
-      + 'u8g.drawStr( 0, 22, "Bonjour !");\n'
-      + '} while( u8g.nextPage());\n'
-      + 'delay(1000);\n';
+      + '   do {\n'
+      + '       u8g.setFont(u8g_font_unifont);\n'
+      + '       u8g.drawStr( 0, 22, "Bonjour !");\n'
+      + '   } while( u8g.nextPage());\n'
+      + '   delay(1000);\n';
     var code = 'u8g.firstPage();\n'
-    code += 'do {\n'
-    code += 'u8g.drawStr(0, 12, ' + value_text_line1 + ');\n'
-    code += 'u8g.setPrintPos(100, 12 );\n'
-    code += 'u8g.print(' + value_n1 + ');\n'
-    code += 'u8g.drawStr(0, 28, ' + value_text_line2 + ');\n'
-    code += 'u8g.setPrintPos(100, 28 );\n'
-    code += 'u8g.print(' + value_n2 + ');\n'
-    code += 'u8g.drawStr(0, 44, ' + value_text_line3 + ');\n'
-    code += 'u8g.setPrintPos(100, 44 );\n'
-    code += 'u8g.print(' + value_n3 + ');\n'
-    code += 'u8g.drawStr(0, 60, ' + value_text_line4 + ');\n'
-    code += 'u8g.setPrintPos(100, 60 );\n'
-    code += 'u8g.print(' + value_n4 + ');\n'
-    code += '}\n while( u8g.nextPage() );\n';
+    code += '   do {\n'
+    code += '       u8g.drawStr(0, 12, ' + value_text_line1 + ');\n'
+    code += '       u8g.setPrintPos(100, 12 );\n'
+    code += '       u8g.print(' + value_n1 + ');\n'
+    code += '       u8g.drawStr(0, 28, ' + value_text_line2 + ');\n'
+    code += '       u8g.setPrintPos(100, 28 );\n'
+    code += '       u8g.print(' + value_n2 + ');\n'
+    code += '       u8g.drawStr(0, 44, ' + value_text_line3 + ');\n'
+    code += '       u8g.setPrintPos(100, 44 );\n'
+    code += '       u8g.print(' + value_n3 + ');\n'
+    code += '       u8g.drawStr(0, 60, ' + value_text_line4 + ');\n'
+    code += '       u8g.setPrintPos(100, 60 );\n'
+    code += '       u8g.print(' + value_n4 + ');\n'
+    code += '   }\n while( u8g.nextPage() );\n';
     return code;
 };
 Blockly.Arduino.display_rgb_init=function(){

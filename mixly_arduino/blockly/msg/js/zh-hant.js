@@ -930,7 +930,7 @@ Blockly.MIXLY_CONTROL_END_PROGRAM = "停止程序";
 
 //oled
 Blockly.Msg.texttodisplay = "顯示文本：";
-Blockly.Msg.numtodisplay = "顯示數位：";
+Blockly.Msg.OLEDDISPLAY = "顯示：";
 Blockly.Msg.todisplay = "顯示：";
 Blockly.Msg.rawx = "行座標x:(最大127)";
 Blockly.Msg.liney = "列座標y:(最大63)";

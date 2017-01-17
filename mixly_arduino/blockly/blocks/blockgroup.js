@@ -747,7 +747,8 @@ Blockly.Blocks.group_stepper_move={
         this.setNextStatement(true, null);
         this.setInputsInline(true);
     }
-}    
+}
+/*
 Blockly.Blocks.lp2i_u8g_draw_string = {
     init: function() {
         this.appendDummyInput()
@@ -770,14 +771,12 @@ Blockly.Blocks.lp2i_u8g_draw_string = {
         this.setTooltip('');
       }
 };
-
+*/
 Blockly.Blocks.lp2i_u8g_draw_4strings = {
     init: function() {
         this.appendDummyInput()
-            .appendField("OLED I2C display");
+            .appendField("OLED 128*64    " + Blockly.Msg.OLEDDISPLAY);
         //.appendField(new Blockly.FieldImage(Blockly.pathToBlockly + 'blocks/display-oled-128x64-i2c/display-oled-128x64-i2c.jpg', Blockly.Arduino.imageSize, Blockly.Arduino.imageSize));
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.texttodisplay);		
         this.appendValueInput("Text_line1" , 'String')
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.line1);		
@@ -804,7 +803,7 @@ Blockly.Blocks.lp2i_u8g_print = {
         //.appendField(new Blockly.FieldImage(Blockly.pathToBlockly + 'blocks/display-oled-128x64-i2c/display-oled-128x64-i2c.jpg', Blockly.Arduino.imageSize, Blockly.Arduino.imageSize));		
         this.appendValueInput("N", 'Number')
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.numtodisplay);		
+            .appendField(Blockly.Msg.OLEDDISPLAY);
         this.appendValueInput("X", 'Number')
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.rawx);		
@@ -825,7 +824,7 @@ Blockly.Blocks.lp2i_u8g_4draw_print = {
             .appendField("OLED I2C display");
         //.appendField(new Blockly.FieldImage(Blockly.pathToBlockly + 'blocks/display-oled-128x64-i2c/display-oled-128x64-i2c.jpg', Blockly.Arduino.imageSize, Blockly.Arduino.imageSize));		
         this.appendDummyInput()
-            .appendField(Blockly.Msg.todisplay);			
+            .appendField(Blockly.Msg.OLEDDISPLAY);
         this.appendValueInput("Text_line1" , 'String')
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.line1);		
