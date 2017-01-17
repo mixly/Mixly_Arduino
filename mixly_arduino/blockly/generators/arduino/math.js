@@ -159,8 +159,8 @@ Blockly.Arduino.math_max_min = function() {
 
 Blockly.Arduino.math_random_seed = function () {
     // Random integer between [X] and [Y].
-    var code = 'randomSeed(micros());';
-    return [code, Blockly.Arduino.ORDER_UNARY_POSTFIX];
+    var code = 'randomSeed(micros());\n';
+    return code;
 };
 
 Blockly.Arduino.math_random_int = function() {
