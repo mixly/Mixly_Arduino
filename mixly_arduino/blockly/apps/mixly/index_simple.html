@@ -547,7 +547,18 @@ function init() {
           </shadow>
         </value>
 	  </block>
-	  <block type="number_to_text">
+        <block type="ascii_to_char">
+            <value name="VAR">
+                <shadow type="math_number">
+                    <field name="NUM">223</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="char_to_ascii">
+            <field name="TEXT">a</field>
+        </block>
+
+        <block type="number_to_text">
 		<value name="VAR">
           <shadow type="math_number">
             <field name="NUM">0</field>

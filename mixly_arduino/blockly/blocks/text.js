@@ -104,15 +104,39 @@ Blockly.Blocks['text_to_number'] = {
   }
 };
 
-Blockly.Blocks['number_to_text'] = {
+Blockly.Blocks['ascii_to_char'] = {
   init: function() {
     this.setColour(Blockly.Blocks.texts.HUE);
     this.appendValueInput('VAR')
         .setCheck(Number)
-		.appendField(Blockly.MIXLY_TOSTRING);;
+		.appendField(Blockly.MIXLY_TOCHAR);;
 	this.setOutput(true, String);
-	this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_TOTEXT);
+	this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_TOCHAR);
   }
+};
+
+Blockly.Blocks['char_to_ascii'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.texts.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_TOASCII)
+            .appendField("'")
+            .appendField(new Blockly.FieldTextInput('',Blockly.FieldTextInput.char_validator), 'TEXT')
+            .appendField("'");
+        this.setOutput(true, Number);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_TOASCII);
+    }
+};
+
+Blockly.Blocks['number_to_text'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.texts.HUE);
+        this.appendValueInput('VAR')
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_TOSTRING);;
+        this.setOutput(true, String);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_TOTEXT);
+    }
 };
 
 Blockly.Blocks['text_length']={

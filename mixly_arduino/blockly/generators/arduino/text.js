@@ -30,6 +30,16 @@ Blockly.Arduino.text_to_number = function() {
   return [str + '.' + towhat + '()', Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino.ascii_to_char = function () {
+    var asciivalue = Blockly.Arduino.valueToCode(this, 'VAR', Blockly.Arduino.ORDER_ATOMIC) || '0'
+    return ['char(' + asciivalue+')', Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.char_to_ascii = function () {
+    var charvalue = '\'' + this.getFieldValue('TEXT') + '\'';
+    return ['toascii(' + charvalue + ')', Blockly.Arduino.ORDER_ATOMIC];
+};
+
 Blockly.Arduino.number_to_text = function() {
   var str = Blockly.Arduino.valueToCode(this, 'VAR', Blockly.Arduino.ORDER_ATOMIC) || '0'
   return ['String("")+'+str, Blockly.Arduino.ORDER_ATOMIC];
