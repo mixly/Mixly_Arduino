@@ -37,3 +37,10 @@ Blockly.Arduino.variables_set = function() {
       Blockly.Variables.NAME_TYPE);
   return varName + ' = ' + argument0 + ';\n';
 };
+Blockly.Arduino.variables_change = function () {
+    // Variable setter.
+    var operator = this.getFieldValue('OP');
+    var varName = Blockly.Arduino.valueToCode(this, 'MYVALUE', Blockly.Arduino.ORDER_ASSIGNMENT);
+    var code = '((' + operator + ')' + varName + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

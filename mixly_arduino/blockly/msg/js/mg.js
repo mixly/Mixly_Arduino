@@ -1,18 +1,18 @@
-// This file was automatically generated.  Do not modify.
+﻿// This file was automatically generated.  Do not modify.
 'use strict';
 
-goog.provide('Blockly.Msg.zh.hans');
+goog.provide('Blockly.Msg.mg');
 
 goog.require('Blockly.Msg');
 
-Blockly.Msg.ADD_COMMENT = "添加注释";
+Blockly.Msg.ADD_COMMENT = "ᠲᠠᠶᠢᠯᠪᠤᠷᠢ";
 Blockly.Msg.AUTH = "请授权这个应用程序以保存您的作品并共享。";
 Blockly.Msg.CHANGE_VALUE_TITLE = "更改值：";
 Blockly.Msg.CHAT = "通过在此框输入与您的合作者沟通！";
 Blockly.Msg.CLEAN_UP = "清理块";
 Blockly.Msg.COLLAPSE_ALL = "折叠块";
 Blockly.Msg.COLLAPSE_BLOCK = "折叠块";
-Blockly.Msg.COLOUR_BLEND_COLOUR1 = "颜色1";
+Blockly.Msg.COLOUR_BLEND_COLOUR1 = " ᠥᠩᠭᠡ1";
 Blockly.Msg.COLOUR_BLEND_COLOUR2 = "颜色2";
 Blockly.Msg.COLOUR_BLEND_HELPURL = "http://meyerweb.com/eric/tools/color-blend/";  // untranslated
 Blockly.Msg.COLOUR_BLEND_RATIO = "比例";
@@ -257,10 +257,6 @@ Blockly.Msg.MATH_SINGLE_TOOLTIP_POW10 = "返回数的10次幂。";
 Blockly.Msg.MATH_SINGLE_TOOLTIP_ROOT = "返回一个数的平方根。";
 Blockly.Msg.MATH_SINGLE_TOOLTIP_SQ = "返回一个数的平方。";
 Blockly.Msg.MATH_SINGLE_TOOLTIP_TOINT = "返回一个数的整数部分。";
-Blockly.Msg.MATH_SINGLE_TOOLTIP_ROUND = "按照四舍五入的原则返回一个数的整数部分。";
-Blockly.Msg.MATH_SINGLE_TOOLTIP_CEIL = "返回大于或者等于一个数的最小整数。";
-Blockly.Msg.MATH_SINGLE_TOOLTIP_FLOOR = "返回小于或者等于一个数的最大整数。";
-
 Blockly.Msg.MATH_SUBTRACTION_SYMBOL = "-";  // untranslated
 Blockly.Msg.MATH_QUYU_SYMBOL="%";
 Blockly.Msg.MATH_TRIG_ACOS = "acos";  // untranslated
@@ -410,8 +406,8 @@ Blockly.Msg.TEXT_APPEND_VARIABLE = Blockly.Msg.VARIABLES_DEFAULT_NAME;
 Blockly.Msg.CONTROLS_IF_ELSE_TITLE_ELSE = Blockly.Msg.CONTROLS_IF_MSG_ELSE;
 //luokailiang
 Blockly.MIXLY_PINMODE = '管脚模式';
-Blockly.MIXLY_PINMODEIN = '输入';
-Blockly.MIXLY_PINMODEOUT = '输出';
+Blockly.MIXLY_PINMODEIN = 'ᠤᠷᠤᠭᠤᠯᠬᠤ';
+Blockly.MIXLY_PINMODEOUT = 'ᠭᠠᠷᠭᠠᠬᠤ';
 Blockly.MIXLY_PINMODEPULLUP = '上拉输入';
 Blockly.MIXLY_DECLARE='声明';
 Blockly.MIXLY_AS='为';
@@ -435,7 +431,7 @@ Blockly.MIXLY_DIGITALREAD_PIN='数字输入 管脚#';
 Blockly.MIXLY_ANALOGWRITE_PIN='模拟输出 管脚#';
 Blockly.MIXLY_ANALOGREAD_PIN='模拟输入 管脚#';
 Blockly.MIXLY_SERIAL_WRITE = '原始输出';
-Blockly.MIXLY_SERIAL_PRINT = '打印';
+Blockly.MIXLY_SERIAL_PRINT = 'ᠳᠠᠷᠤᠮᠠᠯᠠᠬᠤ';
 Blockly.MIXLY_SERIAL_PRINTLN='打印（自动换行）';
 Blockly.MIXLY_SERIAL_PRINT_HEX='打印（16进制/自动换行）';
 Blockly.MIXLY_SERIAL_FLUSH='清空缓存区数据';
@@ -451,15 +447,12 @@ Blockly.MIXLY_IR_SEND_NEC1='红外发射（';
 Blockly.MIXLY_IR_SEND_NEC2='） 管脚#';
 Blockly.MIXLY_IR_RECEIVE_RAW='红外接收并打印数据（RAW） 管脚#';
 Blockly.MIXLY_IR_SEND_RAW='红外发射（RAW） 管脚#';
-Blockly.LANG_MATH_TO_INT = '取整';
-Blockly.LANG_MATH_TO_ROUND = '取整(四舍五入)';
-Blockly.LANG_MATH_TO_CEIL = '取整(取上限)';
-Blockly.LANG_MATH_TO_FLOOR = '取整(取下限)';
+Blockly.LANG_MATH_TO_INT='取整';
 Blockly.MIXLY_SERVO='舵机';
 Blockly.MIXLY_PIN='管脚#';
 Blockly.MIXLY_DEGREE_0_180='角度 (0~180)';
 Blockly.MIXLY_READ_DEGREES='读取度数';
-Blockly.MIXLY_HIGH='高';
+Blockly.MIXLY_HIGH='ᠦᠨᠳᠦᠷ';
 Blockly.MIXLY_LOW='低';
 Blockly.MIXLY_ON='开';
 Blockly.MIXLY_OFF='关';
@@ -566,10 +559,7 @@ Blockly.MIXLY_MB_LIGHT_GRAYSCALE_LED=' LED设为';
 Blockly.MIXLY_MB_LIGHT_MOTOR='设置电机';
 Blockly.MIXLY_MB_LIGHT_MOTOR_SPEED=' 转速为(-255~255)';
 Blockly.MIXLY_DELAY_MS='毫秒';
-Blockly.MIXLY_DELAY_US = '微秒';
-Blockly.MIXLY_PIN = '管脚#';
-Blockly.MIXLY_GETTEMPERATUE = '获取温度';
-Blockly.MIXLY_GETHUMIDITY = '获取湿度';
+Blockly.MIXLY_DELAY_US='微秒';
 Blockly.MIXLY_DHT11='DHT11 管脚#';
 Blockly.MIXLY_DHT11_T='获取温度';
 Blockly.MIXLY_DHT11_H='获取湿度';
@@ -600,9 +590,7 @@ Blockly.MIXLY_CLOCKPIN='时钟管脚#';
 Blockly.MIXLY_BITORDER='顺序';
 Blockly.MIXLY_MSBFIRST='高位先入';
 Blockly.MIXLY_LSBFIRST='低位先入';
-Blockly.MIXLY_TOSTRING = '转字符串';
-Blockly.MIXLY_TOCHAR = '转ASCII字符';
-Blockly.MIXLY_TOASCII = '转ASCII数值';
+Blockly.MIXLY_TOSTRING='转字符串';
 Blockly.MIXLY_ROMEO_MOTOR='Romeo 电机';
 Blockly.MIXLY_ROMEO_MOTOR_SPEED='转速';
 Blockly.MIXLY_STOP='停止';
@@ -753,9 +741,7 @@ Blockly.MIXLY_TOOLTIP_MATH_MAX='返回2个数中较大的那个';
 Blockly.MIXLY_TOOLTIP_MATH_MIN='返回2个数中较小的那个';
 Blockly.MIXLY_TOOLTIP_MATH_MAP='将一个数从第一个区间映射到第二个区间，并返回映射之后的值。';
 Blockly.MIXLY_TOOLTIP_TEXT_JOIN='将2个字符串拼接成一个字符串。';
-Blockly.MIXLY_TOOLTIP_TEXT_TOTEXT = '将一个数字转为一个字符串。';
-Blockly.MIXLY_TOOLTIP_TEXT_TOCHAR = '返回一个ASCII编码对应的文本符号。';
-Blockly.MIXLY_TOOLTIP_TEXT_TOASCII = '返回一个字符对应的ASCII编码。';
+Blockly.MIXLY_TOOLTIP_TEXT_TOTEXT='将一个数字转为一个字符串。';
 Blockly.MIXLY_TOOLTIP_TEXT_TOINT='将一个字符串转为一个整数。';
 Blockly.MIXLY_TOOLTIP_TEXT_TOFLOAT='将一个字符串转为一个小数。';
 Blockly.MIXLY_TOOLTIP_LISTS_CREATE_WITH_TEXT='通过一个字符串来创建一个数组。';
@@ -765,8 +751,8 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERIAL_READ_STR='返回串口中的字符串。
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERIAL_READ_INT='返回串口中的整数。';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERIAL_READ_FLOAT='返回串口中的小数。';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_CHAOSHENGBO='返回超声波传感器测得的距离。';
-Blockly.MIXLY_TOOLTIP_BLOCKGROUP_GET_TEM='返回温湿度传感器测得的温度。';
-Blockly.MIXLY_TOOLTIP_BLOCKGROUP_GET_HUM='返回温湿度传感器测得的湿度。';
+Blockly.MIXLY_TOOLTIP_BLOCKGROUP_DHT11_TEM='返回温湿度传感器测得的温度。';
+Blockly.MIXLY_TOOLTIP_BLOCKGROUP_DHT11_HUM='返回温湿度传感器测得的湿度。';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_MOVE = '在0~180°间旋转。';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_READ = '返回舵机当前停留的角度。';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE = '按指定的频率播放声音。';
@@ -941,7 +927,7 @@ Blockly.MIXLY_CONTROL_END_PROGRAM = "停止程序";
 
 //oled
 Blockly.Msg.texttodisplay = "显示文本：";
-Blockly.Msg.OLEDDISPLAY = "显示：";
+Blockly.Msg.numtodisplay = "显示数字：";
 Blockly.Msg.todisplay = "显示：";
 Blockly.Msg.rawx = "行坐标x:(最大127)";
 Blockly.Msg.liney = "列坐标y:(最大63)";
@@ -954,18 +940,17 @@ Blockly.Msg.num2 = "数字2";
 Blockly.Msg.num3 = "数字3";
 Blockly.Msg.num4 = "数字4";
 // RGB
-Blockly.MIXLY_RGB = 'RGB灯';
-Blockly.MIXLY_RGB_NUM = '灯号';
-Blockly.MIXLY_RGB_COUNT = '灯数';
-Blockly.MIXLY_RGB_R = 'R值';
-Blockly.MIXLY_RGB_G = 'G值';
-Blockly.MIXLY_RGB_B = 'B值';
+Blockly.MIXLY_RUILONG_RGB = 'RGB灯';
+Blockly.MIXLY_RUILONG_RGB_NUM = '灯号(1~4)';
+Blockly.MIXLY_RUILONG_RGB_R = 'R值';
+Blockly.MIXLY_RUILONG_RGB_G = 'G值';
+Blockly.MIXLY_RUILONG_RGB_B = 'B值';
 
 //四位数码管
-Blockly.MIXLY_4DIGITDISPLAY = '四位数码管';
-Blockly.MIXLY_4DIGITDISPLAY_DISPLAYSTRING = '显示字符串';
-Blockly.MIXLY_4DIGITDISPLAY_NOMBER1 = '第';
-Blockly.MIXLY_4DIGITDISPLAY_NOMBER2 = '个';
-Blockly.MIXLY_4DIGITDISPLAY_DOT = '小数点';
-Blockly.MIXLY_4DIGITDISPLAY_ON = '亮';
-Blockly.MIXLY_4DIGITDISPLAY_OFF = '灭';
+Blockly.MIXLY_RUILONG_4DIGITDISPLAY = '四位数码管';
+Blockly.MIXLY_RUILONG_4DIGITDISPLAY_DISPLAYSTRING = '显示字符串';
+Blockly.MIXLY_RUILONG_4DIGITDISPLAY_NOMBER1 = '第';
+Blockly.MIXLY_RUILONG_4DIGITDISPLAY_NOMBER2 = '个';
+Blockly.MIXLY_RUILONG_4DIGITDISPLAY_DOT = '小数点';
+Blockly.MIXLY_RUILONG_4DIGITDISPLAY_ON = '亮';
+Blockly.MIXLY_RUILONG_4DIGITDISPLAY_OFF = '灭';

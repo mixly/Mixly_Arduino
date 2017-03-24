@@ -87,3 +87,50 @@ Blockly.Blocks['variables_set'] = {
 	  }
   }*/
 };
+Blockly.Blocks['variables_set'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.variables.HUE);
+    this.appendValueInput('VALUE')
+        .appendField(new Blockly.FieldTextInput('item'), 'VAR')
+		.appendField(Blockly.LANG_VARIABLES_SET_TITLE);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.Msg.VARIABLES_SET_TOOLTIP);
+  },
+  getVars: function() {
+    return [this.getFieldValue('VAR')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
+      this.setFieldValue(newName, 'VAR');
+    }
+  }
+};
+/**
+  * Block for basic data type change.
+  * @this Blockly.Block
+  */
+Blockly.Blocks['variables_change'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.variables.HUE);
+        var DATATYPES =
+         [[Blockly.LANG_MATH_INT, 'int'],
+          [Blockly.LANG_MATH_LONG, 'long'],
+          [Blockly.LANG_MATH_FLOAT, 'float'],
+          [Blockly.LANG_MATH_BOOLEAN, 'boolean'],
+          [Blockly.LANG_MATH_BYTE, 'byte'],
+          [Blockly.LANG_MATH_CHAR, 'char'],
+          [Blockly.LANG_MATH_STRING, 'String']];
+       
+        this.appendValueInput('MYVALUE')
+             .appendField(new Blockly.FieldDropdown(DATATYPES), 'OP');
+        // Assign 'this' to a variable for use in the tooltip closure below.
+        this.setOutput(true);
+       
+    }
+};
+
+
+
+
+    

@@ -36,6 +36,7 @@ Code.LANGUAGE_NAME = {
   'zh-hant': '繁體中文',
   'en': 'English',
   'spa': 'Español',
+
 };
 
 /**

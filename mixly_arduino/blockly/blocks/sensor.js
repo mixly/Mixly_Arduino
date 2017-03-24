@@ -62,3 +62,74 @@ Blockly.Blocks.gps_getData_xxx = {
 	this.setOutput(true, Number);
   }
 };
+
+//³¬Éù²¨²â¾à
+Blockly.Blocks.chaoshengbo = {
+    init: function () {
+        this.setColour(Blockly.Blocks.blockgroup.HUE1);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_CHAOSHENGBO)
+            .appendField('Trig#')
+            .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN1")
+            .appendField(' Echo#')
+            .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN2");
+        this.setOutput(true, Number);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_CHAOSHENGBO);
+    }
+};
+
+Blockly.Blocks.chaoshengbo2 = {
+    init: function () {
+        this.setColour(Blockly.Blocks.blockgroup.HUE1);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_CHAOSHENGBO);
+        this.appendValueInput("PIN1", Number)
+            .appendField('Trig#')
+            .setCheck(Number);
+        this.appendValueInput("PIN2", Number)
+            .appendField('Echo#')
+            .setCheck(Number);
+        this.setInputsInline(true);
+        this.setOutput(true, Number);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_CHAOSHENGBO);
+    }
+};
+
+//DHT11´«¸ÐÆ÷
+Blockly.Blocks.dht11 = {
+    init: function () {
+        var WHAT = [[Blockly.MIXLY_DHT11_T, 'temperature'], [Blockly.MIXLY_DHT11_H, 'humidity']];
+        this.setColour(Blockly.Blocks.blockgroup.HUE1);
+        this.appendValueInput("PIN", Number)
+            .appendField(new Blockly.FieldDropdown([['DHT11', '11'], ['DHT21', '21'], ['DHT22', '22'], ['DHT33', '33'], ['DHT44', '44']]), 'TYPE')
+            .appendField(Blockly.MIXLY_PIN)
+            .setCheck(Number);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldDropdown(WHAT), "WHAT");
+        this.setOutput(true, Number);
+        var thisBlock = this;
+        this.setTooltip(function () {
+            var op = thisBlock.getFieldValue('WHAT');
+            var TOOLTIPS = {
+                'temperature': Blockly.MIXLY_TOOLTIP_BLOCKGROUP_GET_TEM,
+                'humidity': Blockly.MIXLY_TOOLTIP_BLOCKGROUP_GET_HUM
+            };
+            return TOOLTIPS[op];
+        });
+    }
+};
+
+//DS18B20ÎÂ¶È´«¸ÐÆ÷
+Blockly.Blocks.ds18b20 = {
+    init: function () {
+        var UNIT = [[Blockly.MIXLY_DS18B20_C, '0'], [Blockly.MIXLY_DS18B20_F, '1']];
+        this.setColour(Blockly.Blocks.blockgroup.HUE1);
+        this.appendValueInput("PIN", Number)
+            .appendField(Blockly.MIXLY_DS18B20)
+            .setCheck(Number);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_DS18B20_GET_TEMP)
+            .appendField(new Blockly.FieldDropdown(UNIT), "UNIT");
+        this.setOutput(true, Number);
+    }
+};

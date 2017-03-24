@@ -92,12 +92,19 @@ Blockly.Blocks['math_trig'] = {
    */
   init: function() {
     var OPERATORS =
-        [[Blockly.Msg.MATH_TRIG_SIN, 'SIN'],
-         [Blockly.Msg.MATH_TRIG_COS, 'COS'],
-         [Blockly.Msg.MATH_TRIG_TAN, 'TAN'],
-         [Blockly.Msg.MATH_TRIG_ASIN, 'ASIN'],
-         [Blockly.Msg.MATH_TRIG_ACOS, 'ACOS'],
-         [Blockly.Msg.MATH_TRIG_ATAN, 'ATAN']];
+        [['sin', 'SIN'],
+         ['cos', 'COS'],
+         ['tan', 'TAN'],
+         ['asin', 'ASIN'],
+         ['acos', 'ACOS'],
+         ['atan', 'ATAN'],
+         ['ln', 'LN'],
+         ['log10', 'LOG10'],
+         ['e^', 'EXP'],
+         ['10^', 'POW10'],
+         ['++', '++'],
+         ['--', '--'],
+        ];
     //this.setHelpUrl(Blockly.Msg.MATH_TRIG_HELPURL);
     this.setColour(Blockly.Blocks.math.HUE);
     this.setOutput(true, Number);
@@ -125,11 +132,12 @@ Blockly.Blocks['math_trig'] = {
 Blockly.Blocks['math_to_int']= {
   init: function() {
 	var OPERATORS =
-        [[Blockly.LANG_MATH_TO_INT, 'int'],
+        [[Blockly.LANG_MATH_TO_ROUND, 'round'],
+         [Blockly.LANG_MATH_TO_CEIL, 'ceil'],
+         [Blockly.LANG_MATH_TO_FLOOR, 'floor'],
 		 [Blockly.Msg.MATH_ABS, 'abs'],
          [Blockly.Msg.MATH_SQ, 'sq'],
-         [Blockly.Msg.MATH_SQRT, 'sqrt'],
-		 [Blockly.Msg.MATH_LOG, 'log']];
+         [Blockly.Msg.MATH_SQRT, 'sqrt']];
     this.setColour(Blockly.Blocks.math.HUE);
     this.appendValueInput('A')
         .setCheck(Number)
@@ -143,7 +151,9 @@ Blockly.Blocks['math_to_int']= {
         'abs': Blockly.Msg.MATH_SINGLE_TOOLTIP_ABS,
         'sq': Blockly.Msg.MATH_SINGLE_TOOLTIP_SQ,
         'log': Blockly.Msg.MATH_SINGLE_TOOLTIP_LN,
-        'int': Blockly.Msg.MATH_SINGLE_TOOLTIP_TOINT
+        'round': Blockly.Msg.MATH_SINGLE_TOOLTIP_ROUND,
+        'ceil': Blockly.Msg.MATH_SINGLE_TOOLTIP_CEIL,
+        'floor': Blockly.Msg.MATH_SINGLE_TOOLTIP_FLOOR
       };
       return TOOLTIPS[mode];
     });

@@ -87,17 +87,24 @@ Blockly.Arduino.math_single = function() {
       code = arg + '.abs()';
       break;
     case 'ROOT':
-      code = 'Math.sqrt(' + arg + ')';
+      code = 'sqrt(' + arg + ')';
       break;
     case 'LN':
-      code = 'Math.log(' + arg + ')';
+      code = 'log(' + arg + ')';
       break;
     case 'EXP':
-      code = 'Math.exp(' + arg + ')';
+      code = 'exp(' + arg + ')';
       break;
     case 'POW10':
-      code = 'Math.pow(10,' + arg + ')';
+      code = 'pow(10,' + arg + ')';
       break;
+    case '++':
+        code = '(' + arg + '++)';
+      break;
+    case '--':
+        code = '(' + arg + '--)';
+      break;
+
     case 'ROUND':
       code = arg + '.round()';
       break;
@@ -123,7 +130,7 @@ Blockly.Arduino.math_single = function() {
   // Second, handle cases which generate values that may need parentheses.
   switch (operator) {
     case 'LOG10':
-      code = 'Math.log(' + arg + ') / Math.log(10)';
+      code = 'log(' + arg + ') / log(10)';
       break;
     case 'ASIN':
       code = 'asin(' + arg + ') / 3.14159 * 180';

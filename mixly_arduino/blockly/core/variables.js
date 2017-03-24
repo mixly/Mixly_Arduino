@@ -105,11 +105,18 @@ Blockly.Variables.flyoutCategory = function(workspace) {
 
   var xmlList = [];
   
+
   if (Blockly.Blocks['variables_declare']) {
 	//增加variables_declare模块
 	var block = goog.dom.createDom('block');
     block.setAttribute('type', 'variables_declare');
 	xmlList.push(block);
+  }//change tyep
+  if (Blockly.Blocks['variables_change']) {
+      //增加variables_declare模块
+      var block = goog.dom.createDom('block');
+      block.setAttribute('type', 'variables_change');
+      xmlList.push(block);
   }
   for (var i = 0; i < variableList.length; i++) {
     if(i==0&&!(Blockly.Arduino.definitions_['var_declare'+'item'])){

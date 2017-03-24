@@ -109,7 +109,7 @@ Blockly.Blocks['ascii_to_char'] = {
     this.setColour(Blockly.Blocks.texts.HUE);
     this.appendValueInput('VAR')
         .setCheck(Number)
-		.appendField(Blockly.MIXLY_TOCHAR);;
+		.appendField(Blockly.MIXLY_TOCHAR);
 	this.setOutput(true, String);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_TOCHAR);
   }
