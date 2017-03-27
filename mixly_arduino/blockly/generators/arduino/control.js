@@ -69,19 +69,32 @@ Blockly.Arduino.controls_for = function() {
         '\'' + this.id + '\'') + branch;
   }
   var code;
-  var down = step<0;
+  var down = 0;
   if (argument0.match(/^-?\d+(\.\d+)?$/) &&
       argument1.match(/^-?\d+(\.\d+)?$/)) {
+	//起止数是常量
+	down = (argument1-argument0<0);
     code = 'for (int ' + variable0 + ' = ' + argument0 + '; ' +
         variable0 + (down ? ' >= ' : ' <= ') + argument1 + '; ' +
         variable0 + ' = '  + variable0 + ' + (' +step+')) {\n' +
         branch + '}\n';
   }else {
-      //涉及到变量
-      code = 'for (int ' + variable0 + ' = (' + argument0 + '); ' +
-      variable0 + (down ? ' >= ' : ' <= ')+'(' + argument1 + '); ' +
-      variable0 + ' = '  + variable0 + ' + (' +step+')) {\n' +
-      branch + '}\n';
+      //起止数有变量	  
+	  if(step.match(/^-?\d+(\.\d+)?$/)){
+		  //步长是常量
+		  down = step<0;
+		  code = 'for (int ' + variable0 + ' = (' + argument0 + '); ' +
+		  variable0 + (down ? ' >= ' : ' <= ')+'(' + argument1 + '); ' +
+		  variable0 + ' = '  + variable0 + ' + (' +step+')) {\n' +
+		  branch + '}\n';
+	  }else{
+		  //步长是变量
+		  code = 'for (int ' + variable0 + ' = (' + argument0 + '); ' +
+		  '('+argument1+'>='+argument0+')?('+variable0+'<='+argument1+'):('+variable0+'>='+argument1+'); ' +
+		  variable0 + ' = '  + variable0 + ' + (' +step+')) {\n' +
+		  branch + '}\n';
+	  }
+      
   }
   return code;
 };
