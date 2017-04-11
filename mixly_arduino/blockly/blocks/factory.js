@@ -175,7 +175,17 @@ Blockly.Blocks.factory_declare={
     this.setNextStatement(true);
   }
 }
-
+Blockly.Blocks.factory_define = {
+    init: function () {
+        this.setColour(Blockly.Blocks.factory.HUE);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldTextInput('#define'), 'TYPE')
+            .appendField(" ")
+            .appendField(new Blockly.FieldTextInput('MYDEFINE 11'), 'NAME')
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+    }
+}
 Blockly.Blocks.factory_static_method_noreturn={
   init: function() {
     this.setColour(Blockly.Blocks.factory.HUE);
