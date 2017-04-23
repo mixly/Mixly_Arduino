@@ -257,11 +257,7 @@ Blockly.Arduino.scrubNakedValue = function (line) {
  */
 Blockly.Arduino.quote_ = function (string) {
 	// TODO: This is a quick hack.  Replace with goog.string.quote
-	string = string.replace(/\\/g, '\\\\')
-		.replace(/\n/g, '\\\n')
-		.replace(/\$/g, '\\$')
-		.replace(/'/g, '\\\'');
-	return '\"' + string + '\"';
+	return goog.string.quote(string);
 };
 
 /**
