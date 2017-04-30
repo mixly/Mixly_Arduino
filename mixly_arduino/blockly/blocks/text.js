@@ -39,12 +39,24 @@ Blockly.Blocks['text'] = {
 };
 
 Blockly.FieldTextInput.char_validator = function(text) {
-  if(text.length>1){
-    return text.charAt(0);
+  if (text.length > 1){
+	  if(text.charAt(0) === "\\"){
+		  var charAtOne = text.charAt(1); 
+		  if(charAtOne === "0" || 
+		     charAtOne === "b" ||
+		     charAtOne === "f" ||
+		     charAtOne === "n" ||
+		     charAtOne === "r" ||
+		     charAtOne === "t" ||
+		     charAtOne === "\\" ||
+		     charAtOne === "'" ){
+			 return String(text).substring(0, 2);
+		  }else if(charAtOne === "x" && text.charAt(2) === "0" && text.charAt(3) === "B"){
+			  return String(text).substring(0, 4);
+		  } 
+	  }
   }
-  else{
-    return String(text);
-  }
+  return String(text).substring(0, 1);
 };
 
 Blockly.Blocks['text_char'] = {
