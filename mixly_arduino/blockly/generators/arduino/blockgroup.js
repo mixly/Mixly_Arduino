@@ -222,7 +222,7 @@ Blockly.Arduino.ir_send_raw = function() {
 
 Blockly.Arduino.i2c_master_writer = function() {
    Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>';
-   Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();\n';
+   Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();';
    var device = Blockly.Arduino.valueToCode(this, 'device',Blockly.Arduino.ORDER_ATOMIC) || '0';
    var value = Blockly.Arduino.valueToCode(this, 'value',Blockly.Arduino.ORDER_ATOMIC) || '0';
    var code ="Wire.beginTransmission("+device+");\n";
@@ -232,7 +232,7 @@ Blockly.Arduino.i2c_master_writer = function() {
 };
 Blockly.Arduino.i2c_master_reader = function() {
    Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>\n';
-   Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();\n';
+   Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();';
    var device = Blockly.Arduino.valueToCode(this, 'device',Blockly.Arduino.ORDER_ATOMIC) || '0';
    var bytes = Blockly.Arduino.valueToCode(this, 'bytes',Blockly.Arduino.ORDER_ATOMIC) || '0';
    var code ="Wire.requestFrom("+device+", "+bytes+");\n";
@@ -240,16 +240,27 @@ Blockly.Arduino.i2c_master_reader = function() {
 };
 Blockly.Arduino.i2c_master_reader2 = function() {
    Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>\n';
-   Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();\n';
+   Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();';
    var code ="Wire.read()";
    return [code,Blockly.Arduino.ORDER_ATOMIC];
 };
 Blockly.Arduino.i2c_available = function() {
    Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>\n';
-   Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();\n';
+   Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();';
    var code ="Wire.available()";
    return [code,Blockly.Arduino.ORDER_ATOMIC];
 };
+Blockly.Arduino.i2c_slave_onreceive = function() {
+	var pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
+	Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>\n';
+	Blockly.Arduino.setups_['setup_i2c_'+pin] = 'Wire.begin('+pin+');';
+	Blockly.Arduino.setups_['setup_i2c_onReceive_'+pin] = 'Wire.onReceive(i2cReceiveEvent_'+pin+');';
+	var funcName = 'i2cReceiveEvent_' + pin;
+    var branch = Blockly.Arduino.statementToCode(this, 'DO');
+    var code2 = 'void' + ' ' + funcName + '(int howMany) {\n' + branch + '}\n';
+    Blockly.Arduino.definitions_[funcName] = code2;
+	return '';
+}
 
 Blockly.Arduino.spi_transfer = function() {
    Blockly.Arduino.definitions_['define_spi'] = '#include <SPI.h>';

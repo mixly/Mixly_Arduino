@@ -316,6 +316,19 @@ Blockly.Blocks.i2c_available = {
   }
 };
 
+Blockly.Blocks.i2c_slave_onreceive = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blockgroup.HUE3);
+	this.appendValueInput("PIN", Number)
+        .appendField(Blockly.MIXLY_I2C_SLAVE_ONRECEIVE)
+        .setCheck(Number);
+	this.appendStatementInput('DO')
+        .appendField(Blockly.MIXLY_DO);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
 //SPI
 Blockly.Blocks.spi_transfer={
 	init: function() {

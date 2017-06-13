@@ -473,6 +473,7 @@ Blockly.MIXLY_I2C_MASTER_READ2="I2C_Leer";
 Blockly.MIXLY_I2C_VALUE="valor"
 Blockly.MIXLY_I2C_BYTES="bytes";
 Blockly.MIXLY_I2C_AVAILABLE='I2C isAvailable?';
+Blockly.MIXLY_I2C_SLAVE_ONRECEIVE='I2C Slave onReceive PIN#';
 Blockly.LANG_CONTROLS_FOR_INPUT_WITH = 'contar con';
 Blockly.LANG_CONTROLS_FOR_INPUT_VAR = 'x';
 Blockly.LANG_CONTROLS_FOR_INPUT_FROM = 'desde';

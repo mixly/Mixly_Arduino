@@ -734,6 +734,11 @@ function init() {
 	  <block type="i2c_master_reader"></block>
 	  <block type="i2c_master_reader2"></block>
 	  <block type="i2c_available"></block>
+	  <block type="i2c_slave_onreceive">
+		<value name="PIN">
+          <shadow type="pins_digital"></shadow>
+        </value>
+	  </block>
 	  <block type="spi_transfer">
 		<value name="pin">
           <shadow type="pins_digital"></shadow>
