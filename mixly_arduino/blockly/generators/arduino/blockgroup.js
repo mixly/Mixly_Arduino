@@ -513,13 +513,13 @@ Blockly.Arduino.lp2i_u8g_draw_4strings = function () {
       + '  delay(1000);\n';
     var code = 'u8g.firstPage();\n'
     + 'do {\n'
-    + '    u8g.setPrintPos(0,12);\n'
+    + '    u8g.setPrintPos(0,14);\n'
     + '    u8g.print(' + value_text_line1 + ');\n'
-    + '    u8g.setPrintPos(0,24);\n'
+    + '    u8g.setPrintPos(0,30);\n'
     + '    u8g.print(' + value_text_line2 + ');\n'
-    + '    u8g.setPrintPos(0,36);\n'
+    + '    u8g.setPrintPos(0,46);\n'
     + '    u8g.print(' + value_text_line3 + ');\n'
-    + '    u8g.setPrintPos(0,48);\n'
+    + '    u8g.setPrintPos(0,62);\n'
     + '    u8g.print(' + value_text_line4 + ');\n'
     + '}\n'
     +'while( u8g.nextPage() );\n';

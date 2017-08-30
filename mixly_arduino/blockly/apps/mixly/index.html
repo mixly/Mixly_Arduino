@@ -34,6 +34,7 @@
   <script type="text/javascript" src="../../generators/arduino/variables.js"></script>
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/arduino/factory.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/SCoop.js"></script>
   <script type="text/javascript" src="../../blocks/pins.js"></script>
   <script type="text/javascript" src="../../blocks/inout.js"></script>
   <script type="text/javascript" src="../../blocks/control.js"></script>
@@ -48,6 +49,7 @@
   <script type="text/javascript" src="../../blocks/variables.js"></script>
   <script type="text/javascript" src="../../blocks/procedures.js"></script>
   <script type="text/javascript" src="../../blocks/factory.js"></script>
+  <script type="text/javascript" src="../../blocks/SCoop.js"></script>
   <link rel="stylesheet" type="text/css" href="color.css" />
   <script>
 var sidecodeDisplay=false;
@@ -445,6 +447,15 @@ function init() {
 	  <block type="controls_mstimer2_stop"></block>
       <block type="controls_interrupts"></block>
       <block type="controls_nointerrupts"></block>
+      <block type="SCoopTask"></block>
+      <block type="SCoop_yield"></block>
+      <block type="SCoop_sleep">
+            <value name="sleeplength">
+                <shadow type="math_number">
+                    <field name="NUM">1000</field>
+                </shadow>
+            </value>
+      </block>
     </category>
     <category id="catMath"  colour="230">
 	  <block type="math_number"></block>
