@@ -104,7 +104,9 @@ Blockly.Arduino.math_single = function() {
     case '--':
         code = '(' + arg + '--)';
       break;
-
+    case '~':
+        code = '~(' + arg + ')';
+        break;
     case 'ROUND':
       code = arg + '.round()';
       break;

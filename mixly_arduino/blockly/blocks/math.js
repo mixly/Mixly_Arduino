@@ -71,6 +71,7 @@ Blockly.Blocks['math_bit'] = {
     var OPERATORS =
         [['&', '&'],
          ['|', '|'],
+         ['^', '^'],
         ['>>', '>>'],
         ['<<', '<<']];
     this.setColour(Blockly.Blocks.math.HUE);
@@ -104,6 +105,7 @@ Blockly.Blocks['math_trig'] = {
          ['10^', 'POW10'],
          ['++', '++'],
          ['--', '--'],
+         ['~', '~'],
         ];
     //this.setHelpUrl(Blockly.Msg.MATH_TRIG_HELPURL);
     this.setColour(Blockly.Blocks.math.HUE);
