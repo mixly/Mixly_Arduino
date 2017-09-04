@@ -24,10 +24,7 @@
  */
 'use strict';
 
-/**
- * The top level namespace used to access the Blockly library.
- * @namespace Blockly
- **/
+// Top level object for Blockly.
 goog.provide('Blockly');
 
 goog.require('Blockly.BlockSvg.render');
@@ -47,7 +44,6 @@ goog.require('Blockly.Generator');
 goog.require('Blockly.Msg');
 goog.require('Blockly.Procedures');
 goog.require('Blockly.Toolbox');
-goog.require('Blockly.Touch');
 goog.require('Blockly.WidgetDiv');
 goog.require('Blockly.WorkspaceSvg');
 goog.require('Blockly.constants');
@@ -65,7 +61,12 @@ var CLOSURE_DEFINES = {'goog.DEBUG': false};
  * Set by Blockly.WorkspaceSvg.prototype.markFocused
  * @type {Blockly.Workspace}
  */
+
+
 Blockly.mainWorkspace = null;
+
+
+
 
 /**
  * Currently selected block.
@@ -88,10 +89,13 @@ Blockly.highlightedConnection_ = null;
 Blockly.localConnection_ = null;
 
 /**
+
+
  * All of the connections on blocks that are currently being dragged.
  * @type {!Array.<!Blockly.Connection>}
  * @private
  */
+
 Blockly.draggingConnections_ = [];
 
 /**
@@ -110,20 +114,19 @@ Blockly.clipboardSource_ = null;
 
 /**
  * Is the mouse dragging a block?
- * DRAG_NONE - No drag operation.
- * DRAG_STICKY - Still inside the sticky DRAG_RADIUS.
- * DRAG_FREE - Freely draggable.
+ * 0 - No drag operation.
+ * 1 - Still inside the sticky DRAG_RADIUS.
+ * 2 - Freely draggable.
  * @private
  */
 Blockly.dragMode_ = Blockly.DRAG_NONE;
 
 /**
- * Cached value for whether 3D is supported.
- * @type {!boolean}
+ * Wrapper function called when a touch mouseUp occurs during a drag operation.
+ * @type {Array.<!Array>}
  * @private
  */
-Blockly.cache3dSupported_ = null;
-
+Blockly.onTouchUpWrapper_ = null;
 /**
  * Convert a hue (HSV model) into an RGB hex triplet.
  * @param {number} hue Hue on a colour wheel (0-360).
@@ -148,23 +151,34 @@ Blockly.svgSize = function(svg) {
 };
 
 /**
- * Size the workspace when the contents change.  This also updates
- * scrollbars accordingly.
- * @param {!Blockly.WorkspaceSvg} workspace The workspace to resize.
+ * Schedule a call to the resize handler.  Groups of simultaneous events (e.g.
+ * a tree of blocks being deleted) are merged into one call.
+ * @param {Blockly.WorkspaceSvg} workspace Any workspace in the SVG.
  */
-Blockly.resizeSvgContents = function(workspace) {
-  workspace.resizeContents();
+Blockly.asyncSvgResize = function(workspace) {
+  if (Blockly.svgResizePending_) {
+    return;
+  }
+  if (!workspace) {
+    workspace = Blockly.getMainWorkspace();
+  }
+  Blockly.svgResizePending_ = true;
+  setTimeout(function() {Blockly.svgResize(workspace);}, 0);
 };
-
 /**
- * Size the SVG image to completely fill its container. Call this when the view
- * actually changes sizes (e.g. on a window resize/device orientation change).
- * See Blockly.resizeSvgContents to resize the workspace when the contents
- * change (e.g. when a block is added or removed).
+ * Flag indicating a resize event is scheduled.
+ * Used to fire only one resize after multiple changes.
+ * @type {boolean}
+ * @private
+ */
+Blockly.svgResizePending_ = false;
+/**
+ * Size the SVG image to completely fill its container.
  * Record the height/width of the SVG image.
  * @param {!Blockly.WorkspaceSvg} workspace Any workspace in the SVG.
  */
 Blockly.svgResize = function(workspace) {
+  Blockly.svgResizePending_ = false;
   var mainWorkspace = workspace;
   while (mainWorkspace.options.parentWorkspace) {
     mainWorkspace = mainWorkspace.options.parentWorkspace;
@@ -189,12 +203,68 @@ Blockly.svgResize = function(workspace) {
 };
 
 /**
+ * Handle a mouse-up anywhere on the page.
+ * @param {!Event} e Mouse up event.
+ * @private
+ */
+Blockly.onMouseUp_ = function(e) {
+  var workspace = Blockly.getMainWorkspace();
+  Blockly.Css.setCursor(Blockly.Css.Cursor.OPEN);
+  workspace.isScrolling = false;
+
+  // Unbind the touch event if it exists.
+  if (Blockly.onTouchUpWrapper_) {
+    Blockly.unbindEvent_(Blockly.onTouchUpWrapper_);
+    Blockly.onTouchUpWrapper_ = null;
+  }
+  if (Blockly.onMouseMoveWrapper_) {
+    Blockly.unbindEvent_(Blockly.onMouseMoveWrapper_);
+    Blockly.onMouseMoveWrapper_ = null;
+  }
+};
+
+/**
+ * Handle a mouse-move on SVG drawing surface.
+ * @param {!Event} e Mouse move event.
+ * @private
+ */
+Blockly.onMouseMove_ = function(e) {
+  if (e.touches && e.touches.length >= 2) {
+    return;  // Multi-touch gestures won't have e.clientX.
+  }
+  var workspace = Blockly.getMainWorkspace();
+  if (workspace.isScrolling) {
+    var dx = e.clientX - workspace.startDragMouseX;
+    var dy = e.clientY - workspace.startDragMouseY;
+    var metrics = workspace.startDragMetrics;
+    var x = workspace.startScrollX + dx;
+    var y = workspace.startScrollY + dy;
+    x = Math.min(x, -metrics.contentLeft);
+    y = Math.min(y, -metrics.contentTop);
+    x = Math.max(x, metrics.viewWidth - metrics.contentLeft -
+                 metrics.contentWidth);
+    y = Math.max(y, metrics.viewHeight - metrics.contentTop -
+                 metrics.contentHeight);
+
+    // Move the scrollbars and the page will scroll automatically.
+    workspace.scrollbar.set(-x - metrics.contentLeft,
+                            -y - metrics.contentTop);
+    // Cancel the long-press if the drag has moved too far.
+    if (Math.sqrt(dx * dx + dy * dy) > Blockly.DRAG_RADIUS) {
+      Blockly.longStop_();
+    }
+    e.stopPropagation();
+    e.preventDefault();
+  }
+};
+
+/**
  * Handle a key-down on SVG drawing surface.
  * @param {!Event} e Key down event.
  * @private
  */
 Blockly.onKeyDown_ = function(e) {
-  if (Blockly.mainWorkspace.options.readOnly || Blockly.utils.isTargetInput(e)) {
+  if (Blockly.mainWorkspace.options.readOnly || Blockly.isTargetInput_(e)) {
     // No key actions on readonly workspaces.
     // When focused on an HTML text input widget, don't trap any keys.
     return;
@@ -205,10 +275,10 @@ Blockly.onKeyDown_ = function(e) {
     Blockly.hideChaff();
   } else if (e.keyCode == 8 || e.keyCode == 46) {
     // Delete or backspace.
-    // Stop the browser from going back to the previous page.
+      // Stop the browser from going back to the previous page.
     // Do this first to prevent an error in the delete code from resulting in
     // data loss.
-    e.preventDefault();
+      e.preventDefault();
     if (Blockly.selected && Blockly.selected.isDeletable()) {
       deleteBlock = true;
     }
@@ -228,17 +298,15 @@ Blockly.onKeyDown_ = function(e) {
     if (e.keyCode == 86) {
       // 'v' for paste.
       if (Blockly.clipboardXml_) {
-        Blockly.Events.setGroup(true);
         Blockly.clipboardSource_.paste(Blockly.clipboardXml_);
-        Blockly.Events.setGroup(false);
       }
     } else if (e.keyCode == 90) {
       // 'z' for undo 'Z' is for redo.
       Blockly.hideChaff();
       Blockly.mainWorkspace.undo(e.shiftKey);
     } else if(e.keyCode == 89){
-      // 'y' for redo
-      Blockly.hideChaff();
+	  // 'y' for redo
+	  Blockly.hideChaff();
       Blockly.mainWorkspace.undo(1);
     }
   }
@@ -261,8 +329,45 @@ Blockly.onKeyDown_ = function(e) {
  * @private
  */
 Blockly.terminateDrag_ = function() {
-  Blockly.BlockSvg.terminateDrag();
+  Blockly.BlockSvg.terminateDrag_();
   Blockly.Flyout.terminateDrag_();
+};
+
+/**
+ * PID of queued long-press task.
+ * @private
+ */
+Blockly.longPid_ = 0;
+
+/**
+ * Context menus on touch devices are activated using a long-press.
+ * Unfortunately the contextmenu touch event is currently (2015) only suported
+ * by Chrome.  This function is fired on any touchstart event, queues a task,
+ * which after about a second opens the context menu.  The tasks is killed
+ * if the touch event terminates early.
+ * @param {!Event} e Touch start event.
+ * @param {!Blockly.Block|!Blockly.WorkspaceSvg} uiObject The block or workspace
+ *   under the touchstart event.
+ * @private
+ */
+Blockly.longStart_ = function(e, uiObject) {
+  Blockly.longStop_();
+  Blockly.longPid_ = setTimeout(function() {
+      e.button = 2;  // Simulate a right button click.
+      uiObject.onMouseDown_(e);
+    }, Blockly.LONGPRESS);
+};
+
+/**
+ * Nope, that's not a long-press.  Either touchend or touchcancel was fired,
+ * or a drag hath begun.  Kill the queued long-press task.
+ * @private
+ */
+Blockly.longStop_ = function() {
+  if (Blockly.longPid_) {
+    clearTimeout(Blockly.longPid_);
+    Blockly.longPid_ = 0;
+  }
 };
 
 /**
@@ -308,7 +413,7 @@ Blockly.duplicate_ = function(block) {
  * @private
  */
 Blockly.onContextMenu_ = function(e) {
-  if (!Blockly.utils.isTargetInput(e)) {
+  if (!Blockly.isTargetInput_(e)) {
     // When focused on an HTML text input widget, don't cancel the context menu.
     e.preventDefault();
   }
@@ -332,6 +437,128 @@ Blockly.hideChaff = function(opt_allowToolbox) {
 };
 
 /**
+ * Return an object with all the metrics required to size scrollbars for the
+ * main workspace.  The following properties are computed:
+ * .viewHeight: Height of the visible rectangle,
+ * .viewWidth: Width of the visible rectangle,
+ * .contentHeight: Height of the contents,
+ * .contentWidth: Width of the content,
+ * .viewTop: Offset of top edge of visible rectangle from parent,
+ * .viewLeft: Offset of left edge of visible rectangle from parent,
+ * .contentTop: Offset of the top-most content from the y=0 coordinate,
+ * .contentLeft: Offset of the left-most content from the x=0 coordinate.
+ * .absoluteTop: Top-edge of view.
+ * .absoluteLeft: Left-edge of view.
+ * .toolboxWidth: Width of toolbox, if it exists.  Otherwise zero.
+ * .toolboxHeight: Height of toolbox, if it exists.  Otherwise zero.
+ * .flyoutWidth: Width of the flyout if it is always open.  Otherwise zero.
+ * .flyoutHeight: Height of flyout if it is always open.  Otherwise zero.
+ * .toolboxPosition: Top, bottom, left or right.
+ * @return {Object} Contains size and position metrics of main workspace.
+ * @private
+ * @this Blockly.WorkspaceSvg
+ */
+Blockly.getMainWorkspaceMetrics_ = function() {
+  var svgSize = Blockly.svgSize(this.getParentSvg());
+  if (this.toolbox_) {
+    if (this.toolboxPosition == Blockly.TOOLBOX_AT_TOP ||
+        this.toolboxPosition == Blockly.TOOLBOX_AT_BOTTOM) {
+      svgSize.height -= this.toolbox_.getHeight();
+    } else if (this.toolboxPosition == Blockly.TOOLBOX_AT_LEFT ||
+        this.toolboxPosition == Blockly.TOOLBOX_AT_RIGHT) {
+      svgSize.width -= this.toolbox_.getWidth();
+    }
+  }
+  // Set the margin to match the flyout's margin so that the workspace does
+  // not jump as blocks are added.
+  var MARGIN = Blockly.Flyout.prototype.CORNER_RADIUS - 1;
+  var viewWidth = svgSize.width - MARGIN;
+  var viewHeight = svgSize.height - MARGIN;
+  var blockBox = this.getBlocksBoundingBox();
+
+  // Fix scale.
+  var contentWidth = blockBox.width * this.scale;
+  var contentHeight = blockBox.height * this.scale;
+  var contentX = blockBox.x * this.scale;
+  var contentY = blockBox.y * this.scale;
+  if (this.scrollbar) {
+    // Add a border around the content that is at least half a screenful wide.
+    // Ensure border is wide enough that blocks can scroll over entire screen.
+    var leftEdge = Math.min(contentX - viewWidth / 2,
+                            contentX + contentWidth - viewWidth);
+    var rightEdge = Math.max(contentX + contentWidth + viewWidth / 2,
+                             contentX + viewWidth);
+    var topEdge = Math.min(contentY - viewHeight / 2,
+                           contentY + contentHeight - viewHeight);
+    var bottomEdge = Math.max(contentY + contentHeight + viewHeight / 2,
+                              contentY + viewHeight);
+  } else {
+    var leftEdge = blockBox.x;
+    var rightEdge = leftEdge + blockBox.width;
+    var topEdge = blockBox.y;
+    var bottomEdge = topEdge + blockBox.height;
+  }
+  var absoluteLeft = 0;
+  if (this.toolbox_ && this.toolboxPosition == Blockly.TOOLBOX_AT_LEFT) {
+    absoluteLeft = this.toolbox_.getWidth();
+  }
+  var absoluteTop = 0;
+  if (this.toolbox_ && this.toolboxPosition == Blockly.TOOLBOX_AT_TOP) {
+    absoluteTop = this.toolbox_.getHeight();
+  }
+  var metrics = {
+    viewHeight: svgSize.height,
+    viewWidth: svgSize.width,
+    contentHeight: bottomEdge - topEdge,
+    contentWidth: rightEdge - leftEdge,
+    viewTop: -this.scrollY,
+    viewLeft: -this.scrollX,
+    contentTop: topEdge,
+    contentLeft: leftEdge,
+    absoluteTop: absoluteTop,
+    absoluteLeft: absoluteLeft,
+    toolboxWidth: this.toolbox_ ? this.toolbox_.getWidth() : 0,
+    toolboxHeight: this.toolbox_ ? this.toolbox_.getHeight() : 0,
+    flyoutWidth: this.flyout_ ? this.flyout_.getWidth() : 0,
+    flyoutHeight: this.flyout_ ? this.flyout_.getHeight() : 0,
+    toolboxPosition: this.toolboxPosition
+  };
+  return metrics;
+};
+
+/**
+ * Sets the X/Y translations of the main workspace to match the scrollbars.
+ * @param {!Object} xyRatio Contains an x and/or y property which is a float
+ *     between 0 and 1 specifying the degree of scrolling.
+ * @private
+ * @this Blockly.WorkspaceSvg
+ */
+Blockly.setMainWorkspaceMetrics_ = function(xyRatio) {
+  if (!this.scrollbar) {
+    throw 'Attempt to set main workspace scroll without scrollbars.';
+  }
+  var metrics = this.getMetrics();
+  if (goog.isNumber(xyRatio.x)) {
+    this.scrollX = -metrics.contentWidth * xyRatio.x - metrics.contentLeft;
+  }
+  if (goog.isNumber(xyRatio.y)) {
+    this.scrollY = -metrics.contentHeight * xyRatio.y - metrics.contentTop;
+  }
+  var x = this.scrollX + metrics.absoluteLeft;
+  var y = this.scrollY + metrics.absoluteTop;
+  this.translate(x, y);
+  if (this.options.gridPattern) {
+    this.options.gridPattern.setAttribute('x', x);
+    this.options.gridPattern.setAttribute('y', y);
+    if (goog.userAgent.IE) {
+      // IE doesn't notice that the x/y offsets have changed.  Force an update.
+      this.updateGridPattern_();
+    }
+  }
+};
+
+/**
+
  * When something in Blockly's workspace changes, call a function.
  * @param {!Function} func Function to call.
  * @return {!Array.<!Array>} Opaque data that can be passed to
@@ -339,7 +566,7 @@ Blockly.hideChaff = function(opt_allowToolbox) {
  * @deprecated April 2015
  */
 Blockly.addChangeListener = function(func) {
-  // Backwards compatibility from before there could be multiple workspaces.
+  // Backwards compatability from before there could be multiple workspaces.
   console.warn('Deprecated call to Blockly.addChangeListener, ' +
                'use workspace.addChangeListener instead.');
   return Blockly.getMainWorkspace().addChangeListener(func);
@@ -347,227 +574,12 @@ Blockly.addChangeListener = function(func) {
 
 /**
  * Returns the main workspace.  Returns the last used main workspace (based on
- * focus).  Try not to use this function, particularly if there are multiple
- * Blockly instances on a page.
+ * focus).
  * @return {!Blockly.Workspace} The main workspace.
  */
 Blockly.getMainWorkspace = function() {
   return Blockly.mainWorkspace;
 };
-
-/**
- * Wrapper to window.alert() that app developers may override to
- * provide alternatives to the modal browser window.
- * @param {string} message The message to display to the user.
- * @param {function()=} opt_callback The callback when the alert is dismissed.
- */
-Blockly.alert = function(message, opt_callback) {
-  window.alert(message);
-  if (opt_callback) {
-    opt_callback();
-  }
-};
-
-/**
- * Wrapper to window.confirm() that app developers may override to
- * provide alternatives to the modal browser window.
- * @param {string} message The message to display to the user.
- * @param {!function(boolean)} callback The callback for handling user response.
- */
-Blockly.confirm = function(message, callback) {
-  callback(window.confirm(message));
-};
-
-/**
- * Wrapper to window.prompt() that app developers may override to provide
- * alternatives to the modal browser window. Built-in browser prompts are
- * often used for better text input experience on mobile device. We strongly
- * recommend testing mobile when overriding this.
- * @param {string} message The message to display to the user.
- * @param {string} defaultValue The value to initialize the prompt with.
- * @param {!function(string)} callback The callback for handling user response.
- */
-Blockly.prompt = function(message, defaultValue, callback) {
-  callback(window.prompt(message, defaultValue));
-};
-
-/**
- * Helper function for defining a block from JSON.  The resulting function has
- * the correct value of jsonDef at the point in code where jsonInit is called.
- * @param {!Object} jsonDef The JSON definition of a block.
- * @return {function()} A function that calls jsonInit with the correct value
- *     of jsonDef.
- * @private
- */
-Blockly.jsonInitFactory_ = function(jsonDef) {
-  return function() {
-    this.jsonInit(jsonDef);
-  };
-};
-
-/**
- * Define blocks from an array of JSON block definitions, as might be generated
- * by the Blockly Developer Tools.
- * @param {!Array.<!Object>} jsonArray An array of JSON block definitions.
- */
-Blockly.defineBlocksWithJsonArray = function(jsonArray) {
-  for (var i = 0, elem; elem = jsonArray[i]; i++) {
-    var typename = elem.type;
-    if (typename == null || typename === '') {
-      console.warn('Block definition #' + i +
-        ' in JSON array is missing a type attribute. Skipping.');
-    } else {
-      if (Blockly.Blocks[typename]) {
-        console.warn('Block definition #' + i +
-          ' in JSON array overwrites prior definition of "' + typename + '".');
-      }
-      Blockly.Blocks[typename] = {
-        init: Blockly.jsonInitFactory_(elem)
-      };
-    }
-  }
-};
-
-/**
- * Bind an event to a function call.  When calling the function, verifies that
- * it belongs to the touch stream that is currently being processed, and splits
- * multitouch events into multiple events as needed.
- * @param {!Node} node Node upon which to listen.
- * @param {string} name Event name to listen to (e.g. 'mousedown').
- * @param {Object} thisObject The value of 'this' in the function.
- * @param {!Function} func Function to call when event is triggered.
- * @param {boolean} opt_noCaptureIdentifier True if triggering on this event
- *     should not block execution of other event handlers on this touch or other
- *     simultaneous touches.
- * @return {!Array.<!Array>} Opaque data that can be passed to unbindEvent_.
- * @private
- */
-Blockly.bindEventWithChecks_ = function(node, name, thisObject, func,
-    opt_noCaptureIdentifier) {
-  var handled = false;
-  var wrapFunc = function(e) {
-    var captureIdentifier = !opt_noCaptureIdentifier;
-    // Handle each touch point separately.  If the event was a mouse event, this
-    // will hand back an array with one element, which we're fine handling.
-    var events = Blockly.Touch.splitEventByTouches(e);
-    for (var i = 0, event; event = events[i]; i++) {
-      if (captureIdentifier && !Blockly.Touch.shouldHandleEvent(event)) {
-        continue;
-      }
-      Blockly.Touch.setClientFromTouch(event);
-      if (thisObject) {
-        func.call(thisObject, event);
-      } else {
-        func(event);
-      }
-      handled = true;
-    }
-  };
-
-  node.addEventListener(name, wrapFunc, false);
-  var bindData = [[node, name, wrapFunc]];
-
-  // Add equivalent touch event.
-  if (name in Blockly.Touch.TOUCH_MAP) {
-    var touchWrapFunc = function(e) {
-      wrapFunc(e);
-      // Stop the browser from scrolling/zooming the page.
-      if (handled) {
-        e.preventDefault();
-      }
-    };
-    for (var i = 0, eventName;
-         eventName = Blockly.Touch.TOUCH_MAP[name][i]; i++) {
-      node.addEventListener(eventName, touchWrapFunc, false);
-      bindData.push([node, eventName, touchWrapFunc]);
-    }
-  }
-  return bindData;
-};
-
-/**
- * Bind an event to a function call.  Handles multitouch events by using the
- * coordinates of the first changed touch, and doesn't do any safety checks for
- * simultaneous event processing.
- * @deprecated in favor of bindEventWithChecks_, but preserved for external
- * users.
- * @param {!Node} node Node upon which to listen.
- * @param {string} name Event name to listen to (e.g. 'mousedown').
- * @param {Object} thisObject The value of 'this' in the function.
- * @param {!Function} func Function to call when event is triggered.
- * @return {!Array.<!Array>} Opaque data that can be passed to unbindEvent_.
- * @private
- */
-Blockly.bindEvent_ = function(node, name, thisObject, func) {
-  var wrapFunc = function(e) {
-    if (thisObject) {
-      func.call(thisObject, e);
-    } else {
-      func(e);
-    }
-  };
-
-  node.addEventListener(name, wrapFunc, false);
-  var bindData = [[node, name, wrapFunc]];
-
-  // Add equivalent touch event.
-  if (name in Blockly.Touch.TOUCH_MAP) {
-    var touchWrapFunc = function(e) {
-      // Punt on multitouch events.
-      if (e.changedTouches.length == 1) {
-        // Map the touch event's properties to the event.
-        var touchPoint = e.changedTouches[0];
-        e.clientX = touchPoint.clientX;
-        e.clientY = touchPoint.clientY;
-      }
-      wrapFunc(e);
-
-      // Stop the browser from scrolling/zooming the page.
-      e.preventDefault();
-    };
-    for (var i = 0, eventName;
-         eventName = Blockly.Touch.TOUCH_MAP[name][i]; i++) {
-      node.addEventListener(eventName, touchWrapFunc, false);
-      bindData.push([node, eventName, touchWrapFunc]);
-    }
-  }
-  return bindData;
-};
-
-/**
- * Unbind one or more events event from a function call.
- * @param {!Array.<!Array>} bindData Opaque data from bindEvent_.
- *     This list is emptied during the course of calling this function.
- * @return {!Function} The function call.
- * @private
- */
-Blockly.unbindEvent_ = function(bindData) {
-  while (bindData.length) {
-    var bindDatum = bindData.pop();
-    var node = bindDatum[0];
-    var name = bindDatum[1];
-    var func = bindDatum[2];
-    node.removeEventListener(name, func, false);
-  }
-  return func;
-};
-
-/**
- * Is the given string a number (includes negative and decimals).
- * @param {string} str Input string.
- * @return {boolean} True if number, false otherwise.
- */
-Blockly.isNumber = function(str) {
-  return !!str.match(/^\s*-?\d+(\.\d+)?\s*$/);
-};
-
-// IE9 does not have a console.  Create a stub to stop errors.
-if (!goog.global['console']) {
-  goog.global['console'] = {
-    'log': function() {},
-    'warn': function() {}
-  };
-}
 
 // Export symbols that would otherwise be renamed by Closure compiler.
 if (!goog.global['Blockly']) {
