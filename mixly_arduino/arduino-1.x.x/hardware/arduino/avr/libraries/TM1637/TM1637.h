@@ -1,19 +1,28 @@
-/**************************************************************************
-  Copyright (C), 2014- ,  申议科技
-  File name:      TM1637.cpp
-  Version: v1.0      Date: 2014.10.8
-  Description: 基于TM1637的数码管驱动				 
-  Others:         
-  History:  
-                  
-    1. Date: 2014.10.8       Author:
-       Modification: 代码创建
-    2. ...
-****************************************************************************/
+//  Author:Fred.Chu
+//  Date:9 April,2013
+//
+//  This library is free software; you can redistribute it and/or
+//  modify it under the terms of the GNU Lesser General Public
+//  License as published by the Free Software Foundation; either
+//  version 2.1 of the License, or (at your option) any later version.
+//
+//  This library is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+//  Lesser General Public License for more details.
+//
+//  You should have received a copy of the GNU Lesser General Public
+//  License along with this library; if not, write to the Free Software
+//  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+//
+//  Modified record:
+//
+/*******************************************************************************/
 
 #ifndef TM1637_h
 #define TM1637_h
-
+#include <inttypes.h>
+#include <Arduino.h>
 //************definitions for TM1637*********************
 #define ADDR_AUTO  0x40
 #define ADDR_FIXED 0x44
@@ -34,8 +43,8 @@ class TM1637
     uint8_t Cmd_SetAddr;
     uint8_t Cmd_DispCtrl;
     boolean _PointFlag;     //_PointFlag=1:the clock point on
-    TM1637();
-    void init(uint8_t, uint8_t);        //To clear the display
+    TM1637(uint8_t, uint8_t);
+    void init(void);        //To clear the display
     void writeByte(int8_t wr_data);//write 8bit data to tm1637
     void start(void);//send start bits
     void stop(void); //send stop bits

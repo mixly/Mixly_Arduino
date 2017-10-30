@@ -916,3 +916,80 @@ Blockly.Blocks.display_4digitdisplay_showDot = {
         this.setNextStatement(true, null);
     }
 };
+
+Blockly.Blocks.display_TM1637_init = {
+    init: function () {
+        this.setColour(Blockly.Blocks.blockgroup.HUE4);
+        this.appendValueInput("PIN1").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_INIT).appendField("CLK").appendField(Blockly.MIXLY_PIN);
+        this.appendValueInput("PIN2").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("DIO").appendField(Blockly.MIXLY_PIN);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+          this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP);
+        this.setHelpUrl('');
+    }
+};
+
+
+Blockly.Blocks.display_TM1637_displayString = {
+    init: function () {
+        this.setColour(Blockly.Blocks.blockgroup.HUE4);
+        this.appendValueInput("VALUE").setCheck(String).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING);
+        this.appendValueInput("Speed").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_4DIGITDISPLAY_SPEED);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING_TIP);
+    }
+};
+
+
+Blockly.Blocks.display_TM1637_displayTime = {
+    init: function () {
+        this.setColour(Blockly.Blocks.blockgroup.HUE4);
+        this.appendDummyInput("").appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME);
+        this.appendValueInput("hour").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT);
+        this.appendDummyInput("").appendField(Blockly.MIXLY_HOUR);
+        this.appendValueInput("minute").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT);
+        this.appendDummyInput("").appendField(Blockly.MIXLY_MINUTE);
+        this.appendValueInput("second").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT);
+        this.appendDummyInput("").appendField(Blockly.MIXLY_SECOND);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME_TOOLTIP);
+    }
+};
+
+Blockly.Blocks.display_TM1637_Stopwatch = {
+    init: function () {
+        this.setColour(Blockly.Blocks.blockgroup.HUE4);
+        this.appendDummyInput("").appendField(Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH).appendField(new Blockly.FieldDropdown([
+          [Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_START, "stopwatchStart"],
+          [Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_PAUSE, "stopwatchPause"],
+          [Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_RESET, "stopwatchReset"], ]), "STAT");
+        this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_TM1637_STOPWATCH_TOOLTIP);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Blocks.display_TM1637_Brightness = {
+    init: function () {
+        this.setColour(Blockly.Blocks.blockgroup.HUE4);
+        this.appendDummyInput("").appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_BRIGHTNESS).appendField(new Blockly.FieldDropdown([
+          ["7", "7"],
+          ["6", "6"],
+          ["5", "5"],
+          ["4", "4"],
+          ["3", "3"],
+          ["2", "2"],
+          ["1", "1"]
+        ]), "BRIGHTNESS");
+        this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_4DIGITDISPLAY_BRIGHTNESS_TOOLTIP);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+    }
+};

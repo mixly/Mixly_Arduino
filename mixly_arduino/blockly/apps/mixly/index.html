@@ -1186,6 +1186,55 @@ function init() {
         </block>
         <block type="display_4digitdisplay_showDot">
         </block>
+        <block type="display_TM1637_init">
+            <value name="PIN1">
+                <shadow type="pins_digital">
+                    <field name="PIN">3</field>
+                </shadow>
+            </value>
+            <value name="PIN2">
+                <shadow type="pins_digital">
+                    <field name="PIN">2</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="display_TM1637_Brightness">
+            <value name="bit">
+            </value>
+        </block>
+
+        <block type="display_TM1637_displayString">
+            <value name="VALUE">
+                <shadow type="text">
+                    <field name="TEXT">012345</field>
+                </shadow>
+            </value>
+            <value name="Speed">
+                <shadow type="math_number">
+                    <field name="NUM">300</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="display_TM1637_displayTime">
+            <value name="hour">
+                <shadow type="math_number">
+                    <field name="NUM">12</field>
+                </shadow>
+            </value>
+            <value name="minute">
+                <shadow type="math_number">
+                    <field name="NUM">30</field>
+                </shadow>
+            </value>
+            <value name="second">
+                <shadow type="math_number">
+                    <field name="NUM">30</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="display_TM1637_Stopwatch">
+
+        </block>
 	</category>
 	<category id="catEthernet" colour="0">
 		<block type="ethernet_init_begin">
