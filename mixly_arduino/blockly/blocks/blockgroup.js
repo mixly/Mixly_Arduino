@@ -916,7 +916,6 @@ Blockly.Blocks.display_4digitdisplay_showDot = {
         this.setNextStatement(true, null);
     }
 };
-
 Blockly.Blocks.display_TM1637_init = {
     init: function () {
         this.setColour(Blockly.Blocks.blockgroup.HUE4);

@@ -246,7 +246,7 @@ Blockly.Arduino.i2c_master_reader2 = function() {
 };
 Blockly.Arduino.i2c_available = function() {
    Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>\n';
-   Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();';
+   Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();\n';
    var code ="Wire.available()";
    return [code,Blockly.Arduino.ORDER_ATOMIC];
 };

@@ -234,3 +234,5 @@ Blockly.Blocks.inout_shiftout = {
     this.setNextStatement(true, null);
   }
 };
+
+
