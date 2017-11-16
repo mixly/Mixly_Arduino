@@ -995,6 +995,11 @@ Blockly.MIXLY_DAY = 'D';
 Blockly.MIXLY_HOUR = 'H';
 Blockly.MIXLY_MINUTE = 'M';
 Blockly.MIXLY_SECOND = 'S';
+
+Blockly.MIXLY_DS1302_INITPIN = 'INIT DS1302 PIN'
+Blockly.MIXLY_SETDATE = 'SetDate:';
+Blockly.MIXLY_DATEFORMATE = 'DateFormat(Y-M-D)'
+Blockly.MIXLY_TIMEFORMATE = 'TimeFormat(H:M:S)'
 //////////// microbit js ///////////////////
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='Is gesture ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='When Serial recevied data containing ';

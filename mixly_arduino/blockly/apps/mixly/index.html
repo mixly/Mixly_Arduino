@@ -27,7 +27,8 @@
   <script type="text/javascript" src="../../generators/arduino/text.js"></script>
   <script type="text/javascript" src="../../generators/arduino/lists.js"></script>
   <script type="text/javascript" src="../../generators/arduino/logic.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/blockgroup.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/display.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/communicate.js"></script>
   <script type="text/javascript" src="../../generators/arduino/storage.js"></script>
   <script type="text/javascript" src="../../generators/arduino/sensor.js"></script>
   <script type="text/javascript" src="../../generators/arduino/ethernet.js"></script>
@@ -35,6 +36,8 @@
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/arduino/factory.js"></script>
   <script type="text/javascript" src="../../generators/arduino/SCoop.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/serial.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/pins.js"></script>
   <script type="text/javascript" src="../../blocks/inout.js"></script>
   <script type="text/javascript" src="../../blocks/control.js"></script>
@@ -42,7 +45,8 @@
   <script type="text/javascript" src="../../blocks/text.js"></script>
   <script type="text/javascript" src="../../blocks/lists.js"></script>
   <script type="text/javascript" src="../../blocks/logic.js"></script>
-  <script type="text/javascript" src="../../blocks/blockgroup.js"></script>
+  <script type="text/javascript" src="../../blocks/display.js"></script>
+  <script type="text/javascript" src="../../blocks/communicate.js"></script>
   <script type="text/javascript" src="../../blocks/storage.js"></script>
   <script type="text/javascript" src="../../blocks/sensor.js"></script>
   <script type="text/javascript" src="../../blocks/ethernet.js"></script>
@@ -50,6 +54,8 @@
   <script type="text/javascript" src="../../blocks/procedures.js"></script>
   <script type="text/javascript" src="../../blocks/factory.js"></script>
   <script type="text/javascript" src="../../blocks/SCoop.js"></script>
+  <script type="text/javascript" src="../../blocks/serial.js"></script>
+  <script type="text/javascript" src="../../blocks/actuator.js"></script>
   <link rel="stylesheet" type="text/css" href="color.css" />
   <script>
 var sidecodeDisplay=false;
@@ -838,6 +844,41 @@ function init() {
 			<shadow type="pins_digital"></shadow>
 		</value>
 	  </block>
+        <!--DS302-->
+        <block type="DS1302_set_date">
+            <value name="YEAR">
+                <shadow type="math_number">
+                    <field name="NUM">2017</field>
+                </shadow>
+            </value>
+            <value name="MONTH">
+                <shadow type="math_number">
+                    <field name="NUM">10</field>
+                </shadow>
+            </value>
+            <value name="DAY">
+                <shadow type="math_number">
+                    <field name="NUM">24</field>
+                </shadow>
+            </value>
+            <value name="HOUR">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+            <value name="MINUTE">
+                <shadow type="math_number">
+                    <field name="NUM">2</field>
+                </shadow>
+            </value>
+            <value name="SECOND">
+                <shadow type="math_number">
+                    <field name="NUM">3</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="DS1302_get_date"></block>
+        <block type="DS1302_get_time"></block>
 	  <block type="gps_init">
 		<value name="RX">
 			<shadow type="pins_digital"></shadow>

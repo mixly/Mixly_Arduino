@@ -66,7 +66,7 @@ Blockly.Blocks.gps_getData_xxx = {
 //³¬Éù²¨²â¾à
 Blockly.Blocks.chaoshengbo = {
     init: function () {
-        this.setColour(Blockly.Blocks.blockgroup.HUE1);
+        this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_CHAOSHENGBO)
             .appendField('Trig#')
@@ -80,7 +80,7 @@ Blockly.Blocks.chaoshengbo = {
 
 Blockly.Blocks.chaoshengbo2 = {
     init: function () {
-        this.setColour(Blockly.Blocks.blockgroup.HUE1);
+        this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_CHAOSHENGBO);
         this.appendValueInput("PIN1", Number)
@@ -99,7 +99,7 @@ Blockly.Blocks.chaoshengbo2 = {
 Blockly.Blocks.dht11 = {
     init: function () {
         var WHAT = [[Blockly.MIXLY_DHT11_T, 'temperature'], [Blockly.MIXLY_DHT11_H, 'humidity']];
-        this.setColour(Blockly.Blocks.blockgroup.HUE1);
+        this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput("PIN", Number)
             .appendField(new Blockly.FieldDropdown([['DHT11', '11'], ['DHT21', '21'], ['DHT22', '22'], ['DHT33', '33'], ['DHT44', '44']]), 'TYPE')
             .appendField(Blockly.MIXLY_PIN)
@@ -123,7 +123,7 @@ Blockly.Blocks.dht11 = {
 Blockly.Blocks.ds18b20 = {
     init: function () {
         var UNIT = [[Blockly.MIXLY_DS18B20_C, '0'], [Blockly.MIXLY_DS18B20_F, '1']];
-        this.setColour(Blockly.Blocks.blockgroup.HUE1);
+        this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput("PIN", Number)
             .appendField(Blockly.MIXLY_DS18B20)
             .setCheck(Number);
@@ -131,5 +131,78 @@ Blockly.Blocks.ds18b20 = {
             .appendField(Blockly.MIXLY_DS18B20_GET_TEMP)
             .appendField(new Blockly.FieldDropdown(UNIT), "UNIT");
         this.setOutput(true, Number);
+    }
+};
+
+//DS1302 RTC
+Blockly.Blocks.DS1302_init = {
+    init: function () {
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.appendValueInput("RST", Number)
+            .appendField(Blockly.MIXLY_DS1302_INITPIN)
+            .appendField("RST#")
+            .setCheck(Number);
+        this.appendValueInput("DAT")
+            .appendField("DAT#")
+            .setCheck(Number);
+        this.appendValueInput("CLK")
+            .appendField("CLK#")
+            .setCheck(Number);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(true);
+    }
+}
+
+Blockly.Blocks.DS1302_set_date = {
+    init: function () {
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.appendValueInput("YEAR", Number)
+            .appendField(Blockly.MIXLY_SETDATE)
+            .appendField(Blockly.MIXLY_YEAR)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .setCheck(Number);
+        this.appendValueInput("MONTH")
+            .appendField(Blockly.MIXLY_MONTH)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .setCheck(Number);
+        this.appendValueInput("DAY")
+            .appendField(Blockly.MIXLY_DAY)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .setCheck(Number);
+        this.appendValueInput("HOUR", Number)
+            .appendField(Blockly.MIXLY_HOUR)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .setCheck(Number);
+        this.appendValueInput("MINUTE")
+            .appendField(Blockly.MIXLY_MINUTE)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .setCheck(Number);
+        this.appendValueInput("SECOND")
+            .appendField(Blockly.MIXLY_SECOND)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .setCheck(Number);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+    }
+}
+
+
+Blockly.Blocks.DS1302_get_date = {
+    init: function () {
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.appendDummyInput("").appendField(Blockly.MIXLY_DATEFORMATE);
+        this.setInputsInline(true);
+        this.setOutput(true, String);
+    }
+};
+
+
+Blockly.Blocks.DS1302_get_time = {
+    init: function () {
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.appendDummyInput("").appendField(Blockly.MIXLY_TIMEFORMATE);
+        this.setInputsInline(true);
+        this.setOutput(true, String);
     }
 };

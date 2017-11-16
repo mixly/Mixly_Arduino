@@ -1000,6 +1000,12 @@ Blockly.MIXLY_HOUR = '時';
 Blockly.MIXLY_MINUTE = '分';
 Blockly.MIXLY_SECOND = '秒';
 
+Blockly.MIXLY_DS1302_INITPIN = '時鐘DS1302初始化 管腳'
+Blockly.MIXLY_SETDATE = '設置日期:';
+Blockly.MIXLY_DATEFORMATE = '日期格式(年-月-日)'
+Blockly.MIXLY_TIMEFORMATE = '時間格式(時:分:秒)'
+
+
 //microbit javascript
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='發生手勢 ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='當 Serial 收到的資料包含 ';
