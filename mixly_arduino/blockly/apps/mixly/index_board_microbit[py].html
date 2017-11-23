@@ -54,8 +54,6 @@
     <script src="../../generators/microbit_python/sensor.js"></script>
     <script src="../../generators/microbit_python/actuator.js"></script>
     <script src="../../generators/microbit_python/display.js"></script>
-    <script src="../../generators/microbit_python/game.js"></script>
-    <script src="../../generators/microbit_python/system.js"></script>
 
     <script src="../../generators/microbit_python/procedures.js"></script>
     <script src="../../generators/microbit_python/python.js"></script>
@@ -626,7 +624,11 @@ function init() {
               </value>
           </block>
           <block type="char_to_ascii">
-              <field name="TEXT">a</field>
+          	  <value name="VAR">
+                  <shadow type="text">
+		              <field name="TEXT">a</field>
+                  </shadow>
+              </value>
           </block>
           <block type="number_to_text">
               <value name="VAR">

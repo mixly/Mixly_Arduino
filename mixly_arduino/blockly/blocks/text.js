@@ -120,6 +120,9 @@ Blockly.Blocks['ascii_to_char'] = {
   init: function() {
     this.setColour(Blockly.Blocks.texts.HUE);
     this.appendValueInput('VAR')
+            .setCheck(String)
+            .appendField(Blockly.MIXLY_TOASCII);
+    this.appendValueInput('VAR')
         .setCheck(Number)
 		.appendField(Blockly.MIXLY_TOCHAR);
 	this.setOutput(true, String);
