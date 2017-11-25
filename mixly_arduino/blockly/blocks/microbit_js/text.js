@@ -129,9 +129,11 @@ Blockly.Blocks['ascii_to_char'] = {
 Blockly.Blocks['char_to_ascii'] = {
     init: function () {
         this.setColour(Blockly.Blocks.texts.HUE);
-        this.appendValueInput('VAR')
-            .setCheck(String)
-            .appendField(Blockly.MIXLY_TOASCII);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_TOASCII)
+            .appendField("'")
+            .appendField(new Blockly.FieldTextInput('',Blockly.FieldTextInput.char_validator), 'TEXT')
+            .appendField("'");
         this.setOutput(true, Number);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_TOASCII);
     }

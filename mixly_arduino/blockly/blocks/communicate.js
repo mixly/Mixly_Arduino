@@ -7,7 +7,7 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.communicate.HUE = 140;
 
-//çº¢å¤–æ¥æ”¶æ¨¡å—
+//ºìÍâ½ÓÊÕÄ£¿é
 Blockly.Blocks.ir_recv = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
@@ -33,7 +33,7 @@ Blockly.Blocks.ir_recv = {
         }
     }
 };
-//çº¢å¤–å‘å°„æ¨¡å—ï¼ˆNECï¼‰
+//ºìÍâ·¢ÉäÄ£¿é£¨NEC£©
 Blockly.Blocks.ir_send_nec = {
     init: function () {
         var TYPE = [['NEC', 'NEC'], ['Whynter', 'Whynter'], ['Sony', 'Sony'], ['RC5', 'RC5'], ['RC6', 'RC6'], ['DISH', 'DISH'], ['SharpRaw', 'SharpRaw'], ['SAMSUNG', 'SAMSUNG']];
@@ -56,7 +56,7 @@ Blockly.Blocks.ir_send_nec = {
     }
 }
 
-//çº¢å¤–æ¥æ”¶ä½¿èƒ½
+//ºìÍâ½ÓÊÕÊ¹ÄÜ
 Blockly.Blocks.ir_recv_enable = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
@@ -68,7 +68,7 @@ Blockly.Blocks.ir_recv_enable = {
     }
 };
 
-//çº¢å¤–æ¥æ”¶æ¨¡å—(raw)
+//ºìÍâ½ÓÊÕÄ£¿é(raw)
 Blockly.Blocks.ir_recv_raw = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
@@ -82,7 +82,7 @@ Blockly.Blocks.ir_recv_raw = {
     }
 };
 
-//çº¢å¤–å‘å°„æ¨¡å—(raw)
+//ºìÍâ·¢ÉäÄ£¿é(raw)
 Blockly.Blocks.ir_send_raw = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
@@ -105,7 +105,7 @@ Blockly.Blocks.ir_send_raw = {
     }
 };
 
-//I2Cé€šä¿¡
+//I2CÍ¨ĞÅ
 Blockly.Blocks.i2c_master_writer = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
