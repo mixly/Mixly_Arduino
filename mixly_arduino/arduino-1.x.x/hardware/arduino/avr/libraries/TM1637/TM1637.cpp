@@ -123,40 +123,6 @@ void TM1637::display(uint8_t BitAddr,int8_t DispData)
   writeByte(Cmd_DispCtrl);//
   stop();           //
 }
-//输出数字字符串
-void TM1637::displayString(String aString,int Speed){
-  unsigned int slen = aString.length();
-  int8_t *NumTab;
-  NumTab = (int8_t *)malloc(slen);
-  for(unsigned char i = 0; i < slen; i++){
-  	NumTab[i] = aString.charAt(i);
-  }
-  int8_t ListDisp[4];
-  unsigned char i = 0;
-  unsigned char count = 0;
-  int8_t run=1;
-  while(run)
-  {
-    i = count;
-    count ++;
-    if(sizeof(NumTab)<5)
-      run=0;
-    if(count == sizeof(NumTab))
-     count = 0;
-    for(unsigned char BitSelect = 0;BitSelect < sizeof(NumTab);BitSelect ++)
-    {
-      ListDisp[BitSelect] = NumTab[i];
-      i ++;
-      if(i == sizeof(NumTab))
-       i = 0;
-    }
-    for(unsigned char k = 0;k <sizeof(NumTab) ;k ++)
-   {
-      this->display(k,ListDisp[k]);
-   }
-    delay(Speed);
-  }
-}
 
 void TM1637::clearDisplay(void)
 {
