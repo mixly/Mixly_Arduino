@@ -36,7 +36,7 @@ Blockly.JavaScript.ascii_to_char = function () {
 };
 
 Blockly.JavaScript.char_to_ascii = function () {
-    var charvalue = '\'' + this.getFieldValue('TEXT') + '\'';
+    var charvalue = Blockly.JavaScript.valueToCode(this, 'VAR', Blockly.JavaScript.ORDER_ATOMIC) || 'a'; 
     return [charvalue + '.charCodeAt(0)', Blockly.JavaScript.ORDER_ATOMIC];
 };
 

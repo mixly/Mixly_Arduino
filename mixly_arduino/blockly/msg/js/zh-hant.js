@@ -590,10 +590,8 @@ Blockly.MIXLY_LCD_STAT_CURSOR='有光標';
 Blockly.MIXLY_LCD_STAT_NOCURSOR='無光標';
 Blockly.MIXLY_LCD_STAT_BLINK='閃爍';
 Blockly.MIXLY_LCD_STAT_NOBLINK='不閃爍';
-Blockly.MIXLY_LCD_STAT_CLEAR = '清屏';
-Blockly.MIXLY_LCD_NOBACKLIGHT = '關閉背光';
-Blockly.MIXLY_LCD_BACKLIGHT = '打開背光';
-Blockly.MIXLY_7S_DISPLAY = '7段數碼管';
+Blockly.MIXLY_LCD_STAT_CLEAR='清屏';
+Blockly.MIXLY_7S_DISPLAY='7段數碼管';
 Blockly.MIXLY_NUMBER='數位';
 Blockly.MIXLY_BLUETOOTH='藍牙';
 Blockly.MIXLY_BLUETOOTH_READ_STR='讀取數據（返回字串）';
@@ -1004,7 +1002,6 @@ Blockly.MIXLY_DS1302_INITPIN = '時鐘DS1302初始化 管腳'
 Blockly.MIXLY_SETDATE = '設置日期:';
 Blockly.MIXLY_DATEFORMATE = '日期格式(年-月-日)'
 Blockly.MIXLY_TIMEFORMATE = '時間格式(時:分:秒)'
-
 
 //microbit javascript
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='發生手勢 ';

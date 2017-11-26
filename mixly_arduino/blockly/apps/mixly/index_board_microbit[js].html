@@ -33,8 +33,11 @@
     <script src="../../blocks/microbit_js/text.js"></script>
     <script src="../../blocks/microbit_js/lists.js"></script>
     <script src="../../blocks/microbit_js/logic.js"></script>
-    <script src="../../blocks/microbit_js/blockgroup.js"></script>
+    <script src="../../blocks/microbit_js/serial.js"></script>
+    <script src="../../blocks/microbit_js/communicate.js"></script>
     <script src="../../blocks/microbit_js/sensor.js"></script>
+    <script src="../../blocks/microbit_js/actuator.js"></script>
+    <script src="../../blocks/microbit_js/display.js"></script>
     <script src="../../blocks/microbit_js/game.js"></script>
     <script src="../../blocks/microbit_js/system.js"></script>
     <script src="../../blocks/microbit_js/procedures.js"></script>
@@ -47,11 +50,15 @@
     <script src="../../generators/microbit_js/text.js"></script>
     <script src="../../generators/microbit_js/lists.js"></script>
     <script src="../../generators/microbit_js/logic.js"></script>
-    <script src="../../generators/microbit_js/blockgroup.js"></script>
+    <script src="../../generators/microbit_js/serial.js"></script>
+    <script src="../../generators/microbit_js/communicate.js"></script>
     <script src="../../generators/microbit_js/sensor.js"></script>
+    <script src="../../generators/microbit_js/actuator.js"></script>
+    <script src="../../generators/microbit_js/display.js"></script>
     <script src="../../generators/microbit_js/game.js"></script>
     <script src="../../generators/microbit_js/system.js"></script>
     <script src="../../generators/microbit_js/procedures.js"></script>
+    
 
 
 
@@ -601,12 +608,16 @@ function init() {
           <block type="ascii_to_char">
               <value name="VAR">
                   <shadow type="math_number">
-                      <field name="NUM">223</field>
+                      <field name="NUM">65</field>
                   </shadow>
               </value>
           </block>
           <block type="char_to_ascii">
-              <field name="TEXT">a</field>
+          	  <value name="VAR">
+                  <shadow type="text">
+		              <field name="TEXT">a</field>
+                  </shadow>
+              </value>
           </block>
           <block type="number_to_text">
               <value name="VAR">
@@ -762,7 +773,6 @@ function init() {
                   <shadow type="pins_serial"></shadow>
               </value>
           </block>
-          <block type="serial_event"></block>
       </category>
       <category id="catGroup" colour="140">
           <!--<block type="ble_service"></block>
