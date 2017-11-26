@@ -1,0 +1,7 @@
+AH_24Cxx 	KEYWORD1
+
+write_byte	KEYWORD2	
+write_page  	KEYWORD2
+read_byte  	KEYWORD2
+read_buffer	KEYWORD2
+

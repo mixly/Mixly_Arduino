@@ -1,0 +1,6 @@
+Version:
+	1.0	 6 Aug 2010  -  initial release
+	2.0	23 Aug 2010  -  Added functions to use on-chip RAM.
+	2.1	17 Nov 2010  -  Added setTCR();  
+	2.2	26 Jan 2012  -  Added support for Arduino 1.0 IDE
+	
