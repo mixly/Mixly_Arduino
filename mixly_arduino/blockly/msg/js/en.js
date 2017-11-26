@@ -592,6 +592,9 @@ Blockly.MIXLY_LCD_STAT_NOCURSOR='noCursor';
 Blockly.MIXLY_LCD_STAT_BLINK='Blink';
 Blockly.MIXLY_LCD_STAT_NOBLINK='noBlink';
 Blockly.MIXLY_LCD_STAT_CLEAR='Clear';
+Blockly.MIXLY_LCD_NOBACKLIGHT = 'NoBackLight';
+Blockly.MIXLY_LCD_BACKLIGHT = 'BackLight';
+
 Blockly.MIXLY_7S_DISPLAY='7 Segment Display';
 Blockly.MIXLY_NUMBER='number';
 Blockly.MIXLY_BLUETOOTH='Bluetooth';
