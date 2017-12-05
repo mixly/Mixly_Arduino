@@ -1005,6 +1005,7 @@ Blockly.MIXLY_SETDATE = '設置日期:';
 Blockly.MIXLY_DATEFORMATE = '日期格式(年-月-日)'
 Blockly.MIXLY_TIMEFORMATE = '時間格式(時:分:秒)'
 
+
 //microbit javascript
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='發生手勢 ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='當 Serial 收到的資料包含 ';
