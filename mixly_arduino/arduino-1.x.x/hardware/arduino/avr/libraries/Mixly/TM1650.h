@@ -278,7 +278,7 @@ void TM1650::displayString(char *aString)
 			break;
 
 	}
-
+	
 }
 void TM1650::displayString(String aString)
 {
