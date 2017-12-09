@@ -642,6 +642,7 @@ Blockly.MIXLY_LEFT='左';
 Blockly.MIXLY_RIGHT='右';
 Blockly.MIXLY_MID='中';
 Blockly.MIXLY_IS_PRESSED='被按下？';
+
 Blockly.MIXLY_SENSE_SLIDING='滑杆传感器的值';
 Blockly.MIXLY_SENSE_TEMPERATURE='温度传感器的值';
 Blockly.MIXLY_SENSE_HUMIDITY='湿度传感器的值';
