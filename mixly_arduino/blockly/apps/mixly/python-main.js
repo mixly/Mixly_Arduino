@@ -11,7 +11,12 @@ function doSave(){
 }
 
 function getHexFile(firmware) {
-	var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+	var code = "";
+	if(document.getElementById('tab_arduino').className == 'tabon'){
+		code = document.getElementById('content_arduino').value;
+	}else{
+		code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+	}
 	var hexlified_python = hexlify(code);
 	var insertion_point = ":::::::::::::::::::::::::::::::::::::::::::";
 	return firmware.replace(insertion_point, hexlified_python);
