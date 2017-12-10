@@ -1,4 +1,4 @@
-#include "ArduBits_Matrix.h"
+#include "Matrix.h"
 
 uint8_t const I2C_READ = 1;
 uint8_t const I2C_WRITE = 0;

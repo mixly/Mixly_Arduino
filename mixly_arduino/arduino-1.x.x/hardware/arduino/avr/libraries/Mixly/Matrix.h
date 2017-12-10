@@ -1,10 +1,9 @@
-#ifndef _ArduBits_MATRIX_H
-#define _ArduBits_MATRIX_H
+#ifndef _MATRIX_H
+#define _MATRIX_H
 
 #include "Arduino.h"
-
 #include "Print.h"
-#include "ArduBits_glcdfont.c"
+#include "glcdfont.c"
 #include <avr/pgmspace.h>
 
 #define LED_ON 2
