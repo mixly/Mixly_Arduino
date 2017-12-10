@@ -1276,6 +1276,46 @@ function init() {
         <block type="display_TM1637_Stopwatch">
 
         </block>
+        <block type="display_Matrix_Init">
+          <value name="PIN1">
+                <shadow type="pins_digital">
+                    <field name="PIN">2</field>
+                </shadow>
+            </value>
+            <value name="PIN2">
+                <shadow type="pins_digital">
+                    <field name="PIN">3</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="display_Matrix_POS">
+          <value name="XVALUE">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+            <value name="YVALUE">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="display_Matrix_Rotation">
+        </block>
+        <block type="display_Matrix_TEXT">
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT">Mixly</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="display_Matrix_DisplayChar">
+          <value name="LEDArray">
+            <block type="display_Matrix_LedArray"></block>
+          </value>
+        </block>
+        <block type="display_Matrix_CLEAR">
+        </block>
 	</category>
 	<category id="catEthernet" colour="0">
 		<block type="ethernet_init_begin">

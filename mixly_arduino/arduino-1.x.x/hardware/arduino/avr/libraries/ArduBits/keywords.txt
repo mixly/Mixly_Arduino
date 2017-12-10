@@ -1,0 +1,32 @@
+#######################################
+# Syntax Coloring Map For Nova
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+TX433MHZ	KEYWORD1
+Hx711	KEYWORD1
+Brainwave	KEYWORD1
+SYN6288	KEYWORD1
+Matrix	KEYWORD1
+RFID	KEYWORD1
+RGB	KEYWORD1
+ADXL345	KEYWORD1
+TM1650	KEYWORD1
+DHT	KEYWORD1
+SR04	KEYWORD1
+BTSlave	KEYWORD1
+BTMaster	KEYWORD1
+Tadpole	KEYWORD1
+Telecontrol	KEYWORD1
+WiFi_ESP8266	KEYWORD1
+GSM_SIM800C	KEYWORD1
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################

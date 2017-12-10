@@ -312,3 +312,86 @@ Blockly.Arduino.display_TM1637_Brightness = function () {
     var code = 'tm1637.set(' + BRIGHTNESS + ');\n';
     return code;
 };
+Blockly.Arduino.display_Matrix_Init = function() {
+  var SDA = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
+  var SCL = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
+  var matrixName = this.getFieldValue('matrixName');
+  Blockly.Arduino.definitions_['include_display'] = '#include "ArduBits.h"';
+  Blockly.Arduino.definitions_[matrixName] = 'Matrix '+ matrixName +'('+SDA+','+SCL+');';
+  Blockly.Arduino.setups_['setup_' + matrixName] = matrixName + '.begin(0x70); \n';
+  var code= matrixName+'.clear();\n';
+  return code;
+};
+Blockly.Arduino.display_Matrix_POS = function() {
+  var pos_x = Blockly.Arduino.valueToCode(this, 'XVALUE', Blockly.Arduino.ORDER_ASSIGNMENT);
+  var pos_y = Blockly.Arduino.valueToCode(this, 'YVALUE', Blockly.Arduino.ORDER_ASSIGNMENT);
+  var matrixName = this.getFieldValue('matrixName');
+  var dropdown_type = this.getFieldValue('DrawPixel_TYPE');
+  var code = matrixName + '.drawPixel('+pos_x+'-1,'+pos_y+'-1,'+dropdown_type+');\n'
+      code+= matrixName + '.writeDisplay();\n';
+  return code;
+};
+Blockly.Arduino.display_Matrix_Rotation = function() {
+  var matrixName = this.getFieldValue('matrixName');
+  var dropdown_type = this.getFieldValue('Rotation_TYPE');
+  var code = matrixName + '.setRotation('+dropdown_type+');\n'
+  return code;
+};
+Blockly.Arduino.display_Matrix_TEXT = function() {
+  var matrixName = this.getFieldValue('matrixName');
+  var textString = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ASSIGNMENT);
+  var code = matrixName + '.drawStr('+textString+');\n'
+  return code;
+};
+//执行器_点阵屏显示_显示图案
+Blockly.Arduino.display_Matrix_DisplayChar = function() {
+  var matrixName = this.getFieldValue('matrixName');
+  var dotMatrixArray = Blockly.Arduino.valueToCode(this, 'LEDArray', Blockly.Arduino.ORDER_ASSIGNMENT);
+  Blockly.Arduino.definitions_['LEDArray'] = 'uint8_t  LEDArray[8];';
+//  var code='Matrix_'+SDA+'_'+SCL+'.clear()dotMatrix;\n';
+  var code='';
+  code+='for(int i=0; i<8; i++)\n';
+  code+='{\n'
+  code+='  LEDArray[i]='+dotMatrixArray+'[i];\n';
+  code+='  for(int j=7; j>=0; j--)\n'
+  code+='  {\n'
+  code+='    if((LEDArray[i]&0x01)>0)\n';
+  code+='    '+ matrixName +'.drawPixel(j, i,LED_ON);\n';
+  code+='    LEDArray[i] = LEDArray[i]>>1;\n';
+  code+='  }  \n'
+  code+='}\n'
+  code+= matrixName+'.writeDisplay();\n'
+  return code;
+};
+//执行器_点阵屏显示_点阵数组
+Blockly.Arduino.display_Matrix_LedArray = function() {
+  var varName = this.getFieldValue('VAR');
+  var a = new Array();
+  for (var i = 1; i < 9; i++) {
+    a[i] = new Array();
+    for (var j = 1; j < 9; j++) {
+      a[i][j] = (this.getFieldValue('a' + i + j) == "TRUE") ? 1 : 0;
+    }
+  }
+  var code = '{';
+  for (var i = 1; i < 9; i++) {
+    var tmp = ""
+    for (var j = 1; j < 9; j++) {
+      tmp += a[i][j];
+    }
+    tmp = (parseInt(tmp, 2)).toString(16)
+    if (tmp.length == 1) tmp = "0" + tmp;
+    code += '0x' + tmp + ((i != 8) ? ',' : '');
+  }
+  code += '};';
+  //Blockly.Arduino.definitions_[this.id] = "byte LedArray_"+clearString(this.id)+"[]="+code;
+  Blockly.Arduino.definitions_[varName] = "uint8_t " + varName + "[8]=" + code;
+  //return ["LedArray_"+clearString(this.id), Blockly.Arduino.ORDER_ATOMIC];
+  return [varName, Blockly.Arduino.ORDER_ATOMIC];
+};
+Blockly.Arduino.display_Matrix_CLEAR = function() {
+  var matrixName = this.getFieldValue('matrixName');
+  var code = matrixName + '.clear();\n'
+  code += matrixName +'.writeDisplay();\n';
+  return code;
+};
