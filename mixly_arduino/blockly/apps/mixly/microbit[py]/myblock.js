@@ -1,2 +1,2 @@
-var myblock='<sep></sep><category colour="290" name="库名称"><!-- lib="" --><block type="inout_digital_write2" id="LsUK3=ZJQi*id#yyPTrV" x="21" y="60"><value name="PIN"><shadow type="pins_digital" id="`A?vPCFH}Y$_8kP%Bx2Q"><field name="PIN">0</field></shadow></value><value name="STAT"><shadow type="inout_highlow" id="qkNbLjndEh:Sa`CydRgs"><field name="BOOL">HIGH</field></shadow></value></block></category>';
+var myblock='null';
 var company_block='null';
