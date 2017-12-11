@@ -131,7 +131,7 @@ Blockly.Arduino.DS1302_set_date = function () {
 };
 
 Blockly.Arduino.DS1302_get_date = function () {
-    var code = 'rtc.getDateStr(FORMAT_LONG,FORMAT_BIGENDIAN, \'-\')';
+    var code = 'rtc.getDateStr(FORMAT_LONG,FORMAT_LITTLEENDIAN, \'-\')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
