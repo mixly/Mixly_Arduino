@@ -343,7 +343,7 @@ Blockly.Arduino.display_Matrix_TEXT = function() {
   var code = matrixName + '.drawStr('+textString+');\n'
   return code;
 };
-//鎵ц鍣╛鐐归樀灞忔樉绀篲鏄剧ず鍥炬
+//执行器_点阵屏显示_显示图案
 Blockly.Arduino.display_Matrix_DisplayChar = function() {
   var matrixName = this.getFieldValue('matrixName');
   var dotMatrixArray = Blockly.Arduino.valueToCode(this, 'LEDArray', Blockly.Arduino.ORDER_ASSIGNMENT);
@@ -363,7 +363,7 @@ Blockly.Arduino.display_Matrix_DisplayChar = function() {
   code+= matrixName+'.writeDisplay();\n'
   return code;
 };
-//鎵ц鍣╛鐐归樀灞忔樉绀篲鐐归樀鏁扮粍
+//执行器_点阵屏显示_点阵数组
 Blockly.Arduino.display_Matrix_LedArray = function() {
   var varName = this.getFieldValue('VAR');
   var a = new Array();

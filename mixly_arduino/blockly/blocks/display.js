@@ -432,36 +432,34 @@ Blockly.Blocks.display_TM1637_Brightness = {
 Blockly.Blocks.display_Matrix_Init = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField("初始化点阵显示屏");
+    this.appendDummyInput("").appendField(Blockly.MIXLY_DISPLAY_MATRIX_INIT);
     this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName');
     this.appendValueInput("PIN1").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("SDA#");
     this.appendValueInput("PIN2").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("SCL#"); 
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip("display_点阵屏初始化");
-    this.setHelpUrl('www.display.com');
-  }
+//   this.setTooltip("display_点阵屏初始化");
+   }
 };
 
 //执行器_点阵屏显示_画点变量
 var display_DrawPixel_NUM = [
-  ["亮", "LED_ON"],
-  ["灭", "LED_OFF"]
+  [Blockly.MIXLY_4DIGITDISPLAY_ON, "LED_ON"],
+  [Blockly.MIXLY_4DIGITDISPLAY_OFF, "LED_OFF"]
 ];
 
 //执行器_点阵屏显示_画点显示
 Blockly.Blocks.display_Matrix_POS = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName').appendField("点阵屏显示");
-    this.appendValueInput('XVALUE').setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(" X轴");
-    this.appendValueInput("YVALUE").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(" Y轴");
-    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(" 单点设为").appendField(new Blockly.FieldDropdown(display_DrawPixel_NUM), "DrawPixel_TYPE");
+    this.appendDummyInput("").appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName').appendField(Blockly.MIXLY_DISPLAY_MATRIX_SHOW);
+    this.appendValueInput('XVALUE').setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_DISPLAY_MATRIX_X);
+    this.appendValueInput("YVALUE").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_DISPLAY_MATRIX_Y);
+    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT).appendField(new Blockly.FieldDropdown(display_DrawPixel_NUM), "DrawPixel_TYPE");
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setTooltip("display_逐日_K_O9_点阵屏显示（点阵屏单点操作，XY轴取值范围1-8）");
-    this.setHelpUrl('www.display.com');
+    this.setTooltip(Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT_TOOLTIP);
   }
 };
 //执行器_点阵屏显示_旋转变量
@@ -476,44 +474,41 @@ var display_Rotation_NUM = [
 Blockly.Blocks.display_Matrix_Rotation = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName').appendField("点阵屏显示");
-    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField("屏幕旋转").appendField(new Blockly.FieldDropdown(display_Rotation_NUM), "Rotation_TYPE");
+    this.appendDummyInput("").appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName').appendField(Blockly.MIXLY_DISPLAY_MATRIX_SHOW);
+    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_DISPLAY_MATRIX_ROTATE).appendField(new Blockly.FieldDropdown(display_Rotation_NUM), "Rotation_TYPE");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setTooltip("display_逐日_K_O9_点阵屏显示");
-    this.setHelpUrl('www.display.com');
+ //   this.setTooltip("");
   }
 };
 //执行器_点阵屏显示_字符显示
 Blockly.Blocks.display_Matrix_TEXT={
   init:function(){
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName').appendField("点阵屏显示");
+    this.appendDummyInput("").appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName').appendField(Blockly.MIXLY_DISPLAY_MATRIX_SHOW);
     this.appendValueInput("TEXT", String).setCheck([Number, String]).setAlign(Blockly.ALIGN_RIGHT).appendField(" 显示");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
-    this.setTooltip("display_逐日_K_O9_点阵屏显示");
-    this.setHelpUrl('www.display.com');
+    //this.setTooltip("");
   }
 };
 //执行器_点阵屏显示_显示图案
 Blockly.Blocks.display_Matrix_DisplayChar = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName').appendField("点阵屏显示");
-    this.appendValueInput("LEDArray").setAlign(Blockly.ALIGN_RIGHT).appendField(" 图案数组");
+    this.appendDummyInput("").appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName').appendField(Blockly.MIXLY_DISPLAY_MATRIX_SHOW);
+    this.appendValueInput("LEDArray").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip("ArduBits_逐日_K_O9_点阵屏显示(图案数组勾选设置显示)");
-    this.setHelpUrl('www.ardubits.com');
+    //this.setTooltip();
   }
 };
 //执行器_点阵屏显示_图案数组
 Blockly.Blocks.display_Matrix_LedArray = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField("数组变量").appendField(new Blockly.FieldTextInput("LedArray1"), "VAR");
+    this.appendDummyInput("").appendField(Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR).appendField(new Blockly.FieldTextInput("LedArray1"), "VAR");
     this.appendDummyInput("").appendField(new Blockly.FieldCheckbox("FALSE"), "a81").appendField(new Blockly.FieldCheckbox("FALSE"), "a82").appendField(new Blockly.FieldCheckbox("FALSE"), "a83").appendField(new Blockly.FieldCheckbox("FALSE"), "a84").appendField(new Blockly.FieldCheckbox("FALSE"), "a85").appendField(new Blockly.FieldCheckbox("FALSE"), "a86").appendField(new Blockly.FieldCheckbox("FALSE"), "a87").appendField(new Blockly.FieldCheckbox("FALSE"), "a88");
     this.appendDummyInput("").appendField(new Blockly.FieldCheckbox("FALSE"), "a71").appendField(new Blockly.FieldCheckbox("FALSE"), "a72").appendField(new Blockly.FieldCheckbox("FALSE"), "a73").appendField(new Blockly.FieldCheckbox("FALSE"), "a74").appendField(new Blockly.FieldCheckbox("FALSE"), "a75").appendField(new Blockly.FieldCheckbox("FALSE"), "a76").appendField(new Blockly.FieldCheckbox("FALSE"), "a77").appendField(new Blockly.FieldCheckbox("FALSE"), "a78");
     this.appendDummyInput("").appendField(new Blockly.FieldCheckbox("FALSE"), "a61").appendField(new Blockly.FieldCheckbox("FALSE"), "a62").appendField(new Blockly.FieldCheckbox("FALSE"), "a63").appendField(new Blockly.FieldCheckbox("FALSE"), "a64").appendField(new Blockly.FieldCheckbox("FALSE"), "a65").appendField(new Blockly.FieldCheckbox("FALSE"), "a66").appendField(new Blockly.FieldCheckbox("FALSE"), "a67").appendField(new Blockly.FieldCheckbox("FALSE"), "a68");
@@ -523,19 +518,17 @@ Blockly.Blocks.display_Matrix_LedArray = {
     this.appendDummyInput("").appendField(new Blockly.FieldCheckbox("FALSE"), "a21").appendField(new Blockly.FieldCheckbox("FALSE"), "a22").appendField(new Blockly.FieldCheckbox("FALSE"), "a23").appendField(new Blockly.FieldCheckbox("FALSE"), "a24").appendField(new Blockly.FieldCheckbox("FALSE"), "a25").appendField(new Blockly.FieldCheckbox("FALSE"), "a26").appendField(new Blockly.FieldCheckbox("FALSE"), "a27").appendField(new Blockly.FieldCheckbox("FALSE"), "a28");
     this.appendDummyInput("").appendField(new Blockly.FieldCheckbox("FALSE"), "a11").appendField(new Blockly.FieldCheckbox("FALSE"), "a12").appendField(new Blockly.FieldCheckbox("FALSE"), "a13").appendField(new Blockly.FieldCheckbox("FALSE"), "a14").appendField(new Blockly.FieldCheckbox("FALSE"), "a15").appendField(new Blockly.FieldCheckbox("FALSE"), "a16").appendField(new Blockly.FieldCheckbox("FALSE"), "a17").appendField(new Blockly.FieldCheckbox("FALSE"), "a18");
     this.setOutput(true, Number);
-    this.setTooltip("ArduBits_逐日_K_O9_点阵屏显示");
-    this.setHelpUrl('www.ardubits.com');
+    //this.setTooltip();
   }
 };
 //执行器_点阵屏显示_清除屏幕
 Blockly.Blocks.display_Matrix_CLEAR = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName').appendField("点阵屏显示");
-    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(" 显示清屏");
+    this.appendDummyInput("").appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName').appendField(Blockly.MIXLY_DISPLAY_MATRIX_SHOW);
+    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_DISPLAY_MATRIX_CLEAR);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setTooltip("ArduBits_逐日_K_O9_点阵屏显示");
-    this.setHelpUrl('www.ardubits.com');
+    //this.setTooltip();
   }
 };

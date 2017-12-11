@@ -1004,6 +1004,18 @@ Blockly.MIXLY_SETDATE = '設置日期:';
 Blockly.MIXLY_DATEFORMATE = '日期格式(年-月-日)'
 Blockly.MIXLY_TIMEFORMATE = '時間格式(時:分:秒)'
 
+Blockly.MIXLY_DISPLAY_MATRIX_INIT = "初始化8*8點陣顯示幕";
+Blockly.MIXLY_DISPLAY_MATRIX_SHOW = "點陣屏顯示";
+Blockly.MIXLY_DISPLAY_MATRIX_X = 'X軸';
+Blockly.MIXLY_DISPLAY_MATRIX_Y = 'Y軸';
+Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT = ' 單點設為';
+Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT_TOOLTIP = '點陣屏單點操作，XY軸取值範圍1-8';
+Blockly.MIXLY_DISPLAY_MATRIX_CLEAR = " 顯示清屏";
+Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "陣列變數";
+Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " 圖案陣列";
+Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "螢幕旋轉";
+
+
 //microbit javascript
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='發生手勢 ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='當 Serial 收到的資料包含 ';

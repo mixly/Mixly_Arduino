@@ -1000,6 +1000,17 @@ Blockly.MIXLY_DS1302_INITPIN = 'INIT DS1302 PIN'
 Blockly.MIXLY_SETDATE = 'SetDate:';
 Blockly.MIXLY_DATEFORMATE = 'DateFormat(Y-M-D)'
 Blockly.MIXLY_TIMEFORMATE = 'TimeFormat(H:M:S)'
+
+Blockly.MIXLY_DISPLAY_MATRIX_INIT = "Init * 8 * 8 Pantalla DOT MATRIX display";
+Blockly.MIXLY_DISPLAY_MATRIX_SHOW = "Pantalla de matriz de puntos";
+Blockly.MIXLY_DISPLAY_MATRIX_X = 'Eje X';
+Blockly.MIXLY_DISPLAY_MATRIX_Y = 'Eje Y';
+Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT = ' único punto a';
+Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT_TOOLTIP = 'único punto de operación en la pantalla de matriz de puntos, rango de valores del eje XY - 8';
+Blockly.MIXLY_DISPLAY_MATRIX_CLEAR = " Dot Matrix claro";
+Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "Variable array";
+Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " Pictur array";
+Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "Rotar la pantalla";
 //////////// microbit js ///////////////////
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='es gesto ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='cuando la serie de datos que contengan recevied ';

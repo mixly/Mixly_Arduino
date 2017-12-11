@@ -594,7 +594,6 @@ Blockly.MIXLY_LCD_STAT_NOBLINK='noBlink';
 Blockly.MIXLY_LCD_STAT_CLEAR='Clear';
 Blockly.MIXLY_LCD_NOBACKLIGHT = 'NoBackLight';
 Blockly.MIXLY_LCD_BACKLIGHT = 'BackLight';
-
 Blockly.MIXLY_7S_DISPLAY='7 Segment Display';
 Blockly.MIXLY_NUMBER='number';
 Blockly.MIXLY_BLUETOOTH='Bluetooth';
@@ -1005,6 +1004,18 @@ Blockly.MIXLY_DS1302_INITPIN = 'INIT DS1302 PIN'
 Blockly.MIXLY_SETDATE = 'SetDate:';
 Blockly.MIXLY_DATEFORMATE = 'DateFormat(Y-M-D)'
 Blockly.MIXLY_TIMEFORMATE = 'TimeFormat(H:M:S)'
+
+Blockly.MIXLY_DISPLAY_MATRIX_INIT = "Init 8*8 dot matrix display screen";
+Blockly.MIXLY_DISPLAY_MATRIX_SHOW = "Dot matrix display";
+Blockly.MIXLY_DISPLAY_MATRIX_X = 'X Axis';
+Blockly.MIXLY_DISPLAY_MATRIX_Y = 'Y Axis';
+Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT = ' Single point set to';
+Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT_TOOLTIP = 'Single point operation on the dot matrix screen, XY axis value range 1-8';
+Blockly.MIXLY_DISPLAY_MATRIX_CLEAR = " Dot matrix clear";
+Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "Array variable";
+Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " Pictur Array";
+Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "Rotate screen";
+
 //////////// microbit js ///////////////////
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='Is gesture ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='When Serial recevied data containing ';

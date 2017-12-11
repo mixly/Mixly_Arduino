@@ -642,7 +642,6 @@ Blockly.MIXLY_LEFT='左';
 Blockly.MIXLY_RIGHT='右';
 Blockly.MIXLY_MID='中';
 Blockly.MIXLY_IS_PRESSED='被按下？';
-
 Blockly.MIXLY_SENSE_SLIDING='滑杆传感器的值';
 Blockly.MIXLY_SENSE_TEMPERATURE='温度传感器的值';
 Blockly.MIXLY_SENSE_HUMIDITY='湿度传感器的值';
@@ -999,11 +998,21 @@ Blockly.MIXLY_HOUR = '时';
 Blockly.MIXLY_MINUTE = '分';
 Blockly.MIXLY_SECOND = '秒';
 
-Blockly.MIXLY_DS1302_INITPIN = '时钟DS1302初始化 管脚'
+Blockly.MIXLY_DS1302_INITPIN = '时钟DS1302初始化 管脚';
 Blockly.MIXLY_SETDATE = '设置日期:';
-Blockly.MIXLY_DATEFORMATE = '日期格式(年-月-日)'
-Blockly.MIXLY_TIMEFORMATE = '时间格式(时:分:秒)'
+Blockly.MIXLY_DATEFORMATE = '日期格式(年-月-日)';
+Blockly.MIXLY_TIMEFORMATE = '时间格式(时:分:秒)';
 
+Blockly.MIXLY_DISPLAY_MATRIX_INIT = "初始化8*8点阵显示屏";
+Blockly.MIXLY_DISPLAY_MATRIX_SHOW = "点阵屏显示";
+Blockly.MIXLY_DISPLAY_MATRIX_X = 'X轴';
+Blockly.MIXLY_DISPLAY_MATRIX_Y = 'Y轴';
+Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT = ' 单点设为';
+Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT_TOOLTIP = '点阵屏单点操作，XY轴取值范围1-8';
+Blockly.MIXLY_DISPLAY_MATRIX_CLEAR = " 显示清屏";
+Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "数组变量";
+Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " 图案数组";
+Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "屏幕旋转";
 //microbit javascript
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='发生手势 ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='当 Serial 收到的数据包含 ';
