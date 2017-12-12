@@ -999,6 +999,7 @@ Blockly.MIXLY_DAY = 'D';
 Blockly.MIXLY_HOUR = 'H';
 Blockly.MIXLY_MINUTE = 'M';
 Blockly.MIXLY_SECOND = 'S';
+Blockly.MIXLY_WEEK = 'Week';
 
 Blockly.MIXLY_DS1302_INITPIN = 'INIT DS1302 PIN'
 Blockly.MIXLY_SETDATE = 'SetDate:';
@@ -1016,6 +1017,10 @@ Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "Array variable";
 Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " Pictur Array";
 Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "Rotate screen";
 
+Blockly.MIXLY_RTCINIT = 'Initialize RTC clock module';
+Blockly.MIXLY_RTCGETTIME = 'from RTC clock module get';
+Blockly.MIXLY_RTCSETTIME = 'Set time of RTC clock module';
+Blockly.MIXLY_RTCSETDATE = 'Set date of RTC clock module';
 //////////// microbit js ///////////////////
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='Is gesture ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='When Serial recevied data containing ';

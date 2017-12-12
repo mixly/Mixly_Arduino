@@ -127,6 +127,7 @@ void TM1637::display(uint8_t BitAddr,int8_t DispData)
 void TM1637::displayString(String aString,int Speed){
   unsigned int slen = aString.length();
   int8_t *NumTab;
+  int8_t run = 0;
   NumTab = (int8_t *)malloc(slen);
   for(unsigned char i = 0; i < slen; i++){
   	NumTab[i] = (int8_t)(aString.charAt(i) - 48);
@@ -134,7 +135,14 @@ void TM1637::displayString(String aString,int Speed){
   int8_t ListDisp[4];
   unsigned char i = 0;
   unsigned char count = 0;
-  int8_t run=1;
+  if(slen<=4){
+    for(unsigned char k = 0;k < 4 ;k ++)
+    {
+      this->display(k,NumTab[k]);
+    }
+  }
+  else
+    run = 1;
   while(run)
   {
     i = count;

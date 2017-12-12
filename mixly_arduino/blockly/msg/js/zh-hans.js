@@ -997,6 +997,7 @@ Blockly.MIXLY_DAY = '日';
 Blockly.MIXLY_HOUR = '时';
 Blockly.MIXLY_MINUTE = '分';
 Blockly.MIXLY_SECOND = '秒';
+Blockly.MIXLY_WEEK = '周';
 
 Blockly.MIXLY_DS1302_INITPIN = '时钟DS1302初始化 管脚';
 Blockly.MIXLY_SETDATE = '设置日期:';
@@ -1013,6 +1014,11 @@ Blockly.MIXLY_DISPLAY_MATRIX_CLEAR = " 显示清屏";
 Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "数组变量";
 Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " 图案数组";
 Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "屏幕旋转";
+
+Blockly.MIXLY_RTCINIT = '初始化RTC时钟模块';
+Blockly.MIXLY_RTCGETTIME = '从RTC时钟模块获取';
+Blockly.MIXLY_RTCSETTIME = '设置RTC时钟模块时间：';
+Blockly.MIXLY_RTCSETDATE = '设置RTC时钟模块日期：';
 //microbit javascript
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='发生手势 ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='当 Serial 收到的数据包含 ';

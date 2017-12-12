@@ -896,7 +896,53 @@ function init() {
             </block>
             <block type="DS1302_get_date"></block>
             <block type="DS1302_get_time"></block>
-
+            <block type="RTC_init">
+                <value name="SDA">
+                    <shadow type="pins_digital">
+                        <field name="PIN">2</field>
+                    </shadow>
+                </value>
+                <value name="SCL">
+                    <shadow type="pins_digital">
+                        <field name="PIN">3</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="RTC_get_time"></block>
+            <block type="RTC_set_time">
+                <value name="hour">
+                    <shadow type="math_number">
+                        <field name="NUM">8</field>
+                    </shadow>
+                </value>
+                <value name="minute">
+                    <shadow type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+                <value name="second">
+                    <shadow type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="RTC_set_date">
+                <value name="year">
+                    <shadow type="math_number">
+                        <field name="NUM">1970</field>
+                    </shadow>
+                </value>
+                <value name="month">
+                    <shadow type="math_number">
+                        <field name="NUM">1</field>
+                    </shadow>
+                </value>
+                <value name="day">
+                    <shadow type="math_number">
+                        <field name="NUM">1</field>
+                    </shadow>
+                </value>
+            </block>
         </category>
         <category id="catActuator" colour="100">
             <block type="servo_move">

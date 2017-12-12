@@ -63,7 +63,7 @@ Blockly.Blocks.gps_getData_xxx = {
   }
 };
 
-//���������
+//³¬Éù²¨²â¾à
 Blockly.Blocks.chaoshengbo = {
     init: function () {
         this.setColour(Blockly.Blocks.sensor.HUE);
@@ -95,7 +95,7 @@ Blockly.Blocks.chaoshengbo2 = {
     }
 };
 
-//DHT11������
+//DHT11´«¸ÐÆ÷
 Blockly.Blocks.dht11 = {
     init: function () {
         var WHAT = [[Blockly.MIXLY_DHT11_T, 'temperature'], [Blockly.MIXLY_DHT11_H, 'humidity']];
@@ -119,7 +119,7 @@ Blockly.Blocks.dht11 = {
     }
 };
 
-//DS18B20�¶ȴ�����
+//DS18B20ÎÂ¶È´«¸ÐÆ÷
 Blockly.Blocks.ds18b20 = {
     init: function () {
         var UNIT = [[Blockly.MIXLY_DS18B20_C, '0'], [Blockly.MIXLY_DS18B20_F, '1']];
@@ -205,4 +205,76 @@ Blockly.Blocks.DS1302_get_time = {
         this.setInputsInline(true);
         this.setOutput(true, String);
     }
+};
+
+//DS1302 RTC
+Blockly.Blocks.RTC_init = {
+    init: function () {
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.appendDummyInput("").appendField(Blockly.MIXLY_RTCINIT);
+        this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
+        this.appendValueInput("SDA")
+            .appendField("SDA#")
+            .setCheck(Number);
+        this.appendValueInput("SCL")
+            .appendField("SCL#")
+            .setCheck(Number);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(true);
+    }
+};
+//传感器-实时时钟块_时间变量
+var RTC_TIME_TYPE = [
+  [Blockly.MIXLY_YEAR, "getYear"],
+  [Blockly.MIXLY_MONTH, "getMonth"],
+  [Blockly.MIXLY_DAY, "getDay"],
+  [Blockly.MIXLY_HOUR, "getHour"],
+  [Blockly.MIXLY_MINUTE, "getMinute"],
+  [Blockly.MIXLY_SECOND, "getSecond"],
+  [Blockly.MIXLY_WEEK, "getWeek"]
+];
+
+
+//传感器-实时时钟块_获取时间
+Blockly.Blocks.RTC_get_time = {
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_RTCGETTIME);
+    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
+    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
+    this.setInputsInline(true);
+    this.setOutput(true, Number);
+    this.setTooltip("ArduBits_逐日_实时时钟块");
+    this.setHelpUrl('www.ardubits.com');
+  }
+};
+//传感器-实时时钟块_设置时间
+Blockly.Blocks.RTC_set_time = {
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_RTCSETTIME).appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
+    this.appendValueInput("hour").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("  时");
+    this.appendValueInput("minute").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(" 分");
+    this.appendValueInput("second").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(" 秒");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(false);
+    this.setTooltip("ArduBits_逐日_K-I14_实时时钟块");
+    this.setHelpUrl('www.ardubits.com');
+  }
+};
+//传感器-实时时钟块_设置日期
+Blockly.Blocks.RTC_set_date = {
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_RTCSETDATE).appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
+    this.appendValueInput("year").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("  年");
+    this.appendValueInput("month").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(" 月");
+    this.appendValueInput("day").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(" 日");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip("ArduBits_逐日_K-I14_实时时钟块(星期根据年月日自动算出设置)");
+    this.setHelpUrl('www.ardubits.com');
+  }
 };

@@ -998,6 +998,7 @@ Blockly.MIXLY_DAY = '日';
 Blockly.MIXLY_HOUR = '時';
 Blockly.MIXLY_MINUTE = '分';
 Blockly.MIXLY_SECOND = '秒';
+Blockly.MIXLY_WEEK = '星期';
 
 Blockly.MIXLY_DS1302_INITPIN = '時鐘DS1302初始化 管腳'
 Blockly.MIXLY_SETDATE = '設置日期:';
@@ -1015,6 +1016,10 @@ Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "陣列變數";
 Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " 圖案陣列";
 Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "螢幕旋轉";
 
+Blockly.MIXLY_RTCINIT = '初始化RTC時鐘模組';
+Blockly.MIXLY_RTCGETTIME = '從RTC時鐘模組獲取';
+Blockly.MIXLY_RTCSETTIME = '設置RTC時鐘模組時間：';
+Blockly.MIXLY_RTCSETDATE = '設置RTC時鐘模組日期：';
 
 //microbit javascript
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='發生手勢 ';

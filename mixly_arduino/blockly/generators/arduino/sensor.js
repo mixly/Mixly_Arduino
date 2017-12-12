@@ -123,7 +123,7 @@ Blockly.Arduino.DS1302_set_date = function () {
     var number_hour = Blockly.Arduino.valueToCode(this, 'HOUR', Blockly.Arduino.ORDER_ATOMIC);
     var number_minute = Blockly.Arduino.valueToCode(this, 'MINUTE', Blockly.Arduino.ORDER_ATOMIC);
     var number_second = Blockly.Arduino.valueToCode(this, 'SECOND', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.setups_['setup_set_init_start'] = 'rtc.halt(false);\n' + 'rtc.writeProtect(false);\n';
+    Blockly.Arduino.setups_['setup_set_init_start'] = 'rtc.halt(false);\n' + '  rtc.writeProtect(false);\n';
     Blockly.Arduino.setups_['setup_set_time'] = 'rtc.setTime(' + number_hour + ', ' + number_minute + ', ' + number_second + ');';
     Blockly.Arduino.setups_['setup_set_date'] = 'rtc.setDate(' + number_year + ', ' + number_month + ', ' + number_day + ');';
     Blockly.Arduino.setups_['setup_set_init_end'] = 'rtc.writeProtect(true);\n';
@@ -139,3 +139,34 @@ Blockly.Arduino.DS1302_get_time = function () {
     var code = 'rtc.getTimeStr()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+Blockly.Arduino.RTC_init = function () {
+  var SDA = Blockly.Arduino.valueToCode(this, 'SDA', Blockly.Arduino.ORDER_ATOMIC);
+  var SCL = Blockly.Arduino.valueToCode(this, 'SCL', Blockly.Arduino.ORDER_ATOMIC);
+  var RTCName = this.getFieldValue('RTCName');
+  Blockly.Arduino.definitions_['include_Mixly'] = '#include "Mixly.h"';
+  Blockly.Arduino.definitions_['RTC'+RTCName] = 'RTC ' + RTCName + '('+SDA+','+SCL+');';
+  return "";
+}
+Blockly.Arduino.RTC_get_time = function () {
+  var RTCName = this.getFieldValue('RTCName');
+  var timeType = this.getFieldValue('TIME_TYPE');
+  var code = RTCName + '.' + timeType +'()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+}
+Blockly.Arduino.RTC_set_time = function () {
+  var RTCName = this.getFieldValue('RTCName');
+  var hour = Blockly.Arduino.valueToCode(this, "hour", Blockly.Arduino.ORDER_ATOMIC);
+  var minute = Blockly.Arduino.valueToCode(this, "minute", Blockly.Arduino.ORDER_ATOMIC);
+  var second = Blockly.Arduino.valueToCode(this, "second", Blockly.Arduino.ORDER_ATOMIC);
+  var code = RTCName + '.fillByHMS('+ hour + ','+ minute + ','+ second +');\n';
+  return code;
+}
+Blockly.Arduino.RTC_set_date = function () {
+  var RTCName = this.getFieldValue('RTCName');
+  var year = Blockly.Arduino.valueToCode(this, "year", Blockly.Arduino.ORDER_ATOMIC);
+  var month = Blockly.Arduino.valueToCode(this, "month", Blockly.Arduino.ORDER_ATOMIC);
+  var day = Blockly.Arduino.valueToCode(this, "day", Blockly.Arduino.ORDER_ATOMIC);
+  var code = RTCName + '.fillByYMD('+ year + ','+ month + ','+ day +');\n';
+  code += RTCName + '.fillByWeek('+ year + ','+ month + ','+ day +');\n';
+  return code;
+}

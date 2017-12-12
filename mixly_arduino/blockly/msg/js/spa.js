@@ -995,6 +995,7 @@ Blockly.MIXLY_DAY = 'D';
 Blockly.MIXLY_HOUR = 'H';
 Blockly.MIXLY_MINUTE = 'M';
 Blockly.MIXLY_SECOND = 'S';
+Blockly.MIXLY_WEEK = 'Semana';
 
 Blockly.MIXLY_DS1302_INITPIN = 'INIT DS1302 PIN'
 Blockly.MIXLY_SETDATE = 'SetDate:';
@@ -1011,6 +1012,11 @@ Blockly.MIXLY_DISPLAY_MATRIX_CLEAR = " Dot Matrix claro";
 Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "Variable array";
 Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " Pictur array";
 Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "Rotar la pantalla";
+
+Blockly.MIXLY_RTCINIT = 'Inicializar modulo RTC CLOCK ';
+Blockly.MIXLY_RTCGETTIME = 'Leer la hora del Modulo RTC CLOCK';
+Blockly.MIXLY_RTCSETTIME = 'Establecer el tiempo de Module RTC CLOCK';
+Blockly.MIXLY_RTCSETDATE = 'Fecha de creación del Modulo RTC CLOCK';
 //////////// microbit js ///////////////////
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='es gesto ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='cuando la serie de datos que contengan recevied ';
