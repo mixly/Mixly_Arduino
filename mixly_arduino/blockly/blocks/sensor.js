@@ -245,8 +245,6 @@ Blockly.Blocks.RTC_get_time = {
     this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
     this.setInputsInline(true);
     this.setOutput(true, Number);
-    this.setTooltip("ArduBits_逐日_实时时钟块");
-    this.setHelpUrl('www.ardubits.com');
   }
 };
 //传感器-实时时钟块_设置时间
@@ -260,9 +258,7 @@ Blockly.Blocks.RTC_set_time = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(false);
-    this.setTooltip("ArduBits_逐日_K-I14_实时时钟块");
-    this.setHelpUrl('www.ardubits.com');
-  }
+   }
 };
 //传感器-实时时钟块_设置日期
 Blockly.Blocks.RTC_set_date = {
@@ -274,7 +270,5 @@ Blockly.Blocks.RTC_set_date = {
     this.appendValueInput("day").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(" 日");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip("ArduBits_逐日_K-I14_实时时钟块(星期根据年月日自动算出设置)");
-    this.setHelpUrl('www.ardubits.com');
   }
 };

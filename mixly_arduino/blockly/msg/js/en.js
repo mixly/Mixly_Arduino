@@ -999,7 +999,7 @@ Blockly.MIXLY_DAY = 'D';
 Blockly.MIXLY_HOUR = 'H';
 Blockly.MIXLY_MINUTE = 'M';
 Blockly.MIXLY_SECOND = 'S';
-Blockly.MIXLY_WEEK = 'Week';
+Blockly.MIXLY_WEEK = 'W';
 
 Blockly.MIXLY_DS1302_INITPIN = 'INIT DS1302 PIN'
 Blockly.MIXLY_SETDATE = 'SetDate:';
