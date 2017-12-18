@@ -142,3 +142,36 @@ Blockly.Blocks.tone_set_tempo = {
         this.setInputsInline(true);
     }
 }
+
+Blockly.Blocks['speech_say'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendValueInput('VAR')
+          .setCheck(String)
+          .appendField(Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+    }
+};
+
+Blockly.Blocks['speech_sing'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendValueInput('VAR')
+          .setCheck(String)
+          .appendField(Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+    }
+};
+
+Blockly.Blocks['speech_prenounce'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendValueInput('VAR')
+          .setCheck(String)
+          .appendField(Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+    }
+};

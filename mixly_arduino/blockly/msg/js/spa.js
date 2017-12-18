@@ -1245,3 +1245,8 @@ Blockly.MIXLY_MICROBIT_JS_IS_COMPASS_CALIBRATED='esta brújula calibrada';
 Blockly.MIXLY_IS_TOUCHED='es tocado';
 Blockly.MIXLY_WAS_PRESSED='fue presionado';
 Blockly.MIXLY_GET_PRESSES='conseguir prensas';
+
+Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING='El despliegue de una cadena de caracteres';
+Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY='Dice'
+Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING='Cantar'
+Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE='Leer'

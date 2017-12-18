@@ -36,6 +36,7 @@ Blockly.Python.init = function(workspace) {
   // Create a dictionary mapping desired function names in definitions_
   // to actual function names (to avoid collisions with user functions).
   Blockly.Python.functionNames_ = Object.create(null);
+  Blockly.Python.setups_ = Object.create(null);
 
   if (!Blockly.Python.variableDB_) {
     Blockly.Python.variableDB_ =

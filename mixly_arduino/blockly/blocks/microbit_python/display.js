@@ -63,6 +63,18 @@ Blockly.Blocks.monitor_show_string = {
   }
 };
 
+Blockly.Blocks.monitor_scroll_string = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+  this.appendValueInput('data')
+        .setCheck(String)
+    .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  this.setInputsInline(true);
+  }
+};
+
 Blockly.Blocks['microbit_display_show_image'] = {
   init : function () {
     this.jsonInit({

@@ -109,3 +109,14 @@ Blockly.Blocks['serial_softserial'] = {
   }
 };
 
+Blockly.Blocks['serial_begin'] = {
+  init: function() {
+   this.setColour(Blockly.Blocks.serial.HUE);
+   this.appendDummyInput()
+          .appendField("Serial " + Blockly.MIXLY_SERIAL_BEGIN)
+          .appendField(new Blockly.FieldDropdown([['115200', '115200'], ['57600', '57600'], ['37400', '38400'], ['31250', '31250'], ['28800', '28800'], ['19200', '19200'], ['14400', '14400'], ['9600', '9600'], ['4800', '4800'], ['2400', '2400'], ['1200', '1200'], ['300', '300']]), 'baudrate');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  this.setInputsInline(true);
+  }
+};

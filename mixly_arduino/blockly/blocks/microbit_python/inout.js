@@ -269,7 +269,7 @@ Blockly.Blocks['sensor_button_get_presses'] = {
             .setCheck(Number);
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_GET_PRESSES);
-        this.setOutput(true, Boolean);
+        this.setOutput(true, Number);
         this.setInputsInline(true);
     }
 };

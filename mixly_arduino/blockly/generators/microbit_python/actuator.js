@@ -52,3 +52,26 @@ Blockly.Python.tone_set_tempo=function(){
    var code = "music.set_tempo(bpm="+ degree +");\n";
    return code;
 };
+
+Blockly.Python.speech_say=function(){
+  Blockly.Python.definitions_['import_speech'] = 'import speech';
+  var text = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
+  var code = "speech.say("+ text +")\n";
+  return code
+};
+
+Blockly.Python.speech_sing=function(){
+  Blockly.Python.definitions_['import_speech'] = 'import speech';
+  var text = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
+  var code = "speech.sing("+ text +")\n";
+  return code
+};
+
+
+Blockly.Python.speech_prenounce=function(){
+  Blockly.Python.definitions_['import_speech'] = 'import speech';
+  var text = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
+  var code = "speech.pronounce("+ text +")\n";
+  return code
+};
+

@@ -275,7 +275,19 @@ function init() {
 }
 
 </script>
+    <style type="text/css">
+        span#span_blocks, span#span_arduino, select#languageMenu {
+            font-family: 'Microsoft Yahei Light';
+        }
 
+        span.blocklyTreeLabel {
+            font-family: 'Microsoft Yahei Light';
+        }
+
+        text.blocklyText {
+            font-family: 'Microsoft Yahei Light';
+        }
+    </style>
 </head>
 <body onload="init()">
   <table height="100%" width="100%" id="table_whole">
@@ -289,10 +301,10 @@ function init() {
 			<td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
             <td class="tabcoyright">
-			  <span id="copyright" style="font-family:arial;font-size:12px;color:#999;">copyright</span>
+			  <span id="copyright" style=" font-family: 'Microsoft Yahei Light';font-size:12px;color:#999;">copyright</span>
             </td>
               <td class="tabmode">
-                  <!--  <span class="viewLeft" id="viewMode1" style="font-family:Mongolian Baiti;font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_microbit%5Bjs%5D.html" style="font-family:Mongolian Baiti;font-size:12px;">高级视图</a>-->
+                  <!--  <span class="viewLeft" id="viewMode1" style=" font-family: 'Microsoft Yahei Light';;font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_microbit%5Bjs%5D.html" style=" font-family: 'Microsoft Yahei Light';font-size:12px;">高级视图</a>-->
               </td>
               <!--  <script type="text/javascript">
 				var viewMode2 = document.getElementById('viewMode2');
@@ -755,25 +767,26 @@ function init() {
               </value>
           </block>
           <block type="serial_write"></block>-->
+          <block type="serial_begin"></block>
           <block type="serial_print"></block>
           <block type="serial_println"></block>
           <block type="serial_print_hex"></block>
-          <block type="serial_receive_data_event">
+<!--           <block type="serial_receive_data_event">
               <value name="char_marker">
                   <shadow type="text">
                       <field name="TEXT">;</field>
                   </shadow>
               </value>
-          </block>
+          </block> -->
           <block type="serial_readstr"></block>
           <block type="serial_readline"></block>
-          <block type="serial_readstr_until">
+          <!-- <block type="serial_readstr_until">
               <value name="CONTENT">
                   <shadow type="text">
                       <field name="TEXT">a</field>
                   </shadow>
               </value>
-          </block>
+          </block> -->
           <!--<block type="serial_parseInt_Float"></block>
           <block type="serial_flush"></block>-->
           <block type="serial_softserial">
@@ -1121,7 +1134,27 @@ function init() {
                 </shadow>
               </value>
             </block>
-
+            <block type="speech_say">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly is great!</field>
+                  </shadow>
+              </value>
+            </block>
+            <block type="speech_sing">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">#115DOWWWW</field>
+                  </shadow>
+              </value>
+            </block>            
+            <block type="speech_prenounce">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">/HEH5EH4EH3EH2EH2EH3EH4EH5EHLP.</field>
+                  </shadow>
+              </value>
+            </block>
 
           </category>
           <category id="catMonitor" colour="180">
@@ -1158,6 +1191,13 @@ function init() {
             </value>
           </block>
           <block type="monitor_show_string">
+            <value name="data">
+              <shadow type="text">
+                <field name="TEXT">hello</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="monitor_scroll_string">
             <value name="data">
               <shadow type="text">
                 <field name="TEXT">hello</field>

@@ -35,8 +35,14 @@ Blockly.Python.monitor_bright_point= function() {
 Blockly.Python.monitor_show_string = function() {
     Blockly.Python.definitions_['import_microbit'] = 'from microbit import *';
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
-
     var code = "display.show("+ data +");\n";
+    return code;
+}
+
+Blockly.Python.monitor_scroll_string = function() {
+    Blockly.Python.definitions_['import_microbit'] = 'from microbit import *';
+    var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
+    var code = "display.scroll("+ data +");\n";
     return code;
 }
 
