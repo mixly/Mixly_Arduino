@@ -761,7 +761,7 @@ function init() {
                 </value>
             </block>
               <!--DS302-->
-			<block type="DS1302_init">
+			     <block type="DS1302_init">
                 <value name="RST">
                     <shadow type="pins_digital">
                         <field name="NUM">2</field>
@@ -778,41 +778,7 @@ function init() {
                     </shadow>
                 </value>
             </block>
-             <block type="DS1302_set_date">
-                <value name="YEAR">
-                    <shadow type="math_number">
-                        <field name="NUM">2017</field>
-                    </shadow>
-                </value>
-                <value name="MONTH">
-                    <shadow type="math_number">
-                        <field name="NUM">10</field>
-                    </shadow>
-                </value>
-                <value name="DAY">
-                    <shadow type="math_number">
-                        <field name="NUM">24</field>
-                    </shadow>
-                </value>
-                <value name="HOUR">
-                    <shadow type="math_number">
-                        <field name="NUM">1</field>
-                    </shadow>
-                </value>
-                <value name="MINUTE">
-                    <shadow type="math_number">
-                        <field name="NUM">2</field>
-                    </shadow>
-                </value>
-                <value name="SECOND">
-                    <shadow type="math_number">
-                        <field name="NUM">3</field>
-                    </shadow>
-                </value>
-            </block>
-            <block type="DS1302_get_date"></block>
-            <block type="DS1302_get_time"></block>
-            <block type="RTC_init">
+            <block type="DS1307_init">
                 <value name="SDA">
                     <shadow type="pins_digital">
                         <field name="PIN">2</field>

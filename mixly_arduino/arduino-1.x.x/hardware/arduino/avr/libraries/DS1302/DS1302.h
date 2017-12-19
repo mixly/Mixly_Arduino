@@ -83,12 +83,20 @@ public:
 class DS1302
 {
 public:
-		DS1302(uint8_t ce_pin, uint8_t data_pin, uint8_t sclk_pin);
+	DS1302(uint8_t ce_pin, uint8_t data_pin, uint8_t sclk_pin);
 	Time	getTime();
+	void	getTime2();
 	void	setTime(uint8_t hour, uint8_t min, uint8_t sec);
 	void	setDate(uint8_t date, uint8_t mon, uint16_t year);
-	void	setDOW(uint8_t dow);
+	void	setDOW(uint16_t w_year, uint8_t w_month, uint8_t w_day);
 
+	uint8_t getSecond(void);
+  	uint8_t getMinute(void);
+  	uint8_t getHour(void);
+  	uint8_t getDOW(void);
+  	uint8_t getDay(void);
+  	uint8_t getMonth(void);
+  	uint16_t getYear(void);
 	char	*getTimeStr(uint8_t format=FORMAT_LONG);
 	char	*getDateStr(uint8_t slformat=FORMAT_LONG, uint8_t eformat=FORMAT_LITTLEENDIAN, char divider='.');
 	char	*getDOWStr(uint8_t format=FORMAT_LONG);
@@ -108,6 +116,7 @@ private:
 	uint8_t _data_pin;
 	uint8_t _sclk_pin;
 	uint8_t _burstArray[8];
+	Time storeTime;
 
 	uint8_t	_readByte();
 	void	_writeByte(uint8_t value);

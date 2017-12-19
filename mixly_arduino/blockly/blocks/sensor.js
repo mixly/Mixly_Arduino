@@ -138,8 +138,11 @@ Blockly.Blocks.ds18b20 = {
 Blockly.Blocks.DS1302_init = {
     init: function () {
         this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendValueInput("RST", Number)
+        this.appendDummyInput("")
+            .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.MIXLY_DS1302_INITPIN)
+            .appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
+        this.appendValueInput("RST", Number)
             .appendField("RST#")
             .setCheck(Number);
         this.appendValueInput("DAT")
@@ -154,64 +157,13 @@ Blockly.Blocks.DS1302_init = {
     }
 }
 
-Blockly.Blocks.DS1302_set_date = {
-    init: function () {
-        this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendValueInput("YEAR", Number)
-            .appendField(Blockly.MIXLY_SETDATE)
-            .appendField(Blockly.MIXLY_YEAR)
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .setCheck(Number);
-        this.appendValueInput("MONTH")
-            .appendField(Blockly.MIXLY_MONTH)
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .setCheck(Number);
-        this.appendValueInput("DAY")
-            .appendField(Blockly.MIXLY_DAY)
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .setCheck(Number);
-        this.appendValueInput("HOUR", Number)
-            .appendField(Blockly.MIXLY_HOUR)
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .setCheck(Number);
-        this.appendValueInput("MINUTE")
-            .appendField(Blockly.MIXLY_MINUTE)
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .setCheck(Number);
-        this.appendValueInput("SECOND")
-            .appendField(Blockly.MIXLY_SECOND)
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .setCheck(Number);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-    }
-}
-
-
-Blockly.Blocks.DS1302_get_date = {
-    init: function () {
-        this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendDummyInput("").appendField(Blockly.MIXLY_DATEFORMATE);
-        this.setInputsInline(true);
-        this.setOutput(true, String);
-    }
-};
-
-
-Blockly.Blocks.DS1302_get_time = {
-    init: function () {
-        this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendDummyInput("").appendField(Blockly.MIXLY_TIMEFORMATE);
-        this.setInputsInline(true);
-        this.setOutput(true, String);
-    }
-};
-
-//DS1302 RTC
-Blockly.Blocks.RTC_init = {
+var RTCTypeList = [['DS1302','DS1302'],['DS1307','DS1307']];
+//DS1307 RTC
+Blockly.Blocks.DS1307_init = {
     init: function () {
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput("").appendField(Blockly.MIXLY_RTCINIT);
+        //this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTCTypeList), 'RTCType');
         this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
         this.appendValueInput("SDA")
             .appendField("SDA#")
@@ -222,7 +174,42 @@ Blockly.Blocks.RTC_init = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
+    },
+    //mutation有问题，暂时弃用
+    /*mutationToDom: function() {
+	    var container = document.createElement('mutation');
+	    var RTCType = (this.getFieldValue('RTCType') == 'DS1302');
+	    console.log('======change in mutationToDom==========')
+	    console.log(RTCType);
+	    container.setAttribute('RTCType', RTCType);
+	    return container;
+  	},
+  	domToMutation: function(xmlElement) {
+	    var type = (xmlElement.getAttribute('RTCType') == 'true');
+	    console.log('======change in domToMutation==========')
+	    console.log(type);
+	    this.updateShape_(type);
+  	},
+  	updateShape_: function(type) {
+    // Add or remove reset pin.
+    console.log('======change in updateShape_==========')
+	console.log(type);
+    if (type) {
+    	console.log('why not me?')
+    	this.appendValueInput("RST")
+    		.appendField("RST#")
+            .setCheck(Number);
+    } else{
+      /*if (this.childBlocks_.length > 0) {
+      	 if (this.childBlocks_[length-1].type == 'Number') {
+            this.childBlocks_[length-1].unplug();
+            break;
+          }
+      }
+      this.removeInput('RST');
     }
+  }*/
+
 };
 //传感器-实时时钟块_时间变量
 var RTC_TIME_TYPE = [
@@ -245,6 +232,8 @@ Blockly.Blocks.RTC_get_time = {
     this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
     this.setInputsInline(true);
     this.setOutput(true, Number);
+    this.setTooltip("ArduBits_逐日_实时时钟块");
+    this.setHelpUrl('www.ardubits.com');
   }
 };
 //传感器-实时时钟块_设置时间
@@ -258,7 +247,9 @@ Blockly.Blocks.RTC_set_time = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(false);
-   }
+    this.setTooltip("ArduBits_逐日_K-I14_实时时钟块");
+    this.setHelpUrl('www.ardubits.com');
+  }
 };
 //传感器-实时时钟块_设置日期
 Blockly.Blocks.RTC_set_date = {
@@ -270,5 +261,7 @@ Blockly.Blocks.RTC_set_date = {
     this.appendValueInput("day").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(" 日");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setTooltip("ArduBits_逐日_K-I14_实时时钟块(星期根据年月日自动算出设置)");
+    this.setHelpUrl('www.ardubits.com');
   }
 };

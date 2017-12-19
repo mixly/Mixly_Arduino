@@ -997,7 +997,7 @@ Blockly.MIXLY_MINUTE = 'M';
 Blockly.MIXLY_SECOND = 'S';
 Blockly.MIXLY_WEEK = 'Semana';
 
-Blockly.MIXLY_DS1302_INITPIN = 'INIT DS1302 PIN'
+Blockly.MIXLY_DS1302_INITPIN = 'Inicializar modulo RTC CLOCK DS1302 PIN'
 Blockly.MIXLY_SETDATE = 'SetDate:';
 Blockly.MIXLY_DATEFORMATE = 'DateFormat(Y-M-D)'
 Blockly.MIXLY_TIMEFORMATE = 'TimeFormat(H:M:S)'
@@ -1013,7 +1013,7 @@ Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "Variable array";
 Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " Pictur array";
 Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "Rotar la pantalla";
 
-Blockly.MIXLY_RTCINIT = 'Inicializar modulo RTC CLOCK ';
+Blockly.MIXLY_RTCINIT = 'Inicializar modulo RTC CLOCK DS1307 ';
 Blockly.MIXLY_RTCGETTIME = 'Leer la hora del Modulo RTC CLOCK';
 Blockly.MIXLY_RTCSETTIME = 'Establecer el tiempo de Module RTC CLOCK';
 Blockly.MIXLY_RTCSETDATE = 'Fecha de creación del Modulo RTC CLOCK';

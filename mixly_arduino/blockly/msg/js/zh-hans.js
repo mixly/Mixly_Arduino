@@ -999,7 +999,7 @@ Blockly.MIXLY_MINUTE = '分';
 Blockly.MIXLY_SECOND = '秒';
 Blockly.MIXLY_WEEK = '周';
 
-Blockly.MIXLY_DS1302_INITPIN = '时钟DS1302初始化 管脚';
+Blockly.MIXLY_DS1302_INITPIN = '初始化时钟模块DS1302 管脚';
 Blockly.MIXLY_SETDATE = '设置日期:';
 Blockly.MIXLY_DATEFORMATE = '日期格式(年-月-日)';
 Blockly.MIXLY_TIMEFORMATE = '时间格式(时:分:秒)';
@@ -1015,7 +1015,7 @@ Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "数组变量";
 Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " 图案数组";
 Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "屏幕旋转";
 
-Blockly.MIXLY_RTCINIT = '初始化RTC时钟模块';
+Blockly.MIXLY_RTCINIT = '初始化时钟模块DS1307';
 Blockly.MIXLY_RTCGETTIME = '从RTC时钟模块获取';
 Blockly.MIXLY_RTCSETTIME = '设置RTC时钟模块时间：';
 Blockly.MIXLY_RTCSETDATE = '设置RTC时钟模块日期：';

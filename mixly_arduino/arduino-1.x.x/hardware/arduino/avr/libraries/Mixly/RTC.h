@@ -4,20 +4,20 @@
 
 #define DS1307ADDR 0XD0
 
-class RTC
+class DS1307
 {
 public:
-  RTC(uint8_t sdaport,uint8_t sclport);
+  DS1307(uint8_t sdaport,uint8_t sclport);
   uint8_t getSecond(void);
   uint8_t getMinute(void);
   uint8_t getHour(void);
-  uint8_t getWeek(void);
+  uint8_t getDOW(void);
   uint8_t getDay(void);
   uint8_t getMonth(void);
   uint16_t getYear(void);
-  void fillByHMS(uint8_t _hour, uint8_t _minute, uint8_t _second);
-  void fillByYMD(uint16_t _year, uint8_t _month, uint8_t _day);
-  void fillByWeek(uint16_t w_year, uint8_t w_month, uint8_t w_day);
+  void setTime(uint8_t _hour, uint8_t _minute, uint8_t _second);
+  void setDate(uint16_t _year, uint8_t _month, uint8_t _day);
+  void setDOW(uint16_t w_year, uint8_t w_month, uint8_t w_day);
   
   
 private:

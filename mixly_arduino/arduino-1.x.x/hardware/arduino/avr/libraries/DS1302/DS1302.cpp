@@ -81,6 +81,18 @@ Time DS1302::getTime()
 	return t;
 }
 
+void DS1302::getTime2()
+{
+	_burstRead();
+	storeTime.sec = _decode(_burstArray[0]);
+	storeTime.min = _decode(_burstArray[1]);
+	storeTime.hour	= _decodeH(_burstArray[2]);
+	storeTime.date	= _decode(_burstArray[3]);
+	storeTime.mon	= _decode(_burstArray[4]);
+	storeTime.dow	= _burstArray[5];
+	storeTime.year	= _decodeY(_burstArray[6])+2000;
+}
+
 void DS1302::setTime(uint8_t hour, uint8_t min, uint8_t sec)
 {
 	if (((hour>=0) && (hour<24)) && ((min>=0) && (min<60)) && ((sec>=0) && (sec<60)))
@@ -102,12 +114,64 @@ void DS1302::setDate(uint8_t date, uint8_t mon, uint16_t year)
 	}
 }
 
-void DS1302::setDOW(uint8_t dow)
+void DS1302::setDOW(uint16_t w_year, uint8_t w_month, uint8_t w_day)
 {
+	int m =w_month;
+    int d = w_day;  // 根据月份对年份和月份进行调整
+    if(m <= 2)
+    {
+        w_year -= 1;
+        m += 12;
+    }
+    int c =w_year / 100; // 取得年份前两位
+    int y =w_year % 100; // 取得年份后两位
+    int w = (int)(c/4) - 2*c + y + (int)(y/4) + (int)(13*(m+1)/5) + d - 1;                   // 根据泰勒公式计算星期
+    int dow;
+    uint8_t r[1];
+
+    if((w%7)==0)
+       dow=7;
+    else
+      dow=w%7;
 	if ((dow>0) && (dow<8))
 		_writeRegister(REG_DOW, dow);
 }
 
+uint8_t DS1302::getSecond(void)
+{
+   	getTime2();
+	return storeTime.sec;
+}
+uint8_t DS1302::getMinute(void)
+{
+    getTime2();
+	return storeTime.min;
+}
+uint8_t DS1302::getHour(void)
+{
+    getTime2();
+	return storeTime.hour;
+}
+uint8_t DS1302::getDay(void)
+{
+    getTime2();
+	return storeTime.date;
+}
+uint8_t DS1302::getMonth(void)
+{
+    getTime2();
+	return storeTime.mon;
+}
+uint16_t DS1302::getYear(void)
+{
+    getTime2();
+	return storeTime.year+2000;
+}
+uint8_t DS1302::getDOW(void)
+{
+    getTime2();
+	return storeTime.dow;
+}
 char *DS1302::getTimeStr(uint8_t format)
 {
 	char *output= "xxxxxxxx";
