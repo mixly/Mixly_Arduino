@@ -27,6 +27,7 @@
 goog.provide('Blockly.JavaScript');
 goog.require('Blockly.Generator');
 
+Blockly.JavaScript = new Blockly.Generator("JavaScript");
 Blockly.JavaScript.ORDER_ATOMIC = 0; // 0 "" ...
 Blockly.JavaScript.ORDER_UNARY_POSTFIX = 1; // expr++ expr-- () [] .
 Blockly.JavaScript.ORDER_UNARY_PREFIX = 2; // -expr !expr ~expr ++expr --expr
@@ -87,3 +88,137 @@ Blockly.JavaScript.finish = function(code) {
     return definitions.join('\n\n') + '\n\n\n' +  setups.join('\n') + 'basic.forever(() => {\n' + code + '});\n';
 };
 
+
+/**
+ * Naked values are top-level blocks with outputs that aren't plugged into
+ * anything.  A trailing semicolon is needed to make this legal.
+ * @param {string} line Line of generated code.
+ * @return {string} Legal line of code.
+ */
+Blockly.JavaScript.scrubNakedValue = function(line) {
+    return line + ';\n';
+};
+
+/**
+ * Encode a string as a properly escaped JavaScript string, complete with
+ * quotes.
+ * @param {string} string Text to encode.
+ * @return {string} JavaScript string.
+ * @private
+ */
+Blockly.JavaScript.quote_ = function(string) {
+    // Can't use goog.string.quote since Google's style guide recommends
+    // JS string literals use single quotes.
+    string = string.replace(/\\/g, '\\\\')
+        .replace(/\n/g, '\\\n')
+        .replace(/'/g, '\\\'');
+    return '\'' + string + '\'';
+};
+
+/**
+ * Common tasks for generating JavaScript from blocks.
+ * Handles comments for the specified block and any connected value blocks.
+ * Calls any statements following this block.
+ * @param {!Blockly.Block} block The current block.
+ * @param {string} code The JavaScript code created for this block.
+ * @return {string} JavaScript code with comments and subsequent blocks added.
+ * @private
+ */
+Blockly.JavaScript.scrub_ = function(block, code) {
+    var commentCode = '';
+    // Only collect comments for blocks that aren't inline.
+    if (!block.outputConnection || !block.outputConnection.targetConnection) {
+        // Collect comment for this block.
+        var comment = block.getCommentText();
+        comment = Blockly.utils.wrap(comment, Blockly.JavaScript.COMMENT_WRAP - 3);
+        if (comment) {
+            if (block.getProcedureDef) {
+                // Use a comment block for function comments.
+                commentCode += '/**\n' +
+                    Blockly.JavaScript.prefixLines(comment + '\n', ' * ') +
+                    ' */\n';
+            } else {
+                commentCode += Blockly.JavaScript.prefixLines(comment + '\n', '// ');
+            }
+        }
+        // Collect comments for all value arguments.
+        // Don't collect comments for nested statements.
+        for (var i = 0; i < block.inputList.length; i++) {
+            if (block.inputList[i].type == Blockly.INPUT_VALUE) {
+                var childBlock = block.inputList[i].connection.targetBlock();
+                if (childBlock) {
+                    var comment = Blockly.JavaScript.allNestedComments(childBlock);
+                    if (comment) {
+                        commentCode += Blockly.JavaScript.prefixLines(comment, '// ');
+                    }
+                }
+            }
+        }
+    }
+    var nextBlock = block.nextConnection && block.nextConnection.targetBlock();
+    var nextCode = Blockly.JavaScript.blockToCode(nextBlock);
+    return commentCode + code + nextCode;
+};
+
+/**
+ * Gets a property and adjusts the value while taking into account indexing.
+ * @param {!Blockly.Block} block The block.
+ * @param {string} atId The property ID of the element to get.
+ * @param {number=} opt_delta Value to add.
+ * @param {boolean=} opt_negate Whether to negate the value.
+ * @param {number=} opt_order The highest order acting on this value.
+ * @return {string|number}
+ */
+Blockly.JavaScript.getAdjusted = function(block, atId, opt_delta, opt_negate,
+                                          opt_order) {
+    var delta = opt_delta || 0;
+    var order = opt_order || Blockly.JavaScript.ORDER_NONE;
+    if (block.workspace.options.oneBasedIndex) {
+        delta--;
+    }
+    var defaultAtIndex = block.workspace.options.oneBasedIndex ? '1' : '0';
+    if (delta > 0) {
+        var at = Blockly.JavaScript.valueToCode(block, atId,
+            Blockly.JavaScript.ORDER_ADDITION) || defaultAtIndex;
+    } else if (delta < 0) {
+        var at = Blockly.JavaScript.valueToCode(block, atId,
+            Blockly.JavaScript.ORDER_SUBTRACTION) || defaultAtIndex;
+    } else if (opt_negate) {
+        var at = Blockly.JavaScript.valueToCode(block, atId,
+            Blockly.JavaScript.ORDER_UNARY_NEGATION) || defaultAtIndex;
+    } else {
+        var at = Blockly.JavaScript.valueToCode(block, atId, order) ||
+            defaultAtIndex;
+    }
+
+    if (Blockly.isNumber(at)) {
+        // If the index is a naked number, adjust it right now.
+        at = parseFloat(at) + delta;
+        if (opt_negate) {
+            at = -at;
+        }
+    } else {
+        // If the index is dynamic, adjust it in code.
+        if (delta > 0) {
+            at = at + ' + ' + delta;
+            var innerOrder = Blockly.JavaScript.ORDER_ADDITION;
+        } else if (delta < 0) {
+            at = at + ' - ' + -delta;
+            var innerOrder = Blockly.JavaScript.ORDER_SUBTRACTION;
+        }
+        if (opt_negate) {
+            if (delta) {
+                at = '-(' + at + ')';
+            } else {
+                at = '-' + at;
+            }
+            var innerOrder = Blockly.JavaScript.ORDER_UNARY_NEGATION;
+        }
+        innerOrder = Math.floor(innerOrder);
+        order = Math.floor(order);
+        if (innerOrder && order >= innerOrder) {
+            at = '(' + at + ')';
+        }
+    }
+    return at;
+};

@@ -333,14 +333,6 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../media/mark/func2.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:h>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
-	background:url('../../media/mark/factory.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:h>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
-	background:url('../../media/mark/factory2.png') no-repeat;
-	background-size: 100% auto; 
-}
 /*text.blocklyCheckbox {
 	fill: #ff3030!important;
 	text-shadow: 0 0 3px red;

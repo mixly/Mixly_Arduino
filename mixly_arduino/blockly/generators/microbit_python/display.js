@@ -9,7 +9,7 @@ Blockly.Python['microbit_display_clear'] = function(block) {
   return code;
 };
 
-Blockly.Python['microbit_display_get_pixel'] = function(block) {
+Blockly.Python['monitor_get_pixel'] = function(block) {
   Blockly.Python.definitions_['import_microbit'] = 'from microbit import *';
   var value_x = Blockly.Python.valueToCode(block, 'x', Blockly.Python.ORDER_ATOMIC);
   var value_y = Blockly.Python.valueToCode(block, 'y', Blockly.Python.ORDER_ATOMIC);

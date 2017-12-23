@@ -156,7 +156,7 @@ Blockly.Python.controls_mstimer2_stop = function () {
 };
 //ok
 Blockly.Python.controls_end_program = function () {
-    return 'while True:\n  pass';
+    return 'while True:\n  pass\n';
 };
 Blockly.Python.controls_interrupts = function () {
     return 'interrupts();\n';

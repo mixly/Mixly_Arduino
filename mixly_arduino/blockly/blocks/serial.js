@@ -52,7 +52,7 @@ Blockly.Blocks['serial_println'] = {
     this.setTooltip(Blockly.Msg.TEXT_PRINT_TOOLTIP);
   }
 };
-//´òÓ¡16½øÖÆÊı
+//æ‰“å°16è¿›åˆ¶æ•°
 Blockly.Blocks['serial_print_hex'] = {
    init: function() {
     this.setColour(Blockly.Blocks.serial.HUE);
