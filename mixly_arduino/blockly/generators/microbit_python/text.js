@@ -19,14 +19,14 @@ Blockly.Python.text_char = function() {
 
 Blockly.Python.text_join = function() {
   // Text value.
-    var a = '(\'\' + ' + Blockly.Python.valueToCode(this, 'A', Blockly.Python.ORDER_ATOMIC) + ')';
-    var b = '(\'\' + ' + Blockly.Python.valueToCode(this, 'B', Blockly.Python.ORDER_ATOMIC) + ')';
+    var a = 'str(' + Blockly.Python.valueToCode(this, 'A', Blockly.Python.ORDER_ATOMIC) + ')';
+    var b = 'str(' + Blockly.Python.valueToCode(this, 'B', Blockly.Python.ORDER_ATOMIC) + ')';
     return [a  + ' + ' + b , Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.text_to_number = function() {
   var towhat = this.getFieldValue('TOWHAT');
-  var str = '(\'\' + ' + Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) + ')';
+  var str = 'str(' + Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) + ')';
   return [towhat + "(" +  str  + ')', Blockly.Python.ORDER_ATOMIC];
 };
 
@@ -57,8 +57,8 @@ Blockly.Python.text_char_at = function() {
 };
 
 Blockly.Python.text_equals_starts_ends = function() {
-  var str1 = '(\'\' + ' +(Blockly.Python.valueToCode(this, 'STR1', Blockly.Python.ORDER_ATOMIC) || '\"\"')+')';
-  var str2 = '(\'\' + ' +(Blockly.Python.valueToCode(this, 'STR2', Blockly.Python.ORDER_ATOMIC) || '\"\"')+')';
+  var str1 = 'str(' +(Blockly.Python.valueToCode(this, 'STR1', Blockly.Python.ORDER_ATOMIC) || '\"\"')+')';
+  var str2 = 'str(' +(Blockly.Python.valueToCode(this, 'STR2', Blockly.Python.ORDER_ATOMIC) || '\"\"')+')';
   var dowhat = this.getFieldValue('DOWHAT');
   if (dowhat === '===')
       return [str1+' == ' + str2, Blockly.Python.ORDER_ATOMIC];
@@ -67,8 +67,8 @@ Blockly.Python.text_equals_starts_ends = function() {
 };
 
 Blockly.Python.text_compareTo = function() {
-  var str1 = '(\'\' + (' +(Blockly.Python.valueToCode(this, 'STR1', Blockly.Python.ORDER_ATOMIC) || '\"\"')+'))';
-  var str2 = '(\'\' + (' +(Blockly.Python.valueToCode(this, 'STR2', Blockly.Python.ORDER_ATOMIC) || '\"\"')+'))';
+  var str1 = 'str(' +(Blockly.Python.valueToCode(this, 'STR1', Blockly.Python.ORDER_ATOMIC) || '\"\"')+'))';
+  var str2 = 'str(' +(Blockly.Python.valueToCode(this, 'STR2', Blockly.Python.ORDER_ATOMIC) || '\"\"')+'))';
   return ['cmp('+str1+','+str2+')', Blockly.Python.ORDER_ATOMIC];
 };
 
@@ -76,5 +76,5 @@ Blockly.Python.text_substring = function() {
     var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
     var start = Blockly.Python.valueToCode(this, 'START', Blockly.Python.ORDER_ATOMIC) || '0';
     var end = Blockly.Python.valueToCode(this, 'END', Blockly.Python.ORDER_ATOMIC) || '1';
-    return ['(\'\' + ' +str+')'+'[slice(('+start+'-1), ' + end + ')]', Blockly.Python.ORDER_ATOMIC];
+    return ['str(' +str+')'+'[slice(('+start+'-1), ' + end + ')]', Blockly.Python.ORDER_ATOMIC];
 };
