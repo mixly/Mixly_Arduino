@@ -1282,6 +1282,8 @@ function init() {
             </value>
         </block>
         <block type="display_TM1637_Brightness">
+            <value name="bit">
+            </value>
         </block>
 
         <block type="display_TM1637_displayString">
@@ -1313,9 +1315,9 @@ function init() {
                 </shadow>
             </value>
         </block>
-        <block type="display_TM1637_Stopwatch">
+       <!--<block type="display_TM1637_Stopwatch">
 
-        </block>
+        </block>--> 
         <block type="display_Matrix_Init">
           <value name="PIN1">
                 <shadow type="pins_digital">
@@ -1353,6 +1355,8 @@ function init() {
           <value name="LEDArray">
             <block type="display_Matrix_LedArray"></block>
           </value>
+        </block>
+        <block type="display_Matrix_CLEAR">
         </block>
 	</category>
 	<category id="catEthernet" colour="0">
