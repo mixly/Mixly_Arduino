@@ -61,7 +61,7 @@ void Matrix::drawPixel(int16_t x, int16_t y, uint16_t color) {
 
   switch (getRotation()) {
   case 1:
-    swap(x, y);
+    matrix_swap(x, y);
     x = 8 - x - 1;
     break;
   case 2:
@@ -69,7 +69,7 @@ void Matrix::drawPixel(int16_t x, int16_t y, uint16_t color) {
     y = 8 - y - 1;
     break;
   case 3:
-    swap(x, y);
+    matrix_swap(x, y);
     y = 8 - y - 1;
     break;
   }
@@ -207,13 +207,13 @@ void Matrix::drawLine(int16_t x0, int16_t y0,
 			    uint16_t color) {
   int16_t steep = abs(y1 - y0) > abs(x1 - x0);
   if (steep) {
-    swap(x0, y0);
-    swap(x1, y1);
+    matrix_swap(x0, y0);
+    matrix_swap(x1, y1);
   }
 
   if (x0 > x1) {
-    swap(x0, x1);
-    swap(y0, y1);
+    matrix_swap(x0, x1);
+    matrix_swap(y0, y1);
   }
 
   int16_t dx, dy;
@@ -321,13 +321,13 @@ void Matrix::fillTriangle ( int16_t x0, int16_t y0,
 
   // Sort coordinates by Y order (y2 >= y1 >= y0)
   if (y0 > y1) {
-    swap(y0, y1); swap(x0, x1);
+    matrix_swap(y0, y1); matrix_swap(x0, x1);
   }
   if (y1 > y2) {
-    swap(y2, y1); swap(x2, x1);
+    matrix_swap(y2, y1); matrix_swap(x2, x1);
   }
   if (y0 > y1) {
-    swap(y0, y1); swap(x0, x1);
+    matrix_swap(y0, y1); matrix_swap(x0, x1);
   }
 
   if(y0 == y2) { // Handle awkward all-on-same-line case as its own thing
@@ -368,7 +368,7 @@ void Matrix::fillTriangle ( int16_t x0, int16_t y0,
     a = x0 + (x1 - x0) * (y - y0) / (y1 - y0);
     b = x0 + (x2 - x0) * (y - y0) / (y2 - y0);
     */
-    if(a > b) swap(a,b);
+    if(a > b) matrix_swap(a,b);
     drawFastHLine(a, y, b-a+1, color);
   }
 
@@ -385,7 +385,7 @@ void Matrix::fillTriangle ( int16_t x0, int16_t y0,
     a = x1 + (x2 - x1) * (y - y1) / (y2 - y1);
     b = x0 + (x2 - x0) * (y - y0) / (y2 - y0);
     */
-    if(a > b) swap(a,b);
+    if(a > b) matrix_swap(a,b);
     drawFastHLine(a, y, b-a+1, color);
   }
 }
@@ -393,7 +393,7 @@ void Matrix::drawStr(String s){
 	int a = s.length();
     setTextSize(1);
 	setTextWrap(false);  // we dont want text to wrap so it scrolls nicely
-	setTextColor(LED_ON);
+	setTextColor(MATRIX_LED_ON);
 	for (int8_t x=7; x>=-a*6; x--) {
 		clear();
 		setCursor(x,0);

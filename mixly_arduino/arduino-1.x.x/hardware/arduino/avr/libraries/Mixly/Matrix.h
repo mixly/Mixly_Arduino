@@ -6,8 +6,8 @@
 #include "glcdfont.c"
 #include <avr/pgmspace.h>
 
-#define LED_ON 2
-#define LED_OFF 0
+#define MATRIX_LED_ON 2
+#define MATRIX_LED_OFF 0
 
 #define HT16K33_BLINK_CMD 0x80
 #define HT16K33_BLINK_DISPLAYON 0x01
@@ -16,8 +16,8 @@
 #define HT16K33_BLINK_1HZ  2
 #define HT16K33_BLINK_HALFHZ  3
 
-#define HT16K33_CMD_BRIGHTNESS 0x0E
-#define swap(a, b) { int16_t t = a; a = b; b = t; }
+//#define HT16K33_CMD_BRIGHTNESS 0x0E
+#define matrix_swap(a, b) { int16_t t = a; a = b; b = t; }
 // this is the raw HT16K33 controller
 
 
