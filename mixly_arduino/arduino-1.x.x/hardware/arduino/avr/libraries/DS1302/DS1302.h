@@ -87,7 +87,7 @@ public:
 	Time	getTime();
 	void	getTime2();
 	void	setTime(uint8_t hour, uint8_t min, uint8_t sec);
-	void	setDate(uint8_t date, uint8_t mon, uint16_t year);
+	void	setDate(uint16_t year, uint8_t mon, uint8_t date);
 	void	setDOW(uint16_t w_year, uint8_t w_month, uint8_t w_day);
 
 	uint8_t getSecond(void);

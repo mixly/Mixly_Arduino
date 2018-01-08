@@ -90,7 +90,7 @@ void DS1302::getTime2()
 	storeTime.date	= _decode(_burstArray[3]);
 	storeTime.mon	= _decode(_burstArray[4]);
 	storeTime.dow	= _burstArray[5];
-	storeTime.year	= _decodeY(_burstArray[6])+2000;
+	storeTime.year	= _decodeY(_burstArray[6]);
 }
 
 void DS1302::setTime(uint8_t hour, uint8_t min, uint8_t sec)
@@ -103,7 +103,7 @@ void DS1302::setTime(uint8_t hour, uint8_t min, uint8_t sec)
 	}
 }
 
-void DS1302::setDate(uint8_t date, uint8_t mon, uint16_t year)
+void DS1302::setDate(uint16_t year, uint8_t mon, uint8_t date)
 {
 	if (((date>0) && (date<=31)) && ((mon>0) && (mon<=12)) && ((year>=2000) && (year<3000)))
 	{
