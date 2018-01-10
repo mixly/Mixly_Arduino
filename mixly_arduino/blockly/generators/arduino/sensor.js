@@ -86,6 +86,12 @@ Blockly.Arduino.dht11 = function () {
     Blockly.Arduino.definitions_[funcName] = code;
     return [funcName + '()', Blockly.Arduino.ORDER_ATOMIC];
 }
+//LM35温度传感器
+Blockly.Arduino.LM35 = function() {
+  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+  var code = 'analogRead(' + dropdown_pin + ')*0.488';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
 
 Blockly.Arduino.ds18b20 = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
@@ -100,8 +106,8 @@ Blockly.Arduino.ds18b20 = function () {
     var funcName = 'ds18b20_' + dropdown_pin + '_getTemp';
     var code = 'float' + ' ' + funcName + '(int w) {\n'
 	+ '  sensors_' + dropdown_pin + '.requestTemperatures();\n'
-	+ '  if(w==0) {return sensors_' + dropdown_pin + '.getTempC(insideThermometer);}\n'
-	+ '  else {return sensors_' + dropdown_pin + '.getTempF(insideThermometer);}\n'
+	+ '  if(w==0) {\nreturn sensors_' + dropdown_pin + '.getTempC(insideThermometer);\n}\n'
+	+ '  else {\nreturn sensors_' + dropdown_pin + '.getTempF(insideThermometer);\n}\n'
 	+ '}\n';
     Blockly.Arduino.definitions_[funcName] = code;
     return ['ds18b20_' + dropdown_pin + '_getTemp(' + unit + ')', Blockly.Arduino.ORDER_ATOMIC];

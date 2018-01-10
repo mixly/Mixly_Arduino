@@ -118,7 +118,17 @@ Blockly.Blocks.dht11 = {
         });
     }
 };
-
+//lm35温度传感器
+Blockly.Blocks.LM35 = {
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput("").appendField(Blockly.MIXLY_LM35);
+    this.appendValueInput("PIN", Number).appendField(Blockly.MIXLY_PIN).setCheck(Number);
+    this.setInputsInline(true);
+    this.setOutput(true, Number);
+    this.setTooltip('');
+  }
+};
 //DS18B20ÎÂ¶È´«¸ÐÆ÷
 Blockly.Blocks.ds18b20 = {
     init: function () {

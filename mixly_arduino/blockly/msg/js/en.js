@@ -896,7 +896,8 @@ Blockly.MIXLY_ETHERNET_CLINET_READ='Client.read';
 Blockly.MIXLY_ETHERNET_CLINET_GET_REQUEST='GET Request';
 Blockly.MIXLY_ETHERNET_CLINET_URL='URL';
 Blockly.MIXLY_ETHERNET_CLINET_SERVER='Host';
-
+//lm35温度传感器
+Blockly.MIXLY_LM35='LM35 Temperature';
 //DS18B20温度传感器
 Blockly.MIXLY_DS18B20='DS18B20 PIN#';
 Blockly.MIXLY_DS18B20_GET_TEMP='getTemperature';
