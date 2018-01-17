@@ -177,3 +177,18 @@ Blockly.Blocks['logic_true_or_false'] = {
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_LOGIT_TRUEORFALSE);
   }
 };
+
+Blockly.Blocks['logic_is_in'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.logic.HUE);
+    this.appendValueInput('A');
+    this.appendValueInput('B')
+        .setCheck([String,'List'])
+        .appendField(Blockly.Msg.TEXT_APPEND_TO);
+    this.appendDummyInput("")
+        .appendField(Blockly.MICROBIT_LOGIC_IS_IN);
+    this.setOutput(true, Boolean);
+    this.setInputsInline(true);
+    // this.setTooltip(Blockly.MIXLY_TOOLTIP_LOGIT_TRUEORFALSE);
+  }
+};

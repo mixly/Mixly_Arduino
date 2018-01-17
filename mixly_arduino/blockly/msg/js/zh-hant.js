@@ -1256,3 +1256,53 @@ Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING='滾動顯示字符串';
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY='說'
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING='唱'
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE='讀'
+
+Blockly.Msg.LISTS_NAME_TOOLTIP='輸入列表名稱';
+Blockly.blockpy_LIST_ADD_LIST='增加 列表';
+Blockly.Msg.blockpy_LISTS_CREATE_WITH_INPUT_WITH ='初始化列表為';
+Blockly.MIXLY_blockpy_TOOLTIP_LISTS_CREATE_WITH_TEXT='通過一個字串來創建一個清單。';
+Blockly.Msg.blockpy_LISTS_CREATE_WITH_TOOLTIP= "建立一個具有任意數量項目的列表。";
+Blockly.blockpy_MIXLY_SPLITBYDOU='創建列表';
+Blockly.Msg.blockpy_LISTS_LENGTH_TOOLTIP = "返回列表的長度。";
+Blockly.blockpy_LANG_LISTS_GET_INDEX_TOOLTIP = '返回列表中指定位置的值。';
+Blockly.blockpy_LANG_LISTS_SET_INDEX_TOOLTIP = '設置列表中指定位置的值。';
+Blockly.Msg.LISTS_GET_INDEX_RANDOM2 = "隨即取出列表";
+Blockly.Msg.LISTS_GET_INDEX_RANDOM3 = "中的一項";
+
+Blockly.Msg.MATH_ZHENGCHU_SYMBOL = "//";
+Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL='週期(毫秒)設為';
+Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_PY = '設置指定管腳的值(0~1023)';
+
+Blockly.Msg.LISTS_ISEMPTY_TITLE='是空的嗎?';
+Blockly.Msg.LISTS_SORT_TITLE =' 對列表排序 %1 %2 %3';
+Blockly.Msg.LISTS_SORT_TYPE_NUMERIC =' 按數字';
+Blockly.Msg.LISTS_SORT_TYPE_TEXT =' 按字母';
+Blockly.Msg.LISTS_SORT_TYPE_IGNORECASE ='按字母(忽略大小寫)';
+Blockly.Msg.LISTS_SORT_ORDER_ASCENDING='昇冪';
+Blockly.Msg.LISTS_SORT_ORDER_DESCENDING='降冪';
+Blockly.Msg.DISPLAY_IMAGE_LET='將圖像';
+Blockly.Msg.DISPLAY_IMAGE_LET2='向';
+Blockly.Msg.DISPLAY_IMAGE_SHIFT='平移';
+Blockly.Msg.DISPLAY_IMAGE_UNIT='個單位';
+
+Blockly.LANG_MATH_RANDOM_FLOAT_INPUT_FROM =' 隨機小數 從';
+Blockly.LANG_MATH_RANDOM_FLOAT_INPUT_TO =' 到';
+Blockly.LANG_MATH_RANDOM_FLOAT_TOOLTIP2 =' 返回兩個數（含）之間的隨機小數';
+
+Blockly.MICROBIT_SPEECH_pitch =' 音高';
+Blockly.MICROBIT_SPEECH_speed =' 速度';
+Blockly.MICROBIT_SPEECH_mouth =' 嘴唇';
+Blockly.MICROBIT_SPEECH_throat =' 喉嚨';
+Blockly.MICROBIT_SPEECH_translation =' 翻譯為語音';
+
+Blockly.MICROBIT_ACTUATOR_bpm =' 速度';
+Blockly.MICROBIT_ACTUATOR_ticks =' 解析度';
+
+Blockly.MICROBIT_PYTHON_TYPE = '獲取資料類型';
+Blockly.MICROBIT_LOGIC_IS_IN = '中嗎？';
+Blockly.Msg.CONTROLS_FOREACH_INPUT = "對";
+
+Blockly.MICROBIT_DISPLAY_UNION = '聯合';
+Blockly.MICROBIT_DISPLAY_INTERSECTION = '相交';
+Blockly.MICROBIT_DISPLAY_MINUS = '減除';
+Blockly.MICROBIT_DISPLAY_MERGE_SHAPE = '合併形狀';

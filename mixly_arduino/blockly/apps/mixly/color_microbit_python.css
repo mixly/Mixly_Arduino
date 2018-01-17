@@ -72,7 +72,6 @@ td.taboff:hover {
 #side_code {
     padding:5px;
     border:0;
-    background-color:#eee;
     height:100%;width:100%;
     resize:none;
 }
@@ -269,67 +268,75 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background-size: 100% auto; 
 }
 #\:6>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
-	background:url('../../media/mark/logic.png') no-repeat;
+	background:url('../../media/mark/dict.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:6>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
-	background:url('../../media/mark/logic2.png') no-repeat;
+	background:url('../../media/mark/dict2.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:7>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
-	background:url('../../media/mark/port.png') no-repeat;
+	background:url('../../media/mark/logic.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:7>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
-	background:url('../../media/mark/port2.png') no-repeat;
+	background:url('../../media/mark/logic2.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:8>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
-	background:url('../../media/mark/comuni.png') no-repeat;
+	background:url('../../media/mark/port.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:8>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../media/mark/port2.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:9>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../media/mark/comuni.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:9>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
 	background:url('../../media/mark/comuni2.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:9>div>span.blocklyTreeIcon.blocklyTreeIconNone{
+#\:a>div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../media/mark/sensor.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:9>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{
+#\:a>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../media/mark/sensor2.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:a>div>span.blocklyTreeIcon.blocklyTreeIconNone{
+#\:b>div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../media/mark/act.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:a>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{
+#\:b>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../media/mark/act2.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:b>div>span.blocklyTreeIcon.blocklyTreeIconNone{
+#\:c>div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../media/mark/monitor.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:b>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{
+#\:c>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../media/mark/monitor2.png') no-repeat;
 	background-size: 100% auto; 
 }
 
-#\:d>div>span.blocklyTreeIcon.blocklyTreeIconNone{
+#\:e>div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../media/mark/var.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:d>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+#\:e>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
 	background:url('../../media/mark/var2.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:e>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+#\:f>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
 	background:url('../../media/mark/func.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:e>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+#\:f>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
 	background:url('../../media/mark/func2.png') no-repeat;
 	background-size: 100% auto; 
 }

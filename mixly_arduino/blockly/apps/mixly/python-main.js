@@ -13,7 +13,8 @@ function doSave(){
 function getHexFile(firmware) {
 	var code = "";
 	if(document.getElementById('tab_arduino').className == 'tabon'){
-		code = document.getElementById('content_arduino').value;
+		//code = document.getElementById('content_arduino').value;
+        code = editor.getValue();
 	}else{
 		code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
 	}

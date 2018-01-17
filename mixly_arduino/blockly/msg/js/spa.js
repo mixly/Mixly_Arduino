@@ -1248,6 +1248,56 @@ Blockly.MIXLY_WAS_PRESSED='fue presionado';
 Blockly.MIXLY_GET_PRESSES='conseguir prensas';
 
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING='El despliegue de una cadena de caracteres';
-Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY='Dice'
-Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING='Cantar'
-Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE='Leer'
+Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY='Dice';
+Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING='Cantar';
+Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE='Leer';
+
+Blockly.Msg.LISTS_NAME_TOOLTIP='La lista de nombres de entrada';
+Blockly.blockpy_LIST_ADD_LIST='Aumentar la lista de';
+Blockly.Msg.blockpy_LISTS_CREATE_WITH_INPUT_WITH ='En la lista de inicialización';
+Blockly.MIXLY_blockpy_TOOLTIP_LISTS_CREATE_WITH_TEXT='A través de una cadena de caracteres para crear una lista.';
+Blockly.Msg.blockpy_LISTS_CREATE_WITH_TOOLTIP='La creación de una lista con cualquier cantidad de proyectos.';
+Blockly.blockpy_MIXLY_SPLITBYDOU='La creación de listas';
+Blockly.Msg.blockpy_LISTS_LENGTH_TOOLTIP ='La longitud de la lista de regreso.';
+Blockly.blockpy_LANG_LISTS_GET_INDEX_TOOLTIP ='La lista de la ubicación especificada en el regreso de los valores.';
+Blockly.blockpy_LANG_LISTS_SET_INDEX_TOOLTIP ='Configuración de la lista de la ubicación especificada en el valor.';
+Blockly.Msg.LISTS_GET_INDEX_RANDOM2 ='La lista de sacar al azar';
+Blockly.Msg.LISTS_GET_INDEX_RANDOM3 ='Una de las';
+
+Blockly.Msg.MATH_ZHENGCHU_SYMBOL = "//";
+Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL='El ciclo (milisegundos)';
+Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_PY = 'Fijar valores de especificar los pies(0-1023)';
+
+Blockly.Msg.LISTS_ISEMPTY_TITLE='¿Es el vacío?';
+Blockly.Msg.LISTS_SORT_TITLE ='Para ordenar la lista de %1 %2 %3';
+Blockly.Msg.LISTS_SORT_TYPE_NUMERIC ='Según el número de';
+Blockly.Msg.LISTS_SORT_TYPE_TEXT ='De acuerdo con las letras';
+Blockly.Msg.LISTS_SORT_TYPE_IGNORECASE ='En orden alfabético (ignorando';
+Blockly.Msg.LISTS_SORT_ORDER_ASCENDING='En orden ascendente';
+Blockly.Msg.LISTS_SORT_ORDER_DESCENDING='DESC';
+Blockly.Msg.DISPLAY_IMAGE_LET='La imagen se';
+Blockly.Msg.DISPLAY_IMAGE_LET2='A';
+Blockly.Msg.DISPLAY_IMAGE_SHIFT='La traducción';
+Blockly.Msg.DISPLAY_IMAGE_UNIT='Unidades';
+
+Blockly.LANG_MATH_RANDOM_FLOAT_INPUT_FROM ='Aleatorio decimal de';
+Blockly.LANG_MATH_RANDOM_FLOAT_INPUT_TO ='A';
+Blockly.LANG_MATH_RANDOM_FLOAT_TOOLTIP2 ='Devuelve el número dos (con) aleatorio decimal entre';
+
+Blockly.MICROBIT_SPEECH_pitch ='El tono';
+Blockly.MICROBIT_SPEECH_speed ='La velocidad de';
+Blockly.MICROBIT_SPEECH_mouth ='Los labios';
+Blockly.MICROBIT_SPEECH_throat ='La garganta';
+Blockly.MICROBIT_SPEECH_translation ='La traducción de voz';
+
+Blockly.MICROBIT_ACTUATOR_bpm ='La velocidad de';
+Blockly.MICROBIT_ACTUATOR_ticks ='Resolución';
+
+Blockly.MICROBIT_PYTHON_TYPE = 'Los tipos de datos de acceso';
+Blockly.MICROBIT_LOGIC_IS_IN = 'Ahí dentro?';
+Blockly.Msg.CONTROLS_FOREACH_INPUT = "En cada";
+
+Blockly.MICROBIT_DISPLAY_UNION = ' Las Naciones Unidas ';
+Blockly.MICROBIT_DISPLAY_INTERSECTION = ' La intersección ';
+Blockly.MICROBIT_DISPLAY_MINUS = ' La deducción ';
+Blockly.MICROBIT_DISPLAY_MERGE_SHAPE = ' Forma de fusión ';

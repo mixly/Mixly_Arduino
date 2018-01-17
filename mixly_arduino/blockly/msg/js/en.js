@@ -1255,3 +1255,53 @@ Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING='scroll text';
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY='speak'
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING='sing'
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE='read'
+
+Blockly.Msg.LISTS_NAME_TOOLTIP= 'input list name';
+Blockly.blockpy_list_add_list = 'add list';
+Blockly.Msg.blockpy_LISTS_CREATE_WITH_INPUT_WITH = 'initialization list';
+Blockly.MIXLY_blockpy_TOOLTIP_LISTS_CREATE_WITH_TEXT= 'creates a list through a string. ';
+Blockly.Msg.blockpy_LISTS_CREATE_WITH_TOOLTIP= "create a list of any number of items." ;
+Blockly.blockpy_mixly_splitbydou = 'create list';
+Blockly.Msg.blockpy_LISTS_LENGTH_TOOLTIP = "return the length of the list." ;
+Blockly.blockpy_lang_lists_get_index_tooltip = 'return the value of the specified location in the list. ';
+Blockly.blockpy_lang_lists_set_index_tooltip = 'set the value of the location specified in the list. ';
+Blockly.Msg.LISTS_GET_INDEX_RANDOM2 = "random fetch list";
+Blockly.Msg.LISTS_GET_INDEX_RANDOM3 = "one of";
+
+Blockly.Msg.MATH_ZHENGCHU_SYMBOL = "//";
+Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_PY='Sets the value of the specified pin(0~1023)';
+Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL='The period (milliseconds) is set to';
+
+Blockly.Msg.LISTS_ISEMPTY_TITLE='Is it empty?';
+Blockly.Msg.LISTS_SORT_TITLE ='List sort %1 %2 %3';
+Blockly.Msg.LISTS_SORT_TYPE_NUMERIC ='By number';
+Blockly.Msg.LISTS_SORT_TYPE_TEXT ='Alphabetical';
+Blockly.Msg.LISTS_SORT_TYPE_IGNORECASE ='By letter (ignored)';
+Blockly.Msg.LISTS_SORT_ORDER_ASCENDING='Ascending';
+Blockly.Msg.LISTS_SORT_ORDER_DESCENDING='Descending';
+Blockly.Msg.DISPLAY_IMAGE_LET='Image';
+Blockly.Msg.DISPLAY_IMAGE_LET2='towards';
+Blockly.Msg.DISPLAY_IMAGE_SHIFT='translation';
+Blockly.Msg.DISPLAY_IMAGE_UNIT='Unit';
+
+Blockly.LANG_MATH_RANDOM_FLOAT_INPUT_FROM ='Random decimal';
+Blockly.LANG_MATH_RANDOM_FLOAT_INPUT_TO ='reach';
+Blockly.LANG_MATH_RANDOM_FLOAT_TOOLTIP2 ='A random number that returns between two numbers (containing)';
+
+Blockly.MICROBIT_SPEECH_pitch ='pitch';
+Blockly.MICROBIT_SPEECH_speed ='speed';
+Blockly.MICROBIT_SPEECH_mouth ='Mouth';
+Blockly.MICROBIT_SPEECH_throat ='throat';
+Blockly.MICROBIT_SPEECH_translation ='Translation to phonetics';
+
+Blockly.MICROBIT_ACTUATOR_bpm ='bpm';
+Blockly.MICROBIT_ACTUATOR_ticks ='ticks';
+
+Blockly.MICROBIT_PYTHON_TYPE = 'get type';
+Blockly.MICROBIT_LOGIC_IS_IN = 'is in';
+Blockly.Msg.CONTROLS_FOREACH_INPUT = "for each";
+
+Blockly.MICROBIT_DISPLAY_UNION = 'union';
+Blockly.MICROBIT_DISPLAY_INTERSECTION = 'intersection';
+Blockly.MICROBIT_DISPLAY_MINUS = 'minus';
+Blockly.MICROBIT_DISPLAY_MERGE_SHAPE = 'merge shape';

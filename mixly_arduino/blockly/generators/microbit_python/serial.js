@@ -29,7 +29,13 @@ Blockly.Python.serial_receive_data_event = function() {
   var char_marker = Blockly.Python.valueToCode(this, 'char_marker', Blockly.Python.ORDER_ATOMIC) || ';';
   var branch = Blockly.Python.statementToCode(this, 'DO');
 
-  Blockly.Python.definitions_['func_serial_receive_data_event_'  + char_marker.charCodeAt(1)] = "serial.onDataReceived(" + char_marker + ", () => {\n" + branch + "};\n";
+  Blockly.Python.definitions_['func_serial_receive_data_event_'  + char_marker.charCodeAt(1)] = "serial.onDataReceived(" + char_marker + ", () => {\n" + branch + "}\n";
+};
+
+Blockly.Python.serial_any = function() {
+  Blockly.Python.definitions_['import_microbit'] = 'from microbit import *';
+  var code ="uart.any()";
+  return [code,Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.serial_readstr = function() {

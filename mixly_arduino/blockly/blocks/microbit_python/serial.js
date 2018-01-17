@@ -59,6 +59,16 @@ Blockly.Blocks['serial_readstr'] = {
   }
 };
 
+Blockly.Blocks['serial_any'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.serial.HUE);
+  this.appendDummyInput()
+        .appendField("Serial " + Blockly.MIXLY_SERIAL_AVAILABLE);
+  this.setOutput(true, String);
+  this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERIAL_READ_STR);
+  }
+};
+
 Blockly.Blocks['serial_readline'] = {
     init: function() {
         this.setColour(Blockly.Blocks.serial.HUE);

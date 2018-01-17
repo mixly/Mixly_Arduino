@@ -63,6 +63,7 @@ Blockly.Python.math_arithmetic = function (a) {
     MULTIPLY : [" * ", Blockly.Python.ORDER_MULTIPLICATIVE],
     DIVIDE : [" / ", Blockly.Python.ORDER_MULTIPLICATIVE],
     QUYU: [' % ', Blockly.Python.ORDER_MULTIPLICATIVE],//增加取余操作
+    ZHENGCHU: [' // ', Blockly.Python.ORDER_MULTIPLICATIVE],//增加整除操作
     POWER : [" ** ", Blockly.Python.ORDER_EXPONENTIATION]
   }
   [a.getFieldValue("OP")],
@@ -118,7 +119,18 @@ Blockly.Python.math_single = function (a) {
     c = "math.cos(" + a + " / 180.0 * math.pi)";
     break;
   case "TAN":
-    c = "math.tan(" + a + " / 180.0 * math.pi)"
+    c = "math.tan(" + a + " / 180.0 * math.pi)";
+    break;
+  case "++":
+    c = "++(" + a + ")";
+    break;
+  case "--":
+    c = "--(" + a + ")";
+    break;
+  case "-":
+    c = "-(" + a + ")";
+    break;
+  default:
   }
   if (c)
     return [c, Blockly.Python.ORDER_FUNCTION_CALL];
@@ -133,7 +145,7 @@ Blockly.Python.math_single = function (a) {
   case "ATAN":
     c = "math.atan(" + a + ") / math.pi * 180";
     break;
-  default:
+
     throw "Unknown math operator: " + b;
   }
   return [c, Blockly.Python.ORDER_MULTIPLICATIVE]
@@ -166,7 +178,11 @@ Blockly.Python.math_max_min = function() {
 
 Blockly.Python.math_random_seed = function () {
     // Random integer between [X] and [Y].
-    var code = 'randomSeed(micros());\n';
+    Blockly.Python.definitions_.import_random = "import random";
+    // Random integer between [X] and [Y].
+    var argument0 = Blockly.Python.valueToCode(this, 'NUM',
+        Blockly.Python.ORDER_NONE) || '0';
+    var code = 'random.seed(' + argument0 +  ')\n';
     return code;
 };
 //ok
@@ -182,9 +198,27 @@ Blockly.Python.math_random_int = function() {
   return [code, Blockly.Python.ORDER_UNARY_POSTFIX];
 };
 //ok
+Blockly.Python.math_random_float = function() {
+  Blockly.Python.definitions_.import_random = "import random";
+  // Random integer between [X] and [Y].
+  var argument0 = Blockly.Python.valueToCode(this, 'FROM',
+      Blockly.Python.ORDER_NONE) || '0';
+  var argument1 = Blockly.Python.valueToCode(this, 'TO',
+      Blockly.Python.ORDER_NONE) || '0';
+  var code = 'random.uniform(' + argument0 +  ', ' + argument1 + ')';
+
+  return [code, Blockly.Python.ORDER_UNARY_POSTFIX];
+};
+//ok
 Blockly.Python.math_random_boolean = function() {
   Blockly.Python.definitions_.import_random = "import random";
   var code = 'random.randint(0,1)';
+  return [code, Blockly.Python.ORDER_UNARY_POSTFIX];
+}
+//ok
+Blockly.Python.math_random_random = function() {
+  Blockly.Python.definitions_.import_random = "import random";
+  var code = 'random.random()';
   return [code, Blockly.Python.ORDER_UNARY_POSTFIX];
 }
 //ok, if a==b or c==d, ERROR!
@@ -209,4 +243,10 @@ Blockly.Python.math_constrain = function() {
       Blockly.Python.ORDER_NONE) || '0';
   var code = 'min(max(' + argument0 + ', ' +  argument1 + '), ' +  argument2 + ')';
   return [code, Blockly.Python.ORDER_UNARY_POSTFIX];
+};
+
+Blockly.Python.bin_to_number = function() {
+  var towhat = this.getFieldValue('TOWHAT');
+  var bin = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
+  return [towhat + "(" +  bin  + ', 2)', Blockly.Python.ORDER_ATOMIC];
 };

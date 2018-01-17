@@ -31,6 +31,29 @@ Blockly.Blocks.base_delay = {
   }
 };
 
+Blockly.Blocks.Panic_with_status_code = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendValueInput("STATUS_CODE", Number)
+        .appendField(Blockly.MIXLY_MICROBIT_Panic_with_status_code)
+        .setCheck(Number);
+    this.setPreviousStatement(true, null);
+    // this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_DELAY);
+  }
+};
+
+Blockly.Blocks.reset = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendDummyInput()
+      .appendField(Blockly.MIXLY_MICROBIT_Reset_micro);
+    this.setPreviousStatement(true);
+    // this.setNextStatement(true);
+  }
+};
+
 Blockly.Blocks.controls_for = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
@@ -125,8 +148,9 @@ Blockly.Blocks.controls_flow_statements = {
     var block = this;
     do {
       if (block.type == 'controls_repeat' ||
-          block.type == 'controls_forEach' ||
           block.type == 'controls_for' ||
+          block.type == 'controls_forEach' ||
+          block.type == 'controls_repeat_ext' ||
           block.type == 'controls_whileUntil') {
         legal = true;
         break;
@@ -628,7 +652,6 @@ Blockly.Blocks.controls_end_program = {
     this.appendDummyInput()
 	    .appendField(Blockly.MIXLY_CONTROL_END_PROGRAM);
 	this.setPreviousStatement(true);
-    this.setNextStatement(true);
   }
 };
 
@@ -650,4 +673,85 @@ Blockly.Blocks.controls_nointerrupts = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
     }
+};
+
+Blockly.Blocks['controls_repeat_ext'] = {
+  /**
+   * Block for repeat n times (external number).
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": Blockly.Msg.CONTROLS_REPEAT_TITLE,
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "TIMES",
+          // "check": "Number"
+        }
+      ],
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": Blockly.Blocks.loops.HUE,
+      "tooltip": Blockly.Msg.CONTROLS_REPEAT_TOOLTIP,
+      "helpUrl": Blockly.Msg.CONTROLS_REPEAT_HELPURL
+    });
+    this.appendStatementInput('DO')
+        .appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
+  }
+};
+
+Blockly.Blocks.controls_forEach = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendValueInput('LIST')
+        .setCheck(['List',String])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT);
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT_ITEM)
+        .appendField(new Blockly.FieldTextInput('i'), 'VAR');
+    this.appendStatementInput('DO')
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_DO);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+  var thisBlock = this;
+    this.setTooltip(function() {
+      return Blockly.Msg.CONTROLS_FOR_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });
+  },
+  getVars: function() {
+    return [this.getFieldValue('VAR')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
+      this.setTitleValue(newName, 'VAR');
+    }
+  }
+};
+
+Blockly.Blocks['raw_block'] = {
+  // Container.
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.appendDummyInput()
+        .appendField('Code Block:');
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldTextArea('12345'), 'TEXT');
+  }
+};
+
+Blockly.Blocks.base_type = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendValueInput("DATA")
+        .appendField(Blockly.MICROBIT_PYTHON_TYPE);
+    this.setInputsInline(true);
+    this.setOutput(true);
+    this.setTooltip(Blockly.MICROBIT_PYTHON_TYPE);
+  }
 };

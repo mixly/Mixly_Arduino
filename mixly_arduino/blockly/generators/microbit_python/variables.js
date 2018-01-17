@@ -16,7 +16,7 @@ Blockly.Python.variables_declare = function() {
   var dropdown_type = this.getFieldValue('TYPE');
   var argument0;
   //TODO: settype to variable
-  argument0 = Blockly.Python.valueToCode(this, 'VALUE',Blockly.Python.ORDER_ASSIGNMENT) ||  0;
+  argument0 = Blockly.Python.valueToCode(this, 'VALUE',Blockly.Python.ORDER_ASSIGNMENT) ||  'None';
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
       Blockly.Variables.NAME_TYPE);
   /*
@@ -40,7 +40,7 @@ Blockly.Python.variables_declare = function() {
 Blockly.Python.variables_set = function() {
   // Variable setter.
   var argument0 = Blockly.Python.valueToCode(this, 'VALUE',
-      Blockly.Python.ORDER_ASSIGNMENT) || '0';
+      Blockly.Python.ORDER_ASSIGNMENT) || 'None';
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
 
   return varName + ' = ' + argument0 + '\n';

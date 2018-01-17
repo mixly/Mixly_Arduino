@@ -141,7 +141,6 @@ Blockly.Blocks['number_to_text'] = {
     init: function () {
         this.setColour(Blockly.Blocks.texts.HUE);
         this.appendValueInput('VAR')
-            .setCheck(Number)
             .appendField(Blockly.MIXLY_TOSTRING);;
         this.setOutput(true, String);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_TOTEXT);

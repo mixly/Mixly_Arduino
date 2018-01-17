@@ -9,11 +9,13 @@ Blockly.Blocks.controls_attachGestureInterrupt = {
     init: function() {
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_MICROBIT_JS_IS_GESTURE)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_CURRENT_GESTURE)
             .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_MICROBIT_up, "up"], [Blockly.MIXLY_MICROBIT_down, "down"], [Blockly.MIXLY_MICROBIT_left, "left"], [Blockly.MIXLY_MICROBIT_right, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
         this.appendStatementInput('DO')
             .appendField(Blockly.MIXLY_DO);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
+                this.setPreviousStatement(true);
+        this.setNextStatement(true);
     }
 };
 
@@ -26,6 +28,8 @@ Blockly.Blocks.controls_attachGestureInterrupt2 = {
         this.appendStatementInput('DO')
             .appendField(Blockly.MIXLY_DO);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
+                this.setPreviousStatement(true);
+        this.setNextStatement(true);
     }
 };
 
@@ -123,7 +127,7 @@ Blockly.Blocks['sensor_temperature'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_TEMPERATURE)
+            .appendField(Blockly.MIXLY_MICROBIT_Board_temperature)
         this.setOutput(true, Number);
         this.setInputsInline(true);
     }

@@ -56,3 +56,48 @@ Blockly.Blocks['pins_serial'] = {
         this.setOutput(true, Number);
     }
 };
+
+Blockly.Blocks['pins_builtinimg'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldDropdown(profile.default.builtinimg), 'PIN');
+        this.setOutput(true, String);
+    }
+};
+
+Blockly.Blocks['pins_imglist'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldDropdown(profile.default.imglist), 'PIN');
+        this.setOutput(true);
+    }
+};
+
+Blockly.Blocks['pins_axis'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldDropdown(profile.default.axis), 'PIN');
+        this.setOutput(true, Number);
+    }
+};
+
+Blockly.Blocks['pins_brightness'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldDropdown(profile.default.brightness), 'PIN');
+        this.setOutput(true, Number);
+    }
+};
+
+Blockly.Blocks['pins_tone_notes'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldDropdown(profile.default.tone_notes), 'PIN');
+        this.setOutput(true, Number);
+    }
+};

@@ -39,6 +39,7 @@ Blockly.Blocks['math_arithmetic'] = {
          [Blockly.Msg.MATH_MULTIPLICATION_SYMBOL, 'MULTIPLY'],
          [Blockly.Msg.MATH_DIVISION_SYMBOL, 'DIVIDE'],
 		 [Blockly.Msg.MATH_QUYU_SYMBOL, 'QUYU'],
+      [Blockly.Msg.MATH_ZHENGCHU_SYMBOL, 'ZHENGCHU'],
          [Blockly.Msg.MATH_POWER_SYMBOL, 'POWER']];
     //this.setHelpUrl(Blockly.Msg.MATH_ARITHMETIC_HELPURL);
     this.setColour(Blockly.Blocks.math.HUE);
@@ -59,6 +60,7 @@ Blockly.Blocks['math_arithmetic'] = {
         'MULTIPLY': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_MULTIPLY,
         'DIVIDE': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_DIVIDE,
 		'QUYU':Blockly.Msg.MATH_MODULO_TOOLTIP,
+    'ZHENGCHU':Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_DIVIDE,
         'POWER': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_POWER
       };
       return TOOLTIPS[mode];
@@ -98,6 +100,7 @@ Blockly.Blocks['math_trig'] = {
          ['asin', 'ASIN'],
          ['acos', 'ACOS'],
          ['atan', 'ATAN'],
+         ['-', '-'],
          ['ln', 'LN'],
          ['log10', 'LOG10'],
          ['e^', 'EXP'],
@@ -196,7 +199,10 @@ Blockly.Blocks['math_max_min']= {
 Blockly.Blocks['math_random_seed'] = {
     init: function () {
         this.setColour(Blockly.Blocks.math.HUE);
-        this.appendDummyInput()
+        // this.appendDummyInput()
+        //     .appendField(Blockly.LANG_MATH_RANDOM_SEED);
+        this.appendValueInput('NUM')
+            .setCheck(Number)
             .appendField(Blockly.LANG_MATH_RANDOM_SEED);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -223,6 +229,27 @@ Blockly.Blocks['math_random_int'] = {
   }
 };
 
+
+Blockly.Blocks['math_random_float'] = {
+  /**
+   * Block for random integer between [X] and [Y].
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.setColour(Blockly.Blocks.math.HUE);
+    this.setOutput(true, Number);
+    this.appendValueInput('FROM')
+        .setCheck(Number)
+        .appendField(Blockly.LANG_MATH_RANDOM_FLOAT_INPUT_FROM);
+    this.appendValueInput('TO')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LANG_MATH_RANDOM_FLOAT_INPUT_TO);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.LANG_MATH_RANDOM_FLOAT_TOOLTIP2);
+  }
+};
+
 Blockly.Blocks['math_random_boolean'] = {
     init: function() {
         this.setColour(Blockly.Blocks.math.HUE);
@@ -230,7 +257,17 @@ Blockly.Blocks['math_random_boolean'] = {
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_JS_RANDOM_BOOLEAN);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.Msg.MATH_RANDOM_INT_TOOLTIP);
+    }
+};
+
+Blockly.Blocks['math_random_random'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.math.HUE);
+        this.setOutput(true, Number);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.MATH_RANDOM_FLOAT_TITLE_RANDOM);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.Msg.MATH_RANDOM_FLOAT_TOOLTIP);
     }
 };
 
@@ -279,5 +316,27 @@ Blockly.Blocks.base_map = {
     this.setInputsInline(true);
     this.setOutput(true);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_MATH_MAP);
+  }
+};
+
+Blockly.Blocks['bin_to_number'] = {
+  init: function() {
+  var TO_INT_FLOAT =
+        [[Blockly.MIXLY_TO_INT, 'int'],[Blockly.MIXLY_TO_FLOAT, 'float']];
+    this.setColour(Blockly.Blocks.math.HUE);
+    this.appendValueInput('VAR')
+        // .setCheck(String)
+        .appendField(Blockly.Msg.MATH_BIN)
+    .appendField(new Blockly.FieldDropdown(TO_INT_FLOAT), 'TOWHAT');
+  this.setOutput(true, Number);
+  var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getFieldValue('TOWHAT');
+      var TOOLTIPS = {
+        'int': Blockly.MIXLY_TOOLTIP_TEXT_TOINT,
+        'float': Blockly.MIXLY_TOOLTIP_TEXT_TOFLOAT
+      };
+      return TOOLTIPS[mode];
+    });
   }
 };

@@ -17,7 +17,7 @@ Blockly.Python.procedures_defreturn = function() {
       Blockly.Python.ORDER_NONE) || '';
   //var type=this.getFieldValue('TYPE');
   if (returnValue) {
-    returnValue = '  return ' + returnValue + '\n';
+    returnValue = '    return ' + returnValue + '\n';
   }
   //var returnType = returnValue ? type : 'void';
   var args = [];
@@ -63,14 +63,14 @@ Blockly.Python.procedures_callnoreturn = function() {
 Blockly.Python.procedures_ifreturn = function() {
   // Conditionally return value from a procedure.
   var condition = Blockly.Python.valueToCode(this, 'CONDITION',
-      Blockly.Python.ORDER_NONE) || 'false';
+      Blockly.Python.ORDER_NONE) || 'False';
   var code = 'if (' + condition + ') :\n';
   if (this.hasReturnValue_) {
     var value = Blockly.Python.valueToCode(this, 'VALUE',
         Blockly.Python.ORDER_NONE) || 'null';
-    code += '  return ' + value + '\n';
+    code += '    return ' + value + '\n';
   } else {
-    code += '  return\n';
+    code += '    return\n';
   }
   code += '\n';
   return code;

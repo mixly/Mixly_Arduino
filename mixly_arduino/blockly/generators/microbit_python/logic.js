@@ -30,8 +30,8 @@ Blockly.Python.logic_operation = function() {
   var operator = (this.getFieldValue('OP') == 'AND') ? 'and' : 'or';
   var order = (operator == '&&') ? Blockly.Python.ORDER_LOGICAL_AND :
       Blockly.Python.ORDER_LOGICAL_OR;
-  var argument0 = Blockly.Python.valueToCode(this, 'A', order) || 'false';
-  var argument1 = Blockly.Python.valueToCode(this, 'B', order) || 'false';
+  var argument0 = Blockly.Python.valueToCode(this, 'A', order) || 'False';
+  var argument1 = Blockly.Python.valueToCode(this, 'B', order) || 'False';
   var code = argument0 + ' ' + operator + ' ' + argument1;
   return [code, order];
 };
@@ -39,14 +39,14 @@ Blockly.Python.logic_operation = function() {
 Blockly.Python.logic_negate = function() {
   // Negation.
   var order = Blockly.Python.ORDER_UNARY_PREFIX;
-  var argument0 = Blockly.Python.valueToCode(this, 'BOOL', order) || 'false';
-  var code = '!' + argument0;
+  var argument0 = Blockly.Python.valueToCode(this, 'BOOL', order) || 'False';
+  var code = 'not ' + argument0;
   return [code, order];
 };
 
 Blockly.Python.logic_boolean = function() {
   // Boolean values true and false.
-  var code = (this.getFieldValue('BOOL') == 'TRUE') ? 'true' : 'false';
+  var code = (this.getFieldValue('BOOL') == 'TRUE') ? 'True' : 'False';
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
@@ -56,10 +56,17 @@ Blockly.Python.logic_null = function() {
 };
 
 Blockly.Python.logic_true_or_false = function() {
-  var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_ATOMIC) || 'false';
-  var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_ATOMIC) || 'false';
-  var c = Blockly.Python.valueToCode(this, 'C',Blockly.Python.ORDER_ATOMIC) || 'false';
+  var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_ATOMIC) || 'False';
+  var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_ATOMIC) || 'False';
+  var c = Blockly.Python.valueToCode(this, 'C',Blockly.Python.ORDER_ATOMIC) || 'False';
   var code=b+' if '+a+' else '+c;
+  return [code ,Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.logic_is_in = function() {
+  var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var code=a+' in '+b;
   return [code ,Blockly.Python.ORDER_ATOMIC];
 };
 

@@ -122,7 +122,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
     for (var i = 0; i < this.arguments_.length; i++) {
       var parameter = document.createElement('arg');
       parameter.setAttribute('name', this.arguments_[i]);
-      parameter.setAttribute('vartype', this.argumentstype_[i]);//新增
+      //parameter.setAttribute('vartype', this.argumentstype_[i]);//新增
       container.appendChild(parameter);
     }
 
@@ -143,7 +143,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
     for (var i = 0, childNode; childNode = xmlElement.childNodes[i]; i++) {
       if (childNode.nodeName.toLowerCase() == 'arg') {
         this.arguments_.push(childNode.getAttribute('name'));
-	this.argumentstype_.push(childNode.getAttribute('vartype'));//新增
+	//this.argumentstype_.push(childNode.getAttribute('vartype'));//新增
       }
     }
     this.updateParams_();
@@ -176,7 +176,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
       var paramBlock = workspace.newBlock('procedures_mutatorarg');
       paramBlock.initSvg();
       paramBlock.setFieldValue(this.arguments_[i], 'NAME');
-      paramBlock.setFieldValue(this.argumentstype_[i], 'TYPEVAR');//新增
+      //paramBlock.setFieldValue(this.argumentstype_[i], 'TYPEVAR');//新增
       // Store the old location.
       paramBlock.oldLocation = i;
       connection.connect(paramBlock.previousConnection);
@@ -199,7 +199,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
     var paramBlock = containerBlock.getInputTargetBlock('STACK');
     while (paramBlock) {
       this.arguments_.push(paramBlock.getFieldValue('NAME'));
-      this.argumentstype_.push(paramBlock.getFieldValue('TYPEVAR'));//新增
+      //this.argumentstype_.push(paramBlock.getFieldValue('TYPEVAR'));//新增
       this.paramIds_.push(paramBlock.id);
       paramBlock = paramBlock.nextConnection &&
           paramBlock.nextConnection.targetBlock();
@@ -304,7 +304,7 @@ Blockly.Blocks['procedures_defnoreturn'] = {
     for (var i = 0; i < this.arguments_.length; i++) {
       var xmlArg = goog.dom.createDom('arg');
       xmlArg.setAttribute('name', this.arguments_[i]);
-      xmlArg.setAttribute('type', this.argumentstype_[i]);//新增
+      //xmlArg.setAttribute('type', this.argumentstype_[i]);//新增
       xmlMutation.appendChild(xmlArg);
     }
     var xmlBlock = goog.dom.createDom('block', null, xmlMutation);

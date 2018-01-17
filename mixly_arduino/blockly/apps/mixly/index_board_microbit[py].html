@@ -9,7 +9,7 @@
   <script type="text/javascript" src="../../core/microbit_python/procedures.js"></script>
   <script type="text/javascript" src="../../core/microbit_python/blockly.js"></script>
   <script type="text/javascript" src="../../core/microbit_python/events.js"></script>
-    <script src="../../generators/microbit_python/python.js"></script>
+  <script src="../../generators/microbit_python/python.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
   <script type="text/javascript" src="drag.js"></script>
   <script type="text/javascript" src="code.js"></script> 
@@ -32,6 +32,7 @@
     <script src="../../blocks/microbit_python/math.js"></script>
     <script src="../../blocks/microbit_python/text.js"></script>
     <script src="../../blocks/microbit_python/lists.js"></script>
+    <script src="../../blocks/microbit_python/dicts.js"></script>
     <script src="../../blocks/microbit_python/logic.js"></script>
     <script src="../../blocks/microbit_python/serial.js"></script>
     <script src="../../blocks/microbit_python/communicate.js"></script>
@@ -39,7 +40,7 @@
     <script src="../../blocks/microbit_python/actuator.js"></script>
     <script src="../../blocks/microbit_python/display.js"></script>
     <script src="../../blocks/microbit_python/procedures.js"></script>
-     <script src="../../blocks/microbit_python/microbit.js"></script>
+
 
 	<!-- generator file -->
   <script src="../../generators/microbit_python/pins.js"></script>
@@ -48,6 +49,7 @@
     <script src="../../generators/microbit_python/math.js"></script>
     <script src="../../generators/microbit_python/text.js"></script>
     <script src="../../generators/microbit_python/lists.js"></script>
+    <script src="../../generators/microbit_python/dicts.js"></script>
     <script src="../../generators/microbit_python/logic.js"></script>
     <script src="../../generators/microbit_python/serial.js"></script>
     <script src="../../generators/microbit_python/communicate.js"></script>
@@ -57,6 +59,8 @@
 
     <script src="../../generators/microbit_python/procedures.js"></script>
      <script src="python-main.js" type="application/javascript"></script>
+    <script src="js/lib/ace/ace.js" type="application/javascript"></script>
+    <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
 
 
 
@@ -166,8 +170,9 @@ function renderContent() {
     // an incomplete rendering due to Blockly being invisible.  Rerender.
       Blockly.mainWorkspace.render();
       var arduinoTextarea = document.getElementById('side_code');
-      var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-      arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+      //var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+      //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+      editor_side_code.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
      } else if (content.id == 'content_xml') {
     var xmlTextarea = document.getElementById('content_xml');
     var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
@@ -177,8 +182,9 @@ function renderContent() {
   } else if (content.id == 'content_arduino') {
     //content.innerHTML = Blockly.Python.workspaceToCode(Blockly.mainWorkspace);
     var arduinoTextarea = document.getElementById('content_arduino');
-    arduinoTextarea.value = Blockly.Python.workspaceToCode(Blockly.mainWorkspace);
-    arduinoTextarea.focus();
+    editor.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
+    //arduinoTextarea.value = Blockly.Python.workspaceToCode(Blockly.mainWorkspace);
+    //arduinoTextarea.focus();
   }
 }
 
@@ -260,8 +266,9 @@ function init() {
 	  }
 	  //更新
 	  var arduinoTextarea = document.getElementById('side_code');
-	  var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-	  arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+	  //var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+	  //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+      editor_side_code.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
 	}
 	
   auto_save_and_restore_blocks();
@@ -333,14 +340,15 @@ function init() {
     <tr>
       <td height="100%" width="75%" id="content_area"></td>
 	  <td style="display:none;height:100%;width:0.3%;background: #ddd;cursor: w-resize;" id="mid_td"></td>
-	  <td width="25%" style="background-color:#eee;display:none;" id="side_code_parent"><textarea id="side_code" wrap="off" readonly></textarea></td>
+	  <td width="25%" style="background-color:#eee;display:none;" id="side_code_parent"><div id="side_code" wrap="off" readonly></div></td>
 	  <div id="sidebar" class="right-top" onclick="sidecodeClick()"></div>
     </tr>
   </table>
   <div id="content_blocks" class="content"></div>
-  <textarea id="content_arduino" class="content" wrap="off" ></textarea>
+  <div id="content_arduino" class="content" wrap="off"></div>
+  <!-- <div id="content_arduino2" wrap="off" ></div> -->
   <textarea id="content_xml" class="content" wrap="off" readonly></textarea>
-  <xml id="toolbox" style="display: none">
+      <xml id="toolbox" style="display: none">
       <category name="" id="catInOut" colour="20">
           <block type="inout_highlow"></block>
           <block type="inout_digital_write2">
@@ -357,16 +365,6 @@ function init() {
                   <shadow type="pins_digital"></shadow>
               </value>
           </block>
-          <block type="inout_analog_write_set">
-              <value name="PIN">
-                  <shadow type="pins_pwm"></shadow>
-              </value>
-              <value name="NUM">
-                  <shadow type="math_number">
-                      <field name="NUM">20000</field>
-                  </shadow>
-              </value>
-          </block>
           <block type="inout_analog_write">
               <value name="PIN">
                   <shadow type="pins_pwm"></shadow>
@@ -380,6 +378,16 @@ function init() {
           <block type="inout_analog_read">
               <value name="PIN">
                   <shadow type="pins_analog"></shadow>
+              </value>
+          </block>
+          <block type="inout_analog_write_set">
+              <value name="PIN">
+                  <shadow type="pins_pwm"></shadow>
+              </value>
+              <value name="NUM">
+                  <shadow type="math_number">
+                      <field name="NUM">2</field>
+                  </shadow>
               </value>
           </block>
           <block type="sensor_button_is_pressed">
@@ -406,69 +414,6 @@ function init() {
                   </shadow>
               </value>
           </block>
-         <!--  <block type="controls_attachInterrupt">
-              <value name="PIN">
-                  <shadow type="pins_interrupt"></shadow>
-              </value>
-          </block>
-          <block type="controls_attachBtnInterrupt">
-              <value name="PIN">
-                  <shadow type="pins_button"></shadow>
-              </value>
-          </block> -->
-          <!--<block type="controls_detachInterrupt">
-              <value name="PIN">
-                  <shadow type="pins_interrupt"></shadow>
-              </value>
-          </block>
-          <block type="inout_pinMode">
-              <value name="PIN">
-                  <shadow type="pins_digital"></shadow>
-              </value>
-          </block>-->
-         <!--  <block type="inout_pulseIn">
-              <value name="PIN">
-                  <shadow type="pins_digital"></shadow>
-              </value>
-          </block>
-          <block type="inout_last_pulse_period">
-          </block>
-          <block type="controls_attachInterruptPulse">
-              <value name="PIN">
-                  <shadow type="pins_digital"></shadow>
-              </value>
-          </block>
-          <block type="inout_analog_pitch">
-              <value name="FROM">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-              <value name="TO">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="inout_emit_events">
-              <value name="PIN">
-                  <shadow type="pins_digital"></shadow>
-              </value>
-
-          </block>
-          <block type="inout_set_pitch_pin">
-              <value name="PIN">
-                  <shadow type="pins_digital"></shadow>
-              </value>
-
-          </block>
-          <block type="inout_set_pull">
-              <value name="PIN">
-                  <shadow type="pins_digital"></shadow>
-              </value>
-
-          </block>
- -->
       </category>
       <category id="catControl" colour="120">
           <block type="base_setup"></block>
@@ -480,8 +425,14 @@ function init() {
                   </shadow>
               </value>
           </block>
+          <block type="base_type">
+              <value name="DATA">
+                  <shadow type="math_number">
+                      <field name="NUM">1000</field>
+                  </shadow>
+              </value>
+          </block>
           <block type="controls_if"></block>
-          <!-- <block type="controls_switch_case"></block> -->
           <block type="controls_for">
               <value name="FROM">
                   <shadow type="math_number">
@@ -499,18 +450,31 @@ function init() {
                   </shadow>
               </value>
           </block>
-          <block type="controls_whileUntil"></block>
-          <block type="controls_flow_statements"></block>
-          <block type="controls_millis"></block>
-          <!--<block type="controls_mstimer2">
-              <value name="TIME">
-                  <shadow type="math_number">
-                      <field name="NUM">500</field>
+          <block type="controls_forEach">
+              <value name="LIST">
+                  <shadow type="LIST">         
                   </shadow>
               </value>
           </block>
-          <block type="controls_mstimer2_start"></block>
-          <block type="controls_mstimer2_stop"></block>-->
+          <block type="controls_whileUntil"></block>
+          <block type="controls_repeat_ext">
+              <value name="TIMES">
+                  <shadow type="math_number">
+                      <field name="NUM">10</field>
+                  </shadow>
+              </value>
+          </block>
+          <block type="controls_flow_statements"></block>
+          <block type="controls_millis"></block>
+          <block type="Panic_with_status_code">
+            <value name="STATUS_CODE">
+                  <shadow type="math_number">
+                      <field name="NUM">404</field>
+                  </shadow>
+              </value>
+          </block>
+          <block type="reset"></block>
+          <!-- <block type="raw_block"></block> -->
       </category>
       <category id="catMath" colour="230">
           <block type="math_number"></block>
@@ -540,6 +504,13 @@ function init() {
           </block>
           <block type="math_trig"></block>
           <block type="math_to_int"></block>
+          <block type="bin_to_number">
+              <value name="VAR">
+                  <shadow type="math_number">
+                      <field name="NUM">0</field>
+                  </shadow>
+              </value>
+          </block>
           <block type="math_max_min">
               <value name="A">
                   <shadow type="math_number">
@@ -552,7 +523,13 @@ function init() {
                   </shadow>
               </value>
           </block>
-          <!--<block type="math_random_seed"></block>-->
+          <block type="math_random_seed">
+              <value name="NUM">
+                  <shadow type="math_number">
+                      <field name="NUM">997</field>
+                  </shadow>
+              </value>
+          </block>
           <block type="math_random_int">
               <value name="FROM">
                   <shadow type="math_number">
@@ -565,8 +542,26 @@ function init() {
                   </shadow>
               </value>
           </block>
+          <block type="math_random_float">
+              <value name="FROM">
+                  <shadow type="math_number">
+                      <field name="NUM">1</field>
+                  </shadow>
+              </value>
+              <value name="TO">
+                  <shadow type="math_number">
+                      <field name="NUM">100</field>
+                  </shadow>
+              </value>
+          </block>
           <block type="math_random_boolean"></block>
+          <block type="math_random_random"></block>
           <block type="math_constrain">
+              <value name="VALUE">
+                  <shadow type="math_number">
+                      <field name="NUM">1000</field>
+                  </shadow>
+              </value>
               <value name="LOW">
                   <shadow type="math_number">
                       <field name="NUM">1</field>
@@ -579,6 +574,11 @@ function init() {
               </value>
           </block>
           <block type="base_map">
+              <value name="NUM">
+                  <shadow type="math_number">
+                      <field name="NUM">50</field>
+                  </shadow>
+              </value>
               <value name="fromLow">
                   <shadow type="math_number">
                       <field name="NUM">1</field>
@@ -605,9 +605,6 @@ function init() {
           <block type="text">
               <field name="TEXT">hello</field>
           </block>
-          <!--<block type="text_char">
-              <field name="TEXT">a</field>
-          </block>-->
           <block type="text_join">
               <value name="A">
                   <shadow type="text">
@@ -635,9 +632,9 @@ function init() {
               </value>
           </block>
           <block type="char_to_ascii">
-          	  <value name="VAR">
+              <value name="VAR">
                   <shadow type="text">
-		              <field name="TEXT">a</field>
+                  <field name="TEXT">a</field>
                   </shadow>
               </value>
           </block>
@@ -679,7 +676,7 @@ function init() {
                   </shadow>
               </value>
           </block>
-          <block type="text_compareTo">
+    <!--      <block type="text_compareTo">
               <value name="STR1">
                   <shadow type="text">
                       <field name="TEXT"></field>
@@ -690,7 +687,7 @@ function init() {
                       <field name="TEXT"></field>
                   </shadow>
               </value>
-          </block>
+          </block>   -->
           <block type="text_substring">
               <value name="VAR">
                   <shadow type="text">
@@ -709,10 +706,30 @@ function init() {
               </value>
           </block>
       </category>
-      <category id="catLists" colour="260">
+      <category id="catMicropyLists" colour="260">
+      <!--    <block type="lists_name"></block>-->
           <block type="lists_create_with2"></block>
           <block type="lists_create_with_text2"></block>
+          <block type="lists_repeat">
+              <value name="ITEM">
+                  <shadow type="math_number">
+                      <field name="NUM">1</field>
+                  </shadow>
+              </value>
+              <value name="NUM">
+                  <shadow type="math_number">
+                      <field name="NUM">5</field>
+                  </shadow>
+              </value>
+          </block>
           <block type="lists_length"></block>
+          <block type="lists_isEmpty"></block>
+          <block type="lists_get_random_item"></block>
+          <block type="list_trig">
+              <value name="data">
+                  <block type="lists_name"></block>
+              </value>
+          </block>
           <block type="lists_getIndex">
               <value name="AT">
                   <shadow type="math_number">
@@ -726,20 +743,37 @@ function init() {
                       <field name="NUM">1</field>
                   </shadow>
               </value>
+              <value name="TO">
+                  <shadow type="math_number">
+                      <field name="NUM">0</field>
+                  </shadow>
+              </value>
           </block>
-          <block type="lists_push"></block>
-          <block type="lists_get_remove_last"></block>
+          <block type="lists_append">
+              <value name="data">
+                  <shadow type="math_number">
+                      <field name="NUM">0</field>
+                  </shadow>
+              </value>
+          </block>
+          <block type="lists_extend">
+              <value name="data">
+                  <block type="lists_name2"></block>
+              </value>
+          </block>
           <block type="lists_insert_value">
               <value name="AT">
                   <shadow type="math_number">
                       <field name="NUM">1</field>
                   </shadow>
               </value>
+              <value name="TO">
+                  <shadow type="math_number">
+                      <field name="NUM">0</field>
+                  </shadow>
+              </value>
           </block>
-          <block type="lists_reverse"></block>
-          <!-- <block type="lists_get_remove_first"></block> -->
-          <!-- <block type="lists_insert_at_beginning"></block> -->
-          <block type="lists_find"></block>
+          <block type="lists_get_remove_last"></block>
           <block type="lists_remove_at">
               <value name="AT">
                   <shadow type="math_number">
@@ -747,7 +781,33 @@ function init() {
                   </shadow>
               </value>
           </block>
-
+          <block type="lists_find">
+              <value name="data">
+                  <shadow type="math_number">
+                      <field name="NUM">0</field>
+                  </shadow>
+              </value>
+          </block>
+          <block type="lists_sort"></block> 
+          <block type="lists_reverse"></block>
+      </category>
+          <category id="catDicts" colour="0">
+          <block type="dicts_create_with"></block>
+          <block type="dicts_keys"></block>
+          <block type="dicts_get"></block>
+          <block type="dicts_add_or_change">
+           <value name="data">
+                  <shadow type="math_number">
+                      <field name="NUM">0</field>
+                  </shadow>
+              </value>
+          </block>
+          <block type="dicts_delete"></block>
+          <block type="dicts_clear"></block>  
+          <block type="dicts_items"></block>
+          <block type="dicts_values"></block>
+          <block type="dicts_length"></block>
+          <block type="dicts_deldict"></block>
       </category>
       <category id="catLogic" colour="210">
           <block type="logic_compare"></block>
@@ -756,38 +816,16 @@ function init() {
           <block type="logic_boolean"></block>
           <block type="logic_null"></block>
           <block type="logic_true_or_false"></block>
+          <block type="logic_is_in"></block>
       </category>
       <category id="catSerialPort" colour="65">
-          <!--<block type="serial_begin">
-              <value name="CONTENT">
-                  <shadow type="math_number">
-                      <field name="NUM">9600</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="serial_write"></block>-->
           <block type="serial_begin"></block>
           <block type="serial_print"></block>
           <block type="serial_println"></block>
           <block type="serial_print_hex"></block>
-<!--           <block type="serial_receive_data_event">
-              <value name="char_marker">
-                  <shadow type="text">
-                      <field name="TEXT">;</field>
-                  </shadow>
-              </value>
-          </block> -->
+          <block type="serial_any"></block>
           <block type="serial_readstr"></block>
           <block type="serial_readline"></block>
-          <!-- <block type="serial_readstr_until">
-              <value name="CONTENT">
-                  <shadow type="text">
-                      <field name="TEXT">a</field>
-                  </shadow>
-              </value>
-          </block> -->
-          <!--<block type="serial_parseInt_Float"></block>
-          <block type="serial_flush"></block>-->
           <block type="serial_softserial">
               <value name="TX">
                   <shadow type="pins_serial"></shadow>
@@ -798,95 +836,10 @@ function init() {
           </block>
       </category>
       <category id="catGroup" colour="140">
-          <!--<block type="ble_service"></block>
-          <block type="ble_on_connected"></block>
-          <block type="ble_on_disconnected"></block>
-          <block type="ble_on_received">
-          	<value name="data">
-                  <shadow type="text">
-                      <field name="TEXT">;</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="ble_advertise_uid">
-              <value name="namespace">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-              <value name="instance">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-              <value name="power">
-                  <shadow type="math_number">
-                      <field name="NUM">7</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="ble_advertise_url">
-              <value name="url">
-                  <shadow type="text">
-                      <field name="TEXT">https://makecode.com</field>
-                  </shadow>
-              </value>
-              <value name="power">
-                  <shadow type="math_number">
-                      <field name="NUM">7</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="ble_stop_advertising"></block>
-          <block type="ble_uart_service"></block>
-          <block type="ble_write_number">
-              <value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="ble_write_string">
-              <value name="data">
-                  <shadow type="text">
-                      <field name="TEXT">microbit</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="ble_write_value">
-              <value name="name">
-                  <shadow type="text">
-                      <field name="TEXT">name</field>
-                  </shadow>
-              </value>
-              <value name="value">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="ble_read_until">
-              <value name="marker">
-                  <shadow type="text">
-                  	<field name="TEXT">a</field>
-                  </shadow>
-              </value>
-          </block>
-          
-          
-          <block type="ble_set_power">
-              <value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">7</field>
-                  </shadow>
-              </value>
-          </block>-->
           <block type="microbit_radio_on"></block>
           <block type="microbit_radio_off"></block>
           <block type="microbit_radio_config"></block>
           <block type="microbit_radio_reset"></block>
-          <!-- <block type="microbit_radio_send_string"><value name="message"><shadow type="text"><field name="TEXT">Some text</field></shadow></value></block> -->
-
           <block type="radio_send_string">
               <value name="data">
                   <shadow type="text">
@@ -895,68 +848,6 @@ function init() {
               </value>
           </block>
           <block type="microbit_radio_receive"></block>
-         <!--  <block type="radio_send_number">
-              <value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="radio_send_value">
-              <value name="name">
-                  <shadow type="text">
-                      <field name="TEXT">name</field>
-                  </shadow>
-              </value>
-              <value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-          </block>
-
-          <block type="radio_receive_number">
-              <value name="var">
-                  <block type="variables_get">
-                      <field name="VAR">receivedNumber</field>
-                  </block>
-              </value>
-          </block>
-          <block type="radio_receive_value">
-              <value name="name">
-                  <block type="variables_get">
-                      <field name="VAR">name</field>
-                  </block>
-              </value>
-              <value name="value">
-                  <block type="variables_get">
-                      <field name="VAR">value</field>
-                  </block>
-              </value>
-          </block>
-          <block type="radio_receive_string">
-              <value name="var">
-                  <block type="variables_get">
-                      <field name="VAR">receivedString</field>
-                  </block>
-              </value>
-          </block>
-          <block type="radio_set_group">
-              <value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">1</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="radio_send_transmit_power">
-              <value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">7</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="radio_set_transmit_serial_number"></block>
-          <block type="radio_write_received_packet_to_serial"></block> -->
           <block type="i2c_init">
               <value name="TX">
                   <shadow type="pins_serial"></shadow>
@@ -968,20 +859,8 @@ function init() {
                   <shadow type="math_number"><field name="NUM">100000</field></shadow>
               </value>
           </block>
-
           <block type="i2c_read">
-          	<value name="address">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value><value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-              </block>
-              <block type="i2c_write">
-          	<value name="address">
+              <value name="address">
                   <shadow type="math_number">
                       <field name="NUM">0</field>
                   </shadow>
@@ -992,112 +871,41 @@ function init() {
                   </shadow>
               </value>
           </block>
-           <block type="spi_init"></block>
+          <block type="i2c_write">
+              <value name="address">
+                  <shadow type="math_number">
+                      <field name="NUM">0</field>
+                  </shadow>
+              </value>
+              <value name="data">
+                  <shadow type="math_number">
+                      <field name="NUM">0</field>
+                  </shadow>
+              </value>
+          </block>
+          <block type="spi_init"></block>
           <block type="spi_write">
-          	<value name="data">
+              <value name="data">
                   <shadow type="math_number">
                       <field name="NUM">0</field>
                   </shadow>
               </value>
-              </block>
-             <!--  <block type="spi_frequency">
-          	<value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">1000000</field>
-                  </shadow>
-              </value>
-              </block>
-              <block type="spi_format">
-          	<value name="bits">
-                  <shadow type="math_number">
-                      <field name="NUM">8</field>
-                  </shadow>
-              </value>
-              <value name="mode">
-                  <shadow type="math_number">
-                      <field name="NUM">3</field>
-                  </shadow>
-              </value>
-              </block>
-              <block type="spi_set_pins">
-              	<value name="MOSI">
-                  <shadow type="pins_digital"></shadow>
-              </value>
-              <value name="MISO">
-                  <shadow type="pins_digital"></shadow>
-              </value>
-              <value name="SCK">
-                  <shadow type="pins_digital"></shadow>
-              </value>
-              </block> -->
-          <!--<block type="ir_recv">
-              <value name="PIN">
-                  <shadow type="pins_digital"></shadow>
-              </value>
-              <statement name="DO">
-                  <block type="serial_print_hex">
-                      <value name="CONTENT">
-                          <block type="variables_get">
-                              <field name="VAR">ir_item</field>
-                          </block>
-                      </value>
-                  </block>
-              </statement>
           </block>
-          <block type="ir_send_nec">
-              <value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">0x89ABCDEF</field>
-                  </shadow>
-              </value>
-              <value name="bits">
-                  <shadow type="math_number">
-                      <field name="NUM">32</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="ir_recv_enable">
-              <value name="PIN">
-                  <shadow type="pins_digital"></shadow>
-              </value>
-          </block>
-          <block type="ir_recv_raw">
-              <value name="PIN">
-                  <shadow type="pins_digital"></shadow>
-              </value>
-          </block>
-          <block type="ir_send_raw">
-              <value name="length">
-                  <shadow type="math_number">
-                      <field name="NUM">3</field>
-                  </shadow>
-              </value>
-              <value name="freq">
-                  <shadow type="math_number">
-                      <field name="NUM">38</field>
-                  </shadow>
-              </value>
-          </block>-->
       </category>
       <category id="catSensor" colour="40">
-
           <block type="controls_attachGestureInterrupt"></block>
           <block type="controls_attachGestureInterrupt2"></block>
           <block type="sensor_get_acceleration"></block>
-          <!-- <block type="sensor_set_acceleration"></block> -->
           <block type="sensor_get_gestures"></block>
           <block type="sensor_current_gesture"></block>
-          <!-- <block type="sensor_light_level"></block> -->
           <block type="sensor_calibrate_compass"></block>
           <block type="sensor_is_compass_calibrated"></block>
           <block type="sensor_compass_heading"></block>
           <block type="sensor_field_strength"></block>
           <block type="sensor_temperature"></block>
-          <!-- <block type="sensor_rotation"></block> -->
-          <!-- <block type="sensor_magnetic"></block> -->
       </category>
       <category id="catActuator" colour="100">
-<!--           <block type="servo_move">
+           <block type="servo_move">
               <value name="PIN">
                   <shadow type="pins_pwm"></shadow>
               </value>
@@ -1106,89 +914,144 @@ function init() {
                       <field name="NUM">100</field>
                   </shadow>
               </value>
+              <value name="DELAY_TIME">
+                  <shadow type="math_number">
+                      <field name="NUM">100</field>
+                  </shadow>
+              </value>
           </block>
-          <block type="servo_pulse">
+          <block type="microbit_music_pitch">
               <value name="PIN">
                   <shadow type="pins_pwm"></shadow>
               </value>
-              <value name="DEGREE">
+              <value name="pitch">
+                    <shadow type="pins_tone_notes"></shadow>
+              </value>
+              <value name="duration">
+                    <shadow type="math_number">
+                        <field name="NUM">500</field>
+                    </shadow>
+              </value>
+          </block>
+          <block type="microbit_music_play_built_in">
+              <value name="PIN">
+                  <shadow type="pins_pwm"></shadow>
+              </value>
+          </block>
+          <block type="microbit_music_play_list_of_notes">
+              <value name="PIN">
+                  <shadow type="pins_pwm"></shadow>
+              </value>
+          </block>
+          <block type="microbit_music_stop">
+              <value name="PIN">
+                  <shadow type="pins_pwm"></shadow>
+              </value>
+          </block>
+          <block type="microbit_music_reset"></block>
+          <block type="microbit_music_get_tempo"></block>
+          <block type="tone_set_tempo">
+              <value name="TICKS">
                   <shadow type="math_number">
-                      <field name="NUM">1000</field>
+                      <field name="NUM">4</field>
                   </shadow>
               </value>
-            </block> -->
-
-            <block type="microbit_music_play_built_in"></block>
-
-
-            <block type="microbit_music_pitch"></block>
-            <block type="microbit_music_play_list_of_notes"></block>
-            <block type="microbit_music_reset"></block>
-            <block type="microbit_music_stop"></block>
-            <block type="microbit_music_get_tempo"></block>
-            <block type="tone_set_tempo">
-              <value name="DEGREE">
-                <shadow type="math_number">
-                  <field name="NUM">120</field>
-                </shadow>
+              <value name="BPM">
+                  <shadow type="math_number">
+                      <field name="NUM">120</field>
+                  </shadow>
               </value>
-            </block>
-            <block type="speech_say">
+          </block>
+          <block type="speech_translate">
               <value name="VAR">
                   <shadow type="text">
-                      <field name="TEXT">Mixly is great!</field>
+                      <field name="TEXT">Mixly</field>
                   </shadow>
               </value>
-            </block>
-            <block type="speech_sing">
+          </block>
+          <block type="speech_say">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly 0.997 is great!</field>
+                  </shadow>
+              </value>
+              <value name="pitch">
+                  <shadow type="math_number">
+                      <field name="NUM">64</field>
+                  </shadow>
+              </value>
+              <value name="speed">
+                  <shadow type="math_number">
+                      <field name="NUM">72</field>
+                  </shadow>
+              </value>
+              <value name="mouth">
+                  <shadow type="math_number">
+                      <field name="NUM">128</field>
+                  </shadow>
+              </value>
+              <value name="throat">
+                  <shadow type="math_number">
+                      <field name="NUM">128</field>
+                  </shadow>
+              </value>
+          </block>
+          <block type="speech_sing">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">#115DOWWWW</field>
                   </shadow>
               </value>
-            </block>            
-            <block type="speech_prenounce">
+              <value name="pitch">
+                  <shadow type="math_number">
+                      <field name="NUM">64</field>
+                  </shadow>
+              </value>
+              <value name="speed">
+                  <shadow type="math_number">
+                      <field name="NUM">72</field>
+                  </shadow>
+              </value>
+              <value name="mouth">
+                  <shadow type="math_number">
+                      <field name="NUM">128</field>
+                  </shadow>
+              </value>
+              <value name="throat">
+                  <shadow type="math_number">
+                      <field name="NUM">128</field>
+                  </shadow>
+              </value>
+          </block> 
+          <block type="speech_prenounce">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">/HEH5EH4EH3EH2EH2EH3EH4EH5EHLP.</field>
                   </shadow>
               </value>
-            </block>
-
-          </category>
-          <category id="catMonitor" colour="180">
-            <!-- <block type="microbit_display_get_pixel"><value name="x"><shadow type="math_number"><field name="NUM">0</field></shadow></value><value name="y"><shadow type="math_number"><field name="NUM">0</field></shadow></value></block>
-            <block type="microbit_display_set_pixel"><value name="x"><shadow type="math_number"><field name="NUM">0</field></shadow></value><value name="y"><shadow type="math_number"><field name="NUM">0</field></shadow></value><value name="value"><shadow type="math_number"><field name="NUM">9</field></shadow></value></block>
-          -->  <block type="microbit_display_clear"></block>
-          <block type="monitor_get_pixel">
-            <value name="x">
-              <shadow type="math_number">
-                <field name="NUM">0</field>
-              </shadow>
-            </value>
-            <value name="y">
-              <shadow type="math_number">
-                <field name="NUM">0</field>
-              </shadow>
-            </value>
+              <value name="pitch">
+                  <shadow type="math_number">
+                      <field name="NUM">64</field>
+                  </shadow>
+              </value>
+              <value name="speed">
+                  <shadow type="math_number">
+                      <field name="NUM">72</field>
+                  </shadow>
+              </value>
+              <value name="mouth">
+                  <shadow type="math_number">
+                      <field name="NUM">128</field>
+                  </shadow>
+              </value>
+              <value name="throat">
+                  <shadow type="math_number">
+                      <field name="NUM">128</field>
+                  </shadow>
+              </value>
           </block>
-          <block type="monitor_bright_point">
-            <value name="x">
-              <shadow type="math_number">
-                <field name="NUM">0</field>
-              </shadow>
-            </value>
-            <value name="y">
-              <shadow type="math_number">
-                <field name="NUM">0</field>
-              </shadow>
-            </value>
-            <value name="brightness">
-              <shadow type="math_number">
-                <field name="NUM">9</field>
-              </shadow>
-            </value>
-          </block>
+      </category>
+      <category id="catMonitor" colour="180">
           <block type="monitor_show_string">
             <value name="data">
               <shadow type="text">
@@ -1203,119 +1066,120 @@ function init() {
               </shadow>
             </value>
           </block>
-          <block type="microbit_display_show_image"></block>
-          <block type="microbit_display_show_animation"></block>
+          <block type="microbit_display_show_image">
+            <value name="PIN">
+              <shadow type="pins_builtinimg"></shadow>
+            </value>
+          </block>
+          <block type="microbit_display_show_animation">
+            <value name="images">
+              <shadow type="pins_imglist"></shadow>
+            </value>
+            <value name="delay">
+                <shadow type="math_number">
+                  <field name="NUM">120</field>
+                </shadow>
+            </value>
+          </block>
+          <block type="microbit_image_create"></block>
+          <block type="image_shift">
+            <value name="val">
+              <shadow type="math_number">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="img">
+              <shadow type="pins_builtinimg"></shadow>
+            </value>
+          </block>
+          <block type="microbit_image_copy">
+            <value name="image">
+              <shadow type="pins_builtinimg"></shadow>
+            </value>
+          </block>
+          <block type="microbit_image_invert">
+            <value name="image">
+              <shadow type="pins_builtinimg"></shadow>
+            </value>
+          </block>
+          <block type="monitor_get_pixel">
+            <value name="x">
+              <shadow type="pins_axis"></shadow>
+            </value>
+            <value name="y">
+              <shadow type="pins_axis"></shadow>
+            </value>
+          </block>
+          <block type="monitor_bright_point">
+            <value name="x">
+              <shadow type="pins_axis"></shadow>
+            </value>
+            <value name="y">
+              <shadow type="pins_axis"></shadow>
+            </value>
+            <value name="brightness">
+              <shadow type="pins_brightness"></shadow>
+            </value>
+          </block>
+          <block type="microbit_image_builtins"></block>
+          <block type="image_arithmetic">
+            <value name="A">
+              <shadow type="pins_builtinimg"></shadow>
+            </value>>
+            <value name="B">
+              <shadow type="pins_builtinimg"></shadow>
+            </value>
+          </block>
           <block type="microbit_display_on"></block>
           <block type="microbit_display_off"></block>
           <block type="microbit_display_is_on"></block>
-          <block type="microbit_image_builtins"></block>
-          <block type="microbit_image_copy"></block>
-          <block type="microbit_image_invert"></block>
-          <block type="microbit_image_create"></block>
-<!--           <block type="monitor_show_number">
-              <value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-            </block>-->
-
-          <!-- <block type="monitor_show_leds"></block>
-          <block type="monitor_show_arrow">
+          <block type="microbit_display_clear"></block>
+          <block type="display_rgb_init">
+            <value name="PIN">
+              <shadow type="pins_digital" />
+            </value>
+            <value name="LEDCOUNT">
+              <shadow type="math_number">
+                <field name="NUM">4</field>
+              </shadow>
+            </value>
           </block>
-          <block type="monitor_clear_screen"></block>
-          <block type="monitor_plot_point">
-              <value name="x">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-              <value name="y">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
+          <block type="display_rgb">
+            <value name="PIN">
+              <shadow type="pins_digital" />
+            </value>
+            <value name="_LED_">
+              <shadow type="math_number">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="RVALUE">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="GVALUE">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="BVALUE">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
           </block>
-          <block type="monitor_unplot_point">
-              <value name="x">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-              <value name="y">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="monitor_toggle_point">
-              <value name="x">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-              <value name="y">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-            </block>-->
-           <!--<block type="monitor_plot_bar">
-              <value name="start">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-              <value name="end">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-            </block>-->
-          <!--<block type="monitor_get_brightness"></block>
-          <block type="monitor_set_brightness">
-              <value name="brightness">
-                  <shadow type="math_number">
-                      <field name="NUM">255</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="monitor_stop_animation"></block>
-          <block type="monitor_led_enable"></block>
-          <block type="monitor_show_image_with_offset">
-              <value name="var">
-                  <block type="variables_get">
-                      <field name="VAR">item</field>
-                  </block>
-              </value>
-              <value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="monitor_create_image"></block>
-          <block type="monitor_scroll_image">
-              <value name="var">
-                  <block type="variables_get">
-                      <field name="VAR">item</field>
-                  </block>
-              </value>
-              <value name="offset">
-                  <shadow type="math_number">
-                      <field name="NUM">1</field>
-                  </shadow>
-              </value>
-              <value name="interval">
-                  <shadow type="math_number">
-                      <field name="NUM">200</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="monitor_create_big_image"></block>
-          <block type="monitor_arrow_image"></block> -->
-
-        </category>
+<!--           <block type="display_rgb2">
+            <value name="PIN">
+              <shadow type="pins_digital" />
+            </value>
+            <value name="_LED_">
+              <shadow type="math_number">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+          </block> -->
+      </category>
       <sep></sep>
       <category id="catVar" colour="330" custom="VARIABLE">
       </category>
@@ -1344,6 +1208,26 @@ function init() {
       window.attachEvent('onload', createIframe);
     }
   })(window, document);
+
+  </script>
+  <script>
+      ace.require("ace/ext/language_tools");
+      var editor = ace.edit("content_arduino");
+      editor.setTheme("ace/theme/xcode");
+      editor.getSession().setMode("ace/mode/python");
+      editor.setFontSize(17);
+      editor.setShowPrintMargin(false);
+      editor.setOptions({
+          enableBasicAutocompletion: true,
+          enableSnippets: true,
+          enableLiveAutocompletion: true
+      });
+      var editor_side_code = ace.edit("side_code");
+      editor_side_code.setTheme("ace/theme/xcode");
+      editor_side_code.getSession().setMode("ace/mode/python");
+      editor_side_code.setFontSize(17);
+      editor_side_code.setShowPrintMargin(false);
+      editor_side_code.setReadOnly(true);
   </script>
     <div id="firmware" style="display: none;">:020000040000FA
 :1000000000400020ED530100295401002B54010051

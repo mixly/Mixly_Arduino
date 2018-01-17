@@ -94,25 +94,33 @@ Blockly.Blocks.inout_analog_write = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_PY);
   }
 };
 
+
+
 Blockly.Blocks.inout_analog_write_set = {
-    init: function() {
+    init: function(){
         this.setColour(20);
         this.appendValueInput("PIN", Number)
             .appendField(Blockly.MIXLY_ANALOGWRITE_PIN)
             .setCheck(Number);
+        this.appendDummyInput()
+     //      .appendField(Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL)
+     //       .appendField(new Blockly.FieldDropdown([
+     //           ["微秒", "microseconds"],
+     //           ["毫秒", "milliseconds"]
+     //       ]), "key");
         this.appendValueInput("NUM", Number)
-            .appendField(Blockly.MIXLY_MICROBIT_JS_PERIOD)
+            .appendField(Blockly.MIXLY_STAT)
             .setCheck(Number);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE);
     }
 };
+
 
 Blockly.Blocks.inout_analog_read = {
   init: function() {

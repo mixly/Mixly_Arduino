@@ -6,7 +6,7 @@ goog.require('Blockly.Python');
 
 Blockly.Python.base_setup = function () {
     var branch = Blockly.Python.statementToCode(this, 'DO');
-    branch = branch.replace(/(^\s*)|(\s*$)/g, "").replace(/\n  /g, '\n');//去除两端空格
+    branch = branch.replace(/(^\s*)|(\s*$)/g, "").replace(/\n    /g, '\n');//去除两端空格
     if (branch) {
         Blockly.Python.setups_['setup_setup'] = branch;
     }
@@ -20,7 +20,7 @@ Blockly.Python.controls_if = function (a) {
     d,
     e;
     do
-        e = Blockly.Python.valueToCode(a, "IF" + b, Blockly.Python.ORDER_NONE) || "false", d = Blockly.Python.statementToCode(a, "DO" + b) || Blockly.Python.PASS, c += (0 == b ? "if " : "elif ") + e + ":\n" + d, ++b;
+        e = Blockly.Python.valueToCode(a, "IF" + b, Blockly.Python.ORDER_NONE) || "False", d = Blockly.Python.statementToCode(a, "DO" + b) || Blockly.Python.PASS, c += (0 == b ? "if " : "elif ") + e + ":\n" + d, ++b;
     while (a.getInput("IF" + b));
     a.getInput("ELSE") && (d = Blockly.Python.statementToCode(a, "ELSE") || Blockly.Python.PASS, c += "else:\n" + d);
     return c
@@ -74,10 +74,10 @@ Blockly.Python.controls_for = function (a) {
             if (Blockly.isNumber(a))
                 a = parseFloat(a);
             else if (a.match(/^\w+$/))
-                a = "float(" + a + ")";
+                a = a;
             else {
                 var d = Blockly.Python.variableDB_.getDistinctName(b + c, Blockly.Variables.NAME_TYPE);
-                g += d + " = float(" + a + ")\n";
+                g += d + " = " + a + "\n";
                 a = d
             }
             return a
@@ -130,6 +130,12 @@ Blockly.Python.base_delay = function () {
     return code;
 };
 //ok
+Blockly.Python.Panic_with_status_code = function () {
+    var status_code = Blockly.Python.valueToCode(this, 'STATUS_CODE', Blockly.Python.ORDER_ATOMIC) || '1000'
+    var code = 'panic(' + status_code + ')\n';
+    return code;
+};
+//ok
 Blockly.Python.controls_millis = function () {
     var code = 'running_time()';
     return [code, Blockly.Python.ORDER_ATOMIC];
@@ -156,7 +162,12 @@ Blockly.Python.controls_mstimer2_stop = function () {
 };
 //ok
 Blockly.Python.controls_end_program = function () {
-    return 'while True:\n  pass\n';
+    return 'while True:\n    pass';
+};
+//ok
+Blockly.Python.reset = function () {
+    Blockly.Python.definitions_['import_microbit'] = 'from microbit import *'
+    return 'reset()\n';
 };
 Blockly.Python.controls_interrupts = function () {
     return 'interrupts();\n';
@@ -164,4 +175,25 @@ Blockly.Python.controls_interrupts = function () {
 
 Blockly.Python.controls_nointerrupts = function () {
     return 'noInterrupts();\n';
+};
+
+
+Blockly.Python['controls_forEach'] = function(block) {
+  // For each loop.
+  var variable0 = Blockly.Python.variableDB_.getName(
+      block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+  var argument0 = Blockly.Python.valueToCode(block, 'LIST',
+      Blockly.Python.ORDER_RELATIONAL) || '[]';
+  var branch = Blockly.Python.statementToCode(block, 'DO');
+  branch = Blockly.Python.addLoopTrap(branch, block.id) ||
+      Blockly.Python.PASS;
+  var code = 'for ' + variable0 + ' in ' + argument0 + ':\n' + branch;
+  return code;
+};
+
+//ok
+Blockly.Python.base_type = function () {
+    var data = Blockly.Python.valueToCode(this, 'DATA', Blockly.Python.ORDER_ATOMIC) || '1000'
+    var code = 'type(' + data + ')';
+    return [code,, Blockly.Python.ORDER_ATOMIC];
 };
