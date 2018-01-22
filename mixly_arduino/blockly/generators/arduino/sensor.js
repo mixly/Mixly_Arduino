@@ -86,7 +86,7 @@ Blockly.Arduino.dht11 = function () {
     Blockly.Arduino.definitions_[funcName] = code;
     return [funcName + '()', Blockly.Arduino.ORDER_ATOMIC];
 }
-//LM35温度传感器
+//LM35 Temperature
 Blockly.Arduino.LM35 = function() {
   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
   var code = 'analogRead(' + dropdown_pin + ')*0.488';

@@ -1,0 +1,67 @@
+[
+  {
+    "Sourcefile": "",
+    "Include": "",
+    "Includepath": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\arduino-1.8.5\\hardware\\arduino\\avr\\cores\\arduino"
+  },
+  {
+    "Sourcefile": "",
+    "Include": "",
+    "Includepath": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\arduino-1.8.5\\hardware\\arduino\\avr\\variants\\standard"
+  },
+  {
+    "Sourcefile": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\mixlyBuild\\sketch\\testArduino.ino.cpp",
+    "Include": "Mixly.h",
+    "Includepath": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\arduino-1.8.5\\hardware\\arduino\\avr\\libraries\\Mixly"
+  },
+  {
+    "Sourcefile": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\mixlyBuild\\sketch\\testArduino.ino.cpp",
+    "Include": "Wire.h",
+    "Includepath": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\arduino-1.8.5\\hardware\\arduino\\avr\\libraries\\Wire\\src"
+  },
+  {
+    "Sourcefile": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\mixlyBuild\\sketch\\testArduino.ino.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\arduino-1.8.5\\hardware\\arduino\\avr\\libraries\\Mixly\\Adafruit_GFX.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\arduino-1.8.5\\hardware\\arduino\\avr\\libraries\\Mixly\\Adafruit_LEDBackpack.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\arduino-1.8.5\\hardware\\arduino\\avr\\libraries\\Mixly\\Adafruit_NeoPixel.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\arduino-1.8.5\\hardware\\arduino\\avr\\libraries\\Mixly\\Matrix.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\arduino-1.8.5\\hardware\\arduino\\avr\\libraries\\Mixly\\RTC.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\arduino-1.8.5\\hardware\\arduino\\avr\\libraries\\Mixly\\glcdfont.c",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\arduino-1.8.5\\hardware\\arduino\\avr\\libraries\\Wire\\src\\Wire.cpp",
+    "Include": "",
+    "Includepath": ""
+  },
+  {
+    "Sourcefile": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\arduino-1.8.5\\hardware\\arduino\\avr\\libraries\\Wire\\src\\utility\\twi.c",
+    "Include": "",
+    "Includepath": ""
+  }
+]

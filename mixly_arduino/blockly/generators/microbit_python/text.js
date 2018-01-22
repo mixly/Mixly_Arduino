@@ -76,5 +76,5 @@ Blockly.Python.text_substring = function() {
     var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
     var start = Blockly.Python.valueToCode(this, 'START', Blockly.Python.ORDER_ATOMIC) || '0';
     var end = Blockly.Python.valueToCode(this, 'END', Blockly.Python.ORDER_ATOMIC) || '1';
-    return ['str(' +str+')'+'[slice(('+start+'-1), ' + end + ')]', Blockly.Python.ORDER_ATOMIC];
+    return ['str(' +str+')'+'[('+start+'-1): ' + end + ']', Blockly.Python.ORDER_ATOMIC];
 };

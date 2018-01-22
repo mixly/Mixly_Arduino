@@ -1,0 +1,7 @@
+built
+node_modules
+yotta_modules
+yotta_targets
+pxt_modules
+*.db
+*.tgz

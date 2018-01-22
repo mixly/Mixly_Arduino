@@ -1,0 +1,10 @@
+{
+  "builtInLibrariesFolders": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\arduino-1.8.5\\libraries",
+  "customBuildProperties": "build.path=mixlyBuild,build.warn_data_percentage=75,runtime.tools.avrdude.path=D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\.\\arduino-1.8.5\\hardware\\tools\\avr,runtime.tools.avr-gcc.path=D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\.\\arduino-1.8.5\\hardware\\tools\\avr,runtime.tools.arduinoOTA.path=D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\.\\arduino-1.8.5\\hardware\\tools\\avr",
+  "fqbn": "arduino:avr:uno",
+  "hardwareFolders": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\arduino-1.8.5\\hardware,C:\\Users\\fredqian\\AppData\\Local\\Arduino15\\packages",
+  "otherLibrariesFolders": "C:\\Users\\fredqian\\Documents\\Arduino\\libraries",
+  "runtime.ide.version": "10806",
+  "sketchLocation": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\testArduino\\testArduino.ino",
+  "toolsFolders": "D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\.\\arduino-1.8.5\\tools-builder,D:\\Mixly_Arduino\\new\\Mixly0.997_WIN\\.\\arduino-1.8.5\\hardware\\tools\\avr,C:\\Users\\fredqian\\AppData\\Local\\Arduino15\\packages"
+}

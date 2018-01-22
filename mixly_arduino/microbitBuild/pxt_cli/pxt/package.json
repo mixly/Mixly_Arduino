@@ -1,0 +1,35 @@
+{
+  "name": "pxt",
+  "version": "0.3.0",
+  "description": "Programming Experience Toolkit - command line interface",
+  "keywords": [
+    "TypeScript",
+    "JavaScript",
+    "education",
+    "microbit"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Microsoft/pxt.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "homepage": "https://github.com/Microsoft/pxt#readme",
+  "files": [
+    "README.md",
+    "cli.js",
+    "pxt"
+  ],
+  "preferGlobal": true,
+  "bin": {
+    "pxt": "./pxt"
+  },
+  "engines": {
+    "node": ">= 4.4.5"
+  },
+  "dependencies": {},
+  "readme": "# Programming Experience Toolkit CLI\n\nThis package provides `pxt` command line tool.\n\nFollow instructions at https://www.pxt.io/cli\n\n## License\n\nMIT\n",
+  "readmeFilename": "README.md",
+  "_id": "pxt@0.3.0",
+  "_from": "pxt@"
+}

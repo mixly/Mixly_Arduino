@@ -1,0 +1,18 @@
+{
+    "name": "mixly",
+    "version": "0.0.0",
+    "description": "microbit for mixly",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*",
+        "radio": "*"
+    },
+    "files": [
+        "README.md",
+        "main.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": false
+}

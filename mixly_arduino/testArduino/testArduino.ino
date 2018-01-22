@@ -1,9 +1,6 @@
-void setup()
-{
+from microbit import *
 
-}
 
-void loop()
-{
-
-}
+while True:
+    uart.write(str(str('hello')[(1-1): 4]))
+    sleep(1000)

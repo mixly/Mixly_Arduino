@@ -112,7 +112,8 @@ Blockly.Python.speech_prenounce=function(){
 };
 
 Blockly.Python.servo_move = function() {
-  Blockly.Python.definitions_['import_microbit'] = 'from microbit import *\n'+
+  Blockly.Python.definitions_['import_microbit'] = 'from microbit import *\n'
+  Blockly.Python.definitions_['import_servo'] =
       "class Servo:\n"+'  def __init__(self, pin, freq=50, min_us=600, max_us=2400, angle=180):\n'+
       '    self.min_us = min_us\n'+'    self.max_us = max_us\n'+'    self.us = 0\n'+'    self.freq = freq\n'+
       '    self.angle = angle\n'+'    self.analog_period = 0\n'+'    self.pin = pin\n'+
