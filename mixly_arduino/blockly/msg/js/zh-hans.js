@@ -740,7 +740,7 @@ var MSG = {
   catLuxe:"泺喜机器人",
   tab_blocks: "模块",
   tab_arduino: "代码",
-  copyright:"Copyright © 北师大教育学部创客教育实验室  maker.bnu.edu.cn",
+  copyright:"Copyright © 北京师范大学米思齐团队				HTTP://MIXLY.ORG",
   viewNormal:"普通视图",
   viewAdvanced:"高级视图",
   catGame:"游戏",
