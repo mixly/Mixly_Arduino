@@ -73,7 +73,6 @@ td.taboff:hover {
 #side_code {
     padding:5px;
     border:0;
-    background-color:#eee;
     height:100%;width:100%;
     resize:none;
 }
@@ -361,4 +360,15 @@ text.blocklyCheckbox {
 	fill: #ff3030!important;
 	text-shadow: 0 0 3px red;
 	font-size: 17pt!important;
+}
+span#span_blocks, span#span_arduino, select#languageMenu {
+    font-family: 'Microsoft Yahei Light';
+}
+
+span.blocklyTreeLabel {
+    font-family: 'Microsoft Yahei Light';
+}
+
+text.blocklyText {
+    font-family: 'Microsoft Yahei Light';
 }

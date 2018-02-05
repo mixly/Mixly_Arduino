@@ -73,7 +73,6 @@ td.taboff:hover {
 #side_code {
     padding:5px;
     border:0;
-    background-color:#eee;
     height:100%;width:100%;
     resize:none;
 }
@@ -356,4 +355,15 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 #\:h>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
 	background:url('../../media/mark/factory2.png') no-repeat;
 	background-size: 100% auto; 
+}
+span#span_blocks, span#span_arduino, select#languageMenu {
+    font-family: 'Microsoft Yahei Light';
+}
+
+span.blocklyTreeLabel {
+    font-family: 'Microsoft Yahei Light';
+}
+
+text.blocklyText {
+    font-family: 'Microsoft Yahei Light';
 }

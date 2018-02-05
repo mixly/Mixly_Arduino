@@ -290,3 +290,22 @@ Blockly.Blocks.factory_block_return = {
     this.setOutput(true);
   }
 };
+
+Blockly.Blocks.factory_block_with_textarea = {
+  init: function() {
+    this.setColour(Blockly.Blocks.factory.HUE);
+	this.appendDummyInput("")
+		.appendField(new Blockly.FieldTextArea('Serial.println("Hello");\nSerial.println("Mixly");'), 'VALUE');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Blocks.factory_block_return_with_textarea = {
+  init: function() {
+    this.setColour(Blockly.Blocks.factory.HUE);
+	this.appendDummyInput("")
+		.appendField(new Blockly.FieldTextArea('Hello\nMixly'), 'VALUE');
+    this.setOutput(true);
+  }
+};

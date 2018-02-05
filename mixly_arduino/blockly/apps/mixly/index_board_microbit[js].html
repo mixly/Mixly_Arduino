@@ -20,6 +20,8 @@
   <script type="text/javascript" src="blockly_helper.js"></script>
   <!------------------------------------->
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+  <script src="js/lib/ace/ace.js" type="application/javascript"></script>
+  <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
   <script type="text/javascript" src="microbit[js]/myblock.js"></script>
 
   <script type="text/javascript" src="../../blocks/microbit_js/variables.js"></script>
@@ -58,10 +60,6 @@
     <script src="../../generators/microbit_js/game.js"></script>
     <script src="../../generators/microbit_js/system.js"></script>
     <script src="../../generators/microbit_js/procedures.js"></script>
-    
-
-
-
   <link rel="stylesheet" type="text/css" href="color_microbit_js.css" />
   <script>
 var sidecodeDisplay=false;
@@ -167,9 +165,10 @@ function renderContent() {
     // If the workspace was changed by the XML tab, Firefox will have performed
     // an incomplete rendering due to Blockly being invisible.  Rerender.
       Blockly.mainWorkspace.render();
-      var arduinoTextarea = document.getElementById('side_code');
-      var code = Blockly.JavaScript.workspaceToCode(Blockly.mainWorkspace) || '';
-      arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+      //var arduinoTextarea = document.getElementById('side_code');
+      //var code = Blockly.JavaScript.workspaceToCode(Blockly.mainWorkspace) || '';
+      //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+      editor_side_code.setValue(Blockly.JavaScript.workspaceToCode(Blockly.mainWorkspace), -1);
      } else if (content.id == 'content_xml') {
     var xmlTextarea = document.getElementById('content_xml');
     var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
@@ -178,9 +177,10 @@ function renderContent() {
     xmlTextarea.focus();
   } else if (content.id == 'content_arduino') {
     //content.innerHTML = Blockly.JavaScript.workspaceToCode(Blockly.mainWorkspace);
-    var arduinoTextarea = document.getElementById('content_arduino');
-    arduinoTextarea.value = Blockly.JavaScript.workspaceToCode(Blockly.mainWorkspace);
-    arduinoTextarea.focus();
+    //var arduinoTextarea = document.getElementById('content_arduino');
+    //arduinoTextarea.value = Blockly.JavaScript.workspaceToCode(Blockly.mainWorkspace);
+    //arduinoTextarea.focus();
+    editor.setValue(Blockly.JavaScript.workspaceToCode(Blockly.mainWorkspace), -1);
   }
 }
 
@@ -261,9 +261,10 @@ function init() {
 		return;  // Don't update UI events.
 	  }
 	  //更新
-	  var arduinoTextarea = document.getElementById('side_code');
-	  var code = Blockly.JavaScript.workspaceToCode(Blockly.mainWorkspace) || '';
-	  arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+	  //var arduinoTextarea = document.getElementById('side_code');
+	  //var code = Blockly.JavaScript.workspaceToCode(Blockly.mainWorkspace) || '';
+	  //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+      editor_side_code.setValue(Blockly.JavaScript.workspaceToCode(Blockly.mainWorkspace), -1);
 	}
 	
   auto_save_and_restore_blocks();
@@ -323,12 +324,14 @@ function init() {
     <tr>
       <td height="100%" width="75%" id="content_area"></td>
 	  <td style="display:none;height:100%;width:0.3%;background: #ddd;cursor: w-resize;" id="mid_td"></td>
-	  <td width="25%" style="background-color:#eee;display:none;" id="side_code_parent"><textarea id="side_code" wrap="off" readonly></textarea></td>
+	  <td width="25%" style="background-color:#eee;display:none;" id="side_code_parent">
+          <div id="side_code" wrap="off" readonly></div>
+      </td>
 	  <div id="sidebar" class="right-top" onclick="sidecodeClick()"></div>
     </tr>
   </table>
   <div id="content_blocks" class="content"></div>
-  <textarea id="content_arduino" class="content" wrap="off" ></textarea>
+  <div id="content_arduino" class="content" wrap="off" ></div>
   <textarea id="content_xml" class="content" wrap="off" readonly></textarea>
   <xml id="toolbox" style="display: none">
       <category name="" id="catInOut" colour="20">
@@ -1413,20 +1416,22 @@ function init() {
 	}
     </script>
   <script>
-  /*(function(window, document) {
-    function createIframe() {
-      var i = document.createElement("iframe");
-      i.src = 'http://mixly.org/assets/app2.html';
-      i.width = '0';
-      i.height = '0';
-      document.body.appendChild(i);
-    }
-    if (window.addEventListener) {
-      window.addEventListener('load', createIframe, false);
-    } else if (window.attachEvent) {
-      window.attachEvent('onload', createIframe);
-    }
-  })(window, document);
-  */</script>
+    var editor = ace.edit("content_arduino");
+    editor.setTheme("ace/theme/xcode");
+    editor.getSession().setMode("ace/mode/typescript");
+    editor.setFontSize(17);
+    editor.setShowPrintMargin(false);
+    editor.setOptions({
+      enableBasicAutocompletion: true,
+      enableSnippets: true,
+      enableLiveAutocompletion: true
+    });
+    var editor_side_code = ace.edit("side_code");
+    editor_side_code.setTheme("ace/theme/xcode");
+    editor_side_code.getSession().setMode("ace/mode/typescript");
+    editor_side_code.setFontSize(17);
+    editor_side_code.setShowPrintMargin(false);
+    editor_side_code.setReadOnly(true);
+  </script>
 </body>
 </html>
