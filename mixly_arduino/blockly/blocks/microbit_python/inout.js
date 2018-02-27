@@ -107,11 +107,11 @@ Blockly.Blocks.inout_analog_write_set = {
             .appendField(Blockly.MIXLY_ANALOGWRITE_PIN)
             .setCheck(Number);
         this.appendDummyInput()
-     //      .appendField(Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL)
-     //       .appendField(new Blockly.FieldDropdown([
-     //           ["微秒", "microseconds"],
-     //           ["毫秒", "milliseconds"]
-     //       ]), "key");
+           .appendField(Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL)
+            .appendField(new Blockly.FieldDropdown([
+                ["毫秒", "period"],
+                ["微秒", "period_microseconds"]
+            ]), "key");
         this.appendValueInput("NUM", Number)
             .appendField(Blockly.MIXLY_STAT)
             .setCheck(Number);

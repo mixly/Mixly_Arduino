@@ -65,9 +65,9 @@ Blockly.Python.inout_analog_write_set = function () {
     Blockly.Python.definitions_['import_microbit'] = 'from microbit import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var value_num = Blockly.Python.valueToCode(this, 'NUM', Blockly.Python.ORDER_ATOMIC);
-   // var key = this.getFieldValue('key');
-   // var code = 'pin' + dropdown_pin  + '.set_analog_period_'+ key +'(' + value_num + ')\n';
-    var code = 'pin' + dropdown_pin  + '.set_analog_period(' + value_num + ')\n';
+    var key = this.getFieldValue('key');
+    var code = 'pin' + dropdown_pin  + '.set_analog_'+ key +'(' + value_num + ')\n';
+    //var code = 'pin' + dropdown_pin  + '.set_analog_period(' + value_num + ')\n';
     return code;
 };
 
