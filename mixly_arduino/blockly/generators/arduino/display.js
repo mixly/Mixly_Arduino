@@ -265,17 +265,9 @@ Blockly.Arduino.display_TM1637_displayString = function () {
 };
 
 Blockly.Arduino.display_TM1637_displayTime = function () {
-    var value = Blockly.Arduino.valueToCode(this, 'VALUE', Blockly.Arduino.ORDER_ATOMIC);
     var hour = Blockly.Arduino.valueToCode(this, 'hour', Blockly.Arduino.ORDER_ATOMIC);
     var minute = Blockly.Arduino.valueToCode(this, 'minute', Blockly.Arduino.ORDER_ATOMIC);
-    var second = Blockly.Arduino.valueToCode(this, 'second', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_['include_timerone'] = '#include <TimerOne.h>';
-    Blockly.Arduino.definitions_['definitions_on_off'] = '#define ON 1\n#define OFF 0\n';
-    Blockly.Arduino.definitions_['definitions_TimeDisp'] = 'int8_t TimeDisp[] = {0x00,0x00,0x00,0x00};\nunsigned char ClockPoint = 1;\nunsigned char Update;\nunsigned char halfsecond = 0;\nunsigned char second=' + second + ';\nunsigned char minute = ' + minute + ';\nunsigned char hour = ' + hour + ';\n';
-    Blockly.Arduino.definitions_['void_TimingISR'] = 'void TimingISR(){\n   halfsecond ++;\n   Update=ON;\n   if(halfsecond == 2){\n      second ++;\n      if(second==60){\n         minute ++;\n         if(minute == 60){\n            hour ++;\n            if(hour == 24)\n               hour = 0;\n            minute = 0;\n         }\n      second = 0;\n      }\n   halfsecond = 0;\n   }\n   ClockPoint=(~ClockPoint) & 0x01;\n}';
-    Blockly.Arduino.definitions_['void_TimeUpdate'] = ' void TimeUpdate(void){\n   if(ClockPoint)\n      tm1637.point(POINT_ON);\n   else\n      tm1637.point(POINT_OFF);\n   TimeDisp[0] = hour / 10;\n   TimeDisp[1] = hour % 10;\n   TimeDisp[2] = minute / 10;\n   TimeDisp[3] = minute % 10;\n   Update = OFF;}';
-    Blockly.Arduino.setups_['setup_tm1637_init'] = 'Timer1.initialize(500000);\n  Timer1.attachInterrupt(TimingISR);\n ';
-    var code = 'if(Update == ON){\n   TimeUpdate();\n   tm1637.display(TimeDisp);\n}\n';
+    var code = 'tm1637.displayTime(' + hour + ',' + minute +');\n';
     return code;
 };
 

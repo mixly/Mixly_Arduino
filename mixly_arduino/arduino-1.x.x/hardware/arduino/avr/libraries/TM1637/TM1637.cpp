@@ -166,6 +166,21 @@ void TM1637::displayString(String aString,int Speed){
   }
 }
 
+//输出“时：分”格式时间
+void TM1637::displayTime(int8_t hour,int8_t minute){
+  int8_t data[4];
+  uint8_t i;
+  int8_t modeHour = hour % 24;
+  int8_t modeMinute = minute % 60;
+  data[0] = modeHour / 10;
+  data[1] = modeHour % 10;
+  data[2] = modeMinute / 10;
+  data[3] = modeMinute % 10;
+  point(true);
+  display(data);
+  point(false);
+}
+
 void TM1637::clearDisplay(void)
 {
   display(0x00,0x7f);

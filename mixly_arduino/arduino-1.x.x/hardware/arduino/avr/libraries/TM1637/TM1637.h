@@ -50,7 +50,8 @@ class TM1637
     void stop(void); //send stop bits
     void display(int8_t DispData[]);
     void display(uint8_t BitAddr,int8_t DispData);
-    void TM1637::displayString(String aString,int Speed);
+    void displayString(String aString,int Speed);
+    void displayTime(int8_t hour,int8_t minute);
     void clearDisplay(void);
     void set(uint8_t = BRIGHT_TYPICAL,uint8_t = 0x40,uint8_t = 0xc0);//To take effect the next time it displays.
     void point(boolean PointFlag);//whether to light the clock point ":".To take effect the next time it displays.

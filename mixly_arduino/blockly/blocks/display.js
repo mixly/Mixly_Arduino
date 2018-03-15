@@ -388,8 +388,6 @@ Blockly.Blocks.display_TM1637_displayTime = {
         this.appendDummyInput("").appendField(Blockly.MIXLY_HOUR);
         this.appendValueInput("minute").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT);
         this.appendDummyInput("").appendField(Blockly.MIXLY_MINUTE);
-        this.appendValueInput("second").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT);
-        this.appendDummyInput("").appendField(Blockly.MIXLY_SECOND);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
