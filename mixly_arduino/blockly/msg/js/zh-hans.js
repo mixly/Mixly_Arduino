@@ -1222,6 +1222,7 @@ Blockly.MIXLY_MICROBIT_Running_time='运行时间';
 Blockly.MIXLY_MICROBIT_Board_temperature='获取主板温度';
 Blockly.MIXLY_MICROBIT_Reset_micro='复位 micro:bit';
 Blockly.MIXLY_MICROBIT_Play_built_in_melody='播放内置音乐 %1 管脚 #%2 %3 等待 %4 %5 循环 %6';
+Blockly.MIXLY_MICROBIT_Play_built_in_melody_easy='播放内置音乐 %1 管脚 #%2 %3 ';
 Blockly.MIXLY_MICROBIT_Play_pitch='播放声音频率 %1 %2 持续 %3 毫秒';
 Blockly.MIXLY_MICROBIT_Play_notes='播放音符列表 %1 管脚# %2 等待 %3 %4 循环 %5';
 Blockly.MIXLY_MICROBIT_Reset_music='恢复音乐初始设置';

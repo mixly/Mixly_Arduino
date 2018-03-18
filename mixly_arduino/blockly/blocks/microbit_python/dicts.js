@@ -41,7 +41,7 @@ Blockly.Blocks['dicts_create_with'] = {
   init: function() {
     this.setColour(Blockly.Blocks.dicts.HUE);
 	  this.appendDummyInput("")
-        .appendField(' ')
+        .appendField('')
         .appendField(new Blockly.FieldTextInput('mydict'), 'VAR')
         .appendField(Blockly.Msg.DICTS_CREATE_WITH_INPUT_WITH)
         
@@ -221,10 +221,8 @@ Blockly.Blocks['dicts_get'] = {
   init: function() {
     this.setColour(Blockly.Blocks.dicts.HUE);
     this.appendDummyInput("")
-  
         .appendField(Blockly.Msg.DICTS_GET_FROM_DICTS)
         .appendField(new Blockly.FieldTextInput('mydict'), 'DICT')
-       
         .appendField(Blockly.Msg.DICTS_GET_IN)
         .appendField(new Blockly.FieldTextInput('key'), 'KEY')
         .appendField(Blockly.Msg.DICTS_GET_VALUE);
@@ -255,10 +253,8 @@ Blockly.Blocks['dicts_delete'] = {
   init: function() {
     this.setColour(Blockly.Blocks.dicts.HUE);
     this.appendDummyInput("")
-  
         .appendField(Blockly.Msg.DICTS_GET_FROM_DICTS)
         .appendField(new Blockly.FieldTextInput('mydict'), 'DICT')
-       
         .appendField(Blockly.Msg.DICTS_DELETE_IN)
         .appendField(new Blockly.FieldTextInput('key'), 'KEY')
         .appendField(Blockly.Msg.DICTS_DELETE_VALUE);

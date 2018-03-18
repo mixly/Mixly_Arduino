@@ -1213,6 +1213,7 @@ Blockly.MIXLY_MICROBIT_Running_time='tiempo de funcionamiento';
 Blockly.MIXLY_MICROBIT_Board_temperature='junta de temperatura';
 Blockly.MIXLY_MICROBIT_Reset_micro='reset micro:bit';
 Blockly.MIXLY_MICROBIT_Play_built_in_melody='jugar con la melodia %1 %2 esperar %3 %4 repetir %5';
+Blockly.MIXLY_MICROBIT_Play_built_in_melody_easy='jugar con la melodia %1 %2';
 Blockly.MIXLY_MICROBIT_Play_pitch='jugar pitch %1 %2 %3 ms';
 Blockly.MIXLY_MICROBIT_Play_notes='jugar tono %1 espera para %2 %3 %4 de repetir';
 Blockly.MIXLY_MICROBIT_Reset_music='reset music';

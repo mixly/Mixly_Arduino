@@ -27,7 +27,7 @@ Blockly.Python.inout_digital_write = function () {
 };
 // ok
 Blockly.Python.inout_digital_write2 = function () {
-    Blockly.Python.definitions_['import_microbit'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var dropdown_stat = Blockly.Python.valueToCode(this, 'STAT', Blockly.Python.ORDER_ATOMIC);
     var code = "";
@@ -44,7 +44,7 @@ Blockly.Python.inout_digital_read = function () {
 };
 // ok
 Blockly.Python.inout_digital_read2 = function () {
-    Blockly.Python.definitions_['import_microbit'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var code = "";
     code = 'pin' + dropdown_pin + '.read_digital()';
@@ -52,7 +52,7 @@ Blockly.Python.inout_digital_read2 = function () {
 };
 //ok
 Blockly.Python.inout_analog_write = function () {
-    Blockly.Python.definitions_['import_microbit'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     //var dropdown_stat = this.getFieldValue('STAT');
     var value_num = Blockly.Python.valueToCode(this, 'NUM', Blockly.Python.ORDER_ATOMIC);
@@ -62,7 +62,7 @@ Blockly.Python.inout_analog_write = function () {
 };
 //ok
 Blockly.Python.inout_analog_write_set = function () {
-    Blockly.Python.definitions_['import_microbit'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var value_num = Blockly.Python.valueToCode(this, 'NUM', Blockly.Python.ORDER_ATOMIC);
     var key = this.getFieldValue('key');
@@ -73,7 +73,7 @@ Blockly.Python.inout_analog_write_set = function () {
 
 //ok
 Blockly.Python.inout_analog_read = function () {
-    Blockly.Python.definitions_['import_microbit'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     //Blockly.Python.setups_['setup_input_'+dropdown_pin] = 'pinMode('+dropdown_pin+', INPUT);';
     var code = 'pin' + dropdown_pin + '.read_analog()';
@@ -224,28 +224,28 @@ Blockly.Python.inout_set_pull = function () {
 };
 //ok
 Blockly.Python.sensor_button_is_pressed = function(){
-    Blockly.Python.definitions_['import_microbit'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
     var code =  btn + '.is_pressed()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 //ok
 Blockly.Python.sensor_button_was_pressed = function(){
-    Blockly.Python.definitions_['import_microbit'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
     var code =  btn + '.was_pressed()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 //ok
 Blockly.Python.sensor_button_get_presses = function(){
-    Blockly.Python.definitions_['import_microbit'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
     var code =  btn + '.get_presses()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 //ok
 Blockly.Python.sensor_pin_pressed = function(){
-    Blockly.Python.definitions_['import_microbit'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var pin = Blockly.Python.valueToCode(this, 'pin', Blockly.Python.ORDER_ATOMIC);
     var code = 'pin'+ pin + '.is_touched()';
     return [code, Blockly.Python.ORDER_ATOMIC];

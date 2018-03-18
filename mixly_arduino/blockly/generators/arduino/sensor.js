@@ -4,8 +4,8 @@ goog.provide('Blockly.Arduino.sensor');
 goog.require('Blockly.Arduino');
 
 Blockly.Arduino.gps_init = function() {
-  Blockly.Arduino.definitions_['define_TinyGPS++'] = '#include <TinyGPS++.h>';
-  Blockly.Arduino.definitions_['define_SoftwareSerial'] = '#include <SoftwareSerial.h>';
+  Blockly.Arduino.definitions_['include_TinyGPS++'] = '#include <TinyGPS++.h>';
+  Blockly.Arduino.definitions_['include_SoftwareSerial'] = '#include <SoftwareSerial.h>';
   var rx = Blockly.Arduino.valueToCode(this, 'RX',Blockly.Arduino.ORDER_ATOMIC);
   var tx = Blockly.Arduino.valueToCode(this, 'TX',Blockly.Arduino.ORDER_ATOMIC);
   var bt = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC)
@@ -75,7 +75,7 @@ Blockly.Arduino.dht11 = function () {
     var sensor_type = this.getFieldValue('TYPE');
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     var what = this.getFieldValue('WHAT');
-    Blockly.Arduino.definitions_['define_dht'] = '#include <dht.h>';
+    Blockly.Arduino.definitions_['include_dht'] = '#include <dht.h>';
     Blockly.Arduino.definitions_['var_dht_' + dropdown_pin] = 'dht myDHT_' + dropdown_pin + ';';
     var funcName = 'dht_' + dropdown_pin + '_get' + what;
     var code = 'int' + ' ' + funcName + '() {\n'
@@ -96,8 +96,8 @@ Blockly.Arduino.LM35 = function() {
 Blockly.Arduino.ds18b20 = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     var unit = this.getFieldValue('UNIT');
-    Blockly.Arduino.definitions_['define_OneWire'] = '#include <OneWire.h>';
-    Blockly.Arduino.definitions_['define_DallasTemperature'] = '#include <DallasTemperature.h>';
+    Blockly.Arduino.definitions_['include_OneWire'] = '#include <OneWire.h>';
+    Blockly.Arduino.definitions_['include_DallasTemperature'] = '#include <DallasTemperature.h>';
     Blockly.Arduino.definitions_['var_OneWire_oneWire_' + dropdown_pin] = 'OneWire oneWire_' + dropdown_pin + '(' + dropdown_pin + ');';
     Blockly.Arduino.definitions_['var_DallasTemperature_sensors_' + dropdown_pin] = 'DallasTemperature sensors_' + dropdown_pin + '(&oneWire_' + dropdown_pin + ');';
     Blockly.Arduino.definitions_['var_DeviceAddress_insideThermometer'] = 'DeviceAddress insideThermometer;';
@@ -118,8 +118,8 @@ Blockly.Arduino.DS1302_init = function () {
     var dropdown_rst = Blockly.Arduino.valueToCode(this, 'RST', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_dat = Blockly.Arduino.valueToCode(this, 'DAT', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_clk = Blockly.Arduino.valueToCode(this, 'CLK', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_['define_DS1302'] = '#include <DS1302.h>';
-    Blockly.Arduino.definitions_['define_origin'] = 'DS1302 '+ RTCName +'(' + dropdown_rst + ',' + dropdown_dat + ',' + dropdown_clk + ');';
+    Blockly.Arduino.definitions_['include_DS1302'] = '#include <DS1302.h>';
+    Blockly.Arduino.definitions_['DS1302'+RTCName] = 'DS1302 '+ RTCName +'(' + dropdown_rst + ',' + dropdown_dat + ',' + dropdown_clk + ');';
     return "";
 };
 

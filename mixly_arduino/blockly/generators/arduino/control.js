@@ -142,7 +142,7 @@ Blockly.Arduino.controls_millis = function () {
 };
 
 Blockly.Arduino.controls_mstimer2 = function () {
-    Blockly.Arduino.definitions_['define_MsTimer2'] = '#include <MsTimer2.h>';
+    Blockly.Arduino.definitions_['include_MsTimer2'] = '#include <MsTimer2.h>';
     var time = Blockly.Arduino.valueToCode(this, 'TIME', Blockly.Arduino.ORDER_ATOMIC);
     var funcName = 'msTimer2_func';
     var branch = Blockly.Arduino.statementToCode(this, 'DO');
@@ -152,12 +152,12 @@ Blockly.Arduino.controls_mstimer2 = function () {
 };
 
 Blockly.Arduino.controls_mstimer2_start = function () {
-    Blockly.Arduino.definitions_['define_MsTimer2'] = '#include <MsTimer2.h>';
+    Blockly.Arduino.definitions_['include_MsTimer2'] = '#include <MsTimer2.h>';
     return 'MsTimer2::start();\n';
 };
 
 Blockly.Arduino.controls_mstimer2_stop = function () {
-    Blockly.Arduino.definitions_['define_MsTimer2'] = '#include <MsTimer2.h>';
+    Blockly.Arduino.definitions_['include_MsTimer2'] = '#include <MsTimer2.h>';
     return 'MsTimer2::stop();\n';
 };
 

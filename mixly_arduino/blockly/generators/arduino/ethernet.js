@@ -4,8 +4,8 @@ goog.require('Blockly.Arduino');
 
 Blockly.Arduino.ethernet_init_begin = function() {
   var Ethernet=this.getFieldValue('Ethernet');
-  Blockly.Arduino.definitions_['define_spi'] = '#include <SPI.h>';
-  Blockly.Arduino.definitions_['define_'+Ethernet] = '#include <'+Ethernet+'.h>';
+  Blockly.Arduino.definitions_['include_spi'] = '#include <SPI.h>';
+  Blockly.Arduino.definitions_['include_'+Ethernet] = '#include <'+Ethernet+'.h>';
   Blockly.Arduino.definitions_['var_EthernetClient'] = 'EthernetClient client;';
   var mac = Blockly.Arduino.valueToCode(this, 'MAC',Blockly.Arduino.ORDER_ATOMIC);
   var code = "Ethernet.begin("+mac+")";

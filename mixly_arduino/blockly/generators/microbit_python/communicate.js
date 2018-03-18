@@ -34,7 +34,7 @@ Blockly.Python['microbit_radio_reset'] = function(block) {
 
 Blockly.Python.radio_send_string = function () {
     var number = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
-    return "radio.send(" + number + ");\n";
+    return "radio.send(" + number + ")\n";
 }
 
 Blockly.Python['microbit_radio_receive'] = function(block) {

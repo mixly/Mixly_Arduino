@@ -28,7 +28,7 @@ Blockly.Python.procedures_defreturn = function() {
   var code = 'def ' + funcName + '(' + args.join(', ') + ') :\n' +
       branch + returnValue + '\n';
   code = Blockly.Python.scrub_(this, code);
-  Blockly.Python.definitions_[funcName] = code;
+  Blockly.Python.setups_[funcName] = code;
   return null;
 };
 
@@ -56,7 +56,7 @@ Blockly.Python.procedures_callnoreturn = function() {
     args[x] = Blockly.Python.valueToCode(this, 'ARG' + x,
         Blockly.Python.ORDER_NONE) || 'null';
   }
-  var code = funcName + '(' + args.join(', ') + ');\n';
+  var code = funcName + '(' + args.join(', ') + ')\n';
   return code;
 };
 

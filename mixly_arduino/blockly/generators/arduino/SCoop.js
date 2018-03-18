@@ -18,7 +18,7 @@ Blockly.Arduino['SCoopTask']=function() {
 	+'{\n'
 	+ statements_loop
 	+'}\n';
-	Blockly.Arduino.definitions_['include_scoop'] = '#include \"SCoop.h\"';
+	Blockly.Arduino.definitions_['include_Scoop'] = '#include \"SCoop.h\"';
 	Blockly.Arduino.setups_['scoop_start'] = 'mySCoop.start();';
 	Blockly.Arduino.definitions_['scoop_task'+_tasknum] = taskcode;
 	var code="";

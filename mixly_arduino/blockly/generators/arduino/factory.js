@@ -5,7 +5,7 @@ goog.require('Blockly.Arduino');
 
 Blockly.Arduino.factory_include = function() {
 	var INCLUDE = this.getFieldValue('INCLUDE');
-	Blockly.Arduino.definitions_['define_'+INCLUDE] = '#include <'+INCLUDE+'.h>';
+	Blockly.Arduino.definitions_['include_'+INCLUDE] = '#include <'+INCLUDE+'.h>';
 	return '';
 };
 
@@ -37,8 +37,10 @@ Blockly.Arduino.factory_declare = function() {
 };
 Blockly.Arduino.factory_define = function () {
     var TYPE = this.getFieldValue('TYPE');
+    if (TYPE.substr(0,1)=='#')
+    	TYPE = TYPE.substr(1);
     var NAME = this.getFieldValue('NAME');
-    Blockly.Arduino.definitions_['var_' + TYPE + '_' + NAME] = TYPE + ' ' + NAME ;
+    Blockly.Arduino.definitions_[TYPE + '_' + NAME] = TYPE + ' ' + NAME ;
     return '';
 };
 Blockly.Arduino.factory_static_method_noreturn = function() {

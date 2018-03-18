@@ -10,8 +10,8 @@ Blockly.Arduino.group_lcd_init = function() {
   var varName = this.getFieldValue('VAR');
   var TYPE = this.getFieldValue('TYPE');
   var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27';
-  Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>';
-  Blockly.Arduino.definitions_['define_i2c_lcd'] = '#include <LiquidCrystal_I2C.h>';
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+  Blockly.Arduino.definitions_['include_LiquidCrystal_I2C'] = '#include <LiquidCrystal_I2C.h>';
   Blockly.Arduino.definitions_['var_LiquidCrystal_I2C_'+varName] = 'LiquidCrystal_I2C '+varName+'('+device+','+TYPE+');';
   return '';
 };
@@ -22,8 +22,8 @@ Blockly.Arduino.group_lcd_init2 = function() {
   var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27';
   var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'PIN1',Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'PIN2',Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.definitions_['define_softi2c'] = '#include <SoftI2CMaster.h>';
-  Blockly.Arduino.definitions_['define_softi2c_lcd'] = '#include <LiquidCrystal_SoftI2C.h>';
+  Blockly.Arduino.definitions_['include_SoftI2CMaster'] = '#include <SoftI2CMaster.h>';
+  Blockly.Arduino.definitions_['include_LiquidCrystal_SoftI2C'] = '#include <LiquidCrystal_SoftI2C.h>';
   Blockly.Arduino.definitions_['var_LiquidCrystal_SoftI2C_' + varName] = 'LiquidCrystal_SoftI2C ' + varName + '(' + device + ',' + TYPE + ',' + dropdown_pin1 + ',' + dropdown_pin2 + ');';
   return '';
 };
@@ -38,7 +38,7 @@ Blockly.Arduino.group_lcd_init3 = function () {
     var dropdown_pin5 = Blockly.Arduino.valueToCode(this, 'PIN5', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_pin6 = Blockly.Arduino.valueToCode(this, 'PIN6', Blockly.Arduino.ORDER_ATOMIC);
 
-    Blockly.Arduino.definitions_['define_lcd'] = '#include <LiquidCrystal.h>';
+    Blockly.Arduino.definitions_['include_LiquidCrystal'] = '#include <LiquidCrystal.h>';
     Blockly.Arduino.definitions_['var_LiquidCrystal' + varName] = 'LiquidCrystal ' + varName + '(' + dropdown_pin1 + ',' + dropdown_pin2 + ',' + dropdown_pin3 + ',' + dropdown_pin4 + ',' + dropdown_pin5 + ',' + dropdown_pin6 + ');';
     Blockly.Arduino.setups_['setup_lcd_begin_' + varName] = varName + '.begin('+TYPE+');';
    
@@ -96,7 +96,7 @@ Blockly.Arduino.lp2i_u8g_draw_4strings = function () {
     var value_text_line2 = Blockly.Arduino.valueToCode(this, 'Text_line2', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
     var value_text_line3 = Blockly.Arduino.valueToCode(this, 'Text_line3', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
     var value_text_line4 = Blockly.Arduino.valueToCode(this, 'Text_line4', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
-    Blockly.Arduino.definitions_["define_u8g"] = '#include <U8glib.h>\n U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_NO_ACK|U8G_I2C_OPT_FAST);\n';
+    Blockly.Arduino.definitions_["include_U8glib"] = '#include <U8glib.h>\n U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_NO_ACK|U8G_I2C_OPT_FAST);\n';
     //dans le setup    
     Blockly.Arduino.setups_["setup_u8g"] =
        'u8g.firstPage();\n'
@@ -123,7 +123,7 @@ Blockly.Arduino.lp2i_u8g_print = function () {
     var value_n = Blockly.Arduino.valueToCode(this, 'N', Blockly.Arduino.ORDER_ATOMIC);
     var x = Blockly.Arduino.valueToCode(this, 'X', Blockly.Arduino.ORDER_ATOMIC);
     var y = Blockly.Arduino.valueToCode(this, 'Y', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_["define_u8g"] = '#include <U8glib.h>\n U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_NO_ACK|U8G_I2C_OPT_FAST);\n';
+    Blockly.Arduino.definitions_["include_U8glib"] = '#include <U8glib.h>\n U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_NO_ACK|U8G_I2C_OPT_FAST);\n';
     //dans le setup    
     Blockly.Arduino.setups_["setup_u8g"] =
       'u8g.firstPage();\n'
@@ -148,7 +148,7 @@ Blockly.Arduino.lp2i_u8g_4draw_print = function () {
     var value_n2 = Blockly.Arduino.valueToCode(this, 'N2', Blockly.Arduino.ORDER_ATOMIC);
     var value_n3 = Blockly.Arduino.valueToCode(this, 'N3', Blockly.Arduino.ORDER_ATOMIC);
     var value_n4 = Blockly.Arduino.valueToCode(this, 'N4', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_["define_u8g"] = '#include <U8glib.h>\n U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_NO_ACK|U8G_I2C_OPT_FAST);\n';
+    Blockly.Arduino.definitions_["include_U8glib"] = '#include <U8glib.h>\n U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_NO_ACK|U8G_I2C_OPT_FAST);\n';
     //dans le setup    
     Blockly.Arduino.setups_["setup_u8g"] =
        'u8g.firstPage();\n'
@@ -177,7 +177,7 @@ Blockly.Arduino.lp2i_u8g_4draw_print = function () {
 Blockly.Arduino.display_rgb_init=function(){
     var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     var value_ledcount = Blockly.Arduino.valueToCode(this, 'LEDCOUNT', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>';
+    Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
     Blockly.Arduino.definitions_['include_Mixly'] = '#include "Mixly.h"';
     Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin] = 'Adafruit_NeoPixel  rgb_display_' + dropdown_rgbpin +  '(' + value_ledcount + ');';
     Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();';
@@ -190,7 +190,7 @@ Blockly.Arduino.display_rgb=function(){
   var value_rvalue = Blockly.Arduino.valueToCode(this, 'RVALUE', Blockly.Arduino.ORDER_ATOMIC);
   var value_gvalue = Blockly.Arduino.valueToCode(this, 'GVALUE', Blockly.Arduino.ORDER_ATOMIC);
   var value_bvalue = Blockly.Arduino.valueToCode(this, 'BVALUE', Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>';
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
   Blockly.Arduino.definitions_['include_Mixly'] = '#include "Mixly.h"';
   if (!Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin]) {
       Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin] = 'Adafruit_NeoPixel  rgb_display_' + dropdown_rgbpin + '' + '(4);';
@@ -208,7 +208,7 @@ Blockly.Arduino.display_rgb2=function(){
   var value_led = Blockly.Arduino.valueToCode(this, '_LED_', Blockly.Arduino.ORDER_ATOMIC);
   var colour_rgb_led_color = this.getFieldValue('RGB_LED_COLOR');
   var color = goog.color.hexToRgb(colour_rgb_led_color);
-  Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>';
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
   Blockly.Arduino.definitions_['include_Mixly'] = '#include "Mixly.h"';
   if (!Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin]) {
       Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin] = 'Adafruit_NeoPixel  rgb_display_' + dropdown_rgbpin + '' + '(4);';
@@ -222,7 +222,7 @@ Blockly.Arduino.display_rgb2=function(){
 
 Blockly.Arduino.display_4digitdisplay_power=function(){
 	var stat=this.getFieldValue("STAT");
-	Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>';
+	Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
 	Blockly.Arduino.definitions_['include_Mixly'] = '#include "Mixly.h"';
 	Blockly.Arduino.definitions_['var_display_4display'] = 'TM1650 tm_4display;';
 	Blockly.Arduino.setups_['setup_wire_begin'] ='Wire.begin();';
@@ -231,7 +231,7 @@ Blockly.Arduino.display_4digitdisplay_power=function(){
 }
 Blockly.Arduino.display_4digitdisplay_displayString=function(){
 	var value = Blockly.Arduino.valueToCode(this, 'VALUE', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>';
+	Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
 	Blockly.Arduino.definitions_['include_Mixly'] = '#include "Mixly.h"';
 	Blockly.Arduino.definitions_['var_display_4display'] = 'TM1650 tm_4display;';
 	Blockly.Arduino.setups_['setup_wire_begin'] ='Wire.begin();';
@@ -241,7 +241,7 @@ Blockly.Arduino.display_4digitdisplay_displayString=function(){
 Blockly.Arduino.display_4digitdisplay_showDot=function(){
 	var no=this.getFieldValue("NO");
 	var stat=this.getFieldValue("STAT");
-	Blockly.Arduino.definitions_['define_i2c'] = '#include <Wire.h>';
+	Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
 	Blockly.Arduino.definitions_['include_Mixly'] = '#include "Mixly.h"';
 	Blockly.Arduino.definitions_['var_display_4display'] = 'TM1650 tm_4display;';
 	Blockly.Arduino.setups_['setup_wire_begin'] ='Wire.begin();';
@@ -251,7 +251,7 @@ Blockly.Arduino.display_4digitdisplay_showDot=function(){
 Blockly.Arduino.display_TM1637_init = function () {
     var CLK = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
     var DIO = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_['include_tm1637'] = '#include <TM1637.h>';
+    Blockly.Arduino.definitions_['include_TM1637'] = '#include <TM1637.h>';
     Blockly.Arduino.definitions_['var_tm1637'] = 'TM1637 tm1637(' + CLK + ',' + DIO + ');';
     Blockly.Arduino.setups_['setup_tm1637_init'] = 'tm1637.init();\n  tm1637.set();\n';
     return '';
@@ -276,7 +276,8 @@ Blockly.Arduino.display_TM1637_Stopwatch = function () {
     Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
     Blockly.Arduino.definitions_['include_timerone'] = '#include <TimerOne.h>';
     Blockly.Arduino.definitions_['include_pgmspace'] = '#include <avr/pgmspace.h>';
-    Blockly.Arduino.definitions_['definitions_on_off'] = '#define ON 1\n#define OFF 0\n';
+    Blockly.Arduino.definitions_['define_ON'] = '#define ON 1\n'
+    Blockly.Arduino.definitions_['define_OFF'] = '#define OFF 0\n';
 
     Blockly.Arduino.definitions_['definitions_TimeDisp'] = 'int8_t TimeDisp[] = {0x00,0x00,0x00,0x00};\nunsigned char ClockPoint = 1;\nunsigned char Update;\nunsigned char microsecond_10 = 0;\nunsigned char second;\nunsigned char _microsecond_10 = 0;\nunsigned char _second;\nunsigned int eepromaddr;\nboolean Flag_ReadTime;\n';
     

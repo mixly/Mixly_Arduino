@@ -3,9 +3,16 @@
 goog.provide('Blockly.Python.factory');
 goog.require('Blockly.Python');
 
-Blockly.Python.factory_include = function() {
-	var INCLUDE = this.getFieldValue('INCLUDE');
-	Blockly.Python.definitions_['define_'+INCLUDE] = '#include <'+INCLUDE+'.h>';
+Blockly.Python.factory_from_import = function() {
+	var path = this.getFieldValue('path');
+	var module = this.getFieldValue('module');
+	Blockly.Python.definitions_['import_'+path+'_'+module] = 'from '+path+' import ' + module;	
+	return '';
+};
+
+Blockly.Python.factory_import = function() {
+	var module = this.getFieldValue('module');
+	Blockly.Python.definitions_['import_'+module] = 'import ' + module;
 	return '';
 };
 
@@ -14,9 +21,9 @@ Blockly.Python.factory_function_noreturn = function() {
 	var code = new Array(this.itemCount_);
 	for (var n = 0; n < this.itemCount_; n++) {
 		code[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
-			Blockly.Python.ORDER_NONE) || 'null';
+			Blockly.Python.ORDER_NONE) || '';
 	}
-	return NAME+'('+code.join(', ')+');\n';
+	return NAME+'('+code.join(', ')+')\n';
 };
 
 Blockly.Python.factory_function_return = function() {
@@ -24,7 +31,7 @@ Blockly.Python.factory_function_return = function() {
 	var code = new Array(this.itemCount_);
 	for (var n = 0; n < this.itemCount_; n++) {
 		code[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
-			Blockly.Python.ORDER_NONE) || 'null';
+			Blockly.Python.ORDER_NONE) || '';
 	}
 	return [NAME+'('+code.join(', ')+')',Blockly.Python.ORDER_ATOMIC];
 };
@@ -32,35 +39,8 @@ Blockly.Python.factory_function_return = function() {
 Blockly.Python.factory_declare = function() {
 	var TYPE = this.getFieldValue('TYPE');
 	var NAME = this.getFieldValue('NAME');
-	Blockly.Python.definitions_['var_'+TYPE+'_'+NAME] = 'let '+NAME+':' + TYPE + ';';
+	Blockly.Python.setups_['var_'+TYPE+'_'+NAME] = NAME+' = ' + TYPE + '()\n';
 	return '';
-};
-Blockly.Python.factory_define = function () {
-    var TYPE = this.getFieldValue('TYPE');
-    var NAME = this.getFieldValue('NAME');
-    Blockly.Python.definitions_['var_' + TYPE + '_' + NAME] = TYPE + ' ' + NAME + ';';
-    return '';
-};
-Blockly.Python.factory_static_method_noreturn = function() {
-	var TYPE = this.getFieldValue('TYPE');
-	var NAME = this.getFieldValue('NAME');
-	var code = new Array(this.itemCount_);
-	for (var n = 0; n < this.itemCount_; n++) {
-		code[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
-			Blockly.Python.ORDER_NONE) || 'NULL';
-	}
-	return TYPE+'::'+NAME+'('+code.join(', ')+');\n';
-};
-
-Blockly.Python.factory_static_method_return = function() {
-	var TYPE = this.getFieldValue('TYPE');
-	var NAME = this.getFieldValue('NAME');
-	var code = new Array(this.itemCount_);
-	for (var n = 0; n < this.itemCount_; n++) {
-		code[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
-			Blockly.Python.ORDER_NONE) || 'NULL';
-	}
-	return [TYPE+'::'+NAME+'('+code.join(', ')+')',Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.factory_callMethod_noreturn = function() {
@@ -69,9 +49,9 @@ Blockly.Python.factory_callMethod_noreturn = function() {
 	var code = new Array(this.itemCount_);
 	for (var n = 0; n < this.itemCount_; n++) {
 		code[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
-			Blockly.Python.ORDER_NONE) || 'null';
+			Blockly.Python.ORDER_NONE) || '';
 	}
-	return NAME+'.'+METHOD+'('+code.join(', ')+');\n';
+	return NAME+'.'+METHOD+'('+code.join(', ')+')\n';
 };
 
 Blockly.Python.factory_callMethod_return = function() {
@@ -80,7 +60,7 @@ Blockly.Python.factory_callMethod_return = function() {
 	var code = new Array(this.itemCount_);
 	for (var n = 0; n < this.itemCount_; n++) {
 		code[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
-			Blockly.Python.ORDER_NONE) || 'null';
+			Blockly.Python.ORDER_NONE) || '';
 	}
 	return [NAME+'.'+METHOD+'('+code.join(', ')+')',Blockly.Python.ORDER_ATOMIC];
 };
@@ -94,6 +74,19 @@ Blockly.Python.factory_block = function() {
 };
 
 Blockly.Python.factory_block_return = function() {
+	var VALUE = this.getFieldValue('VALUE');
+	return [VALUE,Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.factory_block_with_textarea = function() {
+	var VALUE = this.getFieldValue('VALUE');
+	//if(!(VALUE.charAt(VALUE.length-1)==";")){
+		//VALUE=VALUE+';';
+	//}
+	return VALUE+'\n';
+};
+
+Blockly.Python.factory_block_return_with_textarea = function() {
 	var VALUE = this.getFieldValue('VALUE');
 	return [VALUE,Blockly.Python.ORDER_ATOMIC];
 };

@@ -118,7 +118,7 @@ Blockly.Variables.flyoutCategory = function(workspace) {
           xmlList.push(block);
       }*/
   for (var i = 0; i < variableList.length; i++) {
-    if(i==0&& !(Blockly.Python.definitions_['var_declare'+'item'])){
+    if(i==0&& !(Blockly.Python.setups_['var_declare'+'item'])){
    		continue;
    	}
     if (Blockly.Blocks['variables_set']) {

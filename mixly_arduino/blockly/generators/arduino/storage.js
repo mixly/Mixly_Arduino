@@ -10,8 +10,8 @@ Blockly.Arduino.store_sd_write = function() {
 	var data = Blockly.Arduino.valueToCode(this, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
 	//data=data.replace(/String/,"");
 	var newline = Blockly.Arduino.valueToCode(this, 'NEWLINE', Blockly.Arduino.ORDER_ATOMIC) || 'false';
-	Blockly.Arduino.definitions_['define_sd'] = '#include <SD.h>';
-	Blockly.Arduino.definitions_['define_spi'] = '#include <SPI.h>';
+	Blockly.Arduino.definitions_['include_SD'] = '#include <SD.h>';
+	Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
 	Blockly.Arduino.setups_['setup_sd_write_chipselect'] = 'const int chipSelect = 4;';
 	Blockly.Arduino.setups_['setup_sd_write_begin'] = 'SD.begin(chipSelect);';
 	Blockly.Arduino.definitions_['var_File_datafile'] = 'File datafile;';
@@ -29,7 +29,7 @@ Blockly.Arduino.store_sd_write = function() {
 Blockly.Arduino.store_eeprom_write_long = function() {
 	var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
 	var data = Blockly.Arduino.valueToCode(this, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '0';
-	Blockly.Arduino.definitions_['define_eeprom'] = '#include <EEPROM.h>';
+	Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
 	var funcName='eepromWriteLong';
     var code2='void '+funcName+'(int address, unsigned long value) {\n' 
 	+ '  union u_tag {\n'
@@ -49,7 +49,7 @@ Blockly.Arduino.store_eeprom_write_long = function() {
 
 Blockly.Arduino.store_eeprom_read_long = function() {
 	var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
-	Blockly.Arduino.definitions_['define_eeprom'] = '#include <EEPROM.h>';
+	Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
 	var code ='eepromReadLong('+address+')';
 	var funcName='eepromReadLong';
     var code2='unsigned long '+funcName+'(int address) {\n' 
@@ -73,13 +73,13 @@ Blockly.Arduino.store_eeprom_read_long = function() {
 Blockly.Arduino.store_eeprom_write_byte = function() {
 	var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
 	var data = Blockly.Arduino.valueToCode(this, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '0';
-	Blockly.Arduino.definitions_['define_eeprom'] = '#include <EEPROM.h>';
+	Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
 	return 'EEPROM.write('+address+', '+data+');\n';
 }
 
 Blockly.Arduino.store_eeprom_read_byte = function() {
 	var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
-	Blockly.Arduino.definitions_['define_eeprom'] = '#include <EEPROM.h>';
+	Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
 	var code ='EEPROM.read('+address+')';
 	return [code,Blockly.Arduino.ORDER_ATOMIC];
 }

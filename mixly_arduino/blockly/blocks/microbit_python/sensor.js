@@ -19,6 +19,16 @@ Blockly.Blocks.controls_attachGestureInterrupt = {
     }
 };
 
+Blockly.Blocks.controls_GestureLists = {
+    init: function() {
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_MICROBIT_up, "up"], [Blockly.MIXLY_MICROBIT_down, "down"], [Blockly.MIXLY_MICROBIT_left, "left"], [Blockly.MIXLY_MICROBIT_right, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
+        this.setInputsInline(true);
+        this.setOutput(true);
+    }
+};
+
 Blockly.Blocks.controls_attachGestureInterrupt2 = {
     init: function() {
         this.setColour(Blockly.Blocks.sensor.HUE);

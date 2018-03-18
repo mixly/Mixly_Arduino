@@ -62,7 +62,7 @@ Blockly.Python.lists_create_with2 = function() {
   code[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
     Blockly.Python.ORDER_NONE) || default_value;
   }
-  Blockly.Python.definitions_['var_declare'+varName] = varName+'= '+ '[' + code.join(', ') + ']\n';
+  Blockly.Python.setups_['var_declare'+varName] = varName+' = '+ '[' + code.join(', ') + ']\n';
   //var code =''+varName+'['+size+"]"+'='+ '{' + code.join(', ') + '};\n';
   //Blockly.Python.setups_['setup_lists'+varName] = code;
   return '';
@@ -74,7 +74,7 @@ Blockly.Python.lists_create_with_text2 = function() {
     Blockly.Variables.NAME_TYPE);
   //var size=window.parseFloat(this.getFieldValue('SIZE'));
   var text=this.getFieldValue('TEXT');
-  Blockly.Python.definitions_['var_declare'+varName] = varName+'= '+ '[' + text + ']\n';
+  Blockly.Python.setups_['var_declare'+varName] = varName+' s= '+ '[' + text + ']\n';
   return '';
 };
 //ok
@@ -201,7 +201,7 @@ Blockly.Python.lists_remove_at= function(){
 
 Blockly.Python.list_trig = function (a) {
   var b = a.getFieldValue("OP"), c;
-  Blockly.Python.definitions_.import_math = "import math";
+  Blockly.Python.definitions_['import_math'] = "import math";
   a = Blockly.Python.valueToCode(a, 'data', Blockly.Python.ORDER_NONE) 
   switch (b) {
   case "SUM":

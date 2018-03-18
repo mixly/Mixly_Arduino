@@ -81,7 +81,7 @@ Blockly.Python.math_single = function (a) {
   c;
   if ("NEG" == b)
     return c = Blockly.Python.valueToCode(a, "NUM", Blockly.Python.ORDER_UNARY_SIGN) || "0", ["-" + c, Blockly.Python.ORDER_UNARY_SIGN];
-  Blockly.Python.definitions_.import_math = "import math";
+  Blockly.Python.definitions_['import_math'] = "import math";
   a = "SIN" == b || "COS" == b || "TAN" == b ? Blockly.Python.valueToCode(a, "NUM", Blockly.Python.ORDER_MULTIPLICATIVE) || "0" : Blockly.Python.valueToCode(a, "NUM", Blockly.Python.ORDER_NONE) || "0";
   switch (b) {
   case "ABS":
@@ -182,7 +182,7 @@ Blockly.Python.math_random_seed = function () {
     // Random integer between [X] and [Y].
     var argument0 = Blockly.Python.valueToCode(this, 'NUM',
         Blockly.Python.ORDER_NONE) || '0';
-    var code = 'random.seed(' + argument0 +  ')\n';
+    var code = 'random.seed(' + argument0 +  ')'+'\n';
     return code;
 };
 //ok

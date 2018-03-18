@@ -30,8 +30,8 @@ Blockly.Python.variables_declare = function() {
       Blockly.Python.definitions_['var_declare' + varName] = 'let ' + varName + ':' + dropdown_type + ' = [];';
   */
 
-  if(Blockly.Python.definitions_['var_declare' + varName] === undefined) {
-      Blockly.Python.definitions_['var_declare' + varName] =  varName + ' = ' + argument0 ;
+  if(Blockly.Python.setups_['var_declare' + varName] === undefined) {
+      Blockly.Python.setups_['var_declare' + varName] =  varName + ' = ' + argument0 + '\n';
   }else {
   }
   return '';

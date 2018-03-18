@@ -58,19 +58,19 @@ Blockly.Python.finish = function(code) {
         definitions.push(Blockly.Python.definitions_[name]);
     }
     var setups = [];
-  for (var name in Blockly.Python.setups_) {
-    setups.push(Blockly.Python.setups_[name]);
-  }
-  if(setups.length !== 0)
-      setups.push('\n\n');
+    for (var name in Blockly.Python.setups_) {
+      setups.push(Blockly.Python.setups_[name]);
+    }
+    if(setups.length !== 0)
+      setups.push('\n');
     // Clean up temporary data.
     //delete Blockly.Python.definitions_;
     //delete Blockly.Python.functionNames_;
     //Blockly.Python.variableDB_.reset();
     if(code !== "") 
-      return definitions.join('\n\n') + '\n\n\n' +  setups.join('\n') + 'while True:\n' + code;
+      return definitions.join('\n') + '\n\n' + setups.join('') + '\n' + 'while True:\n' + code;
     else
-      return definitions.join('\n\n') + '\n\n\n' +  setups.join('\n') + code;
+      return definitions.join('\n') + '\n\n' + setups.join('') + '\n' + code;
 
 };
 

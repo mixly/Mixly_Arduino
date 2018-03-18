@@ -281,6 +281,19 @@ function init() {
 }
 
 </script>
+    <style type="text/css">
+        span#span_blocks, span#span_arduino, select#languageMenu {
+            font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';
+        }
+
+        span.blocklyTreeLabel {
+            font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';
+        }
+
+        text.blocklyText {
+            font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';
+        }
+    </style>
 </head>
 <body onload="init()">
   <table height="100%" width="100%" id="table_whole">
@@ -294,15 +307,15 @@ function init() {
 			<td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
             <td class="tabcoyright">
-			  <span id="copyright" style=" font-family: 'Microsoft Yahei Light';font-size:12px;color:#999;">copyright</span>
+			  <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;color:#999;">copyright</span>
             </td>
-              <td class="tabmode">
-                  <!--  <span class="viewLeft" id="viewMode1" style=" font-family: 'Microsoft Yahei Light';;font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_microbit%5Bjs%5D.html" style=" font-family: 'Microsoft Yahei Light';font-size:12px;">高级视图</a>-->
-              </td>
-              <!--  <script type="text/javascript">
-				var viewMode2 = document.getElementById('viewMode2');
-				viewMode2.href = 'index_advance_board_microbit[js].html?lang='+Code.LANG;
-              </script>-->
+            <td class="tabmode">
+              <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_microbit[py].html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light';font-size:12px;">高级视图</a>
+            </td>
+            <script type="text/javascript">
+              var viewMode2 = document.getElementById('viewMode2');
+              viewMode2.href = 'index_advance_board_microbit[py].html?lang='+Code.LANG;
+            </script>
 			<td class="tabmin">
 			  <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
             </td>
@@ -463,7 +476,7 @@ function init() {
           <block type="reset"></block>
           <!-- <block type="raw_block"></block> -->
       </category>
-      <category id="catMath" colour="230">
+            <category id="catMath" colour="230">
           <block type="math_number"></block>
           <block type="math_arithmetic">
               <value name="A">
@@ -813,14 +826,6 @@ function init() {
           <block type="serial_any"></block>
           <block type="serial_readstr"></block>
           <block type="serial_readline"></block>
-          <block type="serial_softserial">
-              <value name="TX">
-                  <shadow type="pins_serial"></shadow>
-              </value>
-              <value name="RX">
-                  <shadow type="pins_serial"></shadow>
-              </value>
-          </block>
       </category>
       <category id="catGroup" colour="140">
           <block type="microbit_radio_on"></block>
@@ -835,58 +840,11 @@ function init() {
               </value>
           </block>
           <block type="microbit_radio_receive"></block>
-          <block type="i2c_init">
-              <value name="TX">
-                  <shadow type="pins_serial"></shadow>
-              </value>
-              <value name="RX">
-                  <shadow type="pins_serial"></shadow>
-              </value>
-              <value name="freq">
-                  <shadow type="math_number"><field name="NUM">100000</field></shadow>
-              </value>
-          </block>
-          <block type="i2c_read">
-              <value name="address">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-              <value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="i2c_write">
-              <value name="address">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-              <value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="spi_init"></block>
-          <block type="spi_write">
-              <value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-          </block>
       </category>
       <category id="catSensor" colour="40">
           <block type="controls_attachGestureInterrupt"></block>
           <block type="controls_attachGestureInterrupt2"></block>
           <block type="sensor_get_acceleration"></block>
-          <block type="sensor_get_gestures"></block>
-          <block type="sensor_current_gesture"></block>
-          <block type="sensor_calibrate_compass"></block>
-          <block type="sensor_is_compass_calibrated"></block>
           <block type="sensor_compass_heading"></block>
           <block type="sensor_field_strength"></block>
           <block type="sensor_temperature"></block>
@@ -914,18 +872,8 @@ function init() {
               <value name="pitch">
                     <shadow type="pins_tone_notes"></shadow>
               </value>
-              <value name="duration">
-                    <shadow type="math_number">
-                        <field name="NUM">500</field>
-                    </shadow>
-              </value>
           </block>
-          <block type="microbit_music_play_built_in">
-              <value name="PIN">
-                  <shadow type="pins_pwm"></shadow>
-              </value>
-          </block>
-          <block type="microbit_music_play_list_of_notes">
+          <block type="microbit_music_play_built_in_easy">
               <value name="PIN">
                   <shadow type="pins_pwm"></shadow>
               </value>
@@ -935,105 +883,24 @@ function init() {
                   <shadow type="pins_pwm"></shadow>
               </value>
           </block>
-          <block type="microbit_music_reset"></block>
-          <block type="microbit_music_get_tempo"></block>
-          <block type="tone_set_tempo">
-              <value name="TICKS">
-                  <shadow type="math_number">
-                      <field name="NUM">4</field>
-                  </shadow>
-              </value>
-              <value name="BPM">
-                  <shadow type="math_number">
-                      <field name="NUM">120</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="speech_translate">
-              <value name="VAR">
-                  <shadow type="text">
-                      <field name="TEXT">Mixly</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="speech_say">
+          <block type="speech_say_easy">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly 0.997 is great!</field>
                   </shadow>
               </value>
-              <value name="pitch">
-                  <shadow type="math_number">
-                      <field name="NUM">64</field>
-                  </shadow>
-              </value>
-              <value name="speed">
-                  <shadow type="math_number">
-                      <field name="NUM">72</field>
-                  </shadow>
-              </value>
-              <value name="mouth">
-                  <shadow type="math_number">
-                      <field name="NUM">128</field>
-                  </shadow>
-              </value>
-              <value name="throat">
-                  <shadow type="math_number">
-                      <field name="NUM">128</field>
-                  </shadow>
-              </value>
           </block>
-          <block type="speech_sing">
+          <block type="speech_sing_easy">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">#115DOWWWW</field>
                   </shadow>
               </value>
-              <value name="pitch">
-                  <shadow type="math_number">
-                      <field name="NUM">64</field>
-                  </shadow>
-              </value>
-              <value name="speed">
-                  <shadow type="math_number">
-                      <field name="NUM">72</field>
-                  </shadow>
-              </value>
-              <value name="mouth">
-                  <shadow type="math_number">
-                      <field name="NUM">128</field>
-                  </shadow>
-              </value>
-              <value name="throat">
-                  <shadow type="math_number">
-                      <field name="NUM">128</field>
-                  </shadow>
-              </value>
           </block> 
-          <block type="speech_prenounce">
+          <block type="speech_prenounce_easy">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">/HEH5EH4EH3EH2EH2EH3EH4EH5EHLP.</field>
-                  </shadow>
-              </value>
-              <value name="pitch">
-                  <shadow type="math_number">
-                      <field name="NUM">64</field>
-                  </shadow>
-              </value>
-              <value name="speed">
-                  <shadow type="math_number">
-                      <field name="NUM">72</field>
-                  </shadow>
-              </value>
-              <value name="mouth">
-                  <shadow type="math_number">
-                      <field name="NUM">128</field>
-                  </shadow>
-              </value>
-              <value name="throat">
-                  <shadow type="math_number">
-                      <field name="NUM">128</field>
                   </shadow>
               </value>
           </block>
@@ -1058,34 +925,12 @@ function init() {
               <shadow type="pins_builtinimg"></shadow>
             </value>
           </block>
-          <block type="microbit_display_show_animation">
-            <value name="images">
-              <shadow type="pins_imglist"></shadow>
-            </value>
-            <value name="delay">
-                <shadow type="math_number">
-                  <field name="NUM">120</field>
-                </shadow>
-            </value>
-          </block>
           <block type="microbit_image_create"></block>
-          <block type="image_shift">
-            <value name="val">
-              <shadow type="math_number">
-                <field name="NUM">1</field>
-              </shadow>
-            </value>
-            <value name="img">
+          <block type="image_arithmetic">
+            <value name="A">
               <shadow type="pins_builtinimg"></shadow>
-            </value>
-          </block>
-          <block type="microbit_image_copy">
-            <value name="image">
-              <shadow type="pins_builtinimg"></shadow>
-            </value>
-          </block>
-          <block type="microbit_image_invert">
-            <value name="image">
+            </value>>
+            <value name="B">
               <shadow type="pins_builtinimg"></shadow>
             </value>
           </block>
@@ -1108,18 +953,6 @@ function init() {
               <shadow type="pins_brightness"></shadow>
             </value>
           </block>
-          <block type="microbit_image_builtins"></block>
-          <block type="image_arithmetic">
-            <value name="A">
-              <shadow type="pins_builtinimg"></shadow>
-            </value>>
-            <value name="B">
-              <shadow type="pins_builtinimg"></shadow>
-            </value>
-          </block>
-          <block type="microbit_display_on"></block>
-          <block type="microbit_display_off"></block>
-          <block type="microbit_display_is_on"></block>
           <block type="microbit_display_clear"></block>
           <block type="display_rgb_init">
             <value name="PIN">

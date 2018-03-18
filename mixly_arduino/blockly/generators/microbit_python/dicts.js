@@ -56,7 +56,7 @@ Blockly.Python.dicts_create_with = function() {
   code[n] = "'"+keyName+"':"+Blockly.Python.valueToCode(this, 'ADD' + n,
     Blockly.Python.ORDER_NONE) || default_value;
   }
-  Blockly.Python.definitions_['var_declare'+varName] = varName+'= '+ '{' + code.join(', ') + '}\n';
+  Blockly.Python.setups_['var_declare'+varName] = varName+' = '+ '{' + code.join(', ') + '}\n';
   //var code =''+varName+'['+size+"]"+'='+ '{' + code.join(', ') + '};\n';
   //Blockly.Python.setups_['setup_lists'+varName] = code;
   return '';
@@ -95,15 +95,17 @@ Blockly.Python.dicts_delete = function() {
     Blockly.Variables.NAME_TYPE);
   //var size=window.parseFloat(this.getFieldValue('SIZE'));
   var text=this.getFieldValue('KEY');
-  Blockly.Python.definitions_['var_declare'+varName] ="del "+ varName+"['" + text + "']\n";
-  return '';
+  // Blockly.Python.setups_['var_declare'+varName] ="del "+ varName+"['" + text + "']\n";
+  // return '';
+  var code = "del "+ varName+"['" + text + "']\n";
+  return code;
 };
 
 Blockly.Python.dicts_clear = function() {
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
       Blockly.Variables.NAME_TYPE);
   var code=varName+'.clear()';
-  return [code,Blockly.Python.ORDER_ATOMIC];
+  return code;
 };
 
 Blockly.Python.dicts_items = function() {
@@ -131,5 +133,5 @@ Blockly.Python.dicts_deldict = function() {
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
       Blockly.Variables.NAME_TYPE);
   var code='del '+varName;
-  return [code,Blockly.Python.ORDER_ATOMIC];
+  return code;
 };

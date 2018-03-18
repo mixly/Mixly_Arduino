@@ -43,6 +43,39 @@ Blockly.Blocks['microbit_music_play_built_in'] = {
   }
 };
 
+
+Blockly.Blocks['microbit_music_play_built_in_easy'] = {
+  init : function () {
+    this.jsonInit({
+      "colour" : Blockly.Blocks.actuator.HUE,
+      "nextStatement" : null,
+      "previousStatement" : null,
+      "inputsInline": true,
+      "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/music.html#built-in-melodies",
+      "tooltip" : "Play one of the built-in melodies. Indicate if you need to wait before continuing or continuously loop the melody.",
+      "message0" : Blockly.MIXLY_MICROBIT_Play_built_in_melody_easy,
+      "args0" : [{
+          "name" : "melody",
+          "options" : [["DADADADUM", "DADADADUM"], ["ENTERTAINER", "ENTERTAINER"], ["PRELUDE", "PRELUDE"], ["ODE", "ODE"], ["NYAN", "NYAN"], ["RINGTONE", "RINGTONE"], ["FUNK", "FUNK"], ["BLUES", "BLUES"], ["BIRTHDAY", "BIRTHDAY"], ["WEDDING", "WEDDING"], ["FUNERAL", "FUNERAL"], ["PUNCHLINE", "PUNCHLINE"], ["PYTHON", "PYTHON"], ["BADDY", "BADDY"], ["CHASE", "CHASE"], ["BA_DING", "BA_DING"], ["WAWAWAWAA", "WAWAWAWAA"], ["JUMP_UP", "JUMP_UP"], ["JUMP_DOWN", "JUMP_DOWN"], ["POWER_UP", "POWER_UP"], ["POWER_DOWN", "POWER_DOWN"]],
+          "type" : "field_dropdown"
+        }, {
+          // "check" : "Number",
+          "type" : "input_value",
+          "name" : "PIN"
+        }, {
+          "type" : "input_dummy"
+        }, {
+          "type" : "input_dummy"
+        }, {
+          "type" : "input_dummy"
+        }, {
+          "type" : "input_dummy"
+        }
+      ]
+    });
+  }
+};
+
 // Blockly.Blocks['microbit_music_pitch'] = {
 //   init : function () {
 //     this.jsonInit({
@@ -68,7 +101,7 @@ Blockly.Blocks['microbit_music_play_built_in'] = {
 // };
 
 
-Blockly.Blocks.microbit_music_pitch={
+Blockly.Blocks.microbit_music_pitch_delay={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendValueInput("PIN", Number)
@@ -85,6 +118,30 @@ init:function(){
         .appendField(Blockly.MIXLY_DURATION);
   this.appendDummyInput("")
     .appendField(Blockly.MIXLY_DELAY_MS);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE2);
+  }
+};
+
+Blockly.Blocks.microbit_music_pitch={
+init:function(){
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendValueInput("PIN", Number)
+        .appendField(Blockly.MIXLY_MBOT_TONE)
+        .appendField(Blockly.MIXLY_PIN)
+        .setCheck(Number);
+    this.appendValueInput('pitch')
+        .setCheck(Number)
+        //.setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_FREQUENCY);
+    // this.appendValueInput('duration')
+    //     .setCheck(Number)
+    //     //.setAlign(Blockly.ALIGN_RIGHT)
+    //     .appendField(Blockly.MIXLY_DURATION);
+  // this.appendDummyInput("")
+  //   .appendField(Blockly.MIXLY_DELAY_MS);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -120,6 +177,36 @@ Blockly.Blocks['microbit_music_play_list_of_notes'] = {
           "checked" : false,
           "type" : "field_checkbox",
           "name" : "loop"
+        }
+      ]
+    });
+  }
+};
+
+Blockly.Blocks['microbit_music_play_list_of_notes_easy'] = {
+  init : function () {
+    this.jsonInit({
+      "colour" : Blockly.Blocks.actuator.HUE,
+      "nextStatement" : null,
+      "previousStatement" : null,
+      "inputsInline": true,
+      "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/music.html#musical-notation",
+      "tooltip" : "Play a list of notes expressed in the special music language. Indicate if you need to wait before continuing or continuously loop the melody.",
+      "message0" : Blockly.MIXLY_MICROBIT_Play_notes,
+      "args0" : [{
+          "check" : "List",
+          "type" : "input_value",
+          "name" : "notes"
+        }, {
+          // "check" : "Number",
+          "type" : "input_value",
+          "name" : "PIN"
+        }, {
+          "type" : "input_dummy"
+        }, {
+          "type" : "input_dummy"
+        }, {
+          "type" : "input_dummy"
         }
       ]
     });
@@ -250,6 +337,42 @@ Blockly.Blocks['speech_prenounce'] = {
         this.appendValueInput('throat')
             .setCheck(Number)
             .appendField(Blockly.MICROBIT_SPEECH_throat);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Blocks['speech_say_easy'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendValueInput('VAR')
+          .setCheck(String)
+          .appendField(Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Blocks['speech_sing_easy'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendValueInput('VAR')
+          .setCheck(String)
+          .appendField(Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Blocks['speech_prenounce_easy'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendValueInput('VAR')
+          .setCheck(String)
+          .appendField(Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
