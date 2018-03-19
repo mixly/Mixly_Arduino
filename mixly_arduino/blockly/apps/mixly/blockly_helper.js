@@ -21,6 +21,16 @@ function backup_blocks() {
   }
 }
 
+function clear_blocks_from_storage(){
+    var itl = setInterval(function(){
+        if(window){
+            window.localStorage.removeItem('arduino'); 
+            Blockly.mainWorkspace.clear();
+            clearInterval(itl);
+        }
+    }, 200);
+}
+
 /**
  * Restore code blocks from localStorage.
  */
