@@ -1306,3 +1306,6 @@ Blockly.MICROBIT_DISPLAY_UNION = 'union';
 Blockly.MICROBIT_DISPLAY_INTERSECTION = 'intersection';
 Blockly.MICROBIT_DISPLAY_MINUS = 'minus';
 Blockly.MICROBIT_DISPLAY_MERGE_SHAPE = 'merge shape';
+
+Blockly.MIXLY_MICROBIT_TYPE_INT = 'Integer';
+Blockly.MIXLY_MICROBIT_TYPE_FLOAT = 'float';

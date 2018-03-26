@@ -1,4 +1,4 @@
-﻿<html manifest=node.manifest>
+<html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
   <title>Mixly mircrobit</title>
@@ -13,7 +13,7 @@
   <script src="../../generators/microbit_python/python.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
   <script type="text/javascript" src="drag.js"></script>
-  <script type="text/javascript" src="code.js"></script> 
+  <script type="text/javascript" src="code.js"></script>
   <!--------from BlocklyDuino------------>
   <script type="text/javascript" src="Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
@@ -38,6 +38,7 @@
     <script src="../../blocks/microbit_python/serial.js"></script>
     <script src="../../blocks/microbit_python/communicate.js"></script>
     <script src="../../blocks/microbit_python/sensor.js"></script>
+    <script src="../../blocks/microbit_python/storage.js"></script>
     <script src="../../blocks/microbit_python/actuator.js"></script>
     <script src="../../blocks/microbit_python/display.js"></script>
     <script src="../../blocks/microbit_python/procedures.js"></script>
@@ -56,6 +57,7 @@
     <script src="../../generators/microbit_python/serial.js"></script>
     <script src="../../generators/microbit_python/communicate.js"></script>
     <script src="../../generators/microbit_python/sensor.js"></script>
+    <script src="../../generators/microbit_python/storage.js"></script>
     <script src="../../generators/microbit_python/actuator.js"></script>
     <script src="../../generators/microbit_python/display.js"></script>
     <script src="../../generators/microbit_python/factory.js"></script>
@@ -273,7 +275,7 @@ function init() {
 	  //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
       editor_side_code.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
 	}
-	
+
   auto_save_and_restore_blocks();
   //load from url parameter (single param)
   //http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
@@ -313,7 +315,7 @@ function init() {
 			  <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
             </td>
               <td class="tabmode">
-                <a class="viewLeft" id="viewMode1" href="index_board_microbit[py].html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;" >普通视图</a><span class="viewRight" id="viewMode2" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</span>
+                <a class="viewLeft" id="viewMode1" href="index_board_microbit[py].html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;" >ÆÕÍ¨ÊÓÍ¼</a><span class="viewRight" id="viewMode2" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">¸ß¼¶ÊÓÍ¼</span>
               </td>
       <script type="text/javascript">
         var viewMode1 = document.getElementById('viewMode1');
@@ -455,7 +457,7 @@ function init() {
           </block>
           <block type="controls_forEach">
               <value name="LIST">
-                  <shadow type="LIST">         
+                  <shadow type="LIST">
                   </shadow>
               </value>
           </block>
@@ -477,6 +479,8 @@ function init() {
               </value>
           </block>
           <block type="reset"></block>
+          <block type="controls_TypeLists"></block>
+          <block type="controls_uname"></block>
           <!-- <block type="raw_block"></block> -->
       </category>
       <category id="catMath" colour="230">
@@ -791,7 +795,7 @@ function init() {
                   </shadow>
               </value>
           </block>
-          <block type="lists_sort"></block> 
+          <block type="lists_sort"></block>
           <block type="lists_reverse"></block>
       </category>
           <category id="catDicts" colour="0">
@@ -806,7 +810,7 @@ function init() {
               </value>
           </block>
           <block type="dicts_delete"></block>
-          <block type="dicts_clear"></block>  
+          <block type="dicts_clear"></block>
           <block type="dicts_items"></block>
           <block type="dicts_values"></block>
           <block type="dicts_length"></block>
@@ -893,6 +897,92 @@ function init() {
                       <field name="NUM">0</field>
                   </shadow>
               </value>
+          </block>
+      </category>
+      <category id="catStorage" colour="0">
+          <block type="storage_fileopen">
+             <value name="FILENAME">
+                <shadow type="text">
+                    <field name="TEXT">filename.txt</field>
+                </shadow>
+             </value>
+            <value name="FILE">
+                <shadow type="variables_get">
+                    <field name="VAR">f</field>
+                </shadow>
+            </value>
+          </block>
+          <block type="storage_file_write">
+              <value name="data">
+                  <shadow type="text">
+                      <field name="TEXT">microbit</field>
+                  </shadow>
+              </value>
+            <value name="FILE">
+                <shadow type="variables_get">
+                    <field name="VAR">f</field>
+                </shadow>
+            </value>
+          </block>
+          <block type="storage_get_contents">
+            <value name="FILE">
+                <shadow type="variables_get">
+                    <field name="VAR">f</field>
+                </shadow>
+            </value>
+             <value name="SIZE">
+                 <shadow type="math_number">
+                     <field name="NUM">0</field>
+                 </shadow>
+             </value>
+          </block>
+          <block type="storage_get_a_line">
+            <value name="FILE">
+                <shadow type="variables_get">
+                    <field name="VAR">f</field>
+                </shadow>
+            </value>
+             <value name="SIZE">
+                 <shadow type="math_number">
+                     <field name="NUM">0</field>
+                 </shadow>
+             </value>
+          </block>
+          <block type="storage_can_write_ornot">
+            <value name="FILE">
+                <shadow type="variables_get">
+                    <field name="VAR">f</field>
+                </shadow>
+            </value>
+          </block>
+          <block type="storage_get_filename">
+            <value name="FILE">
+                <shadow type="variables_get">
+                    <field name="VAR">f</field>
+                </shadow>
+            </value>
+          </block>
+          <block type="storage_close_file">
+            <value name="FILE">
+                <shadow type="variables_get">
+                    <field name="VAR">f</field>
+                </shadow>
+            </value>
+          </block>
+          <block type="storage_list_all_files"> </block>
+          <block type="storage_delete_file">
+             <value name="FILE">
+                <shadow type="text">
+                    <field name="TEXT">filename.txt</field>
+                </shadow>
+             </value>
+          </block>
+          <block type="storage_get_file_size">
+             <value name="FILE">
+                <shadow type="text">
+                    <field name="TEXT">filename.txt</field>
+                </shadow>
+             </value>
           </block>
       </category>
       <category id="catSensor" colour="40">
@@ -1034,7 +1124,7 @@ function init() {
                       <field name="NUM">128</field>
                   </shadow>
               </value>
-          </block> 
+          </block>
           <block type="speech_prenounce">
               <value name="VAR">
                   <shadow type="text">
@@ -1181,6 +1271,33 @@ function init() {
               </shadow>
             </value>
           </block>
+          <block type="microbit_display_show_string">
+            <value name="images">
+              <shadow type="text">
+                  <field name="TEXT">hello</field>
+              </shadow>
+            </value>
+            <value name="delay">
+                <shadow type="math_number">
+                  <field name="NUM">120</field>
+                </shadow>
+            </value>
+          </block>
+          <block type="microbit_display_scroll_string">
+            <value name="images">
+              <shadow type="text">
+                  <field name="TEXT">hello</field>
+              </shadow>
+            </value>
+            <value name="delay">
+                <shadow type="math_number">
+                  <field name="NUM">120</field>
+                </shadow>
+            </value>
+          </block>
+
+
+
 <!--           <block type="display_rgb2">
             <value name="PIN">
               <shadow type="pins_digital" />

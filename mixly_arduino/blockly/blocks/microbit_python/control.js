@@ -168,7 +168,7 @@ Blockly.Blocks.controls_flow_statements = {
 Blockly.Blocks.controls_flow_statements.OPERATORS =
     [[Blockly.LANG_CONTROLS_FLOW_STATEMENTS_OPERATOR_BREAK, 'BREAK'],
      [Blockly.LANG_CONTROLS_FLOW_STATEMENTS_OPERATOR_CONTINUE, 'CONTINUE']];
-	 
+
 Blockly.Blocks.controls_millis = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
@@ -750,6 +750,31 @@ Blockly.Blocks.base_type = {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput("DATA")
         .appendField(Blockly.MICROBIT_PYTHON_TYPE);
+    this.setInputsInline(true);
+    this.setOutput(true);
+    this.setTooltip(Blockly.MICROBIT_PYTHON_TYPE);
+  }
+};
+
+Blockly.Blocks.controls_TypeLists = {
+    init: function() {
+        this.setColour(Blockly.Blocks.loops.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE)
+            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_TYPE_INT, "int"],
+              [Blockly.MIXLY_MICROBIT_TYPE_FLOAT, "float"],[Blockly.MIXLY_MICROBIT_TYPE_STRING, "string"],[Blockly.MIXLY_MICROBIT_TYPE_LIST, "list"],[Blockly.MIXLY_MICROBIT_TYPE_TUPLE, "tuple"],[Blockly.MIXLY_MICROBIT_TYPE_DICT,"dict"],[Blockly.MIXLY_MICROBIT_TYPE_SETS,"sets"],[Blockly.MIXLY_MICROBIT_TYPE_IMAGE,"image"]]), "type");
+            //整数、浮点数、字符串、列表、元组、字典、集合、图像不太对, unfinished
+        this.setInputsInline(true);
+        this.setOutput(true);
+    }
+};
+
+Blockly.Blocks.controls_uname = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME);
+
     this.setInputsInline(true);
     this.setOutput(true);
     this.setTooltip(Blockly.MICROBIT_PYTHON_TYPE);

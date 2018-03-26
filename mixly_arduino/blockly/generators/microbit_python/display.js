@@ -177,7 +177,6 @@ Blockly.Python.display_rgb=function(){
   var value_bvalue = Blockly.Python.valueToCode(this, 'BVALUE', Blockly.Python.ORDER_ATOMIC);
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_neopixel'] = 'import neopixel';
-  
   var code = 'np['+value_led+'-1] = ('+value_rvalue+', '+value_gvalue+', '+value_bvalue+')\n';
   code+='np.show()\n';
   return code;
@@ -219,4 +218,25 @@ Blockly.Python['image_arithmetic'] = function(a) {
   return [code, Blockly.Python.ORDER_MEMBER];
 };
 
+Blockly.Python['microbit_display_show_string'] = function(block) {
+  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+  var value_images = Blockly.Python.valueToCode(block, 'images', Blockly.Python.ORDER_MEMBER) || 'hello';
+  var number_delay = Blockly.Python.valueToCode(block, 'delay', Blockly.Python.ORDER_ATOMIC);
+  var checkbox_wait = block.getFieldValue('wait') == 'TRUE' ? 'True' : 'False';
+  var checkbox_loop = block.getFieldValue('loop') == 'TRUE' ? 'True' : 'False';
+  var checkbox_clear = block.getFieldValue('clear') == 'TRUE' ? 'True' : 'False';
+  var code = 'display.show(' + value_images + ', delay=' + number_delay + ', wait=' + checkbox_wait + ', loop=' + checkbox_loop + ', clear=' + checkbox_clear + ')\n';
+  return code;
+};
+
+Blockly.Python['microbit_display_scroll_string'] = function(block) {
+  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+  var value_images = Blockly.Python.valueToCode(block, 'images', Blockly.Python.ORDER_MEMBER) || 'hello';
+  var number_delay = Blockly.Python.valueToCode(block, 'delay', Blockly.Python.ORDER_ATOMIC);
+  var checkbox_wait = block.getFieldValue('wait') == 'TRUE' ? 'True' : 'False';
+  var checkbox_loop = block.getFieldValue('loop') == 'TRUE' ? 'True' : 'False';
+  var checkbox_clear = block.getFieldValue('clear') == 'TRUE' ? 'True' : 'False';
+  var code = 'display.show(' + value_images + ', delay=' + number_delay + ', wait=' + checkbox_wait + ', loop=' + checkbox_loop + ', clear=' + checkbox_clear + ')\n';
+  return code;
+};
 

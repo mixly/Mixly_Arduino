@@ -202,3 +202,15 @@ Blockly.Python.base_type = function () {
     var code = 'type(' + data + ')';
     return [code,, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.controls_TypeLists = function(){
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    var type = this.getFieldValue('type');
+    // Blockly.Python.definitions_['func_type' + type] = code;
+    return [type, Blockly.Python.ORDER_ATOMIC];
+}
+
+Blockly.Python.controls_uname = function () {
+    Blockly.Python.definitions_['import_os'] = 'import os';
+    return 'os.uname()';
+};

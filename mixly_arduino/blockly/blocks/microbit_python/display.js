@@ -89,7 +89,7 @@ Blockly.Blocks.microbit_display_show_image = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendValueInput('PIN',String)
-        // .setCheck(String)
+        //.setCheck(microbit_image)
         .appendField(Blockly.MIXLY_MICROBIT_Show_image);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -513,3 +513,86 @@ Blockly.Blocks['image_arithmetic'] = {
     this.setInputsInline(true);
   }
 };
+
+Blockly.Blocks['microbit_display_show_string'] = {
+  init : function () {
+    this.jsonInit({
+      "colour" : Blockly.Blocks.display.HUE,
+      "inputsInline": true,
+      "nextStatement" : null,
+      "previousStatement" : null,
+      "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/display.html#microbit.display.show",
+      "tooltip" : "Display the list of images as an animation with a certain delay between each frame. Indicate if you need to wait before continuing, continuously loop the animation and clear the display when finished.",
+      "message0" : Blockly.MIXLY_MICROBIT_SHOW_STRING,
+      "args0" : [{
+          "check" : String,
+          "type" : "input_value",
+          "name" : "images"
+        }, {
+          "type" : "input_value",
+          "name" : "delay"
+        }, {
+          "type" : "input_dummy"
+        }, {
+          "checked" : true,
+          "type" : "field_checkbox",
+          "name" : "wait"
+        }, {
+          "type" : "input_dummy"
+        }, {
+          "checked" : false,
+          "type" : "field_checkbox",
+          "name" : "loop"
+        }, {
+          "type" : "input_dummy"
+        }, {
+          "checked" : false,
+          "type" : "field_checkbox",
+          "name" : "clear"
+        }
+      ]
+    });
+  }
+};
+
+Blockly.Blocks['microbit_display_scroll_string'] = {
+  init : function () {
+    this.jsonInit({
+      "colour" : Blockly.Blocks.display.HUE,
+      "inputsInline": true,
+      "nextStatement" : null,
+      "previousStatement" : null,
+      "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/display.html#microbit.display.show",
+      "tooltip" : "Display the list of images as an animation with a certain delay between each frame. Indicate if you need to wait before continuing, continuously loop the animation and clear the display when finished.",
+      "message0" : Blockly.MIXLY_MICROBIT_Scroll_string,
+      "args0" : [{
+          "check" : String,
+          "type" : "input_value",
+          "name" : "images"
+        }, {
+          "type" : "input_value",
+          "name" : "delay"
+        }, {
+          "type" : "input_dummy"
+        }, {
+          "checked" : true,
+          "type" : "field_checkbox",
+          "name" : "wait"
+        }, {
+          "type" : "input_dummy"
+        }, {
+          "checked" : false,
+          "type" : "field_checkbox",
+          "name" : "loop"
+        }, {
+          "type" : "input_dummy"
+        }, {
+          "checked" : false,
+          "type" : "field_checkbox",
+          "name" : "clear"
+        }
+      ]
+    });
+  }
+};
+

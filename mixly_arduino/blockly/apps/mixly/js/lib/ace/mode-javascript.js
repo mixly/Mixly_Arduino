@@ -9,7 +9,7 @@ ace.define("ace/mode/doc_comment_highlight_rules",["require","exports","module",
 				"decodeURIComponent|encodeURI|encodeURIComponent|eval|isFinite|isNaN|parseFloat|"+
 				"parseInt|JSON|Math|this|arguments|prototype|window|document",
 			keyword:
-				//¹Ø¼ü×Ö²¹³äµ½ÕâÀï£¬·ÛÉ«£¬²ÎÕÕPython£»ÉÏÃæµÄkeyword²»Òª¼ÓÒıºÅ
+				//å…³é”®å­—è¡¥å……åˆ°è¿™é‡Œï¼Œç²‰è‰²ï¼Œå‚ç…§Pythonï¼›ä¸Šé¢çš„keywordä¸è¦åŠ å¼•å·
 				"const|yield|import|get|set|async|await|break|case|catch|continue|default|"+
 				"delete|do|else|finally|for|function|if|in|of|instanceof|new|return|switch|throw|"+
 				"try|typeof|let|var|while|with|debugger|__parent__|__count__|escape|unescape|with|"+
@@ -22,10 +22,10 @@ ace.define("ace/mode/doc_comment_highlight_rules",["require","exports","module",
 			"constant.language.boolean":
 				"true|false",
 			"support.function":
-				//º¯Êı²¹³äµ½ÕâÀï£¬×ÏÉ«£¬²ÎÕÕPython
+				//å‡½æ•°è¡¥å……åˆ°è¿™é‡Œï¼Œç´«è‰²ï¼Œå‚ç…§Python
 				"alert",
 			"support.thing":
-				//¶ÔÏó²¹³äµ½ÕâÀï£¬ºÚÉ«£¬²ÎÕÕPython
+				//å¯¹è±¡è¡¥å……åˆ°è¿™é‡Œï¼Œé»‘è‰²ï¼Œå‚ç…§Python
 				"radio|basic|game|item|control"
 			},"identifier"),
 		n="case|do|else|finally|in|instanceof|return|throw|try|typeof|yield|void",

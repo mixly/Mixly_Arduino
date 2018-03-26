@@ -1302,3 +1302,6 @@ Blockly.MICROBIT_DISPLAY_UNION = ' Las Naciones Unidas ';
 Blockly.MICROBIT_DISPLAY_INTERSECTION = ' La intersección ';
 Blockly.MICROBIT_DISPLAY_MINUS = ' La deducción ';
 Blockly.MICROBIT_DISPLAY_MERGE_SHAPE = ' Forma de fusión ';
+
+Blockly.MIXLY_MICROBIT_TYPE_INT = 'Entero';
+Blockly.MIXLY_MICROBIT_TYPE_FLOAT = 'float';
