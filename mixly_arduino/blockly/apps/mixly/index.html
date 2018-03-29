@@ -775,6 +775,25 @@ function init() {
           </shadow>
         </value>
 	  </block>
+	  	<block type="RFID_init"></block>   <!--初始化-->
+		<block type="RFID_on"></block>   <!--如果侦测到信号那么执行XXX-->
+		<block type="RFID_readcardnum"></block>  <!--读取卡号-->
+		<block type="RFID_in"></block>		<!-- 如果卡号和XX一致，那么执行XXX-->
+		<block type="RFID_writecarddata">
+			<value name="address1">
+				  <shadow type="math_number">
+					<field name="NUM">0</field>
+				  </shadow>
+			</value>
+		</block>   <!--写入卡数据块内容-->
+		<block type="RFID_readcarddata">
+			<value name="address">     
+				 <shadow type="math_number">
+					<field name="NUM">0</field>
+				  </shadow>
+			</value>
+		</block>   <!--读取卡数据块内容-->
+		<block type="RFID_off"></block>			<!--关机---->
 	</category>
 	<category id="catStorage" colour="0">
 	  <block type="store_sd_write">

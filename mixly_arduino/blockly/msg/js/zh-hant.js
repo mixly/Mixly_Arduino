@@ -1309,8 +1309,87 @@ Blockly.MICROBIT_DISPLAY_UNION = '聯合';
 Blockly.MICROBIT_DISPLAY_INTERSECTION = '相交';
 Blockly.MICROBIT_DISPLAY_MINUS = '減除';
 Blockly.MICROBIT_DISPLAY_MERGE_SHAPE = '合併形狀';
+Blockly.Msg.DICTS_CREATE_EMPTY_TITLE = "初始化為空字典";
+Blockly.Msg.DICTS_CREATE_EMPTY_TOOLTIP = "返回一個空字典，長度為 0，不包含任何資料記錄";
+Blockly.Msg.DICTS_CREATE_WITH_CONTAINER_TITLE_ADD = "字典";
+Blockly.Msg.DICTS_CREATE_WITH_CONTAINER_TOOLTIP = "增加、刪除或重新排列各部分以此重新配置這個字典塊。";
+Blockly.Msg.DICTS_CREATE_WITH_INPUT_WITH = "初始化字典為";
+Blockly.Msg.DICTS_CREATE_WITH_ITEM_TITLE = "條目"
+Blockly.Msg.DICTS_CREATE_WITH_ITEM_TOOLTIP = "將一個項添加到字典中。";
+Blockly.Msg.DICTS_CREATE_WITH_TOOLTIP = "建立一個具有任意數量專案的字典。";
+Blockly.Msg.DICTS_CREATE_WITH_ITEM_KEY= "key"
+Blockly.Msg.DICT_KEYS = "獲取所有鍵值";
+Blockly.Msg.DICTS_KEYS_TOOLTIP = "返回一個清單，包括一個字典所有的鍵";
+Blockly.Msg.DICTS_GET_FROM_DICTS = "從字典";
+Blockly.Msg.DICTS_GET_IN = "中獲取鍵值";
+Blockly.Msg.DICTS_GET_VALUE = "對應值";
+Blockly.Msg.DICTS_GET_TOOLTIP = "訪問字典中某個鍵的對應值";
+Blockly.Msg.DICTS_ADD_in_DICT = "在字典";
+Blockly.Msg.DICTS_ADD = "中添加或修改條目 鍵值";
+Blockly.Msg.DICTS_ADD_VALUE = "對應值";
+Blockly.Msg.DICTS_ADD_OR_CHANGE_TOOLTIP = "在字典中添加或刪除條目";
+Blockly.Msg.DICTS_DELETE_IN = "中刪除條目 鍵值";
+Blockly.Msg.DICTS_DELETE_VALUE = "及對應值";
+Blockly.Msg.DICTS_DELETE_TOOLTIP = "刪除字典中某個條目";
+Blockly.Msg.DICT_CLEAR = "清空字典中所有陣列";
+Blockly.Msg.DICT_ITEMS = "字典轉化為陣列"; 
+Blockly.Msg.DICTS_ITEMS_TOOLTIP = "返回一個清單，包括一個字典可遍歷的所有鍵和對應值";
+Blockly.Msg.DICT_VALUES = "獲取所有鍵對應的值";
+Blockly.Msg.DICTS_VALUES_TOOLTIP = "返回一個清單，包括一個字典所有鍵的對應值";
+Blockly.Msg.DICTS_LENGTH_TOOLTIP = "返回字典的長度，即鍵的個數";
+Blockly.Msg.DICT_DELDICT = "刪除字典";
+Blockly.Msg.MATH_BIN='二進位';
 
 Blockly.MIXLY_MICROBIT_TYPE_INT = '整數';
 Blockly.MIXLY_MICROBIT_TYPE_FLOAT = '浮點數';
+Blockly.MIXLY_MICROBIT_TYPE_STRING = "字串";
+Blockly.MIXLY_MICROBIT_TYPE_LIST = "列表";
+Blockly.MIXLY_MICROBIT_TYPE_TUPLE = "元組";
+Blockly.MIXLY_MICROBIT_TYPE_DICT = "字典";
+Blockly.MIXLY_MICROBIT_TYPE_SETS = "集合";
+Blockly.MIXLY_MICROBIT_TYPE_IMAGE = "圖像";
+
+Blockly.MIXLY_MICROBIT_PY_STORAGE_OPEN_FILE = "打開文件";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE = "模式";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_READ = "讀"
+Blockly.MIXLY_MICROBIT_PY_STORAGE_WRITE = "寫"
+Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_READ = "二進位讀";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_WRITE = "二進位寫";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_AS = "為";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE = "將";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_WRITE = "寫入文件";
+
+
+Blockly.MIXLY_MICROBIT_PY_STORAGE_FROM_FILE = '從文件';
+Blockly.MIXLY_MICROBIT_PY_STORAGE_NO_MORE_THAN_SIZE = "讀取內容 不超過";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE_NO_MORE_THAN_SIZE = "讀取一行內容 不超過"
+Blockly.MIXLY_MICROBIT_PY_STORAGE_CHARACTER = "字元";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE = "文件";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_CAN_WRITE_ORNOT = "是否可寫";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_GET = "獲取";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_FILENAME = "的檔案名";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_CLOSE_FILE = "關閉文件";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_LIST_ALL_FILES = "列出所有檔";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_DELETE_FILE = "刪除檔";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_GET_FILE_SIZE = "獲得文件";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_SIZE = "大小";
+
+Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE = "資料類型";
+Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME = "當前系統資訊";
+
+Blockly.MIXLY_MICROBIT_SHOW_STRING = "逐字顯示字串 %1 延時 %2 毫秒 %3 等待 %4 %5 迴圈 %6 %7 清除 %8";
+Blockly.MIXLY_MICROBIT_Scroll_string = "滾動顯示字串 %1 延時 %2 毫秒 %3 等待 %4 %5 迴圈 %6 %7 清除 %8";
+
+Blockly.MIXLY_COMMUNICATION_RFID_INITIAL = "初始化rfid為";
+Blockly.MIXLY_COMMUNICATION_RFID_ON_DETECTED = "偵測到信號";
+Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM = "rfid所讀卡的卡號";
+Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM_IS = "RFID偵測到的卡號為";
+Blockly.MIXLY_COMMUNICATION_RFID_WRITE = "RFID寫卡";
+Blockly.MIXLY_COMMUNICATION_DATA_BLOCK = "資料塊";
+Blockly.MIXLY_COMMUNICATION_WRITE_NUM = "寫入資料為";
+Blockly.MIXLY_COMMUNICATION_RFID_TOOLTIP = "這是RFID的讀卡";
+Blockly.MIXLY_COMMUNICATION_RFID_READ = "RFID讀取";
+Blockly.MIXLY_COMMUNICATION_DATA_FROM = "的數據";
+Blockly.MIXLY_COMMUNICATION_RFID_OFF = "rfid停止偵測";
 
 

@@ -183,3 +183,138 @@ Blockly.Blocks.spi_transfer = {
         this.setInputsInline(true);
     }
 }
+
+//RFID
+Blockly.Blocks.RFID_init={
+	init: function() {
+    this.setColour(Blockly.Blocks.communicate.HUE);
+	this.appendDummyInput("")
+	    .appendField(Blockly.MIXLY_COMMUNICATION_RFID_INITIAL)
+		.appendField("SDA")
+		.appendField(new Blockly.FieldDropdown([["10", "10"]]), "PORT1")
+	    .appendField("SCK")
+		.appendField(new Blockly.FieldDropdown([["13", "13"]]), "PORT2")
+		.appendField("MOSI")
+		.appendField(new Blockly.FieldDropdown([["11", "11"]]), "PORT3")
+		.appendField("MISO")
+	    .appendField(new Blockly.FieldDropdown([["12", "12"]]), "PORT4");
+	this.setPreviousStatement(true);
+    this.setNextStatement(true);
+	//this.setOutput(true, Number);
+	//var thisBlock = this;
+   
+  }
+};
+
+Blockly.Blocks.RFID_on = {
+  init: function () {
+    this.appendDummyInput("")
+      .appendField("RFID")
+      .appendField(Blockly.MIXLY_COMMUNICATION_RFID_ON_DETECTED);
+    this.appendStatementInput("do_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(Blockly.Blocks.communicate.HUE);
+    this.setTooltip('');
+  }
+};
+
+
+//读卡号
+Blockly.Blocks.RFID_readcardnum={
+	init: function() {
+    this.setColour(Blockly.Blocks.communicate.HUE);
+	this.appendDummyInput("")
+	    .appendField(Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM)
+	this.setOutput(true, String);
+	var thisBlock = this;
+   
+  }
+};
+
+//串口打印卡号
+/* Blockly.Blocks.RFID_serialprintcardnum = {
+   init: function() {
+    this.setColour(Blockly.Blocks.communicate.HUE);
+    this.appendDummyInput("")
+		.appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+        .appendField('打印RFID卡号');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  }
+}; */
+
+
+Blockly.Blocks.RFID_in = {
+  init: function () {
+    this.appendValueInput("uid_")
+      .appendField(Blockly.Msg.CONTROLS_IF_MSG_IF)
+      .appendField(Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM_IS);
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.communicate.HUE);
+  }
+};
+
+//写数据块
+Blockly.Blocks.RFID_writecarddata={
+	init: function() {
+    this.setColour(Blockly.Blocks.communicate.HUE);
+	this.appendValueInput("address1")
+      .appendField(Blockly.MIXLY_COMMUNICATION_RFID_WRITE)
+      .appendField(Blockly.MIXLY_COMMUNICATION_DATA_BLOCK)
+	this.appendDummyInput("")
+      .appendField(Blockly.MIXLY_COMMUNICATION_WRITE_NUM)
+	  .appendField(new Blockly.FieldTextInput('mylist'), 'data1')
+	this.setPreviousStatement(true);
+    this.setNextStatement(true);
+	this.setTooltip(Blockly.MIXLY_COMMUNICATION_RFID_TOOLTIP);
+  }
+};
+
+
+//读数据块的内容
+Blockly.Blocks.RFID_readcarddata={
+	init: function() {
+    this.setColour(Blockly.Blocks.communicate.HUE);
+	this.appendValueInput("address")
+	    .appendField(Blockly.MIXLY_COMMUNICATION_RFID_READ)
+		.appendField(Blockly.MIXLY_COMMUNICATION_DATA_BLOCK)
+	this.appendDummyInput("")
+		.appendField(Blockly.MIXLY_COMMUNICATION_DATA_FROM)
+	this.setOutput(true, Number);
+	var thisBlock = this;
+   
+  }
+};
+
+/* //串口打印数据内容
+Blockly.Blocks.RFID_serialprintcarddata = {
+   init: function() {
+    this.setColour(Blockly.Blocks.communicate.HUE);
+    this.appendValueInput("address")
+		.appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+        .appendField("打印RFID数据块");
+	this.appendDummyInput("")
+	    .appendField("内容")
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  }
+}; */
+
+//关闭RFID
+Blockly.Blocks.RFID_off={
+	init: function() {
+    this.setColour(Blockly.Blocks.communicate.HUE);
+	this.appendDummyInput("")
+	    .appendField(Blockly.MIXLY_COMMUNICATION_RFID_OFF)
+	//this.setOutput(true, Number);
+	this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+	var thisBlock = this;
+   
+  }
+};
