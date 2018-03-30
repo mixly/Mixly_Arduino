@@ -154,3 +154,18 @@ Blockly.Arduino.RTC_set_date = function () {
   code += RTCName + '.setDOW('+ year + ','+ month + ','+ day +');\n';
   return code;
 }
+//传感器-重力感应块-获取数据
+Blockly.Arduino.ADXL345 = function() {
+  Blockly.Arduino.definitions_['include_Mixly'] = '#include "Mixly.h"';
+  Blockly.Arduino.definitions_['var_ADXL345'] = 'ADXL345 accel;';
+  Blockly.Arduino.setups_['setup_ADXL345-A'] = 'Wire.begin();';
+  Blockly.Arduino.setups_['setup_ADXL345-B'] = 'accel.init_ADXL345();';
+  var dropdown_type = this.getFieldValue('ADXL345_PIN');
+  var code = '';
+  if (dropdown_type == "xa") code += 'accel.X_angle()';
+  if (dropdown_type == "ya") code += 'accel.Y_angle()';
+  if (dropdown_type == "x") code += 'accel.getAccelerationX()';
+  if (dropdown_type == "y") code += 'accel.getAccelerationY()';
+  if (dropdown_type == "z") code += 'accel.getAccelerationZ()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

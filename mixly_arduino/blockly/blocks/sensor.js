@@ -269,3 +269,22 @@ Blockly.Blocks.RTC_set_date = {
     this.setNextStatement(true, null);
   }
 };
+
+var ADXL345_GETAB = [
+  [Blockly.MIXLY_ADXL345_X, "x"],
+  [Blockly.MIXLY_ADXL345_Y, "y"],
+  [Blockly.MIXLY_ADXL345_Z, "z"],
+  [Blockly.MIXLY_ADXL345_XA, "xa"],
+  [Blockly.MIXLY_ADXL345_YA, "ya"]
+  //, [Blockly.MIXLY_ADXL345_ZA, "za"]
+];
+//传感器-重力感应块-获取数据
+Blockly.Blocks.ADXL345 = {
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput("").appendField(Blockly.MIXLY_ADXL345);
+    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(ADXL345_GETAB), "ADXL345_PIN");
+    this.setInputsInline(true);
+    this.setOutput(true);
+   }
+};

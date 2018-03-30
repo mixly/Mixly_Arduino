@@ -487,7 +487,13 @@ function init() {
                     </shadow>
                 </value>
             </block>
-            <block type="math_random_seed"></block>
+            <block type="math_random_seed">
+                <value name="NUM">
+                    <shadow type="math_number">
+                        <field name="NUM">997</field>
+                    </shadow>
+                </value>
+            </block>
             <block type="math_random_int">
                 <value name="FROM">
                     <shadow type="math_number">
@@ -760,6 +766,9 @@ function init() {
                     <shadow type="pins_digital"></shadow>
                 </value>
             </block>
+			<block type="ADXL345">
+		    </block>
+			
               <!--DS302-->
 			     <block type="DS1302_init">
                 <value name="RST">

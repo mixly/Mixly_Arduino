@@ -1018,6 +1018,14 @@ Blockly.MIXLY_RTCINIT = 'Inicializar modulo RTC CLOCK DS1307 ';
 Blockly.MIXLY_RTCGETTIME = 'Leer la hora del Modulo RTC CLOCK';
 Blockly.MIXLY_RTCSETTIME = 'Establecer el tiempo de Module RTC CLOCK';
 Blockly.MIXLY_RTCSETDATE = 'Fecha de creación del Modulo RTC CLOCK';
+
+Blockly.MIXLY_ADXL345 = 'Acceleration_ADXL345';
+Blockly.MIXLY_ADXL345_X = 'Aceleración del eje X';
+Blockly.MIXLY_ADXL345_Y = 'Aceleración del eje Y';
+Blockly.MIXLY_ADXL345_Z = 'Aceleración del eje Z';
+Blockly.MIXLY_ADXL345_XA = 'ángulo del eje X';
+Blockly.MIXLY_ADXL345_YA = 'Ángulo del eje Y';
+Blockly.MIXLY_ADXL345_ZA = 'Ángulo del eje Z';
 //////////// microbit js ///////////////////
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='es gesto ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='cuando la serie de datos que contengan recevied ';

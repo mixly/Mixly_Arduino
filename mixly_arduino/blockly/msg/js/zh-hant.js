@@ -1025,6 +1025,16 @@ Blockly.MIXLY_RTCGETTIME = '從RTC時鐘模組獲取';
 Blockly.MIXLY_RTCSETTIME = '設置RTC時鐘模組時間：';
 Blockly.MIXLY_RTCSETDATE = '設置RTC時鐘模組日期：';
 
+
+Blockly.MIXLY_ADXL345 = '重力感應塊_ADXL345';
+Blockly.MIXLY_ADXL345_X ='X軸加速度';
+Blockly.MIXLY_ADXL345_Y ='Y軸加速度';
+Blockly.MIXLY_ADXL345_Z ='Z軸加速度';
+Blockly.MIXLY_ADXL345_XA ='X軸角度';
+Blockly.MIXLY_ADXL345_YA ='Y軸角度';
+Blockly.MIXLY_ADXL345_ZA ='Z軸角度';
+
+
 //microbit javascript
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='發生手勢 ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='當 Serial 收到的資料包含 ';

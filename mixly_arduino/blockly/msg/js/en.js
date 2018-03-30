@@ -1022,6 +1022,16 @@ Blockly.MIXLY_RTCINIT = 'Initialize DS1307 RTC clock module';
 Blockly.MIXLY_RTCGETTIME = 'from RTC clock module get';
 Blockly.MIXLY_RTCSETTIME = 'Set time of RTC clock module';
 Blockly.MIXLY_RTCSETDATE = 'Set date of RTC clock module';
+
+Blockly.MIXLY_ADXL345 = 'Acceleration_ADXL345';
+Blockly.MIXLY_ADXL345_X= 'X-axis acceleration';
+Blockly.MIXLY_ADXL345_Y= 'Y-axis acceleration';
+Blockly.MIXLY_ADXL345_Z=  'Z-axis acceleration';
+Blockly.MIXLY_ADXL345_XA=  'X-axis angle';
+Blockly.MIXLY_ADXL345_YA=  'Y-axis angle';
+Blockly.MIXLY_ADXL345_ZA =  'Z-axis angle';
+
+
 //////////// microbit js ///////////////////
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='Is gesture ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='When Serial recevied data containing ';

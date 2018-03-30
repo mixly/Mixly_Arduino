@@ -143,6 +143,23 @@ Blockly.Blocks['char_to_ascii'] = {
 
 Blockly.Blocks['number_to_text'] = {
     init: function () {
+      var TO_INT_FLOAT =
+        [[Blockly.Msg.MATH_BIN, 'BIN'],
+        [Blockly.Msg.MATH_OCT, 'OCT'],
+        [Blockly.Msg.MATH_DEC, 'DEC'],
+        [Blockly.Msg.MATH_HEX, 'HEX']];
+        this.setColour(Blockly.Blocks.texts.HUE);
+        this.appendValueInput('VAR')
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_TOSTRING)
+            .appendField(new Blockly.FieldDropdown(TO_INT_FLOAT), 'TOWHAT');
+        this.setOutput(true, String);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_TOTEXT);
+    }
+};
+
+Blockly.Blocks['number_to_text_'] = {
+    init: function () {
         this.setColour(Blockly.Blocks.texts.HUE);
         this.appendValueInput('VAR')
             .setCheck(Number)

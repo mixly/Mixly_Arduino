@@ -74,7 +74,7 @@ Blockly.Python.lists_create_with_text2 = function() {
     Blockly.Variables.NAME_TYPE);
   //var size=window.parseFloat(this.getFieldValue('SIZE'));
   var text=this.getFieldValue('TEXT');
-  Blockly.Python.setups_['var_declare'+varName] = varName+' s= '+ '[' + text + ']\n';
+  Blockly.Python.setups_['var_declare'+varName] = varName+' = '+ '[' + text + ']\n';
   return '';
 };
 //ok

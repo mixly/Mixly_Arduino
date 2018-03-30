@@ -8,5 +8,5 @@
 #include "Adafruit_LEDBackpack.h" //for 88点阵
 #include "Matrix.h" //for 88点阵
 #include "RTC.h" //for RTC时钟组件
-
+#include "ADXL345.h" //for 三轴加速度
 #endif

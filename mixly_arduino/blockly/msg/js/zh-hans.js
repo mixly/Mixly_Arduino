@@ -1024,6 +1024,16 @@ Blockly.MIXLY_RTCINIT = '初始化时钟模块DS1307';
 Blockly.MIXLY_RTCGETTIME = '从RTC时钟模块获取';
 Blockly.MIXLY_RTCSETTIME = '设置RTC时钟模块时间：';
 Blockly.MIXLY_RTCSETDATE = '设置RTC时钟模块日期：';
+
+Blockly.MIXLY_ADXL345 = '重力感应块_ADXL345';
+Blockly.MIXLY_ADXL345_X ='X轴加速度';
+Blockly.MIXLY_ADXL345_Y ='Y轴加速度';
+Blockly.MIXLY_ADXL345_Z ='Z轴加速度';
+Blockly.MIXLY_ADXL345_XA ='X轴角度';
+Blockly.MIXLY_ADXL345_YA ='Y轴角度';
+Blockly.MIXLY_ADXL345_ZA ='Z轴角度';
+  
+
 //microbit javascript
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='发生手势 ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='当 Serial 收到的数据包含 ';
@@ -1341,6 +1351,9 @@ Blockly.Msg.DICTS_VALUES_TOOLTIP = "返回一个列表，包括一个字典所�
 Blockly.Msg.DICTS_LENGTH_TOOLTIP = "返回字典的长度，即键的个数";
 Blockly.Msg.DICT_DELDICT = "删除字典";
 Blockly.Msg.MATH_BIN='二进制';
+Blockly.Msg.MATH_DEC='十进制';
+Blockly.Msg.MATH_OCT='八进制';
+Blockly.Msg.MATH_HEX='十六进制';
 
 Blockly.MIXLY_MICROBIT_TYPE_INT = '整数';
 Blockly.MIXLY_MICROBIT_TYPE_FLOAT = '浮点数';

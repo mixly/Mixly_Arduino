@@ -183,3 +183,13 @@ Blockly.Blocks['sensor_magnetic'] = {
         this.setInputsInline(true);
     }
 };
+
+Blockly.Blocks['sensor_distance_hrsc04'] = {
+    init: function(){
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_CHAOSHENGBO)
+        this.setOutput(true, Number);
+        this.setInputsInline(true);
+    }
+};

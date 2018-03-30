@@ -357,15 +357,15 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background-size: 100% auto; 
 }
 span#span_blocks, span#span_arduino, select#languageMenu {
-    font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';
+    font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial', 'SimHei';
 }
 
 span.blocklyTreeLabel {
-    font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';
+    font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial', 'SimHei';
 }
 
 text.blocklyText {
-    font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';
+    font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial', 'SimHei';
 }
 
 @font-face {
@@ -375,4 +375,8 @@ text.blocklyText {
 
 .blocklyHtmlInput {
 	font-family: 'YaHei Consolas Hybrid';
+}
+
+#side_code,.content,.ace_editor,.ace-xcode {
+    font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial', 'SimHei';
 }
