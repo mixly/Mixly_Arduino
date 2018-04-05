@@ -56,24 +56,23 @@ Blockly.Blocks['logic_compare'] = {
    * Prevent mismatched types from being compared.
    * @this Blockly.Block
    */
-  onchange: function() {
-    if (!this.workspace) {
-      // Block has been deleted.
-      return;
-    }
+  onchange: function(e) {
     var blockA = this.getInputTargetBlock('A');
     var blockB = this.getInputTargetBlock('B');
-    // Kick blocks that existed prior to this change if they don't match.
+    // Disconnect blocks that existed prior to this change if they don't match.
     if (blockA && blockB &&
         !blockA.outputConnection.checkType_(blockB.outputConnection)) {
       // Mismatch between two inputs.  Disconnect previous and bump it away.
+      // Ensure that any disconnections are grouped with the causing event.
+      Blockly.Events.setGroup(e.group);
       for (var i = 0; i < this.prevBlocks_.length; i++) {
         var block = this.prevBlocks_[i];
         if (block === blockA || block === blockB) {
-          block.setParent(null);
+          block.unplug();
           block.bumpNeighbours_();
         }
       }
+      Blockly.Events.setGroup(false);
     }
     this.prevBlocks_[0] = blockA;
     this.prevBlocks_[1] = blockB;

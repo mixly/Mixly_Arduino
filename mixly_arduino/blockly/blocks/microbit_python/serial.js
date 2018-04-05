@@ -64,7 +64,7 @@ Blockly.Blocks['serial_any'] = {
     this.setColour(Blockly.Blocks.serial.HUE);
   this.appendDummyInput()
         .appendField("Serial " + Blockly.MIXLY_SERIAL_AVAILABLE);
-  this.setOutput(true, String);
+  this.setOutput(true, Boolean);
   this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERIAL_READ_STR);
   }
 };

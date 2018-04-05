@@ -220,10 +220,28 @@ function getBBox_(element) {
 /**
  * Initialize Blockly.  Called on page load.
  */
+var editor;
+var editor_side_code;
 function init() {
   //window.onbeforeunload = function() {
   //  return 'Leaving this page will result in the loss of your work.';
   //};
+  editor = ace.edit("content_arduino");
+  editor.setTheme("ace/theme/xcode");
+  editor.getSession().setMode("ace/mode/python");
+  editor.setFontSize(17);
+  editor.setShowPrintMargin(false);
+  editor.setOptions({
+    enableBasicAutocompletion: true,
+    enableSnippets: true,
+    enableLiveAutocompletion: true
+  });
+  editor_side_code = ace.edit("side_code");
+  editor_side_code.setTheme("ace/theme/xcode");
+  editor_side_code.getSession().setMode("ace/mode/python");
+  editor_side_code.setFontSize(17);
+  editor_side_code.setShowPrintMargin(false);
+  editor_side_code.setReadOnly(true);
 
   var container = document.getElementById('content_area');
   var onresize = function(e) {
