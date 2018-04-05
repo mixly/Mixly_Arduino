@@ -1371,25 +1371,6 @@ function init() {
   })(window, document);
 
   </script>
-  <script>
-      ace.require("ace/ext/language_tools");
-      var editor = ace.edit("content_arduino");
-      editor.setTheme("ace/theme/xcode");
-      editor.getSession().setMode("ace/mode/python");
-      editor.setFontSize(17);
-      editor.setShowPrintMargin(false);
-      editor.setOptions({
-          enableBasicAutocompletion: true,
-          enableSnippets: true,
-          enableLiveAutocompletion: true
-      });
-      var editor_side_code = ace.edit("side_code");
-      editor_side_code.setTheme("ace/theme/xcode");
-      editor_side_code.getSession().setMode("ace/mode/python");
-      editor_side_code.setFontSize(17);
-      editor_side_code.setShowPrintMargin(false);
-      editor_side_code.setReadOnly(true);
-  </script>
     <div id="firmware" style="display: none;">:020000040000FA
 :1000000000400020ED530100295401002B54010051
 :1000100000000000000000000000000000000000E0
