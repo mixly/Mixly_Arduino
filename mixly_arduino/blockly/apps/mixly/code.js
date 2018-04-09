@@ -437,7 +437,10 @@ Code.initLanguage = function() {
   languageMenu.addEventListener('change', Code.changeLanguage, true);
   
   var categories = ['catInOut', 'catControl', 'catMath', 'catText', 'catLists', 'catMicropyLists','catDicts',
-                    'catLogic','catSerialPort','catGroup','catStorage','catSensor','catActuator','catMonitor', 'catVar','catFun','catEthernet','catEthernet_init','catEthernet_clinet','catSense','catSense2','catLuxe', 'catGame', 'catSystem' ];
+                    'catLogic','catSerialPort','catGroup','catStorage','catSensor','catActuator','catMonitor',
+                    'catVar','catFun','catEthernet','catEthernet_init','catEthernet_clinet','catSense','catSense2',
+                    'catLuxe', 'catGame', 'catSystem', 'catSet', 'catTurtle', 'catTuple'
+  ];
   for (var i = 0, cat; cat = categories[i]; i++) {
 	if(document.getElementById(cat)!=null){
 		document.getElementById(cat).setAttribute('name', MSG[cat]);
