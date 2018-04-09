@@ -722,6 +722,8 @@ var MSG = {
   catMath: "Math",
   catText: "Text",
   catLists: "Lists",
+  catMicropyLists: "Lists",
+  catDicts: "Dictory",
   catLogic: "Logic",
   catSerialPort:"SerialPort",
   catGroup: "Communicate",
@@ -743,8 +745,10 @@ var MSG = {
   viewNormal:"Normal",
   viewAdvanced:"Advanced",
   catGame:"Game",
-  catSystem:"System"
-  
+  catSystem:"System",
+  catTurtle:"Turtle",
+  catTuple:"Tuple",
+  catSet:"Set"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='Returns high or low voltage.';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='Returns digital value of a specific Port';
@@ -1398,3 +1402,121 @@ Blockly.MIXLY_COMMUNICATION_RFID_TOOLTIP = "This is RFID's reading card";
 Blockly.MIXLY_COMMUNICATION_RFID_READ = "RFID read";
 Blockly.MIXLY_COMMUNICATION_DATA_FROM = "data from";
 Blockly.MIXLY_COMMUNICATION_RFID_OFF = "rfid stop detection";
+//mixpy
+Blockly.blockpy_inout_input='Receive input';
+Blockly.blockpy_inout_raw_input='Receive string input';
+Blockly.blockpy_inout_print='Print';
+Blockly.Msg.INOUT_input_TOOLTIP='Receive keyboard input, end of carriage return, prompt prompt is provided to the user';
+Blockly.Msg.INOUT_raw_input_TOOLTIP='Receive keyboard input in string format, end of carriage return, prompt is input prompt for user';
+Blockly.blockpy_turtle_create='Create Tortoise';
+Blockly.blockpy_turtle_create_TOOLTIP='Create a new turtle';
+Blockly.blockpy_forward='Forward';
+Blockly.blockpy_backward='Backward';
+Blockly.blockpy_turtle_move_num='steps';
+Blockly.blockpy_turtle_move='Move';
+Blockly.MIXLY_TOOLTIP_TURTEL_FORWARD='Command Turtle Moves Forward';
+Blockly.MIXLY_TOOLTIP_TURTEL_BACKWARD='Command turtle to move backwards';
+Blockly.blockpy_left='Left';
+Blockly.blockpy_right='right';
+Blockly.blockpy_turtle_rotate_num='angle';
+Blockly.blockpy_turtle_rotate='rotate';
+Blockly.MIXLY_TOOLTIP_TURTEL_LEFT='Command Tortoise Rotates Left';
+Blockly.MIXLY_TOOLTIP_TURTEL_RIGHT='Command Tortoise Rotates Right';
+Blockly.blockpy_setheading='Orientation';
+Blockly.blockpy_setheading_degree='degree';
+Blockly.blockpy_time_time='timestamp of current time';
+Blockly.Msg.blockpy_SET_CREATE_WITH_TOOLTIP = "Create a collection with any number of elements.";
+Blockly.Msg.blockpy_SET_CREATE_EMPTY_TITLE = "Initialize to empty collection";
+Blockly.Msg.blockpy_SET_CREATE_WITH_INPUT_WITH = 'Initial collection is';
+Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TITLE_ADD = "set";
+Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TOOLTIP = "Add, delete, or rearrange parts to reconfigure this collection block.";
+Blockly.Msg.blockpy_SET_VARIABLES_NAME = "Elements";
+Blockly.Msg.blockpy_SET_CREATE_WITH_ITEM_TOOLTIP = "Add an element to the collection.";
+Blockly.Msg.SET_LENGTH_TOOLTIP = "return the number of elements in the collection.";
+Blockly.Msg.SET_CLEAR = "Empty all elements in the collection";
+Blockly.Msg.LISTS_TO_SET = "convert to collection";
+Blockly.blockpy_USE_LIST='will list';
+Blockly.Msg.LISTS_TO_SET_TOOLTIP = "Create a collection from a list";
+Blockly.blockpy_set_union='consolidation';
+Blockly.blockpy_set_intersection='Intersection';
+Blockly.blockpy_set_difference='difference';
+Blockly.blockpy_set='collection';
+Blockly.blockpy_and_set='and collection';
+Blockly.blockpy_set_get_operate='Fetch';
+Blockly.MIXLY_TOOLTIP_SET_UNION = 'return the union of two collections';
+Blockly.MIXLY_TOOLTIP_SET_INTERSECTION= 'Return the intersection of two sets';
+Blockly.MIXLY_TOOLTIP_SET_DIFFERENCE= 'returns the difference of two sets';
+Blockly.MIXLY_blockpy_set_add='Add';
+Blockly.Msg.SET_ADD_TOOLTIP = "Add an element to the collection. If this element is already in the collection, it has no effect.";
+Blockly.MIXLY_blockpy_set_discard='Remove';
+Blockly.Msg.SET_DISCARD_TOOLTIP = "Remove an element from the collection. If this element is not in the collection, it has no effect.";
+Blockly.blockpy_set_update='and update';
+Blockly.MIXLY_TOOLTIP_SET_UPDATE = 'take the union of two sets and assign it to the previous set';
+Blockly.MIXLY_TOOLTIP_SET_INTERSECTION_UPDATE = 'take the intersection of two sets, and assign to the previous set';
+Blockly.MIXLY_TOOLTIP_SET_DIFFERENCE_UPDATE = 'take the difference of two sets, and assign to the previous set';
+Blockly.blockpy_set_of="'s";
+Blockly.blockpy_is_set = 'is a collection';
+Blockly.blockpy_set_sub='Subset';
+Blockly.blockpy_set_super = 'superset';
+Blockly.MIXLY_TOOLTIP_SET_SUB = 'to determine whether the previous set is a subset of the next set, return Boolean value';
+Blockly.MIXLY_TOOLTIP_SET_SUPER = 'to determine whether the previous set is a superset of the next set, return boolean';
+Blockly.blockpy_turtle_clear='Clear screen';
+Blockly.blockpy_turtle_reset='Reset';
+Blockly.blockpy_turtle_home='Back to origin';
+Blockly.blockpy_turtle_drawing='Trail';
+Blockly.MIXLY_TOOLTIP_TURTEL_CLEAR='Clear all traces of the turtle, turtle position and status unchanged';
+Blockly.MIXLY_TOOLTIP_TURTEL_RESET='Clear all traces of the turtle, Tortoise state reset to initial state';
+Blockly.MIXLY_TOOLTIP_TURTEL_HOME='The turtle returned to the origin and restored to its original state, the trace remains unchanged';
+Blockly.blockpy_turtle_penup='Pick up';
+Blockly.blockpy_turtle_pendown='drop pen';
+Blockly.blockpy_turtle_blank=' ';
+Blockly.MIXLY_TOOLTIP_TURTEL_PENUP='Put the pen, the turtle will not leave traces when moving';
+Blockly.MIXLY_TOOLTIP_TURTEL_PENDOWN='pen down, the turtle will leave a trail when moving';
+Blockly.blockpy_turtle_size='thickness';
+Blockly.blockpy_turtle_speed='Speed';
+Blockly.blockpy_turtle_set='Set brush';
+Blockly.blockpy_turtle_set_num='yes';
+Blockly.MIXLY_TOOLTIP_TURTEL_SIZE='Set the thickness of turtle traces';
+Blockly.MIXLY_TOOLTIP_TURTEL_SPEED="Set the turtle''s movement speed when painting";
+Blockly.blockpy_turtle_circle='Circle';
+Blockly.blockpy_turtle_dot='point';
+Blockly.blockpy_turtle_draw='Draw Graph';
+Blockly.blockpy_turtle_radius='Radius';
+Blockly.MIXLY_TOOLTIP_TURTEL_CIRCLE='Draw a hollow circle';
+Blockly.MIXLY_TOOLTIP_TURTEL_DOT='Draw a Solid Dot';
+Blockly.blockpy_turtle_show='Show turtle';
+Blockly.blockpy_turtle_hide='Hidden Tortoise';
+Blockly.MIXLY_TOOLTIP_TURTEL_SHOW='Show turtles as arrows';
+Blockly.MIXLY_TOOLTIP_TURTEL_HIDE='Hidden arrow indicating turtle';
+Blockly.blockpy_turtle_goto='Move to coordinate x';
+Blockly.blockpy_turtle_goto_y='y';
+Blockly.blockpy_turtle_goto_position='Location';
+Blockly.blockpy_turtle_setx='x';
+Blockly.blockpy_turtle_sety='y';
+Blockly.MIXLY_TOOLTIP_TURTEL_SETX='Turtle moves horizontally to a given coordinate position';
+Blockly.MIXLY_TOOLTIP_TURTEL_SETY='Turtle moves vertically to a given coordinate position';
+Blockly.blockpy_turtle_setxy='Settings';
+Blockly.blockpy_turtle_setxy_num='Coordinates';
+Blockly.blockpy_turtle_bgcolor='Set Background Color';
+Blockly.blockpy_turtle_pencolor='Set brush color';
+Blockly.blockpy_turtle_fillcolor='Set brush fill color';
+Blockly.Msg.TUPLE_CREATE_WITH_TOOLTIP = "Create a tuple with any number of items.";
+Blockly.Msg.TUPLE_CREATE_EMPTY_TITLE = "Initialize to empty tuple";
+Blockly.Msg.TUPLE_CREATE_WITH_INPUT_WITH = "initial tuple";
+Blockly.Msg.TUPLE_CREATE_WITH_CONTAINER_TITLE_ADD = "Tuple";
+Blockly.Msg.TUPLE_CREATE_WITH_CONTAINER_TOOLTIP = "Add, delete, or rearrange parts to reconfigure this tuple block.";
+Blockly.Msg.TUPLE_CREATE_WITH_ITEM_TOOLTIP = "Add an element to an element.";
+Blockly.TUPLE_GET_INDEX_TOOLTIP = 'Return the value of the specified position in the tuple. ';
+Blockly.Msg.TUPLE_LENGTH_TOOLTIP = "return the length of the tuple.";
+Blockly.Msg.TUPLE_DEL = "Delete tuple";
+Blockly.Msg.TUPLE_JOIN = "Connect";
+Blockly.Msg.TUPLE_JOIN_TOOLTIP = "Connect two tuples to form a new tuple.";
+Blockly.Msg.LISTS_TO_TUPLE = "Convert to tuple";
+Blockly.Msg.LISTS_TO_TUPLE_TOOLTIP = "Create tuples from the list";
+Blockly.blockpy_TUPLE_MAX = 'Maximum';
+Blockly.blockpy_TUPLE_MIN = 'Minimum';
+Blockly.MIXLY_TOOLTIP_TUPLE_MAX = 'return the maximum value of the elements in the tuple';
+Blockly.MIXLY_TOOLTIP_TUPLE_MIN = 'return the minimum value of an element in a tuple';
+Blockly.blockpy_TUPLE_GET = 'Fetch';
+Blockly.blockpy_turtle_set_size = 'Set brush thickness';
+Blockly.blockpy_turtle_set_speed = 'Set brush speed';
