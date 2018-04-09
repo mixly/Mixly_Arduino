@@ -15,4 +15,4 @@ Blockly.Python.pins_builtinimg=Blockly.Python.pins_digital;
 Blockly.Python.pins_imglist=Blockly.Python.pins_digital;
 Blockly.Python.pins_axis=Blockly.Python.pins_digital;
 Blockly.Python.pins_brightness=Blockly.Python.pins_digital;
-Blockly.Python.pins_tone_notes=Blockly.Python.pins_digital;
+Blockly.Python.pins_tone_notes = Blockly.Python.pins_digital;

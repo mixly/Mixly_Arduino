@@ -4,26 +4,6 @@ goog.provide('Blockly.Blocks.base');
 
 goog.require('Blockly.Blocks');
 
-Blockly.Blocks.RFID_init={
-	init: function() {
-    this.setColour(0);
-	this.appendDummyInput("")
-	    .appendField("初始化rfid为")
-		.appendField("SDA")
-		.appendField(new Blockly.FieldDropdown([["10", "10"]]), "PORT1")
-	    .appendField("SCK")
-		.appendField(new Blockly.FieldDropdown([["13", "13"]]), "PORT2")
-		.appendField("MOSI")
-		.appendField(new Blockly.FieldDropdown([["11", "11"]]), "PORT3")
-		.appendField("MISO")
-	    .appendField(new Blockly.FieldDropdown([["12", "12"]]), "PORT4");
-	this.setPreviousStatement(true);
-    this.setNextStatement(true);
-	//this.setOutput(true, Number);
-	//var thisBlock = this;
-   
-  }
-};
 Blockly.Blocks['inout_highlow'] = {
    init: function() {
     this.setColour(20);

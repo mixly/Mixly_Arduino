@@ -42,7 +42,7 @@ Blockly.Blocks['microbit_radio_config'] = {
       "args0" : [{
           "min" : 4,
           "value" : 32,
-          "type" : "field_number",
+          "type" : "input_value",
           "max" : 251,
           "name" : "length"
         }, {
@@ -50,7 +50,7 @@ Blockly.Blocks['microbit_radio_config'] = {
         }, {
           "min" : 1,
           "value" : 3,
-          "type" : "field_number",
+          "type" : "input_value",
           "max" : 32,
           "name" : "queue"
         }, {
@@ -58,17 +58,15 @@ Blockly.Blocks['microbit_radio_config'] = {
         }, {
           "min" : 0,
           "value" : 7,
-          "type" : "field_number",
+          "type" : "input_value",
           "max" : 100,
           "name" : "channel"
         }, {
           "type" : "input_dummy"
         }, {
-          "min" : 0,
-          "value" : 0,
-          "type" : "field_number",
-          "max" : 7,
-          "name" : "power"
+		   "name" : "power",         
+		  "options" : [['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7']],
+          "type" : "field_dropdown"
         }, {
           "type" : "input_dummy"
         }, {

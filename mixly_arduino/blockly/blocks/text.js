@@ -202,10 +202,10 @@ init: function() {
 		[Blockly.MIXLY_ENDSWITH, 'endsWith']];
     this.setColour(Blockly.Blocks.texts.HUE);
 	this.appendValueInput("STR1")
-        .setCheck(String);
+        .setCheck([String,Number]);
 	this.appendValueInput("STR2")
         .appendField(new Blockly.FieldDropdown(TEXT_DOWHAT), 'DOWHAT')
-        .setCheck(String);
+        .setCheck([String,Number]);
 	this.setOutput(true, [Boolean,Number]);
 	this.setInputsInline(true);
   }
@@ -215,10 +215,10 @@ Blockly.Blocks['text_compareTo']={
 init: function() {
     this.setColour(Blockly.Blocks.texts.HUE);
 	this.appendValueInput("STR1")
-        .setCheck(String);
+       .setCheck([String,Number]);
 	this.appendValueInput("STR2")
         .appendField(Blockly.MIXLY_COMPARETO)
-        .setCheck(String);
+       .setCheck([String,Number]);
 	this.setOutput(true, Number);
 	this.setInputsInline(true);
 	this.setTooltip(Blockly.MIXLY_COMPARETO_HELP);
