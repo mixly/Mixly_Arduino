@@ -175,9 +175,9 @@ function renderContent() {
     // an incomplete rendering due to Blockly being invisible.  Rerender.
       Blockly.mainWorkspace.render();
       var arduinoTextarea = document.getElementById('side_code');
-      //var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-      //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-      editor_side_code.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
+      var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+      var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+      editor_side_code.setValue(chinese_code, -1);
      } else if (content.id == 'content_xml') {
     var xmlTextarea = document.getElementById('content_xml');
     var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
@@ -289,9 +289,9 @@ function init() {
 	  }
 	  //更新
 	  var arduinoTextarea = document.getElementById('side_code');
-	  //var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-	  //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-      editor_side_code.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
+	  var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+      var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+      editor_side_code.setValue(chinese_code, -1);
 	}
 
   auto_save_and_restore_blocks();
