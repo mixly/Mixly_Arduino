@@ -1352,6 +1352,9 @@ Blockly.Msg.DICTS_VALUES_TOOLTIP = "返回一個清單，包括一個字典所�
 Blockly.Msg.DICTS_LENGTH_TOOLTIP = "返回字典的長度，即鍵的個數";
 Blockly.Msg.DICT_DELDICT = "刪除字典";
 Blockly.Msg.MATH_BIN='二進位';
+Blockly.Msg.MATH_DEC='十進制';
+Blockly.Msg.MATH_OCT='八進制';
+Blockly.Msg.MATH_HEX='十六進制';
 
 Blockly.MIXLY_MICROBIT_TYPE_INT = '整數';
 Blockly.MIXLY_MICROBIT_TYPE_FLOAT = '浮點數';

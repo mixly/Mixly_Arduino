@@ -1350,6 +1350,9 @@ Blockly.Msg.DICTS_VALUES_TOOLTIP = "Return a list, including the corresponding v
 Blockly.Msg.DICTS_LENGTH_TOOLTIP = "Return the length of the dictionary, the number of the keys";
 Blockly.Msg.DICT_DELDICT = "delete dictionary";
 Blockly.Msg.MATH_BIN='binary';
+Blockly.Msg.MATH_OCT='octal';
+Blockly.Msg.MATH_DEC='decimal';
+Blockly.Msg.MATH_HEX='hex';
 
 Blockly.MIXLY_MICROBIT_TYPE_INT = 'Integer';
 Blockly.MIXLY_MICROBIT_TYPE_FLOAT = 'float';
