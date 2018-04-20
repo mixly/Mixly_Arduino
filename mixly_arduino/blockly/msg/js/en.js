@@ -984,7 +984,7 @@ Blockly.MIXLY_4DIGITDISPLAY_OFF = 'Off';
 
 //TM1637
 Blockly.MIXLY_4DIGITDISPLAY_TM1637 = 'TM1637';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING = 'TM1637 Show(scroll) string';
+Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING = 'TM1637 Show(scroll) content';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING_TIP = '';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP = '';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME = 'TM1637 Show time';
@@ -1350,9 +1350,6 @@ Blockly.Msg.DICTS_VALUES_TOOLTIP = "Return a list, including the corresponding v
 Blockly.Msg.DICTS_LENGTH_TOOLTIP = "Return the length of the dictionary, the number of the keys";
 Blockly.Msg.DICT_DELDICT = "delete dictionary";
 Blockly.Msg.MATH_BIN='binary';
-Blockly.Msg.MATH_OCT='octal';
-Blockly.Msg.MATH_DEC='decimal';
-Blockly.Msg.MATH_HEX='hex';
 
 Blockly.MIXLY_MICROBIT_TYPE_INT = 'Integer';
 Blockly.MIXLY_MICROBIT_TYPE_FLOAT = 'float';

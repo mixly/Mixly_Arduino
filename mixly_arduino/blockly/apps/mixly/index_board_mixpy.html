@@ -349,9 +349,9 @@ function init() {
       </td>
     </tr>
     <tr>
-      <td height="100%" width="65%" id="content_area"></td>
-	  <td style="display:none;height:100%;width:0.4%;background: #ddd;cursor: w-resize;" id="mid_td"></td>
-	  <td width="34%" style="background-color:#eee;display:none;" id="side_code_parent">
+      <td height="100%" width="75%" id="content_area"></td>
+	  <td style="display:none;height:100%;width:0.3%;background: #ddd;cursor: w-resize;" id="mid_td"></td>
+	  <td width="25%" style="background-color:#eee;display:none;" id="side_code_parent">
           <div id="side_code_top" wrap="off" style="height:49%;">
               <div id="output_img"  wrap="off" readonly style="position: relative;height:100%;background:#f9f9f9;outline: none;overflow:auto"></div>
           </div>
@@ -387,13 +387,6 @@ function init() {
       <category id="catControl" colour="120">
         <!--  <block type="base_setup"></block>-->
           <block type="controls_end_program"></block>
-          <block type="base_delay">
-              <value name="DELAY_TIME">
-                  <shadow type="math_number">
-                      <field name="NUM">1000</field>
-                  </shadow>
-              </value>
-          </block>
           <block type="base_type">
               <value name="DATA">
                   <shadow type="math_number">
@@ -426,13 +419,6 @@ function init() {
               </value>
           </block>
           <block type="controls_whileUntil"></block>
-          <block type="controls_repeat_ext">
-              <value name="TIMES">
-                  <shadow type="math_number">
-                      <field name="NUM">10</field>
-                  </shadow>
-              </value>
-          </block>
           <block type="controls_flow_statements"></block>
           <block type="controls_millis"></block>
        <!--   <block type="Panic_with_status_code">

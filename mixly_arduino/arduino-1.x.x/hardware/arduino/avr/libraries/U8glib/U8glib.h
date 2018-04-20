@@ -715,7 +715,7 @@ class U8GLIB_LC7981_240X128 : public U8GLIB
       { }
 };
 
-// 16 bit mode required: Remove comment from "#define U8G_16BIT 1" in utility/utility/u8g.h
+// 16 bit mode required: Remove comment from "#define U8G_16BIT 1" in utility/u8g.h
 class U8GLIB_LC7981_320X64 : public U8GLIB 
 {
   public:

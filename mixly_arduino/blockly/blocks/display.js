@@ -370,8 +370,8 @@ Blockly.Blocks.display_TM1637_init = {
 Blockly.Blocks.display_TM1637_displayString = {
     init: function () {
         this.setColour(Blockly.Blocks.display.HUE);
-        this.appendValueInput("VALUE").setCheck(String).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING);
-        this.appendValueInput("Speed").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_4DIGITDISPLAY_SPEED);
+        this.appendValueInput("VALUE").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING);
+        //this.appendValueInput("Speed").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_4DIGITDISPLAY_SPEED);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

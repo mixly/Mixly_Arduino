@@ -258,9 +258,9 @@ Blockly.Arduino.display_TM1637_init = function () {
 };
 
 Blockly.Arduino.display_TM1637_displayString = function () {
-    var Speed = Blockly.Arduino.valueToCode(this, 'Speed', Blockly.Arduino.ORDER_ATOMIC);
+    //var Speed = Blockly.Arduino.valueToCode(this, 'Speed', Blockly.Arduino.ORDER_ATOMIC);
     var VALUE = Blockly.Arduino.valueToCode(this, 'VALUE', Blockly.Arduino.ORDER_ATOMIC);
-    var code = 'tm1637.displayString(' + VALUE + ','+ Speed + ');' + '\n';
+    var code = 'tm1637.display(' + VALUE + ');' + '\n';
     return code;
 };
 

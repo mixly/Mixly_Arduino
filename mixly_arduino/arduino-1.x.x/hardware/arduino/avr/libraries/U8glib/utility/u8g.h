@@ -80,9 +80,13 @@ extern "C" {
 #  if defined(__MSPGCC__)
 /* mspgcc does not have .progmem sections. Use -fdata-sections. */
 #    define U8G_FONT_SECTION(name)
-#  endif
+# endif
 #  if defined(__AVR__)
 #    define U8G_FONT_SECTION(name) U8G_SECTION(".progmem." name)
+#  endif
+#  if defined(__XTENSA__)
+//#    define U8G_FONT_SECTION(name) U8G_SECTION(".irom.text." name)
+#    define U8G_FONT_SECTION(name) U8G_SECTION(".irom0.text" )
 #  endif
 #else
 #  define U8G_NOINLINE
@@ -120,16 +124,26 @@ typedef uint8_t PROGMEM u8g_pgm_uint8_t;
 typedef uint8_t u8g_fntpgm_uint8_t;
 #define u8g_pgm_read(adr) pgm_read_byte_near(adr)
 #define U8G_PSTR(s) ((u8g_pgm_uint8_t *)PSTR(s))
+#endif
 
-#else
-
-#define U8G_PROGMEM
-#define PROGMEM
+#if defined(__XTENSA__)
+#  ifndef PROGMEM
+#    define PROGMEM __attribute__ ((section (".irom0.text")))
+#  endif
+#  define U8G_PROGMEM PROGMEM
 typedef uint8_t u8g_pgm_uint8_t;
 typedef uint8_t u8g_fntpgm_uint8_t;
-#define u8g_pgm_read(adr) (*(const u8g_pgm_uint8_t *)(adr)) 
-#define U8G_PSTR(s) ((u8g_pgm_uint8_t *)(s))
+#  define u8g_pgm_read(adr) (*(const u8g_pgm_uint8_t *)(adr)) 
+#  define U8G_PSTR(s) ((u8g_pgm_uint8_t *)(s))
+#endif
 
+#ifndef U8G_PROGMEM
+#  define U8G_PROGMEM
+#  define PROGMEM
+typedef uint8_t u8g_pgm_uint8_t;
+typedef uint8_t u8g_fntpgm_uint8_t;
+#  define u8g_pgm_read(adr) (*(const u8g_pgm_uint8_t *)(adr)) 
+#  define U8G_PSTR(s) ((u8g_pgm_uint8_t *)(s))
 #endif
   
 /*===============================================================*/
@@ -401,6 +415,7 @@ extern u8g_dev_t u8g_dev_ssd1325_nhd27oled_bw_hw_spi;
 extern u8g_dev_t u8g_dev_ssd1325_nhd27oled_bw_parallel;
 extern u8g_dev_t u8g_dev_ssd1325_nhd27oled_gr_sw_spi;
 extern u8g_dev_t u8g_dev_ssd1325_nhd27oled_gr_hw_spi;
+extern u8g_dev_t u8g_dev_ssd1325_nhd27oled_gr_parallel;
 
 extern u8g_dev_t u8g_dev_ssd1325_nhd27oled_2x_bw_sw_spi;
 extern u8g_dev_t u8g_dev_ssd1325_nhd27oled_2x_bw_hw_spi;
@@ -684,11 +699,18 @@ uint8_t u8g_com_atmega_st7920_sw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val
 uint8_t u8g_com_atmega_st7920_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);
 uint8_t u8g_com_atmega_parallel_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);    /* u8g_com_atmega_parallel.c */
 
+uint8_t u8g_com_atxmega_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);      /* u8g_com_atxmega_hw_spi.c */
+uint8_t u8g_com_atxmega_st7920_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr); /* u8g_com_atxmega_st7920_spi.c */
+
 uint8_t u8g_com_msp430_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);      /* u8g_com_msp430_hw_spi.c */
 
 uint8_t u8g_com_raspberrypi_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);                /* u8g_com_rasperrypi_hw_spi.c */
 uint8_t u8g_com_raspberrypi_ssd_i2c_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);		/* u8g_com_raspberrypi_ssd_i2c.c */
 
+uint8_t u8g_com_linux_ssd_i2c_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);             /* u8g_com_linux_ssd_i2c.c */
+
+uint8_t u8g_com_psoc5_ssd_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);   /* u8g_com_psoc5_ssd_hw_spi.c */
+uint8_t u8g_com_psoc5_ssd_hw_parallel_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr);   /* u8g_com_psoc5_ssd_hw_parallel.c */
 
 /* 
   Translation of system specific com drives to generic com names
@@ -747,7 +769,10 @@ defined(__18CXX) || defined(__PIC32MX)
 #endif
 /* ==== HW SPI, not Arduino ====*/
 #ifndef U8G_COM_HW_SPI
-#if defined(__AVR__)
+#if defined(__AVR_XMEGA__)
+#define U8G_COM_HW_SPI u8g_com_atxmega_hw_spi_fn
+#define U8G_COM_ST7920_HW_SPI u8g_com_atxmega_st7920_hw_spi_fn
+#elif defined(__AVR__)
 #define U8G_COM_HW_SPI u8g_com_atmega_hw_spi_fn
 #define U8G_COM_ST7920_HW_SPI u8g_com_atmega_st7920_hw_spi_fn
 #endif
@@ -841,6 +866,15 @@ defined(__18CXX) || defined(__PIC32MX)
 #if defined(U8G_RASPBERRY_PI)
 #define U8G_COM_SSD_I2C u8g_com_raspberrypi_ssd_i2c_fn
 #endif
+#endif
+#ifndef U8G_COM_SSD_I2C
+#if defined(U8G_LINUX)
+#define U8G_COM_SSD_I2C u8g_com_linux_ssd_i2c_fn
+#endif
+#endif
+#if defined(U8G_CYPRESS_PSOC5)
+#define U8G_COM_HW_SPI u8g_com_psoc5_ssd_hw_spi_fn
+#define U8G_COM_FAST_PARALLEL u8g_com_psoc5_ssd_hw_parallel_fn
 #endif
 
 #ifndef U8G_COM_SSD_I2C

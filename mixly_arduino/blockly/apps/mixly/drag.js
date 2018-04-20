@@ -8,14 +8,13 @@ window.addEventListener('load', function load(event) {
  var oTop = getid("content_blocks"); 
  var oTop1 = getid("content_area");
  var oBottom = getid("side_code_parent");
- var oBottom1 = getid("output_img");
  var oLine = getid("mid_td");
+ 
 
  oLine.onmousedown = function(e) {
  	var disX = (e || event).clientX;
  	oLine.left = oLine.offsetLeft;
-
- 	document.onmousemove = function(e) {
+ 	document.onmousemove = function(e) { 
  		//console.log(oBox.clientWidth + " " + oLine.style.left + " " + disX + " " + (e || event).clientX);	
   		var iT = oLine.left + ((e || event).clientX - disX);
  		var e=e||window.event,tarnameb=e.target||e.srcElement;
@@ -31,7 +30,7 @@ window.addEventListener('load', function load(event) {
   		oLine.style.left = percent  + '%';
   		Blockly.fireUiEvent(window, 'resize');
   		oBottom.style.width = ( 100 - percent ) + '%';
-        if(oBottom1 !== null) oBottom1.style.width = (oBox.clientWidth - iT) + "px";
+  		
   		return false;
  	}; 
  	document.onmouseup = function() {
@@ -53,7 +52,8 @@ window.addEventListener('load', function load(event) {
  var oTop = getid("side_code_top");
  var oBottom = getid("side_code_bottom");
  var oLine = getid("side_code_mid");
- if(oLine === null) return;
+ 
+
  oLine.onmousedown = function(e) {
  	var disY = (e || event).clientY;
  	oLine.top= oLine.offsetTop;

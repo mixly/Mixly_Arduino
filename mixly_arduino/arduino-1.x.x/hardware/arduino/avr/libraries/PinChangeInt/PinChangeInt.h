@@ -89,7 +89,9 @@ Version 2.11 (beta) Mon Nov 12 09:33:06 CST 2012
 
 	Version 1.1 Sat Dec  3 00:06:03 CST 2011
 	*/
-
+#define	detachPinChangeInterrupt(pin)				PCintPort::detachInterrupt(pin)
+#define	attachPinChangeInterrupt(pin,userFunc,mode)	PCintPort::attachInterrupt(pin, &userFunc,mode)
+#define getInterruptedPin()							PCintPort::getArduinoPin()
 #ifndef PinChangeInt_h
 #define	PinChangeInt_h
 
