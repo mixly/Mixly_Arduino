@@ -216,7 +216,7 @@ function init() {
       ace.require("ace/ext/language_tools");
       editor = ace.edit("content_arduino");
       editor.setTheme("ace/theme/xcode");
-      editor.getSession().setMode("ace/mode/python");
+      editor.getSession().setMode("ace/mode/turtle");
       editor.setFontSize(17);
       editor.setShowPrintMargin(false);
       editor.setOptions({
@@ -387,6 +387,13 @@ function init() {
       <category id="catControl" colour="120">
         <!--  <block type="base_setup"></block>-->
           <block type="controls_end_program"></block>
+          <block type="base_delay">
+              <value name="DELAY_TIME">
+                  <shadow type="math_number">
+                      <field name="NUM">1000</field>
+                  </shadow>
+              </value>
+          </block>
           <block type="base_type">
               <value name="DATA">
                   <shadow type="math_number">
@@ -419,6 +426,13 @@ function init() {
               </value>
           </block>
           <block type="controls_whileUntil"></block>
+          <block type="controls_repeat_ext">
+              <value name="TIMES">
+                  <shadow type="math_number">
+                      <field name="NUM">10</field>
+                  </shadow>
+              </value>
+          </block>
           <block type="controls_flow_statements"></block>
           <block type="controls_millis"></block>
        <!--   <block type="Panic_with_status_code">

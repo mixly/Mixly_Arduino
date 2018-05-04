@@ -45,7 +45,7 @@ var PythonHighlightRules = function() {
         // micropythonI2CFunctions
         "read|write|"+
         // micropythonUartFunctions
-        "init|any|read|readall|readline|readinto|write|"+
+        "init|any|read|readall|readline|readinto|write|writable|close|name"+
         // micropythonMusicFunctions
         "set_tempo|get_tempo|play|pitch|stop|reset|"+
         // micropythonOSFunctions
@@ -55,7 +55,12 @@ var PythonHighlightRules = function() {
         // micropythonRandomFunctions
         "getrandbits|seed|randint|randrange|choice|random|uniform|"+
         // micropythonSpeechFunctions
-        "pronounce|speech|sing|translate"
+        "pronounce|speech|sing|translate|"+
+        // pythonOtherFunctions
+        "reverse|pop|insert|append|extend|index|count|"+
+        "keys|values|"+
+        "union|intersection|difference|update|intersection_update|difference_update|"+
+        "add|discard|issubset|issuperset|mahaotian"
     );
 
     var micropythonKeywords = (
