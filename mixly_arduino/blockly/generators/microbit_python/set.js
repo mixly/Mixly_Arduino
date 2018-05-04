@@ -23,14 +23,6 @@ Blockly.Python.set_create_with = function() {
   return code;
 };
 
-Blockly.Python.set_convert_to_lists = function(){
-  var varName = Blockly.Python.valueToCode(this, 'SET', Blockly.Python.ORDER_ASSIGNMENT) || '0';
-  var argument = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
-  //var argument = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT) || '0';
-  var code=argument + '=list('  + varName + ')\n';
-  return code;
-};
-
 Blockly.Python.set_length = function() {
   var varName = Blockly.Python.valueToCode(this, 'SET', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var code='len(' +varName + ')';
@@ -92,3 +84,10 @@ Blockly.Python.set_update = function(block) {
   var code=varName+"." + 'update' + '(' + color + ')\n';
   return code;
 };
+
+Blockly.Python.set_change_to = function(){
+  var op = this.getFieldValue('OP');
+  var varName = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var code = op + '(' + varName + ')\n';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+}
