@@ -15,16 +15,25 @@ function runJS() {
  * Backup code blocks to localStorage.
  */
 function backup_blocks() {
-  if ('localStorage' in window) {
-    var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
-    window.localStorage.setItem('arduino', Blockly.Xml.domToText(xml));
+  var xml = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+  xml = Blockly.Xml.domToText(xml);
+  if ('localStorage' in window && window['localStorage'] != null) {
+      window.localStorage.setItem('arduino', xml);
+  }else{
+      //当同时打开打开两个以上（含两个）的Mixly窗口时，只有第一个打开的窗口才有window.localStorage对象，怀疑是javafx的bug.
+      //其他的窗口得通过java写cache文件来实现，否则这些窗口在普通、高级视图中进行切换时，无法加载切换之前的块
+      JSFuncs.saveToLocalStorageCache(xml);
   }
 }
 
 function clear_blocks_from_storage(){
     var itl = setInterval(function(){
         if(window){
-            window.localStorage.removeItem('arduino'); 
+            if ('localStorage' in window && window['localStorage'] != null && window.localStorage.arduino) {
+                window.localStorage.removeItem('arduino'); 
+            }else{
+                JSFuncs.saveToLocalStorageCache("<xml></xml>");
+            }
             Blockly.mainWorkspace.clear();
             clearInterval(itl);
         }
@@ -35,10 +44,13 @@ function clear_blocks_from_storage(){
  * Restore code blocks from localStorage.
  */
 function restore_blocks() {
-  if ('localStorage' in window && window.localStorage.arduino) {
-    var xml = Blockly.Xml.textToDom(window.localStorage.arduino);
-    Blockly.Xml.domToWorkspace(xml,Blockly.mainWorkspace);
+  var xml;
+  if ('localStorage' in window && window['localStorage'] != null && window.localStorage.arduino) {
+    xml = Blockly.Xml.textToDom(window.localStorage.arduino);
+  }else{
+    xml = Blockly.Xml.textToDom(JSFuncs.loadFromLocalStorageCache());
   }
+  Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
 }
 
 /**
@@ -110,7 +122,7 @@ function discard() {
 function auto_save_and_restore_blocks() {
   // Restore saved blocks in a separate thread so that subsequent
   // initialization is not affected from a failed load.
-  window.setTimeout(restore_blocks, 0);
+  window.setTimeout(restore_blocks, 200);
   // Hook a save function onto unload.
   bindEvent(window, 'unload', backup_blocks);
   tabClick(selected);
