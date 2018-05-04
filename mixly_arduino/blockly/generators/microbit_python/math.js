@@ -17,34 +17,21 @@ goog.require('Blockly.Python');
 
 Blockly.Python.math = {};
 Blockly.Python.addReservedWords("math,random,Number");
-Blockly.Python.math_number = function (a) {
-  a = parseFloat(a.getFieldValue("NUM"));
-  var b;
-  Infinity == a ? (a = 'float("inf")', b = Blockly.Python.ORDER_FUNCTION_CALL) : -Infinity == a ? (a = '-float("inf")', b = Blockly.Python.ORDER_UNARY_SIGN) : b = 0 > a ? Blockly.Python.ORDER_UNARY_SIGN : Blockly.Python.ORDER_ATOMIC;
-  return [a, b]
-};
-//ok
-Blockly.Python.math_arithmetic = function() {
-  // Basic arithmetic operators, and power.
-  var mode = this.getFieldValue('OP');
-  var tuple = Blockly.Python.math_arithmetic.OPERATORS[mode];
-  var operator = tuple[0];
-  var order = tuple[1];
-  var argument0 = Blockly.Python.valueToCode(this, 'A', order) || '0';
-  var argument1 = Blockly.Python.valueToCode(this, 'B', order) || '0';
-  var code;
-  if (!operator) {
-    code = 'Math.pow(' + argument0 + ', ' + argument1 + ')';
-    return [code, Blockly.Python.ORDER_UNARY_POSTFIX];
-  }
-  if(operator==' % '){
-    //取余必须是整数
-    //argument0='(long) ('+argument0+')';
-	//argument1='(long) ('+argument1+')';
-  }
-  code = argument0 + operator + argument1;
+Blockly.Python.math_number = function () {
+  // a = parseFloat(a.getFieldValue("NUM"));
+  // var b;
+  // Infinity == a ? (a = 'float("inf")', b = Blockly.Python.ORDER_FUNCTION_CALL) : -Infinity == a ? (a = '-float("inf")', b = Blockly.Python.ORDER_UNARY_SIGN) : b = 0 > a ? Blockly.Python.ORDER_UNARY_SIGN : Blockly.Python.ORDER_ATOMIC;
+  // return [a, b]
+
+  var code = this.getFieldValue('NUM');
+  // -4.abs() returns -4 in Dart due to strange order of operation choices.
+  // -4 is actually an operator and a number.  Reflect this in the order.
+  var order = code < 0 ?
+      Blockly.Python.ORDER_UNARY_PREFIX : Blockly.Python.ORDER_ATOMIC;
   return [code, order];
 };
+
+
 //ok
 Blockly.Python.math_bit = function() {
   var operator = this.getFieldValue('OP');;
@@ -153,7 +140,7 @@ Blockly.Python.math_single = function (a) {
 
 
 Blockly.Python.math_trig = Blockly.Python.math_single;
-Blockly.Python.math_round = Blockly.Python.math_single;
+
 //ok
 Blockly.Python.math_to_int = function() {
   Blockly.Python.definitions_.import_math = "import math";
@@ -176,51 +163,24 @@ Blockly.Python.math_max_min = function() {
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.math_random_seed = function () {
-    // Random integer between [X] and [Y].
-    Blockly.Python.definitions_.import_random = "import random";
-    // Random integer between [X] and [Y].
-    var argument0 = Blockly.Python.valueToCode(this, 'NUM',
-        Blockly.Python.ORDER_NONE) || '0';
-    var code = 'random.seed(' + argument0 +  ')'+'\n';
-    return code;
-};
 //ok
-Blockly.Python.math_random_int = function() {
+Blockly.Python.math_random = function() {
   Blockly.Python.definitions_.import_random = "import random";
   // Random integer between [X] and [Y].
+  var type = this.getFieldValue('TYPE');
   var argument0 = Blockly.Python.valueToCode(this, 'FROM',
       Blockly.Python.ORDER_NONE) || '0';
   var argument1 = Blockly.Python.valueToCode(this, 'TO',
       Blockly.Python.ORDER_NONE) || '0';
-  var code = 'random.randint(' + argument0 +  ', ' + argument1 + ')';
-
+  if (type=='int'){
+    var code = 'int(random.uniform(' + argument0 +  ', ' + argument1 + ' + 1))';
+  }else if (type=='float'){
+    var code = 'random.uniform(' + argument0 +  ', ' + argument1 + ')';  
+  }
   return [code, Blockly.Python.ORDER_UNARY_POSTFIX];
 };
-//ok
-Blockly.Python.math_random_float = function() {
-  Blockly.Python.definitions_.import_random = "import random";
-  // Random integer between [X] and [Y].
-  var argument0 = Blockly.Python.valueToCode(this, 'FROM',
-      Blockly.Python.ORDER_NONE) || '0';
-  var argument1 = Blockly.Python.valueToCode(this, 'TO',
-      Blockly.Python.ORDER_NONE) || '0';
-  var code = 'random.uniform(' + argument0 +  ', ' + argument1 + ')';
 
-  return [code, Blockly.Python.ORDER_UNARY_POSTFIX];
-};
-//ok
-Blockly.Python.math_random_boolean = function() {
-  Blockly.Python.definitions_.import_random = "import random";
-  var code = 'random.randint(0,1)';
-  return [code, Blockly.Python.ORDER_UNARY_POSTFIX];
-}
-//ok
-Blockly.Python.math_random_random = function() {
-  Blockly.Python.definitions_.import_random = "import random";
-  var code = 'random.random()';
-  return [code, Blockly.Python.ORDER_UNARY_POSTFIX];
-}
+
 //ok, if a==b or c==d, ERROR!
 Blockly.Python.base_map = function() {
   var value_num = Blockly.Python.valueToCode(this, 'NUM', Blockly.Python.ORDER_NONE);
@@ -245,8 +205,101 @@ Blockly.Python.math_constrain = function() {
   return [code, Blockly.Python.ORDER_UNARY_POSTFIX];
 };
 
-Blockly.Python.bin_to_number = function() {
-  var towhat = this.getFieldValue('TOWHAT');
-  var bin = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-  return [towhat + "(" +  bin  + ', 2)', Blockly.Python.ORDER_ATOMIC];
+
+//ok
+Blockly.Python.math_number_base_conversion = function (a) {
+  var c1 = a.getFieldValue("OP");
+  var d = Blockly.Python.valueToCode(this, 'NUM',Blockly.Python.ORDER_NONE) || '0';
+  var c2 = a.getFieldValue("OP2");
+  Blockly.Python.definitions_['import_math'] = "import math";
+  switch (c1) {
+    case "two":
+    switch (c2){
+      case "two":
+      var code = '{0:b}'+ '.' + 'format' + '(' + '0b' + '('+d +')'+')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+      case "eight":
+      var code = '{0:o}'+ '.' + 'format'+ '(' + '0b' +'('+d +')'+')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+      case "ten":
+      var code ='int'+  '(' + d +','+'2'+')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+      case "sixteen":
+      var code = '{0:x}'+ '.' + 'format' + '(' + '0b' +'('+d +')'+')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+    }
+    break;
+
+    case "eight":
+    switch (c2){
+      case "two":
+      var code = '{0:b}'+ '.' + 'format' + '(' + '0o' + '('+d +')' +')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+      case "eight":
+      var code = '{0:o}'+ '.' + 'format'+ '(' + '0o' + '('+d +')' +')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+      case "ten":
+      var code ='int'+  '(' +d +','+'8'+')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+      case "sixteen":
+      var code = '{0:x}'+ '.' + 'format' + '(' + '0o' + '('+d +')' +')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+    }
+    break;
+
+    case "ten":
+    switch (c2){
+      case "two":
+      var code = '{0:b}'+ '.' + 'format' + '('  + d  +')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+      case "eight":
+      var code = '{0:o}'+ '.' + 'format'+ '('  + d  +')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+      case "ten":
+      var code ='int'+  '(' +d +','+'10'+')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+      case "sixteen":
+      var code = '{0:x}'+ '.' + 'format' + '('  + d  +')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+    }
+    break;
+
+    case "sixteen":
+    switch (c2){
+      case "two":
+      var code = '{0:b}'+ '.' + 'format' + '(' + '0x' + '('+d +')' +')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+      case "eight":
+      var code = '{0:o}'+ '.' + 'format'+ '(' + '0x' + '('+d +')' +')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+      case "ten":
+      var code ='int'+  '(' +d +','+'16'+')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+      case "sixteen":
+      var code = '{0:x}'+ '.' + 'format' + '(' + '0x' + '('+d +')' +')';
+      return [code, Blockly.Python.ORDER_ATOMIC];
+      break;
+    }
+    break;
+
+    default:
+  }
+  
 };
+
+  

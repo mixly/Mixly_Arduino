@@ -30,26 +30,6 @@ Blockly.Python.controls_if = function (a) {
     a.getInput("ELSE") && (d = Blockly.Python.statementToCode(a, "ELSE") || Blockly.Python.PASS, c += "else:\n" + d);
     return c
 };
-//there is not switch in python
-// Blockly.Python.controls_switch_case = function () {
-//     var n = 0;
-//     var argument = Blockly.Python.valueToCode(this, 'IF' + n,
-//         Blockly.Python.ORDER_NONE) || 'null';
-//     var branch = '';
-//     var code = 'switch (' + argument + ') {\n';
-//     for (n = 1; n <= this.elseifCount_; n++) {
-//         argument = Blockly.Python.valueToCode(this, 'IF' + n,
-//           Blockly.Python.ORDER_NONE) || 'null';
-//         branch = Blockly.Python.statementToCode(this, 'DO' + n);
-//         code += ' case ' + argument + ': \n' + branch + '  break;\n';
-//     }
-//     if (this.elseCount_) {
-//         branch = Blockly.Python.statementToCode(this, 'ELSE');
-//         code += ' default:\n' + branch + '  break;\n';
-//     }
-//     code += '}';
-//     return code + '\n';
-// };
 
 //ok
 Blockly.Python.controls_for = function (a) {
@@ -97,29 +77,7 @@ Blockly.Python.controls_for = function (a) {
 
 //ok
 Blockly.Python.controls_repeat = Blockly.Python.controls_repeat_ext;
-Blockly.Python['controls_repeat_ext'] = function(block) {
-  // Repeat n times.
-  if (block.getField('TIMES')) {
-    // Internal number.
-    var repeats = String(parseInt(block.getFieldValue('TIMES'), 10));
-  } else {
-    // External number.
-    var repeats = Blockly.Python.valueToCode(block, 'TIMES',
-        Blockly.Python.ORDER_NONE) || '0';
-  }
-  if (Blockly.isNumber(repeats)) {
-    repeats = parseInt(repeats, 10);
-  } else {
-    repeats = 'int(' + repeats + ')';
-  }
-  var branch = Blockly.Python.statementToCode(block, 'DO');
-  branch = Blockly.Python.addLoopTrap(branch, block.id) ||
-      Blockly.Python.PASS;
-  var loopVar = Blockly.Python.variableDB_.getDistinctName(
-      'count', Blockly.Variables.NAME_TYPE);
-  var code = 'for ' + loopVar + ' in range(' + repeats + '):\n' + branch;
-  return code;
-};
+
 
 Blockly.Python.controls_whileUntil = function (a) {
     var b = "UNTIL" == a.getFieldValue("MODE"),
@@ -129,17 +87,6 @@ Blockly.Python.controls_whileUntil = function (a) {
     b && (c = "not " + c);
     return "while " + c + ":\n" + d
 };
-
-// Blockly.Python.controls_flow_statements = function () {
-//     // Flow statements: continue, break.
-//     switch (this.getFieldValue('FLOW')) {
-//         case 'BREAK':
-//             return 'break;\n';
-//         case 'CONTINUE':
-//             return 'continue;\n';
-//     }
-//     throw 'Unknown flow statement.';
-// };
 
 //ok
 Blockly.Python.controls_flow_statements = function (a) {
@@ -169,26 +116,6 @@ Blockly.Python.controls_millis = function () {
     var code = 'running_time()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
-
-Blockly.Python.controls_mstimer2 = function () {
-    Blockly.Python.definitions_['define_MsTimer2'] = '#include <MsTimer2.h>';
-    var time = Blockly.Python.valueToCode(this, 'TIME', Blockly.Python.ORDER_ATOMIC);
-    var funcName = 'msTimer2_func';
-    var branch = Blockly.Python.statementToCode(this, 'DO');
-    var code = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
-    Blockly.Python.definitions_[funcName] = code;
-    return 'MsTimer2::set(' + time + ', ' + funcName + ');\n';
-};
-
-Blockly.Python.controls_mstimer2_start = function () {
-    Blockly.Python.definitions_['define_MsTimer2'] = '#include <MsTimer2.h>';
-    return 'MsTimer2::start();\n';
-};
-
-Blockly.Python.controls_mstimer2_stop = function () {
-    Blockly.Python.definitions_['define_MsTimer2'] = '#include <MsTimer2.h>';
-    return 'MsTimer2::stop();\n';
-};
 //ok
 Blockly.Python.controls_end_program = function () {
     return 'while True:\n    pass';
@@ -198,14 +125,6 @@ Blockly.Python.reset = function () {
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     return 'reset()\n';
 };
-Blockly.Python.controls_interrupts = function () {
-    return 'interrupts();\n';
-};
-
-Blockly.Python.controls_nointerrupts = function () {
-    return 'noInterrupts();\n';
-};
-
 
 Blockly.Python['controls_forEach'] = function(block) {
   // For each loop.

@@ -99,15 +99,16 @@ Blockly.Variables.flyoutCategory = function(workspace) {
   // In addition to the user's variables, we also want to display the default
   // variable name at the top.  We also don't want this duplicated if the
   // user has created a variable of the same name.
-  goog.array.remove(variableList, Blockly.Msg.VARIABLES_DEFAULT_NAME);
-  variableList.unshift(Blockly.Msg.VARIABLES_DEFAULT_NAME);
+  // alert(variableList)
+  // goog.array.remove(variableList, Blockly.Msg.VARIABLES_DEFAULT_NAME);
+  // variableList.unshift(Blockly.Msg.VARIABLES_DEFAULT_NAME);
 
   var xmlList = [];
   
-  if (Blockly.Blocks['variables_declare']) {
+  if (Blockly.Blocks['variables_set']) {
 	//增加variables_declare模块
 	var block = goog.dom.createDom('block');
-    block.setAttribute('type', 'variables_declare');
+    block.setAttribute('type', 'variables_set');
 	xmlList.push(block);
   }//change tyep
     /*
@@ -118,13 +119,11 @@ Blockly.Variables.flyoutCategory = function(workspace) {
           xmlList.push(block);
       }*/
   for (var i = 0; i < variableList.length; i++) {
-    if(i==0&& !(Blockly.Python.setups_['var_declare'+'item'])){
-   		continue;
-   	}
+    // alert(variableList)
+    // if(i==0&& !(Blockly.Python.setups_['variables_set'+''])){
+   	// 	continue;
+   	// }
     if (Blockly.Blocks['variables_set']) {
-      // <block type="variables_set" gap="8">
-      //   <field name="VAR">item</field>
-      // </block>
       var block = goog.dom.createDom('block');
       block.setAttribute('type', 'variables_set');
       if (Blockly.Blocks['variables_get']) {
@@ -136,9 +135,6 @@ Blockly.Variables.flyoutCategory = function(workspace) {
       xmlList.push(block);
     }
     if (Blockly.Blocks['variables_get']) {
-      // <block type="variables_get" gap="24">
-      //   <field name="VAR">item</field>
-      // </block>
       var block = goog.dom.createDom('block');
       block.setAttribute('type', 'variables_get');
       if (Blockly.Blocks['variables_set']) {

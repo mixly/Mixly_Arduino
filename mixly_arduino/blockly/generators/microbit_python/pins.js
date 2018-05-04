@@ -16,3 +16,5 @@ Blockly.Python.pins_imglist=Blockly.Python.pins_digital;
 Blockly.Python.pins_axis=Blockly.Python.pins_digital;
 Blockly.Python.pins_brightness=Blockly.Python.pins_digital;
 Blockly.Python.pins_tone_notes = Blockly.Python.pins_digital;
+Blockly.Python.pins_radio_power = Blockly.Python.pins_digital;
+Blockly.Python.pins_radio_datarate = Blockly.Python.pins_digital;

@@ -3,6 +3,13 @@
 goog.provide('Blockly.Python.communicate');
 goog.require('Blockly.Python');
 
+Blockly.Python['radio_ons'] = function(){
+    Blockly.Python.definitions_['import_radio'] = 'import radio';
+    var type = this.getFieldValue('type');
+    var code = 'radio.'+type+'()\n';
+    return code;
+};
+
 Blockly.Python['microbit_radio_on'] = function(block) {
   Blockly.Python.definitions_['import_radio'] = 'import radio';
   var code = 'radio.on()\n';
@@ -56,6 +63,7 @@ Blockly.Python.i2c_read = function(){
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     var format = this.getFieldValue('format');
     var is_repeated = this.getFieldValue('is_repeated');
+    is_repeated = is_repeated.substring(0,1).toUpperCase()+is_repeated.substring(1).toLowerCase();
     return "i2c.read(" + address + ", " + data +  ", " + is_repeated + ")\n";
 };
 Blockly.Python.i2c_write = function(){
@@ -63,6 +71,7 @@ Blockly.Python.i2c_write = function(){
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     var format = this.getFieldValue('format');
     var is_repeated = this.getFieldValue('is_repeated');
+    is_repeated = is_repeated.substring(0,1).toUpperCase()+is_repeated.substring(1).toLowerCase();
     return "i2c.write("+ address + ", " + data + ", " + is_repeated + ")\n";
 };
 

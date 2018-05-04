@@ -24,9 +24,10 @@ Blockly.Python.storage_file_write = function () {
 }
 
 Blockly.Python.storage_get_contents = function () {
+    var mode = this.getFieldValue('MODE');
     var file = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
     var size = Blockly.Python.valueToCode(this, 'SIZE', Blockly.Python.ORDER_ATOMIC);
-    var code = file+".read(" + size + ')';
+    var code = file+'.'+mode+'(' + size + ')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 

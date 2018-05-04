@@ -25,7 +25,7 @@ Blockly.Python.procedures_defreturn = function() {
       var varName = Blockly.Python.variableDB_.getName(this.arguments_[x], Blockly.Variables.NAME_TYPE);
     args[x] = varName;
   }
-  var code = 'def ' + funcName + '(' + args.join(', ') + ') :\n' +
+  var code = 'def ' + funcName + '(' + args.join(', ') + '):\n' +
       branch + returnValue + '\n';
   code = Blockly.Python.scrub_(this, code);
   Blockly.Python.setups_[funcName] = code;
@@ -67,10 +67,24 @@ Blockly.Python.procedures_ifreturn = function() {
   var code = 'if (' + condition + ') :\n';
   if (this.hasReturnValue_) {
     var value = Blockly.Python.valueToCode(this, 'VALUE',
-        Blockly.Python.ORDER_NONE) || 'null';
+        Blockly.Python.ORDER_NONE) || 'None';
     code += '    return ' + value + '\n';
   } else {
-    code += '    return\n';
+    code += '    return None\n';
+  }
+  code += '\n';
+  return code;
+};
+
+Blockly.Python.procedures_return = function() {
+  // Conditionally return value from a procedure.
+  var code=""
+  if (this.hasReturnValue_) {
+    var value = Blockly.Python.valueToCode(this, 'VALUE',
+        Blockly.Python.ORDER_NONE) || 'None';
+    code += 'return ' + value + '\n';
+  } else {
+    code += 'return None\n';
   }
   code += '\n';
   return code;

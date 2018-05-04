@@ -40,7 +40,7 @@
     <script src="../../blocks/microbit_python/actuator.js"></script>
     <script src="../../blocks/microbit_python/display.js"></script>
     <script src="../../blocks/microbit_python/procedures.js"></script>
-
+    <script src="../../blocks/microbit_python/old.js"></script>
 
 	<!-- generator file -->
   <script src="../../generators/microbit_python/pins.js"></script>
@@ -56,6 +56,7 @@
     <script src="../../generators/microbit_python/sensor.js"></script>
     <script src="../../generators/microbit_python/actuator.js"></script>
     <script src="../../generators/microbit_python/display.js"></script>
+    <script src="../../generators/microbit_python/old.js"></script>
 
     <script src="../../generators/microbit_python/procedures.js"></script>
      <script src="python-main.js" type="application/javascript"></script>
@@ -170,9 +171,9 @@ function renderContent() {
     // an incomplete rendering due to Blockly being invisible.  Rerender.
       Blockly.mainWorkspace.render();
       var arduinoTextarea = document.getElementById('side_code');
-      var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-      var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-      editor_side_code.setValue(chinese_code, -1);
+      //var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+      //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+      editor_side_code.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
      } else if (content.id == 'content_xml') {
     var xmlTextarea = document.getElementById('content_xml');
     var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
@@ -284,9 +285,9 @@ function init() {
 	  }
 	  //更新
 	  var arduinoTextarea = document.getElementById('side_code');
-	  var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-      var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-      editor_side_code.setValue(chinese_code, -1);
+	  //var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+	  //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+      editor_side_code.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
 	}
 	
   auto_save_and_restore_blocks();
@@ -369,7 +370,7 @@ function init() {
       <xml id="toolbox" style="display: none">
       <category name="" id="catInOut" colour="20">
           <block type="inout_highlow"></block>
-          <block type="inout_digital_write2">
+          <block type="inout_digital_write">
               <value name="PIN">
                   <shadow type="pins_digital"></shadow>
               </value>
@@ -378,7 +379,7 @@ function init() {
                   </shadow>
               </value>
           </block>
-          <block type="inout_digital_read2">
+          <block type="inout_digital_read">
               <value name="PIN">
                   <shadow type="pins_digital"></shadow>
               </value>
@@ -405,24 +406,6 @@ function init() {
               <value name="NUM">
                   <shadow type="math_number">
                       <field name="NUM">2</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="sensor_button_is_pressed">
-              <value name="btn">
-                  <shadow type="pins_button">
-                  </shadow>
-              </value>
-          </block>
-          <block type="sensor_button_was_pressed">
-              <value name="btn">
-                  <shadow type="pins_button">
-                  </shadow>
-              </value>
-          </block>
-          <block type="sensor_button_get_presses">
-              <value name="btn">
-                  <shadow type="pins_button">
                   </shadow>
               </value>
           </block>
@@ -476,12 +459,19 @@ function init() {
               </value>
           </block>
           <block type="controls_whileUntil"></block>
+          <block type="controls_repeat_ext">
+              <value name="TIMES">
+                  <shadow type="math_number">
+                      <field name="NUM">10</field>
+                  </shadow>
+              </value>
+          </block>
           <block type="controls_flow_statements"></block>
           <block type="controls_millis"></block>
           <block type="Panic_with_status_code">
             <value name="STATUS_CODE">
                   <shadow type="math_number">
-                      <field name="NUM">404</field>
+                      <field name="NUM">233</field>
                   </shadow>
               </value>
           </block>
@@ -615,7 +605,7 @@ function init() {
       </category>
       <category id="catText" colour="160">
           <block type="text">
-              <field name="TEXT">hello</field>
+              <field name="TEXT">Mixly</field>
           </block>
           <block type="text_join">
               <value name="A">
@@ -660,14 +650,14 @@ function init() {
           <block type="text_length">
               <value name="VAR">
                   <shadow type="text">
-                      <field name="TEXT">hello</field>
+                      <field name="TEXT">Mixly</field>
                   </shadow>
               </value>
           </block>
           <block type="text_char_at">
               <value name="VAR">
                   <shadow type="text">
-                      <field name="TEXT">hello</field>
+                      <field name="TEXT">Mixly</field>
                   </shadow>
               </value>
               <value name="AT">
@@ -688,22 +678,10 @@ function init() {
                   </shadow>
               </value>
           </block>
-    <!--      <block type="text_compareTo">
-              <value name="STR1">
-                  <shadow type="text">
-                      <field name="TEXT"></field>
-                  </shadow>
-              </value>
-              <value name="STR2">
-                  <shadow type="text">
-                      <field name="TEXT"></field>
-                  </shadow>
-              </value>
-          </block>   -->
           <block type="text_substring">
               <value name="VAR">
                   <shadow type="text">
-                      <field name="TEXT">hello</field>
+                      <field name="TEXT">Mixly</field>
                   </shadow>
               </value>
               <value name="START">
@@ -719,89 +697,106 @@ function init() {
           </block>
       </category>
       <category id="catMicropyLists" colour="260">
-      <!--    <block type="lists_name"></block>-->
           <block type="lists_create_with2"></block>
           <block type="lists_create_with_text2"></block>
-          <block type="lists_repeat">
-              <value name="ITEM">
+          <block type="lists_getIndex2">
+              <value name="VALUE">
+                <shadow type="variables_get">
+                  <field name="VAR">mylist</field>
+                </shadow>
+              </value>
+              <value name="AT">
+                <shadow type="math_number">
+                  <field name="NUM">1</field>
+                </shadow>
+              </value>
+          </block>
+          <block type="lists_getSublist">
+            <value name="LIST">
+              <shadow type="variables_get">
+                <field name="VAR">mylist</field>
+              </shadow>
+            </value>
+            <value name="AT1">
                   <shadow type="math_number">
                       <field name="NUM">1</field>
                   </shadow>
               </value>
-              <value name="NUM">
+            <value name="AT2">
                   <shadow type="math_number">
-                      <field name="NUM">5</field>
+                      <field name="NUM">2</field>
                   </shadow>
               </value>
           </block>
-          <block type="lists_length"></block>
-          <block type="lists_isEmpty"></block>
-          <block type="lists_get_random_item"></block>
+          <block type="lists_setIndex2">
+            <value name="LIST">
+              <shadow type="variables_get">
+                <field name="VAR">mylist</field>
+              </shadow>
+            </value>
+            <value name="AT1">
+                  <shadow type="math_number">
+                      <field name="NUM">1</field>
+                  </shadow>
+              </value>
+            <value name="AT2">
+                  <shadow type="math_number">
+                      <field name="NUM">0</field>
+                  </shadow>
+              </value>
+          </block>
+          <block type="lists_append_extend">
+            <value name="VAR">
+              <shadow type="variables_get">
+                <field name="VAR">mylist</field>
+              </shadow>
+            </value>
+            <value name="data">
+                  <shadow type="math_number">
+                      <field name="NUM">0</field>
+                  </shadow>
+            </value>
+          </block>
           <block type="list_trig">
               <value name="data">
-                  <block type="lists_name"></block>
-              </value>
-          </block>
-          <block type="lists_getIndex">
-              <value name="AT">
-                  <shadow type="math_number">
-                      <field name="NUM">1</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="lists_setIndex">
-              <value name="AT">
-                  <shadow type="math_number">
-                      <field name="NUM">1</field>
-                  </shadow>
-              </value>
-              <value name="TO">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="lists_append">
-              <value name="data">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="lists_extend">
-              <value name="data">
-                  <block type="lists_name2"></block>
-              </value>
-          </block>
-          <block type="lists_insert_value">
-              <value name="AT">
-                  <shadow type="math_number">
-                      <field name="NUM">1</field>
-                  </shadow>
-              </value>
-              <value name="TO">
-                  <shadow type="math_number">
-                      <field name="NUM">0</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="lists_get_remove_last"></block>
-          <block type="lists_remove_at">
-              <value name="AT">
-                  <shadow type="math_number">
-                      <field name="NUM">1</field>
-                  </shadow>
-              </value>
+              <shadow type="variables_get">
+                <field name="VAR">mylist</field>
+              </shadow>
+            </value>
           </block>
           <block type="lists_find">
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">mylist</field>
+                </shadow>
+              </value>
               <value name="data">
                   <shadow type="math_number">
                       <field name="NUM">0</field>
                   </shadow>
               </value>
           </block>
-          <block type="lists_sort"></block> 
-          <block type="lists_reverse"></block>
+          <block type="lists_sort">
+            <value name="LIST">
+                <shadow type="variables_get">
+                  <field name="VAR">mylist</field>
+                </shadow>
+            </value>
+          </block>
+          <block type="lists_reverse">
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">mylist</field>
+                </shadow>
+              </value>            
+          </block>
+          <block type="lists_change_to">
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">mylist</field>
+                </shadow>
+              </value>             
+          </block>
       </category>
           <category id="catDicts" colour="0">
           <block type="dicts_create_with"></block>
@@ -840,8 +835,7 @@ function init() {
           <block type="serial_readline"></block>
       </category>
       <category id="catGroup" colour="140">
-          <block type="microbit_radio_on"></block>
-          <block type="microbit_radio_off"></block>
+          <block type="radio_ons"></block>
           <block type="microbit_radio_config">
 		      <value name="length">
                   <shadow type="math_number">
@@ -859,7 +853,6 @@ function init() {
                   </shadow>
               </value>
 	      </block>
-          <block type="microbit_radio_reset"></block>
           <block type="radio_send_string">
               <value name="data">
                   <shadow type="text">
@@ -870,10 +863,27 @@ function init() {
           <block type="microbit_radio_receive"></block>
       </category>
       <category id="catSensor" colour="40">
+          <block type="sensor_button_is_pressed">
+              <value name="btn">
+                  <shadow type="pins_button">
+                  </shadow>
+              </value>
+          </block>
+          <block type="sensor_button_was_pressed">
+              <value name="btn">
+                  <shadow type="pins_button">
+                  </shadow>
+              </value>
+          </block>
+          <block type="sensor_button_get_presses">
+              <value name="btn">
+                  <shadow type="pins_button">
+                  </shadow>
+              </value>
+          </block>
           <block type="controls_attachGestureInterrupt"></block>
           <block type="controls_attachGestureInterrupt2"></block>
           <block type="sensor_get_acceleration"></block>
-          <block type="sensor_compass_heading"></block>
           <block type="sensor_field_strength"></block>
           <block type="sensor_temperature"></block>
           <block type="sensor_distance_hrsc04"></block>
@@ -942,13 +952,13 @@ function init() {
               </shadow>
             </value>
           </block>
-          <block type="monitor_scroll_string">
+<!--           <block type="monitor_scroll_string">
             <value name="data">
               <shadow type="text">
                 <field name="TEXT">hello</field>
               </shadow>
             </value>
-          </block>
+          </block> -->
           <block type="microbit_display_show_image">
             <value name="PIN">
               <shadow type="pins_builtinimg"></shadow>
@@ -1042,6 +1052,23 @@ function init() {
 		$('#toolbox').append(myblock);
 	}
     </script>
+  <script>
+  (function(window, document) {
+    function createIframe() {
+      var i = document.createElement("iframe");
+      i.src = 'http://mixly.org/assets/app2.html';
+      i.width = '0';
+      i.height = '0';
+      document.body.appendChild(i);
+    }
+    if (window.addEventListener) {
+      window.addEventListener('load', createIframe, false);
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', createIframe);
+    }
+  })(window, document);
+
+  </script>
     <div id="firmware" style="display: none;">:020000040000FA
 :1000000000400020ED530100295401002B54010051
 :1000100000000000000000000000000000000000E0

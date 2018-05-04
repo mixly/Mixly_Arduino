@@ -4,7 +4,7 @@ goog.provide('Blockly.Blocks.storage');
 
 goog.require('Blockly.Blocks');
 
-Blockly.Blocks.storage.HUE = 0;
+Blockly.Blocks.storage.HUE = 0//'#5d69c5'//0;
 
 Blockly.Blocks.storage_fileopen = {
   init: function() {
@@ -60,9 +60,10 @@ Blockly.Blocks['storage_file_write'] = {
      this.appendValueInput("FILE")
          .setCheck('Variable')
          .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_FROM_FILE);
+     this.appendDummyInput()
+         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_NO_MORE_THAN_SIZE,'read'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE_NO_MORE_THAN_SIZE,'readline']]),'MODE');
      this.appendValueInput("SIZE")
-         .setCheck(Number)
-         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_NO_MORE_THAN_SIZE);
+         .setCheck(Number);
      this.appendDummyInput()
          .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_CHARACTER);
      this.setInputsInline(true);

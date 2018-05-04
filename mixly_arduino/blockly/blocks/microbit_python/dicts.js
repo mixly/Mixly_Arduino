@@ -29,7 +29,7 @@ goog.provide('Blockly.Blocks.dicts');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.dicts.HUE = 0;
+Blockly.Blocks.dicts.HUE = 345//'#2fba4f'//345;
 
 
 

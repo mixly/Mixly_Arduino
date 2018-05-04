@@ -3,7 +3,32 @@
 goog.provide('Blockly.Blocks.communicate');
 goog.require('Blockly.Blocks');
 
-Blockly.Blocks.communicate.HUE = 140;
+Blockly.Blocks.communicate.HUE = 140//'#3288dd';
+
+Blockly.Blocks['radio_ons'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.communicate.HUE);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_ON,'on'],[Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_OFF,'off'],[Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_RESET,'reset']]), "type")
+            .appendField(Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_WIFI);
+        this.setInputsInline(true);
+        this.setOutput(false);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('type');
+        var mode0 =Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_WIFI;
+        var TOOLTIPS = {
+        'on':Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_ON,
+        'off':Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_OFF,
+        'reset':Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_RESET
+      };
+      return TOOLTIPS[mode]+mode0;
+    });
+    }
+};
+
 Blockly.Blocks['microbit_radio_on'] = {
   init : function () {
     this.jsonInit({
@@ -37,7 +62,7 @@ Blockly.Blocks['microbit_radio_config'] = {
       "nextStatement" : null,
       "previousStatement" : null,
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/radio.html#radio.config",
-      "tooltip" : "Configure the radio. The length defines how long an individual message can be. The queue specifies the number of messages that can be stored on the incoming message queue. The channel defines the frequency to which the radio is tuned. The power specifies the strength of the broadcast signal. The data rate indicates the speed at which data is transferred.",
+      "tooltip" : Blockly.MIXLY_MICROBIT_Configure_radio1,
       "message0" : Blockly.MIXLY_MICROBIT_Configure_radio,
       "args0" : [{
           "min" : 4,
@@ -65,14 +90,14 @@ Blockly.Blocks['microbit_radio_config'] = {
           "type" : "input_dummy"
         }, {
 		   "name" : "power",         
-		  "options" : [['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7']],
-          "type" : "field_dropdown"
+		  // "options" : [['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7']],
+          "type" : "input_value"
         }, {
           "type" : "input_dummy"
         }, {
           "name" : "data_rate",
-          "options" : [["1Mbit", "RATE_1MBIT"], ["250Kbit", "RATE_250KBIT"], ["2Mbit", "RATE_2MBIT"]],
-          "type" : "field_dropdown"
+          //"options" : [["1Mbit", "RATE_1MBIT"], ["250Kbit", "RATE_250KBIT"], ["2Mbit", "RATE_2MBIT"]],
+          "type" : "input_value"
         }
       ]
     });
@@ -121,6 +146,7 @@ Blockly.Blocks['radio_send_string'] = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_MICROBIT_Send_message1);
     }
 }
 
@@ -130,7 +156,7 @@ Blockly.Blocks['microbit_radio_receive'] = {
       "colour" : Blockly.Blocks.communicate.HUE,
       "output" : "String",
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/radio.html#radio.receive",
-      "tooltip" : "Receive a message.",
+      "tooltip" :  Blockly.MIXLY_MICROBIT_Receive_message,
       "message0" : Blockly.MIXLY_MICROBIT_Receive_message
     });
   }
@@ -142,22 +168,22 @@ Blockly.Blocks['i2c_init'] = {
    this.appendValueInput("RX", Number)
        //.appendField(Blockly.MIXLY_SETUP)
        .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_SETUP)
-     .appendField("sda")
+       .appendField("sda")
        .setCheck(Number)
-     .setAlign(Blockly.ALIGN_RIGHT);
-    this.appendValueInput("TX", Number)
-     .appendField("scl")
+       .setAlign(Blockly.ALIGN_RIGHT);
+   this.appendValueInput("TX", Number)
+       .appendField("scl")
        .setCheck(Number)
-     .setAlign(Blockly.ALIGN_RIGHT);
-        this.appendValueInput('freq')
-            .setCheck(Number)
-     .appendField("频率")
-     .setAlign(Blockly.ALIGN_RIGHT);
-     this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-  this.setInputsInline(true);
-  }
-};
+       .setAlign(Blockly.ALIGN_RIGHT);
+   this.appendValueInput('freq')
+       .setCheck(Number)
+       .appendField("频率")
+       .setAlign(Blockly.ALIGN_RIGHT);
+   this.setPreviousStatement(true, null);
+   this.setNextStatement(true, null);
+   this.setInputsInline(true);
+   }
+  };
 
 Blockly.Blocks['i2c_read'] = {
     init:function(){
@@ -169,28 +195,11 @@ Blockly.Blocks['i2c_read'] = {
             .setCheck(Number)
             .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_BIT);
         this.appendDummyInput()
-            // .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_FORMAT)
-            // .appendField(new Blockly.FieldDropdown([
-            //     ["Int8LE", "NumberFormat.Int8LE"],
-            //     ["UInt8LE", "NumberFormat.UInt8LE"],
-            //     ["Int16LE", "NumberFormat.Int16LE"],
-            //     ["UInt16LE", "NumberFormat.UInt16LE"],
-            //     ["Int32LE", "NumberFormat.Int32LE"],
-            //     ["Int8BE", "NumberFormat.Int8BE"],
-            //     ["UInt8BE", "NumberFormat.UInt8BE"],
-            //     ["Int16BE", "NumberFormat.Int16BE"],
-            //     ["UInt16BE", "NumberFormat.UInt16BE"],
-            //     ["Int32BE", "NumberFormat.Int32BE"]
-            // ]), "format")
             .appendField(Blockly.Msg.CONTROLS_REPEAT_TITLE_REPEAT)
-            .appendField(new Blockly.FieldDropdown([
-                [Blockly.Msg.LOGIC_BOOLEAN_TRUE, 'true'],
-                [Blockly.Msg.LOGIC_BOOLEAN_FALSE, 'false']
-            ]), "is_repeated");
-
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
+            .appendField(new Blockly.FieldCheckbox(false), "is_repeated");
+        this.setOutput(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_MICROBIT_JS_I2C_READ);
     }
 }
 
@@ -204,26 +213,11 @@ Blockly.Blocks['i2c_write'] = {
             .setCheck(Number)
             .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_VALUE);
         this.appendDummyInput()
-            // .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_FORMAT)
-            // .appendField(new Blockly.FieldDropdown([
-            //     ["Int8LE", "NumberFormat.Int8LE"],
-            //     ["UInt8LE", "NumberFormat.UInt8LE"],
-            //     ["Int16LE", "NumberFormat.Int16LE"],
-            //     ["UInt16LE", "NumberFormat.UInt16LE"],
-            //     ["Int32LE", "NumberFormat.Int32LE"],
-            //     ["Int8BE", "NumberFormat.Int8BE"],
-            //     ["UInt8BE", "NumberFormat.UInt8BE"],
-            //     ["Int16BE", "NumberFormat.Int16BE"],
-            //     ["UInt16BE", "NumberFormat.UInt16BE"],
-            //     ["Int32BE", "NumberFormat.Int32BE"]
-            // ]), "format")
             .appendField(Blockly.Msg.CONTROLS_REPEAT_TITLE_REPEAT)
-            .appendField(new Blockly.FieldDropdown([
-                [Blockly.Msg.LOGIC_BOOLEAN_TRUE, 'true'],
-                [Blockly.Msg.LOGIC_BOOLEAN_FALSE, 'false']
-            ]), "is_repeated");
+            .appendField(new Blockly.FieldCheckbox(false), "is_repeated");
         this.setPreviousStatement(true);
         this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_MICROBIT_JS_I2C_WRITE);
     }
 }
 
@@ -267,6 +261,9 @@ Blockly.Blocks['spi_init'] = {
         }
       ]
     });
+    this.setFieldValue("15","mosi")
+    this.setFieldValue("14","miso")
+    this.setFieldValue("13","sck")
   }
 };
 
@@ -279,5 +276,6 @@ Blockly.Blocks['spi_write'] = {
 
         this.setOutput(true, Number);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_MICROBIT_JS_SPI_WRITE);
     }
 }

@@ -3,7 +3,7 @@
 goog.provide('Blockly.Blocks.display');
 goog.require('Blockly.Blocks');
 
-Blockly.Blocks.display.HUE = 180;
+Blockly.Blocks.display.HUE = 180//'#cc6688' //180;
 
 Blockly.FieldColour.COLOURS = ['#f00', '#e00', '#d00', '#c00', '#b00', '#a00',
     '#800', '#600', '#400', '#000'];
@@ -18,26 +18,26 @@ Blockly.Blocks['microbit_display_clear'] = {
       "nextStatement" : null,
       "previousStatement" : null,
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/display.html#microbit.display.clear",
-      "tooltip" : "Clear the display - set the brightness of all LEDs to 0 (off).",
       "message0" : Blockly.MIXLY_MICROBIT_Clear_display
     });
+    this.setTooltip(Blockly.MIXLY_MICROBIT_Clear_display);
   }
 };
 
 Blockly.Blocks.monitor_get_pixel = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-	this.appendValueInput('x')
+	  this.appendValueInput('x')
         .setCheck(Number)
         .appendField(Blockly.MIXLY_NOVA_GET_STAT)
         .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS)
 		    .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_GET_POINT_X);
-	this.appendValueInput('y')
+	  this.appendValueInput('y')
           .setCheck(Number)
           .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_PLOT_POINT_Y);
-
-	this.setInputsInline(true);
-	this.setOutput(true, Boolean);
+    this.setInputsInline(true);
+	  this.setOutput(true, Number);
+    this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS1);
   }
 };
 
@@ -58,42 +58,55 @@ Blockly.Blocks.monitor_bright_point = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
+  this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS2);
   }
 };
 
 Blockly.Blocks.monitor_show_string = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-	this.appendValueInput('data')
+	  this.appendValueInput('data')
         .setCheck(String)
-		.appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING);
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,'show'],[Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING,'scroll']]),"MODE")
+		    .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-	this.setInputsInline(true);
+	  this.setInputsInline(true);
+    var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('MODE');
+        var mode0 = Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING;
+        var TOOLTIPS = {
+        'show':Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,
+        'scroll':Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING
+      };
+      return TOOLTIPS[mode]+mode0;
+    });
   }
 };
 
-Blockly.Blocks.monitor_scroll_string = {
-  init: function() {
-    this.setColour(Blockly.Blocks.display.HUE);
-  this.appendValueInput('data')
-        .setCheck(String)
-    .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-  this.setInputsInline(true);
-  }
-};
+// Blockly.Blocks.monitor_scroll_string = {
+//   init: function() {
+//     this.setColour(Blockly.Blocks.display.HUE);
+//   this.appendValueInput('data')
+//         .setCheck(String)
+//     .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING);
+//     this.setPreviousStatement(true, null);
+//     this.setNextStatement(true, null);
+//   this.setInputsInline(true);
+//   }
+// };
 
 Blockly.Blocks.microbit_display_show_image = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendValueInput('PIN',String)
-        //.setCheck(microbit_image)
+        .setCheck("microbit_image")
         .appendField(Blockly.MIXLY_MICROBIT_Show_image);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_MICROBIT_Show_image);
   }
 };
 
@@ -128,7 +141,6 @@ Blockly.Blocks['microbit_display_show_animation'] = {
       "nextStatement" : null,
       "previousStatement" : null,
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/display.html#microbit.display.show",
-      "tooltip" : "Display the list of images as an animation with a certain delay between each frame. Indicate if you need to wait before continuing, continuously loop the animation and clear the display when finished.",
       "message0" : Blockly.MIXLY_MICROBIT_Animate_images,
       "args0" : [{
           "check" : "List",
@@ -158,6 +170,8 @@ Blockly.Blocks['microbit_display_show_animation'] = {
         }
       ]
     });
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_delay+Blockly.MIXLY_MICROBIT_Animate_images1);
   }
 };
 
@@ -181,14 +195,24 @@ Blockly.Blocks['microbit_display_scroll'] = {
 };
 
 Blockly.Blocks['microbit_display_on'] = {
-  init : function () {
-    this.jsonInit({
-      "colour" : Blockly.Blocks.display.HUE,
-      "nextStatement" : null,
-      "previousStatement" : null,
-      "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/display.html#microbit.display.on",
-      "tooltip" : "Turns on the display.",
-      "message0" : Blockly.MIXLY_MICROBIT_Turn_on_display
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+  this.appendDummyInput()
+      .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_Turn_on_display,'on'],[Blockly.MIXLY_MICROBIT_Turn_off_display,'off']]),'on_off')
+      .appendField(Blockly.MIXLY_MICROBIT_monitor);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setInputsInline(true);
+  this.setInputsInline(true);
+    var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('on_off');
+        var mode0 =Blockly.MIXLY_MICROBIT_monitor;
+        var TOOLTIPS = {
+        'on':Blockly.MIXLY_MICROBIT_Turn_on_display,
+        'off':Blockly.MIXLY_MICROBIT_Turn_off_display
+      };
+      return TOOLTIPS[mode]+mode0;
     });
   }
 };
@@ -212,9 +236,9 @@ Blockly.Blocks['microbit_display_is_on'] = {
       "colour" : Blockly.Blocks.display.HUE,
       "output" : "Boolean",
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/display.html#microbit.display.is_on",
-      "tooltip" : "Return True if the display is on, otherwise return False.",
       "message0" : Blockly.MIXLY_MICROBIT_Display_is_on
     });
+    this.setTooltip(Blockly.MIXLY_MICROBIT_Display_is_on1);
   }
 };
 
@@ -230,7 +254,7 @@ Blockly.Blocks['microbit_image_builtins'] = {
       ],
       "output" : ["microbit_image", "List"],
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/image.html#attributes",
-      "tooltip" : "Specify one of the built-in images.",
+      "tooltip" : Blockly.MIXLY_MICROBIT_Built_in_image1,
       "message0" : Blockly.MIXLY_MICROBIT_Built_in_image
     });
   }
@@ -248,9 +272,9 @@ Blockly.Blocks['microbit_image_copy'] = {
       ],
       "output" : "microbit_image",
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/image.html#microbit.Image.copy",
-      "tooltip" : "Create an exact copy of the referenced image.",
       "message0" : Blockly.MIXLY_MICROBIT_Copy_image
     });
+    this.setTooltip(Blockly.MIXLY_MICROBIT_Copy_image1);
   }
 };
 
@@ -266,9 +290,9 @@ Blockly.Blocks['microbit_image_invert'] = {
       ],
       "output" : "microbit_image",
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/image.html#microbit.Image.invert",
-      "tooltip" : "Create a new image by inverting the brightness of the pixels in the referenced image.",
       "message0" : Blockly.MIXLY_MICROBIT_Invert_image
     });
+    this.setTooltip(Blockly.MIXLY_MICROBIT_Invert_image1);
   }
 };
 
@@ -390,9 +414,9 @@ Blockly.Blocks['microbit_image_create'] = {
       ],
       "output" : "microbit_image",
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/image.html#microbit.Image",
-      "tooltip" : "Create a new image.",
       "message0" : Blockly.MIXLY_MICROBIT_Create_image
     });
+    this.setTooltip(Blockly.MIXLY_MICROBIT_Create_image1);
   }
 };
 
@@ -413,7 +437,7 @@ Blockly.Blocks.display_rgb_init = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_RGB_PIN_COUNT);
     }
 };
 
@@ -446,6 +470,7 @@ Blockly.Blocks.display_rgb = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_RGB_NUM_R_G_B);
     }
 };
 Blockly.Blocks.display_rgb2 = {
@@ -493,6 +518,20 @@ Blockly.Blocks['image_shift'] = {
         .setCheck(Number);
     this.appendDummyInput('')
         .appendField(Blockly.Msg.DISPLAY_IMAGE_UNIT)
+    var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('OP');
+        var mode0 = Blockly.Msg.DISPLAY_IMAGE_LET;
+        var mode1 = Blockly.Msg.DISPLAY_IMAGE_LET2;
+        var mode2 = Blockly.Msg.DISPLAY_IMAGE_LET3;
+        var TOOLTIPS = {
+        'up': Blockly.MIXLY_MICROBIT_up,
+        'down':Blockly.MIXLY_MICROBIT_down,
+        'left':Blockly.MIXLY_MICROBIT_left,
+        'right':Blockly.MIXLY_MICROBIT_right
+      };
+      return mode0 + mode1 +TOOLTIPS[mode]+mode2;
+    });
   }
 };
 
@@ -511,11 +550,22 @@ Blockly.Blocks['image_arithmetic'] = {
         // .setCheck(["microbit_image", "List", String])
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
     this.setInputsInline(true);
+    var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('OP');
+        var TOOLTIPS = {
+        '+':Blockly.MIXLY_MICROBIT_image_add,
+        '-':Blockly.MIXLY_MICROBIT_image_reduce
+      };
+      return TOOLTIPS[mode];
+    });
   }
 };
 
 Blockly.Blocks['microbit_display_show_string'] = {
   init : function () {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,'show'],[Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING,'scroll']]),"MODE");
     this.jsonInit({
       "colour" : Blockly.Blocks.display.HUE,
       "inputsInline": true,
@@ -552,47 +602,182 @@ Blockly.Blocks['microbit_display_show_string'] = {
         }
       ]
     });
-  }
-};
-
-Blockly.Blocks['microbit_display_scroll_string'] = {
-  init : function () {
-    this.jsonInit({
-      "colour" : Blockly.Blocks.display.HUE,
-      "inputsInline": true,
-      "nextStatement" : null,
-      "previousStatement" : null,
-      "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/display.html#microbit.display.show",
-      "tooltip" : "Display the list of images as an animation with a certain delay between each frame. Indicate if you need to wait before continuing, continuously loop the animation and clear the display when finished.",
-      "message0" : Blockly.MIXLY_MICROBIT_Scroll_string,
-      "args0" : [{
-          "check" : String,
-          "type" : "input_value",
-          "name" : "images"
-        }, {
-          "type" : "input_value",
-          "name" : "delay"
-        }, {
-          "type" : "input_dummy"
-        }, {
-          "checked" : true,
-          "type" : "field_checkbox",
-          "name" : "wait"
-        }, {
-          "type" : "input_dummy"
-        }, {
-          "checked" : false,
-          "type" : "field_checkbox",
-          "name" : "loop"
-        }, {
-          "type" : "input_dummy"
-        }, {
-          "checked" : false,
-          "type" : "field_checkbox",
-          "name" : "clear"
-        }
-      ]
+    this.setInputsInline(true);
+    var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('MODE');
+        var mode0 = Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING;
+        var mode1 = Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_delay;
+        var TOOLTIPS = {
+        'show':Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,
+        'scroll':Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING
+      };
+      return mode1+TOOLTIPS[mode]+mode0;
     });
   }
 };
 
+// Blockly.Blocks['microbit_display_scroll_string'] = {
+//   init : function () {
+//     this.jsonInit({
+//       "colour" : Blockly.Blocks.display.HUE,
+//       "inputsInline": true,
+//       "nextStatement" : null,
+//       "previousStatement" : null,
+//       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/display.html#microbit.display.show",
+//       "tooltip" : "Display the list of images as an animation with a certain delay between each frame. Indicate if you need to wait before continuing, continuously loop the animation and clear the display when finished.",
+//       "message0" : Blockly.MIXLY_MICROBIT_Scroll_string,
+//       "args0" : [{
+//           "check" : String,
+//           "type" : "input_value",
+//           "name" : "images"
+//         }, {
+//           "type" : "input_value",
+//           "name" : "delay"
+//         }, {
+//           "type" : "input_dummy"
+//         }, {
+//           "checked" : true,
+//           "type" : "field_checkbox",
+//           "name" : "wait"
+//         }, {
+//           "type" : "input_dummy"
+//         }, {
+//           "checked" : false,
+//           "type" : "field_checkbox",
+//           "name" : "loop"
+//         }, {
+//           "type" : "input_dummy"
+//         }, {
+//           "checked" : false,
+//           "type" : "field_checkbox",
+//           "name" : "clear"
+//         }
+//       ]
+//     });
+//   }
+// };
+
+Blockly.Blocks.group_lcd_print = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendValueInput("TEXT", String)
+        .setCheck([String,Number])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_DF_LCD)
+        .appendField('mylcd')
+        //.appendField(new Blockly.FieldTextInput('mylcd'), 'VAR')
+        .appendField(Blockly.MIXLY_LCD_PRINT1);
+    this.appendValueInput("TEXT2", String)
+        .setCheck([String,Number])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_LCD_PRINT2);
+    /*
+    this.appendValueInput("TEXT3", String)
+          .setCheck([String,Number])
+          .setAlign(Blockly.ALIGN_RIGHT)
+          .appendField(Blockly.MIXLY_LCD_PRINT3);
+    this.appendValueInput("TEXT4", String)
+          .setCheck([String,Number])
+          .setAlign(Blockly.ALIGN_RIGHT)
+          .appendField(Blockly.MIXLY_LCD_PRINT4);
+          */
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_LCD_PRINT4);
+  }
+};
+
+Blockly.Blocks.group_lcd_init = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendValueInput('device')
+        .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_SETUP)
+    .appendField(Blockly.MIXLY_DF_LCD)
+    .appendField('1602')
+    .appendField('mylcd')
+    .appendField(Blockly.MIXLY_LCD_ADDRESS);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_SETUP+Blockly.MIXLY_DF_LCD+Blockly.MIXLY_LCD_ADDRESS);
+  }
+};
+
+Blockly.Blocks.group_lcd_print2 = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendValueInput("row", Number)
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_DF_LCD)
+        .appendField('mylcd')
+        .appendField(Blockly.MIXLY_LCD_ROW);
+    this.appendValueInput("column", Number)
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_LCD_COLUMN);
+    this.appendValueInput("TEXT", String)
+        .setCheck([String,Number])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_LCD_PRINT);
+    this.setPreviousStatement(true, null);
+    this.setInputsInline(true);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_LCD_PRINT3);
+  }
+};
+
+Blockly.Blocks.group_lcd_power = {
+  init: function() {
+      this.setColour(Blockly.Blocks.display.HUE);
+    this.appendDummyInput()
+    .appendField(Blockly.MIXLY_DF_LCD)
+    .appendField('mylcd')
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_LCD_STAT_ON, "on()"], [Blockly.MIXLY_LCD_STAT_OFF, "off()"],  [Blockly.MIXLY_LCD_STAT_CLEAR, "clear()"], [Blockly.MIXLY_LCD_NOBACKLIGHT, "backlight(off)"], [Blockly.MIXLY_LCD_BACKLIGHT, "backlight(on)"]]), "STAT");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('STAT');
+        var mode0 = Blockly.Msg.LISTS_SET_INDEX_SET;
+        var mode1 = Blockly.MIXLY_DF_LCD;
+        var TOOLTIPS = {
+        'on()':Blockly.MIXLY_LCD_STAT_ON,
+        'off()':Blockly.MIXLY_LCD_STAT_OFF,
+        'clear()':Blockly.MIXLY_LCD_STAT_CLEAR,
+        'backlight(off)':Blockly.MIXLY_LCD_NOBACKLIGHT,
+        'backlight(on)':Blockly.MIXLY_LCD_BACKLIGHT
+      };
+      return mode0+mode1+TOOLTIPS[mode];
+    });
+  }
+};
+
+Blockly.Blocks.lp2i_u8g_draw_4strings = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_DF_LCD +" OLED   " + Blockly.Msg.OLEDDISPLAY);
+        //.appendField(new Blockly.FieldImage(Blockly.pathToBlockly + 'blocks/display-oled-128x64-i2c/display-oled-128x64-i2c.jpg', Blockly.Arduino.imageSize, Blockly.Arduino.imageSize));
+        this.appendValueInput("Text_line1" , 'String')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("(128*64)         "+Blockly.Msg.line1);    
+        this.appendValueInput("Text_line2" , 'String')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.line2);      
+        this.appendValueInput("Text_line3" , 'String')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.line3);      
+        this.appendValueInput("Text_line4" , 'String')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.line4);      
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.setTooltip(Blockly.MIXLY_DF_LCD+Blockly.Msg.OLEDDISPLAY+Blockly.MIXLY_MICROBIT_TYPE_STRING);
+    }
+};

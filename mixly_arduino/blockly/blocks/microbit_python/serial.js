@@ -3,7 +3,7 @@
 goog.provide('Blockly.Blocks.serial');
 goog.require('Blockly.Blocks');
 
-Blockly.Blocks.serial.HUE = 65;
+Blockly.Blocks.serial.HUE = 65//'#58a8de'//65;
 Blockly.Blocks['serial_print'] = {
   init: function() {
    this.setColour(Blockly.Blocks.serial.HUE);
@@ -22,7 +22,7 @@ Blockly.Blocks['serial_println'] = {
         .appendField("Serial " + Blockly.MIXLY_SERIAL_PRINTLN);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip(Blockly.Msg.TEXT_PRINT_TOOLTIP);
+    this.setTooltip(Blockly.Msg.TEXT_PRINT_Huanhang_TOOLTIP+Blockly.Msg.TEXT_PRINT_TOOLTIP);
   }
 };
 //打印16进制数
@@ -65,7 +65,7 @@ Blockly.Blocks['serial_any'] = {
   this.appendDummyInput()
         .appendField("Serial " + Blockly.MIXLY_SERIAL_AVAILABLE);
   this.setOutput(true, Boolean);
-  this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERIAL_READ_STR);
+  this.setTooltip(Blockly.MIXLY_SERIAL_AVAILABLE1);
   }
 };
 
@@ -75,7 +75,7 @@ Blockly.Blocks['serial_readline'] = {
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_JS_SERIAL_READ_LINE);
         this.setOutput(true, String);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERIAL_READ_STR);
+        this.setTooltip(Blockly.MIXLY_MICROBIT_JS_SERIAL_READ_LINE1);
     }
 };
 
@@ -116,6 +116,7 @@ Blockly.Blocks['serial_softserial'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
+  this.setTooltip(Blockly.MIXLY_SERIAL_softserial);
   }
 };
 
@@ -128,5 +129,6 @@ Blockly.Blocks['serial_begin'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   this.setInputsInline(true);
+  this.setTooltip(Blockly.Msg.LISTS_SET_INDEX_SET+Blockly.MIXLY_SERIAL_BEGIN);
   }
 };

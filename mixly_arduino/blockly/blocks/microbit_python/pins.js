@@ -62,7 +62,7 @@ Blockly.Blocks['pins_builtinimg'] = {
         this.setColour(Blockly.Blocks.pins.HUE);
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown(profile.default.builtinimg), 'PIN');
-        this.setOutput(true, String);
+        this.setOutput(true, "microbit_image");
     }
 };
 
@@ -98,6 +98,24 @@ Blockly.Blocks['pins_tone_notes'] = {
         this.setColour(Blockly.Blocks.pins.HUE);
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown(profile.default.tone_notes), 'PIN');
+        this.setOutput(true, Number);
+    }
+};
+
+Blockly.Blocks['pins_radio_power'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldDropdown(profile.default.radio_power), 'PIN');
+        this.setOutput(true, Number);
+    }
+};
+
+Blockly.Blocks['pins_radio_datarate'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldDropdown(profile.default.radio_datarate), 'PIN');
         this.setOutput(true, Number);
     }
 };
