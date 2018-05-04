@@ -122,7 +122,9 @@ PyEngine.prototype.skInput = function(prompt) {
 PyEngine.prototype.reset = function() {
 	Sk.execLimit = Number.POSITIVE_INFINITY;	
 	$("#side_code").text('');
-	$("#output_img").text('');
+	var $output_img = $("#output_img");
+	$output_img.text('');
+	document.getElementById('output_img').style.width = $output_img.width() + "px";
 }
 
 PyEngine.prototype.kill = function() {

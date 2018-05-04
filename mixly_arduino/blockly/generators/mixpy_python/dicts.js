@@ -65,16 +65,14 @@ Blockly.Python.dicts_create_with = function() {
 
 
 Blockly.Python.dicts_keys = function() {
-  var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
-      Blockly.Variables.NAME_TYPE);
+  var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var code=varName+'.keys()';
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.dicts_get = function() {
   var dropdown_type = this.getFieldValue('TYPE');
-  var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('DICT'),
-    Blockly.Variables.NAME_TYPE);
+  var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   //var size=window.parseFloat(this.getFieldValue('SIZE'));
   var text=this.getFieldValue('KEY');
   var code = varName+"['" + text + "']";
@@ -101,36 +99,57 @@ Blockly.Python.dicts_delete = function() {
 };
 
 Blockly.Python.dicts_clear = function() {
-  var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
-      Blockly.Variables.NAME_TYPE);
+ var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var code=varName+'.clear()\n';
   return code;
 };
 
 Blockly.Python.dicts_items = function() {
-  var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
-      Blockly.Variables.NAME_TYPE);
+  var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var code=varName+'.items()';
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.dicts_values = function() {
-  var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
-      Blockly.Variables.NAME_TYPE);
+  var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var code=varName+'.values()';
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.dicts_length = function() {
-  var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
-    Blockly.Variables.NAME_TYPE);
+  var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var code='len(' +varName + ')';
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.dicts_deldict = function() {
-  var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
-      Blockly.Variables.NAME_TYPE);
+  var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var code='del ' + varName + '\n';
   return code;
 };
+
+Blockly.Python.dicts_add_change_del = function(block){
+  var dict = Blockly.Python.valueToCode(block, 'DICT',
+      Blockly.Python.ORDER_MEMBER) || '[]';
+  var mode = block.getFieldValue('WHERE');
+  var where = block.getFieldValue('OP');
+  var KEY = Blockly.Python.variableDB_.getName(this.getFieldValue('KEY'), Blockly.Variables.NAME_TYPE);
+  
+  
+
+  switch (mode) {
+    case 'INSERT':
+      //var at2 = block.getFieldValue('AT2');
+      var at2 = Blockly.Python.valueToCode(this, 'AT2', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+      var code = dict + "['"  + KEY + "'] = " + at2 + '\n'
+      break;
+    
+    case 'DELETE':
+      var code = 'del ' + dict + "['"  + KEY + "']\n"
+      break;
+    default:
+      throw 'Unhandled option (lists_setIndex2)';
+  }
+  return code;
+};
+

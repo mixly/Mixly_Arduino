@@ -31,8 +31,8 @@ Blockly.Blocks['turtle_create'] = {
 
 Blockly.Blocks['turtle_move'] = {
   init: function() {
-     this.appendDummyInput("")
-      .appendField(new Blockly.FieldTextInput('tina'), 'TUR')
+     this.appendValueInput('TUR')
+        .setCheck('Turtle')
   var front_back =
         [[Blockly.blockpy_forward, 'forward'],[Blockly.blockpy_backward, 'backward']];
     this.setColour(Blockly.Blocks.turtle.HUE);
@@ -59,8 +59,8 @@ Blockly.Blocks['turtle_move'] = {
 
 Blockly.Blocks['turtle_rotate'] = {
   init: function() {
-     this.appendDummyInput("")
-      .appendField(new Blockly.FieldTextInput('tina'), 'TUR')
+     this.appendValueInput('TUR')
+        .setCheck('Turtle')
   var front_back =
         [[Blockly.blockpy_left, 'left'],[Blockly.blockpy_right, 'right']];
     this.setColour(Blockly.Blocks.turtle.HUE);
@@ -88,9 +88,10 @@ Blockly.Blocks['turtle_rotate'] = {
 Blockly.Blocks['turtle_setheading'] = {
   init: function() {
     this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
     this.appendValueInput('data')
         .setCheck(Number)
-        .appendField(new Blockly.FieldTextInput('tina'), 'VAR')
         .appendField(Blockly.blockpy_setheading);
     this.appendDummyInput()
           .appendField(Blockly.blockpy_setheading_degree);
@@ -103,9 +104,11 @@ Blockly.Blocks['turtle_setheading'] = {
 Blockly.Blocks['turtle_goto'] = {
   init: function() {
     this.setColour(Blockly.Blocks.turtle.HUE);
+      this.appendValueInput('TUR')
+        .setCheck('Turtle')
     this.appendValueInput('data')
         .setCheck(Number)
-        .appendField(new Blockly.FieldTextInput('tina'), 'VAR')
+        
         .appendField(Blockly.blockpy_turtle_goto);
     this.appendValueInput('val')
         .setCheck(Number)
@@ -121,8 +124,8 @@ Blockly.Blocks['turtle_goto'] = {
 
 Blockly.Blocks['turtle_clear'] = {
   init: function() {
-     this.appendDummyInput("")
-      .appendField(new Blockly.FieldTextInput('tina'), 'TUR')
+     this.appendValueInput('TUR')
+        .setCheck('Turtle')
   var clear_reset =
         [[Blockly.blockpy_turtle_clear, 'clear'],[Blockly.blockpy_turtle_reset, 'reset']
         ,[Blockly.blockpy_turtle_home, 'home']];
@@ -150,8 +153,8 @@ Blockly.Blocks['turtle_clear'] = {
 
 Blockly.Blocks['turtle_penup'] = {
   init: function() {
-     this.appendDummyInput("")
-      .appendField(new Blockly.FieldTextInput('tina'), 'TUR')
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
   var penup_down =
         [[Blockly.blockpy_turtle_penup, 'penup'],[Blockly.blockpy_turtle_pendown, 'pendown']];
     this.setColour(Blockly.Blocks.turtle.HUE);
@@ -174,6 +177,34 @@ Blockly.Blocks['turtle_penup'] = {
     });
   }
 };
+
+Blockly.Blocks['turtle_fill'] = {
+  init: function() {
+     this.appendValueInput('TUR')
+        .setCheck('Turtle')
+  var fill =
+        [[Blockly.blockpy_turtle_beginfill, 'begin'],[Blockly.blockpy_turtle_endfill, 'end']];
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendDummyInput("")
+        .appendField(Blockly.blockpy_turtle_blank)
+        .appendField(new Blockly.FieldDropdown(fill), 'DIR')
+        
+
+  this.setInputsInline(true);
+   this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getFieldValue('DIR');
+      var TOOLTIPS = {
+        'begin': Blockly.MIXLY_TOOLTIP_TURTEL_BEGINFILL,
+        'end': Blockly.MIXLY_TOOLTIP_TURTEL_ENDFILL
+      };
+      return TOOLTIPS[mode];
+    });
+  }
+};
+
 
 Blockly.Blocks['turtle_size_speed'] = {
   init: function() {
@@ -206,9 +237,10 @@ Blockly.Blocks['turtle_size_speed'] = {
 Blockly.Blocks['turtle_size'] = {
   init: function() {
     this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
     this.appendValueInput('data')
         .setCheck(Number)
-        .appendField(new Blockly.FieldTextInput('tina'), 'VAR')
         .appendField(Blockly.blockpy_turtle_set_size);
 
     this.setTooltip(Blockly.MIXLY_TOOLTIP_TURTEL_SIZE);
@@ -218,12 +250,14 @@ Blockly.Blocks['turtle_size'] = {
   }
 };
 
+
 Blockly.Blocks['turtle_speed'] = {
   init: function() {
     this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
     this.appendValueInput('data')
         .setCheck(Number)
-        .appendField(new Blockly.FieldTextInput('tina'), 'VAR')
         .appendField(Blockly.blockpy_turtle_set_speed);
 
     this.setTooltip(Blockly.MIXLY_TOOLTIP_TURTEL_SPEED);
@@ -235,8 +269,8 @@ Blockly.Blocks['turtle_speed'] = {
 
 Blockly.Blocks['turtle_circle'] = {
   init: function() {
-     this.appendDummyInput("")
-      .appendField(new Blockly.FieldTextInput('tina'), 'TUR')
+     this.appendValueInput('TUR')
+        .setCheck('Turtle')
   var circle_dot =
         [[Blockly.blockpy_turtle_circle, 'circle'],[Blockly.blockpy_turtle_dot, 'dot']];
     this.setColour(Blockly.Blocks.turtle.HUE);
@@ -245,6 +279,9 @@ Blockly.Blocks['turtle_circle'] = {
         .appendField(Blockly.blockpy_turtle_draw)
         .appendField(new Blockly.FieldDropdown(circle_dot), 'DIR')
         .appendField(Blockly.blockpy_turtle_radius);
+    this.appendValueInput('data')
+        .setCheck(Number)
+        .appendField(Blockly.blockpy_turtle_angle);    
 
   this.setInputsInline(true);
    this.setPreviousStatement(true);
@@ -263,8 +300,8 @@ Blockly.Blocks['turtle_circle'] = {
 
 Blockly.Blocks['turtle_visible'] = {
   init: function() {
-     this.appendDummyInput("")
-      .appendField(new Blockly.FieldTextInput('tina'), 'TUR')
+     this.appendValueInput('TUR')
+        .setCheck('Turtle')
   var visible =
         [[Blockly.blockpy_turtle_hide, 'hideturtle'],[Blockly.blockpy_turtle_show, 'showturtle']];
     this.setColour(Blockly.Blocks.turtle.HUE);
@@ -304,8 +341,8 @@ Blockly.Blocks['turtle_bgcolor'] = {
 
 Blockly.Blocks['turtle_pencolor'] = {
  init: function() {
-    this.appendDummyInput("")
-        .appendField(new Blockly.FieldTextInput('tina'), 'TUR')
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
     this.setColour(Blockly.Blocks.turtle.HUE);
     this.appendDummyInput()
         .appendField(Blockly.blockpy_turtle_pencolor)
@@ -318,12 +355,53 @@ Blockly.Blocks['turtle_pencolor'] = {
 
 Blockly.Blocks['turtle_fillcolor'] = {
  init: function() {
-    this.appendDummyInput("")
-        .appendField(new Blockly.FieldTextInput('tina'), 'TUR')
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
     this.setColour(Blockly.Blocks.turtle.HUE);
     this.appendDummyInput()
         .appendField(Blockly.blockpy_turtle_fillcolor)
         .appendField(new Blockly.FieldColour('#ff0000'), 'FIELDNAME');
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Blocks['turtle_clone'] = {
+  
+  init: function() {
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
+  this.appendDummyInput("")
+        .appendField(Blockly.Msg.TURTLE_CLONE);
+  this.setTooltip(Blockly.Msg.TURTLE_CLONE_TOOLTIP);
+  this.setOutput(true, Number);
+  }
+};
+
+Blockly.Blocks['turtle_pencolor_hex'] = {
+ init: function() {
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('VAR')
+        .setCheck(String)
+        .appendField(Blockly.blockpy_turtle_pencolor_hex);    
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Blocks['turtle_fillcolor_hex'] = {
+ init: function() {
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('VAR')
+        .setCheck(String)
+        .appendField(Blockly.blockpy_turtle_fillcolor_hex);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);

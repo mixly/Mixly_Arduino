@@ -29,7 +29,7 @@ goog.provide('Blockly.Blocks.dicts');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.dicts.HUE = 345//'#2fba4f'//345;
+Blockly.Blocks.dicts.HUE = 0;
 
 
 
@@ -41,7 +41,7 @@ Blockly.Blocks['dicts_create_with'] = {
   init: function() {
     this.setColour(Blockly.Blocks.dicts.HUE);
 	  this.appendDummyInput("")
-        .appendField('')
+        .appendField(' ')
         .appendField(new Blockly.FieldTextInput('mydict'), 'VAR')
         .appendField(Blockly.Msg.DICTS_CREATE_WITH_INPUT_WITH)
         
@@ -209,8 +209,10 @@ Blockly.Blocks['dicts_keys'] = {
    */
   init: function() {
     this.setColour(Blockly.Blocks.dicts.HUE);
+    this.appendValueInput('DICT')
+        .setCheck('Dict')
   this.appendDummyInput("")        
-        .appendField(new Blockly.FieldTextInput('mydict'), 'VAR')
+        
         .appendField(Blockly.Msg.DICT_KEYS);  
   this.setTooltip(Blockly.Msg.DICTS_KEYS_TOOLTIP);      
   this.setOutput(true, 'List');
@@ -220,9 +222,13 @@ Blockly.Blocks['dicts_keys'] = {
 Blockly.Blocks['dicts_get'] = {
   init: function() {
     this.setColour(Blockly.Blocks.dicts.HUE);
-    this.appendDummyInput("")
-        .appendField(Blockly.Msg.DICTS_GET_FROM_DICTS)
-        .appendField(new Blockly.FieldTextInput('mydict'), 'DICT')
+    // this.appendDummyInput("")
+  
+    //     .appendField(Blockly.Msg.DICTS_GET_FROM_DICTS)
+        
+    this.appendValueInput('DICT')
+        .setCheck('Dict')    
+    this.appendDummyInput("")   
         .appendField(Blockly.Msg.DICTS_GET_IN)
         .appendField(new Blockly.FieldTextInput('key'), 'KEY')
         .appendField(Blockly.Msg.DICTS_GET_VALUE);
@@ -253,8 +259,10 @@ Blockly.Blocks['dicts_delete'] = {
   init: function() {
     this.setColour(Blockly.Blocks.dicts.HUE);
     this.appendDummyInput("")
+  
         .appendField(Blockly.Msg.DICTS_GET_FROM_DICTS)
         .appendField(new Blockly.FieldTextInput('mydict'), 'DICT')
+       
         .appendField(Blockly.Msg.DICTS_DELETE_IN)
         .appendField(new Blockly.FieldTextInput('key'), 'KEY')
         .appendField(Blockly.Msg.DICTS_DELETE_VALUE);
@@ -272,8 +280,9 @@ Blockly.Blocks['dicts_clear'] = {
    */
   init: function() {
     this.setColour(Blockly.Blocks.dicts.HUE);
+    this.appendValueInput('DICT')
+        .setCheck('Dict')
     this.appendDummyInput("")        
-        .appendField(new Blockly.FieldTextInput('mydict'), 'VAR')
         .appendField(Blockly.Msg.DICT_CLEAR);  
     
     this.setPreviousStatement(true);
@@ -288,8 +297,10 @@ Blockly.Blocks['dicts_items'] = {
    */
   init: function() {
     this.setColour(Blockly.Blocks.dicts.HUE);
+    this.appendValueInput('DICT')
+        .setCheck('Dict')
   this.appendDummyInput("")        
-        .appendField(new Blockly.FieldTextInput('mydict'), 'VAR')
+        
         .appendField(Blockly.Msg.DICT_ITEMS);  
   this.setTooltip(Blockly.Msg.DICTS_ITEMS_TOOLTIP);      
   this.setOutput(true, 'List');
@@ -303,8 +314,10 @@ Blockly.Blocks['dicts_values'] = {
    */
   init: function() {
     this.setColour(Blockly.Blocks.dicts.HUE);
+    this.appendValueInput('DICT')
+        .setCheck('Dict')
   this.appendDummyInput("")        
-        .appendField(new Blockly.FieldTextInput('mydict'), 'VAR')
+        
         .appendField(Blockly.Msg.DICT_VALUES);  
   this.setTooltip(Blockly.Msg.DICTS_VALUES_TOOLTIP);      
   this.setOutput(true, 'List');
@@ -318,9 +331,11 @@ Blockly.Blocks['dicts_length'] = {
    */
   init: function() {
     this.setColour(Blockly.Blocks.dicts.HUE);
+    this.appendValueInput('DICT')
+        .setCheck('Dict')
   this.appendDummyInput("")
         .appendField(Blockly.Msg.LISTS_LENGTH_TITLE)
-        .appendField(new Blockly.FieldTextInput('mydict'), 'VAR');
+        
   this.setTooltip(Blockly.Msg.LISTS_LENGTH_TOOLTIP);
   this.setOutput(true, Number);
   }
@@ -333,11 +348,102 @@ Blockly.Blocks['dicts_deldict'] = {
    */
   init: function() {
     this.setColour(Blockly.Blocks.dicts.HUE);
+    this.appendValueInput('DICT')
+        .setCheck('Dict')
     this.appendDummyInput("")        
-        .appendField(new Blockly.FieldTextInput('mydict'), 'VAR')
+        
         .appendField(Blockly.Msg.DICT_DELDICT);  
     
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+  }
+};
+
+ Blockly.Blocks['dicts_add_change_del'] = {
+  /**
+   * Block for getting sublist.
+   * @this Blockly.Block
+   */
+  init: function() {
+   
+    this['MODE'] =
+        [[Blockly.Msg.DICTS_ADD_OR_CHANGE, 'INSERT'],
+         
+         [Blockly.MIXLY_MICROBIT_JS_DELETE_VAR, 'DELETE']];
+    this.setHelpUrl(Blockly.Msg.LISTS_GET_SUBLIST_HELPURL);
+    this.setColour(Blockly.Blocks.dicts.HUE);
+    this.appendValueInput('DICT')
+        .setCheck('Dict')
+    this.appendDummyInput('AT2')
+    this.appendDummyInput("")   
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE)
+        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+        .appendField(Blockly.Msg.DICTS_ADD_VALUE);
+    this.updateAt_(true);
+    this.setInputsInline(true);
+    this.setOutput(false);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip();
+  },
+  /**
+   * Create XML to represent whether there are 'AT' inputs.
+   * @return {Element} XML storage element.
+   * @this Blockly.Block
+   */
+  mutationToDom: function() {
+    var container = document.createElement('mutation');
+    var isAt = this.getInput('AT2').type == Blockly.INPUT_VALUE;
+    container.setAttribute('at2', isAt);
+    return container;
+  },
+  /**
+   * Parse XML to restore the 'AT' inputs.
+   * @param {!Element} xmlElement XML storage element.
+   * @this Blockly.Block
+   */
+  domToMutation: function(xmlElement) {
+    var isAt = (xmlElement.getAttribute('at2') == 'true');
+    this.updateAt_(isAt);
+  },
+  /**
+   * Create or delete an input for a numeric index.
+   * This block has two such inputs, independant of each other.
+   * @param {number} n Specify first or second input (1 or 2).
+   * @param {boolean} isAt True if the input should exist.
+   * @private
+   * @this Blockly.Block
+   */
+  updateAt_: function(isAt) {
+    // Create or delete an input for the numeric index.
+    // Destroy old 'AT' and 'ORDINAL' inputs.
+    this.removeInput('AT2');
+    this.removeInput('ORDINAL', true);
+    // Create either a value 'AT' input or a dummy input.
+    if (isAt) {
+      this.appendValueInput('AT2').setCheck(Number);
+    } else {
+      this.appendDummyInput('AT2');
+    }
+    var menu = new Blockly.FieldDropdown(this['MODE'],
+        function(value) {
+          var newAt = (value == 'INSERT') ;
+          // The 'isAt' variable is available due to this function being a
+          // closure.
+          if (newAt != isAt) {
+            var block = this.sourceBlock_;
+            block.updateAt_(newAt);
+            // This menu has been destroyed and replaced.
+            // Update the replacement.
+            block.setFieldValue(value, 'WHERE');
+            return null;
+          }
+          return undefined;
+        });
+    
+    this.getInput('AT2')
+        .appendField(menu, 'WHERE');
+
+    // this.moveInputBefore('AT2','LIST');
   }
 };

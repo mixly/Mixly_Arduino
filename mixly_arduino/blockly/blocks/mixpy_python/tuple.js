@@ -5,8 +5,7 @@ goog.provide('Blockly.Blocks.tuple');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.tuple.HUE = 45;
-
+Blockly.Blocks.tuple.HUE = 195//'#5ec73d'//195;
 
 
 Blockly.Blocks['tuple_create_with'] = {
@@ -177,13 +176,53 @@ Blockly.Blocks['tuple_create_with_item'] = {
   }
 };
 
+Blockly.Blocks['tuple_create_with_text2'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.tuple.HUE);
+  this.appendDummyInput("")
+  //don't need to specify the data type in Python
+        // .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_TYPE_NUMBER, 'Array<number>']]), 'TYPE')
+        // .appendField(' ')
+    // .appendField(Blockly.blockpy_MIXLY_TUPLE_CREATE)
+        .appendField(new Blockly.FieldTextInput('mytup'), 'VAR')
+        //.appendField(new Blockly.FieldTextInput('3',Blockly.FieldTextInput.math_number_validator), 'SIZE')
+      // .appendField(Blockly.MIXLY_MAKELISTFROM)
+    // .appendField(this.newQuote_(true))
+        .appendField(' = (')
+        .appendField(new Blockly.FieldTextInput('0,0,0'), 'TEXT')
+        .appendField(')');
+        // .appendField(this.newQuote_(false))
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  this.setTooltip(Blockly.MIXPY_TOOLTIP_TUPLE_CREATE_WITH_TEXT);
+  },
+  getVars: function() {
+    return [this.getFieldValue('VAR')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
+      this.setTitleValue(newName, 'VAR');
+    }
+  }
+  // newQuote_: function(open) {
+  //   if (open == this.RTL) {
+  //     var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAQAAAAqJXdxAAAAqUlEQVQI1z3KvUpCcRiA8ef9E4JNHhI0aFEacm1o0BsI0Slx8wa8gLauoDnoBhq7DcfWhggONDmJJgqCPA7neJ7p934EOOKOnM8Q7PDElo/4x4lFb2DmuUjcUzS3URnGib9qaPNbuXvBO3sGPHJDRG6fGVdMSeWDP2q99FQdFrz26Gu5Tq7dFMzUvbXy8KXeAj57cOklgA+u1B5AoslLtGIHQMaCVnwDnADZIFIrXsoXrgAAAABJRU5ErkJggg==';
+  //   } else {
+  //     var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAQAAAAqJXdxAAAAn0lEQVQI1z3OMa5BURSF4f/cQhAKjUQhuQmFNwGJEUi0RKN5rU7FHKhpjEH3TEMtkdBSCY1EIv8r7nFX9e29V7EBAOvu7RPjwmWGH/VuF8CyN9/OAdvqIXYLvtRaNjx9mMTDyo+NjAN1HNcl9ZQ5oQMM3dgDUqDo1l8DzvwmtZN7mnD+PkmLa+4mhrxVA9fRowBWmVBhFy5gYEjKMfz9AylsaRRgGzvZAAAAAElFTkSuQmCC';
+  //   }
+  //   return new Blockly.FieldImage(file, 12, 12, '"');
+  // }
+}
+
 Blockly.Blocks.tuple_getIndex = {
   init: function() {
     this.setColour(Blockly.Blocks.tuple.HUE);
     this.setOutput(true, Number);
+    this.appendValueInput('TUP')
+        .setCheck('Tuple')
     this.appendValueInput('AT')
         .setCheck(Number)
-    .appendField(new Blockly.FieldTextInput('mytup'), 'VAR')
+    
         .appendField(Blockly.LANG_LISTS_GET_INDEX1);
     this.appendDummyInput("")
         .appendField(Blockly.LANG_LISTS_GET_INDEX2);
@@ -199,9 +238,11 @@ Blockly.Blocks['tuple_length'] = {
    */
   init: function() {
     this.setColour(Blockly.Blocks.tuple.HUE);
+    this.appendValueInput('TUP')
+        .setCheck('Tuple')
   this.appendDummyInput("")
-        .appendField(Blockly.Msg.LISTS_LENGTH_TITLE)
-        .appendField(new Blockly.FieldTextInput('mytup'), 'VAR');
+        .appendField(Blockly.Msg.LISTS_LENGTH_TITLE);
+        
   this.setTooltip(Blockly.Msg.TUPLE_LENGTH_TOOLTIP);
   this.setOutput(true, Number);
   }
@@ -214,10 +255,10 @@ Blockly.Blocks['tuple_del'] = {
    */
   init: function() {
     this.setColour(Blockly.Blocks.tuple.HUE);
-    this.appendDummyInput("")        
-        .appendField(new Blockly.FieldTextInput('mytup'), 'VAR')
+    this.appendValueInput('TUP')
+        .setCheck('Tuple')
+    this.appendDummyInput("")         
         .appendField(Blockly.Msg.TUPLE_DEL);  
-    
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -230,37 +271,23 @@ Blockly.Blocks['tuple_join'] = {
    */
   init: function() {
     this.setColour(Blockly.Blocks.tuple.HUE);
-  this.appendDummyInput("")
-      .appendField(new Blockly.FieldTextInput('mytup1'), 'VAR1');
+  this.appendValueInput('TUP1')
+        .setCheck('Tuple')
   this.appendDummyInput("")
         .appendField(Blockly.Msg.TUPLE_JOIN)
-        .appendField(new Blockly.FieldTextInput('mytup2'), 'VAR2');
+  this.appendValueInput('TUP2')
+        .setCheck('Tuple')
   this.setInputsInline(true);
   this.setTooltip(Blockly.Msg.TUPLE_JOIN_TOOLTIP);
-  this.setOutput(true, Number);
+  this.setOutput(true, "Tuple");
   }
 };
 
-Blockly.Blocks['tuple_create_with_lists'] = {
-  init: function() {
-    this.setColour(Blockly.Blocks.tuple.HUE);
-    this.appendValueInput('data')
-        .setCheck("List")
-        .appendField(Blockly.blockpy_USE_LIST);   
-    this.appendDummyInput("")
-        .appendField(Blockly.Msg.LISTS_TO_TUPLE)
-        .appendField(new Blockly.FieldTextInput('mytup'), 'VAR');
-    this.setTooltip(Blockly.Msg.LISTS_TO_TUPLE_TOOLTIP);
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-  }
-};
 
 Blockly.Blocks['tuple_max'] = {
   init: function() {
-     this.appendDummyInput("")
-      .appendField(new Blockly.FieldTextInput('mytup'), 'TUR')
+     this.appendValueInput('TUP')
+        .setCheck('Tuple')
   var max_min =
         [[Blockly.blockpy_TUPLE_MAX, 'max'],[Blockly.blockpy_TUPLE_MIN, 'min']];
     this.setColour(Blockly.Blocks.tuple.HUE);
@@ -277,6 +304,33 @@ Blockly.Blocks['tuple_max'] = {
       var TOOLTIPS = {
         'max': Blockly.MIXLY_TOOLTIP_TUPLE_MAX,
         'min': Blockly.MIXLY_TOOLTIP_TUPLE_MIN
+      };
+      return TOOLTIPS[mode];
+    });
+  }
+};
+
+Blockly.Blocks['tuple_change_to'] = {
+  init: function() {
+    var OPERATORS =
+        [[Blockly.MIXLY_MICROBIT_TYPE_LIST, 'list'],
+         [Blockly.MIXLY_MICROBIT_TYPE_SETS, 'set']
+        ];
+    this.setColour(Blockly.Blocks.tuple.HUE);
+    this.appendValueInput('VAR')
+        .setCheck("Tuple")
+        // .appendField(Blockly.blockpy_USE_LIST);   
+    this.appendDummyInput("")
+        .appendField(Blockly.Msg.A_TO_B)
+        .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
+    this.setInputsInline(true);
+    this.setOutput(true);
+    var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getFieldValue('OP');
+      var TOOLTIPS = {
+        'list': Blockly.Msg.TUPLE_TO_LISTS,
+        'set': Blockly.Msg.TUPLE_TO_SET,
       };
       return TOOLTIPS[mode];
     });

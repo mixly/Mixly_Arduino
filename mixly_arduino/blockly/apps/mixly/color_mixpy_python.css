@@ -250,47 +250,51 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../media/mark/math2.png') no-repeat;
 	background-size: 100% auto; 
 }
+
 #\:4>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+  background:url('../../media/mark/logic.png') no-repeat;
+  background-size: 100% auto; 
+}
+#\:4>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+  background:url('../../media/mark/logic2.png') no-repeat;
+  background-size: 100% auto; 
+}
+
+#\:5>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
 	background:url('../../media/mark/text.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:4>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+#\:5>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
 	background:url('../../media/mark/text2.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:5>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
-	background:url('../../media/mark/list.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:5>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
-	background:url('../../media/mark/list2.png') no-repeat;
-	background-size: 100% auto; 
-}
 #\:6>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
-	background:url('../../media/mark/dict.png') no-repeat;
+	background:url('../../media/mark/list3.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:6>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
-	background:url('../../media/mark/dict2.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:7>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
-	background:url('../../media/mark/logic.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:7>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
-	background:url('../../media/mark/logic2.png') no-repeat;
+	background:url('../../media/mark/list4.png') no-repeat;
 	background-size: 100% auto; 
 }
 
-#\:8>div>span.blocklyTreeIcon.blocklyTreeIconNone{
-  background:url('../../media/mark/system.png') no-repeat;
+#\:7>div>span.blocklyTreeIcon.blocklyTreeIconNone{
+  background:url('../../media/mark/tuple.png') no-repeat;
   background-size: 100% auto; 
 }
-#\:8>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{
-  background:url('../../media/mark/system2.png') no-repeat;
+#\:7>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{
+  background:url('../../media/mark/tuple2.png') no-repeat;
   background-size: 100% auto; 
 }
+
+#\:8>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../media/mark/dict.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:8>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../media/mark/dict2.png') no-repeat;
+	background-size: 100% auto; 
+}
+
 
 #\:9>div>span.blocklyTreeIcon.blocklyTreeIconNone{
   background:url('../../media/mark/set.png') no-repeat;

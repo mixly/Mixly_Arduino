@@ -55,9 +55,10 @@ var PythonHighlightRules = function() {
         // microturtleRandomFunctions
         "getrandbits|seed|randint|randrange|choice|random|uniform|"+
         // microturtleSpeechFunctions
-        "pronounce|speech|sing|translate"+
+        "pronounce|speech|sing|translate|"+
         // turtleFunctions
-        "forward|backward|left|right|home"
+        "backward|left|right|home|forward|Turtle|setheading|goto|penup|pendown|end_fill|begin_fill|pensize|"+
+        "circle|dot|speed|showturtle|hideturtle|clone|pencolor|fillcolor|"
     );
 
     var microturtleKeywords = (
