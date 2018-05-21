@@ -43,8 +43,8 @@ PyEngine.prototype.loadEngine = function() {
     Sk.python3 = true;
 
     Sk.TurtleGraphics = {'target': 'output_img', 
-		                  'width': $('#output_img').width() - 50, 
-						'height': $('#output_img').height() - 50};
+		                  'width': $('#output_img').width(), 
+						'height': $('#output_img').height()};
 
 	Sk.canvas = 'output_img';
 	// TODO
