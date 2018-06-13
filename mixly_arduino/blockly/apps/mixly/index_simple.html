@@ -223,12 +223,14 @@ function init() {
     enableSnippets: true,
     enableLiveAutocompletion: true
   });
+  editor.setScrollSpeed(0.05);
   editor_side_code = ace.edit("side_code");
   editor_side_code.setTheme("ace/theme/xcode");
   editor_side_code.getSession().setMode("ace/mode/c_cpp");
   editor_side_code.setFontSize(17);
   editor_side_code.setShowPrintMargin(false);
   editor_side_code.setReadOnly(true);
+  editor_side_code.setScrollSpeed(0.05);
   var container = document.getElementById('content_area');
   var onresize = function(e) {
     var bBox = getBBox_(container);
