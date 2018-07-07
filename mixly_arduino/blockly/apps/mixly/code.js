@@ -439,7 +439,7 @@ Code.initLanguage = function() {
   var categories = ['catInOut', 'catControl', 'catMath', 'catText', 'catLists', 'catMicropyLists','catDicts',
                     'catLogic','catSerialPort','catGroup','catStorage','catSensor','catActuator','catMonitor',
                     'catVar','catFun','catEthernet','catEthernet_init','catEthernet_clinet','catSense','catSense2',
-                    'catLuxe', 'catGame', 'catSystem', 'catSet', 'catTurtle', 'catTuple'
+                    'catLuxe', 'catGame', 'catSystem', 'catSet', 'catTurtle', 'catTuple','catIot'
   ];
   for (var i = 0, cat; cat = categories[i]; i++) {
 	if(document.getElementById(cat)!=null){

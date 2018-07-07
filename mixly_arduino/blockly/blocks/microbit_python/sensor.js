@@ -340,7 +340,7 @@ Blockly.Blocks['sensor_distance_hrsc04'] = {
             .appendField(Blockly.MIXLY_CHAOSHENGBO)
         this.setOutput(true, Number);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_CHAOSHENGBO);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_CHAOSHENGBO);
     }
 };
 
@@ -464,5 +464,18 @@ Blockly.Blocks.RTC_set_date = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.MIXLY_RTCSETDATE+Blockly.MIXLY_MIX1);
+  }
+};
+
+Blockly.Blocks['sensor_compass_reset'] = {
+  init : function () {
+    this.jsonInit({
+      "colour" : Blockly.Blocks.sensor.HUE,
+      "nextStatement" : null,
+      "previousStatement" : null,
+      "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/music.html#music.reset",
+      "message0" : Blockly.MIXLY_MICROBIT_Reset_COMPASS
+    });
+    this.setTooltip(Blockly.MIXLY_MICROBIT_Reset_COMPASS);
   }
 };

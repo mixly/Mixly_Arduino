@@ -28,8 +28,8 @@ Blockly.Python['microbit_radio_config'] = function(block) {
   var number_length =Blockly.Python.valueToCode(this, "length", Blockly.Python.ORDER_ATOMIC);
   var number_queue = Blockly.Python.valueToCode(this, "queue", Blockly.Python.ORDER_ATOMIC);
   var number_channel = Blockly.Python.valueToCode(this, "channel", Blockly.Python.ORDER_ATOMIC);
-  var number_power = block.getFieldValue('power');
-  var dropdown_data_rate = block.getFieldValue('data_rate');
+  var number_power = Blockly.Python.valueToCode(this, "power", Blockly.Python.ORDER_ATOMIC);
+  var dropdown_data_rate = Blockly.Python.valueToCode(this, "data_rate", Blockly.Python.ORDER_ATOMIC);
   var code = 'radio.config(length=' + number_length +', queue=' + number_queue + ', channel=' + number_channel + ', power=' + number_power + ', data_rate=radio.' + dropdown_data_rate + ')\n';
   return code;
 };

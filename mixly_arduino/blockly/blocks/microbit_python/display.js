@@ -505,7 +505,7 @@ Blockly.Blocks['image_shift'] = {
         ];
     //this.setHelpUrl(Blockly.Msg.MATH_TRIG_HELPURL);
     this.setColour(Blockly.Blocks.display.HUE);
-    this.setOutput(true, Number);
+    this.setOutput(true, "microbit_image");
     this.setInputsInline(true);
     this.appendValueInput('img')
         .appendField(Blockly.Msg.DISPLAY_IMAGE_LET)
@@ -780,4 +780,34 @@ Blockly.Blocks.lp2i_u8g_draw_4strings = {
         this.setColour(Blockly.Blocks.display.HUE);
         this.setTooltip(Blockly.MIXLY_DF_LCD+Blockly.Msg.OLEDDISPLAY+Blockly.MIXLY_MICROBIT_TYPE_STRING);
     }
+};
+
+Blockly.Blocks['display_image_size'] = {
+  init: function() {
+    var OPERATORS =
+        [[Blockly.MIXLY_MICROBIT_IMAGE_HEIGHT, 'height'],
+         [Blockly.MIXLY_MICROBIT_IMAGE_WIDTH, 'width']
+        ];
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET+Blockly.MIXLY_MICROBIT_IMAGE);
+    this.appendValueInput('VAR')
+        .setCheck("microbit_image")
+        // .appendField(Blockly.blockpy_USE_LIST);   
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
+    this.setInputsInline(true);
+    this.setOutput(true);
+    var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getFieldValue('OP');
+      var mode0 = Blockly.MIXLY_MICROBIT_PY_STORAGE_GET;
+      var mode1 =Blockly.MIXLY_MICROBIT_IMAGE
+      var TOOLTIPS = {
+        'height': Blockly.MIXLY_MICROBIT_IMAGE_HEIGHT,
+        'width': Blockly.MIXLY_MICROBIT_IMAGE_WIDTH,
+      };
+      return mode0+mode1+TOOLTIPS[mode];
+    });
+  }
 };

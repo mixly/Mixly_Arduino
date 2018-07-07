@@ -179,7 +179,9 @@ function renderContent() {
     //var arduinoTextarea = document.getElementById('content_arduino');
     //arduinoTextarea.value = Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace);
     //arduinoTextarea.focus();
-    editor.setValue(Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace), -1);
+	var code = Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace) || '';
+	var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+    editor.setValue(chinese_code, -1);
   }
 }
 

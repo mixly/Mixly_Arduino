@@ -289,3 +289,11 @@ Blockly.Python.lp2i_u8g_draw_4strings = function(){
    var code3='oled.text(0,3, '+value_text_line4+')';
    return code+code1+code2+code3;
 };
+
+Blockly.Python['display_image_size'] = function() {
+  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+  var data = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
+  var size  = this.getFieldValue('OP');
+  var code = "image."+size+"("+data+")\n";
+  return code;
+};

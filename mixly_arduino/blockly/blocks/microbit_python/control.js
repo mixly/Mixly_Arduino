@@ -5,7 +5,7 @@ goog.provide('Blockly.Blocks.loops');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.loops.HUE = 120//'#EB8045';
+Blockly.Blocks.loops.HUE = 120;
 
 Blockly.Blocks.base_setup = {
   init: function() {
@@ -486,7 +486,7 @@ Blockly.Blocks.controls_TypeLists = {
               [Blockly.MIXLY_MICROBIT_TYPE_TUPLE, "tuple"],
               [Blockly.MIXLY_MICROBIT_TYPE_DICT,"dict"],
               [Blockly.MIXLY_MICROBIT_TYPE_SETS,"set"],
-              [Blockly.MIXLY_MICROBIT_TYPE_IMAGE,"image"],
+              // [Blockly.MIXLY_MICROBIT_TYPE_IMAGE,"image"],
               [Blockly.MIXLY_MICROBIT_TYPE_NONE,"NoneType"]]), "type");
             //整数、浮点数、字符串、列表、元组、字典、集合、图像不太对, unfinished
         this.setInputsInline(true);

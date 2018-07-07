@@ -249,3 +249,8 @@ Blockly.Python.RTC_set_date = function () {
   var code ='str(ds.Year('+year+'))+ str(ds.Month('+month+')) +str(ds.Day('+day+'))\n';
   return code;
 };
+
+Blockly.Python.sensor_compass_reset = function(block) {
+  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+  return ['compass.clear_calibration()', Blockly.Python.ORDER_ATOMIC];
+};
