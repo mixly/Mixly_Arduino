@@ -1,5 +1,4 @@
 // This file was automatically generated.  Do not modify.
-
 'use strict';
 
 goog.provide('Blockly.Msg.zh.hant');
@@ -261,6 +260,7 @@ Blockly.Msg.MATH_SINGLE_TOOLTIP_TOINT = "返回一個數的整數部分。";
 Blockly.Msg.MATH_SINGLE_TOOLTIP_ROUND = "按照四捨五入的原則返回一個數的整數部分。";
 Blockly.Msg.MATH_SINGLE_TOOLTIP_CEIL = "返回大於或者等於一個數的最小整數。";
 Blockly.Msg.MATH_SINGLE_TOOLTIP_FLOOR = "返回小於或者等於一個數的最大整數。";
+
 Blockly.Msg.MATH_SUBTRACTION_SYMBOL = "-";  // untranslated
 Blockly.Msg.MATH_QUYU_SYMBOL="%";
 Blockly.Msg.MATH_TRIG_ACOS = "acos";  // untranslated
@@ -359,8 +359,8 @@ Blockly.Msg.TEXT_LENGTH_TOOLTIP ="返回文字的字元數（包括空格）。"
 Blockly.Msg.TEXT_PRINT_HELPURL ="https://github.com/google/blockly/wiki/Text#printing-text";// untranslated
 Blockly.Msg.TEXT_PRINT_TITLE ="列印%1";
 Blockly.Msg.TEXT_PRINT_TOOLTIP = "列印指定的文字、數位或其他值。";
-Blockly.Msg.TEXT_WRITE_TOOLTIP = "以原始方式輸出，可以輸出16進制。";
 Blockly.Msg.TEXT_PRINT_HEX_TOOLTIP ="以十六進位的格式列印指定的數位。";
+Blockly.Msg.TEXT_WRITE_TOOLTIP = "以原始方式輸出，可以輸出16進制。";
 Blockly.Msg.TEXT_PROMPT_HELPURL ="https://github.com/google/blockly/wiki/Text#getting-input-from-the-user";// untranslated
 Blockly.Msg.TEXT_PROMPT_TOOLTIP_NUMBER ="提示用戶輸入數位。";
 Blockly.Msg.TEXT_PROMPT_TOOLTIP_TEXT ="提示用戶輸入一些文字。";
@@ -747,6 +747,7 @@ catGame:"遊戲",
 catSystem:"系統",
 catTurtle:"烏龜",
 catTuple:"元組",
+catIot:"物聯網",
 catSet:"集合"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='返回高電平或低電平';
@@ -902,6 +903,7 @@ Blockly.MIXLY_ETHERNET_CLINET_SERVER='服務器';
 
 //lm35温度传感器
 Blockly.MIXLY_LM35='LM35 溫度传感器';
+
 //DS18B20温度传感器
 Blockly.MIXLY_DS18B20='DS18B20 管腳#';
 Blockly.MIXLY_DS18B20_GET_TEMP='獲取溫度';
@@ -938,7 +940,6 @@ Blockly.MIXLY_MSTIMER2_STOP='停止';
 //interrupts
 Blockly.MIXLY_CONTROL_INTERRUPTS = '允許中斷';
 Blockly.MIXLY_CONTROL_NOINTERRUPTS = '禁止中斷';
-
 
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='該變量未聲明';
@@ -1011,7 +1012,6 @@ Blockly.MIXLY_DS1302_INITPIN = '初始化DS1302 RTC時鐘模組 管腳'
 Blockly.MIXLY_SETDATE = '設置日期:';
 Blockly.MIXLY_DATEFORMATE = '日期格式(年-月-日)'
 Blockly.MIXLY_TIMEFORMATE = '時間格式(時:分:秒)'
-
 Blockly.MIXLY_DISPLAY_MATRIX_INIT = "初始化8*8點陣顯示幕";
 Blockly.MIXLY_DISPLAY_MATRIX_SHOW = "點陣屏顯示";
 Blockly.MIXLY_DISPLAY_MATRIX_X = 'X軸';
@@ -1028,7 +1028,6 @@ Blockly.MIXLY_RTCGETTIME = '從RTC時鐘模組獲取';
 Blockly.MIXLY_RTCSETTIME = '設置RTC時鐘模組時間：';
 Blockly.MIXLY_RTCSETDATE = '設置RTC時鐘模組日期：';
 
-
 Blockly.MIXLY_ADXL345 = '重力感應塊_ADXL345';
 Blockly.MIXLY_ADXL345_X ='X軸加速度';
 Blockly.MIXLY_ADXL345_Y ='Y軸加速度';
@@ -1036,8 +1035,6 @@ Blockly.MIXLY_ADXL345_Z ='Z軸加速度';
 Blockly.MIXLY_ADXL345_XA ='X軸角度';
 Blockly.MIXLY_ADXL345_YA ='Y軸角度';
 Blockly.MIXLY_ADXL345_ZA ='Z軸角度';
-
-
 //microbit javascript
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='發生手勢 ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='當 Serial 收到的資料包含 ';
@@ -1076,6 +1073,7 @@ Blockly.MIXLY_MICROBIT_JS_ACCELERATION="獲取加速度 (mg)"
 Blockly.MIXLY_MICROBIT_JS_SET_ACCELERATION='設置加速度範圍';
 Blockly.MIXLY_MICROBIT_JS_LIGHT_LEVEL='獲取光亮度';
 Blockly.MIXLY_MICROBIT_JS_CALIBRATE_COMPASS='校準羅盤';
+Blockly.MIXLY_MICROBIT_JS_GET_COMPASS='獲取指南針';
 Blockly.MIXLY_MICROBIT_JS_COMPASS_HEADING='獲取羅盤角度';
 Blockly.MIXLY_MICROBIT_JS_ROTATION='獲取旋轉角度';
 Blockly.MIXLY_MICROBIT_JS_MAGETIC_FORCE='獲取磁通量(uT)';
@@ -1091,6 +1089,8 @@ Blockly.MIXLY_MICROBIT_JS_I2C_READ_ADDRESS='i2c 讀取數位 位址';
 Blockly.MIXLY_MICROBIT_JS_I2C_FORMAT='格式';
 Blockly.MIXLY_MICROBIT_JS_I2C_WRITE_ADDRESS='i2c 寫入數位 位址';
 Blockly.MIXLY_MICROBIT_JS_I2C_VALUE='值';
+Blockly.MIXLY_MICROBIT_JS_I2C_BIT='位元組';
+Blockly.MIXLY_MICROBIT_JS_I2C_SETUP='i2c 初始化';
 Blockly.MIXLY_MICROBIT_JS_SPI_WRITE="spi 寫入";
 Blockly.MIXLY_MICROBIT_JS_SPI_FREQUENCY="spi 頻率";
 Blockly.MIXLY_MICROBIT_JS_SPI_FORMAT="spi 格式";
@@ -1125,6 +1125,7 @@ Blockly.MIXLY_MICROBIT_JS_SYSTEM_DEVICE_NAME='設備名';
 Blockly.MIXLY_MICROBIT_JS_SYSTEM_DEVICE_SERIAL_NUMBER='設備串口號';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_NUMBER='顯示數位';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING='顯示字串';
+Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE='逐字';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_LEDS='顯示LED';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_ARROW='顯示箭頭';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_CLEAR_SCREEN='清屏';
@@ -1222,6 +1223,7 @@ Blockly.MIXLY_MICROBIT_Animate_images='動畫顯示圖像 %1 延時 %2 毫秒 %3
 Blockly.MIXLY_MICROBIT_Scroll_message='滾動消息 %1';
 Blockly.MIXLY_MICROBIT_Turn_on_display='打開螢幕';
 Blockly.MIXLY_MICROBIT_Turn_off_display='關閉螢幕';
+Blockly.MIXLY_MICROBIT_monitor = "屏幕";
 Blockly.MIXLY_MICROBIT_Display_is_on='顯示器已打開？';
 Blockly.MIXLY_MICROBIT_Built_in_image='內置圖像 %1';
 Blockly.MIXLY_MICROBIT_Copy_image='複製圖像 %1';
@@ -1260,8 +1262,10 @@ Blockly.MIXLY_MICROBIT_Write_analog='模擬輸出 管腳# %2 設為 %1';
 Blockly.MIXLY_MICROBIT_Read_digital='數位輸入 管腳# %1';
 Blockly.MIXLY_MICROBIT_Write_digital='數位輸出 管腳# %2 設為 %1';
 Blockly.MIXLY_MICROBIT_JS_WAS_GESTURE='發生過手勢 ';
+Blockly.MIXLY_MICROBIT_JS_GET = '獲取';
 Blockly.MIXLY_MICROBIT_JS_GET_GESTURE='獲取手勢';
 Blockly.MIXLY_MICROBIT_JS_CURRENT_GESTURE='當前手勢';
+Blockly.MIXLY_MICROBIT_JS_GESTURE = '手勢';
 Blockly.MIXLY_MICROBIT_JS_FIELD_STRENGTH='指南針磁場強度';
 Blockly.MIXLY_MICROBIT_JS_IS_COMPASS_CALIBRATED='指南針已經校準';
 Blockly.MIXLY_IS_TOUCHED='已經被觸摸';
@@ -1403,10 +1407,14 @@ Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM_IS = "RFID偵測到的卡號為";
 Blockly.MIXLY_COMMUNICATION_RFID_WRITE = "RFID寫卡";
 Blockly.MIXLY_COMMUNICATION_DATA_BLOCK = "資料塊";
 Blockly.MIXLY_COMMUNICATION_WRITE_NUM = "寫入資料為";
+Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_WIFI = "無線";
+Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_ON = "打開";
+Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_OFF = "關閉";
 Blockly.MIXLY_COMMUNICATION_RFID_TOOLTIP = "這是RFID的讀卡";
 Blockly.MIXLY_COMMUNICATION_RFID_READ = "RFID讀取";
 Blockly.MIXLY_COMMUNICATION_DATA_FROM = "的數據";
 Blockly.MIXLY_COMMUNICATION_RFID_OFF = "rfid停止偵測";
+  Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_RESET = "復位";
 
 //mixpy
 Blockly.blockpy_inout_input='接收輸入';
@@ -1522,7 +1530,7 @@ Blockly.Msg.LISTS_TO_TUPLE_TOOLTIP = "通過列表創建元組";
 Blockly.blockpy_TUPLE_MAX = '最大值';
 Blockly.blockpy_TUPLE_MIN = '最小值';
 Blockly.MIXLY_TOOLTIP_TUPLE_MAX = '返回元組中元素的最大值';
-Blockly.MIXLY_TOOLTIP_TUPLE_MIN = '返回元組中元素的最小大值';
+Blockly.MIXLY_TOOLTIP_TUPLE_MIN = '返回元組中元素的最小值';
 Blockly.blockpy_TUPLE_GET = '取';
 Blockly.blockpy_turtle_set_size = '設置畫筆粗細為';
 Blockly.blockpy_turtle_set_speed = '設置畫筆速度為';
@@ -1538,10 +1546,12 @@ Blockly.blockpy_turtle_beginfill='開始填充';
 Blockly.blockpy_turtle_endfill='結束填充';
 Blockly.MIXLY_TOOLTIP_TURTEL_BEGINFILL = '讓烏龜開始進行填充';
 Blockly.MIXLY_TOOLTIP_TURTEL_ENDFILL = '讓烏龜結束填充';
-
+Blockly.blockpy_USE_TUPLE='将元组';
+Blockly.Msg.TUPLE_TO_LISTS = "转化为列表";
 Blockly.Msg.LISTS_TO_TUPLE_TOOLTIP = "將一個元組轉換成列表";
 Blockly.Msg.BLOCKPY_PRINT_TOOLTIP= "列印指定的文字、數位或其他值，結尾自動換行。";
-
+Blockly.MIXLY_TOOLTIP_TUPLE_MAX = '獲取元組中的最大值';
+Blockly.MIXLY_TOOLTIP_TUPLE_MIN = '獲取元組中的最小值';
 Blockly.MIXLY_DE= '的';
 Blockly.MIXLY_UPDATE='改為';
 Blockly.Msg.MIXLY_LIST_LEN='長度';
@@ -1618,7 +1628,14 @@ Blockly.MIXLY_MIX1="年/月/日";
 Blockly.MIXLY_MIX2="時/分/秒";
 Blockly.MIXLY_LCD_PRINT3="在液晶顯示幕第x行,第y列列印字串";
 Blockly.MIXLY_LCD_PRINT4="在液晶顯示幕第一行和第二行列印字串";
-
+Blockly.MIXLY_USE="以";
+Blockly.MIXLY_BELONG="的";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_CAN_WRITE_ORNOT1="如果檔可寫則返回真，反之返回假";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_GET_FILENAME="獲取檔案名稱";
+Blockly.MIXLY_MICROBIT_IMAGE_HEIGHT="高度";
+Blockly.MIXLY_MICROBIT_IMAGE_WIDTH="寬度";
+Blockly.MIXLY_MICROBIT_IMAGE="圖像";
+Blockly.MIXLY_MICROBIT_Reset_COMPASS="恢復指南針初始設置";
 Blockly.blockpy_turtle_pencolor_hex='設置畫筆顏色為十六進位 #';
 Blockly.blockpy_turtle_fillcolor_hex='設置畫筆填充顏色為十六進位 #';
 Blockly.blockpy_SET_GET_AND_REMOVE_LAST='獲取並刪除集合中最小一項';
@@ -1635,3 +1652,136 @@ Blockly.Msg.SET_POP_TOOLTIP = "獲取並刪除集合中最小的一項。";
 Blockly.Msg.DICT_LENGTH_TOOLTIP = "返回字典中鍵的個數。";
 Blockly.Msg.DICTS_CLEAR_TOOLTIP = "將字典轉化為一個空字典，保留變數。";
 Blockly.Msg.DICTS_DEL_TOOLTIP = "請空字典，並刪除字典對應的變數。";
+Blockly.Msg.LISTS_INDEX_FROM_START_TOOLTIP = "%1是第一項";
+Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_FROM = "返回在列表中的指定位置的項。";
+Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_RANDOM = "返回列表中隨機一項。";
+Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_FROM = "獲取並移除列表中的指定位置的項。";
+Blockly.MIXLY_PIN="管腳";
+Blockly.MIXLY_Digital_PINMODEIN="數位輸入";
+Blockly.MIXLY_Digital_PINMODEOUT="數位輸出";
+Blockly.MIXLY_Analog_PINMODEIN="模擬輸入";
+Blockly.MIXLY_Analog_PINMODEOUT="模擬輸出";
+Blockly.MIXLY_Second="秒";
+Blockly.MIXLY_mSecond="毫秒";
+Blockly.MIXLY_uSecond="微秒";
+Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_SET_FREQ="設置管腳類比輸出頻率";
+Blockly.MIXLY_TOOLTIP_CHAOSHENGBO='超聲波測距(cm):trigger接管腳15，echo接管腳14，sclk接管腳13';
+Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_RANDOM = "獲取並移除列表中隨機一項。";
+Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_INSERT = "在列表中的指定位置插入項。";
+Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_CHANGE = "修改列表中指定位置的項。";
+Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_DELETE = "移除列表中指定位置的項。";
+Blockly.blockpy_turtle_shape = '形狀設置為';
+Blockly.blockpy_turtle_shape_arrow = '箭頭';
+Blockly.blockpy_turtle_shape_turtle = '烏龜';
+Blockly.blockpy_turtle_shape_square = '方塊';
+Blockly.blockpy_turtle_shape_triangle = '三角';
+Blockly.blockpy_turtle_shape_circle = '圓形';
+Blockly.blockpy_turtle_shape_classic = '默認';
+Blockly.blockpy_turtle_write='書寫';
+Blockly.Msg.TURTLE_SHAPE_TOOLTIP = "設置烏龜的形狀，可選形狀包括圓形、三角、方形、烏龜、箭頭和默認。";
+Blockly.Msg.TURTLE_WRITE_TOOLTIP = "使烏龜在畫布上當前位置書寫指定的文字。";
+Blockly.Msg.LISTS_EXTEND_TOOLTIP = "將後一個列表增加到前一個列表結尾。";
+Blockly.MIXLY_MICROBIT_LIST_A_VALUE='一個數值';
+Blockly.Msg.TURTLE_POS = "獲取烏龜當前位置";
+Blockly.MIXLY_TOOLTIP_TURTEL_POS='獲取烏龜當前位置，返回一個包含當前位置x座標和y座標的元組';
+Blockly.Msg.LISTS_CREATE_PYTHON_EMPTY_TITLE = "初始化為空列表";
+Blockly.Msg.LISTS_CREATE_PYTHON_EMPTY_TOOLTIP = "返回一個列表，長度為 0，不包含任何資料記錄";
+Blockly.Msg.LISTS_CREATE_WITH_PYTHON_TOOLTIP = "建立一個具有任意數量項目的列表。";
+Blockly.MIXLY_TOOLTIP_CONVERT_LIST_TO_TUPLE='將列表轉化成元組。';
+Blockly.MIXLY_TOOLTIP_CONVERT_LIST_TO_SET='將清單轉化成集合。';
+Blockly.LANG_LISTS_REVERSE_TOOLTIP = '逆轉清單中所有項的順序。';
+Blockly.Msg.LISTS_SORT_TOOLTIP = '將清單中的所有項按照指定順序指定方式進行排序。';
+Blockly.MIXLY_TOOLTIP_LIST_FIND_INDEX='返回指定值在列表中的位置，如果值有多個則返回第一個值的位置。';
+Blockly.MIXLY_TOOLTIP_LIST_FIND_COUNT='返回指定值在列表中的個數。';
+Blockly.MIXLY_TOOLTIP_LIST_APPEND='將指定值增加到列表末尾。';
+Blockly.MIXLY_TOOLTIP_LIST_REMOVE='將指定值從列表中移除，如果列表中有多個值則刪除第一個，如果該值不在列表中則報錯。';
+Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_INSERT = "在列表中的指定位置增加指定的值。";
+Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_CHANGE = "修改列表中的指定位置的值。";
+Blockly.Msg.LISTS_SET_INDEX_TOOLTIP_DELETE = "移除列表中的指定位置的值。";
+Blockly.Msg.DICT_UPDATE = "中的專案對應增加到字典";
+Blockly.Msg.MAKE_DICT = "將字典";
+Blockly.Msg.DICTS_UPDATE_TOOLTIP = "將前一個字典中的所有條目對應添加到後一個字典中，前者保持不變。";
+Blockly.Msg.DICTS_ADD_TOOLTIP = "在字典中添加或修改條目。";
+Blockly.Msg.DICTS_DELETE_TOOLTIP = "在字典中移除條目。";
+Blockly.MIXLY_TOOLTIP_TUPLE_FIND_INDEX='返回指定值在元組中的位置，如果值有多個則返回第一個值的位置。';
+Blockly.MIXLY_TOOLTIP_TUPLE_FIND_COUNT='返回指定值在元組中的個數。';
+Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_AVERAGE = "返回元組中的數值的平均值。";
+Blockly.MIXLY_UART_SETUP="初始化 UART為";
+Blockly.MIXLY_TOOLTIP_BLOCKGROUP_GET_TEM_HUM="返回溫濕度感測器測得的溫度和濕度。";
+Blockly.MIXLY_DHT11_T_H="獲取溫度和濕度";
+Blockly.MIXLY_RECT="繪製矩形";
+Blockly.MIXLY_RECT_START="起點";
+Blockly.MIXLY_RECT_Fill="填充";
+Blockly.MIXLY_MICROBIT_SHOW_RECT = " 起點(x %1 ,y %2 ) 寬度 %3 高度 %4 %5 填充 %6";
+Blockly.MIXLY_MICROBIT_SHOW_LINE = "線條 起點(x %1 ,y %2 ) 長度 %3 ";
+Blockly.MIXLY_DISPLAY_DRAW="繪製";
+Blockly.MIXLY_DISPLAY_RLINE="水準";
+Blockly.MIXLY_DISPLAY_VLINE="垂直";
+Blockly.MIXLY_MICROBIT_SHOW_LINE_ARBITRARILY="繪製線條 起點(x1 %1 ,y1 %2 ) 終點(x2 %3 ,y2 %4 ) ";
+Blockly.MIXLY_ESP32_Create_image='創建圖像 %1 %2 %3 %4 %5 %6 %7 %8 %9 %10 %11 %12 %13 %14 %15 %16 %17 %18 %19 %20 %21 %22 %23 %24 %25 %26 %27 %28 %29 %30 %31 %32 %33 %34 %35 %36 %37 %38 %39 %40 %41 %42 %43 %44 %45 %46 %47 %48 %49 %50 %51 %52 %53 %54 %55 %56 %57 %58 %59 %60 %61 %62 %63 %64 %65 %66 %67 %68 %69 %70 %71 %72 %73 %74 %75 %76 %77 %78 %79 %80 %81 %82 %83 %84 %85 %86 %87 %88 %89 %90 %91 %92 %93 %94 %95 %96 %97 %98 %99 %100 %101 %102 %103 %104 %105 %106 %107 %108 %109 %110 %111 %112 %113 %114 %115 %116 %117 %118 %119 %120 %121 %122 %123 %124 %125 %126 %127 %128 %129 %130 %131 %132 %133 %134 %135 %136';
+Blockly.MIXLY_ESP32_JS_MONITOR_BRIGHTNESS="如果點(x,y)處燈亮著返回真";
+Blockly.MIXLY_ESP32_JS_MONITOR_GET_POINT="處的燈亮著？";
+Blockly.MIXLY_ESP32_JS_MONITOR_SET_BRIGHTNESS="設置亮滅";
+Blockly.MIXLY_ESP32_ON="亮";
+Blockly.MIXLY_ESP32_OFF="滅";
+Blockly.MIXLY_ESP32_JS_MONITOR_SET_SCREEN_BRIGHTNESS="設置螢幕亮度";
+Blockly.MIXLY_ESP32_JS_MONITOR_GET_SCREEN_BRIGHTNESS="獲取螢幕亮度";
+Blockly.MIXLY_ESP32_JS_MONITOR_SET_BLINK_RATE="設置閃爍頻率";
+Blockly.MIXLY_NETWORK_MODE="設置wifi模式為";
+Blockly.MIXLY_NETWORK_WIFI_OPEN="啟動";
+Blockly.MIXLY_NETWORK_WIFI_CLOSE="停用";
+Blockly.MIXLY_NETWORK_WIFI_FLAG="網路介面";
+Blockly.MIXLY_NETWORK_WIFI_SCAN="掃描可用wifi";
+Blockly.MIXLY_ESP32_NETWORK_CONNECT="連接 wifi";
+Blockly.MIXLY_ESP32_NETWORK_ID="名稱";
+Blockly.MIXLY_ESP32_NETWORK_PASSWORD="密碼";
+Blockly.MIXLY_NETWORK_WIFI_CONNECT="連接到 wifi?";
+Blockly.MIXLY_ESP32_NETWORK_GET_CONNECT="獲取 wifi";
+Blockly.MIXLY_ESP32_NETWORK_IP="IP地址";
+Blockly.MIXLY_ESP32_NETWORK_MASK="子網路遮罩";
+Blockly.MIXLY_ESP32_NETWORK_GATEWAY="閘道";
+Blockly.MIXLY_ESP32_NETWORK_STOP_CONNECT="斷開 wifi";
+Blockly.MIXLY_ESP32_NETWORK_GET_WIFI="獲取 wifi";
+Blockly.MIXLY_NETWORK_WIFI_ESSID="接入點名稱";
+Blockly.MIXLY_NETWORK_WIFI_CHANNEL="wifi通道";
+Blockly.MIXLY_NETWORK_WIFI_SCAN_ATTRIBUTE="全部特徵";
+Blockly.MIXLY_ESP32_READ_LINE="讀取一行";
+Blockly.MIXLY_PINMODEPULLDOWN="下拉輸入";
+Blockly.MIXLY_ESP32_BLUETOOTH_SETUP="初始化 設置藍牙";
+Blockly.MIXLY_ESP32_BLUETOOTH_ADV_MAN="廠商名字";
+Blockly.MIXLY_ESP32_BLUETOOTH_ADV_DEV="設備名字";
+Blockly.MIXLY_ESP32_BLUETOOTH_FLAG="廣播";
+Blockly.MIXLY_ESP32_BLUETOOTH_START="啟用";
+Blockly.MIXLY_ESP32_BLUETOOTH="藍牙";
+Blockly.MIXLY_ESP32_BDA="連接到遠端GATTS伺服器";
+Blockly.MIXLY_ESP32_BLUETOOTH_SERVICES="獲取現有GATTS服務";
+Blockly.MIXLY_ESP32_BLUETOOTH_CONNS="獲取當前所有用戶端連接";
+Blockly.MIXLY_ESP32_BLUETOOTH_SCANNING="掃描處於活動狀態？";
+Blockly.MIXLY_ESP32_BLUETOOTH_SCAN="掃描";
+Blockly.MIXLY_ESP32_SERVICE_SETUP="創建GATTSService";
+Blockly.MIXLY_MICROBIT_JS_OLED='OLED';
+Blockly.MIXLY_ESP32_CONNECT_ONENET="OneNET連接";
+Blockly.MIXLY_ESP32_ONENET_CLIENT="設備ID";
+Blockly.MIXLY_ESP32_ONENET_SERVER="伺服器功能變數名稱";
+Blockly.MIXLY_ESP32_ONENET_USERNAME="產品ID";
+Blockly.MIXLY_ESP32_ONENET_PASSWORD="產品APIKey";
+Blockly.MIXLY_ESP32_ONENET_TOPIC="主題";
+Blockly.MIXLY_ESP32_ONENET_SUB="回呼函數";
+Blockly.MIXLY_ESP32_IOT_CONNECT_WIFI="連接WIFI";
+Blockly.MIXLY_ESP32_ONENET_USERNAME="產品ID";
+Blockly.MIXLY_ESP32_ONENET_PASSWORD="產品APIKey";
+Blockly.MIXLY_ESP32_DISCONNECT_ONENET="OneNET斷開連接";
+Blockly.MIXLY_ESP32_CHECK_ONENET="接收並執行OneNET指令";
+Blockly.MIXLY_ESP32_PUBLISH_ONENET="向OneNET發送資訊";
+Blockly.MIXLY_ESP32_PUBLISH_ONENET_EMPTY="向OneNET發送空資訊";
+Blockly.MIXLY_TO_BITES='轉位元組';
+Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_MAX = "返回元組中最大數。";
+Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_MEDIAN = "返回元組中的中位數。";
+Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_MIN = "返回元組中最小數。";
+Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_MODE = "返回元組中的最常見的項的列表。";
+Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_RANDOM = "從元組中返回一個隨機的元素。";
+Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_STD_DEV = "返回元組的標準差。";
+Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_SUM = "返回元組中的所有數字的和。";
+Blockly.Msg.TUPLE_DEL_TOOLTIP = "刪除元組變數，釋放元組變數的儲存空間。";
+Blockly.Msg.PYTHON_TUPLE_GET_SUBLIST_TOOLTIP = "複製元組中指定的部分。";
+Blockly.MIXLY_ESP32_NETWORK_SERVER="設置ESP32為服務端接收消息";
