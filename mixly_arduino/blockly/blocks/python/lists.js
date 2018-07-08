@@ -1081,6 +1081,20 @@ Blockly.Blocks['lists_reverse'] = {
     this.setNextStatement(true);
   }
 };
+Blockly.Blocks['lists_clear'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.lists.HUE);
+    this.appendValueInput('VAR')
+        .setCheck('List') //this.appendDummyInput("")
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_MICROBIT_JS_LIST_CLEAR)
+        //.appendField(new Blockly.FieldTextInput('mylist'), 'VAR');
+    this.setTooltip(Blockly.LANG_LISTS_REVERSE_TOOLTIP);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
 Blockly.Blocks['lists_get_remove_first'] = {
   init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
