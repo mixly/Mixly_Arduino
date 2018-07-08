@@ -1157,6 +1157,7 @@ Blockly.MIXLY_MICROBIT_JS_LIST_GET_AND_REMOVE_LAST='get and remove last value fr
 Blockly.MIXLY_MICROBIT_JS_LIST_INSERT_AT='insert at';
 Blockly.MIXLY_MICROBIT_JS_LIST_VALUE='value';
 Blockly.MIXLY_MICROBIT_JS_LIST_REVERSE='reverse';
+Blockly.MIXLY_MICROBIT_JS_LIST_CLEAR='clear';
 Blockly.MIXLY_MICROBIT_JS_LIST_GET_AND_REMOVE_FIRST='get and remove first value from';
 Blockly.MIXLY_MICROBIT_JS_LIST_INSERT='insert';
 Blockly.MIXLY_MICROBIT_JS_LIST_AT_BEGINNING='at beginning';
