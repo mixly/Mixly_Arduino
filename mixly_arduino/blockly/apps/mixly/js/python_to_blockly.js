@@ -1271,7 +1271,6 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
                         destination[argument.name] = this.Num_value(args[i]);
                     } else if (argument.type == 'variable') {
                         if(argument.is_math_angle === true){
-                            //澶勭悊杩欑鎯呭喌锛歮ath.sin(90 / 180.0 * math.pi),鍏朵腑/ 180.0 * math.pi涓嶉渶瑕佷綋鐜板湪鍥惧舰鍧椾腑
                             destination[argument.name] = this.convert(args[i].left.left);
                         }else{
                             destination[argument.name] = this.convert(args[i]);
@@ -1312,13 +1311,13 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
             if(objname in py2block_config.objectTypeD){
                 var objtype = py2block_config.objectTypeD[objname];
                 if(objtype in py2block_config.objectFunctionD.get(name))
-                    return py2block_config.objectFunctionD.get(name)[objtype](this, func, name, args);
+                    return py2block_config.objectFunctionD.get(name)[objtype](this, func, args, keywords, starargs, kwargs, node);
             }
             if(!py2block_config.objectFunctionD.get(name)['Default']){
                 var firstKey = keys[0];
                 py2block_config.objectFunctionD.get(name)['Default'] = py2block_config.objectFunctionD.get(name)[firstKey];
             }
-            return py2block_config.objectFunctionD.get(name)['Default'](this, func, name, args);
+            return py2block_config.objectFunctionD.get(name)['Default'](this, func, args, keywords, starargs, kwargs, node);
         }
         switch (name) {
             case "append":
@@ -1478,8 +1477,13 @@ PythonToBlocks.prototype.Num = function(node)
 {
     var n = node.n;
     var nVal = Sk.ffi.remapToJs(n);
-    if((nVal == 0 || nVal == 1 ) && py2block_config.pinType == "pins_digital"){
-        return block("inout_highlow", node.lineno, {"BOOL": (nVal == 1 ? "HIGH":"LOW")});
+    if(py2block_config.pinType == "pins_digital") {
+        if(nVal == 1 || nVal == 0)
+            return block("inout_highlow", node.lineno, {"BOOL": (nVal == 1 ? "HIGH" : "LOW")});
+    }else if(py2block_config.pinType == "pins_serial"){
+        return block(py2block_config.pinType, node.lineno, {
+            "PIN": nVal
+        });
     }
     return block("math_number", node.lineno, {"NUM": nVal});
 }
