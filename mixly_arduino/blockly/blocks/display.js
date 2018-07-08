@@ -442,8 +442,8 @@ Blockly.Blocks.display_Matrix_Init = {
 
 //执行器_点阵屏显示_画点变量
 var display_DrawPixel_NUM = [
-  [Blockly.MIXLY_4DIGITDISPLAY_ON, "LED_ON"],
-  [Blockly.MIXLY_4DIGITDISPLAY_OFF, "LED_OFF"]
+  [Blockly.MIXLY_4DIGITDISPLAY_ON, "1"],
+  [Blockly.MIXLY_4DIGITDISPLAY_OFF, "0"]
 ];
 
 //执行器_点阵屏显示_画点显示
