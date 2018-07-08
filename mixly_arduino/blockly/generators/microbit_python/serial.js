@@ -68,6 +68,6 @@ Blockly.Python.serial_softserial = function () {
 Blockly.Python.serial_begin = function () {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   var baudrate = this.getFieldValue('baudrate');
-  return "uart.init(baudrate=" + baudrate + ")\n";
+  return "uart.init(" + baudrate + ")\n";
 };
 
