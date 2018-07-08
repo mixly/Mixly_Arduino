@@ -2,7 +2,7 @@
 
 var pbc = Py2blockConfig.prototype;
 
-pbc.objectFunctionD.get('init')['SERIAL'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.moduleFunctionD.get('uart')['init'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length === 0 && keywords.length === 1) { //uart.init(baudrate=9600)
         if(py2block.identifier(keywords[0].arg) === "baudrate") {
             return [block("serial_begin", func.lineno, {"baudrate": keywords[0].value.n.v}, {}, {
@@ -41,7 +41,7 @@ pbc.objectFunctionD.get('init')['SERIAL'] = function(py2block, func, args, keywo
 }
 
 
-pbc.objectFunctionD.get('write')['SERIAL'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.moduleFunctionD.get('uart')['write'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -83,7 +83,7 @@ pbc.objectFunctionD.get('write')['SERIAL'] = function(py2block, func, args, keyw
         })];
 }
 
-pbc.objectFunctionD.get('any')['SERIAL'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.moduleFunctionD.get('uart')['any'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -94,7 +94,7 @@ pbc.objectFunctionD.get('any')['SERIAL'] = function(py2block, func, args, keywor
 }
 
 
-pbc.objectFunctionD.get('read')['SERIAL'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.moduleFunctionD.get('uart')['read'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -105,7 +105,7 @@ pbc.objectFunctionD.get('read')['SERIAL'] = function(py2block, func, args, keywo
 }
 
 
-pbc.objectFunctionD.get('readline')['SERIAL'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.moduleFunctionD.get('uart')['readline'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }

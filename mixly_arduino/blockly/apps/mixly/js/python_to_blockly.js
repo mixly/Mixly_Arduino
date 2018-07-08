@@ -1234,12 +1234,13 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
                 throw new Error("Incorrect number of arguments to plt.plot");
             }
         } else if ((module in PythonToBlocks.KNOWN_MODULES && name in PythonToBlocks.KNOWN_MODULES[module])
-            || (module in py2block_config.moduleFunctionD && name in py2block_config.moduleFunctionD[module])) {
+            || (Object.keys(py2block_config.moduleFunctionD.get(module)).length != 0 && name in py2block_config.moduleFunctionD.get(module))) {
             var definition = null;
             if(module in PythonToBlocks.KNOWN_MODULES && name in PythonToBlocks.KNOWN_MODULES[module])
                 definition = PythonToBlocks.KNOWN_MODULES[module][name];
-            else
-                definition = py2block_config.moduleFunctionD[module][name];
+            else {
+                return py2block_config.moduleFunctionD.get(module)[name](this, func, args, keywords, starargs, kwargs, node);
+            }
             var blockName = definition[0];
             var isExpression = true;
             if (blockName.charAt(0) == "*") {
