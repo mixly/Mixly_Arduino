@@ -20,7 +20,7 @@ Blockly.Python.serial_println = function() {
 Blockly.Python.serial_print_hex = function() {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   var content = Blockly.Python.valueToCode(this, 'CONTENT', Blockly.Python.ORDER_ATOMIC) || '0';
-  var code = "uart.write(str(hex("+content+")+'\\r\\n')\n";
+  var code = "uart.write(str(hex("+content+")) + '\\r\\n')\n";
   return code;
 };
 
