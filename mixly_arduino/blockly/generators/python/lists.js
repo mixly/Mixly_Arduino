@@ -375,7 +375,11 @@ Blockly.Python.lists_reverse = function(){
   var code=varName + '.reverse()\n';
   return code;
 }
-
+Blockly.Python.lists_clear = function(){
+  var varName = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var code=varName + '.clear()\n';
+  return code;
+}
 
 // Blockly.Python.lists_get_remove_first = function(){
 //   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
