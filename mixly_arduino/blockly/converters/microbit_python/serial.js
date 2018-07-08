@@ -3,11 +3,12 @@
 var pbc = Py2blockConfig.prototype;
 
 pbc.objectFunctionD.get('init')['SERIAL'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length === 1 && keywords.length === 0) { //uart.init(9600)
-        return [block("serial_begin", func.lineno, {"baudrate":args[0].n.v}, {
-            }, {
+    if (args.length === 0 && keywords.length === 1) { //uart.init(baudrate=9600)
+        if(py2block.identifier(keywords[0].arg) === "baudrate") {
+            return [block("serial_begin", func.lineno, {"baudrate": keywords[0].value.n.v}, {}, {
                 "inline": "true"
             })];
+        }
     }else if(args.length === 0 && keywords.length === 3) { //uart.init(rx=0, tx=1, baudrate=115200)
         var rxblock = null;
         var txblock = null;
