@@ -68,8 +68,8 @@ Blockly.Blocks.inout_analog_write_set = {
         this.appendDummyInput()
            .appendField(Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL)
             .appendField(new Blockly.FieldDropdown([
-                ["毫秒", "period"],
-                ["微秒", "period_microseconds"]
+                [Blockly.MIXLY_mSecond, "period"],
+                [Blockly.MIXLY_uSecond, "period_microseconds"]
             ]), "key");
         this.appendValueInput("NUM", Number)
             .appendField(Blockly.MIXLY_STAT)
