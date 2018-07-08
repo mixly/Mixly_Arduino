@@ -50,7 +50,7 @@ Blockly.Python.init = function(workspace) {
 Blockly.Python.finish = function(code) {
     // Convert the definitions dictionary into a list.
     if(code !== "") {
-        code = '    ' + code.replace(/\n/g, '\n    ');
+        code = code.replace(/\n/g, '\n');
         code = code.replace(/\n\s+$/, '\n');
     }
     var definitions = [];
@@ -68,7 +68,7 @@ Blockly.Python.finish = function(code) {
     //delete Blockly.Python.functionNames_;
     //Blockly.Python.variableDB_.reset();
     if(code !== "") 
-      return definitions.join('\n') + '\n\n' + setups.join('') + '\n' + 'while True:\n' + code;
+      return definitions.join('\n') + '\n\n' + setups.join('') + '\n' + code;
     else
       return definitions.join('\n') + '\n\n' + setups.join('') + '\n' + code;
 

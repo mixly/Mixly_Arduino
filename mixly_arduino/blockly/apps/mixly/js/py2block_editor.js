@@ -10,6 +10,7 @@ function Py2blockEditor(py2block_conveter, ace_editor){
 
 Py2blockEditor.prototype.setBlocks = function(python_code){
     var xml_code = "";
+    py2block_config.reset();
     if (python_code !== '' && python_code !== undefined && python_code.trim().charAt(0) !== '<') {
         var result = this.convert.convertSource(python_code);
         xml_code = result.xml;
@@ -37,8 +38,9 @@ Py2blockEditor.prototype.setBlocks = function(python_code){
 }
 
 Py2blockEditor.prototype.setBlocksFromXml = function(xml){
-    Blockly.mainWorkspace.clear();
-    Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
+    //Blockly.mainWorkspace.clear();
+    //Blockly.Xml.domToWorkspace(xml, Blockly.mainWorkspace);
+    Blockly.Xml.domToWorkspaceDestructive(xml, Blockly.mainWorkspace);
 }
 
 Py2blockEditor.prototype.gotoEditorEnd = function(){
@@ -70,28 +72,76 @@ Py2blockEditor.prototype.updateText = function(){
 }
 
 
-Py2blockEditor.prototype.updateMixpyBlock = function(){
+Py2blockEditor.prototype.updateBlock = function(){
     if(this.fromCode) {
         this.fromCode = false;
         this.setBlocks(this.editor.getValue());
     }
 }
-function rightCodeEvent1(masterEvent) {
-    if (masterEvent.type == Blockly.Events.UI) {
-        return;  // Don't update UI events.
+
+
+Blockly.Xml.domToWorkspaceDestructive = function(xml, workspace, errorXml) {
+    if (xml instanceof Blockly.Workspace) {
+        var swap = xml;
+        xml = workspace;
+        workspace = swap;
+        console.warn('Deprecated call to Blockly.Xml.domToWorkspace, ' +
+            'swap the arguments.');
     }
-    //更新
-    var arduinoTextarea = document.getElementById('side_code');
-    var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-    var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-    py2block_editor.silentText = true;
-    if(!py2block_editor.silentBlock) {
-        editor_side_code.setValue(chinese_code, -1);
-    }else{
-        setTimeout(function() {
-            py2block_editor.getFocus();
-        }, 50);
+    var width;  // Not used in LTR.
+    if (workspace.RTL) {
+        width = workspace.getWidth();
     }
-    py2block_editor.silentText = false;
-    //py2block_editor.silentBlock = false;
+    Blockly.Field.startCache();
+    // Safari 7.1.3 is known to provide node lists with extra references to
+    // children beyond the lists' length.  Trust the length, do not use the
+    // looping pattern of checking the index for an object.
+    var childCount = xml.childNodes.length;
+    var existingGroup = Blockly.Events.getGroup();
+    if (!existingGroup) {
+        Blockly.Events.setGroup(true);
+    }
+    Blockly.Events.disable();
+    var blockLHeight = [];
+    while (workspace.topBlocks_.length) {
+        workspace.topBlocks_[0].dispose();
+        //blockLHeight.push(workspace.topBlocks_[0].getHeightWidth()['height']);
+    }
+    workspace.variableList.length = 0;
+    Blockly.Events.enable();
+
+    // Disable workspace resizes as an optimization.
+    if (workspace.setResizesEnabled) {
+        workspace.setResizesEnabled(false);
+    }
+    var currY = 10;
+    for (var i = 0; i < childCount; i++) {
+        var xmlChild = xml.childNodes[i];
+        var name = xmlChild.nodeName.toLowerCase();
+        if (name == 'block' ||
+            (name == 'shadow' && !Blockly.Events.recordUndo)) {
+            // Allow top-level shadow blocks if recordUndo is disabled since
+            // that means an undo is in progress.  Such a block is expected
+            // to be moved to a nested destination in the next operation.
+            var block = Blockly.Xml.domToBlock(xmlChild, workspace);
+            var blockX = 0;
+            var blockY = currY;
+            currY = blockY + workspace.topBlocks_[i].getHeightWidth()['height'] + 50;
+            if (!isNaN(blockX) && !isNaN(blockY)) {
+                block.moveBy(workspace.RTL ? width - blockX : blockX, blockY);
+            }
+        } else if (name == 'shadow') {
+            goog.asserts.fail('Shadow block cannot be a top-level block.');
+        }
+    }
+    if (!existingGroup) {
+        Blockly.Events.setGroup(false);
+    }
+    Blockly.Field.stopCache();
+
+    workspace.updateVariableList(false);
+    // Re-enable workspace resizing.
+    if (workspace.setResizesEnabled) {
+        workspace.setResizesEnabled(true);
+    }
 }

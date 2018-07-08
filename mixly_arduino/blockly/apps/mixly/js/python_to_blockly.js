@@ -1,10 +1,11 @@
 /**
  * An object for converting Python source code to the
  * Blockly XML representation.
- * 
+ *
  * @constructor
  * @this {PythonToBlocks}
  */
+
 function PythonToBlocks() {
     this.ignoreFunctionS = new Set();
     for(var idx in py2block_config.ignoreFunctionL)
@@ -132,13 +133,13 @@ PythonToBlocks.prototype.convertBody = function(node, is_top_level) {
     if (node.length == 0) {
         return null;
     }
-    
+
     // Final result list
     var children = [], // The complete set of peers
         root = null, // The top of the current peer
         current = null,
         levelIndex = this.levelIndex; // The bottom of the current peer
-        
+
     function addPeer(peer) {
         if (root == null) {
             children.push(peer);
@@ -148,13 +149,13 @@ PythonToBlocks.prototype.convertBody = function(node, is_top_level) {
         root = peer;
         current = peer;
     }
-    
+
     function finalizePeers() {
         if (root != null) {
             children.push(root);
         }
     }
-    
+
     function nestChild(child) {
         if (root == null) {
             root = child;
@@ -168,7 +169,7 @@ PythonToBlocks.prototype.convertBody = function(node, is_top_level) {
             current = child;
         }
     }
-    
+
     var lineNumberInBody = 0,
         lineNumberInProgram,
         previousLineInProgram=null,
@@ -177,11 +178,11 @@ PythonToBlocks.prototype.convertBody = function(node, is_top_level) {
         commentCount,
         previousHeight = null,
         visitedFirstLine = false;
-        
+
     // Iterate through each node
     for (var i = 0; i < node.length; i++) {
         lineNumberInBody += 1;
-        
+
         lineNumberInProgram = node[i].lineno;
         distance = 0, wasFirstLine = true;
         if (previousLineInProgram != null) {
@@ -189,7 +190,7 @@ PythonToBlocks.prototype.convertBody = function(node, is_top_level) {
             wasFirstLine = false;
         }
         lineNumberInBody += distance;
-        
+
         // Handle earlier comments
         commentCount = 0;
         for (var commentLineInProgram in this.comments) {
@@ -212,39 +213,39 @@ PythonToBlocks.prototype.convertBody = function(node, is_top_level) {
                 commentCount += 1;
             }
         }
-        
+
         distance = lineNumberInProgram - this.highestLineSeen;
         this.highestLineSeen = Math.max(lineNumberInProgram, this.highestLineSeen);
-        
+
         // Now convert the actual node
         var height = this.heights.shift();
         var originalSourceCode = this.getSourceCode(lineNumberInProgram, height);
         var newChild = this.convertStatement(node[i], originalSourceCode, is_top_level);
-        
+
         // Skip null blocks (e.g., imports)
         if (newChild == null) {
             continue;
         }
-        
+
         skipped_line = distance > 1;
         previousLineInProgram = lineNumberInProgram;
         previousHeight = height;
-        
+
         // Handle top-level expression blocks
         if ((is_top_level || (py2block_config.isMicrobitpy && this.levelIndex <= 2)) && newChild.constructor == Array) {
             addPeer(newChild[0]);
-        // Handle skipped line
+            // Handle skipped line
         } else if ((is_top_level || (py2block_config.isMicrobitpy && this.levelIndex <= 2)) && skipped_line && visitedFirstLine) {
             addPeer(newChild);
-        // Otherwise, always embed it in there.
+            // Otherwise, always embed it in there.
         } else {
             nestChild(newChild);
         }
-        
+
         visitedFirstLine = true;
     }
-    
-    
+
+
     // Handle comments that are on the very last line
     var lastLineNumber = lineNumberInProgram+1
     if (lastLineNumber in this.comments) {
@@ -252,7 +253,7 @@ PythonToBlocks.prototype.convertBody = function(node, is_top_level) {
         nestChild(commentChild);
         delete this.comments[lastLineNumber];
     }
-    
+
     // Handle any extra comments that stuck around
     if (is_top_level) {
         for (var commentLineInProgram in this.comments) {
@@ -269,12 +270,12 @@ PythonToBlocks.prototype.convertBody = function(node, is_top_level) {
             delete this.comments[lastLineNumber];
         }
     }
-    
-    
+
+
     finalizePeers();
-    
+
     this.levelIndex -= 1;
-    
+
     return children;
 }
 
@@ -374,15 +375,15 @@ PythonToBlocks.prototype.convert = function(node, is_top_level) {
 }
 
 function arrayMax(array) {
-  return array.reduce(function(a, b) {
-    return Math.max(a, b);
-  });
+    return array.reduce(function(a, b) {
+        return Math.max(a, b);
+    });
 }
 
 function arrayMin(array) {
-  return array.reduce(function(a, b) {
-    return Math.min(a, b);
-  });
+    return array.reduce(function(a, b) {
+        return Math.min(a, b);
+    });
 }
 
 PythonToBlocks.prototype.convertStatement = function(node, full_source, is_top_level) {
@@ -558,6 +559,16 @@ PythonToBlocks.prototype.Assign = function(node)
     if (targets.length == 0) {
         throw new Error("Nothing to assign to!");
     } else if (targets.length == 1) {
+        if(value._astname === "Call")
+            py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.attr.v;
+        else
+            py2block_config.objectTypeD[this.Name_str(targets[0])] = value._astname;
+        for(var i = 0 ; i < py2block_config.assignL.length; i ++){
+            var checkfunc = py2block_config.assignL[i][0];
+            var blockfunc = py2block_config.assignL[i][1];
+            if(checkfunc(this, node, targets, value))
+                return blockfunc(this, node, targets, value);
+        }
         return block("variables_set", node.lineno, {
             "VAR": this.Name_str(targets[0]) //targets
         }, {
@@ -602,19 +613,19 @@ PythonToBlocks.prototype.Print = function(node)
     var dest = node.dest;
     var values = node.values;
     var nl = node.nl;
-    
+
     if (values.length == 1) {
         return block("text_print", node.lineno, {}, {
             "TEXT": this.convert(values[0])
         });
     } else {
-        return block("text_print_multiple", node.lineno, {}, 
-            this.convertElements("PRINT", values), 
-        {
-            "inline": "true"
-        }, {
-            "@items": values.length
-        });
+        return block("text_print_multiple", node.lineno, {},
+            this.convertElements("PRINT", values),
+            {
+                "inline": "true"
+            }, {
+                "@items": values.length
+            });
     }
 }
 
@@ -630,12 +641,12 @@ PythonToBlocks.prototype.For = function(node) {
     var iter = node.iter;
     var body = node.body;
     var orelse = node.orelse;
-    
+
     if (orelse.length > 0) {
         // TODO
         throw new Error("Or-else block of For is not implemented.");
     }
-    
+
     return block("controls_forEach", node.lineno, {
     }, {
         "LIST": this.convert(iter),
@@ -663,7 +674,7 @@ PythonToBlocks.prototype.While = function(node, is_top_level) {
     if(py2block_config.isMicrobitpy && is_top_level){
         return this.convertBody(body);
     }
-    return block("controls_while", node.lineno, {}, {
+    return block("controls_whileUntil", node.lineno, {}, {
         "BOOL": this.convert(test)
     }, {}, {}, {
         "DO": this.convertBody(body)
@@ -681,14 +692,14 @@ PythonToBlocks.prototype.If = function(node)
     var test = node.test;
     var body = node.body;
     var orelse = node.orelse;
-    
+
     var IF_values = {"IF0": this.convert(test)};
     var DO_values = {"DO0": this.convertBody(body)};
-    
+
     var elseifCount = 0;
     var elseCount = 0;
     var potentialElseBody = null;
-    
+
     // Handle weird orelse stuff
     if (orelse !== undefined) {
         if (orelse.length == 1 && orelse[0]._astname == "If") {
@@ -711,7 +722,7 @@ PythonToBlocks.prototype.If = function(node)
             DO_values["ELSE"] = this.convertBody(orelse);
         }
     }
-    
+
     return block("controls_if", node.lineno, {
     }, IF_values, {
         "inline": "false"
@@ -839,15 +850,15 @@ PythonToBlocks.prototype.Global = function(node)
  */
 PythonToBlocks.prototype.Expr = function(node, is_top_level) {
     var value = node.value;
-    
+
     var converted = this.convert(value);
     if (converted.constructor == Array) {
         return converted[0];
     } else if (is_top_level === true || (py2block_config.isMicrobitpy && this.levelIndex <= 2)) {
-        return [this.convert(value)];
+        return [converted];
     } else {
         return block("raw_empty", node.lineno, {}, {
-            "VALUE": this.convert(value)
+            "VALUE": converted
         });
     }
 }
@@ -941,6 +952,13 @@ PythonToBlocks.prototype.BinOp = function(node)
     var left = node.left;
     var op = node.op;
     var right = node.right;
+    if(left._astname === "Call" && left.func.attr.v === "index"
+        && right._astname === "Num" && this.Num_value(right) === 1){
+        return block("lists_find", node.lineno, {"OP": "INDEX"}, {
+            "VAR": this.convert(left.func.value),
+            "data":this.convert(left.args[0])
+        });
+    }
     return block("math_arithmetic", node.lineno, {
         "OP": this.binaryOperator(op) // TODO
     }, {
@@ -961,7 +979,7 @@ PythonToBlocks.prototype.UnaryOp = function(node)
     var operand = node.operand;
     if (op.name == "Not") {
         return block("logic_negate", node.lineno, {}, {
-            "BOOL": this.convert(operand) 
+            "BOOL": this.convert(operand)
         }, {
             "inline": "false"
         });
@@ -1000,7 +1018,7 @@ PythonToBlocks.prototype.IfExp = function(node)
 PythonToBlocks.prototype.Dict = function(node) {
     var keys = node.keys;
     var values = node.values;
-    
+
     var keyList = [];
     var valueList = [];
     for (var i = 0; i < keys.length; i+= 1) {
@@ -1010,7 +1028,7 @@ PythonToBlocks.prototype.Dict = function(node) {
         keyList["KEY"+i] = this.Str_value(keys[i]);
         valueList["VALUE"+i] = this.convert(values[i]);
     }
-    
+
     return block("dicts_create_with", node.lineno, keyList, valueList, {
         "inline": "false"
     }, {
@@ -1036,7 +1054,7 @@ PythonToBlocks.prototype.ListComp = function(node)
 {
     var elt = node.elt;
     var generators = node.generators;
-    
+
     // TODO
 }
 
@@ -1048,7 +1066,7 @@ PythonToBlocks.prototype.SetComp = function(node)
 {
     var elt = node.elt;
     var generators = node.generators;
-    throw new Error("Set Comprehensions are not implemented"); 
+    throw new Error("Set Comprehensions are not implemented");
 }
 
 /*
@@ -1061,7 +1079,7 @@ PythonToBlocks.prototype.DictComp = function(node)
     var key = node.key;
     var value = node.value;
     var generators = node.generators;
-    throw new Error("Dictionary Comprehensions are not implemented"); 
+    throw new Error("Dictionary Comprehensions are not implemented");
 }
 
 /*
@@ -1071,7 +1089,7 @@ PythonToBlocks.prototype.DictComp = function(node)
 PythonToBlocks.prototype.GeneratorExp = function(node) {
     var elt = node.elt;
     var generators = node.generators;
-    throw new Error("Generator Expresions are not implemented"); 
+    throw new Error("Generator Expresions are not implemented");
 }
 
 /*
@@ -1110,7 +1128,7 @@ PythonToBlocks.prototype.Compare = function(node)
     var left = node.left;
     var ops = node.ops;
     var comparators = node.comparators;
-    
+
     if (ops.length != 1) {
         throw new Error("Only one comparison operator is supported");
     } else if (ops[0].name == "In_" || ops[0].name == "NotIn") {
@@ -1132,19 +1150,19 @@ PythonToBlocks.prototype.Compare = function(node)
             "inline": "true"
         });
     }
-    
+
 }
 
 convertStockSymbols = function(symbol) {
     switch (symbol) {
         case 'FB': case "Facebook":
-            return "Facebook";
+        return "Facebook";
         case "AAPL": case "Apple":
-            return "Apple";
+        return "Apple";
         case "MSFT": case "Microsoft":
-            return "Microsoft";
+        return "Microsoft";
         case "GOOG": case "Google":
-            return "Google";
+        return "Google";
         default:
             throw new Error("Unknown Stock Symbol.");
     }
@@ -1155,7 +1173,7 @@ toTitleCase = function(str) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
 }
-            
+
 PythonToBlocks.KNOWN_MODULES = {
     "weather": {
         "get_temperature": ["weather_temperature", "CITY"],
@@ -1164,7 +1182,7 @@ PythonToBlocks.KNOWN_MODULES = {
         "get_highs_lows": ["weather_highs_lows", "CITY"],
         "get_all_forecasted_temperatures": ["weather_all_forecasts"],
         "get_forecasted_reports": ["weather_report_forecasts", "CITY"]
-    }, 
+    },
     "earthquakes": {
         "get": ["earthquake_get", "PROPERTY"],
         "get_both": ["earthquake_both"],
@@ -1177,9 +1195,9 @@ PythonToBlocks.KNOWN_MODULES = {
     "crime": {
         // STATE = toTitleCase
         "get_property_crimes": ["crime_state", ["STATE", toTitleCase],
-                                              ["TYPE", "property"]],
+            ["TYPE", "property"]],
         "get_violent_crimes": ["crime_state",  ["STATE", toTitleCase],
-                                              ["TYPE", "violent"]],
+            ["TYPE", "violent"]],
         "get_by_year": ["crime_year", "YEAR"],
         "get_all": ["crime_all"]
     },
@@ -1192,7 +1210,7 @@ PythonToBlocks.KNOWN_MODULES = {
         "ylabel": ["*plot_ylabel", "TEXT"],
         "hist": ["*plot_hist", {"type": "variable", "mode": "value", "name": "values"}],
         "scatter": ["*plot_scatter", {"type": "variable", "mode": "value", "name": "x_values"},
-                                      {"type": "variable", "mode": "value", "name": "y_values"}],
+            {"type": "variable", "mode": "value", "name": "y_values"}],
         "show": ["*plot_show"]
     }
 };
@@ -1215,8 +1233,13 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
             } else {
                 throw new Error("Incorrect number of arguments to plt.plot");
             }
-        } else if (module in PythonToBlocks.KNOWN_MODULES && name in PythonToBlocks.KNOWN_MODULES[module]) {
-            var definition = PythonToBlocks.KNOWN_MODULES[module][name];
+        } else if ((module in PythonToBlocks.KNOWN_MODULES && name in PythonToBlocks.KNOWN_MODULES[module])
+            || (module in py2block_config.moduleFunctionD && name in py2block_config.moduleFunctionD[module])) {
+            var definition = null;
+            if(module in PythonToBlocks.KNOWN_MODULES && name in PythonToBlocks.KNOWN_MODULES[module])
+                definition = PythonToBlocks.KNOWN_MODULES[module][name];
+            else
+                definition = py2block_config.moduleFunctionD[module][name];
             var blockName = definition[0];
             var isExpression = true;
             if (blockName.charAt(0) == "*") {
@@ -1247,7 +1270,12 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
                     } else if (argument.type == "integer") {
                         destination[argument.name] = this.Num_value(args[i]);
                     } else if (argument.type == 'variable') {
-                        destination[argument.name] = this.convert(args[i]);
+                        if(argument.is_math_angle === true){
+                            //澶勭悊杩欑鎯呭喌锛歮ath.sin(90 / 180.0 * math.pi),鍏朵腑/ 180.0 * math.pi涓嶉渶瑕佷綋鐜板湪鍥惧舰鍧椾腑
+                            destination[argument.name] = this.convert(args[i].left.left);
+                        }else{
+                            destination[argument.name] = this.convert(args[i]);
+                        }
                     } else if (argument.type == "integer_mapper") {
                         // Okay we jumped the shark here
                         var argumentName = argument.name;
@@ -1276,8 +1304,22 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
                 return [block(blockName, func.lineno, fields, values, [], mutations)];
             }
         }
-    } 
-    if (this.KNOWN_FUNCTIONS.indexOf(name) > -1) {
+    }
+    var keys = Object.keys(py2block_config.objectFunctionD.get(name));
+    if (this.KNOWN_FUNCTIONS.indexOf(name) > -1 || keys.length != 0) {
+        if(keys.length != 0){
+            var objname = this.identifier(func.value.id);
+            if(objname in py2block_config.objectTypeD){
+                var objtype = py2block_config.objectTypeD[objname];
+                if(objtype in py2block_config.objectFunctionD.get(name))
+                    return py2block_config.objectFunctionD.get(name)[objtype](this, func, name, args);
+            }
+            if(!py2block_config.objectFunctionD.get(name)['Default']){
+                var firstKey = keys[0];
+                py2block_config.objectFunctionD.get(name)['Default'] = py2block_config.objectFunctionD.get(name)[firstKey];
+            }
+            return py2block_config.objectFunctionD.get(name)['Default'](this, func, name, args);
+        }
         switch (name) {
             case "append":
                 if (args.length !== 1) {
@@ -1291,20 +1333,20 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
                     "inline": "true"
                 })];
             case "strip":
-                return block("text_trim", func.lineno, { "MODE": "BOTH" }, 
+                return block("text_trim", func.lineno, { "MODE": "BOTH" },
                     { "TEXT": this.convert(func.value) });
             case "lstrip":
-                return block("text_trim", func.lineno, { "MODE": "LEFT" }, 
+                return block("text_trim", func.lineno, { "MODE": "LEFT" },
                     { "TEXT": this.convert(func.value) });
             case "rstrip":
-                return block("text_trim", func.lineno, { "MODE": "RIGHT" }, 
+                return block("text_trim", func.lineno, { "MODE": "RIGHT" },
                     { "TEXT": this.convert(func.value) });
             default: throw new Error("Unknown function call!");
         }
     } else if (name in PythonToBlocks.KNOWN_ATTR_FUNCTIONS) {
         return PythonToBlocks.KNOWN_ATTR_FUNCTIONS[name].bind(this)(func, args, keywords, starargs, kwargs, node)
     } else {
-        console.log(func, args, keywords, starargs, kwargs);
+        //console.log(func, args, keywords, starargs, kwargs);
         heights = this.getChunkHeights(node);
         extractedSource = this.getSourceCode(arrayMin(heights), arrayMax(heights));
         var col_endoffset = node.col_endoffset;
@@ -1320,8 +1362,8 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
         //console.log(node, extractedSource, node.col_offset, node.col_endoffset);
         var lineno = node.lineno;
         //console.error(e);
-        //return raw_expression(expressionCall, lineno);
-        
+        //return raw_expression(extractedSource.split("=")[1], lineno);
+
         var argumentsNormal = {};
         var argumentsMutation = {"@name": name};
         for (var i = 0; i < args.length; i+= 1) {
@@ -1330,9 +1372,9 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
         }
         var methodCall = block("procedures_callreturn", node.lineno, {
         }, argumentsNormal, {
-            "inline": "false"
+            "inline": "true"
         }, argumentsMutation);
-        
+
         return block("attribute_access", node.lineno, {}, {
             "MODULE": this.convert(func.value),
             "NAME": methodCall
@@ -1354,7 +1396,7 @@ PythonToBlocks.prototype.Call = function(node) {
     var keywords = node.keywords;
     var starargs = node.starargs;
     var kwargs = node.kwargs;
-    
+
     switch (func._astname) {
         case "Name":
             switch (this.identifier(func.id)) {
@@ -1363,8 +1405,8 @@ PythonToBlocks.prototype.Call = function(node) {
                         return [block("text_print", node.lineno, {}, {
                             "TEXT": this.convert(args[0])})];
                     } else {
-                        return [block("text_print_multiple", node.lineno, {}, 
-                            this.convertElements("PRINT", args), 
+                        return [block("text_print_multiple", node.lineno, {},
+                            this.convertElements("PRINT", args),
                             {"inline": "true"
                             }, { "@items": args.length})];
                     }
@@ -1383,13 +1425,13 @@ PythonToBlocks.prototype.Call = function(node) {
                 case "_math_modes":
                     return block("list_trig", node.lineno, {'OP':'MODE'}, {"DATA": this.convert(args[0])})
                 case "_xrange":
-                    return block("procedures_callreturn", node.lineno, {}, 
+                    return block("procedures_callreturn", node.lineno, {},
                         {"ARG0": this.convert(args[0])},
-                        {"inline": "true"}, 
+                        {"inline": "true"},
                         {"@name": "xrange",
-                         "": this.convert(args[0])})
+                            "": this.convert(args[0])})
                 default:
-                    //去配置中查询
+                    //鍘婚厤缃腑鏌ヨ
                     var funcname = this.identifier(func.id);
                     if(funcname in py2block_config.globalFunctionD){
                         var config_block = py2block_config.globalFunctionD[funcname](this, node, args, keywords, starargs, kwargs);
@@ -1408,12 +1450,12 @@ PythonToBlocks.prototype.Call = function(node) {
                         argumentsMutation[i] = this.convert(args[i]);
                     }
                     return block("procedures_callreturn", node.lineno, {}, argumentsNormal, {
-                        "inline": "false"
+                        "inline": "true"
                     }, argumentsMutation);
             }
         // Direct function call
         case "Attribute":
-        // Module function call
+            // Module function call
             return this.CallAttribute(func, args, keywords, starargs, kwargs, node);
     }
 }
@@ -1435,7 +1477,11 @@ PythonToBlocks.prototype.Repr = function(node)
 PythonToBlocks.prototype.Num = function(node)
 {
     var n = node.n;
-    return block("math_number", node.lineno, {"NUM": Sk.ffi.remapToJs(n)});
+    var nVal = Sk.ffi.remapToJs(n);
+    if((nVal == 0 || nVal == 1 ) && py2block_config.pinType == "pins_digital"){
+        return block("inout_highlow", node.lineno, {"BOOL": (nVal == 1 ? "HIGH":"LOW")});
+    }
+    return block("math_number", node.lineno, {"NUM": nVal});
 }
 
 PythonToBlocks.prototype.Num_value = function(node)
@@ -1475,14 +1521,14 @@ PythonToBlocks.prototype.Attribute = function(node)
     var value = node.value;
     var attr = node.attr;
     var ctx = node.ctx;
-    
+
     console.log(node);
-    
+
     return block("attribute_access", node.lineno, {
         "MODULE": this.convert(value),
         "NAME": this.convert(attr)
     });
-    
+
     //throw new Error("Attribute access not implemented");
 }
 
@@ -1497,20 +1543,65 @@ PythonToBlocks.prototype.Subscript = function(node)
     var value = node.value;
     var slice = node.slice;
     var ctx = node.ctx;
-    
-    if (slice.value._astname == "Str") {
-        return block("dict_get_literal", node.lineno, {
-            "ITEM": this.Str_value(slice.value)
-        }, {
-            "DICT": this.convert(value)
-        });
-    } else if (slice.value._astname == "Num") {
-        return block("lists_index", node.lineno, {}, {
-            "ITEM": this.convert(slice.value),
+
+    if (slice._astname == "Index"){ //渚嬪a[3]
+        if(slice.value._astname == "Str") {
+            return block("dict_get_literal", node.lineno, {
+                "ITEM": this.Str_value(slice.value)
+            }, {
+                "DICT": this.convert(value)
+            });
+        } else if (slice.value._astname == "Num") {
+            var v = slice.value.n.v;
+            var where = "FROM_START";
+            if(v >= 0){ //鍥惧舰鍧椾腑鑾峰彇绗¬1椤癸紝瀵瑰簲浠ｇ爜涓嬫爣鏄¯0
+                slice.value.n.v += 1;
+                where = "FROM_START";
+            }else{ //鍥惧舰鍧椾腑鑾峰彇鍊掓暟绗竴椤癸紝瀵瑰簲浠ｇ爜涓嬫爣鏄¯-1
+                slice.value.n.v = 0 - v;
+                where = "FROM_END";
+            }
+            if(value._astname == "Str"){ // 瀵瑰簲鏂囨湰妯″潡涓殑鑾峰彇绗琗涓瓧绗¦
+                return block("text_char_at2", node.lineno, {"WHERE":where}, {
+                    "AT": this.convert(slice.value),
+                    "VAR": this.convert(value)
+                });
+            }else { //瀵瑰簲鍒楄〃妯″潡涓殑鑾峰彇绗琗涓厓绱 
+                return block("lists_getIndex2", node.lineno, {"MODE": "GET", "WHERE": where}, {
+                    "AT": this.convert(slice.value),
+                    "VALUE": this.convert(value)
+                });
+            }
+        }
+    }else if(slice._astname == "Slice"){
+        var where1 = "FROM_START";
+        var where2 = "FROM_START";
+        if(slice.lower == null){
+            where1 = "FIRST";
+        }else if(slice.lower.n.v >= 0){
+            slice.lower.n.v += 1;
+            where1 = "FROM_START";
+        }else if(slice.upper.n.v < 0){
+            slice.lower.n.v = 0 - slice.lower.n.v;
+            where1 = "FROM_END";
+        }
+        if(slice.upper == null) {
+            where2 = "LAST"
+        }else if(slice.upper.n.v >= 0){
+            slice.upper.n.v += 1;
+            where2 = "FROM_START";
+        }else if(slice.upper.n.v < 0){
+            slice.upper.n.v = 0 - slice.upper.n.v;
+            where2 = "FROM_END";
+        }
+
+        return block("lists_getSublist", node.lineno, {"WHERE1": where1, "WHERE2": where2}, {
+            "AT1": this.convert(slice.lower),
+            "AT2": this.convert(slice.upper),
             "LIST": this.convert(value),
         });
     }
-    
+
     throw new Error("This kind of subscript is not supported.");
 }
 
@@ -1522,6 +1613,13 @@ PythonToBlocks.prototype.Name = function(node)
 {
     var id = node.id;
     var ctx = node.ctx;
+    //处理micropython的管脚(eg:pin10)
+    var pinMatcher = /pin[0-9]*/;
+    if(pinMatcher.test(this.Name_str(node)) && py2block_config.pinType != null){
+        return block(py2block_config.pinType, node.lineno, {
+                "PIN": this.identifier(id).replace("pin", '')
+            });
+    }
     switch (this.Name_str(node)) {
         case "True":
             return block("logic_boolean", node.lineno, {"BOOL": "TRUE"});
@@ -1565,14 +1663,14 @@ PythonToBlocks.prototype.convertElements = function(key, values) {
 PythonToBlocks.prototype.List = function(node) {
     var elts = node.elts;
     var ctx = node.ctx;
-    
-    return block("lists_create_with", node.lineno, {}, 
+
+    return block("lists_create_with", node.lineno, {},
         this.convertElements("ADD", elts)
-    , {
-        "inline": elts.length > 3 ? "false" : "true", 
-    }, {
-        "@items": elts.length
-    });
+        , {
+            "inline": elts.length > 3 ? "false" : "true",
+        }, {
+            "@items": elts.length
+        });
 }
 
 /*
@@ -1583,7 +1681,7 @@ PythonToBlocks.prototype.Tuple = function(node)
 {
     var elts = node.elts;
     var ctx = node.ctx;
-    
+
     throw new Error("Tuples not implemented");
 }
 
@@ -1606,7 +1704,7 @@ PythonToBlocks.prototype.Slice = function(node)
     var lower = node.lower;
     var upper = node.upper;
     var step = node.step;
-    
+
     throw new Error("Slices not implemented");
 }
 
@@ -1617,7 +1715,7 @@ PythonToBlocks.prototype.Slice = function(node)
 PythonToBlocks.prototype.ExtSlice = function(node)
 {
     var dims = node.dims;
-    
+
     throw new Error("ExtSlice is not implemented.");
 }
 
@@ -1628,7 +1726,7 @@ PythonToBlocks.prototype.ExtSlice = function(node)
 PythonToBlocks.prototype.Index = function(value)
 {
     var value = node.value;
-    
+
     throw new Error("Index is not implemented");
 }
 
@@ -1643,7 +1741,7 @@ PythonToBlocks.prototype.comprehension = function(node)
     var target = node.target;
     var iter = node.iter;
     var ifs = node.ifs;
-    
+
     throw new Error("Comprehensions not implemented.");
 }
 
@@ -1658,7 +1756,7 @@ PythonToBlocks.prototype.ExceptHandler = function(node)
     var type = node.type;
     var name = node.name;
     var body = node.boy;
-    
+
     throw new Error("Except handlers are not implemented");
 }
 
@@ -1680,7 +1778,7 @@ PythonToBlocks.prototype.arguments_ = function(node)
     var vararg = node.vararg;
     var kwarg = node.kwarg;
     var defaults = node.defaults;
-    
+
     var allArgs = [];
     for (var i = 0; i < args.length; i++) {
         var arg = args[i];
@@ -1698,7 +1796,7 @@ PythonToBlocks.prototype.keyword = function(node)
 {
     var arg = node.arg;
     var value = node.value;
-    
+
     throw new Error("Keywords are not implemented");
 }
 
@@ -1711,7 +1809,7 @@ PythonToBlocks.prototype.alias = function(node)
 {
     var name = node.name;
     var asname = node.asname;
-    
+
     throw new Error("Aliases are not implemented");
 }
 
