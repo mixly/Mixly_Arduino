@@ -143,7 +143,7 @@ Blockly.Blocks['microbit_display_show_animation'] = {
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/display.html#microbit.display.show",
       "message0" : Blockly.MIXLY_MICROBIT_Animate_images,
       "args0" : [{
-          "check" : "microbit_image",
+          "check" : ["microbit_image", "List"],
           "type" : "input_value",
           "name" : "images"
         }, {
