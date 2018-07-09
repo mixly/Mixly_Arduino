@@ -173,7 +173,7 @@ Blockly.Python.math_random = function() {
   var argument1 = Blockly.Python.valueToCode(this, 'TO',
       Blockly.Python.ORDER_NONE) || '0';
   if (type=='int'){
-    var code = 'int(random.uniform(' + argument0 +  ', ' + argument1 + ' + 1))';
+    var code = 'random.randint(' + argument0 +  ', ' + argument1 + ')';
   }else if (type=='float'){
     var code = 'random.uniform(' + argument0 +  ', ' + argument1 + ')';  
   }
