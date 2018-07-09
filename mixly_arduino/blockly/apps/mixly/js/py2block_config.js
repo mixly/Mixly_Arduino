@@ -14,9 +14,7 @@ function defDict(type) {
 function Py2blockConfig (){
     this.isMicrobitpy = false;//microbit需要忽略最外层的While循环
     this.objectTypeD = {}; //key：变量名，value：变量类型，如{'a':'List'}
-    //this.objectFunctionD = defDict({});
     this.ignoreFunctionL = [];
-    this.globalFunctionD = {};
     this.initAssignL = [];
     /*
     this.initIgnoreFunctionL();
@@ -29,6 +27,7 @@ function Py2blockConfig (){
 
 Py2blockConfig.prototype.objectFunctionD = defDict({});
 Py2blockConfig.prototype.moduleFunctionD = defDict({});
+Py2blockConfig.prototype.globalFunctionD = {};
 Py2blockConfig.prototype.pinType = null;
 Py2blockConfig.prototype.reset = function(){
     this.objectTypeD = {};

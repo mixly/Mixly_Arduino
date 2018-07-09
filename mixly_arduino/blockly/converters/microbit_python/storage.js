@@ -23,7 +23,7 @@ pbc.objectFunctionD.get('read')['FILE'] = function(py2block, func, args, keyword
     }
     var fileblock = py2block.convert(func.value);
     var argblock = py2block.convert(args[0]);
-    return [block("storage_get_contents", func.lineno, {
+    return block("storage_get_contents", func.lineno, {
         "MODE":"read"
     },
     {
@@ -31,7 +31,7 @@ pbc.objectFunctionD.get('read')['FILE'] = function(py2block, func, args, keyword
          "SIZE" : argblock
     }, {
         "inline": "true"
-    })];
+    });
 }
 
 
@@ -41,7 +41,7 @@ pbc.objectFunctionD.get('readline')['FILE'] = function(py2block, func, args, key
     }
     var fileblock = py2block.convert(func.value);
     var argblock = py2block.convert(args[0]);
-    return [block("storage_get_contents", func.lineno, {
+    return block("storage_get_contents", func.lineno, {
         "MODE":"readline"
     },
     {
@@ -49,7 +49,7 @@ pbc.objectFunctionD.get('readline')['FILE'] = function(py2block, func, args, key
          "SIZE" : argblock
     }, {
         "inline": "true"
-    })];
+    });
 }
 
 
@@ -58,11 +58,11 @@ pbc.objectFunctionD.get('writable')['FILE'] = function(py2block, func, args, key
         throw new Error("Incorrect number of arguments");
     }
     var fileblock = py2block.convert(func.value);
-    return [block("storage_can_write_ornot", func.lineno, {}, {
+    return block("storage_can_write_ornot", func.lineno, {}, {
         "FILE" : fileblock,
     }, {
         "inline": "true"
-    })];
+    });
 }
 
 
@@ -71,11 +71,11 @@ pbc.objectFunctionD.get('name')['FILE'] = function(py2block, func, args, keyword
         throw new Error("Incorrect number of arguments");
     }
     var fileblock = py2block.convert(func.value);
-    return [block("storage_get_filename", func.lineno, {}, {
+    return block("storage_get_filename", func.lineno, {}, {
          "FILE" : fileblock
     }, {
         "inline": "true"
-    })];
+    });
 }
 
 
@@ -96,10 +96,10 @@ pbc.moduleFunctionD.get('os')['listdir'] = function(py2block, func, args, keywor
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return [block("storage_list_all_files", func.lineno, {}, {
+    return block("storage_list_all_files", func.lineno, {}, {
     }, {
         "inline": "true"
-    })];
+    });
 }
 
 
@@ -121,12 +121,10 @@ pbc.moduleFunctionD.get('os')['size'] = function(py2block, func, args, keywords,
         throw new Error("Incorrect number of arguments");
     }
     var argblock = py2block.convert(args[0]);
-    return [block("storage_get_file_size", func.lineno, {}, {
+    return block("storage_get_file_size", func.lineno, {}, {
          "FILE" : argblock
     }, {
         "inline": "true"
-    })];
+    });
 }
-
-
 

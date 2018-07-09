@@ -1431,10 +1431,9 @@ PythonToBlocks.prototype.Call = function(node) {
                         {"@name": "xrange",
                             "": this.convert(args[0])})
                 default:
-                    //鍘婚厤缃腑鏌ヨ
                     var funcname = this.identifier(func.id);
                     if(funcname in py2block_config.globalFunctionD){
-                        var config_block = py2block_config.globalFunctionD[funcname](this, node, args, keywords, starargs, kwargs);
+                        var config_block = py2block_config.globalFunctionD[funcname](this, func, args, keywords, starargs, kwargs, node);
                         if(config_block != null) return config_block;
                     }
 
@@ -1618,11 +1617,17 @@ PythonToBlocks.prototype.Name = function(node)
 {
     var id = node.id;
     var ctx = node.ctx;
+    var nodeName = this.Name_str(node);
     //处理micropython的管脚(eg:pin10)
     var pinMatcher = /pin[0-9]*/;
-    if(pinMatcher.test(this.Name_str(node)) && py2block_config.pinType != null){
+    if(pinMatcher.test(nodeName) && py2block_config.pinType != null){
         return block(py2block_config.pinType, node.lineno, {
                 "PIN": this.identifier(id).replace("pin", '')
+            });
+    }
+    if((nodeName === "button_a" || nodeName === "button_b") && py2block_config.pinType == "pins_button"){
+        return block(py2block_config.pinType, node.lineno, {
+                "PIN": this.identifier(id)
             });
     }
     switch (this.Name_str(node)) {

@@ -87,10 +87,10 @@ pbc.moduleFunctionD.get('uart')['any'] = function(py2block, func, args, keywords
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return [block("serial_any", func.lineno, {}, {
+    return block("serial_any", func.lineno, {}, {
     }, {
         "inline": "true"
-    })];
+    });
 }
 
 
@@ -98,10 +98,10 @@ pbc.moduleFunctionD.get('uart')['read'] = function(py2block, func, args, keyword
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return [block("serial_readstr", func.lineno, {}, {
+    return block("serial_readstr", func.lineno, {}, {
     }, {
         "inline": "true"
-    })];
+    });
 }
 
 
@@ -109,9 +109,9 @@ pbc.moduleFunctionD.get('uart')['readline'] = function(py2block, func, args, key
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return [block("serial_readline", func.lineno, {}, {
+    return block("serial_readline", func.lineno, {}, {
     }, {
         "inline": "true"
-    })];
+    });
 }
 

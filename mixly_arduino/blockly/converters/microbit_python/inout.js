@@ -26,11 +26,11 @@ pbc.objectFunctionD.get('read_digital')['NUMBER'] = function(py2block, func, arg
     pbc.pinType = "pins_digital";
     var pinblock = py2block.convert(func.value);
     pbc.pinType = null;
-    return [block("inout_digital_read", func.lineno, {}, {
+    return block("inout_digital_read", func.lineno, {}, {
         "PIN": pinblock
     }, {
         "inline": "true"
-    })];
+    });
 }
 
 
@@ -58,11 +58,11 @@ pbc.objectFunctionD.get('read_analog')['NUMBER'] = function(py2block, func, args
     pbc.pinType = "pins_analog";
     var pinblock = py2block.convert(func.value);
     pbc.pinType = null;
-    return [block("inout_analog_read", func.lineno, {}, {
+    return block("inout_analog_read", func.lineno, {}, {
         "PIN": pinblock
     }, {
         "inline": "true"
-    })];
+    });
 }
 
 
@@ -88,7 +88,6 @@ pbc.objectFunctionD.get('set_analog_period')['NUMBER'] = function(py2block, func
 
 
 pbc.objectFunctionD.get('set_analog_period_microseconds')['NUMBER']= function(py2block, func, args, keywords, starargs, kwargs, node){
-
     if(args.length!=1){
         throw new Error("Incorrect number of arguments");
     }
@@ -112,15 +111,14 @@ pbc.objectFunctionD.get('set_analog_period_microseconds')['NUMBER']= function(py
 pbc.objectFunctionD.get('is_touched')['NUMBER'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if(args.length !==0){
         throw new Error("Incorrect number of arguments");
-
     }
     pbc.pinType="pins_interrupt";
     var pinblock=py2block.convert(func.value);
     pbc.pinType=null;
 
-    return [block("sensor_pin_pressed",func.lineno,{},{
+    return block("sensor_pin_pressed",func.lineno,{},{
         "pin":pinblock
     },{
         "inline":"true"
-    })];
+    });
 }
