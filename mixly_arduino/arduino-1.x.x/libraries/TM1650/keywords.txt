@@ -1,0 +1,37 @@
+#######################################
+# Syntax Coloring Map For TaskManager
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+TM1650	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+init	KEYWORD2
+clear	KEYWORD2
+displayOn	KEYWORD2
+displayOff	KEYWORD2
+displayState	KEYWORD2
+displayString	KEYWORD2
+displayRunning	KEYWORD2
+displayRunningShift	KEYWORD2
+setBrightness	KEYWORD2
+setBrightnessGradually	KEYWORD2
+getBrightness	KEYWORD2
+controlPosition	KEYWORD2
+setPosition	KEYWORD2
+setDot	KEYWORD2
+getPosition	KEYWORD2
+getNumPositions	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+TM1650_MIN_BRIGHT	LITERAL1
+TM1650_MAX_BRIGHT	LITERAL1
