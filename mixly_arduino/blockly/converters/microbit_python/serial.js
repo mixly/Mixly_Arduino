@@ -51,7 +51,7 @@ pbc.moduleFunctionD.get('uart')['write'] = function(py2block, func, args, keywor
             return [block("serial_print", func.lineno, {}, {
                     "CONTENT":py2block.convert(args[0].args[0]),
                 }, {
-                    "inline": "true"
+                    "inline": "false"
                 })];
         }
     }else if(astname === "BinOp"){
@@ -64,14 +64,14 @@ pbc.moduleFunctionD.get('uart')['write'] = function(py2block, func, args, keywor
                 return [block("serial_println", func.lineno, {}, {
                     "CONTENT": py2block.convert(args[0].left.args[0]),
                 }, {
-                    "inline": "true"
+                    "inline": "false"
                 })];
             }else if(args[0].left.args[0]._astname === "Call"
                 && py2block.identifier(args[0].left.args[0].func.id) === "hex"){ //serial.write(str(hex(XX)) + "\r\n")
                 return [block("serial_print_hex", func.lineno, {}, {
                     "CONTENT": py2block.convert(args[0].left.args[0].args[0]),
                 }, {
-                    "inline": "true"
+                    "inline": "false"
                 })];
             }
         }

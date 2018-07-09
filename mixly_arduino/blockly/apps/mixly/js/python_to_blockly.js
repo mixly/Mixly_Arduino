@@ -1478,8 +1478,14 @@ PythonToBlocks.prototype.Num = function(node)
     var n = node.n;
     var nVal = Sk.ffi.remapToJs(n);
     if(py2block_config.pinType == "pins_digital") {
-        if(nVal == 1 || nVal == 0)
+        if(py2block_config.inScope == "i2c_init"){
+             return block(py2block_config.pinType, node.lineno, {
+                "PIN": nVal
+             });
+        }
+        if(nVal == 1 || nVal == 0) {
             return block("inout_highlow", node.lineno, {"BOOL": (nVal == 1 ? "HIGH" : "LOW")});
+        }
     }else if(py2block_config.pinType == "pins_serial"){
         return block(py2block_config.pinType, node.lineno, {
             "PIN": nVal
@@ -1526,8 +1532,12 @@ PythonToBlocks.prototype.Attribute = function(node)
     var attr = node.attr;
     var ctx = node.ctx;
 
-    console.log(node);
-
+    var valueName = this.identifier(value.id);
+    var attrName = this.identifier(attr);
+    var attrD = py2block_config.moduleAttrD.get(valueName);
+    if(attrName in attrD){
+        return attrD[attrName](node, valueName, attrName);
+    }
     return block("attribute_access", node.lineno, {
         "MODULE": this.convert(value),
         "NAME": this.convert(attr)

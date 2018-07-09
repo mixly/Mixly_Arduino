@@ -27,8 +27,10 @@ function Py2blockConfig (){
 
 Py2blockConfig.prototype.objectFunctionD = defDict({});
 Py2blockConfig.prototype.moduleFunctionD = defDict({});
+Py2blockConfig.prototype.moduleAttrD = defDict({});
 Py2blockConfig.prototype.globalFunctionD = {};
 Py2blockConfig.prototype.pinType = null;
+Py2blockConfig.prototype.inScope = null;
 Py2blockConfig.prototype.reset = function(){
     this.objectTypeD = {};
 }
