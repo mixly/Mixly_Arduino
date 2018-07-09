@@ -49,11 +49,12 @@ Blockly.Python.tuple_getIndex = function() {
     Blockly.Python.ORDER_ADDITIVE) || '1';
   if (argument0.match(/^\d+$/)) {
   // If the index is a naked number, decrement it right now.
-  argument0 = parseInt(argument0, 10) - 1;
-  } else {
-  // If the index is dynamic, decrement it in code.
-  argument0 += ' - 1';
+  argument0 = parseInt(argument0, 10);
   }
+   // else {
+  // If the index is dynamic, decrement it in code.
+  // argument0;
+  // }
   var code=varName+'['+argument0+']';
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
