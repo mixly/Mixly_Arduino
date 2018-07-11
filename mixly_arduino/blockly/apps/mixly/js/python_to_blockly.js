@@ -1505,6 +1505,9 @@ PythonToBlocks.prototype.Num = function(node)
             "PIN": nVal
         });
     }
+    if(py2block_config.inScope == "lcd_init"){
+        return block("math_number", node.lineno, {"NUM": '0x' + nVal.toString(16)});
+    }
     return block("math_number", node.lineno, {"NUM": nVal});
 }
 

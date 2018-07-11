@@ -352,6 +352,37 @@ pbc.assignD.get('RGB')['create_block'] = function(py2block, node, targets, value
     });
 }
 
+
+
+pbc.assignD.get('LCD')['check_assign'] = function(py2block, node, targets, value) {
+    var className = value.func.id.v;
+    if(value._astname === "Call" && className === "LCD1602" && value.args.length === 1)
+        return true;
+    return false;
+}
+
+pbc.assignD.get('LCD')['create_block'] = function(py2block, node, targets, value){
+    py2block_config.inScope = "lcd_init";
+    var argblock = py2block.convert(value.args[0]);
+    py2block_config.inScope = null;
+    return block("group_lcd_init", node.lineno, {}, {
+        "device":argblock
+    });
+}
+
+pbc.moduleFunctionD.get('mylcd')['mixly_puts_two_lines'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return [block("group_lcd_print", func.lineno, {
+    }, {
+        "TEXT":py2block.convert(args[0]),
+        "TEXT2":py2block.convert(args[1])
+    }, {
+        "inline": "false"
+    })];
+}
+
 pbc.moduleFunctionD.get('mylcd')['backlight'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
@@ -361,19 +392,5 @@ pbc.moduleFunctionD.get('mylcd')['backlight'] = function (py2block, func, args, 
         'STAT': "backlight(" + stat + ")"
     }, {}, {
         "inline": "true"
-    });
-}
-
-pbc.assignD.get('LCD')['check_assign'] = function(py2block, node, targets, value) {
-    var className = value.func.id.v;
-    if(value._astname === "Call" && className === "LCD1602" && value.args.length === 0)
-        return true;
-    return false;
-}
-
-pbc.assignD.get('LCD')['create_block'] = function(py2block, node, targets, value){
-    var countblock = py2block.convert(value.args[1]);
-    return block("group_lcd_init", node.lineno, {}, {
-        "LEDCOUNT":countblock
     });
 }
