@@ -1493,18 +1493,8 @@ PythonToBlocks.prototype.Num = function(node)
         if(nVal == 1 || nVal == 0) {
             return block("inout_highlow", node.lineno, {"BOOL": (nVal == 1 ? "HIGH" : "LOW")});
         }
-    }else if(py2block_config.pinType == "pins_serial"){
+    }else if(py2block_config.pinType != null){
         return block(py2block_config.pinType, node.lineno, {
-            "PIN": nVal
-        });
-    }
-    if((py2block_config.inScope == "set_pixel__xy" || py2block_config.inScope == "get_pixel__xy")
-        && nVal >= 0 && nVal <= 4){
-        return block("pins_axis", node.lineno, {
-            "PIN": nVal
-        });
-    }else if(py2block_config.inScope == "set_pixel__bright" && nVal >= 0 && nVal <= 9){
-        return block("pins_brightness", node.lineno, {
             "PIN": nVal
         });
     }

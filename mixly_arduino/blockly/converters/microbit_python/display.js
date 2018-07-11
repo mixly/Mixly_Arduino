@@ -217,25 +217,20 @@ pbc.moduleFunctionD.get('display')['get_pixel'] = function(py2block, func, args,
     }
     var astname = args[0]._astname;
     var astname1 = args[1]._astname;
-    if(astname === "Call" && astname1==="Call"){
-        if(py2block.identifier(args[0].func.id) === "int"
-            && py2block.identifier(args[1].func.id) === "int"){ //display.get_pixel(int(0), int(0))
-            py2block_config.inScope = "get_pixel__xy";
-            var xblock =  py2block.convert(args[0].args[0]);
-            var yblock = py2block.convert(args[1].args[0]);
-            py2block_config.inScope = null;
-            return block("monitor_get_pixel", func.lineno, {}, {
-                'x':xblock,
-                'y':yblock
-            }, {
-                "inline": "true"
-            });
-        }
+    var xblock;
+    var yblock;
+    py2block_config.pinType = "pins_axis";
+    if(astname === "Call" && py2block.identifier(args[0].func.id) === "int"){ //display.get_pixel(int(0), int(0))
+        xblock =  py2block.convert(args[0].args[0]);
+    }else{
+        xblock =  py2block.convert(args[0]);
     }
-    py2block_config.inScope = "get_pixel__xy";
-    var xblock =  py2block.convert(args[0]);
-    var yblock = py2block.convert(args[1]);
-    py2block_config.inScope = null;
+    if(astname1 === "Call" && py2block.identifier(args[1].func.id) === "int"){ //display.get_pixel(int(0), int(0))
+        yblock =  py2block.convert(args[1].args[0]);
+    }else{
+        yblock =  py2block.convert(args[1]);
+    }
+    py2block_config.pinType = null;
     return block("monitor_get_pixel", func.lineno, {}, {
             'x':xblock,
             'y':yblock
@@ -250,29 +245,23 @@ pbc.moduleFunctionD.get('display')['set_pixel'] = function(py2block, func, args,
     }
     var astname = args[0]._astname;
     var astname1 = args[1]._astname;
-    py2block_config.inScope = "set_pixel__bright";
+    py2block_config.pinType = "pins_brightness";
     var brightblock = py2block.convert(args[2]);
-    py2block_config.inScope = "null";
-    if(astname === "Call" && astname1=== "Call"){
-        if(py2block.identifier(args[0].func.id) === "int"
-            &&py2block.identifier(args[1].func.id) === "int"){ //display.set_pixel(int(0), int(0), 0)
-            py2block_config.inScope = "set_pixel__xy";
-            var xblock =  py2block.convert(args[0].args[0]);
-            var yblock = py2block.convert(args[1].args[0]);
-            py2block_config.inScope = null;
-            return [block("monitor_bright_point", func.lineno, {}, {
-                'x':xblock,
-                'y':yblock,
-                'brightness':brightblock,
-            }, {
-                "inline": "true"
-            })];
-        }
+    py2block_config.pinType = null;
+    var xblock;
+    var yblock;
+    py2block_config.pinType = "pins_axis";
+    if(astname === "Call" && py2block.identifier(args[0].func.id) === "int"){ //display.get_pixel(int(0), int(0))
+        xblock =  py2block.convert(args[0].args[0]);
+    }else{
+        xblock =  py2block.convert(args[0]);
     }
-    py2block_config.inScope = "set_pixel__xy";
-    var xblock = py2block.convert(args[0]);
-    var yblock = py2block.convert(args[1]);
-    py2block_config.inScope = null;
+    if(astname1 === "Call" && py2block.identifier(args[1].func.id) === "int"){ //display.get_pixel(int(0), int(0))
+        yblock =  py2block.convert(args[1].args[0]);
+    }else{
+        yblock =  py2block.convert(args[1]);
+    }
+    py2block_config.pinType = null;
     return [block("monitor_bright_point", func.lineno, {}, {
                 'x':xblock,
                 'y':yblock,
