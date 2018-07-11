@@ -1331,9 +1331,15 @@ function init() {
           </value>
         </block>
         <block type="microbit_music_play_list_of_notes">
+          <value name="notes">
+            <shadow type="variables_get">
+              <field name="VAR">mylist</field>
+            </shadow>
+          </value>
           <value name="PIN">
             <shadow type="pins_pwm"></shadow>
           </value>
+
         </block>
         <block type="microbit_music_stop">
           <value name="PIN">
