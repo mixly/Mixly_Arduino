@@ -162,61 +162,75 @@ pbc.moduleFunctionD.get('image')['width'] = function (py2block, func, args, keyw
         })];
 }
 
+function imageShift(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 1) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var imageblock = py2block.convert(func.value);
+        return block('image_shift', func.lineno, {'OP': mode},
+            {
+                'img': imageblock,
+                'val': py2block.convert(args[0]),
+            }, {
+                "inline": "true"
+            });
+    }
+    return converter;
+}
 
-pbc.objectFunctionD.get('shift_up')['image'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length === 0) {
+pbc.objectFunctionD.get('shift_up')['MICROBIT_IMAGE'] = imageShift('up');
+pbc.objectFunctionD.get('shift_down')['MICROBIT_IMAGE'] = imageShift('down');
+pbc.objectFunctionD.get('shift_left')['MICROBIT_IMAGE'] = imageShift('left');
+pbc.objectFunctionD.get('shift_right')['MICROBIT_IMAGE'] = imageShift('right');
+
+
+pbc.objectFunctionD.get('copy')['MICROBIT_IMAGE'] = function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
     var imageblock = py2block.convert(func.value);
-    return block('image_shift', func.lineno, {'OP': 'up'},
+    return block('microbit_image_copy', func.lineno, {},
         {
-            'img': imageblock,
-            'val': py2block.convert(args[0]),
+            'image': imageblock,
         }, {
             "inline": "true"
         });
 }
 
-
-pbc.objectFunctionD.get('shift_down')['img'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length === 0) {
+pbc.objectFunctionD.get('invert')['MICROBIT_IMAGE'] = function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
     var imageblock = py2block.convert(func.value);
-
-    return block('image_shift', func.lineno, {'OP': 'down'},
+    return block('microbit_image_invert', func.lineno, {},
         {
-            'img': imageblock,
-            'val': py2block.convert(args[0]),
+            'image': imageblock,
         }, {
             "inline": "true"
         });
 }
 
+//TODO:get_pixel
+//TODO:set_pixel
 
-pbc.moduleFunctionD.get('display')['on'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
+function displayOnOrOff(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        return block("microbit_display_on", func.lineno, {
+            'on_off': mode
+        }, {}, {
+            "inline": "true"
+        });
     }
-    return block("microbit_display_on", func.lineno, {
-        'on_off': "on"
-    }, {}, {
-        "inline": "true"
-    });
+    return converter;
 }
 
 
-pbc.moduleFunctionD.get('display')['off'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    return block("microbit_display_on", func.lineno, {
-        'on_off': "off"
-    }, {}, {
-        "inline": "true"
-    });
-}
-
+pbc.moduleFunctionD.get('display')['on'] = displayOnOrOff('on');
+pbc.moduleFunctionD.get('display')['off'] = displayOnOrOff('off');
 
 pbc.moduleFunctionD.get('display')['is_on'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
@@ -238,40 +252,24 @@ pbc.moduleFunctionD.get('display')['clear'] = function (py2block, func, args, ke
 }
 
 
-pbc.moduleFunctionD.get('mylcd')['on'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
+function mylcdOnOrOffOrClear(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        return block("group_lcd_power", func.lineno, {
+            'STAT': mode
+        }, {}, {
+            "inline": "true"
+        });
     }
-    return block("group_lcd_power", func.lineno, {
-        'STAT': "on()"
-    }, {}, {
-        "inline": "true"
-    });
+    return converter;
 }
 
 
-pbc.moduleFunctionD.get('mylcd')['off'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    return block("group_lcd_power", func.lineno, {
-        'STAT': "off()"
-    }, {}, {
-        "inline": "true"
-    });
-}
-
-
-pbc.moduleFunctionD.get('mylcd')['clear'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    return block("group_lcd_power", func.lineno, {
-        'STAT': "clear()"
-    }, {}, {
-        "inline": "true"
-    });
-}
+pbc.moduleFunctionD.get('mylcd')['on'] = mylcdOnOrOffOrClear('on()');
+pbc.moduleFunctionD.get('mylcd')['off'] = mylcdOnOrOffOrClear('off()');
+pbc.moduleFunctionD.get('mylcd')['clear'] = mylcdOnOrOffOrClear('clear()');
 
 
 pbc.moduleFunctionD.get('mylcd')['backlight'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -285,13 +283,4 @@ pbc.moduleFunctionD.get('mylcd')['backlight'] = function (py2block, func, args, 
         "inline": "true"
     });
 }
-
-
-
-
-
-
-
-
-
 

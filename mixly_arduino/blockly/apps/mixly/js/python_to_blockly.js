@@ -1308,11 +1308,15 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
     var keys = Object.keys(py2block_config.objectFunctionD.get(name));
     if (this.KNOWN_FUNCTIONS.indexOf(name) > -1 || keys.length != 0) {
         if(keys.length != 0){
-            var objname = this.identifier(func.value.id);
-            if(objname in py2block_config.objectTypeD){
-                var objtype = py2block_config.objectTypeD[objname];
-                if(objtype in py2block_config.objectFunctionD.get(name))
-                    return py2block_config.objectFunctionD.get(name)[objtype](this, func, args, keywords, starargs, kwargs, node);
+            try {
+                var objname = this.identifier(func.value.id);
+                if (objname in py2block_config.objectTypeD) {
+                    var objtype = py2block_config.objectTypeD[objname];
+                    if (objtype in py2block_config.objectFunctionD.get(name))
+                        return py2block_config.objectFunctionD.get(name)[objtype](this, func, args, keywords, starargs, kwargs, node);
+                }
+            }catch (e){
+
             }
             if(!py2block_config.objectFunctionD.get(name)['Default']){
                 var firstKey = keys[0];
