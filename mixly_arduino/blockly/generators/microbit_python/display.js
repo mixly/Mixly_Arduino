@@ -165,7 +165,7 @@ Blockly.Python.display_rgb_init=function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     Blockly.Python.definitions_['import_neopixel'] = 'import neopixel';
     // Blockly.Python.definitions_['include_display'] = '#include "Mixly.h"';
-    Blockly.Python.setups_['var_rgb_display' + dropdown_rgbpin] = 'np = neopixel.NeoPixel(pin' + dropdown_rgbpin +  ', ' + value_ledcount + ');';
+    Blockly.Python.setups_['var_rgb_display' + dropdown_rgbpin] = 'np = neopixel.NeoPixel(pin' + dropdown_rgbpin +  ', ' + value_ledcount + ')\n';
     // Blockly.Python.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();';
     // Blockly.Python.setups_['setup_rgb_display_setpin' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.setPin(' + dropdown_rgbpin + ');';
     return '';
