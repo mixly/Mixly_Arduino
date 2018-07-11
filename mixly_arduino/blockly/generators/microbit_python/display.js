@@ -33,20 +33,19 @@ Blockly.Python.monitor_bright_point= function() {
     var code = 'display.set_pixel(int(' + x + '), int(' + y + '), '+ brightness + ")\n";
     return code;
 }
-Blockly.Python.monitor_show_string = function() {
+Blockly.Python.monitor_show_image_or_string = function() {
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-    var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
-    var mode = this.getFieldValue('MODE');
-    var code = "display." + mode + "(" + data + ")\n";
+    var data = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ASSIGNMENT);
+    var code = "display.show(" + data + ")\n";
     return code;
 }
 
-// Blockly.Python.monitor_scroll_string = function() {
-//     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-//     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
-//     var code = "display.scroll("+ data +")\n";
-//     return code;
-// }
+Blockly.Python.monitor_scroll_string = function() {
+     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
+     var code = "display.scroll("+ data +")\n";
+     return code;
+}
 
 Blockly.Python.microbit_display_show_image = function() {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
@@ -220,15 +219,14 @@ Blockly.Python['image_arithmetic'] = function(a) {
   return [code, Blockly.Python.ORDER_MEMBER];
 };
 
-Blockly.Python['microbit_display_show_string'] = function(block) {
+Blockly.Python['microbit_display_scroll_string_animation'] = function(block) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   var value_images = Blockly.Python.valueToCode(block, 'images', Blockly.Python.ORDER_MEMBER) || 'hello';
   var number_delay = Blockly.Python.valueToCode(block, 'delay', Blockly.Python.ORDER_ATOMIC);
   var checkbox_wait = block.getFieldValue('wait') == 'TRUE' ? 'True' : 'False';
   var checkbox_loop = block.getFieldValue('loop') == 'TRUE' ? 'True' : 'False';
   var checkbox_clear = block.getFieldValue('clear') == 'TRUE' ? 'True' : 'False';
-  var mode = block.getFieldValue('MODE');
-  var code = 'display.'+mode+'(' + value_images + ', delay=' + number_delay + ', wait=' + checkbox_wait + ', loop=' + checkbox_loop + ', clear=' + checkbox_clear + ')\n';
+  var code = 'display.scroll'+'(' + value_images + ', delay=' + number_delay + ', wait=' + checkbox_wait + ', loop=' + checkbox_loop + ', clear=' + checkbox_clear + ')\n';
   return code;
 };
 

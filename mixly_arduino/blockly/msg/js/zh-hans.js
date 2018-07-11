@@ -1125,6 +1125,7 @@ Blockly.MIXLY_MICROBIT_JS_SYSTEM_DEVICE_NAME='设备名';
 Blockly.MIXLY_MICROBIT_JS_SYSTEM_DEVICE_SERIAL_NUMBER='设备串口号';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_NUMBER='显示数字';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING='显示字符串';
+Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_IMAGE_OR_STRING='显示图像/字符串';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE='逐字';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_LEDS='显示LED';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_ARROW='显示箭头';
@@ -1220,7 +1221,8 @@ Blockly.MIXLY_MICROBIT_Get_brightness_at='获取第X列 %1 Y行 %2 位置的亮�
 Blockly.MIXLY_MICROBIT_Set_brightness_at='设置第X列 %1 Y行 %2 LED的亮度到 %3';
 Blockly.MIXLY_MICROBIT_Clear_display='清除显示内容';
 Blockly.MIXLY_MICROBIT_Show_image='显示图像';
-Blockly.MIXLY_MICROBIT_Animate_images='动画显示图像 %1 延时 %2 毫秒 %3 等待 %4 %5 循环 %6 %7 清除 %8';
+Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING='显示(图像/字符串)';
+Blockly.MIXLY_MICROBIT_Animate_images_or_string='依次显示(图像/字符串) %1 延时 %2 毫秒 %3 等待 %4 %5 循环 %6 %7 清除 %8';
 Blockly.MIXLY_MICROBIT_Scroll_message='滚动消息 %1';
 Blockly.MIXLY_MICROBIT_Turn_on_display='打开';
 Blockly.MIXLY_MICROBIT_Turn_off_display='关闭';
@@ -1273,7 +1275,7 @@ Blockly.MIXLY_IS_TOUCHED='已经被触摸';
 Blockly.MIXLY_WAS_PRESSED='被按下？';
 Blockly.MIXLY_GET_PRESSES='被按下的次数';
 
-Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING='滚动';
+Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING='滚动显示字符串';
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY='说'
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING='唱'
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE='读'
@@ -1398,7 +1400,7 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_SIZE = "大小";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE = "数据类型";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME = "当前系统信息";
 
-Blockly.MIXLY_MICROBIT_SHOW_STRING = "显示字符串 %1 延时 %2 毫秒 %3 等待 %4 %5 循环 %6 %7 清除 %8";
+Blockly.MIXLY_MICROBIT_SHOW_STRING = " %1 延时 %2 毫秒 %3 等待 %4 %5 循环 %6 %7 清除 %8";
 // Blockly.MIXLY_MICROBIT_Scroll_string = "滚动显示字符串 %1 延时 %2 毫秒 %3 等待 %4 %5 循环 %6 %7 清除 %8";
 
 Blockly.MIXLY_COMMUNICATION_RFID_INITIAL = "初始化rfid为";

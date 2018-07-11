@@ -127,7 +127,7 @@ Blockly.Arduino.DS1307_init = function () {
   var SDA = Blockly.Arduino.valueToCode(this, 'SDA', Blockly.Arduino.ORDER_ATOMIC);
   var SCL = Blockly.Arduino.valueToCode(this, 'SCL', Blockly.Arduino.ORDER_ATOMIC);
   var RTCName = this.getFieldValue('RTCName');
-  Blockly.Arduino.definitions_['include_Mixly'] = '#include "Mixly.h"';
+  Blockly.Arduino.definitions_['include_RTC'] = '#include <RTC.h>';
   Blockly.Arduino.definitions_['DS1307'+RTCName] = 'DS1307 ' + RTCName + '('+SDA+','+SCL+');';
   return "";
 }
@@ -156,10 +156,12 @@ Blockly.Arduino.RTC_set_date = function () {
 }
 //传感器-重力感应块-获取数据
 Blockly.Arduino.ADXL345 = function() {
-  Blockly.Arduino.definitions_['include_Mixly'] = '#include "Mixly.h"';
+  Blockly.Arduino.definitions_['include_ADXL345'] = '#include <ADXL345.h>';
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+  Blockly.Arduino.definitions_['include_I2Cdev'] = '#include <I2Cdev.h>';
   Blockly.Arduino.definitions_['var_ADXL345'] = 'ADXL345 accel;';
   Blockly.Arduino.setups_['setup_ADXL345-A'] = 'Wire.begin();';
-  Blockly.Arduino.setups_['setup_ADXL345-B'] = 'accel.init_ADXL345();';
+  Blockly.Arduino.setups_['setup_ADXL345-B'] = 'accel.initialize();';
   var dropdown_type = this.getFieldValue('ADXL345_PIN');
   var code = '';
   if (dropdown_type == "xa") code += 'accel.X_angle()';

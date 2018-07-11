@@ -101,7 +101,7 @@ Blockly.Python['text_substring2'] = function(block) {
       }
       break;
     case 'FROM_END':
-      var at1 = Blockly.Python.getAdjustedInt(block, 'AT1', 1, true);
+      var at1 = Blockly.Python.getAdjustedInt(block, 'AT1', 0, true);
       break;
     case 'FIRST':
       var at1 = '0';
@@ -111,11 +111,11 @@ Blockly.Python['text_substring2'] = function(block) {
   }
   switch (where2) {
     case 'FROM_START':
-      var at2 = Blockly.Python.getAdjustedInt(block, 'AT2', 1);
+      var at2 = Blockly.Python.getAdjustedInt(block, 'AT2');
           at2 = at2;
       break;
     case 'FROM_END':
-      var at2 = Blockly.Python.getAdjustedInt(block, 'AT2', 1, true);
+      var at2 = Blockly.Python.getAdjustedInt(block, 'AT2', 0, true);
       // Ensure that if the result calculated is 0 that sub-sequence will
       // include all elements as expected.
       if (!Blockly.isNumber(String(at2))) {

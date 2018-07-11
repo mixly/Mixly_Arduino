@@ -161,7 +161,7 @@ Blockly.Python.scrub_ = function(block, code) {
 Blockly.Python.getAdjustedInt = function(block, atId, opt_delta, opt_negate) {
     var delta = opt_delta || 0;
     if (block.workspace.options.oneBasedIndex) {
-        delta--;
+        /*delta--;*/   //Keep in line with Python
     }
     var defaultAtIndex = block.workspace.options.oneBasedIndex ? '1' : '0';
     var atOrder = delta ? Blockly.Python.ORDER_ADDITIVE :

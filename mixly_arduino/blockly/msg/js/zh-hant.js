@@ -1220,7 +1220,8 @@ Blockly.MIXLY_MICROBIT_Get_brightness_at='獲取第X列 %1 Y行 %2 位置的亮�
 Blockly.MIXLY_MICROBIT_Set_brightness_at='設置第X列 %1 Y行 %2 LED的亮度到 %3';
 Blockly.MIXLY_MICROBIT_Clear_display='清除顯示內容';
 Blockly.MIXLY_MICROBIT_Show_image='顯示圖像 %1';
-Blockly.MIXLY_MICROBIT_Animate_images='動畫顯示圖像 %1 延時 %2 毫秒 %3 等待 %4 %5 迴圈 %6 %7 清除 %8';
+Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING='顯示(圖像/字符串)';
+Blockly.MIXLY_MICROBIT_Animate_images_or_string='依次顯示(圖像/字符串) %1 延時 %2 毫秒 %3 等待 %4 %5 迴圈 %6 %7 清除 %8';
 Blockly.MIXLY_MICROBIT_Scroll_message='滾動消息 %1';
 Blockly.MIXLY_MICROBIT_Turn_on_display='打開螢幕';
 Blockly.MIXLY_MICROBIT_Turn_off_display='關閉螢幕';
@@ -1398,7 +1399,7 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_SIZE = "大小";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE = "資料類型";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME = "當前系統資訊";
 
-Blockly.MIXLY_MICROBIT_SHOW_STRING = "逐字顯示字串 %1 延時 %2 毫秒 %3 等待 %4 %5 迴圈 %6 %7 清除 %8";
+Blockly.MIXLY_MICROBIT_SHOW_STRING = " %1 延時 %2 毫秒 %3 等待 %4 %5 迴圈 %6 %7 清除 %8";
 Blockly.MIXLY_MICROBIT_Scroll_string = "滾動顯示字串 %1 延時 %2 毫秒 %3 等待 %4 %5 迴圈 %6 %7 清除 %8";
 
 Blockly.MIXLY_COMMUNICATION_RFID_INITIAL = "初始化rfid為";
