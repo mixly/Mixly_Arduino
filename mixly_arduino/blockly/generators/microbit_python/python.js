@@ -277,80 +277,76 @@ Blockly.Python.CLASS_LCD1602_INIT = 'class LCD1602():\n'+
                                     '        line2 = str(line2)\n' +
                                     '        self.puts(self, line1, 0, 0)\n' +
                                     '        self.puts(self, line2, 0, 1)\n';
-Blockly.Python.CLASS_OLED12864_I2C_INIT='cmd = [\n'+
-                                        '    [0xAE],           # SSD1306_DISPLAYOFF\n'+
-                                        '    [0xA4],           # SSD1306_DISPLAYALLON_RESUME\n'+
-                                        '    [0xD5, 0xF0],     # SSD1306_SETDISPLAYCLOCKDIV\n'+
-                                        '    [0xA8, 0x3F],     # SSD1306_SETMULTIPLEX\n'+
-                                        '    [0xD3, 0x00],     # SSD1306_SETDISPLAYOFFSET\n'+
-                                        '    [0 | 0x0],        # line #SSD1306_SETSTARTLINE\n'+
-                                        '    [0x8D, 0x14],     # SSD1306_CHARGEPUMP\n'+
-                                        '    [0x20, 0x00],     # SSD1306_MEMORYMODE\n'+
-                                        '    [0x21, 0, 127],   # SSD1306_COLUMNADDR\n'+
-                                        '    [0x22, 0, 63],    # SSD1306_PAGEADDR\n'+
-                                        '    [0xa0 | 0x1],     # SSD1306_SEGREMAP\n'+
-                                        '    [0xc8],           # SSD1306_COMSCANDEC\n'+
-                                        '    [0xDA, 0x12],     # SSD1306_SETCOMPINS\n'+
-                                        '    [0x81, 0xCF],     # SSD1306_SETCONTRAST\n'+
-                                        '    [0xd9, 0xF1],     # SSD1306_SETPRECHARGE\n'+
-                                        '    [0xDB, 0x40],     # SSD1306_SETVCOMDETECT\n'+
-                                        '    [0xA6],           # SSD1306_NORMALDISPLAY\n'+
-                                        '    [0xd6, 1],        # zoom on\n'+
-                                        '    [0xaf]            # SSD1306_DISPLAYON\n'+
-                                        ']\n'+
-                                        '\n'+
-                                        'ADDR = 0x3C \n'+
-                                        'screen = bytearray(1025)    # send byte plus pixels\n'+
-                                        'screen[0] = 0x40\n'+
-                                        '_ZOOM=1\n'+
-                                        '\n'+
-                                        'class OLED12864_I2C():\n'+
+Blockly.Python.CLASS_OLED12864_I2C_INIT='class OLED12864_I2C():\n'+
                                         '    def __init__(self):\n'+
+                                        '        cmd = [\n'+
+                                        '            [0xAE],           # SSD1306_DISPLAYOFF\n'+
+                                        '            [0xA4],           # SSD1306_DISPLAYALLON_RESUME\n'+
+                                        '            [0xD5, 0xF0],     # SSD1306_SETDISPLAYCLOCKDIV\n'+
+                                        '            [0xA8, 0x3F],     # SSD1306_SETMULTIPLEX\n'+
+                                        '            [0xD3, 0x00],     # SSD1306_SETDISPLAYOFFSET\n'+
+                                        '            [0 | 0x0],        # line #SSD1306_SETSTARTLINE\n'+
+                                        '            [0x8D, 0x14],     # SSD1306_CHARGEPUMP\n'+
+                                        '            [0x20, 0x00],     # SSD1306_MEMORYMODE\n'+
+                                        '            [0x21, 0, 127],   # SSD1306_COLUMNADDR\n'+
+                                        '            [0x22, 0, 63],    # SSD1306_PAGEADDR\n'+
+                                        '            [0xa0 | 0x1],     # SSD1306_SEGREMAP\n'+
+                                        '            [0xc8],           # SSD1306_COMSCANDEC\n'+
+                                        '            [0xDA, 0x12],     # SSD1306_SETCOMPINS\n'+
+                                        '            [0x81, 0xCF],     # SSD1306_SETCONTRAST\n'+
+                                        '            [0xd9, 0xF1],     # SSD1306_SETPRECHARGE\n'+
+                                        '            [0xDB, 0x40],     # SSD1306_SETVCOMDETECT\n'+
+                                        '            [0xA6],           # SSD1306_NORMALDISPLAY\n'+
+                                        '            [0xd6, 1],        # zoom on\n'+
+                                        '            [0xaf]            # SSD1306_DISPLAYON\n'+
+                                        '        ]\n'+
+                                        '\n'+
                                         '        for c in cmd:\n'+
                                         '            self.command(c)\n'+
-                                        '        _ZOOM = 1\n'+
+                                        '        self._ZOOM = 1\n'+
+                                        '        self.ADDR = 0x3C \n'+
+                                        '        self.screen = bytearray(1025)    # send byte plus pixels\n'+
+                                        '        self.screen[0] = 0x40\n'+
                                         '\n'+
                                         '    def command(self, c):\n'+
-                                        '        i2c.write(ADDR, b\'\x00\' + bytearray(c)) \n'+
+                                        '        i2c.write(self.ADDR, b\'\x00\' + bytearray(c)) \n'+
                                         '\n'+
                                         '    def set_pos(self, col=0, page=0):\n'+
                                         '        self.command([0xb0 | page])    # page number\n'+
                                         '        # take upper and lower value of col * 2\n'+
-                                        '        c = col * (_ZOOM+1)\n'+
+                                        '        c = col * (self._ZOOM+1)\n'+
                                         '        c1, c2 = c & 0x0F, c >> 4\n'+
                                         '        self.command([0x00 | c1])    # lower start column address\n'+
                                         '        self.command([0x10 | c2])    # upper start column address \n'+
                                         '\n'+
                                         '    def pixel(self, x, y, color=1, draw=1):\n'+
                                         '        page, shift_page = divmod(y, 8)\n'+
-                                        '        ind = x * (_ZOOM+1) + page * 128 + 1\n'+
-                                        '        b = screen[ind] | (1 << shift_page) if color else screen[ind] & ~ (1 << shift_page)\n'+
-                                        '        screen[ind] = b\n'+
+                                        '        ind = x * (self._ZOOM+1) + page * 128 + 1\n'+
+                                        '        b = self.screen[ind] | (1 << shift_page) if color else self.screen[ind] & ~ (1 << shift_page)\n'+
+                                        '        self.screen[ind] = b\n'+
                                         '        self.set_pos(x, page)\n'+
-                                        '        if _ZOOM:\n'+
-                                        '            screen[ind+1]=b\n'+
+                                        '        if self._ZOOM:\n'+
+                                        '            self.screen[ind+1]=b\n'+
                                         '            i2c.write(0x3c, bytearray([0x40, b, b]))\n'+
                                         '        else:\n'+
                                         '            i2c.write(0x3c, bytearray([0x40, b]))\n'+
                                         '\n'+
                                         '    def zoom(self, d=1):\n'+
-                                        '        global _ZOOM\n'+
-                                        '        _ZOOM = 1 if d else 0\n'+
-                                        '        self.command([0xd6, _ZOOM])\n'+
+                                        '        self._ZOOM = 1 if d else 0\n'+
+                                        '        self.command([0xd6, self._ZOOM])\n'+
                                         '\n'+
                                         '    def invert(self, v=1):\n'+
                                         '        n = 0xa7 if v else 0xa6\n'+
                                         '        self.command([n])\n'+
                                         '\n'+
                                         '    def clear(self, c=0):\n'+
-                                        '        global screen\n'+
                                         '        for i in range(1, 1025):\n'+
-                                        '            screen[i] = 0\n'+
+                                        '            self.screen[i] = 0\n'+
                                         '        self.draw()\n'+
                                         '\n'+
                                         '    def draw(self):\n'+
                                         '        self.set_pos()\n'+
-                                        '        i2c.write(ADDR, screen) \n'+
+                                        '        i2c.write(self.ADDR, self.screen) \n'+
                                         '\n'+
                                         '    def text(self, x, y, s, draw=1):\n'+
                                         '        for i in range(0, min(len(s), 12 - x)):\n'+
@@ -359,13 +355,13 @@ Blockly.Python.CLASS_OLED12864_I2C_INIT='cmd = [\n'+
                                         '                for r in range(1, 6):\n'+
                                         '                    p = Image(s[i]).get_pixel(c, r - 1)\n'+
                                         '                    col = col | (1 << r) if (p != 0) else col\n'+
-                                        '                ind = (x + i) * 5 * (_ZOOM+1) + y * 128 + c*(_ZOOM+1) + 1\n'+
-                                        '                screen[ind] = col\n'+
-                                        '                if _ZOOM:\n'+
-                                        '                    screen[ind + 1] = col\n'+
+                                        '                ind = (x + i) * 5 * (self._ZOOM+1) + y * 128 + c*(self._ZOOM+1) + 1\n'+
+                                        '                self.screen[ind] = col\n'+
+                                        '                if self._ZOOM:\n'+
+                                        '                    self.screen[ind + 1] = col\n'+
                                         '        self.set_pos(x * 5, y)\n'+
-                                        '        ind0 = x * 5 * (_ZOOM+1) + y * 128 + 1\n'+
-                                        '        i2c.write(ADDR, b\'\x40\' + screen[ind0:ind + 1]) \n'+
+                                        '        ind0 = x * 5 * (self._ZOOM+1) + y * 128 + 1\n'+
+                                        '        i2c.write(self.ADDR, b\'\x40\' + self.screen[ind0:ind + 1]) \n'+
                                         '\n'+
                                         '    def hline(self, x, y, l,c=1):\n'+
                                         '        d = 1 if l>0 else -1\n'+
@@ -384,7 +380,12 @@ Blockly.Python.CLASS_OLED12864_I2C_INIT='cmd = [\n'+
                                         '        self.vline(x2,y1,y2-y1+1,c)\n'+
                                         '\n'+
                                         'oled = OLED12864_I2C()\n'+
-                                        'oled.clear()\n'
+                                        'def mixly_oled_text(s0, s1, s2, s3):\n' +
+                                        '    oled.clear()\n' +
+                                        '    oled.text(0, 0, s0)\n' +
+                                        '    oled.text(0, 1, s1)\n' +
+                                        '    oled.text(0, 2, s2)\n' +
+                                        '    oled.text(0, 3, s3)\n';
 
 Blockly.Python.CLASS_DS1307_INIT =  'DS1307_I2C_ADDRESS  = (104)\n'+
                                     'DS1307_REG_SECOND   = (0)\n'+
@@ -495,3 +496,6 @@ Blockly.Python.CLASS_DS1307_INIT =  'DS1307_I2C_ADDRESS  = (104)\n'+
                                     '        else:\n'+
                                     '            self.setReg(DS1307_REG_RAM + (reg%56), dat)\n'+
                                     'ds = DS1307()\n'
+Blockly.Python.FUNCTION_MIXLY_RGB_SHOW = 'def mixly_rgb_show(led, r, g, b):\n' +
+                                         '    np[led-1] = (r, g, b)\n' +
+                                         '    np.show()\n';
