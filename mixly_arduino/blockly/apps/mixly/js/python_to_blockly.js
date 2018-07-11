@@ -563,11 +563,14 @@ PythonToBlocks.prototype.Assign = function(node)
             py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.attr.v;
         else
             py2block_config.objectTypeD[this.Name_str(targets[0])] = value._astname;
-        for(var i = 0 ; i < py2block_config.assignL.length; i ++){
-            var checkfunc = py2block_config.assignL[i][0];
-            var blockfunc = py2block_config.assignL[i][1];
-            if(checkfunc(this, node, targets, value))
-                return blockfunc(this, node, targets, value);
+        for(var key in py2block_config.assignD['dict']){
+            try {
+                var checkfunc = py2block_config.assignD['dict'][key]['check_assign'];
+                var blockfunc = py2block_config.assignD['dict'][key]['create_block'];
+                if (checkfunc(this, node, targets, value))
+                    return blockfunc(this, node, targets, value);
+            }catch (e){
+            }
         }
         return block("variables_set", node.lineno, {
             "VAR": this.Name_str(targets[0]) //targets
@@ -1492,6 +1495,16 @@ PythonToBlocks.prototype.Num = function(node)
         }
     }else if(py2block_config.pinType == "pins_serial"){
         return block(py2block_config.pinType, node.lineno, {
+            "PIN": nVal
+        });
+    }
+    if((py2block_config.inScope == "set_pixel__xy" || py2block_config.inScope == "get_pixel__xy")
+        && nVal >= 0 && nVal <= 4){
+        return block("pins_axis", node.lineno, {
+            "PIN": nVal
+        });
+    }else if(py2block_config.inScope == "set_pixel__bright" && nVal >= 0 && nVal <= 9){
+        return block("pins_brightness", node.lineno, {
             "PIN": nVal
         });
     }

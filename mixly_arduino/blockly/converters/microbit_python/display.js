@@ -211,8 +211,77 @@ pbc.objectFunctionD.get('invert')['MICROBIT_IMAGE'] = function converter(py2bloc
         });
 }
 
-//TODO:get_pixel
-//TODO:set_pixel
+pbc.moduleFunctionD.get('display')['get_pixel'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 2){
+        throw new Error("Incorrect number of arguments");
+    }
+    var astname = args[0]._astname;
+    var astname1 = args[1]._astname;
+    if(astname === "Call" && astname1==="Call"){
+        if(py2block.identifier(args[0].func.id) === "int"
+            && py2block.identifier(args[1].func.id) === "int"){ //display.get_pixel(int(0), int(0))
+            py2block_config.inScope = "get_pixel__xy";
+            var xblock =  py2block.convert(args[0].args[0]);
+            var yblock = py2block.convert(args[1].args[0]);
+            py2block_config.inScope = null;
+            return block("monitor_get_pixel", func.lineno, {}, {
+                'x':xblock,
+                'y':yblock
+            }, {
+                "inline": "true"
+            });
+        }
+    }
+    py2block_config.inScope = "get_pixel__xy";
+    var xblock =  py2block.convert(args[0]);
+    var yblock = py2block.convert(args[1]);
+    py2block_config.inScope = null;
+    return block("monitor_get_pixel", func.lineno, {}, {
+            'x':xblock,
+            'y':yblock
+        }, {
+            "inline": "true"
+        });
+}
+
+pbc.moduleFunctionD.get('display')['set_pixel'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 3){
+        throw new Error("Incorrect number of arguments");
+    }
+    var astname = args[0]._astname;
+    var astname1 = args[1]._astname;
+    py2block_config.inScope = "set_pixel__bright";
+    var brightblock = py2block.convert(args[2]);
+    py2block_config.inScope = "null";
+    if(astname === "Call" && astname1=== "Call"){
+        if(py2block.identifier(args[0].func.id) === "int"
+            &&py2block.identifier(args[1].func.id) === "int"){ //display.set_pixel(int(0), int(0), 0)
+            py2block_config.inScope = "set_pixel__xy";
+            var xblock =  py2block.convert(args[0].args[0]);
+            var yblock = py2block.convert(args[1].args[0]);
+            py2block_config.inScope = null;
+            return [block("monitor_bright_point", func.lineno, {}, {
+                'x':xblock,
+                'y':yblock,
+                'brightness':brightblock,
+            }, {
+                "inline": "true"
+            })];
+        }
+    }
+    py2block_config.inScope = "set_pixel__xy";
+    var xblock = py2block.convert(args[0]);
+    var yblock = py2block.convert(args[1]);
+    py2block_config.inScope = null;
+    return [block("monitor_bright_point", func.lineno, {}, {
+                'x':xblock,
+                'y':yblock,
+                'brightness':brightblock,
+            }, {
+                "inline": "true"
+            })];
+}
+
 
 function displayOnOrOff(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
@@ -266,11 +335,30 @@ function mylcdOnOrOffOrClear(mode){
     return converter;
 }
 
-
 pbc.moduleFunctionD.get('mylcd')['on'] = mylcdOnOrOffOrClear('on()');
 pbc.moduleFunctionD.get('mylcd')['off'] = mylcdOnOrOffOrClear('off()');
 pbc.moduleFunctionD.get('mylcd')['clear'] = mylcdOnOrOffOrClear('clear()');
 
+pbc.assignD.get('RGB')['check_assign'] = function(py2block, node, targets, value) {
+    var moduleName = value.func.value.id.v;
+    var funcName = value.func.attr.v;
+    if(value._astname === "Call" && moduleName === "neopixel"
+        && funcName === "NeoPixel" && value.args.length === 2)
+        return true;
+    return false;
+}
+
+pbc.assignD.get('RGB')['create_block'] = function(py2block, node, targets, value){
+    py2block_config.pinType = "pins_digital";
+    var pinblock = py2block.convert(value.args[0]);
+    py2block_config.pinType = null;
+    var countblock = py2block.convert(value.args[1]);
+
+    return block("display_rgb_init", node.lineno, {}, {
+        "PIN":pinblock,
+        "LEDCOUNT":countblock
+    });
+}
 
 pbc.moduleFunctionD.get('mylcd')['backlight'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1) {
