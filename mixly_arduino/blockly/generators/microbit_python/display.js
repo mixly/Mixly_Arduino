@@ -284,7 +284,7 @@ Blockly.Python.lp2i_u8g_draw_4strings = function(){
    var code ='oled.text(0,0, '+value_text_line1+')\n';
    var code1='oled.text(0,1, '+value_text_line2+')\n';
    var code2='oled.text(0,2, '+value_text_line3+')\n';
-   var code3='oled.text(0,3, '+value_text_line4+')';
+   var code3='oled.text(0,3, '+value_text_line4+')\n';
    return code+code1+code2+code3;
 };
 
