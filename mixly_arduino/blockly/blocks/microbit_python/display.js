@@ -718,7 +718,7 @@ Blockly.Blocks.group_lcd_power = {
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_DF_LCD)
     .appendField('mylcd')
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_LCD_STAT_ON, "on()"], [Blockly.MIXLY_LCD_STAT_OFF, "off()"],  [Blockly.MIXLY_LCD_STAT_CLEAR, "clear()"], [Blockly.MIXLY_LCD_NOBACKLIGHT, "backlight(off)"], [Blockly.MIXLY_LCD_BACKLIGHT, "backlight(on)"]]), "STAT");
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_LCD_STAT_ON, "on()"], [Blockly.MIXLY_LCD_STAT_OFF, "off()"],  [Blockly.MIXLY_LCD_STAT_CLEAR, "clear()"], [Blockly.MIXLY_LCD_NOBACKLIGHT, "backlight(False)"], [Blockly.MIXLY_LCD_BACKLIGHT, "backlight(True)"]]), "STAT");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
