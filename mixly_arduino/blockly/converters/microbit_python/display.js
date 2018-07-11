@@ -1,7 +1,7 @@
 'use strict';
 
 var pbc = Py2blockConfig.prototype;
-var ignoreL = ["LCD1602", "LCD_I2C_ADDR"];
+var ignoreL = ["LCD1602", "LCD_I2C_ADDR", "OLED12864_I2C", "oled", "mixly_oled_text"];
 for(var i = 0 ; i < ignoreL.length; i ++){
     pbc.ignoreS.add(ignoreL[i]);
 }
@@ -392,5 +392,20 @@ pbc.moduleFunctionD.get('mylcd')['backlight'] = function (py2block, func, args, 
         'STAT': "backlight(" + stat + ")"
     }, {}, {
         "inline": "true"
+    });
+}
+
+pbc.globalFunctionD['mixly_oled_text'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 4) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return block("lp2i_u8g_draw_4strings", func.lineno, {
+    }, {
+        "Text_line1":py2block.convert(args[0]),
+        "Text_line2":py2block.convert(args[1]),
+        "Text_line3":py2block.convert(args[2]),
+        "Text_line4":py2block.convert(args[3])
+    }, {
+        "inline": "false"
     });
 }

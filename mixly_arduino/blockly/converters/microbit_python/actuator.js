@@ -76,8 +76,6 @@ pbc.moduleFunctionD.get('music')['play'] = function(py2block, func, args, keywor
         var pinblock=null;
         var waitblock=null;
         var loopblock=null;
-
-        musicblock=py2block.identifier(args[0].attr);
         for (var i = 0; i < keywords.length; i++) {
             var param = keywords[i];
             var key = py2block.identifier(param.arg);
@@ -86,21 +84,36 @@ pbc.moduleFunctionD.get('music')['play'] = function(py2block, func, args, keywor
                 pinblock = py2block.convert(param.value);
                 pbc.pinType = null;
             } else if (key === "wait") {
-                waitblock= py2block.identifier(param.value.id);
+                waitblock = py2block.identifier(param.value.id);
             }
-            else if (key === "loop"){
-                loopblock=  py2block.identifier(param.value.id);
+            else if (key === "loop") {
+                loopblock = py2block.identifier(param.value.id);
             }
 
         }
-        if(musicblock!=null&&pinblock!=null&&waitblock!=null&&loopblock!=null){
-            return [block("microbit_music_play_built_in", func.lineno,
-                {'melody':musicblock,'wait':waitblock,'loop':loopblock},
-                {'PIN':pinblock,
-
-                }, {
-                    "inline": "true"
-                })];
+        if(args[0]._astname == "Attribute" && py2block.identifier(args[0].value.id) == "music") {
+            musicblock = py2block.identifier(args[0].attr);
+            if (musicblock != null && pinblock != null && waitblock != null && loopblock != null) {
+                return [block("microbit_music_play_built_in", func.lineno,
+                    {'melody': musicblock, 'wait': waitblock, 'loop': loopblock},
+                    {
+                        'PIN': pinblock,
+                    }, {
+                        "inline": "true"
+                    })];
+            }
+        }else{
+            if (pinblock != null && waitblock != null && loopblock != null) {
+                return [block("microbit_music_play_list_of_notes", func.lineno, {
+                        'wait': waitblock,
+                        'loop': loopblock
+                    }, {
+                        'PIN': pinblock,
+                        'notes':py2block.convert(args[0]),
+                    }, {
+                        "inline": "true"
+                    })];
+            }
         }
     }
 }
