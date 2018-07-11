@@ -1148,25 +1148,18 @@ function init() {
         </block>
       </category>
       <category id="catMonitor" colour="180">
-          <block type="monitor_show_string">
-            <value name="data">
-              <shadow type="text">
-                <field name="TEXT">hello</field>
-              </shadow>
-            </value>
-          </block>
-<!--           <block type="monitor_scroll_string">
-            <value name="data">
-              <shadow type="text">
-                <field name="TEXT">hello</field>
-              </shadow>
-            </value>
-          </block> -->
-          <block type="microbit_display_show_image">
-            <value name="PIN">
-              <shadow type="pins_builtinimg"></shadow>
-            </value>
-          </block>
+        <block type="monitor_show_image_or_string">
+          <value name="PIN">
+            <shadow type="pins_builtinimg"></shadow>
+          </value>
+        </block>
+        <block type="monitor_scroll_string">
+          <value name="data">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
+          </value>
+        </block>
           <block type="microbit_image_create"></block>
           <block type="image_arithmetic">
             <value name="A">

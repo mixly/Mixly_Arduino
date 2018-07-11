@@ -1218,7 +1218,8 @@ Blockly.MIXLY_MICROBIT_Get_brightness_at='get brightness X %1 Y %2';
 Blockly.MIXLY_MICROBIT_Set_brightness_at='set X %1 Y %2 brightness %3';
 Blockly.MIXLY_MICROBIT_Clear_display='clear display';
 Blockly.MIXLY_MICROBIT_Show_image='show image %1';
-Blockly.MIXLY_MICROBIT_Animate_images='animate image %1 delay %2 (ms) %3 wait for %4 %5 repeating %6 %7 clear %8';
+Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING='show (image/string)';
+Blockly.MIXLY_MICROBIT_Animate_images_or_string='animate image/string %1 delay %2 (ms) %3 wait for %4 %5 repeating %6 %7 clear %8';
 Blockly.MIXLY_MICROBIT_Scroll_message='scroll message %1';
 Blockly.MIXLY_MICROBIT_Turn_on_display='turn on diaplay';
 Blockly.MIXLY_MICROBIT_Turn_off_display='turn off display';
@@ -1271,7 +1272,7 @@ Blockly.MIXLY_IS_TOUCHED='is touched';
 Blockly.MIXLY_WAS_PRESSED='was pressed';
 Blockly.MIXLY_GET_PRESSES='get presses';
 
-Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING='scroll text';
+Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING='scroll string';
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY='speak'
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING='sing'
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE='read'
@@ -1396,7 +1397,7 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_SIZE = "size";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE = "data type";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME = "current system information";
 
-Blockly.MIXLY_MICROBIT_SHOW_STRING = "verbatim display string %1 delay %2 millisecond %3 wait %4 %5 loop %6 %7 clear %8";
+Blockly.MIXLY_MICROBIT_SHOW_STRING = " %1 delay %2 millisecond %3 wait %4 %5 loop %6 %7 clear %8";
 Blockly.MIXLY_MICROBIT_Scroll_string = "scroll display string %1 delay %2 millisecond %3 wait %4 %5 loop %6 %7 clear %8";
 
 Blockly.MIXLY_COMMUNICATION_RFID_INITIAL = "initialize rfid as";

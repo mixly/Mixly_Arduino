@@ -1390,21 +1390,33 @@ function init() {
         </block>
       </category>
       <category id="catMonitor" colour="180">
-        <block type="monitor_show_string">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">hello</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="microbit_display_show_image">
+        <block type="monitor_show_image_or_string">
           <value name="PIN">
             <shadow type="pins_builtinimg"></shadow>
+          </value>
+        </block>
+        <block type="monitor_scroll_string">
+          <value name="data">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
           </value>
         </block>
         <block type="microbit_display_show_animation">
           <value name="images">
             <shadow type="pins_imglist"></shadow>
+          </value>
+          <value name="delay">
+            <shadow type="math_number">
+              <field name="NUM">120</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="microbit_display_scroll_string_animation">
+          <value name="images">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
           </value>
           <value name="delay">
             <shadow type="math_number">
@@ -1501,18 +1513,6 @@ function init() {
           <value name="BVALUE">
             <shadow type="math_number">
               <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="microbit_display_show_string">
-          <value name="images">
-            <shadow type="text">
-              <field name="TEXT">hello</field>
-            </shadow>
-          </value>
-          <value name="delay">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
             </shadow>
           </value>
         </block>

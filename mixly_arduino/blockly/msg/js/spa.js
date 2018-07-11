@@ -1220,6 +1220,7 @@ Blockly.MIXLY_MICROBIT_Get_brightness_at='sacar brillo X %1 Y %2';
 Blockly.MIXLY_MICROBIT_Set_brightness_at='set X %1 Y %2 brillo %3';
 Blockly.MIXLY_MICROBIT_Clear_display='pantalla clara';
 Blockly.MIXLY_MICROBIT_Show_image='mostrar imagen %1';
+Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING='mostrar (imagen/cadena)';
 Blockly.MIXLY_MICROBIT_Animate_images='animar la imagen %1 demora %2 (ms) %3 esperar %4 %5 repetir %6 %7 claro %8';
 Blockly.MIXLY_MICROBIT_Scroll_message='desplazarse un mensaje %1';
 Blockly.MIXLY_MICROBIT_Turn_on_display='turno en diaplay';
@@ -1273,7 +1274,7 @@ Blockly.MIXLY_IS_TOUCHED='es tocado';
 Blockly.MIXLY_WAS_PRESSED='fue presionado';
 Blockly.MIXLY_GET_PRESSES='conseguir prensas';
 
-Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING='El despliegue de una cadena de caracteres';
+Blockly.MIXLY_MICROBIT_Animate_images_or_string='El despliegue/cadena de una cadena de caracteres';
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY='Dice';
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING='Cantar';
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE='Leer';
@@ -1398,7 +1399,7 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_SIZE = "El tamaño de";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE = "Los tipos de datos";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME = "El actual sistema de información";
 
-Blockly.MIXLY_MICROBIT_SHOW_STRING = "Muestra una cadena literal %1 retraso %2 milisegundos %3 la espera %4 %5 el ciclo %6 %7 la eliminación de %8";
+Blockly.MIXLY_MICROBIT_SHOW_STRING = " %1 retraso %2 milisegundos %3 la espera %4 %5 el ciclo %6 %7 la eliminación de %8";
 Blockly.MIXLY_MICROBIT_Scroll_string = "El despliegue de una cadena de caracteres %1 retraso %2 milisegundos %3 la espera %4 %5 el ciclo %6 %7 la eliminación de %8";
 
 Blockly.MIXLY_COMMUNICATION_RFID_INITIAL = "Para inicializar el RFID";
