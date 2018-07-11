@@ -216,11 +216,11 @@ Blockly.Python.math_number_base_conversion = function (a) {
     case "two":
     switch (c2){
       case "two":
-      var code = '{0:b}'+ '.' + 'format' + '(' + '0b' + '('+d +')'+')';
+      var code = '\'{0:b}\''+ '.' + 'format' + '(' + '0b' + '('+d +')'+')';
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
       case "eight":
-      var code = '{0:o}'+ '.' + 'format'+ '(' + '0b' +'('+d +')'+')';
+      var code = '\'{0:o}\''+ '.' + 'format'+ '(' + '0b' +'('+d +')'+')';
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
       case "ten":
@@ -228,7 +228,7 @@ Blockly.Python.math_number_base_conversion = function (a) {
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
       case "sixteen":
-      var code = '{0:x}'+ '.' + 'format' + '(' + '0b' +'('+d +')'+')';
+      var code = '\'{0:x}\''+ '.' + 'format' + '(' + '0b' +'('+d +')'+')';
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
     }
@@ -237,11 +237,11 @@ Blockly.Python.math_number_base_conversion = function (a) {
     case "eight":
     switch (c2){
       case "two":
-      var code = '{0:b}'+ '.' + 'format' + '(' + '0o' + '('+d +')' +')';
+      var code = '\'{0:b}\''+ '.' + 'format' + '(' + '0o' + '('+d +')' +')';
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
       case "eight":
-      var code = '{0:o}'+ '.' + 'format'+ '(' + '0o' + '('+d +')' +')';
+      var code = '\'{0:o}\''+ '.' + 'format'+ '(' + '0o' + '('+d +')' +')';
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
       case "ten":
@@ -249,7 +249,7 @@ Blockly.Python.math_number_base_conversion = function (a) {
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
       case "sixteen":
-      var code = '{0:x}'+ '.' + 'format' + '(' + '0o' + '('+d +')' +')';
+      var code = '\'{0:x}\''+ '.' + 'format' + '(' + '0o' + '('+d +')' +')';
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
     }
@@ -258,11 +258,11 @@ Blockly.Python.math_number_base_conversion = function (a) {
     case "ten":
     switch (c2){
       case "two":
-      var code = '{0:b}'+ '.' + 'format' + '('  + d  +')';
+      var code = '\'{0:b}\''+ '.' + 'format' + '('  + d  +')';
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
       case "eight":
-      var code = '{0:o}'+ '.' + 'format'+ '('  + d  +')';
+      var code = '\'{0:o}\''+ '.' + 'format'+ '('  + d  +')';
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
       case "ten":
@@ -270,7 +270,7 @@ Blockly.Python.math_number_base_conversion = function (a) {
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
       case "sixteen":
-      var code = '{0:x}'+ '.' + 'format' + '('  + d  +')';
+      var code = '\'{0:x}\''+ '.' + 'format' + '('  + d  +')';
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
     }
@@ -279,11 +279,11 @@ Blockly.Python.math_number_base_conversion = function (a) {
     case "sixteen":
     switch (c2){
       case "two":
-      var code = '{0:b}'+ '.' + 'format' + '(' + '0x' + '('+d +')' +')';
+      var code = '\'{0:b}\''+ '.' + 'format' + '(' + '0x' + '('+d +')' +')';
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
       case "eight":
-      var code = '{0:o}'+ '.' + 'format'+ '(' + '0x' + '('+d +')' +')';
+      var code = '\'{0:o}\''+ '.' + 'format'+ '(' + '0x' + '('+d +')' +')';
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
       case "ten":
@@ -291,7 +291,7 @@ Blockly.Python.math_number_base_conversion = function (a) {
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
       case "sixteen":
-      var code = '{0:x}'+ '.' + 'format' + '(' + '0x' + '('+d +')' +')';
+      var code = '\'{0:x}\''+ '.' + 'format' + '(' + '0x' + '('+d +')' +')';
       return [code, Blockly.Python.ORDER_ATOMIC];
       break;
     }

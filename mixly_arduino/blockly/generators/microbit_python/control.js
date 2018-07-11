@@ -118,7 +118,7 @@ Blockly.Python.controls_millis = function () {
 };
 //ok
 Blockly.Python.controls_end_program = function () {
-    return 'while True:\n    pass';
+    return 'while True:\n    pass\n';
 };
 //ok
 Blockly.Python.reset = function () {
