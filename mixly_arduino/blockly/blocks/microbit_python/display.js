@@ -65,7 +65,7 @@ Blockly.Blocks.monitor_bright_point = {
 Blockly.Blocks.monitor_show_image_or_string = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-	this.appendValueInput('PIN')
+	this.appendValueInput('data')
         .setCheck([String, "microbit_image"])
         .appendField(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
     this.setPreviousStatement(true, null);
