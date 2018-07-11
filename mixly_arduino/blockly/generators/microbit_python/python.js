@@ -194,7 +194,7 @@ Blockly.Python.getAdjustedInt = function(block, atId, opt_delta, opt_negate) {
 };
 
 Blockly.Python.CLASS_LCD1602_INIT = 'class LCD1602():\n'+
-                                    '    def __init__(self):\n'+
+                                    '    def __init__(self, lcd_i2c_addr):\n'+
                                     '        self.buf = bytearray(1)\n'+
                                     '        self.BK = 0x08\n'+
                                     '        self.RS = 0x00\n'+
@@ -210,10 +210,11 @@ Blockly.Python.CLASS_LCD1602_INIT = 'class LCD1602():\n'+
                                     '        self.setcmd(0x06)\n'+
                                     '        self.setcmd(0x01)\n'+
                                     '        self.version=\'1.0\'\n'+
+                                    '        self.lcd_i2c_addr=lcd_i2c_addr\n'+
                                     '\n'+
                                     '    def setReg(self, dat):\n'+
                                     '        self.buf[0] = dat\n'+
-                                    '        i2c.write(LCD_I2C_ADDR, self.buf)\n'+
+                                    '        i2c.write(self.lcd_i2c_addr, self.buf)\n'+
                                     '        sleep(1)\n'+
                                     '\n'+
                                     '    def send(self, dat):\n'+
@@ -263,8 +264,19 @@ Blockly.Python.CLASS_LCD1602_INIT = 'class LCD1602():\n'+
                                     '        if len(s)>0:\n'+
                                     '            self.char(ord(s[0]),x,y)\n'+
                                     '            for i in range(1, len(s)):\n'+
-                                    '                self.char(ord(s[i]))\n';
-
+                                    '                self.char(ord(s[i]))\n' +
+                                    '\n'+
+                                    '    def mixly_puts(self, s, x=1, y=1):\n'+
+                                    '        s = str(s)\n' +
+                                    '        x = x - 1\n' +
+                                    '        y = y - 1\n' +
+                                    '        self.puts(self, s, x, y)\n' +
+                                    '\n'+
+                                    '    def mixly_puts_two_lines(self, line1, line2):\n'+
+                                    '        line1 = str(line1)\n' +
+                                    '        line2 = str(line2)\n' +
+                                    '        self.puts(self, line1, 0, 0)\n' +
+                                    '        self.puts(self, line2, 0, 1)\n';
 Blockly.Python.CLASS_OLED12864_I2C_INIT='cmd = [\n'+
                                         '    [0xAE],           # SSD1306_DISPLAYOFF\n'+
                                         '    [0xA4],           # SSD1306_DISPLAYALLON_RESUME\n'+

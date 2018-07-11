@@ -246,7 +246,7 @@ Blockly.Python.group_lcd_print = function() {
   var str1 = Blockly.Python.valueToCode(this, 'TEXT', Blockly.Python.ORDER_ASSIGNMENT);
   var str2 = Blockly.Python.valueToCode(this, 'TEXT2', Blockly.Python.ORDER_ASSIGNMENT);
   Blockly.Python.setups_['class_LCD1602'] = Blockly.Python.CLASS_LCD1602_INIT;//python.js
-  var code = 'mylcd.puts(str('+str1+'), 0, 0)\n' + 'mylcd.puts(str('+str2+'), 0, 1)\n';
+  var code = 'mylcd.mixly_puts_two_lines(' + str1 + ', ' + str2 + ')\n';
   return code;
 };
 
@@ -254,7 +254,7 @@ Blockly.Python.group_lcd_init = function() {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   var device = Blockly.Python.valueToCode(this, 'device', Blockly.Python.ORDER_ASSIGNMENT) || '0x27';
   Blockly.Python.setups_['class_LCD1602'] = Blockly.Python.CLASS_LCD1602_INIT;//python.js
-  return 'LCD_I2C_ADDR = ' + device + '\n' + 'mylcd = LCD1602()\n';
+  return 'mylcd = LCD1602(' + device + ')\n';
 };
 
 Blockly.Python.group_lcd_print2 = function() {
@@ -263,7 +263,7 @@ Blockly.Python.group_lcd_print2 = function() {
   var row = Blockly.Python.valueToCode(this, 'row', Blockly.Python.ORDER_ASSIGNMENT) || '1';
   var column = Blockly.Python.valueToCode(this, 'column', Blockly.Python.ORDER_ASSIGNMENT) || '1';
   Blockly.Python.setups_['class_LCD1602'] = Blockly.Python.CLASS_LCD1602_INIT;//python.js
-  var code = 'mylcd.puts(str('+str+'), '+column+'-1, '+row+'-1)\n'
+  var code = 'mylcd.mixly_puts(' + str + ', ' + column + ', ' + row+')\n'
   return code;
 };
 
