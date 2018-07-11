@@ -1,7 +1,10 @@
 'use strict';
 
 var pbc = Py2blockConfig.prototype;
-
+var ignoreL = ["LCD1602", "LCD_I2C_ADDR"];
+for(var i = 0 ; i < ignoreL.length; i ++){
+    pbc.ignoreS.add(ignoreL[i]);
+}
 for (var i = 0; i < profile.default.builtinimg.length; i++) {
     pbc.moduleAttrD.get('Image')[profile.default.builtinimg[i][0]] = function (node, module, attr) {
         return block("pins_builtinimg", node.lineno, {
@@ -361,3 +364,16 @@ pbc.moduleFunctionD.get('mylcd')['backlight'] = function (py2block, func, args, 
     });
 }
 
+pbc.assignD.get('LCD')['check_assign'] = function(py2block, node, targets, value) {
+    var className = value.func.id.v;
+    if(value._astname === "Call" && className === "LCD1602" && value.args.length === 0)
+        return true;
+    return false;
+}
+
+pbc.assignD.get('LCD')['create_block'] = function(py2block, node, targets, value){
+    var countblock = py2block.convert(value.args[1]);
+    return block("group_lcd_init", node.lineno, {}, {
+        "LEDCOUNT":countblock
+    });
+}

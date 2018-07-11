@@ -7,9 +7,6 @@
  */
 
 function PythonToBlocks() {
-    this.ignoreFunctionS = new Set();
-    for(var idx in py2block_config.ignoreFunctionL)
-        this.ignoreFunctionS.add(py2block_config.ignoreFunctionL[idx]);
 }
 
 function xmlToString(xml) {
@@ -480,7 +477,7 @@ PythonToBlocks.prototype.FunctionDef = function(node)
     if (decorator_list.length > 0) {
         throw new Error("Decorators are not implemented.");
     }
-    if(this.ignoreFunctionS.has(name.v))
+    if(py2block_config.ignoreS.has(name.v))
         return null;
     return block("procedures_defnoreturn", node.lineno, {
         "NAME": this.identifier(name)
@@ -510,6 +507,8 @@ PythonToBlocks.prototype.ClassDef = function(node)
     if (decorator_list.length > 0) {
         throw new Error("Decorators are not implemented.");
     }
+    if(py2block_config.ignoreS.has(name.v))
+        return null;
     return block("class_creation", node.lineno, {
         "CLASS": this.identifier(name)
     }, {
@@ -559,10 +558,18 @@ PythonToBlocks.prototype.Assign = function(node)
     if (targets.length == 0) {
         throw new Error("Nothing to assign to!");
     } else if (targets.length == 1) {
-        if(value._astname === "Call")
-            py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.attr.v;
-        else
+        if(py2block_config.ignoreS.has(this.Name_str(targets[0]))){
+            return null;
+        }
+        if(value._astname === "Call"){
+            if(value.func._astname == "Name"){
+                py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.id.v;
+            }else{
+                py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.attr.v;
+            }
+        } else {
             py2block_config.objectTypeD[this.Name_str(targets[0])] = value._astname;
+        }
         for(var key in py2block_config.assignD['dict']){
             try {
                 var checkfunc = py2block_config.assignD['dict'][key]['check_assign'];
