@@ -35,7 +35,7 @@ Blockly.Python.monitor_bright_point= function() {
 }
 Blockly.Python.monitor_show_image_or_string = function() {
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-    var data = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ASSIGNMENT);
+    var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
     var code = "display.show(" + data + ")\n";
     return code;
 }
