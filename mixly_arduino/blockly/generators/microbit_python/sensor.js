@@ -133,124 +133,157 @@ Blockly.Python.sensor_magnetic= function(){
 Blockly.Python.sensor_distance_hrsc04= function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     Blockly.Python.setups_['class_hrsc04'] =
-    'class HCSR04:\n'+
-    '    def __init__(self, tpin=pin15, epin=pin14, spin=pin13):\n'+
-    '        self.trigger_pin = tpin\n'+
-    '        self.echo_pin = epin\n'+
-    '        self.sclk_pin = spin\n'+
-    '\n'+
-    '    def distance_mm(self):\n'+
-    '        spi.init(baudrate=125000, sclk=self.sclk_pin,\n'+
-    '                 mosi=self.trigger_pin, miso=self.echo_pin)\n'+
-    '        pre = 0\n'+
-    '        post = 0\n'+
-    '        k = -1\n'+
-    '        length = 500\n'+
-    '        resp = bytearray(length)\n'+
-    '        resp[0] = 0xFF\n'+
-    '        spi.write_readinto(resp, resp)\n'+
-    '        # find first non zero value\n'+
-    '        try:\n'+
-    '            i, value = next((ind, v) for ind, v in enumerate(resp) if v)\n'+
-    '        except StopIteration:\n'+
-    '            i = -1\n'+
-    '        if i > 0:\n'+
-    '            pre = bin(value).count("1")\n'+
-    '            # find first non full high value afterwards\n'+
-    '            try:\n'+
-    '                k, value = next((ind, v)\n'+
-    '                                for ind, v in enumerate(resp[i:length - 2]) if resp[i + ind + 1] == 0)\n'+
-    '                post = bin(value).count("1") if k else 0\n'+
-    '                k = k + i\n'+
-    '            except StopIteration:\n'+
-    '                i = -1\n'+
-    '        dist= -1 if i < 0 else round((pre + (k - i) * 8. + post) * 8 * 0.172)\n'+
-    '        return dist\n'+
-    '\n'+
-    'sonar=HCSR04()\n'
-    return ['sonar.distance_mm()/10.0', Blockly.Python.ORDER_ATOMIC];
+        'class HCSR04:\n'+
+        '    def __init__(self, tpin=pin15, epin=pin14, spin=pin13):\n'+
+        '        self.trigger_pin = tpin\n'+
+        '        self.echo_pin = epin\n'+
+        '        self.sclk_pin = spin\n'+
+        '\n'+
+        '    def distance_mm(self):\n'+
+        '        spi.init(baudrate=125000, sclk=self.sclk_pin,\n'+
+        '                 mosi=self.trigger_pin, miso=self.echo_pin)\n'+
+        '        pre = 0\n'+
+        '        post = 0\n'+
+        '        k = -1\n'+
+        '        length = 500\n'+
+        '        resp = bytearray(length)\n'+
+        '        resp[0] = 0xFF\n'+
+        '        spi.write_readinto(resp, resp)\n'+
+        '        # find first non zero value\n'+
+        '        try:\n'+
+        '            i, value = next((ind, v) for ind, v in enumerate(resp) if v)\n'+
+        '        except StopIteration:\n'+
+        '            i = -1\n'+
+        '        if i > 0:\n'+
+        '            pre = bin(value).count("1")\n'+
+        '            # find first non full high value afterwards\n'+
+        '            try:\n'+
+        '                k, value = next((ind, v)\n'+
+        '                                for ind, v in enumerate(resp[i:length - 2]) if resp[i + ind + 1] == 0)\n'+
+        '                post = bin(value).count("1") if k else 0\n'+
+        '                k = k + i\n'+
+        '            except StopIteration:\n'+
+        '                i = -1\n'+
+        '        dist= -1 if i < 0 else round((pre + (k - i) * 8. + post) * 8 * 0.172)\n'+
+        '        return dist\n'+
+        '\n'+
+        'sonar=HCSR04()\n'+
+        '\n'+
+        'def define_cm():\n'+
+        '    return sonar.distance_mm/10.0\n'/*+
+    'def define_mm():\n'+
+    '    sona=HCSR04()\n'+
+    '    return sonar.distance_mm\n'*/
+    return ['define_cm()',Blockly.Python.ORDER_ATOMIC];
+    //return ['sonar.distance_mm()/10.0', Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.DS1307_init = function () {
-  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-  var SDA = Blockly.Python.valueToCode(this, 'SDA', Blockly.Python.ORDER_ATOMIC);
-  var SCL = Blockly.Python.valueToCode(this, 'SCL', Blockly.Python.ORDER_ATOMIC);
-  //var RTCName = this.getFieldValue('RTCName');
-  //Blockly.Python.definitions_['include_Mixly'] = '#include "Mixly.h"';
-  Blockly.Python.setups_['class_DS1307'] = Blockly.Python.CLASS_DS1307_INIT;
-  //Blockly.Python.definitions_['DS1307'+RTCName] = 'DS1307 ' + RTCName + '('+SDA+','+SCL+');';
-  //return 'DS1307' + '('+SDA+','+SCL+')\n';
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    var SDA = Blockly.Python.valueToCode(this, 'SDA', Blockly.Python.ORDER_ATOMIC);
+    var SCL = Blockly.Python.valueToCode(this, 'SCL', Blockly.Python.ORDER_ATOMIC);
+    //var RTCName = this.getFieldValue('RTCName');
+    //Blockly.Python.definitions_['include_Mixly'] = '#include "Mixly.h"';
+    Blockly.Python.setups_['class_DS1307'] = Blockly.Python.CLASS_DS1307_INIT;
+    //Blockly.Python.definitions_['DS1307'+RTCName] = 'DS1307 ' + RTCName + '('+SDA+','+SCL+');';
+    //return 'DS1307' + '('+SDA+','+SCL+')\n';
 };
 
 Blockly.Python.RTC_get_time = function () {
-  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-  //var RTCName = this.getFieldValue('RTCName');
-  var timeType =this.getFieldValue('TIME_TYPE');
-  Blockly.Python.setups_['class_DS1307'] = Blockly.Python.CLASS_DS1307_INIT;
-  switch (timeType) {
-    case "Year":
-       var code = 'ds.'+timeType+'()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Month":
-       var code = 'ds.'+timeType+'()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Day":
-       var code = 'ds.'+timeType+'()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Hour":
-       var code = 'ds.'+timeType+'()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Minute":
-       var code = 'ds.'+timeType+'()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Second":
-       var code = 'ds.'+timeType+'()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Week":
-       var code = 'ds.'+timeType+'()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Mix1":
-       var code ='ds.Year()'+','+'ds.Month()'+','+'ds.Day()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Mix2":
-       var code ='ds.Hour()'+','+'ds.Minute()'+','+'ds.Second()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-  }
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    //var RTCName = this.getFieldValue('RTCName');
+    var timeType =this.getFieldValue('TIME_TYPE');
+    Blockly.Python.setups_['class_DS1307'] = Blockly.Python.CLASS_DS1307_INIT;
+    Blockly.Python.setups_['get_time']=
+        'def get_time():\n'+
+        '    ds.Hour()+ds.Minute()+ds.Second()\n'+
+        '    \n';
+    Blockly.Python.setups_['get_date']=
+        'def get_date():\n'+
+        '    ds.Year()+ds.Month()+ds.Day()\n'+
+        '    \n';
+
+
+    switch (timeType) {
+        //
+        case "Year":
+            var code = 'ds.'+timeType+'()';
+            return [code, Blockly.Python.ORDER_ASSIGNMENT];
+            break;
+        case "Month":
+            var code = 'ds.'+timeType+'()';
+            return [code, Blockly.Python.ORDER_ASSIGNMENT];
+            break;
+        case "Day":
+            var code = 'ds.'+timeType+'()';
+            return [code, Blockly.Python.ORDER_ASSIGNMENT];
+            break;
+        case "Hour":
+            var code = 'ds.'+timeType+'()';
+            return [code, Blockly.Python.ORDER_ASSIGNMENT];
+            break;
+        case "Minute":
+            var code = 'ds.'+timeType+'()';
+            return [code, Blockly.Python.ORDER_ASSIGNMENT];
+            break;
+        case "Second":
+            var code = 'ds.'+timeType+'()';
+            return [code, Blockly.Python.ORDER_ASSIGNMENT];
+            break;
+        case "Week":
+            var code = 'ds.'+timeType+'()';
+            return [code, Blockly.Python.ORDER_ASSIGNMENT];
+            break;
+        case "Mix1":
+            var code='get_date()';
+            //var code ='ds.Year()'+','+'ds.Month()'+','+'ds.Day()';
+            return [code, Blockly.Python.ORDER_ASSIGNMENT];
+            break;
+        case "Mix2":
+            var code ='get_time()';
+            // var code ='ds.Hour()'+','+'ds.Minute()'+','+'ds.Second()';
+            return [code, Blockly.Python.ORDER_ASSIGNMENT];
+            break;
+    }
 
 };
 
 Blockly.Python.RTC_set_time = function () {
-  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-  //var RTCName = this.getFieldValue('RTCName');
-  var hour = Blockly.Python.valueToCode(this, "hour", Blockly.Python.ORDER_ASSIGNMENT);
-  var minute = Blockly.Python.valueToCode(this, "minute", Blockly.Python.ORDER_ASSIGNMENT);
-  var second = Blockly.Python.valueToCode(this, "second", Blockly.Python.ORDER_ASSIGNMENT);
-  Blockly.Python.setups_['class_DS1307'] = Blockly.Python.CLASS_DS1307_INIT;
-  var code ='str(ds.Hour('+hour+'))+ str(ds.Minute('+minute+')) +str(ds.Second('+second+'))\n';
-  return code;
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    //var RTCName = this.getFieldValue('RTCName');
+    var hour = Blockly.Python.valueToCode(this, "hour", Blockly.Python.ORDER_ASSIGNMENT);
+    var minute = Blockly.Python.valueToCode(this, "minute", Blockly.Python.ORDER_ASSIGNMENT);
+    var second = Blockly.Python.valueToCode(this, "second", Blockly.Python.ORDER_ASSIGNMENT);
+    Blockly.Python.setups_['class_DS1307'] = Blockly.Python.CLASS_DS1307_INIT;
+
+
+    Blockly.Python.setups_['set_time']=
+        'def set_time(hour,minute,second):\n'+
+        '    str(ds.Hour(hour))+str(ds.Minute(minute))+str(ds.Second(second))\n'+
+        '    \n';
+
+    var code='set_time('+hour+','+minute+','+second+')\n';
+
+    return code;
 };
 
 Blockly.Python.RTC_set_date = function () {
-  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-  //var RTCName = this.getFieldValue('RTCName');
-  var year = Blockly.Python.valueToCode(this, "year", Blockly.Python.ORDER_ASSIGNMENT);
-  var month = Blockly.Python.valueToCode(this, "month",Blockly.Python.ORDER_ASSIGNMENT);
-  var day = Blockly.Python.valueToCode(this, "day",Blockly.Python.ORDER_ASSIGNMENT);
-  Blockly.Python.setups_['class_DS1307'] = Blockly.Python.CLASS_DS1307_INIT;
-  var code ='str(ds.Year('+year+'))+ str(ds.Month('+month+')) +str(ds.Day('+day+'))\n';
-  return code;
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    //var RTCName = this.getFieldValue('RTCName');
+    var year = Blockly.Python.valueToCode(this, "year", Blockly.Python.ORDER_ASSIGNMENT);
+    var month = Blockly.Python.valueToCode(this, "month",Blockly.Python.ORDER_ASSIGNMENT);
+    var day = Blockly.Python.valueToCode(this, "day",Blockly.Python.ORDER_ASSIGNMENT);
+    Blockly.Python.setups_['class_DS1307'] = Blockly.Python.CLASS_DS1307_INIT;
+    Blockly.Python.setups_['set_date']=
+        'def set_date(year,month,day):\n'+
+        '    str(ds.Year(year))+str(ds.Month(month))+str(ds.Day(day))\n'+
+        '    \n';
+    /*var code ='str(ds.Year('+year+'))+ str(ds.Month('+month+')) +str(ds.Day('+day+'))\n';*/
+    var code='set_date('+year+','+month+','+day+')\n';
+    return code;
 };
 
 Blockly.Python.sensor_compass_reset = function(block) {
-  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-  return ['compass.clear_calibration()', Blockly.Python.ORDER_ATOMIC];
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    return ['compass.clear_calibration()', Blockly.Python.ORDER_ATOMIC];
 };
