@@ -4,35 +4,35 @@ goog.provide('Blockly.Python.sensor');
 
 goog.require('Blockly.Python');
 
-//ok
+
 Blockly.Python.sensor_button_is_pressed = function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
     var code =  btn + '.is_pressed()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
-//ok
+
 Blockly.Python.sensor_button_was_pressed = function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
     var code =  btn + '.was_pressed()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
-//ok
+
 Blockly.Python.sensor_button_get_presses = function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
     var code =  btn + '.get_presses()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
-//ok
+
 Blockly.Python.controls_GestureLists = function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var gesture = this.getFieldValue('gesture');
     // Blockly.Python.definitions_['func_gesture' + gesture] = code;
     return ['"'+gesture+'"', Blockly.Python.ORDER_ATOMIC];
 }
-//ok
+
 Blockly.Python.controls_attachGestureInterrupt = function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var gesture = this.getFieldValue('gesture');
@@ -42,7 +42,7 @@ Blockly.Python.controls_attachGestureInterrupt = function(){
     // Blockly.Python.definitions_['func_gesture' + gesture] = code;
     return code;
 }
-//ok
+
 Blockly.Python.controls_attachGestureInterrupt2 = function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var gesture = this.getFieldValue('gesture');
@@ -52,7 +52,7 @@ Blockly.Python.controls_attachGestureInterrupt2 = function(){
     // Blockly.Python.definitions_['func_gesture' + gesture] = code;
     return code;
 }
-//ok
+
 Blockly.Python.sensor_get_gestures= function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var gesture = this.getFieldValue('GES');
@@ -65,13 +65,13 @@ Blockly.Python.sensor_get_gestures= function(){
     }
     return [a, Blockly.Python.ORDER_ATOMIC];
 };
-//ok
+
 Blockly.Python.sensor_current_gesture= function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     return ['accelerometer.current_gesture()', Blockly.Python.ORDER_ATOMIC];
 };
 
-//ok
+
 Blockly.Python.sensor_get_acceleration = function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var key = this.getFieldValue('key')
@@ -88,22 +88,22 @@ Blockly.Python.sensor_set_acceleration = function(){
 Blockly.Python.sensor_light_level= function(){
     return ['input.lightLevel()', Blockly.Python.ORDER_ATOMIC];
 };
-//ok
+
 Blockly.Python.sensor_calibrate_compass= function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     return 'compass.calibrate()\n';
 };
-//ok
+
 Blockly.Python.sensor_is_compass_calibrated= function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     return ['compass.is_calibrated()', Blockly.Python.ORDER_ATOMIC];
 };
-//ok
+
 Blockly.Python.sensor_compass_heading= function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     return ['compass.heading()', Blockly.Python.ORDER_ATOMIC];
 };
-//ok
+
 Blockly.Python.sensor_temperature = function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     return ['temperature()', Blockly.Python.ORDER_ATOMIC];
@@ -167,15 +167,12 @@ Blockly.Python.sensor_distance_hrsc04= function(){
         '        dist= -1 if i < 0 else round((pre + (k - i) * 8. + post) * 8 * 0.172)\n'+
         '        return dist\n'+
         '\n'+
-        'sonar=HCSR04()\n'+
+        '    def distance_cm(self):\n'+
+        '        return self.distance_mm() / 10.0\n'+
         '\n'+
-        'def define_cm():\n'+
-        '    return sonar.distance_mm/10.0\n'/*+
-    'def define_mm():\n'+
-    '    sona=HCSR04()\n'+
-    '    return sonar.distance_mm\n'*/
-    return ['define_cm()',Blockly.Python.ORDER_ATOMIC];
-    //return ['sonar.distance_mm()/10.0', Blockly.Python.ORDER_ATOMIC];
+        'sonar=HCSR04()\n'+
+        '\n'
+    return ['sonar.distance_cm()', Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.DS1307_init = function () {
@@ -194,15 +191,6 @@ Blockly.Python.RTC_get_time = function () {
     //var RTCName = this.getFieldValue('RTCName');
     var timeType =this.getFieldValue('TIME_TYPE');
     Blockly.Python.setups_['class_DS1307'] = Blockly.Python.CLASS_DS1307_INIT;
-    Blockly.Python.setups_['get_time']=
-        'def get_time():\n'+
-        '    ds.Hour()+ds.Minute()+ds.Second()\n'+
-        '    \n';
-    Blockly.Python.setups_['get_date']=
-        'def get_date():\n'+
-        '    ds.Year()+ds.Month()+ds.Day()\n'+
-        '    \n';
-
 
     switch (timeType) {
         //
@@ -235,13 +223,11 @@ Blockly.Python.RTC_get_time = function () {
             return [code, Blockly.Python.ORDER_ASSIGNMENT];
             break;
         case "Mix1":
-            var code='get_date()';
-            //var code ='ds.Year()'+','+'ds.Month()'+','+'ds.Day()';
+            var code='ds.get_date()';
             return [code, Blockly.Python.ORDER_ASSIGNMENT];
             break;
         case "Mix2":
-            var code ='get_time()';
-            // var code ='ds.Hour()'+','+'ds.Minute()'+','+'ds.Second()';
+            var code ='ds.get_time()';
             return [code, Blockly.Python.ORDER_ASSIGNMENT];
             break;
     }
@@ -256,14 +242,7 @@ Blockly.Python.RTC_set_time = function () {
     var second = Blockly.Python.valueToCode(this, "second", Blockly.Python.ORDER_ASSIGNMENT);
     Blockly.Python.setups_['class_DS1307'] = Blockly.Python.CLASS_DS1307_INIT;
 
-
-    Blockly.Python.setups_['set_time']=
-        'def set_time(hour,minute,second):\n'+
-        '    str(ds.Hour(hour))+str(ds.Minute(minute))+str(ds.Second(second))\n'+
-        '    \n';
-
-    var code='set_time('+hour+','+minute+','+second+')\n';
-
+    var code='ds.set_time('+hour+', '+minute+', '+second+')\n';
     return code;
 };
 
@@ -274,12 +253,7 @@ Blockly.Python.RTC_set_date = function () {
     var month = Blockly.Python.valueToCode(this, "month",Blockly.Python.ORDER_ASSIGNMENT);
     var day = Blockly.Python.valueToCode(this, "day",Blockly.Python.ORDER_ASSIGNMENT);
     Blockly.Python.setups_['class_DS1307'] = Blockly.Python.CLASS_DS1307_INIT;
-    Blockly.Python.setups_['set_date']=
-        'def set_date(year,month,day):\n'+
-        '    str(ds.Year(year))+str(ds.Month(month))+str(ds.Day(day))\n'+
-        '    \n';
-    /*var code ='str(ds.Year('+year+'))+ str(ds.Month('+month+')) +str(ds.Day('+day+'))\n';*/
-    var code='set_date('+year+','+month+','+day+')\n';
+    var code='ds.set_date('+year+', '+month+', '+day+')\n';
     return code;
 };
 
