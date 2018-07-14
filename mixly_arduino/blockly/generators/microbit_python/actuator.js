@@ -188,7 +188,7 @@ Blockly.Python.servo_move = function() {
         '\n';
 
     Blockly.Python.setups_['mixly_servo_write_angle']=
-        'def mixly_write_angle(pin,ang,delay):\n'+
+        'def mixly_servo_write_angle(pin,ang,delay):\n'+
         '    Servo(pin).write_angle(ang)\n'+
         '    sleep(delay)\n';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN',Blockly.Python.ORDER_ATOMIC);
