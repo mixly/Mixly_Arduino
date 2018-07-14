@@ -703,6 +703,15 @@ PythonToBlocks.prototype.If = function(node)
     var body = node.body;
     var orelse = node.orelse;
 
+    for(var key in py2block_config.ifStatementD['dict']){
+        try {
+            var checkfunc = py2block_config.ifStatementD['dict'][key]['check_condition'];
+            var blockfunc = py2block_config.ifStatementD['dict'][key]['create_block'];
+            if (checkfunc(this, node, test, body, orelse))
+                return blockfunc(this, node, test, body, orelse);
+        }catch (e){
+        }
+    }
     var IF_values = {"IF0": this.convert(test)};
     var DO_values = {"DO0": this.convertBody(body)};
 

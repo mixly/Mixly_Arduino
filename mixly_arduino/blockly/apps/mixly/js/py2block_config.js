@@ -29,6 +29,7 @@ Py2blockConfig.prototype.moduleFunctionD = defDict({});
 Py2blockConfig.prototype.moduleAttrD = defDict({});
 Py2blockConfig.prototype.globalFunctionD = {};
 Py2blockConfig.prototype.assignD = defDict({});
+Py2blockConfig.prototype.ifStatementD= defDict({});
 Py2blockConfig.prototype.ignoreS = new Set();
 Py2blockConfig.prototype.pinType = null;
 Py2blockConfig.prototype.inScope = null;

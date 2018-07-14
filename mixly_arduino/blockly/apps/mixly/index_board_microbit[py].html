@@ -259,6 +259,7 @@ function init() {
   editor_side_code.setScrollSpeed(0.05);
   var py2block_converter = new PythonToBlocks();
   py2block_editor = new Py2blockEditor(py2block_converter, editor);
+  Sk.python3 = true;
   var container = document.getElementById('content_area');
   var onresize = function(e) {
     var bBox = getBBox_(container);

@@ -71,6 +71,19 @@
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
 
+  <script src="../../blocks/python/utility.js"></script>
+  <script src="../../generators/python/utility.js"></script>
+  <script src="./js/py2block_editor.js" type="application/javascript"></script>
+  <script src="./js/py2block_config.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/serial.js" type="application/javascript"></script>
+  <script src="../../converters/python/control.js" type="application/javascript"></script>
+  <script src="../../converters/python/math.js" type="application/javascript"></script>
+  <script src="../../converters/python/lists.js" type="application/javascript"></script>
+  <script src="../../converters/python/tuple.js" type="application/javascript"></script>
+  <script src="../../converters/python/set.js" type="application/javascript"></script>
+  <script src="./js/python_to_blockly.js" type="application/javascript"></script>
+  <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
+  <script src="js/skulpt/dist/skulpt-stdlib.js" type="application/javascript"></script>
   <link rel="stylesheet" type="text/css" href="color_esp32_advance.css" />
   <script>
     var sidecodeDisplay=false;
@@ -155,8 +168,10 @@
         }
     	//显示右侧悬浮按钮
     	document.getElementById('sidebar').style.visibility = 'visible';
+        py2block_editor.updateBlock();
       }
       if(clickedName=="arduino"){
+        py2block_editor.fromCode = true;
        //隐藏右侧悬浮按钮
     	document.getElementById('sidebar').style.visibility = 'hidden';
        //点击代码将隐藏右侧代码，否则出现两个代码区域
@@ -223,6 +238,7 @@
      */
     var editor;
     var editor_side_code;
+    var py2block_editor;
     function init() {
       //window.onbeforeunload = function() {
       //  return 'Leaving this page will result in the loss of your work.';
@@ -244,6 +260,9 @@
       editor_side_code.setShowPrintMargin(false);
       editor_side_code.setReadOnly(true);
 
+      var py2block_converter = new PythonToBlocks();
+      py2block_editor = new Py2blockEditor(py2block_converter, editor);
+      Sk.python3 = true;
       var container = document.getElementById('content_area');
       var onresize = function(e) {
         var bBox = getBBox_(container);
