@@ -405,7 +405,7 @@ Blockly.Python.CLASS_DS1307_INIT =  'DS1307_I2C_ADDRESS  = (104)\n'+
                                     '    # get reg\n'+
                                     '    def getReg(self, reg):\n'+
                                     '        i2c.write(DS1307_I2C_ADDRESS, bytearray([reg]))\n'+
-                                    '        t =    i2c.read(DS1307_I2C_ADDRESS, 1)\n'+
+                                    '        t = i2c.read(DS1307_I2C_ADDRESS, 1)\n'+
                                     '        return t[0]\n'+
                                     '\n'+
                                     '    def start(self):\n'+
