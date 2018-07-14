@@ -1,7 +1,13 @@
 'use strict';
 
 var pbc = Py2blockConfig.prototype;
-pbc.objectFunctionD.get('is_pressed')['NUMBER'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+var ignoreL = ['HCSR04', 'sonar', 'DS1307', 'DS1307_I2C_ADDRESS', 'DS1307_REG_SECOND', 'DS1307_REG_MINUTE',
+    'DS1307_REG_HOUR', 'DS1307_REG_WEEKDAY', 'DS1307_REG_DAY', 'DS1307_REG_MONTH', 'DS1307_REG_YEAR',
+    'DS1307_REG_CTRL', 'DS1307_REG_RAM'];
+for (var i = 0; i < ignoreL.length; i++) {
+    pbc.ignoreS.add(ignoreL[i]);
+}
+pbc.objectFunctionD.get('is_pressed')['NUMBER'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -9,14 +15,14 @@ pbc.objectFunctionD.get('is_pressed')['NUMBER'] = function(py2block, func, args,
     var objblock = py2block.convert(func.value);
     py2block_config.pinType = null;
     return block("sensor_button_is_pressed", func.lineno, {}, {
-        "btn" : objblock
+        "btn": objblock
     }, {
         "inline": "true"
     });
 }
 
 
-pbc.objectFunctionD.get('was_pressed')['NUMBER'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('was_pressed')['NUMBER'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -24,14 +30,14 @@ pbc.objectFunctionD.get('was_pressed')['NUMBER'] = function(py2block, func, args
     var objblock = py2block.convert(func.value);
     py2block_config.pinType = null;
     return block("sensor_button_was_pressed", func.lineno, {}, {
-        "btn" : objblock
+        "btn": objblock
     }, {
         "inline": "true"
     });
 }
 
 
-pbc.objectFunctionD.get('get_presses')['NUMBER'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('get_presses')['NUMBER'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -39,165 +45,218 @@ pbc.objectFunctionD.get('get_presses')['NUMBER'] = function(py2block, func, args
     var objblock = py2block.convert(func.value);
     py2block_config.pinType = null;
     return block("sensor_button_get_presses", func.lineno, {}, {
-        "btn" : objblock
+        "btn": objblock
     }, {
         "inline": "true"
     });
 }
 
 
-pbc.moduleFunctionD.get('accelerometer')['get_x'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
+pbc.ifStatementD.get('if_is_gesture')['check_condition'] = function (py2block, node, test, body, orelse) {
+    if (test._astname == "Call" && py2block.Name_str(test.func.value) == "accelerometer"
+        && py2block.identifier(test.func.attr) == "is_gesture"
+        && test.args.length == 1) {
+        return true;
     }
-    return block("sensor_get_acceleration", func.lineno, {
-            "key" : "x"
-        },
-        {}, {
-            "inline": "true"
-        });
+    return false;
 }
 
-
-pbc.moduleFunctionD.get('accelerometer')['get_y'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    return block("sensor_get_acceleration", func.lineno, {
-            "key" : "y"
-        },
-        {}, {
-            "inline": "true"
-        });
-}
-
-
-pbc.moduleFunctionD.get('accelerometer')['get_z'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    return block("sensor_get_acceleration", func.lineno, {
-            "key" : "z"
-        },
-        {}, {
-            "inline": "true"
-        });
-}
-
-
-pbc.moduleFunctionD.get('accelerometer')['get_values'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    return block("sensor_get_acceleration", func.lineno, {
-            "key" : "values"
-        },
-        {}, {
-            "inline": "true"
-        });
-}
-
-
-pbc.moduleFunctionD.get('accelerometer')['get_gestures'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    var objblock = py2block.convert(func.value);
-    return block("sensor_get_gestures", func.lineno, {
-        'GES':"all"
-    }, {
-        "btn" : objblock
-    }, {
+pbc.ifStatementD.get('if_is_gesture')['create_block'] = function (py2block, node, test, body, orelse) {
+    return block("controls_attachGestureInterrupt", node.lineno, {
+        'gesture': py2block.identifier(test.args[0].s)
+    }, {}, {
         "inline": "true"
+    }, {}, {
+        "DO": py2block.convertBody(body[0])
     });
 }
 
 
-pbc.moduleFunctionD.get('accelerometer')['current_gesture'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
+pbc.ifStatementD.get('if_was_gesture')['check_condition'] = function (py2block, node, test, body, orelse) {
+    if (test._astname == "Call" && py2block.Name_str(test.func.value) == "accelerometer"
+        && py2block.identifier(test.func.attr) == "was_gesture"
+        && test.args.length == 1) {
+        return true;
     }
-    var objblock = py2block.convert(func.value);
-    return block("sensor_get_gestures", func.lineno, {
-        'GES':"current"
-    }, {
-        "btn" : objblock
-    }, {
+    return false;
+}
+
+pbc.ifStatementD.get('if_was_gesture')['create_block'] = function (py2block, node, test, body, orelse) {
+    return block("controls_attachGestureInterrupt2", node.lineno, {
+        'gesture': py2block.identifier(test.args[0].s)
+    }, {}, {
         "inline": "true"
+    }, {}, {
+        "DO": py2block.convertBody(body[0])
     });
 }
 
+function acceleromeerGetDir(mode) {
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        return block("sensor_get_acceleration", func.lineno, {
+                "key": mode
+            },
+            {}, {
+                "inline": "true"
+            });
+    }
 
-pbc.moduleFunctionD.get('compass')['calibrate'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    return converter;
+}
+
+pbc.moduleFunctionD.get('accelerometer')['get_x'] = acceleromeerGetDir('x');
+pbc.moduleFunctionD.get('accelerometer')['get_y'] = acceleromeerGetDir('y');
+pbc.moduleFunctionD.get('accelerometer')['get_z'] = acceleromeerGetDir('z');
+pbc.moduleFunctionD.get('accelerometer')['get_values'] = acceleromeerGetDir('values');
+
+
+function accelerometerGetGestrues(mode) {
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        return block("sensor_get_gestures", func.lineno, {
+            'GES': mode
+        }, {}, {
+            "inline": "true"
+        });
+    }
+
+    return converter;
+}
+
+pbc.moduleFunctionD.get('accelerometer')['get_gestures'] = accelerometerGetGestrues('all');
+pbc.moduleFunctionD.get('accelerometer')['current_gesture'] = accelerometerGetGestrues('current');
+
+
+pbc.moduleFunctionD.get('compass')['calibrate'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return [block("sensor_calibrate_compass", func.lineno, {
-    }, {
-    }, {
+    return [block("sensor_calibrate_compass", func.lineno, {}, {}, {
         "inline": "true"
     })];
 }
 
 
-pbc.moduleFunctionD.get('compass')['is_calibrated'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.moduleFunctionD.get('compass')['is_calibrated'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("sensor_is_compass_calibrated", func.lineno, {}, {
-    }, {
+    return block("sensor_is_compass_calibrated", func.lineno, {}, {}, {
         "inline": "true"
     });
 }
 
 
-pbc.moduleFunctionD.get('compass')['get_field_strength'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
+function getStrength(mode) {
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        return block("sensor_field_strength", func.lineno, {
+            'compass': mode
+        }, {}, {
+            "inline": "true"
+        });
     }
-    var objblock = py2block.convert(func.value);
-    return block("sensor_field_strength", func.lineno, {
-        'compass':'strength'
-    }, {
-        "btn" : objblock
-    }, {
-        "inline": "true"
-    });
+
+    return converter;
 }
 
+pbc.moduleFunctionD.get('compass')['get_field_strength'] = getStrength('strength');
+pbc.moduleFunctionD.get('compass')['heading'] = getStrength('heading');
 
-pbc.moduleFunctionD.get('compass')['heading'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+
+pbc.moduleFunctionD.get('compass')['clear_calibration'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    var objblock = py2block.convert(func.value);
-    return block("sensor_field_strength", func.lineno, {
-        'compass' : 'heading'
-    }, {
-        "btn" : objblock
-    }, {
-        "inline": "true"
-    });
-}
-
-
-pbc.moduleFunctionD.get('compass')['clear_calibration'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    return [block("sensor_compass_reset", func.lineno, {}, {
-    }, {
+    return [block("sensor_compass_reset", func.lineno, {}, {}, {
         "inline": "true"
     })];
 }
 
 
-pbc.globalFunctionD['temperature'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.globalFunctionD['temperature'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("sensor_temperature", func.lineno, {}, {
-    }, {
+    return block("sensor_temperature", func.lineno, {}, {}, {
         "inline": "true"
     });
+}
+
+
+pbc.moduleFunctionD.get('sonar')['distance_cm'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return block("sensor_distance_hrsc04", func.lineno, {}, {}, {
+        "inline": "true"
+    });
+}
+
+
+function ds1307GetTime(mode) {
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        return block("RTC_get_time", func.lineno, {
+                'TIME_TYPE': mode
+            }, {}, {
+                "inline": "true"
+            });
+    }
+    return converter;
+}
+
+pbc.moduleFunctionD.get('ds')['Year'] = ds1307GetTime('Year');
+pbc.moduleFunctionD.get('ds')['Month'] = ds1307GetTime('Month');
+pbc.moduleFunctionD.get('ds')['Day'] = ds1307GetTime('Day');
+pbc.moduleFunctionD.get('ds')['Hour'] = ds1307GetTime('Hour');
+pbc.moduleFunctionD.get('ds')['Minute'] = ds1307GetTime('Minute');
+pbc.moduleFunctionD.get('ds')['Second'] = ds1307GetTime('Second');
+pbc.moduleFunctionD.get('ds')['Week'] = ds1307GetTime('Week');
+pbc.moduleFunctionD.get('ds')['get_time'] = ds1307GetTime('Mix2');
+pbc.moduleFunctionD.get('ds')['get_date'] = ds1307GetTime('Mix1');
+
+
+pbc.moduleFunctionD.get('ds')['set_date'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 3) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var yearblock = py2block.convert(args[0]);
+    var monthblock = py2block.convert(args[1]);
+    var dayblock = py2block.convert(args[2]);
+    return [block("RTC_set_date", func.lineno, {},
+        {
+            'year': yearblock,
+            "month": monthblock,
+            "day": dayblock,
+        }, {
+            "inline": "false"
+        })];
+}
+
+
+pbc.moduleFunctionD.get('ds')['set_time'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 3) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var hourblock = py2block.convert(args[0]);
+    var minuteblock = py2block.convert(args[1]);
+    var secondblock = py2block.convert(args[2]);
+    return [block("RTC_set_time", func.lineno, {},
+        {
+            "hour": hourblock,
+            "minute": minuteblock,
+            "second": secondblock,
+        }, {
+            "inline": "false"
+        })];
 }
