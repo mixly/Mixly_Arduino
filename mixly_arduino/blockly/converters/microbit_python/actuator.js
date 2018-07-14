@@ -2,10 +2,16 @@
 
 var pbc = Py2blockConfig.prototype;
 
+
+var ignoreL = ['Servo','class_servo','mixly_write_angle'];
+for(var i = 0 ; i < ignoreL.length; i ++){
+    pbc.ignoreS.add(ignoreL[i]);
+}
+
 for (var i = 0; i < profile.default.pwm.length; i++) {
     pbc.moduleAttrD.get('pin')[profile.default.pwm[i][1]] = function (node, module, attr) {
         return block("pins_pwm", node.lineno, {
-            "PIN": "pin" + attr
+            "PIN":attr
         });
     }
 }
@@ -53,14 +59,14 @@ pbc.moduleFunctionD.get('music')['pitch'] = function(py2block, func, args, keywo
             durationblock = py2block.convert(args[1]);
         }
         return [block("microbit_music_pitch_delay", func.lineno, {
-                    'wait':wait
-                }, {
-                    'pitch':pitchblock,
-                    'duration':durationblock,
-                    'PIN':pinblock,
-                }, {
-                    "inline": "true"
-                })];
+            'wait':wait
+        }, {
+            'pitch':pitchblock,
+            'duration':durationblock,
+            'PIN':pinblock,
+        }, {
+            "inline": "true"
+        })];
     }else{
         throw new Error("Incorrect number of arguments");
     }
@@ -105,14 +111,14 @@ pbc.moduleFunctionD.get('music')['play'] = function(py2block, func, args, keywor
         }else{
             if (pinblock != null && waitblock != null && loopblock != null) {
                 return [block("microbit_music_play_list_of_notes", func.lineno, {
-                        'wait': waitblock,
-                        'loop': loopblock
-                    }, {
-                        'PIN': pinblock,
-                        'notes':py2block.convert(args[0]),
-                    }, {
-                        "inline": "true"
-                    })];
+                    'wait': waitblock,
+                    'loop': loopblock
+                }, {
+                    'PIN': pinblock,
+                    'notes':py2block.convert(args[0]),
+                }, {
+                    "inline": "true"
+                })];
             }
         }
     }
@@ -126,7 +132,7 @@ pbc.moduleFunctionD.get('music')['stop'] = function (py2block, func, args, keywo
     pbc.pinType = "pins_pwm";
     var pinblock = py2block.convert(func.value);
     var argblock = py2block.convert(args[0]);
-     pbc.pinType = null;
+    pbc.pinType = null;
     return block("microbit_music_stop", func.lineno, {
     }, {
         'PIN':argblock
@@ -157,7 +163,7 @@ pbc.moduleFunctionD.get('music')['set_tempo'] = function (py2block, func, args, 
             bpmblock = py2block.convert(param.value);
         } else if (key ==='ticks') {
             ticksblock = py2block.convert(param.value);
-        } 
+        }
     }
     if (bpmblock != null && ticksblock != null) {
         return [block("tone_set_tempo", func.lineno, {
@@ -179,7 +185,7 @@ pbc.moduleFunctionD.get('music')['get_tempo'] = function (py2block, func, args, 
         "inline": "true"
     });
 }
-pbc.moduleFunctionD.get('music')['translate'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('speech')['translate'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -188,7 +194,7 @@ pbc.moduleFunctionD.get('music')['translate'] = function (py2block, func, args, 
     }, {
         'VAR':argblock
     }, {
-        "inline": "true"
+        "inline": "False"
     });
 }
 pbc.moduleFunctionD.get('speech')['say'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -211,21 +217,21 @@ pbc.moduleFunctionD.get('speech')['say'] = function (py2block, func, args, keywo
             mouthblock = py2block.convert(param.value);
         } else if (key === 'throat') {
             throatblock = py2block.convert(param.value);
-        } 
+        }
     }
     if (argblock != null && pitchblock != null && speedblock != null && mouthblock != null && throatblock != null ) {
         return [block("speech_say", func.lineno, {
-            "MODE":"say"
-        }, 
-        {
-            'VAR': argblock,
-            'pitch': pitchblock,
-            'speed': speedblock,
-            'mouth': mouthblock,
-            'throat':throatblock
-        }, {
-            "inline": "true"
-        })];
+                "MODE":"say"
+            },
+            {
+                'VAR': argblock,
+                'pitch': pitchblock,
+                'speed': speedblock,
+                'mouth': mouthblock,
+                'throat':throatblock
+            }, {
+                "inline": "true"
+            })];
     }
 }
 pbc.moduleFunctionD.get('speech')['sing'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -248,21 +254,21 @@ pbc.moduleFunctionD.get('speech')['sing'] = function (py2block, func, args, keyw
             mouthblock = py2block.convert(param.value);
         } else if (key === 'throat') {
             throatblock = py2block.convert(param.value);
-        } 
+        }
     }
     if (argblock != null && pitchblock != null && speedblock != null && mouthblock != null && throatblock != null ) {
         return [block("speech_say", func.lineno, {
-            "MODE":"sing"
-        }, 
-        {
-            'VAR': argblock,
-            'pitch': pitchblock,
-            'speed': speedblock,
-            'mouth': mouthblock,
-            'throat':throatblock
-        }, {
-            "inline": "true"
-        })];
+                "MODE":"sing"
+            },
+            {
+                'VAR': argblock,
+                'pitch': pitchblock,
+                'speed': speedblock,
+                'mouth': mouthblock,
+                'throat':throatblock
+            }, {
+                "inline": "true"
+            })];
     }
 }
 pbc.moduleFunctionD.get('speech')['pronounce'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -285,23 +291,46 @@ pbc.moduleFunctionD.get('speech')['pronounce'] = function (py2block, func, args,
             mouthblock = py2block.convert(param.value);
         } else if (key === 'throat') {
             throatblock = py2block.convert(param.value);
-        } 
+        }
     }
     if (argblock != null && pitchblock != null && speedblock != null && mouthblock != null && throatblock != null ) {
         return [block("speech_say", func.lineno, {
-            "MODE":"pronounce"
-        }, 
-        {
-            'VAR': argblock,
-            'pitch': pitchblock,
-            'speed': speedblock,
-            'mouth': mouthblock,
-            'throat':throatblock
-        }, {
-            "inline": "true"
-        })];
+                "MODE":"pronounce"
+            },
+            {
+                'VAR': argblock,
+                'pitch': pitchblock,
+                'speed': speedblock,
+                'mouth': mouthblock,
+                'throat':throatblock
+            }, {
+                "inline": "true"
+            })];
     }
 }
 
+pbc.globalFunctionD['mixly_write_angle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length!=3){
+        throw new Error("Incorrect number of arguments");
+    }
 
+    // var roundAstName = args[0]._astname;
+    py2block_config.pinType = "pins_pwm";
+    var pinblock = py2block.convert(args[0]);
+    py2block_config.pinType = null;
+    var angblock= py2block.convert(args[1]);
+    var delayblock=py2block.convert(args[2]);
+    if(pinblock!=null&&angblock!=null&&delayblock!=null){
+        return [block("servo_move", func.lineno, {
+
+            },
+            {
+                "PIN":pinblock,
+                "DEGREE":angblock,
+                "DELAY_TIME":delayblock,
+            }, {
+                "inline": "true"
+            })];
+    }
+}
 
