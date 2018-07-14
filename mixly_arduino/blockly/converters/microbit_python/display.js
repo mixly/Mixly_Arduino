@@ -1,7 +1,7 @@
 'use strict';
 
 var pbc = Py2blockConfig.prototype;
-var ignoreL = ["LCD1602", "LCD_I2C_ADDR", "OLED12864_I2C", "oled", "mixly_oled_text"];
+var ignoreL = ["LCD1602", "LCD_I2C_ADDR", "OLED12864_I2C","mixly_rgb_show", "oled", "mixly_oled_text"];
 for(var i = 0 ; i < ignoreL.length; i ++){
     pbc.ignoreS.add(ignoreL[i]);
 }
@@ -20,7 +20,7 @@ for (var i = 0; i < profile.default.imglist.length; i++) {
         });
     }
 }
-
+//
 function show_or_scroll(blockid1, blockid2) {
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
         if (args.length === 1 && keywords.length === 4) {//Image.ALL_CLOCKS, delay=120, wait=True, loop=False, clear=False
@@ -235,11 +235,11 @@ pbc.moduleFunctionD.get('display')['get_pixel'] = function(py2block, func, args,
     }
     py2block_config.pinType = null;
     return block("monitor_get_pixel", func.lineno, {}, {
-            'x':xblock,
-            'y':yblock
-        }, {
-            "inline": "true"
-        });
+        'x':xblock,
+        'y':yblock
+    }, {
+        "inline": "true"
+    });
 }
 
 pbc.moduleFunctionD.get('display')['set_pixel'] = function(py2block, func, args, keywords, starargs, kwargs, node){
@@ -266,12 +266,12 @@ pbc.moduleFunctionD.get('display')['set_pixel'] = function(py2block, func, args,
     }
     py2block_config.pinType = null;
     return [block("monitor_bright_point", func.lineno, {}, {
-                'x':xblock,
-                'y':yblock,
-                'brightness':brightblock,
-            }, {
-                "inline": "true"
-            })];
+        'x':xblock,
+        'y':yblock,
+        'brightness':brightblock,
+    }, {
+        "inline": "true"
+    })];
 }
 
 
@@ -313,23 +313,7 @@ pbc.moduleFunctionD.get('display')['clear'] = function (py2block, func, args, ke
 }
 
 
-function mylcdOnOrOffOrClear(mode){
-    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
-        if (args.length !== 0) {
-            throw new Error("Incorrect number of arguments");
-        }
-        return block("group_lcd_power", func.lineno, {
-            'STAT': mode
-        }, {}, {
-            "inline": "true"
-        });
-    }
-    return converter;
-}
 
-pbc.moduleFunctionD.get('mylcd')['on'] = mylcdOnOrOffOrClear('on()');
-pbc.moduleFunctionD.get('mylcd')['off'] = mylcdOnOrOffOrClear('off()');
-pbc.moduleFunctionD.get('mylcd')['clear'] = mylcdOnOrOffOrClear('clear()');
 
 pbc.assignD.get('RGB')['check_assign'] = function(py2block, node, targets, value) {
     var moduleName = value.func.value.id.v;
@@ -352,6 +336,21 @@ pbc.assignD.get('RGB')['create_block'] = function(py2block, node, targets, value
     });
 }
 
+
+pbc.globalFunctionD['mixly_rgb_show'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 4) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return [block("display_rgb", func.lineno, {
+    }, {
+        '_LED_':py2block.convert(args[0]),
+        "RVALUE":py2block.convert(args[1]),
+        "GVALUE":py2block.convert(args[2]),
+        "BVALUE":py2block.convert(args[3])
+    }, {
+        "inline": "true"
+    })];
+}
 
 
 pbc.assignD.get('LCD')['check_assign'] = function(py2block, node, targets, value) {
@@ -383,6 +382,41 @@ pbc.moduleFunctionD.get('mylcd')['mixly_puts_two_lines'] = function (py2block, f
     })];
 }
 
+pbc.moduleFunctionD.get('mylcd')['mixly_puts'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 3) {
+        throw new Error("Incorrect number of arguments");
+    }
+
+    return [block("group_lcd_print2", func.lineno, {
+    }, {
+        "row":py2block.convert(args[1]),
+        "column":py2block.convert(args[2]),
+        "TEXT":py2block.convert(args[0]),
+    }, {
+        "inline": "true"
+    })];
+}
+
+
+function mylcdOnOrOffOrClear(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        return block("group_lcd_power", func.lineno, {
+            'STAT': mode
+        }, {}, {
+            "inline": "true"
+        });
+    }
+    return converter;
+}
+
+pbc.moduleFunctionD.get('mylcd')['on'] = mylcdOnOrOffOrClear('on()');
+pbc.moduleFunctionD.get('mylcd')['off'] = mylcdOnOrOffOrClear('off()');
+pbc.moduleFunctionD.get('mylcd')['clear'] = mylcdOnOrOffOrClear('clear()');
+
+
 pbc.moduleFunctionD.get('mylcd')['backlight'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
@@ -394,6 +428,7 @@ pbc.moduleFunctionD.get('mylcd')['backlight'] = function (py2block, func, args, 
         "inline": "true"
     });
 }
+
 
 pbc.globalFunctionD['mixly_oled_text'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 4) {
@@ -409,3 +444,8 @@ pbc.globalFunctionD['mixly_oled_text'] = function (py2block, func, args, keyword
         "inline": "false"
     });
 }
+
+
+
+
+
