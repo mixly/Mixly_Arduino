@@ -398,11 +398,11 @@ Blockly.Python.CLASS_DS1307_INIT =  'DS1307_I2C_ADDRESS  = (104)\n'+
                                     'DS1307_REG_CTRL     = (7)\n'+
                                     'DS1307_REG_RAM      = (8)\n'+
                                     'class DS1307():\n'+
-                                    '# set reg\n'+
+                                    '    # set reg\n'+
                                     '    def setReg(self, reg, dat):\n'+
                                     '        i2c.write(DS1307_I2C_ADDRESS, bytearray([reg, dat]))\n'+
                                     '\n'+
-                                    '# get reg\n'+
+                                    '    # get reg\n'+
                                     '    def getReg(self, reg):\n'+
                                     '        i2c.write(DS1307_I2C_ADDRESS, bytearray([reg]))\n'+
                                     '        t =    i2c.read(DS1307_I2C_ADDRESS, 1)\n'+
@@ -495,6 +495,23 @@ Blockly.Python.CLASS_DS1307_INIT =  'DS1307_I2C_ADDRESS  = (104)\n'+
                                     '            return self.getReg(DS1307_REG_RAM + (reg%56))\n'+
                                     '        else:\n'+
                                     '            self.setReg(DS1307_REG_RAM + (reg%56), dat)\n'+
+                                    '\n'+
+                                    '    def get_time(self):\n'+
+                                    '        return self.Hour() + self.Minute() + self.Second()\n'+
+                                    '\n'+
+                                    '    def get_date(self):\n'+
+                                    '        return self.Year() + self.Month() + self.Day()\n'+
+                                    '\n'+
+                                    '    def set_time(self, hour, minute, second):\n'+
+                                    '        self.Hour(hour)\n' +
+                                    '        self.Minute(minute)\n' +
+                                    '        self.Second(second)\n' +
+                                    '\n'+
+                                    '    def set_date(self, year, month, day):\n'+
+                                    '        self.Year(year)\n' +
+                                    '        self.Month(month)\n' +
+                                    '        self.Day(day)\n' +
+                                    '\n'+
                                     'ds = DS1307()\n'
 Blockly.Python.FUNCTION_MIXLY_RGB_SHOW = 'def mixly_rgb_show(led, r, g, b):\n' +
                                          '    np[led-1] = (r, g, b)\n' +
