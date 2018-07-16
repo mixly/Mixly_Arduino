@@ -570,3 +570,15 @@ Blockly.Python.list_many_input = function() {
   var code='['+text+']'
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.lists_create_with_noreturn = function() {
+  // Create a list with any number of elements of any type.
+  var code = new Array(this.itemCount_);
+  var default_value = '0';
+  for (var n = 0; n < this.itemCount_; n++) {
+      code[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
+        Blockly.Python.ORDER_NONE) || default_value;
+  }
+  var code = '[' + code.join(', ') + ']';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};

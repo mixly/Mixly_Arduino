@@ -652,6 +652,15 @@ PythonToBlocks.prototype.For = function(node) {
     var body = node.body;
     var orelse = node.orelse;
 
+    for(var key in py2block_config.forStatementD['dict']){
+        try {
+            var checkfunc = py2block_config.forStatementD['dict'][key]['check_condition'];
+            var blockfunc = py2block_config.forStatementD['dict'][key]['create_block'];
+            if (checkfunc(this, node, target, iter, body, orelse))
+                return blockfunc(this, node, target, iter, body, orelse);
+        }catch (e){
+        }
+    }
     if (orelse.length > 0) {
         // TODO
         throw new Error("Or-else block of For is not implemented.");
@@ -677,6 +686,15 @@ PythonToBlocks.prototype.While = function(node, is_top_level) {
     var test = node.test;
     var body = node.body;
     var orelse = node.orelse;
+    for(var key in py2block_config.whileStatementD['dict']){
+        try {
+            var checkfunc = py2block_config.whileStatementD['dict'][key]['check_condition'];
+            var blockfunc = py2block_config.whileStatementD['dict'][key]['create_block'];
+            if (checkfunc(this, node, test, body, orelse))
+                return blockfunc(this, node, test, body, orelse);
+        }catch (e){
+        }
+    }
     if (orelse.length > 0) {
         // TODO
         throw new Error("Or-else block of While is not implemented.");
@@ -1666,6 +1684,9 @@ PythonToBlocks.prototype.Name = function(node)
                 "PIN": this.identifier(id)
             });
     }
+    if(py2block_config.reservedNameD[nodeName] != null){
+        return py2block_config.reservedNameD[nodeName](this, node, id, ctx, nodeName);
+    }
     switch (this.Name_str(node)) {
         case "True":
             return block("logic_boolean", node.lineno, {"BOOL": "TRUE"});
@@ -1710,7 +1731,7 @@ PythonToBlocks.prototype.List = function(node) {
     var elts = node.elts;
     var ctx = node.ctx;
 
-    return block("lists_create_with", node.lineno, {},
+    return block("lists_create_with_noreturn", node.lineno, {},
         this.convertElements("ADD", elts)
         , {
             "inline": elts.length > 3 ? "false" : "true",
