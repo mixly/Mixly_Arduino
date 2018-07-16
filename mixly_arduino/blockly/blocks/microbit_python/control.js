@@ -487,7 +487,7 @@ Blockly.Blocks.controls_TypeLists = {
               [Blockly.MIXLY_MICROBIT_TYPE_DICT,"dict"],
               [Blockly.MIXLY_MICROBIT_TYPE_SETS,"set"],
               // [Blockly.MIXLY_MICROBIT_TYPE_IMAGE,"image"],
-              [Blockly.MIXLY_MICROBIT_TYPE_NONE,"NoneType"]]), "type");
+              [Blockly.MIXLY_MICROBIT_TYPE_NONE,"None"]]), "type");
             //整数、浮点数、字符串、列表、元组、字典、集合、图像不太对, unfinished
         this.setInputsInline(true);
         this.setOutput(true);
@@ -504,7 +504,7 @@ Blockly.Blocks.controls_TypeLists = {
         'dict': Blockly.MIXLY_MICROBIT_TYPE_DICT,
         'set': Blockly.MIXLY_MICROBIT_TYPE_SETS,
         'image':Blockly.MIXLY_MICROBIT_TYPE_IMAGE,
-        'NoneType': Blockly.MIXLY_MICROBIT_TYPE_NONE
+        'None': Blockly.MIXLY_MICROBIT_TYPE_NONE
       };
       return mode0 + TOOLTIPS[mode];
     });
