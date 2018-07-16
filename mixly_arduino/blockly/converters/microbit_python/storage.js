@@ -1,6 +1,22 @@
 'use strict';
 
 var pbc = Py2blockConfig.prototype;
+pbc.assignD.get('FILE')['check_assign'] = function(py2block, node, targets, value) {
+    var funcName = py2block.Name_str(value.func);
+    if(value._astname === "Call" && funcName === "open" && value.args.length === 2)
+        return true;
+    return false;
+}
+
+pbc.assignD.get('FILE')['create_block'] = function(py2block, node, targets, value){
+    var mode = py2block.identifier(value.args[1].s);
+
+    return block("storage_fileopen2", node.lineno, {"MODE":mode}, {
+        "FILENAME":py2block.convert(value.args[0]),
+        "FILE":py2block.convert(targets[0])
+    });
+}
+
 
 pbc.objectFunctionD.get('write')['FILE'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
