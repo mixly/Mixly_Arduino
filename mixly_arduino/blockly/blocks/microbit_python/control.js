@@ -94,6 +94,45 @@ Blockly.Blocks.controls_for = {
   }
 };
 
+Blockly.Blocks.controls_for_range = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_WITH)
+        .appendField(new Blockly.FieldTextInput('i'), 'VAR');
+    this.appendValueInput('FROM')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_FROM);
+    this.appendValueInput('TO')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_TO);
+    this.appendValueInput('STEP')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_STEP);
+    this.appendStatementInput('DO')
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_DO);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+	  var thisBlock = this;
+    this.setTooltip(function() {
+      return Blockly.Msg.CONTROLS_FOR_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });
+  },
+  getVars: function() {
+    return [this.getFieldValue('VAR')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
+      this.setTitleValue(newName, 'VAR');
+    }
+  }
+};
+
 Blockly.Blocks.controls_whileUntil = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
