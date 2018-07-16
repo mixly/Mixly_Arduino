@@ -83,7 +83,7 @@ Blockly.Python.controls_for_range = function (block) {
     dostatement = Blockly.Python.statementToCode(block, "DO"),
     pass = Blockly.Python.addLoopTrap(dostatement, block.id) || Blockly.Python.PASS;
     Blockly.Python.setups_["mixly_range"] = "def mixly_range(start, stop, step):\n" +
-                                            "    for i in xrange(start, stop + 1, step):\n" +
+                                            "    for i in range(start, stop + 1, step):\n" +
                                             "        yield i\n\n";
     return "for " + iter + " in mixly_range(" + from + ", " + end + ", " + step + "):\n" + pass;
 };
