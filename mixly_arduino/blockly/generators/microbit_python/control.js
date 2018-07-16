@@ -75,6 +75,19 @@ Blockly.Python.controls_for = function (a) {
     return g += "for " + b + " in " + a + ":\n" + f
 };
 
+Blockly.Python.controls_for_range = function (block) {
+    var iter = Blockly.Python.variableDB_.getName(block.getFieldValue("VAR"), Blockly.Variables.NAME_TYPE),
+    from = Blockly.Python.valueToCode(block, "FROM", Blockly.Python.ORDER_NONE) || "0",
+    end = Blockly.Python.valueToCode(block, "TO", Blockly.Python.ORDER_NONE) || "0",
+    step = Blockly.Python.valueToCode(block, "STEP", Blockly.Python.ORDER_NONE) || "1",
+    dostatement = Blockly.Python.statementToCode(block, "DO"),
+    pass = Blockly.Python.addLoopTrap(dostatement, block.id) || Blockly.Python.PASS;
+    Blockly.Python.setups_["mixly_range"] = "def mixly_range(start, stop, step):\n" +
+                                            "    for i in xrange(start, stop + 1, step):\n" +
+                                            "        yield i\n\n";
+    return "for " + iter + " in mixly_range(" + from + ", " + end + ", " + step + "):\n" + pass;
+};
+
 //ok
 Blockly.Python.controls_repeat = Blockly.Python.controls_repeat_ext;
 
