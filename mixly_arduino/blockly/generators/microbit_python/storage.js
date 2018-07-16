@@ -13,7 +13,16 @@ Blockly.Python['storage_fileopen'] = function(block) {
   var branch = Blockly.Python.statementToCode(block, 'DO');
   branch = Blockly.Python.addLoopTrap(branch, block.id) ||
       Blockly.Python.PASS;
-  var code = 'with open (' + fn + ', \'' + mode +'\') as ' + variable0 + ':\n' + branch;
+  var code = 'with open(' + fn + ', \'' + mode +'\') as ' + variable0 + ':\n' + branch;
+  return code;
+};
+
+Blockly.Python['storage_fileopen2'] = function(block) {
+  // For each loop.
+  var variable0 = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
+  var fn = Blockly.Python.valueToCode(this, 'FILENAME', Blockly.Python.ORDER_ATOMIC);
+  var mode = this.getFieldValue('MODE');
+  var code = variable0 + ' = open(' + fn + ', \'' + mode +'\')\n';
   return code;
 };
 
