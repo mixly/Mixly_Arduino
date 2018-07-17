@@ -32,7 +32,7 @@ Blockly.Python.math_number = function () {
 };
 
 
-//ok
+
 Blockly.Python.math_bit = function() {
   var operator = this.getFieldValue('OP');;
   var order = Blockly.Python.ORDER_ATOMIC;
@@ -42,7 +42,7 @@ Blockly.Python.math_bit = function() {
   return [code, order];
 };
 
-//ok
+
 Blockly.Python.math_arithmetic = function (a) {
   var b = {
     ADD : [" + ", Blockly.Python.ORDER_ADDITIVE],
@@ -62,7 +62,7 @@ Blockly.Python.math_arithmetic = function (a) {
 };
 
 
-//ok
+
 Blockly.Python.math_single = function (a) {
   var b = a.getFieldValue("OP"),
   c;
@@ -100,13 +100,13 @@ Blockly.Python.math_single = function (a) {
     c = "math.floor(" + a + ")";
     break;
   case "SIN":
-    c = "math.sin(" + a + " / 180.0 * math.pi)";
+    c = "math.sin(math.radians(" + a + "))";
     break;
   case "COS":
-    c = "math.cos(" + a + " / 180.0 * math.pi)";
+    c = "math.cos(math.radians(" + a + "))";
     break;
   case "TAN":
-    c = "math.tan(" + a + " / 180.0 * math.pi)";
+    c = "math.tan(math.radians(" + a + "))";
     break;
   case "++":
     c = "++(" + a + ")";
@@ -123,14 +123,13 @@ Blockly.Python.math_single = function (a) {
     return [c, Blockly.Python.ORDER_FUNCTION_CALL];
   switch (b) {
   case "ASIN":
-    c =
-      "math.asin(" + a + ") / math.pi * 180";
+    c = "math.degrees(math.asin(" + a + "))";
     break;
   case "ACOS":
-    c = "math.acos(" + a + ") / math.pi * 180";
+    c = "math.degrees(math.acos(" + a + "))";
     break;
   case "ATAN":
-    c = "math.atan(" + a + ") / math.pi * 180";
+    c = "math.degrees(math.atan(" + a + "))";
     break;
 
     throw "Unknown math operator: " + b;
@@ -141,7 +140,7 @@ Blockly.Python.math_single = function (a) {
 
 Blockly.Python.math_trig = Blockly.Python.math_single;
 
-//ok
+
 Blockly.Python.math_to_int = function() {
   Blockly.Python.definitions_.import_math = "import math";
   var argument0 = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_NONE) || '0';
@@ -154,7 +153,7 @@ Blockly.Python.math_to_int = function() {
   }
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
-//ok
+
 Blockly.Python.math_max_min = function() {
   var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_NONE) || '0';
   var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_NONE) || '0';
@@ -163,7 +162,7 @@ Blockly.Python.math_max_min = function() {
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-//ok
+
 Blockly.Python.math_random = function() {
   Blockly.Python.definitions_.import_random = "import random";
   // Random integer between [X] and [Y].
@@ -181,18 +180,18 @@ Blockly.Python.math_random = function() {
 };
 
 
-//ok, if a==b or c==d, ERROR!
 Blockly.Python.base_map = function() {
   var value_num = Blockly.Python.valueToCode(this, 'NUM', Blockly.Python.ORDER_NONE);
   var value_fl = Blockly.Python.valueToCode(this, 'fromLow', Blockly.Python.ORDER_ATOMIC);
   var value_fh = Blockly.Python.valueToCode(this, 'fromHigh', Blockly.Python.ORDER_ATOMIC);
   var value_tl = Blockly.Python.valueToCode(this, 'toLow', Blockly.Python.ORDER_ATOMIC);
   var value_th = Blockly.Python.valueToCode(this, 'toHigh', Blockly.Python.ORDER_ATOMIC);
-  //var code = 'map('+value_num+', '+value_fl+', '+value_fh+', '+value_tl+', '+value_th+')';
-    var code =  value_tl + ' + (' + value_th  + '-' +  value_tl + ') * (' + value_num + '-' +  value_fl + ') / (' + value_fh + '-' +  value_fl + ')'
+  Blockly.Python.setups_["mixly_mapping"] = "def mixly_mapping(v, al, ah, bl, bh):\n" +
+                                            "    return bl +  (bh - bl) * (v - al) / (ah - al)\n"
+  var code = 'mixly_mapping('+value_num+', '+value_fl+', '+value_fh+', '+value_tl+', '+value_th+')';
   return [code, Blockly.Python.ORDER_NONE];
 };
-//ok
+
 Blockly.Python.math_constrain = function() {
   // Constrain a number between two limits.
   var argument0 = Blockly.Python.valueToCode(this, 'VALUE',
@@ -206,12 +205,41 @@ Blockly.Python.math_constrain = function() {
 };
 
 
-//ok
+
 Blockly.Python.math_number_base_conversion = function (a) {
   var c1 = a.getFieldValue("OP");
   var d = Blockly.Python.valueToCode(this, 'NUM',Blockly.Python.ORDER_NONE) || '0';
   var c2 = a.getFieldValue("OP2");
   Blockly.Python.definitions_['import_math'] = "import math";
+  var param1 = "";
+  var param2 = "10";
+  if(c1 == "two"){
+    param2 = '2';
+  }else if(c1 == "eight"){
+    param2 = '8'
+  }else if(c1 == "ten"){
+    param2 = '10'
+  }else if(c1 == "sixteen"){
+    param2 = '16'
+  }
+
+  if(c2 == "two"){
+    param1 = 'bin';
+  }else if(c2 == "eight"){
+    param1 = 'oct'
+  }else if(c2 == "ten"){
+    param1 = ''
+  }else if(c2 == "sixteen"){
+    param1 = 'hex'
+  }
+  if(param1 == ""){
+      var code = "int(str(" + d + "), " + param2 + ")";
+  }else{
+      var code = param1 + "(int(str(" + d + "), " + param2 + "))";
+
+  }
+  return [code, Blockly.Python.ORDER_ATOMIC];
+  /*
   switch (c1) {
     case "two":
     switch (c2){
@@ -299,7 +327,7 @@ Blockly.Python.math_number_base_conversion = function (a) {
 
     default:
   }
-  
+  */
 };
 
   
