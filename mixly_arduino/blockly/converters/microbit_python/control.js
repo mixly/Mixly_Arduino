@@ -63,7 +63,7 @@ pbc.reservedNameD['list'] = typeName();
 pbc.reservedNameD['tuple'] = typeName();
 pbc.reservedNameD['dict'] = typeName();
 pbc.reservedNameD['set'] = typeName();
-pbc.reservedNameD['None'] = typeName();
+pbc.reservedNameD['NoneType'] = typeName();
 
 
 pbc.forStatementD.get('for_range')['check_condition'] = function (py2block, node, target, iter, body, orelse) {

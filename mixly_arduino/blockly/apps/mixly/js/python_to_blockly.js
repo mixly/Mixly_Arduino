@@ -891,9 +891,7 @@ PythonToBlocks.prototype.Expr = function(node, is_top_level) {
     var converted = this.convert(value);
     if (converted.constructor == Array) {
         return converted[0];
-    } else if (is_top_level === true || (py2block_config.isMicrobitpy && this.levelIndex <= 2)) {
-        return [converted];
-    } else {
+    }else {
         return block("raw_empty", node.lineno, {}, {
             "VALUE": converted
         });
@@ -971,10 +969,15 @@ PythonToBlocks.prototype.binaryOperator = function(op) {
     switch (op.name) {
         case "Add": return "ADD";
         case "Sub": return "MINUS";
-        case "Div": case "FloorDiv": return "DIVIDE";
+        case "Div": return "DIVIDE";
+        case "FloorDiv": return "ZHENGCHU";
         case "Mult": return "MULTIPLY";
         case "Pow": return "POWER";
-        case "Mod": return "MODULO";
+        case "Mod": return "QUYU";
+        case "BitAnd": return "&";
+        case "BitOr": return "|";
+        case "RShift": return ">>";
+        case "LShift": return "<<";
         default: throw new Error("Operator not supported:"+op.name);
     }
 }
@@ -996,7 +999,12 @@ PythonToBlocks.prototype.BinOp = function(node)
             "data":this.convert(left.args[0])
         });
     }
-    return block("math_arithmetic", node.lineno, {
+    var opName = this.binaryOperator(op);
+    var blockName = "math_arithmetic";
+    if(opName == "&" || opName == "|" || opName == ">>" || opName == "<<"){
+        blockName = "math_bit";
+    }
+    return block(blockName, node.lineno, {
         "OP": this.binaryOperator(op) // TODO
     }, {
         "A": this.convert(left),
@@ -1020,7 +1028,15 @@ PythonToBlocks.prototype.UnaryOp = function(node)
         }, {
             "inline": "false"
         });
-    } else {
+    } else if(op.name == "USub"){
+        return block("math_trig", node.lineno, {
+                'OP': '-'
+            }, {
+                'NUM': this.convert(operand)
+            }, {
+                "inline": "true"
+            });
+    }else {
         throw new Error("Other unary operators are not implemented yet.");
     }
 }

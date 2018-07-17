@@ -32,33 +32,9 @@ pbc.globalFunctionD['len'] = function (py2block, func, args, keywords, starargs,
     })];
 }
 
-pbc.globalFunctionD['max'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 1) {
-        throw new Error("Incorrect number of arguments");
-    }
-    var tupblock = py2block.convert(args[0]);
-    return [block("tuple_max", func.lineno, {
-        'DIR': "max"
-    }, {
-        'TUP': tupblock
-    }, {
-        "inline": "true"
-    })];
-}
+//max/min在math里已实现
 
-pbc.globalFunctionD['min'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 1) {
-        throw new Error("Incorrect number of arguments");
-    }
-    var tupblock = py2block.convert(args[0]);
-    return [block("tuple_max", func.lineno, {
-        'DIR': "min"
-    }, {
-        'TUP': tupblock
-    }, {
-        "inline": "true"
-    })];
-}
+
 pbc.globalFunctionD['list'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
