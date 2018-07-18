@@ -238,8 +238,7 @@ Blockly.Blocks['tuple_length'] = {
    */
   init: function() {
     this.setColour(Blockly.Blocks.tuple.HUE);
-    this.appendValueInput('TUP')
-        .setCheck('Tuple')
+    this.appendValueInput('TUP');
   this.appendDummyInput("")
         .appendField(Blockly.Msg.LISTS_LENGTH_TITLE);
         

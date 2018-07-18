@@ -151,8 +151,7 @@ Blockly.Blocks['text_length']={
 init: function() {
     this.setColour(Blockly.Blocks.texts.HUE);
 	this.appendValueInput("VAR")
-        .appendField(Blockly.MIXLY_LENGTH)
-        .setCheck(String);
+        .appendField(Blockly.MIXLY_LENGTH);
 	this.setOutput(true, Number);
   this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_LENGTH);
   }

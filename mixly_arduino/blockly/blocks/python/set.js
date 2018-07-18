@@ -180,9 +180,8 @@ Blockly.Blocks['set_length'] = {
     this.setColour(Blockly.Blocks.set.HUE);
   this.appendDummyInput("")
         .appendField(Blockly.Msg.LISTS_LENGTH_TITLE);        
-  this.appendValueInput('SET')
-        .setCheck('Set')     
-  this.setInputsInline(true);       
+  this.appendValueInput('SET');
+  this.setInputsInline(true);
   this.setTooltip(Blockly.Msg.SET_LENGTH_TOOLTIP);
   this.setOutput(true, Number);
   }
