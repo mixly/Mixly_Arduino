@@ -25,26 +25,29 @@ Blockly.Python.controls_if = function (a) {
     a.getInput("ELSE") && (d = Blockly.Python.statementToCode(a, "ELSE") || Blockly.Python.PASS, c += "else:\n" + d);
     return c
 };
-//there is not switch in python
-// Blockly.Python.controls_switch_case = function () {
-//     var n = 0;
-//     var argument = Blockly.Python.valueToCode(this, 'IF' + n,
-//         Blockly.Python.ORDER_NONE) || 'null';
-//     var branch = '';
-//     var code = 'switch (' + argument + ') {\n';
-//     for (n = 1; n <= this.elseifCount_; n++) {
-//         argument = Blockly.Python.valueToCode(this, 'IF' + n,
-//           Blockly.Python.ORDER_NONE) || 'null';
-//         branch = Blockly.Python.statementToCode(this, 'DO' + n);
-//         code += ' case ' + argument + ': \n' + branch + '  break;\n';
-//     }
-//     if (this.elseCount_) {
-//         branch = Blockly.Python.statementToCode(this, 'ELSE');
-//         code += ' default:\n' + branch + '  break;\n';
-//     }
-//     code += '}';
-//     return code + '\n';
-// };
+
+Blockly.Python.controls_try_finally = function () {
+    var n = 0;
+    var argument = Blockly.Python.valueToCode(this, 'IF' + n,
+        Blockly.Python.ORDER_NONE) || 'null';
+    var branch = '';
+    var t = Blockly.Python.statementToCode(this, 'try');
+    var code = 'try:\n' + t;
+    for (n = 1; n <= this.elseifCount_; n++) {
+        argument = Blockly.Python.valueToCode(this, 'IF' + n,
+          Blockly.Python.ORDER_NONE) || '';
+        if (argument !== '')
+            argument = ' ' + argument
+        branch = Blockly.Python.statementToCode(this, 'DO' + n);
+        code += 'except' + argument + ': \n' + branch;
+    }
+    if (this.elseCount_) {
+        branch = Blockly.Python.statementToCode(this, 'ELSE');
+        code += 'finally:\n' + branch;
+    }
+    // code += '}';
+    return code + '\n';
+};
 
 //ok
 Blockly.Python.controls_for = function (a) {

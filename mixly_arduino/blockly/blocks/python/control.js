@@ -411,16 +411,17 @@ Blockly.Blocks['controls_if_else'] = {
   }
 };
 
-Blockly.Blocks['controls_switch_case'] = {
+Blockly.Blocks['controls_try_finally'] = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
-    this.appendValueInput('IF0')
-        .setCheck([Number,Boolean])
-        .appendField('switch');
+    this.appendDummyInput('IF0')
+        // .setCheck([Number,Boolean])
+        .appendField('try');
+    this.appendStatementInput('try');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setMutator(new Blockly.Mutator(['controls_case',
-                                         'controls_default']));
+    this.setMutator(new Blockly.Mutator(['controls_except',
+                                         'controls_finally']));
     this.elseifCount_ = 0;
     this.elseCount_ = 0;
   },
@@ -453,13 +454,13 @@ Blockly.Blocks['controls_switch_case'] = {
     for (var i = 1; i <= this.elseifCount_; i++) {
       this.appendValueInput('IF' + i)
           .setCheck([Number,Boolean])
-          .appendField('case');
+          .appendField('except');
       this.appendStatementInput('DO' + i)
           .appendField('');
     }
     if (this.elseCount_) {
       this.appendStatementInput('ELSE')
-          .appendField('default');
+          .appendField('finally');
     }
   },
   /**
@@ -469,17 +470,17 @@ Blockly.Blocks['controls_switch_case'] = {
    * @this Blockly.Block
    */
   decompose: function(workspace) {
-    var containerBlock = Blockly.Block.obtain(workspace, 'controls_switch');
+    var containerBlock = Blockly.Block.obtain(workspace, 'controls_try');
     containerBlock.initSvg();
     var connection = containerBlock.getInput('STACK').connection;
     for (var i = 1; i <= this.elseifCount_; i++) {
-      var elseifBlock = Blockly.Block.obtain(workspace, 'controls_case');
+      var elseifBlock = Blockly.Block.obtain(workspace, 'controls_except');
       elseifBlock.initSvg();
       connection.connect(elseifBlock.previousConnection);
       connection = elseifBlock.nextConnection;
     }
     if (this.elseCount_) {
-      var elseBlock = Blockly.Block.obtain(workspace, 'controls_default');
+      var elseBlock = Blockly.Block.obtain(workspace, 'controls_finally');
       elseBlock.initSvg();
       connection.connect(elseBlock.previousConnection);
     }
@@ -506,11 +507,11 @@ Blockly.Blocks['controls_switch_case'] = {
     var clauseBlock = containerBlock.getInputTargetBlock('STACK');
     while (clauseBlock) {
       switch (clauseBlock.type) {
-        case 'controls_case':
+        case 'controls_except':
           this.elseifCount_++;
           var ifInput = this.appendValueInput('IF' + this.elseifCount_)
               .setCheck([Number,Boolean])
-              .appendField('case');
+              .appendField('except');
           var doInput = this.appendStatementInput('DO' + this.elseifCount_);
           doInput.appendField('');
           // Reconnect any child blocks.
@@ -521,10 +522,10 @@ Blockly.Blocks['controls_switch_case'] = {
             doInput.connection.connect(clauseBlock.statementConnection_);
           }
           break;
-        case 'controls_default':
+        case 'controls_finally':
           this.elseCount_++;
           var elseInput = this.appendStatementInput('ELSE');
-          elseInput.appendField('default');
+          elseInput.appendField('finally');
           // Reconnect any child blocks.
           if (clauseBlock.statementConnection_) {
             elseInput.connection.connect(clauseBlock.statementConnection_);
@@ -547,7 +548,7 @@ Blockly.Blocks['controls_switch_case'] = {
     var i = 1;
     while (clauseBlock) {
       switch (clauseBlock.type) {
-        case 'controls_case':
+        case 'controls_except':
           var inputIf = this.getInput('IF' + i);
           var inputDo = this.getInput('DO' + i);
           clauseBlock.valueConnection_ =
@@ -556,7 +557,7 @@ Blockly.Blocks['controls_switch_case'] = {
               inputDo && inputDo.connection.targetConnection;
           i++;
           break;
-        case 'controls_default':
+        case 'controls_finally':
           var inputDo = this.getInput('ELSE');
           clauseBlock.statementConnection_ =
               inputDo && inputDo.connection.targetConnection;
@@ -570,7 +571,7 @@ Blockly.Blocks['controls_switch_case'] = {
   }
 };
 
-Blockly.Blocks['controls_switch'] = {
+Blockly.Blocks['controls_try'] = {
   /**
    * Mutator block for if container.
    * @this Blockly.Block
@@ -578,13 +579,15 @@ Blockly.Blocks['controls_switch'] = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-        .appendField('switch');
+        .appendField('try');
     this.appendStatementInput('STACK');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
     this.contextMenu = false;
   }
 };
 
-Blockly.Blocks['controls_case'] = {
+Blockly.Blocks['controls_except'] = {
   /**
    * Mutator bolck for else-if condition.
    * @this Blockly.Block
@@ -592,14 +595,14 @@ Blockly.Blocks['controls_case'] = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-        .appendField('case');
+        .appendField('except');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.contextMenu = false;
   }
 };
 
-Blockly.Blocks['controls_default'] = {
+Blockly.Blocks['controls_finally'] = {
   /**
    * Mutator block for else condition.
    * @this Blockly.Block
@@ -607,7 +610,7 @@ Blockly.Blocks['controls_default'] = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-        .appendField('default');
+        .appendField('finally');
     this.setPreviousStatement(true);
     this.contextMenu = false;
   }
