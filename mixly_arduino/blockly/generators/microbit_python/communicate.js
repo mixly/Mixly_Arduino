@@ -4,6 +4,7 @@ goog.provide('Blockly.Python.communicate');
 goog.require('Blockly.Python');
 
 Blockly.Python['radio_ons'] = function(){
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     Blockly.Python.definitions_['import_radio'] = 'import radio';
     var type = this.getFieldValue('type');
     var code = 'radio.'+type+'()\n';
@@ -11,18 +12,21 @@ Blockly.Python['radio_ons'] = function(){
 };
 
 Blockly.Python['microbit_radio_on'] = function(block) {
+  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_radio'] = 'import radio';
   var code = 'radio.on()\n';
   return code;
 };
 
 Blockly.Python['microbit_radio_off'] = function(block) {
+  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_radio'] = 'import radio';
   var code = 'radio.off()\n';
   return code;
 };
 
 Blockly.Python['microbit_radio_config'] = function(block) {
+  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_radio'] = 'import radio';
   //var number_length = block.getFieldValue('length');
   var number_length =Blockly.Python.valueToCode(this, "length", Blockly.Python.ORDER_ATOMIC);
@@ -35,17 +39,21 @@ Blockly.Python['microbit_radio_config'] = function(block) {
 };
 
 Blockly.Python['microbit_radio_reset'] = function(block) {
+  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_radio'] = 'import radio';
   var code = 'radio.reset()\n';
   return code;
 };
 
 Blockly.Python.radio_send_string = function () {
+  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+  Blockly.Python.definitions_['import_radio'] = 'import radio';
     var number = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     return "radio.send(" + number + ")\n";
 }
 
 Blockly.Python['microbit_radio_receive'] = function(block) {
+  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_radio'] = 'import radio';
   var code = 'radio.receive()';
   return [code, Blockly.Python.ORDER_MEMBER];

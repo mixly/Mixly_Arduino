@@ -56,18 +56,21 @@ Blockly.Python.system_device_serial_number = function() {
 
 //ok
 Blockly.Python.base_delay = function () {
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var delay_time = Blockly.Python.valueToCode(this, 'DELAY_TIME', Blockly.Python.ORDER_ATOMIC) || '1000'
     var code = 'sleep(' + delay_time + ')\n';
     return code;
 };
 //ok
 Blockly.Python.Panic_with_status_code = function () {
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var status_code = Blockly.Python.valueToCode(this, 'STATUS_CODE', Blockly.Python.ORDER_ATOMIC) || '1000'
     var code = 'panic(' + status_code + ')\n';
     return code;
 };
 //ok
 Blockly.Python.controls_millis = function () {
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var code = 'running_time()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
