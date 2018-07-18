@@ -8,12 +8,7 @@ Blockly.Python.base_setup = function () {
     var branch = Blockly.Python.statementToCode(this, 'DO');
     branch = branch.replace(/(^\s*)|(\s*$)/g, "").replace(/\n    /g, '\n');//去除两端空格
     if (branch) {
-        if(branch.endsWith('\n')){
-            Blockly.Python.setups_['setup_setup'] = branch;
-        }
-        else{
-            Blockly.Python.setups_['setup_setup'] = branch + '\n';
-        }        
+        Blockly.Python.setups_['setup_setup'] = branch;
     }
     return '';
 };
@@ -30,6 +25,26 @@ Blockly.Python.controls_if = function (a) {
     a.getInput("ELSE") && (d = Blockly.Python.statementToCode(a, "ELSE") || Blockly.Python.PASS, c += "else:\n" + d);
     return c
 };
+//there is not switch in python
+// Blockly.Python.controls_switch_case = function () {
+//     var n = 0;
+//     var argument = Blockly.Python.valueToCode(this, 'IF' + n,
+//         Blockly.Python.ORDER_NONE) || 'null';
+//     var branch = '';
+//     var code = 'switch (' + argument + ') {\n';
+//     for (n = 1; n <= this.elseifCount_; n++) {
+//         argument = Blockly.Python.valueToCode(this, 'IF' + n,
+//           Blockly.Python.ORDER_NONE) || 'null';
+//         branch = Blockly.Python.statementToCode(this, 'DO' + n);
+//         code += ' case ' + argument + ': \n' + branch + '  break;\n';
+//     }
+//     if (this.elseCount_) {
+//         branch = Blockly.Python.statementToCode(this, 'ELSE');
+//         code += ' default:\n' + branch + '  break;\n';
+//     }
+//     code += '}';
+//     return code + '\n';
+// };
 
 //ok
 Blockly.Python.controls_for = function (a) {
@@ -90,8 +105,6 @@ Blockly.Python.controls_for_range = function (block) {
 
 //ok
 Blockly.Python.controls_repeat = Blockly.Python.controls_repeat_ext;
-
-
 Blockly.Python.controls_whileUntil = function (a) {
     var b = "UNTIL" == a.getFieldValue("MODE"),
     c = Blockly.Python.valueToCode(a, "BOOL", b ? Blockly.Python.ORDER_LOGICAL_NOT : Blockly.Python.ORDER_NONE) || "False",
@@ -100,6 +113,17 @@ Blockly.Python.controls_whileUntil = function (a) {
     b && (c = "not " + c);
     return "while " + c + ":\n" + d
 };
+
+// Blockly.Python.controls_flow_statements = function () {
+//     // Flow statements: continue, break.
+//     switch (this.getFieldValue('FLOW')) {
+//         case 'BREAK':
+//             return 'break;\n';
+//         case 'CONTINUE':
+//             return 'continue;\n';
+//     }
+//     throw 'Unknown flow statement.';
+// };
 
 //ok
 Blockly.Python.controls_flow_statements = function (a) {
@@ -112,6 +136,37 @@ Blockly.Python.controls_flow_statements = function (a) {
     throw "Unknown flow statement.";
 };
 
+//ok
+Blockly.Python.base_delay = function () {
+    var delay_time = Blockly.Python.valueToCode(this, 'DELAY_TIME', Blockly.Python.ORDER_ATOMIC) || '1000'
+    var code = 'sleep(' + delay_time + ')\n';
+    return code;
+};
+//ok
+Blockly.Python.Panic_with_status_code = function () {
+    var status_code = Blockly.Python.valueToCode(this, 'STATUS_CODE', Blockly.Python.ORDER_ATOMIC) || '1000'
+    var code = 'panic(' + status_code + ')\n';
+    return code;
+};
+//ok
+Blockly.Python.controls_millis = function () {
+    Blockly.Python.definitions_.import_time = "import time";
+    var code = 'time.time()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+//ok
+Blockly.Python.reset = function () {
+    Blockly.Python.definitions_['import_microbit'] = 'from microbit import *'
+    return 'reset()\n';
+};
+Blockly.Python.controls_interrupts = function () {
+    return 'interrupts();\n';
+};
+
+Blockly.Python.controls_nointerrupts = function () {
+    return 'noInterrupts();\n';
+};
 
 
 Blockly.Python['controls_forEach'] = function(block) {
@@ -140,4 +195,3 @@ Blockly.Python.controls_TypeLists = function(){
     // Blockly.Python.definitions_['func_type' + type] = code;
     return [type, Blockly.Python.ORDER_ATOMIC];
 }
-

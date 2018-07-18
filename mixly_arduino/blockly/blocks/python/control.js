@@ -70,6 +70,45 @@ Blockly.Blocks.controls_for = {
   }
 };
 
+Blockly.Blocks.controls_for_range = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_WITH)
+        .appendField(new Blockly.FieldTextInput('i'), 'VAR');
+    this.appendValueInput('FROM')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_FROM);
+    this.appendValueInput('TO')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_TO);
+    this.appendValueInput('STEP')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_STEP);
+    this.appendStatementInput('DO')
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_DO);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+    var thisBlock = this;
+    this.setTooltip(function() {
+      return Blockly.Msg.CONTROLS_FOR_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });
+  },
+  getVars: function() {
+    return [this.getFieldValue('VAR')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
+      this.setTitleValue(newName, 'VAR');
+    }
+  }
+};
+
 Blockly.Blocks.controls_whileUntil = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
@@ -662,4 +701,42 @@ Blockly.Blocks.base_type = {
     this.setOutput(true);
     this.setTooltip(Blockly.MICROBIT_PYTHON_TYPE);
   }
+};
+
+Blockly.Blocks.controls_TypeLists = {
+    init: function() {
+        this.setColour(Blockly.Blocks.loops.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE)
+            .appendField(new Blockly.FieldDropdown([
+              [Blockly.MIXLY_MICROBIT_TYPE_INT, "int"],
+              [Blockly.MIXLY_MICROBIT_TYPE_FLOAT, "float"],
+              [Blockly.MIXLY_MICROBIT_TYPE_STRING, "str"],
+              [Blockly.MIXLY_MICROBIT_TYPE_LIST, "list"],
+              [Blockly.MIXLY_MICROBIT_TYPE_TUPLE, "tuple"],
+              [Blockly.MIXLY_MICROBIT_TYPE_DICT,"dict"],
+              [Blockly.MIXLY_MICROBIT_TYPE_SETS,"set"],
+              // [Blockly.MIXLY_MICROBIT_TYPE_IMAGE,"image"],
+              [Blockly.MIXLY_MICROBIT_TYPE_NONE,"NoneType"]]), "type");
+            //整数、浮点数、字符串、列表、元组、字典、集合、图像不太对, unfinished
+        this.setInputsInline(true);
+        this.setOutput(true);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('type');
+        var mode0 = Blockly.MICROBIT_controls_TypeLists;
+        var TOOLTIPS = {
+        'int': Blockly.MIXLY_MICROBIT_TYPE_INT,
+        'float': Blockly.MIXLY_MICROBIT_TYPE_FLOAT,
+        'str': Blockly.MIXLY_MICROBIT_TYPE_STRING,
+        'list': Blockly.MIXLY_MICROBIT_TYPE_LIST,
+        'tuple':Blockly.MIXLY_MICROBIT_TYPE_TUPLE,
+        'dict': Blockly.MIXLY_MICROBIT_TYPE_DICT,
+        'set': Blockly.MIXLY_MICROBIT_TYPE_SETS,
+        'image':Blockly.MIXLY_MICROBIT_TYPE_IMAGE,
+        'NoneType': Blockly.MIXLY_MICROBIT_TYPE_NONE
+      };
+      return mode0 + TOOLTIPS[mode];
+    });
+    }
 };
