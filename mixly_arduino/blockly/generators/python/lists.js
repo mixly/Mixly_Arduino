@@ -573,3 +573,11 @@ Blockly.Python.list_many_input = function() {
 };
 
 Blockly.Python.lists_change_to_general = Blockly.Python.lists_change_to;
+
+
+Blockly.Python.lists_del_general = function() {
+  var varName = Blockly.Python.valueToCode(this, 'TUP', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var code='del ' + varName + '\n';
+  return code;
+};
+
