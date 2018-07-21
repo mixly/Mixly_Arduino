@@ -132,3 +132,36 @@ Blockly.Blocks['serial_begin'] = {
   this.setTooltip(Blockly.Msg.LISTS_SET_INDEX_SET+Blockly.MIXLY_SERIAL_BEGIN);
   }
 };
+
+Blockly.Blocks['IO_input']={
+init: function() {
+    this.setColour(Blockly.Blocks.serial.HUE);
+    this.appendValueInput("VAR")
+        .appendField(Blockly.blockpy_inout_raw_input)
+        .setCheck(String);
+    this.setOutput(true);
+        this.setTooltip(Blockly.Msg.INOUT_input_TOOLTIP);
+  }
+}
+
+Blockly.Blocks['IO_print'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.serial.HUE);
+        this.appendValueInput("VAR")
+        .appendField(Blockly.blockpy_inout_print);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.BLOCKPY_PRINT_TOOLTIP);
+  }
+};
+
+Blockly.Blocks['IO_print_inline'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.serial.HUE);
+        this.appendValueInput("VAR")
+        .appendField(Blockly.blockpy_inout_print_inline);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.TEXT_PRINT_INLINE_TOOLTIP);
+  }
+};

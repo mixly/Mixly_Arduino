@@ -743,3 +743,25 @@ Blockly.Blocks.controls_TypeLists = {
     });
     }
 };
+
+Blockly.Blocks.controls_range = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendValueInput('FROM')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("range")
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_FROM);
+    this.appendValueInput('TO')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_TO);
+    this.appendValueInput('STEP')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_STEP);
+    this.setInputsInline(true);
+    this.setOutput(true);
+    //this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS2);
+  }
+};
