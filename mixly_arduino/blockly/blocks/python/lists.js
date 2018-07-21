@@ -1365,3 +1365,18 @@ Blockly.Blocks['lists_change_to_general'] = {
   }
 };
 
+Blockly.Blocks['lists_del_general'] = {
+  /**
+   * Block for list length.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.setColour(Blockly.Blocks.tuple.HUE);
+    this.appendValueInput('TUP')
+    this.appendDummyInput("")
+        .appendField(Blockly.Msg.TUPLE_DEL);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.Msg.TUPLE_DEL_TOOLTIP);
+  }
+};
