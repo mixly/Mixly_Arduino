@@ -287,7 +287,12 @@ Blockly.Blocks['sensor_field_strength'] = {
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_JS_GET_COMPASS)
-            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_FIELD_STRENGTH,'strength'],[Blockly.MIXLY_MICROBIT_JS_COMPASS_HEADING,'heading']]),'compass');
+            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_FIELD_STRENGTH,'get_field_strength'],
+                                                    [Blockly.MIXLY_MICROBIT_JS_COMPASS_HEADING,'heading'],
+                                                    ["x", "get_x"],
+                                                    ["y", "get_y"],
+                                                    ["z", "get_z"],
+                                                    ]),'compass');
         this.setOutput(true, Number);
         this.setInputsInline(true);
         var thisBlock = this;

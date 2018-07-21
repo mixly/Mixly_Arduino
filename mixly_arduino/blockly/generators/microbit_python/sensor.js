@@ -111,14 +111,8 @@ Blockly.Python.sensor_temperature = function(){
 Blockly.Python.sensor_field_strength= function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var compass = this.getFieldValue('compass');
-    var a;
-    if(compass =='strength'){
-        a = 'compass.get_field_strength()';
-    }
-    else if(compass =='heading'){
-        a = 'compass.heading()';
-    }
-    return [a, Blockly.Python.ORDER_ATOMIC];
+    var code = 'compass.'+compass+'()'
+    return [code, Blockly.Python.ORDER_ATOMIC];
 };
 Blockly.Python.sensor_rotation = function(){
     var key = this.getFieldValue('key')
