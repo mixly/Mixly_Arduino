@@ -1358,6 +1358,7 @@ Blockly.Msg.DICT_VALUES = "获取所有键对应的值";
 Blockly.Msg.DICTS_VALUES_TOOLTIP = "返回一个列表，包括一个字典所有键的对应值";
 Blockly.Msg.DICTS_LENGTH_TOOLTIP = "返回字典的长度，即键的个数";
 Blockly.Msg.DICT_DELDICT = "删除字典";
+Blockly.Msg.OBJECT_DELETE= "删除列表/元组/字典/集合";
 Blockly.Msg.MATH_BIN='二进制';
 Blockly.Msg.MATH_DEC='十进制';
 Blockly.Msg.MATH_OCT='八进制';

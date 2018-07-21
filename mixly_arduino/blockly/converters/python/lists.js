@@ -28,3 +28,24 @@ if(left._astname === "Call" && left.func.attr.v === "index"
         });
     }
     */
+function listTupleSetConvert(mode) {
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 1) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var argblock = py2block.convert(args[0]);
+        return block("lists_change_to_general", func.lineno, {
+            "OP":mode
+        }, {
+            'VAR': argblock
+        }, {
+            "inline": "true"
+        });
+    }
+    return converter;
+}
+
+pbc.globalFunctionD['list'] = listTupleSetConvert('list');
+pbc.globalFunctionD['tuple'] = listTupleSetConvert('tuple');
+pbc.globalFunctionD['set'] = listTupleSetConvert('set');
+

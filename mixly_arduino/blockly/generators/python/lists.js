@@ -565,6 +565,7 @@ Blockly.Python.lists_change_to = function(){
   return [code, Blockly.Python.ORDER_ATOMIC];
 }
 
+
 Blockly.Python.list_many_input = function() {
   var text=this.getFieldValue('CONTENT');
   var code='['+text+']'
@@ -582,3 +583,12 @@ Blockly.Python.lists_create_with_noreturn = function() {
   var code = '[' + code.join(', ') + ']';
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.lists_change_to_general = Blockly.Python.lists_change_to;
+
+Blockly.Python.lists_del_general = function() {
+  var varName = Blockly.Python.valueToCode(this, 'TUP', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var code='del ' + varName + '\n';
+  return code;
+};
+

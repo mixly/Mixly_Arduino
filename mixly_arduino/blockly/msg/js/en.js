@@ -1355,6 +1355,7 @@ Blockly.Msg.DICT_VALUES = "get the values corresponding to all keys";
 Blockly.Msg.DICTS_VALUES_TOOLTIP = "Return a list, including the corresponding values of all the keys in a dictionary";
 Blockly.Msg.DICTS_LENGTH_TOOLTIP = "Return the length of the dictionary, the number of the keys";
 Blockly.Msg.DICT_DELDICT = "delete dictionary";
+Blockly.Msg.OBJECT_DELETE = "delete list/tuple/dict/set";
 Blockly.Msg.MATH_BIN='binary';
 Blockly.Msg.MATH_OCT='octal';
 Blockly.Msg.MATH_DEC='decimal';

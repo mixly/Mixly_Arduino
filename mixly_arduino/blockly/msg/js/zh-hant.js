@@ -1357,6 +1357,7 @@ Blockly.Msg.DICT_VALUES = "獲取所有鍵對應的值";
 Blockly.Msg.DICTS_VALUES_TOOLTIP = "返回一個清單，包括一個字典所有鍵的對應值";
 Blockly.Msg.DICTS_LENGTH_TOOLTIP = "返回字典的長度，即鍵的個數";
 Blockly.Msg.DICT_DELDICT = "刪除字典";
+Blockly.Msg.OBJECT_DELETE= "刪除列表/元組/字典/集合";
 Blockly.Msg.MATH_BIN='二進位';
 Blockly.Msg.MATH_DEC='十進制';
 Blockly.Msg.MATH_OCT='八進制';

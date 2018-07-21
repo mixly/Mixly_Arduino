@@ -1357,6 +1357,7 @@ Blockly.Msg.DICT_VALUES = "Para obtener todos los valores de la clave correspond
 Blockly.Msg.DICTS_VALUES_TOOLTIP = "Devuelve una lista de valores correspondientes a todas las teclas, incluye un diccionario";
 Blockly.Msg.DICTS_LENGTH_TOOLTIP = "Devuelve la longitud del diccionario, es decir, un número de clave";
 Blockly.Msg.DICT_DELDICT = "Supresión de diccionario";
+Blockly.Msg.OBJECT_DELETE = "Borrar lista/tuple/dict/set";
 Blockly.Msg.MATH_BIN = 'binary';
 Blockly.Msg.MATH_OCT = 'octal';
 Blockly.Msg.MATH_DEC = 'decimal';

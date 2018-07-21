@@ -19,35 +19,9 @@ pbc.assignD.get('TUPLE')['create_block'] = function (py2block, node, targets, va
         });
 }
 
-
+//mytup[0]在python_to_blockly.py中实现
 //len在text里实现
 
 //max/min在math里已实现
 
-
-pbc.globalFunctionD['list'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 1) {
-        throw new Error("Incorrect number of arguments");
-    }
-    var varblock = py2block.convert(args[0]);
-    return [block("tuple_change_to", func.lineno, {
-        'OP': "list"
-    }, {
-        'VAR': varblock
-    }, {
-        "inline": "true"
-    })];
-}
-pbc.globalFunctionD['set'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 1) {
-        throw new Error("Incorrect number of arguments");
-    }
-    var varblock = py2block.convert(args[0]);
-    return [block("tuple_change_to", func.lineno, {
-        'OP': "set"
-    }, {
-        'VAR': varblock
-    }, {
-        "inline": "true"
-    })];
-}
+//list(mytuple), set(mytup)在lists.js中实现

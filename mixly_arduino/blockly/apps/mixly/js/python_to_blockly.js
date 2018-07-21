@@ -543,8 +543,14 @@ PythonToBlocks.prototype.Return = function(node)
 PythonToBlocks.prototype.Delete = function(/* {asdl_seq *} */ targets)
 {
     this.targets = targets;
-    // TODO
-    throw new Error("Delete is not implemented");
+    if(targets.targets.length != 1){
+        throw new Error("not implement del");
+    }
+    return [block("lists_del_general", targets.lineno, {}, {
+        "TUP": this.convert(targets.targets[0])
+    }, {
+        "inline": "true"
+    })];
 }
 
 /*

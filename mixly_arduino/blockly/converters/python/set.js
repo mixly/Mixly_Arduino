@@ -31,26 +31,8 @@ pbc.objectFunctionD.get('pop')['SET'] = function(py2block, func, args, keywords,
     })];
 }
 
-function listOrTupleConvert(mode) {
-    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
-        if (args.length !== 1) {
-            throw new Error("Incorrect number of arguments");
-        }
-        var argblock = py2block.convert(args[0]);
-        return block("set_change_to", func.lineno, {
-            "OP":mode
-        }, {
-            'VAR': argblock
-        }, {
-            "inline": "true"
-        });
-    }
-    return converter;
-}
 
-pbc.globalFunctionD['list'] = listOrTupleConvert('list');
-pbc.globalFunctionD['tuple'] = listOrTupleConvert('tuple');
-
+//tuple(mytuple), set(mytup)在lists.js中实现
 
 function setOperate(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
