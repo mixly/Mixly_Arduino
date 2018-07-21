@@ -71,3 +71,24 @@ Blockly.Python.serial_begin = function () {
   return "uart.init(" + baudrate + ")\n";
 };
 
+
+Blockly.Python.IO_input = function() {
+  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
+  return ['input(' + str+')', Blockly.Python.ORDER_ATOMIC];
+};
+
+
+Blockly.Python.IO_print = function() {
+  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
+  var code = "print("+str+")\n";
+  return code;
+};
+
+Blockly.Python.IO_print_inline = function() {
+  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
+  var code = "print("+str+',end ="")\n';
+  return code;
+};

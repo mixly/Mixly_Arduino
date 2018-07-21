@@ -442,7 +442,7 @@ function init() {
       </block>
       <block type="controls_TypeLists"></block>
       <block type="controls_if"></block>
-      <block type="controls_for_range">
+<!--       <block type="controls_for_range">
         <value name="FROM">
           <shadow type="math_number">
             <field name="NUM">1</field>
@@ -458,12 +458,46 @@ function init() {
             <field name="NUM">1</field>
           </shadow>
         </value>
+      </block> -->
+      <block type="controls_range">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        <value name="STEP">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
       </block>
       <block type="controls_forEach">
         <value name="LIST">
           <shadow type="list_many_input">
             <field name="CONTENT">0,1,2,3</field>
           </shadow>
+          <block type="controls_range">
+            <value name="FROM">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="TO">
+              <shadow type="math_number">
+                <field name="NUM">5</field>
+              </shadow>
+            </value>
+            <value name="STEP">
+              <shadow type="math_number">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+          </block>
         </value>
       </block>
       <block type="controls_whileUntil"></block>
@@ -1045,6 +1079,27 @@ function init() {
         </block>
       </category>       
       <category id="catSerialPort" colour="65">
+        <block type="IO_print_inline"> 
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly</field>
+                  </shadow>
+              </value>   
+        </block>
+        <block type="IO_print">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly</field>
+                  </shadow>
+              </value>
+        </block>
+        <block type="IO_input">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">prompt</field>
+                  </shadow>
+              </value>
+        </block>
         <block type="serial_begin"></block>
         <block type="serial_print"></block>
         <block type="serial_println"></block>
