@@ -14,6 +14,15 @@ Blockly.FieldTextInput.math_number_validator = function(text) {
   // return String(text);//不再校验
 };
 
+Blockly.FieldTextInput.math_number_validator_include_blank = function(text) {
+    if(text === ""){
+        return "";
+    }
+    var pattern = /^-?(0X|0x|0O|0o|0B|0b)?[a-fA-F0-9]{1,}(\.[a-fA-F0-9]+)?$/;
+    return pattern.test(text) ? String(text) : null;//校验，二 八 十 十六进制匹配
+};
+
+
 
 Blockly.Blocks['math_number'] = {
   /**
@@ -49,9 +58,7 @@ Blockly.Blocks['math_arithmetic'] = {
     this.setColour(Blockly.Blocks.math.HUE);
     this.setOutput(true, Number);
     this.appendValueInput('A')
-        .setCheck(Number);
     this.appendValueInput('B')
-        .setCheck(Number)
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
     this.setInputsInline(true);
     // Assign 'this' to a variable for use in the tooltip closure below.
@@ -319,5 +326,19 @@ Blockly.Blocks.base_map = {
     this.setInputsInline(true);
     this.setOutput(true);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_MATH_MAP);
+  }
+};
+
+Blockly.Blocks['math_indexer_number'] = {
+  /**
+   * Block for numeric value.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.setColour(Blockly.Blocks.math.HUE);
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldTextInput('0', Blockly.FieldTextInput.math_number_validator_include_blank), 'NUM');
+    this.setOutput(true);
+    this.setTooltip(Blockly.Msg.MATH_NUMBER_TOOLTIP);
   }
 };

@@ -120,37 +120,7 @@ Blockly.Python.base_delay = function () {
        break;
   }
 };
-//ok
-Blockly.Python.Panic_with_status_code = function () {
-    var status_code = Blockly.Python.valueToCode(this, 'STATUS_CODE', Blockly.Python.ORDER_ATOMIC) || '1000'
-    var code = 'panic(' + status_code + ')\n';
-    return code;
-};
-//ok
-Blockly.Python.controls_millis = function () {
-    //Blockly.Python.definitions_.import_time = "import time";
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var dropdown_time = this.getFieldValue('Time');
-    switch (dropdown_time) {
-    case "ms":
-       var code ='running_time()';
-       return [code, Blockly.Python.ORDER_ATOMIC];
-       break;
-    case "us":
-       var code ='running_time_us()';
-       return [code, Blockly.Python.ORDER_ATOMIC];
-       break;
-  }
-};
-//ok
-Blockly.Python.controls_end_program = function () {
-    return 'while True:\n    pass';
-};
-//ok
-Blockly.Python.reset = function () {
-    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-    return 'reset()\n';
-};
+
 
 Blockly.Python['controls_forEach'] = function(block) {
   // For each loop.
@@ -179,7 +149,3 @@ Blockly.Python.controls_TypeLists = function(){
     return [type, Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.controls_uname = function () {
-    Blockly.Python.definitions_['import_os'] = 'import os';
-    return 'os.uname()';
-};

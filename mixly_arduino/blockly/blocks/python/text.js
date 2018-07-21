@@ -158,6 +158,7 @@ init: function() {
 }
 
 
+
 Blockly.Blocks['text_char_at2'] = {
     init: function() {
         this.WHERE_OPTIONS = [[Blockly.Msg.LISTS_GET_INDEX_FROM_START, "FROM_START"],
@@ -248,6 +249,37 @@ Blockly.Blocks['text_char_at2'] = {
         Blockly.Msg.LISTS_GET_INDEX_TAIL && this.moveInputBefore("TAIL", null)
     }
 };
+
+
+Blockly.Blocks['text_char_at3'] = {
+    init: function () {
+        this.setHelpUrl(Blockly.Msg.LISTS_GET_INDEX_HELPURL);
+        this.setColour(Blockly.Blocks.texts.HUE);
+        this.appendValueInput("VAR")
+            .setCheck(String);
+        this.appendValueInput("AT")
+            .setCheck(Number)
+            .appendField(Blockly.Msg.LISTS_GET_INDEX_GET + " " + Blockly.Msg.LISTS_GET_INDEX_FROM_START);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.TEXT_CHARAT2);
+        this.setOutput(true);
+        this.setTooltip(Blockly.Msg.PROCEDURES_DEFRETURN_RETURN+Blockly.MIXLY_MICROBIT_TYPE_STRING+Blockly.Msg.LISTS_GET_INDEX_FROM_START+'n'+Blockly.Msg.TEXT_CHARAT2);
+    }
+}
+
+
+Blockly.Blocks['text_random_char'] = {
+    init: function () {
+        this.setHelpUrl(Blockly.Msg.LISTS_GET_INDEX_HELPURL);
+        this.setColour(Blockly.Blocks.texts.HUE);
+        this.appendValueInput("VAR")
+            .setCheck(String);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.TEXT_GET_INDEX_RANDOM+1+Blockly.Msg.TEXT_CHARAT2);
+        this.setOutput(true);
+        this.setTooltip(Blockly.Msg.PROCEDURES_DEFRETURN_RETURN+Blockly.MIXLY_MICROBIT_TYPE_STRING+Blockly.Msg.TEXT_GET_INDEX_RANDOM+'1'+Blockly.Msg.TEXT_CHARAT2);
+    }
+}
 
 
 Blockly.Blocks['text_substring2'] = {
@@ -359,6 +391,27 @@ Blockly.Blocks['text_substring2'] = {
   }
 };
 
+Blockly.Blocks['text_substring3'] = {
+    /**
+     * Block for getting sublist.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.setHelpUrl(Blockly.Msg.LISTS_GET_SUBLIST_HELPURL);
+        this.setColour(Blockly.Blocks.texts.HUE);
+        this.appendValueInput("VAR")
+            .setCheck(String)
+        this.appendValueInput('AT1')
+            .appendField(Blockly.Msg.LISTS_GET_INDEX_GET + " " + Blockly.Msg.LISTS_GET_INDEX_FROM_START);
+        this.appendValueInput('AT2')
+            .appendField(Blockly.Msg.LISTS_GET_SUBLIST_END_FROM_START);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.TEXT_CHARAT2);
+        this.setInputsInline(true);
+        this.setOutput(true, 'List');
+        this.setTooltip(Blockly.Msg._GET_TEXT_SUBLIST_TOOLTIP);
+    }
+}
 
 Blockly.Blocks['text_equals_starts_ends']={
 init: function() {

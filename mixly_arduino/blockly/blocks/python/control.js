@@ -70,6 +70,45 @@ Blockly.Blocks.controls_for = {
   }
 };
 
+Blockly.Blocks.controls_for_range = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_WITH)
+        .appendField(new Blockly.FieldTextInput('i'), 'VAR');
+    this.appendValueInput('FROM')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_FROM);
+    this.appendValueInput('TO')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_TO);
+    this.appendValueInput('STEP')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_STEP);
+    this.appendStatementInput('DO')
+        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_DO);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+    var thisBlock = this;
+    this.setTooltip(function() {
+      return Blockly.Msg.CONTROLS_FOR_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });
+  },
+  getVars: function() {
+    return [this.getFieldValue('VAR')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
+      this.setTitleValue(newName, 'VAR');
+    }
+  }
+};
+
 Blockly.Blocks.controls_whileUntil = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
@@ -372,16 +411,17 @@ Blockly.Blocks['controls_if_else'] = {
   }
 };
 
-Blockly.Blocks['controls_switch_case'] = {
+Blockly.Blocks['controls_try_finally'] = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
-    this.appendValueInput('IF0')
-        .setCheck([Number,Boolean])
-        .appendField('switch');
+    this.appendDummyInput('IF0')
+        // .setCheck([Number,Boolean])
+        .appendField('try');
+    this.appendStatementInput('try');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setMutator(new Blockly.Mutator(['controls_case',
-                                         'controls_default']));
+    this.setMutator(new Blockly.Mutator(['controls_except',
+                                         'controls_finally']));
     this.elseifCount_ = 0;
     this.elseCount_ = 0;
   },
@@ -414,13 +454,13 @@ Blockly.Blocks['controls_switch_case'] = {
     for (var i = 1; i <= this.elseifCount_; i++) {
       this.appendValueInput('IF' + i)
           .setCheck([Number,Boolean])
-          .appendField('case');
+          .appendField('except');
       this.appendStatementInput('DO' + i)
           .appendField('');
     }
     if (this.elseCount_) {
       this.appendStatementInput('ELSE')
-          .appendField('default');
+          .appendField('finally');
     }
   },
   /**
@@ -430,17 +470,17 @@ Blockly.Blocks['controls_switch_case'] = {
    * @this Blockly.Block
    */
   decompose: function(workspace) {
-    var containerBlock = Blockly.Block.obtain(workspace, 'controls_switch');
+    var containerBlock = Blockly.Block.obtain(workspace, 'controls_try');
     containerBlock.initSvg();
     var connection = containerBlock.getInput('STACK').connection;
     for (var i = 1; i <= this.elseifCount_; i++) {
-      var elseifBlock = Blockly.Block.obtain(workspace, 'controls_case');
+      var elseifBlock = Blockly.Block.obtain(workspace, 'controls_except');
       elseifBlock.initSvg();
       connection.connect(elseifBlock.previousConnection);
       connection = elseifBlock.nextConnection;
     }
     if (this.elseCount_) {
-      var elseBlock = Blockly.Block.obtain(workspace, 'controls_default');
+      var elseBlock = Blockly.Block.obtain(workspace, 'controls_finally');
       elseBlock.initSvg();
       connection.connect(elseBlock.previousConnection);
     }
@@ -467,11 +507,11 @@ Blockly.Blocks['controls_switch_case'] = {
     var clauseBlock = containerBlock.getInputTargetBlock('STACK');
     while (clauseBlock) {
       switch (clauseBlock.type) {
-        case 'controls_case':
+        case 'controls_except':
           this.elseifCount_++;
           var ifInput = this.appendValueInput('IF' + this.elseifCount_)
               .setCheck([Number,Boolean])
-              .appendField('case');
+              .appendField('except');
           var doInput = this.appendStatementInput('DO' + this.elseifCount_);
           doInput.appendField('');
           // Reconnect any child blocks.
@@ -482,10 +522,10 @@ Blockly.Blocks['controls_switch_case'] = {
             doInput.connection.connect(clauseBlock.statementConnection_);
           }
           break;
-        case 'controls_default':
+        case 'controls_finally':
           this.elseCount_++;
           var elseInput = this.appendStatementInput('ELSE');
-          elseInput.appendField('default');
+          elseInput.appendField('finally');
           // Reconnect any child blocks.
           if (clauseBlock.statementConnection_) {
             elseInput.connection.connect(clauseBlock.statementConnection_);
@@ -508,7 +548,7 @@ Blockly.Blocks['controls_switch_case'] = {
     var i = 1;
     while (clauseBlock) {
       switch (clauseBlock.type) {
-        case 'controls_case':
+        case 'controls_except':
           var inputIf = this.getInput('IF' + i);
           var inputDo = this.getInput('DO' + i);
           clauseBlock.valueConnection_ =
@@ -517,7 +557,7 @@ Blockly.Blocks['controls_switch_case'] = {
               inputDo && inputDo.connection.targetConnection;
           i++;
           break;
-        case 'controls_default':
+        case 'controls_finally':
           var inputDo = this.getInput('ELSE');
           clauseBlock.statementConnection_ =
               inputDo && inputDo.connection.targetConnection;
@@ -531,7 +571,7 @@ Blockly.Blocks['controls_switch_case'] = {
   }
 };
 
-Blockly.Blocks['controls_switch'] = {
+Blockly.Blocks['controls_try'] = {
   /**
    * Mutator block for if container.
    * @this Blockly.Block
@@ -539,13 +579,15 @@ Blockly.Blocks['controls_switch'] = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-        .appendField('switch');
+        .appendField('try');
     this.appendStatementInput('STACK');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
     this.contextMenu = false;
   }
 };
 
-Blockly.Blocks['controls_case'] = {
+Blockly.Blocks['controls_except'] = {
   /**
    * Mutator bolck for else-if condition.
    * @this Blockly.Block
@@ -553,14 +595,14 @@ Blockly.Blocks['controls_case'] = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-        .appendField('case');
+        .appendField('except');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.contextMenu = false;
   }
 };
 
-Blockly.Blocks['controls_default'] = {
+Blockly.Blocks['controls_finally'] = {
   /**
    * Mutator block for else condition.
    * @this Blockly.Block
@@ -568,7 +610,7 @@ Blockly.Blocks['controls_default'] = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-        .appendField('default');
+        .appendField('finally');
     this.setPreviousStatement(true);
     this.contextMenu = false;
   }
@@ -662,4 +704,42 @@ Blockly.Blocks.base_type = {
     this.setOutput(true);
     this.setTooltip(Blockly.MICROBIT_PYTHON_TYPE);
   }
+};
+
+Blockly.Blocks.controls_TypeLists = {
+    init: function() {
+        this.setColour(Blockly.Blocks.loops.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE)
+            .appendField(new Blockly.FieldDropdown([
+              [Blockly.MIXLY_MICROBIT_TYPE_INT, "int"],
+              [Blockly.MIXLY_MICROBIT_TYPE_FLOAT, "float"],
+              [Blockly.MIXLY_MICROBIT_TYPE_STRING, "str"],
+              [Blockly.MIXLY_MICROBIT_TYPE_LIST, "list"],
+              [Blockly.MIXLY_MICROBIT_TYPE_TUPLE, "tuple"],
+              [Blockly.MIXLY_MICROBIT_TYPE_DICT,"dict"],
+              [Blockly.MIXLY_MICROBIT_TYPE_SETS,"set"],
+              // [Blockly.MIXLY_MICROBIT_TYPE_IMAGE,"image"],
+              [Blockly.MIXLY_MICROBIT_TYPE_NONE,"NoneType"]]), "type");
+            //整数、浮点数、字符串、列表、元组、字典、集合、图像不太对, unfinished
+        this.setInputsInline(true);
+        this.setOutput(true);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('type');
+        var mode0 = Blockly.MICROBIT_controls_TypeLists;
+        var TOOLTIPS = {
+        'int': Blockly.MIXLY_MICROBIT_TYPE_INT,
+        'float': Blockly.MIXLY_MICROBIT_TYPE_FLOAT,
+        'str': Blockly.MIXLY_MICROBIT_TYPE_STRING,
+        'list': Blockly.MIXLY_MICROBIT_TYPE_LIST,
+        'tuple':Blockly.MIXLY_MICROBIT_TYPE_TUPLE,
+        'dict': Blockly.MIXLY_MICROBIT_TYPE_DICT,
+        'set': Blockly.MIXLY_MICROBIT_TYPE_SETS,
+        'image':Blockly.MIXLY_MICROBIT_TYPE_IMAGE,
+        'NoneType': Blockly.MIXLY_MICROBIT_TYPE_NONE
+      };
+      return mode0 + TOOLTIPS[mode];
+    });
+    }
 };
