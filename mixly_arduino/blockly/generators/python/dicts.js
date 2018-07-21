@@ -79,21 +79,17 @@ Blockly.Python.dicts_get = function() {
 };
 
 Blockly.Python.dicts_add_or_change = function(){
-  var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  var KEY = Blockly.Python.variableDB_.getName(this.getFieldValue('KEY'), Blockly.Variables.NAME_TYPE);
-  var argument = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || 'mydict';
+  var KEY = this.getFieldValue('KEY');
+  var argument = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var code=varName + "['"  + KEY + "'] = " + argument+'\n';
   return code;
 };
 
 Blockly.Python.dicts_delete = function() {
-  var dropdown_type = this.getFieldValue('TYPE');
-  var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('DICT'),
-    Blockly.Variables.NAME_TYPE);
-  //var size=window.parseFloat(this.getFieldValue('SIZE'));
+  var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || 'mydict';
   var text=this.getFieldValue('KEY');
   var code= "del "+ varName+"['" + text + "']\n";
-  //Blockly.Python.definitions_['var_declare'+varName] ="del "+ varName+"['" + text + "']\n";
   return code;
 };
 
