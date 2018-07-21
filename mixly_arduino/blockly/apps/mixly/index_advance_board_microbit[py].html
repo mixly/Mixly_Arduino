@@ -943,21 +943,25 @@ function init() {
                 </shadow>
               </value>
           </block>
-          <block type="dicts_add_change_del">
+          <block type="dicts_add_or_change">
             <value name="DICT">
               <shadow type="variables_get">
                 <field name="VAR">mydict</field>
               </shadow>
             </value>
-            
-            <value name="AT2">
+            <value name="VAR">
               <shadow type="math_number">
                 <field name="NUM">0</field>
               </shadow>
             </value>
           </block>
-          
-          <!--<block type="dicts_delete"></block>-->
+          <block type="dicts_delete">
+            <value name="DICT">
+              <shadow type="variables_get">
+                <field name="VAR">mydict</field>
+              </shadow>
+            </value>
+          </block>
           <block type="dicts_clear">
             <value name="DICT">
                 <shadow type="variables_get">
