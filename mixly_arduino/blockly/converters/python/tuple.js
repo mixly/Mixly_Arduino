@@ -20,17 +20,7 @@ pbc.assignD.get('TUPLE')['create_block'] = function (py2block, node, targets, va
 }
 
 
-pbc.globalFunctionD['len'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 1) {
-        throw new Error("Incorrect number of arguments");
-    }
-    var tupblock = py2block.convert(args[0]);
-    return [block("tuple_length", func.lineno, {}, {
-        'TUP': tupblock
-    }, {
-        "inline": "true"
-    })];
-}
+//len在text里实现
 
 //max/min在math里已实现
 

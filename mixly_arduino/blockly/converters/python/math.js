@@ -164,7 +164,6 @@ function mathMaxMin(mode) {
                     "inline": "true"
                 });
             }
-
         } else if (args.length === 1) {
             var tupblock = py2block.convert(args[0]);
             return block("tuple_max", func.lineno, {
@@ -178,7 +177,6 @@ function mathMaxMin(mode) {
             throw new Error("Incorrect number of arguments");
         }
     }
-
     return converter;
 }
 

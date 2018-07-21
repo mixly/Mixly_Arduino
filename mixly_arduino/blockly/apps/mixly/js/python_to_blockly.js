@@ -992,17 +992,30 @@ PythonToBlocks.prototype.BinOp = function(node)
     var left = node.left;
     var op = node.op;
     var right = node.right;
-    if(left._astname === "Call" && left.func.attr.v === "index"
-        && right._astname === "Num" && this.Num_value(right) === 1){
-        return block("lists_find", node.lineno, {"OP": "INDEX"}, {
-            "VAR": this.convert(left.func.value),
-            "data":this.convert(left.args[0])
-        });
-    }
+
     var opName = this.binaryOperator(op);
     var blockName = "math_arithmetic";
     if(opName == "&" || opName == "|" || opName == ">>" || opName == "<<"){
         blockName = "math_bit";
+    }
+    if(opName == "ADD"){
+        //形如str('XX') + str('XX') 或str('XX') + 'XX' 或'XX' + str('XX') 或'XX' + 'XX'
+        if(((left._astname == "Call" && this.Name_str(left.func) == "str") ||(left._astname == "Str"))
+            && ((right._astname == "Call" && this.Name_str(right.func) == "str") ||(right._astname == "Str"))){
+            if(left._astname == "Call"){
+                left = left.args[0];
+            }
+            if(right._astname == "Call"){
+                right = right.args[0];
+            }
+            return block("text_join", node.lineno, {
+                }, {
+                    "A": this.convert(left),
+                    "B": this.convert(right)
+                }, {
+                    "inline": true
+                });
+        }
     }
     return block(blockName, node.lineno, {
         "OP": this.binaryOperator(op) // TODO
@@ -1061,7 +1074,14 @@ PythonToBlocks.prototype.IfExp = function(node)
     var test = node.test;
     var body = node.body;
     var orelse = node.orelse;
-    throw new Error("Inline IF expressions are not implemented yet.");
+    return block("logic_true_or_false", node.lineno, {
+            }, {
+                'B': this.convert(body),
+                'A': this.convert(test),
+                'C': this.convert(orelse)
+            }, {
+                "inline": "true"
+            });
 }
 
 /*
@@ -1185,15 +1205,34 @@ PythonToBlocks.prototype.Compare = function(node)
     if (ops.length != 1) {
         throw new Error("Only one comparison operator is supported");
     } else if (ops[0].name == "In_" || ops[0].name == "NotIn") {
-        return block("logic_isIn", node.lineno, {
-            "OP": this.compareOperator(ops[0])
+        return block("logic_is_in", node.lineno, {
         }, {
-            "ITEM": this.convert(left),
-            "LIST": this.convert(comparators[0])
+            "A": this.convert(left),
+            "B": this.convert(comparators[0])
         }, {
             "inline": "true"
         });
     } else {
+        //处理文本模块的等于
+        //形如str('XX') == str('XX') 或str('XX') == 'XX' 或'XX' == str('XX') 或'XX' == 'XX'
+        var right = comparators[0];
+        if(((left._astname == "Call" && this.Name_str(left.func) == "str") ||(left._astname == "Str"))
+            && ((right._astname == "Call" && this.Name_str(right.func) == "str") ||(right._astname == "Str"))){
+            if(left._astname == "Call"){
+                left = left.args[0];
+            }
+            if(right._astname == "Call"){
+                right = right.args[0];
+            }
+            return block("text_equals_starts_ends", node.lineno, {
+                    "DOWHAT":"==="
+                }, {
+                    "STR1": this.convert(left),
+                    "STR2": this.convert(right)
+                }, {
+                    "inline": true
+                });
+        }
         return block("logic_compare", node.lineno, {
             "OP": this.compareOperator(ops[0])
         }, {
@@ -1612,67 +1651,37 @@ PythonToBlocks.prototype.Attribute = function(node)
  * ctx: expr_context_ty
  *
  */
-PythonToBlocks.prototype.Subscript = function(node)
-{
+PythonToBlocks.prototype.Subscript = function(node) {
     var value = node.value;
     var slice = node.slice;
     var ctx = node.ctx;
 
-    if (slice._astname == "Index"){ //渚嬪a[3]
-        if(slice.value._astname == "Str") {
-            return block("dict_get_literal", node.lineno, {
-                "ITEM": this.Str_value(slice.value)
-            }, {
-                "DICT": this.convert(value)
-            });
-        } else if (slice.value._astname == "Num") {
-            var v = slice.value.n.v;
-            var where = "FROM_START";
-            if(v >= 0){ //鍥惧舰鍧椾腑鑾峰彇绗¬1椤癸紝瀵瑰簲浠ｇ爜涓嬫爣鏄¯0
-                slice.value.n.v += 1;
-                where = "FROM_START";
-            }else{ //鍥惧舰鍧椾腑鑾峰彇鍊掓暟绗竴椤癸紝瀵瑰簲浠ｇ爜涓嬫爣鏄¯-1
-                slice.value.n.v = 0 - v;
-                where = "FROM_END";
-            }
-            if(value._astname == "Str"){ // 瀵瑰簲鏂囨湰妯″潡涓殑鑾峰彇绗琗涓瓧绗¦
-                return block("text_char_at2", node.lineno, {"WHERE":where}, {
-                    "AT": this.convert(slice.value),
-                    "VAR": this.convert(value)
-                });
-            }else { //瀵瑰簲鍒楄〃妯″潡涓殑鑾峰彇绗琗涓厓绱 
-                return block("lists_getIndex2", node.lineno, {"MODE": "GET", "WHERE": where}, {
-                    "AT": this.convert(slice.value),
-                    "VALUE": this.convert(value)
-                });
-            }
-        }
+    if (slice._astname == "Index") {
+        return block("text_char_at3", node.lineno, {}, {
+            "AT": this.convert(slice.value),
+            "VAR": this.convert(value)
+        });
     }else if(slice._astname == "Slice"){
-        var where1 = "FROM_START";
-        var where2 = "FROM_START";
-        if(slice.lower == null){
-            where1 = "FIRST";
-        }else if(slice.lower.n.v >= 0){
-            slice.lower.n.v += 1;
-            where1 = "FROM_START";
-        }else if(slice.upper.n.v < 0){
-            slice.lower.n.v = 0 - slice.lower.n.v;
-            where1 = "FROM_END";
+        var at1block;
+        var at2block;
+        if(slice.lower !== null){
+            py2block_config.pinType = "math_indexer_number";
+            at1block = this.convert(slice.lower);
+            py2block_config.pinType = null;
+        }else{
+            at1block = block("math_indexer_number", node.lineno, {"NUM": ''});
         }
-        if(slice.upper == null) {
-            where2 = "LAST"
-        }else if(slice.upper.n.v >= 0){
-            slice.upper.n.v += 1;
-            where2 = "FROM_START";
-        }else if(slice.upper.n.v < 0){
-            slice.upper.n.v = 0 - slice.upper.n.v;
-            where2 = "FROM_END";
+        if(slice.upper !== null){
+            py2block_config.pinType = "math_indexer_number";
+            at2block = this.convert(slice.upper);
+            py2block_config.pinType = null;
+        }else{
+            at2block = block("math_indexer_number", node.lineno, {"NUM": ''});
         }
-
-        return block("lists_getSublist", node.lineno, {"WHERE1": where1, "WHERE2": where2}, {
-            "AT1": this.convert(slice.lower),
+        return block("text_substring3", node.lineno, {}, {
+            "AT1": at1block,
             "AT2": this.convert(slice.upper),
-            "LIST": this.convert(value),
+            "VAR": this.convert(value),
         });
     }
 

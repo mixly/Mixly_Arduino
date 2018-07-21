@@ -16,17 +16,9 @@ pbc.assignD.get('SET')['create_block'] = function (py2block, node, targets, valu
             "@items": value.elts.length
         });
 }
-pbc.globalFunctionD['len'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 1) {
-        throw new Error("Incorrect number of arguments");
-    }
-    var argblock = py2block.convert(args[0]);
-    return block("set_length", func.lineno, {}, {
-        'SET':argblock
-    }, {
-        "inline": "true"
-    });
-}
+
+//len在text里实现
+
 pbc.objectFunctionD.get('pop')['SET'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");

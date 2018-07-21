@@ -18,3 +18,13 @@ pbc.assignD.get('List')['create_block'] = function (py2block, node, targets, val
             "@items": value.elts.length
         });
 }
+
+/*
+if(left._astname === "Call" && left.func.attr.v === "index"
+        && right._astname === "Num" && this.Num_value(right) === 1){
+        return block("lists_find", node.lineno, {"OP": "INDEX"}, {
+            "VAR": this.convert(left.func.value),
+            "data":this.convert(left.args[0])
+        });
+    }
+    */
