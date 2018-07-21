@@ -53,8 +53,7 @@ Blockly.Python.dicts_create_with = function() {
 
   var keyName = this.getFieldValue('KEY' + n);
     
-  code[n] = "'"+keyName+"':"+Blockly.Python.valueToCode(this, 'ADD' + n,
-    Blockly.Python.ORDER_NONE) || default_value;
+  code[n] = "'"+keyName+"':"+(Blockly.Python.valueToCode(this, 'ADD' + n, Blockly.Python.ORDER_NONE) || default_value);
   }
   var code = varName+'= '+ '{' + code.join(', ') + '}\n';
   //var code =''+varName+'['+size+"]"+'='+ '{' + code.join(', ') + '};\n';
