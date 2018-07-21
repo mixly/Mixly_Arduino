@@ -51,10 +51,11 @@ Blockly.Python.variables_set = function() {
   }
 
 };
-// Blockly.Python.variables_change = function () {
-//     // Variable setter.
-//     var operator = this.getFieldValue('OP');
-//     var varName = Blockly.Python.valueToCode(this, 'MYVALUE', Blockly.Python.ORDER_ASSIGNMENT);
-//     var code = '((' + operator + ')' + varName + ')';
-//     return [code, Blockly.Python.ORDER_ATOMIC];
-// };
+
+Blockly.Python.variables_change = function () {
+    // Variable setter.
+    var operator = this.getFieldValue('OP');
+    var varName = Blockly.Python.valueToCode(this, 'MYVALUE', Blockly.Python.ORDER_ASSIGNMENT);
+    var code = operator + '(' + varName + ')';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
