@@ -565,8 +565,11 @@ Blockly.Python.lists_change_to = function(){
   return [code, Blockly.Python.ORDER_ATOMIC];
 }
 
+
 Blockly.Python.list_many_input = function() {
   var text=this.getFieldValue('CONTENT');
   var code='['+text+']'
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.lists_change_to_general = Blockly.Python.lists_change_to;

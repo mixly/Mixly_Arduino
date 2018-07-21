@@ -1344,3 +1344,24 @@ Blockly.Blocks['list_many_input']= {
     this.setOutput(true);
   }
 };
+
+Blockly.Blocks['lists_change_to_general'] = {
+  init: function() {
+    var OPERATORS =
+        [
+         [Blockly.MIXLY_MICROBIT_TYPE_LIST, 'list'],
+         [Blockly.MIXLY_MICROBIT_TYPE_TUPLE, 'tuple'],
+         [Blockly.MIXLY_MICROBIT_TYPE_SETS, 'set']
+        ];
+    this.setColour(Blockly.Blocks.lists.HUE);
+    this.appendValueInput('VAR');
+    this.appendDummyInput("")
+        .appendField(Blockly.Msg.A_TO_B)
+        .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
+    var thisBlock = this;
+
+    this.setInputsInline(true);
+    this.setOutput(true);
+  }
+};
+
