@@ -330,4 +330,11 @@ Blockly.Python.math_number_base_conversion = function (a) {
   */
 };
 
-  
+Blockly.Python.math_indexer_number = function () {
+    var code = this.getFieldValue('NUM');
+    // -4.abs() returns -4 in Dart due to strange order of operation choices.
+    // -4 is actually an operator and a number.  Reflect this in the order.
+    var order = code < 0 ?
+        Blockly.Python.ORDER_UNARY_PREFIX : Blockly.Python.ORDER_ATOMIC;
+    return [code, order];
+}

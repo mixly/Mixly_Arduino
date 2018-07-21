@@ -72,6 +72,18 @@ Blockly.Python.text_char_at2 = function(a) {
     throw "Unhandled combination (lists_getIndex).";
 };
 
+Blockly.Python.text_char_at3 = function() {
+    var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
+    var at = Blockly.Python.valueToCode(this, 'AT', Blockly.Python.ORDER_ATOMIC) || 0;
+    return [str + "[" + at + "]", Blockly.Python.ORDER_ATOMIC];
+}
+
+Blockly.Python.text_random_char = function() {
+    var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
+    Blockly.Python.definitions_.import_random = "import random";
+    return ["random.choice(" + str + ")", Blockly.Python.ORDER_FUNCTION_CALL];
+}
+
 Blockly.Python.text_equals_starts_ends = function() {
   var str1 = 'str(' +(Blockly.Python.valueToCode(this, 'STR1', Blockly.Python.ORDER_ATOMIC) || '\"\"')+')';
   var str2 = 'str(' +(Blockly.Python.valueToCode(this, 'STR2', Blockly.Python.ORDER_ATOMIC) || '\"\"')+')';
@@ -134,3 +146,12 @@ Blockly.Python['text_substring2'] = function(block) {
   var code = str + '[' + at1 + ' : ' + at2 + ']';
   return [code, Blockly.Python.ORDER_MEMBER];
 };
+
+Blockly.Python['text_substring3'] = function(block) {
+    // Get sublist.
+    var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
+    var at1 = Blockly.Python.valueToCode(this, 'AT1', Blockly.Python.ORDER_ATOMIC);
+    var at2 = Blockly.Python.valueToCode(this, 'AT2', Blockly.Python.ORDER_ATOMIC);
+    var code = str + '[' + at1 + ' : ' + at2 + ']';
+    return [code, Blockly.Python.ORDER_MEMBER];
+}
