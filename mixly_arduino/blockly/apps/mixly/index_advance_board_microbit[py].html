@@ -459,6 +459,13 @@ function init() {
           </shadow>
         </value>
       </block>
+      <block type="controls_range">
+        <value name="VALUE">
+          <shadow type="factory_block_return">
+            <field name="VALUE">0,5,1</field>
+          </shadow>
+        </value>
+      </block>
       <block type="controls_forEach">
         <value name="LIST">
           <shadow type="list_many_input">
@@ -1045,6 +1052,27 @@ function init() {
         </block>
       </category>       
       <category id="catSerialPort" colour="65">
+        <block type="IO_print_inline"> 
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly</field>
+                  </shadow>
+              </value>   
+        </block>
+        <block type="IO_print">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly</field>
+                  </shadow>
+              </value>
+        </block>
+        <block type="IO_input">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">prompt</field>
+                  </shadow>
+              </value>
+        </block>
         <block type="serial_begin"></block>
         <block type="serial_print"></block>
         <block type="serial_println"></block>

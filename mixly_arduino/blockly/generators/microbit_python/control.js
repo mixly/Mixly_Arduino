@@ -131,7 +131,7 @@ Blockly.Python['controls_forEach'] = function(block) {
 Blockly.Python.base_type = function () {
     var data = Blockly.Python.valueToCode(this, 'DATA', Blockly.Python.ORDER_ATOMIC) || '1000'
     var code = 'type(' + data + ')';
-    return [code,, Blockly.Python.ORDER_ATOMIC];
+    return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.controls_TypeLists = function(){
@@ -141,3 +141,8 @@ Blockly.Python.controls_TypeLists = function(){
     return [type, Blockly.Python.ORDER_ATOMIC];
 }
 
+Blockly.Python.controls_range = function () {
+    var data = Blockly.Python.valueToCode(this, 'VALUE', Blockly.Python.ORDER_ATOMIC) || '1'
+    var code = 'range(' + data + ')';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};

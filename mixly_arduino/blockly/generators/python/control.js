@@ -198,3 +198,10 @@ Blockly.Python.controls_TypeLists = function(){
     // Blockly.Python.definitions_['func_type' + type] = code;
     return [type, Blockly.Python.ORDER_ATOMIC];
 }
+
+
+Blockly.Python.controls_range = function () {
+    var data = Blockly.Python.valueToCode(this, 'VALUE', Blockly.Python.ORDER_ATOMIC) || '1'
+    var code = 'range(' + data + ')';
+    return [code,, Blockly.Python.ORDER_ATOMIC];
+};

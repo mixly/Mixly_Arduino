@@ -743,3 +743,18 @@ Blockly.Blocks.controls_TypeLists = {
     });
     }
 };
+
+Blockly.Blocks.controls_range = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendValueInput('VALUE')
+        .setCheck(Number)
+        .appendField('range (');
+        // .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_GET_POINT_X);
+    this.appendDummyInput()
+        .appendField(')');
+    this.setInputsInline(true);
+    this.setOutput(true);
+    //this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS2);
+  }
+};
