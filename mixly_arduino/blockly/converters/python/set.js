@@ -59,6 +59,9 @@ pbc.objectFunctionD.get('difference')['SET'] =  setOperate('difference');
 
 
 pbc.objectFunctionD.get('update')['SET'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
     var objblock = py2block.convert(func.value);
     var argblock = py2block.convert(args[0]);
     return [block("set_update", func.lineno, {}, {

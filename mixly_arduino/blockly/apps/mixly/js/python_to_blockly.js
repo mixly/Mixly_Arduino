@@ -546,11 +546,21 @@ PythonToBlocks.prototype.Delete = function(/* {asdl_seq *} */ targets)
     if(targets.targets.length != 1){
         throw new Error("not implement del");
     }
-    return [block("lists_del_general", targets.lineno, {}, {
-        "TUP": this.convert(targets.targets[0])
-    }, {
-        "inline": "true"
-    })];
+    if(targets.targets[0]._astname == "Subscript"){ //del mydict['key']
+         return [block("dicts_delete", targets.lineno, {
+             "KEY":this.Str_value(targets.targets[0].slice.value)
+         }, {
+            "DICT": this.convert(targets.targets[0].value)
+        }, {
+            "inline": "true"
+        })];
+    }else {
+        return [block("lists_del_general", targets.lineno, {}, {
+            "TUP": this.convert(targets.targets[0])
+        }, {
+            "inline": "true"
+        })];
+    }
 }
 
 /*
@@ -564,26 +574,38 @@ PythonToBlocks.prototype.Assign = function(node)
     if (targets.length == 0) {
         throw new Error("Nothing to assign to!");
     } else if (targets.length == 1) {
-        if(py2block_config.ignoreS.has(this.Name_str(targets[0]))){
-            return null;
-        }
-        if(value._astname === "Call"){
-            if(value.func._astname == "Name"){
-                py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.id.v;
-            }else{
-                py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.attr.v;
+        if(targets[0]._astname == "Name") {
+            if (py2block_config.ignoreS.has(this.Name_str(targets[0]))) {
+                return null;
             }
-        } else {
-            py2block_config.objectTypeD[this.Name_str(targets[0])] = value._astname;
-        }
-        for(var key in py2block_config.assignD['dict']){
-            try {
-                var checkfunc = py2block_config.assignD['dict'][key]['check_assign'];
-                var blockfunc = py2block_config.assignD['dict'][key]['create_block'];
-                if (checkfunc(this, node, targets, value))
-                    return blockfunc(this, node, targets, value);
-            }catch (e){
+            if (value._astname === "Call") {
+                if (value.func._astname == "Name") {
+                    py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.id.v;
+                } else {
+                    py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.attr.v;
+                }
+            } else {
+                py2block_config.objectTypeD[this.Name_str(targets[0])] = value._astname;
             }
+            for (var key in py2block_config.assignD['dict']) {
+                try {
+                    var checkfunc = py2block_config.assignD['dict'][key]['check_assign'];
+                    var blockfunc = py2block_config.assignD['dict'][key]['create_block'];
+                    if (checkfunc(this, node, targets, value))
+                        return blockfunc(this, node, targets, value);
+                } catch (e) {
+                }
+            }
+        }else if(targets[0]._astname == "Subscript"){
+            return [block("dicts_add_or_change", targets.lineno, {
+                "KEY":this.Str_value(targets[0].slice.value)
+            }, {
+                "DICT": this.convert(targets[0].value),
+                "VAR": this.convert(value)
+
+            }, {
+                "inline": "true"
+            })];
         }
         return block("variables_set", node.lineno, {
             "VAR": this.Name_str(targets[0]) //targets
@@ -1663,10 +1685,18 @@ PythonToBlocks.prototype.Subscript = function(node) {
     var ctx = node.ctx;
 
     if (slice._astname == "Index") {
-        return block("text_char_at3", node.lineno, {}, {
-            "AT": this.convert(slice.value),
-            "VAR": this.convert(value)
-        });
+        if(slice.value._astname == "Str"){
+            return block("dicts_get", node.lineno, {
+                "KEY": this.Str_value(slice.value)
+            }, {
+                "DICT": this.convert(value)
+            });
+        }else {
+            return block("text_char_at3", node.lineno, {}, {
+                "AT": this.convert(slice.value),
+                "VAR": this.convert(value)
+            });
+        }
     }else if(slice._astname == "Slice"){
         var at1block;
         var at2block;
