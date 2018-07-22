@@ -110,25 +110,27 @@ Blockly.Blocks['variables_set'] = {
   * Block for basic data type change.
   * @this Blockly.Block
   */
-// Blockly.Blocks['variables_change'] = {
-//     init: function () {
-//         this.setColour(Blockly.Blocks.variables.HUE);
-//         var DATATYPES =
-//          [[Blockly.LANG_MATH_INT, 'int'],
-//           [Blockly.LANG_MATH_LONG, 'long'],
-//           [Blockly.LANG_MATH_FLOAT, 'float'],
-//           [Blockly.LANG_MATH_BOOLEAN, 'boolean'],
-//           [Blockly.LANG_MATH_BYTE, 'byte'],
-//           [Blockly.LANG_MATH_CHAR, 'char'],
-//           [Blockly.LANG_MATH_STRING, 'String']];
+Blockly.Blocks['variables_change'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.variables.HUE);
+        var DATATYPES =
+         [
+          [Blockly.MIXLY_MICROBIT_TYPE_INT, "int"],
+          [Blockly.MIXLY_MICROBIT_TYPE_FLOAT, "float"],
+          [Blockly.MIXLY_MICROBIT_TYPE_STRING, "str"],
+          [Blockly.MIXLY_MICROBIT_TYPE_LIST, "list"],
+          [Blockly.MIXLY_MICROBIT_TYPE_TUPLE, "tuple"],
+          [Blockly.MIXLY_MICROBIT_TYPE_DICT,"dict"],
+          [Blockly.MIXLY_MICROBIT_TYPE_SETS,"set"]
+          ];
        
-//         this.appendValueInput('MYVALUE')
-//              .appendField(new Blockly.FieldDropdown(DATATYPES), 'OP');
-//         // Assign 'this' to a variable for use in the tooltip closure below.
-//         this.setOutput(true);
+        this.appendValueInput('MYVALUE')
+             .appendField(new Blockly.FieldDropdown(DATATYPES), 'OP');
+        // Assign 'this' to a variable for use in the tooltip closure below.
+        this.setOutput(true);
        
-//     }
-// };
+    }
+};
 
 
 

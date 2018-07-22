@@ -7,8 +7,11 @@ goog.require('Blockly.Python');
 Blockly.Python.base_setup = function () {
     var branch = Blockly.Python.statementToCode(this, 'DO');
     branch = branch.replace(/(^\s*)|(\s*$)/g, "").replace(/\n    /g, '\n');//去除两端空格
-    if (branch) {
+    if(branch.endsWith('\n')){
         Blockly.Python.setups_['setup_setup'] = branch;
+    }
+    else{
+        Blockly.Python.setups_['setup_setup'] = branch + '\n';
     }
     return '';
 };
