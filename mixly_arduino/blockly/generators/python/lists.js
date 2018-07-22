@@ -31,7 +31,6 @@ goog.require('Blockly.Python');
 //   Blockly.Python.definitions_['var_lists'+varName] = dropdown_type+' '+varName+'['+size+']'+'='+ '{' + text + '};\n';
 //   return '';
 // };
-//ok, don't need to specify the data type in Python
 
 Blockly.Python.lists_getIndex2 = function(a) {
     var b = a.getFieldValue("MODE") || "GET",
@@ -197,6 +196,16 @@ Blockly.Python['lists_getSublist'] = function(block) {
   return [code, Blockly.Python.ORDER_MEMBER];
 };
 
+Blockly.Python['lists_getSublist3'] = function(block) {
+  // Get sublist.
+  var list = Blockly.Python.valueToCode(block, 'LIST',
+      Blockly.Python.ORDER_MEMBER) || '[]';
+  var at1 =  Blockly.Python.valueToCode(this, 'AT1', Blockly.Python.ORDER_ADDITIVE) || '0';
+  var at2 =  Blockly.Python.valueToCode(this, 'AT2', Blockly.Python.ORDER_ADDITIVE) || '0';
+  var code = list + '[' + at1 + ' : ' + at2 + ']';
+  return [code, Blockly.Python.ORDER_MEMBER];
+};
+
 Blockly.Python.lists_setIndex2 = function(block){
   var list = Blockly.Python.valueToCode(block, 'LIST',
       Blockly.Python.ORDER_MEMBER) || '[]';
@@ -265,7 +274,6 @@ Blockly.Python.lists_create_with2 = function() {
   var code = varName+' = '+ '[' + code.join(', ') + ']\n';
   return code;
 };
-//ok, don't need to specify the data type in Python
 Blockly.Python.lists_create_with_text2 = function() {
   var dropdown_type = this.getFieldValue('TYPE');
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
@@ -276,7 +284,7 @@ Blockly.Python.lists_create_with_text2 = function() {
   var code = varName+' = '+ '[' + text + ']\n';
   return code;
 };
-//ok
+
 Blockly.Python.lists_getIndex = function() {
   // Indexing into a list is the same as indexing into a string.
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
@@ -293,7 +301,15 @@ Blockly.Python.lists_getIndex = function() {
   var code=varName+'['+argument0+']';
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
-//ok
+
+Blockly.Python.lists_getIndex3 = function() {
+  // Indexing into a list is the same as indexing into a string.
+  var list = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_ADDITIVE) || 'mylist';
+  var argument0 = Blockly.Python.valueToCode(this, 'AT', Blockly.Python.ORDER_ADDITIVE) || 0;
+  var code = list +'['+argument0+']';
+  return [code,Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python.lists_setIndex = function() {
   // Set element at index.
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
@@ -312,20 +328,39 @@ Blockly.Python.lists_setIndex = function() {
   }
   return varName + '[' + argument0 + '] = ' + argument2 + '\n';
 };
-//ok
+
+Blockly.Python.lists_setIndex3 = function() {
+  // Set element at index.
+  var varName = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_ADDITIVE) || 'mylist';
+  var argument0 = Blockly.Python.valueToCode(this, 'AT',
+    Blockly.Python.ORDER_ADDITIVE) || '0';
+  var argument2 = Blockly.Python.valueToCode(this, 'TO',
+    Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  // Blockly uses one-based indicies.
+  return varName + '[' + argument0 + '] = ' + argument2 + '\n';
+};
+
 Blockly.Python.lists_length = function() {
   var varName = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var code='len(' +varName + ')';
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
-//ok
+
 Blockly.Python.lists_append = function(){
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
   var argument = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var code=varName + '.append('  + argument + ')\n';
   return code;
 };
-//ok
+
+Blockly.Python.lists_append_extend = function(){
+  var varName = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_MEMBER) || 'mylist';
+  var argument = Blockly.Python.valueToCode(this, 'DATA', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var op = this.getFieldValue('OP');
+  var code=varName + '.' + op + '('  + argument + ')\n';
+  return code;
+};
+
 Blockly.Python.lists_extend = function(){
   var varName1 = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var varName2 = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT) || '0';
@@ -342,25 +377,24 @@ Blockly.Python.lists_append_remove = function(){
 };
 Blockly.Python.lists_get_random_item = function() {
   Blockly.Python.definitions_['import_random'] = 'import random';
-  var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
-    Blockly.Variables.NAME_TYPE);
+  var varName = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_MEMBER) || 'mylist';
   var code='random.choice(' +varName + ')';
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
-//ok
+
 Blockly.Python.lists_push = function(){
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
   var argument = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var code=varName + '.append('  + argument + ')\n';
   return code;
 };
-//ok
+
 Blockly.Python.lists_get_remove_last = function(){
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
   var code=varName + '.pop()';
   return [code, Blockly.Python.ORDER_ATOMIC];
 }
-//ok
+
 Blockly.Python.lists_insert_value = function(){
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
   var at = Blockly.Python.valueToCode(this, 'AT', Blockly.Python.ORDER_ADDITIVE) || '0';
@@ -369,7 +403,16 @@ Blockly.Python.lists_insert_value = function(){
   var code=varName + '.insert('  + at + ', ' + to + ')\n';
   return code;
 };
-//ok
+
+Blockly.Python.lists_insert_value2 = function(){
+  var varName = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_MEMBER) || 'mylist';
+  var at = Blockly.Python.valueToCode(this, 'AT', Blockly.Python.ORDER_ADDITIVE) || '0';
+  var VALUE = Blockly.Python.valueToCode(this, 'VALUE', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var code=varName + '.insert('  + at + ', ' + VALUE + ')\n';
+  return code;
+};
+
+
 Blockly.Python.lists_reverse = function(){
   var varName = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var code=varName + '.reverse()\n';
@@ -393,7 +436,7 @@ Blockly.Python.lists_clear = function(){
 //   return [code, Blockly.Python.ORDER_ATOMIC];
 // }
 
-//ok
+
 Blockly.Python.lists_find = function(){
   var op = this.getFieldValue('OP');
   var varName = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
@@ -404,7 +447,7 @@ Blockly.Python.lists_find = function(){
     var code = varName + '.count('  + argument + ')';
   return [code, Blockly.Python.ORDER_ATOMIC];
 }
-//ok
+
 Blockly.Python.lists_remove_at= function(){
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
   var argument = Blockly.Python.valueToCode(this, 'AT', Blockly.Python.ORDER_ASSIGNMENT) || '0';
@@ -413,6 +456,25 @@ Blockly.Python.lists_remove_at= function(){
   return [code, Blockly.Python.ORDER_ATOMIC];
 }
 
+Blockly.Python.lists_remove_at2 = function(){
+  var varName = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_MEMBER) || 'mylist';
+  var argument = Blockly.Python.valueToCode(this, 'DATA', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var op = this.getFieldValue('OP');
+  var code = "";
+  if(op == "del"){
+      code = 'del ' + varName + '['  + argument + ']\n';
+  }else{
+      code = varName + '.remove' + '('  + argument + ')\n';
+  }
+  return code;
+};
+
+Blockly.Python.lists_pop = function(){
+  var varName = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_MEMBER) || 'mylist';
+  var argument = Blockly.Python.valueToCode(this, 'VALUE', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var code = varName + '.pop('  + argument + ')';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+}
 
 Blockly.Python.list_trig = function (a) {
   var b = a.getFieldValue("OP"), c;
