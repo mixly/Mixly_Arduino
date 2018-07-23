@@ -21,7 +21,7 @@ function numConvert(mode) {
         }, {
             'VAR': paramblock,
         }, {
-            "inline": "true"
+            "inline": "false"
         });
     }
     return converter;

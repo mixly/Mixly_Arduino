@@ -169,6 +169,9 @@ function getStrength(mode) {
 
 pbc.moduleFunctionD.get('compass')['get_field_strength'] = getStrength('strength');
 pbc.moduleFunctionD.get('compass')['heading'] = getStrength('heading');
+pbc.moduleFunctionD.get('compass')['get_x'] = getStrength('get_x');
+pbc.moduleFunctionD.get('compass')['get_y'] = getStrength('get_y');
+pbc.moduleFunctionD.get('compass')['get_z'] = getStrength('get_z');
 
 
 pbc.moduleFunctionD.get('compass')['clear_calibration'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
