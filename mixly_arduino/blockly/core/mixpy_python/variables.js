@@ -118,6 +118,11 @@ Blockly.Variables.flyoutCategory = function(workspace) {
           block.setAttribute('type', 'variables_change');
           xmlList.push(block);
       }*/
+  if (Blockly.Blocks['variables_change']) {
+      var block = goog.dom.createDom('block');
+      block.setAttribute('type', 'variables_change');
+      xmlList.push(block);
+  }
   for (var i = 0; i < variableList.length; i++) {
     // alert(variableList)
     // if(i==0&& !(Blockly.Python.setups_['variables_set'+''])){
