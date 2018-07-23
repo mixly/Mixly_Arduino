@@ -7,8 +7,6 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.system.HUE = 120;
 
-
-
 Blockly.Blocks.base_delay = {
   init: function() {
     this.setColour(Blockly.Blocks.system.HUE);
@@ -19,30 +17,6 @@ Blockly.Blocks.base_delay = {
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_DELAY);
-  }
-};
-
-Blockly.Blocks.Panic_with_status_code = {
-  init: function() {
-    this.setColour(Blockly.Blocks.system.HUE);
-    this.appendValueInput("STATUS_CODE", Number)
-        .appendField(Blockly.MIXLY_MICROBIT_Panic_with_status_code)
-        .setCheck(Number);
-    this.setPreviousStatement(true, null);
-    // this.setNextStatement(true, null);
-    this.setInputsInline(true);
-    this.setTooltip(Blockly.MIXLY_MICROBIT_Panic_with_status_code);
-  }
-};
-
-Blockly.Blocks.reset = {
-  init: function() {
-    this.setColour(Blockly.Blocks.system.HUE);
-    this.appendDummyInput()
-      .appendField(Blockly.MIXLY_MICROBIT_Reset_micro);
-    this.setPreviousStatement(true);
-    // this.setNextStatement(true);
-    this.setTooltip(Blockly.MIXLY_MICROBIT_Reset_micro);
   }
 };
 
@@ -58,20 +32,30 @@ Blockly.Blocks.controls_millis = {
 };
 
 
-Blockly.Blocks['raw_block'] = {
-  // Container.
+Blockly.Blocks.Panic_with_status_code = {
   init: function() {
     this.setColour(Blockly.Blocks.system.HUE);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.appendDummyInput()
-        .appendField('Code Block:');
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldTextArea('12345'), 'TEXT');
+    this.appendValueInput("STATUS_CODE", Number)
+        .appendField(Blockly.MIXLY_MICROBIT_Panic_with_status_code)
+        .setCheck(Number);
+    this.setPreviousStatement(true, null);
+    // this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_MICROBIT_Panic_with_status_code);
   }
 };
 
 
+Blockly.Blocks.reset = {
+  init: function() {
+    this.setColour(Blockly.Blocks.system.HUE);
+    this.appendDummyInput()
+      .appendField(Blockly.MIXLY_MICROBIT_Reset_micro);
+    this.setPreviousStatement(true);
+    // this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_MICROBIT_Reset_micro);
+  }
+};
 
 
 Blockly.Blocks.controls_uname = {
