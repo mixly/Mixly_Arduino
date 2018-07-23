@@ -220,6 +220,17 @@ pbc.globalFunctionD['int'] = function (py2block, func, args, keywords, starargs,
         var paramblock = py2block.convert(args[0]);
         if (args[0]._astname == "Call" && py2block.Name_str(args[0].func) == "str") {
             paramblock = py2block.convert(args[0].args[0]);
+        }else if(args[0]._astname == "Call" && py2block.Name_str(args[0].func) == "input"){
+            if(pbc.board == pbc.MIXPY) {
+                paramblock = py2block.convert(args[0].args[0]);
+                return block("inout_type_input", func.lineno, {
+                    "DIR": "int"
+                }, {
+                    'VAR': paramblock
+                }, {
+                    "inline": "true"
+                });
+            }
         }
         return block("text_to_number", func.lineno, {
             'TOWHAT': "int"

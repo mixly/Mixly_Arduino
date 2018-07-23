@@ -13,6 +13,17 @@ function numConvert(mode) {
         var paramblock = py2block.convert(args[0]);
         if (args[0]._astname == "Call" && py2block.Name_str(args[0].func) == "str") {
             paramblock = py2block.convert(args[0].args[0]);
+        }else if(args[0]._astname == "Call" && py2block.Name_str(args[0].func) == "input"){
+            if(pbc.board == pbc.MIXPY) {
+                paramblock = py2block.convert(args[0].args[0]);
+                return block("inout_type_input", func.lineno, {
+                    "DIR": "float"
+                }, {
+                    'VAR': paramblock
+                }, {
+                    "inline": "true"
+                });
+            }
         }
         return block("text_to_number", func.lineno, {
             'TOWHAT': mode
@@ -24,6 +35,7 @@ function numConvert(mode) {
     }
     return converter;
 }
+
 pbc.globalFunctionD['float'] = numConvert('float');
 pbc.globalFunctionD['bytes'] = numConvert('b');
 

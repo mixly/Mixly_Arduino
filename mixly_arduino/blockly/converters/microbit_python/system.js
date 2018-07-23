@@ -1,5 +1,21 @@
 'use strict';
 
+//microbit[py]的停止程序
+pbc.whileStatementD.get('while_stop_program')['check_condition'] = function (py2block, node, test, body, orelse) {
+    if (test._astname == "Name" && py2block.Name_str(test) == "True"
+        && body.length == 1 && body[0]._astname == "Pass") {
+        return true;
+    }
+    return false;
+}
+
+pbc.whileStatementD.get('while_stop_program')['create_block'] = function (py2block, node, test, body, orelse) {
+    return [block("controls_end_program", node.lineno, {}, {}, {
+        "inline": "true"
+    })];
+}
+
+
 pbc.globalFunctionD['sleep'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 1) {
         throw new Error("Incorrect number of arguments");
