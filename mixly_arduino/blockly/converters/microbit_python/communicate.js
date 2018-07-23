@@ -1,16 +1,6 @@
 'use strict';
 var pbc = Py2blockConfig.prototype;
 
-//radio.RATE_2MBIT
-for (var i = 0; i < profile.default.radio_datarate.length; i++) {
-    pbc.moduleAttrD.get('radio')[profile.default.radio_datarate[i][1]] = function (node, module, attr) {
-        return block("pins_radio_datarate", node.lineno, {
-            "PIN": attr
-        });
-    }
-}
-
-
 pbc.moduleFunctionD.get('radio')['on'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");

@@ -1,4 +1,4 @@
-var pbc = Py2blockConfig.prototype;
+'use strict';
 
 pbc.assignD.get('SET')['check_assign'] = function (py2block, node, targets, value) {
     if (value._astname === "Set")

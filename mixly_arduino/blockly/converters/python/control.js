@@ -1,7 +1,5 @@
 'use strict';
 
-var pbc = Py2blockConfig.prototype;
-
 pbc.whileStatementD.get('while_stop_program')['check_condition'] = function (py2block, node, test, body, orelse) {
     if (test._astname == "Name" && py2block.Name_str(test) == "True"
         && body.length == 1 && body[0]._astname == "Pass") {

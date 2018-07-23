@@ -1,7 +1,5 @@
 'use strict';
 
-var pbc = Py2blockConfig.prototype;
-
 pbc.globalFunctionD['print'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length === 1 && keywords.length === 1) {
         var argblock = py2block.convert(args[0]);

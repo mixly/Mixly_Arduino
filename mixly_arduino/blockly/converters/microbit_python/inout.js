@@ -1,6 +1,5 @@
 'use strict';
 
-var pbc = Py2blockConfig.prototype;
 
 pbc.objectFunctionD.get('write_digital')['NUMBER'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {

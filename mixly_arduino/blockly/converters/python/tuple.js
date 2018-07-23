@@ -1,7 +1,5 @@
 'use strict';
 
-var pbc = Py2blockConfig.prototype;
-
 pbc.assignD.get('TUPLE')['check_assign'] = function (py2block, node, targets, value) {
     if (value._astname === "Tuple")
         return true;

@@ -1,8 +1,5 @@
 'use strict';
 
-var pbc = Py2blockConfig.prototype;
-
-
 pbc.globalFunctionD['sleep'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 1) {
         throw new Error("Incorrect number of arguments");

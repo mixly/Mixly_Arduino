@@ -1,6 +1,5 @@
 'use strict';
 
-var pbc = Py2blockConfig.prototype;
 pbc.assignD.get('FILE')['check_assign'] = function(py2block, node, targets, value) {
     var funcName = py2block.Name_str(value.func);
     if(value._astname === "Call" && funcName === "open" && value.args.length === 2)

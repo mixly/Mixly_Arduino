@@ -1,7 +1,5 @@
 'use strict';
 
-var pbc = Py2blockConfig.prototype;
-
 //01."text" 在 python_to_blockly.js实现
 
 //02.str('Hello') + str('Mixly') 在 python_to_blockly.js实现

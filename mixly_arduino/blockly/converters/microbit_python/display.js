@@ -1,26 +1,5 @@
 'use strict';
 
-var pbc = Py2blockConfig.prototype;
-var ignoreL = ["LCD1602", "LCD_I2C_ADDR", "OLED12864_I2C","mixly_rgb_show", "oled", "mixly_oled_text"];
-for(var i = 0 ; i < ignoreL.length; i ++){
-    pbc.ignoreS.add(ignoreL[i]);
-}
-for (var i = 0; i < profile.default.builtinimg.length; i++) {
-    pbc.moduleAttrD.get('Image')[profile.default.builtinimg[i][0]] = function (node, module, attr) {
-        return block("pins_builtinimg", node.lineno, {
-            "PIN": module + "." + attr
-        });
-    }
-}
-
-for (var i = 0; i < profile.default.imglist.length; i++) {
-    pbc.moduleAttrD.get('Image')[profile.default.imglist[i][0]] = function (node, module, attr) {
-        return block("pins_imglist", node.lineno, {
-            "PIN": module + "." + attr
-        });
-    }
-}
-//
 function show_or_scroll(blockid1, blockid2) {
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
         if (args.length === 1 && keywords.length === 4) {//Image.ALL_CLOCKS, delay=120, wait=True, loop=False, clear=False
@@ -98,7 +77,7 @@ pbc.globalFunctionD['Image'] = function (py2block, func, args, keywords, stararg
         temptext = tempblock.split(':');
 
         if (temptext.length == 5) {
-            for (i = 0; i < 5; i++) {
+            for (var i = 0; i < 5; i++) {
                 if (temptext[i].length == 5) {
                     flag++;
                 }

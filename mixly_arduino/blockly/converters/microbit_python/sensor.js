@@ -1,12 +1,5 @@
 'use strict';
 
-var pbc = Py2blockConfig.prototype;
-var ignoreL = ['HCSR04', 'sonar', 'DS1307', 'DS1307_I2C_ADDRESS', 'DS1307_REG_SECOND', 'DS1307_REG_MINUTE',
-    'DS1307_REG_HOUR', 'DS1307_REG_WEEKDAY', 'DS1307_REG_DAY', 'DS1307_REG_MONTH', 'DS1307_REG_YEAR',
-    'DS1307_REG_CTRL', 'DS1307_REG_RAM'];
-for (var i = 0; i < ignoreL.length; i++) {
-    pbc.ignoreS.add(ignoreL[i]);
-}
 pbc.objectFunctionD.get('is_pressed')['NUMBER'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");

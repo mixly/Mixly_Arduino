@@ -1,12 +1,5 @@
 'use strict';
 
-var pbc = Py2blockConfig.prototype;
-var ignoreL = ['lists_sort', 'math_mean', 'math_median', 'math_modes', 'math_standard_deviation'];
-for (var i = 0; i < ignoreL.length; i++) {
-    pbc.ignoreS.add(ignoreL[i]);
-}
-
-
 pbc.assignD.get('List')['check_assign'] = function (py2block, node, targets, value) {
     if (value._astname === "List")
         return true;

@@ -229,10 +229,10 @@ PythonToBlocks.prototype.convertBody = function(node, is_top_level) {
         previousHeight = height;
 
         // Handle top-level expression blocks
-        if ((is_top_level || (py2block_config.isMicrobitpy && this.levelIndex <= 2)) && newChild.constructor == Array) {
+        if (is_top_level && newChild.constructor == Array) {
             addPeer(newChild[0]);
             // Handle skipped line
-        } else if ((is_top_level || (py2block_config.isMicrobitpy && this.levelIndex <= 2)) && skipped_line && visitedFirstLine) {
+        } else if (is_top_level && skipped_line && visitedFirstLine) {
             addPeer(newChild);
             // Otherwise, always embed it in there.
         } else {
@@ -352,14 +352,6 @@ function block(type, lineNumber, fields, values, settings, mutations, statements
 }
 
 raw_block = function(txt) {
-    // TODO: lineno as second parameter!
-    if(py2block_config.isMicrobitpy) {
-        var ret = "";
-        var txt_arr = txt.replace("while True:\n", "").split('\n');
-        for (var i = 0 ; i < txt_arr.length; i ++)
-            ret += txt_arr[i].replace(/^\ \ \ \ /g, "") + "\n";
-        txt = ret;
-    }
     return block("raw_block", 0, { "TEXT": txt });
 }
 
@@ -751,9 +743,6 @@ PythonToBlocks.prototype.While = function(node, is_top_level) {
         // TODO
         throw new Error("Or-else block of While is not implemented.");
     }
-    if(py2block_config.isMicrobitpy && is_top_level){
-        return this.convertBody(body);
-    }
     return block("controls_whileUntil", node.lineno, {}, {
         "BOOL": this.convert(test)
     }, {}, {}, {
@@ -1102,7 +1091,6 @@ PythonToBlocks.prototype.BoolOp = function(node) {
 }
 
 PythonToBlocks.prototype.binaryOperator = function(op) {
-    console.log(op);
     switch (op.name) {
         case "Add": return "ADD";
         case "Sub": return "MINUS";

@@ -1,12 +1,5 @@
 'use strict';
 
-var pbc = Py2blockConfig.prototype;
-
-var ignoreL = ['mixly_mapping'];
-for (var i = 0; i < ignoreL.length; i++) {
-    pbc.ignoreS.add(ignoreL[i]);
-}
-
 function mathTrigonometric(mode) {
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
         if (args.length != 1) {

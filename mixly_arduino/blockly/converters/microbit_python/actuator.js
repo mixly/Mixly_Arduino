@@ -1,22 +1,5 @@
 'use strict';
 
-var pbc = Py2blockConfig.prototype;
-
-
-var ignoreL = ['Servo', 'class_servo', 'mixly_servo_write_angle'];
-for (var i = 0; i < ignoreL.length; i++) {
-    pbc.ignoreS.add(ignoreL[i]);
-}
-
-for (var i = 0; i < profile.default.pwm.length; i++) {
-    pbc.moduleAttrD.get('pin')[profile.default.pwm[i][1]] = function (node, module, attr) {
-        return block("pins_pwm", node.lineno, {
-            "PIN": attr
-        });
-    }
-}
-
-
 pbc.globalFunctionD['mixly_servo_write_angle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 3) {
         throw new Error("Incorrect number of arguments");
