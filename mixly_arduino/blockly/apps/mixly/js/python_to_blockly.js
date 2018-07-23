@@ -858,7 +858,44 @@ PythonToBlocks.prototype.TryExcept = function(node)
     var body = node.body;
     var handlers = node.handlers;
     var orelse = node.orelse;
-    throw new Error("TryExcept not implemented");
+
+    var IF_values = {};
+    var DO_values = {"try": this.convertBody(body)};
+
+    var elseifCount = 0;
+    var elseCount = 0;
+    var potentialElseBody = null;
+
+    // Handle weird orelse stuff
+    for(var i = 0 ; i < handlers.length ; i ++){
+        var h = handlers[i];
+        var ifkey = "IF" + (i + 1);
+        var dokey = "DO" + (i + 1);
+        if(h.type != null) {
+            if(h.name == null){
+                IF_values[ifkey] = this.convert(h.type);
+            }else{
+                var heights = this.getChunkHeights(h.type);
+                var extractedSource = this.getSourceCode(arrayMin(heights), arrayMax(heights));
+                var text = extractedSource.substring(h.type.col_offset).replace(":", "");
+                IF_values[ifkey] = block("factory_block_return", node.lineno, {
+                    'VALUE':text
+                }, {});
+            }
+        }else{
+            IF_values[ifkey] = null;
+        }
+        DO_values[dokey] = this.convertBody(h.body);
+        elseifCount ++;
+    }
+
+    return block("controls_try_finally", node.lineno, {
+        }, IF_values, {
+            "inline": "false"
+        }, {
+            "@elseif": elseifCount,
+            "@else": elseCount
+        }, DO_values);
 }
 
 /*
@@ -870,7 +907,55 @@ PythonToBlocks.prototype.TryFinally = function(node)
 {
     var body = node.body;
     var finalbody = node.finalbody;
-    throw new Error("TryExcept not implemented");
+
+    if(body.length != 1){
+        throw new Error("TryExcept not implemented");
+    }
+
+    var handlers = body[0].handlers;
+    var orelse = body[0].orelse;
+    body = body[0].body;
+
+    var IF_values = {};
+    var DO_values = {
+        "try": this.convertBody(body),
+        "ELSE": this.convertBody(finalbody)
+    };
+
+    var elseifCount = 0;
+    var elseCount = 1;
+    var potentialElseBody = null;
+
+    // Handle weird orelse stuff
+    for(var i = 0 ; i < handlers.length ; i ++){
+        var h = handlers[i];
+        var ifkey = "IF" + (i + 1);
+        var dokey = "DO" + (i + 1);
+        if(h.type != null) {
+            if(h.name == null){
+                IF_values[ifkey] = this.convert(h.type);
+            }else{
+                var heights = this.getChunkHeights(h.type);
+                var extractedSource = this.getSourceCode(arrayMin(heights), arrayMax(heights));
+                var text = extractedSource.substring(h.type.col_offset).replace(":", "");
+                IF_values[ifkey] = block("factory_block_return", node.lineno, {
+                    'VALUE':text
+                }, {});
+            }
+        }else{
+            IF_values[ifkey] = null;
+        }
+        DO_values[dokey] = this.convertBody(h.body);
+        elseifCount ++;
+    }
+
+    return block("controls_try_finally", node.lineno, {
+        }, IF_values, {
+            "inline": "false"
+        }, {
+            "@elseif": elseifCount,
+            "@else": elseCount
+        }, DO_values);
 }
 
 /*
