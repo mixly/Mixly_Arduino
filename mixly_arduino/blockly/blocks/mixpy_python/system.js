@@ -7,16 +7,6 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.system.HUE = 120;
 
-// Blockly.Blocks.base_setup = {
-//   init: function() {
-//     this.setColour(Blockly.Blocks.system.HUE);
-//     this.appendDummyInput()
-// 	    .appendField(Blockly.MIXLY_SETUP);
-// 	this.appendStatementInput('DO')
-//         .appendField('');
-// 	this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_SETUP);
-//   }
-// };
 
 Blockly.Blocks.base_delay = {
   init: function() {
@@ -28,6 +18,16 @@ Blockly.Blocks.base_delay = {
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_DELAY);
+  }
+};
+
+Blockly.Blocks.controls_millis = {
+  init: function() {
+    this.setColour(Blockly.Blocks.system.HUE);
+    this.appendDummyInput()
+	    .appendField(Blockly.blockpy_time_time);
+    this.setOutput(true, Number);
+	this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MILLIS);
   }
 };
 
@@ -54,15 +54,7 @@ Blockly.Blocks.reset = {
   }
 };
 
-Blockly.Blocks.controls_millis = {
-  init: function() {
-    this.setColour(Blockly.Blocks.system.HUE);
-    this.appendDummyInput()
-	    .appendField(Blockly.blockpy_time_time);
-    this.setOutput(true, Number);
-	this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MILLIS);
-  }
-};
+
 
 Blockly.Blocks.controls_mstimer2 = {
   init: function() {
@@ -103,11 +95,4 @@ Blockly.Blocks.controls_mstimer2_stop = {
   }
 };
 
-// Blockly.Blocks.controls_end_program = {
-//   init: function() {
-//     this.setColour(Blockly.Blocks.system.HUE);
-//     this.appendDummyInput()
-// 	    .appendField(Blockly.MIXLY_CONTROL_END_PROGRAM);
-// 	this.setPreviousStatement(true);
-//   }
-// };
+
