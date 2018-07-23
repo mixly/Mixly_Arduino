@@ -547,13 +547,26 @@ PythonToBlocks.prototype.Delete = function(/* {asdl_seq *} */ targets)
         throw new Error("not implement del");
     }
     if(targets.targets[0]._astname == "Subscript"){ //del mydict['key']
-         return [block("dicts_delete", targets.lineno, {
-             "KEY":this.Str_value(targets.targets[0].slice.value)
-         }, {
-            "DICT": this.convert(targets.targets[0].value)
-        }, {
-            "inline": "true"
-        })];
+        var valueAstname = targets.targets[0].slice.value._astname;
+        if(valueAstname == "Str") {
+            return [block("dicts_delete", targets.lineno, {
+                "KEY":this.Str_value(targets.targets[0].slice.value)
+            }, {
+                "DICT": this.convert(targets.targets[0].value)
+            }, {
+                "inline": "true"
+            })];
+        }else{
+            return [block("lists_remove_at2", targets.lineno, {
+                "OP":'del'
+            }, {
+                "LIST": this.convert(targets.targets[0].value),
+                "DATA": this.convert(targets.targets[0].slice.value),
+            }, {
+                "inline": "true"
+            })];
+        }
+
     }else {
         return [block("lists_del_general", targets.lineno, {}, {
             "TUP": this.convert(targets.targets[0])
@@ -597,15 +610,26 @@ PythonToBlocks.prototype.Assign = function(node)
                 }
             }
         }else if(targets[0]._astname == "Subscript"){
-            return [block("dicts_add_or_change", targets.lineno, {
-                "KEY":this.Str_value(targets[0].slice.value)
-            }, {
-                "DICT": this.convert(targets[0].value),
-                "VAR": this.convert(value)
+            var valueAstname = targets[0].slice.value._astname;
+            if(valueAstname == "Str") {
+                return [block("dicts_add_or_change", targets.lineno, {
+                    "KEY": this.Str_value(targets[0].slice.value)
+                }, {
+                    "DICT": this.convert(targets[0].value),
+                    "VAR": this.convert(value)
+                }, {
+                    "inline": "true"
+                })];
+            }else{
+                return [block("lists_setIndex3", targets.lineno, {}, {
+                    "LIST": this.convert(targets[0].value),
+                    "AT": this.convert(targets[0].slice.value),
+                    "TO": this.convert(value)
 
-            }, {
-                "inline": "true"
-            })];
+                }, {
+                    "inline": "true"
+                })];
+            }
         }
         return block("variables_set", node.lineno, {
             "VAR": this.Name_str(targets[0]) //targets
@@ -1610,6 +1634,10 @@ PythonToBlocks.prototype.Num = function(node)
         if(nVal == 1 || nVal == 0) {
             return block("inout_highlow", node.lineno, {"BOOL": (nVal == 1 ? "HIGH" : "LOW")});
         }
+    }else if(py2block_config.pinType == "math_indexer_number"){
+        return block(py2block_config.pinType, node.lineno, {
+            "NUM": nVal
+        });
     }else if(py2block_config.pinType != null){
         return block(py2block_config.pinType, node.lineno, {
             "PIN": nVal
@@ -1692,9 +1720,9 @@ PythonToBlocks.prototype.Subscript = function(node) {
                 "DICT": this.convert(value)
             });
         }else {
-            return block("text_char_at3", node.lineno, {}, {
+            return block("lists_getIndex3", node.lineno, {}, {
                 "AT": this.convert(slice.value),
-                "VAR": this.convert(value)
+                "LIST": this.convert(value)
             });
         }
     }else if(slice._astname == "Slice"){
@@ -1714,10 +1742,10 @@ PythonToBlocks.prototype.Subscript = function(node) {
         }else{
             at2block = block("math_indexer_number", node.lineno, {"NUM": ''});
         }
-        return block("text_substring3", node.lineno, {}, {
+        return block("lists_getSublist3", node.lineno, {}, {
             "AT1": at1block,
-            "AT2": this.convert(slice.upper),
-            "VAR": this.convert(value),
+            "AT2": at2block,
+            "LIST": this.convert(value),
         });
     }
 

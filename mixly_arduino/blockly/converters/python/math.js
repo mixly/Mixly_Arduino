@@ -165,11 +165,11 @@ function mathMaxMin(mode) {
                 });
             }
         } else if (args.length === 1) {
-            var tupblock = py2block.convert(args[0]);
-            return block("tuple_max", func.lineno, {
-                'DIR': mode
+            var argblock = py2block.convert(args[0]);
+            return block("list_trig", func.lineno, {
+                'OP': mode.toUpperCase()
             }, {
-                'TUP': tupblock
+                'data': argblock
             }, {
                 "inline": "true"
             });

@@ -93,14 +93,24 @@ pbc.moduleFunctionD.get('random')['choice'] = function (py2block, func, args, ke
         throw new Error("Incorrect number of arguments");
     }
     var argblock = py2block.convert(args[0]);
+    var argAstname = args[0]._astname;
     if(args[0]._astname == "Call" && py2block.Name_str(args[0].func) == "str"){
         argblock = py2block.convert(args[0].args[0]);
+        argAstname = "Str";
     }
-    return [block('text_random_char', func.lineno, {}, {
-        'VAR':argblock
-    }, {
-        "inline": "true"
-    })];
+    if(argAstname == "Str"){
+        return block('text_random_char', func.lineno, {}, {
+            'VAR':argblock
+        }, {
+            "inline": "true"
+        });
+    }else{
+        return block('lists_get_random_item', func.lineno, {}, {
+            'LIST':argblock
+        }, {
+            "inline": "true"
+        });
+    }
 }
 
 

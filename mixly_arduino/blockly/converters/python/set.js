@@ -20,15 +20,26 @@ pbc.assignD.get('SET')['create_block'] = function (py2block, node, targets, valu
 //len在text里实现
 
 pbc.objectFunctionD.get('pop')['SET'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 0) {
+    if (args.length === 0) {
+        var popblock = py2block.convert(func.value);
+        return block("set_get_remove_last", func.lineno, {}, {
+            "SET":popblock
+        }, {
+            "inline": "true"
+        });
+    }else if(args.length === 1){
+        var objblock = py2block.convert(func.value);
+        var argblock = py2block.convert(args[0]);
+        return block("lists_pop", func.lineno, {}, {
+            "LIST":objblock,
+            "VALUE":argblock
+        }, {
+            "inline": "true"
+        });
+    }else{
         throw new Error("Incorrect number of arguments");
     }
-    var popblock = py2block.convert(func.value);
-    return [block("set_get_remove_last", func.lineno, {}, {
-        "SET":popblock
-    }, {
-        "inline": "true"
-    })];
+
 }
 
 
