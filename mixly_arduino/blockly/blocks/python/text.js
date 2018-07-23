@@ -100,7 +100,6 @@ Blockly.Blocks['text_to_number'] = {
         [[Blockly.MIXLY_TO_INT, 'int'],[Blockly.MIXLY_TO_FLOAT, 'float'],[Blockly.MIXLY_TO_BITES, 'b']];
     this.setColour(Blockly.Blocks.texts.HUE);
     this.appendValueInput('VAR')
-        .setCheck(String)
 		.appendField(new Blockly.FieldDropdown(TO_INT_FLOAT), 'TOWHAT');
 	this.setOutput(true, Number);
 	var thisBlock = this;
