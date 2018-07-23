@@ -201,9 +201,8 @@ Blockly.Blocks['microbit_music_reset'] = {
 Blockly.Blocks.microbit_music_stop={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
-    this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_NOTONE_PIN)
-        .setCheck(Number);
+    this.appendValueInput("PIN")
+        .appendField(Blockly.MIXLY_NOTONE_PIN);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -351,7 +350,7 @@ Blockly.Blocks['speech_sing_easy'] = {
     }
 };
 
-Blockly.Blocks['speech_prenounce_easy'] = {
+Blockly.Blocks['speech_pronounce_easy'] = {
     init: function () {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput('VAR')

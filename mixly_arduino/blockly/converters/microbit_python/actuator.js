@@ -101,9 +101,11 @@ pbc.moduleFunctionD.get('music')['play'] = function (py2block, func, args, keywo
         if (args[0]._astname == "Attribute" && py2block.identifier(args[0].value.id) == "music") {
             musicblock = py2block.identifier(args[0].attr);
             if (musicblock != null && pinblock != null && waitblock != null && loopblock != null) {
-                return [block("microbit_music_play_built_in", func.lineno,
-                    {'melody': musicblock, 'wait': waitblock, 'loop': loopblock},
-                    {
+                return [block("microbit_music_play_built_in", func.lineno, {
+                        'melody': musicblock,
+                        'wait': waitblock,
+                        'loop': loopblock
+                    }, {
                         'PIN': pinblock,
                     }, {
                         "inline": "true"
@@ -122,9 +124,25 @@ pbc.moduleFunctionD.get('music')['play'] = function (py2block, func, args, keywo
                 })];
             }
         }
-    }else{
-        throw new Error("Incorrect number of arguments");
+    }else if(args.length == 1 && keywords.length == 1){
+        if (args[0]._astname == "Attribute" && py2block.identifier(args[0].value.id) == "music"
+            && py2block.identifier(keywords[0].arg) == "pin") {
+            musicblock = py2block.identifier(args[0].attr);
+            var param = keywords[0];
+            var key = py2block.identifier(param.arg);
+            pbc.pinType = "pins_pwm";
+            pinblock = py2block.convert(param.value);
+            pbc.pinType = null;
+            return [block("microbit_music_play_built_in_easy", func.lineno, {
+                'melody': musicblock,
+            }, {
+                'PIN': pinblock,
+            }, {
+                "inline": "true"
+            })];
+        }
     }
+    throw new Error("Incorrect number of arguments");
 }
 
 
@@ -135,11 +153,11 @@ pbc.moduleFunctionD.get('music')['stop'] = function (py2block, func, args, keywo
     pbc.pinType = "pins_pwm";
     var argblock = py2block.convert(args[0]);
     pbc.pinType = null;
-    return block("microbit_music_stop", func.lineno, {}, {
+    return [block("microbit_music_stop", func.lineno, {}, {
         'PIN': argblock
     }, {
         "inline": "true"
-    });
+    })];
 }
 
 
@@ -204,41 +222,47 @@ pbc.moduleFunctionD.get('speech')['translate'] = function (py2block, func, args,
 
 function speechSayOrSingOrPronounce(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
-        if (args.length !== 1 || keywords.length !== 4) {//('Mixly 0.997 is great!', pitch=64, speed=72, mouth=128, throat=128)
-            throw new Error("Incorrect number of arguments");
-        }
-        var argblock = py2block.convert(args[0]);
-        var pitchblock = null;
-        var speedblock = null;
-        var mouthblock = null;
-        var throatblock = null;
-        for (var i = 0; i < keywords.length; i++) {
-            var param = keywords[i];
-            var key = py2block.identifier(param.arg);
-            if (key === 'pitch') {
-                pitchblock = py2block.convert(param.value);
-            } else if (key === 'speed') {
-                speedblock = py2block.convert(param.value);
-            } else if (key === 'mouth') {
-                mouthblock = py2block.convert(param.value);
-            } else if (key === 'throat') {
-                throatblock = py2block.convert(param.value);
+        if (args.length === 1 && keywords.length === 4) {//('Mixly 0.997 is great!', pitch=64, speed=72, mouth=128, throat=128)
+            var argblock = py2block.convert(args[0]);
+            var pitchblock = null;
+            var speedblock = null;
+            var mouthblock = null;
+            var throatblock = null;
+            for (var i = 0; i < keywords.length; i++) {
+                var param = keywords[i];
+                var key = py2block.identifier(param.arg);
+                if (key === 'pitch') {
+                    pitchblock = py2block.convert(param.value);
+                } else if (key === 'speed') {
+                    speedblock = py2block.convert(param.value);
+                } else if (key === 'mouth') {
+                    mouthblock = py2block.convert(param.value);
+                } else if (key === 'throat') {
+                    throatblock = py2block.convert(param.value);
+                }
             }
+            if (argblock != null && pitchblock != null && speedblock != null && mouthblock != null && throatblock != null) {
+                return [block("speech_say", func.lineno, {
+                        "MODE": mode
+                    }, {
+                        'VAR': argblock,
+                        'pitch': pitchblock,
+                        'speed': speedblock,
+                        'mouth': mouthblock,
+                        'throat': throatblock
+                    }, {
+                        "inline": "true"
+                    })];
+            }
+        }else if(args.length === 1 && keywords.length === 0){
+            return [block("speech_" + mode + "_easy", func.lineno, {}, {
+                        'VAR': py2block.convert(args[0]),
+                    }, {
+                        "inline": "true"
+                    })];
+
         }
-        if (argblock != null && pitchblock != null && speedblock != null && mouthblock != null && throatblock != null) {
-            return [block("speech_say", func.lineno, {
-                    "MODE": mode
-                },
-                {
-                    'VAR': argblock,
-                    'pitch': pitchblock,
-                    'speed': speedblock,
-                    'mouth': mouthblock,
-                    'throat': throatblock
-                }, {
-                    "inline": "true"
-                })];
-        }
+        throw new Error("Incorrect number of arguments");
     }
     return converter;
 }

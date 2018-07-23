@@ -152,7 +152,7 @@ Blockly.Python.speech_sing_easy=function(){
 };
 
 
-Blockly.Python.speech_prenounce_easy=function(){
+Blockly.Python.speech_pronounce_easy=function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     Blockly.Python.definitions_['import_speech'] = 'import speech';
     var text = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
