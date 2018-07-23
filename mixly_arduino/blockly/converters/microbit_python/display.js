@@ -161,13 +161,13 @@ function imageShift(mode){
     return converter;
 }
 
-pbc.objectFunctionD.get('shift_up')['MICROBIT_IMAGE'] = imageShift('up');
-pbc.objectFunctionD.get('shift_down')['MICROBIT_IMAGE'] = imageShift('down');
-pbc.objectFunctionD.get('shift_left')['MICROBIT_IMAGE'] = imageShift('left');
-pbc.objectFunctionD.get('shift_right')['MICROBIT_IMAGE'] = imageShift('right');
+pbc.objectFunctionD.get('shift_up')['Image'] = imageShift('up');
+pbc.objectFunctionD.get('shift_down')['Image'] = imageShift('down');
+pbc.objectFunctionD.get('shift_left')['Image'] = imageShift('left');
+pbc.objectFunctionD.get('shift_right')['Image'] = imageShift('right');
 
 
-pbc.objectFunctionD.get('copy')['MICROBIT_IMAGE'] = function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('copy')['Image'] = function converter(py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -180,7 +180,7 @@ pbc.objectFunctionD.get('copy')['MICROBIT_IMAGE'] = function converter(py2block,
         });
 }
 
-pbc.objectFunctionD.get('invert')['MICROBIT_IMAGE'] = function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('invert')['Image'] = function converter(py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -292,9 +292,7 @@ pbc.moduleFunctionD.get('display')['clear'] = function (py2block, func, args, ke
 }
 
 
-
-
-pbc.assignD.get('RGB')['check_assign'] = function(py2block, node, targets, value) {
+pbc.assignD.get('Rgb')['check_assign'] = function(py2block, node, targets, value) {
     var moduleName = value.func.value.id.v;
     var funcName = value.func.attr.v;
     if(value._astname === "Call" && moduleName === "neopixel"
@@ -303,7 +301,7 @@ pbc.assignD.get('RGB')['check_assign'] = function(py2block, node, targets, value
     return false;
 }
 
-pbc.assignD.get('RGB')['create_block'] = function(py2block, node, targets, value){
+pbc.assignD.get('Rgb')['create_block'] = function(py2block, node, targets, value){
     py2block_config.pinType = "pins_digital";
     var pinblock = py2block.convert(value.args[0]);
     py2block_config.pinType = null;
@@ -332,14 +330,14 @@ pbc.globalFunctionD['mixly_rgb_show'] = function (py2block, func, args, keywords
 }
 
 
-pbc.assignD.get('LCD')['check_assign'] = function(py2block, node, targets, value) {
+pbc.assignD.get('Lcd')['check_assign'] = function(py2block, node, targets, value) {
     var className = value.func.id.v;
     if(value._astname === "Call" && className === "LCD1602" && value.args.length === 1)
         return true;
     return false;
 }
 
-pbc.assignD.get('LCD')['create_block'] = function(py2block, node, targets, value){
+pbc.assignD.get('Lcd')['create_block'] = function(py2block, node, targets, value){
     py2block_config.inScope = "lcd_init";
     var argblock = py2block.convert(value.args[0]);
     py2block_config.inScope = null;

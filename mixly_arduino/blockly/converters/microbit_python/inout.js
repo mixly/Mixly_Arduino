@@ -1,7 +1,7 @@
 'use strict';
 
 
-pbc.objectFunctionD.get('write_digital')['NUMBER'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('write_digital')['Pin'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -18,7 +18,7 @@ pbc.objectFunctionD.get('write_digital')['NUMBER'] = function(py2block, func, ar
 }
 
 
-pbc.objectFunctionD.get('read_digital')['NUMBER'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('read_digital')['Pin'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -33,7 +33,7 @@ pbc.objectFunctionD.get('read_digital')['NUMBER'] = function(py2block, func, arg
 }
 
 
-pbc.objectFunctionD.get('write_analog')['NUMBER'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('write_analog')['Pin'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -50,7 +50,7 @@ pbc.objectFunctionD.get('write_analog')['NUMBER'] = function(py2block, func, arg
 }
 
 
-pbc.objectFunctionD.get('read_analog')['NUMBER'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('read_analog')['Pin'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -65,7 +65,7 @@ pbc.objectFunctionD.get('read_analog')['NUMBER'] = function(py2block, func, args
 }
 
 
-pbc.objectFunctionD.get('set_analog_period')['NUMBER'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('set_analog_period')['Pin'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if(args.length!=1){
         throw new Error("Incorrect number of arguments");
     }
@@ -86,7 +86,7 @@ pbc.objectFunctionD.get('set_analog_period')['NUMBER'] = function(py2block, func
 }
 
 
-pbc.objectFunctionD.get('set_analog_period_microseconds')['NUMBER']= function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('set_analog_period_microseconds')['Pin']= function(py2block, func, args, keywords, starargs, kwargs, node){
     if(args.length!=1){
         throw new Error("Incorrect number of arguments");
     }
@@ -107,7 +107,7 @@ pbc.objectFunctionD.get('set_analog_period_microseconds')['NUMBER']= function(py
 }
 
 
-pbc.objectFunctionD.get('is_touched')['NUMBER'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('is_touched')['Pin'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if(args.length !==0){
         throw new Error("Incorrect number of arguments");
     }

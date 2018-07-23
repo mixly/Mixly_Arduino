@@ -49,7 +49,7 @@ pbc.globalFunctionD['math_standard_deviation'] = listTrig('STD_DEV');
 //mylist[0] = 0在python_to_blockly.js中实现
 
 
-pbc.objectFunctionD.get('insert')['LIST'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('insert')['List'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 2) {
         throw new Error("Incorrect number of arguments");
     }
@@ -83,13 +83,13 @@ function listAppendExtend(mode){
     };
     return converter;
 }
-pbc.objectFunctionD.get('append')['LIST'] = listAppendExtend('append');
-pbc.objectFunctionD.get('extend')['LIST'] = listAppendExtend('extend');
+pbc.objectFunctionD.get('append')['List'] = listAppendExtend('append');
+pbc.objectFunctionD.get('extend')['List'] = listAppendExtend('extend');
 
 
 //del mylist[0]在python_to_blockly.js中实现
 
-pbc.objectFunctionD.get('remove')['LIST'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('remove')['List'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -127,8 +127,8 @@ function listFindCount(mode){
     };
     return converter;
 }
-pbc.objectFunctionD.get('find')['LIST'] = listFindCount('INDEX');
-pbc.objectFunctionD.get('count')['LIST'] = listFindCount('COUNT');
+pbc.objectFunctionD.get('find')['List'] = listFindCount('INDEX');
+pbc.objectFunctionD.get('count')['List'] = listFindCount('COUNT');
 
 
 pbc.globalFunctionD['lists_sort'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -157,7 +157,7 @@ pbc.globalFunctionD['lists_sort'] = function (py2block, func, args, keywords, st
 }
 
 
-pbc.objectFunctionD.get('reverse')['LIST'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('reverse')['List'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -170,7 +170,7 @@ pbc.objectFunctionD.get('reverse')['LIST'] = function(py2block, func, args, keyw
 };
 
 
-pbc.objectFunctionD.get('clear')['LIST'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('clear')['List'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }

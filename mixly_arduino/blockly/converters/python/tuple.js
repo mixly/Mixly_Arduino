@@ -1,12 +1,12 @@
 'use strict';
 
-pbc.assignD.get('TUPLE')['check_assign'] = function (py2block, node, targets, value) {
+pbc.assignD.get('Tuple')['check_assign'] = function (py2block, node, targets, value) {
     if (value._astname === "Tuple")
         return true;
     return false;
 }
 
-pbc.assignD.get('TUPLE')['create_block'] = function (py2block, node, targets, value) {
+pbc.assignD.get('Tuple')['create_block'] = function (py2block, node, targets, value) {
     return block("tuple_create_with", node.lineno, {
             'VAR': py2block.Name_str(targets[0])
         },

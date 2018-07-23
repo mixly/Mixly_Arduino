@@ -1,12 +1,12 @@
 'use strict';
 
-pbc.assignD.get('SET')['check_assign'] = function (py2block, node, targets, value) {
+pbc.assignD.get('Set')['check_assign'] = function (py2block, node, targets, value) {
     if (value._astname === "Set")
         return true;
     return false;
 }
 
-pbc.assignD.get('SET')['create_block'] = function (py2block, node, targets, value) {
+pbc.assignD.get('Set')['create_block'] = function (py2block, node, targets, value) {
     return block("set_create_with", node.lineno, {
             'VAR': py2block.Name_str(targets[0])
         },
@@ -19,7 +19,7 @@ pbc.assignD.get('SET')['create_block'] = function (py2block, node, targets, valu
 
 //len在text里实现
 
-pbc.objectFunctionD.get('pop')['SET'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('pop')['Set'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length === 0) {
         var popblock = py2block.convert(func.value);
         return block("set_get_remove_last", func.lineno, {}, {
@@ -64,12 +64,12 @@ function setOperate(mode){
     return converter;
 }
 
-pbc.objectFunctionD.get('union')['SET'] = setOperate('union');
-pbc.objectFunctionD.get('intersection')['SET'] = setOperate('intersection');
-pbc.objectFunctionD.get('difference')['SET'] =  setOperate('difference');
+pbc.objectFunctionD.get('union')['Set'] = setOperate('union');
+pbc.objectFunctionD.get('intersection')['Set'] = setOperate('intersection');
+pbc.objectFunctionD.get('difference')['Set'] =  setOperate('difference');
 
 
-pbc.objectFunctionD.get('update')['SET'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('update')['Set'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -105,8 +105,8 @@ function setOperateUpdate(mode){
 
 
 
-pbc.objectFunctionD.get('difference_update')['SET'] = setOperateUpdate('difference_update');
-pbc.objectFunctionD.get('intersection_update')['SET'] = setOperateUpdate('intersection_update');
+pbc.objectFunctionD.get('difference_update')['Set'] = setOperateUpdate('difference_update');
+pbc.objectFunctionD.get('intersection_update')['Set'] = setOperateUpdate('intersection_update');
 
 
 function setAddDiscard(mode){
@@ -128,8 +128,8 @@ function setAddDiscard(mode){
     return converter;
 }
 
-pbc.objectFunctionD.get('add')['SET'] = setAddDiscard('add');
-pbc.objectFunctionD.get('discard')['SET'] = setAddDiscard('discart');
+pbc.objectFunctionD.get('add')['Set'] = setAddDiscard('add');
+pbc.objectFunctionD.get('discard')['Set'] = setAddDiscard('discart');
 
 
 function setSub(mode){
@@ -152,6 +152,6 @@ function setSub(mode){
 }
 
 
-pbc.objectFunctionD.get('issubset')['SET'] = setSub('issubset');
-pbc.objectFunctionD.get('issuperset')['SET'] = setSub('issuperset');
+pbc.objectFunctionD.get('issubset')['Set'] = setSub('issubset');
+pbc.objectFunctionD.get('issuperset')['Set'] = setSub('issuperset');
 

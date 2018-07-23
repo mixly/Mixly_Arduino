@@ -28,7 +28,7 @@ pbc.assignD.get('Dict')['create_block'] = function (py2block, node, targets, val
     });
 }
 
-pbc.objectFunctionD.get('keys')['DICT'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('keys')['Dict'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -49,7 +49,7 @@ pbc.objectFunctionD.get('keys')['DICT'] = function(py2block, func, args, keyword
 //d.clear()在lists.js中实现
 
 
-pbc.objectFunctionD.get('items')['DICT'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('items')['Dict'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -62,7 +62,7 @@ pbc.objectFunctionD.get('items')['DICT'] = function(py2block, func, args, keywor
 };
 
 
-pbc.objectFunctionD.get('values')['DICT'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('values')['Dict'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }

@@ -1,13 +1,13 @@
 'use strict';
 
-pbc.assignD.get('FILE')['check_assign'] = function(py2block, node, targets, value) {
+pbc.assignD.get('File')['check_assign'] = function(py2block, node, targets, value) {
     var funcName = py2block.Name_str(value.func);
     if(value._astname === "Call" && funcName === "open" && value.args.length === 2)
         return true;
     return false;
 }
 
-pbc.assignD.get('FILE')['create_block'] = function(py2block, node, targets, value){
+pbc.assignD.get('File')['create_block'] = function(py2block, node, targets, value){
     var mode = py2block.identifier(value.args[1].s);
 
     return block("storage_fileopen2", node.lineno, {"MODE":mode}, {
@@ -17,7 +17,7 @@ pbc.assignD.get('FILE')['create_block'] = function(py2block, node, targets, valu
 }
 
 
-pbc.objectFunctionD.get('write')['FILE'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('write')['File'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -32,7 +32,7 @@ pbc.objectFunctionD.get('write')['FILE'] = function(py2block, func, args, keywor
 }
 
 
-pbc.objectFunctionD.get('read')['FILE'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('read')['File'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -50,7 +50,7 @@ pbc.objectFunctionD.get('read')['FILE'] = function(py2block, func, args, keyword
 }
 
 
-pbc.objectFunctionD.get('readline')['FILE'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('readline')['File'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -68,7 +68,7 @@ pbc.objectFunctionD.get('readline')['FILE'] = function(py2block, func, args, key
 }
 
 
-pbc.objectFunctionD.get('writable')['FILE'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('writable')['File'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -81,7 +81,7 @@ pbc.objectFunctionD.get('writable')['FILE'] = function(py2block, func, args, key
 }
 
 
-pbc.objectFunctionD.get('name')['FILE'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('name')['File'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -94,7 +94,7 @@ pbc.objectFunctionD.get('name')['FILE'] = function(py2block, func, args, keyword
 }
 
 
-pbc.objectFunctionD.get('close')['FILE'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('close')['File'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }

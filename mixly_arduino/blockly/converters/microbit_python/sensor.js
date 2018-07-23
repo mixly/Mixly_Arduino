@@ -1,6 +1,6 @@
 'use strict';
 
-pbc.objectFunctionD.get('is_pressed')['NUMBER'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('is_pressed')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -15,7 +15,7 @@ pbc.objectFunctionD.get('is_pressed')['NUMBER'] = function (py2block, func, args
 }
 
 
-pbc.objectFunctionD.get('was_pressed')['NUMBER'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('was_pressed')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -30,7 +30,7 @@ pbc.objectFunctionD.get('was_pressed')['NUMBER'] = function (py2block, func, arg
 }
 
 
-pbc.objectFunctionD.get('get_presses')['NUMBER'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('get_presses')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }

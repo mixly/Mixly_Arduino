@@ -151,8 +151,8 @@ function startEndWithStr(mode){
     return converter;
 }
 
-pbc.objectFunctionD.get('startswith')['STR'] = startEndWithStr('startswith');
-pbc.objectFunctionD.get('endswith')['STR'] = startEndWithStr('endswith');
+pbc.objectFunctionD.get('startswith')['Str'] = startEndWithStr('startswith');
+pbc.objectFunctionD.get('endswith')['Str'] = startEndWithStr('endswith');
 
 
 // 'mixly'[0:8]这种形式的，在python_to_blockly.js中实现
