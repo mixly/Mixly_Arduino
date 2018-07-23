@@ -92,16 +92,17 @@ pbc.moduleFunctionD.get('uart')['write'] = function(py2block, func, args, keywor
             && args[0].left._astname === "Call"
             && py2block.identifier(args[0].left.func.id) === "str"
         ){
-            if(args[0].left.args[0]._astname === "Str") {//serial.write(str("XX") + "\r\n")
-                return [block("serial_println", func.lineno, {}, {
-                    "CONTENT": py2block.convert(args[0].left.args[0]),
-                }, {
-                    "inline": "false"
-                })];
-            }else if(args[0].left.args[0]._astname === "Call"
+            if(args[0].left.args[0]._astname === "Call"
+                && args[0].left.args[0].func._astname === "Name"
                 && py2block.identifier(args[0].left.args[0].func.id) === "hex"){ //serial.write(str(hex(XX)) + "\r\n")
                 return [block("serial_print_hex", func.lineno, {}, {
                     "CONTENT": py2block.convert(args[0].left.args[0].args[0]),
+                }, {
+                    "inline": "false"
+                })];
+            }else{
+                return [block("serial_println", func.lineno, {}, {  //serial.write(str("XX") + "\r\n")
+                    "CONTENT": py2block.convert(args[0].left.args[0]),
                 }, {
                     "inline": "false"
                 })];

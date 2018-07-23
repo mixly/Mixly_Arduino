@@ -160,7 +160,7 @@ function getStrength(mode) {
     return converter;
 }
 
-pbc.moduleFunctionD.get('compass')['get_field_strength'] = getStrength('strength');
+pbc.moduleFunctionD.get('compass')['get_field_strength'] = getStrength('get_field_strength');
 pbc.moduleFunctionD.get('compass')['heading'] = getStrength('heading');
 pbc.moduleFunctionD.get('compass')['get_x'] = getStrength('get_x');
 pbc.moduleFunctionD.get('compass')['get_y'] = getStrength('get_y');
