@@ -48,47 +48,21 @@ pbc.reservedNameD['dict'] = typeName();
 pbc.reservedNameD['set'] = typeName();
 pbc.reservedNameD['NoneType'] = typeName();
 
-
-pbc.forStatementD.get('for_range')['check_condition'] = function (py2block, node, target, iter, body, orelse) {
-    if (iter._astname == "Call" && py2block.Name_str(iter.func) == "mixly_range"
-        && iter.args.length == 3){
-        return true;
+pbc.globalFunctionD['range'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 3) {
+        throw new Error("Incorrect number of arguments");
     }
-    return false;
-}
-
-pbc.forStatementD.get('for_range')['create_block'] = function (py2block, node, target, iter, body, orelse) {
-    return [block("controls_for_range", node.lineno, {
-        'VAR':py2block.Name_str(target)
+    var arg1block = py2block.convert(args[0]);
+    var arg2block = py2block.convert(args[1]);
+    var arg3block = py2block.convert(args[2]);
+    return block("controls_range", func.lineno, {
     }, {
-        'FROM':py2block.convert(iter.args[0]),
-        'TO':py2block.convert(iter.args[1]),
-        'STEP':py2block.convert(iter.args[2])
+        'FROM': arg1block,
+        'TO': arg2block,
+        'STEP': arg3block
     }, {
         "inline": "true"
-    }, {}, {
-        "DO":py2block.convertBody(body)
-    })];
+    });
 }
 
-
-pbc.forStatementD.get('for_foreach')['check_condition'] = function (py2block, node, target, iter, body, orelse) {
-    if (iter._astname == "List" || iter._astname == "Name"){
-        return true;
-    }
-    return false;
-}
-
-pbc.forStatementD.get('for_foreach')['create_block'] = function (py2block, node, target, iter, body, orelse) {
-    return [block("controls_forEach", node.lineno, {
-        'VAR':py2block.Name_str(target)
-    }, {
-        'LIST':py2block.convert(iter)
-    }, {
-        "inline": "true"
-    }, {}, {
-        "DO":py2block.convertBody(body)
-    })];
-}
-
-
+//for i in ...在python_to_blockly.js中实现

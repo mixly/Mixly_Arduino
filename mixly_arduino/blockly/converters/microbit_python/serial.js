@@ -2,6 +2,40 @@
 
 var pbc = Py2blockConfig.prototype;
 
+pbc.globalFunctionD['print'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length === 1 && keywords.length === 1) {
+        var argblock = py2block.convert(args[0]);
+        return [block("IO_print_inline", func.lineno, {}, {
+            'VAR':argblock
+        }, {
+            "inline": "false"
+        })];
+    }else if (args.length === 1) {
+        var argblock = py2block.convert(args[0]);
+        return [block("IO_print", func.lineno, {}, {
+            'VAR':argblock
+        }, {
+            "inline": "false"
+        })];
+    }else{
+        throw new Error("Incorrect number of arguments");
+    }
+}
+
+
+pbc.globalFunctionD['input'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var argblock = py2block.convert(args[0]);
+    return block("IO_input", func.lineno, {}, {
+        'VAR':argblock
+    }, {
+        "inline": "false"
+    });
+}
+
+
 pbc.moduleFunctionD.get('uart')['init'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length === 0 && keywords.length === 1) { //uart.init(baudrate=9600)
         if(py2block.identifier(keywords[0].arg) === "baudrate") {

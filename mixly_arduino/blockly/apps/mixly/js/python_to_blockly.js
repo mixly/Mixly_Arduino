@@ -719,9 +719,9 @@ PythonToBlocks.prototype.For = function(node) {
     }
 
     return block("controls_forEach", node.lineno, {
+        'VAR':this.Name_str(target)
     }, {
-        "LIST": this.convert(iter),
-        "VAR": this.convert(target)
+        "LIST": this.convert(iter)
     }, {
         "inline": "true"
     }, {}, {
