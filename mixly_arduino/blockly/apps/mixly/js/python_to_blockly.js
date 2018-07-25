@@ -702,8 +702,9 @@ PythonToBlocks.prototype.For = function(node) {
         try {
             var checkfunc = py2block_config.forStatementD['dict'][key]['check_condition'];
             var blockfunc = py2block_config.forStatementD['dict'][key]['create_block'];
-            if (checkfunc(this, node, target, iter, body, orelse))
+            if (checkfunc(this, node, target, iter, body, orelse)) {
                 return blockfunc(this, node, target, iter, body, orelse);
+            }
         }catch (e){
         }
     }
@@ -1452,14 +1453,16 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
             } else {
                 throw new Error("Incorrect number of arguments to plt.plot");
             }
-        } else if ((module in PythonToBlocks.KNOWN_MODULES && name in PythonToBlocks.KNOWN_MODULES[module])
-            || (Object.keys(py2block_config.moduleFunctionD.get(module)).length != 0 && name in py2block_config.moduleFunctionD.get(module))) {
-            var definition = null;
-            if(module in PythonToBlocks.KNOWN_MODULES && name in PythonToBlocks.KNOWN_MODULES[module])
-                definition = PythonToBlocks.KNOWN_MODULES[module][name];
-            else {
+        } else if(Object.keys(py2block_config.moduleFunctionD.get(module)).length != 0
+            && name in py2block_config.moduleFunctionD.get(module)){
+            try {
                 return py2block_config.moduleFunctionD.get(module)[name](this, func, args, keywords, starargs, kwargs, node);
+            }catch(e){
+
             }
+        }else if (module in PythonToBlocks.KNOWN_MODULES && name in PythonToBlocks.KNOWN_MODULES[module]) {
+            var definition = null;
+            definition = PythonToBlocks.KNOWN_MODULES[module][name];
             var blockName = definition[0];
             var isExpression = true;
             if (blockName.charAt(0) == "*") {
@@ -1535,15 +1538,17 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
                         return py2block_config.objectFunctionD.get(name)[objtype](this, func, args, keywords, starargs, kwargs, node);
                 }
             }catch (e){
-
             }
-            if(!py2block_config.objectFunctionD.get(name)['Default']){
-                var firstKey = keys[0];
-                py2block_config.objectFunctionD.get(name)['Default'] = py2block_config.objectFunctionD.get(name)[firstKey];
+            try {
+                if (!py2block_config.objectFunctionD.get(name)['Default']) {
+                    var firstKey = keys[0];
+                    py2block_config.objectFunctionD.get(name)['Default'] = py2block_config.objectFunctionD.get(name)[firstKey];
+                }
+                return py2block_config.objectFunctionD.get(name)['Default'](this, func, args, keywords, starargs, kwargs, node);
+            }catch(e){
             }
-            return py2block_config.objectFunctionD.get(name)['Default'](this, func, args, keywords, starargs, kwargs, node);
         }
-        switch (name) {
+        /*switch (name) {
             case "append":
                 if (args.length !== 1) {
                     throw new Error("Incorrect number of arguments to .append");
@@ -1565,44 +1570,44 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
                 return block("text_trim", func.lineno, { "MODE": "RIGHT" },
                     { "TEXT": this.convert(func.value) });
             default: throw new Error("Unknown function call!");
-        }
+        }*/
     } else if (name in PythonToBlocks.KNOWN_ATTR_FUNCTIONS) {
         return PythonToBlocks.KNOWN_ATTR_FUNCTIONS[name].bind(this)(func, args, keywords, starargs, kwargs, node)
-    } else {
-        //console.log(func, args, keywords, starargs, kwargs);
-        heights = this.getChunkHeights(node);
-        extractedSource = this.getSourceCode(arrayMin(heights), arrayMax(heights));
-        var col_endoffset = node.col_endoffset;
-        if (args.length > 0) {
-            for (var i = 0; i < args.length; i+= 1) {
-                col_endoffset = args[i].col_endoffset;
-            }
-        } else {
-            col_endoffset += 2;
-            expressionCall += "()";
-        }
-        var expressionCall = extractedSource.slice(node.col_offset, 1+col_endoffset);
-        //console.log(node, extractedSource, node.col_offset, node.col_endoffset);
-        var lineno = node.lineno;
-        //console.error(e);
-        //return raw_expression(extractedSource.split("=")[1], lineno);
-
-        var argumentsNormal = {};
-        var argumentsMutation = {"@name": name};
-        for (var i = 0; i < args.length; i+= 1) {
-            argumentsNormal["ARG"+i] = this.convert(args[i]);
-            argumentsMutation[i] = this.convert(args[i]);
-        }
-        var methodCall = block("procedures_callreturn", node.lineno, {
-        }, argumentsNormal, {
-            "inline": "true"
-        }, argumentsMutation);
-
-        return block("attribute_access", node.lineno, {}, {
-            "MODULE": this.convert(func.value),
-            "NAME": methodCall
-        }, { "inline": "true"}, {});
     }
+    //兜底图形块呈现方式
+    //console.log(func, args, keywords, starargs, kwargs);
+    heights = this.getChunkHeights(node);
+    extractedSource = this.getSourceCode(arrayMin(heights), arrayMax(heights));
+    var col_endoffset = node.col_endoffset;
+    if (args.length > 0) {
+        for (var i = 0; i < args.length; i+= 1) {
+            col_endoffset = args[i].col_endoffset;
+        }
+    } else {
+        col_endoffset += 2;
+        expressionCall += "()";
+    }
+    var expressionCall = extractedSource.slice(node.col_offset, 1+col_endoffset);
+    //console.log(node, extractedSource, node.col_offset, node.col_endoffset);
+    var lineno = node.lineno;
+    //console.error(e);
+    //return raw_expression(extractedSource.split("=")[1], lineno);
+
+    var argumentsNormal = {};
+    var argumentsMutation = {"@name": name};
+    for (var i = 0; i < args.length; i+= 1) {
+        argumentsNormal["ARG"+i] = this.convert(args[i]);
+        argumentsMutation[i] = this.convert(args[i]);
+    }
+    var methodCall = block("procedures_callreturn", node.lineno, {
+    }, argumentsNormal, {
+        "inline": "true"
+    }, argumentsMutation);
+
+    return block("attribute_access", node.lineno, {}, {
+        "MODULE": this.convert(func.value),
+        "NAME": methodCall
+    }, { "inline": "true"}, {});
 }
 
 /*
@@ -1656,8 +1661,11 @@ PythonToBlocks.prototype.Call = function(node) {
                 default:
                     var funcname = this.identifier(func.id);
                     if(funcname in py2block_config.globalFunctionD){
-                        var config_block = py2block_config.globalFunctionD[funcname](this, func, args, keywords, starargs, kwargs, node);
-                        if(config_block != null) return config_block;
+                        try {
+                            var config_block = py2block_config.globalFunctionD[funcname](this, func, args, keywords, starargs, kwargs, node);
+                            if (config_block != null) return config_block;
+                        }catch(e){
+                        }
                     }
 
                     if (starargs !== null && starargs.length > 0) {
@@ -1766,7 +1774,10 @@ PythonToBlocks.prototype.Attribute = function(node)
     var attrName = this.identifier(attr);
     var attrD = py2block_config.moduleAttrD.get(valueName);
     if(attrName in attrD){
-        return attrD[attrName](node, valueName, attrName);
+        try {
+            return attrD[attrName](node, valueName, attrName);
+        }catch(e){
+        }
     }
     return block("attribute_access", node.lineno, {
         "MODULE": this.convert(value),
@@ -1851,7 +1862,10 @@ PythonToBlocks.prototype.Name = function(node)
             });
     }
     if(py2block_config.reservedNameD[nodeName] != null){
-        return py2block_config.reservedNameD[nodeName](this, node, id, ctx, nodeName);
+        try {
+            return py2block_config.reservedNameD[nodeName](this, node, id, ctx, nodeName);
+        }catch(e){
+        }
     }
     switch (this.Name_str(node)) {
         case "True":
