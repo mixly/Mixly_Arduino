@@ -103,17 +103,17 @@ pbc.moduleFunctionD.get('i2c')['init'] = function (py2block, func, args, keyword
         var param = keywords[i];
         var key = py2block.identifier(param.arg);
         if (key === "sda") {
-            py2block_config.inScope = "i2c_init";
-            py2block_config.pinType = "pins_digital";
+            pbc.inScope = "i2c_init";
+            pbc.pinType = "pins_digital";
             sdablock = py2block.convert(param.value);
-            py2block_config.pinType = null;
-            py2block_config.inScope = null;
+            pbc.pinType = null;
+            pbc.inScope = null;
         } else if (key === "scl") {
-            py2block_config.inScope = "i2c_init";
-            py2block_config.pinType = "pins_digital";
+            pbc.inScope = "i2c_init";
+            pbc.pinType = "pins_digital";
             sclblock = py2block.convert(param.value);
-            py2block_config.pinType = null;
-            py2block_config.inScope = null;
+            pbc.pinType = null;
+            pbc.inScope = null;
         } else if (key === "freq") {
             freqblock = py2block.convert(param.value);
         }
@@ -130,13 +130,13 @@ pbc.moduleFunctionD.get('i2c')['init'] = function (py2block, func, args, keyword
 }
 
 pbc.moduleFunctionD.get('i2c')['read'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 3) {
+    if (args.length !== 3 || args[2]._astname != "Name") {
         throw new Error("Incorrect number of arguments");
     }
     var adblock = py2block.convert(args[0]);
     var dtblock = py2block.convert(args[1]);
     return block("i2c_read", func.lineno, {
-        'is_repeated': py2block.identifier(args[2].id)
+        'is_repeated': py2block.Name_str(args[2])
     }, {
         'address': adblock,
         'data': dtblock,
@@ -146,24 +146,32 @@ pbc.moduleFunctionD.get('i2c')['read'] = function (py2block, func, args, keyword
 }
 
 
+
 pbc.moduleFunctionD.get('i2c')['write'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 3) {
+    if (args.length !== 3 || args[2]._astname != "Name") {
         throw new Error("Incorrect number of arguments");
     }
     var adblock = py2block.convert(args[0]);
     var dtblock = py2block.convert(args[1]);
-    return block("i2c_write", func.lineno, {
-        'is_repeated': py2block.identifier(args[2].id)
+    return [block("i2c_write", func.lineno, {
+        'is_repeated': py2block.Name_str(args[2])
     }, {
         'address': adblock,
         'data': dtblock,
     }, {
         "inline": "true"
-    });
+    })];
 }
 
 pbc.moduleFunctionD.get('spi')['init'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0 || keywords.length !== 6) { //(baudrate=1000000, bits=8, mode=0, mosi=15, miso= 14, sclk=13)
+    if (args.length !== 0 || keywords.length !== 6
+        || keywords[0].value._astname != "Num"
+        || keywords[1].value._astname != "Num"
+        || keywords[2].value._astname != "Num"
+        || keywords[3].value._astname != "Num"
+        || keywords[4].value._astname != "Num"
+        || keywords[5].value._astname != "Num"
+    ) { //(baudrate=1000000, bits=8, mode=0, mosi=15, miso= 14, sclk=13)
         throw new Error("Incorrect number of arguments");
     }
     var baudrate = null;
@@ -177,20 +185,21 @@ pbc.moduleFunctionD.get('spi')['init'] = function (py2block, func, args, keyword
         var param = keywords[i];
         var key = py2block.identifier(param.arg);
         if (key === "baudrate") {
-            baudrate = param.value.n.v;
+            baudrate = py2block.Num_value(param.value);
         } else if (key === "bits") {
-            bitsblock = param.value.n.v;
+            bitsblock = py2block.Num_value(param.value);
         } else if (key === "mode") {
-            modeblock = param.value.n.v;
+            modeblock = py2block.Num_value(param.value);
         } else if (key === "mosi") {
-            mosiblock = param.value.n.v;
+            mosiblock = py2block.Num_value(param.value);
         } else if (key === "miso") {
-            misoblock = param.value.n.v;
+            misoblock = py2block.Num_value(param.value);
         } else if (key === "sclk") {
-            sclkblock = param.value.n.v;
+            sclkblock = py2block.Num_value(param.value);
         }
     }
-    if (bitsblock != null && modeblock != null && baudrate != null && mosiblock != null && misoblock != null && sclkblock != null) {
+    if (bitsblock != null && modeblock != null && baudrate != null
+        && mosiblock != null && misoblock != null && sclkblock != null) {
         return [block("spi_init", func.lineno, {
             "freq": baudrate,
             "bits": bitsblock,

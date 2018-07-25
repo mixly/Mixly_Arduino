@@ -93,7 +93,7 @@ Blockly.Python.speech_translate=function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     Blockly.Python.definitions_['import_speech'] = 'import speech';
     var text = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = "speech.translate("+ text +")\n";
+    var code = ["speech.translate("+ text +")", Blockly.Python.ORDER_MEMBER];
     return code
 };
 

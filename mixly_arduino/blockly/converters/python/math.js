@@ -1,11 +1,15 @@
 'use strict';
 
+//加减乘除 在python_to_blockly.js中实现
+//位操作 在python_to_blockly.js中实现
 function mathTrigonometric(mode) {
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
         if (args.length != 1) {
             throw new Error("Incorrect number of arguments");
         }
         if (args[0]._astname == "Call"
+            && args[0].func._astname == "Attribute"
+            && args[0].func.value._astname == "Name"
             && py2block.Name_str(args[0].func.value) == "math"
             && py2block.identifier(args[0].func.attr) == "radians"
             && args[0].args.length == 1) {
@@ -36,6 +40,8 @@ function mathAntiTrigonometric() {
             throw new Error("Incorrect number of arguments");
         }
         if (args[0]._astname == "Call"
+            && args[0].func._astname == "Attribute"
+            && args[0].func.value._astname == "Name"
             && py2block.Name_str(args[0].func.value) == "math"
             && (py2block.identifier(args[0].func.attr) == "asin"
                 || py2block.identifier(args[0].func.attr) == "acos"
@@ -136,7 +142,9 @@ pbc.moduleFunctionD.get('math')['fabs'] = mathIntFunc('fabs');
 function mathMaxMin(mode) {
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
         if (args.length === 2) {
-            if (args[0]._astname == "Call" && py2block.Name_str(args[0].func) == "max"
+            if (args[0]._astname == "Call"
+                && args[0].func._astname == "Name"
+                && py2block.Name_str(args[0].func) == "max"
                 && py2block.Name_str(func) == "min") {
                 return block("math_constrain", func.lineno, {}, {
                     'VALUE': py2block.convert(args[0].args[0]),
@@ -218,9 +226,9 @@ function radixToEng(num) {
 pbc.globalFunctionD['int'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length == 1) {
         var paramblock = py2block.convert(args[0]);
-        if (args[0]._astname == "Call" && py2block.Name_str(args[0].func) == "str") {
+        if (args[0]._astname == "Call" && args[0].func._astname == "Name" && py2block.Name_str(args[0].func) == "str") {
             paramblock = py2block.convert(args[0].args[0]);
-        }else if(args[0]._astname == "Call" && py2block.Name_str(args[0].func) == "input"){
+        }else if(args[0]._astname == "Call" && args[0].func._astname == "Name" && py2block.Name_str(args[0].func) == "input"){
             if(pbc.board == pbc.MIXPY) {
                 paramblock = py2block.convert(args[0].args[0]);
                 return block("inout_type_input", func.lineno, {
@@ -240,7 +248,7 @@ pbc.globalFunctionD['int'] = function (py2block, func, args, keywords, starargs,
             "inline": "true"
         });
     } else if (args.length == 2) {
-        if (args[0]._astname == "Call" && py2block.Name_str(args[0].func) == "str"
+        if (args[0]._astname == "Call" && args[0].func._astname == "Name" && py2block.Name_str(args[0].func) == "str"
             && args[1]._astname == "Num") {
             var paramblock = py2block.convert(args[0].args[0]);
             return block("math_number_base_conversion", func.lineno, {
@@ -262,8 +270,9 @@ function radix(mode){
         if (args.length != 1) {
             throw new Error("Incorrect number of arguments");
         }
-        if (args[0]._astname == "Call" && py2block.Name_str(args[0].func) == "int"
-            && args[0].args[0]._astname == "Call" && py2block.Name_str(args[0].args[0].func) == "str") {
+        if (args[0]._astname == "Call"
+            && args[0].func._astname == "Name" && py2block.Name_str(args[0].func) == "int"
+            && args[0].args[0]._astname == "Call" && args[0].args[0].func._astname == "Name" && py2block.Name_str(args[0].args[0].func) == "str") {
             var paramblock = py2block.convert(args[0].args[0].args[0]);
             return block("math_number_base_conversion", func.lineno, {
                 'OP': radixToEng(args[0].args[1].n.v),

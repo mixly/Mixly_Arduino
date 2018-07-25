@@ -49,7 +49,7 @@ Blockly.Python.controls_try_finally = function () {
         code += 'finally:\n' + branch;
     }
     // code += '}';
-    return code + '\n';
+    return code;
 };
 
 //ok

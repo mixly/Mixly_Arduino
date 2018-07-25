@@ -4,8 +4,11 @@ var pbc = Py2blockConfig.prototype;
 
 
 pbc.assignD.get('Turtle')['check_assign'] = function (py2block, node, targets, value) {
-    var moduleName = value.func.value.id.v;
-    var funcName = value.func.attr.v;
+    if(value.func._astname != "Attribute" || value.func.value._astname != "Name"){
+        return false;
+    }
+    var moduleName = py2block.Name_str(value.func.value);
+    var funcName = py2block.identifier(value.func.attr);
     if (value._astname === "Call" && moduleName === "turtle"
         && funcName === "Turtle" && value.args.length === 0)
         return true;
@@ -13,7 +16,7 @@ pbc.assignD.get('Turtle')['check_assign'] = function (py2block, node, targets, v
 }
 
 pbc.assignD.get('Turtle')['create_block'] = function (py2block, node, targets, value) {
-    var turtle = node.targets[0].id.v;
+    var turtle = py2block.Name_str(node.targets[0]);
     return [block('turtle_create', node.lineno, {
             'VAR': turtle
         }, {})];

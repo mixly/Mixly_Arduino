@@ -52,14 +52,14 @@ function setOperate(mode){
         }
         var objblock = py2block.convert(func.value);
         var argblock = py2block.convert(args[0]);
-        return [block("set_operate", func.lineno, {
+        return block("set_operate", func.lineno, {
             'OPERATE': mode,
         }, {
             "SET1": objblock,
             "SET2": argblock
         }, {
             "inline": "true"
-        })];
+        });
     }
     return converter;
 }
@@ -139,14 +139,14 @@ function setSub(mode){
         }
         var objblock = py2block.convert(func.value);
         var argblock = py2block.convert(args[0]);
-        return [block("set_sub", func.lineno, {
+        return block("set_sub", func.lineno, {
             'OPERATE':mode,
         }, {
             "SET1":objblock,
             "SET2":argblock
         }, {
             "inline": "true"
-        })];
+        });
     }
     return converter;
 }

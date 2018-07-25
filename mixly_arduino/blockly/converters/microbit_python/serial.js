@@ -35,9 +35,12 @@ pbc.globalFunctionD['input'] = function(py2block, func, args, keywords, starargs
 
 
 pbc.moduleFunctionD.get('uart')['init'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length === 0 && keywords.length === 1) { //uart.init(baudrate=9600)
+    if (args.length === 0 && keywords.length === 1
+        && keywords[0].value._astname == "Num") { //uart.init(baudrate=9600)
         if(py2block.identifier(keywords[0].arg) === "baudrate") {
-            return [block("serial_begin", func.lineno, {"baudrate": keywords[0].value.n.v}, {}, {
+            return [block("serial_begin", func.lineno, {
+                "baudrate": py2block.Num_value(keywords[0].value)
+            }, {}, {
                 "inline": "true"
             })];
         }
@@ -49,19 +52,21 @@ pbc.moduleFunctionD.get('uart')['init'] = function(py2block, func, args, keyword
             var param = keywords[i];
             var key = py2block.identifier(param.arg);
             if (key === "rx") {
-                py2block_config.pinType = "pins_serial";
+                pbc.pinType = "pins_serial";
                 rxblock = py2block.convert(param.value);
-                py2block_config.pinType = null;
+                pbc.pinType = null;
             } else if (key === "tx") {
-                py2block_config.pinType = "pins_serial";
+                pbc.pinType = "pins_serial";
                 txblock = py2block.convert(param.value);
-                py2block_config.pinType = null;
-            } else if (key === "baudrate") {
-                baudrate = param.value.n.v;
+                pbc.pinType = null;
+            } else if (key === "baudrate" && param.value._astname == "Num") {
+                baudrate = py2block.Num_value(param.value);
             }
         }
         if (rxblock != null && txblock != null && baudrate != null) {
-            return [block("serial_softserial", func.lineno, {"baudrate": baudrate}, {
+            return [block("serial_softserial", func.lineno, {
+                "baudrate": baudrate
+            }, {
                 "RX":rxblock,
                 "TX":txblock
             }, {
@@ -79,7 +84,7 @@ pbc.moduleFunctionD.get('uart')['write'] = function(py2block, func, args, keywor
     }
     var astname = args[0]._astname;
     if(astname === "Call"){
-        if(py2block.identifier(args[0].func.id) === "str"){ //serial.write(str("XXX"))
+        if(args[0].func._astname == "Name" && py2block.Name_str(args[0].func) === "str"){ //serial.write(str("XXX"))
             return [block("serial_print", func.lineno, {}, {
                     "CONTENT":py2block.convert(args[0].args[0]),
                 }, {
@@ -88,13 +93,13 @@ pbc.moduleFunctionD.get('uart')['write'] = function(py2block, func, args, keywor
         }
     }else if(astname === "BinOp"){
         if(args[0].op.name === "Add" && args[0].right._astname === "Str"
-            && py2block.identifier(args[0].right.s) === "\r\n"
-            && args[0].left._astname === "Call"
-            && py2block.identifier(args[0].left.func.id) === "str"
+            && py2block.Str_value(args[0].right) === "\r\n"
+            && args[0].left._astname === "Call" && args[0].left.func._astname == "Name"
+            && py2block.Name_str(args[0].left.func) === "str"
         ){
             if(args[0].left.args[0]._astname === "Call"
                 && args[0].left.args[0].func._astname === "Name"
-                && py2block.identifier(args[0].left.args[0].func.id) === "hex"){ //serial.write(str(hex(XX)) + "\r\n")
+                && py2block.Name_str(args[0].left.args[0].func) === "hex"){ //serial.write(str(hex(XX)) + "\r\n")
                 return [block("serial_print_hex", func.lineno, {}, {
                     "CONTENT": py2block.convert(args[0].left.args[0].args[0]),
                 }, {
@@ -120,8 +125,7 @@ pbc.moduleFunctionD.get('uart')['any'] = function(py2block, func, args, keywords
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("serial_any", func.lineno, {}, {
-    }, {
+    return block("serial_any", func.lineno, {}, {}, {
         "inline": "true"
     });
 }
@@ -131,8 +135,7 @@ pbc.moduleFunctionD.get('uart')['read'] = function(py2block, func, args, keyword
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("serial_readstr", func.lineno, {}, {
-    }, {
+    return block("serial_readstr", func.lineno, {}, {}, {
         "inline": "true"
     });
 }
@@ -142,8 +145,7 @@ pbc.moduleFunctionD.get('uart')['readline'] = function(py2block, func, args, key
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("serial_readline", func.lineno, {}, {
-    }, {
+    return block("serial_readline", func.lineno, {}, {}, {
         "inline": "true"
     });
 }

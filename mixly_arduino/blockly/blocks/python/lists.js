@@ -1637,7 +1637,7 @@ Blockly.Blocks['lists_del_general'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Blocks.list.HUE);
+    this.setColour(Blockly.Blocks.lists.HUE);
     this.appendValueInput('TUP')
     this.appendDummyInput("")
         .appendField(Blockly.Msg.OBJECT_DELETE);

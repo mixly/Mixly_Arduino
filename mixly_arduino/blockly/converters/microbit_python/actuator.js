@@ -4,9 +4,9 @@ pbc.globalFunctionD['mixly_servo_write_angle'] = function (py2block, func, args,
     if (args.length != 3) {
         throw new Error("Incorrect number of arguments");
     }
-    py2block_config.pinType = "pins_pwm";
+    pbc.pinType = "pins_pwm";
     var pinblock = py2block.convert(args[0]);
-    py2block_config.pinType = null;
+    pbc.pinType = null;
     var angblock = py2block.convert(args[1]);
     var delayblock = py2block.convert(args[2]);
     if (pinblock != null && angblock != null && delayblock != null) {
@@ -25,41 +25,44 @@ pbc.globalFunctionD['mixly_servo_write_angle'] = function (py2block, func, args,
 pbc.moduleFunctionD.get('music')['pitch'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length === 1 && keywords.length === 1) {
         var roundAstName = args[0]._astname;
-        py2block_config.pinType = "pins_pwm";
+        pbc.pinType = "pins_pwm";
         var pinblock = py2block.convert(keywords[0].value);
-        py2block_config.pinType = null;
-        py2block_config.pinType = "pins_tone_notes";
+        pbc.pinType = null;
+        pbc.pinType = "pins_tone_notes";
         var pitchblock;
-        if (roundAstName === "Call" || py2block.identifier(args[0].func.id) === "round") {
+        if (roundAstName === "Call"
+            && args[0].func._astname == "Name" && py2block.Name_str(args[0].func) === "round") {
             pitchblock = py2block.convert(args[0].args[0])
         } else {
             pitchblock = py2block.convert(args[0])
         }
-        py2block_config.pinType = null;
+        pbc.pinType = null;
         return [block("microbit_music_pitch", func.lineno, {}, {
             'pitch': pitchblock,
             'PIN': pinblock,
         }, {
             "inline": "true"
         })];
-    } else if (args.length === 3 && keywords.length === 1) {
-        py2block_config.pinType = "pins_pwm";
+    } else if (args.length === 3 && keywords.length === 1 && keywords[0].value._astname == "Name") {
+        pbc.pinType = "pins_pwm";
         var pinblock = py2block.convert(args[2]);
-        py2block_config.pinType = null;
+        pbc.pinType = null;
         var roundAstName = args[0]._astname;
         var durationAstName = args[1]._astname;
         var param = keywords[0];
-        var wait = py2block.identifier(param.value.id);
+        var wait = py2block.Name_str(param.value);
         var pitchblock = null;
         var durationblock = null;
-        py2block_config.pinType = "pins_tone_notes";
-        if (roundAstName === "Call" && py2block.identifier(args[0].func.id) === "round") {
+        pbc.pinType = "pins_tone_notes";
+        if (roundAstName === "Call"
+            && args[0].func._astname == "Name" && py2block.Name_str(args[0].func) === "round") {
             pitchblock = py2block.convert(args[0].args[0])
         } else {
             pitchblock = py2block.convert(args[0]);
         }
-        py2block_config.pinType = null;
-        if (durationAstName === "Call" && py2block.identifier(args[1].func.id) === "round") {
+        pbc.pinType = null;
+        if (durationAstName === "Call"
+            && args[1].func._astname == "Name" && py2block.Name_str(args[1].func) === "round") {
             durationblock = py2block.convert(args[1].args[0]);
         } else {
             durationblock = py2block.convert(args[1]);
@@ -92,13 +95,14 @@ pbc.moduleFunctionD.get('music')['play'] = function (py2block, func, args, keywo
                 pbc.pinType = "pins_pwm";
                 pinblock = py2block.convert(param.value);
                 pbc.pinType = null;
-            } else if (key === "wait") {
-                waitblock = py2block.identifier(param.value.id);
-            } else if (key === "loop") {
-                loopblock = py2block.identifier(param.value.id);
+            } else if (key === "wait" && param.value._astname == "Name") {
+                waitblock = py2block.Name_str(param.value);
+            } else if (key === "loop" && param.value._astname == "Name") {
+                loopblock = py2block.Name_str(param.value);
             }
         }
-        if (args[0]._astname == "Attribute" && py2block.identifier(args[0].value.id) == "music") {
+        if (args[0]._astname == "Attribute"
+            && args[0].value._astname == "Name" && py2block.Name_str(args[0].value) == "music") {
             musicblock = py2block.identifier(args[0].attr);
             if (musicblock != null && pinblock != null && waitblock != null && loopblock != null) {
                 return [block("microbit_music_play_built_in", func.lineno, {
@@ -125,7 +129,8 @@ pbc.moduleFunctionD.get('music')['play'] = function (py2block, func, args, keywo
             }
         }
     }else if(args.length == 1 && keywords.length == 1){
-        if (args[0]._astname == "Attribute" && py2block.identifier(args[0].value.id) == "music"
+        if (args[0]._astname == "Attribute"
+            && args[0].value._astname == "Name" && py2block.Name_str(args[0].value) == "music"
             && py2block.identifier(keywords[0].arg) == "pin") {
             musicblock = py2block.identifier(args[0].attr);
             var param = keywords[0];
@@ -165,9 +170,9 @@ pbc.moduleFunctionD.get('music')['reset'] = function (py2block, func, args, keyw
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("microbit_music_reset", func.lineno, {}, {}, {
+    return [block("microbit_music_reset", func.lineno, {}, {}, {
         "inline": "true"
-    });
+    })];
 }
 
 

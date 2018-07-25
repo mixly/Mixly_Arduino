@@ -12,12 +12,13 @@ function defDict(type) {
 }
 
 function Py2blockConfig (){
-    this.board = "microbit[py]";
     this.initIgnoreS();
     this.initModuleAttrD();
 }
 
 var pbc = Py2blockConfig.prototype;
+pbc.MICROBITPY = "microbit[py]";
+pbc.board = pbc.MICROBITPY;
 pbc.objectFunctionD = defDict({});
 pbc.moduleFunctionD = defDict({});
 pbc.moduleAttrD = defDict({});
@@ -48,7 +49,7 @@ pbc.initIgnoreS = function(){
         //sensor.js
         'HCSR04', 'sonar', 'DS1307', 'DS1307_I2C_ADDRESS', 'DS1307_REG_SECOND', 'DS1307_REG_MINUTE',
         'DS1307_REG_HOUR', 'DS1307_REG_WEEKDAY', 'DS1307_REG_DAY', 'DS1307_REG_MONTH', 'DS1307_REG_YEAR',
-        'DS1307_REG_CTRL', 'DS1307_REG_RAM'
+        'DS1307_REG_CTRL', 'DS1307_REG_RAM', 'ds'
     ];
 
     var ignoreL = pythonIgnoreL.concat(boardIgnoreL);

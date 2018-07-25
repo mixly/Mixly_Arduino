@@ -1,16 +1,20 @@
 'use strict';
 
 pbc.assignD.get('File')['check_assign'] = function(py2block, node, targets, value) {
+    if(value._astname != "Call" || value.func._astname != "Name"){
+        return false;
+    }
     var funcName = py2block.Name_str(value.func);
-    if(value._astname === "Call" && funcName === "open" && value.args.length === 2)
+    if(funcName === "open" && value.args.length === 2)
         return true;
     return false;
 }
 
 pbc.assignD.get('File')['create_block'] = function(py2block, node, targets, value){
-    var mode = py2block.identifier(value.args[1].s);
-
-    return block("storage_fileopen2", node.lineno, {"MODE":mode}, {
+    var mode = py2block.Str_value(value.args[1]);
+    return block("storage_fileopen2", node.lineno, {
+        "MODE":mode
+    }, {
         "FILENAME":py2block.convert(value.args[0]),
         "FILE":py2block.convert(targets[0])
     });
@@ -40,8 +44,7 @@ pbc.objectFunctionD.get('read')['File'] = function(py2block, func, args, keyword
     var argblock = py2block.convert(args[0]);
     return block("storage_get_contents", func.lineno, {
         "MODE":"read"
-    },
-    {
+    }, {
          "FILE" : fileblock,
          "SIZE" : argblock
     }, {
@@ -58,8 +61,7 @@ pbc.objectFunctionD.get('readline')['File'] = function(py2block, func, args, key
     var argblock = py2block.convert(args[0]);
     return block("storage_get_contents", func.lineno, {
         "MODE":"readline"
-    },
-    {
+    }, {
          "FILE" : fileblock,
          "SIZE" : argblock
     }, {
