@@ -14,15 +14,16 @@ function show_or_scroll(blockid1, blockid2) {
                 var key = py2block.identifier(param.arg);
                 if (key === "delay") {
                     delayblock = py2block.convert(param.value);
-                } else if (key === "wait") {
-                    waitblock = py2block.identifier(param.value.id);
-                } else if (key === "loop") {
-                    loopblock = py2block.identifier(param.value.id);
-                } else if (key === "clear") {
-                    clearblock = py2block.identifier(param.value.id);
+                } else if (key === "wait" && param.value._astname == "Name") {
+                    waitblock = py2block.Name_str(param.value);
+                } else if (key === "loop" && param.value._astname == "Name") {
+                    loopblock = py2block.Name_str(param.value);
+                } else if (key === "clear" && param.value._astname == "Name") {
+                    clearblock = py2block.Name_str(param.value);
                 }
             }
-            if (imagesblock != null && delayblock != null && waitblock != null && loopblock != null && clearblock != null) {
+            if (imagesblock != null && delayblock != null
+                && waitblock != null && loopblock != null && clearblock != null) {
                 return [block(blockid2, func.lineno, {
                         'wait': waitblock,
                         'loop': loopblock,
@@ -42,9 +43,8 @@ function show_or_scroll(blockid1, blockid2) {
                 }, {
                     "inline": "true"
                 })];
-        } else {
-            throw new Error("Incorrect number of arguments");
         }
+        throw new Error("Incorrect number of arguments");
     }
     return converter;
 }
@@ -54,7 +54,7 @@ pbc.moduleFunctionD.get('display')['scroll'] = show_or_scroll('monitor_scroll_st
 
 //创建图像
 pbc.globalFunctionD['Image'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length === 0) {
+    if (args.length !== 1 || args[0]._astname != "Str") {
         throw new Error("Incorrect number of arguments");
     }
     var colours = [
@@ -69,79 +69,77 @@ pbc.globalFunctionD['Image'] = function (py2block, func, args, keywords, stararg
         "#ee0000",
         "#ff0000"
     ];
-    if (args.length === 1) {
-        var flag = 0;
-        var tempblock = py2block.identifier(args[0].s);
-        console.log("tempblock:" + tempblock);
-        var temptext = new Array();
-        temptext = tempblock.split(':');
+    var flag = 0;
+    var tempblock = py2block.Str_value(args[0]);
+    var temptext = new Array();
+    temptext = tempblock.split(':');
 
-        if (temptext.length == 5) {
-            for (var i = 0; i < 5; i++) {
-                if (temptext[i].length == 5) {
-                    flag++;
-                }
+    if (temptext.length == 5) {
+        for (var i = 0; i < 5; i++) {
+            if (temptext[i].length == 5) {
+                flag++;
             }
         }
-        if (flag == 5) {
-            return block('microbit_image_create', func.lineno, {
-                    "00": colours[temptext[0].charAt(0)],
-                    "01": colours[temptext[0].charAt(1)],
-                    "02": colours[temptext[0].charAt(2)],
-                    "03": colours[temptext[0].charAt(3)],
-                    "04": colours[temptext[0].charAt(4)],
-                    "10": colours[temptext[1].charAt(0)],
-                    "11": colours[temptext[1].charAt(1)],
-                    "12": colours[temptext[1].charAt(2)],
-                    "13": colours[temptext[1].charAt(3)],
-                    "14": colours[temptext[1].charAt(4)],
-                    "20": colours[temptext[2].charAt(0)],
-                    "21": colours[temptext[2].charAt(1)],
-                    "22": colours[temptext[2].charAt(2)],
-                    "23": colours[temptext[2].charAt(3)],
-                    "24": colours[temptext[2].charAt(4)],
-                    "30": colours[temptext[3].charAt(0)],
-                    "31": colours[temptext[3].charAt(1)],
-                    "32": colours[temptext[3].charAt(2)],
-                    "33": colours[temptext[3].charAt(3)],
-                    "34": colours[temptext[3].charAt(4)],
-                    "40": colours[temptext[4].charAt(0)],
-                    "41": colours[temptext[4].charAt(1)],
-                    "42": colours[temptext[4].charAt(2)],
-                    "43": colours[temptext[4].charAt(3)],
-                    "44": colours[temptext[4].charAt(4)],
-                },
-                {}, {
-                    "inline": "false"
-                });
-        }
+    }
+    if (flag == 5) {
+        return block('microbit_image_create', func.lineno, {
+                "00": colours[temptext[0].charAt(0)],
+                "01": colours[temptext[0].charAt(1)],
+                "02": colours[temptext[0].charAt(2)],
+                "03": colours[temptext[0].charAt(3)],
+                "04": colours[temptext[0].charAt(4)],
+                "10": colours[temptext[1].charAt(0)],
+                "11": colours[temptext[1].charAt(1)],
+                "12": colours[temptext[1].charAt(2)],
+                "13": colours[temptext[1].charAt(3)],
+                "14": colours[temptext[1].charAt(4)],
+                "20": colours[temptext[2].charAt(0)],
+                "21": colours[temptext[2].charAt(1)],
+                "22": colours[temptext[2].charAt(2)],
+                "23": colours[temptext[2].charAt(3)],
+                "24": colours[temptext[2].charAt(4)],
+                "30": colours[temptext[3].charAt(0)],
+                "31": colours[temptext[3].charAt(1)],
+                "32": colours[temptext[3].charAt(2)],
+                "33": colours[temptext[3].charAt(3)],
+                "34": colours[temptext[3].charAt(4)],
+                "40": colours[temptext[4].charAt(0)],
+                "41": colours[temptext[4].charAt(1)],
+                "42": colours[temptext[4].charAt(2)],
+                "43": colours[temptext[4].charAt(3)],
+                "44": colours[temptext[4].charAt(4)],
+            }, {}, {
+                "inline": "false"
+            });
     }
 }
 
 
 pbc.moduleFunctionD.get('image')['height'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length === 0) {
+    if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
-    return [block('display_image_size', func.lineno, {'OP': 'height'},
-        {
+    return block('display_image_size', func.lineno, {
+            'OP': 'height'
+        }, {
             'VAR': py2block.convert(args[0]),
         }, {
             "inline": "true"
-        })];
+        });
 }
 
 
 pbc.moduleFunctionD.get('image')['width'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length === 0) {
+    if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
-    return [block('display_image_size', func.lineno, {'OP': 'width'},
-        {
+    return block('display_image_size', func.lineno, {
+            'OP': 'width'
+        }, {
             'VAR': py2block.convert(args[0]),
         }, {
             "inline": "true"
-        })];
+        });
 }
 
 function imageShift(mode){
@@ -150,8 +148,9 @@ function imageShift(mode){
             throw new Error("Incorrect number of arguments");
         }
         var imageblock = py2block.convert(func.value);
-        return block('image_shift', func.lineno, {'OP': mode},
-            {
+        return block('image_shift', func.lineno, {
+                'OP': mode
+            }, {
                 'img': imageblock,
                 'val': py2block.convert(args[0]),
             }, {
@@ -172,8 +171,7 @@ pbc.objectFunctionD.get('copy')['Image'] = function converter(py2block, func, ar
         throw new Error("Incorrect number of arguments");
     }
     var imageblock = py2block.convert(func.value);
-    return block('microbit_image_copy', func.lineno, {},
-        {
+    return block('microbit_image_copy', func.lineno, {}, {
             'image': imageblock,
         }, {
             "inline": "true"
@@ -185,8 +183,7 @@ pbc.objectFunctionD.get('invert')['Image'] = function converter(py2block, func, 
         throw new Error("Incorrect number of arguments");
     }
     var imageblock = py2block.convert(func.value);
-    return block('microbit_image_invert', func.lineno, {},
-        {
+    return block('microbit_image_invert', func.lineno, {}, {
             'image': imageblock,
         }, {
             "inline": "true"
@@ -201,18 +198,18 @@ pbc.moduleFunctionD.get('display')['get_pixel'] = function(py2block, func, args,
     var astname1 = args[1]._astname;
     var xblock;
     var yblock;
-    py2block_config.pinType = "pins_axis";
-    if(astname === "Call" && py2block.identifier(args[0].func.id) === "int"){ //display.get_pixel(int(0), int(0))
+    pbc.pinType = "pins_axis";
+    if(astname === "Call" && args[0].func._astname == "Name" && py2block.Name_str(args[0].func) === "int"){ //display.get_pixel(int(0), int(0))
         xblock =  py2block.convert(args[0].args[0]);
     }else{
         xblock =  py2block.convert(args[0]);
     }
-    if(astname1 === "Call" && py2block.identifier(args[1].func.id) === "int"){ //display.get_pixel(int(0), int(0))
+    if(astname1 === "Call" && args[1].func._astname == "Name" && py2block.Name_str(args[1].func) === "int"){ //display.get_pixel(int(0), int(0))
         yblock =  py2block.convert(args[1].args[0]);
     }else{
         yblock =  py2block.convert(args[1]);
     }
-    py2block_config.pinType = null;
+    pbc.pinType = null;
     return block("monitor_get_pixel", func.lineno, {}, {
         'x':xblock,
         'y':yblock
@@ -227,23 +224,23 @@ pbc.moduleFunctionD.get('display')['set_pixel'] = function(py2block, func, args,
     }
     var astname = args[0]._astname;
     var astname1 = args[1]._astname;
-    py2block_config.pinType = "pins_brightness";
+    pbc.pinType = "pins_brightness";
     var brightblock = py2block.convert(args[2]);
-    py2block_config.pinType = null;
+    pbc.pinType = null;
     var xblock;
     var yblock;
-    py2block_config.pinType = "pins_axis";
-    if(astname === "Call" && py2block.identifier(args[0].func.id) === "int"){ //display.get_pixel(int(0), int(0))
+    pbc.pinType = "pins_axis";
+    if(astname === "Call" && args[0].func._astname == "Name" && py2block.Name_str(args[0].func) === "int"){ //display.set_pixel(int(0), int(0))
         xblock =  py2block.convert(args[0].args[0]);
     }else{
         xblock =  py2block.convert(args[0]);
     }
-    if(astname1 === "Call" && py2block.identifier(args[1].func.id) === "int"){ //display.get_pixel(int(0), int(0))
+    if(astname1 === "Call" && args[1].func._astname == "Name" && py2block.Name_str(args[1].func) === "int"){ //display.set_pixel(int(0), int(0))
         yblock =  py2block.convert(args[1].args[0]);
     }else{
         yblock =  py2block.convert(args[1]);
     }
-    py2block_config.pinType = null;
+    pbc.pinType = null;
     return [block("monitor_bright_point", func.lineno, {}, {
         'x':xblock,
         'y':yblock,
@@ -259,11 +256,11 @@ function displayOnOrOff(mode){
         if (args.length !== 0) {
             throw new Error("Incorrect number of arguments");
         }
-        return block("microbit_display_on", func.lineno, {
+        return [block("microbit_display_on", func.lineno, {
             'on_off': mode
         }, {}, {
             "inline": "true"
-        });
+        })];
     }
     return converter;
 }
@@ -293,8 +290,11 @@ pbc.moduleFunctionD.get('display')['clear'] = function (py2block, func, args, ke
 
 
 pbc.assignD.get('Rgb')['check_assign'] = function(py2block, node, targets, value) {
-    var moduleName = value.func.value.id.v;
-    var funcName = value.func.attr.v;
+    if(value._astname != "Call" || value.func._astname != "Attribute" || value.func.value._astname != "Name"){
+        return false;
+    }
+    var moduleName = py2block.Name_str(value.func.value);
+    var funcName = py2block.identifier(value.func.attr);
     if(value._astname === "Call" && moduleName === "neopixel"
         && funcName === "NeoPixel" && value.args.length === 2)
         return true;
@@ -302,9 +302,9 @@ pbc.assignD.get('Rgb')['check_assign'] = function(py2block, node, targets, value
 }
 
 pbc.assignD.get('Rgb')['create_block'] = function(py2block, node, targets, value){
-    py2block_config.pinType = "pins_digital";
+    pbc.pinType = "pins_digital";
     var pinblock = py2block.convert(value.args[0]);
-    py2block_config.pinType = null;
+    pbc.pinType = null;
     var countblock = py2block.convert(value.args[1]);
 
     return block("display_rgb_init", node.lineno, {}, {
@@ -331,16 +331,19 @@ pbc.globalFunctionD['mixly_rgb_show'] = function (py2block, func, args, keywords
 
 
 pbc.assignD.get('Lcd')['check_assign'] = function(py2block, node, targets, value) {
-    var className = value.func.id.v;
+    if(value._astname != "Call" || value.func._astname != "Name"){
+        return false;
+    }
+    var className = py2block.Name_str(value.func);
     if(value._astname === "Call" && className === "LCD1602" && value.args.length === 1)
         return true;
     return false;
 }
 
 pbc.assignD.get('Lcd')['create_block'] = function(py2block, node, targets, value){
-    py2block_config.inScope = "lcd_init";
+    pbc.inScope = "lcd_init";
     var argblock = py2block.convert(value.args[0]);
-    py2block_config.inScope = null;
+    pbc.inScope = null;
     return block("group_lcd_init", node.lineno, {}, {
         "device":argblock
     });
@@ -380,11 +383,11 @@ function mylcdOnOrOffOrClear(mode){
         if (args.length !== 0) {
             throw new Error("Incorrect number of arguments");
         }
-        return block("group_lcd_power", func.lineno, {
+        return [block("group_lcd_power", func.lineno, {
             'STAT': mode
         }, {}, {
             "inline": "true"
-        });
+        })];
     }
     return converter;
 }
@@ -395,15 +398,15 @@ pbc.moduleFunctionD.get('mylcd')['clear'] = mylcdOnOrOffOrClear('clear()');
 
 
 pbc.moduleFunctionD.get('mylcd')['backlight'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 1) {
+    if (args.length !== 1 || args[0]._astname != "Name") {
         throw new Error("Incorrect number of arguments");
     }
-    var stat = py2block.identifier(args[0].id);
-    return block("group_lcd_power", func.lineno, {
+    var stat = py2block.Name_str(args[0]);
+    return [block("group_lcd_power", func.lineno, {
         'STAT': "backlight(" + stat + ")"
     }, {}, {
         "inline": "true"
-    });
+    })];
 }
 
 
@@ -411,7 +414,7 @@ pbc.globalFunctionD['mixly_oled_text'] = function (py2block, func, args, keyword
     if (args.length !== 4) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("lp2i_u8g_draw_4strings", func.lineno, {
+    return [block("lp2i_u8g_draw_4strings", func.lineno, {
     }, {
         "Text_line1":py2block.convert(args[0]),
         "Text_line2":py2block.convert(args[1]),
@@ -419,7 +422,7 @@ pbc.globalFunctionD['mixly_oled_text'] = function (py2block, func, args, keyword
         "Text_line4":py2block.convert(args[3])
     }, {
         "inline": "false"
-    });
+    })];
 }
 
 

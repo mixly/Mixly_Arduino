@@ -28,8 +28,6 @@ pbc.globalFunctionD['sleep'] = function (py2block, func, args, keywords, stararg
 }
 
 
-
-
 pbc.globalFunctionD['running_time'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 0) {
         throw new Error("Incorrect number of arguments");
@@ -45,7 +43,7 @@ pbc.globalFunctionD['panic'] = function (py2block, func, args, keywords, stararg
         throw new Error("Incorrect number of arguments");
     }
     return [block("Panic_with_status_code", func.lineno, {}, {
-            'STATUS_CODE': py2block.convert(args[0]),
+            'STATUS_CODE': py2block.convert(args[0])
         }, {
             "inline": "true"
         })];

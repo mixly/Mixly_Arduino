@@ -4,9 +4,9 @@ pbc.objectFunctionD.get('is_pressed')['Pin'] = function (py2block, func, args, k
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    py2block_config.pinType = "pins_button";
+    pbc.pinType = "pins_button";
     var objblock = py2block.convert(func.value);
-    py2block_config.pinType = null;
+    pbc.pinType = null;
     return block("sensor_button_is_pressed", func.lineno, {}, {
         "btn": objblock
     }, {
@@ -19,9 +19,9 @@ pbc.objectFunctionD.get('was_pressed')['Pin'] = function (py2block, func, args, 
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    py2block_config.pinType = "pins_button";
+    pbc.pinType = "pins_button";
     var objblock = py2block.convert(func.value);
-    py2block_config.pinType = null;
+    pbc.pinType = null;
     return block("sensor_button_was_pressed", func.lineno, {}, {
         "btn": objblock
     }, {
@@ -34,9 +34,9 @@ pbc.objectFunctionD.get('get_presses')['Pin'] = function (py2block, func, args, 
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    py2block_config.pinType = "pins_button";
+    pbc.pinType = "pins_button";
     var objblock = py2block.convert(func.value);
-    py2block_config.pinType = null;
+    pbc.pinType = null;
     return block("sensor_button_get_presses", func.lineno, {}, {
         "btn": objblock
     }, {
@@ -46,7 +46,9 @@ pbc.objectFunctionD.get('get_presses')['Pin'] = function (py2block, func, args, 
 
 
 pbc.ifStatementD.get('if_is_gesture')['check_condition'] = function (py2block, node, test, body, orelse) {
-    if (test._astname == "Call" && py2block.Name_str(test.func.value) == "accelerometer"
+    if (test._astname == "Call" && test.func._astname == "Attribute"
+        && test.func.value._astname == "Name"
+        && py2block.Name_str(test.func.value) == "accelerometer"
         && py2block.identifier(test.func.attr) == "is_gesture"
         && test.args.length == 1) {
         return true;
@@ -54,19 +56,22 @@ pbc.ifStatementD.get('if_is_gesture')['check_condition'] = function (py2block, n
     return false;
 }
 
+
 pbc.ifStatementD.get('if_is_gesture')['create_block'] = function (py2block, node, test, body, orelse) {
     return block("controls_attachGestureInterrupt", node.lineno, {
-        'gesture': py2block.identifier(test.args[0].s)
+        'gesture': py2block.Str_value(test.args[0])
     }, {}, {
         "inline": "true"
     }, {}, {
-        "DO": py2block.convertBody(body[0])
+        "DO": py2block.convertBody(body)
     });
 }
 
 
 pbc.ifStatementD.get('if_was_gesture')['check_condition'] = function (py2block, node, test, body, orelse) {
-    if (test._astname == "Call" && py2block.Name_str(test.func.value) == "accelerometer"
+    if (test._astname == "Call" && test.func._astname == "Attribute"
+        && test.func.value._astname == "Name"
+        && py2block.Name_str(test.func.value) == "accelerometer"
         && py2block.identifier(test.func.attr) == "was_gesture"
         && test.args.length == 1) {
         return true;
@@ -74,13 +79,14 @@ pbc.ifStatementD.get('if_was_gesture')['check_condition'] = function (py2block, 
     return false;
 }
 
+
 pbc.ifStatementD.get('if_was_gesture')['create_block'] = function (py2block, node, test, body, orelse) {
     return block("controls_attachGestureInterrupt2", node.lineno, {
-        'gesture': py2block.identifier(test.args[0].s)
+        'gesture': py2block.Str_value(test.args[0])
     }, {}, {
         "inline": "true"
     }, {}, {
-        "DO": py2block.convertBody(body[0])
+        "DO": py2block.convertBody(body)
     });
 }
 
@@ -91,12 +97,10 @@ function acceleromeerGetDir(mode) {
         }
         return block("sensor_get_acceleration", func.lineno, {
                 "key": mode
-            },
-            {}, {
+            }, {}, {
                 "inline": "true"
             });
     }
-
     return converter;
 }
 
@@ -160,7 +164,7 @@ function getStrength(mode) {
     return converter;
 }
 
-pbc.moduleFunctionD.get('compass')['get_field_strength'] = getStrength('strength');
+pbc.moduleFunctionD.get('compass')['get_field_strength'] = getStrength('get_field_strength');
 pbc.moduleFunctionD.get('compass')['heading'] = getStrength('heading');
 pbc.moduleFunctionD.get('compass')['get_x'] = getStrength('get_x');
 pbc.moduleFunctionD.get('compass')['get_y'] = getStrength('get_y');
@@ -229,8 +233,7 @@ pbc.moduleFunctionD.get('ds')['set_date'] = function (py2block, func, args, keyw
     var yearblock = py2block.convert(args[0]);
     var monthblock = py2block.convert(args[1]);
     var dayblock = py2block.convert(args[2]);
-    return [block("RTC_set_date", func.lineno, {},
-        {
+    return [block("RTC_set_date", func.lineno, {}, {
             'year': yearblock,
             "month": monthblock,
             "day": dayblock,
@@ -247,8 +250,7 @@ pbc.moduleFunctionD.get('ds')['set_time'] = function (py2block, func, args, keyw
     var hourblock = py2block.convert(args[0]);
     var minuteblock = py2block.convert(args[1]);
     var secondblock = py2block.convert(args[2]);
-    return [block("RTC_set_time", func.lineno, {},
-        {
+    return [block("RTC_set_time", func.lineno, {}, {
             "hour": hourblock,
             "minute": minuteblock,
             "second": secondblock,

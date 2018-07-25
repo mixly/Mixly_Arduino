@@ -107,7 +107,7 @@ pbc.objectFunctionD.get('remove')['List'] = function(py2block, func, args, keywo
 
 
 //mylist.pop(0)在set.js中实现
-//random.choice(mylist)在python_to_blockly.js中实现
+//random.choice(mylist)在text.js中实现
 
 function listFindCount(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node){
@@ -116,14 +116,14 @@ function listFindCount(mode){
         }
         var objblock = py2block.convert(func.value);
         var argblock = py2block.convert(args[0]);
-        return [block("lists_find", func.lineno, {
+        return block("lists_find", func.lineno, {
             'OP':mode
         }, {
             "VAR": objblock,
             "data": argblock
         }, {
             "inline": "true"
-        })];
+        });
     };
     return converter;
 }

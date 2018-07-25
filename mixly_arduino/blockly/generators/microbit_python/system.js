@@ -85,5 +85,5 @@ Blockly.Python.reset = function () {
 };
 Blockly.Python.controls_uname = function () {
     Blockly.Python.definitions_['import_os'] = 'import os';
-    return 'os.uname()';
+    return ['os.uname()', Blockly.Python.ORDER_ATOMIC];
 };

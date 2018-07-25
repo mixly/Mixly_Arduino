@@ -253,5 +253,5 @@ Blockly.Python.RTC_set_date = function () {
 
 Blockly.Python.sensor_compass_reset = function(block) {
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-    return ['compass.clear_calibration()', Blockly.Python.ORDER_ATOMIC];
+    return 'compass.clear_calibration()\n';
 };

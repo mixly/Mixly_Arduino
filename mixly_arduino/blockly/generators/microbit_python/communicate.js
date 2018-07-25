@@ -72,7 +72,7 @@ Blockly.Python.i2c_read = function(){
     var format = this.getFieldValue('format');
     var is_repeated = this.getFieldValue('is_repeated');
     is_repeated = is_repeated.substring(0,1).toUpperCase()+is_repeated.substring(1).toLowerCase();
-    return "i2c.read(" + address + ", " + data +  ", " + is_repeated + ")\n";
+    return ["i2c.read(" + address + ", " + data +  ", " + is_repeated + ")", Blockly.Python.ORDER_ATOMIC];
 };
 Blockly.Python.i2c_write = function(){
     var address = Blockly.Python.valueToCode(this, 'address', Blockly.Python.ORDER_ATOMIC);

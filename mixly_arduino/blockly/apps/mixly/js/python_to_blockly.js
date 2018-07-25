@@ -541,30 +541,30 @@ PythonToBlocks.prototype.Delete = function(/* {asdl_seq *} */ targets)
     if(targets.targets[0]._astname == "Subscript"){ //del mydict['key']
         var valueAstname = targets.targets[0].slice.value._astname;
         if(valueAstname == "Str") {
-            return [block("dicts_delete", targets.lineno, {
+            return block("dicts_delete", targets.lineno, {
                 "KEY":this.Str_value(targets.targets[0].slice.value)
             }, {
                 "DICT": this.convert(targets.targets[0].value)
             }, {
                 "inline": "true"
-            })];
+            });
         }else{
-            return [block("lists_remove_at2", targets.lineno, {
+            return block("lists_remove_at2", targets.lineno, {
                 "OP":'del'
             }, {
                 "LIST": this.convert(targets.targets[0].value),
                 "DATA": this.convert(targets.targets[0].slice.value),
             }, {
                 "inline": "true"
-            })];
+            });
         }
 
     }else {
-        return [block("lists_del_general", targets.lineno, {}, {
+        return block("lists_del_general", targets.lineno, {}, {
             "TUP": this.convert(targets.targets[0])
         }, {
             "inline": "true"
-        })];
+        });
     }
 }
 
@@ -583,14 +583,17 @@ PythonToBlocks.prototype.Assign = function(node)
             if (py2block_config.ignoreS.has(this.Name_str(targets[0]))) {
                 return null;
             }
-            if (value._astname === "Call") {
-                if (value.func._astname == "Name") {
-                    py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.id.v;
+            try{
+                if (value._astname === "Call") {
+                    if (value.func._astname == "Name") {
+                        py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.id.v;
+                    } else {
+                        py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.attr.v;
+                    }
                 } else {
-                    py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.attr.v;
+                    py2block_config.objectTypeD[this.Name_str(targets[0])] = value._astname;
                 }
-            } else {
-                py2block_config.objectTypeD[this.Name_str(targets[0])] = value._astname;
+            }catch(e){
             }
             for (var key in py2block_config.assignD['dict']) {
                 try {
@@ -604,23 +607,22 @@ PythonToBlocks.prototype.Assign = function(node)
         }else if(targets[0]._astname == "Subscript"){
             var valueAstname = targets[0].slice.value._astname;
             if(valueAstname == "Str") {
-                return [block("dicts_add_or_change", targets.lineno, {
+                return block("dicts_add_or_change", targets.lineno, {
                     "KEY": this.Str_value(targets[0].slice.value)
                 }, {
                     "DICT": this.convert(targets[0].value),
                     "VAR": this.convert(value)
                 }, {
                     "inline": "true"
-                })];
+                });
             }else{
-                return [block("lists_setIndex3", targets.lineno, {}, {
+                return block("lists_setIndex3", targets.lineno, {}, {
                     "LIST": this.convert(targets[0].value),
                     "AT": this.convert(targets[0].slice.value),
                     "TO": this.convert(value)
-
                 }, {
                     "inline": "true"
-                })];
+                });
             }
         }
         return block("variables_set", node.lineno, {
@@ -1125,8 +1127,8 @@ PythonToBlocks.prototype.BinOp = function(node)
     }
     if(opName == "ADD"){
         //形如str('XX') + str('XX') 或str('XX') + 'XX' 或'XX' + str('XX') 或'XX' + 'XX'
-        if(((left._astname == "Call" && this.Name_str(left.func) == "str") ||(left._astname == "Str"))
-            && ((right._astname == "Call" && this.Name_str(right.func) == "str") ||(right._astname == "Str"))){
+        if(((left._astname == "Call" && left.func._astname == "Name" && this.Name_str(left.func) == "str") ||(left._astname == "Str"))
+            && ((right._astname == "Call" && right.func._astname == "Name" && this.Name_str(right.func) == "str") ||(right._astname == "Str"))){
             if(left._astname == "Call"){
                 left = left.args[0];
             }
@@ -1341,8 +1343,8 @@ PythonToBlocks.prototype.Compare = function(node)
         //处理文本模块的等于
         //形如str('XX') == str('XX') 或str('XX') == 'XX' 或'XX' == str('XX') 或'XX' == 'XX'
         var right = comparators[0];
-        if(((left._astname == "Call" && this.Name_str(left.func) == "str") ||(left._astname == "Str"))
-            && ((right._astname == "Call" && this.Name_str(right.func) == "str") ||(right._astname == "Str"))){
+        if(((left._astname == "Call" && left.func._astname == "Name" && this.Name_str(left.func) == "str") ||(left._astname == "Str"))
+            && ((right._astname == "Call" && right.func._astname == "Name" && this.Name_str(right.func) == "str") ||(right._astname == "Str"))){
             if(left._astname == "Call"){
                 left = left.args[0];
             }
@@ -1836,12 +1838,14 @@ PythonToBlocks.prototype.Name = function(node)
     var nodeName = this.Name_str(node);
     //处理micropython的管脚(eg:pin10)
     var pinMatcher = /pin[0-9]*/;
-    if(pinMatcher.test(nodeName) && py2block_config.pinType != null){
+    if(py2block_config.board == py2block_config.MICROBITPY
+        && pinMatcher.test(nodeName) && py2block_config.pinType != null){
         return block(py2block_config.pinType, node.lineno, {
                 "PIN": this.identifier(id).replace("pin", '')
             });
     }
-    if((nodeName === "button_a" || nodeName === "button_b") && py2block_config.pinType == "pins_button"){
+    if(py2block_config.board == py2block_config.MICROBITPY
+        && (nodeName === "button_a" || nodeName === "button_b") && py2block_config.pinType == "pins_button"){
         return block(py2block_config.pinType, node.lineno, {
                 "PIN": this.identifier(id)
             });

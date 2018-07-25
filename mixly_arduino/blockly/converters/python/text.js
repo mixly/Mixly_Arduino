@@ -11,9 +11,9 @@ function numConvert(mode) {
             throw new Error("Incorrect number of arguments");
         }
         var paramblock = py2block.convert(args[0]);
-        if (args[0]._astname == "Call" && py2block.Name_str(args[0].func) == "str") {
+        if (args[0]._astname == "Call" && args[0].func._astname == "Name" && py2block.Name_str(args[0].func) == "str") {
             paramblock = py2block.convert(args[0].args[0]);
-        }else if(args[0]._astname == "Call" && py2block.Name_str(args[0].func) == "input"){
+        }else if(args[0]._astname == "Call" && args[0].func._astname == "Name" && py2block.Name_str(args[0].func) == "input"){
             if(pbc.board == pbc.MIXPY) {
                 paramblock = py2block.convert(args[0].args[0]);
                 return block("inout_type_input", func.lineno, {
@@ -43,55 +43,51 @@ pbc.globalFunctionD['bytes'] = numConvert('b');
 pbc.globalFunctionD['chr'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 1) {
         throw new Error("Incorrect number of arguments");
-    } else {
-        var numblock = py2block.convert(args[0]);
-        return block("ascii_to_char", func.lineno, {}, {
-                'VAR': numblock,
-            }, {
-                "inline": "false"
-            });
     }
+    var numblock = py2block.convert(args[0]);
+    return block("ascii_to_char", func.lineno, {}, {
+            'VAR': numblock,
+        }, {
+            "inline": "false"
+        });
 }
 
 
 pbc.globalFunctionD['ord'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 1) {
         throw new Error("Incorrect number of arguments");
-    } else {
-        var numblock = py2block.convert(args[0]);
-        return block("char_to_ascii", func.lineno, {}, {
-                'VAR': numblock,
-            }, {
-                "inline": "false"
-            });
     }
+    var numblock = py2block.convert(args[0]);
+    return block("char_to_ascii", func.lineno, {}, {
+            'VAR': numblock,
+        }, {
+            "inline": "false"
+        });
 }
 
 
 pbc.globalFunctionD['str'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 1) {
         throw new Error("Incorrect number of arguments");
-    } else {
-        var numblock = py2block.convert(args[0]);
-        return block("number_to_text", func.lineno, {}, {
-                'VAR': numblock,
-            }, {
-                "inline": "false"
-            });
     }
+    var numblock = py2block.convert(args[0]);
+    return block("number_to_text", func.lineno, {}, {
+            'VAR': numblock,
+        }, {
+            "inline": "false"
+        });
 }
 
 pbc.globalFunctionD['len'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 1) {
         throw new Error("Incorrect number of arguments");
-    } else {
-        var numblock = py2block.convert(args[0]);
-        return block("text_length", func.lineno, {}, {
-                'VAR': numblock,
-            }, {
-                "inline": "false"
-            });
     }
+    var numblock = py2block.convert(args[0]);
+    return block("text_length", func.lineno, {}, {
+            'VAR': numblock,
+        }, {
+            "inline": "false"
+        });
 }
 
 
@@ -104,7 +100,7 @@ pbc.moduleFunctionD.get('random')['choice'] = function (py2block, func, args, ke
     }
     var argblock = py2block.convert(args[0]);
     var argAstname = args[0]._astname;
-    if(args[0]._astname == "Call" && py2block.Name_str(args[0].func) == "str"){
+    if(args[0]._astname == "Call" && args[0].func._astname == "Name" && py2block.Name_str(args[0].func) == "str"){
         argblock = py2block.convert(args[0].args[0]);
         argAstname = "Str";
     }
@@ -132,21 +128,21 @@ function startEndWithStr(mode){
             throw new Error("Incorrect number of arguments");
         }
         var objblock = py2block.convert(func.value);
-        if(func.value._astname == "Call" && py2block.Name_str(func.value.func) == "str"){
+        if(func.value._astname == "Call" && func.value.func._astname == "Name" && py2block.Name_str(func.value.func) == "str"){
             objblock = py2block.convert(func.value.args[0]);
         }
         var argblock = py2block.convert(args[0]);
-        if(args[0]._astname == "Call" && py2block.Name_str(args[0].func) == "str"){
+        if(args[0]._astname == "Call" && args[0].func._astname == "Name" && py2block.Name_str(args[0].func) == "str"){
             argblock = py2block.convert(args[0].args[0]);
         }
-        return [block('text_equals_starts_ends', func.lineno, {
+        return block('text_equals_starts_ends', func.lineno, {
             'DOWHAT':mode
         }, {
             'STR1':objblock,
             'STR2':argblock
         }, {
             "inline": "true"
-        })];
+        });
     }
     return converter;
 }
