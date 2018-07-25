@@ -1,8 +1,5 @@
 'use strict';
 
-var pbc = Py2blockConfig.prototype;
-
-
 pbc.assignD.get('Turtle')['check_assign'] = function (py2block, node, targets, value) {
     if(value.func._astname != "Attribute" || value.func.value._astname != "Name"){
         return false;
