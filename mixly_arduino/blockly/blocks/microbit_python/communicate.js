@@ -95,6 +95,18 @@ Blockly.Blocks['microbit_radio_config'] = {
         }, {
           "type" : "input_dummy"
         }, {
+          "name" : "address",
+          //"options" : [["1Mbit", "RATE_1MBIT"], ["250Kbit", "RATE_250KBIT"], ["2Mbit", "RATE_2MBIT"]],
+          "type" : "input_value"
+        }, {
+          "type" : "input_dummy"
+        }, {
+          "name" : "group",
+          //"options" : [["1Mbit", "RATE_1MBIT"], ["250Kbit", "RATE_250KBIT"], ["2Mbit", "RATE_2MBIT"]],
+          "type" : "input_value"
+        }, {
+          "type" : "input_dummy"
+        }, {
           "name" : "data_rate",
           //"options" : [["1Mbit", "RATE_1MBIT"], ["250Kbit", "RATE_250KBIT"], ["2Mbit", "RATE_2MBIT"]],
           "type" : "input_value"

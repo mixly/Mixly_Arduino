@@ -32,13 +32,15 @@ pbc.moduleFunctionD.get('radio')['reset'] = function (py2block, func, args, keyw
 
 
 pbc.moduleFunctionD.get('radio')['config'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0 || keywords.length !== 5) { //length=32, queue=3, channel=100, power=0, data_rate=radio.RATE_1MBIT
+    if (args.length !== 0 || keywords.length !== 7) { //length=32, queue=3, channel=7, power=6, address=0x75626974, group=0, data_rate=radio.RATE_1MBIT
         throw new Error("Incorrect number of arguments");
     }
     var lengthblock = null;
     var queueblock = null;
     var channelblock = null;
     var powerblock = null;
+    var addressblock = null;
+    var groupblock = null;
     var datarateblock = null;
     // var baudrate = null;
     for (var i = 0; i < keywords.length; i++) {
@@ -52,16 +54,22 @@ pbc.moduleFunctionD.get('radio')['config'] = function (py2block, func, args, key
             channelblock = py2block.convert(param.value);
         } else if (key === "power") {
             powerblock = py2block.convert(param.value);
+        } else if (key === "address") {
+            addressblock = py2block.convert(param.value);
+        } else if (key === "group") {
+            groupblock = py2block.convert(param.value);
         } else if (key === "data_rate") {
             datarateblock = py2block.convert(param.value);
+        }
     }
-    }
-    if (lengthblock != null && queueblock != null && channelblock != null && powerblock != null /*&& data_rate!=null*/) {
+    if (lengthblock != null && queueblock != null && channelblock != null && powerblock != null && addressblock != null && groupblock != null/*&& data_rate!=null*/) {
         return [block("microbit_radio_config", func.lineno, {}, {
             "length": lengthblock,
             "queue": queueblock,
             "channel": channelblock,
             "power": powerblock,
+            "address": addressblock,
+            "group": groupblock
             "data_rate": datarateblock,
         }, {
             "inline": "true"
