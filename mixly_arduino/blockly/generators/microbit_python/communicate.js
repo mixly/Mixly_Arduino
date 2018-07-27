@@ -50,8 +50,17 @@ Blockly.Python['microbit_radio_reset'] = function(block) {
 Blockly.Python.radio_send_string = function () {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_radio'] = 'import radio';
+  var type = this.getFieldValue('type');
     var number = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
-    return "radio.send(" + number + ")\n";
+    return "radio."+type+"(" + number + ")\n";
+}
+
+Blockly.Python.radio_receive_string = function () {
+  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+  Blockly.Python.definitions_['import_radio'] = 'import radio';
+  var type = this.getFieldValue('type');
+  var code = "radio."+type+"()";
+  return [code, Blockly.Python.ORDER_MEMBER];
 }
 
 Blockly.Python['microbit_radio_receive'] = function(block) {

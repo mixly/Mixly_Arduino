@@ -89,26 +89,22 @@ Blockly.Blocks['microbit_radio_config'] = {
         }, {
           "type" : "input_dummy"
         }, {
-		   "name" : "power",         
-		  // "options" : [['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7']],
+		      "name" : "power",         
           "type" : "input_value"
         }, {
           "type" : "input_dummy"
         }, {
           "name" : "address",
-          //"options" : [["1Mbit", "RATE_1MBIT"], ["250Kbit", "RATE_250KBIT"], ["2Mbit", "RATE_2MBIT"]],
           "type" : "input_value"
         }, {
           "type" : "input_dummy"
         }, {
           "name" : "group",
-          //"options" : [["1Mbit", "RATE_1MBIT"], ["250Kbit", "RATE_250KBIT"], ["2Mbit", "RATE_2MBIT"]],
           "type" : "input_value"
         }, {
           "type" : "input_dummy"
         }, {
           "name" : "data_rate",
-          //"options" : [["1Mbit", "RATE_1MBIT"], ["250Kbit", "RATE_250KBIT"], ["2Mbit", "RATE_2MBIT"]],
           "type" : "input_value"
         }
       ]
@@ -151,10 +147,14 @@ Blockly.Blocks['microbit_radio_send_string'] = {
 Blockly.Blocks['radio_send_string'] = {
     init:function(){
         this.setColour(Blockly.Blocks.communicate.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_MICROBIT_RADIO_SEND);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([
+              [Blockly.MIXLY_MICROBIT_MSG,'send'],
+              [Blockly.MIXLY_MICROBIT_MSG_BYTE,'send_bytes']]), "type")
         this.appendValueInput('data')
-            .setCheck(String)
-            .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_SEND_STRING);
-
+            // .setCheck(String)
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
@@ -173,6 +173,22 @@ Blockly.Blocks['microbit_radio_receive'] = {
     });
   }
 };
+
+Blockly.Blocks['radio_receive_string'] = {
+    init:function(){
+        this.setColour(Blockly.Blocks.communicate.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_MICROBIT_Receive_message);
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([
+              [Blockly.MIXLY_MICROBIT_MSG,'receive'],
+              [Blockly.MIXLY_MICROBIT_MSG_BYTE,'receive_bytes'],
+              [Blockly.MIXLY_MICROBIT_MSG_FULL,'receive_full']]), "type")
+        this.setOutput(true);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_MICROBIT_Receive_message);
+    }
+}
 
 Blockly.Blocks['i2c_init'] = {
   init: function() {

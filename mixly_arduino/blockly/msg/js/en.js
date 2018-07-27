@@ -1790,3 +1790,7 @@ Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_SUM = "Returns the sum of all the numbers 
 Blockly.Msg.TUPLE_DEL_TOOLTIP = "Delete the tuple variable and release the storage space for the tuple variable.";
 Blockly.Msg.PYTHON_TUPLE_GET_SUBLIST_TOOLTIP = "Copy the specified part of the tuple.";
 Blockly.MIXLY_ESP32_NETWORK_SERVER="Set ESP32 to receive messages for the server";
+Blockly.MIXLY_MICROBIT_RADIO_SEND="radio send";
+Blockly.MIXLY_MICROBIT_MSG="message"
+Blockly.MIXLY_MICROBIT_MSG_BYTE="message(containing bytes)"
+Blockly.MIXLY_MICROBIT_MSG_FULL="(message, RSSI, timestamp)"

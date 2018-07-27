@@ -1792,3 +1792,7 @@ Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_SUM = "返回元組中的所有數字的�
 Blockly.Msg.TUPLE_DEL_TOOLTIP = "刪除元組變數，釋放元組變數的儲存空間。";
 Blockly.Msg.PYTHON_TUPLE_GET_SUBLIST_TOOLTIP = "複製元組中指定的部分。";
 Blockly.MIXLY_ESP32_NETWORK_SERVER="設置ESP32為服務端接收消息";
+Blockly.MIXLY_MICROBIT_RADIO_SEND="無綫發送";
+Blockly.MIXLY_MICROBIT_MSG="消息"
+Blockly.MIXLY_MICROBIT_MSG_BYTE="消息(含字節)"
+Blockly.MIXLY_MICROBIT_MSG_FULL="(消息,信號强度,時間戳)"

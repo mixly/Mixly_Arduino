@@ -51,7 +51,7 @@ var PythonHighlightRules = function() {
         // micropythonOSFunctions
         "listdir|remove|size|uname|"+
         // micropythonRadioFunctions
-        "on|off|config|reset|send_bytes|receive_bytes|receive_bytes_into|send|receive|"+
+        "on|off|config|reset|send_bytes|receive_bytes|receive_full|receive_bytes_into|send|receive|"+
         // micropythonRandomFunctions
         "getrandbits|seed|randint|randrange|choice|random|uniform|"+
         // micropythonSpeechFunctions

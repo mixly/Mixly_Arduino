@@ -69,7 +69,7 @@ pbc.moduleFunctionD.get('radio')['config'] = function (py2block, func, args, key
             "channel": channelblock,
             "power": powerblock,
             "address": addressblock,
-            "group": groupblock
+            "group": groupblock,
             "data_rate": datarateblock,
         }, {
             "inline": "true"
@@ -89,12 +89,40 @@ pbc.moduleFunctionD.get('radio')['send'] = function (py2block, func, args, keywo
     })];
 }
 
+pbc.moduleFunctionD.get('radio')['send_bytes'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length === 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return [block("radio_send_string", func.lineno, {"type": "send_bytes"}, {
+        "data": py2block.convert(args[0]),
+    }, {
+        "inline": "true"
+    })];
+}
 
 pbc.moduleFunctionD.get('radio')['receive'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("microbit_radio_receive", func.lineno, {}, {}, {
+    return block("radio_receive_string", func.lineno, {}, {}, {
+        "inline": "true"
+    });
+}
+
+pbc.moduleFunctionD.get('radio')['receive_bytes'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return block("radio_receive_string", func.lineno, {"type": "receive_bytes"}, {}, {
+        "inline": "true"
+    });
+}
+
+pbc.moduleFunctionD.get('radio')['receive_full'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return block("radio_receive_string", func.lineno, {"type": "receive_full"}, {}, {
         "inline": "true"
     });
 }
