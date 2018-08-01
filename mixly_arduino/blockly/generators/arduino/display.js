@@ -12,7 +12,7 @@ Blockly.Arduino.group_lcd_init = function() {
   var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27';
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
   Blockly.Arduino.definitions_['include_LiquidCrystal_I2C'] = '#include <LiquidCrystal_I2C.h>';
-  Blockly.Arduino.definitions_['var_LiquidCrystal_I2C_'+varName] = 'LiquidCrystal_I2C'+varName+'('+device+','+TYPE+');';
+  Blockly.Arduino.definitions_['var_LiquidCrystal_I2C_'+varName] = 'LiquidCrystal_I2C '+varName+'('+device+','+TYPE+');';
   Blockly.Arduino.setups_['setup_lcd_init_' + varName] = varName + '.init();';
   Blockly.Arduino.setups_['setup_lcd_backlight_' + varName] = varName + '.backlight();';  
   return '';
