@@ -384,10 +384,10 @@ Blockly.Blocks.servo_move = {
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.MIXLY_DEGREE_0_180);
-    this.appendValueInput("DELAY_TIME", Number)
-        .setCheck(Number)
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.MIXLY_DELAY+'('+Blockly.MIXLY_DELAY_MS+')');
+    // this.appendValueInput("DELAY_TIME", Number)
+    //     .setCheck(Number)
+    //     .setAlign(Blockly.ALIGN_RIGHT)
+    //     .appendField(Blockly.MIXLY_DELAY+'('+Blockly.MIXLY_DELAY_MS+')');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);

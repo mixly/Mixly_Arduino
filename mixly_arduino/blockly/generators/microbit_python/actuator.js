@@ -187,18 +187,9 @@ Blockly.Python.servo_move = function() {
         '        self.write_us(us)\n'+
         '\n';
 
-    Blockly.Python.setups_['mixly_servo_write_angle']=
-        'def mixly_servo_write_angle(pin,ang,delay):\n'+
-        '    Servo(pin).write_angle(ang)\n'+
-        '    sleep(delay)\n';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN',Blockly.Python.ORDER_ATOMIC);
     var value_degree = Blockly.Python.valueToCode(this, 'DEGREE', Blockly.Python.ORDER_ATOMIC);
-    //value_degree = value_degree.replace('(','').replace(')','')
-    var delay_time = Blockly.Python.valueToCode(this, 'DELAY_TIME', Blockly.Python.ORDER_ATOMIC) || '0'
-    //delay_time = delay_time.replace('(','').replace(')','');
 
-    /* var code = 'Servo(pin'+dropdown_pin+').write_angle('+value_degree+')\n'+'sleep(' + delay_time + ')\n';
-     return code;*/
-    var code= 'mixly_servo_write_angle('+dropdown_pin+','+value_degree+','+delay_time+')\n';
+    var code = 'Servo('+dropdown_pin+').write_angle('+value_degree+')'
     return code;
 };
