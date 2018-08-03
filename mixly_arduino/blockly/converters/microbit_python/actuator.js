@@ -1,20 +1,18 @@
 'use strict';
 
 pbc.globalFunctionD['mixly_servo_write_angle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length != 3) {
+    if (args.length != 2) {
         throw new Error("Incorrect number of arguments");
     }
     pbc.pinType = "pins_pwm";
     var pinblock = py2block.convert(args[0]);
     pbc.pinType = null;
     var angblock = py2block.convert(args[1]);
-    var delayblock = py2block.convert(args[2]);
-    if (pinblock != null && angblock != null && delayblock != null) {
+    if (pinblock != null && angblock != null) {
         return [block("servo_move", func.lineno, {},
             {
                 "PIN": pinblock,
                 "DEGREE": angblock,
-                "DELAY_TIME": delayblock,
             }, {
                 "inline": "true"
             })];

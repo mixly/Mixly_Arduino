@@ -185,11 +185,14 @@ Blockly.Python.servo_move = function() {
         '        total_range = self.max_us - self.min_us\n'+
         '        us = self.min_us + total_range * degrees // self.angle\n'+
         '        self.write_us(us)\n'+
+        '\n'+
+        'def mixly_servo_write_angle(pin, degree):\n'+
+        '    Servo(pin).write_angle(degree)'+
         '\n';
 
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN',Blockly.Python.ORDER_ATOMIC);
     var value_degree = Blockly.Python.valueToCode(this, 'DEGREE', Blockly.Python.ORDER_ATOMIC);
 
-    var code = 'Servo('+dropdown_pin+').write_angle('+value_degree+')'
+    var code = 'mixly_servo_write_angle('+dropdown_pin+', '+value_degree+')'
     return code;
 };
