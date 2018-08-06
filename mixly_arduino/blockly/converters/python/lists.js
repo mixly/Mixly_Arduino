@@ -127,7 +127,7 @@ function listFindCount(mode){
     };
     return converter;
 }
-pbc.objectFunctionD.get('find')['List'] = listFindCount('INDEX');
+pbc.objectFunctionD.get('index')['List'] = listFindCount('INDEX');
 pbc.objectFunctionD.get('count')['List'] = listFindCount('COUNT');
 
 
