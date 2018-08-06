@@ -142,7 +142,6 @@ Blockly.Python.math_trig = Blockly.Python.math_single;
 
 
 Blockly.Python.math_to_int = function() {
-  Blockly.Python.definitions_.import_math = "import math";
   var argument0 = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_NONE) || '0';
   var operator = this.getFieldValue('OP');
   var code = "";
@@ -150,6 +149,7 @@ Blockly.Python.math_to_int = function() {
       code= operator+'('+argument0+')';
   }else{
       code= "math." + operator+'('+argument0+')';
+      Blockly.Python.definitions_.import_math = "import math";
   }
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
