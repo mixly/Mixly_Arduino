@@ -100,13 +100,13 @@ Blockly.Python.math_single = function (a) {
     c = "math.floor(" + a + ")";
     break;
   case "SIN":
-    c = "math.sin(math.radians(" + a + "))";
+    c = "math.sin(" + a + ")";
     break;
   case "COS":
-    c = "math.cos(math.radians(" + a + "))";
+    c = "math.cos(" + a + ")";
     break;
   case "TAN":
-    c = "math.tan(math.radians(" + a + "))";
+    c = "math.tan(" + a + ")";
     break;
   case "++":
     c = "++(" + a + ")";

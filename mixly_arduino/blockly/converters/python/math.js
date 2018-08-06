@@ -7,22 +7,22 @@ function mathTrigonometric(mode) {
         if (args.length != 1) {
             throw new Error("Incorrect number of arguments");
         }
-        if (args[0]._astname == "Call"
-            && args[0].func._astname == "Attribute"
-            && args[0].func.value._astname == "Name"
-            && py2block.Name_str(args[0].func.value) == "math"
-            && py2block.identifier(args[0].func.attr) == "radians"
-            && args[0].args.length == 1) {
+        // if (args[0]._astname == "Call"
+        //     && args[0].func._astname == "Attribute"
+        //     && args[0].func.value._astname == "Name"
+        //     && py2block.Name_str(args[0].func.value) == "math"
+        //     && py2block.identifier(args[0].func.attr) == "radians"
+        //     && args[0].args.length == 1) {
             return block("math_trig", func.lineno, {
                 'OP': mode
             }, {
-                'NUM': py2block.convert(args[0].args[0])
+                'NUM': py2block.convert(args[0])
             }, {
                 "inline": "true"
             });
-        } else {
-            throw new Error("not implement math." + mode);
-        }
+        // } else {
+        //     throw new Error("not implement math." + mode);
+        // }
 
 
     }
