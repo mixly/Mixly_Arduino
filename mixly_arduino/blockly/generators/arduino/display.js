@@ -239,63 +239,40 @@ Blockly.Arduino.display_4digitdisplay_showDot=function(){
 	Blockly.Arduino.setups_['setup_display_4display_init'] ='tm_4display.init();';
 	return 'tm_4display.setDot('+no+','+stat+');\n';
 }
+var tm1637_DIO;
+var tm1637_CLK;
+
 Blockly.Arduino.display_TM1637_init = function () {
-    var CLK = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
-    var DIO = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_['include_TM1637'] = '#include <TM1637.h>';
-    Blockly.Arduino.definitions_['var_tm1637'] = 'TM1637 tm1637(' + CLK + ',' + DIO + ');';
-    Blockly.Arduino.setups_['setup_tm1637_init'] = 'tm1637.init();\n  tm1637.set();\n';
-    return '';
+ tm1637_CLK = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
+  tm1637_DIO= Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['include_SevenSegmentTM1637'] = '#include <SevenSegmentTM1637.h>';
+  
+  Blockly.Arduino.definitions_['var_SevenSegmentTM1637'] = 'SevenSegmentTM1637  display(' + tm1637_CLK + ',' + tm1637_DIO + ');';
+  Blockly.Arduino.setups_['setup_ display.begin()'] = ' display.begin();\n';
+  return '';
 };
 
-Blockly.Arduino.display_TM1637_displayString = function () {
+Blockly.Arduino.display_TM1637_displyPrint = function () {
     //var Speed = Blockly.Arduino.valueToCode(this, 'Speed', Blockly.Arduino.ORDER_ATOMIC);
     var VALUE = Blockly.Arduino.valueToCode(this, 'VALUE', Blockly.Arduino.ORDER_ATOMIC);
-    var code = 'tm1637.display(' + VALUE + ');' + '\n';
+    var code = 'display.print(' + VALUE + ');' + '\n';
     return code;
-};
+  };
 
-Blockly.Arduino.display_TM1637_displayTime = function () {
+  Blockly.Arduino.display_TM1637_displayTime = function () {
+    Blockly.Arduino.definitions_['include_SevenSegmentExtended'] = '#include <SevenSegmentExtended.h>';
+    Blockly.Arduino.definitions_['var_SevenSegmentTM1637'] = 'SevenSegmentExtended  display(' + tm1637_CLK + ',' + tm1637_DIO + ');';
     var hour = Blockly.Arduino.valueToCode(this, 'hour', Blockly.Arduino.ORDER_ATOMIC);
     var minute = Blockly.Arduino.valueToCode(this, 'minute', Blockly.Arduino.ORDER_ATOMIC);
-    var code = 'tm1637.displayTime(' + hour + ',' + minute +');\n';
+    var code = 'display.printTime(' + hour + ',' + minute +',true);\n';
     return code;
-};
+  };
 
-Blockly.Arduino.display_TM1637_Stopwatch = function () {
-    var STAT = this.getFieldValue('STAT');
-    Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
-    Blockly.Arduino.definitions_['include_timerone'] = '#include <TimerOne.h>';
-    Blockly.Arduino.definitions_['include_pgmspace'] = '#include <avr/pgmspace.h>';
-    Blockly.Arduino.definitions_['define_ON'] = '#define ON 1\n'
-    Blockly.Arduino.definitions_['define_OFF'] = '#define OFF 0\n';
-
-    Blockly.Arduino.definitions_['definitions_TimeDisp'] = 'int8_t TimeDisp[] = {0x00,0x00,0x00,0x00};\nunsigned char ClockPoint = 1;\nunsigned char Update;\nunsigned char microsecond_10 = 0;\nunsigned char second;\nunsigned char _microsecond_10 = 0;\nunsigned char _second;\nunsigned int eepromaddr;\nboolean Flag_ReadTime;\n';
-    
-    Blockly.Arduino.definitions_['void_TimingISR2'] = 'void TimingISR2(){\n   microsecond_10 ++;\n   Update = ON;\n   if(microsecond_10 == 100){\n      second ++;\n      if(second == 60)\n         second = 0;\n      microsecond_10 = 0;\n   }\n   ClockPoint =(~ClockPoint) & 0x01;\n   if(Flag_ReadTime == 0){\n      _microsecond_10 = microsecond_10;\n      _second = second;\n   }\n}\n';
-
-    Blockly.Arduino.definitions_['void_TimeUpdate2'] = 'void TimeUpdate2(void){\n   if(ClockPoint)\n      tm1637.point(POINT_ON);\n   else\n      tm1637.point(POINT_OFF);\n   TimeDisp[2] = _microsecond_10 / 10;\n   TimeDisp[3] = _microsecond_10 % 10;\n   TimeDisp[0] = _second / 10;\n   TimeDisp[1]= _second % 10;\n   Update = OFF;\n}\n';
-
-    Blockly.Arduino.definitions_['void_stopwatchStart'] = 'void stopwatchStart(){\n   Flag_ReadTime = 0;\n   TCCR1B |=Timer1.clockSelectBits; \n}\n';
-    Blockly.Arduino.definitions_['void_stopwatchPause'] = 'void stopwatchPause(){\n   TCCR1B &= ~(_BV(CS10) | _BV(CS11) | _BV(CS12));\n}\n';
-
-    Blockly.Arduino.definitions_['void_stopwatchReset'] = 'void stopwatchReset(){\n   stopwatchPause();\n   Flag_ReadTime = 0;\n   _microsecond_10 = 0;\n   _second = 0;\n   microsecond_10 = 0;\n   second = 0;\n   Update = ON;\n}\n';
-    Blockly.Arduino.definitions_['void_saveTime'] = 'void saveTime(){\n   EEPROM.write(eepromaddr ++,microsecond_10);\n   EEPROM.write(eepromaddr ++,second);\n}\n';
-
-    Blockly.Arduino.definitions_['void_readTime'] = 'void readTime(){\n   Flag_ReadTime = 1;\n   if(eepromaddr == 0){\n      Serial.println("The time had been read");\n      _microsecond_10 = 0;\n      _second = 0;\n   } else{\n      _second = EEPROM.read(-- eepromaddr);\n      _microsecond_10 = EEPROM.read(-- eepromaddr);\n      Serial.println("List the time");\n   }\n   Update = ON;\n}';
-
-    Blockly.Arduino.setups_['setup_tm1637_stopwatch'] = 'Timer1.initialize(10000);\n  Timer1.attachInterrupt(TimingISR2);\n ';
-
-    var code = STAT + '();\n';
-    code += 'if(Update == ON){\n   TimeUpdate2();\n   tm1637.display(TimeDisp);\n}';
+  Blockly.Arduino.display_TM1637_Brightness = function () {
+    var BRIGHTNESS = Blockly.Arduino.valueToCode(this, 'Brightness', Blockly.Arduino.ORDER_ATOMIC);
+    var code = 'display.setBacklight(' + BRIGHTNESS + ');\n';
     return code;
-};
-
-Blockly.Arduino.display_TM1637_Brightness = function () {
-    var BRIGHTNESS = this.getFieldValue('BRIGHTNESS');
-    var code = 'tm1637.set(' + BRIGHTNESS + ');\n';
-    return code;
-};
+  };
 Blockly.Arduino.display_Matrix_Init = function() {
   var SDA = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
   var SCL = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);

@@ -367,11 +367,10 @@ Blockly.Blocks.display_TM1637_init = {
 };
 
 
-Blockly.Blocks.display_TM1637_displayString = {
+Blockly.Blocks.display_TM1637_displyPrint = {
     init: function () {
         this.setColour(Blockly.Blocks.display.HUE);
-        this.appendValueInput("VALUE").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING);
-        //this.appendValueInput("Speed").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_4DIGITDISPLAY_SPEED);
+        this.appendValueInput("VALUE").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYPRINT);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -395,32 +394,13 @@ Blockly.Blocks.display_TM1637_displayTime = {
     }
 };
 
-Blockly.Blocks.display_TM1637_Stopwatch = {
-    init: function () {
-        this.setColour(Blockly.Blocks.display.HUE);
-        this.appendDummyInput("").appendField(Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH).appendField(new Blockly.FieldDropdown([
-          [Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_START, "stopwatchStart"],
-          [Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_PAUSE, "stopwatchPause"],
-          [Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_RESET, "stopwatchReset"], ]), "STAT");
-        this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_TM1637_STOPWATCH_TOOLTIP);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setInputsInline(true);
-    }
-};
+
 
 Blockly.Blocks.display_TM1637_Brightness = {
     init: function () {
         this.setColour(Blockly.Blocks.display.HUE);
-        this.appendDummyInput("").appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_BRIGHTNESS).appendField(new Blockly.FieldDropdown([
-          ["7", "7"],
-          ["6", "6"],
-          ["5", "5"],
-          ["4", "4"],
-          ["3", "3"],
-          ["2", "2"],
-          ["1", "1"]
-        ]), "BRIGHTNESS");
+        this.appendDummyInput("").appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_BRIGHTNESS);
+        this.appendValueInput("Brightness").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT);
         this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_4DIGITDISPLAY_BRIGHTNESS_TOOLTIP);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
