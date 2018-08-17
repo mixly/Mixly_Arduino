@@ -155,3 +155,18 @@ Blockly.Python.dicts_add_change_del = function(block){
   return code;
 };
 
+Blockly.Python.dicts_pop = function(){
+  var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var text=this.getFieldValue('KEY');
+  var code=varName + ".pop('"  + text + "')";
+  return [code, Blockly.Python.ORDER_ATOMIC];
+}
+
+
+Blockly.Python.dicts_setdefault = function() {
+  var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || 'mydict';
+  var text=this.getFieldValue('KEY');
+  var argument = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var code= varName + ".setdefault "+ "('" + text + "'," + argument + ")\n";
+  return code;
+};

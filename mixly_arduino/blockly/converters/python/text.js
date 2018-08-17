@@ -152,3 +152,118 @@ pbc.objectFunctionD.get('endswith')['Str'] = startEndWithStr('endswith');
 
 
 // 'mixly'[0:8]这种形式的，在python_to_blockly.js中实现
+function strTitle(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var textblock = py2block.convert(func.value);
+        return block("text_capital", func.lineno, {
+            'TEXT_CAPITAL': mode,
+        }, {
+            "VAR": textblock,
+        }, {
+            "inline": "true"
+        });
+    }
+    return converter;
+}
+pbc.objectFunctionD.get('title')['Str'] = strTitle('title');
+pbc.objectFunctionD.get('lower')['Str'] = strTitle('lower');
+
+
+function textStrip(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var objblock = py2block.convert(func.value);        
+        return block("text_strip", func.lineno, {
+            'STRIP': mode,
+        }, {
+            "VAR": objblock,            
+        }, {
+            "inline": "true"
+        });
+    }
+    return converter;
+}
+
+pbc.objectFunctionD.get('strip')['Str'] = textStrip('strip');
+pbc.objectFunctionD.get('lstrip')['Str'] = textStrip('lstrip');
+pbc.objectFunctionD.get('rstrip')['Str'] =  textStrip('rstrip');
+
+
+
+function textAlign(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 2) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var objblock = py2block.convert(func.value);
+        var argblock1 = py2block.convert(args[0]);
+        var argblock2 = py2block.convert(args[1]);
+        return block("text_center", func.lineno, {
+            'TEXT_CENTER': mode,
+        }, {
+            "VAR": objblock, 
+            "WID": argblock1,
+            "Symbol": argblock2
+        }, {
+            "inline": "true"
+        });
+    }
+    return converter;
+}
+
+pbc.objectFunctionD.get('ljust')['Str'] = textAlign('ljust');
+pbc.objectFunctionD.get('center')['Str'] = textAlign('center');
+pbc.objectFunctionD.get('rjust')['Str'] =  textAlign('rjust');
+
+
+pbc.objectFunctionD.get('split')['Str'] = function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 1) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var objblock = py2block.convert(func.value);       
+        var argblock = py2block.convert(args[0]); 
+        return block("text_split", func.lineno, {           
+        }, {
+            "VAR": objblock,  
+            "VAL": argblock          
+        }, {
+            "inline": "true"
+        });
+    }
+
+pbc.objectFunctionD.get('replace')['Str'] = function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 2) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var objblock = py2block.convert(func.value);       
+        var argblock1 = py2block.convert(args[0]); 
+        var argblock2 = py2block.convert(args[1]);
+        return block("text_replace", func.lineno, {           
+        }, {
+            "VAR": objblock,  
+            "STR1": argblock1,
+            "STR2": argblock2          
+        }, {
+            "inline": "true"
+        });
+    }
+
+pbc.objectFunctionD.get('find')['Str'] = function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 1) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var objblock = py2block.convert(func.value);       
+        var argblock = py2block.convert(args[0]); 
+        return block("text_find", func.lineno, {           
+        }, {
+            "VAR": objblock,  
+            "STR": argblock          
+        }, {
+            "inline": "true"
+        });
+    }
