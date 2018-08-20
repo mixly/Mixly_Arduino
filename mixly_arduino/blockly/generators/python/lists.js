@@ -442,7 +442,7 @@ Blockly.Python.lists_find = function(){
   var varName = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var argument = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   if (op=='INDEX')
-    var code = varName + '.index('  + argument + ')';
+    var code = varName + '.find('  + argument + ')';
   else if (op=='COUNT')
     var code = varName + '.count('  + argument + ')';
   return [code, Blockly.Python.ORDER_ATOMIC];
