@@ -19,7 +19,7 @@ pbc.assignD.get('Set')['create_block'] = function (py2block, node, targets, valu
 
 //len在text里实现
 
-pbc.objectFunctionD.get('pop')['Set'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('pop')['Set'] = function(py2block, func, args, keywords, starargs, kwargs, node){   
     if (args.length === 0) {
         var popblock = py2block.convert(func.value);
         return block("set_get_remove_last", func.lineno, {}, {
@@ -28,14 +28,26 @@ pbc.objectFunctionD.get('pop')['Set'] = function(py2block, func, args, keywords,
             "inline": "true"
         });
     }else if(args.length === 1){
-        var objblock = py2block.convert(func.value);
-        var argblock = py2block.convert(args[0]);
-        return block("lists_pop", func.lineno, {}, {
-            "LIST":objblock,
-            "VALUE":argblock
-        }, {
-            "inline": "true"
-        });
+        if (args[0]._astname =="Num"){
+            var objblock = py2block.convert(func.value);        
+            var argblock = py2block.convert(args[0]);
+            return block("lists_pop", func.lineno, {}, {
+                "LIST":objblock,
+                "VALUE":argblock
+            }, {
+                "inline": "true"
+            });}
+        else if (args[0]._astname =="Str"){
+            var objblock = py2block.convert(func.value);        
+            var argblock = py2block.convert(args[0]);
+            return block("dicts_pop", func.lineno, {
+                "KEY": py2block.Str_value(args[0])
+            }, {
+                "DICT":objblock,
+                
+            }, {
+                "inline": "true"
+            });}    
     }else{
         throw new Error("Incorrect number of arguments");
     }

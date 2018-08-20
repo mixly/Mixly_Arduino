@@ -73,3 +73,20 @@ pbc.objectFunctionD.get('values')['Dict'] = function(py2block, func, args, keywo
         "inline": "true"
     });
 };
+
+pbc.objectFunctionD.get('setdefault')['Dict'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 2) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var objblock = py2block.convert(func.value);           
+        var argblock2 = py2block.convert(args[1]); 
+        var argblock = py2block.convert(args[0]); 
+        return [block("dicts_setdefault", func.lineno, {  
+            "KEY": py2block.Str_value(args[0])         
+        }, {
+            "DICT": objblock,             
+            "VAR": argblock2          
+        }, {
+            "inline": "true"
+        })];
+    }

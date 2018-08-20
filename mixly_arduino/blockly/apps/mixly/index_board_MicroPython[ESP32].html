@@ -1,7 +1,7 @@
-<html manifest=node.manifest>
+﻿<html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
-  <title>Mixly microbit</title>
+  <title>Mixly mircrobit</title>
   <script type="text/javascript" src="../../blockly_compressed_py.js"></script>
   <script type="text/javascript" src="../../python_compressed.js"></script>
   <script type="text/javascript" src="../../core/esp32/variables.js"></script>
@@ -12,8 +12,8 @@
   <script src="../../generators/esp32/python.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
   <script type="text/javascript" src="drag.js"></script>
-  <script type="text/javascript" src="code.js"></script>
-  <!--from BlocklyDuino-->
+  <script type="text/javascript" src="code.js"></script> 
+  <!---from BlocklyDuino-->
   <script type="text/javascript" src="Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
   <script type="text/javascript" src="FileSaver.min.js"></script>
@@ -23,12 +23,11 @@
   <script type="text/javascript" src="microbit[py]/myblock.js"></script>
   <script type="text/javascript" src="../../blocks/python/variables.js"></script>
   <script type="text/javascript" src="../../generators/python/variables.js"></script>
-  <script src="../../blocks/esp32/esp32_profile.js"></script>  
-	<!-- blocks file -->
+  <script src="../../blocks/esp32/microbit_profile.js"></script>
+  <!-- blocks file -->
   <script src="../../blocks/esp32/pins.js"></script>
   <script src="../../blocks/esp32/inout.js"></script>
-  <script src="../../blocks/python/control.js"></script>
-  <script src="../../blocks/esp32/system.js"></script>
+  <script src="../../blocks/esp32/control.js"></script>
   <script src="../../blocks/python/math.js"></script>
   <script src="../../blocks/python/text.js"></script>
   <script src="../../blocks/python/lists.js"></script>
@@ -36,7 +35,6 @@
   <script src="../../blocks/python/logic.js"></script>
   <script src="../../blocks/esp32/serial.js"></script>
   <script src="../../blocks/esp32/communicate.js"></script>
-  <script src="../../blocks/esp32/iot.js"></script>
   <script src="../../blocks/esp32/sensor.js"></script>
   <script src="../../blocks/esp32/storage.js"></script>
   <script src="../../blocks/esp32/actuator.js"></script>
@@ -46,11 +44,10 @@
   <script src="../../blocks/python/tuple.js"></script>
   <script src="../../blocks/python/set.js"></script>
   <script src="../../blocks/esp32/old.js"></script>
-	<!-- generator file -->
+  <!-- generator file -->
   <script src="../../generators/esp32/pins.js"></script>
   <script src="../../generators/esp32/inout.js"></script>
-  <script src="../../generators/python/control.js"></script>
-  <script src="../../generators/esp32/system.js"></script>
+  <script src="../../generators/esp32/control.js"></script>
   <script src="../../generators/python/math.js"></script>
   <script src="../../generators/python/text.js"></script>
   <script src="../../generators/python/lists.js"></script>
@@ -58,7 +55,6 @@
   <script src="../../generators/python/logic.js"></script>
   <script src="../../generators/esp32/serial.js"></script>
   <script src="../../generators/esp32/communicate.js"></script>
-  <script src="../../generators/esp32/iot.js"></script>
   <script src="../../generators/esp32/sensor.js"></script>
   <script src="../../generators/esp32/storage.js"></script>
   <script src="../../generators/esp32/actuator.js"></script>
@@ -73,20 +69,7 @@
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
 
-  <script src="../../blocks/python/utility.js"></script>
-  <script src="../../generators/python/utility.js"></script>
-  <script src="./js/py2block_editor.js" type="application/javascript"></script>
-  <script src="./js/py2block_config.js" type="application/javascript"></script>
-  <script src="../../converters/esp32/serial.js" type="application/javascript"></script>
-  <script src="../../converters/python/control.js" type="application/javascript"></script>
-  <script src="../../converters/python/math.js" type="application/javascript"></script>
-  <script src="../../converters/python/lists.js" type="application/javascript"></script>
-  <script src="../../converters/python/tuple.js" type="application/javascript"></script>
-  <script src="../../converters/python/set.js" type="application/javascript"></script>
-  <script src="./js/python_to_blockly.js" type="application/javascript"></script>
-  <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
-  <script src="js/skulpt/dist/skulpt-stdlib.js" type="application/javascript"></script>
-  <link rel="stylesheet" type="text/css" href="color_esp32_advance.css" />
+  <link rel="stylesheet" type="text/css" href="color_esp32.css" />
   <script>
     var sidecodeDisplay=false;
     /**
@@ -170,10 +153,8 @@
         }
     	//显示右侧悬浮按钮
     	document.getElementById('sidebar').style.visibility = 'visible';
-        py2block_editor.updateBlock();
       }
       if(clickedName=="arduino"){
-        py2block_editor.fromCode = true;
        //隐藏右侧悬浮按钮
     	document.getElementById('sidebar').style.visibility = 'hidden';
        //点击代码将隐藏右侧代码，否则出现两个代码区域
@@ -193,9 +174,10 @@
         // If the workspace was changed by the XML tab, Firefox will have performed
         // an incomplete rendering due to Blockly being invisible.  Rerender.
           Blockly.mainWorkspace.render();
-          var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-          var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-          editor_side_code.setValue(chinese_code, -1);
+          var arduinoTextarea = document.getElementById('side_code');
+          //var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+          //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+          editor_side_code.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
          } else if (content.id == 'content_xml') {
         var xmlTextarea = document.getElementById('content_xml');
         var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
@@ -204,12 +186,12 @@
         xmlTextarea.focus();
       } else if (content.id == 'content_arduino') {
         //content.innerHTML = Blockly.Python.workspaceToCode(Blockly.mainWorkspace);
-        var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-        var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-        editor.setValue(chinese_code, -1);
-       }
+        var arduinoTextarea = document.getElementById('content_arduino');
+        editor.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
+        //arduinoTextarea.value = Blockly.Python.workspaceToCode(Blockly.mainWorkspace);
+        //arduinoTextarea.focus();
+      }
     }
-
 
     /**
      * Compute the absolute coordinates and dimensions of an HTML element.
@@ -240,7 +222,6 @@
      */
     var editor;
     var editor_side_code;
-    var py2block_editor;
     function init() {
       //window.onbeforeunload = function() {
       //  return 'Leaving this page will result in the loss of your work.';
@@ -262,9 +243,6 @@
       editor_side_code.setShowPrintMargin(false);
       editor_side_code.setReadOnly(true);
 
-      var py2block_converter = new PythonToBlocks();
-      py2block_editor = new Py2blockEditor(py2block_converter, editor);
-      Sk.python3 = true;
       var container = document.getElementById('content_area');
       var onresize = function(e) {
         var bBox = getBBox_(container);
@@ -311,11 +289,11 @@
     	  }
     	  //更新
     	  var arduinoTextarea = document.getElementById('side_code');
-    	  var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-		  var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-		  editor_side_code.setValue(chinese_code, -1);
+    	  //var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+    	  //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+          editor_side_code.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
     	}
-
+    	
       auto_save_and_restore_blocks();
       //load from url parameter (single param)
       //http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
@@ -327,15 +305,15 @@
   </script>
   <style type="text/css">
       span#span_blocks, span#span_arduino, select#languageMenu {
-          font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';
+          font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';
       }
 
       span.blocklyTreeLabel {
-          font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';
+          font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';
       }
 
       text.blocklyText {
-          font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';
+          font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';
       }
   </style>
 </head>
@@ -351,20 +329,20 @@
             <td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
             <td class="tabcoyright">
-              <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
+             <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;color:#999;">copyright</span>
             </td>
             <td class="tabmode">
-              <a class="viewLeft" id="viewMode1" href="index_board_MicroPython[ESP32].html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;" >普通视图</a><span class="viewRight" id="viewMode2" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</span>
+              <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_MicroPython[ESP32].html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light';font-size:12px;">高级视图</a>
             </td>
             <script type="text/javascript">
-              var viewMode1 = document.getElementById('viewMode1');
-              viewMode1.href = 'index_board_MicroPython[ESP32].html?lang='+Code.LANG;
+              var viewMode2 = document.getElementById('viewMode2');
+              viewMode2.href = 'index_advance_board_MicroPython[ESP32].html?lang='+Code.LANG;
             </script>
             <td class="tabmin">
-              <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
+             <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
             </td>
             <td class="tabmin" style="padding-right:20px">
-              <input onclick="Blockly.mainWorkspace.undo(1);" name="redo" type="image" title="redo(ctrl+y)"  src="media/redo.png" style="padding:5px" onmouseover="this.src='media/redo1.png'" onmousedown="this.src='media/redo2.png'" onmouseup="this.src='media/redo1.png'" onmouseout="this.src='media/redo.png'" width="20" height="20" border="0">
+               <input onclick="Blockly.mainWorkspace.undo(1);" name="redo" type="image" title="redo(ctrl+y)"  src="media/redo.png" style="padding:5px" onmouseover="this.src='media/redo1.png'" onmousedown="this.src='media/redo2.png'" onmouseup="this.src='media/redo1.png'" onmouseout="this.src='media/redo.png'" width="20" height="20" border="0">
             </td>
             <td class="tabmin" style="padding-right:20px;display:none;">
               <button id="fakeload">LoadXML</button>
@@ -374,8 +352,8 @@
               <select id="languageMenu"></select>
             </td>
             <script>
-              document.getElementById('span_blocks').textContent = MSG['tab_blocks'];
-              document.getElementById('span_arduino').textContent = MSG['tab_arduino'];
+             document.getElementById('span_blocks').textContent = MSG['tab_blocks'];
+             document.getElementById('span_arduino').textContent = MSG['tab_arduino'];
             </script>
           </tr>
         </table>
@@ -393,7 +371,7 @@
   <!-- <div id="content_arduino2" wrap="off" ></div> -->
   <textarea id="content_xml" class="content" wrap="off" readonly></textarea>
   <xml id="toolbox" style="display: none">
-    <category name="" id="catInOut" colour="20">
+     <category name="" id="catInOut" colour="20">
       <block type="inout_highlow"></block>
       <block type="inout_pinMode">
       <value name="PIN">
@@ -445,11 +423,6 @@
           </shadow>
         </value>
       </block>
-      <block type="controls_attachInterrupt">
-        <value name="PIN">
-          <shadow type="pins_digital"></shadow>
-        </value>
-      </block>
     </category>
     <category id="catControl" colour="120">
       <block type="base_setup"></block>
@@ -457,7 +430,7 @@
       <block type="base_delay">
         <value name="DELAY_TIME">
           <shadow type="math_number">
-            <field name="NUM">1000</field>
+            <field name="NUM">1</field>
           </shadow>
         </value>
       </block>
@@ -495,10 +468,9 @@
         </value>
       </block>
       <block type="controls_whileUntil"></block>
-      <block type="controls_try_finally"></block>
       <block type="controls_flow_statements"></block>
       <block type="controls_millis"></block>
-<!--       <block type="Panic_with_status_code">
+      <block type="Panic_with_status_code">
         <value name="STATUS_CODE">
           <shadow type="math_number">
             <field name="NUM">233</field>
@@ -506,7 +478,7 @@
         </value>
       </block>
       <block type="reset"></block>
-      <block type="controls_uname"></block> -->
+      <block type="controls_uname"></block>
     </category>
     <category id="catMath" colour="230">
       <block type="math_number"></block>
@@ -736,8 +708,8 @@
           </value>
         </block>
       </category>
-    <category id="catMicropyLists" colour="260">
-          <block type="lists_create_with2"></block>
+      <category id="catMicropyLists" colour="260">
+        <block type="lists_create_with2"></block>
           <block type="lists_create_with_text2"></block>
         <block type="lists_getIndex3">
             <value name="LIST">
@@ -893,7 +865,6 @@
                 </shadow>
               </value>
           </block>
-        </category>
       </category>
       <category id="catTuple" colour="195">
         <block type="tuple_create_with"></block>
@@ -1126,55 +1097,16 @@
         </block>
       </category>       
       <category id="catSerialPort" colour="65">
-        <block type="IO_print_inline"> 
-              <value name="VAR">
-                  <shadow type="text">
-                      <field name="TEXT">Mixly</field>
-                  </shadow>
-              </value>   
-          </block>
-        <block type="IO_print">
-              <value name="VAR">
-                  <shadow type="text">
-                      <field name="TEXT">Mixly</field>
-                  </shadow>
-              </value>
-          </block>
-        <block type="IO_input">
-              <value name="VAR">
-                  <shadow type="text">
-                      <field name="TEXT">prompt</field>
-                  </shadow>
-              </value>
-          </block>
-        <block type="uart_softserial"></block>
-        <block type="serial_print">
-              <value name="CONTENT">
-                  <shadow type="text">
-                      <field name="TEXT">Mixly</field>
-                  </shadow>
-              </value> 
-        </block>
-        <block type="serial_println">
-              <value name="CONTENT">
-                  <shadow type="text">
-                      <field name="TEXT">Mixly</field>
-                  </shadow>
-              </value> 
-        </block>
-        <block type="serial_print_hex">
-              <value name="CONTENT">
-                  <shadow type="math_number">
-                      <field name="NUM">0XFF00FF</field>
-                  </shadow>
-              </value>           
-        </block>
+        <block type="serial_begin"></block>
+        <block type="serial_print"></block>
+        <block type="serial_println"></block>
+        <block type="serial_print_hex"></block>
         <block type="serial_any"></block>
         <block type="serial_readstr"></block>
         <block type="serial_readline"></block>
       </category>
       <category id="catGroup" colour="140">
-        <!-- <block type="radio_ons"></block>
+        <block type="radio_ons"></block>
         <block type="microbit_radio_config">
           <value name="length">
             <shadow type="math_number">
@@ -1205,265 +1137,33 @@
             </shadow>
           </value>
         </block>
-        <block type="microbit_radio_receive"></block> -->
-
-        <block type="i2c_init">
-          <value name="TX">
-            <shadow type="pins_digital">
-              <field name="PIN">19</field>
-            </shadow>
-          </value>
-          <value name="RX">
-            <shadow type="pins_digital">
-              <field name="PIN">20</field>
-            </shadow>
-          </value>
-          <value name="freq">
-            <shadow type="math_number"><field name="NUM">100000</field></shadow>
-          </value>
-        </block>
-        <block type="i2c_read">
-          <value name="address">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="data">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="i2c_write">
-          <value name="address">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="data">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="i2c_master_reader2"></block>
-        <block type="i2c_available"></block>
-        <block type="bluetooth_setup">
-          <value name="man">
-            <shadow type="text">
-              <field name="TEXT"></field>
-            </shadow>
-          </value>
-          <value name="dev">
-            <shadow type="text">
-              <field name="TEXT"></field>
-            </shadow>
-        </block>
-        <block type="bluetooth_open"></block>
-        <block type="bluetooth_init"></block>
-        <block type="bluetooth_connect"></block>
-        <block type="bluetooth_services"></block>
-        <block type="bluetooth_conns"></block>
-        <block type="bluetooth_is_scanning"></block>
-        <block type="bluetooth_scan"></block>
-        <block type="bluetooth_service_setup">
-          <value name="UUID">
-            <shadow type="text">
-              <field name="TEXT">127.16.0.8</field>
-            </shadow>
-          </value>
-        </block>
- <!--       <block type="i2c_slave_onreceive">
-          <value name="PIN">
-          <shadow type="pins_digital"></shadow>
-        </value>
-        </block>-->
-<!--         <block type="spi_init"></block>
-        <block type="spi_write">
-          <value name="data">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block> -->
-      </category>
-      <category id="catEthernet" colour="0">
-        <block type="network_init"></block>
-        <block type="network_open"></block>
-        <block type="network_scan"></block>
-        <block type="network_connect">
-          <value name="id">
-            <shadow type="text">
-              <field name="TEXT">127.16.0.8</field>
-            </shadow>
-          </value>
-          <value name="password">
-            <shadow type="text">
-              <field name="TEXT">01234567</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_wifi_connect"></block>
-        <block type="network_get_connect"></block>
-        <block type="network_stop"></block>
-        <block type="network_get_wifi"></block>
-        <block type="network_ap_connect">
-          <value name="essid">
-            <shadow type="text">
-              <field name="TEXT">127.16.0.8</field>
-            </shadow>
-          </value>
-          <value name="channel">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_server"></block>
-      </category>
-      <category id="catIot" colour="225">
-
-        <block type="iot_wificonnect">
-            <value name="WIFINAME">
-                  <shadow type="text">
-                      <field name="TEXT">wifiname</field>
-                  </shadow>
-              </value>
-            <value name="PASSWORD">
-                  <shadow type="text">
-                      <field name="TEXT">wifipassword</field>
-                  </shadow>
-              </value>
-         </block>          
-        <block type="iot_onenetconnect">
-            <value name="SUB">
-                <shadow type="variables_get">
-                  <field name="VAR">sub_cb</field>
-                </shadow>
-              </value>
-            <value name="CLIENT">
-                  <shadow type="text">
-                      <field name="TEXT">31468921</field>
-                  </shadow>
-              </value>
-              <value name="SERVER">
-                  <shadow type="text">
-                      <field name="TEXT">183.230.40.39</field>
-                  </shadow>
-              </value>
-              <value name="USERNAME">
-                  <shadow type="text">
-                      <field name="TEXT">141427</field>
-                  </shadow>
-              </value>
-              <value name="PASSWORD">
-                  <shadow type="text">
-                      <field name="TEXT">uXr5=Ur88iTy0V4HMXHrsPLDiPo=</field>
-                  </shadow>
-              </value>
-              <value name="TOPIC">
-                  <shadow type="text">
-                      <field name="TEXT">XBCRobot</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="iot_publish"></block>
-          <block type="iot_onenetdisconnect"></block>
-          <block type="iot_checkonenet"></block>
+        <block type="microbit_radio_receive"></block>
       </category>
       <category id="catSensor" colour="40">
-        <block type="HCSR04">
-                <value name="PIN1">
-                    <shadow type="pins_digital">
-                    </shadow>
-                </value>
-                <value name="PIN2">
-                    <shadow type="pins_digital">
-                       <field name="PIN">4</field>
-                    </shadow>
-                </value>
-            </block>
-            <block type="dht11">
-                <value name="PIN">
-                    <shadow type="pins_digital"></shadow>
-                </value>
-            </block>
-         <block type="sensor_button_is_pressed">
+        <block type="sensor_button_is_pressed">
           <value name="btn">
             <shadow type="pins_button">
             </shadow>
           </value>
-        </block> 
+        </block>
         <block type="sensor_button_was_pressed">
           <value name="btn">
             <shadow type="pins_button">
             </shadow>
           </value>
         </block>
-<!--        <block type="sensor_button_get_presses">
+        <block type="sensor_button_get_presses">
           <value name="btn">
             <shadow type="pins_button">
             </shadow>
           </value>
-        </block>-->
+        </block>
         <block type="controls_attachGestureInterrupt"></block>
         <block type="controls_attachGestureInterrupt2"></block>
-        <block type="controls_GestureLists"></block>
         <block type="sensor_get_acceleration"></block>
-        <!--<block type="sensor_get_gestures"></block>
-        <block type="sensor_calibrate_compass"></block>
-        <block type="sensor_is_compass_calibrated"></block>-->
         <block type="sensor_field_strength"></block>
-        <!--<block type="sensor_compass_reset"></block>
         <block type="sensor_temperature"></block>
         <block type="sensor_distance_hrsc04"></block>
-        <block type="DS1307_init">
-          <value name="SDA">
-            <shadow type="pins_digital">
-              <field name="PIN">2</field>
-            </shadow>
-          </value>
-          <value name="SCL">
-            <shadow type="pins_digital">
-              <field name="PIN">3</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="RTC_get_time"></block>
-        <block type="RTC_set_time">
-          <value name="hour">
-            <shadow type="math_number">
-              <field name="NUM">8</field>
-            </shadow>
-          </value>
-          <value name="minute">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="second">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="RTC_set_date">
-          <value name="year">
-            <shadow type="math_number">
-              <field name="NUM">2000</field>
-            </shadow>
-          </value>
-          <value name="month">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="day">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-        </block> -->
       </category>
       <category id="catActuator" colour="100">
         <block type="servo_move">
@@ -1489,168 +1189,52 @@
             <shadow type="pins_tone_notes"></shadow>
           </value>
         </block>
- <!--        <block type="microbit_music_pitch_delay">
-          <value name="PIN">
-            <shadow type="pins_pwm"></shadow>
-          </value>
-          <value name="pitch">
-            <shadow type="pins_tone_notes"></shadow>
-          </value>
-          <value name="duration">
-            <shadow type="math_number">
-              <field name="NUM">500</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="microbit_music_play_built_in">
+        <block type="microbit_music_play_built_in_easy">
           <value name="PIN">
             <shadow type="pins_pwm"></shadow>
           </value>
         </block>
-        <block type="microbit_music_play_list_of_notes">
-          <value name="PIN">
-            <shadow type="pins_pwm"></shadow>
-          </value>
-        </block> -->
         <block type="microbit_music_stop">
           <value name="PIN">
             <shadow type="pins_pwm"></shadow>
           </value>
         </block>
-       <!--  <block type="microbit_music_reset"></block>
-        <block type="microbit_music_get_tempo"></block>
-        <block type="tone_set_tempo">
-          <value name="TICKS">
-            <shadow type="math_number">
-              <field name="NUM">4</field>
-            </shadow>
-          </value>
-          <value name="BPM">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="speech_translate">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="speech_say">
+        <block type="speech_say_easy">
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">Mixly 0.997 is great!</field>
             </shadow>
           </value>
-          <value name="pitch">
-            <shadow type="math_number">
-              <field name="NUM">64</field>
+        </block>
+        <block type="speech_sing_easy">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">#115DOWWWW</field>
             </shadow>
           </value>
-          <value name="speed">
-            <shadow type="math_number">
-              <field name="NUM">72</field>
+        </block> 
+        <block type="speech_prenounce_easy">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">/HEH5EH4EH3EH2EH2EH3EH4EH5EHLP.</field>
             </shadow>
           </value>
-          <value name="mouth">
-            <shadow type="math_number">
-              <field name="NUM">128</field>
-            </shadow>
-          </value>
-          <value name="throat">
-            <shadow type="math_number">
-              <field name="NUM">128</field>
-            </shadow>
-          </value>
-        </block> -->
+        </block>
       </category>
       <category id="catMonitor" colour="180">
-        <block type="monitor_show_scroll_string">
+        <block type="monitor_show_string">
           <value name="data">
             <shadow type="text">
               <field name="TEXT">hello</field>
             </shadow>
           </value>
-          <value name="time">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
-            </shadow>
-          </value>
         </block>
-
         <block type="microbit_display_show_image">
           <value name="PIN">
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>
-<!--         <block type="microbit_display_show_animation">
-          <value name="images">
-            <shadow type="pins_imglist"></shadow>
-          </value>
-          <value name="delay">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
-            </shadow>
-          </value>
-        </block> -->
         <block type="microbit_image_create"></block>
-        <!-- <block type="display_image_size">
-          <value name="VAR">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>
-        <block type="image_shift">
-          <value name="val">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="img">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>
-        <block type="microbit_image_copy">
-          <value name="image">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>
-        <block type="microbit_image_invert">
-          <value name="image">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block> -->
-        <block type="monitor_get_pixel">
-          <value name="x">
-            <shadow type="pins_exlcdh"></shadow>
-          </value>
-          <value name="y">
-            <shadow type="pins_exlcdv"></shadow>
-          </value>
-        </block>
-        <block type="monitor_bright_point">
-          <value name="x">
-            <shadow type="pins_exlcdh"></shadow>
-          </value>
-          <value name="y">
-            <shadow type="pins_exlcdv"></shadow>
-          </value>
-        </block>
-        <block type="monitor_bright_screen">
-          <value name="x">
-            <shadow type="pins_exlcdh"></shadow>
-          </value>
-        </block>
-        <block type="monitor_get_screen_pixel"></block>
-        <block type="monitor_blink_rate">
-          <value name="x">
-            <shadow type="math_number">
-              <field name="NUM">2</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="microbit_image_builtins"></block>
         <block type="image_arithmetic">
           <value name="A">
             <shadow type="pins_builtinimg"></shadow>
@@ -1659,8 +1243,25 @@
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>
-<!--         <block type="microbit_display_on"></block>
-        <block type="microbit_display_is_on"></block> -->
+        <block type="monitor_get_pixel">
+          <value name="x">
+            <shadow type="pins_axis"></shadow>
+          </value>
+          <value name="y">
+            <shadow type="pins_axis"></shadow>
+          </value>
+        </block>
+        <block type="monitor_bright_point">
+          <value name="x">
+            <shadow type="pins_axis"></shadow>
+          </value>
+          <value name="y">
+            <shadow type="pins_axis"></shadow>
+          </value>
+          <value name="brightness">
+            <shadow type="pins_brightness"></shadow>
+          </value>
+        </block>
         <block type="microbit_display_clear"></block>
         <block type="display_rgb_init">
           <value name="PIN">
@@ -1697,199 +1298,37 @@
             </shadow>
           </value>
         </block>
-<!--         <block type="microbit_display_show_string">
-          <value name="images">
-            <shadow type="text">
-              <field name="TEXT">hello</field>
-            </shadow>
-          </value>
-          <value name="delay">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="group_lcd_init">
-          <value name="device">
-            <shadow type="math_number">
-              <field name="NUM">0x27</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="group_lcd_print">
-          <value name="TEXT">
-            <shadow type="text">
-              <field name="TEXT"></field>
-            </shadow>
-          </value>
-          <value name="TEXT2">
-            <shadow type="text">
-              <field name="TEXT"></field>
-            </shadow>
-          </value>
-        </block>
-        <block type="group_lcd_print2">
-          <value name="row">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="column">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="TEXT">
-            <shadow type="text">
-              <field name="TEXT"></field>
-            </shadow> 
-          </value>
-        </block>
-        <block type="group_lcd_power">
-          <field name="STAT">clear()</field>
-        </block> -->
-        <block type="oled_init">
-          <value name="TX">
-            <shadow type="pins_digital">
-              <field name="PIN">26</field>
-            </shadow>
-          </value>
-          <value name="RX">
-            <shadow type="pins_digital">
-              <field name="PIN">27</field>
-            </shadow>
-          </value>
-          <value name="freq">
-            <shadow type="math_number"><field name="NUM">100000</field></shadow>
-          </value>
-        </block>
-        <block type="lp2i_u8g_draw_4strings">
-          <value name="Text_line1">
-            <shadow type="text">
-              <field name="TEXT">Example1</field>
-            </shadow>
-          </value>
-          <value name="Text_line2">
-            <shadow type="text">
-              <field name="TEXT">Example2</field>
-            </shadow>
-          </value>
-          <value name="Text_line3">
-            <shadow type="text">
-              <field name="TEXT">Example3</field>
-            </shadow>
-          </value>
-          <value name="Text_line4">
-            <shadow type="text">
-              <field name="TEXT">Example4</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_rect">
-          <value name="x">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="y">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="width">
-            <shadow type="math_number">
-              <field name="NUM">20</field>
-            </shadow>
-          </value>
-          <value name="height">
-            <shadow type="math_number">
-              <field name="NUM">20</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_line">
-          <value name="x">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="y">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="length">
-            <shadow type="math_number">
-              <field name="NUM">20</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_line_Arbitrarily">
-          <value name="x1">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="y1">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="x2">
-            <shadow type="math_number">
-              <field name="NUM">40</field>
-            </shadow>
-          </value>
-          <value name="y2">
-            <shadow type="math_number">
-              <field name="NUM">40</field>
-            </shadow>
-          </value>
-        </block>
       </category>
       <sep></sep>
       <category id="catVar" colour="330" custom="VARIABLE">
       </category>
       <category id="catFun" custom="PROCEDURE" colour="290"></category>
-      <category id="catFactory" name="Factory" colour="#777777">
-        <block type="factory_import"></block>
-        <block type="factory_from_import"></block>
-        <block type="factory_function_noreturn"></block>
-        <block type="factory_function_return"></block>
-        <block type="factory_declare"></block>
-        <block type="factory_callMethod_noreturn"></block>
-        <block type="factory_callMethod_return"></block>
-        <block type="factory_block"></block>
-        <block type="factory_block_return"></block>
-        <block type="factory_block_with_textarea"></block>
-        <block type="factory_block_return_with_textarea"></block>
-      </category>
     </xml>
-<script>
-	if(company_block!=null){
-		$('#toolbox').append(company_block);
-	}
-    if(myblock!=null){
-		$('#toolbox').append(myblock);
-	}
+    <script>
+      if(company_block!=null){
+        $('#toolbox').append(company_block);
+      }
+      if(myblock!=null){
+        $('#toolbox').append(myblock);
+      }
     </script>
-  <script>
-  (function(window, document) {
-    function createIframe() {
-      var i = document.createElement("iframe");
-      i.src = 'http://mixly.org/assets/app2.html';
-      i.width = '0';
-      i.height = '0';
-      document.body.appendChild(i);
-    }
-    if (window.addEventListener) {
-      window.addEventListener('load', createIframe, false);
-    } else if (window.attachEvent) {
-      window.attachEvent('onload', createIframe);
-    }
-  })(window, document);
+    <script>
+      (function(window, document) {
+        function createIframe() {
+          var i = document.createElement("iframe");
+          i.src = 'http://mixly.org/assets/app2.html';
+          i.width = '0';
+          i.height = '0';
+          document.body.appendChild(i);
+        }
+        if (window.addEventListener) {
+          window.addEventListener('load', createIframe, false);
+        } else if (window.attachEvent) {
+          window.attachEvent('onload', createIframe);
+        }
+      })(window, document);
 
-  </script>
+    </script>
     <div id="firmware" style="display: none;">:020000040000FA
 :1000000000400020ED530100295401002B54010051
 :1000100000000000000000000000000000000000E0
