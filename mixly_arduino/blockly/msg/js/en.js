@@ -1,4 +1,4 @@
-// This file was automatically generated.  Do not modify.
+﻿// This file was automatically generated.  Do not modify.
 
 'use strict';
 
@@ -939,6 +939,11 @@ Blockly.MIXLY_MSTIMER2_STOP='stop';
 //interrupts
 Blockly.MIXLY_CONTROL_INTERRUPTS = 'interrupts';
 Blockly.MIXLY_CONTROL_NOINTERRUPTS = 'nointerrupts';
+//SCoop
+Blockly.MIXLY_CONTROL_SCoop_Init = 'setup';
+Blockly.MIXLY_CONTROL_SCoop_loop = 'loop';
+Blockly.MIXLY_CONTROL_SCoop_yield = 'yield SCoop tasks';
+Blockly.MIXLY_CONTROL_SCoop_sleep = 'SCoop sleep(only for SCoop)';
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='This variable is not declared!';
 Blockly.MIXLY_LENGTH = "length of";

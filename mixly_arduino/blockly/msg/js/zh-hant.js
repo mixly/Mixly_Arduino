@@ -1,4 +1,4 @@
-// This file was automatically generated.  Do not modify.
+﻿// This file was automatically generated.  Do not modify.
 'use strict';
 
 goog.provide('Blockly.Msg.zh.hant');
@@ -940,7 +940,11 @@ Blockly.MIXLY_MSTIMER2_STOP='停止';
 //interrupts
 Blockly.MIXLY_CONTROL_INTERRUPTS = '允許中斷';
 Blockly.MIXLY_CONTROL_NOINTERRUPTS = '禁止中斷';
-
+//SCoop
+Blockly.MIXLY_CONTROL_SCoop_Init = '初始化';
+Blockly.MIXLY_CONTROL_SCoop_loop = '迴圈';
+Blockly.MIXLY_CONTROL_SCoop_yield = '執行SCoop任務';
+Blockly.MIXLY_CONTROL_SCoop_sleep = 'SCoop 延時(僅用於SCoop)';
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='該變量未聲明';
 Blockly.MIXLY_LENGTH ="獲取長度";

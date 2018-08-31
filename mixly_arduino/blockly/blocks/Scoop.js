@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 goog.provide('Blockly.Blocks.SCoop');
 
@@ -12,10 +12,10 @@ Blockly.Blocks['SCoopTask'] = {
         .appendField("Scoop Task")
 	      .appendField(new Blockly.FieldDropdown(_tasknum), "_tasknum");
     this.appendStatementInput("setup")
-        .appendField("初始化")
+        .appendField(Blockly.MIXLY_CONTROL_SCoop_Init)
         .setCheck(null);
     this.appendStatementInput("loop")
-        .appendField("循环")
+        .appendField(Blockly.MIXLY_CONTROL_SCoop_loop)
         .setCheck(null);
     this.setColour(Blockly.Blocks.SCoop.HUE);
     this.setTooltip('');
@@ -27,7 +27,7 @@ Blockly.Blocks['SCoop_yield'] = {
   init: function() {
       this.setColour(Blockly.Blocks.SCoop.HUE);
     this.appendDummyInput("")
-		.appendField("执行Scoop任务");
+		.appendField(Blockly.MIXLY_CONTROL_SCoop_yield);
     this.setPreviousStatement(false, null);
     this.setNextStatement(false, null);
   }
@@ -36,11 +36,11 @@ Blockly.Blocks['SCoop_sleep'] = {
   init: function() {
     this.setColour(Blockly.Blocks.SCoop.HUE);
     this.appendDummyInput("")
-		    .appendField("SCoop延时（仅用于SCoop）");
+		    .appendField(Blockly.MIXLY_CONTROL_SCoop_sleep);
 	this.appendValueInput("sleeplength", Number)
         .setCheck(Number);
 	this.appendDummyInput("")
-		    .appendField("毫秒");
+		    .appendField(Blockly.MIXLY_DELAY_MS);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   }
