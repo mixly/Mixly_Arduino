@@ -43,7 +43,7 @@ pbc.initIgnoreS = function(){
     ];
     var boardIgnoreL = [
         //actuator.js
-        'Servo', 'class_servo', 'mixly_servo_write_angle',
+        'Servo', 'mixly_servo_write_angle',
         //display.js
         "LCD1602", "LCD_I2C_ADDR", "OLED12864_I2C","mixly_rgb_show", "oled", "mixly_oled_text",
         //sensor.js
