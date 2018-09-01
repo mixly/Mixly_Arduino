@@ -1,8 +1,9 @@
-﻿<html manifest=node.manifest>
+<html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
   <title>Mixly mixpy</title>
   <script type="text/javascript" src="../../blockly_compressed_py.js"></script>
+  <!--<script type="text/javascript" src="../../blocks_compressed.js"></script>-->
   <script type="text/javascript" src="../../python_compressed.js"></script>
   <script type="text/javascript" src="../../core/mixpy_python/variables.js"></script>
   <script type="text/javascript" src="../../core/mixpy_python/procedures.js"></script>
@@ -12,12 +13,12 @@
   <script type="text/javascript" src="company_pin.js"></script>
   <script type="text/javascript" src="drag.js"></script>
   <script type="text/javascript" src="code.js"></script> 
-  <!---from BlocklyDuino-->
+  <!--------from BlocklyDuino------------>
   <script type="text/javascript" src="Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
   <script type="text/javascript" src="FileSaver.min.js"></script>
   <script type="text/javascript" src="blockly_helper.js"></script>
-  <!---profiles-->
+  <!------------------------------------->
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="mixpy/myblock.js"></script>
 
@@ -70,190 +71,200 @@
     <script src="../../converters/mixpy_python/turtle.js" type="application/javascript"></script>
     <script src="./js/python_to_blockly.js" type="application/javascript"></script>
     <script src="js/mixpyProject.js" type="application/javascript"></script>
-    
+    <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
+    <script src="js/skulpt/dist/skulpt-stdlib.js" type="application/javascript"></script>
+    <script src="js/skulpt/engine.js" type="application/javascript"></script>
   <link rel="stylesheet" type="text/css" href="color_mixpy_python.css" />
   <script>
-    var sidecodeDisplay=false;
-    /**
-     * 点击侧边显示代码按钮
-     */
-    function sidecodeClick(){
-      if(sidecodeDisplay){
-    	document.getElementById('side_code_parent').style.display = 'none';
-    	document.getElementById('sidebar').className='right-top';
-    	document.getElementById('mid_td').style.display = 'none';
-    	sidecodeDisplay=false;
-      }else{
-    	document.getElementById('side_code_parent').style.display = '';
-    	document.getElementById('sidebar').className='right-top2';
-    	document.getElementById('mid_td').style.display = '';
-    	sidecodeDisplay=true;
-      }
-      Blockly.fireUiEvent(window, 'resize');
-    }
-    /**
-     * List of tab names.
-     * @private
-     */
-    var TABS_ = ['blocks', 'arduino', 'xml'];
+var sidecodeDisplay=false;
+/**
+ * 点击侧边显示代码按钮
+ */
+function sidecodeClick(){
+  if(sidecodeDisplay){
+	document.getElementById('side_code_parent').style.display = 'none';
+	document.getElementById('sidebar').className='right-top';
+	document.getElementById('mid_td').style.display = 'none';
+	sidecodeDisplay=false;
+  }else{
+	document.getElementById('side_code_parent').style.display = '';
+	document.getElementById('sidebar').className='right-top2';
+	document.getElementById('mid_td').style.display = '';
+	sidecodeDisplay=true;
+  }
+  Blockly.fireUiEvent(window, 'resize');
+}
+/**
+ * List of tab names.
+ * @private
+ */
+var TABS_ = ['blocks', 'arduino', 'xml'];
 
-    var selected = 'blocks';
+var selected = 'blocks';
 
-    /**
-     * Switch the visible pane when a tab is clicked.
-     * @param {string} clickedName Name of tab clicked.
-     */
-    function tabClick(clickedName) {
-      // If the XML tab was open, save and render the content.
-      if (document.getElementById('tab_xml').className == 'tabon') {
-        var xmlTextarea = document.getElementById('content_xml');
-        var xmlText = xmlTextarea.value;
-        var xmlDom = null;
-        try {
-          xmlDom = Blockly.Xml.textToDom(xmlText);
-        } catch (e) {
-          var q =
-              window.confirm('Error parsing XML:\n' + e + '\n\nAbandon changes?');
-          if (!q) {
-            // Leave the user on the XML tab.
-            return;
-          }
-        }
-        if (xmlDom) {
-          Blockly.mainWorkspace.clear();
-          Blockly.Xml.domToWorkspace(xmlDom,Blockly.mainWorkspace);
-        }
-      }
-      if (document.getElementById('tab_blocks').className == 'tabon') {
-        Blockly.mainWorkspace.setVisible(false);
-      }
-      // Deselect all tabs and hide all panes.
-      for (var i = 0; i < TABS_.length; i++) {
-        var name = TABS_[i];
-        document.getElementById('tab_' + name).className = 'taboff';
-        document.getElementById('content_' + name).style.visibility = 'hidden';
-      }
-
-     // Select the active tab.
-      selected = clickedName;
-      document.getElementById('tab_' + clickedName).className = 'tabon';
-      // Show the selected pane.
-      document.getElementById('content_' + clickedName).style.visibility =
-          'visible';
-      renderContent();
-      if (clickedName == 'blocks') {
-        Blockly.mainWorkspace.setVisible(true);
-    	//重新显示
-    	if(sidecodeDisplay){
-    	  document.getElementById('side_code_parent').style.display = '';
-    	  document.getElementById('mid_td').style.display = '';
-    	  document.getElementById('sidebar').className='right-top2';
-        }else{
-    	  document.getElementById('side_code_parent').style.display = 'none';
-    	  document.getElementById('mid_td').style.display = 'none';
-    	  document.getElementById('sidebar').className='right-top';
-        }
-    	//显示右侧悬浮按钮
-    	document.getElementById('sidebar').style.visibility = 'visible';
-    	py2block_editor.updateBlock();
-      }
-      if(clickedName=="arduino"){
-        py2block_editor.fromCode = true;
-       //隐藏右侧悬浮按钮
-    	document.getElementById('sidebar').style.visibility = 'hidden';
-       //点击代码将隐藏右侧代码，否则出现两个代码区域
-    	document.getElementById('side_code_parent').style.display = 'none';
-    	document.getElementById('mid_td').style.display = 'none';
-      }
-      Blockly.fireUiEvent(window, 'resize');
-    }
-
-    /**
-     * Populate the currently selected pane with content generated from the blocks.
-     */
-    function renderContent() {
-      var content = document.getElementById('content_' + selected);
-      // Initialize the pane.
-      if (content.id == 'content_blocks') {
-        // If the workspace was changed by the XML tab, Firefox will have performed
-        // an incomplete rendering due to Blockly being invisible.  Rerender.
-          Blockly.mainWorkspace.render();
-          var arduinoTextarea = document.getElementById('side_code');
-          var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-          var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-          editor_side_code.setValue(chinese_code, -1);
-         } else if (content.id == 'content_xml') {
-        var xmlTextarea = document.getElementById('content_xml');
-        var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
-        var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
-        xmlTextarea.value = xmlText;
-        xmlTextarea.focus();
-      } else if (content.id == 'content_arduino') {
-        //content.innerHTML = Blockly.Python.workspaceToCode(Blockly.mainWorkspace);
-        var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-		var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-        editor.setValue(chinese_code, -1);
-        //arduinoTextarea.value = Blockly.Python.workspaceToCode(Blockly.mainWorkspace);
-        //arduinoTextarea.focus();
+/**
+ * Switch the visible pane when a tab is clicked.
+ * @param {string} clickedName Name of tab clicked.
+ */
+function tabClick(clickedName) {
+  // If the XML tab was open, save and render the content.
+  if (document.getElementById('tab_xml').className == 'tabon') {
+    var xmlTextarea = document.getElementById('content_xml');
+    var xmlText = xmlTextarea.value;
+    var xmlDom = null;
+    try {
+      xmlDom = Blockly.Xml.textToDom(xmlText);
+    } catch (e) {
+      var q =
+          window.confirm('Error parsing XML:\n' + e + '\n\nAbandon changes?');
+      if (!q) {
+        // Leave the user on the XML tab.
+        return;
       }
     }
-
-    /**
-     * Compute the absolute coordinates and dimensions of an HTML element.
-     * @param {!Element} element Element to match.
-     * @return {!Object} Contains height, width, x, and y properties.
-     * @private
-     */
-    function getBBox_(element) {
-      var height = element.offsetHeight;
-      var width = element.offsetWidth;
-      var x = 0;
-      var y = 0;
-      do {
-        x += element.offsetLeft;
-        y += element.offsetTop;
-        element = element.offsetParent;
-      } while (element);
-      return {
-        height: height,
-        width: width,
-        x: x,
-        y: y
-      };
+    if (xmlDom) {
+      Blockly.mainWorkspace.clear();
+      Blockly.Xml.domToWorkspace(xmlDom,Blockly.mainWorkspace);
     }
+  }
+  if (document.getElementById('tab_blocks').className == 'tabon') {
+    Blockly.mainWorkspace.setVisible(false);
+  }
+  // Deselect all tabs and hide all panes.
+  for (var i = 0; i < TABS_.length; i++) {
+    var name = TABS_[i];
+    document.getElementById('tab_' + name).className = 'taboff';
+    document.getElementById('content_' + name).style.visibility = 'hidden';
+  }
+
+ // Select the active tab.
+  selected = clickedName;
+  document.getElementById('tab_' + clickedName).className = 'tabon';
+  // Show the selected pane.
+  document.getElementById('content_' + clickedName).style.visibility =
+      'visible';
+  renderContent();
+  if (clickedName == 'blocks') {
+    Blockly.mainWorkspace.setVisible(true);
+	//重新显示
+	if(sidecodeDisplay){
+	  document.getElementById('side_code_parent').style.display = '';
+	  document.getElementById('mid_td').style.display = '';
+	  document.getElementById('sidebar').className='right-top2';
+    }else{
+	  document.getElementById('side_code_parent').style.display = 'none';
+	  document.getElementById('mid_td').style.display = 'none';
+	  document.getElementById('sidebar').className='right-top';
+    }
+	//显示右侧悬浮按钮
+	document.getElementById('sidebar').style.visibility = 'visible';
+    py2block_editor.updateBlock();
+  }
+  if(clickedName=="arduino"){
+      py2block_editor.fromCode = true;
+      sidecodeDisplay = false;
+      sidecodeClick();
+  }
+  Blockly.fireUiEvent(window, 'resize');
+}
+
+/**
+ * Populate the currently selected pane with content generated from the blocks.
+ */
+function renderContent() {
+  var content = document.getElementById('content_' + selected);
+  // Initialize the pane.
+  if (content.id == 'content_blocks') {
+    // If the workspace was changed by the XML tab, Firefox will have performed
+    // an incomplete rendering due to Blockly being invisible.  Rerender.
+      Blockly.mainWorkspace.render();
+      var arduinoTextarea = document.getElementById('side_code');
+      var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+      //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+      //editor_side_code.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
+     Blockly.Python.workspaceToCode(Blockly.mainWorkspace)
+	 
+     } else if (content.id == 'content_xml') {
+    var xmlTextarea = document.getElementById('content_xml');
+    var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+    var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+    xmlTextarea.value = xmlText;
+    xmlTextarea.focus();
+  } else if (content.id == 'content_arduino') {
+    //content.innerHTML = Blockly.Python.workspaceToCode(Blockly.mainWorkspace);
+     var arduinoTextarea = document.getElementById('content_arduino');
+	 var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+	 var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+     editor.setValue(chinese_code, -1);
+  
+    //arduinoTextarea.focus();
+  }
+}
+
+/**
+ * Compute the absolute coordinates and dimensions of an HTML element.
+ * @param {!Element} element Element to match.
+ * @return {!Object} Contains height, width, x, and y properties.
+ * @private
+ */
+function getBBox_(element) {
+  var height = element.offsetHeight;
+  var width = element.offsetWidth;
+  var x = 0;
+  var y = 0;
+  do {
+    x += element.offsetLeft;
+    y += element.offsetTop;
+    element = element.offsetParent;
+  } while (element);
+  return {
+    height: height,
+    width: width,
+    x: x,
+    y: y
+  };
+}
 
 /**
  * Initialize Blockly.  Called on page load.
  */
 var editor;
-var editor_side_code;
+var editor;
+var EditorRange;
 var pyengine;
 var py2block_editor;
 function init() {
   //window.onbeforeunload = function() {
   //  return 'Leaving this page will result in the loss of your work.';
   //};
-  editor = ace.edit("content_arduino");
-  editor.setTheme("ace/theme/xcode");
-  editor.getSession().setMode("ace/mode/python");
-  editor.setFontSize(17);
-  editor.setShowPrintMargin(false);
-  editor.setOptions({
-    enableBasicAutocompletion: true,
-    enableSnippets: true,
-    enableLiveAutocompletion: true
-  });
-  editor.setScrollSpeed(0.05);
-  editor_side_code = ace.edit("side_code");
-  editor_side_code.setTheme("ace/theme/xcode");
-  editor_side_code.getSession().setMode("ace/mode/python");
-  editor_side_code.setFontSize(17);
-  editor_side_code.setShowPrintMargin(false);
-  editor_side_code.setReadOnly(true);
-  editor_side_code.setScrollSpeed(0.05);
-  var py2block_converter = new PythonToBlocks();
-  py2block_editor = new Py2blockEditor(py2block_converter, editor);
-  //Sk.python3 = true;
+      ace.require("ace/ext/language_tools");
+      editor = ace.edit("content_arduino");
+      editor.setTheme("ace/theme/xcode");
+      editor.getSession().setMode("ace/mode/turtle");
+      editor.setFontSize(17);
+      editor.setShowPrintMargin(false);
+      editor.setOptions({
+          enableBasicAutocompletion: true,
+          enableSnippets: true,
+          enableLiveAutocompletion: true
+      });
+      EditorRange = ace.require('ace/range').Range;
+      editor.hasMarker = false;
+      editor.session.on('change', function() {
+          if(editor.hasMarker === true){
+              editor.hasMarker = false;
+              for(var mid in editor.session.$backMarkers){
+                  if(editor.session.$backMarkers[mid]['clazz'] == 'errorMarker')
+                      editor.session.removeMarker(mid);
+              }
+          }
+      });
+      editor.setScrollSpeed(0.05);
+      var mixpyProject = new MixpyProject();
+      pyengine = new PyEngine({}, mixpyProject);
+      var py2block_converter = new PythonToBlocks();
+      py2block_editor = new Py2blockEditor(py2block_converter, editor);
+
   var container = document.getElementById('content_area');
   var onresize = function(e) {
     var bBox = getBBox_(container);
@@ -277,56 +288,47 @@ function init() {
   };
   window.addEventListener('resize', onresize, false);
 
-      var toolbox = document.getElementById('toolbox');
+  var toolbox = document.getElementById('toolbox');
 
-        var masterWorkspace = Blockly.inject(document.getElementById('content_blocks'),
-          {//grid:
-              //{spacing: 25,
-               //length: 3,
-               //colour: '#ccc',
-               //snap: true},
-    	   media: '../../media/',
-           toolbox: toolbox,
-    	   zoom:
-               {controls: true,
-                wheel: true}
-    	   });
+    var masterWorkspace = Blockly.inject(document.getElementById('content_blocks'),
+      {//grid:
+          //{spacing: 25,
+           //length: 3,
+           //colour: '#ccc',
+           //snap: true},
+	   media: '../../media/',
+       toolbox: toolbox,
+	   zoom:
+           {controls: true,
+            wheel: true}
+	   });
 
-    	//实时更新右侧对比代码
-        masterWorkspace.addChangeListener(rightCodeEvent);
-    	function rightCodeEvent(masterEvent) {
-    	  if (masterEvent.type == Blockly.Events.UI) {
-    		return;  // Don't update UI events.
-    	  }
-    	  //更新
-    	  var arduinoTextarea = document.getElementById('side_code');
-    	  var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-		  var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-    	  editor_side_code.setValue(chinese_code, -1);
-    	}
-    	
-      auto_save_and_restore_blocks();
-      //load from url parameter (single param)
-      //http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
-      var dest = unescape(location.search.replace(/^.*\=/, '')).replace(/\+/g, " ");
-      if(dest){
-        load_by_url(dest);
-      }
-    }
-  </script>
-  <style type="text/css">
-      span#span_blocks, span#span_arduino, select#languageMenu {
-          font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';
-      }
+	//实时更新右侧对比代码
+    masterWorkspace.addChangeListener(rightCodeEvent);
+	function rightCodeEvent(masterEvent) {
+	  if (masterEvent.type == Blockly.Events.UI) {
+		return;  // Don't update UI events.
+	  }
+	  //更新
+	  var arduinoTextarea = document.getElementById('side_code');
+	  //var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+	  //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+      //editor_side_code.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
+      Blockly.Python.workspaceToCode(Blockly.mainWorkspace);
+	}
+	
+  auto_save_and_restore_blocks();
+  //load from url parameter (single param)
+  //http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
+  var dest = unescape(location.search.replace(/^.*\=/, '')).replace(/\+/g, " ");
+  if(dest){
+    load_by_url(dest);
+  }
+  
+  sidecodeClick();
+}
 
-      span.blocklyTreeLabel {
-          font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';
-      }
-
-      text.blocklyText {
-          font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';
-      }
-  </style>
+</script>
 </head>
 <body onload="init()">
   <table height="100%" width="100%" id="table_whole">
@@ -337,44 +339,58 @@ function init() {
             <td style="vertical-align: center;" id="tab_blocks" class="tabon" onclick="tabClick('blocks')"><img style="vertical-align:middle" width="25" src="media/blocks.png"/><span id="span_blocks">Blocks</span></td>
             <td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')"><span id="span_arduino">Code</span></td>
-            <td class="tabmin">&nbsp;</td>
+			<td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
             <td class="tabcoyright">
-             <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;color:#999;">copyright</span>
+			  <span id="copyright" style=" font-family: 'Microsoft Yahei Light';font-size:12px;color:#999;">copyright</span>
             </td>
-            <td class="tabmode">
-              <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_microbit[py].html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light';font-size:12px;">高级视图</a>
+              <td class="tabmode">
+                  <!--  <span class="viewLeft" id="viewMode1" style=" font-family: 'Microsoft Yahei Light';;font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_microbit%5Bjs%5D.html" style=" font-family: 'Microsoft Yahei Light';font-size:12px;">高级视图</a>-->
+                  <button onclick="pyengine.run();">运行</button>
+                  <button onclick="pyengine.kill();">取消</button>
+                  <input id="loading" src="media/loading.svg" type="image" height="17px" style="display: none;margin-top:10px;"></input>
+              </td>
+              <!--  <script type="text/javascript">
+				var viewMode2 = document.getElementById('viewMode2');
+				viewMode2.href = 'index_advance_board_microbit[js].html?lang='+Code.LANG;
+              </script>-->
+			<td class="tabmin">
+			  <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
             </td>
-            <script type="text/javascript">
-              var viewMode2 = document.getElementById('viewMode2');
-              viewMode2.href = 'index_advance_board_microbit[py].html?lang='+Code.LANG;
-            </script>
-            <td class="tabmin">
-             <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
+			<td class="tabmin" style="padding-right:20px">
+			  <input onclick="Blockly.mainWorkspace.undo(1);" name="redo" type="image" title="redo(ctrl+y)"  src="media/redo.png" style="padding:5px" onmouseover="this.src='media/redo1.png'" onmousedown="this.src='media/redo2.png'" onmouseup="this.src='media/redo1.png'" onmouseout="this.src='media/redo.png'" width="20" height="20" border="0">
             </td>
-            <td class="tabmin" style="padding-right:20px">
-               <input onclick="Blockly.mainWorkspace.undo(1);" name="redo" type="image" title="redo(ctrl+y)"  src="media/redo.png" style="padding:5px" onmouseover="this.src='media/redo1.png'" onmousedown="this.src='media/redo2.png'" onmouseup="this.src='media/redo1.png'" onmouseout="this.src='media/redo.png'" width="20" height="20" border="0">
-            </td>
-            <td class="tabmin" style="padding-right:20px;display:none;">
+			<td class="tabmin" style="padding-right:20px;display:none;">
               <button id="fakeload">LoadXML</button>
-              <input type="file" id="load" style="display: none;"/>
+			  <input type="file" id="load" style="display: none;"/>
             </td>
-            <td class="tabmin">
+			<td class="tabmin">
               <select id="languageMenu"></select>
             </td>
-            <script>
-             document.getElementById('span_blocks').textContent = MSG['tab_blocks'];
-             document.getElementById('span_arduino').textContent = MSG['tab_arduino'];
-            </script>
+			<script>
+			document.getElementById('span_blocks').textContent = MSG['tab_blocks'];
+			document.getElementById('span_arduino').textContent = MSG['tab_arduino'];
+			</script>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td height="100%" width="75%" id="content_area"></td>
-      <td style="display:none;height:100%;width:0.3%;background: #ddd;cursor: w-resize;" id="mid_td"></td>
-      <td width="25%" style="background-color:#eee;display:none;" id="side_code_parent"><div id="side_code" wrap="off" readonly></div></td>
-      <div id="sidebar" class="right-top" onclick="sidecodeClick()"></div>
+      <td height="100%" width="65%" id="content_area"></td>
+	  <td style="display:none;height:100%;width:0.4%;background: #ddd;cursor: w-resize;" id="mid_td"></td>
+	  <td width="34%" style="background-color:#eee;display:none;" id="side_code_parent">
+          <div id="side_code_top" wrap="off" style="height:49%;">
+              <div id="output_img"  wrap="off" readonly style="position: relative;height:100%;background:#f9f9f9;outline: none;overflow:auto"></div>
+          </div>
+          <div id="side_code_mid"></div>
+          <div id="side_code_bottom" style="height:49%;position:relative">
+            <div style="top: 0px; left: 0px; right: 0px; bottom: 0px; position: absolute;">
+                <pre id="side_code" class="content"  readonly></pre>
+            </div>
+			<input src='media/ban.png' type='image' id="reset_output" onclick="clearOutput();"></input>
+          </div>
+      </td>
+	  <div id="sidebar" class="right-top" onclick="sidecodeClick()" style="display:none"></div>
     </tr>
   </table>
   <div id="content_blocks" class="content"></div>
@@ -964,7 +980,7 @@ function init() {
               </shadow>
             </value>
           </block>
-		      <block type="lists_clear">
+		  <block type="lists_clear">
             <value name="VAR">
               <shadow type="variables_get">
                 <field name="VAR">mylist</field>
@@ -1398,31 +1414,75 @@ function init() {
       <category id="catVar" colour="330" custom="VARIABLE">
       </category>
       <category id="catFun" custom="PROCEDURE" colour="290"></category>
-    </xml>
-    <script>
-      if(company_block!=null){
-        $('#toolbox').append(company_block);
-      }
-      if(myblock!=null){
-        $('#toolbox').append(myblock);
-      }
+  </xml>
+<script>
+	if(company_block!=null){
+		$('#toolbox').append(company_block);
+	}
+    if(myblock!=null){
+		$('#toolbox').append(myblock);
+	}
     </script>
-    <script>
-      (function(window, document) {
-        function createIframe() {
-          var i = document.createElement("iframe");
-          i.src = 'http://mixly.org/assets/app2.html';
-          i.width = '0';
-          i.height = '0';
-          document.body.appendChild(i);
-        }
-        if (window.addEventListener) {
-          window.addEventListener('load', createIframe, false);
-        } else if (window.attachEvent) {
-          window.attachEvent('onload', createIframe);
-        }
-      })(window, document);
+  <script>
+  (function(window, document) {
+    function createIframe() {
+      var i = document.createElement("iframe");
+      i.src = 'http://mixly.org/assets/app2.html';
+      i.width = '0';
+      i.height = '0';
+      document.body.appendChild(i);
+    }
+    if (window.addEventListener) {
+      window.addEventListener('load', createIframe, false);
+    } else if (window.attachEvent) {
+      window.attachEvent('onload', createIframe);
+    }
+  })(window, document);
 
-    </script>
+      function clearOutput(){
+          $("#side_code").text("");
+      }
+      
+      jQuery.fn.putCursorAtEnd = function() {
+
+  return this.each(function() {
+    
+    // Cache references
+    var $el = $(this),
+        el = this;
+
+    // Only focus if input isn't already
+    if (!$el.is(":focus")) {
+     $el.focus();
+    }
+
+    // If this function exists... (IE 9+)
+    if (el.setSelectionRange) {
+
+      // Double the length because Opera is inconsistent about whether a carriage return is one character or two.
+      var len = $el.val().length * 2;
+      
+      // Timeout seems to be required for Blink
+      setTimeout(function() {
+        el.setSelectionRange(len, len);
+      }, 1);
+    
+    } else {
+      
+      // As a fallback, replace the contents with itself
+      // Doesn't work in Chrome, but Chrome supports setSelectionRange
+      $el.val($el.val());
+      
+    }
+
+    // Scroll to the bottom, in case we're in a tall textarea
+    // (Necessary for Firefox and Chrome)
+    this.scrollTop = 999999;
+
+  });
+
+};
+  </script>
+      
 </body>
 </html>
