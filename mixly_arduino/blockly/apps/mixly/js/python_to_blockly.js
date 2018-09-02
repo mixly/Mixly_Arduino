@@ -1458,9 +1458,11 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
             try {
                 return py2block_config.moduleFunctionD.get(module)[name](this, func, args, keywords, starargs, kwargs, node);
             }catch(e){
-
+                throw new Error("not implement for this module's function");
             }
-        }else if (module in PythonToBlocks.KNOWN_MODULES && name in PythonToBlocks.KNOWN_MODULES[module]) {
+        } else if (py2block_config.knownModuleS.has(module)){
+            throw new Error("not implement for this module's function");
+        } else if (module in PythonToBlocks.KNOWN_MODULES && name in PythonToBlocks.KNOWN_MODULES[module]) {
             var definition = null;
             definition = PythonToBlocks.KNOWN_MODULES[module][name];
             var blockName = definition[0];
