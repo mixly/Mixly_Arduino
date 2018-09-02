@@ -1672,6 +1672,8 @@ PythonToBlocks.prototype.Call = function(node) {
                         throw new Error("*args (variable arguments) are not implemented yet.");
                     } else if (kwargs !== null && kwargs.length > 0) {
                         throw new Error("**args (keyword arguments) are not implemented yet.");
+                    } else if (keywords !== null && keywords.length > 0) {
+                        throw new Error("**args (keyword arguments) are not implemented yet.");
                     }
                     var argumentsNormal = {};
                     var argumentsMutation = {"@name": this.identifier(func.id)};
