@@ -1453,11 +1453,14 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
             } else {
                 throw new Error("Incorrect number of arguments to plt.plot");
             }
-        } else if(Object.keys(py2block_config.moduleFunctionD.get(module)).length != 0
-            && name in py2block_config.moduleFunctionD.get(module)){
-            try {
-                return py2block_config.moduleFunctionD.get(module)[name](this, func, args, keywords, starargs, kwargs, node);
-            }catch(e){
+        } else if(Object.keys(py2block_config.moduleFunctionD.get(module)).length != 0){
+            if(name in py2block_config.moduleFunctionD.get(module)) {
+                try {
+                    return py2block_config.moduleFunctionD.get(module)[name](this, func, args, keywords, starargs, kwargs, node);
+                } catch (e) {
+                    throw new Error("not implement for this module's function");
+                }
+            }else{
                 throw new Error("not implement for this module's function");
             }
         } else if (py2block_config.knownModuleS.has(module)){

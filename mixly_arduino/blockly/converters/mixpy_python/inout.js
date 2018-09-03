@@ -18,14 +18,18 @@ pbc.globalFunctionD['input'] = function(py2block, func, args, keywords, starargs
 //float(input('prompt'))在lists.js中实现
 
 pbc.globalFunctionD['print'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length === 1 && keywords.length === 1) {  //print('Hello',end ="")
+    if (args.length === 1 && keywords.length === 1
+        && py2block.identifier(keywords[0].arg) === "end"
+        && keywords[0].value._astname === "Str"
+        && py2block.Str_value(keywords[0].value) === ""
+    ) {  //print('Hello',end ="")
         var argblock = py2block.convert(args[0]);
         return [block("inout_print_inline", func.lineno, {}, {
             'VAR':argblock
         }, {
             "inline": "false"
         })];
-    }else if (args.length === 1) { //print('Hello')
+    }else if (args.length === 1 && keywords.length === 0) { //print('Hello')
         var argblock = py2block.convert(args[0]);
         return [block("inout_print", func.lineno, {}, {
             'VAR':argblock
