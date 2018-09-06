@@ -1753,11 +1753,16 @@ PythonToBlocks.prototype.Str = function(node)
 {
     var s = node.s;
     var strValue = Sk.ffi.remapToJs(s);
-    if (strValue.split("\n").length > 1) {
+    /*if (strValue.split("\n").length > 1) {
         return block("string_multiline", node.lineno, {"TEXT": strValue});
     } else {
         return block("text", node.lineno, {"TEXT": strValue});
     }
+    */
+    strValue = strValue.replace(/\n/g, '\\n')
+                        .replace(/\r/g, '\\r')
+                        .replace(/\t/g, '\\t');
+    return block("text", node.lineno, {"TEXT": strValue});
 }
 
 PythonToBlocks.prototype.Str_value = function(node) {

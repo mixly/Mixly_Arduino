@@ -90,6 +90,7 @@ Blockly.Python.scrubNakedValue = function(line) {
  */
 Blockly.Python.quote_ = function(string) {
     // Can't use goog.string.quote since % must also be escaped.
+    return "\"" + string + "\"";
     string = string.replace(/\\/g, '\\\\')
         .replace(/\n/g, '\\\n')
         .replace(/\%/g, '\\%');
