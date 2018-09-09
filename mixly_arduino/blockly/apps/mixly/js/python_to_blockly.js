@@ -1580,6 +1580,9 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
         return PythonToBlocks.KNOWN_ATTR_FUNCTIONS[name].bind(this)(func, args, keywords, starargs, kwargs, node)
     }
     //兜底图形块呈现方式
+    if(keywords.length != 0){
+        throw new Error("not implement for kargs");
+    }
     //console.log(func, args, keywords, starargs, kwargs);
     heights = this.getChunkHeights(node);
     extractedSource = this.getSourceCode(arrayMin(heights), arrayMax(heights));
