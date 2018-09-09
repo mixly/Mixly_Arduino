@@ -155,3 +155,48 @@ Blockly.Python['text_substring3'] = function(block) {
     var code = str + '[' + at1 + ' : ' + at2 + ']';
     return [code, Blockly.Python.ORDER_MEMBER];
 }
+
+Blockly.Python.text_capital = function() {
+  var capital = this.getFieldValue('CAPITAL');
+  var str =Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
+  if (capital == 'title') return [''+str+'.title()' , Blockly.Python.ORDER_ATOMIC];
+  else return [''+str+'.lower()', Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.text_center = function() {
+  var center = this.getFieldValue('CENTER');
+  var str =Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
+  var width =Blockly.Python.valueToCode(this, 'WID', Blockly.Python.ORDER_ATOMIC);
+  var symbol =Blockly.Python.valueToCode(this, 'Symbol', Blockly.Python.ORDER_ATOMIC);
+  return [''+str+'.'+center+'('+width+','+symbol+')' , Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.text_find = function() {
+  var sentence =Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
+  var str=Blockly.Python.valueToCode(this, 'STR', Blockly.Python.ORDER_ATOMIC);
+  return [''+sentence+'.find('+str+')' , Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.text_replace = function() {
+  var sentence =Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
+  var str1=Blockly.Python.valueToCode(this, 'STR1', Blockly.Python.ORDER_ATOMIC);
+  var str2=Blockly.Python.valueToCode(this, 'STR2', Blockly.Python.ORDER_ATOMIC);
+  return [''+sentence+'.replace('+str1+','+str2+')' , Blockly.Python.ORDER_ATOMIC];
+};
+
+
+Blockly.Python.text_split = function() {
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
+  var argument = Blockly.Python.valueToCode(this, 'VAL', Blockly.Python.ORDER_ATOMIC) || '\"\"';
+  var code = str + ".split(" + argument + ")";
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+
+
+Blockly.Python.text_strip = function() {
+  var towhat = this.getFieldValue('TOWHAT');
+  var str =Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
+  var code = str + "." + towhat + "()";
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};

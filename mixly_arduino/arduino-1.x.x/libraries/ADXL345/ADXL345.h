@@ -352,10 +352,15 @@ class ADXL345 {
         // FIFO_STATUS register
         bool getFIFOTriggerOccurred();
         uint8_t getFIFOLength();
-
+		int16_t X_angle(void);
+        int16_t Y_angle(void);
+     
     private:
         uint8_t devAddr;
         uint8_t buffer[6];
+		int16_t get_X_angle;
+        int16_t get_Y_angle;
+        void read_ADXL345(void);
 };
 
 #endif /* _ADXL345_H_ */

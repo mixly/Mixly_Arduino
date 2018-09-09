@@ -603,3 +603,36 @@ Blockly.Blocks['dicts_deldict'] = {
     // this.moveInputBefore('AT2','LIST');
   }
 };
+
+Blockly.Blocks['dicts_pop'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.dicts.HUE);
+    this.appendValueInput('DICT')
+        .setCheck('Dict')
+    this.appendDummyInput("")
+        .appendField(Blockly.blockpy_DICT_POP)
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+        .appendField(Blockly.Msg.DICTS_GET_VALUE);    
+    this.setTooltip(Blockly.Msg.DICT_POP_TOOLTIP);
+    this.setInputsInline(true);
+    this.setOutput(true);
+  }
+};
+
+Blockly.Blocks['dicts_setdefault'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.dicts.HUE);
+    this.appendValueInput('DICT')
+        .setCheck('Dict');
+    this.appendDummyInput("")
+        .appendField(Blockly.Msg.DICTS_SET_DEFAULT)
+        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+        .appendField(Blockly.Msg.DICTS_DEFAULT_VALUE);
+    this.appendValueInput('VAR')    
+       
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  this.setTooltip(Blockly.Msg.DICTS_SETDEFAULT_TOOLTIP);
+  }
+};

@@ -1,4 +1,4 @@
-// This file was automatically generated.  Do not modify.
+﻿// This file was automatically generated.  Do not modify.
 'use strict';
 
 goog.provide('Blockly.Msg.zh.hant');
@@ -940,7 +940,11 @@ Blockly.MIXLY_MSTIMER2_STOP='停止';
 //interrupts
 Blockly.MIXLY_CONTROL_INTERRUPTS = '允許中斷';
 Blockly.MIXLY_CONTROL_NOINTERRUPTS = '禁止中斷';
-
+//SCoop
+Blockly.MIXLY_CONTROL_SCoop_Init = '初始化';
+Blockly.MIXLY_CONTROL_SCoop_loop = '迴圈';
+Blockly.MIXLY_CONTROL_SCoop_yield = '執行SCoop任務';
+Blockly.MIXLY_CONTROL_SCoop_sleep = 'SCoop 延時(僅用於SCoop)';
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='該變量未聲明';
 Blockly.MIXLY_LENGTH ="獲取長度";
@@ -986,17 +990,12 @@ Blockly.MIXLY_4DIGITDISPLAY_OFF = '滅';
 
 //TM1637
 Blockly.MIXLY_4DIGITDISPLAY_TM1637 = 'TM1637';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING = 'TM1637 顯示(滾動)字串';
+Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYPRINT = 'TM1637 顯示';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING_TIP = '少於等於4字元為顯示，超過4個字元為滾動。';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP = '使用前必須用兩個管腳初始化，CLK是時鐘管腳，DIO是資料管腳';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME = 'TM1637 顯示時間';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME_TOOLTIP = '顯示使用，時分秒';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_INIT = 'TM1637 初始化';
-Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH = '碼錶';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_STOPWATCH_TOOLTIP = '碼錶';
-Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_START = '開始';
-Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_PAUSE = '暫停';
-Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_RESET = '重置';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_BRIGHTNESS = 'TM1637 設置亮度';
 Blockly.MIXLY_4DIGITDISPLAY_4DIGITDISPLAY_BRIGHTNESS_TOOLTIP = '設置亮度,範圍是0-7';
 

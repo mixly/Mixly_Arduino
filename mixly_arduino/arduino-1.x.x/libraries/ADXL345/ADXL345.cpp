@@ -1666,3 +1666,27 @@ uint8_t ADXL345::getFIFOLength() {
     I2Cdev::readBits(devAddr, ADXL345_RA_FIFO_STATUS, ADXL345_FIFOSTAT_LENGTH_BIT, ADXL345_FIFOSTAT_LENGTH_LENGTH, buffer);
     return buffer[0];
 }
+void ADXL345::read_ADXL345(void)
+{
+   float  Q=getAccelerationX()*3.9; 
+   float  T=getAccelerationY()*3.9;
+   float  K=getAccelerationZ()*3.9;
+   Q=-Q;
+
+   get_X_angle=(int)(((atan2(K,Q)*180)/3.14159265));  //X轴角度值 
+   get_Y_angle=(int)(((atan2(K,T)*180)/3.14159265));  //Y轴角度值
+
+}
+
+int16_t ADXL345::X_angle(void)
+{
+  read_ADXL345();
+  return get_X_angle;  
+
+}
+int16_t ADXL345::Y_angle(void)
+{
+  read_ADXL345();
+  return get_Y_angle; 
+
+}

@@ -46,8 +46,17 @@ goog.require('goog.userAgent');
  * @constructor
  */
 Blockly.FieldTextArea = function(text, opt_changeHandler) {
-  Blockly.FieldTextArea.superClass_.constructor.call(this, text);
-  this.changeHandler_ = opt_changeHandler;
+  Blockly.FieldTextArea.superClass_.constructor.call(this, text, opt_changeHandler);
+  var self = this;
+  var itl = setInterval(function(){
+    clearInterval(itl);
+    self.showEditor_();
+    self.setText('');
+    self.setText(text);
+    self.validate_();
+    self.resizeEditor_();
+    Blockly.WidgetDiv.hide();
+  }, 10);
 };
 goog.inherits(Blockly.FieldTextArea, Blockly.Field);
 
@@ -151,7 +160,7 @@ Blockly.FieldTextArea.prototype.updateTextNode_ = function() {
   //var textNode = document.createTextNode(text);
   text.split(/\n/).map(function(textline){
     textline = textline.replace(/\s/g, Blockly.Field.NBSP);
-    var tspan = Blockly.createSvgElement('tspan', {x:0,y:y}, that.textElement_);
+    var tspan = Blockly.utils.createSvgElement('tspan', {x:0,y:y}, that.textElement_);
     var textNode = document.createTextNode(textline);
     tspan.appendChild(textNode);
     y+=20;
@@ -310,9 +319,9 @@ Blockly.FieldTextArea.prototype.validate_ = function() {
     valid = this.changeHandler_(htmlInput.value);
   }
   if (valid === null) {
-    Blockly.addClass_(htmlInput, 'blocklyInvalidInput');
+    Blockly.utils.addClass(htmlInput, 'blocklyInvalidInput');
   } else {
-    Blockly.removeClass_(htmlInput, 'blocklyInvalidInput');
+    Blockly.utils.removeClass(htmlInput, 'blocklyInvalidInput');
   }
 };
 

@@ -1,4 +1,4 @@
-// This file was automatically generated.  Do not modify.
+﻿// This file was automatically generated.  Do not modify.
 'use strict';
 
 goog.provide('Blockly.Msg.zh.hans');
@@ -940,6 +940,11 @@ Blockly.MIXLY_MSTIMER2_STOP='停止';
 //interrupts
 Blockly.MIXLY_CONTROL_INTERRUPTS = '允许中断';
 Blockly.MIXLY_CONTROL_NOINTERRUPTS = '禁止中断';
+//SCoop
+Blockly.MIXLY_CONTROL_SCoop_Init = '初始化';
+Blockly.MIXLY_CONTROL_SCoop_loop = '循环';
+Blockly.MIXLY_CONTROL_SCoop_yield = '执行SCoop任务';
+Blockly.MIXLY_CONTROL_SCoop_sleep = 'SCoop 延时(仅用于SCoop)';
 
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='该变量未声明';
@@ -986,19 +991,14 @@ Blockly.MIXLY_4DIGITDISPLAY_OFF = '灭';
 
 //TM1637
 Blockly.MIXLY_4DIGITDISPLAY_TM1637 = 'TM1637';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING = 'TM1637 显示(滚动)字符串';
+Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYPRINT = 'TM1637 显示';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING_TIP = '少于等于4字符为显示，超过4个字符为滚动。';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP = '使用前必须用两个管脚初始化，CLK是时钟管脚，DIO是数据管脚';
+Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP = '使用前必须用两个管脚初始化,CLK是时钟管脚,DIO是数据管脚';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME = 'TM1637 显示时间';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME_TOOLTIP = '显示使用，时分秒';
+Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME_TOOLTIP = '显示时间,时分';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_INIT = 'TM1637 初始化';
-Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH = '秒表';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_STOPWATCH_TOOLTIP = '秒表';
-Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_START = '开始';
-Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_PAUSE = '暂停';
-Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_RESET = '重置';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_BRIGHTNESS = 'TM1637 设置亮度';
-Blockly.MIXLY_4DIGITDISPLAY_4DIGITDISPLAY_BRIGHTNESS_TOOLTIP = '设置亮度,范围是0-7';
+Blockly.MIXLY_4DIGITDISPLAY_4DIGITDISPLAY_BRIGHTNESS_TOOLTIP = '设置亮度,范围是0-100';
 
 Blockly.MIXLY_YEAR = '年';
 Blockly.MIXLY_MONTH = '月';
@@ -1796,3 +1796,25 @@ Blockly.MIXLY_MICROBIT_RADIO_SEND="无线发送";
 Blockly.MIXLY_MICROBIT_MSG="消息"
 Blockly.MIXLY_MICROBIT_MSG_BYTE="消息(含字节)"
 Blockly.MIXLY_MICROBIT_MSG_FULL="(消息,信号强度,时间戳)"
+Blockly.blockpy_DICT_POP='获取并删除字典中键';
+Blockly.Msg.DICT_POP_TOOLTIP = "获取并删除字典中的对应项，返回被删除的值。";
+Blockly.Msg.DICTS_DEFAULT_VALUE = "默认值为";
+Blockly.Msg.DICTS_SET_DEFAULT = "设置 键";
+Blockly.Msg.DICTS_SETDEFAULT_TOOLTIP = "在字典中添加一个键及对应值，如果字典中已有同名键则无效。";
+Blockly.Msg.TEXT_TITLE="大写";
+Blockly.Msg.TEXT_LOWER="小写";
+Blockly.Msg.TEXT_LJUST="左对齐";
+Blockly.Msg.TEXT_CENTER="居中";
+Blockly.Msg.TEXT_RJUST="右对齐";
+Blockly.MIXLY_MIXPY_REPLACE="替换";
+Blockly.Msg.LIST_SPLIT_AS = "按照";
+Blockly.Msg.LIST_SPLIT = "划分";
+Blockly.MIXLY_TOOLTIP_TEXT_SPLIT="将字符串划分，返回一个列表。";
+Blockly.Msg.TEXT_STRIM = "消除";
+Blockly.Msg.TEXT_TRIM_BOTH = "两侧";
+Blockly.Msg.TEXT_TRIM_LEFT = "左侧";
+Blockly.Msg.TEXT_TRIM_RIGHT = "右侧";
+Blockly.Msg.TEXT_BLANK = "空格";
+Blockly.Msg.TEXT_TRIM_BOTH_TOOLTIP = "复制这段文字的同时删除两端多余的空格。";
+Blockly.Msg.TEXT_TRIM_LEFT_TOOLTIP = "复制这段文字的同时删除左侧多余的空格。";
+Blockly.Msg.TEXT_TRIM_RIGHT_TOOLTIP = "复制这段文字的同时删除右侧多余的空格。";

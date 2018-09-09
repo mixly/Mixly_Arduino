@@ -1453,14 +1453,19 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
             } else {
                 throw new Error("Incorrect number of arguments to plt.plot");
             }
-        } else if(Object.keys(py2block_config.moduleFunctionD.get(module)).length != 0
-            && name in py2block_config.moduleFunctionD.get(module)){
-            try {
-                return py2block_config.moduleFunctionD.get(module)[name](this, func, args, keywords, starargs, kwargs, node);
-            }catch(e){
-
+        } else if(Object.keys(py2block_config.moduleFunctionD.get(module)).length != 0){
+            if(name in py2block_config.moduleFunctionD.get(module)) {
+                try {
+                    return py2block_config.moduleFunctionD.get(module)[name](this, func, args, keywords, starargs, kwargs, node);
+                } catch (e) {
+                    throw new Error("not implement for this module's function");
+                }
+            }else{
+                throw new Error("not implement for this module's function");
             }
-        }else if (module in PythonToBlocks.KNOWN_MODULES && name in PythonToBlocks.KNOWN_MODULES[module]) {
+        } else if (py2block_config.knownModuleS.has(module)){
+            throw new Error("not implement for this module's function");
+        } else if (module in PythonToBlocks.KNOWN_MODULES && name in PythonToBlocks.KNOWN_MODULES[module]) {
             var definition = null;
             definition = PythonToBlocks.KNOWN_MODULES[module][name];
             var blockName = definition[0];
@@ -1575,6 +1580,9 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
         return PythonToBlocks.KNOWN_ATTR_FUNCTIONS[name].bind(this)(func, args, keywords, starargs, kwargs, node)
     }
     //兜底图形块呈现方式
+    if(keywords.length != 0){
+        throw new Error("not implement for kargs");
+    }
     //console.log(func, args, keywords, starargs, kwargs);
     heights = this.getChunkHeights(node);
     extractedSource = this.getSourceCode(arrayMin(heights), arrayMax(heights));
@@ -1672,6 +1680,8 @@ PythonToBlocks.prototype.Call = function(node) {
                         throw new Error("*args (variable arguments) are not implemented yet.");
                     } else if (kwargs !== null && kwargs.length > 0) {
                         throw new Error("**args (keyword arguments) are not implemented yet.");
+                    } else if (keywords !== null && keywords.length > 0) {
+                        throw new Error("**args (keyword arguments) are not implemented yet.");
                     }
                     var argumentsNormal = {};
                     var argumentsMutation = {"@name": this.identifier(func.id)};
@@ -1746,11 +1756,16 @@ PythonToBlocks.prototype.Str = function(node)
 {
     var s = node.s;
     var strValue = Sk.ffi.remapToJs(s);
-    if (strValue.split("\n").length > 1) {
+    /*if (strValue.split("\n").length > 1) {
         return block("string_multiline", node.lineno, {"TEXT": strValue});
     } else {
         return block("text", node.lineno, {"TEXT": strValue});
     }
+    */
+    strValue = strValue.replace(/\n/g, '\\n')
+                        .replace(/\r/g, '\\r')
+                        .replace(/\t/g, '\\t');
+    return block("text", node.lineno, {"TEXT": strValue});
 }
 
 PythonToBlocks.prototype.Str_value = function(node) {

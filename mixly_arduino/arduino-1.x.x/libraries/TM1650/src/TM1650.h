@@ -16,24 +16,6 @@
  *  v1.1.0:
  *      2015-12-20 - code clean up. Moved to a single header file. Added Gradual brightness method
  *
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
  * ===============================================*/
 
 #include <Arduino.h>
@@ -89,6 +71,10 @@ class TM1650 {
 	void	displayOff();
 	void	displayState(bool aState);
 	void	displayString(char *aString);
+	void	displayString(String aString);
+	void	displayString(float value);
+	void	displayString(int value);
+	void	displayString(long value);
 	int 	displayRunning(char *aString);
 	int 	displayRunningShift();
 	void	setBrightness(unsigned int aValue = TM1650_MAX_BRIGHT);
@@ -270,23 +256,113 @@ void TM1650::clear()
 void TM1650::displayString(char *aString)
 {
 	if (!iActive) return;
-	for (int i=0; i<iNumDigits; i++) {
-	  byte a = ((byte) aString[i]) & 0b01111111;
-	  byte dot = ((byte) aString[i]) & 0b10000000;
+	unsigned int slen =strlen(aString);
+	String bString = aString;
+	for (int i = 0; i < 4 - slen; i++) 
+		bString = " " + bString;
+
+	for (int i = 0; i<iNumDigits; i++) {
+		byte a = ((byte)bString.charAt(i)) & 0b01111111;
+		byte dot = ((byte)bString.charAt(i)) & 0b10000000;
 #ifndef TM1650_USE_PROGMEM	  
-	  iBuffer[i] = TM1650_CDigits[a];
+		iBuffer[i] = TM1650_CDigits[a];
 #else
-	  iBuffer[i] = pgm_read_byte_near(TM1650_CDigits + a);
+		iBuffer[i] = pgm_read_byte_near(TM1650_CDigits + a);
 #endif
-	  if (a) {
-	    Wire.beginTransmission(TM1650_DISPLAY_BASE+i);
-	    Wire.write(iBuffer[i] | dot);
-	    Wire.endTransmission();
-	  }
-	  else
-	    break;
-	    
+		if (a) {
+			Wire.beginTransmission(TM1650_DISPLAY_BASE + i);
+			Wire.write(iBuffer[i] | dot);
+			Wire.endTransmission();
+		}
+		else
+			break;
+
 	}
+	
+}
+void TM1650::displayString(String aString)
+{
+	if (!iActive) return;
+	unsigned int slen = aString.length();
+	for (int i = 0; i < 4 - slen; i++)
+		aString = " " + aString;
+	for (int i = 0; i<iNumDigits; i++) {
+		byte a = ((byte)aString.charAt(i)) & 0b01111111;
+		byte dot = ((byte)aString.charAt(i)) & 0b10000000;
+#ifndef TM1650_USE_PROGMEM	  
+		iBuffer[i] = TM1650_CDigits[a];
+#else
+		iBuffer[i] = pgm_read_byte_near(TM1650_CDigits + a);
+#endif
+		if (a) {
+			Wire.beginTransmission(TM1650_DISPLAY_BASE + i);
+			Wire.write(iBuffer[i] | dot);
+			Wire.endTransmission();
+		}
+		else
+			break;
+
+	}
+}
+void TM1650::displayString(float value)
+{
+	if (!iActive) return;
+	String aString = String("") + value;
+	aString = aString + "_";
+	aString.replace("000_", "");
+	aString.replace("00_", "");
+	aString.replace("0_", "");
+	unsigned int slen = aString.length();
+
+	for (int i = 0; i < 4 - slen; i++)
+		aString = " " + aString;
+	for (int i = 0; i<iNumDigits; i++) {
+		byte a = ((byte)aString.charAt(i)) & 0b01111111;
+		byte dot = ((byte)aString.charAt(i)) & 0b10000000;
+#ifndef TM1650_USE_PROGMEM	  
+		iBuffer[i] = TM1650_CDigits[a];
+#else
+		iBuffer[i] = pgm_read_byte_near(TM1650_CDigits + a);
+#endif
+		if (a) {
+			Wire.beginTransmission(TM1650_DISPLAY_BASE + i);
+			Wire.write(iBuffer[i] | dot);
+			Wire.endTransmission();
+		}
+		else
+			break;
+
+	}
+}
+void TM1650::displayString(int value)
+{
+	if (!iActive) return;
+	String aString = String("") + value;
+	unsigned int slen = aString.length();
+
+	for (int i = 0; i < 4 - slen; i++)
+		aString = " " + aString;
+	for (int i = 0; i<iNumDigits; i++) {
+		byte a = ((byte)aString.charAt(i)) & 0b01111111;
+		byte dot = ((byte)aString.charAt(i)) & 0b10000000;
+#ifndef TM1650_USE_PROGMEM	  
+		iBuffer[i] = TM1650_CDigits[a];
+#else
+		iBuffer[i] = pgm_read_byte_near(TM1650_CDigits + a);
+#endif
+		if (a) {
+			Wire.beginTransmission(TM1650_DISPLAY_BASE + i);
+			Wire.write(iBuffer[i] | dot);
+			Wire.endTransmission();
+		}
+		else
+			break;
+
+	}
+}
+void TM1650::displayString(long value)
+{
+	displayString((int)value);
 }
 
 /** Display string on the display in a running fashion

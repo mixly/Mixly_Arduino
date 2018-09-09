@@ -1,0 +1,5 @@
+build
+libraries
+sketches
+/.project
+*.h.gch

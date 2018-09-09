@@ -14,6 +14,7 @@ function defDict(type) {
 function Py2blockConfig (){
     this.initIgnoreS();
     this.initModuleAttrD();
+    this.initKnownModuleS();
 }
 
 var pbc = Py2blockConfig.prototype;
@@ -28,6 +29,7 @@ pbc.ifStatementD= defDict({});
 pbc.whileStatementD= defDict({});
 pbc.forStatementD= defDict({});
 pbc.reservedNameD= {};
+pbc.knownModuleS = new Set();
 pbc.objectTypeD = {}; //key：变量名，value：变量类型，如{'a':'List'}
 pbc.ignoreS = new Set();
 pbc.pinType = null;
@@ -43,7 +45,7 @@ pbc.initIgnoreS = function(){
     ];
     var boardIgnoreL = [
         //actuator.js
-        'Servo', 'class_servo', 'mixly_servo_write_angle',
+        'Servo', 'mixly_servo_write_angle',
         //display.js
         "LCD1602", "LCD_I2C_ADDR", "OLED12864_I2C","mixly_rgb_show", "oled", "mixly_oled_text",
         //sensor.js
@@ -82,6 +84,18 @@ pbc.initModuleAttrD = function(){
                 "PIN": module + "." + attr
             });
         }
+    }
+}
+
+pbc.initKnownModuleS = function(){
+    var pythonModuleL = [
+        'math', 'random'
+    ];
+    var boardModuleL = [];
+
+    var moduleL = pythonModuleL.concat(boardModuleL);
+    for (var i = 0; i < moduleL.length; i++) {
+        this.knownModuleS.add(moduleL[i]);
     }
 }
 

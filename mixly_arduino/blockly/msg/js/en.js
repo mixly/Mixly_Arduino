@@ -1,4 +1,4 @@
-// This file was automatically generated.  Do not modify.
+﻿// This file was automatically generated.  Do not modify.
 
 'use strict';
 
@@ -939,6 +939,11 @@ Blockly.MIXLY_MSTIMER2_STOP='stop';
 //interrupts
 Blockly.MIXLY_CONTROL_INTERRUPTS = 'interrupts';
 Blockly.MIXLY_CONTROL_NOINTERRUPTS = 'nointerrupts';
+//SCoop
+Blockly.MIXLY_CONTROL_SCoop_Init = 'setup';
+Blockly.MIXLY_CONTROL_SCoop_loop = 'loop';
+Blockly.MIXLY_CONTROL_SCoop_yield = 'yield SCoop tasks';
+Blockly.MIXLY_CONTROL_SCoop_sleep = 'SCoop sleep(only for SCoop)';
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='This variable is not declared!';
 Blockly.MIXLY_LENGTH = "length of";
@@ -984,17 +989,12 @@ Blockly.MIXLY_4DIGITDISPLAY_OFF = 'Off';
 
 //TM1637
 Blockly.MIXLY_4DIGITDISPLAY_TM1637 = 'TM1637';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING = 'TM1637 Show(scroll) content';
+Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYPRINT = 'TM1637 Show';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING_TIP = '';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP = '';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME = 'TM1637 Show time';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME_TOOLTIP = '';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_INIT = 'TM1637 Init';
-Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH = 'Stopwatch';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_STOPWATCH_TOOLTIP = '';
-Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_START = 'Start';
-Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_PAUSE = 'Pause';
-Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_RESET = 'Reset';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_BRIGHTNESS = 'TM1637 Brightness';
 Blockly.MIXLY_4DIGITDISPLAY_4DIGITDISPLAY_BRIGHTNESS_TOOLTIP = '';
 
