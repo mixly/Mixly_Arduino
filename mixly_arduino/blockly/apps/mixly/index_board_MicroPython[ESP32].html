@@ -1360,7 +1360,12 @@
             </shadow>
           </value>
         </block>
-        <block type="sensor_pin_pressed"></block>
+        <block type="sensor_pin_pressed">
+          <value name="button">
+          <shadow type="number1">
+          </shadow>
+        </value>
+        </block>
         <block type="controls_attachGestureInterrupt"></block>
         <block type="controls_attachGestureInterrupt2"></block>
         <block type="sensor_get_acceleration"></block>
@@ -1386,7 +1391,16 @@
             </shadow>
           </value>
         </block>
-        <block type="led_bright"></block>
+        <block type="led_bright">
+           <value name="led">
+          <shadow type="number">
+          </shadow>
+        </value>
+        <value name="bright">
+          <shadow type="light">
+          </shadow>
+        </value>
+        </block>
         <block type="microbit_music_play">
           <value name="pitch">
             <shadow type="pins_tone_notes"></shadow>

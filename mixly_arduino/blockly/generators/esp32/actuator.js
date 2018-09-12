@@ -183,15 +183,23 @@ Blockly.Python.servo_move = function() {
 //     return code;
 // };
 
+Blockly.Python.number = function () {
+    // Boolean values HIGH and LOW.
+    var code = this.getFieldValue('op');
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.light = function () {
+    // Boolean values HIGH and LOW.
+    var code = this.getFieldValue('flag');
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python.led_bright= function() {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var op = this.getFieldValue('op');
-    var flag = this.getFieldValue('flag');
-    if (flag=='0'){
-    var code = "led"+op+".on()\n";
-  }else {
-    var code = "led"+op+".off()\n"; 
-  }
+    var op = Blockly.Python.valueToCode(this,'led', Blockly.Python.ORDER_ATOMIC);
+    var flag = Blockly.Python.valueToCode(this,'bright', Blockly.Python.ORDER_ATOMIC);
+    var code = 'led'+op+'.'+flag+'()\n';
     return code;
 };
 

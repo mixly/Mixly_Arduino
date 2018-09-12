@@ -302,9 +302,15 @@ Blockly.Python.sensor_light= function(){
     return ['brightness.read()', Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.number1 = function(){
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    var code = this.getFieldValue('op');
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python.sensor_pin_pressed = function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var number = this.getFieldValue('button');
+    var number = Blockly.Python.valueToCode(this, 'button', Blockly.Python.ORDER_ATOMIC);
     var code = 'touch'+ number+'.is_touched()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };

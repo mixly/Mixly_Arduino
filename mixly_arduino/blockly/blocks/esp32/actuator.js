@@ -396,16 +396,35 @@ Blockly.Blocks.servo_move = {
   }
 };
 
+Blockly.Blocks['number'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown([["1", "1"], ["2", "2"]]), 'op')
+    this.setOutput(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW);
+  }
+};
+
+Blockly.Blocks['light'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ESP32_ON, "on"], [Blockly.MIXLY_ESP32_OFF, "off"],[Blockly.MIXLY_ESP32_TOGGLE, "toggle"]]), "flag");
+    this.setOutput(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW);
+  }
+};
+
+
 Blockly.Blocks.led_bright = {
   init: function() {
   this.setColour(Blockly.Blocks.actuator.HUE);
   this.appendDummyInput()
       .appendField(Blockly.MIXLY_SET_LED);
-  this.appendDummyInput("")
-      .appendField(new Blockly.FieldDropdown([["(1)", "1"], ["(2)", "2"]]), "op");
-  this.appendDummyInput("")
+ this.appendValueInput('led')
+  this.appendValueInput('bright')
       .appendField(Blockly.LUXE_LED)
-      .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ESP32_ON, "0"], [Blockly.MIXLY_ESP32_OFF, "1"]]), "flag");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   this.setInputsInline(true);
