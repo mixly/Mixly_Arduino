@@ -56,7 +56,8 @@ Blockly.Python.i2c_init = function () {
   var dropdown_pin1 = Blockly.Python.valueToCode(this, 'RX',Blockly.Python.ORDER_ATOMIC);
   var dropdown_pin2 = Blockly.Python.valueToCode(this, 'TX',Blockly.Python.ORDER_ATOMIC);
   var freq = Blockly.Python.valueToCode(this, 'freq', Blockly.Python.ORDER_ATOMIC);
-  return "i2c=I2C(scl=Pin(" + dropdown_pin2 + "), sda=Pin(" + dropdown_pin1 + "), freq=" + freq + ")\n";
+  var sub = Blockly.Python.valueToCode(this, 'SUB',Blockly.Python.ORDER_ATOMIC);
+  return ""+sub+"=I2C(scl=Pin(" + dropdown_pin2 + "), sda=Pin(" + dropdown_pin1 + "), freq=" + freq + ")\n";
 };
 
 Blockly.Python.i2c_read = function(){

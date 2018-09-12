@@ -295,4 +295,38 @@ Blockly.Python.dht11 = function () {
     //Blockly.Python.definitions_['var_dht_' + dropdown_pin] = 'dht myDHT_' + dropdown_pin + ';';
     var code ='get_'+what+'(Pin('+dropdown_pin+'))';
     return [code, Blockly.Python.ORDER_ATOMIC];
-}
+};
+
+Blockly.Python.sensor_light= function(){
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    return ['brightness.read()', Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.sensor_pin_pressed = function(){
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    var number = this.getFieldValue('button');
+    var code = 'Touch'+ number+'.is_touched()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.controls_attachInterrupt = function () {
+    var dropdown_pin = this.getFieldValue('button');
+    var dropdown_mode = this.getFieldValue('mode');
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    // Blockly.Python.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT);';
+    //var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
+   
+    var code = 'button_' + dropdown_pin + '.irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
+    var funcName = 'attachInterrupt_func_' + dropdown_pin;
+    var branch = Blockly.Python.statementToCode(this, 'DO') || Blockly.Python.PASS;
+    var code2 = 'def' + ' ' + funcName + '(p):\n' + branch + '\n';
+    Blockly.Python.setups_[funcName] = code2;
+    return code;
+};
+
+Blockly.Python.sensor_pin_near = function(){
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    var direction = this.getFieldValue('direction');
+    var code = 'Infrared_'+ direction +'.near()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};

@@ -154,20 +154,20 @@ Blockly.Blocks['inout_pinMode'] = {
   }
 };
 
-Blockly.Blocks.controls_attachInterrupt = {
-  init: function() {
-    this.setColour(20);
-    this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_ATTACHINTERRUPT_PIN)
-        .setCheck(Number);
-    this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_MODE)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RISING, "Pin.IRQ_RISING"], [Blockly.MIXLY_FALLING, "Pin.IRQ_FALLING"], [Blockly.MIXLY_CHANGE, "(Pin.IRQ_RISING or Pin.IRQ_FALLING)"]]), "mode");
-    this.appendStatementInput('DO')
-        .appendField(Blockly.MIXLY_DO);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
-  }
-};
+// Blockly.Blocks.controls_attachInterrupt = {
+//   init: function() {
+//     this.setColour(20);
+//     this.appendValueInput("PIN", Number)
+//         .appendField(Blockly.MIXLY_ATTACHINTERRUPT_PIN)
+//         .setCheck(Number);
+//     this.appendDummyInput("")
+//         .appendField(Blockly.MIXLY_MODE)
+//         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RISING, "Pin.IRQ_RISING"], [Blockly.MIXLY_FALLING, "Pin.IRQ_FALLING"], [Blockly.MIXLY_CHANGE, "(Pin.IRQ_RISING or Pin.IRQ_FALLING)"]]), "mode");
+//     this.appendStatementInput('DO')
+//         .appendField(Blockly.MIXLY_DO);
+//     this.setPreviousStatement(true);
+//     this.setNextStatement(true);
+//     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
+//   }
+// };
 

@@ -174,3 +174,41 @@ Blockly.Python.servo_move = function() {
   var code = 'Servo(pin'+dropdown_pin+').write_angle('+value_degree+')\n';
   return code;
 };
+
+// Blockly.Python.led_bright= function() {
+//     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+//     var op = this.getFieldValue('op');
+//     var flag = this.getFieldValue('flag');
+//     var code = "p"+op+" = Pin("+op+", Pin.OUT)\n"+"p"+op+".value("+flag+")\n";
+//     return code;
+// };
+
+Blockly.Python.led_bright= function() {
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    var op = this.getFieldValue('op');
+    var flag = this.getFieldValue('flag');
+    if (flag=='0'){
+    var code = "led"+op+".on()\n";
+  }else {
+    var code = "led"+op+".off()\n"; 
+  }
+    return code;
+};
+
+Blockly.Python.microbit_music_play = function(block) {
+  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+  Blockly.Python.definitions_['import_Pin'] = 'from machine import Pin';
+  Blockly.Python.definitions_['import_PWM'] = 'from machine import PWM';
+  var number_pitch = Blockly.Python.valueToCode(block, 'pitch', Blockly.Python.ORDER_ATOMIC);
+  // var number_duration = Blockly.Python.valueToCode(block, 'duration', Blockly.Python.ORDER_ATOMIC);
+  var code = 'music.play()\n';
+  return code;
+};
+
+Blockly.Python.microbit_music_deinit = function(block) {
+  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+  Blockly.Python.definitions_['import_Pin'] = 'from machine import Pin';
+  Blockly.Python.definitions_['import_PWM'] = 'from machine import PWM';
+  var code = 'music.stop()\n';
+  return code;
+};
