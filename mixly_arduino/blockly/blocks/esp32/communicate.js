@@ -166,7 +166,7 @@ Blockly.Blocks['i2c_init'] = {
   init: function() {
    this.setColour(Blockly.Blocks.communicate.HUE);
    this.appendValueInput('SUB')
-       .appendField(Blockly.MIXLY_SETUP)
+       .appendField("I2C " + Blockly.MIXLY_SETUP)
    this.appendValueInput("RX", Number)
        //.appendField(Blockly.MIXLY_SETUP)
        // .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_SETUP)

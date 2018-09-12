@@ -196,7 +196,7 @@ Blockly.Python.base_type = function () {
 };
 
 Blockly.Python.controls_TypeLists = function(){
-    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    //Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var type = this.getFieldValue('type');
     // Blockly.Python.definitions_['func_type' + type] = code;
     return [type, Blockly.Python.ORDER_ATOMIC];
@@ -209,3 +209,12 @@ Blockly.Python.controls_range = function () {
     var code = "range(" + from + ", " + end + ", " + step + ")";
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.controls_lambda = function (a) {
+    var c = Blockly.Python.valueToCode(a, "BOOL", Blockly.Python.ORDER_NONE) || "None",
+    d = Blockly.Python.statementToCode(a, "DO") || "pass";
+    var code = "lambda " + c + ": " + d;
+    code = code.replace('\n','').replace('    ','')
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+

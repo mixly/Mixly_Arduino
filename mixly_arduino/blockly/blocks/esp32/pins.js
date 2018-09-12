@@ -136,3 +136,12 @@ Blockly.Blocks['pins_radio_datarate'] = {
         this.setOutput(true, Number);
     }
 };
+
+Blockly.Blocks['pins_one_more'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldDropdown(profile.default.one_more), 'PIN');
+        this.setOutput(true);
+    }
+};

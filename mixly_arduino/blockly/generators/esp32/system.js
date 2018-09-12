@@ -89,3 +89,32 @@ Blockly.Python.controls_uname = function () {
     Blockly.Python.definitions_['import_os'] = 'import os';
     return 'os.uname()';
 };
+Blockly.Python.base_delay = function () {
+    // Blockly.Python.definitions_.import_time = "import time";
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    var delay_time = Blockly.Python.valueToCode(this, 'DELAY_TIME', Blockly.Python.ORDER_ATOMIC) || '1000'
+    var dropdown_time = this.getFieldValue('Time');
+    switch (dropdown_time) {
+    case "s":
+       var code = 'sleep_s(' + delay_time + ')\n';
+       return code;
+       break;
+    case "ms":
+       var code ='sleep(' + delay_time + ')\n';
+       return code;
+       break;
+    case "us":
+       var code ='sleep_us(' + delay_time + ')\n';
+       return code;
+       break;
+  }
+};
+
+Blockly.Python.timer = function () {
+    var period = Blockly.Python.valueToCode(this, "period", Blockly.Python.ORDER_NONE) || "0";
+    var mode = Blockly.Python.valueToCode(this, "mode", Blockly.Python.ORDER_NONE) || "None";
+    var callback=Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
+    // var callback = Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
+    var code = "tim.init(period = " + period + ", mode = Timer." + mode + ", callback = " + callback + ")";
+    return code;
+};

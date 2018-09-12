@@ -77,9 +77,6 @@ Blockly.Blocks['raw_block'] = {
   }
 };
 
-
-
-
 Blockly.Blocks.controls_uname = {
   init: function() {
     this.setColour(Blockly.Blocks.system.HUE);
@@ -89,5 +86,26 @@ Blockly.Blocks.controls_uname = {
     this.setInputsInline(true);
     this.setOutput(true);
     this.setTooltip(Blockly.Msg.PROCEDURES_DEFRETURN_RETURN + Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME);
+  }
+};
+
+Blockly.Blocks.timer = {
+  init: function() {
+    this.setColour(Blockly.Blocks.system.HUE);
+    this.appendValueInput('period')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Timer")
+        .appendField(Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL);
+    this.appendValueInput('mode')
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE);
+    this.appendValueInput('callback')
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
+    // this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    //this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS2);
   }
 };

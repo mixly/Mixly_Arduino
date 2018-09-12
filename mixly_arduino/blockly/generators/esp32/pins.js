@@ -20,3 +20,4 @@ Blockly.Python.pins_brightness=Blockly.Python.pins_digital;
 Blockly.Python.pins_tone_notes = Blockly.Python.pins_digital;
 Blockly.Python.pins_radio_power = Blockly.Python.pins_digital;
 Blockly.Python.pins_radio_datarate = Blockly.Python.pins_digital;
+Blockly.Python.pins_one_more = Blockly.Python.pins_digital;

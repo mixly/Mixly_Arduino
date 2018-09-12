@@ -539,7 +539,7 @@ Blockly.Blocks['sensor_pin_pressed'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_PIN)
+            .appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR)
             .appendField(new Blockly.FieldDropdown([["1", "1"], ["2", "2"],["3", "3"],["4", "4"]]), "button");
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_IS_TOUCHED);
@@ -549,30 +549,30 @@ Blockly.Blocks['sensor_pin_pressed'] = {
     }
 };
 
-Blockly.Blocks.controls_attachInterrupt = {
-  init: function() {
-    this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_MICROBIT_JS_INTERRUPT_BTN)
-        .appendField(new Blockly.FieldDropdown([["A", "A"],["B","A"]]), "button");
-    this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_MODE)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RISING, "Pin.IRQ_RISING"], [Blockly.MIXLY_FALLING, "Pin.IRQ_FALLING"], [Blockly.MIXLY_CHANGE, "(Pin.IRQ_RISING or Pin.IRQ_FALLING)"]]), "mode");
-    this.appendStatementInput('DO')
-        .appendField(Blockly.MIXLY_DO);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setInputsInline(true);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
-  }
-};
+// Blockly.Blocks.controls_attachInterrupt = {
+//   init: function() {
+//     this.setColour(Blockly.Blocks.sensor.HUE);
+//     this.appendDummyInput("")
+//         .appendField(Blockly.MIXLY_MICROBIT_JS_INTERRUPT_BTN)
+//         .appendField(new Blockly.FieldDropdown([["A", "A"],["B","A"]]), "button");
+//     this.appendDummyInput("")
+//         .appendField(Blockly.MIXLY_MODE)
+//         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RISING, "Pin.IRQ_RISING"], [Blockly.MIXLY_FALLING, "Pin.IRQ_FALLING"], [Blockly.MIXLY_CHANGE, "(Pin.IRQ_RISING or Pin.IRQ_FALLING)"]]), "mode");
+//     this.appendStatementInput('DO')
+//         .appendField(Blockly.MIXLY_DO);
+//     this.setPreviousStatement(true);
+//     this.setNextStatement(true);
+//     this.setInputsInline(true);
+//     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
+//   }
+// };
 
 Blockly.Blocks['sensor_pin_near'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_ESP32_NEAR)
-            .appendField(new Blockly.FieldDropdown([[Blockly.Msg.TEXT_TRIM_LEFT, "left"], [Blockly.Msg.TEXT_TRIM_RIGHT, "right"]]), "direction");
+            .appendField(new Blockly.FieldDropdown([[Blockly.Msg.TEXT_TRIM_LEFT, "left"], [Blockly.Msg.TEXT_TRIM_RIGHT, "right"]]), "direction")
+            .appendField(Blockly.MIXLY_ESP32_NEAR);
         this.setOutput(true, Boolean);
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_sensor_pin_pressed);

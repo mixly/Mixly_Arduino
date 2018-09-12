@@ -305,7 +305,7 @@ Blockly.Python.sensor_light= function(){
 Blockly.Python.sensor_pin_pressed = function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var number = this.getFieldValue('button');
-    var code = 'Touch'+ number+'.is_touched()';
+    var code = 'touch'+ number+'.is_touched()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 

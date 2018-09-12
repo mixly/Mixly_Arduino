@@ -28,13 +28,23 @@ Blockly.Python.inout_digital_read = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 //ok
-Blockly.Python.inout_analog_write = function () {
+Blockly.Python.inout_pwm_analog_write = function () {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     //var dropdown_stat = this.getFieldValue('STAT');
     var value_num = Blockly.Python.valueToCode(this, 'NUM', Blockly.Python.ORDER_ATOMIC);
     //Blockly.Python.setups_['setup_output'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
     var code = 'pin' + dropdown_pin + '.write_analog(' + value_num + ')\n';
+    return code;
+};
+//ok
+Blockly.Python.inout_analog_write = function () {
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    //var dropdown_stat = this.getFieldValue('STAT');
+    var value_num = Blockly.Python.valueToCode(this, 'NUM', Blockly.Python.ORDER_ATOMIC);
+    //Blockly.Python.setups_['setup_output'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
+    var code = 'pin' + dropdown_pin + '.dac_write(' + value_num + ')\n';
     return code;
 };
 //ok
@@ -67,12 +77,12 @@ Blockly.Python.inout_analog_read = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 //ok
-// Blockly.Python.sensor_pin_pressed = function(){
-//     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-//     var pin = Blockly.Python.valueToCode(this, 'pin', Blockly.Python.ORDER_ATOMIC);
-//     var code = 'pin'+ pin +'.is_touched()';
-//     return [code, Blockly.Python.ORDER_ATOMIC];
-// };
+Blockly.Python.pin_pressed = function(){
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    var pin = Blockly.Python.valueToCode(this, 'pin', Blockly.Python.ORDER_ATOMIC);
+    var code = 'pin'+ pin +'.is_touched()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
 
 Blockly.Python.inout_pinMode = function () {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
@@ -82,18 +92,18 @@ Blockly.Python.inout_pinMode = function () {
     return code;
 };
 
-// Blockly.Python.controls_attachInterrupt = function () {
-//     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
-//     var dropdown_mode = this.getFieldValue('mode');
-//     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-//     // Blockly.Python.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT);';
-//     //var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
+Blockly.Python.controls_pin_attachInterrupt = function () {
+    var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var dropdown_mode = this.getFieldValue('mode');
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    // Blockly.Python.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT);';
+    //var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
    
-//     var code = 'pin' + dropdown_pin + '.irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
-//     var funcName = 'attachInterrupt_func_' + dropdown_pin;
-//     var branch = Blockly.Python.statementToCode(this, 'DO') || Blockly.Python.PASS;
-//     var code2 = 'def' + ' ' + funcName + '(p):\n' + branch + '\n';
-//     Blockly.Python.setups_[funcName] = code2;
-//     return code;
-// };
+    var code = 'pin' + dropdown_pin + '.irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
+    var funcName = 'attachInterrupt_func_' + dropdown_pin;
+    var branch = Blockly.Python.statementToCode(this, 'DO') || Blockly.Python.PASS;
+    var code2 = 'def' + ' ' + funcName + '(p):\n' + branch + '\n';
+    Blockly.Python.setups_[funcName] = code2;
+    return code;
+};
 

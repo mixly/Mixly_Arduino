@@ -416,7 +416,7 @@ Blockly.Blocks.microbit_music_play={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MBOT_TONE);
+        .appendField(Blockly.MIXLY_DF_BUZZER+Blockly.MIXLY_MBOT_TONE);
     this.appendValueInput('pitch')
         .setCheck(Number)
         .appendField(Blockly.MIXLY_FREQUENCY);
@@ -431,7 +431,7 @@ Blockly.Blocks.microbit_music_deinit={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MBOT_NOTONE);
+        .appendField(Blockly.MIXLY_DF_BUZZER+Blockly.MIXLY_MBOT_NOTONE);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);

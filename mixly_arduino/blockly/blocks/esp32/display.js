@@ -70,7 +70,7 @@ Blockly.Blocks.monitor_show_string = {
     this.setColour(Blockly.Blocks.display.HUE);
 	  this.appendValueInput('data')
         .setCheck(String)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,'show'],[Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING,'scroll']]),"MODE")
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,'show'],[Blockly.MIXLY_ESP32_MONITOR_SCROLL,'scroll']]),"MODE")
 		    .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -93,7 +93,7 @@ Blockly.Blocks.monitor_show_scroll_string = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendValueInput('data')
         .setCheck(String)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,'show'],[Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING,'scroll']]),"MODE")
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,'show'],[Blockly.MIXLY_ESP32_MONITOR_SCROLL,'scroll']]),"MODE")
         .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING);
     this.appendValueInput("time")
         .setCheck(Number)

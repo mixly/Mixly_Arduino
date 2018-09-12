@@ -23,11 +23,12 @@
   <script type="text/javascript" src="microbit[py]/myblock.js"></script>
   <script type="text/javascript" src="../../blocks/python/variables.js"></script>
   <script type="text/javascript" src="../../generators/python/variables.js"></script>
-  <script src="../../blocks/esp32/microbit_profile.js"></script>
+  <script src="../../blocks/esp32/esp32_profile.js"></script>
   <!-- blocks file -->
   <script src="../../blocks/esp32/pins.js"></script>
   <script src="../../blocks/esp32/inout.js"></script>
-  <script src="../../blocks/esp32/control.js"></script>
+  <script src="../../blocks/python/control.js"></script>
+  <script src="../../blocks/esp32/system.js"></script>
   <script src="../../blocks/python/math.js"></script>
   <script src="../../blocks/python/text.js"></script>
   <script src="../../blocks/python/lists.js"></script>
@@ -43,11 +44,12 @@
   <script src="../../blocks/esp32/factory.js"></script>
   <script src="../../blocks/python/tuple.js"></script>
   <script src="../../blocks/python/set.js"></script>
-  <script src="../../blocks/esp32/old.js"></script>
+  
   <!-- generator file -->
   <script src="../../generators/esp32/pins.js"></script>
   <script src="../../generators/esp32/inout.js"></script>
-  <script src="../../generators/esp32/control.js"></script>
+  <script src="../../generators/python/control.js"></script>
+  <script src="../../generators/esp32/system.js"></script>
   <script src="../../generators/python/math.js"></script>
   <script src="../../generators/python/text.js"></script>
   <script src="../../generators/python/lists.js"></script>
@@ -402,6 +404,16 @@
           </shadow>
         </value>
       </block>
+      <block type="inout_pwm_analog_write">
+        <value name="PIN">
+          <shadow type="pins_pwm"></shadow>
+        </value>
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
       <block type="inout_analog_read">
         <value name="PIN">
           <shadow type="pins_analog"></shadow>
@@ -417,12 +429,17 @@
           </shadow>
         </value>
       </block>
-      <!-- <block type="sensor_pin_pressed">
+      <block type="pin_pressed">
         <value name="pin">
           <shadow type="pins_interrupt">
           </shadow>
         </value>
-      </block> -->
+      </block>
+      <block type="controls_pin_attachInterrupt">
+        <value name="PIN">
+          <shadow type="pins_digital"></shadow>
+        </value>
+      </block>
     </category>
     <category id="catControl" colour="120">
       <block type="base_setup"></block>
@@ -430,7 +447,7 @@
       <block type="base_delay">
         <value name="DELAY_TIME">
           <shadow type="math_number">
-            <field name="NUM">1</field>
+            <field name="NUM">1000</field>
           </shadow>
         </value>
       </block>
@@ -443,15 +460,15 @@
       </block>
       <block type="controls_TypeLists"></block>
       <block type="controls_if"></block>
-      <block type="controls_for">
+      <block type="controls_range">
         <value name="FROM">
           <shadow type="math_number">
-            <field name="NUM">1</field>
+            <field name="NUM">0</field>
           </shadow>
         </value>
         <value name="TO">
           <shadow type="math_number">
-            <field name="NUM">10</field>
+            <field name="NUM">5</field>
           </shadow>
         </value>
         <value name="STEP">
@@ -465,22 +482,80 @@
           <shadow type="list_many_input">
             <field name="CONTENT">0,1,2,3</field>
           </shadow>
+          <block type="controls_range">
+            <value name="FROM">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="TO">
+              <shadow type="math_number">
+                <field name="NUM">5</field>
+              </shadow>
+            </value>
+            <value name="STEP">
+              <shadow type="math_number">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+          </block>
         </value>
       </block>
-      <block type="controls_whileUntil"></block>
-      <block type="controls_flow_statements"></block>
-      <block type="controls_millis"></block>
-      <block type="Panic_with_status_code">
-        <value name="STATUS_CODE">
-          <shadow type="math_number">
-            <field name="NUM">233</field>
+      <block type="controls_whileUntil">
+        <value name="BOOL">
+          <shadow type="logic_boolean">
           </shadow>
         </value>
       </block>
-      <block type="reset"></block>
-      <block type="controls_uname"></block>
+      <block type="controls_try_finally"></block>
+      <block type="controls_lambda">
+        <value name="BOOL">
+          <block type="variables_get">
+            <field name="VAR">t</field>
+          </block>
+        </value>
+        <statement name="DO">
+                  <block type="IO_print_inline"> 
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly</field>
+                  </shadow>
+              </value>   
+        </block>
+        </statement>
+      </block>
+      <block type="timer">
+        <value name="period">
+          <shadow type="math_number">
+            <field name="NUM">1000</field>
+          </shadow>
+        </value>
+        <value name="mode">
+          <shadow type="pins_one_more"></shadow>
+        </value>
+        <value name="callback">
+          <block type="controls_lambda">
+            <value name="BOOL">
+              <block type="variables_get">
+                <field name="VAR">t</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="IO_print_inline"> 
+                <value name="VAR">
+                  <shadow type="text">
+                    <field name="TEXT">Mixly</field>
+                  </shadow>
+                </value>   
+              </block>
+            </statement>
+          </block>
+        </value>
+      </block>
+      <block type="controls_flow_statements"></block>
+      <block type="controls_millis"></block>
     </category>
-    <category id="catMath" colour="230">
+<category id="catMath" colour="230">
       <block type="math_number"></block>
       <block type="math_arithmetic">
         <value name="A">
@@ -638,6 +713,79 @@
             </shadow>
           </value>
         </block>
+         <block type="text_capital">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Hello,mixly</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_center">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Hello,mixly</field>
+            </shadow>
+          </value>
+          <value name="WID">
+            <shadow type="math_number">
+              <field name="NUM">50</field>
+            </shadow>
+          </value>
+          <value name="Symbol">
+            <shadow type="text">
+              <field name="TEXT">*</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_find">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Hello,mixly</field>
+            </shadow>
+          </value>
+          <value name="STR">
+            <shadow type="text">
+              <field name="TEXT">l</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_replace">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Hello,mixly</field>
+            </shadow>
+          </value>
+          <value name="STR1">
+            <shadow type="text">
+              <field name="TEXT">mixly</field>
+            </shadow>
+          </value>
+          <value name="STR2">
+            <shadow type="text">
+              <field name="TEXT">mixpy</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_split">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">I love mixly！</field>
+            </shadow>
+          </value>
+          <value name="VAL">
+            <shadow type="text">
+              <field name="TEXT"> </field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_strip">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
+          </value>
+        </block>
+
         <block type="ascii_to_char">
           <value name="VAR">
             <shadow type="math_number">
@@ -666,7 +814,26 @@
             </shadow>
           </value>
         </block>
-        <block type="text_char_at2">
+        <block type="text_split">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">I love mixly！</field>
+            </shadow>
+          </value>
+          <value name="VAL">
+            <shadow type="text">
+              <field name="TEXT"> </field>
+            </shadow>
+          </value>
+        </block>
+<!--         <block type="text_strip">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
+          </value>
+        </block> -->
+        <block type="text_char_at3">
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
@@ -674,7 +841,14 @@
           </value>
           <value name="AT">
             <shadow type="math_number">
-              <field name="NUM">1</field>
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_random_char">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
             </shadow>
           </value>
         </block>
@@ -690,26 +864,26 @@
             </shadow>
           </value>
         </block>
-        <block type="text_substring2">
+        <block type="text_substring3">
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
             </shadow>
           </value>
           <value name="AT1">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
+            <shadow type="math_indexer_number">
+              <field name="NUM">0</field>
             </shadow>
           </value>
           <value name="AT2">
-            <shadow type="math_number">
+            <shadow type="math_indexer_number">
               <field name="NUM">2</field>
             </shadow>
           </value>
         </block>
       </category>
       <category id="catMicropyLists" colour="260">
-        <block type="lists_create_with2"></block>
+          <block type="lists_create_with2"></block>
           <block type="lists_create_with_text2"></block>
         <block type="lists_getIndex3">
             <value name="LIST">
@@ -851,7 +1025,7 @@
               </shadow>
             </value>
           </block>
-          <block type="lists_clear">
+      <block type="lists_clear">
             <value name="VAR">
               <shadow type="variables_get">
                 <field name="VAR">mylist</field>
@@ -865,6 +1039,7 @@
                 </shadow>
               </value>
           </block>
+        </category>
       </category>
       <category id="catTuple" colour="195">
         <block type="tuple_create_with"></block>
@@ -921,7 +1096,7 @@
             </shadow>
           </value>
         </block>
-      </category> 
+      </category>
       <category id="catDicts" colour="345">
           <block type="dicts_create_with"></block>
           <block type="dicts_keys">
@@ -1027,7 +1202,7 @@
               <field name="VAR">s1</field>
             </shadow>
           </value>
-        </block> 
+        </block>
         <block type="set_change_to">
           <value name="VAR">
             <shadow type="variables_get">
@@ -1069,7 +1244,7 @@
             <shadow type="math_number">
               <field name="NUM">0</field>
             </shadow>
-          </value> 
+          </value>
         </block>
         <block type="set_update">
           <value name="SET">
@@ -1095,49 +1270,76 @@
             </shadow>
           </value>
         </block>
-      </category>       
+      </category>     
       <category id="catSerialPort" colour="65">
-        <block type="serial_begin"></block>
-        <block type="serial_print"></block>
-        <block type="serial_println"></block>
-        <block type="serial_print_hex"></block>
+        <block type="IO_print_inline"> 
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly</field>
+                  </shadow>
+              </value>   
+        </block>
+        <block type="IO_print">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly</field>
+                  </shadow>
+              </value>
+        </block>
+        <block type="IO_input">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">prompt</field>
+                  </shadow>
+              </value>
+          </block>
+        <block type="uart_softserial"></block>
+        <block type="serial_print">
+              <value name="CONTENT">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly</field>
+                  </shadow>
+              </value> 
+        </block>
+        <block type="serial_println">
+              <value name="CONTENT">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly</field>
+                  </shadow>
+              </value> 
+        </block>
+        <block type="serial_print_hex">
+              <value name="CONTENT">
+                  <shadow type="math_number">
+                      <field name="NUM">0XFF00FF</field>
+                  </shadow>
+              </value>           
+        </block>
         <block type="serial_any"></block>
         <block type="serial_readstr"></block>
         <block type="serial_readline"></block>
       </category>
       <category id="catGroup" colour="140">
-        <block type="radio_ons"></block>
-        <block type="microbit_radio_config">
-          <value name="length">
-            <shadow type="math_number">
-              <field name="NUM">32</field>
+        <block type="i2c_init">
+          <value name="SUB">
+                <shadow type="variables_get">
+                  <field name="VAR">i2c</field>
+                </shadow>
+              </value>
+          <value name="TX">
+            <shadow type="pins_digital">
+              <field name="PIN">21</field>
             </shadow>
           </value>
-          <value name="queue">
-            <shadow type="math_number">
-              <field name="NUM">3</field>
+          <value name="RX">
+            <shadow type="pins_digital">
+              <field name="PIN">22</field>
             </shadow>
           </value>
-          <value name="channel">
-            <shadow type="math_number">
-              <field name="NUM">100</field>
-            </shadow>
-          </value>
-          <value name="power">
-            <shadow type="pins_radio_power"></shadow>
-          </value>
-          <value name="data_rate">
-            <shadow type="pins_radio_datarate"></shadow>
+          <value name="freq">
+            <shadow type="math_number"><field name="NUM">100000</field></shadow>
           </value>
         </block>
-        <block type="radio_send_string">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="microbit_radio_receive"></block>
       </category>
       <category id="catSensor" colour="40">
         <block type="sensor_button_is_pressed">
@@ -1193,23 +1395,27 @@
          <block type="microbit_music_deinit"></block>
         <block type="microbit_music_pitch">
           <value name="PIN">
-            <shadow type="pins_pwm"></shadow>
+            <shadow type="pins_pwm">
+              <field name="PIN">27</field>
+            </shadow>
           </value>
           <value name="pitch">
             <shadow type="pins_tone_notes"></shadow>
           </value>
         </block>
-        <block type="microbit_music_play_built_in_easy">
+<!--         <block type="microbit_music_play_built_in_easy">
           <value name="PIN">
             <shadow type="pins_pwm"></shadow>
           </value>
-        </block>
+        </block> -->
         <block type="microbit_music_stop">
           <value name="PIN">
-            <shadow type="pins_pwm"></shadow>
+            <shadow type="pins_pwm">
+              <field name="PIN">27</field>
+            </shadow>
           </value>
         </block>
-        <block type="speech_say_easy">
+<!--         <block type="speech_say_easy">
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">Mixly 0.997 is great!</field>
@@ -1229,13 +1435,18 @@
               <field name="TEXT">/HEH5EH4EH3EH2EH2EH3EH4EH5EHLP.</field>
             </shadow>
           </value>
-        </block>
+        </block> -->
       </category>
       <category id="catMonitor" colour="180">
-        <block type="monitor_show_string">
+        <block type="monitor_show_scroll_string">
           <value name="data">
             <shadow type="text">
               <field name="TEXT">hello</field>
+            </shadow>
+          </value>
+          <value name="time">
+            <shadow type="math_number">
+              <field name="NUM">120</field>
             </shadow>
           </value>
         </block>
@@ -1245,6 +1456,7 @@
           </value>
         </block>
         <block type="microbit_image_create"></block>
+        <block type="microbit_image_builtins"></block>
         <block type="image_arithmetic">
           <value name="A">
             <shadow type="pins_builtinimg"></shadow>
@@ -1255,31 +1467,43 @@
         </block>
         <block type="monitor_get_pixel">
           <value name="x">
-            <shadow type="pins_axis"></shadow>
+            <shadow type="pins_exlcdh"></shadow>
           </value>
           <value name="y">
-            <shadow type="pins_axis"></shadow>
+            <shadow type="pins_exlcdv"></shadow>
           </value>
         </block>
         <block type="monitor_bright_point">
           <value name="x">
-            <shadow type="pins_axis"></shadow>
+            <shadow type="pins_exlcdh"></shadow>
           </value>
           <value name="y">
-            <shadow type="pins_axis"></shadow>
+            <shadow type="pins_exlcdv"></shadow>
           </value>
-          <value name="brightness">
-            <shadow type="pins_brightness"></shadow>
+        </block>
+        <block type="monitor_bright_screen">
+          <value name="x">
+            <shadow type="pins_exlcdh"></shadow>
+          </value>
+        </block>
+        <block type="monitor_get_screen_pixel"></block>
+        <block type="monitor_blink_rate">
+          <value name="x">
+            <shadow type="math_number">
+              <field name="NUM">2</field>
+            </shadow>
           </value>
         </block>
         <block type="microbit_display_clear"></block>
         <block type="display_rgb_init">
           <value name="PIN">
-            <shadow type="pins_digital" />
+            <shadow type="pins_digital">
+              <field name="PIN">4</field>
+            </shadow>
           </value>
           <value name="LEDCOUNT">
             <shadow type="math_number">
-              <field name="NUM">4</field>
+              <field name="NUM">2</field>
             </shadow>
           </value>
         </block>
@@ -1289,7 +1513,7 @@
           </value>
           <value name="_LED_">
             <shadow type="math_number">
-              <field name="NUM">1</field>
+              <field name="NUM">0</field>
             </shadow>
           </value>
           <value name="RVALUE">
@@ -1308,7 +1532,7 @@
             </shadow>
           </value>
         </block>
-        <block type="display_rgb_color">
+<!--         <block type="display_rgb_color">
           <value name="PIN">
             <shadow type="pins_digital" />
           </value>
@@ -1317,7 +1541,7 @@
               <field name="NUM">1</field>
             </shadow>
           </value>
-        </block>
+        </block> -->
       </category>
       <sep></sep>
       <category id="catVar" colour="330" custom="VARIABLE">
