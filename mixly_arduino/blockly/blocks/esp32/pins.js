@@ -21,6 +21,15 @@ Blockly.Blocks['pins_analog'] = {
   }
 };
 
+Blockly.Blocks['pins_dac'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.pins.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.dac), 'PIN');
+    this.setOutput(true, Number);
+  }
+};
+
 Blockly.Blocks['pins_button'] = {
    init: function() {
     this.setColour(Blockly.Blocks.pins.HUE);

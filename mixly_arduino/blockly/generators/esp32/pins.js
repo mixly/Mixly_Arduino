@@ -9,6 +9,7 @@ Blockly.Python.pins_digital = function() {
 Blockly.Python.pins_analog=Blockly.Python.pins_digital;
 Blockly.Python.pins_button=Blockly.Python.pins_digital;
 Blockly.Python.pins_pwm=Blockly.Python.pins_digital;
+Blockly.Python.pins_dac = Blockly.Python.pins_digital;
 Blockly.Python.pins_interrupt=Blockly.Python.pins_digital;
 Blockly.Python.pins_serial=Blockly.Python.pins_digital;
 Blockly.Python.pins_builtinimg=Blockly.Python.pins_digital;
