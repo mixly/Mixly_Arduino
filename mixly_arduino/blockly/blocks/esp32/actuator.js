@@ -423,8 +423,8 @@ Blockly.Blocks.led_bright = {
   this.appendDummyInput()
       .appendField(Blockly.MIXLY_SET_LED);
  this.appendValueInput('led')
-  this.appendValueInput('bright')
       .appendField(Blockly.LUXE_LED)
+  this.appendValueInput('bright')
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   this.setInputsInline(true);
