@@ -115,6 +115,6 @@ Blockly.Python.timer = function () {
     var mode = Blockly.Python.valueToCode(this, "mode", Blockly.Python.ORDER_NONE) || "None";
     var callback=Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
     // var callback = Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
-    var code = "tim.init(period = " + period + ", mode = Timer." + mode + ", callback = " + callback + ")";
+    var code = "tim.init(period = " + period + ", mode = Timer." + mode + ", callback = " + callback + ")\n";
     return code;
 };
