@@ -119,6 +119,7 @@ Blockly.Blocks.timer2 = {
         .appendField(Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL)
         .setCheck(Number);
     this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_mSecond)
         .appendField(Blockly.MIXLY_MODE)
         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_PYTHON_ONE_SHOT, "ONE_SHOT"], [Blockly.MIXLY_PYTHON_PERIODIC, "PERIODIC"]]), "mode");
     this.appendStatementInput('callback')
