@@ -1838,3 +1838,4 @@ Blockly.MIXLY_ESP32_DUTY="音调";
 Blockly.MIXLY_ESP32_LIGHT="获取光照强度";
 Blockly.MIXLY_ESP32_MONITOR_SCROLL='滚动';
 Blockly.MIXLY_PYTHON_GLOBAL='使用全局变量';
+Blockly.MIXLY_ESP32_TOGGLE="反转";
