@@ -109,3 +109,22 @@ Blockly.Blocks.timer = {
     //this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS2);
   }
 };
+
+Blockly.Blocks.timer2 = {
+  init: function() {
+    this.setColour(Blockly.Blocks.system.HUE);
+    this.appendValueInput("period")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Timer")
+        .appendField(Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL)
+        .setCheck(Number);
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_MODE)
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_PYTHON_ONE_SHOT, "ONE_SHOT"], [Blockly.MIXLY_PYTHON_PERIODIC, "PERIODIC"]]), "mode");
+    this.appendStatementInput('callback')
+        .appendField(Blockly.MIXLY_DO);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
+  }
+};

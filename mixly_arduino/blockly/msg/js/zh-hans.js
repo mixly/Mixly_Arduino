@@ -1839,3 +1839,5 @@ Blockly.MIXLY_ESP32_LIGHT="获取光照强度";
 Blockly.MIXLY_ESP32_MONITOR_SCROLL='滚动';
 Blockly.MIXLY_PYTHON_GLOBAL='使用全局变量';
 Blockly.MIXLY_ESP32_TOGGLE="反转";
+Blockly.MIXLY_PYTHON_ONE_SHOT="单次触发"
+Blockly.MIXLY_PYTHON_PERIODIC="多次触发"
