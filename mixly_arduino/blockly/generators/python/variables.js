@@ -61,7 +61,7 @@ Blockly.Python.variables_change = function () {
 };
 
 Blockly.Python.variables_global = function() {
-  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || 'None';
   var code = "global "+str+'\n';
   return code;
 };
