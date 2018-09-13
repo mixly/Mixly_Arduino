@@ -127,6 +127,6 @@ Blockly.Python.timer2 = function () {
     var branch = Blockly.Python.statementToCode(this, 'callback') || Blockly.Python.PASS;
     // var callback = Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
     var code = "tim.init(period = " + period + ", mode = Timer." + mode + ", callback = timer_callback_func)\n";
-    Blockly.Python.setups_['timer_callback_func'] = 'def timer_callback_func():\n' + branch + '\n';
+    Blockly.Python.setups_['timer_callback_func'] = 'def timer_callback_func(t):\n' + branch + '\n';
     return code;
 };
