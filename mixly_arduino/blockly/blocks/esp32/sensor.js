@@ -416,27 +416,27 @@ Blockly.Blocks.RTC_get_time = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_RTCGETTIME);
-    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField('myRTC');
-    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
+    // this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField('myRTC');
+    // this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
     this.setInputsInline(true);
     this.setOutput(true, Number);
-    var thisBlock = this;
-        this.setTooltip(function() {
-        var mode = thisBlock.getFieldValue('TIME_TYPE');
-        var mode0 = Blockly.MIXLY_RTCGETTIME;
-        var TOOLTIPS = {
-        'Year':Blockly.MIXLY_YEAR,
-        'Month':Blockly.MIXLY_MONTH,
-        'Day':Blockly.MIXLY_DAY,
-        'Hour':Blockly.MIXLY_HOUR,
-        'Minute':Blockly.MIXLY_MINUTE,
-        'Second':Blockly.MIXLY_SECOND,
-        'Week':Blockly.MIXLY_WEEK,
-        'Mix1':Blockly.MIXLY_MIX1,
-        'Mix2':Blockly.MIXLY_MIX2
-      };
-      return mode0 +TOOLTIPS[mode];
-    });
+    // var thisBlock = this;
+    //     this.setTooltip(function() {
+    //     var mode = thisBlock.getFieldValue('TIME_TYPE');
+    //     var mode0 = Blockly.MIXLY_RTCGETTIME;
+    //     var TOOLTIPS = {
+    //     'Year':Blockly.MIXLY_YEAR,
+    //     'Month':Blockly.MIXLY_MONTH,
+    //     'Day':Blockly.MIXLY_DAY,
+    //     'Hour':Blockly.MIXLY_HOUR,
+    //     'Minute':Blockly.MIXLY_MINUTE,
+    //     'Second':Blockly.MIXLY_SECOND,
+    //     'Week':Blockly.MIXLY_WEEK,
+    //     'Mix1':Blockly.MIXLY_MIX1,
+    //     'Mix2':Blockly.MIXLY_MIX2
+    //   };
+      // return mode0 +TOOLTIPS[mode];
+    // });
   }
 };
 
@@ -596,4 +596,40 @@ Blockly.Blocks['sensor_pin_near'] = {
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_sensor_pin_pressed);
     }
+};
+
+Blockly.Blocks.RTC_set_datetime = {
+ init: function() {    
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_RTC_TIME);
+    this.appendValueInput('year')
+        .setCheck(Number)
+        .appendField("            "+Blockly.MIXLY_YEAR);
+    this.appendValueInput('month')
+        .setCheck(Number)
+        .appendField("            "+Blockly.MIXLY_MONTH);   
+    this.appendValueInput('day')
+        .setCheck(Number)
+        .appendField("            "+Blockly.MIXLY_DAY);   
+    this.appendValueInput('weekday')
+        .setCheck(Number)
+        .appendField("            "+Blockly.MIXLY_NOVA_RTC_WEEK);   
+    this.appendValueInput('hour')
+        .setCheck(Number)
+        .appendField("            "+Blockly.MIXLY_HOUR);                       
+    this.appendValueInput('minute')
+        .setCheck(Number)
+        .appendField("            "+Blockly.MIXLY_MINUTE);
+    this.appendValueInput('second')
+        .setCheck(Number)
+        .appendField("            "+Blockly.MIXLY_SECOND);
+    this.appendValueInput('millisecond')
+        .setCheck(Number)
+        .appendField("            "+Blockly.MIXLY_MILLISECOND);
+    //this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+   //this.setTooltip(Blockly.Msg.TURTLE_WRITE_TOOLTIP);    
+  }
 };

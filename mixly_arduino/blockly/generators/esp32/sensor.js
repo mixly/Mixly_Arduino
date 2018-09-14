@@ -186,49 +186,50 @@ Blockly.Python.DS1307_init = function () {
 };
 
 Blockly.Python.RTC_get_time = function () {
-  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
   //var RTCName = this.getFieldValue('RTCName');
-  var timeType =this.getFieldValue('TIME_TYPE');
-  Blockly.Python.setups_['class_DS1307'] = Blockly.Python.CLASS_DS1307_INIT;
-  switch (timeType) {
-    case "Year":
-       var code = 'ds.'+timeType+'()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Month":
-       var code = 'ds.'+timeType+'()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Day":
-       var code = 'ds.'+timeType+'()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Hour":
-       var code = 'ds.'+timeType+'()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Minute":
-       var code = 'ds.'+timeType+'()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Second":
-       var code = 'ds.'+timeType+'()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Week":
-       var code = 'ds.'+timeType+'()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Mix1":
-       var code ='ds.Year()'+','+'ds.Month()'+','+'ds.Day()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "Mix2":
-       var code ='ds.Hour()'+','+'ds.Minute()'+','+'ds.Second()';
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-  }
-
+  // var timeType =this.getFieldValue('TIME_TYPE');
+  // Blockly.Python.setups_['class_DS1307'] = Blockly.Python.CLASS_DS1307_INIT;
+  // switch (timeType) {
+  //   case "Year":
+  //      var code = 'ds.'+timeType+'()';
+  //      return [code, Blockly.Python.ORDER_ASSIGNMENT];
+  //      break;
+  //   case "Month":
+  //      var code = 'ds.'+timeType+'()';
+  //      return [code, Blockly.Python.ORDER_ASSIGNMENT];
+  //      break;
+  //   case "Day":
+  //      var code = 'ds.'+timeType+'()';
+  //      return [code, Blockly.Python.ORDER_ASSIGNMENT];
+  //      break;
+  //   case "Hour":
+  //      var code = 'ds.'+timeType+'()';
+  //      return [code, Blockly.Python.ORDER_ASSIGNMENT];
+  //      break;
+  //   case "Minute":
+  //      var code = 'ds.'+timeType+'()';
+  //      return [code, Blockly.Python.ORDER_ASSIGNMENT];
+  //      break;
+  //   case "Second":
+  //      var code = 'ds.'+timeType+'()';
+  //      return [code, Blockly.Python.ORDER_ASSIGNMENT];
+  //      break;
+  //   case "Week":
+  //      var code = 'ds.'+timeType+'()';
+  //      return [code, Blockly.Python.ORDER_ASSIGNMENT];
+  //      break;
+  //   case "Mix1":
+  //      var code ='ds.Year()'+','+'ds.Month()'+','+'ds.Day()';
+  //      return [code, Blockly.Python.ORDER_ASSIGNMENT];
+  //      break;
+  //   case "Mix2":
+  //      var code ='ds.Hour()'+','+'ds.Minute()'+','+'ds.Second()';
+  //      return [code, Blockly.Python.ORDER_ASSIGNMENT];
+  //      break;
+  // }
+  var code ='rtc.datetime()\n';
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.RTC_set_time = function () {
@@ -340,4 +341,18 @@ Blockly.Python.sensor_pin_near = function(){
     var direction = this.getFieldValue('direction');
     var code = 'Infrared_'+ direction +'.near()';
     return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.RTC_set_datetime= function () {
+  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+  var year = Blockly.Python.valueToCode(this, "year", Blockly.Python.ORDER_ASSIGNMENT);
+  var month = Blockly.Python.valueToCode(this, "month",Blockly.Python.ORDER_ASSIGNMENT);
+  var day = Blockly.Python.valueToCode(this, "day",Blockly.Python.ORDER_ASSIGNMENT);
+  var hour = Blockly.Python.valueToCode(this, "hour", Blockly.Python.ORDER_ASSIGNMENT);
+  var minute = Blockly.Python.valueToCode(this, "minute",Blockly.Python.ORDER_ASSIGNMENT);
+  var second = Blockly.Python.valueToCode(this, "second",Blockly.Python.ORDER_ASSIGNMENT);
+  var week = Blockly.Python.valueToCode(this, "weekday", Blockly.Python.ORDER_ASSIGNMENT);
+  var millisecond = Blockly.Python.valueToCode(this, "millisecond",Blockly.Python.ORDER_ASSIGNMENT);
+  var code ='rtc.datetime(('+year+','+month+','+day+','+week+','+hour+','+minute+','+second+','+millisecond+'))\n';
+  return code;
 };

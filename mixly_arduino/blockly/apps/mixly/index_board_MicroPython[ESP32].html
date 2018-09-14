@@ -1354,6 +1354,49 @@
         <block type="sensor_distance_hrsc04"></block>
         <block type="sensor_light"></block>
         <block type="sensor_sound"></block>
+        <block type="RTC_get_time"></block>
+        <block type="RTC_set_datetime">
+            <value name="year">
+                <shadow type="math_number">
+                  <field name="NUM">2018</field>
+                </shadow>
+              </value>
+            <value name="month">
+                  <shadow type="math_number">
+                      <field name="NUM">9</field>
+                  </shadow>
+              </value>
+              <value name="day">
+                  <shadow type="math_number">
+                      <field name="NUM">14</field>
+                  </shadow>
+              </value>
+              <value name="weekday">
+                  <shadow type="math_number">
+                      <field name="NUM">5</field>
+                  </shadow>
+              </value>
+              <value name="hour">
+                  <shadow type="math_number">
+                      <field name="NUM">14</field>
+                  </shadow>
+              </value>
+              <value name="minute">
+                  <shadow type="math_number">
+                      <field name="NUM">20</field>
+                  </shadow>
+              </value>
+              <value name="second">
+                  <shadow type="math_number">
+                      <field name="NUM">45</field>
+                  </shadow>
+              </value>
+              <value name="millisecond">
+                  <shadow type="math_number">
+                      <field name="NUM">0</field>
+                  </shadow>
+              </value>
+          </block>
       </category>
       <category id="catActuator" colour="100">
         <block type="servo_move">
@@ -1381,12 +1424,12 @@
           </shadow>
         </value>
         </block>
-        <block type="microbit_music_play">
+        <!-- <block type="microbit_music_play">
           <value name="pitch">
             <shadow type="pins_tone_notes"></shadow>
           </value>
         </block>
-         <block type="microbit_music_deinit"></block>
+         <block type="microbit_music_deinit"></block> -->
         <block type="microbit_music_pitch">
           <value name="PIN">
             <shadow type="pins_pwm">
@@ -1492,7 +1535,7 @@
         <block type="display_rgb_init">
           <value name="PIN">
             <shadow type="pins_digital">
-              <field name="PIN">2</field>
+              <field name="PIN">4</field>
             </shadow>
           </value>
           <value name="LEDCOUNT">
