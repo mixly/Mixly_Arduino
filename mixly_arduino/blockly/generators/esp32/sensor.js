@@ -302,6 +302,11 @@ Blockly.Python.sensor_light= function(){
     return ['brightness.read()', Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.sensor_sound= function(){
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    return ['sound.read()', Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python.number1 = function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var code = this.getFieldValue('op');

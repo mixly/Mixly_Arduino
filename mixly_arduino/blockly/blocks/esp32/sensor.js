@@ -535,6 +535,16 @@ Blockly.Blocks['sensor_light'] = {
     }
 };
 
+Blockly.Blocks['sensor_sound'] = {
+    init: function(){
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_ESP32_SOUND);
+        this.setOutput(true, Number);
+        this.setInputsInline(true);
+    }
+};
+
 Blockly.Blocks['number1'] = {
    init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
