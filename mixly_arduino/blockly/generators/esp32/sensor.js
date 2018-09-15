@@ -27,7 +27,7 @@ Blockly.Python.sensor_button_get_presses = function(){
 };
 //ok
 Blockly.Python.controls_GestureLists = function(){
-    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var gesture = this.getFieldValue('gesture');
     // Blockly.Python.definitions_['func_gesture' + gesture] = code;
     return ['"'+gesture+'"', Blockly.Python.ORDER_ATOMIC];
@@ -45,7 +45,7 @@ Blockly.Python.controls_attachGestureInterrupt = function(){
 }
 //ok
 Blockly.Python.controls_attachGestureInterrupt2 = function(){
-    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var gesture = this.getFieldValue('gesture');
     var branch = Blockly.Python.statementToCode(this, 'DO');
     var d=branch || Blockly.Python.PASS;
@@ -55,7 +55,7 @@ Blockly.Python.controls_attachGestureInterrupt2 = function(){
 }
 //ok
 Blockly.Python.sensor_get_gestures= function(){
-    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var gesture = this.getFieldValue('GES');
     var a;
     if(gesture =='all'){
@@ -68,7 +68,7 @@ Blockly.Python.sensor_get_gestures= function(){
 };
 //ok
 Blockly.Python.sensor_current_gesture= function(){
-    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     return ['accelerometer.current_gesture()', Blockly.Python.ORDER_ATOMIC];
 };
 
@@ -92,22 +92,22 @@ Blockly.Python.sensor_light_level= function(){
 };
 //ok
 Blockly.Python.sensor_calibrate_compass= function(){
-    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     return 'compass.calibrate()\n';
 };
 //ok
 Blockly.Python.sensor_is_compass_calibrated= function(){
-    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     return ['compass.is_calibrated()', Blockly.Python.ORDER_ATOMIC];
 };
 //ok
 Blockly.Python.sensor_compass_heading= function(){
-    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     return ['compass.heading()', Blockly.Python.ORDER_ATOMIC];
 };
 //ok
 Blockly.Python.sensor_temperature = function(){
-    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     return ['temperature()', Blockly.Python.ORDER_ATOMIC];
 };
 Blockly.Python.sensor_field_strength= function(){
@@ -134,7 +134,7 @@ Blockly.Python.sensor_magnetic= function(){
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 Blockly.Python.sensor_distance_hrsc04= function(){
-    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     Blockly.Python.setups_['class_hrsc04'] =
     'class HCSR04:\n'+
     '    def __init__(self, tpin=pin15, epin=pin14, spin=pin13):\n'+
@@ -175,7 +175,7 @@ Blockly.Python.sensor_distance_hrsc04= function(){
 };
 
 Blockly.Python.DS1307_init = function () {
-  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
   var SDA = Blockly.Python.valueToCode(this, 'SDA', Blockly.Python.ORDER_ATOMIC);
   var SCL = Blockly.Python.valueToCode(this, 'SCL', Blockly.Python.ORDER_ATOMIC);
   //var RTCName = this.getFieldValue('RTCName');
@@ -233,7 +233,7 @@ Blockly.Python.RTC_get_time = function () {
 };
 
 Blockly.Python.RTC_set_time = function () {
-  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
   //var RTCName = this.getFieldValue('RTCName');
   var hour = Blockly.Python.valueToCode(this, "hour", Blockly.Python.ORDER_ASSIGNMENT);
   var minute = Blockly.Python.valueToCode(this, "minute", Blockly.Python.ORDER_ASSIGNMENT);
@@ -244,7 +244,7 @@ Blockly.Python.RTC_set_time = function () {
 };
 
 Blockly.Python.RTC_set_date = function () {
-  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
   //var RTCName = this.getFieldValue('RTCName');
   var year = Blockly.Python.valueToCode(this, "year", Blockly.Python.ORDER_ASSIGNMENT);
   var month = Blockly.Python.valueToCode(this, "month",Blockly.Python.ORDER_ASSIGNMENT);
@@ -255,7 +255,7 @@ Blockly.Python.RTC_set_date = function () {
 };
 
 Blockly.Python.sensor_compass_reset = function(block) {
-  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
   return ['compass.clear_calibration()', Blockly.Python.ORDER_ATOMIC];
 };
 
