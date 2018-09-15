@@ -748,7 +748,8 @@ var MSG = {
   catTurtle:"乌龟",
   catTuple:"元组",
   catIot:"物联网",
-  catSet:"集合"
+  catSet:"集合",
+  catData:"数据"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='返回高电平或低电平';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='返回指定管脚的电平值';
@@ -1829,6 +1830,66 @@ Blockly.Msg.LIST_EQUAL_DISTANCE = "等距";
 Blockly.Msg.MIXLY_LIST_LENGTH="按长度";
 Blockly.blockpy_TURTLE_DONE='乌龟显示图形';
 Blockly.blockpy_turtle_bgcolor_hex='设置背景颜色为十六进制 #';
+Blockly.MIXLY_TOOLTIP_SERIES_CREATE_FROM_TEXT='用数组或字典创建或修改一个series。';
+Blockly.Msg.SERIES_INDEX_VALUE = "获取Series所有";
+Blockly.Msg.SERIES_INDEX = "索引";
+Blockly.Msg.SERIES_VALUE = "值";
+Blockly.Msg.SERIES_INDEX_TOOLTIP = "返回一个列表，包括一个Series所有的索引";
+Blockly.Msg.SERIES_VALUE_TOOLTIP = "返回一个列表，包括一个Series所有的值";
+Blockly.blockpy_series_create='创建series';
+Blockly.blockpy_series_via = '通过列表或字典';
+Blockly.blockpy_PYLAB_SHOW='显示绘制图表';
+Blockly.blockpy_PYLAB_LEGEND='显示图例';
+Blockly.blockpy_PYLAB_TITLE='设置图表标题为';
+Blockly.blockpy_PYLAB_SET_LABEL='设置图表';
+Blockly.blockpy_PYLAB_LABEL='坐标说明文字为';
+Blockly.Msg.PYLAB_LABEL_X = "横";
+Blockly.Msg.PYLAB_LABEL_Y = "纵";
+Blockly.blockpy_series_set_index = '索引为';
+
+Blockly.blockpy_PYLAB_PLOT='绘制成折线图';
+Blockly.blockpy_dataframe_create='创建二维数据表';
+Blockly.blockpy_dataframe_via = '通过字典';
+Blockly.blockpy_dataframe_set_index_column = '列索引为';
+Blockly.blockpy_dataframe_set_index_raw = '行索引为';
+Blockly.blockpy_series_create_TOOLTIP='通过字典或列表创建一个series，索引为默认的自然数';
+Blockly.blockpy_series_create_index_TOOLTIP='通过字典或列表创建一个series，并指定一个列表作为索引';
+Blockly.blockpy_dataframe_create_TOOLTIP='通过字典创建一个二维表，索引为默认的自然数';
+Blockly.blockpy_dataframe_create_index_TOOLTIP='通过字典创建一个二维表，并指定列表作为行列索引';
+Blockly.blockpy_PYLAB_PLOT_LINE='线型';
+Blockly.blockpy_PYLAB_PLOT_LINE_SOLID='实线';
+Blockly.blockpy_PYLAB_PLOT_LINE_DOTTED='虚线';
+Blockly.blockpy_PYLAB_PLOT_LINE_CHAIN='点划线';
+Blockly.blockpy_PYLAB_PLOT_LINE_POINT_DOTTED='点虚线';
+Blockly.Msg.COLOUR_CYAN = "青色";
+Blockly.Msg.COLOUR_MAGENTA = "品红";
+Blockly.Msg.COLOUR_YELLOW = "黄色";
+Blockly.Msg.COLOUR_BLACK = "黑色";
+Blockly.Msg.COLOUR_WHITE = "白色";
+Blockly.blockpy_PYLAB_PLOT_DOT='点型';
+Blockly.blockpy_PYLAB_PLOT_DOT_CIRCULAR='圆点';
+Blockly.blockpy_PYLAB_PLOT_DOT_LARGE_DOT='大圆点';
+Blockly.blockpy_PYLAB_PLOT_DOT_PIXEL='像素点';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIANGLE_UP='正三角';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIANGLE_DOWN='倒三角';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIANGLE_LEFT='左三角';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIANGLE_RIGHT='右三角';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIMARKER_UP='Y形（正向）';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIMARKER_DOWN='Y形（倒向）';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIMARKER_LEFT='Y形（左向）';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIMARKER_RIGHT='Y形（右向）';
+Blockly.blockpy_PYLAB_PLOT_DOT_SQUARE='正方形';
+Blockly.blockpy_PYLAB_PLOT_DOT_PENTAGON='五边形';
+Blockly.blockpy_PYLAB_PLOT_DOT_STAR='星形';
+Blockly.blockpy_PYLAB_PLOT_DOT_HEXAGON_VERTICAL='竖六边形';
+Blockly.blockpy_PYLAB_PLOT_DOT_HEXAGON_HORIZONTAL='横六边形';
+Blockly.blockpy_PYLAB_PLOT_DOT_PLUS='加号';
+Blockly.blockpy_PYLAB_PLOT_DOT_CROSS='叉号';
+Blockly.blockpy_PYLAB_PLOT_DOT_DIAMOND='菱形（大）';
+Blockly.blockpy_PYLAB_PLOT_DOT_DIAMOND_SMALL='菱形（小）';
+Blockly.blockpy_PYLAB_PLOT_DOT_VERTICAL='短竖线';
+Blockly.blockpy_PYLAB_PLOT_DOT_HORIZONTAL='短横线';
+
 Blockly.MIXLY_MICROBIT_JS_I2C="i2c";
 Blockly.MIXLY_ESP32_TOUCH="触摸";
 Blockly.MIXLY_ESP32_TOUCH_SENSOR="触摸传感器";
@@ -1844,3 +1905,11 @@ Blockly.MIXLY_ESP32_TOGGLE="反转";
 Blockly.MIXLY_PYTHON_ONE_SHOT="单次触发";
 Blockly.MIXLY_PYTHON_PERIODIC="多次触发";
 Blockly.MIXLY_RTC_TIME="设置RTC时钟时间";
+Blockly.blockpy_REQUESTS_GET='发起get请求 接收为变量';
+Blockly.blockpy_REQUESTS_GET_TOOLTIP='利用HTTP协议向指定域名发起get请求，将响应结果赋予变量';
+Blockly.blockpy_REQUESTS_GET_ATTR_STATUS_CODE='状态码';
+Blockly.blockpy_REQUESTS_GET_ATTR_TEXT='响应内容';
+Blockly.blockpy_REQUESTS_GET_ATTR_CONTENT='二进制内容';
+Blockly.blockpy_REQUESTS_GET_ATTR_COOKIES='cookies';
+Blockly.blockpy_REQUESTS='请求';
+Blockly.blockpy_CONDUCT='发起';

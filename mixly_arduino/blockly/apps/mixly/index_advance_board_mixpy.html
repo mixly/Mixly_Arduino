@@ -35,6 +35,8 @@
     <script src="../../blocks/python/logic.js"></script>
     <script src="../../blocks/python/set.js"></script>
     <script src="../../blocks/mixpy_python/turtle.js"></script>
+    <script src="../../blocks/mixpy_python/data.js"></script>
+    <script src="../../blocks/mixpy_python/communicate.js"></script>
     <script src="../../blocks/python/tuple.js"></script>
     <script src="../../blocks/python/procedures.js"></script>
 
@@ -49,6 +51,8 @@
     <script src="../../generators/python/logic.js"></script>
     <script src="../../generators/python/set.js"></script>
     <script src="../../generators/mixpy_python/turtle.js"></script>
+    <script src="../../generators/mixpy_python/data.js"></script>
+    <script src="../../generators/mixpy_python/communicate.js"></script>
     <script src="../../generators/python/tuple.js"></script>
     <script src="../../generators/python/procedures.js"></script>
     <script src="js/lib/ace/ace.js" type="application/javascript"></script>
@@ -69,13 +73,14 @@
     <script src="../../converters/python/dicts.js" type="application/javascript"></script>
     <script src="../../converters/python/set.js" type="application/javascript"></script>
     <script src="../../converters/mixpy_python/turtle.js" type="application/javascript"></script>
+    <script src="../../converters/mixpy_python/data.js" type="application/javascript"></script>
     <script src="./js/python_to_blockly.js" type="application/javascript"></script>
     <script src="js/mixpyProject.js" type="application/javascript"></script>
     <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
     <script src="js/skulpt/dist/skulpt-stdlib.js" type="application/javascript"></script>
     <script src="js/skulpt/engine.js" type="application/javascript"></script>
     
-  <link rel="stylesheet" type="text/css" href="color_mixpy_python.css" />
+  <link rel="stylesheet" type="text/css" href="color_mixpy_python_advance.css" />
   <script>
     var sidecodeDisplay=false;
     /**
@@ -344,20 +349,20 @@ function init() {
             <td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
             <td class="tabcoyright">
-             <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;color:#999;">copyright</span>
+              <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
             </td>
             <td class="tabmode">
-              <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_mixpy.html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light';font-size:12px;">高级视图</a>
+              <a class="viewLeft" id="viewMode1" href="index_board_mixpy.html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;" >普通视图</a><span class="viewRight" id="viewMode2" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</span>
             </td>
             <script type="text/javascript">
-              var viewMode2 = document.getElementById('viewMode2');
-              viewMode2.href = 'index_advance_board_mixpy.html?lang='+Code.LANG;
+              var viewMode1 = document.getElementById('viewMode1');
+              viewMode1.href = 'index_board_mixpy.html?lang='+Code.LANG;
             </script>
             <td class="tabmin">
-             <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
+              <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
             </td>
             <td class="tabmin" style="padding-right:20px">
-               <input onclick="Blockly.mainWorkspace.undo(1);" name="redo" type="image" title="redo(ctrl+y)"  src="media/redo.png" style="padding:5px" onmouseover="this.src='media/redo1.png'" onmousedown="this.src='media/redo2.png'" onmouseup="this.src='media/redo1.png'" onmouseout="this.src='media/redo.png'" width="20" height="20" border="0">
+              <input onclick="Blockly.mainWorkspace.undo(1);" name="redo" type="image" title="redo(ctrl+y)"  src="media/redo.png" style="padding:5px" onmouseover="this.src='media/redo1.png'" onmousedown="this.src='media/redo2.png'" onmouseup="this.src='media/redo1.png'" onmouseout="this.src='media/redo.png'" width="20" height="20" border="0">
             </td>
             <td class="tabmin" style="padding-right:20px;display:none;">
               <button id="fakeload">LoadXML</button>
@@ -367,8 +372,8 @@ function init() {
               <select id="languageMenu"></select>
             </td>
             <script>
-             document.getElementById('span_blocks').textContent = MSG['tab_blocks'];
-             document.getElementById('span_arduino').textContent = MSG['tab_arduino'];
+              document.getElementById('span_blocks').textContent = MSG['tab_blocks'];
+              document.getElementById('span_arduino').textContent = MSG['tab_arduino'];
             </script>
           </tr>
         </table>
@@ -1406,6 +1411,122 @@ function init() {
 
           
       </category>
+      <category id="catData" colour="170">
+          <block type="series_create">
+            <value name="SER">
+                <shadow type="variables_get">
+                  <field name="VAR">mylist</field>
+                </shadow>
+              </value>
+          </block>
+          <block type="series_create_from_index">
+            <value name="SER">
+                <shadow type="variables_get">
+                  <field name="VAR">mylist</field>
+                </shadow>
+              </value>
+            <value name="INDEX">
+              <shadow type="list_many_input">
+                <field name="CONTENT">0,1,2,3</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="series_create_from_text"></block>
+          <block type="dataframe_create">
+            <value name="SER">
+                <shadow type="variables_get">
+                  <field name="VAR">mydict</field>
+                </shadow>
+              </value>
+          </block>
+          <block type="dataframe_create_from_index">
+            <value name="SER">
+                <shadow type="variables_get">
+                  <field name="VAR">mydict</field>
+                </shadow>
+              </value>
+            <value name="INDEX_COLUMN">
+              <shadow type="list_many_input">
+                <field name="CONTENT">0,1,2,3</field>
+              </shadow>
+            </value>
+            <value name="INDEX_RAW">
+              <shadow type="list_many_input">
+                <field name="CONTENT">'a','b','c','d'</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="series_index_value">
+            <value name="SERIES">
+                <shadow type="variables_get">
+                  <field name="VAR">ser1</field>
+                </shadow>
+              </value>
+          </block>
+          <block type="series_get_num">
+            <value name="SER">
+              <shadow type="variables_get">
+                <field name="VAR">ser1</field>
+              </shadow>
+            </value>
+            <value name="AT">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+          </block>
+
+
+          <block type="pl_plot">
+              <value name="SER">
+                <shadow type="variables_get">
+                  <field name="VAR">ser1</field>
+                </shadow>
+              </value>
+          </block>
+          <block type="pl_show"></block>
+          <block type="pl_legend"></block>
+          <block type="pl_title">
+            <value name="TITLE">
+              <shadow type="text">
+                <field name="TEXT">Title</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="pl_label">
+            <value name="LABEL">
+              <shadow type="text">
+                <field name="TEXT">axis</field>
+              </shadow>
+            </value>
+          </block>            
+      </category>
+
+      <category id="catEthernet" colour="0">
+        <block type="requests_get">
+          <value name="DOMAIN">
+            <shadow type="text">
+              <field name="TEXT">http://www.baidu.com</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="requests_attribute">
+              <value name="VAL">
+                <shadow type="variables_get">
+                  <field name="VAR">response</field>
+                </shadow>
+              </value>
+        </block>
+        <block type="requests_method">
+          <value name="DOMAIN">
+            <shadow type="text">
+              <field name="TEXT">http://www.baidu.com</field>              
+            </shadow>
+          </value>
+        </block>
+        
+      </category>
+
       <sep></sep>
       <category id="catVar" colour="330" custom="VARIABLE">
       </category>
