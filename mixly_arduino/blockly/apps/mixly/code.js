@@ -145,6 +145,22 @@ Code.changeLanguage = function() {
   
 };
 
+Code.changeEditorTheme = function() {
+  var themeMenu = document.getElementById('aceTheme');
+  var theme = themeMenu.options[themeMenu.selectedIndex].value;
+  if(editor != null){
+      editor.setOption("theme", theme);
+  }
+  if(editor_side_code != null){
+      editor_side_code.setOption("theme", theme);
+  }
+  try{
+      JSFuncs.saveEditorTheme(theme);
+  }catch(e){
+
+  }
+}
+
 /**
  * Bind a function to a button's click event.
  * On touch enabled browsers, ontouchend is treated as equivalent to onclick.
@@ -321,7 +337,8 @@ Code.renderContent = function() {
  */
 Code.init = function() {
   Code.initLanguage();
-
+  document.getElementById('aceTheme')
+      .addEventListener('change', Code.changeEditorTheme, true);
   var rtl = Code.isRtl();
   var container = document.getElementById('content_area');
   var onresize = function(e) {
@@ -510,5 +527,6 @@ Code.discard = function() {
 // Load Blockly's language strings.
 document.write('<script src="../../msg/js/' + Code.LANG + '.js"></script>\n');
 document.write('<script src="../../msg/js/company/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="js/conf/theme.js?t=' + new Date().getTime() + '"></script>\n');
 
 window.addEventListener('load', Code.init);
