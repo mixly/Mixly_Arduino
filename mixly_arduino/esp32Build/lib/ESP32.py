@@ -90,7 +90,7 @@ class MyPin(Pin):
 
     def near(self): 
         pin15.write_digital(1)
-        self.init(Pin.OUT)
+        self.init(Pin.IN)
         return self.value() ==1
 
 
