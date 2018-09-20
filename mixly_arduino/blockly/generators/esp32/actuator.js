@@ -203,6 +203,14 @@ Blockly.Python.led_bright= function() {
     return code;
 };
 
+Blockly.Python.led_brightness= function() {
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    var op = Blockly.Python.valueToCode(this,'led', Blockly.Python.ORDER_ATOMIC);
+    var flag = Blockly.Python.valueToCode(this,'bright', Blockly.Python.ORDER_ATOMIC);
+    var code = 'led'+op+'.value('+flag+')\n';
+    return code;
+};
+
 Blockly.Python.microbit_music_play = function(block) {
   Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
   var number_pitch = Blockly.Python.valueToCode(block, 'pitch', Blockly.Python.ORDER_ATOMIC);

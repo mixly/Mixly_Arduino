@@ -431,6 +431,21 @@ Blockly.Blocks.led_bright = {
   }
 };
 
+Blockly.Blocks.led_brightness = {
+  init: function() {
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.appendDummyInput()
+      .appendField(Blockly.MIXLY_SET_LED);
+ this.appendValueInput('led')
+      .appendField(Blockly.LUXE_LED)
+  this.appendValueInput('bright')
+      .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS)
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  this.setInputsInline(true);
+  }
+};
+
 Blockly.Blocks.microbit_music_play={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
