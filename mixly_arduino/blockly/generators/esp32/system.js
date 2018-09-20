@@ -132,3 +132,12 @@ Blockly.Python.timer2 = function () {
     Blockly.Python.setups_['timer_callback_func'] = 'def ' + v + '_callback_func(t):\n' + branch + '\n';
     return code;
 };
+
+
+Blockly.Python.time_ticks_diff = function () {
+    Blockly.Python.definitions_['import_time'] = 'import time';
+    var end = Blockly.Python.valueToCode(this, "END", Blockly.Python.ORDER_NONE) || "0";
+    var start = Blockly.Python.valueToCode(this, "START", Blockly.Python.ORDER_NONE) || "0";
+    var code = "time.ticks_diff(" + end + ", " + start + ")";
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};

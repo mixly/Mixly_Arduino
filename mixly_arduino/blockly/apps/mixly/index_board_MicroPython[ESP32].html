@@ -612,6 +612,19 @@
       </block>
       <block type="controls_flow_statements"></block>
       <block type="controls_millis"></block>
+      <block type="time_ticks_diff">
+        <value name="END">
+          <block type="controls_millis"></block>
+          <shadow type="math_number">
+            <field name="NUM">500</field>
+          </shadow>
+        </value>
+        <value name="START">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
     </category>
 <category id="catMath" colour="230">
       <block type="math_number"></block>

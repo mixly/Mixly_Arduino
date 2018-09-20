@@ -133,3 +133,20 @@ Blockly.Blocks.timer2 = {
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
   }
 };
+
+Blockly.Blocks.time_ticks_diff = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendValueInput('END')
+        // .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_ESP32_TIME_TICKS_DIFF);
+    this.appendValueInput('START')
+        // .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_ESP32_TIME_MINUS);
+    this.setInputsInline(true);
+    this.setOutput(true);
+    //this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS2);
+  }
+};
