@@ -29,7 +29,7 @@ var PythonHighlightRules = function() {
         "__import__|complex|hash|min|set|apply|delattr|help|next|setattr|" +
         "buffer|dict|hex|object|slice|coerce|dir|id|oct|sorted|intern|"+
         // micropythonFunctions
-        "sleep|running_time|panic|reset|temperature|"+
+        "sleep|running_time|panic|reset|temperature|sleep_us|sleep_s|sleep_ms|ticks_ms|ticks_us|"+
         // micropythonButtonFunctions
         "is_pressed|was_pressed|get_presses|"+
         // micropythonDisplayFunctions
