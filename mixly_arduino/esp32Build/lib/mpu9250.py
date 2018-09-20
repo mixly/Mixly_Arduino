@@ -17,6 +17,7 @@ MicroPython I2C driver for MPU9250 9-axis motion tracking device
 from micropython import const
 import ustruct
 import utime
+import time
 from machine import I2C, Pin
 # pylint: enable=import-error
 __version__ = "0.2.0"
@@ -100,8 +101,8 @@ _MODE_FUSE_ROM_ACCESS = 0b00001111
 OUTPUT_14_BIT = 0b00000000
 OUTPUT_16_BIT = 0b00010000
 
-_SO_14BIT = 0.6 # μT per digit when 14bit mode
-_SO_16BIT = 0.15 # μT per digit when 16bit mode
+_SO_14BIT = 0.6 # 渭T per digit when 14bit mode
+_SO_16BIT = 0.15 # 渭T per digit when 16bit mode
 
 class MPU6500:
     """Class which provides interface to MPU6500 6-axis motion tracking device."""
@@ -126,7 +127,12 @@ class MPU6500:
         char &= ~_I2C_BYPASS_MASK # clear I2C bits
         char |= _I2C_BYPASS_EN
         self._register_char(_INT_PIN_CFG, char)
-
+		
+    @property
+    def temperature(self):
+        tempbuf=self._register_short(0x41)
+        return tempbuf/333.87 + 21  # I think
+		
     # @property
     def acceleration(self):
         """
@@ -245,7 +251,8 @@ class AK8963:
             self._so = _SO_16BIT
         else:
             self._so = _SO_14BIT
-
+	
+   	
     @property
     def magnetic(self):
         """
@@ -353,6 +360,7 @@ class AK8963:
 
     def __exit__(self, exception_type, exception_value, traceback):
         pass
+		
 
 class MPU9250:
     """Class which provides interface to MPU9250 9-axis motion tracking device."""
@@ -375,7 +383,9 @@ class MPU9250:
     #     pass `accel_fs=SF_G` parameter to the MPU6500 constructor.
     #     """
     #     return self.mpu6500.acceleration
-
+    def get_temperature(self):
+		return self.mpu6500.temperature
+		
     def get_values(self):
         """
         Acceleration measured by the sensor. By default will return a
@@ -480,7 +490,8 @@ class MPU9250:
     def __exit__(self, exception_type, exception_value, traceback):
         pass
 
-i2c = I2C(scl=Pin(22), sda=Pin(21), freq=100000)
-mpu = MPU9250(i2c)
-compass = mpu
-accelerometer = mpu
+# i2c = I2C(scl=Pin(22), sda=Pin(21), freq=100000)
+# mpu = MPU9250(i2c)
+# compass = mpu
+# accelerometer = mpu
+
