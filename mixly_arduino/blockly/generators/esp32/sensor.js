@@ -385,6 +385,13 @@ Blockly.Python.sensor_use_i2c_init=function(){
     var iv = Blockly.Python.valueToCode(this, 'I2CSUB', Blockly.Python.ORDER_ATOMIC);
     var key = this.getFieldValue('key')
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+    if (key=='MPU9250') {
+      Blockly.Python.definitions_['import_mpu9250_*'] = 'from mpu9250 import *';
+    }else if (key=='BMP280') {
+      Blockly.Python.definitions_['import_bmp280_*'] = 'from bmp280 import *';
+    }else if (key=='SHT20') {
+      Blockly.Python.definitions_['import_sht20_*'] = 'from sht20 import *';
+    }
     var code = v + ' = ' + key + "("+ iv+ ')\n';
     return code;
 };
@@ -393,6 +400,7 @@ Blockly.Python.sensor_bmp=function(){
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var key = this.getFieldValue('key')
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+    Blockly.Python.definitions_['import_bmp280_*'] = 'from bmp280 import *';
     var code = v + '.' + key;
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
@@ -401,6 +409,7 @@ Blockly.Python.sensor_sht=function(){
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var key = this.getFieldValue('key')
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+    Blockly.Python.definitions_['import_sht20_*'] = 'from sht20 import *';
     var code = v + '.' + key;
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
