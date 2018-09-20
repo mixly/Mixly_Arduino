@@ -141,3 +141,10 @@ Blockly.Python.time_ticks_diff = function () {
     var code = "time.ticks_diff(" + end + ", " + start + ")";
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.Timer_init=function(){
+    var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+    var code = v + ' = Timer(-1)\n';
+    return code;
+};

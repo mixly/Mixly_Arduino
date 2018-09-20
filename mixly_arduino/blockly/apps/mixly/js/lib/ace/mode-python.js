@@ -41,7 +41,7 @@ var PythonHighlightRules = function() {
         // micropythonAccelerometerFunctions
         "get_x|get_y|get_z|get_values|current_gesture|is_gesture|was_gesture|get_gestures|"+
         // micropythonCompassFunctions
-        "calibrate|heading|get_field_strength|is_calibrated|clear_calibration|"+
+        "calibrate|heading|get_field_strength|is_calibrated|clear_calibration|get_temperature|pressure|get_relative_humidity|"+
         // micropythonI2CFunctions
         "read|write|"+
         // micropythonUartFunctions

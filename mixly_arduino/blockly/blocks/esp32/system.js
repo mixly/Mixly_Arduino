@@ -150,3 +150,17 @@ Blockly.Blocks.time_ticks_diff = {
     //this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS2);
   }
 };
+
+Blockly.Blocks.Timer_init = {
+    init: function () {
+        this.setColour(Blockly.Blocks.loops.HUE);
+        this.appendDummyInput("")
+            .appendField("Timer")
+        this.appendValueInput('SUB')
+            .appendField(Blockly.MIXLY_SETUP)
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip();
+    }
+};
