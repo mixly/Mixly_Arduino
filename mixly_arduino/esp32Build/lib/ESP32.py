@@ -82,7 +82,8 @@ class MyPin(Pin):
     def is_touched(self):
         id = int(str(self)[4:-1]) #unsafe!
         if id in (0,2,4,12,13,14,15,27,32,33):
-            return TouchPad(Pin(id)).read() < 300
+            # print(TouchPad(Pin(id)).read())
+            return (TouchPad(Pin(id)).read() - 150 < 0)
         else:
             self.init(Pin.IN)
             return self.value() == 1
@@ -136,6 +137,9 @@ class Led:
     def toggle(self):
         self.val = 1-self.val
         Pin(self.pin).value(self.val)
+    def value(self,val):
+        self.val = val
+        PWM(Pin(self.pin)).duty(1023-self.val)
 
 class music:
     def __init__(self, pin):
