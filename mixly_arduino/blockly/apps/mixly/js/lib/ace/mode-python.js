@@ -35,7 +35,7 @@ var PythonHighlightRules = function() {
         // micropythonDisplayFunctions
         "get_pixel|set_pixel|clear|show|scroll|on|off|is_on|"+
         // micropythonPinIOFunctions
-        "write_digital|read_digital|write_analog|read_analog|set_analog_period|set_analog_period_microseconds|is_touched|"+
+        "write_digital|read_digital|write_analog|read_analog|set_analog_period|set_analog_period_microseconds|is_touched|value|duty|freq|irq|"+
         // micropythonImageFunctions
         "Image|width|height|set_pixel|get_pixel|shift_left|shift_right|shift_up|shift_down|repr|str|crop|copy|invert|fill|blit|"+
         // micropythonAccelerometerFunctions

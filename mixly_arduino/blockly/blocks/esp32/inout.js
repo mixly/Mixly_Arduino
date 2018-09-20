@@ -35,8 +35,11 @@ Blockly.Blocks.inout_digital_read = {
   init: function() {
     this.setColour(Blockly.Blocks.base.HUE);
 	this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_DIGITALREAD_PIN)
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET)
+        .appendField(Blockly.MIXLY_Digital_PINMODEIN)
         .setCheck(Number);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
 	this.setInputsInline(true);
     this.setOutput(true, [Boolean,Number]);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ);
@@ -47,7 +50,7 @@ Blockly.Blocks.inout_pwm_analog_write = {
   init: function() {
     this.setColour(Blockly.Blocks.base.HUE);
 	this.appendValueInput("PIN", Number)
-        .appendField("PWM"+Blockly.MIXLY_ANALOGWRITE_PIN)
+        .appendField("PWM"+Blockly.MIXLY_Analog_PINMODEOUT)
         .setCheck(Number);
     this.appendValueInput("NUM", Number)
         .appendField(Blockly.MIXLY_VALUE2)
@@ -63,7 +66,7 @@ Blockly.Blocks.inout_analog_write = {
   init: function() {
     this.setColour(Blockly.Blocks.base.HUE);
     this.appendValueInput("PIN", Number)
-        .appendField("DAC"+Blockly.MIXLY_ANALOGWRITE_PIN)
+        .appendField("DAC"+Blockly.MIXLY_Analog_PINMODEOUT)
         .setCheck(Number);
     this.appendValueInput("NUM", Number)
         .appendField(Blockly.MIXLY_VALUE2)
@@ -79,7 +82,7 @@ Blockly.Blocks.inout_analog_write_set = {
     init: function(){
         this.setColour(Blockly.Blocks.base.HUE);
         this.appendValueInput("PIN", Number)
-            .appendField(Blockly.MIXLY_ANALOGWRITE_PIN)
+            .appendField(Blockly.MIXLY_Analog_PINMODEOUT)
             .setCheck(Number);
         this.appendDummyInput()
            .appendField(Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL)
@@ -101,7 +104,7 @@ Blockly.Blocks.inout_analog_write_set_freq = {
     init: function(){
         this.setColour(Blockly.Blocks.base.HUE);
         this.appendValueInput("PIN", Number)
-            .appendField(Blockly.MIXLY_ANALOGWRITE_PIN)
+            .appendField("PWM"+Blockly.MIXLY_Analog_PINMODEOUT)
             .setCheck(Number);
         this.appendValueInput("NUM", Number)
             .appendField(Blockly.MIXLY_FREQUENCY + Blockly.MIXLY_STAT)
@@ -117,8 +120,11 @@ Blockly.Blocks.inout_analog_read = {
   init: function() {
     this.setColour(Blockly.Blocks.base.HUE);
 	this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_ANALOGREAD_PIN)
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET)
+        .appendField(Blockly.MIXLY_Analog_PINMODEIN)
         .setCheck(Number);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
 	this.setInputsInline(true);
 	this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_READ);
@@ -129,10 +135,13 @@ Blockly.Blocks['pin_pressed'] = {
     init: function(){
         this.setColour(Blockly.Blocks.base.HUE);
         this.appendValueInput('pin')
-            .appendField(Blockly.MIXLY_PIN);
+            .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET)
+            .appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR);
+        // this.appendDummyInput()
+        //     .appendField(Blockly.MIXLY_IS_TOUCHED);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_IS_TOUCHED);
-        this.setOutput(true, Boolean);
+            .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
+        this.setOutput(true, Number);
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_sensor_pin_pressed);
     }
@@ -142,7 +151,7 @@ Blockly.Blocks.inout_digital_write = {
   init: function() {
     this.setColour(Blockly.Blocks.base.HUE);
     this.appendValueInput("PIN",Number)
-        .appendField(Blockly.MIXLY_DIGITALWRITE_PIN)
+        .appendField(Blockly.MIXLY_Digital_PINMODEOUT)
         .setCheck(Number);
     this.appendValueInput("STAT")
         .appendField(Blockly.MIXLY_STAT)
@@ -159,16 +168,22 @@ Blockly.Blocks['inout_pinMode'] = {
         this.setColour(20);
         this.appendValueInput("PIN", Number)
             .appendField(Blockly.Msg.LISTS_SET_INDEX_SET)
-            .appendField(Blockly.MIXLY_PIN)
+            .appendField(Blockly.MIXLY_NUMBER+Blockly.MIXLY_PIN+"#")
             .setCheck(Number);
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE+Blockly.Msg.LISTS_SET_INDEX_INPUT_TO)
-            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_PINMODEPULLUP, "Pin.PULL_UP"], [Blockly.MIXLY_PINMODEPULLDOWN, "Pin.PULL_DOWN"]]),"MODE")
+            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_Digital_PINMODEOUT, "Pin.OUT"], 
+                [Blockly.MIXLY_Digital_PINMODEIN, "Pin.IN"],
+                [Blockly.MIXLY_PINMODEPULLUP, "Pin.IN, Pin.PULL_UP"],
+                [Blockly.MIXLY_PINMODEPULLDOWN, "Pin.IN, Pin.PULL_DOWN"]
+                ]),"MODE")
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
   }
 };
+
+
 
 Blockly.Blocks.controls_pin_attachInterrupt = {
   init: function() {
@@ -185,5 +200,58 @@ Blockly.Blocks.controls_pin_attachInterrupt = {
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
   }
+};
+
+Blockly.Blocks.inout_pwm_analog_write_init = {
+  init: function() {
+    this.setColour(Blockly.Blocks.base.HUE);
+    this.appendValueInput("PIN", Number)
+        .appendField(Blockly.MIXLY_SETUP)
+        .appendField("PWM"+Blockly.MIXLY_Analog_PINMODEOUT)
+        .setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_PY);
+  }
+};
+
+Blockly.Blocks.inout_analog_write_init = {
+  init: function() {
+    this.setColour(Blockly.Blocks.base.HUE);
+    this.appendValueInput("PIN", Number)
+        .appendField(Blockly.MIXLY_SETUP)
+        .appendField("DAC"+Blockly.MIXLY_Analog_PINMODEOUT)
+        .setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE);
+  }
+};
+Blockly.Blocks.inout_analog_read_init = {
+  init: function() {
+    this.setColour(Blockly.Blocks.base.HUE);
+    this.appendValueInput("PIN", Number)
+        .appendField(Blockly.MIXLY_SETUP)
+        .appendField(Blockly.MIXLY_Analog_PINMODEIN)
+        .setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_READ);
+  }
+};
+Blockly.Blocks['pin_pressed_init'] = {
+    init: function(){
+        this.setColour(Blockly.Blocks.base.HUE);
+        this.appendValueInput('pin')
+            .appendField(Blockly.MIXLY_SETUP)
+            .appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_sensor_pin_pressed);
+    }
 };
 

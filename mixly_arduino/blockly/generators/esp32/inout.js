@@ -11,49 +11,49 @@ Blockly.Python.inout_highlow = function () {
 };
 // ok
 Blockly.Python.inout_digital_write = function () {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var dropdown_stat = Blockly.Python.valueToCode(this, 'STAT', Blockly.Python.ORDER_ATOMIC);
     var code = "";
     // code += 'pins.digitalWritePin(' + dropdown_pin + ',' + dropdown_stat + ')\n'
-    code += 'pin'+ dropdown_pin +'.write_digital('+ dropdown_stat +')\n'
+    code += 'p'+ dropdown_pin +'.value('+ dropdown_stat +')\n'
     return code;
 };
 // ok
 Blockly.Python.inout_digital_read = function () {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var code = "";
-    code = 'pin' + dropdown_pin + '.read_digital()';
+    code = 'p' + dropdown_pin + '.value()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 //ok
 Blockly.Python.inout_pwm_analog_write = function () {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     //var dropdown_stat = this.getFieldValue('STAT');
     var value_num = Blockly.Python.valueToCode(this, 'NUM', Blockly.Python.ORDER_ATOMIC);
     //Blockly.Python.setups_['setup_output'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
-    var code = 'pin' + dropdown_pin + '.write_analog(' + value_num + ')\n';
+    var code = 'pwm' + dropdown_pin + '.duty(' + value_num + ')\n';
     return code;
 };
 //ok
 Blockly.Python.inout_analog_write = function () {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     //var dropdown_stat = this.getFieldValue('STAT');
     var value_num = Blockly.Python.valueToCode(this, 'NUM', Blockly.Python.ORDER_ATOMIC);
     //Blockly.Python.setups_['setup_output'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
-    var code = 'pin' + dropdown_pin + '.dac_write(' + value_num + ')\n';
+    var code = 'dac' + dropdown_pin + '.write(' + value_num + ')\n';
     return code;
 };
 //ok
 Blockly.Python.inout_analog_write_set = function () {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var value_num = Blockly.Python.valueToCode(this, 'NUM', Blockly.Python.ORDER_ATOMIC);
     var key = this.getFieldValue('key');
-    var code = 'pin' + dropdown_pin  + '.set_analog_'+ key +'(' + value_num + ')\n';
+    var code = 'pwm' + dropdown_pin  + '.set_analog_'+ key +'(' + value_num + ')\n';
     //var code = 'pin' + dropdown_pin  + '.set_analog_period(' + value_num + ')\n';
     return code;
 };
@@ -61,49 +61,76 @@ Blockly.Python.inout_analog_write_set = function () {
 Blockly.Python.inout_analog_write_set_freq = function () {
     //Blockly.Python.definitions_['import_machine_Pin'] = "from machine import Pin";
    // Blockly.Python.definitions_['import_machine_PWM'] = "from machine import PWM";
-   Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+   Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var value_num = Blockly.Python.valueToCode(this, 'NUM', Blockly.Python.ORDER_ATOMIC);
-    var code = 'pin' + dropdown_pin  + '.set_frequency(' + value_num + ')\n';
+    var code = 'pwm' + dropdown_pin  + '.freq(' + value_num + ')\n';
     //var code = 'pin' + dropdown_pin  + '.set_analog_period(' + value_num + ')\n';
     return code;
 };
 //ok
 Blockly.Python.inout_analog_read = function () {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     //Blockly.Python.setups_['setup_input_'+dropdown_pin] = 'pinMode('+dropdown_pin+', INPUT);';
-    var code = 'pin' + dropdown_pin + '.read_analog()';
+    var code = 'adc' + dropdown_pin + '.read()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 //ok
 Blockly.Python.pin_pressed = function(){
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var pin = Blockly.Python.valueToCode(this, 'pin', Blockly.Python.ORDER_ATOMIC);
-    var code = 'pin'+ pin +'.is_touched()';
+    var code = 'tc'+ pin +'.read()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.inout_pinMode = function () {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var dropdown_mode = this.getFieldValue('MODE');
-    var code = 'pin' + dropdown_pin +' = Pin(' + dropdown_pin + ', Pin.IN, '+ dropdown_mode +')\n';
+    var code = 'p' + dropdown_pin +' = Pin(' + dropdown_pin + ', '+ dropdown_mode +')\n';
     return code;
 };
 
 Blockly.Python.controls_pin_attachInterrupt = function () {
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var dropdown_mode = this.getFieldValue('mode');
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     // Blockly.Python.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT);';
     //var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
    
-    var code = 'pin' + dropdown_pin + '.irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
+    var code = 'p' + dropdown_pin + '.irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
     var funcName = 'attachInterrupt_func_' + dropdown_pin;
     var branch = Blockly.Python.statementToCode(this, 'DO') || Blockly.Python.PASS;
     var code2 = 'def' + ' ' + funcName + '(p):\n' + branch + '\n';
     Blockly.Python.setups_[funcName] = code2;
+    return code;
+};
+
+Blockly.Python.inout_pwm_analog_write_init = function () {
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+    var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var code = 'pwm' + dropdown_pin + ' = PWM(Pin(' + dropdown_pin + '))\n';
+    return code;
+};
+//ok
+Blockly.Python.inout_analog_write_init = function () {
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+    var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var code = 'dac' + dropdown_pin + ' = DAC(Pin(' + dropdown_pin + '))\n';
+    return code;
+};
+Blockly.Python.inout_analog_read_init = function () {
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+    var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var code = 'adc' + dropdown_pin + ' = ADC(Pin(' + dropdown_pin + '))\n';
+    return code;
+};
+//ok
+Blockly.Python.pin_pressed_init = function(){
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+    var pin = Blockly.Python.valueToCode(this, 'pin', Blockly.Python.ORDER_ATOMIC);
+    var code = 'tc' + pin + ' = TouchPad(Pin(' + pin + '))\n';
     return code;
 };
 
