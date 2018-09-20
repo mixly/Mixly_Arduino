@@ -584,21 +584,26 @@
       <block type="controls_try_finally"></block>
       <block type="controls_lambda">
         <value name="BOOL">
-          <block type="variables_get">
+          <shadow type="variables_get">
             <field name="VAR">t</field>
-          </block>
+          </shadow>
         </value>
         <statement name="DO">
-                  <block type="IO_print_inline"> 
+                  <shadow type="IO_print_inline"> 
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
               </value>   
-        </block>
+        </shadow>
         </statement>
       </block>
       <block type="timer2">
+        <value name="VAR">
+          <shadow type="variables_get">
+            <field name="VAR">tim</field>
+          </shadow>
+        </value>
         <value name="period">
           <shadow type="math_number">
             <field name="NUM">1000</field>

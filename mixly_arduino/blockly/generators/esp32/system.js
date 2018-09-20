@@ -112,21 +112,23 @@ Blockly.Python.base_delay = function () {
 
 Blockly.Python.timer = function () {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    var v = Blockly.Python.valueToCode(this, "VAR", Blockly.Python.ORDER_NONE) || "None";
     var period = Blockly.Python.valueToCode(this, "period", Blockly.Python.ORDER_NONE) || "0";
     var mode = Blockly.Python.valueToCode(this, "mode", Blockly.Python.ORDER_NONE) || "None";
     var callback=Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
     // var callback = Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
-    var code = "tim.init(period = " + period + ", mode = Timer." + mode + ", callback = " + callback + ")\n";
+    var code = v + ".init(period = " + period + ", mode = Timer." + mode + ", callback = " + callback + ")\n";
     return code;
 };
 
 Blockly.Python.timer2 = function () {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    var v = Blockly.Python.valueToCode(this, "VAR", Blockly.Python.ORDER_NONE) || "None";
     var period = Blockly.Python.valueToCode(this, "period", Blockly.Python.ORDER_NONE) || "0";
     var mode = this.getFieldValue('mode');
     var branch = Blockly.Python.statementToCode(this, 'callback') || Blockly.Python.PASS;
     // var callback = Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
-    var code = "tim.init(period = " + period + ", mode = Timer." + mode + ", callback = timer_callback_func)\n";
-    Blockly.Python.setups_['timer_callback_func'] = 'def timer_callback_func(t):\n' + branch + '\n';
+    var code = v + ".init(period = " + period + ", mode = Timer." + mode + ", callback = " + v + "_callback_func)\n";
+    Blockly.Python.setups_['timer_callback_func'] = 'def ' + v + '_callback_func(t):\n' + branch + '\n';
     return code;
 };

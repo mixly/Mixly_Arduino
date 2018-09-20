@@ -92,10 +92,12 @@ Blockly.Blocks.controls_uname = {
 Blockly.Blocks.timer = {
   init: function() {
     this.setColour(Blockly.Blocks.system.HUE);
+    this.appendValueInput('VAR')
+        .appendField("Timer")
     this.appendValueInput('period')
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Timer")
+        // .appendField("Timer")
         .appendField(Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL);
     this.appendValueInput('mode')
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -113,9 +115,11 @@ Blockly.Blocks.timer = {
 Blockly.Blocks.timer2 = {
   init: function() {
     this.setColour(Blockly.Blocks.system.HUE);
+    this.appendValueInput('VAR')
+        .appendField("Timer")
+        // .appendField("I2C " + Blockly.MIXLY_SETUP)
     this.appendValueInput("period")
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Timer")
         .appendField(Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL)
         .setCheck(Number);
     this.appendDummyInput("")
