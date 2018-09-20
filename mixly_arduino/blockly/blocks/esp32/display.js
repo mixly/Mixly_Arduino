@@ -874,6 +874,8 @@ Blockly.Blocks.display_rgb_init = {
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_RGB)
+        this.appendValueInput('SUB')
+            .appendField(Blockly.MIXLY_SETUP)
         this.appendValueInput("PIN", Number)
            .setCheck(Number)
            .setAlign(Blockly.ALIGN_RIGHT)
@@ -898,6 +900,8 @@ Blockly.Blocks.display_rgb = {
          //    .setCheck(Number)
          //    .setAlign(Blockly.ALIGN_RIGHT)
          //    .appendField(Blockly.MIXLY_PIN);
+        this.appendValueInput('SUB')
+            // .appendField(Blockly.MIXLY_SETUP)
         this.appendValueInput("_LED_")
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -921,6 +925,27 @@ Blockly.Blocks.display_rgb = {
         this.setTooltip(Blockly.MIXLY_RGB_NUM_R_G_B);
     }
 };
+
+Blockly.Blocks.display_rgb_write = {
+    init: function () {
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_RGB)
+         // this.appendValueInput("PIN", Number)
+         //    .setCheck(Number)
+         //    .setAlign(Blockly.ALIGN_RIGHT)
+         //    .appendField(Blockly.MIXLY_PIN);
+        this.appendValueInput('SUB')
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_ESP32_RGB_WRITE)
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_RGB_NUM_R_G_B);
+    }
+};
+
 Blockly.Blocks.display_rgb2 = {
     init: function () {
         this.setColour(Blockly.Blocks.display.HUE);

@@ -1646,6 +1646,11 @@
         </block>
         <block type="microbit_display_clear"></block>
         <block type="display_rgb_init">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">rgb</field>
+            </shadow>
+          </value>
           <value name="PIN">
             <shadow type="pins_digital">
               <field name="PIN">2</field>
@@ -1658,6 +1663,11 @@
           </value>
         </block>
         <block type="display_rgb">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">rgb</field>
+            </shadow>
+          </value>
           <value name="PIN">
             <shadow type="pins_digital" />
           </value>
@@ -1679,6 +1689,13 @@
           <value name="BVALUE">
             <shadow type="math_number">
               <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="display_rgb_write">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">rgb</field>
             </shadow>
           </value>
         </block>

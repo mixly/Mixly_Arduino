@@ -1916,3 +1916,4 @@ Blockly.blockpy_CONDUCT='发起';
 Blockly.MIXLY_ESP32_TIME_TICKS_DIFF='获取两个时间的差值'
 Blockly.MIXLY_ESP32_TIME_MINUS='减'
 Blockly.MIXLY_ESP32_MACHINE_VALUE='的值'
+Blockly.MIXLY_ESP32_RGB_WRITE='生效'
