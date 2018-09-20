@@ -52,6 +52,7 @@ Blockly.Blocks.controls_attachGestureInterrupt = {
     init: function() {
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
+            .setCheck("var");
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_MICROBIT_JS_CURRENT_GESTURE)
             .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_MICROBIT_up, "up"], [Blockly.MIXLY_MICROBIT_down, "down"], [Blockly.MIXLY_MICROBIT_left, "left"], [Blockly.MIXLY_MICROBIT_right, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
@@ -116,6 +117,7 @@ Blockly.Blocks.controls_attachGestureInterrupt2 = {
     init: function() {
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
+            .setCheck("var");
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_MICROBIT_JS_WAS_GESTURE)
             .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_MICROBIT_up, "up"], [Blockly.MIXLY_MICROBIT_down, "down"], [Blockly.MIXLY_MICROBIT_left, "left"], [Blockly.MIXLY_MICROBIT_right, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
@@ -152,6 +154,7 @@ Blockly.Blocks['sensor_get_acceleration'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
+            .setCheck("var");
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_JS_ACCELERATION)
             .appendField(new Blockly.FieldDropdown([
@@ -184,6 +187,7 @@ Blockly.Blocks['sensor_set_acceleration'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
+            .setCheck("var");
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_JS_SET_ACCELERATION)
             .appendField(new Blockly.FieldDropdown([
@@ -203,6 +207,7 @@ Blockly.Blocks['sensor_get_gestures'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
+            .setCheck("var");
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_JS_GET)
             .appendField(new Blockly.FieldDropdown([
@@ -230,6 +235,7 @@ Blockly.Blocks['sensor_current_gesture'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
+            .setCheck("var");
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_JS_CURRENT_GESTURE)
         this.setOutput(true, Number);
@@ -250,6 +256,7 @@ Blockly.Blocks['sensor_calibrate_compass'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
+            .setCheck("var");
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_JS_CALIBRATE_COMPASS)
         this.setPreviousStatement(true);
@@ -262,6 +269,7 @@ Blockly.Blocks['sensor_is_compass_calibrated'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
+            .setCheck("var");
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_JS_IS_COMPASS_CALIBRATED)
         this.setOutput(true, Number);
@@ -273,6 +281,7 @@ Blockly.Blocks['sensor_compass_heading'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
+            .setCheck("var");
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_JS_COMPASS_HEADING)
         this.setOutput(true, Number);
@@ -283,6 +292,7 @@ Blockly.Blocks['sensor_temperature'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
+            .setCheck("var");
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_Board_temperature)
         this.setOutput(true, Number);
@@ -296,6 +306,7 @@ Blockly.Blocks['sensor_field_strength'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
+            .setCheck("var");
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_JS_GET_COMPASS)
             .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_FIELD_STRENGTH,'strength'],[Blockly.MIXLY_MICROBIT_JS_COMPASS_HEADING,'heading']]),'compass');
@@ -319,6 +330,7 @@ Blockly.Blocks['sensor_rotation'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
+            .setCheck("var");
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_JS_ROTATION)
             .appendField(new Blockly.FieldDropdown([
@@ -429,6 +441,7 @@ Blockly.Blocks.RTC_get_time = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendValueInput('SUB')
+        .setCheck("var");
     this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_RTCGETTIME);
     // this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField('myRTC');
     // this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
@@ -617,7 +630,8 @@ Blockly.Blocks.RTC_set_datetime = {
     this.setColour(Blockly.Blocks.sensor.HUE);
     // this.appendDummyInput()
     this.appendValueInput('SUB')
-        .appendField(Blockly.MIXLY_RTC_TIME);
+        .appendField(Blockly.MIXLY_RTC_TIME)
+        .setCheck("var");
     this.appendValueInput('year')
         .setCheck(Number)
         .appendField("         "+Blockly.MIXLY_YEAR);
@@ -656,6 +670,7 @@ Blockly.Blocks.sensor_rtc_init = {
             .appendField("RTC")
         this.appendValueInput('SUB')
             .appendField(Blockly.MIXLY_SETUP)
+            .setCheck("var");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -668,8 +683,10 @@ Blockly.Blocks.sensor_use_i2c_init = {
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('I2CSUB')
             .appendField(Blockly.Msg.CONTROLS_FOR_INPUT_WITH+"I2C")
+            .setCheck("var");
         this.appendValueInput('SUB')
             .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE)
+            .setCheck("var");
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_SETUP + Blockly.Msg.LISTS_SET_INDEX_INPUT_TO)
             .appendField(new Blockly.FieldDropdown([
@@ -689,6 +706,7 @@ Blockly.Blocks['sensor_bmp'] = {
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
             .appendField("BMP280")
+            .setCheck("var");
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown([
                 [Blockly.MIXLY_GETTEMPERATUE, "temperature"],
@@ -705,6 +723,7 @@ Blockly.Blocks['sensor_sht'] = {
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
             .appendField("SHT20")
+            .setCheck("var");
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown([
                 [Blockly.MIXLY_GETTEMPERATUE, "get_temperature()"],

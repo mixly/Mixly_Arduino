@@ -94,6 +94,7 @@ Blockly.Blocks.timer = {
     this.setColour(Blockly.Blocks.system.HUE);
     this.appendValueInput('VAR')
         .appendField("Timer")
+        .setCheck("var");
     this.appendValueInput('period')
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -117,6 +118,7 @@ Blockly.Blocks.timer2 = {
     this.setColour(Blockly.Blocks.system.HUE);
     this.appendValueInput('VAR')
         .appendField("Timer")
+        .setCheck("var");
         // .appendField("I2C " + Blockly.MIXLY_SETUP)
     this.appendValueInput("period")
         .setAlign(Blockly.ALIGN_RIGHT)

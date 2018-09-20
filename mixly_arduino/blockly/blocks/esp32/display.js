@@ -876,6 +876,7 @@ Blockly.Blocks.display_rgb_init = {
             .appendField(Blockly.MIXLY_RGB)
         this.appendValueInput('SUB')
             .appendField(Blockly.MIXLY_SETUP)
+            .setCheck("var");
         this.appendValueInput("PIN", Number)
            .setCheck(Number)
            .setAlign(Blockly.ALIGN_RIGHT)
@@ -901,6 +902,7 @@ Blockly.Blocks.display_rgb = {
          //    .setAlign(Blockly.ALIGN_RIGHT)
          //    .appendField(Blockly.MIXLY_PIN);
         this.appendValueInput('SUB')
+            .setCheck("var");
             // .appendField(Blockly.MIXLY_SETUP)
         this.appendValueInput("_LED_")
             .setCheck(Number)
@@ -936,6 +938,7 @@ Blockly.Blocks.display_rgb_write = {
          //    .setAlign(Blockly.ALIGN_RIGHT)
          //    .appendField(Blockly.MIXLY_PIN);
         this.appendValueInput('SUB')
+            .setCheck("var");
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_ESP32_RGB_WRITE)
         this.setInputsInline(true);
