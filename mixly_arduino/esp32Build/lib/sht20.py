@@ -16,12 +16,9 @@ SOFT_RESET = b'\xfe'
 
 class SHT20(object):
 
-    def __init__(self, scl_pin=22,sda_pin=21,clk_freq=100000):
+    def __init__(self, i2c_bus):
         self._address = SHT20_I2CADDR
-
-        pin_c = Pin(scl_pin)
-        pin_d = Pin(sda_pin)
-        self._bus = I2C(scl=pin_c, sda=pin_d, freq=clk_freq)
+        self._bus = i2c_bus
 
     def get_temperature(self):
         self._bus.writeto(self._address, TRI_T_MEASURE_NO_HOLD)
@@ -38,10 +35,3 @@ class SHT20(object):
         origin_value = unp('>H', origin_data)[0]
         value = -6 + 125 * (origin_value / 65536)
         return value
-while True:
-  sht_sensor = SHT20()
-  T = sht_sensor.get_temperature()
-  RH = sht_sensor.get_relative_humidity()
-  print('temperature:', T)
-  print('relative_humidity:', RH)
-  sleep_ms(1000) 
