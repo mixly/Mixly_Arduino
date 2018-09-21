@@ -268,7 +268,7 @@ class Display:
     def text(self,string,x,y):
         self.framebuf.text(string,x,y,1)
 
-    def show(self, data, delay=400, time=400):
+    def show(self, data, delay, time=400):
         self.fill(0)
         if type(data)==str:
             DISPLAY_WIDTH  = 16      # Display width in pixels.
@@ -335,7 +335,7 @@ class Display:
             sleep(time)
             display._show()
 
-    def scroll(self, data, speed=10):
+    def scroll(self, data, speed):
         DISPLAY_WIDTH  = 16      # Display width in pixels.
         DISPLAY_HEIGHT = 8       # Display height in pixels.
         # Initialize LED matrix.
@@ -350,7 +350,7 @@ class Display:
             pos = DISPLAY_WIDTH                 # X position of the message start.
             message_width = bf.width(data)   # Message width in pixels.
             last = utime.ticks_ms()             # Last frame millisecond tick time.
-            speed_ms = speed / 1000.0           # Scroll speed in pixels/ms.
+            speed_ms = 1200 / speed / 1000.0           # Scroll speed in pixels/ms.
             # Main loop:
             while True:
                 # Compute the time delta in milliseconds since the last frame.

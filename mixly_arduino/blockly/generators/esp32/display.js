@@ -46,11 +46,11 @@ Blockly.Python.monitor_show_scroll_string = function() {
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
     var time = Blockly.Python.valueToCode(this, 'time', Blockly.Python.ORDER_ASSIGNMENT);
     var mode = this.getFieldValue('MODE');
-    if(time==120){
-      var code = "display." + mode + "(" + data + ")\n";
-    }else{
+  //  if(time==120){
+  //    var code = "display." + mode + "(" + data + ")\n";
+  //  }else{
       var code = "display." + mode + "(" + data + ", " + time + ")\n";
-    }
+  //  }
     return code;
 }
 
