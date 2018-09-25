@@ -404,7 +404,8 @@ Blockly.Python.group_lcd_power = function() {
 };
 
 Blockly.Python.oled_init = function () {
-  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+  Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+  Blockly.Python.definitions_['import_ssd1306_*'] = 'from ssd1306 import *';
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
     Blockly.Variables.NAME_TYPE);
   var dropdown_pin1 = Blockly.Python.valueToCode(this, 'RX',Blockly.Python.ORDER_ATOMIC);
@@ -415,7 +416,8 @@ Blockly.Python.oled_init = function () {
 };
 
 Blockly.Python.lp2i_u8g_draw_4strings = function(){
-   Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+  Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+  Blockly.Python.definitions_['import_ssd1306_*'] = 'from ssd1306 import *';
    var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
     Blockly.Variables.NAME_TYPE);
    var value_text_line1 = Blockly.Python.valueToCode(this, 'Text_line1', Blockly.Python.ORDER_ASSIGNMENT) || '\'\'';
@@ -428,7 +430,8 @@ Blockly.Python.lp2i_u8g_draw_4strings = function(){
 };
 
 Blockly.Python['display_image_size'] = function() {
-  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+  Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+  Blockly.Python.definitions_['import_ssd1306_*'] = 'from ssd1306 import *';
   var data = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
   var size  = this.getFieldValue('OP');
   var code = "image."+size+"("+data+")\n";
@@ -436,7 +439,8 @@ Blockly.Python['display_image_size'] = function() {
 };
 
 Blockly.Python.display_rect=function(){
-   Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+  Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+  Blockly.Python.definitions_['import_ssd1306_*'] = 'from ssd1306 import *';
    var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
     Blockly.Variables.NAME_TYPE);
   var location_x = Blockly.Python.valueToCode(this, 'x', Blockly.Python.ORDER_ATOMIC);
@@ -461,7 +465,8 @@ Blockly.Python.display_rect=function(){
 };
 
 Blockly.Python.display_line=function(){
-   Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+  Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+  Blockly.Python.definitions_['import_ssd1306_*'] = 'from ssd1306 import *';
    var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
     Blockly.Variables.NAME_TYPE);
   var location_x = Blockly.Python.valueToCode(this, 'x', Blockly.Python.ORDER_ATOMIC);
@@ -475,7 +480,8 @@ Blockly.Python.display_line=function(){
 };
 
 Blockly.Python.display_line_Arbitrarily=function(){
-   Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+  Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+  Blockly.Python.definitions_['import_ssd1306_*'] = 'from ssd1306 import *';
    var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
     Blockly.Variables.NAME_TYPE);
   var location_x1 = Blockly.Python.valueToCode(this, 'x1', Blockly.Python.ORDER_ATOMIC);
