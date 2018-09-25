@@ -59,3 +59,9 @@ Blockly.Python.variables_change = function () {
     var code = operator + '(' + varName + ')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.variables_global = function() {
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || 'None';
+  var code = "global "+str+'\n';
+  return code;
+};

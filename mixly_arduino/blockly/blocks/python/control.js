@@ -759,3 +759,15 @@ Blockly.Blocks['controls_repeat_ext'] = {
 
 
 
+Blockly.Blocks.controls_lambda = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendValueInput('BOOL')
+        .appendField('lambda')
+        //.appendField(new Blockly.FieldDropdown(this.OPERATORS), 'MODE');
+    this.appendStatementInput('DO')
+        .appendField(Blockly.MIXLY_STAT);
+    this.setOutput(true);
+    // this.setNextStatement(true);
+  }
+};

@@ -11,6 +11,7 @@ Blockly.Blocks['serial_print'] = {
         .appendField("Serial")
         .appendField(new Blockly.FieldDropdown([['uart0', '0'], ['uart1', '1'], ['uart2', '2']]), 'mode')
         .appendField(Blockly.MIXLY_SERIAL_PRINT);
+    this.setFieldValue('1','mode')
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.Msg.TEXT_PRINT_TOOLTIP);
@@ -24,6 +25,7 @@ Blockly.Blocks['serial_println'] = {
         .appendField("Serial")
         .appendField(new Blockly.FieldDropdown([['uart0', '0'], ['uart1', '1'], ['uart2', '2']]), 'mode')
         .appendField(Blockly.MIXLY_SERIAL_PRINTLN);
+    this.setFieldValue('1','mode')
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.Msg.TEXT_PRINT_Huanhang_TOOLTIP+Blockly.Msg.TEXT_PRINT_TOOLTIP);
@@ -38,6 +40,7 @@ Blockly.Blocks['serial_print_hex'] = {
         .appendField(new Blockly.FieldDropdown([['uart0', '0'], ['uart1', '1'], ['uart2', '2']]), 'mode')
         .appendField(Blockly.MIXLY_SERIAL_PRINT_HEX)
         .setCheck(Number);
+    this.setFieldValue('1','mode')
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setTooltip(Blockly.Msg.TEXT_PRINT_HEX_TOOLTIP);
@@ -62,7 +65,8 @@ Blockly.Blocks['serial_readstr'] = {
           .appendField("Serial")
         .appendField(new Blockly.FieldDropdown([['uart0', '0'], ['uart1', '1'], ['uart2', '2']]), 'mode')
         .appendField(Blockly.MIXLY_SERIAL_READSTR);
-	this.setOutput(true, String);
+	this.setFieldValue('1','mode')
+  this.setOutput(true, String);
 	this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERIAL_READ_STR);
   }
 };
@@ -74,6 +78,7 @@ Blockly.Blocks['serial_any'] = {
           .appendField("Serial")
         .appendField(new Blockly.FieldDropdown([['uart0', '0'], ['uart1', '1'], ['uart2', '2']]), 'mode')
         .appendField(Blockly.MIXLY_SERIAL_AVAILABLE);
+  this.setFieldValue('1','mode')
   this.setOutput(true, Boolean);
   this.setTooltip(Blockly.MIXLY_SERIAL_AVAILABLE1);
   }
@@ -86,6 +91,7 @@ Blockly.Blocks['serial_readline'] = {
                 .appendField("Serial")
         .appendField(new Blockly.FieldDropdown([['uart0', '0'], ['uart1', '1'], ['uart2', '2']]), 'mode')
             .appendField(Blockly.MIXLY_ESP32_READ_LINE);
+        this.setFieldValue('1','mode')
         this.setOutput(true, String);
         this.setTooltip(Blockly.MIXLY_MICROBIT_JS_SERIAL_READ_LINE1);
     }

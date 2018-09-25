@@ -70,7 +70,7 @@ Blockly.Blocks.monitor_show_string = {
     this.setColour(Blockly.Blocks.display.HUE);
 	  this.appendValueInput('data')
         .setCheck(String)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,'show'],[Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING,'scroll']]),"MODE")
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,'show'],[Blockly.MIXLY_ESP32_MONITOR_SCROLL,'scroll']]),"MODE")
 		    .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -93,7 +93,7 @@ Blockly.Blocks.monitor_show_scroll_string = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendValueInput('data')
         .setCheck(String)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,'show'],[Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING,'scroll']]),"MODE")
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,'show'],[Blockly.MIXLY_ESP32_MONITOR_SCROLL,'scroll']]),"MODE")
         .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING);
     this.appendValueInput("time")
         .setCheck(Number)
@@ -874,6 +874,9 @@ Blockly.Blocks.display_rgb_init = {
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_RGB)
+        this.appendValueInput('SUB')
+            .appendField(Blockly.MIXLY_SETUP)
+            .setCheck("var");
         this.appendValueInput("PIN", Number)
            .setCheck(Number)
            .setAlign(Blockly.ALIGN_RIGHT)
@@ -898,6 +901,9 @@ Blockly.Blocks.display_rgb = {
          //    .setCheck(Number)
          //    .setAlign(Blockly.ALIGN_RIGHT)
          //    .appendField(Blockly.MIXLY_PIN);
+        this.appendValueInput('SUB')
+            .setCheck("var");
+            // .appendField(Blockly.MIXLY_SETUP)
         this.appendValueInput("_LED_")
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -921,6 +927,28 @@ Blockly.Blocks.display_rgb = {
         this.setTooltip(Blockly.MIXLY_RGB_NUM_R_G_B);
     }
 };
+
+Blockly.Blocks.display_rgb_write = {
+    init: function () {
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_RGB)
+         // this.appendValueInput("PIN", Number)
+         //    .setCheck(Number)
+         //    .setAlign(Blockly.ALIGN_RIGHT)
+         //    .appendField(Blockly.MIXLY_PIN);
+        this.appendValueInput('SUB')
+            .setCheck("var");
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_ESP32_RGB_WRITE)
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_RGB_NUM_R_G_B);
+    }
+};
+
 Blockly.Blocks.display_rgb2 = {
     init: function () {
         this.setColour(Blockly.Blocks.display.HUE);
@@ -1450,4 +1478,28 @@ Blockly.Blocks.monitor_blink_rate = {
   this.setInputsInline(true);
   this.setTooltip(Blockly.MIXLY_ESP32_JS_MONITOR_SET_BLINK_RATE);
   }
+};
+
+Blockly.Blocks.display_rgb_color = {
+    init: function () {
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_RGB)
+         // this.appendValueInput("PIN", Number)
+         //    .setCheck(Number)
+         //    .setAlign(Blockly.ALIGN_RIGHT)
+         //    .appendField(Blockly.MIXLY_PIN);
+        this.appendValueInput("_LED_")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_RGB_NUM);
+        this.appendDummyInput("")
+            .appendField(Blockly.Msg.LISTS_SET_INDEX_SET+Blockly.MIXLY_MICROBIT_PY_STORAGE_AS)
+            .appendField(new Blockly.FieldColour('#ff0000'), 'FIELDNAME');
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_RGB_NUM_R_G_B);
+    }
 };

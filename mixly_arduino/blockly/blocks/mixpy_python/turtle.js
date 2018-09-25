@@ -29,6 +29,17 @@ Blockly.Blocks['turtle_create'] = {
  
 }
 
+Blockly.Blocks['turtle_done'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendDummyInput()
+          .appendField(Blockly.blockpy_TURTLE_DONE);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
 Blockly.Blocks['turtle_move'] = {
   init: function() {
      this.appendValueInput('TUR')
@@ -377,6 +388,19 @@ Blockly.Blocks['turtle_clone'] = {
         .appendField(Blockly.Msg.TURTLE_CLONE);
   this.setTooltip(Blockly.Msg.TURTLE_CLONE_TOOLTIP);
   this.setOutput(true, Number);
+  }
+};
+
+Blockly.Blocks['turtle_bgcolor_hex'] = {
+ init: function() {
+    
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('VAR')
+        .setCheck(String)
+        .appendField(Blockly.blockpy_turtle_bgcolor_hex);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
   }
 };
 

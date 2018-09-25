@@ -29,19 +29,19 @@ var PythonHighlightRules = function() {
         "__import__|complex|hash|min|set|apply|delattr|help|next|setattr|" +
         "buffer|dict|hex|object|slice|coerce|dir|id|oct|sorted|intern|"+
         // micropythonFunctions
-        "sleep|running_time|panic|reset|temperature|"+
+        "sleep|running_time|panic|reset|temperature|sleep_us|sleep_s|sleep_ms|ticks_ms|ticks_us|"+
         // micropythonButtonFunctions
         "is_pressed|was_pressed|get_presses|"+
         // micropythonDisplayFunctions
         "get_pixel|set_pixel|clear|show|scroll|on|off|is_on|"+
         // micropythonPinIOFunctions
-        "write_digital|read_digital|write_analog|read_analog|set_analog_period|set_analog_period_microseconds|is_touched|"+
+        "write_digital|read_digital|write_analog|read_analog|set_analog_period|set_analog_period_microseconds|is_touched|value|duty|freq|irq|"+
         // micropythonImageFunctions
         "Image|width|height|set_pixel|get_pixel|shift_left|shift_right|shift_up|shift_down|repr|str|crop|copy|invert|fill|blit|"+
         // micropythonAccelerometerFunctions
         "get_x|get_y|get_z|get_values|current_gesture|is_gesture|was_gesture|get_gestures|"+
         // micropythonCompassFunctions
-        "calibrate|heading|get_field_strength|is_calibrated|clear_calibration|"+
+        "calibrate|heading|get_field_strength|is_calibrated|clear_calibration|get_temperature|pressure|get_relative_humidity|"+
         // micropythonI2CFunctions
         "read|write|"+
         // micropythonUartFunctions

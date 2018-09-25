@@ -238,7 +238,11 @@ function init() {
   //  return 'Leaving this page will result in the loss of your work.';
   //};
   editor = ace.edit("content_arduino");
-  editor.setTheme("ace/theme/xcode");
+  if(window.conf == null || window.conf.lastEditorTheme == null){
+      window.conf = window.conf || {};
+      window.conf['lastEditorTheme'] = "ace/theme/xcode";
+  }
+  editor.setTheme(window.conf.lastEditorTheme);
   editor.getSession().setMode("ace/mode/python");
   editor.setFontSize(17);
   editor.setShowPrintMargin(false);
@@ -249,12 +253,13 @@ function init() {
   });
   editor.setScrollSpeed(0.05);
   editor_side_code = ace.edit("side_code");
-  editor_side_code.setTheme("ace/theme/xcode");
+  editor_side_code.setTheme(window.conf.lastEditorTheme);
   editor_side_code.getSession().setMode("ace/mode/python");
   editor_side_code.setFontSize(17);
   editor_side_code.setShowPrintMargin(false);
   editor_side_code.setReadOnly(true);
   editor_side_code.setScrollSpeed(0.05);
+  $('#aceTheme').val(window.conf.lastEditorTheme);
   var py2block_converter = new PythonToBlocks();
   py2block_editor = new Py2blockEditor(py2block_converter, editor);
   Sk.python3 = true;
@@ -347,11 +352,11 @@ function init() {
              <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;color:#999;">copyright</span>
             </td>
             <td class="tabmode">
-              <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_microbit[py].html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light';font-size:12px;">高级视图</a>
+              <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_mixpy.html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light';font-size:12px;">高级视图</a>
             </td>
             <script type="text/javascript">
               var viewMode2 = document.getElementById('viewMode2');
-              viewMode2.href = 'index_advance_board_microbit[py].html?lang='+Code.LANG;
+              viewMode2.href = 'index_advance_board_mixpy.html?lang='+Code.LANG;
             </script>
             <td class="tabmin">
              <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
@@ -365,6 +370,51 @@ function init() {
             </td>
             <td class="tabmin">
               <select id="languageMenu"></select>
+            </td>
+            <td class="tabmin">
+                <select id="aceTheme" style="width:100px; height:23px; margin-left: 10px;">
+                    <optgroup label="代码区亮色主题">
+                        <option value="ace/theme/chrome">Chrome</option>
+                        <option value="ace/theme/clouds">Clouds</option>
+                        <option value="ace/theme/crimson_editor">Crimson Editor</option>
+                        <option value="ace/theme/dawn">Dawn</option>
+                        <option value="ace/theme/dreamweaver">Dreamweaver</option>
+                        <option value="ace/theme/eclipse">Eclipse</option>
+                        <option value="ace/theme/github">GitHub</option>
+                        <option value="ace/theme/iplastic">IPlastic</option>
+                        <option value="ace/theme/solarized_light">Solarized Light</option>
+                        <option value="ace/theme/textmate">TextMate</option>
+                        <option value="ace/theme/tomorrow">Tomorrow</option>
+                        <option value="ace/theme/xcode">XCode</option>
+                        <option value="ace/theme/kuroir">Kuroir</option>
+                        <option value="ace/theme/katzenmilch">KatzenMilch</option>
+                        <option value="ace/theme/sqlserver">SQL Server</option>
+                    </optgroup>
+                    <optgroup label="代码区暗色主题">
+                        <option value="ace/theme/ambiance">Ambiance</option>
+                        <option value="ace/theme/chaos">Chaos</option>
+                        <option value="ace/theme/clouds_midnight">Clouds Midnight</option>
+                        <option value="ace/theme/dracula">Dracula</option>
+                        <option value="ace/theme/cobalt">Cobalt</option>
+                        <option value="ace/theme/gruvbox">Gruvbox</option>
+                        <option value="ace/theme/gob">Green on Black</option>
+                        <option value="ace/theme/idle_fingers">idle Fingers</option>
+                        <option value="ace/theme/kr_theme">krTheme</option>
+                        <option value="ace/theme/merbivore">Merbivore</option>
+                        <option value="ace/theme/merbivore_soft">Merbivore Soft</option>
+                        <option value="ace/theme/mono_industrial">Mono Industrial</option>
+                        <option value="ace/theme/monokai">Monokai</option>
+                        <option value="ace/theme/pastel_on_dark">Pastel on dark</option>
+                        <option value="ace/theme/solarized_dark">Solarized Dark</option>
+                        <option value="ace/theme/terminal">Terminal</option>
+                        <option value="ace/theme/tomorrow_night">Tomorrow Night</option>
+                        <option value="ace/theme/tomorrow_night_blue">Tomorrow Night Blue</option>
+                        <option value="ace/theme/tomorrow_night_bright">Tomorrow Night Bright</option>
+                        <option value="ace/theme/tomorrow_night_eighties">Tomorrow Night 80s</option>
+                        <option value="ace/theme/twilight">Twilight</option>
+                        <option value="ace/theme/vibrant_ink">Vibrant Ink</option>
+                    </optgroup>
+                </select>
             </td>
             <script>
              document.getElementById('span_blocks').textContent = MSG['tab_blocks'];
@@ -1216,6 +1266,7 @@ function init() {
       </category>
       <category id="catTurtle" colour="180">
            <block type="turtle_create"></block>
+           <block type="turtle_done"></block>
            <block type="turtle_move">
               <value name="TUR">
                 <shadow type="variables_get">
@@ -1347,7 +1398,7 @@ function init() {
                 </shadow>
               </value>
           </block>
-<!--      <block type="turtle_bgcolor"></block>-->
+          <block type="turtle_bgcolor"></block>
           <block type="turtle_pencolor">
             <value name="TUR">
                 <shadow type="variables_get">
@@ -1360,6 +1411,13 @@ function init() {
                 <shadow type="variables_get">
                   <field name="VAR">tina</field>
                 </shadow>
+              </value>
+          </block>
+          <block type="turtle_bgcolor_hex">            
+            <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">FF0000</field>
+                  </shadow>
               </value>
           </block>
           <block type="turtle_pencolor_hex">

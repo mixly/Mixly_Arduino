@@ -100,26 +100,7 @@ Blockly.Python.controls_flow_statements = function (a) {
 };
 
 //ok
-Blockly.Python.base_delay = function () {
-    // Blockly.Python.definitions_.import_time = "import time";
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var delay_time = Blockly.Python.valueToCode(this, 'DELAY_TIME', Blockly.Python.ORDER_ATOMIC) || '1000'
-    var dropdown_time = this.getFieldValue('Time');
-    switch (dropdown_time) {
-    case "s":
-       var code = 'sleep_s(' + delay_time + ')\n';
-       return code;
-       break;
-    case "ms":
-       var code ='sleep(' + delay_time + ')\n';
-       return code;
-       break;
-    case "us":
-       var code ='sleep_us(' + delay_time + ')\n';
-       return code;
-       break;
-  }
-};
+
 
 
 Blockly.Python['controls_forEach'] = function(block) {

@@ -80,6 +80,25 @@ pbc.objectFunctionD.get('setheading')['Turtle'] = function (py2block, func, args
     })];
 }
 
+pbc.moduleFunctionD.get('turtle')['done'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return [block("turtle_done", func.lineno, {}, {}, {
+            "inline": "true"
+        })];
+}
+
+pbc.moduleFunctionD.get('turtle')['bgcolor'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var argblock = py2block.convert(args[0]);
+    return [block("turtle_bgcolor", func.lineno, {"FIELDNAME":py2block.Str_value(args[0])}, {}, {
+            "inline": "true"
+        })];
+}
+
 
 pbc.objectFunctionD.get('goto')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 2) {

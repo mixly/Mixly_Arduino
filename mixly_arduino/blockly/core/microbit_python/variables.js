@@ -105,6 +105,10 @@ Blockly.Variables.flyoutCategory = function(workspace) {
 
   var xmlList = [];
   
+  var block = goog.dom.createDom('block');
+  block.setAttribute('type', 'variables_global');
+  xmlList.push(block);
+  
   if (Blockly.Blocks['variables_set']) {
   //增加variables_declare模块
   var block = goog.dom.createDom('block');

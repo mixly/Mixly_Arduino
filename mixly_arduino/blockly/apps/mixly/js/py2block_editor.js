@@ -8,9 +8,67 @@ function Py2blockEditor(py2block_conveter, ace_editor){
     this.fromCode = false;
 }
 
+Py2blockEditor.prototype.isFuncStartLine = function(line){
+    return /^ *?def *?.*?\(.*?\): *?$/.test(line);
+}
+
+Py2blockEditor.prototype.isEmptyNewLine = function(line){
+    return /^ +?$/.test(line) || line == "";
+}
+
+Py2blockEditor.prototype.getIndentOfLine = function(line){
+    for(var i = 0 ; i < line.length ; i ++){
+        if(line[i] != " "){
+            return i;
+        }
+    }
+    return 0;
+}
+
+//为函数定义前后增加空行
+Py2blockEditor.prototype.addNewLines = function(python_code){
+    python_code = python_code.replace("\r\n", "\n")
+                            .replace("\r", "\n")
+                            .replace("\t", "    ");
+    var lines = python_code.split("\n");
+    var isFirstLine = true;
+    var isNewLine = false;
+    var isFuncDefScope = false;
+    var indent = 0;
+    var new_python_code = "";
+    var newLine = "";
+    //遍历每行
+    for(var i = 0 ; i < lines.length ; i ++){
+        var line = lines[i];
+        //函数定义的开始行（def XXX()）
+        if(this.isFuncStartLine(line)){
+            isFuncDefScope = true;
+            indent = this.getIndentOfLine(line);
+            if(!isFirstLine && !isNewLine){
+                line = "\n" + line;
+            }
+        }else if(isFuncDefScope && this.getIndentOfLine(line) <= indent){//函数定义结束后的第一行
+            if(!this.isEmptyNewLine(line)){
+               line = "\n" + line;
+            }
+            isFuncDefScope = false;
+        }
+        //是否是空行
+        if(this.isEmptyNewLine(line)){
+            isNewLine = true;
+        }else{
+            isNewLine = false;
+        }
+        new_python_code += line + "\n";
+        isFirstLine = false;
+    }
+    return new_python_code;
+}
+
 Py2blockEditor.prototype.setBlocks = function(python_code){
     var xml_code = "";
     py2block_config.reset();
+    python_code = this.addNewLines(python_code);
     if (python_code !== '' && python_code !== undefined && python_code.trim().charAt(0) !== '<') {
         var result = this.convert.convertSource(python_code);
         xml_code = result.xml;

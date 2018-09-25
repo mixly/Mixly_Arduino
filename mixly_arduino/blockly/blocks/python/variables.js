@@ -133,6 +133,16 @@ Blockly.Blocks['variables_change'] = {
 };
 
 
-
+Blockly.Blocks['variables_global'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.variables.HUE);
+        this.appendValueInput("VAR")
+        .appendField(Blockly.MIXLY_PYTHON_GLOBAL)
+        .setCheck("var");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.Msg.TEXT_PRINT_INLINE_TOOLTIP);
+  }
+};
 
     

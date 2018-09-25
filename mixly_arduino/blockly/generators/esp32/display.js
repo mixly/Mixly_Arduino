@@ -46,11 +46,11 @@ Blockly.Python.monitor_show_scroll_string = function() {
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
     var time = Blockly.Python.valueToCode(this, 'time', Blockly.Python.ORDER_ASSIGNMENT);
     var mode = this.getFieldValue('MODE');
-    if(time==120){
-      var code = "display." + mode + "(" + data + ")\n";
-    }else{
+  //  if(time==120){
+  //    var code = "display." + mode + "(" + data + ")\n";
+  //  }else{
       var code = "display." + mode + "(" + data + ", " + time + ")\n";
-    }
+  //  }
     return code;
 }
 
@@ -277,41 +277,50 @@ var code = 'Image("'+ colour_00 + colour_01 + colour_02 + colour_03 + colour_04 
 };
 
 Blockly.Python.display_rgb_init=function(){
+    var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var dropdown_rgbpin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var value_ledcount = Blockly.Python.valueToCode(this, 'LEDCOUNT', Blockly.Python.ORDER_ATOMIC);
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     Blockly.Python.definitions_['import_neopixel_*'] = 'from neopixel import *';
     // Blockly.Python.definitions_['include_display'] = '#include "Mixly.h"';
-    var code = 'np = NeoPixel(Pin('+dropdown_rgbpin+'), '+value_ledcount+')\n';
+    var code = v + ' = NeoPixel(Pin('+dropdown_rgbpin+'), '+value_ledcount+')\n';
     // Blockly.Python.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();';
     // Blockly.Python.setups_['setup_rgb_display_setpin' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.setPin(' + dropdown_rgbpin + ');';
     return code;
 };
+
 Blockly.Python.display_rgb=function(){
-  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+  Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
   Blockly.Python.definitions_['import_neopixel_*'] = 'from neopixel import *';
+  var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
   var value_led = Blockly.Python.valueToCode(this, '_LED_', Blockly.Python.ORDER_ATOMIC);
   var value_rvalue = Blockly.Python.valueToCode(this, 'RVALUE', Blockly.Python.ORDER_ATOMIC);
   var value_gvalue = Blockly.Python.valueToCode(this, 'GVALUE', Blockly.Python.ORDER_ATOMIC);
   var value_bvalue = Blockly.Python.valueToCode(this, 'BVALUE', Blockly.Python.ORDER_ATOMIC);
-  //Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-  //Blockly.Python.definitions_['import_neopixel_NeoPixel'] = 'from neopixel import NeoPixel';
-  var code = 'np['+value_led+'-1] = ('+value_rvalue+', '+value_gvalue+', '+value_bvalue+')\n';
-  code+='np.write()\n';
+  var code= v + '['+value_led+'] = ('+value_rvalue+', '+value_gvalue+', '+value_bvalue+')\n';
+  return code;
+};
+
+Blockly.Python.display_rgb_write=function(){
+  Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+  Blockly.Python.definitions_['import_neopixel_*'] = 'from neopixel import *';
+  var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
+  var code= v + '.write()\n';   
   return code;
 };
 
 Blockly.Python.display_rgb2=function(){
-  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+  Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
   Blockly.Python.definitions_['import_neopixel_*'] = 'from neopixel import *';
+  var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
   var value_led = Blockly.Python.valueToCode(this, '_LED_', Blockly.Python.ORDER_ATOMIC);
   var colour_rgb_led_color = this.getFieldValue('RGB_LED_COLOR');
   var color = goog.color.hexToRgb(colour_rgb_led_color);
   //Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
   //Blockly.Python.definitions_['import_neopixel_NeoPixel'] = 'from neopixel import NeoPixel';
 
-  var code = 'np['+value_led+'-1] = ('+color+')\n';
-  code+='np.write()\n';
+  var code = 'rgb['+value_led+'-1] = ('+color+')\n';
+  code+='rgb.write()\n';
   return code;
 };
 
@@ -499,3 +508,11 @@ Blockly.Python.monitor_blink_rate= function() {
     var code = 'display.blink_rate(' + x + ')\n';
     return code;
 }
+
+// Blockly.Python.display_rgb_color= function() {
+//     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+//     var x = Blockly.Python.valueToCode(this, 'x', Blockly.Python.ORDER_ASSIGNMENT);
+//     var code = 'display.set_brightness(' + x + ')\n';
+//     return code;
+// };
+// var color = this.getFieldValue('FIELDNAME');

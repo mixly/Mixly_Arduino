@@ -165,9 +165,12 @@ Blockly.Blocks['microbit_radio_receive'] = {
 Blockly.Blocks['i2c_init'] = {
   init: function() {
    this.setColour(Blockly.Blocks.communicate.HUE);
+   this.appendValueInput('SUB')
+       .appendField("I2C " + Blockly.MIXLY_SETUP)
+       .setCheck("var");
    this.appendValueInput("RX", Number)
        //.appendField(Blockly.MIXLY_SETUP)
-       .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_SETUP)
+       // .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_SETUP)
        .appendField("sda")
        .setCheck(Number)
        .setAlign(Blockly.ALIGN_RIGHT);
@@ -559,3 +562,4 @@ Blockly.Blocks['bluetooth_service_setup'] = {
         this.setInputsInline(true);
     }
 };
+

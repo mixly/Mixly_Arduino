@@ -21,6 +21,15 @@ Blockly.Blocks['pins_analog'] = {
   }
 };
 
+Blockly.Blocks['pins_dac'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.pins.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.dac), 'PIN');
+    this.setOutput(true, Number);
+  }
+};
+
 Blockly.Blocks['pins_button'] = {
    init: function() {
     this.setColour(Blockly.Blocks.pins.HUE);
@@ -134,5 +143,14 @@ Blockly.Blocks['pins_radio_datarate'] = {
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown(profile.default.radio_datarate), 'PIN');
         this.setOutput(true, Number);
+    }
+};
+
+Blockly.Blocks['pins_one_more'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldDropdown(profile.default.one_more), 'PIN');
+        this.setOutput(true);
     }
 };
