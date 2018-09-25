@@ -268,7 +268,7 @@ class Display:
     def text(self,string,x,y):
         self.framebuf.text(string,x,y,1)
 
-    def show(self, data, delay, time=400):
+    def show(self, data, delay=1, time=400):
         self.fill(0)
         if type(data)==str:
             DISPLAY_WIDTH  = 16      # Display width in pixels.
