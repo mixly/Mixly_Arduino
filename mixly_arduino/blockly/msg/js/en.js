@@ -987,6 +987,20 @@ Blockly.MIXLY_4DIGITDISPLAY_DOT = 'Dot';
 Blockly.MIXLY_4DIGITDISPLAY_ON = 'On';
 Blockly.MIXLY_4DIGITDISPLAY_OFF = 'Off';
 
+//max7219
+Blockly.MIXLY_MAX7219_INIT_NUM='Number of LED dot matrix modules';
+Blockly.MIXLY_MAX7219_PUTSTR='Scroll string';
+Blockly.MIXLY_SPEED='speed';
+Blockly.MIXLY_BRIGHTNESS='brightness';
+Blockly.MIXLY_MAX7219_DISPLAYCHAR='LED dot matrix display pattern';
+Blockly.MIXLY_MAX7219_DISPLAYCHAR_NUM='Dot matrix number (1~8)';
+Blockly.MIXLY_MAX7219_DISPLAYCHAR_IMG='pattern';
+Blockly.MIXLY_MAX7219_DISPLAYCHAR_SHOWIMG='display pattern';
+Blockly.MIXLY_MAX7219_LEDARRAY='pattern array';
+Blockly.MIXLY_MAX7219_INIT='Initialize LED dot matrix ';
+Blockly.MIXLY_MAX7219_INIT2='Initialize LED dot matrix(IIC)';
+Blockly.MIXLY_MAX7219_IMG='Presupposition pattern';
+
 //TM1637
 Blockly.MIXLY_4DIGITDISPLAY_TM1637 = 'TM1637';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYPRINT = 'TM1637 Show';
