@@ -49,3 +49,29 @@ pbc.assignD.get('i2c')['create_block'] = function(py2block, node, targets, value
     }
 }
 
+pbc.objectFunctionD.get('readfrom')['I2C'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var adblock = py2block.convert(args[0]);
+    var datablock = py2block.convert(args[1]);
+    return [block("i2c_read", func.lineno, {}, {
+        "address": adblock,
+        "data": datablock
+    }, {
+        "inline": "true"
+    })];
+}
+pbc.objectFunctionD.get('writeto')['I2C'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var adblock = py2block.convert(args[0]);
+    var datablock = py2block.convert(args[1]);
+    return [block("i2c_write", func.lineno, {}, {
+        "address": adblock,
+        "data": datablock
+    }, {
+        "inline": "true"
+    })];
+}
