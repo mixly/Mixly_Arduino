@@ -99,7 +99,7 @@ pbc.moduleFunctionD.get('uart1')['write'] = function(py2block, func, args, keywo
             && py2block.Str_value(args[0].right) === "\r\n"
             && args[0].left._astname === "Call" && args[0].left.func._astname == "Name"
             && py2block.Name_str(args[0].left.func) === "str"
-        ){//下面代码对应生成的块根本没有进入这个函数
+        ){
             if(args[0].left.args[0]._astname === "Call"
                 && args[0].left.args[0].func._astname === "Name"
                 && py2block.Name_str(args[0].left.args[0].func) === "hex"){ //serial.write(str(hex(XX)) + "\r\n")
@@ -123,29 +123,25 @@ pbc.moduleFunctionD.get('uart1')['write'] = function(py2block, func, args, keywo
             "inline": "true"
         })];
 }
-/*
-这个是初始化的块，但是初始化那个块参数对应的代码是1/2/0，不太理解
-*/
-
-pbc.assignD.get('UART')['check_assign'] = function (py2block, node, targets, value) {
-    if (value._astname === "Call")
+pbc.assignD.get('uart1')['check_assign'] = function (py2block, node, targets, value) {
+    var funcName = py2block.identifier(value.func.id);
+    if (value._astname === "Call"&& funcName === "UART" && value.args.length === 2)
         return true;
     return false;
 }
-
-pbc.assignD.get('UART')['create_block'] = function (py2block, node, targets, value) {
-    return block("uart_softserial", node.lineno, {
-            'VAR': py2block.Name_str(targets[0])
-        },
-        py2block.convertElements("ADD", value.elts), {
-            "CONTENT":py2block.convert(args[0])
+pbc.assignD.get('uart1')['create_block'] = function (py2block, node, targets, value) {
+    pbc.pinType = 'serial_print';
+    var argblock1 = py2block.convert(value.args[1])
+    return block("uart_softserial", node.lineno, { },
+        {
+            "CONTENT":py2block.convert(value.args[0]),
+            "TEXT":argblock1,
         }, {
-            "inline": "false",
-            "@items": value.elts.length
+            "inline": "true"
         });
 }
 
-pbc.moduleFunctionD.get('uart')['any'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.moduleFunctionD.get('uart1')['any'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -155,7 +151,7 @@ pbc.moduleFunctionD.get('uart')['any'] = function(py2block, func, args, keywords
 }
 
 
-pbc.moduleFunctionD.get('uart')['read'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.moduleFunctionD.get('uart1')['read'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -165,7 +161,7 @@ pbc.moduleFunctionD.get('uart')['read'] = function(py2block, func, args, keyword
 }
 
 
-pbc.moduleFunctionD.get('uart')['readline'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.moduleFunctionD.get('uart1')['readline'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
