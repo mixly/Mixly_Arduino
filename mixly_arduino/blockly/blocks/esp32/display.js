@@ -1503,3 +1503,59 @@ Blockly.Blocks.display_rgb_color = {
         this.setTooltip(Blockly.MIXLY_RGB_NUM_R_G_B);
     }
 };
+
+Blockly.Blocks.monitor_show_image_or_string = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+  this.appendValueInput('data')
+        .setCheck([String, "microbit_image"])
+        .appendField(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
+  }
+};
+
+Blockly.Blocks.monitor_scroll_string = {
+   init: function() {
+     this.setColour(Blockly.Blocks.display.HUE);
+     this.appendValueInput('data')
+         .setCheck(String)
+         .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING);
+     this.setPreviousStatement(true, null);
+     this.setNextStatement(true, null);
+     this.setInputsInline(true);
+   }
+ };
+
+ Blockly.Blocks.monitor_show_image_or_string_delay = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendValueInput('data')
+        .setCheck([String, "microbit_image"])
+        .appendField(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
+    this.appendValueInput("time")
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_DELAY);    
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
+  }
+};
+
+Blockly.Blocks.monitor_scroll_string_delay = {
+   init: function() {
+     this.setColour(Blockly.Blocks.display.HUE);
+     this.appendValueInput('data')
+         .setCheck(String)
+         .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING);
+     this.appendValueInput("time")
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_DELAY);    
+     this.setPreviousStatement(true, null);
+     this.setNextStatement(true, null);
+     this.setInputsInline(true);
+   }
+ };

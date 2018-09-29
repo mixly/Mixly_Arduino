@@ -1605,10 +1605,32 @@
         </block> -->
       </category>
       <category id="catMonitor" colour="180">
-        <block type="monitor_show_scroll_string">
+        <block type="monitor_show_image_or_string">
+          <value name="data">
+            <shadow type="pins_builtinimg"></shadow>
+          </value>
+        </block>
+        <block type="monitor_scroll_string">
           <value name="data">
             <shadow type="text">
-              <field name="TEXT">hello</field>
+              <field name="TEXT">Mixly</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="monitor_show_image_or_string_delay">
+          <value name="data">
+            <shadow type="pins_builtinimg"></shadow>
+          </value>
+          <value name="time">
+            <shadow type="math_number">
+              <field name="NUM">120</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="monitor_scroll_string_delay">
+          <value name="data">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
             </shadow>
           </value>
           <value name="time">
@@ -1617,12 +1639,7 @@
             </shadow>
           </value>
         </block>
-
-        <block type="microbit_display_show_image">
-          <value name="PIN">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>
+        
 <!--         <block type="microbit_display_show_animation">
           <value name="images">
             <shadow type="pins_imglist"></shadow>

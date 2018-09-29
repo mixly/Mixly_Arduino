@@ -522,3 +522,34 @@ Blockly.Python.monitor_blink_rate= function() {
 //     return code;
 // };
 // var color = this.getFieldValue('FIELDNAME');
+
+
+Blockly.Python.monitor_show_image_or_string = function() {
+    Blockly.Python.definitions_['import_display_*'] = 'from display import *';
+    var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
+    var code = "display.show(" + data + ")\n";
+    return code;
+}
+
+Blockly.Python.monitor_scroll_string = function() {
+     Blockly.Python.definitions_['import_display_*'] = 'from display import *';
+     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
+     var code = "display.scroll("+ data +")\n";
+     return code;
+}
+
+Blockly.Python.monitor_show_image_or_string_delay = function() {
+    Blockly.Python.definitions_['import_display_*'] = 'from display import *';
+    var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
+    var time = Blockly.Python.valueToCode(this, 'time', Blockly.Python.ORDER_ASSIGNMENT);
+    var code = "display.show(" + data + ','+ time + ")\n";
+    return code;
+}
+
+Blockly.Python.monitor_scroll_string_delay = function() {
+     Blockly.Python.definitions_['import_display_*'] = 'from display import *';
+     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
+     var time = Blockly.Python.valueToCode(this, 'time', Blockly.Python.ORDER_ASSIGNMENT);
+     var code = "display.scroll("+ data + ',' + time +")\n";
+     return code;
+}

@@ -268,7 +268,7 @@ class Display:
     def text(self,string,x,y):
         self.framebuf.text(string,x,y,1)
 
-    def show(self, data, delay=1, time=400):
+    def show(self, data, delay=200, time=400):
         self.fill(0)
         if type(data)==str:
             DISPLAY_WIDTH  = 16      # Display width in pixels.
@@ -335,7 +335,7 @@ class Display:
             sleep(time)
             display._show()
 
-    def scroll(self, data, speed):
+    def scroll(self, data, speed=120):
         DISPLAY_WIDTH  = 16      # Display width in pixels.
         DISPLAY_HEIGHT = 8       # Display height in pixels.
         # Initialize LED matrix.
