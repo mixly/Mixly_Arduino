@@ -306,7 +306,6 @@ pbc.assignD.get('Rgb')['create_block'] = function(py2block, node, targets, value
     var pinblock = py2block.convert(value.args[0]);
     pbc.pinType = null;
     var countblock = py2block.convert(value.args[1]);
-
     return block("display_rgb_init", node.lineno, {}, {
         "PIN":pinblock,
         "LEDCOUNT":countblock

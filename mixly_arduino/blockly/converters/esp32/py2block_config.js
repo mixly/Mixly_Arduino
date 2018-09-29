@@ -52,7 +52,7 @@ pbc.initIgnoreS = function(){
     }
 }
 
-pbc.initModuleAttrD = function(){
+pbc.initModuleAttrD = function(){    
 }
 
 pbc.initKnownModuleS = function(){

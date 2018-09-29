@@ -125,6 +125,8 @@ pbc.moduleFunctionD.get('uart1')['write'] = function(py2block, func, args, keywo
 }
 /*
 这个是初始化的块，但是初始化那个块参数对应的代码是1/2/0，不太理解
+*/
+
 pbc.assignD.get('UART')['check_assign'] = function (py2block, node, targets, value) {
     if (value._astname === "Call")
         return true;
@@ -141,7 +143,7 @@ pbc.assignD.get('UART')['create_block'] = function (py2block, node, targets, val
             "inline": "false",
             "@items": value.elts.length
         });
-}*/
+}
 
 pbc.moduleFunctionD.get('uart')['any'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {

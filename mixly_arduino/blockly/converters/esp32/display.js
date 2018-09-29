@@ -319,20 +319,23 @@ pbc.assignD.get('Rgb')['check_assign'] = function(py2block, node, targets, value
 
 // 存在管脚的问题
 pbc.assignD.get('Rgb')['create_block'] = function(py2block, node, targets, value){
-
-    var astname = value.args[0]._astname;
+    // var astname = value.args[0]._astname;
     //var astname1 = args[1]._astname;
-    var xblock;
-   // var yblock;
-    pbc.pinType = "pins_axis";
-    if(astname === "Call" && value.args[0].func._astname == "Name" && value.args[0].func.id.v === "Pin"){ //display.get_pixel(int(0), int(0))
-        xblock =  py2block.convert(value.args[0].args[0]);
-    }else{
-        xblock =  py2block.convert(args[0]);
-    }
-    var rgbblock=py2block.convert(targets[0])
+    // var xblock;
+    // // var yblock;
+    // pbc.pinType = "pins_axis";
+    // if(astname === "Call" && value.args[0].func._astname == "Name" 
+    //                       && value.args[0].func.id.v === "Pin"){ //display.get_pixel(int(0), int(0))
+    //     xblock =  py2block.convert(value.args[0].args[0]);
+    // }else{
+    //     xblock =  py2block.convert(args[0]);
+    // }
+    var rgbblock=py2block.convert(targets[0]);
+    pbc.inScope = "rgb_create_block";
     pbc.pinType = "pins_digital";
+    // value.args[0].args[0].n.v='pin'+value.args[0].args[0].n.v
     var pinblock = py2block.convert(value.args[0].args[0]);
+    pbc.inScope = null;
     pbc.pinType = null;
     var countblock = py2block.convert(value.args[1]);
 
