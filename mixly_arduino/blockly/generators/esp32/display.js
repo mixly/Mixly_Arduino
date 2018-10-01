@@ -406,8 +406,9 @@ Blockly.Python.group_lcd_power = function() {
 Blockly.Python.oled_init = function () {
   Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
   Blockly.Python.definitions_['import_ssd1306_*'] = 'from ssd1306 import *';
-  var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
-    Blockly.Variables.NAME_TYPE);
+  // var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
+  //   Blockly.Variables.NAME_TYPE);
+  var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
   var dropdown_pin1 = Blockly.Python.valueToCode(this, 'RX',Blockly.Python.ORDER_ATOMIC);
   var dropdown_pin2 = Blockly.Python.valueToCode(this, 'TX',Blockly.Python.ORDER_ATOMIC);
   var freq = Blockly.Python.valueToCode(this, 'freq', Blockly.Python.ORDER_ATOMIC);
@@ -418,8 +419,9 @@ Blockly.Python.oled_init = function () {
 Blockly.Python.lp2i_u8g_draw_4strings = function(){
   Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
   Blockly.Python.definitions_['import_ssd1306_*'] = 'from ssd1306 import *';
-   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
-    Blockly.Variables.NAME_TYPE);
+   // var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
+   //  Blockly.Variables.NAME_TYPE);
+   var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
    var value_text_line1 = Blockly.Python.valueToCode(this, 'Text_line1', Blockly.Python.ORDER_ASSIGNMENT) || '\'\'';
    var value_text_line2 = Blockly.Python.valueToCode(this, 'Text_line2', Blockly.Python.ORDER_ASSIGNMENT) || '\'\'';
    var value_text_line3 = Blockly.Python.valueToCode(this, 'Text_line3', Blockly.Python.ORDER_ASSIGNMENT) || '\'\'';
@@ -441,8 +443,9 @@ Blockly.Python['display_image_size'] = function() {
 Blockly.Python.display_rect=function(){
   Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
   Blockly.Python.definitions_['import_ssd1306_*'] = 'from ssd1306 import *';
-   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
-    Blockly.Variables.NAME_TYPE);
+  // var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
+  //   Blockly.Variables.NAME_TYPE);
+  var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
   var location_x = Blockly.Python.valueToCode(this, 'x', Blockly.Python.ORDER_ATOMIC);
   var location_y = Blockly.Python.valueToCode(this, 'y', Blockly.Python.ORDER_ATOMIC);
   var value_width = Blockly.Python.valueToCode(this, 'width', Blockly.Python.ORDER_ATOMIC);
@@ -467,8 +470,9 @@ Blockly.Python.display_rect=function(){
 Blockly.Python.display_line=function(){
   Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
   Blockly.Python.definitions_['import_ssd1306_*'] = 'from ssd1306 import *';
-   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
-    Blockly.Variables.NAME_TYPE);
+   // var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
+   //  Blockly.Variables.NAME_TYPE);
+  var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
   var location_x = Blockly.Python.valueToCode(this, 'x', Blockly.Python.ORDER_ATOMIC);
   var location_y = Blockly.Python.valueToCode(this, 'y', Blockly.Python.ORDER_ATOMIC);
   var value_length = Blockly.Python.valueToCode(this, 'length', Blockly.Python.ORDER_ATOMIC);
@@ -482,8 +486,9 @@ Blockly.Python.display_line=function(){
 Blockly.Python.display_line_Arbitrarily=function(){
   Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
   Blockly.Python.definitions_['import_ssd1306_*'] = 'from ssd1306 import *';
-   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
-    Blockly.Variables.NAME_TYPE);
+  // var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
+  //   Blockly.Variables.NAME_TYPE);
+  var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
   var location_x1 = Blockly.Python.valueToCode(this, 'x1', Blockly.Python.ORDER_ATOMIC);
   var location_y1= Blockly.Python.valueToCode(this, 'y1', Blockly.Python.ORDER_ATOMIC);
   var location_x2 = Blockly.Python.valueToCode(this, 'x2', Blockly.Python.ORDER_ATOMIC);

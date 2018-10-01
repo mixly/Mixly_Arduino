@@ -1806,6 +1806,11 @@
           <field name="STAT">clear()</field>
         </block> -->
         <block type="oled_init">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">lcd</field>
+            </shadow>
+          </value>
           <value name="TX">
             <shadow type="pins_digital">
               <field name="PIN">26</field>
@@ -1821,6 +1826,11 @@
           </value>
         </block>
         <block type="lp2i_u8g_draw_4strings">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">lcd</field>
+            </shadow>
+          </value>
           <value name="Text_line1">
             <shadow type="text">
               <field name="TEXT">Example1</field>
@@ -1843,6 +1853,11 @@
           </value>
         </block>
         <block type="display_rect">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">lcd</field>
+            </shadow>
+          </value>
           <value name="x">
             <shadow type="math_number">
               <field name="NUM">1</field>
@@ -1865,6 +1880,11 @@
           </value>
         </block>
         <block type="display_line">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">lcd</field>
+            </shadow>
+          </value>
           <value name="x">
             <shadow type="math_number">
               <field name="NUM">1</field>
@@ -1882,6 +1902,11 @@
           </value>
         </block>
         <block type="display_line_Arbitrarily">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">lcd</field>
+            </shadow>
+          </value>
           <value name="x1">
             <shadow type="math_number">
               <field name="NUM">0</field>

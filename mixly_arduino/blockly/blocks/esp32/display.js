@@ -1236,10 +1236,13 @@ Blockly.Blocks.group_lcd_power = {
 Blockly.Blocks['oled_init'] = {
   init: function() {
    this.setColour(Blockly.Blocks.display.HUE);
+   this.appendValueInput('VAR')
+            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .setCheck("var");
    this.appendValueInput("RX", Number)
        //.appendField(Blockly.MIXLY_SETUP)
-       .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
-       .appendField(new Blockly.FieldTextInput('lcd'), 'VAR')  
+       // .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+       // .appendField(new Blockly.FieldTextInput('lcd'), 'VAR')  
        .appendField(Blockly.MIXLY_SETUP)
        .appendField("sda")
        .setCheck(Number)
@@ -1261,15 +1264,18 @@ Blockly.Blocks['oled_init'] = {
 
 Blockly.Blocks.lp2i_u8g_draw_4strings = {
     init: function() {
-        this.appendDummyInput()
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+        // this.appendDummyInput()
+        //     .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
         // this.appendDummyInput("")        
-            .appendField(new Blockly.FieldTextInput('lcd'), 'VAR')  
+            // .appendField(new Blockly.FieldTextInput('lcd'), 'VAR')  
             // .appendField(Blockly.Msg.OLEDDISPLAY);  
         //.appendField(new Blockly.FieldImage(Blockly.pathToBlockly + 'blocks/display-oled-128x64-i2c/display-oled-128x64-i2c.jpg', Blockly.Arduino.imageSize, Blockly.Arduino.imageSize));
+        this.appendValueInput('VAR')
+            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .setCheck("var");
         this.appendValueInput("Text_line1" , 'String')
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.OLEDDISPLAY+"    "+Blockly.Msg.line1);    
+            .appendField(Blockly.Msg.OLEDDISPLAY+Blockly.Msg.line1);    
         this.appendValueInput("Text_line2" , 'String')
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField(Blockly.Msg.line2);      
@@ -1324,9 +1330,12 @@ Blockly.Blocks.display_rect = {
          [Blockly.LUXE_LED_OFF, '0']
         ];
         this.setColour(Blockly.Blocks.display.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)         
-            .appendField(new Blockly.FieldTextInput('lcd'), 'VAR') 
+        // this.appendDummyInput()
+        //     .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)         
+        //     .appendField(new Blockly.FieldTextInput('lcd'), 'VAR') 
+         this.appendValueInput('VAR')
+            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .setCheck("var");
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_RECT)   
             .appendField(new Blockly.FieldDropdown(brightness_or_not), 'OP')  
@@ -1373,9 +1382,12 @@ Blockly.Blocks.display_rect = {
 Blockly.Blocks.display_line = {
     init: function () {
         this.setColour(Blockly.Blocks.display.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)         
-            .appendField(new Blockly.FieldTextInput('lcd'), 'VAR') 
+        // this.appendDummyInput()
+        //     .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)         
+        //     .appendField(new Blockly.FieldTextInput('lcd'), 'VAR') 
+          this.appendValueInput('VAR')
+            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .setCheck("var");
          // this.appendValueInput("PIN", Number)
          //    .setCheck(Number)
          //    .setAlign(Blockly.ALIGN_RIGHT)
@@ -1409,9 +1421,12 @@ Blockly.Blocks.display_line = {
 Blockly.Blocks.display_line_Arbitrarily= {
     init: function () {
         this.setColour(Blockly.Blocks.display.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)         
-            .appendField(new Blockly.FieldTextInput('lcd'), 'VAR') 
+        // this.appendDummyInput()
+        //     .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)         
+        //     .appendField(new Blockly.FieldTextInput('lcd'), 'VAR') 
+        this.appendValueInput('VAR')
+            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .setCheck("var");
          // this.appendValueInput("PIN", Number)
          //    .setCheck(Number)
          //    .setAlign(Blockly.ALIGN_RIGHT)
