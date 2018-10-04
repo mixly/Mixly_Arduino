@@ -16,7 +16,7 @@ Blockly.Python.inout_digital_write = function () {
     var dropdown_stat = Blockly.Python.valueToCode(this, 'STAT', Blockly.Python.ORDER_ATOMIC);
     var code = "";
     // code += 'pins.digitalWritePin(' + dropdown_pin + ',' + dropdown_stat + ')\n'
-    code += 'p'+ dropdown_pin +'.value('+ dropdown_stat +')\n'
+    code += dropdown_pin +'.value('+ dropdown_stat +')\n'
     return code;
 };
 // ok
@@ -24,7 +24,7 @@ Blockly.Python.inout_digital_read = function () {
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var code = "";
-    code = 'p' + dropdown_pin + '.value()';
+    code = dropdown_pin + '.value()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 //ok
@@ -88,7 +88,7 @@ Blockly.Python.inout_pinMode = function () {
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var dropdown_mode = this.getFieldValue('MODE');
-    var code = 'p' + dropdown_pin +' = Pin(' + dropdown_pin + ', '+ dropdown_mode +')\n';
+    var code =  'p'+ dropdown_pin +' = Pin(' + dropdown_pin + ', '+ dropdown_mode +')\n';
     return code;
 };
 
