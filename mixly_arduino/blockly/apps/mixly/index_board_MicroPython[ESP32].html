@@ -12,7 +12,7 @@
   <script src="../../generators/esp32/python.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
   <script type="text/javascript" src="drag.js"></script>
-  <script type="text/javascript" src="code.js"></script> 
+  <script type="text/javascript" src="code.js"></script>
   <!---from BlocklyDuino-->
   <script type="text/javascript" src="Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
@@ -44,7 +44,7 @@
   <script src="../../blocks/esp32/factory.js"></script>
   <script src="../../blocks/python/tuple.js"></script>
   <script src="../../blocks/python/set.js"></script>
-  
+
   <!-- generator file -->
   <script src="../../generators/esp32/pins.js"></script>
   <script src="../../generators/esp32/inout.js"></script>
@@ -75,10 +75,12 @@
   <script src="../../generators/python/utility.js"></script>
   <script src="./js/py2block_editor.js" type="application/javascript"></script>
   <script src="../../converters/esp32/py2block_config.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/inout.js" type="application/javascript"></script>
   <script src="../../converters/esp32/serial.js" type="application/javascript"></script>
   <script src="../../converters/esp32/communicate.js" type="application/javascript"></script>
   <script src="../../converters/esp32/display.js" type="application/javascript"></script>
   <script src="../../converters/esp32/actuator.js" type="application/javascript"></script>
+
   <script src="../../converters/python/control.js" type="application/javascript"></script>
   <script src="../../converters/python/math.js" type="application/javascript"></script>
   <script src="../../converters/python/logic.js" type="application/javascript"></script>
@@ -328,7 +330,7 @@
     	  //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
           editor_side_code.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
     	}
-    	
+
       auto_save_and_restore_blocks();
       //load from url parameter (single param)
       //http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
@@ -614,12 +616,12 @@
           </shadow>
         </value>
         <statement name="DO">
-                  <shadow type="IO_print_inline"> 
+                  <shadow type="IO_print_inline">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
-              </value>   
+              </value>
         </shadow>
         </statement>
       </block>
@@ -1373,14 +1375,14 @@
             </shadow>
           </value>
         </block>
-      </category>     
+      </category>
       <category id="catSerialPort" colour="65">
-        <block type="IO_print_inline"> 
+        <block type="IO_print_inline">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
-              </value>   
+              </value>
         </block>
         <block type="IO_print">
               <value name="VAR">
@@ -1402,21 +1404,21 @@
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
-              </value> 
+              </value>
         </block>
         <block type="serial_println">
               <value name="CONTENT">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
-              </value> 
+              </value>
         </block>
         <block type="serial_print_hex">
               <value name="CONTENT">
                   <shadow type="math_number">
                       <field name="NUM">0XFF00FF</field>
                   </shadow>
-              </value>           
+              </value>
         </block>
         <block type="serial_any"></block>
         <block type="serial_readstr"></block>
@@ -1533,7 +1535,7 @@
                   </shadow>
               </value>
           </block>
-                  
+
         <block type="sensor_use_i2c_init">
           <value name="SUB">
             <shadow type="variables_get">
@@ -1682,7 +1684,7 @@
               <field name="TEXT">#115DOWWWW</field>
             </shadow>
           </value>
-        </block> 
+        </block>
         <block type="speech_prenounce_easy">
           <value name="VAR">
             <shadow type="text">
