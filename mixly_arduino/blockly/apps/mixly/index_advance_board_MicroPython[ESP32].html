@@ -1329,10 +1329,33 @@
         </block> -->
       </category>
       <category id="catEthernet" colour="0">
-        <block type="network_init"></block>
-        <block type="network_open"></block>
-        <block type="network_scan"></block>
+        <block type="network_init">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">wlan</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="network_open">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">wlan</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="network_scan">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">wlan</field>
+            </shadow>
+          </value>
+        </block>
         <block type="network_connect">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">wlan</field>
+            </shadow>
+          </value>
           <value name="id">
             <shadow type="text">
               <field name="TEXT">127.16.0.8</field>
@@ -1344,11 +1367,40 @@
             </shadow>
           </value>
         </block>
-        <block type="network_wifi_connect"></block>
-        <block type="network_get_connect"></block>
-        <block type="network_stop"></block>
-        <block type="network_get_wifi"></block>
+        <block type="network_wifi_connect">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">wlan</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="network_get_connect">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">wlan</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="network_stop">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">wlan</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="network_get_wifi">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">ap</field>
+            </shadow>
+          </value>
+        </block>
         <block type="network_ap_connect">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">ap</field>
+            </shadow>
+          </value>
           <value name="essid">
             <shadow type="text">
               <field name="TEXT">127.16.0.8</field>
@@ -1360,7 +1412,13 @@
             </shadow>
           </value>
         </block>
-        <block type="network_server"></block>
+        <block type="network_server">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">wlan</field>
+            </shadow>
+          </value>
+        </block>
       </category>
       <category id="catIot" colour="225">
 
