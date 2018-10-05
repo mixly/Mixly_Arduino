@@ -104,7 +104,7 @@ Blockly.Python.network_init= function() {
 
 // Blockly.Python.network_connect= function() {
 //     Blockly.Python.definitions_['import_network'] = "import network";
-//     Blockly.Python.setups_['class_wlan'] ='wlan.active(True)\n';
+//     // Blockly.Python.setups_['class_wlan'] ='wlan.active(True)\n';
 //     var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
 //     var id = Blockly.Python.valueToCode(this, 'id', Blockly.Python.ORDER_ATOMIC);
 //     var password = Blockly.Python.valueToCode(this, 'password', Blockly.Python.ORDER_ATOMIC);
@@ -116,7 +116,7 @@ Blockly.Python.network_init= function() {
 
 Blockly.Python.network_connect= function() {
     Blockly.Python.definitions_['import_network'] = "import network";
-    Blockly.Python.setups_['class_wlan'] ='wlan.active(True)\n';
+    // Blockly.Python.setups_['class_wlan'] ='wlan.active(True)\n';
     var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var id = Blockly.Python.valueToCode(this, 'id', Blockly.Python.ORDER_ATOMIC);
     var password = Blockly.Python.valueToCode(this, 'password', Blockly.Python.ORDER_ATOMIC);

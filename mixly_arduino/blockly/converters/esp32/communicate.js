@@ -104,7 +104,7 @@ pbc.assignD.get('network')['create_block'] = function(py2block, node, targets, v
 }
 
 
-pbc.objectFunctionD.get('active')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('active')['network'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -120,7 +120,7 @@ pbc.objectFunctionD.get('active')['monitor'] = function (py2block, func, args, k
         })];
 }
 
-pbc.objectFunctionD.get('isconnected')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('isconnected')['network'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -132,7 +132,7 @@ pbc.objectFunctionD.get('isconnected')['monitor'] = function (py2block, func, ar
         })];
 }
 
-pbc.objectFunctionD.get('disconnect')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('disconnect')['network'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -144,16 +144,55 @@ pbc.objectFunctionD.get('disconnect')['monitor'] = function (py2block, func, arg
         })];
 }
 
-pbc.objectFunctionD.get('config')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length != 1) {
-        throw new Error("Incorrect number of arguments");
-    }
-    var objblock = py2block.convert(func.value);
+pbc.objectFunctionD.get('config')['network'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length == 0 & keywords.length == 2){ 
+         var objblock = py2block.convert(func.value);
+        var essidblock = null;
+        var channelblock = null;
+        for (var i = 0; i < keywords.length; i++) {
+            var param = keywords[i];
+            var key = py2block.identifier(param.arg);
+            if (key === "essid") {
+                essidblock = py2block.convert(param.value);
+            } else if (key === "channel") {
+                channelblock = py2block.convert(param.value);
+            } 
+        }
+        if (essidblock != null  && channelblock != null ) {
+            return [block("network_ap_connect", func.lineno, {}, {
+                "VAR":objblock,
+                "essid": essidblock,
+                "channel": channelblock,
+            }, {
+                "inline": "true"
+            })];
+        }
+    }else if(args.length == 1) {
+       var objblock = py2block.convert(func.value);
     var argblock = py2block.Str_value(args[0]);
     return [block("network_get_wifi", func.lineno, {
         "op":argblock,
     }, {
             "VAR":objblock,
+        }, {
+            "inline": "true"
+        })];
+    }else{
+        throw new Error("Incorrect number of arguments");
+    }
+}
+
+pbc.objectFunctionD.get('connect')['network'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var idblock = py2block.convert(args[0]);
+    var passwordblock = py2block.convert(args[1]);
+    return [block("network_connect", func.lineno, {}, {
+            "VAR":objblock,
+            "id":idblock,
+            "password":passwordblock,
         }, {
             "inline": "true"
         })];
