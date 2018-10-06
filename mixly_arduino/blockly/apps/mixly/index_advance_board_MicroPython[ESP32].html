@@ -1419,6 +1419,52 @@
             </shadow>
           </value>
         </block>
+        <block type="controls_if">
+          <value name="IF0">
+            <shadow type="logic_negate">
+              <value name="BOOL">
+                <shadow type="network_wifi_connect">
+                  <value name="VAR">
+                    <shadow type="variables_get">
+                      <field name="VAR">wlan</field>
+                    </shadow>
+                  </value>
+                </shadow>
+              </value>
+            </shadow>
+          </value>
+          <statement name="DO0">
+            <shadow type="network_connect"> 
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">wlan</field>
+                </shadow>
+               </value>
+               <value name="id">
+                 <shadow type="text">
+                   <field name="TEXT">127.16.0.8</field>
+                  </shadow>
+                </value>
+                <value name="password">
+                  <shadow type="text">
+                    <field name="TEXT">01234567</field>
+                  </shadow>
+                </value>
+              </shadow>
+            <shadow type="controls_whileUntil">
+              <field name="MODE">UNTIL</field>
+              <value name="BOOL">
+                <shadow type="network_wifi_connect">
+                  <value name="VAR">
+                    <shadow type="variables_get">
+                      <field name="VAR">wlan</field>
+                    </shadow>
+                  </value>
+                </shadow>
+              </value>
+            </shadow>
+        </statement>
+      </block>
       </category>
       <category id="catIot" colour="225">
 
