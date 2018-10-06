@@ -1289,7 +1289,7 @@
         </block>
         <block type="i2c_master_reader2"></block>
         <block type="i2c_available"></block>
-        <block type="bluetooth_setup">
+   <!--      <block type="bluetooth_setup">
           <value name="man">
             <shadow type="text">
               <field name="TEXT"></field>
@@ -1314,7 +1314,7 @@
             </shadow>
           </value>
         </block>
- <!--       <block type="i2c_slave_onreceive">
+       <block type="i2c_slave_onreceive">
           <value name="PIN">
           <shadow type="pins_digital"></shadow>
         </value>
@@ -1536,99 +1536,168 @@
           <block type="iot_checkonenet"></block>
       </category>
       <category id="catSensor" colour="40">
-        <block type="HCSR04">
-                <value name="PIN1">
-                    <shadow type="pins_digital">
-                    </shadow>
-                </value>
-                <value name="PIN2">
-                    <shadow type="pins_digital">
-                       <field name="PIN">4</field>
-                    </shadow>
-                </value>
-            </block>
-            <block type="dht11">
-                <value name="PIN">
-                    <shadow type="pins_digital"></shadow>
-                </value>
-            </block>
-         <block type="sensor_button_is_pressed">
+        <block type="sensor_button_is_pressed">
           <value name="btn">
             <shadow type="pins_button">
             </shadow>
           </value>
-        </block> 
+        </block>
         <block type="sensor_button_was_pressed">
           <value name="btn">
             <shadow type="pins_button">
             </shadow>
           </value>
         </block>
-<!--        <block type="sensor_button_get_presses">
+        <block type="sensor_button_get_presses">
           <value name="btn">
             <shadow type="pins_button">
             </shadow>
           </value>
-        </block>-->
-        <block type="controls_attachGestureInterrupt"></block>
-        <block type="controls_attachGestureInterrupt2"></block>
-        <block type="controls_GestureLists"></block>
-        <block type="sensor_get_acceleration"></block>
-        <!--<block type="sensor_get_gestures"></block>
-        <block type="sensor_calibrate_compass"></block>
-        <block type="sensor_is_compass_calibrated"></block>-->
-        <block type="sensor_field_strength"></block>
-        <!--<block type="sensor_compass_reset"></block>
-        <block type="sensor_temperature"></block>
-        <block type="sensor_distance_hrsc04"></block>
-        <block type="DS1307_init">
-          <value name="SDA">
-            <shadow type="pins_digital">
-              <field name="PIN">2</field>
-            </shadow>
-          </value>
-          <value name="SCL">
-            <shadow type="pins_digital">
-              <field name="PIN">3</field>
+        </block>
+        <block type="sensor_pin_pressed">
+          <value name="button">
+          <shadow type="number1">
+          </shadow>
+        </value>
+        </block>
+        <block type="sensor_pin_near"></block>
+        <block type="sensor_light"></block>
+        <block type="sensor_sound"></block>
+        <block type="sensor_rtc_init">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">rtc</field>
             </shadow>
           </value>
         </block>
-        <block type="RTC_get_time"></block>
-        <block type="RTC_set_time">
-          <value name="hour">
-            <shadow type="math_number">
-              <field name="NUM">8</field>
-            </shadow>
-          </value>
-          <value name="minute">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="second">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
+        <block type="RTC_get_time">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">rtc</field>
             </shadow>
           </value>
         </block>
-        <block type="RTC_set_date">
-          <value name="year">
-            <shadow type="math_number">
-              <field name="NUM">2000</field>
+        <block type="RTC_set_datetime">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">rtc</field>
             </shadow>
           </value>
-          <value name="month">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
+            <value name="year">
+                <shadow type="math_number">
+                  <field name="NUM">2018</field>
+                </shadow>
+              </value>
+            <value name="month">
+                  <shadow type="math_number">
+                      <field name="NUM">9</field>
+                  </shadow>
+              </value>
+              <value name="day">
+                  <shadow type="math_number">
+                      <field name="NUM">14</field>
+                  </shadow>
+              </value>
+              <value name="weekday">
+                  <shadow type="math_number">
+                      <field name="NUM">5</field>
+                  </shadow>
+              </value>
+              <value name="hour">
+                  <shadow type="math_number">
+                      <field name="NUM">14</field>
+                  </shadow>
+              </value>
+              <value name="minute">
+                  <shadow type="math_number">
+                      <field name="NUM">20</field>
+                  </shadow>
+              </value>
+              <value name="second">
+                  <shadow type="math_number">
+                      <field name="NUM">45</field>
+                  </shadow>
+              </value>
+              <value name="millisecond">
+                  <shadow type="math_number">
+                      <field name="NUM">0</field>
+                  </shadow>
+              </value>
+          </block>
+
+        <block type="sensor_use_i2c_init">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mpu</field>
             </shadow>
           </value>
-          <value name="day">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
+          <value name="I2CSUB">
+            <shadow type="variables_get">
+              <field name="VAR">i2c</field>
             </shadow>
           </value>
-        </block> -->
-        <!-- <block type="controls_pin_attachInterrupt"></block> -->
+        </block>
+        <block type="controls_attachGestureInterrupt">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="controls_attachGestureInterrupt2">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_get_acceleration">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_field_strength">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_temperature">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_bmp">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">bmp</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_sht">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">sht</field>
+            </shadow>
+          </value>
+        </block>
+       <block type="HCSR04">
+          <value name="PIN1">
+              <shadow type="pins_digital">
+              </shadow>
+          </value>
+          <value name="PIN2">
+              <shadow type="pins_digital">
+                 <field name="PIN">4</field>
+              </shadow>
+          </value>
+        </block>
+
       </category>
       <category id="catActuator" colour="100">
         <block type="servo_move">
@@ -1646,87 +1715,69 @@
             </shadow>
           </value>
         </block>
+        <block type="led_bright">
+           <value name="led">
+          <shadow type="number">
+          </shadow>
+        </value>
+        </block>
+        <block type="led_brightness">
+           <value name="led">
+          <shadow type="number">
+          </shadow>
+        </value>
+        <value name="bright">
+          <shadow type="math_number">
+          <field name="NUM">1023</field>
+          </shadow>
+        </value>
+        </block>
+        <!-- <block type="esp32_music_play">
+          <value name="pitch">
+            <shadow type="pins_tone_notes"></shadow>
+          </value>
+        </block>
+         <block type="esp32_music_deinit"></block> -->
         <block type="esp32_music_pitch">
           <value name="PIN">
-            <shadow type="pins_pwm"></shadow>
-          </value>
-          <value name="pitch">
-            <shadow type="pins_tone_notes"></shadow>
-          </value>
-        </block>
- <!--        <block type="esp32_music_pitch_delay">
-          <value name="PIN">
-            <shadow type="pins_pwm"></shadow>
-          </value>
-          <value name="pitch">
-            <shadow type="pins_tone_notes"></shadow>
-          </value>
-          <value name="duration">
-            <shadow type="math_number">
-              <field name="NUM">500</field>
+            <shadow type="pins_pwm">
+              <field name="PIN">27</field>
             </shadow>
           </value>
-        </block>
-        <block type="esp32_music_play_built_in">
-          <value name="PIN">
-            <shadow type="pins_pwm"></shadow>
+          <value name="pitch">
+            <shadow type="pins_tone_notes"></shadow>
           </value>
         </block>
-        <block type="esp32_music_play_list_of_notes">
+<!--         <block type="esp32_music_play_built_in_easy">
           <value name="PIN">
             <shadow type="pins_pwm"></shadow>
           </value>
         </block> -->
         <block type="esp32_music_stop">
           <value name="PIN">
-            <shadow type="pins_pwm"></shadow>
-          </value>
-        </block>
-       <!--  <block type="esp32_music_reset"></block>
-        <block type="esp32_music_get_tempo"></block>
-        <block type="tone_set_tempo">
-          <value name="TICKS">
-            <shadow type="math_number">
-              <field name="NUM">4</field>
-            </shadow>
-          </value>
-          <value name="BPM">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
+            <shadow type="pins_pwm">
+              <field name="PIN">27</field>
             </shadow>
           </value>
         </block>
-        <block type="speech_translate">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="speech_say">
+<!--         <block type="speech_say_easy">
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">Mixly 0.997 is great!</field>
             </shadow>
           </value>
-          <value name="pitch">
-            <shadow type="math_number">
-              <field name="NUM">64</field>
+        </block>
+        <block type="speech_sing_easy">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">#115DOWWWW</field>
             </shadow>
           </value>
-          <value name="speed">
-            <shadow type="math_number">
-              <field name="NUM">72</field>
-            </shadow>
-          </value>
-          <value name="mouth">
-            <shadow type="math_number">
-              <field name="NUM">128</field>
-            </shadow>
-          </value>
-          <value name="throat">
-            <shadow type="math_number">
-              <field name="NUM">128</field>
+        </block>
+        <block type="speech_prenounce_easy">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">/HEH5EH4EH3EH2EH2EH3EH4EH5EHLP.</field>
             </shadow>
           </value>
         </block> -->
@@ -1744,20 +1795,10 @@
             </shadow>
           </value>
         </block>
-        <block type="monitor_show_image_or_string_delay">
-          <value name="data">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-          <value name="time">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="monitor_scroll_string_delay">
+       <!-- <block type="monitor_show_scroll_string">
           <value name="data">
             <shadow type="text">
-              <field name="TEXT">Mixly</field>
+              <field name="TEXT">hello</field>
             </shadow>
           </value>
           <value name="time">
@@ -1766,43 +1807,21 @@
             </shadow>
           </value>
         </block>
-        
-<!--         <block type="esp32_display_show_animation">
-          <value name="images">
-            <shadow type="pins_imglist"></shadow>
+        <block type="esp32_display_show_image">
+          <value name="PIN">
+            <shadow type="pins_builtinimg"></shadow>
           </value>
-          <value name="delay">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
-            </shadow>
-          </value>
-        </block> -->
+        </block>-->
         <block type="esp32_image_create"></block>
-        <!-- <block type="display_image_size">
-          <value name="VAR">
+        <block type="esp32_image_builtins"></block>
+        <block type="image_arithmetic">
+          <value name="A">
+            <shadow type="pins_builtinimg"></shadow>
+          </value>>
+          <value name="B">
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>
-        <block type="image_shift">
-          <value name="val">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="img">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>
-        <block type="esp32_image_copy">
-          <value name="image">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>
-        <block type="esp32_image_invert">
-          <value name="image">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block> -->
         <block type="monitor_get_pixel">
           <value name="x">
             <shadow type="pins_exlcdh"></shadow>
@@ -1832,35 +1851,36 @@
             </shadow>
           </value>
         </block>
-        <block type="esp32_image_builtins"></block>
-        <block type="image_arithmetic">
-          <value name="A">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>>
-          <value name="B">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>
-<!--         <block type="esp32_display_on"></block>
-        <block type="esp32_display_is_on"></block> -->
         <block type="esp32_display_clear"></block>
         <block type="display_rgb_init">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">rgb</field>
+            </shadow>
+          </value>
           <value name="PIN">
-            <shadow type="pins_digital" />
+            <shadow type="pins_digital">
+              <field name="PIN">p2</field>
+            </shadow>
           </value>
           <value name="LEDCOUNT">
             <shadow type="math_number">
-              <field name="NUM">4</field>
+              <field name="NUM">2</field>
             </shadow>
           </value>
         </block>
         <block type="display_rgb">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">rgb</field>
+            </shadow>
+          </value>
           <value name="PIN">
             <shadow type="pins_digital" />
           </value>
           <value name="_LED_">
             <shadow type="math_number">
-              <field name="NUM">1</field>
+              <field name="NUM">0</field>
             </shadow>
           </value>
           <value name="RVALUE">
@@ -1879,57 +1899,13 @@
             </shadow>
           </value>
         </block>
-<!--         <block type="esp32_display_show_string">
-          <value name="images">
-            <shadow type="text">
-              <field name="TEXT">hello</field>
-            </shadow>
-          </value>
-          <value name="delay">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
+        <block type="display_rgb_write">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">rgb</field>
             </shadow>
           </value>
         </block>
-        <block type="group_lcd_init">
-          <value name="device">
-            <shadow type="math_number">
-              <field name="NUM">0x27</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="group_lcd_print">
-          <value name="TEXT">
-            <shadow type="text">
-              <field name="TEXT"></field>
-            </shadow>
-          </value>
-          <value name="TEXT2">
-            <shadow type="text">
-              <field name="TEXT"></field>
-            </shadow>
-          </value>
-        </block>
-        <block type="group_lcd_print2">
-          <value name="row">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="column">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="TEXT">
-            <shadow type="text">
-              <field name="TEXT"></field>
-            </shadow> 
-          </value>
-        </block>
-        <block type="group_lcd_power">
-          <field name="STAT">clear()</field>
-        </block> -->
         <block type="oled_init">
           <value name="VAR">
             <shadow type="variables_get">
