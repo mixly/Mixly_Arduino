@@ -81,7 +81,7 @@ Blockly.Blocks['pins_builtinimg'] = {
         this.setColour(Blockly.Blocks.pins.HUE);
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown(profile.default.builtinimg), 'PIN');
-        this.setOutput(true, "microbit_image");
+        this.setOutput(true, "esp32_image");
     }
 };
 

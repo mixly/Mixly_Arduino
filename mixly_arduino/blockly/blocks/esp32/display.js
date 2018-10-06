@@ -131,7 +131,7 @@ Blockly.Blocks.microbit_display_show_image = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendValueInput('PIN',String)
-        .setCheck("microbit_image")
+        .setCheck("esp32_image")
         .appendField(Blockly.MIXLY_MICROBIT_Show_image);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -282,7 +282,7 @@ Blockly.Blocks['microbit_image_builtins'] = {
           "type" : "field_dropdown"
         }
       ],
-      "output" : ["microbit_image", "List"],
+      "output" : ["esp32_image", "List"],
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/image.html#attributes",
       "tooltip" : Blockly.MIXLY_MICROBIT_Built_in_image1,
       "message0" : Blockly.MIXLY_MICROBIT_Built_in_image
@@ -295,12 +295,12 @@ Blockly.Blocks['microbit_image_copy'] = {
     this.jsonInit({
       "colour" : Blockly.Blocks.display.HUE,
       "args0" : [{
-          "check" : ["microbit_image", "List", String],
+          "check" : ["esp32_image", "List", String],
           "type" : "input_value",
           "name" : "image"
         }
       ],
-      "output" : "microbit_image",
+      "output" : "esp32_image",
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/image.html#microbit.Image.copy",
       "message0" : Blockly.MIXLY_MICROBIT_Copy_image
     });
@@ -313,12 +313,12 @@ Blockly.Blocks['microbit_image_invert'] = {
     this.jsonInit({
       "colour" : Blockly.Blocks.display.HUE,
       "args0" : [{
-          "check" : ["microbit_image", "List", String],
+          "check" : ["esp32_image", "List", String],
           "type" : "input_value",
           "name" : "image"
         }
       ],
-      "output" : "microbit_image",
+      "output" : "esp32_image",
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/image.html#microbit.Image.invert",
       "message0" : Blockly.MIXLY_MICROBIT_Invert_image
     });
@@ -860,7 +860,7 @@ Blockly.Blocks['microbit_image_create'] = {
           "name" : "7f"
         }
       ],
-      "output" : "microbit_image",
+      "output" : "esp32_image",
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/image.html#microbit.Image",
       "message0" : Blockly.MIXLY_ESP32_Create_image
     });
@@ -985,7 +985,7 @@ Blockly.Blocks['image_shift'] = {
     this.setInputsInline(true);
     this.appendValueInput('img')
         .appendField(Blockly.Msg.DISPLAY_IMAGE_LET)
-        .setCheck(["microbit_image","List",String]);
+        .setCheck(["esp32_image","List",String]);
     this.appendDummyInput('')
         .appendField(Blockly.Msg.DISPLAY_IMAGE_LET2)
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
@@ -1018,12 +1018,12 @@ Blockly.Blocks['image_arithmetic'] = {
          [Blockly.MICROBIT_DISPLAY_MINUS, '-']];
     //this.setHelpUrl(Blockly.Msg.MATH_ARITHMETIC_HELPURL);
     this.setColour(Blockly.Blocks.display.HUE);
-    this.setOutput(true, "microbit_image");
+    this.setOutput(true, "esp32_image");
     this.appendValueInput('A')
-        // .setCheck(["microbit_image", "List", String])
+        // .setCheck(["esp32_image", "List", String])
         .appendField(Blockly.MICROBIT_DISPLAY_MERGE_SHAPE);
     this.appendValueInput('B')
-        // .setCheck(["microbit_image", "List", String])
+        // .setCheck(["esp32_image", "List", String])
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
     this.setInputsInline(true);
     var thisBlock = this;
@@ -1303,7 +1303,7 @@ Blockly.Blocks['display_image_size'] = {
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET+Blockly.MIXLY_MICROBIT_IMAGE);
     this.appendValueInput('VAR')
-        .setCheck("microbit_image")
+        .setCheck("esp32_image")
         // .appendField(Blockly.blockpy_USE_LIST);   
     this.appendDummyInput("")
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
@@ -1523,7 +1523,7 @@ Blockly.Blocks.monitor_show_image_or_string = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
   this.appendValueInput('data')
-        .setCheck([String, "microbit_image"])
+        .setCheck([String, "esp32_image"])
         .appendField(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -1548,7 +1548,7 @@ Blockly.Blocks.monitor_scroll_string = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendValueInput('data')
-        .setCheck([String, "microbit_image"])
+        .setCheck([String, "esp32_image"])
         .appendField(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
     this.appendValueInput("time")
         .setCheck(Number)
