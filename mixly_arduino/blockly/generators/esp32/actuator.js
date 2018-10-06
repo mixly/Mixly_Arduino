@@ -3,7 +3,7 @@
 goog.provide('Blockly.Python.actuator');
 goog.require('Blockly.Python');
 
-Blockly.Python.microbit_music_play_built_in = function(block) {
+Blockly.Python.esp32_music_play_built_in = function(block) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_music'] = 'import music';
   var dropdown_melody = block.getFieldValue('melody');
@@ -14,7 +14,7 @@ Blockly.Python.microbit_music_play_built_in = function(block) {
   return code;
 };
 
-Blockly.Python.microbit_music_play_built_in_easy = function(block) {
+Blockly.Python.esp32_music_play_built_in_easy = function(block) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_music'] = 'import music';
   var dropdown_melody = block.getFieldValue('melody');
@@ -23,7 +23,7 @@ Blockly.Python.microbit_music_play_built_in_easy = function(block) {
   return code;
 };
 
-Blockly.Python.microbit_music_pitch_delay = function(block) {
+Blockly.Python.esp32_music_pitch_delay = function(block) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_music'] = 'import music';
   Blockly.Python.definitions_['import_math'] = 'import math';
@@ -35,18 +35,18 @@ Blockly.Python.microbit_music_pitch_delay = function(block) {
   return code;
 };
 
-Blockly.Python.microbit_music_pitch = function(block) {
-  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+Blockly.Python.esp32_music_pitch = function(block) {
+  //Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
   Blockly.Python.definitions_['import_music'] = 'import music';
   Blockly.Python.definitions_['import_math'] = 'import math';
   var number_pitch = Blockly.Python.valueToCode(block, 'pitch', Blockly.Python.ORDER_ATOMIC);
   // var number_duration = Blockly.Python.valueToCode(block, 'duration', Blockly.Python.ORDER_ATOMIC);
   var pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_ATOMIC);
-  var code = 'music.pitch(round(' + number_pitch + '), pin' + pin + ')\n';
+  var code = 'music.pitch(round(' + number_pitch + '), pwm' + pin + ')\n';
   return code;
 };
 
-Blockly.Python.microbit_music_play_list_of_notes = function(block) {
+Blockly.Python.esp32_music_play_list_of_notes = function(block) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_music'] = 'import music';
   var pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_ATOMIC);
@@ -59,22 +59,22 @@ Blockly.Python.microbit_music_play_list_of_notes = function(block) {
 
 
 
-Blockly.Python.microbit_music_reset = function(block) {
+Blockly.Python.esp32_music_reset = function(block) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_music'] = 'import music';
   var code = 'music.reset()\n';
   return code;
 };
 
-Blockly.Python.microbit_music_stop = function(block) {
+Blockly.Python.esp32_music_stop = function(block) {
   Blockly.Python.definitions_['import_music'] = 'import music';
   var pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_ATOMIC);
   //Blockly.Python.setups_['music'+pin] ='music'+pin+'.pwm(Pin('+pin+'))\n'+'music'+pin+'.duty(512)\n';
-  var code = 'music.stop(pin'+pin+')\n';
+  var code = 'music.stop(pwm'+pin+')\n';
   return code;
 };
 
-Blockly.Python.microbit_music_get_tempo = function(block) {
+Blockly.Python.esp32_music_get_tempo = function(block) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_music'] = 'import music';
   var code = 'music.get_tempo()';
@@ -161,7 +161,7 @@ Blockly.Python.speech_prenounce_easy=function(){
 };
 
 Blockly.Python.servo_move = function() {
-  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+   //Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
   var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN',Blockly.Python.ORDER_ATOMIC);
   var value_degree = Blockly.Python.valueToCode(this, 'DEGREE', Blockly.Python.ORDER_ATOMIC);
   //Blockly.Python.definitions_['import_machine_PWM'] = "from machine import PWM";
@@ -196,7 +196,7 @@ Blockly.Python.light = function () {
 };
 
 Blockly.Python.led_bright= function() {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+     //Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var op = Blockly.Python.valueToCode(this,'led', Blockly.Python.ORDER_ATOMIC);
     var flag = this.getFieldValue('bright');
     // var flag = Blockly.Python.valueToCode(this,'bright', Blockly.Python.ORDER_ATOMIC);
@@ -205,23 +205,23 @@ Blockly.Python.led_bright= function() {
 };
 
 Blockly.Python.led_brightness= function() {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+     //Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var op = Blockly.Python.valueToCode(this,'led', Blockly.Python.ORDER_ATOMIC);
     var flag = Blockly.Python.valueToCode(this,'bright', Blockly.Python.ORDER_ATOMIC);
     var code = 'led'+op+'.value('+flag+')\n';
     return code;
 };
 
-Blockly.Python.microbit_music_play = function(block) {
-  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+Blockly.Python.esp32_music_play = function(block) {
+   //Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
   var number_pitch = Blockly.Python.valueToCode(block, 'pitch', Blockly.Python.ORDER_ATOMIC);
   // var number_duration = Blockly.Python.valueToCode(block, 'duration', Blockly.Python.ORDER_ATOMIC);
   var code = 'music.play()\n';
   return code;
 };
 
-Blockly.Python.microbit_music_deinit = function(block) {
-  Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+Blockly.Python.esp32_music_deinit = function(block) {
+   //Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
   var code = 'music.stop()\n';
   return code;
 };

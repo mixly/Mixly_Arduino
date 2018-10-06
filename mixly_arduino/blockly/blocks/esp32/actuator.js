@@ -76,7 +76,7 @@ Blockly.Blocks['microbit_music_play_built_in_easy'] = {
   }
 };
 
-Blockly.Blocks.microbit_music_pitch_delay={
+Blockly.Blocks.esp32_music_pitch_delay={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendValueInput("PIN", Number)
@@ -103,7 +103,7 @@ init:function(){
   }
 };
 
-Blockly.Blocks.microbit_music_pitch={
+Blockly.Blocks.esp32_music_pitch={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendValueInput("PIN", Number)
@@ -198,7 +198,7 @@ Blockly.Blocks['microbit_music_reset'] = {
 //
 
 
-Blockly.Blocks.microbit_music_stop={
+Blockly.Blocks.esp32_music_stop={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendValueInput("PIN", Number)
@@ -449,7 +449,7 @@ Blockly.Blocks.led_brightness = {
   }
 };
 
-Blockly.Blocks.microbit_music_play={
+Blockly.Blocks.esp32_music_play={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput()
@@ -464,7 +464,7 @@ init:function(){
   }
 };
 
-Blockly.Blocks.microbit_music_deinit={
+Blockly.Blocks.esp32_music_deinit={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput()
