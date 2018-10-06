@@ -1421,48 +1421,67 @@
         </block>
         <block type="controls_if">
           <value name="IF0">
-            <shadow type="logic_negate">
+            <block type="logic_negate">
               <value name="BOOL">
-                <shadow type="network_wifi_connect">
+                <block type="network_wifi_connect">
                   <value name="VAR">
-                    <shadow type="variables_get">
+                    <block type="variables_get">
                       <field name="VAR">wlan</field>
-                    </shadow>
+                    </block>
                   </value>
-                </shadow>
+                </block>
               </value>
-            </shadow>
+            </block>
           </value>
           <statement name="DO0">
-            <shadow type="network_connect"> 
+            <block type="network_connect"> 
               <value name="VAR">
-                <shadow type="variables_get">
+                <block type="variables_get">
                   <field name="VAR">wlan</field>
-                </shadow>
-               </value>
-               <value name="id">
-                 <shadow type="text">
-                   <field name="TEXT">127.16.0.8</field>
-                  </shadow>
-                </value>
-                <value name="password">
-                  <shadow type="text">
-                    <field name="TEXT">01234567</field>
-                  </shadow>
-                </value>
-              </shadow>
-            <shadow type="controls_whileUntil">
-              <field name="MODE">UNTIL</field>
-              <value name="BOOL">
-                <shadow type="network_wifi_connect">
-                  <value name="VAR">
-                    <shadow type="variables_get">
-                      <field name="VAR">wlan</field>
-                    </shadow>
-                  </value>
-                </shadow>
+                </block>
               </value>
-            </shadow>
+              <value name="id">
+                <block type="text">
+                  <field name="TEXT">127.16.0.8</field>
+                </block>
+              </value>
+              <value name="password">
+                <block type="text">
+                  <field name="TEXT">01234567</field>
+                </block>
+              </value>
+            </block>
+            <block type="network_connect">
+              <value name="VAR">
+                <block type="variables_get">
+                  <field name="VAR">wlan</field>
+                </block>
+              </value>
+              <value name="id">
+                <block type="text">
+                  <field name="TEXT">127.16.0.8</field>
+                </block>
+              </value>
+              <value name="password">
+                <block type="text">
+                  <field name="TEXT">01234567</field>
+                </block>
+              </value>
+              <next>  
+                <block type="controls_whileUntil">
+                  <field name="MODE">UNTIL</field>
+                  <value name="BOOL">
+                    <block type="network_wifi_connect">
+                      <value name="VAR">
+                        <block type="variables_get">
+                          <field name="VAR">wlan</field>
+                        </block>
+                      </value>
+                    </block>
+                  </value>
+                </block>
+              </next>
+            </block>
         </statement>
       </block>
       </category>
