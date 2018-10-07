@@ -1,7 +1,7 @@
 ﻿<html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
-  <title>Mixly mircrobit</title>
+  <title>Mixly ESP32</title>
   <script type="text/javascript" src="../../blockly_compressed_py.js"></script>
   <script type="text/javascript" src="../../python_compressed.js"></script>
   <script type="text/javascript" src="../../core/esp32/variables.js"></script>
@@ -12,8 +12,7 @@
   <script src="../../generators/esp32/python.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
   <script type="text/javascript" src="drag.js"></script>
-  <script type="text/javascript" src="code.js"></script> 
-  <!---from BlocklyDuino-->
+  <script type="text/javascript" src="code.js"></script>
   <script type="text/javascript" src="Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
   <script type="text/javascript" src="FileSaver.min.js"></script>
@@ -44,8 +43,7 @@
   <script src="../../blocks/esp32/factory.js"></script>
   <script src="../../blocks/python/tuple.js"></script>
   <script src="../../blocks/python/set.js"></script>
-  
-  <!-- generator file -->
+	<!-- generator file -->
   <script src="../../generators/esp32/pins.js"></script>
   <script src="../../generators/esp32/inout.js"></script>
   <script src="../../generators/python/control.js"></script>
@@ -75,6 +73,11 @@
   <script src="../../generators/python/utility.js"></script>
   <script src="./js/py2block_editor.js" type="application/javascript"></script>
   <script src="../../converters/esp32/py2block_config.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/inout.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/serial.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/communicate.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/display.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/actuator.js" type="application/javascript"></script>
   <script src="../../converters/python/control.js" type="application/javascript"></script>
   <script src="../../converters/python/math.js" type="application/javascript"></script>
   <script src="../../converters/python/logic.js" type="application/javascript"></script>
@@ -194,10 +197,9 @@
         // If the workspace was changed by the XML tab, Firefox will have performed
         // an incomplete rendering due to Blockly being invisible.  Rerender.
           Blockly.mainWorkspace.render();
-          var arduinoTextarea = document.getElementById('side_code');
-          //var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-          //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-          editor_side_code.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
+          var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+          var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+          editor_side_code.setValue(chinese_code, -1);
          } else if (content.id == 'content_xml') {
         var xmlTextarea = document.getElementById('content_xml');
         var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
@@ -206,12 +208,12 @@
         xmlTextarea.focus();
       } else if (content.id == 'content_arduino') {
         //content.innerHTML = Blockly.Python.workspaceToCode(Blockly.mainWorkspace);
-        var arduinoTextarea = document.getElementById('content_arduino');
-        editor.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
-        //arduinoTextarea.value = Blockly.Python.workspaceToCode(Blockly.mainWorkspace);
-        //arduinoTextarea.focus();
-      }
+        var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+        var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+        editor.setValue(chinese_code, -1);
+       }
     }
+
 
     /**
      * Compute the absolute coordinates and dimensions of an HTML element.
@@ -242,7 +244,6 @@
      */
     var editor;
     var editor_side_code;
-    var pyengine;
     var py2block_editor;
     function init() {
       //window.onbeforeunload = function() {
@@ -269,6 +270,7 @@
       editor_side_code.setFontSize(17);
       editor_side_code.setShowPrintMargin(false);
       editor_side_code.setReadOnly(true);
+      editor_side_code.setScrollSpeed(0.05);
       $('#aceTheme').val(window.conf.lastEditorTheme);
 
       var py2block_converter = new PythonToBlocks();
@@ -320,11 +322,11 @@
     	  }
     	  //更新
     	  var arduinoTextarea = document.getElementById('side_code');
-    	  //var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-    	  //arduinoTextarea.value = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-          editor_side_code.setValue(Blockly.Python.workspaceToCode(Blockly.mainWorkspace), -1);
+    	  var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+		  var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+		  editor_side_code.setValue(chinese_code, -1);
     	}
-    	
+
       auto_save_and_restore_blocks();
       //load from url parameter (single param)
       //http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
@@ -451,7 +453,7 @@
       <block type="inout_highlow"></block>
       <block type="inout_pinMode">
       <value name="PIN">
-          <shadow type="pins_digital"></shadow>
+          <shadow type="pins_pin"></shadow>
         </value>
     </block>
       <block type="inout_digital_write">
@@ -537,8 +539,12 @@
       </block>
     </category>
     <category id="catControl" colour="120">
-      <block type="base_setup"></block>
-      <block type="controls_end_program"></block>
+       <block type="controls_whileUntil">
+        <value name="BOOL">
+          <shadow type="logic_boolean">
+          </shadow>
+        </value>
+      </block>
       <block type="base_delay">
         <value name="DELAY_TIME">
           <shadow type="math_number">
@@ -596,12 +602,7 @@
           </block>
         </value>
       </block>
-      <block type="controls_whileUntil">
-        <value name="BOOL">
-          <shadow type="logic_boolean">
-          </shadow>
-        </value>
-      </block>
+     
       <block type="controls_try_finally"></block>
       <block type="controls_lambda">
         <value name="BOOL">
@@ -610,12 +611,12 @@
           </shadow>
         </value>
         <statement name="DO">
-                  <shadow type="IO_print_inline"> 
+                  <shadow type="IO_print_inline">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
-              </value>   
+              </value>
         </shadow>
         </statement>
       </block>
@@ -1369,14 +1370,14 @@
             </shadow>
           </value>
         </block>
-      </category>     
+      </category>
       <category id="catSerialPort" colour="65">
-        <block type="IO_print_inline"> 
+        <block type="IO_print_inline">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
-              </value>   
+              </value>
         </block>
         <block type="IO_print">
               <value name="VAR">
@@ -1398,21 +1399,21 @@
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
-              </value> 
+              </value>
         </block>
         <block type="serial_println">
               <value name="CONTENT">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
-              </value> 
+              </value>
         </block>
         <block type="serial_print_hex">
               <value name="CONTENT">
                   <shadow type="math_number">
                       <field name="NUM">0XFF00FF</field>
                   </shadow>
-              </value>           
+              </value>
         </block>
         <block type="serial_any"></block>
         <block type="serial_readstr"></block>
@@ -1529,7 +1530,7 @@
                   </shadow>
               </value>
           </block>
-                  
+
         <block type="sensor_use_i2c_init">
           <value name="SUB">
             <shadow type="variables_get">
@@ -1602,8 +1603,12 @@
               </shadow>
           </value>
         </block>
-
-      </category>
+		<block type="dht11">
+                <value name="PIN">
+                    <shadow type="pins_digital"></shadow>
+                </value>
+        </block>
+	</category>
       <category id="catActuator" colour="100">
         <block type="servo_move">
           <value name="PIN">
@@ -1637,13 +1642,13 @@
           </shadow>
         </value>
         </block>
-        <!-- <block type="microbit_music_play">
+        <!-- <block type="esp32_music_play">
           <value name="pitch">
             <shadow type="pins_tone_notes"></shadow>
           </value>
         </block>
-         <block type="microbit_music_deinit"></block> -->
-        <block type="microbit_music_pitch">
+         <block type="esp32_music_deinit"></block> -->
+        <block type="esp32_music_pitch">
           <value name="PIN">
             <shadow type="pins_pwm">
               <field name="PIN">27</field>
@@ -1653,12 +1658,12 @@
             <shadow type="pins_tone_notes"></shadow>
           </value>
         </block>
-<!--         <block type="microbit_music_play_built_in_easy">
+<!--         <block type="esp32_music_play_built_in_easy">
           <value name="PIN">
             <shadow type="pins_pwm"></shadow>
           </value>
         </block> -->
-        <block type="microbit_music_stop">
+        <block type="esp32_music_stop">
           <value name="PIN">
             <shadow type="pins_pwm">
               <field name="PIN">27</field>
@@ -1678,7 +1683,7 @@
               <field name="TEXT">#115DOWWWW</field>
             </shadow>
           </value>
-        </block> 
+        </block>
         <block type="speech_prenounce_easy">
           <value name="VAR">
             <shadow type="text">
@@ -1688,7 +1693,19 @@
         </block> -->
       </category>
       <category id="catMonitor" colour="180">
-        <block type="monitor_show_scroll_string">
+        <block type="monitor_show_image_or_string">
+          <value name="data">
+            <shadow type="pins_builtinimg"></shadow>
+          </value>
+        </block>
+        <block type="monitor_scroll_string">
+          <value name="data">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
+          </value>
+        </block>
+       <!-- <block type="monitor_show_scroll_string">
           <value name="data">
             <shadow type="text">
               <field name="TEXT">hello</field>
@@ -1700,13 +1717,13 @@
             </shadow>
           </value>
         </block>
-        <block type="microbit_display_show_image">
+        <block type="esp32_display_show_image">
           <value name="PIN">
             <shadow type="pins_builtinimg"></shadow>
           </value>
-        </block>
-        <block type="microbit_image_create"></block>
-        <block type="microbit_image_builtins"></block>
+        </block>-->
+        <block type="esp32_image_create"></block>
+        <block type="esp32_image_builtins"></block>
         <block type="image_arithmetic">
           <value name="A">
             <shadow type="pins_builtinimg"></shadow>
@@ -1744,7 +1761,7 @@
             </shadow>
           </value>
         </block>
-        <block type="microbit_display_clear"></block>
+        <block type="esp32_display_clear"></block>
         <block type="display_rgb_init">
           <value name="SUB">
             <shadow type="variables_get">
@@ -1753,7 +1770,7 @@
           </value>
           <value name="PIN">
             <shadow type="pins_digital">
-              <field name="PIN">2</field>
+              <field name="PIN">p2</field>
             </shadow>
           </value>
           <value name="LEDCOUNT">

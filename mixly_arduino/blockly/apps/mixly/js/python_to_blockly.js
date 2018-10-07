@@ -1724,6 +1724,11 @@ PythonToBlocks.prototype.Num = function(node)
                 "PIN": nVal
             });
         }
+        if(py2block_config.inScope == "rgb_create_block"){
+            return block(py2block_config.pinType, node.lineno, {
+                "PIN": nVal
+            });
+        }
         if(nVal == 1 || nVal == 0) {
             return block("inout_highlow", node.lineno, {"BOOL": (nVal == 1 ? "HIGH" : "LOW")});
         }

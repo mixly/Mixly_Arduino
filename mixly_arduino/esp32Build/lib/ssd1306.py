@@ -138,6 +138,27 @@ class SSD1306_I2C(SSD1306):
       #self.i2c.send(self.temp,self.addr)
       #self.i2c.send(buf,self.addr)
       self.i2c.mem_write(buf,self.addr,0x40)
+  def show_str(self,str1,str2,str3,str4):
+    self.text(str1,0,0)
+    self.text(str2,0,16)
+    self.text(str3,0,32)
+    self.text(str4,0,48)
+    self.show()
+  def show_rect(self, x, y, w, h, col):
+    self.rect(x, y, w, h, col)
+    self.show()
+  def show_fill_rect(self, x, y, w, h, col):
+    self.fill_rect(x, y, w, h, col)
+    self.show()
+  def show_hline(self, x, y, w, col):
+    self.hline(x, y, w, col)
+    self.show()
+  def show_vline(self, x, y, h, col):
+    self.vline(x, y, h, col)
+    self.show()
+  def show_line(self, x1, y1, x2, y2, col):
+    self.line(x1, y1, x2, y2, col)
+    self.show()
   def poweron(self):
     pass
 

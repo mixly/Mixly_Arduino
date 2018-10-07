@@ -23,7 +23,7 @@ Blockly.Python.serial_print_hex = function() {
   Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
   var dropdown_uart = this.getFieldValue('mode');
   var content = Blockly.Python.valueToCode(this, 'CONTENT', Blockly.Python.ORDER_ATOMIC) || '0';
-  var code = "uart"+dropdown_uart+".write(str(hex("+content+")+'\\r\\n')\n";
+  var code = "uart"+dropdown_uart+".write(str(hex("+content+"))+'\\r\\n')\n";
   return code;
 };
 

@@ -27,16 +27,16 @@ Blockly.Blocks['microbit_display_clear'] = {
 Blockly.Blocks.monitor_get_pixel = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-	  this.appendValueInput('x')
+	this.appendValueInput('x')
         .setCheck(Number)
         .appendField(Blockly.MIXLY_NOVA_GET_STAT)
         .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS)
 		    .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_GET_POINT_X);
-	  this.appendValueInput('y')
+	this.appendValueInput('y')
           .setCheck(Number)
           .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_PLOT_POINT_Y);
     this.setInputsInline(true);
-	  this.setOutput(true, Number);
+	this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS1);
   }
 };
@@ -51,8 +51,7 @@ Blockly.Blocks.monitor_bright_point = {
 	this.appendValueInput('y')
           .setCheck(Number)
           .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_PLOT_POINT_Y);
-
-      this.appendValueInput('brightness')
+    this.appendValueInput('brightness')
           .setCheck(Number)
           .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS);
     this.setPreviousStatement(true, null);

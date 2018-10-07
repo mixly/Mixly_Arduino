@@ -526,11 +526,11 @@ Blockly.Blocks.HCSR04 = {
 
 Blockly.Blocks.dht11 = {
     init: function () {
-        var WHAT = [[Blockly.MIXLY_DHT11_T, 'temperature'], [Blockly.MIXLY_DHT11_H, 'humidity'], [Blockly.MIXLY_DHT11_T_H, 'all']];
+        var WHAT = [[Blockly.MIXLY_DHT11_T, 'temperature'], [Blockly.MIXLY_DHT11_H, 'humidity'], [Blockly.MIXLY_DHT11_T_H, 'tempandhum']];
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput("PIN", Number)
-            .appendField(new Blockly.FieldDropdown([['DHT11', '11']
-                //, ['DHT21', '21'], ['DHT22', '22'], ['DHT33', '33'], ['DHT44', '44']
+            .appendField(new Blockly.FieldDropdown([['DHT11', 'dht11']
+                , ['DHT22', 'dht22']//, ['DHT21', '21'], ['DHT33', '33'], ['DHT44', '44']
                 ]), 'TYPE')
             .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);

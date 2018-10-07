@@ -97,70 +97,89 @@ Blockly.Python.spi_write = function() {
 
 Blockly.Python.network_init= function() {
     Blockly.Python.definitions_['import_network'] = "import network";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var mode=this.getFieldValue('mode');
-    return "wlan=network.WLAN(network."+mode+"_IF);\n";
+    return ""+varName+"=network.WLAN(network."+mode+"_IF);\n";
 }
+
+// Blockly.Python.network_connect= function() {
+//     Blockly.Python.definitions_['import_network'] = "import network";
+//     // Blockly.Python.setups_['class_wlan'] ='wlan.active(True)\n';
+//     var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+//     var id = Blockly.Python.valueToCode(this, 'id', Blockly.Python.ORDER_ATOMIC);
+//     var password = Blockly.Python.valueToCode(this, 'password', Blockly.Python.ORDER_ATOMIC);
+//     return "if not "+varName+".isconnected():\n"+
+//            "  "+varName+".connect("+id+","+password+")\n"+
+//            "  while not "+varName+".isconnected():\n"+
+//            "    pass\n";
+// }
 
 Blockly.Python.network_connect= function() {
     Blockly.Python.definitions_['import_network'] = "import network";
-    Blockly.Python.setups_['class_wlan'] ='wlan.active(True)\n';
+    // Blockly.Python.setups_['class_wlan'] ='wlan.active(True)\n';
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var id = Blockly.Python.valueToCode(this, 'id', Blockly.Python.ORDER_ATOMIC);
     var password = Blockly.Python.valueToCode(this, 'password', Blockly.Python.ORDER_ATOMIC);
-    return "if not wlan.isconnected():\n"+
-           "  wlan.connect("+id+","+password+")\n"+
-           "  while not wlan.isconnected():\n"+
-           "    pass\n";
+    return ""+varName+".connect("+id+","+password+")\n"
 }
 
 Blockly.Python.network_wifi_connect= function() {
     Blockly.Python.definitions_['import_network'] = "import network";
-    return "wlan.isconnected()\n"; 
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+    return ""+varName+".isconnected()\n"; 
 }
 
 Blockly.Python.network_get_connect= function() {
     Blockly.Python.definitions_['import_network'] = "import network";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var mode=this.getFieldValue('mode');
-    var code="wlan.ifconfig()["+mode+"]";
+    var code=""+varName+".ifconfig()["+mode+"]";
     return [code, Blockly.Python.ORDER_MEMBER]
 }
 
 Blockly.Python.network_stop= function() {
     Blockly.Python.definitions_['import_network'] = "import network";
-    return "wlan.disconnect()\n";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+    return ""+varName+".disconnect()\n";
 }
 
 Blockly.Python.network_open= function() {
     Blockly.Python.definitions_['import_network'] = "import network";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var op=this.getFieldValue('op');
-    var code="wlan.active("+op+")\n";
+    var code=""+varName+".active("+op+")\n";
     return code;
 }
 
 Blockly.Python.network_wifi_connect = function(){
     Blockly.Python.definitions_['import_network'] = "import network";
-    var code = 'wlan.isconnected()';
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+    var code = ''+varName+'.isconnected()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.network_get_wifi= function() {
     Blockly.Python.definitions_['import_network'] = "import network";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var op=this.getFieldValue('op');
-    var code="ap.config('"+op+"')";
+    var code=""+varName+".config('"+op+"')";
     return [code, Blockly.Python.ORDER_MEMBER]
 }
 
 Blockly.Python.network_ap_connect= function() {
     Blockly.Python.definitions_['import_network'] = "import network";
     Blockly.Python.setups_['class_wlan'] ='ap = network.WLAN(network.AP_IF)\n'+'ap.active(True)\n';
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var essid = Blockly.Python.valueToCode(this, 'essid', Blockly.Python.ORDER_ATOMIC);
     var channel = Blockly.Python.valueToCode(this, 'channel', Blockly.Python.ORDER_ATOMIC);
-    return "  ap.config(essid="+essid+",channel="+channel+")\n";
+    return ""+varName+".config(essid="+essid+",channel="+channel+")\n";
 }
 
 Blockly.Python.network_scan= function() {
     Blockly.Python.definitions_['import_network'] = "import network";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var op=this.getFieldValue('op');
-    var code="wlan.scan()["+op+"]";
+    var code=""+varName+".scan()["+op+"]";
     switch (op) {
     case "0":
        return [code, Blockly.Python.ORDER_ASSIGNMENT];
@@ -181,7 +200,7 @@ Blockly.Python.network_scan= function() {
        return [code, Blockly.Python.ORDER_ASSIGNMENT];
        break;
     case "all":
-       var code1 = 'wlan.scan()';
+       var code1 = ''+varName+'.scan()';
        return [code1, Blockly.Python.ORDER_ASSIGNMENT];
        break;
   }
@@ -259,10 +278,11 @@ Blockly.Python.bluetooth_service_setup = function () {
 
 Blockly.Python.network_server= function() {
     Blockly.Python.definitions_['import_server_*'] = 'from server import *';
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     // Blockly.Python.setups_['class_wlan'] ='SSID="ying"\n'+'PASSWORD="201411132040"\n';
-    return 'if not wlan.isconnected():\n'
+    return 'if not '+varName+'.isconnected():\n'
     +'    connectWifi(SSID, PASSWORD)\n'
-    +'ip=wlan.ifconfig()[0]\n'
+    +'ip='+varName+'.ifconfig()[0]\n'
     +'print(ip)\n'
     +'time.sleep(1)\n'
     +'DATA=listenData()\n'   

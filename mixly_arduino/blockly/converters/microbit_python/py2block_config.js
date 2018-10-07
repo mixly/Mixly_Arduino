@@ -85,6 +85,13 @@ pbc.initModuleAttrD = function(){
             });
         }
     }
+    for (var i = 0; i < profile.default.digital.length; i++) {
+        pbc.moduleAttrD.get('PIN')[profile.default.digital[i][0]] = function (node, module, attr) {
+            return block("pins_digital", node.lineno, {
+                "PIN": module + "." + attr
+            });
+        }
+    }    
 }
 
 pbc.initKnownModuleS = function(){

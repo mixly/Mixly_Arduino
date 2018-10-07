@@ -12,6 +12,16 @@ Blockly.Blocks['pins_digital'] = {
   }
 };
 
+Blockly.Blocks['pins_pin'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.pins.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.pin), 'PIN');
+    this.setOutput(true, Number);
+  }
+};
+
+
 Blockly.Blocks['pins_analog'] = {
    init: function() {
     this.setColour(Blockly.Blocks.pins.HUE);
@@ -71,7 +81,7 @@ Blockly.Blocks['pins_builtinimg'] = {
         this.setColour(Blockly.Blocks.pins.HUE);
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown(profile.default.builtinimg), 'PIN');
-        this.setOutput(true, "microbit_image");
+        this.setOutput(true, "esp32_image");
     }
 };
 
