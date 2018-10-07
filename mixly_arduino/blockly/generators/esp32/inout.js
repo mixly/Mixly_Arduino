@@ -99,7 +99,8 @@ Blockly.Python.controls_pin_attachInterrupt = function () {
     // Blockly.Python.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT);';
     //var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
    
-    var code = 'p' + dropdown_pin + '.irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
+    //var code = 'p' + dropdown_pin + '.irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
+	var code = dropdown_pin + '.irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
     var funcName = 'attachInterrupt_func_' + dropdown_pin;
     var branch = Blockly.Python.statementToCode(this, 'DO') || Blockly.Python.PASS;
     var code2 = 'def' + ' ' + funcName + '(p):\n' + branch + '\n';
