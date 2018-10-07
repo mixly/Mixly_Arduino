@@ -45,6 +45,6 @@ Blockly.Arduino.variables_change = function () {
     var operator = this.getFieldValue('OP');
     var varName = Blockly.Arduino.valueToCode(this, 'MYVALUE', Blockly.Arduino.ORDER_ASSIGNMENT);
     //修复强制类型转换不正确的bug
-    var code = '(' + operator + ')(' + varName + ')';
+    var code = '((' + operator + ')(' + varName + '))';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
