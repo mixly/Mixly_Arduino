@@ -511,8 +511,12 @@
       </block>
     </category>
     <category id="catControl" colour="120">
-      <block type="base_setup"></block>
-      <block type="controls_end_program"></block>
+       <block type="controls_whileUntil">
+        <value name="BOOL">
+          <shadow type="logic_boolean">
+          </shadow>
+        </value>
+      </block>
       <block type="base_delay">
         <value name="DELAY_TIME">
           <shadow type="math_number">
@@ -553,7 +557,7 @@
           </shadow>
         </value>
       </block>
-      <block type="controls_whileUntil"></block>
+      
       <block type="controls_try_finally"></block>
       <block type="controls_flow_statements"></block>
       <block type="controls_millis"></block>
@@ -1697,7 +1701,11 @@
               </shadow>
           </value>
         </block>
-
+		<block type="dht11">
+                <value name="PIN">
+                    <shadow type="pins_digital"></shadow>
+                </value>
+        </block>
       </category>
       <category id="catActuator" colour="100">
         <block type="servo_move">

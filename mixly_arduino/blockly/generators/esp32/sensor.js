@@ -285,31 +285,13 @@ Blockly.Python.HCSR04 = function () {
 
 Blockly.Python.dht11 = function () {
     /*Blockly.Python.definitions_['import_machine_Pin'] = "from machine import Pin";
-    Blockly.Python.definitions_['import_dht'] = 'import dht';
     Blockly.Python.definitions_['import_time'] = 'import time';
     Blockly.Python.definitions_['import_machine'] ='import machine';*/
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    Blockly.Python.definitions_['import_dhtx'] = 'import dhtx';
     var sensor_type = this.getFieldValue('TYPE');
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var what = this.getFieldValue('WHAT');
-  /*  Blockly.Python.setups_['setup_dht'+dropdown_pin] ='d'+dropdown_pin+'= dht.DHT11(machine.Pin('+dropdown_pin+'))\n'
-    Blockly.Python.setups_['setup_dht11'] ='_dht_time = 0\n'+
-    'def measure(d):\n'+
-    '    global _dht_time\n'+
-    '    if(time.ticks_diff(time.ticks_ms(), _dht_time))>1000:\n'+
-    '        d.measure()\n'+
-    '        _dht_time = time.ticks_ms()\n'+
-    'def getTemperature(d):\n'+
-    '    measure(d)\n'+
-    '    return d.temperature()\n'+
-    'def getHumidity(d):\n'+
-    '    measure(d)\n'+
-    '    return d.humidity()\n'+
-    'def getTempAndHum(d):\n'+
-    '    measure(d)\n'+
-    '    return d.temperature(),d.humidity()\n';*/
-    //Blockly.Python.definitions_['var_dht_' + dropdown_pin] = 'dht myDHT_' + dropdown_pin + ';';
-    var code ='get_'+what+'(Pin('+dropdown_pin+'))';
+    var code ='dhtx.get_'+what+"('"+sensor_type+"',"+dropdown_pin.substring(1)+')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
