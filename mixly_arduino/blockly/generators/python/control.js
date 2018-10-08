@@ -218,3 +218,9 @@ Blockly.Python.controls_lambda = function (a) {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.time_sleep = function () {
+    Blockly.Python.definitions_['import_time'] = 'import time';
+    var delay_time = Blockly.Python.valueToCode(this, 'DELAY_TIME', Blockly.Python.ORDER_ATOMIC) || '1000'
+    var code = 'time.sleep(' + delay_time + ')\n';
+    return code;
+};

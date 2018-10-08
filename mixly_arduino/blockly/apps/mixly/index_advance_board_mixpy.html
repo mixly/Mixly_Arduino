@@ -483,6 +483,13 @@ function init() {
                   </shadow>
               </value>
           </block>-->
+          <block type="time_sleep">
+              <value name="DELAY_TIME">
+                  <shadow type="math_number">
+                      <field name="NUM">2</field>
+                  </shadow>
+              </value>
+          </block>
           <block type="base_type">
               <value name="DATA">
                   <shadow type="math_number">
@@ -711,6 +718,84 @@ function init() {
             </shadow>
           </value>
         </block>
+        
+
+        <block type="ascii_to_char">
+          <value name="VAR">
+            <shadow type="math_number">
+              <field name="NUM">65</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="char_to_ascii">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">a</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="number_to_text">
+          <value name="VAR">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_length">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
+          </value>
+        </block>        
+        <block type="text_char_at3">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
+          </value>
+          <value name="AT">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_random_char">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_equals_starts_ends">
+          <value name="STR1">
+            <shadow type="text">
+              <field name="TEXT"></field>
+            </shadow>
+          </value>
+          <value name="STR2">
+            <shadow type="text">
+              <field name="TEXT"></field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_substring3">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
+          </value>
+          <value name="AT1">
+            <shadow type="math_indexer_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="AT2">
+            <shadow type="math_indexer_number">
+              <field name="NUM">2</field>
+            </shadow>
+          </value>
+        </block>
          <block type="text_capital">
           <value name="VAR">
             <shadow type="text">
@@ -780,102 +865,6 @@ function init() {
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block>
-
-        <block type="ascii_to_char">
-          <value name="VAR">
-            <shadow type="math_number">
-              <field name="NUM">65</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="char_to_ascii">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">a</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="number_to_text">
-          <value name="VAR">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_length">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_split">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">I love mixly！</field>
-            </shadow>
-          </value>
-          <value name="VAL">
-            <shadow type="text">
-              <field name="TEXT"> </field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_strip">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_char_at3">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-          <value name="AT">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_random_char">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_equals_starts_ends">
-          <value name="STR1">
-            <shadow type="text">
-              <field name="TEXT"></field>
-            </shadow>
-          </value>
-          <value name="STR2">
-            <shadow type="text">
-              <field name="TEXT"></field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_substring3">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-          <value name="AT1">
-            <shadow type="math_indexer_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="AT2">
-            <shadow type="math_indexer_number">
-              <field name="NUM">2</field>
             </shadow>
           </value>
         </block>
@@ -1325,7 +1314,13 @@ function init() {
                   </shadow>
               </value>
           </block>
-       
+          <block type="turtle_pos">
+            <value name="TUR">
+                <shadow type="variables_get">
+                  <field name="VAR">tina</field>
+                </shadow>
+              </value>
+          </block>       
           <block type="turtle_clear">
               <value name="TUR">
                 <shadow type="variables_get">
@@ -1359,7 +1354,13 @@ function init() {
                   </shadow>
               </value>
           </block>
-          
+          <block type="turtle_shape">
+              <value name="TUR">
+                <shadow type="variables_get">
+                  <field name="VAR">tina</field>
+                </shadow>
+              </value>              
+          </block>
           <block type="turtle_speed">
               <value name="TUR">
                 <shadow type="variables_get">
@@ -1403,6 +1404,17 @@ function init() {
                 </shadow>
               </value>
           </block>
+          <block type="turtle_write">
+            <value name="TUR">
+                <shadow type="variables_get">
+                  <field name="VAR">tina</field>
+                </shadow>
+              </value>
+            <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly!</field>
+            </value>
+          </block>
           <block type="turtle_bgcolor"></block>
           <block type="turtle_pencolor">
             <value name="TUR">
@@ -1411,6 +1423,8 @@ function init() {
                 </shadow>
               </value>
           </block>
+		  			  
+					  
           <block type="turtle_fillcolor">
             <value name="TUR">
                 <shadow type="variables_get">

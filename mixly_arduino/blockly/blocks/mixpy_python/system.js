@@ -96,3 +96,17 @@ Blockly.Blocks.controls_mstimer2_stop = {
 };
 
 
+Blockly.Blocks.time_sleep = {
+  init: function() {
+    this.setColour(Blockly.Blocks.system.HUE);
+    this.appendValueInput("DELAY_TIME", Number)
+        .appendField(Blockly.MIXLY_DELAY)        
+        .setCheck(Number);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_NOVA_RTC_SEC)
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_DELAY);
+  }
+};

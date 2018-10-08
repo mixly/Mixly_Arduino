@@ -190,6 +190,37 @@ pbc.objectFunctionD.get('speed')['Turtle'] = function (py2block, func, args, key
     })];
 }
 
+pbc.objectFunctionD.get('shape')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var turtleblock = py2block.convert(func.value);
+    var shapeblock = py2block.convert(args[0]);
+    return [block('turtle_shape', func.lineno, {
+        'shape': shapeblock,
+        
+    }, {
+        'TUR': turtleblock,
+        
+    }, {
+        "inline": "true"
+    })];
+}
+
+pbc.objectFunctionD.get('write')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var turtleblock = py2block.convert(func.value);
+    var argblock = py2block.convert(args[0]);
+    return [block('turtle_write', func.lineno, {}, {
+        'TUR': turtleblock,
+        'VAR': argblock,
+    }, {
+        "inline": "true"
+    })];
+}
+
 
 function turtleCircleDot(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
@@ -223,6 +254,18 @@ pbc.objectFunctionD.get('clone')['Turtle'] = function (py2block, func, args, key
     }
     var turtleblock = py2block.convert(func.value);
     return block('turtle_clone', func.lineno, {}, {
+        'TUR': turtleblock
+    }, {
+        "inline": "true"
+    });
+}
+
+pbc.objectFunctionD.get('pos')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var turtleblock = py2block.convert(func.value);
+    return block('turtle_pos', func.lineno, {}, {
         'TUR': turtleblock
     }, {
         "inline": "true"
