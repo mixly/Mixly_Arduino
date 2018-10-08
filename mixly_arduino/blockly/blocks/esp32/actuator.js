@@ -117,30 +117,3 @@ Blockly.Blocks.esp32_music_stop = {
         this.setTooltip(Blockly.MIXLY_NOTONE_PIN);
     }
 };
-
-Blockly.Blocks.esp32_music_play = {
-    init: function() {
-        this.setColour(Blockly.Blocks.actuator.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.MIXLY_DF_BUZZER + Blockly.MIXLY_MBOT_TONE);
-        this.appendValueInput('pitch')
-            .setCheck(Number)
-            .appendField(Blockly.MIXLY_FREQUENCY);
-        this.setInputsInline(true);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE);
-    }
-};
-
-Blockly.Blocks.esp32_music_deinit = {
-    init: function() {
-        this.setColour(Blockly.Blocks.actuator.HUE);
-        this.appendDummyInput()
-            .appendField(Blockly.MIXLY_DF_BUZZER + Blockly.MIXLY_MBOT_NOTONE);
-        this.setInputsInline(true);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip(Blockly.MIXLY_NOTONE_PIN);
-    }
-};

@@ -522,6 +522,7 @@ Blockly.Blocks.HCSR04 = {
         this.setOutput(true, Number);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_CHAOSHENGBO);
     }
+
 };
 
 Blockly.Blocks.dht11 = {
