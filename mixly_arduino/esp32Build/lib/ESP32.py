@@ -124,7 +124,7 @@ class Sonar:
         t2 = time.ticks_us()
         return round(time.ticks_diff(t2, t1) / 10000 * 340 / 2, 2)   
 
-class Led:
+class led:
     def __init__(self, pin):
         self.val = 1
         self.pin = pin
@@ -140,6 +140,28 @@ class Led:
     def value(self,val):
         self.val = val
         PWM(Pin(self.pin)).duty(1023-self.val)
+    def setbrightness(n,val):
+        if(n==1):
+            n=0
+        if(n==2):
+            n=5
+        PWM(Pin(n)).duty(1023-val)
+    def setonoff(n,val):
+        if(val=='on'):
+            val=0
+            if(n==1):
+                n=0
+            if(n==2):
+                n=5
+            Pin(n).value(val)
+        if(val=='off'):
+            val=1
+            if(n==1):
+                n =0
+            if(n==2):
+                n=5
+            Pin(n).value(val)
+
 
 class music:
     def __init__(self, pin):
@@ -208,8 +230,8 @@ buttonA = MyPin(17)
 buttonB = MyPin(16)
 Pin(0, Pin.OUT).value(1)
 Pin(5, Pin.OUT).value(1)
-led1 = Led(pin = 0)
-led2 = Led(pin = 5)
+led1 = led(pin = 0)
+led2 = led(pin = 5)
 Infrared_left = MyPin(34)
 Infrared_right = MyPin(36)
 touch1 = MyPin(32)

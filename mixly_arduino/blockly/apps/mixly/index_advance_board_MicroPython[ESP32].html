@@ -2051,7 +2051,7 @@
             </shadow>
           </value>
         </block>
-        <block type="oled_init">
+        <!-- <block type="oled_init">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">lcd</field>
@@ -2069,6 +2069,28 @@
           </value>
           <value name="freq">
             <shadow type="math_number"><field name="NUM">100000</field></shadow>
+          </value>
+        </block> -->
+        <block type="oled_use_i2c_init">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">lcd</field>
+            </shadow>
+          </value>
+          <value name="I2CSUB">
+            <shadow type="variables_get">
+              <field name="VAR">i2c</field>
+            </shadow>
+          </value>
+          <value name="row">
+            <shadow type="math_number">
+              <field name="NUM">128</field>
+            </shadow>
+          </value>
+          <value name="column">
+            <shadow type="math_number">
+              <field name="NUM">64</field>
+            </shadow>
           </value>
         </block>
         <block type="lp2i_u8g_draw_4strings">

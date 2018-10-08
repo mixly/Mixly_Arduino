@@ -1233,34 +1233,60 @@ Blockly.Blocks.group_lcd_power = {
   }
 };
 
-Blockly.Blocks['oled_init'] = {
-  init: function() {
-   this.setColour(Blockly.Blocks.display.HUE);
-   this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
-            .setCheck("var");
-   this.appendValueInput("RX", Number)
-       //.appendField(Blockly.MIXLY_SETUP)
-       // .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
-       // .appendField(new Blockly.FieldTextInput('lcd'), 'VAR')  
-       .appendField(Blockly.MIXLY_SETUP)
-       .appendField("sda")
-       .setCheck(Number)
-       .setAlign(Blockly.ALIGN_RIGHT);
-   this.appendValueInput("TX", Number)
-       .appendField("scl")
-       .setCheck(Number)
-       .setAlign(Blockly.ALIGN_RIGHT);
-   this.appendValueInput('freq')
-       .setCheck(Number)
-       .appendField(Blockly.MIXLY_FREQUENCY)
-       .setAlign(Blockly.ALIGN_RIGHT);
-   this.setPreviousStatement(true, null);
-   this.setNextStatement(true, null);
-   this.setInputsInline(true);
-   }
-  };
+// Blockly.Blocks['oled_init'] = {
+//   init: function() {
+//    this.setColour(Blockly.Blocks.display.HUE);
+//    this.appendValueInput('VAR')
+//             .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+//             .setCheck("var");
+//    this.appendValueInput("RX", Number)
+//        //.appendField(Blockly.MIXLY_SETUP)
+//        // .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+//        // .appendField(new Blockly.FieldTextInput('lcd'), 'VAR')  
+//        .appendField(Blockly.MIXLY_SETUP)
+//        .appendField("sda")
+//        .setCheck(Number)
+//        .setAlign(Blockly.ALIGN_RIGHT);
+//    this.appendValueInput("TX", Number)
+//        .appendField("scl")
+//        .setCheck(Number)
+//        .setAlign(Blockly.ALIGN_RIGHT);
+//    this.appendValueInput('freq')
+//        .setCheck(Number)
+//        .appendField(Blockly.MIXLY_FREQUENCY)
+//        .setAlign(Blockly.ALIGN_RIGHT);
+//    this.setPreviousStatement(true, null);
+//    this.setNextStatement(true, null);
+//    this.setInputsInline(true);
+//    }
+//   };
 
+Blockly.Blocks.oled_use_i2c_init = {
+    init: function () {
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.appendValueInput('I2CSUB')
+            .appendField(Blockly.Msg.CONTROLS_FOR_INPUT_WITH+"I2C")
+            .setCheck("var");
+        this.appendValueInput('SUB')
+            .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE)
+            .setCheck("var");
+        // this.appendDummyInput("")
+        //     .appendField(Blockly.MIXLY_SETUP + Blockly.Msg.LISTS_SET_INDEX_INPUT_TO + "OLED")
+        //     .appendField(new Blockly.FieldDropdown([
+        //         ["OLED 128¡Á64", "OLED 128¡Á64"]
+        //         ]), "key");
+        this.appendValueInput('row')
+            .appendField(Blockly.MIXLY_SETUP + Blockly.Msg.LISTS_SET_INDEX_INPUT_TO + "OLED")
+            .setCheck(Number);
+        this.appendValueInput('column')
+            .appendField("X")
+            .setCheck(Number);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip();
+    }
+};
 
 Blockly.Blocks.lp2i_u8g_draw_4strings = {
     init: function() {

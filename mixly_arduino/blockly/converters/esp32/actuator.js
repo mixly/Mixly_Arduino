@@ -128,3 +128,32 @@ pbc.moduleFunctionD.get('music')['stop'] = function (py2block, func, args, keywo
         "inline": "true"
     })];
 }
+
+pbc.moduleFunctionD.get('led')['setbrightness'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var argblock = py2block.convert(args[0]);
+    var brightblock = py2block.convert(args[1]);
+    return [block("led_brightness", func.lineno, {}, {
+        'led': argblock,
+        'bright':brightblock,
+    }, {
+        "inline": "true"
+    })];
+}
+
+pbc.moduleFunctionD.get('led')['setonoff'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var argblock = py2block.convert(args[0]);
+     var mode = py2block.Str_value(args[1]);
+    return [block("led_bright", func.lineno, {
+        'bright':mode,
+    }, {
+        'led': argblock,
+    }, {
+        "inline": "true"
+    })];
+}
