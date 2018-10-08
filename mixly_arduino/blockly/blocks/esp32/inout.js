@@ -167,8 +167,8 @@ Blockly.Blocks['inout_pinMode'] = {
     init: function() {
         this.setColour(20);
         this.appendValueInput("PIN", Number)
-            .appendField(Blockly.Msg.LISTS_SET_INDEX_SET)
-            .appendField(Blockly.MIXLY_NUMBER+Blockly.MIXLY_PIN+"#")
+            .appendField(Blockly.MIXLY_SETUP)
+            .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE+Blockly.Msg.LISTS_SET_INDEX_INPUT_TO)
