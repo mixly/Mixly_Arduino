@@ -574,7 +574,7 @@ Blockly.Blocks.LedArray = {
 };
 
 //显示-MAX7219-LED点阵图案
-Blockly.Blocks.Max7219_img = {
+Blockly.Blocks.Matrix_img = {
   init: function() {
     this.appendDummyInput("").appendField(Blockly.MIXLY_MAX7219_IMG).appendField(new Blockly.FieldDropdown([
       ["↑", "183c7edb18181818"],
@@ -602,8 +602,8 @@ Blockly.Blocks.Max7219_img = {
       ["♂", "0f030579d888d870"],
       ["♪", "0c0e0b080878f860"],
       ["✈", "203098ffff983020"],
-      ["卍", "00f21212fe90909e"],
-      ["卐", "009e9090fe1212f2"],
+      //["卍", "00f21212fe90909e"],
+      //["卐", "009e9090fe1212f2"],
       ["︱", "1010101010101010"],
       ["—", "000000ff00000000"],
       ["╱", "0102040810204080"],

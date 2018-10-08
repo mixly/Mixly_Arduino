@@ -987,18 +987,18 @@ Blockly.MIXLY_4DIGITDISPLAY_DOT = 'Dot';
 Blockly.MIXLY_4DIGITDISPLAY_ON = 'On';
 Blockly.MIXLY_4DIGITDISPLAY_OFF = 'Off';
 
-//max7219
+//MAX7219
 Blockly.MIXLY_MAX7219_INIT_NUM='Number of LED dot matrix modules';
-Blockly.MIXLY_MAX7219_PUTSTR='Scroll string';
+Blockly.MIXLY_MAX7219_PUTSTR='Scroll string(MAX7219)';
 Blockly.MIXLY_SPEED='speed';
 Blockly.MIXLY_BRIGHTNESS='brightness';
-Blockly.MIXLY_MAX7219_DISPLAYCHAR='LED dot matrix display pattern';
+Blockly.MIXLY_MAX7219_DISPLAYCHAR='LED dot matrix(MAX7219) display pattern';
 Blockly.MIXLY_MAX7219_DISPLAYCHAR_NUM='Dot matrix number (1~8)';
 Blockly.MIXLY_MAX7219_DISPLAYCHAR_IMG='pattern';
 Blockly.MIXLY_MAX7219_DISPLAYCHAR_SHOWIMG='display pattern';
 Blockly.MIXLY_MAX7219_LEDARRAY='pattern array';
-Blockly.MIXLY_MAX7219_INIT='Initialize LED dot matrix ';
-Blockly.MIXLY_MAX7219_INIT2='Initialize LED dot matrix(IIC)';
+Blockly.MIXLY_MAX7219_INIT='Initialize LED(MAX7219) dot matrix ';
+Blockly.MIXLY_MAX7219_INIT2='Initialize LED(MAX7219) dot matrix(IIC)';
 Blockly.MIXLY_MAX7219_IMG='Presupposition pattern';
 
 //TM1637
@@ -1029,7 +1029,7 @@ Blockly.MIXLY_DS1302_INITPIN = 'Initialize DS1302 RTC clock module PIN'
 Blockly.MIXLY_SETDATE = 'SetDate:';
 Blockly.MIXLY_DATEFORMATE = 'DateFormat(Y-M-D)'
 Blockly.MIXLY_TIMEFORMATE = 'TimeForamt(H:M:S)';
-Blockly.MIXLY_DISPLAY_MATRIX_INIT = "Init 8*8 dot matrix display screen";
+Blockly.MIXLY_DISPLAY_MATRIX_INIT = "Init 8*8 dot matrix display screen(HT16K33)";
 Blockly.MIXLY_DISPLAY_MATRIX_SHOW = "Dot matrix display";
 Blockly.MIXLY_DISPLAY_MATRIX_X = 'X Axis';
 Blockly.MIXLY_DISPLAY_MATRIX_Y = 'Y Axis';

@@ -314,11 +314,12 @@ Blockly.Arduino.display_Matrix_DisplayChar = function() {
   code+='for(int i=0; i<8; i++)\n';
   code+='{\n'
   code+='  LEDArray[i]='+dotMatrixArray+'[i];\n';
-  code+='  for(int j=7; j>=0; j--)\n'
+  code+='  for(int j=0; j<8; j++)\n'
+  //code+='  for(int j=7; j>=0; j--)\n'
   code+='  {\n'
   code+='    if((LEDArray[i]&0x01)>0)\n';
-  code+='    '+ matrixName +'.drawPixel(j, i,1);\n';
-  code+='    LEDArray[i] = LEDArray[i]>>1;\n';
+  code+='    	'+	matrixName +'.drawPixel(j, i,1);\n';
+  code+='    	LEDArray[i] = LEDArray[i]>>1;\n';
   code+='  }  \n'
   code+='}\n'
   code+= matrixName+'.writeDisplay();\n'
@@ -465,7 +466,7 @@ Blockly.Arduino.definitions_['define_LIST'] += '3,8,B01000001,B00110110,B0000100
 Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00001000,B00000100,B00001000,B00000100,B00000000,//~ \n';
 Blockly.Arduino.definitions_['define_LIST'] += '};'
 Blockly.Arduino.definitions_['define2_MaxMatrix'] = 'MaxMatrix m(' + pin_din + ',' + pin_cs + ',' + pin_clk + ',' + lc_num + ');\nbyte buffer[100];';
-Blockly.Arduino.setups_['setup_init'] = ' m.init(); ';
+Blockly.Arduino.setups_['setup_init'] = 'm.init(); ';
 Blockly.Arduino.setups_['setup_Intensity'] = 'm.setIntensity(' + Intensity + ');';
 var code = '';
 return code;
@@ -482,21 +483,19 @@ Blockly.Arduino.MAX7219_putString = function() {
     Blockly.Arduino.definitions_['define_message'] = 'char message[100];';
     code = str + '.toCharArray(message,100);\n';
   }
-  Blockly.Arduino.definitions_['define_putChar'] = 'void putChar(char c, int scrollspeed)\n{\nif (c < 32 || c > 127) \nreturn;\nc -= 32;\nmemcpy_P(buffer, LIST + 7*c, 7);\n  m.writeSprite(64, 0, buffer);\nm.setColumn(64 + buffer[0], 0);\nfor (int i=0; i<buffer[0]+1; i++)\n {\ndelay(scrollspeed);\nm.shiftLeft(false, false);\n}\n}';
-  Blockly.Arduino.definitions_['define_putString'] = 'void putString(char* s, int scrollspeed)\n{\nwhile (*s != 0)\n{\nputChar(*s, scrollspeed);\ns++;\n}\n}';
+  Blockly.Arduino.definitions_['define_putChar'] = 'void putChar(char c, int scrollspeed)\n{\n	if (c < 32 || c > 127) \n	return;\n	c -= 32;\n	memcpy_P(buffer, LIST + 7*c, 7);\n	m.writeSprite(64, 0, buffer);\n	m.setColumn(64 + buffer[0], 0);\n	for (int i=0; i<buffer[0]+1; i++)\n	{\n		delay(scrollspeed);\n		m.shiftLeft(false, false);\n	}\n}';
+  Blockly.Arduino.definitions_['define_putString'] = 'void putString(char* s, int scrollspeed)\n{\n	while (*s != 0)\n	{\n		putChar(*s, scrollspeed);\n		s++;\n	}\n}';
   code += 'putString(message, ' + speed + ');\n';
   return code;
 };
 
 //显示-max7219-显示图案 
 Blockly.Arduino.MAX7219_DisplayChar = function() {
-//var lc_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
-//  var lc_num=1;
-var code;
-var lc_chars = Blockly.Arduino.valueToCode(this, 'Chars', Blockly.Arduino.ORDER_ATOMIC);
-code = 'for (int i = 0; i < 8; i++)\n';
-code += ' m.setColumn(i, ' + lc_chars + '[i]);\n';
-return code;
+	var code;
+	var lc_chars = Blockly.Arduino.valueToCode(this, 'Chars', Blockly.Arduino.ORDER_ATOMIC);
+	code = 'for (int i = 0; i < 8; i++)\n';
+	code += '	m.setColumn(i, ' + lc_chars + '[i]);\n';
+	return code;
 };
 
 
@@ -521,14 +520,14 @@ Blockly.Arduino.LedArray = function() {
     code += '0x' + tmp + ((i != 8) ? ',' : '');
   }
   code += '};\n';
-//Blockly.Arduino.definitions_[this.id] = "byte LedArray_"+clearString(this.id)+"[]="+code;
-Blockly.Arduino.definitions_[varName] = "byte " + varName + "[]=" + code;
-//return ["LedArray_"+clearString(this.id), Blockly.Arduino.ORDER_ATOMIC];
-return [varName, Blockly.Arduino.ORDER_ATOMIC];
+
+	Blockly.Arduino.definitions_[varName] = "byte " + varName + "[]=" + code;
+
+	return [varName, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 //显示-max7219-选择图案
-Blockly.Arduino.Max7219_img = function() {
+Blockly.Arduino.Matrix_img = function() {
   var dropdown_img_ = this.getFieldValue('img_');
   var code = '"' + dropdown_img_ + '"';
   code = '{';
@@ -536,6 +535,6 @@ Blockly.Arduino.Max7219_img = function() {
     code += '0x' + dropdown_img_.substr(i, 2) + ((i != 14) ? ',' : '');
   }
   code += '};\n';
-  Blockly.Arduino.definitions_['max7219_img_' + dropdown_img_] = "byte " + 'max7219_img_' + dropdown_img_ + "[]=" + code;
-  return ['max7219_img_' + dropdown_img_, Blockly.Arduino.ORDER_ATOMIC];
+  Blockly.Arduino.definitions_['matrix_img_' + dropdown_img_] = "byte " + 'matrix_img_' + dropdown_img_ + "[]=" + code;
+  return ['matrix_img_' + dropdown_img_, Blockly.Arduino.ORDER_ATOMIC];
 };

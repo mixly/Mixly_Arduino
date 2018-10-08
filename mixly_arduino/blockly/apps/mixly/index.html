@@ -1449,10 +1449,10 @@ if(clickedName=="arduino"){
     <block type="display_Matrix_LedArray"></block>
   </value>
 </block>
+<block type="Matrix_img">
 <block type="display_Matrix_CLEAR">
 </block>
-<!--
-<block type="MAX7219_init" name="LED点阵初始化">
+<block type="MAX7219_init">
       <value name="PIN1">
         <shadow type="pins_digital">
           <field name="PIN">8</field>
@@ -1479,7 +1479,7 @@ if(clickedName=="arduino"){
         </shadow>
       </value>
     </block>
-    <block type="MAX7219_putString" name="max7219滚动字符串">
+    <block type="MAX7219_putString">
       <value name="String">
         <shadow type="text">
           <field name="TEXT">mixly</field>
@@ -1492,14 +1492,14 @@ if(clickedName=="arduino"){
       </value>
     </block>
 
-    <block type="MAX7219_DisplayChar" name="显示图案">
+    <block type="MAX7219_DisplayChar">
       <value name="Chars">
         <block type="LedArray"></block>
       </value>
     </block>
 
-    <block type="Max7219_img" name="预设图案">
-    </block>-->
+    
+    </block>
 </category>
 <category id="catEthernet" colour="0">
   <block type="ethernet_init_begin">
