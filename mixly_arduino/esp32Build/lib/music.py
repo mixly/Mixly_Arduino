@@ -5,6 +5,5 @@ def pitch(freq,pwm):
 	pwm.duty(512)
 	pwm.freq(freq)
 def stop(pwm):
-	pwm.duty(512)
-	pwm.freq(20000)
-	pwm.deinit()
+	pwm.duty(0)
+	pwm.freq(1)
