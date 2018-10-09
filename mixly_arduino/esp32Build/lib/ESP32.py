@@ -141,36 +141,27 @@ class led:
         self.val = val
         PWM(Pin(self.pin)).duty(1023-self.val)
     def setbrightness(n,val):
-        if(n==1):
-            n=0
-        if(n==2):
-            n=5
-        PWM(Pin(n)).duty(1023-val)
+        if n in (1,2):
+            n = 5 * (n - 1)
+            PWM(Pin(n)).duty(1023 - val)
     def setonoff(n,val):
-        if(val=='on'):
-            val=0
-            if(n==1):
-                n=0
-            if(n==2):
-                n=5
-            Pin(n).value(val)
-        if(val=='off'):
-            val=1
-            if(n==1):
-                n =0
-            if(n==2):
-                n=5
-            Pin(n).value(val)
-
+        if n in (1,2):
+            n = 5 * (n - 1)
+            if(val=='on'):
+                Pin(n).value(1)
+            if(val=='off'):
+                Pin(n).value(0)
+            if(val=='toggle'):
+                Pin(n).value(1 - Pin(n).value()) 
 
 class music:
     def __init__(self, pin):
         self.val = 1
         self.pin = pin
     def play(self,val):
-        PWM(Pin(self.pin),freq=val)
+        PWM(Pin(self.pin), freq=val)
     def stop(self):
-        PWM(Pin(self.pin)).deinit()
+        PWM(Pin(self.pin)).duty(0)
 
 class ADCSensor:
     def __init__(self,pin):
