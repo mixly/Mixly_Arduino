@@ -11,7 +11,7 @@ Blockly.Blocks.servo_move = {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
             .appendField(Blockly.MIXLY_SERVO)
-            .appendField(Blockly.MIXLY_PIN)
+            .appendField(Blockly.MIXLY_PIN + " #")
             .setCheck(Number);
         this.appendValueInput("DEGREE", Number)
             .setCheck(Number)
@@ -57,9 +57,9 @@ Blockly.Blocks.led_bright = {
   init: function() {
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput()
-    .appendField(Blockly.MIXLY_SET_LED);
+    .appendField(Blockly.MIXLY_SETTING);
     this.appendValueInput('led')
-    .appendField(Blockly.LUXE_LED)
+    .appendField(Blockly.MIXLY_BUILDIN_LED)
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_PULSEIN_STAT)  
     .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ESP32_ON, "on"], [Blockly.MIXLY_ESP32_OFF, "off"],[Blockly.MIXLY_ESP32_TOGGLE, "toggle"]]), "bright");
@@ -88,9 +88,9 @@ Blockly.Blocks.led_brightness = {
   init: function() {
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput()
-    .appendField(Blockly.MIXLY_SET_LED);
+    .appendField(Blockly.MIXLY_SETTING);
     this.appendValueInput('led')
-    .appendField(Blockly.LUXE_LED)
+    .appendField(Blockly.MIXLY_BUILDIN_LED)
     this.appendValueInput('bright')
     .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS)
     this.setPreviousStatement(true, null);
@@ -105,7 +105,7 @@ Blockly.Blocks.esp32_music_pitch = {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
             .appendField(Blockly.MIXLY_MBOT_TONE)
-            .appendField(Blockly.MIXLY_PIN)
+            .appendField(Blockly.MIXLY_PIN + " #")
             .setCheck(Number);
         this.appendValueInput('pitch')
             .setCheck(Number)
