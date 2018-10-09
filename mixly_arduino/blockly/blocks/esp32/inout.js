@@ -166,17 +166,20 @@ Blockly.Blocks.inout_digital_write = {
 Blockly.Blocks['inout_pinMode'] = {
     init: function() {
         this.setColour(20);
-        this.appendValueInput("PIN", Number)
-            .appendField(Blockly.MIXLY_SETUP)
-            .appendField(Blockly.MIXLY_PIN)
-            .setCheck(Number);
         this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE+Blockly.Msg.LISTS_SET_INDEX_INPUT_TO)
+            .appendField(Blockly.MIXLY_SETUP)
+            // .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE+Blockly.Msg.LISTS_SET_INDEX_INPUT_TO)
             .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_Digital_PINMODEOUT, "Pin.OUT"], 
                 [Blockly.MIXLY_Digital_PINMODEIN, "Pin.IN"],
                 [Blockly.MIXLY_PINMODEPULLUP, "Pin.IN, Pin.PULL_UP"],
                 [Blockly.MIXLY_PINMODEPULLDOWN, "Pin.IN, Pin.PULL_DOWN"]
                 ]),"MODE")
+        this.appendDummyInput("")
+            // .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE+Blockly.Msg.LISTS_SET_INDEX_INPUT_TO)
+            .appendField(' pin')
+            .appendField(new Blockly.FieldDropdown(profile.default.digital_pin),"PIN")
+        // this.appendValueInput("PIN", Number)
+        //     .setCheck(Number);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
@@ -205,10 +208,17 @@ Blockly.Blocks.controls_pin_attachInterrupt = {
 Blockly.Blocks.inout_pwm_analog_write_init = {
   init: function() {
     this.setColour(Blockly.Blocks.base.HUE);
-    this.appendValueInput("PIN", Number)
+    // this.appendValueInput("PIN", Number)
+    //     .appendField(Blockly.MIXLY_SETUP)
+    //     .appendField("PWM"+Blockly.MIXLY_Analog_PINMODEOUT)
+    //     .appendField('pwm')
+    //     .setCheck(Number);
+    this.appendDummyInput("")
         .appendField(Blockly.MIXLY_SETUP)
         .appendField("PWM"+Blockly.MIXLY_Analog_PINMODEOUT)
-        .setCheck(Number);
+        .appendField('pwm')
+        .appendField(new Blockly.FieldDropdown(profile.default.pwm_pin),"PIN")
+    this.appendDummyInput("")
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -219,10 +229,16 @@ Blockly.Blocks.inout_pwm_analog_write_init = {
 Blockly.Blocks.inout_analog_write_init = {
   init: function() {
     this.setColour(Blockly.Blocks.base.HUE);
-    this.appendValueInput("PIN", Number)
+    // this.appendValueInput("PIN", Number)
+    //     .appendField(Blockly.MIXLY_SETUP)
+    //     .appendField("DAC"+Blockly.MIXLY_Analog_PINMODEOUT)
+    //     .appendField('dac')
+    //     .setCheck(Number);
+    this.appendDummyInput("")
         .appendField(Blockly.MIXLY_SETUP)
         .appendField("DAC"+Blockly.MIXLY_Analog_PINMODEOUT)
-        .setCheck(Number);
+        .appendField('dac')
+        .appendField(new Blockly.FieldDropdown(profile.default.dac_pin),"PIN")
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -232,10 +248,16 @@ Blockly.Blocks.inout_analog_write_init = {
 Blockly.Blocks.inout_analog_read_init = {
   init: function() {
     this.setColour(Blockly.Blocks.base.HUE);
-    this.appendValueInput("PIN", Number)
+    // this.appendValueInput("PIN", Number)
+    //     .appendField(Blockly.MIXLY_SETUP)
+    //     .appendField(Blockly.MIXLY_Analog_PINMODEIN)
+    //     .appendField('adc')
+    //     .setCheck(Number);
+    this.appendDummyInput("")
         .appendField(Blockly.MIXLY_SETUP)
         .appendField(Blockly.MIXLY_Analog_PINMODEIN)
-        .setCheck(Number);
+        .appendField('adc')
+        .appendField(new Blockly.FieldDropdown(profile.default.analog_pin),"PIN")
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -245,9 +267,15 @@ Blockly.Blocks.inout_analog_read_init = {
 Blockly.Blocks['pin_pressed_init'] = {
     init: function(){
         this.setColour(Blockly.Blocks.base.HUE);
-        this.appendValueInput('pin')
+        // this.appendValueInput('pin')
+        //     .appendField(Blockly.MIXLY_SETUP)
+        //     .appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR)
+        //     .appendField('tc');
+        this.appendDummyInput("")
             .appendField(Blockly.MIXLY_SETUP)
-            .appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR);
+            .appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR)
+            .appendField('tc')
+            .appendField(new Blockly.FieldDropdown(profile.default.touch_pin),"PIN")
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

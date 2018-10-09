@@ -513,10 +513,10 @@ Blockly.Blocks.HCSR04 = {
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_CHAOSHENGBO);
         this.appendValueInput("PIN1", Number)
-            .appendField('Trig#')
+            .appendField('Trig #')
             .setCheck(Number);
         this.appendValueInput("PIN2", Number)
-            .appendField('Echo#')
+            .appendField('Echo #')
             .setCheck(Number);
         this.setInputsInline(true);
         this.setOutput(true, Number);
@@ -533,7 +533,7 @@ Blockly.Blocks.dht11 = {
             .appendField(new Blockly.FieldDropdown([['DHT11', 'dht11']
                 , ['DHT22', 'dht22']//, ['DHT21', '21'], ['DHT33', '33'], ['DHT44', '44']
                 ]), 'TYPE')
-            .appendField(Blockly.MIXLY_PIN)
+            .appendField(Blockly.MIXLY_PIN + " #")
             .setCheck(Number);
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown(WHAT), "WHAT");
@@ -710,8 +710,8 @@ Blockly.Blocks['sensor_bmp'] = {
             .setCheck("var");
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown([
-                [Blockly.MIXLY_GETTEMPERATUE, "temperature"],
-                [Blockly.MIXLY_GETPRESSURE, "pressure"]
+                [Blockly.MIXLY_GETTEMPERATUE, "get_temperature()"],
+                [Blockly.MIXLY_GETPRESSURE, "get_pressure()"]
                 ]), "key");
         this.setOutput(true, Number);
         this.setInputsInline(true);

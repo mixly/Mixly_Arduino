@@ -12,7 +12,7 @@ Blockly.Python.esp32_music_pitch = function(block) {
   var number_pitch = Blockly.Python.valueToCode(block, 'pitch', Blockly.Python.ORDER_ATOMIC);
   // var number_duration = Blockly.Python.valueToCode(block, 'duration', Blockly.Python.ORDER_ATOMIC);
   var pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_ATOMIC);
-  var code = 'music.pitch(round(' + number_pitch + '), pwm' + pin + ')\n';
+  var code = 'music.pitch(round(' + number_pitch + '), PWM(Pin(' + pin + ')))\n';
   return code;
 };
 
@@ -22,7 +22,7 @@ Blockly.Python.esp32_music_stop = function(block) {
   Blockly.Python.definitions_['import_music'] = 'import music';
   var pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_ATOMIC);
   //Blockly.Python.setups_['music'+pin] ='music'+pin+'.pwm(Pin('+pin+'))\n'+'music'+pin+'.duty(512)\n';
-  var code = 'music.stop(pwm'+pin+')\n';
+  var code = 'music.stop(PWM(Pin('+pin+')))\n';
   return code;
 };
 
@@ -39,7 +39,7 @@ Blockly.Python.servo_move = function() {
   //value_degree = value_degree.replace('(','').replace(')','')
   //var delay_time = Blockly.Python.valueToCode(this, 'DELAY_TIME', Blockly.Python.ORDER_ATOMIC) || '0'
   //delay_time = delay_time.replace('(','').replace(')',''); 
-  var code = 'servo.write_angle(pwm'+dropdown_pin+','+value_degree+')\n';
+  var code = 'servo.write_angle(PWM(Pin('+dropdown_pin+')),'+value_degree+')\n';
   return code;
 };
 

@@ -291,7 +291,7 @@ Blockly.Python.dht11 = function () {
     var sensor_type = this.getFieldValue('TYPE');
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var what = this.getFieldValue('WHAT');
-    var code ='dhtx.get_'+what+"('"+sensor_type+"',"+dropdown_pin.substring(1)+')';
+    var code ='dhtx.get_'+what+"('"+sensor_type+"', "+dropdown_pin+')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 

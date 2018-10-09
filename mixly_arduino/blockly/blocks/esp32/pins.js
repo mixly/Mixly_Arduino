@@ -8,15 +8,15 @@ Blockly.Blocks['pins_digital'] = {
     this.setColour(Blockly.Blocks.pins.HUE);
     this.appendDummyInput("")
         .appendField(new Blockly.FieldDropdown(profile.default.digital), 'PIN');
-    this.setOutput(true, Number);
+    this.setOutput(true);
   }
 };
 
-Blockly.Blocks['pins_pin'] = {
+Blockly.Blocks['pins_digital_pin'] = {
    init: function() {
     this.setColour(Blockly.Blocks.pins.HUE);
     this.appendDummyInput("")
-        .appendField(new Blockly.FieldDropdown(profile.default.pin), 'PIN');
+        .appendField(new Blockly.FieldDropdown(profile.default.digital_pin), 'PIN');
     this.setOutput(true, Number);
   }
 };
@@ -27,6 +27,15 @@ Blockly.Blocks['pins_analog'] = {
     this.setColour(Blockly.Blocks.pins.HUE);
     this.appendDummyInput("")
         .appendField(new Blockly.FieldDropdown(profile.default.analog), 'PIN');
+    this.setOutput(true);
+  }
+};
+
+Blockly.Blocks['pins_analog_pin'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.pins.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.analog_pin), 'PIN');
     this.setOutput(true, Number);
   }
 };
@@ -36,6 +45,15 @@ Blockly.Blocks['pins_dac'] = {
     this.setColour(Blockly.Blocks.pins.HUE);
     this.appendDummyInput("")
         .appendField(new Blockly.FieldDropdown(profile.default.dac), 'PIN');
+    this.setOutput(true);
+  }
+};
+
+Blockly.Blocks['pins_dac_pin'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.pins.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.dac_pin), 'PIN');
     this.setOutput(true, Number);
   }
 };
@@ -54,16 +72,34 @@ Blockly.Blocks['pins_pwm'] = {
     this.setColour(Blockly.Blocks.pins.HUE);
     this.appendDummyInput("")
         .appendField(new Blockly.FieldDropdown(profile.default.pwm), 'PIN');
+    this.setOutput(true);
+  }
+};
+
+Blockly.Blocks['pins_pwm_pin'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.pins.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.pwm_pin), 'PIN');
     this.setOutput(true, Number);
   }
 };
 
-Blockly.Blocks['pins_interrupt'] = {
+Blockly.Blocks['pins_touch_pin'] = {
    init: function() {
     this.setColour(Blockly.Blocks.pins.HUE);
     this.appendDummyInput("")
-        .appendField(new Blockly.FieldDropdown(profile.default.interrupt), 'PIN');
+        .appendField(new Blockly.FieldDropdown(profile.default.touch_pin), 'PIN');
     this.setOutput(true, Number);
+  }
+};
+
+Blockly.Blocks['pins_touch'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.pins.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.touch), 'PIN');
+    this.setOutput(true);
   }
 };
 

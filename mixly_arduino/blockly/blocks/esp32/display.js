@@ -880,7 +880,7 @@ Blockly.Blocks.display_rgb_init = {
         this.appendValueInput("PIN", Number)
            .setCheck(Number)
            .setAlign(Blockly.ALIGN_RIGHT)
-           .appendField(Blockly.MIXLY_PIN);
+           .appendField(Blockly.MIXLY_PIN+" #");
         this.appendValueInput("LEDCOUNT")
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
