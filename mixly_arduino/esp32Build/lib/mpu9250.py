@@ -490,8 +490,7 @@ class MPU9250:
     def __exit__(self, exception_type, exception_value, traceback):
         pass
 
-# i2c = I2C(scl=Pin(22), sda=Pin(21), freq=100000)
-# mpu = MPU9250(i2c)
+mpu = MPU9250(I2C(scl=Pin(22), sda=Pin(21), freq=100000))
 # compass = mpu
 # accelerometer = mpu
 

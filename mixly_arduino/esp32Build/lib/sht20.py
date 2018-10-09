@@ -35,3 +35,5 @@ class SHT20(object):
         origin_value = unp('>H', origin_data)[0]
         value = -6 + 125 * (origin_value / 65536)
         return value
+
+sht = SHT20(I2C(scl = Pin(22), sda = Pin(21), freq = 100000))

@@ -149,15 +149,15 @@ class BMP280:
             var2 = (((((self._t_raw >> 4) - self._T1) * ((self._t_raw >> 4) - self._T1)) >> 12) * self._T3) >> 14
             self._t_fine = var1 + var2
 
-    @property
-    def temperature(self):
+    # @property
+    def get_temperature(self):
         self._calc_t_fine()
         if self._t == 0:
             self._t = ((self._t_fine * 5 + 128) >> 8) / 100.
         return self._t
 
-    @property
-    def pressure(self):
+    # @property
+    def get_pressure(self):
         # From datasheet page 22
         self._calc_t_fine()
         if self._p == 0:
@@ -182,8 +182,7 @@ class BMP280:
 
 
 
-bus = I2C(scl = Pin(22), sda = Pin(21), freq = 100000)
-bmp = BMP280(bus)
+bmp = BMP280(I2C(scl = Pin(22), sda = Pin(21), freq = 100000))
 
-print(bmp.temperature)
-print(bmp.pressure)  
+# print(bmp.temperature)
+# print(bmp.pressure)  
