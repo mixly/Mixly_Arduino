@@ -233,7 +233,7 @@ pbc.objectFunctionD.get('get_field_strength')['mpu'] = fieldStrength('strength')
 pbc.objectFunctionD.get('heading')['mpu'] = fieldStrength('heading');
 
 
-pbc.objectFunctionD.get('get_temperature')['mpu'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('get_BMP_temperature')['mpu'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -245,3 +245,70 @@ pbc.objectFunctionD.get('get_temperature')['mpu'] = function (py2block, func, ar
         "inline": "true"
     });
 }
+
+function sensorBmp(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var mpublock=py2block.convert(func.value)
+        return block('sensor_bmp', func.lineno, {
+                "key": mode
+            }, {
+                'SUB': mpublock
+            }, {
+                "inline": "true"
+            });
+    }
+    return converter;
+}
+
+pbc.objectFunctionD.get('get_BMP_temperature')['mpu'] = sensorBmp('get_BMP_temperature()');
+pbc.objectFunctionD.get('get_BMP_pressure')['mpu'] = sensorBmp('get_BMP_pressure()');
+
+function sensorSht(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var mpublock=py2block.convert(func.value)
+        return block('sensor_sht', func.lineno, {
+                "key": mode
+            }, {
+                'SUB': mpublock
+            }, {
+                "inline": "true"
+            });
+    }
+    return converter;
+}
+
+pbc.objectFunctionD.get('get_SHT_temperature')['mpu'] = sensorSht('get_SHT_temperature()');
+pbc.objectFunctionD.get('get_SHT_relative_humidity')['mpu'] = sensorSht('get_SHT_relative_humidity()');
+
+
+
+function dht(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 2) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var pinType="pins_digital"
+        var pinblock=py2block.convert(args[1])
+        var pinType=null
+        var dhtblock=py2block.identifier(args[0].s)
+        return block('dht11', func.lineno, {
+                'TYPE':dhtblock,
+                'tempandhum':mode
+            }, {
+                "WHAT": pinblock
+            }, {
+                "inline": "true"
+            });
+    }
+    return converter;
+}
+
+pbc.moduleFunctionD.get('dhtx')['get_temperature'] = dht('temperature');
+pbc.moduleFunctionD.get('dhtx')['get_humidity'] = dht('humidity');
+pbc.moduleFunctionD.get('dhtx')['get_tempandhum'] = dht('all');
