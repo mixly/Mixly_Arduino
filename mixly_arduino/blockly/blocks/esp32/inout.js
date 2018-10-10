@@ -166,27 +166,37 @@ Blockly.Blocks.inout_digital_write = {
 Blockly.Blocks['inout_pinMode'] = {
     init: function() {
         this.setColour(20);
-        this.appendDummyInput("")
+        this.appendDummyInput()
             .appendField(Blockly.MIXLY_SETUP)
+            .appendField(new Blockly.FieldTextInput('pin#'), 'PIN_OBJ');
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_MICROPYTHON_AS)
             // .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE+Blockly.Msg.LISTS_SET_INDEX_INPUT_TO)
             .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_Digital_PINMODEOUT, "Pin.OUT"], 
                 [Blockly.MIXLY_Digital_PINMODEIN, "Pin.IN"],
                 [Blockly.MIXLY_PINMODEPULLUP, "Pin.IN, Pin.PULL_UP"],
                 [Blockly.MIXLY_PINMODEPULLDOWN, "Pin.IN, Pin.PULL_DOWN"]
                 ]),"MODE")
-        this.appendDummyInput("")
-            // .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE+Blockly.Msg.LISTS_SET_INDEX_INPUT_TO)
-            .appendField(' pin')
-            .appendField(new Blockly.FieldDropdown(profile.default.digital_pin),"PIN")
-        // this.appendValueInput("PIN", Number)
-        //     .setCheck(Number);
+        this.appendValueInput("PIN", Number)
+            .appendField(Blockly.MIXLY_PIN + " #")
+            .setCheck(Number);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
-  }
+      },
+      getVars: function() {
+        return [this.getFieldValue('PIN_OBJ')=='pin#'?null:this.getFieldValue('PIN_OBJ')];
+      },
+      renameVar: function(oldName, newName) {
+        if (Blockly.Names.equals(oldName, this.getFieldValue('PIN_OBJ'))) {
+          this.setTitleValue(newName, 'PIN_OBJ');
+        }
+      }
 };
 
+Blockly.Blocks['inout_set_pinMode'] = {
 
+};
 
 Blockly.Blocks.controls_pin_attachInterrupt = {
   init: function() {
@@ -245,6 +255,7 @@ Blockly.Blocks.inout_analog_write_init = {
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE);
   }
 };
+
 Blockly.Blocks.inout_analog_read_init = {
   init: function() {
     this.setColour(Blockly.Blocks.base.HUE);
@@ -264,6 +275,7 @@ Blockly.Blocks.inout_analog_read_init = {
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_READ);
   }
 };
+
 Blockly.Blocks['pin_pressed_init'] = {
     init: function(){
         this.setColour(Blockly.Blocks.base.HUE);
