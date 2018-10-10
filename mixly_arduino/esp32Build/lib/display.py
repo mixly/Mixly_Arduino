@@ -288,7 +288,8 @@ class Display:
                     message_width = bf.width(msg)   # Message width in pixels.
                     bf.text(msg, 5, 0) #change X position
                     matrix._show()
-                    utime.sleep_ms(delay)    
+                    if len(data)>1:
+                        utime.sleep_ms(delay)    
         elif type(data)==int:
             pass
         elif type(data)==type(Image.HEART):
