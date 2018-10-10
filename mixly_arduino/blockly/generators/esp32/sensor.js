@@ -121,7 +121,7 @@ Blockly.Python.sensor_temperature = function(){
     Blockly.Python.definitions_['import_mpu9250_*'] = 'from mpu9250 import *';
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-    return [v+'.get_temperature()', Blockly.Python.ORDER_ATOMIC];
+    return [v+'.get_board_temperature()', Blockly.Python.ORDER_ATOMIC];
 };
 Blockly.Python.sensor_field_strength= function(){
     Blockly.Python.definitions_['import_mpu9250_*'] = 'from mpu9250 import *';

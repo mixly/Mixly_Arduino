@@ -710,8 +710,8 @@ Blockly.Blocks['sensor_bmp'] = {
             .setCheck("var");
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown([
-                [Blockly.MIXLY_GETTEMPERATUE, "get_temperature()"],
-                [Blockly.MIXLY_GETPRESSURE, "get_pressure()"]
+                [Blockly.MIXLY_GETTEMPERATUE, "get_BMP_temperature()"],
+                [Blockly.MIXLY_GETPRESSURE, "get_BMP_pressure()"]
                 ]), "key");
         this.setOutput(true, Number);
         this.setInputsInline(true);
@@ -727,8 +727,8 @@ Blockly.Blocks['sensor_sht'] = {
             .setCheck("var");
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown([
-                [Blockly.MIXLY_GETTEMPERATUE, "get_temperature()"],
-                [Blockly.MIXLY_GETHUMIDITY, "get_relative_humidity()"]
+                [Blockly.MIXLY_GETTEMPERATUE, "get_SHT_temperature()"],
+                [Blockly.MIXLY_GETHUMIDITY, "get_SHT_relative_humidity()"]
                 ]), "key");
         this.setOutput(true, Number);
         this.setInputsInline(true);

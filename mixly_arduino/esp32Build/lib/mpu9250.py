@@ -383,7 +383,7 @@ class MPU9250:
     #     pass `accel_fs=SF_G` parameter to the MPU6500 constructor.
     #     """
     #     return self.mpu6500.acceleration
-    def get_temperature(self):
+    def get_board_temperature(self):
 		return self.mpu6500.temperature
 		
     def get_values(self):

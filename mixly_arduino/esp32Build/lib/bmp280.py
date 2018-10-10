@@ -150,14 +150,14 @@ class BMP280:
             self._t_fine = var1 + var2
 
     # @property
-    def get_temperature(self):
+    def get_BMP_temperature(self):
         self._calc_t_fine()
         if self._t == 0:
             self._t = ((self._t_fine * 5 + 128) >> 8) / 100.
         return self._t
 
     # @property
-    def get_pressure(self):
+    def get_BMP_pressure(self):
         # From datasheet page 22
         self._calc_t_fine()
         if self._p == 0:

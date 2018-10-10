@@ -9,7 +9,7 @@ Blockly.Blocks.factory_from_import = {
     this.setColour(Blockly.Blocks.factory.HUE);
   this.appendDummyInput("")
         .appendField("from ")
-        .appendField(new Blockly.FieldTextInput('microbit'), 'path')
+        .appendField(new Blockly.FieldTextInput('ESP32'), 'path')
         .appendField(" import ")
         .appendField(new Blockly.FieldTextInput('*'), 'module');
     this.setPreviousStatement(true);

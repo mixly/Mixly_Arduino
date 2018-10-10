@@ -20,7 +20,7 @@ class SHT20(object):
         self._address = SHT20_I2CADDR
         self._bus = i2c_bus
 
-    def get_temperature(self):
+    def get_SHT_temperature(self):
         self._bus.writeto(self._address, TRI_T_MEASURE_NO_HOLD)
         sleep_ms(150)
         origin_data = self._bus.readfrom(self._address, 2)
@@ -28,7 +28,7 @@ class SHT20(object):
         value = -46.85 + 175.72 * (origin_value / 65536)
         return value
 
-    def get_relative_humidity(self):
+    def get_SHT_relative_humidity(self):
         self._bus.writeto(self._address, TRI_RH_MEASURE_NO_HOLD)
         sleep_ms(150)
         origin_data = self._bus.readfrom(self._address, 2)
