@@ -55,3 +55,17 @@ pbc.moduleFunctionD.get('time')['ticks_us'] = function(py2block, func, args, key
         "inline": "true"
     });
 }
+
+pbc.moduleFunctionD.get('time')['ticks_diff'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var endblock=py2block.convert(args[0]);
+    var startblock=py2block.convert(args[1]);
+    return block("time_ticks_diff", func.lineno, {}, {
+    "END":endblock,
+    "START":startblock
+    }, {
+        "inline": "true"
+    });
+}
