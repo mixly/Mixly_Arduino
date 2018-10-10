@@ -163,6 +163,23 @@ Blockly.Blocks.inout_digital_write = {
   }
 };
 
+Blockly.Blocks.controls_pin_attachInterrupt = {
+  init: function() {
+    this.setColour(20);
+    this.appendValueInput("PIN", Number)
+        .appendField(Blockly.MIXLY_ATTACHINTERRUPT_PIN)
+        .setCheck(Number);
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_MODE)
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RISING, "Pin.IRQ_RISING"], [Blockly.MIXLY_FALLING, "Pin.IRQ_FALLING"], [Blockly.MIXLY_CHANGE, "(Pin.IRQ_RISING or Pin.IRQ_FALLING)"]]), "mode");
+    this.appendStatementInput('DO')
+        .appendField(Blockly.MIXLY_DO);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
+  }
+};
+
 Blockly.Blocks['inout_pinMode'] = {
     init: function() {
         this.setColour(20);
@@ -194,104 +211,138 @@ Blockly.Blocks['inout_pinMode'] = {
       }
 };
 
-Blockly.Blocks['inout_set_pinMode'] = {
-
-};
-
-Blockly.Blocks.controls_pin_attachInterrupt = {
-  init: function() {
-    this.setColour(20);
-    this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_ATTACHINTERRUPT_PIN)
-        .setCheck(Number);
-    this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_MODE)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RISING, "Pin.IRQ_RISING"], [Blockly.MIXLY_FALLING, "Pin.IRQ_FALLING"], [Blockly.MIXLY_CHANGE, "(Pin.IRQ_RISING or Pin.IRQ_FALLING)"]]), "mode");
-    this.appendStatementInput('DO')
-        .appendField(Blockly.MIXLY_DO);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
-  }
-};
-
 Blockly.Blocks.inout_pwm_analog_write_init = {
-  init: function() {
-    this.setColour(Blockly.Blocks.base.HUE);
-    // this.appendValueInput("PIN", Number)
-    //     .appendField(Blockly.MIXLY_SETUP)
-    //     .appendField("PWM"+Blockly.MIXLY_Analog_PINMODEOUT)
-    //     .appendField('pwm')
-    //     .setCheck(Number);
-    this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_SETUP)
-        .appendField("PWM"+Blockly.MIXLY_Analog_PINMODEOUT)
-        .appendField('pwm')
-        .appendField(new Blockly.FieldDropdown(profile.default.pwm_pin),"PIN")
-    this.appendDummyInput("")
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_PY);
-  }
-};
-
-Blockly.Blocks.inout_analog_write_init = {
-  init: function() {
-    this.setColour(Blockly.Blocks.base.HUE);
-    // this.appendValueInput("PIN", Number)
-    //     .appendField(Blockly.MIXLY_SETUP)
-    //     .appendField("DAC"+Blockly.MIXLY_Analog_PINMODEOUT)
-    //     .appendField('dac')
-    //     .setCheck(Number);
-    this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_SETUP)
-        .appendField("DAC"+Blockly.MIXLY_Analog_PINMODEOUT)
-        .appendField('dac')
-        .appendField(new Blockly.FieldDropdown(profile.default.dac_pin),"PIN")
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE);
-  }
-};
-
-Blockly.Blocks.inout_analog_read_init = {
-  init: function() {
-    this.setColour(Blockly.Blocks.base.HUE);
-    // this.appendValueInput("PIN", Number)
-    //     .appendField(Blockly.MIXLY_SETUP)
-    //     .appendField(Blockly.MIXLY_Analog_PINMODEIN)
-    //     .appendField('adc')
-    //     .setCheck(Number);
-    this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_SETUP)
-        .appendField(Blockly.MIXLY_Analog_PINMODEIN)
-        .appendField('adc')
-        .appendField(new Blockly.FieldDropdown(profile.default.analog_pin),"PIN")
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_READ);
-  }
-};
-
-Blockly.Blocks['pin_pressed_init'] = {
-    init: function(){
+    init: function() {
         this.setColour(Blockly.Blocks.base.HUE);
-        // this.appendValueInput('pin')
+        // this.appendValueInput("PIN", Number)
         //     .appendField(Blockly.MIXLY_SETUP)
-        //     .appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR)
-        //     .appendField('tc');
+        //     .appendField("PWM"+Blockly.MIXLY_Analog_PINMODEOUT)
+        //     .appendField('pwm')
+        //     .setCheck(Number);
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_SETUP)
-            .appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR)
-            .appendField('tc')
-            .appendField(new Blockly.FieldDropdown(profile.default.touch_pin),"PIN")
+            .appendField(new Blockly.FieldTextInput('pwm#'), 'PIN_OBJ')
+            .appendField(Blockly.MIXLY_MICROPYTHON_AS)
+        this.appendDummyInput("")
+            .appendField("PWM" + Blockly.MIXLY_Analog_PINMODEOUT)
+        // .appendField('pwm')
+        // .appendField(new Blockly.FieldDropdown(profile.default.pwm_pin),"PIN")
+        this.appendValueInput("PIN", Number)
+            .appendField(Blockly.MIXLY_PIN + " #")
+            .setCheck(Number);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_sensor_pin_pressed);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_PY);
+    },
+    getVars: function() {
+        return [this.getFieldValue('PIN_OBJ') == 'pwm#' ? null : this.getFieldValue('PIN_OBJ')];
+    },
+    renameVar: function(oldName, newName) {
+        if (Blockly.Names.equals(oldName, this.getFieldValue('PIN_OBJ'))) {
+            this.setTitleValue(newName, 'PIN_OBJ');
+        }
     }
 };
 
+Blockly.Blocks.inout_analog_write_init = {
+    init: function() {
+        this.setColour(Blockly.Blocks.base.HUE);
+        // this.appendValueInput("PIN", Number)
+        //     .appendField(Blockly.MIXLY_SETUP)
+        //     .appendField("PWM"+Blockly.MIXLY_Analog_PINMODEOUT)
+        //     .appendField('pwm')
+        //     .setCheck(Number);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_SETUP)
+            .appendField(new Blockly.FieldTextInput('dac#'), 'PIN_OBJ')
+            .appendField(Blockly.MIXLY_MICROPYTHON_AS)
+        this.appendDummyInput("")
+            .appendField("DAC" + Blockly.MIXLY_Analog_PINMODEOUT)
+        // .appendField('dac')
+        // .appendField(new Blockly.FieldDropdown(profile.default.dac_pin),"PIN")
+        this.appendValueInput("PIN", Number)
+            .appendField(Blockly.MIXLY_PIN + " #")
+            .setCheck(Number);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_PY);
+    },
+    getVars: function() {
+        return [this.getFieldValue('PIN_OBJ') == 'dac#' ? null : this.getFieldValue('PIN_OBJ')];
+    },
+    renameVar: function(oldName, newName) {
+        if (Blockly.Names.equals(oldName, this.getFieldValue('PIN_OBJ'))) {
+            this.setTitleValue(newName, 'PIN_OBJ');
+        }
+    }
+};
+
+Blockly.Blocks.inout_analog_read_init = {
+    init: function() {
+        this.setColour(Blockly.Blocks.base.HUE);
+        // this.appendValueInput("PIN", Number)
+        //     .appendField(Blockly.MIXLY_SETUP)
+        //     .appendField("PWM"+Blockly.MIXLY_Analog_PINMODEOUT)
+        //     .appendField('pwm')
+        //     .setCheck(Number);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_SETUP)
+            .appendField(new Blockly.FieldTextInput('adc#'), 'PIN_OBJ')
+            .appendField(Blockly.MIXLY_MICROPYTHON_AS)
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_Analog_PINMODEIN)
+        // .appendField('adc')
+        // .appendField(new Blockly.FieldDropdown(profile.default.adc_pin),"PIN")
+        this.appendValueInput("PIN", Number)
+            .appendField(Blockly.MIXLY_PIN + " #")
+            .setCheck(Number);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_PY);
+    },
+    getVars: function() {
+        return [this.getFieldValue('PIN_OBJ') == 'adc#' ? null : this.getFieldValue('PIN_OBJ')];
+    },
+    renameVar: function(oldName, newName) {
+        if (Blockly.Names.equals(oldName, this.getFieldValue('PIN_OBJ'))) {
+            this.setTitleValue(newName, 'PIN_OBJ');
+        }
+    }
+};
+
+Blockly.Blocks['pin_pressed_init'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.base.HUE);
+        // this.appendValueInput("PIN", Number)
+        //     .appendField(Blockly.MIXLY_SETUP)
+        //     .appendField("PWM"+Blockly.MIXLY_Analog_PINMODEOUT)
+        //     .appendField('pwm')
+        //     .setCheck(Number);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_SETUP)
+            .appendField(new Blockly.FieldTextInput('tc#'), 'PIN_OBJ')
+            .appendField(Blockly.MIXLY_MICROPYTHON_AS)
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR)
+        // .appendField('tc')
+        // .appendField(new Blockly.FieldDropdown(profile.default.tc_pin),"PIN")
+        this.appendValueInput("PIN", Number)
+            .appendField(Blockly.MIXLY_PIN + " #")
+            .setCheck(Number);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_PY);
+    },
+    getVars: function() {
+        return [this.getFieldValue('PIN_OBJ') == 'tc#' ? null : this.getFieldValue('PIN_OBJ')];
+    },
+    renameVar: function(oldName, newName) {
+        if (Blockly.Names.equals(oldName, this.getFieldValue('PIN_OBJ'))) {
+            this.setTitleValue(newName, 'PIN_OBJ');
+        }
+    }
+};

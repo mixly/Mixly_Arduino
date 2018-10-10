@@ -84,6 +84,22 @@ Blockly.Python.pin_pressed = function(){
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.controls_pin_attachInterrupt = function () {
+    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
+    var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var dropdown_mode = this.getFieldValue('mode');
+    // Blockly.Python.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT);';
+    //var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
+   
+    //var code = 'p' + dropdown_pin + '.irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
+    var code = 'Pin(' + dropdown_pin + ').irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
+    var funcName = 'attachInterrupt_func_' + dropdown_pin;
+    var branch = Blockly.Python.statementToCode(this, 'DO') || Blockly.Python.PASS;
+    var code2 = 'def' + ' ' + funcName + '(p):\n' + branch + '\n';
+    Blockly.Python.setups_[funcName] = code2;
+    return code;
+};
+
 Blockly.Python.inout_pinMode = function () {
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var pin_obj = this.getFieldValue('PIN_OBJ') || 'pin#';
@@ -94,50 +110,38 @@ Blockly.Python.inout_pinMode = function () {
     return code;
 };
 
-Blockly.Python.controls_pin_attachInterrupt = function () {
-    var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
-    var dropdown_mode = this.getFieldValue('mode');
-    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
-    // Blockly.Python.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT);';
-    //var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
-   
-    //var code = 'p' + dropdown_pin + '.irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
-	var code = 'Pin(' + dropdown_pin + ').irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
-    var funcName = 'attachInterrupt_func_' + dropdown_pin;
-    var branch = Blockly.Python.statementToCode(this, 'DO') || Blockly.Python.PASS;
-    var code2 = 'def' + ' ' + funcName + '(p):\n' + branch + '\n';
-    Blockly.Python.setups_[funcName] = code2;
-    return code;
-};
-
 Blockly.Python.inout_pwm_analog_write_init = function () {
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
-    // var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
-    var dropdown_pin = this.getFieldValue('PIN');
-    var code = 'pwm' + dropdown_pin + ' = PWM(Pin(' + dropdown_pin + '))\n';
+    var pin_obj = this.getFieldValue('PIN_OBJ') || 'pwm#';
+    var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var varName = (pin_obj == 'pwm#') ? 'pwm'+dropdown_pin : Blockly.Python.variableDB_.getName(pin_obj, Blockly.Variables.NAME_TYPE);
+    var code = varName + ' = PWM(Pin(' + dropdown_pin + '))\n';
     return code;
 };
 //ok
 Blockly.Python.inout_analog_write_init = function () {
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
-    // var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
-    var dropdown_pin = this.getFieldValue('PIN');
-    var code = 'dac' + dropdown_pin + ' = DAC(Pin(' + dropdown_pin + '))\n';
+    var pin_obj = this.getFieldValue('PIN_OBJ') || 'dac#';
+    var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var varName = (pin_obj == 'dac#') ? 'dac'+dropdown_pin : Blockly.Python.variableDB_.getName(pin_obj, Blockly.Variables.NAME_TYPE);
+    var code = varName + ' = DAC(Pin(' + dropdown_pin + '))\n';
     return code;
 };
 Blockly.Python.inout_analog_read_init = function () {
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
-    // var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
-    var dropdown_pin = this.getFieldValue('PIN');
-    var code = 'adc' + dropdown_pin + ' = ADC(Pin(' + dropdown_pin + '))\n';
+    var pin_obj = this.getFieldValue('PIN_OBJ') || 'adc#';
+    var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var varName = (pin_obj == 'adc#') ? 'adc'+dropdown_pin : Blockly.Python.variableDB_.getName(pin_obj, Blockly.Variables.NAME_TYPE);
+    var code = varName + ' = ADC(Pin(' + dropdown_pin + '))\n';
     return code;
 };
 //ok
 Blockly.Python.pin_pressed_init = function(){
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
-    // var pin = Blockly.Python.valueToCode(this, 'pin', Blockly.Python.ORDER_ATOMIC);
-    var dropdown_pin = this.getFieldValue('PIN');
-    var code = 'tc' + dropdown_pin + ' = TouchPad(Pin(' + dropdown_pin + '))\n';
+    var pin_obj = this.getFieldValue('PIN_OBJ') || 'tc#';
+    var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var varName = (pin_obj == 'tc#') ? 'tc'+dropdown_pin : Blockly.Python.variableDB_.getName(pin_obj, Blockly.Variables.NAME_TYPE);
+    var code = varName + ' = TouchPad(Pin(' + dropdown_pin + '))\n';
     return code;
 };
 
