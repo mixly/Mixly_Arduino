@@ -62,105 +62,37 @@ Blockly.Python.i2c_init = function () {
 
 Blockly.Python.i2c_read = function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var address = Blockly.Python.valueToCode(this, 'address', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     //var format = this.getFieldValue('format');
    //var is_repeated = this.getFieldValue('is_repeated');
     //is_repeated = is_repeated.substring(0,1).toUpperCase()+is_repeated.substring(1).toLowerCase();
-    return ""+name+".readfrom(" + address + ", " + data +  ")\n";
+    return "i2c.readfrom(" + address + ", " + data +  ")\n";
 };
-
 Blockly.Python.i2c_write = function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var address = Blockly.Python.valueToCode(this, 'address', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
    //var format = this.getFieldValue('format');
     //var is_repeated = this.getFieldValue('is_repeated');
     //is_repeated = is_repeated.substring(0,1).toUpperCase()+is_repeated.substring(1).toLowerCase();
-    return ""+name+".writeto("+ address + ", " + data + ")\n";
-};
-
-Blockly.Python.i2c_scan = function(){
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    return ""+name+".scan()\n";
+    return "i2c.writeto("+ address + ", " + data + ")\n";
 };
 
 Blockly.Python.spi_init= function(block) {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var name=Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var freq=Blockly.Python.valueToCode(this, 'freq', Blockly.Python.ORDER_ATOMIC);
-    var polarity=Blockly.Python.valueToCode(this, 'polarity', Blockly.Python.ORDER_ATOMIC);
-    var phase=Blockly.Python.valueToCode(this, 'phase', Blockly.Python.ORDER_ATOMIC);
-    var mosi = Blockly.Python.valueToCode(this, 'mosi', Blockly.Python.ORDER_ATOMIC);
-    var miso = Blockly.Python.valueToCode(this, 'miso', Blockly.Python.ORDER_ATOMIC);
-    var sck = Blockly.Python.valueToCode(this, 'sck', Blockly.Python.ORDER_ATOMIC);
-    return ""+name+" = SPI(-1, baudrate=" + freq + ", polarity=" + polarity + ", phase=" + phase + ", sck=Pin(" + sck + "), mosi=Pin(" + mosi + "), miso=Pin(" + miso + "));\n";
-}
-
-Blockly.Python.spi_set = function() {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
-    return ["spi.init(baudrate=" + data + ")", Blockly.Python.ORDER_ATOMIC];
-}
-
-Blockly.Python.spi_buffer = function() {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
-    return [""+varname+"=bytearray(" + data + ")", Blockly.Python.ORDER_ATOMIC];
-}
-
-Blockly.Python.spi_read = function() {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
-    return [""+varname+".read(" + data + ")", Blockly.Python.ORDER_ATOMIC];
-}
-
-Blockly.Python.spi_read_output = function() {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
-    var val = Blockly.Python.valueToCode(this, 'val', Blockly.Python.ORDER_ATOMIC);
-    return [""+varname+".read(" + data + ","+val+")", Blockly.Python.ORDER_ATOMIC];
-}
-
-Blockly.Python.spi_readinto = function() {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
-    return [""+varname+".readinto(" + data + ")", Blockly.Python.ORDER_ATOMIC];
-}
-
-Blockly.Python.spi_readinto_output = function() {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
-    var val = Blockly.Python.valueToCode(this, 'val', Blockly.Python.ORDER_ATOMIC);
-    return [""+varname+".readinto(" + data + ","+val+")", Blockly.Python.ORDER_ATOMIC];
+    var freq=block.getFieldValue('freq');
+    var bits=block.getFieldValue('bits');
+    var mode=block.getFieldValue('mode');
+    var mosi = block.getFieldValue('mosi');
+    var miso = block.getFieldValue('miso');
+    var sck = block.getFieldValue('sck');
+    return "spi.init(baudrate=" + freq + ", bits=" + bits + ", mode=" + mode + ", mosi=" + mosi + ", miso= " + miso  + ", sclk=" + sck +  ");\n";
 }
 
 Blockly.Python.spi_write = function() {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
-    return [""+varname+".write(b'" + data + "')", Blockly.Python.ORDER_ATOMIC];
-}
-
-Blockly.Python.spi_write_readinto = function() {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
-    var val = Blockly.Python.valueToCode(this, 'val', Blockly.Python.ORDER_ATOMIC);
-    var op=this.getFieldValue('op');
-    if(op=="byte"){
-      return [""+varname+".write_readinto(b'" + data + "',"+val+")", Blockly.Python.ORDER_ATOMIC];
-    }else{
-      return [""+varname+".write_readinto(" + data + ","+val+")", Blockly.Python.ORDER_ATOMIC];
-    }
+    return ["spi.write(b'" + data + "')", Blockly.Python.ORDER_ATOMIC];
 }
 
 Blockly.Python.network_init= function() {
@@ -276,14 +208,12 @@ Blockly.Python.network_scan= function() {
 
 Blockly.Python.i2c_master_reader2 = function () {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".read()";
+    var code = "i2c.read()";
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 Blockly.Python.i2c_available = function () {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".available()";
+    var code = "i2c.available()";
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
@@ -356,56 +286,4 @@ Blockly.Python.network_server= function() {
     +'print(ip)\n'
     +'time.sleep(1)\n'
     +'DATA=listenData()\n'   
-};
-
-Blockly.Python.ow_init = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var varName =Blockly.Python.valueToCode(this, 'BUS',Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+"=onewire.OneWire(Pin("+varName+"))";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.ow_scan = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".scan()";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.ow_reset = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".reset()";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.ow_read = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".readbyte()";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.ow_write = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var varName =Blockly.Python.valueToCode(this, 'byte',Blockly.Python.ORDER_ATOMIC);
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var op=this.getFieldValue('op');
-    var code = ""+name+"."+op+"("+varName+")";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.ow_select = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var varName =Blockly.Python.valueToCode(this, 'byte',Blockly.Python.ORDER_ATOMIC);
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".select_rom(b'" + varName + "')";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
+}
