@@ -86,11 +86,10 @@ Blockly.Python.pin_pressed = function(){
 
 Blockly.Python.inout_pinMode = function () {
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
-    var pin_obj = this.getFieldValue('PIN_OBJ') || 'pin#';
-    var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    // var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var dropdown_pin = this.getFieldValue('PIN');
     var dropdown_mode = this.getFieldValue('MODE');
-    var varName = (pin_obj == 'pin#') ? 'pin'+dropdown_pin : Blockly.Python.variableDB_.getName(pin_obj, Blockly.Variables.NAME_TYPE);
-    var code =  varName + ' = Pin(' + dropdown_pin + ', '+ dropdown_mode +')\n';
+    var code =  'pin'+ dropdown_pin +' = Pin(' + dropdown_pin + ', '+ dropdown_mode +')\n';
     return code;
 };
 
