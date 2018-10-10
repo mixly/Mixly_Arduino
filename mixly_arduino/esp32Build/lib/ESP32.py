@@ -148,9 +148,9 @@ class led:
         if n in (1,2):
             n = 5 * (n - 1)
             if(val=='on'):
-                Pin(n).value(1)
-            if(val=='off'):
                 Pin(n).value(0)
+            if(val=='off'):
+                Pin(n).value(1)
             if(val=='toggle'):
                 Pin(n).value(1 - Pin(n).value()) 
 
