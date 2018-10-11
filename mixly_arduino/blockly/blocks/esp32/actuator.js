@@ -83,6 +83,19 @@ Blockly.Blocks.led_bright = {
 //     this.setInputsInline(true);
 //   }
 // };
+Blockly.Blocks.get_led_bright = {
+  init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput()
+    .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET);
+    this.appendValueInput('led')
+    .appendField(Blockly.MIXLY_BUILDIN_LED)
+    this.appendDummyInput()
+    .appendField(Blockly.MIXLY_PULSEIN_STAT)  
+    this.setOutput(true);
+    this.setInputsInline(true);
+  }
+};
 
 Blockly.Blocks.led_brightness = {
   init: function() {

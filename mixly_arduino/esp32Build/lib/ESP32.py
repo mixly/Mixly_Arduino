@@ -153,6 +153,10 @@ class led:
                 Pin(n).value(1)
             if(val=='toggle'):
                 Pin(n).value(1 - Pin(n).value()) 
+    def getonoff(n,val):
+        if n in (1,2):
+            n = 5 * (n - 1)
+            return 1 - Pin(n).value()
 
 class music:
     def __init__(self, pin):
