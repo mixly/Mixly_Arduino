@@ -80,8 +80,8 @@ Blockly.Python.get_led_bright= function() {
     var op = Blockly.Python.valueToCode(this,'led', Blockly.Python.ORDER_ATOMIC);
  
     // var flag = Blockly.Python.valueToCode(this,'bright', Blockly.Python.ORDER_ATOMIC);
-    var code = "led.getonoff("+op+")\n";
-    return code;
+    var code = "led.getonoff("+op+")";
+    return [code, Blockly.Python.ORDER_ATOMIC];;
 };
 
 Blockly.Python.led_brightness= function() {
