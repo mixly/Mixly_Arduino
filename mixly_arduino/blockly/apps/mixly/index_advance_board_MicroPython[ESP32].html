@@ -450,13 +450,14 @@
   <!-- <div id="content_arduino2" wrap="off" ></div> -->
   <textarea id="content_xml" class="content" wrap="off" readonly></textarea>
   <xml id="toolbox" style="display: none">
-     <category name="" id="catInOut" colour="20">
+    <category name="" id="catInOut" colour="20">
       <block type="inout_highlow"></block>
       <block type="inout_pinMode">
-      <value name="PIN">
-          <shadow type="pins_pin"></shadow>
+        <value name="PIN">
+          <shadow type="pins_digital_pin">
+          </shadow>
         </value>
-    </block>
+      </block>
       <block type="inout_digital_write">
         <value name="PIN">
           <shadow type="pins_digital"></shadow>
@@ -473,7 +474,7 @@
       </block>
       <block type="inout_analog_write_init">
         <value name="PIN">
-          <shadow type="pins_dac"></shadow>
+          <shadow type="pins_dac_pin"></shadow>
         </value>
       </block>
       <block type="inout_analog_write">
@@ -488,7 +489,7 @@
       </block>
       <block type="inout_pwm_analog_write_init">
         <value name="PIN">
-          <shadow type="pins_pwm"></shadow>
+          <shadow type="pins_pwm_pin"></shadow>
         </value>
       </block>
       <block type="inout_pwm_analog_write">
@@ -513,7 +514,7 @@
       </block>
       <block type="inout_analog_read_init">
         <value name="PIN">
-          <shadow type="pins_analog"></shadow>
+          <shadow type="pins_analog_pin"></shadow>
         </value>
       </block>
       <block type="inout_analog_read">
@@ -522,20 +523,20 @@
         </value>
       </block>
       <block type="pin_pressed_init">
-        <value name="pin">
-          <shadow type="pins_interrupt">
+        <value name="PIN">
+          <shadow type="pins_touch_pin">
           </shadow>
         </value>
       </block>
       <block type="pin_pressed">
         <value name="pin">
-          <shadow type="pins_interrupt">
+          <shadow type="pins_touch">
           </shadow>
         </value>
       </block>
       <block type="controls_pin_attachInterrupt">
         <value name="PIN">
-          <shadow type="pins_digital"></shadow>
+          <shadow type="pins_digital_pin"></shadow>
         </value>
       </block>
     </category>
