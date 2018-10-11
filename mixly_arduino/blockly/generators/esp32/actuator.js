@@ -70,7 +70,7 @@ Blockly.Python.led_bright= function() {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var op = Blockly.Python.valueToCode(this,'led', Blockly.Python.ORDER_ATOMIC);
 
-    // var flag = Blockly.Python.valueToCode(this,'bright', Blockly.Python.ORDER_ATOMIC);
+    var flag = this.getFieldValue('bright');
     var code = "led.setonoff("+op+",'"+flag+"')\n";
     return code;
 };
@@ -78,7 +78,7 @@ Blockly.Python.led_bright= function() {
 Blockly.Python.get_led_bright= function() {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var op = Blockly.Python.valueToCode(this,'led', Blockly.Python.ORDER_ATOMIC);
-
+ 
     // var flag = Blockly.Python.valueToCode(this,'bright', Blockly.Python.ORDER_ATOMIC);
     var code = "led.getonoff("+op+")\n";
     return code;
