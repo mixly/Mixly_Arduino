@@ -1429,12 +1429,12 @@
                 </shadow>
               </value>
           <value name="TX">
-            <shadow type="pins_digital">
+            <shadow type="pins_digital_pin">
               <field name="PIN">22</field>
             </shadow>
           </value>
           <value name="RX">
-            <shadow type="pins_digital">
+            <shadow type="pins_digital_pin">
               <field name="PIN">21</field>
             </shadow>
           </value>
@@ -1519,17 +1519,17 @@
             </shadow>
           </value>
           <value name="sck">
-            <shadow type="pins_digital">
+            <shadow type="pins_digital_pin">
               <field name="PIN">0</field>
             </shadow>
           </value>
           <value name="mosi">
-            <shadow type="pins_digital">
+            <shadow type="pins_digital_pin">
               <field name="PIN">4</field>
             </shadow>
           </value>
           <value name="miso">
-            <shadow type="pins_digital">
+            <shadow type="pins_digital_pin">
               <field name="PIN">5</field>
             </shadow>
           </value>
@@ -2056,26 +2056,26 @@
         </block>
        <block type="HCSR04">
           <value name="PIN1">
-              <shadow type="pins_digital">
-				<field name="PIN">p0</field>
+              <shadow type="pins_digital_pin">
+				<field name="PIN">0</field>
               </shadow>
           </value>
           <value name="PIN2">
-              <shadow type="pins_digital">
-                 <field name="PIN">p4</field>
+              <shadow type="pins_digital_pin">
+                 <field name="PIN">4</field>
               </shadow>
           </value>
         </block>
 		<block type="dht11">
                 <value name="PIN">
-                    <shadow type="pins_digital"></shadow>
+                    <shadow type="pins_digital_pin"></shadow>
                 </value>
         </block>
       </category>
       <category id="catActuator" colour="100">
         <block type="servo_move">
           <value name="PIN">
-            <shadow type="pins_pwm"></shadow>
+            <shadow type="pins_pwm_pin"></shadow>
           </value>
           <value name="DEGREE">
             <shadow type="math_number">
@@ -2113,7 +2113,7 @@
          <block type="esp32_music_deinit"></block> -->
         <block type="esp32_music_pitch">
           <value name="PIN">
-            <shadow type="pins_pwm">
+            <shadow type="pins_pwm_pin">
               <field name="PIN">27</field>
             </shadow>
           </value>
@@ -2128,7 +2128,7 @@
         </block> -->
         <block type="esp32_music_stop">
           <value name="PIN">
-            <shadow type="pins_pwm">
+            <shadow type="pins_pwm_pin">
               <field name="PIN">27</field>
             </shadow>
           </value>
@@ -2254,8 +2254,8 @@
             </shadow>
           </value>
           <value name="PIN">
-            <shadow type="pins_digital">
-              <field name="PIN">p2</field>
+            <shadow type="pins_digital_pin">
+              <field name="PIN">2</field>
             </shadow>
           </value>
           <value name="LEDCOUNT">
