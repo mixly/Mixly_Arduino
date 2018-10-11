@@ -9,6 +9,7 @@ Blockly.Python.esp32_music_pitch = function(block) {
   //Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
   Blockly.Python.definitions_['import_music'] = 'import music';
   Blockly.Python.definitions_['import_math'] = 'import math';
+  Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
   var number_pitch = Blockly.Python.valueToCode(block, 'pitch', Blockly.Python.ORDER_ATOMIC);
   // var number_duration = Blockly.Python.valueToCode(block, 'duration', Blockly.Python.ORDER_ATOMIC);
   var pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_ATOMIC);
@@ -20,6 +21,7 @@ Blockly.Python.esp32_music_pitch = function(block) {
 
 Blockly.Python.esp32_music_stop = function(block) {
   Blockly.Python.definitions_['import_music'] = 'import music';
+  Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
   var pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_ATOMIC);
   //Blockly.Python.setups_['music'+pin] ='music'+pin+'.pwm(Pin('+pin+'))\n'+'music'+pin+'.duty(512)\n';
   var code = 'music.stop(PWM(Pin('+pin+')))\n';
@@ -30,6 +32,7 @@ Blockly.Python.esp32_music_stop = function(block) {
 
 Blockly.Python.servo_move = function() {
   Blockly.Python.definitions_['import_servo'] = 'import servo';
+  Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
   var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN',Blockly.Python.ORDER_ATOMIC);
   var value_degree = Blockly.Python.valueToCode(this, 'DEGREE', Blockly.Python.ORDER_ATOMIC);
   //Blockly.Python.definitions_['import_machine_PWM'] = "from machine import PWM";
@@ -64,7 +67,7 @@ Blockly.Python.light = function () {
 };
 
 Blockly.Python.led_bright= function() {
-     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var op = Blockly.Python.valueToCode(this,'led', Blockly.Python.ORDER_ATOMIC);
     var flag = this.getFieldValue('bright');
     // var flag = Blockly.Python.valueToCode(this,'bright', Blockly.Python.ORDER_ATOMIC);
