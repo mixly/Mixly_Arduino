@@ -360,7 +360,7 @@
           <tr id="tabRow" height="1em">
             <td style="vertical-align: center;" id="tab_blocks" class="tabon" onclick="tabClick('blocks')"><img style="vertical-align:middle" width="25" src="media/blocks.png"/><span id="span_blocks">Blocks</span></td>
             <td class="tabmin">&nbsp;</td>
-            <td style="vertical-align: center;text-align:center;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')"><span id="span_arduino">Code</span></td>
+            <td style="vertical-align: center;text-align:center;;display:none;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')"><span id="span_arduino">Code</span></td>
             <td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
             <td class="tabcoyright">
@@ -555,14 +555,6 @@
           </shadow>
         </value>
       </block>
-      <block type="base_type">
-        <value name="DATA">
-          <shadow type="math_number">
-            <field name="NUM">1000</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="controls_TypeLists"></block>
       <block type="controls_if"></block>
       <block type="controls_range">
         <value name="FROM">
@@ -606,6 +598,15 @@
         </value>
       </block>
      
+	  <block type="base_type">
+        <value name="DATA">
+          <shadow type="math_number">
+            <field name="NUM">1000</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_TypeLists"></block>
+      
       <block type="controls_try_finally"></block>
       <block type="controls_lambda">
         <value name="BOOL">
