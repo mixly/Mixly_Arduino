@@ -1007,7 +1007,17 @@ PythonToBlocks.prototype.Exec = function(node) {
 PythonToBlocks.prototype.Global = function(node)
 {
     var names = node.names;
-    throw new Error("Globals not implemented");
+    var param = {
+        "id":names[0],
+        "_astname":"Name"
+    };   
+    return block("variables_global", node.lineno, {
+        }, {
+            'VAR': this.convert(param)
+        }, {
+            "inline": "false"
+    });
+   
 }
 
 /*
