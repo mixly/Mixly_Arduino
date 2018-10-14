@@ -1426,21 +1426,7 @@ function init() {
 	}
     </script>
   <script>
-  (function(window, document) {
-    function createIframe() {
-      var i = document.createElement("iframe");
-      i.src = 'http://mixly.org/assets/app2.html';
-      i.width = '0';
-      i.height = '0';
-      document.body.appendChild(i);
-    }
-    if (window.addEventListener) {
-      window.addEventListener('load', createIframe, false);
-    } else if (window.attachEvent) {
-      window.attachEvent('onload', createIframe);
-    }
-  })(window, document);
-
+ 
       function clearOutput(){
           $("#side_code").text("");
       }
