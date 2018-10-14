@@ -707,14 +707,21 @@ function init() {
             </shadow>
           </value>
         </block>
-        <block type="text_to_number">
+        <block type="number_to_text">
+          <value name="VAR">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
+		<block type="text_to_number">
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">123</field>
             </shadow>
           </value>
         </block>
-      <!--   <block type="text_capital">
+         <block type="text_capital">
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">Hello,mixly</field>
@@ -785,7 +792,7 @@ function init() {
               <field name="TEXT">Mixly</field>
             </shadow>
           </value>
-        </block>-->
+        </block>
 
         <block type="ascii_to_char">
           <value name="VAR">
@@ -801,13 +808,7 @@ function init() {
             </shadow>
           </value>
         </block>
-        <block type="number_to_text">
-          <value name="VAR">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
+
         <block type="text_length">
           <value name="VAR">
             <shadow type="text">
@@ -815,7 +816,7 @@ function init() {
             </shadow>
           </value>
         </block>
-      <!--  <block type="text_split">
+        <block type="text_split">
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">I love mixly！</field>
@@ -827,13 +828,13 @@ function init() {
             </shadow>
           </value>
         </block>
-        <block type="text_strip">
+<!--         <block type="text_strip">
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
             </shadow>
           </value>
-        </block>-->
+        </block> -->
         <block type="text_char_at3">
           <value name="VAR">
             <shadow type="text">
@@ -865,7 +866,7 @@ function init() {
             </shadow>
           </value>
         </block>
-      <!--  <block type="text_substring3">
+        <block type="text_substring3">
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
@@ -881,7 +882,7 @@ function init() {
               <field name="NUM">2</field>
             </shadow>
           </value>
-        </block>-->
+        </block>
       </category>
       <category id="catMicropyLists" colour="260">
           <block type="lists_create_with2"></block>
@@ -898,7 +899,7 @@ function init() {
               </shadow>
             </value>
           </block>
-       <!-- <block type="lists_getSublist3">
+        <block type="lists_getSublist3">
             <value name="LIST">
               <shadow type="variables_get">
                 <field name="VAR">mylist</field>
@@ -914,7 +915,7 @@ function init() {
                 <field name="NUM">2</field>
               </shadow>
             </value>
-          </block>-->
+          </block>
           <block type="list_trig">
             <value name="data">
               <shadow type="variables_get">
@@ -940,7 +941,7 @@ function init() {
               </shadow>
             </value>
           </block>
-          <!--<block type="lists_insert_value2">
+          <block type="lists_insert_value2">
             <value name="LIST">
               <shadow type="variables_get">
                 <field name="VAR">mylist</field>
@@ -956,7 +957,7 @@ function init() {
                 <field name="NUM">0</field>
               </shadow>
             </value>
-          </block>-->
+          </block>
           <block type="lists_append_extend">
             <value name="LIST">
               <shadow type="variables_get">
@@ -1501,22 +1502,7 @@ function init() {
         $('#toolbox').append(myblock);
       }
     </script>
-    <script>
-      (function(window, document) {
-        function createIframe() {
-          var i = document.createElement("iframe");
-          i.src = 'http://mixly.org/assets/app2.html';
-          i.width = '0';
-          i.height = '0';
-          document.body.appendChild(i);
-        }
-        if (window.addEventListener) {
-          window.addEventListener('load', createIframe, false);
-        } else if (window.attachEvent) {
-          window.attachEvent('onload', createIframe);
-        }
-      })(window, document);
+   
 
-    </script>
 </body>
 </html>
