@@ -1,0 +1,19 @@
+.setFontSize {
+	position: absolute;
+	right: 20;
+	background-image: url('../../media/sprites.png');
+	width: 32px;
+	height: 32px;
+}
+#resetFontSize{
+	bottom: 100;
+	background-position: -96px -92px;
+}
+#increaseFontSize{
+	bottom: 68;
+	background-position: -32px -92px;
+}
+#decreaseFontSize{
+	bottom: 36;
+	background-position: -64px -92px;
+}
