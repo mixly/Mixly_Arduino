@@ -180,23 +180,33 @@ var editor_side_code;
 author:zyc
 date:2018-10-15
 */
+/*
+  	解决ACE放大后padding扩大导致放大缩小按钮偏移的问题
+  	author:zyc
+  	date:2018-10-15
+*/
+function resetACEFontSizeButtonPositon(){
+	$('#content_arduino').css("padding","9px");
+}
 var increaseACEFontSize = function(){
-//放大代码界面字体
-var size = parseInt(editor.getFontSize(), 10) || 12;
-editor.setFontSize(size + 1);
-//放大侧边栏字体
-var sideSize = parseInt(editor_side_code.getFontSize(), 10) || 12;
-editor_side_code.setFontSize(sideSize + 1);   
+	//放大代码界面字体
+	var size = parseInt(editor.getFontSize(), 10) || 12;
+	editor.setFontSize(size + 1);
+	//放大侧边栏字体
+	var sideSize = parseInt(editor_side_code.getFontSize(), 10) || 12;
+	editor_side_code.setFontSize(sideSize + 1); 
+	resetACEFontSizeButtonPositon()
 }
 var decreaseACEFontSize = function(){
-var size = parseInt(editor.getFontSize(), 10) || 12;
-editor.setFontSize(Math.max(size - 1 || 1));
-var sideSize = parseInt(editor_side_code.getFontSize(), 10) || 12;
-editor_side_code.setFontSize(Math.max(sideSize - 1 || 1));
+	var size = parseInt(editor.getFontSize(), 10) || 12;
+	editor.setFontSize(Math.max(size - 1 || 1));
+	var sideSize = parseInt(editor_side_code.getFontSize(), 10) || 12;
+	editor_side_code.setFontSize(Math.max(sideSize - 1 || 1));
+	resetACEFontSizeButtonPositon()
 }
 var resetACEFontSize = function(){
-editor.setFontSize(17);
-editor_side_code.setFontSize(17); 
+	editor.setFontSize(17);
+	editor_side_code.setFontSize(17); 
 }
 var pyengine;
 var py2block_editor;
@@ -307,7 +317,7 @@ window.addEventListener('resize', onresize, false);
     return;  // Don't update UI events.
     }
     //更新
-    var arduinoTextarea = document.getElementById('side_code');
+    //var arduinoTextarea = document.getElementById('side_code');
     var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
   var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
     editor_side_code.setValue(chinese_code, -1);
