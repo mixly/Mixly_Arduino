@@ -123,28 +123,24 @@ if(clickedName=="arduino"){
   var content = document.getElementById('content_' + selected);
   // Initialize the pane.
   if (content.id == 'content_blocks') {
-    // If the workspace was changed by the XML tab, Firefox will have performed
-    // an incomplete rendering due to Blockly being invisible.  Rerender.
-    Blockly.mainWorkspace.render();
-      //var arduinoTextarea = document.getElementById('side_code');
-      var code = Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace) || '';
+      // If the workspace was changed by the XML tab, Firefox will have performed
+      // an incomplete rendering due to Blockly being invisible.  Rerender.
+      Blockly.mainWorkspace.render();
+      var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
       var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
       editor_side_code.setValue(chinese_code, -1);
-    } else if (content.id == 'content_xml') {
+     } else if (content.id == 'content_xml') {
       var xmlTextarea = document.getElementById('content_xml');
       var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
       var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
       xmlTextarea.value = xmlText;
       xmlTextarea.focus();
     } else if (content.id == 'content_arduino') {
-    //content.innerHTML = Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace);
-    //var arduinoTextarea = document.getElementById('content_arduino');
-    //arduinoTextarea.value = Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace);
-    //arduinoTextarea.focus();
-    var code = Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace) || '';
-    var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-    editor.setValue(chinese_code, -1);
-  }
+      //content.innerHTML = Blockly.Python.workspaceToCode(Blockly.mainWorkspace);
+      var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+      var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+      editor.setValue(chinese_code, -1);
+   }
 }
 
 /**
@@ -179,12 +175,12 @@ if(clickedName=="arduino"){
   /*
   	添加ACE放大缩小事件
   	author:zyc
-  	date:2018-10-14
+  	date:2018-10-15
    */
  var increaseACEFontSize = function(){
   //放大代码界面字体
-    var size = parseInt(editor.getFontSize(), 10) || 12;
-    editor.setFontSize(size + 1);
+  	var size = parseInt(editor.getFontSize(), 10) || 12;
+	  editor.setFontSize(size + 1);
   //放大侧边栏字体
     var sideSize = parseInt(editor_side_code.getFontSize(), 10) || 12;
     editor_side_code.setFontSize(sideSize + 1);   
@@ -192,11 +188,11 @@ if(clickedName=="arduino"){
   var decreaseACEFontSize = function(){
     var size = parseInt(editor.getFontSize(), 10) || 12;
     editor.setFontSize(Math.max(size - 1 || 1));
-    var sideSize = parseInt(editor_side_code.getFontSize(), 10) || 12;
+  	var sideSize = parseInt(editor_side_code.getFontSize(), 10) || 12;
     editor_side_code.setFontSize(Math.max(sideSize - 1 || 1));
   }
   var resetACEFontSize = function(){
-    editor.setFontSize(17);
+  	editor.setFontSize(17);
     editor_side_code.setFontSize(17); 
   }
  function init() {
@@ -303,7 +299,7 @@ if(clickedName=="arduino"){
  }
 	  //更新
 	  //var arduinoTextarea = document.getElementById('side_code');
-	  var code = Blockly.Arduino.workspaceToCode(Blockly.mainWorkspace) || '';
+	  var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
     var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
     editor_side_code.setValue(chinese_code, -1);
   }
