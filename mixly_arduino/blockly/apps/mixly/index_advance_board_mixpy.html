@@ -152,6 +152,20 @@
       renderContent();
       if (clickedName == 'blocks') {
         Blockly.mainWorkspace.setVisible(true);
+        /*
+	      动态绑定undo和redo按钮，使得ace和blockly都能使用
+	      author:zyc
+	      date:2018-10-14
+	    */
+	    //动态绑定undo和redo按钮
+	   $('input[name="undo"]').unbind();
+	   $('input[name="redo"]').unbind();
+	   $('input[name="undo"]').click(function(){
+	      Blockly.mainWorkspace.undo(0);
+	   });
+	   $('input[name="redo"]').click(function(){
+	      Blockly.mainWorkspace.undo(1);
+	   });
     	//重新显示
     	if(sidecodeDisplay){
     	  document.getElementById('side_code_parent').style.display = '';
@@ -173,6 +187,15 @@
        //点击代码将隐藏右侧代码，否则出现两个代码区域
     	document.getElementById('side_code_parent').style.display = 'none';
     	document.getElementById('mid_td').style.display = 'none';
+    	//动态绑定undo和redo按钮
+	    $('input[name="undo"]').unbind();
+	    $('input[name="redo"]').unbind();
+	    $('input[name="undo"]').click(function(){
+	      editor.undo();
+	    });
+	    $('input[name="redo"]').click(function(){
+	      editor.redo();
+	    });
       }
       Blockly.fireUiEvent(window, 'resize');
     }
@@ -236,6 +259,29 @@
  */
 var editor;
 var editor_side_code;
+/*
+  	添加ACE放大缩小事件
+  	author:zyc
+  	date:2018-10-15
+   */
+ var increaseACEFontSize = function(){
+  //放大代码界面字体
+  	var size = parseInt(editor.getFontSize(), 10) || 12;
+	  editor.setFontSize(size + 1);
+  //放大侧边栏字体
+    var sideSize = parseInt(editor_side_code.getFontSize(), 10) || 12;
+    editor_side_code.setFontSize(sideSize + 1);   
+  }
+  var decreaseACEFontSize = function(){
+    var size = parseInt(editor.getFontSize(), 10) || 12;
+    editor.setFontSize(Math.max(size - 1 || 1));
+  	var sideSize = parseInt(editor_side_code.getFontSize(), 10) || 12;
+    editor_side_code.setFontSize(Math.max(sideSize - 1 || 1));
+  }
+  var resetACEFontSize = function(){
+  	editor.setFontSize(17);
+    editor_side_code.setFontSize(17); 
+  }
 var pyengine;
 var py2block_editor;
 function init() {
@@ -265,6 +311,38 @@ function init() {
   editor_side_code.setReadOnly(true);
   editor_side_code.setScrollSpeed(0.05);
   $('#aceTheme').val(window.conf.lastEditorTheme);
+  /*
+  	添加ACE放大缩小快捷键
+  	author:zyc
+  	date:2018-10-14
+   */
+  editor.commands.addCommands([
+  	{
+	    name: "increaseFontSize",
+	    bindKey: "Ctrl-=|Ctrl-+",
+	    exec: function(editor) {
+	        var size = parseInt(editor.getFontSize(), 10) || 12;
+	        editor.setFontSize(size + 1);
+	    }
+	}, {
+	    name: "decreaseFontSize",
+	    bindKey: "Ctrl+-|Ctrl-_",
+	    exec: function(editor) {
+	        var size = parseInt(editor.getFontSize(), 10) || 12;
+	        editor.setFontSize(Math.max(size - 1 || 1));
+	    }
+	}, {
+	    name: "resetFontSize",
+	    bindKey: "Ctrl+0|Ctrl-Numpad0",
+	    exec: function(editor) {
+	        editor.setFontSize(12);
+	    }
+	}]);
+  //动态生成按钮元素
+  $('.ace_scroller').append('<div id="resetFontSize" class="setFontSize" width="32" height="32" onclick="resetACEFontSize()" ></div>');
+  $('.ace_scroller').append('<div id="increaseFontSize" class="setFontSize" width="32" height="32" onclick="increaseACEFontSize()" ></div>');
+  $('.ace_scroller').append('<div id="decreaseFontSize" class="setFontSize" width="32" height="32" onclick="decreaseACEFontSize()" ></div>');
+  //endACE放大缩小
   var py2block_converter = new PythonToBlocks();
   py2block_editor = new Py2blockEditor(py2block_converter, editor);
   Sk.python3 = true;
