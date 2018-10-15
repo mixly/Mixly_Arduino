@@ -47,7 +47,7 @@ pbc.globalFunctionD['Image'] = function (py2block, func, args, keywords, stararg
         }
     }
     if (flag == 8) {
-        return block('microbit_image_create', func.lineno, {
+        return block('esp32_image_create', func.lineno, {
                 "00": colours[temptext[0].charAt(0)],
                 "01": colours[temptext[0].charAt(1)],
                 "02": colours[temptext[0].charAt(2)],
