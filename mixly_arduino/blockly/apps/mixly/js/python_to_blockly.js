@@ -1010,14 +1010,14 @@ PythonToBlocks.prototype.Global = function(node)
     var param = {
         "id":names[0],
         "_astname":"Name"
-    };   
+    };
     return block("variables_global", node.lineno, {
         }, {
             'VAR': this.convert(param)
         }, {
             "inline": "false"
     });
-   
+
 }
 
 /*
@@ -1879,10 +1879,44 @@ PythonToBlocks.prototype.Name = function(node)
     var nodeName = this.Name_str(node);
     //处理micropython的管脚(eg:pin10)
     var pinMatcher = /pin[0-9]*/;
+    var dacMatcher = /dac[0-9]*/;
+    var pwmMatcher = /pwm[0-9]*/;
+    var adcMatcher = /adc[0-9]*/;
+    var tcMatcher = /tc[0-9]*/;
     if(py2block_config.board == py2block_config.MICROBITPY
         && pinMatcher.test(nodeName) && py2block_config.pinType != null){
         return block(py2block_config.pinType, node.lineno, {
             "PIN": this.identifier(id).replace("pin", '')
+        });
+    }
+    if(py2block_config.board == py2block_config.ESP32
+        && pinMatcher.test(nodeName) && py2block_config.pinType != null){
+        return block(py2block_config.pinType, node.lineno, {
+            "PIN": this.identifier(id)
+        });
+    }
+    if(py2block_config.board == py2block_config.ESP32
+        && dacMatcher.test(nodeName) && py2block_config.pinType != null){
+        return block(py2block_config.pinType, node.lineno, {
+            "PIN": this.identifier(id)
+        });
+    }
+    if(py2block_config.board == py2block_config.ESP32
+        && pwmMatcher.test(nodeName) && py2block_config.pinType != null){
+        return block(py2block_config.pinType, node.lineno, {
+            "PIN": this.identifier(id)
+        });
+    }
+    if(py2block_config.board == py2block_config.ESP32
+        && adcMatcher.test(nodeName) && py2block_config.pinType != null){
+        return block(py2block_config.pinType, node.lineno, {
+            "PIN": this.identifier(id)
+        });
+    }
+    if(py2block_config.board == py2block_config.ESP32
+        && tcMatcher.test(nodeName) && py2block_config.pinType != null){
+        return block(py2block_config.pinType, node.lineno, {
+            "PIN": this.identifier(id)
         });
     }
     if(py2block_config.board == py2block_config.MICROBITPY
@@ -1897,6 +1931,7 @@ PythonToBlocks.prototype.Name = function(node)
         }catch(e){
         }
     }
+
     switch (this.Name_str(node)) {
         case "True":
             return block("logic_boolean", node.lineno, {"BOOL": "TRUE"});
@@ -1911,6 +1946,7 @@ PythonToBlocks.prototype.Name = function(node)
                 "VAR": this.identifier(id)
             });
     }
+
 }
 
 /*
