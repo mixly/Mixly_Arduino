@@ -168,7 +168,7 @@ pbc.assignD.get('uart0')['create_block'] = function (py2block, node, targets, va
 function getSerial(mode,fun_type){
     function converter(py2block, func, args, keywords, starargs, kwargs, node){
         if(args.length !==0){
-            //throw new Error("Incorrect number of arguments");
+            throw new Error("Incorrect number of arguments");
         }
         var argblock1 = py2block.convert(func.value)
         return block(fun_type, func.lineno, {
