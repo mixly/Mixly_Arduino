@@ -293,15 +293,15 @@ function dht(mode){
         if (args.length !== 2) {
             throw new Error("Incorrect number of arguments");
         }
-        var pinType="pins_digital"
-        var pinblock=py2block.convert(args[1])
-        var pinType=null
-        var dhtblock=py2block.identifier(args[0].s)
+        pbc.pinType="pins_digital_pin";
+        var pinblock=py2block.convert(args[1]);
+        pbc.pinType=null;
+        var dhtblock=py2block.identifier(args[0].s);
         return block('dht11', func.lineno, {
                 'TYPE':dhtblock,
-                'tempandhum':mode
+                'WHAT':mode
             }, {
-                "WHAT": pinblock
+                "PIN":pinblock,
             }, {
                 "inline": "true"
             });

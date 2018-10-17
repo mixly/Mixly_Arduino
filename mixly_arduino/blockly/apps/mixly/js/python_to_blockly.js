@@ -1925,6 +1925,25 @@ PythonToBlocks.prototype.Name = function(node)
             "PIN": this.identifier(id)
         });
     }
+    if(py2block_config.board == py2block_config.ESP32
+        && (nodeName === "button_a" || nodeName === "button_b") && py2block_config.pinType == "pins_button"){
+        return block(py2block_config.pinType, node.lineno, {
+            "PIN": this.identifier(id)
+        });
+    }
+    if(py2block_config.board == py2block_config.ESP32
+        && (nodeName === "touch1" || nodeName === "touch2") && py2block_config.pinType =="number1"){
+        return block(py2block_config.pinType, node.lineno, {
+            "PIN": this.identifier(id)
+        });
+    }
+    if(py2block_config.board == py2block_config.ESP32
+        && (nodeName === "1" || nodeName === "2") && py2block_config.pinType =="number"){
+        return block(py2block_config.pinType, node.lineno, {
+            "PIN": this.identifier(id)
+        });
+    }
+
     if(py2block_config.reservedNameD[nodeName] != null){
         try {
             return py2block_config.reservedNameD[nodeName](this, node, id, ctx, nodeName);

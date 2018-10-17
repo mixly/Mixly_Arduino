@@ -7,13 +7,13 @@ pbc.moduleFunctionD.get('servo')['write_angle'] = function (py2block, func, args
     var pwmAstName = args[0]._astname;
     pbc.pinType="pins_pwm_pin";
     var pinblock;
-    var angleblock=py2block.convert(args[1]);
+
     if (pwmAstName === "Call"&& args[0].func._astname == "Name" && py2block.Name_str(args[0].func) === "PWM"
         &&py2block.Name_str(args[0].args[0].func)=="Pin") {
         pinblock=py2block.convert(args[0].args[0].args[0])
     }
     pbc.pinType=null;
-
+    var angleblock=py2block.convert(args[1]);
     
     return [block("servo_move", func.lineno, {}, {
         "PIN":pinblock,
@@ -28,8 +28,10 @@ pbc.moduleFunctionD.get('led')['setonoff'] = function (py2block, func, args, key
     if (args.length !== 2) {
         throw new Error("Incorrect number of arguments");
     }
+    pbc.pinType="number";
     var argblock = py2block.convert(args[0]);
-     var mode = py2block.Str_value(args[1]);
+    pbc.pinType=null;
+    var mode = py2block.Str_value(args[1]);
     return [block("led_bright", func.lineno, {
         'bright':mode,
     }, {
@@ -43,7 +45,9 @@ pbc.moduleFunctionD.get('led')['getonoff'] = function (py2block, func, args, key
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
+    pbc.pinType="number";
     var argblock = py2block.convert(args[0]);
+    pbc.pinType=null;
     return block("get_led_bright", func.lineno, {
     }, {
         'led': argblock,
@@ -56,8 +60,11 @@ pbc.moduleFunctionD.get('led')['setbrightness'] = function (py2block, func, args
     if (args.length !== 2) {
         throw new Error("Incorrect number of arguments");
     }
+    pbc.pinType="number";
     var argblock = py2block.convert(args[0]);
+    pbc.pinType=null;
     var brightblock = py2block.convert(args[1]);
+
     return [block("led_brightness", func.lineno, {}, {
         'led': argblock,
         'bright':brightblock,

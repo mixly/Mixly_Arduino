@@ -9,18 +9,28 @@
 */
 
 pbc.moduleFunctionD.get('display')['show'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 2){
+    if (args.length !== 1){
         throw new Error("Incorrect number of arguments");
     }
-    var strblock= null;
-    var delayblock=null;
 
-    strblock=py2block.convert(args[0]);
-    delayblock=py2block.convert(args[1]);
+   var  strblock=py2block.convert(args[0]);
 
-    return block[("monitor_show_scroll_string", func.lineno, {'MODE': 'show'}, {
+    return [block("monitor_show_image_or_string", func.lineno, {}, {
         'data':strblock,
-        'time':delayblock,
+    }, {
+        "inline": "true"
+    })];
+}
+
+pbc.moduleFunctionD.get('display')['scroll'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1){
+        throw new Error("Incorrect number of arguments");
+    }
+
+   var  strblock=py2block.convert(args[0]);
+
+    return [block("monitor_scroll_string", func.lineno, {}, {
+        'data':strblock,
     }, {
         "inline": "true"
     })];
