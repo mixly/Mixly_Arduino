@@ -176,29 +176,39 @@ if(clickedName=="arduino"){
  */
  var editor;
  var editor_side_code;
-  /*
-  	添加ACE放大缩小事件
-  	author:zyc
-  	date:2018-10-14
-   */
- var increaseACEFontSize = function(){
+/*
+  添加ACE放大缩小事件
+  author:zyc
+  date:2018-10-15
+*/
+/*
+    解决ACE放大后padding扩大导致放大缩小按钮偏移的问题
+    author:zyc
+    date:2018-10-15
+*/
+function resetACEFontSizeButtonPositon(){
+  $('#content_arduino').css("padding","9px");
+}
+var increaseACEFontSize = function(){
   //放大代码界面字体
-    var size = parseInt(editor.getFontSize(), 10) || 12;
-    editor.setFontSize(size + 1);
+  var size = parseInt(editor.getFontSize(), 10) || 12;
+  editor.setFontSize(size + 1);
   //放大侧边栏字体
-    var sideSize = parseInt(editor_side_code.getFontSize(), 10) || 12;
-    editor_side_code.setFontSize(sideSize + 1);   
-  }
-  var decreaseACEFontSize = function(){
-    var size = parseInt(editor.getFontSize(), 10) || 12;
-    editor.setFontSize(Math.max(size - 1 || 1));
-    var sideSize = parseInt(editor_side_code.getFontSize(), 10) || 12;
-    editor_side_code.setFontSize(Math.max(sideSize - 1 || 1));
-  }
-  var resetACEFontSize = function(){
-    editor.setFontSize(17);
-    editor_side_code.setFontSize(17); 
-  }
+  var sideSize = parseInt(editor_side_code.getFontSize(), 10) || 12;
+  editor_side_code.setFontSize(sideSize + 1); 
+  resetACEFontSizeButtonPositon()
+}
+var decreaseACEFontSize = function(){
+  var size = parseInt(editor.getFontSize(), 10) || 12;
+  editor.setFontSize(Math.max(size - 1 || 1));
+  var sideSize = parseInt(editor_side_code.getFontSize(), 10) || 12;
+  editor_side_code.setFontSize(Math.max(sideSize - 1 || 1));
+  resetACEFontSizeButtonPositon()
+}
+var resetACEFontSize = function(){
+  editor.setFontSize(17);
+  editor_side_code.setFontSize(17); 
+}
  function init() {
   //window.onbeforeunload = function() {
   //  return 'Leaving this page will result in the loss of your work.';
