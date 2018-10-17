@@ -22,13 +22,13 @@ pbc.assignD.get('I2C')['create_block'] = function(py2block, node, targets, value
         var key = py2block.identifier(param.arg);
         if (key === "sda") {
             pbc.inScope = "i2c_init";
-            pbc.pinType = "pins_digital";
+            pbc.pinType = "pins_digital_pin";
             sdablock = py2block.convert(param.value.args[0]);
             pbc.pinType = null;
             pbc.inScope = null;
         } else if (key === "scl") {
             pbc.inScope = "i2c_init";
-            pbc.pinType = "pins_digital";
+            pbc.pinType = "pins_digital_pin";
             sclblock = py2block.convert(param.value.args[0]);
             pbc.pinType = null;
             pbc.inScope = null;
