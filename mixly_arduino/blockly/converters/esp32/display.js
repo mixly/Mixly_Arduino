@@ -257,7 +257,9 @@ pbc.moduleFunctionD.get('display')['set_brightness'] = function(py2block, func, 
     if(args.length!=1){
         throw new Error("Incorrect number of arguments");
     }
+    pbc.pinType="pins_exlcdh";
     var brightblock=py2block.convert(args[0]);
+    pbc.pinType=null;
 
     return [block("monitor_bright_screen", func.lineno, {}, {
         'x':brightblock,
@@ -332,7 +334,7 @@ pbc.assignD.get('Rgb')['create_block'] = function(py2block, node, targets, value
     // }
     var rgbblock=py2block.convert(targets[0]);
     pbc.inScope = "rgb_create_block";
-    pbc.pinType = "pins_digital";
+    pbc.pinType = "pins_digital_pin";
     // value.args[0].args[0].n.v='pin'+value.args[0].args[0].n.v
     var pinblock = py2block.convert(value.args[0].args[0]);
     pbc.inScope = null;
