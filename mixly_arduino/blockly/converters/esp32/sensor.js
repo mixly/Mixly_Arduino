@@ -312,3 +312,21 @@ function dht(mode){
 pbc.moduleFunctionD.get('dhtx')['get_temperature'] = dht('temperature');
 pbc.moduleFunctionD.get('dhtx')['get_humidity'] = dht('humidity');
 pbc.moduleFunctionD.get('dhtx')['get_tempandhum'] = dht('all');
+
+
+
+pbc.objectFunctionD.get('checkdist')['sonar'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (func.value.args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    pbc.pinType="pins_digital_pin";
+    var trigblock=py2block.convert(func.value.args[0]);
+    var echoblock=py2block.convert(func.value.args[1]);
+    pbc.pinType=null;
+    return block("HCSR04", func.lineno, {}, {
+        "PIN1":trigblock,
+        "PIN2":echoblock
+    }, {
+        "inline": "true"
+    });
+}
