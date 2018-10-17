@@ -81,14 +81,17 @@ pbc.moduleFunctionD.get('uart1')['init'] = function(py2block, func, args, keywor
 }
 
 
-pbc.moduleFunctionD.get('uart1')['write'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+function serial_write(mode){
+function converter(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
     var astname = args[0]._astname;
     if(astname === "Call"){
         if(args[0].func._astname == "Name" && py2block.Name_str(args[0].func) === "str"){ //serial.write(str("XXX"))
-            return [block("serial_print", func.lineno, {}, {
+            return [block("serial_print", func.lineno, {
+                    "mode":mode
+                }, {
                     "CONTENT":py2block.convert(args[0].args[0]),
                 }, {
                     "inline": "false"
@@ -103,13 +106,17 @@ pbc.moduleFunctionD.get('uart1')['write'] = function(py2block, func, args, keywo
             if(args[0].left.args[0]._astname === "Call"
                 && args[0].left.args[0].func._astname === "Name"
                 && py2block.Name_str(args[0].left.args[0].func) === "hex"){ //serial.write(str(hex(XX)) + "\r\n")
-                return [block("serial_print_hex", func.lineno, {}, {
+                return [block("serial_print_hex", func.lineno, {
+                     "mode":mode
+                }, {
                     "CONTENT": py2block.convert(args[0].left.args[0].args[0]),
                 }, {
                     "inline": "false"
                 })];
             }else{
-                return [block("serial_println", func.lineno, {}, {  //serial.write(str("XX") + "\r\n")
+                return [block("serial_println", func.lineno, {
+                     "mode":mode
+                }, {  //serial.write(str("XX") + "\r\n")
                     "CONTENT": py2block.convert(args[0].left.args[0]),
                 }, {
                     "inline": "false"
@@ -123,17 +130,34 @@ pbc.moduleFunctionD.get('uart1')['write'] = function(py2block, func, args, keywo
             "inline": "true"
         })];
 }
-pbc.assignD.get('uart1')['check_assign'] = function (py2block, node, targets, value) {
+return converter
+}
+pbc.moduleFunctionD.get('uart0')['write'] = serial_write('0')
+pbc.moduleFunctionD.get('uart1')['write'] = serial_write('1')
+pbc.moduleFunctionD.get('uart2')['write'] = serial_write('2')
+
+pbc.assignD.get('uart0')['check_assign'] = function (py2block, node, targets, value) {
     var funcName = py2block.identifier(value.func.id);
     if (value._astname === "Call"&& funcName === "UART" && value.args.length === 2)
         return true;
     return false;
 }
-pbc.assignD.get('uart1')['create_block'] = function (py2block, node, targets, value) {
+pbc.assignD.get('uart0')['create_block'] = function (py2block, node, targets, value) {
     pbc.pinType = 'serial_print';
     var argblock1 = py2block.convert(value.args[1])
-    return block("uart_softserial", node.lineno, { },
-        {
+    mode=targets[0].id.v
+    if (mode=="uart0"){
+        mode='0'
+    }
+    else if(mode=="uart1"){
+        mode='1'
+    }
+    else if(mode=="uart2"){
+        mode='2'
+    }
+    return block("uart_softserial", node.lineno, { 
+            "mode":mode
+        }, {
             "CONTENT":py2block.convert(value.args[0]),
             "TEXT":argblock1,
         }, {
@@ -141,32 +165,28 @@ pbc.assignD.get('uart1')['create_block'] = function (py2block, node, targets, va
         });
 }
 
-pbc.moduleFunctionD.get('uart1')['any'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    return block("serial_any", func.lineno, {}, {}, {
+function getSerial(mode,fun_type){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node){
+        if(args.length !==0){
+            //throw new Error("Incorrect number of arguments");
+        }
+        var argblock1 = py2block.convert(func.value)
+        return block(fun_type, func.lineno, {
+            "mode":mode
+        }, {
+        }, {
         "inline": "true"
-    });
-}
-
-
-pbc.moduleFunctionD.get('uart1')['read'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
+       });
     }
-    return block("serial_readstr", func.lineno, {}, {}, {
-        "inline": "true"
-    });
+     return converter;
 }
-
-
-pbc.moduleFunctionD.get('uart1')['readline'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    return block("serial_readline", func.lineno, {}, {}, {
-        "inline": "true"
-    });
-}
+pbc.moduleFunctionD.get('uart0')['any'] = getSerial('0','serial_any')
+pbc.moduleFunctionD.get('uart1')['any'] = getSerial('1','serial_any')
+pbc.moduleFunctionD.get('uart2')['any'] = getSerial('2','serial_any')
+pbc.moduleFunctionD.get('uart0')['read'] = getSerial('0','serial_readstr')
+pbc.moduleFunctionD.get('uart1')['read'] = getSerial('1','serial_readstr')
+pbc.moduleFunctionD.get('uart2')['read'] = getSerial('2','serial_readstr')
+pbc.moduleFunctionD.get('uart0')['readline'] = getSerial('0','serial_readline')
+pbc.moduleFunctionD.get('uart1')['readline'] = getSerial('1','serial_readline')
+pbc.moduleFunctionD.get('uart2')['readline'] = getSerial('2','serial_readline')
 
