@@ -1,4 +1,4 @@
-pbc.assignD.get('i2c')['check_assign'] = function(py2block, node, targets, value) {
+pbc.assignD.get('I2C')['check_assign'] = function(py2block, node, targets, value) {
     var funcName = py2block.identifier(value.func.id);
     if(value._astname === "Call" 
         && funcName === "I2C" && value.keywords.length === 3)
@@ -6,7 +6,7 @@ pbc.assignD.get('i2c')['check_assign'] = function(py2block, node, targets, value
     return false;
 }
 
-pbc.assignD.get('i2c')['create_block'] = function(py2block, node, targets, value){
+pbc.assignD.get('I2C')['create_block'] = function(py2block, node, targets, value){
 
     var astname = value.keywords[0]._astname;
     if(astname === "keyword" && value.keywords[0].arg.v == "scl" 
