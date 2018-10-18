@@ -1746,6 +1746,10 @@ PythonToBlocks.prototype.Num = function(node)
         return block(py2block_config.pinType, node.lineno, {
             "NUM": nVal
         });
+    }else if(py2block_config.pinType == "number"){
+        return block(py2block_config.pinType, node.lineno, {
+            "op": nVal
+        });
     }else if(py2block_config.pinType != null){
         return block(py2block_config.pinType, node.lineno, {
             "PIN": nVal
@@ -1938,12 +1942,11 @@ PythonToBlocks.prototype.Name = function(node)
         });
     }
     if(py2block_config.board == py2block_config.ESP32
-        && (nodeName === "1" || nodeName === "2") && py2block_config.pinType =="number"){
+        && (nodeName === '1' || nodeName === '2') && py2block_config.pinType =="number"){
         return block(py2block_config.pinType, node.lineno, {
-            "PIN": this.identifier(id)
+            "op": this.identifier(id)
         });
     }
-
     if(py2block_config.reservedNameD[nodeName] != null){
         try {
             return py2block_config.reservedNameD[nodeName](this, node, id, ctx, nodeName);
