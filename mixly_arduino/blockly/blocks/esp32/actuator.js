@@ -34,7 +34,6 @@ Blockly.Blocks['number'] = {
                 ["2", "2"]
             ]), 'op')
         this.setOutput(true);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW);
     }
 };
 
