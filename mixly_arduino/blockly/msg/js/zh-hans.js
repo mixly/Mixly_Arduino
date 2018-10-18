@@ -1955,3 +1955,4 @@ Blockly.MIXLY_ESP32_RNUMBER = "读取数字 地址";
 Blockly.MIXLY_ESP32_READ = "读取";
 Blockly.MIXLY_ESP32_SUCCESS = "成功吗？";
 Blockly.MIXLY_ESP32_SPI_INIT = "SPI 初始化";
+Blockly.MIXLY_TOOLTIP_DISPLAY_ONOFF='返回灯的亮灭状态';
