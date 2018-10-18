@@ -1750,6 +1750,10 @@ PythonToBlocks.prototype.Num = function(node)
         return block(py2block_config.pinType, node.lineno, {
             "op": nVal
         });
+    }else if(py2block_config.pinType == "number1"){
+        return block(py2block_config.pinType, node.lineno, {
+            "op": nVal
+        });
     }else if(py2block_config.pinType != null){
         return block(py2block_config.pinType, node.lineno, {
             "PIN": nVal
@@ -1938,7 +1942,7 @@ PythonToBlocks.prototype.Name = function(node)
     if(py2block_config.board == py2block_config.ESP32
         && (nodeName === "touch1" || nodeName === "touch2"|| nodeName === "touch3"|| nodeName === "touch4") && py2block_config.pinType =="number1"){
         return block(py2block_config.pinType, node.lineno, {
-            "PIN": this.identifier(id)
+            "op": this.identifier(id)
         });
     }
     if(py2block_config.board == py2block_config.ESP32

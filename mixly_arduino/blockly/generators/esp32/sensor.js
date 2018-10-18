@@ -313,8 +313,8 @@ Blockly.Python.number1 = function(){
 
 Blockly.Python.sensor_pin_pressed = function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
-    var number = Blockly.Python.valueToCode(this, 'button', Blockly.Python.ORDER_ATOMIC);
-    var code = 'touch'+ number+'.is_touched()';
+    var pin = Blockly.Python.valueToCode(this, 'button', Blockly.Python.ORDER_ATOMIC);
+    var code = pin+'.is_touched()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
