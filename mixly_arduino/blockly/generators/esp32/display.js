@@ -29,8 +29,8 @@ Blockly.Python.monitor_bright_point= function() {
     Blockly.Python.definitions_['import_display_*'] = 'from display import *';
     var x = Blockly.Python.valueToCode(this, 'x', Blockly.Python.ORDER_ASSIGNMENT);
     var y = Blockly.Python.valueToCode(this, 'y', Blockly.Python.ORDER_ASSIGNMENT);
-    var flag = this.getFieldValue('flag');
-    var code = 'display.set_pixel(int(' + x + '), int(' + y + '), '+ flag + ")\n";
+    var dropdown_stat = Blockly.Python.valueToCode(this, 'STAT', Blockly.Python.ORDER_ATOMIC);
+    var code = 'display.set_pixel(int(' + x + '), int(' + y + '), '+ dropdown_stat + ")\n";
     return code;
 }
 Blockly.Python.monitor_show_string = function() {
@@ -569,3 +569,9 @@ Blockly.Python.monitor_scroll_string_delay = function() {
      var code = "display.scroll("+ data + ',' + time +")\n";
      return code;
 }
+
+Blockly.Python.display_onoff = function () {
+    // Boolean values HIGH and LOW.
+    var code = (this.getFieldValue('ONOFF') == 'ON') ? '1' : '0';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
