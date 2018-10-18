@@ -56,7 +56,7 @@ Blockly.Blocks['math_arithmetic'] = {
          ['**', 'POWER']];
     //this.setHelpUrl(Blockly.Msg.MATH_ARITHMETIC_HELPURL);
     this.setColour(Blockly.Blocks.math.HUE);
-    this.setOutput(true, Number);
+    this.setOutput(true);
     this.appendValueInput('A')
     this.appendValueInput('B')
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
