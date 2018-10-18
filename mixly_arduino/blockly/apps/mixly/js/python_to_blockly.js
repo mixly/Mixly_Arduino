@@ -1932,7 +1932,7 @@ PythonToBlocks.prototype.Name = function(node)
         });
     }
     if(py2block_config.board == py2block_config.ESP32
-        && (nodeName === "touch1" || nodeName === "touch2") && py2block_config.pinType =="number1"){
+        && (nodeName === "touch1" || nodeName === "touch2"|| nodeName === "touch3"|| nodeName === "touch4") && py2block_config.pinType =="number1"){
         return block(py2block_config.pinType, node.lineno, {
             "PIN": this.identifier(id)
         });
