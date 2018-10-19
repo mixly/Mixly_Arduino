@@ -29,11 +29,10 @@ pbc.objectFunctionD.get('value')['Pin'] = function (py2block, func, args, keywor
 }
 
 
-//pinMode 有问题
 pbc.assignD.get('Pin')['check_assign'] = function(py2block, node, targets, value) {
     var funcName = py2block.identifier(value.func.id);
     if(value._astname === "Call"
-        && funcName === "Pin" && value.args.length === 2)
+        && funcName === "Pin" && (value.args.length === 2 || value.args.length === 3) )
         return true;
     return false;
 }
@@ -43,9 +42,14 @@ pbc.assignD.get('Pin')['create_block'] = function(py2block, node, targets, value
     pbc.pinType = "pins_digital_pin";
     var pinblock = py2block.convert(value.args[0]);
     pbc.pinType = null;
-    var digitalblock = py2block.Name_str(value.args[1].value) + py2block.identifier(value.args[1].attr);
-
-    return [block("inout_pinMode", node.lineno, {"Mode":digitalblock}, {
+    if(value.args.length === 2){
+    var digitalblock = py2block.Name_str(value.args[1].value) +"."+ py2block.identifier(value.args[1].attr);
+    }
+    else if(value.args.length === 3){
+    var digitalblock = py2block.Name_str(value.args[1].value) +"."+ py2block.identifier(value.args[1].attr)+", "+py2block.Name_str(value.args[2].value) +"."+ py2block.identifier(value.args[2].attr);
+    }
+    pinobj = "pin"+value.args[0].n.v;
+    return [block("inout_pinMode", node.lineno, {"PIN_OBJ":pinobj,"MODE":digitalblock}, {
         "PIN":pinblock,
 
     })];
@@ -70,8 +74,8 @@ pbc.assignD.get('DAC')['create_block'] = function(py2block, node, targets, value
         pinblock =  py2block.convert(args[0]);
         pbc.pinType = null;
     }
-
-    return [block("inout_analog_write_init", node.lineno, {}, {
+    pinobj = "dac"+value.args[0].args[0].n.v;
+    return [block("inout_analog_write_init", node.lineno, {"PIN_OBJ":pinobj}, {
         "PIN":pinblock,
 
     })];
@@ -113,8 +117,8 @@ pbc.assignD.get('PWM')['create_block'] = function(py2block, node, targets, value
         pinblock =  py2block.convert(args[0]);
         pbc.pinType = null;
     }
-
-    return [block("inout_pwm_analog_write_init", node.lineno, {}, {
+    pinobj = "pwm"+value.args[0].args[0].n.v;
+    return [block("inout_pwm_analog_write_init", node.lineno, {"PIN_OBJ":pinobj}, {
         "PIN":pinblock,
 
     })];
@@ -173,8 +177,8 @@ pbc.assignD.get('ADC')['create_block'] = function(py2block, node, targets, value
         pinblock =  py2block.convert(args[0]);
         pbc.pinType = null;
     }
-
-    return [block("inout_analog_read_init", node.lineno, {}, {
+    pinobj = "adc"+value.args[0].args[0].n.v;
+    return [block("inout_analog_read_init", node.lineno, {"PIN_OBJ":pinobj}, {
         "PIN":pinblock,
 
     })];
@@ -228,8 +232,8 @@ pbc.assignD.get('TOUCHPAD')['create_block'] = function(py2block, node, targets, 
         pinblock =  py2block.convert(args[0]);
         pbc.pinType = null;
     }
-
-    return [block("pin_pressed_init", node.lineno, {}, {
+    pinobj = "tc"+value.args[0].args[0].n.v;
+    return [block("pin_pressed_init", node.lineno, {"PIN_OBJ":pinobj}, {
         "PIN":pinblock,
 
     })];
