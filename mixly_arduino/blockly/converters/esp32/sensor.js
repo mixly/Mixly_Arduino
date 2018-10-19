@@ -293,15 +293,15 @@ function dht(mode){
         if (args.length !== 2) {
             throw new Error("Incorrect number of arguments");
         }
-        var pinType="pins_digital"
-        var pinblock=py2block.convert(args[1])
-        var pinType=null
-        var dhtblock=py2block.identifier(args[0].s)
+        pbc.pinType="pins_digital_pin";
+        var pinblock=py2block.convert(args[1]);
+        pbc.pinType=null;
+        var dhtblock=py2block.identifier(args[0].s);
         return block('dht11', func.lineno, {
                 'TYPE':dhtblock,
-                'tempandhum':mode
+                'WHAT':mode
             }, {
-                "WHAT": pinblock
+                "PIN":pinblock,
             }, {
                 "inline": "true"
             });
@@ -312,3 +312,21 @@ function dht(mode){
 pbc.moduleFunctionD.get('dhtx')['get_temperature'] = dht('temperature');
 pbc.moduleFunctionD.get('dhtx')['get_humidity'] = dht('humidity');
 pbc.moduleFunctionD.get('dhtx')['get_tempandhum'] = dht('all');
+
+
+
+pbc.objectFunctionD.get('checkdist')['sonar'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (func.value.args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    pbc.pinType="pins_digital_pin";
+    var trigblock=py2block.convert(func.value.args[0]);
+    var echoblock=py2block.convert(func.value.args[1]);
+    pbc.pinType=null;
+    return block("HCSR04", func.lineno, {}, {
+        "PIN1":trigblock,
+        "PIN2":echoblock
+    }, {
+        "inline": "true"
+    });
+}

@@ -52,7 +52,21 @@ pbc.initIgnoreS = function(){
     }
 }
 
-pbc.initModuleAttrD = function(){    
+pbc.initModuleAttrD = function(){
+    for (var i = 0; i < profile.default.builtinimg.length; i++) {
+        pbc.moduleAttrD.get('Image')[profile.default.builtinimg[i][0]] = function (node, module, attr) {
+            return block("pins_builtinimg", node.lineno, {
+                "PIN": module + "." + attr
+            });
+        }
+    }
+    for (var i = 0; i < profile.default.imglist.length; i++) {
+        pbc.moduleAttrD.get('Image')[profile.default.imglist[i][0]] = function (node, module, attr) {
+            return block("pins_imglist", node.lineno, {
+                "PIN": module + "." + attr
+            });
+        }
+    }    
 }
 
 pbc.initKnownModuleS = function(){

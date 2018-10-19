@@ -9,18 +9,28 @@
 */
 
 pbc.moduleFunctionD.get('display')['show'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 2){
+    if (args.length !== 1){
         throw new Error("Incorrect number of arguments");
     }
-    var strblock= null;
-    var delayblock=null;
 
-    strblock=py2block.convert(args[0]);
-    delayblock=py2block.convert(args[1]);
+   var  strblock=py2block.convert(args[0]);
 
-    return block[("monitor_show_scroll_string", func.lineno, {'MODE': 'show'}, {
+    return [block("monitor_show_image_or_string", func.lineno, {}, {
         'data':strblock,
-        'time':delayblock,
+    }, {
+        "inline": "true"
+    })];
+}
+
+pbc.moduleFunctionD.get('display')['scroll'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1){
+        throw new Error("Incorrect number of arguments");
+    }
+
+   var  strblock=py2block.convert(args[0]);
+
+    return [block("monitor_scroll_string", func.lineno, {}, {
+        'data':strblock,
     }, {
         "inline": "true"
     })];
@@ -47,7 +57,7 @@ pbc.globalFunctionD['Image'] = function (py2block, func, args, keywords, stararg
         }
     }
     if (flag == 8) {
-        return block('microbit_image_create', func.lineno, {
+        return block('esp32_image_create', func.lineno, {
                 "00": colours[temptext[0].charAt(0)],
                 "01": colours[temptext[0].charAt(1)],
                 "02": colours[temptext[0].charAt(2)],
@@ -257,7 +267,9 @@ pbc.moduleFunctionD.get('display')['set_brightness'] = function(py2block, func, 
     if(args.length!=1){
         throw new Error("Incorrect number of arguments");
     }
+    pbc.pinType="pins_exlcdh";
     var brightblock=py2block.convert(args[0]);
+    pbc.pinType=null;
 
     return [block("monitor_bright_screen", func.lineno, {}, {
         'x':brightblock,
@@ -332,7 +344,7 @@ pbc.assignD.get('Rgb')['create_block'] = function(py2block, node, targets, value
     // }
     var rgbblock=py2block.convert(targets[0]);
     pbc.inScope = "rgb_create_block";
-    pbc.pinType = "pins_digital";
+    pbc.pinType = "pins_digital_pin";
     // value.args[0].args[0].n.v='pin'+value.args[0].args[0].n.v
     var pinblock = py2block.convert(value.args[0].args[0]);
     pbc.inScope = null;

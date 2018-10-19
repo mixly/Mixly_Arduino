@@ -34,7 +34,6 @@ Blockly.Blocks['number'] = {
                 ["2", "2"]
             ]), 'op')
         this.setOutput(true);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW);
     }
 };
 
@@ -52,7 +51,6 @@ Blockly.Blocks['light'] = {
     }
 };
 
-
 Blockly.Blocks.led_bright = {
   init: function() {
     this.setColour(Blockly.Blocks.actuator.HUE);
@@ -68,21 +66,7 @@ Blockly.Blocks.led_bright = {
     this.setInputsInline(true);
   }
 };
-// Blockly.Blocks.led_bright = {
-//   init: function() {
-//     this.setColour(Blockly.Blocks.actuator.HUE);
-//     this.appendDummyInput()
-//     .appendField(Blockly.MIXLY_SET_LED);
-//     this.appendValueInput('led')
-//     .appendField(Blockly.LUXE_LED)
-//     this.appendDummyInput()
-//     .appendField(Blockly.MIXLY_PULSEIN_STAT)  
-//     .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ESP32_ON, "on"], [Blockly.MIXLY_ESP32_OFF, "off"]]), "bright");
-//     this.setPreviousStatement(true, null);
-//     this.setNextStatement(true, null);
-//     this.setInputsInline(true);
-//   }
-// };
+
 Blockly.Blocks.get_led_bright = {
   init: function() {
     this.setColour(Blockly.Blocks.actuator.HUE);

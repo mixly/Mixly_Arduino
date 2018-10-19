@@ -577,7 +577,7 @@ Blockly.Blocks['number1'] = {
    init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
-        .appendField(new Blockly.FieldDropdown([["1", "1"], ["2", "2"],["3", "3"],["4", "4"]]), 'op')
+        .appendField(new Blockly.FieldDropdown([["1", "touch1"], ["2", "touch2"],["3", "touch3"],["4", "touch4"]]), 'op')
     this.setOutput(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW);
   }

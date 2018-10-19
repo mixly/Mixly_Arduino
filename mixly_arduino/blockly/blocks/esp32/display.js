@@ -53,11 +53,9 @@ Blockly.Blocks.monitor_bright_point = {
 	this.appendValueInput('y')
       .setCheck(Number)
       .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_PLOT_POINT_Y);
-  this.appendDummyInput("")
-      .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ESP32_ON, "1"], [Blockly.MIXLY_ESP32_OFF, "0"]]), "flag");
-      //this.appendValueInput('brightness')
-          //.setCheck(Number)
-          //.appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS);
+  this.appendValueInput("STAT")
+        
+        .setCheck([Number,Boolean]);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
@@ -1600,3 +1598,13 @@ Blockly.Blocks.monitor_scroll_string_delay = {
      this.setInputsInline(true);
    }
  };
+
+ Blockly.Blocks['display_onoff'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ESP32_ON, "ON"], [Blockly.MIXLY_ESP32_OFF, "OFF"]]), 'ONOFF')
+    this.setOutput(true, Boolean);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW);
+  }
+};
