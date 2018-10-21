@@ -9,31 +9,55 @@
 */
 
 pbc.moduleFunctionD.get('display')['show'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 1){
+    if (args.length !== 1 && args.length !== 2 ){
         throw new Error("Incorrect number of arguments");
     }
 
-   var  strblock=py2block.convert(args[0]);
-
+    if (args.length == 1 ){
+    var  strblock=py2block.convert(args[0]);
     return [block("monitor_show_image_or_string", func.lineno, {}, {
         'data':strblock,
     }, {
         "inline": "true"
     })];
+    }
+    if (args.length == 2 ){
+    var  strblock=py2block.convert(args[0]);
+    var  numblock=py2block.convert(args[1]);
+    return [block("monitor_show_image_or_string_delay", func.lineno, {}, {
+        'data':strblock,
+        'time':numblock
+    }, {
+        "inline": "true"
+    })];
+    }
+
+
 }
 
 pbc.moduleFunctionD.get('display')['scroll'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 1){
+    if (args.length !== 1 && args.length !== 2 ){
         throw new Error("Incorrect number of arguments");
     }
 
-   var  strblock=py2block.convert(args[0]);
-
+    if (args.length == 1 ){
+    var  strblock=py2block.convert(args[0]);
     return [block("monitor_scroll_string", func.lineno, {}, {
         'data':strblock,
     }, {
         "inline": "true"
     })];
+    }
+    if (args.length == 2 ){
+    var  strblock=py2block.convert(args[0]);
+    var  numblock=py2block.convert(args[1]);
+    return [block("monitor_scroll_string_delay", func.lineno, {}, {
+        'data':strblock,
+        'time':numblock
+    }, {
+        "inline": "true"
+    })];
+    }
 }
 
 pbc.globalFunctionD['Image'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -236,8 +260,8 @@ pbc.moduleFunctionD.get('display')['set_pixel'] = function(py2block, func, args,
     }
     var astname = args[0]._astname;
     var astname1 = args[1]._astname;
-    pbc.pinType = "pins_brightness";
-    var brightblock = py2block.identifier(args[2].n);
+    //pbc.pinType = "pins_brightness";
+    var brightblock = py2block.convert(args[2]);
     pbc.pinType = null;
     var xblock;
     var yblock;
@@ -253,9 +277,10 @@ pbc.moduleFunctionD.get('display')['set_pixel'] = function(py2block, func, args,
         yblock =  py2block.convert(args[1]);
     }
     pbc.pinType = null;
-    return [block("monitor_bright_point", func.lineno, {"flag":brightblock,}, {
+    return [block("monitor_bright_point", func.lineno, {}, {
         'x':xblock,
         'y':yblock,
+        'STAT':brightblock
         
     }, {
         "inline": "true"
