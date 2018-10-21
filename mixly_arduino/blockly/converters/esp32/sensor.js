@@ -122,7 +122,7 @@ pbc.objectFunctionD.get('datetime')['RTC'] = function (py2block, func, args, key
         throw new Error("Incorrect number of arguments");
     }*/
     if(args.length==0){
-        var objblock=py2block.convert(func.value.id);
+        var objblock=py2block.convert(func.value);
         return block("RTC_get_time", func.lineno, {}, {
             'SUB':objblock
         }, {
