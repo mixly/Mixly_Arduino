@@ -106,7 +106,7 @@ Blockly.Python.pl_legend = function(){
 
 Blockly.Python.pl_title = function(){
   Blockly.Python.definitions_.import_pylab = "import pylab";
-  var a =  Blockly.Python.valueToCode(this, 'TITLE', Blockly.Python.ORDER_ATOMIC) + ')';
+  var a =  Blockly.Python.valueToCode(this, 'TITLE', Blockly.Python.ORDER_ATOMIC);
   var code='pylab.title(' + a + ')\n';
   return code;
 };
@@ -114,7 +114,7 @@ Blockly.Python.pl_title = function(){
 Blockly.Python.pl_label = function(){
   Blockly.Python.definitions_.import_pylab = "import pylab";
   var direction = this.getFieldValue('DIR');
-  var a =  Blockly.Python.valueToCode(this, 'LABEL', Blockly.Python.ORDER_ATOMIC) + ')';
+  var a =  Blockly.Python.valueToCode(this, 'LABEL', Blockly.Python.ORDER_ATOMIC) ;
   var code='pylab.' + direction + 'label(' + a + ')\n';
   return code;
 };
