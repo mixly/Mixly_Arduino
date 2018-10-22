@@ -3,7 +3,7 @@
 goog.provide('Blockly.Python.iot');
 goog.require('Blockly.Python');
 
-Blockly.Python.iot_wificonnect = function(block) {
+Blockly.Python.iot_wifi_connect = function(block) {
   Blockly.Python.definitions_.from_simple_import_MQTTClient = "from simple import MQTTClient";  
   Blockly.Python.definitions_['import_iot_*'] = "from iot import *";  
   var username =  Blockly.Python.valueToCode(this, 'WIFINAME', Blockly.Python.ORDER_ATOMIC) ;
@@ -12,7 +12,7 @@ Blockly.Python.iot_wificonnect = function(block) {
   return code;
 };
 
-Blockly.Python.iot_onenetconnect = function(block) {
+Blockly.Python.iot_onenet_connect = function(block) {
   Blockly.Python.definitions_.from_simple_import_MQTTClient = "from simple import MQTTClient";
   var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
   var client =  Blockly.Python.valueToCode(this, 'CLIENT', Blockly.Python.ORDER_ATOMIC) ;
@@ -25,21 +25,19 @@ Blockly.Python.iot_onenetconnect = function(block) {
   return code;
 };
 
-Blockly.Python.iot_onenetdisconnect = function(block) {
-  var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
+Blockly.Python.iot_onenet_disconnect = function(block) {
   Blockly.Python.definitions_.from_simple_import_MQTTClient = "from simple import MQTTClient"; 
   var code=v + '.disconnect()\n';  
   return code;
 };
 
-Blockly.Python.iot_checkonenet = function(block) {
-  var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
+Blockly.Python.iot_onenet_check = function(block) {
   Blockly.Python.definitions_.from_simple_import_MQTTClient = "from simple import MQTTClient"; 
   var code=v + '.check_msg()\n';  
   return code;
 };
 
-Blockly.Python.iot_publish = function() {
+Blockly.Python.iot_onenet_publish = function() {
   // Create a list with any number of elements of any type.
   
   //var size=window.parseFloat(this.getFieldValue('SIZE'));

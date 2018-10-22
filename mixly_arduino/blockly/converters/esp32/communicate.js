@@ -21,13 +21,13 @@ pbc.assignD.get('I2C')['create_block'] = function(py2block, node, targets, value
         var param = value.keywords[i];
         var key = py2block.identifier(param.arg);
         if (key === "sda") {
-            pbc.inScope = "i2c_init";
+            pbc.inScope = "communicate_i2c_init";
             pbc.pinType = "pins_digital_pin";
             sdablock = py2block.convert(param.value.args[0]);
             pbc.pinType = null;
             pbc.inScope = null;
         } else if (key === "scl") {
-            pbc.inScope = "i2c_init";
+            pbc.inScope = "communicate_i2c_init";
             pbc.pinType = "pins_digital_pin";
             sclblock = py2block.convert(param.value.args[0]);
             pbc.pinType = null;
@@ -38,7 +38,7 @@ pbc.assignD.get('I2C')['create_block'] = function(py2block, node, targets, value
     }
 }
     if (sdablock != null && sclblock != null && freqblock != null) {
-        return [block("i2c_init", node.lineno, {}, {
+        return [block("communicate_i2c_init", node.lineno, {}, {
             "SUB":i2cblock,
             'RX': sdablock,
             'TX': sclblock,
@@ -53,147 +53,72 @@ pbc.objectFunctionD.get('readfrom')['I2C'] = function (py2block, func, args, key
     if (args.length !== 2) {
         throw new Error("Incorrect number of arguments");
     }
+    var objblock = py2block.convert(func.value);
     var adblock = py2block.convert(args[0]);
     var datablock = py2block.convert(args[1]);
-    return [block("i2c_read", func.lineno, {}, {
+    return [block("communicate_i2c_read", func.lineno, {}, {
         "address": adblock,
-        "data": datablock
+        "data": datablock,
+        "VAR": objblock
     }, {
         "inline": "true"
     })];
 }
+
 pbc.objectFunctionD.get('writeto')['I2C'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 2) {
         throw new Error("Incorrect number of arguments");
     }
+    var objblock = py2block.convert(func.value);
     var adblock = py2block.convert(args[0]);
     var datablock = py2block.convert(args[1]);
-    return [block("i2c_write", func.lineno, {}, {
+    return [block("communicate_i2c_write", func.lineno, {}, {
         "address": adblock,
-        "data": datablock
+        "data": datablock,
+        "VAR": objblock
     }, {
         "inline": "true"
     })];
 }
 
-pbc.assignD.get('network')['check_assign'] = function(py2block, node, targets, value) {
-    if(value._astname != "Call" || value.func._astname != "Attribute" || value.func.value._astname != "Name"){
-        return false;
+pbc.objectFunctionD.get('scan')['I2C'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
     }
-    var moduleName = py2block.Name_str(value.func.value);
-    var funcName = py2block.identifier(value.func.attr);
-    if(value._astname === "Call" && moduleName === "network"
-        && funcName === "WLAN" && value.args.length === 1)
-        return true;
-    return false;
-}
-
-pbc.assignD.get('network')['create_block'] = function(py2block, node, targets, value){
-    var mode = py2block.identifier(value.args[0].attr);
-    if (mode=="STA_IF"){
-        mode="STA"
-    }
-    if (mode=="AP_IF"){
-        mode="AP"
-    }
-    return block("network_init", node.lineno, {
-        "mode":mode,
+    var objblock = py2block.convert(func.value);
+    return [block("communicate_i2c_scan", func.lineno, {}, {
+        "VAR": objblock,
     }, {
-        "VAR":py2block.convert(targets[0]),
-    });
+        "inline": "true"
+    })];
 }
 
-
-pbc.objectFunctionD.get('active')['network'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length != 1) {
+pbc.objectFunctionD.get('read')['I2C'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
     var objblock = py2block.convert(func.value);
-    // var lightblock = py2block.identifier(args[0].n);
-    var reverse = py2block.Name_str(args[0]);
-    return [block("network_open", func.lineno, {
-            "op": reverse,
-        }, {
-            "VAR":objblock,
-        }, {
-            "inline": "true"
-        })];
-}
-
-pbc.objectFunctionD.get('isconnected')['network'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length != 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    var objblock = py2block.convert(func.value);
-    return [block("network_wifi_connect", func.lineno, {}, {
-            "VAR":objblock,
-        }, {
-            "inline": "true"
-        })];
-}
-
-pbc.objectFunctionD.get('disconnect')['network'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length != 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    var objblock = py2block.convert(func.value);
-    return [block("network_stop", func.lineno, {}, {
-            "VAR":objblock,
-        }, {
-            "inline": "true"
-        })];
-}
-
-pbc.objectFunctionD.get('config')['network'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length == 0 & keywords.length == 2){ 
-         var objblock = py2block.convert(func.value);
-        var essidblock = null;
-        var channelblock = null;
-        for (var i = 0; i < keywords.length; i++) {
-            var param = keywords[i];
-            var key = py2block.identifier(param.arg);
-            if (key === "essid") {
-                essidblock = py2block.convert(param.value);
-            } else if (key === "channel") {
-                channelblock = py2block.convert(param.value);
-            } 
-        }
-        if (essidblock != null  && channelblock != null ) {
-            return [block("network_ap_connect", func.lineno, {}, {
-                "VAR":objblock,
-                "essid": essidblock,
-                "channel": channelblock,
-            }, {
-                "inline": "true"
-            })];
-        }
-    }else if(args.length == 1) {
-       var objblock = py2block.convert(func.value);
-    var argblock = py2block.Str_value(args[0]);
-    return [block("network_get_wifi", func.lineno, {
-        "op":argblock,
+    return [block("communicate_i2c_master_read", func.lineno, {}, {
+        "VAR": objblock,
     }, {
-            "VAR":objblock,
-        }, {
-            "inline": "true"
-        })];
-    }else{
-        throw new Error("Incorrect number of arguments");
-    }
+        "inline": "true"
+    })];
 }
 
-pbc.objectFunctionD.get('connect')['network'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length != 2) {
+pbc.objectFunctionD.get('available')['I2C'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
     var objblock = py2block.convert(func.value);
-    var idblock = py2block.convert(args[0]);
-    var passwordblock = py2block.convert(args[1]);
-    return [block("network_connect", func.lineno, {}, {
-            "VAR":objblock,
-            "id":idblock,
-            "password":passwordblock,
-        }, {
+    return [block("communicate_i2c_available", func.lineno, {}, {
+        "VAR": objblock,
+    }, {
+        "inline": "true"
+    })];
+}
+
+       
             "inline": "true"
         })];
+
 }

@@ -5,7 +5,7 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.iot.HUE = 225//'#3288dd';
 
-Blockly.Blocks['iot_wificonnect'] = {
+Blockly.Blocks['iot_wifi_connect'] = {
  init: function() {    
     this.setColour(0);
     this.appendDummyInput()
@@ -23,7 +23,7 @@ Blockly.Blocks['iot_wificonnect'] = {
   }
 };
 
-Blockly.Blocks['iot_onenetconnect'] = {
+Blockly.Blocks['iot_onenet_connect'] = {
  init: function() {    
     this.setColour(Blockly.Blocks.iot.HUE);
     this.appendValueInput('VAR')
@@ -53,7 +53,7 @@ Blockly.Blocks['iot_onenetconnect'] = {
   }
 };
 
-Blockly.Blocks['iot_onenetdisconnect'] = {
+Blockly.Blocks['iot_onenet_disconnect'] = {
  init: function() {    
     this.setColour(Blockly.Blocks.iot.HUE);
     this.appendValueInput('VAR')
@@ -69,7 +69,7 @@ Blockly.Blocks['iot_onenetdisconnect'] = {
 };
 
 
-Blockly.Blocks['iot_checkonenet'] = {
+Blockly.Blocks['iot_onenet_check'] = {
  init: function() {    
     this.setColour(Blockly.Blocks.iot.HUE);
     this.appendValueInput('VAR')
@@ -84,7 +84,7 @@ Blockly.Blocks['iot_checkonenet'] = {
   }
 };
 
-Blockly.Blocks['iot_publish'] = {
+Blockly.Blocks['iot_onenet_publish'] = {
     /**
      * Block for creating a list with any number of elements of any type.
      * @this Blockly.Block

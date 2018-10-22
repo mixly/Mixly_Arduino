@@ -51,7 +51,7 @@ Blockly.Python['microbit_radio_receive'] = function(block) {
   return [code, Blockly.Python.ORDER_MEMBER];
 };
 
-Blockly.Python.i2c_init = function () {
+Blockly.Python.communicate_i2c_init = function () {
   Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
   var dropdown_pin1 = Blockly.Python.valueToCode(this, 'RX',Blockly.Python.ORDER_ATOMIC);
   var dropdown_pin2 = Blockly.Python.valueToCode(this, 'TX',Blockly.Python.ORDER_ATOMIC);
@@ -60,7 +60,7 @@ Blockly.Python.i2c_init = function () {
   return ""+sub+" = I2C(scl = Pin(" + dropdown_pin2 + "), sda = Pin(" + dropdown_pin1 + "), freq = " + freq + ")\n";
 };
 
-Blockly.Python.i2c_read = function(){
+Blockly.Python.communicate_i2c_read = function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var address = Blockly.Python.valueToCode(this, 'address', Blockly.Python.ORDER_ATOMIC);
@@ -71,7 +71,7 @@ Blockly.Python.i2c_read = function(){
     return ""+name+".readfrom(" + address + ", " + data +  ")\n";
 };
 
-Blockly.Python.i2c_write = function(){
+Blockly.Python.communicate_i2c_write = function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var address = Blockly.Python.valueToCode(this, 'address', Blockly.Python.ORDER_ATOMIC);
@@ -82,13 +82,13 @@ Blockly.Python.i2c_write = function(){
     return ""+name+".writeto("+ address + ", " + data + ")\n";
 };
 
-Blockly.Python.i2c_scan = function(){
+Blockly.Python.communicate_i2c_scan = function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     return ""+name+".scan()\n";
 };
 
-Blockly.Python.spi_init= function(block) {
+Blockly.Python.communicate_spi_init= function(block) {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var name=Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var freq=Blockly.Python.valueToCode(this, 'freq', Blockly.Python.ORDER_ATOMIC);
@@ -100,27 +100,27 @@ Blockly.Python.spi_init= function(block) {
     return ""+name+" = SPI(-1, baudrate=" + freq + ", polarity=" + polarity + ", phase=" + phase + ", sck=Pin(" + sck + "), mosi=Pin(" + mosi + "), miso=Pin(" + miso + "));\n";
 }
 
-Blockly.Python.spi_set = function() {
+Blockly.Python.communicate_spi_set = function() {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     return ["spi.init(baudrate=" + data + ")", Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.spi_buffer = function() {
+Blockly.Python.communicate_spi_buffer = function() {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     return [""+varname+"=bytearray(" + data + ")", Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.spi_read = function() {
+Blockly.Python.communicate_spi_read = function() {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     return [""+varname+".read(" + data + ")", Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.spi_read_output = function() {
+Blockly.Python.communicate_spi_read_output = function() {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
@@ -128,14 +128,14 @@ Blockly.Python.spi_read_output = function() {
     return [""+varname+".read(" + data + ","+val+")", Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.spi_readinto = function() {
+Blockly.Python.communicate_spi_readinto = function() {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     return [""+varname+".readinto(" + data + ")", Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.spi_readinto_output = function() {
+Blockly.Python.communicate_spi_readinto_output = function() {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
@@ -143,14 +143,14 @@ Blockly.Python.spi_readinto_output = function() {
     return [""+varname+".readinto(" + data + ","+val+")", Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.spi_write = function() {
+Blockly.Python.communicate_spi_write = function() {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     return [""+varname+".write(b'" + data + "')", Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.spi_write_readinto = function() {
+Blockly.Python.communicate_spi_write_readinto = function() {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
@@ -163,124 +163,13 @@ Blockly.Python.spi_write_readinto = function() {
     }
 }
 
-Blockly.Python.network_init= function() {
-    Blockly.Python.definitions_['import_network'] = "import network";
-    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    var mode=this.getFieldValue('mode');
-    return ""+varName+"=network.WLAN(network."+mode+"_IF);\n";
-}
-
-// Blockly.Python.network_connect= function() {
-//     Blockly.Python.definitions_['import_network'] = "import network";
-//     // Blockly.Python.setups_['class_wlan'] ='wlan.active(True)\n';
-//     var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-//     var id = Blockly.Python.valueToCode(this, 'id', Blockly.Python.ORDER_ATOMIC);
-//     var password = Blockly.Python.valueToCode(this, 'password', Blockly.Python.ORDER_ATOMIC);
-//     return "if not "+varName+".isconnected():\n"+
-//            "  "+varName+".connect("+id+","+password+")\n"+
-//            "  while not "+varName+".isconnected():\n"+
-//            "    pass\n";
-// }
-
-Blockly.Python.network_connect= function() {
-    Blockly.Python.definitions_['import_network'] = "import network";
-    // Blockly.Python.setups_['class_wlan'] ='wlan.active(True)\n';
-    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    var id = Blockly.Python.valueToCode(this, 'id', Blockly.Python.ORDER_ATOMIC);
-    var password = Blockly.Python.valueToCode(this, 'password', Blockly.Python.ORDER_ATOMIC);
-    return ""+varName+".connect("+id+","+password+")\n"
-}
-
-Blockly.Python.network_wifi_connect= function() {
-    Blockly.Python.definitions_['import_network'] = "import network";
-    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    return ""+varName+".isconnected()\n"; 
-}
-
-Blockly.Python.network_get_connect= function() {
-    Blockly.Python.definitions_['import_network'] = "import network";
-    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    var mode=this.getFieldValue('mode');
-    var code=""+varName+".ifconfig()["+mode+"]";
-    return [code, Blockly.Python.ORDER_MEMBER]
-}
-
-Blockly.Python.network_stop= function() {
-    Blockly.Python.definitions_['import_network'] = "import network";
-    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    return ""+varName+".disconnect()\n";
-}
-
-Blockly.Python.network_open= function() {
-    Blockly.Python.definitions_['import_network'] = "import network";
-    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    var op=this.getFieldValue('op');
-    var code=""+varName+".active("+op+")\n";
-    return code;
-}
-
-Blockly.Python.network_wifi_connect = function(){
-    Blockly.Python.definitions_['import_network'] = "import network";
-    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    var code = ''+varName+'.isconnected()';
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.network_get_wifi= function() {
-    Blockly.Python.definitions_['import_network'] = "import network";
-    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    var op=this.getFieldValue('op');
-    var code=""+varName+".config('"+op+"')";
-    return [code, Blockly.Python.ORDER_MEMBER]
-}
-
-Blockly.Python.network_ap_connect= function() {
-    Blockly.Python.definitions_['import_network'] = "import network";
-    Blockly.Python.setups_['class_wlan'] ='ap = network.WLAN(network.AP_IF)\n'+'ap.active(True)\n';
-    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    var essid = Blockly.Python.valueToCode(this, 'essid', Blockly.Python.ORDER_ATOMIC);
-    var channel = Blockly.Python.valueToCode(this, 'channel', Blockly.Python.ORDER_ATOMIC);
-    return ""+varName+".config(essid="+essid+",channel="+channel+")\n";
-}
-
-Blockly.Python.network_scan= function() {
-    Blockly.Python.definitions_['import_network'] = "import network";
-    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    var op=this.getFieldValue('op');
-    var code=""+varName+".scan()["+op+"]";
-    switch (op) {
-    case "0":
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "1":
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "2":
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "3":
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "4":
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "5":
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "all":
-       var code1 = ''+varName+'.scan()';
-       return [code1, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-  }
-}
-
-Blockly.Python.i2c_master_reader2 = function () {
+Blockly.Python.communicate_i2c_master_read = function () {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var code = ""+name+".read()";
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
-Blockly.Python.i2c_available = function () {
+Blockly.Python.communicate_i2c_available = function () {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var code = ""+name+".available()";
@@ -346,19 +235,7 @@ Blockly.Python.bluetooth_service_setup = function () {
   return 'bluetooth.Service('+uuid+',is_primary='+op+')\n';
 };
 
-Blockly.Python.network_server= function() {
-    Blockly.Python.definitions_['import_server_*'] = 'from server import *';
-    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    // Blockly.Python.setups_['class_wlan'] ='SSID="ying"\n'+'PASSWORD="201411132040"\n';
-    return 'if not '+varName+'.isconnected():\n'
-    +'    connectWifi(SSID, PASSWORD)\n'
-    +'ip='+varName+'.ifconfig()[0]\n'
-    +'print(ip)\n'
-    +'time.sleep(1)\n'
-    +'DATA=listenData()\n'   
-};
-
-Blockly.Python.ow_init = function () {
+Blockly.Python.communicate_ow_init = function () {
     Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
     Blockly.Python.definitions_['import_onewire'] = "import onewire";
     var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
@@ -367,7 +244,7 @@ Blockly.Python.ow_init = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.ow_scan = function () {
+Blockly.Python.communicate_ow_scan = function () {
     Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
     Blockly.Python.definitions_['import_onewire'] = "import onewire";
     var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
@@ -375,7 +252,7 @@ Blockly.Python.ow_scan = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.ow_reset = function () {
+Blockly.Python.communicate_ow_reset = function () {
     Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
     Blockly.Python.definitions_['import_onewire'] = "import onewire";
     var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
@@ -383,7 +260,7 @@ Blockly.Python.ow_reset = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.ow_read = function () {
+Blockly.Python.communicate_ow_read = function () {
     Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
     Blockly.Python.definitions_['import_onewire'] = "import onewire";
     var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
@@ -391,7 +268,7 @@ Blockly.Python.ow_read = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.ow_write = function () {
+Blockly.Python.communicate_ow_write = function () {
     Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
     Blockly.Python.definitions_['import_onewire'] = "import onewire";
     var varName =Blockly.Python.valueToCode(this, 'byte',Blockly.Python.ORDER_ATOMIC);
@@ -401,7 +278,7 @@ Blockly.Python.ow_write = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.ow_select = function () {
+Blockly.Python.communicate_ow_select = function () {
     Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
     Blockly.Python.definitions_['import_onewire'] = "import onewire";
     var varName =Blockly.Python.valueToCode(this, 'byte',Blockly.Python.ORDER_ATOMIC);
