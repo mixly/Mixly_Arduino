@@ -14,27 +14,28 @@ Blockly.Python.iot_wificonnect = function(block) {
 
 Blockly.Python.iot_onenetconnect = function(block) {
   Blockly.Python.definitions_.from_simple_import_MQTTClient = "from simple import MQTTClient";
-  var varName = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
   var client =  Blockly.Python.valueToCode(this, 'CLIENT', Blockly.Python.ORDER_ATOMIC) ;
   var server =  Blockly.Python.valueToCode(this, 'SERVER', Blockly.Python.ORDER_ATOMIC) ;
   var username =  Blockly.Python.valueToCode(this, 'USERNAME', Blockly.Python.ORDER_ATOMIC) ;
   var password =  Blockly.Python.valueToCode(this, 'PASSWORD', Blockly.Python.ORDER_ATOMIC) ;
   var topic =  Blockly.Python.valueToCode(this, 'TOPIC', Blockly.Python.ORDER_ATOMIC) ;
-  var code='c = MQTTClient(' + client + ',' + server + ',6002,' + username + ',' + password + ')\n';
-  code = code + 'c.set_callback(' + varName + ')\n';
-  code = code + 'c.connect()\nc.subscribe(b' + topic + ')\n'
+  var subscribe = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var code= v + ' = init_MQTT_client(' + client + ', ' + server + ', '+ username + ', ' + password +', ' + topic+', ' + subscribe + ')\n';
   return code;
 };
 
 Blockly.Python.iot_onenetdisconnect = function(block) {
+  var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
   Blockly.Python.definitions_.from_simple_import_MQTTClient = "from simple import MQTTClient"; 
-  var code='c.disconnect()\n';  
+  var code=v + '.disconnect()\n';  
   return code;
 };
 
 Blockly.Python.iot_checkonenet = function(block) {
+  var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
   Blockly.Python.definitions_.from_simple_import_MQTTClient = "from simple import MQTTClient"; 
-  var code='c.check_msg()\n';  
+  var code=v + '.check_msg()\n';  
   return code;
 };
 
@@ -48,6 +49,7 @@ Blockly.Python.iot_publish = function() {
   var ct = new Array(this.itemCount_);
 
   var default_value = '0';
+  var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
 
   for (var n = 0; n < this.itemCount_; n++) {
   var keyName = this.getFieldValue('KEY' + n);    
@@ -57,7 +59,7 @@ Blockly.Python.iot_publish = function() {
   cv[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
     Blockly.Python.ORDER_NONE) || default_value;
   }
-  var code="c.publish('$dp', pubData({'datastreams':[";
+  var code=v + ".publish('$dp', pubData({'datastreams':[";
   for (var n = 0; n < this.itemCount_; n++) {
     ct[n] ='{"id":"'+ck[n]+'","datapoints":[{"value":'
     ct[n] +=cv[n]+'}]}'

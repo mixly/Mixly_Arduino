@@ -55,6 +55,7 @@
   <script src="../../generators/python/dicts.js"></script>
   <script src="../../generators/python/logic.js"></script>
   <script src="../../generators/esp32/serial.js"></script>
+  <script src="../../generators/esp32/iot.js"></script>
   <script src="../../generators/esp32/communicate.js"></script>
   <script src="../../generators/esp32/sensor.js"></script>
   <script src="../../generators/esp32/storage.js"></script>
@@ -1868,6 +1869,11 @@
               </value>
          </block>          
         <block type="iot_onenetconnect">
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">c</field>
+                </shadow>
+              </value>
             <value name="SUB">
                 <shadow type="variables_get">
                   <field name="VAR">sub_cb</field>
@@ -1899,9 +1905,27 @@
                   </shadow>
               </value>
           </block>
-          <block type="iot_publish"></block>
-          <block type="iot_onenetdisconnect"></block>
-          <block type="iot_checkonenet"></block>
+          <block type="iot_publish">
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">c</field>
+                </shadow>
+              </value>
+          </block>
+          <block type="iot_onenetdisconnect">
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">c</field>
+                </shadow>
+              </value>
+          </block>
+          <block type="iot_checkonenet">
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">c</field>
+                </shadow>
+              </value>
+          </block>
       </category>
       <category id="catSensor" colour="40">
         <block type="sensor_button_is_pressed">

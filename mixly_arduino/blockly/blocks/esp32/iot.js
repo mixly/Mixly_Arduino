@@ -26,8 +26,9 @@ Blockly.Blocks['iot_wificonnect'] = {
 Blockly.Blocks['iot_onenetconnect'] = {
  init: function() {    
     this.setColour(Blockly.Blocks.iot.HUE);
-    this.appendDummyInput()
-        .appendField(Blockly.MIXLY_ESP32_CONNECT_ONENET);
+    this.appendValueInput('VAR')
+        .setCheck("var")
+        .appendField("OneNET" + Blockly.MIXLY_ESP32_CONNECT_ONENET);
     this.appendValueInput('CLIENT')
         .setCheck(String)
         .appendField(Blockly.MIXLY_ESP32_ONENET_CLIENT);
@@ -55,9 +56,11 @@ Blockly.Blocks['iot_onenetconnect'] = {
 Blockly.Blocks['iot_onenetdisconnect'] = {
  init: function() {    
     this.setColour(Blockly.Blocks.iot.HUE);
+    this.appendValueInput('VAR')
+        .setCheck("var")
+        .appendField("OneNET")
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_ESP32_DISCONNECT_ONENET);
-    
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -65,25 +68,15 @@ Blockly.Blocks['iot_onenetdisconnect'] = {
   }
 };
 
-Blockly.Blocks['iot_onenetdisconnect'] = {
- init: function() {    
-    this.setColour(Blockly.Blocks.iot.HUE);
-    this.appendDummyInput()
-        .appendField(Blockly.MIXLY_ESP32_DISCONNECT_ONENET);
-    
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-   // this.setTooltip(Blockly.Msg.TURTLE_WRITE_TOOLTIP);    
-  }
-};
 
 Blockly.Blocks['iot_checkonenet'] = {
  init: function() {    
     this.setColour(Blockly.Blocks.iot.HUE);
+    this.appendValueInput('VAR')
+        .setCheck("var")
+        .appendField("OneNET")
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_ESP32_CHECK_ONENET);
-    
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -98,12 +91,16 @@ Blockly.Blocks['iot_publish'] = {
      */
     init: function () {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendDummyInput("")
-            
+        this.appendValueInput('VAR')
+            .setCheck("var")
+            .appendField("OneNET"+Blockly.Msg.DISPLAY_IMAGE_LET2)
+            .setAlign(Blockly.ALIGN_RIGHT)
+        this.appendDummyInput()
             .appendField(new Blockly.FieldLabel(Blockly.MIXLY_ESP32_PUBLISH_ONENET), 'TIP')
-
+            .setAlign(Blockly.ALIGN_RIGHT)
         this.itemCount_ = 2;
         this.updateShape_();
+        this.setInputsInline(false);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setMutator(new Blockly.Mutator(['iot_publish_item']));
