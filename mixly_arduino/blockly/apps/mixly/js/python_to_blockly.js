@@ -2021,7 +2021,13 @@ PythonToBlocks.prototype.Tuple = function(node)
     var elts = node.elts;
     var ctx = node.ctx;
 
-    throw new Error("Tuples not implemented");
+    return block("tuple_create_with_noreturn", node.lineno, {},
+        this.convertElements("ADD", elts)
+        , {
+            "inline": elts.length > 3 ? "false" : "true",
+        }, {
+            "@items": elts.length
+        });
 }
 
 /*

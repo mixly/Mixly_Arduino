@@ -116,9 +116,3 @@ pbc.objectFunctionD.get('available')['I2C'] = function (py2block, func, args, ke
         "inline": "true"
     })];
 }
-
-       
-            "inline": "true"
-        })];
-
-}
