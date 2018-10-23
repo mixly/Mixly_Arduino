@@ -155,7 +155,7 @@ pbc.assignD.get('uart0')['create_block'] = function (py2block, node, targets, va
     else if(mode=="uart2"){
         mode='2'
     }
-    return block("uart_softserial", node.lineno, { 
+    return block("serial_softserial", node.lineno, { 
             "mode":mode
         }, {
             "CONTENT":py2block.convert(value.args[0]),
