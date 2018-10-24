@@ -68,9 +68,9 @@ Blockly.Python.procedures_ifreturn = function() {
   if (this.hasReturnValue_) {
     var value = Blockly.Python.valueToCode(this, 'VALUE',
         Blockly.Python.ORDER_NONE) || 'None';
-    code += '    return ' + value + '\n';
+    code += '    return ' + value;
   } else {
-    code += '    return None\n';
+    code += '    return None';
   }
   code += '\n';
   return code;
@@ -82,9 +82,9 @@ Blockly.Python.procedures_return = function() {
   if (this.hasReturnValue_) {
     var value = Blockly.Python.valueToCode(this, 'VALUE',
         Blockly.Python.ORDER_NONE) || 'None';
-    code += 'return ' + value + '\n';
+    code += 'return ' + value;
   } else {
-    code += 'return None\n';
+    code += 'return None';
   }
   code += '\n';
   return code;
