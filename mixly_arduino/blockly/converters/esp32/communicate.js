@@ -38,14 +38,14 @@ pbc.assignD.get('I2C')['create_block'] = function(py2block, node, targets, value
     }
 }
     if (sdablock != null && sclblock != null && freqblock != null) {
-        return [block("communicate_i2c_init", node.lineno, {}, {
+        return block("communicate_i2c_init", node.lineno, {}, {
             "SUB":i2cblock,
             'RX': sdablock,
             'TX': sclblock,
             "freq": freqblock
         }, {
             "inline": "true"
-        })];
+        });
     }
 }
 

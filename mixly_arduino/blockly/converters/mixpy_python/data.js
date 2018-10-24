@@ -17,20 +17,20 @@ pbc.assignD.get('Series')['create_block'] = function (py2block, node, targets, v
     var argblock = py2block.convert(value.args[0]);
     var param = value.keywords[0];
     if (value.keywords.length == 0){
-        return [block('series_create', node.lineno, {
+        return block('series_create', node.lineno, {
             'VAR': series            
         }, {
             'SER': argblock
-        })];
+        });
     }
     else if(value.keywords.length == 1&&param.arg.v =="index"){
         var listblock = py2block.convert(value.keywords[0].value);
-    return [block('series_create_from_index', node.lineno, {
+    return block('series_create_from_index', node.lineno, {
             'VAR': series            
         }, {
             'SER': argblock,
             'INDEX': listblock
-        })];
+        });
     }
 }
 
