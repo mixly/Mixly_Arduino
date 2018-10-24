@@ -1699,12 +1699,12 @@
         </block> -->
       </category>
       <category id="catMonitor" colour="180">
-        <block type="monitor_show_image_or_string">
+        <block type="display_show_image_or_string">
           <value name="data">
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>
-        <block type="monitor_scroll_string">
+        <block type="display_scroll_string">
           <value name="data">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
@@ -1728,8 +1728,8 @@
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>-->
-        <block type="esp32_image_create"></block>
-        <block type="esp32_image_builtins"></block>
+        <block type="display_image_create"></block>
+        <block type="display_image_builtins"></block>
         <block type="image_arithmetic">
           <value name="A">
             <shadow type="pins_builtinimg"></shadow>
@@ -1738,7 +1738,7 @@
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>
-        <block type="monitor_get_pixel">
+        <block type="display_get_pixel">
           <value name="x">
             <shadow type="pins_exlcdh"></shadow>
           </value>
@@ -1746,7 +1746,7 @@
             <shadow type="pins_exlcdv"></shadow>
           </value>
         </block>
-        <block type="monitor_bright_point">
+        <block type="display_bright_point">
           <value name="x">
             <shadow type="pins_exlcdh"></shadow>
           </value>
@@ -1758,20 +1758,20 @@
             </shadow>
           </value>
         </block>
-        <block type="monitor_bright_screen">
+        <block type="display_bright_screen">
           <value name="x">
             <shadow type="pins_exlcdh"></shadow>
           </value>
         </block>
-        <block type="monitor_get_screen_pixel"></block>
-        <block type="monitor_blink_rate">
+        <block type="display_get_screen_pixel"></block>
+        <block type="display_blink_rate">
           <value name="x">
             <shadow type="math_number">
               <field name="NUM">2</field>
             </shadow>
           </value>
         </block>
-        <block type="esp32_display_clear"></block>
+        <block type="display_clear"></block>
         <block type="display_rgb_init">
           <value name="SUB">
             <shadow type="variables_get">

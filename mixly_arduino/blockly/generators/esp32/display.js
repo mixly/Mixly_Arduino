@@ -1,21 +1,21 @@
 'use strict';
 
 
-Blockly.Python.monitor_show_image_or_string = function() {
+Blockly.Python.display_show_image_or_string = function() {
     Blockly.Python.definitions_['import_display_*'] = 'from display import *';
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
     var code = "display.show(" + data + ")\n";
     return code;
 }
 
-Blockly.Python.monitor_scroll_string = function() {
+Blockly.Python.display_scroll_string = function() {
      Blockly.Python.definitions_['import_display_*'] = 'from display import *';
      var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
      var code = "display.scroll("+ data +")\n";
      return code;
 }
 
-Blockly.Python.monitor_show_image_or_string_delay = function() {
+Blockly.Python.display_show_image_or_string_delay = function() {
     Blockly.Python.definitions_['import_display_*'] = 'from display import *';
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
     var time = Blockly.Python.valueToCode(this, 'time', Blockly.Python.ORDER_ASSIGNMENT);
@@ -23,7 +23,7 @@ Blockly.Python.monitor_show_image_or_string_delay = function() {
     return code;
 }
 
-Blockly.Python.monitor_scroll_string_delay = function() {
+Blockly.Python.display_scroll_string_delay = function() {
      Blockly.Python.definitions_['import_display_*'] = 'from display import *';
      var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT);
      var time = Blockly.Python.valueToCode(this, 'time', Blockly.Python.ORDER_ASSIGNMENT);
@@ -31,7 +31,7 @@ Blockly.Python.monitor_scroll_string_delay = function() {
      return code;
 }
 
-Blockly.Python['esp32_image_create'] = function(block) {
+Blockly.Python['display_image_create'] = function(block) {
   Blockly.Python.definitions_['import_display_*'] = 'from display import *';
   var colours = {
     "#000000": "0",
@@ -177,14 +177,14 @@ var code = 'Image("'+ colour_00 + colour_01 + colour_02 + colour_03 + colour_04 
   return [code, Blockly.Python.ORDER_MEMBER];
 };
 
-Blockly.Python['esp32_image_builtins'] = function(block) {
+Blockly.Python['display_image_builtins'] = function(block) {
   Blockly.Python.definitions_['import_display_*'] = 'from display import *';
   var dropdown_image = block.getFieldValue('image');
   var code = 'Image.' + dropdown_image;
   return [code, Blockly.Python.ORDER_MEMBER];
 };
 
-Blockly.Python['monitor_get_pixel'] = function(block) {
+Blockly.Python['display_get_pixel'] = function(block) {
   Blockly.Python.definitions_['import_display_*'] = 'from display import *';
   var value_x = Blockly.Python.valueToCode(block, 'x', Blockly.Python.ORDER_ATOMIC);
   var value_y = Blockly.Python.valueToCode(block, 'y', Blockly.Python.ORDER_ATOMIC);
@@ -192,7 +192,7 @@ Blockly.Python['monitor_get_pixel'] = function(block) {
   return [code, Blockly.Python.ORDER_MEMBER];
 };
 
-Blockly.Python.monitor_bright_point= function() {
+Blockly.Python.display_bright_point= function() {
     Blockly.Python.definitions_['import_display_*'] = 'from display import *';
     var x = Blockly.Python.valueToCode(this, 'x', Blockly.Python.ORDER_ASSIGNMENT);
     var y = Blockly.Python.valueToCode(this, 'y', Blockly.Python.ORDER_ASSIGNMENT);
@@ -201,14 +201,14 @@ Blockly.Python.monitor_bright_point= function() {
     return code;
 }
 
-Blockly.Python['monitor_get_screen_pixel'] = function() {
+Blockly.Python['display_get_screen_pixel'] = function() {
   Blockly.Python.definitions_['import_display_*'] = 'from display import *';
   var code = 'display.get_brightness()';
   return [code, Blockly.Python.ORDER_MEMBER];
 };
 
 
-Blockly.Python.monitor_bright_screen= function() {
+Blockly.Python.display_bright_screen= function() {
     Blockly.Python.definitions_['import_display_*'] = 'from display import *';
     var x = Blockly.Python.valueToCode(this, 'x', Blockly.Python.ORDER_ASSIGNMENT);
     var code = 'display.set_brightness(' + x + ')\n';
@@ -216,14 +216,14 @@ Blockly.Python.monitor_bright_screen= function() {
 };
 
 
-Blockly.Python.monitor_blink_rate= function() {
+Blockly.Python.display_blink_rate= function() {
     Blockly.Python.definitions_['import_display_*'] = 'from display import *';
     var x = Blockly.Python.valueToCode(this, 'x', Blockly.Python.ORDER_ASSIGNMENT);
     var code = 'display.blink_rate(' + x + ')\n';
     return code;
 }
 
-Blockly.Python['esp32_display_clear'] = function(block) {
+Blockly.Python['display_clear'] = function(block) {
   Blockly.Python.definitions_['import_display_*'] = 'from display import *';
   var code = 'display.clear()\n';
   return code;
@@ -271,7 +271,7 @@ Blockly.Python.lp2i_u8g_draw_4strings = function(){
   return code;
 };
 
-Blockly.Python.display_line_Arbitrarily=function(){
+Blockly.Python.display_line_arbitrarily=function(){
   Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
   Blockly.Python.definitions_['import_ssd1306_*'] = 'from ssd1306 import *';
   var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
