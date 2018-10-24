@@ -1258,7 +1258,7 @@ Blockly.Blocks.group_lcd_power = {
 //    }
 //   };
 
-Blockly.Blocks.oled_use_i2c_init = {
+Blockly.Blocks.display_use_i2c_init = {
     init: function () {
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendValueInput('I2CSUB')
@@ -1285,7 +1285,7 @@ Blockly.Blocks.oled_use_i2c_init = {
     }
 };
 
-Blockly.Blocks.lp2i_u8g_draw_4strings = {
+Blockly.Blocks.display_draw_4strings = {
     init: function() {
         // this.appendDummyInput()
         //     .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)

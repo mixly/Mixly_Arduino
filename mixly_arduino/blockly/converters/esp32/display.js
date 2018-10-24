@@ -447,7 +447,7 @@ pbc.objectFunctionD.get('show_str')['monitor'] = function(py2block, func, args, 
     var str3block=py2block.convert(args[2]);
     var str4block=py2block.convert(args[3]);
 
-    return [block("lp2i_u8g_draw_4strings", func.lineno, {}, { "VAR":objblock,'Text_line1':str1block,'Text_line2':str2block,'Text_line3':str3block,'Text_line4':str4block,
+    return [block("display_draw_4strings", func.lineno, {}, { "VAR":objblock,'Text_line1':str1block,'Text_line2':str2block,'Text_line3':str3block,'Text_line4':str4block,
     }, {
         "inline": "false"
     })];
@@ -569,7 +569,7 @@ pbc.assignD.get('oled')['create_block'] = function(py2block, node, targets, valu
     var rowblock = py2block.convert(value.args[0]);
     var columnblock = py2block.convert(value.args[1]);
     var i2cblock = py2block.convert(value.args[2]);
-    return block("oled_use_i2c_init", node.lineno, {}, {
+    return block("display_use_i2c_init", node.lineno, {}, {
         "SUB":py2block.convert(targets[0]),
         "I2CSUB":i2cblock,
         "row":rowblock,

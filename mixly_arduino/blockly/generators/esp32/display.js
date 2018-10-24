@@ -248,7 +248,7 @@ Blockly.Python.display_rgb_write=function(){
   return code;
 };
 
-Blockly.Python.oled_use_i2c_init = function () {
+Blockly.Python.display_use_i2c_init = function () {
   Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
   Blockly.Python.definitions_['import_ssd1306_*'] = 'from ssd1306 import *';
   var i2csub =Blockly.Python.valueToCode(this, 'I2CSUB',Blockly.Python.ORDER_ATOMIC);
@@ -259,7 +259,7 @@ Blockly.Python.oled_use_i2c_init = function () {
   return code;  
 };
 
-Blockly.Python.lp2i_u8g_draw_4strings = function(){
+Blockly.Python.display_draw_4strings = function(){
   Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
   Blockly.Python.definitions_['import_ssd1306_*'] = 'from ssd1306 import *';
   var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
