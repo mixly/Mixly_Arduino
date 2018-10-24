@@ -50,8 +50,9 @@ Py2blockEditor.prototype.addNewLines = function(python_code){
         }else if(isFuncDefScope && this.getIndentOfLine(line) <= indent){//函数定义结束后的第一行
             if(!this.isEmptyNewLine(line)){
                line = "\n" + line;
+            }else {
+                isFuncDefScope = false;
             }
-            isFuncDefScope = false;
         }
         //是否是空行
         if(this.isEmptyNewLine(line)){
