@@ -334,7 +334,7 @@ pbc.moduleFunctionD.get('display')['clear'] = function(py2block, func, args, key
     }
     
 
-    return [block("microbit_display_clear", func.lineno, {}, { 
+    return [block("esp32_display_clear", func.lineno, {}, { 
     }, {
         "inline": "true"
     })];
@@ -424,7 +424,7 @@ pbc.assignD.get('Rgb[0]')['create_block'] = function(py2block, node, targets, va
     });
 }
 
-pbc.objectFunctionD.get('write')['rgb'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('rgb')['write'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if(args.length!=0){
         throw new Error("Incorrect number of arguments");
     }
@@ -576,3 +576,4 @@ pbc.assignD.get('oled')['create_block'] = function(py2block, node, targets, valu
         "column":columnblock
     });
 }
+
