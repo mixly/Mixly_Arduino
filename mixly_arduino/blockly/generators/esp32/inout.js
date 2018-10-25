@@ -77,20 +77,20 @@ Blockly.Python.inout_analog_read = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 //ok
-Blockly.Python.pin_pressed = function(){
+Blockly.Python.inout_pin_pressed = function(){
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var pin = Blockly.Python.valueToCode(this, 'pin', Blockly.Python.ORDER_ATOMIC);
     var code = pin +'.read()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.controls_pin_attachInterrupt = function () {
+Blockly.Python.inout_pin_attachInterrupt = function () {
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var dropdown_mode = this.getFieldValue('mode');
     // Blockly.Python.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT);';
     //var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
-   
+
     //var code = 'p' + dropdown_pin + '.irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
     var code = 'Pin(' + dropdown_pin + ').irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
     var funcName = 'attachInterrupt_func_' + dropdown_pin;
@@ -100,7 +100,7 @@ Blockly.Python.controls_pin_attachInterrupt = function () {
     return code;
 };
 
-Blockly.Python.inout_pinMode = function () {
+Blockly.Python.inout_digital_init = function () {
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var pin_obj = this.getFieldValue('PIN_OBJ') || 'pin#';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
@@ -136,7 +136,7 @@ Blockly.Python.inout_analog_read_init = function () {
     return code;
 };
 //ok
-Blockly.Python.pin_pressed_init = function(){
+Blockly.Python.inout_pin_pressed_init = function(){
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var pin_obj = this.getFieldValue('PIN_OBJ') || 'tc#';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
