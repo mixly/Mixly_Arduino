@@ -121,7 +121,7 @@ Blockly.Python.timer = function () {
     return code;
 };
 
-Blockly.Python.timer2 = function () {
+Blockly.Python.system_timer = function () {
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var v = Blockly.Python.valueToCode(this, "VAR", Blockly.Python.ORDER_NONE) || "None";
     var period = Blockly.Python.valueToCode(this, "period", Blockly.Python.ORDER_NONE) || "0";
@@ -134,7 +134,7 @@ Blockly.Python.timer2 = function () {
 };
 
 
-Blockly.Python.time_ticks_diff = function () {
+Blockly.Python.system_ticks_diff = function () {
     Blockly.Python.definitions_['import_time'] = 'import time';
     var end = Blockly.Python.valueToCode(this, "END", Blockly.Python.ORDER_NONE) || "0";
     var start = Blockly.Python.valueToCode(this, "START", Blockly.Python.ORDER_NONE) || "0";
@@ -142,7 +142,7 @@ Blockly.Python.time_ticks_diff = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.Timer_init=function(){
+Blockly.Python.system_timer_init=function(){
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var code = v + ' = Timer(-1)\n';

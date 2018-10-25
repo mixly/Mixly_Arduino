@@ -29,7 +29,7 @@ Blockly.Blocks.controls_end_program = {
 };
 
 
-Blockly.Blocks.base_type = {
+Blockly.Blocks.controls_type = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput("DATA")
@@ -41,7 +41,7 @@ Blockly.Blocks.base_type = {
 };
 
 
-Blockly.Blocks.controls_TypeLists = {
+Blockly.Blocks.controls_typeLists = {
     init: function() {
         this.setColour(Blockly.Blocks.loops.HUE);
         this.appendDummyInput()
@@ -633,7 +633,7 @@ Blockly.Blocks.controls_whileUntil.OPERATORS =
 Blockly.Blocks.controls_flow_statements.OPERATORS =
     [[Blockly.LANG_CONTROLS_FLOW_STATEMENTS_OPERATOR_BREAK, 'BREAK'],
      [Blockly.LANG_CONTROLS_FLOW_STATEMENTS_OPERATOR_CONTINUE, 'CONTINUE']];
-	 
+
 
 
 Blockly.Blocks['controls_if_if'] = {

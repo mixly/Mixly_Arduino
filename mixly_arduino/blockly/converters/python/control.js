@@ -4,7 +4,7 @@ pbc.globalFunctionD['type'] = function (py2block, func, args, keywords, starargs
     if (args.length != 1) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("base_type", func.lineno, {}, {
+    return block("controls_type", func.lineno, {}, {
             'DATA': py2block.convert(args[0]),
         }, {
             "inline": "true"
@@ -14,7 +14,7 @@ pbc.globalFunctionD['type'] = function (py2block, func, args, keywords, starargs
 
 function typeName() {
     function converter(py2block, node, id, ctx, nodeName) {
-        return block("controls_TypeLists", node.lineno, {'type': nodeName}, {}, {
+        return block("controls_typeLists", node.lineno, {'type': nodeName}, {}, {
             "inline": "true"
         });
     }
