@@ -62,7 +62,7 @@ pbc.moduleFunctionD.get('time')['ticks_diff'] = function(py2block, func, args, k
     }
     var endblock=py2block.convert(args[0]);
     var startblock=py2block.convert(args[1]);
-    return block("time_ticks_diff", func.lineno, {}, {
+    return block("system_ticks_diff", func.lineno, {}, {
     "END":endblock,
     "START":startblock
     }, {

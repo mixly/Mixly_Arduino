@@ -9,31 +9,55 @@
 */
 
 pbc.moduleFunctionD.get('display')['show'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 1){
+    if (args.length !== 1 && args.length !== 2 ){
         throw new Error("Incorrect number of arguments");
     }
 
-   var  strblock=py2block.convert(args[0]);
-
-    return [block("monitor_show_image_or_string", func.lineno, {}, {
+    if (args.length == 1 ){
+    var  strblock=py2block.convert(args[0]);
+    return [block("display_show_image_or_string", func.lineno, {}, {
         'data':strblock,
     }, {
         "inline": "true"
     })];
+    }
+    if (args.length == 2 ){
+    var  strblock=py2block.convert(args[0]);
+    var  numblock=py2block.convert(args[1]);
+    return [block("display_show_image_or_string_delay", func.lineno, {}, {
+        'data':strblock,
+        'time':numblock
+    }, {
+        "inline": "true"
+    })];
+    }
+
+
 }
 
 pbc.moduleFunctionD.get('display')['scroll'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 1){
+    if (args.length !== 1 && args.length !== 2 ){
         throw new Error("Incorrect number of arguments");
     }
 
-   var  strblock=py2block.convert(args[0]);
-
-    return [block("monitor_scroll_string", func.lineno, {}, {
+    if (args.length == 1 ){
+    var  strblock=py2block.convert(args[0]);
+    return [block("display_scroll_string", func.lineno, {}, {
         'data':strblock,
     }, {
         "inline": "true"
     })];
+    }
+    if (args.length == 2 ){
+    var  strblock=py2block.convert(args[0]);
+    var  numblock=py2block.convert(args[1]);
+    return [block("display_scroll_string_delay", func.lineno, {}, {
+        'data':strblock,
+        'time':numblock
+    }, {
+        "inline": "true"
+    })];
+    }
 }
 
 pbc.globalFunctionD['Image'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -57,7 +81,7 @@ pbc.globalFunctionD['Image'] = function (py2block, func, args, keywords, stararg
         }
     }
     if (flag == 8) {
-        return block('esp32_image_create', func.lineno, {
+        return block('display_image_create', func.lineno, {
                 "00": colours[temptext[0].charAt(0)],
                 "01": colours[temptext[0].charAt(1)],
                 "02": colours[temptext[0].charAt(2)],
@@ -222,7 +246,7 @@ pbc.moduleFunctionD.get('display')['get_pixel'] = function(py2block, func, args,
         yblock =  py2block.convert(args[1]);
     }
     pbc.pinType = null;
-    return block("monitor_get_pixel", func.lineno, {}, {
+    return block("display_get_pixel", func.lineno, {}, {
         'x':xblock,
         'y':yblock
     }, {
@@ -236,8 +260,8 @@ pbc.moduleFunctionD.get('display')['set_pixel'] = function(py2block, func, args,
     }
     var astname = args[0]._astname;
     var astname1 = args[1]._astname;
-    pbc.pinType = "pins_brightness";
-    var brightblock = py2block.identifier(args[2].n);
+    //pbc.pinType = "pins_brightness";
+    var brightblock = py2block.convert(args[2]);
     pbc.pinType = null;
     var xblock;
     var yblock;
@@ -253,9 +277,10 @@ pbc.moduleFunctionD.get('display')['set_pixel'] = function(py2block, func, args,
         yblock =  py2block.convert(args[1]);
     }
     pbc.pinType = null;
-    return [block("monitor_bright_point", func.lineno, {"flag":brightblock,}, {
+    return [block("display_bright_point", func.lineno, {}, {
         'x':xblock,
         'y':yblock,
+        'STAT':brightblock
         
     }, {
         "inline": "true"
@@ -271,7 +296,7 @@ pbc.moduleFunctionD.get('display')['set_brightness'] = function(py2block, func, 
     var brightblock=py2block.convert(args[0]);
     pbc.pinType=null;
 
-    return [block("monitor_bright_screen", func.lineno, {}, {
+    return [block("display_bright_screen", func.lineno, {}, {
         'x':brightblock,
         
         
@@ -285,7 +310,7 @@ pbc.moduleFunctionD.get('display')['get_brightness'] = function(py2block, func, 
         throw new Error("Incorrect number of arguments");
     }
 
-    return [block("monitor_get_screen_pixel", func.lineno, {}, { 
+    return [block("display_get_screen_pixel", func.lineno, {}, { 
     }, {
         "inline": "true"
     })];
@@ -297,7 +322,7 @@ pbc.moduleFunctionD.get('display')['blink_rate'] = function(py2block, func, args
     }
     var blinkblock=py2block.convert(args[0]);
 
-    return [block("monitor_blink_rate", func.lineno, {}, { 'x':blinkblock,
+    return [block("display_blink_rate", func.lineno, {}, { 'x':blinkblock,
     }, {
         "inline": "true"
     })];
@@ -309,7 +334,7 @@ pbc.moduleFunctionD.get('display')['clear'] = function(py2block, func, args, key
     }
     
 
-    return [block("microbit_display_clear", func.lineno, {}, { 
+    return [block("display_clear", func.lineno, {}, { 
     }, {
         "inline": "true"
     })];
@@ -399,7 +424,7 @@ pbc.assignD.get('Rgb[0]')['create_block'] = function(py2block, node, targets, va
     });
 }
 
-pbc.objectFunctionD.get('write')['rgb'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('rgb')['write'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if(args.length!=0){
         throw new Error("Incorrect number of arguments");
     }
@@ -422,7 +447,7 @@ pbc.objectFunctionD.get('show_str')['monitor'] = function(py2block, func, args, 
     var str3block=py2block.convert(args[2]);
     var str4block=py2block.convert(args[3]);
 
-    return [block("lp2i_u8g_draw_4strings", func.lineno, {}, { "VAR":objblock,'Text_line1':str1block,'Text_line2':str2block,'Text_line3':str3block,'Text_line4':str4block,
+    return [block("display_draw_4strings", func.lineno, {}, { "VAR":objblock,'Text_line1':str1block,'Text_line2':str2block,'Text_line3':str3block,'Text_line4':str4block,
     }, {
         "inline": "false"
     })];
@@ -438,7 +463,7 @@ pbc.objectFunctionD.get('show_line')['monitor'] = function(py2block, func, args,
     var x2block=py2block.convert(args[2]);
     var y2block=py2block.convert(args[3]);
 
-    return [block("display_line_Arbitrarily", func.lineno, {}, { "VAR":objblock,'x1':x1block,'y1':y1block,'x2':x2block,'y2':y2block,
+    return [block("display_line_arbitrarily", func.lineno, {}, { "VAR":objblock,'x1':x1block,'y1':y1block,'x2':x2block,'y2':y2block,
     }, {
         "inline": "true"
     })];
@@ -544,10 +569,11 @@ pbc.assignD.get('oled')['create_block'] = function(py2block, node, targets, valu
     var rowblock = py2block.convert(value.args[0]);
     var columnblock = py2block.convert(value.args[1]);
     var i2cblock = py2block.convert(value.args[2]);
-    return block("oled_use_i2c_init", node.lineno, {}, {
+    return block("display_use_i2c_init", node.lineno, {}, {
         "SUB":py2block.convert(targets[0]),
         "I2CSUB":i2cblock,
         "row":rowblock,
         "column":columnblock
     });
 }
+

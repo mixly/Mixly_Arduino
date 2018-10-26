@@ -6,7 +6,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks.communicate.HUE = 140
 
 
-Blockly.Blocks['i2c_init'] = {
+Blockly.Blocks['communicate_i2c_init'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('SUB')
@@ -30,7 +30,7 @@ Blockly.Blocks['i2c_init'] = {
     }
 };
 
-Blockly.Blocks['i2c_read'] = {
+Blockly.Blocks['communicate_i2c_read'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -48,7 +48,7 @@ Blockly.Blocks['i2c_read'] = {
     }
 }
 
-Blockly.Blocks['i2c_write'] = {
+Blockly.Blocks['communicate_i2c_write'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -67,7 +67,7 @@ Blockly.Blocks['i2c_write'] = {
     }
 }
 
-Blockly.Blocks['i2c_scan'] = {
+Blockly.Blocks['communicate_i2c_scan'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -80,7 +80,7 @@ Blockly.Blocks['i2c_scan'] = {
     }
 }
 
-Blockly.Blocks['spi_init'] = {
+Blockly.Blocks['communicate_spi_init'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -111,7 +111,7 @@ Blockly.Blocks['spi_init'] = {
 };
 
 
-Blockly.Blocks['spi_set'] = {
+Blockly.Blocks['communicate_spi_set'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -126,7 +126,7 @@ Blockly.Blocks['spi_set'] = {
     }
 };
 
-Blockly.Blocks['spi_buffer'] = {
+Blockly.Blocks['communicate_spi_buffer'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -141,7 +141,7 @@ Blockly.Blocks['spi_buffer'] = {
     }
 };
 
-Blockly.Blocks['spi_read'] = {
+Blockly.Blocks['communicate_spi_read'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -157,7 +157,7 @@ Blockly.Blocks['spi_read'] = {
     }
 }
 
-Blockly.Blocks['spi_read_output'] = {
+Blockly.Blocks['communicate_spi_read_output'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -175,7 +175,7 @@ Blockly.Blocks['spi_read_output'] = {
     }
 }
 
-Blockly.Blocks['spi_readinto'] = {
+Blockly.Blocks['communicate_spi_readinto'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -189,7 +189,7 @@ Blockly.Blocks['spi_readinto'] = {
     }
 }
 
-Blockly.Blocks['spi_readinto_output'] = {
+Blockly.Blocks['communicate_spi_readinto_output'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -206,7 +206,7 @@ Blockly.Blocks['spi_readinto_output'] = {
     }
 }
 
-Blockly.Blocks['spi_write'] = {
+Blockly.Blocks['communicate_spi_write'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -221,7 +221,7 @@ Blockly.Blocks['spi_write'] = {
     }
 };
 
-Blockly.Blocks['spi_write_readinto'] = {
+Blockly.Blocks['communicate_spi_write_readinto'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -243,162 +243,7 @@ Blockly.Blocks['spi_write_readinto'] = {
     }
 };
 
-Blockly.Blocks['network_init'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.storage.HUE);
-        this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_NETWORK_INIT)
-            .setCheck("var");
-        this.appendDummyInput()
-            .appendField(Blockly.MIXLY_NETWORK_MODE)
-            .appendField(new Blockly.FieldDropdown([
-                ['STA', "STA"],
-                ['AP', "AP"]
-            ]), "mode");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setInputsInline(true);
-    }
-};
-
-
-Blockly.Blocks['network_open'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.storage.HUE);
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown([
-                [Blockly.MIXLY_NETWORK_WIFI_OPEN, "True"],
-                [Blockly.MIXLY_NETWORK_WIFI_CLOSE, "False"]
-            ]), "op");
-        this.appendValueInput('VAR')
-            .setCheck("var")
-        this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_NETWORK_WIFI_FLAG)
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setInputsInline(true);
-    }
-};
-
-Blockly.Blocks['network_scan'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.storage.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField(Blockly.MIXLY_NETWORK_WIFI_SCAN)
-        this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_BELONG)
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown([
-                ["ssid", "0"],
-                ["bssid", "1"],
-                ["channel", "2"],
-                ["RSSI", "3"],
-                ["authmode", "4"],
-                ["hidden", "5"],
-                [Blockly.MIXLY_NETWORK_WIFI_SCAN_ATTRIBUTE, "all"]
-            ]), "op");
-        this.setOutput(true);
-        this.setInputsInline(true);
-    }
-};
-
-Blockly.Blocks['network_connect'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.storage.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField(Blockly.MIXLY_ESP32_NETWORK_CONNECT);
-        this.appendValueInput('id')
-            .setCheck(String)
-            .appendField(Blockly.MIXLY_ESP32_NETWORK_ID);
-        this.appendValueInput('password')
-            .setCheck(String)
-            .appendField(Blockly.MIXLY_ESP32_NETWORK_PASSWORD);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setInputsInline(true);
-    }
-};
-
-Blockly.Blocks['network_wifi_connect'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.storage.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField(Blockly.MIXLY_NETWORK_WIFI_CONNECT);
-        this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_SYMBOL_QUESTION);
-        this.setOutput(true, Boolean);
-        this.setInputsInline(true);
-    }
-};
-
-Blockly.Blocks['network_get_connect'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.storage.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField(Blockly.MIXLY_ESP32_NETWORK_GET_CONNECT);
-        this.appendDummyInput("")
-            .appendField(new Blockly.FieldDropdown([
-                [Blockly.MIXLY_ESP32_NETWORK_IP, "0"],
-                [Blockly.MIXLY_ESP32_NETWORK_MASK, "1"],
-                [Blockly.MIXLY_ESP32_NETWORK_GATEWAY, "2"],
-                ["DNS", "3"]
-            ]), "mode");
-        this.setOutput(true);
-        this.setInputsInline(true);
-    }
-};
-
-Blockly.Blocks['network_stop'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.storage.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField(Blockly.MIXLY_ESP32_NETWORK_STOP_CONNECT);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setInputsInline(true);
-    }
-};
-
-Blockly.Blocks['network_get_wifi'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.storage.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField(Blockly.MIXLY_ESP32_NETWORK_GET_WIFI);
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown([
-                [Blockly.MIXLY_NETWORK_WIFI_ESSID, "essid"],
-                [Blockly.MIXLY_NETWORK_WIFI_CHANNEL, "channel"]
-            ]), "op");
-        this.setOutput(true);
-        this.setInputsInline(true);
-    }
-};
-
-Blockly.Blocks['network_ap_connect'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.storage.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField(Blockly.Msg.LISTS_SET_INDEX_SET);
-        this.appendValueInput('essid')
-            .setCheck(String)
-            .appendField(Blockly.MIXLY_NETWORK_WIFI_ESSID);
-        this.appendValueInput('channel')
-            .setCheck(Number)
-            .appendField(Blockly.MIXLY_NETWORK_WIFI_CHANNEL);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setInputsInline(true);
-    }
-};
-
-Blockly.Blocks.i2c_master_reader2 = {
+Blockly.Blocks.communicate_i2c_master_read = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -409,7 +254,7 @@ Blockly.Blocks.i2c_master_reader2 = {
         this.setOutput(true, Number);
     }
 };
-Blockly.Blocks.i2c_available = {
+Blockly.Blocks.communicate_i2c_available = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -434,22 +279,7 @@ Blockly.Blocks.i2c_slave_onreceive = {
     }
 };
 
-Blockly.Blocks['network_server'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.storage.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField(Blockly.MIXLY_ESP32_NETWORK_SERVER1);
-        this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_ESP32_NETWORK_SERVER2);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setInputsInline(true);
-    }
-};
-
-
-Blockly.Blocks['ow_init'] = {
+Blockly.Blocks['communicate_ow_init'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -464,7 +294,7 @@ Blockly.Blocks['ow_init'] = {
     }
 };
 
-Blockly.Blocks['ow_scan'] = {
+Blockly.Blocks['communicate_ow_scan'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -476,7 +306,7 @@ Blockly.Blocks['ow_scan'] = {
     }
 };
 
-Blockly.Blocks['ow_read'] = {
+Blockly.Blocks['communicate_ow_read'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -488,7 +318,7 @@ Blockly.Blocks['ow_read'] = {
     }
 };
 
-Blockly.Blocks['ow_write'] = {
+Blockly.Blocks['communicate_ow_write'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
@@ -508,14 +338,14 @@ Blockly.Blocks['ow_write'] = {
     }
 };
 
-Blockly.Blocks['ow_select'] = {
+Blockly.Blocks['communicate_ow_select'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
             .setCheck('var')
             .appendField(Blockly.MIXLY_ESP32_ONEWIRE_SELECT)
         this.appendValueInput('byte')
-            .setCheck(Number)
+            .setCheck(String)
             .appendField("ROM");
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -524,7 +354,7 @@ Blockly.Blocks['ow_select'] = {
 };
 
 
-Blockly.Blocks['ow_reset'] = {
+Blockly.Blocks['communicate_ow_reset'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')

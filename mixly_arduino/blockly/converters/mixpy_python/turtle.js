@@ -14,9 +14,9 @@ pbc.assignD.get('Turtle')['check_assign'] = function (py2block, node, targets, v
 
 pbc.assignD.get('Turtle')['create_block'] = function (py2block, node, targets, value) {
     var turtle = py2block.Name_str(node.targets[0]);
-    return [block('turtle_create', node.lineno, {
+    return block('turtle_create', node.lineno, {
             'VAR': turtle
-        }, {})];
+        }, {});
 }
 
 

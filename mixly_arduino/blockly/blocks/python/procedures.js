@@ -870,5 +870,5 @@ Blockly.Blocks['procedures_return'] = {
    * To add a new function type add this to your code:
    * Blockly.Blocks['procedures_ifreturn'].FUNCTION_TYPES.push('custom_func');
    */
-  FUNCTION_TYPES: ['procedures_defreturn']
+  FUNCTION_TYPES: ['procedures_defnoreturn', 'procedures_defreturn']
 };

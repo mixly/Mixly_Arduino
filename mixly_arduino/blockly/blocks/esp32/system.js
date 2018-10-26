@@ -113,7 +113,7 @@ Blockly.Blocks.timer = {
   }
 };
 
-Blockly.Blocks.timer2 = {
+Blockly.Blocks.system_timer = {
   init: function() {
     this.setColour(Blockly.Blocks.system.HUE);
     this.appendValueInput('VAR')
@@ -136,7 +136,7 @@ Blockly.Blocks.timer2 = {
   }
 };
 
-Blockly.Blocks.time_ticks_diff = {
+Blockly.Blocks.system_ticks_diff = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('END')
@@ -153,7 +153,7 @@ Blockly.Blocks.time_ticks_diff = {
   }
 };
 
-Blockly.Blocks.Timer_init = {
+Blockly.Blocks.system_timer_init = {
     init: function () {
         this.setColour(Blockly.Blocks.loops.HUE);
         this.appendDummyInput("")

@@ -50,8 +50,9 @@ Py2blockEditor.prototype.addNewLines = function(python_code){
         }else if(isFuncDefScope && this.getIndentOfLine(line) <= indent){//函数定义结束后的第一行
             if(!this.isEmptyNewLine(line)){
                line = "\n" + line;
+            }else {
+                isFuncDefScope = false;
             }
-            isFuncDefScope = false;
         }
         //是否是空行
         if(this.isEmptyNewLine(line)){
@@ -65,13 +66,27 @@ Py2blockEditor.prototype.addNewLines = function(python_code){
     return new_python_code;
 }
 
+
+Py2blockEditor.prototype.encodeChinese = function(code){
+    return code.replace(/[\u4e00-\u9fa5]+/g, function (s) {
+        return encodeURIComponent(s).replace(/%/g, "_");
+    })
+}
+
+
+Py2blockEditor.prototype.decodeChinese = function(code){
+    return code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) {
+        return decodeURIComponent(s.replace(/_/g, '%'));
+    });
+}
+
 Py2blockEditor.prototype.setBlocks = function(python_code){
     var xml_code = "";
     py2block_config.reset();
     python_code = this.addNewLines(python_code);
     if (python_code !== '' && python_code !== undefined && python_code.trim().charAt(0) !== '<') {
         var result = this.convert.convertSource(python_code);
-        xml_code = result.xml;
+        xml_code = this.decodeChinese(result.xml);
         if (result.error !== null) {
             console.log(result.error);
         } else {
@@ -120,12 +135,11 @@ Py2blockEditor.prototype.getFocus = function(){
 Py2blockEditor.prototype.updateText = function(){
     if(!this.silentText) {
         this.silentBlock = true;
-        this.setBlocks(this.editor.getValue());
+        this.setBlocks(this.encodeChinese(this.editor.getValue()));
         var py2blockEditor = this;
         setTimeout(function(){
             py2blockEditor.silentBlock = false;
         }, 50);
-
     }
 }
 
@@ -133,7 +147,8 @@ Py2blockEditor.prototype.updateText = function(){
 Py2blockEditor.prototype.updateBlock = function(){
     if(this.fromCode) {
         this.fromCode = false;
-        this.setBlocks(this.editor.getValue());
+        var encodeCode = this.encodeChinese(this.editor.getValue());
+        this.setBlocks(encodeCode);
     }
 }
 

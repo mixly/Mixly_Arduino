@@ -13,7 +13,7 @@ Blockly.Python.base_setup = function () {
         }
         else{
             Blockly.Python.setups_['setup_setup'] = branch + '\n';
-        }        
+        }
     }
     return '';
 };
@@ -117,13 +117,13 @@ Blockly.Python['controls_forEach'] = function(block) {
 };
 
 //ok
-Blockly.Python.base_type = function () {
+Blockly.Python.controls_type = function () {
     var data = Blockly.Python.valueToCode(this, 'DATA', Blockly.Python.ORDER_ATOMIC) || '1000'
     var code = 'type(' + data + ')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.controls_TypeLists = function(){
+Blockly.Python.controls_typeLists = function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var type = this.getFieldValue('type');
     // Blockly.Python.definitions_['func_type' + type] = code;

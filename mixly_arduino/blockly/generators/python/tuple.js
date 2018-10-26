@@ -245,3 +245,27 @@ Blockly.Python['tuple_getSublist'] = function(block) {
   var code = list + '[' + at1 + ' : ' + at2 + ']';
   return [code, Blockly.Python.ORDER_MEMBER];
 };
+
+Blockly.Python.tuple_create_with_noreturn = function() {
+  // Create a list with any number of elements of any type.
+  var dropdown_type = this.getFieldValue('TYPE');
+  var code = new Array(this.itemCount_);
+  var default_value = '0';
+
+
+  for (var n = 0; n < this.itemCount_; n++) {
+
+  code[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
+    Blockly.Python.ORDER_NONE) || default_value;
+  }
+ // if (this.itemCount_!=1){
+//  Blockly.Python.definitions_['var_declare'+varName] = varName+'= '+ '(' + code.join(', ') + ')\n';}
+ // else {
+ // Blockly.Python.definitions_['var_declare'+varName] = varName+'= '+ '(' + code.join(', ') + ',)\n';}
+ if (this.itemCount_!=1){
+  var code = '(' + code.join(', ') + ')';}
+ else {
+  var code = '(' + code.join(', ') + ',)';}
+
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};

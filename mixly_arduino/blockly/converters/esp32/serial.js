@@ -6,14 +6,14 @@ pbc.globalFunctionD['print'] = function(py2block, func, args, keywords, starargs
         && py2block.Str_value(keywords[0].value) === ""
     ){
         var argblock = py2block.convert(args[0]);
-        return [block("IO_print_inline", func.lineno, {}, {
+        return [block("system_print_inline", func.lineno, {}, {
             'VAR':argblock
         }, {
             "inline": "false"
         })];
     }else if (args.length === 1 && keywords.length === 0) {
         var argblock = py2block.convert(args[0]);
-        return [block("IO_print", func.lineno, {}, {
+        return [block("system_print", func.lineno, {}, {
             'VAR':argblock
         }, {
             "inline": "false"
@@ -29,7 +29,7 @@ pbc.globalFunctionD['input'] = function(py2block, func, args, keywords, starargs
         throw new Error("Incorrect number of arguments");
     }
     var argblock = py2block.convert(args[0]);
-    return block("IO_input", func.lineno, {}, {
+    return block("system_input", func.lineno, {}, {
         'VAR':argblock
     }, {
         "inline": "false"
@@ -155,7 +155,7 @@ pbc.assignD.get('uart0')['create_block'] = function (py2block, node, targets, va
     else if(mode=="uart2"){
         mode='2'
     }
-    return block("uart_softserial", node.lineno, { 
+    return block("serial_softserial", node.lineno, { 
             "mode":mode
         }, {
             "CONTENT":py2block.convert(value.args[0]),

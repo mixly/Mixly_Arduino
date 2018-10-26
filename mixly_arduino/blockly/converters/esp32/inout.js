@@ -49,10 +49,10 @@ pbc.assignD.get('Pin')['create_block'] = function(py2block, node, targets, value
     var digitalblock = py2block.Name_str(value.args[1].value) +"."+ py2block.identifier(value.args[1].attr)+", "+py2block.Name_str(value.args[2].value) +"."+ py2block.identifier(value.args[2].attr);
     }
     pinobj = "pin"+value.args[0].n.v;
-    return [block("inout_pinMode", node.lineno, {"PIN_OBJ":pinobj,"MODE":digitalblock}, {
+    return block("inout_digital_init", node.lineno, {"PIN_OBJ":pinobj,"MODE":digitalblock}, {
         "PIN":pinblock,
 
-    })];
+    });
 }
 
 pbc.assignD.get('DAC')['check_assign'] = function(py2block, node, targets, value) {
@@ -75,10 +75,10 @@ pbc.assignD.get('DAC')['create_block'] = function(py2block, node, targets, value
         pbc.pinType = null;
     }
     pinobj = "dac"+value.args[0].args[0].n.v;
-    return [block("inout_analog_write_init", node.lineno, {"PIN_OBJ":pinobj}, {
+    return block("inout_analog_write_init", node.lineno, {"PIN_OBJ":pinobj}, {
         "PIN":pinblock,
 
-    })];
+    });
 }
 
 pbc.objectFunctionD.get('write')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -118,10 +118,10 @@ pbc.assignD.get('PWM')['create_block'] = function(py2block, node, targets, value
         pbc.pinType = null;
     }
     pinobj = "pwm"+value.args[0].args[0].n.v;
-    return [block("inout_pwm_analog_write_init", node.lineno, {"PIN_OBJ":pinobj}, {
+    return block("inout_pwm_analog_write_init", node.lineno, {"PIN_OBJ":pinobj}, {
         "PIN":pinblock,
 
-    })];
+    });
 }
 
 pbc.objectFunctionD.get('duty')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -178,10 +178,10 @@ pbc.assignD.get('ADC')['create_block'] = function(py2block, node, targets, value
         pbc.pinType = null;
     }
     pinobj = "adc"+value.args[0].args[0].n.v;
-    return [block("inout_analog_read_init", node.lineno, {"PIN_OBJ":pinobj}, {
+    return block("inout_analog_read_init", node.lineno, {"PIN_OBJ":pinobj}, {
         "PIN":pinblock,
 
-    })];
+    });
 }
 
 pbc.objectFunctionD.get('read')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -205,7 +205,7 @@ pbc.objectFunctionD.get('read')['Pin'] = function (py2block, func, args, keyword
     var pinblock = py2block.convert(func.value);
     pbc.pinType = null;
 
-    return block("pin_pressed", func.lineno, {}, {
+    return block("inout_pin_pressed", func.lineno, {}, {
         "pin": pinblock,
     }, {
         "inline": "true"
@@ -233,8 +233,8 @@ pbc.assignD.get('TOUCHPAD')['create_block'] = function(py2block, node, targets, 
         pbc.pinType = null;
     }
     pinobj = "tc"+value.args[0].args[0].n.v;
-    return [block("pin_pressed_init", node.lineno, {"PIN_OBJ":pinobj}, {
+    return block("inout_pin_pressed_init", node.lineno, {"PIN_OBJ":pinobj}, {
         "PIN":pinblock,
 
-    })];
+    });
 }

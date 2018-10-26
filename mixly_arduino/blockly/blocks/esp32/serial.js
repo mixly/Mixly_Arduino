@@ -76,7 +76,7 @@ Blockly.Blocks['serial_any'] = {
     this.setColour(Blockly.Blocks.serial.HUE);
   this.appendDummyInput()
           .appendField("Serial")
-        .appendField(new Blockly.FieldDropdown([['uart0', '0'], ['uart1', '1'], ['uart2', '2']]), 'mode')
+        .appendField(new Blockly.FieldDropdown([['uart1', '1'], ['uart0', '0'], ['uart2', '2']]), 'mode')
         .appendField(Blockly.MIXLY_SERIAL_AVAILABLE);
   //this.setFieldValue('1','mode')
   this.setOutput(true, Boolean);
@@ -138,7 +138,7 @@ Blockly.Blocks['serial_softserial'] = {
   }
 };
 
-Blockly.Blocks['uart_softserial'] = {
+Blockly.Blocks['serial_softserial'] = {
   init: function() {
    this.setColour(Blockly.Blocks.serial.HUE);
     this.appendDummyInput()
@@ -168,7 +168,7 @@ Blockly.Blocks['serial_begin'] = {
   }
 };
 
-Blockly.Blocks['IO_input']={
+Blockly.Blocks['system_input']={
 init: function() {
     this.setColour(Blockly.Blocks.serial.HUE);
     this.appendValueInput("VAR")
@@ -179,7 +179,7 @@ init: function() {
   }
 }
 
-Blockly.Blocks['IO_print'] = {
+Blockly.Blocks['system_print'] = {
   init: function() {
     this.setColour(Blockly.Blocks.serial.HUE);
         this.appendValueInput("VAR")
@@ -190,7 +190,7 @@ Blockly.Blocks['IO_print'] = {
   }
 };
 
-Blockly.Blocks['IO_print_inline'] = {
+Blockly.Blocks['system_print_inline'] = {
   init: function() {
     this.setColour(Blockly.Blocks.serial.HUE);
         this.appendValueInput("VAR")

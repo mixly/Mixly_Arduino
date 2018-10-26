@@ -1,6 +1,5 @@
 import ujson as json
-
-
+from simple import *
 
 def pubData(value):    
     print(value)
@@ -26,4 +25,11 @@ def do_connect(id,password):
     sta_if.connect(id, password)
     while not sta_if.isconnected():
         pass
-    print('network config:', sta_if.ifconfig())    
+    print('network config:', sta_if.ifconfig())
+
+def init_MQTT_client(sid, address, cid, api, topic, callback):
+    client = MQTTClient(sid, address, 6002, cid, api)
+    client.set_callback(callback)
+    client.connect()
+    client.subscribe(bytes(topic, 'utf-8'))
+    return client

@@ -37,6 +37,7 @@
   <script src="../../blocks/esp32/communicate.js"></script>
   <script src="../../blocks/esp32/iot.js"></script>
   <script src="../../blocks/esp32/sensor.js"></script>
+  <script src="../../blocks/esp32/network.js"></script>
   <script src="../../blocks/esp32/storage.js"></script>
   <script src="../../blocks/esp32/actuator.js"></script>
   <script src="../../blocks/esp32/display.js"></script>
@@ -55,11 +56,13 @@
   <script src="../../generators/python/dicts.js"></script>
   <script src="../../generators/python/logic.js"></script>
   <script src="../../generators/esp32/serial.js"></script>
+  <script src="../../generators/esp32/iot.js"></script>
   <script src="../../generators/esp32/communicate.js"></script>
   <script src="../../generators/esp32/sensor.js"></script>
   <script src="../../generators/esp32/storage.js"></script>
   <script src="../../generators/esp32/actuator.js"></script>
   <script src="../../generators/esp32/display.js"></script>
+  <script src="../../generators/esp32/network.js"></script>
   <script src="../../generators/python/procedures.js"></script>
   <script src="../../generators/esp32/factory.js"></script>
   <script src="../../generators/python/set.js"></script>
@@ -75,6 +78,8 @@
   <script src="./js/py2block_editor.js" type="application/javascript"></script>
   <script src="../../converters/esp32/py2block_config.js" type="application/javascript"></script>
   <script src="../../converters/esp32/inout.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/network.js" type="application/javascript"></script>
+   <script src="../../converters/esp32/iot.js" type="application/javascript"></script>
   <script src="../../converters/esp32/serial.js" type="application/javascript"></script>
   <script src="../../converters/esp32/communicate.js" type="application/javascript"></script>
   <script src="../../converters/esp32/display.js" type="application/javascript"></script>
@@ -1374,28 +1379,28 @@
         </block>
       </category>       
       <category id="catSerialPort" colour="65">
-        <block type="IO_print_inline"> 
+        <block type="system_print_inline"> 
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
               </value>   
           </block>
-        <block type="IO_print">
+        <block type="system_print">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
               </value>
           </block>
-        <block type="IO_input">
+        <block type="system_input">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">prompt</field>
                   </shadow>
               </value>
           </block>
-        <block type="uart_softserial"></block>
+        <block type="serial_softserial"></block>
         <block type="serial_print">
               <value name="CONTENT">
                   <shadow type="text">
@@ -1422,7 +1427,7 @@
         <block type="serial_readline"></block>
       </category>
       <category id="catGroup" colour="140">
-        <block type="i2c_init">
+        <block type="communicate_i2c_init">
           <value name="SUB">
                 <shadow type="variables_get">
                   <field name="VAR">i2c</field>
@@ -1442,7 +1447,7 @@
             <shadow type="math_number"><field name="NUM">100000</field></shadow>
           </value>
         </block>
-        <block type="i2c_read">
+        <block type="communicate_i2c_read">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">i2c</field>
@@ -1459,7 +1464,7 @@
             </shadow>
           </value>
         </block>
-        <block type="i2c_write">
+        <block type="communicate_i2c_write">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">i2c</field>
@@ -1476,28 +1481,28 @@
             </shadow>
           </value>
         </block>
-        <block type="i2c_scan">
+        <block type="communicate_i2c_scan">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">i2c</field>
             </shadow>
           </value>
         </block>
-        <block type="i2c_master_reader2">
+        <block type="communicate_i2c_master_read">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">i2c</field>
             </shadow>
           </value>
         </block>
-        <block type="i2c_available">
+        <block type="communicate_i2c_available">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">i2c</field>
             </shadow>
           </value>
         </block>
-        <block type="spi_init">
+        <block type="communicate_spi_init">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">spi</field>
@@ -1534,7 +1539,7 @@
             </shadow>
           </value>
         </block>
-        <block type="spi_set">
+        <block type="communicate_spi_set">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">spi</field>
@@ -1546,7 +1551,7 @@
             </shadow>
           </value>
         </block>
-        <block type="spi_buffer">
+        <block type="communicate_spi_buffer">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">buf</field>
@@ -1558,7 +1563,7 @@
             </shadow>
           </value>
         </block>
-        <block type="spi_read">
+        <block type="communicate_spi_read">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">spi</field>
@@ -1570,7 +1575,7 @@
             </shadow>
           </value>
         </block>
-        <block type="spi_read_output">
+        <block type="communicate_spi_read_output">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">spi</field>
@@ -1587,7 +1592,7 @@
             </shadow>
           </value>
         </block>
-        <block type="spi_readinto">
+        <block type="communicate_spi_readinto">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">spi</field>
@@ -1599,7 +1604,7 @@
             </shadow>
           </value>
         </block>
-        <block type="spi_readinto_output">
+        <block type="communicate_spi_readinto_output">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">spi</field>
@@ -1616,7 +1621,7 @@
             </shadow>
           </value>
         </block>
-        <block type="spi_write">
+        <block type="communicate_spi_write">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">spi</field>
@@ -1628,7 +1633,7 @@
             </shadow>
           </value>
         </block>
-        <block type="spi_write_readinto">
+        <block type="communicate_spi_write_readinto">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">spi</field>
@@ -1641,7 +1646,7 @@
             </shadow>
           </value>
         </block>
-        <block type="ow_init">
+        <block type="communicate_ow_init">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">ow</field>
@@ -1653,42 +1658,42 @@
             </shadow>
           </value>
         </block>
-        <block type="ow_scan">
+        <block type="communicate_ow_scan">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">ow</field>
             </shadow>
           </value>
         </block>
-        <block type="ow_read">
+        <block type="communicate_ow_read">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">ow</field>
             </shadow>
           </value>
         </block>
-        <block type="ow_write">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">ow</field>
-            </shadow>
-          </value>
-          <value name="byte">
-          </value>
-        </block>
-        <block type="ow_select">
+        <block type="communicate_ow_write">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">ow</field>
             </shadow>
           </value>
           <value name="byte">
-            <shadow type="math_number">
-              <field name="NUM">12345</field>
+          </value>
+        </block>
+        <block type="communicate_ow_select">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">ow</field>
+            </shadow>
+          </value>
+          <value name="byte">
+            <shadow type="text">
+              <field name="TEXT">12345</field>
             </shadow>
           </value>
         </block>
-        <block type="ow_reset">
+        <block type="communicate_ow_reset">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">ow</field>
@@ -1855,7 +1860,7 @@
       </category>
       <category id="catIot" colour="225">
 
-        <block type="iot_wificonnect">
+        <block type="iot_wifi_connect">
             <value name="WIFINAME">
                   <shadow type="text">
                       <field name="TEXT">wifiname</field>
@@ -1867,15 +1872,20 @@
                   </shadow>
               </value>
          </block>          
-        <block type="iot_onenetconnect">
-            <value name="SUB">
+        <block type="iot_onenet_connect">
+              <value name="VAR">
                 <shadow type="variables_get">
-                  <field name="VAR">sub_cb</field>
+                  <field name="VAR">c</field>
+                </shadow>
+              </value>
+            <value name="SUB">
+                <shadow type="factory_block_return">
+                  <field name="VALUE">sub_cb</field>
                 </shadow>
               </value>
             <value name="CLIENT">
                   <shadow type="text">
-                      <field name="TEXT">31468921</field>
+                      <field name="TEXT">31444082</field>
                   </shadow>
               </value>
               <value name="SERVER">
@@ -1885,12 +1895,12 @@
               </value>
               <value name="USERNAME">
                   <shadow type="text">
-                      <field name="TEXT">141427</field>
+                      <field name="TEXT">141092</field>
                   </shadow>
               </value>
               <value name="PASSWORD">
                   <shadow type="text">
-                      <field name="TEXT">uXr5=Ur88iTy0V4HMXHrsPLDiPo=</field>
+                      <field name="TEXT">61n63JySRowo13ZLDBKw6y896E0=</field>
                   </shadow>
               </value>
               <value name="TOPIC">
@@ -1899,9 +1909,27 @@
                   </shadow>
               </value>
           </block>
-          <block type="iot_publish"></block>
-          <block type="iot_onenetdisconnect"></block>
-          <block type="iot_checkonenet"></block>
+          <block type="iot_onenet_publish">
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">c</field>
+                </shadow>
+              </value>
+          </block>
+          <block type="iot_onenet_disconnect">
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">c</field>
+                </shadow>
+              </value>
+          </block>
+          <block type="iot_onenet_check">
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">c</field>
+                </shadow>
+              </value>
+          </block>
       </category>
       <category id="catSensor" colour="40">
         <block type="sensor_button_is_pressed">
@@ -2155,19 +2183,19 @@
         </block> -->
       </category>
       <category id="catMonitor" colour="180">
-        <block type="monitor_show_image_or_string">
+        <block type="display_show_image_or_string">
           <value name="data">
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>
-        <block type="monitor_scroll_string">
+        <block type="display_scroll_string">
           <value name="data">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
             </shadow>
           </value>
         </block>
-        <block type="monitor_show_image_or_string_delay">
+        <block type="display_show_image_or_string_delay">
           <value name="data">
             <shadow type="pins_builtinimg"></shadow>
           </value>
@@ -2177,7 +2205,7 @@
             </shadow>
           </value>
         </block>
-        <block type="monitor_scroll_string_delay">
+        <block type="display_scroll_string_delay">
           <value name="data">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
@@ -2206,8 +2234,8 @@
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>-->
-        <block type="esp32_image_create"></block>
-        <block type="esp32_image_builtins"></block>
+        <block type="display_image_create"></block>
+        <block type="display_image_builtins"></block>
         <block type="image_arithmetic">
           <value name="A">
             <shadow type="pins_builtinimg"></shadow>
@@ -2216,7 +2244,7 @@
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>
-        <block type="monitor_get_pixel">
+        <block type="display_get_pixel">
           <value name="x">
             <shadow type="pins_exlcdh"></shadow>
           </value>
@@ -2224,28 +2252,27 @@
             <shadow type="pins_exlcdv"></shadow>
           </value>
         </block>
-        <block type="monitor_bright_point">
+        <block type="display_bright_point">
           <value name="x">
             <shadow type="pins_exlcdh"></shadow>
           </value>
           <value name="y">
             <shadow type="pins_exlcdv"></shadow>
           </value>
-        </block>
-        <block type="monitor_bright_screen">
-          <value name="x">
-            <shadow type="pins_exlcdh"></shadow>
+          <value name="STAT">
+              <shadow type="display_onoff">
+            </shadow>
           </value>
         </block>
-        <block type="monitor_get_screen_pixel"></block>
-        <block type="monitor_blink_rate">
+        <block type="display_get_screen_pixel"></block>
+        <block type="display_blink_rate">
           <value name="x">
             <shadow type="math_number">
               <field name="NUM">2</field>
             </shadow>
           </value>
         </block>
-        <block type="esp32_display_clear"></block>
+        <block type="display_clear"></block>
         <block type="display_rgb_init">
           <value name="SUB">
             <shadow type="variables_get">
@@ -2320,7 +2347,7 @@
             <shadow type="math_number"><field name="NUM">100000</field></shadow>
           </value>
         </block> -->
-        <block type="oled_use_i2c_init">
+        <block type="display_use_i2c_init">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">oled</field>
@@ -2342,7 +2369,7 @@
             </shadow>
           </value>
         </block>
-        <block type="lp2i_u8g_draw_4strings">
+        <block type="display_draw_4strings">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">oled</field>
@@ -2418,7 +2445,7 @@
             </shadow>
           </value>
         </block>
-        <block type="display_line_Arbitrarily">
+        <block type="display_line_arbitrarily">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">oled</field>

@@ -454,7 +454,7 @@
   <xml id="toolbox" style="display: none">
      <category name="" id="catInOut" colour="20">
       <block type="inout_highlow"></block>
-      <block type="inout_pinMode">
+      <block type="inout_digital_init">
         <value name="PIN">
           <shadow type="pins_digital_pin">
           </shadow>
@@ -524,19 +524,19 @@
           <shadow type="pins_analog"></shadow>
         </value>
       </block>
-      <block type="pin_pressed_init">
+      <block type="inout_pin_pressed_init">
         <value name="PIN">
           <shadow type="pins_touch_pin">
           </shadow>
         </value>
       </block>
-      <block type="pin_pressed">
+      <block type="inout_pin_pressed">
         <value name="pin">
           <shadow type="pins_touch">
           </shadow>
         </value>
       </block>
-      <block type="controls_pin_attachInterrupt">
+      <block type="inout_pin_attachInterrupt">
         <value name="PIN">
           <shadow type="pins_digital_pin"></shadow>
         </value>
@@ -598,16 +598,16 @@
           </block>
         </value>
       </block>
-     
-	  <block type="base_type">
+
+	  <block type="controls_type">
         <value name="DATA">
           <shadow type="math_number">
             <field name="NUM">1000</field>
           </shadow>
         </value>
       </block>
-      <block type="controls_TypeLists"></block>
-      
+      <block type="controls_typeLists"></block>
+
       <block type="controls_try_finally"></block>
       <block type="controls_lambda">
         <value name="BOOL">
@@ -616,7 +616,7 @@
           </shadow>
         </value>
         <statement name="DO">
-                  <shadow type="IO_print_inline">
+                  <shadow type="system_print_inline">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
@@ -625,14 +625,14 @@
         </shadow>
         </statement>
       </block>
-      <block type="Timer_init">
+      <block type="system_timer_init">
         <value name="SUB">
           <shadow type="variables_get">
             <field name="VAR">tim</field>
           </shadow>
         </value>
       </block>
-      <block type="timer2">
+      <block type="system_timer">
         <value name="VAR">
           <shadow type="variables_get">
             <field name="VAR">tim</field>
@@ -646,7 +646,7 @@
       </block>
       <block type="controls_flow_statements"></block>
       <block type="controls_millis"></block>
-      <block type="time_ticks_diff">
+      <block type="system_ticks_diff">
         <value name="END">
           <block type="controls_millis"></block>
           <shadow type="math_number">
@@ -1378,28 +1378,28 @@
         </block>
       </category>
       <category id="catSerialPort" colour="65">
-        <block type="IO_print_inline">
+        <block type="system_print_inline">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
               </value>
         </block>
-        <block type="IO_print">
+        <block type="system_print">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
               </value>
         </block>
-        <block type="IO_input">
+        <block type="system_input">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">prompt</field>
                   </shadow>
               </value>
           </block>
-        <block type="uart_softserial"></block>
+        <block type="serial_softserial"></block>
         <block type="serial_print">
               <value name="CONTENT">
                   <shadow type="text">
@@ -1426,7 +1426,7 @@
         <block type="serial_readline"></block>
       </category>
       <category id="catGroup" colour="140">
-        <block type="i2c_init">
+        <block type="communicate_i2c_init">
           <value name="SUB">
                 <shadow type="variables_get">
                   <field name="VAR">i2c</field>
@@ -1699,12 +1699,12 @@
         </block> -->
       </category>
       <category id="catMonitor" colour="180">
-        <block type="monitor_show_image_or_string">
+        <block type="display_show_image_or_string">
           <value name="data">
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>
-        <block type="monitor_scroll_string">
+        <block type="display_scroll_string">
           <value name="data">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
@@ -1728,8 +1728,8 @@
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>-->
-        <block type="esp32_image_create"></block>
-        <block type="esp32_image_builtins"></block>
+        <block type="display_image_create"></block>
+        <block type="display_image_builtins"></block>
         <block type="image_arithmetic">
           <value name="A">
             <shadow type="pins_builtinimg"></shadow>
@@ -1738,7 +1738,7 @@
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>
-        <block type="monitor_get_pixel">
+        <block type="display_get_pixel">
           <value name="x">
             <shadow type="pins_exlcdh"></shadow>
           </value>
@@ -1746,7 +1746,7 @@
             <shadow type="pins_exlcdv"></shadow>
           </value>
         </block>
-        <block type="monitor_bright_point">
+        <block type="display_bright_point">
           <value name="x">
             <shadow type="pins_exlcdh"></shadow>
           </value>
@@ -1758,20 +1758,20 @@
             </shadow>
           </value>
         </block>
-        <block type="monitor_bright_screen">
+        <block type="display_bright_screen">
           <value name="x">
             <shadow type="pins_exlcdh"></shadow>
           </value>
         </block>
-        <block type="monitor_get_screen_pixel"></block>
-        <block type="monitor_blink_rate">
+        <block type="display_get_screen_pixel"></block>
+        <block type="display_blink_rate">
           <value name="x">
             <shadow type="math_number">
               <field name="NUM">2</field>
             </shadow>
           </value>
         </block>
-        <block type="esp32_display_clear"></block>
+        <block type="display_clear"></block>
         <block type="display_rgb_init">
           <value name="SUB">
             <shadow type="variables_get">
@@ -1850,7 +1850,7 @@
         $('#toolbox').append(myblock);
       }
     </script>
-   
+
 
 </body>
 </html>
