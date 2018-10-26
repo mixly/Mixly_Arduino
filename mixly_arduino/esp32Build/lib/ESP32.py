@@ -158,14 +158,14 @@ class led:
             n = 5 * (n - 1)
             return 1 - Pin(n).value()
 
-class music:
-    def __init__(self, pin):
-        self.val = 1
-        self.pin = pin
-    def play(self,val):
-        PWM(Pin(self.pin), freq=val)
-    def stop(self):
-        PWM(Pin(self.pin)).duty(0)
+# class music:
+#     def __init__(self, pin):
+#         self.val = 1
+#         self.pin = pin
+#     def play(self,val):
+#         PWM(Pin(self.pin), freq=val)
+#     def stop(self):
+#         PWM(Pin(self.pin)).duty(0)
 
 class ADCSensor:
     def __init__(self,pin):
@@ -233,7 +233,7 @@ touch1 = MyPin(32)
 touch2 = MyPin(33)
 touch3 = MyPin(25)
 touch4 = MyPin(26)
-music = music(pin=27)
+#music = music(pin=27)
 brightness = ADCSensor(pin = 39)
 sound = ADCSensor(pin = 35)
 i2c = I2C(scl = Pin(22), sda = Pin(21), freq = 100000)

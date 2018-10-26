@@ -1878,13 +1878,13 @@
                 </shadow>
               </value>
             <value name="SUB">
-                <shadow type="variables_get">
-                  <field name="VAR">sub_cb</field>
+                <shadow type="factory_block_return">
+                  <field name="VALUE">sub_cb</field>
                 </shadow>
               </value>
             <value name="CLIENT">
                   <shadow type="text">
-                      <field name="TEXT">31468921</field>
+                      <field name="TEXT">31444082</field>
                   </shadow>
               </value>
               <value name="SERVER">
@@ -1894,12 +1894,12 @@
               </value>
               <value name="USERNAME">
                   <shadow type="text">
-                      <field name="TEXT">141427</field>
+                      <field name="TEXT">141092</field>
                   </shadow>
               </value>
               <value name="PASSWORD">
                   <shadow type="text">
-                      <field name="TEXT">uXr5=Ur88iTy0V4HMXHrsPLDiPo=</field>
+                      <field name="TEXT">61n63JySRowo13ZLDBKw6y896E0=</field>
                   </shadow>
               </value>
               <value name="TOPIC">
@@ -2182,19 +2182,19 @@
         </block> -->
       </category>
       <category id="catMonitor" colour="180">
-        <block type="monitor_show_image_or_string">
+        <block type="display_show_image_or_string">
           <value name="data">
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>
-        <block type="monitor_scroll_string">
+        <block type="display_scroll_string">
           <value name="data">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
             </shadow>
           </value>
         </block>
-        <block type="monitor_show_image_or_string_delay">
+        <block type="display_show_image_or_string_delay">
           <value name="data">
             <shadow type="pins_builtinimg"></shadow>
           </value>
@@ -2204,7 +2204,7 @@
             </shadow>
           </value>
         </block>
-        <block type="monitor_scroll_string_delay">
+        <block type="display_scroll_string_delay">
           <value name="data">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
@@ -2233,8 +2233,8 @@
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>-->
-        <block type="esp32_image_create"></block>
-        <block type="esp32_image_builtins"></block>
+        <block type="display_image_create"></block>
+        <block type="display_image_builtins"></block>
         <block type="image_arithmetic">
           <value name="A">
             <shadow type="pins_builtinimg"></shadow>
@@ -2243,7 +2243,7 @@
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>
-        <block type="monitor_get_pixel">
+        <block type="display_get_pixel">
           <value name="x">
             <shadow type="pins_exlcdh"></shadow>
           </value>
@@ -2251,28 +2251,27 @@
             <shadow type="pins_exlcdv"></shadow>
           </value>
         </block>
-        <block type="monitor_bright_point">
+        <block type="display_bright_point">
           <value name="x">
             <shadow type="pins_exlcdh"></shadow>
           </value>
           <value name="y">
             <shadow type="pins_exlcdv"></shadow>
           </value>
-        </block>
-        <block type="monitor_bright_screen">
-          <value name="x">
-            <shadow type="pins_exlcdh"></shadow>
+          <value name="STAT">
+              <shadow type="display_onoff">
+            </shadow>
           </value>
         </block>
-        <block type="monitor_get_screen_pixel"></block>
-        <block type="monitor_blink_rate">
+        <block type="display_get_screen_pixel"></block>
+        <block type="display_blink_rate">
           <value name="x">
             <shadow type="math_number">
               <field name="NUM">2</field>
             </shadow>
           </value>
         </block>
-        <block type="esp32_display_clear"></block>
+        <block type="display_clear"></block>
         <block type="display_rgb_init">
           <value name="SUB">
             <shadow type="variables_get">
@@ -2347,7 +2346,7 @@
             <shadow type="math_number"><field name="NUM">100000</field></shadow>
           </value>
         </block> -->
-        <block type="oled_use_i2c_init">
+        <block type="display_use_i2c_init">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">oled</field>
@@ -2369,7 +2368,7 @@
             </shadow>
           </value>
         </block>
-        <block type="lp2i_u8g_draw_4strings">
+        <block type="display_draw_4strings">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">oled</field>
@@ -2445,7 +2444,7 @@
             </shadow>
           </value>
         </block>
-        <block type="display_line_Arbitrarily">
+        <block type="display_line_arbitrarily">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">oled</field>
