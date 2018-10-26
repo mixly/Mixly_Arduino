@@ -345,7 +345,7 @@ Blockly.Blocks['communicate_ow_select'] = {
             .setCheck('var')
             .appendField(Blockly.MIXLY_ESP32_ONEWIRE_SELECT)
         this.appendValueInput('byte')
-            .setCheck(Number)
+            .setCheck(String)
             .appendField("ROM");
         this.setPreviousStatement(true);
         this.setNextStatement(true);
