@@ -23,7 +23,7 @@
   <script type="text/javascript" src="microbit[py]/myblock.js"></script>
   <script type="text/javascript" src="../../blocks/python/variables.js"></script>
   <script type="text/javascript" src="../../generators/python/variables.js"></script>
-  <script src="../../blocks/microbit_python/microbit_profile.js"></script>  
+  <script src="../../blocks/microbit_python/microbit_profile.js"></script>
 	<!-- blocks file -->
   <script src="../../blocks/microbit_python/pins.js"></script>
   <script src="../../blocks/microbit_python/inout.js"></script>
@@ -511,14 +511,14 @@ function init() {
           </shadow>
         </value>
       </block>
-      <block type="base_type">
+      <block type="controls_type">
         <value name="DATA">
           <shadow type="math_number">
             <field name="NUM">1000</field>
           </shadow>
         </value>
       </block>
-      <block type="controls_TypeLists"></block>
+      <block type="controls_typeLists"></block>
       <block type="controls_if"></block>
 <!--       <block type="controls_for_range">
         <value name="FROM">
@@ -968,21 +968,21 @@ function init() {
               <shadow type="variables_get">
                 <field name="VAR">mylist</field>
               </shadow>
-            </value>            
+            </value>
           </block>
 		  <block type="lists_clear">
             <value name="VAR">
               <shadow type="variables_get">
                 <field name="VAR">mylist</field>
               </shadow>
-            </value>            
+            </value>
           </block>
           <block type="lists_change_to">
               <value name="VAR">
                 <shadow type="variables_get">
                   <field name="VAR">mylist</field>
                 </shadow>
-              </value>             
+              </value>
           </block>
         </category>
       </category>
@@ -1000,7 +1000,7 @@ function init() {
               <field name="NUM">0</field>
             </shadow>
           </value>
-        </block>  
+        </block>
         <block type="tuple_length">
           <value name="TUP">
             <shadow type="variables_get">
@@ -1039,9 +1039,9 @@ function init() {
             <shadow type="variables_get">
               <field name="VAR">mytup</field>
             </shadow>
-          </value>            
+          </value>
         </block>
-      </category> 
+      </category>
       <category id="catDicts" colour="345">
           <block type="dicts_create_with"></block>
           <block type="dicts_keys">
@@ -1083,7 +1083,7 @@ function init() {
                   <field name="VAR">mydict</field>
                 </shadow>
               </value>
-          </block>  
+          </block>
           <block type="dicts_items">
             <value name="DICT">
                 <shadow type="variables_get">
@@ -1128,7 +1128,7 @@ function init() {
               <field name="VAR">s1</field>
             </shadow>
           </value>
-        </block> 
+        </block>
         <block type="set_change_to">
           <value name="VAR">
             <shadow type="variables_get">
@@ -1170,7 +1170,7 @@ function init() {
             <shadow type="math_number">
               <field name="NUM">0</field>
             </shadow>
-          </value> 
+          </value>
         </block>
         <block type="set_update">
           <value name="SET">
@@ -1196,14 +1196,14 @@ function init() {
             </shadow>
           </value>
         </block>
-      </category>       
+      </category>
       <category id="catSerialPort" colour="65">
-        <block type="IO_print_inline"> 
+        <block type="IO_print_inline">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
-              </value>   
+              </value>
         </block>
         <block type="IO_print">
               <value name="VAR">
@@ -1275,7 +1275,7 @@ function init() {
           <value name="data_rate">
             <shadow type="pins_radio_datarate"></shadow>
           </value>
-        </block>  
+        </block>
         <block type="radio_send_string">
           <value name="data">
             <shadow type="text">
@@ -1751,7 +1751,7 @@ function init() {
           <value name="TEXT">
             <shadow type="text">
               <field name="TEXT"></field>
-            </shadow> 
+            </shadow>
           </value>
         </block>
         <block type="group_lcd_power">
@@ -1833,7 +1833,7 @@ function init() {
 		$('#toolbox').append(myblock);
 	}
     </script>
-  
+
     <div id="firmware" style="display: none;">:020000040000FA
 :1000000000400020ED530100295401002B54010051
 :1000100000000000000000000000000000000000E0

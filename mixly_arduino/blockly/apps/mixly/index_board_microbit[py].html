@@ -12,7 +12,7 @@
   <script src="../../generators/microbit_python/python.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
   <script type="text/javascript" src="drag.js"></script>
-  <script type="text/javascript" src="code.js"></script> 
+  <script type="text/javascript" src="code.js"></script>
   <!---from BlocklyDuino-->
   <script type="text/javascript" src="Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
@@ -331,7 +331,7 @@ function init() {
 		  var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
     	  editor_side_code.setValue(chinese_code, -1);
     	}
-    	
+
       auto_save_and_restore_blocks();
       //load from url parameter (single param)
       //http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
@@ -512,14 +512,14 @@ function init() {
           </shadow>
         </value>
       </block>
-      <block type="base_type">
+      <block type="controls_type">
         <value name="DATA">
           <shadow type="math_number">
             <field name="NUM">1000</field>
           </shadow>
         </value>
       </block>
-      <block type="controls_TypeLists"></block>
+      <block type="controls_typeLists"></block>
       <block type="controls_if"></block>
 <!--       <block type="controls_for_range">
         <value name="FROM">
@@ -993,7 +993,7 @@ function init() {
               <field name="NUM">0</field>
             </shadow>
           </value>
-        </block>  
+        </block>
         <block type="tuple_length">
           <value name="TUP">
             <shadow type="variables_get">
@@ -1032,9 +1032,9 @@ function init() {
             <shadow type="variables_get">
               <field name="VAR">mytup</field>
             </shadow>
-          </value>            
+          </value>
         </block>
-      </category> 
+      </category>
       <category id="catDicts" colour="345">
           <block type="dicts_create_with"></block>
           <block type="dicts_keys">
@@ -1057,7 +1057,7 @@ function init() {
                 <field name="VAR">mydict</field>
               </shadow>
             </value>
-            
+
             <value name="AT2">
               <shadow type="math_number">
                 <field name="NUM">0</field>
@@ -1070,7 +1070,7 @@ function init() {
                   <field name="VAR">mydict</field>
                 </shadow>
               </value>
-          </block>  
+          </block>
           <block type="dicts_items">
             <value name="DICT">
                 <shadow type="variables_get">
@@ -1115,7 +1115,7 @@ function init() {
               <field name="VAR">s1</field>
             </shadow>
           </value>
-        </block> 
+        </block>
         <block type="set_change_to">
           <value name="VAR">
             <shadow type="variables_get">
@@ -1157,7 +1157,7 @@ function init() {
             <shadow type="math_number">
               <field name="NUM">0</field>
             </shadow>
-          </value> 
+          </value>
         </block>
         <block type="set_update">
           <value name="SET">
@@ -1183,14 +1183,14 @@ function init() {
             </shadow>
           </value>
         </block>
-      </category>       
+      </category>
       <category id="catSerialPort" colour="65">
-        <block type="IO_print_inline"> 
+        <block type="IO_print_inline">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
-              </value>   
+              </value>
           </block>
         <block type="IO_print">
               <value name="VAR">
@@ -1333,7 +1333,7 @@ function init() {
               <field name="TEXT">#115DOWWWW</field>
             </shadow>
           </value>
-        </block> 
+        </block>
         <block type="speech_pronounce_easy">
           <value name="VAR">
             <shadow type="text">

@@ -22,7 +22,7 @@
   <script type="text/javascript" src="microbit[py]/myblock.js"></script>
   <script type="text/javascript" src="../../blocks/python/variables.js"></script>
   <script type="text/javascript" src="../../generators/python/variables.js"></script>
-  <script src="../../blocks/esp32/esp32_profile.js"></script>  
+  <script src="../../blocks/esp32/esp32_profile.js"></script>
 	<!-- blocks file -->
   <script src="../../blocks/esp32/pins.js"></script>
   <script src="../../blocks/esp32/inout.js"></script>
@@ -456,7 +456,7 @@
   <xml id="toolbox" style="display: none">
     <category name="" id="catInOut" colour="20">
       <block type="inout_highlow"></block>
-      <block type="inout_pinMode">
+      <block type="inout_digital_init">
         <value name="PIN">
           <shadow type="pins_digital_pin">
           </shadow>
@@ -526,19 +526,19 @@
           <shadow type="pins_analog"></shadow>
         </value>
       </block>
-      <block type="pin_pressed_init">
+      <block type="inout_pin_pressed_init">
         <value name="PIN">
           <shadow type="pins_touch_pin">
           </shadow>
         </value>
       </block>
-      <block type="pin_pressed">
+      <block type="inout_pin_pressed">
         <value name="pin">
           <shadow type="pins_touch">
           </shadow>
         </value>
       </block>
-      <block type="controls_pin_attachInterrupt">
+      <block type="inout_pin_attachInterrupt">
         <value name="PIN">
           <shadow type="pins_digital_pin"></shadow>
         </value>
@@ -558,14 +558,14 @@
           </shadow>
         </value>
       </block>
-      <block type="base_type">
+      <block type="controls_type">
         <value name="DATA">
           <shadow type="math_number">
             <field name="NUM">1000</field>
           </shadow>
         </value>
       </block>
-      <block type="controls_TypeLists"></block>
+      <block type="controls_typeLists"></block>
       <block type="controls_if"></block>
       <block type="controls_range">
         <value name="FROM">
@@ -608,7 +608,7 @@
           </block>
         </value>
       </block>
-     
+
       <block type="controls_try_finally"></block>
       <block type="controls_lambda">
         <value name="BOOL">
@@ -626,14 +626,14 @@
         </shadow>
         </statement>
       </block>
-      <block type="Timer_init">
+      <block type="system_timer_init">
         <value name="SUB">
           <shadow type="variables_get">
             <field name="VAR">tim</field>
           </shadow>
         </value>
       </block>
-      <block type="timer2">
+      <block type="system_timer">
         <value name="VAR">
           <shadow type="variables_get">
             <field name="VAR">tim</field>
@@ -647,7 +647,7 @@
       </block>
       <block type="controls_flow_statements"></block>
       <block type="controls_millis"></block>
-      <block type="time_ticks_diff">
+      <block type="system_ticks_diff">
         <value name="END">
           <block type="controls_millis"></block>
           <shadow type="math_number">
@@ -1263,7 +1263,7 @@
                   <field name="VAR">mydict</field>
                 </shadow>
               </value>
-          </block>  
+          </block>
           <block type="dicts_items">
             <value name="DICT">
                 <shadow type="variables_get">
@@ -1308,7 +1308,7 @@
               <field name="VAR">s1</field>
             </shadow>
           </value>
-        </block> 
+        </block>
         <block type="set_change_to">
           <value name="VAR">
             <shadow type="variables_get">
@@ -1350,7 +1350,7 @@
             <shadow type="math_number">
               <field name="NUM">0</field>
             </shadow>
-          </value> 
+          </value>
         </block>
         <block type="set_update">
           <value name="SET">
@@ -1376,14 +1376,14 @@
             </shadow>
           </value>
         </block>
-      </category>       
+      </category>
       <category id="catSerialPort" colour="65">
-        <block type="system_print_inline"> 
+        <block type="system_print_inline">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
-              </value>   
+              </value>
           </block>
         <block type="system_print">
               <value name="VAR">
@@ -1405,21 +1405,21 @@
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
-              </value> 
+              </value>
         </block>
         <block type="serial_println">
               <value name="CONTENT">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
-              </value> 
+              </value>
         </block>
         <block type="serial_print_hex">
               <value name="CONTENT">
                   <shadow type="math_number">
                       <field name="NUM">0XFF00FF</field>
                   </shadow>
-              </value>           
+              </value>
         </block>
         <block type="serial_any"></block>
         <block type="serial_readstr"></block>
@@ -1806,7 +1806,7 @@
             </block>
           </value>
           <statement name="DO0">
-            <block type="network_connect"> 
+            <block type="network_connect">
               <value name="VAR">
                 <block type="variables_get">
                   <field name="VAR">wlan</field>
@@ -1839,7 +1839,7 @@
                   <field name="TEXT">01234567</field>
                 </block>
               </value>
-              <next>  
+              <next>
                 <block type="controls_whileUntil">
                   <field name="MODE">UNTIL</field>
                   <value name="BOOL">
@@ -1870,7 +1870,7 @@
                       <field name="TEXT">wifipassword</field>
                   </shadow>
               </value>
-         </block>          
+         </block>
         <block type="iot_onenet_connect">
               <value name="VAR">
                 <shadow type="variables_get">
@@ -2498,7 +2498,7 @@
 		$('#toolbox').append(myblock);
 	}
     </script>
- 
+
 
 </body>
 </html>
