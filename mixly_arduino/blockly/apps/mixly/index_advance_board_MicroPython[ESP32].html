@@ -1932,33 +1932,33 @@
           </block>
       </category>
       <category id="catSensor" colour="40">
-        <block type="sensor_button_is_pressed">
+        <block type="sensor_mixgo_button_is_pressed">
           <value name="btn">
             <shadow type="pins_button">
             </shadow>
           </value>
         </block>
-        <block type="sensor_button_was_pressed">
+        <block type="sensor_mixgo_button_was_pressed">
           <value name="btn">
             <shadow type="pins_button">
             </shadow>
           </value>
         </block>
-        <block type="sensor_button_get_presses">
+        <block type="sensor_mixgo_button_get_presses">
           <value name="btn">
             <shadow type="pins_button">
             </shadow>
           </value>
         </block>
-        <block type="sensor_pin_pressed">
+        <block type="sensor_mixgo_pin_pressed">
           <value name="button">
           <shadow type="number1">
           </shadow>
         </value>
         </block>
-        <block type="sensor_pin_near"></block>
-        <block type="sensor_light"></block>
-        <block type="sensor_sound"></block>
+        <block type="sensor_mixgo_pin_near"></block>
+        <block type="sensor_mixgo_light"></block>
+        <block type="sensor_mixgo_sound"></block>
         <block type="sensor_rtc_init">
           <value name="SUB">
             <shadow type="variables_get">
@@ -2040,7 +2040,7 @@
             </shadow>
           </value>
         </block>
-        <block type="sensor_get_acceleration">
+        <block type="sensor_mixgo_get_acceleration">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">mpu</field>
@@ -2087,7 +2087,7 @@
               </shadow>
           </value>
         </block>
-		<block type="dht11">
+		<block type="sensor_dht11">
                 <value name="PIN">
                     <shadow type="pins_digital_pin"></shadow>
                 </value>
