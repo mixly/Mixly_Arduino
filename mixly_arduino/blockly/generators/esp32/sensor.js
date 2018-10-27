@@ -5,21 +5,21 @@ goog.provide('Blockly.Python.sensor');
 goog.require('Blockly.Python');
 
 //ok
-Blockly.Python.sensor_button_is_pressed = function(){
+Blockly.Python.sensor_mixgo_button_is_pressed = function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
     var code =  btn + '.is_pressed()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 //ok
-Blockly.Python.sensor_button_was_pressed = function(){
+Blockly.Python.sensor_mixgo_button_was_pressed = function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
     var code =  btn + '.was_pressed()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 //ok
-Blockly.Python.sensor_button_get_presses = function(){
+Blockly.Python.sensor_mixgo_button_get_presses = function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
     var code =  btn + '.get_presses()';
@@ -78,7 +78,7 @@ Blockly.Python.sensor_current_gesture= function(){
 };
 
 //ok
-Blockly.Python.sensor_get_acceleration = function(){
+Blockly.Python.sensor_mixgo_get_acceleration = function(){
     Blockly.Python.definitions_['import_mpu9250_*'] = 'from mpu9250 import *';
     Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
     var key = this.getFieldValue('key')
@@ -283,7 +283,7 @@ Blockly.Python.HCSR04 = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.dht11 = function () {
+Blockly.Python.sensor_dht11 = function () {
     /*Blockly.Python.definitions_['import_machine_Pin'] = "from machine import Pin";
     Blockly.Python.definitions_['import_time'] = 'import time';
     Blockly.Python.definitions_['import_machine'] ='import machine';*/
@@ -295,12 +295,12 @@ Blockly.Python.dht11 = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_light= function(){
+Blockly.Python.sensor_mixgo_light= function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     return ['brightness.read()', Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_sound= function(){
+Blockly.Python.sensor_mixgo_sound= function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     return ['sound.read()', Blockly.Python.ORDER_ATOMIC];
 };
@@ -311,7 +311,7 @@ Blockly.Python.number1 = function(){
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_pin_pressed = function(){
+Blockly.Python.sensor_mixgo_pin_pressed = function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var pin = Blockly.Python.valueToCode(this, 'button', Blockly.Python.ORDER_ATOMIC);
     var code = pin+'.is_touched()';
@@ -333,7 +333,7 @@ Blockly.Python.controls_attachInterrupt = function () {
     return code;
 };
 
-Blockly.Python.sensor_pin_near = function(){
+Blockly.Python.sensor_mixgo_pin_near = function(){
     Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
     var direction = this.getFieldValue('direction');
     var code = 'Infrared_'+ direction +'.near()';

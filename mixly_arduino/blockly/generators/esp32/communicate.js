@@ -97,7 +97,7 @@ Blockly.Python.communicate_spi_init= function(block) {
     var mosi = Blockly.Python.valueToCode(this, 'mosi', Blockly.Python.ORDER_ATOMIC);
     var miso = Blockly.Python.valueToCode(this, 'miso', Blockly.Python.ORDER_ATOMIC);
     var sck = Blockly.Python.valueToCode(this, 'sck', Blockly.Python.ORDER_ATOMIC);
-    return ""+name+" = SPI(-1, baudrate=" + freq + ", polarity=" + polarity + ", phase=" + phase + ", sck=Pin(" + sck + "), mosi=Pin(" + mosi + "), miso=Pin(" + miso + "));\n";
+    return ""+name+" = SPI(baudrate=" + freq + ", polarity=" + polarity + ", phase=" + phase + ", sck=Pin(" + sck + "), mosi=Pin(" + mosi + "), miso=Pin(" + miso + "));\n";
 }
 
 Blockly.Python.communicate_spi_set = function() {
@@ -283,6 +283,6 @@ Blockly.Python.communicate_ow_select = function () {
     Blockly.Python.definitions_['import_onewire'] = "import onewire";
     var varName =Blockly.Python.valueToCode(this, 'byte',Blockly.Python.ORDER_ATOMIC);
     var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".select_rom(b'" + varName + "')";
+    var code = ""+name+".select_rom(" + varName + ".encode('utf-8'))";
     return [code, Blockly.Python.ORDER_ATOMIC];
 };

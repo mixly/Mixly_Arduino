@@ -8,7 +8,7 @@ pbc.objectFunctionD.get('is_pressed')['Pin'] = function (py2block, func, args, k
     pbc.pinType = "pins_button";
     var objblock = py2block.convert(func.value);
     pbc.pinType = null;
-    return block("sensor_button_is_pressed", func.lineno, {}, {
+    return block("sensor_mixgo_button_is_pressed", func.lineno, {}, {
         "btn": objblock
     }, {
         "inline": "true"
@@ -24,7 +24,7 @@ pbc.objectFunctionD.get('was_pressed')['Pin'] = function (py2block, func, args, 
     pbc.pinType = "pins_button";
     var objblock = py2block.convert(func.value);
     pbc.pinType = null;
-    return block("sensor_button_was_pressed", func.lineno, {}, {
+    return block("sensor_mixgo_button_was_pressed", func.lineno, {}, {
         "btn": objblock
     }, {
         "inline": "true"
@@ -38,7 +38,7 @@ pbc.objectFunctionD.get('get_presses')['Pin'] = function (py2block, func, args, 
     pbc.pinType = "pins_button";
     var objblock = py2block.convert(func.value);
     pbc.pinType = null;
-    return block("sensor_button_get_presses", func.lineno, {}, {
+    return block("sensor_mixgo_button_get_presses", func.lineno, {}, {
         "btn": objblock
     }, {
         "inline": "true"
@@ -52,7 +52,7 @@ pbc.objectFunctionD.get('is_touched')['touch'] = function (py2block, func, args,
     pbc.pinType = "number1";
     var objblock = py2block.convert(func.value);
     pbc.pinType = null;
-    return block("sensor_pin_pressed", func.lineno, {}, {
+    return block("sensor_mixgo_pin_pressed", func.lineno, {}, {
         "button":objblock
     }, {
         "inline": "true"
@@ -63,7 +63,7 @@ pbc.moduleFunctionD.get('Infrared_left')['near'] = function (py2block, func, arg
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("sensor_pin_near", func.lineno, {"direction":'left'}, {}, {
+    return block("sensor_mixgo_pin_near", func.lineno, {"direction":'left'}, {}, {
         "inline": "true"
     });
 
@@ -73,7 +73,7 @@ pbc.moduleFunctionD.get('Infrared_right')['near'] = function (py2block, func, ar
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("sensor_pin_near", func.lineno, {"direction":'right'}, {}, {
+    return block("sensor_mixgo_pin_near", func.lineno, {"direction":'right'}, {}, {
         "inline": "true"
     });
 }
@@ -82,7 +82,7 @@ pbc.moduleFunctionD.get('brightness')['read'] = function (py2block, func, args, 
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("sensor_light", func.lineno, {}, {}, {
+    return block("sensor_mixgo_light", func.lineno, {}, {}, {
         "inline": "true"
     });
 }
@@ -91,7 +91,7 @@ pbc.moduleFunctionD.get('sound')['read'] = function (py2block, func, args, keywo
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("sensor_sound", func.lineno, {}, {}, {
+    return block("sensor_mixgo_sound", func.lineno, {}, {}, {
         "inline": "true"
     });
 }
@@ -122,7 +122,7 @@ pbc.objectFunctionD.get('datetime')['RTC'] = function (py2block, func, args, key
         throw new Error("Incorrect number of arguments");
     }*/
     if(args.length==0){
-        var objblock=py2block.convert(func.value.id);
+        var objblock=py2block.convert(func.value);
         return block("RTC_get_time", func.lineno, {}, {
             'SUB':objblock
         }, {
@@ -193,7 +193,7 @@ function getAcceleration(mode){
             throw new Error("Incorrect number of arguments");
         }
         var mpublock=py2block.convert(func.value)
-        return block('sensor_get_acceleration', func.lineno, {
+        return block('sensor_mixgo_get_acceleration', func.lineno, {
                 "key": mode
             }, {
                 'SUB': mpublock
@@ -297,7 +297,7 @@ function dht(mode){
         var pinblock=py2block.convert(args[1]);
         pbc.pinType=null;
         var dhtblock=py2block.identifier(args[0].s);
-        return block('dht11', func.lineno, {
+        return block('sensor_dht11', func.lineno, {
                 'TYPE':dhtblock,
                 'WHAT':mode
             }, {

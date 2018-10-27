@@ -26,12 +26,14 @@ Blockly.Python.iot_onenet_connect = function(block) {
 };
 
 Blockly.Python.iot_onenet_disconnect = function(block) {
+  var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
   Blockly.Python.definitions_.from_simple_import_MQTTClient = "from simple import MQTTClient"; 
   var code=v + '.disconnect()\n';  
   return code;
 };
 
 Blockly.Python.iot_onenet_check = function(block) {
+  var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ; 
   Blockly.Python.definitions_.from_simple_import_MQTTClient = "from simple import MQTTClient"; 
   var code=v + '.check_msg()\n';  
   return code;

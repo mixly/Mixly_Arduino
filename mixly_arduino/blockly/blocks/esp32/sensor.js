@@ -6,7 +6,7 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.sensor.HUE = 40//'#9e77c9'//40;
 
-Blockly.Blocks['sensor_button_is_pressed'] = {
+Blockly.Blocks['sensor_mixgo_button_is_pressed'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('btn')
@@ -20,7 +20,7 @@ Blockly.Blocks['sensor_button_is_pressed'] = {
     }
 };
 
-Blockly.Blocks['sensor_button_was_pressed'] = {
+Blockly.Blocks['sensor_mixgo_button_was_pressed'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('btn')
@@ -34,7 +34,7 @@ Blockly.Blocks['sensor_button_was_pressed'] = {
     }
 };
 
-Blockly.Blocks['sensor_button_get_presses'] = {
+Blockly.Blocks['sensor_mixgo_button_get_presses'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('btn')
@@ -150,7 +150,7 @@ Blockly.Blocks.controls_attachGestureInterrupt2 = {
     }
 };
 
-Blockly.Blocks['sensor_get_acceleration'] = {
+Blockly.Blocks['sensor_mixgo_get_acceleration'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
@@ -525,7 +525,7 @@ Blockly.Blocks.HCSR04 = {
 
 };
 
-Blockly.Blocks.dht11 = {
+Blockly.Blocks.sensor_dht11 = {
     init: function () {
         var WHAT = [[Blockly.MIXLY_DHT11_T, 'temperature'], [Blockly.MIXLY_DHT11_H, 'humidity'], [Blockly.MIXLY_DHT11_T_H, 'tempandhum']];
         this.setColour(Blockly.Blocks.sensor.HUE);
@@ -553,7 +553,7 @@ Blockly.Blocks.dht11 = {
 
 
 
-Blockly.Blocks['sensor_light'] = {
+Blockly.Blocks['sensor_mixgo_light'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()
@@ -563,7 +563,7 @@ Blockly.Blocks['sensor_light'] = {
     }
 };
 
-Blockly.Blocks['sensor_sound'] = {
+Blockly.Blocks['sensor_mixgo_sound'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()
@@ -583,7 +583,7 @@ Blockly.Blocks['number1'] = {
   }
 };
 
-Blockly.Blocks['sensor_pin_pressed'] = {
+Blockly.Blocks['sensor_mixgo_pin_pressed'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput("button")
@@ -614,7 +614,7 @@ Blockly.Blocks['sensor_pin_pressed'] = {
 //   }
 // };
 
-Blockly.Blocks['sensor_pin_near'] = {
+Blockly.Blocks['sensor_mixgo_pin_near'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()

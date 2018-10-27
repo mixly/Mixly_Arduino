@@ -79,6 +79,7 @@
   <script src="../../converters/esp32/py2block_config.js" type="application/javascript"></script>
   <script src="../../converters/esp32/inout.js" type="application/javascript"></script>
   <script src="../../converters/esp32/network.js" type="application/javascript"></script>
+   <script src="../../converters/esp32/iot.js" type="application/javascript"></script>
   <script src="../../converters/esp32/serial.js" type="application/javascript"></script>
   <script src="../../converters/esp32/communicate.js" type="application/javascript"></script>
   <script src="../../converters/esp32/display.js" type="application/javascript"></script>
@@ -1687,8 +1688,8 @@
             </shadow>
           </value>
           <value name="byte">
-            <shadow type="math_number">
-              <field name="NUM">12345</field>
+            <shadow type="text">
+              <field name="TEXT">12345</field>
             </shadow>
           </value>
         </block>
@@ -1878,13 +1879,13 @@
                 </shadow>
               </value>
             <value name="SUB">
-                <shadow type="variables_get">
-                  <field name="VAR">sub_cb</field>
+                <shadow type="factory_block_return">
+                  <field name="VALUE">sub_cb</field>
                 </shadow>
               </value>
             <value name="CLIENT">
                   <shadow type="text">
-                      <field name="TEXT">31468921</field>
+                      <field name="TEXT">31444082</field>
                   </shadow>
               </value>
               <value name="SERVER">
@@ -1894,12 +1895,12 @@
               </value>
               <value name="USERNAME">
                   <shadow type="text">
-                      <field name="TEXT">141427</field>
+                      <field name="TEXT">141092</field>
                   </shadow>
               </value>
               <value name="PASSWORD">
                   <shadow type="text">
-                      <field name="TEXT">uXr5=Ur88iTy0V4HMXHrsPLDiPo=</field>
+                      <field name="TEXT">61n63JySRowo13ZLDBKw6y896E0=</field>
                   </shadow>
               </value>
               <value name="TOPIC">
@@ -1931,33 +1932,33 @@
           </block>
       </category>
       <category id="catSensor" colour="40">
-        <block type="sensor_button_is_pressed">
+        <block type="sensor_mixgo_button_is_pressed">
           <value name="btn">
             <shadow type="pins_button">
             </shadow>
           </value>
         </block>
-        <block type="sensor_button_was_pressed">
+        <block type="sensor_mixgo_button_was_pressed">
           <value name="btn">
             <shadow type="pins_button">
             </shadow>
           </value>
         </block>
-        <block type="sensor_button_get_presses">
+        <block type="sensor_mixgo_button_get_presses">
           <value name="btn">
             <shadow type="pins_button">
             </shadow>
           </value>
         </block>
-        <block type="sensor_pin_pressed">
+        <block type="sensor_mixgo_pin_pressed">
           <value name="button">
           <shadow type="number1">
           </shadow>
         </value>
         </block>
-        <block type="sensor_pin_near"></block>
-        <block type="sensor_light"></block>
-        <block type="sensor_sound"></block>
+        <block type="sensor_mixgo_pin_near"></block>
+        <block type="sensor_mixgo_light"></block>
+        <block type="sensor_mixgo_sound"></block>
         <block type="sensor_rtc_init">
           <value name="SUB">
             <shadow type="variables_get">
@@ -2039,7 +2040,7 @@
             </shadow>
           </value>
         </block>
-        <block type="sensor_get_acceleration">
+        <block type="sensor_mixgo_get_acceleration">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">mpu</field>
@@ -2086,7 +2087,7 @@
               </shadow>
           </value>
         </block>
-		<block type="dht11">
+		<block type="sensor_dht11">
                 <value name="PIN">
                     <shadow type="pins_digital_pin"></shadow>
                 </value>
@@ -2108,19 +2109,19 @@
             </shadow>
           </value>
         </block>
-        <block type="led_bright">
+        <block type="actuator_led_bright">
            <value name="led">
           <shadow type="number">
           </shadow>
         </value>
         </block>
-        <block type="get_led_bright">
+        <block type="actuator_get_led_bright">
           <value name="led">
             <shadow type="number">
             </shadow>
           </value>
         </block>
-        <block type="led_brightness">
+        <block type="actuator_led_brightness">
            <value name="led">
           <shadow type="number">
           </shadow>
@@ -2137,7 +2138,7 @@
           </value>
         </block>
          <block type="esp32_music_deinit"></block> -->
-        <block type="esp32_music_pitch">
+        <block type="esp32_mixgo_music_pitch">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
               <field name="PIN">27</field>
@@ -2152,7 +2153,7 @@
             <shadow type="pins_pwm"></shadow>
           </value>
         </block> -->
-        <block type="esp32_music_stop">
+        <block type="esp32_mixgo_music_stop">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
               <field name="PIN">27</field>

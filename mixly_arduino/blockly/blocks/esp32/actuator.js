@@ -51,7 +51,7 @@ Blockly.Blocks['light'] = {
     }
 };
 
-Blockly.Blocks.led_bright = {
+Blockly.Blocks.actuator_led_bright = {
   init: function() {
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput()
@@ -67,7 +67,7 @@ Blockly.Blocks.led_bright = {
   }
 };
 
-Blockly.Blocks.get_led_bright = {
+Blockly.Blocks.actuator_get_led_bright = {
   init: function() {
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput()
@@ -81,7 +81,7 @@ Blockly.Blocks.get_led_bright = {
   }
 };
 
-Blockly.Blocks.led_brightness = {
+Blockly.Blocks.actuator_led_brightness = {
   init: function() {
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput()
@@ -97,7 +97,7 @@ Blockly.Blocks.led_brightness = {
 };
 
 //music
-Blockly.Blocks.esp32_music_pitch = {
+Blockly.Blocks.esp32_mixgo_music_pitch = {
     init: function() {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
@@ -114,7 +114,7 @@ Blockly.Blocks.esp32_music_pitch = {
     }
 };
 
-Blockly.Blocks.esp32_music_stop = {
+Blockly.Blocks.esp32_mixgo_music_stop = {
     init: function() {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)

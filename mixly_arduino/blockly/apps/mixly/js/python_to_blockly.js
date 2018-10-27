@@ -13,6 +13,27 @@ function xmlToString(xml) {
     return new XMLSerializer().serializeToString(xml);
 }
 
+function hasReturn(block){
+    var q = [block];
+    while(q.length != 0) {
+        var curr_block = q.shift();
+        for (var attr in curr_block) {
+            try {
+                var astname = curr_block[attr]._astname;
+                if (astname == "Return") {
+                    return true;
+                } else if (astname != null || curr_block[attr] instanceof Array) {
+                    q.push(curr_block[attr]);
+                }
+            }catch(e){
+
+            }
+        }
+    }
+    return false;
+}
+
+PythonToBlocks.prototype.funcname_to_type = {};
 PythonToBlocks.prototype.convertSourceToCodeBlock = function(python_source) {
     var xml = document.createElement("xml");
     xml.appendChild(raw_block(python_source));
@@ -469,12 +490,24 @@ PythonToBlocks.prototype.FunctionDef = function(node)
     if (decorator_list.length > 0) {
         throw new Error("Decorators are not implemented.");
     }
-    if(py2block_config.ignoreS.has(name.v))
+    if(py2block_config.ignoreS.has(name.v)) {
         return null;
-    return block("procedures_defnoreturn", node.lineno, {
+    }
+    var body_length = body.length;
+    var return_block = {};
+
+    var blockid = hasReturn(body) ? "procedures_defreturn" : "procedures_defnoreturn";
+    if(body_length > 0){
+        var last = body_length - 1;
+        if(body[last]._astname == "Return") {
+            return_block = {"RETURN": this.convert(body[last].value)};
+            body = body.slice(0, last);
+        }
+    }
+    this.funcname_to_type[this.identifier(name)] = blockid;
+    return block(blockid, node.lineno, {
         "NAME": this.identifier(name)
-    }, {
-    }, {
+    }, return_block, {
         "inline": "false"
     }, {
         "arg": this.arguments_(args)
@@ -1699,9 +1732,19 @@ PythonToBlocks.prototype.Call = function(node) {
                         argumentsNormal["ARG"+i] = this.convert(args[i]);
                         argumentsMutation[i] = this.convert(args[i]);
                     }
-                    return block("procedures_callreturn", node.lineno, {}, argumentsNormal, {
-                        "inline": "true"
-                    }, argumentsMutation);
+                    var functype = this.funcname_to_type[this.identifier(func.id)]
+                    var blockid = "procedures_callreturn";
+                    if(functype == "procedures_defnoreturn"){
+                        blockid = "procedures_callnoreturn";
+                    }
+                    var b = block(blockid, node.lineno, {}, argumentsNormal, {
+                                "inline": "true"
+                            }, argumentsMutation);
+                    if(blockid == "procedures_callnoreturn"){
+                        return [b];
+                    }else{
+                        return b;
+                    }
             }
         // Direct function call
         case "Attribute":
