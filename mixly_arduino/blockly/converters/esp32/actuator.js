@@ -32,7 +32,7 @@ pbc.moduleFunctionD.get('led')['setonoff'] = function (py2block, func, args, key
     var argblock = py2block.convert(args[0]);
     pbc.pinType=null;
     var mode = py2block.Str_value(args[1]);
-    return [block("led_bright", func.lineno, {
+    return [block("actuator_led_bright", func.lineno, {
         'bright':mode,
     }, {
         'led': argblock,
@@ -48,7 +48,7 @@ pbc.moduleFunctionD.get('led')['getonoff'] = function (py2block, func, args, key
     pbc.pinType="number";
     var argblock = py2block.convert(args[0]);
     pbc.pinType=null;
-    return block("get_led_bright", func.lineno, {
+    return block("actuator_get_led_bright", func.lineno, {
     }, {
         'led': argblock,
     }, {
@@ -65,7 +65,7 @@ pbc.moduleFunctionD.get('led')['setbrightness'] = function (py2block, func, args
     pbc.pinType=null;
     var brightblock = py2block.convert(args[1]);
 
-    return [block("led_brightness", func.lineno, {}, {
+    return [block("actuator_led_brightness", func.lineno, {}, {
         'led': argblock,
         'bright':brightblock,
     }, {
@@ -98,7 +98,7 @@ pbc.moduleFunctionD.get('music')['pitch'] = function (py2block, func, args, keyw
             pitchblock = py2block.convert(args[0])
         }
         
-        return [block("esp32_music_pitch", func.lineno, {}, {
+        return [block("esp32_mixgo_music_pitch", func.lineno, {}, {
             'pitch': pitchblock,
             'PIN': pinblock,
         }, {
@@ -115,7 +115,7 @@ pbc.moduleFunctionD.get('music')['stop'] = function (py2block, func, args, keywo
     pbc.pinType = "pins_pwm_pin"
     var argblock = py2block.convert(args[0].args[0].args[0]);
     pbc.pinType = null;
-    return [block("esp32_music_stop", func.lineno, {}, {
+    return [block("esp32_mixgo_music_stop", func.lineno, {}, {
         'PIN': argblock
     }, {
         "inline": "true"
