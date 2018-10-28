@@ -250,7 +250,7 @@ Blockly.Blocks['text_char_at2'] = {
 };
 
 
-Blockly.Blocks['text_char_at'] = {
+Blockly.Blocks['text_char_at3'] = {
     init: function () {
         this.setHelpUrl(Blockly.Msg.LISTS_GET_INDEX_HELPURL);
         this.setColour(Blockly.Blocks.texts.HUE);
@@ -390,7 +390,7 @@ Blockly.Blocks['text_substring2'] = {
   }
 };
 
-Blockly.Blocks['text_substring'] = {
+Blockly.Blocks['text_substring3'] = {
     /**
      * Block for getting sublist.
      * @this Blockly.Block
@@ -429,7 +429,7 @@ init: function() {
   }
 }
 
-Blockly.Blocks['text_compare_to']={
+Blockly.Blocks['text_compareTo']={
 init: function() {
     this.setColour(Blockly.Blocks.texts.HUE);
 	this.appendValueInput("STR1")

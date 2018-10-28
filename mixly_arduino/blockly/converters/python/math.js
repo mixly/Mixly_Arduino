@@ -296,7 +296,7 @@ pbc.globalFunctionD['mixly_mapping'] = function (py2block, func, args, keywords,
     if (args.length !== 5) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("math_map", func.lineno, {}, {
+    return block("base_map", func.lineno, {}, {
         'NUM': py2block.convert(args[0]),
         'fromLow': py2block.convert(args[1]),
         'fromHigh': py2block.convert(args[2]),
