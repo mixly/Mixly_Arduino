@@ -303,7 +303,7 @@ Blockly.Blocks['math_constrain'] = {
   }
 };
 
-Blockly.Blocks.base_map = {
+Blockly.Blocks.math_map = {
   init: function() {
     this.setColour(Blockly.Blocks.math.HUE);
     this.appendValueInput("NUM", Number)
