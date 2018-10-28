@@ -346,7 +346,7 @@ function init() {
             <td class="tabcoyright">
 			  <span id="copyright" style=" font-family: 'Microsoft Yahei Light';font-size:12px;color:#999;">copyright</span>
             </td>
-              <!-- <td class="tabmode">
+               <!--<td class="tabmode">
                     <span class="viewLeft" id="viewMode1" style=" font-family: 'Microsoft Yahei Light';;font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_microbit%5Bjs%5D.html" style=" font-family: 'Microsoft Yahei Light';font-size:12px;">高级视图</a>
                   <button onclick="pyengine.run();">运行</button>
                   <button onclick="pyengine.kill();">取消</button>
@@ -442,7 +442,7 @@ function init() {
                   </shadow>
               </value>
           </block>-->
-          <block type="base_type">
+          <block type="controls_type">
               <value name="DATA">
                   <shadow type="math_number">
                       <field name="NUM">1000</field>
@@ -1283,7 +1283,13 @@ function init() {
                   </shadow>
               </value>
           </block>
-       
+-          <block type="turtle_pos">
+            <value name="TUR">
+                <shadow type="variables_get">
+                  <field name="VAR">tina</field>
+                </shadow>
+              </value>
+          </block>
           <block type="turtle_clear">
               <value name="TUR">
                 <shadow type="variables_get">
@@ -1317,7 +1323,13 @@ function init() {
                   </shadow>
               </value>
           </block>
-          
+          <block type="turtle_shape">
+              <value name="TUR">
+                <shadow type="variables_get">
+                  <field name="VAR">tina</field>
+                </shadow>
+              </value>
+          </block>
           <block type="turtle_speed">
               <value name="TUR">
                 <shadow type="variables_get">
@@ -1361,7 +1373,18 @@ function init() {
                 </shadow>
               </value>
           </block>
-<!--      <block type="turtle_bgcolor"></block>-->
+          <block type="turtle_write">
+            <value name="TUR">
+                <shadow type="variables_get">
+                  <field name="VAR">tina</field>
+                </shadow>
+              </value>
+            <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly!</field>
+            </value>
+          </block>
+       
           <block type="turtle_pencolor">
             <value name="TUR">
                 <shadow type="variables_get">
@@ -1376,6 +1399,13 @@ function init() {
                 </shadow>
               </value>
           </block>
+          <!--<block type="turtle_bgcolor_hex">
+            <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">FF0000</field>
+                  </shadow>
+              </value>
+          </block>-->
           <block type="turtle_pencolor_hex">
             <value name="TUR">
                 <shadow type="variables_get">
