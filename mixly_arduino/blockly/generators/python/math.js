@@ -180,7 +180,7 @@ Blockly.Python.math_random = function() {
 };
 
 
-Blockly.Python.base_map = function() {
+Blockly.Python.math_map = function() {
   var value_num = Blockly.Python.valueToCode(this, 'NUM', Blockly.Python.ORDER_NONE);
   var value_fl = Blockly.Python.valueToCode(this, 'fromLow', Blockly.Python.ORDER_ATOMIC);
   var value_fh = Blockly.Python.valueToCode(this, 'fromHigh', Blockly.Python.ORDER_ATOMIC);
