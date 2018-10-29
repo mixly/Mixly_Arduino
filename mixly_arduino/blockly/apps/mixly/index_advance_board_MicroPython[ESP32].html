@@ -366,7 +366,7 @@
             <td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')"><span id="span_arduino">Code</span></td>
             <td class="tabmin">&nbsp;</td>
-            <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
+            <td style="vertical-align: center;text-align:center;display:none" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
             <td class="tabcoyright">
               <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
             </td>
@@ -1909,6 +1909,47 @@
                       <field name="TEXT">XBCRobot</field>
                   </shadow>
               </value>
+          </block>
+          <block type="procedures_defnoreturn">
+            <mutation>
+              <arg name="topic"></arg>
+              <arg name="msg"></arg>
+            </mutation>
+            <field name="NAME">sub_cb</field>
+            <statement name="STACK">
+              <block type="controls_if">
+                <value name="IF0">
+                  <block type="logic_compare">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get">
+                        <field name="VAR">msg</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text_to_number">
+                        <field name="TOWHAT">b</field>
+                        <value name="VAR">
+                          <shadow type="text">
+                            <field name="TEXT">on</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="actuator_led_bright" id="KN$mCj5P/-)*d:;)*6O[">
+                    <field name="bright">on</field>
+                    <value name="led">
+                      <shadow type="number" id="i]`}m{^_wzu+:iC?%Eu4">
+                        <field name="op">1</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </statement>
           </block>
           <block type="iot_onenet_publish">
               <value name="VAR">

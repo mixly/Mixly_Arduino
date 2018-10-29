@@ -93,7 +93,7 @@ Blockly.Blocks['iot_onenet_publish'] = {
         this.setColour(Blockly.Blocks.iot.HUE);
         this.appendValueInput('VAR')
             .setCheck("var")
-            .appendField("OneNET"+Blockly.Msg.DISPLAY_IMAGE_LET2)
+            .appendField("OneNET")
             .setAlign(Blockly.ALIGN_RIGHT)
         this.appendDummyInput()
             .appendField(new Blockly.FieldLabel(Blockly.MIXLY_ESP32_PUBLISH_ONENET), 'TIP')
