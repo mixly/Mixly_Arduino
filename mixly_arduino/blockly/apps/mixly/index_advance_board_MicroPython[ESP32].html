@@ -618,7 +618,7 @@
           </shadow>
         </value>
         <statement name="DO">
-                  <shadow type="IO_print_inline">
+                  <shadow type="system_print_inline">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
@@ -813,7 +813,14 @@
             </shadow>
           </value>
         </block>
-        <block type="text_to_number">
+        <block type="number_to_text">
+          <value name="VAR">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
+		<block type="text_to_number">
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">123</field>
@@ -907,13 +914,7 @@
             </shadow>
           </value>
         </block>
-        <block type="number_to_text">
-          <value name="VAR">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
+
         <block type="text_length">
           <value name="VAR">
             <shadow type="text">
