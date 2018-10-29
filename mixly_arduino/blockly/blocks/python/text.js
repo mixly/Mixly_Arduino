@@ -407,7 +407,7 @@ Blockly.Blocks['text_substring'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.TEXT_CHARAT2);
         this.setInputsInline(true);
-        this.setOutput(true, 'List');
+        this.setOutput(true, ['List',String]);
         this.setTooltip(Blockly.Msg._GET_TEXT_SUBLIST_TOOLTIP);
     }
 }

@@ -7,7 +7,7 @@ goog.require('Blockly.Python');
 
 
 
-Blockly.Python['lists_getSublist3'] = function(block) {
+Blockly.Python['lists_get_sublist'] = function(block) {
   // Get sublist.
   var list = Blockly.Python.valueToCode(block, 'LIST',
       Blockly.Python.ORDER_MEMBER) || '[]';
@@ -19,7 +19,7 @@ Blockly.Python['lists_getSublist3'] = function(block) {
 
 
 
-Blockly.Python.lists_create_with2 = function() {
+Blockly.Python.lists_create_with = function() {
   // Create a list with any number of elements of any type.
   var dropdown_type = this.getFieldValue('TYPE');
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
@@ -38,7 +38,7 @@ Blockly.Python.lists_create_with2 = function() {
   var code = varName+' = '+ '[' + code.join(', ') + ']\n';
   return code;
 };
-Blockly.Python.lists_create_with_text2 = function() {
+Blockly.Python.lists_create_with_text = function() {
   var dropdown_type = this.getFieldValue('TYPE');
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
     Blockly.Variables.NAME_TYPE);
@@ -49,7 +49,7 @@ Blockly.Python.lists_create_with_text2 = function() {
   return code;
 };
 
-Blockly.Python.lists_getIndex3 = function() {
+Blockly.Python.lists_get_index = function() {
   // Indexing into a list is the same as indexing into a string.
   var list = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_ADDITIVE) || 'mylist';
   var argument0 = Blockly.Python.valueToCode(this, 'AT', Blockly.Python.ORDER_ADDITIVE) || 0;
@@ -58,7 +58,7 @@ Blockly.Python.lists_getIndex3 = function() {
 };
 
 
-Blockly.Python.lists_setIndex3 = function() {
+Blockly.Python.lists_set_index = function() {
   // Set element at index.
   var varName = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_ADDITIVE) || 'mylist';
   var argument0 = Blockly.Python.valueToCode(this, 'AT',
@@ -84,7 +84,7 @@ Blockly.Python.lists_get_random_item = function() {
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.lists_insert_value2 = function(){
+Blockly.Python.lists_insert_value = function(){
   var varName = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_MEMBER) || 'mylist';
   var at = Blockly.Python.valueToCode(this, 'AT', Blockly.Python.ORDER_ADDITIVE) || '0';
   var VALUE = Blockly.Python.valueToCode(this, 'VALUE', Blockly.Python.ORDER_ASSIGNMENT) || '0';
@@ -115,7 +115,7 @@ Blockly.Python.lists_find = function(){
   return [code, Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.lists_remove_at2 = function(){
+Blockly.Python.lists_remove_at = function(){
   var varName = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_MEMBER) || 'mylist';
   var argument = Blockly.Python.valueToCode(this, 'DATA', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var op = this.getFieldValue('OP');

@@ -649,7 +649,7 @@ PythonToBlocks.prototype.Assign = function(node)
                     "inline": "true"
                 });
             }else{
-                return block("lists_setIndex3", targets.lineno, {}, {
+                return block("lists_set_index", targets.lineno, {}, {
                     "LIST": this.convert(targets[0].value),
                     "AT": this.convert(targets[0].slice.value),
                     "TO": this.convert(value)
@@ -1887,7 +1887,7 @@ PythonToBlocks.prototype.Subscript = function(node) {
                 "DICT": this.convert(value)
             });
         }else {
-            return block("lists_getIndex3", node.lineno, {}, {
+            return block("lists_get_index", node.lineno, {}, {
                 "AT": this.convert(slice.value),
                 "LIST": this.convert(value)
             });
@@ -1909,7 +1909,7 @@ PythonToBlocks.prototype.Subscript = function(node) {
         }else{
             at2block = block("math_indexer_number", node.lineno, {"NUM": ''});
         }
-        return block("lists_getSublist3", node.lineno, {}, {
+        return block("lists_get_sublist", node.lineno, {}, {
             "AT1": at1block,
             "AT2": at2block,
             "LIST": this.convert(value),

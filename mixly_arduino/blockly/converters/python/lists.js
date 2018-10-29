@@ -7,7 +7,7 @@ pbc.assignD.get('List')['check_assign'] = function (py2block, node, targets, val
 }
 
 pbc.assignD.get('List')['create_block'] = function (py2block, node, targets, value) {
-    return block("lists_create_with2", node.lineno, {
+    return block("lists_create_with", node.lineno, {
             'VAR': py2block.Name_str(targets[0])
         },
         py2block.convertElements("ADD", value.elts), {
@@ -56,7 +56,7 @@ pbc.objectFunctionD.get('insert')['List'] = function(py2block, func, args, keywo
     var objblock = py2block.convert(func.value);
     var atblock = py2block.convert(args[0]);
     var valblock = py2block.convert(args[1]);
-    return [block("lists_insert_value2", func.lineno, {}, {
+    return [block("lists_insert_value", func.lineno, {}, {
         "LIST": objblock,
         "AT": atblock,
         "VALUE": valblock,
@@ -95,7 +95,7 @@ pbc.objectFunctionD.get('remove')['List'] = function(py2block, func, args, keywo
     }
     var objblock = py2block.convert(func.value);
     var argblock = py2block.convert(args[0]);
-    return [block("lists_remove_at2", func.lineno, {
+    return [block("lists_remove_at", func.lineno, {
         "OP":"remove"
     }, {
         "LIST": objblock,

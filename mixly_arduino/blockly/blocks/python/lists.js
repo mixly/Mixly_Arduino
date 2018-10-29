@@ -8,7 +8,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks.lists.HUE = 260//'#70b234'//260;
 
 
-Blockly.Blocks.lists_getIndex3 = {
+Blockly.Blocks.lists_get_index = {
     init: function () {
         this.setHelpUrl(Blockly.Msg.LISTS_GET_INDEX_HELPURL);
         this.setColour(Blockly.Blocks.lists.HUE);
@@ -25,7 +25,7 @@ Blockly.Blocks.lists_getIndex3 = {
 }
 
 
-Blockly.Blocks['lists_getSublist3'] = {
+Blockly.Blocks['lists_get_sublist'] = {
     /**
      * Block for getting sublist.
      * @this Blockly.Block
@@ -48,7 +48,7 @@ Blockly.Blocks['lists_getSublist3'] = {
 }
 
 
-Blockly.Blocks['lists_create_with2'] = {
+Blockly.Blocks['lists_create_with'] = {
   /**
    * Block for creating a list with any number of elements of any type.
    * @this Blockly.Block
@@ -189,7 +189,7 @@ Blockly.Blocks['lists_create_with2'] = {
 };
 
 
-Blockly.Blocks['lists_create_with_text2'] = {
+Blockly.Blocks['lists_create_with_text'] = {
   init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
   this.appendDummyInput("")
@@ -252,7 +252,7 @@ Blockly.Blocks['lists_create_with_item'] = {
 };
 
 
-Blockly.Blocks.lists_setIndex3 = {
+Blockly.Blocks.lists_set_index = {
     init: function() {
         this.setColour(Blockly.Blocks.lists.HUE);
         this.appendValueInput('LIST');
@@ -314,7 +314,7 @@ Blockly.Blocks['lists_get_random_item'] = {
   }
 };
 
-Blockly.Blocks.lists_insert_value2 = {
+Blockly.Blocks.lists_insert_value = {
   init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendValueInput('LIST');
@@ -360,7 +360,7 @@ Blockly.Blocks['lists_clear'] = {
 };
 
 
-Blockly.Blocks.lists_remove_at2 = {
+Blockly.Blocks.lists_remove_at = {
     init: function() {
         this.setColour(Blockly.Blocks.lists.HUE);
         this['TYPE'] =
