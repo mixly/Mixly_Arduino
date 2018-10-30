@@ -38,7 +38,7 @@
   <script src="../../blocks/esp32/iot.js"></script>
   <script src="../../blocks/esp32/sensor.js"></script>
   <script src="../../blocks/esp32/network.js"></script>
-  <script src="../../blocks/esp32/storage.js"></script>
+  <script src="../../blocks/python/storage.js"></script>
   <script src="../../blocks/esp32/actuator.js"></script>
   <script src="../../blocks/esp32/display.js"></script>
   <script src="../../blocks/python/procedures.js"></script>
@@ -60,7 +60,7 @@
   <script src="../../generators/esp32/iot.js"></script>
   <script src="../../generators/esp32/communicate.js"></script>
   <script src="../../generators/esp32/sensor.js"></script>
-  <script src="../../generators/esp32/storage.js"></script>
+  <script src="../../generators/python/storage.js"></script>
   <script src="../../generators/esp32/actuator.js"></script>
   <script src="../../generators/esp32/display.js"></script>
   <script src="../../generators/esp32/network.js"></script>
@@ -91,6 +91,7 @@
   <script src="../../converters/python/lists.js" type="application/javascript"></script>
   <script src="../../converters/python/tuple.js" type="application/javascript"></script>
   <script src="../../converters/python/dicts.js" type="application/javascript"></script>
+   <script src="../../converters/python/storage.js" type="application/javascript"></script>
   <script src="../../converters/python/set.js" type="application/javascript"></script>
   <script src="../../converters/esp32/control.js" type="application/javascript"></script>
   <script src="./js/python_to_blockly.js" type="application/javascript"></script>
@@ -1660,48 +1661,6 @@
             </shadow>
           </value>
         </block>
-        <block type="communicate_ow_scan">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">ow</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_ow_read">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">ow</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_ow_write">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">ow</field>
-            </shadow>
-          </value>
-          <value name="byte">
-          </value>
-        </block>
-        <block type="communicate_ow_select">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">ow</field>
-            </shadow>
-          </value>
-          <value name="byte">
-            <shadow type="text">
-              <field name="TEXT">12345</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_ow_reset">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">ow</field>
-            </shadow>
-          </value>
-        </block>
        </category>
       <category id="catEthernet" colour="0">
         <block type="network_init">
@@ -2139,6 +2098,80 @@
               </value>
           </block>
       </category>
+      <category id="catStorage" colour="0">
+        <block type="storage_fileopen">
+          <value name="FILENAME">
+            <shadow type="text">
+              <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_file_write">
+          <value name="data">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
+          </value>
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_get_contents">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+          <value name="SIZE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_can_write_ornot">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_get_filename">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_close_file">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_list_all_files"> </block>
+        <block type="storage_delete_file">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_get_file_size">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+        </block>
+      </category>
       <category id="catSensor" colour="40">
         <block type="sensor_mixgo_button_is_pressed">
           <value name="btn">
@@ -2299,6 +2332,48 @@
                 <value name="PIN">
                     <shadow type="pins_digital_pin"></shadow>
                 </value>
+        </block>
+        <block type="sensor_ow_scan">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">ow</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_ow_read">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">ow</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_ow_write">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">ow</field>
+            </shadow>
+          </value>
+          <value name="byte">
+          </value>
+        </block>
+        <block type="sensor_ow_select">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">ow</field>
+            </shadow>
+          </value>
+          <value name="byte">
+            <shadow type="text">
+              <field name="TEXT">12345</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_ow_reset">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">ow</field>
+            </shadow>
+          </value>
         </block>
       </category>
       <category id="catActuator" colour="100">

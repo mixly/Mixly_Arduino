@@ -395,3 +395,46 @@ Blockly.Python.sensor_sht=function(){
     var code = v + '.' + key;
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.sensor_ow_scan = function () {
+    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
+    Blockly.Python.definitions_['import_onewire'] = "import onewire";
+    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
+    var code = ""+name+".scan()";
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.sensor_ow_reset = function () {
+    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
+    Blockly.Python.definitions_['import_onewire'] = "import onewire";
+    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
+    var code = ""+name+".reset()";
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.sensor_ow_read = function () {
+    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
+    Blockly.Python.definitions_['import_onewire'] = "import onewire";
+    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
+    var code = ""+name+".readbyte()";
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.sensor_ow_write = function () {
+    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
+    Blockly.Python.definitions_['import_onewire'] = "import onewire";
+    var varName =Blockly.Python.valueToCode(this, 'byte',Blockly.Python.ORDER_ATOMIC);
+    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
+    var op=this.getFieldValue('op');
+    var code = ""+name+"."+op+"("+varName+")";
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.sensor_ow_select = function () {
+    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
+    Blockly.Python.definitions_['import_onewire'] = "import onewire";
+    var varName =Blockly.Python.valueToCode(this, 'byte',Blockly.Python.ORDER_ATOMIC);
+    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
+    var code = ""+name+".select_rom(" + varName + ".encode('utf-8'))";
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};

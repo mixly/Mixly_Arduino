@@ -171,6 +171,24 @@ function strTitle(mode){
 pbc.objectFunctionD.get('title')['Str'] = strTitle('title');
 pbc.objectFunctionD.get('lower')['Str'] = strTitle('lower');
 
+function strencode(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 1) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var textblock = py2block.convert(func.value);
+        return block("text_to_number", func.lineno, {
+            'TOWHAT': mode,
+        }, {
+            "VAR": textblock,
+        }, {
+            "inline": "true"
+        });
+    }
+    return converter;
+}
+pbc.objectFunctionD.get('encode')['Str'] = strencode('b');
+
 
 function textStrip(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {

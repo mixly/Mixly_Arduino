@@ -170,7 +170,7 @@ pbc.assignD.get('SPI')['create_block'] = function(py2block, node, targets, value
     }
 }
     if (polarityblock != null && phaseblock != null && freqblock != null && sckblock != null && mosiblock != null && misoblock != null) {
-        return [block("communicate_spi_init", node.lineno, {}, {
+        return block("communicate_spi_init", node.lineno, {}, {
             "VAR":spiblock,
             "freq": freqblock,
             "polarity": polarityblock,
@@ -180,7 +180,7 @@ pbc.assignD.get('SPI')['create_block'] = function(py2block, node, targets, value
             "miso": misoblock,
         }, {
             "inline": "true"
-        })];
+        });
     }
 }
 
@@ -279,21 +279,21 @@ pbc.objectFunctionD.get('readinto')['SPI'] = function (py2block, func, args, key
 //     })];
 // }
 
-// pbc.objectFunctionD.get('write_readinto')['SPI'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-//     if (args.length !== 2) {
-//         throw new Error("Incorrect number of arguments");
-//     }
-//     var objblock = py2block.convert(func.value);
-//     var byteblock = py2block.convert(args[0]);
-//      var bufblock = py2block.convert(args[1]);
-//     return [block("communicate_spi_write_readinto", func.lineno, {}, {
-//         "VAR": objblock,
-//         "data": byteblock,
-//         "val": bufblock
-//     }, {
-//         "inline": "true"
-//     })];
-// }
+pbc.objectFunctionD.get('write_readinto')['SPI'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var byteblock = py2block.convert(args[0]);
+    var bufblock = py2block.convert(args[1]);
+    return [block("communicate_spi_write_readinto", func.lineno, {}, {
+        "VAR": objblock,
+        "data": byteblock,
+        "val": bufblock
+    }, {
+        "inline": "true"
+    })];
+}
 
 pbc.assignD.get('OW')['check_assign'] = function(py2block, node, targets, value) {
     if(value._astname != "Call" || value.func._astname != "Attribute" || value.func.value._astname != "Name"){
@@ -328,7 +328,7 @@ pbc.objectFunctionD.get('scan')['OW'] = function (py2block, func, args, keywords
         throw new Error("Incorrect number of arguments");
     }
     var objblock = py2block.convert(func.value);
-    return [block("communicate_ow_scan", func.lineno, {}, {
+    return [block("sensor_ow_scan", func.lineno, {}, {
         "VAR": objblock,
     }, {
         "inline": "true"
@@ -340,7 +340,7 @@ pbc.objectFunctionD.get('readbyte')['OW'] = function (py2block, func, args, keyw
         throw new Error("Incorrect number of arguments");
     }
     var objblock = py2block.convert(func.value);
-    return [block("communicate_ow_read", func.lineno, {}, {
+    return [block("sensor_ow_read", func.lineno, {}, {
         "VAR": objblock,
     }, {
         "inline": "true"
@@ -352,7 +352,7 @@ pbc.objectFunctionD.get('reset')['OW'] = function (py2block, func, args, keyword
         throw new Error("Incorrect number of arguments");
     }
     var objblock = py2block.convert(func.value);
-    return [block("communicate_ow_reset", func.lineno, {}, {
+    return [block("sensor_ow_reset", func.lineno, {}, {
         "VAR": objblock,
     }, {
         "inline": "true"
@@ -365,7 +365,7 @@ pbc.objectFunctionD.get('select_rom')['OW'] = function (py2block, func, args, ke
     }
     var objblock = py2block.convert(func.value);
     var byteblock = py2block.convert(args[0].func.value);
-    return [block("communicate_ow_select", func.lineno, {}, {
+    return [block("sensor_ow_select", func.lineno, {}, {
         "VAR": objblock,
         "byte": byteblock
     }, {
