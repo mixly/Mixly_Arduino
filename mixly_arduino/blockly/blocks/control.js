@@ -18,7 +18,7 @@ Blockly.Blocks.base_setup = {
   }
 };
 
-Blockly.Blocks.base_delay = {
+Blockly.Blocks.controls_delay = {
   init: function() {
 	var UNIT =
         [[Blockly.MIXLY_DELAY_MS, 'delay'],
@@ -148,7 +148,7 @@ Blockly.Blocks.controls_flow_statements = {
 Blockly.Blocks.controls_flow_statements.OPERATORS =
     [[Blockly.LANG_CONTROLS_FLOW_STATEMENTS_OPERATOR_BREAK, 'BREAK'],
      [Blockly.LANG_CONTROLS_FLOW_STATEMENTS_OPERATOR_CONTINUE, 'CONTINUE']];
-	 
+
 Blockly.Blocks.controls_millis = {
   init: function() {
 	var UNIT =

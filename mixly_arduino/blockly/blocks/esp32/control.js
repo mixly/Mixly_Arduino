@@ -18,7 +18,7 @@ Blockly.Blocks.base_setup = {
   }
 };
 
-Blockly.Blocks.base_delay = {
+Blockly.Blocks.controls_delay = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()

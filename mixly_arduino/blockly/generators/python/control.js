@@ -143,7 +143,7 @@ Blockly.Python.controls_flow_statements = function (a) {
 };
 
 //ok
-Blockly.Python.base_delay = function () {
+Blockly.Python.controls_delay = function () {
     var delay_time = Blockly.Python.valueToCode(this, 'DELAY_TIME', Blockly.Python.ORDER_ATOMIC) || '1000'
     var code = 'sleep(' + delay_time + ')\n';
     return code;

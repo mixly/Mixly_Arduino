@@ -8,7 +8,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks.system.HUE = 120//'#EB8045';
 
 
-Blockly.Blocks.base_delay = {
+Blockly.Blocks.controls_delay = {
   init: function() {
     this.setColour(Blockly.Blocks.system.HUE);
     this.appendDummyInput()

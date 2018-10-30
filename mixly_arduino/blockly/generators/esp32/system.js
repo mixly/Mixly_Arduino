@@ -89,7 +89,7 @@ Blockly.Python.controls_uname = function () {
     Blockly.Python.definitions_['import_os'] = 'import os';
     return 'os.uname()';
 };
-Blockly.Python.base_delay = function () {
+Blockly.Python.controls_delay = function () {
     // Blockly.Python.definitions_.import_time = "import time";
     Blockly.Python.definitions_['import_time'] = 'import time';
     var delay_time = Blockly.Python.valueToCode(this, 'DELAY_TIME', Blockly.Python.ORDER_ATOMIC) || '1000'

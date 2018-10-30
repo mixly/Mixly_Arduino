@@ -6,7 +6,7 @@ pbc.moduleFunctionD.get('time')['sleep_ms'] = function(py2block, func, args, key
     }
 
     var time=py2block.convert(args[0]);
-    return [block("base_delay", func.lineno, {'Time':'ms'}, {
+    return [block("controls_delay", func.lineno, {'Time':'ms'}, {
     "DELAY_TIME":time
     }, {
         "inline": "true"
@@ -19,7 +19,7 @@ pbc.moduleFunctionD.get('time')['sleep'] = function(py2block, func, args, keywor
     }
 
     var time=py2block.convert(args[0]);
-    return [block("base_delay", func.lineno, {'Time':'s'}, {
+    return [block("controls_delay", func.lineno, {'Time':'s'}, {
     "DELAY_TIME":time
     }, {
         "inline": "true"
@@ -32,7 +32,7 @@ pbc.moduleFunctionD.get('time')['sleep_us'] = function(py2block, func, args, key
     }
 
     var time=py2block.convert(args[0]);
-    return [block("base_delay", func.lineno, {'Time':'us'}, {
+    return [block("controls_delay", func.lineno, {'Time':'us'}, {
     "DELAY_TIME":time
     }, {
         "inline": "true"
