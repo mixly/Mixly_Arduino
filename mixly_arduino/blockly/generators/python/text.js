@@ -12,6 +12,13 @@ Blockly.Python.text = function() {
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.text_textarea = function() {
+  // Text value.
+    //var code = 'String('+Blockly.Python.quote_(this.getFieldValue('TEXT'))+')';
+  var code = "'''" + (this.getFieldValue('VALUE')) + "'''";
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python.text_char = function() {
   var code = '\''+this.getFieldValue('TEXT')+'\'';
   return [code, Blockly.Python.ORDER_ATOMIC];
