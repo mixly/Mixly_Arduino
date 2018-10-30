@@ -1765,14 +1765,14 @@
         <block type="network_get_wifi">
           <value name="VAR">
             <shadow type="variables_get">
-              <field name="VAR">ap</field>
+              <field name="VAR">wlan</field>
             </shadow>
           </value>
         </block>
         <block type="network_ap_connect">
           <value name="VAR">
             <shadow type="variables_get">
-              <field name="VAR">ap</field>
+              <field name="VAR">wlan</field>
             </shadow>
           </value>
           <value name="essid">
@@ -1783,13 +1783,6 @@
           <value name="channel">
             <shadow type="math_number">
               <field name="NUM">1</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_server">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">wlan</field>
             </shadow>
           </value>
         </block>
