@@ -214,6 +214,36 @@ Blockly.Blocks['tuple_create_with_text2'] = {
   // }
 }
 
+Blockly.Blocks['tuple_create_with_text_return'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.tuple.HUE);
+  this.appendDummyInput("")
+        .appendField('(')
+        .appendField(new Blockly.FieldTextInput('0,0,0'), 'TEXT')
+        .appendField(')');
+        // .appendField(this.newQuote_(false))
+  this.setOutput(true);
+  this.setInputsInline(true);
+  this.setTooltip(Blockly.MIXPY_TOOLTIP_TUPLE_CREATE_WITH_TEXT);
+  },
+  getVars: function() {
+    return [this.getFieldValue('VAR')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
+      this.setTitleValue(newName, 'VAR');
+    }
+  }
+  // newQuote_: function(open) {
+  //   if (open == this.RTL) {
+  //     var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAQAAAAqJXdxAAAAqUlEQVQI1z3KvUpCcRiA8ef9E4JNHhI0aFEacm1o0BsI0Slx8wa8gLauoDnoBhq7DcfWhggONDmJJgqCPA7neJ7p934EOOKOnM8Q7PDElo/4x4lFb2DmuUjcUzS3URnGib9qaPNbuXvBO3sGPHJDRG6fGVdMSeWDP2q99FQdFrz26Gu5Tq7dFMzUvbXy8KXeAj57cOklgA+u1B5AoslLtGIHQMaCVnwDnADZIFIrXsoXrgAAAABJRU5ErkJggg==';
+  //   } else {
+  //     var file = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAQAAAAqJXdxAAAAn0lEQVQI1z3OMa5BURSF4f/cQhAKjUQhuQmFNwGJEUi0RKN5rU7FHKhpjEH3TEMtkdBSCY1EIv8r7nFX9e29V7EBAOvu7RPjwmWGH/VuF8CyN9/OAdvqIXYLvtRaNjx9mMTDyo+NjAN1HNcl9ZQ5oQMM3dgDUqDo1l8DzvwmtZN7mnD+PkmLa+4mhrxVA9fRowBWmVBhFy5gYEjKMfz9AylsaRRgGzvZAAAAAElFTkSuQmCC';
+  //   }
+  //   return new Blockly.FieldImage(file, 12, 12, '"');
+  // }
+}
+
 Blockly.Blocks.tuple_getIndex = {
   init: function() {
     this.setColour(Blockly.Blocks.tuple.HUE);

@@ -42,6 +42,12 @@ Blockly.Python.tuple_create_with_text2 = function() {
   return code;
 };
 
+Blockly.Python.tuple_create_with_text_return = function() {
+  var text=this.getFieldValue('TEXT');
+  var code = '(' + text + ')';
+  return [code,Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python.tuple_getIndex = function() {
   // Indexing into a list is the same as indexing into a string.
   var varName = Blockly.Python.valueToCode(this, 'TUP', Blockly.Python.ORDER_ASSIGNMENT) || '0';
