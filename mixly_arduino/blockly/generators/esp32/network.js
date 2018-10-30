@@ -7,7 +7,7 @@ Blockly.Python.network_init= function() {
     Blockly.Python.definitions_['import_network'] = "import network";
     var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var mode=this.getFieldValue('mode');
-    return ""+varName+"=network.WLAN(network."+mode+"_IF);\n";
+    return ""+varName+" = network.WLAN(network."+mode+"_IF);\n";
 }
 
 // Blockly.Python.network_connect= function() {
@@ -76,11 +76,11 @@ Blockly.Python.network_get_wifi= function() {
 
 Blockly.Python.network_ap_connect= function() {
     Blockly.Python.definitions_['import_network'] = "import network";
-    Blockly.Python.setups_['class_wlan'] ='ap = network.WLAN(network.AP_IF)\n'+'ap.active(True)\n';
+    // Blockly.Python.setups_['class_wlan'] ='ap = network.WLAN(network.AP_IF)\n'+'ap.active(True)\n';
     var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var essid = Blockly.Python.valueToCode(this, 'essid', Blockly.Python.ORDER_ATOMIC);
     var channel = Blockly.Python.valueToCode(this, 'channel', Blockly.Python.ORDER_ATOMIC);
-    return ""+varName+".config(essid="+essid+",channel="+channel+")\n";
+    return ""+varName+".config(essid = "+essid+", channel = "+channel+")\n";
 }
 
 Blockly.Python.network_scan= function() {
@@ -125,3 +125,67 @@ Blockly.Python.network_server= function() {
     +'time.sleep(1)\n'
     +'DATA=listenData()\n'   
 };
+
+Blockly.Python.network_socket_init= function() {
+    Blockly.Python.definitions_['import_network'] = "import network";
+    Blockly.Python.definitions_['import_socket'] = "import socket";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+    var mode=this.getFieldValue('mode');
+    if (mode=='UDP'){
+      mode = 'socket.AF_INET, socket.SOCK_DGRAM'
+    }
+    else if (mode=='TCP'){
+      mode = 'socket.AF_INET, socket.SOCK_STREAM'
+    }
+    return ""+varName+" = socket.socket("+mode+")\n";
+}
+
+Blockly.Python.network_socket_bind= function() {
+    Blockly.Python.definitions_['import_network'] = "import network";
+    Blockly.Python.definitions_['import_socket'] = "import socket";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+    var address = Blockly.Python.valueToCode(this, 'address', Blockly.Python.ORDER_ATOMIC);
+    return ""+varName+".bind("+address+")\n";
+}
+
+Blockly.Python.network_socket_listen= function() {
+    Blockly.Python.definitions_['import_network'] = "import network";
+    Blockly.Python.definitions_['import_socket'] = "import socket";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+    var queue = Blockly.Python.valueToCode(this, 'queue', Blockly.Python.ORDER_ATOMIC);
+    return ""+varName+".listen("+queue+")\n";
+}
+
+Blockly.Python.network_socket_accept= function() {
+    Blockly.Python.definitions_['import_network'] = "import network";
+    Blockly.Python.definitions_['import_socket'] = "import socket";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+    var code = ""+varName+".accept()";
+    return [code, Blockly.Python.ORDER_ASSIGNMENT];
+}
+
+Blockly.Python.network_socket_receive= function() {
+    Blockly.Python.definitions_['import_network'] = "import network";
+    Blockly.Python.definitions_['import_socket'] = "import socket";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+    var size = Blockly.Python.valueToCode(this, 'size', Blockly.Python.ORDER_ATOMIC);
+    var code =  ""+varName+".recv("+size+")";
+    return [code, Blockly.Python.ORDER_ASSIGNMENT];
+}
+
+Blockly.Python.network_socket_send= function() {
+    Blockly.Python.definitions_['import_network'] = "import network";
+    Blockly.Python.definitions_['import_socket'] = "import socket";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+    var content = Blockly.Python.valueToCode(this, 'content', Blockly.Python.ORDER_ATOMIC);
+    var code =  ""+varName+".send("+content+")";
+    return code;
+}
+
+Blockly.Python.network_socket_close= function() {
+    Blockly.Python.definitions_['import_network'] = "import network";
+    Blockly.Python.definitions_['import_socket'] = "import socket";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+    var code = ""+varName+".close()";
+    return code;
+}

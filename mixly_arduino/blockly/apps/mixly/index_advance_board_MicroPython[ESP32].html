@@ -366,7 +366,7 @@
             <td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')"><span id="span_arduino">Code</span></td>
             <td class="tabmin">&nbsp;</td>
-            <td style="vertical-align: center;text-align:center;display:none" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
+            <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
             <td class="tabcoyright">
               <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
             </td>
@@ -1793,7 +1793,7 @@
             </shadow>
           </value>
         </block>
-        <block type="controls_if">
+<!--         <block type="controls_if">
           <value name="IF0">
             <block type="logic_negate">
               <value name="BOOL">
@@ -1857,10 +1857,182 @@
               </next>
             </block>
         </statement>
-      </block>
+      </block> -->
+      <block type="procedures_defreturn">
+          <field name="NAME">connect_wifi</field>
+          <statement name="STACK">
+            <block type="variables_global">
+              <value name="VAR">
+                <block type="variables_get">
+                  <field name="VAR">wlan</field>
+                </block>
+              </value>
+              <next>
+                <block type="network_init">
+                  <field name="mode">AP</field>
+                  <value name="VAR">
+                    <shadow type="variables_get">
+                      <field name="VAR">wlan</field>
+                    </shadow>
+                  </value>
+                  <next>
+                    <block type="network_open">
+                      <field name="op">True</field>
+                      <value name="VAR">
+                        <shadow type="variables_get">
+                          <field name="VAR">wlan</field>
+                        </shadow>
+                      </value>
+                      <next>
+                        <block type="network_ap_connect">
+                          <value name="VAR">
+                            <shadow type="variables_get">
+                              <field name="VAR">wlan</field>
+                            </shadow>
+                          </value>
+                          <value name="essid">
+                            <shadow type="text">
+                              <field name="TEXT">SmallCabbage</field>
+                            </shadow>
+                          </value>
+                          <value name="channel">
+                            <shadow type="math_number">
+                              <field name="NUM">1</field>
+                            </shadow>
+                          </value>
+                          <next>
+                            <block type="controls_whileUntil">
+                              <field name="MODE">WHILE</field>
+                              <value name="BOOL">
+                                <shadow type="logic_boolean">
+                                  <field name="BOOL">TRUE</field>
+                                </shadow>
+                                <block type="logic_compare">
+                                  <field name="OP">EQ</field>
+                                  <value name="A">
+                                    <block type="network_get_connect">
+                                      <field name="mode">0</field>
+                                      <value name="VAR">
+                                        <shadow type="variables_get">
+                                          <field name="VAR">wlan</field>
+                                        </shadow>
+                                      </value>
+                                    </block>
+                                  </value>
+                                  <value name="B">
+                                    <block type="text">
+                                      <field name="TEXT">0.0.0.0</field>
+                                    </block>
+                                  </value>
+                                </block>
+                              </value>
+                              <statement name="DO">
+                                <block type="base_delay">
+                                  <field name="Time">ms</field>
+                                  <value name="DELAY_TIME">
+                                    <shadow type="math_number">
+                                      <field name="NUM">1000</field>
+                                    </shadow>
+                                  </value>
+                                </block>
+                              </statement>
+                            </block>
+                          </next>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </statement>
+          <value name="RETURN">
+            <block type="logic_boolean">
+              <field name="BOOL">TRUE</field>
+            </block>
+          </value>
+        </block>
+        <block type="network_socket_init">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">s</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="network_socket_bind">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">s</field>
+            </shadow>
+          </value>
+          <value name="address">
+           <block type="tuple_create_with_noreturn" inline="true">
+              <mutation items="2"></mutation>
+              <value name="ADD0">
+                <block type="text">
+                  <field name="TEXT">0.0.0.0</field>
+                </block>
+              </value>
+              <value name="ADD1">
+                <block type="math_number">
+                  <field name="NUM">80</field>
+                </block>
+              </value>
+            </block>
+          </value>
+        </block>
+        <block type="network_socket_listen">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">s</field>
+            </shadow>
+          </value>
+          <value name="queue">
+            <shadow type="math_number">
+              <field name="NUM">5</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="network_socket_accept">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">s</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="network_socket_receive">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">conn</field>
+            </shadow>
+          </value>
+          <value name="size">
+            <shadow type="math_number">
+              <field name="NUM">1024</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="network_socket_send">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">conn</field>
+            </shadow>
+          </value>
+          <value name="content">
+            <shadow type="variables_get">
+              <field name="VAR">response</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="network_socket_close">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">conn</field>
+            </shadow>
+          </value>
+        </block>
       </category>
       <category id="catIot" colour="225">
-
         <block type="iot_wifi_connect">
             <value name="WIFINAME">
                   <shadow type="text">

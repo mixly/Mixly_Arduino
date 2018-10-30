@@ -172,3 +172,102 @@ Blockly.Blocks['network_server'] = {
         this.setInputsInline(true);
     }
 };
+
+Blockly.Blocks['network_socket_init'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.storage.HUE);
+        this.appendValueInput('VAR')
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_INIT)
+            .setCheck("var");
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_TYPE)
+            .appendField(new Blockly.FieldDropdown([
+                ['TCP', "TCP"],
+                ['UDP', "UDP"]
+            ]), "mode");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Blocks['network_socket_bind'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.storage.HUE);
+        this.appendValueInput('VAR')
+            .setCheck("var")
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_LET_SOCKET)
+        this.appendValueInput('address')
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_BIND_TO_ADDRESS);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Blocks['network_socket_listen'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.storage.HUE);
+        this.appendValueInput('VAR')
+            .setCheck("var")
+        this.appendValueInput('queue')
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_LISTEN)
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_QUEUE);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Blocks['network_socket_accept'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.storage.HUE);
+        this.appendValueInput('VAR')
+            .setCheck("var")
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_ACCEPT);
+        this.setOutput(true);
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Blocks['network_socket_receive'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.storage.HUE);
+        this.appendValueInput('VAR')
+            .setCheck("var")
+        this.appendValueInput('size')
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_RECEIVE)
+        this.setOutput(true);
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Blocks['network_socket_send'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.storage.HUE);
+        this.appendValueInput('content')
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_MAKE)
+        this.appendValueInput('VAR')
+            .setCheck("var")
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_SEND)
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Blocks['network_socket_close'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.storage.HUE);
+        this.appendValueInput('VAR')
+            .setCheck("var")
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_CLOSE);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+    }
+};
