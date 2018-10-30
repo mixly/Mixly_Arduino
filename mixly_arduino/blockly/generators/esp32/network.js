@@ -178,7 +178,7 @@ Blockly.Python.network_socket_send= function() {
     Blockly.Python.definitions_['import_socket'] = "import socket";
     var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var content = Blockly.Python.valueToCode(this, 'content', Blockly.Python.ORDER_ATOMIC);
-    var code =  ""+varName+".send("+content+")";
+    var code =  ""+varName+".send("+content+")\n";
     return code;
 }
 
@@ -186,6 +186,6 @@ Blockly.Python.network_socket_close= function() {
     Blockly.Python.definitions_['import_network'] = "import network";
     Blockly.Python.definitions_['import_socket'] = "import socket";
     var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-    var code = ""+varName+".close()";
+    var code = ""+varName+".close()\n";
     return code;
 }

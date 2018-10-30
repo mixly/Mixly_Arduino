@@ -39,8 +39,8 @@ Blockly.Python.factory_function_return = function() {
 Blockly.Python.factory_declare = function() {
 	var TYPE = this.getFieldValue('TYPE');
 	var NAME = this.getFieldValue('NAME');
-	Blockly.Python.setups_['var_'+TYPE+'_'+NAME] = NAME+' = ' + TYPE + '()\n';
-	return '';
+	return NAME+' = ' + TYPE + '()\n';
+
 };
 
 Blockly.Python.factory_callMethod_noreturn = function() {
