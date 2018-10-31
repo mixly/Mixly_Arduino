@@ -657,6 +657,17 @@ PythonToBlocks.prototype.Assign = function(node)
                     "inline": "true"
                 });
             }
+        }else if(targets[0]._astname == "Tuple"){
+            var varNameArr = [];
+            for(var i = 0 ; i < targets[0].elts.length; i ++){
+                varNameArr.push(this.Name_str(targets[0].elts[i]));
+            }
+            var varNameStr = varNameArr.join(',');
+            return block("variables_set", targets.lineno, {
+                "VAR":varNameStr
+            },{
+                "VALUE":this.convert(value)
+            });
         }
         return block("variables_set", node.lineno, {
             "VAR": this.Name_str(targets[0]) //targets
@@ -1061,9 +1072,20 @@ PythonToBlocks.prototype.Expr = function(node, is_top_level) {
     var value = node.value;
 
     var converted = this.convert(value);
+
+
     if (converted.constructor == Array) {
         return converted[0];
     }else {
+        if(value._astname == "Subscript" && value.value._astname == "Call"
+            && value.value.func._astname == "Attribute" && this.identifier(value.value.func.attr) == "ifconfig"){
+            return block('network_get_connect', node.lineno, {
+                "mode":this.Num_value(value.slice.value)
+            }, {
+                "VAR":this.convert(value.value.func.value)
+            });
+
+        }
         return block("raw_empty", node.lineno, {}, {
             "VALUE": converted
         });
@@ -1828,10 +1850,14 @@ PythonToBlocks.prototype.Str = function(node)
         return block("text", node.lineno, {"TEXT": strValue});
     }
     */
-    strValue = strValue.replace(/\n/g, '\\n')
+    if (strValue.indexOf('\n')!=-1){
+        return block("text_textarea", node.lineno, {"VALUE": strValue})
+    }else{
+        strValue = strValue.replace(/\n/g, '\\n')
                         .replace(/\r/g, '\\r')
-                        .replace(/\t/g, '\\t');
-    return block("text", node.lineno, {"TEXT": strValue});
+                        .replace(/\t/g, '\\t')
+        return block("text", node.lineno, {"TEXT": strValue})
+    }
 }
 
 PythonToBlocks.prototype.Str_value = function(node) {

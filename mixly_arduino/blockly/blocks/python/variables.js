@@ -98,7 +98,11 @@ Blockly.Blocks['variables_set'] = {
     this.setTooltip(Blockly.Msg.VARIABLES_SET_TOOLTIP);
   },
   getVars: function() {
-    return [this.getFieldValue('VAR')];
+    var varValue = this.getFieldValue('VAR');
+    if(varValue == null){
+      return [];
+    }
+    return varValue.split(",");
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {

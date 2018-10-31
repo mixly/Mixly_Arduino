@@ -176,7 +176,7 @@ pbc.assignD.get('i2c')['create_block'] = function(py2block, node, targets, value
     var i2cblock=py2block.convert(value.args[0])
 
 
-    return block("sensor_use_i2c_init", func.lineno, { "key":funcblock}, {
+    return block("sensor_use_i2c_init", node.lineno, { "key":funcblock}, {
         'I2CSUB':i2cblock,
         'SUB':mpublock,
     }, {

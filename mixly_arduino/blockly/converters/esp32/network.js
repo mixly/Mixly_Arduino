@@ -187,11 +187,11 @@ pbc.objectFunctionD.get('accept')['socket'] = function (py2block, func, args, ke
         throw new Error("Incorrect number of arguments");
     }
     var objblock = py2block.convert(func.value);
-    return [block("network_socket_accept", func.lineno, {}, {
+    return block("network_socket_accept", func.lineno, {}, {
             "VAR":objblock,
         }, {
             "inline": "true"
-        })];
+        });
 }
 
 pbc.objectFunctionD.get('recv')['socket'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -201,13 +201,13 @@ pbc.objectFunctionD.get('recv')['socket'] = function (py2block, func, args, keyw
     var objblock = py2block.convert(func.value);
     // var lightblock = py2block.identifier(args[0].n);
     var reverse = py2block.convert(args[0]);
-    return [block("network_socket_receive", func.lineno, {
+    return block("network_socket_receive", func.lineno, {
         }, {
             "size": reverse,
             "VAR":objblock,
         }, {
             "inline": "true"
-        })];
+        });
 }
 
 pbc.objectFunctionD.get('send')['socket'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
