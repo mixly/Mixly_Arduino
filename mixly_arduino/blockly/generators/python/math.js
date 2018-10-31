@@ -338,3 +338,6 @@ Blockly.Python.math_indexer_number = function () {
         Blockly.Python.ORDER_UNARY_PREFIX : Blockly.Python.ORDER_ATOMIC;
     return [code, order];
 }
+
+
+Blockly.Python.base_map = Blockly.Python.math_map

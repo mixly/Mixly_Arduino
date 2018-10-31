@@ -342,3 +342,5 @@ Blockly.Blocks['math_indexer_number'] = {
     this.setTooltip(Blockly.Msg.MATH_NUMBER_TOOLTIP);
   }
 };
+
+Blockly.Blocks.base_map = Blockly.Blocks.math_map

@@ -207,3 +207,7 @@ Blockly.Python.text_strip = function() {
   var code = str + "." + towhat + "()";
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.text_substring3 = Blockly.Python.text_substring 
+Blockly.Python.text_compareTo = Blockly.Python.text_compare_to
+Blockly.Python.text_char_at3 = Blockly.Python.text_char_at

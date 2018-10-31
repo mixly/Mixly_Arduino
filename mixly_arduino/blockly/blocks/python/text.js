@@ -582,3 +582,7 @@ Blockly.Blocks['text_strip'] = {
     });
   }
 };
+
+Blockly.Blocks['text_substring3'] = Blockly.Blocks['text_substring'] 
+Blockly.Blocks['text_compareTo'] = Blockly.Blocks['text_compare_to']
+Blockly.Blocks['text_char_at3'] = Blockly.Blocks['text_char_at']
