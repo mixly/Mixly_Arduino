@@ -23,6 +23,8 @@ Blockly.Blocks['iot_wifi_connect'] = {
   }
 };
 
+Blockly.Blocks['iot_wificonnect'] = Blockly.Blocks['iot_wifi_connect'];
+
 Blockly.Blocks['iot_onenet_connect'] = {
  init: function() {    
     this.setColour(Blockly.Blocks.iot.HUE);
@@ -53,6 +55,8 @@ Blockly.Blocks['iot_onenet_connect'] = {
   }
 };
 
+Blockly.Blocks['iot_onenetconnect'] = Blockly.Blocks['iot_onenet_connect'];
+
 Blockly.Blocks['iot_onenet_disconnect'] = {
  init: function() {    
     this.setColour(Blockly.Blocks.iot.HUE);
@@ -68,6 +72,7 @@ Blockly.Blocks['iot_onenet_disconnect'] = {
   }
 };
 
+Blockly.Blocks['iot_onenetdisconnect'] = Blockly.Blocks['iot_onenet_disconnect'];
 
 Blockly.Blocks['iot_onenet_check'] = {
  init: function() {    
@@ -83,6 +88,8 @@ Blockly.Blocks['iot_onenet_check'] = {
    // this.setTooltip(Blockly.Msg.TURTLE_WRITE_TOOLTIP);    
   }
 };
+
+Blockly.Blocks['iot_checkonenet'] = Blockly.Blocks['iot_onenet_check'];
 
 Blockly.Blocks['iot_onenet_publish'] = {
     /**
@@ -228,6 +235,8 @@ Blockly.Blocks['iot_onenet_publish'] = {
         }
     }
 };
+
+Blockly.Blocks['iot_publish'] = Blockly.Blocks['iot_onenet_publish'];
 
 Blockly.Blocks['iot_publish_container'] = {
   /**
