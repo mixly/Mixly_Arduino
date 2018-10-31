@@ -182,6 +182,25 @@ Blockly.Python.network_socket_send= function() {
     return code;
 }
 
+Blockly.Python.network_socket_receive_from= function() {
+    Blockly.Python.definitions_['import_network'] = "import network";
+    Blockly.Python.definitions_['import_socket'] = "import socket";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+    var size = Blockly.Python.valueToCode(this, 'size', Blockly.Python.ORDER_ATOMIC);
+    var code =  ""+varName+".recvfrom("+size+")";
+    return [code, Blockly.Python.ORDER_ASSIGNMENT];
+}
+
+Blockly.Python.network_socket_send_to= function() {
+    Blockly.Python.definitions_['import_network'] = "import network";
+    Blockly.Python.definitions_['import_socket'] = "import socket";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+    var content = Blockly.Python.valueToCode(this, 'content', Blockly.Python.ORDER_ATOMIC);
+    var address = Blockly.Python.valueToCode(this, 'address', Blockly.Python.ORDER_ATOMIC);
+    var code =  ""+varName+".sendto("+content+","+address+")\n";
+    return code;
+}
+
 Blockly.Python.network_socket_close= function() {
     Blockly.Python.definitions_['import_network'] = "import network";
     Blockly.Python.definitions_['import_socket'] = "import socket";

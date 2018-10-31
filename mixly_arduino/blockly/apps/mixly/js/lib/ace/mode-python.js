@@ -33,7 +33,7 @@ var PythonHighlightRules = function() {
         // micropythonButtonFunctions
         "is_pressed|was_pressed|get_presses|"+
         // micropythonDisplayFunctions
-        "get_pixel|set_pixel|clear|show|scroll|on|off|is_on|"+
+        "get_pixel|set_pixel|clear|show|scroll|on|off|is_on|get_brightness|blink_rate|clear|show_str|show_line|show_hline|show_vline|show_rect|"+
         // micropythonPinIOFunctions
         "write_digital|read_digital|write_analog|read_analog|set_analog_period|set_analog_period_microseconds|is_touched|value|duty|freq|irq|"+
         // micropythonImageFunctions
@@ -43,9 +43,9 @@ var PythonHighlightRules = function() {
         // micropythonCompassFunctions
         "calibrate|heading|get_field_strength|is_calibrated|clear_calibration|get_temperature|pressure|get_relative_humidity|"+
         // micropythonI2CFunctions
-        "read|write|"+
+        "read|write|readfrom|writeto|scan|available|write_readinto|"+
         // micropythonUartFunctions
-        "init|any|read|readall|readline|readinto|write|writable|close|name"+
+        "init|any|read|readall|readline|readinto|write|writable|close|name|"+
         // micropythonMusicFunctions
         "set_tempo|get_tempo|play|pitch|stop|reset|"+
         // micropythonOSFunctions
@@ -56,8 +56,19 @@ var PythonHighlightRules = function() {
         "getrandbits|seed|randint|randrange|choice|random|uniform|"+
         // micropythonSpeechFunctions
         "pronounce|speech|sing|translate|"+
+        // microPythonNetworkFunctions
+        "WLAN|ifconfig|config|isconnected|connect|disconnect|scan|active|"+
+        // microPythonSocketFunctions
+        "socket|bind|listen|accept|send|recv|sendto|recvfrom|close|"+
+        // microPythonIOTFunctions
+        "init_MQTT_client|do_connect|publish|pubData|check_msg|disconnect|"+
+        // microPythonOtherSensorFunctions
+        "datetime|near|get_BMP_temperature|get_BMP_pressure|get_SHT_temperature|get_SHT_relative_humidity|checkdist|select_rom|scan|"+
+        // microPythonOtherActuatorFunctions
+        "write_angle|setonoff|getonoff|setbrightness|"+
         // pythonOtherFunctions
-        "reverse|pop|insert|append|extend|index|count|"+
+        "reverse|pop|insert|append|extend|index|count|encode|decode|lower|title|ljust|center|rjust|"+
+        "find|replace|split|strip|"
         "keys|values|"+
         "union|intersection|difference|update|intersection_update|difference_update|"+
         "add|discard|issubset|issuperset|mahaotian"

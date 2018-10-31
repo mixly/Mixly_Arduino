@@ -1980,6 +1980,45 @@
             </shadow>
           </value>
         </block>
+        <block type="network_socket_receive_from">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">conn</field>
+            </shadow>
+          </value>
+          <value name="size">
+            <shadow type="math_number">
+              <field name="NUM">1024</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="network_socket_send_to">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">conn</field>
+            </shadow>
+          </value>
+          <value name="content">
+            <shadow type="variables_get">
+              <field name="VAR">response</field>
+            </shadow>
+          </value>
+          <value name="address">
+           <shadow type="tuple_create_with_noreturn" inline="true">
+              <mutation items="2"></mutation>
+              <value name="ADD0">
+                <shadow type="text">
+                  <field name="TEXT">127.0.0.1</field>
+                </shadow>
+              </value>
+              <value name="ADD1">
+                <shadow type="math_number">
+                  <field name="NUM">80</field>
+                </shadow>
+              </value>
+            </shadow>
+          </value>
+        </block>
         <block type="network_socket_close">
           <value name="VAR">
             <shadow type="variables_get">

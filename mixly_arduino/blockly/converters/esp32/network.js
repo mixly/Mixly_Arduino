@@ -226,6 +226,40 @@ pbc.objectFunctionD.get('send')['socket'] = function (py2block, func, args, keyw
         })];
 }
 
+pbc.objectFunctionD.get('recvfrom')['socket'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    // var lightblock = py2block.identifier(args[0].n);
+    var reverse = py2block.convert(args[0]);
+    return block("network_socket_receive_from", func.lineno, {
+        }, {
+            "size": reverse,
+            "VAR":objblock,
+        }, {
+            "inline": "true"
+        });
+}
+
+pbc.objectFunctionD.get('sendto')['socket'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    // var lightblock = py2block.identifier(args[0].n);
+    var reverse = py2block.convert(args[0]);
+    var address = py2block.convert(args[1]);
+    return [block("network_socket_send_to", func.lineno, {
+        }, {
+            "content": reverse,
+            "VAR":objblock,
+            "address":address,
+        }, {
+            "inline": "true"
+        })];
+}
+
 pbc.objectFunctionD.get('close')['socket'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 0) {
         throw new Error("Incorrect number of arguments");

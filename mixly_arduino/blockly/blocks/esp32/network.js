@@ -237,6 +237,7 @@ Blockly.Blocks['network_socket_receive'] = {
         this.setColour(Blockly.Blocks.storage.HUE);
         this.appendValueInput('VAR')
             .setCheck("var")
+            .appendField("TCP")
         this.appendValueInput('size')
             .setCheck(Number)
             .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_RECEIVE)
@@ -248,11 +249,43 @@ Blockly.Blocks['network_socket_receive'] = {
 Blockly.Blocks['network_socket_send'] = {
     init: function() {
         this.setColour(Blockly.Blocks.storage.HUE);
-        this.appendValueInput('content')
-            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_MAKE)
+            // .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_MAKE)
         this.appendValueInput('VAR')
             .setCheck("var")
+            .appendField("TCP")
+        this.appendValueInput('content')
             .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_SEND)
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Blocks['network_socket_receive_from'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.storage.HUE);
+        this.appendValueInput('VAR')
+            .setCheck("var")
+            .appendField("UDP")
+        this.appendValueInput('size')
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_RECEIVE)
+        this.setOutput(true);
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Blocks['network_socket_send_to'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.storage.HUE);
+            // .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_MAKE)
+        this.appendValueInput('VAR')
+            .setCheck("var")
+            .appendField("UDP")
+        this.appendValueInput('content')
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_SEND)
+        this.appendValueInput('address')
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_TO);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
