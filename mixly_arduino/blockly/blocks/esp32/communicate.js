@@ -30,6 +30,8 @@ Blockly.Blocks['communicate_i2c_init'] = {
     }
 };
 
+Blockly.Blocks['i2c_init'] = Blockly.Blocks['communicate_i2c_init'];
+
 Blockly.Blocks['communicate_i2c_read'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
@@ -47,6 +49,8 @@ Blockly.Blocks['communicate_i2c_read'] = {
         this.setTooltip(Blockly.MIXLY_MICROBIT_JS_I2C_READ);
     }
 }
+
+Blockly.Blocks['i2c_read'] = Blockly.Blocks['communicate_i2c_read'];
 
 Blockly.Blocks['communicate_i2c_write'] = {
     init: function() {
@@ -67,6 +71,8 @@ Blockly.Blocks['communicate_i2c_write'] = {
     }
 }
 
+Blockly.Blocks['i2c_write'] = Blockly.Blocks['communicate_i2c_write'];
+
 Blockly.Blocks['communicate_i2c_scan'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
@@ -79,6 +85,8 @@ Blockly.Blocks['communicate_i2c_scan'] = {
         this.setInputsInline(true);
     }
 }
+
+Blockly.Blocks['i2c_scan'] = Blockly.Blocks['communicate_i2c_scan'];
 
 Blockly.Blocks['communicate_spi_init'] = {
     init: function() {
@@ -110,6 +118,7 @@ Blockly.Blocks['communicate_spi_init'] = {
     }
 };
 
+Blockly.Blocks['spi_init'] = Blockly.Blocks['communicate_spi_init'];
 
 Blockly.Blocks['communicate_spi_set'] = {
     init: function() {
@@ -126,6 +135,8 @@ Blockly.Blocks['communicate_spi_set'] = {
     }
 };
 
+Blockly.Blocks['spi_set'] = Blockly.Blocks['communicate_spi_set'];
+
 Blockly.Blocks['communicate_spi_buffer'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
@@ -140,6 +151,8 @@ Blockly.Blocks['communicate_spi_buffer'] = {
         this.setInputsInline(true);
     }
 };
+
+Blockly.Blocks['spi_buffer'] = Blockly.Blocks['communicate_spi_buffer'];
 
 Blockly.Blocks['communicate_spi_read'] = {
     init: function() {
@@ -156,6 +169,8 @@ Blockly.Blocks['communicate_spi_read'] = {
         this.setInputsInline(true);
     }
 }
+
+Blockly.Blocks['spi_read'] = Blockly.Blocks['communicate_spi_read'];
 
 Blockly.Blocks['communicate_spi_read_output'] = {
     init: function() {
@@ -175,6 +190,8 @@ Blockly.Blocks['communicate_spi_read_output'] = {
     }
 }
 
+Blockly.Blocks['spi_read_output'] = Blockly.Blocks['communicate_spi_read_output'];
+
 Blockly.Blocks['communicate_spi_readinto'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
@@ -188,6 +205,8 @@ Blockly.Blocks['communicate_spi_readinto'] = {
         this.setInputsInline(true);
     }
 }
+
+Blockly.Blocks['spi_readinto'] = Blockly.Blocks['communicate_spi_readinto'];
 
 Blockly.Blocks['communicate_spi_readinto_output'] = {
     init: function() {
@@ -206,6 +225,8 @@ Blockly.Blocks['communicate_spi_readinto_output'] = {
     }
 }
 
+Blockly.Blocks['spi_readinto_output'] = Blockly.Blocks['communicate_spi_readinto_output'];
+
 Blockly.Blocks['communicate_spi_write'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
@@ -220,6 +241,8 @@ Blockly.Blocks['communicate_spi_write'] = {
         this.setTooltip(Blockly.MIXLY_MICROBIT_JS_SPI_WRITE);
     }
 };
+
+Blockly.Blocks['spi_write'] = Blockly.Blocks['communicate_spi_write'];
 
 Blockly.Blocks['communicate_spi_write_readinto'] = {
     init: function() {
@@ -243,6 +266,8 @@ Blockly.Blocks['communicate_spi_write_readinto'] = {
     }
 };
 
+Blockly.Blocks['spi_write_readinto'] = Blockly.Blocks['communicate_spi_write_readinto'];
+
 Blockly.Blocks.communicate_i2c_master_read = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
@@ -254,6 +279,9 @@ Blockly.Blocks.communicate_i2c_master_read = {
         this.setOutput(true, Number);
     }
 };
+
+Blockly.Blocks.i2c_master_reader2 = Blockly.Blocks.communicate_i2c_master_read;
+
 Blockly.Blocks.communicate_i2c_available = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
@@ -265,6 +293,8 @@ Blockly.Blocks.communicate_i2c_available = {
         this.setOutput(true, Boolean);
     }
 };
+
+Blockly.Blocks.i2c_available = Blockly.Blocks.communicate_i2c_available;
 
 Blockly.Blocks.i2c_slave_onreceive = {
     init: function() {
