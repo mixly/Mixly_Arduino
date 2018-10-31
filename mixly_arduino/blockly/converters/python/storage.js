@@ -12,7 +12,7 @@ pbc.assignD.get('File')['check_assign'] = function(py2block, node, targets, valu
 
 pbc.assignD.get('File')['create_block'] = function(py2block, node, targets, value){
     var mode = py2block.Str_value(value.args[1]);
-    return block("storage_fileopen2", node.lineno, {
+    return block("storage_fileopen", node.lineno, {
         "MODE":mode
     }, {
         "FILENAME":py2block.convert(value.args[0]),

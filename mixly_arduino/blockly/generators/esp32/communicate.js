@@ -156,11 +156,11 @@ Blockly.Python.communicate_spi_write_readinto = function() {
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     var val = Blockly.Python.valueToCode(this, 'val', Blockly.Python.ORDER_ATOMIC);
     var op=this.getFieldValue('op');
-    if(op=="byte"){
-      return [""+varname+".write_readinto(b'" + data + "',"+val+")", Blockly.Python.ORDER_ATOMIC];
-    }else{
+    // if(op=="byte"){
+    //   return [""+varname+".write_readinto(" + data + ".encode('utf-8'),"+val+")", Blockly.Python.ORDER_ATOMIC];
+    // }else{
       return [""+varname+".write_readinto(" + data + ","+val+")", Blockly.Python.ORDER_ATOMIC];
-    }
+    // }
 }
 
 Blockly.Python.communicate_i2c_master_read = function () {
@@ -244,45 +244,3 @@ Blockly.Python.communicate_ow_init = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.communicate_ow_scan = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".scan()";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.communicate_ow_reset = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".reset()";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.communicate_ow_read = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".readbyte()";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.communicate_ow_write = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var varName =Blockly.Python.valueToCode(this, 'byte',Blockly.Python.ORDER_ATOMIC);
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var op=this.getFieldValue('op');
-    var code = ""+name+"."+op+"("+varName+")";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.communicate_ow_select = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var varName =Blockly.Python.valueToCode(this, 'byte',Blockly.Python.ORDER_ATOMIC);
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".select_rom(" + varName + ".encode('utf-8'))";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};

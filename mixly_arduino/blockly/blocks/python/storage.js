@@ -16,14 +16,11 @@ Blockly.Blocks.storage_fileopen = {
         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE)
         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_READ, 'r'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_WRITE, 'w'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_READ, 'rb'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_WRITE, 'wb']]), 'MODE');
     this.appendValueInput("FILE")
-        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_AS)
-        //.appendField(new Blockly.FieldTextInput('f'), 'VAR');
-    this.appendStatementInput('DO')
-        .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_DO);
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_AS);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setInputsInline(true);
-	 var thisBlock = this;
+     var thisBlock = this;
         this.setTooltip(function() {
         var mode = thisBlock.getFieldValue('MODE');
         var mode0 = Blockly.MIXLY_USE;
