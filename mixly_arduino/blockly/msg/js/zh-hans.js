@@ -733,6 +733,7 @@ var MSG = {
   catVar: "变量",
   catFun: "函数",
   catEthernet:"以太网",
+  catNetwork:"网络",
   catEthernet_init:"初始化",
   catEthernet_clinet:"客户端",
   catSense: "盛思(盒子)",

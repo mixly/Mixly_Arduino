@@ -734,6 +734,7 @@ var MSG = {
   catVar: "Variables",
   catFun: "Functions",
   catEthernet:"Ethernet",
+  catNetwork:"Network",
   catEthernet_init:"Init",
   catEthernet_clinet:"Client",
   catSense: "Labplus(Box)",
