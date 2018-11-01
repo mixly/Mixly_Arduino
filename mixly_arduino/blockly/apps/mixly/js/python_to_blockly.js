@@ -1096,8 +1096,8 @@ PythonToBlocks.prototype.Expr = function(node, is_top_level) {
  *
  *
  */
-PythonToBlocks.prototype.Pass = function() {
-    return null; //block("controls_pass");
+PythonToBlocks.prototype.Pass = function(node) {
+    return block("controls_pass", node.lineno, {});
 }
 
 /*

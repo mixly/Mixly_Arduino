@@ -771,3 +771,13 @@ Blockly.Blocks.controls_lambda = {
     // this.setNextStatement(true);
   }
 };
+
+Blockly.Blocks.controls_pass = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendDummyInput()
+      .appendField('pass');
+  this.setPreviousStatement(true);
+  this.setNextStatement(true);
+  }
+};

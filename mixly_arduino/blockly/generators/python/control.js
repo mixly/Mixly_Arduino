@@ -224,3 +224,7 @@ Blockly.Python.time_sleep = function () {
     var code = 'time.sleep(' + delay_time + ')\n';
     return code;
 };
+
+Blockly.Python.controls_pass = function () {
+    return 'pass\n';
+};
