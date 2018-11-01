@@ -68,7 +68,7 @@ var PythonHighlightRules = function() {
         "write_angle|setonoff|getonoff|setbrightness|"+
         // pythonOtherFunctions
         "reverse|pop|insert|append|extend|index|count|encode|decode|lower|title|ljust|center|rjust|"+
-        "find|replace|split|strip|"
+        "find|replace|split|strip|"+
         "keys|values|"+
         "union|intersection|difference|update|intersection_update|difference_update|"+
         "add|discard|issubset|issuperset|mahaotian"
