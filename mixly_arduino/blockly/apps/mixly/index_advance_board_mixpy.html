@@ -35,6 +35,7 @@
     <script src="../../blocks/python/dicts.js"></script>
     <script src="../../blocks/python/logic.js"></script>
     <script src="../../blocks/python/set.js"></script>
+    <script src="../../blocks/python/storage.js"></script>
     <script src="../../blocks/mixpy_python/turtle.js"></script>
     <script src="../../blocks/mixpy_python/data.js"></script>
     <script src="../../blocks/mixpy_python/communicate.js"></script>
@@ -51,6 +52,7 @@
     <script src="../../generators/python/dicts.js"></script>
     <script src="../../generators/python/logic.js"></script>
     <script src="../../generators/python/set.js"></script>
+    <script src="../../generators/python/storage.js"></script>
     <script src="../../generators/mixpy_python/turtle.js"></script>
     <script src="../../generators/mixpy_python/data.js"></script>
     <script src="../../generators/mixpy_python/communicate.js"></script>
@@ -73,6 +75,7 @@
     <script src="../../converters/python/tuple.js" type="application/javascript"></script>
     <script src="../../converters/python/dicts.js" type="application/javascript"></script>
     <script src="../../converters/python/set.js" type="application/javascript"></script>
+    <script src="../../converters/python/storage.js" type="application/javascript"></script>
     <script src="../../converters/mixpy_python/turtle.js" type="application/javascript"></script>
     <script src="../../converters/mixpy_python/data.js" type="application/javascript"></script>
     <script src="./js/python_to_blockly.js" type="application/javascript"></script>
@@ -1333,6 +1336,80 @@ function init() {
           <value name="SET2">
             <shadow type="variables_get">
               <field name="VAR">s2</field>
+            </shadow>
+          </value>
+        </block>
+      </category>
+            <category id="catStorage" colour="0">
+        <block type="storage_fileopen">
+          <value name="FILENAME">
+            <shadow type="text">
+              <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_file_write">
+          <value name="data">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
+          </value>
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_get_contents">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+          <value name="SIZE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_can_write_ornot">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_get_filename">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_close_file">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_list_all_files"> </block>
+        <block type="storage_delete_file">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_get_file_size">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">filename.txt</field>
             </shadow>
           </value>
         </block>
