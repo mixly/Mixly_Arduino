@@ -80,7 +80,7 @@
   <script src="../../converters/esp32/py2block_config.js" type="application/javascript"></script>
   <script src="../../converters/esp32/inout.js" type="application/javascript"></script>
   <script src="../../converters/esp32/network.js" type="application/javascript"></script>
-   <script src="../../converters/esp32/iot.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/iot.js" type="application/javascript"></script>
   <script src="../../converters/esp32/serial.js" type="application/javascript"></script>
   <script src="../../converters/esp32/communicate.js" type="application/javascript"></script>
   <script src="../../converters/esp32/display.js" type="application/javascript"></script>
@@ -92,7 +92,7 @@
   <script src="../../converters/python/lists.js" type="application/javascript"></script>
   <script src="../../converters/python/tuple.js" type="application/javascript"></script>
   <script src="../../converters/python/dicts.js" type="application/javascript"></script>
-   <script src="../../converters/python/storage.js" type="application/javascript"></script>
+  <script src="../../converters/python/storage.js" type="application/javascript"></script>
   <script src="../../converters/python/set.js" type="application/javascript"></script>
   <script src="../../converters/esp32/control.js" type="application/javascript"></script>
   <script src="./js/python_to_blockly.js" type="application/javascript"></script>
@@ -1384,6 +1384,80 @@
           </value>
         </block>
       </category>
+      <category id="catStorage" colour="0">
+        <block type="storage_fileopen">
+          <value name="FILENAME">
+            <shadow type="text">
+              <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_file_write">
+          <value name="data">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
+          </value>
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_get_contents">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+          <value name="SIZE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_can_write_ornot">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_get_filename">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_close_file">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_list_all_files"> </block>
+        <block type="storage_delete_file">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_get_file_size">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+        </block>
+      </category>
       <category id="catSerialPort" colour="65">
         <block type="system_print_inline">
               <value name="VAR">
@@ -1749,71 +1823,6 @@
             </shadow>
           </value>
         </block>
-<!--         <block type="controls_if">
-          <value name="IF0">
-            <block type="logic_negate">
-              <value name="BOOL">
-                <block type="network_wifi_connect">
-                  <value name="VAR">
-                    <block type="variables_get">
-                      <field name="VAR">wlan</field>
-                    </block>
-                  </value>
-                </block>
-              </value>
-            </block>
-          </value>
-          <statement name="DO0">
-            <block type="network_connect">
-              <value name="VAR">
-                <block type="variables_get">
-                  <field name="VAR">wlan</field>
-                </block>
-              </value>
-              <value name="id">
-                <block type="text">
-                  <field name="TEXT">127.16.0.8</field>
-                </block>
-              </value>
-              <value name="password">
-                <block type="text">
-                  <field name="TEXT">01234567</field>
-                </block>
-              </value>
-            </block>
-            <block type="network_connect">
-              <value name="VAR">
-                <block type="variables_get">
-                  <field name="VAR">wlan</field>
-                </block>
-              </value>
-              <value name="id">
-                <block type="text">
-                  <field name="TEXT">127.16.0.8</field>
-                </block>
-              </value>
-              <value name="password">
-                <block type="text">
-                  <field name="TEXT">01234567</field>
-                </block>
-              </value>
-              <next>
-                <block type="controls_whileUntil">
-                  <field name="MODE">UNTIL</field>
-                  <value name="BOOL">
-                    <block type="network_wifi_connect">
-                      <value name="VAR">
-                        <block type="variables_get">
-                          <field name="VAR">wlan</field>
-                        </block>
-                      </value>
-                    </block>
-                  </value>
-                </block>
-              </next>
-            </block>
-        </statement>
-      </block> -->
       <block type="procedures_defreturn">
           <field name="NAME">connect_wifi</field>
           <statement name="STACK">
@@ -2139,80 +2148,6 @@
                 </shadow>
               </value>
           </block>
-      </category>
-      <category id="catStorage" colour="0">
-        <block type="storage_fileopen">
-          <value name="FILENAME">
-            <shadow type="text">
-              <field name="TEXT">filename.txt</field>
-            </shadow>
-          </value>
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_file_write">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_get_contents">
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-          <value name="SIZE">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_can_write_ornot">
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_get_filename">
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_close_file">
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_list_all_files"> </block>
-        <block type="storage_delete_file">
-          <value name="FILE">
-            <shadow type="text">
-              <field name="TEXT">filename.txt</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_get_file_size">
-          <value name="FILE">
-            <shadow type="text">
-              <field name="TEXT">filename.txt</field>
-            </shadow>
-          </value>
-        </block>
       </category>
       <category id="catSensor" colour="40">
         <block type="sensor_mixgo_button_is_pressed">
