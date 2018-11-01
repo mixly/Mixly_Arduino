@@ -153,7 +153,7 @@ class led:
                 Pin(n).value(1)
             if(val=='toggle'):
                 Pin(n).value(1 - Pin(n).value()) 
-    def getonoff(n,val):
+    def getonoff(n):
         if n in (1,2):
             n = 5 * (n - 1)
             return 1 - Pin(n).value()
@@ -181,40 +181,9 @@ class RGB:
     def write(self,n,r,g,b):
         self[n] = (r, g, b)
         self.write()
-
-
-
             
-pin0 = MyPin(0)
-pin2 = MyPin(2)
-pin4 = MyPin(4)
-pin5 = MyPin(5)
-pin8 = MyPin(8)
-pin9 = MyPin(9)
-pin12 = MyPin(12)
-pin13 = MyPin(13)
-pin14 = MyPin(14)
-pin15 = MyPin(15)
 pin16 = MyPin(16)
 pin17 = MyPin(17)
-pin18 = MyPin(18)
-pin19 = MyPin(19)
-pin21 = MyPin(21)
-pin22 = MyPin(22)
-pin23 = MyPin(23)
-pin25 = MyPin(25)
-pin26 = MyPin(26)
-pin27 = MyPin(27)
-pin32 = MyPin(32)
-pin33 = MyPin(33)
-pin34 = MyPin(34)
-pin35 = MyPin(35)
-pin36 = MyPin(36)
-pin39 = MyPin(39)
-# pin32.read_digital()
-# pin33.read_digital()
-# pin25.read_digital()
-# pin26.read_digital()
 pin17.read_digital()
 pin16.read_digital()
 pin17.irq(handler = btn_a, trigger = Pin.IRQ_FALLING)
