@@ -745,3 +745,13 @@ Blockly.Blocks.sensor_ds18x20 = {
         this.setOutput(true, Number);
     }
 };
+
+Blockly.Blocks.sensor_button_is_pressed=Blockly.Blocks.sensor_mixgo_button_is_pressed
+Blockly.Blocks.sensor_button_was_pressed=Blockly.Blocks.sensor_mixgo_button_was_pressed
+Blockly.Blocks.sensor_button_get_presses=Blockly.Blocks.sensor_mixgo_button_get_presses
+Blockly.Blocks.sensor_pin_pressed=Blockly.Blocks.sensor_mixgo_pin_pressed
+Blockly.Blocks.sensor_pin_near=Blockly.Blocks.sensor_mixgo_pin_near
+Blockly.Blocks.sensor_light=Blockly.Blocks.sensor_mixgo_light
+Blockly.Blocks.sensor_sound=Blockly.Blocks.senosor_mixgo_sound
+Blockly.Blocks.sensor_get_acceleration=Blockly.Blocks.sensor_mixgo_get_acceleration
+Blockly.Blocks.dht11=Blockly.Blocks.sensor_dht11
