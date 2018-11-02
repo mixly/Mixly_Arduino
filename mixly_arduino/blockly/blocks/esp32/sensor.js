@@ -732,78 +732,16 @@ Blockly.Blocks['sensor_sht'] = {
                 ]), "key");
         this.setOutput(true, Number);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_MICROBIT_Board_temperature);
-    }
+     }
 };
 
-Blockly.Blocks['sensor_ow_scan'] = {
-    init: function() {
+Blockly.Blocks.sensor_ds18x20 = {
+     init: function () {
         this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendValueInput('VAR')
-            .setCheck('var')
-            .appendField('OneWire(18b20)');
-        this.appendDummyInput()
-            .appendField(Blockly.MIXLY_ESP32_ONEWIRE_SCAN);
-        this.setOutput(true, 'List');
-    }
-};
-
-Blockly.Blocks['sensor_ow_read'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendValueInput('VAR')
-            .setCheck('var')
-            .appendField('OneWire(18b20)');
-        this.appendDummyInput()
-            .appendField(Blockly.MIXLY_ESP32_ONEWIRE_READ);
-        this.setOutput(true);
-    }
-};
-
-Blockly.Blocks['sensor_ow_write'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendValueInput('VAR')
-            .setCheck('var')
-            .appendField('OneWire(18b20)');
-        this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_ESP32_WRITE)
-            .appendField(new Blockly.FieldDropdown([
-                [Blockly.LANG_MATH_STRING, "write"],
-                [Blockly.LANG_MATH_BYTE, "writebyte"]
-            ]), "op");
-        this.appendValueInput('byte')
-            .setCheck(Number, String);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
+        this.appendValueInput("PIN", Number)
+            .appendField("DS18x20 "+Blockly.MIXLY_GETTEMPERATUE+" "+Blockly.MIXLY_PIN + " #")
+            .setCheck(Number);
         this.setInputsInline(true);
-    }
-};
-
-Blockly.Blocks['sensor_ow_select'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendValueInput('VAR')
-            .setCheck('var')
-            .appendField(Blockly.MIXLY_ESP32_ONEWIRE_SELECT)
-        this.appendValueInput('byte')
-            .setCheck(String)
-            .appendField("ROM");
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setInputsInline(true);
-    }
-};
-
-
-Blockly.Blocks['sensor_ow_reset'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendValueInput('VAR')
-            .setCheck('var')
-            .appendField(Blockly.MIXLY_ESP32_ONEWIRE_RESET);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setOutput(false);
+        this.setOutput(true, Number);
     }
 };

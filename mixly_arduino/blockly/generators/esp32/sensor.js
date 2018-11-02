@@ -396,45 +396,9 @@ Blockly.Python.sensor_sht=function(){
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_ow_scan = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".scan()";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.sensor_ow_reset = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".reset()";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.sensor_ow_read = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".readbyte()";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.sensor_ow_write = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var varName =Blockly.Python.valueToCode(this, 'byte',Blockly.Python.ORDER_ATOMIC);
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var op=this.getFieldValue('op');
-    var code = ""+name+"."+op+"("+varName+")";
-    return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.sensor_ow_select = function () {
-    Blockly.Python.definitions_['import_machine_Pin'] = 'from machine import Pin';
-    Blockly.Python.definitions_['import_onewire'] = "import onewire";
-    var varName =Blockly.Python.valueToCode(this, 'byte',Blockly.Python.ORDER_ATOMIC);
-    var name = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = ""+name+".select_rom(" + varName + ".encode('utf-8'))";
+Blockly.Python.sensor_ds18x20=function(){
+    Blockly.Python.definitions_['import_ds18x20x'] = 'import ds18x20x';
+    var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var code ='ds18x20x.get_dstemp('+dropdown_pin+')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };

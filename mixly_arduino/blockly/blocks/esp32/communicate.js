@@ -324,3 +324,74 @@ Blockly.Blocks['communicate_ow_init'] = {
     }
 };
 
+Blockly.Blocks['communicate_ow_scan'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.communicate.HUE);
+        this.appendValueInput('VAR')
+            .setCheck('var')
+            .appendField('OneWire');
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_ESP32_ONEWIRE_SCAN);
+        this.setOutput(true, 'List');
+    }
+};
+
+Blockly.Blocks['communicate_ow_read'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.communicate.HUE);
+        this.appendValueInput('VAR')
+            .setCheck('var')
+            .appendField('OneWire');
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_ESP32_ONEWIRE_READ);
+        this.setOutput(true);
+    }
+};
+
+Blockly.Blocks['communicate_ow_write'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.communicate.HUE);
+        this.appendValueInput('VAR')
+            .setCheck('var')
+            .appendField('OneWire');
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_ESP32_WRITE)
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.LANG_MATH_STRING, "write"],
+                [Blockly.LANG_MATH_BYTE, "writebyte"]
+            ]), "op");
+        this.appendValueInput('byte')
+            .setCheck(Number, String);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Blocks['communicate_ow_select'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.communicate.HUE);
+        this.appendValueInput('VAR')
+            .setCheck('var')
+            .appendField(Blockly.MIXLY_ESP32_ONEWIRE_SELECT)
+        this.appendValueInput('byte')
+            .setCheck(String)
+            .appendField("ROM");
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+    }
+};
+
+
+Blockly.Blocks['communicate_ow_reset'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.communicate.HUE);
+        this.appendValueInput('VAR')
+            .setCheck('var')
+            .appendField(Blockly.MIXLY_ESP32_ONEWIRE_RESET);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setOutput(false);
+    }
+};
