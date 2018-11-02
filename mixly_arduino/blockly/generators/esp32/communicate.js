@@ -286,3 +286,19 @@ Blockly.Python.communicate_ow_select = function () {
     var code = ""+name+".select_rom(" + varName + ".encode('utf-8'))\n";
     return code;
 };
+
+Blockly.Blocks['i2c_init'] = Blockly.Blocks['communicate_i2c_init'];
+Blockly.Blocks['i2c_read'] = Blockly.Blocks['communicate_i2c_read'];
+Blockly.Blocks['i2c_write'] = Blockly.Blocks['communicate_i2c_write'];
+Blockly.Blocks['i2c_scan'] = Blockly.Blocks['communicate_i2c_scan'];
+Blockly.Blocks['spi_init'] = Blockly.Blocks['communicate_spi_init'];
+Blockly.Blocks['spi_set'] = Blockly.Blocks['communicate_spi_set'];
+Blockly.Blocks['spi_buffer'] = Blockly.Blocks['communicate_spi_buffer'];
+Blockly.Blocks['spi_read'] = Blockly.Blocks['communicate_spi_read'];
+Blockly.Blocks['spi_read_output'] = Blockly.Blocks['communicate_spi_read_output'];
+Blockly.Blocks['spi_readinto'] = Blockly.Blocks['communicate_spi_readinto'];
+Blockly.Blocks['spi_readinto_output'] = Blockly.Blocks['communicate_spi_readinto_output'];
+Blockly.Blocks['spi_write'] = Blockly.Blocks['communicate_spi_write'];
+Blockly.Blocks['spi_write_readinto'] = Blockly.Blocks['communicate_spi_write_readinto'];
+Blockly.Blocks.i2c_master_reader2 = Blockly.Blocks.communicate_i2c_master_read;
+Blockly.Blocks.i2c_available = Blockly.Blocks.communicate_i2c_available;

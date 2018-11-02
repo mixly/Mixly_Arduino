@@ -70,3 +70,9 @@ Blockly.Python.iot_onenet_publish = function() {
   code=code+ct.join(', ')+"]}))\n";
   return code;
 };
+
+Blockly.Blocks['iot_wificonnect'] = Blockly.Blocks['iot_wifi_connect'];
+Blockly.Blocks['iot_onenetconnect'] = Blockly.Blocks['iot_onenet_connect'];
+Blockly.Blocks['iot_onenetdisconnect'] = Blockly.Blocks['iot_onenet_disconnect'];
+Blockly.Blocks['iot_checkonenet'] = Blockly.Blocks['iot_onenet_check'];
+Blockly.Blocks['iot_publish'] = Blockly.Blocks['iot_onenet_publish'];
