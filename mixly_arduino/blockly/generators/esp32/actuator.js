@@ -66,3 +66,9 @@ Blockly.Python.actuator_led_brightness= function() {
     var code = 'led.setbrightness('+op+','+flag+')\n';
     return code;
 };
+
+Blockly.Blocks.led_light=Blockly.Blocks.actuator_led_bright;
+Blockly.Blocks.get_led_bright=Blockly.Blocks.actuator_get_led_bright;
+Blockly.Blocks.led_brightness=Blockly.Blocks.actuator_led_brightness;
+Blockly.Blocks.esp32_music_pitch=Blockly.Blocks.esp32_mixgo_music_pitch;
+Blockly.Blocks.esp32_music_stop=Blockly.Blocks.esp32_mixgo_music_stop
