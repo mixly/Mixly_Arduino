@@ -723,4 +723,12 @@ Blockly.Blocks['lists_del_general'] = {
   }
 };
 
+Blockly.Blocks['lists_create_with2'] = Blockly.Blocks['lists_create_with']
+Blockly.Blocks['lists_create_with_text2'] = Blockly.Blocks['lists_create_with_text']
+Blockly.Blocks['lists_getIndex3'] = Blockly.Blocks['lists_get_index']
+Blockly.Blocks['lists_getSublist3'] = Blockly.Blocks['lists_get_sublist']
+Blockly.Blocks['lists_setIndex3'] = Blockly.Blocks['lists_set_index']
+Blockly.Blocks['lists_insert_value2'] = Blockly.Blocks['lists_insert_value']
+Blockly.Blocks['lists_remove_at2'] = Blockly.Blocks['lists_remove_at']
+
 

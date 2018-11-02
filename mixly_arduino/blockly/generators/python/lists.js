@@ -295,3 +295,13 @@ Blockly.Python.lists_del_general = function() {
   return code;
 };
 
+
+
+Blockly.Python['lists_create_with2'] = Blockly.Python['lists_create_with']
+Blockly.Python['lists_create_with_text2'] = Blockly.Python['lists_create_with_text']
+Blockly.Python['lists_getIndex3'] = Blockly.Python['lists_get_index']
+Blockly.Python['lists_getSublist3'] = Blockly.Python['lists_get_sublist']
+Blockly.Python['lists_setIndex3'] = Blockly.Python['lists_set_index']
+Blockly.Python['lists_insert_value2'] = Blockly.Python['lists_insert_value']
+Blockly.Python['lists_remove_at2'] = Blockly.Python['lists_remove_at']
+
