@@ -781,3 +781,6 @@ Blockly.Blocks.controls_pass = {
   this.setNextStatement(true);
   }
 };
+
+Blockly.Blocks.base_type=Blockly.Blocks.controls_type;
+Blockly.Blocks.controls_TypeLists=Blockly.Blocks.controls_typeLists

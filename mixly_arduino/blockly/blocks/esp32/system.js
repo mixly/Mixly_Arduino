@@ -166,3 +166,8 @@ Blockly.Blocks.system_timer_init = {
         this.setTooltip();
     }
 };
+
+Blockly.Blocks.Timer_init=Blockly.Blocks.system_timer_init;
+Blockly.Blocks.timer2=Blockly.Blocks.system_timer;
+Blockly.Blocks.time_ticks_diff=Blockly.Blocks.system_ticks_diff;
+Blockly.Blocks.base_delay=Blockly.Blocks.controls_delay;
