@@ -148,3 +148,8 @@ Blockly.Python.system_timer_init=function(){
     var code = v + ' = Timer(-1)\n';
     return code;
 };
+
+Blockly.Python.Timer_init=Blockly.Python.system_timer_init;
+Blockly.Python.timer2=Blockly.Python.system_timer;
+Blockly.Python.time_ticks_diff=Blockly.Python.system_ticks_diff;
+Blockly.Python.base_delay=Blockly.Python.controls_delay;

@@ -228,3 +228,6 @@ Blockly.Python.time_sleep = function () {
 Blockly.Python.controls_pass = function () {
     return 'pass\n';
 };
+
+Blockly.Python.base_type=Blockly.Python.controls_type;
+Blockly.Python.controls_TypeLists=Blockly.Python.controls_typeLists;
