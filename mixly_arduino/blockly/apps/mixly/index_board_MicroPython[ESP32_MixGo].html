@@ -45,7 +45,7 @@
   <script src="../../blocks/python/tuple.js"></script>
   <script src="../../blocks/python/set.js"></script>
 	<!-- generator file -->
-  <script src="../../generators/esp32/old.js"></script>
+  
   <script src="../../generators/esp32/pins.js"></script>
   <script src="../../generators/esp32/inout.js"></script>
   <script src="../../generators/python/control.js"></script>
@@ -1463,12 +1463,6 @@
             </shadow>
           </value>
         </block>
-        <block type="sensor_mixgo_button_get_presses">
-          <value name="btn">
-            <shadow type="pins_button">
-            </shadow>
-          </value>
-        </block>
         <block type="sensor_mixgo_pin_pressed">
           <value name="button">
           <shadow type="number1">
@@ -1543,7 +1537,7 @@
         <block type="sensor_use_i2c_init">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mpu</field>
+              <field name="VAR">sensor</field>
             </shadow>
           </value>
           <value name="I2CSUB">
@@ -1555,28 +1549,28 @@
         <block type="controls_attachGestureInterrupt">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mpu</field>
+              <field name="VAR">mixgo.mpu</field>
             </shadow>
           </value>
         </block>
         <block type="sensor_mixgo_get_acceleration">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mpu</field>
+              <field name="VAR">mixgo.mpu</field>
             </shadow>
           </value>
         </block>
         <block type="sensor_field_strength">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mpu</field>
+              <field name="VAR">mixgo.mpu</field>
             </shadow>
           </value>
         </block>
         <block type="sensor_temperature">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mpu</field>
+              <field name="VAR">mixgo.mpu</field>
             </shadow>
           </value>
         </block>

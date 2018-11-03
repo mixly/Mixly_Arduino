@@ -287,41 +287,6 @@ Blockly.Blocks['display_image_builtins'] = {
   }
 };
 
-Blockly.Blocks['esp32_image_copy'] = {
-  init : function () {
-    this.jsonInit({
-      "colour" : Blockly.Blocks.display.HUE,
-      "args0" : [{
-          "check" : ["esp32_image", "List", String],
-          "type" : "input_value",
-          "name" : "image"
-        }
-      ],
-      "output" : "esp32_image",
-      "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/image.html#microbit.Image.copy",
-      "message0" : Blockly.MIXLY_MICROBIT_Copy_image
-    });
-    this.setTooltip(Blockly.MIXLY_MICROBIT_Copy_image1);
-  }
-};
-
-Blockly.Blocks['esp32_image_invert'] = {
-  init : function () {
-    this.jsonInit({
-      "colour" : Blockly.Blocks.display.HUE,
-      "args0" : [{
-          "check" : ["esp32_image", "List", String],
-          "type" : "input_value",
-          "name" : "image"
-        }
-      ],
-      "output" : "esp32_image",
-      "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/image.html#microbit.Image.invert",
-      "message0" : Blockly.MIXLY_MICROBIT_Invert_image
-    });
-    this.setTooltip(Blockly.MIXLY_MICROBIT_Invert_image1);
-  }
-};
 
 Blockly.Blocks['display_image_create'] = {
   init : function () {

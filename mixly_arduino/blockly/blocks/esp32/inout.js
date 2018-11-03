@@ -171,7 +171,7 @@ Blockly.Blocks.inout_pin_attachInterrupt = {
         .setCheck(Number);
     this.appendDummyInput("")
         .appendField(Blockly.MIXLY_MODE)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RISING, "Pin.IRQ_RISING"], [Blockly.MIXLY_FALLING, "Pin.IRQ_FALLING"], [Blockly.MIXLY_CHANGE, "(Pin.IRQ_RISING or Pin.IRQ_FALLING)"]]), "mode");
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RISING, "machine.Pin.IRQ_RISING"], [Blockly.MIXLY_FALLING, "machine.Pin.IRQ_FALLING"], [Blockly.MIXLY_CHANGE, "(machine.Pin.IRQ_RISING or machine.Pin.IRQ_FALLING)"]]), "mode");
     this.appendStatementInput('DO')
         .appendField(Blockly.MIXLY_DO);
     this.setPreviousStatement(true);
@@ -189,10 +189,10 @@ Blockly.Blocks['inout_digital_init'] = {
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_MICROPYTHON_AS)
             // .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE+Blockly.Msg.LISTS_SET_INDEX_INPUT_TO)
-            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_Digital_PINMODEOUT, "Pin.OUT"],
-                [Blockly.MIXLY_Digital_PINMODEIN, "Pin.IN"],
-                [Blockly.MIXLY_PINMODEPULLUP, "Pin.IN, Pin.PULL_UP"],
-                [Blockly.MIXLY_PINMODEPULLDOWN, "Pin.IN, Pin.PULL_DOWN"]
+            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_Digital_PINMODEOUT, "machine.Pin.OUT"],
+                [Blockly.MIXLY_Digital_PINMODEIN, "machine.Pin.IN"],
+                [Blockly.MIXLY_PINMODEPULLUP, "machine.Pin.IN, machine.Pin.PULL_UP"],
+                [Blockly.MIXLY_PINMODEPULLDOWN, "machine.Pin.IN, machine.Pin.PULL_DOWN"]
                 ]),"MODE")
         this.appendValueInput("PIN", Number)
             .appendField(Blockly.MIXLY_PIN + " #")

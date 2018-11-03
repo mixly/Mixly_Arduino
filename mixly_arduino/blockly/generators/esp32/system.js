@@ -62,7 +62,6 @@ Blockly.Python.Panic_with_status_code = function () {
 };
 //ok
 Blockly.Python.controls_millis = function () {
-    //Blockly.Python.definitions_.import_time = "import time";
     Blockly.Python.definitions_['import_time'] = 'import time';
     var dropdown_time = this.getFieldValue('Time');
     switch (dropdown_time) {
@@ -82,7 +81,7 @@ Blockly.Python.controls_end_program = function () {
 };
 //ok
 Blockly.Python.reset = function () {
-    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     return 'reset()\n';
 };
 Blockly.Python.controls_uname = function () {
@@ -111,7 +110,7 @@ Blockly.Python.controls_delay = function () {
 };
 
 Blockly.Python.timer = function () {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var v = Blockly.Python.valueToCode(this, "VAR", Blockly.Python.ORDER_NONE) || "None";
     var period = Blockly.Python.valueToCode(this, "period", Blockly.Python.ORDER_NONE) || "0";
     var mode = Blockly.Python.valueToCode(this, "mode", Blockly.Python.ORDER_NONE) || "None";
@@ -122,13 +121,13 @@ Blockly.Python.timer = function () {
 };
 
 Blockly.Python.system_timer = function () {
-    Blockly.Python.definitions_['import_ESP32_*'] = 'from ESP32 import *';
+   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var v = Blockly.Python.valueToCode(this, "VAR", Blockly.Python.ORDER_NONE) || "None";
     var period = Blockly.Python.valueToCode(this, "period", Blockly.Python.ORDER_NONE) || "0";
     var mode = this.getFieldValue('mode');
     var branch = Blockly.Python.statementToCode(this, 'callback') || Blockly.Python.PASS;
     // var callback = Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
-    var code = v + ".init(period = " + period + ", mode = Timer." + mode + ", callback = " + v + "_callback_func)\n";
+    var code = v + ".init(period = " + period + ", mode = machine.Timer." + mode + ", callback = " + v + "_callback_func)\n";
     Blockly.Python.setups_['timer_callback_func'] = 'def ' + v + '_callback_func(t):\n' + branch + '\n';
     return code;
 };
@@ -144,8 +143,8 @@ Blockly.Python.system_ticks_diff = function () {
 
 Blockly.Python.system_timer_init=function(){
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-    Blockly.Python.definitions_['import_machine_*'] = 'from machine import *';
-    var code = v + ' = Timer(-1)\n';
+    Blockly.Python.definitions_['import_machine'] = 'import machine';
+    var code = v + ' = machine.Timer(-1)\n';
     return code;
 };
 
