@@ -133,7 +133,7 @@ class MPU6500:
         tempbuf=self._register_short(0x41)
         return tempbuf/333.87 + 21  # I think
 		
-    @property
+    # @property
     def acceleration(self):
         """
         Acceleration measured by the sensor. By default will return a
@@ -375,15 +375,14 @@ class MPU9250:
         else:
             self.ak8963 = ak8963
 
-    @property
-    def acceleration(self):
-        """
-        Acceleration measured by the sensor. By default will return a
-        3-tuple of X, Y, Z axis values in m/s^2 as floats. To get values in g
-        pass `accel_fs=SF_G` parameter to the MPU6500 constructor.
-        """
-        return self.mpu6500.acceleration
-
+    # @property
+    # def acceleration(self):
+    #     """
+    #     Acceleration measured by the sensor. By default will return a
+    #     3-tuple of X, Y, Z axis values in m/s^2 as floats. To get values in g
+    #     pass `accel_fs=SF_G` parameter to the MPU6500 constructor.
+    #     """
+    #     return self.mpu6500.acceleration
     def get_board_temperature(self):
 		return self.mpu6500.temperature
 		

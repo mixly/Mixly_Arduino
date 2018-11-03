@@ -7,9 +7,8 @@ from machine import Timer
 from machine import RTC
 from machine import TouchPad
 import time
-import mpu9250
 from neopixel import NeoPixel
-
+from mpu9250 import *
 
 
 # Button
@@ -185,4 +184,4 @@ i2c = I2C(scl = Pin(22), sda = Pin(21), freq = 100000)
 rgb = NeoPixel(Pin(2), 2)
 tim = Timer(-1)
 rtc = RTC()
-mpu = mpu9250.MPU9250(i2c)
+mpu = MPU9250(i2c)
