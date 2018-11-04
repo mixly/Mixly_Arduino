@@ -53,7 +53,7 @@ Blockly.Python.dicts_create_with = function() {
 
   var keyName = this.getFieldValue('KEY' + n);
     
-  code[n] = "'"+keyName+"':"+(Blockly.Python.valueToCode(this, 'ADD' + n, Blockly.Python.ORDER_NONE) || default_value);
+  code[n] = keyName+":"+(Blockly.Python.valueToCode(this, 'ADD' + n, Blockly.Python.ORDER_NONE) || default_value);
   }
   var code = varName+'= '+ '{' + code.join(', ') + '}\n';
   //var code =''+varName+'['+size+"]"+'='+ '{' + code.join(', ') + '};\n';
@@ -74,7 +74,7 @@ Blockly.Python.dicts_get = function() {
   var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   //var size=window.parseFloat(this.getFieldValue('SIZE'));
   var text=this.getFieldValue('KEY');
-  var code = varName+"['" + text + "']";
+  var code = varName+"[" + text + "]";
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
 
@@ -82,14 +82,14 @@ Blockly.Python.dicts_add_or_change = function(){
   var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || 'mydict';
   var KEY = this.getFieldValue('KEY');
   var argument = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
-  var code=varName + "['"  + KEY + "'] = " + argument+'\n';
+  var code=varName + "["  + KEY + "] = " + argument+'\n';
   return code;
 };
 
 Blockly.Python.dicts_delete = function() {
   var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || 'mydict';
   var text=this.getFieldValue('KEY');
-  var code= "del "+ varName+"['" + text + "']\n";
+  var code= "del "+ varName+"[" + text + "]\n";
   return code;
 };
 
@@ -143,11 +143,11 @@ Blockly.Python.dicts_add_change_del = function(block){
     case 'INSERT':
       //var at2 = block.getFieldValue('AT2');
       var at2 = Blockly.Python.valueToCode(this, 'AT2', Blockly.Python.ORDER_ASSIGNMENT) || '0';
-      var code = dict + "['"  + KEY + "'] = " + at2 + '\n'
+      var code = dict + "["  + KEY + "] = " + at2 + '\n'
       break;
     
     case 'DELETE':
-      var code = 'del ' + dict + "['"  + KEY + "']\n"
+      var code = 'del ' + dict + "["  + KEY + "]\n"
       break;
     default:
       throw 'Unhandled option (lists_setIndex2)';
@@ -158,7 +158,7 @@ Blockly.Python.dicts_add_change_del = function(block){
 Blockly.Python.dicts_pop = function(){
   var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var text=this.getFieldValue('KEY');
-  var code=varName + ".pop('"  + text + "')";
+  var code=varName + ".pop("  + text + ")";
   return [code, Blockly.Python.ORDER_ATOMIC];
 }
 
@@ -167,6 +167,6 @@ Blockly.Python.dicts_setdefault = function() {
   var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || 'mydict';
   var text=this.getFieldValue('KEY');
   var argument = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
-  var code= varName + ".setdefault "+ "('" + text + "'," + argument + ")\n";
+  var code= varName + ".setdefault"+ "(" + text + "," + argument + ")\n";
   return code;
 };

@@ -226,7 +226,7 @@ Blockly.Blocks['dicts_create_with'] = {
                         new Blockly.FieldTextInput(
                             keyNames.length > i
                                 ? keyNames[i]
-                                : 'key'),
+                                : "'key"+(i+1)+"'"),
 
                         'KEY'+i)
 
@@ -348,7 +348,7 @@ Blockly.Blocks['dicts_get'] = {
         .setCheck('Dict')    
     this.appendDummyInput("")   
         .appendField(Blockly.Msg.DICTS_GET_IN)
-        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+        .appendField(new Blockly.FieldTextInput("'key'"), 'KEY')
         .appendField(Blockly.Msg.DICTS_GET_VALUE);
        
     this.setOutput(true);
@@ -363,7 +363,7 @@ Blockly.Blocks['dicts_add_or_change'] = {
         .appendField(Blockly.Msg.DICTS_GET_FROM_DICTS)
     this.appendValueInput('VAR')
         .appendField(Blockly.Msg.DICTS_ADD)
-        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+        .appendField(new Blockly.FieldTextInput("'key'"), 'KEY')
         .appendField(Blockly.Msg.DICTS_ADD_VALUE);
     this.appendDummyInput();
     this.setInputsInline(true);
@@ -381,7 +381,7 @@ Blockly.Blocks['dicts_delete'] = {
         .appendField(Blockly.Msg.DICTS_GET_FROM_DICTS);
     this.appendDummyInput("")
         .appendField(Blockly.Msg.DICTS_DELETE_IN)
-        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+        .appendField(new Blockly.FieldTextInput("'key'"), 'KEY')
         .appendField(Blockly.Msg.DICTS_DELETE_VALUE);
        
     this.setPreviousStatement(true);
@@ -516,7 +516,7 @@ Blockly.Blocks['dicts_deldict'] = {
     this.appendDummyInput('AT2')
     this.appendDummyInput("")   
         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE)
-        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+        .appendField(new Blockly.FieldTextInput("'key'"), 'KEY')
         .appendField(Blockly.Msg.DICTS_ADD_VALUE);
     this.updateAt_(true);
     this.setInputsInline(true);
@@ -612,7 +612,7 @@ Blockly.Blocks['dicts_pop'] = {
     this.appendDummyInput("")
         .appendField(Blockly.blockpy_DICT_POP)
     this.appendDummyInput("")
-        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+        .appendField(new Blockly.FieldTextInput("'key'"), 'KEY')
         .appendField(Blockly.Msg.DICTS_GET_VALUE);    
     this.setTooltip(Blockly.Msg.DICT_POP_TOOLTIP);
     this.setInputsInline(true);
@@ -627,7 +627,7 @@ Blockly.Blocks['dicts_setdefault'] = {
         .setCheck('Dict');
     this.appendDummyInput("")
         .appendField(Blockly.Msg.DICTS_SET_DEFAULT)
-        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+        .appendField(new Blockly.FieldTextInput("'key'"), 'KEY')
         .appendField(Blockly.Msg.DICTS_DEFAULT_VALUE);
     this.appendValueInput('VAR')    
        

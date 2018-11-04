@@ -575,7 +575,7 @@ PythonToBlocks.prototype.Delete = function(/* {asdl_seq *} */ targets)
         var valueAstname = targets.targets[0].slice.value._astname;
         if(valueAstname == "Str") {
             return block("dicts_delete", targets.lineno, {
-                "KEY":this.Str_value(targets.targets[0].slice.value)
+                "KEY":"'"+this.Str_value(targets.targets[0].slice.value)+"'"
             }, {
                 "DICT": this.convert(targets.targets[0].value)
             }, {
@@ -641,7 +641,7 @@ PythonToBlocks.prototype.Assign = function(node)
             var valueAstname = targets[0].slice.value._astname;
             if(valueAstname == "Str") {
                 return block("dicts_add_or_change", targets.lineno, {
-                    "KEY": this.Str_value(targets[0].slice.value)
+                    "KEY": "'"+this.Str_value(targets[0].slice.value)+"'"
                 }, {
                     "DICT": this.convert(targets[0].value),
                     "VAR": this.convert(value)
@@ -1291,7 +1291,7 @@ PythonToBlocks.prototype.Dict = function(node) {
         if (keys[i]._astname != "Str") {
             throw new Error("Dictionary Keys should be Strings.");
         }
-        keyList["KEY"+i] = this.Str_value(keys[i]);
+        keyList["KEY"+i] = "'"+this.Str_value(keys[i])+"'";
         valueList["VALUE"+i] = this.convert(values[i]);
     }
 
@@ -1908,7 +1908,7 @@ PythonToBlocks.prototype.Subscript = function(node) {
     if (slice._astname == "Index") {
         if(slice.value._astname == "Str"){
             return block("dicts_get", node.lineno, {
-                "KEY": this.Str_value(slice.value)
+                "KEY": "'"+this.Str_value(slice.value)+"'"
             }, {
                 "DICT": this.convert(value)
             });
