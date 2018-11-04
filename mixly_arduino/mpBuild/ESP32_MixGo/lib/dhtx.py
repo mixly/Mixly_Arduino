@@ -1,5 +1,6 @@
 import dht
 import machine
+import time
 
 def get_temperature(sensetype,pin):
 	if (sensetype=='dht11'):
