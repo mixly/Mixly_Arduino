@@ -156,7 +156,8 @@ class RGB:
     def write(self,n,r,g,b):
         self[n] = (r, g, b)
         self.write()
-            
+		
+pin15 = MyPin(15)            
 pin16 = MyPin(16)
 pin17 = MyPin(17)
 pin17.read_digital()
