@@ -3,7 +3,7 @@ import machine
 import onewire
 import ds18x20
 
-def get_dstemp(pin):
+def get_ds18x20_temperature(pin):
 	dat = machine.Pin(pin)
 	ds = ds18x20.DS18X20((onewire.OneWire(dat)))
 	roms = ds.scan()

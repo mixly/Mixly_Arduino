@@ -57,7 +57,7 @@ Blockly.Python.inout_analog_write_set = function () {
     return code;
 };
 
-Blockly.Python.inout_analog_write_set_freq = function () {
+Blockly.Python.inout_pwm_analog_write_set_freq = function () {
     //Blockly.Python.definitions_['import_machine_Pin'] = "from machine import Pin";
    // Blockly.Python.definitions_['import_machine_PWM'] = "from machine import PWM";
    Blockly.Python.definitions_['import_machine'] = 'import machine';

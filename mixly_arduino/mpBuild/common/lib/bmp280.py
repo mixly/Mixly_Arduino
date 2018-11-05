@@ -182,7 +182,7 @@ class BMP280:
 
 
 
-bmp = BMP280(I2C(scl = Pin(22), sda = Pin(21), freq = 100000))
+# bmp = BMP280(I2C(scl = Pin(22), sda = Pin(21), freq = 100000))
 
 # print(bmp.temperature)
 # print(bmp.pressure)  

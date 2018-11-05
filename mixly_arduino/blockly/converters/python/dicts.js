@@ -16,7 +16,7 @@ pbc.assignD.get('Dict')['create_block'] = function (py2block, node, targets, val
         if (keys[i]._astname != "Str") {
             throw new Error("Dictionary Keys should be Strings.");
         }
-        keyList["KEY"+i] = "'"+py2block.Str_value(keys[i])+"'";
+        keyList["KEY"+i] = py2block.Str_value(keys[i]);
         valueList["ADD"+i] = py2block.convert(values[i]);
     }
     keyList['VAR'] = py2block.Name_str(targets[0]);
@@ -73,4 +73,3 @@ pbc.objectFunctionD.get('values')['Dict'] = function(py2block, func, args, keywo
         "inline": "true"
     });
 };
-

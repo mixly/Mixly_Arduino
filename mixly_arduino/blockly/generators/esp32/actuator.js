@@ -10,7 +10,7 @@ Blockly.Python.esp32_mixgo_music_pitch = function(block) {
   Blockly.Python.definitions_['import_machine'] = 'import machine';
   var number_pitch = Blockly.Python.valueToCode(block, 'pitch', Blockly.Python.ORDER_ATOMIC);
   var pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_ATOMIC);
-  var code = 'music.pitch(round(' + number_pitch + '), machine.PWM(machine.Pin(' + pin + ')))\n';
+  var code = 'music.pitch(round(' + number_pitch + '), ' + pin + ')\n';
   return code;
 };
 
@@ -18,7 +18,7 @@ Blockly.Python.esp32_mixgo_music_stop = function(block) {
   Blockly.Python.definitions_['import_music'] = 'import music';
   Blockly.Python.definitions_['import_machine'] = 'import machine';
   var pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_ATOMIC);
-  var code = 'music.stop(machine.PWM(machine.Pin('+pin+')))\n';
+  var code = 'music.stop('+pin+')\n';
   return code;
 };
 
@@ -27,7 +27,7 @@ Blockly.Python.servo_move = function() {
   Blockly.Python.definitions_['import_machine'] = 'import machine';
   var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN',Blockly.Python.ORDER_ATOMIC);
   var value_degree = Blockly.Python.valueToCode(this, 'DEGREE', Blockly.Python.ORDER_ATOMIC);
-  var code = 'servo.write_angle(machine.PWM(machine.Pin('+dropdown_pin+')),'+value_degree+')\n';
+  var code = 'servo.servo_write_angle('+dropdown_pin+','+value_degree+')\n';
   return code;
 };
 

@@ -19,6 +19,12 @@ def btn_a(p):
 def btn_b(p):
     button_b.val = 1
 
+def mixgo_get_brightness():
+	return ADCSensor(pin = 39).read()
+
+def mixgo_get_soundlevel():
+	return ADCSensor(pin = 35).read()
+	
 class Button:
     def __init__(self, pin):
         self.val = 0
@@ -179,8 +185,7 @@ touch2 = MyPin(33)
 touch3 = MyPin(25)
 touch4 = MyPin(26)
 #music = music(pin=27)
-brightness = ADCSensor(pin = 39)
-sound = ADCSensor(pin = 35)
+
 i2c = I2C(scl = Pin(22), sda = Pin(21), freq = 100000)
 rgb = NeoPixel(Pin(2), 2)
 tim = Timer(-1)

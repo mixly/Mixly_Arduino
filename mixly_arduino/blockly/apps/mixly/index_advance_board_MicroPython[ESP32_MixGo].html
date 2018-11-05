@@ -479,22 +479,17 @@
           <shadow type="pins_digital"></shadow>
         </value>
       </block>
-      <block type="inout_analog_write_init">
+      <block type="inout_analog_read_init">
         <value name="PIN">
-          <shadow type="pins_dac_pin"></shadow>
+          <shadow type="pins_analog_pin"></shadow>
         </value>
       </block>
-      <block type="inout_analog_write">
+      <block type="inout_analog_read">
         <value name="PIN">
-          <shadow type="pins_dac"></shadow>
-        </value>
-        <value name="NUM">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
+          <shadow type="pins_analog"></shadow>
         </value>
       </block>
-      <block type="inout_pwm_analog_write_init">
+	   <block type="inout_pwm_analog_write_init">
         <value name="PIN">
           <shadow type="pins_pwm_pin"></shadow>
         </value>
@@ -509,7 +504,7 @@
           </shadow>
         </value>
       </block>
-      <block type="inout_analog_write_set_freq">
+      <block type="inout_pwm_analog_write_set_freq">
         <value name="PIN">
           <shadow type="pins_pwm"></shadow>
         </value>
@@ -517,16 +512,6 @@
           <shadow type="math_number">
             <field name="NUM">2000</field>
           </shadow>
-        </value>
-      </block>
-      <block type="inout_analog_read_init">
-        <value name="PIN">
-          <shadow type="pins_analog_pin"></shadow>
-        </value>
-      </block>
-      <block type="inout_analog_read">
-        <value name="PIN">
-          <shadow type="pins_analog"></shadow>
         </value>
       </block>
       <block type="inout_pin_pressed_init">
@@ -546,6 +531,22 @@
           <shadow type="pins_digital_pin"></shadow>
         </value>
       </block>
+	<block type="inout_analog_write_init">
+        <value name="PIN">
+          <shadow type="pins_dac_pin"></shadow>
+        </value>
+      </block>
+      <block type="inout_analog_write">
+        <value name="PIN">
+          <shadow type="pins_dac"></shadow>
+        </value>
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      
     </category>
     <category id="catControl" colour="120">
        <block type="controls_whileUntil">
@@ -2282,31 +2283,31 @@
             </shadow>
           </value>
         </block>
-        <block type="controls_attachGestureInterrupt">
+        <block type="sensor_mpu9250_attachGestureInterrupt">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mpu</field>
+              <field name="VAR">mixgo.mpu</field>
             </shadow>
           </value>
         </block>
-        <block type="sensor_mixgo_get_acceleration">
+        <block type="sensor_mpu9250_get_acceleration">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mpu</field>
+              <field name="VAR">mixgo.mpu</field>
             </shadow>
           </value>
         </block>
-        <block type="sensor_field_strength">
+        <block type="sensor_mpu9250_field_strength">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mpu</field>
+              <field name="VAR">mixgo.mpu</field>
             </shadow>
           </value>
         </block>
-        <block type="sensor_temperature">
+        <block type="sensor_mpu9250_temperature">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mpu</field>
+              <field name="VAR">mixgo.mpu</field>
             </shadow>
           </value>
         </block>

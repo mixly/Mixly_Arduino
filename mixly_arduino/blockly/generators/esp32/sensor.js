@@ -20,69 +20,77 @@ Blockly.Python.sensor_mixgo_button_was_pressed = function(){
 };
 
 //ok
-Blockly.Python.controls_attachGestureInterrupt = function(){
+Blockly.Python.sensor_mpu9250_attachGestureInterrupt = function(){
     Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     var gesture = this.getFieldValue('gesture');
     var branch = Blockly.Python.statementToCode(this, 'DO');
     var d=branch || Blockly.Python.PASS;
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-	var code = 'if '+v.replace('mixgo_mpu','mixgo.mpu')+'.is_gesture("' + gesture + '"):\n' + d;
-    // Blockly.Python.definitions_['func_gesture' + gesture] = code;
+	if (v.indexOf('mixgo_')>-1)
+		Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+	v=v.replace('mixgo_mpu','mixgo.mpu');
+	var code = 'if '+v+'.mpu9250_is_gesture("' + gesture + '"):\n' + d;
     return code;
 }
 
 
 //ok
-Blockly.Python.sensor_mixgo_get_acceleration = function(){
+Blockly.Python.sensor_mpu9250_get_acceleration = function(){
     Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     var key = this.getFieldValue('key')
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
+	if (v.indexOf('mixgo_')>-1)
+		Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
 	v=v.replace('mixgo_mpu','mixgo.mpu');
-    var code = v+'.get_' + key + '()';
+    var code = v+'.mpu9250_get_' + key + '()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 
 /*
-Blockly.Python.sensor_calibrate_compass= function(){
+Blockly.Python.sensor_mpu9250_calibrate_compass= function(){
     Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     return 'compass.calibrate()\n';
 };
 //ok
-Blockly.Python.sensor_is_compass_calibrated= function(){
+Blockly.Python.sensor_mpu9250_is_compass_calibrated= function(){
     Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     return ['compass.is_calibrated()', Blockly.Python.ORDER_ATOMIC];
 };
 */
-Blockly.Python.sensor_compass_heading= function(){
+Blockly.Python.sensor_mpu9250_compass_heading= function(){
     Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
     Blockly.Python.definitions_['import_machine'] = 'import machine';
-    return ['compass.heading()', Blockly.Python.ORDER_ATOMIC];
+    return ['compass.mpu9250_heading()', Blockly.Python.ORDER_ATOMIC];
 };
 //ok
-Blockly.Python.sensor_temperature = function(){
+Blockly.Python.sensor_mpu9250_temperature = function(){
     Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
+	if (v.indexOf('mixgo_')>-1)
+		Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
 	v=v.replace('mixgo_mpu','mixgo.mpu');
-    return [v+'.get_board_temperature()', Blockly.Python.ORDER_ATOMIC];
+    return [v+'.mpu9250_get_temperature()', Blockly.Python.ORDER_ATOMIC];
 };
-Blockly.Python.sensor_field_strength= function(){
+Blockly.Python.sensor_mpu9250_field_strength= function(){
     Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
+	if (v.indexOf('mixgo_')>-1)
+		Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
 	v=v.replace('mixgo_mpu','mixgo.mpu');
     var compass = this.getFieldValue('compass');
     var a;
     if(compass =='strength'){
-        a = v+'.get_field_strength()';
+        a = v+'.mpu9250_get_field_strength()';
     }
     else if(compass =='heading'){
-        a = v+'.heading()';
+        a = v+'.mpu9250_heading()';
     }
     return [a, Blockly.Python.ORDER_ATOMIC];
 };
@@ -187,18 +195,18 @@ Blockly.Python.sensor_dht11 = function () {
     var sensor_type = this.getFieldValue('TYPE');
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var what = this.getFieldValue('WHAT');
-    var code ='dhtx.get_'+what+"('"+sensor_type+"', "+dropdown_pin+')';
+    var code ='dhtx.get_dht_'+what+"('"+sensor_type+"', "+dropdown_pin+')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.sensor_mixgo_light= function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
-    return ['mixgo.brightness.read()', Blockly.Python.ORDER_ATOMIC];
+    return ['mixgo.mixgo_get_brightness()', Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.sensor_mixgo_sound= function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
-    return ['mixgo.sound.read()', Blockly.Python.ORDER_ATOMIC];
+    return ['mixgo.mixgo_get_soundlevel()', Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.number1 = function(){
@@ -299,7 +307,7 @@ Blockly.Python.sensor_sht=function(){
 Blockly.Python.sensor_ds18x20=function(){
     Blockly.Python.definitions_['import_ds18x20x'] = 'import ds18x20x';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
-    var code ='ds18x20x.get_dstemp('+dropdown_pin+')';
+    var code ='ds18x20x.get_ds18x20_temperature('+dropdown_pin+')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 

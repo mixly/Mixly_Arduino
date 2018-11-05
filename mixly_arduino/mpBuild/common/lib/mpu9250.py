@@ -383,10 +383,10 @@ class MPU9250:
     #     pass `accel_fs=SF_G` parameter to the MPU6500 constructor.
     #     """
     #     return self.mpu6500.acceleration
-    def get_board_temperature(self):
+    def mpu9250_get_temperature(self):
 		return self.mpu6500.temperature
 		
-    def get_values(self):
+    def mpu9250_get_values(self):
         """
         Acceleration measured by the sensor. By default will return a
         3-tuple of X, Y, Z axis values in m/s^2 as floats. To get values in g
@@ -394,7 +394,7 @@ class MPU9250:
         """
         return self.mpu6500.acceleration()
     
-    def get_x(self):
+    def mpu9250_get_x(self):
         """
         Acceleration measured by the sensor. By default will return a
         3-tuple of X, Y, Z axis values in m/s^2 as floats. To get values in g
@@ -402,7 +402,7 @@ class MPU9250:
         """
         return self.mpu6500.acceleration()[0]
     
-    def get_y(self):
+    def mpu9250_get_y(self):
         """
         Acceleration measured by the sensor. By default will return a
         3-tuple of X, Y, Z axis values in m/s^2 as floats. To get values in g
@@ -410,7 +410,7 @@ class MPU9250:
         """
         return self.mpu6500.acceleration()[1]
 
-    def get_z(self):
+    def mpu9250_get_z(self):
         """
         Acceleration measured by the sensor. By default will return a
         3-tuple of X, Y, Z axis values in m/s^2 as floats. To get values in g
@@ -419,7 +419,7 @@ class MPU9250:
         return self.mpu6500.acceleration()[2]
 
            
-    def is_gesture(self,choice):
+    def mpu9250_is_gesture(self,choice):
     	if choice == 'face up':
     		if self.mpu6500.acceleration()[2] <= -9:
     			return True
@@ -457,7 +457,7 @@ class MPU9250:
     			return False
 
     @property
-    def gyro(self):
+    def mpu9250_gyro(self):
         """
         Gyro measured by the sensor. By default will return a 3-tuple of
         X, Y, Z axis values in rad/s as floats. To get values in deg/s pass
@@ -466,17 +466,17 @@ class MPU9250:
         return self.mpu6500.gyro
 
     @property
-    def magnetic(self):
+    def mpu9250_magnetic(self):
         """
         X, Y, Z axis micro-Tesla (uT) as floats.
         """
         return self.ak8963.magnetic
 
     # @property
-    def get_field_strength(self):
-    	x=self.magnetic[0]
-    	y=self.magnetic[1]
-    	z=self.magnetic[2]
+    def mpu9250_get_field_strength(self):
+    	x=self.mpu9250_magnetic[0]
+    	y=self.mpu9250_magnetic[1]
+    	z=self.mpu9250_magnetic[2]
     	return (x**2+y**2+z**2)**0.5*1000
 
 

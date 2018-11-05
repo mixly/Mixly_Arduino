@@ -100,7 +100,7 @@ Blockly.Blocks.inout_analog_write_set = {
     }
 };
 
-Blockly.Blocks.inout_analog_write_set_freq = {
+Blockly.Blocks.inout_pwm_analog_write_set_freq = {
     init: function(){
         this.setColour(Blockly.Blocks.base.HUE);
         this.appendValueInput("PIN", Number)
@@ -348,7 +348,7 @@ Blockly.Blocks['inout_pin_pressed_init'] = {
 };
 
 Blockly.Blocks.inout_pinMode=Blockly.Blocks.inout_digital_init;
-Blockly.Blocks.inout_analog_write_set_freq = Blockly.Blocks.inout_analog_write_set_freq;
+Blockly.Blocks.inout_analog_write_set_freq = Blockly.Blocks.inout_pwm_analog_write_set_freq;
 Blockly.Blocks['pin_pressed_init'] = Blockly.Blocks['inout_pin_pressed_init'];
 Blockly.Blocks['pin_pressed']=Blockly.Blocks['inout_pin_pressed'];
 Blockly.Blocks.controls_pin_attachInterrupt=Blockly.Blocks.inout_pin_attachInterrupt;

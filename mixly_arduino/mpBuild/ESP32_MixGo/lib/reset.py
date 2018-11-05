@@ -9,5 +9,11 @@ try:
 	display.clear()
 	import music
 	music.stop(machine.PWM(machine.Pin(27)))
+	import neopixel
+	rgb = neopixel.NeoPixel(machine.Pin(2), 2, timing = True)
+	rgb[0] = (0, 0, 0)
+	rgb[1] = (0, 0, 0)
+	rgb.write()
+
 except:
 	pass
