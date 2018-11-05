@@ -58,9 +58,10 @@ Blockly.Blocks.actuator_led_bright = {
     .appendField(Blockly.MIXLY_SETTING);
     this.appendValueInput('led')
     .appendField(Blockly.MIXLY_BUILDIN_LED)
-    this.appendDummyInput()
+    this.appendValueInput('bright')
+    // this.appendDummyInput()
     .appendField(Blockly.MIXLY_PULSEIN_STAT)  
-    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ESP32_ON, "on"], [Blockly.MIXLY_ESP32_OFF, "off"],[Blockly.MIXLY_ESP32_TOGGLE, "toggle"]]), "bright");
+    // .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ESP32_ON, "on"], [Blockly.MIXLY_ESP32_OFF, "off"],[Blockly.MIXLY_ESP32_TOGGLE, "toggle"]]), "bright");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);

@@ -44,8 +44,9 @@ Blockly.Python.light = function () {
 Blockly.Python.actuator_led_bright= function() {
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var op = Blockly.Python.valueToCode(this,'led', Blockly.Python.ORDER_ATOMIC);
-    var flag = this.getFieldValue('bright');
-    var code = "mixgo.led.setonoff("+op+",'"+flag+"')\n";
+    var bright = Blockly.Python.valueToCode(this,'bright', Blockly.Python.ORDER_ATOMIC);
+    // var bright = this.getFieldValue('bright');
+    var code = "mixgo.led.setonoff("+op+",'"+bright+"')\n";
     return code;
 };
 
