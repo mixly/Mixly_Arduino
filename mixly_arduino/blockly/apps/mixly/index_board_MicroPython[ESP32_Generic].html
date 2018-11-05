@@ -1,4 +1,4 @@
-<html manifest=node.manifest>
+﻿<html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
   <title>Mixly ESP32</title>
@@ -24,7 +24,7 @@
   <script type="text/javascript" src="../../blocks/python/variables.js"></script>
   <script type="text/javascript" src="../../generators/python/variables.js"></script>
   <script src="../../blocks/esp32/esp32_profile.js"></script>
-	<!-- blocks file -->
+  <!-- blocks file -->
   <script src="../../blocks/esp32/pins.js"></script>
   <script src="../../blocks/esp32/inout.js"></script>
   <script src="../../blocks/python/control.js"></script>
@@ -36,10 +36,8 @@
   <script src="../../blocks/python/logic.js"></script>
   <script src="../../blocks/esp32/serial.js"></script>
   <script src="../../blocks/esp32/communicate.js"></script>
-  <script src="../../blocks/esp32/iot.js"></script>
   <script src="../../blocks/esp32/sensor.js"></script>
-  <script src="../../blocks/esp32/network.js"></script>
-  <script src="../../blocks/python/storage.js"></script>
+  <script src="../../blocks/esp32/storage.js"></script>
   <script src="../../blocks/esp32/actuator.js"></script>
   <script src="../../blocks/esp32/display.js"></script>
   <script src="../../blocks/python/procedures.js"></script>
@@ -47,6 +45,7 @@
   <script src="../../blocks/python/tuple.js"></script>
   <script src="../../blocks/python/set.js"></script>
 	<!-- generator file -->
+  
   <script src="../../generators/esp32/pins.js"></script>
   <script src="../../generators/esp32/inout.js"></script>
   <script src="../../generators/python/control.js"></script>
@@ -57,13 +56,11 @@
   <script src="../../generators/python/dicts.js"></script>
   <script src="../../generators/python/logic.js"></script>
   <script src="../../generators/esp32/serial.js"></script>
-  <script src="../../generators/esp32/iot.js"></script>
   <script src="../../generators/esp32/communicate.js"></script>
   <script src="../../generators/esp32/sensor.js"></script>
-  <script src="../../generators/python/storage.js"></script>
+  <script src="../../generators/esp32/storage.js"></script>
   <script src="../../generators/esp32/actuator.js"></script>
   <script src="../../generators/esp32/display.js"></script>
-  <script src="../../generators/esp32/network.js"></script>
   <script src="../../generators/python/procedures.js"></script>
   <script src="../../generators/esp32/factory.js"></script>
   <script src="../../generators/python/set.js"></script>
@@ -78,12 +75,12 @@
   <script src="./js/py2block_editor.js" type="application/javascript"></script>
   <script src="../../converters/esp32/py2block_config.js" type="application/javascript"></script>
   <script src="../../converters/esp32/inout.js" type="application/javascript"></script>
-  <script src="../../converters/esp32/network.js" type="application/javascript"></script>
-  <script src="../../converters/esp32/iot.js" type="application/javascript"></script>
   <script src="../../converters/esp32/serial.js" type="application/javascript"></script>
   <script src="../../converters/esp32/communicate.js" type="application/javascript"></script>
   <script src="../../converters/esp32/display.js" type="application/javascript"></script>
   <script src="../../converters/esp32/actuator.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/control.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/sensor.js" type="application/javascript"></script>
   <script src="../../converters/python/control.js" type="application/javascript"></script>
   <script src="../../converters/python/math.js" type="application/javascript"></script>
   <script src="../../converters/python/logic.js" type="application/javascript"></script>
@@ -91,14 +88,12 @@
   <script src="../../converters/python/lists.js" type="application/javascript"></script>
   <script src="../../converters/python/tuple.js" type="application/javascript"></script>
   <script src="../../converters/python/dicts.js" type="application/javascript"></script>
-  <script src="../../converters/python/storage.js" type="application/javascript"></script>
   <script src="../../converters/python/set.js" type="application/javascript"></script>
-  <script src="../../converters/esp32/control.js" type="application/javascript"></script>
   <script src="./js/python_to_blockly.js" type="application/javascript"></script>
   <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
   <script src="js/skulpt/dist/skulpt-stdlib.js" type="application/javascript"></script>
   <script src="js/skulpt/engine.js" type="application/javascript"></script>
-  <link rel="stylesheet" type="text/css" href="color_esp32_advance.css" />
+  <link rel="stylesheet" type="text/css" href="color_esp32.css" />
   <script>
     var sidecodeDisplay=false;
     /**
@@ -346,17 +341,18 @@
   </script>
   <style type="text/css">
       span#span_blocks, span#span_arduino, select#languageMenu {
-          font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';
+          font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';
       }
 
       span.blocklyTreeLabel {
-          font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';
+          font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';
       }
 
       text.blocklyText {
-          font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';
+          font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';
       }
   </style>
+
 </head>
 <body onload="init()">
   <table height="100%" width="100%" id="table_whole">
@@ -370,20 +366,20 @@
             <td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
             <td class="tabcoyright">
-              <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
+             <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;color:#999;">copyright</span>
             </td>
             <td class="tabmode">
-              <a class="viewLeft" id="viewMode1" href="index_board_MicroPython[ESP32].html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;" >普通视图</a><span class="viewRight" id="viewMode2" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</span>
+              <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_MicroPython[ESP32].html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light';font-size:12px;">高级视图</a>
             </td>
             <script type="text/javascript">
-              var viewMode1 = document.getElementById('viewMode1');
-              viewMode1.href = 'index_board_MicroPython[ESP32_MixGo].html?lang='+Code.LANG;
+              var viewMode2 = document.getElementById('viewMode2');
+              viewMode2.href = 'index_advance_board_MicroPython[ESP32_Generic].html?lang='+Code.LANG;
             </script>
             <td class="tabmin">
-              <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
+             <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
             </td>
             <td class="tabmin" style="padding-right:20px">
-              <input onclick="Blockly.mainWorkspace.undo(1);" name="redo" type="image" title="redo(ctrl+y)"  src="media/redo.png" style="padding:5px" onmouseover="this.src='media/redo1.png'" onmousedown="this.src='media/redo2.png'" onmouseup="this.src='media/redo1.png'" onmouseout="this.src='media/redo.png'" width="20" height="20" border="0">
+               <input onclick="Blockly.mainWorkspace.undo(1);" name="redo" type="image" title="redo(ctrl+y)"  src="media/redo.png" style="padding:5px" onmouseover="this.src='media/redo1.png'" onmousedown="this.src='media/redo2.png'" onmouseup="this.src='media/redo1.png'" onmouseout="this.src='media/redo.png'" width="20" height="20" border="0">
             </td>
             <td class="tabmin" style="padding-right:20px;display:none;">
               <button id="fakeload">LoadXML</button>
@@ -438,8 +434,8 @@
                 </select>
             </td>
             <script>
-              document.getElementById('span_blocks').textContent = MSG['tab_blocks'];
-              document.getElementById('span_arduino').textContent = MSG['tab_arduino'];
+             document.getElementById('span_blocks').textContent = MSG['tab_blocks'];
+             document.getElementById('span_arduino').textContent = MSG['tab_arduino'];
             </script>
           </tr>
         </table>
@@ -457,7 +453,7 @@
   <!-- <div id="content_arduino2" wrap="off" ></div> -->
   <textarea id="content_xml" class="content" wrap="off" readonly></textarea>
   <xml id="toolbox" style="display: none">
-    <category name="" id="catInOut" colour="20">
+     <category name="" id="catInOut" colour="20">
       <block type="inout_highlow"></block>
       <block type="inout_digital_init">
         <value name="PIN">
@@ -489,7 +485,7 @@
           <shadow type="pins_analog"></shadow>
         </value>
       </block>
-	   <block type="inout_pwm_analog_write_init">
+	  <block type="inout_pwm_analog_write_init">
         <value name="PIN">
           <shadow type="pins_pwm_pin"></shadow>
         </value>
@@ -531,7 +527,7 @@
           <shadow type="pins_digital_pin"></shadow>
         </value>
       </block>
-	<block type="inout_analog_write_init">
+	  <block type="inout_analog_write_init">
         <value name="PIN">
           <shadow type="pins_dac_pin"></shadow>
         </value>
@@ -1385,80 +1381,6 @@
           </value>
         </block>
       </category>
-      <category id="catStorage" colour="0">
-        <block type="storage_fileopen">
-          <value name="FILENAME">
-            <shadow type="text">
-              <field name="TEXT">filename.txt</field>
-            </shadow>
-          </value>
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_file_write">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_get_contents">
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-          <value name="SIZE">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_can_write_ornot">
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_get_filename">
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_close_file">
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_list_all_files"> </block>
-        <block type="storage_delete_file">
-          <value name="FILE">
-            <shadow type="text">
-              <field name="TEXT">filename.txt</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_get_file_size">
-          <value name="FILE">
-            <shadow type="text">
-              <field name="TEXT">filename.txt</field>
-            </shadow>
-          </value>
-        </block>
-      </category>
       <category id="catSerialPort" colour="65">
         <block type="system_print_inline">
               <value name="VAR">
@@ -1466,14 +1388,14 @@
                       <field name="TEXT">Mixly</field>
                   </shadow>
               </value>
-          </block>
+        </block>
         <block type="system_print">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
               </value>
-          </block>
+        </block>
         <block type="system_input">
               <value name="VAR">
                   <shadow type="text">
@@ -1528,688 +1450,9 @@
             <shadow type="math_number"><field name="NUM">100000</field></shadow>
           </value>
         </block>
-        <block type="communicate_i2c_read">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">i2c</field>
-            </shadow>
-          </value>
-          <value name="address">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="data">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_i2c_write">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">i2c</field>
-            </shadow>
-          </value>
-          <value name="address">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="data">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_i2c_scan">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">i2c</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_i2c_master_read">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">i2c</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_i2c_available">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">i2c</field>
-            </shadow>
-          </value>
-        </block>
-	    <block type="communicate_spi_init">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">spi</field>
-            </shadow>
-          </value>
-          <value name="freq">
-            <shadow type="math_number">
-              <field name="NUM">200000</field>
-            </shadow>
-          </value>
-        <value name="polarity">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="phase">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="sck">
-            <shadow type="pins_digital_pin">
-              <field name="PIN">0</field>
-            </shadow>
-          </value>
-          <value name="mosi">
-            <shadow type="pins_digital_pin">
-              <field name="PIN">4</field>
-            </shadow>
-          </value>
-          <value name="miso">
-            <shadow type="pins_digital_pin">
-              <field name="PIN">5</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_spi_set">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">spi</field>
-            </shadow>
-          </value>
-          <value name="data">
-            <shadow type="math_number">
-              <field name="NUM">200000</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_spi_buffer">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">buf</field>
-            </shadow>
-          </value>
-          <value name="data">
-            <shadow type="math_number">
-              <field name="NUM">50</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_spi_read">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">spi</field>
-            </shadow>
-          </value>
-          <value name="data">
-            <shadow type="math_number">
-              <field name="NUM">10</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_spi_read_output">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">spi</field>
-            </shadow>
-          </value>
-          <value name="data">
-            <shadow type="math_number">
-              <field name="NUM">10</field>
-            </shadow>
-          </value>
-          <value name="val">
-            <shadow type="math_number">
-              <field name="NUM">0xff</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_spi_readinto">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">spi</field>
-            </shadow>
-          </value>
-          <value name="data">
-            <shadow type="variables_get">
-              <field name="VAR">buf</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_spi_readinto_output">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">spi</field>
-            </shadow>
-          </value>
-          <value name="data">
-            <shadow type="variables_get">
-              <field name="VAR">buf</field>
-            </shadow>
-          </value>
-          <value name="val">
-            <shadow type="math_number">
-              <field name="NUM">0xff</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_spi_write">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">spi</field>
-            </shadow>
-          </value>
-          <value name="data">
-            <shadow type="math_number">
-              <field name="NUM">12345</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_spi_write_readinto">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">spi</field>
-            </shadow>
-          </value>
-          <value name="data"></value>
-          <value name="val">
-            <shadow type="variables_get">
-              <field name="VAR">buf</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_ow_init">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">ow</field>
-            </shadow>
-          </value>
-           <value name="BUS">
-            <shadow type="pins_digital">
-              <field name="PIN">12</field>
-            </shadow>
-          </value>
-        </block>
-		<block type="communicate_ow_scan">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">ow</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_ow_read">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">ow</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_ow_write">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">ow</field>
-            </shadow>
-          </value>
-          <value name="byte">
-          </value>
-        </block>
-        <block type="communicate_ow_select">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">ow</field>
-            </shadow>
-          </value>
-          <value name="byte">
-            <shadow type="text">
-              <field name="TEXT">12345</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="communicate_ow_reset">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">ow</field>
-            </shadow>
-          </value>
-        </block>
-       </category>
-      <category id="catNetwork" colour="0">
-        <block type="network_init">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">wlan</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_open">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">wlan</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_scan">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">wlan</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_connect">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">wlan</field>
-            </shadow>
-          </value>
-          <value name="id">
-            <shadow type="text">
-              <field name="TEXT">127.16.0.8</field>
-            </shadow>
-          </value>
-          <value name="password">
-            <shadow type="text">
-              <field name="TEXT">01234567</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_wifi_connect">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">wlan</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_get_connect">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">wlan</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_stop">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">wlan</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_get_wifi">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">wlan</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_ap_connect">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">wlan</field>
-            </shadow>
-          </value>
-          <value name="essid">
-            <shadow type="text">
-              <field name="TEXT">127.16.0.8</field>
-            </shadow>
-          </value>
-          <value name="channel">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-        </block>
-      <block type="procedures_defreturn">
-          <field name="NAME">connect_wifi</field>
-          <statement name="STACK">
-            <block type="variables_global">
-              <value name="VAR">
-                <block type="variables_get">
-                  <field name="VAR">wlan</field>
-                </block>
-              </value>
-              <next>
-                <block type="network_init">
-                  <field name="mode">AP</field>
-                  <value name="VAR">
-                    <shadow type="variables_get">
-                      <field name="VAR">wlan</field>
-                    </shadow>
-                  </value>
-                  <next>
-                    <block type="network_open">
-                      <field name="op">True</field>
-                      <value name="VAR">
-                        <shadow type="variables_get">
-                          <field name="VAR">wlan</field>
-                        </shadow>
-                      </value>
-                      <next>
-                        <block type="network_ap_connect">
-                          <value name="VAR">
-                            <shadow type="variables_get">
-                              <field name="VAR">wlan</field>
-                            </shadow>
-                          </value>
-                          <value name="essid">
-                            <shadow type="text">
-                              <field name="TEXT">SmallCabbage</field>
-                            </shadow>
-                          </value>
-                          <value name="channel">
-                            <shadow type="math_number">
-                              <field name="NUM">1</field>
-                            </shadow>
-                          </value>
-                          <next>
-                            <block type="controls_whileUntil">
-                              <field name="MODE">WHILE</field>
-                              <value name="BOOL">
-                                <shadow type="logic_boolean">
-                                  <field name="BOOL">TRUE</field>
-                                </shadow>
-                                <block type="logic_compare">
-                                  <field name="OP">EQ</field>
-                                  <value name="A">
-                                    <block type="network_get_connect">
-                                      <field name="mode">0</field>
-                                      <value name="VAR">
-                                        <shadow type="variables_get">
-                                          <field name="VAR">wlan</field>
-                                        </shadow>
-                                      </value>
-                                    </block>
-                                  </value>
-                                  <value name="B">
-                                    <block type="text">
-                                      <field name="TEXT">0.0.0.0</field>
-                                    </block>
-                                  </value>
-                                </block>
-                              </value>
-                              <statement name="DO">
-                                <block type="base_delay">
-                                  <field name="Time">ms</field>
-                                  <value name="DELAY_TIME">
-                                    <shadow type="math_number">
-                                      <field name="NUM">1000</field>
-                                    </shadow>
-                                  </value>
-                                </block>
-                              </statement>
-                            </block>
-                          </next>
-                        </block>
-                      </next>
-                    </block>
-                  </next>
-                </block>
-              </next>
-            </block>
-          </statement>
-          <value name="RETURN">
-            <block type="logic_boolean">
-              <field name="BOOL">TRUE</field>
-            </block>
-          </value>
-        </block>
-        <block type="network_socket_init">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">s</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_socket_bind">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">s</field>
-            </shadow>
-          </value>
-          <value name="address">
-           <block type="tuple_create_with_noreturn" inline="true">
-              <mutation items="2"></mutation>
-              <value name="ADD0">
-                <block type="text">
-                  <field name="TEXT">0.0.0.0</field>
-                </block>
-              </value>
-              <value name="ADD1">
-                <block type="math_number">
-                  <field name="NUM">80</field>
-                </block>
-              </value>
-            </block>
-          </value>
-        </block>
-        <block type="network_socket_listen">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">s</field>
-            </shadow>
-          </value>
-          <value name="queue">
-            <shadow type="math_number">
-              <field name="NUM">5</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_socket_accept">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">s</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_socket_receive">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">conn</field>
-            </shadow>
-          </value>
-          <value name="size">
-            <shadow type="math_number">
-              <field name="NUM">1024</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_socket_send">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">conn</field>
-            </shadow>
-          </value>
-          <value name="content">
-            <shadow type="variables_get">
-              <field name="VAR">response</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_socket_receive_from">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">conn</field>
-            </shadow>
-          </value>
-          <value name="size">
-            <shadow type="math_number">
-              <field name="NUM">1024</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_socket_send_to">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">conn</field>
-            </shadow>
-          </value>
-          <value name="content">
-            <shadow type="variables_get">
-              <field name="VAR">response</field>
-            </shadow>
-          </value>
-          <value name="address">
-           <shadow type="tuple_create_with_noreturn" inline="true">
-              <mutation items="2"></mutation>
-              <value name="ADD0">
-                <shadow type="text">
-                  <field name="TEXT">127.0.0.1</field>
-                </shadow>
-              </value>
-              <value name="ADD1">
-                <shadow type="math_number">
-                  <field name="NUM">80</field>
-                </shadow>
-              </value>
-            </shadow>
-          </value>
-        </block>
-        <block type="network_socket_close">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">conn</field>
-            </shadow>
-          </value>
-        </block>
-      </category>
-      <category id="catIot" colour="225">
-        <block type="iot_wifi_connect">
-            <value name="WIFINAME">
-                  <shadow type="text">
-                      <field name="TEXT">wifiname</field>
-                  </shadow>
-              </value>
-            <value name="PASSWORD">
-                  <shadow type="text">
-                      <field name="TEXT">wifipassword</field>
-                  </shadow>
-              </value>
-         </block>
-        <block type="iot_onenet_connect">
-              <value name="VAR">
-                <shadow type="variables_get">
-                  <field name="VAR">c</field>
-                </shadow>
-              </value>
-            <value name="SUB">
-                <shadow type="factory_block_return">
-                  <field name="VALUE">sub_cb</field>
-                </shadow>
-              </value>
-            <value name="CLIENT">
-                  <shadow type="text">
-                      <field name="TEXT">31444082</field>
-                  </shadow>
-              </value>
-              <value name="SERVER">
-                  <shadow type="text">
-                      <field name="TEXT">183.230.40.39</field>
-                  </shadow>
-              </value>
-              <value name="USERNAME">
-                  <shadow type="text">
-                      <field name="TEXT">141092</field>
-                  </shadow>
-              </value>
-              <value name="PASSWORD">
-                  <shadow type="text">
-                      <field name="TEXT">61n63JySRowo13ZLDBKw6y896E0=</field>
-                  </shadow>
-              </value>
-              <value name="TOPIC">
-                  <shadow type="text">
-                      <field name="TEXT">XBCRobot</field>
-                  </shadow>
-              </value>
-          </block>
-          <block type="procedures_defnoreturn">
-            <mutation>
-              <arg name="topic"></arg>
-              <arg name="msg"></arg>
-            </mutation>
-            <field name="NAME">sub_cb</field>
-            <statement name="STACK">
-              <block type="controls_if">
-                <value name="IF0">
-                  <block type="logic_compare">
-                    <field name="OP">EQ</field>
-                    <value name="A">
-                      <block type="variables_get">
-                        <field name="VAR">msg</field>
-                      </block>
-                    </value>
-                    <value name="B">
-                      <block type="text_to_number">
-                        <field name="TOWHAT">b</field>
-                        <value name="VAR">
-                          <shadow type="text">
-                            <field name="TEXT">on</field>
-                          </shadow>
-                        </value>
-                      </block>
-                    </value>
-                  </block>
-                </value>
-                <statement name="DO0">
-                  <block type="actuator_led_bright" id="KN$mCj5P/-)*d:;)*6O[">
-                    <field name="bright">on</field>
-                    <value name="led">
-                      <shadow type="number" id="i]`}m{^_wzu+:iC?%Eu4">
-                        <field name="op">1</field>
-                      </shadow>
-                    </value>
-                  </block>
-                </statement>
-              </block>
-            </statement>
-          </block>
-          <block type="iot_onenet_publish">
-              <value name="VAR">
-                <shadow type="variables_get">
-                  <field name="VAR">c</field>
-                </shadow>
-              </value>
-          </block>
-          <block type="iot_onenet_disconnect">
-              <value name="VAR">
-                <shadow type="variables_get">
-                  <field name="VAR">c</field>
-                </shadow>
-              </value>
-          </block>
-          <block type="iot_onenet_check">
-              <value name="VAR">
-                <shadow type="variables_get">
-                  <field name="VAR">c</field>
-                </shadow>
-              </value>
-          </block>
       </category>
       <category id="catSensor" colour="40">
-        <block type="sensor_mixgo_button_is_pressed">
-          <value name="btn">
-            <shadow type="pins_button">
-            </shadow>
-          </value>
-        </block>
-        <block type="sensor_mixgo_button_was_pressed">
-          <value name="btn">
-            <shadow type="pins_button">
-            </shadow>
-          </value>
-        </block>
-        </block>
-        <block type="sensor_mixgo_pin_near"></block>
-        <block type="sensor_mixgo_light"></block>
-        <block type="sensor_mixgo_sound"></block>
-        <block type="sensor_rtc_init">
+       <block type="sensor_rtc_init">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">rtc</field>
@@ -2286,28 +1529,28 @@
         <block type="sensor_mpu9250_attachGestureInterrupt">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mixgo.mpu</field>
+              <field name="VAR">mpu</field>
             </shadow>
           </value>
         </block>
         <block type="sensor_mpu9250_get_acceleration">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mixgo.mpu</field>
+              <field name="VAR">mpu</field>
             </shadow>
           </value>
         </block>
         <block type="sensor_mpu9250_field_strength">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mixgo.mpu</field>
+              <field name="VAR">mpu</field>
             </shadow>
           </value>
         </block>
         <block type="sensor_mpu9250_temperature">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mixgo.mpu</field>
+              <field name="VAR">mpu</field>
             </shadow>
           </value>
         </block>
@@ -2325,7 +1568,7 @@
             </shadow>
           </value>
         </block>
-       <block type="HCSR04">
+        <block type="HCSR04">
           <value name="PIN1">
               <shadow type="pins_digital_pin">
 				<field name="PIN">0</field>
@@ -2342,12 +1585,7 @@
                     <shadow type="pins_digital_pin"></shadow>
                 </value>
         </block>
-        <block type="sensor_ds18x20">
-                <value name="PIN">
-                    <shadow type="pins_digital_pin"></shadow>
-                </value>
-        </block>
-      </category>
+	</category>
       <category id="catActuator" colour="100">
         <block type="servo_move">
           <value name="PIN">
@@ -2364,35 +1602,6 @@
             </shadow>
           </value>
         </block>
-        <block type="actuator_led_bright">
-           <value name="led">
-          <shadow type="number">
-          </shadow>
-        </value>
-        </block>
-        <block type="actuator_get_led_bright">
-          <value name="led">
-            <shadow type="number">
-            </shadow>
-          </value>
-        </block>
-        <block type="actuator_led_brightness">
-           <value name="led">
-          <shadow type="number">
-          </shadow>
-        </value>
-        <value name="bright">
-          <shadow type="math_number">
-          <field name="NUM">1023</field>
-          </shadow>
-        </value>
-        </block>
-        <!-- <block type="esp32_music_play">
-          <value name="pitch">
-            <shadow type="pins_tone_notes"></shadow>
-          </value>
-        </block>
-         <block type="esp32_music_deinit"></block> -->
         <block type="esp32_music_pitch">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
@@ -2403,11 +1612,6 @@
             <shadow type="pins_tone_notes"></shadow>
           </value>
         </block>
-<!--         <block type="esp32_music_play_built_in_easy">
-          <value name="PIN">
-            <shadow type="pins_pwm"></shadow>
-          </value>
-        </block> -->
         <block type="esp32_music_stop">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
@@ -2415,120 +1619,9 @@
             </shadow>
           </value>
         </block>
-<!--         <block type="speech_say_easy">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly 0.997 is great!</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="speech_sing_easy">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">#115DOWWWW</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="speech_prenounce_easy">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">/HEH5EH4EH3EH2EH2EH3EH4EH5EHLP.</field>
-            </shadow>
-          </value>
-        </block> -->
-      </category>
+	</category>
       <category id="catMonitor" colour="180">
-        <block type="display_show_image_or_string">
-          <value name="data">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>
-        <block type="display_scroll_string">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_show_image_or_string_delay">
-          <value name="data">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-          <value name="time">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_scroll_string_delay">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-          <value name="time">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
-            </shadow>
-          </value>
-        </block>
-       <!-- <block type="monitor_show_scroll_string">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">hello</field>
-            </shadow>
-          </value>
-          <value name="time">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="esp32_display_show_image">
-          <value name="PIN">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>-->
-        <block type="display_image_create"></block>
-        <block type="display_image_builtins"></block>
-        <block type="image_arithmetic">
-          <value name="A">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>>
-          <value name="B">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>
-        <block type="display_get_pixel">
-          <value name="x">
-            <shadow type="pins_exlcdh"></shadow>
-          </value>
-          <value name="y">
-            <shadow type="pins_exlcdv"></shadow>
-          </value>
-        </block>
-        <block type="display_bright_point">
-          <value name="x">
-            <shadow type="pins_exlcdh"></shadow>
-          </value>
-          <value name="y">
-            <shadow type="pins_exlcdv"></shadow>
-          </value>
-          <value name="STAT">
-              <shadow type="display_onoff">
-            </shadow>
-          </value>
-        </block>
-        <block type="display_get_screen_pixel"></block>
-        <block type="display_blink_rate">
-          <value name="x">
-            <shadow type="math_number">
-              <field name="NUM">2</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_clear"></block>
-        <block type="display_rgb_init">
+       <block type="display_rgb_init">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">rgb</field>
@@ -2582,177 +1675,29 @@
             </shadow>
           </value>
         </block>
-        <!-- <block type="oled_init">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">lcd</field>
-            </shadow>
+<!--         <block type="display_rgb_color">
+          <value name="PIN">
+            <shadow type="pins_digital" />
           </value>
-          <value name="TX">
-            <shadow type="pins_digital">
-              <field name="PIN">26</field>
+          <value name="_LED_">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
             </shadow>
-          </value>
-          <value name="RX">
-            <shadow type="pins_digital">
-              <field name="PIN">27</field>
-            </shadow>
-          </value>
-          <value name="freq">
-            <shadow type="math_number"><field name="NUM">100000</field></shadow>
           </value>
         </block> -->
-        <block type="display_use_i2c_init">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">oled</field>
-            </shadow>
-          </value>
-          <value name="I2CSUB">
-            <shadow type="variables_get">
-              <field name="VAR">i2c</field>
-            </shadow>
-          </value>
-          <value name="row">
-            <shadow type="math_number">
-              <field name="NUM">128</field>
-            </shadow>
-          </value>
-          <value name="column">
-            <shadow type="math_number">
-              <field name="NUM">64</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_draw_4strings">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">oled</field>
-            </shadow>
-          </value>
-          <value name="Text_line1">
-            <shadow type="text">
-              <field name="TEXT">Example1</field>
-            </shadow>
-          </value>
-          <value name="Text_line2">
-            <shadow type="text">
-              <field name="TEXT">Example2</field>
-            </shadow>
-          </value>
-          <value name="Text_line3">
-            <shadow type="text">
-              <field name="TEXT">Example3</field>
-            </shadow>
-          </value>
-          <value name="Text_line4">
-            <shadow type="text">
-              <field name="TEXT">Example4</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_rect">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">oled</field>
-            </shadow>
-          </value>
-          <value name="x">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="y">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="width">
-            <shadow type="math_number">
-              <field name="NUM">20</field>
-            </shadow>
-          </value>
-          <value name="height">
-            <shadow type="math_number">
-              <field name="NUM">20</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_line">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">oled</field>
-            </shadow>
-          </value>
-          <value name="x">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="y">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="length">
-            <shadow type="math_number">
-              <field name="NUM">20</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_line_arbitrarily">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">oled</field>
-            </shadow>
-          </value>
-          <value name="x1">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="y1">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="x2">
-            <shadow type="math_number">
-              <field name="NUM">40</field>
-            </shadow>
-          </value>
-          <value name="y2">
-            <shadow type="math_number">
-              <field name="NUM">40</field>
-            </shadow>
-          </value>
-        </block>
       </category>
       <sep></sep>
       <category id="catVar" colour="330" custom="VARIABLE">
       </category>
       <category id="catFun" custom="PROCEDURE" colour="290"></category>
-      <category id="catFactory" name="Factory" colour="#777777">
-        <block type="factory_import"></block>
-        <block type="factory_from_import"></block>
-        <block type="factory_function_noreturn"></block>
-        <block type="factory_function_return"></block>
-        <block type="factory_declare"></block>
-        <block type="factory_callMethod_noreturn"></block>
-        <block type="factory_callMethod_return"></block>
-        <block type="factory_block"></block>
-        <block type="factory_block_return"></block>
-        <block type="factory_block_with_textarea"></block>
-        <block type="factory_block_return_with_textarea"></block>
-      </category>
     </xml>
-<script>
-	if(company_block!=null){
-		$('#toolbox').append(company_block);
-	}
-    if(myblock!=null){
-		$('#toolbox').append(myblock);
-	}
+    <script>
+      if(company_block!=null){
+        $('#toolbox').append(company_block);
+      }
+      if(myblock!=null){
+        $('#toolbox').append(myblock);
+      }
     </script>
 
 

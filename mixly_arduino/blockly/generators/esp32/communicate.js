@@ -4,16 +4,15 @@ goog.provide('Blockly.Python.communicate');
 goog.require('Blockly.Python');
 
 Blockly.Python.communicate_i2c_init = function () {
-  Blockly.Python.definitions_['import_machine'] = 'import machine';
-  var dropdown_pin1 = Blockly.Python.valueToCode(this, 'RX',Blockly.Python.ORDER_ATOMIC);
-  var dropdown_pin2 = Blockly.Python.valueToCode(this, 'TX',Blockly.Python.ORDER_ATOMIC);
-  var freq = Blockly.Python.valueToCode(this, 'freq', Blockly.Python.ORDER_ATOMIC);
-  var sub = Blockly.Python.valueToCode(this, 'SUB',Blockly.Python.ORDER_ATOMIC);
-  return ""+sub+" = machine.I2C(scl = machine.Pin(" + dropdown_pin2 + "), sda = machine.Pin(" + dropdown_pin1 + "), freq = " + freq + ")\n";
+	Blockly.Python.definitions_['import_machine'] = 'import machine';
+	var dropdown_pin1 = Blockly.Python.valueToCode(this, 'RX',Blockly.Python.ORDER_ATOMIC);
+    var dropdown_pin2 = Blockly.Python.valueToCode(this, 'TX',Blockly.Python.ORDER_ATOMIC);
+    var freq = Blockly.Python.valueToCode(this, 'freq', Blockly.Python.ORDER_ATOMIC);
+    var sub = Blockly.Python.valueToCode(this, 'SUB',Blockly.Python.ORDER_ATOMIC);
+    return ""+sub+" = machine.I2C(scl = machine.Pin(" + dropdown_pin2 + "), sda = machine.Pin(" + dropdown_pin1 + "), freq = " + freq + ")\n";
 };
 
 Blockly.Python.communicate_i2c_read = function(){
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var address = Blockly.Python.valueToCode(this, 'address', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
@@ -21,7 +20,6 @@ Blockly.Python.communicate_i2c_read = function(){
 };
 
 Blockly.Python.communicate_i2c_write = function(){
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var address = Blockly.Python.valueToCode(this, 'address', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
@@ -29,18 +27,16 @@ Blockly.Python.communicate_i2c_write = function(){
 };
 
 Blockly.Python.communicate_i2c_scan = function(){
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     return [""+name+".scan()", Blockly.Python.ORDER_ATOMIC];
 };
 Blockly.Python.communicate_i2c_master_read = function () {
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var code = ""+name+".read()";
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 Blockly.Python.communicate_i2c_available = function () {
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+   
     var name = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var code = ""+name+".available()";
     return [code, Blockly.Python.ORDER_ATOMIC];
@@ -48,7 +44,6 @@ Blockly.Python.communicate_i2c_available = function () {
 
 
 Blockly.Python.i2c_slave_onreceive = function () {
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     Blockly.Python.setups_['setup_i2c_' + pin] = 'Wire.begin(' + pin + ');';
     Blockly.Python.setups_['setup_i2c_onReceive_' + pin] = 'Wire.onReceive(i2cReceiveEvent_' + pin + ');';
@@ -59,8 +54,7 @@ Blockly.Python.i2c_slave_onreceive = function () {
     return '';
 }
 Blockly.Python.communicate_spi_init= function(block) {
-	Blockly.Python.definitions_['import_machine'] = 'import machine';
-	Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+	Blockly.Python.definitions_['import_machine'] = 'import machine';	
     var name=Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var freq=Blockly.Python.valueToCode(this, 'freq', Blockly.Python.ORDER_ATOMIC);
     var polarity=Blockly.Python.valueToCode(this, 'polarity', Blockly.Python.ORDER_ATOMIC);
@@ -71,58 +65,50 @@ Blockly.Python.communicate_spi_init= function(block) {
     return ""+name+" = machine.SPI(baudrate=" + freq + ", polarity=" + polarity + ", phase=" + phase + ", sck=machine.Pin(" + sck + "), mosi=machine.Pin(" + mosi + "), miso=machine.Pin(" + miso + "));\n";
 }
 
-Blockly.Python.communicate_spi_set = function() {
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+Blockly.Python.communicate_spi_set = function() {   
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     return "spi.init(baudrate=" + data + ")\n";
 }
 
-Blockly.Python.communicate_spi_buffer = function() {
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+Blockly.Python.communicate_spi_buffer = function() {   
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     return ""+varname+"=bytearray(" + data + ")\n";
 }
 
-Blockly.Python.communicate_spi_read = function() {
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+Blockly.Python.communicate_spi_read = function() {   
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     return [""+varname+".read(" + data + ")", Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.communicate_spi_read_output = function() {
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+Blockly.Python.communicate_spi_read_output = function() {   
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     var val = Blockly.Python.valueToCode(this, 'val', Blockly.Python.ORDER_ATOMIC);
     return [""+varname+".read(" + data + ","+val+")", Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.communicate_spi_readinto = function() {
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+Blockly.Python.communicate_spi_readinto = function() {   
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     return [""+varname+".readinto(" + data + ")", Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.communicate_spi_readinto_output = function() {
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+Blockly.Python.communicate_spi_readinto_output = function() {   
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     var val = Blockly.Python.valueToCode(this, 'val', Blockly.Python.ORDER_ATOMIC);
     return [""+varname+".readinto(" + data + ","+val+")", Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.communicate_spi_write = function() {
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+Blockly.Python.communicate_spi_write = function() {   
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     return [""+varname+".write(b'" + data + "')", Blockly.Python.ORDER_ATOMIC];
 }
 
-Blockly.Python.communicate_spi_write_readinto = function() {
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+Blockly.Python.communicate_spi_write_readinto = function() {   
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     var val = Blockly.Python.valueToCode(this, 'val', Blockly.Python.ORDER_ATOMIC);

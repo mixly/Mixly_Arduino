@@ -1,9 +1,10 @@
 import machine
-import mixgo
-import time
+import mpu9250
 
 
+
+i2c = machine.I2C(scl = machine.Pin(22), sda = machine.Pin(21), freq = 100000)
+mpu = mpu9250.MPU9250(i2c)
 while True:
-    print(mixgo.mixgo_get_brightness())
-    print(mixgo.mixgo_get_soundlevel())
-    time.sleep_ms(1000)
+    if mpu.mpu9250_is_gesture("shake"):
+        print('Mixly')

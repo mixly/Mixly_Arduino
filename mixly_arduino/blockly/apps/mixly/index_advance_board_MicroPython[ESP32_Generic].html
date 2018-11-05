@@ -377,7 +377,7 @@
             </td>
             <script type="text/javascript">
               var viewMode1 = document.getElementById('viewMode1');
-              viewMode1.href = 'index_board_MicroPython[ESP32_MixGo].html?lang='+Code.LANG;
+              viewMode1.href = 'index_board_MicroPython[ESP32_Generic].html?lang='+Code.LANG;
             </script>
             <td class="tabmin">
               <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
@@ -2193,23 +2193,7 @@
           </block>
       </category>
       <category id="catSensor" colour="40">
-        <block type="sensor_mixgo_button_is_pressed">
-          <value name="btn">
-            <shadow type="pins_button">
-            </shadow>
-          </value>
-        </block>
-        <block type="sensor_mixgo_button_was_pressed">
-          <value name="btn">
-            <shadow type="pins_button">
-            </shadow>
-          </value>
-        </block>
-        </block>
-        <block type="sensor_mixgo_pin_near"></block>
-        <block type="sensor_mixgo_light"></block>
-        <block type="sensor_mixgo_sound"></block>
-        <block type="sensor_rtc_init">
+       <block type="sensor_rtc_init">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">rtc</field>
@@ -2286,28 +2270,28 @@
         <block type="sensor_mpu9250_attachGestureInterrupt">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mixgo.mpu</field>
+              <field name="VAR">mpu</field>
             </shadow>
           </value>
         </block>
         <block type="sensor_mpu9250_get_acceleration">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mixgo.mpu</field>
+              <field name="VAR">mpu</field>
             </shadow>
           </value>
         </block>
         <block type="sensor_mpu9250_field_strength">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mixgo.mpu</field>
+              <field name="VAR">mpu</field>
             </shadow>
           </value>
         </block>
         <block type="sensor_mpu9250_temperature">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mixgo.mpu</field>
+              <field name="VAR">mpu</field>
             </shadow>
           </value>
         </block>
@@ -2364,35 +2348,6 @@
             </shadow>
           </value>
         </block>
-        <block type="actuator_led_bright">
-           <value name="led">
-          <shadow type="number">
-          </shadow>
-        </value>
-        </block>
-        <block type="actuator_get_led_bright">
-          <value name="led">
-            <shadow type="number">
-            </shadow>
-          </value>
-        </block>
-        <block type="actuator_led_brightness">
-           <value name="led">
-          <shadow type="number">
-          </shadow>
-        </value>
-        <value name="bright">
-          <shadow type="math_number">
-          <field name="NUM">1023</field>
-          </shadow>
-        </value>
-        </block>
-        <!-- <block type="esp32_music_play">
-          <value name="pitch">
-            <shadow type="pins_tone_notes"></shadow>
-          </value>
-        </block>
-         <block type="esp32_music_deinit"></block> -->
         <block type="esp32_music_pitch">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
@@ -2403,131 +2358,15 @@
             <shadow type="pins_tone_notes"></shadow>
           </value>
         </block>
-<!--         <block type="esp32_music_play_built_in_easy">
-          <value name="PIN">
-            <shadow type="pins_pwm"></shadow>
-          </value>
-        </block> -->
-        <block type="esp32_music_stop">
+		<block type="esp32_music_stop">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
               <field name="PIN">27</field>
             </shadow>
           </value>
         </block>
-<!--         <block type="speech_say_easy">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly 0.997 is great!</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="speech_sing_easy">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">#115DOWWWW</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="speech_prenounce_easy">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">/HEH5EH4EH3EH2EH2EH3EH4EH5EHLP.</field>
-            </shadow>
-          </value>
-        </block> -->
       </category>
       <category id="catMonitor" colour="180">
-        <block type="display_show_image_or_string">
-          <value name="data">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>
-        <block type="display_scroll_string">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_show_image_or_string_delay">
-          <value name="data">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-          <value name="time">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_scroll_string_delay">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-          <value name="time">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
-            </shadow>
-          </value>
-        </block>
-       <!-- <block type="monitor_show_scroll_string">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">hello</field>
-            </shadow>
-          </value>
-          <value name="time">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="esp32_display_show_image">
-          <value name="PIN">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>-->
-        <block type="display_image_create"></block>
-        <block type="display_image_builtins"></block>
-        <block type="image_arithmetic">
-          <value name="A">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>>
-          <value name="B">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>
-        <block type="display_get_pixel">
-          <value name="x">
-            <shadow type="pins_exlcdh"></shadow>
-          </value>
-          <value name="y">
-            <shadow type="pins_exlcdv"></shadow>
-          </value>
-        </block>
-        <block type="display_bright_point">
-          <value name="x">
-            <shadow type="pins_exlcdh"></shadow>
-          </value>
-          <value name="y">
-            <shadow type="pins_exlcdv"></shadow>
-          </value>
-          <value name="STAT">
-              <shadow type="display_onoff">
-            </shadow>
-          </value>
-        </block>
-        <block type="display_get_screen_pixel"></block>
-        <block type="display_blink_rate">
-          <value name="x">
-            <shadow type="math_number">
-              <field name="NUM">2</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_clear"></block>
         <block type="display_rgb_init">
           <value name="SUB">
             <shadow type="variables_get">

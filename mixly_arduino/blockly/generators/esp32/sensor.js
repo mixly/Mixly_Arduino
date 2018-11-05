@@ -137,16 +137,6 @@ Blockly.Python.sensor_distance_hrsc04= function(){
     return ['sonar.distance_mm()/10.0', Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.DS1307_init = function () {
-  Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
-  var SDA = Blockly.Python.valueToCode(this, 'SDA', Blockly.Python.ORDER_ATOMIC);
-  var SCL = Blockly.Python.valueToCode(this, 'SCL', Blockly.Python.ORDER_ATOMIC);
-  //var RTCName = this.getFieldValue('RTCName');
-  //Blockly.Python.definitions_['include_Mixly'] = '#include "Mixly.h"';
-  Blockly.Python.setups_['class_DS1307'] = Blockly.Python.CLASS_DS1307_INIT;
-  //Blockly.Python.definitions_['DS1307'+RTCName] = 'DS1307 ' + RTCName + '('+SDA+','+SCL+');';
-  //return 'DS1307' + '('+SDA+','+SCL+')\n';
-};
 
 Blockly.Python.RTC_get_time = function () {
   Blockly.Python.definitions_['import_machine'] = 'import machine';
@@ -220,21 +210,6 @@ Blockly.Python.sensor_mixgo_pin_pressed = function(){
     var pin = Blockly.Python.valueToCode(this, 'button', Blockly.Python.ORDER_ATOMIC);
     var code = pin+'.is_touched()';
     return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.controls_attachInterrupt = function () {
-    var dropdown_pin = this.getFieldValue('button');
-    var dropdown_mode = this.getFieldValue('mode');
-    Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
-    // Blockly.Python.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT);';
-    //var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
-   
-    var code = 'button_' + dropdown_pin + '.irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
-    var funcName = 'attachInterrupt_func_' + dropdown_pin;
-    var branch = Blockly.Python.statementToCode(this, 'DO') || Blockly.Python.PASS;
-    var code2 = 'def' + ' ' + funcName + '(p):\n' + branch + '\n';
-    Blockly.Python.setups_[funcName] = code2;
-    return code;
 };
 
 Blockly.Python.sensor_mixgo_pin_near = function(){

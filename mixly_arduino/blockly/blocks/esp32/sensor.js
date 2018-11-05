@@ -204,38 +204,6 @@ Blockly.Blocks['sensor_mpu9250_field_strength'] = {
 };
 
 
-Blockly.Blocks['sensor_rotation'] = {
-    init: function(){
-        this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendValueInput('SUB')
-            .setCheck("var");
-        this.appendDummyInput()
-            .appendField(Blockly.MIXLY_MICROBIT_JS_ROTATION)
-            .appendField(new Blockly.FieldDropdown([
-                ["pitch", "Rotation.Pitch"],
-                ["roll", "Rotation.Roll"]
-            ]), "key");
-        this.setOutput(true, Number);
-        this.setInputsInline(true);
-    }
-};
-Blockly.Blocks['sensor_magnetic'] = {
-    init: function(){
-        this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendValueInput('SUB')
-        this.appendDummyInput()
-            .appendField(Blockly.MIXLY_MICROBIT_JS_MAGETIC_FORCE)
-            .appendField(new Blockly.FieldDropdown([
-                ["x", "Dimension.X"],
-                ["y", "Dimension.Y"],
-                ["z", "Dimension.Z"],
-                ["strength", "Dimension.Strength"]
-            ]), "key");
-        this.setOutput(true, Number);
-        this.setInputsInline(true);
-    }
-};
-
 Blockly.Blocks['sensor_distance_hrsc04'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
@@ -247,59 +215,6 @@ Blockly.Blocks['sensor_distance_hrsc04'] = {
     }
 };
 
-Blockly.Blocks.DS1307_init = {
-    init: function () {
-        this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendDummyInput("").appendField(Blockly.MIXLY_RTCINIT);
-        //this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTCTypeList), 'RTCType');
-        this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField('myRTC');
-        this.appendValueInput("SDA")
-            .appendField("SDA#")
-            .setCheck(Number);
-        this.appendValueInput("SCL")
-            .appendField("SCL#")
-            .setCheck(Number);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_RTCINIT);
-    },
-    //mutation有问题，暂时弃用
-    /*mutationToDom: function() {
-        var container = document.createElement('mutation');
-        var RTCType = (this.getFieldValue('RTCType') == 'DS1302');
-        console.log('======change in mutationToDom==========')
-        console.log(RTCType);
-        container.setAttribute('RTCType', RTCType);
-        return container;
-    },
-    domToMutation: function(xmlElement) {
-        var type = (xmlElement.getAttribute('RTCType') == 'true');
-        console.log('======change in domToMutation==========')
-        console.log(type);
-        this.updateShape_(type);
-    },
-    updateShape_: function(type) {
-    // Add or remove reset pin.
-    console.log('======change in updateShape_==========')
-    console.log(type);
-    if (type) {
-        console.log('why not me?')
-        this.appendValueInput("RST")
-            .appendField("RST#")
-            .setCheck(Number);
-    } else{
-      /*if (this.childBlocks_.length > 0) {
-         if (this.childBlocks_[length-1].type == 'Number') {
-            this.childBlocks_[length-1].unplug();
-            break;
-          }
-      }
-      this.removeInput('RST');
-    }
-  }*/
-
-};
 
 var RTC_TIME_TYPE = [
   [Blockly.MIXLY_YEAR, "Year"],
@@ -474,23 +389,6 @@ Blockly.Blocks['sensor_mixgo_pin_pressed'] = {
     }
 };
 
-// Blockly.Blocks.controls_attachInterrupt = {
-//   init: function() {
-//     this.setColour(Blockly.Blocks.sensor.HUE);
-//     this.appendDummyInput("")
-//         .appendField(Blockly.MIXLY_MICROBIT_JS_INTERRUPT_BTN)
-//         .appendField(new Blockly.FieldDropdown([["A", "A"],["B","A"]]), "button");
-//     this.appendDummyInput("")
-//         .appendField(Blockly.MIXLY_MODE)
-//         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RISING, "Pin.IRQ_RISING"], [Blockly.MIXLY_FALLING, "Pin.IRQ_FALLING"], [Blockly.MIXLY_CHANGE, "(Pin.IRQ_RISING or Pin.IRQ_FALLING)"]]), "mode");
-//     this.appendStatementInput('DO')
-//         .appendField(Blockly.MIXLY_DO);
-//     this.setPreviousStatement(true);
-//     this.setNextStatement(true);
-//     this.setInputsInline(true);
-//     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
-//   }
-// };
 
 Blockly.Blocks['sensor_mixgo_pin_near'] = {
     init: function(){

@@ -4,7 +4,7 @@ goog.provide('Blockly.Python.actuator');
 goog.require('Blockly.Python');
 
 
-Blockly.Python.esp32_mixgo_music_pitch = function(block) {
+Blockly.Python.esp32_music_pitch = function(block) {
   Blockly.Python.definitions_['import_music'] = 'import music';
   Blockly.Python.definitions_['import_math'] = 'import math';
   Blockly.Python.definitions_['import_machine'] = 'import machine';
@@ -14,7 +14,7 @@ Blockly.Python.esp32_mixgo_music_pitch = function(block) {
   return code;
 };
 
-Blockly.Python.esp32_mixgo_music_stop = function(block) {
+Blockly.Python.esp32_music_stop = function(block) {
   Blockly.Python.definitions_['import_music'] = 'import music';
   Blockly.Python.definitions_['import_machine'] = 'import machine';
   var pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_ATOMIC);
@@ -64,8 +64,3 @@ Blockly.Python.actuator_led_brightness= function() {
     return code;
 };
 
-Blockly.Blocks.led_light=Blockly.Blocks.actuator_led_bright;
-Blockly.Blocks.get_led_bright=Blockly.Blocks.actuator_get_led_bright;
-Blockly.Blocks.led_brightness=Blockly.Blocks.actuator_led_brightness;
-Blockly.Blocks.esp32_music_pitch=Blockly.Blocks.esp32_mixgo_music_pitch;
-Blockly.Blocks.esp32_music_stop=Blockly.Blocks.esp32_mixgo_music_stop
