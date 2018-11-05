@@ -78,9 +78,9 @@ class MyPin(Pin):
             return self.value() == 1
 
     def near(self): 
-        pin15.write_digital(1)
-        self.init(Pin.IN)
-        return self.value() ==1
+        id = int(str(self)[4:-1]) #unsafe!
+        self = ADC(Pin(id))
+        return self.read()>1000
 
 
 # Servo
@@ -163,7 +163,7 @@ class RGB:
         self[n] = (r, g, b)
         self.write()
 		
-pin15 = MyPin(15)            
+           
 pin16 = MyPin(16)
 pin17 = MyPin(17)
 pin17.read_digital()
