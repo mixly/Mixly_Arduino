@@ -1199,6 +1199,80 @@ function init() {
           </value>
         </block>
       </category>
+      <category id="catStorage" colour="0">
+        <block type="storage_fileopen">
+          <value name="FILENAME">
+            <shadow type="text">
+              <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_file_write">
+          <value name="data">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
+          </value>
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_get_contents">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+          <value name="SIZE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_can_write_ornot">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_get_filename">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_close_file">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_list_all_files"> </block>
+        <block type="storage_delete_file">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_get_file_size">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+        </block>
+      </category>
       <category id="catSerialPort" colour="65">
         <block type="IO_print_inline">
               <value name="VAR">
@@ -1330,80 +1404,6 @@ function init() {
           <value name="data">
             <shadow type="math_number">
               <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-      </category>
-      <category id="catStorage" colour="0">
-        <block type="storage_fileopen">
-          <value name="FILENAME">
-            <shadow type="text">
-              <field name="TEXT">filename.txt</field>
-            </shadow>
-          </value>
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_file_write">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_get_contents">
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-          <value name="SIZE">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_can_write_ornot">
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_get_filename">
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_close_file">
-          <value name="FILE">
-            <shadow type="variables_get">
-              <field name="VAR">f</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_list_all_files"> </block>
-        <block type="storage_delete_file">
-          <value name="FILE">
-            <shadow type="text">
-              <field name="TEXT">filename.txt</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="storage_get_file_size">
-          <value name="FILE">
-            <shadow type="text">
-              <field name="TEXT">filename.txt</field>
             </shadow>
           </value>
         </block>
@@ -1592,6 +1592,41 @@ function init() {
             </shadow>
           </value>
         </block>
+        <block type="display_rgb_init">
+          <value name="PIN">
+            <shadow type="pins_digital" />
+          </value>
+          <value name="LEDCOUNT">
+            <shadow type="math_number">
+              <field name="NUM">4</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="display_rgb">
+          <value name="PIN">
+            <shadow type="pins_digital" />
+          </value>
+          <value name="_LED_">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="RVALUE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="GVALUE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="BVALUE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
       </category>
       <category id="catMonitor" colour="180">
         <block type="monitor_show_image_or_string">
@@ -1685,41 +1720,6 @@ function init() {
         <block type="microbit_display_on"></block>
         <block type="microbit_display_is_on"></block>
         <block type="microbit_display_clear"></block>
-        <block type="display_rgb_init">
-          <value name="PIN">
-            <shadow type="pins_digital" />
-          </value>
-          <value name="LEDCOUNT">
-            <shadow type="math_number">
-              <field name="NUM">4</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_rgb">
-          <value name="PIN">
-            <shadow type="pins_digital" />
-          </value>
-          <value name="_LED_">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="RVALUE">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="GVALUE">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="BVALUE">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
         <block type="group_lcd_init">
           <value name="device">
             <shadow type="math_number">
