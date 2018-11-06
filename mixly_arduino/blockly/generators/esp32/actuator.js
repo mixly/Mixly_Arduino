@@ -65,3 +65,32 @@ Blockly.Python.actuator_led_brightness= function() {
     return code;
 };
 
+
+Blockly.Python.actuator_neopixel_init=function(){
+    var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
+    var dropdown_rgbpin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var value_ledcount = Blockly.Python.valueToCode(this, 'LEDCOUNT', Blockly.Python.ORDER_ATOMIC);
+   Blockly.Python.definitions_['import_machine'] = 'import machine';
+    Blockly.Python.definitions_['import_neopixel'] = 'import neopixel';
+    var code = v + ' = neopixel.NeoPixel(machine.Pin('+dropdown_rgbpin+'), '+value_ledcount+', timing = True)\n';
+    return code;
+};
+
+Blockly.Python.actuator_neopixel_write=function(){
+ Blockly.Python.definitions_['import_machine'] = 'import machine';
+  Blockly.Python.definitions_['import_neopixel'] = 'import neopixel';
+  var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
+  var code= v + '.write()\n';   
+  return code;
+};
+Blockly.Python.actuator_neopixel_rgb=function(){
+  Blockly.Python.definitions_['import_machine'] = 'import machine';
+  Blockly.Python.definitions_['import_neopixel'] = 'import neopixel';
+  var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
+  var value_led = Blockly.Python.valueToCode(this, '_LED_', Blockly.Python.ORDER_ATOMIC);
+  var value_rvalue = Blockly.Python.valueToCode(this, 'RVALUE', Blockly.Python.ORDER_ATOMIC);
+  var value_gvalue = Blockly.Python.valueToCode(this, 'GVALUE', Blockly.Python.ORDER_ATOMIC);
+  var value_bvalue = Blockly.Python.valueToCode(this, 'BVALUE', Blockly.Python.ORDER_ATOMIC);
+  var code= v + '['+value_led+'] = ('+value_rvalue+', '+value_gvalue+', '+value_bvalue+')\n';
+  return code;
+};

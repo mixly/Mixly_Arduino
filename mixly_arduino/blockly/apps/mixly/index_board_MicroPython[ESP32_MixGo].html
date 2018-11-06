@@ -1473,14 +1473,47 @@
         <block type="sensor_mixgo_pin_near"></block>
         <block type="sensor_mixgo_light"></block>
         <block type="sensor_mixgo_sound"></block>
-        <block type="sensor_rtc_init">
+       <block type="sensor_use_i2c_init">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">rtc</field>
+              <field name="VAR">sensor</field>
+            </shadow>
+          </value>
+          <value name="I2CSUB">
+            <shadow type="variables_get">
+              <field name="VAR">i2c</field>
             </shadow>
           </value>
         </block>
-        <block type="RTC_get_time">
+        <block type="sensor_mpu9250_attachGestureInterrupt">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mixgo.mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_mpu9250_get_acceleration">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mixgo.mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_mpu9250_field_strength">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mixgo.mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_mpu9250_temperature">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mixgo.mpu</field>
+            </shadow>
+          </value>
+        </block>
+		 <block type="sensor_rtc_init">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">rtc</field>
@@ -1534,48 +1567,14 @@
                   </shadow>
               </value>
           </block>
-
-        <block type="sensor_use_i2c_init">
+		<block type="RTC_get_time">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">sensor</field>
-            </shadow>
-          </value>
-          <value name="I2CSUB">
-            <shadow type="variables_get">
-              <field name="VAR">i2c</field>
+              <field name="VAR">rtc</field>
             </shadow>
           </value>
         </block>
-        <block type="sensor_mpu9250_attachGestureInterrupt">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">mixgo.mpu</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="sensor_mpu9250_get_acceleration">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">mixgo.mpu</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="sensor_mpu9250_field_strength">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">mixgo.mpu</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="sensor_mpu9250_temperature">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">mixgo.mpu</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="sensor_bmp">
+		<block type="sensor_bmp">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">bmp</field>
@@ -1606,6 +1605,7 @@
                     <shadow type="pins_digital_pin"></shadow>
                 </value>
         </block>
+		
 	</category>
       <category id="catActuator" colour="100">
         <block type="servo_move">
@@ -1699,6 +1699,70 @@
             </shadow>
           </value>
         </block> -->
+		<block type="actuator_neopixel_init">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">rgb</field>
+            </shadow>
+          </value>
+          <value name="PIN">
+            <shadow type="pins_digital_pin">
+              <field name="PIN">2</field>
+            </shadow>
+          </value>
+          <value name="LEDCOUNT">
+            <shadow type="math_number">
+              <field name="NUM">2</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="actuator_neopixel_rgb">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">rgb</field>
+            </shadow>
+          </value>
+          <value name="PIN">
+            <shadow type="pins_digital" />
+          </value>
+          <value name="_LED_">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="RVALUE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="GVALUE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="BVALUE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="actuator_neopixel_write">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">rgb</field>
+            </shadow>
+          </value>
+        </block>
+<!--         <block type="display_rgb_color">
+          <value name="PIN">
+            <shadow type="pins_digital" />
+          </value>
+          <value name="_LED_">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+        </block> -->
       </category>
       <category id="catMonitor" colour="180">
         <block type="display_show_image_or_string">
@@ -1774,71 +1838,7 @@
           </value>
         </block>
         <block type="display_clear"></block>
-        <block type="display_rgb_init">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">rgb</field>
-            </shadow>
-          </value>
-          <value name="PIN">
-            <shadow type="pins_digital_pin">
-              <field name="PIN">2</field>
-            </shadow>
-          </value>
-          <value name="LEDCOUNT">
-            <shadow type="math_number">
-              <field name="NUM">2</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_rgb">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">rgb</field>
-            </shadow>
-          </value>
-          <value name="PIN">
-            <shadow type="pins_digital" />
-          </value>
-          <value name="_LED_">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="RVALUE">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="GVALUE">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="BVALUE">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="display_rgb_write">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">rgb</field>
-            </shadow>
-          </value>
-        </block>
-<!--         <block type="display_rgb_color">
-          <value name="PIN">
-            <shadow type="pins_digital" />
-          </value>
-          <value name="_LED_">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-        </block> -->
-      </category>
+        </category>
       <sep></sep>
       <category id="catVar" colour="330" custom="VARIABLE">
       </category>

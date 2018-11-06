@@ -127,3 +127,80 @@ Blockly.Blocks.esp32_music_stop = {
 };
 
 
+//RGB
+Blockly.Blocks.actuator_neopixel_init = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_RGB)
+        this.appendValueInput('SUB')
+            .appendField(Blockly.MIXLY_SETUP)
+            .setCheck("var");
+        this.appendValueInput("PIN", Number)
+           .setCheck(Number)
+           .setAlign(Blockly.ALIGN_RIGHT)
+           .appendField(Blockly.MIXLY_PIN+" #");
+        this.appendValueInput("LEDCOUNT")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_RGB_COUNT);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_RGB_PIN_COUNT);
+    }
+};
+
+Blockly.Blocks.actuator_neopixel_rgb = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_RGB)
+        this.appendValueInput('SUB')
+            .setCheck("var");
+            // .appendField(Blockly.MIXLY_SETUP)
+        this.appendValueInput("_LED_")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_RGB_NUM);
+        this.appendValueInput("RVALUE")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_RGB_R);
+        this.appendValueInput("GVALUE")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_RGB_G);
+        this.appendValueInput("BVALUE")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_RGB_B);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_RGB_NUM_R_G_B);
+    }
+};
+
+Blockly.Blocks.actuator_neopixel_write = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_RGB)
+         // this.appendValueInput("PIN", Number)
+         //    .setCheck(Number)
+         //    .setAlign(Blockly.ALIGN_RIGHT)
+         //    .appendField(Blockly.MIXLY_PIN);
+        this.appendValueInput('SUB')
+            .setCheck("var");
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_ESP32_RGB_WRITE)
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_RGB_NUM_R_G_B);
+    }
+};
+

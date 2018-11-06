@@ -229,25 +229,6 @@ Blockly.Python['display_clear'] = function(block) {
   return code;
 };
 
-Blockly.Python.display_rgb_init=function(){
-    var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-    var dropdown_rgbpin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
-    var value_ledcount = Blockly.Python.valueToCode(this, 'LEDCOUNT', Blockly.Python.ORDER_ATOMIC);
-   Blockly.Python.definitions_['import_machine'] = 'import machine';
-    Blockly.Python.definitions_['import_neopixel'] = 'import neopixel';
-    var code = v + ' = neopixel.NeoPixel(machine.Pin('+dropdown_rgbpin+'), '+value_ledcount+', timing = True)\n';
-    return code;
-};
-
-
-Blockly.Python.display_rgb_write=function(){
- Blockly.Python.definitions_['import_machine'] = 'import machine';
-  Blockly.Python.definitions_['import_neopixel'] = 'import neopixel';
-  var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-  var code= v + '.write()\n';   
-  return code;
-};
-
 Blockly.Python.display_use_i2c_init = function () {
  Blockly.Python.definitions_['import_machine'] = 'import machine';
   Blockly.Python.definitions_['import_ssd1306'] = 'import ssd1306';
@@ -321,17 +302,6 @@ Blockly.Python['image_arithmetic'] = function(a) {
   return [code, Blockly.Python.ORDER_MEMBER];
 };
 
-Blockly.Python.display_rgb=function(){
-  Blockly.Python.definitions_['import_machine'] = 'import machine';
-  Blockly.Python.definitions_['import_neopixel'] = 'import neopixel';
-  var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-  var value_led = Blockly.Python.valueToCode(this, '_LED_', Blockly.Python.ORDER_ATOMIC);
-  var value_rvalue = Blockly.Python.valueToCode(this, 'RVALUE', Blockly.Python.ORDER_ATOMIC);
-  var value_gvalue = Blockly.Python.valueToCode(this, 'GVALUE', Blockly.Python.ORDER_ATOMIC);
-  var value_bvalue = Blockly.Python.valueToCode(this, 'BVALUE', Blockly.Python.ORDER_ATOMIC);
-  var code= v + '['+value_led+'] = ('+value_rvalue+', '+value_gvalue+', '+value_bvalue+')\n';
-  return code;
-};
 
 Blockly.Python.display_line=function(){
   Blockly.Python.definitions_['import_machine'] = 'import machine';

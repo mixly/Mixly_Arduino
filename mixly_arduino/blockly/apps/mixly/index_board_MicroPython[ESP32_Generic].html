@@ -1452,20 +1452,54 @@
         </block>
       </category>
       <category id="catSensor" colour="40">
-       <block type="sensor_rtc_init">
+         <block type="sensor_use_i2c_init">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">sensor</field>
+            </shadow>
+          </value>
+          <value name="I2CSUB">
+            <shadow type="variables_get">
+              <field name="VAR">i2c</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_mpu9250_attachGestureInterrupt">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_mpu9250_get_acceleration">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_mpu9250_field_strength">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_mpu9250_temperature">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mpu</field>
+            </shadow>
+          </value>
+        </block>
+		<block type="sensor_rtc_init">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">rtc</field>
             </shadow>
           </value>
         </block>
-        <block type="RTC_get_time">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">rtc</field>
-            </shadow>
-          </value>
-        </block>
+        
         <block type="RTC_set_datetime">
           <value name="SUB">
             <shadow type="variables_get">
@@ -1513,44 +1547,10 @@
                   </shadow>
               </value>
           </block>
-
-        <block type="sensor_use_i2c_init">
+		<block type="RTC_get_time">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">sensor</field>
-            </shadow>
-          </value>
-          <value name="I2CSUB">
-            <shadow type="variables_get">
-              <field name="VAR">i2c</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="sensor_mpu9250_attachGestureInterrupt">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">mpu</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="sensor_mpu9250_get_acceleration">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">mpu</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="sensor_mpu9250_field_strength">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">mpu</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="sensor_mpu9250_temperature">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">mpu</field>
+              <field name="VAR">rtc</field>
             </shadow>
           </value>
         </block>
@@ -1568,7 +1568,7 @@
             </shadow>
           </value>
         </block>
-        <block type="HCSR04">
+       <block type="HCSR04">
           <value name="PIN1">
               <shadow type="pins_digital_pin">
 				<field name="PIN">0</field>
@@ -1585,7 +1585,12 @@
                     <shadow type="pins_digital_pin"></shadow>
                 </value>
         </block>
-	</category>
+        <block type="sensor_ds18x20">
+                <value name="PIN">
+                    <shadow type="pins_digital_pin"></shadow>
+                </value>
+        </block>
+      </category>
       <category id="catActuator" colour="100">
         <block type="servo_move">
           <value name="PIN">
@@ -1612,16 +1617,14 @@
             <shadow type="pins_tone_notes"></shadow>
           </value>
         </block>
-        <block type="esp32_music_stop">
+		<block type="esp32_music_stop">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
               <field name="PIN">27</field>
             </shadow>
           </value>
         </block>
-	</category>
-      <category id="catMonitor" colour="180">
-       <block type="display_rgb_init">
+	<block type="actuator_neopixel_init">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">rgb</field>
@@ -1638,7 +1641,7 @@
             </shadow>
           </value>
         </block>
-        <block type="display_rgb">
+        <block type="actuator_neopixel_rgb">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">rgb</field>
@@ -1668,23 +1671,140 @@
             </shadow>
           </value>
         </block>
-        <block type="display_rgb_write">
+        <block type="actuator_neopixel_write">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">rgb</field>
             </shadow>
           </value>
         </block>
-<!--         <block type="display_rgb_color">
-          <value name="PIN">
-            <shadow type="pins_digital" />
+      </category>
+      <category id="catMonitor" colour="180">
+          <block type="display_use_i2c_init">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">oled</field>
+            </shadow>
           </value>
-          <value name="_LED_">
+          <value name="I2CSUB">
+            <shadow type="variables_get">
+              <field name="VAR">i2c</field>
+            </shadow>
+          </value>
+          <value name="row">
+            <shadow type="math_number">
+              <field name="NUM">128</field>
+            </shadow>
+          </value>
+          <value name="column">
+            <shadow type="math_number">
+              <field name="NUM">64</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="display_draw_4strings">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">oled</field>
+            </shadow>
+          </value>
+          <value name="Text_line1">
+            <shadow type="text">
+              <field name="TEXT">Example1</field>
+            </shadow>
+          </value>
+          <value name="Text_line2">
+            <shadow type="text">
+              <field name="TEXT">Example2</field>
+            </shadow>
+          </value>
+          <value name="Text_line3">
+            <shadow type="text">
+              <field name="TEXT">Example3</field>
+            </shadow>
+          </value>
+          <value name="Text_line4">
+            <shadow type="text">
+              <field name="TEXT">Example4</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="display_rect">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">oled</field>
+            </shadow>
+          </value>
+          <value name="x">
             <shadow type="math_number">
               <field name="NUM">1</field>
             </shadow>
           </value>
-        </block> -->
+          <value name="y">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="width">
+            <shadow type="math_number">
+              <field name="NUM">20</field>
+            </shadow>
+          </value>
+          <value name="height">
+            <shadow type="math_number">
+              <field name="NUM">20</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="display_line">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">oled</field>
+            </shadow>
+          </value>
+          <value name="x">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="y">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="length">
+            <shadow type="math_number">
+              <field name="NUM">20</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="display_line_arbitrarily">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">oled</field>
+            </shadow>
+          </value>
+          <value name="x1">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="y1">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="x2">
+            <shadow type="math_number">
+              <field name="NUM">40</field>
+            </shadow>
+          </value>
+          <value name="y2">
+            <shadow type="math_number">
+              <field name="NUM">40</field>
+            </shadow>
+          </value>
+        </block>
       </category>
       <sep></sep>
       <category id="catVar" colour="330" custom="VARIABLE">
