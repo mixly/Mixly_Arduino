@@ -208,7 +208,7 @@ Blockly.Python.number1 = function(){
 Blockly.Python.sensor_mixgo_pin_pressed = function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var pin = Blockly.Python.valueToCode(this, 'button', Blockly.Python.ORDER_ATOMIC);
-    var code = pin+'.is_touched()';
+    var code = 'mixgo.'+pin+'.is_touched()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
