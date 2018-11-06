@@ -136,12 +136,10 @@ class led:
     def setonoff(n,val):
         if n in (1,2):
             n = 5 * (n - 1)
-            if(val=='on'):
-                Pin(n).value(0)
-            if(val=='off'):
-                Pin(n).value(1)
-            if(val=='toggle'):
-                Pin(n).value(1 - Pin(n).value()) 
+            if(val==-1):
+                Pin(n).value(1 - Pin(n).value())
+            else:
+                Pin(n).value(1-val)
     def getonoff(n):
         if n in (1,2):
             n = 5 * (n - 1)
@@ -162,7 +160,6 @@ class RGB:
     def write(self,n,r,g,b):
         self[n] = (r, g, b)
         self.write()
-		
            
 pin16 = MyPin(16)
 pin17 = MyPin(17)

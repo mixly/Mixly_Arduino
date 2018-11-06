@@ -14,6 +14,7 @@ try:
 	rgb[0] = (0, 0, 0)
 	rgb[1] = (0, 0, 0)
 	rgb.write()
-
+	import music
+	music.stop(27)
 except:
 	pass

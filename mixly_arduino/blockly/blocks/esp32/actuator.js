@@ -37,14 +37,14 @@ Blockly.Blocks['number'] = {
     }
 };
 
-Blockly.Blocks['light'] = {
+Blockly.Blocks['ledswitch'] = {
     init: function() {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown([
-                [Blockly.MIXLY_ESP32_ON, "on"],
-                [Blockly.MIXLY_ESP32_OFF, "off"],
-                [Blockly.MIXLY_ESP32_TOGGLE, "toggle"]
+                [Blockly.MIXLY_ESP32_ON, "1"],
+                [Blockly.MIXLY_ESP32_OFF, "0"],
+                [Blockly.MIXLY_ESP32_TOGGLE, "-1"]
             ]), "flag");
         this.setOutput(true);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW);
@@ -59,9 +59,7 @@ Blockly.Blocks.actuator_led_bright = {
     this.appendValueInput('led')
     .appendField(Blockly.MIXLY_BUILDIN_LED)
     this.appendValueInput('bright')
-    // this.appendDummyInput()
     .appendField(Blockly.MIXLY_PULSEIN_STAT)  
-    // .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ESP32_ON, "on"], [Blockly.MIXLY_ESP32_OFF, "off"],[Blockly.MIXLY_ESP32_TOGGLE, "toggle"]]), "bright");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);

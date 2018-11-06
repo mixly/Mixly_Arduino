@@ -36,7 +36,7 @@ Blockly.Python.number = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.light = function () {
+Blockly.Python.ledswitch = function () {
     var code = this.getFieldValue('flag');
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
@@ -46,7 +46,7 @@ Blockly.Python.actuator_led_bright= function() {
     var op = Blockly.Python.valueToCode(this,'led', Blockly.Python.ORDER_ATOMIC);
     var bright = Blockly.Python.valueToCode(this,'bright', Blockly.Python.ORDER_ATOMIC);
     // var bright = this.getFieldValue('bright');
-    var code = "mixgo.led.setonoff("+op+",'"+bright+"')\n";
+    var code = "mixgo.led.setonoff("+op+","+bright+")\n";
     return code;
 };
 
