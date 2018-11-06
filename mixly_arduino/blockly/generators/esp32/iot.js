@@ -21,7 +21,7 @@ Blockly.Python.iot_onenet_connect = function(block) {
   var password =  Blockly.Python.valueToCode(this, 'PASSWORD', Blockly.Python.ORDER_ATOMIC) ;
   var topic =  Blockly.Python.valueToCode(this, 'TOPIC', Blockly.Python.ORDER_ATOMIC) ;
   var subscribe = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ASSIGNMENT) || '0';
-  var code= v + ' = simple.init_MQTT_client(' + client + ', ' + server + ', '+ username + ', ' + password +', ' + topic+', ' + subscribe + ')\n';
+  var code= v + ' = miot.init_MQTT_client(' + client + ', ' + server + ', '+ username + ', ' + password +', ' + topic+', ' + subscribe + ')\n';
   return code;
 };
 
@@ -59,7 +59,7 @@ Blockly.Python.iot_onenet_publish = function() {
   cv[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
     Blockly.Python.ORDER_NONE) || default_value;
   }
-  var code=v + ".publish('$dp', pubData({'datastreams':[";
+  var code=v + ".publish('$dp', miot.pubData({'datastreams':[";
   for (var n = 0; n < this.itemCount_; n++) {
     ct[n] ='{"id":"'+ck[n]+'","datapoints":[{"value":'
     ct[n] +=cv[n]+'}]}'
