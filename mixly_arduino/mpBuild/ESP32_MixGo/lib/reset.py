@@ -12,7 +12,6 @@ except:
 
 try:
         import music
-        music.stop(machine.PWM(machine.Pin(27)))
         music.stop(27)
 except:
         pass
