@@ -5,16 +5,24 @@ pin5 = machine.Pin(5, machine.Pin.OUT)
 pin0.value(1)
 pin5.value(1)
 try:
-	from display import *
-	display.clear()
-	import music
-	music.stop(machine.PWM(machine.Pin(27)))
-	import neopixel
-	rgb = neopixel.NeoPixel(machine.Pin(2), 2, timing = True)
-	rgb[0] = (0, 0, 0)
-	rgb[1] = (0, 0, 0)
-	rgb.write()
-	import music
-	music.stop(27)
+        from display import *
+        display.clear()
 except:
-	pass
+        pass
+
+try:
+        import music
+        music.stop(machine.PWM(machine.Pin(27)))
+        music.stop(27)
+except:
+        pass
+
+try:
+        import neopixel
+        rgb = neopixel.NeoPixel(machine.Pin(2), 2, timing = True)
+        rgb[0] = (0, 0, 0)
+        rgb[1] = (0, 0, 0)
+        rgb.write()
+except:
+        pass
+
