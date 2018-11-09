@@ -121,14 +121,15 @@ Blockly.Python.timer = function () {
 };
 
 Blockly.Python.system_timer = function () {
-   Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+   Blockly.Python.definitions_['import_machine'] = 'import machine';
     var v = Blockly.Python.valueToCode(this, "VAR", Blockly.Python.ORDER_NONE) || "None";
     var period = Blockly.Python.valueToCode(this, "period", Blockly.Python.ORDER_NONE) || "0";
     var mode = this.getFieldValue('mode');
-    var branch = Blockly.Python.statementToCode(this, 'callback') || Blockly.Python.PASS;
-    // var callback = Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
-    var code = v + ".init(period = " + period + ", mode = machine.Timer." + mode + ", callback = " + v + "_callback_func)\n";
-    Blockly.Python.setups_['timer_callback_func'] = 'def ' + v + '_callback_func(t):\n' + branch + '\n';
+    //var branch = Blockly.Python.statementToCode(this, 'callback') || Blockly.Python.PASS;
+    var callback = Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
+    //var code = v + ".init(period = " + period + ", mode = machine.Timer." + mode + ", callback = " + v + "_callback_func)\n";
+    //Blockly.Python.setups_['timer_callback_func'] = 'def ' + v + '_callback_func(t):\n' + branch + '\n';
+    var code = v + ".init(period = " + period + ", mode = machine.Timer." + mode + ", callback = " + callback + ")\n";
     return code;
 };
 

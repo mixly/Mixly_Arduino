@@ -45,7 +45,7 @@
   <script src="../../blocks/python/tuple.js"></script>
   <script src="../../blocks/python/set.js"></script>
 	<!-- generator file -->
-  
+
   <script src="../../generators/esp32/pins.js"></script>
   <script src="../../generators/esp32/inout.js"></script>
   <script src="../../generators/python/control.js"></script>
@@ -526,7 +526,19 @@
         <value name="PIN">
           <shadow type="pins_digital_pin"></shadow>
         </value>
+        <value name="DO">
+          <shadow type="variables_get">
+              <field name="VAR">attachInterrupt_func</field>
+          </shadow>
+        </value>
       </block>
+     <block type="procedures_defnoreturn">
+         <field name="NAME">attachInterrupt_func</field>
+         <statement name="STACK">
+             <block type="controls_pass">
+             </block>
+         </statement>
+     </block>
 	  <block type="inout_analog_write_init">
         <value name="PIN">
           <shadow type="pins_dac_pin"></shadow>
@@ -542,7 +554,7 @@
           </shadow>
         </value>
       </block>
-      
+
     </category>
     <category id="catControl" colour="120">
        <block type="controls_whileUntil">
@@ -645,6 +657,24 @@
             <field name="NUM">1000</field>
           </shadow>
         </value>
+        <value name="callback">
+          <shadow type="variables_get">
+            <field name="VAR">tim_callback</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="procedures_defnoreturn">
+          <field name="NAME">tim_callback</field>
+          <statement name="STACK">
+              <block type="system_print">
+                 <value name="VAR">
+                     <block type="number_to_text">
+                      <value name="VAR">
+                          <block type="controls_millis"></block>
+                      </value>
+                 </value>
+              </block>
+          </statement>
       </block>
       <block type="controls_flow_statements"></block>
       <block type="controls_millis"></block>
@@ -1605,7 +1635,7 @@
                     <shadow type="pins_digital_pin"></shadow>
                 </value>
         </block>
-		
+
 	</category>
       <category id="catActuator" colour="100">
         <block type="servo_move">

@@ -172,8 +172,9 @@ Blockly.Blocks.inout_pin_attachInterrupt = {
     this.appendDummyInput("")
         .appendField(Blockly.MIXLY_MODE)
         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RISING, "machine.Pin.IRQ_RISING"], [Blockly.MIXLY_FALLING, "machine.Pin.IRQ_FALLING"], [Blockly.MIXLY_CHANGE, "(machine.Pin.IRQ_RISING or machine.Pin.IRQ_FALLING)"]]), "mode");
-    this.appendStatementInput('DO')
-        .appendField(Blockly.MIXLY_DO);
+    this.appendValueInput('DO')
+        .appendField(Blockly.MIXLY_DO)
+        .setCheck("VAR");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);

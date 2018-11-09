@@ -87,11 +87,12 @@ Blockly.Python.inout_pin_attachInterrupt = function () {
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var dropdown_mode = this.getFieldValue('mode');
-    var code = 'machine.Pin(' + dropdown_pin + ').irq' + '(handler = ' + 'attachInterrupt_func_' + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
-    var funcName = 'attachInterrupt_func_' + dropdown_pin;
-    var branch = Blockly.Python.statementToCode(this, 'DO') || Blockly.Python.PASS;
-    var code2 = 'def' + ' ' + funcName + '(p):\n' + branch + '\n';
-    Blockly.Python.setups_[funcName] = code2;
+    var atta = Blockly.Python.valueToCode(this, 'DO', Blockly.Python.ORDER_ATOMIC);
+    var code = 'machine.Pin(' + dropdown_pin + ').irq' + '(handler = ' + atta + dropdown_pin + ', trigger = ' + dropdown_mode + ')\n'
+    //var funcName = 'attachInterrupt_func_' + dropdown_pin;
+    //var branch = Blockly.Python.statementToCode(this, 'DO') || Blockly.Python.PASS;
+    //var code2 = 'def' + ' ' + funcName + '(p):\n' + branch + '\n';
+    //Blockly.Python.setups_[funcName] = code2;
     return code;
 };
 

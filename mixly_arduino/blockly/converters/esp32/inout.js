@@ -247,3 +247,16 @@ pbc.assignD.get('TOUCHPAD')['create_block'] = function(py2block, node, targets, 
 
     });
 }
+
+// pbc.moduleFunctionD.get('machine')['Pin'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+//     if (args.length !== 1) {
+//         throw new Error("Incorrect number of arguments");
+//     }
+
+//     var time=py2block.convert(args[0]);
+//     return [block("controls_delay", func.lineno, {'Time':'ms'}, {
+//     "DELAY_TIME":time
+//     }, {
+//         "inline": "true"
+//     })];
+// }
