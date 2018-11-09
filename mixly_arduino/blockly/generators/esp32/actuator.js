@@ -94,3 +94,8 @@ Blockly.Python.actuator_neopixel_rgb=function(){
   var code= v + '['+value_led+'] = ('+value_rvalue+', '+value_gvalue+', '+value_bvalue+')\n';
   return code;
 };
+
+
+Blockly.Blocks.led_light=Blockly.Blocks.actuator_led_bright;
+Blockly.Blocks.get_led_bright=Blockly.Blocks.actuator_get_led_bright;
+Blockly.Blocks.led_brightness=Blockly.Blocks.actuator_led_brightness;

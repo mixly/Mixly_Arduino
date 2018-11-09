@@ -204,3 +204,7 @@ Blockly.Blocks.actuator_neopixel_write = {
     }
 };
 
+
+Blockly.Blocks.led_light=Blockly.Blocks.actuator_led_bright;
+Blockly.Blocks.get_led_bright=Blockly.Blocks.actuator_get_led_bright;
+Blockly.Blocks.led_brightness=Blockly.Blocks.actuator_led_brightness;

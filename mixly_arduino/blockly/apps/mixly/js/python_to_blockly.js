@@ -1494,8 +1494,14 @@ PythonToBlocks.prototype.KNOWN_FUNCTIONS = ["append", "strip", "rstrip", "lstrip
 PythonToBlocks.KNOWN_ATTR_FUNCTIONS = {};
 PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs, kwargs, node) {
     var name = this.identifier(func.attr);
-    if (func.value._astname == "Name") {
-        var module = this.identifier(func.value.id);
+    if (func.value._astname == "Name" || func.value._astname == "Attribute") {
+        var module = null;
+        if (func.value._astname == "Name") {
+            module = this.identifier(func.value.id);
+        } else {
+            module = this.Name_str(func.value.value) + '.' + this.identifier(func.value.attr);
+        }
+        
         if (module == "plt" && name == "plot") {
             if (args.length == 1) {
                 return [block("plot_line", func.lineno, {}, {
