@@ -7,7 +7,7 @@ pbc.assignD.get('iot')['check_assign'] = function(py2block, node, targets, value
     }
     var funcName = py2block.identifier(value.func.attr);
     var moduleName = py2block.Name_str(value.func.value);
-    if(moduleName === "simple" && funcName === "init_MQTT_client" && value.args.length === 6)
+    if(moduleName === "miot" && funcName === "init_MQTT_client" && value.args.length === 6)
         return true;
     return false;
 }
@@ -51,6 +51,19 @@ pbc.objectFunctionD.get('do_connect')['miot'] = function (py2block, func, args, 
         "inline": "true"
     })];
 }
+
+pbc.objectFunctionD.get('OneNEToff')['miot'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    return [block("iot_onenet_disconnect", func.lineno, {}, {
+            "VAR":objblock,
+        }, {
+            "inline": "true"
+        })];
+}
+
 
 pbc.objectFunctionD.get('check_msg')['iot'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 0) {

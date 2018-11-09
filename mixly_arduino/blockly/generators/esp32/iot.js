@@ -28,7 +28,7 @@ Blockly.Python.iot_onenet_connect = function(block) {
 Blockly.Python.iot_onenet_disconnect = function(block) {
   var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
   Blockly.Python.definitions_['import_simple'] = "import simple"; 
-  var code=v + '.disconnect()\n';  
+  var code=v + '.OneNEToff()\n';  
   return code;
 };
 
