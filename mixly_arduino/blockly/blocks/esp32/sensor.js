@@ -531,5 +531,5 @@ Blockly.Blocks['sensor_pin_pressed']=Blockly.Blocks['sensor_mixgo_pin_pressed'];
 Blockly.Blocks['sensor_pin_near']=Blockly.Blocks['sensor_mixgo_pin_near'];
 Blockly.Blocks['sensor_light']=Blockly.Blocks['sensor_mixgo_light'];
 Blockly.Blocks['sensor_sound']=Blockly.Blocks['sensor_mixgo_sound'];
-Blockly.Blocks['sensor_get_acceleration']=Blockly.Blocks['sensor_mixgo_get_acceleration'];
+Blockly.Blocks['sensor_get_acceleration']=Blockly.Blocks['sensor_mpu9250_get_acceleration'];
 Blockly.Blocks['dht11']=Blockly.Blocks['sensor_dht11']
