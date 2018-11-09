@@ -10,8 +10,8 @@ pbc.assignD.get('I2C')['check_assign'] = function(py2block, node, targets, value
 pbc.assignD.get('I2C')['create_block'] = function(py2block, node, targets, value){
 
     var astname = value.keywords[0]._astname;
-    if(astname === "keyword" && value.keywords[0].arg.v == "scl" 
-        && value.keywords[0].value.func.attr.v === "Pin"){ 
+    if(astname === "keyword" && value.keywords[0].arg.v == "scl"
+        && value.keywords[0].value.func.attr.v === "Pin"){
     var sdablock = null;
     var sclblock = null;
     var freqblock = null;
@@ -130,7 +130,7 @@ pbc.assignD.get('SPI')['check_assign'] = function(py2block, node, targets, value
 pbc.assignD.get('SPI')['create_block'] = function(py2block, node, targets, value){
 
     var astname = value.keywords[0]._astname;
-    if(value.keywords[0].arg.v == "baudrate" && value.keywords[3].arg.v == "sck" && value.keywords[3].value.func.attr.v == "Pin"){ 
+    if(value.keywords[0].arg.v == "baudrate" && value.keywords[3].arg.v == "sck" && value.keywords[3].value.func.attr.v == "Pin"){
     var polarityblock = null;
     var phaseblock = null;
     var sckblock = null;
@@ -185,28 +185,28 @@ pbc.assignD.get('SPI')['create_block'] = function(py2block, node, targets, value
     }
 }
 
-
-pbc.objectFunctionD.get('init')['SPI'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length == 0 & keywords.length == 1){ 
-        var objblock = py2block.convert(func.value);
-        var btlblock = null;
-        var param = keywords[0];
-        var key = py2block.identifier(param.arg);
-        if (key === "baudrate") {
-            bltblock = py2block.convert(param.value);
-        } 
-        if (bltblock != null ) {
-            return [block("communicate_spi_set", func.lineno, {}, {
-                "VAR":objblock,
-                "data": bltblock,
-            }, {
-                "inline": "true"
-            })];
-        }
-    }else{
-        throw new Error("Incorrect number of arguments");
-    }
-}
+// 跟control的system_timer重了
+// pbc.objectFunctionD.get('init')['SPI'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+//     if (args.length == 0 & keywords.length == 1){
+//         var objblock = py2block.convert(func.value);
+//         var btlblock = null;
+//         var param = keywords[0];
+//         var key = py2block.identifier(param.arg);
+//         if (key === "baudrate") {
+//             bltblock = py2block.convert(param.value);
+//         }
+//         if (bltblock != null ) {
+//             return [block("communicate_spi_set", func.lineno, {}, {
+//                 "VAR":objblock,
+//                 "data": bltblock,
+//             }, {
+//                 "inline": "true"
+//             })];
+//         }
+//     }else{
+//         throw new Error("Incorrect number of arguments");
+//     }
+// }
 
 pbc.assignD.get('spi')['check_assign'] = function(py2block, node, targets, value) {
     if(value._astname != "Call" || value.func._astname != "Name"){
