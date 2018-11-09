@@ -1,5 +1,4 @@
 
-// console.log("hhh")
 
 pbc.objectFunctionD.get('value')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1 && args.length !== 0) {
@@ -28,9 +27,10 @@ pbc.objectFunctionD.get('value')['Pin'] = function (py2block, func, args, keywor
     }
 }
 
-
+//bug
 pbc.assignD.get('Pin')['check_assign'] = function(py2block, node, targets, value) {
-    var funcName = py2block.identifier(value.func.id);
+    var moduleName = py2block.Name_str(value.func.value);
+    var funcName = py2block.identifier(value.func.attr);
     if(value._astname === "Call"
         && funcName === "Pin" && (value.args.length === 2 || value.args.length === 3) )
         return true;
@@ -43,10 +43,10 @@ pbc.assignD.get('Pin')['create_block'] = function(py2block, node, targets, value
     var pinblock = py2block.convert(value.args[0]);
     pbc.pinType = null;
     if(value.args.length === 2){
-    var digitalblock = py2block.Name_str(value.args[1].value) +"."+ py2block.identifier(value.args[1].attr);
+    var digitalblock = "machine."+py2block.identifier(value.args[1].value.attr) +"."+ py2block.identifier(value.args[1].attr);
     }
     else if(value.args.length === 3){
-    var digitalblock = py2block.Name_str(value.args[1].value) +"."+ py2block.identifier(value.args[1].attr)+", "+py2block.Name_str(value.args[2].value) +"."+ py2block.identifier(value.args[2].attr);
+    var digitalblock = "machine."+py2block.identifier(value.args[1].value.attr) +"."+ py2block.identifier(value.args[1].attr)+", "+"machine."+py2block.identifier(value.args[2].value.attr) +"."+ py2block.identifier(value.args[2].attr);
     }
     pinobj = "pin"+value.args[0].n.v;
     return block("inout_digital_init", node.lineno, {"PIN_OBJ":pinobj,"MODE":digitalblock}, {
@@ -54,18 +54,20 @@ pbc.assignD.get('Pin')['create_block'] = function(py2block, node, targets, value
 
     });
 }
-
+//ok
 pbc.assignD.get('DAC')['check_assign'] = function(py2block, node, targets, value) {
-    var funcName = py2block.identifier(value.func.id);
+    var moduleName = py2block.Name_str(value.func.value);
+    var funcName = py2block.identifier(value.func.attr);
     if(value._astname === "Call"
-        && funcName === "DAC" && value.args.length === 1)
+        && funcName === "DAC" && moduleName === "machine"&& value.args.length === 1)
         return true;
     return false;
 }
 
 pbc.assignD.get('DAC')['create_block'] = function(py2block, node, targets, value){
     var astname = value.args[0]._astname;
-    if(astname === "Call" && value.args[0].func._astname == "Name" && value.args[0].func.id.v === "Pin"){ //
+    var funcName = py2block.identifier(value.args[0].func.attr);
+    if(astname === "Call" && funcName === "Pin"){ //
         pbc.pinType = "pins_dac_pin";
         pinblock =  py2block.convert(value.args[0].args[0]);
         pbc.pinType = null;
@@ -98,17 +100,20 @@ pbc.objectFunctionD.get('write')['Pin'] = function (py2block, func, args, keywor
     })];
 }
 
+//ok
 pbc.assignD.get('PWM')['check_assign'] = function(py2block, node, targets, value) {
-    var funcName = py2block.identifier(value.func.id);
+    var moduleName = py2block.Name_str(value.func.value);
+    var funcName = py2block.identifier(value.func.attr);
     if(value._astname === "Call"
-        && funcName === "PWM" && value.args.length === 1)
+        && funcName === "PWM" && moduleName === "machine" && value.args.length === 1)
         return true;
     return false;
 }
 
 pbc.assignD.get('PWM')['create_block'] = function(py2block, node, targets, value){
     var astname = value.args[0]._astname;
-    if(astname === "Call" && value.args[0].func._astname == "Name" && value.args[0].func.id.v === "Pin"){ //
+    var funcName = py2block.identifier(value.args[0].func.attr);
+    if(astname === "Call" && funcName === "Pin"){ //
         pbc.pinType = "pins_pwm_pin";
         pinblock =  py2block.convert(value.args[0].args[0]);
         pbc.pinType = null;
@@ -157,18 +162,20 @@ pbc.objectFunctionD.get('freq')['Pin'] = function (py2block, func, args, keyword
         "inline": "true"
     })];
 }
-
+//ok
 pbc.assignD.get('ADC')['check_assign'] = function(py2block, node, targets, value) {
-    var funcName = py2block.identifier(value.func.id);
+    var moduleName = py2block.Name_str(value.func.value);
+    var funcName = py2block.identifier(value.func.attr);
     if(value._astname === "Call"
-        && funcName === "ADC" && value.args.length === 1)
+        && funcName === "ADC" && moduleName === "machine" && value.args.length === 1)
         return true;
     return false;
 }
 
 pbc.assignD.get('ADC')['create_block'] = function(py2block, node, targets, value){
     var astname = value.args[0]._astname;
-    if(astname === "Call" && value.args[0].func._astname == "Name" && value.args[0].func.id.v === "Pin"){ //
+    var funcName = py2block.identifier(value.args[0].func.attr);
+    if(astname === "Call" && funcName === "Pin"){ //
         pbc.pinType = "pins_analog_pin";
         pinblock =  py2block.convert(value.args[0].args[0]);
         pbc.pinType = null;
@@ -212,18 +219,20 @@ pbc.objectFunctionD.get('read')['Pin'] = function (py2block, func, args, keyword
     });
     }
 }
-
+//ok
 pbc.assignD.get('TOUCHPAD')['check_assign'] = function(py2block, node, targets, value) {
-    var funcName = py2block.identifier(value.func.id);
+    var moduleName = py2block.Name_str(value.func.value);
+    var funcName = py2block.identifier(value.func.attr);
     if(value._astname === "Call"
-        && funcName === "TouchPad" && value.args.length === 1)
+        && funcName === "TouchPad" && moduleName === "machine" && value.args.length === 1)
         return true;
     return false;
 }
 
 pbc.assignD.get('TOUCHPAD')['create_block'] = function(py2block, node, targets, value){
     var astname = value.args[0]._astname;
-    if(astname === "Call" && value.args[0].func._astname == "Name" && value.args[0].func.id.v === "Pin"){ //
+    var funcName = py2block.identifier(value.args[0].func.attr);
+    if(astname === "Call" &&  funcName === "Pin"){ //
         pbc.pinType = "pins_touch_pin";
         pinblock =  py2block.convert(value.args[0].args[0]);
         pbc.pinType = null;
