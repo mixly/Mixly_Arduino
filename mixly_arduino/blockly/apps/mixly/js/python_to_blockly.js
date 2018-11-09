@@ -1077,15 +1077,6 @@ PythonToBlocks.prototype.Expr = function(node, is_top_level) {
     if (converted.constructor == Array) {
         return converted[0];
     }else {
-        if(value._astname == "Subscript" && value.value._astname == "Call"
-            && value.value.func._astname == "Attribute" && this.identifier(value.value.func.attr) == "ifconfig"){
-            return block('network_get_connect', node.lineno, {
-                "mode":this.Num_value(value.slice.value)
-            }, {
-                "VAR":this.convert(value.value.func.value)
-            });
-
-        }
         return block("raw_empty", node.lineno, {}, {
             "VALUE": converted
         });
@@ -1913,6 +1904,15 @@ PythonToBlocks.prototype.Subscript = function(node) {
                 "DICT": this.convert(value)
             });
         }else {
+            if(slice.value._astname == "Num" 
+            && value.func._astname == "Attribute" && this.identifier(value.func.attr) == "ifconfig"){
+            return block('network_get_connect', node.lineno, {
+                "mode":this.Num_value(slice.value)
+            }, {
+                "VAR":this.convert(value.func.value)
+            });
+
+        }
             return block("lists_get_index", node.lineno, {}, {
                 "AT": this.convert(slice.value),
                 "LIST": this.convert(value)

@@ -1,6 +1,7 @@
 pbc.assignD.get('I2C')['check_assign'] = function(py2block, node, targets, value) {
-    var funcName = py2block.identifier(value.func.id);
-    if(value._astname === "Call" 
+    var funcName = py2block.identifier(value.func.attr);
+    var moduleName = py2block.Name_str(value.func.value);
+    if(value._astname === "Call" && moduleName === "machine"
         && funcName === "I2C" && value.keywords.length === 3)
         return true;
     return false;
@@ -10,7 +11,7 @@ pbc.assignD.get('I2C')['create_block'] = function(py2block, node, targets, value
 
     var astname = value.keywords[0]._astname;
     if(astname === "keyword" && value.keywords[0].arg.v == "scl" 
-        && value.keywords[0].value.func.id.v === "Pin"){ 
+        && value.keywords[0].value.func.attr.v === "Pin"){ 
     var sdablock = null;
     var sclblock = null;
     var freqblock = null;
@@ -118,8 +119,9 @@ pbc.objectFunctionD.get('available')['I2C'] = function (py2block, func, args, ke
 }
 
 pbc.assignD.get('SPI')['check_assign'] = function(py2block, node, targets, value) {
-    var funcName = py2block.identifier(value.func.id);
-    if(value._astname === "Call" 
+    var funcName = py2block.identifier(value.func.attr);
+    var moduleName = py2block.Name_str(value.func.value);
+    if(value._astname === "Call" && moduleName === "machine"
         && funcName === "SPI" && value.keywords.length === 6)
         return true;
     return false;
@@ -128,8 +130,7 @@ pbc.assignD.get('SPI')['check_assign'] = function(py2block, node, targets, value
 pbc.assignD.get('SPI')['create_block'] = function(py2block, node, targets, value){
 
     var astname = value.keywords[0]._astname;
-    if(astname === "keyword" && value.keywords[0].arg.v == "baudrate" 
-        && value.keywords[3].value.func.id.v === "Pin"){ 
+    if(value.keywords[0].arg.v == "baudrate" && value.keywords[3].arg.v == "sck" && value.keywords[3].value.func.attr.v == "Pin"){ 
     var polarityblock = null;
     var phaseblock = null;
     var sckblock = null;
@@ -312,7 +313,7 @@ pbc.assignD.get('OW')['create_block'] = function(py2block, node, targets, value)
     pbc.pinType="pins_digital_pin";
     var pinblock;
 
-    if (pwmAstName === "Call"&& value.args[0].func._astname == "Name" && py2block.Name_str(value.args[0].func)==="Pin") {
+    if (pwmAstName === "Call"&& value.args[0].func._astname == "Attribute" && value.args[0].func.attr.v==="Pin") {
         pinblock=py2block.convert(value.args[0].args[0])
     }
     pbc.pinType=null;
@@ -328,7 +329,7 @@ pbc.objectFunctionD.get('scan')['OW'] = function (py2block, func, args, keywords
         throw new Error("Incorrect number of arguments");
     }
     var objblock = py2block.convert(func.value);
-    return [block("sensor_ow_scan", func.lineno, {}, {
+    return [block("communicate_ow_scan", func.lineno, {}, {
         "VAR": objblock,
     }, {
         "inline": "true"
@@ -340,7 +341,7 @@ pbc.objectFunctionD.get('readbyte')['OW'] = function (py2block, func, args, keyw
         throw new Error("Incorrect number of arguments");
     }
     var objblock = py2block.convert(func.value);
-    return [block("sensor_ow_read", func.lineno, {}, {
+    return [block("communicate_ow_read", func.lineno, {}, {
         "VAR": objblock,
     }, {
         "inline": "true"
@@ -352,7 +353,7 @@ pbc.objectFunctionD.get('reset')['OW'] = function (py2block, func, args, keyword
         throw new Error("Incorrect number of arguments");
     }
     var objblock = py2block.convert(func.value);
-    return [block("sensor_ow_reset", func.lineno, {}, {
+    return [block("communicate_ow_reset", func.lineno, {}, {
         "VAR": objblock,
     }, {
         "inline": "true"
@@ -365,7 +366,7 @@ pbc.objectFunctionD.get('select_rom')['OW'] = function (py2block, func, args, ke
     }
     var objblock = py2block.convert(func.value);
     var byteblock = py2block.convert(args[0].func.value);
-    return [block("sensor_ow_select", func.lineno, {}, {
+    return [block("communicate_ow_select", func.lineno, {}, {
         "VAR": objblock,
         "byte": byteblock
     }, {

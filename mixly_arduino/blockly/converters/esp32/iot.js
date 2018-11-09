@@ -2,11 +2,12 @@
 // console.log("hhh")
 
 pbc.assignD.get('iot')['check_assign'] = function(py2block, node, targets, value) {
-    if(value._astname != "Call" || value.func._astname != "Name"){
+    if(value._astname != "Call" || value.func._astname != "Attribute" || value.func.value._astname != "Name"){
         return false;
     }
-    var funcName = py2block.Name_str(value.func);
-    if(funcName === "init_MQTT_client" && value.args.length === 6)
+    var funcName = py2block.identifier(value.func.attr);
+    var moduleName = py2block.Name_str(value.func.value);
+    if(moduleName === "simple" && funcName === "init_MQTT_client" && value.args.length === 6)
         return true;
     return false;
 }
@@ -23,8 +24,22 @@ pbc.assignD.get('iot')['create_block'] = function(py2block, node, targets, value
     });
 }
 
-pbc.globalFunctionD['do_connect'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 2) {
+// pbc.globalFunctionD['do_connect'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+//     if (args.length !== 2) {
+//         throw new Error("Incorrect number of arguments");
+//     }
+//     var nameblock = py2block.convert(args[0]);
+//     var keyblock = py2block.convert(args[1]);
+//     return [block("iot_wifi_connect", func.lineno, {}, {
+//         'WIFINAME': nameblock,
+//         'PASSWORD': keyblock
+//     }, {
+//         "inline": "true"
+//     })];
+// }
+
+pbc.objectFunctionD.get('do_connect')['miot'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 2) {
         throw new Error("Incorrect number of arguments");
     }
     var nameblock = py2block.convert(args[0]);

@@ -95,13 +95,13 @@ pbc.objectFunctionD.get('config')['network'] = function (py2block, func, args, k
     }else if(args.length == 1) {
        var objblock = py2block.convert(func.value);
     var argblock = py2block.Str_value(args[0]);
-    return [block("network_get_wifi", func.lineno, {
+    return block("network_get_wifi", func.lineno, {
         "op":argblock,
     }, {
             "VAR":objblock,
         }, {
             "inline": "true"
-        })];
+        });
     }else{
         throw new Error("Incorrect number of arguments");
     }
