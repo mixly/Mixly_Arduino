@@ -148,9 +148,10 @@ class led:
 
 class ADCSensor:
     def __init__(self,pin):
-        self.pin=pin
+        self.adc=ADC(Pin(pin))
+        self.adc.atten(ADC.ATTN_11DB)
     def read(self):
-        return ADC(Pin(self.pin)).read()
+        return self.adc.read()
 
 class RGB:
     def __init__(self, pin, num):
