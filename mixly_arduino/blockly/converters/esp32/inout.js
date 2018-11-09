@@ -27,7 +27,7 @@ pbc.objectFunctionD.get('value')['Pin'] = function (py2block, func, args, keywor
     }
 }
 
-//bug
+
 pbc.assignD.get('Pin')['check_assign'] = function(py2block, node, targets, value) {
     var moduleName = py2block.Name_str(value.func.value);
     var funcName = py2block.identifier(value.func.attr);
@@ -48,7 +48,7 @@ pbc.assignD.get('Pin')['create_block'] = function(py2block, node, targets, value
     else if(value.args.length === 3){
     var digitalblock = "machine."+py2block.identifier(value.args[1].value.attr) +"."+ py2block.identifier(value.args[1].attr)+", "+"machine."+py2block.identifier(value.args[2].value.attr) +"."+ py2block.identifier(value.args[2].attr);
     }
-    pinobj = "pin"+value.args[0].n.v;
+    pinobj = py2block.identifier(targets[0].id);
     return block("inout_digital_init", node.lineno, {"PIN_OBJ":pinobj,"MODE":digitalblock}, {
         "PIN":pinblock,
 
@@ -76,7 +76,7 @@ pbc.assignD.get('DAC')['create_block'] = function(py2block, node, targets, value
         pinblock =  py2block.convert(args[0]);
         pbc.pinType = null;
     }
-    pinobj = "dac"+value.args[0].args[0].n.v;
+    pinobj = py2block.identifier(targets[0].id);
     return block("inout_analog_write_init", node.lineno, {"PIN_OBJ":pinobj}, {
         "PIN":pinblock,
 
@@ -122,7 +122,7 @@ pbc.assignD.get('PWM')['create_block'] = function(py2block, node, targets, value
         pinblock =  py2block.convert(args[0]);
         pbc.pinType = null;
     }
-    pinobj = "pwm"+value.args[0].args[0].n.v;
+    pinobj = py2block.identifier(targets[0].id);
     return block("inout_pwm_analog_write_init", node.lineno, {"PIN_OBJ":pinobj}, {
         "PIN":pinblock,
 
@@ -184,7 +184,7 @@ pbc.assignD.get('ADC')['create_block'] = function(py2block, node, targets, value
         pinblock =  py2block.convert(args[0]);
         pbc.pinType = null;
     }
-    pinobj = "adc"+value.args[0].args[0].n.v;
+    pinobj = py2block.identifier(targets[0].id);
     return block("inout_analog_read_init", node.lineno, {"PIN_OBJ":pinobj}, {
         "PIN":pinblock,
 
@@ -241,7 +241,7 @@ pbc.assignD.get('TOUCHPAD')['create_block'] = function(py2block, node, targets, 
         pinblock =  py2block.convert(args[0]);
         pbc.pinType = null;
     }
-    pinobj = "tc"+value.args[0].args[0].n.v;
+    pinobj = py2block.identifier(targets[0].id);
     return block("inout_pin_pressed_init", node.lineno, {"PIN_OBJ":pinobj}, {
         "PIN":pinblock,
 
