@@ -131,6 +131,16 @@ Blockly.Python.inout_analog_read_init = function () {
     var code = varName + ' = machine.ADC(machine.Pin(' + dropdown_pin + '))\n';
     return code;
 };
+
+Blockly.Python.inout_analog_atten = function () {
+    Blockly.Python.definitions_['import_machine'] = 'import machine';
+    var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    //var dropdown_stat = this.getFieldValue('STAT');
+    var value_atten = this.getFieldValue('atten')
+    var code = dropdown_pin + '.atten(' + value_atten + ')\n';
+    return code;
+};
+
 //ok
 Blockly.Python.inout_pin_pressed_init = function(){
     Blockly.Python.definitions_['import_machine'] = 'import machine';

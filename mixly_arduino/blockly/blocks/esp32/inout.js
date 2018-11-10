@@ -131,6 +131,28 @@ Blockly.Blocks.inout_analog_read = {
   }
 };
 
+Blockly.Blocks.inout_analog_atten = {
+    init: function(){
+        this.setColour(Blockly.Blocks.base.HUE);
+        this.appendValueInput("PIN", Number)
+            .appendField(Blockly.MIXLY_Analog_PINMODEIN)
+            .setCheck(Number);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_ESP32_REF_VOLTAGE + Blockly.MIXLY_STAT)
+			.appendField(new Blockly.FieldDropdown([
+                ["3.9V", "machine.ADC.ATTN_11DB"],
+                ["2.2V", "machine.ADC.ATTN_6DB"],
+				["1.5V", "machine.ADC.ATTN_2_5_DB"],
+                ["", "machine.ADC.ATTIN_0DB"]
+				]), "atten");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_SET_FREQ);
+    }
+};
+
+
 Blockly.Blocks['inout_pin_pressed'] = {
     init: function(){
         this.setColour(Blockly.Blocks.base.HUE);

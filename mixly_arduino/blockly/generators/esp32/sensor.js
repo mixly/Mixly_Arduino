@@ -39,7 +39,7 @@ Blockly.Python.sensor_mpu9250_attachGestureInterrupt = function(){
 Blockly.Python.sensor_mpu9250_get_acceleration = function(){
     Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
     Blockly.Python.definitions_['import_machine'] = 'import machine';
-    var key = this.getFieldValue('key')
+    var key = this.getFieldValue('key');
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
 	if (v.indexOf('mixgo_')>-1)
 		Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
@@ -244,7 +244,7 @@ Blockly.Python.sensor_rtc_init=function(){
 Blockly.Python.sensor_use_i2c_init=function(){
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var iv = Blockly.Python.valueToCode(this, 'I2CSUB', Blockly.Python.ORDER_ATOMIC);
-    var key = this.getFieldValue('key')
+    var key = this.getFieldValue('key');
     Blockly.Python.definitions_['import_machine'] = 'import machine';
 	var code;
     if (key=='MPU9250') {
@@ -263,7 +263,7 @@ Blockly.Python.sensor_use_i2c_init=function(){
 
 Blockly.Python.sensor_bmp=function(){
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-    var key = this.getFieldValue('key')
+    var key = this.getFieldValue('key');
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     Blockly.Python.definitions_['import_bmp280'] = 'import bmp280';
 	var code = v + '.' + key;
@@ -272,7 +272,7 @@ Blockly.Python.sensor_bmp=function(){
 
 Blockly.Python.sensor_sht=function(){
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-    var key = this.getFieldValue('key')
+    var key = this.getFieldValue('key');
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     Blockly.Python.definitions_['import_sht20'] = 'import sht20';
     var code = v + '.' + key;

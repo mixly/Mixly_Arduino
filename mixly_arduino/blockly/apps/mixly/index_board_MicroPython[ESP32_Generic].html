@@ -480,7 +480,12 @@
           <shadow type="pins_analog_pin"></shadow>
         </value>
       </block>
-      <block type="inout_analog_read">
+	  <block type="inout_analog_atten">
+        <value name="PIN">
+          <shadow type="pins_analog"></shadow>
+        </value>
+	  </block>
+	  <block type="inout_analog_read">
         <value name="PIN">
           <shadow type="pins_analog"></shadow>
         </value>
@@ -526,7 +531,19 @@
         <value name="PIN">
           <shadow type="pins_digital_pin"></shadow>
         </value>
+        <value name="DO">
+          <shadow type="variables_get">
+              <field name="VAR">attachInterrupt_func</field>
+          </shadow>
+        </value>
       </block>
+     <block type="procedures_defnoreturn">
+         <field name="NAME">attachInterrupt_func</field>
+         <statement name="STACK">
+             <block type="controls_pass">
+             </block>
+         </statement>
+     </block>
 	  <block type="inout_analog_write_init">
         <value name="PIN">
           <shadow type="pins_dac_pin"></shadow>
@@ -645,6 +662,24 @@
             <field name="NUM">1000</field>
           </shadow>
         </value>
+        <value name="callback">
+          <shadow type="variables_get">
+            <field name="VAR">tim_callback</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="procedures_defnoreturn">
+          <field name="NAME">tim_callback</field>
+          <statement name="STACK">
+              <block type="system_print">
+                 <value name="VAR">
+                     <block type="number_to_text">
+                      <value name="VAR">
+                          <block type="controls_millis"></block>
+                      </value>
+                 </value>
+              </block>
+          </statement>
       </block>
       <block type="controls_flow_statements"></block>
       <block type="controls_millis"></block>
