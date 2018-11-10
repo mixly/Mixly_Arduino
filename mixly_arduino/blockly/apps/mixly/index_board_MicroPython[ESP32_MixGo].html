@@ -1812,6 +1812,13 @@
             </shadow>
           </value>
         </block>
+        <block type="display_show_static">
+          <value name="data">
+            <shadow type="text">
+              <field name="TEXT">abc</field>
+            </shadow>
+          </value>
+        </block>
        <!-- <block type="monitor_show_scroll_string">
           <value name="data">
             <shadow type="text">
@@ -1836,6 +1843,16 @@
             <shadow type="pins_builtinimg"></shadow>
           </value>>
           <value name="B">
+            <shadow type="pins_builtinimg"></shadow>
+          </value>
+        </block>
+        <block type="image_shift">
+          <value name="val">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="img">
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>
@@ -1865,6 +1882,7 @@
           </value>
         </block>
         <block type="display_get_screen_pixel"></block>
+        <block type="display_get_screen_image"></block>
         <block type="display_blink_rate">
           <value name="x">
             <shadow type="math_number">

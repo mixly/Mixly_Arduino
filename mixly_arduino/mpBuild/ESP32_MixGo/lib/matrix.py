@@ -111,8 +111,9 @@ class Image:
                 if i<7:
                     a=a+':'
 
-        return Image(a)                
-        
+        return Image(a)    
+
+
         
     def shift_up(self, num):
         if num<0:
@@ -258,6 +259,18 @@ class Display:
     # def _show(self):
     #     """Actually send all the changes to the device."""
     #     self.i2c.writeto(self.address, self.buffer)
+    def get_screenimage(self):
+        a=''
+        for i in range(8):
+                for j in range(16):
+                    if self._pixel(j, i) ==1:
+                        a=a+'1'
+                    else:
+                        a=a+'0'
+                if i<7:
+                    a=a+':'
+                    
+        return Image(a)
 
     def fill(self, color):
         """Fill the display with given color."""
@@ -303,6 +316,32 @@ class Display:
                         self._pixel(j, i, 0)
                     #print(l[i][j])
             self._show()
+
+    def showstatic(self, data, delay=200, time=400):
+        self.fill(0)
+        if type(data)==str:
+            DISPLAY_WIDTH  = 16      # Display width in pixels.
+            DISPLAY_HEIGHT = 8       # Display height in pixels.
+            # Initialize LED matrix.
+            matrix = Display(i2c)
+            #matrix.clear()
+            # Initialize font renderer using a helper function to flip the Y axis
+            # when rendering so the origin is in the upper left.
+            def matrix_pixel(x, y):
+                matrix._pixel(x, y, 1)
+            with BitmapFont(DISPLAY_WIDTH, DISPLAY_HEIGHT, matrix_pixel) as bf:                           
+                matrix.clear()
+                pos = DISPLAY_WIDTH                 # X position of the message start.
+                message_width = bf.width(data)   # Message width in pixels.
+                if len(data)==3:
+                    bf.text(data, 0, 0) #change X position
+                elif len(data)==2:
+                    bf.text(data, 2, 0)
+                elif len(data)==1:
+                    bf.text(data, 5, 0)         
+                matrix._show()
+                
+                        
 
     def show_old(self, data, time=400):#previous show string with the wide font
         self.fill(0)

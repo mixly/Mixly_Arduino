@@ -124,6 +124,18 @@ Blockly.Blocks.display_scroll_string = {
   }
 };
 
+Blockly.Blocks.display_show_static = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+  this.appendValueInput('data')
+        .setCheck(String)
+    .appendField(Blockly.MIXLY_ESP32_MONITOR_SHOW_STATIC);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+  this.setInputsInline(true);
+  }
+};
+
 Blockly.Blocks.microbit_display_show_image = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
@@ -1353,6 +1365,17 @@ Blockly.Blocks.display_get_screen_pixel = {
     this.setInputsInline(true);
     this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_ESP32_JS_MONITOR_GET_SCREEN_BRIGHTNESS);
+  }
+};
+
+Blockly.Blocks.display_get_screen_image = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_ESP32_MONITOR_GET_SCREEN_IMAGE);
+    this.setInputsInline(true);
+    this.setOutput(true, Number);
+    this.setTooltip(Blockly.MIXLY_ESP32_MONITOR_GET_SCREEN_IMAGE_TOOLTIP);
   }
 };
 
