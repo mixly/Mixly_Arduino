@@ -1374,7 +1374,7 @@ Blockly.Blocks.display_get_screen_image = {
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_ESP32_MONITOR_GET_SCREEN_IMAGE);
     this.setInputsInline(true);
-    this.setOutput(true, Number);
+    this.setOutput(true, "esp32_image");
     this.setTooltip(Blockly.MIXLY_ESP32_MONITOR_GET_SCREEN_IMAGE_TOOLTIP);
   }
 };

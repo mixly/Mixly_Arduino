@@ -2560,7 +2560,14 @@
             </shadow>
           </value>
         </block>
-        <block type="display_scroll_string_delay">
+        <block type="display_show_static">
+          <value name="data">
+            <shadow type="text">
+              <field name="TEXT">abc</field>
+            </shadow>
+          </value>
+        </block>
+       <block type="display_scroll_string_delay">
           <value name="data">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
@@ -2599,6 +2606,26 @@
             <shadow type="pins_builtinimg"></shadow>
           </value>
         </block>
+        <block type="image_shift">
+          <value name="val">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="img">
+            <shadow type="pins_builtinimg"></shadow>
+          </value>
+        </block>
+       <block type="image_shift">
+          <value name="val">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="img">
+            <shadow type="pins_builtinimg"></shadow>
+          </value>
+        </block>
         <block type="display_get_pixel">
           <value name="x">
             <shadow type="pins_exlcdh"></shadow>
@@ -2619,7 +2646,13 @@
             </shadow>
           </value>
         </block>
+        <block type="display_bright_screen">
+          <value name="x">
+            <shadow type="pins_exlcdh"></shadow>
+          </value>
+        </block>
         <block type="display_get_screen_pixel"></block>
+        <block type="display_get_screen_image"></block>
         <block type="display_blink_rate">
           <value name="x">
             <shadow type="math_number">
