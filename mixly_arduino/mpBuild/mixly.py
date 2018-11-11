@@ -1,4 +1,8 @@
+import machine
 import mixgo
+import time
 
 
-mixgo.led.setonoff(1,1)
+while True:
+    print(mixgo.Infrared_left.near())
+    time.sleep_ms(100)
