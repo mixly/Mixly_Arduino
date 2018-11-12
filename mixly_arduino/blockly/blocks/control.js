@@ -659,3 +659,4 @@ Blockly.Blocks.controls_nointerrupts = {
         this.setNextStatement(true);
     }
 };
+Blockly.Blocks.base_delay=Blockly.Blocks.controls_delay;

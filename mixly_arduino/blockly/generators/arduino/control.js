@@ -171,3 +171,4 @@ Blockly.Arduino.controls_interrupts = function () {
 Blockly.Arduino.controls_nointerrupts = function () {
     return 'noInterrupts();\n';
 };
+Blockly.Arduino.base_delay=Blockly.Arduino.controls_delay;
