@@ -8,13 +8,23 @@
 4. rgb灯号的那个块不会做……
 */
 
-pbc.moduleFunctionD.get('display')['show'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.moduleFunctionD.get('matrix.display')['show'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1 && args.length !== 2 ){
         throw new Error("Incorrect number of arguments");
     }
-
+    var attr = {
+            '_astname': 'Name',
+            'id': {
+                '_astname': 'Str',
+                'v': py2block.identifier(args[0].value.attr) + "." + py2block.identifier(args[0].attr)
+            }
+        };
     if (args.length == 1 ){
-    var  strblock=py2block.convert(args[0]);
+        
+        
+
+    var  strblock=py2block.convert(attr);
+
     return [block("display_show_image_or_string", func.lineno, {}, {
         'data':strblock,
     }, {
@@ -22,7 +32,7 @@ pbc.moduleFunctionD.get('display')['show'] = function(py2block, func, args, keyw
     })];
     }
     if (args.length == 2 ){
-    var  strblock=py2block.convert(args[0]);
+    var  strblock=py2block.convert(attr);
     var  numblock=py2block.convert(args[1]);
     return [block("display_show_image_or_string_delay", func.lineno, {}, {
         'data':strblock,
@@ -35,7 +45,7 @@ pbc.moduleFunctionD.get('display')['show'] = function(py2block, func, args, keyw
 
 }
 
-pbc.moduleFunctionD.get('display')['scroll'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.moduleFunctionD.get('matrix.display')['scroll'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1 && args.length !== 2 ){
         throw new Error("Incorrect number of arguments");
     }
@@ -60,7 +70,22 @@ pbc.moduleFunctionD.get('display')['scroll'] = function(py2block, func, args, ke
     }
 }
 
-pbc.globalFunctionD['Image'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('matrix.display')['showstatic'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1 && args.length !== 2 ){
+        throw new Error("Incorrect number of arguments");
+    }
+
+    if (args.length == 1 ){
+    var  strblock=py2block.convert(args[0]);
+    return [block("display_show_static", func.lineno, {}, {
+        'data':strblock,
+    }, {
+        "inline": "true"
+    })];
+    }
+}
+
+pbc.moduleFunctionD.get('matrix')['Image'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1 || args[0]._astname != "Str") {
         throw new Error("Incorrect number of arguments");
     }
@@ -225,8 +250,30 @@ pbc.globalFunctionD['Image'] = function (py2block, func, args, keywords, stararg
             });
     }
 }
+//twj做到这里
+pbc.moduleFunctionD.get('matrix')['shift_up'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1 && args.length !== 2 ){
+        throw new Error("Incorrect number of arguments");
+    }
+    var Image_show = {
+            '_astname': 'Name',
+            'id': {
+                '_astname': 'Str',
+                'v': py2block.Name_str(func.value.value) + "." + py2block.identifier(func.value.attr)
+            }
+        };
+    if (args.length == 1 ){
 
-pbc.moduleFunctionD.get('display')['get_pixel'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    var  strblock=py2block.convert(args[0]);
+    return [block("display_scroll_string", func.lineno, {}, {
+        'data':strblock,
+    }, {
+        "inline": "true"
+    })];
+    }
+}
+
+pbc.moduleFunctionD.get('matrix.display')['get_pixel'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 2){
         throw new Error("Incorrect number of arguments");
     }
@@ -254,7 +301,7 @@ pbc.moduleFunctionD.get('display')['get_pixel'] = function(py2block, func, args,
     });
 }
 
-pbc.moduleFunctionD.get('display')['set_pixel'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.moduleFunctionD.get('matrix.display')['set_pixel'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 3){
         throw new Error("Incorrect number of arguments");
     }
@@ -288,7 +335,7 @@ pbc.moduleFunctionD.get('display')['set_pixel'] = function(py2block, func, args,
 }
 
 
-pbc.moduleFunctionD.get('display')['set_brightness'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('matrix.display')['set_brightness'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
     if(args.length!=1){
         throw new Error("Incorrect number of arguments");
     }
@@ -305,7 +352,7 @@ pbc.moduleFunctionD.get('display')['set_brightness'] = function(py2block, func, 
     })];
 }
 
-pbc.moduleFunctionD.get('display')['get_brightness'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('matrix.display')['get_brightness'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
     if(args.length!=0){
         throw new Error("Incorrect number of arguments");
     }
@@ -316,7 +363,7 @@ pbc.moduleFunctionD.get('display')['get_brightness'] = function(py2block, func, 
     })];
 }
 
-pbc.moduleFunctionD.get('display')['blink_rate'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('matrix.display')['blink_rate'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
     if(args.length!=1){
         throw new Error("Incorrect number of arguments");
     }
