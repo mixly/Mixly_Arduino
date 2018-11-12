@@ -1,12 +1,40 @@
 'use strict';
 
 
-pbc.objectFunctionD.get('is_pressed')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('mixgo.button_a')['is_pressed'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
+        var btn = {
+            '_astname': 'Name',
+            'id': {
+                '_astname': 'Str',
+                'v': py2block.identifier(func.value.attr)
+            }
+        };
     pbc.pinType = "pins_button";
-    var objblock = py2block.convert(func.value);
+    var objblock = py2block.convert(btn);
+    pbc.pinType = null;
+    return block("sensor_mixgo_button_is_pressed", func.lineno, {}, {
+        "btn": objblock
+    }, {
+        "inline": "true"
+    });
+}
+
+pbc.moduleFunctionD.get('mixgo.button_b')['is_pressed'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+        var btn = {
+            '_astname': 'Name',
+            'id': {
+                '_astname': 'Str',
+                'v': py2block.identifier(func.value.attr)
+            }
+        };
+    pbc.pinType = "pins_button";
+    var objblock = py2block.convert(btn);
     pbc.pinType = null;
     return block("sensor_mixgo_button_is_pressed", func.lineno, {}, {
         "btn": objblock
@@ -16,8 +44,7 @@ pbc.objectFunctionD.get('is_pressed')['Pin'] = function (py2block, func, args, k
 }
 
 
-
-pbc.objectFunctionD.get('was_pressed')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('was_pressed')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -45,12 +72,83 @@ pbc.objectFunctionD.get('get_presses')['Pin'] = function (py2block, func, args, 
     });
 }
 
-pbc.objectFunctionD.get('is_touched')['touch'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('mixgo.touch1')['is_touched'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
+            var btn = {
+            '_astname': 'Name',
+            'id': {
+                '_astname': 'Str',
+                'v': py2block.identifier(func.value.attr)
+            }
+        };
+    pbc.pin
     pbc.pinType = "number1";
-    var objblock = py2block.convert(func.value);
+    var objblock = py2block.convert(btn);
+    pbc.pinType = null;
+    return block("sensor_mixgo_pin_pressed", func.lineno, {}, {
+        "button":objblock
+    }, {
+        "inline": "true"
+    });
+}
+pbc.moduleFunctionD.get('mixgo.touch2')['is_touched'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+            var btn = {
+            '_astname': 'Name',
+            'id': {
+                '_astname': 'Str',
+                'v': py2block.identifier(func.value.attr)
+            }
+        };
+    pbc.pin
+    pbc.pinType = "number1";
+    var objblock = py2block.convert(btn);
+    pbc.pinType = null;
+    return block("sensor_mixgo_pin_pressed", func.lineno, {}, {
+        "button":objblock
+    }, {
+        "inline": "true"
+    });
+}
+pbc.moduleFunctionD.get('mixgo.touch3')['is_touched'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+            var btn = {
+            '_astname': 'Name',
+            'id': {
+                '_astname': 'Str',
+                'v': py2block.identifier(func.value.attr)
+            }
+        };
+    pbc.pin
+    pbc.pinType = "number1";
+    var objblock = py2block.convert(btn);
+    pbc.pinType = null;
+    return block("sensor_mixgo_pin_pressed", func.lineno, {}, {
+        "button":objblock
+    }, {
+        "inline": "true"
+    });
+}
+pbc.moduleFunctionD.get('mixgo.touch4')['is_touched'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+            var btn = {
+            '_astname': 'Name',
+            'id': {
+                '_astname': 'Str',
+                'v': py2block.identifier(func.value.attr)
+            }
+        };
+    pbc.pin
+    pbc.pinType = "number1";
+    var objblock = py2block.convert(btn);
     pbc.pinType = null;
     return block("sensor_mixgo_pin_pressed", func.lineno, {}, {
         "button":objblock
@@ -59,7 +157,8 @@ pbc.objectFunctionD.get('is_touched')['touch'] = function (py2block, func, args,
     });
 }
 
-pbc.moduleFunctionD.get('Infrared_left')['near'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+
+pbc.moduleFunctionD.get('mixgo.Infrared_left')['near'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -69,7 +168,7 @@ pbc.moduleFunctionD.get('Infrared_left')['near'] = function (py2block, func, arg
 
 }
 
-pbc.moduleFunctionD.get('Infrared_right')['near'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('mixgo.Infrared_right')['near'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -217,8 +316,15 @@ function fieldStrength(mode){
         if (args.length !== 0) {
             throw new Error("Incorrect number of arguments");
         }
-        var mpublock=py2block.convert(func.value)
-        return block('sensor_field_strength', func.lineno, {
+        var mpu = {
+            '_astname': 'Name',
+            'id': {
+                '_astname': 'Str',
+                'v': py2block.Name_str(func.value.value) + "." + py2block.identifier(func.value.attr)
+            }
+        };        
+        var mpublock=py2block.convert(mpu)
+        return block('sensor_mpu9250_field_strength', func.lineno, {
                 'compass': mode
             }, {
                 'SUB': mpublock
@@ -230,17 +336,23 @@ function fieldStrength(mode){
 }
 
 
-pbc.objectFunctionD.get('get_field_strength')['mpu'] = fieldStrength('strength');
-pbc.objectFunctionD.get('heading')['mpu'] = fieldStrength('heading');
+pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_get_field_strength'] = fieldStrength('strength');
+pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_heading'] = fieldStrength('heading');
 
 
-pbc.objectFunctionD.get('get_BMP_temperature')['mpu'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_get_temperature'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-   
-    var mpublock = py2block.convert(func.value)
-    return block("sensor_temperature", func.lineno, {}, {
+    var mpu = {
+            '_astname': 'Name',
+            'id': {
+                '_astname': 'Str',
+                'v': py2block.Name_str(func.value.value) + "." + py2block.identifier(func.value.attr)
+            }
+        };     
+    var mpublock = py2block.convert(mpu)
+    return block("sensor_mpu9250_temperature", func.lineno, {}, {
         'SUB': mpublock
     }, {
         "inline": "true"
