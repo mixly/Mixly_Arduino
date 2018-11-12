@@ -129,7 +129,7 @@ Blockly.Python.system_timer = function () {
     var callback = Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
     //var code = v + ".init(period = " + period + ", mode = machine.Timer." + mode + ", callback = " + v + "_callback_func)\n";
     //Blockly.Python.setups_['timer_callback_func'] = 'def ' + v + '_callback_func(t):\n' + branch + '\n';
-    var code = v + ".init(period = " + period + ", mode = machine.Timer." + mode + ", callback = " + callback + "2"+")\n";
+    var code = v + ".init(period = " + period + ", mode = machine.Timer." + mode + ", callback = " + callback +")\n";
     return code;
 };
 

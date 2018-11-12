@@ -532,8 +532,8 @@
           <shadow type="pins_digital_pin"></shadow>
         </value>
         <value name="DO">
-          <shadow type="variables_get">
-              <field name="VAR">attachInterrupt_func</field>
+          <shadow type="factory_block_return">
+              <field name="VALUE">attachInterrupt_func</field>
           </shadow>
         </value>
       </block>
@@ -663,8 +663,8 @@
           </shadow>
         </value>
         <value name="callback">
-          <shadow type="variables_get">
-            <field name="VAR">tim_callback</field>
+          <shadow type="factory_block_return">
+            <field name="VALUE">tim_callback</field>
           </shadow>
         </value>
       </block>
@@ -677,6 +677,7 @@
                       <value name="VAR">
                           <block type="controls_millis"></block>
                       </value>
+                    </block>
                  </value>
               </block>
           </statement>

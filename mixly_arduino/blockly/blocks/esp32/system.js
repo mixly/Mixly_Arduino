@@ -130,7 +130,6 @@ Blockly.Blocks.system_timer = {
         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_PYTHON_ONE_SHOT, "ONE_SHOT"], [Blockly.MIXLY_PYTHON_PERIODIC, "PERIODIC"]]), "mode");
     this.appendValueInput('callback')
         .appendField(Blockly.MIXLY_DO)
-        .setCheck("var");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
