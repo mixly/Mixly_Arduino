@@ -37,9 +37,26 @@ pbc.globalFunctionD['input'] = function(py2block, func, args, keywords, starargs
 }
 
 
-pbc.moduleFunctionD.get('uart1')['init'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length === 0 && keywords.length === 1
-        && keywords[0].value._astname == "Num") { //uart.init(baudrate=9600)
+function uart_int(){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node){
+       if(args.length!=2){
+        throw new Error("Incorrect number of arguments");
+        }
+        var mode = args[0].n.v
+        var baudrate = args[1].n.v
+        return block("serial_softserial", func.lineno, {
+            "mode": mode,
+            "baudrate": baudrate
+        }, {}, {
+            "inline": "true"
+        });
+      }
+    return converter;
+}
+pbc.moduleFunctionD.get('machine')['UART'] = uart_int()
+/*
+pbc.moduleFunctionD.get('machine')['UART'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length === 2) { //uart.init(baudrate=9600)
         if(py2block.identifier(keywords[0].arg) === "baudrate") {
             return [block("serial_begin", func.lineno, {
                 "baudrate": py2block.Num_value(keywords[0].value)
@@ -48,9 +65,6 @@ pbc.moduleFunctionD.get('uart1')['init'] = function(py2block, func, args, keywor
             })];
         }
     }else if(args.length === 0 && keywords.length === 3) { //uart.init(rx=0, tx=1, baudrate=115200)
-        var rxblock = null;
-        var txblock = null;
-        var baudrate = null;
         for (var i = 0; i < keywords.length; i++) {
             var param = keywords[i];
             var key = py2block.identifier(param.arg);
@@ -80,7 +94,7 @@ pbc.moduleFunctionD.get('uart1')['init'] = function(py2block, func, args, keywor
     throw new Error("Incorrect number of arguments");
 }
 
-
+*/
 function serial_write(mode){
 function converter(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
@@ -170,7 +184,7 @@ function getSerial(mode,fun_type){
         if(args.length !==0){
             throw new Error("Incorrect number of arguments");
         }
-        var argblock1 = py2block.convert(func.value)
+        //var argblock1 = py2block.convert(func.value)
         return block(fun_type, func.lineno, {
             "mode":mode
         }, {
