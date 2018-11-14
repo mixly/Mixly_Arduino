@@ -1910,7 +1910,7 @@ PythonToBlocks.prototype.Subscript = function(node) {
                 "DICT": this.convert(value)
             });
         }else {
-            if(slice.value._astname == "Num" 
+            if(slice.value._astname == "Num" && value.func != null
             && value.func._astname == "Attribute" && this.identifier(value.func.attr) == "ifconfig"){
             return block('network_get_connect', node.lineno, {
                 "mode":this.Num_value(slice.value)
