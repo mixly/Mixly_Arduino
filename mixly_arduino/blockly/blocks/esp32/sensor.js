@@ -52,7 +52,7 @@ Blockly.Blocks.sensor_mixgo_button_attachInterrupt = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendValueInput("btn")
-        .appendField(Blockly.MIXLY_ATTACHINTERRUPT_PIN)
+        .appendField(Blockly.MIXLY_ESP32_INTERRUPT)
         .appendField(Blockly.MIXLY_BUTTON)
         .setCheck(Number);
     this.appendDummyInput("")
