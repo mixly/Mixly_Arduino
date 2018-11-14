@@ -264,6 +264,22 @@ pbc.moduleFunctionD.get('matrix')['Image'] = function(py2block, func, args, keyw
     }
 }
 
+pbc.objectFunctionD.get('shift_up')['matrix'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if(args.length!=4){
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var str1block=py2block.convert(args[0]);
+    var str2block=py2block.convert(args[1]);
+    var str3block=py2block.convert(args[2]);
+    var str4block=py2block.convert(args[3]);
+
+    return [block("display_scroll_string", func.lineno, {}, { "VAR":objblock,'Text_line1':str1block,'Text_line2':str2block,'Text_line3':str3block,'Text_line4':str4block,
+    }, {
+        "inline": "false"
+    })];
+}
+/*
 pbc.moduleFunctionD.get('matrix')['shift_up'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1 && args.length !== 2 ){
         throw new Error("Incorrect number of arguments");
@@ -285,7 +301,7 @@ pbc.moduleFunctionD.get('matrix')['shift_up'] = function(py2block, func, args, k
     })];
     }
 }
-
+*/
 pbc.moduleFunctionD.get('matrix.display')['get_pixel'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 2){
         throw new Error("Incorrect number of arguments");

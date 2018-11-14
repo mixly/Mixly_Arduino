@@ -35,66 +35,29 @@ pbc.globalFunctionD['input'] = function(py2block, func, args, keywords, starargs
         "inline": "false"
     });
 }
-
-
-function uart_int(){
-    function converter(py2block, func, args, keywords, starargs, kwargs, node){
-       if(args.length!=2){
-        throw new Error("Incorrect number of arguments");
-        }
-        var mode = args[0].n.v
-        var baudrate = args[1].n.v
-        return block("serial_softserial", func.lineno, {
-            "mode": mode,
-            "baudrate": baudrate
-        }, {}, {
-            "inline": "true"
-        });
-      }
-    return converter;
-}
-pbc.moduleFunctionD.get('machine')['UART'] = uart_int()
-/*
-pbc.moduleFunctionD.get('machine')['UART'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length === 2) { //uart.init(baudrate=9600)
-        if(py2block.identifier(keywords[0].arg) === "baudrate") {
-            return [block("serial_begin", func.lineno, {
-                "baudrate": py2block.Num_value(keywords[0].value)
-            }, {}, {
-                "inline": "true"
-            })];
-        }
-    }else if(args.length === 0 && keywords.length === 3) { //uart.init(rx=0, tx=1, baudrate=115200)
-        for (var i = 0; i < keywords.length; i++) {
-            var param = keywords[i];
-            var key = py2block.identifier(param.arg);
-            if (key === "rx") {
-                pbc.pinType = "pins_serial";
-                rxblock = py2block.convert(param.value);
-                pbc.pinType = null;
-            } else if (key === "tx") {
-                pbc.pinType = "pins_serial";
-                txblock = py2block.convert(param.value);
-                pbc.pinType = null;
-            } else if (key === "baudrate" && param.value._astname == "Num") {
-                baudrate = py2block.Num_value(param.value);
-            }
-        }
-        if (rxblock != null && txblock != null && baudrate != null) {
-            return [block("serial_softserial", func.lineno, {
-                "baudrate": baudrate
-            }, {
-                "RX":rxblock,
-                "TX":txblock
-            }, {
-                "inline": "true"
-            })];
-        }
+pbc.assignD.get('UART')['check_assign'] = function(py2block, node, targets, value) {
+    if(value._astname != "Call" || value.func._astname != "Attribute" || value.func.value._astname != "Name"){
+        return false;
     }
-    throw new Error("Incorrect number of arguments");
+    var moduleName = py2block.Name_str(value.func.value);
+    var funcName = py2block.identifier(value.func.attr);
+    if(value._astname === "Call" && moduleName === "machine"
+        && funcName === "UART" && value.args.length === 2)
+        return true;
+    return false;
 }
 
-*/
+pbc.assignD.get('UART')['create_block'] = function(py2block, node, targets, value){
+    pbc.pinType = "serial_print";
+    var pinblock = py2block.convert(value.args[0]);
+    pbc.pinType = null;
+    var countblock = py2block.convert(value.args[1]);
+    return block("serial_softserial", node.lineno, {}, {
+        "mode":pinblock,
+        "baudrate":countblock
+    });
+}
+
 function serial_write(mode){
 function converter(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
