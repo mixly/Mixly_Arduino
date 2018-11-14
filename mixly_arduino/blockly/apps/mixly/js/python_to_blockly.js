@@ -1,3 +1,4 @@
+
 /**
  * An object for converting Python source code to the
  * Blockly XML representation.
@@ -1812,17 +1813,22 @@ PythonToBlocks.prototype.Num = function(node)
         return block(py2block_config.pinType, node.lineno, {
             "op": nVal
         });
-    }else if(py2block_config.pinType == "number1"){
+    }else if(py2block_config.pinType != null){
         return block(py2block_config.pinType, node.lineno, {
-            "op": nVal
+            "PIN": nVal
         });
     }else if(py2block_config.pinType != null){
         return block(py2block_config.pinType, node.lineno, {
             "PIN": nVal
         });
+
     }
     if(py2block_config.inScope == "lcd_init"){
         return block("math_number", node.lineno, {"NUM": '0x' + nVal.toString(16)});
+    }else if(py2block_config.inScope == "ledswitch"){
+        return block(py2block_config.inScope, node.lineno, {
+            "flag": nVal
+        });
     }
     return block("math_number", node.lineno, {"NUM": nVal});
 }
@@ -1910,7 +1916,7 @@ PythonToBlocks.prototype.Subscript = function(node) {
                 "DICT": this.convert(value)
             });
         }else {
-            if(slice.value._astname == "Num" && value.func != null
+            if(slice.value._astname == "Num" 
             && value.func._astname == "Attribute" && this.identifier(value.func.attr) == "ifconfig"){
             return block('network_get_connect', node.lineno, {
                 "mode":this.Num_value(slice.value)
@@ -2020,12 +2026,7 @@ PythonToBlocks.prototype.Name = function(node)
             "op": this.identifier(id)
         });
     }
-    if(py2block_config.board == py2block_config.ESP32
-        && (nodeName === '1' || nodeName === '2') && py2block_config.pinType =="number"){
-        return block(py2block_config.pinType, node.lineno, {
-            "op": this.identifier(id)
-        });
-    }
+
     if(py2block_config.reservedNameD[nodeName] != null){
         try {
             return py2block_config.reservedNameD[nodeName](this, node, id, ctx, nodeName);
