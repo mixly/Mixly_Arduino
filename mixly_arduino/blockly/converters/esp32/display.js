@@ -12,7 +12,7 @@ pbc.moduleFunctionD.get('matrix.display')['show'] = function(py2block, func, arg
     if (args.length !== 1 && args.length !== 2 ){
         throw new Error("Incorrect number of arguments");
     }
-    var attr = {
+    *var attr = {
             '_astname': 'Name',
             'id': {
                 '_astname': 'Str',
@@ -21,7 +21,7 @@ pbc.moduleFunctionD.get('matrix.display')['show'] = function(py2block, func, arg
         };
     if (args.length == 1 ){
         
-    var  strblock=py2block.convert(args[0]);
+    var  strblock=py2block.convert(attr);
 
     return [block("display_show_image_or_string", func.lineno, {}, {
         'data':strblock,

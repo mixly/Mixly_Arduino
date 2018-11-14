@@ -54,7 +54,7 @@ pbc.initIgnoreS = function(){
 
 pbc.initModuleAttrD = function(){
     for (var i = 0; i < profile.default.builtinimg.length; i++) {
-        pbc.moduleAttrD.get('Image')[profile.default.builtinimg[i][0]] = function (node, module, attr) {
+        pbc.moduleAttrD.get('matrix.Image')[profile.default.builtinimg[i][0]] = function (node, module, attr) {
             return block("pins_builtinimg", node.lineno, {
                 "PIN": module + "." + attr
             });
