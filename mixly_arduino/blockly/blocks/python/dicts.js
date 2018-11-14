@@ -36,11 +36,8 @@ Blockly.Blocks.dicts.HUE = 345;
 Blockly.Blocks['dicts_create_with'] = {
 
     /**
-
      * Block for creating a list with any number of elements of any type.
-
      * @this Blockly.Block
-
      */
 
     init: function () {
@@ -57,30 +54,21 @@ Blockly.Blocks['dicts_create_with'] = {
     },
 
     /**
-
      * Create XML to represent list inputs.
-
      * @return {Element} XML storage element.
-
      * @this Blockly.Block
-
      */
 
     mutationToDom: function () {
         var container = document.createElement('mutation');
         container.setAttribute('items', this.itemCount_);
         return container;
-
     },
 
     /**
-
      * Parse XML to restore the list inputs.
-
      * @param {!Element} xmlElement XML storage element.
-
      * @this Blockly.Block
-
      */
 
     domToMutation: function (xmlElement) {
@@ -89,15 +77,10 @@ Blockly.Blocks['dicts_create_with'] = {
     },
 
     /**
-
      * Populate the mutator's dialog with this block's components.
-
      * @param {!Blockly.Workspace} workspace Mutator's workspace.
-
      * @return {!Blockly.Block} Root block in mutator.
-
      * @this Blockly.Block
-
      */
 
     decompose: function (workspace) {
@@ -111,26 +94,19 @@ Blockly.Blocks['dicts_create_with'] = {
             connection.connect(itemBlock.previousConnection);
             connection = itemBlock.nextConnection;
         }
-
         return containerBlock;
-
     },
 
     /**
-
      * Reconfigure this block based on the mutator dialog's components.
-
      * @param {!Blockly.Block} containerBlock Root block in mutator.
-
      * @this Blockly.Block
-
      */
 
     compose: function (containerBlock) {
         var itemBlock = containerBlock.getInputTargetBlock('STACK');
 
         // Count number of inputs.
-
         var connections = [];
         var i = 0;
         while (itemBlock) {
@@ -138,7 +114,6 @@ Blockly.Blocks['dicts_create_with'] = {
             itemBlock = itemBlock.nextConnection &&
                 itemBlock.nextConnection.targetBlock();
             i++;
-
         }
 
         this.itemCount_ = i;
@@ -147,21 +122,14 @@ Blockly.Blocks['dicts_create_with'] = {
         for (var i = 0; i < this.itemCount_; i++) {
             if (connections[i]) {
                 this.getInput('ADD' + i).connection.connect(connections[i]);
-
             }
-
         }
-
     },
 
     /**
-
      * Store pointers to any connected child blocks.
-
      * @param {!Blockly.Block} containerBlock Root block in mutator.
-
      * @this Blockly.Block
-
      */
 
     saveConnections: function (containerBlock) {
@@ -173,50 +141,31 @@ Blockly.Blocks['dicts_create_with'] = {
             i++;
             itemBlock = itemBlock.nextConnection &&
                 itemBlock.nextConnection.targetBlock();
-
         }
-
     },
 
     /**
-
      * Modify this block to have the correct number of inputs.
-
      * @private
-
      * @this Blockly.Block
-
      */
 
     updateShape_: function () {
-
         // Delete everything.
-
         if (this.getInput('EMPTY')) {
-
             this.removeInput('EMPTY');
-
         }
 
         var keyNames = [];
-
         for (var i = 0; this.getInput('ADD' + i); i++) {
-
             //this.getInput('VALUE' + i).removeField("KEY"+i);
-
             keyNames.push(this.getFieldValue("KEY" + i))
-
             this.removeInput('ADD' + i);
-
         }
-
         // Rebuild block.
-
         if (this.itemCount_ == 0) {
-
             this.getField('TIP').setText(Blockly.Msg.DICTS_CREATE_EMPTY_TITLE);
         } else {
-
             this.getField('TIP').setText(Blockly.Msg.DICTS_CREATE_WITH_INPUT_WITH);
             for (var i = 0; i < this.itemCount_; i++) {
                 this.appendValueInput('ADD' + i)
@@ -226,32 +175,19 @@ Blockly.Blocks['dicts_create_with'] = {
                         new Blockly.FieldTextInput(
                             keyNames.length > i
                                 ? keyNames[i]
-                                : 'key'),
-
+                                : '"key'+(i+1)+'"'),
                         'KEY'+i)
-
                     .appendField(":")
-
             }
-
         }
-
     }, getVars: function () {
-
         return [this.getFieldValue('VAR')];
-
     },
-
     renameVar: function (oldName, newName) {
-
         if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
-
             this.setTitleValue(newName, 'VAR');
-
         }
-
     }
-
 };
 
 
@@ -259,66 +195,34 @@ Blockly.Blocks['dicts_create_with'] = {
 Blockly.Blocks['dicts_create_with_container'] = {
 
   /**
-
    * Mutator block for list container.
-
    * @this Blockly.Block
-
    */
-
   init: function() {
-
     this.setColour(Blockly.Blocks.dicts.HUE);
-
     this.appendDummyInput()
-
         .appendField(Blockly.Msg.DICTS_CREATE_WITH_CONTAINER_TITLE_ADD);
-
     this.appendStatementInput('STACK');
-
     this.setTooltip(Blockly.Msg.DICTS_CREATE_WITH_CONTAINER_TOOLTIP);
-
     this.contextMenu = false;
-
   }
-
 };
-
-
-
-
 
 Blockly.Blocks['dicts_create_with_item'] = {
-
   /**
-
    * Mutator bolck for adding items.
-
    * @this Blockly.Block
-
    */
-
   init: function() {
-
     this.setColour(Blockly.Blocks.dicts.HUE);
-
     this.appendDummyInput()
-
         .appendField(Blockly.Msg.DICTS_CREATE_WITH_ITEM_TITLE);
-
     this.setPreviousStatement(true);
-
     this.setNextStatement(true);
-
     this.setTooltip(Blockly.Msg.DICTS_CREATE_WITH_ITEM_TOOLTIP);
-
     this.contextMenu = false;
-
   }
-
 };
-
-
 
 Blockly.Blocks['dicts_keys'] = {
   /**
@@ -329,11 +233,10 @@ Blockly.Blocks['dicts_keys'] = {
     this.setColour(Blockly.Blocks.dicts.HUE);
     this.appendValueInput('DICT')
         .setCheck('Dict')
-  this.appendDummyInput("")        
-        
+    this.appendDummyInput("")        
         .appendField(Blockly.Msg.DICT_KEYS);  
-  this.setTooltip(Blockly.Msg.DICTS_KEYS_TOOLTIP);      
-  this.setOutput(true, 'List');
+    this.setTooltip(Blockly.Msg.DICTS_KEYS_TOOLTIP);      
+    this.setOutput(true, 'List');
   }
 };
 
@@ -346,9 +249,10 @@ Blockly.Blocks['dicts_get'] = {
         
     this.appendValueInput('DICT')
         .setCheck('Dict')    
-    this.appendDummyInput("")   
+    this.appendValueInput('KEY')
         .appendField(Blockly.Msg.DICTS_GET_IN)
-        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+    this.appendDummyInput("")   
+        // .appendField(new Blockly.FieldTextInput('"key"'), 'KEY')
         .appendField(Blockly.Msg.DICTS_GET_VALUE);
        
     this.setOutput(true);
@@ -361,11 +265,12 @@ Blockly.Blocks['dicts_add_or_change'] = {
     this.setColour(Blockly.Blocks.dicts.HUE);
     this.appendValueInput('DICT')
         .appendField(Blockly.Msg.DICTS_GET_FROM_DICTS)
-    this.appendValueInput('VAR')
+    this.appendValueInput('KEY')
         .appendField(Blockly.Msg.DICTS_ADD)
-        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+        // .appendField(new Blockly.FieldTextInput('"key"'), 'KEY')
+    this.appendDummyInput()
+    this.appendValueInput('VAR')
         .appendField(Blockly.Msg.DICTS_ADD_VALUE);
-    this.appendDummyInput();
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -379,9 +284,10 @@ Blockly.Blocks['dicts_delete'] = {
     this.setColour(Blockly.Blocks.dicts.HUE);
     this.appendValueInput('DICT')
         .appendField(Blockly.Msg.DICTS_GET_FROM_DICTS);
-    this.appendDummyInput("")
+    this.appendValueInput('KEY')
         .appendField(Blockly.Msg.DICTS_DELETE_IN)
-        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+    this.appendDummyInput("")
+        // .appendField(new Blockly.FieldTextInput('"key"'), 'KEY')
         .appendField(Blockly.Msg.DICTS_DELETE_VALUE);
        
     this.setPreviousStatement(true);
@@ -514,9 +420,10 @@ Blockly.Blocks['dicts_deldict'] = {
     this.appendValueInput('DICT')
         .setCheck('Dict')
     this.appendDummyInput('AT2')
+    this.appendValueInput('KEY')
     this.appendDummyInput("")   
         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE)
-        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+        // .appendField(new Blockly.FieldTextInput('"key"'), 'KEY')
         .appendField(Blockly.Msg.DICTS_ADD_VALUE);
     this.updateAt_(true);
     this.setInputsInline(true);
@@ -611,8 +518,9 @@ Blockly.Blocks['dicts_pop'] = {
         .setCheck('Dict')
     this.appendDummyInput("")
         .appendField(Blockly.blockpy_DICT_POP)
+    this.appendValueInput('KEY')
     this.appendDummyInput("")
-        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+        // .appendField(new Blockly.FieldTextInput('"key"'), 'KEY')
         .appendField(Blockly.Msg.DICTS_GET_VALUE);    
     this.setTooltip(Blockly.Msg.DICT_POP_TOOLTIP);
     this.setInputsInline(true);
@@ -625,9 +533,10 @@ Blockly.Blocks['dicts_setdefault'] = {
     this.setColour(Blockly.Blocks.dicts.HUE);
     this.appendValueInput('DICT')
         .setCheck('Dict');
-    this.appendDummyInput("")
+    this.appendValueInput('KEY')
         .appendField(Blockly.Msg.DICTS_SET_DEFAULT)
-        .appendField(new Blockly.FieldTextInput('key'), 'KEY')
+    this.appendDummyInput("")
+        // .appendField(new Blockly.FieldTextInput('"key"'), 'KEY')
         .appendField(Blockly.Msg.DICTS_DEFAULT_VALUE);
     this.appendValueInput('VAR')    
        

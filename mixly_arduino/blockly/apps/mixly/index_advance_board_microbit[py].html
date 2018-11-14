@@ -1044,7 +1044,7 @@ function init() {
           </value>
         </block>
       </category>
-      <category id="catDicts" colour="345">
+            <category id="catDicts" colour="345">
           <block type="dicts_create_with"></block>
           <block type="dicts_keys">
             <value name="DICT">
@@ -1059,11 +1059,21 @@ function init() {
                   <field name="VAR">mydict</field>
                 </shadow>
               </value>
+            <value name="KEY">
+              <shadow type="text">
+                <field name="TEXT">key</field>
+              </shadow>
+            </value>
           </block>
           <block type="dicts_add_or_change">
             <value name="DICT">
               <shadow type="variables_get">
                 <field name="VAR">mydict</field>
+              </shadow>
+            </value>
+            <value name="KEY">
+              <shadow type="text">
+                <field name="TEXT">key</field>
               </shadow>
             </value>
             <value name="VAR">
@@ -1076,6 +1086,40 @@ function init() {
             <value name="DICT">
               <shadow type="variables_get">
                 <field name="VAR">mydict</field>
+              </shadow>
+            </value>
+            <value name="KEY">
+              <shadow type="text">
+                <field name="TEXT">key</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="dicts_pop">
+            <value name="DICT">
+              <shadow type="variables_get">
+                <field name="VAR">mydict</field>
+              </shadow>
+            </value>
+            <value name="KEY">
+              <shadow type="text">
+                <field name="TEXT">key</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="dicts_setdefault">
+            <value name="DICT">
+              <shadow type="variables_get">
+                <field name="VAR">mydict</field>
+              </shadow>
+            </value>
+            <value name="KEY">
+              <shadow type="text">
+                <field name="TEXT">key</field>
+              </shadow>
+            </value>
+            <value name="VAR">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
               </shadow>
             </value>
           </block>
