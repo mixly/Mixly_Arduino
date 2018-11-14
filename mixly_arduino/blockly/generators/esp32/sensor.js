@@ -61,7 +61,29 @@ Blockly.Python.sensor_mpu9250_get_acceleration = function(){
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.sensor_mpu9250_get_magnetic = function(){
+    Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
+    Blockly.Python.definitions_['import_machine'] = 'import machine';
+    var key = this.getFieldValue('key');
+    var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
+    if (v.indexOf('mixgo_')>-1)
+        Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    v=v.replace('mixgo_mpu','mixgo.mpu');
+    var code = v+'.mpu9250_magnetic_' + key + '()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
 
+Blockly.Python.sensor_mpu9250_get_gyro = function(){
+    Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
+    Blockly.Python.definitions_['import_machine'] = 'import machine';
+    var key = this.getFieldValue('key');
+    var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
+    if (v.indexOf('mixgo_')>-1)
+        Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    v=v.replace('mixgo_mpu','mixgo.mpu');
+    var code = v+'.mpu9250_gyro_' + key + '()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
 /*
 Blockly.Python.sensor_mpu9250_calibrate_compass= function(){
     Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
