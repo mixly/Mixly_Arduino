@@ -262,7 +262,9 @@ pbc.objectFunctionD.get('irq')['Pin'] = function (py2block, func, args, keywords
 
     var mode = mac+"."+pin+"."+py2block.identifier(keywords[1].value.attr);
 
+    pbc.pinType = "pins_callback";
     var callback = py2block.convert(keywords[0].value);
+    pbc.pinType = null;
 
     return [block("inout_pin_attachInterrupt", func.lineno, {"mode":mode}, {
         "PIN": pinblock,

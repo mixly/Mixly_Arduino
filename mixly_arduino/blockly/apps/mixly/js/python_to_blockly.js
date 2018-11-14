@@ -1502,7 +1502,7 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
         } else {
             module = this.Name_str(func.value.value) + '.' + this.identifier(func.value.attr);
         }
-        
+
         if (module == "plt" && name == "plot") {
             if (args.length == 1) {
                 return [block("plot_line", func.lineno, {}, {
@@ -1916,7 +1916,7 @@ PythonToBlocks.prototype.Subscript = function(node) {
                 "DICT": this.convert(value)
             });
         }else {
-            if(slice.value._astname == "Num" 
+            if(slice.value._astname == "Num"
             && value.func._astname == "Attribute" && this.identifier(value.func.attr) == "ifconfig"){
             return block('network_get_connect', node.lineno, {
                 "mode":this.Num_value(slice.value)
@@ -2024,6 +2024,11 @@ PythonToBlocks.prototype.Name = function(node)
         && (nodeName === "touch1" || nodeName === "touch2"|| nodeName === "touch3"|| nodeName === "touch4") && py2block_config.pinType =="number1"){
         return block(py2block_config.pinType, node.lineno, {
             "op": this.identifier(id)
+        });
+    }
+    if(py2block_config.board == py2block_config.ESP32 && py2block_config.pinType == "pins_callback"){
+        return block("factory_block_return", node.lineno, {
+            "VALUE": this.identifier(id)
         });
     }
 
