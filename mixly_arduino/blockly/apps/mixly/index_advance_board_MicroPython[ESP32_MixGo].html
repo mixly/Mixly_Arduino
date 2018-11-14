@@ -368,7 +368,8 @@
             <td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')"><span id="span_arduino">Code</span></td>
             <td class="tabmin">&nbsp;</td>
-            <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
+            <td style="vertical-align: center;text-align:center;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
+            <!-- <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td> -->
             <td class="tabcoyright">
               <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
             </td>
@@ -544,8 +545,18 @@
       <block type="procedures_defnoreturn">
                <field name="NAME">attachInterrupt_func</field>
                <statement name="STACK">
-                   <block type="controls_pass">
-                   </block>
+                <block type="actuator_led_bright">
+                  <value name="led">
+                    <shadow type="number">
+                      <field name="op">1</field>
+                    </shadow>
+                  </value>
+                  <value name="bright">
+                    <shadow type="ledswitch">
+                      <field name="flag">-1</field>
+                    </shadow>
+                  </value>
+                </block>
                </statement>
       </block>
 	<block type="inout_analog_write_init">
@@ -2268,6 +2279,34 @@
           <shadow type="number1">
           </shadow>
         </value>
+        </block>
+        <block type="sensor_mixgo_button_attachInterrupt">
+          <value name="btn">
+            <shadow type="pins_button">
+            </shadow>
+          </value>
+          <value name="DO">
+              <shadow type="factory_block_return">
+                  <field name="VALUE">attachInterrupt_func</field>
+              </shadow>
+          </value>
+        </block>
+        <block type="procedures_defnoreturn">
+           <field name="NAME">attachInterrupt_func</field>
+           <statement name="STACK">
+                <block type="actuator_led_bright">
+                  <value name="led">
+                    <shadow type="number">
+                      <field name="op">1</field>
+                    </shadow>
+                  </value>
+                  <value name="bright">
+                    <shadow type="ledswitch">
+                      <field name="flag">-1</field>
+                    </shadow>
+                  </value>
+                </block>
+           </statement>
         </block>
         <block type="sensor_mixgo_pin_near"></block>
         <block type="sensor_mixgo_light"></block>
