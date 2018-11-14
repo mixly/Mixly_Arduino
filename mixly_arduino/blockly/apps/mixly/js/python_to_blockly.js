@@ -1500,7 +1500,11 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
         if (func.value._astname == "Name") {
             module = this.identifier(func.value.id);
         } else {
-            module = this.Name_str(func.value.value) + '.' + this.identifier(func.value.attr);
+                try{
+                    module = this.Name_str(func.value.value) + '.' + this.identifier(func.value.attr);
+                }catch(e) {
+                    
+                }
         }
 
         if (module == "plt" && name == "plot") {
