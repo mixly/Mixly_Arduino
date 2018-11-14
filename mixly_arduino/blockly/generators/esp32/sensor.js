@@ -19,6 +19,19 @@ Blockly.Python.sensor_mixgo_button_was_pressed = function(){
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.sensor_mixgo_button_attachInterrupt = function () {
+    Blockly.Python.definitions_['import_machine'] = 'import machine';
+    Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    var dropdown_btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
+    var dropdown_mode = this.getFieldValue('mode');
+    var atta = Blockly.Python.valueToCode(this, 'DO', Blockly.Python.ORDER_ATOMIC);
+    var code = 'mixgo.' + dropdown_btn + '.irq' + '(handler = ' + atta + ', trigger = ' + dropdown_mode + ')\n'
+    //var funcName = 'attachInterrupt_func_' + dropdown_pin;
+    //var branch = Blockly.Python.statementToCode(this, 'DO') || Blockly.Python.PASS;
+    //var code2 = 'def' + ' ' + funcName + '(p):\n' + branch + '\n';
+    //Blockly.Python.setups_[funcName] = code2;
+    return code;
+};
 //ok
 Blockly.Python.sensor_mpu9250_attachGestureInterrupt = function(){
     Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';

@@ -40,6 +40,9 @@ class Button:
 	def is_pressed(self):
 		return 1 - Pin(self.pin).value()
 
+	def irq(self, h, t):
+		Pin(self.pin).irq(handler = h, trigger = t)
+
 # Pin
 
 class MyPin(Pin):

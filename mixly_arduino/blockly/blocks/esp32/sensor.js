@@ -48,6 +48,24 @@ Blockly.Blocks['sensor_mixgo_button_get_presses'] = {
     }
 };
 
+Blockly.Blocks.sensor_mixgo_button_attachInterrupt = {
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendValueInput("btn")
+        .appendField(Blockly.MIXLY_ATTACHINTERRUPT_PIN)
+        .appendField(Blockly.MIXLY_BUTTON)
+        .setCheck(Number);
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_MODE)
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RISING, "machine.Pin.IRQ_RISING"], [Blockly.MIXLY_FALLING, "machine.Pin.IRQ_FALLING"], [Blockly.MIXLY_CHANGE, "(machine.Pin.IRQ_RISING or machine.Pin.IRQ_FALLING)"]]), "mode");
+    this.appendValueInput('DO')
+        .appendField(Blockly.MIXLY_DO)
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
+  }
+};
+
 Blockly.Blocks.sensor_mpu9250_attachGestureInterrupt = {
     init: function() {
         this.setColour(Blockly.Blocks.sensor.HUE);
