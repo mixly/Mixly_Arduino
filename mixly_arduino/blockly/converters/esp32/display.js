@@ -262,7 +262,7 @@ function shift(mode){
         var str1block=py2block.convert(args[0]);
         var imgblock=py2block.convert(func.value);
         return [block("image_shift", func.lineno, {
-            'op':mode
+            'OP':mode
         }, { 
             'img':imgblock,
             'val':str1block
