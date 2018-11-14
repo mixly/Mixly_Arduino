@@ -12,16 +12,9 @@ pbc.moduleFunctionD.get('matrix.display')['show'] = function(py2block, func, arg
     if (args.length !== 1 && args.length !== 2 ){
         throw new Error("Incorrect number of arguments");
     }
-    *var attr = {
-            '_astname': 'Name',
-            'id': {
-                '_astname': 'Str',
-                'v': py2block.identifier(func.value.value.id) + "." + py2block.identifier(args[0].value.attr) + "." + py2block.identifier(args[0].attr)
-            }
-        };
     if (args.length == 1 ){
         
-    var  strblock=py2block.convert(attr);
+    var  strblock=py2block.convert(args[0]);
 
     return [block("display_show_image_or_string", func.lineno, {}, {
         'data':strblock,
@@ -266,16 +259,8 @@ function shift(mode){
         if(args.length!=1){
             throw new Error("Incorrect number of arguments");
         }
-        var attr = {
-                '_astname': 'Name',
-                'id': {
-                    '_astname': 'Str',
-                    'v': py2block.identifier(func.value.value.attr) + "." + py2block.identifier(func.value.attr)
-                }
-            };
-        var upblock = py2block.identifier(func.attr);
         var str1block=py2block.convert(args[0]);
-        var imgblock=py2block.convert(attr);
+        var imgblock=py2block.convert(func.value);
         return [block("image_shift", func.lineno, {
             'op':mode
         }, { 
