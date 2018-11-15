@@ -30,14 +30,18 @@ pbc.moduleFunctionD.get('mixgo.led')['setonoff'] = function (py2block, func, arg
     pbc.pinType="number";
     var argblock = py2block.convert(args[0]);
     pbc.pinType=null;
-    var mode = py2block.identifier(args[1]);
+    pbc.inScope="ledswitch";
+    var mode = py2block.convert(args[1]);
+     pbc.inScope=null;
     return [block("actuator_led_bright", func.lineno, {
-        'bright':mode,
+        
     }, {
         'led': argblock,
+        'bright':mode,
     }, {
         "inline": "true"
-    })];
+    }),
+    ];
 }
 
 pbc.moduleFunctionD.get('mixgo.led')['getonoff'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -69,7 +73,8 @@ pbc.moduleFunctionD.get('mixgo.led')['setbrightness'] = function (py2block, func
         'bright':brightblock,
     }, {
         "inline": "true"
-    })];
+    }),
+    ];
 }
 
 

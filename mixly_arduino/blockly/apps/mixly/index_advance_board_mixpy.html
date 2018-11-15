@@ -1685,6 +1685,18 @@ function init() {
                 </shadow>
               </value>
           </block>
+          <block type="dataframe_create_from_one_index">
+            <value name="SER">
+                <shadow type="variables_get">
+                  <field name="VAR">mydict</field>
+                </shadow>
+              </value>            
+            <value name="INDEX">
+              <shadow type="list_many_input">
+                <field name="CONTENT">'a','b','c','d'</field>
+              </shadow>
+            </value>
+          </block>
           <block type="dataframe_create_from_index">
             <value name="SER">
                 <shadow type="variables_get">
@@ -1693,7 +1705,7 @@ function init() {
               </value>
             <value name="INDEX_COLUMN">
               <shadow type="list_many_input">
-                <field name="CONTENT">0,1,2,3</field>
+                <field name="CONTENT">'ABCD'</field>
               </shadow>
             </value>
             <value name="INDEX_RAW">

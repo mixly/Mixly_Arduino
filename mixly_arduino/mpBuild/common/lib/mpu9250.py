@@ -18,6 +18,7 @@ from micropython import const
 import ustruct
 import utime
 import time
+import math
 from machine import I2C, Pin
 # pylint: enable=import-error
 __version__ = "0.2.0"
@@ -465,6 +466,18 @@ class MPU9250:
         """
         return self.mpu6500.gyro
 
+    def mpu9250_gyro_x(self):
+        return self.mpu6500.gyro[0]
+
+    def mpu9250_gyro_y(self):
+        return self.mpu6500.gyro[1]
+
+    def mpu9250_gyro_z(self):
+        return self.mpu6500.gyro[2]
+
+    def mpu9250_gyro_values(self):
+        return self.mpu6500.gyro
+
     @property
     def mpu9250_magnetic(self):
         """
@@ -472,6 +485,18 @@ class MPU9250:
         """
         return self.ak8963.magnetic
 
+    def mpu9250_magnetic_x(self):
+        return self.mpu9250_magnetic[0]
+
+    def mpu9250_magnetic_y(self):
+        return self.mpu9250_magnetic[1]
+
+    def mpu9250_magnetic_z(self):
+        return self.mpu9250_magnetic[2]
+
+    def mpu9250_magnetic_values(self):
+        return self.mpu9250_magnetic
+        
     # @property
     def mpu9250_get_field_strength(self):
     	x=self.mpu9250_magnetic[0]
@@ -479,6 +504,15 @@ class MPU9250:
     	z=self.mpu9250_magnetic[2]
     	return (x**2+y**2+z**2)**0.5*1000
 
+    def mpu9250_heading(self):
+        x=self.mpu9250_magnetic[0]
+        y=self.mpu9250_magnetic[1]
+        z=self.mpu9250_magnetic[2]
+        a=math.atan(z/x)
+        b=math.atan(z/y)
+        xr=x*math.cos(a)+y*math.sin(a)*math.sin(b)-z*math.cos(b)*math.sin(a)
+        yr=x*math.cos(b)+z*math.sin(b)
+        return 60*math.atan(yr/xr)
 
     @property
     def whoami(self):

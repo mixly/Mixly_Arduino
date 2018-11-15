@@ -69,11 +69,42 @@ Blockly.Blocks['dataframe_create'] = {
       .appendField(Blockly.blockpy_dataframe_create)
       .appendField(new Blockly.FieldTextInput('df1'), 'VAR')
     this.appendValueInput('SER')  
-        .appendField(Blockly.blockpy_dataframe_via)              
+        .appendField(Blockly.blockpy_series_via)              
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setInputsInline(true);
   this.setTooltip(Blockly.blockpy_dataframe_create_TOOLTIP);
+  },
+  getVars: function() {
+    return [this.getFieldValue('VAR')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
+      this.setTitleValue(newName, 'VAR');
+    }
+  }
+ 
+}
+
+Blockly.Blocks['dataframe_create_from_one_index'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.data.HUE);
+    var column_raw =
+        [[Blockly.Msg.DATAFRAME_RAW, 'index'],[Blockly.Msg.DATAFRAME_COLUMN, 'columns']];
+    this.appendDummyInput("")  
+      .appendField(Blockly.blockpy_dataframe_create)
+      .appendField(new Blockly.FieldTextInput('df1'), 'VAR')
+    this.appendValueInput('SER')  
+        .appendField(Blockly.blockpy_series_via)  
+    this.appendDummyInput("")    
+        .appendField(new Blockly.FieldDropdown(column_raw), 'COLUMN_RAW')  
+    this.appendValueInput('INDEX')
+        .setCheck([String,'List'])
+        .appendField(Blockly.blockpy_series_set_index)          
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+  this.setTooltip(Blockly.blockpy_dataframe_create_index_TOOLTIP);
   },
   getVars: function() {
     return [this.getFieldValue('VAR')];
@@ -94,7 +125,7 @@ Blockly.Blocks['dataframe_create_from_index'] = {
       .appendField(Blockly.blockpy_dataframe_create)
       .appendField(new Blockly.FieldTextInput('df1'), 'VAR')
     this.appendValueInput('SER')  
-        .appendField(Blockly.blockpy_dataframe_via)   
+        .appendField(Blockly.blockpy_series_via)   
     this.appendValueInput('INDEX_COLUMN')
         .setCheck([String,'List'])
         .appendField(Blockly.blockpy_dataframe_set_index_column)
@@ -103,7 +134,7 @@ Blockly.Blocks['dataframe_create_from_index'] = {
         .appendField(Blockly.blockpy_dataframe_set_index_raw)      
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setInputsInline(true);
+    //this.setInputsInline(true);
   this.setTooltip(Blockly.blockpy_dataframe_create_index_TOOLTIP);
   },
   getVars: function() {
