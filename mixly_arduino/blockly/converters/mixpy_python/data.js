@@ -155,7 +155,7 @@ pbc.moduleFunctionD.get('pylab')['plot'] = function(py2block, func, args, keywor
     if (args.length != 1&&args.length != 2) {
         throw new Error("Incorrect number of arguments");
     }
-    var turtleblock = py2block.convert(func.value);
+    
     var argblock = py2block.convert(args[0]);
     if (args.length == 1){
         return [block("pl_plot", func.lineno, {
@@ -169,12 +169,158 @@ pbc.moduleFunctionD.get('pylab')['plot'] = function(py2block, func, args, keywor
             })];
     }
     else if(args.length == 2){
-        var lineblock = py2block.convert(args[1]);
-        
+        var lineblock = args[1].s.v;
+        if (lineblock.length>4) {
+        throw new Error("Incorrect number of arguments");
+    }
+        var dottype = ',';
+        var linetype = '-';
+        var colortype = 'b';
+        for(var i=0;i<lineblock.length;i++){
+            if(lineblock[i]=='-'&&(lineblock[i+1]=='-'||lineblock[i+1]=='.')){
+                linetype=lineblock[i]+lineblock[i+1];
+                i++;
+                break;
+            } 
+            else{
+                var operate=lineblock[i];
+            }
+            switch(operate){
+                case '-':
+                linetype=operate;
+                break;
+
+                case ':':
+                linetype=operate;
+                break;
+
+                case 'b':
+                colortype=operate;
+                break;
+
+                case 'g':
+                colortype=operate;
+                break;
+
+                case 'r':
+                colortype=operate;
+                break;
+
+                case 'c':
+                colortype=operate;
+                break;
+
+                case 'm':
+                colortype=operate;
+                break;
+
+                case 'y':
+                colortype=operate;
+                break;
+
+                case 'k':
+                colortype=operate;
+                break;
+
+                case 'w':
+                colortype=operate;
+                break;
+
+                case '.':
+                dottype=operate;
+                break;
+
+                case '^':
+                dottype=operate;
+                break;
+
+                case '2':
+                dottype=operate;
+                break;
+
+                case 'p':
+                dottype=operate;
+                break;
+
+                case '+':
+                dottype=operate;
+                break;
+
+                case '|':
+                dottype=operate;
+                break;
+
+                case ',':
+                dottype=operate;
+                break;
+
+                case '<':
+                dottype=operate;
+                break;
+
+                case '3':
+                dottype=operate;
+                break;
+
+                case '*':
+                dottype=operate;
+                break;
+
+                case 'x':
+                dottype=operate;
+                break;
+
+                case '_':
+                dottype=operate;
+                break;
+
+                case 'o':
+                dottype=operate;
+                break;
+
+                case '>':
+                dottype=operate;
+                break;
+
+                case '4':
+                dottype=operate;
+                break;
+
+                case 'h':
+                dottype=operate;
+                break;
+
+                case 'D':
+                dottype=operate;
+                break;
+
+                case 'v':
+                dottype=operate;
+                break;
+
+                case '1':
+                dottype=operate;
+                break;
+
+                case 's':
+                dottype=operate;
+                break;
+
+                case 'd':
+                dottype=operate;
+                break;
+
+                case 'H':
+                dottype=operate;
+                break;
+
+            }
+        }
+
         return [block("pl_plot", func.lineno, {
-                'DOT':',',
-                'LINE':'-',
-                'COLOR':'b'
+                'DOT':dottype,
+                'LINE':linetype,
+                'COLOR':colortype
         }, {
                 'SER': argblock
         }, {
