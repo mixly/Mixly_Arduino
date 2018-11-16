@@ -23,6 +23,7 @@ pbc.board = pbc.MICROBITPY;
 pbc.objectFunctionD = defDict({});
 pbc.moduleFunctionD = defDict({});
 pbc.moduleAttrD = defDict({});
+pbc.objectAttrD = defDict({});
 pbc.globalFunctionD = {};
 pbc.assignD = defDict({});
 pbc.ifStatementD= defDict({});

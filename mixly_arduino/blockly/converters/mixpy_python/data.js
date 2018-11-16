@@ -328,3 +328,15 @@ pbc.moduleFunctionD.get('pylab')['plot'] = function(py2block, func, args, keywor
             })];
     }
 }
+
+
+function series_index_value(py2block, node, value, attr) {
+    return block('series_index_value', node.lineno, {
+        'INDEX_VALUE': py2block.identifier(attr)
+    }, {
+        'SERIES': py2block.convert(value)
+    });
+}
+
+pbc.objectAttrD.get('index')['Series'] = series_index_value;
+pbc.objectAttrD.get('value')['Series'] = series_index_value;

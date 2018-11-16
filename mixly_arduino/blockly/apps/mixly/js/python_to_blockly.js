@@ -1890,10 +1890,22 @@ PythonToBlocks.prototype.Attribute = function(node)
     
     var attrName = this.identifier(attr);
     var attrD = py2block_config.moduleAttrD.get(valueName);
-    if(attrName in attrD){
+    if (attrName in attrD) {
         try {
             return attrD[attrName](node, valueName, attrName);
-        }catch(e){
+        } catch (e) {
+        }
+    } else {
+        var keys = Object.keys(py2block_config.objectAttrD.get(attrName));
+        if (keys.length != 0) {
+            try {
+                if (!py2block_config.objectAttrD.get(attrName)['Default']) {
+                    var firstKey = keys[0];
+                    py2block_config.objectAttrD.get(attrName)['Default'] = py2block_config.objectAttrD.get(attrName)[firstKey];
+                }
+                return py2block_config.objectAttrD.get(attrName)['Default'](this, node, value, attr);
+            }catch(e){
+            }
         }
     }
     return block("attribute_access", node.lineno, {
