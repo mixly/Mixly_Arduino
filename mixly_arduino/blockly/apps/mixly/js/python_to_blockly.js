@@ -574,10 +574,9 @@ PythonToBlocks.prototype.Delete = function(/* {asdl_seq *} */ targets)
     }
     if(targets.targets[0]._astname == "Subscript"){ //del mydict['key']
         var valueAstname = targets.targets[0].slice.value._astname;
-        if(valueAstname == "Str") {
-            return block("dicts_delete", targets.lineno, {
-                "KEY":this.Str_value(targets.targets[0].slice.value)
-            }, {
+        if(valueAstname == "Str" || valueAstname == "Name") {
+            return block("dicts_delete", targets.lineno, {}, {
+                "KEY":this.convert(targets.targets[0].slice.value),
                 "DICT": this.convert(targets.targets[0].value)
             }, {
                 "inline": "true"
@@ -640,10 +639,9 @@ PythonToBlocks.prototype.Assign = function(node)
             }
         }else if(targets[0]._astname == "Subscript"){
             var valueAstname = targets[0].slice.value._astname;
-            if(valueAstname == "Str") {
-                return block("dicts_add_or_change", targets.lineno, {
-                    "KEY": this.Str_value(targets[0].slice.value)
-                }, {
+            if(valueAstname == "Str" || valueAstname == "Name") {
+                return block("dicts_add_or_change", targets.lineno, {}, {
+                    "KEY": this.convert(targets[0].slice.value),
                     "DICT": this.convert(targets[0].value),
                     "VAR": this.convert(value)
                 }, {
@@ -1918,22 +1916,21 @@ PythonToBlocks.prototype.Subscript = function(node) {
     var ctx = node.ctx;
 
     if (slice._astname == "Index") {
-        if(slice.value._astname == "Str"){
-            return block("dicts_get", node.lineno, {
-                "KEY": this.Str_value(slice.value)
-            }, {
+        if(slice.value._astname == "Str" || slice.value._astname == "Name"){
+            return block("dicts_get", node.lineno, {}, {
+                "KEY": this.convert(slice.value),
                 "DICT": this.convert(value)
             });
         }else {
             if(slice.value._astname == "Num"
-            && value.func._astname == "Attribute" && this.identifier(value.func.attr) == "ifconfig"){
-            return block('network_get_connect', node.lineno, {
-                "mode":this.Num_value(slice.value)
-            }, {
-                "VAR":this.convert(value.func.value)
-            });
+                && value.func._astname == "Attribute" && this.identifier(value.func.attr) == "ifconfig"){
+                return block('network_get_connect', node.lineno, {
+                    "mode":this.Num_value(slice.value)
+                }, {
+                    "VAR":this.convert(value.func.value)
+                });
 
-        }
+            }
             return block("lists_get_index", node.lineno, {}, {
                 "AT": this.convert(slice.value),
                 "LIST": this.convert(value)
