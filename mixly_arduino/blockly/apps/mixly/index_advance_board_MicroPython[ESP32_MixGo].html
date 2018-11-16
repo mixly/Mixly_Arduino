@@ -81,6 +81,7 @@
   <script src="../../converters/esp32/network.js" type="application/javascript"></script>
   <script src="../../converters/esp32/iot.js" type="application/javascript"></script>
   <script src="../../converters/esp32/serial.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/sensor.js" type="application/javascript"></script>
   <script src="../../converters/esp32/communicate.js" type="application/javascript"></script>
   <script src="../../converters/esp32/display.js" type="application/javascript"></script>
   <script src="../../converters/esp32/actuator.js" type="application/javascript"></script>
@@ -368,6 +369,7 @@
             <td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')"><span id="span_arduino">Code</span></td>
             <td class="tabmin">&nbsp;</td>
+<!--             <td style="vertical-align: center;text-align:center;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td> -->
             <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
             <td class="tabcoyright">
               <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
@@ -541,13 +543,15 @@
                   </shadow>
               </value>
       </block>
-      <block type="procedures_defnoreturn">
-               <field name="NAME">attachInterrupt_func</field>
-               <statement name="STACK">
-                   <block type="controls_pass">
-                   </block>
-               </statement>
-      </block>
+  <block type="procedures_defnoreturn">
+    <mutation>
+      <arg name="x"></arg>
+    </mutation>
+    <field name="NAME">attachInterrupt_func</field>
+    <statement name="STACK">
+      <block type="controls_pass"></block>
+    </statement>
+  </block>
 	<block type="inout_analog_write_init">
         <value name="PIN">
           <shadow type="pins_dac_pin"></shadow>
@@ -670,20 +674,23 @@
                 </shadow>
               </value>
             </block>
-            <block type="procedures_defnoreturn">
-                <field name="NAME">tim_callback</field>
-                <statement name="STACK">
-                    <block type="system_print">
-                       <value name="VAR">
-                           <block type="number_to_text">
-                            <value name="VAR">
-                                <block type="controls_millis"></block>
-                            </value>
-                          </block>
-                       </value>
+      <block type="procedures_defnoreturn">
+          <mutation>
+            <arg name="x"></arg>
+          </mutation>
+          <field name="NAME">tim_callback</field>
+          <statement name="STACK">
+              <block type="system_print">
+                 <value name="VAR">
+                     <block type="number_to_text">
+                      <value name="VAR">
+                          <block type="controls_millis"></block>
+                      </value>
                     </block>
-                </statement>
-            </block>
+                 </value>
+              </block>
+          </statement>
+      </block>
       <block type="controls_flow_statements"></block>
       <block type="controls_millis"></block>
       <block type="system_ticks_diff">
@@ -2269,6 +2276,26 @@
           </shadow>
         </value>
         </block>
+        <block type="sensor_mixgo_button_attachInterrupt">
+          <value name="btn">
+            <shadow type="pins_button">
+            </shadow>
+          </value>
+          <value name="DO">
+              <shadow type="factory_block_return">
+                  <field name="VALUE">attachInterrupt_func</field>
+              </shadow>
+          </value>
+        </block>
+        <block type="procedures_defnoreturn">
+          <mutation>
+            <arg name="x"></arg>
+          </mutation>
+          <field name="NAME">attachInterrupt_func</field>
+          <statement name="STACK">
+            <block type="controls_pass"></block>
+          </statement>
+        </block>
         <block type="sensor_mixgo_pin_near"></block>
         <block type="sensor_mixgo_light"></block>
         <block type="sensor_mixgo_sound"></block>
@@ -2292,6 +2319,20 @@
           </value>
         </block>
         <block type="sensor_mpu9250_get_acceleration">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mixgo.mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_mpu9250_get_magnetic">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mixgo.mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_mpu9250_get_gyro">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">mixgo.mpu</field>

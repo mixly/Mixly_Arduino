@@ -103,9 +103,10 @@ pbc.objectFunctionD.get('init')['control'] = function (py2block, func, args, key
     var numblock = py2block.convert(keywords[0].value);
     pbc.pinType = null;
     var mode = py2block.identifier(keywords[1].value.attr);
-    pbc.pinType = "variables_get";
+    pbc.pinType = "pins_callback";
     var callback = py2block.convert(keywords[2].value);
     pbc.pinType = null;
+
     return [block("system_timer", func.lineno, {"mode":mode}, {
         "VAR": tim,
         "period":numblock,

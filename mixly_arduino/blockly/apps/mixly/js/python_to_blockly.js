@@ -1,3 +1,4 @@
+
 /**
  * An object for converting Python source code to the
  * Blockly XML representation.
@@ -573,10 +574,9 @@ PythonToBlocks.prototype.Delete = function(/* {asdl_seq *} */ targets)
     }
     if(targets.targets[0]._astname == "Subscript"){ //del mydict['key']
         var valueAstname = targets.targets[0].slice.value._astname;
-        if(valueAstname == "Str") {
-            return block("dicts_delete", targets.lineno, {
-                "KEY":this.Str_value(targets.targets[0].slice.value)
-            }, {
+        if(valueAstname == "Str" || valueAstname == "Name") {
+            return block("dicts_delete", targets.lineno, {}, {
+                "KEY":this.convert(targets.targets[0].slice.value),
                 "DICT": this.convert(targets.targets[0].value)
             }, {
                 "inline": "true"
@@ -639,10 +639,9 @@ PythonToBlocks.prototype.Assign = function(node)
             }
         }else if(targets[0]._astname == "Subscript"){
             var valueAstname = targets[0].slice.value._astname;
-            if(valueAstname == "Str") {
-                return block("dicts_add_or_change", targets.lineno, {
-                    "KEY": this.Str_value(targets[0].slice.value)
-                }, {
+            if(valueAstname == "Str" || valueAstname == "Name") {
+                return block("dicts_add_or_change", targets.lineno, {}, {
+                    "KEY": this.convert(targets[0].slice.value),
                     "DICT": this.convert(targets[0].value),
                     "VAR": this.convert(value)
                 }, {
@@ -1499,9 +1498,13 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
         if (func.value._astname == "Name") {
             module = this.identifier(func.value.id);
         } else {
-            module = this.Name_str(func.value.value) + '.' + this.identifier(func.value.attr);
+                try{
+                    module = this.Name_str(func.value.value) + '.' + this.identifier(func.value.attr);
+                }catch(e) {
+                    
+                }
         }
-        
+
         if (module == "plt" && name == "plot") {
             if (args.length == 1) {
                 return [block("plot_line", func.lineno, {}, {
@@ -1812,17 +1815,22 @@ PythonToBlocks.prototype.Num = function(node)
         return block(py2block_config.pinType, node.lineno, {
             "op": nVal
         });
-    }else if(py2block_config.pinType == "number1"){
+    }else if(py2block_config.pinType != null){
         return block(py2block_config.pinType, node.lineno, {
-            "op": nVal
+            "PIN": nVal
         });
     }else if(py2block_config.pinType != null){
         return block(py2block_config.pinType, node.lineno, {
             "PIN": nVal
         });
+
     }
     if(py2block_config.inScope == "lcd_init"){
         return block("math_number", node.lineno, {"NUM": '0x' + nVal.toString(16)});
+    }else if(py2block_config.inScope == "ledswitch"){
+        return block(py2block_config.inScope, node.lineno, {
+            "flag": nVal
+        });
     }
     return block("math_number", node.lineno, {"NUM": nVal});
 }
@@ -1873,14 +1881,31 @@ PythonToBlocks.prototype.Attribute = function(node)
     var value = node.value;
     var attr = node.attr;
     var ctx = node.ctx;
-
-    var valueName = this.identifier(value.id);
+    var valueName = "";
+    if(value._astname == "Name"){
+        valueName = this.identifier(value.id);    
+    }else if(value._astname == "Attribute"){
+        valueName = this.Name_str(value.value) + "." + this.identifier(value.attr);
+    }
+    
     var attrName = this.identifier(attr);
     var attrD = py2block_config.moduleAttrD.get(valueName);
-    if(attrName in attrD){
+    if (attrName in attrD) {
         try {
             return attrD[attrName](node, valueName, attrName);
-        }catch(e){
+        } catch (e) {
+        }
+    } else {
+        var keys = Object.keys(py2block_config.objectAttrD.get(attrName));
+        if (keys.length != 0) {
+            try {
+                if (!py2block_config.objectAttrD.get(attrName)['Default']) {
+                    var firstKey = keys[0];
+                    py2block_config.objectAttrD.get(attrName)['Default'] = py2block_config.objectAttrD.get(attrName)[firstKey];
+                }
+                return py2block_config.objectAttrD.get(attrName)['Default'](this, node, value, attr);
+            }catch(e){
+            }
         }
     }
     return block("attribute_access", node.lineno, {
@@ -1903,22 +1928,21 @@ PythonToBlocks.prototype.Subscript = function(node) {
     var ctx = node.ctx;
 
     if (slice._astname == "Index") {
-        if(slice.value._astname == "Str"){
-            return block("dicts_get", node.lineno, {
-                "KEY": this.Str_value(slice.value)
-            }, {
+        if(slice.value._astname == "Str" || slice.value._astname == "Name"){
+            return block("dicts_get", node.lineno, {}, {
+                "KEY": this.convert(slice.value),
                 "DICT": this.convert(value)
             });
         }else {
-            if(slice.value._astname == "Num" 
-            && value.func._astname == "Attribute" && this.identifier(value.func.attr) == "ifconfig"){
-            return block('network_get_connect', node.lineno, {
-                "mode":this.Num_value(slice.value)
-            }, {
-                "VAR":this.convert(value.func.value)
-            });
+            if(slice.value._astname == "Num"
+                && value.func._astname == "Attribute" && this.identifier(value.func.attr) == "ifconfig"){
+                return block('network_get_connect', node.lineno, {
+                    "mode":this.Num_value(slice.value)
+                }, {
+                    "VAR":this.convert(value.func.value)
+                });
 
-        }
+            }
             return block("lists_get_index", node.lineno, {}, {
                 "AT": this.convert(slice.value),
                 "LIST": this.convert(value)
@@ -2020,12 +2044,12 @@ PythonToBlocks.prototype.Name = function(node)
             "op": this.identifier(id)
         });
     }
-    if(py2block_config.board == py2block_config.ESP32
-        && (nodeName === '1' || nodeName === '2') && py2block_config.pinType =="number"){
-        return block(py2block_config.pinType, node.lineno, {
-            "op": this.identifier(id)
+    if(py2block_config.board == py2block_config.ESP32 && py2block_config.pinType == "pins_callback"){
+        return block("factory_block_return", node.lineno, {
+            "VALUE": this.identifier(id)
         });
     }
+
     if(py2block_config.reservedNameD[nodeName] != null){
         try {
             return py2block_config.reservedNameD[nodeName](this, node, id, ctx, nodeName);

@@ -52,6 +52,19 @@ Blockly.Python.dataframe_create_from_index = function() {
  
 };
 
+Blockly.Python.dataframe_create_from_one_index = function() {
+  Blockly.Python.definitions_.import_pandas = "import pandas";
+  var dropdown_type = this.getFieldValue('TYPE');
+  var name = this.getFieldValue('COLUMN_RAW');
+  var varName1 = Blockly.Python.valueToCode(this, 'SER', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var varName2 = Blockly.Python.valueToCode(this, 'INDEX',Blockly.Python.ORDER_ATOMIC) || '\'\'';  
+  var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
+    Blockly.Variables.NAME_TYPE);
+  var code=varName+' = ' + 'pandas.DataFrame('  + varName1 + ','  + name + '=' + varName2  + ')\n';
+  return code;
+ 
+};
+
 Blockly.Python.series_create_from_text = function() {
   Blockly.Python.definitions_.import_pandas = "import pandas";
   var dropdown_type = this.getFieldValue('TYPE');

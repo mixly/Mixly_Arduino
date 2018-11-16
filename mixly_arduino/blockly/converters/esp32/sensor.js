@@ -309,7 +309,63 @@ pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_get_y'] = getAcceleration('y');
 pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_get_z'] = getAcceleration('z');
 pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_get_values'] = getAcceleration('values');
 
+function getMagnetic(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var mpu = {
+            '_astname': 'Name',
+            'id': {
+                '_astname': 'Str',
+                'v': py2block.Name_str(func.value.value) + "." + py2block.identifier(func.value.attr)
+            }
+        };
+        var mpublock=py2block.convert(mpu);
+        return block('sensor_mpu9250_get_magnetic', func.lineno, {
+                "key": mode
+            }, {
+                'SUB': mpublock
+            }, {
+                "inline": "true"
+            });
+    }
+    return converter;
+}
 
+pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_magnetic_x'] = getMagnetic('x');
+pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_magnetic_y'] = getMagnetic('y');
+pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_magnetic_z'] = getMagnetic('z');
+pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_magnetic_values'] = getMagnetic('values');
+
+function getGyro(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var mpu = {
+            '_astname': 'Name',
+            'id': {
+                '_astname': 'Str',
+                'v': py2block.Name_str(func.value.value) + "." + py2block.identifier(func.value.attr)
+            }
+        };
+        var mpublock=py2block.convert(mpu);
+        return block('sensor_mpu9250_get_gyro', func.lineno, {
+                "key": mode
+            }, {
+                'SUB': mpublock
+            }, {
+                "inline": "true"
+            });
+    }
+    return converter;
+}
+
+pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_gyro_x'] = getGyro('x');
+pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_gyro_y'] = getGyro('y');
+pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_gyro_z'] = getGyro('z');
+pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_gyro_values'] = getGyro('values');
 
 function fieldStrength(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {

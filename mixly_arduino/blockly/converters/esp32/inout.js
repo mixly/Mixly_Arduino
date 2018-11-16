@@ -248,15 +248,29 @@ pbc.assignD.get('TOUCHPAD')['create_block'] = function(py2block, node, targets, 
     });
 }
 
-// pbc.moduleFunctionD.get('machine')['Pin'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-//     if (args.length !== 1) {
-//         throw new Error("Incorrect number of arguments");
-//     }
+pbc.objectFunctionD.get('irq')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0 || keywords.length!==2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var pin=py2block.identifier(func.value.func.attr);
+    var mac=py2block.identifier(func.value.func.value.id);
+    if(pin==="Pin" && mac==="machine"){
 
-//     var time=py2block.convert(args[0]);
-//     return [block("controls_delay", func.lineno, {'Time':'ms'}, {
-//     "DELAY_TIME":time
-//     }, {
-//         "inline": "true"
-//     })];
-// }
+    pbc.pinType = "pins_digital_pin";
+    var pinblock = py2block.convert(func.value.args[0]);
+    pbc.pinType = null;
+
+    var mode = mac+"."+pin+"."+py2block.identifier(keywords[1].value.attr);
+
+    pbc.pinType = "pins_callback";
+    var callback = py2block.convert(keywords[0].value);
+    pbc.pinType = null;
+
+    return [block("inout_pin_attachInterrupt", func.lineno, {"mode":mode}, {
+        "PIN": pinblock,
+        "DO": callback
+    }, {
+        "inline": "true"
+    })];
+}
+}

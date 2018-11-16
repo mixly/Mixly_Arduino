@@ -392,7 +392,6 @@ Blockly.Blocks.lists_pop = {
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendValueInput('LIST');
     this.appendValueInput('VALUE')
-        .setCheck(Number)
         .appendField(Blockly.MIXLY_MICROBIT_LIST_POP);
     this.appendDummyInput()
         .appendField(Blockly.Msg.TEXT_INDEXOF_TAIL);

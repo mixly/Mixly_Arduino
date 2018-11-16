@@ -13,10 +13,10 @@ pbc.assignD.get('Dict')['create_block'] = function (py2block, node, targets, val
     var keyList = [];
     var valueList = [];
     for (var i = 0; i < keys.length; i+= 1) {
-        if (keys[i]._astname != "Str") {
-            throw new Error("Dictionary Keys should be Strings.");
-        }
-        keyList["KEY"+i] = py2block.Str_value(keys[i]);
+        var sourceCode = py2block.getSourceCode(node);
+        var s = keys[i].col_offset;
+        var e = sourceCode.indexOf(":", keys[i].col_offset);
+        keyList["KEY"+i] = sourceCode.substring(s, e).trim();
         valueList["ADD"+i] = py2block.convert(values[i]);
     }
     keyList['VAR'] = py2block.Name_str(targets[0]);
@@ -48,6 +48,25 @@ pbc.objectFunctionD.get('keys')['Dict'] = function(py2block, func, args, keyword
 
 //d.clear()在lists.js中实现
 
+//d.pop('key')在set.js中实现
+
+
+pbc.objectFunctionD.get('setdefault')['Dict'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var args0 = py2block.convert(args[0]);
+    var args1 = py2block.convert(args[1]);
+    return [block("dicts_setdefault", func.lineno, {}, {
+        "DICT": objblock,
+        "KEY": args0,
+        "VAR": args1,
+    }, {
+        "inline": "true"
+    })];
+};
+
 
 pbc.objectFunctionD.get('items')['Dict'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
@@ -73,3 +92,6 @@ pbc.objectFunctionD.get('values')['Dict'] = function(py2block, func, args, keywo
         "inline": "true"
     });
 };
+
+
+
