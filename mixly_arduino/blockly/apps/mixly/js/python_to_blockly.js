@@ -1500,7 +1500,11 @@ PythonToBlocks.prototype.CallAttribute = function(func, args, keywords, starargs
         if (func.value._astname == "Name") {
             module = this.identifier(func.value.id);
         } else {
-            module = this.Name_str(func.value.value) + '.' + this.identifier(func.value.attr);
+                try{
+                    module = this.Name_str(func.value.value) + '.' + this.identifier(func.value.attr);
+                }catch(e) {
+                    
+                }
         }
 
         if (module == "plt" && name == "plot") {
@@ -1879,8 +1883,13 @@ PythonToBlocks.prototype.Attribute = function(node)
     var value = node.value;
     var attr = node.attr;
     var ctx = node.ctx;
-
-    var valueName = this.identifier(value.id);
+    var valueName = "";
+    if(value._astname == "Name"){
+        valueName = this.identifier(value.id);    
+    }else if(value._astname == "Attribute"){
+        valueName = this.Name_str(value.value) + "." + this.identifier(value.attr);
+    }
+    
     var attrName = this.identifier(attr);
     var attrD = py2block_config.moduleAttrD.get(valueName);
     if(attrName in attrD){

@@ -81,6 +81,7 @@
   <script src="../../converters/esp32/network.js" type="application/javascript"></script>
   <script src="../../converters/esp32/iot.js" type="application/javascript"></script>
   <script src="../../converters/esp32/serial.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/sensor.js" type="application/javascript"></script>
   <script src="../../converters/esp32/communicate.js" type="application/javascript"></script>
   <script src="../../converters/esp32/display.js" type="application/javascript"></script>
   <script src="../../converters/esp32/actuator.js" type="application/javascript"></script>
@@ -2318,6 +2319,20 @@
           </value>
         </block>
         <block type="sensor_mpu9250_get_acceleration">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mixgo.mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_mpu9250_get_magnetic">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mixgo.mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_mpu9250_get_gyro">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">mixgo.mpu</field>
