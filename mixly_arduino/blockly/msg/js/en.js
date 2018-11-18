@@ -1,5 +1,4 @@
 ﻿// This file was automatically generated.  Do not modify.
-
 'use strict';
 
 goog.provide('Blockly.Msg.en');
@@ -750,7 +749,8 @@ var MSG = {
   catTurtle:"Turtle",
   catTuple:"Tuple",
   catIot:"IOT",
-  catSet:"Set"
+  catSet:"Set",
+  catData:"Data"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='Returns high or low voltage.';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='Returns digital value of a specific Port';
@@ -902,8 +902,10 @@ Blockly.MIXLY_ETHERNET_CLINET_READ='Client.read';
 Blockly.MIXLY_ETHERNET_CLINET_GET_REQUEST='GET Request';
 Blockly.MIXLY_ETHERNET_CLINET_URL='URL';
 Blockly.MIXLY_ETHERNET_CLINET_SERVER='Host';
+
 //lm35温度传感器
 Blockly.MIXLY_LM35='LM35 Temperature';
+
 //DS18B20温度传感器
 Blockly.MIXLY_DS18B20='DS18B20 PIN#';
 Blockly.MIXLY_DS18B20_GET_TEMP='getTemperature';
@@ -1025,11 +1027,12 @@ Blockly.MIXLY_HOUR = 'H';
 Blockly.MIXLY_MINUTE = 'M';
 Blockly.MIXLY_SECOND = 'S';
 Blockly.MIXLY_WEEK = 'W';
-
+Blockly.MIXLY_MILLISECOND = 'Microsecond';
 Blockly.MIXLY_DS1302_INITPIN = 'Initialize DS1302 RTC clock module PIN'
 Blockly.MIXLY_SETDATE = 'SetDate:';
 Blockly.MIXLY_DATEFORMATE = 'DateFormat(Y-M-D)'
 Blockly.MIXLY_TIMEFORMATE = 'TimeForamt(H:M:S)';
+//8*8点阵显示屏
 Blockly.MIXLY_DISPLAY_MATRIX_INIT = "Init 8*8 dot matrix display screen(HT16K33)";
 Blockly.MIXLY_DISPLAY_MATRIX_SHOW = "Dot matrix display";
 Blockly.MIXLY_DISPLAY_MATRIX_X = 'X Axis';
@@ -1143,6 +1146,7 @@ Blockly.MIXLY_MICROBIT_JS_SYSTEM_DEVICE_NAME='device name';
 Blockly.MIXLY_MICROBIT_JS_SYSTEM_DEVICE_SERIAL_NUMBER='device serial number';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_NUMBER='show number';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING='show string';
+Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_IMAGE_OR_STRING='show image/string';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE='show';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_LEDS='show leds';
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_ARROW='show arrow';
@@ -1296,7 +1300,7 @@ Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING='scroll string';
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY='speak'
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING='sing'
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE='read'
-
+//lists
 Blockly.Msg.LISTS_NAME_TOOLTIP= 'input list name';
 Blockly.blockpy_LIST_ADD_LIST = 'add list';
 Blockly.Msg.blockpy_LISTS_CREATE_WITH_INPUT_WITH = 'initialization list';
@@ -1431,7 +1435,6 @@ Blockly.MIXLY_COMMUNICATION_WRITE_NUM = "write data";
 Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_WIFI = "wireless";
 Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_ON = "on";
 Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_OFF = "off";
-
 Blockly.MIXLY_COMMUNICATION_RFID_TOOLTIP = "This is RFID's reading card";
 Blockly.MIXLY_COMMUNICATION_RFID_READ = "RFID read";
 Blockly.MIXLY_COMMUNICATION_DATA_FROM = "data from";
@@ -1752,6 +1755,7 @@ Blockly.MIXLY_ESP32_OFF="Off";
 Blockly.MIXLY_ESP32_JS_MONITOR_SET_SCREEN_BRIGHTNESS="Set Screen Brightness";
 Blockly.MIXLY_ESP32_JS_MONITOR_GET_SCREEN_BRIGHTNESS="Get screen brightness";
 Blockly.MIXLY_ESP32_JS_MONITOR_SET_BLINK_RATE="Set the blinking frequency";
+Blockly.MIXLY_NETWORK_INIT="Config wifi";
 Blockly.MIXLY_NETWORK_MODE="Set wifi mode to";
 Blockly.MIXLY_NETWORK_WIFI_OPEN="Activate";
 Blockly.MIXLY_NETWORK_WIFI_CLOSE="Deactivate";
@@ -1761,6 +1765,7 @@ Blockly.MIXLY_ESP32_NETWORK_CONNECT="Connect wifi";
 Blockly.MIXLY_ESP32_NETWORK_ID="name";
 Blockly.MIXLY_ESP32_NETWORK_PASSWORD="Password";
 Blockly.MIXLY_NETWORK_WIFI_CONNECT="Connect to wifi?";
+Blockly.MIXLY_SYMBOL_QUESTION="?";
 Blockly.MIXLY_ESP32_NETWORK_GET_CONNECT="Get wifi";
 Blockly.MIXLY_ESP32_NETWORK_IP="IP address";
 Blockly.MIXLY_ESP32_NETWORK_MASK="subnet mask";
@@ -1806,11 +1811,166 @@ Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_MIN = "Return the minimum number in the tu
 Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_MODE = "Return the list of the most common items in the tuple.";
 Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_RANDOM = "Return a random element from the tuple.";
 Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_STD_DEV = "Return the standard deviation of the tuple.";
-Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_SUM = "Returns the sum of all the numbers in the tuple.";
-Blockly.Msg.TUPLE_DEL_TOOLTIP = "Delete the tuple variable and release the storage space for the tuple variable.";
+Blockly.Msg.MATH_ONLIST_TOOLTIP_TUPLE_SUM = "Return the sum of all numbers in the tuple.。";
+Blockly.Msg.TUPLE_DEL_TOOLTIP = "Remove tuple variables and freed storage space for tuple variables.";
 Blockly.Msg.PYTHON_TUPLE_GET_SUBLIST_TOOLTIP = "Copy the specified part of the tuple.";
-Blockly.MIXLY_ESP32_NETWORK_SERVER="Set ESP32 to receive messages for the server";
-Blockly.MIXLY_MICROBIT_RADIO_SEND="radio send";
-Blockly.MIXLY_MICROBIT_MSG="message"
-Blockly.MIXLY_MICROBIT_MSG_BYTE="message(containing bytes)"
-Blockly.MIXLY_MICROBIT_MSG_FULL="(message, RSSI, timestamp)"
+Blockly.MIXLY_ESP32_NETWORK_SERVER1="Config ESP32 as Server";
+Blockly.MIXLY_ESP32_NETWORK_SERVER2="Recieve message";
+Blockly.MIXLY_MICROBIT_RADIO_SEND="Wireless send";
+Blockly.MIXLY_MICROBIT_MSG="Message"
+Blockly.MIXLY_MICROBIT_MSG_BYTE="Message as Bytes"
+Blockly.MIXLY_MICROBIT_MSG_FULL="(Message,Signal Strength,Timestamp)"
+Blockly.blockpy_DICT_POP='Return and delete the key in the dictionary';
+Blockly.Msg.DICT_POP_TOOLTIP = "Return and delete the item in the dictionary";
+Blockly.Msg.DICTS_DEFAULT_VALUE = "Config default";
+Blockly.Msg.DICTS_SET_DEFAULT = "Config key";
+Blockly.Msg.DICTS_SETDEFAULT_TOOLTIP = "Add a key and corresponding value in the dictionary, if the same name key in the dictionary is invalid.";
+Blockly.Msg.TEXT_TITLE="Uppercase";
+Blockly.Msg.TEXT_LOWER="Lowercase";
+Blockly.Msg.TEXT_LJUST="Left alignment";
+Blockly.Msg.TEXT_CENTER="Middle alignment";
+Blockly.Msg.TEXT_RJUST="Right alignment";
+Blockly.MIXLY_MIXPY_REPLACE="Replace";
+Blockly.Msg.LIST_SPLIT_AS = "As";
+Blockly.Msg.LIST_SPLIT = "Split";
+Blockly.MIXLY_TOOLTIP_TEXT_SPLIT="Split and return list";
+
+Blockly.Msg.TEXT_STRIM = "Strim";
+Blockly.Msg.TEXT_TRIM_BOTH = "Both";
+Blockly.Msg.TEXT_TRIM_LEFT = "Left";
+Blockly.Msg.TEXT_TRIM_RIGHT = "Right";
+Blockly.Msg.TEXT_BLANK = "Space";
+Blockly.Msg.TEXT_TRIM_BOTH_TOOLTIP = "Copy the text and delete the extra space at both ends.";
+Blockly.Msg.TEXT_TRIM_LEFT_TOOLTIP = "Copy the text while deleting the excess space on the left.";
+Blockly.Msg.TEXT_TRIM_RIGHT_TOOLTIP = "Copy the text while deleting the excess space on the Right.";
+Blockly.Msg.LIST_EQUAL_DISTANCE = "Equidistant";
+Blockly.Msg.MIXLY_LIST_LENGTH="Based On length";
+Blockly.blockpy_TURTLE_DONE='Turtle On';
+Blockly.blockpy_turtle_bgcolor_hex='Set the background color to sixteen hexadecimal #';
+Blockly.MIXLY_TOOLTIP_SERIES_CREATE_FROM_TEXT='Create or modify an series with arrays or dictionaries.';
+Blockly.Msg.SERIES_INDEX_VALUE = "Get Series all item";
+Blockly.Msg.SERIES_INDEX = "index";
+Blockly.Msg.SERIES_VALUE = "value";
+Blockly.Msg.SERIES_INDEX_TOOLTIP = "Return all indexes in the serries as list";
+Blockly.Msg.SERIES_VALUE_TOOLTIP = "Return all values in the serries as list";
+Blockly.blockpy_series_create='Create series';
+Blockly.blockpy_series_via = 'By List or dictionary';
+Blockly.blockpy_PYLAB_SHOW='Display chart';
+Blockly.blockpy_PYLAB_LEGEND='Display Legend';
+Blockly.blockpy_PYLAB_TITLE='Set chart title';
+Blockly.blockpy_PYLAB_SET_LABEL='Config Chart';
+Blockly.blockpy_PYLAB_LABEL='Coordinate description text is';
+Blockly.Msg.PYLAB_LABEL_X = "X";
+Blockly.Msg.PYLAB_LABEL_Y = "Y";
+Blockly.blockpy_series_set_index = 'Index';
+
+Blockly.blockpy_PYLAB_PLOT='Draw a line graph';
+Blockly.blockpy_dataframe_create='Create two-dimensional data table';
+Blockly.blockpy_dataframe_via = 'By  dictionary';
+Blockly.blockpy_dataframe_set_index_column = 'Index column';
+Blockly.blockpy_dataframe_set_index_raw = 'Raw column';
+Blockly.blockpy_series_create_TOOLTIP='Create a series by dictionary or list, indexed as the default natural number.';
+Blockly.blockpy_series_create_index_TOOLTIP='Create a series by dictionary or list, and specify a list as index.';
+Blockly.blockpy_dataframe_create_TOOLTIP='Create a two-dimensional table through the dictionary, indexed as the default natural number.';
+Blockly.blockpy_dataframe_create_index_TOOLTIP='Create a two-dimensional table through the dictionary and specify the list as rank index.';
+Blockly.blockpy_PYLAB_PLOT_LINE='Line Type';
+Blockly.blockpy_PYLAB_PLOT_LINE_SOLID='Solid Line';
+Blockly.blockpy_PYLAB_PLOT_LINE_DOTTED='Dotted Line';
+Blockly.blockpy_PYLAB_PLOT_LINE_CHAIN='Chain Line';
+Blockly.blockpy_PYLAB_PLOT_LINE_POINT_DOTTED='Point dotted Line';
+Blockly.Msg.COLOUR_CYAN = "Cyan";
+Blockly.Msg.COLOUR_MAGENTA = "Magenta";
+Blockly.Msg.COLOUR_YELLOW = "Yellow";
+Blockly.Msg.COLOUR_BLACK = "Black";
+Blockly.Msg.COLOUR_WHITE = "White";
+Blockly.blockpy_PYLAB_PLOT_DOT='Dot Type';
+Blockly.blockpy_PYLAB_PLOT_DOT_CIRCULAR='Circular';
+Blockly.blockpy_PYLAB_PLOT_DOT_LARGE_DOT='Large';
+Blockly.blockpy_PYLAB_PLOT_DOT_PIXEL='Pixel Doy';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIANGLE_UP='Triangle Up';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIANGLE_DOWN='Triangle Down';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIANGLE_LEFT='Triangle Left';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIANGLE_RIGHT='Triangle Right';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIMARKER_UP='Trimaker Up';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIMARKER_DOWN='Trimaker Down';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIMARKER_LEFT='Trimaker Left';
+Blockly.blockpy_PYLAB_PLOT_DOT_TRIMARKER_RIGHT='Trimaker Right';
+Blockly.blockpy_PYLAB_PLOT_DOT_SQUARE='Square';
+Blockly.blockpy_PYLAB_PLOT_DOT_PENTAGON='Pentagon';
+Blockly.blockpy_PYLAB_PLOT_DOT_STAR='Star';
+Blockly.blockpy_PYLAB_PLOT_DOT_HEXAGON_VERTICAL='Hexagon Vertical';
+Blockly.blockpy_PYLAB_PLOT_DOT_HEXAGON_HORIZONTAL='Hexagon Horizontal';
+Blockly.blockpy_PYLAB_PLOT_DOT_PLUS='Plus';
+Blockly.blockpy_PYLAB_PLOT_DOT_CROSS='Cross';
+Blockly.blockpy_PYLAB_PLOT_DOT_DIAMOND='Big Diamond';
+Blockly.blockpy_PYLAB_PLOT_DOT_DIAMOND_SMALL='Small Diamond';
+Blockly.blockpy_PYLAB_PLOT_DOT_VERTICAL='Vertical';
+Blockly.blockpy_PYLAB_PLOT_DOT_HORIZONTAL='Horizontal';
+
+Blockly.MIXLY_MICROBIT_JS_I2C="i2c";
+Blockly.MIXLY_ESP32_TOUCH="Touch";
+Blockly.MIXLY_ESP32_TOUCH_SENSOR="Touch Sensor";
+Blockly.MIXLY_ESP32_NEAR="Infrared proximity sensor value";
+Blockly.MIXLY_ESP32_INTERRUPT="Interrupt";
+Blockly.MIXLY_ESP32_PITCH="Pitch";
+Blockly.MIXLY_ESP32_DUTY="Tone";
+Blockly.MIXLY_ESP32_LIGHT="Return light value";
+Blockly.MIXLY_ESP32_SOUND="Return sound value";
+Blockly.MIXLY_ESP32_MONITOR_SCROLL='Scroll';
+Blockly.MIXLY_PYTHON_GLOBAL='Global';
+Blockly.MIXLY_ESP32_TOGGLE="Toggle";
+Blockly.MIXLY_PYTHON_ONE_SHOT="One Shot";
+Blockly.MIXLY_PYTHON_PERIODIC="Periodic";
+Blockly.MIXLY_RTC_TIME="Config RTC";
+Blockly.blockpy_REQUESTS_GET='Initiating get request receive as variable';
+Blockly.blockpy_REQUESTS_GET_TOOLTIP='Use HTTP protocol to launch get request to the specified domain name, and assign the response result to the variable.';
+Blockly.blockpy_REQUESTS_GET_ATTR_STATUS_CODE='Status Code';
+Blockly.blockpy_REQUESTS_GET_ATTR_TEXT='Response content';
+Blockly.blockpy_REQUESTS_GET_ATTR_CONTENT='Bin content';
+Blockly.blockpy_REQUESTS_GET_ATTR_COOKIES='cookies';
+Blockly.blockpy_REQUESTS='Request';
+Blockly.blockpy_CONDUCT='Conduct';
+Blockly.MIXLY_ESP32_TIME_TICKS_DIFF='Time Diff'
+Blockly.MIXLY_ESP32_TIME_MINUS='Minus'
+Blockly.MIXLY_ESP32_MACHINE_VALUE='value'
+Blockly.MIXLY_ESP32_RGB_WRITE='Affect'
+Blockly.MIXLY_GETPRESSURE = 'Return atmospheric pressure';
+Blockly.MIXLY_MICROPYTHON_AS = "As";
+Blockly.MIXLY_ESP32_ONEWIRE_SCAN = "Scan";
+Blockly.MIXLY_ESP32_ONEWIRE_RESET="Reset OneWire";
+Blockly.MIXLY_ESP32_ONEWIRE_READ = "Read byte";
+Blockly.MIXLY_ESP32_ONEWIRE_INIT = "Init bus";
+Blockly.MIXLY_ESP32_ONEWIRE_SELECT = "Config OneWire";
+Blockly.MIXLY_ESP32_I2C_SCAN1 = "Scan I2C";
+Blockly.MIXLY_ESP32_I2C_SCAN2 = "Devices on Bus";
+Blockly.MIXLY_ESP32_SPI_SET = "Config SPI Baudrate";
+Blockly.MIXLY_ESP32_SPI_BUFFER = "Buffer";
+Blockly.MIXLY_ESP32_SPI_OUTPUT = "OutPut";
+Blockly.MIXLY_ESP32_SET = "Create";
+Blockly.MIXLY_ESP32_WRITE = "Write";
+Blockly.MIXLY_ESP32_BUFFER_READ = "Read into Buffer";
+Blockly.MIXLY_ESP32_WNUMBER = "Write address";
+Blockly.MIXLY_ESP32_RNUMBER = "Read address";
+Blockly.MIXLY_ESP32_READ = "Read";
+Blockly.MIXLY_ESP32_SUCCESS = "Success？";
+Blockly.MIXLY_ESP32_SPI_INIT = "Init SPI";
+Blockly.MIXLY_ESP32_REF_VOLTAGE = "Ref Voltafe";
+Blockly.MIXLY_TOOLTIP_DISPLAY_ONOFF='Return Led state';
+Blockly.MIXLY_MICROPYTHON_SOCKET_INIT='Socket Init ';
+Blockly.MIXLY_MICROPYTHON_SOCKET_TYPE='Socket Type';
+Blockly.MIXLY_MICROPYTHON_SOCKET_LISTEN='Socket Listen';
+Blockly.MIXLY_MICROPYTHON_SOCKET_QUEUE='Socket Queue';
+Blockly.MIXLY_MICROPYTHON_SOCKET_LET_SOCKET='Set Socket';
+Blockly.MIXLY_MICROPYTHON_SOCKET_BIND_TO_ADDRESS='Bind to address';
+Blockly.MIXLY_MICROPYTHON_SOCKET_ACCEPT='Accept and return Socket';
+Blockly.MIXLY_MICROPYTHON_SOCKET_RECEIVE='Socket Recieve';
+Blockly.MIXLY_MICROPYTHON_SOCKET_SEND='Send';
+Blockly.MIXLY_MICROPYTHON_SOCKET_MAKE = "Set";
+Blockly.MIXLY_MICROPYTHON_SOCKET_TO = "To";
+Blockly.MIXLY_MICROPYTHON_SOCKET_CLOSE = "Close";
+Blockly.MIXLY_ESP32_MONITOR_GET_SCREEN_IMAGE="Return matrix bitmap";
+Blockly.MIXLY_ESP32_MONITOR_GET_SCREEN_IMAGE_TOOLTIP="Return matrix bitmap";
+Blockly.MIXLY_ESP32_MONITOR_SHOW_STATIC='Display String Static';
+Blockly.MIXLY_ESP32_SENOR_GYRO='GYPO(rad/s)';
+Blockly.Msg.DATAFRAME_RAW = "Raw";
+Blockly.Msg.DATAFRAME_COLUMN = "Column";

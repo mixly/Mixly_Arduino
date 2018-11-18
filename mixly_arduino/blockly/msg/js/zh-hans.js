@@ -947,7 +947,6 @@ Blockly.MIXLY_CONTROL_SCoop_Init = '初始化';
 Blockly.MIXLY_CONTROL_SCoop_loop = '循环';
 Blockly.MIXLY_CONTROL_SCoop_yield = '执行SCoop任务';
 Blockly.MIXLY_CONTROL_SCoop_sleep = 'SCoop 延时(仅用于SCoop)';
-
 //others
 Blockly.MIXLY_WARNING_NOT_DECLARE='该变量未声明';
 Blockly.MIXLY_LENGTH = "获取长度";
@@ -1029,7 +1028,6 @@ Blockly.MIXLY_MINUTE = '分';
 Blockly.MIXLY_SECOND = '秒';
 Blockly.MIXLY_WEEK = '周';
 Blockly.MIXLY_MILLISECOND = '微秒';
-
 Blockly.MIXLY_DS1302_INITPIN = '初始化时钟模块DS1302 管脚';
 Blockly.MIXLY_SETDATE = '设置日期:';
 Blockly.MIXLY_DATEFORMATE = '日期格式(年-月-日)';
