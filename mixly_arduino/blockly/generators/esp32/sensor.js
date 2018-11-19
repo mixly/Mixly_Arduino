@@ -19,6 +19,13 @@ Blockly.Python.sensor_mixgo_button_was_pressed = function(){
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.sensor_mixgo_button_get_presses = function(){
+    Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
+    var code =  'mixgo.'+btn + '.get_presses()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python.sensor_mixgo_button_attachInterrupt = function () {
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
