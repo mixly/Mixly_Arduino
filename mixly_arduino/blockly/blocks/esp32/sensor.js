@@ -103,6 +103,40 @@ Blockly.Blocks.sensor_mpu9250_attachGestureInterrupt = {
     }
 };
 
+Blockly.Blocks.sensor_mpu9250_gesture = {
+    init: function() {
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.appendValueInput('SUB')
+            .setCheck("var");
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_MICROBIT_JS_CURRENT_GESTURE)
+            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_MICROBIT_up, "up"], [Blockly.MIXLY_MICROBIT_down, "down"], [Blockly.MIXLY_MICROBIT_left, "left"], [Blockly.MIXLY_MICROBIT_right, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
+        this.setOutput(true);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('gesture');
+        var mode0 = Blockly.MIXLY_MICROBIT_JS_CURRENT;
+        var mode1 = MSG.catSensor;
+        var mode2 = Blockly.MIXLY_MICROBIT_JS_STATE;
+        var mode3 = Blockly.MIXLY_MICROBIT_PERFORMANCE
+        var TOOLTIPS = {
+        'shake': Blockly.MIXLY_MICROBIT_shake,
+        'up': Blockly.MIXLY_MICROBIT_up,
+        'down':Blockly.MIXLY_MICROBIT_down,
+        'left':Blockly.MIXLY_MICROBIT_left,
+        'right':Blockly.MIXLY_MICROBIT_right,
+        'face up': Blockly.MIXLY_MICROBIT_face_up,
+        'face down': Blockly.MIXLY_MICROBIT_face_down,
+        'freefall':Blockly.MIXLY_MICROBIT_freefall,
+        '3g': '3g',
+        '6g': '6g',
+        '8g': '8g'
+      };
+      return mode0 +mode1+mode2+ TOOLTIPS[mode]+mode3;
+    });
+    }
+};
+
 Blockly.Blocks['sensor_mpu9250_get_acceleration'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);

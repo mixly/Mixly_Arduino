@@ -47,6 +47,18 @@ Blockly.Python.sensor_mpu9250_attachGestureInterrupt = function(){
     return code;
 }
 
+Blockly.Python.sensor_mpu9250_gesture = function(){
+    Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
+    Blockly.Python.definitions_['import_machine'] = 'import machine';
+    var gesture = this.getFieldValue('gesture');
+    var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
+    if (v.indexOf('mixgo_')>-1)
+        Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    v=v.replace('mixgo_mpu','mixgo.mpu');
+    var code = v+'.mpu9250_is_gesture("' + gesture + '")';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+}
+
 
 //ok
 Blockly.Python.sensor_mpu9250_get_acceleration = function(){

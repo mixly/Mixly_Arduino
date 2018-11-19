@@ -317,7 +317,7 @@ class Display:
 					#print(l[i][j])
 			self._show()
 
-	def showstatic(self, data, delay=200, time=400):
+	def showstatic(self, data):
 		self.fill(0)
 		if type(data)==str:
 			if len(data)>3:

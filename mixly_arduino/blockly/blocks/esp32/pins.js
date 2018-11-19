@@ -130,6 +130,15 @@ Blockly.Blocks['pins_imglist'] = {
     }
 };
 
+Blockly.Blocks['pins_playlist'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldDropdown(profile.default.playlist), 'PIN');
+        this.setOutput(true);
+    }
+};
+
 Blockly.Blocks['pins_exlcdh'] = {
     init: function() {
         this.setColour(Blockly.Blocks.pins.HUE);

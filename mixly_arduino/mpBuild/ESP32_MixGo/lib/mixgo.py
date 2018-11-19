@@ -13,11 +13,11 @@ from mpu9250 import *
 
 # Button
 
-def btn_a(p):
-	button_a.val = 1
+# def btn_a(p):
+# 	button_a.val = 1
 
-def btn_b(p):
-	button_b.val = 1
+# def btn_b(p):
+# 	button_b.val = 1
 
 def mixgo_get_brightness():
 	return ADCSensor(pin = 39).read()
@@ -25,22 +25,50 @@ def mixgo_get_brightness():
 def mixgo_get_soundlevel():
 	return ADCSensor(pin = 35).read()
 	
-class Button:
-	def __init__(self, pin):
-		self.val = 0
-		self.pin = pin
+# class Button:
+# 	def __init__(self, pin):
+# 		self.val = 0
+# 		self.pin = pin
  
-	def was_pressed(self):
-		if self.val == 1:
-			self.val = 0
-			return 1
-		else:
-			return 0
+# 	def was_pressed(self):
+# 		if self.val == 1:
+# 			self.val = 0
+# 			return 1
+# 		else:
+# 			return 0
 
-	def is_pressed(self):
-		return 1 - Pin(self.pin).value()
+# 	def is_pressed(self):
+# 		return 1 - Pin(self.pin).value()
 
-	def irq(self, handler, trigger):
+
+
+class Button:
+    def __init__(self, pin):
+        from machine import Pin
+        self.pin = Pin(pin, Pin.IN)
+
+    def get_presses(self, delay = 1):
+        last_time, last_state, presses = time(), 0, 0
+        while time() < last_time + delay:
+            sleep_ms(50)
+            if last_state == 0 and self.pin.value() == 1:
+                last_state= 1
+            if last_state == 1 and self.pin.value() == 0:
+                last_state, presses = 0, presses + 1
+        return presses
+
+    def is_pressed(self):
+        return self.pin.value() == 0
+
+    def was_pressed(self, delay = 1):
+        last_time, last_state = time(), self.pin.value()
+        while time() < last_time + delay:
+            sleep_ms(50)
+            if last_state != self.pin.value():
+                return True
+        return False
+
+    def irq(self, handler, trigger):
 		Pin(self.pin).irq(handler = handler, trigger = trigger)
 
 # Pin
@@ -170,16 +198,16 @@ class RGB:
 		self[n] = (r, g, b)
 		self.write()
 		   
-pin16 = MyPin(16)
-pin17 = MyPin(17)
-pin17.read_digital()
-pin16.read_digital()
-pin17.irq(handler = btn_a, trigger = Pin.IRQ_FALLING)
-pin16.irq(handler = btn_b, trigger = Pin.IRQ_FALLING)
+# pin16 = MyPin(16)
+# pin17 = MyPin(17)
+# pin17.read_digital()
+# pin16.read_digital()
+# pin17.irq(handler = btn_a, trigger = Pin.IRQ_FALLING)
+# pin16.irq(handler = btn_b, trigger = Pin.IRQ_FALLING)
 button_a = Button(pin = 17)
 button_b = Button(pin = 16)
-buttonA = MyPin(17)
-buttonB = MyPin(16)
+# buttonA = MyPin(17)
+# buttonB = MyPin(16)
 Pin(0, Pin.OUT).value(1)
 Pin(5, Pin.OUT).value(1)
 led1 = led(pin = 0)

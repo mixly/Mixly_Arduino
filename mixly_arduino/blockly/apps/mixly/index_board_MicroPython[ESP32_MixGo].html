@@ -1546,7 +1546,7 @@
             </shadow>
           </value>
         </block>
-        <block type="sensor_mpu9250_attachGestureInterrupt">
+        <block type="sensor_mpu9250_gesture">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">mixgo.mpu</field>
@@ -1725,12 +1725,6 @@
           </shadow>
         </value>
         </block>
-        <!-- <block type="esp32_music_play">
-          <value name="pitch">
-            <shadow type="pins_tone_notes"></shadow>
-          </value>
-        </block>
-         <block type="esp32_music_deinit"></block> -->
         <block type="esp32_music_pitch">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
@@ -1738,14 +1732,28 @@
             </shadow>
           </value>
           <value name="pitch">
-            <shadow type="pins_tone_notes"></shadow>
+            <shadow type="pins_tone_notes">
+              <field name="PIN">440</field>
+            </shadow>
           </value>
         </block>
-<!--         <block type="esp32_music_play_built_in_easy">
+        <block type="esp32_music_pitch_with_time">
           <value name="PIN">
-            <shadow type="pins_pwm"></shadow>
+            <shadow type="pins_pwm_pin">
+              <field name="PIN">27</field>
+            </shadow>
           </value>
-        </block> -->
+          <value name="pitch">
+            <shadow type="pins_tone_notes">
+              <field name="PIN">440</field>
+            </shadow>
+          </value>
+          <value name="time">
+            <shadow type="math_number">
+              <field name="NUM">1000</field>
+            </shadow>
+          </value>
+        </block>
         <block type="esp32_music_stop">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
@@ -1753,27 +1761,45 @@
             </shadow>
           </value>
         </block>
-<!--         <block type="speech_say_easy">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly 0.997 is great!</field>
+        <block type="esp32_music_play_list">
+          <value name="LIST">
+            <shadow type="pins_playlist"></shadow>
+          </value>          
+          <value name="PIN">
+            <shadow type="pins_pwm_pin">
+              <field name="PIN">27</field>
             </shadow>
           </value>
         </block>
-        <block type="speech_sing_easy">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">#115DOWWWW</field>
+        <block type="esp32_mixgo_music_play_list_show">
+          <value name="LIST">
+            <shadow type="pins_playlist"></shadow>
+          </value>          
+          <value name="PIN">
+            <shadow type="pins_pwm_pin">
+              <field name="PIN">27</field>
+            </shadow>
+          </value>
+          <value name="DISPLAY">
+              <shadow type="factory_block_return">
+                  <field name="VALUE">matrix.display</field>
+              </shadow>
+          </value>
+        </block>
+        <block type="esp32_music_set_tempo">
+          <value name="TICKS">
+            <shadow type="math_number">
+              <field name="NUM">4</field>
+            </shadow>
+          </value>
+          <value name="BPM">
+            <shadow type="math_number">
+              <field name="NUM">120</field>
             </shadow>
           </value>
         </block>
-        <block type="speech_prenounce_easy">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">/HEH5EH4EH3EH2EH2EH3EH4EH5EHLP.</field>
-            </shadow>
-          </value>
-        </block> -->
+        <block type="esp32_music_get_tempo"></block>
+        <block type="esp32_music_reset"></block>
 		<block type="actuator_neopixel_init">
           <value name="SUB">
             <shadow type="variables_get">

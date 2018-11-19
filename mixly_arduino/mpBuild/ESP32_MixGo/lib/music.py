@@ -228,6 +228,33 @@ class MIDI():
         finally:
             pwm.deinit()
 
+    def play_show(self, tune, pin=27, display=None, duration=None):
+        from machine import Pin, PWM
+        from utime import sleep_ms
+        from matrix import *
+
+        try:
+            pwm = PWM(Pin(pin))
+            if duration is None:
+                self.set_default(tune[0])
+            else:
+                self.set_duration(duration)
+            for tone in tune:
+                tone = tone.upper()  # all to upper
+                if tone[0] not in Letter:
+                    continue
+                if len(tone)==4:
+                    display.showstatic(tone.replace(":",""))
+                else:
+                    display.showstatic(tone)
+                midi = self.midi(tone)
+                pwm.freq(midi[0])  # set frequency
+                pwm.duty(midi[1])  # set duty cycle
+                sleep_ms(midi[1])
+            display.clear()
+        finally:
+            pwm.deinit()
+
     def pitch(self, freq, pin=27, tim=1000):
         from machine import Pin, PWM
         from utime import sleep_ms
