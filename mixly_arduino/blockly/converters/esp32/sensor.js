@@ -258,25 +258,25 @@ pbc.objectFunctionD.get('datetime')['RTC'] = function (py2block, func, args, key
 }
 
 /*I2C出现了一些问题，待解决*/
-pbc.assignD.get('i2c')['check_assign'] = function(py2block, node, targets, value) {
+pbc.assignD.get('i2c')['check_assign'] = function (py2block, node, targets, value) {
     var funcName = py2block.identifier(value.func.attr);
-    var moduleName=py2block.identifier(value.func.value.id);
-    if(value._astname === "Call" && funcName === "MPU9250"||"SHT20"|| "BMP280"
-        && moduleName==="mpu9250"||"sht20"||"bmp280"&&value.args.length === 1)
+    var moduleName = py2block.identifier(value.func.value.id);
+    if (value._astname === "Call" && ['MPU9250', 'SHT20', 'BMP280'].indexOf(funcName) != -1
+        && ['mpu9250', 'sht20', 'bmp280'].indexOf(funcName) != -1 && value.args.length === 1)
         return true;
 
     return false;
 }
-pbc.assignD.get('i2c')['create_block'] = function(py2block, node, targets, value){
-    var funcblock = py2block.identifier(value.func.attr)
-    var mpublock=py2block.convert(targets[0])
-    var i2cblock=py2block.convert(value.args[0])
-    return block("sensor_use_i2c_init", node.lineno, { "key":funcblock}, {
-        'I2CSUB':i2cblock,
-        'SUB':mpublock,
+pbc.assignD.get('i2c')['create_block'] = function (py2block, node, targets, value) {
+    var funcblock = py2block.identifier(value.func.attr);
+    var mpublock = py2block.convert(targets[0]);
+    var i2cblock = py2block.convert(value.args[0]);
+    return block("sensor_use_i2c_init", node.lineno, { "key": funcblock }, {
+        'I2CSUB': i2cblock,
+        'SUB': mpublock,
     }, {
-        "inline": "true"
-    });
+            "inline": "true"
+        });
 }
 
 
