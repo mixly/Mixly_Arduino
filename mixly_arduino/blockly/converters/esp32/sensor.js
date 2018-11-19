@@ -1,10 +1,10 @@
 'use strict';
 
-
-pbc.moduleFunctionD.get('mixgo.button_a')['is_pressed'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
-    }
+function pressed_converter (mode) {
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
         var btn = {
             '_astname': 'Name',
             'id': {
@@ -12,65 +12,26 @@ pbc.moduleFunctionD.get('mixgo.button_a')['is_pressed'] = function (py2block, fu
                 'v': py2block.identifier(func.value.attr)
             }
         };
-    pbc.pinType = "pins_button";
-    var objblock = py2block.convert(btn);
-    pbc.pinType = null;
-    return block("sensor_mixgo_button_is_pressed", func.lineno, {}, {
-        "btn": objblock
-    }, {
-        "inline": "true"
-    });
-}
-
-pbc.moduleFunctionD.get('mixgo.button_b')['is_pressed'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
+        pbc.pinType = "pins_button";
+        var objblock = py2block.convert(btn);
+        pbc.pinType = null;
+        return block(mode, func.lineno, {}, {
+            "btn": objblock
+        }, {
+            "inline": "true"
+        });
     }
-        var btn = {
-            '_astname': 'Name',
-            'id': {
-                '_astname': 'Str',
-                'v': py2block.identifier(func.value.attr)
-            }
-        };
-    pbc.pinType = "pins_button";
-    var objblock = py2block.convert(btn);
-    pbc.pinType = null;
-    return block("sensor_mixgo_button_is_pressed", func.lineno, {}, {
-        "btn": objblock
-    }, {
-        "inline": "true"
-    });
+    return converter;
 }
 
 
-pbc.moduleFunctionD.get('was_pressed')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    pbc.pinType = "pins_button";
-    var objblock = py2block.convert(func.value);
-    pbc.pinType = null;
-    return block("sensor_mixgo_button_was_pressed", func.lineno, {}, {
-        "btn": objblock
-    }, {
-        "inline": "true"
-    });
-}
+pbc.moduleFunctionD.get('mixgo.button_a')['is_pressed'] = pressed_converter('sensor_mixgo_button_is_pressed'); 
+pbc.moduleFunctionD.get('mixgo.button_b')['is_pressed'] = pressed_converter('sensor_mixgo_button_is_pressed'); 
+pbc.moduleFunctionD.get('mixgo.button_a')['was_pressed'] = pressed_converter('sensor_mixgo_button_was_pressed'); 
+pbc.moduleFunctionD.get('mixgo.button_b')['was_pressed'] = pressed_converter('sensor_mixgo_button_was_pressed'); 
+pbc.moduleFunctionD.get('mixgo.button_a')['get_presses'] = pressed_converter('sensor_mixgo_button_get_presses'); 
+pbc.moduleFunctionD.get('mixgo.button_b')['get_presses'] = pressed_converter('sensor_mixgo_button_get_presses'); 
 
-pbc.objectFunctionD.get('get_presses')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    pbc.pinType = "pins_button";
-    var objblock = py2block.convert(func.value);
-    pbc.pinType = null;
-    return block("sensor_mixgo_button_get_presses", func.lineno, {}, {
-        "btn": objblock
-    }, {
-        "inline": "true"
-    });
-}
 
 pbc.moduleFunctionD.get('mixgo.touch1')['is_touched'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
