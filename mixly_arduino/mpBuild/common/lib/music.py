@@ -145,7 +145,7 @@ Letter = 'ABCDEFG#R'
 
 _ticks = 4
 _bpm =120
-_beat = 60000 / bpm / ticks
+_beat = 60000 / _bpm / _ticks
 _octave = 4
 _duration = 4
 
@@ -222,10 +222,10 @@ def play(tune, pin=27, duration=None):
             tone = tone.upper()  # all to upper
             if tone[0] not in Letter:
                 continue
-            midi = midi(tone)
-            pwm.freq(midi[0])  # set frequency
-            pwm.duty(midi[1])  # set duty cycle
-            sleep_ms(midi[1])
+            m = midi(tone)
+            pwm.freq(m[0])  # set frequency
+            pwm.duty(m[1])  # set duty cycle
+            sleep_ms(m[1])
     finally:
         pwm.deinit()
 

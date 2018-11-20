@@ -145,7 +145,7 @@ Letter = 'ABCDEFG#R'
 
 _ticks = 4
 _bpm =120
-_beat = 60000 / bpm / ticks
+_beat = 60000 / _bpm / _ticks
 _octave = 4
 _duration = 4
 
@@ -193,7 +193,6 @@ def parse(tone, dict):
     return int(freq), int(time)
 
 def midi(tone):
-    # print(tone)
     pos = tone.find('#')
     if pos != -1:
         return parse(tone.replace('#', ''), rising_tone)
@@ -222,10 +221,11 @@ def play(tune, pin=27, duration=None):
             tone = tone.upper()  # all to upper
             if tone[0] not in Letter:
                 continue
-            midi = midi(tone)
-            pwm.freq(midi[0])  # set frequency
-            pwm.duty(midi[1])  # set duty cycle
-            sleep_ms(midi[1])
+            #print(tone)
+            m = midi(tone)
+            pwm.freq(m[0])  # set frequency
+            pwm.duty(m[1])  # set duty cycle
+            sleep_ms(m[1])
     finally:
         pwm.deinit()
 
@@ -269,10 +269,10 @@ def play_show(tune, pin=27, display=None, duration=None):
                 display.showstatic(tone.replace(":",""))
             else:
                 display.showstatic(tone)
-            midi = midi(tone)
-            pwm.freq(midi[0])  # set frequency
-            pwm.duty(midi[1])  # set duty cycle
-            sleep_ms(midi[1])
+            m = midi(tone)
+            pwm.freq(m[0])  # set frequency
+            pwm.duty(m[1])  # set duty cycle
+            sleep_ms(m[1])
         display.clear()
     finally:
         pwm.deinit()
