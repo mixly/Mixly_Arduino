@@ -67,6 +67,13 @@ pbc.initModuleAttrD = function(){
                 "PIN": module + "." + attr
             });
         }
+    }
+    for (var i = 0; i < profile.default.playlist.length; i++) {
+        pbc.moduleAttrD.get('music')[profile.default.playlist[i][0]] = function (node, module, attr) {
+            return block("pins_playlist", node.lineno, {
+                "PIN": module + "." + attr
+            });
+        }
     }    
 }
 

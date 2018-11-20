@@ -5,6 +5,7 @@
 # Licensed under the MIT license:
 #   http://www.opensource.org/licenses/mit-license.php
 #
+import matrix
 
 DADADADUM = ['r4:2', 'g', 'g', 'g', 'eb:8', 'r:2', 'f', 'f', 'f', 'd:8']
 
@@ -250,10 +251,9 @@ def stop(pin=27):
     finally:
         pwm.deinit()
 
-def play_show(tune, pin=27, display=None, duration=None):
+def play_show(tune, pin=27, display=matrix.display, duration=None):
     from machine import Pin, PWM
     from utime import sleep_ms
-    from matrix import *
 
     try:
         pwm = PWM(Pin(pin))

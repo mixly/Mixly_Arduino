@@ -141,11 +141,8 @@ pbc.moduleFunctionD.get('music')['play'] = function (py2block, func, args, keywo
     if (args.length !== 2) {
         throw new Error("Incorrect number of arguments");
     }
-
-    
-
-    var nameblock= py2block.convert(args[0].attr);
-
+    pbc.pinType = "pins_playlist_pin";
+    var nameblock= py2block.convert(args[0]);
     pbc.pinType = "pins_pwm_pin";
     var argblock = py2block.convert(args[1]);
     pbc.pinType = null;
@@ -156,6 +153,24 @@ pbc.moduleFunctionD.get('music')['play'] = function (py2block, func, args, keywo
         "inline": "true"
     })];
 }
+
+pbc.moduleFunctionD.get('music')['play_show'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    pbc.pinType = "pins_playlist_pin";
+    var nameblock= py2block.convert(args[0]);
+    pbc.pinType = "pins_pwm_pin";
+    var argblock = py2block.convert(args[1]);
+    pbc.pinType = null;
+    return [block("esp32_mixgo_music_play_list_show", func.lineno, {}, {
+        "LIST":nameblock,
+        'PIN': argblock
+    }, {
+        "inline": "true"
+    })];
+}
+
 
 
 

@@ -46,7 +46,7 @@ Blockly.Python.esp32_music_play_list=function(){
     Blockly.Python.definitions_['import_music'] = 'import music';
     var lst = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_ASSIGNMENT);
     var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ASSIGNMENT);
-    var code = "music.play(music."+ lst +", "+ pin +")\n";
+    var code = "music.play("+ lst +", "+ pin +")\n";
     return code;
 };
 
@@ -55,8 +55,8 @@ Blockly.Python.esp32_mixgo_music_play_list_show=function(){
     Blockly.Python.definitions_['import_matrix'] = 'import matrix';
     var lst = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_ASSIGNMENT);
     var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ASSIGNMENT);
-    var display = Blockly.Python.valueToCode(this, 'DISPLAY', Blockly.Python.ORDER_ASSIGNMENT);
-    var code = "music.play_show(music."+ lst +", "+ pin +", "+ display +")\n";
+    // var display = Blockly.Python.valueToCode(this, 'DISPLAY', Blockly.Python.ORDER_ASSIGNMENT);
+    var code = "music.play_show("+ lst +", "+ pin +")\n";
     return code;
 };
 

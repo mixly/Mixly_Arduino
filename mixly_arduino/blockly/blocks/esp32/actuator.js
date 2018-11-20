@@ -205,8 +205,8 @@ Blockly.Blocks.esp32_mixgo_music_play_list_show = {
         this.appendValueInput('PIN')
             .setCheck(Number)
             .appendField(Blockly.MIXLY_PIN + " #");
-        this.appendValueInput('DISPLAY')
-            .appendField(Blockly.MIXLY_ESP32_MIXGO_MUSIC_SHOW_IN);
+        // this.appendValueInput('DISPLAY')
+        //     .appendField(Blockly.MIXLY_ESP32_MIXGO_MUSIC_SHOW_IN);
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_ESP32_MIXGO_MUSIC_PLAY_TONE);
         this.setPreviousStatement(true);
