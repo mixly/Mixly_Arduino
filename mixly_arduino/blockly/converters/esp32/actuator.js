@@ -81,26 +81,18 @@ pbc.moduleFunctionD.get('mixgo.led')['setbrightness'] = function (py2block, func
 
 
 pbc.moduleFunctionD.get('music')['pitch'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-	if(args.length!==2){
+	/*if(args.length!==2){
 		throw new Error("Incorrect number of arguments");
-	}
+	}*/
 
 	 if (args.length === 2) {
-        var roundAstName = args[0]._astname;
-        var pwmAstName= args[1]._astname;
         pbc.pinType = "pins_pwm_pin";
-        var pinblock = py2block.convert(args[1]);
+        var pinblock = py2block.convert(args[0]);
         pbc.pinType=null;
         pbc.pinType = "pins_tone_notes";
-        var pitchblock;
-
-        if (roundAstName === "Call"&& pwmAstName=="Num"
-            && args[0].func._astname == "Name" && py2block.Name_str(args[0].func) === "round") {
-
-            pitchblock = py2block.convert(args[0].args[0])
-        } else {
-            pitchblock = py2block.convert(args[0])
-        }
+        var pitchblock = py2block.convert(args[1]);
+        pbc.pinType=null;
+      
         
         return [block("esp32_music_pitch", func.lineno, {}, {
             'pitch': pitchblock,
@@ -109,6 +101,24 @@ pbc.moduleFunctionD.get('music')['pitch'] = function (py2block, func, args, keyw
             "inline": "true"
         })];
     } 
+    else if (args.length=== 3){
+        pbc.pinType = "pins_pwm_pin";
+        var pinblock = py2block.convert(args[0]);
+        pbc.pinType=null;
+        pbc.pinType = "pins_tone_notes";
+        var pitchblock = py2block.convert(args[1]);
+        pbc.pinType=null;
+        var timeblock=py2block.convert(args[2]);
+     return [block("esp32_music_pitch_with_time", func.lineno, {}, {
+                'pitch': pitchblock,
+                'PIN': pinblock,
+                "time":timeblock
+            }, {
+                "inline": "true"
+            })];
+
+    }
+
 }
 
 
@@ -120,6 +130,27 @@ pbc.moduleFunctionD.get('music')['stop'] = function (py2block, func, args, keywo
     var argblock = py2block.convert(args[0]);
     pbc.pinType = null;
     return [block("esp32_music_stop", func.lineno, {}, {
+        'PIN': argblock
+    }, {
+        "inline": "true"
+    })];
+}
+
+
+pbc.moduleFunctionD.get('music')['play'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+
+    
+
+    var nameblock= py2block.convert(args[0].attr);
+
+    pbc.pinType = "pins_pwm_pin";
+    var argblock = py2block.convert(args[1]);
+    pbc.pinType = null;
+    return [block("esp32_music_play_list", func.lineno, {}, {
+        "LIST":nameblock,
         'PIN': argblock
     }, {
         "inline": "true"
@@ -170,4 +201,43 @@ pbc.moduleFunctionD.get('rgb')['write'] = function(py2block, func, args, keyword
         "inline": "true"
     })];
 }
+
+
+
+pbc.moduleFunctionD.get('music')['get_tempo'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if(args.length!=0){
+        throw new Error("Incorrect number of arguments");
+    }
+
+    return block("esp32_music_get_tempo", func.lineno, {}, { 
+    }, {
+        "inline": "true"
+    });
+}
+
+pbc.moduleFunctionD.get('music')['set_tempo'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if(args.length!=2){
+        throw new Error("Incorrect number of arguments");
+    }
+    var resoblock=py2block.convert(args[0]);
+    var speedblock=py2block.convert(args[1]);
+
+    return [block("esp32_music_set_tempo", func.lineno, {}, { 
+        'TICKS':resoblock,
+        "BPM":speedblock,
+    }, {
+        "inline": "true"
+    })];
+}
+pbc.moduleFunctionD.get('music')['reset'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if(args.length!=0){
+        throw new Error("Incorrect number of arguments");
+    }
+
+    return [block("esp32_music_reset", func.lineno, {}, { 
+    }, {
+        "inline": "true"
+    })];
+}
+
 
