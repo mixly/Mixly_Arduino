@@ -287,7 +287,6 @@ Blockly.Blocks.controls_forEach = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('LIST')
-        .setCheck(['List',String])
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT);
     this.appendDummyInput()
