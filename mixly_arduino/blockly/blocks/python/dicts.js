@@ -175,7 +175,7 @@ Blockly.Blocks['dicts_create_with'] = {
                         new Blockly.FieldTextInput(
                             keyNames.length > i
                                 ? keyNames[i]
-                                : '"key'+(i+1)+'"'),
+                                : (i == 0 ? '"key"' :'"key'+(i+1)+'"')),
                         'KEY'+i)
                     .appendField(":")
             }
