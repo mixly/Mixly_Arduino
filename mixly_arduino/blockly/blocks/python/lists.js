@@ -350,7 +350,7 @@ Blockly.Blocks['lists_clear'] = {
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendValueInput('VAR')
     this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_LIST_CLEAR)
+        .appendField(Blockly.MIXLY_MICROPYTHON_CLEAR)
         //.appendField(new Blockly.FieldTextInput('mylist'), 'VAR');
     this.setTooltip(Blockly.LANG_LISTS_REVERSE_TOOLTIP);
     this.setInputsInline(true);
