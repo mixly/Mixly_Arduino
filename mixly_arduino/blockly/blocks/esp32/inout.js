@@ -143,7 +143,7 @@ Blockly.Blocks.inout_analog_atten = {
                 ["3.9V", "machine.ADC.ATTN_11DB"],
                 ["2.2V", "machine.ADC.ATTN_6DB"],
 				["1.5V", "machine.ADC.ATTN_2_5_DB"],
-                ["", "machine.ADC.ATTIN_0DB"]
+                ["0V", "machine.ADC.ATTIN_0DB"]
 				]), "atten");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
