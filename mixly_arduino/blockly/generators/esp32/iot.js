@@ -59,15 +59,14 @@ Blockly.Python.iot_onenet_publish = function() {
   cv[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
     Blockly.Python.ORDER_NONE) || default_value;
   }
-  var code=v + ".publish('$dp', miot.pubData({'datastreams':[";
+  var code=v + ".publish({";
   for (var n = 0; n < this.itemCount_; n++) {
-    ct[n] ='{"id":"'+ck[n]+'","datapoints":[{"value":'
-    ct[n] +=cv[n]+'}]}'
+    ct[n] = ck[n]+': '+cv[n]
   }
   //var code = "c.publish('$dp', pubData("+ '{' + code.join(', ') + '})\n';
   //var code =''+varName+'['+size+"]"+'='+ '{' + code.join(', ') + '};\n';
   //Blockly.Python.setups_['setup_lists'+varName] = code;
-  code=code+ct.join(', ')+"]}))\n";
+  code=code+ct.join(', ')+"})\n";
   return code;
 };
 

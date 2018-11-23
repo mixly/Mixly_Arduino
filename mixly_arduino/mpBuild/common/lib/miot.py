@@ -1,7 +1,14 @@
 import ujson as json
 from simple import *
 
+def get_data_dict(d):
+    result = {"datastreams":[]}
+    for x in d:
+        result["datastreams"].append({"id":x,"datapoints":[{"value":d[x]}]})
+    return result
+
 def pubData(value):    
+    value = get_data_dict(value)
     print(value)
     jdata = json.dumps(value)
     jlen = len(jdata)

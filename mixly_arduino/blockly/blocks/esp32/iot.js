@@ -213,7 +213,7 @@ Blockly.Blocks['iot_onenet_publish'] = {
                         new Blockly.FieldTextInput(
                             keyNames.length > i
                                 ? keyNames[i]
-                                : 'key'+(i+1)),
+                                : '"key'+(i+1)+'"'),
                         'KEY'+i)
                     .appendField(":")
             }
