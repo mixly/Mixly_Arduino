@@ -53,8 +53,8 @@ Blockly.Grader.finish = function(code) {
         code = code.replace(/\n\s+$/, '\n');
     }
     var definitions = [];
-    for (var name in Blockly.Grader.definitions_) {
-        definitions.push(Blockly.Grader.definitions_[name]);
+    for (var name in Blockly.Python.definitions_) {
+        definitions.push(Blockly.Python.definitions_[name]);
     }
     var setups = [];
     for (var name in Blockly.Grader.setups_) {

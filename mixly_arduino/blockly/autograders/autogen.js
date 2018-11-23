@@ -1,6 +1,6 @@
 'use strict';
 
-var whiteAttrsArr = ['setups', 'definitions', 'workspaceToCode'];
+var whiteAttrsArr = ['setups', 'workspaceToCode'];
 
 for (var func in Blockly.Python) {
     if(whiteAttrsArr.indexOf(func) == -1 && Blockly.Grader[func] == null) {
