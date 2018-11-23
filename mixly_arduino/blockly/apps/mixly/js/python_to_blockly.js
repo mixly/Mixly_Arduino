@@ -2105,7 +2105,7 @@ PythonToBlocks.prototype.List = function(node) {
     return block("lists_create_with_noreturn", node.lineno, {},
         this.convertElements("ADD", elts)
         , {
-            "inline": elts.length > 3 ? "false" : "true",
+            "inline": elts.length < 4 ? "false" : "true",
         }, {
             "@items": elts.length
         });
@@ -2123,7 +2123,7 @@ PythonToBlocks.prototype.Tuple = function(node)
     return block("tuple_create_with_noreturn", node.lineno, {},
         this.convertElements("ADD", elts)
         , {
-            "inline": elts.length > 3 ? "false" : "true",
+            "inline": elts.length < 4 ? "false" : "true",
         }, {
             "@items": elts.length
         });

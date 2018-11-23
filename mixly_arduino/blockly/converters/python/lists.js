@@ -11,7 +11,7 @@ pbc.assignD.get('List')['create_block'] = function (py2block, node, targets, val
             'VAR': py2block.Name_str(targets[0])
         },
         py2block.convertElements("ADD", value.elts), {
-            "inline": "false",
+            "inline": elts.length < 4 ? "false" : "true",
         }, {
             "@items": value.elts.length
         });
