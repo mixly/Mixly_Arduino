@@ -50,11 +50,11 @@ pbc.objectFunctionD.get('isconnected')['network'] = function (py2block, func, ar
         throw new Error("Incorrect number of arguments");
     }
     var objblock = py2block.convert(func.value);
-    return [block("network_wifi_connect", func.lineno, {}, {
+    return block("network_wifi_connect", func.lineno, {}, {
             "VAR":objblock,
         }, {
             "inline": "true"
-        })];
+        });
 }
 
 pbc.objectFunctionD.get('disconnect')['network'] = function (py2block, func, args, keywords, starargs, kwargs, node) {

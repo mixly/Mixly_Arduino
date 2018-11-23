@@ -157,8 +157,9 @@ pbc.moduleFunctionD.get('mixgo')['mixgo_get_soundlevel'] = function (py2block, f
 }
 
 pbc.assignD.get('RTC')['check_assign'] = function(py2block, node, targets, value) {
-    var funcName = py2block.identifier(value.func.value.id);
-    if(value._astname === "Call" && funcName === "machine" && value.args.length === 0)
+    var moduleName = py2block.Name_str(value.func.value);
+    var funcName = py2block.identifier(value.func.attr);
+    if(value._astname === "Call" && moduleName === "machine" && funcName === "RTC" && value.args.length === 0)
         return true;
 
     return false;

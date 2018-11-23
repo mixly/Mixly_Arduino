@@ -1934,9 +1934,18 @@ PythonToBlocks.prototype.Subscript = function(node) {
                 "DICT": this.convert(value)
             });
         }else {
-            if(slice.value._astname == "Num"
+            if(slice.value._astname == "Num" && value.func != null
                 && value.func._astname == "Attribute" && this.identifier(value.func.attr) == "ifconfig"){
                 return block('network_get_connect', node.lineno, {
+                    "mode":this.Num_value(slice.value)
+                }, {
+                    "VAR":this.convert(value.func.value)
+                });
+
+            }
+            if(slice.value._astname == "Num" && value.func != null
+                && value.func._astname == "Attribute" && this.identifier(value.func.attr) == "scan"){
+                return block('network_scan', node.lineno, {
                     "mode":this.Num_value(slice.value)
                 }, {
                     "VAR":this.convert(value.func.value)
