@@ -13,7 +13,7 @@ pbc.assignD.get('Dict')['create_block'] = function (py2block, node, targets, val
     var keyList = [];
     var valueList = [];
     for (var i = 0; i < keys.length; i+= 1) {
-        var sourceCode = py2block.getSourceCode(node);
+        var sourceCode = py2block.getSourceCode(node).split('\n')[keys[i].lineno - 1];
         var s = keys[i].col_offset;
         var e = sourceCode.indexOf(":", keys[i].col_offset);
         keyList["KEY"+i] = sourceCode.substring(s, e).trim();

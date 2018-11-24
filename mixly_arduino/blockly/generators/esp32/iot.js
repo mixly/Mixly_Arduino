@@ -28,7 +28,15 @@ Blockly.Python.iot_onenet_connect = function(block) {
 Blockly.Python.iot_onenet_disconnect = function(block) {
   var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
   Blockly.Python.definitions_['import_simple'] = "import simple"; 
-  var code=v + '.OneNEToff()\n';  
+  var code=v + '.do_disconnect()\n';  
+  return code;
+};
+
+Blockly.Python.iot_onenet_publish_dict = function(block) {
+  var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
+  var d = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ATOMIC) ;
+  Blockly.Python.definitions_['import_simple'] = "import simple"; 
+  var code=v + '.publish('+d+')\n';  
   return code;
 };
 

@@ -369,7 +369,7 @@
             <td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')"><span id="span_arduino">Code</span></td>
             <td class="tabmin">&nbsp;</td>
-<!--             <td style="vertical-align: center;text-align:center;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td> -->
+            <!-- <td style="vertical-align: center;text-align:center;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td> -->
             <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
             <td class="tabcoyright">
               <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
@@ -2241,6 +2241,33 @@
                   <field name="VAR">c</field>
                 </shadow>
               </value>
+          </block>
+          <block type="dicts_create_with" inline="true">
+            <mutation items="1"></mutation>
+            <field name="VAR">iot_dict</field>
+            <field name="KEY0">"tc"</field>
+            <value name="ADD0">
+              <block type="inout_pin_pressed">
+                <value name="pin">
+                  <shadow type="pins_touch">
+                    <field name="PIN">tc0</field>
+                  </shadow>
+                </value>
+              </block>
+            </value>
+            <next>
+            <block type="iot_onenet_publish_dict">
+                <value name="VAR">
+                  <shadow type="variables_get">
+                    <field name="VAR">c</field>
+                  </shadow>
+                </value>
+                <value name="DICT">
+                  <shadow type="variables_get">
+                    <field name="VAR">iot_dict</field>
+                  </shadow>
+                </value>
+            </block> 
           </block>
           <block type="iot_onenet_disconnect">
               <value name="VAR">
