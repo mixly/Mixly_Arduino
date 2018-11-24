@@ -274,3 +274,21 @@ pbc.objectFunctionD.get('irq')['Pin'] = function (py2block, func, args, keywords
     })];
 }
 }
+
+pbc.objectFunctionD.get('atten')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+
+    pbc.pinType = "pins_analog";
+    var pinblock = py2block.convert(func.value);
+    pbc.pinType = null;
+
+    var atten  = py2block.identifier(args[0].value.value.id)+"."+py2block.identifier(args[0].value.attr)+"."+py2block.identifier(args[0].attr)
+
+    return [block("inout_analog_atten", func.lineno, {"atten":atten}, {
+        "PIN": pinblock,
+    }, {
+        "inline": "true"
+    })];
+}

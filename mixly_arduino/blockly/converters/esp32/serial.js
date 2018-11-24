@@ -49,13 +49,17 @@ pbc.assignD.get('UART')['check_assign'] = function(py2block, node, targets, valu
 
 pbc.assignD.get('UART')['create_block'] = function(py2block, node, targets, value){
     pbc.pinType = "serial_print";
-    var pinblock = py2block.convert(value.args[0]);
+    var pinblock = py2block.identifier(value.args[0].n);
+    var countblock = py2block.identifier(value.args[1].n);
     pbc.pinType = null;
-    var countblock = py2block.convert(value.args[1]);
-    return block("serial_softserial", node.lineno, {}, {
+    return block("serial_softserial", node.lineno, {
         "mode":pinblock,
-        "baudrate":countblock
-    });
+        'baudrate':countblock
+    }, { },
+    {
+        "inline":"true"
+    }
+    );
 }
 
 function serial_write(mode){
@@ -147,7 +151,6 @@ function getSerial(mode,fun_type){
         if(args.length !==0){
             throw new Error("Incorrect number of arguments");
         }
-        //var argblock1 = py2block.convert(func.value)
         return block(fun_type, func.lineno, {
             "mode":mode
         }, {

@@ -28,7 +28,15 @@ Blockly.Python.iot_onenet_connect = function(block) {
 Blockly.Python.iot_onenet_disconnect = function(block) {
   var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
   Blockly.Python.definitions_['import_simple'] = "import simple"; 
-  var code=v + '.OneNEToff()\n';  
+  var code=v + '.do_disconnect()\n';  
+  return code;
+};
+
+Blockly.Python.iot_onenet_publish_dict = function(block) {
+  var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
+  var d = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ATOMIC) ;
+  Blockly.Python.definitions_['import_simple'] = "import simple"; 
+  var code=v + '.publish('+d+')\n';  
   return code;
 };
 
@@ -59,15 +67,14 @@ Blockly.Python.iot_onenet_publish = function() {
   cv[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
     Blockly.Python.ORDER_NONE) || default_value;
   }
-  var code=v + ".publish('$dp', miot.pubData({'datastreams':[";
+  var code=v + ".publish({";
   for (var n = 0; n < this.itemCount_; n++) {
-    ct[n] ='{"id":"'+ck[n]+'","datapoints":[{"value":'
-    ct[n] +=cv[n]+'}]}'
+    ct[n] = ck[n]+': '+cv[n]
   }
   //var code = "c.publish('$dp', pubData("+ '{' + code.join(', ') + '})\n';
   //var code =''+varName+'['+size+"]"+'='+ '{' + code.join(', ') + '};\n';
   //Blockly.Python.setups_['setup_lists'+varName] = code;
-  code=code+ct.join(', ')+"]}))\n";
+  code=code+ct.join(', ')+"})\n";
   return code;
 };
 
