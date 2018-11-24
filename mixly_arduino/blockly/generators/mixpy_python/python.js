@@ -12,6 +12,7 @@ Blockly.Python = new Blockly.Generator('Python');
 Blockly.Python.ORDER_ATOMIC = 0; // 0 "" ...
 Blockly.Python.ORDER_UNARY_POSTFIX = 1; // expr++ expr-- () [] .
 Blockly.Python.ORDER_UNARY_PREFIX = 2; // -expr !expr ~expr ++expr --expr
+Blockly.Python.ORDER_EXPONENTIATION = 2.5;    // **
 Blockly.Python.ORDER_MULTIPLICATIVE = 3; // * / % ~/
 Blockly.Python.ORDER_ADDITIVE = 4; // + -
 Blockly.Python.ORDER_SHIFT = 5; // << >>
