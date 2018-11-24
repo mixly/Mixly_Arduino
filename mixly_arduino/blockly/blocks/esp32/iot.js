@@ -83,6 +83,21 @@ Blockly.Blocks['iot_onenet_check'] = {
   }
 };
 
+Blockly.Blocks['iot_onenet_publish_dict'] = {
+ init: function() {    
+    this.setColour(Blockly.Blocks.iot.HUE);
+    this.appendValueInput('VAR')
+        .setCheck("var")
+        .appendField("OneNET")
+    this.appendValueInput('DICT')
+        .appendField(Blockly.MIXLY_ESP32_PUBLISH_ONENET);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+   // this.setTooltip(Blockly.Msg.TURTLE_WRITE_TOOLTIP);    
+  }
+};
+
 Blockly.Blocks['iot_onenet_publish'] = {
     /**
      * Block for creating a list with any number of elements of any type.

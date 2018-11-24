@@ -2227,6 +2227,33 @@
                 </shadow>
               </value>
           </block>
+          <block type="dicts_create_with" inline="true">
+            <mutation items="1"></mutation>
+            <field name="VAR">iot_dict</field>
+            <field name="KEY0">"tc"</field>
+            <value name="ADD0">
+              <block type="inout_pin_pressed">
+                <value name="pin">
+                  <shadow type="pins_touch">
+                    <field name="PIN">tc0</field>
+                  </shadow>
+                </value>
+              </block>
+            </value>
+            <next>
+            <block type="iot_onenet_publish_dict">
+                <value name="VAR">
+                  <shadow type="variables_get">
+                    <field name="VAR">c</field>
+                  </shadow>
+                </value>
+                <value name="DICT">
+                  <shadow type="variables_get">
+                    <field name="VAR">mydict</field>
+                  </shadow>
+                </value>
+            </block> 
+          </block>
           <block type="iot_onenet_disconnect">
               <value name="VAR">
                 <shadow type="variables_get">
