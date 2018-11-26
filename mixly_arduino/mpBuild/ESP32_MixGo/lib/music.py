@@ -255,7 +255,7 @@ class MIDI():
         from utime import sleep_ms
         pwm = PWM(Pin(pin))
         if freq > 0:
-            pwm.freq(freq)  # set frequency
+            pwm.freq(int(freq)) # set frequency
         else:
             pwm.duty(0)
         if tim > 0:

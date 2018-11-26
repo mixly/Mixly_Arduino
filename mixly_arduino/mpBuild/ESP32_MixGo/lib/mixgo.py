@@ -69,7 +69,7 @@ class Button:
         return False
 
     def irq(self, handler, trigger):
-        Pin(self.pin).irq(handler = handler, trigger = trigger)
+        self.pin.irq(handler = handler, trigger = trigger)
 
 # Pin
 
