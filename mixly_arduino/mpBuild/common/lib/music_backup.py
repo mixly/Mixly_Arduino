@@ -143,110 +143,109 @@ falling_tone = {
 
 Letter = 'ABCDEFG#R'
 
-class MIDI():
-    def set_tempo(self, ticks=4, bpm=120):
-        self.ticks = ticks
-        self.bpm = bpm
-        self.beat = 60000 / self.bpm / self.ticks
+_ticks = 4
+_bpm =120
+_beat = 60000 / _bpm / _ticks
+_octave = 4
+_duration = 4
 
-    def set_octave(self, octave=4):
-        self.octave = octave
+get_tempo = (_ticks, _bpm)
 
-    def set_duration(self, duration=4):
-        self.duration = duration
+def set_tempo(ticks=4, bpm=120):
+    global _ticks, _bpm, _beat
+    _ticks = ticks
+    _bpm = bpm
+    _beat = 60000 / bpm / ticks
 
-    def get_tempo(self):
-        return (self.ticks, self.bpm)
+def set_octave(octave=4):
+    global _octave
+    _octave = octave
 
-    def get_octave(self):
-        return self.octave
+def set_duration(duration=4):
+    global _duration
+    _duration = duration
 
-    def get_duration(self):
-        return self.duration
+def reset():
+    set_duration()
+    set_octave()
+    set_tempo()
 
-    def reset(self):
-        self.set_duration()
-        self.set_octave()
-        self.set_tempo()
+def __init__():
+    reset()
 
-    def __init__(self):
-        self.reset()
+def parse(tone, dict):
+    # print(tone)
+    time = _beat * _duration
+    pos = tone.find(':')
+    if pos != -1:
+        time = _beat * int(tone[(pos + 1):])
+        tone = tone[:pos]
+    # print(tone)
+    freq, tone_size = 1, len(tone)
+    if 'R' in tone:
+        freq = 1
+    elif tone_size == 1:
+        freq = dict[tone[0] + str(_octave)]
+    elif tone_size == 2:
+        freq = dict[tone]
+        set_octave(tone[1:])
+    # print(int(freq), int(time))
+    return int(freq), int(time)
 
-    def parse(self, tone, dict):
-        # print(tone)
-        time = self.beat * self.duration
-        pos = tone.find(':')
-        if pos != -1:
-            time = self.beat * int(tone[(pos + 1):])
-            tone = tone[:pos]
-        # print(tone)
-        freq, tone_size = 1, len(tone)
-        if 'R' in tone:
-            freq = 1
-        elif tone_size == 1:
-            freq = dict[tone[0] + str(self.octave)]
-        elif tone_size == 2:
-            freq = dict[tone]
-            self.set_octave(tone[1:])
-        # print(int(freq), int(time))
-        return int(freq), int(time)
+def midi(tone):
+    # print(tone)
+    pos = tone.find('#')
+    if pos != -1:
+        return parse(tone.replace('#', ''), rising_tone)
+    pos = tone.find('B')
+    if pos != -1 and pos != 0:
+        return parse(tone.replace('B', ''), falling_tone)
+    return parse(tone, normal_tone)
 
-    def midi(self, tone):
-        # print(tone)
-        pos = tone.find('#')
-        if pos != -1:
-            return self.parse(tone.replace('#', ''), rising_tone)
-        pos = tone.find('B')
-        if pos != -1 and pos != 0:
-            return self.parse(tone.replace('B', ''), falling_tone)
-        return self.parse(tone, normal_tone)
+def set_default(tone):
+    pos = tone.find(':')
+    if pos != -1:
+        set_duration(int(tone[(pos + 1):]))
+        tone = tone[:pos]
 
-    def set_default(self, tone):
-        pos = tone.find(':')
-        if pos != -1:
-            self.set_duration(int(tone[(pos + 1):]))
-            tone = tone[:pos]
+def play(tune, pin=27, duration=None):
+    from machine import Pin, PWM
+    from utime import sleep_ms
 
-    def play(self, tune, pin=27, duration=None):
-        from machine import Pin, PWM
-        from utime import sleep_ms
+    try:
+        pwm = PWM(Pin(pin))
+        if duration is None:
+            set_default(tune[0])
+        else:
+            set_duration(duration)
+        for tone in tune:
+            tone = tone.upper()  # all to upper
+            if tone[0] not in Letter:
+                continue
+            m = midi(tone)
+            pwm.freq(m[0])  # set frequency
+            pwm.duty(m[1])  # set duty cycle
+            sleep_ms(m[1])
+    finally:
+        pwm.deinit()
 
-        try:
-            pwm = PWM(Pin(pin))
-            if duration is None:
-                self.set_default(tune[0])
-            else:
-                self.set_duration(duration)
-            for tone in tune:
-                tone = tone.upper()  # all to upper
-                if tone[0] not in Letter:
-                    continue
-                midi = self.midi(tone)
-                pwm.freq(midi[0])  # set frequency
-                pwm.duty(midi[1])  # set duty cycle
-                sleep_ms(midi[1])
-        finally:
-            pwm.deinit()
+def pitch(freq, pin=27, tim=1000):
+    from machine import Pin, PWM
+    from utime import sleep_ms
 
-    def pitch(self, freq, pin=27, tim=1000):
-        from machine import Pin, PWM
-        from utime import sleep_ms
+    try:
+        pwm = PWM(Pin(pin))
+        pwm.freq(freq)  # set frequency
+        pwm.duty(tim)  # set duty cycle
+        sleep_ms(tim)
+    finally:
+        pwm.deinit()
 
-        try:
-            pwm = PWM(Pin(pin))
-            pwm.freq(freq)  # set frequency
-            pwm.duty(tim)  # set duty cycle
-            sleep_ms(tim)
-        finally:
-            pwm.deinit()
-
-    def stop(self, pin=27):
-        from machine import Pin, PWM
-        try:
-            pwm = PWM(Pin(pin))
-            pwm.duty(0)
-            pwm.freq(1)
-        finally:
-            pwm.deinit()
-
-music = MIDI()
+def stop(pin=27):
+    from machine import Pin, PWM
+    try:
+        pwm = PWM(Pin(pin))
+        pwm.duty(0)
+        pwm.freq(1)
+    finally:
+        pwm.deinit()
