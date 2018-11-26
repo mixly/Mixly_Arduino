@@ -276,7 +276,7 @@ class MIDI():
         finally:
             pwm.deinit()
 
-music = MIDI()
+__music__ = MIDI()
 
 play = __music__.play
 play_show = __music__.play_show
