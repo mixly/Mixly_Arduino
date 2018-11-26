@@ -2139,6 +2139,24 @@ PythonToBlocks.prototype.Tuple = function(node)
 }
 
 /*
+ * elts: asdl_seq
+ * ctx: expr_context_ty
+ */
+PythonToBlocks.prototype.Dict = function(node)
+{
+    var keys = node.keys;
+    var values = node.values;
+
+    return block("dicts_create_with_noreturn", node.lineno, {},
+        this.convertElements("ADD", values)
+        , {
+            "inline": keys.length < 4 ? "false" : "true",
+        }, {
+            "@items": keys.length
+        });
+}
+
+/*
  *
  *
  */

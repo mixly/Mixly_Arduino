@@ -176,3 +176,27 @@ Blockly.Python.dicts_setdefault = function() {
   var code= varName + ".setdefault"+ "(" + text + "," + argument + ")\n";
   return code;
 };
+
+Blockly.Python.dicts_create_with_noreturn = function() {
+  // Create a list with any number of elements of any type.
+   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
+    Blockly.Variables.NAME_TYPE);
+  //var size=window.parseFloat(this.getFieldValue('SIZE'));
+  var code = new Array(this.itemCount_);
+  var default_value = '0';
+
+  for (var n = 0; n < this.itemCount_; n++) {
+    var keyName = this.getFieldValue('KEY' + n);
+    code[n] = keyName+":"+(Blockly.Python.valueToCode(this, 'ADD' + n, Blockly.Python.ORDER_NONE) || default_value);
+  }
+ // if (this.itemCount_!=1){
+//  Blockly.Python.definitions_['var_declare'+varName] = varName+'= '+ '(' + code.join(', ') + ')\n';}
+ // else {
+ // Blockly.Python.definitions_['var_declare'+varName] = varName+'= '+ '(' + code.join(', ') + ',)\n';}
+ if (this.itemCount_!=1){
+  var code = '{' + code.join(', ') + '}';}
+ else {
+  var code = '{' + code.join(', ') + ',}';}
+
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
