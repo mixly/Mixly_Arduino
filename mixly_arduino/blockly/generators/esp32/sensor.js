@@ -195,7 +195,7 @@ Blockly.Python.sensor_distance_hrsc04= function(){
 Blockly.Python.RTC_get_time = function () {
   Blockly.Python.definitions_['import_machine'] = 'import machine';
   var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-  var code = v+'.datetime()\n';
+  var code = v+'.datetime()';
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
