@@ -584,19 +584,31 @@ Blockly.Blocks['text_strip'] = {
 };
 
 Blockly.Blocks['text_format'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.appendValueInput('str')
+        .appendField(Blockly.MIXLY_MICROPYTHON_FORMAT);
+    this.appendValueInput('format')
+        .appendField(Blockly.Msg.PROCEDURES_BEFORE_PARAMS)
+    this.setOutput(true, String);
+    this.setInputsInline(true);
+  }
+};
+
+Blockly.Blocks['text_format_para'] = {
   /**
    * Block for creating a list with any number of elements of any type.
    * @this Blockly.Block
    */
   init: function() {
     this.setColour(Blockly.Blocks.texts.HUE);
-    this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_MICROPYTHON_FORMAT)
+    // this.appendDummyInput("")
+    //     .appendField(Blockly.MIXLY_MICROPYTHON_FORMAT)
   //don't need to specify the data type in Python
         // .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_TYPE_NUMBER, 'Array<number>'], [Blockly.MIXLY_MICROBIT_JS_TYPE_STRING, 'Array<string>'], [Blockly.MIXLY_MICROBIT_JS_TYPE_BOOLEAN, 'Array<boolean>']]), 'TYPE')
         // .appendField(' ')
-    this.appendDummyInput("")
-        .appendField(new Blockly.FieldTextInput('str'), 'VAR');
+    // this.appendDummyInput("")
+    //     .appendField(new Blockly.FieldTextInput('str'), 'VAR');
     this.itemCount_ = 1;
     this.updateShape_();
     this.setPreviousStatement(false);
@@ -708,24 +720,24 @@ Blockly.Blocks['text_format'] = {
     } else {
       for (var i = 0; i < this.itemCount_; i++) {
         var input = this.appendValueInput('ADD' + i);
-        if (i == 0) {
-          input.appendField(Blockly.Msg.PROCEDURES_BEFORE_PARAMS);
-        }
+        // if (i == 0) {
+        //   input.appendField(Blockly.Msg.PROCEDURES_BEFORE_PARAMS);
+        // }
       }
     }
-  },
-  getVars: function() {
-    if(this.getFieldValue('VAR') != null){
-      if((this.getFieldValue('VAR').indexOf("'")==-1) && (this.getFieldValue('VAR').indexOf('"')==-1)){
-        return [this.getFieldValue('VAR')];
-      }
-      else
-        return [];}
-  },
-  renameVar: function(oldName, newName) {
-      if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
-        this.setTitleValue(newName, 'VAR');
-    }
+  // },
+  // getVars: function() {
+  //   if(this.getFieldValue('VAR') != null){
+  //     if((this.getFieldValue('VAR').indexOf("'")==-1) && (this.getFieldValue('VAR').indexOf('"')==-1)){
+  //       return [this.getFieldValue('VAR')];
+  //     }
+  //     else
+  //       return [];}
+  // },
+  // renameVar: function(oldName, newName) {
+  //     if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
+  //       this.setTitleValue(newName, 'VAR');
+  //   }
 
   }
 };
