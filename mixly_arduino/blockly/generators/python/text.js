@@ -208,6 +208,24 @@ Blockly.Python.text_strip = function() {
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.text_format = function() {
+  // Create a list with any number of elements of any type.
+  var dropdown_type = this.getFieldValue('TYPE');
+  var s = this.getFieldValue('VAR');
+  var code = new Array(this.itemCount_);
+  var default_value = '0';
+
+
+  for (var n = 0; n < this.itemCount_; n++) {
+
+  code[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
+    Blockly.Python.ORDER_NONE) || default_value;
+  }
+
+  var code = s +'.format(' + code.join(', ') + ')';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python.text_substring3 = Blockly.Python.text_substring 
 Blockly.Python.text_compareTo = Blockly.Python.text_compare_to
 Blockly.Python.text_char_at3 = Blockly.Python.text_char_at

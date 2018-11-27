@@ -151,7 +151,7 @@ Blockly.Blocks['iot_onenet_publish'] = {
         containerBlock.initSvg();
         var connection = containerBlock.getInput('STACK').connection;
         for (var i = 0; i < this.itemCount_; i++) {
-            var itemBlock = workspace.newBlock('dicts_create_with_item');
+            var itemBlock = workspace.newBlock('iot_create_with_item');
             itemBlock.initSvg();
             connection.connect(itemBlock.previousConnection);
             connection = itemBlock.nextConnection;
@@ -260,6 +260,22 @@ Blockly.Blocks['iot_publish_container'] = {
 
 
 Blockly.Blocks['iot_publish_item'] = {
+  /**
+   * Mutator bolck for adding items.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.setColour(Blockly.Blocks.iot.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.DICTS_CREATE_WITH_ITEM_TITLE);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.Msg.DICTS_CREATE_WITH_ITEM_TOOLTIP);
+    this.contextMenu = false;
+  }
+};
+
+Blockly.Blocks['iot_create_with_item'] = {
   /**
    * Mutator bolck for adding items.
    * @this Blockly.Block
