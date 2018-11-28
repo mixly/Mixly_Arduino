@@ -287,8 +287,9 @@ pbc.objectFunctionD.get('find')['Str'] = function converter(py2block, func, args
     }
 
 pbc.objectFunctionD.get('format')['Str'] = function converter(py2block, func, args, keywords, starargs, kwargs, node) {
-        var objblock = py2block.Name_str(func.value);       
-        return block("text_format", node.lineno, {
+        if(func.value._astname == "Name"){
+            var objblock = py2block.Name_str(func.value);
+            return block("text_format", node.lineno, {
             'VAR': objblock
         },
         py2block.convertElements("ADD", args), {
@@ -296,4 +297,17 @@ pbc.objectFunctionD.get('format')['Str'] = function converter(py2block, func, ar
         }, {
             "@items":args.length
         });
+        }
+        
+        if(func.value._astname == "Str"){
+            var objblock = py2block.convert(func.value);
+            var d = py2block.convertElements("ADD", args);
+        d['VAR'] = objblock;
+            return block("text_format_noreturn", node.lineno, {
+        }, d, {
+            "inline": "true",
+        }, {
+            "@items":args.length
+        });
+        }      
     }
