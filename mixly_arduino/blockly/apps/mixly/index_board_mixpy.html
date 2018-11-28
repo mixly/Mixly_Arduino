@@ -455,7 +455,28 @@
         <block type="text">
           <field name="TEXT">Mixly</field>
         </block>
-        <block type="text_format">
+        <block type="text_format_noreturn">
+          <mutation items="1"></mutation>
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Random No. is {}</field>
+            </shadow>
+          </value>
+          <value name="ADD0">
+            <block type="math_random">
+              <field name="TYPE">int</field>
+              <value name="FROM">
+                <shadow type="math_number">
+                  <field name="NUM">1</field>
+                </shadow>
+              </value>
+              <value name="TO">
+                <shadow type="math_number">
+                  <field name="NUM">100</field>
+                </shadow>
+              </value>
+            </block>
+          </value>
         </block>
         <block type="text_join">
           <value name="A">

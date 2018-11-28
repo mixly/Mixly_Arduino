@@ -369,7 +369,7 @@
             <td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')"><span id="span_arduino">Code</span></td>
             <td class="tabmin">&nbsp;</td>
-            <!-- <td style="vertical-align: center;text-align:center;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td> -->
+           <!--  <td style="vertical-align: center;text-align:center;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td> -->
             <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
             <td class="tabcoyright">
               <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
@@ -848,7 +848,28 @@
         </block>
         <block type="text_textarea">
         </block>
-        <block type="text_format">
+        <block type="text_format_noreturn">
+          <mutation items="1"></mutation>
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Random No. is {}</field>
+            </shadow>
+          </value>
+          <value name="ADD0">
+            <block type="math_random">
+              <field name="TYPE">int</field>
+              <value name="FROM">
+                <shadow type="math_number">
+                  <field name="NUM">1</field>
+                </shadow>
+              </value>
+              <value name="TO">
+                <shadow type="math_number">
+                  <field name="NUM">100</field>
+                </shadow>
+              </value>
+            </block>
+          </value>
         </block>
         <block type="text_join">
           <value name="A">
@@ -879,14 +900,14 @@
          <block type="text_capital">
           <value name="VAR">
             <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
+              <field name="TEXT">Hello, Mixly</field>
             </shadow>
           </value>
         </block>
         <block type="text_center">
           <value name="VAR">
             <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
+              <field name="TEXT">Hello, Mixly</field>
             </shadow>
           </value>
           <value name="WID">
@@ -903,7 +924,7 @@
         <block type="text_find">
           <value name="VAR">
             <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
+              <field name="TEXT">Hello, Mixly</field>
             </shadow>
           </value>
           <value name="STR">
@@ -915,17 +936,17 @@
         <block type="text_replace">
           <value name="VAR">
             <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
+              <field name="TEXT">Hello, Mixly</field>
             </shadow>
           </value>
           <value name="STR1">
             <shadow type="text">
-              <field name="TEXT">mixly</field>
+              <field name="TEXT">Mixly</field>
             </shadow>
           </value>
           <value name="STR2">
             <shadow type="text">
-              <field name="TEXT">mixpy</field>
+              <field name="TEXT">MixGo</field>
             </shadow>
           </value>
         </block>
@@ -981,13 +1002,6 @@
             </shadow>
           </value>
         </block>
-<!--         <block type="text_strip">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block> -->
         <block type="text_char_at">
           <value name="VAR">
             <shadow type="text">

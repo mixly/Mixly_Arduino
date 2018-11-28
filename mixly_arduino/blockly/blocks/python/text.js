@@ -895,19 +895,5 @@ Blockly.Blocks['text_format_noreturn'] = {
         }
       }
     }
-  },
-  getVars: function() {
-    if(this.getFieldValue('VAR') != null){
-      if((this.getFieldValue('VAR').indexOf("'")==-1) && (this.getFieldValue('VAR').indexOf('"')==-1)){
-        return [this.getFieldValue('VAR')];
-      }
-      else
-        return [];}
-  },
-  renameVar: function(oldName, newName) {
-      if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
-        this.setTitleValue(newName, 'VAR');
-    }
-
   }
 };
