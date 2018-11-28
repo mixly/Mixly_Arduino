@@ -208,12 +208,12 @@ Blockly.Python.text_strip = function() {
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.text_format_para = function() {
+Blockly.Python.text_format = function() {
   // Create a list with any number of elements of any type.
   var dropdown_type = this.getFieldValue('TYPE');
-  // var s = this.getFieldValue('VAR');
+  var s = this.getFieldValue('VAR');
   var code = new Array(this.itemCount_);
-  var default_value = 'None';
+  var default_value = '0';
 
 
   for (var n = 0; n < this.itemCount_; n++) {
@@ -222,15 +222,8 @@ Blockly.Python.text_format_para = function() {
     Blockly.Python.ORDER_NONE) || default_value;
   }
 
-  var code = code.join(', ');
+  var code = s +'.format(' + code.join(', ') + ')';
   return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python.text_format = function() {
-  // Text value.
-    var s = Blockly.Python.valueToCode(this, 'str', Blockly.Python.ORDER_ATOMIC);
-    var f = Blockly.Python.valueToCode(this, 'format', Blockly.Python.ORDER_ATOMIC);
-    return [s  + '.format(' + f +')', Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.text_substring3 = Blockly.Python.text_substring 
