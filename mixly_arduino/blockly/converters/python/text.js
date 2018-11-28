@@ -285,3 +285,15 @@ pbc.objectFunctionD.get('find')['Str'] = function converter(py2block, func, args
             "inline": "true"
         });
     }
+
+pbc.objectFunctionD.get('format')['Str'] = function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        var objblock = py2block.Name_str(func.value);       
+        return block("text_format", node.lineno, {
+            'VAR': objblock
+        },
+        py2block.convertElements("ADD", args), {
+            "inline": "true",
+        }, {
+            "@items":args.length
+        });
+    }
