@@ -195,12 +195,13 @@ pbc.objectFunctionD.get('shape')['Turtle'] = function (py2block, func, args, key
         throw new Error("Incorrect number of arguments");
     }
     var turtleblock = py2block.convert(func.value);
-    var shapeblock = py2block.convert(args[0]);
+    var shapeblock = py2block.Str_value(args[0]);
     return [block('turtle_shape', func.lineno, {
-        'shape': shapeblock,
         
+        'DIR': shapeblock
     }, {
         'TUR': turtleblock,
+
         
     }, {
         "inline": "true"
@@ -301,7 +302,7 @@ pbc.objectFunctionD.get('pencolor')['Turtle'] = function (py2block, func, args, 
     var turtleblock = py2block.convert(func.value);
     var argblock = py2block.convert(args[0]);
 
-    if (args[0]._astname == "Str" && py2block.Str_value(args[0]).startsWith("#")) {
+//    if (args[0]._astname == "Str" && py2block.Str_value(args[0]).startsWith("#")) {
         return [block('turtle_pencolor', func.lineno, {
             "FIELDNAME":py2block.Str_value(args[0])
         }, {
@@ -309,14 +310,14 @@ pbc.objectFunctionD.get('pencolor')['Turtle'] = function (py2block, func, args, 
         }, {
             "inline": "true"
         })];
-    } else {
+/*    } else {
         return [block("turtle_pencolor_hex", func.lineno, {}, {
             'TUR': turtleblock,
             'VAR': argblock
         }, {
             "inline": "true"
         })];
-    }
+    }*/
 }
 
 
@@ -326,7 +327,7 @@ pbc.objectFunctionD.get('fillcolor')['Turtle'] = function (py2block, func, args,
     }
     var turtleblock = py2block.convert(func.value);
     var argblock = py2block.convert(args[0]);
-    if (args[0]._astname == "Str" && py2block.Str_value(args[0]).startsWith("#")) {
+//    if (args[0]._astname == "Str" && py2block.Str_value(args[0]).startsWith("#")) {
         return [block('turtle_fillcolor', func.lineno, {
             "FIELDNAME":py2block.Str_value(args[0])
         }, {
@@ -334,14 +335,14 @@ pbc.objectFunctionD.get('fillcolor')['Turtle'] = function (py2block, func, args,
         }, {
             "inline": "true"
         })];
-    } else {
+/*    } else {
         return [block("turtle_fillcolor_hex", func.lineno, {}, {
             'TUR': turtleblock,
             'VAR': argblock
         }, {
             "inline": "true"
         })];
-    }
+    }*/
 
 
 }

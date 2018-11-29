@@ -56,7 +56,7 @@ Blockly.Blocks['logic_compare'] = {
    * Prevent mismatched types from being compared.
    * @this Blockly.Block
    */
-  onchange: function(e) {
+  /*onchange: function(e) {
     var blockA = this.getInputTargetBlock('A');
     var blockB = this.getInputTargetBlock('B');
     // Disconnect blocks that existed prior to this change if they don't match.
@@ -76,7 +76,7 @@ Blockly.Blocks['logic_compare'] = {
     }
     this.prevBlocks_[0] = blockA;
     this.prevBlocks_[1] = blockB;
-  }
+  }*/
 };
 
 Blockly.Blocks['logic_operation'] = {

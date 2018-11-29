@@ -157,7 +157,6 @@ Blockly.Blocks['turtle_clear'] = {
         ,[Blockly.blockpy_turtle_home, 'home']];
     this.setColour(Blockly.Blocks.turtle.HUE);
     this.appendDummyInput("")
-        .appendField(Blockly.blockpy_turtle_blank)
         .appendField(new Blockly.FieldDropdown(clear_reset), 'DIR')
         
 
@@ -185,7 +184,6 @@ Blockly.Blocks['turtle_penup'] = {
         [[Blockly.blockpy_turtle_penup, 'penup'],[Blockly.blockpy_turtle_pendown, 'pendown']];
     this.setColour(Blockly.Blocks.turtle.HUE);
     this.appendDummyInput("")
-        .appendField(Blockly.blockpy_turtle_blank)
         .appendField(new Blockly.FieldDropdown(penup_down), 'DIR')
         
 
@@ -212,7 +210,6 @@ Blockly.Blocks['turtle_fill'] = {
         [[Blockly.blockpy_turtle_beginfill, 'begin'],[Blockly.blockpy_turtle_endfill, 'end']];
     this.setColour(Blockly.Blocks.turtle.HUE);
     this.appendDummyInput("")
-        .appendField(Blockly.blockpy_turtle_blank)
         .appendField(new Blockly.FieldDropdown(fill), 'DIR')
         
 
@@ -332,7 +329,6 @@ Blockly.Blocks['turtle_visible'] = {
         [[Blockly.blockpy_turtle_hide, 'hideturtle'],[Blockly.blockpy_turtle_show, 'showturtle']];
     this.setColour(Blockly.Blocks.turtle.HUE);
     this.appendDummyInput("")
-        .appendField(Blockly.blockpy_turtle_blank)
         .appendField(new Blockly.FieldDropdown(visible), 'DIR')
         
 

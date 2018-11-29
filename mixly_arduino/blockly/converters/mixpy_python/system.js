@@ -18,6 +18,17 @@ pbc.moduleFunctionD.get('time')['time'] = function(py2block, func, args, keyword
         });
 }
 
+pbc.moduleFunctionD.get('time')['localtime'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return block("time_localtime", func.lineno, {
+        "op":'all'
+    }, {}, {
+            "inline": "true"
+        });
+}
+
 pbc.moduleFunctionD.get('time')['sleep'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 1) {
         throw new Error("Incorrect number of arguments");

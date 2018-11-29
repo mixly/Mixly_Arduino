@@ -88,29 +88,14 @@ Blockly.Python.network_scan= function() {
     var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var op=this.getFieldValue('op');
     var code=""+varName+".scan()["+op+"]";
-    switch (op) {
-    case "0":
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "1":
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "2":
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "3":
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "4":
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
-    case "5":
-       return [code, Blockly.Python.ORDER_ASSIGNMENT];
-       break;
+    switch (op) {    
     case "all":
        var code1 = ''+varName+'.scan()';
        return [code1, Blockly.Python.ORDER_ASSIGNMENT];
        break;
+    default:
+        return [code, Blockly.Python.ORDER_ASSIGNMENT];
+        break;   
   }
 }
 

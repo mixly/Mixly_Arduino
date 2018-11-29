@@ -1952,10 +1952,23 @@ PythonToBlocks.prototype.Subscript = function(node) {
                 });
 
             }
+            if(slice.value._astname == "Num" && value.func != null
+                && value.func._astname == "Attribute" && this.identifier(value.func.attr) == "localtime"){
+                if (value.func.value.id.v == "time"){
+                return block('time_localtime', node.lineno, {
+                    "op":this.Num_value(slice.value)
+                }, {
+                    
+                });
+            }
+        }
             return block("lists_get_index", node.lineno, {}, {
                 "AT": this.convert(slice.value),
                 "LIST": this.convert(value)
             });
+            
+
+            
         }
     }else if(slice._astname == "Slice"){
         var at1block;

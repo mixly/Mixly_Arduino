@@ -31,6 +31,29 @@ Blockly.Blocks.controls_millis = {
   }
 };
 
+Blockly.Blocks['time_localtime'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.system.HUE);        
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_SYSTEM_TIME_LOCALTIME)
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.MIXLY_SYSTEM_TIME_LOCALTIME_ALL, "all"],
+                [Blockly.MIXLY_SYSTEM_TIME_LOCALTIME_YEAR, "0"],
+                [Blockly.MIXLY_SYSTEM_TIME_LOCALTIME_MONTH, "1"],
+                [Blockly.MIXLY_SYSTEM_TIME_LOCALTIME_DATE, "2"],
+                [Blockly.MIXLY_SYSTEM_TIME_LOCALTIME_HOUR, "3"],
+                [Blockly.MIXLY_SYSTEM_TIME_LOCALTIME_MINUTE, "4"],
+                [Blockly.MIXLY_SYSTEM_TIME_LOCALTIME_SECOND, "5"],
+                [Blockly.MIXLY_SYSTEM_TIME_LOCALTIME_INWEEK, "6"],
+                [Blockly.MIXLY_SYSTEM_TIME_LOCALTIME_INYEAR, "7"],
+                [Blockly.MIXLY_SYSTEM_TIME_LOCALTIME_DST, "8"]                
+            ]), "op");
+        this.setOutput(true);
+        this.setInputsInline(true);
+    }
+};
+
 Blockly.Blocks.Panic_with_status_code = {
   init: function() {
     this.setColour(Blockly.Blocks.system.HUE);
