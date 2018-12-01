@@ -35,6 +35,8 @@ pbc.objectTypeD = {}; //key：变量名，value：变量类型，如{'a':'List'}
 pbc.ignoreS = new Set();
 pbc.pinType = null;
 pbc.inScope = null;
+pbc.formatModuleKeyL = [];
+pbc.formatModuleL = [];
 
 //忽略某些方法、类、赋值
 pbc.initIgnoreS = function(){

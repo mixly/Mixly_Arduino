@@ -24,50 +24,35 @@ Py2blockEditor.prototype.getIndentOfLine = function(line){
     }
     return 0;
 }
-//正则表达式识别用户输入Pin后，转换成machine.Pin
-Py2blockEditor.prototype.codingFormat= function(python_code){
-     python_code = python_code.replace("\r\n", "\n")
-                            .replace("\r", "\n")
-                            .replace("\t", "    ");
-    keylist=[['Pin','ADC','TouchPad','PWM','DAC','I2C'],
-    ['button_a','button_b','touch1','touch2','touch3','touch4','Infrared_left','Infrared_right',
-    'mixgo_get_brightness','mixgo_get_soundlevel','mpu','Sonar','led'],['NeoPixel'],
-    ['display','Image']];
-    modulelist=['machine','mixgo','neopixel','matrix'];
-    for(var i=0 ; i<keylist.length; i++){
-        for (var j=0; j<keylist[i].length; j++){
-                var regExp = new RegExp(keylist[i][j]+"\\(|"+keylist[i][j]+"\\.","g");
-                var chsExp= new RegExp  (modulelist[i]+"."+keylist[i][j],"g");
-                var a = python_code.match(regExp);
-                var b = python_code.match(chsExp);
-                if (a!==null){
-                    if(b==null){
-                        var temp= new RegExp(keylist[i][j]+"\\(","g"); 
-                        python_code=python_code.replace(temp,(modulelist[i]+"."+keylist[i][j]+"(")); 
-                        var temp= new RegExp(keylist[i][j]+"\\.","g"); 
-                        python_code=python_code.replace(temp,(modulelist[i]+"."+keylist[i][j]+".")); 
 
-                    }
-                    else{
-                        var temp= new RegExp(modulelist[i]+"."+keylist[i][j],"g");  
-                        python_code=python_code.replace(temp,keylist[i][j]); 
-                        var temp= new RegExp(keylist[i][j]+"\\(","g"); 
-                        python_code=python_code.replace(temp,(modulelist[i]+"."+keylist[i][j]+"(")); 
-                        var temp= new RegExp(keylist[i][j]+"\\.","g"); 
-                        python_code=python_code.replace(temp,(modulelist[i]+"."+keylist[i][j]+".")); 
-                    }
-                }
+// 换行和tab的处理；
+Py2blockEditor.prototype.formatLine = function (python_code) {
+    python_code = python_code.replace("\r\n", "\n")
+        .replace("\r", "\n")
+        .replace("\t", "    ");
+    return python_code;
+}
+
+// 格式化模块方法的调用形式. 如 Pin->machine.Pin
+Py2blockEditor.prototype.formatModule = function (python_code) {
+    var keylist = py2block_config.formatModuleKeyL;
+    var modulelist = py2block_config.formatModuleL;
+    for (var i = 0; i < keylist.length; i++) {
+        for (var j = 0; j < keylist[i].length; j++) {
+            var reg = new RegExp(modulelist[i] + "." + keylist[i][j], "g");
+            python_code = python_code.replace(reg, keylist[i][j]);
+            var reg = new RegExp("(" + keylist[i][j] + "\\(" + "|" + keylist[i][j] + "\\." + ")", "g");
+            python_code = python_code.replace(reg, function(match) {
+                return modulelist[i] + "." + match;
+            });
         }
     }
-   return python_code;
-    }
+    return python_code;
+}
     
 
 //为函数定义前后增加空行
 Py2blockEditor.prototype.addNewLines = function(python_code){
-    python_code = python_code.replace("\r\n", "\n")
-                            .replace("\r", "\n")
-                            .replace("\t", "    ");
     var lines = python_code.split("\n");
     var isFirstLine = true;
     var isNewLine = false;
@@ -122,8 +107,9 @@ Py2blockEditor.prototype.decodeChinese = function(code){
 Py2blockEditor.prototype.setBlocks = function(python_code){
     var xml_code = "";
     py2block_config.reset();
-    change_code=this.codingFormat(python_code);
-    python_code = this.addNewLines(change_code);
+    python_code = this.formatLine(python_code);
+    python_code = this.formatModule(python_code);
+    python_code = this.addNewLines(python_code);
     if (python_code !== '' && python_code !== undefined && python_code.trim().charAt(0) !== '<') {
         var result = this.convert.convertSource(python_code);
         xml_code = this.decodeChinese(result.xml);

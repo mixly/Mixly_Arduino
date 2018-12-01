@@ -15,6 +15,14 @@ function Py2blockConfig (){
     this.initIgnoreS();
     this.initModuleAttrD();
     this.initKnownModuleS();
+    this.formatModuleKeyL = [
+        ['Pin', 'ADC', 'TouchPad', 'PWM', 'DAC', 'I2C'],
+        ['button_a', 'button_b', 'touch1', 'touch2', 'touch3', 'touch4', 'Infrared_left', 'Infrared_right',
+            'mixgo_get_brightness', 'mixgo_get_soundlevel', 'mpu', 'Sonar', 'led'],
+        ['NeoPixel'],
+        ['display', 'Image']
+    ];
+    this.formatModuleL = ['machine', 'mixgo', 'neopixel', 'matrix'];
 }
 
 var pbc = Py2blockConfig.prototype;
@@ -35,6 +43,8 @@ pbc.objectTypeD = {}; //key：变量名，value：变量类型，如{'a':'List'}
 pbc.ignoreS = new Set();
 pbc.pinType = null;
 pbc.inScope = null;
+pbc.formatModuleKeyL = [];
+pbc.formatModuleL = [];
 
 //忽略某些方法、类、赋值
 pbc.initIgnoreS = function(){
