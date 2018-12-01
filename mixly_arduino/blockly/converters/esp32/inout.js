@@ -155,7 +155,7 @@ pbc.objectFunctionD.get('freq')['Pin'] = function (py2block, func, args, keyword
     pbc.pinType = null;
     var argblock = py2block.convert(args[0]);
 
-    return [block("inout_analog_write_set_freq", func.lineno, {}, {
+    return [block("inout_pwm_analog_write_set_freq", func.lineno, {}, {
         "PIN": pinblock,
         "NUM": argblock
     }, {
