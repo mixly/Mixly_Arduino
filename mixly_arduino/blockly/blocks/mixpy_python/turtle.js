@@ -105,7 +105,24 @@ Blockly.Blocks['turtle_setheading'] = {
         .setCheck(Number)
         .appendField(Blockly.blockpy_setheading);
     this.appendDummyInput()
-          .appendField(Blockly.blockpy_setheading_degree);
+        .appendField(Blockly.blockpy_setheading_degree);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Blocks['turtle_screen_delay'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
+    this.appendValueInput('data')
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_TURTLE_SCREEN_DELAY);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_MILLIS);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_TURTEL_SCREEN_DELAY);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -132,16 +149,27 @@ Blockly.Blocks['turtle_goto'] = {
   }
 };
 
-Blockly.Blocks['turtle_pos'] = {
+Blockly.Blocks['turtle_pos_shape'] = {
   
   init: function() {    
     this.setColour(Blockly.Blocks.turtle.HUE);
+    var pos_shape =
+        [[Blockly.Msg.TURTLE_POS, 'pos'],[Blockly.Msg.TURTLE_SHAPE, 'shape']];
     this.appendValueInput('TUR')
         .setCheck('Turtle')
     this.appendDummyInput("")
-        .appendField(Blockly.Msg.TURTLE_POS);  
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_TURTEL_POS);
-    this.setOutput(true, 'Tuple');
+        .appendField(Blockly.Msg.TURTLE_POS_SHAPE)  
+        .appendField(new Blockly.FieldDropdown(pos_shape), 'DIR')
+    var thisBlock = this;
+    this.setTooltip(function() {
+    var mode = thisBlock.getFieldValue('DIR');
+    var TOOLTIPS = {
+        'pos': Blockly.MIXLY_TOOLTIP_TURTEL_POS,
+        'shape': Blockly.MIXLY_TOOLTIP_TURTEL_SHAPE        
+      };
+      return TOOLTIPS[mode];
+    });
+    this.setOutput(true);
     this.setInputsInline(true);
   
   }
@@ -330,10 +358,8 @@ Blockly.Blocks['turtle_visible'] = {
     this.setColour(Blockly.Blocks.turtle.HUE);
     this.appendDummyInput("")
         .appendField(new Blockly.FieldDropdown(visible), 'DIR')
-        
-
-  this.setInputsInline(true);
-   this.setPreviousStatement(true);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
     this.setNextStatement(true);
   var thisBlock = this;
     this.setTooltip(function() {
@@ -471,6 +497,42 @@ Blockly.Blocks['turtle_write'] = {
     this.appendValueInput('VAR')
         .setCheck(String)
         .appendField(Blockly.blockpy_turtle_write);    
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.Msg.TURTLE_WRITE_TOOLTIP);    
+  }
+};
+
+Blockly.Blocks['turtle_write_format'] = {
+ init: function() {
+    var move =
+        [[Blockly.MIXLY_TURTLE_WRITE_MOVE_FALSE, 'False'],[Blockly.MIXLY_TURTLE_WRITE_MOVE_TRUE, 'True']];
+    var align =
+        [[Blockly.MIXLY_TURTLE_WRITE_ALIGN_LEFT, 'left'],[Blockly.MIXLY_TURTLE_WRITE_ALIGN_CENTER, 'center'],[Blockly.MIXLY_TURTLE_WRITE_ALIGN_RIGHT, 'right']];    
+    var fonttype =
+        [[Blockly.MIXLY_TURTLE_WRITE_FONT_TYPE_NORMAL, 'normal'],[Blockly.MIXLY_TURTLE_WRITE_FONT_TYPE_BOLD, 'bold'],[Blockly.MIXLY_TURTLE_WRITE_FONT_TYPE_ITALIC, 'italic'],[Blockly.MIXLY_TURTLE_WRITE_FONT_TYPE_BOLD_ITALIC, 'bold","italic']];
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('VAR')
+        .setCheck(String)
+        .appendField(Blockly.blockpy_turtle_write);  
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_TURTLE_WRITE_MOVE)
+        .appendField(new Blockly.FieldDropdown(move), 'MOVE');
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_TURTLE_WRITE_ALIGN)
+        .appendField(new Blockly.FieldDropdown(align), 'ALIGN');
+    this.appendValueInput('FONTNAME')
+        .setCheck(String)
+        .appendField(Blockly.MIXLY_TURTLE_WRITE_FONT_NAME);
+    this.appendValueInput('FONTNUM')
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_TURTLE_WRITE_FONT_NUM);
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_TURTLE_WRITE_FONT_TYPE)
+        .appendField(new Blockly.FieldDropdown(fonttype), 'FONTTYPE');                      
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
