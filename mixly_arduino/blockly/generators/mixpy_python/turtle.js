@@ -49,6 +49,14 @@ Blockly.Python.turtle_setheading = function(){
   return code;
 };
 
+Blockly.Python.turtle_screen_delay = function(){
+  Blockly.Python.definitions_.import_turtle = "import turtle";
+  var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var argument = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var code=varName + '.screen.delay('  + argument + ')\n';
+  return code;
+};
+
 Blockly.Python.turtle_goto = function(){
   Blockly.Python.definitions_.import_turtle = "import turtle";
   var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
@@ -59,11 +67,11 @@ Blockly.Python.turtle_goto = function(){
 };
 
 
-Blockly.Python.turtle_pos = function() {
+Blockly.Python.turtle_pos_shape = function() {
   Blockly.Python.definitions_.import_turtle = "import turtle";
   var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
-  
-  var code=varName + '.pos()';  
+  var get = this.getFieldValue('DIR');
+  var code=varName + '.' + get + '()';  
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
 
@@ -212,5 +220,18 @@ Blockly.Python.turtle_write = function(block) {
   var write =  Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
   //var color = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var code=varName+"." + 'write' + '(' + write + ')\n';
+  return code;
+};
+
+Blockly.Python.turtle_write_format = function(block) {
+  Blockly.Python.definitions_.import_turtle = "import turtle";
+  var move = this.getFieldValue('MOVE');
+  var align = this.getFieldValue('ALIGN');
+  var fontname =  Blockly.Python.valueToCode(this, 'FONTNAME', Blockly.Python.ORDER_ATOMIC) ;
+  var fontnum = Blockly.Python.valueToCode(this, 'FONTNUM', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var fonttype = this.getFieldValue('FONTTYPE');
+  var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var write =  Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
+  var code=varName+"." + 'write' + '(' + write + ',' + move + ',align="' + align + '",font=(' + fontname + ',' + fontnum + ',"' + fonttype + '"))\n';
   return code;
 };

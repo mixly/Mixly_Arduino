@@ -80,6 +80,20 @@ pbc.objectFunctionD.get('setheading')['Turtle'] = function (py2block, func, args
     })];
 }
 
+pbc.objectFunctionD.get('delay')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var turtleblock = py2block.convert(func.value.value);
+    var argblock = py2block.convert(args[0]);
+    return [block('turtle_screen_delay', func.lineno, {}, {
+        'TUR': turtleblock,
+        'data': argblock,
+    }, {
+        "inline": "true"
+    })];
+}
+
 pbc.moduleFunctionD.get('turtle')['done'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 0) {
         throw new Error("Incorrect number of arguments");
@@ -209,17 +223,218 @@ pbc.objectFunctionD.get('shape')['Turtle'] = function (py2block, func, args, key
 }
 
 pbc.objectFunctionD.get('write')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 1) {
+    if (args.length !== 1 && args.length !== 2) {
         throw new Error("Incorrect number of arguments");
     }
-    var turtleblock = py2block.convert(func.value);
-    var argblock = py2block.convert(args[0]);
-    return [block('turtle_write', func.lineno, {}, {
-        'TUR': turtleblock,
-        'VAR': argblock,
-    }, {
-        "inline": "true"
-    })];
+    if(args.length == 1){
+        if (keywords.length == 0){
+            var turtleblock = py2block.convert(func.value);
+            var argblock = py2block.convert(args[0]);
+            args[0].s.v='Arial'
+            var fontnameblock = py2block.convert(args[0]);
+            return [block('turtle_write', func.lineno, {}, {
+                'TUR': turtleblock,
+                'FONTNAME':fontnameblock,
+                'VAR': argblock,
+            }, {
+                "inline": "true"
+            })];
+        }
+        else if (keywords.length == 1){
+            var tag = py2block.identifier(keywords[0].arg)            
+            var turtleblock = py2block.convert(func.value);
+            var argblock = py2block.convert(args[0]);
+            if (tag=='align') {   
+                var formatblock = py2block.Str_value(keywords[0].value);
+                args[0].s.v='Arial'
+                var fontnameblock = py2block.convert(args[0]);
+                return [block('turtle_write_format', func.lineno, {
+                    'ALIGN':formatblock
+                }, {
+
+                    'TUR': turtleblock,
+                    'FONTNAME':fontnameblock,
+                    'VAR': argblock
+                }, {
+                    "inline": "true"
+                })];
+            }
+            if (tag=='font') {   
+                var fontnameblock = py2block.convert(keywords[0].value.elts[0]);
+                var fontnumblock = py2block.convert(keywords[0].value.elts[1]);
+                var fonttypeblock = py2block.Str_value(keywords[0].value.elts[2]);
+                if (keywords[0].value.elts.length == 4){
+                    if((keywords[0].value.elts[2].s.v=='bold'&&keywords[0].value.elts[3].s.v=='italic')||
+                        (keywords[0].value.elts[3].s.v=='bold'&&keywords[0].value.elts[2].s.v=='italic')){
+                    keywords[0].value.elts[2].s.v = 'bold","italic'
+                    var fonttypeblock = py2block.Str_value(keywords[0].value.elts[2]);
+                    }
+                }
+                
+                return [block('turtle_write_format', func.lineno, {
+                    'FONTTYPE':fonttypeblock
+                }, {
+                    'TUR': turtleblock,
+                    'VAR': argblock,
+                    'FONTNAME':fontnameblock,
+                    'FONTNUM':fontnumblock                    
+                }, {
+                    "inline": "true"
+                })];
+            }
+        }
+        else if (keywords.length == 2){
+            var tag1 = py2block.identifier(keywords[0].arg) 
+            var tag2 = py2block.identifier(keywords[1].arg)            
+            var turtleblock = py2block.convert(func.value);
+            var argblock = py2block.convert(args[0]);
+            if (tag1=='align' && tag2=='font') {   
+                var formatblock = py2block.Str_value(keywords[0].value);
+                var fontnameblock = py2block.convert(keywords[1].value.elts[0]);
+                var fontnumblock = py2block.convert(keywords[1].value.elts[1]);
+                var fonttypeblock = py2block.Str_value(keywords[1].value.elts[2]);
+                if (keywords[1].value.elts.length == 4){
+                    if((keywords[1].value.elts[2].s.v=='bold'&&keywords[1].value.elts[3].s.v=='italic')||
+                        (keywords[1].value.elts[3].s.v=='bold'&&keywords[1].value.elts[2].s.v=='italic')){
+                    keywords[1].value.elts[2].s.v = 'bold","italic'
+                    var fonttypeblock = py2block.Str_value(keywords[1].value.elts[2]);
+                    }
+                }                
+            }
+            if (tag2=='align' && tag1=='font') {
+                var formatblock = py2block.Str_value(keywords[1].value);   
+                var fontnameblock = py2block.convert(keywords[0].value.elts[0]);
+                var fontnumblock = py2block.convert(keywords[0].value.elts[1]);
+                var fonttypeblock = py2block.Str_value(keywords[0].value.elts[2]);
+                if (keywords[0].value.elts.length == 4){
+                    if((keywords[0].value.elts[2].s.v=='bold'&&keywords[0].value.elts[3].s.v=='italic')||
+                        (keywords[0].value.elts[3].s.v=='bold'&&keywords[0].value.elts[2].s.v=='italic')){
+                    keywords[0].value.elts[2].s.v = 'bold","italic'
+                    var fonttypeblock = py2block.Str_value(keywords[0].value.elts[2]);
+                    }
+                }
+                }
+                return [block('turtle_write_format', func.lineno, {
+                    'FONTTYPE':fonttypeblock,
+                    'ALIGN':formatblock
+                }, {
+                    'TUR': turtleblock,
+                    'VAR': argblock,
+                    'FONTNAME':fontnameblock,
+                    'FONTNUM':fontnumblock                    
+                }, {
+                    "inline": "true"
+                })];
+            
+        }
+    }
+    if(args.length == 2){
+        var moveblock = py2block.Name_str(args[1]);
+        if (keywords.length == 0){
+            var turtleblock = py2block.convert(func.value);
+            var argblock = py2block.convert(args[0]);
+            args[0].s.v='Arial'
+            var fontnameblock = py2block.convert(args[0]);
+            return [block('turtle_write_format', func.lineno, {
+                'MOVE':moveblock
+            }, {
+                'TUR': turtleblock,
+                'FONTNAME':fontnameblock,
+                'VAR': argblock,
+            }, {
+                "inline": "true"
+            })];
+        }
+        else if (keywords.length == 1){
+            var tag = py2block.identifier(keywords[0].arg)            
+            var turtleblock = py2block.convert(func.value);
+            var argblock = py2block.convert(args[0]);
+            if (tag=='align') {   
+                var formatblock = py2block.Str_value(keywords[0].value);
+                args[0].s.v='Arial'
+                var fontnameblock = py2block.convert(args[0]);
+                return [block('turtle_write_format', func.lineno, {
+                    'ALIGN':formatblock,
+                    'MOVE':moveblock
+                }, {
+
+                    'TUR': turtleblock,
+                    'FONTNAME':fontnameblock,
+                    'VAR': argblock
+                }, {
+                    "inline": "true"
+                })];
+            }
+            if (tag=='font') {   
+                var fontnameblock = py2block.convert(keywords[0].value.elts[0]);
+                var fontnumblock = py2block.convert(keywords[0].value.elts[1]);
+                var fonttypeblock = py2block.Str_value(keywords[0].value.elts[2]);
+                if (keywords[0].value.elts.length == 4){
+                    if((keywords[0].value.elts[2].s.v=='bold'&&keywords[0].value.elts[3].s.v=='italic')||
+                        (keywords[0].value.elts[3].s.v=='bold'&&keywords[0].value.elts[2].s.v=='italic')){
+                    keywords[0].value.elts[2].s.v = 'bold","italic'
+                    var fonttypeblock = py2block.Str_value(keywords[0].value.elts[2]);
+                    }
+                }
+                return [block('turtle_write_format', func.lineno, {
+                    'FONTTYPE':fonttypeblock,
+                    'MOVE':moveblock
+                }, {
+                    'TUR': turtleblock,
+                    'VAR': argblock,
+                    'FONTNAME':fontnameblock,
+                    'FONTNUM':fontnumblock                    
+                }, {
+                    "inline": "true"
+                })];
+            }
+        }
+        else if (keywords.length == 2){
+            var tag1 = py2block.identifier(keywords[0].arg) 
+            var tag2 = py2block.identifier(keywords[1].arg)            
+            var turtleblock = py2block.convert(func.value);
+            var argblock = py2block.convert(args[0]);
+            if (tag1=='align' && tag2=='font') {   
+                var formatblock = py2block.Str_value(keywords[0].value);
+                var fontnameblock = py2block.convert(keywords[1].value.elts[0]);
+                var fontnumblock = py2block.convert(keywords[1].value.elts[1]);
+                var fonttypeblock = py2block.Str_value(keywords[1].value.elts[2]); 
+                if (keywords[1].value.elts.length == 4){
+                    if((keywords[1].value.elts[2].s.v=='bold'&&keywords[1].value.elts[3].s.v=='italic')||
+                        (keywords[1].value.elts[3].s.v=='bold'&&keywords[1].value.elts[2].s.v=='italic')){
+                    keywords[1].value.elts[2].s.v = 'bold","italic'
+                    var fonttypeblock = py2block.Str_value(keywords[1].value.elts[2]);
+                    }
+                }               
+            }
+            if (tag2=='align' && tag1=='font') {
+                var formatblock = py2block.Str_value(keywords[1].value);   
+                var fontnameblock = py2block.convert(keywords[0].value.elts[0]);
+                var fontnumblock = py2block.convert(keywords[0].value.elts[1]);
+                var fonttypeblock = py2block.Str_value(keywords[0].value.elts[2]);
+                if (keywords[0].value.elts.length == 4){
+                    if((keywords[0].value.elts[2].s.v=='bold'&&keywords[0].value.elts[3].s.v=='italic')||
+                        (keywords[0].value.elts[3].s.v=='bold'&&keywords[0].value.elts[2].s.v=='italic')){
+                    keywords[0].value.elts[2].s.v = 'bold","italic'
+                    var fonttypeblock = py2block.Str_value(keywords[0].value.elts[2]);
+                    }
+                }
+            }
+                return [block('turtle_write_format', func.lineno, {
+                    'FONTTYPE':fonttypeblock,
+                    'ALIGN':formatblock,
+                    'MOVE':moveblock
+                }, {
+                    'TUR': turtleblock,
+                    'VAR': argblock,
+                    'FONTNAME':fontnameblock,
+                    'FONTNUM':fontnumblock                    
+                }, {
+                    "inline": "true"
+                })];
+            
+        }
+    }
 }
 
 
@@ -261,17 +476,24 @@ pbc.objectFunctionD.get('clone')['Turtle'] = function (py2block, func, args, key
     });
 }
 
-pbc.objectFunctionD.get('pos')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0) {
-        throw new Error("Incorrect number of arguments");
-    }
-    var turtleblock = py2block.convert(func.value);
-    return block('turtle_pos', func.lineno, {}, {
-        'TUR': turtleblock
-    }, {
-        "inline": "true"
-    });
+function turtlePosShape(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var turtleblock = py2block.convert(func.value);
+        return block('turtle_pos_shape', func.lineno, {
+            'DIR': mode
+        }, {
+            'TUR': turtleblock
+        }, {
+            "inline": "true"
+        });
+        }
+    return converter;
 }
+pbc.objectFunctionD.get('pos')['Turtle'] = turtlePosShape('pos');
+pbc.objectFunctionD.get('shape')['Turtle'] =  turtlePosShape('shape');
 
 
 function turtleHideShow(mode){

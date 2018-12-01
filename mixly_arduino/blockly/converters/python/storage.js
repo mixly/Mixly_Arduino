@@ -21,7 +21,7 @@ pbc.assignD.get('File')['create_block'] = function(py2block, node, targets, valu
 }
 
 
-pbc.objectFunctionD.get('write')['File'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.moduleFunctionD.get('f')['write'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
