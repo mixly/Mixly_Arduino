@@ -197,7 +197,7 @@ function textStrip(mode){
         }
         var objblock = py2block.convert(func.value);        
         return block("text_strip", func.lineno, {
-            'STRIP': mode,
+            'TOWHAT': mode,
         }, {
             "VAR": objblock,            
         }, {
