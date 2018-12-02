@@ -77,15 +77,15 @@ pbc.moduleFunctionD.get('matrix.display')['showstatic'] = function(py2block, fun
 }
 
 pbc.moduleFunctionD.get('matrix.display')['get_screenimage'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 0){
+    if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
 
-    if (args.length == 0 ){
-    return [block("display_get_screen_image", func.lineno, {}, {
-    }, {
-        "inline": "true"
-    })];
+    if (args.length == 0 ) {
+        return block("display_get_screen_image", func.lineno, {}, {
+        }, {
+            "inline": "true"
+        });
     }
 }
 
@@ -261,14 +261,14 @@ function shift(mode){
         }
         var str1block=py2block.convert(args[0]);
         var imgblock=py2block.convert(func.value);
-        return [block("image_shift", func.lineno, {
+        return block("image_shift", func.lineno, {
             'OP':mode
         }, { 
             'img':imgblock,
             'val':str1block
         }, {
             "inline": "true"
-        })];
+        });
     }
     return converter;
 }
@@ -361,10 +361,10 @@ pbc.moduleFunctionD.get('matrix.display')['get_brightness'] = function(py2block,
         throw new Error("Incorrect number of arguments");
     }
 
-    return [block("display_get_screen_pixel", func.lineno, {}, { 
+    return block("display_get_screen_pixel", func.lineno, {}, {
     }, {
         "inline": "true"
-    })];
+    });
 }
 
 pbc.moduleFunctionD.get('matrix.display')['blink_rate'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
