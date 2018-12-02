@@ -240,8 +240,23 @@ PythonToBlocks.prototype.convertBody = function(node, is_top_level) {
         // Now convert the actual node
         var height = this.heights.shift();
         var originalSourceCode = this.getSourceCode(lineNumberInProgram, height);
+
+
         var newChild = this.convertStatement(node[i], originalSourceCode, is_top_level);
 
+        // deal with '''XXX'''
+        if (originalSourceCode.indexOf("'''") != -1 || originalSourceCode.indexOf('"""') != -1) {
+            quotes = ["'''", '"""'];
+            for (var i = 0; i < quotes.length; i ++) {
+                var quote = quotes[i];
+                var idxa = originalSourceCode.indexOf(quote);
+                var idxb = originalSourceCode.indexOf(quote, idxa + 3);
+                if (idxb != -1) {
+                    var s = originalSourceCode.substring(idxa, idxb + 3);
+                    this.highestLineSeen += s.split('\n').length - 1;
+                }
+            }
+        }
         // Skip null blocks (e.g., imports)
         if (newChild == null) {
             continue;
