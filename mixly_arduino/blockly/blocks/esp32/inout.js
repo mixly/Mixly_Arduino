@@ -18,8 +18,8 @@ Blockly.Blocks['inout_highlow'] = {
 Blockly.Blocks.inout_digital_write = {
   init: function() {
     this.setColour(Blockly.Blocks.base.HUE);
-    this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_DIGITALWRITE_PIN)
+    this.appendValueInput("PIN",Number)
+        .appendField(Blockly.MIXLY_Digital_PINMODEOUT)
         .setCheck(Number);
     this.appendValueInput("STAT")
         .appendField(Blockly.MIXLY_STAT)
@@ -167,22 +167,6 @@ Blockly.Blocks['inout_pin_pressed'] = {
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_sensor_pin_pressed);
     }
-};
-
-Blockly.Blocks.inout_digital_write = {
-  init: function() {
-    this.setColour(Blockly.Blocks.base.HUE);
-    this.appendValueInput("PIN",Number)
-        .appendField(Blockly.MIXLY_Digital_PINMODEOUT)
-        .setCheck(Number);
-    this.appendValueInput("STAT")
-        .appendField(Blockly.MIXLY_STAT)
-        .setCheck([Number,Boolean]);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setInputsInline(true);
-    this.setTooltip(Blockly.LANG_INOUT_DIGITAL_WRITE_TOOLTIP);
-  }
 };
 
 Blockly.Blocks.inout_pin_attachInterrupt = {
