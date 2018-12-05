@@ -227,10 +227,10 @@ Blockly.Python.sensor_compass_reset = function(block) {
 };
 
 Blockly.Python.HCSR04 = function () {
-    Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    Blockly.Python.definitions_['import_sonar'] = 'import sonar';
     var dropdown_pin1 = Blockly.Python.valueToCode(this, "PIN1", Blockly.Python.ORDER_ASSIGNMENT);
     var dropdown_pin2 = Blockly.Python.valueToCode(this, "PIN2", Blockly.Python.ORDER_ASSIGNMENT);
-    var code = 'mixgo.Sonar(' + dropdown_pin1 + ', ' + dropdown_pin2 + ').checkdist()';
+    var code = 'sonar.Sonar(' + dropdown_pin1 + ', ' + dropdown_pin2 + ').checkdist()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 }
 
@@ -387,7 +387,7 @@ Blockly.Python.sensor_handbit_sound= function(){
 };
 
 Blockly.Python.handbit_number1 = function(){
-    Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    Blockly.Python.definitions_['import_handbit'] = 'import handbit';
     var code = this.getFieldValue('op');
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
