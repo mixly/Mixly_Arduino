@@ -340,6 +340,72 @@ Blockly.Python.sensor_ds18x20=function(){
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+//ok
+Blockly.Python.sensor_handbit_button_is_pressed = function(){
+    Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+    var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
+    var code =  'handbit.'+btn + '.is_pressed()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+//ok
+Blockly.Python.sensor_handbit_button_was_pressed = function(){
+    Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+    var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
+    var code =  'handbit.'+btn + '.was_pressed()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.sensor_handbit_button_get_presses = function(){
+    Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+    var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
+    var code =  'handbit.'+btn + '.get_presses()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.sensor_handbit_button_attachInterrupt = function () {
+    Blockly.Python.definitions_['import_machine'] = 'import machine';
+    Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+    var dropdown_btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
+    var dropdown_mode = this.getFieldValue('mode');
+    var atta = Blockly.Python.valueToCode(this, 'DO', Blockly.Python.ORDER_ATOMIC);
+    var code = 'handbit.' + dropdown_btn + '.irq' + '(handler = ' + atta + ', trigger = ' + dropdown_mode + ')\n'
+    //var funcName = 'attachInterrupt_func_' + dropdown_pin;
+    //var branch = Blockly.Python.statementToCode(this, 'DO') || Blockly.Python.PASS;
+    //var code2 = 'def' + ' ' + funcName + '(p):\n' + branch + '\n';
+    //Blockly.Python.setups_[funcName] = code2;
+    return code;
+};
+
+Blockly.Python.sensor_handbit_light= function(){
+    Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+    return ['handbit.handbit_get_brightness()', Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.sensor_handbit_sound= function(){
+    Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+    return ['handbit.handbit_get_soundlevel()', Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.handbit_number1 = function(){
+    Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    var code = this.getFieldValue('op');
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.sensor_handbit_pin_pressed = function(){
+    Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+    var pin = Blockly.Python.valueToCode(this, 'button', Blockly.Python.ORDER_ATOMIC);
+    var code = 'handbit.'+pin+'.is_touched()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.sensor_handbit_pin_near = function(){
+    Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+    var direction = this.getFieldValue('direction');
+    var code = 'handbit.'+'Infrared_'+ direction +'.near()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
 
 Blockly.Blocks.sensor_button_is_pressed=Blockly.Blocks.sensor_mixgo_button_is_pressed;
 Blockly.Blocks.sensor_button_was_pressed=Blockly.Blocks.sensor_mixgo_button_was_pressed;
