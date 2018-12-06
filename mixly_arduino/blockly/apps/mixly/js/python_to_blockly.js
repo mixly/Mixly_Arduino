@@ -2082,6 +2082,12 @@ PythonToBlocks.prototype.Name = function(node)
             "op": this.identifier(id)
         });
     }
+    if(py2block_config.board == py2block_config.ESP32
+        && (nodeName === "touch1" || nodeName === "touch2"|| nodeName === "touch3"|| nodeName === "touch4"|| nodeName === "touch5"|| nodeName === "touch6") && py2block_config.pinType =="handbit_number1"){
+        return block(py2block_config.pinType, node.lineno, {
+            "op": this.identifier(id)
+        });
+    }
     if(py2block_config.board == py2block_config.ESP32 && py2block_config.pinType == "pins_callback"){
         return block("factory_block_return", node.lineno, {
             "VALUE": this.identifier(id)
