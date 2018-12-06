@@ -410,7 +410,23 @@ class OLED(SSD1106_I2C):
 
     def show_line(self, x1, y1, x2, y2, c):
         self.line(x1, y1, x2, y2, c)
-        self.show()    
+        self.show() 
+
+    def show_circle(self, x0, y0, radius, c):
+        self.circle(x0, y0, radius, c)
+        self.show()
+
+    def show_fill_circle(self, x0, y0, radius, c):
+        self.fill_circle(x0, y0, radius, c)
+        self.show()
+
+    def show_triangle(self, x0, y0, x1, y1, x2, y2, c):
+        self.triangle(x0, y0, x1, y1, x2, y2, c)
+        self.show()
+
+    def show_fill_triangle(self, x0, y0, x1, y1, x2, y2, c):   
+        self.fill_triangle(x0, y0, x1, y1, x2, y2, c)
+        self.show()
 
 i2c = I2C(scl=Pin(22), sda=Pin(23), freq=400000)
 
