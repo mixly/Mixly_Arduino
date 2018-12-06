@@ -46,6 +46,7 @@
   <script src="../../blocks/python/set.js"></script>
   <!------ blocks handbit -->
   <script src="../../blocks/handbit/sensor.js"></script>
+  <script src="../../blocks/handbit/display.js"></script>
   <!-- generator file -->
   <!------ generator generic -->
   <script src="../../generators/esp32/pins.js"></script>
@@ -68,6 +69,7 @@
   <script src="../../generators/python/tuple.js"></script>
   <!------ generator handbit -->
   <script src="../../generators/handbit/sensor.js"></script>  
+  <script src="../../generators/handbit/display.js"></script> 
   <!-- ace file -->
   <script src="python-main.js" type="application/javascript"></script>
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
@@ -96,6 +98,7 @@
   <script src="../../converters/python/set.js" type="application/javascript"></script>
   <!------ convertor handbit -->
   <script src="../../converters/handbit/sensor.js" type="application/javascript"></script> 
+  <script src="../../converters/handbit/display.js" type="application/javascript"></script> 
 
   <script src="./js/python_to_blockly.js" type="application/javascript"></script>
   <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
@@ -1798,97 +1801,131 @@
         </block> -->
       </category>
       <category id="catMonitor" colour="180">
-        <block type="display_show_image_or_string">
-          <value name="data">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>
-        <block type="display_scroll_string">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
+        <block type="handbit_display_use_i2c_init">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">oled</field>
             </shadow>
           </value>
-        </block>
-        <block type="display_show_static">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">abc</field>
+          <value name="I2CSUB">
+            <shadow type="variables_get">
+              <field name="VAR">i2c</field>
             </shadow>
           </value>
-        </block>
-       <!-- <block type="monitor_show_scroll_string">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">hello</field>
-            </shadow>
-          </value>
-          <value name="time">
+          <value name="row">
             <shadow type="math_number">
-              <field name="NUM">120</field>
+              <field name="NUM">128</field>
+            </shadow>
+          </value>
+          <value name="column">
+            <shadow type="math_number">
+              <field name="NUM">64</field>
             </shadow>
           </value>
         </block>
-        <block type="esp32_display_show_image">
-          <value name="PIN">
-            <shadow type="pins_builtinimg"></shadow>
+        <block type="handbit_display_draw_4strings">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">handbit.oled</field>
+            </shadow>
           </value>
-        </block>-->
-        <block type="display_image_create"></block>
-        <block type="display_image_builtins"></block>
-        <block type="image_arithmetic">
-          <value name="A">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>>
-          <value name="B">
-            <shadow type="pins_builtinimg"></shadow>
+          <value name="Text_line1">
+            <shadow type="text">
+              <field name="TEXT">Example1</field>
+            </shadow>
+          </value>
+          <value name="Text_line2">
+            <shadow type="text">
+              <field name="TEXT">Example2</field>
+            </shadow>
+          </value>
+          <value name="Text_line3">
+            <shadow type="text">
+              <field name="TEXT">Example3</field>
+            </shadow>
+          </value>
+          <value name="Text_line4">
+            <shadow type="text">
+              <field name="TEXT">Example4</field>
+            </shadow>
           </value>
         </block>
-        <block type="image_shift">
-          <value name="val">
+        <block type="handbit_display_rect">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">handbit.oled</field>
+            </shadow>
+          </value>
+          <value name="x">
             <shadow type="math_number">
               <field name="NUM">1</field>
             </shadow>
           </value>
-          <value name="img">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>
-        <block type="display_get_pixel">
-          <value name="x">
-            <shadow type="pins_exlcdh"></shadow>
-          </value>
           <value name="y">
-            <shadow type="pins_exlcdv"></shadow>
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
           </value>
-        </block>
-        <block type="display_bright_point">
-          <value name="x">
-            <shadow type="pins_exlcdh"></shadow>
+          <value name="width">
+            <shadow type="math_number">
+              <field name="NUM">20</field>
+            </shadow>
           </value>
-          <value name="y">
-            <shadow type="pins_exlcdv"></shadow>
-          </value>
-          <value name="STAT">
-              <shadow type="display_onoff">
+          <value name="height">
+            <shadow type="math_number">
+              <field name="NUM">20</field>
             </shadow>
           </value>
         </block>
-        <block type="display_bright_screen">
-          <value name="x">
-            <shadow type="pins_exlcdh"></shadow>
+        <block type="handbit_display_line">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">handbit.oled</field>
+            </shadow>
           </value>
-        </block>
-        <block type="display_get_screen_pixel"></block>
-        <block type="display_get_screen_image"></block>
-        <block type="display_blink_rate">
           <value name="x">
             <shadow type="math_number">
-              <field name="NUM">2</field>
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="y">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="length">
+            <shadow type="math_number">
+              <field name="NUM">20</field>
             </shadow>
           </value>
         </block>
-        <block type="display_clear"></block>
+        <block type="handbit_display_line_arbitrarily">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">handbit.oled</field>
+            </shadow>
+          </value>
+          <value name="x1">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="y1">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="x2">
+            <shadow type="math_number">
+              <field name="NUM">40</field>
+            </shadow>
+          </value>
+          <value name="y2">
+            <shadow type="math_number">
+              <field name="NUM">40</field>
+            </shadow>
+          </value>
+        </block>
         </category>
       <sep></sep>
       <category id="catVar" colour="330" custom="VARIABLE">
