@@ -6,17 +6,16 @@ Blockly.Python.handbit_display_use_i2c_init = function () {
   var sub =Blockly.Python.valueToCode(this, 'SUB',Blockly.Python.ORDER_ATOMIC);
   var row =Blockly.Python.valueToCode(this, 'row',Blockly.Python.ORDER_ATOMIC);
   var column = Blockly.Python.valueToCode(this, 'column', Blockly.Python.ORDER_ATOMIC);
-  var code = sub+" = ssd1306.SSD1306_I2C("+row+","+column+","+i2csub+")\n";
+  var code = sub+" = ssd1106.SSD1106_I2C("+row+","+column+","+i2csub+")\n";
   return code;  
 };
 
 Blockly.Python.handbit_display_draw_4strings = function(){
   var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-  if (varName.indexOf('handbit_')>-1)
-        Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+  if (varName == 'oled')
+        Blockly.Python.definitions_['import_handbit_oled'] = 'from handbit import oled';
   else
       Blockly.Python.definitions_['import_ssd1106'] = 'import ssd1106';
-  varName=varName.replace('handbit_oled','handbit.oled');
   var value_text_line1 = Blockly.Python.valueToCode(this, 'Text_line1', Blockly.Python.ORDER_ASSIGNMENT) || '\'\'';
   var value_text_line2 = Blockly.Python.valueToCode(this, 'Text_line2', Blockly.Python.ORDER_ASSIGNMENT) || '\'\'';
   var value_text_line3 = Blockly.Python.valueToCode(this, 'Text_line3', Blockly.Python.ORDER_ASSIGNMENT) || '\'\'';
@@ -27,11 +26,10 @@ Blockly.Python.handbit_display_draw_4strings = function(){
 
 Blockly.Python.handbit_display_line_arbitrarily=function(){
   var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-  if (varName.indexOf('handbit_')>-1)
-        Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+  if (varName == 'oled')
+        Blockly.Python.definitions_['import_handbit_oled'] = 'from handbit import oled';
   else
       Blockly.Python.definitions_['import_ssd1106'] = 'import ssd1106';
-  varName=varName.replace('handbit_oled','handbit.oled');
   var location_x1 = Blockly.Python.valueToCode(this, 'x1', Blockly.Python.ORDER_ATOMIC);
   var location_y1= Blockly.Python.valueToCode(this, 'y1', Blockly.Python.ORDER_ATOMIC);
   var location_x2 = Blockly.Python.valueToCode(this, 'x2', Blockly.Python.ORDER_ATOMIC);
@@ -42,11 +40,10 @@ Blockly.Python.handbit_display_line_arbitrarily=function(){
 
 Blockly.Python.handbit_display_rect=function(){
   var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-  if (varName.indexOf('handbit_')>-1)
-        Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+  if (varName == 'oled')
+        Blockly.Python.definitions_['import_handbit_oled'] = 'from handbit import oled';
   else
       Blockly.Python.definitions_['import_ssd1106'] = 'import ssd1106';
-  varName=varName.replace('handbit_oled','handbit.oled');
   var location_x = Blockly.Python.valueToCode(this, 'x', Blockly.Python.ORDER_ATOMIC);
   var location_y = Blockly.Python.valueToCode(this, 'y', Blockly.Python.ORDER_ATOMIC);
   var value_width = Blockly.Python.valueToCode(this, 'width', Blockly.Python.ORDER_ATOMIC);
@@ -69,11 +66,10 @@ Blockly.Python.handbit_display_rect=function(){
 
 Blockly.Python.handbit_display_line=function(){
   var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
-  if (varName.indexOf('handbit_')>-1)
-        Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+  if (varName == 'oled')
+        Blockly.Python.definitions_['import_handbit_oled'] = 'from handbit import oled';
   else
       Blockly.Python.definitions_['import_ssd1106'] = 'import ssd1106';
-  varName=varName.replace('handbit_oled','handbit.oled');
   var location_x = Blockly.Python.valueToCode(this, 'x', Blockly.Python.ORDER_ATOMIC);
   var location_y = Blockly.Python.valueToCode(this, 'y', Blockly.Python.ORDER_ATOMIC);
   var value_length = Blockly.Python.valueToCode(this, 'length', Blockly.Python.ORDER_ATOMIC);

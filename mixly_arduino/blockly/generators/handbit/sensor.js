@@ -64,8 +64,8 @@ Blockly.Python.sensor_handbit_get_acceleration = function(){
     Blockly.Python.definitions_['import_handbit'] = 'import handbit';
     var key = this.getFieldValue('key');
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-    if (v.indexOf('handbit_')>-1)
-        Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+    if (v=='accelerometer')
+        Blockly.Python.definitions_['import_handbit_accelerometer'] = 'from handbit import accelerometer';
     v=v.replace('handbit_ac','handbit.ac');
     var code = v+'.get_a_' + key + '()';
     return [code, Blockly.Python.ORDER_ATOMIC];

@@ -47,9 +47,11 @@ Blockly.Python.sensor_mpu9250_attachGestureInterrupt = function(){
     var branch = Blockly.Python.statementToCode(this, 'DO');
     var d=branch || Blockly.Python.PASS;
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-	if (v.indexOf('mixgo_')>-1)
-		Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
-	v=v.replace('mixgo_mpu','mixgo.mpu');
+    if (v == "mpu")
+        Blockly.Python.definitions_['import_mixgo_mpu'] = 'from mixgo import mpu';
+	// if (v.indexOf('mixgo_')>-1)
+	// 	Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+	// v=v.replace('mixgo_mpu','mixgo.mpu');
 	var code = 'if '+v+'.mpu9250_is_gesture("' + gesture + '"):\n' + d;
     return code;
 }
@@ -59,9 +61,11 @@ Blockly.Python.sensor_mpu9250_gesture = function(){
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     var gesture = this.getFieldValue('gesture');
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-    if (v.indexOf('mixgo_')>-1)
-        Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
-    v=v.replace('mixgo_mpu','mixgo.mpu');
+    if (v == "mpu")
+        Blockly.Python.definitions_['import_mixgo_mpu'] = 'from mixgo import mpu';    
+    // if (v.indexOf('mixgo_')>-1)
+    //     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    // v=v.replace('mixgo_mpu','mixgo.mpu');
     var code = v+'.mpu9250_is_gesture("' + gesture + '")';
     return [code, Blockly.Python.ORDER_ATOMIC];
 }
@@ -73,9 +77,11 @@ Blockly.Python.sensor_mpu9250_get_acceleration = function(){
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     var key = this.getFieldValue('key');
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-	if (v.indexOf('mixgo_')>-1)
-		Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
-	v=v.replace('mixgo_mpu','mixgo.mpu');
+    if (v == "mpu")
+        Blockly.Python.definitions_['import_mixgo_mpu'] = 'from mixgo import mpu';    
+	// if (v.indexOf('mixgo_')>-1)
+	// 	Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+	// v=v.replace('mixgo_mpu','mixgo.mpu');
     var code = v+'.mpu9250_get_' + key + '()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
@@ -85,9 +91,11 @@ Blockly.Python.sensor_mpu9250_get_magnetic = function(){
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     var key = this.getFieldValue('key');
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-    if (v.indexOf('mixgo_')>-1)
-        Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
-    v=v.replace('mixgo_mpu','mixgo.mpu');
+    if (v == "mpu")
+        Blockly.Python.definitions_['import_mixgo_mpu'] = 'from mixgo import mpu';    
+    // if (v.indexOf('mixgo_')>-1)
+    //     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    // v=v.replace('mixgo_mpu','mixgo.mpu');
     var code = v+'.mpu9250_magnetic_' + key + '()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
@@ -97,9 +105,11 @@ Blockly.Python.sensor_mpu9250_get_gyro = function(){
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     var key = this.getFieldValue('key');
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-    if (v.indexOf('mixgo_')>-1)
-        Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
-    v=v.replace('mixgo_mpu','mixgo.mpu');
+    if (v == "mpu")
+        Blockly.Python.definitions_['import_mixgo_mpu'] = 'from mixgo import mpu';    
+    // if (v.indexOf('mixgo_')>-1)
+    //     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    // v=v.replace('mixgo_mpu','mixgo.mpu');
     var code = v+'.mpu9250_gyro_' + key + '()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
@@ -126,18 +136,22 @@ Blockly.Python.sensor_mpu9250_temperature = function(){
     Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-	if (v.indexOf('mixgo_')>-1)
-		Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
-	v=v.replace('mixgo_mpu','mixgo.mpu');
+    if (v == "mpu")
+        Blockly.Python.definitions_['import_mixgo_mpu'] = 'from mixgo import mpu';    
+	// if (v.indexOf('mixgo_')>-1)
+	// 	Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+	// v=v.replace('mixgo_mpu','mixgo.mpu');
     return [v+'.mpu9250_get_temperature()', Blockly.Python.ORDER_ATOMIC];
 };
 Blockly.Python.sensor_mpu9250_field_strength= function(){
     Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-	if (v.indexOf('mixgo_')>-1)
-		Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
-	v=v.replace('mixgo_mpu','mixgo.mpu');
+    if (v == "mpu")
+        Blockly.Python.definitions_['import_mixgo_mpu'] = 'from mixgo import mpu';    
+	// if (v.indexOf('mixgo_')>-1)
+	// 	Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+	// v=v.replace('mixgo_mpu','mixgo.mpu');
     var compass = this.getFieldValue('compass');
     var a;
     if(compass =='strength'){

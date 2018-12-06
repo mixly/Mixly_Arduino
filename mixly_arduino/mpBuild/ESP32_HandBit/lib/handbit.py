@@ -430,7 +430,7 @@ class OLED(SSD1106_I2C):
 
 i2c = I2C(scl=Pin(22), sda=Pin(23), freq=400000)
 
-ac = Accelerometer()
+accelerometer = Accelerometer()
 
 oled = OLED()
 
