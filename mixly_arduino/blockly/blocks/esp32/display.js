@@ -58,7 +58,7 @@ Blockly.Blocks.display_bright_point = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   	this.setInputsInline(true);
-    this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS2);
+    this.setTooltip(Blockly.MIXLY_ESP32_DISPLAY_SETPIXEL);
   }
 };
 
@@ -133,6 +133,7 @@ Blockly.Blocks.display_show_static = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   this.setInputsInline(true);
+  this.setTooltip(Blockly.MIXLY_ESP32_MUSIC_SHOW_STATIC);
   }
 };
 
@@ -1146,7 +1147,7 @@ Blockly.Blocks.display_use_i2c_init = {
         // this.appendDummyInput("")
         //     .appendField(Blockly.MIXLY_SETUP + Blockly.Msg.LISTS_SET_INDEX_INPUT_TO + "OLED")
         //     .appendField(new Blockly.FieldDropdown([
-        //         ["OLED 128กม64", "OLED 128กม64"]
+        //         ["OLED 128ยกร64", "OLED 128ยกร64"]
         //         ]), "key");
         this.appendValueInput('row')
             .appendField(Blockly.MIXLY_SETUP + Blockly.Msg.LISTS_SET_INDEX_INPUT_TO + "OLED")

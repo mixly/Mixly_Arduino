@@ -63,6 +63,7 @@ Blockly.Blocks.actuator_led_bright = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_ESP32_LED_SETONOFF);
   }
 };
 
@@ -77,6 +78,7 @@ Blockly.Blocks.actuator_get_led_bright = {
     .appendField(Blockly.MIXLY_PULSEIN_STAT)  
     this.setOutput(true);
     this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_ESP32_LED_GETONOFF);
   }
 };
 
@@ -92,6 +94,7 @@ Blockly.Blocks.actuator_led_brightness = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_ESP32_LED_SETBRIGHT);
   }
 };
 
@@ -129,7 +132,7 @@ Blockly.Blocks.esp32_music_pitch_with_time = {
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE2);
     }
 };
 
@@ -159,6 +162,7 @@ Blockly.Blocks.esp32_music_set_tempo = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_MUSIC_SET_TEMPO);
     }
 }
 
@@ -169,6 +173,7 @@ Blockly.Blocks.esp32_music_get_tempo = {
             .appendField(Blockly.MIXLY_MICROBIT_Get_current_tempo)
         this.setOutput(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_MUSIC_GET_TEMPO);
     }
 }
 
@@ -180,6 +185,7 @@ Blockly.Blocks.esp32_music_reset = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_MUSIC_RESET);
     }
 }
 
@@ -194,6 +200,8 @@ Blockly.Blocks.esp32_music_play_list = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_MUSIC_PLAY_LISTS);
+
     }
 }
 
@@ -212,6 +220,7 @@ Blockly.Blocks.esp32_mixgo_music_play_list_show = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_MUSIC_PLAYSHOW)
     }
 }
 //RGB
@@ -287,7 +296,7 @@ Blockly.Blocks.actuator_neopixel_write = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
-        this.setTooltip(Blockly.MIXLY_RGB_NUM_R_G_B);
+        this.setTooltip(Blockly.MIXLY_ESP32_MUSIC_WRI);
     }
 };
 
