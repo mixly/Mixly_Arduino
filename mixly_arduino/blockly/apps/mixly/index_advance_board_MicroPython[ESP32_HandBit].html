@@ -25,6 +25,7 @@
   <script type="text/javascript" src="../../generators/python/variables.js"></script>
   <script src="../../blocks/esp32/esp32_profile.js"></script>
 	<!-- blocks file -->
+  <!------ blocks generic -->
   <script src="../../blocks/esp32/pins.js"></script>
   <script src="../../blocks/esp32/inout.js"></script>
   <script src="../../blocks/python/control.js"></script>
@@ -46,7 +47,10 @@
   <script src="../../blocks/esp32/factory.js"></script>
   <script src="../../blocks/python/tuple.js"></script>
   <script src="../../blocks/python/set.js"></script>
+  <!------ blocks handbit -->
+  <script src="../../blocks/handbit/sensor.js"></script>
 	<!-- generator file -->
+  <!------ generator generic -->
   <script src="../../generators/esp32/pins.js"></script>
   <script src="../../generators/esp32/inout.js"></script>
   <script src="../../generators/python/control.js"></script>
@@ -68,6 +72,8 @@
   <script src="../../generators/esp32/factory.js"></script>
   <script src="../../generators/python/set.js"></script>
   <script src="../../generators/python/tuple.js"></script>
+  <!------ generator handbit -->
+  <script src="../../generators/handbit/sensor.js"></script>
   <!-- ace file -->
   <script src="python-main.js" type="application/javascript"></script>
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
@@ -75,6 +81,8 @@
 
   <script src="../../blocks/python/utility.js"></script>
   <script src="../../generators/python/utility.js"></script>
+  <!-- convertor file -->
+  <!------ convertor generic -->
   <script src="./js/py2block_editor.js" type="application/javascript"></script>
   <script src="../../converters/esp32/py2block_config.js" type="application/javascript"></script>
   <script src="../../converters/esp32/inout.js" type="application/javascript"></script>
@@ -95,6 +103,8 @@
   <script src="../../converters/python/storage.js" type="application/javascript"></script>
   <script src="../../converters/python/set.js" type="application/javascript"></script>
   <script src="../../converters/esp32/control.js" type="application/javascript"></script>
+  <!------ convertor handbit -->
+  <script src="../../converters/handbit/sensor.js" type="application/javascript"></script>  
   <script src="./js/python_to_blockly.js" type="application/javascript"></script>
   <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
   <script src="js/skulpt/dist/skulpt-stdlib.js" type="application/javascript"></script>
@@ -2452,7 +2462,7 @@
         <block type="esp32_music_pitch">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
-              <field name="PIN">6</field>
+              <field name="PIN">16</field>
             </shadow>
           </value>
           <value name="pitch">
@@ -2464,7 +2474,7 @@
         <block type="esp32_music_pitch_with_time">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
-              <field name="PIN">6</field>
+              <field name="PIN">16</field>
             </shadow>
           </value>
           <value name="pitch">
@@ -2481,7 +2491,7 @@
         <block type="esp32_music_stop">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
-              <field name="PIN">6</field>
+              <field name="PIN">16</field>
             </shadow>
           </value>
         </block>
@@ -2491,7 +2501,7 @@
           </value>          
           <value name="PIN">
             <shadow type="pins_pwm_pin">
-              <field name="PIN">6</field>
+              <field name="PIN">16</field>
             </shadow>
           </value>
         </block>
