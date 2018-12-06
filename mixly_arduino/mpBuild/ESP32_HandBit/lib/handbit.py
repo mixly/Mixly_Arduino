@@ -74,6 +74,36 @@ def mixgo_get_brightness():
 def mixgo_get_soundlevel():
     return ADCSensor(pin = 36).read()
 
+class Accelerometer():
+    """  """
+    def __init__(self):
+        self.addr = 38
+        self.i2c = i2c
+        self.i2c.writeto(self.addr, b'\x0F\x08')    # set resolution = 10bit
+        self.i2c.writeto(self.addr, b'\x11\x00')    # set power mode = normal
+
+    def get_a_x(self):
+        self.i2c.writeto(self.addr, b'\x02', False)
+        buf = self.i2c.readfrom(self.addr, 2)
+        x = ustruct.unpack('h', buf)[0]
+        return x / 4 / 4096
+
+    def get_a_y(self):
+        self.i2c.writeto(self.addr, b'\x04', False)
+        buf = self.i2c.readfrom(self.addr, 2)
+        y = ustruct.unpack('h', buf)[0]
+        return y / 4 / 4096
+
+    def get_a_z(self):
+        self.i2c.writeto(self.addr, b'\x06', False)
+        buf = self.i2c.readfrom(self.addr, 2)
+        z = ustruct.unpack('h', buf)[0]
+        return z / 4 / 4096
+
+i2c = I2C(scl=Pin(22), sda=Pin(23), freq=400000)
+
+ac = Accelerometer()
+
 button_a = Button(0)
 button_b = Button(2)
 

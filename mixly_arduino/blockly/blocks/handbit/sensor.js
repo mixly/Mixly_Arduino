@@ -109,3 +109,35 @@ Blockly.Blocks['sensor_handbit_pin_pressed'] = {
         this.setTooltip(Blockly.MIXLY_TOOLTIP_sensor_pin_pressed);
     }
 };
+
+Blockly.Blocks['sensor_handbit_get_acceleration'] = {
+    init: function(){
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.appendValueInput('SUB')
+            .setCheck("var");
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_MICROBIT_JS_ACCELERATION)
+            .appendField(new Blockly.FieldDropdown([
+                ["x", "x"],
+                ["y", "y"],
+                ["z", "z"]
+            ]), "key");
+        this.setOutput(true, Number);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_MICROBIT_JS_ACCELERATION);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('key');
+        var mode0 = Blockly.MIXLY_MICROBIT_PY_STORAGE_GET;
+        var mode1 = Blockly.MIXLY_MICROBIT_Direction;
+        var mode2 = Blockly.MIXLY_MICROBIT_JS_ACCELERATION1;
+        var TOOLTIPS = {
+        'x': 'x',
+        'y': 'y',
+        'z': 'z',
+        '(x,y,z)':Blockly.MIXLY_MICROBIT_Shiliang_Direction,
+      };
+      return mode0 +TOOLTIPS[mode]+mode1+mode2;
+    });
+    }
+};

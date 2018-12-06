@@ -96,7 +96,7 @@
   <script src="../../converters/python/set.js" type="application/javascript"></script>
   <!------ convertor handbit -->
   <script src="../../converters/handbit/sensor.js" type="application/javascript"></script> 
-    
+
   <script src="./js/python_to_blockly.js" type="application/javascript"></script>
   <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
   <script src="js/skulpt/dist/skulpt-stdlib.js" type="application/javascript"></script>
@@ -1523,11 +1523,11 @@
           </value>
           <value name="RX">
             <shadow type="pins_digital_pin">
-              <field name="PIN">21</field>
+              <field name="PIN">23</field>
             </shadow>
           </value>
           <value name="freq">
-            <shadow type="math_number"><field name="NUM">100000</field></shadow>
+            <shadow type="math_number"><field name="NUM">400000</field></shadow>
           </value>
         </block>
       </category>
@@ -1570,10 +1570,10 @@
             </shadow>
           </value>
         </block>
-        <block type="sensor_mpu9250_get_acceleration">
+        <block type="sensor_handbit_get_acceleration">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">sensor</field>
+              <field name="VAR">handbit.ac</field>
             </shadow>
           </value>
         </block>
