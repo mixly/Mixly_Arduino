@@ -13,13 +13,16 @@ pbc.assignD.get('iot')['check_assign'] = function(py2block, node, targets, value
 }
 
 pbc.assignD.get('iot')['create_block'] = function(py2block, node, targets, value){
+    pbc.pinType = "pins_callback";
+    var subblock = py2block.convert(value.args[5]);
+    pbc.pinType = null;
     return block("iot_onenet_connect", node.lineno, {}, {
         "CLIENT":py2block.convert(value.args[0]),
         "SERVER":py2block.convert(value.args[1]),
         "USERNAME":py2block.convert(value.args[2]),
         "PASSWORD":py2block.convert(value.args[3]),
         "TOPIC":py2block.convert(value.args[4]),
-        "SUB":py2block.convert(value.args[5]),
+        "SUB":subblock,
         "VAR":py2block.convert(targets[0])
     });
 }
