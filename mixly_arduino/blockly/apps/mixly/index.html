@@ -618,7 +618,13 @@
 <block type="RFID_init"></block>   <!--初始化-->
 <block type="RFID_on"></block>   <!--如果侦测到信号那么执行XXX-->
 <block type="RFID_readcardnum"></block>  <!--读取卡号-->
-<block type="RFID_in"></block>		<!-- 如果卡号和XX一致，那么执行XXX-->
+<block type="RFID_in">
+  <value name="uid_">     
+    <shadow type="text">
+      <field name="TEXT">123</field>
+    </shadow>
+   </value>
+</block>		<!-- 如果卡号和XX一致，那么执行XXX-->
 <block type="RFID_writecarddata">
  <value name="address1">
   <shadow type="math_number">

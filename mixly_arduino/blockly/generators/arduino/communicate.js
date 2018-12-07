@@ -325,7 +325,15 @@ Blockly.Arduino.RFID_off = function() {
 
 Blockly.Arduino.RFID_in = function() {
   // Do while/until loop.
-
+  var funcName='RFID_readcardnum';
+  var code='String'+ ' ' + funcName + '() {\n'
+    +"\n"+' rfid.readCardSerial();  '
+    +"\n"+'  String stringserNum=String(rfid.serNum[0], HEX)+String(rfid.serNum[1], HEX)+String(rfid.serNum[2], HEX)+String(rfid.serNum[3], HEX)+String(rfid.serNum[4], HEX);'
+    +"\n"+'      //选卡，返回卡容量（锁定卡片，防止多次读写）'   
+    +"\n"+'      rfid.selectTag(rfid.serNum);'
+    +"\n"+'  return stringserNum; '//直接返回string
+    + '\n}\n';
+  Blockly.Arduino.definitions_[funcName] = code;  
   var argument0 = Blockly.Arduino.valueToCode(this, 'uid_',
       Blockly.Arduino.ORDER_NONE) || 'false';
   var branch = Blockly.Arduino.statementToCode(this, 'do_');
@@ -333,6 +341,18 @@ Blockly.Arduino.RFID_in = function() {
     branch = Blockly.Arduino.INFINITE_LOOP_TRAP.replace(/%1/g,
         '\'' + this.id + '\'') + branch;
   }
-
-  return 'if (' + 'strcmp(RFID_read(),'+argument0+'.c_str())==0' + ') {\n' + branch + '}\n';
+  /*
+    fixed bug caused by parameter of strcmp() must be const char*
+    author:zyc
+    date:2018-12-7
+   */
+  if(argument0!='false'){
+    if(argument0.indexOf('\"') === 0)
+      return 'if (' + 'strcmp(RFID_readcardnum().c_str(),'+argument0+')==0' + ') {\n' + branch + '}\n';
+    else
+      return 'if (' + 'strcmp(RFID_readcardnum().c_str(),'+argument0+'.c_str())==0' + ') {\n' + branch + '}\n';
+  }
+  else
+    return '';
+    
 };
