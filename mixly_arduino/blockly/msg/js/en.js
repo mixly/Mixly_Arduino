@@ -2032,7 +2032,6 @@ Blockly.MIXLY_ESP32_MONITOR_SHOW_STATIC='Display String Static';
 Blockly.MIXLY_ESP32_SENOR_GYRO='GYPO(rad/s)';
 Blockly.Msg.DATAFRAME_RAW = "Raw";
 Blockly.Msg.DATAFRAME_COLUMN = "Column";
-<<<<<<< HEAD
 Blockly.MIXLY_ESP32_SENSOR_LIGHT_LEVEL_TOOLTIP="Set sensor brightness level";
 Blockly.MIXLY_ESP32_SENSOR_RTC_INT_TOOLTIP="Initialize the real time clock";
 Blockly.MIXLY_ESP32_RTC_SET_DATATIME_TOOLTIP="Set the RTC clock module time";
@@ -2055,10 +2054,8 @@ Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TOOLTIP="send Message";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_RECEIVE_FROM_TOOLTIP="Return received data";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TO_TOOLTIP="Send a message to the specified network address";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CLOSE_TOOLTIP="Turn off network connection";
-=======
 
 
 //@author:zyc 2018-12-6
 Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
->>>>>>> 5623af57e5ed9be0ec4425805e18935a3efcb05c
