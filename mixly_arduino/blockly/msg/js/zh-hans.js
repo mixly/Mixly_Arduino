@@ -2039,3 +2039,6 @@ Blockly.MIXLY_ESP32_MUSIC_RESET = "恢复音乐的分辨率、速度等初始设
 Blockly.MIXLY_ESP32_MUSIC_WRI = "使RGB彩灯模块起作用";
 Blockly.MIXLY_ESP32_MUSIC_SHOW_STATIC = "在屏幕上静态显示字符串";
 Blockly.MIXLY_ESP32_DISPLAY_SETPIXEL = "设置LED点阵灯在(x,y)位置的亮灭状态";
+Blockly.MIXLY_ESP32_SENSOR_LIGHT_LEVEL="设置传感器亮度等级";
+Blockly.MIXLY_ESP32_SENSOR_RTC_INT="初始化实时时钟";
+Blockly.MIXLY_ESP32_RTC_SET_DATATIME="设置RTC时钟模块时间";

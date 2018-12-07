@@ -674,19 +674,23 @@
                 </shadow>
               </value>
             </block>
-            <block type="procedures_defnoreturn">
-                <field name="NAME">tim_callback</field>
-                <statement name="STACK">
-                    <block type="system_print">
-                       <value name="VAR">
-                           <block type="number_to_text">
-                            <value name="VAR">
-                                <block type="controls_millis"></block>
-                            </value>
-                       </value>
+      <block type="procedures_defnoreturn">
+          <mutation>
+            <arg name="x"></arg>
+          </mutation>
+          <field name="NAME">tim_callback</field>
+          <statement name="STACK">
+              <block type="system_print">
+                 <value name="VAR">
+                     <block type="number_to_text">
+                      <value name="VAR">
+                          <block type="controls_millis"></block>
+                      </value>
                     </block>
-                </statement>
-            </block>
+                 </value>
+              </block>
+          </statement>
+      </block>
       <block type="controls_flow_statements"></block>
       <block type="controls_millis"></block>
       <block type="system_ticks_diff">
