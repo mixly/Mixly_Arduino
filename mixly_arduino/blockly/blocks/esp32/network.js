@@ -19,6 +19,7 @@ Blockly.Blocks['network_init'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_INIT_TOOLTIP);
     }
 };
 
@@ -38,6 +39,7 @@ Blockly.Blocks['network_open'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_OPEN_TOOLTIP);
     }
 };
 
@@ -61,6 +63,7 @@ Blockly.Blocks['network_scan'] = {
             ]), "op");
         this.setOutput(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SCAN_TOOLTIP);
     }
 };
 
@@ -79,6 +82,7 @@ Blockly.Blocks['network_connect'] = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_CONNECT_TOOLTIP);
     }
 };
 
@@ -92,6 +96,7 @@ Blockly.Blocks['network_wifi_connect'] = {
             .appendField(Blockly.MIXLY_SYMBOL_QUESTION);
         this.setOutput(true, Boolean);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_WIFI_CONNECT_TOOLTIP);
     }
 };
 
@@ -110,6 +115,7 @@ Blockly.Blocks['network_get_connect'] = {
             ]), "mode");
         this.setOutput(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_GET_CONNECT_TOOLTIP);
     }
 };
 
@@ -122,6 +128,7 @@ Blockly.Blocks['network_stop'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_STOP_TOOLTIP);
     }
 };
 
@@ -138,6 +145,7 @@ Blockly.Blocks['network_get_wifi'] = {
             ]), "op");
         this.setOutput(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_GET_WIFI_TOOLTIP);
     }
 };
 
@@ -156,6 +164,7 @@ Blockly.Blocks['network_ap_connect'] = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_AP_CONNECT_TOOLTIP);
     }
 };
 
@@ -170,6 +179,7 @@ Blockly.Blocks['network_server'] = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SERVER_TOOLTIP);
     }
 };
 
@@ -188,6 +198,7 @@ Blockly.Blocks['network_socket_init'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SOCKET_INIT_TOOLTIP);
     }
 };
 
@@ -202,6 +213,7 @@ Blockly.Blocks['network_socket_bind'] = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SOCKET_BIND_TOOLTIP);
     }
 };
 
@@ -217,6 +229,7 @@ Blockly.Blocks['network_socket_listen'] = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SOCKET_LISTEN_TOOLTIP);
     }
 };
 
@@ -229,6 +242,7 @@ Blockly.Blocks['network_socket_accept'] = {
             .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_ACCEPT);
         this.setOutput(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SOCKET_ACCEPT_TOOLTIP);
     }
 };
 
@@ -243,6 +257,7 @@ Blockly.Blocks['network_socket_receive'] = {
             .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_RECEIVE)
         this.setOutput(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SOCKET_RECEIVE_TOOLTIP);
     }
 };
 
@@ -258,6 +273,7 @@ Blockly.Blocks['network_socket_send'] = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TOOLTIP);
     }
 };
 
@@ -272,6 +288,7 @@ Blockly.Blocks['network_socket_receive_from'] = {
             .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_RECEIVE)
         this.setOutput(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SOCKET_RECEIVE_FROM_TOOLTIP);
     }
 };
 
@@ -289,6 +306,7 @@ Blockly.Blocks['network_socket_send_to'] = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TO_TOOLTIP);
     }
 };
 
@@ -302,5 +320,6 @@ Blockly.Blocks['network_socket_close'] = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SOCKET_CLOSE_TOOLTIP);
     }
 };

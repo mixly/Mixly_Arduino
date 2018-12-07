@@ -178,7 +178,7 @@ Blockly.Blocks['sensor_light_level'] = {
             .appendField(Blockly.MIXLY_MICROBIT_JS_LIGHT_LEVEL)
         this.setOutput(true, Number);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_ESP32_SENSOR_LIGHT_LEVEL);
+        this.setTooltip(Blockly.MIXLY_ESP32_SENSOR_LIGHT_LEVEL_TOOLTIP);
     }
 };
 /*
@@ -488,7 +488,7 @@ Blockly.Blocks.RTC_set_datetime = {
     this.setInputsInline(false);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-   this.setTooltip(Blockly.MIXLY_ESP32_RTC_SET_DATATIME);    
+    this.setTooltip(Blockly.MIXLY_ESP32_RTC_SET_DATATIME_TOOLTIP);    
   }
 };
 
@@ -503,7 +503,7 @@ Blockly.Blocks.sensor_rtc_init = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip(Blockly.MIXLY_ESP32_SENSOR_RTC_INT);
+        this.setTooltip(Blockly.MIXLY_ESP32_SENSOR_RTC_INT_TOOLTIP);
     }
 };
 
