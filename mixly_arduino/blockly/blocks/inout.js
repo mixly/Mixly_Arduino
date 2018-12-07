@@ -26,6 +26,7 @@ Blockly.Blocks['inout_pinMode'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_pinMode);
   }
 };
 
@@ -192,6 +193,7 @@ Blockly.Blocks.inout_pulseIn = {
       	.appendField(Blockly.MIXLY_PULSEIN_STAT)
       	.appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_HIGH, "HIGH"], [Blockly.MIXLY_LOW, "LOW"]]), "STAT");
     this.setOutput(true, Number);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_pulseIn);
   }
 };
 
@@ -209,6 +211,7 @@ Blockly.Blocks.inout_pulseIn2 = {
         .setCheck(Number);
     this.setInputsInline(true);
     this.setOutput(true, Number);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_pulseIn2);
   }
 };
 
@@ -232,6 +235,7 @@ Blockly.Blocks.inout_shiftout = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_shiftout);
   }
 };
 

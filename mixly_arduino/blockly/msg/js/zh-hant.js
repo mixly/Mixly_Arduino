@@ -785,6 +785,64 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_READ = '返回舵機當前停留的角度
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE = '按指定的頻率播放聲音。';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE2 = '按指定的頻率和持續時間播放聲音。';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = '停止播放聲音。';
+/*
+ *add tooltips missed in Arduino before
+ *@author:zyc
+ *@date:2018-12-4
+ */
+Blockly.MIXLY_TOOLTIP_INOUT_pinMode = '改變管脚模式';
+Blockly.MIXLY_TOOLTIP_INOUT_pulseIn = '獲取某個管脚最近一次脈衝的週期（微秒）';
+Blockly.MIXLY_TOOLTIP_INOUT_pulseIn2 = '獲取某個管脚最近一次脈衝的週期（微秒，可設定超時時間）';
+Blockly.MIXLY_TOOLTIP_INOUT_shiftout = '將數據通過串列的管道在引脚上輸出，相當於一般意義上的同步串列通信';
+Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2 = 'Arduino內部計时器中斷';
+Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_START = 'MsTimer2开始計时';
+Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_STOP = 'MsTimer2停止計时';
+Blockly.MIXLY_TOOLTIP_CONTROL_END_PROGRAM = '停止程式';
+Blockly.MIXLY_TOOLTIP_CONTROL_ALLOW_INTERRUPT = '允許設定中斷';
+Blockly.MIXLY_TOOLTIP_CONTROL_FORBID_INTERRUPT = '禁止中斷';
+Blockly.MIXLY_TOOLTIP_SCOOP = 'Arduino多執行緒';
+Blockly.MIXLY_TOOLTIP_SCOOP_YIELD = '開始執行多執行緒任務';
+Blockly.MIXLY_TOOLTIP_SCOOP_SLEEP = '延遲指定時間（僅用於多執行緒）';
+Blockly.MIXLY_TOOLTIP_MATH_RANDOM_SEED = '設定亂數種子';
+Blockly.MIXLY_TOOLTIP_TEXT_LENGTH = '求字串長度';
+Blockly.MIXLY_TOOLTIP_TEXT_FIND_CHAR_AT = '在字串中求子串 %1 的位置';
+Blockly.MIXLY_TOOLTIP_TEXT_EQUALS_STARTS_ENDS = '返回字串是否%1 %2';
+Blockly.MIXLY_TOOLTIP_SERIAL_BEGIN = '初始化串口並設定串口通信串列傳輸速率';
+Blockly.MIXLY_TOOLTIP_SERIAL_READSTRUNITL = '從串口讀取字串直到遇到%1';
+Blockly.MIXLY_TOOLTIP_SERIAL_FLUSH = '清除串口緩存區的數據';
+Blockly.MIXLY_TOOLTIP_SOFTSERIAL = '將數位管脚%1和%2類比成串口通信管脚';
+Blockly.MIXLY_TOOLTIP_SERIALEVENT = '在串口接收資訊時通過中斷管道執行某些命令';
+Blockly.MIXLY_TOOLTIP_IR_ENABLE = '';
+Blockly.MIXLY_TOOLTIP_I2C_MASTER_WRITE = 'I2C主設備發送數據，參數是主設備的地址和要發送的值';
+Blockly.MIXLY_TOOLTIP_I2C_MASTER_READ = 'I2C主設備讀取數據，參數是主設備的地址和要讀取內容的位元組長度';
+Blockly.MIXLY_TOOLTIP_I2C_MASTER_READ2 = '返回從I2C主設備讀取到的數據';
+Blockly.MIXLY_TOOLTIP_I2C_AVAILABLE = '返回是否成功讀取I2C設備數據';
+Blockly.MIXLY_TOOLTIP_I2C_SLAVE_ONRECEIVE = 'I2C從機接收主機產生的時鐘和數據訊號，並執行相應操作';
+Blockly.MIXLY_TOOLTIP_SPI_TRANSFER = '作為主設備以SPI管道通過管脚%1向從機傳輸數據';
+Blockly.MIXLY_TOOLTIP_RFID_INIT = '初始化RFID讀卡器，參數為數據線管脚號、時鐘線管脚號、主輸出從輸出線管脚號和主輸入從輸出先管脚號';
+Blockly.MIXLY_TOOLTIP_RFID_ON = '當RFID讀取到數據時執行一些指令';
+Blockly.MIXLY_TOOLTIP_RFID_READ = '返回RFID讀取到的卡號';
+Blockly.MIXLY_TOOLTIP_RFID_IN = '當RFID讀取到特定數據時執行一些指令';
+Blockly.MIXLY_TOOLTIP_RFID_WRITEBLOCK = '向電子標籤中的數據塊寫數據';
+Blockly.MIXLY_TOOLTIP_RFID_READBLOCK = '從電子標籤中的數據塊讀數據';
+Blockly.MIXLY_TOOLTIP_RFID_OFF = '使RFID設備不再繼續讀取數據';
+Blockly.MIXLY_TOOLTIP_STORE_SDWRITE = '向SD卡寫入檔案';
+Blockly.MIXLY_TOOLTIP_STORE_EEPROM_WRITELONG = '向EEPROM特定地址寫入長整型數據';
+Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READLONG = '從EEPROM的特定地址讀取長整型數據';
+Blockly.MIXLY_TOOLTIP_STORE_EEPROM_WRITEBYTE = '向EEPROM特定地址寫入位元組型數據';
+Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READBYTE = '從EEPROM的特定地址讀取位元組型數據';
+Blockly.MIXLY_TOOLTIP_GPS_INIT = '初始化GPS設備，參數為GPS通信管脚和串列傳輸速率';
+Blockly.MIXLY_TOOLTIP_GPS_DATA_AVAILABLE = '返回GPS數據是否為有效值';
+Blockly.MIXLY_TOOLTIP_GPS_GETDATA = '獲取GPS衛星傳回的%1數據';
+Blockly.MIXLY_TOOLTIP_LM35 = '獲取LM35感測器傳回的溫度值';
+Blockly.MIXLY_TOOLTIP_DS18 = '獲取DS18B20感測器傳回的溫度值';
+Blockly.MIXLY_TOOLTIP_DS1302_INIT = '初始化DS1302 RTC時鐘模塊，參數為重置線管脚號，數據線管脚號和時鐘線管脚號';
+Blockly.MIXLY_TOOLTIP_DS1307_INIT = '初始化DS1307 RTC時鐘模塊，參數為數據線管脚號和時鐘線管脚號';
+Blockly.MIXLY_TOOLTIP_DS1307_GETTIME = '從RTC時鐘模塊獲取%1';
+Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
+Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
+Blockly.MIXLY_TOOLTIP_ADXL345 = '獲取ADXL345重力感應模塊傳回的%1';
+//end
 Blockly.LUXE_LED='燈#';
 Blockly.LUXE_MOTOR='電機#';
 Blockly.LUXE_STAT='為';
@@ -1975,3 +2033,8 @@ Blockly.MIXLY_ESP32_MONITOR_SHOW_STATIC='靜態顯示字串';
 Blockly.MIXLY_ESP32_SENOR_GYRO='角速度(rad/s)';
 Blockly.Msg.DATAFRAME_RAW = "行";
 Blockly.Msg.DATAFRAME_COLUMN = "列";
+
+
+//@author:zyc 2018-12-6
+Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
+Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;

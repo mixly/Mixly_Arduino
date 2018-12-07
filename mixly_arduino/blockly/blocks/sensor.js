@@ -21,6 +21,7 @@ Blockly.Blocks['gps_init'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
+  this.setTooltip(Blockly.MIXLY_TOOLTIP_GPS_INIT);
   }
 };
 
@@ -30,6 +31,7 @@ Blockly.Blocks.gps_data_available = {
 	this.appendDummyInput()
         .appendField(Blockly.MIXLY_GPS_DATA_AVAILABLE);
 	this.setOutput(true, Boolean);
+  this.setTooltip(Blockly.MIXLY_TOOLTIP_GPS_DATA_AVAILABLE);
   }
 };
 
@@ -50,6 +52,7 @@ Blockly.Blocks.gps_xxx_isValid = {
 		.appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_GPS_LOCATION, "location"],[Blockly.MIXLY_GPS_DATE, "date"], [Blockly.MIXLY_GPS_TIME, "time"]]), "WHAT")
         .appendField(Blockly.MIXLY_GPS_ISVALID);
 	this.setOutput(true, Boolean);
+  this.setTooltip(Blockly.MIXLY_TOOLTIP_GPS_DATA_VAILD);
   }
 };
 
@@ -60,6 +63,7 @@ Blockly.Blocks.gps_getData_xxx = {
 		.appendField(Blockly.MIXLY_GPS_GET)
 		.appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_GPS_LOCATION_LAT, "location.lat"],[Blockly.MIXLY_GPS_LOCATION_LNG, "location.lng"], [Blockly.MIXLY_GPS_DATE_YEAR, "date.year"], [Blockly.MIXLY_GPS_DATE_MONTH, "date.month"], [Blockly.MIXLY_GPS_DATE_DAY, "date.day"], [Blockly.MIXLY_GPS_TIME_HOUR, "time.hour"], [Blockly.MIXLY_GPS_TIME_MINUTE, "time.minute"], [Blockly.MIXLY_GPS_TIME_SECOND, "time.second"], [Blockly.MIXLY_GPS_TIME_CENTISECOND, "time.centisecond"]]), "WHAT");
 	this.setOutput(true, Number);
+  this.setTooltip(Blockly.MIXLY_TOOLTIP_GPS_GETDATA.replace('%1',this.getFieldValue('WHAT')));
   }
 };
 
@@ -126,7 +130,7 @@ Blockly.Blocks.LM35 = {
     this.appendValueInput("PIN", Number).appendField(Blockly.MIXLY_PIN).setCheck(Number);
     this.setInputsInline(true);
     this.setOutput(true, Number);
-    this.setTooltip('');
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_LM35);
   }
 };
 //DS18B20ÎÂ¶È´«¸ÐÆ÷
@@ -141,6 +145,7 @@ Blockly.Blocks.ds18b20 = {
             .appendField(Blockly.MIXLY_DS18B20_GET_TEMP)
             .appendField(new Blockly.FieldDropdown(UNIT), "UNIT");
         this.setOutput(true, Number);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_DS18);
     }
 };
 
@@ -164,6 +169,7 @@ Blockly.Blocks.DS1302_init = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_DS1302_INIT);
     }
 }
 
@@ -184,6 +190,7 @@ Blockly.Blocks.DS1307_init = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_DS1307_INIT);
     },
     //mutation有问题，暂时弃用
     /*mutationToDom: function() {
@@ -242,6 +249,7 @@ Blockly.Blocks.RTC_get_time = {
     this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
     this.setInputsInline(true);
     this.setOutput(true, Number);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_RTC_GETTIME.replace('%1',this.getFieldValue("TIME_TYPE")));
   }
 };
 //传感器-实时时钟块_设置时间
@@ -255,6 +263,7 @@ Blockly.Blocks.RTC_set_time = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(false);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_RTC_SETTIME);
    }
 };
 //传感器-实时时钟块_设置日期
@@ -267,6 +276,7 @@ Blockly.Blocks.RTC_set_date = {
     this.appendValueInput("day").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("  "+Blockly.MIXLY_DAY);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_RTC_SETDATE);
   }
 };
 
@@ -286,5 +296,6 @@ Blockly.Blocks.ADXL345 = {
     this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(ADXL345_GETAB), "ADXL345_PIN");
     this.setInputsInline(true);
     this.setOutput(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_ADXL345.replace('%1',this.getFieldValue("ADXL345_PIN")));
    }
 };

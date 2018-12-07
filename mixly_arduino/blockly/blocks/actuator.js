@@ -36,10 +36,11 @@ Blockly.Blocks.servo_writeMicroseconds = {
     this.appendValueInput("DEGREE", Number)
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField('writeMicroseconds');
+        .appendField(Blockly.MIXLY_SERVO_WRITEMICROSECONDS);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_WRITEMICROSECONDS);
   }
 };
 

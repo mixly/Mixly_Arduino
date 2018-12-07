@@ -65,6 +65,7 @@ Blockly.Blocks.ir_recv_enable = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_IR_ENABLE);
     }
 };
 
@@ -119,6 +120,7 @@ Blockly.Blocks.i2c_master_writer = {
             .appendField(Blockly.MIXLY_I2C_VALUE);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_I2C_MASTER_WRITE);
     }
 };
 Blockly.Blocks.i2c_master_reader = {
@@ -134,6 +136,7 @@ Blockly.Blocks.i2c_master_reader = {
             .appendField(Blockly.MIXLY_I2C_BYTES);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_I2C_MASTER_READ);
     }
 };
 Blockly.Blocks.i2c_master_reader2 = {
@@ -142,6 +145,7 @@ Blockly.Blocks.i2c_master_reader2 = {
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_I2C_MASTER_READ2);
         this.setOutput(true, Number);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_I2C_MASTER_READ2);
     }
 };
 Blockly.Blocks.i2c_available = {
@@ -150,6 +154,7 @@ Blockly.Blocks.i2c_available = {
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_I2C_AVAILABLE);
         this.setOutput(true, Boolean);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_I2C_AVAILABLE);
     }
 };
 
@@ -163,6 +168,7 @@ Blockly.Blocks.i2c_slave_onreceive = {
             .appendField(Blockly.MIXLY_DO);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_I2C_SLAVE_ONRECEIVE);
     }
 };
 
@@ -181,6 +187,7 @@ Blockly.Blocks.spi_transfer = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_SPI_TRANSFER.replace('%1',Blockly.Arduino.valueToCode(this, 'pin',Blockly.Arduino.ORDER_ATOMIC)));
     }
 }
 
@@ -200,6 +207,7 @@ Blockly.Blocks.RFID_init={
 	    .appendField(new Blockly.FieldDropdown([["12", "12"]]), "PORT4");
 	this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_RFID_INIT);
 	//this.setOutput(true, Number);
 	//var thisBlock = this;
    
@@ -215,7 +223,7 @@ Blockly.Blocks.RFID_on = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.communicate.HUE);
-    this.setTooltip('');
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_RFID_ON);
   }
 };
 
@@ -228,6 +236,7 @@ Blockly.Blocks.RFID_readcardnum={
 	    .appendField(Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM)
 	this.setOutput(true, String);
 	var thisBlock = this;
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_RFID_READ);
    
   }
 };
@@ -256,6 +265,7 @@ Blockly.Blocks.RFID_in = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.communicate.HUE);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_RFID_IN);
   }
 };
 
@@ -271,7 +281,7 @@ Blockly.Blocks.RFID_writecarddata={
 	  .appendField(new Blockly.FieldTextInput('mylist'), 'data1')
 	this.setPreviousStatement(true);
     this.setNextStatement(true);
-	this.setTooltip(Blockly.MIXLY_COMMUNICATION_RFID_TOOLTIP);
+	this.setTooltip(Blockly.MIXLY_TOOLTIP_RFID_WRITEBLOCK);
   }
 };
 
@@ -286,7 +296,7 @@ Blockly.Blocks.RFID_readcarddata={
 	this.appendDummyInput("")
 		.appendField(Blockly.MIXLY_COMMUNICATION_DATA_FROM)
 	this.setOutput(true, Number);
-	var thisBlock = this;
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_RFID_READBLOCK);
    
   }
 };
@@ -314,7 +324,6 @@ Blockly.Blocks.RFID_off={
 	//this.setOutput(true, Number);
 	this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-	var thisBlock = this;
-   
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_RFID_OFF);  
   }
 };

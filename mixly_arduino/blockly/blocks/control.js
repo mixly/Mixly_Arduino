@@ -605,6 +605,7 @@ Blockly.Blocks.controls_mstimer2 = {
         .appendField(Blockly.MIXLY_MSTIMER2_DO);
 	this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2);
   }
 };
 
@@ -616,6 +617,7 @@ Blockly.Blocks.controls_mstimer2_start = {
 		.appendField(Blockly.MIXLY_MSTIMER2_START);
 	this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_START);
   }
 };
 
@@ -627,6 +629,7 @@ Blockly.Blocks.controls_mstimer2_stop = {
 		.appendField(Blockly.MIXLY_MSTIMER2_STOP);
 	this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_STOP);
   }
 };
 
@@ -637,6 +640,7 @@ Blockly.Blocks.controls_end_program = {
 	    .appendField(Blockly.MIXLY_CONTROL_END_PROGRAM);
 	this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_END_PROGRAM);
   }
 };
 
@@ -647,6 +651,7 @@ Blockly.Blocks.controls_interrupts = {
             .appendField(Blockly.MIXLY_CONTROL_INTERRUPTS);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_ALLOW_INTERRUPT);
     }
 };
 
@@ -657,6 +662,7 @@ Blockly.Blocks.controls_nointerrupts = {
             .appendField(Blockly.MIXLY_CONTROL_NOINTERRUPTS);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_FORBID_INTERRUPT);
     }
 };
 Blockly.Blocks.base_delay=Blockly.Blocks.controls_delay;
