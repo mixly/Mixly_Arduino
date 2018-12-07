@@ -787,23 +787,81 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_READ = 'Devuelve los grados girados en el
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE = 'Reproduce sonido con la frecuencia especificada.';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE2 = 'Reproduce sonido en función de la frecuencia y la duración especificada.';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = 'Detiene el sonido.';
-//untranslated
+/*
+ *add tooltips missed in Arduino before
+ *@author:zyc
+ *@date:2018-12-4
+ */
+Blockly.MIXLY_TOOLTIP_INOUT_pinMode = 'Cambiar modo pin';
+Blockly.MIXLY_TOOLTIP_INOUT_pulseIn = 'Obtener el período del último pulso de un pin (microsegundos)';
+Blockly.MIXLY_TOOLTIP_INOUT_pulseIn2 = 'Obtenga el período del último pulso de un pin (microsegundos, se puede configurar el parámetro de tiempo de espera)';
+Blockly.MIXLY_TOOLTIP_INOUT_shiftout = 'Salida de datos en pines como serial, que es equivalente a la comunicación serial síncrona en sentido general';
+Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2 = 'Interrupción del temporizador interno Arduino';
+Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_START = 'MsTimer2 comienzo';
+Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_STOP = 'MsTimer2 detener';
+Blockly.MIXLY_TOOLTIP_CONTROL_END_PROGRAM = 'detener este programa';
+Blockly.MIXLY_TOOLTIP_CONTROL_ALLOW_INTERRUPT = 'Habilitar interrupcion';
+Blockly.MIXLY_TOOLTIP_CONTROL_FORBID_INTERRUPT = 'Desactivar la interrupcion';
+Blockly.MIXLY_TOOLTIP_SCOOP = 'Arduino Multihilo';
+Blockly.MIXLY_TOOLTIP_SCOOP_YIELD = 'Empezar a ejecutar tareas multiproceso';
+Blockly.MIXLY_TOOLTIP_SCOOP_SLEEP = 'Tiempo de retardo especificado (solo para multihilo)';
+Blockly.MIXLY_TOOLTIP_MATH_RANDOM_SEED = 'Establecer semillas de números aleatorios';
+Blockly.MIXLY_TOOLTIP_TEXT_LENGTH = 'Obtener la longitud de la cadena';
+Blockly.MIXLY_TOOLTIP_TEXT_FIND_CHAR_AT = 'encuentra la subcadena %1 en la cadena';
+Blockly.MIXLY_TOOLTIP_TEXT_EQUALS_STARTS_ENDS = 'Devuelve si la cadena %1 %2';
+Blockly.MIXLY_TOOLTIP_SERIAL_BEGIN = 'Inicialice el puerto serie y establezca la velocidad en baudios de comunicación del puerto serie';
+Blockly.MIXLY_TOOLTIP_SERIAL_READSTRUNITL = 'Read the string from the serial port until encounter %1';
+Blockly.MIXLY_TOOLTIP_SERIAL_FLUSH = 'Borrar datos en un búfer serial';
+Blockly.MIXLY_TOOLTIP_SOFTSERIAL = 'Simule los pines digitales #%1 y #%2 en pines de comunicación serie';
+Blockly.MIXLY_TOOLTIP_SERIALEVENT = 'Ejecute ciertos comandos por interrupción cuando reciba información en puertos serie';
+Blockly.MIXLY_TOOLTIP_IR_ENABLE = '';
+Blockly.MIXLY_TOOLTIP_I2C_MASTER_WRITE = 'El dispositivo principal I2C envía datos. Los parámetros son la dirección del dispositivo principal y el valor a enviar.';
+Blockly.MIXLY_TOOLTIP_I2C_MASTER_READ = 'El dispositivo principal I2C lee datos. Los parámetros son la dirección del dispositivo principal y la longitud del byte del contenido a leer.';
+Blockly.MIXLY_TOOLTIP_I2C_MASTER_READ2 = 'Devolver datos leídos del dispositivo principal I2C';
+Blockly.MIXLY_TOOLTIP_I2C_AVAILABLE = 'Devuelve si los datos del dispositivo I2C se leyeron correctamente';
+Blockly.MIXLY_TOOLTIP_I2C_SLAVE_ONRECEIVE = 'El dispositivo esclavo I2C recibe señales de reloj y datos generadas por el dispositivo host y realiza algunas operaciones.';
+Blockly.MIXLY_TOOLTIP_SPI_TRANSFER = 'Transfiera datos al dispositivo esclavo a través del pin #%1 en SPI como equipo principal';
+Blockly.MIXLY_TOOLTIP_RFID_INIT = 'Inicialice el lector RFID con los parámetros de número de pin de línea de datos, número de pin de línea de reloj, número de pin de línea de salida del esclavo de salida principal y número de pin de salida del esclavo de entrada principal.'
+Blockly.MIXLY_TOOLTIP_RFID_ON = 'Ejecutar algunos comandos cuando RFID puede leer datos';
+Blockly.MIXLY_TOOLTIP_RFID_READ = 'Devolver Numero de tarjeta leídos por RFID';
+Blockly.MIXLY_TOOLTIP_RFID_IN = 'Ejecutar algunos comandos cuando RFID lee datos específicos';
+Blockly.MIXLY_TOOLTIP_RFID_WRITEBLOCK = 'Escribir datos en el bloque de datos específico de la etiqueta electrónica.';
+Blockly.MIXLY_TOOLTIP_RFID_READBLOCK = 'Lectura de datos de bloques de datos en la etiqueta electrónica';
+Blockly.MIXLY_TOOLTIP_RFID_READBLOCK = 'Hacer que el dispositivo RFID ya no lea datos';
+Blockly.MIXLY_TOOLTIP_STORE_SDWRITE = 'Escribir archivos en la tarjeta SD';
+Blockly.MIXLY_TOOLTIP_STORE_EEPROM_WRITELONG = 'Escriba datos enteros largos en una dirección específica de EEPROM';
+Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READLONG = 'Leer datos enteros largos de direcciones específicas de EEPROM';
+Blockly.MIXLY_TOOLTIP_STORE_EEPROM_WRITEBYTE = 'Escriba los datos de bytes a la dirección específica de EEPROM';
+Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READBYTE = 'Lea los datos de bytes de la dirección específica de EEPROM';
+Blockly.MIXLY_TOOLTIP_GPS_INIT = 'Inicializar equipo GPS con parámetros de pin de comunicación GPS y velocidad de transmisión.';
+Blockly.MIXLY_TOOLTIP_GPS_DATA_AVAILABLE = 'Devuelve si los datos GPS son válidos';
+Blockly.MIXLY_TOOLTIP_GPS_GETDATA = 'GET %1 datos de satélites GPS';
+Blockly.MIXLY_TOOLTIP_LM35 = 'Obtención del retorno de temperatura del sensor LM35';
+Blockly.MIXLY_TOOLTIP_DS18 = 'Obtenga el valor de temperatura devuelto por el sensor DS18B20';
+Blockly.MIXLY_TOOLTIP_DS1302_INIT = 'Inicialice el módulo de reloj DS1302 RTC con los parámetros de reinicio del número de pin de línea, número de pin de línea de datos y número de pin de línea de reloj.';
+Blockly.MIXLY_TOOLTIP_DS1307_INIT = 'Inicialice el módulo de reloj DS1307 RTC con número de pin de línea de datos y número de pin de línea de reloj como parámetros';
+Blockly.MIXLY_TOOLTIP_DS1307_GETTIME = 'Obtenga %1 del módulo de reloj RTC';
+Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
+Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
+Blockly.MIXLY_TOOLTIP_ADXL345 = 'Obtenga %1 devuelto por el módulo de inducción de gravedad ADXL345';
+
+//translated by zyc in 2018-12-7
 Blockly.LUXE_LED='LED #';
 Blockly.LUXE_MOTOR='Motor #';
-Blockly.LUXE_STAT='Stat';
-Blockly.LUXE_SPEED='Speed';
-Blockly.LUXE_DIR='Direction';
+Blockly.LUXE_STAT='Estado';
+Blockly.LUXE_SPEED='Velocidad';
+Blockly.LUXE_DIR='Dirección';
 Blockly.LUXE_LED_ON='ON';
 Blockly.LUXE_LED_OFF='OFF';
-Blockly.LUXE_MOTOR_FORWARD='Clockwise';
-Blockly.LUXE_MOTOR_REVERSE='Counterclockwise';
-Blockly.LUXE_LED_CHANGE='change';
-Blockly.LUXE_MOTOR_CHANGE='changeDirection';
-Blockly.LUXE_MOTOR_STOP='stop';
-Blockly.LUXE_SPEAKER_PLAYSOUND='Play sound';
-Blockly.LUXE_SPEANER_NOSOUND='No sound';
-Blockly.LUXE_SPEAKER_FREQUENCY='frequency';
-Blockly.LUXE_SPEAKER_DURATION='duration';
+Blockly.LUXE_MOTOR_FORWARD='Agujas del reloj';
+Blockly.LUXE_MOTOR_REVERSE='Sinistrórsum';
+Blockly.LUXE_LED_CHANGE='Cambio';
+Blockly.LUXE_MOTOR_CHANGE='Cambia la direccion';
+Blockly.LUXE_MOTOR_STOP='detener';
+Blockly.LUXE_SPEAKER_PLAYSOUND='Reproducir sonido';
+Blockly.LUXE_SPEANER_NOSOUND='Sin sonido';
+Blockly.LUXE_SPEAKER_FREQUENCY='frecuencia';
+Blockly.LUXE_SPEAKER_DURATION='duración';
 
 //-----------------NOVA---------------------------------
 Blockly.MIXLY_NOVA_PORT = 'Port';
@@ -1995,3 +2053,7 @@ Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TOOLTIP="Enviar mensaje";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_RECEIVE_FROM_TOOLTIP="Devolver datos recibidos";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TO_TOOLTIP="Enviar un mensaje a la dirección de red especificada.";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CLOSE_TOOLTIP="Apagar la conexión de red";
+
+Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
+Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
+

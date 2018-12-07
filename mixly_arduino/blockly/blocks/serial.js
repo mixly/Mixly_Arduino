@@ -14,6 +14,7 @@ Blockly.Blocks['serial_begin'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_SERIAL_BEGIN);
   }
 };
 
@@ -97,6 +98,7 @@ Blockly.Blocks['serial_readstr_until'] = {
 		.setCheck(Number);
 	this.setInputsInline(true);
 	this.setOutput(true, String);
+  this.setTooltip(Blockly.MIXLY_TOOLTIP_SERIAL_READSTRUNITL.replace('%1',Blockly.Arduino.valueToCode(this, 'CONTENT',Blockly.Arduino.ORDER_ATOMIC)));
   }
 };
 
@@ -128,6 +130,7 @@ Blockly.Blocks['serial_flush'] = {
         .appendField(Blockly.MIXLY_SERIAL_FLUSH);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_SERIAL_FLUSH);
   }
 };
 
@@ -147,6 +150,7 @@ Blockly.Blocks['serial_softserial'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
+  this.setTooltip(Blockly.MIXLY_TOOLTIP_SOFTSERIAL.replace('%1',Blockly.Arduino.valueToCode(this, 'RX',Blockly.Arduino.ORDER_ATOMIC)).replace('%2',Blockly.Arduino.valueToCode(this, 'TX',Blockly.Arduino.ORDER_ATOMIC)));
   }
 };
 
@@ -160,5 +164,6 @@ Blockly.Blocks['serial_event'] = {
             .appendField(Blockly.MIXLY_DO);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_SERIALEVENT);
     }
 };

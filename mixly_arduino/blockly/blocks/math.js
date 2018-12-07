@@ -205,6 +205,7 @@ Blockly.Blocks['math_random_seed'] = {
             .appendField(Blockly.LANG_MATH_RANDOM_SEED);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_MATH_RANDOM_SEED);
     }
 };
 

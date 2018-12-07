@@ -24,6 +24,7 @@ Blockly.Blocks.store_sd_write = {
         .appendField(Blockly.MIXLY_SD_NEWLINE);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_STORE_SDWRITE);
   },
   newQuote_: function(open) {
     if (open == this.RTL) {
@@ -47,6 +48,7 @@ Blockly.Blocks.store_eeprom_write_long = {
         .appendField(Blockly.MIXLY_DATA);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_STORE_EEPROM_WRITELONG);
   }
 };
 
@@ -57,6 +59,7 @@ Blockly.Blocks.store_eeprom_read_long = {
 		.setCheck(Number)
         .appendField(Blockly.MIXLY_EEPROM_READ_LONG);
     this.setOutput(true, Number);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READLONG);
   }
 };
 
@@ -73,6 +76,7 @@ Blockly.Blocks.store_eeprom_write_byte = {
         .appendField(Blockly.MIXLY_DATA);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_STORE_EEPROM_WRITEBYTE);
   }
 };
 
@@ -83,5 +87,6 @@ Blockly.Blocks.store_eeprom_read_byte = {
 		.setCheck(Number)
         .appendField(Blockly.MIXLY_EEPROM_READ_BYTE);
     this.setOutput(true, Number);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READBYTE);
   }
 };

@@ -18,8 +18,7 @@ Blockly.Blocks['SCoopTask'] = {
         .appendField(Blockly.MIXLY_CONTROL_SCoop_loop)
         .setCheck(null);
     this.setColour(Blockly.Blocks.SCoop.HUE);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_SCOOP);
   }
 };
 
@@ -30,6 +29,7 @@ Blockly.Blocks['SCoop_yield'] = {
 		.appendField(Blockly.MIXLY_CONTROL_SCoop_yield);
     this.setPreviousStatement(false, null);
     this.setNextStatement(false, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_SCOOP_YIELD);
   }
 };
 Blockly.Blocks['SCoop_sleep'] = {
@@ -43,5 +43,6 @@ Blockly.Blocks['SCoop_sleep'] = {
 		    .appendField(Blockly.MIXLY_DELAY_MS);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_SCOOP_SLEEP);
   }
 };

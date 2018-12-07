@@ -176,6 +176,7 @@ init: function() {
         .appendField(Blockly.MIXLY_LENGTH)
         .setCheck(String);
 	this.setOutput(true, Number);
+  this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_LENGTH);
   }
 }
 
@@ -191,7 +192,11 @@ init: function() {
 		.appendField(Blockly.Msg.TEXT_CHARAT2);
 	this.setOutput(true, Number);
 	this.setInputsInline(true);
-  }
+  var self = this;
+  this.setTooltip(function(){
+    return Blockly.MIXLY_TOOLTIP_TEXT_FIND_CHAR_AT.replace('%1',Blockly.Arduino.valueToCode(self, 'VAR',Blockly.Arduino.ORDER_ATOMIC));
+  });
+  } 
 }
 
 Blockly.Blocks['text_equals_starts_ends']={
@@ -208,6 +213,16 @@ init: function() {
         .setCheck([String,Number]);
 	this.setOutput(true, [Boolean,Number]);
 	this.setInputsInline(true);
+  var self = this;
+  this.setTooltip(function(){
+    var op = self.getFieldValue('DOWHAT');
+      var TOOLTIPS = {
+        'equals': Blockly.MIXLY_EQUALS,
+        'startsWith': Blockly.MIXLY_STARTSWITH,
+        'endsWith':Blockly.MIXLY_ENDSWITH
+      };
+      return Blockly.MIXLY_TOOLTIP_TEXT_EQUALS_STARTS_ENDS.replace('%1',TOOLTIPS[op]).replace('%2',Blockly.Arduino.valueToCode(self, 'STR2',Blockly.Arduino.ORDER_ATOMIC));
+  });
   }
 }
 
