@@ -548,13 +548,15 @@
           </shadow>
         </value>
       </block>
-     <block type="procedures_defnoreturn">
-         <field name="NAME">attachInterrupt_func</field>
-         <statement name="STACK">
-             <block type="controls_pass">
-             </block>
-         </statement>
-     </block>
+  <block type="procedures_defnoreturn">
+    <mutation>
+      <arg name="x"></arg>
+    </mutation>
+    <field name="NAME">attachInterrupt_func</field>
+    <statement name="STACK">
+      <block type="controls_pass"></block>
+    </statement>
+  </block>
 	  <block type="inout_analog_write_init">
         <value name="PIN">
           <shadow type="pins_dac_pin"></shadow>
