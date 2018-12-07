@@ -224,7 +224,7 @@ pbc.assignD.get('i2c')['check_assign'] = function (py2block, node, targets, valu
     var funcName = py2block.identifier(value.func.attr);
     var moduleName = py2block.identifier(value.func.value.id);
     if (value._astname === "Call" && ['MPU9250', 'SHT20', 'BMP280'].indexOf(funcName) != -1
-        && ['mpu9250', 'sht20', 'bmp280'].indexOf(funcName) != -1 && value.args.length === 1)
+        && ['mpu9250', 'sht20', 'bmp280'].indexOf(moduleName) != -1 && value.args.length === 1)
         return true;
 
     return false;
