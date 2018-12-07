@@ -1256,7 +1256,6 @@ Blockly.MIXLY_MICROBIT_Create_image='创建图像 %1 %2 %3 %4 %5 %6 %7 %8 %9 %10
 Blockly.MIXLY_MICROBIT_Panic_with_status_code='错误状态码';
 Blockly.MIXLY_MICROBIT_Sleep='睡眠 %1 毫秒';
 Blockly.MIXLY_MICROBIT_Running_time='运行时间';
-Blockly.MIXLY_MICROBIT_Board_temperature='获取主板温度';
 Blockly.MIXLY_MICROBIT_Reset_micro='复位 micro:bit';
 Blockly.MIXLY_MICROBIT_Play_built_in_melody='播放内置音乐 %1 管脚 #%2 %3 等待 %4 %5 循环 %6';
 Blockly.MIXLY_MICROBIT_Play_built_in_melody_easy='播放内置音乐 %1 管脚 #%2 %3 ';

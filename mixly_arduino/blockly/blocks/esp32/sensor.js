@@ -543,7 +543,7 @@ Blockly.Blocks['sensor_bmp'] = {
                 ]), "key");
         this.setOutput(true, Number);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_MICROBIT_Board_temperature);
+        //this.setTooltip(Blockly.MIXLY_MICROBIT_SENSOR_BMP_temperature_TOOLTIP);
     }
 };
 
@@ -560,6 +560,7 @@ Blockly.Blocks['sensor_sht'] = {
                 ]), "key");
         this.setOutput(true, Number);
         this.setInputsInline(true);
+        //this.setTooltip(Blockly.MIXLY_MICROBIT_SENSOR_SHT_temperature_TOOLTIP);
      }
 };
 
@@ -573,6 +574,7 @@ Blockly.Blocks.sensor_ds18x20 = {
             .appendField(Blockly.MIXLY_GETTEMPERATUE);
         this.setInputsInline(true);
         this.setOutput(true, Number);
+        this.setTooltip(Blockly.MIXLY_MICROBIT_SENSOR_DS18X20_TOOLTIP);
     }
 };
 
