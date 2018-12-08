@@ -59,7 +59,7 @@ Blockly.Blocks.controls_millis = {
         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_mSecond, "ms"], [Blockly.MIXLY_uSecond, "us"]]), 'Time');
     this.setOutput(true, Number);
     this.setInputsInline(true);
-	  this.setTooltip(Blockly.MIXLY_RUNTIME);
+	  this.setTooltip(Blockly.MIXLY_ESP32_CONTROLS_MILLIS_TOOLTIP);
   }
 };
 
@@ -109,7 +109,7 @@ Blockly.Blocks.timer = {
     // this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    //this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS2);
+    this.setTooltip(Blockly.MIXLY_ESP32_TIMER_TOOLTIP);
   }
 };
 
@@ -132,7 +132,7 @@ Blockly.Blocks.system_timer = {
         .appendField(Blockly.MIXLY_DO)
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
+    this.setTooltip(Blockly.MIXLY_ESP32_SYSTEM_TIMER_TOOLTIP);
   }
 };
 
@@ -149,7 +149,7 @@ Blockly.Blocks.system_ticks_diff = {
         .appendField(Blockly.MIXLY_ESP32_TIME_MINUS);
     this.setInputsInline(true);
     this.setOutput(true);
-    //this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS2);
+    this.setTooltip(Blockly.MIXLY_ESP32_SYSTEM_TICKS_DIFF_TOOLTIP);
   }
 };
 
@@ -163,7 +163,7 @@ Blockly.Blocks.system_timer_init = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip();
+        this.setTooltip(Blockly.MIXLY_ESP32_SYSTEM_TIMER_INIT_TOOLTIP);
     }
 };
 

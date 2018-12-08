@@ -11,7 +11,7 @@ Blockly.Blocks['inout_highlow'] = {
     this.appendDummyInput("")
         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_HIGH, "HIGH"], [Blockly.MIXLY_LOW, "LOW"]]), 'BOOL')
     this.setOutput(true, Boolean);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW);
+    this.setTooltip(Blockly.MIXLY_ESP32_INOUT_HIGHLOW_TOOLTIP);
   }
 };
 
@@ -27,7 +27,7 @@ Blockly.Blocks.inout_digital_write = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
-    this.setTooltip(Blockly.LANG_INOUT_DIGITAL_WRITE_TOOLTIP);
+    this.setTooltip(Blockly.MIXLY_ESP32_INOUT_DIGITAL_WRITE_TOOLTIP);
   }
 };
 
@@ -42,7 +42,7 @@ Blockly.Blocks.inout_digital_read = {
         .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
 	this.setInputsInline(true);
     this.setOutput(true, [Boolean,Number]);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ);
+    this.setTooltip(Blockly.MIXLY_ESP32_INOUT_DIGITAL_READ_TOOLTIP);
   }
 };
 
@@ -206,6 +206,7 @@ Blockly.Blocks['inout_digital_init'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_INOUT_DIGITAL_INIT_TOOLTIP);
       },
       getVars: function() {
         return [this.getFieldValue('PIN_OBJ')=='pin#'?null:this.getFieldValue('PIN_OBJ')];
