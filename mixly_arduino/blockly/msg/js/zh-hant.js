@@ -842,6 +842,29 @@ Blockly.MIXLY_TOOLTIP_DS1307_GETTIME = '從RTC時鐘模塊獲取%1';
 Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
 Blockly.MIXLY_TOOLTIP_ADXL345 = '獲取ADXL345重力感應模塊傳回的%1';
+Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_WRITEMICROSECONDS = '設定舵機的旋轉時間，參數取值為[1000,2000]';
+Blockly.MIXLY_TOOLTIP_TONE_NOTE = '返回音名對應的頻率';
+Blockly.MIXLY_TOOLTIP_STEPPER_STEP = '用於初始化兩管脚步進電機';
+Blockly.MIXLY_TOOLTIP_STEPPER_STEP2 = '用於初始化四管脚步進電機';
+Blockly.MIXLY_TOOLTIP_STEPPER_MOVE = '設定步進電機的移動步數';
+Blockly.MIXLY_TOOLTIP_LCD_INIT = '初始化LCD顯示幕，設定地址';
+Blockly.MIXLY_TOOLTIP_LCD_INIT2 = '初始化LCD顯示幕，指定時鐘線和數據線連接管脚並設定地址';
+Blockly.MIXLY_TOOLTIP_LCD_INIT3 = '初始化LCD顯示幕，指定所有連接管脚並設定地址';
+Blockly.MIXLY_TOOLTIP_LCD_PRINT = 'LCD顯示幕分行列印';
+Blockly.MIXLY_TOOLTIP_LCD_PRINT2 = '從LCD顯示幕第%1行第%2列開始顯示指定內容';
+Blockly.MIXLY_TOOLTIP_LCD_POWER = '設定LCD顯示幕的顯示樣式';
+Blockly.MIXLY_TOOLTIP_OLED_DRAW4STRING = 'OLED顯示幕分行列印';
+Blockly.MIXLY_TOOLTIP_OLED_PRINT = '在OLED顯示幕第%1行第%2列顯示指定字符';
+Blockly.MIXLY_TOOLTIP_RGB_DISPLAY2 = '設定RGB彩燈模塊指定燈的顏色';
+Blockly.MIXLY_TOOLTIP_4digitdisplay_power = '設定TM1650四比特數碼管顯示模式';
+Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString = 'TM1650四比特數碼管顯示字串（超過四比特則滾動顯示）';
+Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot = '在TM1650四比特數碼管指定位置顯示小數點';
+Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS = '設定TM1637的亮度';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT = '初始化HK16T33 8*8點陣屏';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS = '點陣屏單點操作，XY軸取值範圍1-8';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = '點陣屏顯示方向旋轉';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT = '每次顯示一個字元，依次顯示';
+
 //end
 Blockly.LUXE_LED='燈#';
 Blockly.LUXE_MOTOR='電機#';
@@ -2059,3 +2082,5 @@ Blockly.MIXLY_ESP32_NETWORK_SOCKET_CLOSE_TOOLTIP="關閉網絡連接";
 //@author:zyc 2018-12-6
 Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
+Blockly.MIXLY_TOOLTIP_RGB_INIT = Blockly.MIXLY_RGB_PIN_COUNT;
+Blockly.MIXLY_TOOLTIP_RGB_DISPLAY = Blockly.MIXLY_RGB_NUM_R_G_B;

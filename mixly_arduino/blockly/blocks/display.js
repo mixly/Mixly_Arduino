@@ -21,6 +21,7 @@ Blockly.Blocks.group_lcd_init = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_LCD_INIT);
   }
 };
 
@@ -46,6 +47,7 @@ Blockly.Blocks.group_lcd_init2 = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_LCD_INIT2);
   }
 };
 
@@ -85,6 +87,7 @@ Blockly.Blocks.group_lcd_init3 = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_LCD_INIT3);
     }
 };
 
@@ -113,6 +116,7 @@ Blockly.Blocks.group_lcd_print = {
 	*/
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_LCD_PRINT);
   }
 };
 
@@ -136,6 +140,7 @@ Blockly.Blocks.group_lcd_print2 = {
     this.setPreviousStatement(true, null);
 	this.setInputsInline(true);
     this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_LCD_PRINT2.replace('%1',Blockly.Arduino.valueToCode(this, 'row',Blockly.Arduino.ORDER_ATOMIC)).replace('%2',Blockly.Arduino.valueToCode(this, 'column',Blockly.Arduino.ORDER_ATOMIC)));
   }
 };
 
@@ -149,6 +154,7 @@ Blockly.Blocks.group_lcd_power = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_LCD_POWER);
   }
 };
 
@@ -173,7 +179,7 @@ Blockly.Blocks.lp2i_u8g_draw_4strings = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(Blockly.Blocks.display.HUE);
-        this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_OLED_DRAW4STRING);
     }
 };
 Blockly.Blocks.lp2i_u8g_print = {
@@ -194,7 +200,7 @@ Blockly.Blocks.lp2i_u8g_print = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(Blockly.Blocks.display.HUE);
-        this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_OLED_PRINT.replace('%1',Blockly.Arduino.valueToCode(this, 'X',Blockly.Arduino.ORDER_ATOMIC)).replace('%2',Blockly.Arduino.valueToCode(this, 'Y',Blockly.Arduino.ORDER_ATOMIC)));
     }
 };
 
@@ -254,7 +260,7 @@ Blockly.Blocks.display_rgb_init = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_RGB_INIT);
     }
 };
 
@@ -286,7 +292,7 @@ Blockly.Blocks.display_rgb = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_RGB_DISPLAY);
     }
 };
 Blockly.Blocks.display_rgb2 = {
@@ -308,6 +314,7 @@ Blockly.Blocks.display_rgb2 = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_RGB_DISPLAY2);
     }
 };
 
@@ -320,6 +327,7 @@ Blockly.Blocks.display_4digitdisplay_power = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_4digitdisplay_power);
     }
 };
 
@@ -335,6 +343,7 @@ Blockly.Blocks.display_4digitdisplay_displayString = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString);
     }
 };
 
@@ -351,6 +360,7 @@ Blockly.Blocks.display_4digitdisplay_showDot = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot);
     }
 };
 Blockly.Blocks.display_TM1637_init = {
@@ -405,6 +415,7 @@ Blockly.Blocks.display_TM1637_Brightness = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS);
     }
 };
 Blockly.Blocks.display_Matrix_Init = {
@@ -416,7 +427,7 @@ Blockly.Blocks.display_Matrix_Init = {
     this.appendValueInput("PIN2").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("SCL#"); 
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-//   this.setTooltip("display_点阵屏初始化");
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT);
    }
 };
 
@@ -437,7 +448,7 @@ Blockly.Blocks.display_Matrix_POS = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setTooltip(Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT_TOOLTIP);
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS);
   }
 };
 //执行器_点阵屏显示_旋转变量
@@ -456,7 +467,7 @@ Blockly.Blocks.display_Matrix_Rotation = {
     this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_DISPLAY_MATRIX_ROTATE).appendField(new Blockly.FieldDropdown(display_Rotation_NUM), "Rotation_TYPE");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
- //   this.setTooltip("");
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION);
   }
 };
 //执行器_点阵屏显示_字符显示
@@ -468,7 +479,7 @@ Blockly.Blocks.display_Matrix_TEXT={
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
-    //this.setTooltip("");
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT);
   }
 };
 //执行器_点阵屏显示_显示图案

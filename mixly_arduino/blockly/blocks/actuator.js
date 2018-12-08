@@ -40,7 +40,7 @@ Blockly.Blocks.servo_writeMicroseconds = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_WRITEMICROSECONDS);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_SERVO_WRITEMICROSECONDS);
   }
 };
 
@@ -72,6 +72,7 @@ Blockly.Blocks.tone_notes = {
     this.appendDummyInput("")
         .appendField(new Blockly.FieldDropdown(TONE_NOTES), 'STAT');
     this.setOutput(true, Number);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_TONE_NOTE);
   }
 };
 
@@ -152,6 +153,7 @@ Blockly.Blocks.group_stepper_setup={
         .appendField(Blockly.MIXLY_STEPPER_SET_SPEED);
 	this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_STEPPER_STEP);
   }
 }
 
@@ -187,6 +189,7 @@ Blockly.Blocks.group_stepper_setup2={
         .appendField(Blockly.MIXLY_STEPPER_SET_SPEED);
 	this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_STEPPER_STEP2);
   }
 }
 
@@ -203,5 +206,6 @@ Blockly.Blocks.group_stepper_move={
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_STEPPER_MOVE);
     }
 }

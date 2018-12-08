@@ -844,6 +844,28 @@ Blockly.MIXLY_TOOLTIP_DS1307_GETTIME = 'Obtenga %1 del módulo de reloj RTC';
 Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
 Blockly.MIXLY_TOOLTIP_ADXL345 = 'Obtenga %1 devuelto por el módulo de inducción de gravedad ADXL345';
+Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_WRITEMICROSECONDS = 'Configure el tiempo de rotación del servo (tome el valor de los parámetros como [1000,2000])';
+Blockly.MIXLY_TOOLTIP_TONE_NOTE = 'Devuelve la frecuencia correspondiente al nombre fonético.';
+Blockly.MIXLY_TOOLTIP_STEPPER_STEP = 'Inicializar motor paso a paso de dos pines';
+Blockly.MIXLY_TOOLTIP_STEPPER_STEP2 = 'Inicializar motor paso a paso de cuatro pines';
+Blockly.MIXLY_TOOLTIP_STEPPER_MOVE = 'Establecer el número de pasos de movimiento del motor paso a paso';
+Blockly.MIXLY_TOOLTIP_LCD_INIT = 'Inicialice la pantalla LCD y configure la dirección';
+Blockly.MIXLY_TOOLTIP_LCD_INIT2 = 'Inicialice la pantalla LCD, configure la línea del reloj y la línea de datos para conectar los pines y la dirección del dispositivo';
+Blockly.MIXLY_TOOLTIP_LCD_INIT3 = 'Inicialice la pantalla LCD, especifique todos los pines de conexión y la dirección del dispositivo';
+Blockly.MIXLY_TOOLTIP_LCD_PRINT = 'Impresión de línea de pantalla LCD';
+Blockly.MIXLY_TOOLTIP_LCD_PRINT2 = 'Muestra el contenido especificado de la línea %1, columna %2 de la pantalla LCD.';
+Blockly.MIXLY_TOOLTIP_LCD_POWER = 'Establecer el estilo de pantalla LCD';
+Blockly.MIXLY_TOOLTIP_OLED_DRAW4STRING = 'Impresión de línea de pantalla OLED';
+Blockly.MIXLY_TOOLTIP_OLED_PRINT = 'Mostrar el carácter especificado en la línea %1, columna %2 de la pantalla de visualización OLED';
+Blockly.MIXLY_TOOLTIP_RGB_DISPLAY2 = 'Configure el color de la lámpara de especificación en el módulo de lámpara de color RGB';
+Blockly.MIXLY_TOOLTIP_4digitdisplay_power = 'Establecer el modo de pantalla de tubo TM1650 de cuatro dígitos';
+Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString = 'Cadena de visualización de tubos de cuatro dígitos TM1650 (desplazamiento sobre cuatro dígitos)';
+Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot = 'Mostrar el punto decimal en la posición especificada del tubo digital de cuatro dígitos TM1650';
+Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS = 'Establece el brillo de TM1637';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT = 'Inicializar HK16T33 8 * 8 Matrix Screen';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS = 'Operación de punto único de la pantalla de matriz de puntos, rango del valor del eje XY 1-8';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = 'Girar matriz Dirección de visualización de pantalla';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT = 'Muestra un personaje a la vez';
 
 //translated by zyc in 2018-12-7
 Blockly.LUXE_LED='LED #';
@@ -1065,11 +1087,11 @@ Blockly.MIXLY_MAX7219_IMG='Patrón de presuposición';
 
 //TM1637
 Blockly.MIXLY_4DIGITDISPLAY_TM1637 = 'TM1637';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYPRINT = 'tm1637 Show';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING_TIP = '';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP = '';
+Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYPRINT = 'TM1637 monitor';
+Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING_TIP = 'Menos de o igual a 4 caracteres para la pantalla y más de 4 caracteres para el desplazamiento.';
+Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP = 'Se debe inicializar con dos pines. CLK es el pin del reloj y DIO es el pin de datos';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME = 'TM1637 Show';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME_TOOLTIP = '';
+Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME_TOOLTIP = Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME;
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_INIT = 'TM1637 Init';
 Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH = 'Cronometro';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_STOPWATCH_TOOLTIP = '';
@@ -2054,6 +2076,9 @@ Blockly.MIXLY_ESP32_NETWORK_SOCKET_RECEIVE_FROM_TOOLTIP="Devolver datos recibido
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TO_TOOLTIP="Enviar un mensaje a la dirección de red especificada.";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CLOSE_TOOLTIP="Apagar la conexión de red";
 
+//@author:zyc 2018-12-6
 Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
+Blockly.MIXLY_TOOLTIP_RGB_INIT = Blockly.MIXLY_RGB_PIN_COUNT;
+Blockly.MIXLY_TOOLTIP_RGB_DISPLAY = Blockly.MIXLY_RGB_NUM_R_G_B;
 

@@ -841,6 +841,29 @@ Blockly.MIXLY_TOOLTIP_DS1307_GETTIME = 'Get %1 from RTC clock module';
 Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
 Blockly.MIXLY_TOOLTIP_ADXL345 = 'Get %1 returned by ADXL345 gravity induction module';
+Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_WRITEMICROSECONDS = 'Set the rotating time of servo (take the value of parameters as [1000,2000])';
+Blockly.MIXLY_TOOLTIP_TONE_NOTE = 'Returns the frequency corresponding to the phonetic name';
+Blockly.MIXLY_TOOLTIP_STEPPER_STEP = 'Initialize two-pin stepper motor';
+Blockly.MIXLY_TOOLTIP_STEPPER_STEP2 = 'Initialize four-pin stepper motor';
+Blockly.MIXLY_TOOLTIP_STEPPER_MOVE = 'Set the number of moving steps of stepper motor';
+Blockly.MIXLY_TOOLTIP_LCD_INIT = 'Initialize LCD display, and set address';
+Blockly.MIXLY_TOOLTIP_LCD_INIT2 = 'Initialize LCD display, set clock line and data line to connect pins and device address';
+Blockly.MIXLY_TOOLTIP_LCD_INIT3 = 'Initialize LCD display, specify all connection pins and device address';
+Blockly.MIXLY_TOOLTIP_LCD_PRINT = 'LCD Display Line Printing';
+Blockly.MIXLY_TOOLTIP_LCD_PRINT2 = 'Display the specified content from line %1, column %2 of the LCD display screen';
+Blockly.MIXLY_TOOLTIP_LCD_POWER = 'Set the LCD Display Style';
+Blockly.MIXLY_TOOLTIP_OLED_DRAW4STRING = 'OLED Display Line Printing';
+Blockly.MIXLY_TOOLTIP_OLED_PRINT = 'Display the specified charactert at line %1, column %2 of the OLED display screen';
+Blockly.MIXLY_TOOLTIP_RGB_DISPLAY2 = 'Set the color of the specify lamp on RGB color lamp module';
+Blockly.MIXLY_TOOLTIP_4digitdisplay_power = 'Set TM1650 Four-digit Tube Display Mode';
+Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString = 'TM1650 four-digit tube display string (scroll over four digits)';
+Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot = 'Display decimal point at specified position of TM1650 four-digit digital tube';
+Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS = 'Set the brightness of TM1637';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT = 'Initialize HK16T33 8*8 Matrix Screen';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS = 'Single point operation of dot matrix screen, range of XY axis value 1-8';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = 'Rotate Matrix Screen Display Direction';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT = 'Display one character in turn at a time';
+
 
 //end
 Blockly.LUXE_LED='LED #';
@@ -1065,10 +1088,10 @@ Blockly.MIXLY_MAX7219_IMG='Presupposition pattern';
 //TM1637
 Blockly.MIXLY_4DIGITDISPLAY_TM1637 = 'TM1637';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYPRINT = 'TM1637 Show';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING_TIP = '';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP = '';
+Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING_TIP = 'Less than or equal to 4 characters for display and more than 4 characters for scroll.';
+Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP = 'It must be initialized with two pins. CLK is the clock pin and DIO is the data pin.';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME = 'TM1637 Show time';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME_TOOLTIP = '';
+Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME_TOOLTIP = Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME;
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_INIT = 'TM1637 Init';
 Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH = 'Stopwatch';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_STOPWATCH_TOOLTIP = '';
@@ -2059,3 +2082,5 @@ Blockly.MIXLY_ESP32_NETWORK_SOCKET_CLOSE_TOOLTIP="Turn off network connection";
 //@author:zyc 2018-12-6
 Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
+Blockly.MIXLY_TOOLTIP_RGB_INIT = Blockly.MIXLY_RGB_PIN_COUNT;
+Blockly.MIXLY_TOOLTIP_RGB_DISPLAY = Blockly.MIXLY_RGB_NUM_R_G_B;

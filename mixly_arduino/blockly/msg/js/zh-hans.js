@@ -840,7 +840,29 @@ Blockly.MIXLY_TOOLTIP_DS1302_INIT = '初始化DS1302 RTC时钟模块，参数为
 Blockly.MIXLY_TOOLTIP_DS1307_INIT = '初始化DS1307 RTC时钟模块，参数为数据线管脚号和时钟线管脚号';
 Blockly.MIXLY_TOOLTIP_RTC_GETTIME = '从RTC时钟模块获取%1';
 Blockly.MIXLY_TOOLTIP_ADXL345 = '获取ADXL345重力感应模块传回的%1';
-Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_WRITEMICROSECONDS = '';
+Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_WRITEMICROSECONDS = '设置舵机的旋转时间，参数取值为[1000,2000]';
+Blockly.MIXLY_TOOLTIP_TONE_NOTE = '返回音名对应的频率';
+Blockly.MIXLY_TOOLTIP_STEPPER_STEP = '用于初始化两管脚步进电机';
+Blockly.MIXLY_TOOLTIP_STEPPER_STEP2 = '用于初始化四管脚步进电机';
+Blockly.MIXLY_TOOLTIP_STEPPER_MOVE = '设置步进电机的移动步数';
+Blockly.MIXLY_TOOLTIP_LCD_INIT = '初始化LCD显示屏，设置地址';
+Blockly.MIXLY_TOOLTIP_LCD_INIT2 = '初始化LCD显示屏，指定时钟线和数据线连接管脚并设置地址';
+Blockly.MIXLY_TOOLTIP_LCD_INIT2 = '初始化LCD显示屏，指定所有连接管脚并设置地址';
+Blockly.MIXLY_TOOLTIP_LCD_PRINT = 'LCD显示屏分行打印';
+Blockly.MIXLY_TOOLTIP_LCD_PRINT2 = '从LCD显示屏第%1行第%2列开始显示指定内容';
+Blockly.MIXLY_TOOLTIP_LCD_POWER = '设定LCD显示屏的显示样式';
+Blockly.MIXLY_TOOLTIP_OLED_DRAW4STRING = 'OLED显示屏分行打印';
+Blockly.MIXLY_TOOLTIP_OLED_PRINT = '从OLED显示屏第%1行第%2列开始显示指定内容';
+Blockly.MIXLY_TOOLTIP_RGB_DISPLAY2 = '设置RGB彩灯模块指定灯的颜色';
+Blockly.MIXLY_TOOLTIP_4digitdisplay_power = '设置TM1650四位数码管显示模式';
+Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString = 'TM1650四位数码管显示字符串（超过四位则滚动显示）';
+Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot = '在TM1650四位数码管指定位置显示小数点';
+Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS = '设置TM1637的亮度';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT = '初始化HK16T33 8*8点阵屏';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS = '点阵屏单点操作，XY轴取值范围1-8';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = '点阵屏显示方向旋转';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT = '每次显示一个字符，依次显示';
+
 //end
 Blockly.LUXE_LED='灯 #';
 Blockly.LUXE_MOTOR='电机 #';
@@ -1063,7 +1085,7 @@ Blockly.MIXLY_MAX7219_IMG='LED点阵预设图案';
 
 //TM1637
 Blockly.MIXLY_4DIGITDISPLAY_TM1637 = 'TM1637';
-Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING = 'TM1637 显示(滚动)字符串';
+Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYPRINT = 'TM1637 显示(滚动)字符串';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING_TIP = '少于等于4字符为显示，超过4个字符为滚动。';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP = '使用前必须用两个管脚初始化，CLK是时钟管脚，DIO是数据管脚';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME = 'TM1637 显示时间';
@@ -2121,3 +2143,5 @@ Blockly.MIXLY_ESP32_NETWORK_SOCKET_CLOSE_TOOLTIP="关闭网络连接";
 //@author:zyc 2018-12-6
 Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
+Blockly.MIXLY_TOOLTIP_RGB_INIT = Blockly.MIXLY_RGB_PIN_COUNT;
+Blockly.MIXLY_TOOLTIP_RGB_DISPLAY = Blockly.MIXLY_RGB_NUM_R_G_B
