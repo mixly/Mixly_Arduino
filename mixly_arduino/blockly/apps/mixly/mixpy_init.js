@@ -220,7 +220,7 @@ if(window.conf == null || window.conf.lastEditorTheme == null){
   window.conf['lastEditorTheme'] = "ace/theme/xcode";
 }
 editor.setTheme(window.conf.lastEditorTheme);
-editor.getSession().setMode("ace/mode/python");
+editor.getSession().setMode("ace/mode/turtle");
 editor.setFontSize(17);
 editor.setShowPrintMargin(false);
 editor.setOptions({
@@ -231,7 +231,7 @@ enableLiveAutocompletion: true
 editor.setScrollSpeed(0.05);
 editor_side_code = ace.edit("side_code");
 editor_side_code.setTheme(window.conf.lastEditorTheme);
-editor_side_code.getSession().setMode("ace/mode/python");
+editor_side_code.getSession().setMode("ace/mode/turtle");
 editor_side_code.setFontSize(17);
 editor_side_code.setShowPrintMargin(false);
 editor_side_code.setReadOnly(true);

@@ -8,13 +8,13 @@ var PythonHighlightRules = function() {
 
     var keywords = (
         "and|as|assert|break|class|continue|def|del|elif|else|except|exec|" +
-        "finally|for|from|global|if|import|in|is|lambda|not|or|pass|print|" +
+        "finally|for|from|global|if|import|in|is|lambda|not|or|pass|print|time|" +
         "raise|return|try|while|with|yield|async|await" 
     );
 
     var builtinConstants = (
         "True|False|None|NotImplemented|Ellipsis|__debug__|"+
-        // microturtleConstants
+        // mixpyConstants
         "RATE_250KBIT|RATE_1MBIT|RATE_2MBIT"
         
     );
@@ -28,68 +28,34 @@ var PythonHighlightRules = function() {
         "cmp|globals|max|reversed|zip|compile|hasattr|memoryview|round|" +
         "__import__|complex|hash|min|set|apply|delattr|help|next|setattr|" +
         "buffer|dict|hex|object|slice|coerce|dir|id|oct|sorted|intern|"+
-        // microturtleFunctions
+        // mixpyFunctions
         "sleep|running_time|panic|reset|temperature|"+
-        // microturtleButtonFunctions
-        "is_pressed|was_pressed|get_presses|"+
-        // microturtleDisplayFunctions
-        "get_pixel|set_pixel|clear|show|scroll|on|off|is_on|"+
-        // microturtlePinIOFunctions
-        "write_digital|read_digital|write_analog|read_analog|set_analog_period|set_analog_period_microseconds|is_touched|"+
-        // microturtleImageFunctions
-        "Image|width|height|set_pixel|get_pixel|shift_left|shift_right|shift_up|shift_down|repr|str|crop|copy|invert|fill|blit|"+
-        // microturtleAccelerometerFunctions
-        "get_x|get_y|get_z|get_values|current_gesture|is_gesture|was_gesture|get_gestures|"+
-        // microturtleCompassFunctions
-        "calibrate|heading|get_field_strength|is_calibrated|clear_calibration|"+
-        // microturtleI2CFunctions
-        "read|write|"+
-        // microturtleUartFunctions
-        "init|any|read|readall|readline|readinto|write|"+
-        // microturtleMusicFunctions
-        "set_tempo|get_tempo|play|pitch|stop|reset|"+
-        // microturtleOSFunctions
-        "listdir|remove|size|uname|"+
-        // microturtleRadioFunctions
-        "on|off|config|reset|send_bytes|receive_bytes|receive_bytes_into|send|receive|"+
-        // microturtleRandomFunctions
+        // mixpyRandomFunctions
         "getrandbits|seed|randint|randrange|choice|random|uniform|"+
-        // microturtleSpeechFunctions
-        "pronounce|speech|sing|translate|"+
-        // turtleFunctions
+        // mixpyListFunctions
+        "insert|append|entend|index|lists_sort|reverse|remove|"+
+        // mixpyDictFunctions
+        "keys|setdefault|items|values|pop|"+
+        // mixpySetFunctions
+        "pop|union|difference|intersection|update|intersection_update|difference_update|add|discard|issuperset|issubset|"+        
+        // mixpyturtleFunctions
         "backward|left|right|home|forward|Turtle|setheading|goto|penup|pendown|end_fill|begin_fill|pensize|"+
-        "circle|dot|speed|showturtle|hideturtle|clone|pencolor|fillcolor|"
+        "circle|dot|speed|showturtle|hideturtle|clone|pencolor|fillcolor|shape|pos|done|clear|delay|write|bgcolor"
     );
 
-    var microturtleKeywords = (
+    var mixpyKeywords = (
         "microbit|button|display|accelerometer|compass|i2c|uart|button_a|button_b|os|music|radio|random|speech|"+
         "pin0|pin1|pin2|pin3|pin4|pin5|pin6|pin7|pin8|pin9|pin10|"+
         "pin10|pin11|pin12|pin13|pin14|pin15|pin16|pin17|pin18|pin19|pin20"
     );
 
-    var imageKeywords = (
-        "Image.HEART|Image.HEART_SMALL|Image.HAPPY|Image.SMILE|Image.SAD|Image.CONFUSED|Image.ANGRY|Image.ASLEEP|" +
-        "Image.SURPRISED|Image.SILLY|Image.FABULOUS|Image.MEH|Image.YES|Image.NO|" +
-        "Image.CLOCK12|Image.CLOCK11|Image.CLOCK10|Image.CLOCK9|Image.CLOCK8|Image.CLOCK7|" +
-        "Image.CLOCK6|Image.CLOCK5|Image.CLOCK4|Image.CLOCK3|Image.CLOCK2|Image.CLOCK1|" +
-        "Image.ARROW_N|Image.ARROW_NE|Image.ARROW_E|Image.ARROW_SE|Image.ARROW_S|Image.ARROW_SW|Image.ARROW_W|Image.ARROW_NW|" +
-        "Image.TRIANGLE|Image.TRIANGLE_LEFT|Image.CHESSBOARD|Image.DIAMOND|Image.DIAMOND_SMALL|Image.SQUARE|Image.SQUARE_SMALL|" +
-        "Image.RABBIT|Image.COW|Image.MUSIC_CROTCHET|Image.MUSIC_QUAVER|Image.MUSIC_QUAVERS|Image.PITCHFORK|Image.XMAS|" +
-        "Image.PACMAN|Image.TARGET|Image.TSHIRT|Image.ROLLERSKATE|Image.DUCK|Image.HOUSE|Image.TORTOISE|Image.BUTTERFLY|" +
-        "Image.STICKFIGURE|Image.GHOST|Image.SWORD|Image.GIRAFFE|Image.SKULL|Image.UMBRELLA|Image.SNAKE|Image.ALL_CLOCKS|Image.ALL_ARROWS"
-    );
-
-    var musicKeywords = (
-        "music.DADADADUM|music.ENTERTAINER|music.PRELUDE|music.ODE|music.NYAN|music.RINGTONE|music.FUNK|"+
-        "music.BLUES|music.BIRTHDAY|music.WEDDING|music.FUNERAL|music.PUNCHLINE|music.PYTHON|music.BADDY|"+
-        "music.CHASE|music.BA_DING|music.WAWAWAWAA|music.JUMP_UP|music.JUMP_DOWN|music.POWER_UP|music.POWER_DOWN"
-    );
-
+    
     var keywordMapper = this.createKeywordMapper({
         "invalid.deprecated": "debugger",
         "support.function": builtinFunctions,
         "constant.language": builtinConstants,
-        "keyword": keywords, microturtleKeywords, imageKeywords, musicKeywords
+        "keyword": keywords,
+        //"keyword": keywords, mixpyKeywords, imageKeywords, musicKeywords
     }, "identifier");
 
     var strPre = "(?:r|u|ur|R|U|UR|Ur|uR)?";
