@@ -6,7 +6,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks.iot.HUE = 225//'#3288dd';
 
 Blockly.Blocks['iot_wifi_connect'] = {
- init: function() {    
+ init: function() {
     this.setColour(0);
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_ESP32_IOT_CONNECT_WIFI);
@@ -15,16 +15,16 @@ Blockly.Blocks['iot_wifi_connect'] = {
         .appendField(Blockly.MIXLY_ESP32_NETWORK_ID);
     this.appendValueInput('PASSWORD')
         .setCheck(String)
-        .appendField(Blockly.MIXLY_ESP32_NETWORK_PASSWORD);     
+        .appendField(Blockly.MIXLY_ESP32_NETWORK_PASSWORD);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-   // this.setTooltip(Blockly.Msg.TURTLE_WRITE_TOOLTIP);    
+    this.setTooltip(Blockly.MIXLY_ESP32_IOT_WIFI_CONNECT_TOOLTIP);
   }
 };
 
 Blockly.Blocks['iot_onenet_connect'] = {
- init: function() {    
+ init: function() {
     this.setColour(Blockly.Blocks.iot.HUE);
     this.appendValueInput('VAR')
         .setCheck("var")
@@ -34,27 +34,27 @@ Blockly.Blocks['iot_onenet_connect'] = {
         .appendField(Blockly.MIXLY_ESP32_ONENET_CLIENT);
     this.appendValueInput('SERVER')
         .setCheck(String)
-        .appendField(Blockly.MIXLY_ESP32_ONENET_SERVER);   
+        .appendField(Blockly.MIXLY_ESP32_ONENET_SERVER);
     this.appendValueInput('USERNAME')
         .setCheck(String)
-        .appendField(Blockly.MIXLY_ESP32_ONENET_USERNAME);   
+        .appendField(Blockly.MIXLY_ESP32_ONENET_USERNAME);
     this.appendValueInput('PASSWORD')
         .setCheck(String)
-        .appendField(Blockly.MIXLY_ESP32_ONENET_PASSWORD);   
+        .appendField(Blockly.MIXLY_ESP32_ONENET_PASSWORD);
     this.appendValueInput('TOPIC')
         .setCheck(String)
-        .appendField(Blockly.MIXLY_ESP32_ONENET_TOPIC);                       
+        .appendField(Blockly.MIXLY_ESP32_ONENET_TOPIC);
     this.appendValueInput('SUB')
         .appendField(Blockly.MIXLY_ESP32_ONENET_SUB);
     //this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-   //this.setTooltip(Blockly.Msg.TURTLE_WRITE_TOOLTIP);    
+    this.setTooltip(Blockly.MIXLY_ESP32_IOT_ONENET_CONNECT_TOOLTIP);
   }
 };
 
 Blockly.Blocks['iot_onenet_disconnect'] = {
- init: function() {    
+ init: function() {
     this.setColour(Blockly.Blocks.iot.HUE);
     this.appendValueInput('VAR')
         .setCheck("var")
@@ -64,12 +64,12 @@ Blockly.Blocks['iot_onenet_disconnect'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-   // this.setTooltip(Blockly.Msg.TURTLE_WRITE_TOOLTIP);    
+    this.setTooltip(Blockly.MIXLY_ESP32_IOT_ONENET_DISCONNECT_TOOLTIP);
   }
 };
 
 Blockly.Blocks['iot_onenet_check'] = {
- init: function() {    
+ init: function() {
     this.setColour(Blockly.Blocks.iot.HUE);
     this.appendValueInput('VAR')
         .setCheck("var")
@@ -79,12 +79,12 @@ Blockly.Blocks['iot_onenet_check'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-   // this.setTooltip(Blockly.Msg.TURTLE_WRITE_TOOLTIP);    
+    this.setTooltip(Blockly.MIXLY_ESP32_IOT_ONENET_CHECK_TOOLTIP);
   }
 };
 
 Blockly.Blocks['iot_onenet_publish_dict'] = {
- init: function() {    
+ init: function() {
     this.setColour(Blockly.Blocks.iot.HUE);
     this.appendValueInput('VAR')
         .setCheck("var")
@@ -94,7 +94,7 @@ Blockly.Blocks['iot_onenet_publish_dict'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-   // this.setTooltip(Blockly.Msg.TURTLE_WRITE_TOOLTIP);    
+    this.setTooltip(Blockly.MIXLY_ESP32_IOT_ONENET_PUBLISH_DICT_TOOLTIP);
   }
 };
 
@@ -118,7 +118,7 @@ Blockly.Blocks['iot_onenet_publish'] = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setMutator(new Blockly.Mutator(['iot_publish_item']));
-        //this.setTooltip(Blockly.Msg.DICTS_CREATE_WITH_TOOLTIP);
+        this.setTooltip(Blockly.MIXLY_ESP32_IOT_ONENET_PUBLISH_TOOLTIP);
     },
     /**
      * Create XML to represent list inputs.

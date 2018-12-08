@@ -278,7 +278,7 @@ Blockly.Blocks.controls_range = {
         .appendField(Blockly.MIXLY_STEP);
     this.setInputsInline(true);
     this.setOutput(true);
-    //this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS2);
+    this.setTooltip(Blockly.MIXLY_PYTHON_CONTROLS_RANGE_TOOLTIP);
   }
 };
 
@@ -506,6 +506,7 @@ Blockly.Blocks.controls_flow_statements = {
         .appendField(dropdown, 'FLOW')
         .appendField(Blockly.LANG_CONTROLS_FLOW_STATEMENTS_INPUT_OFLOOP);
     this.setPreviousStatement(true);
+    this.setTooltip(Blockly.MIXLY_PYTHON_CONTROLS_FLOW_STATEMENTS_TOOLTIP);
 	var thisBlock = this;
     this.setTooltip(function() {
       var op = thisBlock.getFieldValue('FLOW');
@@ -778,6 +779,7 @@ Blockly.Blocks.controls_pass = {
       .appendField('pass');
   this.setPreviousStatement(true);
   this.setNextStatement(true);
+  this.setTooltip(Blockly.MIXLY_PYTHON_CONTROLS_PASS_TOOLTIP);
   }
 };
 
