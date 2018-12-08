@@ -876,18 +876,18 @@ Blockly.MIXLY_NOVA_BTN = '按钮';
 Blockly.MIXLY_NOVA_ABCD = '#';
 
 Blockly.MIXLY_NOVA_TILTSWITCH = '倾斜开关';
-Blockly.MIXLY_NOVA_SOUND = '声音传感器'; 
-Blockly.MIXLY_NOVA_LIMISWICTH = '限位开关'; 
-Blockly.MIXLY_NOVA_LIGHT = '光敏'; 
+Blockly.MIXLY_NOVA_SOUND = '声音传感器';
+Blockly.MIXLY_NOVA_LIMISWICTH = '限位开关';
+Blockly.MIXLY_NOVA_LIGHT = '光敏';
 
-Blockly.MIXLY_NOVA_BUZZER = '蜂鸣器'; 
-Blockly.MIXLY_NOVA_FREQUENCY = '频率(Hz)'; 
-Blockly.MIXLY_NOVA_MIXLY_DURATION = '持续时间(ms)'; 
+Blockly.MIXLY_NOVA_BUZZER = '蜂鸣器';
+Blockly.MIXLY_NOVA_FREQUENCY = '频率(Hz)';
+Blockly.MIXLY_NOVA_MIXLY_DURATION = '持续时间(ms)';
 
-Blockly.MIXLY_NOVA_MOTOR = '直流电机'; 
-Blockly.MIXLY_NOVA_MOTOR_SPEED = '转速(-100~100)%'; 
+Blockly.MIXLY_NOVA_MOTOR = '直流电机';
+Blockly.MIXLY_NOVA_MOTOR_SPEED = '转速(-100~100)%';
 
-Blockly.MIXLY_NOVA_ULTRASONIC = '超声波测距(cm)'; 
+Blockly.MIXLY_NOVA_ULTRASONIC = '超声波测距(cm)';
 
 Blockly.MIXLY_NOVA_DHT11 = '温湿度';
 Blockly.MIXLY_NOVA_TYPE = '类型';
@@ -1429,7 +1429,7 @@ Blockly.Msg.DICTS_DELETE_IN = "中删除条目 键";
 Blockly.Msg.DICTS_DELETE_VALUE = "及对应值";
 Blockly.Msg.DICTS_DELETE_TOOLTIP = "删除字典中某个条目";
 Blockly.Msg.DICT_CLEAR = "清空字典中所有条目";
-Blockly.Msg.DICT_ITEMS = "字典转化为列表"; 
+Blockly.Msg.DICT_ITEMS = "字典转化为列表";
 Blockly.Msg.DICTS_ITEMS_TOOLTIP = "返回一个列表，包括一个字典可遍历的所有键和对应值";
 Blockly.Msg.DICT_VALUES = "获取所有键对应的值";
 Blockly.Msg.DICTS_VALUES_TOOLTIP = "返回一个列表，包括一个字典所有键的对应值";
@@ -2121,3 +2121,16 @@ Blockly.MIXLY_ESP32_NETWORK_SOCKET_CLOSE_TOOLTIP="关闭网络连接";
 //@author:zyc 2018-12-6
 Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
+
+Blockly.MIXLY_ESP32_INOUT_HIGHLOW_TOOLTIP = "返回高电平或者低电平";
+Blockly.MIXLY_ESP32_INOUT_DIGITAL_INIT_TOOLTIP = "初始化某管脚输出的信号为数字信号";
+Blockly.MIXLY_ESP32_INOUT_DIGITAL_WRITE_TOOLTIP = "设置某管脚的数字输出值";
+Blockly.MIXLY_ESP32_INOUT_DIGITAL_READ_TOOLTIP = "获取某管脚的数字输入值";
+
+Blockly.MIXLY_PYTHON_CONTROLS_PASS_TOOLTIP = "跳过";
+Blockly.MIXLY_PYTHON_CONTROLS_RANGE_TOOLTIP = "返回从开始数到结尾数，步长为第三个参数的列表";
+Blockly.MIXLY_ESP32_SYSTEM_TIMER_TOOLTIP = "初始化一个间隔为某数值，模式为单次触发或多次触发，回调函数为某函数的计时器";
+Blockly.MIXLY_ESP32_SYSTEM_TIMER_INIT_TOOLTIP = "初始化一个计时器";
+Blockly.MIXLY_PYTHON_CONTROLS_FLOW_STATEMENTS_TOOLTIP = "跳出所在的循环";
+Blockly.MIXLY_ESP32_CONTROLS_MILLIS_TOOLTIP = "获取系统运行时间";
+Blockly.MIXLY_ESP32_SYSTEM_TICKS_DIFF_TOOLTIP = "获取两个时间的差值";
