@@ -8,7 +8,7 @@ var PythonHighlightRules = function() {
 
     var keywords = (
         "and|as|assert|break|class|continue|def|del|elif|else|except|exec|" +
-        "finally|for|from|global|if|import|in|is|lambda|not|or|pass|print|time|" +
+        "finally|for|from|global|if|import|in|is|lambda|not|or|pass|print|time|requests|turtle|pandas|pylab|" +
         "raise|return|try|while|with|yield|async|await" 
     );
 
@@ -20,24 +20,34 @@ var PythonHighlightRules = function() {
     );
 
     var builtinFunctions = (
-        "abs|divmod|input|open|staticmethod|all|enumerate|int|ord|str|any|" +
+        "abs|divmod|input|open|staticmethod|all|enumerate|int|ord|str|any|bin|" +
         "eval|isinstance|pow|sum|basestring|execfile|issubclass|print|super|" +
         "binfile|iter|property|tuple|bool|filter|len|range|type|bytearray|" +
         "float|list|raw_input|unichr|callable|format|locals|reduce|unicode|" +
         "chr|frozenset|long|reload|vars|classmethod|getattr|map|repr|xrange|" +
         "cmp|globals|max|reversed|zip|compile|hasattr|memoryview|round|" +
         "__import__|complex|hash|min|set|apply|delattr|help|next|setattr|" +
-        "buffer|dict|hex|object|slice|coerce|dir|id|oct|sorted|intern|"+
+        "buffer|dict|hex|object|slice|coerce|dir|id|oct|sorted|intern|exit|localtime|"+
         // mixpyFunctions
         "sleep|running_time|panic|reset|temperature|"+
         // mixpyRandomFunctions
         "getrandbits|seed|randint|randrange|choice|random|uniform|"+
+        // mixpyTextFunctions
+        "lower|ljust|center|rjust|find|replace|split|strip|lstrip|rstrip|"+
+        // mixpyMathFunctions
+        "sin|cos|tan|asin|acos|atan|degrees|log|log10|exp|ceil|floor|fabs|sqrt|"+
         // mixpyListFunctions
-        "insert|append|entend|index|lists_sort|reverse|remove|"+
+        "insert|append|extend|index|lists_sort|reverse|remove|count|"+
         // mixpyDictFunctions
         "keys|setdefault|items|values|pop|"+
         // mixpySetFunctions
         "pop|union|difference|intersection|update|intersection_update|difference_update|add|discard|issuperset|issubset|"+        
+        // mixpyCommunicateFunctions
+        "post|get|put|status_code|delete|head|option|text|cookies|content|"+
+        // mixpyDataFunctions
+        "Series|DataFrame|value|columns|plot|show|legend|title|xlabel|ylabel|"+
+        // mixpyFileFunctions
+        "read|name|writable|listdir|close|"+
         // mixpyturtleFunctions
         "backward|left|right|home|forward|Turtle|setheading|goto|penup|pendown|end_fill|begin_fill|pensize|"+
         "circle|dot|speed|showturtle|hideturtle|clone|pencolor|fillcolor|shape|pos|done|clear|delay|write|bgcolor"
