@@ -126,7 +126,7 @@ Blockly.Blocks['variables_change'] = {
              .appendField(new Blockly.FieldDropdown(DATATYPES), 'OP');
         // Assign 'this' to a variable for use in the tooltip closure below.
         this.setOutput(true);
-       
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE);
     }
 };
 

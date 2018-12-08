@@ -490,8 +490,8 @@ Blockly.Blocks.display_Matrix_DisplayChar = {
     this.appendValueInput("LEDArray").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    //this.setTooltip();
-  }
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_DISPLAYCHAR);
+      }
 };
 //执行器_点阵屏显示_图案数组
 Blockly.Blocks.display_Matrix_LedArray = {
@@ -507,7 +507,7 @@ Blockly.Blocks.display_Matrix_LedArray = {
     this.appendDummyInput("").appendField(new Blockly.FieldCheckbox("FALSE"), "a21").appendField(new Blockly.FieldCheckbox("FALSE"), "a22").appendField(new Blockly.FieldCheckbox("FALSE"), "a23").appendField(new Blockly.FieldCheckbox("FALSE"), "a24").appendField(new Blockly.FieldCheckbox("FALSE"), "a25").appendField(new Blockly.FieldCheckbox("FALSE"), "a26").appendField(new Blockly.FieldCheckbox("FALSE"), "a27").appendField(new Blockly.FieldCheckbox("FALSE"), "a28");
     this.appendDummyInput("").appendField(new Blockly.FieldCheckbox("FALSE"), "a11").appendField(new Blockly.FieldCheckbox("FALSE"), "a12").appendField(new Blockly.FieldCheckbox("FALSE"), "a13").appendField(new Blockly.FieldCheckbox("FALSE"), "a14").appendField(new Blockly.FieldCheckbox("FALSE"), "a15").appendField(new Blockly.FieldCheckbox("FALSE"), "a16").appendField(new Blockly.FieldCheckbox("FALSE"), "a17").appendField(new Blockly.FieldCheckbox("FALSE"), "a18");
     this.setOutput(true, Number);
-    //this.setTooltip();
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_LEDARRAY);
   }
 };
 //执行器_点阵屏显示_清除屏幕
@@ -518,7 +518,7 @@ Blockly.Blocks.display_Matrix_CLEAR = {
     this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_DISPLAY_MATRIX_CLEAR);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    //this.setTooltip();
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_CLEAR);
   }
 };
 
@@ -533,7 +533,7 @@ Blockly.Blocks.MAX7219_init = {
     this.setNextStatement(true, null);
     this.setColour(Blockly.Blocks.display.HUE);
     this.setInputsInline(true);
-    this.setTooltip('');
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_INIT);
     this.setHelpUrl('');
   }
 };
@@ -547,7 +547,7 @@ Blockly.Blocks.MAX7219_putString = {
     this.setNextStatement(true, null);
     this.setColour(Blockly.Blocks.display.HUE);
     this.setInputsInline(true);
-    this.setTooltip('');
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_STRING);
     this.setHelpUrl('');
   }
 };
@@ -560,7 +560,7 @@ Blockly.Blocks.MAX7219_DisplayChar = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(Blockly.Blocks.display.HUE);
-    this.setTooltip('');
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_LEDARRAY);
     this.setHelpUrl('');
   }
 };
@@ -629,6 +629,7 @@ Blockly.Blocks.Matrix_img = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.display.HUE);
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_PREDEFARR);
     this.setHelpUrl('');
   }
 };

@@ -837,7 +837,7 @@ Blockly.MIXLY_TOOLTIP_LM35 = 'Obtaining the Temperature Return from LM35 Sensor'
 Blockly.MIXLY_TOOLTIP_DS18 = 'Obtain the temperature value returned by DS18B20 sensor';
 Blockly.MIXLY_TOOLTIP_DS1302_INIT = 'Initialize DS1302 RTC clock module with parameters of reset line pin number, data line pin number and clock line pin number.';
 Blockly.MIXLY_TOOLTIP_DS1307_INIT = 'Initialize DS1307 RTC clock module with data line pin number and clock line pin number as parameters';
-Blockly.MIXLY_TOOLTIP_DS1307_GETTIME = 'Get %1 from RTC clock module';
+Blockly.MIXLY_TOOLTIP_RTC_GETTIME = 'Get %1 from RTC clock module';
 Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
 Blockly.MIXLY_TOOLTIP_ADXL345 = 'Get %1 returned by ADXL345 gravity induction module';
@@ -863,8 +863,24 @@ Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT = 'Initialize HK16T33 8*8 Matrix Scree
 Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS = 'Single point operation of dot matrix screen, range of XY axis value 1-8';
 Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = 'Rotate Matrix Screen Display Direction';
 Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT = 'Display one character in turn at a time';
-
-
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_LEDARRAY = 'Light he corresponding position on the dot matrix screen';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_CLEAR = 'Clear up the content on the dot matrix screen';
+Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_INIT = 'Initialize MAX7219 8*8 Matrix Screen';
+Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_DISPLAYCHAR = 'Generate dot-matrix display content from arrays';
+Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_STRING = 'Display each character in the string one by one at a certain speed';
+Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_PREDEFARR = 'Returns an array of predefined patterns';
+Blockly.MIXLY_TOOLTIP_ETHERNET_INIT = 'Start the Ethernet service. The parameter is the MAC address of the Ethernet expansion card. Return 1 indicates successful startup and 0 indicates failure.';
+Blockly.MIXLY_TOOLTIP_ETHERNET_MACADDRESS = 'MAC address in pattern of XX-XX-XX-XX-XX-XX-XX, X in any hexadecimal digit';
+Blockly.MIXLY_TOOLTIP_ETHERNET_LOCALIP = 'Return to the local IP address';
+Blockly.MIXLY_TOOLTIP_ETHERNET_CONNECT = 'Connect to remote server, return 1 indicates successful start, others indicate failure';
+Blockly.MIXLY_TOOLTIP_ETHERNET_STOP = 'Disconnect from server';
+Blockly.MIXLY_TOOLTIP_ETHERNET_CONNECTED = 'Returns whether a server has been connected';
+Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_AVAILABLE = 'Returns whether there is available data sent by the server';
+Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_PRINT = 'Print data to the server that a client is connected to. Prints numbers as a sequence of digits, each an ASCII character (e.g. the number 123 is sent as the three characters \'1\', \'2\', \'3\').';
+Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_PRINTLN = 'Print data, followed by a carriage return and newline, to the server a client is connected to. Prints numbers as a sequence of digits, each an ASCII character (e.g. the number 123 is sent as the three characters \'1\', \'2\', \'3\').';
+Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_READ = 'Read the next byte received from the server the client is connected to';
+Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = 'Send a GET request to the specified address';
+Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = 'Mandatory type conversion of constants or variables';
 //end
 Blockly.LUXE_LED='LED #';
 Blockly.LUXE_MOTOR='Motor #';
