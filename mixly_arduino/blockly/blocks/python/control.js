@@ -609,7 +609,7 @@ Blockly.Blocks.controls_for_range = {
     this.setInputsInline(true);
     var thisBlock = this;
     this.setTooltip(function() {
-      return Blockly.Msg.CONTROLS_FOR_TOOLTIP.replace('%1',
+      return Blockly.MIXLY_PYTHON_CONTROLS_FOR_RANGE_TOOLTIP.replace('%1',
           thisBlock.getFieldValue('VAR'));
     });
   },
