@@ -20,7 +20,7 @@ Blockly.Blocks.servo_move = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_MOVE);
+        this.setTooltip(Blockly.MIXLY_ESP32_SERVO_MOVE);
     }
 };
 
