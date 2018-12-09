@@ -78,10 +78,13 @@ Blockly.Blocks['network_scan'] = {
         var mode = thisBlock.getFieldValue('op');
         var mode0 = Blockly.MIXLY_ESP32_NETWORK_SCAN_TOOLTIP
         var TOOLTIPS = {
-        '0':Blockly.MIXLY_ESP32_NETWORK_IP,
-        '1': Blockly.MIXLY_ESP32_NETWORK_MASK,
-        '2': Blockly.MIXLY_ESP32_NETWORK_GATEWAY,
-        '3':"DNS",
+        '0':"ssid",
+        '1': 'bssid',
+        '2': "channel",
+        '3':"RSSI",
+        '4':"authmode",
+        '5':"hidden",
+        'all':Blockly.MIXLY_NETWORK_WIFI_SCAN_ATTRIBUTE,
       };
       return mode0 +TOOLTIPS[mode]
     });
@@ -237,7 +240,16 @@ Blockly.Blocks['network_socket_init'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SOCKET_INIT_TOOLTIP);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('mode');
+        var mode0 = Blockly.MIXLY_ESP32_NETWORK_SOCKET_INIT_TOOLTIP
+        var TOOLTIPS = {
+        'TCP':'TCP',
+        'UDP':'UDP',
+      };
+      return mode0 +TOOLTIPS[mode]
+    });
     }
 };
 

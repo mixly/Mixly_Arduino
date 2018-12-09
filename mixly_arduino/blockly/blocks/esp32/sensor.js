@@ -450,7 +450,17 @@ Blockly.Blocks['sensor_mixgo_pin_near'] = {
             .appendField(Blockly.MIXLY_ESP32_NEAR);
         this.setOutput(true, Boolean);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_sensor_pin_pressed);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('direction');
+        var mode0 = Blockly.MIXLY_ESP32_SENSOR_MIXGO_PIN_NEAR_TOOLTIP;
+        var mode1 = Blockly.MIXLY_ESP32_NEAR;
+        var TOOLTIPS = {
+        'left':Blockly.Msg.TEXT_TRIM_LEFT,
+        'right':Blockly.Msg.TEXT_TRIM_RIGHT,
+      };
+      return mode0 +TOOLTIPS[mode] + mode1
+    });
     }
 };
 
