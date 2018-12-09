@@ -251,7 +251,7 @@ function getAcceleration(mode){
             '_astname': 'Name',
             'id': {
                 '_astname': 'Str',
-                'v': py2block.Name_str(func.value.value) + "." + py2block.identifier(func.value.attr)
+                'v': py2block.identifier(func.value.attr)
             }
         };
         var mpublock=py2block.convert(mpu);
@@ -280,7 +280,7 @@ function getMagnetic(mode){
             '_astname': 'Name',
             'id': {
                 '_astname': 'Str',
-                'v': py2block.Name_str(func.value.value) + "." + py2block.identifier(func.value.attr)
+                'v':  py2block.identifier(func.value.attr)
             }
         };
         var mpublock=py2block.convert(mpu);
@@ -309,7 +309,7 @@ function getGyro(mode){
             '_astname': 'Name',
             'id': {
                 '_astname': 'Str',
-                'v': py2block.Name_str(func.value.value) + "." + py2block.identifier(func.value.attr)
+                'v':py2block.identifier(func.value.attr)
             }
         };
         var mpublock=py2block.convert(mpu);
@@ -338,7 +338,7 @@ function fieldStrength(mode){
             '_astname': 'Name',
             'id': {
                 '_astname': 'Str',
-                'v': py2block.Name_str(func.value.value) + "." + py2block.identifier(func.value.attr)
+                'v':  py2block.identifier(func.value.attr)
             }
         };        
         var mpublock=py2block.convert(mpu)
@@ -366,7 +366,7 @@ pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_get_temperature'] = function (py2b
             '_astname': 'Name',
             'id': {
                 '_astname': 'Str',
-                'v': py2block.Name_str(func.value.value) + "." + py2block.identifier(func.value.attr)
+                'v': py2block.identifier(func.value.attr)
             }
         };     
     var mpublock = py2block.convert(mpu)
@@ -471,7 +471,7 @@ pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_is_gesture'] = function (py2block,
             '_astname': 'Name',
             'id': {
                 '_astname': 'Str',
-                'v': py2block.Name_str(func.value.value) + "." + py2block.identifier(func.value.attr)
+                'v':  py2block.identifier(func.value.attr)
             }
         };     
     var gesblock=py2block.identifier(args[0].s);

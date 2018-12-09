@@ -104,8 +104,11 @@ pbc.moduleFunctionD.get('uart')['write'] = function(py2block, func, args, keywor
             if(args[0].left.args[0]._astname === "Call"
                 && args[0].left.args[0].func._astname === "Name"
                 && py2block.Name_str(args[0].left.args[0].func) === "hex"){ //serial.write(str(hex(XX)) + "\r\n")
+                pbc.inScope = "lcd_init";
+                var numblock=py2block.convert(args[0].left.args[0].args[0]);
+                pbc.inScope=null;
                 return [block("serial_print_hex", func.lineno, {}, {
-                    "CONTENT": py2block.convert(args[0].left.args[0].args[0]),
+                    "CONTENT": numblock,
                 }, {
                     "inline": "false"
                 })];
