@@ -8,8 +8,9 @@ Blockly.Blocks['network_init'] = {
     init: function() {
         this.setColour(Blockly.Blocks.storage.HUE);
         this.appendValueInput('VAR')
+             .setCheck("var");;
+        this.appendDummyInput("")
             .appendField(Blockly.MIXLY_NETWORK_INIT)
-            .setCheck("var");
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_NETWORK_MODE)
             .appendField(new Blockly.FieldDropdown([
@@ -27,19 +28,28 @@ Blockly.Blocks['network_init'] = {
 Blockly.Blocks['network_open'] = {
     init: function() {
         this.setColour(Blockly.Blocks.storage.HUE);
+        this.appendValueInput('VAR')
+            .setCheck("var")
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown([
                 [Blockly.MIXLY_NETWORK_WIFI_OPEN, "True"],
                 [Blockly.MIXLY_NETWORK_WIFI_CLOSE, "False"]
             ]), "op");
-        this.appendValueInput('VAR')
-            .setCheck("var")
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_NETWORK_WIFI_FLAG)
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_OPEN_TOOLTIP);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('op');
+        var mode0 = Blockly.MIXLY_ESP32_NETWORK_OPEN_TOOLTIP;
+        var TOOLTIPS = {
+        'True':Blockly.MIXLY_NETWORK_WIFI_OPEN,
+        'False':Blockly.MIXLY_NETWORK_WIFI_CLOSE,
+      };
+      return TOOLTIPS[mode]+mode0
+    });
     }
 };
 
@@ -48,8 +58,8 @@ Blockly.Blocks['network_scan'] = {
         this.setColour(Blockly.Blocks.storage.HUE);
         this.appendValueInput('VAR')
             .setCheck("var")
-            .appendField(Blockly.MIXLY_NETWORK_WIFI_SCAN)
         this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_NETWORK_WIFI_SCAN)
             .appendField(Blockly.MIXLY_BELONG)
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown([
@@ -63,7 +73,18 @@ Blockly.Blocks['network_scan'] = {
             ]), "op");
         this.setOutput(true);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SCAN_TOOLTIP);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('op');
+        var mode0 = Blockly.MIXLY_ESP32_NETWORK_SCAN_TOOLTIP
+        var TOOLTIPS = {
+        '0':Blockly.MIXLY_ESP32_NETWORK_IP,
+        '1': Blockly.MIXLY_ESP32_NETWORK_MASK,
+        '2': Blockly.MIXLY_ESP32_NETWORK_GATEWAY,
+        '3':"DNS",
+      };
+      return mode0 +TOOLTIPS[mode]
+    });
     }
 };
 
@@ -72,6 +93,7 @@ Blockly.Blocks['network_connect'] = {
         this.setColour(Blockly.Blocks.storage.HUE);
         this.appendValueInput('VAR')
             .setCheck("var")
+        this.appendDummyInput("")
             .appendField(Blockly.MIXLY_ESP32_NETWORK_CONNECT);
         this.appendValueInput('id')
             .setCheck(String)
@@ -91,6 +113,7 @@ Blockly.Blocks['network_wifi_connect'] = {
         this.setColour(Blockly.Blocks.storage.HUE);
         this.appendValueInput('VAR')
             .setCheck("var")
+        this.appendDummyInput("")
             .appendField(Blockly.MIXLY_NETWORK_WIFI_CONNECT);
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_SYMBOL_QUESTION);
@@ -105,6 +128,7 @@ Blockly.Blocks['network_get_connect'] = {
         this.setColour(Blockly.Blocks.storage.HUE);
         this.appendValueInput('VAR')
             .setCheck("var")
+        this.appendDummyInput("")
             .appendField(Blockly.MIXLY_ESP32_NETWORK_GET_CONNECT);
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown([
@@ -115,7 +139,18 @@ Blockly.Blocks['network_get_connect'] = {
             ]), "mode");
         this.setOutput(true);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_GET_CONNECT_TOOLTIP);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('mode');
+        var mode0 = Blockly.MIXLY_ESP32_NETWORK_GET_CONNECT_TOOLTIP
+        var TOOLTIPS = {
+        '0':Blockly.MIXLY_ESP32_NETWORK_IP,
+        '1': Blockly.MIXLY_ESP32_NETWORK_MASK,
+        '2': Blockly.MIXLY_ESP32_NETWORK_GATEWAY,
+        '3':"DNS",
+      };
+      return mode0 +TOOLTIPS[mode]
+    });
     }
 };
 
@@ -124,6 +159,7 @@ Blockly.Blocks['network_stop'] = {
         this.setColour(Blockly.Blocks.storage.HUE);
         this.appendValueInput('VAR')
             .setCheck("var")
+        this.appendDummyInput("")
             .appendField(Blockly.MIXLY_ESP32_NETWORK_STOP_CONNECT);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -137,6 +173,7 @@ Blockly.Blocks['network_get_wifi'] = {
         this.setColour(Blockly.Blocks.storage.HUE);
         this.appendValueInput('VAR')
             .setCheck("var")
+        this.appendDummyInput("")
             .appendField(Blockly.MIXLY_ESP32_NETWORK_GET_WIFI);
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown([
@@ -154,6 +191,7 @@ Blockly.Blocks['network_ap_connect'] = {
         this.setColour(Blockly.Blocks.storage.HUE);
         this.appendValueInput('VAR')
             .setCheck("var")
+        this.appendDummyInput("")
             .appendField(Blockly.Msg.LISTS_SET_INDEX_SET);
         this.appendValueInput('essid')
             .setCheck(String)
@@ -173,6 +211,7 @@ Blockly.Blocks['network_server'] = {
         this.setColour(Blockly.Blocks.storage.HUE);
         this.appendValueInput('VAR')
             .setCheck("var")
+        this.appendDummyInput("")
             .appendField(Blockly.MIXLY_ESP32_NETWORK_SERVER1);
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_ESP32_NETWORK_SERVER2);
