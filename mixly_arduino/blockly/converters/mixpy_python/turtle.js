@@ -212,9 +212,10 @@ pbc.objectFunctionD.get('speed')['Turtle'] = function (py2block, func, args, key
 }
 
 pbc.objectFunctionD.get('shape')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 1) {
+    if (args.length !== 1 && args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
+    if (args.length == 1){
     var turtleblock = py2block.convert(func.value);
     var shapeblock = py2block.Str_value(args[0]);
     return [block('turtle_shape', func.lineno, {
@@ -226,7 +227,16 @@ pbc.objectFunctionD.get('shape')['Turtle'] = function (py2block, func, args, key
         
     }, {
         "inline": "true"
-    })];
+    })];}
+    if(args.length == 0){
+    var turtleblock = py2block.convert(func.value);
+    return block('turtle_pos_shape', func.lineno, {
+       'DIR': 'shape'
+    }, {
+        'TUR': turtleblock
+    }, {
+        "inline": "true"
+    });}
 }
 
 pbc.objectFunctionD.get('write')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -483,25 +493,19 @@ pbc.objectFunctionD.get('clone')['Turtle'] = function (py2block, func, args, key
     });
 }
 
-function turtlePosShape(mode){
-    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('pos')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
         if (args.length !== 0) {
             throw new Error("Incorrect number of arguments");
         }
         var turtleblock = py2block.convert(func.value);
         return block('turtle_pos_shape', func.lineno, {
-            'DIR': mode
+            'DIR': 'pos'
         }, {
             'TUR': turtleblock
         }, {
             "inline": "true"
         });
-        }
-    return converter;
 }
-pbc.objectFunctionD.get('pos')['Turtle'] = turtlePosShape('pos');
-pbc.objectFunctionD.get('shape')['Turtle'] =  turtlePosShape('shape');
-
 
 function turtleHideShow(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
