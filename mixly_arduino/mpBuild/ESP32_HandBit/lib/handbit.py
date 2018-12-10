@@ -24,12 +24,11 @@ class Button:
     def is_pressed(self):
         return self.pin.value() == 0
 
-    def was_pressed(self, delay = 1):
-        last_time, last_state = time.time(), self.pin.value()
-        while time.time() < last_time + delay:
-            time.sleep_ms(50)
-            if last_state == 1 and self.pin.value() == 0:
-                return True
+    def was_pressed(self):
+        last_state = self.pin.value()
+        time.sleep_ms(15)
+        if last_state == 1 and self.pin.value() == 0:
+            return True
         return False
 
     def irq(self, handler, trigger):

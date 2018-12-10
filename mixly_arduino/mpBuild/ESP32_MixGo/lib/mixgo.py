@@ -25,23 +25,6 @@ def mixgo_get_brightness():
 def mixgo_get_soundlevel():
     return ADCSensor(pin = 35).read()
     
-# class Button:
-#     def __init__(self, pin):
-#         self.val = 0
-#         self.pin = pin
- 
-#     def was_pressed(self):
-#         if self.val == 1:
-#             self.val = 0
-#             return 1
-#         else:
-#             return 0
-
-#     def is_pressed(self):
-#         return 1 - Pin(self.pin).value()
-
-
-
 class Button:
     def __init__(self, pin):
         from machine import Pin
@@ -60,12 +43,11 @@ class Button:
     def is_pressed(self):
         return self.pin.value() == 0
 
-    def was_pressed(self, delay = 1):
-        last_time, last_state = time.time(), self.pin.value()
-        while time.time() < last_time + delay:
-            time.sleep_ms(50)
-            if last_state == 1 and self.pin.value() == 0:
-                return True
+    def was_pressed(self):
+        last_state = self.pin.value()
+        time.sleep_ms(15)
+        if last_state == 1 and self.pin.value() == 0:
+            return True
         return False
 
     def irq(self, handler, trigger):
