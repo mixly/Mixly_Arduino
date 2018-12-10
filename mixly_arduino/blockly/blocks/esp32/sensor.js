@@ -228,6 +228,7 @@ Blockly.Blocks['sensor_mpu9250_temperature'] = {
             .appendField(Blockly.MIXLY_GETTEMPERATUE)
         this.setOutput(true, Number);
         this.setInputsInline(true);
+
         this.setTooltip(Blockly.MIXLY_GETTEMPERATUE);
     }
 };
@@ -389,8 +390,8 @@ Blockly.Blocks.sensor_dht11 = {
             var op = thisBlock.getFieldValue('WHAT');
             var TOOLTIPS = {
                 'temperature': Blockly.MIXLY_TOOLTIP_BLOCKGROUP_GET_TEM,
-                'humidity': Blockly.MIXLY_TOOLTIP_BLOCKGROUP_GET_HUM,
-                'all': Blockly.MIXLY_TOOLTIP_BLOCKGROUP_GET_TEM_HUM
+                'relative_humidity': Blockly.MIXLY_TOOLTIP_BLOCKGROUP_GET_HUM,
+                'tempandhum': Blockly.MIXLY_TOOLTIP_BLOCKGROUP_GET_TEM_HUM
             };
             return TOOLTIPS[op];
         });
@@ -406,6 +407,7 @@ Blockly.Blocks['sensor_mixgo_light'] = {
             .appendField(Blockly.MIXLY_ESP32_LIGHT);
         this.setOutput(true, Number);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.ESP32_SENSOR_NIXGO_LIGHT_TOOLTIP);
     }
 };
 
@@ -416,6 +418,7 @@ Blockly.Blocks['sensor_mixgo_sound'] = {
             .appendField(Blockly.MIXLY_ESP32_SOUND);
         this.setOutput(true, Number);
         this.setInputsInline(true);
+        this.setTooltip(Blockly.ESP32_SENSOR_NIXGO_SOUND_TOOLTIP);
     }
 };
 
@@ -536,7 +539,18 @@ Blockly.Blocks.sensor_use_i2c_init = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip();
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('key');
+        var mode0 = Blockly.MIXLY_ESP32_SENSOR_USE_I2C_TOOLTIP;
+        var mode1 = Blockly.MIXLY_ESP32_NEAR;
+        var TOOLTIPS = {
+        "MPU9250": "MPU9250",
+        "SHT20": "SHT20",
+        "BMP280": "BMP280"
+      };
+      return mode0 +TOOLTIPS[mode]
+    });
     }
 };
 
@@ -553,7 +567,15 @@ Blockly.Blocks['sensor_bmp'] = {
                 ]), "key");
         this.setOutput(true, Number);
         this.setInputsInline(true);
-        //this.setTooltip(Blockly.MIXLY_MICROBIT_SENSOR_BMP_temperature_TOOLTIP);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('key');
+        var TOOLTIPS = {
+        "get_BMP_temperature()":Blockly.MIXLY_MICROBIT_SENSOR_BMP_temperature_TOOLTIP,
+        "get_BMP_pressure()":Blockly.MIXLY_MICROBIT_SENSOR_BMP_press_TOOLTIP,
+      };
+      return TOOLTIPS[mode]
+    });
     }
 };
 
@@ -570,7 +592,17 @@ Blockly.Blocks['sensor_sht'] = {
                 ]), "key");
         this.setOutput(true, Number);
         this.setInputsInline(true);
-        //this.setTooltip(Blockly.MIXLY_MICROBIT_SENSOR_SHT_temperature_TOOLTIP);
+        this.setInputsInline(true);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('key');
+        var mode0 = Blockly.MIXLY_MICROBIT_SENSOR_SHT_temperature_TOOLTIP;
+        var TOOLTIPS = {
+        "get_SHT_temperature()":Blockly.MIXLY_GETTEMPERATUE,
+        "get_SHT_pressure()":Blockly.MIXLY_GETHUMIDITY,
+      };
+      return mode0 +TOOLTIPS[mode]
+    });
      }
 };
 

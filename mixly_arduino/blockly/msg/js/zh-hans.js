@@ -1,4 +1,4 @@
-﻿// This file was automatically generated.  Do not modify.
+// This file was automatically generated.  Do not modify.
 'use strict';
 
 goog.provide('Blockly.Msg.zh.hans');
@@ -778,7 +778,7 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERIAL_READ_STR='返回串口中的字符串。
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERIAL_READ_INT='返回串口中的整数。';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERIAL_READ_FLOAT='返回串口中的小数。';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_CHAOSHENGBO='返回超声波传感器测得的距离。';
-Blockly.MIXLY_TOOLTIP_BLOCKGROUP_GET_TEM='返回温湿度传感器测得的温度。';
+Blockly.MIXLY_TOOLTIP_BLOCKGROUP_GET_TEM='返回温湿度传感器测得的温度';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_GET_HUM='返回温湿度传感器测得的湿度。';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_MOVE = '设置舵机的旋转角度（0~180°）和延时的时长';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_READ = '返回舵机当前停留的角度。';
@@ -2159,6 +2159,13 @@ Blockly.MIXLY_ESP32_NETWORK_SOCKET_RECEIVE_FROM_TOOLTIP="利用UDP协议返回�
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TO_TOOLTIP="发送信息到指定的网络地址";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CLOSE_TOOLTIP="关闭网络连接";
 Blockly.MIXLY_ESP32_SENSOR_MIXGO_PIN_NEAR_TOOLTIP='返回'
+Blockly.ESP32_SENSOR_NIXGO_LIGHT_TOOLTIP = '返回光线传感器的值（0~111）'
+Blockly.ESP32_SENSOR_NIXGO_SOUND_TOOLTIP = '返回声音传感器的值（0~111）'
+Blockly.MIXLY_MICROBIT_SENSOR_BMP_temperature_TOOLTIP = "获取温度（0~111)"
+Blockly.MIXLY_MICROBIT_SENSOR_BMP_press_TOOLTIP = "获取大气压强（0~111)"
+Blockly.MIXLY_MICROBIT_SENSOR_SHT_temperature_TOOLTIP = "获取SHT"
+Blockly.MIXLY_ESP32_SENSOR_USE_I2C_TOOLTIP='初始化传感器类型为：'
+Blockly.MIXLY_MICROBIT_SENSOR_DS18X20_TOOLTIP ='返回温度（0~111）'
 //@author:zyc 2018-12-6
 Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
