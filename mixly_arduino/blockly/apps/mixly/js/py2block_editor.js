@@ -41,7 +41,7 @@ Py2blockEditor.prototype.formatModule = function (python_code) {
         for (var j = 0; j < keylist[i].length; j++) {
             var reg = new RegExp(modulelist[i] + "." + keylist[i][j], "g");
             python_code = python_code.replace(reg, keylist[i][j]);
-            var reg = new RegExp("(" + keylist[i][j] + "\\(" + "|" + keylist[i][j] + "\\." + ")", "g");
+            var reg = new RegExp("(" + "\\b"+keylist[i][j] + "\\(" + "|" +"\\b"+ keylist[i][j] + "\\." + ")", "g");
             python_code = python_code.replace(reg, function(match) {
                 return modulelist[i] + "." + match;
             });
