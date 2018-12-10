@@ -294,6 +294,7 @@ Blockly.Blocks.RTC_get_time = {
     // this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
     this.setInputsInline(true);
     this.setOutput(true, Number);
+    this.setTooltip(Blockly.MIXLY_ESP32_RTC_GET_TIME_TOOLTIP);
     // var thisBlock = this;
     //     this.setTooltip(function() {
     //     var mode = thisBlock.getFieldValue('TIME_TYPE');
@@ -592,16 +593,14 @@ Blockly.Blocks['sensor_sht'] = {
                 ]), "key");
         this.setOutput(true, Number);
         this.setInputsInline(true);
-        this.setInputsInline(true);
         var thisBlock = this;
         this.setTooltip(function() {
         var mode = thisBlock.getFieldValue('key');
-        var mode0 = Blockly.MIXLY_MICROBIT_SENSOR_SHT_temperature_TOOLTIP;
         var TOOLTIPS = {
-        "get_SHT_temperature()":Blockly.MIXLY_GETTEMPERATUE,
-        "get_SHT_pressure()":Blockly.MIXLY_GETHUMIDITY,
+        "get_SHT_temperature()":Blockly.MIXLY_MICROBIT_SENSOR_SHT_temperature_TOOLTIP,
+        "get_SHT_relative_humidity()":Blockly.MIXLY_MICROBIT_SENSOR_SHT_HUM_TOOLTIP,
       };
-      return mode0 +TOOLTIPS[mode]
+      return TOOLTIPS[mode]
     });
      }
 };
