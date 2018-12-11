@@ -128,6 +128,16 @@ Blockly.Variables.flyoutCategory = function(workspace) {
       block.setAttribute('type', 'variables_change');
       xmlList.push(block);
   }
+  if (Blockly.Blocks['controls_type']) {
+      var block = goog.dom.createDom('block');
+      block.setAttribute('type', 'controls_type');
+      xmlList.push(block);
+  }
+  if (Blockly.Blocks['controls_typeLists']) {
+      var block = goog.dom.createDom('block');
+      block.setAttribute('type', 'controls_typeLists');
+      xmlList.push(block);
+  }
   for (var i = 0; i < variableList.length; i++) {
     // alert(variableList)
     // if(i==0&& !(Blockly.Python.setups_['variables_set'+''])){

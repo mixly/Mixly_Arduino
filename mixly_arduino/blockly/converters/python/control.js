@@ -7,7 +7,7 @@ pbc.globalFunctionD['type'] = function (py2block, func, args, keywords, starargs
     return block("controls_type", func.lineno, {}, {
             'DATA': py2block.convert(args[0]),
         }, {
-            "inline": "true"
+            "inline": "false"
         });
 }
 
