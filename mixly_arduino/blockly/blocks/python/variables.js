@@ -117,21 +117,25 @@ Blockly.Blocks['variables_set'] = {
 Blockly.Blocks['variables_change'] = {
     init: function () {
         this.setColour(Blockly.Blocks.variables.HUE);
+        this.appendValueInput('MYVALUE')
         var DATATYPES =
          [
-          [Blockly.MIXLY_MICROBIT_TYPE_INT, "int"],
-          [Blockly.MIXLY_MICROBIT_TYPE_FLOAT, "float"],
-          [Blockly.MIXLY_MICROBIT_TYPE_STRING, "str"],
+          [Blockly.LANG_MATH_INT, "int"],
+          [Blockly.LANG_MATH_FLOAT, "float"],
+          [Blockly.LANG_MATH_BOOLEAN, "bool"],
+          // [Blockly.MIXLY_MICROPYTHON_TYPE_COMPLEX, "complex"],
+          [Blockly.LANG_MATH_STRING, "str"],
           [Blockly.MIXLY_MICROBIT_TYPE_LIST, "list"],
           [Blockly.MIXLY_MICROBIT_TYPE_TUPLE, "tuple"],
           [Blockly.MIXLY_MICROBIT_TYPE_DICT,"dict"],
           [Blockly.MIXLY_MICROBIT_TYPE_SETS,"set"]
           ];
-       
-        this.appendValueInput('MYVALUE')
-             .appendField(new Blockly.FieldDropdown(DATATYPES), 'OP');
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.A_TO_B)
+            .appendField(new Blockly.FieldDropdown(DATATYPES), 'OP');
         // Assign 'this' to a variable for use in the tooltip closure below.
         this.setOutput(true);
+        this.setInputsInline(true);
        
     }
 };

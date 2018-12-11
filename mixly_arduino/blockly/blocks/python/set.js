@@ -373,29 +373,29 @@ Blockly.Blocks['set_update'] = {
   }
 };
 
-Blockly.Blocks['set_change_to'] = {
-  init: function() {
-    var OPERATORS =
-        [[Blockly.MIXLY_MICROBIT_TYPE_LIST, 'list'],
-         [Blockly.MIXLY_MICROBIT_TYPE_TUPLE, 'tuple']
-        ];
-    this.setColour(Blockly.Blocks.set.HUE);
-    this.appendValueInput('VAR')
-        .setCheck("Set")
-        // .appendField(Blockly.blockpy_USE_LIST);   
-    this.appendDummyInput("")
-        .appendField(Blockly.Msg.A_TO_B)
-        .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
-    this.setInputsInline(true);
-    this.setOutput(true);
-    var thisBlock = this;
-    this.setTooltip(function() {
-      var mode = thisBlock.getFieldValue('OP');
-      var TOOLTIPS = {
-        'list': Blockly.Msg.SET_TO_LISTS,
-        'tuple': Blockly.Msg.SET_TO_TUPLE,
-      };
-      return TOOLTIPS[mode];
-    });
-  }
-};
+// Blockly.Blocks['set_change_to'] = {
+//   init: function() {
+//     var OPERATORS =
+//         [[Blockly.MIXLY_MICROBIT_TYPE_LIST, 'list'],
+//          [Blockly.MIXLY_MICROBIT_TYPE_TUPLE, 'tuple']
+//         ];
+//     this.setColour(Blockly.Blocks.set.HUE);
+//     this.appendValueInput('VAR')
+//         .setCheck("Set")
+//         // .appendField(Blockly.blockpy_USE_LIST);   
+//     this.appendDummyInput("")
+//         .appendField(Blockly.Msg.A_TO_B)
+//         .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
+//     this.setInputsInline(true);
+//     this.setOutput(true);
+//     var thisBlock = this;
+//     this.setTooltip(function() {
+//       var mode = thisBlock.getFieldValue('OP');
+//       var TOOLTIPS = {
+//         'list': Blockly.Msg.SET_TO_LISTS,
+//         'tuple': Blockly.Msg.SET_TO_TUPLE,
+//       };
+//       return TOOLTIPS[mode];
+//     });
+//   }
+// };
