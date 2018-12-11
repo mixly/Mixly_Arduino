@@ -117,7 +117,6 @@ Blockly.Blocks['variables_set'] = {
 Blockly.Blocks['variables_change'] = {
     init: function () {
         this.setColour(Blockly.Blocks.variables.HUE);
-        this.appendValueInput('MYVALUE')
         var DATATYPES =
          [
           [Blockly.LANG_MATH_INT, "int"],
@@ -130,12 +129,11 @@ Blockly.Blocks['variables_change'] = {
           [Blockly.MIXLY_MICROBIT_TYPE_DICT,"dict"],
           [Blockly.MIXLY_MICROBIT_TYPE_SETS,"set"]
           ];
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.A_TO_B)
+        this.appendValueInput('MYVALUE')
             .appendField(new Blockly.FieldDropdown(DATATYPES), 'OP');
         // Assign 'this' to a variable for use in the tooltip closure below.
         this.setOutput(true);
-        this.setInputsInline(true);
+        // this.setInputsInline(true);
        
     }
 };
@@ -153,4 +151,53 @@ Blockly.Blocks['variables_global'] = {
   }
 };
 
-    
+
+Blockly.Blocks.controls_type = {
+  init: function() {
+    this.setColour(Blockly.Blocks.variables.HUE);
+    this.appendValueInput("DATA")
+        .appendField(Blockly.MICROBIT_PYTHON_TYPE);
+    // this.setInputsInline(true);
+    this.setOutput(true);
+    this.setTooltip(Blockly.MICROBIT_PYTHON_TYPE);
+  }
+};
+
+
+Blockly.Blocks.controls_typeLists = {
+    init: function() {
+        this.setColour(Blockly.Blocks.variables.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE)
+            .appendField(new Blockly.FieldDropdown([
+              [Blockly.MIXLY_MICROBIT_TYPE_INT, "int"],
+              [Blockly.MIXLY_MICROBIT_TYPE_FLOAT, "float"],
+              [Blockly.MIXLY_MICROBIT_TYPE_STRING, "str"],
+              [Blockly.MIXLY_MICROBIT_TYPE_LIST, "list"],
+              [Blockly.MIXLY_MICROBIT_TYPE_TUPLE, "tuple"],
+              [Blockly.MIXLY_MICROBIT_TYPE_DICT,"dict"],
+              [Blockly.MIXLY_MICROBIT_TYPE_SETS,"set"],
+              // [Blockly.MIXLY_MICROBIT_TYPE_IMAGE,"image"],
+              [Blockly.MIXLY_MICROBIT_TYPE_NONE,"NoneType"]]), "type");
+            //整数、浮点数、字符串、列表、元组、字典、集合、图像不太对, unfinished
+        this.setInputsInline(true);
+        this.setOutput(true);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('type');
+        var mode0 = Blockly.MICROBIT_controls_TypeLists;
+        var TOOLTIPS = {
+        'int': Blockly.MIXLY_MICROBIT_TYPE_INT,
+        'float': Blockly.MIXLY_MICROBIT_TYPE_FLOAT,
+        'str': Blockly.MIXLY_MICROBIT_TYPE_STRING,
+        'list': Blockly.MIXLY_MICROBIT_TYPE_LIST,
+        'tuple':Blockly.MIXLY_MICROBIT_TYPE_TUPLE,
+        'dict': Blockly.MIXLY_MICROBIT_TYPE_DICT,
+        'set': Blockly.MIXLY_MICROBIT_TYPE_SETS,
+        'image':Blockly.MIXLY_MICROBIT_TYPE_IMAGE,
+        'NoneType': Blockly.MIXLY_MICROBIT_TYPE_NONE
+      };
+      return mode0 + TOOLTIPS[mode];
+    });
+    }
+};
