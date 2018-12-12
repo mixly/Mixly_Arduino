@@ -42,7 +42,7 @@ Blockly.Blocks['lists_get_sublist'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.TEXT_INDEXOF_TAIL);
         this.setInputsInline(true);
-        this.setOutput(true, 'List');
+        this.setOutput(true);
         this.setTooltip(Blockly.Msg.PYTHON_LISTS_GET_SUBLIST_TOOLTIP);
     }
 }
