@@ -86,9 +86,9 @@ Blockly.Python.set_update = function(block) {
   return code;
 };
 
-Blockly.Python.set_change_to = function(){
-  var op = this.getFieldValue('OP');
-  var varName = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
-  var code = op + '(' + varName + ')\n';
-  return [code, Blockly.Python.ORDER_ATOMIC];
-}
+// Blockly.Python.set_change_to = function(){
+//   var op = this.getFieldValue('OP');
+//   var varName = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+//   var code = op + '(' + varName + ')\n';
+//   return [code, Blockly.Python.ORDER_ATOMIC];
+// }
