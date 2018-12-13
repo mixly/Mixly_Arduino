@@ -518,8 +518,12 @@ pbc.objectFunctionD.get('show_fill_rect')['monitor'] = function (py2block, func,
 }
 
 pbc.assignD.get('oled')['check_assign'] = function(py2block, node, targets, value) {
-    var funcName = py2block.identifier(value.func.id);
-    if(value._astname === "Call" 
+    if(value._astname != "Call" || value.func._astname != "Attribute" || value.func.value._astname != "Name"){
+        return false;
+    }
+    var moduleName = py2block.Name_str(value.func.value);
+    var funcName = py2block.identifier(value.func.attr);
+    if(value._astname === "Call" && moduleName === "ssd1306"
         && funcName === "SSD1306_I2C" && value.args.length === 3)
         return true;
     return false;
@@ -529,11 +533,11 @@ pbc.assignD.get('oled')['create_block'] = function(py2block, node, targets, valu
     var rowblock = py2block.convert(value.args[0]);
     var columnblock = py2block.convert(value.args[1]);
     var i2cblock = py2block.convert(value.args[2]);
-    return block("display_use_i2c_init", node.lineno, {}, {
-        "SUB":py2block.convert(targets[0]),
-        "I2CSUB":i2cblock,
+    return block("display_use_i2c_init", node.lineno, {
+    }, {
         "row":rowblock,
-        "column":columnblock
+        "column":columnblock,
+        "I2CSUB":i2cblock,
+        "SUB":py2block.convert(targets[0]),
     });
 }
-

@@ -217,30 +217,44 @@ pbc.moduleFunctionD.get('handbit')['handbit_get_soundlevel'] = function (py2bloc
     });
 }
 
-function get_Acceleration(mode){
-    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
-        if (args.length !== 0) {
-            throw new Error("Incorrect number of arguments");
-        }
-        var mpu = {
-            '_astname': 'Name',
-            'id': {
-                '_astname': 'Str',
-                'v': py2block.Name_str(func.value.value) + "." + py2block.identifier(func.value.attr)
-            }
-        };
-        var mpublock=py2block.convert(mpu);
-        return block('sensor_handbit_get_acceleration', func.lineno, {
-                "key": mode
-            }, {
-                'SUB': mpublock
-            }, {
-                "inline": "true"
-            });
+pbc.objectFunctionD.get('get_a_x')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 0) {
+        throw new Error("Incorrect number of arguments");
     }
-    return converter;
+    var objblock = py2block.convert(func.value);
+    return [block("sensor_handbit_get_acceleration", func.lineno, {
+            'key': 'x',
+        }, {
+            "SUB":objblock,
+        }, {
+            "inline": "true"
+        })];
 }
 
-pbc.moduleFunctionD.get('handbit.ac')['get_a_x'] = get_Acceleration('x');
-pbc.moduleFunctionD.get('handbit.ac')['get_a_y'] = get_Acceleration('y');
-pbc.moduleFunctionD.get('handbit.ac')['get_a_z'] = get_Acceleration('z');
+pbc.objectFunctionD.get('get_a_y')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    return [block("sensor_handbit_get_acceleration", func.lineno, {
+            'key': 'y',
+        }, {
+            "SUB":objblock,
+        }, {
+            "inline": "true"
+        })];
+}
+
+pbc.objectFunctionD.get('get_a_z')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    return [block("sensor_handbit_get_acceleration", func.lineno, {
+            'key': 'z',
+        }, {
+            "SUB":objblock,
+        }, {
+            "inline": "true"
+        })];
+}

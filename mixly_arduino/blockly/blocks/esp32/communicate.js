@@ -109,7 +109,7 @@ Blockly.Blocks['communicate_spi_init'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setTooltip(Blockly.MIXLY_ESP32_SPI_INIT);   
+        this.setTooltip(Blockly.MIXLY_ESP32_SPI_INIT_TOOLTIP);   
     }
 };
 
