@@ -247,7 +247,6 @@ pbc.objectFunctionD.get('write')['Turtle'] = function (py2block, func, args, key
         if (keywords.length == 0){
             var turtleblock = py2block.convert(func.value);
             var argblock = py2block.convert(args[0]);
-            args[0].s.v='Arial'
             var fontnameblock = py2block.convert(args[0]);
             return [block('turtle_write', func.lineno, {}, {
                 'TUR': turtleblock,
@@ -263,7 +262,6 @@ pbc.objectFunctionD.get('write')['Turtle'] = function (py2block, func, args, key
             var argblock = py2block.convert(args[0]);
             if (tag=='align') {   
                 var formatblock = py2block.Str_value(keywords[0].value);
-                args[0].s.v='Arial'
                 var fontnameblock = py2block.convert(args[0]);
                 return [block('turtle_write_format', func.lineno, {
                     'ALIGN':formatblock
@@ -350,7 +348,6 @@ pbc.objectFunctionD.get('write')['Turtle'] = function (py2block, func, args, key
         if (keywords.length == 0){
             var turtleblock = py2block.convert(func.value);
             var argblock = py2block.convert(args[0]);
-            args[0].s.v='Arial'
             var fontnameblock = py2block.convert(args[0]);
             return [block('turtle_write_format', func.lineno, {
                 'MOVE':moveblock
@@ -368,7 +365,6 @@ pbc.objectFunctionD.get('write')['Turtle'] = function (py2block, func, args, key
             var argblock = py2block.convert(args[0]);
             if (tag=='align') {   
                 var formatblock = py2block.Str_value(keywords[0].value);
-                args[0].s.v='Arial'
                 var fontnameblock = py2block.convert(args[0]);
                 return [block('turtle_write_format', func.lineno, {
                     'ALIGN':formatblock,
