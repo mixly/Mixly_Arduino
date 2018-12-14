@@ -15,6 +15,7 @@ function Py2blockConfig (){
     this.initIgnoreS();
     this.initModuleAttrD();
     this.initKnownModuleS();
+    this.initObjectTypeD();
 }
 
 var pbc = Py2blockConfig.prototype;
@@ -109,8 +110,14 @@ pbc.initKnownModuleS = function(){
     }
 }
 
+pbc.initObjectTypeD = function () {
+    this.objectTypeD = {
+        'f': 'open'
+    }
+}
+
 pbc.reset = function(){
-    this.objectTypeD = {};
+    this.initObjectTypeD();
 }
 
 var py2block_config = new Py2blockConfig();

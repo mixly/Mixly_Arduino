@@ -15,6 +15,7 @@ function Py2blockConfig (){
     this.initIgnoreS();
     this.initModuleAttrD();
     this.initKnownModuleS();
+    this.initObjectTypeD();
     this.formatModuleKeyL = [
         ['Pin', 'ADC', 'TouchPad', 'PWM', 'DAC', 'I2C'],
         ['button_a', 'button_b', 'touch1', 'touch2', 'touch3', 'touch4', 'touch5','touch6','Infrared_left', 'Infrared_right',
@@ -99,8 +100,14 @@ pbc.initKnownModuleS = function(){
     }
 }
 
+pbc.initObjectTypeD = function () {
+    this.objectTypeD = {
+        'f': 'open'
+    }
+}
+
 pbc.reset = function(){
-    this.objectTypeD = {};
+    this.initObjectTypeD();
 }
 
 var py2block_config = new Py2blockConfig();

@@ -1,5 +1,6 @@
 'use strict';
 
+var turtleClass = 'turtle.Turtle';
 pbc.assignD.get('Turtle')['check_assign'] = function (py2block, node, targets, value) {
     if(value.func._astname != "Attribute" || value.func.value._astname != "Name"){
         return false;
@@ -46,8 +47,8 @@ function turtleForwardBackward(mode){
     return converter;
 }
 
-pbc.objectFunctionD.get('forward')['Turtle'] = turtleForwardBackward('forward');
-pbc.objectFunctionD.get('backward')['Turtle'] = turtleForwardBackward('backward');
+pbc.objectFunctionD.get('forward')[turtleClass] = turtleForwardBackward('forward');
+pbc.objectFunctionD.get('backward')[turtleClass] = turtleForwardBackward('backward');
 
 
 function turtleLeftRight(mode){
@@ -69,11 +70,11 @@ function turtleLeftRight(mode){
     return converter;
 }
 
-pbc.objectFunctionD.get('left')['Turtle'] = turtleLeftRight('left');
-pbc.objectFunctionD.get('right')['Turtle'] = turtleLeftRight('right');
+pbc.objectFunctionD.get('left')[turtleClass] = turtleLeftRight('left');
+pbc.objectFunctionD.get('right')[turtleClass] = turtleLeftRight('right');
 
 
-pbc.objectFunctionD.get('setheading')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('setheading')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -87,7 +88,7 @@ pbc.objectFunctionD.get('setheading')['Turtle'] = function (py2block, func, args
     })];
 }
 
-pbc.objectFunctionD.get('delay')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('delay')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -121,7 +122,7 @@ pbc.moduleFunctionD.get('turtle')['bgcolor'] = function(py2block, func, args, ke
 }
 
 
-pbc.objectFunctionD.get('goto')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('goto')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 2) {
         throw new Error("Incorrect number of arguments");
     }
@@ -156,9 +157,9 @@ function turtleClearResetHome(mode){
 }
 
 //turtle.clear方法和list里的clear方法重复
-pbc.objectFunctionD.get('clear')['Turtle'] = turtleClearResetHome('clear');
-pbc.objectFunctionD.get('reset')['Turtle'] = turtleClearResetHome('reset');
-pbc.objectFunctionD.get('home')['Turtle'] = turtleClearResetHome('home');
+pbc.objectFunctionD.get('clear')[turtleClass] = turtleClearResetHome('clear');
+pbc.objectFunctionD.get('reset')[turtleClass] = turtleClearResetHome('reset');
+pbc.objectFunctionD.get('home')[turtleClass] = turtleClearResetHome('home');
 
 
 function turtlePenupPendown(mode){
@@ -178,11 +179,11 @@ function turtlePenupPendown(mode){
     return converter;
 }
 
-pbc.objectFunctionD.get('penup')['Turtle'] = turtlePenupPendown('penup');
-pbc.objectFunctionD.get('pendown')['Turtle'] = turtlePenupPendown('pendown');
+pbc.objectFunctionD.get('penup')[turtleClass] = turtlePenupPendown('penup');
+pbc.objectFunctionD.get('pendown')[turtleClass] = turtlePenupPendown('pendown');
 
 
-pbc.objectFunctionD.get('pensize')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('pensize')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -197,7 +198,7 @@ pbc.objectFunctionD.get('pensize')['Turtle'] = function (py2block, func, args, k
 }
 
 
-pbc.objectFunctionD.get('speed')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('speed')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -211,7 +212,7 @@ pbc.objectFunctionD.get('speed')['Turtle'] = function (py2block, func, args, key
     })];
 }
 
-pbc.objectFunctionD.get('shape')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('shape')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1 && args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -239,7 +240,7 @@ pbc.objectFunctionD.get('shape')['Turtle'] = function (py2block, func, args, key
     });}
 }
 
-pbc.objectFunctionD.get('write')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('write')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1 && args.length !== 2) {
         throw new Error("Incorrect number of arguments");
     }
@@ -247,10 +248,8 @@ pbc.objectFunctionD.get('write')['Turtle'] = function (py2block, func, args, key
         if (keywords.length == 0){
             var turtleblock = py2block.convert(func.value);
             var argblock = py2block.convert(args[0]);
-            var fontnameblock = py2block.convert(args[0]);
             return [block('turtle_write', func.lineno, {}, {
                 'TUR': turtleblock,
-                'FONTNAME':fontnameblock,
                 'VAR': argblock,
             }, {
                 "inline": "true"
@@ -473,11 +472,11 @@ function turtleCircleDot(mode){
     return converter;
 }
 
-pbc.objectFunctionD.get('circle')['Turtle'] = turtleCircleDot('circle');
-pbc.objectFunctionD.get('dot')['Turtle'] = turtleCircleDot('dot');
+pbc.objectFunctionD.get('circle')[turtleClass] = turtleCircleDot('circle');
+pbc.objectFunctionD.get('dot')[turtleClass] = turtleCircleDot('dot');
 
 
-pbc.objectFunctionD.get('clone')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('clone')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -489,7 +488,7 @@ pbc.objectFunctionD.get('clone')['Turtle'] = function (py2block, func, args, key
     });
 }
 
-pbc.objectFunctionD.get('pos')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('pos')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
         if (args.length !== 0) {
             throw new Error("Incorrect number of arguments");
         }
@@ -520,11 +519,11 @@ function turtleHideShow(mode){
     return converter;
 }
 
-pbc.objectFunctionD.get('hideturtle')['Turtle'] = turtleHideShow('hideturtle');
-pbc.objectFunctionD.get('showturtle')['Turtle'] =  turtleHideShow('showturtle');
+pbc.objectFunctionD.get('hideturtle')[turtleClass] = turtleHideShow('hideturtle');
+pbc.objectFunctionD.get('showturtle')[turtleClass] =  turtleHideShow('showturtle');
 
 
-pbc.objectFunctionD.get('pencolor')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('pencolor')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -550,7 +549,7 @@ pbc.objectFunctionD.get('pencolor')['Turtle'] = function (py2block, func, args, 
 }
 
 
-pbc.objectFunctionD.get('fillcolor')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('fillcolor')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
@@ -594,6 +593,6 @@ function turtleBeginEndFill(mode){
     return converter;
 }
 
-pbc.objectFunctionD.get('begin_fill')['Turtle'] = turtleBeginEndFill('begin');
-pbc.objectFunctionD.get('end_fill')['Turtle'] = turtleBeginEndFill('end');
+pbc.objectFunctionD.get('begin_fill')[turtleClass] = turtleBeginEndFill('begin');
+pbc.objectFunctionD.get('end_fill')[turtleClass] = turtleBeginEndFill('end');
 

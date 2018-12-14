@@ -637,10 +637,15 @@ PythonToBlocks.prototype.Assign = function(node)
                     if (value.func._astname == "Name") {
                         py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.id.v;
                     } else {
-                        py2block_config.objectTypeD[this.Name_str(targets[0])] = value.func.attr.v;
+                        var line = this.getSourceCode().split('\n')[value.func.lineno - 1];
+                        py2block_config.objectTypeD[this.Name_str(targets[0])] = line.substring(value.func.col_offset).split('(')[0].trim();
                     }
                 } else {
-                    py2block_config.objectTypeD[this.Name_str(targets[0])] = value._astname;
+                    var astname = value._astname;
+                    if (value._astname === 'Name' && this.Name_str(value) in py2block_config.objectTypeD) {
+                        astname = py2block_config.objectTypeD[this.Name_str(value)];
+                    }
+                    py2block_config.objectTypeD[this.Name_str(targets[0])] = astname;
                 }
             }catch(e){
             }
