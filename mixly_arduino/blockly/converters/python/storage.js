@@ -21,15 +21,15 @@ pbc.assignD.get('File')['create_block'] = function(py2block, node, targets, valu
 }
 
 
-pbc.moduleFunctionD.get('f')['write'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+pbc.objectFunctionD.get('write')['f'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
     var fileblock = py2block.convert(func.value);
     var argblock = py2block.convert(args[0]);
     return [block("storage_file_write", func.lineno, {}, {
-         "FILE" : fileblock,
-         "data" :argblock
+        "FILE" : fileblock,
+        "data" :argblock
     }, {
         "inline": "true"
     })];
