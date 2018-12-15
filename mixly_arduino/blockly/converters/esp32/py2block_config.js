@@ -102,7 +102,10 @@ pbc.initKnownModuleS = function(){
 
 pbc.initObjectTypeD = function () {
     this.objectTypeD = {
-        'f': 'open'
+        'f': 'open',
+        'spi': 'machine.SPI',
+        'i2c': 'machine.I2C',
+        'ow': 'onewire.OneWire',
     }
 }
 

@@ -221,7 +221,7 @@ Blockly.Blocks['communicate_spi_write'] = {
             .setCheck('var')
             .appendField('SPI');
         this.appendValueInput('data')
-            .setCheck(Number)
+            .setCheck(String)
             .appendField(Blockly.MIXLY_ESP32_WRITE);
         this.setOutput(true, Number);
         this.setInputsInline(true);
@@ -236,7 +236,7 @@ Blockly.Blocks['communicate_spi_write_readinto'] = {
             .setCheck('var')
             .appendField('SPI');
         this.appendValueInput('data')
-            .setCheck(['var', Number])
+            .setCheck(String)
             .appendField(Blockly.MIXLY_ESP32_WRITE)
             // .appendField(new Blockly.FieldDropdown([
             //     [Blockly.MIXLY_MICROBIT_JS_I2C_BIT, "byte"],
@@ -344,7 +344,7 @@ Blockly.Blocks['communicate_ow_write'] = {
                 [Blockly.LANG_MATH_BYTE, "writebyte"]
             ]), "op");
         this.appendValueInput('byte')
-            .setCheck(Number, String);
+            .setCheck([Number,String]);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
