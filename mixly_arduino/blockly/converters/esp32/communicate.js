@@ -236,12 +236,12 @@ pbc.objectFunctionD.get('read')[spiClass] = function (py2block, func, args, keyw
     var objblock = py2block.convert(func.value);
     var byteblock = py2block.convert(args[0]);
     if (args.length == 1){
-        return [block("communicate_spi_read", func.lineno, {}, {
+        return block("communicate_spi_read", func.lineno, {}, {
                 "data": byteblock,
                 "VAR": objblock
             }, {
                 "inline": "true"
-            })];
+            });
     }
     if (args.length == 2){
         var outputblock = py2block.convert(args[1]);
@@ -262,12 +262,12 @@ pbc.objectFunctionD.get('readinto')['SPI'] = function (py2block, func, args, key
     var objblock = py2block.convert(func.value);
     var byteblock = py2block.convert(args[0]);
     if (args.length == 1){
-        return [block("communicate_spi_readinto", func.lineno, {}, {
+        return block("communicate_spi_readinto", func.lineno, {}, {
                 "data": byteblock,
                 "VAR": objblock
             }, {
                 "inline": "true"
-            })];
+            });
     }
     if (args.length == 2){
         var outputblock = py2block.convert(args[1]);
