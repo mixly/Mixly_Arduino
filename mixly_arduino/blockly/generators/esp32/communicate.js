@@ -105,18 +105,18 @@ Blockly.Python.communicate_spi_readinto_output = function() {
 Blockly.Python.communicate_spi_write = function() {   
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
-    return [""+varname+".write(b'" + data + "')", Blockly.Python.ORDER_ATOMIC];
+    return [""+varname+".write(" + data + ".encode('utf-8'))", Blockly.Python.ORDER_ATOMIC];
 }
 
 Blockly.Python.communicate_spi_write_readinto = function() {   
     var varname = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     var val = Blockly.Python.valueToCode(this, 'val', Blockly.Python.ORDER_ATOMIC);
-    var op=this.getFieldValue('op');
+    // var op=this.getFieldValue('op');
     // if(op=="byte"){
-    //   return [""+varname+".write_readinto(" + data + ".encode('utf-8'),"+val+")", Blockly.Python.ORDER_ATOMIC];
+      return [""+varname+".write_readinto(" + data + ".encode('utf-8'),"+val+")", Blockly.Python.ORDER_ATOMIC];
     // }else{
-      return [""+varname+".write_readinto(" + data + ","+val+")", Blockly.Python.ORDER_ATOMIC];
+    //   return [""+varname+".write_readinto(" + data + ","+val+")", Blockly.Python.ORDER_ATOMIC];
     // }
 }
 
