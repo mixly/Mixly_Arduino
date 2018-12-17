@@ -430,7 +430,15 @@ Blockly.Blocks.display_Matrix_Init = {
     this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT);
    }
 };
-
+Blockly.Blocks.display_TM1637_clearDisplay = {
+    init: function () {
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.appendDummyInput("").appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_CLEARDISPLAY);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_TM1637_CLEARDISPLAY);
+    }
+};
 //执行器_点阵屏显示_画点变量
 var display_DrawPixel_NUM = [
   [Blockly.MIXLY_4DIGITDISPLAY_ON, "1"],

@@ -267,6 +267,11 @@ Blockly.Arduino.display_TM1637_displyPrint = function () {
     var code = 'display.printTime(' + hour + ',' + minute +',true);\n';
     return code;
   };
+   Blockly.Arduino.display_TM1637_clearDisplay = function () {
+    var code = 'display.clear();\n';
+    return code;
+  };
+
 
   Blockly.Arduino.display_TM1637_Brightness = function () {
     var BRIGHTNESS = Blockly.Arduino.valueToCode(this, 'Brightness', Blockly.Arduino.ORDER_ATOMIC);
