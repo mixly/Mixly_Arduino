@@ -55,6 +55,12 @@ class MyPin(Pin):
   else:
    self.init(Pin.IN)
    return self.value()==1
+class ADCSensor:
+ def __init__(self,pin):
+  self.adc=ADC(Pin(pin))
+  self.adc.atten(ADC.ATTN_11DB)
+ def read(self):
+  return self.adc.read()
 def handbit_get_brightness():
  return ADCSensor(pin=39).read()
 def handbit_get_soundlevel():
