@@ -59,6 +59,12 @@ def handbit_get_brightness():
  return ADCSensor(pin=39).read()
 def handbit_get_soundlevel():
  return ADCSensor(pin=36).read()
+class ADCSensor:
+ def __init__(self,pin):
+  self.adc=ADC(Pin(pin))
+  self.adc.atten(ADC.ATTN_11DB) 
+ def read(self):
+  return self.adc.read()
 class Accelerometer():
  def __init__(self):
   self.addr=38
