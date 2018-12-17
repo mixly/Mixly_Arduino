@@ -70,10 +70,10 @@ class MyPin(Pin):
             return self.value() == 1
 
 def handbit_get_brightness():
-    return ADCSensor(pin = 39).read()
+    return (machine.ADC(machine.Pin(39)).read()
 
 def handbit_get_soundlevel():
-    return ADCSensor(pin = 36).read()
+    return (machine.ADC(machine.Pin(36)).read()
 
 class Accelerometer():
     """  """
