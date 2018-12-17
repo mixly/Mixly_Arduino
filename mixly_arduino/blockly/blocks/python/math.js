@@ -273,7 +273,7 @@ Blockly.Blocks['math_random'] = {
       var mode = thisBlock.getFieldValue('TYPE');
       var TOOLTIPS = {
         'int': Blockly.LANG_MATH_INT,
-        'float':Blockly.LANG_MATH_FLOAT
+        'float':Blockly.LANG_MATH_FLOAT_RANDOM
       };
       return Blockly.Msg.MATH_RANDOM_INT_TOOLTIP + TOOLTIPS[mode];
     });

@@ -51,6 +51,29 @@ pbc.objectFunctionD.get('forward')[turtleClass] = turtleForwardBackward('forward
 pbc.objectFunctionD.get('backward')[turtleClass] = turtleForwardBackward('backward');
 
 
+function turtleSetxy(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 1) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var turtleblock = py2block.convert(func.value);
+        var argblock = py2block.convert(args[0]);
+        return [block('turtle_setxy', func.lineno, {
+            'DIR': mode
+        }, {
+            'TUR': turtleblock,
+            'VAR': argblock,
+        }, {
+            "inline": "true"
+        })];
+    }
+    return converter;
+}
+
+pbc.objectFunctionD.get('setx')[turtleClass] = turtleSetxy('x');
+pbc.objectFunctionD.get('sety')[turtleClass] = turtleSetxy('y');
+
+
 function turtleLeftRight(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
         if (args.length !== 1) {
@@ -240,7 +263,175 @@ pbc.objectFunctionD.get('shape')[turtleClass] = function (py2block, func, args, 
     });}
 }
 
-pbc.objectFunctionD.get('write')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('turtle')['textinput'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var argblock1 = py2block.convert(args[0]);
+    var argblock2 = py2block.convert(args[1]);
+    return block('turtle_textinput', func.lineno, {}, {
+        'TITLE':argblock1,
+        'PROMPT':argblock2
+    }, {
+        "inline": "true"
+    });
+}
+
+pbc.moduleFunctionD.get('turtle')['numinput'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length <2 || args.length + keywords.length >5 || keywords.length>2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    if(args.length==5){
+    var argblock1 = py2block.convert(args[0]);
+    var argblock2 = py2block.convert(args[1]);
+    var argblock3 = py2block.convert(args[2]);
+    var argblock4 = py2block.convert(args[3]);
+    var argblock5 = py2block.convert(args[4]);
+    return block('turtle_numinput', func.lineno, {}, {
+                'TITLE':argblock1,
+                'PROMPT':argblock2,
+                'DEFAULT':argblock3,        
+                'MAX':argblock5,
+                'MIN':argblock4
+        }, {
+            "inline": "true"
+        });
+
+    }
+    if(args.length==4){
+    var argblock1 = py2block.convert(args[0]);
+    var argblock2 = py2block.convert(args[1]);
+    var argblock3 = py2block.convert(args[2]);
+    var argblock4 = py2block.convert(args[3]);
+    if(keywords.length==1){
+        if(py2block.identifier(keywords[0].arg) === "maxval"){
+            var maxblock=py2block.convert(keywords[0].value)
+            return block('turtle_numinput', func.lineno, {}, {
+                'TITLE':argblock1,
+                'PROMPT':argblock2,
+                'DEFAULT':argblock3,        
+                'MAX':maxblock,
+                'MIN':argblock4
+        }, {
+            "inline": "true"
+        });  
+        }
+        if(py2block.identifier(keywords[0].arg) === "minval"){
+            var minblock=py2block.convert(keywords[0].value)
+            return block('turtle_numinput', func.lineno, {}, {
+                'TITLE':argblock1,
+                'PROMPT':argblock2,
+                'DEFAULT':argblock3,        
+                'MIN':minblock,
+                'MAX':argblock4
+        }, {
+            "inline": "true"
+        });
+
+        }    
+        } 
+        if(keywords.length==0){
+            return block('turtle_numinput', func.lineno, {}, {
+                'TITLE':argblock1,
+                'PROMPT':argblock2,
+                'DEFAULT':argblock3,        
+                'MIN':argblock4,
+                
+        }, {
+            "inline": "true"
+        });  
+        }    
+        }
+    if(args.length==3){
+    var argblock1 = py2block.convert(args[0]);
+    var argblock2 = py2block.convert(args[1]);
+    var argblock3 = py2block.convert(args[2]);
+    if(keywords.length==1){
+        if(py2block.identifier(keywords[0].arg) === "maxval"){
+            var maxblock=py2block.convert(keywords[0].value)
+            return block('turtle_numinput', func.lineno, {}, {
+                'TITLE':argblock1,
+                'PROMPT':argblock2,
+                'DEFAULT':argblock3,        
+                'MAX':maxblock
+        }, {
+            "inline": "true"
+        });  
+        }
+        if(py2block.identifier(keywords[0].arg) === "minval"){
+            var minblock=py2block.convert(keywords[0].value)
+            return block('turtle_numinput', func.lineno, {}, {
+                'TITLE':argblock1,
+                'PROMPT':argblock2,
+                'DEFAULT':argblock3,        
+                'MIN':minblock
+        }, {
+            "inline": "true"
+        });
+
+        }    
+    }
+    if(keywords.length==2){
+        if(py2block.identifier(keywords[0].arg) === "maxval"){var maxblock=py2block.convert(keywords[0].value)}
+            else if(py2block.identifier(keywords[1].arg) === "maxval"){var maxblock=py2block.convert(keywords[1].value)}
+        if(py2block.identifier(keywords[0].arg) === "minval"){var minblock=py2block.convert(keywords[0].value)}    
+            else if(py2block.identifier(keywords[1].arg) === "minval"){var minblock=py2block.convert(keywords[1].value)}
+    
+    return block('turtle_numinput', func.lineno, {}, {
+        'TITLE':argblock1,
+        'PROMPT':argblock2,
+        'DEFAULT':argblock3,
+        'MIN':minblock,
+        'MAX':maxblock
+    }, {
+        "inline": "true"
+    });}
+    }
+    if(args.length==2){
+    var argblock1 = py2block.convert(args[0]);
+    var argblock2 = py2block.convert(args[1]);
+    
+    if(keywords.length==1){
+        if(py2block.identifier(keywords[0].arg) === "maxval"){
+            var maxblock=py2block.convert(keywords[0].value)
+            return block('turtle_numinput', func.lineno, {}, {
+                'TITLE':argblock1,
+                'PROMPT':argblock2,                      
+                'MAX':maxblock
+        }, {
+            "inline": "true"
+        });  
+        }
+        if(py2block.identifier(keywords[0].arg) === "minval"){
+            var minblock=py2block.convert(keywords[0].value)
+            return block('turtle_numinput', func.lineno, {}, {
+                'TITLE':argblock1,
+                'PROMPT':argblock2,                       
+                'MIN':minblock
+        }, {
+            "inline": "true"
+        });
+
+        }    
+    }
+    if(keywords.length==2){
+        if(py2block.identifier(keywords[0].arg) === "maxval"){var maxblock=py2block.convert(keywords[0].value)}
+            else if(py2block.identifier(keywords[1].arg) === "maxval"){var maxblock=py2block.convert(keywords[1].value)}
+        if(py2block.identifier(keywords[0].arg) === "minval"){var minblock=py2block.convert(keywords[0].value)}    
+            else if(py2block.identifier(keywords[1].arg) === "minval"){var minblock=py2block.convert(keywords[1].value)}
+    
+    return block('turtle_numinput', func.lineno, {}, {
+        'TITLE':argblock1,
+        'PROMPT':argblock2,        
+        'MIN':minblock,
+        'MAX':maxblock
+    }, {
+        "inline": "true"
+    });}
+    }
+}
+
+pbc.objectFunctionD.get('write')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1 && args.length !== 2) {
         throw new Error("Incorrect number of arguments");
     }
@@ -449,32 +640,57 @@ pbc.objectFunctionD.get('write')[turtleClass] = function (py2block, func, args, 
     }
 }
 
-
-function turtleCircleDot(mode){
-    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
-        if (args.length !== 2) {
+pbc.objectFunctionD.get('circle')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2 && args.length !== 1) {
             throw new Error("Incorrect number of arguments");
         }
+        if(args.length == 2){
         var turtleblock = py2block.convert(func.value);
         var varblock = py2block.convert(args[0]);
         var datablock = py2block.convert(args[1]);
 
-        return [block('turtle_circle', func.lineno, {
-            'DIR': mode
-        }, {
+        return [block('turtle_circle_advanced', func.lineno, {}, {
             'TUR': turtleblock,
             'VAR': varblock,
             'data': datablock
         }, {
             "inline": "true"
         })];
+        }
+        if(args.length == 1){
+        var turtleblock = py2block.convert(func.value);
+        var varblock = py2block.convert(args[0]);
+        
+
+        return [block('turtle_circle', func.lineno, {
+            'DIR': 'circle'
+        }, {
+            'TUR': turtleblock,
+            'VAR': varblock
+        }, {
+            "inline": "true"
+        })];
+        }
     }
-    return converter;
-}
 
-pbc.objectFunctionD.get('circle')[turtleClass] = turtleCircleDot('circle');
-pbc.objectFunctionD.get('dot')[turtleClass] = turtleCircleDot('dot');
 
+pbc.objectFunctionD.get('dot')['turtleClass'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 1) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var turtleblock = py2block.convert(func.value);
+        var varblock = py2block.convert(args[0]);
+
+        return [block('turtle_circle', func.lineno, {
+            'DIR': 'dot'
+        }, {
+            'TUR': turtleblock,
+            'VAR': varblock
+        }, {
+            "inline": "true"
+        })];
+    }
+    
 
 pbc.objectFunctionD.get('clone')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
@@ -495,6 +711,34 @@ pbc.objectFunctionD.get('pos')[turtleClass] = function (py2block, func, args, ke
         var turtleblock = py2block.convert(func.value);
         return block('turtle_pos_shape', func.lineno, {
             'DIR': 'pos'
+        }, {
+            'TUR': turtleblock
+        }, {
+            "inline": "true"
+        });
+}
+
+pbc.objectFunctionD.get('position')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var turtleblock = py2block.convert(func.value);
+        return block('turtle_pos_shape', func.lineno, {
+            'DIR': 'pos'
+        }, {
+            'TUR': turtleblock
+        }, {
+            "inline": "true"
+        });
+}
+
+pbc.objectFunctionD.get('heading')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var turtleblock = py2block.convert(func.value);
+        return block('turtle_pos_shape', func.lineno, {
+            'DIR': 'heading'
         }, {
             'TUR': turtleblock
         }, {

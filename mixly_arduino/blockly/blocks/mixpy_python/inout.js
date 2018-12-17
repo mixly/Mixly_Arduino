@@ -59,9 +59,9 @@ Blockly.Blocks['inout_type_input'] = {
     this.setTooltip(function() {
       var mode = thisBlock.getFieldValue('DIR');
       var TOOLTIPS = {
-        'str': Blockly.MIXLY_TOOLTIP_TURTEL_CLEAR,
-        'int': Blockly.MIXLY_TOOLTIP_TURTEL_RESET,
-        'float': Blockly.MIXLY_TOOLTIP_TURTEL_HOME
+        'str': Blockly.MIXLY_MIXPY_INOUT_STR_INPUT_TOOLTIP,
+        'int': Blockly.MIXLY_MIXPY_INOUT_INT_INPUT_TOOLTIP,
+        'float': Blockly.MIXLY_MIXPY_INOUT_FLOAT_INPUT_TOOLTIP
       };
       return TOOLTIPS[mode];
     });

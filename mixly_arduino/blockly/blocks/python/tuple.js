@@ -319,7 +319,7 @@ Blockly.Blocks['tuple_max'] = {
      this.appendValueInput('TUP')
         .setCheck('Tuple')
   var max_min =
-        [[Blockly.blockpy_TUPLE_MAX, 'max'],[Blockly.blockpy_TUPLE_MIN, 'min']];
+        [[Blockly.blockpy_TUPLE_MAX, 'max'],[Blockly.blockpy_TUPLE_MIN, 'min'],[Blockly.Msg.MATH_ONLIST_OPERATOR_SUM,'sum']];
     this.setColour(Blockly.Blocks.tuple.HUE);
     this.appendDummyInput("")
         .appendField(Blockly.blockpy_TUPLE_GET)
@@ -333,7 +333,8 @@ Blockly.Blocks['tuple_max'] = {
       var mode = thisBlock.getFieldValue('DIR');
       var TOOLTIPS = {
         'max': Blockly.MIXLY_TOOLTIP_TUPLE_MAX,
-        'min': Blockly.MIXLY_TOOLTIP_TUPLE_MIN
+        'min': Blockly.MIXLY_TOOLTIP_TUPLE_MIN,
+        'sum': Blockly.MIXLY_TOOLTIP_TUPLE_SUM
       };
       return TOOLTIPS[mode];
     });
@@ -680,3 +681,25 @@ Blockly.Blocks['tuple_create_with_noreturn'] = {
     }
   }
 };
+
+Blockly.Blocks['tuple_get_sublist'] = {
+    /**
+     * Block for getting sublist.
+     * @this Blockly.Block
+     */
+    init: function () {
+        this.setHelpUrl(Blockly.Msg.LISTS_GET_SUBLIST_HELPURL);
+        this.setColour(Blockly.Blocks.tuple.HUE);
+        this.appendValueInput('LIST')
+        this.appendDummyInput('')
+        this.appendValueInput('AT1')
+            .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET + " " + Blockly.Msg.LISTS_GET_INDEX_FROM_START);
+        this.appendValueInput('AT2')
+            .appendField(Blockly.Msg.TEXT_INDEXOF_TAIL + " " + Blockly.Msg.LISTS_GET_SUBLIST_END_FROM_START);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.TEXT_INDEXOF_TAIL);
+        this.setInputsInline(true);
+        this.setOutput(true, 'Tuple');
+        this.setTooltip(Blockly.Msg.PYTHON_TUPLE_GET_SUBLIST_TOOLTIP);
+    }
+}

@@ -275,3 +275,13 @@ Blockly.Python.tuple_create_with_noreturn = function() {
 
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python['tuple_get_sublist'] = function(block) {
+  // Get sublist.
+  var list = Blockly.Python.valueToCode(block, 'LIST',
+      Blockly.Python.ORDER_MEMBER) || '[]';
+  var at1 =  Blockly.Python.valueToCode(this, 'AT1', Blockly.Python.ORDER_ADDITIVE) || '0';
+  var at2 =  Blockly.Python.valueToCode(this, 'AT2', Blockly.Python.ORDER_ADDITIVE) || '0';
+  var code = list + '[' + at1 + ' : ' + at2 + ']';
+  return [code, Blockly.Python.ORDER_MEMBER];
+};

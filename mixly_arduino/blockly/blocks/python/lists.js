@@ -42,7 +42,7 @@ Blockly.Blocks['lists_get_sublist'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.TEXT_INDEXOF_TAIL);
         this.setInputsInline(true);
-        this.setOutput(true);
+        this.setOutput(true, 'List');
         this.setTooltip(Blockly.Msg.PYTHON_LISTS_GET_SUBLIST_TOOLTIP);
     }
 }
@@ -339,7 +339,7 @@ Blockly.Blocks['lists_reverse'] = {
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_MICROBIT_JS_LIST_REVERSE)
         //.appendField(new Blockly.FieldTextInput('mylist'), 'VAR');
-    this.setTooltip(Blockly.LANG_LISTS_REVERSE_TOOLTIP);
+    this.setTooltip(Blockly.LANG_LISTS_CLEAR_TOOLTIP);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);

@@ -23,9 +23,61 @@ Blockly.Blocks.controls_end_program = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-	    .appendField(Blockly.MIXLY_CONTROL_END_PROGRAM);
-	this.setPreviousStatement(true);
+	      .appendField(Blockly.MIXLY_CONTROL_END_PROGRAM);
+	  this.setPreviousStatement(true);
+    this.setTooltip(Blockly.MIXLY_MIXPY_CONTROL_END_TOOLTIP);
   }
+};
+
+
+Blockly.Blocks.controls_type = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendValueInput("DATA")
+        .appendField(Blockly.MICROBIT_PYTHON_TYPE);
+    this.setInputsInline(true);
+    this.setOutput(true);
+    this.setTooltip(Blockly.MICROBIT_PYTHON_TYPE);
+  }
+};
+
+
+Blockly.Blocks.controls_typeLists = {
+    init: function() {
+        this.setColour(Blockly.Blocks.loops.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE)
+            .appendField(new Blockly.FieldDropdown([
+              [Blockly.MIXLY_MICROBIT_TYPE_INT, "int"],
+              [Blockly.MIXLY_MICROBIT_TYPE_FLOAT, "float"],
+              [Blockly.MIXLY_MICROBIT_TYPE_STRING, "str"],
+              [Blockly.MIXLY_MICROBIT_TYPE_LIST, "list"],
+              [Blockly.MIXLY_MICROBIT_TYPE_TUPLE, "tuple"],
+              [Blockly.MIXLY_MICROBIT_TYPE_DICT,"dict"],
+              [Blockly.MIXLY_MICROBIT_TYPE_SETS,"set"],
+              // [Blockly.MIXLY_MICROBIT_TYPE_IMAGE,"image"],
+              [Blockly.MIXLY_MICROBIT_TYPE_NONE,"NoneType"]]), "type");
+            //整数、浮点数、字符串、列表、元组、字典、集合、图像不太对, unfinished
+        this.setInputsInline(true);
+        this.setOutput(true);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('type');
+        var mode0 = Blockly.MICROBIT_controls_TypeLists;
+        var TOOLTIPS = {
+        'int': Blockly.MIXLY_MICROBIT_TYPE_INT,
+        'float': Blockly.MIXLY_MICROBIT_TYPE_FLOAT,
+        'str': Blockly.MIXLY_MICROBIT_TYPE_STRING,
+        'list': Blockly.MIXLY_MICROBIT_TYPE_LIST,
+        'tuple':Blockly.MIXLY_MICROBIT_TYPE_TUPLE,
+        'dict': Blockly.MIXLY_MICROBIT_TYPE_DICT,
+        'set': Blockly.MIXLY_MICROBIT_TYPE_SETS,
+        'image':Blockly.MIXLY_MICROBIT_TYPE_IMAGE,
+        'NoneType': Blockly.MIXLY_MICROBIT_TYPE_NONE
+      };
+      return mode0 + TOOLTIPS[mode];
+    });
+    }
 };
 
 Blockly.Blocks['controls_if'] = {
@@ -297,6 +349,7 @@ Blockly.Blocks['controls_try_finally'] = {
     this.setNextStatement(true);
     this.setMutator(new Blockly.Mutator(['controls_except',
                                          'controls_finally']));
+    this.setTooltip(Blockly.MIXLY_MIXPY_CONTROL_TRY_TOOLTIP);
     this.elseifCount_ = 0;
     this.elseCount_ = 0;
   },
@@ -661,6 +714,7 @@ Blockly.Blocks['controls_except'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.contextMenu = false;
+    this.setTooltip(Blockly.MIXLY_MIXPY_CONTROL_EXCEPT_TOOLTIP);
   }
 };
 
@@ -675,6 +729,7 @@ Blockly.Blocks['controls_finally'] = {
         .appendField('finally');
     this.setPreviousStatement(true);
     this.contextMenu = false;
+    this.setTooltip(Blockly.MIXLY_MIXPY_CONTROL_FINALLY_TOOLTIP);
   }
 };
 
