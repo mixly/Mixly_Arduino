@@ -1275,7 +1275,7 @@ Blockly.Blocks.display_rect = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('');
-        this.setTooltip(Blockly.MIXLY_RECT);
+        this.setTooltip(Blockly.MIXLY_OLED_RECT);
     }
 };
 
@@ -1315,6 +1315,7 @@ Blockly.Blocks.display_line = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_OLED_LINE);
     }
 };
 
@@ -1355,6 +1356,7 @@ Blockly.Blocks.display_line_arbitrarily= {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_OLED_LINE_ARBIT);
     }
 }
 
@@ -1467,7 +1469,7 @@ Blockly.Blocks.display_scroll_string = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
-    this.setTooltip(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
+    this.setTooltip(Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_DELAY);
   }
 };
 
@@ -1483,6 +1485,7 @@ Blockly.Blocks.display_scroll_string_delay = {
      this.setPreviousStatement(true, null);
      this.setNextStatement(true, null);
      this.setInputsInline(true);
+     this.setTooltip(Blockly.MIXLY_ESP32_SCROLL_IMAGE_OR_STRING_DELAY);
    }
  };
 

@@ -2135,9 +2135,14 @@ Blockly.MIXLY_ESP32_MUSIC_PLAYSHOW = "播放音符列表，并显示对应音符
 Blockly.MIXLY_ESP32_MUSIC_SET_TEMPO = "设置播放音乐的分辨率和速度";
 Blockly.MIXLY_ESP32_MUSIC_GET_TEMPO = "获取音乐当前的节奏";
 Blockly.MIXLY_ESP32_MUSIC_RESET = "恢复音乐的分辨率、速度等初始设置";
-Blockly.MIXLY_ESP32_MUSIC_WRI = "使RGB彩灯模块起作用";
+Blockly.MIXLY_ESP32_MUSIC_WRI = "使与RGB彩灯有关的设置全部生效";
 Blockly.MIXLY_ESP32_MUSIC_SHOW_STATIC = "在屏幕上静态显示字符串";
 Blockly.MIXLY_ESP32_DISPLAY_SETPIXEL = "设置LED点阵灯在(x,y)位置的亮灭状态";
+Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_DELAY="在一段时间内显示图像/字符串";
+Blockly.MIXLY_ESP32_SCROLL_IMAGE_OR_STRING_DELAY="在一段时间内滚动显示图像/字符串";
+Blockly.MIXLY_OLED_RECT="以设定的顶点与长度绘制矩形";
+Blockly.MIXLY_OLED_LINE="以设定的顶点与长度绘制线条";
+Blockly.MIXLY_OLED_LINE_ARBIT="以设定的起点与终点绘制线条";
 
 Blockly.MIXLY_ESP32_SENSOR_LIGHT_LEVEL_TOOLTIP="设置传感器亮度等级";
 Blockly.MIXLY_ESP32_SENSOR_RTC_INT_TOOLTIP="初始化实时时钟";

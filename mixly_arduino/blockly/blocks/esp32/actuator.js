@@ -145,7 +145,6 @@ Blockly.Blocks.esp32_music_stop = {
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setTooltip(Blockly.MIXLY_NOTONE_PIN);
     }
 };
 
