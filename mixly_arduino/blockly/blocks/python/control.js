@@ -57,7 +57,7 @@ Blockly.Blocks.controls_typeLists = {
               [Blockly.MIXLY_MICROBIT_TYPE_SETS,"set"],
               // [Blockly.MIXLY_MICROBIT_TYPE_IMAGE,"image"],
               [Blockly.MIXLY_MICROBIT_TYPE_NONE,"NoneType"]]), "type");
-            //���������������ַ������б���Ԫ�顢�ֵ䡢���ϡ�ͼ��̫��, unfinished
+            //整数、浮点数、字符串、列表、元组、字典、集合、图像不太对, unfinished
         this.setInputsInline(true);
         this.setOutput(true);
         var thisBlock = this;
@@ -697,7 +697,7 @@ Blockly.Blocks['controls_try'] = {
         .appendField('try');
     this.appendStatementInput('STACK');
     this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setNextStatement(true);    
     this.contextMenu = false;
   }
 };

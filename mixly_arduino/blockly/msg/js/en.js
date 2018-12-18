@@ -2203,3 +2203,6 @@ Blockly.Msg.TEXT_RANDOM_CHAR_TOOLTIP='Returns a random character in a string';
 Blockly.LANG_LISTS_CLEAR_TOOLTIP ='remove all items from the list to make it an empty list. ';
 Blockly.Msg.PYTHON_TUPLE_GET_SUBLIST_TOOLTIP ='Copies the specified part of a tuple. ';
 Blockly.MIXLY_TOOLTIP_TUPLE_SUM ='returns the sum of all values in a tuple ';
+Blockly.Msg.TEXT_LINES_TOOLTIP = "Multiline text";
+Blockly.MIXLY_MIXPY_LISTS_REMOVE='Delete the specified item';
+

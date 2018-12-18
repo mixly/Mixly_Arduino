@@ -455,29 +455,7 @@
         <block type="text">
           <field name="TEXT">Mixly</field>
         </block>
-        <block type="text_format_noreturn">
-          <mutation items="1"></mutation>
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Random No. is {}</field>
-            </shadow>
-          </value>
-          <value name="ADD0">
-            <block type="math_random">
-              <field name="TYPE">int</field>
-              <value name="FROM">
-                <shadow type="math_number">
-                  <field name="NUM">1</field>
-                </shadow>
-              </value>
-              <value name="TO">
-                <shadow type="math_number">
-                  <field name="NUM">100</field>
-                </shadow>
-              </value>
-            </block>
-          </value>
-        </block>
+        
         <block type="text_join">
           <value name="A">
             <shadow type="text">
@@ -511,72 +489,7 @@
             </shadow>
           </value>
         </block>
-        <block type="text_center">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
-            </shadow>
-          </value>
-          <value name="WID">
-            <shadow type="math_number">
-              <field name="NUM">50</field>
-            </shadow>
-          </value>
-          <value name="Symbol">
-            <shadow type="text">
-              <field name="TEXT">*</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_find">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
-            </shadow>
-          </value>
-          <value name="STR">
-            <shadow type="text">
-              <field name="TEXT">l</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_replace">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
-            </shadow>
-          </value>
-          <value name="STR1">
-            <shadow type="text">
-              <field name="TEXT">mixly</field>
-            </shadow>
-          </value>
-          <value name="STR2">
-            <shadow type="text">
-              <field name="TEXT">mixpy</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_split">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">I love mixly！</field>
-            </shadow>
-          </value>
-          <value name="VAL">
-            <shadow type="text">
-              <field name="TEXT"> </field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_strip">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block>
-
+        
         <block type="ascii_to_char">
           <value name="VAR">
             <shadow type="math_number">
@@ -1029,14 +942,7 @@
               <field name="VAR">s1</field>
             </shadow>
           </value>
-        </block>
-        <block type="set_change_to">
-          <value name="VAR">
-            <shadow type="variables_get">
-              <field name="VAR">s1</field>
-            </shadow>
-          </value>
-        </block>
+        </block>        
         <block type="set_operate">
           <value name="SET1">
             <shadow type="variables_get">

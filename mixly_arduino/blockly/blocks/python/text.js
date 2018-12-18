@@ -52,7 +52,7 @@ Blockly.Blocks['text_textarea'] = {
         // .appendField(new Blockly.FieldTextInput(''), 'TEXT')
         .appendField(this.newQuote_(false));
     this.setOutput(true, String);
-    this.setTooltip(Blockly.Msg.TEXT_TEXT_TOOLTIP);
+    this.setTooltip(Blockly.Msg.TEXT_LINES_TOOLTIP);
   },
   /**
    * Create an image of an open or closed quote.

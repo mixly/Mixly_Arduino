@@ -2204,3 +2204,5 @@ Blockly.Msg.TEXT_RANDOM_CHAR_TOOLTIP="返回字串中隨機的一個字元";
 Blockly.LANG_LISTS_CLEAR_TOOLTIP = '刪除列表中的所有項，使其變成一個空列表。';
 Blockly.Msg.PYTHON_TUPLE_GET_SUBLIST_TOOLTIP = "複製元組中指定的部分。";
 Blockly.MIXLY_TOOLTIP_TUPLE_SUM = '返回元組中所有數值的總和';
+Blockly.Msg.TEXT_LINES_TOOLTIP = "多行文本";
+Blockly.MIXLY_MIXPY_LISTS_REMOVE='刪除指定項';
