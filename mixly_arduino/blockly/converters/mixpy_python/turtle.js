@@ -432,6 +432,21 @@ pbc.moduleFunctionD.get('turtle')['numinput'] = function(py2block, func, args, k
 }
 
 pbc.objectFunctionD.get('write')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    var args0 = {
+            _astname: "Str",
+            s: {
+                'v': 'Arial'
+            }
+
+        };
+    var args1 = {
+            _astname: "Num",
+            n: {
+                'v': 8
+            }
+
+        };    
+        
     if (args.length !== 1 && args.length !== 2) {
         throw new Error("Incorrect number of arguments");
     }
@@ -439,8 +454,10 @@ pbc.objectFunctionD.get('write')[turtleClass] = function (py2block, func, args, 
         if (keywords.length == 0){
             var turtleblock = py2block.convert(func.value);
             var argblock = py2block.convert(args[0]);
+          
             return [block('turtle_write', func.lineno, {}, {
                 'TUR': turtleblock,
+               
                 'VAR': argblock,
             }, {
                 "inline": "true"
@@ -452,13 +469,15 @@ pbc.objectFunctionD.get('write')[turtleClass] = function (py2block, func, args, 
             var argblock = py2block.convert(args[0]);
             if (tag=='align') {   
                 var formatblock = py2block.Str_value(keywords[0].value);
-                var fontnameblock = py2block.convert(args[0]);
+                var fontnumblock = py2block.convert(args1);
+                var fontnameblock = py2block.convert(args0);
                 return [block('turtle_write_format', func.lineno, {
                     'ALIGN':formatblock
                 }, {
 
                     'TUR': turtleblock,
                     'FONTNAME':fontnameblock,
+                    'FONTNUM':fontnumblock,
                     'VAR': argblock
                 }, {
                     "inline": "true"
@@ -537,13 +556,15 @@ pbc.objectFunctionD.get('write')[turtleClass] = function (py2block, func, args, 
         var moveblock = py2block.Name_str(args[1]);
         if (keywords.length == 0){
             var turtleblock = py2block.convert(func.value);
-            var argblock = py2block.convert(args[0]);
-            var fontnameblock = py2block.convert(args[0]);
+            var argblock = py2block.convert(args[0]);            
+            var fontnameblock = py2block.convert(args0);
+            var fontnumblock = py2block.convert(args1);
             return [block('turtle_write_format', func.lineno, {
                 'MOVE':moveblock
             }, {
                 'TUR': turtleblock,
                 'FONTNAME':fontnameblock,
+                'FONTNUM':fontnumblock,
                 'VAR': argblock,
             }, {
                 "inline": "true"
@@ -555,7 +576,8 @@ pbc.objectFunctionD.get('write')[turtleClass] = function (py2block, func, args, 
             var argblock = py2block.convert(args[0]);
             if (tag=='align') {   
                 var formatblock = py2block.Str_value(keywords[0].value);
-                var fontnameblock = py2block.convert(args[0]);
+                var fontnameblock = py2block.convert(args0);
+                var fontnumblock = py2block.convert(args1);
                 return [block('turtle_write_format', func.lineno, {
                     'ALIGN':formatblock,
                     'MOVE':moveblock
@@ -563,6 +585,7 @@ pbc.objectFunctionD.get('write')[turtleClass] = function (py2block, func, args, 
 
                     'TUR': turtleblock,
                     'FONTNAME':fontnameblock,
+                    'FONTNUM':fontnumblock,
                     'VAR': argblock
                 }, {
                     "inline": "true"

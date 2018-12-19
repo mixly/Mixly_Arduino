@@ -2206,3 +2206,7 @@ Blockly.Msg.PYTHON_TUPLE_GET_SUBLIST_TOOLTIP ='La sección especificada en el gr
 Blockly.MIXLY_TOOLTIP_TUPLE_SUM ='La suma de todos los valores en el grupo de retorno';
 Blockly.Msg.TEXT_LINES_TOOLTIP = "Texto multilingue";
 Blockly.MIXLY_MIXPY_LISTS_REMOVE='Borrar los términos indicados';
+Blockly.MIXLY_MIXPY_INOUT_PRINT_EMPTY='El cursor se cambia de forma automática';
+Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_ITEM_TOOLTIP='Arrastra UN item o arrastra UN bloque del lado derecho para cambiar el número de parámetros impresos';
+Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP ='Aumentar, eliminar o reordenar las partes para reconfigurar este bloque ';
+Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_TOOLTIP='Imprime múltiples parámetros, y si el número de parámetros es 0, haz que el cursor cambie una línea';

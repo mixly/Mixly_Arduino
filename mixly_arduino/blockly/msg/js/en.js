@@ -2205,4 +2205,9 @@ Blockly.Msg.PYTHON_TUPLE_GET_SUBLIST_TOOLTIP ='Copies the specified part of a tu
 Blockly.MIXLY_TOOLTIP_TUPLE_SUM ='returns the sum of all values in a tuple ';
 Blockly.Msg.TEXT_LINES_TOOLTIP = "Multiline text";
 Blockly.MIXLY_MIXPY_LISTS_REMOVE='Delete the specified item';
+Blockly.MIXLY_MIXPY_INOUT_PRINT_EMPTY='cursor wrap ';
+Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_ITEM_TOOLTIP='drag an item into or out of the right block to change the number of parameters printed';
+Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP ='Add, remove, or rearrange sections to reconfigure the chunk' ;
+Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_TOOLTIP='print multiple parameters, if the number of parameters is 0, move the cursor down one line';
+
 

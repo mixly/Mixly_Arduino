@@ -78,6 +78,7 @@
     <script src="../../converters/python/storage.js" type="application/javascript"></script>
     <script src="../../converters/mixpy_python/turtle.js" type="application/javascript"></script>
     <script src="../../converters/mixpy_python/data.js" type="application/javascript"></script>
+    <script src="../../converters/mixpy_python/communicate.js" type="application/javascript"></script>
     <script src="./js/python_to_blockly.js" type="application/javascript"></script>
     <script src="js/mixpyProject.js" type="application/javascript"></script>
     <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
@@ -231,7 +232,20 @@
                   </shadow>
               </value>
           </block>
-
+          <block type="inout_print_many">
+          <mutation items="2"></mutation>
+          
+          <value name="ADD0">
+            <block type="text">
+              <field name="TEXT">Hello</field>
+            </block>
+          </value>
+          <value name="ADD1">
+            <block type="text">
+              <field name="TEXT">Mixly</field>
+            </block>
+          </value>
+        </block>  
           <!-- <block type="raw_block"></block> -->
       </category>
       <category id="catControl" colour="120">
@@ -1582,7 +1596,7 @@
               </value>
         </block>
         <block type="requests_method">
-          <value name="DOMAIN">
+          <value name="VAR">
             <shadow type="text">
               <field name="TEXT">http://www.baidu.com</field>
             </shadow>

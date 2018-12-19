@@ -64,7 +64,7 @@ Blockly.Blocks['requests_attribute'] = {
 
 Blockly.Blocks['requests_method'] = {
   init: function() {
-    this.appendValueInput("DOMAIN")
+    this.appendValueInput("VAR")
       .appendField(Blockly.Msg.DISPLAY_IMAGE_LET2)
       .setCheck(String);
   var method =

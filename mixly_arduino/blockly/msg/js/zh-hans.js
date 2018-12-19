@@ -2246,3 +2246,7 @@ Blockly.MIXLY_ESP32_IOT_ONENET_PUBLISH_TOOLTIP = "让某个onenet连接发送某
 Blockly.MIXLY_MICROPYTHON_TYPE_COMPLEX = "复数";
 Blockly.Msg.TEXT_LINES_TOOLTIP = "多行文本";
 Blockly.MIXLY_MIXPY_LISTS_REMOVE='删除指定项';
+Blockly.MIXLY_MIXPY_INOUT_PRINT_EMPTY='光标自动换行';
+Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_ITEM_TOOLTIP='将item拖入或拖出右侧的组块以改变打印的参数个数';
+Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP = "增加、删除或重新排列各部分以此重新配置这个组块";
+Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_TOOLTIP='打印多个参数，如果参数个数为0，则让光标下移一行';

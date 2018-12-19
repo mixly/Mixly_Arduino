@@ -2206,3 +2206,7 @@ Blockly.Msg.PYTHON_TUPLE_GET_SUBLIST_TOOLTIP = "複製元組中指定的部分�
 Blockly.MIXLY_TOOLTIP_TUPLE_SUM = '返回元組中所有數值的總和';
 Blockly.Msg.TEXT_LINES_TOOLTIP = "多行文本";
 Blockly.MIXLY_MIXPY_LISTS_REMOVE='刪除指定項';
+Blockly.MIXLY_MIXPY_INOUT_PRINT_EMPTY='游標自動換行';
+Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_ITEM_TOOLTIP='將item拖入或拖出右側的組塊以改變列印的參數個數';
+Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP = "增加、刪除或重新排列各部分以此重新配置這個組塊";
+Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_TOOLTIP='列印多個參數，如果參數個數為0，則讓游標下移一行';
