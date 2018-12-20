@@ -2250,3 +2250,5 @@ Blockly.MIXLY_MIXPY_INOUT_PRINT_EMPTY='光标自动换行';
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_ITEM_TOOLTIP='将item拖入或拖出右侧的组块以改变打印的参数个数';
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP = "增加、删除或重新排列各部分以此重新配置这个组块";
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_TOOLTIP='打印多个参数，如果参数个数为0，则让光标下移一行';
+Blockly.MIXLY_HANDBIT_DISLPAY_OLED_FILL = '充满';
+Blockly.MIXLY_HANDBIT_DISLPAY_OLED_CLEAR = '清屏';

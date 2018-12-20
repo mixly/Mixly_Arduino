@@ -144,3 +144,17 @@ pbc.objectFunctionD.get('show_fill_rect')['monitor'] = function (py2block, func,
             "inline": "true"
         })];
 }
+
+pbc.objectFunctionD.get('show_fill')['monitor'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if(args.length!=1){
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var flagblock = py2block.identifier(args[0].n.v);
+
+
+    return [block("handbit_display_fill", func.lineno, {'key':flagblock}, { "SUB":objblock, 
+    }, {
+        "inline": "true"
+    })];
+}

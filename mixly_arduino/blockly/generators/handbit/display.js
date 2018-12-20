@@ -79,3 +79,13 @@ Blockly.Python.handbit_display_line=function(){
 };
 
 
+Blockly.Python.handbit_display_fill=function(){
+  var varName =Blockly.Python.valueToCode(this, 'SUB',Blockly.Python.ORDER_ATOMIC);
+  if (varName == 'oled')
+        Blockly.Python.definitions_['import_handbit_oled'] = 'from handbit import oled';
+  else
+      Blockly.Python.definitions_['import_ssd1106'] = 'import ssd1106';
+  var key = this.getFieldValue('key');
+  var code = varName + '.show_fill('+key+')\n';
+  return code;
+};
