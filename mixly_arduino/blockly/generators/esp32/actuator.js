@@ -120,7 +120,7 @@ Blockly.Python.actuator_neopixel_init=function(){
 };
 
 Blockly.Python.actuator_neopixel_write=function(){
- Blockly.Python.definitions_['import_machine'] = 'import machine';
+  Blockly.Python.definitions_['import_machine'] = 'import machine';
   Blockly.Python.definitions_['import_neopixel'] = 'import neopixel';
   var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
   var code= v + '.write()\n';   
