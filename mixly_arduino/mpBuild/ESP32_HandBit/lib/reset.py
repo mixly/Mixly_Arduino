@@ -1,19 +1,23 @@
 import machine
+
 try:
- from display import*
- display.clear()
+        from display import *
+        display.clear()
 except:
- pass
+        pass
+
 try:
- import music
- music.stop(6)
+        import music
+        music.stop(6)
 except:
- pass
+        pass
+
 try:
- import neopixel
- rgb=neopixel.NeoPixel(machine.Pin(17),3,timing=True)
- rgb[0]=(0,0,0)
- rgb[1]=(0,0,0)
- rgb.write()
+        import neopixel
+        rgb = neopixel.NeoPixel(machine.Pin(17), 3, timing = True)
+        rgb[0] = (0, 0, 0)
+        rgb[1] = (0, 0, 0)
+        rgb.write()
 except:
- pass
+        pass
+
