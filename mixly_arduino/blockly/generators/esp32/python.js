@@ -58,6 +58,9 @@ Blockly.Python.finish = function(code) {
     for (var name in Blockly.Python.definitions_) {
         definitions.push(Blockly.Python.definitions_[name]);
     }
+	//music must before matrix
+    definitions.sort();
+    definitions.reverse();
     var setups = [];
     for (var name in Blockly.Python.setups_) {
       setups.push(Blockly.Python.setups_[name]);
