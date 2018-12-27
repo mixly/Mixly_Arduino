@@ -353,7 +353,7 @@ class OLED(SSD1106_I2C):
  def show_fill_triangle(self,x0,y0,x1,y1,x2,y2,c):
   self.fill_triangle(x0,y0,x1,y1,x2,y2,c)
   self.show()
- def show_fill(self, flag): 
+ def show_fill(self,flag):
   self.fill(flag)
   self.show()
 i2c=I2C(scl=Pin(22),sda=Pin(23),freq=400000)

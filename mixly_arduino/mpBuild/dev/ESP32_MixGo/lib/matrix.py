@@ -326,7 +326,7 @@ class Display:
                         self._pixel(j, i, 0)
                     #print(l[i][j])
             self._show()
-
+            utime.sleep_ms(delay)
     def showstatic(self, data):
         self.fill(0)
         if type(data)==str:
@@ -536,10 +536,6 @@ class BitmapFont:
 i2c = I2C(scl=Pin(22), sda=Pin(21), freq=100000)
 display = Display(i2c)
 display.clear()
-#Image.MHT = const(Image("1111111111111111:0010000100000100:0000000000000000:0000000000000000:0000000000000000:0000000000000000:0000000000000000:0000000000000000"))
-#Image.LQY = const(Image("0000000000000000:1111111111111111:0000000000000000:0000000000000000:0000000000000000:0000000000000000:0000000000000000:0000000000000000"))
-# Image.HEART=Image('59,468a,37b,3b,4a,59,68,7')
-# Image.HEART_SMALL=Image(',,68,579,59,68,7,')
 Image.HEART=Image('59,45689a,3456789ab,3456789ab,456789a,56789,678,7')
 Image.HEART_SMALL=Image(',59,45689a,456789a,56789,678,7,')
 Image.HAPPY=Image(',,34bc,34bc,,5a,69,78')

@@ -260,6 +260,7 @@ class Display:
      else:
       self._pixel(j,i,0)
    self._show()
+   utime.sleep_ms(delay)
  def showstatic(self,data):
   self.fill(0)
   if type(data)==str:
