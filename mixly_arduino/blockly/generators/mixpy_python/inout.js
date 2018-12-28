@@ -34,3 +34,21 @@ Blockly.Python.inout_type_input = function() {
   //var code=varname+"." + type + "("   + ')';
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.inout_print_many = function() {
+  
+  var dropdown_type = this.getFieldValue('TYPE');
+  
+  var code = new Array(this.itemCount_);
+  var default_value = '0';
+
+
+  for (var n = 0; n < this.itemCount_; n++) {
+
+  code[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
+    Blockly.Python.ORDER_NONE) || default_value;
+  }
+
+  var code = 'print(' + code.join(', ') + ')\n';
+  return code;
+};

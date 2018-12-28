@@ -69,10 +69,17 @@ class MyPin(Pin):
             self.init(Pin.IN)
             return self.value() == 1
 
-def mixgo_get_brightness():
+class ADCSensor:
+    def __init__(self,pin):
+        self.adc=ADC(Pin(pin))
+        self.adc.atten(ADC.ATTN_11DB) 
+    def read(self):
+        return self.adc.read()
+
+def handbit_get_brightness():
     return ADCSensor(pin = 39).read()
 
-def mixgo_get_soundlevel():
+def handbit_get_soundlevel():
     return ADCSensor(pin = 36).read()
 
 class Accelerometer():
@@ -426,7 +433,11 @@ class OLED(SSD1106_I2C):
     def show_fill_triangle(self, x0, y0, x1, y1, x2, y2, c):   
         self.fill_triangle(x0, y0, x1, y1, x2, y2, c)
         self.show()
-
+    
+    def show_fill(self, flag): 
+        self.fill(flag)
+        self.show()
+    
 i2c = I2C(scl=Pin(22), sda=Pin(23), freq=400000)
 
 accelerometer = Accelerometer()

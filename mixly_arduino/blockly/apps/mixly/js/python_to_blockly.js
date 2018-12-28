@@ -2154,7 +2154,7 @@ PythonToBlocks.prototype.List = function(node) {
     return block("lists_create_with_noreturn", node.lineno, {},
         this.convertElements("ADD", elts)
         , {
-            "inline": elts.length < 4 ? "false" : "true",
+            "inline": "true",
         }, {
             "@items": elts.length
         });
@@ -2172,7 +2172,7 @@ PythonToBlocks.prototype.Tuple = function(node)
     return block("tuple_create_with_noreturn", node.lineno, {},
         this.convertElements("ADD", elts)
         , {
-            "inline": elts.length < 4 ? "false" : "true",
+            "inline": "true",
         }, {
             "@items": elts.length
         });
@@ -2190,7 +2190,7 @@ PythonToBlocks.prototype.Dict = function(node)
     return block("dicts_create_with_noreturn", node.lineno, {},
         this.convertElements("ADD", values)
         , {
-            "inline": keys.length < 4 ? "false" : "true",
+            "inline": "true",
         }, {
             "@items": keys.length
         });

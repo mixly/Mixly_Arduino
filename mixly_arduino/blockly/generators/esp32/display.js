@@ -254,7 +254,7 @@ Blockly.Python.display_use_i2c_init = function () {
 };
 
 Blockly.Python.display_draw_4strings = function(){
- Blockly.Python.definitions_['import_machine'] = 'import machine';
+  Blockly.Python.definitions_['import_machine'] = 'import machine';
   Blockly.Python.definitions_['import_ssd1306'] = 'import ssd1306';
   var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
   var value_text_line1 = Blockly.Python.valueToCode(this, 'Text_line1', Blockly.Python.ORDER_ASSIGNMENT) || '\'\'';
@@ -266,7 +266,7 @@ Blockly.Python.display_draw_4strings = function(){
 };
 
 Blockly.Python.display_line_arbitrarily=function(){
- Blockly.Python.definitions_['import_machine'] = 'import machine';
+  Blockly.Python.definitions_['import_machine'] = 'import machine';
   Blockly.Python.definitions_['import_ssd1306'] = 'import ssd1306';
   var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
   var location_x1 = Blockly.Python.valueToCode(this, 'x1', Blockly.Python.ORDER_ATOMIC);
@@ -278,7 +278,7 @@ Blockly.Python.display_line_arbitrarily=function(){
 };
 
 Blockly.Python.display_rect=function(){
- Blockly.Python.definitions_['import_machine'] = 'import machine';
+  Blockly.Python.definitions_['import_machine'] = 'import machine';
   Blockly.Python.definitions_['import_ssd1306'] = 'import ssd1306';
   var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
   var location_x = Blockly.Python.valueToCode(this, 'x', Blockly.Python.ORDER_ATOMIC);
@@ -334,7 +334,7 @@ Blockly.Python.display_onoff = function () {
 };
 
 Blockly.Python['image_shift'] = function(a) {
-  Blockly.Python.definitions_['import_display_*'] = 'from display import *';
+  Blockly.Python.definitions_['import_matrix'] = 'import matrix';
   var op = a.getFieldValue("OP");
   var image = Blockly.Python.valueToCode(a, 'img', Blockly.Python.ORDER_MEMBER);
   var value = Blockly.Python.valueToCode(a, 'val', Blockly.Python.ORDER_MEMBER);

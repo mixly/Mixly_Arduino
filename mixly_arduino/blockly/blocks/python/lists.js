@@ -42,7 +42,7 @@ Blockly.Blocks['lists_get_sublist'] = {
         this.appendDummyInput()
             .appendField(Blockly.Msg.TEXT_INDEXOF_TAIL);
         this.setInputsInline(true);
-        this.setOutput(true);
+        this.setOutput(true, 'List');
         this.setTooltip(Blockly.Msg.PYTHON_LISTS_GET_SUBLIST_TOOLTIP);
     }
 }
@@ -339,7 +339,7 @@ Blockly.Blocks['lists_reverse'] = {
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_MICROBIT_JS_LIST_REVERSE)
         //.appendField(new Blockly.FieldTextInput('mylist'), 'VAR');
-    this.setTooltip(Blockly.LANG_LISTS_REVERSE_TOOLTIP);
+    this.setTooltip(Blockly.LANG_LISTS_CLEAR_TOOLTIP);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -364,15 +364,13 @@ Blockly.Blocks.lists_remove_at = {
     init: function() {
         this.setColour(Blockly.Blocks.lists.HUE);
         this['TYPE'] =
-            [[Blockly.Msg.LISTS_GET_INDEX_FROM_START, 'del'],
+            [[Blockly.Msg.SERIES_INDEX, 'del'],
                 [Blockly.MIXLY_MICROBIT_JS_I2C_VALUE, 'remove']];
         this.appendValueInput('LIST')
             .setCheck('List')
         this.appendValueInput('DATA')
-            .appendField(Blockly.MIXLY_MICROBIT_JS_DELETE_VAR + " ")
+            .appendField(Blockly.MIXLY_MIXPY_LISTS_REMOVE)
             .appendField(new Blockly.FieldDropdown(this['TYPE']), 'OP')
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.TEXT_INDEXOF_TAIL);
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);

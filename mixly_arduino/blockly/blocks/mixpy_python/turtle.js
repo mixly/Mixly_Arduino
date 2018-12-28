@@ -149,12 +149,29 @@ Blockly.Blocks['turtle_goto'] = {
   }
 };
 
+Blockly.Blocks['turtle_setxy'] = {
+    init: function() {
+       this.appendValueInput('TUR')
+          .setCheck('Turtle')
+    var set_xy =
+          [[Blockly.Msg.PYLAB_LABEL_X, 'x'],[Blockly.Msg.PYLAB_LABEL_Y, 'y']];
+      this.setColour(Blockly.Blocks.turtle.HUE);
+      this.appendValueInput('VAR')
+          .appendField(new Blockly.FieldDropdown(set_xy), 'DIR')
+          .appendField(Blockly.MIXLY_MIXPY_TURTLE_SETXY);
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(Blockly.MIXLY_MIXPY_TURTLE_SETXY_TOOLTIP);
+  }    
+};
+
 Blockly.Blocks['turtle_pos_shape'] = {
   
   init: function() {    
     this.setColour(Blockly.Blocks.turtle.HUE);
     var pos_shape =
-        [[Blockly.Msg.TURTLE_POS, 'pos'],[Blockly.Msg.TURTLE_SHAPE, 'shape']];
+        [[Blockly.Msg.TURTLE_POS, 'pos'],[Blockly.Msg.TURTLE_SHAPE, 'shape'],[Blockly.Msg.TURTLE_HEADING, 'heading']];
     this.appendValueInput('TUR')
         .setCheck('Turtle')
     this.appendDummyInput("")
@@ -319,34 +336,51 @@ Blockly.Blocks['turtle_speed'] = {
 };
 
 Blockly.Blocks['turtle_circle'] = {
+    init: function() {
+       this.appendValueInput('TUR')
+          .setCheck('Turtle')
+    var circle_dot =
+          [[Blockly.blockpy_turtle_circle, 'circle'],[Blockly.blockpy_turtle_dot, 'dot']];
+      this.setColour(Blockly.Blocks.turtle.HUE);
+      this.appendValueInput('VAR')
+          // .setCheck(String)
+          .appendField(Blockly.blockpy_turtle_draw)
+          .appendField(new Blockly.FieldDropdown(circle_dot), 'DIR')
+          .appendField(Blockly.blockpy_turtle_radius);
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      var thisBlock = this;
+        this.setTooltip(function() {
+          var mode = thisBlock.getFieldValue('DIR');
+          var TOOLTIPS = {
+            'circle': Blockly.MIXLY_TOOLTIP_TURTEL_CIRCLE,
+            'dot': Blockly.MIXLY_TOOLTIP_TURTEL_DOT
+          };
+          return TOOLTIPS[mode];
+        });
+    }
+};
+
+Blockly.Blocks['turtle_circle_advanced'] = {
   init: function() {
      this.appendValueInput('TUR')
         .setCheck('Turtle')
-  var circle_dot =
-        [[Blockly.blockpy_turtle_circle, 'circle'],[Blockly.blockpy_turtle_dot, 'dot']];
-    this.setColour(Blockly.Blocks.turtle.HUE);
-    this.appendValueInput('VAR')
-        // .setCheck(String)
-        .appendField(Blockly.blockpy_turtle_draw)
-        .appendField(new Blockly.FieldDropdown(circle_dot), 'DIR')
-        .appendField(Blockly.blockpy_turtle_radius);
-    this.appendValueInput('data')
-        .setCheck(Number)
-        .appendField(Blockly.blockpy_turtle_angle);    
+      
+      this.setColour(Blockly.Blocks.turtle.HUE);
+      this.appendValueInput('VAR')
+          // .setCheck(String)
+          .appendField(Blockly.MIXLY_MIXPY_TURTLE_DRAW_CIRCLE)
+          .appendField(Blockly.blockpy_turtle_radius);
+      this.appendValueInput('data')
+          .setCheck(Number)
+          .appendField(Blockly.blockpy_turtle_angle);    
 
-  this.setInputsInline(true);
-   this.setPreviousStatement(true);
-    this.setNextStatement(true);
-  var thisBlock = this;
-    this.setTooltip(function() {
-      var mode = thisBlock.getFieldValue('DIR');
-      var TOOLTIPS = {
-        'circle': Blockly.MIXLY_TOOLTIP_TURTEL_CIRCLE,
-        'dot': Blockly.MIXLY_TOOLTIP_TURTEL_DOT
-      };
-      return TOOLTIPS[mode];
-    });
-  }
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(Blockly.MIXLY_TOOLTIP_TURTEL_CIRCLE);
+    }
 };
 
 Blockly.Blocks['turtle_visible'] = {
@@ -424,7 +458,7 @@ Blockly.Blocks['turtle_clone'] = {
   this.appendDummyInput("")
         .appendField(Blockly.Msg.TURTLE_CLONE);
   this.setTooltip(Blockly.Msg.TURTLE_CLONE_TOOLTIP);
-  this.setOutput(true, Number);
+  this.setOutput(true);
   }
 };
 
@@ -486,6 +520,49 @@ Blockly.Blocks['turtle_shape'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.Msg.TURTLE_SHAPE_TOOLTIP);
+  }
+};
+
+Blockly.Blocks['turtle_numinput'] = {
+ init: function() {
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_MIXPY_TURTLE_NUMINPUT)
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('TITLE')
+        .setCheck(String)
+        .appendField(Blockly.MIXLY_MIXPY_TURTLE_TEXTINPUT_TITLE);
+    this.appendValueInput('PROMPT')
+        .setCheck(String)
+        .appendField(Blockly.MIXLY_MIXPY_TURTLE_TEXTINPUT_PROMPT);
+    this.appendValueInput('DEFAULT')
+        .setCheck(Number)
+        .appendField(Blockly.Msg.DICTS_DEFAULT_VALUE);
+    this.appendValueInput('MIN')
+        .setCheck(Number)
+        .appendField(Blockly.Msg.MATH_ONLIST_OPERATOR_MIN);
+    this.appendValueInput('MAX')
+        .setCheck(Number)
+        .appendField(Blockly.Msg.MATH_ONLIST_OPERATOR_MAX);                
+    this.setInputsInline(true);
+    this.setOutput(true,Number);
+    this.setTooltip(Blockly.Msg.TURTLE_NUMINPUT_TOOLTIP);    
+  }
+};
+
+Blockly.Blocks['turtle_textinput'] = {
+ init: function() {
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_MIXPY_TURTLE_TEXTINPUT)
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('TITLE')
+        .setCheck(String)
+        .appendField(Blockly.MIXLY_MIXPY_TURTLE_TEXTINPUT_TITLE);
+    this.appendValueInput('PROMPT')
+        .setCheck(String)
+        .appendField(Blockly.MIXLY_MIXPY_TURTLE_TEXTINPUT_PROMPT);    
+    this.setInputsInline(true);
+    this.setOutput(true,String);
+    this.setTooltip(Blockly.Msg.TURTLE_TEXTINPUT_TOOLTIP);    
   }
 };
 

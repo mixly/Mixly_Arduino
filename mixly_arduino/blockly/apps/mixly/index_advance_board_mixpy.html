@@ -78,6 +78,7 @@
     <script src="../../converters/python/storage.js" type="application/javascript"></script>
     <script src="../../converters/mixpy_python/turtle.js" type="application/javascript"></script>
     <script src="../../converters/mixpy_python/data.js" type="application/javascript"></script>
+    <script src="../../converters/mixpy_python/communicate.js" type="application/javascript"></script>
     <script src="./js/python_to_blockly.js" type="application/javascript"></script>
     <script src="js/mixpyProject.js" type="application/javascript"></script>
     <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
@@ -231,7 +232,20 @@
                   </shadow>
               </value>
           </block>
-
+          <block type="inout_print_many">
+          <mutation items="2"></mutation>
+          
+          <value name="ADD0">
+            <block type="text">
+              <field name="TEXT">Hello</field>
+            </block>
+          </value>
+          <value name="ADD1">
+            <block type="text">
+              <field name="TEXT">Mixly</field>
+            </block>
+          </value>
+        </block>  
           <!-- <block type="raw_block"></block> -->
       </category>
       <category id="catControl" colour="120">
@@ -240,6 +254,13 @@
               <value name="DELAY_TIME">
                   <shadow type="math_number">
                       <field name="NUM">2</field>
+                  </shadow>
+              </value>
+          </block>
+          <block type="controls_type">
+              <value name="DATA">
+                  <shadow type="math_number">
+                      <field name="NUM">1000</field>
                   </shadow>
               </value>
           </block>
@@ -640,7 +661,7 @@
         <block type="text_strip">
           <value name="VAR">
             <shadow type="text">
-              <field name="TEXT">Mixly</field>
+              <field name="TEXT">  I love mixly  </field>
             </shadow>
           </value>
         </block>
@@ -819,6 +840,23 @@
             </shadow>
           </value>
         </block>
+        <block type="tuple_get_sublist">
+            <value name="LIST">
+              <shadow type="variables_get">
+                <field name="VAR">mytup</field>
+              </shadow>
+            </value>
+            <value name="AT1">
+              <shadow type="math_indexer_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="AT2">
+              <shadow type="math_indexer_number">
+                <field name="NUM">2</field>
+              </shadow>
+            </value>
+          </block>
         <block type="tuple_length">
           <value name="TUP">
             <shadow type="variables_get">
@@ -1182,6 +1220,18 @@
                   </shadow>
               </value>
           </block>
+          <block type="turtle_setxy">
+              <value name="TUR">
+                <shadow type="variables_get">
+                  <field name="VAR">tina</field>
+                </shadow>
+              </value>
+              <value name="VAR">
+                  <shadow type="math_number">
+                      <field name="NUM">50</field>
+                  </shadow>
+              </value>
+          </block>
           <block type="turtle_pos_shape">
             <value name="TUR">
                 <shadow type="variables_get">
@@ -1252,8 +1302,20 @@
                       <field name="NUM">10</field>
                   </shadow>
               </value>
-          </block>
+          </block>          
           <block type="turtle_circle">
+              <value name="TUR">
+                <shadow type="variables_get">
+                  <field name="VAR">tina</field>
+                </shadow>
+              </value>
+              <value name="VAR">
+                  <shadow type="math_number">
+                      <field name="NUM">50</field>
+                  </shadow>
+              </value>               
+          </block>
+          <block type="turtle_circle_advanced">
               <value name="TUR">
                 <shadow type="variables_get">
                   <field name="VAR">tina</field>
@@ -1284,6 +1346,45 @@
                 </shadow>
               </value>
           </block>
+          <block type="turtle_numinput">            
+            <value name="TITLE">
+                <shadow type="text">
+                  <field name="TEXT">NUM</field>
+                </shadow>
+            </value>
+            <value name="PROMPT">
+                <shadow type="text">
+                  <field name="TEXT">Input a number:</field>
+                </shadow>
+            </value>
+            <value name="DEFAULT">
+                  <shadow type="math_number">
+                      <field name="NUM">10</field>
+                  </shadow>
+            </value>
+            <value name="MIN">
+                  <shadow type="math_number">
+                      <field name="NUM">0</field>
+                  </shadow>
+            </value>
+            <value name="MAX">
+                  <shadow type="math_number">
+                      <field name="NUM">100</field>
+                  </shadow>
+            </value>
+          </block>
+          <block type="turtle_textinput">            
+            <value name="TITLE">
+                <shadow type="text">
+                  <field name="TEXT">Input your name</field>
+                </shadow>
+            </value>
+            <value name="PROMPT">
+                <shadow type="text">
+                  <field name="TEXT">What's your name?</field>
+                </shadow>
+            </value>
+          </block>
           <block type="turtle_write">
             <value name="TUR">
                 <shadow type="variables_get">
@@ -1291,8 +1392,9 @@
                 </shadow>
               </value>
             <value name="VAR">
-                  <shadow type="text">
-                      <field name="TEXT">Mixly!</field>
+                <shadow type="text">
+                  <field name="TEXT">Mixly!</field>
+                </shadow>
             </value>
           </block>
           <block type="turtle_write_format">
@@ -1494,7 +1596,7 @@
               </value>
         </block>
         <block type="requests_method">
-          <value name="DOMAIN">
+          <value name="VAR">
             <shadow type="text">
               <field name="TEXT">http://www.baidu.com</field>
             </shadow>

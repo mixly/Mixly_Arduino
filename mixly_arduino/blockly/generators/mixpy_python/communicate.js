@@ -28,7 +28,7 @@ Blockly.Python.requests_attribute = function() {
 Blockly.Python.requests_method = function() {
   Blockly.Python.definitions_.import_requests = "import requests";    
     var method = this.getFieldValue('DIR');
-  var str =Blockly.Python.valueToCode(this, 'DOMAIN', Blockly.Python.ORDER_ATOMIC) ;
+  var str =Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
   var code="requests." + method + "(" +  str  + ')\n';
   return code;
 };
