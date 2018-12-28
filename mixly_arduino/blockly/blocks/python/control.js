@@ -339,37 +339,40 @@ Blockly.Blocks.controls_whileUntil = {
 
 
 Blockly.Blocks['controls_try_finally'] = {
-  init: function() {
-    this.setColour(Blockly.Blocks.loops.HUE);
-    this.appendDummyInput('IF0')
-        // .setCheck([Number,Boolean])
-        .appendField('try');
-    this.appendStatementInput('try');
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setMutator(new Blockly.Mutator(['controls_except',
-                                         'controls_finally']));
-    this.setTooltip(Blockly.MIXLY_MIXPY_CONTROL_TRY_TOOLTIP);
-    this.elseifCount_ = 0;
-    this.elseCount_ = 0;
-  },
+    init: function() {
+        this.setColour(Blockly.Blocks.loops.HUE);
+        this.appendDummyInput()
+            .appendField('try');
+        this.appendStatementInput('try');
+        this.appendValueInput('IF1')
+            .appendField('except');
+        this.appendStatementInput('DO1')
+            .appendField('');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setMutator(new Blockly.Mutator(['controls_except',
+            'controls_finally']));
+        this.setTooltip(Blockly.MIXLY_MIXPY_CONTROL_TRY_TOOLTIP);
+        this.elseifCount_ = 1;
+        this.elseCount_ = 0;
+    },
   /**
    * Create XML to represent the number of else-if and else inputs.
    * @return {Element} XML storage element.
    * @this Blockly.Block
    */
   mutationToDom: function() {
-    if (!this.elseifCount_ && !this.elseCount_) {
-      return null;
-    }
-    var container = document.createElement('mutation');
-    if (this.elseifCount_) {
-      container.setAttribute('elseif', this.elseifCount_);
-    }
-    if (this.elseCount_) {
-      container.setAttribute('else', 1);
-    }
-    return container;
+      if (!this.elseifCount_ && !this.elseCount_) {
+          return null;
+      }
+      var container = document.createElement('mutation');
+      if (this.elseifCount_) {
+          container.setAttribute('elseif', this.elseifCount_);
+      }
+      if (this.elseCount_) {
+          container.setAttribute('else', 1);
+      }
+      return container;
   },
   /**
    * Parse XML to restore the else-if and else inputs.
@@ -379,9 +382,8 @@ Blockly.Blocks['controls_try_finally'] = {
   domToMutation: function(xmlElement) {
     this.elseifCount_ = parseInt(xmlElement.getAttribute('elseif'), 10);
     this.elseCount_ = parseInt(xmlElement.getAttribute('else'), 10);
-    for (var i = 1; i <= this.elseifCount_; i++) {
+    for (var i = 2; i <= this.elseifCount_; i++) {
       this.appendValueInput('IF' + i)
-          .setCheck([Number,Boolean])
           .appendField('except');
       this.appendStatementInput('DO' + i)
           .appendField('');

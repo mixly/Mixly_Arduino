@@ -34,18 +34,18 @@ Blockly.Python.controls_try_finally = function () {
     var argument = Blockly.Python.valueToCode(this, 'IF' + n,
         Blockly.Python.ORDER_NONE) || 'null';
     var branch = '';
-    var t = Blockly.Python.statementToCode(this, 'try');
+    var t = Blockly.Python.statementToCode(this, 'try') || '    pass\n';
     var code = 'try:\n' + t;
     for (n = 1; n <= this.elseifCount_; n++) {
         argument = Blockly.Python.valueToCode(this, 'IF' + n,
           Blockly.Python.ORDER_NONE) || '';
         if (argument !== '')
             argument = ' ' + argument
-        branch = Blockly.Python.statementToCode(this, 'DO' + n);
+        branch = Blockly.Python.statementToCode(this, 'DO' + n) || '    pass\n';
         code += 'except' + argument + ': \n' + branch;
     }
     if (this.elseCount_) {
-        branch = Blockly.Python.statementToCode(this, 'ELSE');
+        branch = Blockly.Python.statementToCode(this, 'ELSE') || '    pass\n';
         code += 'finally:\n' + branch;
     }
     // code += '}';
