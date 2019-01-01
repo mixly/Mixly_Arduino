@@ -2093,7 +2093,7 @@ PythonToBlocks.prototype.Name = function(node)
             "op": this.identifier(id)
         });
     }
-    if(py2block_config.board == py2block_config.ESP32 && py2block_config.pinType == "pins_callback"){
+    if(py2block_config.pinType == "pins_callback"){
         return block("factory_block_return", node.lineno, {
             "VALUE": this.identifier(id)
         });
