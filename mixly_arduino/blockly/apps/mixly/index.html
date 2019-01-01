@@ -255,6 +255,12 @@
 <category id="catControl"  colour="120">
  <block type="base_setup"></block>
  <block type="controls_end_program"></block>
+ <block type="controls_whileUntil">
+  <value name="BOOL">
+    <shadow type="logic_boolean">
+    </shadow>
+  </value>
+</block>
  <block type="controls_delay">
    <value name="DELAY_TIME">
     <shadow type="math_number">
@@ -280,12 +286,6 @@
     <field name="NUM">1</field>
   </shadow>
 </value>
-</block>
-<block type="controls_whileUntil">
-  <value name="BOOL">
-    <shadow type="logic_boolean">
-    </shadow>
-  </value>
 </block>
 <block type="controls_flow_statements"></block>
 <block type="controls_millis"></block>

@@ -97,7 +97,7 @@ Blockly.Blocks['math_trig'] = {
          ['cos', 'COS'],
          ['tan', 'TAN'],
          ['asin', 'ASIN'],
-         ['acos', 'ACOS'],
+         ['acos', 'ACOS acos'],
          ['atan', 'ATAN'],
          ['ln', 'LN'],
          ['log10', 'LOG10'],

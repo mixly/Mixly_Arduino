@@ -495,6 +495,17 @@ Blockly.LANG_MATH_BOOLEAN = '布爾';
 Blockly.LANG_MATH_BYTE = '字節';
 Blockly.LANG_MATH_CHAR = '字符';
 Blockly.LANG_MATH_STRING = '字符串';
+/*
+ *add all data types supported in Arduino except void(only use in function) and array(in special catelogy)
+ @author zyc
+ @date 2018-12-29
+*/
+Blockly.LANG_MATH_UNSIGNED_INT = '無符號整數';
+Blockly.LANG_MATH_WORD = '字';
+Blockly.LANG_MATH_UNSIGNED_LONG = '無符號長整數';
+Blockly.LANG_MATH_UNSIGNED_CHAR = '無符號字符';
+Blockly.LANG_MATH_DOUBLE = '雙精度浮點數';
+//end
 Blockly.LANG_LISTS_GET_INDEX1 = '的第';
 Blockly.LANG_LISTS_GET_INDEX2 = '項';
 Blockly.LANG_LISTS_GET_INDEX_TOOLTIP = '返回數組中指定位置的值。';

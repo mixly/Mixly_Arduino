@@ -12,12 +12,25 @@ Blockly.Blocks.variables.HUE = 330;
 Blockly.Blocks['variables_declare'] = {
   // Variable setter.
   init: function() {
+    var DATATYPES =
+         [[Blockly.LANG_MATH_INT, 'int'],
+          [Blockly.LANG_MATH_UNSIGNED_INT, 'unsigned int'],
+          [Blockly.LANG_MATH_WORD, 'word'],
+          [Blockly.LANG_MATH_LONG, 'long'],
+          [Blockly.LANG_MATH_UNSIGNED_LONG, 'unsigned long'],
+          [Blockly.LANG_MATH_FLOAT, 'float'],
+          [Blockly.LANG_MATH_DOUBLE, 'double'],
+          [Blockly.LANG_MATH_BOOLEAN, 'boolean'],
+          [Blockly.LANG_MATH_BYTE, 'byte'],
+          [Blockly.LANG_MATH_CHAR, 'char'],
+          [Blockly.LANG_MATH_UNSIGNED_CHAR, 'unsigned char'],
+          [Blockly.LANG_MATH_STRING, 'String']];
     this.setColour(Blockly.Blocks.variables.HUE);
     this.appendValueInput('VALUE', null)
         .appendField(Blockly.MIXLY_DECLARE)
         .appendField(new Blockly.FieldTextInput('item'), 'VAR')
         .appendField(Blockly.MIXLY_AS)
-     	.appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'int'], [Blockly.LANG_MATH_LONG, 'long'], [Blockly.LANG_MATH_FLOAT, 'float'], [Blockly.LANG_MATH_BOOLEAN, 'boolean'], [Blockly.LANG_MATH_BYTE, 'byte'], [Blockly.LANG_MATH_CHAR, 'char'], [Blockly.LANG_MATH_STRING, 'String']]), "TYPE")
+     	.appendField(new Blockly.FieldDropdown(DATATYPES), "TYPE")
 	    .appendField(Blockly.MIXLY_VALUE);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -115,13 +128,17 @@ Blockly.Blocks['variables_change'] = {
         this.setColour(Blockly.Blocks.variables.HUE);
         var DATATYPES =
          [[Blockly.LANG_MATH_INT, 'int'],
+          [Blockly.LANG_MATH_UNSIGNED_INT, 'unsigned int'],
+          [Blockly.LANG_MATH_WORD, 'word'],
           [Blockly.LANG_MATH_LONG, 'long'],
+          [Blockly.LANG_MATH_UNSIGNED_LONG, 'unsigned long'],
           [Blockly.LANG_MATH_FLOAT, 'float'],
+          [Blockly.LANG_MATH_DOUBLE, 'double'],
           [Blockly.LANG_MATH_BOOLEAN, 'boolean'],
           [Blockly.LANG_MATH_BYTE, 'byte'],
           [Blockly.LANG_MATH_CHAR, 'char'],
+          [Blockly.LANG_MATH_UNSIGNED_CHAR, 'unsigned char'],
           [Blockly.LANG_MATH_STRING, 'String']];
-       
         this.appendValueInput('MYVALUE')
              .appendField(new Blockly.FieldDropdown(DATATYPES), 'OP');
         // Assign 'this' to a variable for use in the tooltip closure below.
