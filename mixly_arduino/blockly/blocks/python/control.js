@@ -789,5 +789,21 @@ Blockly.Blocks.controls_pass = {
   }
 };
 
+Blockly.Blocks.controls_thread = {
+  init: function() {
+    this.setColour(Blockly.Blocks.system.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_PYTHON_CONTROLS_THREAD_START)
+    this.appendValueInput('callback')
+        .appendField(Blockly.MIXLY_PYTHON_CONTROLS_THREAD_USE)
+    this.appendValueInput('VAR')
+        .appendField(Blockly.MIXLY_PARAMS);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_PYTHON_CONTROLS_THREAD_TOOLTIP);
+  }
+};
+
 Blockly.Blocks.base_type=Blockly.Blocks.controls_type;
 Blockly.Blocks.controls_TypeLists=Blockly.Blocks.controls_typeLists

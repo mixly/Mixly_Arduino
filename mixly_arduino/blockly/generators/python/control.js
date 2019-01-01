@@ -216,5 +216,13 @@ Blockly.Python.controls_pass = function () {
     return 'pass\n';
 };
 
+Blockly.Python.controls_thread = function () {
+   Blockly.Python.definitions_['import__thread'] = 'import _thread';
+    var v = Blockly.Python.valueToCode(this, "VAR", Blockly.Python.ORDER_NONE) || "None";
+    var callback = Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
+    var code = "_thread.start_new_thread("+ callback +", "+ v +")\n";
+    return code;
+};
+
 Blockly.Python.base_type=Blockly.Python.controls_type;
 Blockly.Python.controls_TypeLists=Blockly.Python.controls_typeLists;
