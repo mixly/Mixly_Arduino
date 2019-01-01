@@ -257,13 +257,6 @@
                   </shadow>
               </value>
           </block>
-          <block type="controls_type">
-              <value name="DATA">
-                  <shadow type="math_number">
-                      <field name="NUM">1000</field>
-                  </shadow>
-              </value>
-          </block>
           <block type="controls_pass"></block>
           <block type="controls_if"></block>
           <block type="controls_range">
@@ -345,23 +338,23 @@
               </block>
             </value>
             <statement name="DO">
-              <block type="system_print" inline="false">
-                <value name="VAR">
-                  <block type="text">
-                    <field name="TEXT">Hello Mixly from Thread!</field>
-                  </block>
-                </value>
-                <next>
-                  <block type="controls_delay">
-                    <field name="Time">ms</field>
-                    <value name="DELAY_TIME">
-                      <block type="math_number">
-                        <field name="NUM">10</field>
+                  <block type="inout_print" inline="false">
+                    <value name="VAR">
+                      <block type="text">
+                        <field name="TEXT">Hello Mixly from Thread!</field>
                       </block>
                     </value>
+                    <next>
+                      <block type="time_sleep">
+                        <field name="Time">ms</field>
+                        <value name="DELAY_TIME">
+                          <block type="math_number">
+                            <field name="NUM">10</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
                   </block>
-                </next>
-              </block>
             </statement>
           </block>
         </statement>

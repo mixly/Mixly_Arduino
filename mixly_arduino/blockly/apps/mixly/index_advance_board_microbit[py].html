@@ -584,14 +584,14 @@ function init() {
               </block>
             </value>
             <statement name="DO">
-              <block type="system_print" inline="false">
+              <block type="IO_print" inline="false">
                 <value name="VAR">
                   <block type="text">
                     <field name="TEXT">Hello Mixly from Thread!</field>
                   </block>
                 </value>
                 <next>
-                  <block type="controls_delay">
+                  <block type="base_delay">
                     <field name="Time">ms</field>
                     <value name="DELAY_TIME">
                       <block type="math_number">
