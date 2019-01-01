@@ -78,6 +78,21 @@ pbc.globalFunctionD['range'] = function (py2block, func, args, keywords, stararg
     }, {
         "inline": "true"
     });
-}
+};
 
+pbc.moduleFunctionD.get('_thread')['start_new_thread'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    pbc.pinType = "pins_callback";
+    var callback = py2block.convert(args[0]);
+    pbc.pinType=null;
+    var tupblock = py2block.convert(args[1]);
+    return [block("controls_thread", func.lineno, {},{
+    "callback":callback,
+    "VAR":tupblock
+    },{
+        "inline": "true"
+    })];
+};
 //for i in ...在python_to_blockly.js中实现
