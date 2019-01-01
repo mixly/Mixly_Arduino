@@ -2,15 +2,27 @@
 
 goog.provide('Blockly.Blocks.factory');
 goog.require('Blockly.Blocks');
-Blockly.Blocks.factory.HUE = 65;
+Blockly.Blocks.factory.HUE = "#777777"//65;
 
-Blockly.Blocks.factory_include = {
+Blockly.Blocks.factory_from_import = {
   init: function() {
     this.setColour(Blockly.Blocks.factory.HUE);
-	this.appendDummyInput("")
-		.appendField("#include <")
-		.appendField(new Blockly.FieldTextInput('Test'), 'INCLUDE')
-        .appendField(".h>");
+  this.appendDummyInput("")
+        .appendField("from ")
+        .appendField(new Blockly.FieldTextInput('ESP32'), 'path')
+        .appendField(" import ")
+        .appendField(new Blockly.FieldTextInput('*'), 'module');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Blocks.factory_import = {
+  init: function() {
+    this.setColour(Blockly.Blocks.factory.HUE);
+  this.appendDummyInput("")
+        .appendField("import ")
+        .appendField(new Blockly.FieldTextInput('module'), 'module');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -19,22 +31,22 @@ Blockly.Blocks.factory_include = {
 Blockly.Blocks.factory_function_noreturn = {
   init: function() {
     //console.log('init');
-    this.setColour(Blockly.Blocks.factory.HUE);
-	this.appendDummyInput("")
-		.appendField(new Blockly.FieldTextInput('my_function'), 'NAME');
-	this.itemCount_ = 1;
-	this.arguments_ = ['x'];//add
-	this.updateShape_();
+  this.setColour(Blockly.Blocks.factory.HUE);
+  this.appendDummyInput("")
+    .appendField(new Blockly.FieldTextInput('my_function'), 'NAME');
+  this.itemCount_ = 1;
+  this.arguments_ = ['x'];//add
+  this.updateShape_();
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-	this.setMutator(new Blockly.Mutator(['factory_create_with_item']));
+  this.setMutator(new Blockly.Mutator(['factory_create_with_item']));
   },
   mutationToDom: function() {
     //console.log('mutationToDom');
-	var container = document.createElement('mutation');
+  var container = document.createElement('mutation');
     container.setAttribute('items', this.itemCount_);
-	//add
-	for (var i = 0; i < this.arguments_.length; i++) {
+  //add
+  for (var i = 0; i < this.arguments_.length; i++) {
       var parameter = document.createElement('arg');
       parameter.setAttribute('name', this.arguments_[i]);
       container.appendChild(parameter);
@@ -43,26 +55,26 @@ Blockly.Blocks.factory_function_noreturn = {
   },
   domToMutation: function(xmlElement) {
     //console.log('domToMutation');
-	this.arguments_ = [];//add
-	//add
-	for (var i = 0, childNode; childNode = xmlElement.childNodes[i]; i++) {
+  this.arguments_ = [];//add
+  //add
+  for (var i = 0, childNode; childNode = xmlElement.childNodes[i]; i++) {
       if (childNode.nodeName.toLowerCase() == 'arg') {
         this.arguments_.push(childNode.getAttribute('name'));
       }
     }
-	this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
+  this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
     this.updateShape_();
   },
   decompose: function(workspace) {
     //console.log('decompose');
-	var containerBlock =
+  var containerBlock =
         Blockly.Block.obtain(workspace, 'factory_create_with_container');
     containerBlock.initSvg();
     var connection = containerBlock.getInput('STACK').connection;
     for (var i = 0; i < this.itemCount_; i++) {
       var itemBlock = Blockly.Block.obtain(workspace, 'factory_create_with_item');
       itemBlock.initSvg();
-	  itemBlock.setFieldValue(this.arguments_[i], 'NAME');//add
+    itemBlock.setFieldValue(this.arguments_[i], 'NAME');//add
       connection.connect(itemBlock.previousConnection);
       connection = itemBlock.nextConnection;
     }
@@ -70,13 +82,13 @@ Blockly.Blocks.factory_function_noreturn = {
   },
   compose: function(containerBlock) {
     //console.log('compose');
-	this.arguments_ = [];//add
-	var itemBlock = containerBlock.getInputTargetBlock('STACK');
+  this.arguments_ = [];//add
+  var itemBlock = containerBlock.getInputTargetBlock('STACK');
     // Count number of inputs.
     var connections = [];
     var i = 0;
     while (itemBlock) {
-	  this.arguments_.push(itemBlock.getFieldValue('NAME'));//add
+    this.arguments_.push(itemBlock.getFieldValue('NAME'));//add
       connections[i] = itemBlock.valueConnection_;
       itemBlock = itemBlock.nextConnection &&
           itemBlock.nextConnection.targetBlock();
@@ -93,7 +105,7 @@ Blockly.Blocks.factory_function_noreturn = {
   },
   saveConnections: function(containerBlock) {
     //console.log('saveConnections');
-	var itemBlock = containerBlock.getInputTargetBlock('STACK');
+  var itemBlock = containerBlock.getInputTargetBlock('STACK');
     var i = 0;
     while (itemBlock) {
       var input = this.getInput('ADD' + i);
@@ -105,7 +117,7 @@ Blockly.Blocks.factory_function_noreturn = {
   },
   updateShape_: function() {
     //console.log('updateShape_');
-	// Delete everything.
+  // Delete everything.
     if (this.getInput('EMPTY')) {
       this.removeInput('EMPTY');
     } else {
@@ -116,9 +128,9 @@ Blockly.Blocks.factory_function_noreturn = {
       }
     }
     // Rebuild block.
-	for (var i = 0; i < this.itemCount_; i++) {
-		var input = this.appendValueInput('ADD' + i).setAlign(Blockly.ALIGN_RIGHT).appendField(this.arguments_[i]);
-	}
+  for (var i = 0; i < this.itemCount_; i++) {
+    var input = this.appendValueInput('ADD' + i).setAlign(Blockly.ALIGN_RIGHT).appendField(this.arguments_[i]);
+  }
   }
 };
 
@@ -137,7 +149,7 @@ Blockly.Blocks['factory_create_with_item'] = {
     this.setColour(Blockly.Blocks.factory.HUE);
     this.appendDummyInput()
         .appendField(Blockly.Msg.LISTS_CREATE_WITH_ITEM_TITLE+':')
-		.appendField(new Blockly.FieldTextInput('x'), 'NAME');
+    .appendField(new Blockly.FieldTextInput('x'), 'NAME');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.contextMenu = false;
@@ -147,13 +159,13 @@ Blockly.Blocks['factory_create_with_item'] = {
 Blockly.Blocks.factory_function_return = {
   init: function() {
     this.setColour(Blockly.Blocks.factory.HUE);
-	this.appendDummyInput("")
-		.appendField(new Blockly.FieldTextInput('my_function'), 'NAME');
-	this.itemCount_ = 1;
-	this.arguments_ = ['x'];//add
-	this.updateShape_();
+  this.appendDummyInput("")
+    .appendField(new Blockly.FieldTextInput('my_function'), 'NAME');
+  this.itemCount_ = 1;
+  this.arguments_ = ['x'];//add
+  this.updateShape_();
     this.setOutput(true);
-	this.setMutator(new Blockly.Mutator(['factory_create_with_item']));
+  this.setMutator(new Blockly.Mutator(['factory_create_with_item']));
   },
   mutationToDom: Blockly.Blocks.factory_function_noreturn.mutationToDom,
   domToMutation: Blockly.Blocks.factory_function_noreturn.domToMutation,
@@ -166,82 +178,30 @@ Blockly.Blocks.factory_function_return = {
 Blockly.Blocks.factory_declare={
   init: function() {
     this.setColour(Blockly.Blocks.factory.HUE);
-	this.appendDummyInput("")
-		.appendField(new Blockly.FieldTextInput('Test'), 'TYPE')
-		.appendField(" ")
-		.appendField(new Blockly.FieldTextInput('test'), 'NAME')
-        .appendField(";");
+  this.appendDummyInput("")
+    .appendField(new Blockly.FieldTextInput('test'), 'NAME')
+    .appendField("=")
+    .appendField(new Blockly.FieldTextInput('Test'), 'TYPE')
+    .appendField("()");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
 }
-Blockly.Blocks.factory_define = {
-    init: function () {
-        this.setColour(Blockly.Blocks.factory.HUE);
-        this.appendDummyInput("")
-            .appendField(new Blockly.FieldTextInput('#define'), 'TYPE')
-            .appendField(" ")
-            .appendField(new Blockly.FieldTextInput('MYDEFINE 11'), 'NAME')
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-    }
-}
-Blockly.Blocks.factory_static_method_noreturn={
-  init: function() {
-    this.setColour(Blockly.Blocks.factory.HUE);
-	this.appendDummyInput("")
-		.appendField(new Blockly.FieldTextInput('Test'), 'TYPE')
-		.appendField("::")
-		.appendField(new Blockly.FieldTextInput('staticMethod'), 'NAME');
-	this.itemCount_ = 1;
-	this.arguments_ = ['x'];//add
-	this.updateShape_();
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-	this.setMutator(new Blockly.Mutator(['factory_create_with_item']));
-  },
-  mutationToDom: Blockly.Blocks.factory_function_noreturn.mutationToDom,
-  domToMutation: Blockly.Blocks.factory_function_noreturn.domToMutation,
-  decompose: Blockly.Blocks.factory_function_noreturn.decompose,
-  compose: Blockly.Blocks.factory_function_noreturn.compose,
-  saveConnections: Blockly.Blocks.factory_function_noreturn.saveConnections,
-  updateShape_: Blockly.Blocks.factory_function_noreturn.updateShape_
-}
 
-Blockly.Blocks.factory_static_method_return={
-  init: function() {
-    this.setColour(Blockly.Blocks.factory.HUE);
-	this.appendDummyInput("")
-		.appendField(new Blockly.FieldTextInput('Test'), 'TYPE')
-		.appendField("::")
-		.appendField(new Blockly.FieldTextInput('staticMethod'), 'NAME');
-	this.itemCount_ = 1;
-	this.arguments_ = ['x'];//add
-	this.updateShape_();
-    this.setOutput(true);
-	this.setMutator(new Blockly.Mutator(['factory_create_with_item']));
-  },
-  mutationToDom: Blockly.Blocks.factory_function_noreturn.mutationToDom,
-  domToMutation: Blockly.Blocks.factory_function_noreturn.domToMutation,
-  decompose: Blockly.Blocks.factory_function_noreturn.decompose,
-  compose: Blockly.Blocks.factory_function_noreturn.compose,
-  saveConnections: Blockly.Blocks.factory_function_noreturn.saveConnections,
-  updateShape_: Blockly.Blocks.factory_function_noreturn.updateShape_
-}
 
 Blockly.Blocks.factory_callMethod_noreturn = {
   init: function() {
     this.setColour(Blockly.Blocks.factory.HUE);
-	this.appendDummyInput("")
-		.appendField(new Blockly.FieldTextInput('test'), 'NAME')
-		.appendField('.')
-		.appendField(new Blockly.FieldTextInput('callMetod'), 'METHOD');
-	this.itemCount_ = 1;
-	this.arguments_ = ['x'];//add
-	this.updateShape_();
+  this.appendDummyInput("")
+    .appendField(new Blockly.FieldTextInput('test'), 'NAME')
+    .appendField('.')
+    .appendField(new Blockly.FieldTextInput('callMethod'), 'METHOD');
+  this.itemCount_ = 1;
+  this.arguments_ = ['x'];//add
+  this.updateShape_();
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-	this.setMutator(new Blockly.Mutator(['factory_create_with_item']));
+  this.setMutator(new Blockly.Mutator(['factory_create_with_item']));
   },
   mutationToDom: Blockly.Blocks.factory_function_noreturn.mutationToDom,
   domToMutation: Blockly.Blocks.factory_function_noreturn.domToMutation,
@@ -254,15 +214,15 @@ Blockly.Blocks.factory_callMethod_noreturn = {
 Blockly.Blocks.factory_callMethod_return = {
   init: function() {
     this.setColour(Blockly.Blocks.factory.HUE);
-	this.appendDummyInput("")
-		.appendField(new Blockly.FieldTextInput('test'), 'NAME')
-		.appendField('.')
-		.appendField(new Blockly.FieldTextInput('callMetod'), 'METHOD');
-	this.itemCount_ = 1;
-	this.arguments_ = ['x'];//add
-	this.updateShape_();
+  this.appendDummyInput("")
+    .appendField(new Blockly.FieldTextInput('test'), 'NAME')
+    .appendField('.')
+    .appendField(new Blockly.FieldTextInput('callMethod'), 'METHOD');
+  this.itemCount_ = 1;
+  this.arguments_ = ['x'];//add
+  this.updateShape_();
     this.setOutput(true);
-	this.setMutator(new Blockly.Mutator(['factory_create_with_item']));
+  this.setMutator(new Blockly.Mutator(['factory_create_with_item']));
   },
   mutationToDom: Blockly.Blocks.factory_function_noreturn.mutationToDom,
   domToMutation: Blockly.Blocks.factory_function_noreturn.domToMutation,
@@ -275,8 +235,8 @@ Blockly.Blocks.factory_callMethod_return = {
 Blockly.Blocks.factory_block = {
   init: function() {
     this.setColour(Blockly.Blocks.factory.HUE);
-	this.appendDummyInput("")
-		.appendField(new Blockly.FieldTextInput('serial.writeLine("hello");'), 'VALUE');
+  this.appendDummyInput("")
+    .appendField(new Blockly.FieldTextInput('display.scroll("Hello World!")'), 'VALUE');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -285,8 +245,27 @@ Blockly.Blocks.factory_block = {
 Blockly.Blocks.factory_block_return = {
   init: function() {
     this.setColour(Blockly.Blocks.factory.HUE);
-	this.appendDummyInput("")
-		.appendField(new Blockly.FieldTextInput('test'), 'VALUE');
+  this.appendDummyInput("")
+    .appendField(new Blockly.FieldTextInput('test'), 'VALUE');
+    this.setOutput(true);
+  }
+};
+
+Blockly.Blocks.factory_block_with_textarea = {
+  init: function() {
+    this.setColour(Blockly.Blocks.factory.HUE);
+  this.appendDummyInput("")
+    .appendField(new Blockly.FieldTextArea('display.scroll("Hello World!")\ndisplay.scroll("Hello Mixly!")'), 'VALUE');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Blocks.factory_block_return_with_textarea = {
+  init: function() {
+    this.setColour(Blockly.Blocks.factory.HUE);
+  this.appendDummyInput("")
+    .appendField(new Blockly.FieldTextArea('Hello\nMixly'), 'VALUE');
     this.setOutput(true);
   }
 };

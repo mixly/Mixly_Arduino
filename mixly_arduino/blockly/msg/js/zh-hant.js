@@ -2221,3 +2221,4 @@ Blockly.MIXLY_MIXPY_INOUT_PRINT_EMPTY='游標自動換行';
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_ITEM_TOOLTIP='將item拖入或拖出右側的組塊以改變列印的參數個數';
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP = "增加、刪除或重新排列各部分以此重新配置這個組塊";
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_TOOLTIP='列印多個參數，如果參數個數為0，則讓游標下移一行';
+Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION='顯示(圖像/字符串/動畫)';

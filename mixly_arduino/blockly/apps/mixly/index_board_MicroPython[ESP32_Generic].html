@@ -636,6 +636,50 @@
         </shadow>
         </statement>
       </block> -->
+      <block type="controls_thread">
+        <value name="callback">
+          <shadow type="factory_block_return">
+            <field name="VALUE">testThread</field>
+          </shadow>
+        </value>
+        <value name="VAR">
+          <block type="tuple_create_with_noreturn" inline="true">
+            <mutation items="0"></mutation>
+          </block>
+        </value>
+      </block>
+      <block type="procedures_defnoreturn" inline="false">
+        <field name="NAME">testThread</field>
+        <statement name="STACK">
+          <block type="controls_whileUntil">
+            <field name="MODE">WHILE</field>
+            <value name="BOOL">
+              <block type="logic_boolean">
+                <field name="BOOL">TRUE</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="system_print" inline="false">
+                <value name="VAR">
+                  <block type="text">
+                    <field name="TEXT">Hello Mixly from Thread!</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_delay">
+                    <field name="Time">ms</field>
+                    <value name="DELAY_TIME">
+                      <block type="math_number">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
       <block type="system_timer_init">
         <value name="SUB">
           <shadow type="variables_get">

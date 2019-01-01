@@ -2221,3 +2221,4 @@ Blockly.MIXLY_MIXPY_INOUT_PRINT_EMPTY='El cursor se cambia de forma automática'
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_ITEM_TOOLTIP='Arrastra UN item o arrastra UN bloque del lado derecho para cambiar el número de parámetros impresos';
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP ='Aumentar, eliminar o reordenar las partes para reconfigurar este bloque ';
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_TOOLTIP='Imprime múltiples parámetros, y si el número de parámetros es 0, haz que el cursor cambie una línea';
+Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION='mostrar (imagen/cadena/animaciones)';
