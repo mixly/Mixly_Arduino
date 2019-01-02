@@ -2268,3 +2268,6 @@ Blockly.MIXLY_PYTHON_CONTROLS_THREAD_START = '启动线程';
 Blockly.MIXLY_PYTHON_CONTROLS_THREAD_USE = '调用函数';
 Blockly.MIXLY_PYTHON_CONTROLS_THREAD_TOOLTIP = '启动一个新的线程，使用给定的参数(置于元组中)来调用函数';
 Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION='显示(图像/字符串/动画)';
+Blockly.MIXLY_MIXPY_TURTLE_WIDTH = '画笔宽度';
+Blockly.MIXLY_TOOLTIP_TURTEL_HEADING='获取乌龟当前朝向，返回一个浮点数';
+Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH='获取乌龟当前画笔宽度，返回一个整数';

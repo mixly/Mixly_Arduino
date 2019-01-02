@@ -2222,3 +2222,6 @@ Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_ITEM_TOOLTIP='Arrastra UN item o arrastra U
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP ='Aumentar, eliminar o reordenar las partes para reconfigurar este bloque ';
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_TOOLTIP='Imprime múltiples parámetros, y si el número de parámetros es 0, haz que el cursor cambie una línea';
 Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION='mostrar (imagen/cadena/animaciones)';
+Blockly.MIXLY_MIXPY_TURTLE_WIDTH = 'pincel width';
+Blockly.MIXLY_TOOLTIP_TURTEL_HEADING='obtenga la dirección actual de la tortuga y vuelva a UN punto flotante';
+Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH='para obtener la longitud actual del pincel de la tortuga, devuelve UN integer';

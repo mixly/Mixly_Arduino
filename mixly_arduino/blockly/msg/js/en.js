@@ -2221,4 +2221,7 @@ Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_ITEM_TOOLTIP='drag an item into or out of t
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP ='Add, remove, or rearrange sections to reconfigure the chunk' ;
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_TOOLTIP='print multiple parameters, if the number of parameters is 0, move the cursor down one line';
 Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION='show (image/string/animation)';
+Blockly.MIXLY_MIXPY_TURTLE_WIDTH = 'pensize';
+Blockly.MIXLY_TOOLTIP_TURTEL_HEADING =' get turtle current heading, return a float';
+Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH =' get the current pensize of the turtle and return an integer ';
 
