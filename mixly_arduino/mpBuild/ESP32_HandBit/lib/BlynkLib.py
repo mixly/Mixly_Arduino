@@ -212,10 +212,10 @@ class Blynk(BlynkProtocol):
     def __init__(self, auth, **kwargs):
         BlynkProtocol.__init__(self, auth, **kwargs)
 
-    def connect(self):
+    def connect(self, addr, port=80):
         try:
             self.conn = socket.socket()
-            self.conn.connect(socket.getaddrinfo("116,62,49,166", 80)[0][4])
+            self.conn.connect(socket.getaddrinfo(addr, port)[0][4])
             self.conn.settimeout(0.05)
             BlynkProtocol.connect(self)
         except:
