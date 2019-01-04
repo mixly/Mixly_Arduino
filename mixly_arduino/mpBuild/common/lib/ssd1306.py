@@ -159,6 +159,9 @@ class SSD1306_I2C(SSD1306):
   def show_line(self, x1, y1, x2, y2, col):
     self.line(x1, y1, x2, y2, col)
     self.show()
+  def show_fill(self,col):
+    self.fill(col)
+    self.show()
   def poweron(self):
     pass
 
