@@ -423,3 +423,17 @@ pbc.globalFunctionD['mixly_oled_text'] = function (py2block, func, args, keyword
         "inline": "false"
     })];
 }
+
+pbc.objectFunctionD.get('show_fill')['monitor'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if(args.length!=1){
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var flagblock = py2block.identifier(args[0].n.v);
+
+
+    return [block("display_fill", func.lineno, {'key':flagblock}, { "SUB":objblock, 
+    }, {
+        "inline": "true"
+    })];
+}

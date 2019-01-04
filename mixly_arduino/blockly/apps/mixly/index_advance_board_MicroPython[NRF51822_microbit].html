@@ -1841,6 +1841,13 @@ function init() {
         <block type="group_lcd_power">
           <field name="STAT">clear()</field>
         </block>
+        <block type="display_fill">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">oled</field>
+            </shadow>
+          </value>
+        </block>
         <block type="lp2i_u8g_draw_4strings">
           <value name="Text_line1">
             <shadow type="text">

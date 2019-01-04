@@ -255,3 +255,11 @@ Blockly.Python['display_image_size'] = function() {
   var code = ["image."+size+"("+data+")", Blockly.Python.ORDER_MEMBER];
   return code;
 };
+
+Blockly.Python.display_fill=function(){
+  var varName =Blockly.Python.valueToCode(this, 'SUB',Blockly.Python.ORDER_ATOMIC);
+  Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+  var key = this.getFieldValue('key');
+  var code = varName + '.show_fill('+key+')\n';
+  return code;
+};

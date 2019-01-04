@@ -342,6 +342,15 @@ Blockly.Python['image_shift'] = function(a) {
   return [code, Blockly.Python.ORDER_MEMBER];
 };
 
+Blockly.Python.display_fill=function(){
+  var varName =Blockly.Python.valueToCode(this, 'SUB',Blockly.Python.ORDER_ATOMIC);
+  Blockly.Python.definitions_['import_ssd1306'] = 'import ssd1306';
+  Blockly.Python.definitions_['import_machine'] = 'import machine';
+  var key = this.getFieldValue('key');
+  var code = varName + '.show_fill('+key+')\n';
+  return code;
+};
+
 goog.provide('Blockly.Python.display');
 goog.require('Blockly.Python');
 

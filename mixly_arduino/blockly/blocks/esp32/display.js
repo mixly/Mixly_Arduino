@@ -1498,3 +1498,28 @@ Blockly.Blocks.display_scroll_string_delay = {
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW);
   }
 };
+
+Blockly.Blocks['display_fill'] = {
+    init: function(){
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.appendValueInput('SUB');
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.MIXLY_HANDBIT_DISLPAY_OLED_CLEAR, "0"],
+                [Blockly.MIXLY_HANDBIT_DISLPAY_OLED_FILL, "1"]
+            ]), "key");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_MICROBIT_JS_ACCELERATION);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('key');
+        var TOOLTIPS = {
+        '0': Blockly.MIXLY_HANDBIT_DISLPAY_OLED_CLEAR,
+        '1': Blockly.MIXLY_HANDBIT_DISLPAY_OLED_FILL
+       };
+      return Blockly.MIXLY_DF_LCD+TOOLTIPS[mode];
+    });
+    }
+};
