@@ -852,6 +852,8 @@ Blockly.MIXLY_TOOLTIP_DS18 = '获取DS18B20传感器传回的温度值';
 Blockly.MIXLY_TOOLTIP_DS1302_INIT = '初始化DS1302 RTC时钟模块，参数为重置线管脚号，数据线管脚号和时钟线管脚号';
 Blockly.MIXLY_TOOLTIP_DS1307_INIT = '初始化DS1307 RTC时钟模块，参数为数据线管脚号和时钟线管脚号';
 Blockly.MIXLY_TOOLTIP_RTC_GETTIME = '从RTC时钟模块获取%1';
+Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
+Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
 Blockly.MIXLY_TOOLTIP_ADXL345 = '获取ADXL345重力感应模块传回的%1';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_WRITEMICROSECONDS = '设置舵机的旋转时间，参数取值为[1000,2000]';
 Blockly.MIXLY_TOOLTIP_TONE_NOTE = '返回音名对应的频率';
@@ -1366,6 +1368,7 @@ Blockly.MIXLY_MICROBIT_Create_image='创建图像 %1 %2 %3 %4 %5 %6 %7 %8 %9 %10
 Blockly.MIXLY_MICROBIT_Panic_with_status_code='错误状态码';
 Blockly.MIXLY_MICROBIT_Sleep='睡眠 %1 毫秒';
 Blockly.MIXLY_MICROBIT_Running_time='运行时间';
+Blockly.MIXLY_MICROBIT_Board_temperature='主板温度';
 Blockly.MIXLY_MICROBIT_Reset_micro='复位 micro:bit';
 Blockly.MIXLY_MICROBIT_Play_built_in_melody='播放内置音乐 %1 管脚 #%2 %3 等待 %4 %5 循环 %6';
 Blockly.MIXLY_MICROBIT_Play_built_in_melody_easy='播放内置音乐 %1 管脚 #%2 %3 ';
@@ -2155,7 +2158,6 @@ Blockly.MIXLY_ESP32_SCROLL_IMAGE_OR_STRING_DELAY="在一段时间内滚动显示
 Blockly.MIXLY_OLED_RECT="以设定的顶点与长度绘制矩形";
 Blockly.MIXLY_OLED_LINE="以设定的顶点与长度绘制线条";
 Blockly.MIXLY_OLED_LINE_ARBIT="以设定的起点与终点绘制线条";
-
 Blockly.MIXLY_ESP32_SENSOR_LIGHT_LEVEL_TOOLTIP="设置传感器亮度等级";
 Blockly.MIXLY_ESP32_SENSOR_RTC_INT_TOOLTIP="初始化实时时钟";
 Blockly.MIXLY_ESP32_RTC_SET_DATATIME_TOOLTIP="设置实时时钟模块时间";
@@ -2193,8 +2195,6 @@ Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
 Blockly.MIXLY_TOOLTIP_RGB_INIT = Blockly.MIXLY_RGB_PIN_COUNT;
 Blockly.MIXLY_TOOLTIP_RGB_DISPLAY = Blockly.MIXLY_RGB_NUM_R_G_B
-
-
 Blockly.MIXLY_ESP32_INOUT_HIGHLOW_TOOLTIP = "返回高电平（1）或者低电平（0）";
 Blockly.MIXLY_ESP32_INOUT_DIGITAL_INIT_TOOLTIP = "初始化某管脚为数字输出的管脚";
 Blockly.MIXLY_ESP32_INOUT_DIGITAL_WRITE_TOOLTIP = "设置某管脚的数字输出值";
@@ -2254,7 +2254,6 @@ Blockly.MIXLY_ESP32_IOT_ONENET_DISCONNECT_TOOLTIP = "断开某个onenet连接";
 Blockly.MIXLY_ESP32_IOT_ONENET_CHECK_TOOLTIP = "使某个onenet连接接收并执行指令";
 Blockly.MIXLY_ESP32_IOT_ONENET_PUBLISH_DICT_TOOLTIP = "让某个onenet连接发送某个字典";
 Blockly.MIXLY_ESP32_IOT_ONENET_PUBLISH_TOOLTIP = "让某个onenet连接发送某消息";
-
 Blockly.MIXLY_MICROPYTHON_TYPE_COMPLEX = "复数";
 Blockly.Msg.TEXT_LINES_TOOLTIP = "多行文本";
 Blockly.MIXLY_MIXPY_LISTS_REMOVE='删除指定项';
