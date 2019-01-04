@@ -495,6 +495,17 @@ Blockly.LANG_MATH_BOOLEAN = 'boolean';
 Blockly.LANG_MATH_BYTE = 'byte';
 Blockly.LANG_MATH_CHAR = 'char';
 Blockly.LANG_MATH_STRING = 'string';
+/*
+ *add all data types supported in Arduino except void(only use in function) and array(in special catelogy)
+ @author zyc
+ @date 2018-12-29
+*/
+Blockly.LANG_MATH_UNSIGNED_INT = 'unsigned int';
+Blockly.LANG_MATH_WORD = 'word';
+Blockly.LANG_MATH_UNSIGNED_LONG = 'unsigned long';
+Blockly.LANG_MATH_UNSIGNED_CHAR = 'unsigned char';
+Blockly.LANG_MATH_DOUBLE = 'double';
+//end
 Blockly.LANG_LISTS_GET_INDEX1 = 'get item at';
 Blockly.LANG_LISTS_GET_INDEX2 = '';
 Blockly.LANG_LISTS_GET_INDEX_TOOLTIP = 'Returns the value at the specified position in a list.';
@@ -2209,5 +2220,8 @@ Blockly.MIXLY_MIXPY_INOUT_PRINT_EMPTY='cursor wrap ';
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_ITEM_TOOLTIP='drag an item into or out of the right block to change the number of parameters printed';
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP ='Add, remove, or rearrange sections to reconfigure the chunk' ;
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_TOOLTIP='print multiple parameters, if the number of parameters is 0, move the cursor down one line';
-
+Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION='show (image/string/animation)';
+Blockly.MIXLY_MIXPY_TURTLE_WIDTH = 'pensize';
+Blockly.MIXLY_TOOLTIP_TURTEL_HEADING =' get turtle current heading, return a float';
+Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH =' get the current pensize of the turtle and return an integer ';
 

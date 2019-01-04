@@ -497,6 +497,17 @@ Blockly.LANG_MATH_BOOLEAN = 'boolean';
 Blockly.LANG_MATH_BYTE = 'byte';
 Blockly.LANG_MATH_CHAR = 'char';
 Blockly.LANG_MATH_STRING = 'string';
+/*
+ *add all data types supported in Arduino except void(only use in function) and array(in special catelogy)
+ @author zyc
+ @date 2018-12-29
+*/
+Blockly.LANG_MATH_UNSIGNED_INT = 'unsigned int';
+Blockly.LANG_MATH_WORD = 'word';
+Blockly.LANG_MATH_UNSIGNED_LONG = 'unsigned long';
+Blockly.LANG_MATH_UNSIGNED_CHAR = 'unsigned char';
+Blockly.LANG_MATH_DOUBLE = 'double';
+//end
 Blockly.LANG_LISTS_GET_INDEX1 = 'get item at'; //untranslated
 Blockly.LANG_LISTS_GET_INDEX2 = '';
 Blockly.LANG_LISTS_GET_INDEX_TOOLTIP = 'Devuelve el valor en la posición especificada en una lista.';
@@ -2210,3 +2221,7 @@ Blockly.MIXLY_MIXPY_INOUT_PRINT_EMPTY='El cursor se cambia de forma automática'
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_ITEM_TOOLTIP='Arrastra UN item o arrastra UN bloque del lado derecho para cambiar el número de parámetros impresos';
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP ='Aumentar, eliminar o reordenar las partes para reconfigurar este bloque ';
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_TOOLTIP='Imprime múltiples parámetros, y si el número de parámetros es 0, haz que el cursor cambie una línea';
+Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION='mostrar (imagen/cadena/animaciones)';
+Blockly.MIXLY_MIXPY_TURTLE_WIDTH = 'pincel width';
+Blockly.MIXLY_TOOLTIP_TURTEL_HEADING='obtenga la dirección actual de la tortuga y vuelva a UN punto flotante';
+Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH='para obtener la longitud actual del pincel de la tortuga, devuelve UN integer';

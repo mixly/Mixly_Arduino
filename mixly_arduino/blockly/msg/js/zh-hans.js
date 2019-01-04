@@ -495,6 +495,18 @@ Blockly.LANG_MATH_BOOLEAN = '布尔';
 Blockly.LANG_MATH_BYTE = '字节';
 Blockly.LANG_MATH_CHAR = '字符';
 Blockly.LANG_MATH_STRING = '字符串';
+/*
+ *add all data types supported in Arduino except void(only use in function) and array(in special catelogy)
+ @author zyc
+ @date 2018-12-29
+*/
+Blockly.LANG_MATH_UNSIGNED_INT = '无符号整数';
+Blockly.LANG_MATH_WORD = '字';
+Blockly.LANG_MATH_UNSIGNED_LONG = '无符号长整数';
+Blockly.LANG_MATH_UNSIGNED_CHAR = '无符号字符';
+Blockly.LANG_MATH_DOUBLE = '双精度浮点数';
+//end
+
 Blockly.LANG_LISTS_GET_INDEX1 = '的第';
 Blockly.LANG_LISTS_GET_INDEX2 = '项';
 Blockly.LANG_LISTS_GET_INDEX_TOOLTIP = '返回数组中指定位置的值。';
@@ -2255,3 +2267,7 @@ Blockly.MIXLY_HANDBIT_DISLPAY_OLED_CLEAR = '清屏';
 Blockly.MIXLY_PYTHON_CONTROLS_THREAD_START = '启动线程';
 Blockly.MIXLY_PYTHON_CONTROLS_THREAD_USE = '调用函数';
 Blockly.MIXLY_PYTHON_CONTROLS_THREAD_TOOLTIP = '启动一个新的线程，使用给定的参数(置于元组中)来调用函数';
+Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION='显示(图像/字符串/动画)';
+Blockly.MIXLY_MIXPY_TURTLE_WIDTH = '画笔宽度';
+Blockly.MIXLY_TOOLTIP_TURTEL_HEADING='获取乌龟当前朝向，返回一个浮点数';
+Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH='获取乌龟当前画笔宽度，返回一个整数';

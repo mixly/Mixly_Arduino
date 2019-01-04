@@ -263,6 +263,31 @@ pbc.objectFunctionD.get('shape')[turtleClass] = function (py2block, func, args, 
     });}
 }
 
+pbc.objectFunctionD.get('width')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1 && args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    if (args.length == 1){
+    var turtleblock = py2block.convert(func.value);
+    var widthblock = py2block.convert(args[0]);
+    return [block('turtle_size', func.lineno, {}, {
+        'TUR': turtleblock,
+        'data': widthblock
+        
+    }, {
+        "inline": "true"
+    })];}
+    if(args.length == 0){
+    var turtleblock = py2block.convert(func.value);
+    return block('turtle_pos_shape', func.lineno, {
+       'DIR': 'width'
+    }, {
+        'TUR': turtleblock
+    }, {
+        "inline": "true"
+    });}
+}
+
 pbc.moduleFunctionD.get('turtle')['textinput'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 2) {
         throw new Error("Incorrect number of arguments");

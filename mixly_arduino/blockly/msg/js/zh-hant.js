@@ -495,6 +495,17 @@ Blockly.LANG_MATH_BOOLEAN = '布爾';
 Blockly.LANG_MATH_BYTE = '字節';
 Blockly.LANG_MATH_CHAR = '字符';
 Blockly.LANG_MATH_STRING = '字符串';
+/*
+ *add all data types supported in Arduino except void(only use in function) and array(in special catelogy)
+ @author zyc
+ @date 2018-12-29
+*/
+Blockly.LANG_MATH_UNSIGNED_INT = '無符號整數';
+Blockly.LANG_MATH_WORD = '字';
+Blockly.LANG_MATH_UNSIGNED_LONG = '無符號長整數';
+Blockly.LANG_MATH_UNSIGNED_CHAR = '無符號字符';
+Blockly.LANG_MATH_DOUBLE = '雙精度浮點數';
+//end
 Blockly.LANG_LISTS_GET_INDEX1 = '的第';
 Blockly.LANG_LISTS_GET_INDEX2 = '項';
 Blockly.LANG_LISTS_GET_INDEX_TOOLTIP = '返回數組中指定位置的值。';
@@ -2210,3 +2221,7 @@ Blockly.MIXLY_MIXPY_INOUT_PRINT_EMPTY='游標自動換行';
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_ITEM_TOOLTIP='將item拖入或拖出右側的組塊以改變列印的參數個數';
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP = "增加、刪除或重新排列各部分以此重新配置這個組塊";
 Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_TOOLTIP='列印多個參數，如果參數個數為0，則讓游標下移一行';
+Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION='顯示(圖像/字符串/動畫)';
+Blockly.MIXLY_MIXPY_TURTLE_WIDTH = '畫筆寬度';
+Blockly.MIXLY_TOOLTIP_TURTEL_HEADING='獲取烏龜當前朝向，返回一個浮點數';
+Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH='獲取烏龜當前畫筆寬度，返回一個整數';

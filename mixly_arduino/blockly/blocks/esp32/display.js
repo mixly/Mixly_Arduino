@@ -1436,8 +1436,8 @@ Blockly.Blocks.display_show_image_or_string = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
   this.appendValueInput('data')
-        .setCheck([String, "esp32_image"])
-        .appendField(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
+        .setCheck([String, "esp32_image","List",'Tuple'])
+        .appendField(Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
@@ -1461,8 +1461,8 @@ Blockly.Blocks.display_scroll_string = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendValueInput('data')
-        .setCheck([String, "esp32_image"])
-        .appendField(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
+        .setCheck([String, "esp32_image","List",'Tuple'])
+        .appendField(Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION);
     this.appendValueInput("time")
         .setCheck(Number)
         .appendField(Blockly.MIXLY_DELAY);    

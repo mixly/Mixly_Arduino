@@ -291,7 +291,7 @@ class Display:
     def text(self,string,x,y):
         self.framebuf.text(string,x,y,1)
 
-    def show(self, data, delay=200, time=400):
+    def show(self, data, delay=200, time=400):        
         self.fill(0)
         if type(data)==str:
             DISPLAY_WIDTH  = 16      # Display width in pixels.
@@ -315,6 +315,13 @@ class Display:
                         utime.sleep_ms(delay)    
         elif type(data)==int:
             pass
+        elif type(data)==list or type(data)==tuple:
+            for i in data:
+                if type(i)!=str and type(i)!=type(Image.HEART):
+                    pass
+            for i in data:
+                self.show(i)
+                utime.sleep_ms(delay)             
         elif type(data)==type(Image.HEART):
             # print("Image")
             l = data.str.split(':')
