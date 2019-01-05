@@ -2147,7 +2147,10 @@ PythonToBlocks.prototype.convertElements = function(key, values) {
  * ctx: expr_context_ty
  *
  */
-PythonToBlocks.prototype.List = function(node) {
+
+// return with many blocks, not use for the time being 
+
+/*PythonToBlocks.prototype.List = function(node) {
     var elts = node.elts;
     var ctx = node.ctx;
 
@@ -2159,11 +2162,36 @@ PythonToBlocks.prototype.List = function(node) {
             "@items": elts.length
         });
 }
+*/
+
+PythonToBlocks.prototype.List = function(node) {
+    var elts = node.elts;
+
+    var valueList = [];
+    var s = this.getSourceCode(elts).split('\n')[node.lineno-1];
+    if (s.length > 0){
+        s = s.substring(elts[0].col_offset,s.length-1);
+        valueList = s.split(",");
+    }
+    else
+        valueList = "";
+
+    return block("list_many_input", node.lineno, {"CONTENT": valueList}, {}
+        , {
+            "inline": "true",
+        }, {
+
+        });
+}
 
 /*
  * elts: asdl_seq
  * ctx: expr_context_ty
  */
+
+// return with many blocks, not use for the time being 
+
+/*
 PythonToBlocks.prototype.Tuple = function(node)
 {
     var elts = node.elts;
@@ -2175,6 +2203,28 @@ PythonToBlocks.prototype.Tuple = function(node)
             "inline": "true",
         }, {
             "@items": elts.length
+        });
+}
+*/
+
+PythonToBlocks.prototype.Tuple = function(node)
+{
+    var elts = node.elts;
+
+    var valueList = [];
+    var s = this.getSourceCode(elts).split('\n')[node.lineno-1];
+    if (s.length > 0){
+        s = s.substring(elts[0].col_offset,s.length-1);
+        valueList = s.split(",");
+    }
+    else
+        valueList = "";
+
+    return block("tuple_create_with_text_return", node.lineno, {"TEXT": valueList}, {}
+        , {
+            "inline": "true",
+        }, {
+
         });
 }
 
