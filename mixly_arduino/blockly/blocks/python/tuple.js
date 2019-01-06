@@ -225,14 +225,14 @@ Blockly.Blocks['tuple_create_with_text_return'] = {
   this.setOutput(true);
   this.setInputsInline(true);
   this.setTooltip(Blockly.MIXPY_TOOLTIP_TUPLE_CREATE_WITH_TEXT);
-  },
-  getVars: function() {
-    return [this.getFieldValue('VAR')];
-  },
-  renameVar: function(oldName, newName) {
-    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
-      this.setTitleValue(newName, 'VAR');
-    }
+  // },
+  // getVars: function() {
+  //   return [this.getFieldValue('VAR')];
+  // },
+  // renameVar: function(oldName, newName) {
+  //   if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
+  //     this.setTitleValue(newName, 'VAR');
+  //   }
   }
   // newQuote_: function(open) {
   //   if (open == this.RTL) {

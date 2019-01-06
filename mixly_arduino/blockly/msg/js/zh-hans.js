@@ -2270,3 +2270,10 @@ Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION='显示(图像/字符串/�
 Blockly.MIXLY_MIXPY_TURTLE_WIDTH = '画笔宽度';
 Blockly.MIXLY_TOOLTIP_TURTEL_HEADING='获取乌龟当前朝向，返回一个浮点数';
 Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH='获取乌龟当前画笔宽度，返回一个整数';
+
+Blockly.MIXLY_PYTHON_SYSTEM_EVAL = '执行文本代码并获取其返回值 代码';
+Blockly.MIXLY_PYTHON_SYSTEM_EVAL_TOOLTIP = '返回参数代码执行的返回值，如参数代码无返回值则返回None';
+Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_USE_STR = '通过字符串';
+Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_SEQ = '将序列';
+Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_GET_STR = '连接成一个字符串';
+Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_TOOLTIP = '第二个参数必须是可迭代的且迭代的每一项类型都是字符串；结果返回一个字符串';

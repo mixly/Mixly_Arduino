@@ -184,6 +184,12 @@ Blockly.Python.text_find = function() {
   return [''+sentence+'.find('+str+')' , Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.text_join_seq = function() {
+  var sentence =Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
+  var varName = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_MEMBER) || 'mylist';
+  return [sentence+'.join('+varName+')' , Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python.text_replace = function() {
   var sentence =Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
   var str1=Blockly.Python.valueToCode(this, 'STR1', Blockly.Python.ORDER_ATOMIC);

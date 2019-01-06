@@ -539,6 +539,23 @@ init: function() {
   }
 }
 
+Blockly.Blocks['text_join_seq']={
+init: function() {
+  this.setColour(Blockly.Blocks.texts.HUE);
+  this.appendValueInput("VAR")
+      .appendField(Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_USE_STR)
+      .setCheck(String);
+  this.appendValueInput('LIST')            
+      .appendField(Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_SEQ)
+      .setCheck('List','Tuple','Set','Dict');
+  this.appendDummyInput()
+      .appendField(Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_GET_STR);
+  this.setInputsInline(true);
+  this.setOutput(true, String);
+  this.setTooltip(Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_TOOLTIP);
+  }
+}
+
 Blockly.Blocks['text_replace']={
 init: function() {
   this.setColour(Blockly.Blocks.texts.HUE);

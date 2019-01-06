@@ -361,8 +361,15 @@
           </block>
         </statement>
       </block>
-          <block type="controls_millis"></block>
-          <block type="time_localtime"></block>
+      <block type="system_eval">
+            <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">input('Please enter your name')</field>
+                  </shadow>
+              </value>
+      </block>
+      <block type="controls_millis"></block>
+      <block type="time_localtime"></block>
        <!--   <block type="Panic_with_status_code">
             <value name="STATUS_CODE">
                   <shadow type="math_number">
@@ -372,8 +379,8 @@
           </block>
           <block type="reset"></block>-->
 
-      </category>
-          <category id="catMath" colour="230">
+    </category>
+    <category id="catMath" colour="230">
       <block type="math_number"></block>
       <block type="math_arithmetic">
         <value name="A">
@@ -665,6 +672,18 @@
           <value name="STR">
             <shadow type="text">
               <field name="TEXT">l</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_join_seq">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">--</field>
+            </shadow>
+          </value>
+          <value name="LIST">
+            <shadow type="variables_get">
+              <field name="VAR">mylist</field>
             </shadow>
           </value>
         </block>
