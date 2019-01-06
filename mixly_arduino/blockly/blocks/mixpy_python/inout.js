@@ -161,7 +161,7 @@ Blockly.Blocks['inout_print_many'] = {
       for (var i = 0; i < this.itemCount_; i++) {
         var input = this.appendValueInput('ADD' + i);
         if (i == 0) {
-          input.appendField(Blockly.blockpy_inout_print_inline);
+          input.appendField(Blockly.blockpy_inout_print);
         }
       }
     }
@@ -171,7 +171,7 @@ Blockly.Blocks['inout_print_container'] = {
   init: function() {
     this.setColour(20);
     this.appendDummyInput()
-        .appendField(Blockly.blockpy_inout_print_inline);
+        .appendField(Blockly.blockpy_inout_print);
     this.appendStatementInput('STACK');
     this.setTooltip(Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP);
     this.contextMenu = false;

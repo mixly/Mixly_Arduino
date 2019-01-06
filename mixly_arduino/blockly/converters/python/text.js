@@ -286,6 +286,21 @@ pbc.objectFunctionD.get('find')['Str'] = function converter(py2block, func, args
         });
     }
 
+pbc.objectFunctionD.get('join')['Str'] = function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 1) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var objblock = py2block.convert(func.value);       
+        var argblock = py2block.convert(args[0]); 
+        return block("text_join_seq", func.lineno, {           
+        }, {
+            "VAR": objblock,  
+            "LIST": argblock          
+        }, {
+            "inline": "true"
+        });
+    }    
+
 pbc.objectFunctionD.get('format')['Str'] = function converter(py2block, func, args, keywords, starargs, kwargs, node) {
         var objblock = py2block.convert(func.value);
         var d = py2block.convertElements("ADD", args);

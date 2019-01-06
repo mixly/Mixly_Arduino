@@ -2225,3 +2225,9 @@ Blockly.MIXLY_MIXPY_TURTLE_WIDTH = 'pensize';
 Blockly.MIXLY_TOOLTIP_TURTEL_HEADING =' get turtle current heading, return a float';
 Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH =' get the current pensize of the turtle and return an integer ';
 
+Blockly.MIXLY_PYTHON_SYSTEM_EVAL = 'execute the text code and get its return value     code';
+Blockly.MIXLY_PYTHON_SYSTEM_EVAL_TOOLTIP = 'returns the value of the execution of the parameter code, or None if the parameter code has no return';
+Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_USE_STR = 'use string';
+Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_SEQ = 'to make sequence';
+Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_GET_STR = 'joined as a string';
+Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_TOOLTIP = 'the second parameter must be iterable and each item type iterated is a string; The result returns a string';

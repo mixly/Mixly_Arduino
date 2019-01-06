@@ -2263,3 +2263,11 @@ Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION='顯示(圖像/字符串/�
 Blockly.MIXLY_MIXPY_TURTLE_WIDTH = '畫筆寬度';
 Blockly.MIXLY_TOOLTIP_TURTEL_HEADING='獲取烏龜當前朝向，返回一個浮點數';
 Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH='獲取烏龜當前畫筆寬度，返回一個整數';
+
+Blockly.MIXLY_PYTHON_SYSTEM_EVAL = '執行文本代碼並獲取其返回值 代碼';
+Blockly.MIXLY_PYTHON_SYSTEM_EVAL_TOOLTIP = '返回參數代碼執行的返回值，如參數代碼無返回值則返回None';
+Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_USE_STR = '通過字串';
+Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_SEQ = '將序列';
+Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_GET_STR = '連接成一個字串';
+Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_TOOLTIP = '第二個參數必須是可反覆運算的且反覆運算的每一項類型都是字串；結果返回一個字串';
+
