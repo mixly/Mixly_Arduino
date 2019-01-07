@@ -22,38 +22,38 @@
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
   <script type="text/javascript" src="myblock.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/pins.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/inout.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/control.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/math.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/text.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/lists.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/logic.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/display.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/communicate.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/storage.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/sensor.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/ethernet.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/variables.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/procedures.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/serial.js"></script>
-  <script type="text/javascript" src="../../generators/esp32/actuator.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/pins.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/inout.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/control.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/math.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/text.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/lists.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/logic.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/display.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/communicate.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/storage.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/sensor.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/ethernet.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/variables.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/procedures.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/serial.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/actuator.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/pins.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/inout.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/control.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/math.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/text.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/lists.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/logic.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/display.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/communicate.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/storage.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/sensor.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/ethernet.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/variables.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/procedures.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/serial.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/actuator.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/pins.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/inout.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/control.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/math.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/text.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/lists.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/logic.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/display.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/communicate.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/storage.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/sensor.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/ethernet.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/variables.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/procedures.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/serial.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/actuator.js"></script>
   <!-- 过去index.html中的js代码都会被放到这个js中-->
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="color_simple.css" />
@@ -176,16 +176,31 @@
         <shadow type="pins_digital"></shadow>
       </value>
     </block>
-    <block type="inout_analog_write">
+    <block type="inout_touch_read">
       <value name="PIN">
-        <shadow type="pins_pwm"></shadow>
-      </value>
-      <value name="NUM">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
+        <shadow type="pins_touch"></shadow>
       </value>
     </block>
+     <block type="inout_pwm_analog_write_set_freq">
+        <value name="PIN">
+          <shadow type="pins_pwm"></shadow>
+        </value>
+        <value name="FREQ">
+          <shadow type="math_number">
+            <field name="NUM">2000</field>
+          </shadow>
+        </value>
+      </block>
+       <block type="inout_pwm_analog_write">
+        <value name="PIN">
+          <shadow type="pins_pwm"></shadow>
+        </value>
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
     <block type="inout_analog_read">
       <value name="PIN">
         <shadow type="pins_analog"></shadow>
