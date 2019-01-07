@@ -2,10 +2,8 @@
 
 _VERSION = "0.2.0"
 
-import socket
 import struct
 import time
-import threading
 
 try:
     import machine
