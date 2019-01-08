@@ -186,7 +186,7 @@ Blockly.Python.text_find = function() {
 
 Blockly.Python.text_join_seq = function() {
   var sentence =Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-  var varName = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_MEMBER) || 'mylist';
+  var varName = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   return [sentence+'.join('+varName+')' , Blockly.Python.ORDER_ATOMIC];
 };
 

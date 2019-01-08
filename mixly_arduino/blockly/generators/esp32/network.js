@@ -42,7 +42,7 @@ Blockly.Python.network_get_connect= function() {
     var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var mode=this.getFieldValue('mode');
     var code=""+varName+".ifconfig()["+mode+"]";
-    return [code, Blockly.Python.ORDER_MEMBER]
+    return [code, Blockly.Python.ORDER_ATOMIC]
 }
 
 Blockly.Python.network_stop= function() {
@@ -71,7 +71,7 @@ Blockly.Python.network_get_wifi= function() {
     var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var op=this.getFieldValue('op');
     var code=""+varName+".config('"+op+"')";
-    return [code, Blockly.Python.ORDER_MEMBER]
+    return [code, Blockly.Python.ORDER_ATOMIC]
 }
 
 Blockly.Python.network_ap_connect= function() {

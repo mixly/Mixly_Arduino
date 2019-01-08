@@ -78,7 +78,7 @@ Blockly.Python.microbit_music_get_tempo = function(block) {
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     Blockly.Python.definitions_['import_music'] = 'import music';
     var code = 'music.get_tempo()';
-    return [code, Blockly.Python.ORDER_MEMBER];
+    return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.tone_set_tempo=function(){
@@ -93,7 +93,7 @@ Blockly.Python.speech_translate=function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     Blockly.Python.definitions_['import_speech'] = 'import speech';
     var text = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
-    var code = ["speech.translate("+ text +")", Blockly.Python.ORDER_MEMBER];
+    var code = ["speech.translate("+ text +")", Blockly.Python.ORDER_ATOMIC];
     return code
 };
 

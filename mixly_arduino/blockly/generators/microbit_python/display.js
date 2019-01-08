@@ -14,7 +14,7 @@ Blockly.Python['monitor_get_pixel'] = function(block) {
   var value_x = Blockly.Python.valueToCode(block, 'x', Blockly.Python.ORDER_ATOMIC);
   var value_y = Blockly.Python.valueToCode(block, 'y', Blockly.Python.ORDER_ATOMIC);
   var code = 'display.get_pixel(int(' + value_x + '), int(' + value_y + '))';
-  return [code, Blockly.Python.ORDER_MEMBER];
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['microbit_display_set_pixel'] = function(block) {
@@ -64,7 +64,7 @@ Blockly.Python['microbit_display_show_default_image'] = function(block) {
 
 Blockly.Python['microbit_display_show_animation'] = function(block) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-  var value_images = Blockly.Python.valueToCode(block, 'images', Blockly.Python.ORDER_MEMBER);
+  var value_images = Blockly.Python.valueToCode(block, 'images', Blockly.Python.ORDER_ATOMIC);
   var number_delay = Blockly.Python.valueToCode(block, 'delay', Blockly.Python.ORDER_ATOMIC);
   var checkbox_wait = block.getFieldValue('wait') == 'TRUE' ? 'True' : 'False';
   var checkbox_loop = block.getFieldValue('loop') == 'TRUE' ? 'True' : 'False';
@@ -93,27 +93,27 @@ Blockly.Python['microbit_display_on'] = function(block) {
 Blockly.Python['microbit_display_is_on'] = function(block) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   var code = 'display.is_on()';
-  return [code, Blockly.Python.ORDER_MEMBER];
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 Blockly.Python['microbit_image_builtins'] = function(block) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   var dropdown_image = block.getFieldValue('image');
   var code = 'Image.' + dropdown_image;
-  return [code, Blockly.Python.ORDER_MEMBER];
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['microbit_image_copy'] = function(block) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-  var value_image = Blockly.Python.valueToCode(block, 'image', Blockly.Python.ORDER_MEMBER);
+  var value_image = Blockly.Python.valueToCode(block, 'image', Blockly.Python.ORDER_ATOMIC);
   var code = value_image + '.copy()';
-  return [code, Blockly.Python.ORDER_MEMBER];
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['microbit_image_invert'] = function(block) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-  var value_image = Blockly.Python.valueToCode(block, 'image', Blockly.Python.ORDER_MEMBER);
+  var value_image = Blockly.Python.valueToCode(block, 'image', Blockly.Python.ORDER_ATOMIC);
   var code = value_image + '.invert()';
-  return [code, Blockly.Python.ORDER_MEMBER];
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['microbit_image_create'] = function(block) {
@@ -156,36 +156,36 @@ Blockly.Python['microbit_image_create'] = function(block) {
   var colour_43 = colours[block.getFieldValue('43')];
   var colour_44 = colours[block.getFieldValue('44')];
   var code = 'Image("' + colour_00 + colour_01 + colour_02 + colour_03 + colour_04 + ':' + colour_10 + colour_11 + colour_12 + colour_13 + colour_14 + ':' + colour_20 + colour_21 + colour_22 + colour_23 + colour_24 + ':' + colour_30 + colour_31 + colour_32 + colour_33 + colour_34 + ':' + colour_40 + colour_41 + colour_42 + colour_43 + colour_44 + '")';
-  return [code, Blockly.Python.ORDER_MEMBER];
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 
 Blockly.Python['image_shift'] = function(a) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   var op = a.getFieldValue("OP");
-  var image = Blockly.Python.valueToCode(a, 'img', Blockly.Python.ORDER_MEMBER);
-  var value = Blockly.Python.valueToCode(a, 'val', Blockly.Python.ORDER_MEMBER);
+  var image = Blockly.Python.valueToCode(a, 'img', Blockly.Python.ORDER_ATOMIC);
+  var value = Blockly.Python.valueToCode(a, 'val', Blockly.Python.ORDER_ATOMIC);
   var code = image + '.shift_' + op + '(' + value + ')';
-  return [code, Blockly.Python.ORDER_MEMBER];
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['image_arithmetic'] = function(a) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   var op = a.getFieldValue("OP");
-  var imga = Blockly.Python.valueToCode(a, 'A', Blockly.Python.ORDER_MEMBER);
-  var imgb = Blockly.Python.valueToCode(a, 'B', Blockly.Python.ORDER_MEMBER);
+  var imga = Blockly.Python.valueToCode(a, 'A', Blockly.Python.ORDER_ATOMIC);
+  var imgb = Blockly.Python.valueToCode(a, 'B', Blockly.Python.ORDER_ATOMIC);
   if (op=='INTERSECTION') {
     var code = imga + '-(' + imga + '-' + imgb +')';
   }
   else{
     var code = imga + op + imgb;
   }
-  return [code, Blockly.Python.ORDER_MEMBER];
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['microbit_display_scroll_string_animation'] = function(block) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-  var value_images = Blockly.Python.valueToCode(block, 'images', Blockly.Python.ORDER_MEMBER) || 'hello';
+  var value_images = Blockly.Python.valueToCode(block, 'images', Blockly.Python.ORDER_ATOMIC) || 'hello';
   var number_delay = Blockly.Python.valueToCode(block, 'delay', Blockly.Python.ORDER_ATOMIC);
   var checkbox_wait = block.getFieldValue('wait') == 'TRUE' ? 'True' : 'False';
   var checkbox_loop = block.getFieldValue('loop') == 'TRUE' ? 'True' : 'False';
@@ -252,7 +252,7 @@ Blockly.Python['display_image_size'] = function() {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   var data = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
   var size  = this.getFieldValue('OP');
-  var code = ["image."+size+"("+data+")", Blockly.Python.ORDER_MEMBER];
+  var code = ["image."+size+"("+data+")", Blockly.Python.ORDER_ATOMIC];
   return code;
 };
 
