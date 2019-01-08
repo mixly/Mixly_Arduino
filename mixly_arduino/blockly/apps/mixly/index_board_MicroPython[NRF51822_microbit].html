@@ -1,4 +1,4 @@
-﻿<html manifest=node.manifest>
+﻿﻿<html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
   <title>Mixly mircrobit</title>
@@ -21,6 +21,7 @@
   <script type="text/javascript" src="blockly_helper.js"></script>
   <!---profiles-->
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="js/lib/bootstrap/bootstrap.min.js"></script>
   <script type="text/javascript" src="microbit[py]/myblock.js"></script>
   <script type="text/javascript" src="../../blocks/python/variables.js"></script>
   <script type="text/javascript" src="../../generators/python/variables.js"></script>
@@ -94,6 +95,9 @@
   <script src="./js/python_to_blockly.js" type="application/javascript"></script>
   <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
   <script src="js/skulpt/dist/skulpt-stdlib.js" type="application/javascript"></script>
+  <script src="js/skulpt/engine.js" type="application/javascript"></script>
+  <script src="../../sims/microbit_python/simulator.js" type="application/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/bootstrap.min.css"/>
   <link rel="stylesheet" type="text/css" href="color_microbit_python.css" />
   <script>
     var sidecodeDisplay=false;
@@ -281,6 +285,7 @@ function init() {
   $('#aceTheme').val(window.conf.lastEditorTheme);
   var py2block_converter = new PythonToBlocks();
   py2block_editor = new Py2blockEditor(py2block_converter, editor);
+  pyengine = new PyEngine({}, {});
   Sk.python3 = true;
   var container = document.getElementById('content_area');
   var onresize = function(e) {
@@ -362,13 +367,16 @@ function init() {
       <td colspan=3>
         <table width="100%">
           <tr id="tabRow" height="1em">
-            <td style="vertical-align: center;" id="tab_blocks" class="tabon" onclick="tabClick('blocks')"><img style="vertical-align:middle" width="25" src="media/blocks.png"/><span id="span_blocks">Blocks</span></td>
+            <td style="vertical-align: center;box-sizing: initial;" id="tab_blocks" class="tabon" onclick="tabClick('blocks')"><img style="vertical-align:middle" width="25" src="media/blocks.png"/><span id="span_blocks">Blocks</span></td>
             <td class="tabmin">&nbsp;</td>
-            <td style="vertical-align: center;text-align:center;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')"><span id="span_arduino">Code</span></td>
+            <td style="vertical-align: center;text-align:center;box-sizing: initial;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')"><span id="span_arduino">Code</span></td>
             <td class="tabmin">&nbsp;</td>
             <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
             <td class="tabcoyright">
              <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;color:#999;">copyright</span>
+            </td>
+            <td class="tabmin">
+                <button onclick="$('#simModal').modal('toggle');">Run</button>
             </td>
             <td class="tabmode">
               <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_MicroPython[NRF51822_microbit].html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light';font-size:12px;">高级视图</a>
@@ -450,6 +458,41 @@ function init() {
       <div id="sidebar" class="right-top" onclick="sidecodeClick()"></div>
     </tr>
   </table>
+
+  <div class="modal fade" id="simModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:768px;">
+      <div class="modal-content"  >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            &times;
+          </button>
+          <h4 class="modal-title" id="myModalLabel">
+              模拟器
+          </h4>
+        </div>
+        <div class="modal-body" style="height: 500px;">
+          <div class="form-horizontal col-sm-12">
+            <div class="row">
+              <div id="microbit"><div id="mb_btn_A" class="mb_btn"></div><div id="mb_btn_B" class="mb_btn"></div><div class="mb_led mb_led_row_0 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_4 mb_led_brightness_"></div></div>
+            </div>
+            <div class="row" style="margin: 10px;">
+              <label class="col-sm-2 control-label">模拟外部操作</label>
+              <div class="col-sm-3">
+                <select class="form-control">
+                  <option selected="selected">输入/输出</option>
+                  <option>控制</option>
+                  <option>通讯</option>
+                  <option>传感器</option>
+                  <option>舵机</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+  </div>
+
   <div id="content_blocks" class="content"></div>
   <div id="content_arduino" class="content" wrap="off"></div>
   <!-- <div id="content_arduino2" wrap="off" ></div> -->

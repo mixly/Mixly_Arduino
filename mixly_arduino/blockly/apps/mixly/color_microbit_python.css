@@ -397,3 +397,72 @@ text.blocklyText {
 #side_code,.content,.ace_editor,.ace-xcode {
     font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial', 'SimHei';
 }
+
+#microbit {
+	width: 300px;
+	height: 236px;
+	background-image: url(./media/microbit.png);
+	position: relative;
+	transition: all 0.5s;
+    margin: auto;
+}
+
+mb_led_brightness_0 {	background-color: #000; }
+.mb_led_brightness_1 {	background-color: #300; }
+.mb_led_brightness_2 {	background-color: #500; }
+.mb_led_brightness_3 {	background-color: #700; }
+.mb_led_brightness_4 {	background-color: #900; }
+.mb_led_brightness_5 {	background-color: #a00; }
+.mb_led_brightness_6 {	background-color: #b00; }
+.mb_led_brightness_7 {	background-color: #c00; }
+.mb_led_brightness_8 {	background-color: #d00; }
+.mb_led_brightness_9 {	background-color: #f00; }
+.mb_led_row_0 { top: 73px; }
+.mb_led_row_1 { top: 96px; }
+.mb_led_row_2 { top: 119px; }
+.mb_led_row_3 { top: 141px; }
+.mb_led_row_4 { top: 164px; }
+
+.mb_led_col_0 { left: 104px; }
+.mb_led_col_1 { left: 126px; }
+.mb_led_col_2 { left: 149px; }
+.mb_led_col_3 { left: 171px; }
+.mb_led_col_4 { left: 195px; }
+
+#mb_btn_A {
+	left: 24px;
+	top: 101px;
+}
+
+#mb_btn_B {
+	left: 256px;
+	top: 101px;
+}
+
+.mb_btn:hover {
+	background-color: #F00;
+}
+
+.mb_led {
+	width: 6px;
+	height: 6px;
+	transition: all 0.1s;
+	position: absolute;
+}
+
+.mb_btn {
+	width: 22px;
+	height: 22px;
+	border-radius: 11px;
+	background-color: #333;
+	transition: all 0.25s;
+	position: absolute;
+	opacity: 0.9;
+}
+
+.mb_led {
+	width: 6px;
+	height: 6px;
+	transition: all 0.1s;
+	position: absolute;
+}

@@ -213,7 +213,11 @@ Blockly.onKeyDown_ = function(e) {
     if (Blockly.selected && Blockly.selected.isDeletable()) {
       deleteBlock = true;
     }
-  } else if ((e.altKey || e.ctrlKey || e.metaKey) && !e.shiftKey) {
+  } else if (e.altKey || e.ctrlKey || e.metaKey) {
+    // Don't use meta keys during drags.
+    if (workspace.isDragging()) {
+      return;
+    }
     if (Blockly.selected &&
         Blockly.selected.isDeletable() && Blockly.selected.isMovable()) {
       if (e.keyCode == 67) {
@@ -242,30 +246,10 @@ Blockly.onKeyDown_ = function(e) {
       Blockly.hideChaff();
       Blockly.mainWorkspace.undo(1);
     }
-  }else if(e.shiftKey && e.ctrlKey){
-     if (Blockly.selected &&
-        Blockly.selected.isDeletable() && Blockly.selected.isMovable()) {
-      if (e.keyCode == 67) {
-        // 'c' for copy.
-        try{
-          var selectedXmlDom = Blockly.Xml.blockToDom(Blockly.selected);
-          JSFuncs.saveToClipCache(Blockly.Xml.domToText(selectedXmlDom));  
-        }catch(err){
-        }
-      } 
-    }
-    if (e.keyCode == 86) {
-      // 'v' for paste.
-      try{
-        var cacheXml = JSFuncs.loadFromClipCache();
-        var cacheDom = Blockly.Xml.textToDom(cacheXml);
-        var cacheBlock = Blockly.Xml.domToBlock(cacheDom, Blockly.mainWorkspace);
-      } catch(err){
-      }
-    } 
   }
-  if (deleteBlock) {
-    // Common code for delete and cut.
+  // Common code for delete and cut.
+  // Don't delete in the flyout.
+  if (deleteBlock && !Blockly.selected.workspace.isFlyout) {
     Blockly.Events.setGroup(true);
     Blockly.hideChaff();
     var heal = Blockly.dragMode_ != Blockly.DRAG_FREE;
