@@ -241,27 +241,27 @@ Blockly.onKeyDown_ = function(e) {
       Blockly.hideChaff();
       Blockly.mainWorkspace.undo(1);
     }
-  }else if(e.shiftKey && e.ctrlKey){
-     if (Blockly.selected &&
-        Blockly.selected.isDeletable() && Blockly.selected.isMovable()) {
-      if (e.keyCode == 67) {
-        // 'c' for copy.
-        try{
-          var selectedXmlDom = Blockly.Xml.blockToDom(Blockly.selected);
-          JSFuncs.saveToClipCache(Blockly.Xml.domToText(selectedXmlDom));  
-        }catch(err){
-        }
-      } 
-    }
-    if (e.keyCode == 86) {
-      // 'v' for paste.
-      try{
-        var cacheXml = JSFuncs.loadFromClipCache();          
-        var cacheDom = Blockly.Xml.textToDom(cacheXml);
-        var cacheBlock = Blockly.Xml.domToBlock(cacheDom, Blockly.mainWorkspace);
-      } catch(err){
+  } else if (e.shiftKey && e.ctrlKey) {
+      if (Blockly.selected &&
+          Blockly.selected.isDeletable() && Blockly.selected.isMovable()) {
+          if (e.keyCode == 67) {
+              // 'c' for copy.
+              try {
+                  var selectedXmlDom = Blockly.Xml.blockToDom(Blockly.selected);
+                  JSFuncs.saveToClipCache(Blockly.Xml.domToText(selectedXmlDom));
+              } catch (err) {
+              }
+          }
       }
-    } 
+      if (e.keyCode == 86) {
+          // 'v' for paste.
+          try {
+              var cacheXml = JSFuncs.loadFromClipCache();
+              var cacheDom = Blockly.Xml.textToDom('<xml>' + cacheXml + '</xml>');
+              Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, cacheDom);
+          } catch (err) {
+          }
+      }
   }
   if (deleteBlock) {
     // Common code for delete and cut.

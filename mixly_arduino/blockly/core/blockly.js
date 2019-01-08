@@ -214,7 +214,7 @@ Blockly.onKeyDown_ = function(e) {
     if (Blockly.selected && Blockly.selected.isDeletable()) {
       deleteBlock = true;
     }
-  } else if (e.altKey || e.ctrlKey || e.metaKey) {
+  } else if ((e.altKey || e.ctrlKey || e.metaKey) && !e.shiftKey) {
     // Don't use meta keys during drags.
     if (workspace.isDragging()) {
       return;
@@ -260,8 +260,29 @@ Blockly.onKeyDown_ = function(e) {
       Blockly.hideChaff();
       workspace.undo(1);
     }
+  } else if(e.shiftKey && e.ctrlKey) {
+      if (Blockly.selected &&
+          Blockly.selected.isDeletable() && Blockly.selected.isMovable()) {
+          if (e.keyCode == 67) {
+              // 'c' for copy.
+              try {
+                  var selectedXmlDom = Blockly.Xml.blockToDom(Blockly.selected);
+                  JSFuncs.saveToClipCache(Blockly.Xml.domToText(selectedXmlDom));
+              } catch (err) {
+              }
+          }
+      }
+      if (e.keyCode == 86) {
+          // 'v' for paste.
+          try {
+              var cacheXml = JSFuncs.loadFromClipCache();
+              var cacheDom = Blockly.Xml.textToDom('<xml>' + cacheXml + '</xml>');
+              Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, cacheDom);
+          } catch (err) {
+          }
+      }
   }
-  // Common code for delete and cut.
+      // Common code for delete and cut.
   // Don't delete in the flyout.
   if (deleteBlock && !Blockly.selected.workspace.isFlyout) {
     Blockly.Events.setGroup(true);
