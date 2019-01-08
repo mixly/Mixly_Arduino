@@ -1,11 +1,30 @@
 'use strict';
 goog.provide('Blockly.Arduino.pins');
 goog.require('Blockly.Arduino');
-
 Blockly.Arduino.pins_digital = function() {
   var code = this.getFieldValue('PIN');
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+Blockly.Arduino.pins_button=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_digital_pin=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_analog_pin=Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_analog=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_pwm_pin=Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_pwm=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_dac_pin = Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_dac = Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_touch_pin = Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_touch = Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_interrupt=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_serial=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_builtinimg=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_imglist=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_playlist=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_axis=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_exlcdh = Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_exlcdv = Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_brightness=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_tone_notes = Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_radio_power = Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_radio_datarate = Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_one_more = Blockly.Arduino.pins_digital;

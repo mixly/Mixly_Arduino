@@ -102,7 +102,14 @@ Blockly.Blocks['pins_touch'] = {
     this.setOutput(true);
   }
 };
-
+Blockly.Blocks['pins_interrupt'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldDropdown(profile.default.digital_pin), 'PIN');
+        this.setOutput(true, Number);
+    }
+};
 Blockly.Blocks['pins_serial'] = {
     init: function() {
         this.setColour(Blockly.Blocks.pins.HUE);

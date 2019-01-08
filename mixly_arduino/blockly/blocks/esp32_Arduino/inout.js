@@ -82,18 +82,22 @@ Blockly.Blocks.inout_digital_read2 = {
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ);
   }
 };
-Blockly.Blocks.inout_touch_read = {
-  init: function() {
+
+Blockly.Blocks.inout_pin_pressed = {
+  init: function(){
     this.setColour(20);
-    this.appendValueInput("PIN", Number)
-    .appendField(Blockly.MIXLY_DIGITALREAD_PIN)
-    .setCheck(Number);
-    this.setInputsInline(true);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET)
+    .appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR)
+    .appendField(new Blockly.FieldDropdown(profile.default.touch_pin), "PIN")
+    .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
     this.setOutput(true, [Boolean,Number]);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_ESP32_INOUT_PIN_PRESSED_TOOLTIP);
+
+
   }
 };
-
 Blockly.Blocks.inout_analog_write = {
   init: function() {
     this.setColour(20);

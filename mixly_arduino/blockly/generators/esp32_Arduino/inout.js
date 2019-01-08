@@ -48,6 +48,11 @@ Blockly.Arduino.inout_digital_read = function () {
     var code = 'digitalRead(' + dropdown_pin + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+Blockly.Arduino.inout_pin_pressed = function () {
+    var dropdown_pin = this.getFieldValue('PIN');
+    var code = 'touchRead(' + dropdown_pin + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
 
 Blockly.Arduino.inout_digital_read2 = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
