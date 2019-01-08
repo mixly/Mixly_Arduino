@@ -1,4 +1,4 @@
-﻿﻿<html manifest=node.manifest>
+﻿<html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
   <title>Mixly mircrobit</title>
@@ -22,6 +22,7 @@
   <!---profiles-->
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="js/lib/bootstrap/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/conf/common.js"></script>
   <script type="text/javascript" src="microbit[py]/myblock.js"></script>
   <script type="text/javascript" src="../../blocks/python/variables.js"></script>
   <script type="text/javascript" src="../../generators/python/variables.js"></script>
@@ -95,7 +96,6 @@
   <script src="./js/python_to_blockly.js" type="application/javascript"></script>
   <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
   <script src="js/skulpt/dist/skulpt-stdlib.js" type="application/javascript"></script>
-  <script src="js/skulpt/engine.js" type="application/javascript"></script>
   <script src="../../sims/microbit_python/simulator.js" type="application/javascript"></script>
   <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/bootstrap.min.css"/>
   <link rel="stylesheet" type="text/css" href="color_microbit_python.css" />
@@ -285,7 +285,6 @@ function init() {
   $('#aceTheme').val(window.conf.lastEditorTheme);
   var py2block_converter = new PythonToBlocks();
   py2block_editor = new Py2blockEditor(py2block_converter, editor);
-  pyengine = new PyEngine({}, {});
   Sk.python3 = true;
   var container = document.getElementById('content_area');
   var onresize = function(e) {
@@ -346,6 +345,18 @@ function init() {
         load_by_url(dest);
       }
     }
+    function mb_run () {
+        $('#simModal').modal('toggle');
+        var code = '';
+        if(document.getElementById('tab_arduino').className == 'tabon'){
+            code = editor.getValue();
+        }else{
+            code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+        }
+        var executionPromise = Sk.misceval.asyncToPromise(function() {
+            return Sk.importMainWithBody("<stdin>", false, code, true);
+        });
+    }
   </script>
   <style type="text/css">
       span#span_blocks, span#span_arduino, select#languageMenu {
@@ -376,7 +387,7 @@ function init() {
              <span id="copyright" style=" font-family: 'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;color:#999;">copyright</span>
             </td>
             <td class="tabmin">
-                <button onclick="$('#simModal').modal('toggle');">Run</button>
+                <button id='mb_run' onclick="mb_run()">Run</button>
             </td>
             <td class="tabmode">
               <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_MicroPython[NRF51822_microbit].html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light';font-size:12px;">高级视图</a>

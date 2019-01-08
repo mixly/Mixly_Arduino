@@ -5,7 +5,8 @@ var $builtinmodule = function (name) {
     };
 
     mod.panic = new Sk.builtin.func(function () {
-        console.log('panic' + mod.data.temperature);
+        debugger;
+        $('#mb_run').css('background', 'red');
         return Sk.builtin.int_(mod.data.temperature);
     });
 
