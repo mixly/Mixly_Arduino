@@ -1,5 +1,6 @@
 var mbData = {
     'temperature': 23,
+    'distance': 0,
     'compass': {
        'heading': 0,
        'strength': 0,

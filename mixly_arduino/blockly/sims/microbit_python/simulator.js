@@ -53,6 +53,15 @@ var ui = {
                 $("#curr_" + sliderId).text(slideEvt.value);
             });
         }
+
+        // 超声波测距界面
+        var ts = $("#HCSR04_slider").slider();
+        ts.slider('setValue', mbData.distance);
+        $("#curr_HCSR04").text(mbData.distance);
+        $("#HCSR04_slider").on("slide", function(slideEvt) {
+            $("#curr_HCSR04").text(slideEvt.value);
+        });
+
     },
     reset: function () {
 
@@ -74,19 +83,21 @@ var ui = {
             }
         });
     },
-    bindCompassEvent: function (sliderId, data, key) {
+    bindSliderEvent: function (sliderId, data, key) {
         var id = "#" + sliderId + "_slider";
         $(id).on('slide', function (slideEvt) {
             data[key] = slideEvt.value;
             $("#curr_" + sliderId).text(slideEvt.value);
         })
     },
+    bindCompassEvent: function (sliderId, data, key) {
+        ui.bindSliderEvent(sliderId, data, key);
+    },
     bindTemperatureEvent: function (sliderId, data, key) {
-        var id = "#" + sliderId;
-        $(id).on('slide', function (slideEvt) {
-            data[key] = slideEvt.value;
-            $('curr_' + sliderId).text(slideEvt.value);
-        })
+        ui.bindSliderEvent(sliderId, data, key);
+    },
+    bindHCSR04Event: function (sliderId, data, key) {
+        ui.bindSliderEvent(sliderId, data, key);
     },
     setLED: function (x, y, brightness) {
 		$('.mb_led.mb_led_row_' + y + '.mb_led_col_' + x).removeClass('mb_led_brightness_1 mb_led_brightness_2 mb_led_brightness_3 mb_led_brightness_4 mb_led_brightness_5 mb_led_brightness_6 mb_led_brightness_7 mb_led_brightness_8 mb_led_brightness_9').addClass('mb_led_brightness_' + brightness);

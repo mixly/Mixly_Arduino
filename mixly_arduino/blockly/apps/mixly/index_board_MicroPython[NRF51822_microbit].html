@@ -41,7 +41,6 @@
   <script src="../../blocks/microbit_python/serial.js"></script>
   <script src="../../blocks/microbit_python/communicate.js"></script>
   <script src="../../blocks/microbit_python/sensor.js"></script>
-  <script src="../../blocks/microbit_python/storage.js"></script>
   <script src="../../blocks/microbit_python/actuator.js"></script>
   <script src="../../blocks/microbit_python/display.js"></script>
   <script src="../../blocks/python/procedures.js"></script>
@@ -61,7 +60,6 @@
   <script src="../../generators/microbit_python/serial.js"></script>
   <script src="../../generators/microbit_python/communicate.js"></script>
   <script src="../../generators/microbit_python/sensor.js"></script>
-  <script src="../../generators/microbit_python/storage.js"></script>
   <script src="../../generators/microbit_python/actuator.js"></script>
   <script src="../../generators/microbit_python/display.js"></script>
   <script src="../../generators/python/procedures.js"></script>
@@ -89,7 +87,6 @@
   <script src="../../converters/python/dicts.js" type="application/javascript"></script>
   <script src="../../converters/microbit_python/serial.js" type="application/javascript"></script>
   <script src="../../converters/microbit_python/communicate.js" type="application/javascript"></script>
-  <script src="../../converters/microbit_python/storage.js" type="application/javascript"></script>
   <script src="../../converters/microbit_python/sensor.js" type="application/javascript"></script>
   <script src="../../converters/microbit_python/actuator.js" type="application/javascript"></script>
   <script src="../../converters/microbit_python/display.js" type="application/javascript"></script>
@@ -357,6 +354,10 @@ function init() {
         }else{
             code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
         }
+        // trick
+        if (code.indexOf('sonar=HCSR04()') != -1) {
+            code = code.replace('sonar=HCSR04()', 'sonar=FakeHCSR04()')
+        }
         var executionPromise = Sk.misceval.asyncToPromise(function() {
             return Sk.importMainWithBody("<stdin>", false, code, true);
         });
@@ -497,8 +498,8 @@ function init() {
                   <option value="button" selected="selected">按钮</option>
                   <option value="temperature">温度</option>
                   <option value="compass">指南针</option>
+                  <option value="HCSR04">超声波测距</option>
                   <option>通讯</option>
-                  <option>传感器</option>
                   <option>舵机</option>
                 </select>
               </div>
@@ -518,7 +519,7 @@ function init() {
             <div id="monitor_temperature_div" class="row monitor-div">
               <label class="col-sm-2 control-label text-primary">模拟温度</label>
               <div class="col-sm-3" style="padding-top: 7px">
-                <input id="temperature_slider" data-slider-id='ex1Slider' type="text" data-provide="slider" data-slider-min="0" data-slider-max="100" data-slider-step="1"/>
+                <input id="temperature_slider" type="text" data-provide="slider" data-slider-min="0" data-slider-max="100" data-slider-step="1"/>
               </div>
               <label class="col-sm-2 control-label" id="curr_temperature"></label>
             </div>
@@ -527,31 +528,38 @@ function init() {
                 <label class="col-sm-2 control-label text-primary">模拟指南针</label>
                 <label class="col-sm-2 control-label">heading</label>
                 <div class="col-sm-3" style="padding-top: 7px">
-                  <input id="compass_heading_slider" data-slider-id='ex1Slider' type="text" data-provide="slider" data-slider-min="0" data-slider-max="360" data-slider-step="1"/>
+                  <input id="compass_heading_slider" type="text" data-provide="slider" data-slider-min="0" data-slider-max="360" data-slider-step="1"/>
                 </div>
                 <label class="col-sm-2 control-label" id="curr_compass_heading"></label>
               </div>
               <div class="row">
                 <label class="col-sm-2 col-sm-offset-2 control-label">x</label>
                 <div class="col-sm-3" style="padding-top: 7px">
-                  <input id="compass_x_slider" data-slider-id='ex1Slider' type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
+                  <input id="compass_x_slider" type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
                 </div>
                 <label class="col-sm-2 control-label" id="curr_compass_x"></label>
               </div>
               <div class="row">
                 <label class="col-sm-2 col-sm-offset-2 control-label">y</label>
                 <div class="col-sm-3" style="padding-top: 7px">
-                  <input id="compass_y_slider" data-slider-id='ex1Slider' type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
+                  <input id="compass_y_slider" type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
                 </div>
                 <label class="col-sm-2 control-label" id="curr_compass_y"></label>
               </div>
               <div class="row">
                 <label class="col-sm-2 col-sm-offset-2 control-label">z</label>
                 <div class="col-sm-3" style="padding-top: 7px">
-                  <input id="compass_z_slider" data-slider-id='ex1Slider' type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
+                  <input id="compass_z_slider" type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
                 </div>
                 <label class="col-sm-2 control-label" id="curr_compass_z"></label>
               </div>
+            </div>
+            <div id="monitor_HCSR04_div" class="row monitor-div">
+              <label class="col-sm-2 control-label text-primary">模拟测距</label>
+              <div class="col-sm-3" style="padding-top: 7px">
+                <input id="HCSR04_slider" type="text" data-provide="slider" data-slider-min="0" data-slider-max="1000" data-slider-step="1"/>
+              </div>
+              <label class="col-sm-2 control-label" id="curr_HCSR04"></label>
             </div>
           </div>
         </div>
