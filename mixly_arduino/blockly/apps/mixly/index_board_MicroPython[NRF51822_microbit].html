@@ -22,6 +22,7 @@
   <!---profiles-->
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="js/lib/bootstrap/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/lib/bootstrap/bootstrap-slider.min.js"></script>
   <script type="text/javascript" src="js/conf/common.js"></script>
   <script type="text/javascript" src="microbit[py]/myblock.js"></script>
   <script type="text/javascript" src="../../blocks/python/variables.js"></script>
@@ -98,7 +99,9 @@
   <script src="js/skulpt/dist/skulpt-stdlib.js" type="application/javascript"></script>
   <script src="../../sims/microbit_python/simulator.js" type="application/javascript"></script>
   <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/bootstrap-slider.min.css"/>
   <link rel="stylesheet" type="text/css" href="color_microbit_python.css" />
+
   <script>
     var sidecodeDisplay=false;
     /**
@@ -486,17 +489,36 @@ function init() {
             <div class="row">
               <div id="microbit"><div id="mb_btn_A" class="mb_btn"></div><div id="mb_btn_B" class="mb_btn"></div><div class="mb_led mb_led_row_0 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_4 mb_led_brightness_"></div></div>
             </div>
-            <div class="row" style="margin: 10px;">
+            <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
               <label class="col-sm-2 control-label">模拟外部操作</label>
               <div class="col-sm-3">
-                <select class="form-control">
-                  <option selected="selected">输入/输出</option>
-                  <option>控制</option>
+                <select class="form-control" id="monitor_select">
+                  <option value="button" selected="selected">按钮</option>
+                  <option value="temperature">温度</option>
                   <option>通讯</option>
                   <option>传感器</option>
                   <option>舵机</option>
                 </select>
               </div>
+            </div>
+            <div id="monitor_button_div" class="row monitor-div">
+              <label class="col-sm-2 control-label">模拟按下按钮</label>
+              <div class="col-sm-2">
+                <button id="btn_A" class="btn-default form-control">button_A</button>
+              </div>
+              <div class="col-sm-2">
+                <button id="btn_B" class="btn-default form-control">button_B</button>
+              </div>
+              <div class="col-sm-2">
+                <button id="btn_both" class="btn-default form-control">A + B</button>
+              </div>
+            </div>
+            <div id="monitor_temperature_div" class="row monitor-div">
+              <label class="col-sm-2 control-label">模拟当前温度</label>
+              <div class="col-sm-3" style="padding-top: 7px">
+                <input id="temperature_slider" data-slider-id='ex1Slider' type="text" data-provide="slider" data-slider-min="0" data-slider-max="100" data-slider-step="1"/>
+              </div>
+              <label class="col-sm-2 control-label" id="curr_temperature"></label>
             </div>
           </div>
         </div>

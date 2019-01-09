@@ -466,3 +466,11 @@ mb_led_brightness_0 {	background-color: #000; }
 	transition: all 0.1s;
 	position: absolute;
 }
+
+.blocklyWsDragSurface {
+	overflow: visible !important;
+}
+
+.monitor-div {
+	display: none;
+}
