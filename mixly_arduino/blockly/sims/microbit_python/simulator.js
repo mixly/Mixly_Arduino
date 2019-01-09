@@ -5,7 +5,11 @@ Sk.externalLibraries = {
     // added as a farewell message to a school direct student
     microbit: {
         path: base_url + 'microbit/__init__.js',
-        dependencies: [base_url + 'microbit/display.js']
+        dependencies: [
+            base_url + 'microbit/display.js',
+            base_url + 'microbit/accelerometer.js',
+            base_url + 'microbit/compass.js',
+        ]
     },
     foo: {
         path: conf.url + '/blockly/sims/microbit_python/foo/__init__.js'

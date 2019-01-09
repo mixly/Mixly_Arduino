@@ -372,12 +372,12 @@ var $builtinmodule = function (name) {
 	mod.display = new Sk.builtin.module();
 	mod.display.$d = new display("microbit.display");
 
+    mod.compass = new Sk.builtin.module();
+    mod.compass.$d = new compass("microbit.compass");
 	/*
 	mod.accelerometer = new Sk.builtin.module();
 	mod.accelerometer.$d = new accelerometer("microbit.accelerometer");
 
-	mod.compass = new Sk.builtin.module();
-	mod.compass.$d = new compass("microbit.compass");
 
 	mod.i2c = new Sk.builtin.module();
 	mod.i2c.$d = new i2c("microbit.i2c");
