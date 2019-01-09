@@ -6,7 +6,6 @@ var compass = function(name) {
         y: mbData.compass.y,
         z: mbData.compass.z,
         heading: mbData.compass.heading,
-        strength: mbData.compass.strength
     };
 
 	mod.calibrate = new Sk.builtin.func(function() {
@@ -38,7 +37,8 @@ var compass = function(name) {
 	});
 
 	mod.get_field_strength = new Sk.builtin.func(function() {
-		return new Sk.builtin.int_(mod.data.strength);
+		var strength = parseInt(math.sqrt(mod.data.x ** 2 + mod.data.y ** 2 + mod.data.z ** 2));
+		return new Sk.builtin.int_(strength);
 	});
 
 	ui.bindCompassEvent('compass_heading', mod.data, 'heading');

@@ -30,6 +30,7 @@ var $builtinmodule = function (name) {
 	mod.temperature = new Sk.builtin.func(function() {
 		return Sk.builtin.int_(mod.data.temperature);
 	});
+	ui.bindTemperatureEvent('temperature_slider', mod.data, 'temperature');
 
 	var ioPinDigital = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
 		$loc.__init__ = new Sk.builtin.func(function(self) {
