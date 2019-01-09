@@ -5,7 +5,7 @@ goog.provide('Blockly.Blocks.math');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Blocks.math.HUE = 230;
+Blockly.Msg["MATH_HUE"] = 230;
 
 Blockly.FieldTextInput.math_number_validator = function(text) {
   //return window.isNaN(text) ? null : String(text);
@@ -18,7 +18,7 @@ Blockly.Blocks['math_number'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.Msg["MATH_HUE"]);
     this.appendDummyInput()
         .appendField(new Blockly.FieldTextInput('0',
         Blockly.FieldTextInput.math_number_validator), 'NUM');
@@ -41,7 +41,7 @@ Blockly.Blocks['math_arithmetic'] = {
 		 [Blockly.Msg.MATH_QUYU_SYMBOL, 'QUYU'],
          [Blockly.Msg.MATH_POWER_SYMBOL, 'POWER']];
     //this.setHelpUrl(Blockly.Msg.MATH_ARITHMETIC_HELPURL);
-    this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.Msg["MATH_HUE"]);
     this.setOutput(true, Number);
     this.appendValueInput('A')
         .setCheck(Number);
@@ -74,7 +74,7 @@ Blockly.Blocks['math_bit'] = {
          ['^', '^'],
         ['>>', '>>'],
         ['<<', '<<']];
-    this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.Msg["MATH_HUE"]);
     this.setOutput(true, Number);
     this.appendValueInput('A')
         .setCheck(Number);
@@ -108,7 +108,7 @@ Blockly.Blocks['math_trig'] = {
          ['~', '~'],
         ];
     //this.setHelpUrl(Blockly.Msg.MATH_TRIG_HELPURL);
-    this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.Msg["MATH_HUE"]);
     this.setOutput(true, Number);
     this.appendValueInput('NUM')
         .setCheck(Number)
@@ -140,7 +140,7 @@ Blockly.Blocks['math_to_int']= {
 		 [Blockly.Msg.MATH_ABS, 'abs'],
          [Blockly.Msg.MATH_SQ, 'sq'],
          [Blockly.Msg.MATH_SQRT, 'sqrt']];
-    this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.Msg["MATH_HUE"]);
     this.appendValueInput('A')
         .setCheck(Number)
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
@@ -168,7 +168,7 @@ Blockly.Blocks['math_max_min']= {
         [[Blockly.MIXLY_MAX, 'max'],
 		 [Blockly.MIXLY_MIN, 'min'],
         ];
-    this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.Msg["MATH_HUE"]);
     this.appendValueInput('A')
         .setCheck(Number)
 		.setAlign(Blockly.ALIGN_RIGHT)
@@ -197,7 +197,7 @@ Blockly.Blocks['math_max_min']= {
 
 Blockly.Blocks['math_random_seed'] = {
     init: function () {
-        this.setColour(Blockly.Blocks.math.HUE);
+        this.setColour(Blockly.Msg["MATH_HUE"]);
         // this.appendDummyInput()
         //     .appendField(Blockly.LANG_MATH_RANDOM_SEED);
         this.appendValueInput('NUM')
@@ -215,7 +215,7 @@ Blockly.Blocks['math_random_int'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.Msg["MATH_HUE"]);
     this.setOutput(true, Number);
     this.appendValueInput('FROM')
         .setCheck(Number)
@@ -235,7 +235,7 @@ Blockly.Blocks['math_constrain'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.Msg["MATH_HUE"]);
     this.setOutput(true, Number);
     this.appendValueInput('VALUE')
         .setCheck(Number)
@@ -253,7 +253,7 @@ Blockly.Blocks['math_constrain'] = {
 
 Blockly.Blocks.base_map = {
   init: function() {
-    this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.Msg["MATH_HUE"]);
     this.appendValueInput("NUM", Number)
         .appendField(Blockly.MIXLY_MAP)
         .setCheck(Number);

@@ -38,7 +38,7 @@
   <script type="text/javascript" src="../../generators/esp32_Arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/actuator.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32_Arduino/pins.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32/pins.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/inout.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/control.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/math.js"></script>
@@ -75,11 +75,11 @@
               <span id="copyright" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
             </td>
             <td class="tabmode">
-              <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index.html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</a>
+              <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_ESP32_Arduino.html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</a>
             </td>
             <script type="text/javascript">
               var viewMode2 = document.getElementById('viewMode2');
-              viewMode2.href = 'index.html?lang='+Code.LANG;
+              viewMode2.href = 'index_advance_board_ESP32_Arduino.html?lang='+Code.LANG;
             </script>
             <td class="tabmin">
               <input name="undo" type="image" title="undo(ctrl+z)" src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
@@ -177,10 +177,11 @@
       </value>
     </block>
     <block type="inout_pin_pressed">
-      <value name="PIN">
-        <shadow type="pins_touch"></shadow>
-      </value>
-    </block>
+        <value name="pin">
+          <shadow type="pins_touch">
+          </shadow>
+        </value>
+      </block>
     <block type="inout_pwm_analog_write_set_freq">
       <value name="PIN">
         <shadow type="pins_pwm"></shadow>

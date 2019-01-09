@@ -4,19 +4,20 @@ goog.provide('Blockly.Blocks.base');
 
 goog.require('Blockly.Blocks');
 
+Blockly.Blocks.base.HUE = 20//'#ae3838';//40;
 Blockly.Blocks['inout_highlow'] = {
  init: function() {
-  this.setColour(20);
+    this.setColour(Blockly.Blocks.base.HUE);
   this.appendDummyInput("")
   .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_HIGH, "HIGH"], [Blockly.MIXLY_LOW, "LOW"]]), 'BOOL')
   this.setOutput(true, Boolean);
-  this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW);
+    this.setTooltip(Blockly.MIXLY_ESP32_INOUT_HIGHLOW_TOOLTIP);
 }
 };
 
 Blockly.Blocks['inout_pinMode'] = {
   init: function() {
-    this.setColour(20);
+    this.setColour(Blockly.Blocks.base.HUE);
     this.appendValueInput("PIN", Number)
     .appendField(Blockly.MIXLY_PINMODE)
     .setCheck(Number);
@@ -30,19 +31,19 @@ Blockly.Blocks['inout_pinMode'] = {
   }
 };
 
-Blockly.Blocks.inout_digital_write = {
-  init: function() {
-    this.setColour(20);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_DIGITALWRITE_PIN)
-    .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
-    .appendField(Blockly.MIXLY_STAT)
-    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_HIGH, "HIGH"], [Blockly.MIXLY_LOW, "LOW"]]), "STAT");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip(Blockly.LANG_INOUT_DIGITAL_WRITE_TOOLTIP);
-  }
-};
+// Blockly.Blocks.inout_digital_write = {
+//   init: function() {
+//     this.setColour(20);
+//     this.appendDummyInput("")
+//     .appendField(Blockly.MIXLY_DIGITALWRITE_PIN)
+//     .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+//     .appendField(Blockly.MIXLY_STAT)
+//     .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_HIGH, "HIGH"], [Blockly.MIXLY_LOW, "LOW"]]), "STAT");
+//     this.setPreviousStatement(true, null);
+//     this.setNextStatement(true, null);
+//     this.setTooltip(Blockly.LANG_INOUT_DIGITAL_WRITE_TOOLTIP);
+//   }
+// };
 
 Blockly.Blocks.inout_digital_write2 = {
   init: function() {
@@ -60,16 +61,16 @@ Blockly.Blocks.inout_digital_write2 = {
   }
 };
 
-Blockly.Blocks.inout_digital_read = {
-  init: function() {
-    this.setColour(20);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_DIGITALREAD_PIN)
-    .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN");
-    this.setOutput(true, [Boolean,Number]);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ);
-  }
-};
+// Blockly.Blocks.inout_digital_read = {
+//   init: function() {
+//     this.setColour(20);
+//     this.appendDummyInput("")
+//     .appendField(Blockly.MIXLY_DIGITALREAD_PIN)
+//     .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN");
+//     this.setOutput(true, [Boolean,Number]);
+//     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ);
+//   }
+// };
 
 Blockly.Blocks.inout_digital_read2 = {
   init: function() {
@@ -83,20 +84,20 @@ Blockly.Blocks.inout_digital_read2 = {
   }
 };
 
-Blockly.Blocks.inout_pin_pressed = {
-  init: function(){
-    this.setColour(20);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET)
-    .appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR)
-    .appendField(new Blockly.FieldDropdown(profile.default.touch_pin), "PIN")
-    .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
-    this.setOutput(true, [Boolean,Number]);
-    this.setInputsInline(true);
-    this.setTooltip(Blockly.MIXLY_ESP32_INOUT_PIN_PRESSED_TOOLTIP);
-
-
-  }
+Blockly.Blocks['inout_pin_pressed'] = {
+    init: function(){
+        this.setColour(20);
+        this.appendValueInput('pin')
+            .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET)
+            .appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR);
+        // this.appendDummyInput()
+        //     .appendField(Blockly.MIXLY_IS_TOUCHED);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
+        this.setOutput(true, Number);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_INOUT_PIN_PRESSED_TOOLTIP);
+    }
 };
 Blockly.Blocks.inout_analog_write = {
   init: function() {
