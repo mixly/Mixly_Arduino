@@ -18,9 +18,6 @@ Sk.externalLibraries = {
 
 
 var ui = {
-    data: {
-        'temperature': 23
-    },
     init: function () {
         // 初始化模拟外部操作界面
         var val = $('#monitor_select').children('option:selected').val();
@@ -38,11 +35,24 @@ var ui = {
 
         // 温度界面
         var ts = $("#temperature_slider").slider();
-        ts.slider('setValue', ui.data.temperature);
-        $("#curr_temperature").text(ui.data.temperature);
+        ts.slider('setValue', mbData.temperature);
+        $("#curr_temperature").text(mbData.temperature);
         $("#temperature_slider").on("slide", function(slideEvt) {
             $("#curr_temperature").text(slideEvt.value);
         });
+
+        // 指南针界面
+        var compass_el_arr = ['compass_heading', 'compass_x', 'compass_y', 'compass_z'];
+        for (var i = 0; i < compass_el_arr.length; i ++) {
+            var key = compass_el_arr[i].split('_')[1];
+            var sdr = $("#" + compass_el_arr[i] + "_slider").slider();
+            sdr.slider('setValue', mbData.compass[key]);
+            $("#curr_" + compass_el_arr[i]).text(mbData.compass[key]);
+            $("#" + compass_el_arr[i] + "_slider").on("slide", function(slideEvt) {
+                var sliderId = slideEvt.currentTarget.getAttribute('id').replace('_slider', '');
+                $("#curr_" + sliderId).text(slideEvt.value);
+            });
+        }
     },
     reset: function () {
 
@@ -63,6 +73,13 @@ var ui = {
                 }
             }
         });
+    },
+    bindCompassEvent: function (sliderId, data, key) {
+        var id = "#" + sliderId + "_slider";
+        $(id).on('slide', function (slideEvt) {
+            data[key] = slideEvt.value;
+            $("#curr_" + sliderId).text(slideEvt.value);
+        })
     },
     setLED: function (x, y, brightness) {
 		$('.mb_led.mb_led_row_' + y + '.mb_led_col_' + x).removeClass('mb_led_brightness_1 mb_led_brightness_2 mb_led_brightness_3 mb_led_brightness_4 mb_led_brightness_5 mb_led_brightness_6 mb_led_brightness_7 mb_led_brightness_8 mb_led_brightness_9').addClass('mb_led_brightness_' + brightness);

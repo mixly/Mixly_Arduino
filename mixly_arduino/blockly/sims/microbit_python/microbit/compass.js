@@ -1,12 +1,13 @@
 var compass = function(name) {
 	var mod = {};
-	mod.data = {calibrated: false,
-				x: 1,
-				y: 0,
-				z: 0,
-				heading: 0,
-				strength: 0
-				};
+	mod.data = {
+		calibrated: mbData.compass.calibrated,
+        x: mbData.compass.x,
+        y: mbData.compass.y,
+        z: mbData.compass.z,
+        heading: mbData.compass.heading,
+        strength: mbData.compass.strength
+    };
 
 	mod.calibrate = new Sk.builtin.func(function() {
 		mod.data.calibrated = true;
@@ -40,5 +41,9 @@ var compass = function(name) {
 		return new Sk.builtin.int_(mod.data.strength);
 	});
 
+	ui.bindCompassEvent('compass_heading', mod.data, 'heading');
+    ui.bindCompassEvent('compass_x', mod.data, 'x');
+    ui.bindCompassEvent('compass_y', mod.data, 'y');
+    ui.bindCompassEvent('compass_z', mod.data, 'z');
 	return mod;
 };

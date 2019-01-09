@@ -1,6 +1,8 @@
 var $builtinmodule = function (name) {
     var mod = {
-    	data: {temperature: 23}
+    	data: {
+    		temperature: mbData['temperature'],
+    	}
 	};
 
 	mod.panic = new Sk.builtin.func(function(n) {
