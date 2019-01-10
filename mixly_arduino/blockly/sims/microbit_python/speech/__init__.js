@@ -74,7 +74,6 @@ var $builtinmodule = function (name) {
             _SetThroat(throat.v);
 
             var input = speech.v;
-            debugger;
             while (input.length < 256) input += " ";
             var ptr = allocate(intArrayFromString(input), 'i8', ALLOC_STACK);
 
