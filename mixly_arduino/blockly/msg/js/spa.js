@@ -895,6 +895,8 @@ Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_PRINTLN = 'Imprima los datos, seguidos de 
 Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_READ = 'Lea el siguiente byte recibido del servidor al que está conectado el cliente';
 Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = 'Enviar una solicitud GET a la dirección especificada';
 Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = 'Conversión de tipo obligatoria de constantes o variables.';
+//add max7219 clear tooltip 2019-1-10
+Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR = Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR;
 //translated by zyc in 2018-12-7
 Blockly.LUXE_LED='LED #';
 Blockly.LUXE_MOTOR='Motor #';
@@ -1111,7 +1113,8 @@ Blockly.MIXLY_MAX7219_DISPLAYCHAR_SHOWIMG='patrón de visualización';
 Blockly.MIXLY_MAX7219_LEDARRAY='matriz de patrones';
 Blockly.MIXLY_MAX7219_INIT='Inicializar matriz(MAX7219) de puntos LED ';
 Blockly.MIXLY_MAX7219_INIT2='Inicializar matriz(MAX7219) de puntos LED(IIC)';
-Blockly.MIXLY_MAX7219_IMG='Patrón de presuposición';
+Blockly.MIXLY_MAX7219_IMG='matriz(MAX7219) Patrón de presuposición';
+Blockly.MIXLY_MAX7219_CLEAR = 'matriz(MAX7219) clara';
 
 //TM1637
 Blockly.MIXLY_4DIGITDISPLAY_TM1637 = 'TM1637';

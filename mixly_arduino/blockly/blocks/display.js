@@ -568,3 +568,16 @@ Blockly.Blocks.Matrix_img = {
     this.setHelpUrl('');
   }
 };
+
+//显示-MAX7219-清屏
+Blockly.Blocks.MAX7219_Clear = {
+  init: function() {
+    this.appendDummyInput("").appendField(Blockly.MIXLY_MAX7219_CLEAR);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR);
+    this.setHelpUrl('');
+  }
+};

@@ -498,3 +498,9 @@ Blockly.Arduino.Matrix_img = function() {
   Blockly.Arduino.definitions_['matrix_img_' + dropdown_img_] = "byte " + 'matrix_img_' + dropdown_img_ + "[]=" + code;
   return ['matrix_img_' + dropdown_img_, Blockly.Arduino.ORDER_ATOMIC];
 };
+
+Blockly.Arduino.MAX7219_Clear = function() {
+  var code;
+  code += ' m.clear();\n';
+  return code;
+};
