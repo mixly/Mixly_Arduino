@@ -355,8 +355,12 @@ function init() {
             code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
         }
         // trick
-        if (code.indexOf('sonar=HCSR04()') != -1) {
-            code = code.replace('sonar=HCSR04()', 'sonar=FakeHCSR04()')
+        if (code.indexOf('class HCSR04:') != -1) {
+            code = code.replace(/class HCSR04[\s\S]*?self.distance_mm\(\) \/ 10\.0/,'');
+        }
+
+        if (code.indexOf('class Servo:') != -1) {
+            code = code.replace(/class Servo[\s\S]*?self\.write_us\(us\)/,'');
         }
 
         function builtinRead(x)

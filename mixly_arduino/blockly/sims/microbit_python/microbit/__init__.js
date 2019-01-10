@@ -373,14 +373,14 @@ var $builtinmodule = function (name) {
 	mod.Image.ALL_CLOCKS = Sk.builtin.list([mod.Image.CLOCK1, mod.Image.CLOCK2, mod.Image.CLOCK3, mod.Image.CLOCK4, mod.Image.CLOCK5, mod.Image.CLOCK6, mod.Image.CLOCK7, mod.Image.CLOCK8, mod.Image.CLOCK9, mod.Image.CLOCK10, mod.Image.CLOCK11, mod.Image.CLOCK12]);
 	mod.Image.ALL_ARROWS = Sk.builtin.list([mod.Image.ARROW_N, mod.Image.ARROW_NE, mod.Image.ARROW_E, mod.Image.ARROW_SE, mod.Image.ARROW_S, mod.Image.ARROW_SW, mod.Image.ARROW_W, mod.Image.ARROW_NW]);
 
-	mod.FakeHCSR04 = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
+	mod.HCSR04 = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
 		$loc.__init__ = new Sk.builtin.func(function(self) {
 		});
 
 		$loc.distance_cm = new Sk.builtin.func(function(self) {
             return Sk.builtin.float_(mod.data.distance);
 		});
-	}, "FakeHCSR04", []);
+	}, "HCSR04", []);
 	ui.bindHCSR04Event('HCSR04', mod.data, 'distance');
 
 	mod.display = new Sk.builtin.module();
