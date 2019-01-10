@@ -18,6 +18,9 @@ Sk.externalLibraries = {
         path: conf.url + '/blockly/sims/microbit_python/speech/__init__.js',
         dependencies: [conf.url + '/blockly/sims/microbit_python/speech/sam.js']
     },
+    neopixel: {
+        path: conf.url + '/blockly/sims/microbit_python/neopixel/__init__.js'
+    },
 }
 
 
@@ -66,6 +69,8 @@ var ui = {
             $("#curr_HCSR04").text(slideEvt.value);
         });
 
+        //neopixel
+        $('#neopixel').hide();
     },
     reset: function () {
 
@@ -111,6 +116,17 @@ var ui = {
     },
     updateMicrobitPins: function () {
         //not implement
+    },
+    updateNeopixel: function (leds) {
+        var el = $('#neopixel');
+        el.empty();
+        for (var i = 0; i < leds.length; i ++) {
+            var currLed = leds[i];
+            var color = currLed.join(',');
+            el.append('<img class="neopixel-led" style="background-color: rgb(' + color + ');">');
+        }
+        el.css('width', 35 * leds.length + 'px');
+        $('#neopixel').show();
     }
 }
 
