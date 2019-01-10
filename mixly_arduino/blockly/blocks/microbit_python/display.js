@@ -731,7 +731,6 @@ Blockly.Blocks['display_fill'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_MICROBIT_JS_ACCELERATION);
         var thisBlock = this;
         this.setTooltip(function() {
         var mode = thisBlock.getFieldValue('key');
