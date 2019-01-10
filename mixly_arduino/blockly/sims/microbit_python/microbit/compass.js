@@ -37,7 +37,7 @@ var compass = function(name) {
 	});
 
 	mod.get_field_strength = new Sk.builtin.func(function() {
-		var strength = parseInt(math.sqrt(mod.data.x ** 2 + mod.data.y ** 2 + mod.data.z ** 2));
+		var strength = parseInt(Math.sqrt(mod.data.x ** 2 + mod.data.y ** 2 + mod.data.z ** 2));
 		return new Sk.builtin.int_(strength);
 	});
 

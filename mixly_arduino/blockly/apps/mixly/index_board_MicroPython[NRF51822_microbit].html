@@ -358,6 +358,17 @@ function init() {
         if (code.indexOf('sonar=HCSR04()') != -1) {
             code = code.replace('sonar=HCSR04()', 'sonar=FakeHCSR04()')
         }
+
+        function builtinRead(x)
+        {
+            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+                throw "File not found: '" + x + "'";
+            return Sk.builtinFiles["files"][x];
+        }
+
+        Sk.configure({
+            read: builtinRead
+        });
         var executionPromise = Sk.misceval.asyncToPromise(function() {
             return Sk.importMainWithBody("<stdin>", false, code, true);
         });

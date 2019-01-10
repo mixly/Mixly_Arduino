@@ -11,8 +11,8 @@ Sk.externalLibraries = {
             base_url + 'microbit/compass.js',
         ]
     },
-    foo: {
-        path: conf.url + '/blockly/sims/microbit_python/foo/__init__.js'
+    music: {
+        path: conf.url + '/blockly/sims/microbit_python/music/__init__.js'
     },
 }
 

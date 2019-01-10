@@ -8,6 +8,12 @@ var mbData = {
        'y': 0,
        'z': 20,
        'calibrated': false
+    },
+    'music': {
+        'ticks': 4,
+        'bpm': 120,
+        'duration': 4,
+        'octave': 4
     }
 }
 

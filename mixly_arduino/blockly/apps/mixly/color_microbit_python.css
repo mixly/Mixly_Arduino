@@ -474,3 +474,7 @@ mb_led_brightness_0 {	background-color: #000; }
 .monitor-div {
 	display: none;
 }
+
+#mb_run {
+	font-size: 12px;
+}
