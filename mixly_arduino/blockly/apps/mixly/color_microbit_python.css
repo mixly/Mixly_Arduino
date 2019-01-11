@@ -496,5 +496,10 @@ mb_led_brightness_0 {	background-color: #000; }
 #servo {
     float: left;
 	width: 230px;
-	height:236px;
+	height: 236px;
+}
+
+.accelerometer-btn {
+	margin-top: 7px;
+	margin-right: 2px;
 }

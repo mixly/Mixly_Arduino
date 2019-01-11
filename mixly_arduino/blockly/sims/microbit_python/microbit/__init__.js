@@ -399,17 +399,18 @@ var $builtinmodule = function (name) {
 
     mod.compass = new Sk.builtin.module();
     mod.compass.$d = new compass("microbit.compass");
-	/*
+
 	mod.accelerometer = new Sk.builtin.module();
 	mod.accelerometer.$d = new accelerometer("microbit.accelerometer");
 
 
-	mod.i2c = new Sk.builtin.module();
-	mod.i2c.$d = new i2c("microbit.i2c");
+    /*
+    mod.i2c = new Sk.builtin.module();
+    mod.i2c.$d = new i2c("microbit.i2c");
 
-	mod.uart = new Sk.builtin.module();
-	mod.uart.$d = new uart("microbit.uart");
-	*/
+    mod.uart = new Sk.builtin.module();
+    mod.uart.$d = new uart("microbit.uart");
+    */
 
 	return mod;
 }
