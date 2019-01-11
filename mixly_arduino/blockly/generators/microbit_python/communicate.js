@@ -60,14 +60,14 @@ Blockly.Python.radio_receive_string = function () {
   Blockly.Python.definitions_['import_radio'] = 'import radio';
   var type = this.getFieldValue('type');
   var code = "radio."+type+"()";
-  return [code, Blockly.Python.ORDER_MEMBER];
+  return [code, Blockly.Python.ORDER_ATOMIC];
 }
 
 Blockly.Python['microbit_radio_receive'] = function(block) {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_radio'] = 'import radio';
   var code = 'radio.receive()';
-  return [code, Blockly.Python.ORDER_MEMBER];
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.i2c_init = function () {

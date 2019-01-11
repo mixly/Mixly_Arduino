@@ -64,12 +64,6 @@ Blockly.Blocks['microbit_music_play_built_in_easy'] = {
           "name" : "PIN"
         }, {
           "type" : "input_dummy"
-        }, {
-          "type" : "input_dummy"
-        }, {
-          "type" : "input_dummy"
-        }, {
-          "type" : "input_dummy"
         }
       ]
     });
