@@ -193,7 +193,7 @@ Blockly.Python.servo_move = function() {
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN',Blockly.Python.ORDER_ATOMIC);
     var value_degree = Blockly.Python.valueToCode(this, 'DEGREE', Blockly.Python.ORDER_ATOMIC);
 
-    var code = 'mixly_servo_write_angle('+dropdown_pin+', '+value_degree+')'
+    var code = 'mixly_servo_write_angle('+dropdown_pin+', '+value_degree+')\n';
     return code;
 };
 
