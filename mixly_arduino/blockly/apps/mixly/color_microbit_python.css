@@ -492,3 +492,9 @@ mb_led_brightness_0 {	background-color: #000; }
 	height: 32px;
 	margin-left: 2px;
 }
+
+#servo {
+    float: left;
+	width: 230px;
+	height:236px;
+}

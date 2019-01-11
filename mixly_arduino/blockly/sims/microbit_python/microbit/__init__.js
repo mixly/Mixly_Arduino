@@ -383,6 +383,17 @@ var $builtinmodule = function (name) {
 	}, "HCSR04", []);
 	ui.bindHCSR04Event('HCSR04', mod.data, 'distance');
 
+	mod.Servo = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
+		$loc.__init__ = new Sk.builtin.func(function(self, pin) {
+			self.pin = pin;
+		});
+
+		$loc.write_angle = new Sk.builtin.func(function(self, degree) {
+			debugger;
+		    ui.updateServo(degree.v);
+		});
+	}, "Servo", []);
+
 	mod.display = new Sk.builtin.module();
 	mod.display.$d = new display("microbit.display");
 

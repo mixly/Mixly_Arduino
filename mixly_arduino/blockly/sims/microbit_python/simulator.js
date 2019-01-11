@@ -71,6 +71,34 @@ var ui = {
 
         //neopixel
         $('#neopixel').hide();
+
+        // 舵机
+        ui.servoChart = echarts.init(document.getElementById('servo'));
+        ui.servoOption = {
+            tooltip : {
+                formatter: "{b} : {c}%"
+            },
+            toolbox: {
+                feature: {
+                }
+            },
+            series: [
+                {
+                    name: '舵机',
+                    type: 'gauge',
+                    detail: {
+                        formatter:'{value}',
+                        fontSize: '10px',
+                    },
+                    data: [{value: 150, name: '舵机'}],
+                    min: 0,
+                    max: 180,
+                    splitNumber: 4
+                }
+            ]
+        };
+        ui.servoChart.setOption(ui.servoOption, true);
+        $('#servo').hide();
     },
     reset: function () {
 
@@ -127,6 +155,11 @@ var ui = {
         }
         el.css('width', 35 * leds.length + 'px');
         $('#neopixel').show();
+    },
+    updateServo: function (degree) {
+        ui.servoOption.series[0].data[0].value = degree;
+        ui.servoChart.setOption(ui.servoOption, true);
+        $('#servo').show();
     }
 }
 
