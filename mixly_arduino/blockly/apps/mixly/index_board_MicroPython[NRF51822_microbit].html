@@ -108,15 +108,15 @@
      */
     function sidecodeClick(){
       if(sidecodeDisplay){
-    	document.getElementById('side_code_parent').style.display = 'none';
-    	document.getElementById('sidebar').className='right-top';
-    	document.getElementById('mid_td').style.display = 'none';
-    	sidecodeDisplay=false;
+        document.getElementById('side_code_parent').style.display = 'none';
+        document.getElementById('sidebar').className='right-top';
+        document.getElementById('mid_td').style.display = 'none';
+        sidecodeDisplay=false;
       }else{
-    	document.getElementById('side_code_parent').style.display = '';
-    	document.getElementById('sidebar').className='right-top2';
-    	document.getElementById('mid_td').style.display = '';
-    	sidecodeDisplay=true;
+        document.getElementById('side_code_parent').style.display = '';
+        document.getElementById('sidebar').className='right-top2';
+        document.getElementById('mid_td').style.display = '';
+        sidecodeDisplay=true;
       }
       Blockly.fireUiEvent(window, 'resize');
     }
@@ -172,27 +172,27 @@
       renderContent();
       if (clickedName == 'blocks') {
         Blockly.mainWorkspace.setVisible(true);
-    	//重新显示
-    	if(sidecodeDisplay){
-    	  document.getElementById('side_code_parent').style.display = '';
-    	  document.getElementById('mid_td').style.display = '';
-    	  document.getElementById('sidebar').className='right-top2';
+        //重新显示
+        if(sidecodeDisplay){
+          document.getElementById('side_code_parent').style.display = '';
+          document.getElementById('mid_td').style.display = '';
+          document.getElementById('sidebar').className='right-top2';
         }else{
-    	  document.getElementById('side_code_parent').style.display = 'none';
-    	  document.getElementById('mid_td').style.display = 'none';
-    	  document.getElementById('sidebar').className='right-top';
+          document.getElementById('side_code_parent').style.display = 'none';
+          document.getElementById('mid_td').style.display = 'none';
+          document.getElementById('sidebar').className='right-top';
         }
-    	//显示右侧悬浮按钮
-    	document.getElementById('sidebar').style.visibility = 'visible';
-    	py2block_editor.updateBlock();
+        //显示右侧悬浮按钮
+        document.getElementById('sidebar').style.visibility = 'visible';
+        py2block_editor.updateBlock();
       }
       if(clickedName=="arduino"){
         py2block_editor.fromCode = true;
        //隐藏右侧悬浮按钮
-    	document.getElementById('sidebar').style.visibility = 'hidden';
+        document.getElementById('sidebar').style.visibility = 'hidden';
        //点击代码将隐藏右侧代码，否则出现两个代码区域
-    	document.getElementById('side_code_parent').style.display = 'none';
-    	document.getElementById('mid_td').style.display = 'none';
+        document.getElementById('side_code_parent').style.display = 'none';
+        document.getElementById('mid_td').style.display = 'none';
       }
       Blockly.fireUiEvent(window, 'resize');
     }
@@ -220,7 +220,7 @@
       } else if (content.id == 'content_arduino') {
         //content.innerHTML = Blockly.Python.workspaceToCode(Blockly.mainWorkspace);
         var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-		var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+        var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
         editor.setValue(chinese_code, -1);
         //arduinoTextarea.value = Blockly.Python.workspaceToCode(Blockly.mainWorkspace);
         //arduinoTextarea.focus();
@@ -319,25 +319,25 @@ function init() {
                //length: 3,
                //colour: '#ccc',
                //snap: true},
-    	   media: '../../media/',
+           media: '../../media/',
            toolbox: toolbox,
-    	   zoom:
+           zoom:
                {controls: true,
                 wheel: true}
-    	   });
+           });
 
-    	//实时更新右侧对比代码
+        //实时更新右侧对比代码
         masterWorkspace.addChangeListener(rightCodeEvent);
-    	function rightCodeEvent(masterEvent) {
-    	  if (masterEvent.type == Blockly.Events.UI) {
-    		return;  // Don't update UI events.
-    	  }
-    	  //更新
-    	  var arduinoTextarea = document.getElementById('side_code');
-    	  var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-		  var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
-    	  editor_side_code.setValue(chinese_code, -1);
-    	}
+        function rightCodeEvent(masterEvent) {
+          if (masterEvent.type == Blockly.Events.UI) {
+            return;  // Don't update UI events.
+          }
+          //更新
+          var arduinoTextarea = document.getElementById('side_code');
+          var code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+          var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function (s) { return decodeURIComponent(s.replace(/_/g, '%')); });
+          editor_side_code.setValue(chinese_code, -1);
+        }
 
       auto_save_and_restore_blocks();
       //load from url parameter (single param)
@@ -372,9 +372,9 @@ function init() {
         }
 
         Sk.configure({
-        	output: function(lineText){
-				$('#print_area').append('<div class="row">' + lineText + '</div>');
-			},
+            output: function(lineText){
+                $('#print_area').append('<div class="row">' + lineText + '</div>');
+            },
             read: builtinRead
         });
         var executionPromise = Sk.misceval.asyncToPromise(function() {
@@ -592,45 +592,45 @@ function init() {
             </div>
             <div id="monitor_radio_div" class="row monitor-div">
               <div class="row">
-              	<label class="col-sm-2 control-label text-primary">模拟无线通讯</label>
-              	<div class="col-sm-4">
-	              	<label class="control-label" for='radio_channel'>频道</label>
-	                <input id="radio_channel" type="text" />
-	            </div>
-	             <div class="col-sm-6">
-	              	  <label class="control-label" for='radio_address'>地址(十六进制)</label>
-	                  <input id="radio_address" type="text" />
-	               </div>
-              </div>
-	          <div class="row">
-	              <div class="col-sm-offset-2 col-sm-4" style="padding-top: 7px">
-	              	<label class="control-label" for='radio_group'>组别</label>
-	                <input id="radio_group" type="text" />
-	              </div>
-	              <div class="col-sm-6" style="padding-top: 7px">
-	              	<label class="control-label" for='radio_address'>传输速率</label>
-	              	<select id="radio_data_rate">
-	                  <option value="RATE_1MBIT" selected="selected">RATE_1MBIT</option>
-	                  <option value="RATE_250KBIT">RATE_250KBIT</option>
-	                  <option value="RATE_2MBIT">RATE_2MBIT</option>
-	                </select>
-	              </div>
-	          </div>
-	          <div class="row">
-	              <div class="col-sm-offset-2 col-sm-10" style="padding-top: 7px">
-	              	<label class="control-label" for='radio_data'>消息</label>
-	                <input id="radio_data" type="text" />
-	              </div>
+                <label class="col-sm-2 control-label text-primary">模拟无线通讯</label>
+                <div class="col-sm-4">
+                    <label class="control-label" for='radio_channel'>频道</label>
+                    <input id="radio_channel" type="text" />
+                </div>
+                 <div class="col-sm-6">
+                      <label class="control-label" for='radio_address'>地址(十六进制)</label>
+                      <input id="radio_address" type="text" />
+                   </div>
               </div>
               <div class="row">
-	              <div class="col-sm-offset-5 col-sm-2" style="padding-top: 20px">
-                	<button id="send_radio_message" class="btn-default form-control">发送消息</button>
-              	  </div>
+                  <div class="col-sm-offset-2 col-sm-4" style="padding-top: 7px">
+                    <label class="control-label" for='radio_group'>组别</label>
+                    <input id="radio_group" type="text" />
+                  </div>
+                  <div class="col-sm-6" style="padding-top: 7px">
+                    <label class="control-label" for='radio_address'>传输速率</label>
+                    <select id="radio_data_rate">
+                      <option value="RATE_1MBIT" selected="selected">RATE_1MBIT</option>
+                      <option value="RATE_250KBIT">RATE_250KBIT</option>
+                      <option value="RATE_2MBIT">RATE_2MBIT</option>
+                    </select>
+                  </div>
               </div>
               <div class="row">
-	              <span id='radio_status'></span>
+                  <div class="col-sm-offset-2 col-sm-10" style="padding-top: 7px">
+                    <label class="control-label" for='radio_data'>消息</label>
+                    <input id="radio_data" type="text" />
+                  </div>
               </div>
-          	</div>
+              <div class="row">
+                  <div class="col-sm-offset-5 col-sm-2" style="padding-top: 20px">
+                    <button id="send_radio_message" class="btn-default form-control">发送消息</button>
+                  </div>
+              </div>
+              <div class="row">
+                  <span id='radio_status'></span>
+              </div>
+            </div>
             <div id="monitor_accelerometer_div" class="monitor-div">
               <div class="row">
                 <label class="col-sm-2 control-label text-primary">模拟加速度计</label>
@@ -1238,7 +1238,7 @@ function init() {
               </shadow>
             </value>
           </block>
-		  <block type="lists_clear">
+          <block type="lists_clear">
             <value name="VAR">
               <shadow type="variables_get">
                 <field name="VAR">mylist</field>

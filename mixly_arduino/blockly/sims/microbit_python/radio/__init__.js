@@ -44,6 +44,10 @@ var $builtinmodule = function (name) {
 
                 }
             }
+            else{
+                delete radio.fn_send;
+                delete radio.fn_receive;
+            }
 
         } else {
             $('#radio_status').html('Radio module not detected - did you include "import radio"?');
@@ -51,8 +55,8 @@ var $builtinmodule = function (name) {
     }
 
     mod.on = new Sk.builtin.func(function() {
-        check();
         mod.data.power = mod.data.power > 0 ? mod.data.power : 1;
+        check();
     });
 
     mod.off = new Sk.builtin.func(function() {
@@ -60,7 +64,6 @@ var $builtinmodule = function (name) {
     });
 
     var config = function(length, queue, channel, power, address, group, data_rate) {
-        debugger;
         if(length === undefined)
             length = Sk.builtin.int_(32);
         if(queue === undefined)
@@ -86,6 +89,9 @@ var $builtinmodule = function (name) {
         mod.data.buffer = [];
         delete mod.data.fn_send;
         delete mod.data.fn_receive;
+        if(mod.data.power > 0){
+            check();
+        }
     };
     config();
 
@@ -99,7 +105,7 @@ var $builtinmodule = function (name) {
     });
 
     mod.send_bytes = new Sk.builtin.func(function(message) {
-        if(!mod.data.power) {
+        if(mod.data.power < 1) {
             throw new Exception("Radio is powered off");
         }
         if(mod.data.fn_send) {
@@ -108,7 +114,7 @@ var $builtinmodule = function (name) {
     });
 
     mod.receive_bytes = new Sk.builtin.func(function() {
-        if(!mod.data.power) {
+        if(mod.data.power < 1) {
             throw new Sk.builtin.Exception("Radio is powered off");
         }
         if(mod.data.buffer.length > 0) {
@@ -141,7 +147,7 @@ var $builtinmodule = function (name) {
     });
 
     mod.receive = new Sk.builtin.func(function() {
-        if(!mod.data.power) {
+        if(mod.data.power < 1) {
             throw new Sk.builtin.Exception("Radio is powered off");
         }
         if(mod.data.buffer.length > 0) {
