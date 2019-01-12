@@ -590,47 +590,49 @@ function init() {
               </div>
               <label class="col-sm-2 control-label" id="curr_HCSR04"></label>
             </div>
-            <div id="monitor_radio_div" class="row monitor-div">
+            <div id="monitor_radio_div" class="monitor-div">
               <div class="row">
                 <label class="col-sm-2 control-label text-primary">模拟无线通讯</label>
-                <div class="col-sm-4">
-                    <label class="control-label" for='radio_channel'>频道</label>
-                    <input id="radio_channel" type="text" />
+                <label class="control-label col-sm-1" for='radio_channel'>频道</label>
+                <div class="col-sm-2">
+                  <input id="radio_channel" type="text" class="form-control"/>
                 </div>
-                 <div class="col-sm-6">
-                      <label class="control-label" for='radio_address'>地址(十六进制)</label>
-                      <input id="radio_address" type="text" />
-                   </div>
+                <label class="control-label col-sm-2" for='radio_address'>地址(16进制)</label>
+                <div class="col-sm-3">
+                    <input id="radio_address" type="text" class="form-control"/>
+                </div>
+              </div>
+              <div class="row" style="padding-top: 7px">
+                <label class="control-label col-sm-offset-2 col-sm-1" for='radio_group'>组别</label>
+                <div class="col-sm-2">
+                  <input id="radio_group" type="text" class="form-control"/>
+                </div>
+                <label class="control-label col-sm-2" for='radio_data_rate'>传输速率</label>
+                <div class="col-sm-3">
+                  <select id="radio_data_rate" class="form-control">
+                    <option value="1000" selected="selected">RATE_1MBIT</option>
+                    <option value="250">RATE_250KBIT</option>
+                    <option value="2000">RATE_2MBIT</option>
+                  </select>
+                </div>
+                <div class="col-sm-2">
+                  <button id="radio_update_config" class="btn-default form-control">更新配置</button>
+                </div>
+              </div>
+              <div class="row" style="padding-top: 17px">
+                <label class="control-label col-sm-offset-2 col-sm-1" for='radio_data'>消息</label>
+                <div class="col-sm-7">
+                  <input id="radio_data" type="text" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                  <button id="send_radio_message" class="btn-default form-control">发送消息</button>
+                </div>
               </div>
               <div class="row">
-                  <div class="col-sm-offset-2 col-sm-4" style="padding-top: 7px">
-                    <label class="control-label" for='radio_group'>组别</label>
-                    <input id="radio_group" type="text" />
-                  </div>
-                  <div class="col-sm-6" style="padding-top: 7px">
-                    <label class="control-label" for='radio_address'>传输速率</label>
-                    <select id="radio_data_rate">
-                      <option value="RATE_1MBIT" selected="selected">RATE_1MBIT</option>
-                      <option value="RATE_250KBIT">RATE_250KBIT</option>
-                      <option value="RATE_2MBIT">RATE_2MBIT</option>
-                    </select>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-sm-offset-2 col-sm-10" style="padding-top: 7px">
-                    <label class="control-label" for='radio_data'>消息</label>
-                    <input id="radio_data" type="text" />
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-sm-offset-5 col-sm-2" style="padding-top: 20px">
-                    <button id="send_radio_message" class="btn-default form-control">发送消息</button>
-                  </div>
-              </div>
-              <div class="row">
-                  <span id='radio_status'></span>
+                <span id='radio_status'></span>
               </div>
             </div>
+
             <div id="monitor_accelerometer_div" class="monitor-div">
               <div class="row">
                 <label class="col-sm-2 control-label text-primary">模拟加速度计</label>

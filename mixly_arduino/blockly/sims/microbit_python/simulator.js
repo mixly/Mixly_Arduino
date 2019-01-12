@@ -29,16 +29,6 @@ Sk.externalLibraries = {
 
 
 var ui = {
-    //模拟器radio初始化配置
-    client_radio_data: {
-        channel: mbData.radio.channel,
-        address:  mbData.radio.address,
-        group:  mbData.radio.group,
-        data_rate: mbData.radio.data_rate,
-        queue:  mbData.radio.queue,
-        length:  mbData.radio.length,
-        power: mbData.radio.power
-    },
     init: function () {
         // 初始化模拟外部操作界面
         var val = $('#monitor_select').children('option:selected').val();
@@ -83,9 +73,13 @@ var ui = {
             $("#curr_HCSR04").text(slideEvt.value);
         });
         // 无线通信界面
-       for (var each in ui.client_radio_data){
-            $('#radio_'+ each).val(ui.client_radio_data[each])
+       for (var each in mbData.radio){
+            $('#radio_'+ each).val(mbData.radio[each])
        }
+
+       $('#radio_update_config').off('click').on('click', function () {
+           ui.updateRadioStatus('Radio module not detected - did you include "import radio"?');
+       });
 
         //neopixel
         $('#neopixel').hide();
@@ -169,8 +163,13 @@ var ui = {
                 data['buffer'].push("\x00\x01\x00" + $('#'+ btnId + '_data').val());
         });
     },
-    bindRadioSendMessageEvent: function(){
-        ui.bindSendMessageEvent('radio', radio)
+    bindRadioSendMessageEvent: function(elementId, data){
+        ui.bindSendMessageEvent(elementId, data)
+    },
+    bindRadioUpdateConfigEvent: function (elementId, data) {
+        $('#' + elementId).off('click').on('click', function () {
+            ui.updatePeerRadioParam(data);
+        });
     },
     bindCompassEvent: function (sliderId, data, key) {
         ui.bindSliderEvent(sliderId, data, key);
@@ -225,6 +224,29 @@ var ui = {
         if (gesture != '') {
             $('#' + gesture.replace(' ', '')).css('background-color', '#5cb85c');
         }
+    },
+    updateRadioStatus: function (text) {
+        $('#radio_status').html(text);
+    },
+    updatePeerRadioParam: function (data) {
+        var feedback = '';
+        if($('#radio_channel').val() != data.channel) {
+            feedback = "Channel doesn't match: currently set to " + data.channel;
+            data.peer = false;
+        } else if($('#radio_group').val() != data.group) {
+            feedback = "Group doesn't match: currently set to " + data.group;
+            data.peer = false;
+        } else if($('#radio_address').val() != data.address) {
+            feedback = "Address doesn't match: currently set to " + data.address.toString(16);
+            data.peer = false;
+        } else if($('#radio_data_rate').val() != data.data_rate){
+            feedback = "Data rate doesn't match: currently set to " + data.data_rate;
+            data.peer = false;
+        } else {
+            data.peer = true;
+            feedback = "Tuned in to radio module";
+        }
+        ui.updateRadioStatus(feedback);
     }
 }
 

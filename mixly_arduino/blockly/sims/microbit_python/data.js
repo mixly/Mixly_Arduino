@@ -20,7 +20,7 @@ var mbData = {
         'channel': 7,
         'address': '0x75626974',
         'group': 0,
-        'data_rate':'RATE_1MBIT',
+        'data_rate': 1000,
         'queue': 3,
         'length': 32,
         'power':6
