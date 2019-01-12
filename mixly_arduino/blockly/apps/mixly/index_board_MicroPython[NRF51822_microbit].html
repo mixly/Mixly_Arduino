@@ -523,9 +523,10 @@ function init() {
                   <option value="temperature">温度</option>
                   <option value="compass">指南针</option>
                   <option value="HCSR04">超声波测距</option>
-                  <option value="radio">通讯</option>
                   <option>舵机</option>
                   <option value="accelerometer">加速度计</option>
+                  <option value="radio">无线通讯</option>
+                  <option value="uart">串口通讯</option>
                 </select>
               </div>
             </div>
@@ -670,9 +671,48 @@ function init() {
                 <button id="6g" class="btn-default col-sm-1 accelerometer-btn">6g</button>
                 <button id="8g" class="btn-default col-sm-1 accelerometer-btn">8g</button>
                 </div>
-              </div><!-- /.monitor-->
-              <div id='print_area'></div>
-            </div>
+              </div>
+              <div id="monitor_uart_div" class="row monitor-div">
+              <div class="row form-inline">
+                <label class="col-sm-2 control-label text-primary">模拟串口通讯</label>
+                <div class="col-sm-3 form-group">
+                    <label class="control-label" for='uart_baudrate'>波特率</label>
+                    <select id="uart_baudrate">
+                      <option value="115200" selected="selected">115200</option>
+                      <option value="57600">57600</option>
+                      <option value="38400">38400</option>
+                      <option value="38400">28800</option>
+                      <option value="38400">19200</option>
+                      <option value="38400">14400</option>
+                      <option value="38400">9600</option>
+                    </select>
+                </div>
+                <div class="col-sm-3 form-group">
+                      <label class="" for='uart_rx'>rx</label>
+                      <input class="form-control" id="uart_rx" type="text" />
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label class="" for='uart_tx'>tx</label>
+                    <input class="form-control" id="uart_tx" type="text" />
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-offset-2 col-sm-10" style="padding-top: 7px">
+                    <label class="control-label" for='radio_data'>消息</label>
+                    <textarea id="uart_data" type="text"></textarea>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-offset-5 col-sm-2" style="padding-top: 20px">
+                    <button id="send_radio_message" class="btn-default form-control">发送消息</button>
+                  </div>
+              </div>
+              <div class="row">
+                  <span id='radio_status'></span>
+              </div>
+            </div><!-- /.monitor-->
+            <div id='print_area'></div>
+        </div>
         </div><!-- /.modal-body -->
       </div><!-- /.modal-content -->
     </div><!-- /.modal -->

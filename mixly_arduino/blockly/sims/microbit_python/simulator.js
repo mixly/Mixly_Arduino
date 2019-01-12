@@ -16,7 +16,7 @@ Sk.externalLibraries = {
     },
     radio:{
         path: conf.url + '/blockly/sims/microbit_python/radio/__init__.js'
-    }
+    },
     speech: {
         path: conf.url + '/blockly/sims/microbit_python/speech/__init__.js',
         dependencies: [conf.url + '/blockly/sims/microbit_python/speech/sam.js']
