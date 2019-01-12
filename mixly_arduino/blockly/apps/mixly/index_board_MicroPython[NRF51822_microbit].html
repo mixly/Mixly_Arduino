@@ -23,6 +23,7 @@
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="js/lib/bootstrap/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/lib/bootstrap/bootstrap-slider.min.js"></script>
+  <script type="text/javascript" src="js/lib/echarts.min.js"></script>
   <script type="text/javascript" src="js/conf/common.js"></script>
   <script type="text/javascript" src="microbit[py]/myblock.js"></script>
   <script type="text/javascript" src="../../blocks/python/variables.js"></script>
@@ -355,8 +356,12 @@ function init() {
             code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
         }
         // trick
-        if (code.indexOf('sonar=HCSR04()') != -1) {
-            code = code.replace('sonar=HCSR04()', 'sonar=FakeHCSR04()')
+        if (code.indexOf('class HCSR04:') != -1) {
+            code = code.replace(/class HCSR04[\s\S]*?self.distance_mm\(\) \/ 10\.0/,'');
+        }
+
+        if (code.indexOf('class Servo:') != -1) {
+            code = code.replace(/class Servo[\s\S]*?self\.write_us\(us\)/,'');
         }
 
         function builtinRead(x)
@@ -503,7 +508,12 @@ function init() {
         <div class="modal-body" style="height: 500px;overflow-x:hidden;overflow-y:scroll;">
           <div class="form-horizontal col-sm-12">
             <div class="row">
-              <div id="microbit"><div id="mb_btn_A" class="mb_btn"></div><div id="mb_btn_B" class="mb_btn"></div><div class="mb_led mb_led_row_0 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_4 mb_led_brightness_"></div></div>
+              <div id="servo"></div>
+              <div id="microbit">
+                <div id="mb_btn_A" class="mb_btn"></div><div id="mb_btn_B" class="mb_btn"></div><div class="mb_led mb_led_row_0 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_4 mb_led_brightness_"></div>
+              </div>
+            </div>
+            <div class="row monitor-div" id="neopixel">
             </div>
             <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
               <label class="col-sm-2 control-label text-primary">模拟外部操作</label>
@@ -515,9 +525,11 @@ function init() {
                   <option value="HCSR04">超声波测距</option>
                   <option value="radio">通讯</option>
                   <option>舵机</option>
+                  <option value="accelerometer">加速度计</option>
                 </select>
               </div>
             </div>
+
             <div id="monitor_button_div" class="row monitor-div">
               <label class="col-sm-2 control-label text-primary">模拟按下按钮</label>
               <div class="col-sm-2">
@@ -530,6 +542,7 @@ function init() {
                 <button id="btn_both" class="btn-default form-control">A + B</button>
               </div>
             </div>
+
             <div id="monitor_temperature_div" class="row monitor-div">
               <label class="col-sm-2 control-label text-primary">模拟温度</label>
               <div class="col-sm-3" style="padding-top: 7px">
@@ -537,6 +550,7 @@ function init() {
               </div>
               <label class="col-sm-2 control-label" id="curr_temperature"></label>
             </div>
+
             <div id="monitor_compass_div" class="monitor-div">
               <div class="row">
                 <label class="col-sm-2 control-label text-primary">模拟指南针</label>
@@ -568,6 +582,7 @@ function init() {
                 <label class="col-sm-2 control-label" id="curr_compass_z"></label>
               </div>
             </div>
+
             <div id="monitor_HCSR04_div" class="row monitor-div">
               <label class="col-sm-2 control-label text-primary">模拟测距</label>
               <div class="col-sm-3" style="padding-top: 7px">
@@ -615,10 +630,50 @@ function init() {
               <div class="row">
 	              <span id='radio_status'></span>
               </div>
-          	</div><!-- /.monitor-->
-          	<div id='print_area'></div>
-      	  </div>
-        </div>
+          	</div>
+            <div id="monitor_accelerometer_div" class="monitor-div">
+              <div class="row">
+                <label class="col-sm-2 control-label text-primary">模拟加速度计</label>
+                <label class="col-sm-1 control-label">x</label>
+                <div class="col-sm-3" style="padding-top: 7px">
+                  <input id="accelerometer_x_slider" type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
+                </div>
+                <label class="col-sm-2 control-label" id="curr_accelerometer_x"></label>
+              </div>
+              <div class="row">
+                <label class="col-sm-1 col-sm-offset-2 control-label">y</label>
+                <div class="col-sm-3" style="padding-top: 7px">
+                  <input id="accelerometer_y_slider" type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
+                </div>
+                <label class="col-sm-2 control-label" id="curr_accelerometer_y"></label>
+              </div>
+              <div class="row">
+                <label class="col-sm-1 col-sm-offset-2 control-label">z</label>
+                <div class="col-sm-3" style="padding-top: 7px">
+                  <input id="accelerometer_z_slider" type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
+                </div>
+                <label class="col-sm-2 control-label" id="curr_accelerometer_z"></label>
+              </div>
+              <div class="row">
+                <label class="col-sm-2 col-sm-offset-1 control-label">当前姿态</label>
+                <button id="shake" class="btn-default col-sm-1 accelerometer-btn">摇晃</button>
+                <button id="up" class="btn-default col-sm-1 accelerometer-btn">上</button>
+                <button id="down" class="btn-default col-sm-1 accelerometer-btn">下</button>
+                <button id="left" class="btn-default col-sm-1 accelerometer-btn">左</button>
+                <button id="right" class="btn-default col-sm-1 accelerometer-btn">右</button>
+                <button id="faceup" class="btn-default col-sm-1 accelerometer-btn">朝上</button>
+                <button id="facedown" class="btn-default col-sm-1 accelerometer-btn">朝下</button>
+              </div>
+              <div class="row">
+                <button id="freefall" class="btn-default col-sm-2 col-sm-offset-3 accelerometer-btn">自由落体</button>
+                <button id="3g" class="btn-default col-sm-1 accelerometer-btn">3g</button>
+                <button id="6g" class="btn-default col-sm-1 accelerometer-btn">6g</button>
+                <button id="8g" class="btn-default col-sm-1 accelerometer-btn">8g</button>
+                </div>
+              </div><!-- /.monitor-->
+              <div id='print_area'></div>
+            </div>
+        </div><!-- /.modal-body -->
       </div><!-- /.modal-content -->
     </div><!-- /.modal -->
   </div>

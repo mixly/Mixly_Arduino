@@ -17,6 +17,13 @@ Sk.externalLibraries = {
     radio:{
         path: conf.url + '/blockly/sims/microbit_python/radio/__init__.js'
     }
+    speech: {
+        path: conf.url + '/blockly/sims/microbit_python/speech/__init__.js',
+        dependencies: [conf.url + '/blockly/sims/microbit_python/speech/sam.js']
+    },
+    neopixel: {
+        path: conf.url + '/blockly/sims/microbit_python/neopixel/__init__.js'
+    },
 }
 
 
@@ -79,6 +86,49 @@ var ui = {
             $('#radio_'+ each).val(ui.client_radio_data[each])
        }
 
+        //neopixel
+        $('#neopixel').hide();
+
+        // 舵机
+        ui.servoChart = echarts.init(document.getElementById('servo'));
+        ui.servoOption = {
+            tooltip : {
+                formatter: "{b} : {c}%"
+            },
+            toolbox: {
+                feature: {
+                }
+            },
+            series: [
+                {
+                    name: '舵机',
+                    type: 'gauge',
+                    detail: {
+                        formatter:'{value}',
+                        fontSize: '10px',
+                    },
+                    data: [{value: mbData.servo, name: '舵机'}],
+                    min: 0,
+                    max: 180,
+                    splitNumber: 4
+                }
+            ]
+        };
+        ui.servoChart.setOption(ui.servoOption, true);
+        $('#servo').hide();
+
+        // 加速度计界面
+        var accelerometer_el_arr = ['accelerometer_x', 'accelerometer_y', 'accelerometer_z'];
+        for (var i = 0; i < accelerometer_el_arr.length; i ++) {
+            var key = accelerometer_el_arr[i].split('_')[1];
+            var sdr = $("#" + accelerometer_el_arr[i] + "_slider").slider();
+            sdr.slider('setValue', mbData.accelerometer[key]);
+            $("#curr_" + accelerometer_el_arr[i]).text(mbData.accelerometer[key]);
+            $("#" + accelerometer_el_arr[i] + "_slider").on("slide", function(slideEvt) {
+                var sliderId = slideEvt.currentTarget.getAttribute('id').replace('_slider', '');
+                $("#curr_" + sliderId).text(slideEvt.value);
+            });
+        }
     },
     reset: function () {
 
@@ -100,11 +150,14 @@ var ui = {
             }
         });
     },
-    bindSliderEvent: function (sliderId, data, key) {
+    bindSliderEvent: function (sliderId, data, key, cb) {
         var id = "#" + sliderId + "_slider";
         $(id).on('slide', function (slideEvt) {
             data[key] = slideEvt.value;
             $("#curr_" + sliderId).text(slideEvt.value);
+            if (cb != undefined) {
+                cb();
+            }
         })
     },
     //处理模拟器发送信息到缓冲区，点击确定才会生效！
@@ -127,6 +180,18 @@ var ui = {
     bindHCSR04Event: function (sliderId, data, key) {
         ui.bindSliderEvent(sliderId, data, key);
     },
+    bindAccelerometerEvent: function (sliderId, data, key, cb) {
+        ui.bindSliderEvent(sliderId, data, key, cb);
+    },
+    bindAccelerometerGestureEvent: function (btnId, data, gesture) {
+        $('#' + btnId).on('click', function () {
+            if (data.currentGesture != gesture) {
+                data.currentGesture = gesture;
+                data.gestureHistory.push(gesture);
+                ui.updateAccelerometerBtn(gesture);
+            }
+        })
+    },
     setLED: function (x, y, brightness) {
 		$('.mb_led.mb_led_row_' + y + '.mb_led_col_' + x).removeClass('mb_led_brightness_1 mb_led_brightness_2 mb_led_brightness_3 mb_led_brightness_4 mb_led_brightness_5 mb_led_brightness_6 mb_led_brightness_7 mb_led_brightness_8 mb_led_brightness_9').addClass('mb_led_brightness_' + brightness);
 	},
@@ -135,6 +200,30 @@ var ui = {
     },
     updateMicrobitPins: function () {
         //not implement
+    },
+    updateNeopixel: function (leds) {
+        var el = $('#neopixel');
+        el.empty();
+        for (var i = 0; i < leds.length; i ++) {
+            var currLed = leds[i];
+            var color = currLed.join(',');
+            el.append('<img class="neopixel-led" style="background-color: rgb(' + color + ');">');
+        }
+        el.css('width', 35 * leds.length + 'px');
+        $('#neopixel').show();
+    },
+    updateServo: function (degree) {
+        ui.servoOption.series[0].data[0].value = degree;
+        ui.servoChart.setOption(ui.servoOption, true);
+        $('#servo').show();
+    },
+    updateAccelerometerBtn: function (gesture) {
+        $('.accelerometer-btn').each(function () {
+            $(this).css('background-color', '#fff');
+        })
+        if (gesture != '') {
+            $('#' + gesture.replace(' ', '')).css('background-color', '#5cb85c');
+        }
     }
 }
 
