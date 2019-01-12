@@ -367,6 +367,9 @@ function init() {
         }
 
         Sk.configure({
+        	output: function(lineText){
+				$('#print_area').append('<div class="row">' + lineText + '</div>');
+			},
             read: builtinRead
         });
         var executionPromise = Sk.misceval.asyncToPromise(function() {
@@ -497,7 +500,7 @@ function init() {
               模拟器
           </h4>
         </div>
-        <div class="modal-body" style="height: 500px;">
+        <div class="modal-body" style="height: 500px;overflow-x:hidden;overflow-y:scroll;">
           <div class="form-horizontal col-sm-12">
             <div class="row">
               <div id="microbit"><div id="mb_btn_A" class="mb_btn"></div><div id="mb_btn_B" class="mb_btn"></div><div class="mb_led mb_led_row_0 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_0 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_1 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_2 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_3 mb_led_brightness_"></div><div class="mb_led mb_led_row_0 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_1 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_2 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_3 mb_led_col_4 mb_led_brightness_"></div><div class="mb_led mb_led_row_4 mb_led_col_4 mb_led_brightness_"></div></div>
@@ -510,7 +513,7 @@ function init() {
                   <option value="temperature">温度</option>
                   <option value="compass">指南针</option>
                   <option value="HCSR04">超声波测距</option>
-                  <option>通讯</option>
+                  <option value="radio">通讯</option>
                   <option>舵机</option>
                 </select>
               </div>
@@ -572,7 +575,49 @@ function init() {
               </div>
               <label class="col-sm-2 control-label" id="curr_HCSR04"></label>
             </div>
-          </div>
+            <div id="monitor_radio_div" class="row monitor-div">
+              <div class="row">  
+              	<label class="col-sm-2 control-label text-primary">模拟无线通讯</label>
+              	<div class="col-sm-4">
+	              	<label class="control-label" for='radio_channel'>频道</label>
+	                <input id="radio_channel" type="text" />
+	            </div>
+	             <div class="col-sm-6">
+	              	  <label class="control-label" for='radio_address'>地址(十六进制)</label>
+	                  <input id="radio_address" type="text" />
+	               </div>
+              </div>
+	          <div class="row">
+	              <div class="col-sm-offset-2 col-sm-4" style="padding-top: 7px">
+	              	<label class="control-label" for='radio_group'>组别</label>
+	                <input id="radio_group" type="text" />
+	              </div>
+	              <div class="col-sm-6" style="padding-top: 7px">
+	              	<label class="control-label" for='radio_address'>传输速率</label>
+	              	<select id="radio_data_rate">
+	                  <option value="RATE_1MBIT" selected="selected">RATE_1MBIT</option>
+	                  <option value="RATE_250KBIT">RATE_250KBIT</option>
+	                  <option value="RATE_2MBIT">RATE_2MBIT</option>
+	                </select>
+	              </div>
+	          </div>
+	          <div class="row">
+	              <div class="col-sm-offset-2 col-sm-10" style="padding-top: 7px">
+	              	<label class="control-label" for='radio_data'>消息</label>
+	                <input id="radio_data" type="text" />
+	              </div>
+              </div>
+              <div class="row">
+	              <div class="col-sm-offset-5 col-sm-2" style="padding-top: 20px">
+                	<button id="send_radio_message" class="btn-default form-control">发送消息</button>
+              	  </div>
+              </div>
+              <div class="row">
+	              <span id='radio_status'></span>
+              </div>
+          	</div><!-- /.monitor-->
+          	<div id='print_area'></div>
+      	  </div>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal -->

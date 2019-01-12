@@ -14,6 +14,15 @@ var mbData = {
         'bpm': 120,
         'duration': 4,
         'octave': 4
+    },
+    'radio':{
+        'channel': 7,
+        'address': '0x75626974',
+        'group': 0,
+        'data_rate':'RATE_1MBIT',
+        'queue': 3,
+        'length': 32,
+        'power':6
     }
 }
 

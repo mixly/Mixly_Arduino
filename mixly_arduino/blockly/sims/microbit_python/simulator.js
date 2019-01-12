@@ -14,10 +14,23 @@ Sk.externalLibraries = {
     music: {
         path: conf.url + '/blockly/sims/microbit_python/music/__init__.js'
     },
+    radio:{
+        path: conf.url + '/blockly/sims/microbit_python/radio/__init__.js'
+    }
 }
 
 
 var ui = {
+    //模拟器radio初始化配置
+    client_radio_data: {
+        channel: mbData.radio.channel,
+        address:  mbData.radio.address,
+        group:  mbData.radio.group,
+        data_rate: mbData.radio.data_rate,
+        queue:  mbData.radio.queue,
+        length:  mbData.radio.length,
+        power: mbData.radio.power
+    },
     init: function () {
         // 初始化模拟外部操作界面
         var val = $('#monitor_select').children('option:selected').val();
@@ -61,6 +74,10 @@ var ui = {
         $("#HCSR04_slider").on("slide", function(slideEvt) {
             $("#curr_HCSR04").text(slideEvt.value);
         });
+        // 无线通信界面
+       for (var each in ui.client_radio_data){
+            $('#radio_'+ each).val(ui.client_radio_data[each])
+       }
 
     },
     reset: function () {
@@ -89,6 +106,17 @@ var ui = {
             data[key] = slideEvt.value;
             $("#curr_" + sliderId).text(slideEvt.value);
         })
+    },
+    //处理模拟器发送信息到缓冲区，点击确定才会生效！
+    bindSendMessageEvent: function(btnId, data){
+        var id = '#send_' + btnId + '_message';
+        $(id).on('click',function(){
+            if(data['buffer'].length < data['queue'])
+                data['buffer'].push("\x00\x01\x00" + $('#'+ btnId + '_data').val());
+        });
+    },
+    bindRadioSendMessageEvent: function(){
+        ui.bindSendMessageEvent('radio', radio)
     },
     bindCompassEvent: function (sliderId, data, key) {
         ui.bindSliderEvent(sliderId, data, key);
