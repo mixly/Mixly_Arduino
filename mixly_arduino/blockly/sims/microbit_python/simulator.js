@@ -9,6 +9,7 @@ Sk.externalLibraries = {
             base_url + 'microbit/display.js',
             base_url + 'microbit/accelerometer.js',
             base_url + 'microbit/compass.js',
+            base_url + 'microbit/uart.js',
         ]
     },
     music: {
