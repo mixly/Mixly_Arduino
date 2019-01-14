@@ -163,7 +163,6 @@ var ui = {
     bindSliderEvent: function (sliderId, data, key, cb) {
         var id = "#" + sliderId + "_slider";
         $(id).off('slide').on('slide', function (slideEvt) {
-            console.log(slideEvt.value);
             data[key] = slideEvt.value;
             $("#curr_" + sliderId).text(slideEvt.value);
             if (cb != undefined) {
@@ -242,6 +241,16 @@ var ui = {
     },
     updateRadioStatus: function (text) {
         $('#radio_status').html(text);
+    },
+    updateRadioReceivedMessage: function (text) {
+        var el = $('#radio_output');
+        if (el.css('display') == 'none') {
+            el.show();
+        }
+        if (!text.endsWith('\n')) {
+            text += '\n';
+        }
+        el.text(el.text() + text);
     },
     updatePeerRadioParam: function (data) {
         var feedback = '';

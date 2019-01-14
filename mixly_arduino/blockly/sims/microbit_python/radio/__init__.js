@@ -6,8 +6,12 @@ var $builtinmodule = function (name) {
         }
     };
 
+    var prefix_codes = "\x00\x01\x00";
     function send_data (message) { // send from microbit to UI
-        ui.updateRadioStatus("Received message: " + message);
+        if (message.startsWith(prefix_codes)) {
+            message = message.replace(prefix_codes, '');
+        }
+        ui.updateRadioReceivedMessage(message);
     }
 
     function receive_data (message) { // send from UI to microbit
@@ -80,9 +84,7 @@ var $builtinmodule = function (name) {
         if (!mod.data.peer) {
             return;
         }
-        if(send_data) {
-            send_data(Sk.ffi.remapToJs(message));
-        }
+        send_data(Sk.ffi.remapToJs(message));
     });
 
     mod.receive_bytes = new Sk.builtin.func(function() {
@@ -122,9 +124,7 @@ var $builtinmodule = function (name) {
         if (!mod.data.peer) {
             return;
         }
-        if(send_data) {
-            send_data("\x00\x01\x00" + message.v);
-        }
+        send_data(prefix_codes + message.v);
     });
 
     mod.receive = new Sk.builtin.func(function() {
