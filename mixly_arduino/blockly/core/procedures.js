@@ -172,7 +172,6 @@ Blockly.Procedures.flyoutCategory = function(workspace) {
     xmlList.push(block);
   }
   if (Blockly.Blocks['procedures_return']) {
-    // <block type="procedures_ifreturn" gap="16"></block>
     var block = goog.dom.createDom('block');
     block.setAttribute('type', 'procedures_return');
     block.setAttribute('gap', 16);

@@ -110,10 +110,10 @@ Blockly.Variables.flyoutCategory = function(workspace) {
   xmlList.push(block);
   
   if (Blockly.Blocks['variables_set']) {
-	//增加variables_declare模块
-	var block = goog.dom.createDom('block');
-    block.setAttribute('type', 'variables_set');
-	xmlList.push(block);
+  //增加variables_declare模块
+  	var block = goog.dom.createDom('block');
+  	block.setAttribute('type', 'variables_set');
+ 	xmlList.push(block);
   }//change tyep
     /*
       if (Blockly.Blocks['variables_change']) {
@@ -123,6 +123,7 @@ Blockly.Variables.flyoutCategory = function(workspace) {
           xmlList.push(block);
       }*/
   if (Blockly.Blocks['variables_change']) {
+      //增加variables_declare模块
       var block = goog.dom.createDom('block');
       block.setAttribute('type', 'variables_change');
       xmlList.push(block);

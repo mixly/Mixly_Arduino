@@ -384,7 +384,7 @@ Blockly.Blocks['radio_receive_number'] = {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_ON_RECEIVE)
-            .appendField(new Blockly.FieldTextInput('receivedNumber'), 'var');
+            .appendField(new Blockly.FieldTextInput('receivedNumber'), 'recvar');
 
         this.appendStatementInput('do')
             .appendField(Blockly.MIXLY_DO);

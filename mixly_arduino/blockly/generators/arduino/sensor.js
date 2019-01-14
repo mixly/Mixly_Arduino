@@ -37,23 +37,6 @@ Blockly.Arduino.gps_getData_xxx = function() {
   return [code,Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino.chaoshengbo = function () {
-    var dropdown_pin1 = this.getFieldValue('PIN1');
-    var dropdown_pin2 = this.getFieldValue('PIN2');
-    Blockly.Arduino.setups_['setup_output_' + dropdown_pin1] = 'pinMode(' + dropdown_pin1 + ', OUTPUT);';
-    Blockly.Arduino.setups_['setup_output_' + dropdown_pin2] = 'pinMode(' + dropdown_pin2 + ', INPUT);';
-    var funcName = 'checkdistance_' + dropdown_pin1 + '_' + dropdown_pin2;
-    var code = 'float' + ' ' + funcName + '() {\n'
-	+ '  digitalWrite(' + dropdown_pin1 + ', LOW);\n' + '  delayMicroseconds(2);\n'
-	+ '  digitalWrite(' + dropdown_pin1 + ', HIGH);\n' + '  delayMicroseconds(10);\n'
-	+ '  digitalWrite(' + dropdown_pin1 + ', LOW);\n'
-	+ '  float distance = pulseIn(' + dropdown_pin2 + ', HIGH) / 58.00;\n'
-	+ '  delay(10);\n' + '  return distance;\n'
-	+ '}\n';
-    Blockly.Arduino.definitions_[funcName] = code;
-    return [funcName + '()', Blockly.Arduino.ORDER_ATOMIC];
-}
-
 Blockly.Arduino.chaoshengbo2 = function () {
     var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);

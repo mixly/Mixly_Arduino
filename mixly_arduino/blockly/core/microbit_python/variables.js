@@ -111,9 +111,9 @@ Blockly.Variables.flyoutCategory = function(workspace) {
   
   if (Blockly.Blocks['variables_set']) {
   //增加variables_declare模块
-  var block = goog.dom.createDom('block');
-    block.setAttribute('type', 'variables_set');
-  xmlList.push(block);
+  	var block = goog.dom.createDom('block');
+  	block.setAttribute('type', 'variables_set');
+ 	xmlList.push(block);
   }//change tyep
     /*
       if (Blockly.Blocks['variables_change']) {

@@ -20,7 +20,7 @@ Blockly.JavaScript.radio_send_string = function () {
 }
 
 Blockly.JavaScript.radio_receive_number = function () {
-    var variable = this.getFieldValue('var');
+    var variable = this.getFieldValue('recvar');
     var branch = Blockly.JavaScript.statementToCode(this, 'do');
     Blockly.JavaScript.definitions_['func_radio_receive_number'] = "radio.onDataPacketReceived(({ receivedNumber:" +  variable + "}) =>  {\n" + branch + "});\n";
 }

@@ -123,9 +123,6 @@ Blockly.Variables.flyoutCategory = function(workspace) {
 		continue;
 	}
     if (Blockly.Blocks['variables_set']) {
-      // <block type="variables_set" gap="8">
-      //   <field name="VAR">item</field>
-      // </block>
       var block = goog.dom.createDom('block');
       block.setAttribute('type', 'variables_set');
       if (Blockly.Blocks['variables_get']) {
@@ -137,9 +134,6 @@ Blockly.Variables.flyoutCategory = function(workspace) {
       xmlList.push(block);
     }
     if (Blockly.Blocks['variables_get']) {
-      // <block type="variables_get" gap="24">
-      //   <field name="VAR">item</field>
-      // </block>
       var block = goog.dom.createDom('block');
       block.setAttribute('type', 'variables_get');
       if (Blockly.Blocks['variables_set']) {

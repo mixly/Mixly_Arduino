@@ -18,14 +18,6 @@ Blockly.Arduino.inout_pinMode = function () {
     return code;
 };
 
-Blockly.Arduino.inout_digital_write = function () {
-    var dropdown_pin = this.getFieldValue('PIN');
-    var dropdown_stat = this.getFieldValue('STAT');
-    Blockly.Arduino.setups_['setup_output_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', OUTPUT);';
-    var code = 'digitalWrite(' + dropdown_pin + ',' + dropdown_stat + ');\n'
-    return code;
-};
-
 Blockly.Arduino.inout_digital_write2 = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_stat = Blockly.Arduino.valueToCode(this, 'STAT', Blockly.Arduino.ORDER_ATOMIC);
