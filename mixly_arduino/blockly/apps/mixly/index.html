@@ -41,24 +41,24 @@
   <script type="text/javascript" src="../../generators/arduino/SCoop.js"></script>
   <script type="text/javascript" src="../../generators/arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/arduino/actuator.js"></script>
-  <script type="text/javascript" src="../../blocks/pins.js"></script>
-  <script type="text/javascript" src="../../blocks/inout.js"></script>
-  <script type="text/javascript" src="../../blocks/control.js"></script>
-  <script type="text/javascript" src="../../blocks/math.js"></script>
-  <script type="text/javascript" src="../../blocks/text.js"></script>
-  <script type="text/javascript" src="../../blocks/lists.js"></script>
-  <script type="text/javascript" src="../../blocks/logic.js"></script>
-  <script type="text/javascript" src="../../blocks/display.js"></script>
-  <script type="text/javascript" src="../../blocks/communicate.js"></script>
-  <script type="text/javascript" src="../../blocks/storage.js"></script>
-  <script type="text/javascript" src="../../blocks/sensor.js"></script>
-  <script type="text/javascript" src="../../blocks/ethernet.js"></script>
-  <script type="text/javascript" src="../../blocks/variables.js"></script>
-  <script type="text/javascript" src="../../blocks/procedures.js"></script>
-  <script type="text/javascript" src="../../blocks/factory.js"></script>
-  <script type="text/javascript" src="../../blocks/SCoop.js"></script>
-  <script type="text/javascript" src="../../blocks/serial.js"></script>
-  <script type="text/javascript" src="../../blocks/actuator.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/pins.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/inout.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/control.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/math.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/text.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/lists.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/logic.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/display.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/communicate.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/storage.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/sensor.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/ethernet.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/variables.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/procedures.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/factory.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/SCoop.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/serial.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/actuator.js"></script>
   <link rel="stylesheet" type="text/css" href="color.css" />
   <!-- 过去index.html中的js代码都会被放到这个js中-->
   <script src = "init.js"></script>
@@ -733,17 +733,17 @@
 <block type="DS1302_init">
   <value name="RST">
     <shadow type="pins_digital">
-      <field name="NUM">2</field>
+		<field name="PIN">2</field>
     </shadow>
   </value>
   <value name="DAT">
     <shadow type="pins_digital">
-      <field name="NUM">3</field>
+		<field name="PIN">3</field>
     </shadow>
   </value>
   <value name="CLK">
     <shadow type="pins_digital">
-      <field name="NUM">4</field>
+		<field name="PIN">4</field>
     </shadow>
   </value>
 </block>
@@ -1167,11 +1167,6 @@
       <field name="TEXT">2345</field>
     </shadow>
   </value>
-  <value name="Speed">
-    <shadow type="math_number">
-      <field name="NUM">300</field>
-    </shadow>
-  </value>
 </block>
 <block type="display_TM1637_displayTime">
   <value name="hour">
@@ -1244,12 +1239,7 @@
           <field name="PIN">10</field>
         </shadow>
       </value>
-      <value name="NUM">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-      <value name="Intensity">
+       <value name="Intensity">
         <shadow type="math_number">
           <field name="NUM">1</field>
         </shadow>
