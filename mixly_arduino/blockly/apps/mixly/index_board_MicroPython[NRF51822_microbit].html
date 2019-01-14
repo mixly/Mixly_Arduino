@@ -376,12 +376,15 @@ function init() {
             output: function(lineText){
                 $('#print_area').append('<div class="row">' + lineText + '</div>');
             },
-            read: builtinRead
+            read: builtinRead,
+            execLimit:Number.POSITIVE_INFINITY,
         });
         var executionPromise = Sk.misceval.asyncToPromise(function() {
             return Sk.importMainWithBody("<stdin>", false, code, true);
         });
     }
+
+
   </script>
   <style type="text/css">
       span#span_blocks, span#span_arduino, select#languageMenu {

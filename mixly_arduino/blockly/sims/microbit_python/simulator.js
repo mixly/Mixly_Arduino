@@ -31,6 +31,14 @@ Sk.externalLibraries = {
 var ui = {
     inited: false,
     init: function () {
+        //模态框关闭时kill program
+        if (!ui.inited) {
+            $('#simModal').on('hidden.bs.modal', function () {
+                console.log('hidden');
+                Sk.execLimit = 0;
+            });
+        }
+
         // 初始化模拟外部操作界面
         $("#monitor_select").val("button");
         $("#monitor_select").trigger('change');
