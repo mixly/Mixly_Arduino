@@ -378,10 +378,46 @@ function init() {
             },
             read: builtinRead,
             execLimit:Number.POSITIVE_INFINITY,
+            debugging: true
         });
-        var executionPromise = Sk.misceval.asyncToPromise(function() {
+
+        // if code contains a while loop
+        var handlers = [];
+        if((code.indexOf("while ") > -1) && (code.indexOf("sleep") == -1)) {
+            //console.log("Crash prevention mode enabled: This happens when your code includes an infinite loop without a sleep() function call. Your code will run much more slowly in this mode.");
+            var startTime = new Date().getTime();
+            var lineCount = 0;
+            handlers["Sk.debug"] = function(susp) {
+                lineCount++;
+                if(new Date().getTime() - startTime > 100) {
+                    if(lineCount < 50) {
+                        return;
+                    }
+                    startTime = new Date().getTime();
+                    var p = new Promise(function(resolve, reject) {
+                        setTimeout(function() {
+                            //console.log("Limiting speed to avoid crashing the browser: " + (lineCount * 10) +  " lines per second");
+                            lineCount = 0;
+                            return resolve(susp.resume());
+                        }, 50);
+                    });
+                    return p;
+                }
+            };
+        }
+
+        function handleError (err) {
+            var errString = err.toString() ;
+            if(errString.indexOf('TimeLimitError') != -1) {
+                return;
+            }
+            console.log(err);
+            ui.showTip(errString);
+        }
+
+        Sk.misceval.callsimAsync(handlers, function() {
             return Sk.importMainWithBody("<stdin>", false, code, true);
-        });
+		}).then(function(module){}, handleError);
     }
 
 
@@ -519,6 +555,9 @@ function init() {
             </div>
             <div class="row monitor-div" id="neopixel">
             </div>
+            <div class="row" style="margin-top: 10px;margin-bottom: 10px;text-align: center;">
+              <label class="text-danger" id="tip"></label>
+            </div>
             <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
               <label class="col-sm-2 control-label text-primary">模拟外部操作</label>
               <div class="col-sm-3">
@@ -533,7 +572,6 @@ function init() {
                 </select>
               </div>
             </div>
-
             <div id="monitor_button_div" class="row monitor-div">
               <label class="col-sm-2 control-label text-primary">模拟按下按钮</label>
               <div class="col-sm-2">

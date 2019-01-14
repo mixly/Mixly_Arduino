@@ -34,7 +34,6 @@ var ui = {
         //模态框关闭时kill program
         if (!ui.inited) {
             $('#simModal').on('hidden.bs.modal', function () {
-                console.log('hidden');
                 Sk.execLimit = 0;
             });
         }
@@ -148,6 +147,9 @@ var ui = {
             }
         }
 
+
+        $('#tip').text();
+        $('#tip').hide();
         //绑定事情只需要初始化一次
         ui.inited = true;
     },
@@ -279,6 +281,11 @@ var ui = {
             feedback = "Tuned in to radio module";
         }
         ui.updateRadioStatus(feedback);
+    },
+    showTip: function (text) {
+        var el = $('#tip');
+        el.text(text);
+        el.show();
     }
 }
 
