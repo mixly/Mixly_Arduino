@@ -5,10 +5,10 @@
   <script type="text/javascript" src="../../blockly_compressed_py.js"></script>
   <script type="text/javascript" src="../../python_compressed.js"></script>
   <script type="text/javascript" src="../../core/esp32/variables.js"></script>
-  <script type="text/javascript" src="../../core/esp32/procedures.js"></script>
-  <script type="text/javascript" src="../../core/esp32/blockly.js"></script>
-  <script type="text/javascript" src="../../core/esp32/events.js"></script>
-  <script type="text/javascript" src="../../core/esp32/field_textarea.js"></script>
+  <script type="text/javascript" src="../../core/procedures.js"></script>
+  <script type="text/javascript" src="../../core/blockly.js"></script>
+  <script type="text/javascript" src="../../core/events.js"></script>
+  <script type="text/javascript" src="../../core/field_textarea.js"></script>
   <script type="text/javascript" src="../../core/esp32/names.js"></script>
   <script src="../../generators/esp32/python.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
@@ -20,7 +20,7 @@
   <script type="text/javascript" src="blockly_helper.js"></script>
   <!---profiles-->
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
-  <script type="text/javascript" src="MicroPython[ESP32_MixGo]/myblock.js"></script>
+  <script type="text/javascript" src="ESP32_MixGo/myblock.js"></script>
   <script type="text/javascript" src="../../blocks/python/variables.js"></script>
   <script type="text/javascript" src="../../generators/python/variables.js"></script>
   <script src="../../blocks/esp32/esp32_profile.js"></script>
@@ -737,7 +737,7 @@
         </value>
       </block>
     </category>
-<category id="catMath" colour="230">
+	<category id="catMath" colour="230">
       <block type="math_number"></block>
       <block type="math_arithmetic">
         <value name="A">
@@ -930,14 +930,14 @@
          <block type="text_capital">
           <value name="VAR">
             <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
+              <field name="TEXT">Hello, Mixly</field>
             </shadow>
           </value>
         </block>
         <block type="text_center">
           <value name="VAR">
             <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
+              <field name="TEXT">Hello, Mixly</field>
             </shadow>
           </value>
           <value name="WID">
@@ -954,7 +954,7 @@
         <block type="text_find">
           <value name="VAR">
             <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
+              <field name="TEXT">Hello, Mixly</field>
             </shadow>
           </value>
           <value name="STR">
@@ -966,17 +966,17 @@
         <block type="text_replace">
           <value name="VAR">
             <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
+              <field name="TEXT">Hello, Mixly</field>
             </shadow>
           </value>
           <value name="STR1">
             <shadow type="text">
-              <field name="TEXT">mixly</field>
+              <field name="TEXT">Mixly</field>
             </shadow>
           </value>
           <value name="STR2">
             <shadow type="text">
-              <field name="TEXT">mixpy</field>
+              <field name="TEXT">MixGo</field>
             </shadow>
           </value>
         </block>
@@ -999,7 +999,6 @@
             </shadow>
           </value>
         </block>
-
         <block type="ascii_to_char">
           <value name="VAR">
             <shadow type="math_number">
@@ -1014,7 +1013,6 @@
             </shadow>
           </value>
         </block>
-
         <block type="text_length">
           <value name="VAR">
             <shadow type="text">
@@ -1022,13 +1020,6 @@
             </shadow>
           </value>
         </block>
-<!--         <block type="text_strip">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block> -->
         <block type="text_char_at">
           <value name="VAR">
             <shadow type="text">
@@ -1117,7 +1108,6 @@
               </shadow>
             </value>
           </block>
-
           <block type="lists_set_index">
             <value name="LIST">
               <shadow type="variables_get">
@@ -1235,7 +1225,6 @@
                 </shadow>
               </value>
           </block>
-        </category>
       </category>
       <category id="catTuple" colour="195">
         <block type="tuple_create_with"></block>
@@ -1595,6 +1584,13 @@
             </shadow>
           </value>
         </block>
+<!--         <block type="sensor_mpu9250_attachGestureInterrupt">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mpu</field>
+            </shadow>
+          </value>
+        </block> -->
         <block type="sensor_mpu9250_gesture">
           <value name="SUB">
             <shadow type="variables_get">
@@ -1741,18 +1737,13 @@
               <field name="NUM">100</field>
             </shadow>
           </value>
-          <value name="DELAY_TIME">
-            <shadow type="math_number">
-              <field name="NUM">100</field>
-            </shadow>
-          </value>
         </block>
         <block type="actuator_led_bright">
            <value name="led">
           <shadow type="number">
           </shadow>
         </value>
-          <value name="bright">
+         <value name="bright">
           <shadow type="ledswitch">
           </shadow>
         </value>
@@ -1829,11 +1820,6 @@
               <field name="PIN">27</field>
             </shadow>
           </value>
-          <value name="DISPLAY">
-              <shadow type="factory_block_return">
-                  <field name="VALUE">matrix.display</field>
-              </shadow>
-          </value>
         </block>
         <block type="esp32_music_set_tempo">
           <value name="TICKS">
@@ -1871,9 +1857,6 @@
             <shadow type="variables_get">
               <field name="VAR">rgb</field>
             </shadow>
-          </value>
-          <value name="PIN">
-            <shadow type="pins_digital" />
           </value>
           <value name="_LED_">
             <shadow type="math_number">

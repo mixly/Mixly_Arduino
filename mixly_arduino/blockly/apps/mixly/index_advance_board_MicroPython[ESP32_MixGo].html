@@ -5,10 +5,10 @@
   <script type="text/javascript" src="../../blockly_compressed_py.js"></script>
   <script type="text/javascript" src="../../python_compressed.js"></script>
   <script type="text/javascript" src="../../core/esp32/variables.js"></script>
-  <script type="text/javascript" src="../../core/esp32/procedures.js"></script>
-  <script type="text/javascript" src="../../core/esp32/blockly.js"></script>
-  <script type="text/javascript" src="../../core/esp32/events.js"></script>
-  <script type="text/javascript" src="../../core/esp32/field_textarea.js"></script>
+  <script type="text/javascript" src="../../core/procedures.js"></script>
+  <script type="text/javascript" src="../../core/blockly.js"></script>
+  <script type="text/javascript" src="../../core/events.js"></script>
+  <script type="text/javascript" src="../../core/field_textarea.js"></script>
   <script type="text/javascript" src="../../core/esp32/names.js"></script>
   <script src="../../generators/esp32/python.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
@@ -20,7 +20,7 @@
   <script type="text/javascript" src="blockly_helper.js"></script>
   <!---profiles-->
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
-  <script type="text/javascript" src="MicroPython[ESP32_MixGo]/myblock.js"></script>
+  <script type="text/javascript" src="ESP32_MixGo/myblock.js"></script>
   <script type="text/javascript" src="../../blocks/python/variables.js"></script>
   <script type="text/javascript" src="../../generators/python/variables.js"></script>
   <script src="../../blocks/esp32/esp32_profile.js"></script>
@@ -694,22 +694,22 @@
         </value>
       </block>
       <block type="system_timer">
-              <value name="VAR">
-                <shadow type="variables_get">
-                  <field name="VAR">tim</field>
-                </shadow>
-              </value>
-              <value name="period">
-                <shadow type="math_number">
-                  <field name="NUM">1000</field>
-                </shadow>
-              </value>
-              <value name="callback">
-                <shadow type="factory_block_return">
-                  <field name="VALUE">tim_callback</field>
-                </shadow>
-              </value>
-            </block>
+        <value name="VAR">
+          <shadow type="variables_get">
+            <field name="VAR">tim</field>
+          </shadow>
+        </value>
+        <value name="period">
+          <shadow type="math_number">
+            <field name="NUM">1000</field>
+          </shadow>
+        </value>
+        <value name="callback">
+          <shadow type="factory_block_return">
+            <field name="VALUE">tim_callback</field>
+          </shadow>
+        </value>
+      </block>
       <block type="procedures_defnoreturn">
           <mutation>
             <arg name="x"></arg>
@@ -1561,14 +1561,14 @@
                       <field name="TEXT">Mixly</field>
                   </shadow>
               </value>
-          </block>
+        </block>
         <block type="system_print">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly</field>
                   </shadow>
               </value>
-          </block>
+        </block>
         <block type="system_input">
               <value name="VAR">
                   <shadow type="text">
@@ -2324,7 +2324,7 @@
               </value>
           </block>
       </category>
-       <category id="catSensor" colour="40">
+      <category id="catSensor" colour="40">
         <block type="sensor_mixgo_button_is_pressed">
           <value name="btn">
             <shadow type="pins_button">
@@ -2487,7 +2487,7 @@
                   </shadow>
               </value>
           </block>
-		  <block type="RTC_get_time">
+		<block type="RTC_get_time">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">rtc</field>
@@ -2533,11 +2533,6 @@
             <shadow type="pins_pwm_pin"></shadow>
           </value>
           <value name="DEGREE">
-            <shadow type="math_number">
-              <field name="NUM">100</field>
-            </shadow>
-          </value>
-          <value name="DELAY_TIME">
             <shadow type="math_number">
               <field name="NUM">100</field>
             </shadow>
@@ -2625,11 +2620,6 @@
               <field name="PIN">27</field>
             </shadow>
           </value>
-          <value name="DISPLAY">
-              <shadow type="factory_block_return">
-                  <field name="VALUE">matrix.display</field>
-              </shadow>
-          </value>
         </block>
         <block type="esp32_music_set_tempo">
           <value name="TICKS">
@@ -2645,28 +2635,7 @@
         </block>
         <block type="esp32_music_get_tempo"></block>
         <block type="esp32_music_reset"></block>
-<!--         <block type="speech_say_easy">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly 0.997 is great!</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="speech_sing_easy">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">#115DOWWWW</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="speech_prenounce_easy">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">/HEH5EH4EH3EH2EH2EH3EH4EH5EHLP.</field>
-            </shadow>
-          </value>
-        </block> -->
-      <block type="actuator_neopixel_init">
+		<block type="actuator_neopixel_init">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">rgb</field>
@@ -2688,9 +2657,6 @@
             <shadow type="variables_get">
               <field name="VAR">rgb</field>
             </shadow>
-          </value>
-          <value name="PIN">
-            <shadow type="pins_digital" />
           </value>
           <value name="_LED_">
             <shadow type="math_number">
@@ -2996,13 +2962,13 @@
         <block type="factory_block_return_with_textarea"></block>
       </category>
     </xml>
-<script>
-	if(company_block!=null){
-		$('#toolbox').append(company_block);
-	}
-    if(myblock!=null){
-		$('#toolbox').append(myblock);
-	}
+    <script>
+      if(company_block!=null){
+        $('#toolbox').append(company_block);
+      }
+      if(myblock!=null){
+        $('#toolbox').append(myblock);
+      }
     </script>
 
 
