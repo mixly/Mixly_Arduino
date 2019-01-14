@@ -349,6 +349,7 @@ function init() {
     }
     function mb_run () {
         $('#simModal').modal('toggle');
+        ui.init();
         var code = '';
         if(document.getElementById('tab_arduino').className == 'tabon'){
             code = editor.getValue();
