@@ -356,6 +356,9 @@ function init() {
         }else{
             code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
         }
+        if (code == '') {
+            return;
+        }
         // trick
         if (code.indexOf('class HCSR04:') != -1) {
             code = code.replace(/class HCSR04[\s\S]*?self.distance_mm\(\) \/ 10\.0/,'');

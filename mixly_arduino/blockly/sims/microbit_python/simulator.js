@@ -150,6 +150,8 @@ var ui = {
 
         $('#tip').text();
         $('#tip').hide();
+
+        ui.clearScreen();
         //绑定事情只需要初始化一次
         ui.inited = true;
     },
@@ -286,6 +288,14 @@ var ui = {
         var el = $('#tip');
         el.text(text);
         el.show();
+    },
+    clearScreen: function () {
+        var x,y;
+		for(x = 0; x < 5; x++) {
+			for(y = 0; y < 5; y++) {
+			    ui.setLED(x, y, 0);
+			}
+		}
     }
 }
 
