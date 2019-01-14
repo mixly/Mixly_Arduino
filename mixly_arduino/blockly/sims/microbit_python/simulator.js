@@ -291,11 +291,11 @@ var ui = {
     },
     clearScreen: function () {
         var x,y;
-		for(x = 0; x < 5; x++) {
-			for(y = 0; y < 5; y++) {
-			    ui.setLED(x, y, 0);
-			}
-		}
+        for(x = 0; x < 5; x++) {
+            for(y = 0; y < 5; y++) {
+                ui.setLED(x, y, 0);
+            }
+        }
     }
 }
 
