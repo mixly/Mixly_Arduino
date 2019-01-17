@@ -25,6 +25,16 @@ Sk.externalLibraries = {
     neopixel: {
         path: conf.url + '/blockly/sims/microbit_python/neopixel/__init__.js'
     },
+    //status machine
+    sm_microbit: {
+        path: base_url + 'sm/microbit/__init__.js',
+        dependencies: [
+            base_url + 'sm/microbit/display.js',
+            base_url + 'sm/microbit/accelerometer.js',
+            base_url + 'sm/microbit/compass.js',
+            base_url + 'sm/microbit/uart.js',
+        ]
+    },
 }
 
 
@@ -296,7 +306,10 @@ var ui = {
                 ui.setLED(x, y, 0);
             }
         }
-    }
+    },
+    updateSerialOutput: function(lineText){
+        $('#print_area').append('<div class="row">' + lineText + '</div>');
+    },
 }
 
 var sim = {

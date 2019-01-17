@@ -136,7 +136,7 @@ var $builtinmodule = function (name) {
     ui.bindBtnEvent('mb_btn_A', [mod.button_a]);
     ui.bindBtnEvent('btn_B', [mod.button_b]);
     ui.bindBtnEvent('mb_btn_B', [mod.button_b]);
-    ui.bindBtnEvent('btn_both', [mod.button_b]);
+    ui.bindBtnEvent('btn_both', [mod.button_a, mod.button_b]);
 
     mod.Image = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self, str, y) {

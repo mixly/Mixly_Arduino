@@ -97,6 +97,11 @@
   <script src="js/skulpt/dist/skulpt-stdlib.js" type="application/javascript"></script>
   <script src="../../sims/microbit_python/data.js" type="application/javascript"></script>
   <script src="../../sims/microbit_python/simulator.js" type="application/javascript"></script>
+  <script src="../../sims/microbit_python/sm/task_conf.js" type="application/javascript"></script>
+  <script src="../../sims/microbit_python/sm/process.js" type="application/javascript"></script>
+  <script src="../../sims/microbit_python/sm/sm_util.js" type="application/javascript"></script>
+  <script src="../../sims/microbit_python/sm/sm.js" type="application/javascript"></script>
+  <script src="../../sims/microbit_python/sk.js" type="application/javascript"></script>
   <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/bootstrap.min.css"/>
   <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/bootstrap-slider.min.css"/>
   <link rel="stylesheet" type="text/css" href="color_microbit_python.css" />
@@ -347,83 +352,6 @@ function init() {
         load_by_url(dest);
       }
     }
-    function mb_run () {
-        $('#simModal').modal('toggle');
-        ui.init();
-        var code = '';
-        if(document.getElementById('tab_arduino').className == 'tabon'){
-            code = editor.getValue();
-        }else{
-            code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-        }
-        if (code == '') {
-            return;
-        }
-        // trick
-        if (code.indexOf('class HCSR04:') != -1) {
-            code = code.replace(/class HCSR04[\s\S]*?self.distance_mm\(\) \/ 10\.0/,'');
-        }
-
-        if (code.indexOf('class Servo:') != -1) {
-            code = code.replace(/class Servo[\s\S]*?self\.write_us\(us\)/,'');
-        }
-
-        function builtinRead(x)
-        {
-            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-                throw "File not found: '" + x + "'";
-            return Sk.builtinFiles["files"][x];
-        }
-
-        Sk.configure({
-            output: function(lineText){
-                $('#print_area').append('<div class="row">' + lineText + '</div>');
-            },
-            read: builtinRead,
-            execLimit:Number.POSITIVE_INFINITY,
-            debugging: true
-        });
-
-        // if code contains a while loop
-        var handlers = [];
-        if((code.indexOf("while ") > -1) && (code.indexOf("sleep") == -1)) {
-            //console.log("Crash prevention mode enabled: This happens when your code includes an infinite loop without a sleep() function call. Your code will run much more slowly in this mode.");
-            var startTime = new Date().getTime();
-            var lineCount = 0;
-            handlers["Sk.debug"] = function(susp) {
-                lineCount++;
-                if(new Date().getTime() - startTime > 100) {
-                    if(lineCount < 50) {
-                        return;
-                    }
-                    startTime = new Date().getTime();
-                    var p = new Promise(function(resolve, reject) {
-                        setTimeout(function() {
-                            //console.log("Limiting speed to avoid crashing the browser: " + (lineCount * 10) +  " lines per second");
-                            lineCount = 0;
-                            return resolve(susp.resume());
-                        }, 50);
-                    });
-                    return p;
-                }
-            };
-        }
-
-        function handleError (err) {
-            var errString = err.toString() ;
-            if(errString.indexOf('TimeLimitError') != -1) {
-                return;
-            }
-            console.log(err);
-            ui.showTip(errString);
-        }
-
-        Sk.misceval.callsimAsync(handlers, function() {
-            return Sk.importMainWithBody("<stdin>", false, code, true);
-		}).then(function(module){}, handleError);
-    }
-
-
   </script>
   <style type="text/css">
       span#span_blocks, span#span_arduino, select#languageMenu {
@@ -455,6 +383,12 @@ function init() {
             </td>
             <td class="tabmin">
                 <button id='mb_run' onclick="mb_run()" class="btn-primary">Run</button>
+            </td>
+            <td class="tabmin">
+              <button id='sm_run' onclick="sm_run()" class="btn-success">Mark</button>
+            </td>
+            <td class="tabmin">
+              <button id='save_xml' onclick="saveXmlFileAs()" class="btn-success">Save</button>
             </td>
             <td class="tabmode">
               <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_MicroPython[NRF51822_microbit].html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light';font-size:12px;">高级视图</a>
@@ -608,21 +542,21 @@ function init() {
               <div class="row">
                 <label class="col-sm-2 col-sm-offset-2 control-label">x</label>
                 <div class="col-sm-3" style="padding-top: 7px">
-                  <input id="compass_x_slider" type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
+                  <input id="compass_x_slider" type="text" data-provide="slider" data-slider-min="-1000000" data-slider-max="1000000" data-slider-step="1"/>
                 </div>
                 <label class="col-sm-2 control-label" id="curr_compass_x"></label>
               </div>
               <div class="row">
                 <label class="col-sm-2 col-sm-offset-2 control-label">y</label>
                 <div class="col-sm-3" style="padding-top: 7px">
-                  <input id="compass_y_slider" type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
+                  <input id="compass_y_slider" type="text" data-provide="slider" data-slider-min="-1000000" data-slider-max="1000000" data-slider-step="1"/>
                 </div>
                 <label class="col-sm-2 control-label" id="curr_compass_y"></label>
               </div>
               <div class="row">
                 <label class="col-sm-2 col-sm-offset-2 control-label">z</label>
                 <div class="col-sm-3" style="padding-top: 7px">
-                  <input id="compass_z_slider" type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
+                  <input id="compass_z_slider" type="text" data-provide="slider" data-slider-min="-1000000" data-slider-max="1000000" data-slider-step="1"/>
                 </div>
                 <label class="col-sm-2 control-label" id="curr_compass_z"></label>
               </div>

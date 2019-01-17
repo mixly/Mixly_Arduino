@@ -603,7 +603,6 @@ var display = function(name) {
 	});
 
 	mod.set_pixel = new Sk.builtin.func(function(x, y, brightness) {
-	    debugger;
 		setLED(parseInt(x.v), parseInt(y.v), parseInt(brightness.v));
 	});
 
