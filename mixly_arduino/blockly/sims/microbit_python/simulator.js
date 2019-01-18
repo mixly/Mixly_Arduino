@@ -440,7 +440,6 @@ var ui = {
         });
 
         if(!flag){//用户没有初始化这一列,就新增这一列
-            debugger;
             ui.AddPinOption(type.split('_')[0]);
             var newRowId = ui.pinCount.rowid;
             ui.bindDeletePinBtnEvent('#btn_row' + newRowId );

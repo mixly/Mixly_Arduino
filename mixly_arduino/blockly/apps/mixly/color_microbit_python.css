@@ -504,3 +504,6 @@ mb_led_brightness_0 {	background-color: #000; }
 	margin-top: 7px;
 	margin-right: 2px;
 }
+.col-sm-4 >.slider-horizontal{
+	width: 100%;
+}
