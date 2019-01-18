@@ -36,9 +36,6 @@ var sm = {
         if (eq(sm.preSnapshot, sm.snapshot)) {
             return;
         }
-        if( sm.time == 1600) {
-            debugger;
-        }
         if (sm.time == sm.preTime && sm.snapshotArr != []) {
             sm.preSnapshot = $.extend(true, {}, sm.snapshot);
             sm.snapshotArr[sm.lenSnapshotArr - 1]['snapshot'] = $.extend(true, {}, sm.snapshot);
