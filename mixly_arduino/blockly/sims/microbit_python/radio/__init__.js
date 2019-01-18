@@ -4,13 +4,12 @@ var $builtinmodule = function (name) {
             power: 0
         }
     };
-
     radio = mod.data;
 
     mod.RATE_250KBIT = Sk.builtin.int_(250);
     mod.RATE_1MBIT = Sk.builtin.int_(1000);
     mod.RATE_2MBIT = Sk.builtin.int_(2000);
-    function check(){
+    function checkRadioSetting(){
         if(typeof(radio) !== "undefined") {
             var tuned = true;
 
@@ -56,7 +55,7 @@ var $builtinmodule = function (name) {
 
     mod.on = new Sk.builtin.func(function() {
         mod.data.power = mod.data.power > 0 ? mod.data.power : 1;
-        check();
+        checkRadioSetting();
     });
 
     mod.off = new Sk.builtin.func(function() {
@@ -90,7 +89,7 @@ var $builtinmodule = function (name) {
         delete mod.data.fn_send;
         delete mod.data.fn_receive;
         if(mod.data.power > 0){
-            check();
+            checkRadioSetting();
         }
     };
     config();

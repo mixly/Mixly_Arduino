@@ -1,11 +1,50 @@
-var uart = function(name) {
+//change uart Module name to uartModule to avoid pollute the namespace in window
+var uartModule = function(name) {
     var mod = {};
     mod.data = {
-        buffer:"",
+    };
+    uart = mod.data;
+    function checkUartSetting(){
+        if(typeof(uart) !== "undefined") {
+            var tuned = true;
+            console.log
+            if($('#uart_baudrate').val() != uart.baudrate) {
+                $('#uart_status').html("Baudrate doesn't match: currently set to " + uart.baudrate);
+                tuned = false;
+            }
+            if(typeof(uart.tx) != 'undefined' && typeof(uart.rx) != 'undefined'){
+                if($('#uart_tx').val() != uart.tx) {
+                    $('#uart_status').html("Pin tx doesn't match: currently set to " + uart.tx);
+                    tuned = false;
+                }
+                if($('#uart_rx').val() != uart.tx) {
+                    $('#uart_status').html("Pin rx doesn't match: currently set to " + uart.rx);
+                    tuned = false;
+                }
+            }            
+            if(tuned) {
+                $('#uart_status').html("Tuned in to uart module");
+                uart.uartui_read = function(message) {
+                    $('#uart_status').html("Uart read message: " + message);
+                   
+                }
+                uart.uartui_write = function(message) {
+                    if(message.slice(-1)==='\n')
+                      $('#print_area').append('<span style="display:block;">'+message+'</span>');
+                    else
+                      $('#print_area').append('<span>'+ message +'</span>');
+                }
+            }
+            else{
+                delete uart.uartui_read;
+                delete uart.uartui_write;
+            }
+
+        }
     }
     var init = function(baudrate, bits, parity, stop, tx, rx) {
         if(baudrate === undefined)
-            baudrate = Sk.builtin.int_(9600);
+            baudrate = Sk.builtin.int_(115200);
         if(bits === undefined)
             bits = Sk.builtin.int_(8);
         if(parity === undefined)
@@ -22,33 +61,48 @@ var uart = function(name) {
         mod.data.stop = stop.v;
         mod.data.tx = tx.v;
         mod.data.rx = rx.v;
-        delete mode.data.uartui_write;
-        delete mode.data.uartui_read;
+        mod.data.buffer = "";
+        delete mod.data.uartui_read;
+        delete mod.data.uartui_write;
     }
 
     init.co_varnames = ['baudrate', 'bits', 'parity', 'stop', 'tx', 'rx'];
     init.$defaults = [Sk.builtin.int_(9600), Sk.builtin.int_(8), Sk.builtin.none, Sk.builtin.int_(1), Sk.builtin.none, Sk.builtin.none];
     init.co_numargs = 6;
     mod.init = new Sk.builtin.func(init);
-    var
     mod.any = new Sk.builtin.func(function() {
-        if(mod.data.buffer.length > 0)
+        checkUartSetting();
+        if(mod.data.uartui_read && mod.data.buffer.length > 0)
             return Sk.builtin.bool(true);
         else
             return Sk.builtin.bool(false);
     });
 
     var read = function(){
-        if(mod.data.buffer.length > 0)
+        checkUartSetting();
+        if(mod.data.uartui_read && mod.data.buffer.length > 0){
             var content = mod.data.buffer;
             mod.data.buffer = "";
+            mod.data.uartui_read(content);
             return Sk.builtin.str(content);
-        else
+        }    
+        else{
             return Sk.builtin.none;
+        }
+    }
+    var write = function(message){
+        checkUartSetting();
+        if(mod.data.uartui_write) {
+            mod.data.uartui_write(message.v);
+        }
     }
     mod.read = new Sk.builtin.func(read);
+    mod.write = new Sk.builtin.func(write);
+
+    ui.bindUartSendMessageEvent();
     return mod;
 }
+
 var $builtinmodule = function (name) {
     var mod = {
         data: {
@@ -85,77 +139,118 @@ var $builtinmodule = function (name) {
     ui.bindTemperatureEvent('temperature', mod.data, 'temperature');
 
     var ioPinDigital = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
-        $loc.__init__ = new Sk.builtin.func(function(self) {
+        $loc.__init__ = new Sk.builtin.func(function(self, name) {
+            self.name = name.v;
             self.value = 0;
         });
 
         $loc.read_digital = new Sk.builtin.func(function(self){
+            var flag = false;
+            $('select.pinOption').each(function(){
+                if($(this).val()==self.name){
+                    flag = true;
+                    var id = $(this).attr('id').split('select_row').join('');
+                    self.value = parseInt($('#curr_pinValue'+id).text());
+                }
+            });
+            if(!flag){//找不到就新建一个
+                ui.updateMicrobitPins('digital',self.name,self.value);
+            }
             return Sk.builtin.int_(self.value);
         });
 
         $loc.write_digital = new Sk.builtin.func(function(self, value){
             self.value = value.v == 1? 1: 0;
-            ui.updateMicrobitPins();
+            ui.updateMicrobitPins('digital',self.name,self.value);
         });
     }, "MicroBitDigitalPin", []);
 
-    mod.pin5 = new ioPinDigital();
-    mod.pin6 = new ioPinDigital();
-    mod.pin7 = new ioPinDigital();
-    mod.pin8 = new ioPinDigital();
-    mod.pin9 = new ioPinDigital();
-    mod.pin11 = new ioPinDigital();
-    mod.pin12 = new ioPinDigital();
-    mod.pin13 = new ioPinDigital();
-    mod.pin14 = new ioPinDigital();
-    mod.pin15 = new ioPinDigital();
-    mod.pin16 = new ioPinDigital();
-    mod.pin19 = new ioPinDigital();
-    mod.pin20 = new ioPinDigital();
+    mod.pin5 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(5));
+    mod.pin6 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(6));
+    mod.pin7 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(7));
+    mod.pin8 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(8));
+    mod.pin9 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(9));
+    mod.pin11 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(11));
+    mod.pin12 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(12));
+    mod.pin13 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(13));
+    mod.pin14 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(14));
+    mod.pin15 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(15));
+    mod.pin16 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(16));
+    mod.pin19 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(19));
+    mod.pin20 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(20));
 
     var ioPinAnalog = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
-        $loc.__init__ = new Sk.builtin.func(function(self) {
+        $loc.__init__ = new Sk.builtin.func(function(self,name) {
             self.value = 0;
+            self.name = name.v
             self.period_us = 35;
         });
 
         $loc.read_analog = new Sk.builtin.func(function(self) {
+            var flag = false;//是否能够找到该列
+            $('select.pinOption').each(function(){
+                if($(this).val()==self.name){
+                    flag = true;
+                    var id = $(this).attr('id').split('select_row').join('');
+                    self.value = parseInt($('#curr_pinValue'+id).text());
+                }
+            });
+            if(!flag){//找不到就新建一个
+                ui.updateMicrobitPins('analog',self.name,self.value);
+            }
             return Sk.builtin.int_(self.value);
+
         });
 
         $loc.write_analog = new Sk.builtin.func(function(self, value) {
             self.value = value.v;
-            ui.updateMicrobitPins();
+            ui.updateMicrobitPins('analog',self.name,self.value);
         });
 
         $loc.set_analog_period = new Sk.builtin.func(function(self, period) {
             self.period_us = period.v * 1000;
-            ui.updateMicrobitPins();
+            ui.updateUIAnalogPeriod(self.name,self.period_us);
         });
 
         $loc.set_analog_period_microseconds = new Sk.builtin.func(function(self, period) {
             self.period_us = period.v;
-            ui.updateMicrobitPins();
+            ui.updateUIAnalogPeriod(self.name,self.period_us);
         });
 
     }, "MicroBitAnalogPin", []);
-    mod.pin3 = new ioPinAnalog();
-    mod.pin4 = new ioPinAnalog();
-    mod.pin10 = new ioPinAnalog();
+    mod.pin3 = Sk.misceval.callsim(ioPinAnalog, Sk.builtin.int_(3));
+    mod.pin4 = Sk.misceval.callsim(ioPinAnalog, Sk.builtin.int_(4));
+    mod.pin10 = Sk.misceval.callsim(ioPinAnalog, Sk.builtin.int_(10));
 
     var ioPinTouch = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
-        $loc.__init__ = new Sk.builtin.func(function(self) {
+        $loc.__init__ = new Sk.builtin.func(function(self,name) {
+            self.name = name.v;
             self.touched = false;
         });
 
         $loc.is_touched = new Sk.builtin.func(function(self) {
+            var flag = false;
+            $('select.pinOption').each(function(){
+                if($(this).val()==self.name){
+                    flag = true;
+                    var id = $(this).attr('id').split('select_row').join('');
+                    self.touched = parseInt($('#curr_pinValue'+id).text()) === 1 ? true : false;
+                }
+            });
+            if(!flag){
+                 ui.updateMicrobitPins('touch',self.name,self.touched);
+            }
             return Sk.builtin.bool(self.touched);
         });
     }, "MicroBitTouchPin", []);
 
-    mod.pin0 = new ioPinTouch();
-    mod.pin1 = new ioPinTouch();
-    mod.pin2 = new ioPinTouch();
+    mod.pin0 = Sk.misceval.callsim(ioPinTouch, Sk.builtin.int_(0));
+    mod.pin1 = Sk.misceval.callsim(ioPinTouch, Sk.builtin.int_(1));
+    mod.pin2 = Sk.misceval.callsim(ioPinTouch, Sk.builtin.int_(2));
+    ui.bindAddPinBtnEvent('digital');
+    ui.bindAddPinBtnEvent('analog');
+    ui.bindAddPinBtnEvent('touch');
+    
 
     mod.Button = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self) {
@@ -461,7 +556,7 @@ var $builtinmodule = function (name) {
     */
 
     mod.uart = new Sk.builtin.module();
-    mod.uart.$d = new uart("microbit.uart");
+    mod.uart.$d = new uartModule("microbit.uart");
 
 
     return mod;

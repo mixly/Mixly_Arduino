@@ -23,6 +23,7 @@
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="js/lib/bootstrap/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/lib/bootstrap/bootstrap-slider.min.js"></script>
+  <script type="text/javascript" src="js/lib/bootstrap/bootstrap-switch.js"></script>
   <script type="text/javascript" src="js/lib/echarts.min.js"></script>
   <script type="text/javascript" src="js/conf/common.js"></script>
   <script type="text/javascript" src="microbit[py]/myblock.js"></script>
@@ -99,6 +100,7 @@
   <script src="../../sims/microbit_python/simulator.js" type="application/javascript"></script>
   <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/bootstrap.min.css"/>
   <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/bootstrap-slider.min.css"/>
+  <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/bootstrap-switch.min.css"/>
   <link rel="stylesheet" type="text/css" href="color_microbit_python.css" />
 
   <script>
@@ -373,8 +375,36 @@ function init() {
 
         Sk.configure({
             output: function(lineText){
-                $('#print_area').append('<div class="row">' + lineText + '</div>');
+                if(lineText.slice(-1)==='\n')
+                  $('#print_area').append('<span style="display:block;">'+lineText+'</span>');
+                else
+                  $('#print_area').append('<span>'+lineText+'</span>');
             },
+            inputfun: function(prompt){
+                return new Promise((resolve, reject) => {
+                  $('#print_area').append('<span id="userInputSpan" style="display:block;">'+prompt+'<input style= "background-color:transparent;border:0;outline:none;" id="userInput" />'+'</span>');
+                  if($('.modal-dialog').is(':visible')===false){
+                    setTimeout(function(){
+                      $('#userInput').focus();
+                    },400);
+                  }
+                  else{
+                    setTimeout(function(){
+                      $('#userInput').focus();
+                    },50)
+                  }         
+                                         
+                  $('#userInput').keypress(function(event){
+                    if(event.keyCode === 13){
+                      var inputText = $(this).val();
+                      $('#userInputSpan').remove();
+                      $('#print_area').append('<span style="display:block;">'+ prompt + inputText +'</span>');
+                      resolve(inputText); 
+                    }
+                  });
+              });
+            },
+            inputfunTakesPrompt: true,
             read: builtinRead
         });
         var executionPromise = Sk.misceval.asyncToPromise(function() {
@@ -519,6 +549,7 @@ function init() {
               <label class="col-sm-2 control-label text-primary">模拟外部操作</label>
               <div class="col-sm-3">
                 <select class="form-control" id="monitor_select">
+                  <option value="pin">管脚</option>
                   <option value="button" selected="selected">按钮</option>
                   <option value="temperature">温度</option>
                   <option value="compass">指南针</option>
@@ -530,7 +561,21 @@ function init() {
                 </select>
               </div>
             </div>
-
+             <div id="monitor_pin_div" class="row monitor-div">
+                <div class="row">
+                    <label class="col-sm-2 control-label text-primary">模拟管脚</label>
+                    <div class="col-sm-3">
+                        <button id="add_digital_pin" class="btn-default form-control">添加数字管脚</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button id="add_analog_pin" class="btn-default form-control">添加模拟管脚</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button id="add_touch_pin" class="btn-default form-control">添加触摸管脚</button>
+                    </div>
+                </div>
+                <div id='pin_area'></div>
+             </div>
             <div id="monitor_button_div" class="row monitor-div">
               <label class="col-sm-2 control-label text-primary">模拟按下按钮</label>
               <div class="col-sm-2">
@@ -674,10 +719,10 @@ function init() {
               </div>
               <div id="monitor_uart_div" class="row monitor-div">
               <div class="row form-inline">
-                <label class="col-sm-2 control-label text-primary">模拟串口通讯</label>
-                <div class="col-sm-3 form-group">
+                <from class='form-inline'>
+                    <label class="col-sm-2 control-label text-primary">模拟串口通讯</label>
                     <label class="control-label" for='uart_baudrate'>波特率</label>
-                    <select id="uart_baudrate">
+                    <select id="uart_baudrate" class="form-control">
                       <option value="115200" selected="selected">115200</option>
                       <option value="57600">57600</option>
                       <option value="38400">38400</option>
@@ -686,32 +731,30 @@ function init() {
                       <option value="38400">14400</option>
                       <option value="38400">9600</option>
                     </select>
-                </div>
-                <div class="col-sm-3 form-group">
-                      <label class="" for='uart_rx'>rx</label>
-                      <input class="form-control" id="uart_rx" type="text" />
-                </div>
-                <div class="col-sm-3 form-group">
+                    <label class="" for='uart_rx'>rx</label>
+                    <input class="form-control" id="uart_rx" type="text" />
                     <label class="" for='uart_tx'>tx</label>
                     <input class="form-control" id="uart_tx" type="text" />
-                  </div>
+                </from>     
               </div>
-              <div class="row">
-                  <div class="col-sm-offset-2 col-sm-10" style="padding-top: 7px">
-                    <label class="control-label" for='radio_data'>消息</label>
-                    <textarea id="uart_data" type="text"></textarea>
-                  </div>
+              <div class="row" style="padding-top: 7px;">
+                <div class="col-sm-offset-2 col-sm-8">
+                    <label  style="vertical-align:top;" class="control-label" for='uart_data'>消息</label>
+                    <textarea style="width: 90%;min-height: 80px" id="uart_data" type="text"></textarea>
+                </div>
               </div>
               <div class="row">
                   <div class="col-sm-offset-5 col-sm-2" style="padding-top: 20px">
-                    <button id="send_radio_message" class="btn-default form-control">发送消息</button>
+                    <button id="send_uart_message" class="btn-default form-control">发送消息</button>
                   </div>
               </div>
               <div class="row">
-                  <span id='radio_status'></span>
+                  <span id='uart_status'></span>
               </div>
             </div><!-- /.monitor-->
-            <div id='print_area'></div>
+            <div class="row">
+              <pre id='print_area'></pre>
+            </div>
         </div>
         </div><!-- /.modal-body -->
       </div><!-- /.modal-content -->

@@ -1,6 +1,14 @@
 'use strict';
 
 var base_url = conf.url + '/blockly/sims/microbit_python/';
+//从管脚号数组中弹出指定的管脚号
+function popPin(pinArr, value){
+    for (each in pinArr){
+        if(pinArr[each] === value){
+            delete pinArr[each];
+        }
+    }
+}
 Sk.externalLibraries = {
     // added as a farewell message to a school direct student
     microbit: {
@@ -83,9 +91,16 @@ var ui = {
         });
         // 无线通信界面
        for (var each in ui.client_radio_data){
-            $('#radio_'+ each).val(ui.client_radio_data[each])
+            $('#radio_'+ each).val(ui.client_radio_data[each]);
        }
-
+       //管脚界面
+       //管脚计数器
+       ui.pinCount = {
+            digital: [5,6,7,8,9,11,12,13,14,15,16,19,20],
+            analog: [3,4,10],
+            touch: [0,1,2],
+            rowid: 0
+       };
         //neopixel
         $('#neopixel').hide();
 
@@ -133,6 +148,150 @@ var ui = {
     reset: function () {
 
     },
+    //新增管脚模板
+    pinDigitalModule: function(){
+        var module = '<div class="row form-line" id="row'+ ui.pinCount.rowid + '" pintype="digital" style="padding-top:7px;">'+
+            '<label class="col-sm-2 control-label">数字管脚#</label>'+
+            '<div class="col-sm-2">'+
+                '<select id="select_row'+ ui.pinCount.rowid +'" class="pinOption form-control">'+
+                    '<option value="5">5</option>'+
+                    '<option value="6">6</option>'+
+                    '<option value="7">7</option>'+
+                    '<option value="8">8</option>'+
+                    '<option value="9">9</option>'+
+                    '<option value="11">11</option>'+
+                    '<option value="12">12</option>'+
+                    '<option value="13">13</option>'+
+                    '<option value="14">14</option>'+
+                    '<option value="15">15</option>'+
+                    '<option value="16">16</option>'+
+                    '<option value="19">19</option>'+
+                    '<option value="20">20</option>'+
+                '</select>'+
+            '</div>'+
+            '<div class="col-sm-3 pinInput form-inline">'+
+                '<input id="pinValue'+ ui.pinCount.rowid +'" class="form-control" type="text" data-provide="slider" data-slider-min="0" data-slider-max="1" data-slider-step="1" data-slider-value="0"/>'+
+                '<label class="control-label"></label>'+
+            '</div>'+
+            '<div class="col-sm-1 col-sm-offest-2 form-inline">'+
+                '<span id="curr_pinValue'+ ui.pinCount.rowid + '">0</span>'+
+            '</div>'+
+            '<div class="col-sm-2 col-sm-offest-2 form-inline">'+
+                '<button id="btn_row'+ ui.pinCount.rowid + '" class="btn_deleterow btn-default form-control">删除</button>'+
+            '</div>'+
+       '</div>';
+       return module;
+    },
+    pinAnalogModule: function(){
+        var module = '<div class="row form-line" id="row'+ ui.pinCount.rowid + '" pintype="analog" style="padding-top:7px;">'+
+            '<label class="col-sm-2 control-label">模拟管脚#</label>'+
+            '<div class="col-sm-2">'+
+                '<select id="select_row'+ ui.pinCount.rowid +'" class="pinOption form-control">'+
+                    '<option value="3">3</option>'+
+                    '<option value="4">4</option>'+
+                    '<option value="10">10</option>'+
+                '</select>'+
+            '</div>'+
+            '<div class="col-sm-3 pinInput form-inline">'+
+                '<input id="pinValue'+ ui.pinCount.rowid +'" class="form-control" type="text" data-provide="slider" data-slider-min="0" data-slider-max="1024" data-slider-step="1"/>'+
+                '<label class="control-label"></label>'+
+            '</div>'+
+            '<div class="col-sm-1 col-sm-offest-1 form-inline">'+
+                '<span id="curr_pinValue'+ ui.pinCount.rowid + '">0</span>'+
+            '</div>'+
+            '<div class="col-sm-2 form-inline">'+
+                '<span>频率：</span>'+
+                '<span id="curr_pinPeriod'+ ui.pinCount.rowid + '">35</span>'+
+            '</div>'+
+            '<div class="col-sm-2 col-sm-offest-2 form-inline">'+
+                '<button id="btn_row'+ ui.pinCount.rowid + '" class="btn_deleterow btn-default form-control">删除</button>'+
+            '</div>'+
+       '</div>';
+       return module;
+    },
+    pinTouchModule: function(){
+        var module = '<div class="row form-line" id="row'+ ui.pinCount.rowid + '" pintype="touch" style="padding-top:7px;">'+
+            '<label class="col-sm-2 control-label">触摸管脚#</label>'+
+            '<div class="col-sm-2">'+
+                '<select id="select_row'+ ui.pinCount.rowid +'" class="pinOption form-control">'+
+                    '<option value="0">0</option>'+
+                    '<option value="1">1</option>'+
+                    '<option value="2">2</option>'+
+                '</select>'+
+            '</div>'+
+            '<div class="col-sm-3 pinInput switch">'+
+                '<input id="pinValue'+ ui.pinCount.rowid +'" data-on-color="danger" type="checkbox"/>'+
+                '<label class="control-label"></label>'+
+            '</div>'+
+            '<div class="col-sm-1 col-sm-offest-2 form-inline">'+
+                '<span id="curr_pinValue'+ ui.pinCount.rowid + '">0</span>'+
+            '</div>'+
+            '<div class="col-sm-2 form-inline">'+
+                '<button id="btn_row'+ ui.pinCount.rowid + '" class="btn_deleterow btn-default form-control">删除</button>'+
+            '</div>'+
+       '</div>';
+       return module;
+    },
+    //需要改进：能够使得管脚号不重复
+    AddPinOption: function(type,pinNum = 0){
+        if(type == 'digital'){
+            $('#pin_area').append(ui.pinDigitalModule());
+            var changeValue = function(thisSlider,thisSpan){
+                thisSpan.text(thisSlider.bootstrapSlider('getValue'));
+            }
+            var Slider = $("#pinValue"+ui.pinCount.rowid).bootstrapSlider();
+            var Span = $("#curr_pinValue"+ui.pinCount.rowid);
+            Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
+            $('.pinInput>.slider').css('width','100%');
+        }
+        if(type == 'analog'){
+            var thisRowId = ui.pinCount.rowid;
+            $('#pin_area').append(ui.pinAnalogModule());
+            var changeValue = function(thisSlider,thisSpan){
+                thisSpan.text(thisSlider.bootstrapSlider('getValue'));
+            }
+            var Slider = $("#pinValue"+thisRowId).bootstrapSlider();
+            var Span = $("#curr_pinValue"+thisRowId);
+            Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
+            $('.pinInput>.slider').css('width','100%');
+        }
+        if(type == 'touch'){
+            $('#pin_area').append(ui.pinTouchModule());
+            var thisRowId = ui.pinCount.rowid;
+            var Switch = $("#pinValue"+ui.pinCount.rowid).bootstrapSwitch({
+                onText: '触摸',
+                offText: '离开',
+                size:'Small',
+                onSwitchChange: function(event,state){                 
+                    if(state==true){
+                        $("#curr_pinValue"+thisRowId).text('1'); 
+                    }else{
+                        $("#curr_pinValue"+thisRowId).text('0'); 
+                    } 
+                }
+            });
+        }
+        ui.pinCount.rowid++;
+    },
+    deletePinOption: function(type,rowid){
+        ui.pinCount[type] -= 1;
+        $(rowid).remove();
+    },
+    bindAddPinBtnEvent: function(btn_type){
+        $('#add_'+ btn_type + '_pin').unbind('click').on('click',function(){
+            console.log('add pin button');
+            ui.AddPinOption(btn_type);
+            ui.bindDeletePinBtnEvent('#btn_row' + (ui.pinCount.rowid - 1));
+        });
+    },
+    bindDeletePinBtnEvent: function(id){
+        $(id).on('click',function(){
+            var row = $(this).parent().parent();
+            var type = row.attr('pintype');
+            var rowid = '#' + row.attr('id');
+            ui.deletePinOption(type,rowid);
+        });
+    },
     bindBtnEvent: function (btn_id, mod_btn_arr) {
         $('#' + btn_id).on("mousedown mouseup click", function(e) {
             for (var i = 0; i < mod_btn_arr.length; i ++) {
@@ -145,6 +304,7 @@ var ui = {
                         break;
                     case 'click':
                         mod_btn_arr[i].presses ++;
+                        console.log('click');
                         break;
                 }
             }
@@ -163,13 +323,33 @@ var ui = {
     //处理模拟器发送信息到缓冲区，点击确定才会生效！
     bindSendMessageEvent: function(btnId, data){
         var id = '#send_' + btnId + '_message';
-        $(id).on('click',function(){
-            if(data['buffer'].length < data['queue'])
+        if(btnId === 'radio'){
+            $(id).unbind('click').on('click',function(){
+            if(data['buffer'].length < data['queue']){
                 data['buffer'].push("\x00\x01\x00" + $('#'+ btnId + '_data').val());
-        });
+                $('#'+ btnId + '_data').val('');
+            }
+            });
+        }
+
+        else{
+            $(id).unbind('click').on('click',function(){
+                var message = $('#'+ btnId + '_data').val();
+                if((data['buffer'].length + message.length) < 128){
+                    data['buffer'] = data['buffer'] + message;
+                }
+                else{
+                    data['buffer'] = data['buffer'] + message.slice(0, 128-data['buffer'].length);
+                }
+                $('#'+ btnId + '_data').val('');
+            });
+        }
     },
     bindRadioSendMessageEvent: function(){
         ui.bindSendMessageEvent('radio', radio)
+    },
+    bindUartSendMessageEvent: function(){
+        ui.bindSendMessageEvent('uart', uart)
     },
     bindCompassEvent: function (sliderId, data, key) {
         ui.bindSliderEvent(sliderId, data, key);
@@ -198,8 +378,48 @@ var ui = {
     output: function (s) {
         console.log(s);
     },
-    updateMicrobitPins: function () {
-        //not implement
+    updateMicrobitPins: function (type, pinName, newValue) {
+        var flag = false;//能不能在ui中找到对应管脚列的标志
+        $('select.pinOption').each(function(){
+            if($(this).val()==pinName){
+                flag = true;
+                var rowid = $(this).attr('id').split('select_row').join('');
+                if(type ==='analog_period'){//更改管脚频率
+                    $('#curr_pinPeriod'+rowid).text(newValue);
+                }
+                else{//更改管脚值
+                    $('#curr_pinValue'+rowid).text(newValue);
+                    if(type === 'digital'||'analog'){
+                        $("#pinValue"+rowid).bootstrapSlider('setValue',newValue);
+                    }
+                    else if(type === 'touch'){
+                        $("#pinValue"+(ui.pinCount.rowid-1)).bootstrapSwitch('setState',newValue == 1);
+                    }
+                }   
+            }
+        });
+
+        if(!flag){//用户没有初始化这一列,就新增这一列
+                ui.AddPinOption(type.split('_')[0]);
+                ui.bindDeletePinBtnEvent('#btn_row' + (ui.pinCount.rowid - 1));
+                $('#select_row'+(ui.pinCount.rowid-1)).val(pinName);
+                if(type==='analog_period'){//更改管脚频率
+                    $('#curr_pinPeriod'+(ui.pinCount.rowid-1)).text(newValue);
+                }
+                else{
+                    $('#curr_pinValue'+(ui.pinCount.rowid-1)).text(newValue);
+                    if(type != 'touch'){
+                        $("#pinValue"+(ui.pinCount.rowid-1)).bootstrapSlider('setValue',newValue);
+                    }
+                    else{
+                        $("#pinValue"+(ui.pinCount.rowid-1)).bootstrapSwitch('setState',newValue == 1);
+                    }
+                }            
+           }
+    },
+    //更新模拟管脚的频率
+    updateUIAnalogPeriod: function(name,value){
+        ui.updateMicrobitPins('analog_period',name,value)
     },
     updateNeopixel: function (leds) {
         var el = $('#neopixel');
@@ -254,3 +474,4 @@ var sim = {
 $(function () {
     ui.init();
 });
+
