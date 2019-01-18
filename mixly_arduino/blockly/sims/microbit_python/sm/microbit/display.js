@@ -1,6 +1,6 @@
 
 
-var display = function(name) {
+var sm_display = function(name) {
 	var leds = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]];
 	var letters = {
 		A: [" 99  ",
@@ -569,6 +569,7 @@ var display = function(name) {
 	function setLED(x, y, brightness) {
 	    ui.setLED(x, y, brightness);
 		leds[y][x] = brightness;
+		sm.set_pixel(x, y, brightness);
 	}
 
 	function clearScreen() {
@@ -664,6 +665,7 @@ var display = function(name) {
 					}
 
 					i++;
+					sm.time += delay.v;
 					setTimeout(showNextFrame, delay.v)
 				}
 

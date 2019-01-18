@@ -475,8 +475,9 @@ mb_led_brightness_0 {	background-color: #000; }
 	display: none;
 }
 
-#mb_run {
+#mb_run, #sm_run, #save_xml {
 	font-size: 12px;
+	margin-left: 5px;
 }
 
 #neopixel {

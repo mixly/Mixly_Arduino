@@ -5,7 +5,6 @@ var $builtinmodule = function(name) {
 	mod._data.bpm = mbData.music.bpm;
 	mod._data.duration = mbData.music.duration;
 	mod._data.octave = mbData.music.octave;
-	
 	var set_tempo = function(ticks, bpm) {
 		if(ticks === undefined) 
 			ticks = new Sk.builtin.int_(mbData.music.ticks);
@@ -160,7 +159,7 @@ var $builtinmodule = function(name) {
 			len = new Sk.builtin.int_(-1);
 		if(wait === undefined)
 			wait = new Sk.builtin.bool(true);
-		
+
 		return sim.runAsync(function(resolve, reject) {
 			if(!mod._data.audioCtx) {
 				mod._data.audioCtx = new (window.AudioContext || 	window.webkitAudioContext)();
@@ -174,12 +173,15 @@ var $builtinmodule = function(name) {
 			osc.type = 'sine';
 			osc.frequency.value = frequency.v;
 			osc.connect(mod._data.audioCtx.destination);
-			osc.start();
+			//osc.start();
+			sm.music.set_pitch(pin, frequency.v);
 			if(len.v > 0) {
 				setTimeout(function() {
-					osc.stop();
+					//osc.stop();
+                    sm.time += len.v;
+                    sm.music.set_pitch(pin, 0);
 					if(wait.v) {
-						osc.stop();
+						//osc.stop();
 						resolve();
 					}
 				}, len.v);	

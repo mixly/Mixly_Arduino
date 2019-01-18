@@ -98,6 +98,11 @@
   <script src="js/skulpt/dist/skulpt-stdlib.js" type="application/javascript"></script>
   <script src="../../sims/microbit_python/data.js" type="application/javascript"></script>
   <script src="../../sims/microbit_python/simulator.js" type="application/javascript"></script>
+  <script src="../../sims/microbit_python/sm/task_conf.js" type="application/javascript"></script>
+  <script src="../../sims/microbit_python/sm/process.js" type="application/javascript"></script>
+  <script src="../../sims/microbit_python/sm/sm_util.js" type="application/javascript"></script>
+  <script src="../../sims/microbit_python/sm/sm.js" type="application/javascript"></script>
+  <script src="../../sims/microbit_python/sk.js" type="application/javascript"></script>
   <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/bootstrap.min.css"/>
   <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/bootstrap-slider.min.css"/>
   <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/bootstrap-switch.min.css"/>
@@ -443,6 +448,12 @@ function init() {
             <td class="tabmin">
                 <button id='mb_run' onclick="mb_run()" class="btn-primary">Run</button>
             </td>
+            <td class="tabmin">
+              <button id='sm_run' onclick="sm_run()" class="btn-success">Mark</button>
+            </td>
+            <td class="tabmin">
+              <button id='save_xml' onclick="saveXmlFileAs()" class="btn-success">Save</button>
+            </td>
             <td class="tabmode">
               <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_MicroPython[NRF51822_microbit].html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light';font-size:12px;">高级视图</a>
             </td>
@@ -545,6 +556,9 @@ function init() {
             </div>
             <div class="row monitor-div" id="neopixel">
             </div>
+            <div class="row" style="margin-top: 10px;margin-bottom: 10px;text-align: center;">
+              <label class="text-danger" id="tip"></label>
+            </div>
             <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
               <label class="col-sm-2 control-label text-primary">模拟外部操作</label>
               <div class="col-sm-3">
@@ -554,7 +568,6 @@ function init() {
                   <option value="temperature">温度</option>
                   <option value="compass">指南针</option>
                   <option value="HCSR04">超声波测距</option>
-                  <option>舵机</option>
                   <option value="accelerometer">加速度计</option>
                   <option value="radio">无线通讯</option>
                   <option value="uart">串口通讯</option>
@@ -609,21 +622,21 @@ function init() {
               <div class="row">
                 <label class="col-sm-2 col-sm-offset-2 control-label">x</label>
                 <div class="col-sm-3" style="padding-top: 7px">
-                  <input id="compass_x_slider" type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
+                  <input id="compass_x_slider" type="text" data-provide="slider" data-slider-min="-1000000" data-slider-max="1000000" data-slider-step="1"/>
                 </div>
                 <label class="col-sm-2 control-label" id="curr_compass_x"></label>
               </div>
               <div class="row">
                 <label class="col-sm-2 col-sm-offset-2 control-label">y</label>
                 <div class="col-sm-3" style="padding-top: 7px">
-                  <input id="compass_y_slider" type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
+                  <input id="compass_y_slider" type="text" data-provide="slider" data-slider-min="-1000000" data-slider-max="1000000" data-slider-step="1"/>
                 </div>
                 <label class="col-sm-2 control-label" id="curr_compass_y"></label>
               </div>
               <div class="row">
                 <label class="col-sm-2 col-sm-offset-2 control-label">z</label>
                 <div class="col-sm-3" style="padding-top: 7px">
-                  <input id="compass_z_slider" type="text" data-provide="slider" data-slider-min="-1024" data-slider-max="1024" data-slider-step="1"/>
+                  <input id="compass_z_slider" type="text" data-provide="slider" data-slider-min="-1000000" data-slider-max="1000000" data-slider-step="1"/>
                 </div>
                 <label class="col-sm-2 control-label" id="curr_compass_z"></label>
               </div>
@@ -636,47 +649,52 @@ function init() {
               </div>
               <label class="col-sm-2 control-label" id="curr_HCSR04"></label>
             </div>
-            <div id="monitor_radio_div" class="row monitor-div">
+            <div id="monitor_radio_div" class="monitor-div">
               <div class="row">
                 <label class="col-sm-2 control-label text-primary">模拟无线通讯</label>
-                <div class="col-sm-4">
-                    <label class="control-label" for='radio_channel'>频道</label>
-                    <input id="radio_channel" type="text" />
+                <label class="control-label col-sm-1" for='radio_channel'>频道</label>
+                <div class="col-sm-2">
+                  <input id="radio_channel" type="text" class="form-control"/>
                 </div>
-                 <div class="col-sm-6">
-                      <label class="control-label" for='radio_address'>地址(十六进制)</label>
-                      <input id="radio_address" type="text" />
-                   </div>
+                <label class="control-label col-sm-2" for='radio_address'>地址(16进制)</label>
+                <div class="col-sm-3">
+                    <input id="radio_address" type="text" class="form-control"/>
+                </div>
+              </div>
+              <div class="row" style="padding-top: 7px">
+                <label class="control-label col-sm-offset-2 col-sm-1" for='radio_group'>组别</label>
+                <div class="col-sm-2">
+                  <input id="radio_group" type="text" class="form-control"/>
+                </div>
+                <label class="control-label col-sm-2" for='radio_data_rate'>传输速率</label>
+                <div class="col-sm-3">
+                  <select id="radio_data_rate" class="form-control">
+                    <option value="1000" selected="selected">RATE_1MBIT</option>
+                    <option value="250">RATE_250KBIT</option>
+                    <option value="2000">RATE_2MBIT</option>
+                  </select>
+                </div>
+                <div class="col-sm-2">
+                  <button id="radio_update_config" class="btn-default form-control">更新配置</button>
+                </div>
+              </div>
+              <div class="row" style="padding-top: 17px">
+                <label class="control-label col-sm-offset-2 col-sm-1" for='radio_data'>消息</label>
+                <div class="col-sm-7">
+                  <input id="radio_data" type="text" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+                  <button id="send_radio_message" class="btn-default form-control">发送消息</button>
+                </div>
               </div>
               <div class="row">
-                  <div class="col-sm-offset-2 col-sm-4" style="padding-top: 7px">
-                    <label class="control-label" for='radio_group'>组别</label>
-                    <input id="radio_group" type="text" />
-                  </div>
-                  <div class="col-sm-6" style="padding-top: 7px">
-                    <label class="control-label" for='radio_address'>传输速率</label>
-                    <select id="radio_data_rate">
-                      <option value="RATE_1MBIT" selected="selected">RATE_1MBIT</option>
-                      <option value="RATE_250KBIT">RATE_250KBIT</option>
-                      <option value="RATE_2MBIT">RATE_2MBIT</option>
-                    </select>
-                  </div>
+                <label id="radio_status" class="control-label col-sm-offset-2 col-sm-10 text-danger" style="text-align: left;"></label>
               </div>
               <div class="row">
-                  <div class="col-sm-offset-2 col-sm-10" style="padding-top: 7px">
-                    <label class="control-label" for='radio_data'>消息</label>
-                    <input id="radio_data" type="text" />
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-sm-offset-5 col-sm-2" style="padding-top: 20px">
-                    <button id="send_radio_message" class="btn-default form-control">发送消息</button>
-                  </div>
-              </div>
-              <div class="row">
-                  <span id='radio_status'></span>
+                <pre id='radio_output' class="col-sm-offset-2" style="max-height:300px;overflow: auto;display: none;"></pre>
               </div>
             </div>
+
             <div id="monitor_accelerometer_div" class="monitor-div">
               <div class="row">
                 <label class="col-sm-2 control-label text-primary">模拟加速度计</label>

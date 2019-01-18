@@ -17,6 +17,7 @@ Sk.externalLibraries = {
             base_url + 'microbit/display.js',
             base_url + 'microbit/accelerometer.js',
             base_url + 'microbit/compass.js',
+            base_url + 'microbit/uart.js',
         ]
     },
     music: {
@@ -32,42 +33,59 @@ Sk.externalLibraries = {
     neopixel: {
         path: conf.url + '/blockly/sims/microbit_python/neopixel/__init__.js'
     },
+    //status machine
+    sm_microbit: {
+        path: base_url + 'sm/microbit/__init__.js',
+        dependencies: [
+            base_url + 'sm/microbit/display.js',
+            base_url + 'sm/microbit/accelerometer.js',
+            base_url + 'sm/microbit/compass.js',
+            base_url + 'sm/microbit/uart.js',
+        ]
+    },
+    sm_music: {
+        path: base_url + 'sm/music/__init__.js'
+    },
 }
 
 
 var ui = {
-    //模拟器radio初始化配置
-    client_radio_data: {
-        channel: mbData.radio.channel,
-        address:  mbData.radio.address,
-        group:  mbData.radio.group,
-        data_rate: mbData.radio.data_rate,
-        queue:  mbData.radio.queue,
-        length:  mbData.radio.length,
-        power: mbData.radio.power
-    },
+    inited: false,
     init: function () {
+        //模态框关闭时kill program
+        if (!ui.inited) {
+            $('#simModal').on('hidden.bs.modal', function () {
+                Sk.execLimit = 0;
+            });
+        }
+
         // 初始化模拟外部操作界面
+        $("#monitor_select").val("button");
+        $("#monitor_select").trigger('change');
         var val = $('#monitor_select').children('option:selected').val();
         $('#monitor_' + val + '_div').show();
-        $('#monitor_select').change(function () {
-            var options = $(this).children('option');
-            for (var i = 0; i < options.length; i ++) {
-                var id = '#monitor_' + options[i].value + '_div';
-                $(id).hide();
-            }
-            var val = $(this).children('option:selected').val();
-            var id = '#monitor_' + val + '_div';
-            $(id).show();
-        });
+        if (!ui.inited) {
+            $('#monitor_select').change(function () {
+                var options = $(this).children('option');
+                for (var i = 0; i < options.length; i ++) {
+                    var id = '#monitor_' + options[i].value + '_div';
+                    $(id).hide();
+                }
+                var val = $(this).children('option:selected').val();
+                var id = '#monitor_' + val + '_div';
+                $(id).show();
+            });
+        }
 
         // 温度界面
         var ts = $("#temperature_slider").slider();
         ts.slider('setValue', mbData.temperature);
         $("#curr_temperature").text(mbData.temperature);
-        $("#temperature_slider").on("slide", function(slideEvt) {
-            $("#curr_temperature").text(slideEvt.value);
-        });
+        if (!ui.inited) {
+            $("#temperature_slider").on("slide", function (slideEvt) {
+                $("#curr_temperature").text(slideEvt.value);
+            });
+        }
 
         // 指南针界面
         var compass_el_arr = ['compass_heading', 'compass_x', 'compass_y', 'compass_z'];
@@ -76,22 +94,32 @@ var ui = {
             var sdr = $("#" + compass_el_arr[i] + "_slider").slider();
             sdr.slider('setValue', mbData.compass[key]);
             $("#curr_" + compass_el_arr[i]).text(mbData.compass[key]);
-            $("#" + compass_el_arr[i] + "_slider").on("slide", function(slideEvt) {
-                var sliderId = slideEvt.currentTarget.getAttribute('id').replace('_slider', '');
-                $("#curr_" + sliderId).text(slideEvt.value);
-            });
+            if (!ui.inited) {
+                $("#" + compass_el_arr[i] + "_slider").on("slide", function (slideEvt) {
+                    var sliderId = slideEvt.currentTarget.getAttribute('id').replace('_slider', '');
+                    $("#curr_" + sliderId).text(slideEvt.value);
+                });
+            }
         }
 
         // 超声波测距界面
         var ts = $("#HCSR04_slider").slider();
         ts.slider('setValue', mbData.distance);
         $("#curr_HCSR04").text(mbData.distance);
-        $("#HCSR04_slider").on("slide", function(slideEvt) {
-            $("#curr_HCSR04").text(slideEvt.value);
-        });
+        if (!ui.inited) {
+            $("#HCSR04_slider").on("slide", function (slideEvt) {
+                $("#curr_HCSR04").text(slideEvt.value);
+            });
+        }
         // 无线通信界面
-       for (var each in ui.client_radio_data){
-            $('#radio_'+ each).val(ui.client_radio_data[each]);
+       for (var each in mbData.radio){
+            $('#radio_'+ each).val(mbData.radio[each])
+       }
+
+       if (!ui.inited) {
+           $('#radio_update_config').off('click').on('click', function () {
+               ui.updateRadioStatus('Radio module not detected - did you include "import radio"?');
+           });
        }
        //管脚界面
        //管脚计数器
@@ -139,14 +167,21 @@ var ui = {
             var sdr = $("#" + accelerometer_el_arr[i] + "_slider").slider();
             sdr.slider('setValue', mbData.accelerometer[key]);
             $("#curr_" + accelerometer_el_arr[i]).text(mbData.accelerometer[key]);
-            $("#" + accelerometer_el_arr[i] + "_slider").on("slide", function(slideEvt) {
-                var sliderId = slideEvt.currentTarget.getAttribute('id').replace('_slider', '');
-                $("#curr_" + sliderId).text(slideEvt.value);
-            });
+            if (!ui.inited) {
+                $("#" + accelerometer_el_arr[i] + "_slider").on("slide", function (slideEvt) {
+                    var sliderId = slideEvt.currentTarget.getAttribute('id').replace('_slider', '');
+                    $("#curr_" + sliderId).text(slideEvt.value);
+                });
+            }
         }
-    },
-    reset: function () {
 
+
+        $('#tip').text();
+        $('#tip').hide();
+
+        ui.clearScreen();
+        //绑定事情只需要初始化一次
+        ui.inited = true;
     },
     //新增管脚模板
     pinDigitalModule: function(){
@@ -293,7 +328,7 @@ var ui = {
         });
     },
     bindBtnEvent: function (btn_id, mod_btn_arr) {
-        $('#' + btn_id).on("mousedown mouseup click", function(e) {
+        $('#' + btn_id).off("mousedown mouseup click").on("mousedown mouseup click", function(e) {
             for (var i = 0; i < mod_btn_arr.length; i ++) {
                 switch(e.type) {
                     case 'mousedown':
@@ -312,7 +347,7 @@ var ui = {
     },
     bindSliderEvent: function (sliderId, data, key, cb) {
         var id = "#" + sliderId + "_slider";
-        $(id).on('slide', function (slideEvt) {
+        $(id).off('slide').on('slide', function (slideEvt) {
             data[key] = slideEvt.value;
             $("#curr_" + sliderId).text(slideEvt.value);
             if (cb != undefined) {
@@ -320,15 +355,14 @@ var ui = {
             }
         })
     },
-    //处理模拟器发送信息到缓冲区，点击确定才会生效！
     bindSendMessageEvent: function(btnId, data){
         var id = '#send_' + btnId + '_message';
         if(btnId === 'radio'){
             $(id).unbind('click').on('click',function(){
-            if(data['buffer'].length < data['queue']){
-                data['buffer'].push("\x00\x01\x00" + $('#'+ btnId + '_data').val());
-                $('#'+ btnId + '_data').val('');
-            }
+                if(data['buffer'].length < data['queue']){
+                    data['buffer'].push("\x00\x01\x00" + $('#'+ btnId + '_data').val());
+                    $('#'+ btnId + '_data').val('');
+                }
             });
         }
 
@@ -345,8 +379,13 @@ var ui = {
             });
         }
     },
-    bindRadioSendMessageEvent: function(){
-        ui.bindSendMessageEvent('radio', radio)
+    bindRadioSendMessageEvent: function(elementId, data){
+        ui.bindSendMessageEvent(elementId, data)
+    },
+    bindRadioUpdateConfigEvent: function (elementId, data) {
+        $('#' + elementId).off('click').on('click', function () {
+            ui.updatePeerRadioParam(data);
+        });
     },
     bindUartSendMessageEvent: function(){
         ui.bindSendMessageEvent('uart', uart)
@@ -364,7 +403,7 @@ var ui = {
         ui.bindSliderEvent(sliderId, data, key, cb);
     },
     bindAccelerometerGestureEvent: function (btnId, data, gesture) {
-        $('#' + btnId).on('click', function () {
+        $('#' + btnId).off('click').on('click', function () {
             if (data.currentGesture != gesture) {
                 data.currentGesture = gesture;
                 data.gestureHistory.push(gesture);
@@ -444,7 +483,56 @@ var ui = {
         if (gesture != '') {
             $('#' + gesture.replace(' ', '')).css('background-color', '#5cb85c');
         }
-    }
+    },
+    updateRadioStatus: function (text) {
+        $('#radio_status').html(text);
+    },
+    updateRadioReceivedMessage: function (text) {
+        var el = $('#radio_output');
+        if (el.css('display') == 'none') {
+            el.show();
+        }
+        if (!text.endsWith('\n')) {
+            text += '\n';
+        }
+        el.text(el.text() + text);
+    },
+    updatePeerRadioParam: function (data) {
+        var feedback = '';
+        if($('#radio_channel').val() != data.channel) {
+            feedback = "Channel doesn't match: currently set to " + data.channel;
+            data.peer = false;
+        } else if($('#radio_group').val() != data.group) {
+            feedback = "Group doesn't match: currently set to " + data.group;
+            data.peer = false;
+        } else if($('#radio_address').val() != data.address) {
+            feedback = "Address doesn't match: currently set to " + data.address.toString(16);
+            data.peer = false;
+        } else if($('#radio_data_rate').val() != data.data_rate){
+            feedback = "Data rate doesn't match: currently set to " + data.data_rate;
+            data.peer = false;
+        } else {
+            data.peer = true;
+            feedback = "Tuned in to radio module";
+        }
+        ui.updateRadioStatus(feedback);
+    },
+    showTip: function (text) {
+        var el = $('#tip');
+        el.text(text);
+        el.show();
+    },
+    clearScreen: function () {
+        var x,y;
+        for(x = 0; x < 5; x++) {
+            for(y = 0; y < 5; y++) {
+                ui.setLED(x, y, 0);
+            }
+        }
+    },
+    updateSerialOutput: function(lineText){
+        $('#print_area').append('<div class="row">' + lineText + '</div>');
+    },
 }
 
 var sim = {
@@ -470,8 +558,3 @@ var sim = {
         return susp;
     }
 }
-
-$(function () {
-    ui.init();
-});
-

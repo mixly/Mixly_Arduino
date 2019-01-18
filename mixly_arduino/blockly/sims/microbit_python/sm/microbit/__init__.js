@@ -1,4 +1,3 @@
-
 var $builtinmodule = function (name) {
     var mod = {
         data: {
@@ -6,6 +5,8 @@ var $builtinmodule = function (name) {
             distance : mbData['distance'],
         }
     };
+
+    sm.input['temperature'] = mod.data;
 
     mod.panic = new Sk.builtin.func(function(n) {
         ui.output("Panic mode: " + n.v);
@@ -22,10 +23,12 @@ var $builtinmodule = function (name) {
     });
 
     mod.sleep = new Sk.builtin.func(function(delay) {
+        var v = delay.v;
         return sim.runAsync(function(resolve, reject) {
             setTimeout(function() {
+                sm.time += v;
                 resolve();
-            }, delay.v);
+            }, v);
         });
     });
 
@@ -35,121 +38,84 @@ var $builtinmodule = function (name) {
     ui.bindTemperatureEvent('temperature', mod.data, 'temperature');
 
     var ioPinDigital = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
-        $loc.__init__ = new Sk.builtin.func(function(self, name) {
-            self.name = name.v;
+        $loc.__init__ = new Sk.builtin.func(function(self) {
             self.value = 0;
         });
 
         $loc.read_digital = new Sk.builtin.func(function(self){
-            var flag = false;
-            $('select.pinOption').each(function(){
-                if($(this).val()==self.name){
-                    flag = true;
-                    var id = $(this).attr('id').split('select_row').join('');
-                    self.value = parseInt($('#curr_pinValue'+id).text());
-                }
-            });
-            if(!flag){//找不到就新建一个
-                ui.updateMicrobitPins('digital',self.name,self.value);
-            }
             return Sk.builtin.int_(self.value);
         });
 
         $loc.write_digital = new Sk.builtin.func(function(self, value){
             self.value = value.v == 1? 1: 0;
-            ui.updateMicrobitPins('digital',self.name,self.value);
+            ui.updateMicrobitPins();
         });
     }, "MicroBitDigitalPin", []);
 
-    mod.pin5 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(5));
-    mod.pin6 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(6));
-    mod.pin7 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(7));
-    mod.pin8 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(8));
-    mod.pin9 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(9));
-    mod.pin11 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(11));
-    mod.pin12 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(12));
-    mod.pin13 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(13));
-    mod.pin14 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(14));
-    mod.pin15 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(15));
-    mod.pin16 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(16));
-    mod.pin19 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(19));
-    mod.pin20 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(20));
+    mod.pin5 = new ioPinDigital();
+    mod.pin6 = new ioPinDigital();
+    mod.pin7 = new ioPinDigital();
+    mod.pin8 = new ioPinDigital();
+    mod.pin9 = new ioPinDigital();
+    mod.pin11 = new ioPinDigital();
+    mod.pin12 = new ioPinDigital();
+    mod.pin13 = new ioPinDigital();
+    mod.pin14 = new ioPinDigital();
+    mod.pin15 = new ioPinDigital();
+    mod.pin16 = new ioPinDigital();
+    mod.pin19 = new ioPinDigital();
+    mod.pin20 = new ioPinDigital();
 
     var ioPinAnalog = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
-        $loc.__init__ = new Sk.builtin.func(function(self,name) {
+        $loc.__init__ = new Sk.builtin.func(function(self) {
             self.value = 0;
-            self.name = name.v
             self.period_us = 35;
         });
 
         $loc.read_analog = new Sk.builtin.func(function(self) {
-            var flag = false;//是否能够找到该列
-            $('select.pinOption').each(function(){
-                if($(this).val()==self.name){
-                    flag = true;
-                    var id = $(this).attr('id').split('select_row').join('');
-                    self.value = parseInt($('#curr_pinValue'+id).text());
-                }
-            });
-            if(!flag){//找不到就新建一个
-                ui.updateMicrobitPins('analog',self.name,self.value);
-            }
             return Sk.builtin.int_(self.value);
-
         });
 
         $loc.write_analog = new Sk.builtin.func(function(self, value) {
             self.value = value.v;
-            ui.updateMicrobitPins('analog',self.name,self.value);
+            ui.updateMicrobitPins();
         });
 
         $loc.set_analog_period = new Sk.builtin.func(function(self, period) {
             self.period_us = period.v * 1000;
-            ui.updateUIAnalogPeriod(self.name,self.period_us);
+            ui.updateMicrobitPins();
         });
 
         $loc.set_analog_period_microseconds = new Sk.builtin.func(function(self, period) {
             self.period_us = period.v;
-            ui.updateUIAnalogPeriod(self.name,self.period_us);
+            ui.updateMicrobitPins();
         });
 
     }, "MicroBitAnalogPin", []);
-    mod.pin3 = Sk.misceval.callsim(ioPinAnalog, Sk.builtin.int_(3));
-    mod.pin4 = Sk.misceval.callsim(ioPinAnalog, Sk.builtin.int_(4));
-    mod.pin10 = Sk.misceval.callsim(ioPinAnalog, Sk.builtin.int_(10));
+    mod.pin3 = new ioPinAnalog();
+    mod.pin4 = new ioPinAnalog();
+    mod.pin10 = new ioPinAnalog();
 
     var ioPinTouch = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
-        $loc.__init__ = new Sk.builtin.func(function(self,name) {
-            self.name = name.v;
+        $loc.__init__ = new Sk.builtin.func(function(self) {
             self.touched = false;
         });
 
         $loc.is_touched = new Sk.builtin.func(function(self) {
-            var flag = false;
-            $('select.pinOption').each(function(){
-                if($(this).val()==self.name){
-                    flag = true;
-                    var id = $(this).attr('id').split('select_row').join('');
-                    self.touched = parseInt($('#curr_pinValue'+id).text()) === 1 ? true : false;
-                }
-            });
-            if(!flag){
-                 ui.updateMicrobitPins('touch',self.name,self.touched);
-            }
             return Sk.builtin.bool(self.touched);
         });
     }, "MicroBitTouchPin", []);
 
-    mod.pin0 = Sk.misceval.callsim(ioPinTouch, Sk.builtin.int_(0));
-    mod.pin1 = Sk.misceval.callsim(ioPinTouch, Sk.builtin.int_(1));
-    mod.pin2 = Sk.misceval.callsim(ioPinTouch, Sk.builtin.int_(2));
-    ui.bindAddPinBtnEvent('digital');
-    ui.bindAddPinBtnEvent('analog');
-    ui.bindAddPinBtnEvent('touch');
-    
+    mod.pin0 = new ioPinTouch();
+    mod.pin1 = new ioPinTouch();
+    mod.pin2 = new ioPinTouch();
 
+    mod.button_idx = 0;
     mod.Button = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self) {
+            var name = 'button_' + $gbl.button_idx;
+            sm.input[name] = self;
+            $gbl.button_idx ++;
             self.presses = 0;
             self.pressed = false;
             self.last_checked = 0;
@@ -428,21 +394,23 @@ var $builtinmodule = function (name) {
     mod.Servo = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self, pin) {
             self.pin = pin;
+            sm.servo.write_angle(self.pin.v, 0);
         });
 
         $loc.write_angle = new Sk.builtin.func(function(self, degree) {
-            ui.updateServo(degree.v);
+            //ui.updateServo(degree.v);
+            sm.servo.write_angle(self.pin.v, degree.v);
         });
     }, "Servo", []);
 
     mod.display = new Sk.builtin.module();
-    mod.display.$d = new display("microbit.display");
+    mod.display.$d = new sm_display("microbit.display");
 
     mod.compass = new Sk.builtin.module();
-    mod.compass.$d = new compass("microbit.compass");
+    mod.compass.$d = new sm_compass("microbit.compass");
 
     mod.accelerometer = new Sk.builtin.module();
-    mod.accelerometer.$d = new accelerometer("microbit.accelerometer");
+    mod.accelerometer.$d = new sm_accelerometer("microbit.accelerometer");
 
 
     /*
@@ -451,7 +419,7 @@ var $builtinmodule = function (name) {
     */
 
     mod.uart = new Sk.builtin.module();
-    mod.uart.$d = new uartModule("microbit.uart");
+    mod.uart.$d = new uart("sm_microbit.uart");
 
 
     return mod;
