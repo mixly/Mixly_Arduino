@@ -1,4 +1,4 @@
-var accelerometer = function(name) {
+var sm_accelerometer = function(name) {
 	var mod = {}
 	mod.data = {};
 	mod.data.x = mbData.accelerometer.x;
@@ -6,6 +6,7 @@ var accelerometer = function(name) {
 	mod.data.z = mbData.accelerometer.z;
 	mod.data.gestureHistory = mbData.accelerometer.gestureHistory;
 	mod.data.currentGesture = mbData.accelerometer.currentGesture;
+	sm.input['accelerometer'] = mod.data;
 
     var MICROBIT_ACCELEROMETER_TILT_TOLERANCE = 200;
     var MICROBIT_ACCELEROMETER_FREEFALL_TOLERANCE = 400;

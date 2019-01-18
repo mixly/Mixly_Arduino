@@ -389,7 +389,6 @@ var $builtinmodule = function (name) {
         });
 
         $loc.write_angle = new Sk.builtin.func(function(self, degree) {
-            debugger;
             ui.updateServo(degree.v);
         });
     }, "Servo", []);

@@ -8,7 +8,6 @@
 var sm = {
     time: 0,
     preTime: 0,
-    programTimeout: 1000, //XXXms后杀死程序
     input: {},
     //button: [is_pressed, presses]
     snapshot: {},
@@ -20,7 +19,7 @@ var sm = {
         sm.preTime = 0;
         sm.snapshot = {'display': [[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0]]};
         sm.preSnapshot = $.extend(true, {}, sm.snapshot);
-        sm.snapshotArr = [{'ts': sm.time, 'snapshot': $.extend(true, {}, sm.snapshot)}];
+        sm.snapshotArr = [{'snapshot': $.extend(true, {}, sm.snapshot), 'ts': sm.time}];
         sm.lenSnapshotArr = 1;
     },
     getSnapshotArr: function () {
@@ -36,6 +35,9 @@ var sm = {
     updateSnapshot: function () {
         if (eq(sm.preSnapshot, sm.snapshot)) {
             return;
+        }
+        if( sm.time == 1600) {
+            debugger;
         }
         if (sm.time == sm.preTime && sm.snapshotArr != []) {
             sm.preSnapshot = $.extend(true, {}, sm.snapshot);
@@ -88,6 +90,43 @@ var sm = {
         },
         set_heading: function (v) {
             sm.compass.set_value('heading', v);
+        }
+    },
+    servo: {
+        write_angle: function (pin, v) {
+            sm.snapshot['servo_' + pin] = v;
+            sm.updateSnapshot();
+        }
+    },
+    temperature: {
+        set_value: function (x) {
+            sm.input['temperature']['temperature'] = x;
+        }
+    },
+    accelerometer: {
+        set_value: function (k, v) {
+            sm.input['accelerometer'][k] = v;
+        },
+        set_x: function (v) {
+            sm.accelerometer.set_value('x', v);
+        },
+        set_y: function (v) {
+            sm.accelerometer.set_value('y', v);
+        },
+        set_z: function (v) {
+            sm.accelerometer.set_value('z', v);
+        },
+        set_gesture: function (gesture) {
+            if (sm.input['accelerometer'].currentGesture != gesture) {
+                sm.input['accelerometer'].currentGesture = gesture;
+                sm.input['accelerometer'].gestureHistory.push(gesture);
+            }
+        }
+    },
+    music: {
+        set_pitch: function (pin, v) {
+            sm.snapshot['music_pitch_' + pin.name] = v;
+            sm.updateSnapshot();
         }
     }
 }

@@ -25,6 +25,7 @@ function get_code (trick) {
 function saveXmlFileAs () {
     var xmlCodes = goog.string.quote(Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(Blockly.mainWorkspace)));
     xmlCodes = xmlCodes.replace("<xml", "<xml version=\\\"mixgo_0.999\\\" board=\\\"" + "MicroPython[NRF51822_microbit]" + "\\\"");
+    xmlCodes = xmlCodes.substring(1, xmlCodes.length - 1);
     var blob = new Blob(
         [xmlCodes],
         { type: 'text/plain;charset=utf-8' });
@@ -39,6 +40,10 @@ function builtinRead(x) {
 }
 
 
+function debug_mode (code) {
+    return true;
+}
+
 function sk_run (code, outputFunc) {
     Sk.configure({
         output: outputFunc,
@@ -49,13 +54,15 @@ function sk_run (code, outputFunc) {
 
     // if code contains a while loop
     var handlers = [];
-    if((code.indexOf("while ") > -1) && (code.indexOf("sleep") == -1)) {
+    if(debug_mode(code)) {
         //console.log("Crash prevention mode enabled: This happens when your code includes an infinite loop without a sleep() function call. Your code will run much more slowly in this mode.");
         var startTime = new Date().getTime();
         var lineCount = 0;
+        var currTime = 0;
         handlers["Sk.debug"] = function(susp) {
             lineCount++;
-            if(new Date().getTime() - startTime > 100) {
+            currTime =  new Date().getTime();
+            if(currTime - startTime > 100) {
                 if(lineCount < 50) {
                     return;
                 }
@@ -97,8 +104,9 @@ function mb_run () {
 function sm_run () {
     var code = get_code(true);
     code = process.processImport(code);
-    process.parseConfig(task_conf['task_06']);
-    process.autoKillProgram(sm.programTimeout);
+    var conf = task_conf['task_08'];
+    process.parseConfig(conf.steps);
+    process.autoKillProgram(conf.programTimeout);
     sm.init();
     sk_run(code, sm.updateStatus);
 }

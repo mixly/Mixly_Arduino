@@ -1,14 +1,27 @@
 var process  = {
     //1. import XXX ==> import sm_XXX
     processImport: function (code) {
-        var newCode = '';
+        var microbitModuleArr = ['microbit', 'music', 'radio', 'neopixel', 'speech'];
         var codeArr = code.replace('\r\n', '\n').split('\n');
+        var usedModuleSet = new Set();
         for (var i = 0; i < codeArr.length; i++) {
-            var line = codeArr[i].replace(/^( *?)from( +?)(\w*?) import (.*?)$/g, "$1from$2sm_$3 import $4");
-            line = line.replace(/^( *?)import (.*?)$/g, "$1import sm_$2");
-            newCode += line + '\n';
+            var line = codeArr[i].replace(/^( *?)from( +?)(\w*?) import (.*?)$/g, function () {
+                var module = arguments[3];
+                if (microbitModuleArr.indexOf(module) != -1) {
+                    usedModuleSet.add(module);
+                }
+            });
+            line = line.replace(/^( *?)import (.*?)$/g, function () {
+                var module = arguments[2];
+                if (microbitModuleArr.indexOf(module) != -1) {
+                    usedModuleSet.add(module);
+                }
+            });
         }
-        return newCode;
+        for (var x of usedModuleSet) {
+            code = code.replace(new RegExp(x,'g'), 'sm_' + x);
+        }
+        return code;
     },
 
     //2. 多线程修改内部状态

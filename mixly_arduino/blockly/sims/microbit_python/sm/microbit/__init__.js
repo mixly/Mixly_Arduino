@@ -6,6 +6,8 @@ var $builtinmodule = function (name) {
         }
     };
 
+    sm.input['temperature'] = mod.data;
+
     mod.panic = new Sk.builtin.func(function(n) {
         ui.output("Panic mode: " + n.v);
     });
@@ -392,11 +394,12 @@ var $builtinmodule = function (name) {
     mod.Servo = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self, pin) {
             self.pin = pin;
+            sm.servo.write_angle(self.pin.v, 0);
         });
 
         $loc.write_angle = new Sk.builtin.func(function(self, degree) {
-            debugger;
-            ui.updateServo(degree.v);
+            //ui.updateServo(degree.v);
+            sm.servo.write_angle(self.pin.v, degree.v);
         });
     }, "Servo", []);
 
@@ -407,7 +410,7 @@ var $builtinmodule = function (name) {
     mod.compass.$d = new sm_compass("microbit.compass");
 
     mod.accelerometer = new Sk.builtin.module();
-    mod.accelerometer.$d = new accelerometer("microbit.accelerometer");
+    mod.accelerometer.$d = new sm_accelerometer("microbit.accelerometer");
 
 
     /*

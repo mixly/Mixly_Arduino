@@ -35,6 +35,9 @@ Sk.externalLibraries = {
             base_url + 'sm/microbit/uart.js',
         ]
     },
+    sm_music: {
+        path: base_url + 'sm/music/__init__.js'
+    },
 }
 
 
