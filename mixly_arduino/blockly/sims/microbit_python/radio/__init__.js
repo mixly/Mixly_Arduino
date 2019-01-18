@@ -5,7 +5,6 @@ var $builtinmodule = function (name) {
             peer: true
         }
     };
-    radio = mod.data;
 
     var prefix_codes = "\x00\x01\x00";
     function send_data (message) { // send from microbit to UI
@@ -26,44 +25,6 @@ var $builtinmodule = function (name) {
     mod.RATE_250KBIT = Sk.builtin.int_(250);
     mod.RATE_1MBIT = Sk.builtin.int_(1000);
     mod.RATE_2MBIT = Sk.builtin.int_(2000);
-    function checkRadioSetting(){
-        if(typeof(radio) !== "undefined") {
-            var tuned = true;
-
-            if($('#radio_channel').val() != radio.channel) {
-                $('#radio_status').html("Channel doesn't match: currently set to " + radio.channel);
-                tuned = false;
-            }
-            if($('#radio_group').val() != radio.group) {
-                $('#radio_status').html("Group doesn't match: currently set to " + radio.group);
-                tuned = false;
-            }
-            if($('#radio_address').val() != radio.address) {
-                $('#radio_status').html("Address doesn't match: currently set to " + radio.address.toString(16));
-                tuned = false;
-            }
-            if(mod[$('#radio_data_rate').val()].v != radio.data_rate){
-                $('#radio_status').html("Data rate doesn't match: currently set to " + radio.data_rate);
-                tuned = false;
-            }
-            if(tuned) {
-                $('#radio_status').html("Tuned in to radio module");
-                radio.fn_send = function(message) { // send from microbit to UI
-                    $('#radio_status').html("Received message: " + message);
-                }
-                radio.fn_receive = function(message) { // send from UI to microbit
-                    if(radio.buffer.length < radio.queue) {
-                        radio.buffer.push(message);
-                    } else {
-                        $('#radio_status').html("Queue is full in microbit radio");
-                    }
-
-                }
-            }
-            else{
-                delete radio.fn_send;
-                delete radio.fn_receive;
-            }
 
 
     mod.on = new Sk.builtin.func(function() {
@@ -98,11 +59,6 @@ var $builtinmodule = function (name) {
         mod.data.group = group.v;
         mod.data.data_rate = data_rate.v;
         mod.data.buffer = [];
-        delete mod.data.fn_send;
-        delete mod.data.fn_receive;
-        if(mod.data.power > 0){
-            checkRadioSetting();
-        }
         mod.data.on = false;
         ui.updatePeerRadioParam(mod.data);
     };
