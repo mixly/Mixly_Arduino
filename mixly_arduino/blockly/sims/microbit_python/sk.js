@@ -43,9 +43,39 @@ function builtinRead(x) {
 function debug_mode (code) {
     return true;
 }
-
+function uiOutput(lineText){
+    if(lineText.slice(-1)==='\n')
+      $('#print_area').append('<span style="display:block;">'+lineText+'</span>');
+    else
+      $('#print_area').append('<span>'+lineText+'</span>');
+}
 function sk_run (code, outputFunc) {
     Sk.configure({
+        inputfun: function(prompt){
+            return new Promise((resolve, reject) => {
+              $('#print_area').append('<span id="userInputSpan" style="display:block;">'+prompt+'<input style= "background-color:transparent;border:0;outline:none;" id="userInput" />'+'</span>');
+              if($('.modal-dialog').is(':visible')===false){
+                setTimeout(function(){
+                  $('#userInput').focus();
+                },600);
+              }
+              else{
+                setTimeout(function(){
+                  $('#userInput').focus();
+                },50)
+              }         
+                                     
+              $('#userInput').keypress(function(event){
+                if(event.keyCode === 13){
+                  var inputText = $(this).val();
+                  $('#userInputSpan').remove();
+                  $('#print_area').append('<span style="display:block;">'+ prompt + inputText +'</span>');
+                  resolve(inputText); 
+                }
+              });
+          });
+        },
+        inputfunTakesPrompt: true,
         output: outputFunc,
         read: builtinRead,
         execLimit:Number.POSITIVE_INFINITY,
@@ -97,7 +127,7 @@ function mb_run () {
     $('#simModal').modal('toggle');
     ui.init();
     var code = get_code(true);
-    sk_run(code, ui.updateSerialOutput);
+    sk_run(code, uiOutput);
 }
 
 

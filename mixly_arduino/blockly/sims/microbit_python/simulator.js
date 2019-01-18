@@ -51,6 +51,12 @@ Sk.externalLibraries = {
 
 var ui = {
     inited: false,
+    pinCount : {
+            digital: [5,6,7,8,9,11,12,13,14,15,16,19,20],
+            analog: [3,4,10],
+            touch: [0,1,2],
+            rowid: 0
+    },
     init: function () {
         //模态框关闭时kill program
         if (!ui.inited) {
@@ -121,14 +127,7 @@ var ui = {
                ui.updateRadioStatus('Radio module not detected - did you include "import radio"?');
            });
        }
-       //管脚界面
-       //管脚计数器
-       ui.pinCount = {
-            digital: [5,6,7,8,9,11,12,13,14,15,16,19,20],
-            analog: [3,4,10],
-            touch: [0,1,2],
-            rowid: 0
-       };
+       //管脚界面       
         //neopixel
         $('#neopixel').hide();
 
@@ -270,18 +269,9 @@ var ui = {
     //需要改进：能够使得管脚号不重复
     AddPinOption: function(type,pinNum = 0){
         if(type == 'digital'){
-            $('#pin_area').append(ui.pinDigitalModule());
-            var changeValue = function(thisSlider,thisSpan){
-                thisSpan.text(thisSlider.bootstrapSlider('getValue'));
-            }
-            var Slider = $("#pinValue"+ui.pinCount.rowid).bootstrapSlider();
-            var Span = $("#curr_pinValue"+ui.pinCount.rowid);
-            Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
-            $('.pinInput>.slider').css('width','100%');
-        }
-        if(type == 'analog'){
+            ui.pinCount.rowid++;
             var thisRowId = ui.pinCount.rowid;
-            $('#pin_area').append(ui.pinAnalogModule());
+            $('#pin_area').append(ui.pinDigitalModule());
             var changeValue = function(thisSlider,thisSpan){
                 thisSpan.text(thisSlider.bootstrapSlider('getValue'));
             }
@@ -290,41 +280,51 @@ var ui = {
             Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
             $('.pinInput>.slider').css('width','100%');
         }
+        if(type == 'analog'){
+            ui.pinCount.rowid++;
+            var thisRowId = ui.pinCount.rowid;
+            $('#pin_area').append(ui.pinAnalogModule());
+            var changeValue = function(thisSlider,thisSpan){
+                thisSpan.text(thisSlider.bootstrapSlider('getValue'));
+            }
+            var Slider = $("#pinValue"+thisRowId).bootstrapSlider();
+            var Span = $("#curr_pinValue"+thisRowId);
+            Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
+            $('.pinInput>.slider').css('width','100%');       
+        }
         if(type == 'touch'){
+            ui.pinCount.rowid++;
             $('#pin_area').append(ui.pinTouchModule());
             var thisRowId = ui.pinCount.rowid;
-            var Switch = $("#pinValue"+ui.pinCount.rowid).bootstrapSwitch({
-                onText: '触摸',
-                offText: '离开',
-                size:'Small',
-                onSwitchChange: function(event,state){                 
-                    if(state==true){
-                        $("#curr_pinValue"+thisRowId).text('1'); 
-                    }else{
-                        $("#curr_pinValue"+thisRowId).text('0'); 
-                    } 
+            var Switch = $("#pinValue"+thisRowId).bootstrapSwitch({
+            onText: '触摸',
+            offText: '离开',
+            size:'Small',
+            onSwitchChange: function(event,state){        
+                if(state==true){
+                    $("#curr_pinValue"+ thisRowId).text('1'); 
+                }else{
+                    $("#curr_pinValue"+ thisRowId).text('0'); 
                 }
-            });
+            }
+            });                 
         }
-        ui.pinCount.rowid++;
     },
-    deletePinOption: function(type,rowid){
-        ui.pinCount[type] -= 1;
+    deletePinOption: function(rowid){
         $(rowid).remove();
     },
     bindAddPinBtnEvent: function(btn_type){
         $('#add_'+ btn_type + '_pin').unbind('click').on('click',function(){
-            console.log('add pin button');
             ui.AddPinOption(btn_type);
+            console.log(btn_type,(ui.pinCount.rowid - 1));
             ui.bindDeletePinBtnEvent('#btn_row' + (ui.pinCount.rowid - 1));
         });
     },
     bindDeletePinBtnEvent: function(id){
         $(id).on('click',function(){
             var row = $(this).parent().parent();
-            var type = row.attr('pintype');
             var rowid = '#' + row.attr('id');
-            ui.deletePinOption(type,rowid);
+            ui.deletePinOption(rowid);
         });
     },
     bindBtnEvent: function (btn_id, mod_btn_arr) {
@@ -421,6 +421,7 @@ var ui = {
         var flag = false;//能不能在ui中找到对应管脚列的标志
         $('select.pinOption').each(function(){
             if($(this).val()==pinName){
+                
                 flag = true;
                 var rowid = $(this).attr('id').split('select_row').join('');
                 if(type ==='analog_period'){//更改管脚频率
@@ -432,29 +433,32 @@ var ui = {
                         $("#pinValue"+rowid).bootstrapSlider('setValue',newValue);
                     }
                     else if(type === 'touch'){
-                        $("#pinValue"+(ui.pinCount.rowid-1)).bootstrapSwitch('setState',newValue == 1);
+                        $("#pinValue"+ rowid).bootstrapSwitch('setState',newValue == 1);
                     }
                 }   
             }
         });
 
         if(!flag){//用户没有初始化这一列,就新增这一列
-                ui.AddPinOption(type.split('_')[0]);
-                ui.bindDeletePinBtnEvent('#btn_row' + (ui.pinCount.rowid - 1));
-                $('#select_row'+(ui.pinCount.rowid-1)).val(pinName);
-                if(type==='analog_period'){//更改管脚频率
-                    $('#curr_pinPeriod'+(ui.pinCount.rowid-1)).text(newValue);
+            debugger;
+            ui.AddPinOption(type.split('_')[0]);
+            var newRowId = ui.pinCount.rowid;
+            ui.bindDeletePinBtnEvent('#btn_row' + newRowId );
+            $('#select_row'+(newRowId)).val(pinName);
+            if(type ==='analog_period'){//更改管脚频率
+                $('#curr_pinPeriod'+(newRowId)).text(newValue);
+            }
+            else{                   
+                if(type != 'touch'){
+                    $('#curr_pinValue'+(newRowId)).text(newValue);
+                    $("#pinValue"+(newRowId)).bootstrapSlider('setValue',newValue);
                 }
                 else{
-                    $('#curr_pinValue'+(ui.pinCount.rowid-1)).text(newValue);
-                    if(type != 'touch'){
-                        $("#pinValue"+(ui.pinCount.rowid-1)).bootstrapSlider('setValue',newValue);
-                    }
-                    else{
-                        $("#pinValue"+(ui.pinCount.rowid-1)).bootstrapSwitch('setState',newValue == 1);
-                    }
-                }            
-           }
+                    $('#curr_pinValue'+(newRowId)).text(newValue == 1 ? 1:0);
+                    $("#pinValue"+(newRowId)).bootstrapSwitch('setState',newValue == 1);
+                }
+            }            
+        }
     },
     //更新模拟管脚的频率
     updateUIAnalogPeriod: function(name,value){

@@ -354,68 +354,6 @@ function init() {
         load_by_url(dest);
       }
     }
-    function mb_run () {
-        $('#simModal').modal('toggle');
-        var code = '';
-        if(document.getElementById('tab_arduino').className == 'tabon'){
-            code = editor.getValue();
-        }else{
-            code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-        }
-        // trick
-        if (code.indexOf('class HCSR04:') != -1) {
-            code = code.replace(/class HCSR04[\s\S]*?self.distance_mm\(\) \/ 10\.0/,'');
-        }
-
-        if (code.indexOf('class Servo:') != -1) {
-            code = code.replace(/class Servo[\s\S]*?self\.write_us\(us\)/,'');
-        }
-
-        function builtinRead(x)
-        {
-            if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-                throw "File not found: '" + x + "'";
-            return Sk.builtinFiles["files"][x];
-        }
-
-        Sk.configure({
-            output: function(lineText){
-                if(lineText.slice(-1)==='\n')
-                  $('#print_area').append('<span style="display:block;">'+lineText+'</span>');
-                else
-                  $('#print_area').append('<span>'+lineText+'</span>');
-            },
-            inputfun: function(prompt){
-                return new Promise((resolve, reject) => {
-                  $('#print_area').append('<span id="userInputSpan" style="display:block;">'+prompt+'<input style= "background-color:transparent;border:0;outline:none;" id="userInput" />'+'</span>');
-                  if($('.modal-dialog').is(':visible')===false){
-                    setTimeout(function(){
-                      $('#userInput').focus();
-                    },400);
-                  }
-                  else{
-                    setTimeout(function(){
-                      $('#userInput').focus();
-                    },50)
-                  }         
-                                         
-                  $('#userInput').keypress(function(event){
-                    if(event.keyCode === 13){
-                      var inputText = $(this).val();
-                      $('#userInputSpan').remove();
-                      $('#print_area').append('<span style="display:block;">'+ prompt + inputText +'</span>');
-                      resolve(inputText); 
-                    }
-                  });
-              });
-            },
-            inputfunTakesPrompt: true,
-            read: builtinRead
-        });
-        var executionPromise = Sk.misceval.asyncToPromise(function() {
-            return Sk.importMainWithBody("<stdin>", false, code, true);
-        });
-    }
   </script>
   <style type="text/css">
       span#span_blocks, span#span_arduino, select#languageMenu {
