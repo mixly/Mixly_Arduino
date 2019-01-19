@@ -725,10 +725,14 @@ var sm_display = function(name) {
 						setLED(x - offset, y, rows[y][x]);
 					}
 				}
+				console.log('time:' + sm.time + ';leds:' + leds);
 
 				if(offset < width - 5) {
 					offset++;
-					setTimeout(showScroll, delay.v);
+					setTimeout(function () {
+						sm.time += delay.v;
+						showScroll();
+                    }, delay.v);
 				} else {
 					resolve();
 				}
