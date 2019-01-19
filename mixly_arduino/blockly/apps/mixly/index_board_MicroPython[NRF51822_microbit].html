@@ -97,9 +97,9 @@
   <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
   <script src="js/skulpt/dist/skulpt-stdlib.js" type="application/javascript"></script>
   <script src="../../sims/microbit_python/data.js" type="application/javascript"></script>
-  <script src="../../sims/microbit_python/simulator.js" type="application/javascript"></script>
+  <script src="../../sims/microbit_python/ui.js" type="application/javascript"></script>
   <script src="../../sims/microbit_python/sm/task_conf.js" type="application/javascript"></script>
-  <script src="../../sims/microbit_python/sm/process.js" type="application/javascript"></script>
+  <script src="../../sims/microbit_python/process.js" type="application/javascript"></script>
   <script src="../../sims/microbit_python/sm/sm_util.js" type="application/javascript"></script>
   <script src="../../sims/microbit_python/sm/sm.js" type="application/javascript"></script>
   <script src="../../sims/microbit_python/sk.js" type="application/javascript"></script>
@@ -390,7 +390,7 @@ function init() {
               <button id='sm_run' onclick="sm_run()" class="btn-success">Mark</button>
             </td>
             <td class="tabmin">
-              <button id='save_xml' onclick="saveXmlFileAs()" class="btn-success">Save</button>
+              <button id='save_xml' onclick="codeProcessor.saveXmlFileAs()" class="btn-success">Save</button>
             </td>
             <td class="tabmode">
               <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid','Microsoft Yahei Light','Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_MicroPython[NRF51822_microbit].html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light';font-size:12px;">高级视图</a>

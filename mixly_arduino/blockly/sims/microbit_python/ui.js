@@ -1,57 +1,5 @@
 'use strict';
 
-var base_url = conf.url + '/blockly/sims/microbit_python/';
-//从管脚号数组中弹出指定的管脚号
-function popPin(pinArr, value){
-    for (each in pinArr){
-        if(pinArr[each] === value){
-            delete pinArr[each];
-        }
-    }
-}
-Sk.externalLibraries = {
-    // added as a farewell message to a school direct student
-    microbit: {
-        path: base_url + 'microbit/__init__.js',
-        dependencies: [
-            base_url + 'microbit/display.js',
-            base_url + 'microbit/accelerometer.js',
-            base_url + 'microbit/compass.js',
-            base_url + 'microbit/uart.js',
-        ]
-    },
-    music: {
-        path: conf.url + '/blockly/sims/microbit_python/music/__init__.js'
-    },
-    radio:{
-        path: conf.url + '/blockly/sims/microbit_python/radio/__init__.js'
-    },
-    speech: {
-        path: conf.url + '/blockly/sims/microbit_python/speech/__init__.js',
-        dependencies: [conf.url + '/blockly/sims/microbit_python/speech/sam.js']
-    },
-    neopixel: {
-        path: conf.url + '/blockly/sims/microbit_python/neopixel/__init__.js'
-    },
-    //status machine
-    sm_microbit: {
-        path: base_url + 'sm/microbit/__init__.js',
-        dependencies: [
-            base_url + 'sm/microbit/display.js',
-            base_url + 'sm/microbit/accelerometer.js',
-            base_url + 'sm/microbit/compass.js',
-            base_url + 'sm/microbit/uart.js',
-        ]
-    },
-    sm_music: {
-        path: base_url + 'sm/music/__init__.js'
-    },
-    sm_neopixel: {
-        path: base_url + 'sm/neopixel/__init__.js'
-    },
-}
-
-
 var ui = {
     inited: false,
     pinCount : {
@@ -569,26 +517,4 @@ var ui = {
     }
 }
 
-var sim = {
-    runAsync: function (asyncFunc) {
-        var p = new Promise(asyncFunc);
-        var result;
-        var susp = new Sk.misceval.Suspension();
-        susp.resume = function() {
-            return result;
-        }
-        susp.data = {
-            type: "Sk.promise",
-            promise: p.then(function(value) {
-                result = value;
-                return value;
-            }, function(err) {
-                result = "";
-                console.log(err);
-                return new Promise(function(resolve, reject){
-                });
-            })
-        };
-        return susp;
-    }
-}
+

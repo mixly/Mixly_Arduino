@@ -1,48 +1,75 @@
-function get_code (trick) {
-    var code = '';
-    if(document.getElementById('tab_arduino').className == 'tabon'){
-        code = editor.getValue();
-    }else{
-        code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-    }
-    if (code == '') {
-        return;
-    }
-    if (trick == true) {
-        // trick
-        if (code.indexOf('class HCSR04:') != -1) {
-            code = code.replace(/class HCSR04[\s\S]*?self.distance_mm\(\) \/ 10\.0/,'');
-        }
-
-        if (code.indexOf('class Servo:') != -1) {
-            code = code.replace(/class Servo[\s\S]*?self\.write_us\(us\)/,'');
-        }
-    }
-    return code;
+var base_url = conf.url + '/blockly/sims/microbit_python/';
+Sk.externalLibraries = {
+    microbit: {
+        path: base_url + 'microbit/__init__.js',
+        dependencies: [
+            base_url + 'microbit/display.js',
+            base_url + 'microbit/accelerometer.js',
+            base_url + 'microbit/compass.js',
+            base_url + 'microbit/uart.js',
+        ]
+    },
+    music: {
+        path: conf.url + '/blockly/sims/microbit_python/music/__init__.js'
+    },
+    radio:{
+        path: conf.url + '/blockly/sims/microbit_python/radio/__init__.js'
+    },
+    speech: {
+        path: conf.url + '/blockly/sims/microbit_python/speech/__init__.js',
+        dependencies: [conf.url + '/blockly/sims/microbit_python/speech/sam.js']
+    },
+    neopixel: {
+        path: conf.url + '/blockly/sims/microbit_python/neopixel/__init__.js'
+    },
+    //status machine
+    sm_microbit: {
+        path: base_url + 'sm/microbit/__init__.js',
+        dependencies: [
+            base_url + 'sm/microbit/display.js',
+            base_url + 'sm/microbit/accelerometer.js',
+            base_url + 'sm/microbit/compass.js',
+            base_url + 'sm/microbit/uart.js',
+        ]
+    },
+    sm_music: {
+        path: base_url + 'sm/music/__init__.js'
+    },
+    sm_neopixel: {
+        path: base_url + 'sm/neopixel/__init__.js'
+    },
 }
 
 
-function saveXmlFileAs () {
-    var xmlCodes = goog.string.quote(Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(Blockly.mainWorkspace)));
-    xmlCodes = xmlCodes.replace("<xml", "<xml version=\\\"mixgo_0.999\\\" board=\\\"" + "MicroPython[NRF51822_microbit]" + "\\\"");
-    xmlCodes = xmlCodes.substring(1, xmlCodes.length - 1);
-    var blob = new Blob(
-        [xmlCodes],
-        { type: 'text/plain;charset=utf-8' });
-    saveAs(blob, "Mixgo.xml");
-};
+var sim = {
+    runAsync: function (asyncFunc) {
+        var p = new Promise(asyncFunc);
+        var result;
+        var susp = new Sk.misceval.Suspension();
+        susp.resume = function() {
+            return result;
+        }
+        susp.data = {
+            type: "Sk.promise",
+            promise: p.then(function(value) {
+                result = value;
+                return value;
+            }, function(err) {
+                result = "";
+                console.log(err);
+                return new Promise(function(resolve, reject){
+                });
+            })
+        };
+        return susp;
+    }
+}
 
 
 function builtinRead(x) {
     if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
         throw "File not found: '" + x + "'";
     return Sk.builtinFiles["files"][x];
-}
-
-
-function debug_mode (code) {
-    //TODO: decide whether code has infinite loop
-    return true;
 }
 
 
@@ -58,7 +85,7 @@ function sk_run (code, outputFunc, inputFunc) {
 
     // if code contains a while loop
     var handlers = [];
-    if(debug_mode(code)) {
+    if(codeProcessor.infiniteLoop(code)) {
         //console.log("Crash prevention mode enabled: This happens when your code includes an infinite loop without a sleep() function call. Your code will run much more slowly in this mode.");
         var startTime = new Date().getTime();
         var lineCount = 0;
@@ -101,17 +128,17 @@ function sk_run (code, outputFunc, inputFunc) {
 function mb_run () {
     $('#simModal').modal('toggle');
     ui.init();
-    var code = get_code(true);
+    var code = codeProcessor.getCode(true);
     sk_run(code, ui.updateSerialOutput, ui.serialInput);
 }
 
 
 function sm_run () {
-    var code = get_code(true);
-    code = process.processImport(code);
-    var conf = task_conf['task_02'];
-    process.parseConfig(conf.steps);
-    process.autoKillProgram(conf.programTimeout);
+    var code = codeProcessor.getCode(true);
+    code = smCodeProcessor.processImport(code);
+    var conf = task_conf['task_09'];
+    smCodeProcessor.parseConfig(conf.steps);
+    smCodeProcessor.autoKillProgram(conf.programTimeout);
     sm.init();
     sk_run(code, sm.updateStatus, undefined);
 }

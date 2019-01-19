@@ -1,4 +1,43 @@
-var process  = {
+var codeProcessor = {
+    getCode: function (trick) {
+        var code = '';
+        if(document.getElementById('tab_arduino').className == 'tabon'){
+            code = editor.getValue();
+        }else{
+            code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
+        }
+        if (code == '') {
+            return;
+        }
+        if (trick == true) {
+            // trick
+            if (code.indexOf('class HCSR04:') != -1) {
+                code = code.replace(/class HCSR04[\s\S]*?self.distance_mm\(\) \/ 10\.0/,'');
+            }
+
+            if (code.indexOf('class Servo:') != -1) {
+                code = code.replace(/class Servo[\s\S]*?self\.write_us\(us\)/,'');
+            }
+        }
+        return code;
+    },
+    saveXmlFileAs: function () {
+        var xmlCodes = goog.string.quote(Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(Blockly.mainWorkspace)));
+        xmlCodes = xmlCodes.replace("<xml", "<xml version=\\\"mixgo_0.999\\\" board=\\\"" + "MicroPython[NRF51822_microbit]" + "\\\"");
+        xmlCodes = xmlCodes.substring(1, xmlCodes.length - 1);
+        var blob = new Blob(
+            [xmlCodes],
+            { type: 'text/plain;charset=utf-8' });
+        saveAs(blob, "Mixgo.xml");
+    },
+    infiniteLoop: function () {
+        //TODO: decide whether code has infinite loop
+        return true;
+    }
+}
+
+
+var smCodeProcessor = {
     //1. import XXX ==> import sm_XXX
     processImport: function (code) {
         var microbitModuleArr = ['microbit', 'music', 'radio', 'neopixel', 'speech'];
@@ -51,4 +90,3 @@ var process  = {
         }, timeout);
     }
 }
-
