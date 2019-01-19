@@ -5,7 +5,7 @@ var $builtinmodule = function(name) {
 	mod._data.bpm = mbData.music.bpm;
 	mod._data.duration = mbData.music.duration;
 	mod._data.octave = mbData.music.octave;
-	
+	ui.music_data = mod._data;
 	var set_tempo = function(ticks, bpm) {
 		if(ticks === undefined) 
 			ticks = new Sk.builtin.int_(mbData.music.ticks);

@@ -69,16 +69,16 @@ var ui = {
             });
         }
         // 无线通信界面
-       for (var each in mbData.radio){
+        for (var each in mbData.radio){
             $('#radio_'+ each).val(mbData.radio[each])
-       }
+        }
 
-       if (!ui.inited) {
-           $('#radio_update_config').off('click').on('click', function () {
-               ui.updateRadioStatus('Radio module not detected - did you include "import radio"?');
-           });
-       }
-       //管脚界面       
+        if (!ui.inited) {
+            $('#radio_update_config').off('click').on('click', function () {
+                ui.updateRadioStatus('Radio module not detected - did you include "import radio"?');
+            });
+        }
+        //管脚界面
         //neopixel
         $('#neopixel').hide();
 
@@ -125,11 +125,14 @@ var ui = {
             }
         }
 
-
         $('#tip').text();
         $('#tip').hide();
 
         ui.clearScreen();
+        if (ui.music_data != undefined) {
+            ui.music_data.osc.stop();
+            delete ui.music_data;
+        }
         //绑定事情只需要初始化一次
         ui.inited = true;
     },
