@@ -7,6 +7,7 @@ var $builtinmodule = function (name) {
     };
 
     sm.input['temperature'] = mod.data;
+    sm.input['distance'] = mod.data;
 
     mod.panic = new Sk.builtin.func(function(n) {
         ui.output("Panic mode: " + n.v);

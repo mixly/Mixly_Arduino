@@ -128,6 +128,14 @@ var task_conf = {
     'task_13': {
         programTimeout: 3000,
         steps: []
+    },
+    'task_test': {
+        programTimeout: 1000,
+        steps: [
+            {
+                'code': 'sm.sonar.set_value(14);',
+                'time': 200
+            }]
     }
 };
 

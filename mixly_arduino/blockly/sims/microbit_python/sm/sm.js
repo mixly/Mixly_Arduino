@@ -98,6 +98,11 @@ var sm = {
             sm.input['temperature']['temperature'] = x;
         }
     },
+    sonar: {
+        set_value: function (v) {
+            sm.input['distance']['distance'] = v;
+        }
+    },
     accelerometer: {
         set_value: function (k, v) {
             sm.input['accelerometer'][k] = v;

@@ -136,7 +136,7 @@ function mb_run () {
 function sm_run () {
     var code = codeProcessor.getCode(true);
     code = smCodeProcessor.processImport(code);
-    var conf = task_conf['task_09'];
+    var conf = task_conf['task_test'];
     smCodeProcessor.parseConfig(conf.steps);
     smCodeProcessor.autoKillProgram(conf.programTimeout);
     sm.init();
