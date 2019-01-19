@@ -35,6 +35,9 @@ Sk.externalLibraries = {
     sm_music: {
         path: base_url + 'sm/music/__init__.js'
     },
+    sm_speech: {
+        path: base_url + 'sm/speech/__init__.js'
+    },
     sm_neopixel: {
         path: base_url + 'sm/neopixel/__init__.js'
     },
@@ -136,7 +139,7 @@ function mb_run () {
 function sm_run () {
     var code = codeProcessor.getCode(true);
     code = smCodeProcessor.processImport(code);
-    var conf = task_conf['task_test'];
+    var conf = task_conf['task_13'];
     smCodeProcessor.parseConfig(conf.steps);
     smCodeProcessor.autoKillProgram(conf.programTimeout);
     sm.init();

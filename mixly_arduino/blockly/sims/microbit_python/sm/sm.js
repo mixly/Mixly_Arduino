@@ -134,6 +134,27 @@ var sm = {
             sm.snapshot['neopixel_' + pin.name] = leds;
             sm.updateSnapshot();
         }
+    },
+    speech: {
+        set_value: function (speechType, speech, pitch, speed, mouth, throat) {
+            if (sm.snapshot['speech'] == undefined) {
+                sm.snapshot['speech'] = {};
+            }
+            sm.snapshot['speech'][speechType] = [speech, pitch, speed, mouth, throat];
+            sm.updateSnapshot();
+            sm.time += 10;
+            delete sm.snapshot['speech'][speechType];
+            sm.updateSnapshot();
+        },
+        say: function (speech, pitch, speed, mouth, throat) {
+            sm.speech.set_value('say', speech, pitch, speed, mouth, throat);
+        },
+        pronounce: function (speech, pitch, speed, mouth, throat) {
+            sm.speech.set_value('pronounce', speech, pitch, speed, mouth, throat);
+        },
+        sing: function (speech, pitch, speed, mouth, throat) {
+            sm.speech.set_value('sing', speech, pitch, speed, mouth, throat);
+        }
     }
 }
 
