@@ -73,7 +73,9 @@ var smCodeProcessor = {
             var time = parseInt(config[i].time);
             function evalCode (_code, _t) {
                 return function () {
-                    sm.time = _t;
+                    if(sm.time < _t) {
+                        sm.time = _t;
+                    }
                     eval(_code);
                 }
             }
