@@ -46,6 +46,9 @@ Sk.externalLibraries = {
     sm_music: {
         path: base_url + 'sm/music/__init__.js'
     },
+    sm_neopixel: {
+        path: base_url + 'sm/neopixel/__init__.js'
+    },
 }
 
 
@@ -533,9 +536,37 @@ var ui = {
             }
         }
     },
-    updateSerialOutput: function(lineText){
-        $('#print_area').append('<div class="row">' + lineText + '</div>');
+    updateSerialOutput: function(lineText) {
+        if(lineText.slice(-1) === '\n') {
+            $('#print_area').append('<span style="display:block;">' + lineText + '</span>');
+        } else {
+            $('#print_area').append('<span>' + lineText + '</span>');
+        }
     },
+    serialInput: function(prompt){
+        return new Promise((resolve, reject) => {
+            $('#print_area').append('<span id="userInputSpan" style="display:block;">'+prompt+'<input style= "background-color:transparent;border:0;outline:none;" id="userInput" />'+'</span>');
+            if($('.modal-dialog').is(':visible')===false){
+                setTimeout(function(){
+                    $('#userInput').focus();
+                },600);
+            }
+            else{
+                setTimeout(function(){
+                    $('#userInput').focus();
+                },50)
+            }
+
+            $('#userInput').keypress(function(event){
+                if(event.keyCode === 13){
+                    var inputText = $(this).val();
+                    $('#userInputSpan').remove();
+                    $('#print_area').append('<span style="display:block;">'+ prompt + inputText +'</span>');
+                    resolve(inputText);
+                }
+            });
+        });
+    }
 }
 
 var sim = {

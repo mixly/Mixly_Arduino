@@ -32,32 +32,37 @@ var task_conf = {
             'time': 800
         }
     ],
-    'task_02': [
-        {
-            'code': 'sm.compass.set_x(300000);',
+    'task_02': {
+        programTimeout: 1000,
+        steps: [{
+            'code': 'sm.compass.set_heading(10);',
             'time': 100
         },
         {
-            'code': 'sm.button.press("button_a", 100);',
+            'code': 'sm.compass.set_heading(110);',
             'time': 200
         },
         {
-            'code': 'sm.button.press("button_b", 100)',
+            'code': 'sm.compass.set_heading(210);',
+            'time': 300
+        },
+        {
+            'code': 'sm.compass.set_heading(310);',
             'time': 400
         },
         {
-            'code': 'sm.compass.set_x(0);',
+            'code': 'sm.compass.set_heading(90);',
             'time': 500
         },
         {
-            'code': 'sm.button.press("button_a", 100)',
+            'code': 'sm.compass.set_heading(180);',
             'time': 600
         },
         {
-            'code': 'sm.button.press("button_b", 100)',
-            'time': 800
-        }
-    ],
+            'code': 'sm.compass.set_heading(255);',
+            'time': 700
+        },
+    ]},
     'task_03': [
         {
             'code': 'sm.button.press("button_a", 100);',
@@ -76,13 +81,20 @@ var task_conf = {
             'time': 800
         }
     ],
-    'task_06': [],
+    'task_06': {
+        programTimeout: 3000,
+        steps: []
+    },
     'task_08': {
         programTimeout: 1000,
         steps: [{
             'code': 'sm.accelerometer.set_z(8);',
             'time': 300
         }],
+    },
+    'task_09': {
+        programTimeout: 10000,
+        steps: []
     },
     'task_10': {
         programTimeout: 1000,

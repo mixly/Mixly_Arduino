@@ -48,7 +48,8 @@ var $builtinmodule = function(name) {
 					mod._data.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 				}
 				if(mod._data.osc) {
-					mod._data.osc.stop();
+					//mod._data.osc.stop();
+                    sm.music.set_pitch(pin, 0);
 					delete mod._data.osc;
 				}
 				
@@ -130,19 +131,24 @@ var $builtinmodule = function(name) {
 					osc.type = 'sine';
 					osc.frequency.value = n.f;
 					osc.connect(mod._data.audioCtx.destination);
-					osc.start();			
+					//osc.start();
+                    sm.music.set_pitch(pin, n.f);
 				}
 				i++;
-				
 				if(i <= notes.length) {
-					setTimeout(playNextNote, timeout * n.ticks);
+				    var f = function (t) {
+				        return function () {
+                            sm.time += t;
+                            playNextNote();
+						}
+                    }
+					setTimeout(f(timeout * n.ticks), timeout * n.ticks);
 				} 
 			}
 			playNextNote();
 			if(!wait.v) {
 				resolve();
 			}
-			
 		});
 		
 	}
@@ -199,9 +205,10 @@ var $builtinmodule = function(name) {
 	
 	var stop = function(pin) {
 		if(mod._data.audioCtx && mod._data.osc) {
-			mod._data.osc.stop();
+			//mod._data.osc.stop();
 			delete mod._data.osc;
 			mod._data.stop = true;
+            sm.music.set_pitch(pin, 0);
 		}
 	}
 	stop.co_varnames = ['pin'];

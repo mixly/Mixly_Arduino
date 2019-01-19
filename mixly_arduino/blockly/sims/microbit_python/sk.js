@@ -41,40 +41,14 @@ function builtinRead(x) {
 
 
 function debug_mode (code) {
+    //TODO: decide whether code has infinite loop
     return true;
 }
-function uiOutput(lineText){
-    if(lineText.slice(-1)==='\n')
-      $('#print_area').append('<span style="display:block;">'+lineText+'</span>');
-    else
-      $('#print_area').append('<span>'+lineText+'</span>');
-}
-function sk_run (code, outputFunc) {
+
+
+function sk_run (code, outputFunc, inputFunc) {
     Sk.configure({
-        inputfun: function(prompt){
-            return new Promise((resolve, reject) => {
-              $('#print_area').append('<span id="userInputSpan" style="display:block;">'+prompt+'<input style= "background-color:transparent;border:0;outline:none;" id="userInput" />'+'</span>');
-              if($('.modal-dialog').is(':visible')===false){
-                setTimeout(function(){
-                  $('#userInput').focus();
-                },600);
-              }
-              else{
-                setTimeout(function(){
-                  $('#userInput').focus();
-                },50)
-              }         
-                                     
-              $('#userInput').keypress(function(event){
-                if(event.keyCode === 13){
-                  var inputText = $(this).val();
-                  $('#userInputSpan').remove();
-                  $('#print_area').append('<span style="display:block;">'+ prompt + inputText +'</span>');
-                  resolve(inputText); 
-                }
-              });
-          });
-        },
+        inputfun: inputFunc,
         inputfunTakesPrompt: true,
         output: outputFunc,
         read: builtinRead,
@@ -123,20 +97,21 @@ function sk_run (code, outputFunc) {
     }).then(function(module){}, handleError);
 }
 
+
 function mb_run () {
     $('#simModal').modal('toggle');
     ui.init();
     var code = get_code(true);
-    sk_run(code, uiOutput);
+    sk_run(code, ui.updateSerialOutput, ui.serialInput);
 }
 
 
 function sm_run () {
     var code = get_code(true);
     code = process.processImport(code);
-    var conf = task_conf['task_08'];
+    var conf = task_conf['task_02'];
     process.parseConfig(conf.steps);
     process.autoKillProgram(conf.programTimeout);
     sm.init();
-    sk_run(code, sm.updateStatus);
+    sk_run(code, sm.updateStatus, undefined);
 }

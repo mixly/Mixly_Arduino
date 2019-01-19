@@ -125,6 +125,12 @@ var sm = {
             sm.snapshot['music_pitch_' + pin.name] = v;
             sm.updateSnapshot();
         }
+    },
+    neopixel: {
+        set_leds: function (pin, leds) {
+            sm.snapshot['neopixel_' + pin.name] = leds;
+            sm.updateSnapshot();
+        }
     }
 }
 
