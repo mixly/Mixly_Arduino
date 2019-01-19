@@ -1,10 +1,3 @@
-// 状态机
-//1. 全局timestamp
-//2. init status
-//3. update status
-//4. snapshot输出状态 不人为判断delay;更新时间间隔很小，update；很大，update
-
-
 var sm = {
     time: 0,
     preTime: 0,
@@ -17,7 +10,7 @@ var sm = {
     init: function () {
         sm.time = 0;
         sm.preTime = 0;
-        sm.snapshot = {'display': [[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0]]};
+        sm.snapshot = {};
         sm.preSnapshot = $.extend(true, {}, sm.snapshot);
         sm.snapshotArr = [{'snapshot': $.extend(true, {}, sm.snapshot), 'ts': sm.time}];
         sm.lenSnapshotArr = 1;
@@ -52,9 +45,14 @@ var sm = {
     updateStatus: function () {
         ;
     },
-    set_pixel: function (x, y, brightness) {
-        sm.snapshot['display'][y][x] = brightness;
-        sm.updateSnapshot();
+    display: {
+        set_pixel: function (x, y, brightness) {
+            if (sm.snapshot['display'] == undefined) {
+                sm.snapshot['display'] = [[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0]];
+            }
+            sm.snapshot['display'][y][x] = brightness;
+            sm.updateSnapshot();
+        },
     },
     button: {
         press: function (name, timeout) {

@@ -569,7 +569,7 @@ var sm_display = function(name) {
 	function setLED(x, y, brightness) {
 	    ui.setLED(x, y, brightness);
 		leds[y][x] = brightness;
-		sm.set_pixel(x, y, brightness);
+		sm.display.set_pixel(x, y, brightness);
 	}
 
 	function clearScreen() {
