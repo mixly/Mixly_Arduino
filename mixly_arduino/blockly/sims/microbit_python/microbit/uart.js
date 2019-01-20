@@ -1,49 +1,20 @@
-var uartModule = function(name) {
-    var mod = {};
-    mod.data = {
-    };
-    uart = mod.data;
-    function checkUartSetting(){
-        if(typeof(uart) !== "undefined") {
-            var tuned = true;
-            console.log
-            if($('#uart_baudrate').val() != uart.baudrate) {
-                $('#uart_status').html("Baudrate doesn't match: currently set to " + uart.baudrate);
-                tuned = false;
-            }
-            if(typeof(uart.tx) != 'undefined' && typeof(uart.rx) != 'undefined'){
-                if($('#uart_tx').val() != uart.tx) {
-                    $('#uart_status').html("Pin tx doesn't match: currently set to " + uart.tx);
-                    tuned = false;
-                }
-                if($('#uart_rx').val() != uart.tx) {
-                    $('#uart_status').html("Pin rx doesn't match: currently set to " + uart.rx);
-                    tuned = false;
-                }
-            }            
-            if(tuned) {
-                $('#uart_status').html("Tuned in to uart module");
-                uart.uartui_read = function(message) {
-                    $('#uart_status').html("Uart read message: " + message);
-                   
-                }
-                uart.uartui_write = function(message) {
-                    if(message.slice(-1)==='\n')
-                      $('#print_area').append('<span style="display:block;">'+message+'</span>');
-                    else
-                      $('#print_area').append('<span>'+ message +'</span>');
-                }
-            }
-            else{
-                delete uart.uartui_read;
-                delete uart.uartui_write;
-            }
-
+var uart = function(name) {
+    var mod = {
+        'data': {
+            'baudrate': mbData.uart.baudrate,
+            'bits': mbData.uart.bits,
+            'parity': mbData.uart.parity,
+            'stop': mbData.uart.stop,
+            'tx': mbData.uart.tx,
+            'rx': mbData.uart.rx,
+            'buffer': mbData.uart.buffer,
+            'peer': false
         }
-    }
+    };
+
     var init = function(baudrate, bits, parity, stop, tx, rx) {
         if(baudrate === undefined)
-            baudrate = Sk.builtin.int_(115200);
+            baudrate = Sk.builtin.int_(9600);
         if(bits === undefined)
             bits = Sk.builtin.int_(8);
         if(parity === undefined)
@@ -61,43 +32,43 @@ var uartModule = function(name) {
         mod.data.tx = tx.v;
         mod.data.rx = rx.v;
         mod.data.buffer = "";
-        delete mod.data.uartui_read;
-        delete mod.data.uartui_write;
+        ui.updatePeerSerialParam(mod.data);
     }
 
     init.co_varnames = ['baudrate', 'bits', 'parity', 'stop', 'tx', 'rx'];
     init.$defaults = [Sk.builtin.int_(9600), Sk.builtin.int_(8), Sk.builtin.none, Sk.builtin.int_(1), Sk.builtin.none, Sk.builtin.none];
     init.co_numargs = 6;
     mod.init = new Sk.builtin.func(init);
+
+    ui.updatePeerSerialParam(mod.data);
     mod.any = new Sk.builtin.func(function() {
-        checkUartSetting();
-        if(mod.data.uartui_read && mod.data.buffer.length > 0)
-            return Sk.builtin.bool(true);
-        else
-            return Sk.builtin.bool(false);
+        return Sk.builtin.bool(mod.data.buffer.length > 0);
     });
 
     var read = function(){
-        checkUartSetting();
-        if(mod.data.uartui_read && mod.data.buffer.length > 0){
+        if (!mod.data.peer) {
+            return;
+        }
+        if (mod.data.buffer.length > 0) {
             var content = mod.data.buffer;
             mod.data.buffer = "";
-            mod.data.uartui_read(content);
+            ui.updateSerialStatus('Uart read message: ' + content);
             return Sk.builtin.str(content);
         }    
-        else{
-            return Sk.builtin.none;
-        }
+        return Sk.builtin.none;
     }
+
     var write = function(message){
-        checkUartSetting();
-        if(mod.data.uartui_write) {
-            mod.data.uartui_write(message.v);
+        if (!mod.data.peer) {
+            return;
         }
+        ui.updateSerialOutput(message.v);
     }
+
     mod.read = new Sk.builtin.func(read);
     mod.write = new Sk.builtin.func(write);
 
-    ui.bindUartSendMessageEvent();
+    ui.bindUartSendMessageEvent('uart', mod.data);
+    ui.bindUartBaudrateEvent('uart_baudrate', mod.data);
     return mod;
 }

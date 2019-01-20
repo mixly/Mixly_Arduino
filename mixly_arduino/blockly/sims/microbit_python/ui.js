@@ -311,40 +311,37 @@ var ui = {
             }
         })
     },
-    bindSendMessageEvent: function(btnId, data){
-        var id = '#send_' + btnId + '_message';
-        if(btnId === 'radio'){
-            $(id).unbind('click').on('click',function(){
-                if(data['buffer'].length < data['queue']){
-                    data['buffer'].push("\x00\x01\x00" + $('#'+ btnId + '_data').val());
-                    $('#'+ btnId + '_data').val('');
-                }
-            });
+    bindRadioSendMessageEvent: function (elementId, data) {
+        if (!data.peer) {
+            return;
         }
-
-        else{
-            $(id).unbind('click').on('click',function(){
-                var message = $('#'+ btnId + '_data').val();
-                if((data['buffer'].length + message.length) < 128){
-                    data['buffer'] = data['buffer'] + message;
-                }
-                else{
-                    data['buffer'] = data['buffer'] + message.slice(0, 128-data['buffer'].length);
-                }
-                $('#'+ btnId + '_data').val('');
-            });
-        }
-    },
-    bindRadioSendMessageEvent: function(elementId, data){
-        ui.bindSendMessageEvent(elementId, data)
+        var id = '#send_' + elementId + '_message';
+        $(id).off('click').on('click', function () {
+            if (data['buffer'].length < data['queue']) {
+                data['buffer'].push("\x00\x01\x00" + $('#' + btnId + '_data').val());
+                $('#' + elementId + '_data').val('');
+            }
+        });
     },
     bindRadioUpdateConfigEvent: function (elementId, data) {
         $('#' + elementId).off('click').on('click', function () {
             ui.updatePeerRadioParam(data);
         });
     },
-    bindUartSendMessageEvent: function(){
-        ui.bindSendMessageEvent('uart', uart)
+    bindUartSendMessageEvent: function(elementId, data){
+        var id = '#send_' + elementId + '_message';
+        $(id).off('click').on('click',function(){
+            if (!data.peer) {
+                return;
+            }
+            var message = $('#'+ elementId + '_data').val();
+            if((data['buffer'].length + message.length) <= 128){
+                data['buffer'] = data['buffer'] + message;
+            } else {
+                data['buffer'] = data['buffer'] + message.slice(0, 128-data['buffer'].length);
+            }
+            $('#'+ elementId + '_data').val('');
+        });
     },
     bindCompassEvent: function (sliderId, data, key) {
         ui.bindSliderEvent(sliderId, data, key);
@@ -515,6 +512,24 @@ var ui = {
                 }
             });
         });
+    },
+    updateSerialStatus: function (message) {
+        $('#uart_status').html(message);
+    },
+    updatePeerSerialParam: function (data) {
+        var message = '';
+        if($('#uart_baudrate').val() != data.baudrate) {
+            var message = "Baudrate doesn't match: currently set to " + data.baudrate;
+            data.peer = false;
+        } else {
+            data.peer = true;
+        }
+        ui.updateSerialStatus(message);
+    },
+    bindUartBaudrateEvent: function (id, data) {
+        $('#' + id).off('change').on('change', function () {
+            ui.updatePeerSerialParam(data);
+        })
     }
 }
 

@@ -673,39 +673,26 @@ function init() {
                 <button id="8g" class="btn-default col-sm-1 accelerometer-btn">8g</button>
                 </div>
               </div>
-              <div id="monitor_uart_div" class="row monitor-div">
-              <div class="row form-inline">
-                <from class='form-inline'>
-                    <label class="col-sm-2 control-label text-primary">模拟串口通讯</label>
-                    <label class="control-label" for='uart_baudrate'>波特率</label>
-                    <select id="uart_baudrate" class="form-control">
-                      <option value="115200" selected="selected">115200</option>
-                      <option value="57600">57600</option>
-                      <option value="38400">38400</option>
-                      <option value="38400">28800</option>
-                      <option value="38400">19200</option>
-                      <option value="38400">14400</option>
-                      <option value="38400">9600</option>
-                    </select>
-                    <label class="" for='uart_rx'>rx</label>
-                    <input class="form-control" id="uart_rx" type="text" />
-                    <label class="" for='uart_tx'>tx</label>
-                    <input class="form-control" id="uart_tx" type="text" />
-                </from>     
-              </div>
-              <div class="row" style="padding-top: 7px;">
-                <div class="col-sm-offset-2 col-sm-8">
-                    <label  style="vertical-align:top;" class="control-label" for='uart_data'>消息</label>
-                    <textarea style="width: 90%;min-height: 80px" id="uart_data" type="text"></textarea>
-                </div>
+            <div id="monitor_uart_div" class="monitor-div">
+              <div class="row form-inline" style="padding-top: 7px;">
+                <label class="col-sm-2 control-label text-primary">模拟串口通讯</label>
+                <label class="control-label" for='uart_baudrate' style="width:10%;float:left;padding-left: 15px;
+    text-align: left;">波特率</label>
+                <select id="uart_baudrate" class="form-control col-sm-2">
+                  <option value="115200" selected="selected">115200</option>
+                  <option value="57600">57600</option>
+                  <option value="38400">38400</option>
+                  <option value="38400">28800</option>
+                  <option value="38400">19200</option>
+                  <option value="38400">14400</option>
+                  <option value="38400">9600</option>
+                </select>
+                <label class="control-label col-sm-1" for='uart_data'>消息</label>
+                <input class="form-control col-sm-6" id='uart_data' type="text"/>
+                <button id="send_uart_message" class="btn-default form-control col-sm-1" style="margin-left: 7px;">发送</button>
               </div>
               <div class="row">
-                  <div class="col-sm-offset-5 col-sm-2" style="padding-top: 20px">
-                    <button id="send_uart_message" class="btn-default form-control">发送消息</button>
-                  </div>
-              </div>
-              <div class="row">
-                  <span id='uart_status'></span>
+                <label id="uart_status" class="control-label col-sm-offset-2 col-sm-10 text-danger" style="text-align: left;"></label>
               </div>
             </div><!-- /.monitor-->
             <div class="row">

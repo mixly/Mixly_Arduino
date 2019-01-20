@@ -31,6 +31,15 @@ var mbData = {
         'z': 0,
         'currentGesture': '',
         'gestureHistory': []
+    },
+    'uart': {
+       'baudrate': 115200,
+       'bits': 8,
+       'parity': null,
+       'stop': 1,
+       'tx': null,
+       'rx': null,
+       'buffer': ''
     }
 }
 

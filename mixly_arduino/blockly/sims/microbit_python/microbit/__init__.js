@@ -451,7 +451,7 @@ var $builtinmodule = function (name) {
     */
 
     mod.uart = new Sk.builtin.module();
-    mod.uart.$d = new uartModule("microbit.uart");
+    mod.uart.$d = new uart("microbit.uart");
 
 
     return mod;
