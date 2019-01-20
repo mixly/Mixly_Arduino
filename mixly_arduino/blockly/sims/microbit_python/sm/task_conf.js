@@ -133,7 +133,7 @@ var task_conf = {
         programTimeout: 1000,
         steps: [
             {
-                'code': 'sm.sonar.set_value(14);',
+                'code': 'sm.uart.send("123\\r");',
                 'time': 200
             }]
     }

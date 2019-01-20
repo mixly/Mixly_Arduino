@@ -156,7 +156,48 @@ var sm = {
         sing: function (speech, pitch, speed, mouth, throat) {
             sm.speech.set_value('sing', speech, pitch, speed, mouth, throat);
         }
+    },
+    uart: {
+        peer: {
+            baudrate: mbData.uart.baudrate
+        },
+        //self write
+        write: function (message) {
+            if (sm.time != sm.preTime || sm.snapshot['uart'] == undefined) {
+                sm.snapshot['uart'] = '';
+            }
+            sm.snapshot['uart'] += message;
+            sm.updateSnapshot();
+        },
+        input: function (prompt) {
+            return new Promise((resolve, reject) => {
+                var itl = setInterval(function () {
+                    var idx = sm.uart.data.buffer.indexOf('\r');
+                    if (idx != -1) {
+                        clearInterval(itl);
+                        var inputText = sm.uart.data.buffer.substring(0, idx);
+                        sm.uart.data.buffer = sm.uart.data.buffer.substring(idx + 1);
+                        resolve(inputText);
+                        return;
+                    }
+                    sm.time += 10;
+                }, 10);
+            });
+        },
+        //peer write
+        send: function (message) {
+            var data = sm.uart.data;
+            if((data['buffer'].length + message.length) <= 128){
+                data['buffer'] = data['buffer'] + message;
+            } else {
+                data['buffer'] = data['buffer'] + message.slice(0, 128-data['buffer'].length);
+            }
+        },
+        changeBaudrate: function (baudrate) {
+            sm.peer.baudrate = baudrate;
+        }
     }
+
 }
 
 

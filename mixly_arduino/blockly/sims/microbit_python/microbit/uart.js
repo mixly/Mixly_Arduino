@@ -8,7 +8,7 @@ var uart = function(name) {
             'tx': mbData.uart.tx,
             'rx': mbData.uart.rx,
             'buffer': mbData.uart.buffer,
-            'peer': false
+            'peer': true
         }
     };
 

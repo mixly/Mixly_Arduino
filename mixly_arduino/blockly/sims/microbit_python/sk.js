@@ -144,9 +144,9 @@ function mb_run () {
 function sm_run () {
     var code = codeProcessor.getCode(true);
     code = smCodeProcessor.processImport(code);
-    var conf = task_conf['task_13'];
+    var conf = task_conf['task_test'];
     smCodeProcessor.parseConfig(conf.steps);
     smCodeProcessor.autoKillProgram(conf.programTimeout);
     sm.init();
-    sk_run(code, sm.updateStatus, undefined, sm.getSnapshotArr);
+    sk_run(code, sm.uart.write, sm.uart.input, sm.getSnapshotArr);
 }
