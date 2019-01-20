@@ -58,6 +58,22 @@ var uart = function(name) {
         return Sk.builtin.none;
     }
 
+    var readline = function(){
+        if (!mod.data.peer) {
+            return;
+        }
+        if (mod.data.buffer.length > 0) {
+            var idx = mod.data.buffer.indexOf('\r');
+            if (idx != -1) {
+                var content = mod.data.buffer.substring(0, idx + 1);
+                mod.data.buffer = mod.data.buffer.substring(idx + 1);;
+                ui.updateSerialStatus('Uart read message: ' + content);
+                return Sk.builtin.str(content);
+            }
+        }
+        return Sk.builtin.none;
+    }
+
     var write = function(message){
         if (!mod.data.peer) {
             return;
@@ -66,6 +82,7 @@ var uart = function(name) {
     }
 
     mod.read = new Sk.builtin.func(read);
+    mod.readline = new Sk.builtin.func(readline);
     mod.write = new Sk.builtin.func(write);
 
     ui.bindUartSendMessageEvent('uart', mod.data);

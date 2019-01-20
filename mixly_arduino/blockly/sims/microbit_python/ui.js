@@ -127,6 +127,9 @@ var ui = {
 
         $('#tip').text('');
         $('#tip').hide();
+
+        //串口监视器
+        $('#uart_data').val('');
         $('#print_area').text('');
         $('#print_area').hide();
 
@@ -334,7 +337,7 @@ var ui = {
             if (!data.peer) {
                 return;
             }
-            var message = $('#'+ elementId + '_data').val();
+            var message = $('#'+ elementId + '_data').val().replace(/\\n/g, '\n').replace(/\\r/g, '\r');
             if((data['buffer'].length + message.length) <= 128){
                 data['buffer'] = data['buffer'] + message;
             } else {
