@@ -23,6 +23,7 @@ var sm = {
             }
             newSnapshotArr.push(JSON.stringify(sm.snapshotArr[i]));
         }
+        console.log(newSnapshotArr);
         return newSnapshotArr;
     },
     updateSnapshot: function () {

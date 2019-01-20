@@ -76,7 +76,7 @@ function builtinRead(x) {
 }
 
 
-function sk_run (code, outputFunc, inputFunc) {
+function sk_run (code, outputFunc, inputFunc, postFunc) {
     Sk.configure({
         inputfun: inputFunc,
         inputfunTakesPrompt: true,
@@ -89,7 +89,6 @@ function sk_run (code, outputFunc, inputFunc) {
     // if code contains a while loop
     var handlers = [];
     if(codeProcessor.infiniteLoop(code)) {
-        //console.log("Crash prevention mode enabled: This happens when your code includes an infinite loop without a sleep() function call. Your code will run much more slowly in this mode.");
         var startTime = new Date().getTime();
         var lineCount = 0;
         var currTime = 0;
@@ -103,7 +102,6 @@ function sk_run (code, outputFunc, inputFunc) {
                 startTime = new Date().getTime();
                 var p = new Promise(function(resolve, reject) {
                     setTimeout(function() {
-                        //console.log("Limiting speed to avoid crashing the browser: " + (lineCount * 10) +  " lines per second");
                         lineCount = 0;
                         return resolve(susp.resume());
                     }, 50);
@@ -116,6 +114,9 @@ function sk_run (code, outputFunc, inputFunc) {
     function handleError (err) {
         var errString = err.toString() ;
         if(errString.indexOf('TimeLimitError') != -1) {
+            if (postFunc != undefined) {
+                postFunc();
+            }
             return;
         }
         console.log(err);
@@ -124,7 +125,11 @@ function sk_run (code, outputFunc, inputFunc) {
 
     Sk.misceval.callsimAsync(handlers, function() {
         return Sk.importMainWithBody("<stdin>", false, code, true);
-    }).then(function(module){}, handleError);
+    }).then(function(module){
+        if (postFunc != undefined) {
+            postFunc();
+        }
+    }, handleError);
 }
 
 
@@ -143,5 +148,5 @@ function sm_run () {
     smCodeProcessor.parseConfig(conf.steps);
     smCodeProcessor.autoKillProgram(conf.programTimeout);
     sm.init();
-    sk_run(code, sm.updateStatus, undefined);
+    sk_run(code, sm.updateStatus, undefined, sm.getSnapshotArr);
 }
