@@ -125,8 +125,10 @@ var ui = {
             }
         }
 
-        $('#tip').text();
+        $('#tip').text('');
         $('#tip').hide();
+        $('#print_area').text('');
+        $('#print_area').hide();
 
         ui.clearScreen();
         if (ui.music_data != undefined) {
@@ -487,32 +489,28 @@ var ui = {
             }
         }
     },
-    updateSerialOutput: function(lineText) {
-        if(lineText.slice(-1) === '\n') {
-            $('#print_area').append('<span style="display:block;">' + lineText + '</span>');
-        } else {
-            $('#print_area').append('<span>' + lineText + '</span>');
+    updateSerialOutput: function(line) {
+        var el = $('#print_area');
+        if (el.css('display') == 'none') {
+            el.show();
         }
+        el.append(line);
     },
     serialInput: function(prompt){
         return new Promise((resolve, reject) => {
-            $('#print_area').append('<span id="userInputSpan" style="display:block;">'+prompt+'<input style= "background-color:transparent;border:0;outline:none;" id="userInput" />'+'</span>');
-            if($('.modal-dialog').is(':visible')===false){
-                setTimeout(function(){
-                    $('#userInput').focus();
-                },600);
+            $('#print_area').append('<input style= "background-color:transparent;border:0;outline:none;" id="userInput" />');
+            var focusTime = 50;
+            if($('#simModal').is(':visible') === false){
+                focusTime = 600;
             }
-            else{
-                setTimeout(function(){
-                    $('#userInput').focus();
-                },50)
-            }
-
+            setTimeout(function(){
+                $('#userInput').focus();
+            }, focusTime);
             $('#userInput').keypress(function(event){
                 if(event.keyCode === 13){
                     var inputText = $(this).val();
-                    $('#userInputSpan').remove();
-                    $('#print_area').append('<span style="display:block;">'+ prompt + inputText +'</span>');
+                    $('#userInput').remove();
+                    $('#print_area').append(inputText + '\n');
                     resolve(inputText);
                 }
             });
