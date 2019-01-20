@@ -77,6 +77,9 @@ function builtinRead(x) {
 
 
 function sk_run (code, outputFunc, inputFunc, postFunc) {
+    if(code == '') {
+        return;
+    }
     Sk.configure({
         inputfun: inputFunc,
         inputfunTakesPrompt: true,

@@ -7,7 +7,7 @@ var codeProcessor = {
             code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
         }
         if (code == '') {
-            return;
+            return '';
         }
         if (trick == true) {
             // trick
