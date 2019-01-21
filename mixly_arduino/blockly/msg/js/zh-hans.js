@@ -2275,3 +2275,4 @@ Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_USE_STR = '通过字符串';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_SEQ = '将序列';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_GET_STR = '连接成一个字符串';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_TOOLTIP = '第二个参数必须是可迭代的且迭代的每一项类型都是字符串；结果返回一个字符串';
+Blockly.MIXLY_PYTHON_TURTLE_EXITONCLICK = '设置点击屏幕结束乌龟画图';

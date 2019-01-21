@@ -2242,3 +2242,4 @@ Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_USE_STR = 'A través de una cadena';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_SEQ = 'secuenciar';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_GET_STR = 'conectada a una cadena';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_TOOLTIP = 'El segundo parámetro debe ser iterativo y cada uno de los tipos de iteración es una cadena; El resultado devuelve una cadena';
+Blockly.MIXLY_PYTHON_TURTLE_EXITONCLICK = 'configuración clic en la pantalla para terminar el dibujo de la tortuga';

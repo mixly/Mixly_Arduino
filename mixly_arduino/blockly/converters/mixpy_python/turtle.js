@@ -95,6 +95,9 @@ function turtleLeftRight(mode){
 
 pbc.objectFunctionD.get('left')[turtleClass] = turtleLeftRight('left');
 pbc.objectFunctionD.get('right')[turtleClass] = turtleLeftRight('right');
+pbc.objectFunctionD.get('lt')[turtleClass] = turtleLeftRight('left');
+pbc.objectFunctionD.get('rt')[turtleClass] = turtleLeftRight('right');
+
 
 
 pbc.objectFunctionD.get('setheading')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -130,6 +133,15 @@ pbc.moduleFunctionD.get('turtle')['done'] = function(py2block, func, args, keywo
         throw new Error("Incorrect number of arguments");
     }
     return [block("turtle_done", func.lineno, {}, {}, {
+            "inline": "true"
+        })];
+}
+
+pbc.moduleFunctionD.get('turtle')['exitonclick'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return [block("turtle_exitonclick", func.lineno, {}, {}, {
             "inline": "true"
         })];
 }

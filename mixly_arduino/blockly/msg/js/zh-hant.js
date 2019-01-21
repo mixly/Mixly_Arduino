@@ -2272,4 +2272,4 @@ Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_USE_STR = '通過字串';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_SEQ = '將序列';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_GET_STR = '連接成一個字串';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_TOOLTIP = '第二個參數必須是可反覆運算的且反覆運算的每一項類型都是字串；結果返回一個字串';
-
+Blockly.MIXLY_PYTHON_TURTLE_EXITONCLICK = '設置點擊螢幕結束烏龜畫圖';

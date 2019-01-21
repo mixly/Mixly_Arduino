@@ -2241,3 +2241,4 @@ Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_USE_STR = 'use string';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_SEQ = 'to make sequence';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_GET_STR = 'joined as a string';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_TOOLTIP = 'the second parameter must be iterable and each item type iterated is a string; The result returns a string';
+Blockly.MIXLY_PYTHON_TURTLE_EXITONCLICK = 'set click the screen to end the turtle';

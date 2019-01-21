@@ -22,6 +22,12 @@ Blockly.Python.turtle_done = function(){
   return code;
 };
 
+Blockly.Python.turtle_exitonclick = function(){
+  Blockly.Python.definitions_.import_turtle = "import turtle";
+  var code='turtle.exitonclick()\n';
+  return code;
+};
+
 
 Blockly.Python.turtle_move = function() {
   Blockly.Python.definitions_.import_turtle = "import turtle";

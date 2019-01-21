@@ -40,6 +40,17 @@ Blockly.Blocks['turtle_done'] = {
   }
 };
 
+Blockly.Blocks['turtle_exitonclick'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendDummyInput()
+          .appendField(Blockly.MIXLY_PYTHON_TURTLE_EXITONCLICK);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
 Blockly.Blocks['turtle_move'] = {
   init: function() {
      this.appendValueInput('TUR')
