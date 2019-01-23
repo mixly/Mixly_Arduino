@@ -57,16 +57,24 @@ var sm = {
     },
     button: {
         press: function (name, timeout) {
+            var nameArr = [];
             if (name == "button_a") {
-                name = 'button_0';
+                nameArr = ['button_0'];
             }
             if (name == "button_b") {
-                name = 'button_1';
+                nameArr = ['button_1'];
             }
-            sm.input[name].pressed = true;
+            if (name == 'button_both') {
+                nameArr = ['button_0', 'button_1']; 
+            }
+            for (var i = 0; i < nameArr.length; i ++){
+                sm.input[nameArr[i]].pressed = true;
+            }
             setTimeout(function () {
-                sm.input[name].pressed = false;
-                sm.input[name].presses ++;
+                for (var i = 0; i < nameArr.length; i ++){
+                    sm.input[nameArr[i]].pressed = false;
+                    sm.input[nameArr[i]].presses ++;
+                }
                 sm.time += timeout;
             }, timeout);
         }

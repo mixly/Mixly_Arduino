@@ -106,7 +106,11 @@ function sk_run (code, outputFunc, inputFunc, postFunc) {
                 var p = new Promise(function(resolve, reject) {
                     setTimeout(function() {
                         lineCount = 0;
-                        return resolve(susp.resume());
+                        try {
+                            return resolve(susp.resume());
+                        } catch(e) {
+                            handleError(e);
+                        }
                     }, 50);
                 });
                 return p;
@@ -126,9 +130,9 @@ function sk_run (code, outputFunc, inputFunc, postFunc) {
         ui.showTip(errString);
     }
 
-    Sk.misceval.callsimAsync(handlers, function() {
+    Sk.misceval.callsimAsync(handlers, function () {
         return Sk.importMainWithBody("<stdin>", false, code, true);
-    }).then(function(module){
+    }).then(function (module) {
         if (postFunc != undefined) {
             postFunc();
         }
@@ -153,7 +157,6 @@ function sm_run () {
         return;
     }
     var conf = task_conf['task_' + taskId];
-    var conf = task_conf['task_test'];
     smCodeProcessor.parseConfig(conf.steps);
     smCodeProcessor.autoKillProgram(conf.programTimeout);
     sm.init();
