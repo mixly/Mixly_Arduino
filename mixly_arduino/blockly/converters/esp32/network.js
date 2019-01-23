@@ -30,19 +30,35 @@ pbc.assignD.get('network')['create_block'] = function(py2block, node, targets, v
 
 
 pbc.objectFunctionD.get('active')['network'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length != 1) {
+
+    if (args.length === 1){
+        var objblock = py2block.convert(func.value);
+        // var lightblock = py2block.identifier(args[0].n);
+        var reverse = py2block.Name_str(args[0]);
+        return [block("network_open", func.lineno, {
+                "op": reverse,
+            }, {
+                "VAR":objblock,
+            }, {
+                "inline": "true"
+            })];
+    }
+    else if (args.length === 0) {
+        var objblock = py2block.convert(func.value);
+        // var lightblock = py2block.identifier(args[0].n);
+        return [block("network_is_active", func.lineno, {
+            }, {
+                "VAR":objblock,
+            }, {
+                "inline": "true"
+            })];
+    }
+    else
+    {
         throw new Error("Incorrect number of arguments");
     }
-    var objblock = py2block.convert(func.value);
-    // var lightblock = py2block.identifier(args[0].n);
-    var reverse = py2block.Name_str(args[0]);
-    return [block("network_open", func.lineno, {
-            "op": reverse,
-        }, {
-            "VAR":objblock,
-        }, {
-            "inline": "true"
-        })];
+    
+
 }
 
 pbc.objectFunctionD.get('isconnected')['network'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -108,19 +124,32 @@ pbc.objectFunctionD.get('config')['network'] = function (py2block, func, args, k
 }
 
 pbc.objectFunctionD.get('connect')['network'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length != 2) {
+    if (args.length === 2) {
+        var objblock = py2block.convert(func.value);
+        var idblock = py2block.convert(args[0]);
+        var passwordblock = py2block.convert(args[1]);
+        return [block("network_connect", func.lineno, {}, {
+                "VAR":objblock,
+                "id":idblock,
+                "password":passwordblock,
+            }, {
+                "inline": "true"
+            })];
+    }
+    else if (args.length === 1) {
+        var objblock = py2block.convert(func.value);
+        var reverse = py2block.convert(args[0]);
+        return [block("network_socket_connect", func.lineno, {
+            }, {
+                "address": reverse,
+                "VAR":objblock,
+            }, {
+                "inline": "true"
+            })];
+        }
+    else {
         throw new Error("Incorrect number of arguments");
     }
-    var objblock = py2block.convert(func.value);
-    var idblock = py2block.convert(args[0]);
-    var passwordblock = py2block.convert(args[1]);
-    return [block("network_connect", func.lineno, {}, {
-            "VAR":objblock,
-            "id":idblock,
-            "password":passwordblock,
-        }, {
-            "inline": "true"
-        })];
 }
 
 pbc.assignD.get('socket')['check_assign'] = function(py2block, node, targets, value) {
@@ -130,18 +159,23 @@ pbc.assignD.get('socket')['check_assign'] = function(py2block, node, targets, va
     var moduleName = py2block.Name_str(value.func.value);
     var funcName = py2block.identifier(value.func.attr);
     if(value._astname === "Call" && moduleName === "socket"
-        && funcName === "socket" && value.args.length === 2)
+        && funcName === "socket" && value.args.length <= 1)
         return true;
     return false;
 }
 
 pbc.assignD.get('socket')['create_block'] = function(py2block, node, targets, value){
-    var mode = py2block.identifier(value.args[1].attr);
-    if (mode=="SOCK_STREAM"){
-        mode="TCP"
+    if (value.args.length === 0){
+        var mode="TCP"
     }
-    else if (mode=="SOCK_DGRAM"){
-        mode="UDP"
+    else {
+        var mode = py2block.identifier(value.args[0].attr);
+        if (mode == "SOCK_DGRAM"){
+            mode = "UDP"
+        }
+        else if (mode == "SOCK_STREAM"){
+            mode = "TCP"
+        }
     }
     return block("network_socket_init", node.lineno, {
         "mode":mode,

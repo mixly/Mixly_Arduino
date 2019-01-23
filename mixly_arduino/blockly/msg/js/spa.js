@@ -2243,3 +2243,8 @@ Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_SEQ = 'secuenciar';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_GET_STR = 'conectada a una cadena';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_TOOLTIP = 'El segundo parámetro debe ser iterativo y cada uno de los tipos de iteración es una cadena; El resultado devuelve una cadena';
 Blockly.MIXLY_PYTHON_TURTLE_EXITONCLICK = 'configuración clic en la pantalla para terminar el dibujo de la tortuga';
+
+Blockly.MIXLY_MICROPYTHON_SOCKET_CONNECT_TO_ADDRESS='Conexión a la dirección';
+Blockly.MIXLY_ESP32_NETWORK_SOCKET_CONNECT_TOOLTIP='Conecta el socket a la dirección de la red';
+Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE ="obtener el estado de activación";
+Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE_TOOLTIP ="obtiene el estado de activación de la red especificada";

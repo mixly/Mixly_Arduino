@@ -53,6 +53,19 @@ Blockly.Blocks['network_open'] = {
     }
 };
 
+Blockly.Blocks['network_is_active'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.storage.HUE);
+        this.appendValueInput('VAR')
+            .setCheck("var")
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE)
+        this.setOutput(true);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE);
+    }
+};
+
 Blockly.Blocks['network_scan'] = {
     init: function() {
         this.setColour(Blockly.Blocks.storage.HUE);
@@ -265,6 +278,21 @@ Blockly.Blocks['network_socket_bind'] = {
         this.setNextStatement(true);
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SOCKET_BIND_TOOLTIP);
+    }
+};
+
+Blockly.Blocks['network_socket_connect'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.storage.HUE);
+        this.appendValueInput('VAR')
+            .setCheck("var")
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_LET_SOCKET)
+        this.appendValueInput('address')
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_CONNECT_TO_ADDRESS);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SOCKET_CONNECT_TOOLTIP);
     }
 };
 

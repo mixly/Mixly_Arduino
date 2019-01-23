@@ -59,6 +59,13 @@ Blockly.Python.network_open= function() {
     return code;
 }
 
+Blockly.Python.network_is_active= function() {
+    Blockly.Python.definitions_['import_network'] = "import network";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+    var code=""+varName+".active()";
+    return [code, Blockly.Python.ORDER_ATOMIC];
+}
+
 Blockly.Python.network_wifi_connect = function(){
     Blockly.Python.definitions_['import_network'] = "import network";
     var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
@@ -117,10 +124,10 @@ Blockly.Python.network_socket_init= function() {
     var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var mode=this.getFieldValue('mode');
     if (mode=='UDP'){
-      mode = 'socket.AF_INET, socket.SOCK_DGRAM'
+      mode = 'socket.SOCK_DGRAM'
     }
     else if (mode=='TCP'){
-      mode = 'socket.AF_INET, socket.SOCK_STREAM'
+      mode = 'socket.SOCK_STREAM'
     }
     return ""+varName+" = socket.socket("+mode+")\n";
 }
@@ -131,6 +138,14 @@ Blockly.Python.network_socket_bind= function() {
     var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
     var address = Blockly.Python.valueToCode(this, 'address', Blockly.Python.ORDER_ATOMIC);
     return ""+varName+".bind("+address+")\n";
+}
+
+Blockly.Python.network_socket_connect= function() {
+    Blockly.Python.definitions_['import_network'] = "import network";
+    Blockly.Python.definitions_['import_socket'] = "import socket";
+    var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+    var address = Blockly.Python.valueToCode(this, 'address', Blockly.Python.ORDER_ATOMIC);
+    return ""+varName+".connect("+address+")\n";
 }
 
 Blockly.Python.network_socket_listen= function() {
