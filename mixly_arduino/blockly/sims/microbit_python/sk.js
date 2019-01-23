@@ -147,6 +147,12 @@ function mb_run () {
 function sm_run () {
     var code = codeProcessor.getCode(true);
     code = smCodeProcessor.processImport(code);
+    var taskId = Code.getStringParamFromUrl('task_id', '');
+    if (taskId == '') {
+        console.log('task_id is empty');
+        return;
+    }
+    var conf = task_conf['task_' + taskId];
     var conf = task_conf['task_test'];
     smCodeProcessor.parseConfig(conf.steps);
     smCodeProcessor.autoKillProgram(conf.programTimeout);
