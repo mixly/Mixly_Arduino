@@ -157,6 +157,7 @@ function sm_run () {
         return;
     }
     var conf = task_conf['task_' + taskId];
+    sm['taskConf'] = conf;
     smCodeProcessor.parseConfig(conf.steps);
     smCodeProcessor.autoKillProgram(conf.programTimeout);
     sm.init();

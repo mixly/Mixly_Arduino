@@ -134,7 +134,7 @@ var ui = {
         $('#print_area').hide();
 
         ui.clearScreen();
-        if (ui.music_data != undefined) {
+        if (ui.music_data != undefined && ui.music_data.osc != undefined) {
             ui.music_data.osc.stop();
             delete ui.music_data;
         }
@@ -226,7 +226,7 @@ var ui = {
        return module;
     },
     //需要改进：能够使得管脚号不重复
-    AddPinOption: function(type,pinNum = 0){
+    addPinOption: function(type, pinNum = 0){
         if(type == 'digital'){
             ui.pinCount.rowid++;
             var thisRowId = ui.pinCount.rowid;
@@ -274,7 +274,7 @@ var ui = {
     },
     bindAddPinBtnEvent: function(btn_type){
         $('#add_'+ btn_type + '_pin').unbind('click').on('click',function(){
-            ui.AddPinOption(btn_type);
+            ui.addPinOption(btn_type);
             console.log(btn_type,(ui.pinCount.rowid - 1));
             ui.bindDeletePinBtnEvent('#btn_row' + (ui.pinCount.rowid - 1));
         });
@@ -396,7 +396,7 @@ var ui = {
         });
 
         if(!flag){//用户没有初始化这一列,就新增这一列
-            ui.AddPinOption(type.split('_')[0]);
+            ui.addPinOption(type.split('_')[0]);
             var newRowId = ui.pinCount.rowid;
             ui.bindDeletePinBtnEvent('#btn_row' + newRowId );
             $('#select_row'+(newRowId)).val(pinName);
