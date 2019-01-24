@@ -351,6 +351,11 @@ Blockly.Python.display_fill=function(){
   return code;
 };
 
+Blockly.Python.switch = function () {
+    var code = this.getFieldValue('flag');
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
 goog.provide('Blockly.Python.display');
 goog.require('Blockly.Python');
 

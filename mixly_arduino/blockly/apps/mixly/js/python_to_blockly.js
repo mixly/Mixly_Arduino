@@ -1852,6 +1852,10 @@ PythonToBlocks.prototype.Num = function(node)
         return block(py2block_config.inScope, node.lineno, {
             "flag": nVal
         });
+    }else if(py2block_config.inScope == "switch"){
+        return block(py2block_config.inScope, node.lineno, {
+            "flag": nVal
+        });
     }
     return block("math_number", node.lineno, {"NUM": nVal});
 }

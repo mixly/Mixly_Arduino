@@ -311,7 +311,8 @@ pbc.moduleFunctionD.get('matrix.display')['set_pixel'] = function(py2block, func
     }
     var astname = args[0]._astname;
     var astname1 = args[1]._astname;
-    //pbc.pinType = "pins_brightness";
+    pbc.pinType = null;
+    pbc.inScope="switch";
     var brightblock = py2block.convert(args[2]);
     pbc.pinType = null;
     var xblock;
@@ -337,7 +338,6 @@ pbc.moduleFunctionD.get('matrix.display')['set_pixel'] = function(py2block, func
         "inline": "true"
     })];
 }
-
 
 pbc.moduleFunctionD.get('matrix.display')['set_brightness'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
     if(args.length!=1){

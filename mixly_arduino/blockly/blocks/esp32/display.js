@@ -1499,6 +1499,19 @@ Blockly.Blocks.display_scroll_string_delay = {
   }
 };
 
+Blockly.Blocks['switch'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.MIXLY_ESP32_ON, "1"],
+                [Blockly.MIXLY_ESP32_OFF, "0"]
+            ]), "flag");
+        this.setOutput(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW);
+    }
+};
+
 Blockly.Blocks['display_fill'] = {
     init: function(){
         this.setColour(Blockly.Blocks.display.HUE);
