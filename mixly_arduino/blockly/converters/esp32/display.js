@@ -314,6 +314,7 @@ pbc.moduleFunctionD.get('matrix.display')['set_pixel'] = function(py2block, func
     pbc.pinType = null;
     pbc.inScope="switch";
     var brightblock = py2block.convert(args[2]);
+    pbc.inScope=null;
     pbc.pinType = null;
     var xblock;
     var yblock;
