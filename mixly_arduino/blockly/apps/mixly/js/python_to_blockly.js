@@ -1953,7 +1953,7 @@ PythonToBlocks.prototype.Subscript = function(node) {
     var ctx = node.ctx;
 
     if (slice._astname == "Index") {
-        if(slice.value._astname == "Str" || slice.value._astname == "Name"){
+        if(slice.value._astname == "Str" ){
             return block("dicts_get", node.lineno, {}, {
                 "KEY": this.convert(slice.value),
                 "DICT": this.convert(value)
