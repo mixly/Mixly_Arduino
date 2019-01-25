@@ -41,17 +41,12 @@ var $builtinmodule = function (name) {
         });
 
         $loc.read_digital = new Sk.builtin.func(function(self){
-            var flag = false;
             $('select.pinOption').each(function(){
-                if($(this).val()==self.name){
-                    flag = true;
+                if($(this).val() == self.name){
                     var id = $(this).attr('id').split('select_row').join('');
                     self.value = parseInt($('#curr_pinValue'+id).text());
                 }
             });
-            if(!flag){//找不到就新建一个
-                ui.updateMicrobitPins('digital',self.name,self.value);
-            }
             return Sk.builtin.int_(self.value);
         });
 
@@ -125,7 +120,6 @@ var $builtinmodule = function (name) {
         });
 
         $loc.is_touched = new Sk.builtin.func(function(self) {
-            var flag = false;
             $('select.pinOption').each(function(){
                 if($(this).val()==self.name){
                     flag = true;
@@ -133,9 +127,6 @@ var $builtinmodule = function (name) {
                     self.touched = parseInt($('#curr_pinValue'+id).text()) === 1 ? true : false;
                 }
             });
-            if(!flag){
-                 ui.updateMicrobitPins('touch',self.name,self.touched);
-            }
             return Sk.builtin.bool(self.touched);
         });
     }, "MicroBitTouchPin", []);

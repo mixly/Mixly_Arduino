@@ -97,7 +97,15 @@ var ui = {
                     name: '舵机',
                     type: 'gauge',
                     detail: {
-                        formatter:'{value}',
+                        formatter: function (value) {
+                            if (value < 0) {
+                                return 'min:0';
+                            } else if(value > 180) {
+                                return 'max:180';
+                            } else {
+                                return value;
+                            }
+                        },
                         fontSize: '10px',
                     },
                     data: [{value: mbData.servo, name: '舵机'}],

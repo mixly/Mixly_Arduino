@@ -194,6 +194,10 @@ var $builtinmodule = function(name) {
 			}
 			if(!wait.v) {
 				resolve();
+			} else {
+                setTimeout(function () {
+                    resolve();
+                }, sm.taskConf.programTimeout);
 			}
 		});
 		
