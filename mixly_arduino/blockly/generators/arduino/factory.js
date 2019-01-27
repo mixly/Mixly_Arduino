@@ -35,6 +35,11 @@ Blockly.Arduino.factory_declare = function() {
 	Blockly.Arduino.definitions_['var_'+TYPE+'_'+NAME] = TYPE+' '+NAME+';';
 	return '';
 };
+Blockly.Arduino.factory_declare2 = function() {
+var VALUE = this.getFieldValue('VALUE');
+	Blockly.Arduino.definitions_['var_'+VALUE] = VALUE;
+	return '';
+};
 Blockly.Arduino.factory_define = function () {
     var TYPE = this.getFieldValue('TYPE');
     if (TYPE.substr(0,1)=='#')

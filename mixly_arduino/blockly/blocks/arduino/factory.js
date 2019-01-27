@@ -175,6 +175,15 @@ Blockly.Blocks.factory_declare={
     this.setNextStatement(true);
   }
 }
+Blockly.Blocks.factory_declare2 = {
+  init: function() {
+    this.setColour(Blockly.Blocks.factory.HUE);
+  this.appendDummyInput("")
+    .appendField(new Blockly.FieldTextArea('//define user code;'), 'VALUE');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
 Blockly.Blocks.factory_define = {
     init: function () {
         this.setColour(Blockly.Blocks.factory.HUE);
