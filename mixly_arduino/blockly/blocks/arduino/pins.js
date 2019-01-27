@@ -38,3 +38,27 @@ Blockly.Blocks['pins_interrupt'] = {
     this.setOutput(true, Number);
   }
 };
+Blockly.Blocks['pins_MOSI'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.pins.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.MOSI), 'PIN');
+    this.setOutput(true, Number);
+  }
+};
+Blockly.Blocks['pins_MISO'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.pins.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.MISO), 'PIN');
+    this.setOutput(true, Number);
+  }
+};
+Blockly.Blocks['pins_SCK'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.pins.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.SCK), 'PIN');
+    this.setOutput(true, Number);
+  }
+};

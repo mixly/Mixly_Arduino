@@ -9,3 +9,6 @@ Blockly.Arduino.pins_digital = function() {
 Blockly.Arduino.pins_analog=Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_pwm=Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_interrupt=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_MOSI=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_MISO=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_SCK=Blockly.Arduino.pins_digital;
