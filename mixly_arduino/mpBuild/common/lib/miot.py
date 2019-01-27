@@ -13,7 +13,7 @@ def get_data_dict(d):
 
 def pubData(value):    
     value = get_data_dict(value)
-    print(value)
+    #print(value)
     jdata = json.dumps(value)
     jlen = len(jdata)
     bdata = bytearray(jlen+3)
@@ -21,7 +21,7 @@ def pubData(value):
     bdata[1] = int(jlen / 256) # data lenght
     bdata[2] = jlen % 256      # data lenght
     bdata[3:jlen+4] = jdata.encode('ascii') # json data
-    print(bdata)
+    #print(bdata)
     return bdata
 
 def do_connect(id,password):
