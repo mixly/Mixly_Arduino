@@ -1,0 +1,44 @@
+#######################################
+# Syntax Coloring Map For Max72xxPanel
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Max72xxPanel	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+shutdown	KEYWORD2
+setIntensity	KEYWORD2
+invertDisplay	KEYWORD2
+drawPixel	KEYWORD2
+drawLine	KEYWORD2
+drawRect	KEYWORD2
+fillRect	KEYWORD2
+fillScreen	KEYWORD2
+drawCircle	KEYWORD2
+fillCircle	KEYWORD2
+drawTriangle	KEYWORD2
+fillTriangle	KEYWORD2
+drawRoundRect	KEYWORD2
+fillRoundRect	KEYWORD2
+drawBitmap	KEYWORD2
+drawChar	KEYWORD2
+write	KEYWORD2
+setCursor	KEYWORD2
+setTextColor	KEYWORD2
+setTextColor	KEYWORD2
+setTextSize	KEYWORD2
+setTextWrap	KEYWORD2
+setPosition	KEYWORD2
+setRotation	KEYWORD2
+getRotation	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
