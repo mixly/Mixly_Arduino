@@ -520,3 +520,17 @@ pbc.moduleFunctionD.get('mixgo.button_a')['irq'] = function (py2block, func, arg
     })];
 
 }
+
+pbc.moduleFunctionD.get('ds18x20x')['get_ds18x20_temperature'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    pbc.pinType="pins_digital_pin";
+    var argblock = py2block.convert(args[0]);
+    pbc.pinType = null;
+    return block("sensor_ds18x20", func.lineno, {}, {
+        "PIN":argblock,
+    }, {
+        "inline": "true"
+    });
+}
