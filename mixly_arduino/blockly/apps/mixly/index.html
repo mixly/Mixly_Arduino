@@ -1224,48 +1224,78 @@
 <block type="display_Matrix_CLEAR">
 </block>
 <block type="MAX7219_init">
-      <value name="PIN1">
-        <shadow type="pins_digital">
-          <field name="PIN">8</field>
-        </shadow>
-      </value>
-      <value name="PIN2">
-        <shadow type="pins_digital">
-          <field name="PIN">9</field>
-        </shadow>
-      </value>
-      <value name="PIN3">
-        <shadow type="pins_digital">
-          <field name="PIN">10</field>
-        </shadow>
-      </value>
-       <value name="Intensity">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="MAX7219_putString">
-      <value name="String">
-        <shadow type="text">
-          <field name="TEXT">mixly</field>
-        </shadow>
-      </value>
-      <value name="Speed">
-        <shadow type="math_number">
-          <field name="NUM">300</field>
-        </shadow>
-      </value>
-    </block>
+  <value name="PIN1">
+    <shadow type="pins_MOSI">
+      <field name="PIN">11</field>
+    </shadow>
+  </value>
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">9</field>
+    </shadow>
+  </value>
+  <value name="PIN3">
+    <shadow type="pins_SCK">
+      <field name="PIN">13</field>
+    </shadow>
+  </value>
+  <value name="hDisplays">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="vDisplays">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="MAX7219_Brightness" >
+ <value name="Brightness">
+  <shadow type="math_number">
+    <field name="NUM">5</field>
+  </shadow>
+</value>
+</block>
+<block type="MAX7219_drawPixel">
+  <value name="XVALUE">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="YVALUE">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="MAX7219_fillScreen" >
 
-    <block type="MAX7219_DisplayChar">
-      <value name="Chars">
-        <block type="LedArray"></block>
-      </value>
-    </block>
-
-    
-    </block>
+</block>
+<block type="MAX7219_Rotation">
+  <value name="NUM">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="MAX7219_DisplayChar">
+  <value name="LEDArray">
+    <block type="display_Matrix_LedArray"></block>
+  </value>
+</block>
+<block type="MAX7219_scrollMessage">
+ <value name="VALUE">
+  <shadow type="text">
+    <field name="TEXT">abcd</field>
+  </shadow>
+</value>
+<value name="Speed">
+  <shadow type="math_number">
+    <field name="NUM">300</field>
+  </shadow>
+</value>
+</block>
 </category>
 <category id="catEthernet" colour="0">
   <block type="ethernet_init_begin">

@@ -876,10 +876,7 @@ Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = 'Rotate Matrix Screen Display Di
 Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT = 'Display one character in turn at a time';
 Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_LEDARRAY = 'Light he corresponding position on the dot matrix screen';
 Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_CLEAR = 'Clear up the content on the dot matrix screen';
-Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_INIT = 'Initialize MAX7219 8*8 Matrix Screen';
 Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_DISPLAYCHAR = 'Generate dot-matrix display content from arrays';
-Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_STRING = 'Display each character in the string one by one at a certain speed';
-Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_PREDEFARR = 'Returns an array of predefined patterns';
 Blockly.MIXLY_TOOLTIP_ETHERNET_INIT = 'Start the Ethernet service. The parameter is the MAC address of the Ethernet expansion card. Return 1 indicates successful startup and 0 indicates failure.';
 Blockly.MIXLY_TOOLTIP_ETHERNET_MACADDRESS = 'MAC address in pattern of XX-XX-XX-XX-XX-XX-XX, X in any hexadecimal digit';
 Blockly.MIXLY_TOOLTIP_ETHERNET_LOCALIP = 'Return to the local IP address';
@@ -1102,18 +1099,25 @@ Blockly.MIXLY_4DIGITDISPLAY_OFF = 'Off';
 
 //MAX7219
 Blockly.MIXLY_MAX7219_INIT_NUM='Number of LED dot matrix modules';
-Blockly.MIXLY_MAX7219_PUTSTR='Scroll string(MAX7219)';
+Blockly.MIXLY_MAX7219_PUTSTR='Number of LED dot matrix modules';
 Blockly.MIXLY_SPEED='speed';
 Blockly.MIXLY_BRIGHTNESS='brightness';
-Blockly.MIXLY_MAX7219_DISPLAYCHAR='LED dot matrix(MAX7219) display pattern';
-Blockly.MIXLY_MAX7219_DISPLAYCHAR_NUM='Dot matrix number (1~8)';
-Blockly.MIXLY_MAX7219_DISPLAYCHAR_IMG='pattern';
-Blockly.MIXLY_MAX7219_DISPLAYCHAR_SHOWIMG='display pattern';
+Blockly.MIXLY_MAX7219_BRIGHTNESS_TOOLTIP='brightness Range0~15'
 Blockly.MIXLY_MAX7219_LEDARRAY='pattern array';
-Blockly.MIXLY_MAX7219_INIT='Initialize LED(MAX7219) dot matrix ';
-Blockly.MIXLY_MAX7219_INIT2='Initialize LED(MAX7219) dot matrix(IIC)';
-Blockly.MIXLY_MAX7219_IMG='LED(MAX7219) dot matrix Presupposition pattern';
-Blockly.MIXLY_MAX7219_CLEAR = 'LED(MAX7219) dot matrix clear';
+Blockly.MIXLY_MAX7219='MAX7219 LED dot matrix';
+Blockly.MIXLY_MAX7219_INIT='Initialize LED(MAX7219) dot matrix';
+Blockly.MIXLY_MAX7219_IMG='Presupposition pattern';
+Blockly.MIXLY_MAX7219_HDISPALY='水平点阵屏数';
+Blockly.MIXLY_MAX7219_VDISPALY='竖直点阵屏数';
+Blockly.MAX7219_FILLSCREEN_ON='ALL ON';
+Blockly.MAX7219_FILLSCREEN_OFF='ALL OFF';
+Blockly.MAX7219_SHUTDOWN_ON='Turn On Screen';
+Blockly.MAX7219_SHUTDOWN_OFF='Turn Off Screen';
+Blockly.MIXLY_MAX7219_NO='Screen No';
+Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR = Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR;
+Blockly.MAX7219_INIT_TOOLTIP = 'Initialize LED(MAX7219) dot matrix ';
+Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_STRING = '按一定速度逐个显示字符串中的每个字符';
+Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_PREDEFARR = '返回预先定义的图案对应的数组';
 
 //TM1637
 Blockly.MIXLY_4DIGITDISPLAY_TM1637 = 'TM1637';

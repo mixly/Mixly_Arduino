@@ -460,23 +460,78 @@ Blockly.Blocks.display_Matrix_CLEAR = {
 //显示-MAX7219-初始化
 Blockly.Blocks.MAX7219_init = {
   init: function() {
-    this.appendValueInput("PIN1").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_MAX7219_INIT).appendField("DIN").appendField(Blockly.MIXLY_PIN);
+    this.appendValueInput("PIN1").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_MAX7219_INIT).appendField("DIN(MOSI)").appendField(Blockly.MIXLY_PIN);
     this.appendValueInput("PIN2").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("CS").appendField(Blockly.MIXLY_PIN);
-    this.appendValueInput("PIN3").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("CLK").appendField(Blockly.MIXLY_PIN);
-    this.appendValueInput("Intensity").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_BRIGHTNESS);
+    this.appendValueInput("PIN3").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("CLK(SCK)").appendField(Blockly.MIXLY_PIN);
+    this.appendValueInput("hDisplays").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_MAX7219_HDISPALY);
+    this.appendValueInput("vDisplays").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_MAX7219_VDISPALY);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(Blockly.Blocks.display.HUE);
-    this.setInputsInline(true);
-    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_INIT);
+    this.setInputsInline(false);
+    this.setTooltip(Blockly.MAX7219_INIT_TOOLTIP);
     this.setHelpUrl('');
-  }
+}
+};
+Blockly.Blocks.MAX7219_Brightness = {
+    init: function () {
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.appendDummyInput("").appendField(Blockly.MIXLY_MAX7219);
+        this.appendValueInput("Brightness").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_BRIGHTNESS);
+        this.setTooltip(Blockly.MIXLY_MAX7219_BRIGHTNESS_TOOLTIP);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+    }
+};
+//执行器_点阵屏显示_画点显示
+Blockly.Blocks.MAX7219_drawPixel = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendDummyInput("").appendField(Blockly.MIXLY_MAX7219);
+    this.appendValueInput('XVALUE').setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_DISPLAY_MATRIX_X);
+    this.appendValueInput("YVALUE").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_DISPLAY_MATRIX_Y);
+    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT).appendField(new Blockly.FieldDropdown(display_DrawPixel_NUM), "DrawPixel_TYPE");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS);
+}
+};
+var MAX7219_FILLSCREEN_SELECT = [
+[Blockly.MAX7219_FILLSCREEN_ON, "fillScreen(1)"],
+[Blockly.MAX7219_FILLSCREEN_OFF, "fillScreen(0)"],
+[Blockly.MAX7219_SHUTDOWN_ON, "shutdown(1)"],
+[Blockly.MAX7219_SHUTDOWN_OFF, "shutdown(0)"]
+];
+Blockly.Blocks.MAX7219_fillScreen = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);   
+    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_MAX7219).appendField(new Blockly.FieldDropdown(MAX7219_FILLSCREEN_SELECT), "FILLSCREEN_TYPE");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS);
+}
+};
+//执行器_点阵屏显示_显示旋转
+Blockly.Blocks.MAX7219_Rotation = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+     this.appendDummyInput("").appendField(Blockly.MIXLY_MAX7219);
+    this.appendValueInput('NUM').setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_MAX7219_NO);
+    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_DISPLAY_MATRIX_ROTATE).appendField(new Blockly.FieldDropdown(display_Rotation_NUM), "Rotation_TYPE");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION);
+}
 };
 
 //显示-MAX7219-滚动字符串
-Blockly.Blocks.MAX7219_putString = {
+Blockly.Blocks.MAX7219_scrollMessage = {
   init: function() {
-    this.appendValueInput("String", String).setCheck([String, Number]).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_MAX7219_PUTSTR);
+    this.appendValueInput("VALUE").setCheck([String, Number]).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_MAX7219_PUTSTR);
+
     this.appendValueInput("Speed").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_SPEED);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -484,22 +539,20 @@ Blockly.Blocks.MAX7219_putString = {
     this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_STRING);
     this.setHelpUrl('');
-  }
+}
 };
 
 //显示-MAX7219-LED点阵显示图案
 Blockly.Blocks.MAX7219_DisplayChar = {
-  init: function() {
-    this.appendDummyInput().appendField(Blockly.MIXLY_MAX7219_DISPLAYCHAR);
-    this.appendValueInput("Chars").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT);
+ init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendDummyInput("").appendField(Blockly.MIXLY_MAX7219);
+    this.appendValueInput("LEDArray").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(Blockly.Blocks.display.HUE);
-    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_LEDARRAY);
-    this.setHelpUrl('');
-  }
+    this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_DISPLAYCHAR);
+}
 };
-
 //显示-max7219点阵选择数组
 Blockly.Blocks.LedArray = {
   init: function() {
