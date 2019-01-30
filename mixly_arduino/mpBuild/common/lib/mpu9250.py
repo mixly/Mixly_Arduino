@@ -524,6 +524,53 @@ class MPU9250:
     def __exit__(self, exception_type, exception_value, traceback):
         pass
 
+class Compass:
+    RAD_TO_DEG = 57.295779513082320876798154814105
+
+    def __init__(self, sensor):
+        self.sensor = sensor
+
+    def get_x(self):
+        return self.sensor.mpu9250_magnetic[0]
+
+    def get_y(self):
+        return self.sensor.mpu9250_magnetic[1]
+
+    def get_z(self):
+        return self.sensor.mpu9250_magnetic[2]
+
+    def get_field_strength(self):
+        return self.sensor.mpu9250_magnetic
+
+    def heading(self):
+        from math import atan2
+        xyz = self.sensor.mpu9250_magnetic
+        return int(((atan2(xyz[1], xyz[0]) * Compass.RAD_TO_DEG) + 180) % 360)
+
+    def calibrate(self):
+        if self.is_calibrate() is False:
+            print('The calibration need to shaking in the air (e.g. 8 or 0) and waiting for a moment')
+            self.sensor.ak8963.calibrate()
+            with open("compass_cfg.py", "w") as f:
+                f.write('\n_offset = ' + str(self.sensor.ak8963._offset) + '\n_scale = ' + str(self.sensor.ak8963._offset))
+        else:
+            print('The calibration configuration already exists. If you need to recalibrate, enter os.remove("compass_cfg.py") in repl and restart')
+            try:
+                import compass_cfg
+                self.sensor.ak8963._offset = compass_cfg._offset
+                self.sensor.ak8963._scale = compass_cfg._scale
+            except Exception as e:
+                print('compass_cfg error! delete it, please.')
+        with open("compass_cfg.py") as f:
+            for line in f:
+                print(line)
+
+    def is_calibrate(self):
+        try:
+            import compass_cfg
+            return True
+        except Exception as e:
+            return False
 
 # compass = mpu
 # accelerometer = mpu
