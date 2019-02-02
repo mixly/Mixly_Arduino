@@ -247,14 +247,7 @@ function getAcceleration(mode){
         if (args.length !== 0) {
             throw new Error("Incorrect number of arguments");
         }
-        var mpu = {
-            '_astname': 'Name',
-            'id': {
-                '_astname': 'Str',
-                'v': py2block.identifier(func.value.attr)
-            }
-        };
-        var mpublock=py2block.convert(mpu);
+        var mpublock=py2block.convert(func.value)
         return block('sensor_mpu9250_get_acceleration', func.lineno, {
                 "key": mode
             }, {
@@ -266,24 +259,17 @@ function getAcceleration(mode){
     return converter;
 }
 
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_get_x'] = getAcceleration('x');
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_get_y'] = getAcceleration('y');
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_get_z'] = getAcceleration('z');
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_get_values'] = getAcceleration('values');
+pbc.objectFunctionD.get('mpu9250_get_x')['mpu'] = getAcceleration('x');
+pbc.objectFunctionD.get('mpu9250_get_y')['mpu'] = getAcceleration('y');
+pbc.objectFunctionD.get('mpu9250_get_z')['mpu'] = getAcceleration('z');
+pbc.objectFunctionD.get('mpu9250_get_values')['mpu'] = getAcceleration('values');
 
 function getMagnetic(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
         if (args.length !== 0) {
             throw new Error("Incorrect number of arguments");
         }
-        var mpu = {
-            '_astname': 'Name',
-            'id': {
-                '_astname': 'Str',
-                'v':  py2block.identifier(func.value.attr)
-            }
-        };
-        var mpublock=py2block.convert(mpu);
+        var mpublock=py2block.convert(func.value)
         return block('sensor_mpu9250_get_magnetic', func.lineno, {
                 "key": mode
             }, {
@@ -295,24 +281,17 @@ function getMagnetic(mode){
     return converter;
 }
 
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_magnetic_x'] = getMagnetic('x');
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_magnetic_y'] = getMagnetic('y');
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_magnetic_z'] = getMagnetic('z');
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_magnetic_values'] = getMagnetic('values');
+pbc.objectFunctionD.get('mpu9250_magnetic_x')['mpu'] = getMagnetic('x');
+pbc.objectFunctionD.get('mpu9250_magnetic_y')['mpu'] = getMagnetic('y');
+pbc.objectFunctionD.get('mpu9250_magnetic_z')['mpu'] = getMagnetic('z');
+pbc.objectFunctionD.get('mpu9250_magnetic_values')['mpu'] = getMagnetic('values');
 
 function getGyro(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
         if (args.length !== 0) {
             throw new Error("Incorrect number of arguments");
         }
-        var mpu = {
-            '_astname': 'Name',
-            'id': {
-                '_astname': 'Str',
-                'v':py2block.identifier(func.value.attr)
-            }
-        };
-        var mpublock=py2block.convert(mpu);
+        var mpublock=py2block.convert(func.value)
         return block('sensor_mpu9250_get_gyro', func.lineno, {
                 "key": mode
             }, {
@@ -324,10 +303,10 @@ function getGyro(mode){
     return converter;
 }
 
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_gyro_x'] = getGyro('x');
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_gyro_y'] = getGyro('y');
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_gyro_z'] = getGyro('z');
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_gyro_values'] = getGyro('values');
+pbc.objectFunctionD.get('mpu9250_gyro_x')['mpu'] = getGyro('x');
+pbc.objectFunctionD.get('mpu9250_gyro_y')['mpu'] = getGyro('y');
+pbc.objectFunctionD.get('mpu9250_gyro_z')['mpu'] = getGyro('z');
+pbc.objectFunctionD.get('mpu9250_gyro_values')['mpu'] = getGyro('values');
 
 function sensorcompass(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
@@ -349,18 +328,11 @@ function sensorcompass(mode){
 pbc.objectFunctionD.get('mpu9250_get_field_strength')['mpu'] = sensorcompass('strength');
 pbc.objectFunctionD.get('heading')['mpu'] = sensorcompass('heading');
 
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_get_temperature'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('mpu9250_get_temperature')['mpu'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
-    }
-    var mpu = {
-            '_astname': 'Name',
-            'id': {
-                '_astname': 'Str',
-                'v': py2block.identifier(func.value.attr)
-            }
-        };     
-    var mpublock = py2block.convert(mpu)
+    }    
+    var mpublock=py2block.convert(func.value)
     return block("sensor_mpu9250_temperature", func.lineno, {}, {
         'SUB': mpublock
     }, {
@@ -454,19 +426,12 @@ pbc.objectFunctionD.get('checkdist')['sonar'] = function (py2block, func, args, 
 }
 
 
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_is_gesture'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('mpu9250_is_gesture')['mpu'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
-    }
-    var mpu = {
-            '_astname': 'Name',
-            'id': {
-                '_astname': 'Str',
-                'v':  py2block.identifier(func.value.attr)
-            }
-        };     
+    }   
     var gesblock=py2block.identifier(args[0].s);
-    var mpublock = py2block.convert(mpu)
+    var mpublock=py2block.convert(func.value)
     return block("sensor_mpu9250_gesture", func.lineno, {
         'gesture':gesblock
     }, {
