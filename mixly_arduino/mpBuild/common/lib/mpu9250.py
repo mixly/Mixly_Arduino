@@ -540,7 +540,7 @@ class Compass:
         return self.sensor.mpu9250_magnetic[2]
 
     def get_field_strength(self):
-        return self.sensor.mpu9250_magnetic
+        return self.sensor.mpu9250_get_field_strength()
 
     def heading(self):
         from math import atan2
@@ -572,6 +572,9 @@ class Compass:
         except Exception as e:
             return False
 
+    def reset_calibrate(self):
+        import os
+        os.remove("compass_cfg.py")
 # compass = mpu
 # accelerometer = mpu
 

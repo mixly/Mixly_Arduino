@@ -329,21 +329,14 @@ pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_gyro_y'] = getGyro('y');
 pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_gyro_z'] = getGyro('z');
 pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_gyro_values'] = getGyro('values');
 
-function fieldStrength(mode){
+function sensorcompass(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
         if (args.length !== 0) {
             throw new Error("Incorrect number of arguments");
         }
-        var mpu = {
-            '_astname': 'Name',
-            'id': {
-                '_astname': 'Str',
-                'v':  py2block.identifier(func.value.attr)
-            }
-        };        
-        var mpublock=py2block.convert(mpu)
+        var mpublock=py2block.convert(func.value)
         return block('sensor_mpu9250_field_strength', func.lineno, {
-                'compass': mode
+                "compass": mode
             }, {
                 'SUB': mpublock
             }, {
@@ -353,10 +346,8 @@ function fieldStrength(mode){
     return converter;
 }
 
-
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_get_field_strength'] = fieldStrength('strength');
-pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_heading'] = fieldStrength('heading');
-
+pbc.objectFunctionD.get('mpu9250_get_field_strength')['mpu'] = sensorcompass('strength');
+pbc.objectFunctionD.get('heading')['mpu'] = sensorcompass('heading');
 
 pbc.moduleFunctionD.get('mixgo.mpu')['mpu9250_get_temperature'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
@@ -534,3 +525,27 @@ pbc.moduleFunctionD.get('ds18x20x')['get_ds18x20_temperature'] = function(py2blo
         "inline": "true"
     });
 }
+
+pbc.objectFunctionD.get('calibrate')['mpu'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    return [block("sensor_mpu9250_calibrate_compass", func.lineno, {}, {
+        "SUB": objblock,
+    }, {
+        "inline": "true"
+    })];
+};
+
+pbc.objectFunctionD.get('reset_calibrate')['mpu'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    return [block("sensor_compass_reset", func.lineno, {}, {
+        "SUB": objblock,
+    }, {
+        "inline": "true"
+    })];
+};

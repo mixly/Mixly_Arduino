@@ -2448,10 +2448,24 @@
             </shadow>
           </value>
         </block>
+        <block type="sensor_mpu9250_calibrate_compass">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">compass</field>
+            </shadow>
+          </value>
+        </block>
         <block type="sensor_mpu9250_field_strength">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">mpu</field>
+              <field name="VAR">compass</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_compass_reset">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">compass</field>
             </shadow>
           </value>
         </block>

@@ -181,7 +181,7 @@ Blockly.Blocks['sensor_light_level'] = {
         this.setTooltip(Blockly.MIXLY_ESP32_SENSOR_LIGHT_LEVEL_TOOLTIP);
     }
 };
-/*
+
 Blockly.Blocks['sensor_mpu9250_calibrate_compass'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
@@ -195,30 +195,30 @@ Blockly.Blocks['sensor_mpu9250_calibrate_compass'] = {
         this.setTooltip(Blockly.MIXLY_MICROBIT_JS_CALIBRATE_COMPASS);
     }
 };
-Blockly.Blocks['sensor_mpu9250_is_compass_calibrated'] = {
-    init: function(){
-        this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendValueInput('SUB')
-            .setCheck("var");
-        this.appendDummyInput()
-            .appendField(Blockly.MIXLY_MICROBIT_JS_IS_COMPASS_CALIBRATED)
-        this.setOutput(true, Number);
-        this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_MICROBIT_JS_IS_COMPASS_CALIBRATED1);
-    }
-};
-Blockly.Blocks['sensor_mpu9250_compass_heading'] = {
-    init: function(){
-        this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendValueInput('SUB')
-            .setCheck("var");
-        this.appendDummyInput()
-            .appendField(Blockly.MIXLY_MICROBIT_JS_COMPASS_HEADING)
-        this.setOutput(true, Number);
-        this.setInputsInline(true);
-    }
-};
-*/
+// Blockly.Blocks['sensor_mpu9250_is_compass_calibrated'] = {
+//     init: function(){
+//         this.setColour(Blockly.Blocks.sensor.HUE);
+//         this.appendValueInput('SUB')
+//             .setCheck("var");
+//         this.appendDummyInput()
+//             .appendField(Blockly.MIXLY_MICROBIT_JS_IS_COMPASS_CALIBRATED)
+//         this.setOutput(true, Number);
+//         this.setInputsInline(true);
+//         this.setTooltip(Blockly.MIXLY_MICROBIT_JS_IS_COMPASS_CALIBRATED1);
+//     }
+// };
+// Blockly.Blocks['sensor_mpu9250_compass_heading'] = {
+//     init: function(){
+//         this.setColour(Blockly.Blocks.sensor.HUE);
+//         this.appendValueInput('SUB')
+//             .setCheck("var");
+//         this.appendDummyInput()
+//             .appendField(Blockly.MIXLY_MICROBIT_JS_COMPASS_HEADING)
+//         this.setOutput(true, Number);
+//         this.setInputsInline(true);
+//     }
+// };
+
 Blockly.Blocks['sensor_mpu9250_temperature'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
@@ -343,16 +343,17 @@ Blockly.Blocks.RTC_set_date = {
 };
 
 Blockly.Blocks['sensor_compass_reset'] = {
-  init : function () {
-    this.jsonInit({
-      "colour" : Blockly.Blocks.sensor.HUE,
-      "nextStatement" : null,
-      "previousStatement" : null,
-      "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/music.html#music.reset",
-      "message0" : Blockly.MIXLY_MICROBIT_Reset_COMPASS
-    });
-    this.setTooltip(Blockly.MIXLY_MICROBIT_Reset_COMPASS);
-  }
+  init: function(){
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.appendValueInput('SUB')
+            .setCheck("var");
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_MICROBIT_Reset_COMPASS)
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_MICROBIT_Reset_COMPASS);
+    }
 };
 
 Blockly.Blocks.HCSR04 = {
