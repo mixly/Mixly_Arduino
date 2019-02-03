@@ -249,13 +249,6 @@ class Display:
      matrix._show()
      if len(data)>1:
       utime.sleep_ms(delay)
-  elif type(data)==list or type(data)==tuple:
-   for i in data:
-    if type(i)!=str and type(i)!=type(Image.HEART):
-     pass
-   for i in data:
-    self.show(i)
-    utime.sleep_ms(delay)
   elif type(data)==type(Image.HEART):
    l=data.str.split(':')
    for i in range(8):
