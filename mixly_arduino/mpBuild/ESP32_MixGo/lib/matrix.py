@@ -293,7 +293,7 @@ class Display:
 
     def show(self, data, delay=200, time=400):        
         self.fill(0)
-        if type(data)==str:
+        if type(data)==str or type(data)==int:
             DISPLAY_WIDTH  = 16      # Display width in pixels.
             DISPLAY_HEIGHT = 8       # Display height in pixels.
             # Initialize LED matrix.
@@ -313,8 +313,7 @@ class Display:
                     matrix._show()
                     if len(data)>1:
                         utime.sleep_ms(delay)    
-        elif type(data)==int:
-            pass
+        
         elif type(data)==list or type(data)==tuple:
             for i in data:
                 if type(i)!=str and type(i)!=type(Image.HEART):
@@ -323,7 +322,6 @@ class Display:
                 self.show(i)
                 utime.sleep_ms(delay)             
         elif type(data)==type(Image.HEART):
-            # print("Image")
             l = data.str.split(':')
             for i in range(8):
                 for j in range(16):
@@ -331,9 +329,7 @@ class Display:
                         self._pixel(j, i, 1)
                     else:
                         self._pixel(j, i, 0)
-                    #print(l[i][j])
             self._show()
-            utime.sleep_ms(delay)
     def showstatic(self, data):
         self.fill(0)
         if type(data)==str:
@@ -349,7 +345,7 @@ class Display:
             def matrix_pixel(x, y):
                 matrix._pixel(x, y, 1)
             with BitmapFont(DISPLAY_WIDTH, DISPLAY_HEIGHT, matrix_pixel) as bf:
-                matrix.clear()
+                #matrix.clear()
                 pos = DISPLAY_WIDTH                 # X position of the message start.
                 message_width = bf.width(data)   # Message width in pixels.
                 if len(data)==3:
@@ -402,33 +398,36 @@ class Display:
         matrix.clear()
         # Initialize font renderer using a helper function to flip the Y axis
         # when rendering so the origin is in the upper left.
-        def matrix_pixel(x, y):
-            matrix._pixel(x, y, 1)
-        with BitmapFont(DISPLAY_WIDTH, DISPLAY_HEIGHT, matrix_pixel) as bf:
-            # Global state:
-            pos = DISPLAY_WIDTH                 # X position of the message start.
-            message_width = bf.width(data)   # Message width in pixels.
-            last = utime.ticks_ms()             # Last frame millisecond tick time.
-            speed_ms = 1200 / speed / 1000.0           # Scroll speed in pixels/ms.
-            # Main loop:
-            while True:
-                # Compute the time delta in milliseconds since the last frame.
-                current = utime.ticks_ms()
-                delta_ms = utime.ticks_diff(current, last)
-                last = current
-                # Compute position using speed and time delta.
-                pos -= speed_ms*delta_ms
-                if pos < -message_width:
-                    pos = DISPLAY_WIDTH
-                    return
-                # Clear the matrix and draw the text at the current position.
-                matrix.fill(0)
-                bf.text(data, int(pos), 0)
-                # Update the matrix LEDs.
-                matrix._show()
-                # Sleep a bit to give USB mass storage some processing time (quirk
-                # of SAMD21 firmware right now).
-                #utime.sleep_ms(200)        
+        if type(data)==int:
+            self.show(data)
+        else:    
+            def matrix_pixel(x, y):
+                matrix._pixel(x, y, 1)
+            with BitmapFont(DISPLAY_WIDTH, DISPLAY_HEIGHT, matrix_pixel) as bf:
+                # Global state:
+                pos = DISPLAY_WIDTH                 # X position of the message start.
+                message_width = bf.width(data)   # Message width in pixels.
+                last = utime.ticks_ms()             # Last frame millisecond tick time.
+                speed_ms = 1200 / speed / 1000.0           # Scroll speed in pixels/ms.
+                # Main loop:
+                while True:
+                    # Compute the time delta in milliseconds since the last frame.
+                    current = utime.ticks_ms()
+                    delta_ms = utime.ticks_diff(current, last)
+                    last = current
+                    # Compute position using speed and time delta.
+                    pos -= speed_ms*delta_ms
+                    if pos < -message_width:
+                        pos = DISPLAY_WIDTH
+                        return
+                    # Clear the matrix and draw the text at the current position.
+                    matrix.fill(0)
+                    bf.text(data, int(pos), 0)
+                    # Update the matrix LEDs.
+                    matrix._show()
+                    # Sleep a bit to give USB mass storage some processing time (quirk
+                    # of SAMD21 firmware right now).
+                    #utime.sleep_ms(200)        
 
     def rect(self, x, y, w, h, c):
         self.fill(0)

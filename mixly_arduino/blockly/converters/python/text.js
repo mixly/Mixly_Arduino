@@ -159,7 +159,7 @@ function strTitle(mode){
         }
         var textblock = py2block.convert(func.value);
         return block("text_capital", func.lineno, {
-            'TEXT_CAPITAL': mode,
+            'CAPITAL': mode,
         }, {
             "VAR": textblock,
         }, {
@@ -170,6 +170,8 @@ function strTitle(mode){
 }
 pbc.objectFunctionD.get('title')['Str'] = strTitle('title');
 pbc.objectFunctionD.get('lower')['Str'] = strTitle('lower');
+pbc.objectFunctionD.get('swapcase')['Str'] = strTitle('swapcase');
+pbc.objectFunctionD.get('capitalize')['Str'] = strTitle('capitalize');
 
 function strencode(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {

@@ -284,3 +284,10 @@ Blockly.Python['tuple_get_sublist'] = function(block) {
   var code = list + '[' + at1 + ' : ' + at2 + ']';
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.tuple_get_random_item = function() {
+  Blockly.Python.definitions_['import_random'] = 'import random';
+  var varName = Blockly.Python.valueToCode(this, 'TUP', Blockly.Python.ORDER_ADDITIVE) || 'mytup';
+  var code='random.choice(' +varName + ')';
+  return [code,Blockly.Python.ORDER_ATOMIC];
+};

@@ -703,3 +703,14 @@ Blockly.Blocks['tuple_get_sublist'] = {
         this.setTooltip(Blockly.Msg.PYTHON_TUPLE_GET_SUBLIST_TOOLTIP);
     }
 }
+
+Blockly.Blocks['tuple_get_random_item'] = {  
+  init: function() {
+    this.setColour(Blockly.Blocks.tuple.HUE);
+  this.appendValueInput("TUP");
+  this.appendDummyInput()
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET + " " + Blockly.Msg.LISTS_GET_INDEX_RANDOM)
+  this.setTooltip(Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_RANDOM);
+  this.setOutput(true);
+  }
+};

@@ -1465,7 +1465,7 @@ Blockly.Blocks.display_scroll_string = {
         .appendField(Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION);
     this.appendValueInput("time")
         .setCheck(Number)
-        .appendField(Blockly.MIXLY_DELAY);    
+        .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_INTERVAL);    
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
@@ -1481,7 +1481,7 @@ Blockly.Blocks.display_scroll_string_delay = {
          .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING);
      this.appendValueInput("time")
         .setCheck(Number)
-        .appendField(Blockly.MIXLY_DELAY);    
+        .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_INTERVAL);    
      this.setPreviousStatement(true, null);
      this.setNextStatement(true, null);
      this.setInputsInline(true);

@@ -479,7 +479,7 @@ init: function() {
 Blockly.Blocks['text_capital']={
 init: function() {
     var TEXT_CAPITAL =
-        [[Blockly.Msg.TEXT_TITLE, 'title'],
+        [[Blockly.Msg.TEXT_TITLE, 'title'],[Blockly.Msg.TEXT_CAPITALIZE, 'capitalize'],[Blockly.Msg.TEXT_SWAPCASE, 'swapcase'],
         [Blockly.Msg.TEXT_LOWER, 'lower']];
   this.setColour(Blockly.Blocks.texts.HUE);
   this.appendValueInput("VAR")
@@ -492,8 +492,9 @@ init: function() {
       var mode = thisBlock.getFieldValue('CAPITAL');
       var TOOLTIPS = {
         'title': Blockly.MIXLY_MIXPY_TEXT_TITLE_TOOLTIP,
-        'lower': Blockly.MIXLY_MIXPY_TEXT_LOWER_TOOLTIP
-        
+        'swapcase': Blockly.MIXLY_MIXPY_TEXT_SWAPCASE_TOOLTIP,
+        'capitalize': Blockly.MIXLY_MIXPY_TEXT_CAPITALIZE_TOOLTIP,
+        'lower': Blockly.MIXLY_MIXPY_TEXT_LOWER_TOOLTIP        
       };
       return TOOLTIPS[mode];
     });

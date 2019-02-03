@@ -926,14 +926,7 @@
               <field name="TEXT">123</field>
             </shadow>
           </value>
-        </block>
-         <block type="text_capital">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Hello, Mixly</field>
-            </shadow>
-          </value>
-        </block>
+        </block>         
         <block type="text_center">
           <value name="VAR">
             <shadow type="text">
@@ -1274,6 +1267,13 @@
             </shadow>
           </value>
         </block>
+        <block type="tuple_get_random_item">
+            <value name="TUP">
+              <shadow type="variables_get">
+                <field name="VAR">mytup</field>
+              </shadow>
+            </value>
+          </block>
         <block type="tuple_change_to">
           <value name="VAR">
             <shadow type="variables_get">

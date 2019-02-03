@@ -166,8 +166,7 @@ Blockly.Python['text_substring'] = function(block) {
 Blockly.Python.text_capital = function() {
   var capital = this.getFieldValue('CAPITAL');
   var str =Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
-  if (capital == 'title') return [''+str+'.title()' , Blockly.Python.ORDER_ATOMIC];
-  else return [''+str+'.lower()', Blockly.Python.ORDER_ATOMIC];
+  return [''+str+'.' + capital + '()', Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.text_center = function() {
