@@ -418,17 +418,32 @@ text.blocklyText {
 .mb_led_brightness_7 {  background-color: #c00; }
 .mb_led_brightness_8 {  background-color: #d00; }
 .mb_led_brightness_9 {  background-color: #f00; }
+
 .mb_led_row_0 { top: 36px; }
-.mb_led_row_1 { top: 96px; }
-.mb_led_row_2 { top: 119px; }
-.mb_led_row_3 { top: 141px; }
-.mb_led_row_4 { top: 164px; }
+.mb_led_row_1 { top: 50px; }
+.mb_led_row_2 { top: 70px; }
+.mb_led_row_3 { top: 85px; }
+.mb_led_row_4 { top: 102px; }
+.mb_led_row_5 { top: 96px; }
+.mb_led_row_6 { top: 108px; }
+.mb_led_row_7 { top: 120px; }
 
 .mb_led_col_0 { left: 48px; }
-.mb_led_col_1 { left: 126px; }
-.mb_led_col_2 { left: 149px; }
-.mb_led_col_3 { left: 171px; }
-.mb_led_col_4 { left: 195px; }
+.mb_led_col_1 { left: 60px; }
+.mb_led_col_2 { left: 72px; }
+.mb_led_col_3 { left: 84px; }
+.mb_led_col_4 { left: 96px; }
+.mb_led_col_5 { left: 108px; }
+.mb_led_col_6 { left: 120px; }
+.mb_led_col_7 { left: 132px; }
+.mb_led_col_8 { left: 144px; }
+.mb_led_col_9 { left: 156px; }
+.mb_led_col_10 { left: 168px; }
+.mb_led_col_11 { left: 180px; }
+.mb_led_col_12 { left: 192px; }
+.mb_led_col_13 { left: 204px; }
+.mb_led_col_14 { left: 216px; }
+.mb_led_col_15 { left: 228px; }
 
 #mb_btn_A {
     left: 14.5px;
