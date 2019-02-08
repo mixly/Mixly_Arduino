@@ -257,7 +257,7 @@ var ui = {
             var Slider = $("#pinValue"+thisRowId).bootstrapSlider();
             var Span = $("#curr_pinValue"+thisRowId);
             Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
-            $('.pinInput>.slider').css('width','100%');       
+            $('.pinInput>.slider').css('width','100%');
         }
         if(type == 'touch'){
             ui.pinCount.rowid++;
@@ -267,14 +267,14 @@ var ui = {
             onText: '触摸',
             offText: '离开',
             size:'Small',
-            onSwitchChange: function(event,state){        
+            onSwitchChange: function(event,state){
                 if(state==true){
-                    $("#curr_pinValue"+ thisRowId).text('1'); 
+                    $("#curr_pinValue"+ thisRowId).text('1');
                 }else{
-                    $("#curr_pinValue"+ thisRowId).text('0'); 
+                    $("#curr_pinValue"+ thisRowId).text('0');
                 }
             }
-            });                 
+            });
         }
     },
     deletePinOption: function(rowid){
@@ -385,7 +385,7 @@ var ui = {
         var flag = false;//能不能在ui中找到对应管脚列的标志
         $('select.pinOption').each(function(){
             if($(this).val()==pinName){
-                
+
                 flag = true;
                 var rowid = $(this).attr('id').split('select_row').join('');
                 if(type ==='analog_period'){//更改管脚频率
@@ -399,7 +399,7 @@ var ui = {
                     else if(type === 'touch'){
                         $("#pinValue"+ rowid).bootstrapSwitch('setState',newValue == 1);
                     }
-                }   
+                }
             }
         });
 
@@ -411,7 +411,7 @@ var ui = {
             if(type ==='analog_period'){//更改管脚频率
                 $('#curr_pinPeriod'+(newRowId)).text(newValue);
             }
-            else{                   
+            else{
                 if(type != 'touch'){
                     $('#curr_pinValue'+(newRowId)).text(newValue);
                     $("#pinValue"+(newRowId)).bootstrapSlider('setValue',newValue);
@@ -420,7 +420,7 @@ var ui = {
                     $('#curr_pinValue'+(newRowId)).text(newValue == 1 ? 1:0);
                     $("#pinValue"+(newRowId)).bootstrapSwitch('setState',newValue == 1);
                 }
-            }            
+            }
         }
     },
     //更新模拟管脚的频率
@@ -491,8 +491,8 @@ var ui = {
     },
     clearScreen: function () {
         var x,y;
-        for(x = 0; x < 5; x++) {
-            for(y = 0; y < 5; y++) {
+        for(x = 0; x < 16; x++) {
+            for(y = 0; y < 8; y++) {
                 ui.setLED(x, y, 0);
             }
         }
