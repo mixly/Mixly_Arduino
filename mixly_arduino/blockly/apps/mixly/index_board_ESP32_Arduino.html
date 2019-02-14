@@ -9,6 +9,7 @@
   <script type="text/javascript" src="../../core/events.js"></script>
   <script type="text/javascript" src="../../arduino.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
+  <script type="text/javascript" src="../../core/field_textarea.js"></script>
   <script type="text/javascript" src="drag.js"></script>
   <script type="text/javascript" src="code.js"></script>
   <script type="text/javascript" src="digitalPinToInterrupt.js"></script>
@@ -38,7 +39,8 @@
   <script type="text/javascript" src="../../generators/esp32_Arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/actuator.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32/pins.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/blynk.js"></script>
+  <script src="../../blocks/esp32_Arduino/esp32_profile.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/inout.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/control.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/math.js"></script>
@@ -54,6 +56,8 @@
   <script type="text/javascript" src="../../blocks/esp32_Arduino/procedures.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/actuator.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/pins.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script>
   <!-- 过去index.html中的js代码都会被放到这个js中-->
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="color_simple.css" />
@@ -209,12 +213,12 @@
     </block>
     <block type="controls_attachInterrupt">
       <value name="PIN">
-        <shadow type="pins_interrupt"></shadow>
+        <shadow type="pins_digital_pin"></shadow>
       </value>
     </block>
     <block type="controls_detachInterrupt">
       <value name="PIN">
-        <shadow type="pins_interrupt"></shadow>
+        <shadow type="pins_digital_pin"></shadow>
       </value>
     </block>
     <block type="inout_pinMode">
@@ -507,7 +511,7 @@
     <block type="logic_true_or_false"></block>
   </category>
   <category id="catSerialPort" colour="65">
-    <block type="serial_begin">
+   <!--  <block type="serial_begin">
       <value name="CONTENT">
         <shadow type="math_number">
           <field name="NUM">9600</field>
@@ -537,7 +541,75 @@
         <shadow type="pins_digital"></shadow>
       </value>
     </block>
-    <block type="serial_event"></block>
+    <block type="serial_event"></block> -->
+      <block type="system_print_inline">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly</field>
+                  </shadow>
+              </value>
+        </block>
+        <block type="system_print">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly</field>
+                  </shadow>
+              </value>
+        </block>
+        <block type="system_input">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">prompt</field>
+                  </shadow>
+              </value>
+          </block>
+        <block type="serial_softserial"></block>
+        <block type="serial_print">
+              <value name="CONTENT">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly</field>
+                  </shadow>
+              </value>
+        </block>
+        <block type="serial_println">
+              <value name="CONTENT">
+                  <shadow type="text">
+                      <field name="TEXT">Mixly</field>
+                  </shadow>
+              </value>
+        </block>
+        <block type="serial_print_hex">
+              <value name="CONTENT">
+                  <shadow type="math_number">
+                      <field name="NUM">0XFF00FF</field>
+                  </shadow>
+              </value>
+        </block>
+        <block type="serial_any"></block>
+        <block type="serial_readstr"></block>
+        <block type="serial_readline"></block>
+      </category>
+      <category id="catGroup" colour="140">
+        <block type="communicate_i2c_init">
+          <value name="SUB">
+                <shadow type="variables_get">
+                  <field name="VAR">i2c</field>
+                </shadow>
+              </value>
+          <value name="TX">
+            <shadow type="pins_digital_pin">
+              <field name="PIN">22</field>
+            </shadow>
+          </value>
+          <value name="RX">
+            <shadow type="pins_digital_pin">
+              <field name="PIN">21</field>
+            </shadow>
+          </value>
+          <value name="freq">
+            <shadow type="math_number"><field name="NUM">100000</field></shadow>
+          </value>
+        </block>
   </category>
   <category id="catGroup" colour="140">
     <block type="ir_recv">
