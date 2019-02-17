@@ -980,7 +980,7 @@ Blockly.TO_SPI_SLAVE_PIN='To SPI Slave PIN#';
 Blockly.SPI_TRANSFER='transfer';
 
 Blockly.MIXLY_SERIAL_BEGIN='baud rate';
-
+Blockly.MIXLY_SERIALBT_BEGIN='init';
 //stepper
 Blockly.MIXLY_STEPPER='Stepper';
 Blockly.MIXLY_STEPPER_SETUP_STEPPER='Setup Stepper';

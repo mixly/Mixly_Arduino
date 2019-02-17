@@ -5,11 +5,11 @@ goog.provide('Blockly.Blocks.loops');
 goog.require('Blockly.Blocks');
 
 
-Blockly.Msg["LOOPS_HUE"] = 120;
+Blockly.Blocks.loops.HUE = 120;
 
 Blockly.Blocks.base_setup = {
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
 	    .appendField(Blockly.MIXLY_SETUP);
 	this.appendStatementInput('DO')
@@ -23,7 +23,7 @@ Blockly.Blocks.controls_delay = {
 	var UNIT =
         [[Blockly.MIXLY_DELAY_MS, 'delay'],
 		 [Blockly.MIXLY_DELAY_US, 'delayMicroseconds']];
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput("DELAY_TIME", Number)
         .appendField(Blockly.MIXLY_DELAY)
 		.appendField(new Blockly.FieldDropdown(UNIT), 'UNIT')
@@ -37,7 +37,7 @@ Blockly.Blocks.controls_delay = {
 
 Blockly.Blocks.controls_for = {
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
         .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_WITH)
         .appendField(new Blockly.FieldTextInput('i'), 'VAR');
@@ -76,7 +76,7 @@ Blockly.Blocks.controls_for = {
 
 Blockly.Blocks.controls_whileUntil = {
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('BOOL')
         .setCheck([Boolean,Number])
         .appendField(Blockly.LANG_CONTROLS_WHILEUNTIL_TITLE_REPEAT)
@@ -103,7 +103,7 @@ Blockly.Blocks.controls_whileUntil.OPERATORS =
 
 Blockly.Blocks.controls_flow_statements = {
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     var dropdown = new Blockly.FieldDropdown(this.OPERATORS);
     this.appendDummyInput()
         .appendField(dropdown, 'FLOW')
@@ -154,7 +154,7 @@ Blockly.Blocks.controls_millis = {
 	var UNIT =
         [[Blockly.MIXLY_DELAY_MS, 'millis'],
 		 [Blockly.MIXLY_DELAY_US, 'micros']];
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
 	    .appendField(Blockly.MIXLY_RUNTIME)
         .appendField(new Blockly.FieldDropdown(UNIT), 'UNIT');
@@ -170,7 +170,7 @@ Blockly.Blocks['controls_if'] = {
    */
   init: function() {
     //this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('IF0')
         .setCheck([Boolean,Number])
         .appendField(Blockly.Msg.CONTROLS_IF_MSG_IF);
@@ -349,7 +349,7 @@ Blockly.Blocks['controls_if_if'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
         .appendField(Blockly.Msg.CONTROLS_IF_IF_TITLE_IF);
     this.appendStatementInput('STACK');
@@ -364,7 +364,7 @@ Blockly.Blocks['controls_if_elseif'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
         .appendField(Blockly.Msg.CONTROLS_IF_ELSEIF_TITLE_ELSEIF);
     this.setPreviousStatement(true);
@@ -380,7 +380,7 @@ Blockly.Blocks['controls_if_else'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
         .appendField(Blockly.Msg.CONTROLS_IF_ELSE_TITLE_ELSE);
     this.setPreviousStatement(true);
@@ -391,7 +391,7 @@ Blockly.Blocks['controls_if_else'] = {
 
 Blockly.Blocks['controls_switch_case'] = {
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('IF0')
         .setCheck([Number,Boolean])
         .appendField('switch');
@@ -554,7 +554,7 @@ Blockly.Blocks['controls_switch'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
         .appendField('switch');
     this.appendStatementInput('STACK');
@@ -568,7 +568,7 @@ Blockly.Blocks['controls_case'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
         .appendField('case');
     this.setPreviousStatement(true);
@@ -583,7 +583,7 @@ Blockly.Blocks['controls_default'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
         .appendField('default');
     this.setPreviousStatement(true);
@@ -593,7 +593,7 @@ Blockly.Blocks['controls_default'] = {
 
 Blockly.Blocks.controls_mstimer2 = {
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
 	this.appendValueInput('TIME')
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -611,7 +611,7 @@ Blockly.Blocks.controls_mstimer2 = {
 
 Blockly.Blocks.controls_mstimer2_start = {
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
 		.appendField('MsTimer2')
 		.appendField(Blockly.MIXLY_MSTIMER2_START);
@@ -623,7 +623,7 @@ Blockly.Blocks.controls_mstimer2_start = {
 
 Blockly.Blocks.controls_mstimer2_stop = {
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
 		.appendField('MsTimer2')
 		.appendField(Blockly.MIXLY_MSTIMER2_STOP);
@@ -635,7 +635,7 @@ Blockly.Blocks.controls_mstimer2_stop = {
 
 Blockly.Blocks.controls_end_program = {
   init: function() {
-    this.setColour(Blockly.Msg["LOOPS_HUE"]);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
 	    .appendField(Blockly.MIXLY_CONTROL_END_PROGRAM);
 	this.setPreviousStatement(true);
@@ -646,7 +646,7 @@ Blockly.Blocks.controls_end_program = {
 
 Blockly.Blocks.controls_interrupts = {
     init: function () {
-        this.setColour(Blockly.Msg["LOOPS_HUE"]);
+        this.setColour(Blockly.Blocks.loops.HUE);
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_CONTROL_INTERRUPTS);
         this.setPreviousStatement(true);
@@ -657,7 +657,7 @@ Blockly.Blocks.controls_interrupts = {
 
 Blockly.Blocks.controls_nointerrupts = {
     init: function () {
-        this.setColour(Blockly.Msg["LOOPS_HUE"]);
+        this.setColour(Blockly.Blocks.loops.HUE);
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_CONTROL_NOINTERRUPTS);
         this.setPreviousStatement(true);

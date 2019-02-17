@@ -553,6 +553,7 @@ Blockly.MIXLY_SPLITBYDOU='創建數組';
 Blockly.MIXLY_SETUP='初始化';
 Blockly.MIXLY_WARNING_INTERRUPT='該管脚號不能作為中斷';
 Blockly.MIXLY_CHAOSHENGBO='超聲波測距（cm）';
+Blockly.MIXLY_WEIGHTSENSOR='称重模塊';
 Blockly.MIXLY_MB_CHAOSHENGBO='超聲波測距';
 Blockly.MIXLY_IR_RECEIVE_YES='有訊號';
 Blockly.MIXLY_IR_RECEIVE_NO='無訊號';
@@ -977,7 +978,7 @@ Blockly.TO_SPI_SLAVE_PIN='向SPI從機#';
 Blockly.SPI_TRANSFER='傳輸';
 
 Blockly.MIXLY_SERIAL_BEGIN='波特率';
-
+Blockly.MIXLY_SERIALBT_BEGIN='初始化';
 //stepper
 Blockly.MIXLY_STEPPER='步進電機';
 Blockly.MIXLY_STEPPER_SETUP_STEPPER='初始化步進電機';

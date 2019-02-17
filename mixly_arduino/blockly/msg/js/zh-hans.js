@@ -981,6 +981,7 @@ Blockly.TO_SPI_SLAVE_PIN='向SPI从机#';
 Blockly.SPI_TRANSFER='传输';
 
 Blockly.MIXLY_SERIAL_BEGIN='波特率';
+Blockly.MIXLY_SERIALBT_BEGIN='初始化';
 
 //stepper
 Blockly.MIXLY_STEPPER='步进电机';
