@@ -11,9 +11,8 @@ def get_data_dict(d):
         result["datastreams"].append({"id":x,"datapoints":[{"value":d[x]}]})
     return result
 
-def pubData(value):    
+def pubData(value, state):    
     value = get_data_dict(value)
-    #print(value)
     jdata = json.dumps(value)
     jlen = len(jdata)
     bdata = bytearray(jlen+3)
@@ -21,7 +20,9 @@ def pubData(value):
     bdata[1] = int(jlen / 256) # data lenght
     bdata[2] = jlen % 256      # data lenght
     bdata[3:jlen+4] = jdata.encode('ascii') # json data
-    #print(bdata)
+    if state:
+        print(value)
+        print(bdata)
     return bdata
 
 def do_connect(id,password):
@@ -135,8 +136,8 @@ class MQTTClient:
     def ping(self):
         self.sock.write(b"\xc0\0")
 
-    def publish(self, msg, topic='$dp', retain=False, qos=0):
-        msg = pubData(msg)
+    def publish(self, msg, is_print=True, topic='$dp', retain=False, qos=0):
+        msg = pubData(msg, is_print)
         pkt = bytearray(b"\x30\0\0\0")
         pkt[0] |= qos << 1 | retain
         sz = 2 + len(topic) + len(msg)

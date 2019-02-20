@@ -35,8 +35,9 @@ Blockly.Python.iot_onenet_disconnect = function(block) {
 Blockly.Python.iot_onenet_publish_dict = function(block) {
   var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
   var d = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ATOMIC) ;
+  var check = this.getFieldValue("is_print") == 'TRUE' ? 'True' : 'False';
   Blockly.Python.definitions_['import_simple'] = "import simple"; 
-  var code=v + '.publish('+d+')\n';  
+  var code=v + '.publish('+d+', is_print = '+check+')\n';  
   return code;
 };
 

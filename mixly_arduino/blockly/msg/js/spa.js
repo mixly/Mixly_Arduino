@@ -2252,3 +2252,5 @@ Blockly.MIXLY_MICROPYTHON_SOCKET_CONNECT_TO_ADDRESS='Conexión a la dirección';
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CONNECT_TOOLTIP='Conecta el socket a la dirección de la red';
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE ="obtener el estado de activación";
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE_TOOLTIP ="obtiene el estado de activación de la red especificada";
+
+Blockly.MIXLY_ESP32_IOT_ONENET_PRINT_DATA="Los datos de impresión";

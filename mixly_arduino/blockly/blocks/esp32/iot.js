@@ -91,6 +91,9 @@ Blockly.Blocks['iot_onenet_publish_dict'] = {
         .appendField("OneNET")
     this.appendValueInput('DICT')
         .appendField(Blockly.MIXLY_ESP32_PUBLISH_ONENET);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_ESP32_IOT_ONENET_PRINT_DATA)
+        .appendField(new Blockly.FieldCheckbox('TRUE'), 'is_print');
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
