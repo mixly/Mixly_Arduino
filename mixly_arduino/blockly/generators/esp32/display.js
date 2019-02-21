@@ -375,7 +375,7 @@ Blockly.Python.display_tm1650_power = function () {
     var type = this.getFieldValue("TYPE");
     var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var stat = this.getFieldValue("STAT");
-    var code = v + '.' + type + stat +"()";
+    var code = v + '.' + type + stat +"()\n";
     return code;
 };
 
@@ -383,7 +383,7 @@ Blockly.Python.display_tm1650_show_num = function () {
     var type = this.getFieldValue("TYPE");
     var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var val = Blockly.Python.valueToCode(this, 'VALUE', Blockly.Python.ORDER_ATOMIC);
-    var code = v + '.' + type + "_show_num(" + val +")";
+    var code = v + '.' + type + "_show_num(" + val +")\n";
     return code;
 };
 
@@ -392,7 +392,7 @@ Blockly.Python.display_tm1650_show_dot = function () {
     var v = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
     var n = Blockly.Python.valueToCode(this, 'NO', Blockly.Python.ORDER_ATOMIC);
     var stat = Blockly.Python.valueToCode(this, 'STAT', Blockly.Python.ORDER_ATOMIC);
-    var code = v + '.' + type + "_show_dot(" + n +", "+stat+")";
+    var code = v + '.' + type + "_show_dot(" + n +", "+stat+")\n";
     return code;
 };
 

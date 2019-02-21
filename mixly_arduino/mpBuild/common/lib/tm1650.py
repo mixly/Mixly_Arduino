@@ -24,15 +24,22 @@ class TM1650():
 
     def cmd(self, c):
         self.tbuf[0] = c
-        self.i2c.write(COMMAND_I2C_ADDRESS, self.tbuf)
+        self.i2c.writeto(COMMAND_I2C_ADDRESS, self.tbuf)
 
     def dat(self, bit, d):
         self.tbuf[0] = d
-        self.i2c.write(DISPLAY_I2C_ADDRESS + (bit%4), self.tbuf)
+        self.i2c.writeto(DISPLAY_I2C_ADDRESS + (bit%4), self.tbuf)
 
     def showbit(self, num, bit = 0):
         self.dbuf[bit%4] = buf[num%16]
         self.dat(bit, buf[num%16])
+
+    def on(self):
+        self.cmd((self._intensity<<4)|0x01)
+
+    def off(self):
+        self._intensity = 0
+        self.cmd(0)
 
     def tm1650_on(self):
         self.cmd((self._intensity<<4)|0x01)
@@ -41,7 +48,7 @@ class TM1650():
         self._intensity = 0
         self.cmd(0)
 
-    def tm1650_shownum(self, num):
+    def tm1650_show_num(self, num):
         if num < 0:
             self.dat(0, 0x40)   # '-'
             num = -num
@@ -51,7 +58,7 @@ class TM1650():
         self.showbit((num // 10) % 10, 2)
         self.showbit((num // 100) % 10, 1)
 
-    def tm1650_showhex(self, num):
+    def tm1650_show_hex(self, num):
         if num < 0:
             self.dat(0, 0x40)   # '-'
             num = -num
@@ -61,7 +68,7 @@ class TM1650():
         self.showbit((num >> 4) % 16, 2)
         self.showbit((num >> 8) % 16, 1)
         
-    def tm1650_showDP(self, bit = 1, show = True):
+    def tm1650_show_dot(self, bit = 1, show = True):
         if show:
             self.dat(bit, self.dbuf[bit] | 0x80)
         else:
