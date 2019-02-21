@@ -20,6 +20,7 @@ import utime
 import time
 import math
 from machine import I2C, Pin
+import matrix
 # pylint: enable=import-error
 __version__ = "0.2.0"
 # pylint: disable=import-error
@@ -294,7 +295,7 @@ class AK8963:
         """ Value of the whoami register. """
         return self._register_char(_WIA)
 
-    def calibrate(self, count=256, delay=200):
+    def calibrate(self, count=3, delay=200):
         self._offset = (0, 0, 0)
         self._scale = (1, 1, 1)
 
@@ -550,9 +551,52 @@ class Compass:
     def calibrate(self):
         if self.is_calibrate() is False:
             print('The calibration need to shaking in the air (e.g. 8 or 0) and waiting for a moment')
-            self.sensor.ak8963.calibrate()
-            with open("compass_cfg.py", "w") as f:
-                f.write('\n_offset = ' + str(self.sensor.ak8963._offset) + '\n_scale = ' + str(self.sensor.ak8963._offset))
+            matrix.display.show(matrix.Image("1110111001110111:1010101001010101:1110111001110111:0000000000000000:0000000000000000:1110111001110111:1010101001010101:1110111001110111"))
+            l1=0
+            l2=0
+            l3=0
+            l4=0
+            l5=0
+            l6=0
+            l7=0
+            l8=0
+            while True:
+                x = self.sensor.mpu6500.acceleration()[0]
+                y = self.sensor.mpu6500.acceleration()[1]
+                z = self.sensor.mpu6500.acceleration()[2]
+                a=(x**2+y**2+z**2)**0.5
+                if z > 0:
+                    if x > 0 and y > 0 and a >= 20:
+                        matrix.display.set_pixel(int(1), int(1), 1)
+                        l1=1
+                    if x > 0 and y < 0 and a >= 20:
+                        matrix.display.set_pixel(int(5), int(1), 1)
+                        l2=1
+                    if x < 0 and y > 0 and a >= 20:
+                        matrix.display.set_pixel(int(1), int(6), 1)
+                        l3=1
+                    if x < 0 and y < 0 and a >= 20:
+                        matrix.display.set_pixel(int(5), int(6), 1)
+                        l4=1
+                if z < 0:
+                    if x > 0 and y > 0 and a >= 20:
+                        matrix.display.set_pixel(int(10), int(1), 1)
+                        l5=1
+                    if x > 0 and y < 0 and a >= 20:
+                        matrix.display.set_pixel(int(14), int(1), 1)
+                        l6=1
+                    if x < 0 and y > 0 and a >= 20:
+                        matrix.display.set_pixel(int(10), int(6), 1)
+                        l7=1
+                    if x < 0 and y < 0 and a >= 20:
+                        matrix.display.set_pixel(int(14), int(6), 1)
+                        l8=1
+                if l1==1 and l2==1 and l3==1 and l4==1 and l5==1 and l6==1 and l7==1 and l8==1:
+                    break    
+                else:
+                    self.sensor.ak8963.calibrate()
+                    with open("compass_cfg.py", "w") as f:
+                        f.write('\n_offset = ' + str(self.sensor.ak8963._offset) + '\n_scale = ' + str(self.sensor.ak8963._offset))
         else:
             print('The calibration configuration already exists. If you need to recalibrate, enter os.remove("compass_cfg.py") in repl and restart')
             try:
