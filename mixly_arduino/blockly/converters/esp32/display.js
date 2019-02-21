@@ -527,20 +527,34 @@ pbc.assignD.get('oled')['check_assign'] = function(py2block, node, targets, valu
     if(value._astname === "Call" && moduleName === "ssd1306"
         && funcName === "SSD1306_I2C" && value.args.length === 3)
         return true;
-    return false;
+    else if(value._astname === "Call" && moduleName === "tm1650"
+        && funcName === "TM1650" && value.args.length === 1)
+        return true;
+    else
+        return false;
 }
 
 pbc.assignD.get('oled')['create_block'] = function(py2block, node, targets, value){
-    var rowblock = py2block.convert(value.args[0]);
-    var columnblock = py2block.convert(value.args[1]);
-    var i2cblock = py2block.convert(value.args[2]);
-    return block("display_use_i2c_init", node.lineno, {
-    }, {
-        "row":rowblock,
-        "column":columnblock,
-        "I2CSUB":i2cblock,
-        "SUB":py2block.convert(targets[0]),
-    });
+    if(value.args.length === 3){
+        var rowblock = py2block.convert(value.args[0]);
+        var columnblock = py2block.convert(value.args[1]);
+        var i2cblock = py2block.convert(value.args[2]);
+        return block("display_use_i2c_init", node.lineno, {
+        }, {
+            "row":rowblock,
+            "column":columnblock,
+            "I2CSUB":i2cblock,
+            "SUB":py2block.convert(targets[0]),
+        });
+    }
+    else if(value.args.length === 1){
+        var i2cblock = py2block.convert(value.args[0]);
+        return block("display_tm_use_i2c_init", node.lineno, {
+        }, {
+            "I2CSUB":i2cblock,
+            "SUB":py2block.convert(targets[0]),
+        });
+    }
 }
 
 pbc.objectFunctionD.get('show_fill')['monitor'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
@@ -556,3 +570,26 @@ pbc.objectFunctionD.get('show_fill')['monitor'] = function(py2block, func, args,
         "inline": "true"
     })];
 }
+
+// function display_tm_stat(mode){
+//     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+//         if (args.length !== 0) {
+//             throw new Error("Incorrect number of arguments");
+//         }
+//         var mpublock=py2block.convert(func.value)
+//         var ablock = py2block.identifier('tm1650')
+//         return block('display_tm1650_power', func.lineno, {
+//                 "STAT": mode,
+//                 "TYPE": ablock
+//             }, {
+//                 'VAR': mpublock
+//             }, {
+//                 "inline": "true"
+//             });
+//     }
+//     return converter;
+// }
+
+// pbc.objectFunctionD.get('disp')['tm1650_on'] = display_tm_stat('_on');
+// pbc.objectFunctionD.get('disp')['tm1650_off'] = display_tm_stat('_off');
+// pbc.objectFunctionD.get('disp')['tm1650_clear'] = display_tm_stat('_clear');
