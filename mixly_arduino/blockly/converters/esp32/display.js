@@ -571,25 +571,61 @@ pbc.objectFunctionD.get('show_fill')['monitor'] = function(py2block, func, args,
     })];
 }
 
-// function display_tm_stat(mode){
-//     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
-//         if (args.length !== 0) {
-//             throw new Error("Incorrect number of arguments");
-//         }
-//         var mpublock=py2block.convert(func.value)
-//         var ablock = py2block.identifier('tm1650')
-//         return block('display_tm1650_power', func.lineno, {
-//                 "STAT": mode,
-//                 "TYPE": ablock
-//             }, {
-//                 'VAR': mpublock
-//             }, {
-//                 "inline": "true"
-//             });
-//     }
-//     return converter;
-// }
+function display_tm_stat(mode, type){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var varblock = py2block.convert(func.value)
+        return [block('display_tm1650_power', func.lineno, {
+                "TYPE": type,
+                "STAT": mode,
+            }, {
+                "VAR": varblock,
+            }, {
+                "inline": "true"
+            })];
+    }
+    return converter;
+}
 
-// pbc.objectFunctionD.get('disp')['tm1650_on'] = display_tm_stat('_on');
-// pbc.objectFunctionD.get('disp')['tm1650_off'] = display_tm_stat('_off');
-// pbc.objectFunctionD.get('disp')['tm1650_clear'] = display_tm_stat('_clear');
+pbc.objectFunctionD.get('tm1650_on')['disp'] = display_tm_stat('_on','tm1650');
+pbc.objectFunctionD.get('tm1650_off')['disp'] = display_tm_stat('_off','tm1650');
+pbc.objectFunctionD.get('tm1650_clear')['disp'] = display_tm_stat('_clear','tm1650');
+
+
+pbc.objectFunctionD.get('tm1650_show_num')['disp'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }   
+    var valblock=py2block.convert(args[0]);
+    var varblock=py2block.convert(func.value)
+    return [block("display_tm1650_show_num", func.lineno, {
+        "TYPE":'tm1650'
+    }, {
+        'VALUE':valblock,
+        'VAR': varblock
+    }, {
+        "inline": "true"
+    })];
+}
+
+pbc.objectFunctionD.get('tm1650_show_dot')['disp'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }   
+    var valblock=py2block.convert(args[0]);
+    pbc.inScope="switch";
+    var statblock=py2block.convert(args[1]);
+    pbc.inScope=null;
+    var varblock=py2block.convert(func.value)
+    return [block("display_tm1650_show_dot", func.lineno, {
+        "TYPE":'tm1650'
+    }, {
+        'NO':valblock,
+        'STAT':statblock,
+        'VAR': varblock
+    }, {
+        "inline": "true"
+    })];
+}
