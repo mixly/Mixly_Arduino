@@ -2256,4 +2256,5 @@ Blockly.MIXLY_ESP32_NETWORK_SOCKET_CONNECT_TOOLTIP="connects a socket to a netwo
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE ="get active state";
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE_TOOLTIP ="get the active state of the specified network";
 
+Blockly.MIXLY_PYTHON_LOGIC_IS = "is";
 Blockly.MIXLY_ESP32_IOT_ONENET_PRINT_DATA="print data";

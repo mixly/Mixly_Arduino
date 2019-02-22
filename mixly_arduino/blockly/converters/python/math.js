@@ -306,3 +306,17 @@ pbc.globalFunctionD['mixly_mapping'] = function (py2block, func, args, keywords,
         "inline": "true"
     });
 }
+
+pbc.globalFunctionD['abs'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var argblock = py2block.convert(args[0]);
+    return [block("math_to_int", func.lineno, {
+        "OP":'fabs'
+    }, {
+        'A': argblock
+    }, {
+            "inline": "true"
+        })];
+}

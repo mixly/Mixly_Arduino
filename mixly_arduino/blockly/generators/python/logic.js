@@ -16,6 +16,19 @@ Blockly.Python.logic_compare = function() {
   return [code, order];
 };
 
+Blockly.Python.logic_compare_continous = function() {
+  // Comparison operator.
+  var mode1 = this.getFieldValue('OP1');
+  var operator1 = Blockly.Python.logic_compare.OPERATORS[mode1];
+  var mode2 = this.getFieldValue('OP2');
+  var operator2 = Blockly.Python.logic_compare.OPERATORS[mode2];  
+  var argument0 = Blockly.Python.valueToCode(this, 'A', Blockly.Python.ORDER_RELATIONAL) || '0';
+  var argument1 = Blockly.Python.valueToCode(this, 'B', Blockly.Python.ORDER_RELATIONAL) || '0';
+  var argument2 = Blockly.Python.valueToCode(this, 'C', Blockly.Python.ORDER_RELATIONAL) || '0';
+  var code = argument0 + ' ' + operator1 + ' ' + argument1 + ' ' + operator2 + ' ' + argument2;
+  return [code, Blockly.Python.ORDER_RELATIONAL];
+};
+
 Blockly.Python.logic_compare.OPERATORS = {
   EQ: '==',
   NEQ: '!=',
@@ -70,3 +83,9 @@ Blockly.Python.logic_is_in = function() {
   return [code ,Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.logic_is = function() {
+  var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var code=a+' is '+b;
+  return [code ,Blockly.Python.ORDER_ATOMIC];
+};

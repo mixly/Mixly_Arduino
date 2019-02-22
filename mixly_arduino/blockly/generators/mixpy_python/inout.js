@@ -24,6 +24,13 @@ Blockly.Python.inout_print_inline = function() {
   return code;
 };
 
+Blockly.Python.inout_print_end = function() {
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
+  var end = Blockly.Python.valueToCode(this, 'END', Blockly.Python.ORDER_ATOMIC) || '\"\"';
+  var code = "print("+str+',end =' + end + ')\n';
+  return code;
+};
+
 Blockly.Python.inout_type_input = function() {
   var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
   var type = this.getFieldValue('DIR');

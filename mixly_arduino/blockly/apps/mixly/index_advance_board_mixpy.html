@@ -234,6 +234,18 @@
                   </shadow>
               </value>
           </block>
+          <block type="inout_print_end">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Hello</field>
+                  </shadow>
+              </value>
+              <value name="END">
+                  <shadow type="text">
+                      <field name="TEXT">,</field>
+                  </shadow>
+              </value>
+          </block>
           <block type="inout_print_many">
           <mutation items="2"></mutation>
           
@@ -301,6 +313,11 @@
                       </value>
                   </block>
               </value>
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">i</field>
+                </shadow>
+          </value>
           </block>
           <block type="controls_whileUntil">
 	        <value name="BOOL">
@@ -381,6 +398,7 @@
     </category>
     <category id="catMath" colour="230">
       <block type="math_number"></block>
+      <block type="math_constant"></block>
       <block type="math_arithmetic">
         <value name="A">
           <shadow type="math_number">
@@ -496,6 +514,23 @@
       </category>
       <category id="catLogic" colour="210">
         <block type="logic_compare"></block>
+        <block type="logic_compare_continous">
+          <value name="A">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="B">
+            <shadow type="variables_get">
+              <field name="VAR">x</field>
+            </shadow>
+          </value>
+          <value name="C">
+            <shadow type="math_number">
+              <field name="NUM">2</field>
+            </shadow>
+          </value>
+        </block>
         <block type="logic_operation"></block>
         <block type="logic_negate"></block>
         <block type="logic_boolean"></block>
@@ -513,10 +548,24 @@
             </shadow>
           </value>
         </block>
+        <block type="logic_is">
+          <value name="A">
+            <shadow type="list_many_input">
+              <field name="CONTENT">0,1,2,3</field>
+            </shadow>
+          </value>
+          <value name="B">
+            <shadow type="list_many_input">
+              <field name="CONTENT">0,1,2,3</field>
+            </shadow>
+          </value>
+        </block>
       </category>
       <category id="catText" colour="160">
         <block type="text">
           <field name="TEXT">Mixly</field>
+        </block>
+        <block type="text_textarea">
         </block>
         <block type="text_format_noreturn">
           <mutation items="1"></mutation>

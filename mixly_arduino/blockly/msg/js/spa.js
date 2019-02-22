@@ -2254,3 +2254,4 @@ Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE ="obtener el estado de activación";
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE_TOOLTIP ="obtiene el estado de activación de la red especificada";
 
 Blockly.MIXLY_ESP32_IOT_ONENET_PRINT_DATA="Los datos de impresión";
+Blockly.MIXLY_PYTHON_LOGIC_IS = "Es";

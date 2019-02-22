@@ -2290,3 +2290,7 @@ Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE="获取激活状态";
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE_TOOLTIP="获取指定网络的激活状态";
 
 Blockly.MIXLY_ESP32_IOT_ONENET_PRINT_DATA="打印数据";
+Blockly.MIXLY_PYTHON_LOGIC_COMPARE_CONTINOUS_TOOLTIP = "如果中间项同时满足左右两个不等式则返回真，否则返回假";
+Blockly.MIXLY_PYTHON_LOGIC_IS = "是";
+Blockly.MIXLY_PYTHON_LOGIC_IS_TOOLTIP = "判断两者是否为同一对象，是同一对象则返回真，否则返回假";
+Blockly.MIXLY_PYTHON_INOUT_PRINT_END_TOOLTIP = "打印指定的文字、数字或其他值，以指定的内容为结尾。";
