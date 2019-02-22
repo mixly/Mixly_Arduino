@@ -133,18 +133,7 @@ Blockly.Blocks.LM35 = {
     this.setTooltip('');
   }
 };
-//lm35温度传感器-arduino
-Blockly.Blocks.LM35ESP = {
-  init: function() {
-    this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("").appendField(Blockly.MIXLY_LM35_ESP);
-    this.appendValueInput("PIN", Number).appendField(Blockly.MIXLY_PIN).setCheck(Number);
-    this.setInputsInline(true);
-    this.setOutput(true, Number);
-    this.setTooltip('');
-  }
-};
-//DS18B20ÎÂ¶È´«¸ÐÆ÷
+
 Blockly.Blocks.ds18b20 = {
     init: function () {
         var UNIT = [[Blockly.MIXLY_DS18B20_C, '0'], [Blockly.MIXLY_DS18B20_F, '1']];
