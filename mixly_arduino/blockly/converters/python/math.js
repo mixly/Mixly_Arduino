@@ -320,3 +320,12 @@ pbc.globalFunctionD['abs'] = function (py2block, func, args, keywords, starargs,
             "inline": "true"
         })];
 }
+
+function mathConstant(py2block, node, value, attr) {
+    return block('math_constant', node.lineno, {
+        'CONSTANT': value
+    }, {});
+}
+
+pbc.moduleAttrD.get('math')['pi'] = mathConstant;
+pbc.moduleAttrD.get('math')['e'] = mathConstant;

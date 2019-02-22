@@ -31,6 +31,12 @@ Blockly.Python.math_number = function () {
   return [code, order];
 };
 
+Blockly.Python.math_constant = function() {
+  Blockly.Python.definitions_.import_math = "import math";
+  var name = this.getFieldValue('CONSTANT');
+  var code='math.'+name;
+  return [code,Blockly.Python.ORDER_ATOMIC];
+};
 
 
 Blockly.Python.math_bit = function() {

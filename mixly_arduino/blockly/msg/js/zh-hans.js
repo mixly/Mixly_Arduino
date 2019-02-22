@@ -2294,3 +2294,6 @@ Blockly.MIXLY_PYTHON_LOGIC_COMPARE_CONTINOUS_TOOLTIP = "如果中间项同时满
 Blockly.MIXLY_PYTHON_LOGIC_IS = "是";
 Blockly.MIXLY_PYTHON_LOGIC_IS_TOOLTIP = "判断两者是否为同一对象，是同一对象则返回真，否则返回假";
 Blockly.MIXLY_PYTHON_INOUT_PRINT_END_TOOLTIP = "打印指定的文字、数字或其他值，以指定的内容为结尾。";
+Blockly.MIXLY_PYTHON_MATH_CONSTANT = "常数";
+Blockly.MIXLY_PYTHON_MATH_CONSTANT_PI_TOOLTIP = "圆周率常数的近似值（保留小数点后15位）";
+Blockly.MIXLY_PYTHON_MATH_CONSTANT_E_TOOLTIP = "自然常数的近似值（保留小数点后15位）";

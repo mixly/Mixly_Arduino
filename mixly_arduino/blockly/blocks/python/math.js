@@ -39,6 +39,28 @@ Blockly.Blocks['math_number'] = {
   }
 };
 
+Blockly.Blocks['math_constant'] = {  
+  init: function() {
+    this.setColour(Blockly.Blocks.math.HUE);
+    var constant =
+        [['π', 'pi'],['e', 'e']];    
+    this.appendDummyInput("")                
+        .appendField(Blockly.MIXLY_PYTHON_MATH_CONSTANT)  
+        .appendField(new Blockly.FieldDropdown(constant), 'CONSTANT')      
+     
+    this.setOutput(true, Number);
+    var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getFieldValue('CONSTANT');
+      var TOOLTIPS = {
+        'pi': Blockly.MIXLY_PYTHON_MATH_CONSTANT_PI_TOOLTIP,
+        'e': Blockly.MIXLY_PYTHON_MATH_CONSTANT_E_TOOLTIP
+      };
+      return TOOLTIPS[mode];
+    });
+
+  }
+};
 
 Blockly.Blocks['math_arithmetic'] = {
   /**
