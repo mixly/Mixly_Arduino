@@ -147,6 +147,26 @@ Blockly.Blocks['text_to_number'] = {
   }
 };
 
+Blockly.Blocks['text_to_number_skulpt'] = {
+  init: function() {
+  var TO_INT_FLOAT =
+        [[Blockly.MIXLY_TO_INT, 'int'],[Blockly.MIXLY_TO_FLOAT, 'float']];
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.appendValueInput('VAR')
+    .appendField(new Blockly.FieldDropdown(TO_INT_FLOAT), 'TOWHAT');
+  this.setOutput(true, Number);
+  var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getFieldValue('TOWHAT');
+      var TOOLTIPS = {
+        'int': Blockly.MIXLY_TOOLTIP_TEXT_TOINT,
+        'float': Blockly.MIXLY_TOOLTIP_TEXT_TOFLOAT
+      };
+      return TOOLTIPS[mode];
+    });
+  }
+};
+
 Blockly.Blocks['ascii_to_char'] = {
   init: function() {
     this.setColour(Blockly.Blocks.texts.HUE);
