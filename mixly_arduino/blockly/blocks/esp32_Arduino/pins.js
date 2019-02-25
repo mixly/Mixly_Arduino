@@ -2,6 +2,7 @@
 goog.provide('Blockly.Blocks.pins');
 goog.require('Blockly.Blocks');
 Blockly.Blocks.pins.HUE = 230;
+profile["default"] = profile["esp32_arduino"];
 
 Blockly.Blocks['pins_digital'] = {
    init: function() {
