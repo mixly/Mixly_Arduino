@@ -837,11 +837,6 @@
         <field name="TEXT">2345</field>
       </shadow>
     </value>
-    <value name="Speed">
-      <shadow type="math_number">
-        <field name="NUM">300</field>
-      </shadow>
-    </value>
   </block>
   <block type="display_TM1637_displayTime">
     <value name="hour">
@@ -855,7 +850,8 @@
       </shadow>
     </value>
   </block>
-  <block type="display_TM1637_clearDisplay"></block>
+  <block type="display_TM1637_clearDisplay">
+  </block>
   <block type="display_Matrix_Init">
     <value name="PIN1">
       <shadow type="pins_digital">
@@ -891,12 +887,15 @@
   </block>
   <block type="display_Matrix_DisplayChar">
     <value name="LEDArray">
-      <block type="display_Matrix_LedArray"></block>
+      <block type="display_Matrix_LedArray">
+	  </block>
     </value>
   </block>
   <block type="Matrix_img">
+  </block>	
   <block type="display_Matrix_CLEAR">
   </block>
+  
 </category>
 <sep></sep>
 <category id="catVar" colour="330" custom="VARIABLE">
