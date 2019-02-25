@@ -3,7 +3,6 @@ goog.provide('Blockly.Blocks.pins');
 goog.require('Blockly.Blocks');
 Blockly.Blocks.pins.HUE = 230;
 profile["default"] = profile["esp32_arduino"];
-
 Blockly.Blocks['pins_digital'] = {
    init: function() {
     this.setColour(Blockly.Blocks.pins.HUE);
@@ -218,4 +217,28 @@ Blockly.Blocks['serial_select'] = {
             .appendField(new Blockly.FieldDropdown(profile.default.serial_select), 'PIN');
         this.setOutput(true);
     }
+};
+Blockly.Blocks['pins_MOSI'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.pins.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.MOSI), 'PIN');
+    this.setOutput(true, Number);
+  }
+};
+Blockly.Blocks['pins_MISO'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.pins.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.MISO), 'PIN');
+    this.setOutput(true, Number);
+  }
+};
+Blockly.Blocks['pins_SCK'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.pins.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.SCK), 'PIN');
+    this.setOutput(true, Number);
+  }
 };

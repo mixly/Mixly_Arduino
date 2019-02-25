@@ -173,6 +173,11 @@ var profile = {
         pwm: [["0", "0"], ["2", "2"], ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["17", "17"], ["18", "18"], ["19", "19"], ["20", "20"], ["21", "21"], ["22", "22"], ["23", "23"], ["25", "25"], ["26", "26"], ["27", "27"], ["32", "32"]],
         analog: [["32", "32"], ["33", "33"], ["34", "34"], ["35", "35"], ["36", "36"], ["39", "39"]],
         dac: [["25", "25"], ["26", "26"]],
+		SDA:[["21","21"]],
+ 		SCL:[["22","22"]],
+		MOSI:[["23","23"]],
+ 		MISO:[["19","19"]],
+ 		SCK:[["18","18"]],
         touch: [["0", "0"], ["2", "2"], ["4", "4"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["27", "27"], ["32", "32"], ["33", "33"]],
         button:[["A", "button_a"], ["B", "button_b"]],
         axis:[["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"]],
@@ -200,7 +205,7 @@ profile["Arduino Gemma"] = profile["arduino_gemma"];
 profile["Arduino/Genuino Uno"] = profile["Arduino Duemilanove or Diecimila"] = profile["LilyPad Arduino"] = profile["Arduino NG or older"] = profile["arduino_standard"];
 profile["Arduino Nano"] = profile["Arduino Mini"] = profile["Arduino Fio"] = profile["Arduino BT"] = profile["Arduino Pro or Pro Mini"] = profile["arduino_eightanaloginputs"];
 profile["Generic_ESP8266"]=profile["Generic ESP8266 Module"] = profile["Adafruit HUZZAH ESP8266"] = profile["NodeMCU 0.9 (ESP-12 Module)"] = profile["NodeMCU 1.0 (ESP-12E Module)"] = profile["Olimex MOD-WIFI-ESP8266(-DEV)"] = profile["SparkFun ESP8266 Thing"] = profile["SweetPea ESP-210"] = profile["arduino_esp8266"];
-profile["ESP32_Arduino"] = profile["ESP32 Dev Module"] = profile["esp32_arduino"];
+profile["ESP32_Arduino"] =profile["ESP32 Dev Module"] = profile["esp32_arduino"];
 //set default profile to arduino standard-compatible board
 //profile["default"] = profile["arduino_standard"];
 //alert(profile.default.digital[0]);

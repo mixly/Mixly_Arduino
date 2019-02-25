@@ -206,7 +206,7 @@ Blockly.Arduino.lp2i_u8g_4draw_print = function () {
     code+='rgb_display_'+dropdown_rgbpin+'.show();\n';
     return code;
   };
-  //RGBç¯å¸¦å½©è™¹æ•ˆæžœï¼Œä¸ƒå½©å˜æ�?
+  //RGBÃ§ÂÂ¯Ã¥Â¸Â¦Ã¥Â½Â©Ã¨â„¢Â¹Ã¦â€¢Ë†Ã¦Å¾Å“Ã¯Â¼Å’Ã¤Â¸Æ’Ã¥Â½Â©Ã¥ÂËœÃ¦Â?
   Blockly.Arduino.display_rgb_rainbow1=function(){
     var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
     var wait_time = Blockly.Arduino.valueToCode(this, 'WAIT',Blockly.Arduino.ORDER_ATOMIC);
@@ -234,7 +234,7 @@ Blockly.Arduino.definitions_[funcName3] = code3;
 var code = 'rainbow('+ wait_time+');\n'
 return code;
 };
-//RGBç¯å¸¦å¾ªçŽ¯ä¸ƒå½©å˜æ¢
+//RGBÃ§ÂÂ¯Ã¥Â¸Â¦Ã¥Â¾ÂªÃ§Å½Â¯Ã¤Â¸Æ’Ã¥Â½Â©Ã¥ÂËœÃ¦ÂÂ¢
 Blockly.Arduino.display_rgb_rainbow2=function(){
   var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
   var wait_time = Blockly.Arduino.valueToCode(this, 'WAIT',Blockly.Arduino.ORDER_ATOMIC);
@@ -270,7 +270,7 @@ Blockly.Arduino.display_rgb_rainbow2=function(){
   var code = 'rainbowCycle('+ wait_time+');\n'
   return code;
 };
-//RGBç¯å¸¦å½©è™�?
+//RGBÃ§ÂÂ¯Ã¥Â¸Â¦Ã¥Â½Â©Ã¨â„¢Â?
 Blockly.Arduino.display_rgb_rainbow3=function(){
   var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
   var rainbow_color = Blockly.Arduino.valueToCode(this, 'rainbow_color',Blockly.Arduino.ORDER_ATOMIC);
@@ -363,233 +363,50 @@ Blockly.Arduino.display_TM1637_displyPrint = function () {
     var code = 'display.setBacklight(' + BRIGHTNESS + ');\n';
     return code;
   };
-Blockly.Arduino.display_Matrix_Init = function() {
-  var SDA = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
-  var SCL = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
-  var matrixName = this.getFieldValue('matrixName');
-  Blockly.Arduino.definitions_['include_Matrix'] = '#include <Matrix.h>';
-  Blockly.Arduino.definitions_[matrixName] = 'Matrix '+ matrixName +'('+SDA+','+SCL+');';
-  Blockly.Arduino.setups_['setup_' + matrixName] = matrixName + '.begin(0x70); \n';
-  var code= matrixName+'.clear();\n';
+
+//Max7219初始化
+Blockly.Arduino.MAX7219_init = function() {
+ var pin_cs = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
+ var hDisplays = Blockly.Arduino.valueToCode(this, 'hDisplays', Blockly.Arduino.ORDER_ATOMIC);
+ var vDisplays = Blockly.Arduino.valueToCode(this, 'vDisplays', Blockly.Arduino.ORDER_ATOMIC);
+ Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
+ Blockly.Arduino.definitions_['include_Adafruit_GFX'] = '#include <Adafruit_GFX.h>';
+ Blockly.Arduino.definitions_['include_Max72xxPanel'] = '#include <Max72xxPanel.h>';
+ Blockly.Arduino.definitions_['define_Max72xxPanel'] = 'Max72xxPanel matrix = Max72xxPanel('+pin_cs+','+hDisplays+','+ vDisplays+');';
+ var code = '';
+ return code;
+};
+//MAX7219设置亮度
+Blockly.Arduino.MAX7219_Brightness = function () {
+  var BRIGHTNESS = Blockly.Arduino.valueToCode(this, 'Brightness', Blockly.Arduino.ORDER_ATOMIC);
+  var code = 'matrix.setIntensity(' + BRIGHTNESS + ');\n';
   return code;
 };
-Blockly.Arduino.display_Matrix_POS = function() {
+//MA7219设置单点
+Blockly.Arduino.MAX7219_drawPixel = function() {
   var pos_x = Blockly.Arduino.valueToCode(this, 'XVALUE', Blockly.Arduino.ORDER_ASSIGNMENT);
   var pos_y = Blockly.Arduino.valueToCode(this, 'YVALUE', Blockly.Arduino.ORDER_ASSIGNMENT);
-  var matrixName = this.getFieldValue('matrixName');
   var dropdown_type = this.getFieldValue('DrawPixel_TYPE');
-  var code = matrixName + '.drawPixel('+pos_x+'-1,'+pos_y+'-1,'+dropdown_type+');\n'
-      code+= matrixName + '.writeDisplay();\n';
+  var code = 'matrix.drawPixel('+pos_x+','+pos_y+','+dropdown_type+');\n'
+  code+= ' matrix.write();\n';
   return code;
 };
-Blockly.Arduino.display_Matrix_Rotation = function() {
-  var matrixName = this.getFieldValue('matrixName');
+//MA7219全亮/全灭/关闭/开启
+Blockly.Arduino.MAX7219_fillScreen = function() {
+  var FILLSCREEN_TYPE = this.getFieldValue('FILLSCREEN_TYPE');
+  var code = 'matrix.'+FILLSCREEN_TYPE+';\n'
+  code+= ' matrix.write();\n';
+  return code;
+};
+
+Blockly.Arduino.MAX7219_Rotation = function() {
+  var NUM = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ASSIGNMENT);
   var dropdown_type = this.getFieldValue('Rotation_TYPE');
-  var code = matrixName + '.setRotation('+dropdown_type+');\n'
-  return code;
-};
-Blockly.Arduino.display_Matrix_TEXT = function() {
-  var matrixName = this.getFieldValue('matrixName');
-  var textString = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ASSIGNMENT);
-  var code = matrixName + '.drawStr('+textString+');\n'
-  return code;
-};
-//执行器_点阵屏显示_显示图案
-Blockly.Arduino.display_Matrix_DisplayChar = function() {
-  var matrixName = this.getFieldValue('matrixName');
-  var dotMatrixArray = Blockly.Arduino.valueToCode(this, 'LEDArray', Blockly.Arduino.ORDER_ASSIGNMENT);
-  Blockly.Arduino.definitions_['LEDArray'] = 'uint8_t  LEDArray[8];';
-//  var code='Matrix_'+SDA+'_'+SCL+'.clear()dotMatrix;\n';
-  var code='';
-  code+='for(int i=0; i<8; i++)\n';
-  code+='{\n'
-  code+='  LEDArray[i]='+dotMatrixArray+'[i];\n';
-  code+='  for(int j=0; j<8; j++)\n'
-  //code+='  for(int j=7; j>=0; j--)\n'
-  code+='  {\n'
-  code+='    if((LEDArray[i]&0x01)>0)\n';
-  code+='    	'+	matrixName +'.drawPixel(j, i,1);\n';
-  code+='    	LEDArray[i] = LEDArray[i]>>1;\n';
-  code+='  }  \n'
-  code+='}\n'
-  code+= matrixName+'.writeDisplay();\n'
-  return code;
-};
-//执行器_点阵屏显示_点阵数组
-Blockly.Arduino.display_Matrix_LedArray = function() {
-  var varName = this.getFieldValue('VAR');
-  var a = new Array();
-  for (var i = 1; i < 9; i++) {
-    a[i] = new Array();
-    for (var j = 1; j < 9; j++) {
-      a[i][j] = (this.getFieldValue('a' + i + j) == "TRUE") ? 1 : 0;
-    }
-  }
-  var code = '{';
-  for (var i = 1; i < 9; i++) {
-    var tmp = ""
-    for (var j = 1; j < 9; j++) {
-      tmp += a[i][j];
-    }
-    tmp = (parseInt(tmp, 2)).toString(16)
-    if (tmp.length == 1) tmp = "0" + tmp;
-    code += '0x' + tmp + ((i != 8) ? ',' : '');
-  }
-  code += '};';
-  //Blockly.Arduino.definitions_[this.id] = "byte LedArray_"+clearString(this.id)+"[]="+code;
-  Blockly.Arduino.definitions_[varName] = "uint8_t " + varName + "[8]=" + code;
-  //return ["LedArray_"+clearString(this.id), Blockly.Arduino.ORDER_ATOMIC];
-  return [varName, Blockly.Arduino.ORDER_ATOMIC];
-};
-Blockly.Arduino.display_Matrix_CLEAR = function() {
-  var matrixName = this.getFieldValue('matrixName');
-  var code = matrixName + '.clear();\n'
-  code += matrixName +'.writeDisplay();\n';
+  var code = 'matrix.setRotation('+NUM+','+dropdown_type+');\n'
   return code;
 };
 
-//显示-MAX7219-初始�?
-Blockly.Arduino.MAX7219_init = function() {
-  var pin_din = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
-  var pin_cs = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
-  var pin_clk = Blockly.Arduino.valueToCode(this, 'PIN3', Blockly.Arduino.ORDER_ATOMIC);
-// var lc_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
-var lc_num = 1;
-var Intensity = Blockly.Arduino.valueToCode(this, 'Intensity', Blockly.Arduino.ORDER_ATOMIC);
-Blockly.Arduino.definitions_['define0_MaxMatrix'] = '#include <MaxMatrix.h>';
-Blockly.Arduino.definitions_['define1_MaxMatrix'] = '#include <avr/pgmspace.h>';
-Blockly.Arduino.definitions_['define_LIST'] = 'PROGMEM const unsigned char LIST[]{\n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B00000000,B00000000,B00000000,B00000000,B00000000,//space\n';
-Blockly.Arduino.definitions_['define_LIST'] += '1,8,B01011111,B00000000,B00000000,B00000000,B00000000,//!\n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B00000011,B00000000,B00000011,B00000000,B00000000,// \n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B00010100,B00111110,B00010100,B00111110,B00010100,//# \n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00100100,B01101010,B00101011,B00010010,B00000000,//$ \n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B01100011,B00010011,B00001000,B01100100,B01100011,//% \n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B00110110,B01001001,B01010110,B00100000,B01010000,//& \n';
-Blockly.Arduino.definitions_['define_LIST'] += '1,8,B00000011,B00000000,B00000000,B00000000,B00000000,//\n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B00011100,B00100010,B01000001,B00000000,B00000000,//( \n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B01000001,B00100010,B00011100,B00000000,B00000000,//) \n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B00101000,B00011000,B00001110,B00011000,B00101000,//* \n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B00001000,B00001000,B00111110,B00001000,B00001000,//+ \n';
-Blockly.Arduino.definitions_['define_LIST'] += '2,8,B10110000,B01110000,B00000000,B00000000,B00000000,//, \n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00001000,B00001000,B00001000,B00001000,B00000000,//- \n';
-Blockly.Arduino.definitions_['define_LIST'] += '2,8,B01100000,B01100000,B00000000,B00000000,B00000000,//. \n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01100000,B00011000,B00000110,B00000001,B00000000,/// \n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00111110,B01000001,B01000001,B00111110,B00000000,//0\n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B01000010,B01111111,B01000000,B00000000,B00000000,//1\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01100010,B01010001,B01001001,B01000110,B00000000,//2\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00100010,B01000001,B01001001,B00110110,B00000000,//3\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00011000,B00010100,B00010010,B01111111,B00000000,//4\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00100111,B01000101,B01000101,B00111001,B00000000,//5\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00111110,B01001001,B01001001,B00110000,B00000000,//6\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01100001,B00010001,B00001001,B00000111,B00000000,//7\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00110110,B01001001,B01001001,B00110110,B00000000,//8\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00000110,B01001001,B01001001,B00111110,B00000000,//9\n';
-Blockly.Arduino.definitions_['define_LIST'] += '2,8,B01010000,B00000000,B00000000,B00000000,B00000000,//: \n';
-Blockly.Arduino.definitions_['define_LIST'] += '2,8,B10000000,B01010000,B00000000,B00000000,B00000000,//; \n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B00010000,B00101000,B01000100,B00000000,B00000000,//< \n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B00010100,B00010100,B00010100,B00000000,B00000000,//= \n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B01000100,B00101000,B00010000,B00000000,B00000000,//> \n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00000010,B01011001,B00001001,B00000110,B00000000,//? \n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B00111110,B01001001,B01010101,B01011101,B00001110,//@ \n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111110,B00010001,B00010001,B01111110,B00000000,//A\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111111,B01001001,B01001001,B00110110,B00000000,//B\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00111110,B01000001,B01000001,B00100010,B00000000,//C\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111111,B01000001,B01000001,B00111110,B00000000,//D\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111111,B01001001,B01001001,B01000001,B00000000,//E\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111111,B00001001,B00001001,B00000001,B00000000,//F\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00111110,B01000001,B01001001,B01111010,B00000000,//G\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111111,B00001000,B00001000,B01111111,B00000000,//H\n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B01000001,B01111111,B01000001,B00000000,B00000000,//I\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00110000,B01000000,B01000001,B00111111,B00000000,//J\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111111,B00001000,B00010100,B01100011,B00000000,//K\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111111,B01000000,B01000000,B01000000,B00000000,//L\n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B01111111,B00000010,B00001100,B00000010,B01111111,//M\n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B01111111,B00000100,B00001000,B00010000,B01111111,//N\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00111110,B01000001,B01000001,B00111110,B00000000,//O\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111111,B00001001,B00001001,B00000110,B00000000,//P\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00111110,B01000001,B01000001,B10111110,B00000000,//Q\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111111,B00001001,B00001001,B01110110,B00000000,//R\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01000110,B01001001,B01001001,B00110010,B00000000,//S\n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B00000001,B00000001,B01111111,B00000001,B00000001,//T\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00111111,B01000000,B01000000,B00111111,B00000000,//U\n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B00001111,B00110000,B01000000,B00110000,B00001111,//V\n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B00111111,B01000000,B00111000,B01000000,B00111111,//W\n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B01100011,B00010100,B00001000,B00010100,B01100011,//X\n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B00000111,B00001000,B01110000,B00001000,B00000111,//Y\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01100001,B01010001,B01001001,B01000111,B00000000,//Z\n';
-Blockly.Arduino.definitions_['define_LIST'] += '2,8,B01111111,B01000001,B00000000,B00000000,B00000000,//[ \n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00000001,B00000110,B00011000,B01100000,B00000000,//\backslash\n';
-Blockly.Arduino.definitions_['define_LIST'] += '2,8,B01000001,B01111111,B00000000,B00000000,B00000000,//] \n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B00000010,B00000001,B00000010,B00000000,B00000000,//hat\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01000000,B01000000,B01000000,B01000000,B00000000,//_ \n';
-Blockly.Arduino.definitions_['define_LIST'] += '2,8,B00000001,B00000010,B00000000,B00000000,B00000000,//` \n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00100000,B01010100,B01010100,B01111000,B00000000,//a\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111111,B01000100,B01000100,B00111000,B00000000,//b\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00111000,B01000100,B01000100,B00101000,B00000000,//c\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00111000,B01000100,B01000100,B01111111,B00000000,//d\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00111000,B01010100,B01010100,B00011000,B00000000,//e\n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B00000100,B01111110,B00000101,B00000000,B00000000,//f\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B10011000,B10100100,B10100100,B01111000,B00000000,//g\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111111,B00000100,B00000100,B01111000,B00000000,//h\n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B01000100,B01111101,B01000000,B00000000,B00000000,//i\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01000000,B10000000,B10000100,B01111101,B00000000,//j\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111111,B00010000,B00101000,B01000100,B00000000,//k\n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B01000001,B01111111,B01000000,B00000000,B00000000,//l\n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B01111100,B00000100,B01111100,B00000100,B01111000,//m\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111100,B00000100,B00000100,B01111000,B00000000,//n\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00111000,B01000100,B01000100,B00111000,B00000000,//o\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B11111100,B00100100,B00100100,B00011000,B00000000,//p\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00011000,B00100100,B00100100,B11111100,B00000000,//q\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01111100,B00001000,B00000100,B00000100,B00000000,//r\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B01001000,B01010100,B01010100,B00100100,B00000000,//s\n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B00000100,B00111111,B01000100,B00000000,B00000000,//t\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00111100,B01000000,B01000000,B01111100,B00000000,//u\n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B00011100,B00100000,B01000000,B00100000,B00011100,//v\n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B00111100,B01000000,B00111100,B01000000,B00111100,//w\n';
-Blockly.Arduino.definitions_['define_LIST'] += '5,8,B01000100,B00101000,B00010000,B00101000,B01000100,//x\n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B10011100,B10100000,B10100000,B01111100,B00000000,//y\n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B01100100,B01010100,B01001100,B00000000,B00000000,//z\n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B00001000,B00110110,B01000001,B00000000,B00000000,//{ \n';
-Blockly.Arduino.definitions_['define_LIST'] += '1,8,B01111111,B00000000,B00000000,B00000000,B00000000,//| \n';
-Blockly.Arduino.definitions_['define_LIST'] += '3,8,B01000001,B00110110,B00001000,B00000000,B00000000,//} \n';
-Blockly.Arduino.definitions_['define_LIST'] += '4,8,B00001000,B00000100,B00001000,B00000100,B00000000,//~ \n';
-Blockly.Arduino.definitions_['define_LIST'] += '};'
-Blockly.Arduino.definitions_['define2_MaxMatrix'] = 'MaxMatrix m(' + pin_din + ',' + pin_cs + ',' + pin_clk + ',' + lc_num + ');\nbyte buffer[100];';
-Blockly.Arduino.setups_['setup_init'] = 'm.init(); ';
-Blockly.Arduino.setups_['setup_Intensity'] = 'm.setIntensity(' + Intensity + ');';
-var code = '';
-return code;
-};
-
-//显示-MAX7219-显示字符�?
-Blockly.Arduino.MAX7219_putString = function() {
-  var str = Blockly.Arduino.valueToCode(this, 'String', Blockly.Arduino.ORDER_ATOMIC) || '\"\"';
-  var speed = Blockly.Arduino.valueToCode(this, 'Speed', Blockly.Arduino.ORDER_ATOMIC);
-  var code = '';
-  if (str.charAt(0) == '"') {
-    Blockly.Arduino.definitions_['define_message'] = 'char message[] = ' + str + ';';
-  } else {
-    Blockly.Arduino.definitions_['define_message'] = 'char message[100];';
-    code = str + '.toCharArray(message,100);\n';
-  }
-  Blockly.Arduino.definitions_['define_putChar'] = 'void putChar(char c, int scrollspeed)\n{\n	if (c < 32 || c > 127) \n	return;\n	c -= 32;\n	memcpy_P(buffer, LIST + 7*c, 7);\n	m.writeSprite(64, 0, buffer);\n	m.setColumn(64 + buffer[0], 0);\n	for (int i=0; i<buffer[0]+1; i++)\n	{\n		delay(scrollspeed);\n		m.shiftLeft(false, false);\n	}\n}';
-  Blockly.Arduino.definitions_['define_putString'] = 'void putString(char* s, int scrollspeed)\n{\n	while (*s != 0)\n	{\n		putChar(*s, scrollspeed);\n		s++;\n	}\n}';
-  code += 'putString(message, ' + speed + ');\n';
-  return code;
-};
-
-//显示-max7219-显示图案 
-Blockly.Arduino.MAX7219_DisplayChar = function() {
-	var code;
-	var lc_chars = Blockly.Arduino.valueToCode(this, 'Chars', Blockly.Arduino.ORDER_ATOMIC);
-	code = 'for (int i = 0; i < 8; i++)\n';
-	code += '	m.setColumn(i, ' + lc_chars + '[i]);\n';
-	return code;
-};
-
-
-//显示-max7219点阵选择数组
+//
 Blockly.Arduino.LedArray = function() {
   var varName = this.getFieldValue('VAR');
   var a = new Array();
@@ -610,13 +427,38 @@ Blockly.Arduino.LedArray = function() {
     code += '0x' + tmp + ((i != 8) ? ',' : '');
   }
   code += '};\n';
-
-	Blockly.Arduino.definitions_[varName] = "byte " + varName + "[]=" + code;
-
-	return [varName, Blockly.Arduino.ORDER_ATOMIC];
+  Blockly.Arduino.definitions_[varName] = "byte " + varName + "[]=" + code;
+  return [varName, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-//显示-max7219-选择图案
+Blockly.Arduino.MAX7219_DisplayChar = function() {
+  var dotMatrixArray = Blockly.Arduino.valueToCode(this, 'LEDArray', Blockly.Arduino.ORDER_ASSIGNMENT);
+  Blockly.Arduino.definitions_['LEDArray'] = 'uint8_t  LEDArray[8];';
+  var code='';
+  code+='for(int i=0; i<8; i++)\n';
+  code+='{\n'
+  code+='  LEDArray[i]='+dotMatrixArray+'[i];\n';
+  code+='  for(int j=0; j<8; j++)\n'
+  code+='  {\n'
+  code+='    if((LEDArray[i]&0x01)>0)\n';
+  code+='     matrix.drawPixel(j, i,1);\n';
+  code+='     LEDArray[i] = LEDArray[i]>>1;\n';
+  code+='  }  \n'
+  code+='}\n'
+  code+= 'matrix.write();\n'
+  return code;
+};
+//
+Blockly.Arduino.MAX7219_scrollMessage = function() {
+   var value = Blockly.Arduino.valueToCode(this, 'VALUE', Blockly.Arduino.ORDER_ATOMIC);
+  
+  var speed = Blockly.Arduino.valueToCode(this, 'Speed', Blockly.Arduino.ORDER_ATOMIC);
+  var code = '';
+  code += 'matrix.scrollMessage('+value+', ' + speed + ');\n';
+  return code;
+};
+
+//
 Blockly.Arduino.Matrix_img = function() {
   var dropdown_img_ = this.getFieldValue('img_');
   var code = '"' + dropdown_img_ + '"';
@@ -628,24 +470,8 @@ Blockly.Arduino.Matrix_img = function() {
   Blockly.Arduino.definitions_['matrix_img_' + dropdown_img_] = "byte " + 'matrix_img_' + dropdown_img_ + "[]=" + code;
   return ['matrix_img_' + dropdown_img_, Blockly.Arduino.ORDER_ATOMIC];
 };
-Blockly.Arduino.oled_init = function() {
-  var CLK = Blockly.Arduino.valueToCode(this, 'CLK', Blockly.Arduino.ORDER_ATOMIC);
-  var DIN = Blockly.Arduino.valueToCode(this, 'DIN', Blockly.Arduino.ORDER_ATOMIC);
-  var DC = Blockly.Arduino.valueToCode(this, 'DC', Blockly.Arduino.ORDER_ATOMIC);
-  var CS1 = Blockly.Arduino.valueToCode(this, 'CS1', Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.definitions_['define_U8glib'] = '#include <U8glib.h>';
-  Blockly.Arduino.definitions_['define_u8g'] = ' U8GLIB_SSD1306_128X64 u8g(' + CLK + ',' + DIN + ',' + CS1 + ',' + DC + ');';
-  var oled_setup = " if ( u8g.getMode() == U8G_MODE_R3G3B2 )\nu8g.setColorIndex(255);\n";
-  oled_setup += " else if ( u8g.getMode() == U8G_MODE_GRAY2BIT )\n";
-  oled_setup += " u8g.setColorIndex(3);\n ";
-  oled_setup += " else if ( u8g.getMode() == U8G_MODE_BW )\n";
-  oled_setup += " u8g.setColorIndex(1);\n";
-  Blockly.Arduino.setups_['setup_setup'] = oled_setup;
-  var code = '';
-  return code;
-};
 
-//显示-OLED-oled初始�?(iic)
+//OLED(iic)
 Blockly.Arduino.oled_init2 = function() {
   var CLK = Blockly.Arduino.valueToCode(this, 'CLK', Blockly.Arduino.ORDER_ATOMIC);
   var DIN = Blockly.Arduino.valueToCode(this, 'DIN', Blockly.Arduino.ORDER_ATOMIC);
@@ -659,19 +485,19 @@ Blockly.Arduino.oled_init2 = function() {
   var code = '';
   return code;
 };
-//显示-OLED-oled清屏
+//
 Blockly.Arduino.oled_clear = function() {
  var code="u8g2.clearDisplay();";
   return code;
 };
-//显示-OLED-oled获取高度/宽度
+//
 Blockly.Arduino.oled_getHeight_or_Width = function() {
   var what = this.getFieldValue('WHAT');
   var funcName = 'u8g2.get' + what + '()';
   return [funcName, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-//OLED显示多行文本
+//OLED
 Blockly.Arduino.oled_draw4Str = function() {
   var value_text_line1 = Blockly.Arduino.valueToCode(this, 'Text_line1', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
   var value_text_line2 = Blockly.Arduino.valueToCode(this, 'Text_line2', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
@@ -684,12 +510,12 @@ Blockly.Arduino.oled_draw4Str = function() {
   return code;
 };
 
-//显示-OLED-oled画点
+//
 Blockly.Arduino.oled_drawPixe = function() {
   var pos_x = Blockly.Arduino.valueToCode(this, 'POS_X', Blockly.Arduino.ORDER_ATOMIC);
   var pos_y = Blockly.Arduino.valueToCode(this, 'POS_Y', Blockly.Arduino.ORDER_ATOMIC);
   var code = "";
-//x和y可以是变量也可以是数字，对此做判�?
+//
 if ((!isNaN(pos_x) && pos_x < 128 && pos_x >= 0) || (isNaN(pos_x))) {
   code += 'u8g2.drawPixel(' + pos_x + ',';
 }
@@ -700,26 +526,26 @@ if (code.split(",").length == 2 && code.split(")").length == 2) return code;
 else return "";
 };
 
-//oled新建页面
+//
 Blockly.Arduino.oled_page = function() {
   var branch = Blockly.Arduino.statementToCode(this, 'DO');
-branch = branch.replace(/(^\s*)|(\s*$)/g, ""); //去除两端空格
+branch = branch.replace(/(^\s*)|(\s*$)/g, ""); //åŽ»é™¤ä¸¤ç«¯ç©ºæ ¼
 if (branch) {
   var code = "  u8g2.firstPage();\n do {\n" + branch + "\n} \nwhile (u8g2.nextPage());\n";
   return code;
 }
 };
 
-//显示-OLED-显示汉字/图案
+//
 Blockly.Arduino.oled_showBitmap = function() {
   var start_x = Blockly.Arduino.valueToCode(this, 'START_X', Blockly.Arduino.ORDER_ATOMIC);
   var start_y = Blockly.Arduino.valueToCode(this, 'START_Y', Blockly.Arduino.ORDER_ATOMIC);
   var Height = this.getFieldValue('HEIGHT');
   var WIDTH = this.getFieldValue('WIDTH');
   var data_name = Blockly.Arduino.valueToCode(this, 'bitmap_name', Blockly.Arduino.ORDER_ATOMIC);
-data_name = data_name.replace(/\"/g, ""); //过滤引号
+data_name = data_name.replace(/\"/g, ""); //
 var code = "";
-//x和y可以是变量也可以是数字，对此做判�?
+//
 if ((!isNaN(start_x) && start_x < 128 && start_x >= 0) || (isNaN(start_x))) {
   code = 'u8g2.drawXBM(' + start_x + ',';
 }
@@ -731,7 +557,7 @@ if (code.split(",").length == 5 && code.split(")").length == 2)
 else return "";
 };
 
-//显示-oled-定义字模名称和数�?
+//
 Blockly.Arduino.oled_define_bitmap_data = function() {
   var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
   var text = this.getFieldValue('TEXT');
@@ -739,14 +565,13 @@ Blockly.Arduino.oled_define_bitmap_data = function() {
   return '';
 };
 
-//显示-OLED-oled画线
+//æ˜¾ç¤º-OLED-oled
 Blockly.Arduino.oled_drawLine = function() {
   var start_x = Blockly.Arduino.valueToCode(this, 'START_X', Blockly.Arduino.ORDER_ATOMIC);
   var start_y = Blockly.Arduino.valueToCode(this, 'START_Y', Blockly.Arduino.ORDER_ATOMIC);
   var end_x = Blockly.Arduino.valueToCode(this, 'END_X', Blockly.Arduino.ORDER_ATOMIC);
   var end_y = Blockly.Arduino.valueToCode(this, 'END_Y', Blockly.Arduino.ORDER_ATOMIC);
   var code = "";
-//x和y可以是变量也可以是数字，对此做判�?
 if ((!isNaN(start_x) && start_x < 128 && start_x >= 0) || (isNaN(start_x))) {
   code = 'u8g2.drawLine(' + start_x + ',';
 }
@@ -763,14 +588,14 @@ if (code.split(",").length == 4 && code.split(")").length == 2) return code;
 else return "";
 };
 
-//显示-OLED-oled画水�?垂直直线
+//
 Blockly.Arduino.oled_draw_Str_Line = function() {
   var start_x = Blockly.Arduino.valueToCode(this, 'START_X', Blockly.Arduino.ORDER_ATOMIC);
   var start_y = Blockly.Arduino.valueToCode(this, 'START_Y', Blockly.Arduino.ORDER_ATOMIC);
   var length = Blockly.Arduino.valueToCode(this, 'LENGTH', Blockly.Arduino.ORDER_ATOMIC);
   var TYPE = this.getFieldValue('TYPE');
   var code = "";
-//x和y可以是变量也可以是数字，对此做判�?
+//
 if ((!isNaN(start_x) && start_x < 128 && start_x >= 0) || (isNaN(start_x))) {
   code = "u8g2.draw" + TYPE + "Line(" + start_x + ',';
 }
@@ -785,7 +610,7 @@ else return "";
 
 };
 
-//显示-OLED-oled画三角形
+//
 Blockly.Arduino.oled_drawTriangle = function() {
   var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
   var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
@@ -794,7 +619,7 @@ Blockly.Arduino.oled_drawTriangle = function() {
   var D2_x = Blockly.Arduino.valueToCode(this, 'D2_X', Blockly.Arduino.ORDER_ATOMIC);
   var D2_y = Blockly.Arduino.valueToCode(this, 'D2_Y', Blockly.Arduino.ORDER_ATOMIC);
   var code = "";
-//x和y可以是变量也可以是数字，对此做判�?
+//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(D0_x) && D0_x < 128 && D0_x >= 0) || (isNaN(D0_x))) {
   code = 'u8g2.drawTriangle(' + D0_x + ',';
 }
@@ -817,7 +642,7 @@ if (code.split(",").length == 6 && code.split(")").length == 2) return code;
 else return "";
 };
 
-//显示-OLED-oled画矩形（实心、空心）
+//æ˜¾ç¤º-OLED-oledç”»çŸ©å½¢ï¼ˆå®žå¿ƒã€ç©ºå¿ƒï¼‰
 Blockly.Arduino.oled_drawFrame = function() {
   var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
   var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
@@ -825,7 +650,7 @@ Blockly.Arduino.oled_drawFrame = function() {
   var Height = Blockly.Arduino.valueToCode(this, 'HEIGHT', Blockly.Arduino.ORDER_ATOMIC);
   var type = this.getFieldValue('TYPE');
   var code = "";
-//x和y可以是变量也可以是数字，对此做判�?
+//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(D0_x) && D0_x < 128 && D0_x >= 0) || (isNaN(D0_x))) 
   code = 'u8g2.'+type+'(' + D0_x + ',';
 if ((!isNaN(D0_y) && D0_y < 64 && D0_y >= 0) || (isNaN(D0_y))) 
@@ -838,7 +663,7 @@ if (code.split(",").length == 4 && code.split(")").length == 2) return code;
 else return "";
 };
 
-//显示-OLED-oled画圆角矩形（实心、空心）
+//æ˜¾ç¤º-OLED-oledç”»åœ†è§’çŸ©å½¢ï¼ˆå®žå¿ƒã€ç©ºå¿ƒï¼‰
 Blockly.Arduino.oled_drawRFrame = function() {
   var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
   var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
@@ -847,7 +672,7 @@ Blockly.Arduino.oled_drawRFrame = function() {
   var Rauius = Blockly.Arduino.valueToCode(this, 'RADIUS', Blockly.Arduino.ORDER_ATOMIC);
   var type = this.getFieldValue('TYPE');
   var code = "";
-//x和y可以是变量也可以是数字，对此做判�?
+//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(D0_x) && D0_x < 128 && D0_x >= 0) || (isNaN(D0_x))) 
   code = 'u8g2.'+type+'(' + D0_x + ',';
 if ((!isNaN(D0_y) && D0_y < 64 && D0_y >= 0) || (isNaN(D0_y))) 
@@ -862,7 +687,7 @@ if (code.split(",").length == 5 && code.split(")").length == 2) return code;
 else return "";
 };
 
-//显示-OLED-oled画圆（实心、空心）
+//æ˜¾ç¤º-OLED-oledç”»åœ†ï¼ˆå®žå¿ƒã€ç©ºå¿ƒï¼‰
 Blockly.Arduino.oled_drawCircle = function() {
   var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
   var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
@@ -870,7 +695,7 @@ Blockly.Arduino.oled_drawCircle = function() {
   var type = this.getFieldValue('TYPE');
   var opt = this.getFieldValue('OPT');
   var code = "";
-//x和y可以是变量也可以是数字，对此做判�?
+//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(D0_x) && D0_x < 128 && D0_x >= 0) || (isNaN(D0_x))) 
   code = 'u8g2.'+type+'(' + D0_x + ',';
 if ((!isNaN(D0_y) && D0_y < 64 && D0_y >= 0) || (isNaN(D0_y))) 
@@ -881,7 +706,7 @@ if (code.split(",").length == 4 && code.split(")").length == 2) return code;
 else return "";
 };
 
-//显示-OLED-oled画椭圆（实心、空心）
+//æ˜¾ç¤º-OLED-oledç”»æ¤­åœ†ï¼ˆå®žå¿ƒã€ç©ºå¿ƒï¼‰
 Blockly.Arduino.oled_drawEllipse = function() {
   var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
   var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
@@ -890,7 +715,7 @@ Blockly.Arduino.oled_drawEllipse = function() {
   var type = this.getFieldValue('TYPE');
   var opt = this.getFieldValue('OPT');
   var code = "";
-//x和y可以是变量也可以是数字，对此做判�?
+//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(D0_x) && D0_x < 128 && D0_x >= 0) || (isNaN(D0_x))) 
   code = 'u8g2.'+type+'(' + D0_x + ',';
 if ((!isNaN(D0_y) && D0_y < 64 && D0_y >= 0) || (isNaN(D0_y))) 
@@ -903,13 +728,13 @@ if (code.split(",").length == 5 && code.split(")").length == 2) return code;
 else return "";
 };
 
-//显示-OLED-oled显示字符�?
+//æ˜¾ç¤º-OLED-oledæ˜¾ç¤ºå­—ç¬¦ä¸?
 Blockly.Arduino.oled_drawStr = function() {
   var POS_x = Blockly.Arduino.valueToCode(this, 'POS_X', Blockly.Arduino.ORDER_ATOMIC);
   var POS_y = Blockly.Arduino.valueToCode(this, 'POS_Y', Blockly.Arduino.ORDER_ATOMIC);
   var TEXT = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC);
   var code = "";
-//x和y可以是变量也可以是数字，对此做判�?
+//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(POS_x) && POS_x < 128 && POS_x >= 0) || (isNaN(POS_x))) 
   code = 'u8g2.drawStr(' + POS_x + ',';
 if ((!isNaN(POS_y) && POS_y < 64 && POS_y >= 0) || (isNaN(POS_y))) 
@@ -918,13 +743,13 @@ if (code.split(",").length == 3&& code.split(")").length == 2) return code;
 else return "";
 };
 
-//显示-OLED-显示变量（字符串，整型）
+//æ˜¾ç¤º-OLED-æ˜¾ç¤ºå˜é‡ï¼ˆå­—ç¬¦ä¸²ï¼Œæ•´åž‹ï¼‰
 Blockly.Arduino.oled_print = function() {
   var POS_x = Blockly.Arduino.valueToCode(this, 'POS_X', Blockly.Arduino.ORDER_ATOMIC);
   var POS_y = Blockly.Arduino.valueToCode(this, 'POS_Y', Blockly.Arduino.ORDER_ATOMIC);
   var TEXT = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC);
   var code = "";
-//x和y可以是变量也可以是数字，对此做判�?
+//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(POS_x) && POS_x < 128 && POS_x >= 0) || (isNaN(POS_x))) 
   code = 'u8g2.setCursor(' + POS_x + ',';
 if ((!isNaN(POS_y) && POS_y < 64 && POS_y >= 0) || (isNaN(POS_y))) 
@@ -933,7 +758,7 @@ code += "u8g2.print(" + TEXT + "); \n";
 return code;
 };
 
-//显示-OLED-oled设置字体
+//æ˜¾ç¤º-OLED-oledè®¾ç½®å­—ä½“
 Blockly.Arduino.oled_setFont = function() {
   var type = this.getFieldValue('TYPE');
   var code = "u8g2.setFont(u8g2_font_"+type+");\nu8g2.setFontPosTop();\n";

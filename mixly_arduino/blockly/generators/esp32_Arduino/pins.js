@@ -29,3 +29,6 @@ Blockly.Arduino.pins_radio_power = Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_radio_datarate = Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_one_more = Blockly.Arduino.pins_digital;
 //Blockly.Arduino.serial_select = Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_MOSI=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_MISO=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_SCK=Blockly.Arduino.pins_digital;

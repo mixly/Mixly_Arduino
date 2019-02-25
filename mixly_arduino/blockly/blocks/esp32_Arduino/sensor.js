@@ -99,13 +99,13 @@ Blockly.Blocks.chaoshengbo2 = {
     }
 };
 
-//DHT11´«¸ÐÆ÷
-Blockly.Blocks.dht11 = {
+//DHT11温湿度传感器
+Blockly.Blocks.DHT = {
     init: function () {
         var WHAT = [[Blockly.MIXLY_DHT11_T, 'temperature'], [Blockly.MIXLY_DHT11_H, 'humidity']];
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput("PIN", Number)
-            .appendField(new Blockly.FieldDropdown([['DHT11', 'DHT11'], ['DHT21', 'DHT21'], ['DHT22', 'DHT22']]), 'TYPE')
+            .appendField(new Blockly.FieldDropdown([['DHT11', '11'], ['DHT21', '21'], ['DHT22', '22']]), 'TYPE')
             .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);
         this.appendDummyInput("")
