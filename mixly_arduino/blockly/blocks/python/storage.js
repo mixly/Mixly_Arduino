@@ -69,7 +69,7 @@ Blockly.Blocks['storage_file_write'] = {
          .setCheck('Variable')
          .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_FROM_FILE);
      this.appendDummyInput()
-         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_NO_MORE_THAN_SIZE,'read'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE_NO_MORE_THAN_SIZE,'readline']]),'MODE');
+         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_NO_MORE_THAN_SIZE,'read'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE_NO_MORE_THAN_SIZE,'readline'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES_NO_MORE_THAN_SIZE,'readlines']]),'MODE');
      this.appendValueInput("SIZE")
          .setCheck(Number);
      this.appendDummyInput()
@@ -85,7 +85,8 @@ Blockly.Blocks['storage_file_write'] = {
         var mode2 = Blockly.MIXLY_MICROBIT_PY_STORAGE_CHARACTER;
         var TOOLTIPS = {
         'read': Blockly.MIXLY_MICROBIT_PY_STORAGE_NO_MORE_THAN_SIZE,
-        'readline': Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE_NO_MORE_THAN_SIZE
+        'readline': Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE_NO_MORE_THAN_SIZE,
+        'readlines': Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES_NO_MORE_THAN_SIZE
       };
       return mode0 + TOOLTIPS[mode]+'x'+mode2;
     });
@@ -194,5 +195,21 @@ Blockly.Blocks['storage_file_write'] = {
      this.setNextStatement(false);
      this.setOutput(true, Number);
      this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET_FILE_SIZE+Blockly.MIXLY_MICROBIT_PY_STORAGE_SIZE);
+   }
+ };
+
+ Blockly.Blocks['storage_file_tell'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendValueInput("FILE")
+         .setCheck(String)
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_RETURN_FILE);
+     this.appendDummyInput()
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_PRESENT_LOCATION);
+     this.setInputsInline(true);
+     this.setPreviousStatement(false);
+     this.setNextStatement(false);
+     this.setOutput(true, Number);
+     this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_TELL);
    }
  };

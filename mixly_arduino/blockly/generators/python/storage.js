@@ -71,3 +71,9 @@ Blockly.Python.storage_get_file_size = function () {
     var code = "os.size("+file+")";
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.storage_file_tell = function () {
+    var file = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
+    var code = file+".tell()";
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
