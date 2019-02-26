@@ -67,6 +67,23 @@ Blockly.Python.math_arithmetic = function (a) {
   return [d + c + a, b]
 };
 
+Blockly.Python.math_selfcalcu = function (a) {    
+  var argument0 = Blockly.Python.valueToCode(this, 'A', Blockly.Python.ORDER_RELATIONAL) || '0';
+  var argument1 = Blockly.Python.valueToCode(this, 'B', Blockly.Python.ORDER_RELATIONAL) || '0';
+  var operator = this.getFieldValue('OP');
+  switch (operator){
+    case 'ADD':var op = '+=';break;
+    case 'MINUS':var op = '-=';break;
+    case 'MULTIPLY':var op = '*=';break;
+    case 'DIVIDE':var op = '/=';break;
+    case 'QUYU':var op = '%=';break;
+    case 'ZHENGCHU':var op = '//=';break;
+    case 'POWER':var op = '**=';break;
+  }
+  var code = argument0 + ' ' + op + ' ' + argument1;
+  return code;
+};
+
 
 
 Blockly.Python.math_single = function (a) {
@@ -334,6 +351,14 @@ Blockly.Python.math_number_base_conversion = function (a) {
     default:
   }
   */
+};
+
+Blockly.Python.math_random_seed = function () {
+    // Random integer between [X] and [Y].
+    Blockly.Python.definitions_.import_random = "import random";
+    var a = Blockly.Python.valueToCode(this, 'NUM',Blockly.Python.ORDER_NONE) || '0';
+    var code = 'random.seed(' + a +  ');'+'\n';
+    return code;
 };
 
 Blockly.Python.math_indexer_number = function () {

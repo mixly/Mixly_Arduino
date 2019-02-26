@@ -181,3 +181,18 @@ pbc.objectFunctionD.get('clear')['List'] = function(py2block, func, args, keywor
         "inline": "true"
     })];
 };
+
+pbc.globalFunctionD['list'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length > 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    if (args.length ==0){
+        return block("lists_create_with_noreturn", node.lineno, {},
+            this.convertElements("ADD", elts)
+            , {
+                "inline": "true",
+            }, {
+                "@items": elts.length
+            });
+    }
+}

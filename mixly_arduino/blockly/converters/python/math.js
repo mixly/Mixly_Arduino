@@ -208,6 +208,17 @@ function mathRandom(mode) {
 pbc.moduleFunctionD.get('random')['randint'] = mathRandom('int');
 pbc.moduleFunctionD.get('random')['uniform'] = mathRandom('float');
 
+pbc.moduleFunctionD.get('random')['seed'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var varblock = py2block.convert(args[0]);
+    return [block("math_random_seed", func.lineno, {}, {
+        'NUM': varblock
+    }, {
+        "inline": "true"
+    })];
+}
 
 function radixToEng(num) {
     if (num == 2) {

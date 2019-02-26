@@ -1621,3 +1621,17 @@ Blockly.Blocks.display_tm1650_show_dot = {
         this.setTooltip(Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot);
     }
 };
+
+Blockly.Blocks['display_animate'] = {
+  init: function() {
+    var ANIMATE =
+        [["ALL_CLOCKS", 'ALL_CLOCKS'],
+         ["ALL_ARROWS", 'ALL_ARROWS']];
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.setOutput(true, 'Tuple');
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_ESP32_DISPLAY_ANIMATE)
+        .appendField(new Blockly.FieldDropdown(ANIMATE), 'ANIMATION')        
+    //this.setTooltip(Blockly.Msg.LOGIC_BOOLEAN_TOOLTIP);
+  }
+};

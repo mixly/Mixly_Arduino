@@ -710,16 +710,13 @@ PythonToBlocks.prototype.AugAssign = function(node)
     var target = node.target;
     var op = node.op;
     var value = node.value;
-    if (op.name != "Add") {
-        //TODO
-        throw new Error("Only addition is currently supported for augmented assignment!");
-    } else {
-        return block("math_change", node.lineno, {
-            "VAR": this.Name_str(target)
+    return block("math_selfcalcu", node.lineno, {
+            "OP": this.binaryOperator(op)
         }, {
-            "DELTA": this.convert(value)
+            "A": this.convert(target),
+            "B": this.convert(value)
         });
-    }
+    
 }
 
 /*

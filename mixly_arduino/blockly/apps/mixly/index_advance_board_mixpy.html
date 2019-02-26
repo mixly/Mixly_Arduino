@@ -263,7 +263,13 @@
           <!-- <block type="raw_block"></block> -->
       </category>
       <category id="catControl" colour="120">
-          <block type="controls_end_program"></block>
+          <!--<block type="controls_end_program"></block>-->
+          <block type="controls_whileUntil">
+            <value name="BOOL">
+              <shadow type="logic_boolean">
+              </shadow>
+            </value>
+          </block>
           <block type="time_sleep">
               <value name="DELAY_TIME">
                   <shadow type="math_number">
@@ -318,13 +324,7 @@
                   <field name="VAR">i</field>
                 </shadow>
           </value>
-          </block>
-          <block type="controls_whileUntil">
-	        <value name="BOOL">
-	          <shadow type="logic_boolean">
-	          </shadow>
-	        </value>
-	      </block>
+          </block>          
           <block type="controls_try_finally"></block>
       <!--0    <block type="controls_repeat_ext">
               <value name="TIMES">
@@ -384,7 +384,7 @@
                   </shadow>
               </value>
       </block>
-      <block type="controls_millis"></block>
+      <!--<block type="controls_millis"></block>-->
       <block type="time_localtime"></block>
        <!--   <block type="Panic_with_status_code">
             <value name="STATUS_CODE">
@@ -404,6 +404,18 @@
           <shadow type="math_number">
             <field name="NUM">1</field>
           </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_selfcalcu">
+        <value name="A">
+          <shadow type="variables_get">
+              <field name="VAR">a</field>
+            </shadow>
         </value>
         <value name="B">
           <shadow type="math_number">

@@ -396,5 +396,12 @@ Blockly.Python.display_tm1650_show_dot = function () {
     return code;
 };
 
+Blockly.Python.display_animate = function() {
+  // Boolean values true and false.
+  var name = this.getFieldValue("ANIMATION");
+  var code = 'matrix.Image.' + name; 
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
 goog.provide('Blockly.Python.display');
 goog.require('Blockly.Python');

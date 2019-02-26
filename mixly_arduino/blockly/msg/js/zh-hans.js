@@ -2309,6 +2309,7 @@ Blockly.MIXLY_PYTHON_INOUT_PRINT_END_TOOLTIP = "打印指定的文字、数字�
 Blockly.MIXLY_PYTHON_MATH_CONSTANT = "常数";
 Blockly.MIXLY_PYTHON_MATH_CONSTANT_PI_TOOLTIP = "圆周率常数的近似值（保留小数点后15位）";
 Blockly.MIXLY_PYTHON_MATH_CONSTANT_E_TOOLTIP = "自然常数的近似值（保留小数点后15位）";
+Blockly.MIXLY_ESP32_DISPLAY_ANIMATE = "内置动画";
 ////////blynk////////////////////////////
 Blockly.blynk_IOT_AUTH='Blynk授权码';
 Blockly.blynk_WIFI_SSID='Wi-Fi名称';
