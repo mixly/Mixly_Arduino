@@ -409,41 +409,47 @@ text.blocklyText {
 }
 
 .mb_led_brightness_0 {   background-color: #000; }
-.mb_led_brightness_1 {  background-color: #300; }
-.mb_led_brightness_2 {  background-color: #500; }
-.mb_led_brightness_3 {  background-color: #700; }
-.mb_led_brightness_4 {  background-color: #900; }
-.mb_led_brightness_5 {  background-color: #a00; }
-.mb_led_brightness_6 {  background-color: #b00; }
-.mb_led_brightness_7 {  background-color: #c00; }
-.mb_led_brightness_8 {  background-color: #d00; }
-.mb_led_brightness_9 {  background-color: #f00; }
+.mb_led_brightness_1 {  background-color: #800000; }
+.mb_led_brightness_2 {  background-color: #880000; }
+.mb_led_brightness_3 {  background-color: #900000; }
+.mb_led_brightness_4 {  background-color: #980000; }
+.mb_led_brightness_5 {  background-color: #a00000; }
+.mb_led_brightness_6 {  background-color: #a80000; }
+.mb_led_brightness_7 {  background-color: #b00000; }
+.mb_led_brightness_8 {  background-color: #b80000; }
+.mb_led_brightness_9 {  background-color: #c00000; }
+.mb_led_brightness_10 {  background-color: #c80000; }
+.mb_led_brightness_11 {  background-color: #d00000; }
+.mb_led_brightness_12 {  background-color: #d80000; }
+.mb_led_brightness_13 {  background-color: #e00000; }
+.mb_led_brightness_14 {  background-color: #e80000; }
+.mb_led_brightness_15 {  background-color: #ff0000; }
 
 .mb_led_row_0 { top: 36px; }
-.mb_led_row_1 { top: 50px; }
-.mb_led_row_2 { top: 70px; }
+.mb_led_row_1 { top: 52px; }
+.mb_led_row_2 { top: 68px; }
 .mb_led_row_3 { top: 85px; }
 .mb_led_row_4 { top: 102px; }
-.mb_led_row_5 { top: 96px; }
-.mb_led_row_6 { top: 108px; }
-.mb_led_row_7 { top: 120px; }
+.mb_led_row_5 { top: 120px; }
+.mb_led_row_6 { top: 136px; }
+.mb_led_row_7 { top: 153px; }
 
-.mb_led_col_0 { left: 48px; }
-.mb_led_col_1 { left: 60px; }
-.mb_led_col_2 { left: 72px; }
-.mb_led_col_3 { left: 84px; }
-.mb_led_col_4 { left: 96px; }
-.mb_led_col_5 { left: 108px; }
-.mb_led_col_6 { left: 120px; }
-.mb_led_col_7 { left: 132px; }
-.mb_led_col_8 { left: 144px; }
-.mb_led_col_9 { left: 156px; }
-.mb_led_col_10 { left: 168px; }
-.mb_led_col_11 { left: 180px; }
-.mb_led_col_12 { left: 192px; }
-.mb_led_col_13 { left: 204px; }
-.mb_led_col_14 { left: 216px; }
-.mb_led_col_15 { left: 228px; }
+.mb_led_col_0 { left: 49px; }
+.mb_led_col_1 { left: 68px; }
+.mb_led_col_2 { left: 88px; }
+.mb_led_col_3 { left: 108px; }
+.mb_led_col_4 { left: 128px; }
+.mb_led_col_5 { left: 148px; }
+.mb_led_col_6 { left: 168px; }
+.mb_led_col_7 { left: 188px; }
+.mb_led_col_8 { left: 208px; }
+.mb_led_col_9 { left: 228px; }
+.mb_led_col_10 { left: 248px; }
+.mb_led_col_11 { left: 268px; }
+.mb_led_col_12 { left: 288px; }
+.mb_led_col_13 { left: 308px; }
+.mb_led_col_14 { left: 328px; }
+.mb_led_col_15 { left: 348px; }
 
 #mb_btn_A {
     left: 14.5px;

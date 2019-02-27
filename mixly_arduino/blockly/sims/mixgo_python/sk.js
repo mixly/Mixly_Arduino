@@ -1,26 +1,29 @@
+conf.url = conf.url || "";
 var base_url = conf.url + '/blockly/sims/mixgo_python/';
 Sk.externalLibraries = {
     mixgo: {
         path: base_url + 'mixgo/__init__.js',
         dependencies: [
-            base_url + 'mixgo/display.js',
             base_url + 'mixgo/accelerometer.js',
             base_url + 'mixgo/compass.js',
             base_url + 'mixgo/uart.js',
         ]
     },
+    matrix:{
+        path: conf.url + '/blockly/sims/mixgo_python/matrix/__init__.js'
+    },
     music: {
-        path: conf.url + '/blockly/sims/mixgo/music/__init__.js'
+        path: conf.url + '/blockly/sims/mixgo_python/music/__init__.js'
     },
     radio:{
-        path: conf.url + '/blockly/sims/mixgo/radio/__init__.js'
+        path: conf.url + '/blockly/sims/mixgo_python/radio/__init__.js'
     },
     speech: {
-        path: conf.url + '/blockly/sims/mixgo/speech/__init__.js',
-        dependencies: [conf.url + '/blockly/sims/mixgo/speech/sam.js']
+        path: conf.url + '/blockly/sims/mixgo_python/speech/__init__.js',
+        dependencies: [conf.url + '/blockly/sims/mixgo_python/speech/sam.js']
     },
     neopixel: {
-        path: conf.url + '/blockly/sims/mixgo/neopixel/__init__.js'
+        path: conf.url + '/blockly/sims/mixgo_python/neopixel/__init__.js'
     },
     //status machine
     /*

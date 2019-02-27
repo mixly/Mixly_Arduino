@@ -376,7 +376,7 @@ var ui = {
         })
     },
     setLED: function (x, y, brightness) {
-        $('.mb_led.mb_led_row_' + y + '.mb_led_col_' + x).removeClass('mb_led_brightness_1 mb_led_brightness_2 mb_led_brightness_3 mb_led_brightness_4 mb_led_brightness_5 mb_led_brightness_6 mb_led_brightness_7 mb_led_brightness_8 mb_led_brightness_9').addClass('mb_led_brightness_' + brightness);
+        $('.mb_led.mb_led_row_' + y + '.mb_led_col_' + x).removeClass('mb_led_brightness_ mb_led_brightness_0 mb_led_brightness_1 mb_led_brightness_2 mb_led_brightness_3 mb_led_brightness_4 mb_led_brightness_5 mb_led_brightness_6 mb_led_brightness_7 mb_led_brightness_8 mb_led_brightness_9 mb_led_brightness_10 mb_led_brightness_11 mb_led_brightness_12 mb_led_brightness_13 mb_led_brightness_14 mb_led_brightness_15').addClass('mb_led_brightness_' + brightness);
     },
     output: function (s) {
         console.log(s);
