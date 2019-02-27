@@ -94,3 +94,16 @@ Blockly.Python.storage_file_seek = function () {
     var code = file+'.seek('+ size + ',' + mode_num + ')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.storage_change_dir = function () {
+    Blockly.Python.definitions_['import_os'] = 'import os';
+    var file = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
+    var code = "os.chdir("+file+")\n";
+    return code;
+};
+
+Blockly.Python.storage_get_current_dir = function() {
+  Blockly.Python.definitions_['import_os'] = 'import os';
+  var code = 'os.getcwd()';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+}

@@ -9,14 +9,14 @@ var PythonHighlightRules = function() {
     var keywords = (
         "and|as|assert|break|class|continue|def|del|elif|else|except|exec|" +
         "finally|for|from|global|if|import|in|is|lambda|not|or|pass|print|" +
-        "raise|return|try|while|with|yield|async|await" 
+        "raise|return|try|while|with|yield|async|await"
     );
 
     var builtinConstants = (
         "True|False|None|NotImplemented|Ellipsis|__debug__|"+
         // micropythonConstants
         "RATE_250KBIT|RATE_1MBIT|RATE_2MBIT"
-        
+
     );
 
     var builtinFunctions = (
@@ -49,7 +49,7 @@ var PythonHighlightRules = function() {
         // micropythonMusicFunctions
         "set_tempo|get_tempo|play|pitch|stop|reset|"+
         // micropythonOSFunctions
-        "listdir|remove|size|uname|"+
+        "listdir|remove|size|uname|chdir|getcwd"+
         // micropythonRadioFunctions
         "on|off|config|reset|send_bytes|receive_bytes|receive_full|receive_bytes_into|send|receive|"+
         // micropythonRandomFunctions
@@ -302,27 +302,27 @@ oop.inherits(Mode, TextMode);
         "break": 1,
         "continue": 1
     };
-    
+
     this.checkOutdent = function(state, line, input) {
         if (input !== "\r\n" && input !== "\r" && input !== "\n")
             return false;
 
         var tokens = this.getTokenizer().getLineTokens(line.trim(), state).tokens;
-        
+
         if (!tokens)
             return false;
         do {
             var last = tokens.pop();
         } while (last && (last.type == "comment" || (last.type == "text" && last.value.match(/^\s+$/))));
-        
+
         if (!last)
             return false;
-        
+
         return (last.type == "keyword" && outdents[last.value]);
     };
 
     this.autoOutdent = function(state, doc, row) {
-        
+
         row += 1;
         var indent = this.$getIndent(doc.getLine(row));
         var tab = doc.getTabString();

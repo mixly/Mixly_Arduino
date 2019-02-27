@@ -249,3 +249,29 @@ Blockly.Blocks['storage_file_write'] = {
    }
  };
 
+ Blockly.Blocks['storage_change_dir'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendValueInput("FILE")
+         .setCheck(String)
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_CHANGE_DIR);
+     this.setInputsInline(true);
+     this.setPreviousStatement(true);
+     this.setNextStatement(true);
+     this.setOutput(false);
+     this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_CHANGE_DIR);
+   }
+ };
+
+ Blockly.Blocks['storage_get_current_dir'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendDummyInput()
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET_CURRENT_DIR);
+     this.setInputsInline(true);
+     this.setPreviousStatement(false);
+     this.setNextStatement(false);
+     this.setOutput(true,'List');
+     this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET_CURRENT_DIR);
+   }
+ };
