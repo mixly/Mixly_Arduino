@@ -77,3 +77,20 @@ Blockly.Python.storage_file_tell = function () {
     var code = file+".tell()";
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.storage_file_seek = function () {
+    var mode = this.getFieldValue('MODE');
+    var mode_num = 0;
+    if (mode == 'start'){
+      mode_num = 0;}
+    else if(mode == 'current'){
+      mode_num = 1;
+    }
+    else{
+      mode_num = 2;
+    }
+    var file = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
+    var size = Blockly.Python.valueToCode(this, 'SIZE', Blockly.Python.ORDER_ATOMIC);
+    var code = file+'.seek('+ size + ',' + mode_num + ')';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};

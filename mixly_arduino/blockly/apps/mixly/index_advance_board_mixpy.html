@@ -1259,6 +1259,18 @@
             </shadow>
           </value>
         </block>
+        <block type="storage_file_seek">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+          <value name="SIZE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
         <block type="storage_can_write_ornot">
           <value name="FILE">
             <shadow type="variables_get">

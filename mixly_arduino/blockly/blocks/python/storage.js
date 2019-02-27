@@ -213,3 +213,39 @@ Blockly.Blocks['storage_file_write'] = {
      this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_TELL);
    }
  };
+
+ Blockly.Blocks['storage_file_seek'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendValueInput("FILE")
+         .setCheck('Variable')
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_SET_FILE_POSITION);
+     this.appendDummyInput()
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_CURRENT_POSITION);
+     this.appendDummyInput()
+         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_START,'start'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_CURRENT,'current'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_END,'end']]),'MODE');
+     this.appendDummyInput()
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_OFFSET);
+     this.appendValueInput("SIZE")
+         .setCheck(Number);
+     this.appendDummyInput()
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_CHARACTER);
+     this.setInputsInline(true);
+     this.setPreviousStatement(true); //in front of the block has something
+     this.setNextStatement(true);  //beyond the ... has something
+     var thisBlock = this;
+     this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('MODE');
+        var mode0 = Blockly.MIXLY_MICROBIT_PY_STORAGE_SET_FILE_POSITION + Blockly.MIXLY_MICROBIT_PY_STORAGE_CURRENT_POSITION;
+        var mode2 = Blockly.MIXLY_MICROBIT_PY_STORAGE_CHARACTER;
+        var mode3 = Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_OFFSET;
+        var TOOLTIPS = {
+        'start': Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_START,
+        'current': Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_CURRENT,
+        'end': Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_END
+      };
+      return mode0 +" "+ TOOLTIPS[mode]+mode3+'x'+mode2;
+    });
+   }
+ };
+
