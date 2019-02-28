@@ -1087,6 +1087,11 @@ Blockly.Msg.num2 = "数字2";
 Blockly.Msg.num3 = "数字3";
 Blockly.Msg.num4 = "数字4";
 // RGB
+Blockly.MIXLY_RGB_INIT = 'RGB灯初始化';
+Blockly.MIXLY_RGB_SET_BRIGHTNESS = 'RGB灯设置亮度';
+Blockly.MIXLY_RGB_SET_COLOR = 'RGB灯设置颜色';
+Blockly.MIXLY_RGB_SHOW = 'RGB灯设置生效';
+Blockly.MIXLY_RGB_BRIGHTNESS = '亮度';
 Blockly.MIXLY_RGB = 'RGB灯';
 Blockly.MIXLY_RGB_NUM = '灯号';
 Blockly.MIXLY_RGB_COUNT = '灯数';
