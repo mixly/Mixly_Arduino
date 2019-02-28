@@ -171,9 +171,10 @@ Blockly.Blocks['storage_file_write'] = {
  Blockly.Blocks['storage_delete_file'] = {
    init: function() {
      this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendDummyInput()
+         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_DELETE_FILE,'remove'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_DELETE_DIRS,'removedirs']]),'MODE');
      this.appendValueInput("FILE")
-         .setCheck(String)
-         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_DELETE_FILE);
+         .setCheck(String);
      this.setInputsInline(true);
      this.setPreviousStatement(true);
      this.setNextStatement(true);
@@ -273,5 +274,64 @@ Blockly.Blocks['storage_file_write'] = {
      this.setNextStatement(false);
      this.setOutput(true,'List');
      this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET_CURRENT_DIR);
+   }
+ };
+
+ Blockly.Blocks['storage_make_dir'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendValueInput("PATH")
+         .setCheck(String)
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_PATH);
+     this.appendDummyInput()
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_CREATE);
+     this.appendDummyInput()
+         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_MKDIR,'mkdir'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKEDIRS,'makedirs']]),'MODE');
+     this.setInputsInline(true);
+     this.setPreviousStatement(true); //in front of the block has something
+     this.setNextStatement(true);  //beyond the ... has something
+     this.setOutput(false);
+     var thisBlock = this;
+     this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('MODE');
+        var mode0 = Blockly.MIXLY_MICROBIT_PY_STORAGE_PATH;
+        var mode2 = Blockly.MIXLY_MICROBIT_PY_STORAGE_CREATE;
+        var TOOLTIPS = {
+        'mkdir': Blockly.MIXLY_MICROBIT_PY_STORAGE_MKDIR,
+        'makedirs': Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKEDIRS
+      };
+      return mode0 +'x'+ mode2 + TOOLTIPS[mode];
+    });
+   }
+ };
+
+ Blockly.Blocks['storage_rename'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendValueInput("FILE")
+         .setCheck(String)
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_RENAME);
+    this.appendValueInput("NEWFILE")
+        .setCheck(String)
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_TO);
+     this.setInputsInline(true);
+     this.setPreviousStatement(true);
+     this.setNextStatement(true);
+     this.setOutput(false);
+     this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_RENAME);
+   }
+ };
+
+ Blockly.Blocks['storage_change_dir'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendValueInput("FILE")
+         .setCheck(String)
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_CHANGE_DIR);
+     this.setInputsInline(true);
+     this.setPreviousStatement(true);
+     this.setNextStatement(true);
+     this.setOutput(false);
+     this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_CHANGE_DIR);
    }
  };

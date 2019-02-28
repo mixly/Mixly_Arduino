@@ -60,8 +60,9 @@ Blockly.Python.storage_list_all_files = function() {
 
 Blockly.Python.storage_delete_file = function () {
     Blockly.Python.definitions_['import_os'] = 'import os';
+    var mode = this.getFieldValue('MODE');
     var file = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
-    var code = "os.remove("+file+")\n";
+    var code = "os."+mode+"("+file+")\n";
     return code;
 };
 
@@ -107,3 +108,19 @@ Blockly.Python.storage_get_current_dir = function() {
   var code = 'os.getcwd()';
   return [code, Blockly.Python.ORDER_ATOMIC];
 }
+
+Blockly.Python.storage_make_dir = function () {
+  Blockly.Python.definitions_['import_os'] = 'import os';
+    var mode = this.getFieldValue('MODE');
+    var path = Blockly.Python.valueToCode(this, 'PATH', Blockly.Python.ORDER_ATOMIC);
+    var code = 'os.'+mode+'(' + path + ')';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.storage_rename = function () {
+    Blockly.Python.definitions_['import_os'] = 'import os';
+    var file = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
+    var file1 = Blockly.Python.valueToCode(this, 'NEWFILE', Blockly.Python.ORDER_ATOMIC);
+    var code = "os.rename("+file+","+file1+")\n";
+    return code;
+};

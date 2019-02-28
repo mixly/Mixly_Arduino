@@ -1301,10 +1301,29 @@
             </shadow>
           </value>
         </block>
+        <block type="storage_make_dir">
+          <value name="PATH">
+            <shadow type="text">
+              <field name="TEXT">path</field>
+            </shadow>
+          </value>
+        </block>
         <block type="storage_delete_file">
           <value name="FILE">
             <shadow type="text">
               <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_rename">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">srcname.txt</field>
+            </shadow>
+          </value>
+          <value name="NEWFILE">
+            <shadow type="text">
+              <field name="TEXT">dstname.txt</field>
             </shadow>
           </value>
         </block>
