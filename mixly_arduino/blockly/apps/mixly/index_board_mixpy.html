@@ -225,12 +225,30 @@
                   </shadow>
               </value>
           </block>
+          <block type="inout_print_end">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Hello</field>
+                  </shadow>
+              </value>
+              <value name="END">
+                  <shadow type="text">
+                      <field name="TEXT">,</field>
+                  </shadow>
+              </value>
+          </block>
 
           <!-- <block type="raw_block"></block> -->
       </category>
       <category id="catControl" colour="120">
-        <!--  <block type="base_setup"></block>-->
-          <block type="controls_end_program"></block>
+        <block type="controls_whileUntil">
+            <value name="BOOL">
+              <shadow type="logic_boolean">
+              </shadow>
+            </value>
+          </block>
+        <!--  <block type="base_setup"></block>
+          <block type="controls_end_program"></block>-->
         <!--  <block type="base_delay">
               <value name="DELAY_TIME">
                   <shadow type="math_number">
@@ -287,8 +305,13 @@
                       </value>
                   </block>
               </value>
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">i</field>
+                </shadow>
+          </value>
           </block>
-          <block type="controls_whileUntil"></block>
+          
           <block type="controls_try_finally"></block>
       <!--0    <block type="controls_repeat_ext">
               <value name="TIMES">
@@ -341,7 +364,7 @@
               </block>
             </statement>
           </block>
-          <block type="controls_millis"></block>
+          <!--<block type="controls_millis"></block>-->
           <block type="time_localtime"></block>
        <!--   <block type="Panic_with_status_code">
             <value name="STATUS_CODE">
@@ -355,11 +378,24 @@
       </category>
           <category id="catMath" colour="230">
       <block type="math_number"></block>
+      <block type="math_constant"></block>
       <block type="math_arithmetic">
         <value name="A">
           <shadow type="math_number">
             <field name="NUM">1</field>
           </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_selfcalcu">
+        <value name="A">
+          <shadow type="variables_get">
+              <field name="VAR">a</field>
+            </shadow>
         </value>
         <value name="B">
           <shadow type="math_number">
@@ -471,6 +507,23 @@
       </category>
       <category id="catLogic" colour="210">
         <block type="logic_compare"></block>
+        <block type="logic_compare_continous">
+          <value name="A">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="B">
+            <shadow type="variables_get">
+              <field name="VAR">x</field>
+            </shadow>
+          </value>
+          <value name="C">
+            <shadow type="math_number">
+              <field name="NUM">2</field>
+            </shadow>
+          </value>
+        </block>
         <block type="logic_operation"></block>
         <block type="logic_negate"></block>
         <block type="logic_boolean"></block>
@@ -488,12 +541,25 @@
             </shadow>
           </value>
         </block>
+        <block type="logic_is">
+          <value name="A">
+            <shadow type="list_many_input">
+              <field name="CONTENT">0,1,2,3</field>
+            </shadow>
+          </value>
+          <value name="B">
+            <shadow type="list_many_input">
+              <field name="CONTENT">0,1,2,3</field>
+            </shadow>
+          </value>
+        </block>
       </category>
       <category id="catText" colour="160">
         <block type="text">
           <field name="TEXT">Mixly</field>
         </block>
-        
+        <block type="text_textarea">
+        </block>
         <block type="text_join">
           <value name="A">
             <shadow type="text">

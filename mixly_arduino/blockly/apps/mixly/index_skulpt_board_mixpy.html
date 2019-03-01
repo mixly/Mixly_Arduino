@@ -6,10 +6,11 @@
   <!--<script type="text/javascript" src="../../blocks_compressed.js"></script>-->
   <script type="text/javascript" src="../../python_compressed.js"></script>
   <script type="text/javascript" src="../../core/mixpy_python/variables.js"></script>
-  <script type="text/javascript" src="../../core/mixpy_python/procedures.js"></script>
-  <script type="text/javascript" src="../../core/mixpy_python/blockly.js"></script>
-  <script type="text/javascript" src="../../core/mixpy_python/events.js"></script>
-  <script type="text/javascript" src="../../core/mixpy_python/field_textarea.js"></script>
+  <script type="text/javascript" src="../../core/procedures.js"></script>
+  <script type="text/javascript" src="../../core/blockly.js"></script>
+  <script type="text/javascript" src="../../core/events.js"></script>
+  <script type="text/javascript" src="../../core/field_textarea.js"></script>
+  <script type="text/javascript" src="../../core/mixpy_python/names.js"></script>
   <script src="../../generators/mixpy_python/python.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
   <script type="text/javascript" src="drag.js"></script>
@@ -346,12 +347,12 @@ function init() {
             <td class="tabcoyright">
 			  <span id="copyright" style=" font-family: 'Microsoft Yahei Light';font-size:12px;color:#999;">copyright</span>
             </td>
-               <!--<td class="tabmode">
+               <td class="tabmode">
                     <span class="viewLeft" id="viewMode1" style=" font-family: 'Microsoft Yahei Light';;font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_microbit%5Bjs%5D.html" style=" font-family: 'Microsoft Yahei Light';font-size:12px;">高级视图</a>
                   <button onclick="pyengine.run();">运行</button>
                   <button onclick="pyengine.kill();">取消</button>
                   <input id="loading" src="media/loading.svg" type="image" height="17px" style="display: none;margin-top:10px;"></input>
-              </td> -->
+              </td> 
               <!--  <script type="text/javascript">
 				var viewMode2 = document.getElementById('viewMode2');
 				viewMode2.href = 'index_advance_board_microbit[js].html?lang='+Code.LANG;
@@ -422,33 +423,52 @@ function init() {
                   </shadow>
               </value>
           </block>
-          <block type="inout_print_inline"> 
+          <block type="inout_print_inline">
               <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Hello</field>
                   </shadow>
-              </value>   
+              </value>
           </block>
-
+          <block type="inout_print_end">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Hello</field>
+                  </shadow>
+              </value>
+              <value name="END">
+                  <shadow type="text">
+                      <field name="TEXT">,</field>
+                  </shadow>
+              </value>
+          </block>
+          <block type="inout_print_many">
+          <mutation items="2"></mutation>
+          
+          <value name="ADD0">
+            <block type="text">
+              <field name="TEXT">Hello</field>
+            </block>
+          </value>
+          <value name="ADD1">
+            <block type="text">
+              <field name="TEXT">Mixly</field>
+            </block>
+          </value>
+        </block>  
           <!-- <block type="raw_block"></block> -->
       </category>
       <category id="catControl" colour="120">
-        <!--  <block type="base_setup"></block>-->
+        
           <block type="controls_end_program"></block>
-        <!--  <block type="base_delay">
-              <value name="DELAY_TIME">
-                  <shadow type="math_number">
-                      <field name="NUM">1000</field>
-                  </shadow>
-              </value>
-          </block>-->
-          <block type="controls_type">
+        
+         <!-- <block type="controls_type">
               <value name="DATA">
                   <shadow type="math_number">
                       <field name="NUM">1000</field>
                   </shadow>
               </value>
-          </block>
+          </block>-->
           <block type="controls_pass"></block>
           <block type="controls_if"></block>
           <block type="controls_range">
@@ -491,8 +511,18 @@ function init() {
                       </value>
                   </block>
               </value>
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">i</field>
+                </shadow>
+          </value>
           </block>
-          <block type="controls_whileUntil"></block>
+          <block type="controls_whileUntil">
+	        <value name="BOOL">
+	          <shadow type="logic_boolean">
+	          </shadow>
+	        </value>
+	      </block>
           <block type="controls_try_finally"></block>
       <!--0    <block type="controls_repeat_ext">
               <value name="TIMES">
@@ -501,52 +531,10 @@ function init() {
                   </shadow>
               </value>
           </block>-->
-          <block type="controls_thread">
-            <value name="callback">
-              <shadow type="factory_block_return">
-                <field name="VALUE">testThread</field>
-              </shadow>
-            </value>
-            <value name="VAR">
-              <block type="tuple_create_with_noreturn" inline="true">
-                <mutation items="0"></mutation>
-              </block>
-            </value>
-          </block>
-          <block type="procedures_defnoreturn" inline="false">
-            <field name="NAME">testThread</field>
-            <statement name="STACK">
-              <block type="controls_whileUntil">
-                <field name="MODE">WHILE</field>
-                <value name="BOOL">
-                  <block type="logic_boolean">
-                    <field name="BOOL">TRUE</field>
-                  </block>
-                </value>
-                <statement name="DO">
-                  <block type="system_print" inline="false">
-                    <value name="VAR">
-                      <block type="text">
-                        <field name="TEXT">Hello Mixly from Thread!</field>
-                      </block>
-                    </value>
-                    <next>
-                      <block type="controls_delay">
-                        <field name="Time">ms</field>
-                        <value name="DELAY_TIME">
-                          <block type="math_number">
-                            <field name="NUM">10</field>
-                          </block>
-                        </value>
-                      </block>
-                    </next>
-                  </block>
-                </statement>
-              </block>
-            </statement>
-          </block>
+
           <block type="controls_flow_statements"></block>
           <block type="controls_millis"></block>
+		  <block type="time_localtime"></block>
        <!--   <block type="Panic_with_status_code">
             <value name="STATUS_CODE">
                   <shadow type="math_number">
@@ -555,10 +543,11 @@ function init() {
               </value>
           </block>
           <block type="reset"></block>-->
-          
-      </category>
-          <category id="catMath" colour="230">
+
+    </category>
+    <category id="catMath" colour="230">
       <block type="math_number"></block>
+      <block type="math_constant"></block>
       <block type="math_arithmetic">
         <value name="A">
           <shadow type="math_number">
@@ -674,6 +663,23 @@ function init() {
       </category>
       <category id="catLogic" colour="210">
         <block type="logic_compare"></block>
+        <block type="logic_compare_continous">
+          <value name="A">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="B">
+            <shadow type="variables_get">
+              <field name="VAR">x</field>
+            </shadow>
+          </value>
+          <value name="C">
+            <shadow type="math_number">
+              <field name="NUM">2</field>
+            </shadow>
+          </value>
+        </block>
         <block type="logic_operation"></block>
         <block type="logic_negate"></block>
         <block type="logic_boolean"></block>
@@ -691,12 +697,47 @@ function init() {
             </shadow>
           </value>
         </block>
+        <block type="logic_is">
+          <value name="A">
+            <shadow type="list_many_input">
+              <field name="CONTENT">0,1,2,3</field>
+            </shadow>
+          </value>
+          <value name="B">
+            <shadow type="list_many_input">
+              <field name="CONTENT">0,1,2,3</field>
+            </shadow>
+          </value>
+        </block>
       </category>
       <category id="catText" colour="160">
         <block type="text">
           <field name="TEXT">Mixly</field>
         </block>
-        <block type="text_format">
+        <block type="text_textarea">
+        </block>
+        <block type="text_format_noreturn">
+          <mutation items="1"></mutation>
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Random No. is {}</field>
+            </shadow>
+          </value>
+          <value name="ADD0">
+            <block type="math_random">
+              <field name="TYPE">int</field>
+              <value name="FROM">
+                <shadow type="math_number">
+                  <field name="NUM">1</field>
+                </shadow>
+              </value>
+              <value name="TO">
+                <shadow type="math_number">
+                  <field name="NUM">100</field>
+                </shadow>
+              </value>
+            </block>
+          </value>
         </block>
         <block type="text_join">
           <value name="A">
@@ -710,85 +751,14 @@ function init() {
             </shadow>
           </value>
         </block>
-        <block type="text_to_number">
+        <block type="text_to_number_skulpt">
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">123</field>
             </shadow>
           </value>
         </block>
-         <block type="text_capital">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_center">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
-            </shadow>
-          </value>
-          <value name="WID">
-            <shadow type="math_number">
-              <field name="NUM">50</field>
-            </shadow>
-          </value>
-          <value name="Symbol">
-            <shadow type="text">
-              <field name="TEXT">*</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_find">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
-            </shadow>
-          </value>
-          <value name="STR">
-            <shadow type="text">
-              <field name="TEXT">l</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_replace">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Hello,mixly</field>
-            </shadow>
-          </value>
-          <value name="STR1">
-            <shadow type="text">
-              <field name="TEXT">mixly</field>
-            </shadow>
-          </value>
-          <value name="STR2">
-            <shadow type="text">
-              <field name="TEXT">mixpy</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_split">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">I love mixly！</field>
-            </shadow>
-          </value>
-          <value name="VAL">
-            <shadow type="text">
-              <field name="TEXT"> </field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_strip">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block>
+
 
         <block type="ascii_to_char">
           <value name="VAR">
@@ -812,25 +782,6 @@ function init() {
           </value>
         </block>
         <block type="text_length">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_split">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">I love mixly！</field>
-            </shadow>
-          </value>
-          <value name="VAL">
-            <shadow type="text">
-              <field name="TEXT"> </field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_strip">
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
@@ -882,6 +833,90 @@ function init() {
           <value name="AT2">
             <shadow type="math_indexer_number">
               <field name="NUM">2</field>
+            </shadow>
+          </value>
+        </block>
+         <block type="text_capital">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Hello,mixly</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_center">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Hello,mixly</field>
+            </shadow>
+          </value>
+          <value name="WID">
+            <shadow type="math_number">
+              <field name="NUM">50</field>
+            </shadow>
+          </value>
+          <value name="Symbol">
+            <shadow type="text">
+              <field name="TEXT">*</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_find">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Hello,mixly</field>
+            </shadow>
+          </value>
+          <value name="STR">
+            <shadow type="text">
+              <field name="TEXT">l</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_join_seq">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">--</field>
+            </shadow>
+          </value>
+          <value name="LIST">
+            <shadow type="variables_get">
+              <field name="VAR">mylist</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_replace">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Hello,mixly</field>
+            </shadow>
+          </value>
+          <value name="STR1">
+            <shadow type="text">
+              <field name="TEXT">mixly</field>
+            </shadow>
+          </value>
+          <value name="STR2">
+            <shadow type="text">
+              <field name="TEXT">mixpy</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_split">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">I love mixly！</field>
+            </shadow>
+          </value>
+          <value name="VAL">
+            <shadow type="text">
+              <field name="TEXT"> </field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_strip">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">  I love mixly  </field>
             </shadow>
           </value>
         </block>
@@ -1029,7 +1064,7 @@ function init() {
               </shadow>
             </value>
           </block>
-		  <block type="lists_clear">
+		      <block type="lists_clear">
             <value name="VAR">
               <shadow type="variables_get">
                 <field name="VAR">mylist</field>
@@ -1060,6 +1095,23 @@ function init() {
             </shadow>
           </value>
         </block>
+        <block type="tuple_get_sublist">
+            <value name="LIST">
+              <shadow type="variables_get">
+                <field name="VAR">mytup</field>
+              </shadow>
+            </value>
+            <value name="AT1">
+              <shadow type="math_indexer_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="AT2">
+              <shadow type="math_indexer_number">
+                <field name="NUM">2</field>
+              </shadow>
+            </value>
+          </block>
         <block type="tuple_length">
           <value name="TUP">
             <shadow type="variables_get">
@@ -1093,6 +1145,13 @@ function init() {
             </shadow>
           </value>
         </block>
+        <block type="tuple_get_random_item">
+            <value name="TUP">
+              <shadow type="variables_get">
+                <field name="VAR">mytup</field>
+              </shadow>
+            </value>
+          </block>
         <block type="tuple_change_to">
           <value name="VAR">
             <shadow type="variables_get">
@@ -1116,11 +1175,21 @@ function init() {
                   <field name="VAR">mydict</field>
                 </shadow>
               </value>
+            <value name="KEY">
+              <shadow type="text">
+                <field name="TEXT">key</field>
+              </shadow>
+            </value>
           </block>
           <block type="dicts_add_or_change">
             <value name="DICT">
               <shadow type="variables_get">
                 <field name="VAR">mydict</field>
+              </shadow>
+            </value>
+            <value name="KEY">
+              <shadow type="text">
+                <field name="TEXT">key</field>
               </shadow>
             </value>
             <value name="VAR">
@@ -1135,6 +1204,11 @@ function init() {
                 <field name="VAR">mydict</field>
               </shadow>
             </value>
+            <value name="KEY">
+              <shadow type="text">
+                <field name="TEXT">key</field>
+              </shadow>
+            </value>
           </block>
           <block type="dicts_pop">
             <value name="DICT">
@@ -1142,11 +1216,21 @@ function init() {
                 <field name="VAR">mydict</field>
               </shadow>
             </value>
+            <value name="KEY">
+              <shadow type="text">
+                <field name="TEXT">key</field>
+              </shadow>
+            </value>
           </block>
           <block type="dicts_setdefault">
             <value name="DICT">
               <shadow type="variables_get">
                 <field name="VAR">mydict</field>
+              </shadow>
+            </value>
+            <value name="KEY">
+              <shadow type="text">
+                <field name="TEXT">key</field>
               </shadow>
             </value>
             <value name="VAR">
@@ -1323,7 +1407,19 @@ function init() {
                   </shadow>
               </value>
           </block>
--          <block type="turtle_pos">
+          <block type="turtle_setxy">
+              <value name="TUR">
+                <shadow type="variables_get">
+                  <field name="VAR">tina</field>
+                </shadow>
+              </value>
+              <value name="VAR">
+                  <shadow type="math_number">
+                      <field name="NUM">50</field>
+                  </shadow>
+              </value>
+          </block>
+          <block type="turtle_pos_shape">
             <value name="TUR">
                 <shadow type="variables_get">
                   <field name="VAR">tina</field>
@@ -1392,6 +1488,18 @@ function init() {
                   <shadow type="math_number">
                       <field name="NUM">50</field>
                   </shadow>
+              </value>               
+          </block>
+          <block type="turtle_circle_advanced">
+              <value name="TUR">
+                <shadow type="variables_get">
+                  <field name="VAR">tina</field>
+                </shadow>
+              </value>
+              <value name="VAR">
+                  <shadow type="math_number">
+                      <field name="NUM">50</field>
+                  </shadow>
               </value>
                <value name="data">
                   <shadow type="math_number">
@@ -1420,11 +1528,32 @@ function init() {
                 </shadow>
               </value>
             <value name="VAR">
+                <shadow type="text">
+                  <field name="TEXT">Mixly!</field>
+                </shadow>
+            </value>
+          </block>
+          <block type="turtle_write_format_skulpt">
+            <value name="TUR">
+                <shadow type="variables_get">
+                  <field name="VAR">tina</field>
+                </shadow>
+              </value>
+            <value name="VAR">
                   <shadow type="text">
                       <field name="TEXT">Mixly!</field>
             </value>
+            <value name="FONTNAME">
+                  <shadow type="text">
+                      <field name="TEXT">Arial</field>
+            </value>
+            <value name="FONTNUM">
+                  <shadow type="math_number">
+                      <field name="NUM">8</field>
+                  </shadow>
+              </value>
           </block>
-       
+          
           <block type="turtle_pencolor">
             <value name="TUR">
                 <shadow type="variables_get">
@@ -1454,7 +1583,7 @@ function init() {
               </value>
             <value name="VAR">
                   <shadow type="text">
-                      <field name="TEXT">FF0000</field>
+                      <field name="TEXT">#FF0000</field>
                   </shadow>
               </value>
           </block>
@@ -1466,7 +1595,7 @@ function init() {
               </value>
             <value name="VAR">
                   <shadow type="text">
-                      <field name="TEXT">FF0000</field>
+                      <field name="TEXT">#FF0000</field>
                   </shadow>
               </value>
           </block>

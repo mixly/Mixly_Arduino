@@ -426,6 +426,8 @@ Blockly.MIXLY_ATTACHINTERRUPT_PIN='中断 管脚 #';
 Blockly.MIXLY_DETACHINTERRUPT_PIN = '取消中断 管脚 #';
 Blockly.MIXLY_ATTACHPININTERRUPT_PIN = '管脚中断 管脚 #';
 Blockly.MIXLY_DETACHPININTERRUPT_PIN = '取消管脚中断 管脚 #';
+Blockly.MIXLY_TX_PIN='Tx 管脚';
+Blockly.MIXLY_RX_PIN='Rx 管脚';
 Blockly.MIXLY_MODE='模式';
 Blockly.MIXLY_DO='执行';
 Blockly.MIXLY_BUILDIN_LED='内嵌LED灯';
@@ -442,6 +444,7 @@ Blockly.MIXLY_SERIAL_FLUSH='清空缓存区数据';
 Blockly.MIXLY_STEP='步长为';
 Blockly.MIXLY_TONE_PIN='播放声音 管脚 #';
 Blockly.MIXLY_FREQUENCY='频率';
+Blockly.MIXLY_CHANNEL='通道';
 Blockly.MIXLY_DURATION='持续时间';
 Blockly.MIXLY_NOTONE_PIN='结束声音 管脚 #';
 Blockly.MIXLY_BLOCKGROUP_CATEGORY='模块组';
@@ -555,6 +558,7 @@ Blockly.MIXLY_SETUP='初始化';
 Blockly.MIXLY_WARNING_INTERRUPT='该管脚号不能作为中断';
 Blockly.MIXLY_CHAOSHENGBO='超声波测距(cm) ';
 Blockly.MIXLY_MB_CHAOSHENGBO='超声波测距';
+Blockly.MIXLY_WEIGHTSENSOR='称重模块';
 Blockly.MIXLY_IR_RECEIVE_YES='有信号';
 Blockly.MIXLY_IR_RECEIVE_NO='无信号';
 Blockly.LANG_VARIABLES_SET_TITLE='赋值为';
@@ -740,8 +744,9 @@ var MSG = {
   catGroup: "通信",
   catStorage:"存储",
   catSensor: "传感器",
+  catMusic: "音乐",
   catActuator: "执行器",
-  catMonitor:"显示器",
+  catMonitor:"显示",
   catVar: "变量",
   catFun: "函数",
   catEthernet:"以太网",
@@ -981,6 +986,7 @@ Blockly.TO_SPI_SLAVE_PIN='向SPI从机#';
 Blockly.SPI_TRANSFER='传输';
 
 Blockly.MIXLY_SERIAL_BEGIN='波特率';
+Blockly.MIXLY_SERIALBT_BEGIN='初始化';
 
 //stepper
 Blockly.MIXLY_STEPPER='步进电机';
@@ -1083,13 +1089,22 @@ Blockly.Msg.num2 = "数字2";
 Blockly.Msg.num3 = "数字3";
 Blockly.Msg.num4 = "数字4";
 // RGB
+Blockly.MIXLY_RGB_INIT = 'RGB灯初始化';
+Blockly.MIXLY_RGB_SET_BRIGHTNESS = 'RGB灯设置亮度';
+Blockly.MIXLY_RGB_SET_COLOUR = 'RGB灯设置颜色';
+Blockly.MIXLY_RGB_SHOW = 'RGB灯设置生效';
+Blockly.MIXLY_RGB_BRIGHTNESS = '亮度';
 Blockly.MIXLY_RGB = 'RGB灯';
 Blockly.MIXLY_RGB_NUM = '灯号';
 Blockly.MIXLY_RGB_COUNT = '灯数';
 Blockly.MIXLY_RGB_R = 'R值';
 Blockly.MIXLY_RGB_G = 'G值';
 Blockly.MIXLY_RGB_B = 'B值';
-
+Blockly.MIXLY_RGBdisplay_rgb_rainbow1='七彩变换切换时间';
+Blockly.MIXLY_RGBdisplay_rgb_rainbow2='七彩循环切换时间';
+Blockly.MIXLY_RGB_DISPLAY_RAINBOW_TYPE_1='普通';
+Blockly.MIXLY_RGB_DISPLAY_RAINBOW_TYPE_2='渐变';
+Blockly.MIXLY_RGB_display_rgb_rainbow3='彩虹值';
 //四位数码管
 Blockly.MIXLY_4DIGITDISPLAY = '四位数码管';
 Blockly.MIXLY_4DIGITDISPLAY_DISPLAYSTRING = '显示字符串';
@@ -1098,6 +1113,10 @@ Blockly.MIXLY_4DIGITDISPLAY_NOMBER2 = '个';
 Blockly.MIXLY_4DIGITDISPLAY_DOT = '小数点';
 Blockly.MIXLY_4DIGITDISPLAY_ON = '亮';
 Blockly.MIXLY_4DIGITDISPLAY_OFF = '灭';
+Blockly.MIXLY_0DEGREE='0度';
+Blockly.MIXLY_90DEGREE='90度';
+Blockly.MIXLY_180DEGREE='180度';
+Blockly.MIXLY_270DEGREE='270度';
 
 //MAX7219
 Blockly.MIXLY_MAX7219_INIT_NUM='点阵模块数量';
@@ -1520,7 +1539,8 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_WRITE = "写入文件";
 
 Blockly.MIXLY_MICROBIT_PY_STORAGE_FROM_FILE = '从文件';
 Blockly.MIXLY_MICROBIT_PY_STORAGE_NO_MORE_THAN_SIZE = "读取内容 不超过";
-Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE_NO_MORE_THAN_SIZE = "读取一行内容 不超过"
+Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE_NO_MORE_THAN_SIZE = "读取一行内容 不超过";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES_NO_MORE_THAN_SIZE = "读取所有行内容 不超过";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_CHARACTER = "字符";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE = "文件";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_CAN_WRITE_ORNOT = "是否可写";
@@ -1531,6 +1551,25 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_LIST_ALL_FILES = "列出所有文件";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_DELETE_FILE = "删除文件";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_GET_FILE_SIZE = "获得文件";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_SIZE = "大小";
+
+Blockly.MIXLY_MICROBIT_PY_STORAGE_RETURN_FILE = "返回文件";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_PRESENT_LOCATION = "当前读取的位置";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_TELL = "返回文件当前读取的位置";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_SET_FILE_POSITION = "设置文件";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_CURRENT_POSITION = "当前读取位置为";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_START = "从文件开头算起";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_CURRENT = "从文件当前位置算起";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_END = "从文件结尾算起";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_OFFSET = "偏移";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_CHANGE_DIR = '改变当前工作目录为';
+Blockly.MIXLY_MICROBIT_PY_STORAGE_GET_CURRENT_DIR = "获取当前工作目录";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_CREATE = "创建";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_MKDIR = "文件夹";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKEDIRS = "嵌套的文件夹";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_PATH = "根据目录";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_DELETE_DIRS = "递归删除目录";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_RENAME = "重命名文件";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_TO = "为";
 
 Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE = "数据类型";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME = "当前系统信息";
@@ -1773,8 +1812,8 @@ Blockly.MIXLY_MICROBIT_IMAGE_HEIGHT="高度";
 Blockly.MIXLY_MICROBIT_IMAGE_WIDTH="宽度";
 Blockly.MIXLY_MICROBIT_IMAGE="图像";
 Blockly.MIXLY_MICROBIT_Reset_COMPASS="恢复指南针初始设置";
-Blockly.blockpy_turtle_pencolor_hex='设置画笔颜色为十六进制 #';
-Blockly.blockpy_turtle_fillcolor_hex='设置画笔填充颜色为十六进制 #';
+Blockly.blockpy_turtle_pencolor_hex='设置画笔颜色为十六进制';
+Blockly.blockpy_turtle_fillcolor_hex='设置画笔填充颜色为十六进制';
 Blockly.blockpy_SET_GET_AND_REMOVE_LAST='获取并删除集合中随机一项';
 Blockly.MIXLY_blockpy_set_update='拆分增加';
 Blockly.Msg.SET_TO_LISTS_TOOLTIP = "将集合转化为列表";
@@ -2288,3 +2327,206 @@ Blockly.MIXLY_MICROPYTHON_SOCKET_CONNECT_TO_ADDRESS='连接到地址';
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CONNECT_TOOLTIP="将套接字连接到网络地址";
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE="获取激活状态";
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE_TOOLTIP="获取指定网络的激活状态";
+
+Blockly.MIXLY_ESP32_IOT_ONENET_PRINT_DATA="打印数据";
+Blockly.MIXLY_PYTHON_LOGIC_COMPARE_CONTINOUS_TOOLTIP = "如果中间项同时满足左右两个不等式则返回真，否则返回假";
+Blockly.MIXLY_PYTHON_LOGIC_IS = "是";
+Blockly.MIXLY_PYTHON_LOGIC_IS_TOOLTIP = "判断两者是否为同一对象，是同一对象则返回真，否则返回假";
+Blockly.MIXLY_PYTHON_INOUT_PRINT_END_TOOLTIP = "打印指定的文字、数字或其他值，以指定的内容为结尾。";
+Blockly.MIXLY_PYTHON_MATH_CONSTANT = "常数";
+Blockly.MIXLY_PYTHON_MATH_CONSTANT_PI_TOOLTIP = "圆周率常数的近似值（保留小数点后15位）";
+Blockly.MIXLY_PYTHON_MATH_CONSTANT_E_TOOLTIP = "自然常数的近似值（保留小数点后15位）";
+Blockly.MIXLY_ESP32_DISPLAY_ANIMATE = "内置动画";
+////////blynk////////////////////////////
+Blockly.blynk_IOT_AUTH='Blynk授权码';
+Blockly.blynk_WIFI_SSID='Wi-Fi名称';
+Blockly.blynk_WIFI_PASS='Wi-Fi密码';
+Blockly.blynk_IOT_GET_DATA='从App获取数据 虚拟管脚';
+Blockly.blynk_IOT_PUSH_DATA='发送数据到App';
+Blockly.blynk_IOT_DATA='数据';
+Blockly.BLYNK_VIRTUALPIN='虚拟管脚';
+Blockly.blynk_SERVER_INFO='服务器信息';
+Blockly.blynk_SERVER_ADD='服务器地址';
+Blockly.blynk_IOT_DATA_TYPE='数据类型';
+Blockly.blynk_IOT_INT='整型';
+Blockly.blynk_IOT_STRING='字符串';
+Blockly.blynk_IOT_DOUBLE='浮点型';
+Blockly.blynk_IOT_VAR_NAME='变量名';
+
+Blockly.blynk_TIMER='Blynk定时器';
+Blockly.blynk_IOT_WidgetLED='LED组件 虚拟管脚';
+Blockly.blynk_IOT_WidgetLED_ON='开';
+Blockly.blynk_IOT_WidgetLED_OFF='关';
+Blockly.blynk_iot_WidgetLED_COLOR='颜色';
+Blockly.blynk_IOT_WidgetLED_VALUE='亮度';
+Blockly.blynk_IOT_IR_SEND='红外控制空调 品牌';
+Blockly.blynk_IOT_ON='开';
+Blockly.blynk_IOT_OFF='关';
+Blockly.blynk_IOT_GREE='格力';
+Blockly.blynk_IOT_MIDEA='美的';
+Blockly.blynk_IOT_FAN='送风';
+Blockly.blynk_IOT_HEAT= '制热';
+Blockly.blynk_IOT_COOL='制冷';
+Blockly.blynk_IOT_DRY='抽湿';
+Blockly.blynk_IOT_AUTO='自动';
+Blockly.blynk_IOT_FAN_3='高速';
+Blockly.blynk_IOT_FAN_2='中速';
+Blockly.blynk_IOT_FAN_1='低速';
+Blockly.blynk_IOT_FAN_0='自动';
+Blockly.blynk_IOT_IR_MODE='模式';
+Blockly.blynk_IOT_IR_FAN='风速';
+Blockly.blynk_IOT_IR_TEMP='温度';
+Blockly.blynk_IOT_IR_POWER='电源';
+
+Blockly.blynk_IOT_IR_RECEIVE_RAW='红外信号解码 管脚';
+Blockly.blynk_IOT_IR_SEND='红外发送 管脚';
+Blockly.blynk_IOT_IR_SEND_CODE='编码内容';
+
+
+//OLED
+Blockly.OLED = 'OLED';
+Blockly.OLEDGET = '获取OLED';
+Blockly.OLED_CLEAR='OLED清屏';
+Blockly.OLED_HEIGHT = '高度';
+Blockly.OLED_WIDTH = '宽度';
+Blockly.OLED_DRAWPIXE = '画点';
+Blockly.OLED_POSX = 'x坐标';
+Blockly.OLED_POSY = 'y坐标';
+Blockly.OLED_PAGE = '页面';
+Blockly.OLED_DRAWLINE = '画线';
+Blockly.OLED_START_X = '起点x';
+Blockly.OLED_START_Y = '起点y';
+Blockly.OLED_END_X = '终点x';
+Blockly.OLED_END_Y = '终点y';
+Blockly.OLED_HOR = '水平';
+Blockly.OLED_VER = '垂直';
+Blockly.OLED_LENGTH = '长度';
+Blockly.OLED_DRAW_TRIANGLE = '画三角形';
+Blockly.OLED_D0_X = 'A点x';
+Blockly.OLED_D0_Y = 'A点y';
+Blockly.OLED_D1_X = 'B点x';
+Blockly.OLED_D1_Y = 'B点y';
+Blockly.OLED_D2_X = 'C点x';
+Blockly.OLED_D2_Y = 'C点y';
+Blockly.OLED_D3_X = 'D点x';
+Blockly.OLED_D3_Y = 'D点y';
+Blockly.OLED_DRAW_RECTANGLE = '画矩形';
+Blockly.OLED_L_U_X = '左上角x';
+Blockly.OLED_L_U_Y = '左上角y';
+Blockly.OLED_DRAWSTRLINE = '画直线';
+Blockly.OLED_DRAW_RAD_RECTANGLE = '画圆角矩形';
+Blockly.OLED_RADIUS = '圆角半径';
+Blockly.OLED_CIRCLE_RADIUS = '半径';
+Blockly.OLED_DRAW_CIRCLE = '画圆';
+Blockly.OLED_CENTER_CIRCLE_X = '圆心x';
+Blockly.OLED_CENTER_CIRCLE_Y = '圆心y';
+Blockly.OLED_ELLIPSE_RADIUS_X = 'x方向半径';
+Blockly.OLED_ELLIPSE_RADIUS_Y = 'y方向半径';
+Blockly.OLED_DRAW_ELLIPSE = '画椭圆';
+Blockly.OLED_DRAWSTR = '显示字符串';
+Blockly.OLED_PRINT_VAR = '显示变量';
+Blockly.OLED_STRING = '内容';
+Blockly.OLED_SET_FONT = '设置字体';
+Blockly.oled_draw4Str = '显示多行文本';
+Blockly.oled_page_tooltip='新建OLED页面';
+Blockly.oled_setFont_tooltip='设置字体,小字体11px,中字体20px,大字体25px';
+Blockly.oled_print_tooltip='打印字符串变量值。';
+Blockly.OLED_DRAW_ELLIPSE_TOOLTIP='绘制椭圆，x范围(0~127),y范围(0~63)';
+Blockly.OLED_INIT='OLED初始化';
+Blockly.OLED_INIT2='OLED初始化(I2C)';
+Blockly.OLED_INIT2_TOOLTIP='接SPI接口';
+Blockly.OLED_INIT2_TOOLTIP='接IIC接口,A4 (SDA), A5 (SCL)';
+Blockly.OLED_SOLID='实心';
+Blockly.OLED_HOLLOW='空心';
+Blockly.OLED_WHOLE_CICILE='整圆';
+Blockly.OLED_UP_R='右上';
+Blockly.OLED_UP_L='左上';
+Blockly.OLED_LOW_R='右下';
+Blockly.OLED_LOW_L='左下';
+Blockly.OLED_normal='常规';
+Blockly.OLED_bold='加粗';
+Blockly.BIG='大';
+Blockly.MIDDLE='中';
+Blockly.SMALL='小';
+Blockly.OLED_DEGREE0='0度';
+Blockly.OLED_DEGREE90='90度';
+Blockly.OLED_DEGREE180='180度';
+Blockly.OLED_DEGREE270='270度';
+Blockly.OLED_BITMAP='显示图像(汉字)';
+Blockly.OLED_CN_HEIGHT='高度';
+Blockly.OLED_BITMAP_NAME='字模名称';
+Blockly.OLED_BITMAP_DATA='字模数据';
+Blockly.OLED_GET_HEIGHT_TOOLTIP='获取OLED的宽度或高度';
+Blockly.OLED_DEF_BMP_DATA_TOOLTIP='设置一个字模名称，将图像/汉字取模结果粘贴到字模数据中。';
+Blockly.OLED_SHOW_BMP_TOOLTIP='设置需要显示图像/汉字的坐标和它的宽高，再设置字模名称。';
+Blockly.OLED_DRAW_PIXE_TOOLTIP='设置坐标，在OLED上绘制点。';
+Blockly.OLED_DRAW_LINE_TOOLTIP='设置直线的起点和终点坐标，画出一条直线。';
+
+Blockly.blynk_EMAIL='发送邮件';
+Blockly.blynk_EMAIL_ADD='邮件地址';
+Blockly.blynk_EMAIL_SUBJECT='邮件主题';
+Blockly.blynk_EMAIL_CONTENT='邮件内容';
+
+Blockly.blynk_BRIDGE_AUTH='桥接授权码';
+Blockly.blynk_bridge_digitalWrite='桥接数字输出';
+Blockly.blynk_bridge_AnaloglWrite='桥接模拟输出';
+Blockly.BLYNK_BRIDGE_VIRTUALPIN='桥接虚拟管脚';
+
+Blockly.blynk_WidgetRTC_init='RTC组件初始化';
+Blockly.blynk_WidgetRTC_setSyncInterval='同步间隔';
+Blockly.blynk_WidgetRTC_mintues='分钟';
+Blockly.blynk_WidgetRTC_get_time='RTC组件获取';
+
+Blockly.blynk_iot_playmusic='播放音乐组件';
+
+
+Blockly.GD5800_MP3='GD5800 MP3模块';
+Blockly.MIXLY_MP3_PLAY='播放';
+Blockly.MIXLY_MP3_PAUSE='暂停';
+Blockly.MIXLY_MP3_NEXT='下一曲';
+Blockly.MIXLY_MP3_PREV='上一曲';
+Blockly.MIXLY_MP3_VOL_UP='音量加';
+Blockly.MIXLY_MP3_VOL_DOWN='音量减';
+
+Blockly.MIXLY_MP3_LOOP_MODE='循环模式';
+Blockly.MIXLY_MP3_LOOP_ALL='全部循环';
+Blockly.MIXLY_MP3_LOOP_FOLDER='文件夹内循环';
+Blockly.MIXLY_MP3_LOOP_ONE='单曲循环';
+Blockly.MIXLY_MP3_LOOP_RAM='随机播放';
+
+
+
+Blockly.MIXLY_MP3_EQ_MODE='音效';
+Blockly.MIXLY_MP3_EQ_NORMAL='普通';
+Blockly.MIXLY_MP3_EQ_POP='流行';
+Blockly.MIXLY_MP3_EQ_ROCK='摇滚';
+Blockly.MIXLY_MP3_EQ_JAZZ='爵士';
+Blockly.MIXLY_MP3_EQ_CLASSIC='古典';
+Blockly.MIXLY_MP3_EQ_BASS='低音';
+Blockly.MIXLY_MP3_VOL='音量';
+Blockly.MIXLY_MP3_PLAY_NUM='播放第';
+Blockly.blynk_NOTIFY_CONTENT='内容';
+Blockly.blynk_NOTIFY='发送通知';
+Blockly.blynk_USB_SERVER_INFO='USB连接模式';
+Blockly.IICSCAN='IIC设备地址查找';
+Blockly.blynk_smartconfig='一键配网';
+Blockly.blynk_QR='扫码学习';
+Blockly.blynk_terminal='终端组件显示';
+Blockly.blynk_IOT_terminal_get='从终端获取字符串';
+Blockly.blynk_VIDEOURL='视频流';
+Blockly.blynk_LIGHT='光线传感器组件';
+Blockly.blynk_GRAVITY='重力传感器组件';
+Blockly.blynk_ACC='加速度传感器组件';
+Blockly.blynk_ACC_tooltip='返回值范围-9~9。';
+Blockly.blynk_time_input_1='时间输入组件(简单)';
+Blockly.BLYNK_CONNECTED='硬件已连接';
+Blockly.BLYNK_APP_CONNECTED='APP已连接';
+Blockly.BLYNK_APP_DISCONNECTED='APP离线';
+Blockly.BLYNK_syncAll='同步所有管脚状态';
+Blockly.blynk_IOT_syncVirtual='同步虚拟管脚状态';
+
+Blockly.MAKER17_MOTOR_SPEED = '速度(-255~255)';
+Blockly.MAKER17_MOTORA = '电机A';
+Blockly.MAKER17_MOTORB = '电机B';
+Blockly.MAKER17_MOTOR_SPEED_PIN='速度管脚';
+Blockly.MAKER17_MOTOR_DIR_PIN='方向管脚';

@@ -89,7 +89,7 @@
 
   <link rel="stylesheet" type="text/css" href="color_mixpy_python_advance.css" />
   <!-- 过去index.html中的js代码都会被放到这个js中-->
-  <script src = "mixpy_init.js"></script>  
+  <script src = "mixpy_init.js"></script>
   <!-- ACE中字体放缩按钮样式-->
   <link rel="stylesheet" type="text/css" href="ACEfont.css" />
   <style type="text/css">
@@ -234,9 +234,21 @@
                   </shadow>
               </value>
           </block>
+          <block type="inout_print_end">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">Hello</field>
+                  </shadow>
+              </value>
+              <value name="END">
+                  <shadow type="text">
+                      <field name="TEXT">,</field>
+                  </shadow>
+              </value>
+          </block>
           <block type="inout_print_many">
           <mutation items="2"></mutation>
-          
+
           <value name="ADD0">
             <block type="text">
               <field name="TEXT">Hello</field>
@@ -247,11 +259,17 @@
               <field name="TEXT">Mixly</field>
             </block>
           </value>
-        </block>  
+        </block>
           <!-- <block type="raw_block"></block> -->
       </category>
       <category id="catControl" colour="120">
-          <block type="controls_end_program"></block>
+          <!--<block type="controls_end_program"></block>-->
+          <block type="controls_whileUntil">
+            <value name="BOOL">
+              <shadow type="logic_boolean">
+              </shadow>
+            </value>
+          </block>
           <block type="time_sleep">
               <value name="DELAY_TIME">
                   <shadow type="math_number">
@@ -301,13 +319,12 @@
                       </value>
                   </block>
               </value>
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">i</field>
+                </shadow>
+          </value>
           </block>
-          <block type="controls_whileUntil">
-	        <value name="BOOL">
-	          <shadow type="logic_boolean">
-	          </shadow>
-	        </value>
-	      </block>
           <block type="controls_try_finally"></block>
       <!--0    <block type="controls_repeat_ext">
               <value name="TIMES">
@@ -367,7 +384,7 @@
                   </shadow>
               </value>
       </block>
-      <block type="controls_millis"></block>
+      <!--<block type="controls_millis"></block>-->
       <block type="time_localtime"></block>
        <!--   <block type="Panic_with_status_code">
             <value name="STATUS_CODE">
@@ -381,11 +398,24 @@
     </category>
     <category id="catMath" colour="230">
       <block type="math_number"></block>
+      <block type="math_constant"></block>
       <block type="math_arithmetic">
         <value name="A">
           <shadow type="math_number">
             <field name="NUM">1</field>
           </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_selfcalcu">
+        <value name="A">
+          <shadow type="variables_get">
+              <field name="VAR">a</field>
+            </shadow>
         </value>
         <value name="B">
           <shadow type="math_number">
@@ -496,6 +526,23 @@
       </category>
       <category id="catLogic" colour="210">
         <block type="logic_compare"></block>
+        <block type="logic_compare_continous">
+          <value name="A">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="B">
+            <shadow type="variables_get">
+              <field name="VAR">x</field>
+            </shadow>
+          </value>
+          <value name="C">
+            <shadow type="math_number">
+              <field name="NUM">2</field>
+            </shadow>
+          </value>
+        </block>
         <block type="logic_operation"></block>
         <block type="logic_negate"></block>
         <block type="logic_boolean"></block>
@@ -513,10 +560,24 @@
             </shadow>
           </value>
         </block>
+        <block type="logic_is">
+          <value name="A">
+            <shadow type="list_many_input">
+              <field name="CONTENT">0,1,2,3</field>
+            </shadow>
+          </value>
+          <value name="B">
+            <shadow type="list_many_input">
+              <field name="CONTENT">0,1,2,3</field>
+            </shadow>
+          </value>
+        </block>
       </category>
       <category id="catText" colour="160">
         <block type="text">
           <field name="TEXT">Mixly</field>
+        </block>
+        <block type="text_textarea">
         </block>
         <block type="text_format_noreturn">
           <mutation items="1"></mutation>
@@ -1191,6 +1252,25 @@
             </shadow>
           </value>
         </block>
+        <block type="storage_file_tell">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_file_seek">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+          <value name="SIZE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
         <block type="storage_can_write_ornot">
           <value name="FILE">
             <shadow type="variables_get">
@@ -1213,10 +1293,37 @@
           </value>
         </block>
         <block type="storage_list_all_files"> </block>
+        <block type="storage_get_current_dir"> </block>
+        <block type="storage_change_dir">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">path</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_make_dir">
+          <value name="PATH">
+            <shadow type="text">
+              <field name="TEXT">path</field>
+            </shadow>
+          </value>
+        </block>
         <block type="storage_delete_file">
           <value name="FILE">
             <shadow type="text">
               <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_rename">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">srcname.txt</field>
+            </shadow>
+          </value>
+          <value name="NEWFILE">
+            <shadow type="text">
+              <field name="TEXT">dstname.txt</field>
             </shadow>
           </value>
         </block>
@@ -1367,7 +1474,7 @@
                       <field name="NUM">10</field>
                   </shadow>
               </value>
-          </block>          
+          </block>
           <block type="turtle_circle">
               <value name="TUR">
                 <shadow type="variables_get">
@@ -1378,7 +1485,7 @@
                   <shadow type="math_number">
                       <field name="NUM">50</field>
                   </shadow>
-              </value>               
+              </value>
           </block>
           <block type="turtle_circle_advanced">
               <value name="TUR">
@@ -1411,7 +1518,7 @@
                 </shadow>
               </value>
           </block>
-          <block type="turtle_numinput">            
+          <block type="turtle_numinput">
             <value name="TITLE">
                 <shadow type="text">
                   <field name="TEXT">NUM</field>
@@ -1438,7 +1545,7 @@
                   </shadow>
             </value>
           </block>
-          <block type="turtle_textinput">            
+          <block type="turtle_textinput">
             <value name="TITLE">
                 <shadow type="text">
                   <field name="TEXT">Input your name</field>
@@ -1575,7 +1682,7 @@
                 <shadow type="variables_get">
                   <field name="VAR">mydict</field>
                 </shadow>
-              </value>            
+              </value>
             <value name="INDEX">
               <shadow type="list_many_input">
                 <field name="CONTENT">'a','b','c','d'</field>

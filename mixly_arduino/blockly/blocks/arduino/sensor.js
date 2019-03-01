@@ -84,7 +84,7 @@ Blockly.Blocks.chaoshengbo2 = {
     }
 };
 
-//DHT11´«¸ÐÆ÷
+//DHT11温湿度传感器
 Blockly.Blocks.dht11 = {
     init: function () {
         var WHAT = [[Blockly.MIXLY_DHT11_T, 'temperature'], [Blockly.MIXLY_DHT11_H, 'humidity']];
@@ -118,7 +118,7 @@ Blockly.Blocks.LM35 = {
     this.setTooltip(Blockly.MIXLY_TOOLTIP_LM35);
   }
 };
-//DS18B20ÎÂ¶È´«¸ÐÆ÷
+//DS18B20温度传感器
 Blockly.Blocks.ds18b20 = {
     init: function () {
         var UNIT = [[Blockly.MIXLY_DS18B20_C, '0'], [Blockly.MIXLY_DS18B20_F, '1']];
@@ -133,7 +133,23 @@ Blockly.Blocks.ds18b20 = {
         this.setTooltip(Blockly.MIXLY_TOOLTIP_DS18);
     }
 };
-
+//DF称重模块
+Blockly.Blocks.weightSensor = {
+  init: function () {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_WEIGHTSENSOR);
+    this.appendValueInput("PIN1", Number)
+    .appendField('Dout#')
+    .setCheck(Number);
+    this.appendValueInput("PIN2", Number)
+    .appendField('SCK#')
+    .setCheck(Number);
+    this.setInputsInline(true);
+    this.setOutput(true, Number);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_WEIGHTSENSOR);
+  }
+};
 //DS1302 RTC
 Blockly.Blocks.DS1302_init = {
     init: function () {

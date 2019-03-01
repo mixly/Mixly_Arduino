@@ -1536,3 +1536,102 @@ Blockly.Blocks['display_fill'] = {
     });
     }
 };
+
+Blockly.Blocks.display_tm_use_i2c_init = {
+    init: function () {
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.appendValueInput('I2CSUB')
+            .appendField(Blockly.Msg.CONTROLS_FOR_INPUT_WITH+"I2C")
+            .setCheck("var");
+        this.appendValueInput('SUB')
+            .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE)
+            .setCheck("var");
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_SETUP + Blockly.Msg.LISTS_SET_INDEX_INPUT_TO)
+            .appendField(new Blockly.FieldDropdown([
+                // ["MPU9250", "MPU9250"],
+                // ["TM1637", "TM1637"],
+                ["TM1650", "TM1650"]
+                ]), "key");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('key');
+        var mode0 = Blockly.MIXLY_ESP32_SENSOR_USE_I2C_TOOLTIP;
+        var mode1 = Blockly.MIXLY_ESP32_NEAR;
+        var TOOLTIPS = {
+        // "MPU9250": "MPU9250",
+        // "TM1637": "TM1637",
+        "TM1650": "TM1650"
+      };
+      return mode0 +TOOLTIPS[mode]
+    });
+    }
+};
+
+Blockly.Blocks.display_tm1650_power = {
+    init: function () {
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_4DIGITDISPLAY)
+            .appendField(new Blockly.FieldDropdown([["TM1650", "tm1650"]]), "TYPE");
+        this.appendValueInput("VAR")
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_LCD_STAT_ON, "_on"], [Blockly.MIXLY_LCD_STAT_OFF, "_off"], [Blockly.MIXLY_LCD_STAT_CLEAR, "_clear"]]), "STAT");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_4digitdisplay_power);
+    }
+};
+
+Blockly.Blocks.display_tm1650_show_num = {
+    init: function () {
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_4DIGITDISPLAY)
+            .appendField(new Blockly.FieldDropdown([["TM1650", "tm1650"]]), "TYPE");
+        this.appendValueInput("VAR")
+        this.appendValueInput("VALUE")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_NOVA_DISPLAY_NUMBER);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        // this.setTooltip(Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString);
+    }
+};
+
+Blockly.Blocks.display_tm1650_show_dot = {
+    init: function () {
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_4DIGITDISPLAY)
+            .appendField(new Blockly.FieldDropdown([["TM1650", "tm1650"]]), "TYPE");
+        this.appendValueInput("VAR")
+        this.appendValueInput("NO")
+            .appendField(Blockly.MIXLY_4DIGITDISPLAY_NOMBER1)
+        this.appendValueInput("STAT")
+            .appendField(Blockly.MIXLY_4DIGITDISPLAY_NOMBER2 + Blockly.MIXLY_4DIGITDISPLAY_DOT)
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot);
+    }
+};
+
+Blockly.Blocks['display_animate'] = {
+  init: function() {
+    var ANIMATE =
+        [["ALL_CLOCKS", 'ALL_CLOCKS'],
+         ["ALL_ARROWS", 'ALL_ARROWS']];
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.setOutput(true, 'Tuple');
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_ESP32_DISPLAY_ANIMATE)
+        .appendField(new Blockly.FieldDropdown(ANIMATE), 'ANIMATION')        
+    //this.setTooltip(Blockly.Msg.LOGIC_BOOLEAN_TOOLTIP);
+  }
+};

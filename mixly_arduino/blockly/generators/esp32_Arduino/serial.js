@@ -11,6 +11,18 @@ Blockly.Arduino.serial_begin = function () {
     return '';
 };
 
+Blockly.Arduino.serialBT_begin = function () {
+     var serial_select = this.getFieldValue('serial_select');
+    var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || profile.default.serial;
+    Blockly.Arduino.setups_['setup_serial_' + serial_select + profile.default.serial] = serial_select + '.begin(' + content + ');';
+    if(serial_select=='SerialBT')
+    {
+        Blockly.Arduino.definitions_['include_BluetoothSerial.h'] = '#include "BluetoothSerial.h"';
+       Blockly.Arduino.definitions_['BluetoothSerial'] = 'BluetoothSerial SerialBT;';
+    }
+    return '';
+};
+
 Blockly.Arduino.serial_write = function () {
     var serial_select = this.getFieldValue('serial_select');
     var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '\"\"'

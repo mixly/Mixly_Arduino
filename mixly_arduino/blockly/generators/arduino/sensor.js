@@ -95,6 +95,14 @@ Blockly.Arduino.ds18b20 = function () {
     Blockly.Arduino.definitions_[funcName] = code;
     return ['ds18b20_' + dropdown_pin + '_getTemp(' + unit + ')', Blockly.Arduino.ORDER_ATOMIC];
 }
+Blockly.Arduino.weightSensor = function () {
+  var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['include_Hx711'] = '#include <Hx711.h>';
+  Blockly.Arduino.definitions_['Hx711_scale'] = 'Hx711 scale' + dropdown_pin1 + '_' + dropdown_pin2+" ("+dropdown_pin1+","+dropdown_pin2+");";
+  var code = ' scale' + dropdown_pin1 + '_' + dropdown_pin2+'.getGram()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+}
 //DS1302
 Blockly.Arduino.DS1302_init = function () {
     var RTCName = this.getFieldValue('RTCName');

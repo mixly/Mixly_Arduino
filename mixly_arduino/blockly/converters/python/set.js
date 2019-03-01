@@ -129,7 +129,7 @@ function setAddDiscard(mode){
 }
 
 pbc.objectFunctionD.get('add')['Set'] = setAddDiscard('add');
-pbc.objectFunctionD.get('discard')['Set'] = setAddDiscard('discart');
+pbc.objectFunctionD.get('discard')['Set'] = setAddDiscard('discard');
 
 
 function setSub(mode){

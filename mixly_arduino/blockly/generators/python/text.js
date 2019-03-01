@@ -38,6 +38,13 @@ Blockly.Python.text_to_number = function() {
   else return [towhat + "(" +  str  + ')', Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.text_to_number_skulpt = function() {
+  var towhat = this.getFieldValue('TOWHAT');
+  var str =Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
+  if (towhat == 'b') return ['' +   str + '.encode("utf-8")', Blockly.Python.ORDER_ATOMIC];
+  else return [towhat + "(" +  str  + ')', Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python.ascii_to_char = function () {
     var asciivalue = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '0'
     return ['chr(' + asciivalue+')', Blockly.Python.ORDER_ATOMIC];

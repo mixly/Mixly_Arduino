@@ -39,6 +39,28 @@ Blockly.Blocks['math_number'] = {
   }
 };
 
+Blockly.Blocks['math_constant'] = {  
+  init: function() {
+    this.setColour(Blockly.Blocks.math.HUE);
+    var constant =
+        [['π', 'pi'],['e', 'e']];    
+    this.appendDummyInput("")                
+        .appendField(Blockly.MIXLY_PYTHON_MATH_CONSTANT)  
+        .appendField(new Blockly.FieldDropdown(constant), 'CONSTANT')      
+     
+    this.setOutput(true, Number);
+    var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getFieldValue('CONSTANT');
+      var TOOLTIPS = {
+        'pi': Blockly.MIXLY_PYTHON_MATH_CONSTANT_PI_TOOLTIP,
+        'e': Blockly.MIXLY_PYTHON_MATH_CONSTANT_E_TOOLTIP
+      };
+      return TOOLTIPS[mode];
+    });
+
+  }
+};
 
 Blockly.Blocks['math_arithmetic'] = {
   /**
@@ -71,6 +93,45 @@ Blockly.Blocks['math_arithmetic'] = {
         'MULTIPLY': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_MULTIPLY,
         'DIVIDE': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_DIVIDE,
 		    'QUYU':Blockly.Msg.MATH_MODULO_TOOLTIP,
+        'ZHENGCHU':Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_DIVIDE,
+        'POWER': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_POWER
+      };
+      return TOOLTIPS[mode];
+    });
+  }
+};
+
+Blockly.Blocks['math_selfcalcu'] = {
+  /**
+   * Block for basic arithmetic operator.
+   * @this Blockly.Block
+   */
+  init: function() {
+    var OPERATORS =
+        [['+=', 'ADD'],
+         ['-=', 'MINUS'],
+         ['×=', 'MULTIPLY'],
+         ['÷=', 'DIVIDE'],
+         ['%=', 'QUYU'],
+         ['//=', 'ZHENGCHU'],
+         ['**=', 'POWER']];
+    
+    this.setColour(Blockly.Blocks.math.HUE);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.appendValueInput('A')
+    this.appendValueInput('B')
+        .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
+    this.setInputsInline(true);
+    var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getFieldValue('OP');
+      var TOOLTIPS = {
+        'ADD': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_ADD,
+        'MINUS': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_MINUS,
+        'MULTIPLY': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_MULTIPLY,
+        'DIVIDE': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_DIVIDE,
+        'QUYU':Blockly.Msg.MATH_MODULO_TOOLTIP,
         'ZHENGCHU':Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_DIVIDE,
         'POWER': Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_POWER
       };
@@ -341,6 +402,18 @@ Blockly.Blocks['math_indexer_number'] = {
     this.setOutput(true);
     this.setTooltip(Blockly.Msg.MATH_NUMBER_TOOLTIP);
   }
+};
+
+Blockly.Blocks['math_random_seed'] = {
+    init: function () {
+        this.setColour(Blockly.Blocks.math.HUE);
+        this.appendValueInput('NUM')
+            .setCheck(Number)
+            .appendField(Blockly.LANG_MATH_RANDOM_SEED);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_MATH_RANDOM_SEED);
+    }
 };
 
 Blockly.Blocks.base_map = Blockly.Blocks.math_map

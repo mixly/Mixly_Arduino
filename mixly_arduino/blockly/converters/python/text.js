@@ -224,7 +224,7 @@ function textAlign(mode){
         var argblock1 = py2block.convert(args[0]);
         var argblock2 = py2block.convert(args[1]);
         return block("text_center", func.lineno, {
-            'TEXT_CENTER': mode,
+            'CENTER': mode,
         }, {
             "VAR": objblock, 
             "WID": argblock1,

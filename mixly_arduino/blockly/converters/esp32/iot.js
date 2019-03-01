@@ -56,17 +56,34 @@ pbc.objectFunctionD.get('do_connect')['miot'] = function (py2block, func, args, 
 }
 
 pbc.objectFunctionD.get('publish')['miot'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length != 1) {
-        throw new Error("Incorrect number of arguments");
+    if (args.length == 1 && keywords.length == 1) {
+        var objblock = py2block.convert(func.value);
+        var nameblock = py2block.convert(args[0]);
+        var checkblock = py2block.Name_str(keywords[0].value);
+        return [block("iot_onenet_publish_dict", func.lineno, {
+                "is_print":checkblock
+            }, {
+                "VAR":objblock,
+                "DICT":nameblock
+            }, {
+                "inline": "true"
+            })];
     }
-    var objblock = py2block.convert(func.value);
-    var nameblock = py2block.convert(args[0]);
-    return [block("iot_onenet_publish_dict", func.lineno, {}, {
-            "VAR":objblock,
-            "DICT":nameblock
-        }, {
-            "inline": "true"
-        })];
+    else if(args.length == 2) {
+        var objblock = py2block.convert(func.value);
+        var nameblock = py2block.convert(args[0]);
+        var checkblock = py2block.Name_str(args[1]);
+        return [block("iot_onenet_publish_dict", func.lineno, {
+                "is_print":checkblock
+            }, {
+                "VAR":objblock,
+                "DICT":nameblock
+            }, {
+                "inline": "true"
+            })];
+    }
+    else
+        throw new Error("Incorrect number of arguments");
 }
 
 pbc.objectFunctionD.get('do_disconnect')['miot'] = function (py2block, func, args, keywords, starargs, kwargs, node) {

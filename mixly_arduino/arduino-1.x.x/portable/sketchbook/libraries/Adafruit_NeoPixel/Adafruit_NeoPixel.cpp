@@ -1521,6 +1521,9 @@ void Adafruit_NeoPixel::show(void) {
 
   interrupts();
   endTime = micros(); // Save EOD time for latch on next call
+  
+  //To solve partial WS2812B RGB, without delay, can't display problems
+  delayMicroseconds(500);
 }
 
 // Set the output pin number

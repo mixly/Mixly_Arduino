@@ -239,9 +239,9 @@ Blockly.Blocks.controls_forEach = {
     this.appendValueInput('LIST')
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT);
-    this.appendDummyInput()
+    this.appendValueInput('VAR')
         .appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT_ITEM)
-        .appendField(new Blockly.FieldTextInput('i'), 'VAR');
+    //    .appendField(new Blockly.FieldTextInput('i'), 'VAR');
     this.appendStatementInput('DO')
         .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_DO);
     this.setPreviousStatement(true);

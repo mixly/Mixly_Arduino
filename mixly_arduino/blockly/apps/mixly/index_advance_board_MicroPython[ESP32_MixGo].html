@@ -602,29 +602,34 @@
         </value>
       </block>
       <block type="controls_forEach">
-        <value name="LIST">
-          <shadow type="list_many_input">
-            <field name="CONTENT">0,1,2,3</field>
-          </shadow>
-          <block type="controls_range">
-            <value name="FROM">
-              <shadow type="math_number">
-                <field name="NUM">0</field>
-              </shadow>
-            </value>
-            <value name="TO">
-              <shadow type="math_number">
-                <field name="NUM">5</field>
-              </shadow>
-            </value>
-            <value name="STEP">
-              <shadow type="math_number">
-                <field name="NUM">1</field>
-              </shadow>
-            </value>
+              <value name="LIST">
+                  <shadow type="list_many_input">
+                      <field name="CONTENT">0,1,2,3</field>
+                  </shadow>
+                  <block type="controls_range">
+                      <value name="FROM">
+                          <shadow type="math_number">
+                              <field name="NUM">0</field>
+                          </shadow>
+                      </value>
+                      <value name="TO">
+                          <shadow type="math_number">
+                              <field name="NUM">5</field>
+                          </shadow>
+                      </value>
+                      <value name="STEP">
+                          <shadow type="math_number">
+                              <field name="NUM">1</field>
+                          </shadow>
+                      </value>
+                  </block>
+              </value>
+              <value name="VAR">
+                <shadow type="variables_get">
+                  <field name="VAR">i</field>
+                </shadow>
+          </value>
           </block>
-        </value>
-      </block>
       <block type="controls_try_finally"></block>
       <!--<block type="controls_lambda">
         <value name="BOOL">
@@ -642,6 +647,7 @@
         </shadow>
         </statement>
       </block> -->
+      <block type="controls_flow_statements"></block>
       <block type="controls_thread">
         <value name="callback">
           <shadow type="factory_block_return">
@@ -726,8 +732,7 @@
                  </value>
               </block>
           </statement>
-      </block>
-      <block type="controls_flow_statements"></block>
+      </block>      
       <block type="controls_millis"></block>
       <block type="system_ticks_diff">
         <value name="END">
@@ -745,11 +750,24 @@
     </category>
 	<category id="catMath" colour="230">
       <block type="math_number"></block>
+      <block type="math_constant"></block>
       <block type="math_arithmetic">
         <value name="A">
           <shadow type="math_number">
             <field name="NUM">1</field>
           </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_selfcalcu">
+        <value name="A">
+          <shadow type="variables_get">
+              <field name="VAR">a</field>
+            </shadow>
         </value>
         <value name="B">
           <shadow type="math_number">
@@ -792,6 +810,14 @@
         <value name="B">
           <shadow type="math_number">
             <field name="NUM">2</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_seed">
+        <value name="NUM">
+          <block type="controls_millis"></block>
+          <shadow type="math_number">
+            <field name="NUM">997</field>
           </shadow>
         </value>
       </block>
@@ -860,6 +886,23 @@
       </category>
       <category id="catLogic" colour="210">
         <block type="logic_compare"></block>
+        <block type="logic_compare_continous">
+          <value name="A">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="B">
+            <shadow type="variables_get">
+              <field name="VAR">x</field>
+            </shadow>
+          </value>
+          <value name="C">
+            <shadow type="math_number">
+              <field name="NUM">2</field>
+            </shadow>
+          </value>
+        </block>
         <block type="logic_operation"></block>
         <block type="logic_negate"></block>
         <block type="logic_boolean"></block>
@@ -869,6 +912,18 @@
           <value name="A">
             <shadow type="variables_get">
               <field name="VAR">x</field>
+            </shadow>
+          </value>
+          <value name="B">
+            <shadow type="list_many_input">
+              <field name="CONTENT">0,1,2,3</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="logic_is">
+          <value name="A">
+            <shadow type="list_many_input">
+              <field name="CONTENT">0,1,2,3</field>
             </shadow>
           </value>
           <value name="B">
@@ -2805,6 +2860,7 @@
         </block>-->
         <block type="display_image_create"></block>
         <block type="display_image_builtins"></block>
+        <block type="display_animate"></block>
         <block type="image_arithmetic">
           <value name="A">
             <shadow type="pins_builtinimg"></shadow>
@@ -2987,6 +3043,51 @@
           <value name="y2">
             <shadow type="math_number">
               <field name="NUM">40</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="display_tm_use_i2c_init">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">disp</field>
+            </shadow>
+          </value>
+          <value name="I2CSUB">
+            <shadow type="variables_get">
+              <field name="VAR">i2c</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="display_tm1650_power">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">disp</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="display_tm1650_show_num">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">disp</field>
+            </shadow>
+          </value>
+          <value name="VALUE">
+            <shadow type="math_number">
+              <field name="NUM">2333</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="display_tm1650_show_dot">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">disp</field>
+            </shadow>
+          </value>
+          <value name="NO">
+            <shadow type="pins_digital_dot"></shadow>
+          </value>
+          <value name="STAT">
+              <shadow type="display_onoff">
             </shadow>
           </value>
         </block>

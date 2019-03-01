@@ -79,6 +79,45 @@ Blockly.Blocks['logic_compare'] = {
   }*/
 };
 
+Blockly.Blocks['logic_compare_continous'] = {
+  
+  init: function() {
+    var OPERATORS1 = Blockly.RTL ? [          
+          ['>', 'LT'],
+          ['\u2265', 'LTE'],
+          ['<', 'GT'],
+          ['\u2264', 'GTE']
+        ] : [          
+          ['<', 'LT'],
+          ['\u2264', 'LTE'],
+          ['>', 'GT'],
+          ['\u2265', 'GTE']
+        ];
+    var OPERATORS2 = Blockly.RTL ? [          
+          ['>', 'LT'],
+          ['\u2265', 'LTE'],
+          ['<', 'GT'],
+          ['\u2264', 'GTE']
+        ] : [          
+          ['<', 'LT'],
+          ['\u2264', 'LTE'],
+          ['>', 'GT'],
+          ['\u2265', 'GTE']
+        ];    
+    //this.setHelpUrl(Blockly.Msg.LOGIC_COMPARE_HELPURL);
+    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setOutput(true, Boolean);
+    this.appendValueInput('A');
+    this.appendValueInput('B')
+        .appendField(new Blockly.FieldDropdown(OPERATORS1), 'OP1');
+    this.appendValueInput('C')
+        .appendField(new Blockly.FieldDropdown(OPERATORS2), 'OP2');    
+    this.setInputsInline(true);    
+    this.setTooltip(Blockly.MIXLY_PYTHON_LOGIC_COMPARE_CONTINOUS_TOOLTIP);
+    
+  }
+};
+
 Blockly.Blocks['logic_operation'] = {
   /**
    * Block for logical operations: 'and', 'or'.
@@ -189,5 +228,17 @@ Blockly.Blocks['logic_is_in'] = {
     this.setOutput(true, Boolean);
     this.setInputsInline(true);
     this.setTooltip(Blockly.Msg_IN);
+  }
+};
+
+Blockly.Blocks['logic_is'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.logic.HUE);
+    this.appendValueInput('A');
+    this.appendValueInput('B')
+        .appendField(Blockly.MIXLY_PYTHON_LOGIC_IS);    
+    this.setOutput(true, Boolean);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_PYTHON_LOGIC_IS_TOOLTIP);
   }
 };

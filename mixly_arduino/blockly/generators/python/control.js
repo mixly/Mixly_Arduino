@@ -177,8 +177,7 @@ Blockly.Python.controls_nointerrupts = function () {
 
 Blockly.Python['controls_forEach'] = function(block) {
   // For each loop.
-  var variable0 = Blockly.Python.variableDB_.getName(
-      block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+  var variable0 = Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC) || '\'\'';
   var argument0 = Blockly.Python.valueToCode(block, 'LIST',
       Blockly.Python.ORDER_RELATIONAL) || '[]';
   var branch = Blockly.Python.statementToCode(block, 'DO');

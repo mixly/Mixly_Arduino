@@ -209,3 +209,12 @@ Blockly.Blocks['pins_one_more'] = {
         this.setOutput(true);
     }
 };
+
+Blockly.Blocks['pins_digital_dot'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+            .appendField(new Blockly.FieldDropdown(profile.default.digital_dot), 'PIN');
+        this.setOutput(true, Number);
+    }
+};

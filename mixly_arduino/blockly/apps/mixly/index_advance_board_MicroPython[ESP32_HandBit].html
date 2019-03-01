@@ -1912,6 +1912,13 @@
             </shadow>
           </value>
         </block>
+        <block type="network_is_active">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">wlan</field>
+            </shadow>
+          </value>
+        </block>
         <block type="network_scan">
           <value name="VAR">
             <shadow type="variables_get">
@@ -2094,6 +2101,28 @@
               <value name="ADD0">
                 <block type="text">
                   <field name="TEXT">0.0.0.0</field>
+                </block>
+              </value>
+              <value name="ADD1">
+                <block type="math_number">
+                  <field name="NUM">80</field>
+                </block>
+              </value>
+            </block>
+          </value>
+        </block>
+        <block type="network_socket_connect">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">s</field>
+            </shadow>
+          </value>
+          <value name="address">
+           <block type="tuple_create_with_noreturn" inline="true">
+              <mutation items="2"></mutation>
+              <value name="ADD0">
+                <block type="text">
+                  <field name="TEXT">192.168.0.1</field>
                 </block>
               </value>
               <value name="ADD1">
@@ -2750,6 +2779,51 @@
           <value name="y2">
             <shadow type="math_number">
               <field name="NUM">40</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="display_tm_use_i2c_init">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">disp</field>
+            </shadow>
+          </value>
+          <value name="I2CSUB">
+            <shadow type="variables_get">
+              <field name="VAR">i2c</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="display_tm1650_power">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">disp</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="display_tm1650_show_num">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">disp</field>
+            </shadow>
+          </value>
+          <value name="VALUE">
+            <shadow type="math_number">
+              <field name="NUM">2333</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="display_tm1650_show_dot">
+          <value name="VAR">
+            <shadow type="variables_get">
+              <field name="VAR">disp</field>
+            </shadow>
+          </value>
+          <value name="NO">
+            <shadow type="pins_digital_dot"></shadow>
+          </value>
+          <value name="STAT">
+              <shadow type="display_onoff">
             </shadow>
           </value>
         </block>

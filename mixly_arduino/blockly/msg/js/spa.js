@@ -443,6 +443,7 @@ Blockly.MIXLY_SERIAL_FLUSH='flush';
 Blockly.MIXLY_STEP='paso';
 Blockly.MIXLY_TONE_PIN='Tono PIN#';
 Blockly.MIXLY_FREQUENCY='frecuencia';
+Blockly.MIXLY_CHANNEL='channel';
 Blockly.MIXLY_DURATION='duración';
 Blockly.MIXLY_NOTONE_PIN='apagaTono PIN#';
 Blockly.MIXLY_BLOCKGROUP_CATEGORY='BlockGroup';
@@ -986,7 +987,7 @@ Blockly.TO_SPI_SLAVE_PIN='To SPI Slave PIN#';
 Blockly.SPI_TRANSFER='transfer';
 
 Blockly.MIXLY_SERIAL_BEGIN='velocidad en baudios';
-
+Blockly.MIXLY_SERIALBT_BEGIN='init ';
 //stepper
 Blockly.MIXLY_STEPPER='Stepper';
 Blockly.MIXLY_STEPPER_SETUP_STEPPER='Setup Stepper';
@@ -2253,3 +2254,6 @@ Blockly.MIXLY_MICROPYTHON_SOCKET_CONNECT_TO_ADDRESS='Conexión a la dirección';
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CONNECT_TOOLTIP='Conecta el socket a la dirección de la red';
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE ="obtener el estado de activación";
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE_TOOLTIP ="obtiene el estado de activación de la red especificada";
+
+Blockly.MIXLY_ESP32_IOT_ONENET_PRINT_DATA="Los datos de impresión";
+Blockly.MIXLY_PYTHON_LOGIC_IS = "Es";

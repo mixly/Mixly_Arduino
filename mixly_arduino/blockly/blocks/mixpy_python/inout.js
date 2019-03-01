@@ -39,6 +39,20 @@ Blockly.Blocks['inout_print_inline'] = {
   }
 };
 
+Blockly.Blocks['inout_print_end'] = {
+  init: function() {
+    this.setColour(20);
+        this.appendValueInput("VAR")
+            .appendField(Blockly.blockpy_inout_print_inline);
+        this.appendValueInput("END")
+            .appendField(Blockly.MIXLY_ENDSWITH);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_PYTHON_INOUT_PRINT_END_TOOLTIP);
+  }
+};
+
 Blockly.Blocks['inout_type_input'] = {
   init: function() {
     

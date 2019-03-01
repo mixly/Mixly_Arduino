@@ -629,3 +629,39 @@ Blockly.Blocks['turtle_write_format'] = {
     this.setTooltip(Blockly.Msg.TURTLE_WRITE_TOOLTIP);    
   }
 };
+
+Blockly.Blocks['turtle_write_format_skulpt'] = {
+ init: function() {
+    var move =
+        [[Blockly.MIXLY_TURTLE_WRITE_MOVE_FALSE, 'False'],[Blockly.MIXLY_TURTLE_WRITE_MOVE_TRUE, 'True']];
+    var align =
+        [[Blockly.MIXLY_TURTLE_WRITE_ALIGN_LEFT, 'left'],[Blockly.MIXLY_TURTLE_WRITE_ALIGN_CENTER, 'center'],[Blockly.MIXLY_TURTLE_WRITE_ALIGN_RIGHT, 'right']];    
+    var fonttype =
+        [[Blockly.MIXLY_TURTLE_WRITE_FONT_TYPE_NORMAL, 'normal'],[Blockly.MIXLY_TURTLE_WRITE_FONT_TYPE_BOLD, 'bold'],[Blockly.MIXLY_TURTLE_WRITE_FONT_TYPE_ITALIC, 'italic']];
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('VAR')
+        .setCheck(String)
+        .appendField(Blockly.blockpy_turtle_write);  
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_TURTLE_WRITE_MOVE)
+        .appendField(new Blockly.FieldDropdown(move), 'MOVE');
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_TURTLE_WRITE_ALIGN)
+        .appendField(new Blockly.FieldDropdown(align), 'ALIGN');
+    this.appendValueInput('FONTNAME')
+        .setCheck(String)
+        .appendField(Blockly.MIXLY_TURTLE_WRITE_FONT_NAME);
+    this.appendValueInput('FONTNUM')
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_TURTLE_WRITE_FONT_NUM);
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_TURTLE_WRITE_FONT_TYPE)
+        .appendField(new Blockly.FieldDropdown(fonttype), 'FONTTYPE');                      
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.Msg.TURTLE_WRITE_TOOLTIP);    
+  }
+};

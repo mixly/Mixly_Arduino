@@ -278,3 +278,16 @@ Blockly.Python.turtle_write_format = function(block) {
   var code=varName+"." + 'write' + '(' + write + ',' + move + ',align="' + align + '",font=(' + fontname + ',' + fontnum + ',"' + fonttype + '"))\n';
   return code;
 };
+
+Blockly.Python.turtle_write_format_skulpt = function(block) {
+  Blockly.Python.definitions_.import_turtle = "import turtle";
+  var move = this.getFieldValue('MOVE');
+  var align = this.getFieldValue('ALIGN');
+  var fontname =  Blockly.Python.valueToCode(this, 'FONTNAME', Blockly.Python.ORDER_ATOMIC) ;
+  var fontnum = Blockly.Python.valueToCode(this, 'FONTNUM', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var fonttype = this.getFieldValue('FONTTYPE');
+  var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var write =  Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
+  var code=varName+"." + 'write' + '(' + write + ',' + move + ',align="' + align + '",font=(' + fontname + ',' + fontnum + ',"' + fonttype + '"))\n';
+  return code;
+};

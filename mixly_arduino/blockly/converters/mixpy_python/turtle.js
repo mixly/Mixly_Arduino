@@ -47,6 +47,8 @@ function turtleForwardBackward(mode){
     return converter;
 }
 
+pbc.objectFunctionD.get('fd')[turtleClass] = turtleForwardBackward('forward');
+pbc.objectFunctionD.get('bk')[turtleClass] = turtleForwardBackward('backward');
 pbc.objectFunctionD.get('forward')[turtleClass] = turtleForwardBackward('forward');
 pbc.objectFunctionD.get('backward')[turtleClass] = turtleForwardBackward('backward');
 
@@ -129,6 +131,15 @@ pbc.objectFunctionD.get('delay')[turtleClass] = function (py2block, func, args, 
 }
 
 pbc.moduleFunctionD.get('turtle')['done'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return [block("turtle_done", func.lineno, {}, {}, {
+            "inline": "true"
+        })];
+}
+
+pbc.moduleFunctionD.get('turtle')['mainloop'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 0) {
         throw new Error("Incorrect number of arguments");
     }

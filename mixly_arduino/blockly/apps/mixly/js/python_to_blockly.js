@@ -660,7 +660,7 @@ PythonToBlocks.prototype.Assign = function(node)
             }
         }else if(targets[0]._astname == "Subscript"){
             var valueAstname = targets[0].slice.value._astname;
-            if(valueAstname == "Str" || valueAstname == "Name") {
+            if(valueAstname == "Str") {
                 return block("dicts_add_or_change", targets.lineno, {}, {
                     "KEY": this.convert(targets[0].slice.value),
                     "DICT": this.convert(targets[0].value),
@@ -710,16 +710,13 @@ PythonToBlocks.prototype.AugAssign = function(node)
     var target = node.target;
     var op = node.op;
     var value = node.value;
-    if (op.name != "Add") {
-        //TODO
-        throw new Error("Only addition is currently supported for augmented assignment!");
-    } else {
-        return block("math_change", node.lineno, {
-            "VAR": this.Name_str(target)
+    return block("math_selfcalcu", node.lineno, {
+            "OP": this.binaryOperator(op)
         }, {
-            "DELTA": this.convert(value)
+            "A": this.convert(target),
+            "B": this.convert(value)
         });
-    }
+    
 }
 
 /*
@@ -778,9 +775,10 @@ PythonToBlocks.prototype.For = function(node) {
     }
 
     return block("controls_forEach", node.lineno, {
-        'VAR':this.Name_str(target)
+        
     }, {
-        "LIST": this.convert(iter)
+        "LIST": this.convert(iter),
+        'VAR':this.convert(target)
     }, {
         "inline": "true"
     }, {}, {
@@ -1407,9 +1405,32 @@ PythonToBlocks.prototype.Compare = function(node)
     var comparators = node.comparators;
 
     if (ops.length != 1) {
-        throw new Error("Only one comparison operator is supported");
+        if(ops.length == 2 && comparators.length == 2){
+            
+            return block("logic_compare_continous", node.lineno, {
+            "OP1": this.compareOperator(ops[0]),
+            "OP2": this.compareOperator(ops[1])
+        }, {
+            "A": this.convert(left),
+            "B": this.convert(comparators[0]),
+            "C": this.convert(comparators[1])
+        }, {
+            "inline": "true"
+        });
+        }
+        else{
+            throw new Error("Only one comparison operator is supported");
+        } 
     } else if (ops[0].name == "In_" || ops[0].name == "NotIn") {
         return block("logic_is_in", node.lineno, {
+        }, {
+            "A": this.convert(left),
+            "B": this.convert(comparators[0])
+        }, {
+            "inline": "true"
+        });
+    } else if (ops[0].name == "Is") {
+        return block("logic_is", node.lineno, {
         }, {
             "A": this.convert(left),
             "B": this.convert(comparators[0])
@@ -2158,8 +2179,14 @@ PythonToBlocks.prototype.List = function(node) {
         // return with one block & comma seperated 
         var valueList = [];
         var s = this.getSourceCode(elts).split('\n')[node.lineno-1];
+        var lt = s.indexOf('[',elts[0].col_offset)
+        var rt = s.indexOf(']',elts[0].col_offset)
+        while (lt != -1 && lt < rt){
+            var lt = s.indexOf('[',lt+1)
+            var rt = s.indexOf(']',rt+1)
+        }        
         if (s.length > 0){
-            s = s.substring(elts[0].col_offset,s.length-1);
+            s = s.substring(elts[0].col_offset,rt);
             valueList = s.split(",");
         }
         else
