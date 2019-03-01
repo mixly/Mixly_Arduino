@@ -1081,7 +1081,7 @@ Blockly.Msg.num4 = "數字4";
 // RGB
 Blockly.MIXLY_RGB_INIT = 'RGB燈初始化';
 Blockly.MIXLY_RGB_SET_BRIGHTNESS = 'RGB燈設置亮度';
-Blockly.MIXLY_RGB_SET_COLOR = 'RGB燈設置顏色';
+Blockly.MIXLY_RGB_SET_COLOUR = 'RGB燈設置顏色';
 Blockly.MIXLY_RGB_SHOW = 'RGB燈設置生效';
 Blockly.MIXLY_RGB_BRIGHTNESS = '亮度';
 Blockly.MIXLY_RGB = 'RGB燈';

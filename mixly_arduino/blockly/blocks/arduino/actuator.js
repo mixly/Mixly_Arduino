@@ -223,7 +223,7 @@ Blockly.Blocks.group_stepper_move={
 */
 Blockly.Blocks.display_rgb_init = {
     init: function () {
-        this.setColour(Blockly.Blocks.display.HUE);
+        this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_RGB_INIT)
         this.appendValueInput("PIN", Number)
@@ -244,7 +244,7 @@ Blockly.Blocks.display_rgb_init = {
 
 Blockly.Blocks.display_rgb_setBrightness = {
     init: function () {
-        this.setColour(Blockly.Blocks.display.HUE);
+        this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_RGB_SET_BRIGHTNESS)
         this.appendValueInput("PIN", Number)
@@ -264,9 +264,9 @@ Blockly.Blocks.display_rgb_setBrightness = {
 
 Blockly.Blocks.display_rgb = {
     init: function () {
-        this.setColour(Blockly.Blocks.display.HUE);
+        this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_RGB_SET_COLOR)
+            .appendField(Blockly.MIXLY_RGB_SET_COLOUR)
          this.appendValueInput("PIN", Number)
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -295,9 +295,9 @@ Blockly.Blocks.display_rgb = {
 };
 Blockly.Blocks.display_rgb2 = {
     init: function () {
-        this.setColour(Blockly.Blocks.display.HUE);
+        this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_RGB_SET_COLOR)
+            .appendField(Blockly.MIXLY_RGB_SET_COLOUR)
          this.appendValueInput("PIN", Number)
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -317,7 +317,7 @@ Blockly.Blocks.display_rgb2 = {
 
 Blockly.Blocks.display_rgb_show = {
     init: function () {
-        this.setColour(Blockly.Blocks.display.HUE);
+        this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_RGB_SHOW)
          this.appendValueInput("PIN", Number)
