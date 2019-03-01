@@ -442,6 +442,7 @@ Blockly.MIXLY_SERIAL_FLUSH='清空緩存區數據';
 Blockly.MIXLY_STEP='步長為';
 Blockly.MIXLY_TONE_PIN='播放聲音管脚#';
 Blockly.MIXLY_FREQUENCY='頻率';
+Blockly.MIXLY_CHANNEL='通道';
 Blockly.MIXLY_DURATION='持續時間';
 Blockly.MIXLY_NOTONE_PIN='結束聲音管脚#';
 Blockly.MIXLY_BLOCKGROUP_CATEGORY='模塊組';

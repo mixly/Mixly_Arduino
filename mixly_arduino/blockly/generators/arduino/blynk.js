@@ -191,6 +191,7 @@ Blockly.Arduino.Blynk_iot_timer = function () {
 
 return "timer.run();\n";
 };
+
 //blynk 硬件已连接
 Blockly.Arduino.Blynk_iot_BLYNK_CONNECTED = function () {
 	Blockly.Arduino.definitions_['defineBLYNK'] ='#define BLYNK_PRINT Serial\n#include <ESP8266WiFi.h>\n#include <BlynkSimpleEsp8266.h>\n#include <TimeLib.h>\n#include <WidgetRTC.h>';
@@ -360,8 +361,8 @@ Blockly.Arduino.blynk_videourl = function() {
 Blockly.Arduino.blynk_bridge_auth = function() {
 	var Vpin = this.getFieldValue('Vpin');
 	var auth = Blockly.Arduino.valueToCode(this, 'auth', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['bridge1.setAuthToken'] ='WidgetBridge bridge1('+Vpin+');\nBLYNK_CONNECTED() { \n bridge1.setAuthToken('+auth+'); \n}';
-	var code='';
+	Blockly.Arduino.definitions_['bridge1.setAuthToken'] ='WidgetBridge bridge1('+Vpin+');\n';
+	var code='bridge1.setAuthToken('+auth+'); \n';
 	return code;
 };
 
@@ -395,8 +396,7 @@ Blockly.Arduino.blynk_WidgetRTC_init = function() {
 	Blockly.Arduino.definitions_['defineBLYNK'] ='#define BLYNK_PRINT Serial\n#include <ESP8266WiFi.h>\n#include <BlynkSimpleEsp8266.h>\n#include <TimeLib.h>\n#include <WidgetRTC.h>';
 	Blockly.Arduino.definitions_['WidgetRTC'] ='WidgetRTC rtc;\n';
 	Blockly.Arduino.setups_['setSyncInterval'] = 'setSyncInterval('+value_num+'* 60);';
-	Blockly.Arduino.definitions_['rtc.begin'] ='BLYNK_CONNECTED() { \n rtc.begin(); \n}';
-	var code=' ';
+	var code='rtc.begin(); \n';
 	return code;
 };
 
@@ -661,7 +661,7 @@ Blockly.Arduino.oled_init = function() {
 	return code;
 };
 
-//æ˜¾ç¤º-OLED-oledåˆå§‹åŒ?(iic)
+
 Blockly.Arduino.oled_init2 = function() {
 	var CLK = Blockly.Arduino.valueToCode(this, 'CLK', Blockly.Arduino.ORDER_ATOMIC);
 	var DIN = Blockly.Arduino.valueToCode(this, 'DIN', Blockly.Arduino.ORDER_ATOMIC);
@@ -675,19 +675,19 @@ Blockly.Arduino.oled_init2 = function() {
 	var code = '';
 	return code;
 };
-//æ˜¾ç¤º-OLED-oledæ¸…å±
+
 Blockly.Arduino.oled_clear = function() {
 	var code="u8g2.clearDisplay();";
 	return code;
 };
-//æ˜¾ç¤º-OLED-oledèŽ·å–é«˜åº¦/å®½åº¦
+
 Blockly.Arduino.oled_getHeight_or_Width = function() {
 	var what = this.getFieldValue('WHAT');
 	var funcName = 'u8g2.get' + what + '()';
 	return [funcName, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-//OLEDæ˜¾ç¤ºå¤šè¡Œæ–‡æœ¬
+
 Blockly.Arduino.oled_draw4Str = function() {
 	var value_text_line1 = Blockly.Arduino.valueToCode(this, 'Text_line1', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
 	var value_text_line2 = Blockly.Arduino.valueToCode(this, 'Text_line2', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
@@ -700,12 +700,11 @@ Blockly.Arduino.oled_draw4Str = function() {
 	return code;
 };
 
-//æ˜¾ç¤º-OLED-oledç”»ç‚¹
 Blockly.Arduino.oled_drawPixe = function() {
 	var pos_x = Blockly.Arduino.valueToCode(this, 'POS_X', Blockly.Arduino.ORDER_ATOMIC);
 	var pos_y = Blockly.Arduino.valueToCode(this, 'POS_Y', Blockly.Arduino.ORDER_ATOMIC);
 	var code = "";
-//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
+
 if ((!isNaN(pos_x) && pos_x < 128 && pos_x >= 0) || (isNaN(pos_x))) {
 	code += 'u8g2.drawPixel(' + pos_x + ',';
 }
@@ -716,17 +715,17 @@ if (code.split(",").length == 2 && code.split(")").length == 2) return code;
 else return "";
 };
 
-//oledæ–°å»ºé¡µé¢
+
 Blockly.Arduino.oled_page = function() {
 	var branch = Blockly.Arduino.statementToCode(this, 'DO');
-branch = branch.replace(/(^\s*)|(\s*$)/g, ""); //åŽ»é™¤ä¸¤ç«¯ç©ºæ ¼
+branch = branch.replace(/(^\s*)|(\s*$)/g, ""); 
 if (branch) {
 	var code = "  u8g2.firstPage();\n do {\n" + branch + "\n} \nwhile (u8g2.nextPage());\n";
 	return code;
 }
 };
 
-//æ˜¾ç¤º-OLED-æ˜¾ç¤ºæ±‰å­—/å›¾æ¡ˆ
+
 Blockly.Arduino.oled_showBitmap = function() {
 	var start_x = Blockly.Arduino.valueToCode(this, 'START_X', Blockly.Arduino.ORDER_ATOMIC);
 	var start_y = Blockly.Arduino.valueToCode(this, 'START_Y', Blockly.Arduino.ORDER_ATOMIC);
@@ -735,7 +734,6 @@ Blockly.Arduino.oled_showBitmap = function() {
 	var data_name = Blockly.Arduino.valueToCode(this, 'bitmap_name', Blockly.Arduino.ORDER_ATOMIC);
 data_name = data_name.replace(/\"/g, ""); //è¿‡æ»¤å¼•å·
 var code = "";
-//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(start_x) && start_x < 128 && start_x >= 0) || (isNaN(start_x))) {
 	code = 'u8g2.drawXBM(' + start_x + ',';
 }
@@ -747,7 +745,6 @@ if (code.split(",").length == 5 && code.split(")").length == 2)
 else return "";
 };
 
-//æ˜¾ç¤º-oled-å®šä¹‰å­—æ¨¡åç§°å’Œæ•°æ?
 Blockly.Arduino.oled_define_bitmap_data = function() {
 	var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
 	var text = this.getFieldValue('TEXT');
@@ -755,14 +752,12 @@ Blockly.Arduino.oled_define_bitmap_data = function() {
 	return '';
 };
 
-//æ˜¾ç¤º-OLED-oledç”»çº¿
 Blockly.Arduino.oled_drawLine = function() {
 	var start_x = Blockly.Arduino.valueToCode(this, 'START_X', Blockly.Arduino.ORDER_ATOMIC);
 	var start_y = Blockly.Arduino.valueToCode(this, 'START_Y', Blockly.Arduino.ORDER_ATOMIC);
 	var end_x = Blockly.Arduino.valueToCode(this, 'END_X', Blockly.Arduino.ORDER_ATOMIC);
 	var end_y = Blockly.Arduino.valueToCode(this, 'END_Y', Blockly.Arduino.ORDER_ATOMIC);
 	var code = "";
-//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(start_x) && start_x < 128 && start_x >= 0) || (isNaN(start_x))) {
 	code = 'u8g2.drawLine(' + start_x + ',';
 }
@@ -779,14 +774,12 @@ if (code.split(",").length == 4 && code.split(")").length == 2) return code;
 else return "";
 };
 
-//æ˜¾ç¤º-OLED-oledç”»æ°´å¹?åž‚ç›´ç›´çº¿
 Blockly.Arduino.oled_draw_Str_Line = function() {
 	var start_x = Blockly.Arduino.valueToCode(this, 'START_X', Blockly.Arduino.ORDER_ATOMIC);
 	var start_y = Blockly.Arduino.valueToCode(this, 'START_Y', Blockly.Arduino.ORDER_ATOMIC);
 	var length = Blockly.Arduino.valueToCode(this, 'LENGTH', Blockly.Arduino.ORDER_ATOMIC);
 	var TYPE = this.getFieldValue('TYPE');
 	var code = "";
-//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(start_x) && start_x < 128 && start_x >= 0) || (isNaN(start_x))) {
 	code = "u8g2.draw" + TYPE + "Line(" + start_x + ',';
 }
@@ -801,7 +794,6 @@ else return "";
 
 };
 
-//æ˜¾ç¤º-OLED-oledç”»ä¸‰è§’å½¢
 Blockly.Arduino.oled_drawTriangle = function() {
 	var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
 	var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
@@ -810,7 +802,7 @@ Blockly.Arduino.oled_drawTriangle = function() {
 	var D2_x = Blockly.Arduino.valueToCode(this, 'D2_X', Blockly.Arduino.ORDER_ATOMIC);
 	var D2_y = Blockly.Arduino.valueToCode(this, 'D2_Y', Blockly.Arduino.ORDER_ATOMIC);
 	var code = "";
-//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
+
 if ((!isNaN(D0_x) && D0_x < 128 && D0_x >= 0) || (isNaN(D0_x))) {
 	code = 'u8g2.drawTriangle(' + D0_x + ',';
 }
@@ -833,7 +825,6 @@ if (code.split(",").length == 6 && code.split(")").length == 2) return code;
 else return "";
 };
 
-//æ˜¾ç¤º-OLED-oledç”»çŸ©å½¢ï¼ˆå®žå¿ƒã€ç©ºå¿ƒï¼‰
 Blockly.Arduino.oled_drawFrame = function() {
 	var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
 	var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
@@ -841,7 +832,6 @@ Blockly.Arduino.oled_drawFrame = function() {
 	var Height = Blockly.Arduino.valueToCode(this, 'HEIGHT', Blockly.Arduino.ORDER_ATOMIC);
 	var type = this.getFieldValue('TYPE');
 	var code = "";
-//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(D0_x) && D0_x < 128 && D0_x >= 0) || (isNaN(D0_x))) 
 	code = 'u8g2.'+type+'(' + D0_x + ',';
 if ((!isNaN(D0_y) && D0_y < 64 && D0_y >= 0) || (isNaN(D0_y))) 
@@ -854,7 +844,6 @@ if (code.split(",").length == 4 && code.split(")").length == 2) return code;
 else return "";
 };
 
-//æ˜¾ç¤º-OLED-oledç”»åœ†è§’çŸ©å½¢ï¼ˆå®žå¿ƒã€ç©ºå¿ƒï¼‰
 Blockly.Arduino.oled_drawRFrame = function() {
 	var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
 	var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
@@ -863,7 +852,6 @@ Blockly.Arduino.oled_drawRFrame = function() {
 	var Rauius = Blockly.Arduino.valueToCode(this, 'RADIUS', Blockly.Arduino.ORDER_ATOMIC);
 	var type = this.getFieldValue('TYPE');
 	var code = "";
-//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(D0_x) && D0_x < 128 && D0_x >= 0) || (isNaN(D0_x))) 
 	code = 'u8g2.'+type+'(' + D0_x + ',';
 if ((!isNaN(D0_y) && D0_y < 64 && D0_y >= 0) || (isNaN(D0_y))) 
@@ -878,7 +866,6 @@ if (code.split(",").length == 5 && code.split(")").length == 2) return code;
 else return "";
 };
 
-//æ˜¾ç¤º-OLED-oledç”»åœ†ï¼ˆå®žå¿ƒã€ç©ºå¿ƒï¼‰
 Blockly.Arduino.oled_drawCircle = function() {
 	var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
 	var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
@@ -886,7 +873,6 @@ Blockly.Arduino.oled_drawCircle = function() {
 	var type = this.getFieldValue('TYPE');
 	var opt = this.getFieldValue('OPT');
 	var code = "";
-//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(D0_x) && D0_x < 128 && D0_x >= 0) || (isNaN(D0_x))) 
 	code = 'u8g2.'+type+'(' + D0_x + ',';
 if ((!isNaN(D0_y) && D0_y < 64 && D0_y >= 0) || (isNaN(D0_y))) 
@@ -897,7 +883,6 @@ if (code.split(",").length == 4 && code.split(")").length == 2) return code;
 else return "";
 };
 
-//æ˜¾ç¤º-OLED-oledç”»æ¤­åœ†ï¼ˆå®žå¿ƒã€ç©ºå¿ƒï¼‰
 Blockly.Arduino.oled_drawEllipse = function() {
 	var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
 	var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
@@ -906,7 +891,6 @@ Blockly.Arduino.oled_drawEllipse = function() {
 	var type = this.getFieldValue('TYPE');
 	var opt = this.getFieldValue('OPT');
 	var code = "";
-//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(D0_x) && D0_x < 128 && D0_x >= 0) || (isNaN(D0_x))) 
 	code = 'u8g2.'+type+'(' + D0_x + ',';
 if ((!isNaN(D0_y) && D0_y < 64 && D0_y >= 0) || (isNaN(D0_y))) 
@@ -919,13 +903,11 @@ if (code.split(",").length == 5 && code.split(")").length == 2) return code;
 else return "";
 };
 
-//æ˜¾ç¤º-OLED-oledæ˜¾ç¤ºå­—ç¬¦ä¸?
 Blockly.Arduino.oled_drawStr = function() {
 	var POS_x = Blockly.Arduino.valueToCode(this, 'POS_X', Blockly.Arduino.ORDER_ATOMIC);
 	var POS_y = Blockly.Arduino.valueToCode(this, 'POS_Y', Blockly.Arduino.ORDER_ATOMIC);
 	var TEXT = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC);
 	var code = "";
-//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(POS_x) && POS_x < 128 && POS_x >= 0) || (isNaN(POS_x))) 
 	code = 'u8g2.drawStr(' + POS_x + ',';
 if ((!isNaN(POS_y) && POS_y < 64 && POS_y >= 0) || (isNaN(POS_y))) 
@@ -934,13 +916,11 @@ if (code.split(",").length == 3&& code.split(")").length == 2) return code;
 else return "";
 };
 
-//æ˜¾ç¤º-OLED-æ˜¾ç¤ºå˜é‡ï¼ˆå­—ç¬¦ä¸²ï¼Œæ•´åž‹ï¼‰
 Blockly.Arduino.oled_print = function() {
 	var POS_x = Blockly.Arduino.valueToCode(this, 'POS_X', Blockly.Arduino.ORDER_ATOMIC);
 	var POS_y = Blockly.Arduino.valueToCode(this, 'POS_Y', Blockly.Arduino.ORDER_ATOMIC);
 	var TEXT = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC);
 	var code = "";
-//xå’Œyå¯ä»¥æ˜¯å˜é‡ä¹Ÿå¯ä»¥æ˜¯æ•°å­—ï¼Œå¯¹æ­¤åšåˆ¤æ–?
 if ((!isNaN(POS_x) && POS_x < 128 && POS_x >= 0) || (isNaN(POS_x))) 
 	code = 'u8g2.setCursor(' + POS_x + ',';
 if ((!isNaN(POS_y) && POS_y < 64 && POS_y >= 0) || (isNaN(POS_y))) 
@@ -949,7 +929,7 @@ code += "u8g2.print(" + TEXT + "); \n";
 return code;
 };
 
-//æ˜¾ç¤º-OLED-oledè®¾ç½®å­—ä½“
+
 Blockly.Arduino.oled_setFont = function() {
 	var type = this.getFieldValue('TYPE');
 	var code = "u8g2.setFont(u8g2_font_"+type+");\nu8g2.setFontPosTop();\n";

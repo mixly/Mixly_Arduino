@@ -442,6 +442,7 @@ Blockly.MIXLY_SERIAL_FLUSH='flush';
 Blockly.MIXLY_STEP='step';
 Blockly.MIXLY_TONE_PIN='Tone PIN#';
 Blockly.MIXLY_FREQUENCY='frequency';
+Blockly.MIXLY_CHANNEL='channel';
 Blockly.MIXLY_DURATION='duration';
 Blockly.MIXLY_NOTONE_PIN='noTone PIN#';
 Blockly.MIXLY_BLOCKGROUP_CATEGORY='BlockGroup';

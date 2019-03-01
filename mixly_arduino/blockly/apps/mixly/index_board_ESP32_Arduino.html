@@ -724,10 +724,21 @@
       <value name="FREQUENCY">
         <shadow type="tone_notes"></shadow>
       </value>
+       <value name="DURATION">
+         <shadow type="math_number">
+          <field name="NUM">200</field>
+        </shadow>
+      </value>
+      <value name="CHANNEL">
+        <shadow type="channel_select"></shadow>
+      </value>
     </block>
     <block type="controls_notone">
       <value name="PIN">
         <shadow type="pins_digital"></shadow>
+      </value>
+       <value name="CHANNEL">
+        <shadow type="channel_select"></shadow>
       </value>
     </block>
     <block type="display_rgb_init">
@@ -878,7 +889,7 @@
   </value>
   <value name="PIN2">
     <shadow type="pins_digital">
-      <field name="PIN">9</field>
+      <field name="PIN">19</field>
     </shadow>
   </value>
   <value name="PIN3">
@@ -944,6 +955,265 @@
   </shadow>
 </value>
 </block>
+ <category id="catoled" name="OLED"> 
+     <!-- OLED 类 --> 
+     <block type="oled_init2"> 
+      <next> 
+       <block type="oled_page"> 
+        <statement name="DO"> 
+         <block type="procedures_callnoreturn"> 
+          <mutation name="page1"></mutation> 
+         </block> 
+        </statement> 
+       </block> 
+      </next> 
+     </block> 
+     <block type="procedures_defnoreturn"> 
+      <field name="NAME">page1</field> 
+      <statement name="STACK"> 
+       <block type="oled_setFont"> 
+        <field name="TYPE">timR08_tr</field> 
+        <next> 
+         <block type="oled_print" name="显示字符串变量"> 
+          <value name="POS_X"> 
+           <shadow type="math_number"> 
+            <field name="NUM">0</field>
+           </shadow> 
+          </value> 
+          <value name="POS_Y"> 
+           <shadow type="math_number"> 
+            <field name="NUM">20</field>
+           </shadow> 
+          </value> 
+          <value name="TEXT"> 
+           <shadow type="text"> 
+            <field name="TEXT">1234</field>
+           </shadow> 
+          </value> 
+         </block> 
+        </next> 
+       </block> 
+      </statement> 
+     </block> 
+     <block type="oled_define_bitmap_data"></block> 
+     <block type="oled_clear"></block> 
+     <block type="oled_showBitmap" name="显示中文字符"> 
+      <value name="START_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">0</field>
+       </shadow> 
+      </value> 
+      <value name="START_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">0</field>
+       </shadow> 
+      </value> 
+      <value name="bitmap_name"> 
+       <block type="text"> 
+        <field name="TEXT">bitmap1</field>
+       </block> 
+      </value> 
+     </block> 
+     <block type="oled_draw4Str" name="显示多行字符串"> 
+      <value name="Text_line1"> 
+       <shadow type="text"> 
+        <field name="TEXT">Hello,world!</field>
+       </shadow> 
+      </value> 
+      <value name="Text_line2"> 
+       <shadow type="text"> 
+        <field name="TEXT">Mixly</field>
+       </shadow> 
+      </value> 
+      <value name="Text_line3"> 
+       <shadow type="text"> 
+        <field name="TEXT">Design By</field>
+       </shadow> 
+      </value> 
+      <value name="Text_line4"> 
+       <shadow type="text"> 
+        <field name="TEXT">qiujiongtao</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_drawPixe" name="画点"> 
+      <value name="POS_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">64</field>
+       </shadow> 
+      </value> 
+      <value name="POS_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">32</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_drawLine" name="画线"> 
+      <value name="START_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="START_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="END_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">15</field>
+       </shadow> 
+      </value> 
+      <value name="END_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">20</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_draw_Str_Line" name="画直线"> 
+      <value name="START_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="START_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="LENGTH"> 
+       <shadow type="math_number"> 
+        <field name="NUM">30</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_drawFrame" name="画矩形"> 
+      <value name="D0_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="D0_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="WIDTH"> 
+       <shadow type="math_number"> 
+        <field name="NUM">10</field>
+       </shadow> 
+      </value> 
+      <value name="HEIGHT"> 
+       <shadow type="math_number"> 
+        <field name="NUM">20</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_drawRFrame" name="画圆角矩形"> 
+      <value name="D0_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="D0_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="WIDTH"> 
+       <shadow type="math_number"> 
+        <field name="NUM">10</field>
+       </shadow> 
+      </value> 
+      <value name="HEIGHT"> 
+       <shadow type="math_number"> 
+        <field name="NUM">20</field>
+       </shadow> 
+      </value> 
+      <value name="RADIUS"> 
+       <shadow type="math_number"> 
+        <field name="NUM">3</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_drawCircle" name="画圆"> 
+      <value name="D0_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">30</field>
+       </shadow> 
+      </value> 
+      <value name="D0_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">30</field>
+       </shadow> 
+      </value> 
+      <value name="RADIUS"> 
+       <shadow type="math_number"> 
+        <field name="NUM">6</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_drawEllipse" name="画椭圆"> 
+      <value name="D0_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">30</field>
+       </shadow> 
+      </value> 
+      <value name="D0_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">30</field>
+       </shadow> 
+      </value> 
+      <value name="RADIUS_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">6</field>
+       </shadow> 
+      </value> 
+      <value name="RADIUS_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">15</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_drawTriangle" name="画三角形"> 
+      <value name="D0_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">14</field>
+       </shadow> 
+      </value> 
+      <value name="D0_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">
+         55
+        </field>
+       </shadow> 
+      </value> 
+      <value name="D1_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">45</field>
+       </shadow> 
+      </value> 
+      <value name="D1_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">
+         33
+        </field>
+       </shadow> 
+      </value> 
+      <value name="D2_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">8</field>
+       </shadow> 
+      </value> 
+      <value name="D2_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">
+         43
+        </field>
+       </shadow> 
+      </value> 
+     </block> 
+    </category> 
   </category>
   <sep></sep>
   <category id="catVar" colour="330" custom="VARIABLE">
