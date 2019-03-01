@@ -366,6 +366,9 @@ var ui = {
     bindAccelerometerEvent: function (sliderId, data, key, cb) {
         ui.bindSliderEvent(sliderId, data, key, cb);
     },
+    bindInfraredEvent: function (sliderId, data, key, cb) {
+        ui.bindSliderEvent(sliderId, data, key, cb);
+    },
     bindAccelerometerGestureEvent: function (btnId, data, gesture) {
         $('#' + btnId).off('click').on('click', function () {
             if (data.currentGesture != gesture) {
@@ -541,7 +544,10 @@ var ui = {
         $('#' + id).off('change').on('change', function () {
             ui.updatePeerSerialParam(data);
         })
-    }
+    },
+    getInfrared: function(id) {
+        return $('#curr_'+id).val();
+    },
 }
 
 

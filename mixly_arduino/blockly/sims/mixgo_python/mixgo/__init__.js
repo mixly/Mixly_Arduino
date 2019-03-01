@@ -4,6 +4,8 @@ var $builtinmodule = function (name) {
         data: {
             temperature: mbData['temperature'],
             distance : mbData['distance'],
+            distance_infrared_left : mbData['distance_infrared_left'],
+            distance_infrared_right : mbData['distance_infrared_right'],
         }
     };
 
@@ -200,16 +202,16 @@ var $builtinmodule = function (name) {
         });
     }, "Servo", []);
 
-
-    mod.display = new Sk.builtin.module();
-    mod.display.$d = new display("microbit.display");
-
     mod.compass = new Sk.builtin.module();
-    mod.compass.$d = new compass("microbit.compass");
+    mod.compass.$d = new compass("mixgo.compass");
 
     mod.accelerometer = new Sk.builtin.module();
-    mod.accelerometer.$d = new accelerometer("microbit.accelerometer");
+    mod.accelerometer.$d = new accelerometer("mixgo.mpu9250");
 
+    mod.Infrared_left = new Sk.builtin.module();
+    mod.Infrared_left.$d = new Infrared_left("mixgo.Infrared_left");
+    mod.Infrared_right = new Sk.builtin.module();
+    mod.Infrared_right.$d = new Infrared_right("mixgo.Infrared_right");
 
     /*
     mod.i2c = new Sk.builtin.module();

@@ -7,6 +7,8 @@ Sk.externalLibraries = {
             base_url + 'mixgo/accelerometer.js',
             base_url + 'mixgo/compass.js',
             base_url + 'mixgo/uart.js',
+            base_url + 'mixgo/infrared_left.js',
+            base_url + 'mixgo/infrared_right.js',
         ]
     },
     matrix:{

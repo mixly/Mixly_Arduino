@@ -788,7 +788,6 @@ var $builtinmodule = function(name) {
                     self.lines[i][char2Num] = 15;
                 }
             }
-            console.log(self.lines);
         });
 
         $loc.width = new Sk.builtin.func(function(self) {
