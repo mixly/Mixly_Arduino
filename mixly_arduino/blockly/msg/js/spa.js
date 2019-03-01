@@ -932,18 +932,18 @@ Blockly.MIXLY_NOVA_BTN = 'Button ';
 Blockly.MIXLY_NOVA_ABCD = '#';
 
 Blockly.MIXLY_NOVA_TILTSWITCH = 'Tilt Switch';
-Blockly.MIXLY_NOVA_SOUND = 'Sound'; 
-Blockly.MIXLY_NOVA_LIMISWICTH = 'Limit Switch'; 
-Blockly.MIXLY_NOVA_LIGHT = 'Light'; 
+Blockly.MIXLY_NOVA_SOUND = 'Sound';
+Blockly.MIXLY_NOVA_LIMISWICTH = 'Limit Switch';
+Blockly.MIXLY_NOVA_LIGHT = 'Light';
 
-Blockly.MIXLY_NOVA_BUZZER = 'Buzzer'; 
-Blockly.MIXLY_NOVA_FREQUENCY = 'Frequency(Hz)'; 
-Blockly.MIXLY_NOVA_MIXLY_DURATION = 'Duration(ms)'; 
+Blockly.MIXLY_NOVA_BUZZER = 'Buzzer';
+Blockly.MIXLY_NOVA_FREQUENCY = 'Frequency(Hz)';
+Blockly.MIXLY_NOVA_MIXLY_DURATION = 'Duration(ms)';
 
-Blockly.MIXLY_NOVA_MOTOR = 'DC Motor'; 
-Blockly.MIXLY_NOVA_MOTOR_SPEED = 'Speed(-100~100)%'; 
+Blockly.MIXLY_NOVA_MOTOR = 'DC Motor';
+Blockly.MIXLY_NOVA_MOTOR_SPEED = 'Speed(-100~100)%';
 
-Blockly.MIXLY_NOVA_ULTRASONIC = 'Ultrasonic(cm)'; 
+Blockly.MIXLY_NOVA_ULTRASONIC = 'Ultrasonic(cm)';
 
 Blockly.MIXLY_NOVA_DHT11 = 'DHT11';
 Blockly.MIXLY_NOVA_TYPE = 'Type';
@@ -1069,6 +1069,7 @@ Blockly.MIXLY_COMPARETO_HELP = "comparar basado en dictory, igual retrun 0, mayo
 Blockly.Msg.UNDO = "Deshacer";
 Blockly.Msg.REDO = "Rehacer";
 Blockly.MIXLY_CONTROL_END_PROGRAM = "fin del programa";
+Blockly.MIXLY_CONTROL_NOTES = 'Notas:';
 
 //oled
 Blockly.Msg.texttodisplay = "texts to display:";
@@ -1479,7 +1480,7 @@ Blockly.Msg.DICTS_DELETE_IN = "Eliminar entrada ,la clave";
 Blockly.Msg.DICTS_DELETE_VALUE = "Y el correspondiente valor";
 Blockly.Msg.DICTS_DELETE_TOOLTIP = "Eliminar una entrada en el diccionario";
 Blockly.Msg.DICT_CLEAR = "Vaciar todas las entradas en el diccionario";
-Blockly.Msg.DICT_ITEMS = "En la lista de diccionarios"; 
+Blockly.Msg.DICT_ITEMS = "En la lista de diccionarios";
 Blockly.Msg.DICTS_ITEMS_TOOLTIP = "Devuelve una lista incluye un diccionario puede atravesar todas las llaves y el correspondiente valor";
 Blockly.Msg.DICT_VALUES = "Para obtener todos los valores de la clave correspondiente";
 Blockly.Msg.DICTS_VALUES_TOOLTIP = "Devuelve una lista de valores correspondientes a todas las teclas, incluye un diccionario";

@@ -926,18 +926,18 @@ Blockly.MIXLY_NOVA_BTN = 'Button ';
 Blockly.MIXLY_NOVA_ABCD = '#';
 
 Blockly.MIXLY_NOVA_TILTSWITCH = 'Tilt Switch';
-Blockly.MIXLY_NOVA_SOUND = 'Sound'; 
-Blockly.MIXLY_NOVA_LIMISWICTH = 'Limit Switch'; 
-Blockly.MIXLY_NOVA_LIGHT = 'Light'; 
+Blockly.MIXLY_NOVA_SOUND = 'Sound';
+Blockly.MIXLY_NOVA_LIMISWICTH = 'Limit Switch';
+Blockly.MIXLY_NOVA_LIGHT = 'Light';
 
-Blockly.MIXLY_NOVA_BUZZER = 'Buzzer'; 
-Blockly.MIXLY_NOVA_FREQUENCY = 'Frequency(Hz)'; 
-Blockly.MIXLY_NOVA_MIXLY_DURATION = 'Duration(ms)'; 
+Blockly.MIXLY_NOVA_BUZZER = 'Buzzer';
+Blockly.MIXLY_NOVA_FREQUENCY = 'Frequency(Hz)';
+Blockly.MIXLY_NOVA_MIXLY_DURATION = 'Duration(ms)';
 
-Blockly.MIXLY_NOVA_MOTOR = 'DC Motor'; 
-Blockly.MIXLY_NOVA_MOTOR_SPEED = 'Speed(-100~100)%'; 
+Blockly.MIXLY_NOVA_MOTOR = 'DC Motor';
+Blockly.MIXLY_NOVA_MOTOR_SPEED = 'Speed(-100~100)%';
 
-Blockly.MIXLY_NOVA_ULTRASONIC = 'Ultrasonic(cm)'; 
+Blockly.MIXLY_NOVA_ULTRASONIC = 'Ultrasonic(cm)';
 
 Blockly.MIXLY_NOVA_DHT11 = 'DHT11';
 Blockly.MIXLY_NOVA_TYPE = 'Type';
@@ -1065,6 +1065,7 @@ Blockly.MIXLY_COMPARETO_HELP="compare based on dictory, equal retrun 0 ,bigger r
 Blockly.Msg.UNDO = "Undo";
 Blockly.Msg.REDO = "Redo";
 Blockly.MIXLY_CONTROL_END_PROGRAM = "end program";
+Blockly.MIXLY_CONTROL_NOTES = 'Notes:';
 
 //oled
 Blockly.Msg.texttodisplay = "texts to display:";
@@ -1484,7 +1485,7 @@ Blockly.Msg.DICTS_DELETE_IN = "delete clause, key value";
 Blockly.Msg.DICTS_DELETE_VALUE = "and corresponding value";
 Blockly.Msg.DICTS_DELETE_TOOLTIP = "Delete a clause in the dictionary";
 Blockly.Msg.DICT_CLEAR = "clear dictionary";
-Blockly.Msg.DICT_ITEMS = "transform dictionary to a list"; 
+Blockly.Msg.DICT_ITEMS = "transform dictionary to a list";
 Blockly.Msg.DICTS_ITEMS_TOOLTIP = "Return a list, including all the keys and corresponding values that a dictionary can be traversed";
 Blockly.Msg.DICT_VALUES = "get the values corresponding to all keys";
 Blockly.Msg.DICTS_VALUES_TOOLTIP = "Return a list, including the corresponding values of all the keys in a dictionary";

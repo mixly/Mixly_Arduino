@@ -1066,6 +1066,7 @@ Blockly.MIXLY_COMPARETO_HELP="按字典顺序比较，相等则返回0，大于�
 Blockly.Msg.UNDO = "撤销";
 Blockly.Msg.REDO = "重做";
 Blockly.MIXLY_CONTROL_END_PROGRAM = "停止程序";
+Blockly.MIXLY_CONTROL_NOTES = '注释:';
 
 //oled
 Blockly.Msg.texttodisplay = "显示文本：";

@@ -9,7 +9,7 @@ Blockly.Msg.ADD_COMMENT = "添加注釋";
 Blockly.Msg.AUTH = "請授權這個應用程序以保存您的作品並共亯。";
 Blockly.Msg.CHANGE_VALUE_TITLE = "更改值：";
 Blockly.Msg.CHAT = "通過在此框輸入與您的合作者溝通！";
-Blockly.Msg.CLEAN_UP = "清理塊"; 
+Blockly.Msg.CLEAN_UP = "清理塊";
 Blockly.Msg.COLLAPSE_ALL = "折疊塊";
 Blockly.Msg.COLLAPSE_BLOCK = "折疊塊";
 Blockly.Msg.COLOUR_BLEND_COLOUR1 = "顏色1";
@@ -923,18 +923,18 @@ Blockly.MIXLY_NOVA_BTN = '按鈕';
 Blockly.MIXLY_NOVA_ABCD = '#';
 
 Blockly.MIXLY_NOVA_TILTSWITCH = '傾斜開關';
-Blockly.MIXLY_NOVA_SOUND = '聲音傳感器'; 
-Blockly.MIXLY_NOVA_LIMISWICTH = '限位開關'; 
-Blockly.MIXLY_NOVA_LIGHT = '光敏'; 
+Blockly.MIXLY_NOVA_SOUND = '聲音傳感器';
+Blockly.MIXLY_NOVA_LIMISWICTH = '限位開關';
+Blockly.MIXLY_NOVA_LIGHT = '光敏';
 
-Blockly.MIXLY_NOVA_BUZZER = '蜂鳴器'; 
-Blockly.MIXLY_NOVA_FREQUENCY = '頻率(Hz)'; 
-Blockly.MIXLY_NOVA_MIXLY_DURATION = '持續時間(ms)'; 
+Blockly.MIXLY_NOVA_BUZZER = '蜂鳴器';
+Blockly.MIXLY_NOVA_FREQUENCY = '頻率(Hz)';
+Blockly.MIXLY_NOVA_MIXLY_DURATION = '持續時間(ms)';
 
-Blockly.MIXLY_NOVA_MOTOR = '直流電機'; 
-Blockly.MIXLY_NOVA_MOTOR_SPEED = '轉速(-100~100)%'; 
+Blockly.MIXLY_NOVA_MOTOR = '直流電機';
+Blockly.MIXLY_NOVA_MOTOR_SPEED = '轉速(-100~100)%';
 
-Blockly.MIXLY_NOVA_ULTRASONIC = '超聲波測距(cm)'; 
+Blockly.MIXLY_NOVA_ULTRASONIC = '超聲波測距(cm)';
 
 Blockly.MIXLY_NOVA_DHT11 = '溫濕度';
 Blockly.MIXLY_NOVA_TYPE = '類型';
@@ -1062,6 +1062,7 @@ Blockly.MIXLY_COMPARETO_HELP="按字典順序比較，相等則返回0，大於�
 Blockly.Msg.UNDO = "還原";
 Blockly.Msg.REDO = "重試";
 Blockly.MIXLY_CONTROL_END_PROGRAM = "停止程序";
+Blockly.MIXLY_CONTROL_NOTES = '注釋:';
 
 //oled
 Blockly.Msg.texttodisplay = "顯示文本：";
@@ -1487,7 +1488,7 @@ Blockly.Msg.DICTS_DELETE_IN = "中刪除條目 鍵值";
 Blockly.Msg.DICTS_DELETE_VALUE = "及對應值";
 Blockly.Msg.DICTS_DELETE_TOOLTIP = "刪除字典中某個條目";
 Blockly.Msg.DICT_CLEAR = "清空字典中所有陣列";
-Blockly.Msg.DICT_ITEMS = "字典轉化為陣列"; 
+Blockly.Msg.DICT_ITEMS = "字典轉化為陣列";
 Blockly.Msg.DICTS_ITEMS_TOOLTIP = "返回一個清單，包括一個字典可遍歷的所有鍵和對應值";
 Blockly.Msg.DICT_VALUES = "獲取所有鍵對應的值";
 Blockly.Msg.DICTS_VALUES_TOOLTIP = "返回一個清單，包括一個字典所有鍵的對應值";
