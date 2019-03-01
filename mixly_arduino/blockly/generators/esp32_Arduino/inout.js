@@ -87,11 +87,13 @@ Blockly.Arduino.inout_digital_read2 = function () {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino.inout_pwm_analog_write_set_freq = function () {
+Blockly.Arduino.inout_pwm_analog_write= function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     //var dropdown_stat = this.getFieldValue('STAT');
     var FREQ = Blockly.Arduino.valueToCode(this, 'FREQ', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_['PWMC_CHANNEL_'+dropdown_pin] = '#define PWMC_CHANNEL_'+dropdown_pin+' 0';
+    var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
+     var channle = Blockly.Arduino.valueToCode(this, 'CHANNEL',Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
+    Blockly.Arduino.definitions_['PWMC_CHANNEL_'+dropdown_pin] = '#define PWMC_CHANNEL_'+dropdown_pin+' '+channle;
     Blockly.Arduino.definitions_['PWM_PIN'+dropdown_pin] = '#define PWM_PIN'+dropdown_pin+' '+dropdown_pin;
     Blockly.Arduino.definitions_['PWMC_TIMER_13_BIT'] = '#define PWMC_TIMER_13_BIT  13';
     Blockly.Arduino.definitions_['PWMC_BASE_FREQ'+dropdown_pin] = '#define PWMC_BASE_FREQ'+dropdown_pin+'  '+FREQ;
@@ -102,15 +104,11 @@ Blockly.Arduino.inout_pwm_analog_write_set_freq = function () {
     code2+='ledcWrite(channel, duty);\n}\n';
     Blockly.Arduino.definitions_['ledcAnalogWrite'] = code2;
     var code="";
+     var code = 'ledcAnalogWrite(PWMC_CHANNEL_' + dropdown_pin + ',' + value_num + ');\n';
     return code;
 };
 
-Blockly.Arduino.inout_pwm_analog_write = function () {
-    var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
-    var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
-    var code = 'ledcAnalogWrite(PWMC_CHANNEL_' + dropdown_pin + ',' + value_num + ');\n';
-    return code;
-};
+
 Blockly.Arduino.inout_analog_read = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     var code = 'analogRead(' + dropdown_pin + ')';

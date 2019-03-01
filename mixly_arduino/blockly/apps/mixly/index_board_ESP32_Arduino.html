@@ -184,7 +184,7 @@
         </shadow>
       </value>
     </block>
-    <block type="inout_pwm_analog_write_set_freq">
+    <block type="inout_pwm_analog_write">
       <value name="PIN">
         <shadow type="pins_pwm"></shadow>
       </value>
@@ -193,17 +193,21 @@
           <field name="NUM">2000</field>
         </shadow>
       </value>
-    </block>
-    <block type="inout_pwm_analog_write">
-      <value name="PIN">
-        <shadow type="pins_pwm"></shadow>
+        <value name="CHANNEL">
+        <shadow type="channel_select"></shadow>
       </value>
-      <value name="NUM">
+       <value name="NUM">
         <shadow type="math_number">
           <field name="NUM">0</field>
         </shadow>
       </value>
     </block>
+   <!--  <block type="inout_pwm_analog_write">
+      <value name="PIN">
+        <shadow type="pins_pwm"></shadow>
+      </value>
+     
+    </block> -->
     <block type="inout_analog_read">
       <value name="PIN">
         <shadow type="pins_analog"></shadow>
@@ -974,7 +978,7 @@
        <block type="oled_setFont"> 
         <field name="TYPE">timR08_tr</field> 
         <next> 
-         <block type="oled_print" name="显示字符串变量"> 
+         <block type="oled_print"> 
           <value name="POS_X"> 
            <shadow type="math_number"> 
             <field name="NUM">0</field>
@@ -997,7 +1001,7 @@
      </block> 
      <block type="oled_define_bitmap_data"></block> 
      <block type="oled_clear"></block> 
-     <block type="oled_showBitmap" name="显示中文字符"> 
+     <block type="oled_showBitmap"> 
       <value name="START_X"> 
        <shadow type="math_number"> 
         <field name="NUM">0</field>
@@ -1014,7 +1018,7 @@
        </block> 
       </value> 
      </block> 
-     <block type="oled_draw4Str" name="显示多行字符串"> 
+     <block type="oled_draw4Str" > 
       <value name="Text_line1"> 
        <shadow type="text"> 
         <field name="TEXT">Hello,world!</field>
@@ -1036,7 +1040,7 @@
        </shadow> 
       </value> 
      </block> 
-     <block type="oled_drawPixe" name="画点"> 
+     <block type="oled_drawPixe" > 
       <value name="POS_X"> 
        <shadow type="math_number"> 
         <field name="NUM">64</field>
@@ -1048,7 +1052,7 @@
        </shadow> 
       </value> 
      </block> 
-     <block type="oled_drawLine" name="画线"> 
+     <block type="oled_drawLine"> 
       <value name="START_X"> 
        <shadow type="math_number"> 
         <field name="NUM">1</field>
@@ -1070,7 +1074,7 @@
        </shadow> 
       </value> 
      </block> 
-     <block type="oled_draw_Str_Line" name="画直线"> 
+     <block type="oled_draw_Str_Line"> 
       <value name="START_X"> 
        <shadow type="math_number"> 
         <field name="NUM">1</field>
@@ -1087,7 +1091,7 @@
        </shadow> 
       </value> 
      </block> 
-     <block type="oled_drawFrame" name="画矩形"> 
+     <block type="oled_drawFrame"> 
       <value name="D0_X"> 
        <shadow type="math_number"> 
         <field name="NUM">1</field>
@@ -1109,7 +1113,7 @@
        </shadow> 
       </value> 
      </block> 
-     <block type="oled_drawRFrame" name="画圆角矩形"> 
+     <block type="oled_drawRFrame"> 
       <value name="D0_X"> 
        <shadow type="math_number"> 
         <field name="NUM">1</field>
@@ -1136,7 +1140,7 @@
        </shadow> 
       </value> 
      </block> 
-     <block type="oled_drawCircle" name="画圆"> 
+     <block type="oled_drawCircle"> 
       <value name="D0_X"> 
        <shadow type="math_number"> 
         <field name="NUM">30</field>
@@ -1153,7 +1157,7 @@
        </shadow> 
       </value> 
      </block> 
-     <block type="oled_drawEllipse" name="画椭圆"> 
+     <block type="oled_drawEllipse"> 
       <value name="D0_X"> 
        <shadow type="math_number"> 
         <field name="NUM">30</field>
@@ -1175,7 +1179,7 @@
        </shadow> 
       </value> 
      </block> 
-     <block type="oled_drawTriangle" name="画三角形"> 
+     <block type="oled_drawTriangle"> 
       <value name="D0_X"> 
        <shadow type="math_number"> 
         <field name="NUM">14</field>
@@ -1195,9 +1199,7 @@
       </value> 
       <value name="D1_Y"> 
        <shadow type="math_number"> 
-        <field name="NUM">
-         33
-        </field>
+        <field name="NUM">33</field>
        </shadow> 
       </value> 
       <value name="D2_X"> 
@@ -1207,9 +1209,7 @@
       </value> 
       <value name="D2_Y"> 
        <shadow type="math_number"> 
-        <field name="NUM">
-         43
-        </field>
+        <field name="NUM">43</field>
        </shadow> 
       </value> 
      </block> 
@@ -1219,61 +1219,7 @@
   <category id="catVar" colour="330" custom="VARIABLE">
   </category>
   <category id="catFun" custom="PROCEDURE" colour="290"></category>
-  <!-- <category id="catblynkIOT"  name="Blynk IoT" colour="160">
-   <block type="blynk_QR" name="二维码">
-   </block>
-   <block type="blynk_server_esp32" name="服务器信息">
-    <value name="server_add">
-      <shadow type="text">
-        <field name="TEXT">116,62,49,166</field>
-      </shadow>
-    </value>
-    <value name="auth_key">
-      <shadow type="text">
-        <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>
-      </shadow>
-    </value>
-    <value name="wifi_ssid">
-      <shadow type="text">
-        <field name="TEXT">wifi-ssid</field>
-      </shadow>
-    </value>
-    <value name="wifi_pass">
-      <shadow type="text">
-        <field name="TEXT">wifi-pass</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="blynk_smartconfig_esp8266" name="一键配网">
-    <value name="server_add">
-      <shadow type="text">
-        <field name="TEXT">116,62,49,166</field>
-      </shadow>
-    </value>
-    <value name="auth_key">
-      <shadow type="text">
-        <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>
-      </shadow>
-    </value>
- </block>
- <block type="blynk_iot_get_data" name="从app获取数据">
-   <mutation>
-    <arg name="vpin_value" vartype="int">
-    </arg>
-  </mutation>
-  <field name="Vpin">V0</field>
-  <statement name="STACK">
-    <block type="serial_println">
-      <field name="serial_select">Serial</field>
-      <value name="CONTENT">
-        <block type="variables_get" >
-          <field name="VAR">vpin_value</field>
-        </block>
-      </value>
-    </block> 
- -->
   </category>
-
 </xml>
 <script>
   if(company_block!=null){
