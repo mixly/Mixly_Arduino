@@ -1,4 +1,4 @@
-﻿﻿<html manifest=node.manifest>
+﻿<html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
   <title>Mixly</title>
@@ -184,7 +184,7 @@
         </shadow>
       </value>
     </block>
-    <block type="inout_pwm_analog_write_set_freq">
+    <block type="inout_pwm_analog_write">
       <value name="PIN">
         <shadow type="pins_pwm"></shadow>
       </value>
@@ -193,17 +193,21 @@
           <field name="NUM">2000</field>
         </shadow>
       </value>
-    </block>
-    <block type="inout_pwm_analog_write">
-      <value name="PIN">
-        <shadow type="pins_pwm"></shadow>
+        <value name="CHANNEL">
+        <shadow type="channel_select"></shadow>
       </value>
-      <value name="NUM">
+       <value name="NUM">
         <shadow type="math_number">
           <field name="NUM">0</field>
         </shadow>
       </value>
     </block>
+   <!--  <block type="inout_pwm_analog_write">
+      <value name="PIN">
+        <shadow type="pins_pwm"></shadow>
+      </value>
+     
+    </block> -->
     <block type="inout_analog_read">
       <value name="PIN">
         <shadow type="pins_analog"></shadow>
@@ -724,10 +728,21 @@
       <value name="FREQUENCY">
         <shadow type="tone_notes"></shadow>
       </value>
+       <value name="DURATION">
+         <shadow type="math_number">
+          <field name="NUM">200</field>
+        </shadow>
+      </value>
+      <value name="CHANNEL">
+        <shadow type="channel_select"></shadow>
+      </value>
     </block>
     <block type="controls_notone">
       <value name="PIN">
         <shadow type="pins_digital"></shadow>
+      </value>
+       <value name="CHANNEL">
+        <shadow type="channel_select"></shadow>
       </value>
     </block>
     <block type="display_rgb_init">
@@ -878,7 +893,7 @@
   </value>
   <value name="PIN2">
     <shadow type="pins_digital">
-      <field name="PIN">9</field>
+      <field name="PIN">19</field>
     </shadow>
   </value>
   <value name="PIN3">
@@ -944,66 +959,267 @@
   </shadow>
 </value>
 </block>
+ <category id="catoled" name="OLED"> 
+     <!-- OLED 类 --> 
+     <block type="oled_init2"> 
+      <next> 
+       <block type="oled_page"> 
+        <statement name="DO"> 
+         <block type="procedures_callnoreturn"> 
+          <mutation name="page1"></mutation> 
+         </block> 
+        </statement> 
+       </block> 
+      </next> 
+     </block> 
+     <block type="procedures_defnoreturn"> 
+      <field name="NAME">page1</field> 
+      <statement name="STACK"> 
+       <block type="oled_setFont"> 
+        <field name="TYPE">timR08_tr</field> 
+        <next> 
+         <block type="oled_print"> 
+          <value name="POS_X"> 
+           <shadow type="math_number"> 
+            <field name="NUM">0</field>
+           </shadow> 
+          </value> 
+          <value name="POS_Y"> 
+           <shadow type="math_number"> 
+            <field name="NUM">20</field>
+           </shadow> 
+          </value> 
+          <value name="TEXT"> 
+           <shadow type="text"> 
+            <field name="TEXT">1234</field>
+           </shadow> 
+          </value> 
+         </block> 
+        </next> 
+       </block> 
+      </statement> 
+     </block> 
+     <block type="oled_define_bitmap_data"></block> 
+     <block type="oled_clear"></block> 
+     <block type="oled_showBitmap"> 
+      <value name="START_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">0</field>
+       </shadow> 
+      </value> 
+      <value name="START_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">0</field>
+       </shadow> 
+      </value> 
+      <value name="bitmap_name"> 
+       <block type="text"> 
+        <field name="TEXT">bitmap1</field>
+       </block> 
+      </value> 
+     </block> 
+     <block type="oled_draw4Str" > 
+      <value name="Text_line1"> 
+       <shadow type="text"> 
+        <field name="TEXT">Hello,world!</field>
+       </shadow> 
+      </value> 
+      <value name="Text_line2"> 
+       <shadow type="text"> 
+        <field name="TEXT">Mixly</field>
+       </shadow> 
+      </value> 
+      <value name="Text_line3"> 
+       <shadow type="text"> 
+        <field name="TEXT">Design By</field>
+       </shadow> 
+      </value> 
+      <value name="Text_line4"> 
+       <shadow type="text"> 
+        <field name="TEXT">qiujiongtao</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_drawPixe" > 
+      <value name="POS_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">64</field>
+       </shadow> 
+      </value> 
+      <value name="POS_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">32</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_drawLine"> 
+      <value name="START_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="START_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="END_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">15</field>
+       </shadow> 
+      </value> 
+      <value name="END_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">20</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_draw_Str_Line"> 
+      <value name="START_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="START_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="LENGTH"> 
+       <shadow type="math_number"> 
+        <field name="NUM">30</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_drawFrame"> 
+      <value name="D0_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="D0_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="WIDTH"> 
+       <shadow type="math_number"> 
+        <field name="NUM">10</field>
+       </shadow> 
+      </value> 
+      <value name="HEIGHT"> 
+       <shadow type="math_number"> 
+        <field name="NUM">20</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_drawRFrame"> 
+      <value name="D0_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="D0_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">1</field>
+       </shadow> 
+      </value> 
+      <value name="WIDTH"> 
+       <shadow type="math_number"> 
+        <field name="NUM">10</field>
+       </shadow> 
+      </value> 
+      <value name="HEIGHT"> 
+       <shadow type="math_number"> 
+        <field name="NUM">20</field>
+       </shadow> 
+      </value> 
+      <value name="RADIUS"> 
+       <shadow type="math_number"> 
+        <field name="NUM">3</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_drawCircle"> 
+      <value name="D0_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">30</field>
+       </shadow> 
+      </value> 
+      <value name="D0_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">30</field>
+       </shadow> 
+      </value> 
+      <value name="RADIUS"> 
+       <shadow type="math_number"> 
+        <field name="NUM">6</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_drawEllipse"> 
+      <value name="D0_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">30</field>
+       </shadow> 
+      </value> 
+      <value name="D0_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">30</field>
+       </shadow> 
+      </value> 
+      <value name="RADIUS_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">6</field>
+       </shadow> 
+      </value> 
+      <value name="RADIUS_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">15</field>
+       </shadow> 
+      </value> 
+     </block> 
+     <block type="oled_drawTriangle"> 
+      <value name="D0_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">14</field>
+       </shadow> 
+      </value> 
+      <value name="D0_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">
+         55
+        </field>
+       </shadow> 
+      </value> 
+      <value name="D1_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">45</field>
+       </shadow> 
+      </value> 
+      <value name="D1_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">33</field>
+       </shadow> 
+      </value> 
+      <value name="D2_X"> 
+       <shadow type="math_number"> 
+        <field name="NUM">8</field>
+       </shadow> 
+      </value> 
+      <value name="D2_Y"> 
+       <shadow type="math_number"> 
+        <field name="NUM">43</field>
+       </shadow> 
+      </value> 
+     </block> 
+    </category> 
   </category>
   <sep></sep>
   <category id="catVar" colour="330" custom="VARIABLE">
   </category>
   <category id="catFun" custom="PROCEDURE" colour="290"></category>
-  <!-- <category id="catblynkIOT"  name="Blynk IoT" colour="160">
-   <block type="blynk_QR" name="二维码">
-   </block>
-   <block type="blynk_server_esp32" name="服务器信息">
-    <value name="server_add">
-      <shadow type="text">
-        <field name="TEXT">116,62,49,166</field>
-      </shadow>
-    </value>
-    <value name="auth_key">
-      <shadow type="text">
-        <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>
-      </shadow>
-    </value>
-    <value name="wifi_ssid">
-      <shadow type="text">
-        <field name="TEXT">wifi-ssid</field>
-      </shadow>
-    </value>
-    <value name="wifi_pass">
-      <shadow type="text">
-        <field name="TEXT">wifi-pass</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="blynk_smartconfig_esp8266" name="一键配网">
-    <value name="server_add">
-      <shadow type="text">
-        <field name="TEXT">116,62,49,166</field>
-      </shadow>
-    </value>
-    <value name="auth_key">
-      <shadow type="text">
-        <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>
-      </shadow>
-    </value>
- </block>
- <block type="blynk_iot_get_data" name="从app获取数据">
-   <mutation>
-    <arg name="vpin_value" vartype="int">
-    </arg>
-  </mutation>
-  <field name="Vpin">V0</field>
-  <statement name="STACK">
-    <block type="serial_println">
-      <field name="serial_select">Serial</field>
-      <value name="CONTENT">
-        <block type="variables_get" >
-          <field name="VAR">vpin_value</field>
-        </block>
-      </value>
-    </block> 
- -->
   </category>
-
 </xml>
 <script>
   if(company_block!=null){

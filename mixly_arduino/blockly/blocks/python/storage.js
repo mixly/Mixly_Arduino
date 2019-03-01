@@ -69,7 +69,7 @@ Blockly.Blocks['storage_file_write'] = {
          .setCheck('Variable')
          .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_FROM_FILE);
      this.appendDummyInput()
-         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_NO_MORE_THAN_SIZE,'read'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE_NO_MORE_THAN_SIZE,'readline']]),'MODE');
+         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_NO_MORE_THAN_SIZE,'read'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE_NO_MORE_THAN_SIZE,'readline'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES_NO_MORE_THAN_SIZE,'readlines']]),'MODE');
      this.appendValueInput("SIZE")
          .setCheck(Number);
      this.appendDummyInput()
@@ -85,7 +85,8 @@ Blockly.Blocks['storage_file_write'] = {
         var mode2 = Blockly.MIXLY_MICROBIT_PY_STORAGE_CHARACTER;
         var TOOLTIPS = {
         'read': Blockly.MIXLY_MICROBIT_PY_STORAGE_NO_MORE_THAN_SIZE,
-        'readline': Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE_NO_MORE_THAN_SIZE
+        'readline': Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE_NO_MORE_THAN_SIZE,
+        'readlines': Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES_NO_MORE_THAN_SIZE
       };
       return mode0 + TOOLTIPS[mode]+'x'+mode2;
     });
@@ -170,9 +171,10 @@ Blockly.Blocks['storage_file_write'] = {
  Blockly.Blocks['storage_delete_file'] = {
    init: function() {
      this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendDummyInput()
+         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_DELETE_FILE,'remove'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_DELETE_DIRS,'removedirs']]),'MODE');
      this.appendValueInput("FILE")
-         .setCheck(String)
-         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_DELETE_FILE);
+         .setCheck(String);
      this.setInputsInline(true);
      this.setPreviousStatement(true);
      this.setNextStatement(true);
@@ -194,5 +196,142 @@ Blockly.Blocks['storage_file_write'] = {
      this.setNextStatement(false);
      this.setOutput(true, Number);
      this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET_FILE_SIZE+Blockly.MIXLY_MICROBIT_PY_STORAGE_SIZE);
+   }
+ };
+
+ Blockly.Blocks['storage_file_tell'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendValueInput("FILE")
+         .setCheck(String)
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_RETURN_FILE);
+     this.appendDummyInput()
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_PRESENT_LOCATION);
+     this.setInputsInline(true);
+     this.setPreviousStatement(false);
+     this.setNextStatement(false);
+     this.setOutput(true, Number);
+     this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_TELL);
+   }
+ };
+
+ Blockly.Blocks['storage_file_seek'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendValueInput("FILE")
+         .setCheck('Variable')
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_SET_FILE_POSITION);
+     this.appendDummyInput()
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_CURRENT_POSITION);
+     this.appendDummyInput()
+         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_START,'start'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_CURRENT,'current'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_END,'end']]),'MODE');
+     this.appendDummyInput()
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_OFFSET);
+     this.appendValueInput("SIZE")
+         .setCheck(Number);
+     this.appendDummyInput()
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_CHARACTER);
+     this.setInputsInline(true);
+     this.setPreviousStatement(true); //in front of the block has something
+     this.setNextStatement(true);  //beyond the ... has something
+     var thisBlock = this;
+     this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('MODE');
+        var mode0 = Blockly.MIXLY_MICROBIT_PY_STORAGE_SET_FILE_POSITION + Blockly.MIXLY_MICROBIT_PY_STORAGE_CURRENT_POSITION;
+        var mode2 = Blockly.MIXLY_MICROBIT_PY_STORAGE_CHARACTER;
+        var mode3 = Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_OFFSET;
+        var TOOLTIPS = {
+        'start': Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_START,
+        'current': Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_CURRENT,
+        'end': Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_END
+      };
+      return mode0 +" "+ TOOLTIPS[mode]+mode3+'x'+mode2;
+    });
+   }
+ };
+
+ Blockly.Blocks['storage_change_dir'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendValueInput("FILE")
+         .setCheck(String)
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_CHANGE_DIR);
+     this.setInputsInline(true);
+     this.setPreviousStatement(true);
+     this.setNextStatement(true);
+     this.setOutput(false);
+     this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_CHANGE_DIR);
+   }
+ };
+
+ Blockly.Blocks['storage_get_current_dir'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendDummyInput()
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET_CURRENT_DIR);
+     this.setInputsInline(true);
+     this.setPreviousStatement(false);
+     this.setNextStatement(false);
+     this.setOutput(true,'List');
+     this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET_CURRENT_DIR);
+   }
+ };
+
+ Blockly.Blocks['storage_make_dir'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendValueInput("PATH")
+         .setCheck(String)
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_PATH);
+     this.appendDummyInput()
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_CREATE);
+     this.appendDummyInput()
+         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_MKDIR,'mkdir'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKEDIRS,'makedirs']]),'MODE');
+     this.setInputsInline(true);
+     this.setPreviousStatement(true); //in front of the block has something
+     this.setNextStatement(true);  //beyond the ... has something
+     this.setOutput(false);
+     var thisBlock = this;
+     this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('MODE');
+        var mode0 = Blockly.MIXLY_MICROBIT_PY_STORAGE_PATH;
+        var mode2 = Blockly.MIXLY_MICROBIT_PY_STORAGE_CREATE;
+        var TOOLTIPS = {
+        'mkdir': Blockly.MIXLY_MICROBIT_PY_STORAGE_MKDIR,
+        'makedirs': Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKEDIRS
+      };
+      return mode0 +'x'+ mode2 + TOOLTIPS[mode];
+    });
+   }
+ };
+
+ Blockly.Blocks['storage_rename'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendValueInput("FILE")
+         .setCheck(String)
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_RENAME);
+    this.appendValueInput("NEWFILE")
+        .setCheck(String)
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_TO);
+     this.setInputsInline(true);
+     this.setPreviousStatement(true);
+     this.setNextStatement(true);
+     this.setOutput(false);
+     this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_RENAME);
+   }
+ };
+
+ Blockly.Blocks['storage_change_dir'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendValueInput("FILE")
+         .setCheck(String)
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_CHANGE_DIR);
+     this.setInputsInline(true);
+     this.setPreviousStatement(true);
+     this.setNextStatement(true);
+     this.setOutput(false);
+     this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_CHANGE_DIR);
    }
  };

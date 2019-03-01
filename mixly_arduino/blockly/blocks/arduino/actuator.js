@@ -215,11 +215,17 @@ Blockly.Blocks.group_stepper_move={
  @author zyc
  @date 18-12-25
 */
+
+/*
+ @optimize RGB 
+ @author blue
+ @date 19-02-28
+*/
 Blockly.Blocks.display_rgb_init = {
     init: function () {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_RGB)
+            .appendField(Blockly.MIXLY_RGB_INIT)
         this.appendValueInput("PIN", Number)
            .setCheck(Number)
            .setAlign(Blockly.ALIGN_RIGHT)
@@ -231,7 +237,28 @@ Blockly.Blocks.display_rgb_init = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_RGB_INIT);
+        this.setTooltip('');
+    }
+};
+
+
+Blockly.Blocks.display_rgb_setBrightness = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_RGB_SET_BRIGHTNESS)
+        this.appendValueInput("PIN", Number)
+           .setCheck(Number)
+           .setAlign(Blockly.ALIGN_RIGHT)
+           .appendField(Blockly.MIXLY_PIN);
+        this.appendValueInput("Brightness")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_RGB_BRIGHTNESS);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip('');
     }
 };
 
@@ -239,7 +266,7 @@ Blockly.Blocks.display_rgb = {
     init: function () {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_RGB)
+            .appendField(Blockly.MIXLY_RGB_SET_COLOUR)
          this.appendValueInput("PIN", Number)
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -263,14 +290,14 @@ Blockly.Blocks.display_rgb = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_RGB_DISPLAY);
+        this.setTooltip('');
     }
 };
 Blockly.Blocks.display_rgb2 = {
     init: function () {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_RGB)
+            .appendField(Blockly.MIXLY_RGB_SET_COLOUR)
          this.appendValueInput("PIN", Number)
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -285,6 +312,20 @@ Blockly.Blocks.display_rgb2 = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_RGB_DISPLAY2);
+    }
+};
+
+Blockly.Blocks.display_rgb_show = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_RGB_SHOW)
+         this.appendValueInput("PIN", Number)
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_PIN);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
     }
 };

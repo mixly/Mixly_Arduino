@@ -89,7 +89,7 @@
 
   <link rel="stylesheet" type="text/css" href="color_mixpy_python_advance.css" />
   <!-- 过去index.html中的js代码都会被放到这个js中-->
-  <script src = "mixpy_init.js"></script>  
+  <script src = "mixpy_init.js"></script>
   <!-- ACE中字体放缩按钮样式-->
   <link rel="stylesheet" type="text/css" href="ACEfont.css" />
   <style type="text/css">
@@ -248,7 +248,7 @@
           </block>
           <block type="inout_print_many">
           <mutation items="2"></mutation>
-          
+
           <value name="ADD0">
             <block type="text">
               <field name="TEXT">Hello</field>
@@ -259,7 +259,7 @@
               <field name="TEXT">Mixly</field>
             </block>
           </value>
-        </block>  
+        </block>
           <!-- <block type="raw_block"></block> -->
       </category>
       <category id="catControl" colour="120">
@@ -324,7 +324,7 @@
                   <field name="VAR">i</field>
                 </shadow>
           </value>
-          </block>          
+          </block>
           <block type="controls_try_finally"></block>
       <!--0    <block type="controls_repeat_ext">
               <value name="TIMES">
@@ -1265,6 +1265,25 @@
             </shadow>
           </value>
         </block>
+        <block type="storage_file_tell">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_file_seek">
+          <value name="FILE">
+            <shadow type="variables_get">
+              <field name="VAR">f</field>
+            </shadow>
+          </value>
+          <value name="SIZE">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
         <block type="storage_can_write_ornot">
           <value name="FILE">
             <shadow type="variables_get">
@@ -1287,10 +1306,37 @@
           </value>
         </block>
         <block type="storage_list_all_files"> </block>
+        <block type="storage_get_current_dir"> </block>
+        <block type="storage_change_dir">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">path</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_make_dir">
+          <value name="PATH">
+            <shadow type="text">
+              <field name="TEXT">path</field>
+            </shadow>
+          </value>
+        </block>
         <block type="storage_delete_file">
           <value name="FILE">
             <shadow type="text">
               <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_rename">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">srcname.txt</field>
+            </shadow>
+          </value>
+          <value name="NEWFILE">
+            <shadow type="text">
+              <field name="TEXT">dstname.txt</field>
             </shadow>
           </value>
         </block>
@@ -1441,7 +1487,7 @@
                       <field name="NUM">10</field>
                   </shadow>
               </value>
-          </block>          
+          </block>
           <block type="turtle_circle">
               <value name="TUR">
                 <shadow type="variables_get">
@@ -1452,7 +1498,7 @@
                   <shadow type="math_number">
                       <field name="NUM">50</field>
                   </shadow>
-              </value>               
+              </value>
           </block>
           <block type="turtle_circle_advanced">
               <value name="TUR">
@@ -1485,7 +1531,7 @@
                 </shadow>
               </value>
           </block>
-          <block type="turtle_numinput">            
+          <block type="turtle_numinput">
             <value name="TITLE">
                 <shadow type="text">
                   <field name="TEXT">NUM</field>
@@ -1512,7 +1558,7 @@
                   </shadow>
             </value>
           </block>
-          <block type="turtle_textinput">            
+          <block type="turtle_textinput">
             <value name="TITLE">
                 <shadow type="text">
                   <field name="TEXT">Input your name</field>
@@ -1649,7 +1695,7 @@
                 <shadow type="variables_get">
                   <field name="VAR">mydict</field>
                 </shadow>
-              </value>            
+              </value>
             <value name="INDEX">
               <shadow type="list_many_input">
                 <field name="CONTENT">'a','b','c','d'</field>

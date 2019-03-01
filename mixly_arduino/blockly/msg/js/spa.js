@@ -443,6 +443,7 @@ Blockly.MIXLY_SERIAL_FLUSH='flush';
 Blockly.MIXLY_STEP='paso';
 Blockly.MIXLY_TONE_PIN='Tono PIN#';
 Blockly.MIXLY_FREQUENCY='frecuencia';
+Blockly.MIXLY_CHANNEL='channel';
 Blockly.MIXLY_DURATION='duración';
 Blockly.MIXLY_NOTONE_PIN='apagaTono PIN#';
 Blockly.MIXLY_BLOCKGROUP_CATEGORY='BlockGroup';
@@ -932,18 +933,18 @@ Blockly.MIXLY_NOVA_BTN = 'Button ';
 Blockly.MIXLY_NOVA_ABCD = '#';
 
 Blockly.MIXLY_NOVA_TILTSWITCH = 'Tilt Switch';
-Blockly.MIXLY_NOVA_SOUND = 'Sound'; 
-Blockly.MIXLY_NOVA_LIMISWICTH = 'Limit Switch'; 
-Blockly.MIXLY_NOVA_LIGHT = 'Light'; 
+Blockly.MIXLY_NOVA_SOUND = 'Sound';
+Blockly.MIXLY_NOVA_LIMISWICTH = 'Limit Switch';
+Blockly.MIXLY_NOVA_LIGHT = 'Light';
 
-Blockly.MIXLY_NOVA_BUZZER = 'Buzzer'; 
-Blockly.MIXLY_NOVA_FREQUENCY = 'Frequency(Hz)'; 
-Blockly.MIXLY_NOVA_MIXLY_DURATION = 'Duration(ms)'; 
+Blockly.MIXLY_NOVA_BUZZER = 'Buzzer';
+Blockly.MIXLY_NOVA_FREQUENCY = 'Frequency(Hz)';
+Blockly.MIXLY_NOVA_MIXLY_DURATION = 'Duration(ms)';
 
-Blockly.MIXLY_NOVA_MOTOR = 'DC Motor'; 
-Blockly.MIXLY_NOVA_MOTOR_SPEED = 'Speed(-100~100)%'; 
+Blockly.MIXLY_NOVA_MOTOR = 'DC Motor';
+Blockly.MIXLY_NOVA_MOTOR_SPEED = 'Speed(-100~100)%';
 
-Blockly.MIXLY_NOVA_ULTRASONIC = 'Ultrasonic(cm)'; 
+Blockly.MIXLY_NOVA_ULTRASONIC = 'Ultrasonic(cm)';
 
 Blockly.MIXLY_NOVA_DHT11 = 'DHT11';
 Blockly.MIXLY_NOVA_TYPE = 'Type';
@@ -1069,6 +1070,7 @@ Blockly.MIXLY_COMPARETO_HELP = "comparar basado en dictory, igual retrun 0, mayo
 Blockly.Msg.UNDO = "Deshacer";
 Blockly.Msg.REDO = "Rehacer";
 Blockly.MIXLY_CONTROL_END_PROGRAM = "fin del programa";
+Blockly.MIXLY_CONTROL_NOTES = 'Notas:';
 
 //oled
 Blockly.Msg.texttodisplay = "texts to display:";
@@ -1479,7 +1481,7 @@ Blockly.Msg.DICTS_DELETE_IN = "Eliminar entrada ,la clave";
 Blockly.Msg.DICTS_DELETE_VALUE = "Y el correspondiente valor";
 Blockly.Msg.DICTS_DELETE_TOOLTIP = "Eliminar una entrada en el diccionario";
 Blockly.Msg.DICT_CLEAR = "Vaciar todas las entradas en el diccionario";
-Blockly.Msg.DICT_ITEMS = "En la lista de diccionarios"; 
+Blockly.Msg.DICT_ITEMS = "En la lista de diccionarios";
 Blockly.Msg.DICTS_ITEMS_TOOLTIP = "Devuelve una lista incluye un diccionario puede atravesar todas las llaves y el correspondiente valor";
 Blockly.Msg.DICT_VALUES = "Para obtener todos los valores de la clave correspondiente";
 Blockly.Msg.DICTS_VALUES_TOOLTIP = "Devuelve una lista de valores correspondientes a todas las teclas, incluye un diccionario";
@@ -2239,7 +2241,8 @@ Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION='mostrar (imagen/cadena/an
 Blockly.MIXLY_MIXPY_TURTLE_WIDTH = 'pincel width';
 Blockly.MIXLY_TOOLTIP_TURTEL_HEADING='obtenga la dirección actual de la tortuga y vuelva a UN punto flotante';
 Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH='para obtener la longitud actual del pincel de la tortuga, devuelve UN integer';
-
+Blockly.MIXLY_ESP32_THRESHOLD="límite";
+Blockly.MIXLY_TOUCHATTACHINTERRUPT_PIN='Pin de interrupcion de toque';
 Blockly.MIXLY_PYTHON_SYSTEM_EVAL = 'Ejecute el código de texto y obtenga su valor de retorno  El código';
 Blockly.MIXLY_PYTHON_SYSTEM_EVAL_TOOLTIP = 'Devuelve el valor de retorno de los códigos de parámetros, y devuelve ninguno si el código de parámetros no tiene UN valor de retorno';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_USE_STR = 'A través de una cadena';

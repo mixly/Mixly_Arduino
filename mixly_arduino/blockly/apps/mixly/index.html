@@ -4,14 +4,14 @@
   <title>Mixly</title>
   <script type="text/javascript" src="../../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../core/variables.js"></script>
-  <script type="text/javascript" src="../../core/procedures.js"></script> 
+  <script type="text/javascript" src="../../core/procedures.js"></script>
   <script type="text/javascript" src="../../core/blockly.js"></script>
   <script type="text/javascript" src="../../core/events.js"></script>
   <script type="text/javascript" src="../../core/field_textarea.js"></script>
   <script type="text/javascript" src="../../arduino.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
   <script type="text/javascript" src="drag.js"></script>
-  <script type="text/javascript" src="code.js"></script> 
+  <script type="text/javascript" src="code.js"></script>
   <script type="text/javascript" src="digitalPinToInterrupt.js"></script>
   <!--------from BlocklyDuino------------>
   <script type="text/javascript" src="Blob.js"></script>
@@ -253,6 +253,7 @@
   </block>
 </category>
 <category id="catControl"  colour="120">
+ <block type="base_notes"></block>
  <block type="base_setup"></block>
  <block type="controls_end_program"></block>
  <block type="controls_whileUntil">
@@ -624,7 +625,7 @@
 <block type="RFID_on"></block>   <!--如果侦测到信号那么执行XXX-->
 <block type="RFID_readcardnum"></block>  <!--读取卡号-->
 <block type="RFID_in">
-  <value name="uid_">     
+  <value name="uid_">
     <shadow type="text">
       <field name="TEXT">123</field>
     </shadow>
@@ -638,7 +639,7 @@
 </value>
 </block>   <!--写入卡数据块内容-->
 <block type="RFID_readcarddata">
- <value name="address">     
+ <value name="address">
    <shadow type="math_number">
      <field name="NUM">0</field>
    </shadow>
@@ -1340,7 +1341,7 @@
   </block>
 </value>
 </block>
-<block type="ethernet_client_get_request"></block>	
+<block type="ethernet_client_get_request"></block>
 </category>
 <sep></sep>
 <category id="catVar" colour="330" custom="VARIABLE"></category>

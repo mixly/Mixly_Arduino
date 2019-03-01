@@ -47,44 +47,30 @@ Blockly.Arduino.tone_notes = function() {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino.channel_select = function() {
+  var code = this.getFieldValue('STAT');
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 Blockly.Arduino.controls_tone=function(){
+  Blockly.Arduino.definitions_['include_Servo'] = '#include <Tone32.h>';
    var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
    var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',
       Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
+   var duration = Blockly.Arduino.valueToCode(this, 'DURATION', Blockly.Arduino.ORDER_ATOMIC) || '0';
+   var channle = Blockly.Arduino.valueToCode(this, 'CHANNEL',
+      Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
    var code = ""; 
-   if(window.isNaN(dropdown_pin)){
-      code = code+'pinMode('+dropdown_pin+', OUTPUT);\n';
-   }else{
-      Blockly.Arduino.setups_['setup_output_'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
-   }
-   code += "tone("+dropdown_pin+","+fre+");\n";
+   code += "tone("+dropdown_pin+","+fre+","+duration+","+channle+");\n";
    return code;
 };
 
-Blockly.Arduino.controls_tone2=function(){
-   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
-   var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',
-      Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-   var dur = Blockly.Arduino.valueToCode(this, 'DURATION',
-      Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-   var code = ""; 
-   if(window.isNaN(dropdown_pin)){
-      code = code+'pinMode('+dropdown_pin+', OUTPUT);\n';
-   }else{
-      Blockly.Arduino.setups_['setup_output_'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
-   }
-   code += "tone("+dropdown_pin+","+fre+","+dur+");\n";
-   return code;
-};
 
 Blockly.Arduino.controls_notone=function(){
    var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
+    var channle = Blockly.Arduino.valueToCode(this, 'CHANNEL',
+      Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
    var code='';
-   if(window.isNaN(dropdown_pin)){
-     code = code+'pinMode('+dropdown_pin+', OUTPUT);\n';
-   }else{
-     Blockly.Arduino.setups_['setup_output_'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
-   }
    code += "noTone("+dropdown_pin+");\n";
    return code;
 };

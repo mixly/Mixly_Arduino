@@ -442,6 +442,7 @@ Blockly.MIXLY_SERIAL_FLUSH='flush';
 Blockly.MIXLY_STEP='step';
 Blockly.MIXLY_TONE_PIN='Tone PIN#';
 Blockly.MIXLY_FREQUENCY='frequency';
+Blockly.MIXLY_CHANNEL='channel';
 Blockly.MIXLY_DURATION='duration';
 Blockly.MIXLY_NOTONE_PIN='noTone PIN#';
 Blockly.MIXLY_BLOCKGROUP_CATEGORY='BlockGroup';
@@ -927,18 +928,18 @@ Blockly.MIXLY_NOVA_BTN = 'Button ';
 Blockly.MIXLY_NOVA_ABCD = '#';
 
 Blockly.MIXLY_NOVA_TILTSWITCH = 'Tilt Switch';
-Blockly.MIXLY_NOVA_SOUND = 'Sound'; 
-Blockly.MIXLY_NOVA_LIMISWICTH = 'Limit Switch'; 
-Blockly.MIXLY_NOVA_LIGHT = 'Light'; 
+Blockly.MIXLY_NOVA_SOUND = 'Sound';
+Blockly.MIXLY_NOVA_LIMISWICTH = 'Limit Switch';
+Blockly.MIXLY_NOVA_LIGHT = 'Light';
 
-Blockly.MIXLY_NOVA_BUZZER = 'Buzzer'; 
-Blockly.MIXLY_NOVA_FREQUENCY = 'Frequency(Hz)'; 
-Blockly.MIXLY_NOVA_MIXLY_DURATION = 'Duration(ms)'; 
+Blockly.MIXLY_NOVA_BUZZER = 'Buzzer';
+Blockly.MIXLY_NOVA_FREQUENCY = 'Frequency(Hz)';
+Blockly.MIXLY_NOVA_MIXLY_DURATION = 'Duration(ms)';
 
-Blockly.MIXLY_NOVA_MOTOR = 'DC Motor'; 
-Blockly.MIXLY_NOVA_MOTOR_SPEED = 'Speed(-100~100)%'; 
+Blockly.MIXLY_NOVA_MOTOR = 'DC Motor';
+Blockly.MIXLY_NOVA_MOTOR_SPEED = 'Speed(-100~100)%';
 
-Blockly.MIXLY_NOVA_ULTRASONIC = 'Ultrasonic(cm)'; 
+Blockly.MIXLY_NOVA_ULTRASONIC = 'Ultrasonic(cm)';
 
 Blockly.MIXLY_NOVA_DHT11 = 'DHT11';
 Blockly.MIXLY_NOVA_TYPE = 'Type';
@@ -1066,6 +1067,7 @@ Blockly.MIXLY_COMPARETO_HELP="compare based on dictory, equal retrun 0 ,bigger r
 Blockly.Msg.UNDO = "Undo";
 Blockly.Msg.REDO = "Redo";
 Blockly.MIXLY_CONTROL_END_PROGRAM = "end program";
+Blockly.MIXLY_CONTROL_NOTES = 'Notes:';
 
 //oled
 Blockly.Msg.texttodisplay = "texts to display:";
@@ -1082,6 +1084,11 @@ Blockly.Msg.num2 = "Number 2(at end)=";
 Blockly.Msg.num3 = "Number 3(at end)=";
 Blockly.Msg.num4 = "Number 4(at end)=";
 // RGB
+Blockly.MIXLY_RGB_INIT = 'RGB Initialize';
+Blockly.MIXLY_RGB_SET_BRIGHTNESS = 'RGB Set Brightness';
+Blockly.MIXLY_RGB_SET_COLOUR = 'RGB Set colour';
+Blockly.MIXLY_RGB_SHOW = 'RGB Show';
+Blockly.MIXLY_RGB_BRIGHTNESS = 'Brightness';
 Blockly.MIXLY_RGB = 'RGB Light';
 Blockly.MIXLY_RGB_NUM = 'Light number';
 Blockly.MIXLY_RGB_COUNT = 'Light Count';
@@ -1489,7 +1496,7 @@ Blockly.Msg.DICTS_DELETE_IN = "delete clause, key value";
 Blockly.Msg.DICTS_DELETE_VALUE = "and corresponding value";
 Blockly.Msg.DICTS_DELETE_TOOLTIP = "Delete a clause in the dictionary";
 Blockly.Msg.DICT_CLEAR = "clear dictionary";
-Blockly.Msg.DICT_ITEMS = "transform dictionary to a list"; 
+Blockly.Msg.DICT_ITEMS = "transform dictionary to a list";
 Blockly.Msg.DICTS_ITEMS_TOOLTIP = "Return a list, including all the keys and corresponding values that a dictionary can be traversed";
 Blockly.Msg.DICT_VALUES = "get the values corresponding to all keys";
 Blockly.Msg.DICTS_VALUES_TOOLTIP = "Return a list, including the corresponding values of all the keys in a dictionary";
@@ -2255,7 +2262,8 @@ Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_SEQ = 'to make sequence';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_GET_STR = 'joined as a string';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_TOOLTIP = 'the second parameter must be iterable and each item type iterated is a string; The result returns a string';
 Blockly.MIXLY_PYTHON_TURTLE_EXITONCLICK = 'set click the screen to end the turtle';
-
+Blockly.MIXLY_ESP32_THRESHOLD="threshold";
+Blockly.MIXLY_TOUCHATTACHINTERRUPT_PIN='Touch Interrupt Pin';
 Blockly.MIXLY_MICROPYTHON_SOCKET_CONNECT_TO_ADDRESS='connect to address';
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CONNECT_TOOLTIP="connects a socket to a network address";
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE ="get active state";

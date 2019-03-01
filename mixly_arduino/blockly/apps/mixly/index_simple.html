@@ -4,7 +4,7 @@
   <title>Mixly</title>
   <script type="text/javascript" src="../../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../core/variables.js"></script>
-  <script type="text/javascript" src="../../core/procedures.js"></script> 
+  <script type="text/javascript" src="../../core/procedures.js"></script>
   <script type="text/javascript" src="../../core/blockly.js"></script>
   <script type="text/javascript" src="../../core/events.js"></script>
   <script type="text/javascript" src="../../arduino.js"></script>
@@ -236,6 +236,7 @@
     </block>
   </category>
   <category id="catControl" colour="120">
+    <block type="base_notes"></block>
     <block type="base_setup"></block>
     <block type="controls_end_program"></block>
      <block type="controls_whileUntil">
@@ -723,6 +724,16 @@
         </shadow>
       </value>
     </block>
+    <block type="display_rgb_setBrightness">
+      <value name="PIN">
+        <shadow type="pins_digital" />
+      </value>
+      <value name="Brightness">
+        <shadow type="math_number">
+          <field name="NUM">30</field>
+        </shadow>
+    </value>
+    </block>
     <block type="display_rgb">
       <value name="PIN">
         <shadow type="pins_digital" />
@@ -757,6 +768,11 @@
           <field name="NUM">1</field>
         </shadow>
       </value>
+    </block>
+    <block type="display_rgb_show">
+        <value name="PIN">
+            <shadow type="pins_digital" />
+        </value>
     </block>
   </category>
   <category id="catMonitor" colour="180">
@@ -892,10 +908,10 @@
     </value>
   </block>
   <block type="Matrix_img">
-  </block>	
+  </block>
   <block type="display_Matrix_CLEAR">
   </block>
-  
+
 </category>
 <sep></sep>
 <category id="catVar" colour="330" custom="VARIABLE">

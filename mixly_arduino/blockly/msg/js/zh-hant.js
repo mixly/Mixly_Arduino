@@ -9,7 +9,7 @@ Blockly.Msg.ADD_COMMENT = "添加注釋";
 Blockly.Msg.AUTH = "請授權這個應用程序以保存您的作品並共亯。";
 Blockly.Msg.CHANGE_VALUE_TITLE = "更改值：";
 Blockly.Msg.CHAT = "通過在此框輸入與您的合作者溝通！";
-Blockly.Msg.CLEAN_UP = "清理塊"; 
+Blockly.Msg.CLEAN_UP = "清理塊";
 Blockly.Msg.COLLAPSE_ALL = "折疊塊";
 Blockly.Msg.COLLAPSE_BLOCK = "折疊塊";
 Blockly.Msg.COLOUR_BLEND_COLOUR1 = "顏色1";
@@ -442,6 +442,7 @@ Blockly.MIXLY_SERIAL_FLUSH='清空緩存區數據';
 Blockly.MIXLY_STEP='步長為';
 Blockly.MIXLY_TONE_PIN='播放聲音管脚#';
 Blockly.MIXLY_FREQUENCY='頻率';
+Blockly.MIXLY_CHANNEL='通道';
 Blockly.MIXLY_DURATION='持續時間';
 Blockly.MIXLY_NOTONE_PIN='結束聲音管脚#';
 Blockly.MIXLY_BLOCKGROUP_CATEGORY='模塊組';
@@ -924,18 +925,18 @@ Blockly.MIXLY_NOVA_BTN = '按鈕';
 Blockly.MIXLY_NOVA_ABCD = '#';
 
 Blockly.MIXLY_NOVA_TILTSWITCH = '傾斜開關';
-Blockly.MIXLY_NOVA_SOUND = '聲音傳感器'; 
-Blockly.MIXLY_NOVA_LIMISWICTH = '限位開關'; 
-Blockly.MIXLY_NOVA_LIGHT = '光敏'; 
+Blockly.MIXLY_NOVA_SOUND = '聲音傳感器';
+Blockly.MIXLY_NOVA_LIMISWICTH = '限位開關';
+Blockly.MIXLY_NOVA_LIGHT = '光敏';
 
-Blockly.MIXLY_NOVA_BUZZER = '蜂鳴器'; 
-Blockly.MIXLY_NOVA_FREQUENCY = '頻率(Hz)'; 
-Blockly.MIXLY_NOVA_MIXLY_DURATION = '持續時間(ms)'; 
+Blockly.MIXLY_NOVA_BUZZER = '蜂鳴器';
+Blockly.MIXLY_NOVA_FREQUENCY = '頻率(Hz)';
+Blockly.MIXLY_NOVA_MIXLY_DURATION = '持續時間(ms)';
 
-Blockly.MIXLY_NOVA_MOTOR = '直流電機'; 
-Blockly.MIXLY_NOVA_MOTOR_SPEED = '轉速(-100~100)%'; 
+Blockly.MIXLY_NOVA_MOTOR = '直流電機';
+Blockly.MIXLY_NOVA_MOTOR_SPEED = '轉速(-100~100)%';
 
-Blockly.MIXLY_NOVA_ULTRASONIC = '超聲波測距(cm)'; 
+Blockly.MIXLY_NOVA_ULTRASONIC = '超聲波測距(cm)';
 
 Blockly.MIXLY_NOVA_DHT11 = '溫濕度';
 Blockly.MIXLY_NOVA_TYPE = '類型';
@@ -1063,6 +1064,7 @@ Blockly.MIXLY_COMPARETO_HELP="按字典順序比較，相等則返回0，大於�
 Blockly.Msg.UNDO = "還原";
 Blockly.Msg.REDO = "重試";
 Blockly.MIXLY_CONTROL_END_PROGRAM = "停止程序";
+Blockly.MIXLY_CONTROL_NOTES = '注釋:';
 
 //oled
 Blockly.Msg.texttodisplay = "顯示文本：";
@@ -1079,6 +1081,11 @@ Blockly.Msg.num2 = "數字2";
 Blockly.Msg.num3 = "數字3";
 Blockly.Msg.num4 = "數字4";
 // RGB
+Blockly.MIXLY_RGB_INIT = 'RGB燈初始化';
+Blockly.MIXLY_RGB_SET_BRIGHTNESS = 'RGB燈設置亮度';
+Blockly.MIXLY_RGB_SET_COLOUR = 'RGB燈設置顏色';
+Blockly.MIXLY_RGB_SHOW = 'RGB燈設置生效';
+Blockly.MIXLY_RGB_BRIGHTNESS = '亮度';
 Blockly.MIXLY_RGB = 'RGB燈';
 Blockly.MIXLY_RGB_NUM = '燈號';
 Blockly.MIXLY_RGB_COUNT = '燈數';
@@ -1488,7 +1495,7 @@ Blockly.Msg.DICTS_DELETE_IN = "中刪除條目 鍵值";
 Blockly.Msg.DICTS_DELETE_VALUE = "及對應值";
 Blockly.Msg.DICTS_DELETE_TOOLTIP = "刪除字典中某個條目";
 Blockly.Msg.DICT_CLEAR = "清空字典中所有陣列";
-Blockly.Msg.DICT_ITEMS = "字典轉化為陣列"; 
+Blockly.Msg.DICT_ITEMS = "字典轉化為陣列";
 Blockly.Msg.DICTS_ITEMS_TOOLTIP = "返回一個清單，包括一個字典可遍歷的所有鍵和對應值";
 Blockly.Msg.DICT_VALUES = "獲取所有鍵對應的值";
 Blockly.Msg.DICTS_VALUES_TOOLTIP = "返回一個清單，包括一個字典所有鍵的對應值";
@@ -2210,7 +2217,8 @@ Blockly.MIXLY_ESP32_INOUT_PIN_PRESSED_TOOLTIP = "獲取某管腳觸摸感測器�
 Blockly.MIXLY_ESP32_INOUT_PIN_ATTACHINTERRUPT_TOOLTIP = "設置某個管腳中斷的模式為上升、下降或者改變，並且設置回呼函數";
 Blockly.MIXLY_ESP32_INOUT_ANALOG_WRITE_INIT_TOOLTIP = "初始化某管腳為模擬輸出的管腳";
 Blockly.MIXLY_ESP32_INOUT_ANALOG_WRITE_TOOLTIP = "設置某管腳的模擬輸出的值";
-
+Blockly.MIXLY_ESP32_THRESHOLD="閾值";
+Blockly.MIXLY_TOUCHATTACHINTERRUPT_PIN='觸摸中斷 管腳';
 Blockly.MIXLY_PYTHON_CONTROLS_PASS_TOOLTIP = "跳過";
 Blockly.MIXLY_PYTHON_CONTROLS_RANGE_TOOLTIP = "返回從開始數到結尾數，步長為第三個參數的列表";
 Blockly.MIXLY_PYTHON_CONTROLS_FOR_RANGE_TOOLTIP = "從起始數到結尾數中取出變數“%1”的值，按指定的間隔，執行指定的塊";//thinking

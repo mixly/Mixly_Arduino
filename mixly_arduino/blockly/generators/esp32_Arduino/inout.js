@@ -87,11 +87,13 @@ Blockly.Arduino.inout_digital_read2 = function () {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino.inout_pwm_analog_write_set_freq = function () {
+Blockly.Arduino.inout_pwm_analog_write= function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     //var dropdown_stat = this.getFieldValue('STAT');
     var FREQ = Blockly.Arduino.valueToCode(this, 'FREQ', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_['PWMC_CHANNEL_'+dropdown_pin] = '#define PWMC_CHANNEL_'+dropdown_pin+' 0';
+    var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
+     var channle = Blockly.Arduino.valueToCode(this, 'CHANNEL',Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
+    Blockly.Arduino.definitions_['PWMC_CHANNEL_'+dropdown_pin] = '#define PWMC_CHANNEL_'+dropdown_pin+' '+channle;
     Blockly.Arduino.definitions_['PWM_PIN'+dropdown_pin] = '#define PWM_PIN'+dropdown_pin+' '+dropdown_pin;
     Blockly.Arduino.definitions_['PWMC_TIMER_13_BIT'] = '#define PWMC_TIMER_13_BIT  13';
     Blockly.Arduino.definitions_['PWMC_BASE_FREQ'+dropdown_pin] = '#define PWMC_BASE_FREQ'+dropdown_pin+'  '+FREQ;
@@ -102,30 +104,25 @@ Blockly.Arduino.inout_pwm_analog_write_set_freq = function () {
     code2+='ledcWrite(channel, duty);\n}\n';
     Blockly.Arduino.definitions_['ledcAnalogWrite'] = code2;
     var code="";
+     var code = 'ledcAnalogWrite(PWMC_CHANNEL_' + dropdown_pin + ',' + value_num + ');\n';
     return code;
 };
 
-Blockly.Arduino.inout_pwm_analog_write = function () {
-    var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
-    var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
-    var code = 'ledcAnalogWrite(PWMC_CHANNEL_' + dropdown_pin + ',' + value_num + ');\n';
-    return code;
-};
+
 Blockly.Arduino.inout_analog_read = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     var code = 'analogRead(' + dropdown_pin + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-
-Blockly.Arduino.controls_attachInterrupt = function () {
+Blockly.Arduino.touchAttachInterrupt = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
-    var dropdown_mode = this.getFieldValue('mode');
-    Blockly.Arduino.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT);';
+     var threshold = Blockly.Arduino.valueToCode(this, 'threshold', Blockly.Arduino.ORDER_ATOMIC);
+    
+    Blockly.Arduino.setups_['touchAttachInterrupt' + dropdown_pin] = 'touchAttachInterrupt(' + dropdown_pin +',gotTouch'+dropdown_pin+', '+threshold+');';
     //var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
-    var interrupt_pin = 'digitalPinToInterrupt(' + dropdown_pin + ')';
-    var code = 'attachInterrupt' + '(' + interrupt_pin + ',' + 'attachInterrupt_fun_' + dropdown_pin + ',' + dropdown_mode + ');\n'
-    var funcName = 'attachInterrupt_fun_' + dropdown_pin;
+    var code = '';
+    var funcName = 'gotTouch'+dropdown_pin;
     var branch = Blockly.Arduino.statementToCode(this, 'DO');
     var code2 = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
     Blockly.Arduino.definitions_[funcName] = code2;

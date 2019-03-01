@@ -79,7 +79,7 @@ Blockly.Arduino.controls_for = function () {
             variable0 + ' = ' + variable0 + ' + (' + step + ')) {\n' +
             branch + '}\n';
     } else {
-        //起止数有变量	  
+        //起止数有变量
         if (step.match(/^-?\d+(\.\d+)?$/)) {
             //步长是常量
             down = step < 0;
@@ -172,3 +172,24 @@ Blockly.Arduino.controls_nointerrupts = function () {
     return 'noInterrupts();\n';
 };
 Blockly.Arduino.base_delay=Blockly.Arduino.controls_delay;
+
+Blockly.Arduino.base_notes = function(){
+     var content = this.getFieldValue('VALUE');
+     console.log(content);
+     if(content){
+        var content2arr = content.split('\n');
+         var code = '';
+         for (var eachElement in content2arr){
+            console.log(content2arr[eachElement]);
+            content2arr[eachElement] = '//'+ content2arr[eachElement] +'\n';
+            console.log(content2arr[eachElement]);
+         }
+         for (var eachElement of content2arr){
+            code += eachElement;
+         }
+         return code;
+     }
+     else{
+        return '//\n';
+     }
+}
