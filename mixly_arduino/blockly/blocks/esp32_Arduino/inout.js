@@ -166,7 +166,7 @@ Blockly.Blocks.touchAttachInterrupt = {
   init: function() {
     this.setColour(20);
     this.appendValueInput("PIN", Number)
-    .appendField(Blockly.MIXLY_ATTACHINTERRUPT_PIN)
+    .appendField(Blockly.MIXLY_TOUCHATTACHINTERRUPT_PIN)
     .setCheck(Number);
      this.appendValueInput("threshold", Number)
     .appendField(Blockly.MIXLY_ESP32_THRESHOLD)

@@ -2253,6 +2253,7 @@ Blockly.MIXLY_ESP32_INOUT_PIN_ATTACHINTERRUPT_TOOLTIP = "设置某个管脚中�
 Blockly.MIXLY_ESP32_INOUT_ANALOG_WRITE_INIT_TOOLTIP = "初始化某管脚为模拟输出的管脚";
 Blockly.MIXLY_ESP32_INOUT_ANALOG_WRITE_TOOLTIP = "设置某管脚的模拟输出的值";
 Blockly.MIXLY_ESP32_THRESHOLD="阈值";
+Blockly.MIXLY_TOUCHATTACHINTERRUPT_PIN='触摸中断 管脚';
 Blockly.MIXLY_PYTHON_CONTROLS_PASS_TOOLTIP = "跳过";
 Blockly.MIXLY_PYTHON_CONTROLS_RANGE_TOOLTIP = "返回从开始数到结尾数，步长为第三个参数的列表";//thinking
 Blockly.MIXLY_PYTHON_CONTROLS_FOR_RANGE_TOOLTIP = "从起始数到结尾数中取出变量“%1”的值，按指定的间隔，执行指定的块";//thinking
