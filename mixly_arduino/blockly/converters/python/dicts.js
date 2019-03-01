@@ -94,4 +94,26 @@ pbc.objectFunctionD.get('values')['Dict'] = function(py2block, func, args, keywo
 };
 
 
-
+pbc.globalFunctionD['dict'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length > 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    if (args.length ==0){
+        return block("dicts_create_with_noreturn", node.lineno, {},{}
+            , {
+                "inline": "true",
+            }, {
+                "@items": 0
+            });
+    }
+    if (args.length ==1){
+        var objblock = py2block.convert(args[0]);
+        return block("variables_change", func.lineno, {
+            'OP':"dict"
+        }, {
+        "MYVALUE": objblock,
+    }, {
+        "inline": "false"
+    });
+    }
+}

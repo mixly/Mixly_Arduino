@@ -179,8 +179,8 @@ Blockly.Python.dicts_setdefault = function() {
 
 Blockly.Python.dicts_create_with_noreturn = function() {
   // Create a list with any number of elements of any type.
-   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
-    Blockly.Variables.NAME_TYPE);
+  // var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
+  //  Blockly.Variables.NAME_TYPE);
   //var size=window.parseFloat(this.getFieldValue('SIZE'));
   var code = new Array(this.itemCount_);
   var default_value = '0';

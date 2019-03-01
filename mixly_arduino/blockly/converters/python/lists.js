@@ -187,12 +187,33 @@ pbc.globalFunctionD['list'] = function(py2block, func, args, keywords, starargs,
         throw new Error("Incorrect number of arguments");
     }
     if (args.length ==0){
-        return block("lists_create_with_noreturn", node.lineno, {},
-            this.convertElements("ADD", elts)
+        return block("lists_create_with_noreturn", node.lineno, {},{}
             , {
                 "inline": "true",
             }, {
-                "@items": elts.length
+                "@items": 0
             });
     }
+    if (args.length ==1){
+        var objblock = py2block.convert(args[0]);
+        return block("variables_change", func.lineno, {
+            'OP':"list"
+        }, {
+        "MYVALUE": objblock,
+    }, {
+        "inline": "false"
+    });
+    }
 }
+
+pbc.globalFunctionD['zip'] = function(py2block, func, args, keywords, starargs, kwargs, node){    
+    
+        var d = py2block.convertElements("ADD", args);
+        
+        return block("lists_zip", node.lineno, {
+        }, d, {
+            "inline": "true",
+        }, {
+            "@items":args.length
+        });
+    }

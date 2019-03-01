@@ -2310,6 +2310,10 @@ Blockly.MIXLY_PYTHON_MATH_CONSTANT = "常数";
 Blockly.MIXLY_PYTHON_MATH_CONSTANT_PI_TOOLTIP = "圆周率常数的近似值（保留小数点后15位）";
 Blockly.MIXLY_PYTHON_MATH_CONSTANT_E_TOOLTIP = "自然常数的近似值（保留小数点后15位）";
 Blockly.MIXLY_ESP32_DISPLAY_ANIMATE = "内置动画";
+Blockly.MIXLY_PYTHON_LISTS_ZIP_ITEM = "迭代器";
+Blockly.MIXLY_PYTHON_LISTS_ZIP_ITEM_TOOLTIP='将迭代器拖入或拖出右侧的组块以改变打印的参数个数';
+Blockly.MIXLY_PYTHON_LISTS_ZIP = "打包迭代器";
+Blockly.MIXLY_PYTHON_LISTS_ZIP_TOOLTIP = "将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。如果各个迭代器的元素个数不一致，则返回列表的长度与最短的对象相同";
 ////////blynk////////////////////////////
 Blockly.blynk_IOT_AUTH='Blynk授权码';
 Blockly.blynk_WIFI_SSID='Wi-Fi名称';

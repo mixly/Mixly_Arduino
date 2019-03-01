@@ -554,7 +554,7 @@ Blockly.Blocks['dicts_create_with_noreturn'] = {
   init: function () {
         this.setColour(Blockly.Blocks.dicts.HUE);
         this.appendDummyInput("")
-            .appendField(new Blockly.FieldTextInput('mydict'), 'VAR')
+        //    .appendField(new Blockly.FieldTextInput('mydict'), 'VAR')
             .appendField(new Blockly.FieldLabel(Blockly.Msg.DICTS_CREATE_WITH_INPUT_WITH), 'TIP')
         this.itemCount_ = 3;
         this.updateShape_();

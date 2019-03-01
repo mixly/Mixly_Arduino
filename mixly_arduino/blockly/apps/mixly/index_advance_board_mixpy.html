@@ -787,6 +787,19 @@
       <category id="catMicropyLists" colour="260">
           <block type="lists_create_with"></block>
           <block type="lists_create_with_text"></block>
+          <block type="lists_zip">
+          <mutation items="2"></mutation>          
+          <value name="ADD0">
+            <block type="list_many_input">
+              <field name="CONTENT">0,1,2,3</field>
+            </block>
+          </value>
+          <value name="ADD1">
+            <block type="list_many_input">
+              <field name="CONTENT">0,1,2,3</field>
+            </block>
+          </value>
+        </block>
           <block type="lists_get_index">
             <value name="LIST">
               <shadow type="variables_get">

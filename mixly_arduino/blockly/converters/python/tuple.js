@@ -23,3 +23,27 @@ pbc.assignD.get('Tuple')['create_block'] = function (py2block, node, targets, va
 //max/min在math里已实现
 
 //list(mytuple), set(mytup)在lists.js中实现
+
+pbc.globalFunctionD['tuple'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length > 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    if (args.length ==0){
+        return block("tuple_create_with_noreturn", node.lineno, {},{}
+            , {
+                "inline": "true",
+            }, {
+                "@items": 0
+            });
+    }
+    if (args.length ==1){
+        var objblock = py2block.convert(args[0]);
+        return block("variables_change", func.lineno, {
+            'OP':"tuple"
+        }, {
+        "MYVALUE": objblock,
+    }, {
+        "inline": "false"
+    });
+    }
+}

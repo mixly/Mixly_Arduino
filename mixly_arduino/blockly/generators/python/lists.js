@@ -304,3 +304,14 @@ Blockly.Python['lists_setIndex3'] = Blockly.Python['lists_set_index']
 Blockly.Python['lists_insert_value2'] = Blockly.Python['lists_insert_value']
 Blockly.Python['lists_remove_at2'] = Blockly.Python['lists_remove_at']
 
+Blockly.Python.lists_zip = function() {    
+  var dropdown_type = this.getFieldValue('TYPE');  
+  var code = new Array(this.itemCount_);
+  var default_value = '[]';
+  for (var n = 0; n < this.itemCount_; n++) {
+     code[n] = Blockly.Python.valueToCode(this, 'ADD' + n,
+    Blockly.Python.ORDER_NONE) || default_value;
+  }
+  var code = 'zip(' + code.join(', ') + ')';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};

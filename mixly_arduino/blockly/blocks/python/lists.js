@@ -720,6 +720,127 @@ Blockly.Blocks['lists_del_general'] = {
   }
 };
 
+Blockly.Blocks['lists_zip'] = {
+    init: function() {
+    this.setColour(Blockly.Blocks.lists.HUE);
+    
+    this.itemCount_ = 2;
+    this.updateShape_();
+    this.setInputsInline(true);
+    this.setPreviousStatement(false);
+    this.setNextStatement(false);
+    this.setOutput(true, "List")
+    this.setMutator(new Blockly.Mutator(['lists_zip_item']));    
+    this.setTooltip(Blockly.MIXLY_PYTHON_LISTS_ZIP_TOOLTIP);
+  },
+  
+  mutationToDom: function() {
+    var container = document.createElement('mutation');
+    container.setAttribute('items', this.itemCount_);
+    return container;
+  },
+
+  domToMutation: function(xmlElement) {
+    this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
+    this.updateShape_();
+  },
+
+  decompose: function(workspace) {
+    var containerBlock =
+        Blockly.Block.obtain(workspace, 'lists_zip_container');
+    containerBlock.initSvg();
+    var connection = containerBlock.getInput('STACK').connection;
+    for (var i = 0; i < this.itemCount_; i++) {
+      var itemBlock = Blockly.Block.obtain(workspace, 'lists_zip_item');
+      itemBlock.initSvg();
+      connection.connect(itemBlock.previousConnection);
+      connection = itemBlock.nextConnection;
+    }
+    return containerBlock;
+  },
+
+  compose: function(containerBlock) {
+    var itemBlock = containerBlock.getInputTargetBlock('STACK');
+    // Count number of inputs.
+    var connections = [];
+    var i = 0;
+    while (itemBlock) {
+      connections[i] = itemBlock.valueConnection_;
+      itemBlock = itemBlock.nextConnection &&
+          itemBlock.nextConnection.targetBlock();
+      i++;
+    }
+    this.itemCount_ = i;
+    this.updateShape_();
+    // Reconnect any child blocks.
+    for (var i = 0; i < this.itemCount_; i++) {
+      if (connections[i]) {
+        this.getInput('ADD' + i).connection.connect(connections[i]);
+      }
+    }
+  },
+
+  saveConnections: function(containerBlock) {
+    var itemBlock = containerBlock.getInputTargetBlock('STACK');
+    var i = 0;
+    while (itemBlock) {
+      var input = this.getInput('ADD' + i);
+      itemBlock.valueConnection_ = input && input.connection.targetConnection;
+      i++;
+      itemBlock = itemBlock.nextConnection &&
+          itemBlock.nextConnection.targetBlock();
+    }
+  },
+
+  updateShape_: function() {
+    // Delete everything.
+    if (this.getInput('EMPTY')) {
+      this.removeInput('EMPTY');
+    } else {
+      var i = 0;
+      while (this.getInput('ADD' + i)) {
+        this.removeInput('ADD' + i);
+        i++;
+      }
+    }
+    // Rebuild block.
+    if (this.itemCount_ == 0) {
+      this.appendDummyInput('EMPTY')
+          .appendField(Blockly.MIXLY_PYTHON_LISTS_ZIP);
+    } else {
+      for (var i = 0; i < this.itemCount_; i++) {
+        var input = this.appendValueInput('ADD' + i);
+        if (i == 0) {
+          input.appendField(Blockly.MIXLY_PYTHON_LISTS_ZIP);
+        }
+      }
+    }
+  }
+};
+Blockly.Blocks['lists_zip_container'] = {  
+  init: function() {
+    this.setColour(Blockly.Blocks.lists.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_PYTHON_LISTS_ZIP)
+        .appendField('[]');
+    this.appendStatementInput('STACK');
+    this.setTooltip(Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP);
+    this.contextMenu = false;
+  }
+};
+
+Blockly.Blocks['lists_zip_item'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.lists.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_PYTHON_LISTS_ZIP_ITEM);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_PYTHON_LISTS_ZIP_ITEM_TOOLTIP);
+    this.contextMenu = false;
+  }
+};
+
 Blockly.Blocks['lists_create_with2'] = Blockly.Blocks['lists_create_with']
 Blockly.Blocks['lists_create_with_text2'] = Blockly.Blocks['lists_create_with_text']
 Blockly.Blocks['lists_getIndex3'] = Blockly.Blocks['lists_get_index']
