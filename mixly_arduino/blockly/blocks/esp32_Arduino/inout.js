@@ -162,15 +162,16 @@ Blockly.Blocks.inout_buildin_led = {
  }
 };
 
-Blockly.Blocks.controls_attachInterrupt = {
+Blockly.Blocks.touchAttachInterrupt = {
   init: function() {
     this.setColour(20);
     this.appendValueInput("PIN", Number)
     .appendField(Blockly.MIXLY_ATTACHINTERRUPT_PIN)
     .setCheck(Number);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_MODE)
-    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RISING, "RISING"], [Blockly.MIXLY_FALLING, "FALLING"], [Blockly.MIXLY_CHANGE, "CHANGE"]]), "mode");
+     this.appendValueInput("threshold", Number)
+    .appendField(Blockly.MIXLY_ESP32_THRESHOLD)
+    .setCheck(Number);
+    this.appendDummyInput("");
     this.appendStatementInput('DO')
     .appendField(Blockly.MIXLY_DO);
     this.setPreviousStatement(true);

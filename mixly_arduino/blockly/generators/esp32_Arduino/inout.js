@@ -115,15 +115,14 @@ Blockly.Arduino.inout_analog_read = function () {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-
-Blockly.Arduino.controls_attachInterrupt = function () {
+Blockly.Arduino.touchAttachInterrupt = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
-    var dropdown_mode = this.getFieldValue('mode');
-    Blockly.Arduino.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT);';
+     var threshold = Blockly.Arduino.valueToCode(this, 'threshold', Blockly.Arduino.ORDER_ATOMIC);
+    
+    Blockly.Arduino.setups_['touchAttachInterrupt' + dropdown_pin] = 'touchAttachInterrupt(' + dropdown_pin +',gotTouch'+dropdown_pin+', '+threshold+');';
     //var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
-    var interrupt_pin = 'digitalPinToInterrupt(' + dropdown_pin + ')';
-    var code = 'attachInterrupt' + '(' + interrupt_pin + ',' + 'attachInterrupt_fun_' + dropdown_pin + ',' + dropdown_mode + ');\n'
-    var funcName = 'attachInterrupt_fun_' + dropdown_pin;
+    var code = '';
+    var funcName = 'gotTouch'+dropdown_pin;
     var branch = Blockly.Arduino.statementToCode(this, 'DO');
     var code2 = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
     Blockly.Arduino.definitions_[funcName] = code2;
