@@ -115,6 +115,29 @@ Blockly.Arduino.inout_analog_read = function () {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino.controls_attachInterrupt = function () {
+    var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+    var dropdown_mode = this.getFieldValue('mode');
+      Blockly.Arduino.definitions_['pin_interrupt'] = '#include <Arduino.h>';
+    Blockly.Arduino.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT_PULLUP);';
+    //var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
+   // var interrupt_pin = 'digitalPinToInterrupt(' + dropdown_pin + ')';
+    var code = 'attachInterrupt' + '(' + dropdown_pin + ',' + 'attachInterrupt_fun_' + dropdown_pin + ',' + dropdown_mode + ');\n'
+    var funcName = 'attachInterrupt_fun_' + dropdown_pin;
+    var branch = Blockly.Arduino.statementToCode(this, 'DO');
+    var code2 = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
+    Blockly.Arduino.definitions_[funcName] = code2;
+    return code;
+};
+
+Blockly.Arduino.controls_detachInterrupt = function () {
+    var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+    Blockly.Arduino.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT);';
+    //var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
+    var interrupt_pin = 'digitalPinToInterrupt(' + dropdown_pin + ')';
+    var code = 'detachInterrupt' + '(' + interrupt_pin + ');\n'
+    return code;
+};
 Blockly.Arduino.touchAttachInterrupt = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
      var threshold = Blockly.Arduino.valueToCode(this, 'threshold', Blockly.Arduino.ORDER_ATOMIC);

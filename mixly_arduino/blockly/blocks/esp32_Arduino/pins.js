@@ -11,6 +11,14 @@ Blockly.Blocks['pins_digital'] = {
     this.setOutput(true);
   }
 };
+Blockly.Blocks['pins_interrupt'] = {
+   init: function() {
+    this.setColour(Blockly.Blocks.pins.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.interrupt), 'PIN');
+    this.setOutput(true);
+  }
+};
 
 // Blockly.Blocks['pins_digital_pin'] = {
 //    init: function() {

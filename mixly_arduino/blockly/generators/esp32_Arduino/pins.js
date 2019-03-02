@@ -6,14 +6,9 @@ Blockly.Arduino.pins_digital = function() {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 Blockly.Arduino.pins_button=Blockly.Arduino.pins_digital;
-Blockly.Arduino.pins_digital_pin=Blockly.Arduino.pins_digital;
-Blockly.Arduino.pins_analog_pin=Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_analog=Blockly.Arduino.pins_digital;
-Blockly.Arduino.pins_pwm_pin=Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_pwm=Blockly.Arduino.pins_digital;
-Blockly.Arduino.pins_dac_pin = Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_dac = Blockly.Arduino.pins_digital;
-Blockly.Arduino.pins_touch_pin = Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_touch = Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_interrupt=Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_serial=Blockly.Arduino.pins_digital;

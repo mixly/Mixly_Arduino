@@ -162,6 +162,35 @@ Blockly.Blocks.inout_buildin_led = {
  }
 };
 
+Blockly.Blocks.controls_attachInterrupt = {
+  init: function() {
+    this.setColour(20);
+    this.appendValueInput("PIN", Number)
+        .appendField(Blockly.MIXLY_ATTACHINTERRUPT_PIN)
+        .setCheck(Number);
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_MODE)
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_RISING, "RISING"], [Blockly.MIXLY_FALLING, "FALLING"], [Blockly.MIXLY_CHANGE, "CHANGE"]]), "mode");
+    this.appendStatementInput('DO')
+        .appendField(Blockly.MIXLY_DO);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
+  }
+};
+
+Blockly.Blocks.controls_detachInterrupt = {
+  init: function() {
+    this.setColour(20);
+    this.appendValueInput("PIN", Number)
+        .appendField(Blockly.MIXLY_DETACHINTERRUPT_PIN)
+        .setCheck(Number);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_DETACHINTERRUPT);
+  }
+};
 Blockly.Blocks.touchAttachInterrupt = {
   init: function() {
     this.setColour(20);
