@@ -31,7 +31,7 @@ Blockly.Arduino.blynk_smartconfig_esp8266 = function() {
 Blockly.Arduino.blynk_smartconfig_esp32 = function() {
 	var auth_key = Blockly.Arduino.valueToCode(this, 'auth_key', Blockly.Arduino.ORDER_ATOMIC);
 	var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['defineBLYNK'] ='#define BLYNK_PRINT SwSerial\n#include <WiFi.h>\n#include <WiFiClient.h>\n#include <BlynkSimpleEsp32.h>\n#include <TimeLib.h>\n#include <WidgetRTC.h>';
+	Blockly.Arduino.definitions_['defineBLYNK'] ='#define BLYNK_PRINT Serial\n#include <WiFi.h>\n#include <WiFiClient.h>\n#include <BlynkSimpleEsp32.h>\n#include <TimeLib.h>\n#include <WidgetRTC.h>';
 	Blockly.Arduino.definitions_['auth_key'] ='char auth[] = '+auth_key+';';
 	Blockly.Arduino.setups_['setup_smartconfig'] = 'Serial.begin(9600);\nWiFi.mode(WIFI_STA);\nint cnt = 0;\nwhile (WiFi.status() != WL_CONNECTED) {\ndelay(500); \nSerial.print("."); \nif (cnt++ >= 10) {\nWiFi.beginSmartConfig();\nwhile (1) {\ndelay(1000);\nif (WiFi.smartConfigDone()) {\nSerial.println();\nSerial.println("SmartConfig: Success");\nbreak;\n}\nSerial.print("|");\n}\n}\n}  WiFi.printDiag(Serial);\n';
 	if(isNaN(server_add.charAt(2)))
@@ -72,7 +72,7 @@ Blockly.Arduino.blynk_server_esp32 = function() {
 	var wifi_pass = Blockly.Arduino.valueToCode(this, 'wifi_pass', Blockly.Arduino.ORDER_ATOMIC);
 	var auth_key = Blockly.Arduino.valueToCode(this, 'auth_key', Blockly.Arduino.ORDER_ATOMIC);
 	var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['defineBLYNK'] ='#define BLYNK_PRINT SwSerial\n#include <WiFi.h>\n#include <WiFiClient.h>\n#include <BlynkSimpleEsp32.h>\n#include <TimeLib.h>\n#include <WidgetRTC.h>';
+	Blockly.Arduino.definitions_['defineBLYNK'] ='#define BLYNK_PRINT Serial\n#include <WiFi.h>\n#include <WiFiClient.h>\n#include <BlynkSimpleEsp32.h>\n#include <TimeLib.h>\n#include <WidgetRTC.h>';
 	Blockly.Arduino.definitions_['auth_key'] ='char auth[] = '+auth_key+';';
 	Blockly.Arduino.definitions_['wifi_ssid'] ='char ssid[] = '+wifi_ssid+';';
 	Blockly.Arduino.definitions_['wifi_pass'] ='char pass[] = '+wifi_pass+';';

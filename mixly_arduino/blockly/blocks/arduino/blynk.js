@@ -49,6 +49,7 @@ Blockly.Blocks.blynk_smartconfig_esp8266 = {
     this.setHelpUrl("https://gitee.com/hznupeter/Blynk_IOT/wikis/pages");
   }
 };
+
 //物联网-一键配网
 Blockly.Blocks.blynk_smartconfig_esp32 = {
   init: function() {
