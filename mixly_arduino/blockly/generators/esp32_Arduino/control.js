@@ -73,12 +73,12 @@ Blockly.Arduino.controls_for = function () {
     if (argument0.match(/^-?\d+(\.\d+)?$/) &&
         argument1.match(/^-?\d+(\.\d+)?$/)) {
         //起止数是常量
-        down = (argument1 - argument0 < 0);
-        code = 'for (int ' + variable0 + ' = ' + argument0 + '; ' +
-            variable0 + (down ? ' >= ' : ' <= ') + argument1 + '; ' +
-            variable0 + ' = ' + variable0 + ' + (' + step + ')) {\n' +
-            branch + '}\n';
-    } else {
+    down = (argument1 - argument0 < 0);
+    code = 'for (int ' + variable0 + ' = ' + argument0 + '; ' +
+    variable0 + (down ? ' >= ' : ' <= ') + argument1 + '; ' +
+    variable0 + ' = ' + variable0 + ' + (' + step + ')) {\n' +
+    branch + '}\n';
+} else {
         //起止数有变量	  
         if (step.match(/^-?\d+(\.\d+)?$/)) {
             //步长是常量
@@ -121,9 +121,9 @@ Blockly.Arduino.controls_flow_statements = function () {
     // Flow statements: continue, break.
     switch (this.getFieldValue('FLOW')) {
         case 'BREAK':
-            return 'break;\n';
+        return 'break;\n';
         case 'CONTINUE':
-            return 'continue;\n';
+        return 'continue;\n';
     }
     throw 'Unknown flow statement.';
 };
@@ -141,24 +141,26 @@ Blockly.Arduino.controls_millis = function () {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino.controls_mstimer2 = function () {
-    Blockly.Arduino.definitions_['include_MsTimer2'] = '#include <MsTimer2.h>';
+Blockly.Arduino.controls_hw_timer = function () {
     var time = Blockly.Arduino.valueToCode(this, 'TIME', Blockly.Arduino.ORDER_ATOMIC);
-    var funcName = 'msTimer2_func';
+    var TIMER_NUM = this.getFieldValue('TIMER_NUM');
+    Blockly.Arduino.definitions_['hw_timer_t'+TIMER_NUM] = 'hw_timer_t * timer'+TIMER_NUM+' =NULL;';
+    var funcName = 'IRAM_ATTR onTimer'+TIMER_NUM;
     var branch = Blockly.Arduino.statementToCode(this, 'DO');
     var code = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
+    Blockly.Arduino.setups_['setup_hw_timer' + funcName] ='timer'+TIMER_NUM+'=timerBegin('+TIMER_NUM+', 80, true);\n  timerAttachInterrupt(timer'+TIMER_NUM+', &onTimer'+TIMER_NUM+', true);\n  timerAlarmWrite(timer'+TIMER_NUM+', '+time*1000+', true);';
     Blockly.Arduino.definitions_[funcName] = code;
-    return 'MsTimer2::set(' + time + ', ' + funcName + ');\n';
+    return '';
 };
 
-Blockly.Arduino.controls_mstimer2_start = function () {
-    Blockly.Arduino.definitions_['include_MsTimer2'] = '#include <MsTimer2.h>';
-    return 'MsTimer2::start();\n';
+Blockly.Arduino.controls_hw_timer_start = function () {
+    var TIMER_NUM = this.getFieldValue('TIMER_NUM');
+    return 'timerAlarmEnable(timer'+TIMER_NUM+');\n';
 };
 
-Blockly.Arduino.controls_mstimer2_stop = function () {
-    Blockly.Arduino.definitions_['include_MsTimer2'] = '#include <MsTimer2.h>';
-    return 'MsTimer2::stop();\n';
+Blockly.Arduino.controls_hw_timer_stop = function () {
+   var TIMER_NUM = this.getFieldValue('TIMER_NUM');
+   return 'timerEnd(timer'+TIMER_NUM+');\n';
 };
 
 Blockly.Arduino.controls_end_program = function () {

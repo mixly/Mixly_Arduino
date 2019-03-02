@@ -2219,6 +2219,7 @@ Blockly.MIXLY_ESP32_INOUT_ANALOG_WRITE_INIT_TOOLTIP = "初始化某管腳為模�
 Blockly.MIXLY_ESP32_INOUT_ANALOG_WRITE_TOOLTIP = "設置某管腳的模擬輸出的值";
 Blockly.MIXLY_ESP32_THRESHOLD="閾值";
 Blockly.MIXLY_TOUCHATTACHINTERRUPT_PIN='觸摸中斷 管腳';
+Blockly.MIXLY_ESP32_HW_TIMER='硬件定時器 編號#';
 Blockly.MIXLY_PYTHON_CONTROLS_PASS_TOOLTIP = "跳過";
 Blockly.MIXLY_PYTHON_CONTROLS_RANGE_TOOLTIP = "返回從開始數到結尾數，步長為第三個參數的列表";
 Blockly.MIXLY_PYTHON_CONTROLS_FOR_RANGE_TOOLTIP = "從起始數到結尾數中取出變數“%1”的值，按指定的間隔，執行指定的塊";//thinking

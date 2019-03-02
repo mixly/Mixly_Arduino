@@ -202,7 +202,7 @@
         </shadow>
       </value>
     </block>
-   <!--  <block type="inout_pwm_analog_write">
+   <!--  <block type="inout_pwm_analo_gwrite">
       <value name="PIN">
         <shadow type="pins_pwm"></shadow>
       </value>
@@ -233,11 +233,7 @@
         </shadow>
       </value>
     </block>
-    <block type="controls_detachInterrupt">
-      <value name="PIN">
-        <shadow type="pins_digital"></shadow>
-      </value>
-    </block>
+
     <block type="inout_pinMode">
       <value name="PIN">
         <shadow type="pins_digital"></shadow>
@@ -309,15 +305,15 @@
     </block>
     <block type="controls_flow_statements"></block>
     <block type="controls_millis"></block>
-    <block type="controls_mstimer2">
+    <block type="controls_hw_timer">
       <value name="TIME">
         <shadow type="math_number">
           <field name="NUM">500</field>
         </shadow>
       </value>
     </block>
-    <block type="controls_mstimer2_start"></block>
-    <block type="controls_mstimer2_stop"></block>
+    <block type="controls_hw_timer_start"></block>
+    <block type="controls_hw_timer_stop"></block>
   </category>
   <category id="catMath" colour="230">
     <block type="math_number"></block>
@@ -616,7 +612,7 @@
       </shadow>
     </value>
   </block>
-  
+
 </category>
 <category id="catSensor" colour="40">
   <block type="chaoshengbo2">
@@ -648,7 +644,7 @@
   </block>
   <block type="ADXL345">
   </block>
-  
+
   <!--DS302-->
   <block type="DS1302_init">
     <value name="RST">

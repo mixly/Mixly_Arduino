@@ -2243,6 +2243,7 @@ Blockly.MIXLY_TOOLTIP_TURTEL_HEADING='obtenga la dirección actual de la tortuga
 Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH='para obtener la longitud actual del pincel de la tortuga, devuelve UN integer';
 Blockly.MIXLY_ESP32_THRESHOLD="límite";
 Blockly.MIXLY_TOUCHATTACHINTERRUPT_PIN='Pin de interrupcion de toque';
+Blockly.MIXLY_ESP32_HW_TIMER='Temporizador de hardware Número#';
 Blockly.MIXLY_PYTHON_SYSTEM_EVAL = 'Ejecute el código de texto y obtenga su valor de retorno  El código';
 Blockly.MIXLY_PYTHON_SYSTEM_EVAL_TOOLTIP = 'Devuelve el valor de retorno de los códigos de parámetros, y devuelve ninguno si el código de parámetros no tiene UN valor de retorno';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_USE_STR = 'A través de una cadena';

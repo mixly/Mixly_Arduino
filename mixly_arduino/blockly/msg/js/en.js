@@ -2264,6 +2264,7 @@ Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_TOOLTIP = 'the second parameter must be itera
 Blockly.MIXLY_PYTHON_TURTLE_EXITONCLICK = 'set click the screen to end the turtle';
 Blockly.MIXLY_ESP32_THRESHOLD="threshold";
 Blockly.MIXLY_TOUCHATTACHINTERRUPT_PIN='Touch Interrupt Pin';
+Blockly.MIXLY_ESP32_HW_TIMER='hardware Timer NO#';
 Blockly.MIXLY_MICROPYTHON_SOCKET_CONNECT_TO_ADDRESS='connect to address';
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CONNECT_TOOLTIP="connects a socket to a network address";
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE ="get active state";
