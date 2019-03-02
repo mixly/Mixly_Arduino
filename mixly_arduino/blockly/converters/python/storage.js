@@ -70,6 +70,22 @@ pbc.objectFunctionD.get('readline')[fileClass] = function(py2block, func, args, 
     });
 }
 
+pbc.objectFunctionD.get('readlines')[fileClass] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var fileblock = py2block.convert(func.value);
+    var argblock = py2block.convert(args[0]);
+    return block("storage_get_contents", func.lineno, {
+        "MODE":"readlines"
+    }, {
+         "FILE" : fileblock,
+         "SIZE" : argblock
+    }, {
+        "inline": "true"
+    });
+}
+
 
 pbc.objectFunctionD.get('writable')[fileClass] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 0) {
@@ -126,14 +142,24 @@ pbc.moduleFunctionD.get('os')['remove'] = function(py2block, func, args, keyword
         throw new Error("Incorrect number of arguments");
     }
     var argblock = py2block.convert(args[0]);
-    return [block("storage_delete_file", func.lineno, {}, {
+    return [block("storage_delete_file", func.lineno, {"MODE":"remove"}, {
          "FILE" : argblock
     }, {
         "inline": "true"
     })];
 }
 
-
+pbc.moduleFunctionD.get('os')['removedirs'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var argblock = py2block.convert(args[0]);
+    return [block("storage_delete_file", func.lineno, {"MODE":"removedirs"}, {
+         "FILE" : argblock
+    }, {
+        "inline": "true"
+    })];
+}
 pbc.moduleFunctionD.get('os')['size'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
@@ -144,5 +170,131 @@ pbc.moduleFunctionD.get('os')['size'] = function(py2block, func, args, keywords,
     }, {
         "inline": "true"
     });
+}
+
+pbc.objectFunctionD.get('seek')[fileClass] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var fileblock = py2block.convert(func.value);
+    var argblock = py2block.convert(args[0]);
+    if(args[1].n.v=="0"){
+        var mode = "start";
+    }
+    else if(args[1].n.v=="1"){
+        var mode = "current";
+    }
+    else{
+        var mode = "end";
+    }
+    return [block("storage_file_seek", func.lineno, {
+        "MODE": mode
+    }, {
+         "FILE" : fileblock,
+         "SIZE" : argblock
+    }, {
+        "inline": "true"
+    })];
+}
+
+pbc.objectFunctionD.get('tell')[fileClass] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var fileblock = py2block.convert(func.value);
+    return block("storage_file_tell", func.lineno, {
+    }, {
+         "FILE" : fileblock,
+    }, {
+        "inline": "true"
+    });
+}
+
+pbc.moduleFunctionD.get('os')['chdir'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var argblock = py2block.convert(args[0]);
+    return [block("storage_change_dir", func.lineno, {}, {
+         "FILE" : argblock
+    }, {
+        "inline": "true"
+    })];
+}
+
+pbc.moduleFunctionD.get('os')['getcwd'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return block("storage_get_current_dir", func.lineno, {}, {
+    }, {
+        "inline": "true"
+    });
+}
+
+pbc.moduleFunctionD.get('os')['mkdir'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var fun = func.attr.v;
+    var argblock = py2block.convert(args[0]);
+    return [block("storage_make_dir", func.lineno, {"MODE":fun}, {
+         "PATH" : argblock
+    }, {
+        "inline": "true"
+    })];
+}
+
+pbc.moduleFunctionD.get('os')['makedirs'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var fun = func.attr.v;
+    var argblock = py2block.convert(args[0]);
+    return [block("storage_make_dir", func.lineno, {"MODE":fun}, {
+         "PATH" : argblock
+    }, {
+        "inline": "true"
+    })];
+}
+
+pbc.moduleFunctionD.get('os')['rename'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var argblock = py2block.convert(args[0]);
+    var arg1block = py2block.convert(args[1]);
+    return [block("storage_rename", func.lineno, {}, {
+         "FILE" : argblock,
+         "NEWFILE":arg1block
+    }, {
+        "inline": "true"
+    })];
+}
+
+pbc.moduleFunctionD.get('os')['isfile'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var fun = func.attr.v;
+    var argblock = py2block.convert(args[0]);
+    return [block("storage_is_file", func.lineno, {"MODE":fun}, {
+         "FILE" : argblock
+    }, {
+        "inline": "true"
+    })];
+}
+
+pbc.moduleFunctionD.get('os')['isdir'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var fun = func.attr.v;
+    var argblock = py2block.convert(args[0]);
+    return [block("storage_is_file", func.lineno, {"MODE":fun}, {
+         "FILE" : argblock
+    }, {
+        "inline": "true"
+    })];
 }
 

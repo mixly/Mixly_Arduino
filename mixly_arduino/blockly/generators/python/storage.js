@@ -124,3 +124,11 @@ Blockly.Python.storage_rename = function () {
     var code = "os.rename("+file+","+file1+")\n";
     return code;
 };
+
+Blockly.Python.storage_is_file = function () {
+    Blockly.Python.definitions_['import_os'] = 'import os';
+    var file = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
+    var mode = this.getFieldValue('MODE');
+    var code = "os."+ mode + "(" + file + ")";
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};

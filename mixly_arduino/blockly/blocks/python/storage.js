@@ -335,3 +335,30 @@ Blockly.Blocks['storage_file_write'] = {
      this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_CHANGE_DIR);
    }
  };
+
+ Blockly.Blocks['storage_is_file'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendValueInput("FILE")
+         .setCheck(String)
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_THE_PATH);
+     this.appendDummyInput()
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_IS_OR_NOT);
+     this.appendDummyInput()
+         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_IS_FILE,'isfile'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_IS_DIR,'isdir']]),'MODE');
+     this.setInputsInline(true);
+     this.setPreviousStatement(false);
+     this.setNextStatement(false);
+     this.setOutput(true,Boolean);
+      this.setTooltip(function() {
+         var mode = thisBlock.getFieldValue('MODE');
+         var mode0 = Blockly.MIXLY_MICROBIT_PY_STORAGE_THE_PATH;
+         var mode2 = Blockly.MIXLY_MICROBIT_PY_STORAGE_IS_OR_NOT;
+         var TOOLTIPS = {
+         'isfile': Blockly.MIXLY_MICROBIT_PY_STORAGE_MKDIR,
+         'isdir': Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKEDIRS
+       };
+       return mode0 +'x'+ mode2 + TOOLTIPS[mode];
+     });
+   }
+ };

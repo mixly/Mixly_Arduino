@@ -787,19 +787,6 @@
       <category id="catMicropyLists" colour="260">
           <block type="lists_create_with"></block>
           <block type="lists_create_with_text"></block>
-          <block type="lists_zip">
-          <mutation items="2"></mutation>          
-          <value name="ADD0">
-            <block type="list_many_input">
-              <field name="CONTENT">0,1,2,3</field>
-            </block>
-          </value>
-          <value name="ADD1">
-            <block type="list_many_input">
-              <field name="CONTENT">0,1,2,3</field>
-            </block>
-          </value>
-        </block>
           <block type="lists_get_index">
             <value name="LIST">
               <shadow type="variables_get">
@@ -1344,6 +1331,13 @@
           <value name="FILE">
             <shadow type="text">
               <field name="TEXT">filename.txt</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="storage_is_file">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">path</field>
             </shadow>
           </value>
         </block>

@@ -444,7 +444,6 @@ Blockly.MIXLY_SERIAL_FLUSH='清空缓存区数据';
 Blockly.MIXLY_STEP='步长为';
 Blockly.MIXLY_TONE_PIN='播放声音 管脚 #';
 Blockly.MIXLY_FREQUENCY='频率';
-Blockly.MIXLY_CHANNEL='通道';
 Blockly.MIXLY_DURATION='持续时间';
 Blockly.MIXLY_NOTONE_PIN='结束声音 管脚 #';
 Blockly.MIXLY_BLOCKGROUP_CATEGORY='模块组';
@@ -1072,7 +1071,6 @@ Blockly.MIXLY_COMPARETO_HELP="按字典顺序比较，相等则返回0，大于�
 Blockly.Msg.UNDO = "撤销";
 Blockly.Msg.REDO = "重做";
 Blockly.MIXLY_CONTROL_END_PROGRAM = "停止程序";
-Blockly.MIXLY_CONTROL_NOTES = '注释:';
 
 //oled
 Blockly.Msg.texttodisplay = "显示文本：";
@@ -1091,7 +1089,7 @@ Blockly.Msg.num4 = "数字4";
 // RGB
 Blockly.MIXLY_RGB_INIT = 'RGB灯初始化';
 Blockly.MIXLY_RGB_SET_BRIGHTNESS = 'RGB灯设置亮度';
-Blockly.MIXLY_RGB_SET_COLOUR = 'RGB灯设置颜色';
+Blockly.MIXLY_RGB_SET_COLOR = 'RGB灯设置颜色';
 Blockly.MIXLY_RGB_SHOW = 'RGB灯设置生效';
 Blockly.MIXLY_RGB_BRIGHTNESS = '亮度';
 Blockly.MIXLY_RGB = 'RGB灯';
@@ -1570,6 +1568,10 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_PATH = "根据目录";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_DELETE_DIRS = "递归删除目录";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_RENAME = "重命名文件";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_TO = "为";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_IS_OR_NOT = "是否是";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_IS_FILE = "文件";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_IS_DIR = "目录";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_THE_PATH = "路径";
 
 Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE = "数据类型";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME = "当前系统信息";
@@ -2252,9 +2254,7 @@ Blockly.MIXLY_ESP32_INOUT_PIN_PRESSED_TOOLTIP = "获取某管脚触摸传感器�
 Blockly.MIXLY_ESP32_INOUT_PIN_ATTACHINTERRUPT_TOOLTIP = "设置某个管脚中断的模式为上升、下降或者改变，并且设置回调函数";
 Blockly.MIXLY_ESP32_INOUT_ANALOG_WRITE_INIT_TOOLTIP = "初始化某管脚为模拟输出的管脚";
 Blockly.MIXLY_ESP32_INOUT_ANALOG_WRITE_TOOLTIP = "设置某管脚的模拟输出的值";
-Blockly.MIXLY_ESP32_THRESHOLD="阈值";
-Blockly.MIXLY_TOUCHATTACHINTERRUPT_PIN='触摸中断 管脚';
-Blockly.MIXLY_ESP32_HW_TIMER='硬件定时器 编号#';
+
 Blockly.MIXLY_PYTHON_CONTROLS_PASS_TOOLTIP = "跳过";
 Blockly.MIXLY_PYTHON_CONTROLS_RANGE_TOOLTIP = "返回从开始数到结尾数，步长为第三个参数的列表";//thinking
 Blockly.MIXLY_PYTHON_CONTROLS_FOR_RANGE_TOOLTIP = "从起始数到结尾数中取出变量“%1”的值，按指定的间隔，执行指定的块";//thinking
@@ -2339,10 +2339,6 @@ Blockly.MIXLY_PYTHON_MATH_CONSTANT = "常数";
 Blockly.MIXLY_PYTHON_MATH_CONSTANT_PI_TOOLTIP = "圆周率常数的近似值（保留小数点后15位）";
 Blockly.MIXLY_PYTHON_MATH_CONSTANT_E_TOOLTIP = "自然常数的近似值（保留小数点后15位）";
 Blockly.MIXLY_ESP32_DISPLAY_ANIMATE = "内置动画";
-Blockly.MIXLY_PYTHON_LISTS_ZIP_ITEM = "迭代器";
-Blockly.MIXLY_PYTHON_LISTS_ZIP_ITEM_TOOLTIP='将迭代器拖入或拖出右侧的组块以改变打印的参数个数';
-Blockly.MIXLY_PYTHON_LISTS_ZIP = "打包迭代器";
-Blockly.MIXLY_PYTHON_LISTS_ZIP_TOOLTIP = "将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。如果各个迭代器的元素个数不一致，则返回列表的长度与最短的对象相同";
 ////////blynk////////////////////////////
 Blockly.blynk_IOT_AUTH='Blynk授权码';
 Blockly.blynk_WIFI_SSID='Wi-Fi名称';
