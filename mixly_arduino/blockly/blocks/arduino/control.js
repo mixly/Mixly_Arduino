@@ -667,13 +667,3 @@ Blockly.Blocks.controls_nointerrupts = {
 };
 Blockly.Blocks.base_delay=Blockly.Blocks.controls_delay;
 
-Blockly.Blocks.base_notes = {
-  init: function() {
-    this.setColour(Blockly.Blocks.loops.HUE);
-    this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_CONTROL_NOTES)
-        .appendField(new Blockly.FieldTextArea(''), 'VALUE');
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-  }
-};

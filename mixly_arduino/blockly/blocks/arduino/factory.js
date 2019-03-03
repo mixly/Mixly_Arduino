@@ -318,3 +318,13 @@ Blockly.Blocks.factory_block_return_with_textarea = {
     this.setOutput(true);
   }
 };
+Blockly.Blocks.factory_notes = {
+  init: function() {
+    this.setColour(Blockly.Blocks.factory.HUE);
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_CONTROL_NOTES)
+        .appendField(new Blockly.FieldTextArea(''), 'VALUE');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};

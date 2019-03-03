@@ -117,3 +117,24 @@ Blockly.Arduino.factory_block_return_with_textarea = function() {
 	var VALUE = this.getFieldValue('VALUE');
 	return [VALUE,Blockly.Arduino.ORDER_ATOMIC];
 };
+
+Blockly.Arduino.factory_notes = function(){
+     var content = this.getFieldValue('VALUE');
+     console.log(content);
+     if(content){
+        var content2arr = content.split('\n');
+         var code = '';
+         for (var eachElement in content2arr){
+            console.log(content2arr[eachElement]);
+            content2arr[eachElement] = '//'+ content2arr[eachElement] +'\n';
+            console.log(content2arr[eachElement]);
+         }
+         for (var eachElement of content2arr){
+            code += eachElement;
+         }
+         return code;
+     }
+     else{
+        return '//\n';
+     }
+}
