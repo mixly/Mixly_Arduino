@@ -1086,7 +1086,7 @@ Blockly.Msg.num4 = "Number 4(at end)=";
 // RGB
 Blockly.MIXLY_RGB_INIT = 'RGB Initialize';
 Blockly.MIXLY_RGB_SET_BRIGHTNESS = 'RGB Set Brightness';
-Blockly.MIXLY_RGB_SET_COLOUR = 'RGB Set colour';
+Blockly.MIXLY_RGB_SET_COLOR = 'RGB Set color';
 Blockly.MIXLY_RGB_SHOW = 'RGB Show';
 Blockly.MIXLY_RGB_BRIGHTNESS = 'Brightness';
 Blockly.MIXLY_RGB = 'RGB Light';

@@ -266,7 +266,7 @@ Blockly.Blocks.display_rgb = {
     init: function () {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_RGB_SET_COLOUR)
+            .appendField(Blockly.MIXLY_RGB_SET_COLOR)
          this.appendValueInput("PIN", Number)
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -297,7 +297,7 @@ Blockly.Blocks.display_rgb2 = {
     init: function () {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_RGB_SET_COLOUR)
+            .appendField(Blockly.MIXLY_RGB_SET_COLOR)
          this.appendValueInput("PIN", Number)
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
