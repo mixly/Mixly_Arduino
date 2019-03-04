@@ -1101,42 +1101,253 @@
 <block type="group_lcd_power">
   <field name="STAT">clear</field>
 </block>
-<block type="lp2i_u8g_draw_4strings">
+<block type="oled_init">
+  <next>
+    <block type="oled_page">
+      <statement name="DO">
+        <block type="procedures_callnoreturn">
+          <mutation name="page1"></mutation>
+        </block>
+      </statement>
+    </block>
+  </next>
+</block>
+<block type="procedures_defnoreturn">
+  <field name="NAME">page1</field>
+  <statement name="STACK">
+    <block type="oled_setFont">
+      <field name="TYPE">timR08_tr</field>
+      <next>
+        <block type="oled_print" >
+          <value name="POS_X">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="POS_Y">
+            <shadow type="math_number">
+              <field name="NUM">20</field>
+            </shadow>
+          </value>
+          <value name="TEXT">
+            <shadow type="text">
+              <field name="TEXT">1234</field>
+            </shadow>
+          </value>
+        </block>
+      </next>
+    </block>
+  </statement>
+</block>
+<block type="oled_define_bitmap_data"></block>
+<block type="oled_clear"></block>
+<block type="oled_showBitmap" >
+  <value name="START_X">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="START_Y">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="bitmap_name">
+    <block type="text">
+      <field name="TEXT">bitmap1</field>
+    </block>
+  </value>
+</block>
+<block type="oled_draw4Str" >
   <value name="Text_line1">
     <shadow type="text">
-      <field name="TEXT">Example line 1</field>
+      <field name="TEXT">Example Line1!</field>
     </shadow>
   </value>
   <value name="Text_line2">
     <shadow type="text">
-      <field name="TEXT">Example line 2</field>
+      <field name="TEXT">Example Line2!</field>
     </shadow>
   </value>
   <value name="Text_line3">
     <shadow type="text">
-      <field name="TEXT">Example line 3</field>
+      <field name="TEXT">Example Line3!</field>
     </shadow>
   </value>
   <value name="Text_line4">
     <shadow type="text">
-      <field name="TEXT">Example line 4</field>
+      <field name="TEXT">Example Line4!</field>
     </shadow>
   </value>
 </block>
-<block type="lp2i_u8g_print">
-  <value name="N">
+<block type="oled_drawPixe" >
+  <value name="POS_X">
     <shadow type="math_number">
-      <field name="NUM">0</field>
+      <field name="NUM">64</field>
     </shadow>
   </value>
-  <value name="X">
+  <value name="POS_Y">
     <shadow type="math_number">
-      <field name="NUM">0</field>
+      <field name="NUM">32</field>
     </shadow>
   </value>
-  <value name="Y">
+</block>
+<block type="oled_drawLine">
+  <value name="START_X">
     <shadow type="math_number">
-      <field name="NUM">12</field>
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="START_Y">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="END_X">
+    <shadow type="math_number">
+      <field name="NUM">15</field>
+    </shadow>
+  </value>
+  <value name="END_Y">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="oled_draw_Str_Line">
+  <value name="START_X">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="START_Y">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="LENGTH">
+    <shadow type="math_number">
+      <field name="NUM">30</field>
+    </shadow>
+  </value>
+</block>
+<block type="oled_drawFrame">
+  <value name="D0_X">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="D0_Y">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="WIDTH">
+    <shadow type="math_number">
+      <field name="NUM">10</field>
+    </shadow>
+  </value>
+  <value name="HEIGHT">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="oled_drawRFrame">
+  <value name="D0_X">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="D0_Y">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="WIDTH">
+    <shadow type="math_number">
+      <field name="NUM">10</field>
+    </shadow>
+  </value>
+  <value name="HEIGHT">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+  <value name="RADIUS">
+    <shadow type="math_number">
+      <field name="NUM">3</field>
+    </shadow>
+  </value>
+</block>
+<block type="oled_drawCircle">
+  <value name="D0_X">
+    <shadow type="math_number">
+      <field name="NUM">30</field>
+    </shadow>
+  </value>
+  <value name="D0_Y">
+    <shadow type="math_number">
+      <field name="NUM">30</field>
+    </shadow>
+  </value>
+  <value name="RADIUS">
+    <shadow type="math_number">
+      <field name="NUM">6</field>
+    </shadow>
+  </value>
+</block>
+<block type="oled_drawEllipse">
+  <value name="D0_X">
+    <shadow type="math_number">
+      <field name="NUM">30</field>
+    </shadow>
+  </value>
+  <value name="D0_Y">
+    <shadow type="math_number">
+      <field name="NUM">30</field>
+    </shadow>
+  </value>
+  <value name="RADIUS_X">
+    <shadow type="math_number">
+      <field name="NUM">6</field>
+    </shadow>
+  </value>
+  <value name="RADIUS_Y">
+    <shadow type="math_number">
+      <field name="NUM">15</field>
+    </shadow>
+  </value>
+</block>
+<block type="oled_drawTriangle" >
+  <value name="D0_X">
+    <shadow type="math_number">
+      <field name="NUM">14</field>
+    </shadow>
+  </value>
+  <value name="D0_Y">
+    <shadow type="math_number">
+      <field name="NUM">55</field>
+    </shadow>
+  </value>
+  <value name="D1_X">
+    <shadow type="math_number">
+      <field name="NUM">45</field>
+    </shadow>
+  </value>
+  <value name="D1_Y">
+    <shadow type="math_number">
+      <field name="NUM">33</field>
+    </shadow>
+  </value>
+  <value name="D2_X">
+    <shadow type="math_number">
+      <field name="NUM">8</field>
+    </shadow>
+  </value>
+  <value name="D2_Y">
+    <shadow type="math_number">
+      <field name="NUM">43</field>
     </shadow>
   </value>
 </block>
