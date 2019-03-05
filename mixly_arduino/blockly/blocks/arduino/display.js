@@ -157,92 +157,6 @@ Blockly.Blocks.group_lcd_power = {
     this.setTooltip(Blockly.MIXLY_TOOLTIP_LCD_POWER);
   }
 };
-
-Blockly.Blocks.lp2i_u8g_draw_4strings = {
-    init: function() {
-        this.appendDummyInput()
-            .appendField("OLED 128*64    " + Blockly.Msg.OLEDDISPLAY);
-        //.appendField(new Blockly.FieldImage(Blockly.pathToBlockly + 'blocks/display-oled-128x64-i2c/display-oled-128x64-i2c.jpg', Blockly.Arduino.imageSize, Blockly.Arduino.imageSize));
-        this.appendValueInput("Text_line1" , 'String')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.line1);		
-        this.appendValueInput("Text_line2" , 'String')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.line2);			
-        this.appendValueInput("Text_line3" , 'String')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.line3);			
-        this.appendValueInput("Text_line4" , 'String')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.line4);			
-        this.setInputsInline(false);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.display.HUE);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_OLED_DRAW4STRING);
-    }
-};
-Blockly.Blocks.lp2i_u8g_print = {
-    init: function() {
-        this.appendDummyInput()
-            .appendField("OLED I2C display");
-        //.appendField(new Blockly.FieldImage(Blockly.pathToBlockly + 'blocks/display-oled-128x64-i2c/display-oled-128x64-i2c.jpg', Blockly.Arduino.imageSize, Blockly.Arduino.imageSize));		
-        this.appendValueInput("N", 'Number')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.OLEDDISPLAY);
-        this.appendValueInput("X", 'Number')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.rawx);		
-        this.appendValueInput("Y", 'Number')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.liney);		
-        this.setInputsInline(false);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.display.HUE);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_OLED_PRINT.replace('%1',Blockly.Arduino.valueToCode(this, 'X',Blockly.Arduino.ORDER_ATOMIC)).replace('%2',Blockly.Arduino.valueToCode(this, 'Y',Blockly.Arduino.ORDER_ATOMIC)));
-    }
-};
-
-Blockly.Blocks.lp2i_u8g_4draw_print = {
-    init: function() {
-        this.appendDummyInput()
-            .appendField("OLED I2C display");
-        //.appendField(new Blockly.FieldImage(Blockly.pathToBlockly + 'blocks/display-oled-128x64-i2c/display-oled-128x64-i2c.jpg', Blockly.Arduino.imageSize, Blockly.Arduino.imageSize));		
-        this.appendDummyInput()
-            .appendField(Blockly.Msg.OLEDDISPLAY);
-        this.appendValueInput("Text_line1" , 'String')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.line1);		
-        this.appendValueInput("N1", 'Number')	
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.num1);		
-        this.appendValueInput("Text_line2" , 'String')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.line2);			
-        this.appendValueInput("N2", 'Number')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.num2);		
-        this.appendValueInput("Text_line3" , 'String')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.line3);			
-        this.appendValueInput("N3", 'Number')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.num3);		
-        this.appendValueInput("Text_line4" , 'String')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.line4);			
-        this.appendValueInput("N4", 'Number')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.num4);		
-        this.setInputsInline(false);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.display.HUE);
-        this.setTooltip('');
-    }
-};
-//
 //RGB has been moved to actuator
 
 Blockly.Blocks.display_4digitdisplay_power = {
@@ -972,4 +886,50 @@ Blockly.Blocks.oled_draw4Str = {
     this.setTooltip('');
     this.setHelpUrl('');
   }
+};
+
+Blockly.Blocks.lp2i_u8g_draw_4strings = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("OLED 128*64    " + Blockly.Msg.OLEDDISPLAY);
+        //.appendField(new Blockly.FieldImage(Blockly.pathToBlockly + 'blocks/display-oled-128x64-i2c/display-oled-128x64-i2c.jpg', Blockly.Arduino.imageSize, Blockly.Arduino.imageSize));
+        this.appendValueInput("Text_line1" , 'String')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.line1);        
+        this.appendValueInput("Text_line2" , 'String')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.line2);            
+        this.appendValueInput("Text_line3" , 'String')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.line3);            
+        this.appendValueInput("Text_line4" , 'String')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.line4);            
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_OLED_DRAW4STRING);
+    }
+};
+Blockly.Blocks.lp2i_u8g_print = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("OLED I2C display");
+        //.appendField(new Blockly.FieldImage(Blockly.pathToBlockly + 'blocks/display-oled-128x64-i2c/display-oled-128x64-i2c.jpg', Blockly.Arduino.imageSize, Blockly.Arduino.imageSize));     
+        this.appendValueInput("N", 'Number')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.OLEDDISPLAY);
+        this.appendValueInput("X", 'Number')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.rawx);     
+        this.appendValueInput("Y", 'Number')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.Msg.liney);        
+        this.setInputsInline(false);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_OLED_PRINT.replace('%1',Blockly.Arduino.valueToCode(this, 'X',Blockly.Arduino.ORDER_ATOMIC)).replace('%2',Blockly.Arduino.valueToCode(this, 'Y',Blockly.Arduino.ORDER_ATOMIC)));
+    }
 };
