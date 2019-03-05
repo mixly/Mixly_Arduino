@@ -482,6 +482,12 @@ text.blocklyText {
     position: absolute;
 }
 
+#servo {
+  float: left;
+  width: 160px;
+  height: 168px;
+}
+
 .blocklyWsDragSurface {
     overflow: visible !important;
 }

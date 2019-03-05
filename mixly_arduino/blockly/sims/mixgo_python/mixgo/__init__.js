@@ -1,4 +1,3 @@
-
 var $builtinmodule = function (name) {
     var mod = {
         data: {
@@ -6,6 +5,8 @@ var $builtinmodule = function (name) {
             distance : mbData['distance'],
             distance_infrared_left : mbData['distance_infrared_left'],
             distance_infrared_right : mbData['distance_infrared_right'],
+            brightness: mbData['brightness'],
+            soundlevel: mbData['soundlevel'],
         }
     };
 
@@ -22,26 +23,6 @@ var $builtinmodule = function (name) {
     mod.running_time = new Sk.builtin.func(function() {
         return Sk.builtin.int_(Date.now() - start_time);
     });
-
-    mod.sleep_ms = new Sk.builtin.func(function(delay) {
-        return sim.runAsync(function(resolve, reject) {
-            setTimeout(function() {
-                resolve();
-            }, delay.v);
-        });
-    });
-    mod.sleep_us = new Sk.builtin.func(function(delay) {
-        return sim.runAsync(function(resolve, reject) {
-            setTimeout(function() {
-                resolve();
-            }, delay.v/1000);
-        });
-    });
-
-    mod.temperature = new Sk.builtin.func(function() {
-        return Sk.builtin.int_(mod.data.temperature);
-    });
-    ui.bindTemperatureEvent('temperature', mod.data, 'temperature');
 
     var ioPinDigital = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self, name) {
@@ -147,7 +128,6 @@ var $builtinmodule = function (name) {
     ui.bindAddPinBtnEvent('analog');
     ui.bindAddPinBtnEvent('touch');
 
-
     mod.Button = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self) {
             self.presses = 0;
@@ -175,12 +155,10 @@ var $builtinmodule = function (name) {
     mod.button_a = new mod.Button();
     mod.button_b = new mod.Button();
     ui.bindBtnEvent('btn_A', [mod.button_a]);
-    ui.bindBtnEvent('mb_btn_A', [mod.button_a]);
+    ui.bindBtnEvent('mixgo_btn_A', [mod.button_a]);
     ui.bindBtnEvent('btn_B', [mod.button_b]);
-    ui.bindBtnEvent('mb_btn_B', [mod.button_b]);
+    ui.bindBtnEvent('mixgo_btn_B', [mod.button_b]);
     ui.bindBtnEvent('btn_both', [mod.button_a, mod.button_b]);
-
-
 
     mod.HCSR04 = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self) {
@@ -192,21 +170,20 @@ var $builtinmodule = function (name) {
     }, "HCSR04", []);
     ui.bindHCSR04Event('HCSR04', mod.data, 'distance');
 
-    mod.Servo = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
-        $loc.__init__ = new Sk.builtin.func(function(self, pin) {
-            self.pin = pin;
-        });
-
-        $loc.write_angle = new Sk.builtin.func(function(self, degree) {
-            ui.updateServo(degree.v);
-        });
-    }, "Servo", []);
+    mod.mixgo_get_soundlevel = new Sk.builtin.func(function(self) {
+        return Sk.builtin.int_(mod.data.soundlevel);
+    });
+    ui.bindSliderEvent('soundsensor', mod.data, 'soundlevel');
+    mod.mixgo_get_brightness = new Sk.builtin.func(function(self) {
+        return Sk.builtin.int_(mod.data.brightness);
+    });
+    ui.bindSliderEvent('lightsensor', mod.data, 'brightness');
 
     mod.compass = new Sk.builtin.module();
     mod.compass.$d = new compass("mixgo.compass");
 
-    mod.accelerometer = new Sk.builtin.module();
-    mod.accelerometer.$d = new accelerometer("mixgo.mpu9250");
+    mod.mpu = new Sk.builtin.module();
+    mod.mpu.$d = new mpu("mixgo.mpu9250");
 
     mod.Infrared_left = new Sk.builtin.module();
     mod.Infrared_left.$d = new Infrared_left("mixgo.Infrared_left");
@@ -220,7 +197,6 @@ var $builtinmodule = function (name) {
 
     mod.uart = new Sk.builtin.module();
     mod.uart.$d = new uart("microbit.uart");
-
 
     return mod;
 }

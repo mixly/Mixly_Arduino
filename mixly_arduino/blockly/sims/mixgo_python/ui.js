@@ -118,15 +118,15 @@ var ui = {
         ui.servoChart.setOption(ui.servoOption, true);
         $('#servo').hide();
 
-        // 加速度计界面
-        var accelerometer_el_arr = ['accelerometer_x', 'accelerometer_y', 'accelerometer_z'];
-        for (var i = 0; i < accelerometer_el_arr.length; i ++) {
-            var key = accelerometer_el_arr[i].split('_')[1];
-            var sdr = $("#" + accelerometer_el_arr[i] + "_slider").slider();
-            sdr.slider('setValue', mbData.accelerometer[key]);
-            $("#curr_" + accelerometer_el_arr[i]).text(mbData.accelerometer[key]);
+        // mpu9250界面
+        var mpu9250_el_arr = ['accelerometer_x', 'accelerometer_y', 'accelerometer_z','mpu9250_gyro_x','mpu9250_gyro_y','mpu9250_gyro_z'];
+        for (var i = 0; i < mpu9250_el_arr.length; i ++) {
+            var key = mpu9250_el_arr[i].split('_')[1];
+            var sdr = $("#" + mpu9250_el_arr[i] + "_slider").slider();
+            sdr.slider('setValue', mbData.mpu9250[key]);
+            $("#curr_" + mpu9250_el_arr[i]).text(mbData.mpu9250[key]);
             if (!ui.inited) {
-                $("#" + accelerometer_el_arr[i] + "_slider").on("slide", function (slideEvt) {
+                $("#" + mpu9250_el_arr[i] + "_slider").on("slide", function (slideEvt) {
                     var sliderId = slideEvt.currentTarget.getAttribute('id').replace('_slider', '');
                     $("#curr_" + sliderId).text(slideEvt.value);
                 });
@@ -357,6 +357,9 @@ var ui = {
     bindCompassEvent: function (sliderId, data, key) {
         ui.bindSliderEvent(sliderId, data, key);
     },
+    bindGyroEvent: function (sliderId, data, key) {
+        ui.bindSliderEvent(sliderId, data, key);
+    },
     bindTemperatureEvent: function (sliderId, data, key) {
         ui.bindSliderEvent(sliderId, data, key);
     },
@@ -366,8 +369,8 @@ var ui = {
     bindAccelerometerEvent: function (sliderId, data, key, cb) {
         ui.bindSliderEvent(sliderId, data, key, cb);
     },
-    bindInfraredEvent: function (sliderId, data, key, cb) {
-        ui.bindSliderEvent(sliderId, data, key, cb);
+    bindInfraredEvent: function (sliderId, data, key) {
+        ui.bindSliderEvent(sliderId, data, key);
     },
     bindAccelerometerGestureEvent: function (btnId, data, gesture) {
         $('#' + btnId).off('click').on('click', function () {

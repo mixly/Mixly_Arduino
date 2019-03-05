@@ -11,6 +11,24 @@ Sk.externalLibraries = {
             base_url + 'mixgo/infrared_right.js',
         ]
     },
+    time:{
+        path: conf.url + '/blockly/sims/mixgo_python/time/__init__.js'
+    },
+    machine: {
+        path: conf.url + '/blockly/sims/mixgo_python/machine/__init__.js'
+    },
+    mpu9250: {
+        path: conf.url + '/blockly/sims/mixgo_python/mpu9250/__init__.js'
+    },
+    bmp280: {
+        path: conf.url + '/blockly/sims/mixgo_python/bmp280/__init__.js'
+    },
+    dhtx: {
+        path: conf.url + '/blockly/sims/mixgo_python/dhtx/__init__.js'
+    },
+    servo: {
+        path: conf.url + '/blockly/sims/mixgo_python/servo/__init__.js'
+    },
     matrix:{
         path: conf.url + '/blockly/sims/mixgo_python/matrix/__init__.js'
     },

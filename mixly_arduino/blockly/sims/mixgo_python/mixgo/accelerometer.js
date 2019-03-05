@@ -1,37 +1,41 @@
-var accelerometer = function(name) {
+var mpu = function(name) {
 	var mod = {}
 	mod.data = {};
-	mod.data.x = mbData.accelerometer.x;
-	mod.data.y = mbData.accelerometer.y;
-	mod.data.z = mbData.accelerometer.z;
-	mod.data.gestureHistory = mbData.accelerometer.gestureHistory;
-	mod.data.currentGesture = mbData.accelerometer.currentGesture;
+	mod.data.x = mbData.mpu9250.x;
+	mod.data.y = mbData.mpu9250.y;
+	mod.data.z = mbData.mpu9250.z;
+	mod.data.gestureHistory = mbData.mpu9250.gestureHistory;
+	mod.data.currentGesture = mbData.mpu9250.currentGesture;
+	mod.data.gyro_x = mbData.mpu9250.gyro_x;
+	mod.data.gyro_y = mbData.mpu9250.gyro_y;
+	mod.data.gyro_z = mbData.mpu9250.gyro_z;
+	mod.data.temperature = mbData.temperature;
 
-    var MICROBIT_ACCELEROMETER_TILT_TOLERANCE = 200;
-    var MICROBIT_ACCELEROMETER_FREEFALL_TOLERANCE = 400;
-    var MICROBIT_ACCELEROMETER_FREEFALL_THRESHOLD = MICROBIT_ACCELEROMETER_FREEFALL_TOLERANCE ** 2;
-    var MICROBIT_ACCELEROMETER_3G_TOLERANCE = 3072;
-    var MICROBIT_ACCELEROMETER_3G_THRESHOLD = MICROBIT_ACCELEROMETER_3G_TOLERANCE ** 2;
-    var MICROBIT_ACCELEROMETER_6G_TOLERANCE = 6144;
-    var MICROBIT_ACCELEROMETER_6G_THRESHOLD = MICROBIT_ACCELEROMETER_6G_TOLERANCE ** 2;
-    var MICROBIT_ACCELEROMETER_8G_TOLERANCE = 8192;
-    var MICROBIT_ACCELEROMETER_8G_THRESHOLD = MICROBIT_ACCELEROMETER_8G_TOLERANCE ** 2;
-    var MICROBIT_ACCELEROMETER_SHAKE_THRESHOLD = 400;
-    var MICROBIT_ACCELEROMETER_SHAKE_COUNT_THRESHOLD = 4;
-    var MICROBIT_ACCELEROMETER_SHAKE_RTX = 30;
-    var MICROBIT_ACCELEROMETER_SHAKE_DAMPING = 10;
-    var MICROBIT_ACCELEROMETER_EVT_TILT_LEFT = 'left';
-    var MICROBIT_ACCELEROMETER_EVT_TILT_RIGHT = 'right';
-    var MICROBIT_ACCELEROMETER_EVT_TILT_UP = 'up';
-    var MICROBIT_ACCELEROMETER_EVT_TILT_DOWN = 'down';
-    var MICROBIT_ACCELEROMETER_EVT_FACE_DOWN = 'face down';
-    var MICROBIT_ACCELEROMETER_EVT_FACE_UP = 'face up';
-    var MICROBIT_ACCELEROMETER_EVT_FREEFALL = 'freefall';
-    var MICROBIT_ACCELEROMETER_EVT_3G = '3g';
-    var MICROBIT_ACCELEROMETER_EVT_6G = '6g';
-    var MICROBIT_ACCELEROMETER_EVT_8G = '8g';
-    var MICROBIT_ACCELEROMETER_EVT_SHAKE = 'shake';
-    var MICROBIT_ACCELEROMETER_EVT_NONE = '';
+    var MPU9250_TILT_TOLERANCE = 200;
+    var MPU9250_FREEFALL_TOLERANCE = 400;
+    var MPU9250_FREEFALL_THRESHOLD = MPU9250_FREEFALL_TOLERANCE ** 2;
+    var MPU9250_3G_TOLERANCE = 3072;
+    var MPU9250_3G_THRESHOLD = MPU9250_3G_TOLERANCE ** 2;
+    var MPU9250_6G_TOLERANCE = 6144;
+    var MPU9250_6G_THRESHOLD = MPU9250_6G_TOLERANCE ** 2;
+    var MPU9250_8G_TOLERANCE = 8192;
+    var MPU9250_8G_THRESHOLD = MPU9250_8G_TOLERANCE ** 2;
+    var MPU9250_SHAKE_THRESHOLD = 400;
+    var MPU9250_SHAKE_COUNT_THRESHOLD = 4;
+    var MPU9250_SHAKE_RTX = 30;
+    var MPU9250_SHAKE_DAMPING = 10;
+    var MPU9250_EVT_TILT_LEFT = 'left';
+    var MPU9250_EVT_TILT_RIGHT = 'right';
+    var MPU9250_EVT_TILT_UP = 'up';
+    var MPU9250_EVT_TILT_DOWN = 'down';
+    var MPU9250_EVT_FACE_DOWN = 'face down';
+    var MPU9250_EVT_FACE_UP = 'face up';
+    var MPU9250_EVT_FREEFALL = 'freefall';
+    var MPU9250_EVT_3G = '3g';
+    var MPU9250_EVT_6G = '6g';
+    var MPU9250_EVT_8G = '8g';
+    var MPU9250_EVT_SHAKE = 'shake';
+    var MPU9250_EVT_NONE = '';
 
     var shake = {
     	x: 0,
@@ -51,81 +55,81 @@ var accelerometer = function(name) {
 		var x = mod.data.x, y = mod.data.y, z = mod.data.z;
 		var shakeDetected = false;
 		//detect 3g, 6g, 8g
-		if (forth > MICROBIT_ACCELEROMETER_3G_THRESHOLD) {
-			if (forth > MICROBIT_ACCELEROMETER_3G_THRESHOLD) {
-				return MICROBIT_ACCELEROMETER_EVT_3G;
+		if (forth > MPU9250_3G_THRESHOLD) {
+			if (forth > MPU9250_3G_THRESHOLD) {
+				return MPU9250_EVT_3G;
 			}
-            if (forth > MICROBIT_ACCELEROMETER_6G_THRESHOLD) {
-                return MICROBIT_ACCELEROMETER_EVT_6G;
+            if (forth > MPU9250_6G_THRESHOLD) {
+                return MPU9250_EVT_6G;
             }
-            if (forth > MICROBIT_ACCELEROMETER_8G_THRESHOLD) {
-                return MICROBIT_ACCELEROMETER_EVT_8G;
+            if (forth > MPU9250_8G_THRESHOLD) {
+                return MPU9250_EVT_8G;
             }
 		}
 
         //detect shake
-		if ((x < -MICROBIT_ACCELEROMETER_SHAKE_THRESHOLD && shake.x)
-			|| (x > MICROBIT_ACCELEROMETER_SHAKE_THRESHOLD && !shake.x)) {
+		if ((x < -MPU9250_SHAKE_THRESHOLD && shake.x)
+			|| (x > MPU9250_SHAKE_THRESHOLD && !shake.x)) {
 			shakeDetected = true;
 			shake.x = !shake.x;
 		}
-		if ((y < -MICROBIT_ACCELEROMETER_SHAKE_THRESHOLD && shake.y)
-			|| (y > MICROBIT_ACCELEROMETER_SHAKE_THRESHOLD && !shake.y)) {
+		if ((y < -MPU9250_SHAKE_THRESHOLD && shake.y)
+			|| (y > MPU9250_SHAKE_THRESHOLD && !shake.y)) {
 			shakeDetected = true;
 			shake.y = !shake.y;
 		}
-        if ((z < -MICROBIT_ACCELEROMETER_SHAKE_THRESHOLD && shake.z)
-            || (z > MICROBIT_ACCELEROMETER_SHAKE_THRESHOLD && !shake.z)) {
+        if ((z < -MPU9250_SHAKE_THRESHOLD && shake.z)
+            || (z > MPU9250_SHAKE_THRESHOLD && !shake.z)) {
             shakeDetected = true;
             shake.z = !shake.z;
         }
-        if (shakeDetected && shake.count < MICROBIT_ACCELEROMETER_SHAKE_COUNT_THRESHOLD) {
+        if (shakeDetected && shake.count < MPU9250_SHAKE_COUNT_THRESHOLD) {
 		    shake.count ++;
 		    if (shake.count == 1) {
 		    	shake.timer = 0;
 			}
-			if (shake.count == MICROBIT_ACCELEROMETER_SHAKE_COUNT_THRESHOLD) {
+			if (shake.count == MPU9250_SHAKE_COUNT_THRESHOLD) {
 				shake.shaken = 1;
 				shake.timer = 0;
-				return MICROBIT_ACCELEROMETER_EVT_SHAKE;
+				return MPU9250_EVT_SHAKE;
 			}
 		}
 		if (shake.count > 0) {
 			shake.timer ++;
-			if (shake.shaken && shake.timer >= MICROBIT_ACCELEROMETER_SHAKE_RTX) {
+			if (shake.shaken && shake.timer >= MPU9250_SHAKE_RTX) {
 				shake.shake = 0;
 				shake.timer = 0;
 				shake.count = 0;
-			} else if (!shake.shaken && shake.timer >= MICROBIT_ACCELEROMETER_SHAKE_DAMPING) {
+			} else if (!shake.shaken && shake.timer >= MPU9250_SHAKE_DAMPING) {
 				shake.timer = 0;
 				if (shake.count > 0) {
 					shake.count --;
 				}
 			}
 		}
-		if (forth < MICROBIT_ACCELEROMETER_FREEFALL_THRESHOLD) {
-			return MICROBIT_ACCELEROMETER_EVT_FREEFALL;
+		if (forth < MPU9250_FREEFALL_THRESHOLD) {
+			return MPU9250_EVT_FREEFALL;
 		}
-		if (x < (-1000 + MICROBIT_ACCELEROMETER_TILT_TOLERANCE)) {
-			return MICROBIT_ACCELEROMETER_EVT_TILT_LEFT;
+		if (x < (-1000 + MPU9250_TILT_TOLERANCE)) {
+			return MPU9250_EVT_TILT_LEFT;
 		}
-		if (x > (1000 - MICROBIT_ACCELEROMETER_TILT_TOLERANCE)) {
-            return MICROBIT_ACCELEROMETER_EVT_TILT_RIGHT;
+		if (x > (1000 - MPU9250_TILT_TOLERANCE)) {
+            return MPU9250_EVT_TILT_RIGHT;
 		}
-		if (y < (-1000 + MICROBIT_ACCELEROMETER_TILT_TOLERANCE)) {
-			return MICROBIT_ACCELEROMETER_EVT_TILT_DOWN;
+		if (y < (-1000 + MPU9250_TILT_TOLERANCE)) {
+			return MPU9250_EVT_TILT_DOWN;
 		}
-		if (y > (1000 - MICROBIT_ACCELEROMETER_TILT_TOLERANCE)) {
-            return MICROBIT_ACCELEROMETER_EVT_TILT_UP;
+		if (y > (1000 - MPU9250_TILT_TOLERANCE)) {
+            return MPU9250_EVT_TILT_UP;
 		}
-		if (z < (-1000 + MICROBIT_ACCELEROMETER_TILT_TOLERANCE)) {
-			return MICROBIT_ACCELEROMETER_EVT_FACE_UP;
+		if (z < (-1000 + MPU9250_TILT_TOLERANCE)) {
+			return MPU9250_EVT_FACE_UP;
 		}
-		if (z > (1000 - MICROBIT_ACCELEROMETER_TILT_TOLERANCE)) {
-            return MICROBIT_ACCELEROMETER_EVT_FACE_DOWN;
+		if (z > (1000 - MPU9250_TILT_TOLERANCE)) {
+            return MPU9250_EVT_FACE_DOWN;
 		}
 
-		return MICROBIT_ACCELEROMETER_EVT_NONE;
+		return MPU9250_EVT_NONE;
 	}
 
 	function updateGesture () {
@@ -137,15 +141,15 @@ var accelerometer = function(name) {
         }
 	}
 
-	mod.get_x = new Sk.builtin.func(function() {
+	mod.mpu9250_get_x = new Sk.builtin.func(function() {
 		return new Sk.builtin.int_(mod.data.x);
 	});
 
-	mod.get_y = new Sk.builtin.func(function() {
+	mod.mpu9250_get_y = new Sk.builtin.func(function() {
 		return new Sk.builtin.int_(mod.data.y);
 	});
 
-	mod.get_z = new Sk.builtin.func(function() {
+	mod.mpu9250_get_z = new Sk.builtin.func(function() {
 		return new Sk.builtin.int_(mod.data.z);
 	});
 
@@ -157,7 +161,7 @@ var accelerometer = function(name) {
 		return new Sk.builtin.str(mod.data.currentGesture);
 	});
 
-	mod.is_gesture = new Sk.builtin.func(function(gesture) {
+	mod.mpu9250_is_gesture = new Sk.builtin.func(function(gesture) {
 		return new Sk.builtin.bool(gesture.v == mod.data.currentGesture);
 	});
 
@@ -176,7 +180,22 @@ var accelerometer = function(name) {
 		mod.data.gestureHistory = [];
 		return new Sk.builtin.tuple(Sk.ffi.remapToPy(gestures));
 	});
-
+	mod.mpu9250_gyro_x = new Sk.builtin.func(function() {
+		return new Sk.builtin.int_(mod.data.gyro_x);
+	});
+	mod.mpu9250_gyro_y = new Sk.builtin.func(function() {
+		return new Sk.builtin.int_(mod.data.gyro_y);
+	});
+	mod.mpu9250_gyro_z = new Sk.builtin.func(function() {
+		return new Sk.builtin.int_(mod.data.gyro_z);
+	});
+	mod.mpu9250_gyro_values = new Sk.builtin.func(function() {
+		var strength = parseInt(Math.sqrt(mod.data.gyro_x ** 2 + mod.data.gyro_y ** 2 + mod.data.gyro_z ** 2));
+		return new Sk.builtin.int_(strength);
+	});
+	mod.mpu9250_get_temperature = new Sk.builtin.func(function() {
+		return new Sk.builtin.int_(strength);
+	});
 	ui.bindAccelerometerEvent('accelerometer_x', mod.data, 'x', updateGesture);
     ui.bindAccelerometerEvent('accelerometer_y', mod.data, 'y', updateGesture);
     ui.bindAccelerometerEvent('accelerometer_z', mod.data, 'z', updateGesture);
@@ -191,5 +210,8 @@ var accelerometer = function(name) {
     ui.bindAccelerometerGestureEvent('3g', mod.data, '3g');
     ui.bindAccelerometerGestureEvent('6g', mod.data, '6g');
     ui.bindAccelerometerGestureEvent('8g', mod.data, '8g');
+    ui.bindGyroEvent('mpu9250_gyro_x', mod.data, 'gyro_x');
+    ui.bindGyroEvent('mpu9250_gyro_y', mod.data, 'gyro_y');
+    ui.bindGyroEvent('mpu9250_gyro_z', mod.data, 'gyro_z');
 	return mod;
 }

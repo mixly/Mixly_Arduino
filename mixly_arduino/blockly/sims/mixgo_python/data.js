@@ -1,8 +1,11 @@
 var mbData = {
     'temperature': 23,
+    'humidity': 0,
     'distance': 0,
     'distance_infrared_left': 0,
     'distance_infrared_right': 0,
+    'soundlevel': 0,
+    'brightness': 0,
     'servo': 0,
     'compass': {
        'heading': 0,
@@ -27,10 +30,13 @@ var mbData = {
         'length': 32,
         'power':6
     },
-    'accelerometer': {
+    'mpu9250': {
         'x': 0,
         'y': 0,
         'z': 0,
+        'gyro_x': 0,
+        'gyro_y': 0,
+        'gyro_z': 0,
         'currentGesture': '',
         'gestureHistory': []
     },
