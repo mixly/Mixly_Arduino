@@ -1,0 +1,2 @@
+newTone	KEYWORD1
+NewNoTone KEYWORD1
