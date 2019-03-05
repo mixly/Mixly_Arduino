@@ -47,48 +47,24 @@ Blockly.Arduino.tone_notes = function() {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino.controls_tone=function(){
-   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
-   var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',
-      Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-   var code = ""; 
-   if(window.isNaN(dropdown_pin)){
-      code = code+'pinMode('+dropdown_pin+', OUTPUT);\n';
-   }else{
-      Blockly.Arduino.setups_['setup_output_'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
-   }
-   code += "tone("+dropdown_pin+","+fre+");\n";
-   return code;
+//执行器-蜂鸣器
+Blockly.Arduino.controls_tone = function() {
+  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+  var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY', Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
+  var dur = Blockly.Arduino.valueToCode(this, 'DURATION', Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
+   Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <NewTone.h>';
+  Blockly.Arduino.setups_['setup_output_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', OUTPUT);';
+  var code = "NewTone(" + dropdown_pin + "," + fre + "," + dur + ");\n";
+  return code;
 };
 
-Blockly.Arduino.controls_tone2=function(){
-   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
-   var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',
-      Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-   var dur = Blockly.Arduino.valueToCode(this, 'DURATION',
-      Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-   var code = ""; 
-   if(window.isNaN(dropdown_pin)){
-      code = code+'pinMode('+dropdown_pin+', OUTPUT);\n';
-   }else{
-      Blockly.Arduino.setups_['setup_output_'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
-   }
-   code += "tone("+dropdown_pin+","+fre+","+dur+");\n";
-   return code;
+//执行器-蜂鸣器结束声音
+Blockly.Arduino.controls_notone = function() {
+  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.setups_['setup_output_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', OUTPUT);';
+  var code = "NewNoTone(" + dropdown_pin + ");\n";
+  return code;
 };
-
-Blockly.Arduino.controls_notone=function(){
-   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
-   var code='';
-   if(window.isNaN(dropdown_pin)){
-     code = code+'pinMode('+dropdown_pin+', OUTPUT);\n';
-   }else{
-     Blockly.Arduino.setups_['setup_output_'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
-   }
-   code += "noTone("+dropdown_pin+");\n";
-   return code;
-};
-
 
 Blockly.Arduino.group_stepper_setup = function() {
   var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'),Blockly.Variables.NAME_TYPE);

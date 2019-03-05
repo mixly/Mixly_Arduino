@@ -700,19 +700,24 @@
         <shadow type="pins_digital"></shadow>
       </value>
     </block>
-    <block type="controls_tone">
-      <value name="PIN">
-        <shadow type="pins_digital"></shadow>
-      </value>
-      <value name="FREQUENCY">
-        <shadow type="tone_notes"></shadow>
-      </value>
-    </block>
-    <block type="controls_notone">
-      <value name="PIN">
-        <shadow type="pins_digital"></shadow>
-      </value>
-    </block>
+   <block type="controls_tone">
+  <value name="PIN">
+   <shadow type="pins_digital"></shadow>
+ </value>
+ <value name="FREQUENCY">
+  <shadow type="tone_notes"></shadow>
+</value>
+<value name="DURATION">
+  <shadow type="math_number">
+    <field name="NUM">1000</field>
+  </shadow>
+</value>
+</block>
+<block type="controls_notone">
+  <value name="PIN">
+   <shadow type="pins_digital"></shadow>
+ </value>
+</block>
     <block type="display_rgb_init">
       <value name="PIN">
         <shadow type="pins_digital" />

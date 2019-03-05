@@ -459,13 +459,6 @@ Blockly.Arduino.oled_clear = function() {
   return code;
 };
 
-Blockly.Arduino.oled_getHeight_or_Width = function() {
-  var what = this.getFieldValue('WHAT');
-  var funcName = 'u8g2.get' + what + '()';
-  return [funcName, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-
 Blockly.Arduino.oled_draw4Str = function() {
   var value_text_line1 = Blockly.Arduino.valueToCode(this, 'Text_line1', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
   var value_text_line2 = Blockly.Arduino.valueToCode(this, 'Text_line2', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';

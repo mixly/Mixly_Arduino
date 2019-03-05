@@ -637,10 +637,6 @@ Blockly.Blocks.MAX7219_Clear = {
 
 //OLED -based on U8G2
 //显示-OLED-变量
-var WorH = [
-[Blockly.OLED_HEIGHT, 'Height'],
-[Blockly.OLED_WIDTH, 'Width']
-];
 
 var LINESELECT = [
 [Blockly.OLED_HOR, "H"],
@@ -690,38 +686,6 @@ var FONT_TYPE_SELECT = [
 ["ncenR24", "ncenR24_tf"]
 ];
 
-//显示-OLED-初始化(iic)
-Blockly.Blocks.oled_init = {
-  init: function() {
-    this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_INIT2);
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip(Blockly.OLED_INIT2_TOOLTIP);
-  }
-};
-//显示-OLED-清屏幕
-Blockly.Blocks.oled_clear = {
-  init: function() {
-    this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_CLEAR);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip();
-  }
-};
-//显示-OLED-获取高度/宽度
-Blockly.Blocks.oled_getHeight_or_Width = {
-  init: function() {
-    this.setColour(Blockly.Blocks.display.HUE);
-
-    this.appendDummyInput("").appendField(Blockly.OLEDGET).appendField(new Blockly.FieldDropdown(WorH), "WHAT");
-    this.setOutput(true, Number);
-    this.setTooltip(Blockly.OLED_GET_HEIGHT_TOOLTIP);
-  }
-};
-
 //显示-OLED-图像（汉字）高度选择
 var OLED_BITMAP_HEIGHT_SELECT = [
 ["16", "16"],
@@ -753,12 +717,33 @@ var OLED_BITMAP_WIDTH_SELECT = [
 ["120", "120"],
 ["128", "128"]
 ];
+//显示-OLED-初始化(iic)
+Blockly.Blocks.oled_init = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendDummyInput("").appendField(Blockly.OLED_INIT2);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.OLED_INIT2_TOOLTIP);
+  }
+};
+//显示-OLED-清屏幕
+Blockly.Blocks.oled_clear = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendDummyInput("").appendField(Blockly.OLED_CLEAR);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip();
+  }
+};
 
 //显示-oled-定义字模名称和数据
 Blockly.Blocks['oled_define_bitmap_data'] = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_BITMAP_NAME).appendField(new Blockly.FieldTextInput('bitmap1'), 'VAR').appendField(Blockly.OLED_BITMAP_DATA).appendField(new Blockly.FieldTextInput('0x80,0x00,0x84,0x10,0x88,0x10,0x90,0x08,0x90,0x04,0x80,0x00,0xFE,0x3F,0xC0,0x01, 0xA0,0x02,0xA0,0x02,0x90,0x04,0x88,0x08,0x84,0x10,0x83,0x60,0x80,0x00,0x80,0x00'), 'TEXT');
+    this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_BITMAP_NAME).appendField(new Blockly.FieldTextInput('bitmap1'), 'VAR').appendField(Blockly.OLED_BITMAP_DATA).appendField(new Blockly.FieldTextInput('0x80,0x00,0x84,0x10,0x88,0x10,0x90,0x08,0x90,0x04,0x80,0x00,0xFE,0x3F,0xC0,0x01, 0xA0,0x02,0xA0,0x02,0x90,0x04,0x88,0x08,0x84,0x10,0x83,0x60,0x80,0x00,0x80,0x00'), 'TEXT');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.OLED_DEF_BMP_DATA_TOOLTIP);
@@ -769,7 +754,7 @@ Blockly.Blocks['oled_define_bitmap_data'] = {
 Blockly.Blocks.oled_showBitmap = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_BITMAP);
+    this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_BITMAP);
     this.appendValueInput("START_X", Number).appendField(Blockly.OLED_POSX).setCheck(Number);
     this.appendValueInput("START_Y", Number).appendField(Blockly.OLED_POSY).setCheck(Number);
     this.appendDummyInput("").appendField(Blockly.OLED_WIDTH).appendField(new Blockly.FieldDropdown(OLED_BITMAP_WIDTH_SELECT), "WIDTH");
@@ -786,7 +771,7 @@ Blockly.Blocks.oled_showBitmap = {
 Blockly.Blocks.oled_drawPixe = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_DRAWPIXE);
+    this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_DRAWPIXE);
     this.appendValueInput("POS_X", Number).appendField(Blockly.OLED_POSX).setCheck(Number);
     this.appendValueInput("POS_Y", Number).appendField(Blockly.OLED_POSY).setCheck(Number);
     this.setInputsInline(true);
@@ -800,7 +785,7 @@ Blockly.Blocks.oled_drawPixe = {
 Blockly.Blocks.oled_drawLine = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_DRAWLINE);
+    this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_DRAWLINE);
     this.appendValueInput("START_X", Number).appendField(Blockly.OLED_START_X).setCheck(Number);
     this.appendValueInput("START_Y", Number).appendField(Blockly.OLED_START_Y).setCheck(Number);
     this.appendValueInput("END_X", Number).appendField(Blockly.OLED_END_X).setCheck(Number);
@@ -816,7 +801,7 @@ Blockly.Blocks.oled_drawLine = {
 Blockly.Blocks.oled_draw_Str_Line = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_DRAWSTRLINE);
+    this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_DRAWSTRLINE);
     this.appendValueInput("START_X", Number).appendField(Blockly.OLED_START_X).setCheck(Number);
     this.appendValueInput("START_Y", Number).appendField(Blockly.OLED_START_Y).setCheck(Number);
     this.appendValueInput("LENGTH", Number).appendField(Blockly.OLED_LENGTH).setCheck(Number);
@@ -832,7 +817,7 @@ Blockly.Blocks.oled_draw_Str_Line = {
 Blockly.Blocks.oled_page = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput().appendField(Blockly.OLED_PAGE);
+    this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_PAGE);
     this.appendStatementInput('DO').appendField('');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -844,7 +829,7 @@ Blockly.Blocks.oled_page = {
 Blockly.Blocks.oled_drawTriangle = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_DRAW_TRIANGLE);
+    this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_DRAW_TRIANGLE);
     this.appendValueInput("D0_X", Number).appendField(Blockly.OLED_D0_X).setCheck(Number);
     this.appendValueInput("D0_Y", Number).appendField(Blockly.OLED_D0_Y).setCheck(Number);
     this.appendValueInput("D1_X", Number).appendField(Blockly.OLED_D1_X).setCheck(Number);
@@ -862,7 +847,7 @@ Blockly.Blocks.oled_drawTriangle = {
 Blockly.Blocks.oled_drawFrame = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_DRAW_RECTANGLE);
+    this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_DRAW_RECTANGLE);
     this.appendDummyInput("").appendField(new Blockly.FieldDropdown(FRAMESELECT), "TYPE");
     this.appendValueInput("D0_X", Number).appendField(Blockly.OLED_L_U_X).setCheck(Number);
     this.appendValueInput("D0_Y", Number).appendField(Blockly.OLED_L_U_Y).setCheck(Number);
@@ -879,7 +864,7 @@ Blockly.Blocks.oled_drawFrame = {
 Blockly.Blocks.oled_drawRFrame = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_DRAW_RAD_RECTANGLE);
+    this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_DRAW_RAD_RECTANGLE);
     this.appendDummyInput("").appendField(new Blockly.FieldDropdown(RADSELECT), "TYPE");
     this.appendValueInput("D0_X", Number).appendField(Blockly.OLED_L_U_X).setCheck(Number);
     this.appendValueInput("D0_Y", Number).appendField(Blockly.OLED_L_U_Y).setCheck(Number);
@@ -897,7 +882,7 @@ Blockly.Blocks.oled_drawRFrame = {
 Blockly.Blocks.oled_drawCircle = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_DRAW_CIRCLE);
+    this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_DRAW_CIRCLE);
     this.appendDummyInput("").appendField(new Blockly.FieldDropdown(CIRCLESELECT), "TYPE");
     this.appendValueInput("D0_X", Number).appendField(Blockly.OLED_CENTER_CIRCLE_X).setCheck(Number);
     this.appendValueInput("D0_Y", Number).appendField(Blockly.OLED_CENTER_CIRCLE_Y).setCheck(Number);
@@ -914,7 +899,7 @@ Blockly.Blocks.oled_drawCircle = {
 Blockly.Blocks.oled_drawEllipse = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_DRAW_ELLIPSE);
+    this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_DRAW_ELLIPSE);
     this.appendDummyInput("").appendField(new Blockly.FieldDropdown(ELLIPSESELECT), "TYPE");
     this.appendValueInput("D0_X", Number).appendField(Blockly.OLED_CENTER_CIRCLE_X).setCheck(Number);
     this.appendValueInput("D0_Y", Number).appendField(Blockly.OLED_CENTER_CIRCLE_Y).setCheck(Number);
@@ -932,7 +917,7 @@ Blockly.Blocks.oled_drawEllipse = {
 Blockly.Blocks.oled_drawStr = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_DRAWSTR);
+    this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_DRAWSTR);
     this.appendValueInput("POS_X", Number).appendField(Blockly.OLED_START_X).setCheck(Number);
     this.appendValueInput("POS_Y", Number).appendField(Blockly.OLED_START_Y).setCheck(Number);
     this.appendValueInput("TEXT", String).appendField(Blockly.OLED_STRING).setCheck([Number, String]);
@@ -947,7 +932,7 @@ Blockly.Blocks.oled_drawStr = {
 Blockly.Blocks.oled_setFont = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_SET_FONT);
+    this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_SET_FONT);
     this.appendDummyInput("").appendField(new Blockly.FieldDropdown(FONT_TYPE_SELECT), "TYPE");
     this.setInputsInline(true);
     this.setPreviousStatement(true);
@@ -960,7 +945,7 @@ Blockly.Blocks.oled_setFont = {
 Blockly.Blocks.oled_print = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendDummyInput("").appendField(Blockly.OLED_PRINT_VAR);
+    this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_PRINT_VAR);
     this.appendValueInput("POS_X", Number).appendField(Blockly.OLED_START_X).setCheck(Number);
     this.appendValueInput("POS_Y", Number).appendField(Blockly.OLED_START_Y).setCheck(Number);
     this.appendValueInput("TEXT", String).appendField(Blockly.OLED_STRING).setCheck([Number, String]);
@@ -974,7 +959,7 @@ Blockly.Blocks.oled_print = {
 //显示-OLED-显示多行文本
 Blockly.Blocks.oled_draw4Str = {
   init: function() {
-    this.appendDummyInput().appendField(Blockly.oled_draw4Str);
+    this.appendDummyInput().appendField("OLED").appendField(Blockly.oled_draw4Str);
     this.appendDummyInput().appendField(Blockly.OLED_PRINT);
     this.appendValueInput("Text_line1", 'String').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.OLED_LINE1);
     this.appendValueInput("Text_line2", 'String').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.OLED_LINE2);

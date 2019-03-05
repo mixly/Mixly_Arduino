@@ -79,23 +79,6 @@ Blockly.Blocks.tone_notes = {
 Blockly.Blocks.controls_tone={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
-	this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_TONE_PIN)
-        .setCheck(Number);
-    this.appendValueInput('FREQUENCY')
-        .setCheck(Number)
-        //.setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.MIXLY_FREQUENCY);
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-	this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE);
-  }
-};
-
-Blockly.Blocks.controls_tone2={
-init:function(){
-    this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendValueInput("PIN", Number)
         .appendField(Blockly.MIXLY_TONE_PIN)
         .setCheck(Number);
@@ -107,12 +90,12 @@ init:function(){
         .setCheck(Number)
         //.setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.MIXLY_DURATION);
-	this.appendDummyInput("")
-		.appendField(Blockly.MIXLY_DELAY_MS);
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_DELAY_MS);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-	this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE2);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE2);
   }
 };
 
