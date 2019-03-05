@@ -2369,7 +2369,6 @@ Blockly.oled_print_tooltip='打印字符串变量值。';
 Blockly.OLED_DRAW_ELLIPSE_TOOLTIP='绘制椭圆，x范围(0~127),y范围(0~63)';
 Blockly.OLED_INIT='OLED初始化';
 Blockly.OLED_INIT2='OLED初始化(I2C)';
-Blockly.OLED_INIT2_TOOLTIP='接SPI接口';
 Blockly.OLED_INIT2_TOOLTIP='接IIC接口,A4 (SDA), A5 (SCL)';
 Blockly.OLED_SOLID='实心';
 Blockly.OLED_HOLLOW='空心';

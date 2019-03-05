@@ -82,90 +82,6 @@ Blockly.Arduino.group_lcd_power = function() {
   return code;
 };
 
-Blockly.Arduino.lp2i_u8g_draw_4strings = function () {
-    var value_text_line1 = Blockly.Arduino.valueToCode(this, 'Text_line1', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
-    var value_text_line2 = Blockly.Arduino.valueToCode(this, 'Text_line2', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
-    var value_text_line3 = Blockly.Arduino.valueToCode(this, 'Text_line3', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
-    var value_text_line4 = Blockly.Arduino.valueToCode(this, 'Text_line4', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
-    Blockly.Arduino.definitions_["include_U8glib"] = '#include <U8glib.h>\n U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_NO_ACK|U8G_I2C_OPT_FAST);\n';
-    //dans le setup    
-    Blockly.Arduino.setups_["setup_u8g"] =
-       'u8g.firstPage();\n'
-      + '  do {\n'
-      + '      u8g.setFont(u8g_font_unifont);\n'
-      + '  } while( u8g.nextPage());\n'
-      + '  delay(1000);\n';
-    var code = 'u8g.firstPage();\n'
-    + 'do {\n'
-    + '    u8g.setPrintPos(0,14);\n'
-    + '    u8g.print(' + value_text_line1 + ');\n'
-    + '    u8g.setPrintPos(0,30);\n'
-    + '    u8g.print(' + value_text_line2 + ');\n'
-    + '    u8g.setPrintPos(0,46);\n'
-    + '    u8g.print(' + value_text_line3 + ');\n'
-    + '    u8g.setPrintPos(0,62);\n'
-    + '    u8g.print(' + value_text_line4 + ');\n'
-    + '}\n'
-    +'while( u8g.nextPage() );\n';
-    return code;
-};
-
-Blockly.Arduino.lp2i_u8g_print = function () {
-    var value_n = Blockly.Arduino.valueToCode(this, 'N', Blockly.Arduino.ORDER_ATOMIC);
-    var x = Blockly.Arduino.valueToCode(this, 'X', Blockly.Arduino.ORDER_ATOMIC);
-    var y = Blockly.Arduino.valueToCode(this, 'Y', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_["include_U8glib"] = '#include <U8glib.h>\n U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_NO_ACK|U8G_I2C_OPT_FAST);\n';
-    //dans le setup    
-    Blockly.Arduino.setups_["setup_u8g"] =
-      'u8g.firstPage();\n'
-      + '  do {\n'
-      + '      u8g.setFont(u8g_font_unifont);\n'
-      + '  } while( u8g.nextPage());\n'
-      + '  delay(1000);\n';
-    var code =
-      'u8g.firstPage();\n'
-    code += '   do {\n'
-    code += '       u8g.setPrintPos(' + x + ', ' + y + ');\n'
-    code += '       u8g.print(' + value_n + ');\n'
-    code += '   }\n while( u8g.nextPage() );\n';
-    return code;
-};
-Blockly.Arduino.lp2i_u8g_4draw_print = function () {
-    var value_text_line1 = Blockly.Arduino.valueToCode(this, 'Text_line1', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
-    var value_text_line2 = Blockly.Arduino.valueToCode(this, 'Text_line2', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
-    var value_text_line3 = Blockly.Arduino.valueToCode(this, 'Text_line3', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
-    var value_text_line4 = Blockly.Arduino.valueToCode(this, 'Text_line4', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
-    var value_n1 = Blockly.Arduino.valueToCode(this, 'N1', Blockly.Arduino.ORDER_ATOMIC);
-    var value_n2 = Blockly.Arduino.valueToCode(this, 'N2', Blockly.Arduino.ORDER_ATOMIC);
-    var value_n3 = Blockly.Arduino.valueToCode(this, 'N3', Blockly.Arduino.ORDER_ATOMIC);
-    var value_n4 = Blockly.Arduino.valueToCode(this, 'N4', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_["include_U8glib"] = '#include <U8glib.h>\n U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_NO_ACK|U8G_I2C_OPT_FAST);\n';
-    //dans le setup    
-    Blockly.Arduino.setups_["setup_u8g"] =
-       'u8g.firstPage();\n'
-      + '   do {\n'
-      + '       u8g.setFont(u8g_font_unifont);\n'
-      + '       u8g.drawStr( 0, 22, "Bonjour !");\n'
-      + '   } while( u8g.nextPage());\n'
-      + '   delay(1000);\n';
-    var code = 'u8g.firstPage();\n'
-    code += '   do {\n'
-    code += '       u8g.drawStr(0, 12, ' + value_text_line1 + ');\n'
-    code += '       u8g.setPrintPos(100, 12 );\n'
-    code += '       u8g.print(' + value_n1 + ');\n'
-    code += '       u8g.drawStr(0, 28, ' + value_text_line2 + ');\n'
-    code += '       u8g.setPrintPos(100, 28 );\n'
-    code += '       u8g.print(' + value_n2 + ');\n'
-    code += '       u8g.drawStr(0, 44, ' + value_text_line3 + ');\n'
-    code += '       u8g.setPrintPos(100, 44 );\n'
-    code += '       u8g.print(' + value_n3 + ');\n'
-    code += '       u8g.drawStr(0, 60, ' + value_text_line4 + ');\n'
-    code += '       u8g.setPrintPos(100, 60 );\n'
-    code += '       u8g.print(' + value_n4 + ');\n'
-    code += '   }\n while( u8g.nextPage() );\n';
-    return code;
-};
-
 Blockly.Arduino.display_4digitdisplay_power=function(){
 	var stat=this.getFieldValue("STAT");
 	Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
@@ -464,10 +380,15 @@ Blockly.Arduino.oled_draw4Str = function() {
   var value_text_line2 = Blockly.Arduino.valueToCode(this, 'Text_line2', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
   var value_text_line3 = Blockly.Arduino.valueToCode(this, 'Text_line3', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
   var value_text_line4 = Blockly.Arduino.valueToCode(this, 'Text_line4', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
-  var code = 'u8g2.drawStr(0, 12, ' + value_text_line1 + ');\n'
-  code += 'u8g2.drawStr(0, 24, ' + value_text_line2 + ');\n'
-  code += 'u8g2.drawStr(0, 36, ' + value_text_line3 + ');\n'
-  code += 'u8g2.drawStr(0, 48, ' + value_text_line4 + ');\n'
+  var code ='u8g2.setFontPosTop();\n'
+    +'u8g2.setCursor(0,0);\n'
+    + 'u8g2.print(' + value_text_line1 + ');\n'
+    +'u8g2.setCursor(0,15);\n'
+    +'u8g2.print(' + value_text_line2 + ');\n' 
+    +'u8g2.setCursor(0,29);\n'
+    +'u8g2.print(' + value_text_line3 + ');\n'
+    +'u8g2.setCursor(0,43);\n'
+    +'u8g2.print(' + value_text_line4 + ');\n'
   return code;
 };
 
@@ -486,7 +407,6 @@ if (code.split(",").length == 2 && code.split(")").length == 2) return code;
 else return "";
 };
 
-
 Blockly.Arduino.oled_page = function() {
   var branch = Blockly.Arduino.statementToCode(this, 'DO');
 branch = branch.replace(/(^\s*)|(\s*$)/g, ""); 
@@ -495,7 +415,6 @@ if (branch) {
   return code;
 }
 };
-
 
 Blockly.Arduino.oled_showBitmap = function() {
   var start_x = Blockly.Arduino.valueToCode(this, 'START_X', Blockly.Arduino.ORDER_ATOMIC);
@@ -674,19 +593,6 @@ if (code.split(",").length == 5 && code.split(")").length == 2) return code;
 else return "";
 };
 
-Blockly.Arduino.oled_drawStr = function() {
-  var POS_x = Blockly.Arduino.valueToCode(this, 'POS_X', Blockly.Arduino.ORDER_ATOMIC);
-  var POS_y = Blockly.Arduino.valueToCode(this, 'POS_Y', Blockly.Arduino.ORDER_ATOMIC);
-  var TEXT = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC);
-  var code = "";
-if ((!isNaN(POS_x) && POS_x < 128 && POS_x >= 0) || (isNaN(POS_x))) 
-  code = 'u8g2.drawStr(' + POS_x + ',';
-if ((!isNaN(POS_y) && POS_y < 64 && POS_y >= 0) || (isNaN(POS_y))) 
-  code += POS_y + ','+ TEXT + "); \n";
-if (code.split(",").length == 3&& code.split(")").length == 2) return code;
-else return "";
-};
-
 Blockly.Arduino.oled_print = function() {
   var POS_x = Blockly.Arduino.valueToCode(this, 'POS_X', Blockly.Arduino.ORDER_ATOMIC);
   var POS_y = Blockly.Arduino.valueToCode(this, 'POS_Y', Blockly.Arduino.ORDER_ATOMIC);
@@ -704,4 +610,50 @@ Blockly.Arduino.oled_setFont = function() {
   var type = this.getFieldValue('TYPE');
   var code = "u8g2.setFont(u8g2_font_"+type+");\nu8g2.setFontPosTop();\n";
   return code;
+};
+
+Blockly.Arduino.lp2i_u8g_draw_4strings = function () {
+    var value_text_line1 = Blockly.Arduino.valueToCode(this, 'Text_line1', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
+    var value_text_line2 = Blockly.Arduino.valueToCode(this, 'Text_line2', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
+    var value_text_line3 = Blockly.Arduino.valueToCode(this, 'Text_line3', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
+    var value_text_line4 = Blockly.Arduino.valueToCode(this, 'Text_line4', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
+    Blockly.Arduino.definitions_["include_U8g2lib"] = '#include <U8g2lib.h>\n#include <Wire.h>\n U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);\n';
+    Blockly.Arduino.setups_["setup_u8g2"] =
+       ' u8g2.begin();\n';
+    var code = 'u8g2.firstPage();\n'
+    + 'do {\n'
+    + '    u8g2.setFont(u8g2_font_timR14_tr);\n'
+    + '    u8g2.setFontPosTop();\n'
+    +'     u8g2.setCursor(0,0);\n'
+    + '    u8g2.print(' + value_text_line1 + ');\n'
+    +'     u8g2.setCursor(0,15);\n'
+    + '    u8g2.print(' + value_text_line2 + ');\n' 
+    +'     u8g2.setCursor(0,29);\n'
+    + '    u8g2.print(' + value_text_line3 + ');\n'
+    +'     u8g2.setCursor(0,43);\n'
+    + '    u8g2.print(' + value_text_line4 + ');\n'
+    + '}\n'
+    +'while(u8g2.nextPage() );\n';
+    return code;
+};
+
+Blockly.Arduino.lp2i_u8g_print = function () {
+    var value_n = Blockly.Arduino.valueToCode(this, 'N', Blockly.Arduino.ORDER_ATOMIC);
+    var x = Blockly.Arduino.valueToCode(this, 'X', Blockly.Arduino.ORDER_ATOMIC);
+    var y = Blockly.Arduino.valueToCode(this, 'Y', Blockly.Arduino.ORDER_ATOMIC);
+    Blockly.Arduino.definitions_["include_U8glib"] = '#include <U8glib.h>\n U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_NO_ACK|U8G_I2C_OPT_FAST);\n';
+    //dans le setup    
+    Blockly.Arduino.setups_["setup_u8g"] =
+      'u8g.firstPage();\n'
+      + '  do {\n'
+      + '      u8g.setFont(u8g_font_unifont);\n'
+      + '  } while( u8g.nextPage());\n'
+      + '  delay(1000);\n';
+    var code =
+      'u8g.firstPage();\n'
+    code += '   do {\n'
+    code += '       u8g.setPrintPos(' + x + ', ' + y + ');\n'
+    code += '       u8g.print(' + value_n + ');\n'
+    code += '   }\n while( u8g.nextPage() );\n';
+    return code;
 };
