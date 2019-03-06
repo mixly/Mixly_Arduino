@@ -381,8 +381,25 @@ var ui = {
             }
         })
     },
-    setLED: function (x, y, brightness) {
+    //设置点阵中的LED
+    setMatrixLED: function (x, y, brightness) {
         $('.mb_led.mb_led_row_' + y + '.mb_led_col_' + x).removeClass('mb_led_brightness_ mb_led_brightness_0 mb_led_brightness_1 mb_led_brightness_2 mb_led_brightness_3 mb_led_brightness_4 mb_led_brightness_5 mb_led_brightness_6 mb_led_brightness_7 mb_led_brightness_8 mb_led_brightness_9 mb_led_brightness_10 mb_led_brightness_11 mb_led_brightness_12 mb_led_brightness_13 mb_led_brightness_14 mb_led_brightness_15').addClass('mb_led_brightness_' + brightness);
+    },
+    //设置按钮上方的板载LED
+    setBoardLEDonoff: function (pinNum, brightness) {
+        if(brightness === 0)
+            $('#mixgo_led_' + x).css('background-color','#000');
+        else
+            $('#mixgo_led_' + x).css('background-color','#f00');
+    },
+    setBoardLEDbrightness: function (pinNum, val) {
+        if(typeof(val) == 'number' && val > 0){
+            decval = (val / 8) + 127; //将0~1023转换成RGB(127,255)区间
+            $('#mb_led_' + x).css('background-color', '#' + decval.toString(16) +'0000');
+        }
+        else{
+            $('#mb_led_' + x).css('background-color','#000');
+        }   
     },
     output: function (s) {
         console.log(s);
@@ -499,7 +516,7 @@ var ui = {
         var x,y;
         for(x = 0; x < 16; x++) {
             for(y = 0; y < 8; y++) {
-                ui.setLED(x, y, 0);
+                ui.setMatrixLED(x, y, 0);
             }
         }
     },

@@ -569,7 +569,7 @@ var $builtinmodule = function(name) {
         };
 
         function setLED(x, y, brightness) {
-            ui.setLED(x, y, brightness);
+            ui.setMatrixLED(x, y, brightness);
             leds[y][x] = brightness;
         }
 

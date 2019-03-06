@@ -26,6 +26,9 @@ Sk.externalLibraries = {
     dhtx: {
         path: conf.url + '/blockly/sims/mixgo_python/dhtx/__init__.js'
     },
+    sonar: {
+        path: conf.url + '/blockly/sims/mixgo_python/sonar/__init__.js'
+    },
     servo: {
         path: conf.url + '/blockly/sims/mixgo_python/servo/__init__.js'
     },

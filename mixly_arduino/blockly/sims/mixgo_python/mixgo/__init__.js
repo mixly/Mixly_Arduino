@@ -160,15 +160,42 @@ var $builtinmodule = function (name) {
     ui.bindBtnEvent('mixgo_btn_B', [mod.button_b]);
     ui.bindBtnEvent('btn_both', [mod.button_a, mod.button_b]);
 
-    mod.HCSR04 = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
-        $loc.__init__ = new Sk.builtin.func(function(self) {
+    mod.LED = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
+        $loc.__init__ = new Sk.builtin.func(function(self, pin) {
+            self.val = 1;
+            self.pin = pin.v;
+            self.brightness = 0;
+            ui.addPinOption('analog', 5 * (self.pin - 1));
         });
 
-        $loc.distance_cm = new Sk.builtin.func(function(self) {
-            return Sk.builtin.float_(mod.data.distance);
+        $loc.on = new Sk.builtin.func(function(self,n,) {           
+            self.val = 0;
         });
-    }, "HCSR04", []);
-    ui.bindHCSR04Event('HCSR04', mod.data, 'distance');
+
+        $loc.off = new Sk.builtin.func(function(self) {
+            self.val = 1;
+        });
+
+        $loc.setonoff = new Sk.builtin.func(function(self, pin, val) {
+            if(val.v == -1){
+                self.val = self.val === 1 ? 0 : 1;
+            }
+            else{
+                self.val = val.v;
+            }
+            ui.setBoardLEDonoff(pin.v, 1 - self.val);
+        });
+        $loc.getonoff = new Sk.builtin.func(function(self) {
+            return Sk.builtin.int_(1 - self.val);
+        });
+        $loc.setbrightness = new Sk.builtin.func(function(self, pin, brightness) {
+            self.brightness = brightness.v;
+            ui.setBoardLEDbrightness(pin.v, brightness.v);
+        });
+    }, "LED", []);
+
+    led1 = Sk.misceval.callsim(led, Sk.builtin.int_(0));
+    led2 = Sk.misceval.callsim(led, Sk.builtin.int_(5));
 
     mod.mixgo_get_soundlevel = new Sk.builtin.func(function(self) {
         return Sk.builtin.int_(mod.data.soundlevel);

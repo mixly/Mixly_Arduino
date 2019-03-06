@@ -451,12 +451,22 @@ text.blocklyText {
 .mb_led_col_14 { left: 328px; }
 .mb_led_col_15 { left: 348px; }
 
-#mb_btn_A {
+#mixgo_led_1{
+    left: 14.5px;
+    top: 78px;
+}
+
+#mixgo_led_2{
+    left: 379.5px;
+    top: 78px;
+}
+
+#mixgo_btn_A {
     left: 14.5px;
     top: 98px;
 }
 
-#mb_btn_B {
+#mixgo_btn_B {
     left: 379.5px;
     top: 98px;
 }
