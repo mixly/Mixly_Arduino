@@ -18,19 +18,6 @@ Blockly.Blocks['serial_begin'] = {
   }
 };
 
-Blockly.Blocks['serialBT_begin'] = {
-  init: function() {
-    this.setColour(Blockly.Blocks.serial.HUE);
-   this.appendValueInput("CONTENT", String)
-    .appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
-    .appendField(Blockly.MIXLY_SERIALBT_BEGIN)
-    .setCheck(String);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setInputsInline(true);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_SERIAL_BEGIN);
-  }
-};
 
 Blockly.Blocks['serial_write'] = {
     init: function () {

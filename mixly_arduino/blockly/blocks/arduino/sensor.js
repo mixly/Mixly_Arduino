@@ -138,6 +138,7 @@ Blockly.Blocks.weightSensor = {
   init: function () {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
+    .appendField("Hx711")
     .appendField(Blockly.MIXLY_WEIGHTSENSOR);
     this.appendValueInput("PIN1", Number)
     .appendField('Dout#')

@@ -983,6 +983,9 @@ Blockly.SPI_TRANSFER='transfer';
 
 Blockly.MIXLY_SERIAL_BEGIN='baud rate';
 Blockly.MIXLY_SERIALBT_BEGIN='init';
+Blockly.MIXLY_SERIALBT_INIT='ESP32 Bluetooth Name';
+Blockly.MIXLY_SERIALBT_AVAILABLE='ESP32 Bluetooth readable';
+Blockly.MIXLY_SERIALBT_READ='ESP32 Bluetooth Data';
 //stepper
 Blockly.MIXLY_STEPPER='Stepper';
 Blockly.MIXLY_STEPPER_SETUP_STEPPER='Setup Stepper';

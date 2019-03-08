@@ -1066,66 +1066,6 @@ Blockly.Blocks.display_rgb_rainbow3 = {
   }
 };
 
-//蜂鸣器频率
-var TONE_NOTES = [
-["NOTE_C5", "532"],
-["NOTE_D5", "587"],
-["NOTE_E5", "659"],
-["NOTE_F5", "698"],
-["NOTE_G5", "784"],
-["NOTE_A5", "880"],
-["NOTE_B5", "988"],
-["NOTE_C6", "1048"],
-["NOTE_D6", "1176"],
-["NOTE_E6", "1320"],
-["NOTE_F6", "1396"],
-["NOTE_G6", "1568"],
-["NOTE_A6", "1760"],
-["NOTE_B6", "1976"],
-["NOTE_C7", "2096"],
-["NOTE_D7", "2352"],
-["NOTE_E7", "2640"],
-["NOTE_F7", "2792"],
-["NOTE_G7", "3136"],
-["NOTE_A7", "3520"],
-["NOTE_B7", "3952"]];
-
-//执行器-蜂鸣器的频率选择
-Blockly.Blocks.tone_notes = {
-  init: function() {
-    this.setColour(Blockly.Blocks.blynk.MusicHUE);
-    this.appendDummyInput("").appendField(new Blockly.FieldDropdown(TONE_NOTES), 'STAT');
-    this.setOutput(true, Number);
-  }
-};
-
-//执行器-蜂鸣器模块
-Blockly.Blocks.controls_tone2 = {
-  init: function() {
-    this.setColour(Blockly.Blocks.blynk.MusicHUE);
-    this.appendDummyInput("").appendField(Blockly.MIXLY_DF_BUZZER);
-    this.appendValueInput("PIN", Number).appendField(Blockly.MIXLY_PIN).setCheck(Number);
-    this.appendValueInput('FREQUENCY').setCheck(Number).appendField(Blockly.MIXLY_FREQUENCY);
-    this.appendValueInput('DURATION', Number).setCheck(Number).appendField(Blockly.MIXLY_DURATION);
-    this.appendDummyInput("").appendField(Blockly.MIXLY_DELAY_MS);
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-  }
-};
-
-//执行器-蜂鸣器停止模块
-Blockly.Blocks.controls_notone = {
-  init: function() {
-    this.setColour(Blockly.Blocks.blynk.MusicHUE);
-    this.appendDummyInput("").appendField(Blockly.MIXLY_NOTONE_PIN);
-    this.appendValueInput("PIN", Number);
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-  }
-};
-
 //MP3播放控制
 var GD5800_MP3_CONTROL_TYPE = [
 [Blockly.MIXLY_MP3_PLAY, "play();"],

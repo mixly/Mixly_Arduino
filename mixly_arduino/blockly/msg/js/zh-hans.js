@@ -987,6 +987,9 @@ Blockly.SPI_TRANSFER='传输';
 
 Blockly.MIXLY_SERIAL_BEGIN='波特率';
 Blockly.MIXLY_SERIALBT_BEGIN='初始化';
+Blockly.MIXLY_SERIALBT_INIT='初始化ESP32蓝牙 设备名称';
+Blockly.MIXLY_SERIALBT_AVAILABLE='ESP32蓝牙有数据可读？';
+Blockly.MIXLY_SERIALBT_READ='ESP32蓝牙数据';
 
 //stepper
 Blockly.MIXLY_STEPPER='步进电机';

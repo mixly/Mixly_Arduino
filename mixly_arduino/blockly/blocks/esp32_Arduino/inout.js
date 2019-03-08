@@ -89,7 +89,8 @@ Blockly.Blocks['inout_pin_pressed'] = {
         this.setColour(20);
         this.appendValueInput('pin')
             .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET)
-            .appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR);
+            .appendField(Blockly.MIXLY_ESP32_TOUCH)
+            .appendField(Blockly.MIXLY_PIN);
         // this.appendDummyInput()
         //     .appendField(Blockly.MIXLY_IS_TOUCHED);
         this.appendDummyInput()

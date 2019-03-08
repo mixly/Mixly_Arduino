@@ -531,13 +531,7 @@
     </shadow>
   </value>
 </block>
-<block type="serialBT_begin">
-  <value name="CONTENT">
-    <shadow type="text">
-      <field name="TEXT">ESP32Test</field>
-    </shadow>
-  </value>
-</block>
+
 <block type="serial_write"></block>
 <block type="serial_print"></block>
 <block type="serial_println"></block>
@@ -551,7 +545,7 @@
    </shadow>
  </value>
 </block>
-<block type="serial_parseInt_Float"></block>
+
 <block type="serial_flush"></block>
 <block type="serial_softserial">
   <value name="TX">
@@ -564,6 +558,15 @@
 <block type="serial_event"></block>
 </category>
 <category id="catGroup" colour="140">
+  <block type="serialBT_Init">
+  <value name="CONTENT">
+    <shadow type="text">
+      <field name="TEXT">ESP32BT</field>
+    </shadow>
+  </value>
+</block>
+<block type="serialBT_available"></block>
+<block type="serialBT_read"></block>
   <block type="ir_recv">
     <value name="PIN">
       <shadow type="pins_digital"></shadow>
