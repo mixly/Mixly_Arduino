@@ -4,6 +4,7 @@ _VERSION = "0.2.0"
 
 import struct
 import time
+import os
 
 try:
     import machine
@@ -45,7 +46,7 @@ print("""
    / _ )/ /_ _____  / /__
   / _  / / // / _ \\/  '_/
  /____/_/\\_, /_//_/_/\\_\\
-        /___/ for Python v""" + _VERSION + "\n")
+        /___/ for Python v""" + _VERSION + " (" + os.uname()[0] + ")\n")
 
 class BlynkProtocol:
     def __init__(self, auth, heartbeat=10, buffin=1024, log=None):
@@ -151,9 +152,9 @@ class BlynkProtocol:
     def process(self, data=b''):
         if not (self.state == CONNECTING or self.state == CONNECTED): return
         now = gettime()
-        if now - self.lastRecv > self.heartbeat+(self.heartbeat/2):
+        if now - self.lastRecv > self.heartbeat+(self.heartbeat//2):
             return self.disconnect()
-        if (now - self.lastPing > self.heartbeat/10 and
+        if (now - self.lastPing > self.heartbeat//10 and
             (now - self.lastSend > self.heartbeat or
              now - self.lastRecv > self.heartbeat)):
             self._send(MSG_PING)
@@ -226,12 +227,16 @@ class Blynk(BlynkProtocol):
         try:
             self.conn = socket.socket()
             self.conn.connect(socket.getaddrinfo(self.server, self.port)[0][4])
-            self.conn.settimeout(0.05)
+            try:
+                self.conn.settimeout(eval('0.05'))
+            except:
+                self.conn.settimeout(0)
             BlynkProtocol.connect(self)
         except:
             raise ValueError('Connection with the Blynk server %s:%d failed' % (self.server, self.port))
 
     def _write(self, data):
+        #print('<', data.hex())
         self.conn.send(data)
         # TODO: handle disconnect
 
@@ -239,6 +244,7 @@ class Blynk(BlynkProtocol):
         data = b''
         try:
             data = self.conn.recv(self.buffin)
+            #print('>', data.hex())
         except KeyboardInterrupt:
             raise
         except: # TODO: handle disconnect
