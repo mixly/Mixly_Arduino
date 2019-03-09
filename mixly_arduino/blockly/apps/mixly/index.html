@@ -60,10 +60,10 @@
   <script type="text/javascript" src="../../blocks/arduino/serial.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/actuator.js"></script>
   <link rel="stylesheet" type="text/css" href="color.css" />
-  <!-- 过去index.html中的js代码都会被放到这个js中-->
+  <!-- 过去index.html中的js代码都会被放到这个js�?->
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="color.css" />
-  <!-- ACE中字体放缩按钮样式-->
+  <!-- ACE中字体放缩按钮样�?->
   <link rel="stylesheet" type="text/css" href="ACEfont.css" />
 
 </head>
@@ -82,7 +82,7 @@
              <span id="copyright" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
            </td>
            <td class="tabmode">
-            <a class="viewLeft" id="viewMode1" href="index_simple.html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;" >普通视图</a><span class="viewRight" id="viewMode2" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</span>
+            <a class="viewLeft" id="viewMode1" href="index_simple.html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;" >普通视�?/a><span class="viewRight" id="viewMode2" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</span>
           </td>
           <script type="text/javascript">
             var viewMode1 = document.getElementById('viewMode1');
@@ -103,7 +103,7 @@
         </td>
         <td class="tabmin">
           <select id="aceTheme" style="width:100px; height:23px; margin-left: 10px;">
-            <optgroup label="代码区亮色主题">
+            <optgroup label="代码区亮色主�?>
               <option value="ace/theme/chrome">Chrome</option>
               <option value="ace/theme/clouds">Clouds</option>
               <option value="ace/theme/crimson_editor">Crimson Editor</option>
@@ -120,7 +120,7 @@
               <option value="ace/theme/katzenmilch">KatzenMilch</option>
               <option value="ace/theme/sqlserver">SQL Server</option>
             </optgroup>
-            <optgroup label="代码区暗色主题">
+            <optgroup label="代码区暗色主�?>
               <option value="ace/theme/ambiance">Ambiance</option>
               <option value="ace/theme/chaos">Chaos</option>
               <option value="ace/theme/clouds_midnight">Clouds Midnight</option>
@@ -620,7 +620,7 @@
     </shadow>
   </value>
 </block>
-<block type="RFID_init"></block>   <!--初始化-->
+<block type="RFID_init"></block>   <!--初始�?->
 <block type="RFID_on"></block>   <!--如果侦测到信号那么执行XXX-->
 <block type="RFID_readcardnum"></block>  <!--读取卡号-->
 <block type="RFID_in">
@@ -967,6 +967,11 @@
       <field name="NUM">4</field>
     </shadow>
   </value>
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
 </block>
 <block type="display_rgb">
   <value name="PIN">
@@ -1001,6 +1006,36 @@
     <shadow type="math_number">
       <field name="NUM">1</field>
     </shadow>
+  </value>
+</block>
+<block type="display_rgb_rainbow1">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="WAIT">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_rgb_rainbow3">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="rainbow_color">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_rgb_show">
+  <value name="PIN">
+    <shadow type="pins_digital" />
   </value>
 </block>
 </category>

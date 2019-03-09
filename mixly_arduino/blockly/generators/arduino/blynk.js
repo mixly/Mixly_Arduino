@@ -24,27 +24,27 @@ Blockly.Arduino.blynk_smartconfig_esp8266 = function() {
 			server_add = server_add.replace(/\"/g, "");
 			Blockly.Arduino.setups_['setup_smartconfig'] += ' Blynk.config(auth,'+'IPAddress('+server_add+'),8080);';
 		}
-			var code="Blynk.run();\n";
+		var code="Blynk.run();\n";
 		return code;
 	};
 	//物联网-一键配网
-Blockly.Arduino.blynk_smartconfig_esp32 = function() {
-	var auth_key = Blockly.Arduino.valueToCode(this, 'auth_key', Blockly.Arduino.ORDER_ATOMIC);
-	var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['defineBLYNK'] ='#define BLYNK_PRINT Serial\n#include <WiFi.h>\n#include <WiFiClient.h>\n#include <BlynkSimpleEsp32.h>\n#include <TimeLib.h>\n#include <WidgetRTC.h>';
-	Blockly.Arduino.definitions_['auth_key'] ='char auth[] = '+auth_key+';';
-	Blockly.Arduino.setups_['setup_smartconfig'] = 'Serial.begin(9600);\nWiFi.mode(WIFI_STA);\nint cnt = 0;\nwhile (WiFi.status() != WL_CONNECTED) {\ndelay(500); \nSerial.print("."); \nif (cnt++ >= 10) {\nWiFi.beginSmartConfig();\nwhile (1) {\ndelay(1000);\nif (WiFi.smartConfigDone()) {\nSerial.println();\nSerial.println("SmartConfig: Success");\nbreak;\n}\nSerial.print("|");\n}\n}\n}  WiFi.printDiag(Serial);\n';
-	if(isNaN(server_add.charAt(2)))
-	{
-		Blockly.Arduino.setups_['setup_smartconfig'] += ' Blynk.config(auth,'+server_add+',8080);';}
-		else
+	Blockly.Arduino.blynk_smartconfig_esp32 = function() {
+		var auth_key = Blockly.Arduino.valueToCode(this, 'auth_key', Blockly.Arduino.ORDER_ATOMIC);
+		var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);
+		Blockly.Arduino.definitions_['defineBLYNK'] ='#define BLYNK_PRINT Serial\n#include <WiFi.h>\n#include <WiFiClient.h>\n#include <BlynkSimpleEsp32.h>\n#include <TimeLib.h>\n#include <WidgetRTC.h>';
+		Blockly.Arduino.definitions_['auth_key'] ='char auth[] = '+auth_key+';';
+		Blockly.Arduino.setups_['setup_smartconfig'] = 'Serial.begin(9600);\nWiFi.mode(WIFI_STA);\nint cnt = 0;\nwhile (WiFi.status() != WL_CONNECTED) {\ndelay(500); \nSerial.print("."); \nif (cnt++ >= 10) {\nWiFi.beginSmartConfig();\nwhile (1) {\ndelay(1000);\nif (WiFi.smartConfigDone()) {\nSerial.println();\nSerial.println("SmartConfig: Success");\nbreak;\n}\nSerial.print("|");\n}\n}\n}  WiFi.printDiag(Serial);\n';
+		if(isNaN(server_add.charAt(2)))
 		{
-			server_add = server_add.replace(/\"/g, "");
-			Blockly.Arduino.setups_['setup_smartconfig'] += ' Blynk.config(auth,'+'IPAddress('+server_add+'),8080);';
-		}
+			Blockly.Arduino.setups_['setup_smartconfig'] += ' Blynk.config(auth,'+server_add+',8080);';}
+			else
+			{
+				server_add = server_add.replace(/\"/g, "");
+				Blockly.Arduino.setups_['setup_smartconfig'] += ' Blynk.config(auth,'+'IPAddress('+server_add+'),8080);';
+			}
 			var code="Blynk.run();\n";
-		return code;
-	};
+			return code;
+		};
 //物联网-wifi信息
 Blockly.Arduino.blynk_server_esp8266 = function() {
 	var wifi_ssid = Blockly.Arduino.valueToCode(this, 'wifi_ssid', Blockly.Arduino.ORDER_ATOMIC);
@@ -67,33 +67,33 @@ Blockly.Arduino.blynk_server_esp8266 = function() {
 		return code;
 	};
 	//物联网-wifi信息
-Blockly.Arduino.blynk_server_esp32 = function() {
-	var wifi_ssid = Blockly.Arduino.valueToCode(this, 'wifi_ssid', Blockly.Arduino.ORDER_ATOMIC);
-	var wifi_pass = Blockly.Arduino.valueToCode(this, 'wifi_pass', Blockly.Arduino.ORDER_ATOMIC);
-	var auth_key = Blockly.Arduino.valueToCode(this, 'auth_key', Blockly.Arduino.ORDER_ATOMIC);
-	var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['defineBLYNK'] ='#define BLYNK_PRINT Serial\n#include <WiFi.h>\n#include <WiFiClient.h>\n#include <BlynkSimpleEsp32.h>\n#include <TimeLib.h>\n#include <WidgetRTC.h>';
-	Blockly.Arduino.definitions_['auth_key'] ='char auth[] = '+auth_key+';';
-	Blockly.Arduino.definitions_['wifi_ssid'] ='char ssid[] = '+wifi_ssid+';';
-	Blockly.Arduino.definitions_['wifi_pass'] ='char pass[] = '+wifi_pass+';';
-	if(isNaN(server_add.charAt(2)))
-	{
-		Blockly.Arduino.setups_['setup_Blynk.begin'] = ' Serial.begin(9600);\n Blynk.begin(auth, ssid, pass,'+server_add+',8080);';}
-		else
+	Blockly.Arduino.blynk_server_esp32 = function() {
+		var wifi_ssid = Blockly.Arduino.valueToCode(this, 'wifi_ssid', Blockly.Arduino.ORDER_ATOMIC);
+		var wifi_pass = Blockly.Arduino.valueToCode(this, 'wifi_pass', Blockly.Arduino.ORDER_ATOMIC);
+		var auth_key = Blockly.Arduino.valueToCode(this, 'auth_key', Blockly.Arduino.ORDER_ATOMIC);
+		var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);
+		Blockly.Arduino.definitions_['defineBLYNK'] ='#define BLYNK_PRINT Serial\n#include <WiFi.h>\n#include <WiFiClient.h>\n#include <BlynkSimpleEsp32.h>\n#include <TimeLib.h>\n#include <WidgetRTC.h>';
+		Blockly.Arduino.definitions_['auth_key'] ='char auth[] = '+auth_key+';';
+		Blockly.Arduino.definitions_['wifi_ssid'] ='char ssid[] = '+wifi_ssid+';';
+		Blockly.Arduino.definitions_['wifi_pass'] ='char pass[] = '+wifi_pass+';';
+		if(isNaN(server_add.charAt(2)))
 		{
-			server_add = server_add.replace(/\"/g, "");
-			Blockly.Arduino.setups_['setup_Blynk.begin'] = ' Serial.begin(9600);\n Blynk.begin(auth, ssid, pass,'+'IPAddress('+server_add+'),8080);';
-		}
-		var code="Blynk.run();\n";
-		return code;
-	};
+			Blockly.Arduino.setups_['setup_Blynk.begin'] = ' Serial.begin(9600);\n Blynk.begin(auth, ssid, pass,'+server_add+',8080);';}
+			else
+			{
+				server_add = server_add.replace(/\"/g, "");
+				Blockly.Arduino.setups_['setup_Blynk.begin'] = ' Serial.begin(9600);\n Blynk.begin(auth, ssid, pass,'+'IPAddress('+server_add+'),8080);';
+			}
+			var code="Blynk.run();\n";
+			return code;
+		};
 //物联网-wifi信息
 Blockly.Arduino.blynk_usb_server = function() {
 	var auth_key = Blockly.Arduino.valueToCode(this, 'auth_key', Blockly.Arduino.ORDER_ATOMIC);
 	Blockly.Arduino.definitions_['defineBLYNK'] ='#define BLYNK_PRINT DebugSerial\n#include <SoftwareSerial.h>\nSoftwareSerial DebugSerial(2, 3); // RX, TX\n#include <BlynkSimpleStream.h>\n';
 	Blockly.Arduino.definitions_['auth_key'] ='char auth[] = '+auth_key+';';
 	Blockly.Arduino.setups_['setup_Blynk.begin'] = ' DebugSerial.begin(9600);\n Serial.begin(9600);\n  Blynk.begin(Serial, auth);';		
-		var code="Blynk.run();\n";
+	var code="Blynk.run();\n";
 	return code;
 };
 
@@ -189,7 +189,7 @@ Blockly.Arduino.Blynk_iot_timer = function () {
 	Blockly.Arduino.definitions_[funcName] = code;
 	Blockly.Arduino.setups_[funcName] = 'timer.setInterval('+ time+'L, '+funcName+');\n';
 
-return "timer.run();\n";
+	return "timer.run();\n";
 };
 
 //blynk 硬件已连接
@@ -513,163 +513,28 @@ Blockly.Arduino.blynk_time_input_1 = function () {
     Blockly.Arduino.definitions_[Vpin] = code;
 };
 
-Blockly.Arduino.display_rgb_init=function(){
-	var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
-	var value_ledcount = Blockly.Arduino.valueToCode(this, 'LEDCOUNT', Blockly.Arduino.ORDER_ATOMIC);
-	var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness',Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
-	Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin] = 'Adafruit_NeoPixel  rgb_display_' + dropdown_rgbpin +  '= Adafruit_NeoPixel(' + value_ledcount + ','+dropdown_rgbpin+',NEO_GRB + NEO_KHZ800);';
-	Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();\nrgb_display_' + dropdown_rgbpin + '.setBrightness('+Brightness+');';
-	return '';
-};
-Blockly.Arduino.display_rgb=function(){
-	var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
-	var value_led = Blockly.Arduino.valueToCode(this, '_LED_', Blockly.Arduino.ORDER_ATOMIC);
-	var value_rvalue = Blockly.Arduino.valueToCode(this, 'RVALUE', Blockly.Arduino.ORDER_ATOMIC);
-	var value_gvalue = Blockly.Arduino.valueToCode(this, 'GVALUE', Blockly.Arduino.ORDER_ATOMIC);
-	var value_bvalue = Blockly.Arduino.valueToCode(this, 'BVALUE', Blockly.Arduino.ORDER_ATOMIC);
-	var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness',Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
-	if (!Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin]) {
-		Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin] = 'Adafruit_NeoPixel  rgb_display_' + dropdown_rgbpin +  '= Adafruit_NeoPixel(4,'+dropdown_rgbpin+',NEO_GRB + NEO_KHZ800);';
-		Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();';
-	}
-	var code = 'rgb_display_'+dropdown_rgbpin+'.setPixelColor('+value_led+'-1, '+'rgb_display_' + dropdown_rgbpin+'.Color('+value_rvalue+','+value_gvalue+','+value_bvalue+'));\n';
-	code+='rgb_display_'+dropdown_rgbpin+'.show();\n';
-	return code;
-};
-
-Blockly.Arduino.display_rgb2=function(){
-	var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
-	var value_led = Blockly.Arduino.valueToCode(this, '_LED_', Blockly.Arduino.ORDER_ATOMIC);
-	var colour_rgb_led_color = this.getFieldValue('RGB_LED_COLOR');
-	var color = goog.color.hexToRgb(colour_rgb_led_color);
-
-	Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
-	if (!Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin]) {
-		Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin] = 'Adafruit_NeoPixel  rgb_display_' + dropdown_rgbpin +  '= Adafruit_NeoPixel(4,'+dropdown_rgbpin+',NEO_GRB + NEO_KHZ800);';
-		Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();\n';
-	}
-	var code = 'rgb_display_'+dropdown_rgbpin+'.setPixelColor('+value_led+'-1, '+color+');\n';
-	code+='rgb_display_'+dropdown_rgbpin+'.show();\n';
-	return code;
-};
-  //RGBÃ§ÂÂ¯Ã¥Â¸Â¦Ã¥Â½Â©Ã¨â„¢Â¹Ã¦â€¢Ë†Ã¦Å¾Å“Ã¯Â¼Å’Ã¤Â¸Æ’Ã¥Â½Â©Ã¥ÂËœÃ¦Â?
-  Blockly.Arduino.display_rgb_rainbow1=function(){
-  	var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
-  	var wait_time = Blockly.Arduino.valueToCode(this, 'WAIT',Blockly.Arduino.ORDER_ATOMIC);
- //   var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness',Blockly.Arduino.ORDER_ATOMIC);
- Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
- if (!Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin]) {
- 	Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin] = 'Adafruit_NeoPixel  rgb_display_' + dropdown_rgbpin +  '= Adafruit_NeoPixel(4,'+dropdown_rgbpin+',NEO_GRB + NEO_KHZ800);';
- 	Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();\n';
- }
- var funcName2 = 'Wheel';
- var code2  = 'uint32_t Wheel(byte WheelPos) {\n';
- code2 += 'if(WheelPos < 85) \n{\nreturn rgb_display_'+dropdown_rgbpin+'.Color(WheelPos * 3, 255 - WheelPos * 3, 0);\n} \n';
- code2 += 'else if(WheelPos < 170) \n{\nWheelPos -= 85; \nreturn rgb_display_'+dropdown_rgbpin+'.Color(255 - WheelPos * 3, 0, WheelPos * 3);\n}\n ';
- code2 += 'else\n {\nWheelPos -= 170;\nreturn rgb_display_'+dropdown_rgbpin+'.Color(0, WheelPos * 3, 255 - WheelPos * 3);\n}\n';
- code2 += '}\n';
- Blockly.Arduino.definitions_[funcName2] = code2;
- var funcName3 = 'rainbow';
- var code3  = 'void rainbow(uint8_t wait) {\n uint16_t i, j;\n';
- code3 += 'for(j=0; j<256; j++) {\n';
- code3 += 'for(i=0; i<rgb_display_'+dropdown_rgbpin+'.numPixels(); i++)\n {\n';
- code3 += 'rgb_display_'+dropdown_rgbpin+'.setPixelColor(i, Wheel((i+j) & 255));\n}\n';                    
- code3 += 'rgb_display_'+dropdown_rgbpin+'.show();\n';
- code3 += 'delay(wait);\n}\n}\n';
- Blockly.Arduino.definitions_[funcName3] = code3;
- var code = 'rainbow('+ wait_time+');\n'
- return code;
-};
-//RGBÃ§ÂÂ¯Ã¥Â¸Â¦Ã¥Â¾ÂªÃ§Å½Â¯Ã¤Â¸Æ’Ã¥Â½Â©Ã¥ÂËœÃ¦ÂÂ¢
-Blockly.Arduino.display_rgb_rainbow2=function(){
-	var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
-	var wait_time = Blockly.Arduino.valueToCode(this, 'WAIT',Blockly.Arduino.ORDER_ATOMIC);
-  //var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness',Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
-  if (!Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin]) {
-  	Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin] = 'Adafruit_NeoPixel  rgb_display_' + dropdown_rgbpin +  '= Adafruit_NeoPixel(4,'+dropdown_rgbpin+',NEO_GRB + NEO_KHZ800);';
-  	Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();\n';
-  }
-  var funcName2 = 'Wheel';
-  var code2  = 'uint32_t Wheel(byte WheelPos) {\n';
-  code2 += 'if(WheelPos < 85)\n {\nreturn rgb_display_'+dropdown_rgbpin+'.Color(WheelPos * 3, 255 - WheelPos * 3, 0);} \n';
-  code2 += 'else if(WheelPos < 170)\n {\nWheelPos -= 85; return rgb_display_'+dropdown_rgbpin+'.Color(255 - WheelPos * 3, 0, WheelPos * 3);}\n ';
-  code2 += 'else {\nWheelPos -= 170;return rgb_display_'+dropdown_rgbpin+'.Color(0, WheelPos * 3, 255 - WheelPos * 3);}\n';
-  code2 += '}\n';
-  Blockly.Arduino.definitions_[funcName2] = code2;
-  var funcName3 = 'rainbow';
-  var code3  = 'void rainbow(uint8_t wait) { uint16_t i, j;\n';
-  code3 += 'for(j=0; j<256; j++) {               \n';
-  code3 += 'for(i=0; i<rgb_display_'+dropdown_rgbpin+'.numPixels(); i++)\n{\n';
-  code3 += 'rgb_display_'+dropdown_rgbpin+'.setPixelColor(i, Wheel((i+j) & 255));\n}\n';                    
-  code3 += 'rgb_display_'+dropdown_rgbpin+'.show();\n';
-  code3 += 'delay(wait);\n}\n}\n';
-  Blockly.Arduino.definitions_[funcName3] = code3;
-  var funcName4 = 'rainbowCycle';
-  var code4  = 'void rainbowCycle(uint8_t wait) \n{\nuint16_t i, j;\n';
-  code4 += 'for(j=0; j<256*5; j++) {\n';
-  code4 += 'for(i=0; i< rgb_display_'+dropdown_rgbpin+'.numPixels(); i++) \n{\n';
-  code4 += 'rgb_display_'+dropdown_rgbpin+'.setPixelColor(i, Wheel(((i * 256 / rgb_display_'+dropdown_rgbpin+'.numPixels()) + j) & 255));}\n';
-  code4 += 'rgb_display_'+dropdown_rgbpin+'.show();\n';
-  code4 += 'delay(wait);\n}\n}\n';
-  Blockly.Arduino.definitions_[funcName4] = code4;
-  var code = 'rainbowCycle('+ wait_time+');\n'
-  return code;
-};
-//RGBÃ§ÂÂ¯Ã¥Â¸Â¦Ã¥Â½Â©Ã¨â„¢Â?
-Blockly.Arduino.display_rgb_rainbow3=function(){
-	var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
-	var rainbow_color = Blockly.Arduino.valueToCode(this, 'rainbow_color',Blockly.Arduino.ORDER_ATOMIC);
-	var type = this.getFieldValue('TYPE');
-  //var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness',Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
-  if (!Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin]) {
-  	Blockly.Arduino.definitions_['var_rgb_display' + dropdown_rgbpin] = 'Adafruit_NeoPixel  rgb_display_' + dropdown_rgbpin +  '= Adafruit_NeoPixel(4,'+dropdown_rgbpin+',NEO_GRB + NEO_KHZ800);';
-  	Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();\n';
-  }
-  var funcName2 = 'Wheel';
-  var code2  = 'uint32_t Wheel(byte WheelPos) {\n';
-  code2 += 'if(WheelPos < 85)\n {\nreturn rgb_display_'+dropdown_rgbpin+'.Color(WheelPos * 3, 255 - WheelPos * 3, 0);} \n';
-  code2 += 'else if(WheelPos < 170)\n {\nWheelPos -= 85; return rgb_display_'+dropdown_rgbpin+'.Color(255 - WheelPos * 3, 0, WheelPos * 3);}\n ';
-  code2 += 'else {\nWheelPos -= 170;return rgb_display_'+dropdown_rgbpin+'.Color(0, WheelPos * 3, 255 - WheelPos * 3);}\n';
-  code2 += '}\n';
-  Blockly.Arduino.definitions_[funcName2] = code2;
-  if(type=="normal")
-  	var code3  = 'for (int i = 0; i < rgb_display_' + dropdown_rgbpin + '.numPixels(); i++)\n{rgb_display_' + dropdown_rgbpin + '.setPixelColor(i, Wheel('+rainbow_color+' & 255));\n}\nrgb_display_' + dropdown_rgbpin + '.show();\n';
-  else 
-  	var code3  = 'for (int i = 0; i < rgb_display_' + dropdown_rgbpin + '.numPixels(); i++)\n {rgb_display_' + dropdown_rgbpin + '.setPixelColor(i, Wheel(((i * 256 / rgb_display_' + dropdown_rgbpin + '.numPixels()) + '+rainbow_color+') & 255));\n}\nrgb_display_' + dropdown_rgbpin + '.show();\n';
-
-  return code3;
-};
-
 //执行器-蜂鸣器频率选择列表
 Blockly.Arduino.tone_notes = function() {
 	var code = this.getFieldValue('STAT');
 	return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-
-
 Blockly.Arduino.factory_declare2 = function() {
-var VALUE = this.getFieldValue('VALUE');
+	var VALUE = this.getFieldValue('VALUE');
 	Blockly.Arduino.definitions_['var_'+VALUE] = VALUE;
 	return '';
 };
 Blockly.Arduino.DHT = function () {
-  var sensor_type = this.getFieldValue('TYPE');
-  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
-  var what = this.getFieldValue('WHAT');
-  Blockly.Arduino.definitions_['include_DHT'] = '#include <DHT.h>';
-  //Blockly.Arduino.definitions_['define_dht_pin' + dropdown_pin] = '#define DHTPIN'+dropdown_pin +' ' + dropdown_pin ;
-  //Blockly.Arduino.definitions_['define_dht_type' + dropdown_pin] = '#define DHTTYPE'+dropdown_pin +' '+ sensor_type ;
-  Blockly.Arduino.definitions_['define_dht' + dropdown_pin] = 'DHT dht'+dropdown_pin+'('+dropdown_pin+', '+sensor_type+');'
-  Blockly.Arduino.setups_['DHT_SETUP'+dropdown_pin] = ' dht'+dropdown_pin+'.begin();';
-  var code;
-  if(what=="temperature")
-    code= 'dht'+dropdown_pin+'.readTemperature()'
-  else
-    code= 'dht'+dropdown_pin+'.readHumidity()'
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
+	var sensor_type = this.getFieldValue('TYPE');
+	var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+	var what = this.getFieldValue('WHAT');
+	Blockly.Arduino.definitions_['include_DHT'] = '#include <DHT.h>';
+	Blockly.Arduino.definitions_['define_dht' + dropdown_pin] = 'DHT dht'+dropdown_pin+'('+dropdown_pin+', '+sensor_type+');'
+	Blockly.Arduino.setups_['DHT_SETUP'+dropdown_pin] = ' dht'+dropdown_pin+'.begin();';
+	var code;
+	if(what=="temperature")
+		code= 'dht'+dropdown_pin+'.readTemperature()'
+	else
+		code= 'dht'+dropdown_pin+'.readHumidity()'
+	return [code, Blockly.Arduino.ORDER_ATOMIC];
 }
