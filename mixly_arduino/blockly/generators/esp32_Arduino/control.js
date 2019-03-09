@@ -4,6 +4,23 @@ goog.provide('Blockly.Arduino.loops');
 
 goog.require('Blockly.Arduino');
 
+Blockly.Arduino.controls_runnig_core = function () {
+    var CORE_NUM = this.getFieldValue('CORE_NUM');
+     var CORE_Priority = this.getFieldValue('CORE_Priority');
+    Blockly.Arduino.definitions_['CORE_Define'] = '#if CONFIG_FREERTOS_UNICORE\n#define ARDUINO_RUNNING_CORE 0\n#else\n#define ARDUINO_RUNNING_CORE 1\n#endif\n';
+    var funcName = 'Task'+CORE_NUM+'(void *pvParameters)';
+    var branch = Blockly.Arduino.statementToCode(this, 'DO');
+    var code = 'void' + ' ' + funcName + ' {\n for (;;)\n {\n' + branch + '}\n}\n';
+    Blockly.Arduino.setups_['xTaskCreatePinnedToCore' + CORE_NUM] ='xTaskCreatePinnedToCore(Task'+CORE_NUM+' ,"'+'Task'+CORE_NUM+'",1024,NULL,'+CORE_Priority+',NULL,ARDUINO_RUNNING_CORE);';
+    Blockly.Arduino.definitions_[funcName] = code;
+    return '';
+};
+Blockly.Arduino.control_core_delay = function() {
+  var value_sleeplength = Blockly.Arduino.valueToCode(this, 'sleeplength',Blockly.Arduino.ORDER_ATOMIC);
+  var code = 'vTaskDelay('+value_sleeplength+');\n'
+  return code;
+};
+
 Blockly.Arduino.controls_hw_timer = function () {
     var time = Blockly.Arduino.valueToCode(this, 'TIME', Blockly.Arduino.ORDER_ATOMIC);
     var TIMER_NUM = this.getFieldValue('TIMER_NUM');

@@ -26,9 +26,38 @@ Blockly.Blocks.controls_hw_timer = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2);
-  }
+}
 };
 
+Blockly.Blocks.controls_runnig_core = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_ESP32_RUNNING_CORE)
+    .appendField(new Blockly.FieldDropdown([["0", "0"], ["1", "1"]]), "CORE_NUM")
+    .appendField(Blockly.MIXLY_ESP32_RUNNING_CORE_PRIORITY)
+    .appendField(new Blockly.FieldDropdown([["3", "3"], ["2", "2"],["1", "1"], ["0", "0"]]), "CORE_Priority");
+    this.appendStatementInput('DO')
+    .appendField(Blockly.MIXLY_MSTIMER2_DO);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2);
+}
+};
+Blockly.Blocks.control_core_delay = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_CONTROL_CORE_DELAY);
+    this.appendValueInput("sleeplength", Number)
+    .setCheck(Number);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_DELAY_MS);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_SCOOP_SLEEP);
+}
+};
 Blockly.Blocks.controls_hw_timer_start = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
@@ -39,7 +68,7 @@ Blockly.Blocks.controls_hw_timer_start = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_START);
-  }
+}
 };
 
 Blockly.Blocks.controls_hw_timer_stop = {
@@ -52,5 +81,5 @@ Blockly.Blocks.controls_hw_timer_stop = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_STOP);
-  }
+}
 };

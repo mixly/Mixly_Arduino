@@ -986,6 +986,9 @@ Blockly.MIXLY_SERIALBT_BEGIN='init';
 Blockly.MIXLY_SERIALBT_INIT='ESP32 Bluetooth Name';
 Blockly.MIXLY_SERIALBT_AVAILABLE='ESP32 Bluetooth readable';
 Blockly.MIXLY_SERIALBT_READ='ESP32 Bluetooth Data';
+Blockly.MIXLY_ESP32_RUNNING_CORE='ESP32 Core';
+Blockly.MIXLY_CONTROL_CORE_DELAY='ESP32 Core Delay';
+Blockly.MIXLY_ESP32_RUNNING_CORE_PRIORITY='Priority';
 //stepper
 Blockly.MIXLY_STEPPER='Stepper';
 Blockly.MIXLY_STEPPER_SETUP_STEPPER='Setup Stepper';
