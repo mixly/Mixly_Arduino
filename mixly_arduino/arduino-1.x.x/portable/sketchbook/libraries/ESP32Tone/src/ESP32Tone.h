@@ -1,5 +1,5 @@
-#ifndef _TONE32_h
-#define _TONE32_h
+#ifndef _ESP32TONE_h
+#define _ESP32TONE_h
 
 #define TONE_CHANNEL 15
 #include "Arduino.h"

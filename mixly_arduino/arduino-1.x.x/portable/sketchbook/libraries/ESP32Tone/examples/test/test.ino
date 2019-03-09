@@ -1,4 +1,4 @@
-#include<Tone32.h>
+#include<ESP32Tone.h>
 #define Buzzer_PIN 16
 #define Buzzer_Chanel 0
 void setup() {

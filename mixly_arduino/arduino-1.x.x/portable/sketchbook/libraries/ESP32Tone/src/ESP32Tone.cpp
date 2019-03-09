@@ -1,4 +1,4 @@
-#include "Tone32.h"
+#include "ESP32Tone.h"
 
 void tone(uint8_t pin, unsigned int frequency, unsigned long duration, uint8_t channel)
 {
