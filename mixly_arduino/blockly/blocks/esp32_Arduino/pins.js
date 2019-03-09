@@ -3,50 +3,6 @@ goog.provide('Blockly.Blocks.pins');
 goog.require('Blockly.Blocks');
 Blockly.Blocks.pins.HUE = 230;
 profile["default"] = profile["esp32_arduino"];
-Blockly.Blocks['pins_digital'] = {
-   init: function() {
-    this.setColour(Blockly.Blocks.pins.HUE);
-    this.appendDummyInput("")
-        .appendField(new Blockly.FieldDropdown(profile.default.digital), 'PIN');
-    this.setOutput(true);
-  }
-};
-Blockly.Blocks['pins_interrupt'] = {
-   init: function() {
-    this.setColour(Blockly.Blocks.pins.HUE);
-    this.appendDummyInput("")
-        .appendField(new Blockly.FieldDropdown(profile.default.interrupt), 'PIN');
-    this.setOutput(true);
-  }
-};
-
-// Blockly.Blocks['pins_digital_pin'] = {
-//    init: function() {
-//     this.setColour(Blockly.Blocks.pins.HUE);
-//     this.appendDummyInput("")
-//         .appendField(new Blockly.FieldDropdown(profile.default.digital_pin), 'PIN');
-//     this.setOutput(true, Number);
-//   }
-// };
-
-
-Blockly.Blocks['pins_analog'] = {
-   init: function() {
-    this.setColour(Blockly.Blocks.pins.HUE);
-    this.appendDummyInput("")
-        .appendField(new Blockly.FieldDropdown(profile.default.analog), 'PIN');
-    this.setOutput(true);
-  }
-};
-
-// Blockly.Blocks['pins_analog_pin'] = {
-//    init: function() {
-//     this.setColour(Blockly.Blocks.pins.HUE);
-//     this.appendDummyInput("")
-//         .appendField(new Blockly.FieldDropdown(profile.default.analog_pin), 'PIN');
-//     this.setOutput(true, Number);
-//   }
-// };
 
 Blockly.Blocks['pins_dac'] = {
    init: function() {
@@ -57,15 +13,6 @@ Blockly.Blocks['pins_dac'] = {
   }
 };
 
-// Blockly.Blocks['pins_dac_pin'] = {
-//    init: function() {
-//     this.setColour(Blockly.Blocks.pins.HUE);
-//     this.appendDummyInput("")
-//         .appendField(new Blockly.FieldDropdown(profile.default.dac_pin), 'PIN');
-//     this.setOutput(true, Number);
-//   }
-// };
-
 Blockly.Blocks['pins_button'] = {
    init: function() {
     this.setColour(Blockly.Blocks.pins.HUE);
@@ -75,32 +22,6 @@ Blockly.Blocks['pins_button'] = {
   }
 };
 
-Blockly.Blocks['pins_pwm'] = {
-   init: function() {
-    this.setColour(Blockly.Blocks.pins.HUE);
-    this.appendDummyInput("")
-        .appendField(new Blockly.FieldDropdown(profile.default.pwm), 'PIN');
-    this.setOutput(true);
-  }
-};
-
-// Blockly.Blocks['pins_pwm_pin'] = {
-//    init: function() {
-//     this.setColour(Blockly.Blocks.pins.HUE);
-//     this.appendDummyInput("")
-//         .appendField(new Blockly.FieldDropdown(profile.default.pwm_pin), 'PIN');
-//     this.setOutput(true, Number);
-//   }
-// };
-
-// Blockly.Blocks['pins_touch_pin'] = {
-//    init: function() {
-//     this.setColour(Blockly.Blocks.pins.HUE);
-//     this.appendDummyInput("")
-//         .appendField(new Blockly.FieldDropdown(profile.default.touch_pin), 'PIN');
-//     this.setOutput(true, Number);
-//   }
-// };
 
 Blockly.Blocks['pins_touch'] = {
    init: function() {
@@ -225,28 +146,4 @@ Blockly.Blocks['serial_select'] = {
             .appendField(new Blockly.FieldDropdown(profile.default.serial_select), 'PIN');
         this.setOutput(true);
     }
-};
-Blockly.Blocks['pins_MOSI'] = {
-   init: function() {
-    this.setColour(Blockly.Blocks.pins.HUE);
-    this.appendDummyInput("")
-        .appendField(new Blockly.FieldDropdown(profile.default.MOSI), 'PIN');
-    this.setOutput(true, Number);
-  }
-};
-Blockly.Blocks['pins_MISO'] = {
-   init: function() {
-    this.setColour(Blockly.Blocks.pins.HUE);
-    this.appendDummyInput("")
-        .appendField(new Blockly.FieldDropdown(profile.default.MISO), 'PIN');
-    this.setOutput(true, Number);
-  }
-};
-Blockly.Blocks['pins_SCK'] = {
-   init: function() {
-    this.setColour(Blockly.Blocks.pins.HUE);
-    this.appendDummyInput("")
-        .appendField(new Blockly.FieldDropdown(profile.default.SCK), 'PIN');
-    this.setOutput(true, Number);
-  }
 };
