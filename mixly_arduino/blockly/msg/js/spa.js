@@ -492,8 +492,8 @@ Blockly.LANG_CONTROLS_FLOW_STATEMENTS_OPERATOR_BREAK = 'salir';
 Blockly.LANG_CONTROLS_FLOW_STATEMENTS_OPERATOR_CONTINUE = 'continuar próxima iteracción';
 Blockly.LANG_CONTROLS_FLOW_STATEMENTS_WARNING = 'Cuidado:\n' + 'Este bloque solo puede\n' + 'usado como un bucle.';
 Blockly.LANG_CONTROLS_FLOW_STATEMENTS_WARNING  = 'Advertencia: \ n' +
-    'Este bloque solo puede \ n' +
-    'ser utilizado dentro de un bucle';
+'Este bloque solo puede \ n' +
+'ser utilizado dentro de un bucle';
 Blockly.LANG_MATH_LONG = 'long';
 Blockly.LANG_MATH_INT = 'int';
 Blockly.LANG_MATH_FLOAT = 'float';
@@ -505,12 +505,12 @@ Blockly.LANG_MATH_STRING = 'string';
  *add all data types supported in Arduino except void(only use in function) and array(in special catelogy)
  @author zyc
  @date 2018-12-29
-*/
-Blockly.LANG_MATH_UNSIGNED_INT = 'unsigned int';
-Blockly.LANG_MATH_WORD = 'word';
-Blockly.LANG_MATH_UNSIGNED_LONG = 'unsigned long';
-Blockly.LANG_MATH_UNSIGNED_CHAR = 'unsigned char';
-Blockly.LANG_MATH_DOUBLE = 'double';
+ */
+ Blockly.LANG_MATH_UNSIGNED_INT = 'unsigned int';
+ Blockly.LANG_MATH_WORD = 'word';
+ Blockly.LANG_MATH_UNSIGNED_LONG = 'unsigned long';
+ Blockly.LANG_MATH_UNSIGNED_CHAR = 'unsigned char';
+ Blockly.LANG_MATH_DOUBLE = 'double';
 //end
 Blockly.LANG_LISTS_GET_INDEX1 = 'get item at'; //untranslated
 Blockly.LANG_LISTS_GET_INDEX2 = '';
@@ -733,41 +733,47 @@ Blockly.MIXLY_LABPLUS_ROBOT_LED_TOP='Configura Led en la parte superior';
 Blockly.MIXLY_LABPLUS_ROBOT_LED_SIDE='Establece color en los leds\' laterales';
 Blockly.MIXLY_LCD_ADDRESS="dirección";
 var MSG = {
-  catInOut: "Entrada/Salida",
-  catControl: "Control",
-  catMath: "Matemáticas",
-  catText: "Texto",
-  catLists: "Listas",
-  catMicropyLists: "Listas",
-  catDicts: "Dictory",
-  catLogic: "Lógica",
-  catSerialPort:"SerialPort",
-  catGroup: "Communicate",
-  catStorage:"Storage",
-  catSensor: "Sensor",
-  catActuator: "Actuador",
-  catMonitor:"Monitor",
-  catVar: "Variables",
-  catFun: "Funciones",
-  catEthernet:"Ethernet",
-  catNetwork:"Network",
-  catEthernet_init:"Init",
-  catEthernet_clinet:"Client",
-  catSense: "Labplus(Box)",
-  catSense2: "Labplus(Robot)",
-  catLuxe:"LuxeRobot",
-  tab_blocks: "Bloques",
-  tab_arduino: "Código",
-  copyright:"Copyright © Mixly Team@BNU				HTTP://MIXLY.ORG",
-  viewNormal:"Normal",
-  viewAdvanced:"Advanced",
-  catGame:"Game",
-  catSystem:"System",
-  catTurtle: "Tortuga",
-  catTuple: "Tuple",
-  catIot:"IOT",
-  catSet:"Set",
-  catData:"Data"
+	catInOut: "Entrada/Salida",
+	catControl: "Control",
+	catMath: "Matemáticas",
+	catText: "Texto",
+	catLists: "Listas",
+	catMicropyLists: "Listas",
+	catDicts: "Dictory",
+	  catLogic: "Lógica",
+	catSerialPort:"SerialPort",
+	catGroup: "Communicate",
+	catStorage:"Storage",
+	catSensor: "Sensor",
+	catActuator: "Actuador",
+	catMonitor:"Monitor",
+	catLCD:"LCD 1602",
+	cat4Digitdisplay:"Digit Display",
+	catWS2812:"WS2812",
+	catOLED:"OLED Screen",
+	catHT16K33:"HT16K33",
+	catMax7219:"MAX7219",
+	catVar: "Variables",
+	catFun: "Funciones",
+	catEthernet:"Ethernet",
+	catNetwork:"Network",
+	catEthernet_init:"Init",
+	catEthernet_clinet:"Client",
+	catSense: "Labplus(Box)",
+	catSense2: "Labplus(Robot)",
+	catLuxe:"LuxeRobot",
+	tab_blocks: "Bloques",
+	tab_arduino: "Código",
+	copyright:"Copyright © Mixly Team@BNU				HTTP://MIXLY.ORG",
+	viewNormal:"Normal",
+	viewAdvanced:"Advanced",
+	catGame:"Game",
+	catSystem:"System",
+	catTurtle: "Tortuga",
+	  catTuple: "Tuple",
+	catIot:"IOT",
+	catSet:"Set",
+	catData:"Data"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='Devuelve alta o baja tensión.';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='Devuelve un valor digital de un Pin específico';
@@ -807,98 +813,98 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = 'Detiene el sonido.';
  *@author:zyc
  *@date:2018-12-4
  */
-Blockly.MIXLY_TOOLTIP_INOUT_pinMode = 'Cambiar modo pin';
-Blockly.MIXLY_TOOLTIP_INOUT_pulseIn = 'Obtener el período del último pulso de un pin (microsegundos)';
-Blockly.MIXLY_TOOLTIP_INOUT_pulseIn2 = 'Obtenga el período del último pulso de un pin (microsegundos, se puede configurar el parámetro de tiempo de espera)';
-Blockly.MIXLY_TOOLTIP_INOUT_shiftout = 'Salida de datos en pines como serial, que es equivalente a la comunicación serial síncrona en sentido general';
-Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2 = 'Interrupción del temporizador interno Arduino';
-Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_START = 'MsTimer2 comienzo';
-Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_STOP = 'MsTimer2 detener';
-Blockly.MIXLY_TOOLTIP_CONTROL_END_PROGRAM = 'detener este programa';
-Blockly.MIXLY_TOOLTIP_CONTROL_ALLOW_INTERRUPT = 'Habilitar interrupcion';
-Blockly.MIXLY_TOOLTIP_CONTROL_FORBID_INTERRUPT = 'Desactivar la interrupcion';
-Blockly.MIXLY_TOOLTIP_SCOOP = 'Arduino Multihilo';
-Blockly.MIXLY_TOOLTIP_SCOOP_YIELD = 'Empezar a ejecutar tareas multiproceso';
-Blockly.MIXLY_TOOLTIP_SCOOP_SLEEP = 'Tiempo de retardo especificado (solo para multihilo)';
-Blockly.MIXLY_TOOLTIP_MATH_RANDOM_SEED = 'Establecer semillas de números aleatorios';
-Blockly.MIXLY_TOOLTIP_TEXT_LENGTH = 'Obtener la longitud de la cadena';
-Blockly.MIXLY_TOOLTIP_TEXT_FIND_CHAR_AT = 'encuentra la subcadena %1 en la cadena';
-Blockly.MIXLY_TOOLTIP_TEXT_EQUALS_STARTS_ENDS = 'Devuelve si la cadena %1 %2';
-Blockly.MIXLY_TOOLTIP_SERIAL_BEGIN = 'Inicialice el puerto serie y establezca la velocidad en baudios de comunicación del puerto serie';
-Blockly.MIXLY_TOOLTIP_SERIAL_READSTRUNITL = 'Read the string from the serial port until encounter %1';
-Blockly.MIXLY_TOOLTIP_SERIAL_FLUSH = 'Borrar datos en un búfer serial';
-Blockly.MIXLY_TOOLTIP_SOFTSERIAL = 'Simule los pines digitales #%1 y #%2 en pines de comunicación serie';
-Blockly.MIXLY_TOOLTIP_SERIALEVENT = 'Ejecute ciertos comandos por interrupción cuando reciba información en puertos serie';
-Blockly.MIXLY_TOOLTIP_IR_ENABLE = '';
-Blockly.MIXLY_TOOLTIP_I2C_MASTER_WRITE = 'El dispositivo principal I2C envía datos. Los parámetros son la dirección del dispositivo principal y el valor a enviar.';
-Blockly.MIXLY_TOOLTIP_I2C_MASTER_READ = 'El dispositivo principal I2C lee datos. Los parámetros son la dirección del dispositivo principal y la longitud del byte del contenido a leer.';
-Blockly.MIXLY_TOOLTIP_I2C_MASTER_READ2 = 'Devolver datos leídos del dispositivo principal I2C';
-Blockly.MIXLY_TOOLTIP_I2C_AVAILABLE = 'Devuelve si los datos del dispositivo I2C se leyeron correctamente';
-Blockly.MIXLY_TOOLTIP_I2C_SLAVE_ONRECEIVE = 'El dispositivo esclavo I2C recibe señales de reloj y datos generadas por el dispositivo host y realiza algunas operaciones.';
-Blockly.MIXLY_TOOLTIP_SPI_TRANSFER = 'Transfiera datos al dispositivo esclavo a través del pin #%1 en SPI como equipo principal';
-Blockly.MIXLY_TOOLTIP_RFID_INIT = 'Inicialice el lector RFID con los parámetros de número de pin de línea de datos, número de pin de línea de reloj, número de pin de línea de salida del esclavo de salida principal y número de pin de salida del esclavo de entrada principal.'
-Blockly.MIXLY_TOOLTIP_RFID_ON = 'Ejecutar algunos comandos cuando RFID puede leer datos';
-Blockly.MIXLY_TOOLTIP_RFID_READ = 'Devolver Numero de tarjeta leídos por RFID';
-Blockly.MIXLY_TOOLTIP_RFID_IN = 'Ejecutar algunos comandos cuando RFID lee datos específicos';
-Blockly.MIXLY_TOOLTIP_RFID_WRITEBLOCK = 'Escribir datos en el bloque de datos específico de la etiqueta electrónica.';
-Blockly.MIXLY_TOOLTIP_RFID_READBLOCK = 'Lectura de datos de bloques de datos en la etiqueta electrónica';
-Blockly.MIXLY_TOOLTIP_RFID_READBLOCK = 'Hacer que el dispositivo RFID ya no lea datos';
-Blockly.MIXLY_TOOLTIP_STORE_SDWRITE = 'Escribir archivos en la tarjeta SD';
-Blockly.MIXLY_TOOLTIP_STORE_EEPROM_WRITELONG = 'Escriba datos enteros largos en una dirección específica de EEPROM';
-Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READLONG = 'Leer datos enteros largos de direcciones específicas de EEPROM';
-Blockly.MIXLY_TOOLTIP_STORE_EEPROM_WRITEBYTE = 'Escriba los datos de bytes a la dirección específica de EEPROM';
-Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READBYTE = 'Lea los datos de bytes de la dirección específica de EEPROM';
-Blockly.MIXLY_TOOLTIP_GPS_INIT = 'Inicializar equipo GPS con parámetros de pin de comunicación GPS y velocidad de transmisión.';
-Blockly.MIXLY_TOOLTIP_GPS_DATA_AVAILABLE = 'Devuelve si los datos GPS son válidos';
-Blockly.MIXLY_TOOLTIP_GPS_GETDATA = 'GET %1 datos de satélites GPS';
-Blockly.MIXLY_TOOLTIP_LM35 = 'Obtención del retorno de temperatura del sensor LM35';
-Blockly.MIXLY_TOOLTIP_DS18 = 'Obtenga el valor de temperatura devuelto por el sensor DS18B20';
-Blockly.MIXLY_TOOLTIP_DS1302_INIT = 'Inicialice el módulo de reloj DS1302 RTC con los parámetros de reinicio del número de pin de línea, número de pin de línea de datos y número de pin de línea de reloj.';
-Blockly.MIXLY_TOOLTIP_DS1307_INIT = 'Inicialice el módulo de reloj DS1307 RTC con número de pin de línea de datos y número de pin de línea de reloj como parámetros';
-Blockly.MIXLY_TOOLTIP_RTC_GETTIME = 'Obtenga %1 del módulo de reloj RTC';
-Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
-Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
-Blockly.MIXLY_TOOLTIP_ADXL345 = 'Obtenga %1 devuelto por el módulo de inducción de gravedad ADXL345';
-Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_WRITEMICROSECONDS = 'Configure el tiempo de rotación del servo (tome el valor de los parámetros como [1000,2000])';
-Blockly.MIXLY_TOOLTIP_TONE_NOTE = 'Devuelve la frecuencia correspondiente al nombre fonético.';
-Blockly.MIXLY_TOOLTIP_STEPPER_STEP = 'Inicializar motor paso a paso de dos pines';
-Blockly.MIXLY_TOOLTIP_STEPPER_STEP2 = 'Inicializar motor paso a paso de cuatro pines';
-Blockly.MIXLY_TOOLTIP_STEPPER_MOVE = 'Establecer el número de pasos de movimiento del motor paso a paso';
-Blockly.MIXLY_TOOLTIP_LCD_INIT = 'Inicialice la pantalla LCD y configure la dirección';
-Blockly.MIXLY_TOOLTIP_LCD_INIT2 = 'Inicialice la pantalla LCD, configure la línea del reloj y la línea de datos para conectar los pines y la dirección del dispositivo';
-Blockly.MIXLY_TOOLTIP_LCD_INIT3 = 'Inicialice la pantalla LCD, especifique todos los pines de conexión y la dirección del dispositivo';
-Blockly.MIXLY_TOOLTIP_LCD_PRINT = 'Impresión de línea de pantalla LCD';
-Blockly.MIXLY_TOOLTIP_LCD_PRINT2 = 'Muestra el contenido especificado de la línea %1, columna %2 de la pantalla LCD.';
-Blockly.MIXLY_TOOLTIP_LCD_POWER = 'Establecer el estilo de pantalla LCD';
-Blockly.MIXLY_TOOLTIP_OLED_DRAW4STRING = 'Impresión de línea de pantalla OLED';
-Blockly.MIXLY_TOOLTIP_OLED_PRINT = 'Mostrar el carácter especificado en la línea %1, columna %2 de la pantalla de visualización OLED';
-Blockly.MIXLY_TOOLTIP_RGB_DISPLAY2 = 'Configure el color de la lámpara de especificación en el módulo de lámpara de color RGB';
-Blockly.MIXLY_TOOLTIP_4digitdisplay_power = 'Establecer el modo de pantalla de tubo TM1650 de cuatro dígitos';
-Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString = 'Cadena de visualización de tubos de cuatro dígitos TM1650 (desplazamiento sobre cuatro dígitos)';
-Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot = 'Mostrar el punto decimal en la posición especificada del tubo digital de cuatro dígitos TM1650';
-Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS = 'Establece el brillo de TM1637';
-Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT = 'Inicializar HK16T33 8 * 8 Matrix Screen';
-Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS = 'Operación de punto único de la pantalla de matriz de puntos, rango del valor del eje XY 1-8';
-Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = 'Girar matriz Dirección de visualización de pantalla';
-Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT = 'Muestra un personaje a la vez';
-Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_LEDARRAY = 'Ilumina la posición correspondiente en la pantalla de matriz de puntos';
-Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_CLEAR = 'Borrar el contenido en la pantalla de matriz de puntos';
-Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_INIT = 'Inicializar MAX7219 8*8 Matrix Screen';
-Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_DISPLAYCHAR = 'Generar contenido de visualización de matriz de puntos desde matrices';
-Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_STRING = 'Muestra cada carácter en la cadena uno por uno a una cierta velocidad';
-Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_PREDEFARR = 'Devuelve una matriz de patrones predefinidos';
-Blockly.MIXLY_TOOLTIP_ETHERNET_INIT = 'Inicia el servicio de Ethernet. El parámetro es la dirección MAC de la tarjeta de expansión Ethernet. El retorno 1 indica un inicio exitoso y 0 indica un error.';
-Blockly.MIXLY_TOOLTIP_ETHERNET_MACADDRESS = 'Dirección MAC en patrón de XX-XX-XX-XX-XX-XX-XX, X en cualquier dígito hexadecimal';
-Blockly.MIXLY_TOOLTIP_ETHERNET_LOCALIP = 'Volver a la dirección IP local';
-Blockly.MIXLY_TOOLTIP_ETHERNET_CONNECT = 'Conéctese al servidor remoto, el retorno 1 indica un inicio exitoso, otros indican un error';
-Blockly.MIXLY_TOOLTIP_ETHERNET_STOP = 'Desconectarse del servidor';
-Blockly.MIXLY_TOOLTIP_ETHERNET_CONNECTED = 'Devuelve si un servidor ha sido conectado';
-Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_AVAILABLE = 'Devuelve si hay datos disponibles enviados por el servidor.';
-Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_PRINT = 'Imprima los datos en el servidor al que está conectado un cliente. Imprime los números como una secuencia de dígitos, cada uno es un carácter ASCII (por ejemplo, el número 123 se envía como los tres caracteres \'1 \', \'2 \', \'3 \').';
-Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_PRINTLN = 'Imprima los datos, seguidos de un retorno de carro y una nueva línea, al servidor al que está conectado un cliente. Imprime los números como una secuencia de dígitos, cada uno es un carácter ASCII (por ejemplo, el número 123 se envía como los tres caracteres \'1 \', \'2 \', \'3 \').';
-Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_READ = 'Lea el siguiente byte recibido del servidor al que está conectado el cliente';
-Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = 'Enviar una solicitud GET a la dirección especificada';
-Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = 'Conversión de tipo obligatoria de constantes o variables.';
+ Blockly.MIXLY_TOOLTIP_INOUT_pinMode = 'Cambiar modo pin';
+ Blockly.MIXLY_TOOLTIP_INOUT_pulseIn = 'Obtener el período del último pulso de un pin (microsegundos)';
+ Blockly.MIXLY_TOOLTIP_INOUT_pulseIn2 = 'Obtenga el período del último pulso de un pin (microsegundos, se puede configurar el parámetro de tiempo de espera)';
+ Blockly.MIXLY_TOOLTIP_INOUT_shiftout = 'Salida de datos en pines como serial, que es equivalente a la comunicación serial síncrona en sentido general';
+ Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2 = 'Interrupción del temporizador interno Arduino';
+ Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_START = 'MsTimer2 comienzo';
+ Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_STOP = 'MsTimer2 detener';
+ Blockly.MIXLY_TOOLTIP_CONTROL_END_PROGRAM = 'detener este programa';
+ Blockly.MIXLY_TOOLTIP_CONTROL_ALLOW_INTERRUPT = 'Habilitar interrupcion';
+ Blockly.MIXLY_TOOLTIP_CONTROL_FORBID_INTERRUPT = 'Desactivar la interrupcion';
+ Blockly.MIXLY_TOOLTIP_SCOOP = 'Arduino Multihilo';
+ Blockly.MIXLY_TOOLTIP_SCOOP_YIELD = 'Empezar a ejecutar tareas multiproceso';
+ Blockly.MIXLY_TOOLTIP_SCOOP_SLEEP = 'Tiempo de retardo especificado (solo para multihilo)';
+ Blockly.MIXLY_TOOLTIP_MATH_RANDOM_SEED = 'Establecer semillas de números aleatorios';
+ Blockly.MIXLY_TOOLTIP_TEXT_LENGTH = 'Obtener la longitud de la cadena';
+ Blockly.MIXLY_TOOLTIP_TEXT_FIND_CHAR_AT = 'encuentra la subcadena %1 en la cadena';
+ Blockly.MIXLY_TOOLTIP_TEXT_EQUALS_STARTS_ENDS = 'Devuelve si la cadena %1 %2';
+ Blockly.MIXLY_TOOLTIP_SERIAL_BEGIN = 'Inicialice el puerto serie y establezca la velocidad en baudios de comunicación del puerto serie';
+ Blockly.MIXLY_TOOLTIP_SERIAL_READSTRUNITL = 'Read the string from the serial port until encounter %1';
+ Blockly.MIXLY_TOOLTIP_SERIAL_FLUSH = 'Borrar datos en un búfer serial';
+ Blockly.MIXLY_TOOLTIP_SOFTSERIAL = 'Simule los pines digitales #%1 y #%2 en pines de comunicación serie';
+ Blockly.MIXLY_TOOLTIP_SERIALEVENT = 'Ejecute ciertos comandos por interrupción cuando reciba información en puertos serie';
+ Blockly.MIXLY_TOOLTIP_IR_ENABLE = '';
+ Blockly.MIXLY_TOOLTIP_I2C_MASTER_WRITE = 'El dispositivo principal I2C envía datos. Los parámetros son la dirección del dispositivo principal y el valor a enviar.';
+ Blockly.MIXLY_TOOLTIP_I2C_MASTER_READ = 'El dispositivo principal I2C lee datos. Los parámetros son la dirección del dispositivo principal y la longitud del byte del contenido a leer.';
+ Blockly.MIXLY_TOOLTIP_I2C_MASTER_READ2 = 'Devolver datos leídos del dispositivo principal I2C';
+ Blockly.MIXLY_TOOLTIP_I2C_AVAILABLE = 'Devuelve si los datos del dispositivo I2C se leyeron correctamente';
+ Blockly.MIXLY_TOOLTIP_I2C_SLAVE_ONRECEIVE = 'El dispositivo esclavo I2C recibe señales de reloj y datos generadas por el dispositivo host y realiza algunas operaciones.';
+ Blockly.MIXLY_TOOLTIP_SPI_TRANSFER = 'Transfiera datos al dispositivo esclavo a través del pin #%1 en SPI como equipo principal';
+ Blockly.MIXLY_TOOLTIP_RFID_INIT = 'Inicialice el lector RFID con los parámetros de número de pin de línea de datos, número de pin de línea de reloj, número de pin de línea de salida del esclavo de salida principal y número de pin de salida del esclavo de entrada principal.'
+ Blockly.MIXLY_TOOLTIP_RFID_ON = 'Ejecutar algunos comandos cuando RFID puede leer datos';
+ Blockly.MIXLY_TOOLTIP_RFID_READ = 'Devolver Numero de tarjeta leídos por RFID';
+ Blockly.MIXLY_TOOLTIP_RFID_IN = 'Ejecutar algunos comandos cuando RFID lee datos específicos';
+ Blockly.MIXLY_TOOLTIP_RFID_WRITEBLOCK = 'Escribir datos en el bloque de datos específico de la etiqueta electrónica.';
+ Blockly.MIXLY_TOOLTIP_RFID_READBLOCK = 'Lectura de datos de bloques de datos en la etiqueta electrónica';
+ Blockly.MIXLY_TOOLTIP_RFID_READBLOCK = 'Hacer que el dispositivo RFID ya no lea datos';
+ Blockly.MIXLY_TOOLTIP_STORE_SDWRITE = 'Escribir archivos en la tarjeta SD';
+ Blockly.MIXLY_TOOLTIP_STORE_EEPROM_WRITELONG = 'Escriba datos enteros largos en una dirección específica de EEPROM';
+ Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READLONG = 'Leer datos enteros largos de direcciones específicas de EEPROM';
+ Blockly.MIXLY_TOOLTIP_STORE_EEPROM_WRITEBYTE = 'Escriba los datos de bytes a la dirección específica de EEPROM';
+ Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READBYTE = 'Lea los datos de bytes de la dirección específica de EEPROM';
+ Blockly.MIXLY_TOOLTIP_GPS_INIT = 'Inicializar equipo GPS con parámetros de pin de comunicación GPS y velocidad de transmisión.';
+ Blockly.MIXLY_TOOLTIP_GPS_DATA_AVAILABLE = 'Devuelve si los datos GPS son válidos';
+ Blockly.MIXLY_TOOLTIP_GPS_GETDATA = 'GET %1 datos de satélites GPS';
+ Blockly.MIXLY_TOOLTIP_LM35 = 'Obtención del retorno de temperatura del sensor LM35';
+ Blockly.MIXLY_TOOLTIP_DS18 = 'Obtenga el valor de temperatura devuelto por el sensor DS18B20';
+ Blockly.MIXLY_TOOLTIP_DS1302_INIT = 'Inicialice el módulo de reloj DS1302 RTC con los parámetros de reinicio del número de pin de línea, número de pin de línea de datos y número de pin de línea de reloj.';
+ Blockly.MIXLY_TOOLTIP_DS1307_INIT = 'Inicialice el módulo de reloj DS1307 RTC con número de pin de línea de datos y número de pin de línea de reloj como parámetros';
+ Blockly.MIXLY_TOOLTIP_RTC_GETTIME = 'Obtenga %1 del módulo de reloj RTC';
+ Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
+ Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
+ Blockly.MIXLY_TOOLTIP_ADXL345 = 'Obtenga %1 devuelto por el módulo de inducción de gravedad ADXL345';
+ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_WRITEMICROSECONDS = 'Configure el tiempo de rotación del servo (tome el valor de los parámetros como [1000,2000])';
+ Blockly.MIXLY_TOOLTIP_TONE_NOTE = 'Devuelve la frecuencia correspondiente al nombre fonético.';
+ Blockly.MIXLY_TOOLTIP_STEPPER_STEP = 'Inicializar motor paso a paso de dos pines';
+ Blockly.MIXLY_TOOLTIP_STEPPER_STEP2 = 'Inicializar motor paso a paso de cuatro pines';
+ Blockly.MIXLY_TOOLTIP_STEPPER_MOVE = 'Establecer el número de pasos de movimiento del motor paso a paso';
+ Blockly.MIXLY_TOOLTIP_LCD_INIT = 'Inicialice la pantalla LCD y configure la dirección';
+ Blockly.MIXLY_TOOLTIP_LCD_INIT2 = 'Inicialice la pantalla LCD, configure la línea del reloj y la línea de datos para conectar los pines y la dirección del dispositivo';
+ Blockly.MIXLY_TOOLTIP_LCD_INIT3 = 'Inicialice la pantalla LCD, especifique todos los pines de conexión y la dirección del dispositivo';
+ Blockly.MIXLY_TOOLTIP_LCD_PRINT = 'Impresión de línea de pantalla LCD';
+ Blockly.MIXLY_TOOLTIP_LCD_PRINT2 = 'Muestra el contenido especificado de la línea %1, columna %2 de la pantalla LCD.';
+ Blockly.MIXLY_TOOLTIP_LCD_POWER = 'Establecer el estilo de pantalla LCD';
+ Blockly.MIXLY_TOOLTIP_OLED_DRAW4STRING = 'Impresión de línea de pantalla OLED';
+ Blockly.MIXLY_TOOLTIP_OLED_PRINT = 'Mostrar el carácter especificado en la línea %1, columna %2 de la pantalla de visualización OLED';
+ Blockly.MIXLY_TOOLTIP_RGB_DISPLAY2 = 'Configure el color de la lámpara de especificación en el módulo de lámpara de color RGB';
+ Blockly.MIXLY_TOOLTIP_4digitdisplay_power = 'Establecer el modo de pantalla de tubo TM1650 de cuatro dígitos';
+ Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString = 'Cadena de visualización de tubos de cuatro dígitos TM1650 (desplazamiento sobre cuatro dígitos)';
+ Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot = 'Mostrar el punto decimal en la posición especificada del tubo digital de cuatro dígitos TM1650';
+ Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS = 'Establece el brillo de TM1637';
+ Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT = 'Inicializar HK16T33 8 * 8 Matrix Screen';
+ Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS = 'Operación de punto único de la pantalla de matriz de puntos, rango del valor del eje XY 1-8';
+ Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = 'Girar matriz Dirección de visualización de pantalla';
+ Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT = 'Muestra un personaje a la vez';
+ Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_LEDARRAY = 'Ilumina la posición correspondiente en la pantalla de matriz de puntos';
+ Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_CLEAR = 'Borrar el contenido en la pantalla de matriz de puntos';
+ Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_INIT = 'Inicializar MAX7219 8*8 Matrix Screen';
+ Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_DISPLAYCHAR = 'Generar contenido de visualización de matriz de puntos desde matrices';
+ Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_STRING = 'Muestra cada carácter en la cadena uno por uno a una cierta velocidad';
+ Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_PREDEFARR = 'Devuelve una matriz de patrones predefinidos';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_INIT = 'Inicia el servicio de Ethernet. El parámetro es la dirección MAC de la tarjeta de expansión Ethernet. El retorno 1 indica un inicio exitoso y 0 indica un error.';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_MACADDRESS = 'Dirección MAC en patrón de XX-XX-XX-XX-XX-XX-XX, X en cualquier dígito hexadecimal';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_LOCALIP = 'Volver a la dirección IP local';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_CONNECT = 'Conéctese al servidor remoto, el retorno 1 indica un inicio exitoso, otros indican un error';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_STOP = 'Desconectarse del servidor';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_CONNECTED = 'Devuelve si un servidor ha sido conectado';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_AVAILABLE = 'Devuelve si hay datos disponibles enviados por el servidor.';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_PRINT = 'Imprima los datos en el servidor al que está conectado un cliente. Imprime los números como una secuencia de dígitos, cada uno es un carácter ASCII (por ejemplo, el número 123 se envía como los tres caracteres \'1 \', \'2 \', \'3 \').';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_PRINTLN = 'Imprima los datos, seguidos de un retorno de carro y una nueva línea, al servidor al que está conectado un cliente. Imprime los números como una secuencia de dígitos, cada uno es un carácter ASCII (por ejemplo, el número 123 se envía como los tres caracteres \'1 \', \'2 \', \'3 \').';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_READ = 'Lea el siguiente byte recibido del servidor al que está conectado el cliente';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = 'Enviar una solicitud GET a la dirección especificada';
+ Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = 'Conversión de tipo obligatoria de constantes o variables.';
 //add max7219 clear tooltip 2019-1-10
 Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR = Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR;
 //translated by zyc in 2018-12-7
