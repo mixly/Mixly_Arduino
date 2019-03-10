@@ -73,7 +73,7 @@ Blockly.Arduino.controls_notone=function(){
  return code;
 };
 //执行器-蜂鸣器
-Blockly.Arduino.controls_tone2 = function() {
+Blockly.Arduino.controls_tone_noTimer = function() {
   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
   var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY', Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
   var dur = Blockly.Arduino.valueToCode(this, 'DURATION', Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
@@ -84,7 +84,7 @@ Blockly.Arduino.controls_tone2 = function() {
 };
 
 //执行器-蜂鸣器结束声音
-Blockly.Arduino.controls_notone2 = function() {
+Blockly.Arduino.controls_notone_noTimer = function() {
   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.setups_['setup_output_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', OUTPUT);';
   var code = "NewNoTone(" + dropdown_pin + ");\n";

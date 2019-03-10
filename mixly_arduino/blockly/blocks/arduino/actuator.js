@@ -98,11 +98,11 @@ init:function(){
     this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE);
   }
 };
-Blockly.Blocks.controls_tone2={
+Blockly.Blocks.controls_tone_noTimer={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_TONE_PIN)
+        .appendField(Blockly.MIXLY_TONE_NOTIMER_PIN)
         .setCheck(Number);
     this.appendValueInput('FREQUENCY')
         .setCheck(Number)
@@ -121,11 +121,11 @@ init:function(){
   }
 };
 
-Blockly.Blocks.controls_notone2={
+Blockly.Blocks.controls_notone_noTimer={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
 	this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_NOTONE_PIN)
+        .appendField(Blockly.MIXLY_NOTONE_NOTIMER_PIN)
         .setCheck(Number);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
