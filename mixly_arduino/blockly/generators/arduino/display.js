@@ -340,22 +340,7 @@ Blockly.Arduino.Matrix_img = function() {
   Blockly.Arduino.definitions_['matrix_img_' + dropdown_img_] = "byte " + 'matrix_img_' + dropdown_img_ + "[]=" + code;
   return ['matrix_img_' + dropdown_img_, Blockly.Arduino.ORDER_ATOMIC];
 };
-// Blockly.Arduino.oled_init = function() {
-//   var CLK = Blockly.Arduino.valueToCode(this, 'CLK', Blockly.Arduino.ORDER_ATOMIC);
-//   var DIN = Blockly.Arduino.valueToCode(this, 'DIN', Blockly.Arduino.ORDER_ATOMIC);
-//   var DC = Blockly.Arduino.valueToCode(this, 'DC', Blockly.Arduino.ORDER_ATOMIC);
-//   var CS1 = Blockly.Arduino.valueToCode(this, 'CS1', Blockly.Arduino.ORDER_ATOMIC);
-//   Blockly.Arduino.definitions_['define_U8glib'] = '#include <U8glib.h>';
-//   Blockly.Arduino.definitions_['define_u8g'] = ' U8GLIB_SSD1306_128X64 u8g(' + CLK + ',' + DIN + ',' + CS1 + ',' + DC + ');';
-//   var oled_setup = " if ( u8g.getMode() == U8G_MODE_R3G3B2 )\nu8g.setColorIndex(255);\n";
-//   oled_setup += " else if ( u8g.getMode() == U8G_MODE_GRAY2BIT )\n";
-//   oled_setup += " u8g.setColorIndex(3);\n ";
-//   oled_setup += " else if ( u8g.getMode() == U8G_MODE_BW )\n";
-//   oled_setup += " u8g.setColorIndex(1);\n";
-//   Blockly.Arduino.setups_['setup_setup'] = oled_setup;
-//   var code = '';
-//   return code;
-// };
+
 Blockly.Arduino.oled_init = function() {
   var CLK = Blockly.Arduino.valueToCode(this, 'CLK', Blockly.Arduino.ORDER_ATOMIC);
   var DIN = Blockly.Arduino.valueToCode(this, 'DIN', Blockly.Arduino.ORDER_ATOMIC);
@@ -634,26 +619,5 @@ Blockly.Arduino.lp2i_u8g_draw_4strings = function () {
     + '    u8g2.print(' + value_text_line4 + ');\n'
     + '}\n'
     +'while(u8g2.nextPage() );\n';
-    return code;
-};
-
-Blockly.Arduino.lp2i_u8g_print = function () {
-    var value_n = Blockly.Arduino.valueToCode(this, 'N', Blockly.Arduino.ORDER_ATOMIC);
-    var x = Blockly.Arduino.valueToCode(this, 'X', Blockly.Arduino.ORDER_ATOMIC);
-    var y = Blockly.Arduino.valueToCode(this, 'Y', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_["include_U8glib"] = '#include <U8glib.h>\n U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_NO_ACK|U8G_I2C_OPT_FAST);\n';
-    //dans le setup    
-    Blockly.Arduino.setups_["setup_u8g"] =
-      'u8g.firstPage();\n'
-      + '  do {\n'
-      + '      u8g.setFont(u8g_font_unifont);\n'
-      + '  } while( u8g.nextPage());\n'
-      + '  delay(1000);\n';
-    var code =
-      'u8g.firstPage();\n'
-    code += '   do {\n'
-    code += '       u8g.setPrintPos(' + x + ', ' + y + ');\n'
-    code += '       u8g.print(' + value_n + ');\n'
-    code += '   }\n while( u8g.nextPage() );\n';
     return code;
 };
