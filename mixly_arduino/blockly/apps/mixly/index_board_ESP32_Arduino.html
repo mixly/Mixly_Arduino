@@ -39,8 +39,6 @@
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/arduino/actuator.js"></script>
-
-
   <script type="text/javascript" src="../../generators/esp32_Arduino/inout.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/control.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/math.js"></script>
@@ -92,7 +90,7 @@
   <script type="text/javascript" src="../../blocks/esp32_Arduino/actuator.js"></script>
   <!-- 过去index.html中的js代码都会被放到这个js中-->
   <script src = "init.js"></script>
-  <link rel="stylesheet" type="text/css" href="color_simple.css" />
+  <link rel="stylesheet" type="text/css" href="color_esp32_arduino_simple.css" />
   <!-- ACE中字体放缩按钮样式-->
   <link rel="stylesheet" type="text/css" href="ACEfont.css" />
 </head>
@@ -603,55 +601,121 @@
   </block>
   <block type="serialBT_available"></block>
   <block type="serialBT_read"></block>
-  <block type="ir_recv">
-    <value name="PIN">
-      <shadow type="pins_digital"></shadow>
-    </value>
-    <statement name="DO">
-      <block type="serial_print_hex">
-        <value name="CONTENT">
-          <block type="variables_get">
-            <field name="VAR">ir_item</field>
-          </block>
-        </value>
-      </block>
-    </statement>
-  </block>
-  <block type="ir_send_nec">
-    <value name="data">
-      <shadow type="math_number">
-        <field name="NUM">0x89ABCDEF</field>
-      </shadow>
-    </value>
-    <value name="bits">
-      <shadow type="math_number">
-        <field name="NUM">32</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="ir_recv_enable">
+  <block type="i2c_master_writer"></block>
+  <block type="i2c_master_reader"></block>
+  <block type="i2c_master_reader2"></block>
+  <block type="i2c_available"></block>
+  <block type="i2c_slave_onreceive">
     <value name="PIN">
       <shadow type="pins_digital"></shadow>
     </value>
   </block>
-  <block type="ir_recv_raw">
-    <value name="PIN">
+  <block type="spi_transfer">
+    <value name="pin">
       <shadow type="pins_digital"></shadow>
     </value>
-  </block>
-  <block type="ir_send_raw">
-    <value name="length">
+    <value name="value">
       <shadow type="math_number">
-        <field name="NUM">3</field>
-      </shadow>
-    </value>
-    <value name="freq">
-      <shadow type="math_number">
-        <field name="NUM">38</field>
+        <field name="NUM">0</field>
       </shadow>
     </value>
   </block>
+  <block type="RFID_init"></block>   <!--初始化-->
+  <block type="RFID_on"></block>   <!--如果侦测到信号那么执行XXX-->
+  <block type="RFID_readcardnum"></block>  <!--读取卡号-->
+  <block type="RFID_in">
+    <value name="uid_">
+      <shadow type="text">
+        <field name="TEXT">123</field>
+      </shadow>
+    </value>
+  </block>    <!-- 如果卡号和XX一致，那么执行XXX-->
+  <block type="RFID_writecarddata">
+   <value name="address1">
+    <shadow type="math_number">
+     <field name="NUM">0</field>
+   </shadow>
+ </value>
+</block>   <!--写入卡数据块内容-->
+<block type="RFID_readcarddata">
+ <value name="address">
+   <shadow type="math_number">
+     <field name="NUM">0</field>
+   </shadow>
+ </value>
+</block>   <!--读取卡数据块内容-->
+<block type="RFID_off"></block>     <!--关机---->
+</category>
+<category id="catStorage" colour="0">
+ <!--  <block type="storage_fileopen">
 
+    <value name="FILE">
+      <shadow type="variables_get">
+        <field name="VAR">f</field>
+      </shadow>
+    </value>
+  </block> -->
+  <block type="storage_file_write">
+    <value name="FILENAME">
+      <shadow type="text">
+        <field name="TEXT">filename.txt</field>
+      </shadow>
+    </value>
+    <value name="data">
+      <shadow type="text">
+        <field name="TEXT">Mixly</field>
+      </shadow>
+    </value>
+   
+  </block>
+  <block type="storage_get_contents">
+    <value name="FILE">
+      <shadow type="variables_get">
+        <field name="VAR">f</field>
+      </shadow>
+    </value>
+    <value name="SIZE">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="storage_can_write_ornot">
+    <value name="FILE">
+      <shadow type="variables_get">
+        <field name="VAR">f</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="storage_get_filename">
+    <value name="FILE">
+      <shadow type="variables_get">
+        <field name="VAR">f</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="storage_close_file">
+    <value name="FILE">
+      <shadow type="variables_get">
+        <field name="VAR">f</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="storage_list_all_files"> </block>
+  <block type="storage_delete_file">
+    <value name="FILE">
+      <shadow type="text">
+        <field name="TEXT">filename.txt</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="storage_get_file_size">
+    <value name="FILE">
+      <shadow type="text">
+        <field name="TEXT">filename.txt</field>
+      </shadow>
+    </value>
+  </block>
 </category>
 <category id="catSensor" colour="40">
   <block type="chaoshengbo2">
