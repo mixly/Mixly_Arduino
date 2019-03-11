@@ -580,7 +580,7 @@
      </shadow>
    </value>
  </block>
-
+<block type="serial_parseInt_Float"></block>
  <block type="serial_flush"></block>
  <block type="serial_softserial">
   <value name="TX">
@@ -602,6 +602,7 @@
   </block>
   <block type="serialBT_available"></block>
   <block type="serialBT_read"></block>
+   <block type="serialBT_write"></block>
   <block type="i2c_master_writer"></block>
   <block type="i2c_master_reader"></block>
   <block type="i2c_master_reader2"></block>
@@ -1370,7 +1371,7 @@
 </block>
 <block type="display_TM1637_clearDisplay"></block>
 </category>
-<category id="catMatrix" colour="180">
+<category id="catMax7219" colour="180">
   <block type="MAX7219_init">
     <value name="PIN1">
       <shadow type="pins_MOSI">

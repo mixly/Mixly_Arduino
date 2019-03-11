@@ -347,9 +347,9 @@ Blockly.Arduino.oled_init = function() {
   var DC = Blockly.Arduino.valueToCode(this, 'DC', Blockly.Arduino.ORDER_ATOMIC);
   var CS1 = Blockly.Arduino.valueToCode(this, 'CS1', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['define_U8g2lib'] = '#include <U8g2lib.h>';
-  Blockly.Arduino.definitions_['define_u8g2'] = ' U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
+  Blockly.Arduino.definitions_['define_u8g2'] = 'U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
   Blockly.Arduino.definitions_['define_u8gspi'] ='#include <Wire.h>\n'; 
-  var oled_setup = "u8g2.begin();\n\n";
+  var oled_setup = "u8g2.begin();\n";
   Blockly.Arduino.setups_['setup_setup'] = oled_setup;
   var code = '';
   return code;
@@ -367,7 +367,7 @@ Blockly.Arduino.oled_draw4Str = function() {
   var value_text_line4 = Blockly.Arduino.valueToCode(this, 'Text_line4', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
   var code ='u8g2.setFontPosTop();\n'
     +'u8g2.setCursor(0,0);\n'
-    + 'u8g2.print(' + value_text_line1 + ');\n'
+    +'u8g2.print(' + value_text_line1 + ');\n'
     +'u8g2.setCursor(0,15);\n'
     +'u8g2.print(' + value_text_line2 + ');\n' 
     +'u8g2.setCursor(0,29);\n'
@@ -396,7 +396,7 @@ Blockly.Arduino.oled_page = function() {
   var branch = Blockly.Arduino.statementToCode(this, 'DO');
 branch = branch.replace(/(^\s*)|(\s*$)/g, ""); 
 if (branch) {
-  var code = "  u8g2.firstPage();\n do {\n" + branch + "\n} \nwhile (u8g2.nextPage());\n";
+  var code = "u8g2.firstPage();\ndo\n{\n" + branch + "\n}\nwhile (u8g2.nextPage());\n";
   return code;
 }
 };
@@ -407,7 +407,7 @@ Blockly.Arduino.oled_showBitmap = function() {
   var Height = this.getFieldValue('HEIGHT');
   var WIDTH = this.getFieldValue('WIDTH');
   var data_name = Blockly.Arduino.valueToCode(this, 'bitmap_name', Blockly.Arduino.ORDER_ATOMIC);
-data_name = data_name.replace(/\"/g, ""); //è¿‡æ»¤å¼•å·
+data_name = data_name.replace(/\"/g, ""); 
 var code = "";
 if ((!isNaN(start_x) && start_x < 128 && start_x >= 0) || (isNaN(start_x))) {
   code = 'u8g2.drawXBM(' + start_x + ',';

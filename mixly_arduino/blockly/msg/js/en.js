@@ -995,6 +995,7 @@ Blockly.MIXLY_SERIALBT_BEGIN='init';
 Blockly.MIXLY_SERIALBT_INIT='ESP32 Bluetooth Name';
 Blockly.MIXLY_SERIALBT_AVAILABLE='ESP32 Bluetooth readable';
 Blockly.MIXLY_SERIALBT_READ='ESP32 Bluetooth Data';
+Blockly.MIXLY_SERIALBT_WRITE='ESP32 Bluetooth Send Data';
 Blockly.MIXLY_ESP32_RUNNING_CORE='ESP32 Dual Core';
 Blockly.MIXLY_CONTROL_CORE_DELAY='ESP32 Dual Core Delay';
 Blockly.MIXLY_ESP32_RUNNING_CORE_PRIORITY='Priority';
