@@ -54,6 +54,7 @@
   <script type="text/javascript" src="../../generators/esp32_Arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/actuator.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/MixGo.js"></script>
 
   <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script> 
   <script type="text/javascript" src="../../blocks/arduino/pins.js"></script>
@@ -89,6 +90,7 @@
   <script type="text/javascript" src="../../blocks/esp32_Arduino/procedures.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/actuator.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/MixGo.js"></script>
   <!-- 过去index.html中的js代码都会被放到这个js中-->
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="color_esp32_arduino_simple.css" />
@@ -580,7 +582,7 @@
      </shadow>
    </value>
  </block>
-<block type="serial_parseInt_Float"></block>
+ <block type="serial_parseInt_Float"></block>
  <block type="serial_flush"></block>
  <block type="serial_softserial">
   <value name="TX">
@@ -602,7 +604,7 @@
   </block>
   <block type="serialBT_available"></block>
   <block type="serialBT_read"></block>
-   <block type="serialBT_write"></block>
+  <block type="serialBT_write"></block>
   <block type="i2c_master_writer"></block>
   <block type="i2c_master_reader"></block>
   <block type="i2c_master_reader2"></block>
@@ -668,7 +670,7 @@
         <field name="TEXT">Mixly</field>
       </shadow>
     </value>
-   
+
   </block>
   <block type="storage_get_contents">
     <value name="FILE">
@@ -1890,6 +1892,53 @@
   <block type="Blynk_iot_BLYNK_syncAll" name="同步所有管脚状态"></block>
   <block type="blynk_iot_syncVirtual" name="同步虚拟管脚">
     <field name="Vpin">V0</field>
+  </block>
+</category>
+<category id="catMixGo" name="MixGo" colour="160">
+  <block type="HT16K33_TEXT" name="点阵屏显示_字符显示">
+    <value name="TEXT">
+      <shadow type="text">
+        <field name="TEXT">ArduBits</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="HT16K33_POS" name="点阵屏显示_画点显示">
+    <value name="XVALUE">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="YVALUE">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="HT16K33_DisplayChar" name="点阵屏显示_显示图案">
+    <value name="Chars">
+      <block type="HT16K33_LedArray"></block>
+    </value>
+  </block>
+  <block type="HT16K33_Displayclear" name="点阵屏显示_清除图案">
+  </block>
+  <block type="HT16K33_show_image">
+    <value name="data">
+      <shadow type="pins_builtinimg"></shadow>
+    </value>
+  </block>
+  <block type="HT16K33_blink_rate">
+    <value name="x">
+      <shadow type="math_number">
+        <field name="NUM">2</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="HT16K33_brightness">
+    <value name="Brightness">
+      <shadow type="math_number">
+        <field name="NUM">2</field>
+      </shadow>
+    </value>
   </block>
 </category>
 </xml>
