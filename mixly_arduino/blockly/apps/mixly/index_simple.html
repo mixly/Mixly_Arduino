@@ -809,50 +809,7 @@
     <block type="group_lcd_power">
       <field name="STAT">clear</field>
     </block>
-    <block type="oled_init">
-      <next>
-        <block type="oled_page">
-          <statement name="DO">
-            <block type="procedures_callnoreturn">
-              <mutation name="page1"></mutation>
-            </block>
-          </statement>
-        </block>
-      </next>
-    </block>
-    <block type="procedures_defnoreturn">
-      <field name="NAME">page1</field>
-      <statement name="STACK">
-        <block type="oled_setFont">
-          <field name="TYPE">timR14_tr</field>
-          <next>
-            <block type="oled_draw4Str" >
-              <value name="Text_line1">
-                <shadow type="text">
-                  <field name="TEXT">Example Line1!</field>
-                </shadow>
-              </value>
-              <value name="Text_line2">
-                <shadow type="text">
-                  <field name="TEXT">Example Line2!</field>
-                </shadow>
-              </value>
-              <value name="Text_line3">
-                <shadow type="text">
-                  <field name="TEXT">Example Line3!</field>
-                </shadow>
-              </value>
-              <value name="Text_line4">
-                <shadow type="text">
-                  <field name="TEXT">Example Line4!</field>
-                </shadow>
-              </value>
-            </block>
-          </next>
-        </block>
-      </statement>
-    </block>
-   <!--  <block type="lp2i_u8g_draw_4strings">
+    <block type="lp2i_u8g_draw_4strings">
       <value name="Text_line1">
         <shadow type="text">
           <field name="TEXT">Example line 1</field>
@@ -873,24 +830,7 @@
           <field name="TEXT">Example line 4</field>
         </shadow>
       </value>
-    </block> -->
-    <!-- <block type="lp2i_u8g_print">
-      <value name="N">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="X">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="Y">
-        <shadow type="math_number">
-          <field name="NUM">12</field>
-        </shadow>
-      </value>
-    </block> -->
+    </block>
     <block type="display_4digitdisplay_power">
       <field name="STAT">clear</field>
     </block>

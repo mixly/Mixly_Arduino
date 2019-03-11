@@ -912,24 +912,4 @@ Blockly.Blocks.lp2i_u8g_draw_4strings = {
         this.setTooltip(Blockly.MIXLY_TOOLTIP_OLED_DRAW4STRING);
     }
 };
-Blockly.Blocks.lp2i_u8g_print = {
-    init: function() {
-        this.appendDummyInput()
-            .appendField("OLED I2C display");
-        //.appendField(new Blockly.FieldImage(Blockly.pathToBlockly + 'blocks/display-oled-128x64-i2c/display-oled-128x64-i2c.jpg', Blockly.Arduino.imageSize, Blockly.Arduino.imageSize));     
-        this.appendValueInput("N", 'Number')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.OLEDDISPLAY);
-        this.appendValueInput("X", 'Number')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.rawx);     
-        this.appendValueInput("Y", 'Number')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.Msg.liney);        
-        this.setInputsInline(false);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(Blockly.Blocks.display.HUE);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_OLED_PRINT.replace('%1',Blockly.Arduino.valueToCode(this, 'X',Blockly.Arduino.ORDER_ATOMIC)).replace('%2',Blockly.Arduino.valueToCode(this, 'Y',Blockly.Arduino.ORDER_ATOMIC)));
-    }
-};
+

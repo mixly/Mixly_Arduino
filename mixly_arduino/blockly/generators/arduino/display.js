@@ -606,18 +606,18 @@ Blockly.Arduino.lp2i_u8g_draw_4strings = function () {
     Blockly.Arduino.setups_["setup_u8g2"] =
        ' u8g2.begin();\n';
     var code = 'u8g2.firstPage();\n'
-    + 'do {\n'
-    + '    u8g2.setFont(u8g2_font_timR14_tr);\n'
-    + '    u8g2.setFontPosTop();\n'
-    +'     u8g2.setCursor(0,0);\n'
-    + '    u8g2.print(' + value_text_line1 + ');\n'
-    +'     u8g2.setCursor(0,15);\n'
-    + '    u8g2.print(' + value_text_line2 + ');\n' 
-    +'     u8g2.setCursor(0,29);\n'
-    + '    u8g2.print(' + value_text_line3 + ');\n'
-    +'     u8g2.setCursor(0,43);\n'
-    + '    u8g2.print(' + value_text_line4 + ');\n'
-    + '}\n'
+    +'do {\n'
+    +'u8g2.setFont(u8g2_font_timR14_tr);\n'
+    +'u8g2.setFontPosTop();\n'
+    +'u8g2.setCursor(0,0);\n'
+    +'u8g2.print(' + value_text_line1 + ');\n'
+    +'u8g2.setCursor(0,15);\n'
+    +'u8g2.print(' + value_text_line2 + ');\n' 
+    +'u8g2.setCursor(0,29);\n'
+    +'u8g2.print(' + value_text_line3 + ');\n'
+    +'u8g2.setCursor(0,43);\n'
+    +'u8g2.print(' + value_text_line4 + ');\n'
+    +'}\n'
     +'while(u8g2.nextPage() );\n';
     return code;
 };
