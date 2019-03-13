@@ -16,7 +16,6 @@ Blockly.Blocks.HT16K33_TEXT={
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setTooltip("ArduBits_EX源_点阵屏显示_输入_字符串");
-    this.setHelpUrl('www.ardubits.com');
 }
 };
 
@@ -37,7 +36,6 @@ Blockly.Blocks.HT16K33_POS = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip("MixGo_点阵屏显示（点阵屏单点操作，X轴取值范围1-16,Y轴取值范围1-8）");
-    this.setHelpUrl('www.ardubits.com');
 }
 };
 
@@ -50,7 +48,6 @@ Blockly.Blocks.HT16K33_DisplayChar = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip("MixGo_点阵屏显示(图案数组勾选设置显示)");
-    this.setHelpUrl('www.ardubits.com');
 }
 };
 
@@ -69,7 +66,7 @@ Blockly.Blocks.HT16K33_LedArray = {
     this.appendDummyInput("").appendField(new Blockly.FieldCheckbox("FALSE"), "a11").appendField(new Blockly.FieldCheckbox("FALSE"), "a12").appendField(new Blockly.FieldCheckbox("FALSE"), "a13").appendField(new Blockly.FieldCheckbox("FALSE"), "a14").appendField(new Blockly.FieldCheckbox("FALSE"), "a15").appendField(new Blockly.FieldCheckbox("FALSE"), "a16").appendField(new Blockly.FieldCheckbox("FALSE"), "a17").appendField(new Blockly.FieldCheckbox("FALSE"), "a18").appendField(new Blockly.FieldCheckbox("FALSE"), "a19").appendField(new Blockly.FieldCheckbox("FALSE"), "a110").appendField(new Blockly.FieldCheckbox("FALSE"), "a111").appendField(new Blockly.FieldCheckbox("FALSE"), "a112").appendField(new Blockly.FieldCheckbox("FALSE"), "a113").appendField(new Blockly.FieldCheckbox("FALSE"), "a114").appendField(new Blockly.FieldCheckbox("FALSE"), "a115").appendField(new Blockly.FieldCheckbox("FALSE"), "a116");
     this.setOutput(true, Number);
     this.setTooltip("MixGo_点阵屏显示");
-    this.setHelpUrl('www.ardubits.com');
+    
 }
 };
 
@@ -83,23 +80,58 @@ Blockly.Blocks.HT16K33_Displayclear = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip("MixGo_清除显示(清除点阵显示)");
-    this.setHelpUrl('www.ardubits.com');
 }
 };
-var IMG = [["HEART", "HEART"],["HEART_SMALL", "HEART_SMALL"],["HAPPY", "HAPPY"],["SAD", "SAD"],["SMILE", "SMILE"],["SILLY", "SILLY"],["FABULOUS", "FABULOUS"],["SURPRISED", "SURPRISED"],["ASLEEP", "ASLEEP"],["ANGRY", "ANGRY"],["CONFUSED", "CONFUSED"],["NO", "NO"],["YES", "YES"],["LEFT_ARROW", "LEFT_ARROW"],["RIGHT_ARROW", "RIGHT_ARROW"],["DRESS", "DRESS"],["TRANSFORMERS", "TRANSFORMERS"],["SCISSORS", "SCISSORS"],["EXIT", "EXIT"],["TREE", "TREE"],["PACMAN", "PACMAN"],["TARGET", "TARGET"],["TSHIRT", "TSHIRT"],["ROLLERSKATE", "ROLLERSKATE"],["DUCK", "DUCK"],["HOUSE", "HOUSE"],["TORTOISE", "TORTOISE"],["BUTTERFLY", "BUTTERFLY"],["STICKFIGURE", "STICKFIGURE"],["GHOST", "GHOST"],["PITCHFORK", "PITCHFORK"],["MUSIC_QUAVERS", "MUSIC_QUAVERS"],["MUSIC_QUAVER", "MUSIC_QUAVER"],["MUSIC_CROTCHET", "MUSIC_CROTCHET"],["COW", "COW"],["RABBIT", "RABBIT"],["SQUARE_SMALL", "SQUARE_SMALL"],["SQUARE", "SQUARE"],["DIAMOND_SMALL", "DIAMOND_SMALL"],["DIAMOND", "DIAMOND"],["CHESSBOARD", "CHESSBOARD"],["TRIANGLE_LEFT", "TRIANGLE_LEFT"],["TRIANGLE", "TRIANGLE"],["SNAKE", "SNAKE"],["UMBRELLA", "UMBRELLA"],["SKULL", "SKULL"],["GIRAFFE", "GIRAFFE"],["SWORD", "SWORD"]];
 
 Blockly.Blocks.HT16K33_show_image = {
   init: function() {
+    this.appendDummyInput("").appendField(Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION).appendField(new Blockly.FieldDropdown([
+     ["❤", "0100038007c00fe01ff01ff00ee00640"],
+     ["♥", "00000100038007c00fe00ee004400000"],
+     ["▲", "00003ffc1ff80ff007e003c001800000"],
+     ["▼", "0000018003c007e00ff01ff83ffc0000"],
+     ["◄", "100030007000f000f000700030001000"],
+      // ["↓", "18181818db7e3c18"],
+      // ["←", "103060ffff603010"],
+      // ["→", "080c06ffff060c08"],
+      // ["►", "080c0e0f0f0e0c08"],
+      // ["△", "182442ff00000000"],
+      // ["▽", "00000000ff422418"],
+      // ["☺", "3c42a581a599423c"],
+      // ["○", "3c4281818181423c"],
+      // ["◑", "3c4e8f8f8f8f4e3c"],
+      // ["◐", "3c72f1f1f1f1723c"],
+      // ["￥", "4224ff08ff080808"],
+      // ["Χ", "8142241818244281"],
+      // ["✓", "0000010204885020"],
+      // ["□", "007e424242427e00"],
+      // ["▣", "007e425a5a427e00"],
+      // ["◇", "1824428181422418"],
+      // ["♀", "3844444438107c10"],
+      // ["♂", "0f030579d888d870"],
+      // ["♪", "0c0e0b080878f860"],
+      // ["✈", "203098ffff983020"],
+      // //["卍", "00f21212fe90909e"],
+      // //["卐", "009e9090fe1212f2"],
+      // ["︱", "1010101010101010"],
+      // ["—", "000000ff00000000"],
+      // ["╱", "0102040810204080"],
+      // ["＼", "8040201008040201"],
+      // ["大", "1010fe1010284482"],
+      // ["中", "1010fe9292fe1010"],
+      // ["小", "1010105454921070"],
+      // ["米", "00925438fe385492"],
+      // ["正", "00fe10105e5050fc"],
+      // ["囧", "ffa5a5c3bda5a5ff"]
+      ]), "img_");
+    this.setOutput(true);
+    this.setTooltip('');
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendValueInput('data')
-    .setCheck([String, "esp32_image","List",'Tuple'])
-    .appendField(Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
+    this.setHelpUrl('');
 }
 };
+
 
 Blockly.Blocks.HT16K33_blink_rate = {
   init: function() {

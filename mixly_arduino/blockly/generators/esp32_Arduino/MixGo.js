@@ -72,10 +72,16 @@ Blockly.Arduino.HT16K33_LedArray = function() {
       tmp += a[i][j];
     }
     tmp = (parseInt(tmp, 2)).toString(16)
-    if (tmp.length == 1) tmp = "000" + tmp;
-    code += '0x' + tmp + ((i != 8) ? ',' : '');
-  }
-  code += '};';
+  //  alert(tmp);
+    if (tmp.length == 1) 
+      tmp = "000" + tmp;
+    else if (tmp.length == 2) 
+     tmp = "00" + tmp;
+   else if (tmp.length == 3) 
+     tmp = "0" + tmp;
+   code += '0x' + tmp + ((i != 8) ? ',' : '');
+ }
+ code += '};';
   //Blockly.Arduino.definitions_[this.id] = "byte LedArray_"+clearString(this.id)+"[]="+code;
   Blockly.Arduino.definitions_[varName] = "uint16_t " + varName + "[8]=" + code;
   //return ["LedArray_"+clearString(this.id), Blockly.Arduino.ORDER_ATOMIC];
@@ -95,9 +101,8 @@ Blockly.Arduino.HT16K33_Displayclear = function() {
 
 //辅助块_点阵屏_清除显示
 Blockly.Arduino.HT16K33_brightness = function() {
-    var BRIGHTNESS = Blockly.Arduino.valueToCode(this, 'Brightness', Blockly.Arduino.ORDER_ATOMIC);
-  
-   Blockly.Arduino.definitions_['include_HT16K33'] = '#include <HT16K33.h>';
+  var BRIGHTNESS = Blockly.Arduino.valueToCode(this, 'Brightness', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['include_HT16K33'] = '#include <HT16K33.h>';
   Blockly.Arduino.definitions_['var_Matrix'] = 'HT16K33 MixGo_HT16K33;';
   Blockly.Arduino.setups_['setup_Matrix_1'] = 'MixGo_HT16K33.begin(0x70);';
   Blockly.Arduino.setups_['setup_Matrix_2'] = 'delay(100);';
@@ -106,3 +111,17 @@ Blockly.Arduino.HT16K33_brightness = function() {
   return code;
 };
 
+
+
+Blockly.Arduino.HT16K33_show_image = function() {
+  var dropdown_img_ = this.getFieldValue('img_');
+  var code = '"' + dropdown_img_ + '"';
+  code = '{';
+  
+  for (var i = 0; i < 31; i += 4) {
+    code += '0x' + dropdown_img_.substr(i, 4) + ((i != 28) ? ',' : '');
+  }
+  code += '};\n';
+  Blockly.Arduino.definitions_['matrix_img_' + dropdown_img_] = "byte " + 'matrix_img_' + dropdown_img_ + "[]=" + code;
+  return ['matrix_img_' + dropdown_img_, Blockly.Arduino.ORDER_ATOMIC];
+};
