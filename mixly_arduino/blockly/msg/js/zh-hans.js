@@ -749,7 +749,7 @@ var MSG = {
 	catSensor: "传感器",
 	catMusic: "音乐",
 	catActuator: "执行器",
-	catMonitor:"显示",
+	catMonitor:"显示器",
 	catLCD:"LCD显示屏",
 	cat4Digitdisplay:"四位数码管",
 	catWS2812:"WS2812",
