@@ -1,9 +1,27 @@
+/****************************************************************************
+ * This example was developed by the Hackerspace San Salvador to demonstrate
+ * the simultaneous use of the NeoPixel library and the Bluetooth SoftDevice.
+ * To compile this example you'll need to add support for the NRF52 based
+ * following the instructions at: 
+ *  https://github.com/sandeepmistry/arduino-nRF5
+ * Or adding the following URL to the board manager URLs on Arduino preferences:
+ *  https://sandeepmistry.github.io/arduino-nRF5/package_nRF5_boards_index.json
+ * Then you can install the BLEPeripheral library avaiable at:
+ *  https://github.com/sandeepmistry/arduino-BLEPeripheral
+ * To test it, compile this example and use the UART module from the nRF
+ * Toolbox App for Android. Edit the interface and send the characters
+ * 'a' to 'i' to switch the animation.
+ * There is a delay because this example blocks the thread of execution but
+ * the change will be shown after the current animation ends. (This might
+ * take a couple of seconds)
+ * For more info write us at: info _at- teubi.co
+ */
+#include <SPI.h>
+#include <BLEPeripheral.h>
+#include "BLESerial.h"
 #include <Adafruit_NeoPixel.h>
-#ifdef __AVR__
-  #include <avr/power.h>
-#endif
 
-#define PIN 6
+#define PIN 15
 
 // Parameter 1 = number of pixels in strip
 // Parameter 2 = Arduino pin number (most are valid)
@@ -13,45 +31,101 @@
 //   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
 //   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
 //   NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(64, PIN, NEO_GRB + NEO_KHZ800);
 
 // IMPORTANT: To reduce NeoPixel burnout risk, add 1000 uF capacitor across
 // pixel power leads, add 300 - 500 Ohm resistor on first pixel's data input
 // and minimize distance between Arduino and first pixel.  Avoid connecting
 // on a live circuit...if you must, connect GND first.
 
+// define pins (varies per shield/board)
+#define BLE_REQ   10
+#define BLE_RDY   2
+#define BLE_RST   9
+
+// create ble serial instance, see pinouts above
+BLESerial BLESerial(BLE_REQ, BLE_RDY, BLE_RST);
+            
+uint8_t current_state = 0;
+uint8_t rgb_values[3];
+
 void setup() {
-  // This is for Trinket 5V 16MHz, you can remove these three lines if you are not using a Trinket
-  #if defined (__AVR_ATtiny85__)
-    if (F_CPU == 16000000) clock_prescale_set(clock_div_1);
-  #endif
-  // End of trinket special code
+  Serial.begin(115200);
+  Serial.println("Hello World!");
+  // custom services and characteristics can be added as well
+  BLESerial.setLocalName("UART_HS");
+  BLESerial.begin();
 
   strip.begin();
-  strip.setBrightness(50);
-  strip.show(); // Initialize all pixels to 'off'
+  changeColor(strip.Color(0, 0, 0));
+
+  //pinMode(PIN, OUTPUT);
+  //digitalWrite(PIN, LOW);
+
+  current_state = 'a';
 }
 
-void loop() {
-  // Some example procedures showing how to display to the pixels:
-  colorWipe(strip.Color(255, 0, 0), 50); // Red
-  colorWipe(strip.Color(0, 255, 0), 50); // Green
-  colorWipe(strip.Color(0, 0, 255), 50); // Blue
-//colorWipe(strip.Color(0, 0, 0, 255), 50); // White RGBW
-  // Send a theater pixel chase in...
-  theaterChase(strip.Color(127, 127, 127), 50); // White
-  theaterChase(strip.Color(127, 0, 0), 50); // Red
-  theaterChase(strip.Color(0, 0, 127), 50); // Blue
 
-  rainbow(20);
-  rainbowCycle(20);
-  theaterChaseRainbow(50);
+void loop() {
+  while(BLESerial.available()) {
+    uint8_t character = BLESerial.read();
+    switch(character) {
+      case 'a':
+      case 'b':
+      case 'c':
+      case 'd':
+      case 'e':
+      case 'f':
+      case 'g':
+      case 'h':
+      case 'i':
+        current_state = character;
+        break;
+    };
+  }
+  switch(current_state) {
+    case 'a':
+      colorWipe(strip.Color(255, 0, 0), 20); // Red
+      break;
+    case 'b':
+      colorWipe(strip.Color(0, 255, 0), 20); // Green
+      break;
+    case 'c':
+      colorWipe(strip.Color(0, 0, 255), 20); // Blue
+      break;
+    case 'd':
+      theaterChase(strip.Color(255, 0, 0), 20); // Red
+      break;
+    case 'e':
+      theaterChase(strip.Color(0, 255, 0), 20); // Green
+      break;
+    case 'f':
+      theaterChase(strip.Color(255, 0, 255), 20); // Green
+      break;
+    case 'g':
+      rainbowCycle(20);
+      break;
+    case 'h':
+      rainbow(20);
+      break;
+    case 'i':
+      theaterChaseRainbow(20);
+      break;
+  }
+}
+
+void changeColor(uint32_t c) {
+  for(uint16_t i=0; i<strip.numPixels(); i++) {
+    strip.setPixelColor(i, c);
+  }
+  strip.show();
 }
 
 // Fill the dots one after the other with a color
 void colorWipe(uint32_t c, uint8_t wait) {
   for(uint16_t i=0; i<strip.numPixels(); i++) {
     strip.setPixelColor(i, c);
+    delay(wait);
     strip.show();
     delay(wait);
   }
