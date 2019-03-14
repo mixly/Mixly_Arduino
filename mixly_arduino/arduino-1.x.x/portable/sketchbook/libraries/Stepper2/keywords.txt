@@ -1,0 +1,29 @@
+#######################################
+# Syntax Coloring Map For Test
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Stepper	KEYWORD1	Stepper2
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+step	KEYWORD2
+stop	KEYWORD2
+setSpeed	KEYWORD2
+version	KEYWORD2
+
+######################################
+# Instances (KEYWORD2)
+#######################################
+direction	KEYWORD2
+speed	KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
