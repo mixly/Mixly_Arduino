@@ -2269,7 +2269,7 @@
               </value>
               <value name="TOPIC">
                   <shadow type="text">
-                      <field name="TEXT">XBCRobot</field>
+                      <field name="TEXT">MixlyRobot</field>
                   </shadow>
               </value>
           </block>
@@ -2302,16 +2302,12 @@
                   </block>
                 </value>
                 <statement name="DO0">
-                  <block type="actuator_led_bright">
-                    <value name="bright">
-                      <shadow type="ledswitch">
-                      </shadow>
-                    </value>
-                    <value name="led">
-                      <shadow type="number">
-                        <field name="op">1</field>
-                      </shadow>
-                    </value>
+                  <block type="system_print">
+                        <value name="VAR">
+                            <shadow type="text">
+                                <field name="TEXT">sth on!</field>
+                            </shadow>
+                        </value>
                   </block>
                 </statement>
               </block>
