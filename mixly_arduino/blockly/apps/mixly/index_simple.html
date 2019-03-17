@@ -680,252 +680,269 @@
         </block>
       </category>
       <category id="catActuator" colour="100">
-        <block type="servo_move">
-          <value name="PIN">
-            <shadow type="pins_digital"></shadow>
-          </value>
-          <value name="DEGREE">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="DELAY_TIME">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="servo_read_degrees">
-          <value name="PIN">
-            <shadow type="pins_digital"></shadow>
-          </value>
-        </block>
-        <block type="controls_tone">
-          <value name="PIN">
-           <shadow type="pins_digital"></shadow>
-         </value>
-         <value name="FREQUENCY">
-          <shadow type="tone_notes"></shadow>
+       <block type="Mixly_motor">
+        <value name="PIN1">
+          <shadow type="pins_digital">
+            <field name="PIN">5</field>
+          </shadow>
+        </value>
+        <value name="PIN2">
+          <shadow type="pins_digital">
+            <field name="PIN">4</field>
+          </shadow>
+        </value>
+        <value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
         </value>
       </block>
-      <block type="controls_notone">
+      <block type="servo_move">
+        <value name="PIN">
+          <shadow type="pins_digital"></shadow>
+        </value>
+        <value name="DEGREE">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="DELAY_TIME">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="servo_read_degrees">
+        <value name="PIN">
+          <shadow type="pins_digital"></shadow>
+        </value>
+      </block>
+      <block type="controls_tone">
         <value name="PIN">
          <shadow type="pins_digital"></shadow>
        </value>
-     </block>
-     <block type="display_rgb_init">
+       <value name="FREQUENCY">
+        <shadow type="tone_notes"></shadow>
+      </value>
+    </block>
+    <block type="controls_notone">
       <value name="PIN">
-        <shadow type="pins_digital" />
-      </value>
-      <value name="LEDCOUNT">
-        <shadow type="math_number">
-          <field name="NUM">4</field>
-        </shadow>
-      </value>
-      <value name="Brightness">
-        <shadow type="math_number">
-          <field name="NUM">20</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_rgb">
-      <value name="PIN">
-        <shadow type="pins_digital" />
-      </value>
-      <value name="_LED_">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-      <value name="RVALUE">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="GVALUE">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="BVALUE">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_rgb2">
-      <value name="PIN">
-        <shadow type="pins_digital" />
-      </value>
-      <value name="_LED_">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_rgb_show">
-      <value name="PIN">
-        <shadow type="pins_digital" />
-      </value>
-    </block>
-  </category>
-  <category id="catMonitor" colour="180">
-    <block type="group_lcd_init">
-      <value name="device">
-        <shadow type="math_number">
-          <field name="NUM">0x27</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="group_lcd_print">
-      <value name="TEXT">
-        <block type="text">
-          <field name="TEXT"></field>
-        </block>
-      </value>
-      <value name="TEXT2">
-        <block type="text">
-          <field name="TEXT"></field>
-        </block>
-      </value>
-    </block>
-    <block type="group_lcd_print2">
-      <value name="row">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-      <value name="column">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-      <value name="TEXT">
-        <block type="text">
-          <field name="TEXT"></field>
-        </block>
-      </value>
-    </block>
-    <block type="group_lcd_power">
-      <field name="STAT">clear</field>
-    </block>
-    <block type="lp2i_u8g_draw_4strings">
-      <value name="Text_line1">
-        <shadow type="text">
-          <field name="TEXT">Example line 1</field>
-        </shadow>
-      </value>
-      <value name="Text_line2">
-        <shadow type="text">
-          <field name="TEXT">Example line 2</field>
-        </shadow>
-      </value>
-      <value name="Text_line3">
-        <shadow type="text">
-          <field name="TEXT">Example line 3</field>
-        </shadow>
-      </value>
-      <value name="Text_line4">
-        <shadow type="text">
-          <field name="TEXT">Example line 4</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_4digitdisplay_power">
-      <field name="STAT">clear</field>
-    </block>
-    <block type="display_4digitdisplay_displayString">
-      <value name="VALUE">
-        <shadow type="text">
-          <field name="TEXT">abcd</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_4digitdisplay_showDot">
-    </block>
-    <block type="display_TM1637_init" >
-      <value name="PIN1">
-        <shadow type="pins_digital">
-          <field name="PIN">5</field>
-        </shadow>
-      </value>
-      <value name="PIN2">
-        <shadow type="pins_digital">
-          <field name="PIN">4</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_TM1637_Brightness" >
-     <value name="Brightness">
+       <shadow type="pins_digital"></shadow>
+     </value>
+   </block>
+   <block type="display_rgb_init">
+    <value name="PIN">
+      <shadow type="pins_digital" />
+    </value>
+    <value name="LEDCOUNT">
+      <shadow type="math_number">
+        <field name="NUM">4</field>
+      </shadow>
+    </value>
+    <value name="Brightness">
       <shadow type="math_number">
         <field name="NUM">20</field>
       </shadow>
     </value>
   </block>
-  <block type="display_TM1637_displyPrint" >
+  <block type="display_rgb">
+    <value name="PIN">
+      <shadow type="pins_digital" />
+    </value>
+    <value name="_LED_">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="RVALUE">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="GVALUE">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="BVALUE">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_rgb2">
+    <value name="PIN">
+      <shadow type="pins_digital" />
+    </value>
+    <value name="_LED_">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_rgb_show">
+    <value name="PIN">
+      <shadow type="pins_digital" />
+    </value>
+  </block>
+</category>
+<category id="catMonitor" colour="180">
+  <block type="group_lcd_init">
+    <value name="device">
+      <shadow type="math_number">
+        <field name="NUM">0x27</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="group_lcd_print">
+    <value name="TEXT">
+      <block type="text">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TEXT2">
+      <block type="text">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+  </block>
+  <block type="group_lcd_print2">
+    <value name="row">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="column">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="TEXT">
+      <block type="text">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+  </block>
+  <block type="group_lcd_power">
+    <field name="STAT">clear</field>
+  </block>
+  <block type="lp2i_u8g_draw_4strings">
+    <value name="Text_line1">
+      <shadow type="text">
+        <field name="TEXT">Example line 1</field>
+      </shadow>
+    </value>
+    <value name="Text_line2">
+      <shadow type="text">
+        <field name="TEXT">Example line 2</field>
+      </shadow>
+    </value>
+    <value name="Text_line3">
+      <shadow type="text">
+        <field name="TEXT">Example line 3</field>
+      </shadow>
+    </value>
+    <value name="Text_line4">
+      <shadow type="text">
+        <field name="TEXT">Example line 4</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_4digitdisplay_power">
+    <field name="STAT">clear</field>
+  </block>
+  <block type="display_4digitdisplay_displayString">
     <value name="VALUE">
       <shadow type="text">
-        <field name="TEXT">2345</field>
+        <field name="TEXT">abcd</field>
       </shadow>
     </value>
   </block>
-  <block type="display_TM1637_displayTime">
-    <value name="hour">
-      <shadow type="math_number">
-        <field name="NUM">12</field>
-      </shadow>
-    </value>
-    <value name="minute">
-      <shadow type="math_number">
-        <field name="NUM">30</field>
-      </shadow>
-    </value>
+  <block type="display_4digitdisplay_showDot">
   </block>
-  <block type="display_TM1637_clearDisplay">
-  </block>
-  <block type="display_Matrix_Init">
+  <block type="display_TM1637_init" >
     <value name="PIN1">
       <shadow type="pins_digital">
-        <field name="PIN">2</field>
+        <field name="PIN">5</field>
       </shadow>
     </value>
     <value name="PIN2">
       <shadow type="pins_digital">
-        <field name="PIN">3</field>
+        <field name="PIN">4</field>
       </shadow>
     </value>
   </block>
-  <block type="display_Matrix_POS">
-    <value name="XVALUE">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="YVALUE">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="display_Matrix_Rotation">
-  </block>
-  <block type="display_Matrix_TEXT">
-    <value name="TEXT">
-      <shadow type="text">
-        <field name="TEXT">Mixly</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="display_Matrix_DisplayChar">
-    <value name="LEDArray">
-      <block type="display_Matrix_LedArray">
-      </block>
-    </value>
-  </block>
-  <block type="Matrix_img">
-  </block>
-  <block type="display_Matrix_CLEAR">
-  </block>
+  <block type="display_TM1637_Brightness" >
+   <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_TM1637_displyPrint" >
+  <value name="VALUE">
+    <shadow type="text">
+      <field name="TEXT">2345</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_TM1637_displayTime">
+  <value name="hour">
+    <shadow type="math_number">
+      <field name="NUM">12</field>
+    </shadow>
+  </value>
+  <value name="minute">
+    <shadow type="math_number">
+      <field name="NUM">30</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_TM1637_clearDisplay">
+</block>
+<block type="display_Matrix_Init">
+  <value name="PIN1">
+    <shadow type="pins_digital">
+      <field name="PIN">2</field>
+    </shadow>
+  </value>
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">3</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_Matrix_POS">
+  <value name="XVALUE">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="YVALUE">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_Matrix_Rotation">
+</block>
+<block type="display_Matrix_TEXT">
+  <value name="TEXT">
+    <shadow type="text">
+      <field name="TEXT">Mixly</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_Matrix_DisplayChar">
+  <value name="LEDArray">
+    <block type="display_Matrix_LedArray">
+    </block>
+  </value>
+</block>
+<block type="Matrix_img">
+</block>
+<block type="display_Matrix_CLEAR">
+</block>
 
 </category>
 <sep></sep>

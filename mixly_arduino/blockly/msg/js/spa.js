@@ -883,6 +883,7 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = 'Detiene el sonido.';
  Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString = 'Cadena de visualización de tubos de cuatro dígitos TM1650 (desplazamiento sobre cuatro dígitos)';
  Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot = 'Mostrar el punto decimal en la posición especificada del tubo digital de cuatro dígitos TM1650';
  Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS = 'Establece el brillo de TM1637';
+ Blockly.MIXLY_DISPLAY_TM1637_Time_Point='Punto de reloj Establecer en';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT = 'Inicializar HK16T33 8 * 8 Matrix Screen';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS = 'Operación de punto único de la pantalla de matriz de puntos, rango del valor del eje XY 1-8';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = 'Girar matriz Dirección de visualización de pantalla';

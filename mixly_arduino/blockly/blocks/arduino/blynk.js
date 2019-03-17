@@ -1057,31 +1057,8 @@ Blockly.Blocks.IICSCAN = {
   }
 };
 
-Blockly.Blocks.MAKER17_motorA = {
-  init: function() {
-    this.setColour(Blockly.Blocks.actuator.HUE);
-    this.appendDummyInput("").appendField(Blockly.MAKER17_MOTORA);
 
-    this.appendValueInput("PIN1").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MAKER17_MOTOR_SPEED_PIN);
-    this.appendValueInput("PIN2").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MAKER17_MOTOR_DIR_PIN);
-    this.appendValueInput('speed').setCheck(Number).appendField(Blockly.MAKER17_MOTOR_SPEED);
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-  }
-};
-Blockly.Blocks.MAKER17_motorB = {
-  init: function() {
-    this.setColour(Blockly.Blocks.actuator.HUE);
-    this.appendDummyInput("").appendField(Blockly.MAKER17_MOTORB);
-    this.appendValueInput("PIN1").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MAKER17_MOTOR_SPEED_PIN);
-    this.appendValueInput("PIN2").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MAKER17_MOTOR_DIR_PIN);
-    this.appendValueInput('speed').setCheck(Number).appendField(Blockly.MAKER17_MOTOR_SPEED);
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-  }
-};
+
 
 Blockly.Blocks.factory_declare2 = {
   init: function() {

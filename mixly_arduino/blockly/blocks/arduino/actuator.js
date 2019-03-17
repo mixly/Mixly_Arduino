@@ -374,3 +374,16 @@ Blockly.Blocks.display_rgb_show = {
         this.setNextStatement(true, null);
     }
 };
+
+Blockly.Blocks.Mixly_motor = {
+  init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("").appendField(Blockly.MIXLY_MOTOR);
+    this.appendValueInput("PIN1").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_MOTOR_SPEED_PIN);
+    this.appendValueInput("PIN2").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_MOTOR_DIR_PIN);
+    this.appendValueInput('speed').setCheck(Number).appendField(Blockly.MIXLY_MOTOR_SPEED);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
