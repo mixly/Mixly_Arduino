@@ -152,18 +152,145 @@ var $builtinmodule = function(name) {
 	play.co_numargs = 4;
 	mod.play = new Sk.builtin.func(play);
 	
-	var pitch = function(frequency, len, pin, wait){
+	var play_show = function(music, pin, wait, loop){
+		if(mod._data.stop) {
+			delete mod._data.stop;
+		}
+		if(wait === undefined) 
+			wait = new Sk.builtin.bool(true);
+		if(loop === undefined)
+			loop = new Sk.builtin.bool(false);
+		
+		var notes = Sk.ffi.remapToJs(music);
+		
+		return sim.runAsync(function(resolve, reject) {
+			var i = 0;
+			var timeout = 60000 / mod._data.bpm / mod._data.ticks;
+			
+			function playNextNote() {
+				if(mod._data.stop) {
+					delete mod._data.stop;
+					return;
+				}
+				if(!mod._data.audioCtx) {
+					mod._data.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+				}
+				if(mod._data.osc) {
+					mod._data.osc.stop();
+					delete mod._data.osc;
+				}
+				
+				if(i >= notes.length){
+					if(loop.v) {
+						i = 0;
+					} else {
+						if(wait.v)
+							resolve();
+						return;
+					}
+				}
+				var n = notes[i].toLowerCase();
+				var d = n.match(/([rcdefgab][b#]?)([0-9]?)(:([0-9]*))?/);
+				n = {short: n,
+					note: d[1],
+					octave: Number.parseInt(d[2]),
+					ticks: d[4]? Number.parseInt(d[4]) : 1
+					}
+				switch(n.note) {
+					case 'c':
+						n.f = 16.352;
+						break;
+					case 'c#':
+					case 'db':
+						n.f = 17.324;
+						break;
+					case 'd':
+						n.f = 18.354;
+					break;
+					case 'd#':
+					case 'eb':
+						n.f = 19.445;
+					break;
+					case 'e':
+						n.f = 20.602;
+					break;
+					case 'f':
+						n.f = 21.827;
+					break;
+					case 'f#':
+					case 'gb':
+						n.f = 23.125;
+					break;
+					case 'g':
+						n.f = 24.500;
+					break;
+					case 'g#':
+					case 'ab':
+						n.f = 25.957;
+					break;
+					case 'a':
+						n.f = 27.500;
+					break;
+					case 'a#':
+					case 'bb':
+						n.f = 29.135;
+					break;
+					case 'b':
+						n.f = 30.868;
+					break;
+					case 'r':
+						n.f = 0;
+					break;
+				}
+				if(!n.octave) {
+					n.octave = mod._data.octave;
+				} else {
+					mod._data.octave = n.octave;
+				}
+				for(var o = 0; o < n.octave; o++) {
+					n.f = n.f * 2;
+				}
+				n.f = Math.round(n.f);
+				
+				if(n.f > 0) {
+					var osc = mod._data.audioCtx.createOscillator();
+					mod._data.osc = osc;
+					osc.type = 'sine';
+					osc.frequency.value = n.f;
+					osc.connect(mod._data.audioCtx.destination);
+					osc.start();			
+				}
+				i++;
+				
+				if(i <= notes.length) {
+					setTimeout(playNextNote, timeout * n.ticks);
+				} 
+			}
+			playNextNote();
+			if(!wait.v) {
+				resolve();
+			}
+			
+		});
+		
+	}
+	play_show.co_varnames = ['music', 'pin', 'wait', 'loop'];
+	play_show.$defaults = [undefined, undefined, Sk.builtin.bool(true), Sk.builtin.bool(false)];
+	play_show.co_numargs = 4;
+	mod.play_show = new Sk.builtin.func(play);
+
+	var pitch = function(pin, frequency, len, wait){
 		if(mod._data.stop) {
 			delete mod._data.stop;
 		}
 		if(len === undefined) 
 			len = new Sk.builtin.int_(-1);
 		if(wait === undefined)
-			wait = new Sk.builtin.bool(true);
+			wait = new Sk.builtin.bool(false);
 		
 		return sim.runAsync(function(resolve, reject) {
 			if(!mod._data.audioCtx) {
-				mod._data.audioCtx = new (window.AudioContext || 	window.webkitAudioContext)();
+				mod._data.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 			}
 			if(mod._data.osc) {
 				mod._data.osc.stop();
@@ -196,6 +323,7 @@ var $builtinmodule = function(name) {
 	mod.pitch = new Sk.builtin.func(pitch);
 	
 	var stop = function(pin) {
+		debugger;
 		if(mod._data.audioCtx && mod._data.osc) {
 			mod._data.osc.stop();
 			delete mod._data.osc;
@@ -309,5 +437,41 @@ var $builtinmodule = function(name) {
 	mod.POWER_UP = Sk.ffi.remapToPy(["g4:1", "c5", "e", "g:2", "e:1", "g:3"]);
 
 	mod.POWER_DOWN = Sk.ffi.remapToPy(["g5:1", "d#", "c", "g4:2", "b:1", "c5:3"]);
+
+	mod.normal_tone = Sk.ffi.remapToPy({
+    'A1': 55, 'B1': 62, 'C1': 33, 'D1': 37, 'E1': 41, 'F1': 44, 'G1': 49,
+    'A2': 110, 'B2': 123, 'C2': 65, 'D2': 73, 'E2': 82, 'F2': 87, 'G2': 98,
+    'A3': 220, 'B3': 247, 'C3': 131, 'D3': 147, 'E3': 165, 'F3': 175, 'G3': 196,
+    'A4': 440, 'B4': 494, 'C4': 262, 'D4': 294, 'E4': 330, 'F4': 349, 'G4': 392,
+    'A5': 880, 'B5': 988, 'C5': 523, 'D5': 587, 'E5': 659, 'F5': 698, 'G5': 784,
+    'A6': 1760, 'B6': 1976, 'C6': 1047, 'D6': 1175, 'E6': 1319, 'F6': 1397, 'G6': 1568,
+    'A7': 3520, 'B7': 3951, 'C7': 2093, 'D7': 2349, 'E7': 2637, 'F7': 2794, 'G7': 3135,
+    'A8': 7040, 'B8': 7902, 'C8': 4186, 'D8': 4699, 'E8': 5274, 'F8': 5588, 'G8': 6271,
+    'A9': 14080, 'B9': 15804
+	});
+
+	mod.rising_tone = Sk.ffi.remapToPy({
+	    'A1': 58, 'C1': 35, 'D1': 39, 'F1': 46, 'G1': 52,
+	    'A2': 117, 'C2': 69, 'D2': 78, 'F2': 93, 'G2': 104,
+	    'A3': 233, 'C3': 139, 'D3': 156, 'F3': 185, 'G3': 208,
+	    'A4': 466, 'C4': 277, 'D4': 311, 'F4': 370, 'G4': 415,
+	    'A5': 932, 'C5': 554, 'D5': 622, 'F5': 740, 'G5': 831,
+	    'A6': 1865, 'C6': 1109, 'D6': 1245, 'F6': 1480, 'G6': 1661,
+	    'A7': 3729, 'C7': 2217, 'D7': 2489, 'F7': 2960, 'G7': 3322,
+	    'A8': 7459, 'C8': 4435, 'D8': 4978, 'F8': 5920, 'G8': 6645,
+	    'A9': 14917
+	});
+
+	mod.falling_tone = Sk.ffi.remapToPy({
+	    'B1': 58, 'D1': 35, 'E1': 39, 'G1': 46, 'A1': 52,
+	    'B2': 117, 'D2': 69, 'E2': 78, 'G2': 93, 'A2': 104,
+	    'B3': 233, 'D3': 139, 'E3': 156, 'G3': 185, 'A3': 208,
+	    'B4': 466, 'D4': 277, 'E4': 311, 'G4': 370, 'A4': 415,
+	    'B5': 932, 'D5': 554, 'E5': 622, 'G5': 740, 'A5': 831,
+	    'B6': 1865, 'D6': 1109, 'E6': 1245, 'G6': 1480, 'A6': 1661,
+	    'B7': 3729, 'D7': 2217, 'E7': 2489, 'G7': 2960, 'A7': 3322,
+	    'B8': 7459, 'D8': 4435, 'E8': 4978, 'G8': 5920, 'A8': 6645,
+	    'B9': 14917
+	});
 	return mod;
 };

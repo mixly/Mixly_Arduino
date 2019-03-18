@@ -1,7 +1,11 @@
 var $builtinmodule = function (name) {
     var mod = {};
     mod.NeoPixel = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
-        $loc.__init__ = new Sk.builtin.func(function(self, pin, n) {
+        var selfinInit;
+        var funcInit = function(self, pin, n, timing, bpp) {
+            //console.log(self,pin,n,timing,bpp);
+            console.log(pin);
+            console.log(n);
             if (pin == undefined) {
                 throw new Sk.builtin.TypeError("parameter pin not defined");
             }
@@ -10,13 +14,31 @@ var $builtinmodule = function (name) {
             } else if (n.v < 1) {
                 throw new Sk.builtin.TypeError("parameter n > 0");
             }
-
+            if(typeof(timing) != 'undefined'){
+                self.timing = timing.v;
+            }
+            else{
+                self.timing = new Sk.builtin.bool(true);
+            }
+            if(bpp == undefined){
+                self.bpp = 1;
+            }
+            else{
+                self.bpp = bpp.v;
+            }
             self.leds = [];
             self.pin = pin;
+            self.n = n;           
             for (var i = 0; i < n.v; i ++) {
-                self.leds.push([0, 0, 0]);
+               self.leds.push([0, 0, 0]);
             }
-        });
+            console.log(this);
+        };
+        funcInit.co_varnames = ['self', 'pin', 'n', 'timing', 'bpp'];
+        funcInit.$defaults = [undefined, undefined, Sk.builtin.int_(2), Sk.builtin.bool(true), Sk.builtin.int_(2)];
+        funcInit.co_numargs = 5;
+        funcInit.co_kwargs = true;
+        $loc.__init__ = new Sk.builtin.func(funcInit);
 
         $loc.__setitem__ = new Sk.builtin.func(function (self, index, val) {
             var i;
@@ -36,7 +58,8 @@ var $builtinmodule = function (name) {
             }
         });
 
-        $loc.show = new Sk.builtin.func(function(self) {
+        $loc.write = new Sk.builtin.func(function(self) {
+            console.log(self);
             ui.updateNeopixel(self.leds);
         });
     }, 'NeoPixel', []);
