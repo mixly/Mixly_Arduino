@@ -820,15 +820,23 @@ var $builtinmodule = function(name) {
             if(n == undefined) {
                 throw new Sk.builtin.TypeError("parameter n not defined");
             }
-            var copy = self.lines.slice(0);
-            for(var j = 0; j < n.v; j++) {
-                var width = copy[0].length;
-                for(var i = 0; i < copy.length; i++) {
-                    copy[i] = copy[i].slice(1, width) + "0";
+            if(n.v > 15){
+                throw new Sk.builtin.TypeError("parameter n should less than 15");
+            }
+            //初始化copy数组
+            var copy = new Array();
+            for(var k = 0; k < 8; k++){
+                copy[k] = '';
+            }
+            for(var i = 0; i < self.lines.length; i++){
+                for(var j = 0; j < self.lines[0].length - n.v; j++){
+                    var posAfterMove = j + n.v;
+                    if(self.lines[i][posAfterMove] > 0){
+                        copy[i] = copy[i] + j.toString(16);
+                    }
                 }
             }
-
-            var newImage = Sk.misceval.callsim(mod.Image, Sk.builtin.str(copy.join(":")));
+            var newImage = Sk.misceval.callsim(mod.Image, Sk.builtin.str(copy.join(",")));
             return newImage;
         });
 
@@ -836,14 +844,23 @@ var $builtinmodule = function(name) {
             if(n == undefined) {
                 throw new Sk.builtin.TypeError("parameter n not defined");
             }
-            var copy = self.lines.slice(0);
-            for(var j = 0; j < n.v; j++) {
-                var width = copy[0].length;
-                for(var i = 0; i < copy.length; i++) {
-                    copy[i] = "0" + copy[i].slice(0, width - 1);
+            if(n.v > 15){
+                throw new Sk.builtin.TypeError("parameter n should less than 15");
+            }
+            //初始化copy数组
+            var copy = new Array();
+            for(var k = 0; k < 8; k++){
+                copy[k] = '';
+            }
+            for(var i = 0; i < self.lines.length; i++){
+                for(var j = n.v; j < self.lines[0].length; j++){
+                    var posAfterMove = j - n.v;
+                    if(self.lines[i][posAfterMove] > 0){
+                        copy[i] = copy[i] + j.toString(16);
+                    }
                 }
             }
-            var newImage = Sk.misceval.callsim(mod.Image, Sk.builtin.str(copy.join(":")));
+            var newImage = Sk.misceval.callsim(mod.Image, Sk.builtin.str(copy.join(",")));
             return newImage;
         });
 
@@ -851,16 +868,23 @@ var $builtinmodule = function(name) {
             if(n == undefined) {
                 throw new Sk.builtin.TypeError("parameter n not defined");
             }
-            var height = self.lines.length;
-            var copy = self.lines.slice(n.v, height);
-            var s = "";
-            for(var j = 0; j < n.v; j++){
-                for(var i = 0; i < self.lines[0].length; i++) {
-                    s += "0";
-                }
-                copy.push(s);
+            if(n.v > 7){
+                throw new Sk.builtin.TypeError("parameter n should less than 7");
             }
-            var newImage = Sk.misceval.callsim(mod.Image, Sk.builtin.str(copy.join(":")));
+            //初始化copy数组
+            var copy = new Array();
+            for(var k = 0; k < 8; k++){
+                copy[k] = '';
+            }
+            for(var i = n.v; i < self.lines.length; i++){
+                for(var j = 0; j < self.lines[0].length; j++){
+                    if(self.lines[i][j] > 0){
+                        copy[i - n.v] = copy[i - n.v] + j.toString(16);
+                    }
+                }
+            }
+            console.log(copy.join(","));
+            var newImage = Sk.misceval.callsim(mod.Image, Sk.builtin.str(copy.join(",")));
             return newImage;
         });
 
@@ -868,19 +892,23 @@ var $builtinmodule = function(name) {
             if(n == undefined) {
                 throw new Sk.builtin.TypeError("parameter n not defined");
             }
-            var height = self.lines.length;
-            var copy = [];
-
-            var s = "";
-            for(var j = 0; j < n.v; j++) {
-                for(var i = 0; i < self.lines[0].length; i++) {
-                    s += "0";
-                }
-                copy.push(s);
-
+            if(n.v > 7){
+                throw new Sk.builtin.TypeError("parameter n should less than 7");
             }
-            copy.push.apply(copy, self.lines.slice(0, height - 1));
-            var newImage = Sk.misceval.callsim(mod.Image, Sk.builtin.str(copy.join(":")));
+            //初始化copy数组
+            var copy = new Array();
+            for(var k = 0; k < 8; k++){
+                copy[k] = '';
+            }
+            for(var i = 0; i < self.lines.length - n.v; i++){
+                for(var j = 0; j < self.lines[0].length; j++){
+                    if(self.lines[i][j] > 0){
+                        copy[i + n.v] = copy[i + n.v] + j.toString(16);
+                    }
+                }
+            }
+            console.log(copy.join(","));
+            var newImage = Sk.misceval.callsim(mod.Image, Sk.builtin.str(copy.join(",")));
             return newImage;
         });
 
@@ -892,7 +920,7 @@ var $builtinmodule = function(name) {
                 for(x = 0; x < copy[y].length; x++) {
                     val = parseInt(copy[y][x]) + parseInt(other.lines[y][x]);
 
-                    if(val > 9) val = 9;
+                    if(val > 15) val = 15;
                     copy[y][x] = val;
                 }
                 copy[y] = copy[y].join("");
