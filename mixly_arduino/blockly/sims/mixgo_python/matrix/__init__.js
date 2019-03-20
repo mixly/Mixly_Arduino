@@ -1,6 +1,6 @@
 var $builtinmodule = function(name) {
     var mod = {
-        data: {brightness: 0},
+        
     };
     var display = function(name) {
         var leds = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
@@ -585,6 +585,9 @@ var $builtinmodule = function(name) {
         function setBrightness(brightness){
             mod.data.brightness = brightness;
         }
+        function getBrightness(){
+            return mod.data.brightness;
+        }
         function showCharacter(c) {
             var x, y;
             var rows = ['', '', '', '', ''];
@@ -601,10 +604,15 @@ var $builtinmodule = function(name) {
 
         }
 
-        var mod = {};
+        var mod = {
+            data: {
+                brightness: 1,
+                blinkRate: 2,
+            },
+        };
 
         mod.get_pixel = new Sk.builtin.func(function(x, y) {
-            return Sk.builtin.int_(parseInt(leds[y.v][x.v]));
+            return new Sk.builtin.int_(parseInt(leds[y.v][x.v]));
         });
 
         mod.set_pixel = new Sk.builtin.func(function(x, y, brightness) {
@@ -613,6 +621,15 @@ var $builtinmodule = function(name) {
 
         mod.clear = new Sk.builtin.func(function() {
             clearScreen();
+        });
+        mod.set_brightness = new Sk.builtin.func(function(brightness) {
+            setBrightness(brightness.v);
+        });
+        mod.get_brightness = new Sk.builtin.func(function() {
+            return new Sk.builtin.int_(getBrightness());
+        });
+        mod.blink_rate = new Sk.builtin.func(function(blink_rate) {
+            mod.data.blinkRate = blink_rate.v;
         });
 
         var show = function(image, delay, wait, loop, clear) {
@@ -680,7 +697,8 @@ var $builtinmodule = function(name) {
                     if(image.tp$name == "Image") {
                         for(y = 0; y < 8; y++) {
                             for(x = 0; x < 16; x++) {
-                                setLED(x, y, image.lines[y][x]);
+                                if(image.lines[y][x] > 0)
+                                setLED(x, y, mod.data.brightness);
                             }
                         }
                     }
@@ -809,11 +827,11 @@ var $builtinmodule = function(name) {
         });
 
         $loc.__repr__ = new Sk.builtin.func(function(self) {
-            return Sk.builtin.str('Image("' + self.lines.join(":") + '")');
+            return Sk.builtin.str('Image("' + self.lines.join(",") + '")');
         });
 
         $loc.__str__ = new Sk.builtin.func(function(self) {
-            return Sk.builtin.str('Image("' + self.lines.join(":") + '")');
+            return Sk.builtin.str('Image("' + self.lines.join(",") + '")');
         });
 
         $loc.shift_left = new Sk.builtin.func(function(self, n) {
@@ -914,18 +932,19 @@ var $builtinmodule = function(name) {
 
         $loc.__add__ = new Sk.builtin.func(function(self, other) {
             var x,y,val;
-            var copy = self.lines.slice(0);
-            for(y = 0; y < copy.length; y++) {
-                copy[y] = copy[y].split("");
-                for(x = 0; x < copy[y].length; x++) {
-                    val = parseInt(copy[y][x]) + parseInt(other.lines[y][x]);
-
-                    if(val > 15) val = 15;
-                    copy[y][x] = val;
-                }
-                copy[y] = copy[y].join("");
+            var copy = new Array();
+            for(var k = 0; k < 8; k++){
+                copy[k] = '';
             }
-            var newImage = Sk.misceval.callsim(mod.Image, Sk.builtin.str(copy.join(":")));
+            for(y = 0; y < 8; y++){
+                for(x = 0; x < 15; x++){
+                    if( self.lines[y][x] > 0 || other.lines[y][x] > 0){
+                        copy[y] = copy[y] + x.toString(16);
+                    }
+                }
+            }
+            console.log()
+            var newImage = Sk.misceval.callsim(mod.Image, Sk.builtin.str(copy.join(",")));
             return newImage;
         });
 
@@ -968,7 +987,7 @@ var $builtinmodule = function(name) {
                 copy[y] = copy[y].split("");
                 for(x = 0; x < copy[y].length; x++) {
                     val = parseInt(copy[y][x]);
-                    copy[y][x] = 9 - val;
+                    copy[y][x] = 15 - val;
                 }
                 copy[y] = copy[y].join("");
             }
