@@ -772,7 +772,8 @@ var MSG = {
 	catTuple:"Tuple",
 	catIot:"IOT",
 	catSet:"Set",
-	catData:"Data"
+	catData:"Data",
+	catHardware:"Hardware"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='Returns high or low voltage.';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='Returns digital value of a specific Port';

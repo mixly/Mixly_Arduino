@@ -772,7 +772,8 @@ catTurtle:"烏龜",
 catTuple:"元組",
 catIot:"物聯網",
 catSet:"集合",
-catData:"數據"
+catData:"數據",
+catHardware:"硬件交互"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='返回高電平或低電平';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='返回指定管脚的電平值';
