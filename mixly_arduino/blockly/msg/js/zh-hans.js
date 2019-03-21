@@ -2555,3 +2555,7 @@ Blockly.MIXLY_MOTOR_SPEED = '速度(-255~255)';
 Blockly.MIXLY_MOTOR= '电机';
 Blockly.MIXLY_MOTOR_SPEED_PIN='速度管脚';
 Blockly.MIXLY_MOTOR_DIR_PIN='方向管脚';
+
+Blockly.MIXLY_HARDWARE='硬件交互';
+Blockly.MIXLY_HARDWARE_SERIAL='串口号';
+Blockly.MIXLY_HARDWARE_START='启动交互';
