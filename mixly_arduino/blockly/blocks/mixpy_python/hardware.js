@@ -6,21 +6,6 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.hardware.HUE = 40
 
-
-Blockly.Blocks['sensor_mixgo_button_is_pressed'] = {
-    init: function(){
-        this.setColour(Blockly.Blocks.hardware.HUE);
-        this.appendValueInput('btn')
-            .appendField(Blockly.MIXLY_BUTTON)
-            .setCheck(Number);
-        this.appendDummyInput()
-            .appendField(Blockly.MIXLY_IS_PRESSED);
-        this.setOutput(true, Boolean);
-        this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_SENOR_IS_PRESSED);
-    }
-};
-
 Blockly.Blocks.hardware_arduino_init = {
     init: function () {
         this.setColour(Blockly.Blocks.hardware.HUE);
@@ -29,10 +14,9 @@ Blockly.Blocks.hardware_arduino_init = {
         this.appendValueInput('SUB')
             .appendField(Blockly.MIXLY_SETUP)
             .setCheck("var");
-        this.appendValueInput("PIN", Number)
-           .setCheck(Number)
+        this.appendValueInput("PIN")
            .setAlign(Blockly.ALIGN_RIGHT)
-           .appendField(Blockly.MIXLY_HARDWARE_SERIAL+" #");
+           .appendField(Blockly.MIXLY_HARDWARE_SERIAL);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -71,7 +55,8 @@ Blockly.Blocks.hardware_arduino_digital_write = {
   init: function() {
     this.setColour(Blockly.Blocks.hardware.HUE);
     this.appendValueInput("PIN",Number)
-        .appendField(Blockly.MIXLY_HARDWARE + 's4a ' + Blockly.MIXLY_Digital_PINMODEOUT + Blockly.MIXLY_PIN)
+        .appendField(Blockly.MIXLY_HARDWARE + 's4a ' + Blockly.MIXLY_Digital_PINMODEOUT)
+        .appendField(Blockly.MIXLY_PIN+"#")
         .setCheck(Number);
     this.appendValueInput("STAT")
         .appendField(Blockly.MIXLY_STAT)
@@ -88,7 +73,8 @@ Blockly.Blocks.hardware_arduino_digital_read = {
     this.setColour(Blockly.Blocks.hardware.HUE);
     this.appendValueInput("PIN", Number)
         .appendField(Blockly.MIXLY_HARDWARE + 's4a ')
-        .appendField(Blockly.MIXLY_Digital_PINMODEIN + Blockly.MIXLY_PIN)
+        .appendField(Blockly.MIXLY_Digital_PINMODEIN)
+        .appendField(Blockly.MIXLY_PIN+"#")
         .setCheck(Number);
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
@@ -102,7 +88,8 @@ Blockly.Blocks.hardware_arduino_analog_write = {
   init: function() {
     this.setColour(Blockly.Blocks.hardware.HUE);
     this.appendValueInput("PIN",Number)
-        .appendField(Blockly.MIXLY_HARDWARE + 's4a ' + Blockly.MIXLY_Analog_PINMODEOUT + Blockly.MIXLY_PIN)
+        .appendField(Blockly.MIXLY_HARDWARE + 's4a ' + Blockly.MIXLY_Analog_PINMODEOUT)
+        .appendField(Blockly.MIXLY_PIN+"#")
         .setCheck(Number);
     this.appendValueInput("NUM", Number)
         .appendField(Blockly.MIXLY_VALUE2)
@@ -119,7 +106,8 @@ Blockly.Blocks.hardware_arduino_analog_read = {
     this.setColour(Blockly.Blocks.hardware.HUE);
     this.appendValueInput("PIN", Number)
         .appendField(Blockly.MIXLY_HARDWARE + 's4a ')
-        .appendField(Blockly.MIXLY_Analog_PINMODEIN + Blockly.MIXLY_PIN)
+        .appendField(Blockly.MIXLY_Analog_PINMODEIN)
+        .appendField(Blockly.MIXLY_PIN+"#")
         .setCheck(Number);
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
