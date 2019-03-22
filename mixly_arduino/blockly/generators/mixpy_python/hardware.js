@@ -27,34 +27,38 @@ Blockly.Python.inout_highlow = function () {
 
 Blockly.Python.hardware_arduino_digital_write = function () {
     Blockly.Python.definitions_['import_s4alib'] = 'import s4alib';
+    var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var dropdown_stat = Blockly.Python.valueToCode(this, 'STAT', Blockly.Python.ORDER_ATOMIC);
     var code = "";
-    code += 's4a.digital_write('+dropdown_pin+','+ dropdown_stat +')\n'
+    code += ''+v+'.digital_write('+dropdown_pin+','+ dropdown_stat +')\n'
     return code;
 };
 
 Blockly.Python.hardware_arduino_digital_read = function () {
     Blockly.Python.definitions_['import_s4alib'] = 'import s4alib';
+    var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var code = "";
-    code ='s4a.digital_read('+dropdown_pin+')';
+    code =''+v+'.digital_read('+dropdown_pin+')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.hardware_arduino_analog_read = function () {
     Blockly.Python.definitions_['import_s4alib'] = 'import s4alib';
+    var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var code = "";
-    code ='s4a.analog_read('+dropdown_pin+')';
+    code =''+v+'.analog_read('+dropdown_pin+')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.hardware_arduino_analog_write = function () {
     Blockly.Python.definitions_['import_s4alib'] = 'import s4alib';
+    var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var value_num = Blockly.Python.valueToCode(this, 'NUM', Blockly.Python.ORDER_ATOMIC);
     var code = "";
-    code += 's4a.analog_write('+dropdown_pin+','+ value_num +')\n'
+    code += ''+v+'.analog_write('+dropdown_pin+','+ value_num +')\n'
     return code;
 };

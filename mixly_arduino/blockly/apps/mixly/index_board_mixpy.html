@@ -1362,6 +1362,11 @@
           </value>
         </block>
         <block type="hardware_arduino_digital_write">
+        <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">s4a</field>
+            </shadow>
+          </value>
         <value name="PIN">
           <shadow type="pins_digital_write"></shadow>
         <field name="PIN">13</field>
@@ -1372,12 +1377,22 @@
         </value>
       </block>
       <block type="hardware_arduino_digital_read">
+        <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">s4a</field>
+            </shadow>
+          </value>
         <value name="PIN">
           <shadow type="pins_digital_read"></shadow>
         <field name="PIN">2</field>
         </value>
       </block>
       <block type="hardware_arduino_analog_write">
+         <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">s4a</field>
+            </shadow>
+          </value>
         <value name="PIN">
           <shadow type="pins_analog_write"></shadow>
         <field name="PIN">5</field>
@@ -1389,6 +1404,11 @@
         </value>
       </block>
       <block type="hardware_arduino_analog_read">
+        <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">s4a</field>
+            </shadow>
+          </value>
         <value name="PIN">
           <shadow type="pins_analog_read"></shadow>
         <field name="PIN">0</field>

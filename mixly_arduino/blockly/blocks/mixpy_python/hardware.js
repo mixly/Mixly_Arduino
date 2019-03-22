@@ -54,8 +54,11 @@ Blockly.Blocks['inout_highlow'] = {
 Blockly.Blocks.hardware_arduino_digital_write = {
   init: function() {
     this.setColour(Blockly.Blocks.hardware.HUE);
+    this.appendValueInput('SUB')
+        .appendField(Blockly.MIXLY_HARDWARE)
+        .setCheck("var");
     this.appendValueInput("PIN",Number)
-        .appendField(Blockly.MIXLY_HARDWARE + 's4a ' + Blockly.MIXLY_Digital_PINMODEOUT)
+        .appendField(Blockly.MIXLY_Digital_PINMODEOUT)
         .appendField(Blockly.MIXLY_PIN+"#")
         .setCheck(Number);
     this.appendValueInput("STAT")
@@ -71,8 +74,10 @@ Blockly.Blocks.hardware_arduino_digital_write = {
 Blockly.Blocks.hardware_arduino_digital_read = {
   init: function() {
     this.setColour(Blockly.Blocks.hardware.HUE);
+    this.appendValueInput('SUB')
+        .appendField(Blockly.MIXLY_HARDWARE)
+        .setCheck("var");
     this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_HARDWARE + 's4a ')
         .appendField(Blockly.MIXLY_Digital_PINMODEIN)
         .appendField(Blockly.MIXLY_PIN+"#")
         .setCheck(Number);
@@ -87,8 +92,11 @@ Blockly.Blocks.hardware_arduino_digital_read = {
 Blockly.Blocks.hardware_arduino_analog_write = {
   init: function() {
     this.setColour(Blockly.Blocks.hardware.HUE);
+    this.appendValueInput('SUB')
+        .appendField(Blockly.MIXLY_HARDWARE)
+        .setCheck("var");
     this.appendValueInput("PIN",Number)
-        .appendField(Blockly.MIXLY_HARDWARE + 's4a ' + Blockly.MIXLY_Analog_PINMODEOUT)
+        .appendField(Blockly.MIXLY_Analog_PINMODEOUT)
         .appendField(Blockly.MIXLY_PIN+"#")
         .setCheck(Number);
     this.appendValueInput("NUM", Number)
@@ -104,8 +112,10 @@ Blockly.Blocks.hardware_arduino_analog_write = {
 Blockly.Blocks.hardware_arduino_analog_read = {
   init: function() {
     this.setColour(Blockly.Blocks.hardware.HUE);
+    this.appendValueInput('SUB')
+        .appendField(Blockly.MIXLY_HARDWARE)
+        .setCheck("var");
     this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_HARDWARE + 's4a ')
         .appendField(Blockly.MIXLY_Analog_PINMODEIN)
         .appendField(Blockly.MIXLY_PIN+"#")
         .setCheck(Number);
