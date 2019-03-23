@@ -80,7 +80,7 @@ Blockly.Python.math_selfcalcu = function (a) {
     case 'ZHENGCHU':var op = '//=';break;
     case 'POWER':var op = '**=';break;
   }
-  var code = argument0 + ' ' + op + ' ' + argument1;
+  var code = argument0 + ' ' + op + ' ' + argument1 + '\n';
   return code;
 };
 
