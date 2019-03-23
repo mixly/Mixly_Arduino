@@ -221,6 +221,15 @@ Blockly.Blocks['controls_if'] = {
    * @this Blockly.Block
    */
   domToMutation: function(xmlElement) {
+	// Delete everything.
+    if (this.elseCount_) {
+      this.removeInput('ELSE');
+    }
+    for (var i = this.elseifCount_; i > 0; i--) {
+      this.removeInput('IF' + i);
+      this.removeInput('DO' + i);
+    }
+	// Rebuild block.
     this.elseifCount_ = parseInt(xmlElement.getAttribute('elseif'), 10);
     this.elseCount_ = parseInt(xmlElement.getAttribute('else'), 10);
     for (var i = 1; i <= this.elseifCount_; i++) {
