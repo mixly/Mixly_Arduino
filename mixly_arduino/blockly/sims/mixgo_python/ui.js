@@ -3,10 +3,7 @@
 var ui = {
     inited: false,
     pinCount : {
-            digital: [5,6,7,8,9,11,12,13,14,15,16,19,20],
-            analog: [3,4,10],
-            touch: [0,1,2],
-            rowid: 0
+        rowid: 0
     },
     init: function () {
         //模态框关闭时kill program
@@ -150,95 +147,109 @@ var ui = {
         ui.inited = true;
     },
     //新增管脚模板
+    pinList: {
+        digitalIn: [0,2,4,5,12,13,14,15,16,17,18,19,20,21,22,23,25,26,27,32,33,34,35,36,39],
+        digitalOut: [0,2,4,5,12,13,14,15,16,17,18,19,20,21,22,23,25,26,27,32,33,34,35,36,39],
+        ADC: [32,33,34,35,36,39],
+        PWM: [0,2,4,5,12,13,14,15,16,17,18,19,20,21,22,23,25,26,27,32],
+        touchpad: [0,2,4,12,13,14,15,27,32,33],
+        AllpinList: [0,2,4,5,12,13,14,15,16,17,18,19,20,21,22,23,25,26,27,32,33,34,35,36,39],
+    },
     pinDigitalModule: function(){
-        var module = '<div class="row form-line" id="row'+ ui.pinCount.rowid + '" pintype="digital" style="padding-top:7px;">'+
+        var module = '<div class="row form-line" id="pin'+ pinNum + '" pintype="digital" style="padding-top:7px;">'+
             '<label class="col-sm-2 control-label">数字管脚#</label>'+
             '<div class="col-sm-2">'+
-                '<select id="select_row'+ ui.pinCount.rowid +'" class="pinOption form-control">'+
-                    '<option value="5">5</option>'+
-                    '<option value="6">6</option>'+
-                    '<option value="7">7</option>'+
-                    '<option value="8">8</option>'+
-                    '<option value="9">9</option>'+
-                    '<option value="11">11</option>'+
-                    '<option value="12">12</option>'+
-                    '<option value="13">13</option>'+
-                    '<option value="14">14</option>'+
-                    '<option value="15">15</option>'+
-                    '<option value="16">16</option>'+
-                    '<option value="19">19</option>'+
-                    '<option value="20">20</option>'+
-                '</select>'+
+                '<span>sh管脚#'+ pinNum +'</span>'+
             '</div>'+
             '<div class="col-sm-3 pinInput form-inline">'+
-                '<input id="pinValue'+ ui.pinCount.rowid +'" class="form-control" type="text" data-provide="slider" data-slider-min="0" data-slider-max="1" data-slider-step="1" data-slider-value="0"/>'+
+                '<input id="pinValue'+ pinNum +'" class="form-control" type="text" data-provide="slider" data-slider-min="0" data-slider-max="1" data-slider-step="1" data-slider-value="0"/>'+
                 '<label class="control-label"></label>'+
             '</div>'+
             '<div class="col-sm-1 col-sm-offest-2 form-inline">'+
-                '<span id="curr_pinValue'+ ui.pinCount.rowid + '">0</span>'+
+                '<span id="curr_pinValue'+ pinNum + '">0</span>'+
             '</div>'+
             '<div class="col-sm-2 col-sm-offest-2 form-inline">'+
-                '<button id="btn_row'+ ui.pinCount.rowid + '" class="btn_deleterow btn-default form-control">删除</button>'+
+                '<button id="btn_delPin'+ pinNum + '" class="btn_deleterow btn-default form-control">删除</button>'+
             '</div>'+
        '</div>';
        return module;
     },
-    pinAnalogModule: function(){
-        var module = '<div class="row form-line" id="row'+ ui.pinCount.rowid + '" pintype="analog" style="padding-top:7px;">'+
+    pinAnalogModule: function(pinNum){
+        var module = '<div class="row form-line" id="pin'+ pinNum + '" pintype="analog" style="padding-top:7px;">'+
             '<label class="col-sm-2 control-label">模拟管脚#</label>'+
             '<div class="col-sm-2">'+
-                '<select id="select_row'+ ui.pinCount.rowid +'" class="pinOption form-control">'+
-                    '<option value="3">3</option>'+
-                    '<option value="4">4</option>'+
-                    '<option value="10">10</option>'+
-                '</select>'+
+                '<span>模拟管脚#'+ pinNum +'</span>'+
             '</div>'+
             '<div class="col-sm-3 pinInput form-inline">'+
-                '<input id="pinValue'+ ui.pinCount.rowid +'" class="form-control" type="text" data-provide="slider" data-slider-min="0" data-slider-max="1024" data-slider-step="1"/>'+
+                '<input id="pinValue'+ pinNum +'" class="form-control" type="text" data-provide="slider" data-slider-min="0" data-slider-max="1024" data-slider-step="1"/>'+
                 '<label class="control-label"></label>'+
             '</div>'+
             '<div class="col-sm-1 col-sm-offest-1 form-inline">'+
-                '<span id="curr_pinValue'+ ui.pinCount.rowid + '">0</span>'+
+                '<span id="curr_pinValue'+ pinNum + '">0</span>'+
             '</div>'+
             '<div class="col-sm-2 form-inline">'+
                 '<span>频率：</span>'+
-                '<span id="curr_pinPeriod'+ ui.pinCount.rowid + '">35</span>'+
+                '<span id="curr_pinPeriod'+ pinNum + '">35</span>'+
             '</div>'+
             '<div class="col-sm-2 col-sm-offest-2 form-inline">'+
-                '<button id="btn_row'+ ui.pinCount.rowid + '" class="btn_deleterow btn-default form-control">删除</button>'+
+                '<button id="btn_delPin'+ pinNum + '" class="btn_deleterow btn-default form-control">删除</button>'+
             '</div>'+
        '</div>';
        return module;
     },
-    pinTouchModule: function(){
+    pinTouchModule: function(pinNum){
         var module = '<div class="row form-line" id="row'+ ui.pinCount.rowid + '" pintype="touch" style="padding-top:7px;">'+
             '<label class="col-sm-2 control-label">触摸管脚#</label>'+
             '<div class="col-sm-2">'+
-                '<select id="select_row'+ ui.pinCount.rowid +'" class="pinOption form-control">'+
-                    '<option value="0">0</option>'+
-                    '<option value="1">1</option>'+
-                    '<option value="2">2</option>'+
-                '</select>'+
+                '<span>触摸管脚#'+ pinNum +'</span>'+
             '</div>'+
             '<div class="col-sm-3 pinInput switch">'+
-                '<input id="pinValue'+ ui.pinCount.rowid +'" data-on-color="danger" type="checkbox"/>'+
+                '<input id="pinValue'+ pinNum +'" data-on-color="danger" type="checkbox"/>'+
                 '<label class="control-label"></label>'+
             '</div>'+
             '<div class="col-sm-1 col-sm-offest-2 form-inline">'+
-                '<span id="curr_pinValue'+ ui.pinCount.rowid + '">0</span>'+
+                '<span id="curr_pinValue'+ pinNum + '">0</span>'+
             '</div>'+
             '<div class="col-sm-2 form-inline">'+
-                '<button id="btn_row'+ ui.pinCount.rowid + '" class="btn_deleterow btn-default form-control">删除</button>'+
+                '<button id="btn_delPin'+ pinNum + '" class="btn_deleterow btn-default form-control">删除</button>'+
             '</div>'+
        '</div>';
        return module;
     },
-    //需要改进：能够使得管脚号不重复
+    //从管脚列表中删除将要被使用的管脚号,如果没有说明这个管脚号已经被占用
+    removePinfromList: function (pinNum){
+        var halfSearch = function(Arr, targetNum){
+            var left = 0;
+            var right = Arr.length - 1;
+            var mid = (left + right) /2
+            while(left <= right){
+                if(Arr[mid] < targetNum){
+                    left = mid + 1;
+                }
+                else if(Arr[mid] > targetNum){
+                    right = mid - 1;
+                }
+                else {
+                    return mid;
+                }
+            }
+            return undefined;
+        };
+        var targetPinIndex = halfSearch(AllpinList, pinNum);
+        if(targetPinIndex){
+            AllpinList.splice(targetPinIndex,1);
+            return true;
+        }
+        else{
+            return false;
+        }
+    },
     addPinOption: function(type, pinNum = 0){
-        if(type == 'digital'){
-            ui.pinCount.rowid++;
-            var thisRowId = ui.pinCount.rowid;
-            $('#pin_area').append(ui.pinDigitalModule());
+        if(!ui.removePinfromList(pinNum)){
+            return; //已经存在，不能添加
+        }
+        if(type == 'digitalIn'){
+            $('#pin_area').append(ui.pinDigitalModule(pinNum));
             var changeValue = function(thisSlider,thisSpan){
                 thisSpan.text(thisSlider.bootstrapSlider('getValue'));
             }
@@ -247,10 +258,8 @@ var ui = {
             Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
             $('.pinInput>.slider').css('width','100%');
         }
-        if(type == 'analog'){
-            ui.pinCount.rowid++;
-            var thisRowId = ui.pinCount.rowid;
-            $('#pin_area').append(ui.pinAnalogModule());
+        else if(type == 'digitalOut'){
+            $('#pin_area').append(ui.pinDigitalModule(pinNum));
             var changeValue = function(thisSlider,thisSpan){
                 thisSpan.text(thisSlider.bootstrapSlider('getValue'));
             }
@@ -259,9 +268,28 @@ var ui = {
             Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
             $('.pinInput>.slider').css('width','100%');
         }
-        if(type == 'touch'){
-            ui.pinCount.rowid++;
-            $('#pin_area').append(ui.pinTouchModule());
+        else if(type == 'ADC'){
+            $('#pin_area').append(ui.pinAnalogModule(pinNum));
+            var changeValue = function(thisSlider,thisSpan){
+                thisSpan.text(thisSlider.bootstrapSlider('getValue'));
+            }
+            var Slider = $("#pinValue"+thisRowId).bootstrapSlider();
+            var Span = $("#curr_pinValue"+thisRowId);
+            Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
+            $('.pinInput>.slider').css('width','100%');
+        }
+        else if(type == 'PWM'){
+            $('#pin_area').append(ui.pinAnalogModule(pinNum));
+            var changeValue = function(thisSlider,thisSpan){
+                thisSpan.text(thisSlider.bootstrapSlider('getValue'));
+            }
+            var Slider = $("#pinValue"+thisRowId).bootstrapSlider();
+            var Span = $("#curr_pinValue"+thisRowId);
+            Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
+            $('.pinInput>.slider').css('width','100%');
+        }
+        else if(type == 'touchpad'){
+            $('#pin_area').append(ui.pinTouchModule(pinNum));
             var thisRowId = ui.pinCount.rowid;
             var Switch = $("#pinValue"+thisRowId).bootstrapSwitch({
             onText: '触摸',
@@ -280,12 +308,12 @@ var ui = {
     deletePinOption: function(rowid){
         $(rowid).remove();
     },
-    bindAddPinBtnEvent: function(btn_type){
-        $('#add_'+ btn_type + '_pin').unbind('click').on('click',function(){
-            ui.addPinOption(btn_type);
-            console.log(btn_type,(ui.pinCount.rowid - 1));
-            ui.bindDeletePinBtnEvent('#btn_row' + (ui.pinCount.rowid - 1));
-        });
+    getPinValue: function(pinNum){
+        return parseInt($('#pinValue' + pinNum).val());
+    },
+    setPinValue: function(pinNum, value){
+        $('#pinValue' + pinNum).val(value);
+        $('#curr_pinValue' + pinNum).text(value);
     },
     bindDeletePinBtnEvent: function(id){
         $(id).on('click',function(){

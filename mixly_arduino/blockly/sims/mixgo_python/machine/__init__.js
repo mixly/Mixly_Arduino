@@ -1,16 +1,54 @@
 var $builtinmodule = function (name) {
 	var mod = {};
 	mod.Pin = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
-        $loc.__init__ = new Sk.builtin.func(function(self, pinNum) {
+        $loc.__init__ = new Sk.builtin.func(function(self, pinNum, mode) {
             self.pinNum = pinNum.v;
+            self.value = 0;
+            if(mode){
+                self.mode = mode.v;
+                if(self.mode == 'Out'){       
+                    ui.AddPinOption('digitalOut', self.pinNum);
+                }
+                else{
+                    ui.AddPinOption('digitalIn', self.pinNum);
+                }
+            }
         });
         $loc.value = new Sk.builtin.func(function(self, value) {
-            if(value){
+            if(value && self.mode === 'Out'){
             	self.value = value.v;
+                ui.setPinValue(self.pinNum, self.value);
+                if(self.pinNum === 0 || self.pinNum === 5){
+                    ui.setBoardLEDonoff(self.pinNum / 5);
+                }
             }
+            else{
+                self.value = ui.getPinValue(self.pinNum);
+            }         
             return new Sk.builtin.int_(self.value);
         });
+        $loc.PULL_UP = new Sk.builtin.str('PULL_UP');
+        $loc.PULL_DOWN = new Sk.builtin.str('PULL_DOWN');
+        $loc.In = new Sk.builtin.str('In');
+        $loc.Out = new Sk.builtin.str('Out');
     }, "Pin", []);
+    mod.ADC =  new Sk.misceval.buildClass(mod, function($gbl, $loc) {
+        $loc.__init__ = new Sk.builtin.func(function(self, pin) {
+            self.pinNum = pin.pinNum;
+            ui.AddPinOption('ADC', self.pinNum);
+        });
+        $loc.atten = new Sk.builtin.func(function(self, atten) {
+            self.atten = atten.v;
+        });
+        $loc.read = new Sk.builtin.func(function(self, value) {
+            self.value = ui.getPinValue(self.pin.pinNum);
+            return new Sk.builtin.int_(self.value);
+        });
+        $loc.ATTN_11DB = new Sk.builtin.str('3.3V');
+        $loc.ATTN_6DB = new Sk.builtin.str('2.2V');
+        $loc.ATTN_2_5_DB = new Sk.builtin.str('1.5V');
+        $loc.ATTN_0DB = new Sk.builtin.str('1.2V');
+    }, "ADC", []);
 	mod.BMP280 = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self) {
             self.temperature = mbData['temperature'];
