@@ -4,18 +4,11 @@ goog.provide('Blockly.Python.hardware');
 
 goog.require('Blockly.Python');
 
-Blockly.Python.hardware_arduino_init=function(){
-    var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-    var dropdown_rgbpin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
-    Blockly.Python.definitions_['import_s4alib'] = 'import s4alib';
-    var code = v + ' = s4alib.s4a_slave('+dropdown_rgbpin+')\n';
-    return code;
-};
-
 Blockly.Python.hardware_arduino_start=function(){
   Blockly.Python.definitions_['import_s4alib'] = 'import s4alib';
   var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-  var code= v + '.start()\n';   
+  // var code= v + '.start()\n';  
+  var code = v + ' = s4alib.s4a_start("'+JSFuncs.getCom()+'")\n'; 
   return code;
 };
 

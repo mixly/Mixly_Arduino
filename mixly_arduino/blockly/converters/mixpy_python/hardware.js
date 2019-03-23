@@ -7,32 +7,18 @@ pbc.assignD.get('hardware')['check_assign'] = function(py2block, node, targets, 
     var moduleName = py2block.Name_str(value.func.value);
     var funcName = py2block.identifier(value.func.attr);
     if(value._astname === "Call" && moduleName === "s4alib"
-        && funcName === "s4a_slave" && value.args.length === 1)
+        && funcName === "s4a_start" && value.args.length === 1)
         return true;
     return false;
 }
 
 pbc.assignD.get('hardware')['create_block'] = function(py2block, node, targets, value){
     var argblock = py2block.convert(value.args[0]);
-    return block("hardware_arduino_init", node.lineno, {
+    return block("hardware_arduino_start", node.lineno, {
     }, {
-        "PIN":argblock,
+        // "PIN":argblock,
         "SUB":py2block.convert(targets[0]),
     });
-}
-
-
-pbc.objectFunctionD.get('start')['s4a'] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if(args.length!=0){
-        throw new Error("Incorrect number of arguments");
-    }
-
-    var s4ablock=py2block.convert(func.value);
-
-    return [block("hardware_arduino_start", func.lineno, {}, { 'SUB':s4ablock,
-    }, {
-        "inline": "true"
-    })];
 }
 
 pbc.objectFunctionD.get('digital_write')['s4a'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -41,8 +27,9 @@ pbc.objectFunctionD.get('digital_write')['s4a'] = function (py2block, func, args
     }
     pbc.pinType = "pins_digital_write";
     var pinblock = py2block.convert(args[0]);
-    pbc.pinType = null;
+    pbc.pinType = "pins_digital";
     var argblock = py2block.convert(args[1]);
+    pbc.pinType = null;
     var s4ablock=py2block.convert(func.value);
     return [block("hardware_arduino_digital_write", func.lineno, {}, {
         'SUB':s4ablock,
