@@ -2,10 +2,7 @@ var $builtinmodule = function (name) {
     var mod = {};
     mod.NeoPixel = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         var selfinInit;
-        var funcInit = function(self, pin, n, timing, bpp) {
-            //console.log(self,pin,n,timing,bpp);
-            console.log(pin);
-            console.log(n);
+        var funcInit = function(kwa, self, pin, n) {
             if (pin == undefined) {
                 throw new Sk.builtin.TypeError("parameter pin not defined");
             }
@@ -14,17 +11,17 @@ var $builtinmodule = function (name) {
             } else if (n.v < 1) {
                 throw new Sk.builtin.TypeError("parameter n > 0");
             }
-            if(typeof(timing) != 'undefined'){
-                self.timing = timing.v;
+            if(typeof(kwa[0]) != 'undefined'){
+                self.timing = kwa[1];
             }
             else{
                 self.timing = new Sk.builtin.bool(true);
             }
-            if(bpp == undefined){
+            if(typeof(kwa[2]) == 'undefined'){
                 self.bpp = 1;
             }
             else{
-                self.bpp = bpp.v;
+                self.bpp = kwa[3];
             }
             self.leds = [];
             self.pin = pin;
@@ -32,11 +29,10 @@ var $builtinmodule = function (name) {
             for (var i = 0; i < n.v; i ++) {
                self.leds.push([0, 0, 0]);
             }
-            console.log(this);
         };
-        funcInit.co_varnames = ['self', 'pin', 'n', 'timing', 'bpp'];
-        funcInit.$defaults = [undefined, undefined, Sk.builtin.int_(2), Sk.builtin.bool(true), Sk.builtin.int_(2)];
-        funcInit.co_numargs = 5;
+        //funcInit.co_varnames = ['self','pin', 'n', 'timing', 'bpp'];
+        //funcInit.$defaults = [undefined,undefined, Sk.builtin.int_(2), Sk.builtin.bool(true), Sk.builtin.int_(2)];
+        //funcInit.co_numargs = 5;
         funcInit.co_kwargs = true;
         $loc.__init__ = new Sk.builtin.func(funcInit);
 
