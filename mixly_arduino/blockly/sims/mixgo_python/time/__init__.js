@@ -1,5 +1,9 @@
 var $builtinmodule = function (name) {
-    var mod = {};
+    var mod = {
+        data: {
+            startTime : new Date();
+        }       
+    };
     mod.sleep = new Sk.builtin.func(function(delay) {
         return sim.runAsync(function(resolve, reject) {
             setTimeout(function() {
@@ -20,6 +24,10 @@ var $builtinmodule = function (name) {
                 resolve();
             }, delay.v/1000);
         });
+    });
+    mod.ticks_ms = new Sk.builtin.func(function() {
+        var now = new Date()
+        return now.getTime() - startTime.getTime();
     });
     return mod;
 }

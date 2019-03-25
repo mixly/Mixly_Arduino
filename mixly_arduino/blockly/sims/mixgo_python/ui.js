@@ -155,11 +155,11 @@ var ui = {
         touchpad: [0,2,4,12,13,14,15,27,32,33],
         AllpinList: [0,2,4,5,12,13,14,15,16,17,18,19,20,21,22,23,25,26,27,32,33,34,35,36,39],
     },
-    pinDigitalModule: function(){
+    pinDigitalModule: function(pinNum){
         var module = '<div class="row form-line" id="pin'+ pinNum + '" pintype="digital" style="padding-top:7px;">'+
-            '<label class="col-sm-2 control-label">数字管脚#</label>'+
+            '<label class="col-sm-2 control-label"></label>'+
             '<div class="col-sm-2">'+
-                '<span>sh管脚#'+ pinNum +'</span>'+
+                '<span>数字管脚#'+ pinNum +'</span>'+
             '</div>'+
             '<div class="col-sm-3 pinInput form-inline">'+
                 '<input id="pinValue'+ pinNum +'" class="form-control" type="text" data-provide="slider" data-slider-min="0" data-slider-max="1" data-slider-step="1" data-slider-value="0"/>'+
@@ -176,7 +176,7 @@ var ui = {
     },
     pinAnalogModule: function(pinNum){
         var module = '<div class="row form-line" id="pin'+ pinNum + '" pintype="analog" style="padding-top:7px;">'+
-            '<label class="col-sm-2 control-label">模拟管脚#</label>'+
+            '<label class="col-sm-2 control-label"></label>'+
             '<div class="col-sm-2">'+
                 '<span>模拟管脚#'+ pinNum +'</span>'+
             '</div>'+
@@ -189,7 +189,8 @@ var ui = {
             '</div>'+
             '<div class="col-sm-2 form-inline">'+
                 '<span>频率：</span>'+
-                '<span id="curr_pinPeriod'+ pinNum + '">35</span>'+
+                '<input id="pinPeriod'+ pinNum +'" class="form-control" type="text" />'+
+                '<label class="control-label"></label>'+
             '</div>'+
             '<div class="col-sm-2 col-sm-offest-2 form-inline">'+
                 '<button id="btn_delPin'+ pinNum + '" class="btn_deleterow btn-default form-control">删除</button>'+
@@ -199,7 +200,7 @@ var ui = {
     },
     pinTouchModule: function(pinNum){
         var module = '<div class="row form-line" id="row'+ ui.pinCount.rowid + '" pintype="touch" style="padding-top:7px;">'+
-            '<label class="col-sm-2 control-label">触摸管脚#</label>'+
+            '<label class="col-sm-2 control-label"></label>'+
             '<div class="col-sm-2">'+
                 '<span>触摸管脚#'+ pinNum +'</span>'+
             '</div>'+
@@ -221,8 +222,9 @@ var ui = {
         var halfSearch = function(Arr, targetNum){
             var left = 0;
             var right = Arr.length - 1;
-            var mid = (left + right) /2
+            var mid = (left + right) /2;
             while(left <= right){
+                mid = (left + right) /2
                 if(Arr[mid] < targetNum){
                     left = mid + 1;
                 }
@@ -235,9 +237,9 @@ var ui = {
             }
             return undefined;
         };
-        var targetPinIndex = halfSearch(AllpinList, pinNum);
+        var targetPinIndex = halfSearch(ui.pinList.AllpinList, pinNum);
         if(targetPinIndex){
-            AllpinList.splice(targetPinIndex,1);
+            ui.pinList.AllpinList.splice(targetPinIndex,1);
             return true;
         }
         else{
@@ -253,8 +255,8 @@ var ui = {
             var changeValue = function(thisSlider,thisSpan){
                 thisSpan.text(thisSlider.bootstrapSlider('getValue'));
             }
-            var Slider = $("#pinValue"+thisRowId).bootstrapSlider();
-            var Span = $("#curr_pinValue"+thisRowId);
+            var Slider = $("#pinValue"+pinNum).bootstrapSlider();
+            var Span = $("#curr_pinValue"+pinNum);
             Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
             $('.pinInput>.slider').css('width','100%');
         }
@@ -263,8 +265,8 @@ var ui = {
             var changeValue = function(thisSlider,thisSpan){
                 thisSpan.text(thisSlider.bootstrapSlider('getValue'));
             }
-            var Slider = $("#pinValue"+thisRowId).bootstrapSlider();
-            var Span = $("#curr_pinValue"+thisRowId);
+            var Slider = $("#pinValue"+pinNum).bootstrapSlider();
+            var Span = $("#curr_pinValue"+pinNum);
             Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
             $('.pinInput>.slider').css('width','100%');
         }
@@ -273,8 +275,8 @@ var ui = {
             var changeValue = function(thisSlider,thisSpan){
                 thisSpan.text(thisSlider.bootstrapSlider('getValue'));
             }
-            var Slider = $("#pinValue"+thisRowId).bootstrapSlider();
-            var Span = $("#curr_pinValue"+thisRowId);
+            var Slider = $("#pinValue"+pinNum).bootstrapSlider();
+            var Span = $("#curr_pinValue"+pinNum);
             Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
             $('.pinInput>.slider').css('width','100%');
         }
@@ -283,23 +285,22 @@ var ui = {
             var changeValue = function(thisSlider,thisSpan){
                 thisSpan.text(thisSlider.bootstrapSlider('getValue'));
             }
-            var Slider = $("#pinValue"+thisRowId).bootstrapSlider();
-            var Span = $("#curr_pinValue"+thisRowId);
+            var Slider = $("#pinValue"+pinNum).bootstrapSlider();
+            var Span = $("#curr_pinValue"+pinNum);
             Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
             $('.pinInput>.slider').css('width','100%');
         }
-        else if(type == 'touchpad'){
+        else if(type == 'TouchPad'){
             $('#pin_area').append(ui.pinTouchModule(pinNum));
-            var thisRowId = ui.pinCount.rowid;
-            var Switch = $("#pinValue"+thisRowId).bootstrapSwitch({
+            var Switch = $("#pinValue"+pinNum).bootstrapSwitch({
             onText: '触摸',
             offText: '离开',
             size:'Small',
             onSwitchChange: function(event,state){
                 if(state==true){
-                    $("#curr_pinValue"+ thisRowId).text('1');
+                    $("#curr_pinValue"+ pinNum).text('1');
                 }else{
-                    $("#curr_pinValue"+ thisRowId).text('0');
+                    $("#curr_pinValue"+ pinNum).text('0');
                 }
             }
             });
@@ -315,6 +316,11 @@ var ui = {
         $('#pinValue' + pinNum).val(value);
         $('#curr_pinValue' + pinNum).text(value);
     },
+    //待测试
+    setAnalogPinFreq: function(pinNum, freq){
+        return parseInt($('#pinPeriod' + pinNum).val());
+    },
+    //需要修改
     bindDeletePinBtnEvent: function(id){
         $(id).on('click',function(){
             var row = $(this).parent().parent();

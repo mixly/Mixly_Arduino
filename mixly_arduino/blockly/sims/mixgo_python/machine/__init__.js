@@ -7,11 +7,14 @@ var $builtinmodule = function (name) {
             if(mode){
                 self.mode = mode.v;
                 if(self.mode == 'Out'){       
-                    ui.AddPinOption('digitalOut', self.pinNum);
+                    ui.addPinOption('digitalOut', self.pinNum);
                 }
                 else{
-                    ui.AddPinOption('digitalIn', self.pinNum);
+                    ui.addPinOption('digitalIn', self.pinNum);
                 }
+            }
+            else{
+                ui.addPinOption('digitalOut', self.pinNum);
             }
         });
         $loc.value = new Sk.builtin.func(function(self, value) {
@@ -34,8 +37,9 @@ var $builtinmodule = function (name) {
     }, "Pin", []);
     mod.ADC =  new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self, pin) {
+            self.pin = pin;
             self.pinNum = pin.pinNum;
-            ui.AddPinOption('ADC', self.pinNum);
+            ui.addPinOption('ADC', self.pinNum);
         });
         $loc.atten = new Sk.builtin.func(function(self, atten) {
             self.atten = atten.v;
@@ -49,6 +53,31 @@ var $builtinmodule = function (name) {
         $loc.ATTN_2_5_DB = new Sk.builtin.str('1.5V');
         $loc.ATTN_0DB = new Sk.builtin.str('1.2V');
     }, "ADC", []);
+    mod.PWM =  new Sk.misceval.buildClass(mod, function($gbl, $loc) {
+        $loc.__init__ = new Sk.builtin.func(function(self, pin) {
+            self.pin = pin;
+            self.pinNum = pin.pinNum;
+            ui.addPinOption('PWM', self.pinNum);
+        });
+        $loc.duty = new Sk.builtin.func(function(self, duty) {
+            self.duty = duty.v;
+            ui.setPinValue(self.pin.pinNum, duty.v)
+        });
+        $loc.freq = new Sk.builtin.func(function(self, ferq) {
+            ui.setAnalogPinFreq(self.pin.pinNum, freq.v);
+        });
+    }, "PWM", []);
+    mod.TouchPad =  new Sk.misceval.buildClass(mod, function($gbl, $loc) {
+        $loc.__init__ = new Sk.builtin.func(function(self, pin) {
+            self.pin = pin;
+            self.pinNum = pin.pinNum;
+            ui.addPinOption('TouchPad', self.pinNum);
+        });
+        $loc.read = new Sk.builtin.func(function(self, value) {
+            self.value = ui.getPinValue(self.pin.pinNum);
+            return new Sk.builtin.int_(self.value);
+        });
+    }, "TouchPad", []);
 	mod.BMP280 = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self) {
             self.temperature = mbData['temperature'];
