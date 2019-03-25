@@ -453,7 +453,7 @@ Blockly.Blocks['sensor_mixgo_pin_near'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown([[Blockly.Msg.TEXT_TRIM_LEFT, "left"], [Blockly.Msg.TEXT_TRIM_RIGHT, "right"]]), "direction")
             .appendField(Blockly.MIXLY_ESP32_NEAR);
-        this.setOutput(true, Boolean);
+        this.setOutput(true,Number);
         this.setInputsInline(true);
         var thisBlock = this;
         this.setTooltip(function() {
