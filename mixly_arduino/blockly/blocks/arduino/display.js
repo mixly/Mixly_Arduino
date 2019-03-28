@@ -228,7 +228,10 @@ Blockly.Blocks.display_TM1637_displyPrint = {
         this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING_TIP);
     }
 };
-
+var display_Time_Point = [
+  [Blockly.MIXLY_4DIGITDISPLAY_ON, "true"],
+  [Blockly.MIXLY_4DIGITDISPLAY_OFF, "false"]
+];
 
 Blockly.Blocks.display_TM1637_displayTime = {
     init: function () {
@@ -238,14 +241,15 @@ Blockly.Blocks.display_TM1637_displayTime = {
         this.appendDummyInput("").appendField(Blockly.MIXLY_HOUR);
         this.appendValueInput("minute").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT);
         this.appendDummyInput("").appendField(Blockly.MIXLY_MINUTE);
+        this.appendValueInput("STAT")
+        .appendField(Blockly.MIXLY_DISPLAY_TM1637_Time_Point)
+        .setCheck([Number,Boolean]);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME_TOOLTIP);
     }
 };
-
-
 
 Blockly.Blocks.display_TM1637_Brightness = {
     init: function () {
@@ -259,6 +263,7 @@ Blockly.Blocks.display_TM1637_Brightness = {
         this.setTooltip(Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS);
     }
 };
+
 Blockly.Blocks.display_Matrix_Init = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
