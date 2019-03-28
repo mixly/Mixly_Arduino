@@ -1141,28 +1141,6 @@
       </block>
     </value>
   </block>
-  <block type="oled_draw4Str" >
-    <value name="Text_line1">
-      <shadow type="text">
-        <field name="TEXT">Example Line1!</field>
-      </shadow>
-    </value>
-    <value name="Text_line2">
-      <shadow type="text">
-        <field name="TEXT">Example Line2!</field>
-      </shadow>
-    </value>
-    <value name="Text_line3">
-      <shadow type="text">
-        <field name="TEXT">Example Line3!</field>
-      </shadow>
-    </value>
-    <value name="Text_line4">
-      <shadow type="text">
-        <field name="TEXT">Example Line4!</field>
-      </shadow>
-    </value>
-  </block>
   <block type="oled_drawPixe" >
     <value name="POS_X">
       <shadow type="math_number">
@@ -1460,7 +1438,7 @@
 <category id="catblynkIOT" name="Blynk IoT" colour="160">
   <block type="blynk_QR" name="二维码">
   </block>
-  <block type="blynk_server_esp32" name="服务器信息">
+  <block type="blynk_server" name="服务器信息">
     <value name="server_add">
       <shadow type="text">
         <field name="TEXT">116,62,49,166</field>
@@ -1481,7 +1459,7 @@
         </shadow>
       </value>
     </block>
-    <block type="blynk_smartconfig_esp32" name="一键配网">
+    <block type="blynk_smartconfig" name="一键配网">
       <value name="server_add">
         <shadow type="text">
           <field name="TEXT">116,62,49,166</field>
