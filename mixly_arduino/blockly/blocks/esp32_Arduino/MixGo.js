@@ -161,7 +161,7 @@ Blockly.Blocks.HT16K33_brightness = {
   }
 };
 
-Blockly.Blocks['mixgo_button_is_pressed'] = {
+Blockly.Blocks.mixgo_button_is_pressed = {
   init: function(){
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("").appendField(Blockly.MIXLY_BUTTON);
@@ -175,7 +175,7 @@ Blockly.Blocks['mixgo_button_is_pressed'] = {
 };
 
 
-Blockly.Blocks['sensor_mixgo_light'] = {
+Blockly.Blocks.sensor_mixgo_light= {
   init: function(){
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput()
@@ -186,7 +186,7 @@ Blockly.Blocks['sensor_mixgo_light'] = {
   }
 };
 
-Blockly.Blocks['sensor_mixgo_sound'] = {
+Blockly.Blocks.sensor_mixgo_sound= {
   init: function(){
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput()
@@ -197,7 +197,7 @@ Blockly.Blocks['sensor_mixgo_sound'] = {
   }
 };
 
-Blockly.Blocks['mixgo_touch_pin'] = {
+Blockly.Blocks.mixgo_touch_pin= {
   init: function(){
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("").appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR)
@@ -211,7 +211,7 @@ Blockly.Blocks['mixgo_touch_pin'] = {
   }
 };
 
-Blockly.Blocks['sensor_mixgo_pin_near'] = {
+Blockly.Blocks.sensor_mixgo_pin_near = {
   init: function(){
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput()

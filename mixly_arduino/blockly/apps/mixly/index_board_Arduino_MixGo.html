@@ -22,7 +22,7 @@
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
   <script type="text/javascript" src="myblock.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/blynk.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/blynk.js"></script>
   <script type="text/javascript" src="../../generators/arduino/pins.js"></script>
   <script type="text/javascript" src="../../generators/arduino/inout.js"></script>
   <script type="text/javascript" src="../../generators/arduino/control.js"></script>
@@ -727,6 +727,18 @@
   </block>
 </category>
 <category id="catSensor" colour="40">
+  <block type="mixgo_button_is_pressed">
+  </block>
+  <block type="mixgo_touch_pin">
+  </block>
+  <block type="sensor_mixgo_pin_near">
+  </block>
+  <block type="sensor_mixgo_light">
+  </block>
+  <block type="sensor_mixgo_sound">
+  </block>
+  <block type="mixgo_MPU9250"> 
+  </block>
   <block type="chaoshengbo2">
     <value name="PIN1">
       <shadow type="pins_digital">
@@ -930,23 +942,27 @@
   </value>
 </block>
 <block type="display_rgb_init">
-  <value name="PIN">
-    <shadow type="pins_digital" />
-  </value>
-  <value name="LEDCOUNT">
-    <shadow type="math_number">
-      <field name="NUM">4</field>
-    </shadow>
-  </value>
-  <value name="Brightness">
-    <shadow type="math_number">
-      <field name="NUM">20</field>
-    </shadow>
-  </value>
+ <value name="PIN">
+  <shadow type="pins_digital">
+    <field name="PIN">2</field>
+  </shadow>
+</value>
+<value name="LEDCOUNT">
+  <shadow type="math_number">
+    <field name="NUM">2</field>
+  </shadow>
+</value>
+<value name="Brightness">
+  <shadow type="math_number">
+    <field name="NUM">20</field>
+  </shadow>
+</value>
 </block>
 <block type="display_rgb">
   <value name="PIN">
-    <shadow type="pins_digital" />
+    <shadow type="pins_digital">
+      <field name="PIN">2</field>
+    </shadow>
   </value>
   <value name="_LED_">
     <shadow type="math_number">
@@ -970,33 +986,39 @@
   </value>
 </block>
 <block type="display_rgb2">
-  <value name="PIN">
-    <shadow type="pins_digital" />
-  </value>
-  <value name="_LED_">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
+ <value name="PIN">
+  <shadow type="pins_digital">
+    <field name="PIN">2</field>
+  </shadow>
+</value>
+<value name="_LED_">
+  <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
 </block>
 <block type="display_rgb_rainbow1">
-  <value name="PIN">
-    <shadow type="pins_digital" />
-  </value>
-  <value name="WAIT">
-    <shadow type="math_number">
-      <field name="NUM">20</field>
-    </shadow>
-  </value>
-  <value name="Brightness">
-    <shadow type="math_number">
-      <field name="NUM">20</field>
-    </shadow>
-  </value>
+ <value name="PIN">
+  <shadow type="pins_digital">
+    <field name="PIN">2</field>
+  </shadow>
+</value>
+<value name="WAIT">
+  <shadow type="math_number">
+    <field name="NUM">20</field>
+  </shadow>
+</value>
+<value name="Brightness">
+  <shadow type="math_number">
+    <field name="NUM">20</field>
+  </shadow>
+</value>
 </block>
 <block type="display_rgb_rainbow3">
   <value name="PIN">
-    <shadow type="pins_digital" />
+    <shadow type="pins_digital">
+      <field name="PIN">2</field>
+    </shadow>
   </value>
   <value name="rainbow_color">
     <shadow type="math_number">
@@ -1005,9 +1027,67 @@
   </value>
 </block>
 <block type="display_rgb_show">
-  <value name="PIN">
-    <shadow type="pins_digital" />
+ <value name="PIN">
+  <shadow type="pins_digital">
+    <field name="PIN">2</field>
+  </shadow>
+</value>
+</block>
+<block type="HT16K33_TEXT">
+  <value name="TEXT">
+    <shadow type="text">
+      <field name="TEXT">Mixly MixGo</field>
+    </shadow>
   </value>
+</block>
+<block type="HT16K33_POS">
+  <value name="XVALUE">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="YVALUE">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="HT16K33_DisplayChar">
+  <value name="Chars">
+    <block type="HT16K33_LedArray">
+    </block>
+  </value>
+</block>
+<block type="HT16K33_Displayclear">
+</block>
+<block type="HT16K33_show_image">
+  <value name="data">
+    <shadow type="pins_builtinimg"></shadow>
+  </value>
+</block>
+<block type="HT16K33_blink_rate">
+  <value name="x">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+  </value>
+</block>
+<block type="HT16K33_brightness">
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+  </value>
+</block>
+<block type="mixGo_led">
+ <value name="STAT">
+  <shadow type="number">
+  </shadow>
+</value>
+<value name="bright">
+  <shadow type="inout_highlow">
+  </shadow>
+</value>
 </block>
 </category>
 <category id="catMonitor" colour="180">
@@ -1143,7 +1223,7 @@
       </block>
     </value>
   </block>
-  <block type="oled_draw4Str" >
+ <!--  <block type="oled_draw4Str" >
     <value name="Text_line1">
       <shadow type="text">
         <field name="TEXT">Example Line1!</field>
@@ -1164,7 +1244,7 @@
         <field name="TEXT">Example Line4!</field>
       </shadow>
     </value>
-  </block>
+  </block> -->
   <block type="oled_drawPixe" >
     <value name="POS_X">
       <shadow type="math_number">
@@ -1462,7 +1542,7 @@
 <category id="catblynkIOT" name="Blynk IoT" colour="160">
   <block type="blynk_QR" name="二维码">
   </block>
-  <block type="blynk_server_esp32" name="服务器信息">
+  <block type="blynk_server" name="服务器信息">
     <value name="server_add">
       <shadow type="text">
         <field name="TEXT">116,62,49,166</field>
@@ -1483,7 +1563,7 @@
         </shadow>
       </value>
     </block>
-    <block type="blynk_smartconfig_esp32" name="一键配网">
+    <block type="blynk_smartconfig" name="一键配网">
       <value name="server_add">
         <shadow type="text">
           <field name="TEXT">116,62,49,166</field>
@@ -1901,87 +1981,6 @@
   <block type="blynk_iot_syncVirtual">
     <field name="Vpin">V0</field>
   </block>
-</category>
-<category id="catMixGo" name="MixGo" colour="160">
-  <block type="HT16K33_TEXT">
-    <value name="TEXT">
-      <shadow type="text">
-        <field name="TEXT">Mixly MixGo</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="HT16K33_POS">
-    <value name="XVALUE">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="YVALUE">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="HT16K33_DisplayChar">
-    <value name="Chars">
-      <block type="HT16K33_LedArray">
-      </block>
-    </value>
-  </block>
-  <block type="HT16K33_Displayclear">
-  </block>
-  <block type="HT16K33_show_image">
-    <value name="data">
-      <shadow type="pins_builtinimg"></shadow>
-    </value>
-  </block>
-  <block type="HT16K33_blink_rate">
-    <value name="x">
-      <shadow type="math_number">
-        <field name="NUM">2</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="HT16K33_brightness">
-    <value name="Brightness">
-      <shadow type="math_number">
-        <field name="NUM">2</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="mixGo_led">
-   <value name="STAT">
-    <shadow type="number">
-    </shadow>
-  </value>
-  <value name="bright">
-    <shadow type="inout_highlow">
-    </shadow>
-  </value>
-</block>
-<!-- <block type="mixGo_led_brightness">
- <value name="STAT">
-  <shadow type="number">
-  </shadow>
-</value>
-<value name="bright">
-  <shadow type="math_number">
-    <field name="NUM">1023</field>
-  </shadow>
-</value>
-</block> -->
-<block type="mixgo_button_is_pressed">
-</block>
-<block type="mixgo_touch_pin">
-</block>
-<block type="sensor_mixgo_pin_near">
-</block>
-<block type="sensor_mixgo_light">
-</block>
-<block type="sensor_mixgo_sound">
-</block>
-<block type="mixgo_MPU9250"> 
-</block>
 </category>
 </xml>
 <script>
