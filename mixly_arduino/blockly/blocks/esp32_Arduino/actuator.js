@@ -45,7 +45,6 @@ Blockly.Blocks.controls_notone={
         .setCheck(Number);
         this.appendValueInput('CHANNEL')
         .setCheck(Number)
-        //.setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.MIXLY_CHANNEL);
         this.setInputsInline(true);
         this.setPreviousStatement(true);
@@ -53,3 +52,4 @@ Blockly.Blocks.controls_notone={
         this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE);
     }
 };
+

@@ -4,18 +4,10 @@ goog.provide('Blockly.Arduino.base');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino.inout_digital_write = function () {
-    var dropdown_pin = this.getFieldValue('PIN');
-    var dropdown_stat = this.getFieldValue('STAT');
-    Blockly.Arduino.setups_['setup_output_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', OUTPUT);';
-    var code = 'digitalWrite(' + dropdown_pin + ',' + dropdown_stat + ');\n'
-    return code;
-};
-
-Blockly.Arduino.inout_pin_pressed = function(){
-    var pin = Blockly.Arduino.valueToCode(this, 'pin', Blockly.Arduino.ORDER_ATOMIC);
-    var code =  'touchRead('+pin+')';
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
+Blockly.Arduino.inout_touchRead = function(){
+ var pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+ var code =  'touchRead('+pin+')';
+ return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.inout_pwm_analog_write= function () {
