@@ -29,7 +29,7 @@ Blockly.Arduino.DHT = function () {
   Blockly.Arduino.definitions_['include_DHT'] = '#include <DHT.h>';
   //Blockly.Arduino.definitions_['define_dht_pin' + dropdown_pin] = '#define DHTPIN'+dropdown_pin +' ' + dropdown_pin ;
   //Blockly.Arduino.definitions_['define_dht_type' + dropdown_pin] = '#define DHTTYPE'+dropdown_pin +' '+ sensor_type ;
-  Blockly.Arduino.definitions_['define_dht' + dropdown_pin] = 'DHT dht'+dropdown_pin+'('+dropdown_pin+', '+sensor_type+');'
+  Blockly.Arduino.definitions_['var_declare_dht' + dropdown_pin] = 'DHT dht'+dropdown_pin+'('+dropdown_pin+', '+sensor_type+');'
   Blockly.Arduino.setups_['DHT_SETUP'+dropdown_pin] = ' dht'+dropdown_pin+'.begin();';
   var code;
   if(what=="temperature")

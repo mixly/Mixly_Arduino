@@ -14,7 +14,7 @@ Blockly.Arduino.servo_move = function() {
   //delay_time = delay_time.replace('(','').replace(')','');
   
   Blockly.Arduino.definitions_['include_Servo'] = '#include <ESP32_Servo.h>';
-  Blockly.Arduino.definitions_['var_servo'+dropdown_pin] = 'Servo servo_'+dropdown_pin+';';
+  Blockly.Arduino.definitions_['var_declare_servo'+dropdown_pin] = 'Servo servo_'+dropdown_pin+';';
   Blockly.Arduino.setups_['setup_servo_'+dropdown_pin] = 'servo_'+dropdown_pin+'.attach('+dropdown_pin+',500,2500);';
   
   var code = 'servo_'+dropdown_pin+'.write('+value_degree+');\n'+'delay(' + delay_time + ');\n';
@@ -25,7 +25,7 @@ Blockly.Arduino.servo_read_degrees = function() {
   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
   
   Blockly.Arduino.definitions_['include_Servo'] = '#include <ESP32_Servo.h>';
-  Blockly.Arduino.definitions_['var_servo'+dropdown_pin] = 'Servo servo_'+dropdown_pin+';';
+  Blockly.Arduino.definitions_['var_declare_servo'+dropdown_pin] = 'Servo servo_'+dropdown_pin+';';
   Blockly.Arduino.setups_['setup_servo_'+dropdown_pin] = 'servo_'+dropdown_pin+'.attach('+dropdown_pin+');';
   
   var code = 'servo_'+dropdown_pin+'.read()';
@@ -43,7 +43,7 @@ Blockly.Arduino.channel_select = function() {
 };
 
 Blockly.Arduino.controls_tone=function(){
-  Blockly.Arduino.definitions_['include_Servo'] = '#include <ESP32Tone.h>';
+  Blockly.Arduino.definitions_['include_ESP32Tone'] = '#include <ESP32Tone.h>';
    var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
    var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',
       Blockly.Arduino.ORDER_ASSIGNMENT) || '0';

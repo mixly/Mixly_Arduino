@@ -7,8 +7,8 @@ goog.require('Blockly.Arduino');
 
 //执行器_点阵屏显示_字符显示
 Blockly.Arduino.HT16K33_TEXT = function() {
-  Blockly.Arduino.definitions_['include_HT16K33'] = '#include <HT16K33.h>';
-  Blockly.Arduino.definitions_['var_Matrix'] = 'HT16K33 MixGo_HT16K33;';
+  Blockly.Arduino.definitions_['2_include_HT16K33'] = '#include <HT16K33.h>';
+  Blockly.Arduino.definitions_['var_declare_HT16K33'] = 'HT16K33 MixGo_HT16K33;';
   Blockly.Arduino.setups_['setup_Matrix_1'] = 'MixGo_HT16K33.begin(0x70);';
   Blockly.Arduino.setups_['setup_Matrix_2'] = 'delay(100);';
   var string1 = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ASSIGNMENT);
@@ -18,8 +18,8 @@ Blockly.Arduino.HT16K33_TEXT = function() {
 
 //执行器_点阵屏显示_画点显示
 Blockly.Arduino.HT16K33_POS = function() {
-  Blockly.Arduino.definitions_['include_HT16K33'] = '#include <HT16K33.h>';
-  Blockly.Arduino.definitions_['var_Matrix'] = 'HT16K33 MixGo_HT16K33;';
+  Blockly.Arduino.definitions_['2_include_HT16K33'] = '#include <HT16K33.h>';
+  Blockly.Arduino.definitions_['var_declare_HT16K33'] = 'HT16K33 MixGo_HT16K33;';
   Blockly.Arduino.setups_['setup_Matrix_1'] = 'MixGo_HT16K33.begin(0x70);';
   Blockly.Arduino.setups_['setup_Matrix_2'] = 'delay(100);';
   var pos_x = Blockly.Arduino.valueToCode(this, 'XVALUE', Blockly.Arduino.ORDER_ASSIGNMENT);
@@ -32,8 +32,8 @@ Blockly.Arduino.HT16K33_POS = function() {
 
 //执行器_点阵屏显示_显示图案
 Blockly.Arduino.HT16K33_DisplayChar = function() {
- Blockly.Arduino.definitions_['include_HT16K33'] = '#include <HT16K33.h>';
- Blockly.Arduino.definitions_['var_Matrix'] = 'HT16K33 MixGo_HT16K33;';
+ Blockly.Arduino.definitions_['2_include_HT16K33'] = '#include <HT16K33.h>';
+ Blockly.Arduino.definitions_['var_declare_HT16K33'] = 'HT16K33 MixGo_HT16K33;';
  Blockly.Arduino.definitions_['var_Matrix1'] = 'uint16_t  MixGo_LedArray[8];';
  Blockly.Arduino.setups_['setup_Matrix_1'] = 'MixGo_HT16K33.begin(0x70);';
  Blockly.Arduino.setups_['setup_Matrix_2'] = 'delay(100);';
@@ -90,8 +90,8 @@ code += '};';
 
 //辅助块_点阵屏_清除显示
 Blockly.Arduino.HT16K33_Displayclear = function() {
- Blockly.Arduino.definitions_['include_HT16K33'] = '#include <HT16K33.h>';
- Blockly.Arduino.definitions_['var_Matrix'] = 'HT16K33 MixGo_HT16K33;';
+ Blockly.Arduino.definitions_['2_include_HT16K33'] = '#include <HT16K33.h>';
+ Blockly.Arduino.definitions_['var_declare_HT16K33'] = 'HT16K33 MixGo_HT16K33;';
  Blockly.Arduino.setups_['setup_Matrix_1'] = 'MixGo_HT16K33.begin(0x70);';
  Blockly.Arduino.setups_['setup_Matrix_2'] = 'delay(100);';
  var code = '';
@@ -102,8 +102,8 @@ Blockly.Arduino.HT16K33_Displayclear = function() {
 //辅助块_点阵屏_清除显示
 Blockly.Arduino.HT16K33_brightness = function() {
   var BRIGHTNESS = Blockly.Arduino.valueToCode(this, 'Brightness', Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.definitions_['include_HT16K33'] = '#include <HT16K33.h>';
-  Blockly.Arduino.definitions_['var_Matrix'] = 'HT16K33 MixGo_HT16K33;';
+  Blockly.Arduino.definitions_['2_include_HT16K33'] = '#include <HT16K33.h>';
+  Blockly.Arduino.definitions_['var_declare_HT16K33'] = 'HT16K33 MixGo_HT16K33;';
   Blockly.Arduino.setups_['setup_Matrix_1'] = 'MixGo_HT16K33.begin(0x70);';
   Blockly.Arduino.setups_['setup_Matrix_2'] = 'delay(100);';
   var code = '';
@@ -173,8 +173,8 @@ Blockly.Blocks.sensor_sound=Blockly.Blocks.sensor_mixgo_sound;
 Blockly.Arduino.mixgo_MPU9250 = function() {
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
     Blockly.Arduino.definitions_['include_FaBo9Axis_MPU9250'] = '#include <FaBo9Axis_MPU9250.h>';
-  Blockly.Arduino.definitions_['var_MPU9250'] = 'FaBo9Axis fabo_9axis;\n float ax,ay,az,gx,gy,gz,mx,my,mz;\n';
-  Blockly.Arduino.setups_['setup_mpu9250'] = 'Serial.begin(115200);\nfabo_9axis.begin();\n';
+  Blockly.Arduino.definitions_['var_declare_MPU9250'] = 'FaBo9Axis fabo_9axis;\n float ax,ay,az,gx,gy,gz,mx,my,mz;';
+  Blockly.Arduino.setups_['setup_mpu9250'] = 'Serial.begin(115200);\nfabo_9axis.begin();';
   var dropdown_type = this.getFieldValue('MixGo_MPU9250_GETAB');
   var code = '';
   if (dropdown_type == "a") code += 'fabo_9axis.readAccelX()';
