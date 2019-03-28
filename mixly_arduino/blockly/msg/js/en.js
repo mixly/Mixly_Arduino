@@ -2491,3 +2491,17 @@ Blockly.MIXLY_MOTOR_SPEED = '速度(-255~255)';
 Blockly.MIXLY_MOTOR = '电机';
 Blockly.MIXLY_MOTOR_SPEED_PIN='速度管脚';
 Blockly.MIXLY_MOTOR_DIR_PIN='方向管脚';
+
+Blockly.MIXLY_HARDWARE='硬件交互';
+Blockly.MIXLY_HARDWARE_SERIAL='串口號';
+Blockly.MIXLY_HARDWARE_START='啟動交互';
+Blockly.MixGo_MPU9250='MPU9250 9-Axis';
+Blockly.MixGo_MPU9250_AX='X-Accel';
+Blockly.MixGo_MPU9250_AY='Y-Accel';
+Blockly.MixGo_MPU9250_AZ='Z-Accel';
+Blockly.MixGo_MPU9250_GX='x-Gyro';
+Blockly.MixGo_MPU9250_GY='y-Gyro';
+Blockly.MixGo_MPU9250_GZ='z-Gyro';
+Blockly.MixGo_MPU9250_MX='x-Magnet';
+Blockly.MixGo_MPU9250_MY='y-Magnet';
+Blockly.MixGo_MPU9250_MZ='z-Magnet';
