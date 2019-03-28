@@ -427,7 +427,7 @@ uint8_t SevenSegmentTM1637::comReadByte(void) const {
     digitalHigh(_pinClk);
 
     if ( isHigh(_pinDIO) ) {
-      readKey = readKey | B1000000;
+      readKey = readKey | B10000000;
     };
 
     delayMicroseconds(30);
