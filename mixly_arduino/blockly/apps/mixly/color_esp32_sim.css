@@ -452,13 +452,13 @@ text.blocklyText {
 .mb_led_col_15 { left: 348px; }
 
 #mixgo_led_1{
-    left: 14.5px;
-    top: 78px;
+    left: 15.5px;
+    top: 84px;
 }
 
 #mixgo_led_2{
     left: 379.5px;
-    top: 78px;
+    top: 84px;
 }
 
 #mixgo_btn_A {
@@ -523,4 +523,7 @@ text.blocklyText {
   width: 32px;
   height: 32px;
   margin-left: 2px;
+}
+.input-short{
+  width: 40%;
 }

@@ -603,9 +603,20 @@ var $builtinmodule = function(name) {
             }
 
         }
-
+        var draw_char = function(ch, x, y){
+            console.log(fontbinArr);
+            var _font_width = parseInt(fontbinArr[0].substring(0,3),2);
+            var _font_height = parseInt(fontbinArr[0].substring(3),2);
+            console.log(_font_width);
+            console.log(_font_height);
+            if (x < -_font_width || y < -_font_height || x > _font_width || y > _font_height){
+                return; //超出可视区域就不用画了
+            }
+        }
         var mod = {
             data: {
+                width: 16,
+                height: 8,
                 brightness: 1,
                 blinkRate: 2,
             },
@@ -715,7 +726,8 @@ var $builtinmodule = function(name) {
         mod.show = new Sk.builtin.func(show);
 
         function scroll(message, delay) {
-            if(delay == undefined)
+            draw_char(message, 0 , 0);
+            /*if(delay == undefined)
                 delay = Sk.builtin.int_(400);
 
             if(message.tp$name == "number") {
@@ -755,9 +767,9 @@ var $builtinmodule = function(name) {
                     }
                 }
                 showScroll();
-            });
+            });*/
         }
-        scroll.co_varnames = ['text', 'delay'];
+        scroll.co_varnames = ['message', 'delay'];
         scroll.$defaults = [Sk.builtin.none, Sk.builtin.int_(400)];
         scroll.co_numargs = 2;
         mod.scroll = new Sk.builtin.func(scroll);

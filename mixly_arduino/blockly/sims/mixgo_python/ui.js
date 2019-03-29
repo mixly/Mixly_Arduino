@@ -1,5 +1,87 @@
 'use strict';
 
+var fontbin = `0508 0000 0000 003e 5b4f 5b3e 3e6b 4f6b
+3e1c 3e7c 3e1c 183c 7e3c 181c 577d 571c
+1c5e 7f5e 1c00 183c 1800 ffe7 c3e7 ff00
+1824 1800 ffe7 dbe7 ff30 483a 060e 2629
+7929 2640 7f05 0507 407f 0525 3f5a 3ce7
+3c5a 7f3e 1c1c 0808 1c1c 3e7f 1422 7f22
+145f 5f00 5f5f 0609 7f01 7f00 6689 956a
+6060 6060 6094 a2ff a294 0804 7e04 0810
+207e 2010 0808 2a1c 0808 1c2a 0808 1e10
+1010 100c 1e0c 1e0c 3038 3e38 3006 0e3e
+0e06 0000 0000 0000 005f 0000 0007 0007
+0014 7f14 7f14 242a 7f2a 1223 1308 6462
+3649 5620 5000 0807 0300 001c 2241 0000
+4122 1c00 2a1c 7f1c 2a08 083e 0808 0080
+7030 0008 0808 0808 0000 6060 0020 1008
+0402 3e51 4945 3e00 427f 4000 7249 4949
+4621 4149 4d33 1814 127f 1027 4545 4539
+3c4a 4949 3141 2111 0907 3649 4949 3646
+4949 291e 0000 1400 0000 4034 0000 0008
+1422 4114 1414 1414 0041 2214 0802 0159
+0906 3e41 5d59 4e7c 1211 127c 7f49 4949
+363e 4141 4122 7f41 4141 3e7f 4949 4941
+7f09 0909 013e 4141 5173 7f08 0808 7f00
+417f 4100 2040 413f 017f 0814 2241 7f40
+4040 407f 021c 027f 7f04 0810 7f3e 4141
+413e 7f09 0909 063e 4151 215e 7f09 1929
+4626 4949 4932 0301 7f01 033f 4040 403f
+1f20 4020 1f3f 4038 403f 6314 0814 6303
+0478 0403 6159 494d 4300 7f41 4141 0204
+0810 2000 4141 417f 0402 0102 0440 4040
+4040 0003 0708 0020 5454 7840 7f28 4444
+3838 4444 4428 3844 4428 7f38 5454 5418
+0008 7e09 0218 a4a4 9c78 7f08 0404 7800
+447d 4000 2040 403d 007f 1028 4400 0041
+7f40 007c 0478 0478 7c08 0404 7838 4444
+4438 fc18 2424 1818 2424 18fc 7c08 0404
+0848 5454 5424 0404 3f44 243c 4040 207c
+1c20 4020 1c3c 4030 403c 4428 1028 444c
+9090 907c 4464 544c 4400 0836 4100 0000
+7700 0000 4136 0800 0201 0204 023c 2623
+263c 1ea1 a161 123a 4040 207a 3854 5455
+5921 5555 7941 2254 5478 4221 5554 7840
+2054 5579 400c 1e52 7212 3955 5555 5939
+5454 5459 3955 5454 5800 0045 7c41 0002
+457d 4200 0145 7c40 7d12 1112 7df0 2825
+28f0 7c54 5545 0020 5454 7c54 7c0a 097f
+4932 4949 4932 3a44 4444 3a32 4a48 4830
+3a41 4121 7a3a 4240 2078 009d a0a0 7d3d
+4242 423d 3d40 4040 3d3c 24ff 2424 487e
+4943 662b 2ffc 2f2b ff09 29f6 20c0 887e
+0903 2054 5479 4100 0044 7d41 3048 484a
+3238 4040 227a 007a 0a0a 727d 0d19 317d
+2629 292f 2826 2929 2926 3048 4d40 2038
+0808 0808 0808 0808 382f 10c8 acba 2f10
+2834 fa00 007b 0000 0814 2a14 2222 142a
+1408 5500 5500 55aa 55aa 55aa ff55 ff55
+ff00 0000 ff00 1010 10ff 0014 1414 ff00
+1010 ff00 ff10 10f0 10f0 1414 14fc 0014
+14f7 00ff 0000 ff00 ff14 14f4 04fc 1414
+1710 1f10 101f 101f 1414 141f 0010 1010
+f000 0000 001f 1010 1010 1f10 1010 10f0
+1000 0000 ff10 1010 1010 1010 1010 ff10
+0000 00ff 1400 00ff 00ff 0000 1f10 1700
+00fc 04f4 1414 1710 1714 14f4 04f4 0000
+ff00 f714 1414 1414 1414 f700 f714 1414
+1714 1010 1f10 1f14 1414 f414 1010 f010
+f000 001f 101f 0000 001f 1400 0000 fc14
+0000 f010 f010 10ff 10ff 1414 14ff 1410
+1010 1f00 0000 00f0 10ff ffff ffff f0f0
+f0f0 f0ff ffff 0000 0000 00ff ff0f 0f0f
+0f0f 3844 4438 44fc 4a4a 4a34 7e02 0206
+0602 7e02 7e02 6355 4941 6338 4444 3c04
+407e 201e 2006 027e 0202 99a5 e7a5 991c
+2a49 2a1c 4c72 0172 4c30 4a4d 4d30 3048
+7848 30bc 625a 463d 3e49 4949 007e 0101
+017e 2a2a 2a2a 2a44 445f 4444 4051 4a44
+4040 444a 5140 0000 ff01 03e0 80ff 0000
+0808 6b6b 0836 1236 2436 060f 090f 0600
+0018 1800 0000 1010 0030 40ff 0101 001f
+0101 1e00 191d 1712 003c 3c3c 3c00 0000
+0000 `;
+var fontbinArr = fontbin.split(/[\s]/);
 var ui = {
     inited: false,
     pinCount : {
@@ -188,9 +270,7 @@ var ui = {
                 '<span id="curr_pinValue'+ pinNum + '">0</span>'+
             '</div>'+
             '<div class="col-sm-2 form-inline">'+
-                '<span>频率：</span>'+
-                '<input id="pinPeriod'+ pinNum +'" class="form-control" type="text" />'+
-                '<label class="control-label"></label>'+
+                '<span>频率：' + 2000 + '</span>'+
             '</div>'+
             '<div class="col-sm-2 col-sm-offest-2 form-inline">'+
                 '<button id="btn_delPin'+ pinNum + '" class="btn_deleterow btn-default form-control">删除</button>'+
@@ -199,7 +279,7 @@ var ui = {
        return module;
     },
     pinTouchModule: function(pinNum){
-        var module = '<div class="row form-line" id="row'+ ui.pinCount.rowid + '" pintype="touch" style="padding-top:7px;">'+
+        var module = '<div class="row form-line" id="pin'+ pinNum + '" pintype="touch" style="padding-top:7px;">'+
             '<label class="col-sm-2 control-label"></label>'+
             '<div class="col-sm-2">'+
                 '<span>触摸管脚#'+ pinNum +'</span>'+
@@ -222,9 +302,9 @@ var ui = {
         var halfSearch = function(Arr, targetNum){
             var left = 0;
             var right = Arr.length - 1;
-            var mid = (left + right) /2;
+            var mid;
             while(left <= right){
-                mid = (left + right) /2
+                mid = parseInt((left + right) / 2);
                 if(Arr[mid] < targetNum){
                     left = mid + 1;
                 }
@@ -235,10 +315,10 @@ var ui = {
                     return mid;
                 }
             }
-            return undefined;
+            return -1;
         };
         var targetPinIndex = halfSearch(ui.pinList.AllpinList, pinNum);
-        if(targetPinIndex){
+        if(targetPinIndex != -1){
             ui.pinList.AllpinList.splice(targetPinIndex,1);
             return true;
         }
@@ -276,6 +356,7 @@ var ui = {
                 thisSpan.text(thisSlider.bootstrapSlider('getValue'));
             }
             var Slider = $("#pinValue"+pinNum).bootstrapSlider();
+            $("#pinValue"+pinNum).bootstrapSlider('setValue', 0);
             var Span = $("#curr_pinValue"+pinNum);
             Slider.bootstrapSlider().on('change',function(){changeValue(Slider,Span);});
             $('.pinInput>.slider').css('width','100%');
@@ -310,22 +391,23 @@ var ui = {
         $(rowid).remove();
     },
     getPinValue: function(pinNum){
-        return parseInt($('#pinValue' + pinNum).val());
+        return parseInt($('#pinValue' + pinNum).val()) || parseInt($('#curr_pinValue' + pinNum).text());
     },
     setPinValue: function(pinNum, value){
-        $('#pinValue' + pinNum).val(value);
+        $('#pinValue' + pinNum).bootstrapSlider('setValue', value);
         $('#curr_pinValue' + pinNum).text(value);
     },
     //待测试
     setAnalogPinFreq: function(pinNum, freq){
-        return parseInt($('#pinPeriod' + pinNum).val());
+        $('#pinPeriod' + pinNum).text(freq);
     },
     //需要修改
-    bindDeletePinBtnEvent: function(id){
-        $(id).on('click',function(){
-            var row = $(this).parent().parent();
-            var rowid = '#' + row.attr('id');
+    bindDeletePinBtnEvent: function(pinNum){
+        $('#btn_delPin'+pinNum).off('click').on('click',function(){
+            var rowid = '#pin' + pinNum;
             ui.deletePinOption(rowid);
+            ui.pinList.AllpinList.push(pinNum);
+            ui.pinList.AllpinList.sort(function(a,b){return a - b});
         });
     },
     bindBtnEvent: function (btn_id, mod_btn_arr) {
@@ -422,17 +504,17 @@ var ui = {
     //设置按钮上方的板载LED
     setBoardLEDonoff: function (pinNum, brightness) {
         if(brightness === 0)
-            $('#mixgo_led_' + x).css('background-color','#000');
+            $('#mixgo_led_' + pinNum).css('background-color','#000');
         else
-            $('#mixgo_led_' + x).css('background-color','#f00');
+            $('#mixgo_led_' + pinNum).css('background-color','#00f');
     },
     setBoardLEDbrightness: function (pinNum, val) {
-        if(typeof(val) == 'number' && val > 0){
+        if(typeof(val) == 'number' && val > 0 && val < 1024){
             decval = (val / 8) + 127; //将0~1023转换成RGB(127,255)区间
-            $('#mb_led_' + x).css('background-color', '#' + decval.toString(16) +'0000');
+            $('#mixgo_led_' + pinNum).css('background-color', '#0000' + decval.toString(16));
         }
         else{
-            $('#mb_led_' + x).css('background-color','#000');
+            $('#mixgo_led_' + pinNum).css('background-color','#000');
         }   
     },
     output: function (s) {

@@ -8,21 +8,22 @@ var $builtinmodule = function (name) {
                 self.mode = mode.v;
                 if(self.mode == 'Out'){       
                     ui.addPinOption('digitalOut', self.pinNum);
+                    ui.bindDeletePinBtnEvent(self.pinNum);
                 }
                 else{
                     ui.addPinOption('digitalIn', self.pinNum);
+                    ui.bindDeletePinBtnEvent(self.pinNum);
                 }
             }
-            else{
-                ui.addPinOption('digitalOut', self.pinNum);
-            }
+            
         });
         $loc.value = new Sk.builtin.func(function(self, value) {
             if(value && self.mode === 'Out'){
             	self.value = value.v;
                 ui.setPinValue(self.pinNum, self.value);
+                debugger;
                 if(self.pinNum === 0 || self.pinNum === 5){
-                    ui.setBoardLEDonoff(self.pinNum / 5);
+                    ui.setBoardLEDonoff( parseInt((self.pinNum / 5) + 1), self.value);
                 }
             }
             else{
@@ -32,14 +33,15 @@ var $builtinmodule = function (name) {
         });
         $loc.PULL_UP = new Sk.builtin.str('PULL_UP');
         $loc.PULL_DOWN = new Sk.builtin.str('PULL_DOWN');
-        $loc.In = new Sk.builtin.str('In');
-        $loc.Out = new Sk.builtin.str('Out');
+        $loc.IN = new Sk.builtin.str('In');
+        $loc.OUT = new Sk.builtin.str('Out');
     }, "Pin", []);
     mod.ADC =  new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self, pin) {
             self.pin = pin;
             self.pinNum = pin.pinNum;
             ui.addPinOption('ADC', self.pinNum);
+            ui.bindDeletePinBtnEvent(self.pinNum);
         });
         $loc.atten = new Sk.builtin.func(function(self, atten) {
             self.atten = atten.v;
@@ -58,12 +60,13 @@ var $builtinmodule = function (name) {
             self.pin = pin;
             self.pinNum = pin.pinNum;
             ui.addPinOption('PWM', self.pinNum);
+            ui.bindDeletePinBtnEvent(self.pinNum);
         });
         $loc.duty = new Sk.builtin.func(function(self, duty) {
             self.duty = duty.v;
             ui.setPinValue(self.pin.pinNum, duty.v)
         });
-        $loc.freq = new Sk.builtin.func(function(self, ferq) {
+        $loc.freq = new Sk.builtin.func(function(self, freq) {
             ui.setAnalogPinFreq(self.pin.pinNum, freq.v);
         });
     }, "PWM", []);
@@ -72,9 +75,10 @@ var $builtinmodule = function (name) {
             self.pin = pin;
             self.pinNum = pin.pinNum;
             ui.addPinOption('TouchPad', self.pinNum);
+            ui.bindDeletePinBtnEvent(self.pinNum);
         });
-        $loc.read = new Sk.builtin.func(function(self, value) {
-            self.value = ui.getPinValue(self.pin.pinNum);
+        $loc.read = new Sk.builtin.func(function(self) {
+            self.value = ui.getPinValue(self.pinNum);
             return new Sk.builtin.int_(self.value);
         });
     }, "TouchPad", []);
