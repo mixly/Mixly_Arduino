@@ -776,7 +776,8 @@ var MSG = {
 	catTuple:"元组",
 	catIot:"物联网",
 	catSet:"集合",
-	catData:"数据"
+	catData:"数据",
+	catHardware:"硬件交互"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='返回高电平或低电平';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='返回指定管脚的电平值';
@@ -2554,3 +2555,17 @@ Blockly.MIXLY_MOTOR_SPEED = '速度(-255~255)';
 Blockly.MIXLY_MOTOR= '电机';
 Blockly.MIXLY_MOTOR_SPEED_PIN='速度管脚';
 Blockly.MIXLY_MOTOR_DIR_PIN='方向管脚';
+
+Blockly.MIXLY_HARDWARE='硬件交互';
+Blockly.MIXLY_HARDWARE_SERIAL='串口号';
+Blockly.MIXLY_HARDWARE_START='启动交互';
+Blockly.MixGo_MPU9250='9轴加速度传感器';
+Blockly.MixGo_MPU9250_AX='x轴加速度';
+Blockly.MixGo_MPU9250_AY='y轴加速度';
+Blockly.MixGo_MPU9250_AZ='z轴加速度';
+Blockly.MixGo_MPU9250_GX='x轴角速度';
+Blockly.MixGo_MPU9250_GY='y轴角速度';
+Blockly.MixGo_MPU9250_GZ='z轴角速度';
+Blockly.MixGo_MPU9250_MX='x轴磁场';
+Blockly.MixGo_MPU9250_MY='y轴磁场';
+Blockly.MixGo_MPU9250_MZ='z轴磁场';

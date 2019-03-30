@@ -17,7 +17,7 @@ Blockly.Arduino.storage_file_write = function () {
 	var mode = this.getFieldValue('MODE');
 	var data = Blockly.Arduino.valueToCode(this, 'data', Blockly.Arduino.ORDER_ATOMIC);
 	var filename = Blockly.Arduino.valueToCode(this, 'FILENAME', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['include_FS_SPIFFS'] = '#include "FS.h"\n#include "SPIFFS.h"\n';
+	Blockly.Arduino.definitions_['include_FS_SPIFFS'] = '#include "FS.h"\n#include "SPIFFS.h"';
 	var funcName = "FS_"+mode;
 	var code2 = 'void' + ' ' + funcName + '(fs::FS &fs, const char * path, const char * message) {\nFile file = fs.open(path, '+mode+');\nfile.print(message);\n}\n';
 	Blockly.Arduino.definitions_[funcName] = code2;

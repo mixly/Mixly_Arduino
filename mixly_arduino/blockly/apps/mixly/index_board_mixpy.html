@@ -25,7 +25,9 @@
 
   <script type="text/javascript" src="../../blocks/python/variables.js"></script>
   <script type="text/javascript" src="../../generators/python/variables.js"></script>
+  <script src="../../blocks/mixpy_python/hardware_arduino_profile.js"></script>
 	<!-- blocks file -->
+    <script src="../../blocks/mixpy_python/pins.js"></script>
     <script src="../../blocks/mixpy_python/inout.js"></script>
     <script src="../../blocks/mixpy_python/system.js"></script>
     <script src="../../blocks/python/control.js"></script>
@@ -39,8 +41,10 @@
     <script src="../../blocks/mixpy_python/turtle.js"></script>
     <script src="../../blocks/python/tuple.js"></script>
     <script src="../../blocks/python/procedures.js"></script>
+    <script src="../../blocks/mixpy_python/hardware.js"></script>
 
 	<!-- generator file -->
+    <script src="../../generators/mixpy_python/pins.js"></script>
     <script src="../../generators/mixpy_python/inout.js"></script>
     <script src="../../generators/mixpy_python/system.js"></script>
     <script src="../../generators/python/control.js"></script>
@@ -54,6 +58,7 @@
     <script src="../../generators/mixpy_python/factory.js"></script>
     <script src="../../generators/python/tuple.js"></script>
     <script src="../../generators/python/procedures.js"></script>
+    <script src="../../generators/mixpy_python/hardware.js"></script>
     <script src="js/lib/ace/ace.js" type="application/javascript"></script>
     <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
 
@@ -72,6 +77,7 @@
     <script src="../../converters/python/dicts.js" type="application/javascript"></script>
     <script src="../../converters/python/set.js" type="application/javascript"></script>
     <script src="../../converters/mixpy_python/turtle.js" type="application/javascript"></script>
+    <script src="../../converters/mixpy_python/hardware.js"></script>
     <script src="./js/python_to_blockly.js" type="application/javascript"></script>
     <script src="js/mixpyProject.js" type="application/javascript"></script>
     <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
@@ -1334,10 +1340,68 @@
                 </shadow>
               </value>
           </block>
-
-
-
-
+      </category>
+      <category id="catHardware" colour="40">
+        <block type="hardware_arduino_start">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">s4a</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="hardware_arduino_digital_write">
+        <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">s4a</field>
+            </shadow>
+          </value>
+        <value name="PIN">
+          <shadow type="pins_digital_write"></shadow>
+        <field name="PIN">13</field>
+        </value>
+        <value name="STAT">
+          <shadow type="inout_highlow">
+          </shadow>
+        </value>
+      </block>
+      <block type="hardware_arduino_digital_read">
+        <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">s4a</field>
+            </shadow>
+          </value>
+        <value name="PIN">
+          <shadow type="pins_digital_read"></shadow>
+        <field name="PIN">2</field>
+        </value>
+      </block>
+      <block type="hardware_arduino_analog_write">
+         <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">s4a</field>
+            </shadow>
+          </value>
+        <value name="PIN">
+          <shadow type="pins_analog_write"></shadow>
+        <field name="PIN">5</field>
+        </value>
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">255</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="hardware_arduino_analog_read">
+        <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">s4a</field>
+            </shadow>
+          </value>
+        <value name="PIN">
+          <shadow type="pins_analog_read"></shadow>
+        <field name="PIN">0</field>
+        </value>
+      </block>
       </category>
       <sep></sep>
       <category id="catVar" colour="330" custom="VARIABLE">

@@ -6,18 +6,14 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.base.HUE = 20//'#ae3838';//40;
 
-
-Blockly.Blocks['inout_pin_pressed'] = {
+Blockly.Blocks.inout_touchRead = {
     init: function(){
         this.setColour(20);
-        this.appendValueInput('pin')
-            .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET)
-            .appendField(Blockly.MIXLY_ESP32_TOUCH)
-            .appendField(Blockly.MIXLY_PIN);
-        // this.appendDummyInput()
-        //     .appendField(Blockly.MIXLY_IS_TOUCHED);
+        this.appendValueInput('PIN')
+        .appendField(Blockly.MIXLY_ESP32_TOUCH)
+        .appendField(Blockly.MIXLY_PIN);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
+        .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
         this.setOutput(true, Number);
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_ESP32_INOUT_PIN_PRESSED_TOOLTIP);
@@ -36,7 +32,7 @@ Blockly.Blocks.inout_analog_write = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE);
-  }
+}
 };
 Blockly.Blocks.inout_pwm_analog_write = {
   init: function(){
@@ -48,17 +44,17 @@ Blockly.Blocks.inout_pwm_analog_write = {
     this.appendValueInput("FREQ", Number)
     .appendField(Blockly.MIXLY_FREQUENCY + Blockly.MIXLY_STAT)
     .setCheck(Number);
-     this.appendValueInput('CHANNEL')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_CHANNEL);
-     this.appendValueInput("NUM", Number)
+    this.appendValueInput('CHANNEL')
+    .setCheck(Number)
+    .appendField(Blockly.MIXLY_CHANNEL);
+    this.appendValueInput("NUM", Number)
     .appendField(Blockly.MIXLY_VALUE2)
     .setCheck(Number);
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.MIXLY_ESP32_INOUT_PWM_ANALOG_WRITE_SET_FREQ_TOOLTIP);
-  }
+}
 };
 
 Blockly.Blocks.touchAttachInterrupt = {
@@ -67,7 +63,7 @@ Blockly.Blocks.touchAttachInterrupt = {
     this.appendValueInput("PIN", Number)
     .appendField(Blockly.MIXLY_TOUCHATTACHINTERRUPT_PIN)
     .setCheck(Number);
-     this.appendValueInput("threshold", Number)
+    this.appendValueInput("threshold", Number)
     .appendField(Blockly.MIXLY_ESP32_THRESHOLD)
     .setCheck(Number);
     this.appendDummyInput("");
@@ -76,5 +72,5 @@ Blockly.Blocks.touchAttachInterrupt = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
-  }
+}
 };

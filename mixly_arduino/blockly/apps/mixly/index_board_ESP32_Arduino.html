@@ -22,7 +22,7 @@
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
   <script type="text/javascript" src="myblock.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/blynk.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/blynk.js"></script>
   <script type="text/javascript" src="../../generators/arduino/pins.js"></script>
   <script type="text/javascript" src="../../generators/arduino/inout.js"></script>
   <script type="text/javascript" src="../../generators/arduino/control.js"></script>
@@ -54,8 +54,7 @@
   <script type="text/javascript" src="../../generators/esp32_Arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/actuator.js"></script>
-  <script type="text/javascript" src="../../generators/esp32_Arduino/MixGo.js"></script>
-
+  
   <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script> 
   <script type="text/javascript" src="../../blocks/arduino/pins.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/inout.js"></script>
@@ -90,8 +89,7 @@
   <script type="text/javascript" src="../../blocks/esp32_Arduino/procedures.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/actuator.js"></script>
-  <script type="text/javascript" src="../../blocks/esp32_Arduino/MixGo.js"></script>
-  <!-- 过去index.html中的js代码都会被放到这个js中-->
+   <!-- 过去index.html中的js代码都会被放到这个js中-->
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="color_esp32_arduino_simple.css" />
   <!-- ACE中字体放缩按钮样式-->
@@ -213,8 +211,8 @@
         <shadow type="pins_digital"></shadow>
       </value>
     </block>
-    <block type="inout_pin_pressed">
-      <value name="pin">
+    <block type="inout_touchRead">
+      <value name="PIN">
         <shadow type="pins_touch">
         </shadow>
       </value>
@@ -349,11 +347,14 @@
         </shadow>
       </value>
     </block>
-    <block type="controls_hw_timer_start"></block>
-    <block type="controls_hw_timer_stop"></block>
+    <block type="controls_hw_timer_start">
+    </block>
+    <block type="controls_hw_timer_stop">
+    </block>
   </category>
   <category id="catMath" colour="230">
-    <block type="math_number"></block>
+    <block type="math_number">
+    </block>
     <block type="math_arithmetic">
       <value name="A">
         <shadow type="math_number">
@@ -378,8 +379,10 @@
         </shadow>
       </value>
     </block>
-    <block type="math_trig"></block>
-    <block type="math_to_int"></block>
+    <block type="math_trig">
+    </block>
+    <block type="math_to_int">
+    </block>
     <block type="math_max_min">
       <value name="A">
         <shadow type="math_number">
@@ -1138,28 +1141,6 @@
       </block>
     </value>
   </block>
-  <block type="oled_draw4Str" >
-    <value name="Text_line1">
-      <shadow type="text">
-        <field name="TEXT">Example Line1!</field>
-      </shadow>
-    </value>
-    <value name="Text_line2">
-      <shadow type="text">
-        <field name="TEXT">Example Line2!</field>
-      </shadow>
-    </value>
-    <value name="Text_line3">
-      <shadow type="text">
-        <field name="TEXT">Example Line3!</field>
-      </shadow>
-    </value>
-    <value name="Text_line4">
-      <shadow type="text">
-        <field name="TEXT">Example Line4!</field>
-      </shadow>
-    </value>
-  </block>
   <block type="oled_drawPixe" >
     <value name="POS_X">
       <shadow type="math_number">
@@ -1371,7 +1352,8 @@
     </shadow>
   </value>
 </block>
-<block type="display_TM1637_clearDisplay"></block>
+<block type="display_TM1637_clearDisplay">
+</block>
 </category>
 <category id="catMax7219" colour="180">
   <block type="MAX7219_init">
@@ -1421,7 +1403,6 @@
   </value>
 </block>
 <block type="MAX7219_fillScreen" >
-
 </block>
 <block type="MAX7219_Rotation">
   <value name="NUM">
@@ -1432,7 +1413,8 @@
 </block>
 <block type="MAX7219_DisplayChar">
   <value name="LEDArray">
-    <block type="display_Matrix_LedArray"></block>
+    <block type="display_Matrix_LedArray">
+    </block>
   </value>
 </block>
 <block type="MAX7219_scrollMessage">
@@ -1447,17 +1429,16 @@
   </shadow>
 </value>
 </block>
-
 </category>
 </category>
 <category id="catVar" colour="330" custom="VARIABLE">
 </category>
-<category id="catFun" custom="PROCEDURE" colour="290"></category>
+<category id="catFun" custom="PROCEDURE" colour="290">
 </category>
 <category id="catblynkIOT" name="Blynk IoT" colour="160">
   <block type="blynk_QR" name="二维码">
   </block>
-  <block type="blynk_server_esp32" name="服务器信息">
+  <block type="blynk_server" name="服务器信息">
     <value name="server_add">
       <shadow type="text">
         <field name="TEXT">116,62,49,166</field>
@@ -1478,7 +1459,7 @@
         </shadow>
       </value>
     </block>
-    <block type="blynk_smartconfig_esp32" name="一键配网">
+    <block type="blynk_smartconfig" name="一键配网">
       <value name="server_add">
         <shadow type="text">
           <field name="TEXT">116,62,49,166</field>
@@ -1601,7 +1582,8 @@
                   <field name="VAR">minute</field>
                 </block>
               </value>
-              <next></next>
+              <next>
+              </next>
             </block>
           </next>
         </block>
@@ -1661,7 +1643,8 @@
       </block>
     </statement>
   </block>
-  <block type="blynk_WidgetRTC_get_time"></block>
+  <block type="blynk_WidgetRTC_get_time">
+  </block>
   <block type="blynk_iot_playmusic">
     <field name="Vpin">V0</field>
     <statement name="DO">
@@ -1889,58 +1872,13 @@
   <block type="Blynk_iot_BLYNK_APP_DISCONNECTED">
     <statement name="DO"></statement>
   </block>
-  <block type="Blynk_iot_BLYNK_syncAll" ></block>
+  <block type="Blynk_iot_BLYNK_syncAll" >
+  </block>
   <block type="blynk_iot_syncVirtual">
     <field name="Vpin">V0</field>
   </block>
 </category>
-<category id="catMixGo" name="MixGo" colour="160">
-  <block type="HT16K33_TEXT">
-    <value name="TEXT">
-      <shadow type="text">
-        <field name="TEXT">ArduBits</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="HT16K33_POS">
-    <value name="XVALUE">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="YVALUE">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="HT16K33_DisplayChar">
-    <value name="Chars">
-      <block type="HT16K33_LedArray"></block>
-    </value>
-  </block>
-  <block type="HT16K33_Displayclear">
-  </block>
-  <block type="HT16K33_show_image">
-    <value name="data">
-      <shadow type="pins_builtinimg"></shadow>
-    </value>
-  </block>
-  <block type="HT16K33_blink_rate">
-    <value name="x">
-      <shadow type="math_number">
-        <field name="NUM">2</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="HT16K33_brightness">
-    <value name="Brightness">
-      <shadow type="math_number">
-        <field name="NUM">2</field>
-      </shadow>
-    </value>
-  </block>
-</category>
+
 </xml>
 <script>
   if(company_block!=null){

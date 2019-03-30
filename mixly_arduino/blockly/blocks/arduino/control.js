@@ -221,7 +221,6 @@ Blockly.Blocks['controls_if'] = {
    * @this Blockly.Block
    */
   domToMutation: function(xmlElement) {
-    debugger;
     var containerBlock = this;
     var valueConnections = [];
     var statementConnections = [];

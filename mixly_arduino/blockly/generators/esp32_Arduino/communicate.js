@@ -155,8 +155,8 @@ Blockly.Arduino.spi_transfer = function () {
 };
 Blockly.Arduino.RFID_init = function() {
 	
-	Blockly.Arduino.definitions_['define_SPI'] = '#include <SPI.h>';
-	Blockly.Arduino.definitions_['define_RFID'] = '#include <RFID.h>';		
+	Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
+	Blockly.Arduino.definitions_['include_RFID'] = '#include <RFID.h>';		
 	Blockly.Arduino.definitions_['define_origin'] = 'RFID rfid(10,5);';
 	Blockly.Arduino.definitions_['define_i and tmp'] = 'unsigned char i,tmp;';
 	Blockly.Arduino.definitions_['define_status'] = 'unsigned char status;';		
@@ -359,11 +359,10 @@ Blockly.Arduino.RFID_in = function() {
 
   Blockly.Arduino.serialBT_Init = function () {
     var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || profile.default.serial;
-    Blockly.Arduino.definitions_['include_BluetoothSerial'] = '#include "BluetoothSerial.h"\nBluetoothSerial SerialBT;\n';
+    Blockly.Arduino.definitions_['var_declare_BluetoothSerial'] = '#include "BluetoothSerial.h"\nBluetoothSerial SerialBT;';
     Blockly.Arduino.setups_['setup_serial_BT'] =  'SerialBT.begin(' + content + ');';
     return '';
   };
-
 
   Blockly.Arduino.serialBT_available = function () {
     var code =  "SerialBT.available() > 0";

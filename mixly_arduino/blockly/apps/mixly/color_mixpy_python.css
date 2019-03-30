@@ -312,22 +312,30 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
   background:url('../../media/mark/turtle2.png') no-repeat;
   background-size: 100% auto; 
 }
+#\:b>div>span.blocklyTreeIcon.blocklyTreeIconNone{
+  background:url('../../media/mark/hardware.png') no-repeat;
+  background-size: 100% auto; 
+}
+#\:b>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{
+  background:url('../../media/mark/hardware2.png') no-repeat;
+  background-size: 100% auto; 
+}
 
 
-#\:c>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+#\:d>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
   background:url('../../media/mark/var.png') no-repeat;
   background-size: 100% auto; 
 }
-#\:c>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+#\:d>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
   background:url('../../media/mark/var2.png') no-repeat;
   background-size: 100% auto; 
 }
 
-#\:d>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+#\:e>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
   background:url('../../media/mark/func.png') no-repeat;
   background-size: 100% auto; 
 }
-#\:d>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+#\:e>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
   background:url('../../media/mark/func2.png') no-repeat;
   background-size: 100% auto; 
 }

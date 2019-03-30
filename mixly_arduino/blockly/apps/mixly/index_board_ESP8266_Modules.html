@@ -1135,7 +1135,7 @@
         </block>
       </value>
     </block>
-    <block type="oled_draw4Str">
+  <!--   <block type="oled_draw4Str">
       <value name="Text_line1">
         <shadow type="text">
           <field name="TEXT">Hello,world!</field>
@@ -1156,7 +1156,7 @@
           <field name="TEXT">qiujiongtao</field>
         </shadow>
       </value>
-    </block>
+    </block> -->
     <block type="oled_drawPixe" name="画点">
       <value name="POS_X">
         <shadow type="math_number">
@@ -1449,7 +1449,7 @@
 <category id="catFun" custom="PROCEDURE" colour="290"></category>
 <category id="catblynkIOT" name="Blynk IoT" colour="160">
   <block type="blynk_QR"></block>
-  <block type="blynk_server_esp8266">
+  <block type="blynk_server">
     <value name="server_add">
       <shadow type="text">
         <field name="TEXT">116,62,49,166</field>
@@ -1471,18 +1471,18 @@
       </shadow>
     </value>
   </block>
-        <!-- <block type="blynk_smartconfig_esp8266" name="一键配网">
-        <value name="server_add">
-        <shadow type="text">
+  <block type="blynk_smartconfig" name="一键配网">
+    <value name="server_add">
+      <shadow type="text">
         <field name="TEXT">116,62,49,166</field>
-</shadow>
-        </value>
-        <value name="auth_key">
-        <shadow type="text">
+      </shadow>
+    </value>
+    <value name="auth_key">
+      <shadow type="text">
         <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>
-</shadow>
-        </value>
-      </block> -->
+      </shadow>
+    </value>
+  </block>
         <!-- <block type="blynk_usb_server" name="服务器USB信息">
         <value name="auth_key">
         <shadow type="text">

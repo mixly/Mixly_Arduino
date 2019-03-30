@@ -22,7 +22,6 @@ Blockly.Blocks['pins_button'] = {
   }
 };
 
-
 Blockly.Blocks['pins_touch'] = {
    init: function() {
     this.setColour(Blockly.Blocks.pins.HUE);
@@ -38,24 +37,6 @@ Blockly.Blocks['pins_serial'] = {
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown(profile.default.serial_pin), 'PIN');
         this.setOutput(true, Number);
-    }
-};
-
-Blockly.Blocks['pins_builtinimg'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.display.HUE);
-        this.appendDummyInput("")
-            .appendField(new Blockly.FieldDropdown(profile.default.builtinimg), 'PIN');
-        this.setOutput(true, "esp32_image");
-    }
-};
-
-Blockly.Blocks['pins_imglist'] = {
-    init: function() {
-        this.setColour(Blockly.Blocks.pins.HUE);
-        this.appendDummyInput("")
-            .appendField(new Blockly.FieldDropdown(profile.default.imglist), 'PIN');
-        this.setOutput(true);
     }
 };
 

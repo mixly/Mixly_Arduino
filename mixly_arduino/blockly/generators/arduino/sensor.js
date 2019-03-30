@@ -59,7 +59,7 @@ Blockly.Arduino.dht11 = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     var what = this.getFieldValue('WHAT');
     Blockly.Arduino.definitions_['include_dht'] = '#include <dht.h>';
-    Blockly.Arduino.definitions_['var_dht_' + dropdown_pin] = 'dht myDHT_' + dropdown_pin + ';';
+    Blockly.Arduino.definitions_['var_declare_dht' + dropdown_pin] = 'dht myDHT_' + dropdown_pin + ';';
     var funcName = 'dht_' + dropdown_pin + '_get' + what;
     var code = 'int' + ' ' + funcName + '() {\n'
 	+ '  int chk = myDHT_' + dropdown_pin + '.read' + sensor_type + '(' + dropdown_pin + ');\n'
@@ -81,16 +81,16 @@ Blockly.Arduino.ds18b20 = function () {
     var unit = this.getFieldValue('UNIT');
     Blockly.Arduino.definitions_['include_OneWire'] = '#include <OneWire.h>';
     Blockly.Arduino.definitions_['include_DallasTemperature'] = '#include <DallasTemperature.h>';
-    Blockly.Arduino.definitions_['var_OneWire_oneWire_' + dropdown_pin] = 'OneWire oneWire_' + dropdown_pin + '(' + dropdown_pin + ');';
-    Blockly.Arduino.definitions_['var_DallasTemperature_sensors_' + dropdown_pin] = 'DallasTemperature sensors_' + dropdown_pin + '(&oneWire_' + dropdown_pin + ');';
-    Blockly.Arduino.definitions_['var_DeviceAddress_insideThermometer'] = 'DeviceAddress insideThermometer;';
+    Blockly.Arduino.definitions_['var_declare_OneWire_DallasTemperature_sensors_' + dropdown_pin] = 'OneWire oneWire_' + dropdown_pin + '(' + dropdown_pin + ');\nDallasTemperature sensors_' + dropdown_pin + '(&oneWire_' + dropdown_pin + ');';
+    Blockly.Arduino.definitions_['var_declare_DeviceAddress_insideThermometer'] = 'DeviceAddress insideThermometer;';
+
     Blockly.Arduino.setups_['setup_sensors_' + dropdown_pin + '_getAddress'] = 'sensors_' + dropdown_pin + '.getAddress(insideThermometer, 0);';
     Blockly.Arduino.setups_['setup_sensors_' + dropdown_pin + '_setResolution'] = 'sensors_' + dropdown_pin + '.setResolution(insideThermometer, 9);';
     var funcName = 'ds18b20_' + dropdown_pin + '_getTemp';
     var code = 'float' + ' ' + funcName + '(int w) {\n'
-	+ '  sensors_' + dropdown_pin + '.requestTemperatures();\n'
-	+ '  if(w==0) {\nreturn sensors_' + dropdown_pin + '.getTempC(insideThermometer);\n}\n'
-	+ '  else {\nreturn sensors_' + dropdown_pin + '.getTempF(insideThermometer);\n}\n'
+	+ 'sensors_' + dropdown_pin + '.requestTemperatures();\n'
+	+ 'if(w==0) {\nreturn sensors_' + dropdown_pin + '.getTempC(insideThermometer);\n}\n'
+	+ 'else {\nreturn sensors_' + dropdown_pin + '.getTempF(insideThermometer);\n}\n'
 	+ '}\n';
     Blockly.Arduino.definitions_[funcName] = code;
     return ['ds18b20_' + dropdown_pin + '_getTemp(' + unit + ')', Blockly.Arduino.ORDER_ATOMIC];
@@ -99,7 +99,7 @@ Blockly.Arduino.weightSensor = function () {
   var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_Hx711'] = '#include <Hx711.h>';
-  Blockly.Arduino.definitions_['Hx711_scale'] = 'Hx711 scale' + dropdown_pin1 + '_' + dropdown_pin2+" ("+dropdown_pin1+","+dropdown_pin2+");";
+  Blockly.Arduino.definitions_['var_declare_Hx711'] = 'Hx711 scale' + dropdown_pin1 + '_' + dropdown_pin2+" ("+dropdown_pin1+","+dropdown_pin2+");";
   var code = ' scale' + dropdown_pin1 + '_' + dropdown_pin2+'.getGram()';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 }
@@ -150,7 +150,7 @@ Blockly.Arduino.ADXL345 = function() {
   Blockly.Arduino.definitions_['include_ADXL345'] = '#include <ADXL345.h>';
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
   Blockly.Arduino.definitions_['include_I2Cdev'] = '#include <I2Cdev.h>';
-  Blockly.Arduino.definitions_['var_ADXL345'] = 'ADXL345 accel;';
+  Blockly.Arduino.definitions_['var_declare_ADXL345'] = 'ADXL345 accel;';
   Blockly.Arduino.setups_['setup_ADXL345-A'] = 'Wire.begin();';
   Blockly.Arduino.setups_['setup_ADXL345-B'] = 'accel.initialize();';
   var dropdown_type = this.getFieldValue('ADXL345_PIN');
