@@ -1,5 +1,5 @@
-#ifndef _HT16K33_H
-#define _HT16K33_H
+#ifndef _ZT16K33_H
+#define _ZT16K33_H
 
 #include <Arduino.h>
 #include <Print.h>

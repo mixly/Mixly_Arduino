@@ -7,7 +7,7 @@ goog.require('Blockly.Arduino');
 
 //执行器_点阵屏显示_字符显示
 Blockly.Arduino.HT16K33_TEXT = function() {
-  Blockly.Arduino.definitions_['2_include_HT16K33'] = '#include <HT16K33.h>';
+  Blockly.Arduino.definitions_['include_HT16K33'] = '#include <ZT16K33.h>';
   Blockly.Arduino.definitions_['var_declare_HT16K33'] = 'HT16K33 MixGo_HT16K33;';
   Blockly.Arduino.setups_['setup_Matrix_1'] = 'MixGo_HT16K33.begin(0x70);';
   Blockly.Arduino.setups_['setup_Matrix_2'] = 'delay(100);';
@@ -18,7 +18,7 @@ Blockly.Arduino.HT16K33_TEXT = function() {
 
 //执行器_点阵屏显示_画点显示
 Blockly.Arduino.HT16K33_POS = function() {
-  Blockly.Arduino.definitions_['2_include_HT16K33'] = '#include <HT16K33.h>';
+  Blockly.Arduino.definitions_['2_include_HT16K33'] = '#include <ZT16K33.h>';
   Blockly.Arduino.definitions_['var_declare_HT16K33'] = 'HT16K33 MixGo_HT16K33;';
   Blockly.Arduino.setups_['setup_Matrix_1'] = 'MixGo_HT16K33.begin(0x70);';
   Blockly.Arduino.setups_['setup_Matrix_2'] = 'delay(100);';
@@ -32,7 +32,7 @@ Blockly.Arduino.HT16K33_POS = function() {
 
 //执行器_点阵屏显示_显示图案
 Blockly.Arduino.HT16K33_DisplayChar = function() {
- Blockly.Arduino.definitions_['2_include_HT16K33'] = '#include <HT16K33.h>';
+ Blockly.Arduino.definitions_['2_include_HT16K33'] = '#include <ZT16K33.h>';
  Blockly.Arduino.definitions_['var_declare_HT16K33'] = 'HT16K33 MixGo_HT16K33;';
  Blockly.Arduino.definitions_['var_Matrix1'] = 'uint16_t  MixGo_LedArray[8];';
  Blockly.Arduino.setups_['setup_Matrix_1'] = 'MixGo_HT16K33.begin(0x70);';
@@ -90,7 +90,7 @@ code += '};';
 
 //辅助块_点阵屏_清除显示
 Blockly.Arduino.HT16K33_Displayclear = function() {
- Blockly.Arduino.definitions_['2_include_HT16K33'] = '#include <HT16K33.h>';
+ Blockly.Arduino.definitions_['2_include_HT16K33'] = '#include <ZT16K33.h>';
  Blockly.Arduino.definitions_['var_declare_HT16K33'] = 'HT16K33 MixGo_HT16K33;';
  Blockly.Arduino.setups_['setup_Matrix_1'] = 'MixGo_HT16K33.begin(0x70);';
  Blockly.Arduino.setups_['setup_Matrix_2'] = 'delay(100);';
@@ -102,7 +102,7 @@ Blockly.Arduino.HT16K33_Displayclear = function() {
 //辅助块_点阵屏_清除显示
 Blockly.Arduino.HT16K33_brightness = function() {
   var BRIGHTNESS = Blockly.Arduino.valueToCode(this, 'Brightness', Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.definitions_['2_include_HT16K33'] = '#include <HT16K33.h>';
+  Blockly.Arduino.definitions_['2_include_HT16K33'] = '#include <ZT16K33.h>';
   Blockly.Arduino.definitions_['var_declare_HT16K33'] = 'HT16K33 MixGo_HT16K33;';
   Blockly.Arduino.setups_['setup_Matrix_1'] = 'MixGo_HT16K33.begin(0x70);';
   Blockly.Arduino.setups_['setup_Matrix_2'] = 'delay(100);';
