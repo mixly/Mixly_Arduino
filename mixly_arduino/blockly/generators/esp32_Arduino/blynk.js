@@ -152,7 +152,7 @@ Blockly.Arduino.blynk_iot_get_data = function() {
   	}	
   }
   if(this.arguments_.length>0)
-  	Blockly.Arduino.definitions_[args] = args.join(';\n')+";";
+  	Blockly.Arduino.definitions_['var_declare_'+args] = args.join(';\n')+";";
   var code =' BLYNK_WRITE('+ Vpin+ ') {\n' +GetDataCode+
   branch + '}\n';
  // var code =  'BLYNK_WRITE(' + Vpin+ ') {\n'+variable+" = param.as"+datatype+"();\n"+branch+'}\n';
@@ -169,14 +169,14 @@ Blockly.Arduino.Blynk_iot_timer = function () {
 	Blockly.Arduino.definitions_['include_TimeLib'] ='#include <TimeLib.h>';
 	Blockly.Arduino.definitions_['include_WidgetRTC'] ='#include <WidgetRTC.h>';
 	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';
-	Blockly.Arduino.definitions_['BlynkTimer'] = 'BlynkTimer timer;';
+	Blockly.Arduino.definitions_['var_declare_BlynkTimer'] = 'BlynkTimer timer;';
 	var timerNo = this.getFieldValue('timerNo');
 	var time = Blockly.Arduino.valueToCode(this, 'TIME', Blockly.Arduino.ORDER_ATOMIC);
 	var funcName = 'myTimerEvent'+timerNo;
 	var branch = Blockly.Arduino.statementToCode(this, 'DO');
 	var code = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
 	Blockly.Arduino.definitions_[funcName] = code;
-	Blockly.Arduino.setups_[funcName] = 'timer.setInterval('+ time+'L, '+funcName+');\n';
+	Blockly.Arduino.setups_[funcName] = 'timer.setInterval('+ time+'L, '+funcName+');';
 
 	return "timer.run();\n";
 };
@@ -424,7 +424,7 @@ Blockly.Arduino.blynk_iot_playmusic = function () {
 		branch = Blockly.Arduino.INFINITE_LOOP_TRAP.replace(/%1/g,'\'' + this.id + '\'') + branch;
 	}
     branch = branch.replace(/(^\s*)|(\s*$)/g, "");//去除两端空格
-    var code='BLYNK_WRITE('+Vpin+')\n{\naction = param.asStr();\n'+branch+' \nBlynk.setProperty('+Vpin+', "label", action);}';
+    var code='BLYNK_WRITE('+Vpin+')\n{\naction = param.asStr();\n'+branch+' \nBlynk.setProperty('+Vpin+', "label", action);\n}';
     code = Blockly.Arduino.scrub_(this, code);
     Blockly.Arduino.definitions_[Vpin] = code;
 };
