@@ -99,7 +99,7 @@ Blockly.Arduino.weightSensor = function () {
   var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_Hx711'] = '#include <Hx711.h>';
-  Blockly.Arduino.definitions_['Hx711_scale'] = 'Hx711 scale' + dropdown_pin1 + '_' + dropdown_pin2+" ("+dropdown_pin1+","+dropdown_pin2+");";
+  Blockly.Arduino.definitions_['var_declare_Hx711'] = 'Hx711 scale' + dropdown_pin1 + '_' + dropdown_pin2+" ("+dropdown_pin1+","+dropdown_pin2+");";
   var code = ' scale' + dropdown_pin1 + '_' + dropdown_pin2+'.getGram()';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 }
@@ -150,7 +150,7 @@ Blockly.Arduino.ADXL345 = function() {
   Blockly.Arduino.definitions_['include_ADXL345'] = '#include <ADXL345.h>';
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
   Blockly.Arduino.definitions_['include_I2Cdev'] = '#include <I2Cdev.h>';
-  Blockly.Arduino.definitions_['var_ADXL345'] = 'ADXL345 accel;';
+  Blockly.Arduino.definitions_['var_declare_ADXL345'] = 'ADXL345 accel;';
   Blockly.Arduino.setups_['setup_ADXL345-A'] = 'Wire.begin();';
   Blockly.Arduino.setups_['setup_ADXL345-B'] = 'accel.initialize();';
   var dropdown_type = this.getFieldValue('ADXL345_PIN');
