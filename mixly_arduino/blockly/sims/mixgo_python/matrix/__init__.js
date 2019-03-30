@@ -3,570 +3,15 @@ var $builtinmodule = function(name) {
         
     };
     var display = function(name) {
-        var leds = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
-        var letters = {
-            A: [" 99  ",
-                "9  9 ",
-                "9999 ",
-                "9  9 ",
-                "9  9 "],
-
-            B: ["999  ",
-                "9  9 ",
-                "999  ",
-                "9  9 ",
-                "999  "],
-
-            C: [" 9999",
-                "9    ",
-                "9    ",
-                "9    ",
-                " 9999"],
-
-            D: ["9999 ",
-                "9   9",
-                "9   9",
-                "9   9",
-                "9999 "],
-
-            E: ["99999",
-                "9    ",
-                "99999",
-                "9    ",
-                "99999"],
-
-            F: ["99999",
-                "9    ",
-                "9999 ",
-                "9    ",
-                "9    "],
-
-            G: [" 9999",
-                "9    ",
-                "9  99",
-                "9   9",
-                " 9999"],
-
-            H: ["9   9",
-                "9   9",
-                "99999",
-                "9   9",
-                "9   9"],
-
-            I: [" 999 ",
-                "  9  ",
-                "  9  ",
-                "  9  ",
-                " 999 "],
-
-            J: ["99999",
-                "  9  ",
-                "  9  ",
-                "  9  ",
-                "99   "],
-
-            K: ["9  9 ",
-                "9 9  ",
-                "99   ",
-                "9 9  ",
-                "9  9 "],
-
-            L: ["9    ",
-                "9    ",
-                "9    ",
-                "9    ",
-                "99999"],
-
-            M: [" 9 9 ",
-                "9 9 9",
-                "9   9",
-                "9   9",
-                "9   9"],
-
-            N: ["9   9",
-                "99  9",
-                "9 9 9",
-                "9  99",
-                "9   9"],
-
-            O: [" 999 ",
-                "9   9",
-                "9   9",
-                "9   9",
-                " 999 "],
-
-            P: ["9999 ",
-                "9   9",
-                "9999 ",
-                "9    ",
-                "9    "],
-
-            Q: [" 999 ",
-                "9   9",
-                "9 9 9",
-                "9  9 ",
-                " 99 9"],
-
-            R: ["9999 ",
-                "9   9",
-                "9999 ",
-                "9 9  ",
-                "9  9 "],
-
-            S: ["99999",
-                "9    ",
-                "99999",
-                "    9",
-                "99999"],
-
-            T: ["99999",
-                "  9  ",
-                "  9  ",
-                "  9  ",
-                "  9  "],
-
-            U: ["9   9",
-                "9   9",
-                "9   9",
-                "9   9",
-                " 999 "],
-
-            V: ["9   9",
-                "9   9",
-                " 9 9 ",
-                " 9 9 ",
-                "  9  "],
-
-            W: ["9   9",
-                "9   9",
-                "9   9",
-                "9 9 9",
-                " 9 9 "],
-
-            X: ["9   9",
-                " 9 9 ",
-                "  9  ",
-                " 9 9 ",
-                "9   9"],
-
-            Y: ["9   9",
-                " 9 9 ",
-                "  9  ",
-                " 9   ",
-                "9    "],
-
-            Z: ["99999",
-                "   9 ",
-                "  9  ",
-                " 9   ",
-                "99999"],
-
-
-
-            a:  [" 999 ",
-                 "    9",
-                 " 9999",
-                 "9   9",
-                 " 9999"],
-
-            b: [" 9   ",
-                " 9   ",
-                " 999 ",
-                " 9  9",
-                " 999 "],
-
-            c: ["     ",
-                "     ",
-                " 9999",
-                "9    ",
-                " 9999"],
-
-            d: ["    9",
-                "    9",
-                " 9999",
-                "9   9",
-                " 999 "],
-
-            e: [" 99  ",
-                "9  9 ",
-                "9999 ",
-                "9    ",
-                " 999 "],
-
-            f: ["  99 ",
-                " 9   ",
-                " 999 ",
-                " 9   ",
-                " 9   "],
-
-            g: [" 999 ",
-                "9   9",
-                " 999 ",
-                "   9 ",
-                " 99  "],
-
-            h: ["9    ",
-                "9    ",
-                "9999 ",
-                "9   9",
-                "9   9"],
-
-            i: [" 9   ",
-                "     ",
-                " 9   ",
-                " 9   ",
-                " 9   "],
-
-            j: ["   9 ",
-                "     ",
-                "   9 ",
-                "   9 ",
-                "  9  "],
-
-            k: ["9    ",
-                "9    ",
-                "9 9  ",
-                "99   ",
-                "9 9  "],
-
-            l: ["  9  ",
-                "  9  ",
-                "  9  ",
-                "  9  ",
-                "  9  "],
-
-            m: ["     ",
-                "99 9 ",
-                "9 9 9",
-                "9   9",
-                "9   9"],
-
-            n: ["     ",
-                " 99  ",
-                "9  9 ",
-                "9  9 ",
-                "9  9 "],
-
-            o: ["     ",
-                " 999 ",
-                "9   9",
-                "9   9",
-                " 999 "],
-
-            p: ["     ",
-                "999  ",
-                "9  9 ",
-                "999  ",
-                "9    "],
-
-            q: ["     ",
-                " 9999",
-                "9   9",
-                " 9999",
-                "    9"],
-
-            r: ["     ",
-                " 999 ",
-                "9    ",
-                "9    ",
-                "9    "],
-
-            s: [" 999 ",
-                "9    ",
-                " 999 ",
-                "    9",
-                "9999 "],
-
-            t: [" 9   ",
-                "999  ",
-                " 9   ",
-                " 9   ",
-                "  99 "],
-
-            u: ["     ",
-                "9   9",
-                "9   9",
-                "9   9",
-                " 999 "],
-
-            v: ["     ",
-                "     ",
-                "9   9",
-                " 9 9 ",
-                "  9  "],
-
-            w: ["     ",
-                "     ",
-                "9 9 9",
-                " 9 9 ",
-                " 9 9 "],
-
-            x: ["     ",
-                "9  9 ",
-                " 99  ",
-                " 99  ",
-                "9  9 "],
-
-            y: ["     ",
-                "9  9 ",
-                " 99  ",
-                "  9  ",
-                "99   "],
-
-            z: ["     ",
-                "9999 ",
-                "  9  ",
-                " 9   ",
-                "9999 "],
-
-            "0": [" 999 ",
-                  "99  9",
-                  "9 9 9",
-                  "9  99",
-                  " 999 "],
-
-            "1": [" 9   ",
-                  "99   ",
-                  " 9   ",
-                  " 9   ",
-                  "999  "],
-
-            "2": [" 999 ",
-                  "9   9",
-                  "   9 ",
-                  "  9  ",
-                  " 9999"],
-
-            "3": [" 999 ",
-                  "9   9",
-                  "   9 ",
-                  "9   9",
-                  " 999  "],
-
-            "4": ["   9 ",
-                  "  99 ",
-                  " 9 9 ",
-                  "99999",
-                  "   9 "],
-
-            "5": ["99999",
-                  "9    ",
-                  "9999 ",
-                  "    9",
-                  "9999 "],
-
-            "6": [" 999 ",
-                  "9    ",
-                  "9999 ",
-                  "9   9",
-                  " 999 "],
-
-            "7": ["99999",
-                  "   9 ",
-                  "  9  ",
-                  " 9   ",
-                  "9    "],
-
-            "8": [" 999 ",
-                  "9   9",
-                  " 999 ",
-                  "9   9",
-                  " 999 "],
-
-            "9": [" 999 ",
-                  "9  9 ",
-                  " 999 ",
-                  "   9 ",
-                  "  9  "],
-
-            '!':    ["  9  ",
-                     "  9  ",
-                     "  9  ",
-                     "     ",
-                     "  9  "],
-            '"':    [" 9 9 ",
-                     " 9 9 ",
-                     "     ",
-                     "     ",
-                     "     "],
-
-            '£':    ["   99",
-                     "  9  ",
-                     " 9999",
-                     " 9   ",
-                     "9 999"],
-
-            '$':    [" 9999",
-                     "9 9  ",
-                     " 999 ",
-                     "  9 9",
-                     "9999 "],
-
-            '%':    ["99  9",
-                     "99 9 ",
-                     "  9  ",
-                     " 9 99",
-                     "9  99"],
-
-            '^':    ["  9  ",
-                     " 9 9 ",
-                     "     ",
-                     "     ",
-                     "     "],
-
-            '&':    [" 999 ",
-                     " 9 9 ",
-                     " 99  ",
-                     "9  9 ",
-                     " 99 9"],
-
-            '*':    ["9 9 9",
-                     " 999 ",
-                     "9 9 9",
-                     " 999 ",
-                     "9 9 9"],
-            '(':    ["  9  ",
-                     " 9   ",
-                     " 9   ",
-                     " 9   ",
-                     "  9  "],
-
-            ')':    ["  9  ",
-                     "   9 ",
-                     "   9 ",
-                     "   9 ",
-                     "  9  "],
-
-            '[':    [" 999 ",
-                     " 9   ",
-                     " 9   ",
-                     " 9   ",
-                     " 999 "],
-
-            ']':    [" 999 ",
-                     "   9 ",
-                     "   9 ",
-                     "   9 ",
-                     " 999 "],
-
-            '{':    ["  99 ",
-                     " 9   ",
-                     "  9  ",
-                     " 9   ",
-                     "  99 "],
-
-            '}':    [" 99  ",
-                     "   9 ",
-                     "  9  ",
-                     "   9 ",
-                     " 99  "],
-
-            '@':    [" 999 ",
-                     "9   9",
-                     "9 999",
-                     "9 9 9",
-                     "99999"],
-
-            "'":    ["  9  ",
-                     "     ",
-                     "     ",
-                     "     ",
-                     "     "],
-
-            '~':    ["     ",
-                     " 99 9",
-                     "   9 ",
-                     "     ",
-                     "     "],
-
-            ':':    ["     ",
-                     "  9  ",
-                     "     ",
-                     "  9  ",
-                     "     "],
-
-            '#':    [" 9 9 ",
-                     "99999",
-                     " 9 9 ",
-                     "99999",
-                     " 9 9 "],
-
-            '/':    ["    9",
-                     "   9 ",
-                     "  9  ",
-                     " 9   ",
-                     "9    "],
-
-            '\\':   ["9    ",
-                     " 9   ",
-                     "  9  ",
-                     "   9 ",
-                     "    9"],
-
-            '?':    ["9999 ",
-                     "   9 ",
-                     "  99 ",
-                     "     ",
-                     "  9  "],
-
-            '.':    ["     ",
-                     "     ",
-                     "     ",
-                     "     ",
-                     "  9  "],
-
-            ',':    ["     ",
-                     "     ",
-                     "     ",
-                     "   9 ",
-                     "  9  "],
-
-            '<':    ["   9 ",
-                     "  9  ",
-                     " 9   ",
-                     "  9  ",
-                     "   9 "],
-
-            '>':    [" 9   ",
-                     "  9  ",
-                     "   9 ",
-                     "  9  ",
-                     " 9   "],
-
-            ' ':    ["     ",
-                     "     ",
-                     "     ",
-                     "     ",
-                     "     "],
-
-            '-':    ["     ",
-                     "     ",
-                     "99999",
-                     "     ",
-                     "     "],
-
-            '+':    ["  9  ",
-                     "  9  ",
-                     "99999",
-                     "  9  ",
-                     "  9  "],
-
-            '_':    ["     ",
-                     "     ",
-                     "     ",
-                     "     ",
-                     "99999"],
-
-
-            '=':    ["     ",
-                     "99999",
-                     "     ",
-                     "99999",
-                     "     "],
-
-
-
+        var mod = {
+            data: {
+                width: 16,
+                height: 8,
+                brightness: 1,
+                blinkRate: 2,
+            },
         };
+        var leds = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
 
         function setLED(x, y, brightness) {
             ui.setMatrixLED(x, y, brightness);
@@ -575,7 +20,6 @@ var $builtinmodule = function(name) {
 
         function clearScreen() {
             var x,y;
-            debugger;
             for(x = 0; x < 16; x++) {
                 for(y = 0; y < 7; y++) {
                     setLED(x, y, 0);
@@ -603,24 +47,41 @@ var $builtinmodule = function(name) {
             }
 
         }
-        var draw_char = function(ch, x, y){
-            console.log(fontbinArr);
-            var _font_width = parseInt(fontbinArr[0].substring(0,3),2);
-            var _font_height = parseInt(fontbinArr[0].substring(3),2);
-            console.log(_font_width);
-            console.log(_font_height);
-            if (x < -_font_width || y < -_font_height || x > _font_width || y > _font_height){
+        var bf = new Object();
+        bf._font_width = parseInt(fontbinArr[0].substring(0,2),16);
+        bf._font_height = parseInt(fontbinArr[0].substring(2),16);
+        debugger;
+        console.log(mod.data.width);
+        bf._screen_width = mod.data.width;
+        bf._screen_height = mod.data.height;
+        bf.draw_char = function(ch, x, y){
+            var _font_width = parseInt(fontbinArr[0].substring(0,2),16);
+            var _font_height = parseInt(fontbinArr[0].substring(2),16);
+            if (x < -_font_width || y < -_font_height || x >= this._screen_width || y >= this._screen_height){
                 return; //超出可视区域就不用画了
             }
-        }
-        var mod = {
-            data: {
-                width: 16,
-                height: 8,
-                brightness: 1,
-                blinkRate: 2,
-            },
+            for(var char_x = 0; char_x < _font_width; char_x++){
+                var location = parseInt((2 + ch.charCodeAt() * _font_width + char_x) / 2);
+                var offset = ((2 + ch.charCodeAt() * _font_width + char_x) % 2) * 2;
+                var linestr = fontbinArr[location].substring(offset, offset + 2);
+                var line = parseInt(linestr,16);
+                for(var char_y = 0; char_y < _font_height; char_y++){
+                    if((line >>> char_y) & 0x1){
+                        setLED(x + char_x, y + char_y, 15);
+                    }
+                }
+            }
         };
+        bf.text = function(text, x, y){
+            debugger;
+            for(var i = 0; i < text.length; i++){
+                this.draw_char(text[i], x + (i * (this._font_width + 1)), y);
+            }
+        }
+        bf.width = function(text){
+            return text.length * (this._font_width + 1);
+        }
+        
 
         mod.get_pixel = new Sk.builtin.func(function(x, y) {
             return new Sk.builtin.int_(parseInt(leds[y.v][x.v]));
@@ -725,49 +186,43 @@ var $builtinmodule = function(name) {
         show.co_numargs = 5;
         mod.show = new Sk.builtin.func(show);
 
-        function scroll(message, delay) {
-            draw_char(message, 0 , 0);
-            /*if(delay == undefined)
-                delay = Sk.builtin.int_(400);
+        function scroll(message, speed) {
+            //draw_char(message.v[0], 0, 0);
+            var screenWidth = mod.data.width;
+            var screenHeight = mod.data.height;
+            if(speed == undefined)
+                speed = Sk.builtin.int_(120);
 
             if(message.tp$name == "number") {
                 message = new Sk.builtin.str(message.v);
             }
 
-            delay.v /= 5;
-            message.v = ' ' + message.v + ' ';
+            //message.v = ' ' + message.v + ' ';
+            clearScreen();
             return sim.runAsync(function(resolve, reject) {
-                var i, x, y;
-                var rows = ['', '', '', '', ''];
-                for(i = 0; i < message.v.length; i++) {
-                    var currentLetter = message.v[i];
-                    var letter = letters[" "];
-                    if(letters.hasOwnProperty(currentLetter)) {
-                        letter = letters[currentLetter];
-                    }
-                    for(y = 0; y < 8; y++) {
-                        rows[y] += letter[y] + " ";
-                    }
-                }
-
-                var width = rows[0].length;
-                var offset = 0;
-                function showScroll() {
-                    for(y = 0; y < 8; y++) {
-                        for(x = offset; x < offset + 16; x++) {
-                            setLED(x - offset, y, rows[y][x]);
+                var current, delta_ms;
+                var pos = screenWidth; //X position of the message start.
+                var message_width = bf.width(message.v); //Message width in pixels.
+                var last = new Date(); //Last frame start time.
+                var speed_ms = 1200 / speed.v / 1000.0;
+                clearScreen();
+                bf.text(message.v, parseInt(pos,10), 0);
+                /*while(true){
+                    current = new Date();
+                    delta_ms = current.getTime() - last.getTime();
+                    if(delta_ms > 100){
+                        last = current;
+                        pos -= speed_ms * delta_ms;
+                        console.log(pos,typeof(pos));
+                        if (pos < -message_width){
+                            pos = screenWidth;
+                            return;
                         }
-                    }
-
-                    if(offset < width - 5) {
-                        offset++;
-                        setTimeout(showScroll, delay.v);
-                    } else {
-                        resolve();
-                    }
-                }
-                showScroll();
-            });*/
+                        clearScreen();
+                        bf.text(message.v, parseInt(pos,10), 0);
+                    }                   
+                }*/
+            });
         }
         scroll.co_varnames = ['message', 'delay'];
         scroll.$defaults = [Sk.builtin.none, Sk.builtin.int_(400)];
@@ -777,31 +232,17 @@ var $builtinmodule = function(name) {
             if(message.tp$name == "number") {
                 message = new Sk.builtin.str(message.v);
             }
-
-            delay.v /= 5;
-            message.v = ' ' + message.v + ' ';
+            //message.v = ' ' + message.v + ' ';
             return sim.runAsync(function(resolve, reject) {
-                var i, x, y;
-                var rows = ['', '', '', '', ''];
-                for(i = 0; i < message.v.length; i++) {
-                    var currentLetter = message.v[i];
-                    var letter = letters[" "];
-                    if(letters.hasOwnProperty(currentLetter)) {
-                        letter = letters[currentLetter];
-                    }
-                    for(y = 0; y < 8; y++) {
-                        rows[y] += letter[y] + " ";
-                    }
-                }
-
-                var width = rows[0].length;
-                var offset = 0;
+                clearScreen();
+                debugger;
+                bf.text(message.v, 0, 0);
             });
         }
-        showstatic.co_varnames = ['text'];
+        showstatic.co_varnames = ['message'];
         showstatic.$defaults = [Sk.builtin.none];
         showstatic.co_numargs = 1;
-        mod.scroll = new Sk.builtin.func(scroll);
+        mod.showstatic = new Sk.builtin.func(showstatic);
         return mod;
     };
     mod.Image = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
