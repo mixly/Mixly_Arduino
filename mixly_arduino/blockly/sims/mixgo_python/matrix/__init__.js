@@ -1,6 +1,6 @@
 var $builtinmodule = function(name) {
     var mod = {
-        
+
     };
     var display = function(name) {
         var mod = {
@@ -21,7 +21,7 @@ var $builtinmodule = function(name) {
         function clearScreen() {
             var x,y;
             for(x = 0; x < 16; x++) {
-                for(y = 0; y < 7; y++) {
+                for(y = 0; y < 8; y++) {
                     setLED(x, y, 0);
                 }
             }
@@ -81,7 +81,7 @@ var $builtinmodule = function(name) {
         bf.width = function(text){
             return text.length * (this._font_width + 1);
         }
-        
+
 
         mod.get_pixel = new Sk.builtin.func(function(x, y) {
             return new Sk.builtin.int_(parseInt(leds[y.v][x.v]));
@@ -198,7 +198,6 @@ var $builtinmodule = function(name) {
             }
 
             //message.v = ' ' + message.v + ' ';
-            clearScreen();
             return sim.runAsync(function(resolve, reject) {
                 var current, delta_ms;
                 var pos = screenWidth; //X position of the message start.
@@ -207,21 +206,19 @@ var $builtinmodule = function(name) {
                 var speed_ms = 1200 / speed.v / 1000.0;
                 clearScreen();
                 bf.text(message.v, parseInt(pos,10), 0);
-                /*while(true){
+                var intervalId = setInterval(function(){
                     current = new Date();
                     delta_ms = current.getTime() - last.getTime();
-                    if(delta_ms > 100){
-                        last = current;
-                        pos -= speed_ms * delta_ms;
-                        console.log(pos,typeof(pos));
-                        if (pos < -message_width){
-                            pos = screenWidth;
-                            return;
-                        }
+                    last = current;
+                    pos -= speed_ms * delta_ms;
+                    if (pos < -message_width){
+                        pos = screenWidth;
+                        clearInterval(intervalId);
                         clearScreen();
-                        bf.text(message.v, parseInt(pos,10), 0);
-                    }                   
-                }*/
+                    }
+                    clearScreen();
+                    bf.text(message.v, parseInt(pos,10), 0);
+                },30);
             });
         }
         scroll.co_varnames = ['message', 'delay'];
@@ -235,7 +232,6 @@ var $builtinmodule = function(name) {
             //message.v = ' ' + message.v + ' ';
             return sim.runAsync(function(resolve, reject) {
                 clearScreen();
-                debugger;
                 bf.text(message.v, 0, 0);
             });
         }

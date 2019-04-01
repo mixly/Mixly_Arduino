@@ -1,8 +1,8 @@
 var $builtinmodule = function (name) {
     var mod = {
         data: {
-            startTime : new Date();
-        }       
+            startTime : new Date(),
+        }
     };
     mod.sleep = new Sk.builtin.func(function(delay) {
         return sim.runAsync(function(resolve, reject) {

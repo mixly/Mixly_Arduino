@@ -1,12 +1,25 @@
 var $builtinmodule = function (name) {
-	var mod = {};
+	var mod = {
+        'data': {
+                'UART': {
+                    'baudrate': mbData.uart.baudrate,
+                    'bits': mbData.uart.bits,
+                    'parity': mbData.uart.parity,
+                    'stop': mbData.uart.stop,
+                    'tx': mbData.uart.tx,
+                    'rx': mbData.uart.rx,
+                    'buffer': mbData.uart.buffer,
+                    'peer': true
+                },
+        }
+    };
 	mod.Pin = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self, pinNum, mode) {
             self.pinNum = pinNum.v;
             self.value = 0;
             if(mode){
                 self.mode = mode.v;
-                if(self.mode == 'Out'){       
+                if(self.mode == 'Out'){
                     ui.addPinOption('digitalOut', self.pinNum);
                     ui.bindDeletePinBtnEvent(self.pinNum);
                 }
@@ -15,7 +28,7 @@ var $builtinmodule = function (name) {
                     ui.bindDeletePinBtnEvent(self.pinNum);
                 }
             }
-            
+
         });
         $loc.value = new Sk.builtin.func(function(self, value) {
             if(value && self.mode === 'Out'){
@@ -28,7 +41,7 @@ var $builtinmodule = function (name) {
             }
             else{
                 self.value = ui.getPinValue(self.pinNum);
-            }         
+            }
             return new Sk.builtin.int_(self.value);
         });
         $loc.PULL_UP = new Sk.builtin.str('PULL_UP');
@@ -123,5 +136,70 @@ var $builtinmodule = function (name) {
             self.freq = freq.v;
         });
     }, "I2C", []);
+
+    mod.UART = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
+        $loc.__init__ = new Sk.builtin.func(function(self, num, baudrate, bits, parity, stop, tx, rx) {
+            if(baudrate === undefined)
+                baudrate = Sk.builtin.int_(9600);
+            if(bits === undefined)
+                bits = Sk.builtin.int_(8);
+            if(parity === undefined)
+                parity = Sk.builtin.none;
+            if(stop === undefined)
+                stop = Sk.builtin.int_(1);
+            if(tx === undefined)
+                tx = Sk.builtin.none;
+            if(rx === undefined)
+                rx = Sk.builtin.none;
+            self.num = num.v;
+            mod.data.UART.baudrate = baudrate.v;
+            mod.data.UART.bits = bits.v;
+            mod.data.UART.parity = parity.v;
+            mod.data.UART.stop = stop.v;
+            mod.data.UART.tx = tx.v;
+            mod.data.UART.rx = rx.v;
+            mod.data.UART.buffer = "";
+            ui.updatePeerSerialParam(mod.data.UART);
+            ui.bindUartSendMessageEvent('uart', mod.data.UART);
+            ui.bindUartBaudrateEvent('uart_baudrate',mod.data.UART);
+        });
+        $loc.read = new Sk.builtin.func(function(self){
+            if (!mod.data.UART.peer) {
+                return;
+            }
+            if (mod.data.UART.buffer.length > 0) {
+                var content = mod.data.UART.buffer;
+                mod.data.UART.buffer = "";
+                ui.updateSerialStatus('Uart read message: ' + content);
+                return Sk.builtin.str(content);
+            }
+            return Sk.builtin.none;
+        });
+        $loc.readline = new Sk.builtin.func(function(self){
+            if (!mod.data.UART.peer) {
+                return;
+            }
+            if (mod.data.UART.buffer.length > 0) {
+                var idx = mod.data.UART.buffer.indexOf('\r');
+                if (idx != -1) {
+                    var content = mod.data.UART.buffer.substring(0, idx + 1);
+                    mod.data.UART.buffer = mod.data.UART.buffer.substring(idx + 1);;
+                    ui.updateSerialStatus('Uart read message: ' + content);
+                    return Sk.builtin.str(content);
+                }
+            }
+            return Sk.builtin.none;
+        });
+        $loc.write = new Sk.builtin.func(function(self, message){
+            if (!mod.data.UART.peer) {
+                return;
+            }
+            ui.updateSerialOutput(message.v);
+        });
+        $loc.any = new Sk.builtin.func(function(self, message){
+            return Sk.builtin.bool(mod.data.UART.buffer.length > 0);
+        });
+    }, "UART", []);
+
 	return mod;
 }

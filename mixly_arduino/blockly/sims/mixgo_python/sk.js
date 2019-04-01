@@ -15,7 +15,10 @@ Sk.externalLibraries = {
         path: conf.url + '/blockly/sims/mixgo_python/time/__init__.js'
     },
     machine: {
-        path: conf.url + '/blockly/sims/mixgo_python/machine/__init__.js'
+        path: conf.url + '/blockly/sims/mixgo_python/machine/__init__.js',
+        dependencies: [
+            conf.url + '/blockly/sims/mixgo_python/machine/UART.js'
+        ],
     },
     mpu9250: {
         path: conf.url + '/blockly/sims/mixgo_python/mpu9250/__init__.js'
