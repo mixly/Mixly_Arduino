@@ -2186,7 +2186,8 @@ PythonToBlocks.prototype.List = function(node) {
             var rt = s.indexOf(']',rt+1)
         }        
         if (s.length > 0){
-            s = s.substring(elts[0].col_offset,rt);
+            //s = s.substring(elts[0].col_offset,rt);
+            s = s.substring(node.col_offset+1,rt);
             valueList = s.split(",");
         }
         else
@@ -2223,7 +2224,8 @@ PythonToBlocks.prototype.Tuple = function(node)
         var valueList = [];
         var s = this.getSourceCode(elts).split('\n')[node.lineno-1];
         if (s.length > 0){
-            s = s.substring(elts[0].col_offset,s.length-1);
+            //s = s.substring(elts[0].col_offset,s.length-1);
+            s = s.substring(node.col_offset,s.length-1);
             valueList = s.split(",");
         }
         else

@@ -875,7 +875,7 @@ pbc.objectFunctionD.get('fillcolor')[turtleClass] = function (py2block, func, ar
     }
     var turtleblock = py2block.convert(func.value);
     var argblock = py2block.convert(args[0]);
-//    if (args[0]._astname == "Str" && py2block.Str_value(args[0]).startsWith("#")) {
+    if (args[0]._astname == "Str" ) {
         return [block('turtle_fillcolor', func.lineno, {
             "FIELDNAME":py2block.Str_value(args[0])
         }, {
@@ -883,14 +883,14 @@ pbc.objectFunctionD.get('fillcolor')[turtleClass] = function (py2block, func, ar
         }, {
             "inline": "true"
         })];
-/*    } else {
+    } else {
         return [block("turtle_fillcolor_hex", func.lineno, {}, {
             'TUR': turtleblock,
             'VAR': argblock
         }, {
             "inline": "true"
         })];
-    }*/
+    }
 
 
 }
