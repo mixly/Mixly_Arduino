@@ -315,6 +315,7 @@ class AK8963:
             maxz = max(maxz, reading[2])
             count -= 1
 
+
         # Hard iron correction
         offset_x = (maxx + minx) / 2
         offset_y = (maxy + miny) / 2
@@ -551,7 +552,8 @@ class Compass:
     def calibrate(self):
         if self.is_calibrate() is False:
             print('The calibration need to shaking in the air (e.g. 8 or 0) and waiting for a moment')
-            matrix.display.show(matrix.Image("1110111001110111:1010101001010101:1110111001110111:0000000000000000:0000000000000000:1110111001110111:1010101001010101:1110111001110111"))
+            matrix.display.set_pixel(int(7), int(3), 1)
+            matrix.display.blink_rate(2)
             l1=0
             l2=0
             l3=0
@@ -566,32 +568,50 @@ class Compass:
                 z = self.sensor.mpu6500.acceleration()[2]
                 a=(x**2+y**2+z**2)**0.5
                 if z > 0:
-                    if x > 0 and y > 0 and a >= 20:
-                        matrix.display.set_pixel(int(1), int(1), 1)
-                        l1=1
-                    if x > 0 and y < 0 and a >= 20:
-                        matrix.display.set_pixel(int(5), int(1), 1)
-                        l2=1
-                    if x < 0 and y > 0 and a >= 20:
-                        matrix.display.set_pixel(int(1), int(6), 1)
-                        l3=1
-                    if x < 0 and y < 0 and a >= 20:
-                        matrix.display.set_pixel(int(5), int(6), 1)
-                        l4=1
+                    if x > 0 and y > 0 and a >= 12:
+                        l1=l1 + 1
+                    if x > 0 and y < 0 and a >= 12:
+                        l2=l2 + 1
+                    if x < 0 and y > 0 and a >= 12:
+                        l3=l3 + 1
+                    if x < 0 and y < 0 and a >= 12:
+                        l4=l4 + 1
                 if z < 0:
-                    if x > 0 and y > 0 and a >= 20:
-                        matrix.display.set_pixel(int(10), int(1), 1)
-                        l5=1
-                    if x > 0 and y < 0 and a >= 20:
-                        matrix.display.set_pixel(int(14), int(1), 1)
-                        l6=1
-                    if x < 0 and y > 0 and a >= 20:
-                        matrix.display.set_pixel(int(10), int(6), 1)
-                        l7=1
-                    if x < 0 and y < 0 and a >= 20:
-                        matrix.display.set_pixel(int(14), int(6), 1)
-                        l8=1
-                if l1==1 and l2==1 and l3==1 and l4==1 and l5==1 and l6==1 and l7==1 and l8==1:
+                    if x > 0 and y > 0 and a >= 12:
+                        l5=l5 + 1
+                    if x > 0 and y < 0 and a >= 12:
+                        l6=l6 + 1
+                    if x < 0 and y > 0 and a >= 12:
+                        l7=l7 + 1
+                    if x < 0 and y < 0 and a >= 12:
+                        l8=l8 + 1
+                if l1 >= 3:
+                    matrix.display.set_pixel(int(7), int(0), 1)
+                    matrix.display.set_pixel(int(8), int(0), 1)
+                    matrix.display.set_pixel(int(9), int(1), 1)
+                if l2 >= 3:
+                    matrix.display.set_pixel(int(10), int(2), 1)
+                    matrix.display.set_pixel(int(10), int(3), 1)
+                if l3 >= 3:
+                    matrix.display.set_pixel(int(10), int(4), 1)
+                    matrix.display.set_pixel(int(10), int(5), 1)
+                if l4 >= 3:
+                    matrix.display.set_pixel(int(9), int(6), 1)
+                    matrix.display.set_pixel(int(8), int(7), 1)
+                if l5 >= 3:
+                    matrix.display.set_pixel(int(7), int(7), 1)
+                    matrix.display.set_pixel(int(6), int(7), 1)
+                if l6 >= 3:
+                    matrix.display.set_pixel(int(5), int(6), 1)
+                    matrix.display.set_pixel(int(4), int(5), 1)
+                if l7 >= 3:
+                    matrix.display.set_pixel(int(4), int(4), 1)
+                    matrix.display.set_pixel(int(4), int(3), 1)
+                if l8 >= 3:
+                    matrix.display.set_pixel(int(4), int(2), 1)
+                    matrix.display.set_pixel(int(5), int(1), 1)
+                    matrix.display.set_pixel(int(6), int(0), 1)
+                if l1>=3 and l2>=3 and l3>=3 and l4>=3 and l5>=3 and l6>=3 and l7>=3 and l8>=3:
                     break    
                 else:
                     self.sensor.ak8963.calibrate()
