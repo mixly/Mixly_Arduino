@@ -158,3 +158,103 @@ pbc.objectFunctionD.get('show_fill')['monitor'] = function(py2block, func, args,
         "inline": "true"
     })];
 }
+
+pbc.objectFunctionD.get('show_circle')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 4) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var xblock = py2block.convert(args[0]);
+    var yblock = py2block.convert(args[1]);
+    var rblock = py2block.convert(args[2]);
+    var lightblock = py2block.identifier(args[3].n);
+    return [block("handbit_display_circle", func.lineno, {
+            "fill": false,
+            "OP": lightblock,
+        }, {
+            "VAR":objblock,
+            "x": xblock,
+            "y": yblock,
+            "r": rblock,
+        }, {
+            "inline": "true"
+        })];
+}
+
+pbc.objectFunctionD.get('show_fill_circle')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 4) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var xblock = py2block.convert(args[0]);
+    var yblock = py2block.convert(args[1]);
+    var rblock = py2block.convert(args[2]);
+    var lightblock = py2block.identifier(args[3].n);
+    return [block("handbit_display_circle", func.lineno, {
+            "fill": true,
+            "OP": lightblock,
+        }, {
+            "VAR":objblock,
+            "x": xblock,
+            "y": yblock,
+            "r": rblock,
+        }, {
+            "inline": "true"
+        })];
+}
+
+pbc.objectFunctionD.get('show_triangle')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 7) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var x0block = py2block.convert(args[0]);
+    var y0block = py2block.convert(args[1]);
+    var x1block = py2block.convert(args[2]);
+    var y1block = py2block.convert(args[3]);
+    var x2block = py2block.convert(args[4]);
+    var y2block = py2block.convert(args[5]);
+    var lightblock = py2block.identifier(args[6].n);
+    return [block("handbit_display_triangle", func.lineno, {
+            "fill": false,
+            "OP": lightblock,
+        }, {
+            "VAR":objblock,
+            "x0": x0block,
+            "y0": y0block,
+            "x1": x1block,
+            "y1": y1block,
+            "x2": x2block,
+            "y2": y2block,
+        }, {
+            "inline": "true"
+        })];
+}
+
+pbc.objectFunctionD.get('show_fill_triangle')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 7) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var x0block = py2block.convert(args[0]);
+    var y0block = py2block.convert(args[1]);
+    var x1block = py2block.convert(args[2]);
+    var y1block = py2block.convert(args[3]);
+    var x2block = py2block.convert(args[4]);
+    var y2block = py2block.convert(args[5]);
+    var lightblock = py2block.identifier(args[6].n);
+    return [block("handbit_display_triangle", func.lineno, {
+            "fill": true,
+            "OP": lightblock,
+        }, {
+            "VAR":objblock,
+            "x0": x0block,
+            "y0": y0block,
+            "x1": x1block,
+            "y1": y1block,
+            "x2": x2block,
+            "y2": y2block,
+        }, {
+            "inline": "true"
+        })];
+}

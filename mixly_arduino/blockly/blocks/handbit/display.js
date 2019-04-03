@@ -190,3 +190,102 @@ Blockly.Blocks['handbit_display_fill'] = {
     }
 };
 
+Blockly.Blocks.handbit_display_circle = {
+    init: function () {
+      var brightness_or_not =
+        [[Blockly.LUXE_LED_ON, '1'],
+         [Blockly.LUXE_LED_OFF, '0']
+        ];
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.appendValueInput('VAR')
+            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .setCheck("var");
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_MIXPY_TURTLE_DRAW_CIRCLE)   
+            .appendField(new Blockly.FieldDropdown(brightness_or_not), 'OP')  
+        this.jsonInit({
+      "message0" : Blockly.MIXLY_HANBIT_SHOW_CIRCLE,
+      "args0" : [{
+          "check" : Number,
+          "type" : "input_value",
+          "name" : "x"
+        }, {
+          "check" : Number,
+          "type" : "input_value",
+          "name" : "y"
+        },{
+          "check" : Number,
+          "type" : "input_value",
+          "name" : "r"
+        }, {
+          "type" : "input_dummy"
+        }, {
+          "checked" : false,
+          "type" : "field_checkbox", 
+          "name" : "fill"
+          }
+        ]
+      });
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_MIXPY_TURTLE_DRAW_CIRCLE);
+    }
+};
+
+Blockly.Blocks.handbit_display_triangle = {
+    init: function () {
+      var brightness_or_not =
+        [[Blockly.LUXE_LED_ON, '1'],
+         [Blockly.LUXE_LED_OFF, '0']
+        ];
+        this.setColour(Blockly.Blocks.display.HUE);
+        this.appendValueInput('VAR')
+            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .setCheck("var");
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_DISPLAY_DRAW+Blockly.MIXLY_HANBIT_DRAW_TRIANGLE)   
+            .appendField(new Blockly.FieldDropdown(brightness_or_not), 'OP')  
+        this.jsonInit({
+      "message0" : Blockly.MIXLY_HANBIT_SHOW_triangle,
+      "args0" : [{
+          "check" : Number,
+          "type" : "input_value",
+          "name" : "x0"
+        }, {
+          "check" : Number,
+          "type" : "input_value",
+          "name" : "y0"
+        },{
+          "check" : Number,
+          "type" : "input_value",
+          "name" : "x1"
+        }, {
+          "check" : Number,
+          "type" : "input_value",
+          "name" : "y1"
+        }, {
+          "check" : Number,
+          "type" : "input_value",
+          "name" : "x2"
+        }, {
+          "check" : Number,
+          "type" : "input_value",
+          "name" : "y2"
+        }, {
+          "type" : "input_dummy"
+        }, {
+          "checked" : false,
+          "type" : "field_checkbox", 
+          "name" : "fill"
+          }
+        ]
+      });
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_DISPLAY_DRAW+Blockly.MIXLY_HANBIT_DRAW_TRIANGLE);
+    }
+};

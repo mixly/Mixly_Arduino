@@ -64,6 +64,59 @@ Blockly.Python.handbit_display_rect=function(){
      }
 };
 
+Blockly.Python.handbit_display_circle=function(){
+  var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+  if (varName == 'oled')
+        Blockly.Python.definitions_['import_handbit_oled'] = 'from handbit import oled';
+  else
+      Blockly.Python.definitions_['import_ssd1106'] = 'import ssd1106';
+  var location_x = Blockly.Python.valueToCode(this, 'x', Blockly.Python.ORDER_ATOMIC);
+  var location_y = Blockly.Python.valueToCode(this, 'y', Blockly.Python.ORDER_ATOMIC);
+  var value_r = Blockly.Python.valueToCode(this, 'r', Blockly.Python.ORDER_ATOMIC);
+  var checkbox_fill = this.getFieldValue("fill") == 'TRUE' ? 'True' : 'False';
+  var size  = this.getFieldValue('OP');
+  switch (checkbox_fill) {
+    case "True":
+       var code = varName + '.show_fill_circle('+location_x+', '+location_y+', '+value_r+', '+ size+')\n';
+  
+       return code;
+       break;
+    case "False":
+       var code = varName +'.show_circle('+location_x+', '+location_y+', '+value_r+', '+ size+')\n';
+ 
+       return code;
+       break;
+     }
+};
+
+Blockly.Python.handbit_display_triangle=function(){
+  var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+  if (varName == 'oled')
+        Blockly.Python.definitions_['import_handbit_oled'] = 'from handbit import oled';
+  else
+      Blockly.Python.definitions_['import_ssd1106'] = 'import ssd1106';
+  var location_x0 = Blockly.Python.valueToCode(this, 'x0', Blockly.Python.ORDER_ATOMIC);
+  var location_y0 = Blockly.Python.valueToCode(this, 'y0', Blockly.Python.ORDER_ATOMIC);
+  var location_x1 = Blockly.Python.valueToCode(this, 'x1', Blockly.Python.ORDER_ATOMIC);
+  var location_y1 = Blockly.Python.valueToCode(this, 'y1', Blockly.Python.ORDER_ATOMIC);
+  var location_x2 = Blockly.Python.valueToCode(this, 'x2', Blockly.Python.ORDER_ATOMIC);
+  var location_y2 = Blockly.Python.valueToCode(this, 'y2', Blockly.Python.ORDER_ATOMIC);
+  var checkbox_fill = this.getFieldValue("fill") == 'TRUE' ? 'True' : 'False';
+  var size  = this.getFieldValue('OP');
+  switch (checkbox_fill) {
+    case "True":
+       var code = varName + '.show_fill_triangle('+location_x0+', '+location_y0+', '+location_x1+', '+location_y1+', '+location_x2+', '+location_y2+', '+ size+')\n';
+  
+       return code;
+       break;
+    case "False":
+       var code = varName +'.show_triangle('+location_x0+', '+location_y0+', '+location_x1+', '+location_y1+', '+location_x2+', '+location_y2+', '+ size+')\n';
+ 
+       return code;
+       break;
+     }
+};
+
 Blockly.Python.handbit_display_line=function(){
   var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
   if (varName == 'oled')

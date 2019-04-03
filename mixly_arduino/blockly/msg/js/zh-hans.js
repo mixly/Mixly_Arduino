@@ -2569,3 +2569,7 @@ Blockly.MixGo_MPU9250_GZ='z轴角速度';
 Blockly.MixGo_MPU9250_MX='x轴磁场';
 Blockly.MixGo_MPU9250_MY='y轴磁场';
 Blockly.MixGo_MPU9250_MZ='z轴磁场';
+
+Blockly.MIXLY_HANBIT_SHOW_CIRCLE = " 圆心(x %1 ,y %2 ) 半径 %3 %4 填充 %5";
+Blockly.MIXLY_HANBIT_SHOW_triangle = " 顶点(x0 %1 ,y0 %2 ) (x1 %3 ,y1 %4 ) (x2 %5 ,y2 %6 ) %7 填充 %8";
+Blockly.MIXLY_HANBIT_DRAW_TRIANGLE = "三角形";
