@@ -157,12 +157,12 @@ Blockly.Arduino.RFID_init = function() {
 	
 	Blockly.Arduino.definitions_['define_SPI'] = '#include <SPI.h>';
 	Blockly.Arduino.definitions_['define_RFID'] = '#include <RFID.h>';		
-	Blockly.Arduino.definitions_['define_origin'] = 'RFID rfid(10,5);';
-	Blockly.Arduino.definitions_['define_i and tmp'] = 'unsigned char i,tmp;';
-	Blockly.Arduino.definitions_['define_status'] = 'unsigned char status;';		
-	Blockly.Arduino.definitions_['define_strmax'] = 'unsigned char str[MAX_LEN];';
-	Blockly.Arduino.definitions_['define_RC_size'] = 'unsigned char RC_size;';
-	Blockly.Arduino.definitions_['define_blockAddr'] = 'unsigned char blockAddr;        //选择操作的块地址0～63';		
+	Blockly.Arduino.definitions_['var_declare_RFID'] = 'RFID rfid(10,5);';
+	Blockly.Arduino.definitions_['var_declare__i and tmp'] = 'unsigned char i,tmp;';
+	Blockly.Arduino.definitions_['var_declare__status'] = 'unsigned char status;';		
+	Blockly.Arduino.definitions_['var_declare__strmax'] = 'unsigned char str[MAX_LEN];';
+	Blockly.Arduino.definitions_['var_declare__RC_size'] = 'unsigned char RC_size;';
+	Blockly.Arduino.definitions_['var_declare__blockAddr'] = 'unsigned char blockAddr;        //选择操作的块地址0～63';		
 
 	Blockly.Arduino.definitions_['define_1'] = '//4字节卡序列号，第5字节为校验字节';
 	Blockly.Arduino.definitions_['define_2'] = 'unsigned char serNum[5];';		
