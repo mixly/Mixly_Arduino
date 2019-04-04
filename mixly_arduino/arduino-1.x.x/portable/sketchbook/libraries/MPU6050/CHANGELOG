@@ -1,0 +1,23 @@
+MPU6050 Arduino Library 1.0.3 / 03.03.2015
+======================================================================
+
+ * Added setDLPFMode(mpu6050_dlpf_t dlpf) function
+   MPU6050_DLPF_0...6 (see datatsheet)
+
+MPU6050 Arduino Library 1.0.2 / 10.02.2015
+======================================================================
+
+ * Adjustable i2c address
+   mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G) - default 0x68
+   mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G, 0x69) - use 0x69
+
+MPU6050 Arduino Library 1.0.1 / 26.10.2014
+======================================================================
+
+ * Removing examples for Kalman Filter. Moved to KalmanFilter Git repo
+ * Removing examples for HMC5883L. Moved to HMC5833L Git repo
+
+MPU6050 Arduino Library 1.0.0 / 20.10.2014
+======================================================================
+
+ * First release
