@@ -56,7 +56,8 @@
   <script type="text/javascript" src="../../generators/esp32_Arduino/actuator.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/MixGo.js"></script>
 
-  <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script> 
+  <script type="text/javascript" src="../../blocks/arduino/blynk-arduino.js"></script> 
+  <script type="text/javascript" src="../../blocks/arduino/blynk-esp8266.js"></script> 
   <script type="text/javascript" src="../../blocks/arduino/pins.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/inout.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/control.js"></script>
@@ -1351,6 +1352,10 @@
   <value name="minute">
     <shadow type="math_number">
       <field name="NUM">30</field>
+    </shadow>
+  </value>
+   <value name="STAT">
+    <shadow type="inout_highlow">
     </shadow>
   </value>
 </block>
