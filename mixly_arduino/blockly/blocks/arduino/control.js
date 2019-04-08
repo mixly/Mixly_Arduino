@@ -562,7 +562,7 @@ Blockly.Blocks['controls_switch_case'] = {
    * @this Blockly.Block
    */
   compose: function(containerBlock) {
-    console.log(arguments.callee.caller.name);
+  //  console.log(arguments.callee.caller.name);
     // Disconnect the else input blocks and remove the inputs.
     if (this.elseCount_) {
       this.removeInput('ELSE');
