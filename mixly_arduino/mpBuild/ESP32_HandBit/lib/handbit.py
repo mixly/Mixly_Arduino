@@ -6,6 +6,30 @@ from neopixel import NeoPixel
 import mpython
 from ssd1106 import SSD1106_I2C
 
+class led:
+    def __init__(self, pin):
+        self.val = 1
+        self.pin = pin
+    def setbrightness(n,val):
+        if n in (0,1,2) and 0 <= val <= 1023:
+            if val == 0:
+                rgb[n] = (0,0,0)
+            else:
+                val = val // 20 + 1
+                rgb[n] = (val,val,val)
+    def setonoff(n,val):
+        if n in (0,1,2):
+            if(val == -1):
+                if rgb[n] != (0,0,0):
+                    rgb[n] = (50,50,50)
+                else:
+                    rgb[n] = (0,0,0)
+            else:
+                rgb[n] = (50*val, 50*val, 50*val)
+    def getonoff(n):
+        if n in (0,1,2):
+            return (rgb[n][0]+rgb[n][1]+rgb[n][2])//3
+
 class Button:
     def __init__(self, pin):
         from machine import Pin

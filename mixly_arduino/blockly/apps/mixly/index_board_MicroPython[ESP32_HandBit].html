@@ -38,7 +38,7 @@
   <script src="../../blocks/esp32/serial.js"></script>
   <script src="../../blocks/esp32/communicate.js"></script>
   <script src="../../blocks/esp32/sensor.js"></script>
-  <script src="../../blocks/esp32/actuator.js"></script>
+  <script src="../../blocks/handbit/actuator.js"></script>
   <script src="../../blocks/esp32/display.js"></script>
   <script src="../../blocks/python/procedures.js"></script>
   <script src="../../blocks/esp32/factory.js"></script>
@@ -61,7 +61,7 @@
   <script src="../../generators/esp32/serial.js"></script>
   <script src="../../generators/esp32/communicate.js"></script>
   <script src="../../generators/esp32/sensor.js"></script>
-  <script src="../../generators/esp32/actuator.js"></script>
+  <script src="../../generators/handbit/actuator.js"></script>
   <script src="../../generators/esp32/display.js"></script>
   <script src="../../generators/python/procedures.js"></script>
   <script src="../../generators/esp32/factory.js"></script>
@@ -85,7 +85,7 @@
   <script src="../../converters/esp32/serial.js" type="application/javascript"></script>
   <script src="../../converters/esp32/communicate.js" type="application/javascript"></script>
   <script src="../../converters/esp32/display.js" type="application/javascript"></script>
-  <script src="../../converters/esp32/actuator.js" type="application/javascript"></script>
+  <script src="../../converters/handbit/actuator.js" type="application/javascript"></script>
   <script src="../../converters/esp32/control.js" type="application/javascript"></script>
   <script src="../../converters/esp32/sensor.js" type="application/javascript"></script>
   <script src="../../converters/python/control.js" type="application/javascript"></script>
@@ -1709,6 +1709,33 @@
 
 	</category>
       <category id="catActuator" colour="100">
+        <block type="actuator_led_bright">
+           <value name="led">
+          <shadow type="number">
+          </shadow>
+        </value>
+         <value name="bright">
+          <shadow type="ledswitch">
+          </shadow>
+        </value>
+        </block>
+        <block type="actuator_get_led_bright">
+          <value name="led">
+            <shadow type="number">
+            </shadow>
+          </value>
+        </block>
+        <block type="actuator_led_brightness">
+           <value name="led">
+          <shadow type="number">
+          </shadow>
+        </value>
+        <value name="bright">
+          <shadow type="math_number">
+          <field name="NUM">1023</field>
+          </shadow>
+        </value>
+        </block>
         <block type="esp32_music_pitch">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
