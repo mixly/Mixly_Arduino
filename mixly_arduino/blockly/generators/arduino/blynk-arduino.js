@@ -357,7 +357,7 @@ Blockly.Arduino.blynk_videourl = function() {
 Blockly.Arduino.blynk_bridge_auth = function() {
 	var Vpin = this.getFieldValue('Vpin');
 	var auth = Blockly.Arduino.valueToCode(this, 'auth', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['bridge1.setAuthToken'] ='WidgetBridge bridge1('+Vpin+');\n';
+	Blockly.Arduino.definitions_['var_declare_WidgetBridge'] ='WidgetBridge bridge1('+Vpin+');\n';
 	var code='bridge1.setAuthToken('+auth+'); \n';
 	return code;
 };
