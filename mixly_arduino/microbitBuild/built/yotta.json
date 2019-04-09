@@ -1,0 +1,24 @@
+{
+  "config": {
+    "microbit-dal": {
+      "bluetooth": {
+        "private_addressing": 0,
+        "advertising_timeout": 0,
+        "tx_power": 6,
+        "dfu_service": 1,
+        "event_service": 1,
+        "device_info_service": 1,
+        "eddystone_url": 1,
+        "eddystone_uid": 1,
+        "open": 0,
+        "pairing_mode": 1,
+        "whitelist": 1,
+        "security_level": "SECURITY_MODE_ENCRYPTION_NO_MITM",
+        "enabled": 0
+      }
+    }
+  },
+  "dependencies": {
+    "microbit": "lancaster-university/microbit#v2.0.0-rc11"
+  }
+}
