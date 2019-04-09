@@ -8,6 +8,7 @@
   <script type="text/javascript" src="../../core/blockly.js"></script>
   <script type="text/javascript" src="../../core/events.js"></script>
   <script type="text/javascript" src="../../arduino.js"></script>
+  <script type="text/javascript" src="../../core/field_textarea.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
   <script type="text/javascript" src="drag.js"></script>
   <script type="text/javascript" src="code.js"></script>
@@ -22,6 +23,7 @@
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
   <script type="text/javascript" src="myblock.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/blynk-arduino.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/blynk.js"></script>
   <script type="text/javascript" src="../../generators/arduino/pins.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/pins.js"></script>
@@ -40,7 +42,7 @@
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/arduino/actuator.js"></script>
-  
+  <script type="text/javascript" src="../../generators/arduino/factory.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/inout.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/control.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/math.js"></script>
@@ -56,9 +58,7 @@
   <script type="text/javascript" src="../../generators/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/actuator.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/MixGo.js"></script>
-
-  <script type="text/javascript" src="../../blocks/arduino/blynk-arduino.js"></script> 
-  <script type="text/javascript" src="../../blocks/arduino/blynk-esp8266.js"></script> 
+  <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script> 
   <script type="text/javascript" src="../../blocks/arduino/pins.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/inout.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/control.js"></script>
@@ -75,7 +75,7 @@
   <script type="text/javascript" src="../../blocks/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/serial.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/actuator.js"></script>
-
+  <script type="text/javascript" src="../../blocks/arduino/factory.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/pins.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/inout.js"></script>
@@ -1559,7 +1559,7 @@
           <field name="serial_select">Serial</field>
           <value name="CONTENT">
             <block type="variables_get">
-              <field name="VAR">action</field>
+              <field name="VAR">terminal_text</field>
             </block>
           </value>
         </block>
@@ -1886,7 +1886,23 @@
     <field name="Vpin">V0</field>
   </block>
 </category>
-
+<category id="catFactory" name="Factory" colour="65">
+  <block type="factory_notes"></block>
+  <block type="factory_include"></block>
+  <block type="factory_function_noreturn"></block>
+  <block type="factory_function_return"></block>
+  <block type="factory_declare"></block>
+  <block type="factory_declare2"></block>
+  <block type="factory_define"></block>
+  <block type="factory_callMethod_noreturn"></block>
+  <block type="factory_callMethod_return"></block>
+  <block type="factory_static_method_noreturn"></block>
+  <block type="factory_static_method_return"></block>
+  <block type="factory_block"></block>
+  <block type="factory_block_return"></block>
+  <block type="factory_block_with_textarea"></block>
+  <block type="factory_block_return_with_textarea"></block>
+</category>
 </xml>
 <script>
   if(company_block!=null){
