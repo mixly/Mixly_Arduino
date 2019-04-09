@@ -1,1 +1,1 @@
-start .\arduino-1.8.8\java\bin\javaw -jar Mixly.jar
+start .\arduino-1.8.9\java\bin\javaw -jar Mixly.jar
