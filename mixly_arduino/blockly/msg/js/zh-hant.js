@@ -2444,6 +2444,9 @@ Blockly.OLED_DEF_BMP_DATA_TOOLTIP='設置一個字模名稱，將圖像/漢字�
 Blockly.OLED_SHOW_BMP_TOOLTIP='設置需要顯示圖像/漢字的座標和它的寬高，再設置字模名稱。';
 Blockly.OLED_DRAW_PIXE_TOOLTIP='設置座標，在OLED上繪製點。';
 Blockly.OLED_DRAW_LINE_TOOLTIP='設置直線的起點和終點座標，畫出一條直線。';
+Blockly.OLED_FONT_wqy12_t_gb2312='文泉驛宋體12號';
+Blockly.OLED_FONT_wqy14_t_gb2312='文泉驛宋體14號';
+Blockly.OLED_FONT_wqy16_t_gb2312='文泉驛宋體16號';
 
 Blockly.blynk_EMAIL='發送郵件';
 Blockly.blynk_EMAIL_ADD='郵寄地址';

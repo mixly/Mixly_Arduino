@@ -582,6 +582,7 @@ Blockly.Arduino.oled_print = function() {
   var POS_x = Blockly.Arduino.valueToCode(this, 'POS_X', Blockly.Arduino.ORDER_ATOMIC);
   var POS_y = Blockly.Arduino.valueToCode(this, 'POS_Y', Blockly.Arduino.ORDER_ATOMIC);
   var TEXT = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.setups_["setup_enableUTF8Print"] ='u8g2.enableUTF8Print();\n';
   var code = "";
   if ((!isNaN(POS_x) && POS_x < 128 && POS_x >= 0) || (isNaN(POS_x))) 
     code = 'u8g2.setCursor(' + POS_x + ',';
@@ -605,8 +606,7 @@ Blockly.Arduino.lp2i_u8g_draw_4strings = function () {
   Blockly.Arduino.definitions_["include_U8g2lib"] = '#include <U8g2lib.h>\n';
   Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-  Blockly.Arduino.setups_["setup_u8g2"] =
-  ' u8g2.begin();\n';
+  Blockly.Arduino.setups_["setup_u8g2"] =' u8g2.begin();\n';
   var code = 'u8g2.firstPage();\n'
   +'do {\n'
   +'u8g2.setFont(u8g2_font_timR14_tr);\n'

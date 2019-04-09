@@ -602,7 +602,10 @@ var FONT_TYPE_SELECT = [
 ["ncenR12", "ncenR12_tf"],
 ["ncenR14", "ncenR14_tf"],
 ["ncenR18", "ncenR18_tf"],
-["ncenR24", "ncenR24_tf"]
+["ncenR24", "ncenR24_tf"],
+[Blockly.OLED_FONT_wqy12_t_gb2312, "wqy12_t_gb2312"],
+[Blockly.OLED_FONT_wqy14_t_gb2312, "wqy14_t_gb2312"],
+[Blockly.OLED_FONT_wqy16_t_gb2312, "wqy16_t_gb2312"]
 ];
 
 //显示-OLED-图像（汉字）高度选择
