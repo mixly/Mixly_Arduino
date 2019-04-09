@@ -9,29 +9,7 @@ Blockly.Arduino.blynk_iot_auth = function() {
 Blockly.Arduino.blynk_QR = function() {
 	return "";
 };
-//物联网-一键配网
-Blockly.Arduino.blynk_smartconfig = function() {
-	var auth_key = Blockly.Arduino.valueToCode(this, 'auth_key', Blockly.Arduino.ORDER_ATOMIC);
-	var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>\n';
-	Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] ='#include <BlynkSimpleEsp8266.h>';
-	Blockly.Arduino.definitions_['include_TimeLib'] ='#include <TimeLib.h>';
-	Blockly.Arduino.definitions_['include_WidgetRTC'] ='#include <WidgetRTC.h>';
-	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';
-	Blockly.Arduino.definitions_['var_declare_auth_key'] ='char auth[] = '+auth_key+';';
-	Blockly.Arduino.setups_['setup_smartconfig'] = 'Serial.begin(9600);\nWiFi.mode(WIFI_STA);\nint cnt = 0;\nwhile (WiFi.status() != WL_CONNECTED) {\ndelay(500); \nSerial.print("."); \nif (cnt++ >= 10) {\nWiFi.beginSmartConfig();\nwhile (1) {\ndelay(1000);\nif (WiFi.smartConfigDone()) {\nSerial.println();\nSerial.println("SmartConfig: Success");\nbreak;\n}\nSerial.print("|");\n}\n}\n}  WiFi.printDiag(Serial);\n';
-	if(isNaN(server_add.charAt(2)))
-	{
-		Blockly.Arduino.setups_['setup_smartconfig'] += ' Blynk.config(auth,'+server_add+',8080);';}
-		else
-		{
-			server_add = server_add.replace(/\"/g, "");
-			Blockly.Arduino.setups_['setup_smartconfig'] += ' Blynk.config(auth,'+'IPAddress('+server_add+'),8080);';
-		}
-		var code="Blynk.run();";
-		return code;
-	};
-	
+
 //物联网-wifi信息-uno
 Blockly.Arduino.blynk_server = function() {
 	var wifi_ssid = Blockly.Arduino.valueToCode(this, 'wifi_ssid', Blockly.Arduino.ORDER_ATOMIC);
@@ -72,11 +50,6 @@ Blockly.Arduino.blynk_usb_server = function() {
 
 //物联网-发送数据到app
 Blockly.Arduino.blynk_iot_push_data = function() {
-	Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>\n';
-	Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] ='#include <BlynkSimpleEsp8266.h>';
-	Blockly.Arduino.definitions_['include_TimeLib'] ='#include <TimeLib.h>';
-	Blockly.Arduino.definitions_['include_WidgetRTC'] ='#include <WidgetRTC.h>';
-	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';
 	var Vpin = this.getFieldValue('Vpin');
 	var data = Blockly.Arduino.valueToCode(this, 'data', Blockly.Arduino.ORDER_ATOMIC);
 	var code='Blynk.virtualWrite('+Vpin+','+data+' );\n ';
@@ -85,11 +58,6 @@ Blockly.Arduino.blynk_iot_push_data = function() {
 
 //从app接收数据
 Blockly.Arduino.blynk_iot_get_data = function() {
-	Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>\n';
-	Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] ='#include <BlynkSimpleEsp8266.h>';
-	Blockly.Arduino.definitions_['include_TimeLib'] ='#include <TimeLib.h>';
-	Blockly.Arduino.definitions_['include_WidgetRTC'] ='#include <WidgetRTC.h>';
-	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';  // Define a procedure with a return value.
 	var Vpin = this.getFieldValue('Vpin');
 	var args = [];
 	for (var x = 0; x < this.arguments_.length; x++) {
@@ -159,11 +127,6 @@ Blockly.Arduino.blynk_iot_get_data = function() {
 
 //blynk 定时器
 Blockly.Arduino.Blynk_iot_timer = function () {
-	Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>\n';
-	Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] ='#include <BlynkSimpleEsp8266.h>';
-	Blockly.Arduino.definitions_['include_TimeLib'] ='#include <TimeLib.h>';
-	Blockly.Arduino.definitions_['include_WidgetRTC'] ='#include <WidgetRTC.h>';
-	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';
 	Blockly.Arduino.definitions_['var_declare_BlynkTimer'] = 'BlynkTimer timer;';
 	var timerNo = this.getFieldValue('timerNo');
 	var time = Blockly.Arduino.valueToCode(this, 'TIME', Blockly.Arduino.ORDER_ATOMIC);
@@ -178,11 +141,6 @@ Blockly.Arduino.Blynk_iot_timer = function () {
 
 //blynk 硬件已连接
 Blockly.Arduino.Blynk_iot_BLYNK_CONNECTED = function () {
-	Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>\n';
-	Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] ='#include <BlynkSimpleEsp8266.h>';
-	Blockly.Arduino.definitions_['include_TimeLib'] ='#include <TimeLib.h>';
-	Blockly.Arduino.definitions_['include_WidgetRTC'] ='#include <WidgetRTC.h>';
-	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';	
 	var funcName = 'BLYNK_CONNECTED';
 	var branch = Blockly.Arduino.statementToCode(this, 'DO');
 	var code =  funcName + '() {\n' + branch + '}\n';
@@ -191,11 +149,6 @@ Blockly.Arduino.Blynk_iot_BLYNK_CONNECTED = function () {
 
 //blynk APP已连接
 Blockly.Arduino.Blynk_iot_BLYNK_APP_CONNECTED = function () {
-	Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>\n';
-	Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] ='#include <BlynkSimpleEsp8266.h>';
-	Blockly.Arduino.definitions_['include_TimeLib'] ='#include <TimeLib.h>';
-	Blockly.Arduino.definitions_['include_WidgetRTC'] ='#include <WidgetRTC.h>';
-	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';	
 	var funcName = 'BLYNK_APP_CONNECTED';
 	var branch = Blockly.Arduino.statementToCode(this, 'DO');
 	var code =  funcName + '() {\n' + branch + '}\n';
@@ -203,11 +156,6 @@ Blockly.Arduino.Blynk_iot_BLYNK_APP_CONNECTED = function () {
 };
 //blynk APP离线
 Blockly.Arduino.Blynk_iot_BLYNK_APP_DISCONNECTED = function () {
-	Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>\n';
-	Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] ='#include <BlynkSimpleEsp8266.h>';
-	Blockly.Arduino.definitions_['include_TimeLib'] ='#include <TimeLib.h>';
-	Blockly.Arduino.definitions_['include_WidgetRTC'] ='#include <WidgetRTC.h>';
-	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';	
 	var funcName = 'BLYNK_APP_DISCONNECTED';
 	var branch = Blockly.Arduino.statementToCode(this, 'DO');
 	var code =  funcName + '() {\n' + branch + '}\n';
@@ -230,9 +178,8 @@ Blockly.Arduino.blynk_iot_WidgetLED_COLOR=function(){
 	var Vpin = this.getFieldValue('Vpin');
 	var colour_rgb_led_color = this.getFieldValue('RGB_LED_COLOR');
 	var dropdown_stat = this.getFieldValue('STAT');
-	Blockly.Arduino.definitions_['WidgetLED'+Vpin] = 'WidgetLED led'+Vpin+'('+Vpin+');';
+	Blockly.Arduino.definitions_['var_declare_WidgetLED'+Vpin] = 'WidgetLED led'+Vpin+'('+Vpin+');';
 	var code = 'led'+Vpin+'.setColor("'+colour_rgb_led_color+'");\n';
-	//window.alert(dropdown_stat);
 	if(dropdown_stat=="HIGH")
 		code+='led'+Vpin+'.on();\n';
 	else if(dropdown_stat=="LOW")
@@ -245,7 +192,7 @@ Blockly.Arduino.blynk_iot_WidgetLED_VALUE=function(){
 	var Vpin = this.getFieldValue('Vpin');
 	var colour_rgb_led_color = this.getFieldValue('RGB_LED_COLOR');
 	var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['WidgetLED'+Vpin] = 'WidgetLED led'+Vpin+'('+Vpin+');';
+	Blockly.Arduino.definitions_['var_declare_WidgetLED'+Vpin] = 'WidgetLED led'+Vpin+'('+Vpin+');';
 	var code = 'led'+Vpin+'.setColor("'+colour_rgb_led_color+'");\n';
 	code+='led'+Vpin+'.setValue('+value_num+');';
 	return code;
@@ -299,7 +246,7 @@ Blockly.Arduino.blynk_iot_ir_send = function () {
 	var IR_CODE_LENGTH=IR_CODE.match(new RegExp(",", 'g')).length+1;
 	var random_num=Math.ceil(Math.random()*100000);
 	Blockly.Arduino.definitions_['include_IRremote'] = '#ifndef UNIT_TEST\n#include <Arduino.h>\n#endif\n#include <IRremoteESP8266.h>\n#include <IRsend.h>\n#define IR_LED '+dropdown_pin;
-	Blockly.Arduino.definitions_['IRsend irsend'] = 'IRsend irsend(IR_LED);\n';
+	Blockly.Arduino.definitions_['var_declare_IRsend irsend'] = 'IRsend irsend(IR_LED);\n';
 	Blockly.Arduino.definitions_['var_ir_send'+random_num] = 'uint16_t rawData'+random_num+'['+IR_CODE_LENGTH+'] = {'+IR_CODE+'}';
 	Blockly.Arduino.setups_['Serial.begin' ] = ' irsend.begin();\n  Serial.begin(115200, SERIAL_8N1, SERIAL_TX_ONLY);\n';
 	var code = 'irsend.sendRaw(rawData'+random_num+', '+IR_CODE_LENGTH+', 38); \n delay(2000);\n';
@@ -312,34 +259,34 @@ Blockly.Arduino.blynk_email = function() {
 	var email_add = Blockly.Arduino.valueToCode(this, 'email_add', Blockly.Arduino.ORDER_ATOMIC);
 	var Subject = Blockly.Arduino.valueToCode(this, 'Subject', Blockly.Arduino.ORDER_ATOMIC);
 	var content = Blockly.Arduino.valueToCode(this, 'content', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['BLYNK_MAX_SENDBYTES'] ='#define BLYNK_MAX_SENDBYTES 128 \n';
-	var code=' Blynk.email('+email_add+', '+Subject+', '+content+');\n';
+	Blockly.Arduino.definitions_['define_BLYNK_MAX_SENDBYTES'] ='#define BLYNK_MAX_SENDBYTES 128 \n';
+	var code='Blynk.email('+email_add+', '+Subject+', '+content+');\n';
 	return code;
 };
 //发送通知
 Blockly.Arduino.blynk_notify = function() {
 	var content = Blockly.Arduino.valueToCode(this, 'content', Blockly.Arduino.ORDER_ATOMIC);
-	var code=' Blynk.notify('+content+');\n';
+	var code='Blynk.notify('+content+');\n';
 	return code;
 };
 
 //物联网-终端组件显示文本
 Blockly.Arduino.blynk_terminal = function() {
 	var Vpin = this.getFieldValue('Vpin');
-	Blockly.Arduino.definitions_['WidgetTerminal'] = 'WidgetTerminal terminal('+Vpin+');\n';
+	Blockly.Arduino.definitions_['var_declare_WidgetTerminal'] = 'WidgetTerminal terminal('+Vpin+');\n';
 	var content = Blockly.Arduino.valueToCode(this, 'content', Blockly.Arduino.ORDER_ATOMIC);
-	var code=' terminal.println('+content+');\n';
+	var code='terminal.println('+content+');\n';
 	return code;
 };
 
 //从终端获取字符串
 Blockly.Arduino.blynk_iot_terminal_get = function () {
 	var Vpin = this.getFieldValue('Vpin');
-	Blockly.Arduino.definitions_['WidgetTerminal'] = 'WidgetTerminal terminal('+Vpin+');\n';
-	Blockly.Arduino.definitions_['action']='String action ;';
+	Blockly.Arduino.definitions_['var_declare_WidgetTerminal'] = 'WidgetTerminal terminal('+Vpin+');\n';
+		Blockly.Arduino.definitions_['var_declare_action']='String terminal_text ;';
 	var branch = Blockly.Arduino.statementToCode(this, 'DO');
     branch = branch.replace(/(^\s*)|(\s*$)/g, "");//去除两端空格s
-    var code = 'BLYNK_WRITE' + '(' +Vpin+'){\naction = param.asStr();\n'+branch;
+    var code = 'BLYNK_WRITE' + '(' +Vpin+'){\nterminal_text= param.asStr();\n'+branch;
     code+='\nterminal.flush();\n}';
     Blockly.Arduino.definitions_[Vpin] = code;
 };
@@ -357,43 +304,44 @@ Blockly.Arduino.blynk_videourl = function() {
 Blockly.Arduino.blynk_bridge_auth = function() {
 	var Vpin = this.getFieldValue('Vpin');
 	var auth = Blockly.Arduino.valueToCode(this, 'auth', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['var_declare_WidgetBridge'] ='WidgetBridge bridge1('+Vpin+');\n';
-	var code='bridge1.setAuthToken('+auth+'); \n';
+	Blockly.Arduino.definitions_['var_declare_WidgetBridge'+Vpin] ='WidgetBridge bridge'+Vpin+'('+Vpin+');\n';
+	var code='bridge'+Vpin+'.setAuthToken('+auth+'); \n';
 	return code;
 };
 
 //桥接数字输出
 Blockly.Arduino.blynk_bridge_digitalWrite = function() {
+	var Vpin = this.getFieldValue('Vpin');
 	var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
 	var dropdown_stat = Blockly.Arduino.valueToCode(this, 'STAT', Blockly.Arduino.ORDER_ATOMIC);
-	var code=' bridge1.digitalWrite('+dropdown_pin+', '+dropdown_stat+');\n';
+	var code='bridge'+Vpin+'.digitalWrite('+dropdown_pin+', '+dropdown_stat+');\n';
 	return code;
 };
 
 //桥接模拟输出
 Blockly.Arduino.blynk_bridge_AnaloglWrite = function() {
+	var Vpin = this.getFieldValue('Vpin');
 	var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
 	var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
-	var code=' bridge1.analogWrite('+dropdown_pin+', '+value_num+');\n';
+	var code='bridge'+Vpin+'.analogWrite('+dropdown_pin+', '+value_num+');\n';
 	return code;
 };
 
 //桥接虚拟管脚
 Blockly.Arduino.blynk_bridge_VPin = function() {
 	var Vpin = this.getFieldValue('Vpin');
+	var Vpin2 = this.getFieldValue('Vpin2');
 	var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
-	var code=' bridge1.virtualWrite('+Vpin+', '+value_num+');\n';
+	var code='bridge'+Vpin+'.virtualWrite('+Vpin2+', '+value_num+');\n';
 	return code;
 };
 
 //RTC组件初始化
 Blockly.Arduino.blynk_WidgetRTC_init = function() {	
-	var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>\n';
-	Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] ='#include <BlynkSimpleEsp8266.h>';
 	Blockly.Arduino.definitions_['include_TimeLib'] ='#include <TimeLib.h>';
 	Blockly.Arduino.definitions_['include_WidgetRTC'] ='#include <WidgetRTC.h>';
-	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';Blockly.Arduino.definitions_['WidgetRTC'] ='WidgetRTC rtc;\n';
+	var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
+	Blockly.Arduino.definitions_['var_declare_WidgetRTC'] ='WidgetRTC rtc;\n';
 	Blockly.Arduino.setups_['setSyncInterval'] = 'setSyncInterval('+value_num+'* 60);';
 	var code='rtc.begin(); \n';
 	return code;

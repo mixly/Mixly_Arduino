@@ -1010,61 +1010,61 @@
     <shadow type="pins_digital" />
   </value>
 </block>
- <block type="HT16K33_TEXT">
-    <value name="TEXT">
-      <shadow type="text">
-        <field name="TEXT">Mixly MixGo</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="HT16K33_POS">
-    <value name="XVALUE">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="YVALUE">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="HT16K33_DisplayChar">
-    <value name="Chars">
-      <block type="HT16K33_LedArray">
-      </block>
-    </value>
-  </block>
-  <block type="HT16K33_Displayclear">
-  </block>
-  <block type="HT16K33_show_image">
-    <value name="data">
-      <shadow type="pins_builtinimg"></shadow>
-    </value>
-  </block>
-  <block type="HT16K33_blink_rate">
-    <value name="x">
-      <shadow type="math_number">
-        <field name="NUM">2</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="HT16K33_brightness">
-    <value name="Brightness">
-      <shadow type="math_number">
-        <field name="NUM">2</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="mixGo_led">
-   <value name="STAT">
-    <shadow type="number">
+<block type="HT16K33_TEXT">
+  <value name="TEXT">
+    <shadow type="text">
+      <field name="TEXT">Mixly MixGo</field>
     </shadow>
   </value>
-  <value name="bright">
-    <shadow type="inout_highlow">
+</block>
+<block type="HT16K33_POS">
+  <value name="XVALUE">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
     </shadow>
   </value>
+  <value name="YVALUE">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="HT16K33_DisplayChar">
+  <value name="Chars">
+    <block type="HT16K33_LedArray">
+    </block>
+  </value>
+</block>
+<block type="HT16K33_Displayclear">
+</block>
+<block type="HT16K33_show_image">
+  <value name="data">
+    <shadow type="pins_builtinimg"></shadow>
+  </value>
+</block>
+<block type="HT16K33_blink_rate">
+  <value name="x">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+  </value>
+</block>
+<block type="HT16K33_brightness">
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+  </value>
+</block>
+<block type="mixGo_led">
+ <value name="STAT">
+  <shadow type="number">
+  </shadow>
+</value>
+<value name="bright">
+  <shadow type="inout_highlow">
+  </shadow>
+</value>
 </block>
 </category>
 <category id="catMonitor" colour="180">
@@ -1632,7 +1632,7 @@
           <field name="serial_select">Serial</field>
           <value name="CONTENT">
             <block type="variables_get">
-              <field name="VAR">action</field>
+              <field name="VAR">terminal_text</field>
             </block>
           </value>
         </block>
