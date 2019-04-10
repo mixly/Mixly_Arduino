@@ -603,8 +603,23 @@ var FONT_TYPE_SELECT = [
 ["ncenR14", "ncenR14_tf"],
 ["ncenR18", "ncenR18_tf"],
 ["ncenR24", "ncenR24_tf"],
+[Blockly.OLED_FONT_wqy12_t_chinese1, "wqy12_t_chinese1"],
+[Blockly.OLED_FONT_wqy12_t_chinese2, "wqy12_t_chinese2"],
+[Blockly.OLED_FONT_wqy12_t_chinese3, "wqy12_t_chinese3"],
+[Blockly.OLED_FONT_wqy14_t_chinese1, "wqy14_t_chinese1"],
+[Blockly.OLED_FONT_wqy14_t_chinese2, "wqy14_t_chinese2"],
+[Blockly.OLED_FONT_wqy14_t_chinese3, "wqy14_t_chinese3"],
+[Blockly.OLED_FONT_wqy16_t_chinese1, "wqy16_t_chinese1"],
+[Blockly.OLED_FONT_wqy16_t_chinese2, "wqy16_t_chinese2"],
+[Blockly.OLED_FONT_wqy16_t_chinese3, "wqy16_t_chinese3"],
+[Blockly.OLED_FONT_wqy12_t_gb2312a, "wqy12_t_gb2312a"],
+[Blockly.OLED_FONT_wqy12_t_gb2312b, "wqy12_t_gb2312b"],
 [Blockly.OLED_FONT_wqy12_t_gb2312, "wqy12_t_gb2312"],
+[Blockly.OLED_FONT_wqy14_t_gb2312a, "wqy14_t_gb2312a"],
+[Blockly.OLED_FONT_wqy14_t_gb2312b, "wqy14_t_gb2312b"],
 [Blockly.OLED_FONT_wqy14_t_gb2312, "wqy14_t_gb2312"],
+[Blockly.OLED_FONT_wqy16_t_gb2312a, "wqy16_t_gb2312a"],
+[Blockly.OLED_FONT_wqy16_t_gb2312b, "wqy16_t_gb2312b"],
 [Blockly.OLED_FONT_wqy16_t_gb2312, "wqy16_t_gb2312"]
 ];
 

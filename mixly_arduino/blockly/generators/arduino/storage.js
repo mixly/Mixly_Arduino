@@ -14,7 +14,7 @@ Blockly.Arduino.store_sd_write = function() {
 	Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
 	Blockly.Arduino.setups_['setup_sd_write_chipselect'] = 'const int chipSelect = 4;';
 	Blockly.Arduino.setups_['setup_sd_write_begin'] = 'SD.begin(chipSelect);';
-	Blockly.Arduino.definitions_['var_File_datafile'] = 'File datafile;';
+	Blockly.Arduino.definitions_['var_declare_File_datafile'] = 'File datafile;';
 	var code='datafile = SD.open('+file+', FILE_WRITE);\n';
 	code+='if(datafile){\n';
 	code+='	datafile.print('+data+');\n';

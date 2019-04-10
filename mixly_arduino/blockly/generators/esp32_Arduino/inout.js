@@ -16,10 +16,10 @@ Blockly.Arduino.inout_pwm_analog_write= function () {
     var FREQ = Blockly.Arduino.valueToCode(this, 'FREQ', Blockly.Arduino.ORDER_ATOMIC);
     var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
     var channle = Blockly.Arduino.valueToCode(this, 'CHANNEL',Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-    Blockly.Arduino.definitions_['PWMC_CHANNEL_'+dropdown_pin] = '#define PWMC_CHANNEL_'+dropdown_pin+' '+channle;
-    Blockly.Arduino.definitions_['PWM_PIN'+dropdown_pin] = '#define PWM_PIN'+dropdown_pin+' '+dropdown_pin;
+    Blockly.Arduino.definitions_['define_PWMC_CHANNEL_'+dropdown_pin] = '#define PWMC_CHANNEL_'+dropdown_pin+' '+channle;
+    Blockly.Arduino.definitions_['define_PWM_PIN'+dropdown_pin] = '#define PWM_PIN'+dropdown_pin+' '+dropdown_pin;
     Blockly.Arduino.definitions_['PWMC_TIMER_13_BIT'] = '#define PWMC_TIMER_13_BIT  13';
-    Blockly.Arduino.definitions_['PWMC_BASE_FREQ'+dropdown_pin] = '#define PWMC_BASE_FREQ'+dropdown_pin+'  '+FREQ;
+    Blockly.Arduino.definitions_['define_PWMC_BASE_FREQ'+dropdown_pin] = '#define PWMC_BASE_FREQ'+dropdown_pin+'  '+FREQ;
     Blockly.Arduino.setups_['PWMcSetup'+dropdown_pin] = 'ledcSetup(PWMC_CHANNEL_'+dropdown_pin+', PWMC_BASE_FREQ'+dropdown_pin+', PWMC_TIMER_13_BIT);';
     Blockly.Arduino.setups_['ledcAttachPin'+dropdown_pin] = 'ledcAttachPin(PWM_PIN'+dropdown_pin+', PWMC_CHANNEL_'+dropdown_pin+');';
     var code2 = 'void ledcAnalogWrite(uint8_t channel, uint32_t value, uint32_t valueMax = 255) {\n';

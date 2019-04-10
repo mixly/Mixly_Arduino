@@ -9,8 +9,8 @@ Blockly.Arduino.gps_init = function() {
   var rx = Blockly.Arduino.valueToCode(this, 'RX',Blockly.Arduino.ORDER_ATOMIC);
   var tx = Blockly.Arduino.valueToCode(this, 'TX',Blockly.Arduino.ORDER_ATOMIC);
   var bt = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC)
-  Blockly.Arduino.definitions_['var_TinyGPSPlus_gps'] = 'TinyGPSPlus gps;';
-  Blockly.Arduino.definitions_['var_SoftwareSerial_gps_ss'] = 'SoftwareSerial gps_ss('+rx+', '+tx+');';
+  Blockly.Arduino.definitions_['var_declare_TinyGPSPlus_gps'] = 'TinyGPSPlus gps;';
+  Blockly.Arduino.definitions_['var_declare_SoftwareSerial_gps_ss'] = 'SoftwareSerial gps_ss('+rx+', '+tx+');';
   Blockly.Arduino.setups_['setup_gps_ss_begin'] = 'gps_ss.begin('+bt+');';
   return '';
 };
@@ -110,7 +110,7 @@ Blockly.Arduino.DS1302_init = function () {
     var dropdown_dat = Blockly.Arduino.valueToCode(this, 'DAT', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_clk = Blockly.Arduino.valueToCode(this, 'CLK', Blockly.Arduino.ORDER_ATOMIC);
     Blockly.Arduino.definitions_['include_DS1302'] = '#include <DS1302.h>';
-    Blockly.Arduino.definitions_['DS1302'+RTCName] = 'DS1302 '+ RTCName +'(' + dropdown_rst + ',' + dropdown_dat + ',' + dropdown_clk + ');';
+    Blockly.Arduino.definitions_['var_declare_DS1302'+RTCName] = 'DS1302 '+ RTCName +'(' + dropdown_rst + ',' + dropdown_dat + ',' + dropdown_clk + ');';
     return "";
 };
 
