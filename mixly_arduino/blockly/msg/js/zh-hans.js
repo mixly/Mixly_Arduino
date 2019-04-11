@@ -752,7 +752,6 @@ var MSG = {
 	catMonitor:"显示器",
 	catLCD:"LCD显示屏",
 	cat4Digitdisplay:"四位数码管",
-	catWS2812:"WS2812",
 	catOLED:"OLED显示屏",
 	catHT16K33:"HT16K33点阵屏",
 	catMax7219:"MAX7219点阵屏",
@@ -1137,7 +1136,7 @@ Blockly.MIXLY_270DEGREE='270度';
 
 //MAX7219
 Blockly.MIXLY_MAX7219_INIT_NUM='点阵模块数量';
-Blockly.MIXLY_MAX7219_PUTSTR='LED点阵滚动字符串(MAX7219)';
+Blockly.MIXLY_MAX7219_PUTSTR='MAX7219点阵屏幕滚动显示';
 Blockly.MIXLY_SPEED='速度';
 Blockly.MIXLY_BRIGHTNESS='亮度';
 Blockly.MIXLY_MAX7219_BRIGHTNESS_TOOLTIP='亮度范围0~15'
@@ -1182,8 +1181,8 @@ Blockly.MIXLY_SETDATE = '设置日期:';
 Blockly.MIXLY_DATEFORMATE = '日期格式(年-月-日)';
 Blockly.MIXLY_TIMEFORMATE = '时间格式(时:分:秒)';
 //8*8点阵显示屏
-Blockly.MIXLY_DISPLAY_MATRIX_INIT = "初始化8*8点阵屏(HT16K33)";
-Blockly.MIXLY_DISPLAY_MATRIX_SHOW = "点阵屏显示";
+Blockly.MIXLY_DISPLAY_MATRIX_INIT = "HT16K33点阵屏幕初始化";
+Blockly.MIXLY_DISPLAY_MATRIX_SHOW = "HT16K33点阵屏幕";
 Blockly.MIXLY_DISPLAY_MATRIX_X = 'X轴';
 Blockly.MIXLY_DISPLAY_MATRIX_Y = 'Y轴';
 Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT = ' 单点设为';
@@ -1191,7 +1190,7 @@ Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT_TOOLTIP = '点阵屏单点操作，XY轴�
 Blockly.MIXLY_DISPLAY_MATRIX_CLEAR = " 显示清屏";
 Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "数组变量";
 Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " 图案数组";
-Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "屏幕旋转";
+Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "旋转";
 
 Blockly.MIXLY_RTCINIT = '初始化时钟模块DS1307';
 Blockly.MIXLY_RTCGETTIME = '获取RTC时钟时间';

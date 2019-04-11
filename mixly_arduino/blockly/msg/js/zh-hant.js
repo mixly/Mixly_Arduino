@@ -748,7 +748,6 @@ catActuator:"執行器",
 catMonitor:"顯示器",
 catLCD:"LCD顯示屏",
 cat4Digitdisplay:"四位數碼管",
-catWS2812:"WS2812",
 catOLED:"OLED顯示屏",
 catHT16K33:"HT16K33點陣屏",
 catMax7219:"MAX7219點陣屏",
@@ -1122,7 +1121,7 @@ Blockly.MIXLY_4DIGITDISPLAY_OFF = '滅';
 
 //MAX7219
 Blockly.MIXLY_MAX7219_INIT_NUM='點陣模塊數量';
-Blockly.MIXLY_MAX7219_PUTSTR='LED點陣滾動字符串(MAX7219)';
+Blockly.MIXLY_MAX7219_PUTSTR='MAX7219點陣滾動顯示';
 Blockly.MIXLY_SPEED='速度';
 Blockly.MIXLY_BRIGHTNESS='亮度';
 Blockly.MIXLY_MAX7219_BRIGHTNESS_TOOLTIP='亮度範圍0~15'
