@@ -60,12 +60,12 @@
   <script type="text/javascript" src="../../blocks/arduino/serial.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script>
-  <link rel="stylesheet" type="text/css" href="color_simple.css" />
+  <link rel="stylesheet" type="text/css" href="css/color_simple.css" />
   <!-- 过去index.html中的js代码都会被放到这个js中-->
   <script src="init.js"></script>
-  <link rel="stylesheet" type="text/css" href="color_esp8266.css" />
+  <link rel="stylesheet" type="text/css" href="css/color_esp8266_simple.css" />
   <!-- ACE中字体放缩按钮样式-->
-  <link rel="stylesheet" type="text/css" href="ACEfont.css" />
+  <link rel="stylesheet" type="text/css" href="css/ACEfont.css" />
 </head>
 
 <body onload="init()">
@@ -88,8 +88,7 @@
               <span id="copyright" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
             </td>
             <td class="tabmode">
-              <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">普通视图</span>
-              <a class="viewRight" id="viewMode2" href="index_advance_board_ESP8266_Boards_(2.5.0).html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</a>
+               <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_ESP8266_Boards_(2.5.0).html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</a>
             </td>
             <script type="text/javascript">var viewMode2 = document.getElementById('viewMode2');
           viewMode2.href = 'index_advance_board_ESP8266_Boards_(2.5.0).html?lang=' + Code.LANG;</script>
@@ -900,6 +899,86 @@
       </shadow>
     </value>
   </block>
+   <block type="display_rgb_init">
+      <value name="PIN">
+        <shadow type="pins_digital" />
+      </value>
+      <value name="LEDCOUNT">
+        <shadow type="math_number">
+          <field name="NUM">4</field>
+        </shadow>
+      </value>
+      <value name="Brightness">
+        <shadow type="math_number">
+          <field name="NUM">20</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="display_rgb">
+      <value name="PIN">
+        <shadow type="pins_digital" />
+      </value>
+      <value name="_LED_">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="RVALUE">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="GVALUE">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="BVALUE">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="display_rgb2">
+      <value name="PIN">
+        <shadow type="pins_digital" />
+      </value>
+      <value name="_LED_">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="display_rgb_rainbow1">
+      <value name="PIN">
+        <shadow type="pins_digital" />
+      </value>
+      <value name="WAIT">
+        <shadow type="math_number">
+          <field name="NUM">20</field>
+        </shadow>
+      </value>
+      <value name="Brightness">
+        <shadow type="math_number">
+          <field name="NUM">20</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="display_rgb_rainbow3">
+      <value name="PIN">
+        <shadow type="pins_digital" />
+      </value>
+      <value name="rainbow_color">
+        <shadow type="math_number">
+          <field name="NUM">20</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="display_rgb_show">
+      <value name="PIN">
+        <shadow type="pins_digital" />
+      </value>
+    </block>
 </category>
 <category id="catMonitor" colour="180">
   <category id="catLCD" name="LCD">
@@ -1001,88 +1080,6 @@
       <value name="STAT">
         <shadow type="inout_highlow">
         </shadow>
-      </value>
-    </block>
-  </category>
-  <category id="catWS2812">
-    <block type="display_rgb_init">
-      <value name="PIN">
-        <shadow type="pins_digital" />
-      </value>
-      <value name="LEDCOUNT">
-        <shadow type="math_number">
-          <field name="NUM">4</field>
-        </shadow>
-      </value>
-      <value name="Brightness">
-        <shadow type="math_number">
-          <field name="NUM">20</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_rgb">
-      <value name="PIN">
-        <shadow type="pins_digital" />
-      </value>
-      <value name="_LED_">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-      <value name="RVALUE">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="GVALUE">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="BVALUE">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_rgb2">
-      <value name="PIN">
-        <shadow type="pins_digital" />
-      </value>
-      <value name="_LED_">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_rgb_rainbow1">
-      <value name="PIN">
-        <shadow type="pins_digital" />
-      </value>
-      <value name="WAIT">
-        <shadow type="math_number">
-          <field name="NUM">20</field>
-        </shadow>
-      </value>
-      <value name="Brightness">
-        <shadow type="math_number">
-          <field name="NUM">20</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_rgb_rainbow3">
-      <value name="PIN">
-        <shadow type="pins_digital" />
-      </value>
-      <value name="rainbow_color">
-        <shadow type="math_number">
-          <field name="NUM">20</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_rgb_show">
-      <value name="PIN">
-        <shadow type="pins_digital" />
       </value>
     </block>
   </category>
