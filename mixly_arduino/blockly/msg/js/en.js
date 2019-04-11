@@ -2508,6 +2508,8 @@ Blockly.MixGo_MPU9250_MX='x-Magnet';
 Blockly.MixGo_MPU9250_MY='y-Magnet';
 Blockly.MixGo_MPU9250_MZ='z-Magnet';
 
-//lqy add ○ & △
+Blockly.MIXLY_HANBIT_SHOW_CIRCLE = " center of circle (x %1, y %2) radius %3 %4 filling %5";
+Blockly.MIXLY_HANBIT_SHOW_triangle = " vertex (x0 %1, y0 %2) (x1 %3, y1 %4) (x2 %5, y2 %6) %7 filled %8";
+Blockly.MIXLY_HANBIT_DRAW_TRIANGLE = "triangle";
 
 Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = 'The value of the light sensor（0~255）'

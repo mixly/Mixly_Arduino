@@ -2278,6 +2278,8 @@ Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE_TOOLTIP ="obtiene el estado de activación 
 Blockly.MIXLY_ESP32_IOT_ONENET_PRINT_DATA="Los datos de impresión";
 Blockly.MIXLY_PYTHON_LOGIC_IS = "Es";
 
-//lqy add ○ & △
+Blockly.MIXLY_HANBIT_SHOW_CIRCLE = "Radio del Centro(X %1, y %2) %3 %4 rellenado %5";
+Blockly.MIXLY_HANBIT_SHOW_triangle = "vértice(x0 %1,Y0 %2) (X1 %3,Y1 %4) (x2 %5,Y2 %6) %7 rellenado %8";
+Blockly.MIXLY_HANBIT_DRAW_TRIANGLE = "triángulo";
 
 Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = 'Devuelve el valor del sensor de luz（0~255）'

@@ -157,7 +157,7 @@ Blockly.Python.sensor_mpu9250_field_strength= function(){
     var compass = this.getFieldValue('compass');
     var a;
     if(compass =='strength'){
-        a = v+'.mpu9250_get_field_strength()';
+        a = v+'.get_field_strength()';
     }
     else if(compass =='heading'){
         a = v+'.heading()';
