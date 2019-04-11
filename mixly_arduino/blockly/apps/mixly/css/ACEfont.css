@@ -1,7 +1,7 @@
 .setFontSize {
 	position: absolute;
 	right: 20;
-	background-image: url('../../media/sprites.png');
+	background-image: url('../../../media/sprites.png');
 	width: 32px;
 	height: 32px;
 }
