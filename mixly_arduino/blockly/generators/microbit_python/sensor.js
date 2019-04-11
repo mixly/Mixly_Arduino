@@ -259,5 +259,5 @@ Blockly.Python.sensor_compass_reset = function(block) {
 
 Blockly.Python.sensor_light= function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
-    return ['read_light_level()', Blockly.Python.ORDER_ATOMIC];
+    return ['display.read_light_level()', Blockly.Python.ORDER_ATOMIC];
 };
