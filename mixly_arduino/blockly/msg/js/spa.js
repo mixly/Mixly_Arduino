@@ -2277,3 +2277,7 @@ Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE_TOOLTIP ="obtiene el estado de activación 
 
 Blockly.MIXLY_ESP32_IOT_ONENET_PRINT_DATA="Los datos de impresión";
 Blockly.MIXLY_PYTHON_LOGIC_IS = "Es";
+
+//lqy add ○ & △
+
+Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = 'Devuelve el valor del sensor de luz（0~255）'

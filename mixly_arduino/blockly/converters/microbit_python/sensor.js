@@ -190,6 +190,15 @@ pbc.globalFunctionD['temperature'] = function (py2block, func, args, keywords, s
     });
 }
 
+pbc.globalFunctionD['read_light_level'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return block("sensor_light", func.lineno, {}, {}, {
+        "inline": "true"
+    });
+}
+
 
 pbc.moduleFunctionD.get('sonar')['distance_cm'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {

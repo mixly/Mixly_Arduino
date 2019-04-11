@@ -2544,3 +2544,7 @@ Blockly.MixGo_MPU9250_GZ='z轴角速度';
 Blockly.MixGo_MPU9250_MX='x轴磁場';
 Blockly.MixGo_MPU9250_MY='y轴磁場';
 Blockly.MixGo_MPU9250_MZ='z轴磁場';
+
+//lqy add ○ & △
+
+Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = '返回光線傳感器的值（0~255）'

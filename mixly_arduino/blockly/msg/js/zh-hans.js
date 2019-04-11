@@ -2245,8 +2245,8 @@ Blockly.MIXLY_ESP32_NETWORK_SOCKET_RECEIVE_FROM_TOOLTIP="利用UDP协议返回�
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TO_TOOLTIP="发送信息到指定的网络地址";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CLOSE_TOOLTIP="关闭网络连接";
 Blockly.MIXLY_ESP32_SENSOR_MIXGO_PIN_NEAR_TOOLTIP='返回'
-Blockly.ESP32_SENSOR_NIXGO_LIGHT_TOOLTIP = '返回光线传感器的值（0~111）'
-Blockly.ESP32_SENSOR_NIXGO_SOUND_TOOLTIP = '返回声音传感器的值（0~111）'
+Blockly.ESP32_SENSOR_NIXGO_LIGHT_TOOLTIP = '返回光线传感器的值（0~4095）'
+Blockly.ESP32_SENSOR_NIXGO_SOUND_TOOLTIP = '返回声音传感器的值（0~4095）'
 Blockly.MIXLY_MICROBIT_SENSOR_BMP_temperature_TOOLTIP = "获取温度（-45~+85℃)"
 Blockly.MIXLY_MICROBIT_SENSOR_BMP_press_TOOLTIP = "获取大气压强（0~20000hPa)"
 Blockly.MIXLY_MICROBIT_SENSOR_SHT_temperature_TOOLTIP = "获取温度（-40~+125℃）"
@@ -2592,3 +2592,5 @@ Blockly.MixGo_MPU9250_MZ='z轴磁场';
 Blockly.MIXLY_HANBIT_SHOW_CIRCLE = " 圆心(x %1 ,y %2 ) 半径 %3 %4 填充 %5";
 Blockly.MIXLY_HANBIT_SHOW_triangle = " 顶点(x0 %1 ,y0 %2 ) (x1 %3 ,y1 %4 ) (x2 %5 ,y2 %6 ) %7 填充 %8";
 Blockly.MIXLY_HANBIT_DRAW_TRIANGLE = "三角形";
+
+Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = '返回光线传感器的值（0~255）'

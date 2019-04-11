@@ -2507,3 +2507,7 @@ Blockly.MixGo_MPU9250_GZ='z-Gyro';
 Blockly.MixGo_MPU9250_MX='x-Magnet';
 Blockly.MixGo_MPU9250_MY='y-Magnet';
 Blockly.MixGo_MPU9250_MZ='z-Magnet';
+
+//lqy add ○ & △
+
+Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = 'The value of the light sensor（0~255）'

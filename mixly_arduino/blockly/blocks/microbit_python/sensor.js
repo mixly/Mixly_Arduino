@@ -484,3 +484,14 @@ Blockly.Blocks['sensor_compass_reset'] = {
     this.setTooltip(Blockly.MIXLY_MICROBIT_Reset_COMPASS);
   }
 };
+
+Blockly.Blocks['sensor_light'] = {
+    init: function(){
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_ESP32_LIGHT);
+        this.setOutput(true, Number);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP);
+    }
+};
