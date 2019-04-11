@@ -292,7 +292,10 @@ profile['Arduino ESP32 Generic']=profile['Arduino HandBit']=profile['Arduino Mix
 	for(var idx in sorted_keys){
 		var name=sorted_keys[idx];
 		var def = Blockly.Arduino.definitions_[name];
-		if (def.match(/^#include/)) {
+		if (name.match(/^define_BLYNK_PRINT/)) {
+			imports.push(def);
+		}
+		else if (def.match(/^#include/)) {
 			imports.push(def);
 		} else if (name.match(/^var_declare/)) {
 			definitions_var.push(def);
