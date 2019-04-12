@@ -1196,8 +1196,8 @@ Blockly.Blocks.display_draw_4strings = {
 Blockly.Blocks['display_image_size'] = {
   init: function() {
     var OPERATORS =
-        [[Blockly.MIXLY_MICROBIT_IMAGE_HEIGHT, 'height'],
-         [Blockly.MIXLY_MICROBIT_IMAGE_WIDTH, 'width']
+        [[Blockly.MIXLY_HEIGHT, 'height'],
+         [Blockly.MIXLY_WIDTH, 'width']
         ];
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput()
@@ -1215,8 +1215,8 @@ Blockly.Blocks['display_image_size'] = {
       var mode0 = Blockly.MIXLY_MICROBIT_PY_STORAGE_GET;
       var mode1 =Blockly.MIXLY_MICROBIT_IMAGE
       var TOOLTIPS = {
-        'height': Blockly.MIXLY_MICROBIT_IMAGE_HEIGHT,
-        'width': Blockly.MIXLY_MICROBIT_IMAGE_WIDTH,
+        'height': Blockly.MIXLY_HEIGHT,
+        'width': Blockly.MIXLY_WIDTH,
       };
       return mode0+mode1+TOOLTIPS[mode];
     });

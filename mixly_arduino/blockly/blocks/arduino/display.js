@@ -696,8 +696,8 @@ Blockly.Blocks.oled_showBitmap = {
     this.appendDummyInput("").appendField("OLED").appendField(Blockly.OLED_BITMAP);
     this.appendValueInput("START_X", Number).appendField(Blockly.OLED_POSX).setCheck(Number);
     this.appendValueInput("START_Y", Number).appendField(Blockly.OLED_POSY).setCheck(Number);
-    this.appendDummyInput("").appendField(Blockly.OLED_WIDTH).appendField(new Blockly.FieldDropdown(OLED_BITMAP_WIDTH_SELECT), "WIDTH");
-    this.appendDummyInput("").appendField(Blockly.OLED_HEIGHT).appendField(new Blockly.FieldDropdown(OLED_BITMAP_HEIGHT_SELECT), "HEIGHT");
+    this.appendDummyInput("").appendField(Blockly.MIXLY_WIDTH).appendField(new Blockly.FieldDropdown(OLED_BITMAP_WIDTH_SELECT), "WIDTH");
+    this.appendDummyInput("").appendField(Blockly.MIXLY_HEIGHT).appendField(new Blockly.FieldDropdown(OLED_BITMAP_HEIGHT_SELECT), "HEIGHT");
     this.appendValueInput("bitmap_name", String).appendField(Blockly.OLED_BITMAP_NAME).setCheck(String);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
@@ -790,8 +790,8 @@ Blockly.Blocks.oled_drawFrame = {
     this.appendDummyInput("").appendField(new Blockly.FieldDropdown(FRAMESELECT), "TYPE");
     this.appendValueInput("D0_X", Number).appendField(Blockly.OLED_L_U_X).setCheck(Number);
     this.appendValueInput("D0_Y", Number).appendField(Blockly.OLED_L_U_Y).setCheck(Number);
-    this.appendValueInput("WIDTH", Number).appendField(Blockly.OLED_WIDTH).setCheck(Number);
-    this.appendValueInput("HEIGHT", Number).appendField(Blockly.OLED_HEIGHT).setCheck(Number);
+    this.appendValueInput("WIDTH", Number).appendField(Blockly.MIXLY_WIDTH).setCheck(Number);
+    this.appendValueInput("HEIGHT", Number).appendField(Blockly.MIXLY_HEIGHT).setCheck(Number);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -807,8 +807,8 @@ Blockly.Blocks.oled_drawRFrame = {
     this.appendDummyInput("").appendField(new Blockly.FieldDropdown(RADSELECT), "TYPE");
     this.appendValueInput("D0_X", Number).appendField(Blockly.OLED_L_U_X).setCheck(Number);
     this.appendValueInput("D0_Y", Number).appendField(Blockly.OLED_L_U_Y).setCheck(Number);
-    this.appendValueInput("WIDTH", Number).appendField(Blockly.OLED_WIDTH).setCheck(Number);
-    this.appendValueInput("HEIGHT", Number).appendField(Blockly.OLED_HEIGHT).setCheck(Number);
+    this.appendValueInput("WIDTH", Number).appendField(Blockly.MIXLY_WIDTH).setCheck(Number);
+    this.appendValueInput("HEIGHT", Number).appendField(Blockly.MIXLY_HEIGHT).setCheck(Number);
     this.appendValueInput("RADIUS", Number).appendField(Blockly.OLED_RADIUS).setCheck(Number);
     this.setInputsInline(true);
     this.setPreviousStatement(true);

@@ -532,7 +532,7 @@ init: function() {
       .appendField(new Blockly.FieldDropdown(TEXT_CENTER), 'CENTER')
       .setCheck(String);
   this.appendValueInput("WID")
-      .appendField(Blockly.MIXLY_MICROBIT_IMAGE_WIDTH)
+      .appendField(Blockly.MIXLY_WIDTH)
       .setCheck(Number);
   this.appendValueInput("Symbol")
       .appendField(Blockly.MIXLY_RECT_Fill)
