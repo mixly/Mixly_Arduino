@@ -747,7 +747,6 @@ var MSG = {
 	catGroup: "通信",
 	catStorage:"存储",
 	catSensor: "传感器",
-	catMusic: "音乐",
 	catActuator: "执行器",
 	catMonitor:"显示器",
 	catLCD:"LCD显示屏",
@@ -2591,5 +2590,4 @@ Blockly.MixGo_MPU9250_MZ='z轴磁场';
 Blockly.MIXLY_HANBIT_SHOW_CIRCLE = " 圆心(x %1 ,y %2 ) 半径 %3 %4 填充 %5";
 Blockly.MIXLY_HANBIT_SHOW_triangle = " 顶点(x0 %1 ,y0 %2 ) (x1 %3 ,y1 %4 ) (x2 %5 ,y2 %6 ) %7 填充 %8";
 Blockly.MIXLY_HANBIT_DRAW_TRIANGLE = "三角形";
-
 Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = '返回光线传感器的值（0~255）'
