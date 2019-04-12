@@ -810,7 +810,7 @@ Blockly.Blocks.blynk_WidgetRTC_init = {
 };
 
 //传感器-实时时钟块_时间变量
-var RTC_TIME_TYPE = [
+var BLYNK_RTC_TIME_TYPE = [
 [Blockly.MIXLY_YEAR, "year"],
 [Blockly.MIXLY_MONTH, "month"],
 [Blockly.MIXLY_DAY, "day"],
@@ -826,7 +826,7 @@ Blockly.Blocks.blynk_WidgetRTC_get_time = {
     this.setColour(Blockly.Blocks.blynk.HUE1);
     this.appendDummyInput("").appendField(new Blockly.FieldImage("../../media/blynk/widget_rtc.png", 20, 20)).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.blynk_WidgetRTC_get_time);
 
-    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
+    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(BLYNK_RTC_TIME_TYPE), "TIME_TYPE");
     this.setInputsInline(true);
     this.setOutput(true, Number);
   }
