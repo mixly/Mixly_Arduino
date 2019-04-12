@@ -1,6 +1,6 @@
 'use strict';
 
-goog.provide('Blockly.Blocks.actuator');
+goog.provide('Blockly.Blocks.MixGo');
 goog.require('Blockly.Blocks');
 
 Blockly.Blocks.actuator.HUE = 100;

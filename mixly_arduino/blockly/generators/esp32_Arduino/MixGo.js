@@ -82,8 +82,7 @@ Blockly.Arduino.HT16K33_LedArray = function() {
  code += '0x' + tmp + ((i != 8) ? ',' : '');
 }
 code += '};';
-  //Blockly.Arduino.definitions_[this.id] = "byte LedArray_"+clearString(this.id)+"[]="+code;
-  Blockly.Arduino.definitions_[varName] = "uint16_t " + varName + "[8]=" + code;
+Blockly.Arduino.definitions_[varName] = "uint16_t " + varName + "[8]=" + code;
   //return ["LedArray_"+clearString(this.id), Blockly.Arduino.ORDER_ATOMIC];
   return [varName, Blockly.Arduino.ORDER_ATOMIC];
 };
@@ -127,9 +126,8 @@ Blockly.Arduino.HT16K33_show_image = function() {
 //ok
 Blockly.Arduino.mixgo_button_is_pressed = function(){
  var btn = this.getFieldValue('btn');
-  //   var btn = Blockly.Arduino.valueToCode(this, 'btn', Blockly.Arduino.ORDER_ATOMIC);
-  var code =  'digitalRead('+btn+')';
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
+ var code =  'digitalRead('+btn+')';
+ return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.sensor_mixgo_light= function(){
@@ -155,7 +153,7 @@ Blockly.Arduino.sensor_mixgo_pin_near = function(){
 Blockly.Arduino.mixGo_led= function() {
   var op = this.getFieldValue('STAT');
   var bright = Blockly.Arduino.valueToCode(this,'bright', Blockly.Arduino.ORDER_ATOMIC);
-   Blockly.Arduino.setups_['setup_pinmode'+op] = 'pinMode('+op+',OUTPUT);';
+  Blockly.Arduino.setups_['setup_pinmode'+op] = 'pinMode('+op+',OUTPUT);';
   var code = "digitalWrite("+op+","+bright+");\n";
   return code;
 };
@@ -172,7 +170,7 @@ Blockly.Blocks.sensor_sound=Blockly.Blocks.sensor_mixgo_sound;
 //传感器_重力感应块_获取9轴数据
 Blockly.Arduino.mixgo_MPU9250 = function() {
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-    Blockly.Arduino.definitions_['include_FaBo9Axis_MPU9250'] = '#include <FaBo9Axis_MPU9250.h>';
+  Blockly.Arduino.definitions_['include_FaBo9Axis_MPU9250'] = '#include <FaBo9Axis_MPU9250.h>';
   Blockly.Arduino.definitions_['var_declare_MPU9250'] = 'FaBo9Axis fabo_9axis;\n float ax,ay,az,gx,gy,gz,mx,my,mz;';
   Blockly.Arduino.setups_['setup_mpu9250'] = 'Serial.begin(115200);\nfabo_9axis.begin();';
   var dropdown_type = this.getFieldValue('MixGo_MPU9250_GETAB');

@@ -17,3 +17,21 @@ Blockly.Arduino.oled_init = function() {
   var code = '';
   return code;
 };
+Blockly.Arduino.inout_touchRead = function(){
+ var touch_pin = this.getFieldValue('touch_pin');
+ var code =  'touchRead('+touch_pin+')';
+ return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+Blockly.Arduino.handbit_button_is_pressed = function(){
+ var btn = this.getFieldValue('btn');
+ var code =  'digitalRead('+btn+')';
+ return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.handbit_light= function(){
+  return ['analogRead(39)', Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.handbit_sound= function(){
+  return ['analogRead(36)', Blockly.Arduino.ORDER_ATOMIC];
+};
