@@ -832,6 +832,7 @@
           <shadow type="math_number">
             <field name="NUM">1010</field>
           </shadow>
+            </value>
         </block>
         <block type="math_constrain">
           <value name="VALUE">
@@ -933,29 +934,6 @@
         </block>
         <block type="text_textarea">
         </block>
-        <block type="text_format_noreturn">
-          <mutation items="1"></mutation>
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Random No. is {}</field>
-            </shadow>
-          </value>
-          <value name="ADD0">
-            <block type="math_random">
-              <field name="TYPE">int</field>
-              <value name="FROM">
-                <shadow type="math_number">
-                  <field name="NUM">1</field>
-                </shadow>
-              </value>
-              <value name="TO">
-                <shadow type="math_number">
-                  <field name="NUM">100</field>
-                </shadow>
-              </value>
-            </block>
-          </value>
-        </block>
         <block type="text_join">
           <value name="A">
             <shadow type="text">
@@ -981,50 +959,34 @@
               <field name="TEXT">123</field>
             </shadow>
           </value>
-        </block>         
-        <block type="text_center">
+        </block>
+         <block type="text_capital">
           <value name="VAR">
             <shadow type="text">
-              <field name="TEXT">Hello, Mixly</field>
+              <field name="TEXT">Hello,mixly</field>
             </shadow>
           </value>
-          <value name="WID">
+        </block>
+        
+        <block type="ascii_to_char">
+          <value name="VAR">
             <shadow type="math_number">
-              <field name="NUM">50</field>
-            </shadow>
-          </value>
-          <value name="Symbol">
-            <shadow type="text">
-              <field name="TEXT">*</field>
+              <field name="NUM">65</field>
             </shadow>
           </value>
         </block>
-        <block type="text_find">
+        <block type="char_to_ascii">
           <value name="VAR">
             <shadow type="text">
-              <field name="TEXT">Hello, Mixly</field>
-            </shadow>
-          </value>
-          <value name="STR">
-            <shadow type="text">
-              <field name="TEXT">l</field>
+              <field name="TEXT">a</field>
             </shadow>
           </value>
         </block>
-        <block type="text_replace">
+
+        <block type="text_length">
           <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Hello, Mixly</field>
-            </shadow>
-          </value>
-          <value name="STR1">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-          <value name="STR2">
-            <shadow type="text">
-              <field name="TEXT">MixGo</field>
             </shadow>
           </value>
         </block>
@@ -1040,34 +1002,7 @@
             </shadow>
           </value>
         </block>
-        <block type="text_strip">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="ascii_to_char">
-          <value name="VAR">
-            <shadow type="math_number">
-              <field name="NUM">65</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="char_to_ascii">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">a</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="text_length">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">Mixly</field>
-            </shadow>
-          </value>
-        </block>
+
         <block type="text_char_at">
           <value name="VAR">
             <shadow type="text">
@@ -1289,6 +1224,23 @@
             </shadow>
           </value>
         </block>
+        <block type="tuple_get_sublist">
+            <value name="LIST">
+              <shadow type="variables_get">
+                <field name="VAR">mytup</field>
+              </shadow>
+            </value>
+            <value name="AT1">
+              <shadow type="math_indexer_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="AT2">
+              <shadow type="math_indexer_number">
+                <field name="NUM">2</field>
+              </shadow>
+            </value>
+          </block>
         <block type="tuple_length">
           <value name="TUP">
             <shadow type="variables_get">
