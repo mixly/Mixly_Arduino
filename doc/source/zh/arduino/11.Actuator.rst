@@ -1,0 +1,7 @@
+执行器
+=============
+执行模块：声音播放、舵机控制、I2C液晶模块
+
+.. image:: images/11/actuator1.png
+
+.. image:: images/11/actuator2.png
