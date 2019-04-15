@@ -3,7 +3,7 @@ Mixly 简介
 
 Mixly（米思齐）是一款Arduino的图形化编程工具。用户可以通过拼接积木块的方式来编写Arduino程序。
 
-.. image:: images/00/mixly_zh.png
+.. image:: images/00/mixly.png
 
 简介
 --------------------
