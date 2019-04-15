@@ -8,3 +8,4 @@ mixly_arduino/blockly/msg/js/company/zh-hant.js
 mixly_arduino/blockly/apps/mixly/digitalPinToInterrupt.js
 mixly_arduino/blockly/apps/mixly/myblock.js
 doc/build
+*.mo
