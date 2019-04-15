@@ -22,22 +22,22 @@ msgid "Mixly 帮助文档"
 msgstr "Mixly Help Center"
 
 #: ../../source/index.rst:4
-msgid "Weclome，Mixly！"
-msgstr ""
+msgid "欢迎您，使用Mixly！"
+msgstr "Welocme, Enjoy Mixly!"
 
 #: ../../source/index.rst:7
-msgid "Basic of Mixly"
-msgstr ""
+msgid "软件使用基础"
+msgstr "Basic Of Mixly"
 
 #: ../../source/index.rst:14
-msgid "Arduino Code"
-msgstr ""
+msgid "Arduino 编程"
+msgstr "Arduino Code"
 
 #: ../../source/index.rst:21
-msgid "Python Code"
-msgstr ""
+msgid "Python 编程"
+msgstr "Python Code"
 
 #: ../../source/index.rst:28
-msgid "MicroPython Code"
-msgstr ""
+msgid "MicroPython 编程"
+msgstr "MicroPython Code"
 

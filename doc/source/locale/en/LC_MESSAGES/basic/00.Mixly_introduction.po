@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../source/basic/00.Mixly_introduction.rst:2
 msgid "Mixly 简介"
-msgstr ""
+msgstr "Introduction Of Mixly"
 
 #: ../../source/basic/00.Mixly_introduction.rst:4
 msgid "Mixly（米思齐）是一款Arduino的图形化编程工具。用户可以通过拼接积木块的方式来编写Arduino程序。"
