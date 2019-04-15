@@ -1,0 +1,27 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-15 19:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/basic/27.Third-Party.rst:2
+msgid "第三方库开发"
+msgstr ""
+
+#: ../../source/basic/27.Third-Party.rst:3
+msgid "Mixly特设了第三方拓展功能。方便各大硬件厂商技术人员编写自己公司产品的库以供用户使用。截止Mixly0.97版本，现第三方扩展有：DFROBOT、SEEEDSTUDIO、MAKEBLOCK、MBOT机器人、SENSE盒子、SENSE机器人、LuBot、Micoduino、Nova。"
+msgstr ""
+

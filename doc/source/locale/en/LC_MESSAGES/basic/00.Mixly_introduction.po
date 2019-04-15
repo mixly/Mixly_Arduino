@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-15 19:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/basic/00.Mixly_introduction.rst:2
+msgid "Mixly 简介"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:4
+msgid "Mixly（米思齐）是一款Arduino的图形化编程工具。用户可以通过拼接积木块的方式来编写Arduino程序。"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:9
+msgid "简介"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:10
+msgid "Mixly（全称Mixly_Arduino，中文名称米思齐）是在北京师范大学教育学部创客教育实验室负责人傅骞老师的带领下，由其团队开发的一款国内自主研发，且免费开源的图形化编程工具。在国内外都掀起创客教育的浪潮中，傅骞老师认真分析了当前电子领域内的创客教育，并认为“如果不能给学生提供一个足够简单的、不能给教师提供一个容易上手的，不能给各大生产厂商提供一个足够自主的编程工具，所谓的“创”也只能是停留在表面的浮云，风一吹便散。”为了大力贯彻落实创客实验室“自主实践，分享快乐”的教育理念，傅骞老师带领其团队，开发出具有易用性、简单性、功能性、普适性、延续性及生态性等特点的Mixly。"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:13
+msgid "特点"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:16
+msgid "易用性"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:17
+msgid ""
+"当前多数中小学机房安装了硬盘保护卡，频繁的软件安装与更新工作，给机房的管理工作造成极大的不便。为此，Mixly在设计上做到了完全绿色使用。用户直接从网上下载Mixly软件包，解压后即可在Windows"
+" XP及以上的操作系统运行。软件无需额外安装浏览器，也不用安装Java运行环境，极大方便了师生的使用。"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:20
+msgid "简单性"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:21
+msgid "Mixly采用了Blockly图形化编程引擎，使用图形化的积木块代替了复杂的文本操作，为学生的快速入门奠定了良好的基础。另外，Mixly的开发团队使用以下方式来帮助师生快速熟悉软件：第一，用不同颜色的示意图标代表不同类型的功能块，方便用户归类区分；第二，在复合功能块中提供默认选项，有效减少用户的拖动次数；第三，在同一个界面整合软件的所有功能；第四，提供参考教程及代码示例。"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:24
+msgid "功能性"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:25
+msgid ""
+"当前，很多学校将组织或参与创客类比赛作为创客教育的一种途径，比赛的竞技性对软件的功能提出了更高的要求。因此，Mixly在功能的设计上力求和Arduino"
+" IDE的文本编程保持一致，目前最新发布的Mixly "
+"0.97版已经实现Arduino的所有官方功能（包括中断处理），并加入了大量的第三方扩展库功能，如红外遥控、超声波等，可以保证课程开设和各类创客比赛的双重需求。"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:28
+msgid "普适性"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:29
+msgid "Mixly在设计上考虑了绝对的普适性。首先，对于Arduino官方支持的所有开发板，Mixly都提供了完美的支持：Mixly会根据开发板的类型自动改变模块中的管脚号、中断号、模拟输出管脚等；其次，对于Arduino支持的第三方开发板，Mixly同样支持，用户只要把相应开发板的定义复制到Mixly中即可。如国内大量的ESP8266开发板、各类用户修改后的开发板等等，以保证用户在开发板选择上的最大自由度。"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:32
+msgid "延续性"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:33
+msgid "图形化编程系统的目标绝对不是替换原有的文本编程方式，而是希望学生通过图形化编程更好更快地理解编程的原理和程序的思维，并为未来的文本编程打好基础。Mixly的设计理念也是如此。在软件的设计上加入了更多的可延续性内容，从而保护用户的学习成果。具体来说，包括引入变量类型、在模块的设计上尽量保持和文本编程的一致、支持图形编程和文本编程的对照等。"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:36
+msgid "生态性"
+msgstr ""
+
+#: ../../source/basic/00.Mixly_introduction.rst:37
+msgid "生态性是Mixly最重要的设计理念，也是它区别于其它Arduino图形化编程的最重要特征。为了实现Mixly可持续发展，Mixly在设计上既允许厂商开发自己的特有模块（当前已经支持DfRobot、StartLab、MakeBlock、Sense、Seeed、Lubot，Microduino、Ruilong、NodeMcu，Nova，用户需要有JavaScript编程基础才能制作这部分模块），也允许用户直接利用Mixly的图形化编程功能生成通用模块（如数码管显示、蜂鸣音播报等，用户只需会使用Mixly即可制作这部分模块）。以上两类模块均可通过“导入库”功能导入Mixly系统，从而在Mixly软件的普及中实现用户自身的价值。"
+msgstr ""
+

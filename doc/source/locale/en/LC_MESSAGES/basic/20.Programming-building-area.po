@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-15 19:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/basic/20.Programming-building-area.rst:2
+msgid "程序编写区"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:4
+msgid "程序编写"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:7
+msgid "我们通常把能完成一定功能的代码拖动到该区域处进行连接。"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:10
+msgid "程序删除"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:11
+msgid "将不需要的代码拖到右下方的垃圾桶"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:12
+msgid "将不用的代码拖到最左侧（模块选择区）"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:13
+msgid "选中不用的代码后点击键盘Delete"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:16
+msgid "程序缩放"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:17
+msgid "在右下角垃圾桶上方有缩放按钮，按下＋，可以放大代码；按下-，可以缩小代码。"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:23
+msgid "在该图形上还有一个图形，它的功能是将代码大小正常化并居中。点击它后编写的代码大小正常化并出现在搭建区最中心的位置。"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:28
+msgid "切换语言"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:29
+msgid "在该区域的右上角，还可以选取语言的种类。"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:31
+msgid "截止目前为止，Mixly可支持英语、西班牙语、简体中文及繁体中文。"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:34
+msgid "撤销及重做"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:35
+msgid "在选择语言的左边还有两个箭头，分别是撤销（undo，Ctrl + Z）及重做（redo，Ctrl + Y）。"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:37
+msgid "撤销功能是当我们编写代码时误删代码后，便可点击左箭头或直接按Ctrl + Z来恢复误删代码。"
+msgstr ""
+
+#: ../../source/basic/20.Programming-building-area.rst:39
+msgid "而重做则是和Ctrl + Z相反，它是恢复上一步操作，该功能也可通过点击右箭头或直接键入Ctrl + Y 来实现。"
+msgstr ""
+

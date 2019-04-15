@@ -1,0 +1,45 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-15 19:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/arduino/04.Mathematics.rst:2
+msgid "数学"
+msgstr ""
+
+#: ../../source/arduino/04.Mathematics.rst:3
+msgid "该部分主要完成数学变换功能，具体包括数字映射、数字约束、数学运算、取整、随机、三角函数。"
+msgstr ""
+
+#: ../../source/arduino/04.Mathematics.rst:8
+msgid "随机数"
+msgstr ""
+
+#: ../../source/arduino/04.Mathematics.rst:11
+msgid ""
+"随机数是一个左闭右开的取值范围。也就是较小的数可以取到，较大的数无法取到。 约束 ------------ .. image:: "
+"images/04/math3.png"
+msgstr ""
+
+#: ../../source/arduino/04.Mathematics.rst:16
+msgid ""
+"约束是将数值限制在最小值与最大值之间，所有小于最小值的数值被赋值为最小值，同理，所有大于最大值的数被赋值为最大值。 映射 "
+"------------------ .. image:: images/04/math4.png .. image:: "
+"images/04/math5.png "
+"上图为LED与蜂鸣器同步增大或减小的代码。因为对于sin(i)来说，其值域为正数时i的取值范围为[0,180]，不过对于LED的呼吸灯来说，最大值可以取到255，因此在这里运用一个映射，即使i因循环本身最大只能取到179，但通过一一映射，i的实际值可以取到[0,255]。"
+msgstr ""
+

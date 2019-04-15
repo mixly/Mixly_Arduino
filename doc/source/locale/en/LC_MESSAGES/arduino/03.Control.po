@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-15 19:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/arduino/03.Control.rst:2
+msgid "控制"
+msgstr ""
+
+#: ../../source/arduino/03.Control.rst:4
+msgid ""
+"时间延迟、条件执行、循环执行、获取时间、初始化、Switch执行（新增） 控制模块中主要执行的内容是对程序结构进行的相应控制。 ## 初始化 "
+"初始化中的内容程序只执行一次，因此我们通常把一些变量的声明或函数定义（如中断）等放在初始化里。"
+msgstr ""
+
+#: ../../source/arduino/03.Control.rst:14
+msgid "条件语句"
+msgstr ""
+
+#: ../../source/arduino/03.Control.rst:15
+msgid ""
+"Mixly的条件语句为两个，一个是.. image:: images/03/control3.png，另一个是.. image:: "
+"images/03/control4.png"
+msgstr ""
+
+#: ../../source/arduino/03.Control.rst:17
+msgid "以.. image:: images/03/control3.png为例："
+msgstr ""
+
+#: ../../source/arduino/03.Control.rst:21
+msgid ""
+"可以理解为：当按键按下（按键接管脚2）时（此时【数字输入管脚#2】状态为1，满足条件句执行条件），LED（接管脚13）点亮；否则（即按键抬起后，【数字输入"
+" "
+"管脚#2】状态为0，不满足执行条件，自动执行否则里面的内容）LED灭。在使用条件语句过程中需注意，该条件句左上角有一个小齿轮，当点击小齿轮时可得到如图"
+" .. image:: images/03/control7.png 把否则拉入条件句内，如图所示"
+msgstr ""
+
+#: ../../source/arduino/03.Control.rst:27
+msgid "当对条件句操作完后，需再次点击左上角的小齿轮将弹出的窗口关闭。"
+msgstr ""
+
+#: ../../source/arduino/03.Control.rst:30
+msgid "循环语句"
+msgstr ""
+
+#: ../../source/arduino/03.Control.rst:31
+msgid "控制循环语句的代码有三条。 分别是："
+msgstr ""
+
+#: ../../source/arduino/03.Control.rst:38
+msgid "循环语句的功能就是使某段代码重复运行。比如最常见的呼吸灯（手机提醒灯或者路由器的灯）。呼吸灯的效果是LED由慢慢由灭变量，后又慢慢由亮变灭的一种渐变灯。对于存在中间状态的渐变，用数字输出就无法实现了。"
+msgstr ""
+
+#: ../../source/arduino/03.Control.rst:42
+msgid ""
+"上图就是呼吸灯的代码。Arduino本身支持的模拟输出状态为256种，也就是0——255个数值。步长为每次循环变量增加的幅度。“使用i从0到255"
+" "
+"步长为1“可以理解为i将以每次加1的增福由0变化到255。而我们在3号管脚接的LED的值也将是0，1,2,3……最后直到255。第二个循环块原理类似。"
+msgstr ""
+
+#: ../../source/arduino/03.Control.rst:45
+msgid "系统运行时间"
+msgstr ""
+
+#: ../../source/arduino/03.Control.rst:48
+msgid "该指令可以读取从代码编程开始到此时的系统时间。"
+msgstr ""
+
+#: ../../source/arduino/03.Control.rst:51
+msgid "程序范例"
+msgstr ""
+
+#: ../../source/arduino/03.Control.rst:52
+msgid "按下按键显示当前系统运行时间"
+msgstr ""
+

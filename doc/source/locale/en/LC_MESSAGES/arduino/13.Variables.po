@@ -1,0 +1,33 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-15 19:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/arduino/13.Variables.rst:2
+msgid "变量"
+msgstr ""
+
+#: ../../source/arduino/13.Variables.rst:3
+msgid "依据变量类型可分为：浮点变量、整型变量、布尔变量、字符串变量。根据变量的值又可分为高或低、真或假。"
+msgstr ""
+
+#: ../../source/arduino/13.Variables.rst:7
+msgid ""
+"在运算中，变量是一个使用非常频繁的指令。比如在2.1.7.2使用红外接收管和遥控器的相关代码中，ir_item就是一个变量。 "
+"在使用变量时，如果用户在程序建构区内已新建了一个变量（例如使用循环语句i变量），变量模块将自动生成了一个相对应的系统变量i，用户直接使用即可。"
+msgstr ""
+

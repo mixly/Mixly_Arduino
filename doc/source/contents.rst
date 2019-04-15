@@ -8,25 +8,25 @@ Mixly 帮助文档
 .. toctree::
    :maxdepth: 2
 
-   zh/basic/index.rst
+   basic/index.rst
 
 Arduino 编程
 ---------------------
 .. toctree::
    :maxdepth: 2
 
-   zh/arduino/index.rst
+   arduino/index.rst
 
 Python 编程
 -----------------------
 .. toctree::
    :maxdepth: 2
 
-   zh/Python/index.rst
+   Python/index.rst
 
 MicroPython 编程
 ---------------------------
 .. toctree::
    :maxdepth: 2
 
-   zh/MicroPython/index.rst
+   MicroPython/index.rst

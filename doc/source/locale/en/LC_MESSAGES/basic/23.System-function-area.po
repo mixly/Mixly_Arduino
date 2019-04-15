@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-15 19:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/basic/23.System-function-area.rst:2
+msgid "系统功能区"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:5
+msgid ""
+"系统功能区主要执行的功能有新建、打开、保存、另存为、导出库、导入库、管理库、编译、上传、选择主控板型号及端口、串口监视器及软件界面放大缩小等功能。"
+" .. image:: images/23/23-1.png"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:9
+msgid "一般功能"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:10
+msgid "Mixly的一般功能包括新建、打开、保存、另存为，其中代码保存或另存为的格式为.mix。"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:12
+msgid "当用户需要打开已保存的文件时，可以先打开Mixly软件，再点击“打开”，找到*.mix文件。也可以直接双击*.mix文件打开。"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:15
+msgid "库功能"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:16
+msgid ""
+"为了方便学生、教师及厂商的使用及代码分享，Mixly特增加了库功能。库功能分别包括：导出库，导入库以及管理库。 "
+"当学生编写完一段代码后（比如语音播报），可这个代码集成在一个函数中（假设该函数为sayNum）。之后只需要点击导出库并给该库起个名字便能使用。"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:21
+msgid "保存后就可以将该库上传至平台，供他人下载使用、学习。"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:23
+msgid "当有人下载该代码后，可直接将该库进行导入并使用。点击导入库找到该文件的位置。"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:27
+msgid "导入后界面会刷新，耐心等待1-2秒，便可在模块选择区见到新导入的库，同时，在消息提示区也会提示“导入自定义库成功！”接着可直接点击sayNum库，将指令拖入程序构建区，调用该函数即可。"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:33
+msgid "管理库的功能是可以对已导入的库进行重命名、删除和打开目录。"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:38
+msgid "编译&上传"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:39
+msgid ""
+"当学生编写完代码后，如果想要检查代码逻辑是否有误，可点击编译。如果显示“编译失败”，则需要根据提示检查自己的代码，如显示“编译成功”则证明代码逻辑上无误，可上传。如果出现“上传失败”，大多数情况插拔USB线即可解决该问题；如果出现“上传成功”，则证明代码已上传至板子上。当然，如果学生对于代码逻辑信心十足，可直接点击上传按钮。"
+" ### 主控板选择&端口 .. image:: images/23/23-7.png"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:43
+msgid "当学生点击主控板下拉三角时即可看到有众多主控板型号可供选择。学生需按照当前手中主控板型号予以选择。"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:47
+msgid "上传前，学生需要将主控板与电脑通过串口线连接，此时将显示具体的端口号。 .. image:: images/23/23-9.png"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:51
+msgid "串口监视器"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:52
+msgid ""
+"串口监视器与模块选择区的通信模块中的串口通信指令一起使用。假设学生已连接红外接收管，他可通过串口监视器时时观测遥控器上不同按钮的十六进制数（其中，只有FD开头的数才是真正的接收数值，其他数据均为干扰数据）。"
+" "
+"需要注意的是，在使用串口监视器后需及时关闭。如果在没有关闭串口监视器的情况下进行代码的再次上传，往往是失败的。因为串口监视器工作时占用了主控板的相关端口，使得上传失败。"
+msgstr ""
+
+#: ../../source/basic/23.System-function-area.rst:57
+msgid ""
+"### 拖动缩放界面按钮 "
+"在串口监视器右侧有一个左右可拉的按钮，该按钮可放大或缩小Mixly整个界面的大小。与程序构建区内的○+○-不同（该按钮只可放大或缩小程序构建区代码的大小），拖动缩放界面可放大除消息提示区外所有区域的大小。"
+msgstr ""
+
