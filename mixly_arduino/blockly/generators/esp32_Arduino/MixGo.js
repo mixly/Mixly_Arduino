@@ -126,6 +126,7 @@ Blockly.Arduino.HT16K33_show_image = function() {
 //ok
 Blockly.Arduino.mixgo_button_is_pressed = function(){
  var btn = this.getFieldValue('btn');
+ Blockly.Arduino.setups_['setup_btn'+btn] = 'pinMode('+btn+',INPUT);';
  var code =  'digitalRead('+btn+')';
  return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
