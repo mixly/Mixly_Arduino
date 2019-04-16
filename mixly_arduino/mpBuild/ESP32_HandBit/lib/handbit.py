@@ -142,6 +142,42 @@ class Accelerometer():
         z = ustruct.unpack('h', buf)[0]
         return z / 4 / 4096
 
+    def get_gesture(self,choice):
+        if choice == 'face up':
+            if self.get_a_z() <= -1:
+                return True
+            else:
+                return False
+        if choice == 'face down':
+            if self.get_a_z() >= 1:
+                return True
+            else:
+                return False
+        if choice == 'shake':
+            if abs(self.get_a_x()) >= 1 and abs(self.get_a_y()) >= 1:
+                return True
+            else:
+                return False
+        if choice == 'up':
+            if self.get_a_x() >= 1:
+                return True
+            else:
+                return False
+        if choice == 'down':
+            if self.get_a_x() <= -1:
+                return True
+            else:
+                return False
+        if choice == 'right':
+            if self.get_a_y() <= -1:
+                return True
+            else:
+                return False
+        if choice == 'left':
+            if self.get_a_y() >= 1:
+                return True
+            else:
+                return False
 
 class Font(object):
     def __init__(self, font_address=0x300000):
