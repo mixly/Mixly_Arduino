@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-15 19:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/basic/01.Installation-for-Mixly.rst:2
+msgid "安装Mixly软件"
+msgstr ""
+
+#: ../../source/basic/01.Installation-for-Mixly.rst:4
+msgid "下载Mixly软件"
+msgstr ""
+
+#: ../../source/basic/01.Installation-for-Mixly.rst:5
+#, python-format
+msgid "`下载地址1 <https://pan.baidu.com/s/1dE3Z6db#list/path=%2F>`_"
+msgstr ""
+
+#: ../../source/basic/01.Installation-for-Mixly.rst:6
+msgid "下载地址2：Mixly官方QQ群文件，1号群：434982462；2号群：199124078"
+msgstr ""
+
+#: ../../source/basic/01.Installation-for-Mixly.rst:9
+msgid "解压缩"
+msgstr ""
+
+#: ../../source/basic/01.Installation-for-Mixly.rst:11
+msgid "下载后Mixly压缩包，右键解压到Mixly目录下"
+msgstr ""
+
+#: ../../source/basic/01.Installation-for-Mixly.rst:16
+msgid "物理连接"
+msgstr ""
+
+#: ../../source/basic/01.Installation-for-Mixly.rst:18
+msgid "通过USB线把开发板和电脑相连。"
+msgstr ""
+
+#: ../../source/basic/01.Installation-for-Mixly.rst:21
+msgid "驱动安装"
+msgstr ""
+
+#: ../../source/basic/01.Installation-for-Mixly.rst:23
+msgid "驱动程序在arduino-1.x.x/\\drivers目录中。"
+msgstr ""
+
+#: ../../source/basic/01.Installation-for-Mixly.rst:27
+msgid "根据您使用的开发板的串口芯片选择相应的驱动。"
+msgstr ""
+
+#: ../../source/basic/01.Installation-for-Mixly.rst:30
+msgid "启动Mixly"
+msgstr ""
+
+#: ../../source/basic/01.Installation-for-Mixly.rst:32
+msgid "双击Mixly目录下的Mixly.exe即可启动。"
+msgstr ""
+

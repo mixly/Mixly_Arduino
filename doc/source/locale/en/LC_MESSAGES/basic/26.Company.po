@@ -1,0 +1,106 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-15 19:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/basic/26.Company.rst:2
+msgid "自定义公司库"
+msgstr ""
+
+#: ../../source/basic/26.Company.rst:4
+msgid ""
+"Mixly方便各大硬件厂商技术人员编写自己公司产品的库以供用户使用。编写库的人员只需具备最基础的程序设计知识，了解公司库编写的规则，即可完成公司库的编写。"
+" ### 一个完整的公司库的目录 下面是一个名为xxx的公司库的完整目录： .. image:: images/26/26-1.png"
+msgstr ""
+
+#: ../../source/basic/26.Company.rst:9
+msgid "该目录下不是所有的文件都是必须的，视公司库的具体情况而定。 下面就对每一个目录进行说明。"
+msgstr ""
+
+#: ../../source/basic/26.Company.rst:12
+msgid ""
+"### block和generator "
+"block和generator文件夹下分别有一个JS文件，一般是同名的，比如xxx.js。block/xxx.js文件定义了你定制的图形化模块的样子。"
+" "
+"generator/xxx.js文件定义了每一个图形化模块对应的Arduino代码。比如下图就是“延时”的图形化模块的样子及其对应的Arduino代码："
+msgstr ""
+
+#: ../../source/basic/26.Company.rst:18
+msgid ""
+"block和generator目录通常是必不可少的，因此保证block/xxx.js和generator/xxx.js的正确性是成功定制公司库的关键。"
+" 比如“延时”模块的两部分JS代码分别如下："
+msgstr ""
+
+#: ../../source/basic/26.Company.rst:25
+msgid ""
+"对于这两个JS文件如何书写，在软件的blockly/blocks和blockly/generators/arduino目录下有大量的例子，基本包含了全部类型的图形化模块的定制方法。如果您想更深入的了解这些代码，您可以访问Google的blockly源码进行更加深入的研究。"
+" ### hardware目录 hardware目录不是必需的目录，通常在公司使用了自己的Arduino板子（即官方的Arduino "
+"IDE没有我们所需要的板子）时，才需要hardware目录，该目录包含了一些跟硬件相关的信息，比如板子信息，管脚信息等等。因此，需要比较专业的技术人员进行定制此目录。最后是一个以公司名（比如xxx）命名的文件夹形式存在，直接拷贝至hardware目录下即可。"
+msgstr ""
+
+#: ../../source/basic/26.Company.rst:29
+msgid ""
+"### xxx目录 "
+"xxx目录是自己的Arduino库，xxx一般以公司名命名，里面包含一些.cpp和.h文件，这个目录也不是必需的，一般在生成的代码中有#include"
+" <xxx.h>时需要。 ### companypin目录 "
+"companypin目录定义了公司所需板子的管脚对应关系，该目录也是非必需的，通常在公司使用了全新的Arduino板子时才需要。 "
+"下面以lubot的新板子Lubot MK为例： ![] (images/26/26-5.png"
+msgstr ""
+
+#: ../../source/basic/26.Company.rst:37
+msgid "我们想为这块板子定义新的管脚对应关系，先在companypin目录下建立子文件夹lubot（通常以公司名命名），再建立pin.js文件，打开pin.js文件，管脚定义如下图所示（包括数字管脚、模拟管脚、PWM管脚、中断管脚以及Serial选择和默认波特率）："
+msgstr ""
+
+#: ../../source/basic/26.Company.rst:40
+msgid ""
+"### language目录 ![]如果想让公司库支持多国语言，就需要language目录，这个也是非必需的。 "
+"先在language目录下建立子文件夹xxx（通常以公司名命名），再在xxx文件夹下建立多国语言文件。如下图所示：分别是英语、西班牙语、简体中文、繁体中文。在这些多国语言的js文件中定义了一些JS常量。"
+msgstr ""
+
+#: ../../source/basic/26.Company.rst:44
+msgid "(images/26/26-7.png"
+msgstr ""
+
+#: ../../source/basic/26.Company.rst:46
+msgid "下面讲解如何定义这些JS文件，还是以“延时”模块为例，下面分别是英语、西班牙语、简体中文、繁体中文对应的样子："
+msgstr ""
+
+#: ../../source/basic/26.Company.rst:53
+msgid "再来看如何在语言文件中定义对应的文字。"
+msgstr ""
+
+#: ../../source/basic/26.Company.rst:60
+msgid ""
+"最后在block/xxx.js文件中引用即可： .. image:: images/26/26-16.png ### media目录 "
+"media目录下是一些媒体文件，主要是图片，这个目录是非必需的。只有当模块需要使用图片时才需要该文件夹。比如下面这个模块里面就嵌入了一张图片： "
+".. image:: images/26/26-17.png 所有的媒体文件放在media/xxx下即可，xxx是子文件夹，通常以公司名命名 "
+"### xxx.xml文件 "
+"xxx.xml文件是一个非常重要的文件，它是必不可少，通常以公司名命名。在这个文件中定义了所有需要呈现的模块，以及整个库中相关文件的路径（即前面提过的这些文件目录）。"
+" 下面是一个空例子，可以基于这个例子进行修改。"
+msgstr ""
+
+#: ../../source/basic/26.Company.rst:72
+msgid ""
+"### 把写好的库导入Mixly "
+"当我们把整个库写好之后，就可以把写好的库导入到Mixly中去了。打开Mixly软件（版本要求0.964及以上）。点击“导入库”  "
+"找到xxx.xml文件。 .. image:: images/26/26-19.png"
+msgstr ""
+
+#: ../../source/basic/26.Company.rst:76
+msgid "点击打开就完成整个公司库的导入（前提是公司库必须正确）。"
+msgstr ""
+

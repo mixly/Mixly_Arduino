@@ -1,0 +1,273 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-15 19:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/arduino/02.Input-Output.rst:2
+msgid "输入&输出"
+msgstr "Input&Output"
+
+#: ../../source/arduino/02.Input-Output.rst:4
+msgid "输入/\\输出所包含的指令主要分为四部分：控制管脚的输入输出（按信号类型可分为数字信号和模拟信号）、中断、脉冲长度及ShiftOut。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:6
+msgid "输入输出：数字输入、数字输出、模拟输入、模拟输出、"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:7
+msgid "中断控制：定义中断，取消中断"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:8
+#: ../../source/arduino/02.Input-Output.rst:161
+msgid "脉冲长度"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:9
+msgid "移位输出"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:14
+msgid "数字输出"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:19
+#: ../../source/arduino/02.Input-Output.rst:49
+#: ../../source/arduino/02.Input-Output.rst:79
+#: ../../source/arduino/02.Input-Output.rst:111
+#: ../../source/arduino/02.Input-Output.rst:150
+#: ../../source/arduino/02.Input-Output.rst:165
+#: ../../source/arduino/02.Input-Output.rst:196
+msgid "描述"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:22
+msgid "给一个数字引脚写入HIGH或者LOW。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:25
+msgid "数字13号引脚难以作为数字输入使用，因为大部分的控制板上使用了一颗LED与一个电阻连接到他。如果启动了内部的20K上拉电阻，他的电压将在1.7V左右，而不是正常的5V，因为板载LED串联的电阻把他使他降了下来，这意味着他返回的值总是LOW。如果必须使用数字13号引脚的输入模式，需要使用外部上拉下拉电阻。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:28
+#: ../../source/arduino/02.Input-Output.rst:55
+#: ../../source/arduino/02.Input-Output.rst:87
+#: ../../source/arduino/02.Input-Output.rst:123
+#: ../../source/arduino/02.Input-Output.rst:156
+#: ../../source/arduino/02.Input-Output.rst:174
+#: ../../source/arduino/02.Input-Output.rst:202
+msgid "参数"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:29
+#: ../../source/arduino/02.Input-Output.rst:56
+msgid "管脚: 引脚编号（如1,5,10，A0，A3）"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:31
+msgid "值: 高 或 低"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:34
+#: ../../source/arduino/02.Input-Output.rst:63
+#: ../../source/arduino/02.Input-Output.rst:95
+#: ../../source/arduino/02.Input-Output.rst:133
+#: ../../source/arduino/02.Input-Output.rst:186
+msgid "范例"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:35
+msgid "将13号端口设置为高电平，延迟一秒，然后设置为低电平，再延迟一秒，如此往复。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:40
+#: ../../source/arduino/02.Input-Output.rst:69
+#: ../../source/arduino/02.Input-Output.rst:101
+#: ../../source/arduino/02.Input-Output.rst:139
+msgid "注释"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:41
+msgid "模拟引脚也可以当做数字引脚使用，使用方法是输入端口A0，A1，A2等。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:44
+msgid "数字输入"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:52
+msgid "读取指定引脚的值，HIGH或LOW。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:59
+#: ../../source/arduino/02.Input-Output.rst:91
+#: ../../source/arduino/02.Input-Output.rst:182
+msgid "返回"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:60
+msgid "HIGH 或 LOW"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:64
+msgid "读取数字0号引脚的值，并通过串口打印出来。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:71
+msgid "如果引脚悬空，digitalRead()会返回HIGH或LOW（随机变化）。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:74
+msgid "模拟输出"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:82
+msgid "从指定的模拟引脚读取数据值。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:84
+msgid "Arduino板包含一个6通道（Mini和Nano有8个通道，Mega有16个通道），10位模拟数字转换器。这意味着它将0至5伏特之间的输入电压映射到0至1023之间的整数值。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:88
+msgid "管脚: 引脚编号（如A0,A1,A2,A3）不同的开发板模拟输入引脚数量不一样。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:92
+msgid "arduino:从0到1023的整数值"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:96
+msgid "读取模拟A0引脚的值，并通过串口打印出来。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:103
+msgid "如果模拟输入引脚没有连入电路，由analogRead()返回的值将根据多项因素（例如其他模拟输入引脚，你的手靠近板子等）产生波动。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:106
+msgid "中断指令"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:114
+msgid "当发生外部中断时，调用一个指定函数。当中断发生时，该函数会取代正在执行的程序。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:116
+msgid "大多数的Arduino板有两个外部中断：0（数字引脚2）和1（数字引脚3）。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:118
+msgid "arduino Mege有四个外部中断：数字2（引脚21），3（20针），4（引脚19），5（引脚18）。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:120
+msgid "Esp8266 、ESP32系列有更多中断。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:124
+#: ../../source/arduino/02.Input-Output.rst:157
+msgid "管脚: 引脚编号（如2,3）不同的开发板中断引脚不一样。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:130
+msgid "模式："
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:126
+msgid "改变：当引脚电平发生改变时，触发中断"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:128
+msgid "上升：当引脚由低电平变为高电平时，触发中断"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:130
+msgid "下降：当引脚由高电平变为低电平时，触发中断"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:134
+msgid "利用中断，控制13号引脚的LED亮灭。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:141
+msgid "当中断函数发生时，delay()和millis()的数值将不会继续变化。当中断发生时，串口收到的数据可能会丢失。你应该声明一个变量来在未发生中断时储存变量。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:145
+msgid "取消中断"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:153
+msgid "关闭给定的中断。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:168
+msgid "读取一个引脚的脉冲（HIGH或LOW）。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:170
+msgid ""
+"例如，如果value是HIGH，pulseIn()会等待引脚变为HIGH，开始计时，再等待引脚变为LOW并停止计时。返回脉冲的长度，单位微秒。如果在指定的时间内无脉冲，函数返回。"
+" 此函数的计时功能由经验决定，长时间的脉冲计时可能会出错。计时范围从10微秒至3分钟。（1秒=1000毫秒=1000000微秒）"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:175
+msgid "管脚:你要进行脉冲计时的引脚号（int）。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:177
+msgid "状态:要读取的脉冲类型，HIGH或LOW（int）。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:179
+msgid "超时 (可选）:指定脉冲计数的等待时间，单位为微秒，默认值是1秒（unsigned long）。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:183
+msgid "脉冲长度（微秒），如果等待超时返回0（unsigned long）"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:187
+msgid "读取6号引脚脉冲时长。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:192
+msgid "ShiftOut"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:199
+msgid "将一个数据的一个字节一位一位的移出。从最高有效位（最左边）或最低有效位（最右边）开始。依次向数据脚写入每一位，之后时钟脚被拉高或拉低，指示刚才的数据有效。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:203
+msgid "数据管脚：输出每一位数据的引脚(int)"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:205
+msgid "时钟管脚：时钟脚，当数据管脚有值时此引脚电平变化(int)"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:207
+msgid "顺序：输出位的顺序，最高位优先或最低位优先"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output.rst:209
+msgid "value: 要移位输出的数据(byte)"
+msgstr ""
+

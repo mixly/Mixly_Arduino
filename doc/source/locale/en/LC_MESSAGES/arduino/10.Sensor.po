@@ -1,0 +1,31 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-15 19:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/arduino/10.Sensor.rst:2
+msgid "传感器"
+msgstr ""
+
+#: ../../source/arduino/10.Sensor.rst:3
+msgid "传感模块：超声波、DHT11、DS18B20（新增）"
+msgstr ""
+
+#: ../../source/arduino/10.Sensor.rst:7
+msgid "在传感器部分，我们将一些最常见的传感器相关指令进行编库，比如超声波测距模块，学生在使用超声波进行测距时，可直接运用该模块，只需将Trig与Echo管脚填好即可，这大大节省了学生的编程时间，这将更有助于使学生将更多的精力集中在创意实践上而非抓耳挠腮地编程。"
+msgstr ""
+
