@@ -1,4 +1,4 @@
-var sm_compass = function(name) {
+var compass = function(name) {
 	var mod = {};
 	mod.data = {
 		calibrated: mbData.compass.calibrated,
@@ -7,7 +7,6 @@ var sm_compass = function(name) {
         z: mbData.compass.z,
         heading: mbData.compass.heading,
     };
-	sm.input['compass'] = mod.data;
 
 	mod.calibrate = new Sk.builtin.func(function() {
 		mod.data.calibrated = true;

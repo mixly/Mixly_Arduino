@@ -68,8 +68,32 @@ var $builtinmodule = function (name) {
             if(throat === undefined)
                 throat = Sk.builtin.int_(128);
 
-            sm.speech.say(speech.v, pitch.v, speed.v, mouth.v, throat.v);
-            resolve();
+            _SetPitch(pitch.v);
+            _SetSpeed(speed.v);
+            _SetMouth(mouth.v);
+            _SetThroat(throat.v);
+
+            var input = speech.v;
+            while (input.length < 256) input += " ";
+            var ptr = allocate(intArrayFromString(input), 'i8', ALLOC_STACK);
+
+            _TextToPhonemes(ptr);
+
+
+            _SetInput(ptr);
+            _Code39771();
+
+            var bufferlength = Math.floor(_GetBufferLength()/50);
+            var bufferptr = _GetBuffer();
+
+
+            audiobuffer = new Float32Array(bufferlength);
+
+            for(var i=0; i<bufferlength; i++)
+                audiobuffer[i] = ((getValue(bufferptr+i, 'i8')&0xFF)-128)/256;
+
+
+            PlayBuffer(speech.v, audiobuffer, resolve, reject);
         });
 
     };
@@ -105,8 +129,35 @@ var $builtinmodule = function (name) {
             if(throat === undefined)
                 throat = Sk.builtin.int_(128);
 
-            sm.speech.pronounce(speech.v, pitch.v, speed.v, mouth.v, throat.v);
-            resolve();
+            _SetPitch(pitch.v);
+            _SetSpeed(speed.v);
+            _SetMouth(mouth.v);
+            _SetThroat(throat.v);
+
+            var input = speech.v;
+            while (input.length < 254) input += " ";
+            var ptr = allocate(intArrayFromString(input), 'i8', ALLOC_STACK);
+
+            //_TextToPhonemes(ptr);
+            // bodge - something to do with character encoding between JS and python
+            HEAPU8[ptr + 121] = 155;
+            for(var i = 122; i < 256; i ++) {
+                HEAPU8[ptr + i] = 32;
+            }
+
+            _SetInput(ptr);
+            _Code39771();
+
+            var bufferlength = Math.floor(_GetBufferLength()/50);
+            var bufferptr = _GetBuffer();
+
+            audiobuffer = new Float32Array(bufferlength);
+
+            for(var i=0; i<bufferlength; i++)
+                audiobuffer[i] = ((getValue(bufferptr+i, 'i8')&0xFF)-128)/256;
+
+
+            PlayBuffer(speech.v, audiobuffer, resolve, reject);
         });
 
     };
@@ -121,7 +172,9 @@ var $builtinmodule = function (name) {
         var syllables = speech.v.split("#");
 
         for(var i = 0; i < syllables.length; i++) {
+
             if(syllables[i]){
+
                 var regex = /(\d+)(.*)/;
                 var parts = regex.exec(syllables[i]);
                 if(parts) {
@@ -132,13 +185,48 @@ var $builtinmodule = function (name) {
                         mouth = Sk.builtin.int_(128);
                     if(throat === undefined)
                         throat = Sk.builtin.int_(128);
+                    _SetPitch(parts[1]);
+                    _SetSpeed(speed.v);
+                    _SetMouth(mouth.v);
+                    _SetThroat(throat.v);
 
                     var input = parts[2];
                     while (input.length < 254) input += " ";
-                    sm.speech.sing(input, parseInt(parts[1]), speed.v, mouth.v, throat.v);
+                    var ptr = allocate(intArrayFromString(input), 'i8', ALLOC_STACK);
+
+                    //_TextToPhonemes(ptr);
+                    // bodge - something to do with character encoding between JS and python
+                    HEAPU8[ptr + 121] = 155;
+                    for(var j = 122; j < 256; j ++) {
+                        HEAPU8[ptr + j] = 32;
+                    }
+
+                    _SetInput(ptr);
+                    _Code39771();
+
+                    var bufferlength = Math.floor(_GetBufferLength()/50);
+                    var bufferptr = _GetBuffer();
+
+
+
+                    for(var j=0; j<bufferlength; j++) {
+                        buffer.push(((getValue(bufferptr+j, 'i8')&0xFF)-128)/256);
+                    }
+
+
                 }
             }
         }
+        return sim.runAsync(function(resolve, reject) {
+            var audiobuffer = new Float32Array(buffer.length);
+            for(var i = 0; i < buffer.length; i++) {
+                audiobuffer[i] = buffer[i];
+            }
+            PlayBuffer(speech.v, audiobuffer, resolve, reject);
+
+        });
+        //return pronounce(speech, pitch, speed, mouth, throat);
+
     };
 
     sing.co_varnames = ['speech', 'pitch', 'speed', 'mouth', 'throat'];

@@ -1,4 +1,4 @@
-var sm_uart = function(name) {
+var uart = function(name) {
     var mod = {
         'data': {
             'baudrate': mbData.uart.baudrate,
@@ -11,7 +11,6 @@ var sm_uart = function(name) {
             'peer': true
         }
     };
-    sm.uart.data = mod.data;
 
     var init = function(baudrate, bits, parity, stop, tx, rx) {
         if(baudrate === undefined)
@@ -33,16 +32,15 @@ var sm_uart = function(name) {
         mod.data.tx = tx.v;
         mod.data.rx = rx.v;
         mod.data.buffer = "";
-        if (mod.data.baudrate == sm.uart.peer.baudrate) {
-            mod.data.peer = true;
-        }
+        ui.updatePeerSerialParam(mod.data);
     }
 
     init.co_varnames = ['baudrate', 'bits', 'parity', 'stop', 'tx', 'rx'];
-    init.$defaults = [Sk.builtin.int_(9600), Sk.builtin.int_(8), Sk.builtin.none, Sk.builtin.int_(1), Sk.builtin.none, Sk.builtin.none];
+    init.$defaults = [Sk.builtin.int_(115200), Sk.builtin.int_(8), Sk.builtin.none, Sk.builtin.int_(1), Sk.builtin.none, Sk.builtin.none];
     init.co_numargs = 6;
-    mod.init = new Sk.builtin.func(init);
+    mod.__init__ = new Sk.builtin.func(init);
 
+    ui.updatePeerSerialParam(mod.data);
     mod.any = new Sk.builtin.func(function() {
         return Sk.builtin.bool(mod.data.buffer.length > 0);
     });
@@ -54,8 +52,9 @@ var sm_uart = function(name) {
         if (mod.data.buffer.length > 0) {
             var content = mod.data.buffer;
             mod.data.buffer = "";
+            ui.updateSerialStatus('Uart read message: ' + content);
             return Sk.builtin.str(content);
-        }    
+        }
         return Sk.builtin.none;
     }
 
@@ -68,6 +67,7 @@ var sm_uart = function(name) {
             if (idx != -1) {
                 var content = mod.data.buffer.substring(0, idx + 1);
                 mod.data.buffer = mod.data.buffer.substring(idx + 1);;
+                ui.updateSerialStatus('Uart read message: ' + content);
                 return Sk.builtin.str(content);
             }
         }
@@ -78,12 +78,14 @@ var sm_uart = function(name) {
         if (!mod.data.peer) {
             return;
         }
-        sm.uart.write(message.v);
+        ui.updateSerialOutput(message.v);
     }
 
     mod.read = new Sk.builtin.func(read);
     mod.readline = new Sk.builtin.func(readline);
     mod.write = new Sk.builtin.func(write);
 
+    ui.bindUartSendMessageEvent('uart', mod.data);
+    ui.bindUartBaudrateEvent('uart_baudrate', mod.data);
     return mod;
 }
