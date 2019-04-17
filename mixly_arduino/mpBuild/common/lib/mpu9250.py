@@ -395,15 +395,17 @@ class MPU9250:
         3-tuple of X, Y, Z axis values in m/s^2 as floats. To get values in g
         pass `accel_fs=SF_G` parameter to the MPU6500 constructor.
         """
-        return self.mpu6500.acceleration()
-    
+        g = self.mpu6500.acceleration()
+        a = [round(x/9.8, 2) for x in g]
+        return tuple(a)
+
     def mpu9250_get_x(self):
         """
         Acceleration measured by the sensor. By default will return a
         3-tuple of X, Y, Z axis values in m/s^2 as floats. To get values in g
         pass `accel_fs=SF_G` parameter to the MPU6500 constructor.
         """
-        return self.mpu6500.acceleration()[0]
+        return round(self.mpu6500.acceleration()[0]/9.8, 2)
     
     def mpu9250_get_y(self):
         """
@@ -411,7 +413,7 @@ class MPU9250:
         3-tuple of X, Y, Z axis values in m/s^2 as floats. To get values in g
         pass `accel_fs=SF_G` parameter to the MPU6500 constructor.
         """
-        return self.mpu6500.acceleration()[1]
+        return round(self.mpu6500.acceleration()[1]/9.8, 2)
 
     def mpu9250_get_z(self):
         """
@@ -419,7 +421,7 @@ class MPU9250:
         3-tuple of X, Y, Z axis values in m/s^2 as floats. To get values in g
         pass `accel_fs=SF_G` parameter to the MPU6500 constructor.
         """
-        return self.mpu6500.acceleration()[2]
+        return round(self.mpu6500.acceleration()[2]/9.8, 2)
 
            
     def mpu9250_is_gesture(self,choice):
