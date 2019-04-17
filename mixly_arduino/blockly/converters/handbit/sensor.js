@@ -222,13 +222,13 @@ pbc.objectFunctionD.get('get_a_x')['monitor'] = function (py2block, func, args, 
         throw new Error("Incorrect number of arguments");
     }
     var objblock = py2block.convert(func.value);
-    return [block("sensor_handbit_get_acceleration", func.lineno, {
+    return block("sensor_handbit_get_acceleration", func.lineno, {
             'key': 'x',
         }, {
             "SUB":objblock,
         }, {
             "inline": "true"
-        })];
+        });
 }
 
 pbc.objectFunctionD.get('get_a_y')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -236,13 +236,13 @@ pbc.objectFunctionD.get('get_a_y')['monitor'] = function (py2block, func, args, 
         throw new Error("Incorrect number of arguments");
     }
     var objblock = py2block.convert(func.value);
-    return [block("sensor_handbit_get_acceleration", func.lineno, {
+    return block("sensor_handbit_get_acceleration", func.lineno, {
             'key': 'y',
         }, {
             "SUB":objblock,
         }, {
             "inline": "true"
-        })];
+        });
 }
 
 pbc.objectFunctionD.get('get_a_z')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -250,11 +250,26 @@ pbc.objectFunctionD.get('get_a_z')['monitor'] = function (py2block, func, args, 
         throw new Error("Incorrect number of arguments");
     }
     var objblock = py2block.convert(func.value);
-    return [block("sensor_handbit_get_acceleration", func.lineno, {
+    return block("sensor_handbit_get_acceleration", func.lineno, {
             'key': 'z',
         }, {
             "SUB":objblock,
         }, {
             "inline": "true"
-        })];
+        });
+}
+
+pbc.objectFunctionD.get('get_gesture')['mpu'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }   
+    var gesblock=py2block.identifier(args[0].s);
+    var mpublock=py2block.convert(func.value)
+    return block("sensor_handbit_gesture", func.lineno, {
+        'gesture':gesblock
+    }, {
+        'SUB': mpublock
+    }, {
+        "inline": "true"
+    });
 }

@@ -19,5 +19,5 @@ msgstr ""
 
 #: ../../source/basic/index.rst:2
 msgid "软件使用基础"
-msgstr ""
+msgstr "Basic Of Mixly"
 

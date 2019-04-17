@@ -70,3 +70,17 @@ Blockly.Python.sensor_handbit_get_acceleration = function(){
     var code = v+'.get_a_' + key + '()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.sensor_handbit_gesture = function(){
+    Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+    // Blockly.Python.definitions_['import_machine'] = 'import machine';
+    var gesture = this.getFieldValue('gesture');
+    var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
+    if (v == "mpu")
+        Blockly.Python.definitions_['import_handbit_mpu'] = 'from handbit import mpu';    
+    // if (v.indexOf('mixgo_')>-1)
+    //     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    // v=v.replace('mixgo_mpu','mixgo.mpu');
+    var code = v+'.get_gesture("' + gesture + '")';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+}
