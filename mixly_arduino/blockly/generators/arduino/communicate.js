@@ -14,7 +14,7 @@ Blockly.Arduino.ir_recv = function () {
        Blockly.Variables.NAME_TYPE);
     Blockly.Arduino.definitions_['include_IRremote'] = '#include <IRremote.h>\n';
     //Blockly.Arduino.definitions_['var_declare'+varName] = 'long '+varName+';\n';
-    Blockly.Arduino.definitions_['var_ir_recv' + dropdown_pin] = 'IRrecv irrecv_' + dropdown_pin + '(' + dropdown_pin + ');\ndecode_results results_' + dropdown_pin + ';\n';
+    Blockly.Arduino.definitions_['var_declare_ir_recv' + dropdown_pin] = 'IRrecv irrecv_' + dropdown_pin + '(' + dropdown_pin + ');\ndecode_results results_' + dropdown_pin + ';\n';
     Blockly.Arduino.setups_['setup_ir_recv_' + dropdown_pin] = 'irrecv_' + dropdown_pin + '.enableIRIn();';
     var code = "if (irrecv_" + dropdown_pin + ".decode(&results_" + dropdown_pin + ")) {\n"
     code += '  ' + variable + '=results_' + dropdown_pin + '.value;\n';
@@ -43,7 +43,7 @@ Blockly.Arduino.ir_recv_enable = function () {
 
 Blockly.Arduino.ir_send_nec = function () {
     Blockly.Arduino.definitions_['include_IRremote'] = '#include <IRremote.h>\n';
-    Blockly.Arduino.definitions_['var_ir_send'] = 'IRsend irsend;\n';
+    Blockly.Arduino.definitions_['var_declare_ir_send'] = 'IRsend irsend;\n';
     var data = Blockly.Arduino.valueToCode(this, 'data', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var bits = Blockly.Arduino.valueToCode(this, 'bits', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var type = this.getFieldValue('TYPE');
@@ -62,7 +62,7 @@ Blockly.Arduino.ir_send_nec = function () {
 Blockly.Arduino.ir_recv_raw = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     Blockly.Arduino.definitions_['include_IRremote'] = '#include <IRremote.h>\n';
-    Blockly.Arduino.definitions_['var_ir_recv' + dropdown_pin] = 'IRrecv irrecv_' + dropdown_pin + '(' + dropdown_pin + ');\ndecode_results results_' + dropdown_pin + ';\n';
+    Blockly.Arduino.definitions_['var_declare_ir_recv' + dropdown_pin] = 'IRrecv irrecv_' + dropdown_pin + '(' + dropdown_pin + ');\ndecode_results results_' + dropdown_pin + ';\n';
     if (Blockly.Arduino.setups_['setup_serial_Serial' + profile.default.serial]) {
     } else {
         Blockly.Arduino.setups_['setup_serial_Serial' + profile.default.serial] = 'Serial.begin(' + profile.default.serial + ');';
@@ -91,7 +91,7 @@ Blockly.Arduino.ir_recv_raw = function () {
 
 Blockly.Arduino.ir_send_raw = function () {
     Blockly.Arduino.definitions_['include_IRremote'] = '#include <IRremote.h>\n';
-    Blockly.Arduino.definitions_['var_ir_send'] = 'IRsend irsend;\n';
+    Blockly.Arduino.definitions_['var_declare_ir_send'] = 'IRsend irsend;\n';
     var length = Blockly.Arduino.valueToCode(this, 'length', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var freq = Blockly.Arduino.valueToCode(this, 'freq', Blockly.Arduino.ORDER_ATOMIC) || '0';
     var text = this.getFieldValue('TEXT');

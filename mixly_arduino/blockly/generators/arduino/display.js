@@ -26,7 +26,7 @@ Blockly.Arduino.group_lcd_init2 = function() {
   var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'PIN2',Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_SoftI2CMaster'] = '#include <SoftI2CMaster.h>';
   Blockly.Arduino.definitions_['include_LiquidCrystal_SoftI2C'] = '#include <LiquidCrystal_SoftI2C.h>';
-  Blockly.Arduino.definitions_['var_LiquidCrystal_SoftI2C_' + varName] = 'LiquidCrystal_SoftI2C ' + varName + '(' + device + ',' + TYPE + ',' + dropdown_pin1 + ',' + dropdown_pin2 + ');';
+  Blockly.Arduino.definitions_['var_declare_LiquidCrystal_SoftI2C_' + varName] = 'LiquidCrystal_SoftI2C ' + varName + '(' + device + ',' + TYPE + ',' + dropdown_pin1 + ',' + dropdown_pin2 + ');';
   Blockly.Arduino.setups_['setup_lcd_init_' + varName] = varName + '.init();';
   Blockly.Arduino.setups_['setup_lcd_backlight_' + varName] = varName + '.backlight();';    
   return '';
@@ -43,7 +43,7 @@ Blockly.Arduino.group_lcd_init3 = function () {
   var dropdown_pin6 = Blockly.Arduino.valueToCode(this, 'PIN6', Blockly.Arduino.ORDER_ATOMIC);
 
   Blockly.Arduino.definitions_['include_LiquidCrystal'] = '#include <LiquidCrystal.h>';
-  Blockly.Arduino.definitions_['var_LiquidCrystal' + varName] = 'LiquidCrystal ' + varName + '(' + dropdown_pin1 + ',' + dropdown_pin2 + ',' + dropdown_pin3 + ',' + dropdown_pin4 + ',' + dropdown_pin5 + ',' + dropdown_pin6 + ');';
+  Blockly.Arduino.definitions_['var_declare_LiquidCrystal' + varName] = 'LiquidCrystal ' + varName + '(' + dropdown_pin1 + ',' + dropdown_pin2 + ',' + dropdown_pin3 + ',' + dropdown_pin4 + ',' + dropdown_pin5 + ',' + dropdown_pin6 + ');';
   Blockly.Arduino.setups_['setup_lcd_begin_' + varName] = varName + '.begin('+TYPE+');';
 
   return '';
@@ -86,7 +86,7 @@ Blockly.Arduino.display_4digitdisplay_power=function(){
 	var stat=this.getFieldValue("STAT");
 	Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
 	Blockly.Arduino.definitions_['include_TM1650'] = '#include <TM1650.h>';
-	Blockly.Arduino.definitions_['var_display_4display'] = 'TM1650 tm_4display;';
+	Blockly.Arduino.definitions_['var_declare_display_4display'] = 'TM1650 tm_4display;';
 	Blockly.Arduino.setups_['setup_wire_begin'] ='Wire.begin();';
 	Blockly.Arduino.setups_['setup_display_4display_init'] ='tm_4display.init();';
 	return 'tm_4display.'+stat+'();\n';
@@ -95,7 +95,7 @@ Blockly.Arduino.display_4digitdisplay_displayString=function(){
 	var value = Blockly.Arduino.valueToCode(this, 'VALUE', Blockly.Arduino.ORDER_ATOMIC);
 	Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
   Blockly.Arduino.definitions_['include_TM1650'] = '#include <TM1650.h>';
-  Blockly.Arduino.definitions_['var_display_4display'] = 'TM1650 tm_4display;';
+  Blockly.Arduino.definitions_['var_declare_display_4display'] = 'TM1650 tm_4display;';
   Blockly.Arduino.setups_['setup_wire_begin'] ='Wire.begin();';
   Blockly.Arduino.setups_['setup_display_4display_init'] ='tm_4display.init();';
   return 'tm_4display.displayString('+value+');\n';
@@ -105,7 +105,7 @@ Blockly.Arduino.display_4digitdisplay_showDot=function(){
 	var stat=this.getFieldValue("STAT");
 	Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
   Blockly.Arduino.definitions_['include_TM1650'] = '#include <TM1650.h>';
-  Blockly.Arduino.definitions_['var_display_4display'] = 'TM1650 tm_4display;';
+  Blockly.Arduino.definitions_['var_declare_display_4display'] = 'TM1650 tm_4display;';
   Blockly.Arduino.setups_['setup_wire_begin'] ='Wire.begin();';
   Blockly.Arduino.setups_['setup_display_4display_init'] ='tm_4display.init();';
   return 'tm_4display.setDot('+no+','+stat+');\n';
@@ -154,7 +154,7 @@ Blockly.Arduino.display_TM1637_displyPrint = function () {
     var SCL = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
     var matrixName = this.getFieldValue('matrixName');
     Blockly.Arduino.definitions_['include_Matrix'] = '#include <Matrix.h>';
-    Blockly.Arduino.definitions_[matrixName] = 'Matrix '+ matrixName +'('+SDA+','+SCL+');';
+    Blockly.Arduino.definitions_['var_declare'+matrixName] = 'Matrix '+ matrixName +'('+SDA+','+SCL+');';
     Blockly.Arduino.setups_['setup_' + matrixName] = matrixName + '.begin(0x70); \n';
     var code= matrixName+'.clear();\n';
     return code;
@@ -184,7 +184,7 @@ Blockly.Arduino.display_TM1637_displyPrint = function () {
 Blockly.Arduino.display_Matrix_DisplayChar = function() {
   var matrixName = this.getFieldValue('matrixName');
   var dotMatrixArray = Blockly.Arduino.valueToCode(this, 'LEDArray', Blockly.Arduino.ORDER_ASSIGNMENT);
-  Blockly.Arduino.definitions_['LEDArray'] = 'uint8_t  LEDArray[8];';
+  Blockly.Arduino.definitions_['var_declare_LEDArray'] = 'uint8_t  LEDArray[8];';
 //  var code='Matrix_'+SDA+'_'+SCL+'.clear()dotMatrix;\n';
 var code='';
 code+='for(int i=0; i<8; i++)\n';
@@ -303,7 +303,7 @@ Blockly.Arduino.LedArray = function() {
 
 Blockly.Arduino.MAX7219_DisplayChar = function() {
   var dotMatrixArray = Blockly.Arduino.valueToCode(this, 'LEDArray', Blockly.Arduino.ORDER_ASSIGNMENT);
-  Blockly.Arduino.definitions_['LEDArray'] = 'uint8_t  LEDArray[8];';
+  Blockly.Arduino.definitions_['var_declare_LEDArray'] = 'uint8_t  LEDArray[8];';
   var code='';
   code+='for(int i=0; i<8; i++)\n';
   code+='{\n'

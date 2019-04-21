@@ -6,7 +6,7 @@ Blockly.Arduino.ethernet_init_begin = function() {
   var Ethernet=this.getFieldValue('Ethernet');
   Blockly.Arduino.definitions_['include_spi'] = '#include <SPI.h>';
   Blockly.Arduino.definitions_['include_'+Ethernet] = '#include <'+Ethernet+'.h>';
-  Blockly.Arduino.definitions_['var_EthernetClient'] = 'EthernetClient client;';
+  Blockly.Arduino.definitions_['var_declare_EthernetClient'] = 'EthernetClient client;';
   var mac = Blockly.Arduino.valueToCode(this, 'MAC',Blockly.Arduino.ORDER_ATOMIC);
   var code = "Ethernet.begin("+mac+")";
   return [code, Blockly.Arduino.ORDER_ATOMIC];
@@ -19,7 +19,7 @@ Blockly.Arduino.ethernet_mac_address = function() {
   var VAR4 = this.getFieldValue('VAR4');
   var VAR5 = this.getFieldValue('VAR5');
   var VAR6 = this.getFieldValue('VAR6');
-  Blockly.Arduino.definitions_['var_byte_mac'] = 'byte mac[] = {0x'+VAR1+', 0x'+VAR2+', 0x'+VAR3+', 0x'+VAR4+', 0x'+VAR5+', 0x'+VAR6+'};';
+  Blockly.Arduino.definitions_['var_declare_byte_mac'] = 'byte mac[] = {0x'+VAR1+', 0x'+VAR2+', 0x'+VAR3+', 0x'+VAR4+', 0x'+VAR5+', 0x'+VAR6+'};';
   var code = "mac";
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

@@ -16,7 +16,7 @@ Blockly.Arduino.lists_create_with = function() {
     code[n] = Blockly.Arduino.valueToCode(this, 'ADD' + n,
         Blockly.Arduino.ORDER_NONE) || '0';
   }
-  Blockly.Arduino.definitions_['var_lists'+varName] = dropdown_type+' '+varName+'['+size+']'+'='+ '{' + code.join(', ') + '};\n';
+  Blockly.Arduino.definitions_['var_declare'+varName] = dropdown_type+' '+varName+'['+size+']'+'='+ '{' + code.join(', ') + '};\n';
   //var code =''+varName+'['+size+"]"+'='+ '{' + code.join(', ') + '};\n';
   //Blockly.Arduino.setups_['setup_lists'+varName] = code;
   return '';
@@ -28,7 +28,7 @@ Blockly.Arduino.lists_create_with_text = function() {
       Blockly.Variables.NAME_TYPE);
   var size=window.parseFloat(this.getFieldValue('SIZE'));
   var text=this.getFieldValue('TEXT');
-  Blockly.Arduino.definitions_['var_lists'+varName] = dropdown_type+' '+varName+'['+size+']'+'='+ '{' + text + '};\n';
+  Blockly.Arduino.definitions_['var_declare'+varName] = dropdown_type+' '+varName+'['+size+']'+'='+ '{' + text + '};\n';
   return '';
 };
 
@@ -43,7 +43,7 @@ Blockly.Arduino.lists_create_with2 = function() {
     code[n] = Blockly.Arduino.valueToCode(this, 'ADD' + n,
         Blockly.Arduino.ORDER_NONE) || '0';
   }
-  Blockly.Arduino.definitions_['var_lists'+varName] = dropdown_type+' '+varName+'[]'+'='+ '{' + code.join(', ') + '};\n';
+  Blockly.Arduino.definitions_['var_declare'+varName] = dropdown_type+' '+varName+'[]'+'='+ '{' + code.join(', ') + '};\n';
   //var code =''+varName+'['+size+"]"+'='+ '{' + code.join(', ') + '};\n';
   //Blockly.Arduino.setups_['setup_lists'+varName] = code;
   return '';
@@ -55,7 +55,7 @@ Blockly.Arduino.lists_create_with_text2 = function() {
       Blockly.Variables.NAME_TYPE);
   //var size=window.parseFloat(this.getFieldValue('SIZE'));
   var text=this.getFieldValue('TEXT');
-  Blockly.Arduino.definitions_['var_lists'+varName] = dropdown_type+' '+varName+'[]'+'='+ '{' + text + '};\n';
+  Blockly.Arduino.definitions_['var_declare'+varName] = dropdown_type+' '+varName+'[]'+'='+ '{' + text + '};\n';
   return '';
 };
 
