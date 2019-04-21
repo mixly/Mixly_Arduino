@@ -1,5 +1,5 @@
 Mixly 帮助文档
-=====================
+===============
 
 欢迎您，使用Mixly！
 
@@ -11,21 +11,28 @@ Mixly 帮助文档
    basic/index.rst
 
 Arduino 编程
----------------------
+-------------------
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    arduino/index.rst
 
-Python 编程
+ESP8266 编程
 -----------------------
+.. toctree::
+   :maxdepth: 2
+
+   ESP8266/index.rst
+
+Python 编程
+-------------------
 .. toctree::
    :maxdepth: 2
 
    Python/index.rst
 
 MicroPython 编程
----------------------------
+-----------------------
 .. toctree::
    :maxdepth: 2
 

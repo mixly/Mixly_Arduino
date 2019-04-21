@@ -17,6 +17,13 @@ Arduino 编程
 
    arduino/index.rst
 
+ESP8266 编程
+-----------------------
+.. toctree::
+   :maxdepth: 2
+
+   ESP8266/index.rst
+
 Python 编程
 -------------------
 .. toctree::

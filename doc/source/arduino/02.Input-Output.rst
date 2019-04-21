@@ -1,19 +1,25 @@
-输入&输出
-================
+输入/输出 (普通视图)
+=====================
 
 输入/\输出所包含的指令主要分为四部分：控制管脚的输入输出（按信号类型可分为数字信号和模拟信号）、中断、脉冲长度及ShiftOut。
 
-* 输入输出：数字输入、数字输出、模拟输入、模拟输出、
+* 输入输出：数字输入、数字输出、模拟输入、模拟输出
 * 中断控制：定义中断，取消中断
 * 脉冲长度
 * 移位输出
 
-.. image:: images/02/inout1.png
+.. image:: images/02/inout.png
 
 数字输出
 --------------
 
 .. image:: images/02/digitalWrite.png
+
+.. code-block:: c
+	:linenos:
+
+	digitalWrite(0,HIGH);//输出高电平
+	digitalWrite(0,LOW);//输出低电平
 
 描述
 ++++++++++++++
@@ -26,6 +32,7 @@
 
 参数
 +++++++++++++++
+
 * 管脚: 引脚编号（如1,5,10，A0，A3）
 
 * 值: 高 或 低
@@ -36,14 +43,35 @@
 
 .. image:: images/02/digitalWrite-example.png
 
+.. code-block:: c
+	:linenos:
+
+	void setup(){
+	pinMode(13, OUTPUT);
+	}
+	void loop(){
+	digitalWrite(13,HIGH);
+	delay(1000);
+	digitalWrite(13,LOW);
+	delay(1000);
+	}
+
 注释
 +++++++++
+
 模拟引脚也可以当做数字引脚使用，使用方法是输入端口A0，A1，A2等。
 
 数字输入
 --------------
 
 .. image:: images/02/digitalRead.png
+
+.. code-block:: c
+	:linenos:
+
+	digitalRead(0);
+
+
 
 描述
 ++++++++++++++
@@ -65,6 +93,17 @@ HIGH 或 LOW
 
 .. image:: images/02/digitalRead-example.png
 
+.. code-block:: c
+	:linenos:
+
+	void setup(){
+	Serial.begin(9600);
+	pinMode(0, INPUT);
+	}
+	void loop(){
+	Serial.println(digitalRead(0));
+	}
+
 注释
 +++++++++
 .. Attention::
@@ -74,6 +113,12 @@ HIGH 或 LOW
 --------------
 
 .. image:: images/02/analogRead.png
+
+
+.. code-block:: c
+	:linenos:
+
+	analogRead(A0);
 
 描述
 ++++++++++++++
@@ -89,13 +134,23 @@ HIGH 或 LOW
 
 返回
 +++++++++
-arduino:从0到1023的整数值
+从0到1023的整数值
 
 范例
 +++++
 读取模拟A0引脚的值，并通过串口打印出来。
 
 .. image:: images/02/analogRead-example.png
+
+.. code-block:: c
+	:linenos:
+
+	void setup(){
+	Serial.begin(9600);
+	}
+	void loop(){
+	Serial.println(analogRead(A0));
+	}
 
 注释
 +++++++++
@@ -106,6 +161,11 @@ arduino:从0到1023的整数值
 --------------
 
 .. image:: images/02/analogWrite.png
+
+.. code-block:: c
+	:linenos:
+
+	analogWrite(3,100);
 
 描述
 ++++++++++++++
@@ -119,15 +179,29 @@ arduino:从0到1023的整数值
 * 管脚:引脚编号（如3,5,6,9,10,11）不同的开发板模拟输入引脚数量不一样。
 * 赋值:0（完全关闭）到255（完全打开）之间。
 
-返回
-+++++++++
-arduino:从0到1023的整数值
+
 
 范例
 +++++
 控制LED实现呼吸灯效果。
 
 .. image:: images/02/analogWrite-example.png
+
+.. code-block:: c
+	:linenos:
+
+	void setup(){
+	}
+	void loop(){
+	for (int i = 0; i <= 255; i = i + (1)) {
+	analogWrite(10,i);
+	delay(10);
+	}
+	for (int i = 255; i >= 0; i = i + (-1)) {
+	analogWrite(10,i);
+	delay(10);
+	}
+	}
 
 注释
 +++++++++
@@ -140,6 +214,18 @@ arduino:从0到1023的整数值
 --------------
 
 .. image:: images/02/interrupt.png
+
+.. code-block:: c
+	:linenos:
+
+	void attachInterrupt_fun_2() {
+	}
+	void setup(){
+	pinMode(2, INPUT);
+	}
+	void loop(){
+	attachInterrupt(digitalPinToInterrupt(2),attachInterrupt_fun_2,RISING);
+	}
 
 描述
 ++++++++++++++
@@ -165,9 +251,26 @@ arduino:从0到1023的整数值
 
 范例
 +++++
-利用中断，控制13号引脚的LED亮灭。
+利用2号引脚中断，控制13号引脚的LED亮灭。
 
 .. image:: images/02/interrupt-example.png
+
+.. code-block:: c
+	:linenos:
+
+	volatile boolean state;
+	void attachInterrupt_fun_2() {
+	  state = !state;
+	  digitalWrite(13,state);
+	}
+	void setup(){
+	  state = false;
+	  pinMode(2, INPUT);
+	  pinMode(13, OUTPUT);
+	  attachInterrupt(digitalPinToInterrupt(2),attachInterrupt_fun_2,RISING);
+	}
+	void loop(){
+	}
 
 注释
 +++++++++
@@ -179,6 +282,11 @@ arduino:从0到1023的整数值
 --------------
 
 .. image:: images/02/detachinterrupt.png
+
+.. code-block:: c
+	:linenos:
+
+	detachInterrupt(digitalPinToInterrupt(2));
 
 描述
 ++++++++++++++
@@ -194,6 +302,14 @@ arduino:从0到1023的整数值
 脉冲长度
 -------------------
 .. image:: images/02/pulseIn.png
+
+.. code-block:: c
+	:linenos:
+
+	pulseIn(0, HIGH);
+
+	pulseIn(0, HIGH, 1000000);
+
 
 描述
 ++++++++++++++
@@ -222,10 +338,28 @@ arduino:从0到1023的整数值
 
 .. image:: images/02/pulseIn-example.png
 
+.. code-block:: c
+	:linenos:
+
+	void setup(){
+	  Serial.begin(9600);
+	  pinMode(0, INPUT);
+	}
+	void loop(){
+	  Serial.println(pulseIn(0, HIGH));
+	}
+
 ShiftOut
 -----------------
 
-.. image:: images/02/ShiftOut.png
+.. image:: images/02/shiftOut.png
+
+.. code-block:: c
+	:linenos:
+
+	shiftOut(0,0,MSBFIRST,0);//高位先入
+	shiftOut(0,0,LSBFIRST,0);//低位先入
+
 
 描述
 ++++++++++++++
@@ -241,4 +375,4 @@ ShiftOut
 
 * 顺序：输出位的顺序，最高位优先或最低位优先
 
-* value: 要移位输出的数据(byte)
+* 数值: 要移位输出的数据(byte)
