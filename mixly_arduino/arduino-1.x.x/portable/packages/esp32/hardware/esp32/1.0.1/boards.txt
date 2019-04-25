@@ -9,7 +9,7 @@ menu.PSRAM=PSRAM
 
 ##############################################################
 
-esp32.name=ESP32 Dev Module
+esp32.name=Arduino ESP32 Generic
 
 esp32.upload.tool=esptool_py
 esp32.upload.maximum_size=1310720
