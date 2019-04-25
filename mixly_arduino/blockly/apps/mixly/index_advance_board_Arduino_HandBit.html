@@ -1,14 +1,13 @@
 ﻿<html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
-  <title>Mixly ESP32 Arduino Advance</title>
+  <title>Mixly Handbit Arduino advance</title>
   <script type="text/javascript" src="../../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../core/variables.js"></script>
   <script type="text/javascript" src="../../core/procedures.js"></script> 
   <script type="text/javascript" src="../../core/blockly.js"></script>
   <script type="text/javascript" src="../../core/events.js"></script>
   <script type="text/javascript" src="../../arduino.js"></script>
-  <script type="text/javascript" src="../../core/field_textarea.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
   <script type="text/javascript" src="drag.js"></script>
   <script type="text/javascript" src="code.js"></script>
@@ -42,7 +41,6 @@
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/arduino/actuator.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/factory.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/inout.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/control.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/math.js"></script>
@@ -58,6 +56,7 @@
   <script type="text/javascript" src="../../generators/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/actuator.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/MixGo.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/Handbit.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script> 
   <script type="text/javascript" src="../../blocks/arduino/pins.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/inout.js"></script>
@@ -75,7 +74,6 @@
   <script type="text/javascript" src="../../blocks/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/serial.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/actuator.js"></script>
-  <script type="text/javascript" src="../../blocks/arduino/factory.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/pins.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/inout.js"></script>
@@ -92,6 +90,7 @@
   <script type="text/javascript" src="../../blocks/esp32_Arduino/procedures.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/actuator.js"></script>
+  <script type="text/javascript" src="../../blocks/esp32_Arduino/Handbit.js"></script>
   <!-- 过去index.html中的js代码都会被放到这个js中-->
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color.css" />
@@ -114,11 +113,11 @@
               <span id="copyright" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
             </td>
             <td class="tabmode">
-               <a class="viewLeft" id="viewMode1" href="index_board_ESP32_Arduino.html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;" >普通视图</a><span class="viewRight" id="viewMode2" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</span>
-            </td>
+               <a class="viewLeft" id="viewMode1" href="index_board_Arduino_HandBit.html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;" >普通视图</a><span class="viewRight" id="viewMode2" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</span>
+           </td>
             <script type="text/javascript">
               var viewMode2 = document.getElementById('viewMode2');
-              viewMode2.href = 'index_board_ESP32_Arduino.html?lang='+Code.LANG;
+              viewMode2.href = 'index_board_Arduino_HandBit.html?lang='+Code.LANG;
             </script>
             <td class="tabmin">
               <input name="undo" type="image" title="undo(ctrl+z)" src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
@@ -216,10 +215,7 @@
       </value>
     </block>
     <block type="inout_touchRead">
-      <value name="PIN">
-        <shadow type="pins_touch">
-        </shadow>
-      </value>
+
     </block>
     <block type="inout_pwm_analog_write">
       <value name="PIN">
@@ -677,7 +673,6 @@
         <field name="TEXT">Mixly</field>
       </shadow>
     </value>
-
   </block>
   <block type="storage_get_contents">
     <value name="FILE">
@@ -729,101 +724,107 @@
   </block>
 </category>
 <category id="catSensor" colour="40">
-  <block type="chaoshengbo2">
-    <value name="PIN1">
-      <shadow type="pins_digital">
-        <field name="PIN">2</field>
-      </shadow>
-    </value>
-    <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">5</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="DHT">
-    <value name="PIN">
-      <shadow type="pins_digital"></shadow>
-    </value>
-  </block>
-  <block type="LM35">
-    <value name="PIN">
-      <shadow type="pins_analog"></shadow>
-    </value>
-  </block>
-  <block type="ds18b20">
-    <value name="PIN">
-      <shadow type="pins_digital"></shadow>
-    </value>
-  </block>
-  <block type="ADXL345">
-  </block>
+ <block type="handbit_button_is_pressed">
+ </block>
+ <block type="handbit_light">
+ </block>
+ <block type="handbit_sound">
+ </block>
+ <block type="chaoshengbo2">
+  <value name="PIN1">
+    <shadow type="pins_digital">
+      <field name="PIN">2</field>
+    </shadow>
+  </value>
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">5</field>
+    </shadow>
+  </value>
+</block>
+<block type="DHT">
+  <value name="PIN">
+    <shadow type="pins_digital"></shadow>
+  </value>
+</block>
+<block type="LM35">
+  <value name="PIN">
+    <shadow type="pins_analog"></shadow>
+  </value>
+</block>
+<block type="ds18b20">
+  <value name="PIN">
+    <shadow type="pins_digital"></shadow>
+  </value>
+</block>
+<block type="ADXL345">
+</block>
 
-  <!--DS302-->
-  <block type="DS1302_init">
-    <value name="RST">
-      <shadow type="pins_digital">
-        <field name="NUM">2</field>
-      </shadow>
-    </value>
-    <value name="DAT">
-      <shadow type="pins_digital">
-        <field name="NUM">3</field>
-      </shadow>
-    </value>
-    <value name="CLK">
-      <shadow type="pins_digital">
-        <field name="NUM">4</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="DS1307_init">
-    <value name="SDA">
-      <shadow type="pins_digital">
-        <field name="PIN">2</field>
-      </shadow>
-    </value>
-    <value name="SCL">
-      <shadow type="pins_digital">
-        <field name="PIN">3</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="RTC_get_time"></block>
-  <block type="RTC_set_time">
-    <value name="hour">
-      <shadow type="math_number">
-        <field name="NUM">8</field>
-      </shadow>
-    </value>
-    <value name="minute">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="second">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="RTC_set_date">
-    <value name="year">
-      <shadow type="math_number">
-        <field name="NUM">2000</field>
-      </shadow>
-    </value>
-    <value name="month">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="day">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-  </block>
+<!--DS302-->
+<block type="DS1302_init">
+  <value name="RST">
+    <shadow type="pins_digital">
+      <field name="NUM">2</field>
+    </shadow>
+  </value>
+  <value name="DAT">
+    <shadow type="pins_digital">
+      <field name="NUM">3</field>
+    </shadow>
+  </value>
+  <value name="CLK">
+    <shadow type="pins_digital">
+      <field name="NUM">4</field>
+    </shadow>
+  </value>
+</block>
+<block type="DS1307_init">
+  <value name="SDA">
+    <shadow type="pins_digital">
+      <field name="PIN">2</field>
+    </shadow>
+  </value>
+  <value name="SCL">
+    <shadow type="pins_digital">
+      <field name="PIN">3</field>
+    </shadow>
+  </value>
+</block>
+<block type="RTC_get_time"></block>
+<block type="RTC_set_time">
+  <value name="hour">
+    <shadow type="math_number">
+      <field name="NUM">8</field>
+    </shadow>
+  </value>
+  <value name="minute">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="second">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="RTC_set_date">
+  <value name="year">
+    <shadow type="math_number">
+      <field name="NUM">2000</field>
+    </shadow>
+  </value>
+  <value name="month">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="day">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
 </category>
 <category id="catActuator" colour="100">
   <block type="servo_move">
@@ -848,27 +849,31 @@
   </block>
   <block type="controls_tone">
     <value name="PIN">
-      <shadow type="pins_digital"></shadow>
-    </value>
-    <value name="FREQUENCY">
-      <shadow type="tone_notes"></shadow>
-    </value>
-    <value name="DURATION">
-     <shadow type="math_number">
-      <field name="NUM">200</field>
+     <shadow type="pins_digital">
+      <field name="PIN">16</field>
     </shadow>
   </value>
-  <value name="CHANNEL">
-    <shadow type="channel_select"></shadow>
+  <value name="FREQUENCY">
+    <shadow type="tone_notes"></shadow>
   </value>
+  <value name="DURATION">
+   <shadow type="math_number">
+    <field name="NUM">200</field>
+  </shadow>
+</value>
+<value name="CHANNEL">
+  <shadow type="channel_select"></shadow>
+</value>
 </block>
 <block type="controls_notone">
-  <value name="PIN">
-    <shadow type="pins_digital"></shadow>
-  </value>
-  <value name="CHANNEL">
-    <shadow type="channel_select"></shadow>
-  </value>
+ <value name="PIN">
+   <shadow type="pins_digital">
+    <field name="PIN">16</field>
+  </shadow>
+</value>
+<value name="CHANNEL">
+  <shadow type="channel_select"></shadow>
+</value>
 </block>
 <block type="group_stepper_setup">
   <value name="PIN1">
@@ -932,84 +937,96 @@
   </value>
 </block>
 <block type="display_rgb_init">
-  <value name="PIN">
-    <shadow type="pins_digital" />
-  </value>
-  <value name="LEDCOUNT">
-    <shadow type="math_number">
-      <field name="NUM">4</field>
-    </shadow>
-  </value>
-  <value name="Brightness">
-    <shadow type="math_number">
-      <field name="NUM">20</field>
-    </shadow>
-  </value>
+ <value name="PIN">
+   <shadow type="pins_digital">
+    <field name="PIN">17</field>
+  </shadow>
+</value>
+<value name="LEDCOUNT">
+  <shadow type="math_number">
+    <field name="NUM">4</field>
+  </shadow>
+</value>
+<value name="Brightness">
+  <shadow type="math_number">
+    <field name="NUM">20</field>
+  </shadow>
+</value>
 </block>
 <block type="display_rgb">
-  <value name="PIN">
-    <shadow type="pins_digital" />
-  </value>
-  <value name="_LED_">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-  <value name="RVALUE">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="GVALUE">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="BVALUE">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
+ <value name="PIN">
+   <shadow type="pins_digital">
+    <field name="PIN">17</field>
+  </shadow>
+</value>
+<value name="_LED_">
+  <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
+<value name="RVALUE">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
+<value name="GVALUE">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
+<value name="BVALUE">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
 </block>
 <block type="display_rgb2">
-  <value name="PIN">
-    <shadow type="pins_digital" />
-  </value>
-  <value name="_LED_">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
+ <value name="PIN">
+   <shadow type="pins_digital">
+    <field name="PIN">17</field>
+  </shadow>
+</value>
+<value name="_LED_">
+  <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
 </block>
 <block type="display_rgb_rainbow1">
   <value name="PIN">
-    <shadow type="pins_digital" />
-  </value>
-  <value name="WAIT">
-    <shadow type="math_number">
-      <field name="NUM">20</field>
-    </shadow>
-  </value>
-  <value name="Brightness">
-    <shadow type="math_number">
-      <field name="NUM">20</field>
-    </shadow>
-  </value>
+   <shadow type="pins_digital">
+    <field name="PIN">17</field>
+  </shadow>
+</value>
+<value name="WAIT">
+  <shadow type="math_number">
+    <field name="NUM">20</field>
+  </shadow>
+</value>
+<value name="Brightness">
+  <shadow type="math_number">
+    <field name="NUM">20</field>
+  </shadow>
+</value>
 </block>
 <block type="display_rgb_rainbow3">
   <value name="PIN">
-    <shadow type="pins_digital" />
-  </value>
-  <value name="rainbow_color">
-    <shadow type="math_number">
-      <field name="NUM">20</field>
-    </shadow>
-  </value>
+   <shadow type="pins_digital">
+    <field name="PIN">17</field>
+  </shadow>
+</value>
+<value name="rainbow_color">
+  <shadow type="math_number">
+    <field name="NUM">20</field>
+  </shadow>
+</value>
 </block>
 <block type="display_rgb_show">
   <value name="PIN">
-    <shadow type="pins_digital" />
-  </value>
+   <shadow type="pins_digital">
+    <field name="PIN">17</field>
+  </shadow>
+</value>
 </block>
 </category>
 <category id="catMonitor" colour="180">
@@ -1145,6 +1162,28 @@
       </block>
     </value>
   </block>
+ <!--  <block type="oled_draw4Str" >
+    <value name="Text_line1">
+      <shadow type="text">
+        <field name="TEXT">Example Line1!</field>
+      </shadow>
+    </value>
+    <value name="Text_line2">
+      <shadow type="text">
+        <field name="TEXT">Example Line2!</field>
+      </shadow>
+    </value>
+    <value name="Text_line3">
+      <shadow type="text">
+        <field name="TEXT">Example Line3!</field>
+      </shadow>
+    </value>
+    <value name="Text_line4">
+      <shadow type="text">
+        <field name="TEXT">Example Line4!</field>
+      </shadow>
+    </value>
+  </block> -->
   <block type="oled_drawPixe" >
     <value name="POS_X">
       <shadow type="math_number">
@@ -1353,10 +1392,6 @@
   <value name="minute">
     <shadow type="math_number">
       <field name="NUM">30</field>
-    </shadow>
-  </value>
-  <value name="STAT">
-    <shadow type="inout_highlow">
     </shadow>
   </value>
 </block>
@@ -1886,23 +1921,33 @@
     <field name="Vpin">V0</field>
   </block>
 </category>
-<category id="catFactory" name="Factory" colour="65">
-  <block type="factory_notes"></block>
-  <block type="factory_include"></block>
-  <block type="factory_function_noreturn"></block>
-  <block type="factory_function_return"></block>
-  <block type="factory_declare"></block>
-  <block type="factory_declare2"></block>
-  <block type="factory_define"></block>
-  <block type="factory_callMethod_noreturn"></block>
-  <block type="factory_callMethod_return"></block>
-  <block type="factory_static_method_noreturn"></block>
-  <block type="factory_static_method_return"></block>
-  <block type="factory_block"></block>
-  <block type="factory_block_return"></block>
-  <block type="factory_block_with_textarea"></block>
-  <block type="factory_block_return_with_textarea"></block>
-</category>
+<!-- <category id="catMixGo" name="MixGo" colour="160">
+
+
+<block type="mixGo_led_brightness">
+ <value name="STAT">
+  <shadow type="number">
+  </shadow>
+</value>
+<value name="bright">
+  <shadow type="math_number">
+    <field name="NUM">1023</field>
+  </shadow>
+</value>
+</block>
+<block type="mixgo_button_is_pressed">
+</block>
+<block type="mixgo_touch_pin">
+</block>
+<block type="sensor_mixgo_pin_near">
+</block>
+<block type="sensor_mixgo_light">
+</block>
+<block type="sensor_mixgo_sound">
+</block>
+<block type="mixgo_MPU9250"> 
+</block>
+</category> -->
 </xml>
 <script>
   if(company_block!=null){
