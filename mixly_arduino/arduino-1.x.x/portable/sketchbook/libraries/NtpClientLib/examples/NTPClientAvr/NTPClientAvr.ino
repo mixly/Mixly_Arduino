@@ -40,6 +40,8 @@ or implied, of German Martin
 #include <Dns.h>
 #include <Dhcp.h>
 
+#define SHOW_TIME_PERIOD 5000
+
 // Enter a MAC address for your controller below.
 // Newer Ethernet shields have a MAC address printed on a sticker on the shield
 byte mac[] = {
@@ -68,15 +70,16 @@ void setup () {
             Serial.println (NTP.getTimeDateString (NTP.getLastNTPSync ()));
         }
     });
-    NTP.begin ("es.pool.ntp.org", 1, true);
     NTP.setInterval (63);
+    NTP.setNTPTimeout (1000);
+    NTP.begin ("pool.ntp.org", 1, true);
 }
 
 void loop () {
     static int i = 0;
     static int last = 0;
 
-    if ((millis () - last) > 5100) {
+    if ((millis () - last) > SHOW_TIME_PERIOD) {
         //Serial.println(millis() - last);
         last = millis ();
         Serial.print (i); Serial.print (" ");

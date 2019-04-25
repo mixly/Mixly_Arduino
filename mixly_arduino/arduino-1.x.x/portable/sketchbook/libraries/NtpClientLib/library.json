@@ -1,23 +1,21 @@
 {
-"name": "NtpClientLib",
-"frameworks": "Arduino",
-"version": "2.5.1",
-"keywords": "time, date, hour, minute, second, day, week, month, year, RTC, NTP",
-"description": "Library to get system sync from a NTP server",
-"url": "https://github.com/gmag11/NtpClient",
-"authors":
-[
-{
-        "name": "Germán Martín"
-}
-],
-"repository":
-{
-    "type": "git",
-    "url": "https://github.com/gmag11/NtpClient"
-},
-    "dependencies": {
-        "Time": "PaulStoffregen/Time"
-    }
+  "name": "NtpClientLib",
+  "frameworks": "arduino",
+  "version": "3.0.0-beta",
+  "keywords": "time, date, hour, minute, second, day, week, month, year, RTC, NTP",
+  "platforms": ["atmelavr", "atmelsam", "espressif32", "espressif8266"],
+  "description": "Library to get system sync from a NTP server",
+  "url": "https://github.com/gmag11/NtpClient",
+  "authors":
+    {
+      "name": "Germán Martín",
+      "email": "gmag11@gmail.com"
+    },
+  "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/gmag11/NtpClient.git"
+    },
+  "examples": "examples/*/*.ino"
 }
 

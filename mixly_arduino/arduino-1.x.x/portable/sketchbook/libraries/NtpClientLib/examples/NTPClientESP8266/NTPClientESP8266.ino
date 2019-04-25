@@ -44,9 +44,12 @@ CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE G
 #endif // !WIFI_CONFIG_H
 
 #define ONBOARDLED 2 // Built in LED on ESP-12/ESP-07
+#define SHOW_TIME_PERIOD 5000
+#define NTP_TIMEOUT 1500
 
 int8_t timeZone = 1;
 int8_t minutesTimeZone = 0;
+const PROGMEM char *ntpServer = "pool.ntp.org";
 bool wifiFirstConnected = false;
 
 void onSTAConnected (WiFiEventStationModeConnected ipInfo) {
@@ -68,18 +71,25 @@ void onSTADisconnected (WiFiEventStationModeDisconnected event_info) {
     Serial.printf ("Reason: %d\n", event_info.reason);
     digitalWrite (ONBOARDLED, HIGH); // Turn off LED
     //NTP.stop(); // NTP sync can be disabled to avoid sync errors
+    WiFi.reconnect ();
 }
 
 void processSyncEvent (NTPSyncEvent_t ntpEvent) {
-    if (ntpEvent) {
-        Serial.print ("Time Sync error: ");
+    if (ntpEvent < 0) {
+        Serial.printf ("Time Sync error: %d\n", ntpEvent);
         if (ntpEvent == noResponse)
             Serial.println ("NTP server not reachable");
         else if (ntpEvent == invalidAddress)
             Serial.println ("Invalid NTP server address");
+        else if (ntpEvent == errorSending)
+            Serial.println ("Error sending request");
+        else if (ntpEvent == responseError)
+            Serial.println ("NTP response error");
     } else {
-        Serial.print ("Got NTP time: ");
-        Serial.println (NTP.getTimeDateString (NTP.getLastNTPSync ()));
+        if (ntpEvent == timeSyncd) {
+            Serial.print ("Got NTP time: ");
+            Serial.println (NTP.getTimeDateString (NTP.getLastNTPSync ()));
+        }
     }
 }
 
@@ -118,8 +128,9 @@ void loop () {
 
     if (wifiFirstConnected) {
         wifiFirstConnected = false;
-        NTP.begin ("pool.ntp.org", timeZone, true, minutesTimeZone);
         NTP.setInterval (63);
+        NTP.setNTPTimeout (NTP_TIMEOUT);
+        NTP.begin (ntpServer, timeZone, true, minutesTimeZone);
     }
 
     if (syncEventTriggered) {
@@ -127,7 +138,7 @@ void loop () {
         syncEventTriggered = false;
     }
 
-    if ((millis () - last) > 5100) {
+    if ((millis () - last) > SHOW_TIME_PERIOD) {
         //Serial.println(millis() - last);
         last = millis ();
         Serial.print (i); Serial.print (" ");
@@ -138,7 +149,7 @@ void loop () {
         Serial.print ("Uptime: ");
         Serial.print (NTP.getUptimeString ()); Serial.print (" since ");
         Serial.println (NTP.getTimeDateString (NTP.getFirstSync ()).c_str ());
-
+        Serial.printf ("Free heap: %u\n", ESP.getFreeHeap ());
         i++;
     }
     delay (0);

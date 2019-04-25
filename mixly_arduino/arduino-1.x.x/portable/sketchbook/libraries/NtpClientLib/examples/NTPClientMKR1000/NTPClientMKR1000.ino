@@ -41,12 +41,15 @@ or implied, of German Martin
 #include <NtpClientLib.h>
 #include <Dns.h>
 #include <Dhcp.h>
+#include "WifiConfig.h"
 
 #ifndef WIFI_CONFIG_H
 #define YOUR_WIFI_SSID "YOUR_WIFI_SSID"
 #define YOUR_WIFI_PASSWD "YOUR_WIFI_PASSWD"
 #endif // !WIFI_CONFIG_H
-//WiFiClient client;
+
+#define SHOW_TIME_PERIOD 5000
+
 
 void setup () {
     Serial.begin (115200);
@@ -68,15 +71,16 @@ void setup () {
             Serial.println (NTP.getTimeDateString (NTP.getLastNTPSync ()));
         }
     });
-    NTP.begin ("pool.ntp.org", 1, true);
     NTP.setInterval (63);
+    NTP.setNTPTimeout (1000);
+    NTP.begin ("pool.ntp.org", 1, true);
 }
 
 void loop () {
     static int i = 0;
     static int last = 0;
 
-    if ((millis () - last) > 5100) {
+    if ((millis () - last) > SHOW_TIME_PERIOD) {
         //Serial.println(millis() - last);
         last = millis ();
         Serial.print (i); Serial.print (" ");

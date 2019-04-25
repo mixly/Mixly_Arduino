@@ -34,7 +34,7 @@ or implied, of German Martin
 */
 
 #include <TimeLib.h>
-//#include "WifiConfig.h"
+#include "WifiConfig.h"
 #include <NtpClientLib.h>
 #include <WiFi.h>
 
@@ -44,9 +44,12 @@ or implied, of German Martin
 #endif // !WIFI_CONFIG_H
 
 #define ONBOARDLED 5 // Built in LED on ESP-12/ESP-07
+#define SHOW_TIME_PERIOD 5000
+#define NTP_TIMEOUT 1500
 
 int8_t timeZone = 1;
 int8_t minutesTimeZone = 0;
+const PROGMEM char *ntpServer = "pool.ntp.org";
 bool wifiFirstConnected = false;
 
 void onEvent (system_event_id_t event, system_event_info_t info) {
@@ -54,7 +57,7 @@ void onEvent (system_event_id_t event, system_event_info_t info) {
 
     switch (event) {
     case SYSTEM_EVENT_STA_CONNECTED:
-        Serial.printf ("Connected to %s\r\n", info.connected.ssid);
+        Serial.printf ("Connected to %s. Asking for IP address.\r\n", info.connected.ssid);
         break;
     case SYSTEM_EVENT_STA_GOT_IP:
         Serial.printf ("Got IP: %s\r\n", IPAddress (info.got_ip.ip_info.ip.addr).toString ().c_str ());
@@ -67,22 +70,25 @@ void onEvent (system_event_id_t event, system_event_info_t info) {
         Serial.printf ("Reason: %d\n", info.disconnected.reason);
         digitalWrite (ONBOARDLED, HIGH); // Turn off LED
         //NTP.stop(); // NTP sync can be disabled to avoid sync errors
+		WiFi.reconnect ();
         break;
-     default:
+    default:
         break;
     }
 }
 
 void processSyncEvent (NTPSyncEvent_t ntpEvent) {
-    if (ntpEvent) {
-        Serial.print ("Time Sync error: ");
+    if (ntpEvent < 0) {
+        Serial.printf ("Time Sync error %d:", ntpEvent);
         if (ntpEvent == noResponse)
             Serial.println ("NTP server not reachable");
         else if (ntpEvent == invalidAddress)
             Serial.println ("Invalid NTP server address");
-    } else {
+    } else if (!ntpEvent) {
         Serial.print ("Got NTP time: ");
         Serial.println (NTP.getTimeDateString (NTP.getLastNTPSync ()));
+    } else {
+        Serial.println ("NTP request Sent");
     }
 }
 
@@ -118,8 +124,9 @@ void loop () {
 
     if (wifiFirstConnected) {
         wifiFirstConnected = false;
-        NTP.begin ("pool.ntp.org", timeZone, true, minutesTimeZone);
         NTP.setInterval (63);
+        NTP.setNTPTimeout (NTP_TIMEOUT);
+        NTP.begin (ntpServer, timeZone, true, minutesTimeZone);
     }
 
     if (syncEventTriggered) {
@@ -127,7 +134,7 @@ void loop () {
         syncEventTriggered = false;
     }
 
-    if ((millis () - last) > 5100) {
+    if ((millis () - last) > SHOW_TIME_PERIOD) {
         //Serial.println(millis() - last);
         last = millis ();
         Serial.print (i); Serial.print (" ");
@@ -138,7 +145,7 @@ void loop () {
         Serial.print ("Uptime: ");
         Serial.print (NTP.getUptimeString ()); Serial.print (" since ");
         Serial.println (NTP.getTimeDateString (NTP.getFirstSync ()).c_str ());
-
+        Serial.printf ("Free heap: %u\n", ESP.getFreeHeap ());
         i++;
     }
     delay (0);

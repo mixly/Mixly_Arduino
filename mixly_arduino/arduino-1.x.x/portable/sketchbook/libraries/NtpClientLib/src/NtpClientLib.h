@@ -40,14 +40,15 @@ or implied, of German Martin
 
 //#define DEBUG_NTPCLIENT //Uncomment this to enable debug messages over serial port
 
-#ifdef ESP8266
-//extern "C" {
-//#include "user_interface.h"
-//#include "sntp.h"
-//}
+#if defined ESP8266 || defined ESP32
 #include <functional>
 using namespace std;
 using namespace placeholders;
+
+extern "C" {
+#include "lwip/err.h"
+#include "lwip/dns.h"
+}
 #endif
 
 #include <TimeLib.h>
@@ -66,11 +67,17 @@ using namespace placeholders;
 
 #define DEFAULT_NTP_SERVER "pool.ntp.org" // Default international NTP server. I recommend you to select a closer server to get better accuracy
 #define DEFAULT_NTP_PORT 123 // Default local udp port. Select a different one if neccesary (usually not needed)
-#define NTP_TIMEOUT 1500 // Response timeout for NTP requests
-#define DEFAULT_NTP_INTERVAL 1800 // Default sync interval 30 minutes 
+#define DEFAULT_NTP_INTERVAL 1800 // Default sync interval 30 minutes
 #define DEFAULT_NTP_SHORTINTERVAL 15 // Sync interval when sync has not been achieved. 15 seconds
 #define DEFAULT_NTP_TIMEZONE 0 // Select your local time offset. 0 if UTC time has to be used
+#define MIN_NTP_TIMEOUT 100 // Minumum admisible ntp timeout
 
+#define DST_ZONE_EU             (0)
+#define DST_ZONE_USA            (1)
+#define DST_ZONE_COUNT          (2)
+#define DEFAULT_DST_ZONE        DST_ZONE_EU
+
+#define SERVER_NAME_LENGTH 40
 const int NTP_PACKET_SIZE = 48; // NTP time is in the first 48 bytes of message
 
 #ifdef ARDUINO_ARCH_ESP8266
@@ -87,7 +94,7 @@ const int NTP_PACKET_SIZE = 48; // NTP time is in the first 48 bytes of message
 //#include <SPI.h>
 #include <EthernetUdp.h>
 #include <Ethernet.h>
-//#include <Dns.h>
+#include <Dns.h>
 //#include <Dhcp.h>
 #elif NETWORK_TYPE == NETWORK_WIFI101
 #include <WiFiClient.h>
@@ -95,21 +102,40 @@ const int NTP_PACKET_SIZE = 48; // NTP time is in the first 48 bytes of message
 #include <WiFi101.h>
 #elif NETWORK_TYPE == NETWORK_ESP8266
 #include <ESP8266WiFi.h>
-#include <WiFiUdp.h>
-#include <Udp.h>
+#include <ESPAsyncUDP.h>
+#include <Ticker.h>
 #elif NETWORK_TYPE == NETWORK_ESP32
 #include <WiFi.h>
-#include <WiFiUdp.h>
-#include <Udp.h>
+#include <AsyncUDP.h>
+#include <Ticker.h>
 #else
 #error "Incorrect platform. Only ARDUINO and ESP8266 MCUs are valid."
 #endif // NETWORK_TYPE
 
-typedef enum {
-    timeSyncd, // Time successfully got from NTP server
-    noResponse, // No response from server
-    invalidAddress // Address not reachable
+typedef enum NTPSyncEvent {
+    timeSyncd = 0, // Time successfully got from NTP server
+    noResponse = -1, // No response from server
+    invalidAddress = -2, // Address not reachable
+#if NETWORK_TYPE == NETWORK_ESP8266 || NETWORK_TYPE == NETWORK_ESP32
+    requestSent = 1, // NTP request sent, waiting for response
+    errorSending = -3, // An error happened while sending the request
+    responseError = -4, // Wrong response received
+#endif
 } NTPSyncEvent_t;
+
+#if NETWORK_TYPE == NETWORK_ESP8266 || NETWORK_TYPE == NETWORK_ESP32
+typedef enum NTPStatus {
+    syncd = 0, // Time synchronized correctly
+    unsyncd = -1, // Time may not be valid
+    ntpRequested = 1, // NTP request sent, waiting for response
+} NTPStatus_t; // Only for internal library use
+
+typedef enum DNSStatus {
+	idle = 0, // Idle state
+	dnsRequested = 1, // DNS resolution requested, waiting for response
+    dnsSolved = 2,
+} DNSStatus_t; // Only for internal library use//
+#endif
 
 #if defined ARDUINO_ARCH_ESP8266 || defined ARDUINO_ARCH_ESP32
 #include <functional>
@@ -126,6 +152,11 @@ public:
     NTPClient ();
 
     /**
+    * NTP client Class destructor
+    */
+    ~NTPClient ();
+    
+    /**
     * Starts time synchronization.
     * @param[in] NTP server name as String.
     * @param[in] Time offset from UTC.
@@ -136,8 +167,10 @@ public:
     */
 #if NETWORK_TYPE == NETWORK_W5100
     bool begin (String ntpServerName = DEFAULT_NTP_SERVER, int8_t timeOffset = DEFAULT_NTP_TIMEZONE, bool daylight = false, int8_t minutes = 0, EthernetUDP* udp_conn = NULL);
-#elif NETWORK_TYPE == NETWORK_ESP8266 || NETWORK_TYPE == NETWORK_WIFI101 || NETWORK_TYPE == NETWORK_ESP32
+#elif NETWORK_TYPE == NETWORK_WIFI101
     bool begin (String ntpServerName = DEFAULT_NTP_SERVER, int8_t timeOffset = DEFAULT_NTP_TIMEZONE, bool daylight = false, int8_t minutes = 0, WiFiUDP* udp_conn = NULL);
+#elif NETWORK_TYPE == NETWORK_ESP8266 || NETWORK_TYPE == NETWORK_ESP32
+    bool begin (String ntpServerName = DEFAULT_NTP_SERVER, int8_t timeOffset = DEFAULT_NTP_TIMEZONE, bool daylight = false, int8_t minutes = 0, AsyncUDP* udp_conn = NULL);
 #endif
 
     /**
@@ -165,6 +198,11 @@ public:
     * @param[out] NTP server name.
     */
     String getNtpServerName ();
+
+    /**
+    * Gets NTP server name in char array format
+    * @param[out] NTP server name.
+    */
     char* getNtpServerNamePtr ();
 
     /**
@@ -203,6 +241,19 @@ public:
     * @param[out] Minutes offset (plus or minus) added to hourly offset.
     */
     int8_t getTimeZoneMinutes ();
+
+    /**
+    * Sets DST zone.
+    * @param[in] New DST zone (DST_ZONE_EU || DST_ZONE_USA).
+    * @param[out] True if everything went ok.
+    */
+    bool setDSTZone (uint8_t dstZone);
+
+    /**
+    * Gets DST zone.
+    * @param[out] DST zone.
+    */
+    uint8_t getDSTZone ();
 
     /**
     * Stops time synchronization.
@@ -331,6 +382,18 @@ public:
     time_t getFirstSync ();
 
     /**
+    * Get configured response timeout for NTP requests.
+    * @param[out] NTP Timeout.
+    */
+    uint16_t getNTPTimeout ();
+
+    /**
+    * Configure response timeout for NTP requests.
+    * @param[out] error code. false if faulty.
+    */
+    boolean setNTPTimeout (uint16_t milliseconds);
+
+    /**
     * Set a callback that triggers after a sync trial.
     * @param[in] function with void(NTPSyncEvent_t) or std::function<void(NTPSyncEvent_t)> (only for ESP8266)
     *				NTPSyncEvent_t equals 0 is there is no error
@@ -362,19 +425,60 @@ protected:
 
 #if NETWORK_TYPE == NETWORK_W5100
     EthernetUDP *udp;
-#elif NETWORK_TYPE == NETWORK_ESP8266 || NETWORK_TYPE == NETWORK_WIFI101 || NETWORK_TYPE == NETWORK_ESP32
+#elif NETWORK_TYPE == NETWORK_WIFI101
     WiFiUDP *udp;
+#elif NETWORK_TYPE == NETWORK_ESP8266 || NETWORK_TYPE == NETWORK_ESP32
+    AsyncUDP *udp;              ///< UDP connection object
+    IPAddress ntpServerIPAddress;
 #endif
     bool _daylight;             ///< Does this time zone have daylight saving?
     int8_t _timeZone = 0;       ///< Keep track of set time zone offset
     int8_t _minutesOffset = 0;   ///< Minutes offset for time zones with decimal numbers
-    char* _ntpServerName;       ///< Name of NTP server on Internet or LAN
-    int _shortInterval;         ///< Interval to set periodic time sync until first synchronization.
-    int _longInterval;          ///< Interval to set periodic time sync
+    uint8_t _dstZone = DEFAULT_DST_ZONE; ///< Daylight save time zone
+    char _ntpServerName[SERVER_NAME_LENGTH];       ///< Name of NTP server on Internet or LAN
+    int _shortInterval = DEFAULT_NTP_SHORTINTERVAL;         ///< Interval to set periodic time sync until first synchronization.
+    int _longInterval = DEFAULT_NTP_INTERVAL;          ///< Interval to set periodic time sync
     time_t _lastSyncd = 0;      ///< Stored time of last successful sync
     time_t _firstSync = 0;      ///< Stored time of first successful sync after boot
     unsigned long _uptime = 0;  ///< Time since boot
+    uint16_t ntpTimeout = 1500; ///< Response timeout for NTP requests
     onSyncEvent_t onSyncEvent;  ///< Event handler callback
+
+#if NETWORK_TYPE == NETWORK_ESP8266 || NETWORK_TYPE == NETWORK_ESP32
+    NTPStatus_t status = unsyncd; ///< Sync status
+    DNSStatus_t dnsStatus = idle; ///< DNS request status
+    Ticker responseTimer;       ///< Timer to trigger response timeout
+    Ticker responseTimer2;       ///< Timer to trigger response timeout
+
+                                /**
+                                * Get packet response and update time as of its data
+                                * @param[in] UDP response packet.
+                                */
+    void processPacket (AsyncUDPPacket packet);
+
+    /**
+    * Send NTP request to server
+    * @param[in] UDP connection.
+    * @param[out] false in case of any error.
+    */
+    boolean sendNTPpacket (AsyncUDP *udp);
+
+    /**
+    * Process internal state in case of a response timeout. If a response comes later is is asumed as non valid.
+    */
+    void ICACHE_RAM_ATTR processRequestTimeout ();
+
+    /**
+    * Static method for Ticker argument.
+    */
+    static void ICACHE_RAM_ATTR s_processRequestTimeout (void* arg);
+
+    static void s_dnsFound (const char *name, const ip_addr_t *ipaddr, void *callback_arg);
+    void dnsFound (const ip_addr_t *ipaddr);
+    static void ICACHE_RAM_ATTR s_processDNSTimeout (void* arg);
+    void processDNSTimeout ();
+
+#endif
 
     /**
     * Function that gets time from NTP server and convert it to Unix time format
@@ -388,10 +492,11 @@ protected:
     * @param[in] Month.
     * @param[in] Day.
     * @param[in] Hour.
+    * @param[in] Weekday (1 for sunday).
     * @param[in] Time zone offset.
     * @param[out] true if date and time are inside summertime period.
     */
-    bool summertime (int year, byte month, byte day, byte hour, byte tzHours);
+    bool summertime (int year, byte month, byte day, byte hour, byte weekday, byte tzHours);
 
     /**
     * Helper function to add leading 0 to hour, minutes or seconds if < 10.
@@ -407,7 +512,7 @@ public:
     * @param[in] Pointer to message buffer.
     * @param[out] Decoded time from message, 0 if error ocurred.
     */
-    time_t decodeNtpMessage (char *messageBuffer);
+    time_t decodeNtpMessage (uint8_t *messageBuffer);
 
     /**
     * Set last successful synchronization time.

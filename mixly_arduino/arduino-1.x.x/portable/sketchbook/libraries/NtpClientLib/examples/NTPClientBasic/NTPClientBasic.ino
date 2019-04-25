@@ -28,14 +28,15 @@ CONSEQUENTIAL DAMAGES(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE G
 
 /*
  Name:		NtpClient.ino
- Created:	22/07/2018
+ Created:	04/01/2018
  Author:	gmag11@gmail.com
  Editor:	http://www.visualmicro.com
 */
 
 #include <TimeLib.h> //TimeLib library is needed https://github.com/PaulStoffregen/Time
 #include <NtpClientLib.h> //Include NtpClient library header
-#include <ESP8266WiFi.h>
+#include <ESP8266WiFi.h> // ESP8266
+// #include <WiFi.h> // ESP32
 
 #define YOUR_WIFI_SSID "YOUR_WIFI_SSID"
 #define YOUR_WIFI_PASSWD "YOUR_WIFI_PASSWD"
