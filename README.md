@@ -13,3 +13,6 @@ Replace "arduino-1.7.8/" with the path of your Arduino IDE.
 ![image](https://raw.githubusercontent.com/xbed/mixly_arduino/master/mixly_arduino/blockly/media/config.png)
 
 Step 3.Run Mixly.jar to start Mixly.
+
+# Mixly Wiki
+https://mixly.readthedocs.io
