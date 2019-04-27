@@ -1,4 +1,4 @@
-Python 编程
+MicroPython 编程
 ================
 
 .. toctree::

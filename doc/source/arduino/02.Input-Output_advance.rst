@@ -30,7 +30,6 @@
 
 利用中断，控制13号引脚的LED亮灭。
 
-.. image:: images/02/PCintPort_attachInterrupt-example.png
 
 注释
 +++++++++

@@ -254,6 +254,7 @@ HIGH 或 LOW
 利用2号引脚中断，控制13号引脚的LED亮灭。
 
 .. image:: images/02/interrupt-example.png
+	:width: 350pt
 
 .. code-block:: c
 	:linenos:

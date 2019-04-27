@@ -1,7 +1,67 @@
-文本
+文本(普通视图)
 ===============
 文本的具体内容为代码的文本输出功能，具体包括：文本连接、文本转数字、数字转文本。
 
-.. image:: images/05/text1.png
+.. image:: images/05/text.png
 
 所有文本内容可通过串口监视器或外接显示屏打印。
+
+字符串
+------------
+
+.. image:: images/05/string.png
+
+
+字符
+-------------
+
+.. image:: images/05/char.png
+
+
+字符串连接
+-------------
+
+.. image:: images/05/stringPlus.png
+
+
+字符串转数字
+--------------------
+
+.. image:: images/05/stringtonum.png
+
+转ASCII字符
+---------------
+
+.. image:: images/05/numtochar.png
+
+
+转ASCII数值
+--------------
+
+.. image:: images/05/toascii.png
+
+
+进制 转字符串
+--------------------
+
+.. image:: images/05/numtostring.png
+
+获取字符串长度
+---------------
+
+.. image:: images/05/stringlength.png
+
+获取字符串第N个字符
+-------------------
+.. image:: images/05/charat.png
+
+
+字符串比较1
+---------------
+
+.. image:: images/05/equals.png
+
+字符串比较2
+---------------
+
+.. image:: images/05/compare.png

@@ -1,0 +1,30 @@
+
+Email组件
+-----------------------
+
+.. image:: images/16/widget_email.png
+
+.. code-block:: c
+	:linenos:
+
+	#define BLYNK_MAX_SENDBYTES 128
+	void setup(){
+	}
+	void loop(){
+	  Blynk.email("example@blynk.cc", "Subject", "Content");
+	}
+
+描述
+++++++++++++++
+
+给指定邮箱发送邮件。
+
+参数
++++++++++++++++
+
+* 邮箱地址：收件人邮箱地址。
+* 邮件主题：设置邮件主题，可以加入变量值。
+* 邮件内容：设置邮件内容，可以加入变量值。
+
+范例
++++++++++++++++++++++
