@@ -49,7 +49,7 @@ var sm = {
     display: {
         set_pixel: function (x, y, brightness) {
             if (sm.snapshot['display'] == undefined) {
-                sm.snapshot['display'] = [[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0]];
+                sm.snapshot['display'] = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
             }
             sm.snapshot['display'][y][x] = brightness;
             sm.updateSnapshot();
@@ -65,7 +65,7 @@ var sm = {
                 nameArr = ['button_1'];
             }
             if (name == 'button_both') {
-                nameArr = ['button_0', 'button_1']; 
+                nameArr = ['button_0', 'button_1'];
             }
             for (var i = 0; i < nameArr.length; i ++){
                 sm.input[nameArr[i]].pressed = true;
