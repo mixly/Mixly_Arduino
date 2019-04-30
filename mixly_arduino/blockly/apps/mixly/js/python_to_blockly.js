@@ -2223,10 +2223,18 @@ PythonToBlocks.prototype.Tuple = function(node)
         // return with one block & comma seperated 
         var valueList = [];
         var s = this.getSourceCode(elts).split('\n')[node.lineno-1];
+        var lt = s.indexOf('(',elts[0].col_offset)
+        var rt = s.indexOf(')',elts[0].col_offset)
+        while (lt != -1 && lt < rt){
+            var lt = s.indexOf('(',lt+1)
+            var rt = s.indexOf(')',rt+1)
+        }        
         if (s.length > 0){
-            //s = s.substring(elts[0].col_offset,s.length-1);
-            s = s.substring(node.col_offset,s.length-1);
+            //s = s.substring(elts[0].col_offset,rt);
+            alert(s)
+            s = s.substring(node.col_offset,rt);
             valueList = s.split(",");
+            alert(valueList)
         }
         else
             valueList = "";
