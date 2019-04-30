@@ -2231,10 +2231,8 @@ PythonToBlocks.prototype.Tuple = function(node)
         }        
         if (s.length > 0){
             //s = s.substring(elts[0].col_offset,rt);
-            alert(s)
             s = s.substring(node.col_offset,rt);
             valueList = s.split(",");
-            alert(valueList)
         }
         else
             valueList = "";
