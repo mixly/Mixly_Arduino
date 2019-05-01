@@ -2510,3 +2510,68 @@ Blockly.MIXLY_HANBIT_SHOW_triangle = " vertex (x0 %1, y0 %2) (x1 %3, y1 %4) (x2 
 Blockly.MIXLY_HANBIT_DRAW_TRIANGLE = "triangle";
 
 Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = 'The value of the light sensor（0~255）'
+
+
+/* 掌控板_物联网 */
+Blockly.MPYTHON_BLYNK_TERMINAL_WIDGET_VPIN_HELPURL = '';
+Blockly.MPYTHON_BLYNK_TERMINAL_WIDGET_VPIN_MESSAGE0 = "custom terminal widget on virtual pin V %1";
+Blockly.MPYTHON_BLYNK_TERMINAL_WIDGET_VPIN_TOOLTIP = '';
+
+Blockly.MPYTHON_BLYNK_SYNC_VIRTUAL_HELPURL = '';
+Blockly.MPYTHON_BLYNK_SYNC_VIRTUAL_MESSAGE0 = "synchronizing the status of virtual pin V %1";
+Blockly.MPYTHON_BLYNK_SYNC_VIRTUAL_TOOLTIP = '';
+
+Blockly.MPYTHON_BLYNK_ON_DISCONNECTED_HELPURL = '';
+Blockly.MPYTHON_BLYNK_ON_DISCONNECTED_MESSAGE0 = "when Blynk disconnected";
+Blockly.MPYTHON_BLYNK_ON_DISCONNECTED_TOOLTIP = '';
+
+Blockly.MPYTHON_BLYNK_ON_CONNECTED_HELPURL = '';
+Blockly.MPYTHON_BLYNK_ON_CONNECTED_MESSAGE0 = "when Blynk connected";
+Blockly.MPYTHON_BLYNK_ON_CONNECTED_TOOLTIP = '';
+
+Blockly.MPYTHON_BLYNKTIMER_RUN_HELPURL = '';
+Blockly.MPYTHON_BLYNKTIMER_RUN_MESSAGE0 = "run the BlynkTimer processes";
+Blockly.MPYTHON_BLYNKTIMER_RUN_TOOLTIP = 'It is recommended to put this block in \'repeat forever\' block';
+
+Blockly.MPYTHON_BLYNK_RUN_HELPURL = '';
+Blockly.MPYTHON_BLYNK_RUN_MESSAGE0 = "run the Blynk processes";
+Blockly.MPYTHON_BLYNK_RUN_TOOLTIP = 'It is recommended to put this block in \'repeat forever\' block';
+
+Blockly.MPYTHON_BLYNK_APP_NOTIFY_HELPURL = '';
+Blockly.MPYTHON_BLYNK_APP_NOTIFY_MESSAGE0 = "Blynk APP notifies %1";
+Blockly.MPYTHON_BLYNK_APP_NOTIFY_TOOLTIP = '';
+
+Blockly.MPYTHON_BLYNKTIMER_HELPURL = '';
+Blockly.MPYTHON_BLYNKTIMER_MESSAGE0 = "BlynkTimer number %1 mode %2 period %3 seconds";
+Blockly.MPYTHON_BLYNKTIMER_TOOLTIP = 'Note:\nthe serial number of the timer is automatically obtained, from top to bottom, starting from 0 and continuous, don`t do this"timer 0, timer 2", the exposed serial number parameter is convenient to view here!\nParameter:\nno_timers_err=False - disable exception raise if all all timers were stopped';
+
+Blockly.MPYTHON_BLYNK_STOP_TIMERS_HELPURL = '';
+Blockly.MPYTHON_BLYNK_STOP_TIMERS_MESSAGE0 = 'stop Blynk timer %1';
+Blockly.MPYTHON_BLYNK_STOP_TIMERS_TOOLTIP =
+    'Note:\nthe serial number of the timer is automatically obtained, from top to bottom, starting from 0 and continuous, don`t do this"timer 0, timer 2", the exposed serial number parameter is convenient to view here!\nParameter:\nno_timers_err=False - disable exception raise if all all timers were stopped';
+
+
+Blockly.MPYTHON_BLYNK_SET_PROPERTY_HELPURL = '';
+Blockly.MPYTHON_BLYNK_SET_PROPERTY_MESSAGE0 = 'set property %1 and value %2 to virtual pin';
+Blockly.MPYTHON_BLYNK_SET_PROPERTY_TOOLTIP = "Placed in a read or write event, the virtual pin is determined by the event,the component bound to the pin will have the added property";
+
+
+Blockly.MPYTHON_BLYNK_EMAIL_HELPURL = '';
+Blockly.MPYTHON_BLYNK_EMAIL_MESSAGE0 = 'email to %1 with subject %2 body %3';
+Blockly.MPYTHON_BLYNK_EMAIL_TOOLTIP = "";
+
+Blockly.MPYTHON_BLYNK_GET_TIMERS_HELPURL = '';
+Blockly.MPYTHON_BLYNK_GET_TIMERS_MESSAGE0 = 'available Blynk timers';
+Blockly.MPYTHON_BLYNK_GET_TIMERS_TOOLTIP = "";
+
+Blockly.MPYTHON_BLYNK_SENSOR_DATA_TO_APP_HELPURL = '';
+Blockly.MPYTHON_BLYNK_SENSOR_DATA_TO_APP_MESSAGE0 = "send data %1 to Blynk APP's virtual pin V %2";
+Blockly.MPYTHON_BLYNK_SENSOR_DATA_TO_APP_TOOLTIP = 'virtual pin: V0 ~ V255';
+
+Blockly.MPYTHON_BLYNK_APP_DATA_HELPURL = '';
+Blockly.MPYTHON_BLYNK_APP_DATA_MESSAGE0 = 'when received value %2 of virtual pin V %1 from Blynk APP';
+Blockly.MPYTHON_BLYNK_APP_DATA_TOOLTIP = 'Virtual pin: V0 ~ V255';
+
+Blockly.MPYTHON_BLYNK_SETUP_HELPURL = '';
+Blockly.MPYTHON_BLYNK_SETUP_MESSAGE0 = 'Blynk Settings %1 server %2 port %3 authorization code %4';
+Blockly.MPYTHON_BLYNK_SETUP_TOOLTIP = 'The default server is blynk-cloud.com and the default port is 80';

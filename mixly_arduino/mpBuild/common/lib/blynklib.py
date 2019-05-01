@@ -25,11 +25,18 @@ except ImportError:
     ticks_ms = lambda: int(time.time() * 1000)
     sleep_ms = lambda x: time.sleep(x // 1000)
 
+# LOGO = """
+#         ___  __          __
+#        / _ )/ /_ _____  / /__
+#       / _  / / // / _ \\/  '_/
+#      /____/_/\\_, /_//_/_/\\_\\
+#             /___/ for Python v{}\n""".format(__version__)
+
 LOGO = """
         ___  __          __
        / _ )/ /_ _____  / /__
-      / _  / / // / _ \\/  '_/
-     /____/_/\\_, /_//_/_/\\_\\
+      / _  / / // / _ \\\\/  '_/
+     /____/_/\\\\_, /_//_/_/\\\\_\\\\
             /___/ for Python v{}\n""".format(__version__)
 
 

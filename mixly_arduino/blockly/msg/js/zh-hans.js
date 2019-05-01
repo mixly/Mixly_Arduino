@@ -2587,4 +2587,70 @@ Blockly.MixGo_MPU9250_MZ='z轴磁场';
 Blockly.MIXLY_HANBIT_SHOW_CIRCLE = " 圆心(x %1 ,y %2 ) 半径 %3 %4 填充 %5";
 Blockly.MIXLY_HANBIT_SHOW_triangle = " 顶点(x0 %1 ,y0 %2 ) (x1 %3 ,y1 %4 ) (x2 %5 ,y2 %6 ) %7 填充 %8";
 Blockly.MIXLY_HANBIT_DRAW_TRIANGLE = "三角形";
-Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = '返回光线传感器的值（0~255）'
+Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = '返回光线传感器的值（0~255）';
+
+
+/* 掌控板_物联网 */
+Blockly.MPYTHON_BLYNK_TERMINAL_WIDGET_VPIN_HELPURL = '';
+Blockly.MPYTHON_BLYNK_TERMINAL_WIDGET_VPIN_MESSAGE0 = '自定义终端部件 Terminal 虚拟管脚 V %1';
+Blockly.MPYTHON_BLYNK_TERMINAL_WIDGET_VPIN_TOOLTIP = '';
+
+Blockly.MPYTHON_BLYNK_SYNC_VIRTUAL_HELPURL = '';
+Blockly.MPYTHON_BLYNK_SYNC_VIRTUAL_MESSAGE0 = '同步虚拟管脚的状态 V %1';
+Blockly.MPYTHON_BLYNK_SYNC_VIRTUAL_TOOLTIP = '';
+
+Blockly.MPYTHON_BLYNK_ON_DISCONNECTED_HELPURL = '';
+Blockly.MPYTHON_BLYNK_ON_DISCONNECTED_MESSAGE0 = '当 Blynk 断开连接时';
+Blockly.MPYTHON_BLYNK_ON_DISCONNECTED_TOOLTIP = '';
+
+Blockly.MPYTHON_BLYNK_ON_CONNECTED_HELPURL = '';
+Blockly.MPYTHON_BLYNK_ON_CONNECTED_MESSAGE0 = '当 Blynk 连接时';
+Blockly.MPYTHON_BLYNK_ON_CONNECTED_TOOLTIP = '';
+
+Blockly.MPYTHON_BLYNKTIMER_RUN_HELPURL = '';
+Blockly.MPYTHON_BLYNKTIMER_RUN_MESSAGE0 = '运行 Blynk 定时器进程';
+Blockly.MPYTHON_BLYNKTIMER_RUN_TOOLTIP = '建议放在 \'一直重复\' 中循环执行';
+
+Blockly.MPYTHON_BLYNK_GET_TIMERS_HELPURL = '';
+Blockly.MPYTHON_BLYNK_GET_TIMERS_MESSAGE0 = '可用的 Blynk 定时器';
+Blockly.MPYTHON_BLYNK_GET_TIMERS_TOOLTIP = "";
+
+Blockly.MPYTHON_BLYNK_STOP_TIMERS_HELPURL = '';
+Blockly.MPYTHON_BLYNK_STOP_TIMERS_MESSAGE0 = '停止 Blynk 定时器 %1';
+Blockly.MPYTHON_BLYNK_STOP_TIMERS_TOOLTIP = 
+    '注意:\n定时器序号为自动获取，自上而下，从0开始且连续，不可"定时器0，定时器2"，此处暴露序号参数为方便查看！\n参数:\nno_timers_err=False-如果所有计时器都停止，禁用异常触发';
+
+	
+Blockly.MPYTHON_BLYNK_SET_PROPERTY_HELPURL = '';
+Blockly.MPYTHON_BLYNK_SET_PROPERTY_MESSAGE0 = '给虚拟管脚添加   属性 %1 值 %2';
+Blockly.MPYTHON_BLYNK_SET_PROPERTY_TOOLTIP = "放于 read 或 write 事件中，虚拟管脚由事件决定，与该管脚绑定的组件会拥有添加的属性";
+
+
+Blockly.MPYTHON_BLYNK_EMAIL_HELPURL = '';
+Blockly.MPYTHON_BLYNK_EMAIL_MESSAGE0 = '向 %1 发邮件 主题 %2 正文 %3';
+Blockly.MPYTHON_BLYNK_EMAIL_TOOLTIP = "";
+
+
+Blockly.MPYTHON_BLYNK_RUN_HELPURL = '';
+Blockly.MPYTHON_BLYNK_RUN_MESSAGE0 = '运行 Blynk 进程';
+Blockly.MPYTHON_BLYNK_RUN_TOOLTIP = '建议放在 \'一直重复\' 中循环执行';
+
+Blockly.MPYTHON_BLYNK_APP_NOTIFY_HELPURL = '';
+Blockly.MPYTHON_BLYNK_APP_NOTIFY_MESSAGE0 = 'Blynk APP 显示通知 %1';
+Blockly.MPYTHON_BLYNK_APP_NOTIFY_TOOLTIP = '';
+
+Blockly.MPYTHON_BLYNKTIMER_HELPURL = '';
+Blockly.MPYTHON_BLYNKTIMER_MESSAGE0 = 'Blynk 定时器 %1 %2 周期 %3 秒';
+Blockly.MPYTHON_BLYNKTIMER_TOOLTIP = '注意:\n定时器序号为自动获取，自上而下，从0开始且连续，不可"定时器0，定时器2"，此处暴露序号参数为方便查看！\n参数:\nno_timers_err=False-如果所有计时器都停止，禁用异常触发';
+
+Blockly.MPYTHON_BLYNK_SENSOR_DATA_TO_APP_HELPURL = '';
+Blockly.MPYTHON_BLYNK_SENSOR_DATA_TO_APP_MESSAGE0 = '发送数据 %1 到 Blynk APP 的 虚拟管脚 V %2';
+Blockly.MPYTHON_BLYNK_SENSOR_DATA_TO_APP_TOOLTIP = '虚拟管脚：V0 ~ V255';
+
+Blockly.MPYTHON_BLYNK_SETUP_HELPURL = '';
+Blockly.MPYTHON_BLYNK_SETUP_MESSAGE0 = 'Blynk 设置 %1 服务器 %2 端口 %3 授权码 %4';
+Blockly.MPYTHON_BLYNK_SETUP_TOOLTIP = '服务器默认为 blynk-cloud.com，端口默认为 80';
+
+Blockly.MPYTHON_BLYNK_APP_DATA_HELPURL = '';
+ Blockly.MPYTHON_BLYNK_APP_DATA_MESSAGE0 = '当 从 Blynk APP 收到 虚拟管脚 V %1 的值 %2';
+ Blockly.MPYTHON_BLYNK_APP_DATA_TOOLTIP = '虚拟管脚：V0 ~ V255';
