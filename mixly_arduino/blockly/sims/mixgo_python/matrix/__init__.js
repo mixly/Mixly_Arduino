@@ -50,7 +50,6 @@ var $builtinmodule = function(name) {
         var bf = new Object();
         bf._font_width = parseInt(fontbinArr[0].substring(0,2),16);
         bf._font_height = parseInt(fontbinArr[0].substring(2),16);
-        debugger;
         console.log(mod.data.width);
         bf._screen_width = mod.data.width;
         bf._screen_height = mod.data.height;
@@ -73,7 +72,6 @@ var $builtinmodule = function(name) {
             }
         };
         bf.text = function(text, x, y){
-            debugger;
             for(var i = 0; i < text.length; i++){
                 this.draw_char(text[i], x + (i * (this._font_width + 1)), y);
             }

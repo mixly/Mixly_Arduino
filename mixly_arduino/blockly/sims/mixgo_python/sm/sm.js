@@ -49,11 +49,14 @@ var sm = {
     display: {
         set_pixel: function (x, y, brightness) {
             if (sm.snapshot['display'] == undefined) {
-                sm.snapshot['display'] = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
+                sm.snapshot['display'] = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
             }
             sm.snapshot['display'][y][x] = brightness;
             sm.updateSnapshot();
         },
+        get_pixel: function(x,y){
+        	return sm.snapshot['display'][y][x];
+        }
     },
     button: {
         press: function (name, timeout) {
@@ -204,7 +207,20 @@ var sm = {
         changeBaudrate: function (baudrate) {
             sm.peer.baudrate = baudrate;
         }
-    }
+    },
+    bmp280: {
+    	set_BMP_temperature: function(k,v){
+  			sm.input['temperature'] = v;
+    	},
+    },
+    dhtx: {
+    	set_dhtx_temperature: function(v){
+  			sm.input['temperature'] = v;
+    	},
+    	set_dhtx_humdity: function(k,v){
+  			sm.input['humdity'] = v;
+    	}
+    },
 
 }
 

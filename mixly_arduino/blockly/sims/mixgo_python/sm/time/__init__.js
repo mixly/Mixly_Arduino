@@ -7,13 +7,15 @@ var $builtinmodule = function (name) {
     mod.sleep = new Sk.builtin.func(function(delay) {
         return sim.runAsync(function(resolve, reject) {
             setTimeout(function() {
+                sm.time += v * 1000;
                 resolve();
-            }, delay.v*1000);
+            }, delay.v * 1000);
         });
     });
     mod.sleep_ms = new Sk.builtin.func(function(delay) {
         return sim.runAsync(function(resolve, reject) {
             setTimeout(function() {
+                sm.time += v;
                 resolve();
             }, delay.v);
         });
@@ -21,13 +23,13 @@ var $builtinmodule = function (name) {
     mod.sleep_us = new Sk.builtin.func(function(delay) {
         return sim.runAsync(function(resolve, reject) {
             setTimeout(function() {
+                sm.time += v / 1000;
                 resolve();
-            }, delay.v/1000);
+            }, delay.v / 1000);
         });
     });
     mod.ticks_ms = new Sk.builtin.func(function() {
-        var now = new Date()
-        return now.getTime() - startTime.getTime();
+        return sm.time;
     });
     return mod;
 }
