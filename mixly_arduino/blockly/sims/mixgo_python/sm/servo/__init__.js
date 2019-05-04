@@ -12,6 +12,7 @@ var $builtinmodule = function (name) {
 		ui.updateServo(degree.v || 0);
 		mod._data.pin = pin.v;
 		mod._data.degree = degree.v;
+		sm.servo.write_angle(pin.v, degree.v);
 	}
 	servo_write_angle.co_varnames = ['pin','degree'];
 	servo_write_angle.$defaults = [Sk.builtin.int_(0),Sk.builtin.int_(0)];
