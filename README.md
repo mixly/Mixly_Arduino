@@ -16,3 +16,4 @@ Step 3.Run Mixly.jar to start Mixly.
 
 # Mixly Wiki
  [Mixly Wiki](https://mixly.readthedocs.io). 
+ 
