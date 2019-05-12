@@ -30,7 +30,7 @@ const uint16_t kHitachiAc1HdrSpace = 3400;
 const uint16_t kHitachiAcBitMark = 400;
 const uint16_t kHitachiAcOneSpace = 1250;
 const uint16_t kHitachiAcZeroSpace = 500;
-const uint32_t kHitachiAcMinGap = 100000;  // Completely made up value.
+const uint32_t kHitachiAcMinGap = kDefaultMessageGap;  // Just a guess.
 
 #if (SEND_HITACHI_AC || SEND_HITACHI_AC2)
 // Send a Hitachi A/C message.
@@ -106,7 +106,7 @@ void IRsend::sendHitachiAC2(unsigned char data[], uint16_t nbytes,
 }
 #endif  // SEND_HITACHI_AC2
 
-// Class for handling the remote control oh a Hitachi 28 byte A/C message.
+// Class for handling the remote control on a Hitachi 28 byte A/C message.
 // Inspired by:
 // https://github.com/ToniA/arduino-heatpumpir/blob/master/HitachiHeatpumpIR.cpp
 
@@ -257,6 +257,40 @@ void IRHitachiAc::setSwingHorizontal(const bool on) {
     remote_state[15] &= 0x7F;
 }
 
+
+// Convert a standard A/C mode into its native mode.
+uint8_t IRHitachiAc::convertMode(const stdAc::opmode_t mode) {
+  switch (mode) {
+    case stdAc::opmode_t::kCool:
+      return kHitachiAcCool;
+    case stdAc::opmode_t::kHeat:
+      return kHitachiAcHeat;
+    case stdAc::opmode_t::kDry:
+      return kHitachiAcDry;
+    case stdAc::opmode_t::kFan:
+      return kHitachiAcFan;
+    default:
+      return kHitachiAcAuto;
+  }
+}
+
+// Convert a standard A/C Fan speed into its native fan speed.
+uint8_t IRHitachiAc::convertFan(const stdAc::fanspeed_t speed) {
+  switch (speed) {
+    case stdAc::fanspeed_t::kMin:
+    case stdAc::fanspeed_t::kLow:
+      return kHitachiAcFanLow;
+    case stdAc::fanspeed_t::kMedium:
+      return kHitachiAcFanLow + 1;
+    case stdAc::fanspeed_t::kHigh:
+      return kHitachiAcFanHigh - 1;
+    case stdAc::fanspeed_t::kMax:
+      return kHitachiAcFanHigh;
+    default:
+      return kHitachiAcFanAuto;
+  }
+}
+
 // Convert the internal state into a human readable string.
 #ifdef ARDUINO
 String IRHitachiAc::toString() {
@@ -265,57 +299,60 @@ String IRHitachiAc::toString() {
 std::string IRHitachiAc::toString() {
   std::string result = "";
 #endif  // ARDUINO
-  result += "Power: ";
+  result += F("Power: ");
   if (getPower())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
-  result += ", Mode: " + uint64ToString(getMode());
+    result += F("Off");
+  result += F(", Mode: ");
+  result += uint64ToString(getMode());
   switch (getMode()) {
     case kHitachiAcAuto:
-      result += " (AUTO)";
+      result += F(" (AUTO)");
       break;
     case kHitachiAcCool:
-      result += " (COOL)";
+      result += F(" (COOL)");
       break;
     case kHitachiAcHeat:
-      result += " (HEAT)";
+      result += F(" (HEAT)");
       break;
     case kHitachiAcDry:
-      result += " (DRY)";
+      result += F(" (DRY)");
       break;
     case kHitachiAcFan:
-      result += " (FAN)";
+      result += F(" (FAN)");
       break;
     default:
-      result += " (UNKNOWN)";
+      result += F(" (UNKNOWN)");
   }
-  result += ", Temp: " + uint64ToString(getTemp()) + "C";
-  result += ", Fan: " + uint64ToString(getFan());
+  result += F(", Temp: ");
+  result += uint64ToString(getTemp());
+  result += F("C, Fan: ");
+  result += uint64ToString(getFan());
   switch (getFan()) {
     case kHitachiAcFanAuto:
-      result += " (AUTO)";
+      result += F(" (AUTO)");
       break;
     case kHitachiAcFanLow:
-      result += " (LOW)";
+      result += F(" (LOW)");
       break;
     case kHitachiAcFanHigh:
-      result += " (HIGH)";
+      result += F(" (HIGH)");
       break;
     default:
-      result += " (UNKNOWN)";
+      result += F(" (UNKNOWN)");
       break;
   }
-  result += ", Swing (Vertical): ";
+  result += F(", Swing (Vertical): ");
   if (getSwingVertical())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
-  result += ", Swing (Horizontal): ";
+    result += F("Off");
+  result += F(", Swing (Horizontal): ");
   if (getSwingHorizontal())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
+    result += F("Off");
   return result;
 }
 

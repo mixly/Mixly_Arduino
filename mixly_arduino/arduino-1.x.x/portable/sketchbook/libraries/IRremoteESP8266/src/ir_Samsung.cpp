@@ -1,5 +1,5 @@
 // Copyright 2009 Ken Shirriff
-// Copyright 2017 David Conran
+// Copyright 2017, 2018, 2019 David Conran
 
 #include "ir_Samsung.h"
 #include <algorithm>
@@ -168,6 +168,127 @@ bool IRrecv::decodeSAMSUNG(decode_results *results, uint16_t nbits,
 }
 #endif
 
+#if SEND_SAMSUNG36
+// Send a Samsung 36-bit formatted message.
+//
+// Args:
+//   data:   The message to be sent.
+//   nbits:  The bit size of the message being sent. typically kSamsung36Bits.
+//   repeat: The number of times the message is to be repeated.
+//
+// Status: Alpha / Experimental.
+//
+// Note:
+//   Protocol is used by Samsung Bluray Remote: ak59-00167a
+//
+// Ref:
+//   https://github.com/markszabo/IRremoteESP8266/issues/621
+void IRsend::sendSamsung36(const uint64_t data, const uint16_t nbits,
+                           const uint16_t repeat) {
+  if (nbits < 16) return;  // To small to send.
+  for (uint16_t r = 0; r <= repeat; r++) {
+    // Block #1 (16 bits)
+    sendGeneric(kSamsungHdrMark, kSamsungHdrSpace,
+                kSamsungBitMark, kSamsungOneSpace,
+                kSamsungBitMark, kSamsungZeroSpace,
+                kSamsungBitMark, kSamsungHdrSpace,
+                data >> (nbits - 16), 16, 38, true, 0, kDutyDefault);
+    // Block #2 (The rest, typically 20 bits)
+    sendGeneric(0, 0,  // No header
+                kSamsungBitMark, kSamsungOneSpace,
+                kSamsungBitMark, kSamsungZeroSpace,
+                kSamsungBitMark, kSamsungMinGap,  // Gap is just a guess.
+                // Mask off the rest of the bits.
+                data & ((1ULL << (nbits - 16)) - 1),
+                nbits - 16, 38, true, 0, kDutyDefault);
+  }
+}
+#endif  // SEND_SAMSUNG36
+
+#if DECODE_SAMSUNG36
+// Decode the supplied Samsung36 message.
+//
+// Args:
+//   results: Ptr to the data to decode and where to store the decode result.
+//   nbits:   Nr. of bits to expect in the data portion.
+//            Typically kSamsung36Bits.
+//   strict:  Flag to indicate if we strictly adhere to the specification.
+// Returns:
+//   boolean: True if it can decode it, false if it can't.
+//
+// Status: Alpha / Experimental
+//
+// Note:
+//   Protocol is used by Samsung Bluray Remote: ak59-00167a
+//
+// Ref:
+//   https://github.com/markszabo/IRremoteESP8266/issues/621
+bool IRrecv::decodeSamsung36(decode_results *results, const uint16_t nbits,
+                             const bool strict) {
+  if (results->rawlen < 2 * nbits + kHeader + kFooter * 2 - 1)
+    return false;  // Can't possibly be a valid Samsung message.
+  // We need to be looking for > 16 bits to make sense.
+  if (nbits <= 16) return false;
+  if (strict && nbits != kSamsung36Bits)
+    return false;  // We expect nbits to be 36 bits of message.
+
+  uint64_t data = 0;
+  uint16_t offset = kStartOffset;
+
+  // Header
+  if (!matchMark(results->rawbuf[offset], kSamsungHdrMark)) return false;
+  // Calculate how long the common tick time is based on the header mark.
+  uint32_t m_tick = results->rawbuf[offset++] * kRawTick / kSamsungHdrMarkTicks;
+  if (!matchSpace(results->rawbuf[offset], kSamsungHdrSpace)) return false;
+  // Calculate how long the common tick time is based on the header space.
+  uint32_t s_tick =
+      results->rawbuf[offset++] * kRawTick / kSamsungHdrSpaceTicks;
+  // Data (Block #1)
+  match_result_t data_result =
+      matchData(&(results->rawbuf[offset]), 16,
+                kSamsungBitMarkTicks * m_tick, kSamsungOneSpaceTicks * s_tick,
+                kSamsungBitMarkTicks * m_tick, kSamsungZeroSpaceTicks * s_tick);
+  if (data_result.success == false) return false;
+  data = data_result.data;
+  offset += data_result.used;
+  uint16_t bitsSoFar = data_result.used / 2;
+  // Footer (Block #1)
+  if (!matchMark(results->rawbuf[offset++], kSamsungBitMarkTicks * m_tick))
+    return false;
+  if (!matchSpace(results->rawbuf[offset++], kSamsungHdrSpaceTicks * s_tick))
+    return false;
+  // Data (Block #2)
+  data_result = matchData(&(results->rawbuf[offset]),
+                          nbits - 16,
+                          kSamsungBitMarkTicks * m_tick,
+                          kSamsungOneSpaceTicks * s_tick,
+                          kSamsungBitMarkTicks * m_tick,
+                          kSamsungZeroSpaceTicks * s_tick);
+  if (data_result.success == false) return false;
+  data <<= (nbits - 16);
+  data += data_result.data;
+  offset += data_result.used;
+  bitsSoFar += data_result.used / 2;
+  // Footer (Block #2)
+  if (!matchMark(results->rawbuf[offset++], kSamsungBitMarkTicks * m_tick))
+    return false;
+  if (offset < results->rawlen &&
+      !matchAtLeast(results->rawbuf[offset], kSamsungMinGapTicks * s_tick))
+    return false;
+
+  // Compliance
+  if (nbits != bitsSoFar) return false;
+
+  // Success
+  results->bits = bitsSoFar;
+  results->value = data;
+  results->decode_type = SAMSUNG36;
+  results->command = data & ((1ULL << (nbits - 16)) - 1);
+  results->address = data >> (nbits - 16);
+  return true;
+}
+#endif  // DECODE_SAMSUNG36
+
 #if SEND_SAMSUNG_AC
 // Send a Samsung A/C message.
 //
@@ -180,7 +301,8 @@ bool IRrecv::decodeSAMSUNG(decode_results *results, uint16_t nbits,
 //
 // Ref:
 //   https://github.com/markszabo/IRremoteESP8266/issues/505
-void IRsend::sendSamsungAC(uint8_t data[], uint16_t nbytes, uint16_t repeat) {
+void IRsend::sendSamsungAC(const uint8_t data[], const uint16_t nbytes,
+                           const uint16_t repeat) {
   if (nbytes < kSamsungAcStateLength && nbytes % kSamsungACSectionLength)
     return;  // Not an appropriate number of bytes to send a proper message.
 
@@ -264,9 +386,7 @@ void IRSamsungAc::send(const uint16_t repeat, const bool calcchecksum) {
   if (calcchecksum) checksum();
   _irsend.sendSamsungAC(remote_state, kSamsungAcStateLength, repeat);
 }
-#endif  // SEND_SAMSUNG_AC
 
-#if SEND_SAMSUNG_AC
 // Use this for when you need to power on/off the device.
 // Samsung A/C requires an extended length message when you want to
 // change the power operating mode of the A/C unit.
@@ -284,6 +404,28 @@ void IRSamsungAc::sendExtended(const uint16_t repeat, const bool calcchecksum) {
   // extended_state[8] seems special. This is a guess on how to calculate it.
   extended_state[8] = (extended_state[1] & 0x9F) | 0x40;
   // Send it.
+  _irsend.sendSamsungAC(extended_state, kSamsungAcExtendedStateLength, repeat);
+}
+
+// Send the special extended "On" message as the library can't seem to reproduce
+// this message automatically.
+// See: https://github.com/markszabo/IRremoteESP8266/issues/604#issuecomment-475020036
+void IRSamsungAc::sendOn(const uint16_t repeat) {
+  const uint8_t extended_state[21] = {
+      0x02, 0x92, 0x0F, 0x00, 0x00, 0x00, 0xF0,
+      0x01, 0xD2, 0x0F, 0x00, 0x00, 0x00, 0x00,
+      0x01, 0xE2, 0xFE, 0x71, 0x80, 0x11, 0xF0};
+  _irsend.sendSamsungAC(extended_state, kSamsungAcExtendedStateLength, repeat);
+}
+
+// Send the special extended "Off" message as the library can't seem to
+// reproduce this message automatically.
+// See: https://github.com/markszabo/IRremoteESP8266/issues/604#issuecomment-475020036
+void IRSamsungAc::sendOff(const uint16_t repeat) {
+  const uint8_t extended_state[21] = {
+      0x02, 0xB2, 0x0F, 0x00, 0x00, 0x00, 0xC0,
+      0x01, 0xD2, 0x0F, 0x00, 0x00, 0x00, 0x00,
+      0x01, 0x02, 0xFF, 0x71, 0x80, 0x11, 0xC0};
   _irsend.sendSamsungAC(extended_state, kSamsungAcExtendedStateLength, repeat);
 }
 #endif  // SEND_SAMSUNG_AC
@@ -435,6 +577,39 @@ void IRSamsungAc::setQuiet(const bool state) {
   }
 }
 
+// Convert a standard A/C mode into its native mode.
+uint8_t IRSamsungAc::convertMode(const stdAc::opmode_t mode) {
+  switch (mode) {
+    case stdAc::opmode_t::kCool:
+      return kSamsungAcCool;
+    case stdAc::opmode_t::kHeat:
+      return kSamsungAcHeat;
+    case stdAc::opmode_t::kDry:
+      return kSamsungAcDry;
+    case stdAc::opmode_t::kFan:
+      return kSamsungAcFan;
+    default:
+      return kSamsungAcAuto;
+  }
+}
+
+// Convert a standard A/C Fan speed into its native fan speed.
+uint8_t IRSamsungAc::convertFan(const stdAc::fanspeed_t speed) {
+  switch (speed) {
+    case stdAc::fanspeed_t::kMin:
+    case stdAc::fanspeed_t::kLow:
+      return kSamsungAcFanLow;
+    case stdAc::fanspeed_t::kMedium:
+      return kSamsungAcFanMed;
+    case stdAc::fanspeed_t::kHigh:
+      return kSamsungAcFanHigh;
+    case stdAc::fanspeed_t::kMax:
+      return kSamsungAcFanTurbo;
+    default:
+      return kSamsungAcFanAuto;
+  }
+}
+
 // Convert the internal state into a human readable string.
 #ifdef ARDUINO
 String IRSamsungAc::toString() {
@@ -443,74 +618,77 @@ String IRSamsungAc::toString() {
 std::string IRSamsungAc::toString() {
   std::string result = "";
 #endif  // ARDUINO
-  result += "Power: ";
+  result += F("Power: ");
   if (getPower())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
-  result += ", Mode: " + uint64ToString(getMode());
+    result += F("Off");
+  result += F(", Mode: ");
+  result += uint64ToString(getMode());
   switch (getMode()) {
     case kSamsungAcAuto:
-      result += " (AUTO)";
+      result += F(" (AUTO)");
       break;
     case kSamsungAcCool:
-      result += " (COOL)";
+      result += F(" (COOL)");
       break;
     case kSamsungAcHeat:
-      result += " (HEAT)";
+      result += F(" (HEAT)");
       break;
     case kSamsungAcDry:
-      result += " (DRY)";
+      result += F(" (DRY)");
       break;
     case kSamsungAcFan:
-      result += " (FAN)";
+      result += F(" (FAN)");
       break;
     default:
-      result += " (UNKNOWN)";
+      result += F(" (UNKNOWN)");
   }
-  result += ", Temp: " + uint64ToString(getTemp()) + "C";
-  result += ", Fan: " + uint64ToString(getFan());
+  result += F(", Temp: ");
+  result += uint64ToString(getTemp());
+  result += F("C, Fan: ");
+  result += uint64ToString(getFan());
   switch (getFan()) {
     case kSamsungAcFanAuto:
     case kSamsungAcFanAuto2:
-      result += " (AUTO)";
+      result += F(" (AUTO)");
       break;
     case kSamsungAcFanLow:
-      result += " (LOW)";
+      result += F(" (LOW)");
       break;
     case kSamsungAcFanMed:
-      result += " (MED)";
+      result += F(" (MED)");
       break;
     case kSamsungAcFanHigh:
-      result += " (HIGH)";
+      result += F(" (HIGH)");
       break;
     case kSamsungAcFanTurbo:
-      result += " (TURBO)";
+      result += F(" (TURBO)");
       break;
     default:
-      result += " (UNKNOWN)";
+      result += F(" (UNKNOWN)");
       break;
   }
-  result += ", Swing: ";
+  result += F(", Swing: ");
   if (getSwing())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
-  result += ", Beep: ";
+    result += F("Off");
+  result += F(", Beep: ");
   if (getBeep())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
-  result += ", Clean: ";
+    result += F("Off");
+  result += F(", Clean: ");
   if (getBeep())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
-  result += ", Quiet: ";
+    result += F("Off");
+  result += F(", Quiet: ");
   if (getQuiet())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
+    result += F("Off");
   return result;
 }
 

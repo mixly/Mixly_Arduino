@@ -27,7 +27,7 @@
 // Constants
 // Ref: https://github.com/ToniA/arduino-heatpumpir/blob/master/GreeHeatpumpIR.h
 const uint16_t kGreeHdrMark = 9000;
-const uint16_t kGreeHdrSpace = 4000;
+const uint16_t kGreeHdrSpace = 4500;  // See #684 and real example in unit tests
 const uint16_t kGreeBitMark = 620;
 const uint16_t kGreeOneSpace = 1600;
 const uint16_t kGreeZeroSpace = 540;
@@ -59,7 +59,7 @@ void IRsend::sendGree(unsigned char data[], uint16_t nbytes, uint16_t repeat) {
     // Footer #1
     sendGeneric(0, 0,  // No Header
                 kGreeBitMark, kGreeOneSpace, kGreeBitMark, kGreeZeroSpace,
-                kGreeBitMark, kGreeMsgSpace, 0b010, 3, 38, true, 0, false);
+                kGreeBitMark, kGreeMsgSpace, 0b010, 3, 38, false, 0, 50);
 
     // Block #2
     sendGeneric(0, 0,  // No Header for Block #2
@@ -305,6 +305,57 @@ uint8_t IRGreeAC::getSwingVerticalPosition() {
   return remote_state[4] & kGreeSwingPosMask;
 }
 
+
+// Convert a standard A/C mode into its native mode.
+uint8_t IRGreeAC::convertMode(const stdAc::opmode_t mode) {
+  switch (mode) {
+    case stdAc::opmode_t::kCool:
+      return kGreeCool;
+    case stdAc::opmode_t::kHeat:
+      return kGreeHeat;
+    case stdAc::opmode_t::kDry:
+      return kGreeDry;
+    case stdAc::opmode_t::kFan:
+      return kGreeFan;
+    default:
+      return kGreeAuto;
+  }
+}
+
+// Convert a standard A/C Fan speed into its native fan speed.
+uint8_t IRGreeAC::convertFan(const stdAc::fanspeed_t speed) {
+  switch (speed) {
+    case stdAc::fanspeed_t::kMin:
+      return kGreeFanMin;
+    case stdAc::fanspeed_t::kLow:
+    case stdAc::fanspeed_t::kMedium:
+      return kGreeFanMax - 1;
+    case stdAc::fanspeed_t::kHigh:
+    case stdAc::fanspeed_t::kMax:
+      return kGreeFanMax;
+    default:
+      return kGreeFanAuto;
+  }
+}
+
+// Convert a standard A/C Vertical Swing into its native version.
+uint8_t IRGreeAC::convertSwingV(const stdAc::swingv_t swingv) {
+  switch (swingv) {
+    case stdAc::swingv_t::kHighest:
+      return kGreeSwingUp;
+    case stdAc::swingv_t::kHigh:
+      return kGreeSwingMiddleUp;
+    case stdAc::swingv_t::kMiddle:
+      return kGreeSwingMiddle;
+    case stdAc::swingv_t::kLow:
+      return kGreeSwingMiddleDown;
+    case stdAc::swingv_t::kLowest:
+      return kGreeSwingDown;
+    default:
+      return kGreeSwingAuto;
+  }
+}
+
 // Convert the internal state into a human readable string.
 #ifdef ARDUINO
 String IRGreeAC::toString() {
@@ -313,74 +364,77 @@ String IRGreeAC::toString() {
 std::string IRGreeAC::toString() {
   std::string result = "";
 #endif  // ARDUINO
-  result += "Power: ";
+  result += F("Power: ");
   if (getPower())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
-  result += ", Mode: " + uint64ToString(getMode());
+    result += F("Off");
+  result += F(", Mode: ");
+  result += uint64ToString(getMode());
   switch (getMode()) {
     case kGreeAuto:
-      result += " (AUTO)";
+      result += F(" (AUTO)");
       break;
     case kGreeCool:
-      result += " (COOL)";
+      result += F(" (COOL)");
       break;
     case kGreeHeat:
-      result += " (HEAT)";
+      result += F(" (HEAT)");
       break;
     case kGreeDry:
-      result += " (DRY)";
+      result += F(" (DRY)");
       break;
     case kGreeFan:
-      result += " (FAN)";
+      result += F(" (FAN)");
       break;
     default:
-      result += " (UNKNOWN)";
+      result += F(" (UNKNOWN)");
   }
-  result += ", Temp: " + uint64ToString(getTemp()) + "C";
-  result += ", Fan: " + uint64ToString(getFan());
+  result += F(", Temp: ");
+  result += uint64ToString(getTemp());
+  result += F("C, Fan: ");
+  result += uint64ToString(getFan());
   switch (getFan()) {
     case 0:
-      result += " (AUTO)";
+      result += F(" (AUTO)");
       break;
     case kGreeFanMax:
-      result += " (MAX)";
+      result += F(" (MAX)");
       break;
   }
-  result += ", Turbo: ";
+  result += F(", Turbo: ");
   if (getTurbo())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
-  result += ", XFan: ";
+    result += F("Off");
+  result += F(", XFan: ");
   if (getXFan())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
-  result += ", Light: ";
+    result += F("Off");
+  result += F(", Light: ");
   if (getLight())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
-  result += ", Sleep: ";
+    result += F("Off");
+  result += F(", Sleep: ");
   if (getSleep())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
-  result += ", Swing Vertical Mode: ";
+    result += F("Off");
+  result += F(", Swing Vertical Mode: ");
   if (getSwingVerticalAuto())
-    result += "Auto";
+    result += F("Auto");
   else
-    result += "Manual";
-  result +=
-      ", Swing Vertical Pos: " + uint64ToString(getSwingVerticalPosition());
+    result += F("Manual");
+  result += F(", Swing Vertical Pos: ");
+  result += uint64ToString(getSwingVerticalPosition());
   switch (getSwingVerticalPosition()) {
     case kGreeSwingLastPos:
-      result += " (Last Pos)";
+      result += F(" (Last Pos)");
       break;
     case kGreeSwingAuto:
-      result += " (Auto)";
+      result += F(" (Auto)");
       break;
   }
   return result;

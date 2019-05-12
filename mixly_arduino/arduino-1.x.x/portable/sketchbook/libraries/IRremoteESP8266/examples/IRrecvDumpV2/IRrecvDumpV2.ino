@@ -35,8 +35,11 @@
 #include <ir_Kelvinator.h>
 #include <ir_Midea.h>
 #include <ir_Mitsubishi.h>
+#include <ir_MitsubishiHeavy.h>
 #include <ir_Panasonic.h>
 #include <ir_Samsung.h>
+#include <ir_Tcl.h>
+#include <ir_Teco.h>
 #include <ir_Toshiba.h>
 #include <ir_Vestel.h>
 #include <ir_Whirlpool.h>
@@ -131,6 +134,13 @@ void dumpACInfo(decode_results *results) {
     description = ac.toString();
   }
 #endif  // DECODE_DAIKIN2
+#if DECODE_DAIKIN216
+  if (results->decode_type == DAIKIN216) {
+    IRDaikin216 ac(0);
+    ac.setRaw(results->state);
+    description = ac.toString();
+  }
+#endif  // DECODE_DAIKIN216
 #if DECODE_FUJITSU_AC
   if (results->decode_type == FUJITSU_AC) {
     IRFujitsuAC ac(0);
@@ -152,6 +162,18 @@ void dumpACInfo(decode_results *results) {
     description = ac.toString();
   }
 #endif  // DECODE_MITSUBISHI_AC
+#if DECODE_MITSUBISHIHEAVY
+  if (results->decode_type == MITSUBISHI_HEAVY_88) {
+    IRMitsubishiHeavy88Ac ac(0);
+    ac.setRaw(results->state);
+    description = ac.toString();
+  }
+  if (results->decode_type == MITSUBISHI_HEAVY_152) {
+    IRMitsubishiHeavy152Ac ac(0);
+    ac.setRaw(results->state);
+    description = ac.toString();
+  }
+#endif  // DECODE_MITSUBISHIHEAVY
 #if DECODE_TOSHIBA_AC
   if (results->decode_type == TOSHIBA_AC) {
     IRToshibaAC ac(0);
@@ -225,11 +247,25 @@ void dumpACInfo(decode_results *results) {
 #endif  // DECODE_WHIRLPOOL_AC
 #if DECODE_VESTEL_AC
   if (results->decode_type == VESTEL_AC) {
-    IRVestelAC ac(0);
+    IRVestelAc ac(0);
     ac.setRaw(results->value);  // Like Coolix, use value instead of state.
     description = ac.toString();
   }
 #endif  // DECODE_VESTEL_AC
+#if DECODE_TECO
+  if (results->decode_type == TECO) {
+    IRTecoAc ac(0);
+    ac.setRaw(results->value);  // Like Coolix, use value instead of state.
+    description = ac.toString();
+  }
+#endif  // DECODE_TECO
+#if DECODE_TCL112AC
+  if (results->decode_type == TCL112AC) {
+    IRTcl112Ac ac(0);
+    ac.setRaw(results->state);
+    description = ac.toString();
+  }
+#endif  // DECODE_TCL112AC
   // If we got a human-readable description of the message, display it.
   if (description != "") Serial.println("Mesg Desc.: " + description);
 }

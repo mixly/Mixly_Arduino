@@ -165,7 +165,7 @@ bool IRrecv::decodeMitsubishi(decode_results *results, uint16_t nbits,
 //   This protocol appears to have a manditory in-protocol repeat.
 //   That is in *addition* to the entire message needing to be sent twice
 //   for the device to accept the command. That is separate from the repeat.
-//   i.e. Allegedly, the real remote requires the "OFF" button pressed twice.
+//   i.e. Allegedly, the real remote requires the "Off" button pressed twice.
 //        You will need to add a suitable gap yourself.
 // Ref:
 //   https://github.com/markszabo/IRremoteESP8266/issues/441
@@ -615,6 +615,52 @@ void IRMitsubishiAC::setTimer(uint8_t timer) {
   remote_state[13] = timer & 0b111;
 }
 
+// Convert a standard A/C mode into its native mode.
+uint8_t IRMitsubishiAC::convertMode(const stdAc::opmode_t mode) {
+  switch (mode) {
+    case stdAc::opmode_t::kCool:
+      return kMitsubishiAcCool;
+    case stdAc::opmode_t::kHeat:
+      return kMitsubishiAcHeat;
+    case stdAc::opmode_t::kDry:
+      return kMitsubishiAcDry;
+    default:
+      return kMitsubishiAcAuto;
+  }
+}
+
+// Convert a standard A/C Fan speed into its native fan speed.
+uint8_t IRMitsubishiAC::convertFan(const stdAc::fanspeed_t speed) {
+  switch (speed) {
+    case stdAc::fanspeed_t::kMin:
+      return kMitsubishiAcFanSilent;
+    case stdAc::fanspeed_t::kLow:
+      return kMitsubishiAcFanRealMax - 3;
+    case stdAc::fanspeed_t::kMedium:
+      return kMitsubishiAcFanRealMax - 2;
+    case stdAc::fanspeed_t::kHigh:
+      return kMitsubishiAcFanRealMax - 1;
+    case stdAc::fanspeed_t::kMax:
+      return kMitsubishiAcFanRealMax;
+    default:
+      return kMitsubishiAcFanAuto;
+  }
+}
+
+// Convert a standard A/C vertical swing into its native setting.
+uint8_t IRMitsubishiAC::convertSwingV(const stdAc::swingv_t position) {
+  switch (position) {
+    case stdAc::swingv_t::kHighest:
+    case stdAc::swingv_t::kHigh:
+    case stdAc::swingv_t::kMiddle:
+    case stdAc::swingv_t::kLow:
+    case stdAc::swingv_t::kLowest:
+      return kMitsubishiAcVaneAutoMove;
+    default:
+      return kMitsubishiAcVaneAuto;
+  }
+}
+
 #ifdef ARDUINO
 String IRMitsubishiAC::timeToString(uint64_t time) {
   String result = "";
@@ -622,10 +668,10 @@ String IRMitsubishiAC::timeToString(uint64_t time) {
 std::string IRMitsubishiAC::timeToString(uint64_t time) {
   std::string result = "";
 #endif  // ARDUINO
-  if (time / 6 < 10) result += "0";
+  if (time / 6 < 10) result += '0';
   result += uint64ToString(time / 6);
-  result += ":";
-  if (time * 10 % 60 < 10) result += "0";
+  result += ':';
+  if (time * 10 % 60 < 10) result += '0';
   result += uint64ToString(time * 10 % 60);
   return result;
 }
@@ -638,77 +684,78 @@ String IRMitsubishiAC::toString() {
 std::string IRMitsubishiAC::toString() {
   std::string result = "";
 #endif  // ARDUINO
-  result += "Power: ";
+  result += F("Power: ");
   if (getPower())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
+    result += F("Off");
   switch (getMode()) {
     case MITSUBISHI_AC_AUTO:
-      result += " (AUTO)";
+      result += F(" (AUTO)");
       break;
     case MITSUBISHI_AC_COOL:
-      result += " (COOL)";
+      result += F(" (COOL)");
       break;
     case MITSUBISHI_AC_DRY:
-      result += " (DRY)";
+      result += F(" (DRY)");
       break;
     case MITSUBISHI_AC_HEAT:
-      result += " (HEAT)";
+      result += F(" (HEAT)");
       break;
     default:
-      result += " (UNKNOWN)";
+      result += F(" (UNKNOWN)");
   }
-  result += ", Temp: " + uint64ToString(getTemp()) + "C";
-  result += ", FAN: ";
+  result += F(", Temp: ");
+  result += uint64ToString(getTemp());
+  result += F("C, FAN: ");
   switch (getFan()) {
     case MITSUBISHI_AC_FAN_AUTO:
-      result += "AUTO";
+      result += F("AUTO");
       break;
     case MITSUBISHI_AC_FAN_MAX:
-      result += "MAX";
+      result += F("MAX");
       break;
     case MITSUBISHI_AC_FAN_SILENT:
-      result += "SILENT";
+      result += F("SILENT");
       break;
     default:
       result += uint64ToString(getFan());
   }
-  result += ", VANE: ";
+  result += F(", VANE: ");
   switch (getVane()) {
     case MITSUBISHI_AC_VANE_AUTO:
-      result += "AUTO";
+      result += F("AUTO");
       break;
     case MITSUBISHI_AC_VANE_AUTO_MOVE:
-      result += "AUTO MOVE";
+      result += F("AUTO MOVE");
       break;
     default:
       result += uint64ToString(getVane());
   }
-  result += ", Time: ";
+  result += F(", Time: ");
   result += timeToString(getClock());
-  result += ", On timer: ";
+  result += F(", On timer: ");
   result += timeToString(getStartClock());
-  result += ", Off timer: ";
+  result += F(", Off timer: ");
   result += timeToString(getStopClock());
-  result += ", Timer: ";
+  result += F(", Timer: ");
   switch (getTimer()) {
     case kMitsubishiAcNoTimer:
-      result += "-";
+      result += '-';
       break;
     case kMitsubishiAcStartTimer:
-      result += "Start";
+      result += F("Start");
       break;
     case kMitsubishiAcStopTimer:
-      result += "Stop";
+      result += F("Stop");
       break;
     case kMitsubishiAcStartStopTimer:
-      result += "Start+Stop";
+      result += F("Start+Stop");
       break;
     default:
-      result += "? (";
+      result += F("? (");
       result += getTimer();
-      result += ")\n";
+      result += F(")\n");
   }
   return result;
 }

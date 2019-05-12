@@ -1,10 +1,20 @@
 {
   "name": "NtpClientLib",
   "frameworks": "arduino",
-  "version": "3.0.0-beta",
+  "version": "3.0.1-beta",
   "keywords": "time, date, hour, minute, second, day, week, month, year, RTC, NTP",
   "platforms": ["atmelavr", "atmelsam", "espressif32", "espressif8266"],
   "description": "Library to get system sync from a NTP server",
+  "dependencies" :
+    [{
+	  "name": "Time",
+	  "authors": "Paul Stoffregen",
+	  "version": "^5.10"
+	},
+	{
+	  "name": "ESPAsyncUDP",
+	  "authors": "Hristo Gochkov"
+	}],
   "url": "https://github.com/gmag11/NtpClient",
   "authors":
     {

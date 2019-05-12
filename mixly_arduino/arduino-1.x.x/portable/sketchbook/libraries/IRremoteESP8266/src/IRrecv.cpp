@@ -364,6 +364,10 @@ bool IRrecv::decode(decode_results *results, irparams_t *save) {
   DPRINTLN("Attempting SAMSUNG decode");
   if (decodeSAMSUNG(results)) return true;
 #endif
+#if DECODE_SAMSUNG36
+  DPRINTLN("Attempting Samsung36 decode");
+  if (decodeSamsung36(results)) return true;
+#endif
 #if DECODE_WHYNTER
   DPRINTLN("Attempting Whynter decode");
   if (decodeWhynter(results)) return true;
@@ -397,6 +401,10 @@ bool IRrecv::decode(decode_results *results, irparams_t *save) {
 #if DECODE_DAIKIN2
   DPRINTLN("Attempting Daikin2 decode");
   if (decodeDaikin2(results)) return true;
+#endif
+#if DECODE_DAIKIN216
+  DPRINTLN("Attempting Daikin216 decode");
+  if (decodeDaikin216(results)) return true;
 #endif
 #if DECODE_TOSHIBA_AC
   DPRINTLN("Attempting Toshiba AC decode");
@@ -495,7 +503,25 @@ bool IRrecv::decode(decode_results *results, irparams_t *save) {
 #endif
 #if DECODE_VESTEL_AC
   DPRINTLN("Attempting Vestel AC decode");
-  if (decodeVestelAC(results)) return true;
+  if (decodeVestelAc(results)) return true;
+#endif
+#if DECODE_TCL112AC
+  DPRINTLN("Attempting TCL112AC decode");
+  if (decodeTcl112Ac(results)) return true;
+#endif
+#if DECODE_TECO
+  DPRINTLN("Attempting Teco decode");
+  if (decodeTeco(results)) return true;
+#endif
+#if DECODE_LEGOPF
+  DPRINTLN("Attempting LEGOPF decode");
+  if (decodeLegoPf(results)) return true;
+#endif
+#if DECODE_MITSUBISHIHEAVY
+  DPRINTLN("Attempting MITSUBISHIHEAVY (152 bit) decode");
+  if (decodeMitsubishiHeavy(results, kMitsubishiHeavy152Bits)) return true;
+  DPRINTLN("Attempting MITSUBISHIHEAVY (88 bit) decode");
+  if (decodeMitsubishiHeavy(results, kMitsubishiHeavy88Bits)) return true;
 #endif
 #if DECODE_HASH
   // decodeHash returns a hash on any input.

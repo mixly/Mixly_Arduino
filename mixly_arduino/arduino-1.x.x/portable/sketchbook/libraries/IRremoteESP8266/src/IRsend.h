@@ -28,6 +28,49 @@ const uint8_t kDutyMax = 100;     // Percentage
 // delayMicroseconds() is only accurate to 16383us.
 // Ref: https://www.arduino.cc/en/Reference/delayMicroseconds
 const uint16_t kMaxAccurateUsecDelay = 16383;
+//  Usecs to wait between messages we don't know the proper gap time.
+const uint32_t kDefaultMessageGap = 100000;
+
+
+namespace stdAc {
+  enum class opmode_t {
+    kOff  = -1,
+    kAuto =  0,
+    kCool =  1,
+    kHeat =  2,
+    kDry  =  3,
+    kFan  =  4,
+  };
+
+  enum class fanspeed_t {
+    kAuto =   0,
+    kMin =    1,
+    kLow =    2,
+    kMedium = 3,
+    kHigh =   4,
+    kMax =    5,
+  };
+
+  enum class swingv_t {
+    kOff =    -1,
+    kAuto =    0,
+    kHighest = 1,
+    kHigh =    2,
+    kMiddle =  3,
+    kLow =     4,
+    kLowest =  5,
+  };
+
+  enum class swingh_t {
+    kOff =     -1,
+    kAuto =     0,  // a.k.a. On.
+    kLeftMax =  1,
+    kLeft =     2,
+    kMiddle =   3,
+    kRight =    4,
+    kRightMax = 5,
+  };
+};  // namespace stdAc
 
 // Classes
 class IRsend {
@@ -66,7 +109,7 @@ class IRsend {
                    const uint8_t *dataptr, const uint16_t nbytes,
                    const uint16_t frequency, const bool MSBfirst,
                    const uint16_t repeat, const uint8_t dutycycle);
-  void send(uint16_t type, uint64_t data, uint16_t nbits);
+  bool send(decode_type_t type, uint64_t data, uint16_t nbits);
 #if (SEND_NEC || SEND_SHERWOOD || SEND_AIWA_RC_T501 || SEND_SANYO)
   void sendNEC(uint64_t data, uint16_t nbits = kNECBits,
                uint16_t repeat = kNoRepeat);
@@ -92,10 +135,14 @@ class IRsend {
                    uint16_t repeat = kNoRepeat);
   uint32_t encodeSAMSUNG(uint8_t customer, uint8_t command);
 #endif
+#if SEND_SAMSUNG36
+  void sendSamsung36(const uint64_t data, const uint16_t nbits = kSamsung36Bits,
+                     const uint16_t repeat = kNoRepeat);
+#endif
 #if SEND_SAMSUNG_AC
-  void sendSamsungAC(unsigned char data[],
-                     uint16_t nbytes = kSamsungAcStateLength,
-                     uint16_t repeat = kSamsungAcDefaultRepeat);
+  void sendSamsungAC(const unsigned char data[],
+                     const uint16_t nbytes = kSamsungAcStateLength,
+                     const uint16_t repeat = kSamsungAcDefaultRepeat);
 #endif
 #if SEND_LG
   void sendLG(uint64_t data, uint16_t nbits = kLgBits,
@@ -185,6 +232,16 @@ class IRsend {
                         uint16_t nbytes = kMitsubishiACStateLength,
                         uint16_t repeat = kMitsubishiACMinRepeat);
 #endif
+#if SEND_MITSUBISHIHEAVY
+  void sendMitsubishiHeavy88(
+      const unsigned char data[],
+      const uint16_t nbytes = kMitsubishiHeavy88StateLength,
+      const uint16_t repeat = kMitsubishiHeavy88MinRepeat);
+  void sendMitsubishiHeavy152(
+      const unsigned char data[],
+      const uint16_t nbytes = kMitsubishiHeavy152StateLength,
+      const uint16_t repeat = kMitsubishiHeavy152MinRepeat);
+#endif
 #if SEND_FUJITSU_AC
   void sendFujitsuAC(unsigned char data[], uint16_t nbytes,
                      uint16_t repeat = kFujitsuAcMinRepeat);
@@ -198,12 +255,18 @@ class IRsend {
                       uint16_t repeat = kKelvinatorDefaultRepeat);
 #endif
 #if SEND_DAIKIN
-  void sendDaikin(unsigned char data[], uint16_t nbytes = kDaikinStateLength,
-                  uint16_t repeat = kDaikinDefaultRepeat);
+  void sendDaikin(const unsigned char data[],
+                  const uint16_t nbytes = kDaikinStateLength,
+                  const uint16_t repeat = kDaikinDefaultRepeat);
 #endif
 #if SEND_DAIKIN2
   void sendDaikin2(unsigned char data[], uint16_t nbytes = kDaikin2StateLength,
                    uint16_t repeat = kDaikin2DefaultRepeat);
+#endif
+#if SEND_DAIKIN216
+  void sendDaikin216(const unsigned char data[],
+                     const uint16_t nbytes = kDaikin216StateLength,
+                     const uint16_t repeat = kDaikin216DefaultRepeat);
 #endif
 #if SEND_AIWA_RC_T501
   void sendAiwaRCT501(uint64_t data, uint16_t nbits = kAiwaRcT501Bits,
@@ -309,9 +372,23 @@ class IRsend {
                uint16_t repeat = kNoRepeat);
 #endif
 #if SEND_VESTEL_AC
-  void sendVestelAC(const uint64_t data, const uint16_t nbits = kVestelACBits,
+  void sendVestelAc(const uint64_t data, const uint16_t nbits = kVestelAcBits,
                     const uint16_t repeat = kNoRepeat);
 #endif
+#if SEND_TCL112AC
+  void sendTcl112Ac(const unsigned char data[],
+                    const uint16_t nbytes = kTcl112AcStateLength,
+                    const uint16_t repeat = kTcl112AcDefaultRepeat);
+#endif
+#if SEND_TECO
+  void sendTeco(uint64_t data, uint16_t nbits = kTecoBits,
+                uint16_t repeat = kNoRepeat);
+#endif
+#if SEND_LEGOPF
+  void sendLegoPf(const uint64_t data, const uint16_t nbits = kLegoPfBits,
+                  const uint16_t repeat = kLegoPfMinRepeat);
+#endif
+
 
  protected:
 #ifdef UNIT_TEST
@@ -326,8 +403,12 @@ class IRsend {
   uint8_t outputOff;
   VIRTUAL void ledOff();
   VIRTUAL void ledOn();
+#ifndef UNIT_TEST
 
  private:
+#else
+  uint32_t _freq_unittest;
+#endif  // UNIT_TEST
   uint16_t onTimePeriod;
   uint16_t offTimePeriod;
   uint16_t IRpin;

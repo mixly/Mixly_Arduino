@@ -45,7 +45,7 @@ const uint32_t kHaierAcMinGap = 150000;  // Completely made up value.
 //   nbytes: Nr. of bytes of data in the array. (>=kHaierACStateLength)
 //   repeat: Nr. of times the message is to be repeated. (Default = 0).
 //
-// Status: Beta / Probably working.
+// Status: STABLE / Known to be working.
 //
 void IRsend::sendHaierAC(unsigned char data[], uint16_t nbytes,
                          uint16_t repeat) {
@@ -104,7 +104,10 @@ bool IRHaierAC::validChecksum(uint8_t state[], const uint16_t length) {
 void IRHaierAC::stateReset() {
   for (uint8_t i = 1; i < kHaierACStateLength; i++) remote_state[i] = 0x0;
   remote_state[0] = kHaierAcPrefix;
-  remote_state[2] = 0b00100000;
+  remote_state[2] = 0x20;
+  remote_state[4] = 0x0C;
+  remote_state[5] = 0xC0;
+  remote_state[6] = 0x20;
 
   setTemp(kHaierAcDefTemp);
   setFan(kHaierAcFanAuto);
@@ -304,12 +307,61 @@ std::string IRHaierAC::timeToString(const uint16_t nr_mins) {
   std::string result = "";
 #endif  // ARDUINO
 
-  if (nr_mins / 24 < 10) result += "0";  // Zero pad.
+  if (nr_mins / 24 < 10) result += '0';  // Zero pad.
   result += uint64ToString(nr_mins / 60);
-  result += ":";
-  if (nr_mins % 60 < 10) result += "0";  // Zero pad.
+  result += ':';
+  if (nr_mins % 60 < 10) result += '0';  // Zero pad.
   result += uint64ToString(nr_mins % 60);
   return result;
+}
+
+// Convert a standard A/C mode into its native mode.
+uint8_t IRHaierAC::convertMode(const stdAc::opmode_t mode) {
+  switch (mode) {
+    case stdAc::opmode_t::kCool:
+      return kHaierAcCool;
+    case stdAc::opmode_t::kHeat:
+      return kHaierAcHeat;
+    case stdAc::opmode_t::kDry:
+      return kHaierAcDry;
+    case stdAc::opmode_t::kFan:
+      return kHaierAcFan;
+    default:
+      return kHaierAcAuto;
+  }
+}
+
+// Convert a standard A/C Fan speed into its native fan speed.
+uint8_t IRHaierAC::convertFan(const stdAc::fanspeed_t speed) {
+  switch (speed) {
+    case stdAc::fanspeed_t::kMin:
+    case stdAc::fanspeed_t::kLow:
+      return kHaierAcFanLow;
+    case stdAc::fanspeed_t::kMedium:
+      return kHaierAcFanMed;
+    case stdAc::fanspeed_t::kHigh:
+    case stdAc::fanspeed_t::kMax:
+      return kHaierAcFanHigh;
+    default:
+      return kHaierAcFanAuto;
+  }
+}
+
+// Convert a standard A/C vertical swing into its native setting.
+uint8_t IRHaierAC::convertSwingV(const stdAc::swingv_t position) {
+  switch (position) {
+    case stdAc::swingv_t::kHighest:
+    case stdAc::swingv_t::kHigh:
+    case stdAc::swingv_t::kMiddle:
+      return kHaierAcSwingUp;
+    case stdAc::swingv_t::kLow:
+    case stdAc::swingv_t::kLowest:
+      return kHaierAcSwingDown;
+    case stdAc::swingv_t::kOff:
+      return kHaierAcSwingOff;
+    default:
+      return kHaierAcSwingChg;
+  }
 }
 
 // Convert the internal state into a human readable string.
@@ -321,114 +373,122 @@ std::string IRHaierAC::toString() {
   std::string result = "";
 #endif  // ARDUINO
   uint8_t cmd = getCommand();
-  result += "Command: " + uint64ToString(cmd) + " (";
+  result += F("Command: ");
+  result += uint64ToString(cmd);
+  result += F(" (");
   switch (cmd) {
     case kHaierAcCmdOff:
-      result += "Off";
+      result += F("Off");
       break;
     case kHaierAcCmdOn:
-      result += "On";
+      result += F("On");
       break;
     case kHaierAcCmdMode:
-      result += "Mode";
+      result += F("Mode");
       break;
     case kHaierAcCmdFan:
-      result += "Fan";
+      result += F("Fan");
       break;
     case kHaierAcCmdTempUp:
-      result += "Temp Up";
+      result += F("Temp Up");
       break;
     case kHaierAcCmdTempDown:
-      result += "Temp Down";
+      result += F("Temp Down");
       break;
     case kHaierAcCmdSleep:
-      result += "Sleep";
+      result += F("Sleep");
       break;
     case kHaierAcCmdTimerSet:
-      result += "Timer Set";
+      result += F("Timer Set");
       break;
     case kHaierAcCmdTimerCancel:
-      result += "Timer Cancel";
+      result += F("Timer Cancel");
       break;
     case kHaierAcCmdHealth:
-      result += "Health";
+      result += F("Health");
       break;
     case kHaierAcCmdSwing:
-      result += "Swing";
+      result += F("Swing");
       break;
     default:
-      result += "Unknown";
+      result += F("Unknown");
   }
-  result += ")";
-  result += ", Mode: " + uint64ToString(getMode());
+  result += ')';
+  result += F(", Mode: ");
+  result += uint64ToString(getMode());
   switch (getMode()) {
     case kHaierAcAuto:
-      result += " (AUTO)";
+      result += F(" (AUTO)");
       break;
     case kHaierAcCool:
-      result += " (COOL)";
+      result += F(" (COOL)");
       break;
     case kHaierAcHeat:
-      result += " (HEAT)";
+      result += F(" (HEAT)");
       break;
     case kHaierAcDry:
-      result += " (DRY)";
+      result += F(" (DRY)");
       break;
     case kHaierAcFan:
-      result += " (FAN)";
+      result += F(" (FAN)");
       break;
     default:
-      result += " (UNKNOWN)";
+      result += F(" (UNKNOWN)");
   }
-  result += ", Temp: " + uint64ToString(getTemp()) + "C";
-  result += ", Fan: " + uint64ToString(getFan());
+  result += F(", Temp: ");
+  result += uint64ToString(getTemp());
+  result += F("C, Fan: ");
+  result += uint64ToString(getFan());
   switch (getFan()) {
     case kHaierAcFanAuto:
-      result += " (AUTO)";
+      result += F(" (AUTO)");
       break;
     case kHaierAcFanHigh:
-      result += " (MAX)";
+      result += F(" (MAX)");
       break;
   }
-  result += ", Swing: " + uint64ToString(getSwing()) + " (";
+  result += F(", Swing: ");
+  result += uint64ToString(getSwing());
+  result += F(" (");
   switch (getSwing()) {
     case kHaierAcSwingOff:
-      result += "Off";
+      result += F("Off");
       break;
     case kHaierAcSwingUp:
-      result += "Up";
+      result += F("Up");
       break;
     case kHaierAcSwingDown:
-      result += "Down";
+      result += F("Down");
       break;
     case kHaierAcSwingChg:
-      result += "Chg";
+      result += F("Chg");
       break;
     default:
-      result += "Unknown";
+      result += F("Unknown");
   }
-  result += ")";
-  result += ", Sleep: ";
+  result += ')';
+  result += F(", Sleep: ");
   if (getSleep())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
-  result += ", Health: ";
+    result += F("Off");
+  result += F(", Health: ");
   if (getHealth())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
-  result += ", Current Time: " + timeToString(getCurrTime());
-  result += ", On Timer: ";
+    result += F("Off");
+  result += F(", Current Time: ");
+  result += timeToString(getCurrTime());
+  result += F(", On Timer: ");
   if (getOnTimer() >= 0)
     result += timeToString(getOnTimer());
   else
-    result += "Off";
-  result += ", Off Timer: ";
+    result += F("Off");
+  result += F(", Off Timer: ");
   if (getOffTimer() >= 0)
     result += timeToString(getOffTimer());
   else
-    result += "Off";
+    result += F("Off");
 
   return result;
 }
@@ -628,6 +688,57 @@ void IRHaierACYRW02::setSwing(uint8_t state) {
   remote_state[1] |= newstate;
 }
 
+// Convert a standard A/C mode into its native mode.
+uint8_t IRHaierACYRW02::convertMode(const stdAc::opmode_t mode) {
+  switch (mode) {
+    case stdAc::opmode_t::kCool:
+      return kHaierAcYrw02Cool;
+    case stdAc::opmode_t::kHeat:
+      return kHaierAcYrw02Heat;
+    case stdAc::opmode_t::kDry:
+      return kHaierAcYrw02Dry;
+    case stdAc::opmode_t::kFan:
+      return kHaierAcYrw02Fan;
+    default:
+      return kHaierAcYrw02Auto;
+  }
+}
+
+// Convert a standard A/C Fan speed into its native fan speed.
+uint8_t IRHaierACYRW02::convertFan(const stdAc::fanspeed_t speed) {
+  switch (speed) {
+    case stdAc::fanspeed_t::kMin:
+    case stdAc::fanspeed_t::kLow:
+      return kHaierAcYrw02FanLow;
+    case stdAc::fanspeed_t::kMedium:
+      return kHaierAcYrw02FanMed;
+    case stdAc::fanspeed_t::kHigh:
+    case stdAc::fanspeed_t::kMax:
+      return kHaierAcYrw02FanHigh;
+    default:
+      return kHaierAcYrw02FanAuto;
+  }
+}
+
+// Convert a standard A/C vertical swing into its native setting.
+uint8_t IRHaierACYRW02::convertSwingV(const stdAc::swingv_t position) {
+  switch (position) {
+    case stdAc::swingv_t::kHighest:
+    case stdAc::swingv_t::kHigh:
+      return kHaierAcYrw02SwingTop;
+    case stdAc::swingv_t::kMiddle:
+      return kHaierAcYrw02SwingMiddle;
+    case stdAc::swingv_t::kLow:
+      return kHaierAcYrw02SwingDown;
+    case stdAc::swingv_t::kLowest:
+      return kHaierAcYrw02SwingBottom;
+    case stdAc::swingv_t::kOff:
+      return kHaierAcYrw02SwingOff;
+    default:
+      return kHaierAcYrw02SwingAuto;
+  }
+}
+
 // Convert the internal state into a human readable string.
 #ifdef ARDUINO
 String IRHaierACYRW02::toString() {
@@ -636,132 +747,141 @@ String IRHaierACYRW02::toString() {
 std::string IRHaierACYRW02::toString() {
   std::string result = "";
 #endif  // ARDUINO
-  result += "Power: ";
+  result += F("Power: ");
   if (getPower())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
+    result += F("Off");
   uint8_t cmd = getButton();
-  result += ", Button: " + uint64ToString(cmd) + " (";
+  result += F(", Button: ");
+  result += uint64ToString(cmd);
+  result += F(" (");
   switch (cmd) {
     case kHaierAcYrw02ButtonPower:
-      result += "Power";
+      result += F("Power");
       break;
     case kHaierAcYrw02ButtonMode:
-      result += "Mode";
+      result += F("Mode");
       break;
     case kHaierAcYrw02ButtonFan:
-      result += "Fan";
+      result += F("Fan");
       break;
     case kHaierAcYrw02ButtonTempUp:
-      result += "Temp Up";
+      result += F("Temp Up");
       break;
     case kHaierAcYrw02ButtonTempDown:
-      result += "Temp Down";
+      result += F("Temp Down");
       break;
     case kHaierAcYrw02ButtonSleep:
-      result += "Sleep";
+      result += F("Sleep");
       break;
     case kHaierAcYrw02ButtonHealth:
       result += "Health";
       break;
     case kHaierAcYrw02ButtonSwing:
-      result += "Swing";
+      result += F("Swing");
       break;
     case kHaierAcYrw02ButtonTurbo:
-      result += "Turbo";
+      result += F("Turbo");
       break;
     default:
-      result += "Unknown";
+      result += F("Unknown");
   }
-  result += ")";
-  result += ", Mode: " + uint64ToString(getMode());
+  result += ')';
+  result += F(", Mode: ");
+  result += uint64ToString(getMode());
   switch (getMode()) {
     case kHaierAcYrw02Auto:
-      result += " (Auto)";
+      result += F(" (Auto)");
       break;
     case kHaierAcYrw02Cool:
-      result += " (Cool)";
+      result += F(" (Cool)");
       break;
     case kHaierAcYrw02Heat:
-      result += " (Heat)";
+      result += F(" (Heat)");
       break;
     case kHaierAcYrw02Dry:
-      result += " (Dry)";
+      result += F(" (Dry)");
       break;
     case kHaierAcYrw02Fan:
-      result += " (Fan)";
+      result += F(" (Fan)");
       break;
     default:
-      result += " (UNKNOWN)";
+      result += F(" (UNKNOWN)");
   }
-  result += ", Temp: " + uint64ToString(getTemp()) + "C";
-  result += ", Fan: " + uint64ToString(getFan());
+  result += F(", Temp: ");
+  result += uint64ToString(getTemp());
+  result += F("C, Fan: ");
+  result += uint64ToString(getFan());
   switch (getFan()) {
     case kHaierAcYrw02FanAuto:
-      result += " (Auto)";
+      result += F(" (Auto)");
       break;
     case kHaierAcYrw02FanHigh:
-      result += " (High)";
+      result += F(" (High)");
       break;
     case kHaierAcYrw02FanLow:
-      result += " (Low)";
+      result += F(" (Low)");
       break;
     case kHaierAcYrw02FanMed:
-      result += " (Med)";
+      result += F(" (Med)");
       break;
     default:
-      result += " (Unknown)";
+      result += F(" (Unknown)");
   }
-  result += ", Turbo: " + uint64ToString(getTurbo()) + " (";
+  result += F(", Turbo: ");
+  result += uint64ToString(getTurbo());
+  result += F(" (");
   switch (getTurbo()) {
     case kHaierAcYrw02TurboOff:
-      result += "Off";
+      result += F("Off");
       break;
     case kHaierAcYrw02TurboLow:
-      result += "Low";
+      result += F("Low");
       break;
     case kHaierAcYrw02TurboHigh:
-      result += "High";
+      result += F("High");
       break;
     default:
-      result += "Unknown";
+      result += F("Unknown");
   }
-  result += ")";
-  result += ", Swing: " + uint64ToString(getSwing()) + " (";
+  result += ')';
+  result += F(", Swing: ");
+  result += uint64ToString(getSwing());
+  result += F(" (");
   switch (getSwing()) {
     case kHaierAcYrw02SwingOff:
-      result += "Off";
+      result += F("Off");
       break;
     case kHaierAcYrw02SwingAuto:
-      result += "Auto";
+      result += F("Auto");
       break;
     case kHaierAcYrw02SwingBottom:
-      result += "Bottom";
+      result += F("Bottom");
       break;
     case kHaierAcYrw02SwingDown:
-      result += "Down";
+      result += F("Down");
       break;
     case kHaierAcYrw02SwingTop:
-      result += "Top";
+      result += F("Top");
       break;
     case kHaierAcYrw02SwingMiddle:
-      result += "Middle";
+      result += F("Middle");
       break;
     default:
-      result += "Unknown";
+      result += F("Unknown");
   }
-  result += ")";
-  result += ", Sleep: ";
+  result += ')';
+  result += F(", Sleep: ");
   if (getSleep())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
-  result += ", Health: ";
+    result += F("Off");
+  result += F(", Health: ");
   if (getHealth())
-    result += "On";
+    result += F("On");
   else
-    result += "Off";
+    result += F("Off");
 
   return result;
 }
@@ -777,7 +897,7 @@ std::string IRHaierACYRW02::toString() {
 // Returns:
 //   boolean: True if it can decode it, false if it can't.
 //
-// Status: BETA / Appears to be working.
+// Status: STABLE / Known to be working.
 //
 bool IRrecv::decodeHaierAC(decode_results* results, uint16_t nbits,
                            bool strict) {
