@@ -2654,3 +2654,14 @@ Blockly.MPYTHON_BLYNK_SETUP_TOOLTIP = '服务器默认为 blynk-cloud.com，端�
 Blockly.MPYTHON_BLYNK_APP_DATA_HELPURL = '';
  Blockly.MPYTHON_BLYNK_APP_DATA_MESSAGE0 = '当 从 Blynk APP 收到 虚拟管脚 V %1 的值 %2';
  Blockly.MPYTHON_BLYNK_APP_DATA_TOOLTIP = '虚拟管脚：V0 ~ V255';
+
+Blockly.MIXLY_readTempC='获取摄氏度';
+Blockly.MIXLY_readTempF='获取华氏度';
+Blockly.MIXLY_MPU6050='MPU6050陀螺仪';
+Blockly.MIXLY_MPU6050_update='MPU6050陀螺仪刷新数据';
+Blockly.MIXLY_Accel_X ='X轴加速度';
+Blockly.MIXLY_Accel_Y ='Y轴加速度';
+Blockly.MIXLY_Accel_Z ='Z轴加速度';
+Blockly.MIXLY_Gyro_X ='X轴角度';
+Blockly.MIXLY_Gyro_Y ='Y轴角度';
+Blockly.MIXLY_Gyro_Z ='Z轴角度';

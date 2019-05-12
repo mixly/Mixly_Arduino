@@ -2545,4 +2545,16 @@ Blockly.MIXLY_HANBIT_SHOW_CIRCLE = " 圓心(x %1, y %2)半徑 %3 %4 填充 %5";
 Blockly.MIXLY_HANBIT_SHOW_triangle = " 頂點(x0 %1, y0 %2) (x1 %3, y1 %4) (x2 %5, y2 %6) %7 填充 %8";
 Blockly.MIXLY_HANBIT_DRAW_TRIANGLE = "三角形";
 
-Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = '返回光線傳感器的值（0~255）'
+Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = '返回光線傳感器的值（0~255）';
+
+Blockly.MIXLY_readTempC='獲取攝氏度';
+Blockly.MIXLY_readTempF='獲取華氏度';
+Blockly.MIXLY_MPU6050='MPU6050陀螺儀';
+Blockly.MIXLY_MPU6050_update='MPU6050陀螺儀刷新數據';
+Blockly.MIXLY_Accel_X ='X軸加速度';
+Blockly.MIXLY_Accel_Y ='Y軸加速度';
+Blockly.MIXLY_Accel_Z ='Z軸加速度';
+Blockly.MIXLY_Gyro_X ='X軸角速度';
+Blockly.MIXLY_Gyro_Y ='Y軸角速度';
+Blockly.MIXLY_Gyro_Z ='Z軸角速度';
+

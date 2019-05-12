@@ -301,3 +301,33 @@ Blockly.Blocks.ADXL345 = {
     this.setTooltip(Blockly.MIXLY_TOOLTIP_ADXL345.replace('%1',this.getFieldValue("ADXL345_PIN")));
    }
 };
+
+//传感器-MPU6050-获取数据
+Blockly.Blocks.MPU6050= {
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput("").appendField(Blockly.MIXLY_MPU6050);
+     this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown([
+        [Blockly.MIXLY_Accel_X, "normAccel.XAxis"], 
+        [Blockly.MIXLY_Accel_Y, "normAccel.YAxis"], 
+        [Blockly.MIXLY_Accel_Z, "normAccel.ZAxis"],
+        [Blockly.MIXLY_Gyro_X, "normGyro.XAxis"],
+        [Blockly.MIXLY_Gyro_Y, "normGyro.YAxis"],
+        [Blockly.MIXLY_Gyro_Z, "normGyro.ZAxis"],
+        [Blockly.MIXLY_readTempC, "mpu.readTemperature()"]
+        ]), "MPU6050_TYPE");
+    this.setInputsInline(true);
+    this.setOutput(true);
+}
+};
+
+//传感器-MPU6050-更新数据
+Blockly.Blocks.MPU6050_update= {
+  init: function() {
+   this.setColour(Blockly.Blocks.sensor.HUE);
+   this.appendDummyInput("").appendField(Blockly.MIXLY_MPU6050_update);
+   this.setPreviousStatement(true);
+   this.setNextStatement(true);
+   this.setInputsInline(true);
+}
+};

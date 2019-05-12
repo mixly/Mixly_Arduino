@@ -2575,3 +2575,16 @@ Blockly.MPYTHON_BLYNK_APP_DATA_TOOLTIP = 'Virtual pin: V0 ~ V255';
 Blockly.MPYTHON_BLYNK_SETUP_HELPURL = '';
 Blockly.MPYTHON_BLYNK_SETUP_MESSAGE0 = 'Blynk Settings %1 server %2 port %3 authorization code %4';
 Blockly.MPYTHON_BLYNK_SETUP_TOOLTIP = 'The default server is blynk-cloud.com and the default port is 80';
+
+
+Blockly.MIXLY_readTempC='Get Centigrade';
+Blockly.MIXLY_readTempF='Get Fahrenheit';
+Blockly.MIXLY_MPU6050='MPU6050 Gyroscope';
+Blockly.MIXLY_MPU6050_update='MPU6050 Gyroscope refresh data';
+Blockly.MIXLY_Accel_X ='X-Accel';
+Blockly.MIXLY_Accel_Y ='Y-Accel';
+Blockly.MIXLY_Accel_Z ='Z-Accel';
+Blockly.MIXLY_Gyro_X ='X-Gyro';
+Blockly.MIXLY_Gyro_Y ='Y-Gyro';
+Blockly.MIXLY_Gyro_Z ='Z-Gyro';
+

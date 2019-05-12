@@ -162,3 +162,19 @@ Blockly.Arduino.ADXL345 = function() {
   if (dropdown_type == "z") code += 'accel.getAccelerationZ()';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
+//传感器-MPU6050-获取数据
+Blockly.Arduino.MPU6050 = function() {
+ Blockly.Arduino.definitions_['includeMPU6050'] = '#include <MPU6050.h>';
+ Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+ Blockly.Arduino.definitions_['var_declare_MPU6050'] = 'MPU6050 mpu;';
+ Blockly.Arduino.setups_['setup_ngyro'] = 'mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G);';
+ var MPU6050_TYPE = this.getFieldValue('MPU6050_TYPE');
+ var code = MPU6050_TYPE;
+ return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+//传感器-MPU6050-更新数据
+Blockly.Arduino.MPU6050_update = function() {
+ var code = 'Vector normAccel = mpu.readNormalizeAccel();\nVector normGyro = mpu.readNormalizeGyro();\n';
+ return code;
+};
