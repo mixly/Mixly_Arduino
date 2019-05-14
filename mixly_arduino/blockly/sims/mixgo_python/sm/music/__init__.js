@@ -134,10 +134,12 @@ var $builtinmodule = function(name) {
 					osc.connect(mod._data.audioCtx.destination);
 					osc.start();			
 				}
+				sm.music.set_pitch(pin, n.f);
 				i++;
 				
 				if(i <= notes.length) {
 					setTimeout(playNextNote, timeout * n.ticks);
+					sm.time += timeout * n.ticks;
 				} 
 			}
 			playNextNote();
@@ -303,8 +305,10 @@ var $builtinmodule = function(name) {
 			osc.frequency.value = frequency.v;
 			osc.connect(mod._data.audioCtx.destination);
 			osc.start();
+			sm.music.set_pitch(pin, frequency.v);
 			if(len.v > 0) {
 				setTimeout(function() {
+					sm.time += len.v
 					osc.stop();
 					if(wait.v) {
 						osc.stop();
