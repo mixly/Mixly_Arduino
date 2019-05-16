@@ -58,6 +58,29 @@ var sm = {
         	return sm.snapshot['display'][y][x];
         }
     },
+    pin: {
+
+    },
+    boardLED:{
+        setOnOff: function(ledNum, brightness){
+            if(brightness === 0){
+                sm.snapshot['boardLED'][ledNum] = 0;
+            }
+            else{
+                sm.snapshot['boardLED'][ledNum] = 1024;
+            }
+            sm.updateSnapshot();
+        },
+        setBrightness: function(ledNum, val){
+            if(brightness === 0){
+                sm.snapshot['boardLED'][ledNum] = 0;
+            }
+            else{
+                sm.snapshot['boardLED'][ledNum] = val;
+            }
+            sm.updateSnapshot();
+        }
+    },
     button: {
         press: function (name, timeout) {
             var nameArr = [];
@@ -107,7 +130,7 @@ var sm = {
     },
     temperature: {
         set_value: function (x) {
-            sm.input['temperature']['temperature'] = x;
+            sm.input['temperature'] = x;
         }
     },
     sonar: {

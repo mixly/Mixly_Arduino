@@ -34,9 +34,9 @@ var $builtinmodule = function (name) {
             if(value && self.mode === 'Out'){
             	self.value = value.v;
                 ui.setPinValue(self.pinNum, self.value);
-                debugger;
                 if(self.pinNum === 0 || self.pinNum === 5){
                     ui.setBoardLEDonoff( parseInt((self.pinNum / 5) + 1), self.value);
+                    sm.boardLED.setOnOff( parseInt((self.pinNum / 5) + 1), self.value);
                 }
             }
             else{
@@ -77,6 +77,10 @@ var $builtinmodule = function (name) {
         });
         $loc.duty = new Sk.builtin.func(function(self, duty) {
             self.duty = duty.v;
+            if(self.pin.pinNum === 0 || self.pinNum === 5){
+                ui.setBoardLEDbrightness( parseInt((self.pin.pinNum / 5) + 1), self.duty);
+                sm.boardLED.setBrightness( parseInt((self.pinNum / 5) + 1), self.duty);
+            }
             ui.setPinValue(self.pin.pinNum, duty.v)
         });
         $loc.freq = new Sk.builtin.func(function(self, freq) {
@@ -159,32 +163,38 @@ var $builtinmodule = function (name) {
             mod.data.UART.tx = tx.v;
             mod.data.UART.rx = rx.v;
             mod.data.UART.buffer = "";
+            sm.uart.changeBaudrate(baudrate.v);
             ui.updatePeerSerialParam(mod.data.UART);
             ui.bindUartSendMessageEvent('uart', mod.data.UART);
             ui.bindUartBaudrateEvent('uart_baudrate',mod.data.UART);
         });
         $loc.read = new Sk.builtin.func(function(self){
-            if (!mod.data.UART.peer) {
+            if (sm.uart.peer.baudrate != mod.data.UART.baudrate) {
                 return;
             }
-            if (mod.data.UART.buffer.length > 0) {
-                var content = mod.data.UART.buffer;
-                mod.data.UART.buffer = "";
-                ui.updateSerialStatus('Uart read message: ' + content);
+            if (sm.uart.data.buffer.length > 0) {
+                var content = sm.uart.data.buffer;
+                sm.uart.data.buffer = "";
+                //ui.updateSerialStatus('Uart read message: ' + content);
                 return Sk.builtin.str(content);
             }
             return Sk.builtin.none;
         });
         $loc.readline = new Sk.builtin.func(function(self){
-            if (!mod.data.UART.peer) {
+            if (sm.uart.peer.baudrate != mod.data.UART.baudrate) {
                 return;
             }
-            if (mod.data.UART.buffer.length > 0) {
-                var idx = mod.data.UART.buffer.indexOf('\r');
+            if (sm.uart.data.buffer.length > 0) {
+                var idx = sm.uart.data.buffer.indexOf('\r');
                 if (idx != -1) {
-                    var content = mod.data.UART.buffer.substring(0, idx + 1);
-                    mod.data.UART.buffer = mod.data.UART.buffer.substring(idx + 1);;
-                    ui.updateSerialStatus('Uart read message: ' + content);
+                    var content = sm.uart.data.buffer.substring(0, idx + 1);
+                    mod.data.UART.buffer = sm.uart.data.buffer.substring(idx + 1);;
+                    //ui.updateSerialStatus('Uart read message: ' + content);
+                    return Sk.builtin.str(content);
+                }
+                else{
+                    var content = sm.uart.data.buffer;
+                    sm.uart.data.buffer = "";
                     return Sk.builtin.str(content);
                 }
             }
@@ -194,10 +204,11 @@ var $builtinmodule = function (name) {
             if (!mod.data.UART.peer) {
                 return;
             }
-            ui.updateSerialOutput(message.v);
+            //ui.updateSerialOutput(message.v);
+            sm.uart.write(message.v);
         });
         $loc.any = new Sk.builtin.func(function(self, message){
-            return Sk.builtin.bool(mod.data.UART.buffer.length > 0);
+            return Sk.builtin.bool(sm.uart.data.buffer.length > 0);
         });
     }, "UART", []);
 

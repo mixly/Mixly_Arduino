@@ -14,120 +14,6 @@ var $builtinmodule = function (name) {
         ui.output("Panic mode: " + n.v);
     });
 
-    var start_time = Date.now();
-    mod.reset = new Sk.builtin.func(function() {
-        start_time = Date.now();
-        // not implemented yet
-    });
-
-    mod.running_time = new Sk.builtin.func(function() {
-        return Sk.builtin.int_(Date.now() - start_time);
-    });
-
-    var ioPinDigital = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
-        $loc.__init__ = new Sk.builtin.func(function(self, name) {
-            self.name = name.v;
-            self.value = 0;
-        });
-
-        $loc.read_digital = new Sk.builtin.func(function(self){
-            $('select.pinOption').each(function(){
-                if($(this).val() == self.name){
-                    var id = $(this).attr('id').split('select_row').join('');
-                    self.value = parseInt($('#curr_pinValue'+id).text());
-                }
-            });
-            return Sk.builtin.int_(self.value);
-        });
-
-        $loc.write_digital = new Sk.builtin.func(function(self, value){
-            self.value = value.v == 1? 1: 0;
-            ui.updateMicrobitPins('digital',self.name,self.value);
-        });
-    }, "MicroBitDigitalPin", []);
-
-    mod.pin5 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(5));
-    mod.pin6 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(6));
-    mod.pin7 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(7));
-    mod.pin8 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(8));
-    mod.pin9 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(9));
-    mod.pin11 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(11));
-    mod.pin12 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(12));
-    mod.pin13 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(13));
-    mod.pin14 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(14));
-    mod.pin15 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(15));
-    mod.pin16 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(16));
-    mod.pin19 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(19));
-    mod.pin20 = Sk.misceval.callsim(ioPinDigital, Sk.builtin.int_(20));
-
-    var ioPinAnalog = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
-        $loc.__init__ = new Sk.builtin.func(function(self,name) {
-            self.value = 0;
-            self.name = name.v
-            self.period_us = 35;
-        });
-
-        $loc.read_analog = new Sk.builtin.func(function(self) {
-            var flag = false;//是否能够找到该列
-            $('select.pinOption').each(function(){
-                if($(this).val()==self.name){
-                    flag = true;
-                    var id = $(this).attr('id').split('select_row').join('');
-                    self.value = parseInt($('#curr_pinValue'+id).text());
-                }
-            });
-            if(!flag){//找不到就新建一个
-                ui.updateMicrobitPins('analog',self.name,self.value);
-            }
-            return Sk.builtin.int_(self.value);
-
-        });
-
-        $loc.write_analog = new Sk.builtin.func(function(self, value) {
-            self.value = value.v;
-            ui.updateMicrobitPins('analog',self.name,self.value);
-        });
-
-        $loc.set_analog_period = new Sk.builtin.func(function(self, period) {
-            self.period_us = period.v * 1000;
-            ui.updateUIAnalogPeriod(self.name,self.period_us);
-        });
-
-        $loc.set_analog_period_microseconds = new Sk.builtin.func(function(self, period) {
-            self.period_us = period.v;
-            ui.updateUIAnalogPeriod(self.name,self.period_us);
-        });
-
-    }, "MicroBitAnalogPin", []);
-    mod.pin3 = Sk.misceval.callsim(ioPinAnalog, Sk.builtin.int_(3));
-    mod.pin4 = Sk.misceval.callsim(ioPinAnalog, Sk.builtin.int_(4));
-    mod.pin10 = Sk.misceval.callsim(ioPinAnalog, Sk.builtin.int_(10));
-
-    var ioPinTouch = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
-        $loc.__init__ = new Sk.builtin.func(function(self,name) {
-            self.name = name.v;
-            self.touched = false;
-        });
-
-        $loc.is_touched = new Sk.builtin.func(function(self) {
-            $('select.pinOption').each(function(){
-                if($(this).val()==self.name){
-                    flag = true;
-                    var id = $(this).attr('id').split('select_row').join('');
-                    self.touched = parseInt($('#curr_pinValue'+id).text()) === 1 ? true : false;
-                }
-            });
-            return Sk.builtin.bool(self.touched);
-        });
-    }, "MicroBitTouchPin", []);
-
-    mod.pin0 = Sk.misceval.callsim(ioPinTouch, Sk.builtin.int_(0));
-    mod.pin1 = Sk.misceval.callsim(ioPinTouch, Sk.builtin.int_(1));
-    mod.pin2 = Sk.misceval.callsim(ioPinTouch, Sk.builtin.int_(2));
-    ui.bindAddPinBtnEvent('digital');
-    ui.bindAddPinBtnEvent('analog');
-    ui.bindAddPinBtnEvent('touch');
-
     mod.Button = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self) {
             self.presses = 0;
@@ -168,7 +54,7 @@ var $builtinmodule = function (name) {
             ui.addPinOption('analog', 5 * (self.pin - 1));
         });
 
-        $loc.on = new Sk.builtin.func(function(self,n) {           
+        $loc.on = new Sk.builtin.func(function(self,n) {
             self.val = 0;
         });
 
@@ -178,10 +64,10 @@ var $builtinmodule = function (name) {
 
         $loc.setonoff = new Sk.builtin.func(function(pin, val) {
             if(val.v == -1){
-                
+
             }
             else{
-                
+
             }
             ui.setBoardLEDonoff(pin.v, 1 - self.val);
         });

@@ -218,6 +218,7 @@ var $builtinmodule = function(name) {
                         clearScreen();
                     }
                     clearScreen();
+                    sm.time += speed_ms;
                     bf.text(message.v, parseInt(pos,10), 0);
                 },30);
             });
