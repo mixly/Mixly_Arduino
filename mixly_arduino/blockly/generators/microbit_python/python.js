@@ -501,5 +501,5 @@ Blockly.Python.CLASS_DS1307_INIT =  'DS1307_I2C_ADDRESS  = (104)\n'+
                                     '\n'+
                                     'ds = DS1307()\n'
 Blockly.Python.FUNCTION_MIXLY_RGB_SHOW = 'def mixly_rgb_show(led, r, g, b):\n' +
-                                         '    np[led-1] = (r, g, b)\n' +
+                                         '    np[led] = (r, g, b)\n' +
                                          '    np.show()\n';

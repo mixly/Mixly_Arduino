@@ -229,7 +229,7 @@ Blockly.Python.display_rgb2=function(){
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   Blockly.Python.definitions_['import_neopixel'] = 'import neopixel';
 
-  var code = 'np['+value_led+'-1] = ('+color+')\n';
+  var code = 'np['+value_led+'] = ('+color+')\n';
   code+='np.show()\n';
   return code;
 };
