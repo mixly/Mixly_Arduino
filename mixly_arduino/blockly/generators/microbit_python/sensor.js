@@ -43,6 +43,23 @@ Blockly.Python.controls_attachGestureInterrupt = function(){
     return code;
 }
 
+Blockly.Python.sensor_current_gesture1 = function(){
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    var gesture = this.getFieldValue('gesture');
+    
+    var code = 'accelerometer.is_gesture("' + gesture + '")';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+}
+
+Blockly.Python.sensor_current_gesture2 = function(){
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    var gesture = this.getFieldValue('gesture');
+    
+    var code = 'accelerometer.was_gesture("' + gesture + '")';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+}
+
+
 Blockly.Python.controls_attachGestureInterrupt2 = function(){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var gesture = this.getFieldValue('gesture');
