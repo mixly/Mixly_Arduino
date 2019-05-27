@@ -128,6 +128,23 @@ function accelerometerGetGestrues(mode) {
 pbc.moduleFunctionD.get('accelerometer')['get_gestures'] = accelerometerGetGestrues('all');
 pbc.moduleFunctionD.get('accelerometer')['current_gesture'] = accelerometerGetGestrues('current');
 
+pbc.moduleFunctionD.get('accelerometer')['is_gesture'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return [block("sensor_current_gesture1", func.lineno, {'gesture': py2block.Str_value(args[0])}, {}, {
+        "inline": "true"
+    })];
+}
+
+pbc.moduleFunctionD.get('accelerometer')['was_gesture'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    return [block("sensor_current_gesture2", func.lineno, {'gesture': py2block.Str_value(args[0])}, {}, {
+        "inline": "true"
+    })];
+}
 
 pbc.moduleFunctionD.get('compass')['calibrate'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
