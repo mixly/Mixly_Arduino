@@ -14,8 +14,6 @@ var $builtinmodule = function(name) {
         var leds = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
 
         function setLED(x, y, brightness) {
-            debugger;
-            sm.display.set_pixel(x,y,brightness);
             ui.setMatrixLED(x, y, brightness);
             leds[y][x] = brightness;
         }

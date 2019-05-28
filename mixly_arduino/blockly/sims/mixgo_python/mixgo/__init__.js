@@ -124,9 +124,6 @@ var $builtinmodule = function (name) {
     mod.pin0 = Sk.misceval.callsim(ioPinTouch, Sk.builtin.int_(0));
     mod.pin1 = Sk.misceval.callsim(ioPinTouch, Sk.builtin.int_(1));
     mod.pin2 = Sk.misceval.callsim(ioPinTouch, Sk.builtin.int_(2));
-    ui.bindAddPinBtnEvent('digital');
-    ui.bindAddPinBtnEvent('analog');
-    ui.bindAddPinBtnEvent('touch');
 
     mod.Button = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self) {
@@ -160,12 +157,19 @@ var $builtinmodule = function (name) {
     ui.bindBtnEvent('mixgo_btn_B', [mod.button_b]);
     ui.bindBtnEvent('btn_both', [mod.button_a, mod.button_b]);
 
-    mod.led = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
+    var led = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self, pin) {
             self.val = 1;
-            self.pin = pin.v;
+            if(pin.v){
+                self.pin = pin.v;
+                ui.addPinOption('analog', 5 * (self.pin - 1));
+            }         
+            else{
+                ui.addPinOption('analog', 0);
+                ui.addPinOption('analog', 5);
+            }
             self.brightness = 0;
-            ui.addPinOption('analog', 5 * (self.pin - 1));
+            
         });
 
         $loc.on = new Sk.builtin.func(function(self,n) {           
@@ -177,12 +181,6 @@ var $builtinmodule = function (name) {
         });
 
         $loc.setonoff = new Sk.builtin.func(function(pin, val) {
-            if(val.v == -1){
-                
-            }
-            else{
-                
-            }
             ui.setBoardLEDonoff(pin.v, 1 - self.val);
         });
         $loc.getonoff = new Sk.builtin.func(function() {
@@ -191,12 +189,12 @@ var $builtinmodule = function (name) {
         var setbrightness = new Sk.builtin.func(function(self, pin, brightness) {
             ui.setBoardLEDbrightness(pin.v, brightness.v);
         });
-        debugger;
         $loc.setbrightness = Sk.misceval.callsimOrSuspend(Sk.builtins.staticmethod, setbrightness);
     }, "led", []);
 
-    led1 = Sk.misceval.callsim(led, Sk.builtin.int_(0));
-    led2 = Sk.misceval.callsim(led, Sk.builtin.int_(5));
+    mod.led1 = Sk.misceval.callsim(led, Sk.builtin.int_(0));
+    mod.led2 = Sk.misceval.callsim(led, Sk.builtin.int_(5));
+    mod.led = Sk.misceval.callsim(led);
 
     mod.mixgo_get_soundlevel = new Sk.builtin.func(function(self) {
         return Sk.builtin.int_(mod.data.soundlevel);

@@ -62,16 +62,16 @@ Sk.externalLibraries = {
             conf.url + '/blockly/sims/mixgo_python/sm/mixgo/infrared_right.js',
         ]
     },
-    time:{
-        path: conf.url + '/blockly/sims/mixgo_python/time/__init__.js'
+    sm_time:{
+        path: conf.url + '/blockly/sims/mixgo_python/sm/time/__init__.js'
     },
-    machine: {
-        path: conf.url + '/blockly/sims/mixgo_python/machine/__init__.js',
+    sm_machine: {
+        path: conf.url + '/blockly/sims/mixgo_python/sm/machine/__init__.js',
         dependencies: [
-            conf.url + '/blockly/sims/mixgo_python/machine/UART.js'
+            conf.url + '/blockly/sims/mixgo_python/sm/machine/UART.js'
         ],
     },
-    mpu9250: {
+    /*mpu9250: {
         path: conf.url + '/blockly/sims/mixgo_python/mpu9250/__init__.js'
     },
     bmp280: {
@@ -79,28 +79,24 @@ Sk.externalLibraries = {
     },
     dhtx: {
         path: conf.url + '/blockly/sims/mixgo_python/dhtx/__init__.js'
+    },*/
+    sm_sonar: {
+        path: conf.url + '/blockly/sims/mixgo_python/sm/sonar/__init__.js'
     },
-    sonar: {
-        path: conf.url + '/blockly/sims/mixgo_python/sonar/__init__.js'
+    sm_servo: {
+        path: conf.url + '/blockly/sims/mixgo_python/sm/servo/__init__.js'
     },
-    servo: {
-        path: conf.url + '/blockly/sims/mixgo_python/servo/__init__.js'
-    },
-    matrix:{
+    sm_matrix:{
         path: conf.url + '/blockly/sims/mixgo_python/sm/matrix/__init__.js'
     },
-    music: {
-        path: conf.url + '/blockly/sims/mixgo_python/music/__init__.js'
+    sm_music: {
+        path: conf.url + '/blockly/sims/mixgo_python/sm/music/__init__.js'
     },
-    radio:{
-        path: conf.url + '/blockly/sims/mixgo_python/radio/__init__.js'
+    sm_radio:{
+        path: conf.url + '/blockly/sims/mixgo_python/sm/radio/__init__.js'
     },
-    speech: {
-        path: conf.url + '/blockly/sims/mixgo_python/speech/__init__.js',
-        dependencies: [conf.url + '/blockly/sims/mixgo_python/speech/sam.js']
-    },
-    neopixel: {
-        path: conf.url + '/blockly/sims/mixgo_python/neopixel/__init__.js'
+    sm_neopixel: {
+        path: conf.url + '/blockly/sims/mixgo_python/sm/neopixel/__init__.js'
     },
 }
 
