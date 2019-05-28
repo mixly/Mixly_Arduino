@@ -25,7 +25,7 @@ var $builtinmodule = function (name) {
             }
             self.leds = [];
             self.pin = pin;
-            self.n = n;           
+            self.n = n;
             for (var i = 0; i < n.v; i ++) {
                self.leds.push([0, 0, 0]);
             }
@@ -55,6 +55,7 @@ var $builtinmodule = function (name) {
         });
 
         $loc.write = new Sk.builtin.func(function(self) {
+            sm.neopixel.set_leds(self.pin, self.leds)
             ui.updateNeopixel(self.leds);
         });
     }, 'NeoPixel', []);

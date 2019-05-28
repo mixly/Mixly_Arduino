@@ -510,12 +510,12 @@ var ui = {
     },
     setBoardLEDbrightness: function (pinNum, val) {
         if(typeof(val) == 'number' && val > 0 && val < 1024){
-            decval = (val / 8) + 127; //将0~1023转换成RGB(127,255)区间
+            var decval = (val / 8) + 127; //将0~1023转换成RGB(127,255)区间
             $('#mixgo_led_' + pinNum).css('background-color', '#0000' + decval.toString(16));
         }
         else{
             $('#mixgo_led_' + pinNum).css('background-color','#000');
-        }   
+        }
     },
     output: function (s) {
         console.log(s);

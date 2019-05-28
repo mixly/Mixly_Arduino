@@ -34,7 +34,6 @@ var $builtinmodule = function (name) {
             if(value && self.mode === 'Out'){
             	self.value = value.v;
                 ui.setPinValue(self.pinNum, self.value);
-                debugger;
                 if(self.pinNum === 0 || self.pinNum === 5){
                     ui.setBoardLEDonoff( parseInt((self.pinNum / 5) + 1), self.value);
                 }
@@ -77,6 +76,9 @@ var $builtinmodule = function (name) {
         });
         $loc.duty = new Sk.builtin.func(function(self, duty) {
             self.duty = duty.v;
+            if(self.pin.pinNum === 0 || self.pinNum === 5){
+                ui.setBoardLEDbrightness(parseInt((self.pin.pinNum / 5) + 1), self.duty);
+            }
             ui.setPinValue(self.pin.pinNum, duty.v)
         });
         $loc.freq = new Sk.builtin.func(function(self, freq) {
@@ -187,8 +189,14 @@ var $builtinmodule = function (name) {
                     ui.updateSerialStatus('Uart read message: ' + content);
                     return Sk.builtin.str(content);
                 }
+                else{
+                    var content = mod.data.UART.buffer;
+                    mod.data.UART.buffer = "";
+                    return Sk.builtin.str(content);
+                }
             }
-            return Sk.builtin.none;
+            else
+                return Sk.builtin.none;
         });
         $loc.write = new Sk.builtin.func(function(self, message){
             if (!mod.data.UART.peer) {

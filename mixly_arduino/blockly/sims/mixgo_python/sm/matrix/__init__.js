@@ -14,6 +14,7 @@ var $builtinmodule = function(name) {
         var leds = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]];
 
         function setLED(x, y, brightness) {
+            sm.display.set_pixel(x,y,brightness);
             ui.setMatrixLED(x, y, brightness);
             leds[y][x] = brightness;
         }
@@ -23,6 +24,7 @@ var $builtinmodule = function(name) {
             for(x = 0; x < 16; x++) {
                 for(y = 0; y < 8; y++) {
                     setLED(x, y, 0);
+                    sm.display.set_pixel(x, y, 0);
                 }
             }
 
@@ -86,6 +88,7 @@ var $builtinmodule = function(name) {
         });
 
         mod.set_pixel = new Sk.builtin.func(function(x, y, brightness) {
+
             setLED(parseInt(x.v), parseInt(y.v), parseInt(brightness.v));
         });
 
@@ -215,6 +218,7 @@ var $builtinmodule = function(name) {
                         clearScreen();
                     }
                     clearScreen();
+                    sm.time += speed_ms;
                     bf.text(message.v, parseInt(pos,10), 0);
                 },30);
             });
