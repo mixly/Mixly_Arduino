@@ -44,7 +44,7 @@ pbc.objectFunctionD.get('get_presses')['Pin'] = function (py2block, func, args, 
     });
 }
 
-
+/*
 pbc.ifStatementD.get('if_is_gesture')['check_condition'] = function (py2block, node, test, body, orelse) {
     if (test._astname == "Call" && test.func._astname == "Attribute"
         && test.func.value._astname == "Name"
@@ -88,7 +88,7 @@ pbc.ifStatementD.get('if_was_gesture')['create_block'] = function (py2block, nod
     }, {}, {
         "DO": py2block.convertBody(body)
     });
-}
+}*/
 
 function acceleromeerGetDir(mode) {
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
@@ -132,18 +132,18 @@ pbc.moduleFunctionD.get('accelerometer')['is_gesture'] = function (py2block, fun
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
-    return [block("sensor_current_gesture1", func.lineno, {'gesture': py2block.Str_value(args[0])}, {}, {
+    return block("sensor_current_gesture1", func.lineno, {'gesture': py2block.Str_value(args[0])}, {}, {
         "inline": "true"
-    })];
+    });
 }
 
 pbc.moduleFunctionD.get('accelerometer')['was_gesture'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
-    return [block("sensor_current_gesture2", func.lineno, {'gesture': py2block.Str_value(args[0])}, {}, {
+    return block("sensor_current_gesture2", func.lineno, {'gesture': py2block.Str_value(args[0])}, {}, {
         "inline": "true"
-    })];
+    });
 }
 
 pbc.moduleFunctionD.get('compass')['calibrate'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
