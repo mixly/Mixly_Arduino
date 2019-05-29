@@ -2471,7 +2471,6 @@ Blockly.blynk_NOTIFY='Send Notify';
 Blockly.blynk_USB_SERVER_INFO='USB连接模式';
 Blockly.IICSCAN='IIC设备地址查找';
 Blockly.blynk_smartconfig='Smart Config';
-Blockly.blynk_QR='Scan the QR code to get info';
 Blockly.blynk_terminal='Terminal';
 Blockly.blynk_IOT_terminal_get='Get String From Terminal';
 Blockly.blynk_VIDEOURL='Video URL';

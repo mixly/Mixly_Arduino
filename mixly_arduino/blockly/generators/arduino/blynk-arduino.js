@@ -6,9 +6,7 @@ var blynk_timer=false;
 Blockly.Arduino.blynk_iot_auth = function() {
 	return '';
 };
-Blockly.Arduino.blynk_QR = function() {
-	return "";
-};
+
 
 //物联网-wifi信息-uno
 Blockly.Arduino.blynk_server = function() {

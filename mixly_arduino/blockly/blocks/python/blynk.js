@@ -15,15 +15,6 @@ var HW_TYPE = [
 ["WIFI", "WIFI"]
 ];
 //物联网-服务器信息
-Blockly.Blocks.blynk_QR = {
-  init: function() {
-    this.setColour(Blockly.Blocks.blynk.HUE1);
-    this.appendDummyInput("").appendField(new Blockly.FieldImage("../../media/blynk/QR.png", 50, 50)).appendField(Blockly.blynk_QR);
-    this.setTooltip();
-    this.setHelpUrl();
-  }
-};
-//物联网-服务器信息
 Blockly.Blocks.blynk_usb_server = {
   init: function() {
     this.setColour(Blockly.Blocks.blynk.HUE1);

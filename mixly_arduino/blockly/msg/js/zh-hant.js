@@ -2507,7 +2507,6 @@ Blockly.blynk_NOTIFY='發送通知';
 Blockly.blynk_USB_SERVER_INFO='USB連接模式';
 Blockly.IICSCAN='IIC設備位址查找';
 Blockly.blynk_smartconfig='一鍵配網';
-Blockly.blynk_QR='掃碼學習';
 Blockly.blynk_terminal='終端元件顯示';
 Blockly.blynk_IOT_terminal_get='從終端獲取字串';
 Blockly.blynk_VIDEOURL='視頻流';
