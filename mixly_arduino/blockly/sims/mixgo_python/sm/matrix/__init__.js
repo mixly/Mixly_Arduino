@@ -72,6 +72,7 @@ var $builtinmodule = function(name) {
                     }
                 }
             }
+            sm.updateSnapshot();
         };
         bf.text = function(text, x, y){
             for(var i = 0; i < text.length; i++){
@@ -218,8 +219,8 @@ var $builtinmodule = function(name) {
                         clearScreen();
                     }
                     clearScreen();
-                    sm.time += speed_ms;
                     bf.text(message.v, parseInt(pos,10), 0);
+                    sm.time += speed_ms;
                 },30);
             });
         }

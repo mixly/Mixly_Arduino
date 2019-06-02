@@ -138,7 +138,7 @@ var codeProcessor = {
 var smCodeProcessor = {
     //1. import XXX ==> import sm_XXX
     processImport: function (code) {
-        var microbitModuleArr = ['microbit', 'music', 'radio', 'neopixel', 'speech'];
+        var microbitModuleArr = ['mixgo', 'matrix', 'music', 'radio', 'neopixel', 'machine', 'time', 'servo'];
         var codeArr = code.replace('\r\n', '\n').split('\n');
         var usedModuleSet = new Set();
         for (var i = 0; i < codeArr.length; i++) {
