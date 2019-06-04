@@ -117,13 +117,13 @@ Blockly.Arduino.group_stepper_move = function () {
 };
 
 Blockly.Arduino.display_rgb_show=function(){
-  var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_rgbpin = this.getFieldValue('PIN');
   var code ='rgb_display_'+dropdown_rgbpin+'.show();\n';
   return code;
 };
 
 Blockly.Arduino.display_rgb_init=function(){
-  var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_rgbpin = this.getFieldValue('PIN');
   var value_ledcount = Blockly.Arduino.valueToCode(this, 'LEDCOUNT', Blockly.Arduino.ORDER_ATOMIC);
   var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness',Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
@@ -133,7 +133,7 @@ Blockly.Arduino.display_rgb_init=function(){
   return '';
 };
 Blockly.Arduino.display_rgb=function(){
-  var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_rgbpin = this.getFieldValue('PIN');
   var value_led = Blockly.Arduino.valueToCode(this, '_LED_', Blockly.Arduino.ORDER_ATOMIC);
   var value_rvalue = Blockly.Arduino.valueToCode(this, 'RVALUE', Blockly.Arduino.ORDER_ATOMIC);
   var value_gvalue = Blockly.Arduino.valueToCode(this, 'GVALUE', Blockly.Arduino.ORDER_ATOMIC);
@@ -144,7 +144,7 @@ Blockly.Arduino.display_rgb=function(){
 };
 
 Blockly.Arduino.display_rgb2=function(){
-  var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_rgbpin = this.getFieldValue('PIN');
   var value_led = Blockly.Arduino.valueToCode(this, '_LED_', Blockly.Arduino.ORDER_ATOMIC);
   var colour_rgb_led_color = this.getFieldValue('RGB_LED_COLOR');
   var color = goog.color.hexToRgb(colour_rgb_led_color);
@@ -153,7 +153,7 @@ Blockly.Arduino.display_rgb2=function(){
 };
 
 Blockly.Arduino.display_rgb_rainbow1=function(){
-  var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_rgbpin = this.getFieldValue('PIN');
   var wait_time = Blockly.Arduino.valueToCode(this, 'WAIT',Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();\n';
   var funcName2 = 'Wheel';
@@ -176,7 +176,7 @@ Blockly.Arduino.display_rgb_rainbow1=function(){
 };
 
 Blockly.Arduino.display_rgb_rainbow2=function(){
-  var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_rgbpin = this.getFieldValue('PIN');
   var wait_time = Blockly.Arduino.valueToCode(this, 'WAIT',Blockly.Arduino.ORDER_ATOMIC);
   var funcName2 = 'Wheel';
   var code2  = 'uint32_t Wheel(byte WheelPos) {\n';
@@ -205,7 +205,7 @@ Blockly.Arduino.display_rgb_rainbow2=function(){
   return code;
 };
 Blockly.Arduino.display_rgb_rainbow3=function(){
-  var dropdown_rgbpin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_rgbpin = this.getFieldValue('PIN');
   var rainbow_color = Blockly.Arduino.valueToCode(this, 'rainbow_color',Blockly.Arduino.ORDER_ATOMIC);
   var type = this.getFieldValue('TYPE');
   var funcName2 = 'Wheel';

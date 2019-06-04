@@ -47,7 +47,7 @@ Blockly.Blocks.servo_writeMicroseconds = {
 Blockly.Blocks.servo_read_degrees = {
   init: function() {
     this.setColour(Blockly.Blocks.actuator.HUE);
-     this.appendDummyInput("")
+    this.appendDummyInput("")
     .appendField(Blockly.MIXLY_SERVO)
     .appendField(Blockly.MIXLY_PIN)
     .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN");
@@ -222,10 +222,9 @@ Blockly.Blocks.display_rgb_init = {
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB)
-    this.appendValueInput("PIN", Number)
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_PIN);
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+    .setAlign(Blockly.ALIGN_RIGHT);
     this.appendValueInput("LEDCOUNT")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
@@ -246,10 +245,9 @@ Blockly.Blocks.display_rgb = {
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB)
-    this.appendValueInput("PIN", Number)
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_PIN);
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+    .setAlign(Blockly.ALIGN_RIGHT);
     this.appendValueInput("_LED_")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
@@ -266,7 +264,6 @@ Blockly.Blocks.display_rgb = {
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
     .appendField(Blockly.MIXLY_RGB_B);
-
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -278,10 +275,9 @@ Blockly.Blocks.display_rgb2 = {
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB)
-    this.appendValueInput("PIN", Number)
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_PIN);
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+    .setAlign(Blockly.ALIGN_RIGHT);
     this.appendValueInput("_LED_")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
@@ -306,10 +302,9 @@ Blockly.Blocks.display_rgb_rainbow1 = {
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB)
-    this.appendValueInput("PIN", Number)
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_PIN);
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+    .setAlign(Blockly.ALIGN_RIGHT);
     this.appendValueInput("WAIT")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
@@ -322,20 +317,18 @@ Blockly.Blocks.display_rgb_rainbow1 = {
 
 Blockly.Blocks.display_rgb_rainbow2 = {
   init: function () {
-    this.setColour(Blockly.Blocks.actuator.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_RGB)
-    this.appendValueInput("PIN", Number)
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_PIN);
-    this.appendValueInput("WAIT")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_RGBdisplay_rgb_rainbow2);
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+   this.appendDummyInput("")
+   .appendField(Blockly.MIXLY_RGB)
+   .appendField(Blockly.MIXLY_PIN)
+   .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+   .setAlign(Blockly.ALIGN_RIGHT);
+   this.appendValueInput("WAIT")
+   .setCheck(Number)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField(Blockly.MIXLY_RGBdisplay_rgb_rainbow2);
+   this.setInputsInline(true);
+   this.setPreviousStatement(true, null);
+   this.setNextStatement(true, null);
 }
 };
 
@@ -345,10 +338,9 @@ Blockly.Blocks.display_rgb_rainbow3 = {
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB)
-    this.appendValueInput("PIN", Number)
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_PIN);
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+    .setAlign(Blockly.ALIGN_RIGHT);
     this.appendDummyInput("").appendField(new Blockly.FieldDropdown(DISPLAY_RAINBOW_TYPE), "TYPE");
     this.appendValueInput("rainbow_color")
     .setCheck(Number)
@@ -364,11 +356,10 @@ Blockly.Blocks.display_rgb_show = {
     init: function () {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_RGB_SHOW)
-        this.appendValueInput("PIN", Number)
-        .setCheck(Number)
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.MIXLY_PIN);
+        .appendField(Blockly.MIXLY_RGB)
+        .appendField(Blockly.MIXLY_PIN)
+        .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+        .setAlign(Blockly.ALIGN_RIGHT);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
