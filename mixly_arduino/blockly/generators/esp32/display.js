@@ -243,7 +243,7 @@ Blockly.Python['display_clear'] = function(block) {
 };
 
 Blockly.Python.display_use_i2c_init = function () {
- Blockly.Python.definitions_['import_machine'] = 'import machine';
+  Blockly.Python.definitions_['import_machine'] = 'import machine';
   Blockly.Python.definitions_['import_ssd1306'] = 'import ssd1306';
   var i2csub =Blockly.Python.valueToCode(this, 'I2CSUB',Blockly.Python.ORDER_ATOMIC);
   var sub =Blockly.Python.valueToCode(this, 'SUB',Blockly.Python.ORDER_ATOMIC);
@@ -401,6 +401,55 @@ Blockly.Python.display_animate = function() {
   var name = this.getFieldValue("ANIMATION");
   var code = 'matrix.Image.' + name; 
   return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.display_circle=function(){
+  var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+  Blockly.Python.definitions_['import_machine'] = 'import machine';
+  Blockly.Python.definitions_['import_ssd1306'] = 'import ssd1306';
+  var location_x = Blockly.Python.valueToCode(this, 'x', Blockly.Python.ORDER_ATOMIC);
+  var location_y = Blockly.Python.valueToCode(this, 'y', Blockly.Python.ORDER_ATOMIC);
+  var value_r = Blockly.Python.valueToCode(this, 'r', Blockly.Python.ORDER_ATOMIC);
+  var checkbox_fill = this.getFieldValue("fill") == 'TRUE' ? 'True' : 'False';
+  var size  = this.getFieldValue('OP');
+  switch (checkbox_fill) {
+    case "True":
+       var code = varName + '.show_fill_circle('+location_x+', '+location_y+', '+value_r+', '+ size+')\n';
+  
+       return code;
+       break;
+    case "False":
+       var code = varName +'.show_circle('+location_x+', '+location_y+', '+value_r+', '+ size+')\n';
+ 
+       return code;
+       break;
+     }
+};
+
+Blockly.Python.display_triangle=function(){
+  var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+  Blockly.Python.definitions_['import_machine'] = 'import machine';
+  Blockly.Python.definitions_['import_ssd1306'] = 'import ssd1306';
+  var location_x0 = Blockly.Python.valueToCode(this, 'x0', Blockly.Python.ORDER_ATOMIC);
+  var location_y0 = Blockly.Python.valueToCode(this, 'y0', Blockly.Python.ORDER_ATOMIC);
+  var location_x1 = Blockly.Python.valueToCode(this, 'x1', Blockly.Python.ORDER_ATOMIC);
+  var location_y1 = Blockly.Python.valueToCode(this, 'y1', Blockly.Python.ORDER_ATOMIC);
+  var location_x2 = Blockly.Python.valueToCode(this, 'x2', Blockly.Python.ORDER_ATOMIC);
+  var location_y2 = Blockly.Python.valueToCode(this, 'y2', Blockly.Python.ORDER_ATOMIC);
+  var checkbox_fill = this.getFieldValue("fill") == 'TRUE' ? 'True' : 'False';
+  var size  = this.getFieldValue('OP');
+  switch (checkbox_fill) {
+    case "True":
+       var code = varName + '.show_fill_triangle('+location_x0+', '+location_y0+', '+location_x1+', '+location_y1+', '+location_x2+', '+location_y2+', '+ size+')\n';
+  
+       return code;
+       break;
+    case "False":
+       var code = varName +'.show_triangle('+location_x0+', '+location_y0+', '+location_x1+', '+location_y1+', '+location_x2+', '+location_y2+', '+ size+')\n';
+ 
+       return code;
+       break;
+     }
 };
 
 goog.provide('Blockly.Python.display');
