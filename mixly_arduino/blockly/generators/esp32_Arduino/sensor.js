@@ -24,7 +24,7 @@ Blockly.Arduino.chaoshengbo = function () {
 
 Blockly.Arduino.DHT = function () {
   var sensor_type = this.getFieldValue('TYPE');
-  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_pin = this.getFieldValue('PIN');
   var what = this.getFieldValue('WHAT');
   Blockly.Arduino.definitions_['include_DHT'] = '#include <DHT.h>';
   //Blockly.Arduino.definitions_['define_dht_pin' + dropdown_pin] = '#define DHTPIN'+dropdown_pin +' ' + dropdown_pin ;

@@ -476,17 +476,3 @@ Blockly.Arduino.factory_declare2 = function() {
 	Blockly.Arduino.definitions_['var_'+VALUE] = VALUE;
 	return '';
 };
-Blockly.Arduino.DHT = function () {
-	var sensor_type = this.getFieldValue('TYPE');
-	var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
-	var what = this.getFieldValue('WHAT');
-	Blockly.Arduino.definitions_['include_DHT'] = '#include <DHT.h>';
-	Blockly.Arduino.definitions_['var_declare_dht' + dropdown_pin] = 'DHT dht'+dropdown_pin+'('+dropdown_pin+', '+sensor_type+');'
-	Blockly.Arduino.setups_['DHT_SETUP'+dropdown_pin] = ' dht'+dropdown_pin+'.begin();';
-	var code;
-	if(what=="temperature")
-		code= 'dht'+dropdown_pin+'.readTemperature()'
-	else
-		code= 'dht'+dropdown_pin+'.readHumidity()'
-	return [code, Blockly.Arduino.ORDER_ATOMIC];
-}

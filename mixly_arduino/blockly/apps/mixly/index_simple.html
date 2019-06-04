@@ -600,193 +600,187 @@
     </block>
     <block type="ds18b20">
       <value name="PIN">
-        <shadow type="pins_digital"></shadow>
       </value>
     </block>
     <block type="ADXL345">
     </block>
     <block type="weightSensor">
       <value name="PIN1">
-        <shadow type="pins_digital">
-          <field name="PIN">2</field></shadow>
-        </value>
-        <value name="PIN2">
-          <shadow type="pins_digital">
-            <field name="PIN">3</field></shadow>
-          </value>
-        </block>
-        <!--DS302-->
-        <block type="DS1302_init">
-          <value name="RST">
-            <shadow type="pins_digital">
-              <field name="NUM">2</field>
-            </shadow>
-          </value>
-          <value name="DAT">
-            <shadow type="pins_digital">
-              <field name="NUM">3</field>
-            </shadow>
-          </value>
-          <value name="CLK">
-            <shadow type="pins_digital">
-              <field name="NUM">4</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="DS1307_init">
-          <value name="SDA">
-            <shadow type="pins_digital">
-              <field name="PIN">2</field>
-            </shadow>
-          </value>
-          <value name="SCL">
-            <shadow type="pins_digital">
-              <field name="PIN">3</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="RTC_get_time"></block>
-        <block type="RTC_set_time">
-          <value name="hour">
-            <shadow type="math_number">
-              <field name="NUM">8</field>
-            </shadow>
-          </value>
-          <value name="minute">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="second">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="RTC_set_date">
-          <value name="year">
-            <shadow type="math_number">
-              <field name="NUM">2000</field>
-            </shadow>
-          </value>
-          <value name="month">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-          <value name="day">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-        </block>
-      </category>
-      <category id="catActuator" colour="100">
-       <block type="Mixly_motor">
-        <value name="PIN1">
-          <shadow type="pins_digital">
-            <field name="PIN">5</field>
-          </shadow>
-        </value>
-        <value name="PIN2">
-          <shadow type="pins_digital">
-            <field name="PIN">4</field>
-          </shadow>
-        </value>
-        <value name="speed">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="servo_move">
-        <value name="PIN">
-          <shadow type="pins_digital"></shadow>
-        </value>
-        <value name="DEGREE">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-        <value name="DELAY_TIME">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="servo_read_degrees">
-        <value name="PIN">
-          <shadow type="pins_digital"></shadow>
-        </value>
-      </block>
-      <block type="controls_tone">
-        <value name="PIN">
-         <shadow type="pins_digital"></shadow>
-       </value>
-       <value name="FREQUENCY">
-        <shadow type="tone_notes"></shadow>
+      </value>
+      <value name="PIN2">
       </value>
     </block>
-    <block type="controls_notone">
-      <value name="PIN">
-       <shadow type="pins_digital"></shadow>
-     </value>
-   </block>
-   <block type="display_rgb_init">
-    <value name="PIN">
-      <shadow type="pins_digital" />
-    </value>
-    <value name="LEDCOUNT">
-      <shadow type="math_number">
-        <field name="NUM">4</field>
+    <!--DS302-->
+    <block type="DS1302_init">
+      <value name="RST">
+        <shadow type="pins_digital">
+          <field name="NUM">2</field>
+        </shadow>
+      </value>
+      <value name="DAT">
+        <shadow type="pins_digital">
+          <field name="NUM">3</field>
+        </shadow>
+      </value>
+      <value name="CLK">
+        <shadow type="pins_digital">
+          <field name="NUM">4</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="DS1307_init">
+      <value name="SDA">
+        <shadow type="pins_digital">
+          <field name="PIN">2</field>
+        </shadow>
+      </value>
+      <value name="SCL">
+        <shadow type="pins_digital">
+          <field name="PIN">3</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="RTC_get_time"></block>
+    <block type="RTC_set_time">
+      <value name="hour">
+        <shadow type="math_number">
+          <field name="NUM">8</field>
+        </shadow>
+      </value>
+      <value name="minute">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="second">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="RTC_set_date">
+      <value name="year">
+        <shadow type="math_number">
+          <field name="NUM">2000</field>
+        </shadow>
+      </value>
+      <value name="month">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="day">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+    </block>
+  </category>
+  <category id="catActuator" colour="100">
+   <block type="Mixly_motor">
+    <value name="PIN1">
+      <shadow type="pins_digital">
+        <field name="PIN">5</field>
       </shadow>
     </value>
-    <value name="Brightness">
-      <shadow type="math_number">
-        <field name="NUM">20</field>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">4</field>
       </shadow>
     </value>
-  </block>
-  <block type="display_rgb">
-    <value name="PIN">
-      <shadow type="pins_digital" />
-    </value>
-    <value name="_LED_">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="RVALUE">
+    <value name="speed">
       <shadow type="math_number">
         <field name="NUM">0</field>
       </shadow>
     </value>
-    <value name="GVALUE">
+  </block>
+  <block type="servo_move">
+    <value name="PIN">
+    </value>
+    <value name="DEGREE">
       <shadow type="math_number">
         <field name="NUM">0</field>
       </shadow>
     </value>
-    <value name="BVALUE">
+    <value name="DELAY_TIME">
       <shadow type="math_number">
         <field name="NUM">0</field>
       </shadow>
     </value>
   </block>
-  <block type="display_rgb2">
+  <block type="servo_read_degrees">
     <value name="PIN">
-      <shadow type="pins_digital" />
-    </value>
-    <value name="_LED_">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
+      <shadow type="pins_digital"></shadow>
     </value>
   </block>
-  <block type="display_rgb_show">
+  <block type="controls_tone">
     <value name="PIN">
-      <shadow type="pins_digital" />
-    </value>
-  </block>
+     <shadow type="pins_digital"></shadow>
+   </value>
+   <value name="FREQUENCY">
+    <shadow type="tone_notes"></shadow>
+  </value>
+</block>
+<block type="controls_notone">
+  <value name="PIN">
+   <shadow type="pins_digital"></shadow>
+ </value>
+</block>
+<block type="display_rgb_init">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="LEDCOUNT">
+    <shadow type="math_number">
+      <field name="NUM">4</field>
+    </shadow>
+  </value>
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_rgb">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="_LED_">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="RVALUE">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="GVALUE">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="BVALUE">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_rgb2">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="_LED_">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_rgb_show">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+</block>
 </category>
 <category id="catMonitor" colour="180">
   <block type="group_lcd_init">
@@ -1417,7 +1411,7 @@
     <block type="factory_block_with_textarea"></block>
     <block type="factory_block_return_with_textarea"></block>
   </category>
- -->
+-->
 </xml>
 <script>
 	if(company_block!=null){
