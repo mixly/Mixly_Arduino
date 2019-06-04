@@ -333,7 +333,14 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../../media/mark/func2.png') no-repeat;
 	background-size: 100% auto; 
 }
-
+#\:f>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../../media/blynk/blynk.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:f>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../../media/blynk/blynk2.png') no-repeat;
+	background-size: 100% auto; 
+}
 span#span_blocks, span#span_arduino, select#languageMenu {
     font-family: 'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial', 'SimHei';
 }

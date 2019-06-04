@@ -152,3 +152,11 @@
 	background:url('../../../media/blynk/blynk2.png') no-repeat;
 	background-size: 100% auto; 
 }
+#\:k>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../../media/mark/factory.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:k>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../../media/mark/factory2.png') no-repeat;
+	background-size: 100% auto; 
+}
