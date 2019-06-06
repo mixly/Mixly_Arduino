@@ -900,7 +900,34 @@
 </block>
 <block type="display_TM1637_clearDisplay">
 </block>
-<block type="display_Matrix_Init">
+<block type="MAX7219_init">
+  <value name="PIN1">
+    <shadow type="pins_MOSI">
+      <field name="PIN">11</field>
+    </shadow>
+  </value>
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">9</field>
+    </shadow>
+  </value>
+  <value name="PIN3">
+    <shadow type="pins_SCK">
+      <field name="PIN">13</field>
+    </shadow>
+  </value>
+  <value name="hDisplays">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="vDisplays">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="HT16K33_Init">
   <value name="PIN1">
     <shadow type="pins_digital">
       <field name="PIN">2</field>
@@ -912,7 +939,7 @@
     </shadow>
   </value>
 </block>
-<block type="display_Matrix_POS">
+<block type="display_Matrix_DrawPixel">
   <value name="XVALUE">
     <shadow type="math_number">
       <field name="NUM">1</field>
@@ -923,6 +950,9 @@
       <field name="NUM">1</field>
     </shadow>
   </value>
+  <value name="STAT">
+    <shadow type="inout_highlow"></shadow>
+  </value>
 </block>
 <block type="display_Matrix_Rotation">
 </block>
@@ -932,19 +962,31 @@
       <field name="TEXT">Mixly</field>
     </shadow>
   </value>
+  <value name="Speed">
+    <shadow type="math_number">
+      <field name="NUM">300</field>
+    </shadow>
+  </value>
 </block>
 <block type="display_Matrix_DisplayChar">
   <value name="LEDArray">
-    <block type="display_Matrix_LedArray">
-    </block>
+    <block type="display_Matrix_LedArray"></block>
   </value>
 </block>
 <block type="Matrix_img">
 </block>
-<block type="display_Matrix_CLEAR">
+<block type="display_Matrix_fillScreen">
+</block>
+<block type="display_Matrix_Brightness">
+ <value name="Brightness">
+  <shadow type="math_number">
+    <field name="NUM">5</field>
+  </shadow>
+</value>
 </block>
 </category>
-<sep></sep>
+<sep>
+</sep>
 <category id="catVar" colour="330" custom="VARIABLE">
 </category>
 <category id="catFun" custom="PROCEDURE" colour="290"></category>

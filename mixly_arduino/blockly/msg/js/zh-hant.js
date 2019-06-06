@@ -749,8 +749,7 @@ catMonitor:"顯示器",
 catLCD:"LCD顯示屏",
 cat4Digitdisplay:"四位數碼管",
 catOLED:"OLED顯示屏",
-catHT16K33:"HT16K33點陣屏",
-catMax7219:"MAX7219點陣屏",
+catMatrix:"點陣屏",
 catVar:"變數",
 catFun:"函數",
 catEthernet:"以太網",
@@ -772,8 +771,7 @@ catTuple:"元組",
 catIot:"物聯網",
 catSet:"集合",
 catData:"數據",
-catHardware:"硬件交互",
-catAI:"人工智慧"
+catHardware:"硬件交互"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='返回高電平或低電平';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='返回指定管脚的電平值';
@@ -883,9 +881,8 @@ Blockly.MIXLY_TOOLTIP_4digitdisplay_power = '設定TM1650四比特數碼管顯�
 Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString = 'TM1650四比特數碼管顯示字串（超過四比特則滾動顯示）';
 Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot = '在TM1650四比特數碼管指定位置顯示小數點';
 Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS = '設定TM1637的亮度';
- Blockly.MIXLY_DISPLAY_TM1637_Time_Point='時鐘點 設為';
+Blockly.MIXLY_DISPLAY_TM1637_Time_Point='時鐘點 設為';
 Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT = '初始化HK16T33 8*8點陣屏';
-Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS = '點陣屏單點操作，XY軸取值範圍1-8';
 Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = '點陣屏顯示方向旋轉';
 Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT = '每次顯示一個字元，依次顯示';
 Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_LEDARRAY = '點亮點陣屏上的對應位置';
@@ -1127,9 +1124,8 @@ Blockly.MIXLY_SPEED='速度';
 Blockly.MIXLY_BRIGHTNESS='亮度';
 Blockly.MIXLY_MAX7219_BRIGHTNESS_TOOLTIP='亮度範圍0~15'
 Blockly.MIXLY_MAX7219_LEDARRAY='圖案變量';
-Blockly.MIXLY_MAX7219='MAX7219點陣屏幕';
 Blockly.MIXLY_MAX7219_INIT='MAX7219點陣初始化';
-Blockly.MIXLY_MAX7219_IMG='LED點陣(MAX7219)預設圖案';
+Blockly.MIXLY_MAX7219_IMG='點陣預設圖案';
 Blockly.MIXLY_MAX7219_CLEAR = 'LED點陣(MAX7219)清屏';
 Blockly.MIXLY_MAX7219_HDISPALY='水平點陣屏數';
 Blockly.MIXLY_MAX7219_VDISPALY='豎直點陣屏數';
@@ -1138,8 +1134,7 @@ Blockly.MAX7219_FILLSCREEN_OFF='全滅';
 Blockly.MAX7219_SHUTDOWN_ON='關閉屏幕';
 Blockly.MAX7219_SHUTDOWN_OFF='開啟屏幕';
 Blockly.MIXLY_MAX7219_NO='屏幕序號';
-Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR = Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR;
-Blockly.MAX7219_INIT_TOOLTIP = '初始化MAX7219 8*8點陣屏';
+Blockly.MAX7219_INIT_TOOLTIP = '初始化點陣屏';
 Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_STRING = '按一定速度逐個顯示字符串中的每個字符';
 Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_PREDEFARR = '返回預先定義的圖案';
 //TM1637
@@ -2429,10 +2424,6 @@ Blockly.OLED_bold='加粗';
 Blockly.BIG='大';
 Blockly.MIDDLE='中';
 Blockly.SMALL='小';
-Blockly.OLED_DEGREE0='0度';
-Blockly.OLED_DEGREE90='90度';
-Blockly.OLED_DEGREE180='180度';
-Blockly.OLED_DEGREE270='270度';
 Blockly.OLED_BITMAP='顯示圖像(漢字)';
 Blockly.OLED_BITMAP_NAME='字模名稱';
 Blockly.OLED_BITMAP_DATA='字模數據';

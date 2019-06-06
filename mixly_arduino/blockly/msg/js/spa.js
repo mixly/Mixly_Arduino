@@ -751,8 +751,7 @@ var MSG = {
 	cat4Digitdisplay:"Digit Display",
 	catWS2812:"WS2812",
 	catOLED:"OLED Screen",
-	catHT16K33:"HT16K33",
-	catMax7219:"MAX7219",
+	catMatrix:"Matrix",
 	catVar: "Variables",
 	catFun: "Funciones",
 	catEthernet:"Ethernet",
@@ -774,8 +773,7 @@ var MSG = {
 	catIot:"IOT",
 	catSet:"Set",
 	catData:"Data",
-	catHardware:"Hardware",
-	catAI:"AI"
+	catHardware:"Hardware"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='Devuelve alta o baja tensión.';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='Devuelve un valor digital de un Pin específico';
@@ -887,7 +885,6 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = 'Detiene el sonido.';
  Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS = 'Establece el brillo de TM1637';
  Blockly.MIXLY_DISPLAY_TM1637_Time_Point='Punto de reloj Establecer en';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT = 'Inicializar HK16T33 8 * 8 Matrix Screen';
- Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS = 'Operación de punto único de la pantalla de matriz de puntos, rango del valor del eje XY 1-8';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = 'Girar matriz Dirección de visualización de pantalla';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT = 'Muestra un personaje a la vez';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_LEDARRAY = 'Ilumina la posición correspondiente en la pantalla de matriz de puntos';
@@ -908,8 +905,6 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = 'Detiene el sonido.';
  Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_READ = 'Lea el siguiente byte recibido del servidor al que está conectado el cliente';
  Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = 'Enviar una solicitud GET a la dirección especificada';
  Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = 'Conversión de tipo obligatoria de constantes o variables.';
-//add max7219 clear tooltip 2019-1-10
-Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR = Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR;
 //translated by zyc in 2018-12-7
 Blockly.LUXE_LED='LED #';
 Blockly.LUXE_MOTOR='Motor #';

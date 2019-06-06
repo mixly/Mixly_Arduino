@@ -1358,11 +1358,11 @@
 <block type="display_TM1637_clearDisplay">
 </block>
 </category>
-<category id="catMax7219" colour="180">
+<category id="catMatrix">
   <block type="MAX7219_init">
     <value name="PIN1">
       <shadow type="pins_MOSI">
-        <field name="PIN">23</field>
+        <field name="PIN">11</field>
       </shadow>
     </value>
     <value name="PIN2">
@@ -1372,7 +1372,7 @@
     </value>
     <value name="PIN3">
       <shadow type="pins_SCK">
-        <field name="PIN">18</field>
+        <field name="PIN">13</field>
       </shadow>
     </value>
     <value name="hDisplays">
@@ -1386,51 +1386,62 @@
       </shadow>
     </value>
   </block>
-  <block type="MAX7219_Brightness" >
+  <block type="HT16K33_Init">
+    <value name="PIN1">
+      <shadow type="pins_digital">
+        <field name="PIN">2</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">3</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_Matrix_DrawPixel">
+    <value name="XVALUE">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="YVALUE">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="STAT">
+      <shadow type="inout_highlow"></shadow>
+    </value>
+  </block>
+  <block type="display_Matrix_Rotation">
+  </block>
+  <block type="display_Matrix_TEXT">
+    <value name="TEXT">
+      <shadow type="text">
+        <field name="TEXT">Mixly</field>
+      </shadow>
+    </value>
+    <value name="Speed">
+      <shadow type="math_number">
+        <field name="NUM">300</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_Matrix_DisplayChar">
+    <value name="LEDArray">
+      <block type="display_Matrix_LedArray"></block>
+    </value>
+  </block>
+  <block type="Matrix_img">
+  </block>
+  <block type="display_Matrix_fillScreen">
+  </block>
+  <block type="display_Matrix_Brightness">
    <value name="Brightness">
     <shadow type="math_number">
       <field name="NUM">5</field>
     </shadow>
   </value>
-</block>
-<block type="MAX7219_drawPixel">
-  <value name="XVALUE">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="YVALUE">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-</block>
-<block type="MAX7219_fillScreen" >
-</block>
-<block type="MAX7219_Rotation">
-  <value name="NUM">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-</block>
-<block type="MAX7219_DisplayChar">
-  <value name="LEDArray">
-    <block type="display_Matrix_LedArray">
-    </block>
-  </value>
-</block>
-<block type="MAX7219_scrollMessage">
- <value name="VALUE">
-  <shadow type="text">
-    <field name="TEXT">abcd</field>
-  </shadow>
-</value>
-<value name="Speed">
-  <shadow type="math_number">
-    <field name="NUM">300</field>
-  </shadow>
-</value>
 </block>
 </category>
 </category>

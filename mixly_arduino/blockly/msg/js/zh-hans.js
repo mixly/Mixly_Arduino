@@ -752,8 +752,7 @@ var MSG = {
 	catLCD:"LCD显示屏",
 	cat4Digitdisplay:"四位数码管",
 	catOLED:"OLED显示屏",
-	catHT16K33:"HT16K33点阵屏",
-	catMax7219:"MAX7219点阵屏",
+	catMatrix:"点阵屏",
 	catVar: "变量",
 	catFun: "函数",
 	catEthernet:"以太网",
@@ -775,8 +774,7 @@ var MSG = {
 	catIot:"物联网",
 	catSet:"集合",
 	catData:"数据",
-	catHardware:"硬件交互",
-	catAI:"人工智能"
+	catHardware:"硬件交互"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='返回高电平或低电平';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='返回指定管脚的电平值';
@@ -889,7 +887,6 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = '停止播放声音。';
  Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS = '设置TM1637的亮度';
  Blockly.MIXLY_DISPLAY_TM1637_Time_Point='时钟点 设为';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT = '初始化HK16T33 8*8点阵屏';
- Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS = '点阵屏单点操作，XY轴取值范围1-8';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = '点阵屏显示方向旋转';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT = '每次显示一个字符，依次显示';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_LEDARRAY = '点亮点阵屏上的对应位置';
@@ -1091,9 +1088,9 @@ Blockly.MIXLY_CONTROL_END_PROGRAM = "停止程序";
 Blockly.MIXLY_CONTROL_NOTES = '注释:';
 
 //oled
-Blockly.Msg.texttodisplay = "显示文本：";
-Blockly.Msg.OLEDDISPLAY = "显示：";
-Blockly.Msg.todisplay = "显示：";
+Blockly.Msg.texttodisplay = "显示文本";
+Blockly.Msg.OLEDDISPLAY = "显示";
+Blockly.Msg.todisplay = "显示";
 Blockly.Msg.rawx = "行坐标x:(最大127)";
 Blockly.Msg.liney = "列坐标y:(最大63)";
 Blockly.Msg.line1 = "第一行";
@@ -1134,16 +1131,17 @@ Blockly.MIXLY_90DEGREE='90度';
 Blockly.MIXLY_180DEGREE='180度';
 Blockly.MIXLY_270DEGREE='270度';
 
-//MAX7219
+//点阵屏
+Blockly.MIXLY_MATRIX_TYPE='点阵类型';
+Blockly.MIXLY_MATRIX_NAME='点阵名称';
 Blockly.MIXLY_MAX7219_INIT_NUM='点阵模块数量';
-Blockly.MIXLY_MAX7219_PUTSTR='MAX7219点阵屏幕滚动显示';
+Blockly.MIXLY_MAX7219_PUTSTR='点阵屏幕滚动显示';
 Blockly.MIXLY_SPEED='速度';
 Blockly.MIXLY_BRIGHTNESS='亮度';
 Blockly.MIXLY_MAX7219_BRIGHTNESS_TOOLTIP='亮度范围0~15'
 Blockly.MIXLY_MAX7219_LEDARRAY='图案变量';
-Blockly.MIXLY_MAX7219='MAX7219点阵屏幕';
 Blockly.MIXLY_MAX7219_INIT='MAX7219点阵初始化';
-Blockly.MIXLY_MAX7219_IMG='LED点阵(MAX7219)预设图案';
+Blockly.MIXLY_MAX7219_IMG='点阵预设图案';
 Blockly.MIXLY_MAX7219_HDISPALY='水平点阵屏数';
 Blockly.MIXLY_MAX7219_VDISPALY='竖直点阵屏数';
 Blockly.MAX7219_FILLSCREEN_ON='全亮';
@@ -1151,8 +1149,7 @@ Blockly.MAX7219_FILLSCREEN_OFF='全灭';
 Blockly.MAX7219_SHUTDOWN_ON='关闭屏幕';
 Blockly.MAX7219_SHUTDOWN_OFF='开启屏幕';
 Blockly.MIXLY_MAX7219_NO='屏幕序号';
-Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR = Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR;
-Blockly.MAX7219_INIT_TOOLTIP = '初始化MAX7219 8*8点阵屏';
+Blockly.MAX7219_INIT_TOOLTIP = '初始化点阵屏';
 Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_STRING = '按一定速度逐个显示字符串中的每个字符';
 Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_PREDEFARR = '返回预先定义的图案对应的数组';
 
@@ -1181,8 +1178,8 @@ Blockly.MIXLY_SETDATE = '设置日期:';
 Blockly.MIXLY_DATEFORMATE = '日期格式(年-月-日)';
 Blockly.MIXLY_TIMEFORMATE = '时间格式(时:分:秒)';
 //8*8点阵显示屏
-Blockly.MIXLY_DISPLAY_MATRIX_INIT = "HT16K33点阵屏幕初始化";
-Blockly.MIXLY_DISPLAY_MATRIX_SHOW = "HT16K33点阵屏幕";
+Blockly.MIXLY_DISPLAY_MATRIX_INIT = "HT16K33点阵初始化";
+Blockly.MIXLY_DISPLAY_MATRIX_SHOW = "HT16K33点阵";
 Blockly.MIXLY_DISPLAY_MATRIX_X = 'X轴';
 Blockly.MIXLY_DISPLAY_MATRIX_Y = 'Y轴';
 Blockly.MIXLY_DISPLAY_MATRIX_SHOWPOINT = ' 单点设为';
@@ -2471,10 +2468,6 @@ Blockly.OLED_bold='加粗';
 Blockly.BIG='大';
 Blockly.MIDDLE='中';
 Blockly.SMALL='小';
-Blockly.OLED_DEGREE0='0度';
-Blockly.OLED_DEGREE90='90度';
-Blockly.OLED_DEGREE180='180度';
-Blockly.OLED_DEGREE270='270度';
 Blockly.OLED_BITMAP='显示图像(汉字)';
 Blockly.OLED_BITMAP_NAME='字模名称';
 Blockly.OLED_BITMAP_DATA='字模数据';
@@ -2652,8 +2645,8 @@ Blockly.MPYTHON_BLYNK_SETUP_MESSAGE0 = 'Blynk 设置 %1 服务器 %2 端口 %3 �
 Blockly.MPYTHON_BLYNK_SETUP_TOOLTIP = '服务器默认为 blynk-cloud.com，端口默认为 80';
 
 Blockly.MPYTHON_BLYNK_APP_DATA_HELPURL = '';
-Blockly.MPYTHON_BLYNK_APP_DATA_MESSAGE0 = '当 从 Blynk APP 收到 虚拟管脚 V %1 的值 %2';
-Blockly.MPYTHON_BLYNK_APP_DATA_TOOLTIP = '虚拟管脚：V0 ~ V255';
+ Blockly.MPYTHON_BLYNK_APP_DATA_MESSAGE0 = '当 从 Blynk APP 收到 虚拟管脚 V %1 的值 %2';
+ Blockly.MPYTHON_BLYNK_APP_DATA_TOOLTIP = '虚拟管脚：V0 ~ V255';
 
 Blockly.MIXLY_readTempC='获取摄氏度';
 Blockly.MIXLY_readTempF='获取华氏度';
@@ -2665,7 +2658,6 @@ Blockly.MIXLY_Accel_Z ='Z轴加速度';
 Blockly.MIXLY_Gyro_X ='X轴角度';
 Blockly.MIXLY_Gyro_Y ='Y轴角度';
 Blockly.MIXLY_Gyro_Z ='Z轴角度';
-
 Blockly.MIXLY_CHOOSE_AND_GET= '选择并获取';
 Blockly.MIXLY_CHOOSE_AND_GET_ONE_FILE_NAME= '单个文件名';
 Blockly.MIXLY_CHOOSE_AND_GET_MANY_FILE_NAMES= '多个文件名';

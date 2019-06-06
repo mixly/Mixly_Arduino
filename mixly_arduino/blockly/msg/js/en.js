@@ -750,8 +750,7 @@ var MSG = {
 	cat4Digitdisplay:"Digit Display",
 	catWS2812:"WS2812",
 	catOLED:"OLED Screen",
-	catHT16K33:"HT16K33",
-	catMax7219:"MAX7219",
+	catMatrix:"Matrix",
 	catVar: "Variables",
 	catFun: "Functions",
 	catEthernet:"Ethernet",
@@ -773,8 +772,7 @@ var MSG = {
 	catIot:"IOT",
 	catSet:"Set",
 	catData:"Data",
-	catHardware:"Hardware",
-	catAI:"AI"
+	catHardware:"Hardware"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='Returns high or low voltage.';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='Returns digital value of a specific Port';
@@ -883,9 +881,8 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = 'Stop playing sound.';
  Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString = 'TM1650 four-digit tube display string (scroll over four digits)';
  Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot = 'Display decimal point at specified position of TM1650 four-digit digital tube';
  Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS = 'Set the brightness of TM1637';
-   Blockly.MIXLY_DISPLAY_TM1637_Time_Point='Time Point Set';
+ Blockly.MIXLY_DISPLAY_TM1637_Time_Point='Time Point Set';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT = 'Initialize HK16T33 8*8 Matrix Screen';
- Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_POS = 'Single point operation of dot matrix screen, range of XY axis value 1-8';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = 'Rotate Matrix Screen Display Direction';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT = 'Display one character in turn at a time';
  Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_LEDARRAY = 'Light he corresponding position on the dot matrix screen';
@@ -904,7 +901,6 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = 'Stop playing sound.';
  Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = 'Send a GET request to the specified address';
  Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = 'Mandatory type conversion of constants or variables';
 //add max7219 clear tooltip 2019-1-10
-Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR = Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR;
 //end
 Blockly.LUXE_LED='LED #';
 Blockly.LUXE_MOTOR='Motor #';
@@ -1135,7 +1131,6 @@ Blockly.MIXLY_SPEED='speed';
 Blockly.MIXLY_BRIGHTNESS='brightness';
 Blockly.MIXLY_MAX7219_BRIGHTNESS_TOOLTIP='brightness Range0~15'
 Blockly.MIXLY_MAX7219_LEDARRAY='pattern array';
-Blockly.MIXLY_MAX7219='MAX7219 LED dot matrix';
 Blockly.MIXLY_MAX7219_INIT='Initialize LED(MAX7219) dot matrix';
 Blockly.MIXLY_MAX7219_IMG='Presupposition pattern';
 Blockly.MIXLY_MAX7219_HDISPALY='水平点阵屏数';
@@ -1145,7 +1140,6 @@ Blockly.MAX7219_FILLSCREEN_OFF='ALL OFF';
 Blockly.MAX7219_SHUTDOWN_ON='Turn On Screen';
 Blockly.MAX7219_SHUTDOWN_OFF='Turn Off Screen';
 Blockly.MIXLY_MAX7219_NO='Screen No';
-Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR = Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_CLEAR;
 Blockly.MAX7219_INIT_TOOLTIP = 'Initialize LED(MAX7219) dot matrix ';
 Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_STRING = '按一定速度逐个显示字符串中的每个字符';
 Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_PREDEFARR = '返回预先定义的图案对应的数组';
@@ -2399,10 +2393,6 @@ Blockly.OLED_bold='Bold';
 Blockly.BIG='Large';
 Blockly.MIDDLE='Middle';
 Blockly.SMALL='Small';
-Blockly.OLED_DEGREE0='0 Degree';
-Blockly.OLED_DEGREE90='90 Degree';
-Blockly.OLED_DEGREE180='180 Degree';
-Blockly.OLED_DEGREE270='270 Degree';
 Blockly.OLED_BITMAP='Show Bitmap';
 Blockly.OLED_BITMAP_NAME='字模名称';
 Blockly.OLED_BITMAP_DATA='字模数据';
