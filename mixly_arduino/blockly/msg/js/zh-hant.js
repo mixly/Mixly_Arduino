@@ -772,7 +772,8 @@ catTuple:"元組",
 catIot:"物聯網",
 catSet:"集合",
 catData:"數據",
-catHardware:"硬件交互"
+catHardware:"硬件交互",
+catAI:"人工智慧"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='返回高電平或低電平';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='返回指定管脚的電平值';
@@ -2557,3 +2558,27 @@ Blockly.MIXLY_Gyro_X ='X軸角速度';
 Blockly.MIXLY_Gyro_Y ='Y軸角速度';
 Blockly.MIXLY_Gyro_Z ='Z軸角速度';
 
+Blockly.MIXLY_CHOOSE_AND_GET= '選擇並獲取';
+Blockly.MIXLY_CHOOSE_AND_GET_ONE_FILE_NAME= '單個檔名';
+Blockly.MIXLY_CHOOSE_AND_GET_MANY_FILE_NAMES= '多個檔名';
+Blockly.MIXLY_CHOOSE_AND_GET_DIR= '檔案目錄';
+
+
+Blockly.MIXLY_AipImageClassify = '圖像識別';
+Blockly.MIXLY_AipSpeech = '語音技術';
+Blockly.MIXLY_AipImageCensor = '影像稽核';
+Blockly.MIXLY_AipOcr = '文字識別';
+Blockly.MIXLY_AipNlp = '自然語言處理';
+Blockly.MIXLY_Client = '用戶端';
+Blockly.MIXLY_AipSpeech_synthesis = '語音合成';
+Blockly.MIXLY_AIP_ATTR = '内容';
+Blockly.MIXLY_AIP_FUNC = '功能';
+Blockly.MIXLY_AipSpeech_synthesis_TOOLTIP = '將一段文字合成為語音。内容為一個默認為空的字典，包括spd（語速，取值為0~9，默認為5）、pit（音調，取值為0~9，默認為5）、vol（音量，取值為0~15，默認為5）、per（發音人，0為女聲，1為男聲）';
+Blockly.MIXLY_AipImageClassify_advancedGeneral = '通用物體';
+Blockly.MIXLY_AipImageClassify_dishDetect = '菜品識別';
+Blockly.MIXLY_AipImageClassify_carDetect = '車輛識別';
+Blockly.MIXLY_AipImageClassify_animalDetect = '動物識別';
+Blockly.MIXLY_AipImageClassify_plantDetect = '植物識別';
+Blockly.MIXLY_AipImageClassify_logoSearch = 'logo商標識別';
+Blockly.MIXLY_AipImageClassify_Image = '圖片';
+Blockly.MIXLY_AipImageClassify_advancedGeneral_TOOLTIP = '識別圖片，返回的數據為字典，其中result為結果內容。';

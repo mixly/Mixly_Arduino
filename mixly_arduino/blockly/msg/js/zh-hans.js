@@ -775,7 +775,8 @@ var MSG = {
 	catIot:"物联网",
 	catSet:"集合",
 	catData:"数据",
-	catHardware:"硬件交互"
+	catHardware:"硬件交互",
+	catAI:"人工智能"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='返回高电平或低电平';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='返回指定管脚的电平值';
@@ -2651,8 +2652,8 @@ Blockly.MPYTHON_BLYNK_SETUP_MESSAGE0 = 'Blynk 设置 %1 服务器 %2 端口 %3 �
 Blockly.MPYTHON_BLYNK_SETUP_TOOLTIP = '服务器默认为 blynk-cloud.com，端口默认为 80';
 
 Blockly.MPYTHON_BLYNK_APP_DATA_HELPURL = '';
- Blockly.MPYTHON_BLYNK_APP_DATA_MESSAGE0 = '当 从 Blynk APP 收到 虚拟管脚 V %1 的值 %2';
- Blockly.MPYTHON_BLYNK_APP_DATA_TOOLTIP = '虚拟管脚：V0 ~ V255';
+Blockly.MPYTHON_BLYNK_APP_DATA_MESSAGE0 = '当 从 Blynk APP 收到 虚拟管脚 V %1 的值 %2';
+Blockly.MPYTHON_BLYNK_APP_DATA_TOOLTIP = '虚拟管脚：V0 ~ V255';
 
 Blockly.MIXLY_readTempC='获取摄氏度';
 Blockly.MIXLY_readTempF='获取华氏度';
@@ -2664,3 +2665,27 @@ Blockly.MIXLY_Accel_Z ='Z轴加速度';
 Blockly.MIXLY_Gyro_X ='X轴角度';
 Blockly.MIXLY_Gyro_Y ='Y轴角度';
 Blockly.MIXLY_Gyro_Z ='Z轴角度';
+
+Blockly.MIXLY_CHOOSE_AND_GET= '选择并获取';
+Blockly.MIXLY_CHOOSE_AND_GET_ONE_FILE_NAME= '单个文件名';
+Blockly.MIXLY_CHOOSE_AND_GET_MANY_FILE_NAMES= '多个文件名';
+Blockly.MIXLY_CHOOSE_AND_GET_DIR= '文件目录';
+
+Blockly.MIXLY_AipImageClassify = '图像识别';
+Blockly.MIXLY_AipSpeech = '语音技术';
+Blockly.MIXLY_AipImageCensor = '图像审核';
+Blockly.MIXLY_AipOcr = '文字识别';
+Blockly.MIXLY_AipNlp = '自然语言处理';
+Blockly.MIXLY_Client = '客户端';
+Blockly.MIXLY_AipSpeech_synthesis = '语音合成';
+Blockly.MIXLY_AIP_ATTR = '属性';
+Blockly.MIXLY_AIP_FUNC = '功能';
+Blockly.MIXLY_AipSpeech_synthesis_TOOLTIP = '将一段文字合成为语音。属性为一个默认为空的字典，包括spd(语速，取值为0~9，默认为5)、pit(音调，取值为0~9，默认为5)、vol(音量，取值为0~15，默认为5)、per(发音人，0为女声，1为男声)';
+Blockly.MIXLY_AipImageClassify_advancedGeneral = '通用物体';
+Blockly.MIXLY_AipImageClassify_dishDetect = '菜品识别';
+Blockly.MIXLY_AipImageClassify_carDetect = '车辆识别';
+Blockly.MIXLY_AipImageClassify_animalDetect = '动物识别';
+Blockly.MIXLY_AipImageClassify_plantDetect = '植物识别';
+Blockly.MIXLY_AipImageClassify_logoSearch = 'logo商标识别';
+Blockly.MIXLY_AipImageClassify_Image = '图片';
+Blockly.MIXLY_AipImageClassify_advancedGeneral_TOOLTIP = '识别图片，返回的数据为字典，其中result为结果内容。';

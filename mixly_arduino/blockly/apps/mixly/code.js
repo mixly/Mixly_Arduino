@@ -452,7 +452,7 @@ Code.initLanguage = function() {
     languageMenu.options.add(option);
   }
   languageMenu.addEventListener('change', Code.changeLanguage, true);
-  var categories = ['catInOut', 'catControl', 'catMath', 'catText', 'catLists', 'catMicropyLists','catDicts','catLogic','catSerialPort','catGroup','catStorage','catSensor','catActuator','catMonitor','catLCD','catOLED','cat4Digitdisplay','catHT16K33','catMax7219','catVar','catFun','catEthernet','catNetwork','catEthernet_init','catEthernet_clinet','catSense','catSense2','catLuxe', 'catGame', 'catSystem', 'catSet', 'catTurtle', 'catTuple','catIot','catData','catHardware'
+  var categories = ['catInOut', 'catControl', 'catMath', 'catText', 'catLists', 'catMicropyLists','catDicts','catLogic','catSerialPort','catGroup','catStorage','catSensor','catActuator','catMonitor','catLCD','catOLED','cat4Digitdisplay','catHT16K33','catMax7219','catVar','catFun','catEthernet','catNetwork','catEthernet_init','catEthernet_clinet','catSense','catSense2','catLuxe', 'catGame', 'catSystem', 'catSet', 'catTurtle', 'catTuple','catIot','catData','catHardware','catAI'
   ];
   for (var i = 0, cat; cat = categories[i]; i++) {
 	if(document.getElementById(cat)!=null){

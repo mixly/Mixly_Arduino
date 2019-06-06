@@ -774,7 +774,8 @@ var MSG = {
 	catIot:"IOT",
 	catSet:"Set",
 	catData:"Data",
-	catHardware:"Hardware"
+	catHardware:"Hardware",
+	catAI:"AI"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='Devuelve alta o baja tensión.';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='Devuelve un valor digital de un Pin específico';
@@ -2283,3 +2284,27 @@ Blockly.MIXLY_HANBIT_SHOW_triangle = "vértice(x0 %1,Y0 %2) (X1 %3,Y1 %4) (x2 %5
 Blockly.MIXLY_HANBIT_DRAW_TRIANGLE = "triángulo";
 
 Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = 'Devuelve el valor del sensor de luz（0~255）'
+
+Blockly.MIXLY_CHOOSE_AND_GET='Select and Get';
+Blockly.MIXLY_CHOOSE_AND_GET_ONE_FILE_NAME='single file name';
+Blockly.MIXLY_CHOOSE_AND_GET_MANY_FILE_NAMES='multiple file names';
+Blockly.MIXLY_CHOOSE_AND_GET_DIR='File Directory';
+
+Blockly.MIXLY_AipImageClassify='Image Recognition';
+Blockly.MIXLY_AipSpeech='Voice Technology';
+Blockly.MIXLY_AipImageCensor='Image Audit';
+Blockly.MIXLY_AipOcr='character recognition';
+Blockly.MIXLY_AipNlp='Natural Language Processing';
+Blockly.MIXLY_Client='Client';
+Blockly.MIXLY_AipSpeech_synthesis='speech synthesis';
+Blockly.MIXLY_AIP_ATTR='Attribute';
+Blockly.MIXLY_AIP_FUNC='Function';
+Blockly.MIXLY_AipSpeech_synthesis_TOOLTIP='synthesizes a paragraph of text into speech. The attribute is a dictionary that defaults to empty, including SPD (Speed, 0-9, 5), pit (Tone, 0-9, 5), Vol (Vol, 0-15, 5), per (Pronouncer, 0 is female, 1 is male)';
+Blockly.MIXLY_AipImageClassify_advancedGeneral='Universal Object';
+Blockly.MIXLY_AipImageClassify_dishDetect='Vegetable Recognition';
+Blockly.MIXLY_AipImageClassify_carDetect='Vehicle Recognition';
+Blockly.MIXLY_AipImageClassify_animalDetect='Animal Recognition';
+Blockly.MIXLY_AipImageClassify_plantDetect='Plant Recognition';
+Blockly.MIXLY_AipImageClassify_logoSearch='logo trademark recognition';
+Blockly.MIXLY_AipImageClassify_Image='Picture';
+Blockly.MIXLY_AipImageClassify_advanced General_TOOLTIP='Recognize the picture, return the data as a dictionary, where result is the result content. ';
