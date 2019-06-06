@@ -27,7 +27,7 @@ Blockly.Python.AI_Speech_synthesis=function(){
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var s = Blockly.Python.valueToCode(this, 'STR', Blockly.Python.ORDER_ATOMIC);
     var attr = Blockly.Python.valueToCode(this, 'ATTR', Blockly.Python.ORDER_ATOMIC);
-    var code = v + '.synthesis(' + s + ', ' + attr + ')';   
+    var code = v + '.synthesis(' + s + ', options=' + attr + ')';   
     return [code,Blockly.Python.ORDER_ATOMIC];
 };
 
