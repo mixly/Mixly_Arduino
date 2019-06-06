@@ -45,6 +45,7 @@
     <script src="../../blocks/python/tuple.js"></script>
     <script src="../../blocks/python/procedures.js"></script>
     <script src="../../blocks/mixpy_python/hardware.js"></script>
+    <script src="../../blocks/mixpy_python/ai.js"></script>
 
 	<!-- generator file -->
     <script src="../../generators/mixpy_python/pins.js"></script>
@@ -65,6 +66,7 @@
     <script src="../../generators/python/tuple.js"></script>
     <script src="../../generators/python/procedures.js"></script>
     <script src="../../generators/mixpy_python/hardware.js"></script>
+    <script src="../../generators/mixpy_python/ai.js"></script>
     <script src="js/lib/ace/ace.js" type="application/javascript"></script>
     <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
 
@@ -87,6 +89,7 @@
     <script src="../../converters/mixpy_python/data.js" type="application/javascript"></script>
     <script src="../../converters/mixpy_python/communicate.js" type="application/javascript"></script>
     <script src="../../converters/mixpy_python/hardware.js"></script>
+    <script src="../../converters/mixpy_python/ai.js"></script>
     <script src="./js/python_to_blockly.js" type="application/javascript"></script>
     <script src="js/mixpyProject.js" type="application/javascript"></script>
     <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
@@ -1860,6 +1863,65 @@
         <field name="PIN">0</field>
         </value>
       </block>
+      </category>
+      <category id="catAI" colour="205">
+       <block type="AI_ChooseAndGet">
+       </block>
+       <block type="AI_client">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">client</field>
+            </shadow>
+          </value>
+          <value name="APP_ID">
+            <shadow type="text">
+              <field name="TEXT">Enter Your APP_ID</field>
+            </shadow>
+          </value>
+          <value name="API_KEY">
+            <shadow type="text">
+              <field name="TEXT">Enter Your API_KEY</field>
+            </shadow>
+          </value>
+          <value name="SECRET_KEY">
+            <shadow type="text">
+              <field name="TEXT">Enter Your SECRET_KEY</field>
+            </shadow>
+          </value>                    
+      </block>
+      <block type="AI_Speech_synthesis">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">client</field>
+            </shadow>
+          </value>
+          <value name="STR">
+            <shadow type="text">
+              <field name="TEXT">傅老师长得帅</field>
+            </shadow>
+          </value>
+          <value name="ATTR">
+            <block type="dicts_create_with_noreturn">
+              <mutation items="0"></mutation>
+            </block>
+          </value>
+       </block>
+      <block type="AI_ImageClassify">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">client</field>
+            </shadow>
+          </value>
+          <value name="FUNC">
+            <shadow type="AI_ImageClassify_Func">
+            </shadow>
+          </value>          
+          <value name="ADDR">
+            <shadow type="text">
+              <field name="TEXT">C:/mixly.jpg</field>
+            </shadow>
+          </value>
+       </block>
       </category>
       <sep></sep>
       <category id="catVar" colour="330" custom="VARIABLE">
