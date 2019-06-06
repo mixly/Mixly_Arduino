@@ -773,7 +773,8 @@ var MSG = {
 	catIot:"IOT",
 	catSet:"Set",
 	catData:"Data",
-	catHardware:"Hardware"
+	catHardware:"Hardware",
+	catAI:"AI"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='Devuelve alta o baja tensión.';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='Devuelve un valor digital de un Pin específico';
