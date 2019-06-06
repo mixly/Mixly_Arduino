@@ -6,8 +6,8 @@ uint8_t const I2C_DELAY_USEC = 4;
 
 Matrix::Matrix(uint8_t sda_port,uint8_t scl_port)
 {
-		  SCL_pin = scl_port;
-			SDA_pin = sda_port;
+  SCL_pin = scl_port;
+  SDA_pin = sda_port;
 }
 
 void Matrix::setBrightness(uint8_t b) {
@@ -27,7 +27,7 @@ void Matrix::blinkRate(uint8_t b) {
 
 void Matrix::begin(uint8_t _addr = 0x70) {
 	IICbegin(SDA_pin,SCL_pin);  
-    constructor(8, 8);
+  constructor(8, 8);
   i2c_addr = _addr;
   i2c_addr <<= 1;
   IICstart(i2c_addr | I2C_WRITE);
@@ -38,7 +38,7 @@ void Matrix::begin(uint8_t _addr = 0x70) {
   setBrightness(15); // max brightness
 }
 
-void Matrix::writeDisplay(void) {
+void Matrix::write(void) {
   IICstart(i2c_addr | I2C_WRITE);
   IICwrite((uint8_t)0x00); // start at address $00
 
@@ -54,21 +54,23 @@ void Matrix::clear(void) {
     displaybuffer[i] = 0;
   }
 }
-
+void Matrix::fillScreen(uint16_t color){
+    fillRect(0, 0, _width, _height, color);
+}
 void Matrix::drawPixel(int16_t x, int16_t y, uint16_t color) {
   if ((y < 0) || (y >= 8)) return;
   if ((x < 0) || (x >= 8)) return;
 
   switch (getRotation()) {
-  case 1:
+    case 1:
     matrix_swap(x, y);
     x = 8 - x - 1;
     break;
-  case 2:
+    case 2:
     x = 8 - x - 1;
     y = 8 - y - 1;
     break;
-  case 3:
+    case 3:
     matrix_swap(x, y);
     y = 8 - y - 1;
     break;
@@ -94,7 +96,7 @@ void Matrix::constructor(int16_t w, int16_t h) {
 
 // draw a circle outline
 void Matrix::drawCircle(int16_t x0, int16_t y0, int16_t r, 
-			      uint16_t color) {
+ uint16_t color) {
   int16_t f = 1 - r;
   int16_t ddF_x = 1;
   int16_t ddF_y = -2 * r;
@@ -115,7 +117,7 @@ void Matrix::drawCircle(int16_t x0, int16_t y0, int16_t r,
     x++;
     ddF_x += 2;
     f += ddF_x;
-  
+
     drawPixel(x0 + x, y0 + y, color);
     drawPixel(x0 - x, y0 + y, color);
     drawPixel(x0 + x, y0 - y, color);
@@ -129,7 +131,7 @@ void Matrix::drawCircle(int16_t x0, int16_t y0, int16_t r,
 }
 
 void Matrix::drawCircleHelper( int16_t x0, int16_t y0,
-               int16_t r, uint8_t cornername, uint16_t color) {
+ int16_t r, uint8_t cornername, uint16_t color) {
   int16_t f     = 1 - r;
   int16_t ddF_x = 1;
   int16_t ddF_y = -2 * r;
@@ -165,14 +167,14 @@ void Matrix::drawCircleHelper( int16_t x0, int16_t y0,
 }
 
 void Matrix::fillCircle(int16_t x0, int16_t y0, int16_t r, 
-			      uint16_t color) {
+ uint16_t color) {
   drawFastVLine(x0, y0-r, 2*r+1, color);
   fillCircleHelper(x0, y0, r, 3, 0, color);
 }
 
 // used to do circles and roundrects!
 void Matrix::fillCircleHelper(int16_t x0, int16_t y0, int16_t r,
-				    uint8_t cornername, int16_t delta, uint16_t color) {
+  uint8_t cornername, int16_t delta, uint16_t color) {
 
   int16_t f     = 1 - r;
   int16_t ddF_x = 1;
@@ -203,8 +205,8 @@ void Matrix::fillCircleHelper(int16_t x0, int16_t y0, int16_t r,
 
 // bresenham's algorithm - thx wikpedia
 void Matrix::drawLine(int16_t x0, int16_t y0, 
-			    int16_t x1, int16_t y1, 
-			    uint16_t color) {
+ int16_t x1, int16_t y1, 
+ uint16_t color) {
   int16_t steep = abs(y1 - y0) > abs(x1 - x0);
   if (steep) {
     matrix_swap(x0, y0);
@@ -245,8 +247,8 @@ void Matrix::drawLine(int16_t x0, int16_t y0,
 
 // draw a rectangle
 void Matrix::drawRect(int16_t x, int16_t y, 
-			    int16_t w, int16_t h, 
-			    uint16_t color) {
+ int16_t w, int16_t h, 
+ uint16_t color) {
   drawFastHLine(x, y, w, color);
   drawFastHLine(x, y+h-1, w, color);
   drawFastVLine(x, y, h, color);
@@ -254,26 +256,26 @@ void Matrix::drawRect(int16_t x, int16_t y,
 }
 
 void Matrix::drawFastVLine(int16_t x, int16_t y, 
-				 int16_t h, uint16_t color) {
+ int16_t h, uint16_t color) {
   // stupidest version - update in subclasses if desired!
   drawLine(x, y, x, y+h-1, color);
 }
 
 void Matrix::drawFastHLine(int16_t x, int16_t y, 
-				 int16_t w, uint16_t color) {
+ int16_t w, uint16_t color) {
   // stupidest version - update in subclasses if desired!
   drawLine(x, y, x+w-1, y, color);
 }
 
 void Matrix::fillRect(int16_t x, int16_t y, int16_t w, int16_t h, 
-			    uint16_t color) {
+ uint16_t color) {
   // stupidest version - update in subclasses if desired!
   for (int16_t i=x; i<x+w; i++) {
     drawFastVLine(i, y, h, color); 
   }
 }
 
-void Matrix::fillScreen(uint16_t color) {
+void Matrix::write(uint16_t color) {
   fillRect(0, 0, _width, _height, color);
 }
 
@@ -294,7 +296,7 @@ void Matrix::drawRoundRect(int16_t x, int16_t y, int16_t w,
 
 // fill a rounded rectangle!
 void Matrix::fillRoundRect(int16_t x, int16_t y, int16_t w,
-				 int16_t h, int16_t r, uint16_t color) {
+ int16_t h, int16_t r, uint16_t color) {
   // smarter version
   fillRect(x+r, y, w-2*r, h, color);
 
@@ -305,8 +307,8 @@ void Matrix::fillRoundRect(int16_t x, int16_t y, int16_t w,
 
 // draw a triangle!
 void Matrix::drawTriangle(int16_t x0, int16_t y0,
-				int16_t x1, int16_t y1, 
-				int16_t x2, int16_t y2, uint16_t color) {
+  int16_t x1, int16_t y1, 
+  int16_t x2, int16_t y2, uint16_t color) {
   drawLine(x0, y0, x1, y1, color);
   drawLine(x1, y1, x2, y2, color);
   drawLine(x2, y2, x0, y0, color);
@@ -314,8 +316,8 @@ void Matrix::drawTriangle(int16_t x0, int16_t y0,
 
 // fill a triangle!
 void Matrix::fillTriangle ( int16_t x0, int16_t y0,
-				  int16_t x1, int16_t y1, 
-				  int16_t x2, int16_t y2, uint16_t color) {
+  int16_t x1, int16_t y1, 
+  int16_t x2, int16_t y2, uint16_t color) {
 
   int16_t a, b, y, last;
 
@@ -341,14 +343,14 @@ void Matrix::fillTriangle ( int16_t x0, int16_t y0,
   }
 
   int16_t
-    dx01 = x1 - x0,
-    dy01 = y1 - y0,
-    dx02 = x2 - x0,
-    dy02 = y2 - y0,
-    dx12 = x2 - x1,
-    dy12 = y2 - y1,
-    sa   = 0,
-    sb   = 0;
+  dx01 = x1 - x0,
+  dy01 = y1 - y0,
+  dx02 = x2 - x0,
+  dy02 = y2 - y0,
+  dx12 = x2 - x1,
+  dy12 = y2 - y1,
+  sa   = 0,
+  sb   = 0;
 
   // For upper part of triangle, find scanline crossings for segments
   // 0-1 and 0-2.  If y1=y2 (flat-bottomed triangle), the scanline y1
@@ -389,18 +391,50 @@ void Matrix::fillTriangle ( int16_t x0, int16_t y0,
     drawFastHLine(a, y, b-a+1, color);
   }
 }
-void Matrix::drawStr(String s){
+void Matrix::scrollMessage(String s,int displayScrollSpeed){
 	int a = s.length();
-    setTextSize(1);
+  setTextSize(1);
 	setTextWrap(false);  // we dont want text to wrap so it scrolls nicely
 	setTextColor(MATRIX_LED_ON);
 	for (int8_t x=7; x>=-a*6; x--) {
 		clear();
 		setCursor(x,0);
 		print(s);
-		writeDisplay();
-		delay(100);
-    }
+		write();
+		delay(displayScrollSpeed);
+  }
+}
+
+void Matrix::scrollMessage(int num,int displayScrollSpeed){
+  String s = String("") + num;
+  s += "";
+  int a = s.length();
+  setTextSize(1);
+  setTextWrap(false);  // we dont want text to wrap so it scrolls nicely
+  setTextColor(MATRIX_LED_ON);
+  for (int8_t x=7; x>=-a*6; x--) {
+    clear();
+    setCursor(x,0);
+    print(s);
+    write();
+    delay(displayScrollSpeed);
+  }
+}
+void Matrix::scrollMessage(float num,int displayScrollSpeed){
+  String s = String("") + num;
+  s += "";
+  int a = s.length();
+  setTextSize(1);
+  setTextWrap(false);  // we dont want text to wrap so it scrolls nicely
+  setTextColor(MATRIX_LED_ON);
+
+  for (int8_t x=7; x>=-a*6; x--) {
+    clear();
+    setCursor(x,0);
+    print(s);
+    write();
+    delay(displayScrollSpeed);
+  }
 }
 size_t Matrix::write(uint8_t c) {
   if (c == '\n') {
@@ -423,7 +457,7 @@ size_t Matrix::write(uint8_t c) {
 
 // draw a character
 void Matrix::drawChar(int16_t x, int16_t y, unsigned char c,
-			    uint16_t color, uint16_t bg, uint8_t size) {
+ uint16_t color, uint16_t bg, uint8_t size) {
 
   if((x >= _width)            || // Clip right
      (y >= _height)           || // Clip bottom
@@ -473,10 +507,10 @@ void Matrix::setTextColor(uint16_t c) {
   // to the same as fg instead of using a flag
 }
 
- void Matrix::setTextColor(uint16_t c, uint16_t b) {
-   textcolor = c;
-   textbgcolor = b; 
- }
+void Matrix::setTextColor(uint16_t c, uint16_t b) {
+ textcolor = c;
+ textbgcolor = b; 
+}
 
 void Matrix::setTextWrap(boolean w) {
   wrap = w;
@@ -491,13 +525,13 @@ void Matrix::setRotation(uint8_t x) {
   x %= 4;  // cant be higher than 3
   rotation = x;
   switch (x) {
-  case 0:
-  case 2:
+    case 0:
+    case 2:
     _width = WIDTH;
     _height = HEIGHT;
     break;
-  case 1:
-  case 3:
+    case 1:
+    case 3:
     _width = HEIGHT;
     _height = WIDTH;
     break;
@@ -512,7 +546,7 @@ void Matrix::invertDisplay(boolean i) {
 int16_t Matrix::width(void) { 
   return _width; 
 }
- 
+
 int16_t Matrix::height(void) { 
   return _height; 
 }

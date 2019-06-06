@@ -27,9 +27,11 @@ public:
   void begin(uint8_t _addr);
   void setBrightness(uint8_t b);
   void blinkRate(uint8_t b);
-  void writeDisplay(void);
+  void write(void);
   void clear(void);
-  void drawStr(String);
+  void scrollMessage(String s,int displayScrollSpeed);
+  void scrollMessage(int num, int displayScrollSpeed);
+  void scrollMessage(float num, int displayScrollSpeed);
   uint16_t displaybuffer[8]; 
   void drawPixel(int16_t x, int16_t y, uint16_t color);
   void init(uint8_t a);
@@ -41,6 +43,7 @@ public:
   void drawRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color);
   void fillRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color);
   void fillScreen(uint16_t color);
+  void write(uint16_t color);
   void drawCircle(int16_t x0, int16_t y0, int16_t r, uint16_t color);
   void drawCircleHelper(int16_t x0, int16_t y0, int16_t r, uint8_t cornername, uint16_t color);
   void fillCircle(int16_t x0, int16_t y0, int16_t r, uint16_t color);
