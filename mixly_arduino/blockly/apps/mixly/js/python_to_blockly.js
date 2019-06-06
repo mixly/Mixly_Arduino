@@ -2264,10 +2264,18 @@ PythonToBlocks.prototype.Dict = function(node)
 {
     var keys = node.keys;
     var values = node.values;
-
-    return block("dicts_create_with_noreturn", node.lineno, {},
-        this.convertElements("ADD", values)
-        , {
+    var keyList = [];
+    var valueList = [];
+    for (var i = 0; i < keys.length; i+= 1) {
+        var k = keys[i];
+        var line = this.getSourceCode().split('\n')[k.lineno - 1];
+        var colonEnd = line.indexOf(':', keys[i].col_offset);
+        keyList["KEY"+i] = line.substring(keys[i].col_offset, colonEnd).replace(/^\s+|\s+$/g,"");
+        valueList["VALUE"+i] = this.convert(values[i]);
+    }
+    return block("dicts_create_with_noreturn", node.lineno, 
+        keyList,
+        this.convertElements("ADD", values), {
             "inline": "true",
         }, {
             "@items": keys.length
