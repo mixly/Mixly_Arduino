@@ -1906,6 +1906,19 @@
             </block>
           </value>
        </block>
+      <block type="AI_Speech_asr">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">client</field>
+            </shadow>
+          </value>
+          <value name="FILE"></value>
+          <value name="ATTR">
+            <block type="dicts_create_with_noreturn">
+              <mutation items="0"></mutation>
+            </block>
+          </value>
+      </block>
       <block type="AI_ImageClassify">
           <value name="SUB">
             <shadow type="variables_get">
@@ -1920,6 +1933,118 @@
             <shadow type="text">
               <field name="TEXT">C:/mixly.jpg</field>
             </shadow>
+          </value>
+          <value name="ATTR">
+            <block type="dicts_create_with_noreturn">
+              <mutation items="0"></mutation>
+            </block>
+          </value>
+       </block>
+       <block type="AI_Ocr">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">client</field>
+            </shadow>
+          </value>
+          <value name="FUNC">
+            <shadow type="AI_Ocr_Func">
+            </shadow>
+          </value>          
+          <value name="ADDR">
+            <shadow type="text">
+              <field name="TEXT">C:/mixly.jpg</field>
+            </shadow>
+          </value>
+          <value name="ATTR">
+            <block type="dicts_create_with_noreturn">
+              <mutation items="0"></mutation>
+            </block>
+          </value>
+       </block>
+       <block type="AI_Nlp">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">client</field>
+            </shadow>
+          </value>
+          <value name="FUNC">
+            <shadow type="AI_Nlp_Func">
+            </shadow>
+          </value>          
+          <value name="STR">
+            <shadow type="text">
+              <field name="TEXT">我爱米思齐</field>
+            </shadow>
+          </value>
+          <value name="ATTR">
+            <block type="dicts_create_with_noreturn">
+              <mutation items="0"></mutation>
+            </block>
+          </value>
+       </block>
+       <block type="AI_Nlp_Sim">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">client</field>
+            </shadow>
+          </value>
+          <value name="FUNC">
+            <shadow type="AI_Nlp_Func_sim">
+            </shadow>
+          </value>          
+          <value name="STR1">
+            <shadow type="text">
+              <field name="TEXT">米思齐</field>
+            </shadow>
+          </value>
+          <value name="STR2">
+            <shadow type="text">
+              <field name="TEXT">米思皮</field>
+            </shadow>
+          </value>
+          <value name="ATTR">
+            <block type="dicts_create_with_noreturn">
+              <mutation items="0"></mutation>
+            </block>
+          </value>
+       </block>
+       <block type="AI_Nlp_Topic">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">client</field>
+            </shadow>
+          </value>        
+          <value name="STR1">
+            <shadow type="text">
+              <field name="TEXT">米思齐团队</field>
+            </shadow>
+          </value>
+          <value name="STR2">
+            <shadow type="text">
+              <field name="TEXT">米思齐团队由一群具有共同理想的学生和老师组成,他们始终致力于为开展更好的创客教育而努力。</field>
+            </shadow>
+          </value>
+       </block>
+       <block type="AI_Nlp_newsSummary">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">client</field>
+            </shadow>
+          </value>        
+          <value name="STR">
+            <shadow type="text">
+              <field name="TEXT">米思齐团队由一群具有共同理想的学生和老师组成,他们始终致力于为开展更好的创客教育而努力。</field>
+            </shadow>
+          </value>
+          <value name="LEN">
+            <shadow type="math_number">
+              <field name="NUM">20</field>
+            </shadow>
+          </value>
+          <value name="ATTR">
+            <block type="dicts_create_with_noreturn">
+              <mutation items="0"></mutation>
+            </block>
           </value>
        </block>
       </category>

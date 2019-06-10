@@ -2602,3 +2602,49 @@ Blockly.MIXLY_AipImageClassify_plantDetect='Plant Recognition';
 Blockly.MIXLY_AipImageClassify_logoSearch='logo trademark recognition';
 Blockly.MIXLY_AipImageClassify_Image='Picture';
 Blockly.MIXLY_AipImageClassify_advanced General_TOOLTIP='Recognize the picture, return the data as a dictionary, where result is the result content. ';
+Blockly.MIXLY_AipOcr_basic General='Universal Text Recognition';
+Blockly.MIXLY_AipOcr_webImage='Web Photo Text Recognition';
+Blockly.MIXLY_AipOcr_idcard='ID identification';
+Blockly.MIXLY_AipOcr_bankcard='bank card identification';
+Blockly.MIXLY_AipOcr_DrivingLicense = 'Driving License Recognition';
+Blockly.MIXLY_AipOcr_vehicleLicense = 'Vehicle License Recognition';
+Blockly.MIXLY_AipOcr_licensePlate='License Plate Recognition';
+Blockly.MIXLY_AipOcr_businessLicense = 'Business License Identification';
+Blockly.MIXLY_AipOcr_receipt='Universal Bill Recognition';
+Blockly.MIXLY_AipOcr_trainTicket='train ticket recognition';
+Blockly.MIXLY_AipOcr_taxiReceipt='Taxi Ticket Recognition';
+Blockly.MIXLY_AipOcr_form='Form Text Recognition';
+Blockly.MIXLY_AipOcr_vatInvoice='Value Added Tax Invoice Recognition';
+Blockly.MIXLY_AipOcr_passport='Passport recognition';
+Blockly.MIXLY_AipOcr_handwriting='Handwritten character recognition';
+Blockly.MIXLY_AipOcr_TOOLTIP='Recognizes text in a given type of picture, returns data as a dictionary, with words_result as the result content. ';
+Blockly.MIXLY_AipSpeech_File='Audio File';
+Blockly.MIXLY_AipSpeech_asr='Speech Recognition';
+Blockly.MIXLY_AipSpeech_ASR_TOOLTIP='Recognition of text in speech. In the attribute dictionary, the key "dev_pid" corresponds to language encoding. 1536 and 1537 are Putonghua, 1737 are English, 1637 are Cantonese and 1837 are Sichuan dialects. The data returned is a dictionary, where result is the result content. ';
+Blockly.MIXLY_AipNlp_lexer='Lexical Analysis';
+Blockly.MIXLY_AipNlp_depParser='Dependent Parsing';
+Blockly.MIXLY_AipNlp_wordEmbedding='vector representation';
+Blockly.MIXLY_AipNlp_dnnlm='DNN Language Model';
+Blockly.MIXLY_AipNlp_wordSimEmbedding='Semantic Similarity';
+Blockly.MIXLY_AipNlp_simnet='short text similarity';
+Blockly.MIXLY_AipNlp_commentTag='comment opinion extraction';
+Blockly.MIXLY_AipNlp_sentimentClassify='Affective Tendency Analysis';
+Blockly.MIXLY_AipNlp_keyword='article label';
+Blockly.MIXLY_AipNlp_topic='Article Category';
+Blockly.MIXLY_AipNlp_ecnet='text error correction';
+Blockly.MIXLY_AipNlp_emotion='conversational emotion recognition';
+Blockly.MIXLY_AipNlp_summary='text summary';
+
+Blockly.MIXLY_AipNlp_TOOLTIP='returns data as a dictionary, where items are the result content. ';
+
+Blockly.MIXLY_AipNlp_Sim='Similarity Detection';
+
+Blockly.MIXLY_AipNlp_Sim_TOOLTIP='Returns data as dictionary, where score is the result of similarity. ';
+
+Blockly.MIXLY_AipNlp_Topic_TOOLTIP='The returned data is a dictionary, where item is the result. The results of lv1_tag_list and lv2_tag_list are the first and second classification results respectively. ';
+
+Blockly.MIXLY_AipNlp_Summary_TOOLTIP='returns data as a dictionary, where summary is the result. ';
+
+Blockly.MIXLY_AipNlp_Topic_Title='Title';
+
+Blockly.MIXLY_AipNlp_Topic_Content='body';

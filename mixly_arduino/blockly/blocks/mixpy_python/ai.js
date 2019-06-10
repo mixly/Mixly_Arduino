@@ -68,6 +68,25 @@ Blockly.Blocks.AI_Speech_synthesis = { //  AI_TYPE_FUNC
     }
 };
 
+Blockly.Blocks.AI_Speech_asr = { //  AI_TYPE_FUNC
+    init: function () {
+        this.setColour(Blockly.Blocks.AI.HUE);
+        this.appendValueInput('SUB')
+            .appendField(Blockly.MIXLY_AipSpeech_asr)
+            .appendField(Blockly.MIXLY_Client)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('FILE')
+            .appendField(Blockly.MIXLY_AipSpeech_File)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('ATTR')
+            .appendField(Blockly.MIXLY_AIP_ATTR)   
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.setTooltip(Blockly.MIXLY_AipSpeech_ASR_TOOLTIP)     
+        this.setInputsInline(false);
+        this.setOutput(true);
+    }
+};
+
 Blockly.Blocks.AI_ImageClassify = { //  AI_TYPE_FUNC
     init: function () {
         this.setColour(Blockly.Blocks.AI.HUE);
@@ -80,6 +99,9 @@ Blockly.Blocks.AI_ImageClassify = { //  AI_TYPE_FUNC
             .setAlign(Blockly.ALIGN_RIGHT);
         this.appendValueInput('ADDR')
             .appendField(Blockly.MIXLY_AipImageClassify_Image)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('ATTR')
+            .appendField(Blockly.MIXLY_AIP_ATTR)   
             .setAlign(Blockly.ALIGN_RIGHT);
         this.setTooltip(Blockly.MIXLY_AipImageClassify_advancedGeneral_TOOLTIP)     
         this.setInputsInline(false);
@@ -102,3 +124,173 @@ Blockly.Blocks.AI_ImageClassify_Func = {
     this.setOutput(true);
   }
 };
+
+
+Blockly.Blocks.AI_Ocr = { //  AI_TYPE_FUNC
+    init: function () {
+        this.setColour(Blockly.Blocks.AI.HUE);
+        this.appendValueInput('SUB')
+            .appendField(Blockly.MIXLY_AipOcr)
+            .appendField(Blockly.MIXLY_Client)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('FUNC')
+            .appendField(Blockly.MIXLY_AIP_FUNC)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('ADDR')
+            .appendField(Blockly.MIXLY_AipImageClassify_Image)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('ATTR')
+            .appendField(Blockly.MIXLY_AIP_ATTR)   
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.setTooltip(Blockly.MIXLY_AipOcr_TOOLTIP)     
+        this.setInputsInline(false);
+        this.setOutput(true);
+    }
+};
+
+
+Blockly.Blocks.AI_Ocr_Func = {
+   init: function() {
+    this.setColour(Blockly.Blocks.AI.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_AipOcr_basicGeneral, "basicGeneral"], 
+                                                 [Blockly.MIXLY_AipOcr_webImage, "webImage"],
+                                                 [Blockly.MIXLY_AipOcr_idcard, "idcard"],
+                                                 [Blockly.MIXLY_AipOcr_bankcard, "bankcard"],
+                                                 [Blockly.MIXLY_AipOcr_drivingLicense, "drivingLicense"],
+                                                 [Blockly.MIXLY_AipOcr_vehicleLicense, "vehicleLicense"],
+                                                 [Blockly.MIXLY_AipOcr_licensePlate, "licensePlate"],
+                                                 [Blockly.MIXLY_AipOcr_businessLicense, "businessLicense"],
+                                                 [Blockly.MIXLY_AipOcr_receipt, "receipt"],
+                                                 [Blockly.MIXLY_AipOcr_trainTicket, "trainTicket"],
+                                                 [Blockly.MIXLY_AipOcr_taxiReceipt, "taxiReceipt"],
+                                                 [Blockly.MIXLY_AipOcr_form, "form"],
+                                                 [Blockly.MIXLY_AipOcr_vatInvoice, "vatInvoice"],
+                                                 [Blockly.MIXLY_AipOcr_passport, "passport"],
+                                                 [Blockly.MIXLY_AipOcr_handwriting, "handwriting"]
+                                                ]),'TYPE')
+    this.setOutput(true);
+  }
+};
+
+Blockly.Blocks.AI_Nlp = { //  AI_TYPE_FUNC
+    init: function () {
+        this.setColour(Blockly.Blocks.AI.HUE);
+        this.appendValueInput('SUB')
+            .appendField(Blockly.MIXLY_AipNlp)
+            .appendField(Blockly.MIXLY_Client)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('FUNC')
+            .appendField(Blockly.MIXLY_AIP_FUNC)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('STR')
+            .appendField(Blockly.OLED_STRING)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('ATTR')
+            .appendField(Blockly.MIXLY_AIP_ATTR)   
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.setTooltip(Blockly.MIXLY_AipNlp_TOOLTIP)     
+        this.setInputsInline(false);
+        this.setOutput(true);
+    }
+};
+
+Blockly.Blocks.AI_Nlp_Sim = { //  AI_TYPE_FUNC
+    init: function () {
+        this.setColour(Blockly.Blocks.AI.HUE);
+        this.appendValueInput('SUB')
+            .appendField(Blockly.MIXLY_AipNlp_Sim)
+            .appendField(Blockly.MIXLY_Client)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('FUNC')
+            .appendField(Blockly.MIXLY_AIP_FUNC)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('STR1')
+            .appendField(Blockly.OLED_STRING + '1')
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('STR2')
+            .appendField(Blockly.OLED_STRING + '2')
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('ATTR')
+            .appendField(Blockly.MIXLY_AIP_ATTR)   
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.setTooltip(Blockly.MIXLY_AipNlp_Sim_TOOLTIP)     
+        this.setInputsInline(false);
+        this.setOutput(true);
+    }
+};
+
+Blockly.Blocks.AI_Nlp_Func = {
+   init: function() {
+    this.setColour(Blockly.Blocks.AI.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_AipNlp_lexer, "lexer"], 
+                                                 [Blockly.MIXLY_AipNlp_depParser, "depParser"],
+                                                 [Blockly.MIXLY_AipNlp_wordEmbedding, "wordEmbedding"],
+                                                 [Blockly.MIXLY_AipNlp_dnnlm, "dnnlm"],
+                                                 [Blockly.MIXLY_AipNlp_commentTag, "commentTag"],
+                                                 [Blockly.MIXLY_AipNlp_sentimentClassify, "sentimentClassify"],
+                                                 [Blockly.MIXLY_AipNlp_keyword, "keyword"],
+                                                 [Blockly.MIXLY_AipNlp_topic, "topic"],
+                                                 [Blockly.MIXLY_AipNlp_ecnet, "ecnet"],
+                                                 [Blockly.MIXLY_AipNlp_emotion, "emotion"]
+                                                ]),'TYPE')
+    this.setOutput(true);
+  }
+};
+
+Blockly.Blocks.AI_Nlp_Func_sim = {
+   init: function() {
+    this.setColour(Blockly.Blocks.AI.HUE);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_AipNlp_wordSimEmbedding, "wordSimEmbedding"],
+                                                [Blockly.MIXLY_AipNlp_simnet, "simnet"]
+                                                ]),'TYPE')
+    this.setOutput(true);
+  }
+};
+
+Blockly.Blocks.AI_Nlp_Topic = { //  AI_TYPE_FUNC
+    init: function () {
+        this.setColour(Blockly.Blocks.AI.HUE);
+        this.appendValueInput('SUB')
+            .appendField(Blockly.MIXLY_AipNlp_topic)
+            .appendField(Blockly.MIXLY_Client)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('STR1')
+            .appendField(Blockly.MIXLY_AipNlp_Topic_Title)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('STR2')
+            .appendField(Blockly.MIXLY_AipNlp_Topic_Content)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.setTooltip(Blockly.MIXLY_AipNlp_Topic_TOOLTIP)     
+        this.setInputsInline(false);
+        this.setOutput(true);
+    }
+};
+
+Blockly.Blocks.AI_Nlp_newsSummary = { //  AI_TYPE_FUNC
+    init: function () {
+        this.setColour(Blockly.Blocks.AI.HUE);
+        this.appendValueInput('SUB')
+            .appendField(Blockly.MIXLY_AipNlp_summary)
+            .appendField(Blockly.MIXLY_Client)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('STR')
+            .appendField(Blockly.MIXLY_AipNlp_Topic_Content)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('LEN')
+            .appendField(Blockly.Msg.MIXLY_LIST_LEN)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('ATTR')
+            .appendField(Blockly.MIXLY_AIP_ATTR)   
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.setTooltip(Blockly.MIXLY_AipNlp_Summary_TOOLTIP)     
+        this.setInputsInline(false);
+        this.setOutput(true);
+    }
+};
+
+
+// [Blockly.MIXLY_AipNlp_topic, "topic"]
+// [Blockly.MIXLY_AipNlp_keyword, "keyword"]
