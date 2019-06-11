@@ -13,12 +13,13 @@ Blockly.Python.AI_ChooseAndGet = function(){
 
 Blockly.Python.AI_client = function(){
     var ctype = this.getFieldValue('CTYPE');
-    Blockly.Python.definitions_['import_aip_' + ctype] = 'from aip import '+ ctype;
+    Blockly.Python.definitions_['import_aip'] = 'import aip';
+    //Blockly.Python.definitions_['import_aip_' + ctype] = 'from aip import '+ ctype;
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var app_id = Blockly.Python.valueToCode(this, 'APP_ID', Blockly.Python.ORDER_ATOMIC);
     var api_key = Blockly.Python.valueToCode(this, 'API_KEY', Blockly.Python.ORDER_ATOMIC);
     var secret_key = Blockly.Python.valueToCode(this, 'SECRET_KEY', Blockly.Python.ORDER_ATOMIC);
-    var code = v + ' = ' + ctype + '(' + app_id + ', ' + api_key + ', ' + secret_key + ')\n';   
+    var code =  v + ' = ' + 'aip.' +ctype + '(' + app_id + ', ' + api_key + ', ' + secret_key + ')\n';   
     return code;
 };
 
