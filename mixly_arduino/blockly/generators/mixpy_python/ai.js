@@ -37,10 +37,11 @@ Blockly.Python.AI_Speech_asr = function(){
     Blockly.Python.definitions_['import_aip'] = 'import aip';
     //Blockly.Python.definitions_['import_aip_AipSpeech'] = 'from aip import AipSpeech';
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
-    var f = Blockly.Python.valueToCode(this, 'FUNC', Blockly.Python.ORDER_ATOMIC);
-    var fn = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
+    //var f = Blockly.Python.valueToCode(this, 'FUNC', Blockly.Python.ORDER_ATOMIC);
+    var fn = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC) || '""';
     var attr = Blockly.Python.valueToCode(this, 'ATTR', Blockly.Python.ORDER_ATOMIC) || '{}';
-    var code = v + '.'+ f +'(' + fn + ', options=' + attr + ')';   
+    //var code = v + '.'+ f +'(' + fn + ', options=' + attr + ')'; 
+    var code = v + '.asr(' + fn + ', options=' + attr + ')';   
     return [code,Blockly.Python.ORDER_ATOMIC];
 };
 

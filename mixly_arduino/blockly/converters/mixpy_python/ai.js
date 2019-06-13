@@ -1,93 +1,345 @@
 'use strict';
 
-pbc.assignD.get('hardware')['check_assign'] = function(py2block, node, targets, value) {
-    if(value._astname != "Call" || value.func._astname != "Attribute" || value.func.value._astname != "Name"){
+
+pbc.assignD.get('AipImageClassify')['check_assign'] = function(py2block, node, targets, value) {
+    if(value._astname != "Call" ||  value.func._astname != "Attribute" || value.func.value._astname != "Name"){
         return false;
     }
-    var moduleName = py2block.Name_str(value.func.value);
     var funcName = py2block.identifier(value.func.attr);
-    if(value._astname === "Call" && moduleName === "s4alib"
-        && funcName === "s4a_start" && value.args.length === 1)
+    var moduleName = py2block.Name_str(value.func.value);
+    if(moduleName === "aip" && funcName === "AipImageClassify" && value.args.length === 3)
         return true;
     return false;
 }
 
-pbc.assignD.get('hardware')['create_block'] = function(py2block, node, targets, value){
-    var argblock = py2block.convert(value.args[0]);
-    return block("hardware_arduino_start", node.lineno, {
+pbc.assignD.get('AipImageClassify')['create_block'] = function(py2block, node, targets, value){
+    //var mode = py2block.Str_value(value.args[1]);
+    return block("AI_client", node.lineno, {
+        "CTYPE":"AipImageClassify"
     }, {
-        // "PIN":argblock,
-        "SUB":py2block.convert(targets[0]),
+        "APP_ID":py2block.convert(value.args[0]),
+        "API_KEY":py2block.convert(value.args[1]),
+        "SECRET_KEY":py2block.convert(value.args[2]),
+        "SUB":py2block.convert(targets[0])
     });
 }
 
-pbc.objectFunctionD.get('digital_write')['s4a'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 2) {
-        throw new Error("Incorrect number of arguments");
+pbc.assignD.get('AipSpeech')['check_assign'] = function(py2block, node, targets, value) {
+    if(value._astname != "Call" ||  value.func._astname != "Attribute" || value.func.value._astname != "Name"){
+        return false;
     }
-    pbc.pinType = "pins_digital_write";
-    var pinblock = py2block.convert(args[0]);
-    pbc.pinType = "pins_digital";
-    var argblock = py2block.convert(args[1]);
-    pbc.pinType = null;
-    var s4ablock=py2block.convert(func.value);
-    return [block("hardware_arduino_digital_write", func.lineno, {}, {
-        'SUB':s4ablock,
-        "PIN": pinblock,
-        "STAT": argblock
-    }, {
-        "inline": "true"
-    })];
+    var funcName = py2block.identifier(value.func.attr);
+    var moduleName = py2block.Name_str(value.func.value);
+    if(moduleName === "aip" && funcName === "AipSpeech" && value.args.length === 3)
+        return true;
+    return false;
 }
 
-pbc.objectFunctionD.get('digital_read')['s4a'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.assignD.get('AipSpeech')['create_block'] = function(py2block, node, targets, value){
+    //var mode = py2block.Str_value(value.args[1]);
+    return block("AI_client", node.lineno, {
+        "CTYPE":"AipSpeech"
+    }, {
+        "APP_ID":py2block.convert(value.args[0]),
+        "API_KEY":py2block.convert(value.args[1]),
+        "SECRET_KEY":py2block.convert(value.args[2]),
+        "SUB":py2block.convert(targets[0])
+    });
+}
+
+pbc.assignD.get('AipImageCensor')['check_assign'] = function(py2block, node, targets, value) {
+    if(value._astname != "Call" ||  value.func._astname != "Attribute" || value.func.value._astname != "Name"){
+        return false;
+    }
+    var funcName = py2block.identifier(value.func.attr);
+    var moduleName = py2block.Name_str(value.func.value);
+    if(moduleName === "aip" && funcName === "AipImageCensor" && value.args.length === 3)
+        return true;
+    return false;
+}
+
+pbc.assignD.get('AipImageCensor')['create_block'] = function(py2block, node, targets, value){
+    //var mode = py2block.Str_value(value.args[1]);
+    return block("AI_client", node.lineno, {
+        "CTYPE":"AipImageCensor"
+    }, {
+        "APP_ID":py2block.convert(value.args[0]),
+        "API_KEY":py2block.convert(value.args[1]),
+        "SECRET_KEY":py2block.convert(value.args[2]),
+        "SUB":py2block.convert(targets[0])
+    });
+}
+
+pbc.assignD.get('AipOcr')['check_assign'] = function(py2block, node, targets, value) {
+    if(value._astname != "Call" ||  value.func._astname != "Attribute" || value.func.value._astname != "Name"){
+        return false;
+    }
+    var funcName = py2block.identifier(value.func.attr);
+    var moduleName = py2block.Name_str(value.func.value);
+    if(moduleName === "aip" && funcName === "AipOcr" && value.args.length === 3)
+        return true;
+    return false;
+}
+
+pbc.assignD.get('AipOcr')['create_block'] = function(py2block, node, targets, value){
+    //var mode = py2block.Str_value(value.args[1]);
+    return block("AI_client", node.lineno, {
+        "CTYPE":"AipOcr"
+    }, {
+        "APP_ID":py2block.convert(value.args[0]),
+        "API_KEY":py2block.convert(value.args[1]),
+        "SECRET_KEY":py2block.convert(value.args[2]),
+        "SUB":py2block.convert(targets[0])
+    });
+}
+
+pbc.assignD.get('AipNlp')['check_assign'] = function(py2block, node, targets, value) {
+    if(value._astname != "Call" ||  value.func._astname != "Attribute" || value.func.value._astname != "Name"){
+        return false;
+    }
+    var funcName = py2block.identifier(value.func.attr);
+    var moduleName = py2block.Name_str(value.func.value);
+    if(moduleName === "aip" && funcName === "AipNlp" && value.args.length === 3)
+        return true;
+    return false;
+}
+
+pbc.assignD.get('AipNlp')['create_block'] = function(py2block, node, targets, value){
+    //var mode = py2block.Str_value(value.args[1]);
+    return block("AI_client", node.lineno, {
+        "CTYPE":"AipNlp"
+    }, {
+        "APP_ID":py2block.convert(value.args[0]),
+        "API_KEY":py2block.convert(value.args[1]),
+        "SECRET_KEY":py2block.convert(value.args[2]),
+        "SUB":py2block.convert(targets[0])
+    });
+}
+
+function AIChooseAndGet(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        
+        return block("AI_ChooseAndGet", func.lineno, {"TYPE":mode}, {}, {
+        "inline": "true"
+    });
+    }
+    return converter;
+}
+
+pbc.moduleFunctionD.get('FileDialog')['getOneFile'] = AIChooseAndGet('getOneFile');
+pbc.moduleFunctionD.get('FileDialog')['getManyFiles'] = AIChooseAndGet('getManyFiles');
+pbc.moduleFunctionD.get('FileDialog')['getDirectory'] = AIChooseAndGet('getDirectory');
+
+pbc.objectFunctionD.get('synthesis')['Dict'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
-    pbc.pinType = "pins_digital_read";
-    var pinblock = py2block.convert(args[0]);
-    pbc.pinType = null;
-    var s4ablock=py2block.convert(func.value);
-    return block("hardware_arduino_digital_read", func.lineno, {}, {
-        'SUB':s4ablock,
-        "PIN": pinblock,
+    var objblock = py2block.convert(func.value);
+    var argument = py2block.convert(args[0]);
+    return block("AI_Speech_synthesis", func.lineno, {}, {
+        "SUB": objblock,
+        "STR": argument,
+        'ATTR':py2block.convert(keywords[0].value)
     }, {
-        "inline": "true"
+        "inline": "false"
     });
-}
+};
 
-pbc.objectFunctionD.get('analog_write')['s4a'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 2) {
-        throw new Error("Incorrect number of arguments");
-    }
-    pbc.pinType = "pins_analog_write";
-    var pinblock = py2block.convert(args[0]);
-    pbc.pinType = null;
-    var argblock = py2block.convert(args[1]);
-    var s4ablock=py2block.convert(func.value);
-    return [block("hardware_arduino_analog_write", func.lineno, {}, {
-        'SUB':s4ablock,
-        "PIN": pinblock,
-        "NUM": argblock
-    }, {
-        "inline": "true"
-    })];
-}
-
-
-pbc.objectFunctionD.get('analog_read')['s4a'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.objectFunctionD.get('asr')['Dict'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
-    pbc.pinType = "pins_analog_read";
-    var pinblock = py2block.convert(args[0]);
-    pbc.pinType = null;
-    var s4ablock=py2block.convert(func.value);
-    return block("hardware_arduino_analog_read", func.lineno, {}, {
-        'SUB':s4ablock,
-        "PIN": pinblock,
+    var objblock = py2block.convert(func.value);
+    var argument = py2block.convert(args[0]);
+    return block("AI_Speech_asr", func.lineno, {}, {
+        "SUB": objblock,
+        "FILE": argument,
+        'ATTR':py2block.convert(keywords[0].value)
     }, {
-        "inline": "true"
+        "inline": "false"
     });
+};
+
+pbc.objectFunctionD.get('advancedGeneral')['Dict'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var argument = py2block.convert(args[0]);
+    return block("AI_ImageClassify", func.lineno, {}, {
+        "SUB": objblock,
+        "FUNC": block("AI_ImageClassify_Func", func.lineno, {"TYPE":"advancedGeneral"}, {}),
+        "ADDR": argument,
+        'ATTR':py2block.convert(keywords[0].value)
+    }, {
+        "inline": "false"
+    });
+};
+
+
+function AIImageClassify(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var argument = py2block.convert(args[0]);
+    return block("AI_ImageClassify", func.lineno, {}, {
+        "SUB": objblock,
+        "FUNC": block("AI_ImageClassify_Func", func.lineno, {"TYPE":mode}, {}),
+        "ADDR": argument,
+        'ATTR':py2block.convert(keywords[0].value)
+    }, {
+        "inline": "false"
+    });
+    }
+    return converter;
 }
 
+pbc.objectFunctionD.get('advancedGeneral')['Dict'] = AIImageClassify('advancedGeneral');
+pbc.objectFunctionD.get('dishDetect')['Dict'] = AIImageClassify('dishDetect');
+pbc.objectFunctionD.get('carDetect')['Dict'] = AIImageClassify('carDetect');
+pbc.objectFunctionD.get('animalDetect')['Dict'] = AIImageClassify('animalDetect');
+pbc.objectFunctionD.get('plantDetect')['Dict'] = AIImageClassify('plantDetect');
+pbc.objectFunctionD.get('logoSearch')['Dict'] = AIImageClassify('logoSearch');
+
+function AIORC(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var argument = py2block.convert(args[0]);
+    return block("AI_Ocr", func.lineno, {}, {
+        "SUB": objblock,
+        "FUNC": block("AI_Ocr_Func", func.lineno, {"TYPE":mode}, {}),
+        "ADDR": argument,
+        'ATTR':py2block.convert(keywords[0].value)
+    }, {
+        "inline": "false"
+    });
+    }
+    return converter;
+}
+
+pbc.objectFunctionD.get('basicGeneral')['Dict'] = AIORC('basicGeneral');
+pbc.objectFunctionD.get('webImage')['Dict'] = AIORC('webImage');
+pbc.objectFunctionD.get('idcard')['Dict'] = AIORC('idcard');
+pbc.objectFunctionD.get('bankcard')['Dict'] = AIORC('bankcard');
+pbc.objectFunctionD.get('drivingLicense')['Dict'] = AIORC('drivingLicense');
+pbc.objectFunctionD.get('vehicleLicense')['Dict'] = AIORC('vehicleLicense');
+pbc.objectFunctionD.get('licensePlate')['Dict'] = AIORC('licensePlate');
+pbc.objectFunctionD.get('businessLicense')['Dict'] = AIORC('businessLicense');
+pbc.objectFunctionD.get('receipt')['Dict'] = AIORC('receipt');
+pbc.objectFunctionD.get('trainTicket')['Dict'] = AIORC('trainTicket');
+pbc.objectFunctionD.get('taxiReceipt')['Dict'] = AIORC('taxiReceipt');
+pbc.objectFunctionD.get('form')['Dict'] = AIORC('form');
+pbc.objectFunctionD.get('vatInvoice')['Dict'] = AIORC('vatInvoice');
+pbc.objectFunctionD.get('passport')['Dict'] = AIORC('passport');
+pbc.objectFunctionD.get('handwriting')['Dict'] = AIORC('handwriting');
+
+function AINLP(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var argument = py2block.convert(args[0]);
+    return block("AI_Nlp", func.lineno, {}, {
+        "SUB": objblock,
+        "FUNC": block("AI_Nlp_Func", func.lineno, {"TYPE":mode}, {}),
+        "STR": argument,
+        'ATTR':py2block.convert(keywords[0].value)
+    }, {
+        "inline": "false"
+    });
+    }
+    return converter;
+}
+
+pbc.objectFunctionD.get('lexer')['Dict'] = AINLP('lexer');
+pbc.objectFunctionD.get('depParser')['Dict'] = AINLP('depParser');
+pbc.objectFunctionD.get('wordEmbedding')['Dict'] = AINLP('wordEmbedding');
+pbc.objectFunctionD.get('dnnlm')['Dict'] = AINLP('dnnlm');
+pbc.objectFunctionD.get('commentTag')['Dict'] = AINLP('commentTag');
+pbc.objectFunctionD.get('sentimentClassify')['Dict'] = AINLP('sentimentClassify');
+pbc.objectFunctionD.get('keyword')['Dict'] = AINLP('keyword');
+//pbc.objectFunctionD.get('topic')['Dict'] = AINLP('topic');
+pbc.objectFunctionD.get('ecnet')['Dict'] = AINLP('ecnet');
+pbc.objectFunctionD.get('emotion')['Dict'] = AINLP('emotion');
+
+function AISIMILARITY(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var argument = py2block.convert(args[0]);
+    var argument1 = py2block.convert(args[1]);
+    var a;
+    return block("AI_Nlp_Sim", func.lineno, {}, {
+        "SUB": objblock,
+        "FUNC": block("AI_Nlp_Func_sim", func.lineno, {"TYPE":mode}, {}),
+        "STR1": argument,
+        "STR2": argument1,
+        'ATTR':py2block.convert(keywords[0].value)
+    }, {
+        "inline": "false"
+    });
+    }
+    return converter;
+}
+
+pbc.objectFunctionD.get('wordSimEmbedding')['Dict'] = AISIMILARITY('wordSimEmbedding');
+pbc.objectFunctionD.get('simnet')['Dict'] = AISIMILARITY('simnet');
+
+
+pbc.objectFunctionD.get('newsSummary')['Dict'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var argument = py2block.convert(args[0]);
+    var argument1 = py2block.convert(args[1]);
+    return block("AI_Nlp_newsSummary", func.lineno, {}, {
+        "SUB": objblock,
+        "STR": argument,
+        "LEN": argument1,
+        'ATTR':py2block.convert(keywords[0].value)
+    }, {
+        "inline": "false"
+    });
+};
+
+pbc.objectFunctionD.get('topic')['Dict'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (keywords.length > 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    if (keywords.length == 0){
+        var objblock = py2block.convert(func.value);
+        var argument = py2block.convert(args[0]);
+        var argument1 = py2block.convert(args[1]);
+        return block("AI_Nlp_Topic", func.lineno, {}, {
+            "SUB": objblock,
+            "STR1": argument,
+            "STR2": argument1,        
+        }, {
+            "inline": "false"
+        });
+    }
+    if (keywords.length == 1){
+        var objblock = py2block.convert(func.value);
+        var argument = py2block.convert(args[0]);
+        return block("AI_Nlp", func.lineno, {}, {
+            "SUB": objblock,
+            "FUNC": block("AI_Nlp_Func", func.lineno, {"TYPE":"topic"}, {}),
+            "STR": argument,
+            'ATTR':py2block.convert(keywords[0].value)
+        }, {
+            "inline": "false"
+        });
+    }
+};
