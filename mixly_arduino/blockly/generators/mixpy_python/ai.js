@@ -24,7 +24,8 @@ Blockly.Python.AI_client = function(){
 };
 
 Blockly.Python.AI_Speech_synthesis = function(){
-    Blockly.Python.definitions_['import_aip_AipSpeech'] = 'from aip import AipSpeech';
+    Blockly.Python.definitions_['import_aip'] = 'import aip';
+    //Blockly.Python.definitions_['import_aip_AipSpeech'] = 'from aip import AipSpeech';
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var s = Blockly.Python.valueToCode(this, 'STR', Blockly.Python.ORDER_ATOMIC);
     var attr = Blockly.Python.valueToCode(this, 'ATTR', Blockly.Python.ORDER_ATOMIC) || '{}';
@@ -33,7 +34,8 @@ Blockly.Python.AI_Speech_synthesis = function(){
 };
 
 Blockly.Python.AI_Speech_asr = function(){
-    Blockly.Python.definitions_['import_aip_AipSpeech'] = 'from aip import AipSpeech';
+    Blockly.Python.definitions_['import_aip'] = 'import aip';
+    //Blockly.Python.definitions_['import_aip_AipSpeech'] = 'from aip import AipSpeech';
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var f = Blockly.Python.valueToCode(this, 'FUNC', Blockly.Python.ORDER_ATOMIC);
     var fn = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
@@ -43,7 +45,8 @@ Blockly.Python.AI_Speech_asr = function(){
 };
 
 Blockly.Python.AI_ImageClassify = function(){
-    Blockly.Python.definitions_['import_aip_AipImageClassify'] = 'from aip import AipImageClassify';
+    Blockly.Python.definitions_['import_aip'] = 'import aip';
+    //Blockly.Python.definitions_['import_aip_AipImageClassify'] = 'from aip import AipImageClassify';
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var addr = Blockly.Python.valueToCode(this, 'ADDR', Blockly.Python.ORDER_ATOMIC);
     var f = Blockly.Python.valueToCode(this, 'FUNC', Blockly.Python.ORDER_ATOMIC);
@@ -53,7 +56,8 @@ Blockly.Python.AI_ImageClassify = function(){
 };
 
 Blockly.Python.AI_Ocr = function(){
-    Blockly.Python.definitions_['import_aip_Ocr'] = 'from aip import Ocr';
+    Blockly.Python.definitions_['import_aip'] = 'import aip';
+    //Blockly.Python.definitions_['import_aip_Ocr'] = 'from aip import Ocr';
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var addr = Blockly.Python.valueToCode(this, 'ADDR', Blockly.Python.ORDER_ATOMIC);
     var f = Blockly.Python.valueToCode(this, 'FUNC', Blockly.Python.ORDER_ATOMIC);
@@ -63,7 +67,8 @@ Blockly.Python.AI_Ocr = function(){
 };
 
 Blockly.Python.AI_Nlp = function(){
-    Blockly.Python.definitions_['import_aip_Nlp'] = 'from aip import Nlp';
+    Blockly.Python.definitions_['import_aip'] = 'import aip';
+    //Blockly.Python.definitions_['import_aip_Nlp'] = 'from aip import Nlp';
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var s = Blockly.Python.valueToCode(this, 'STR', Blockly.Python.ORDER_ATOMIC);
     var f = Blockly.Python.valueToCode(this, 'FUNC', Blockly.Python.ORDER_ATOMIC);
@@ -73,7 +78,8 @@ Blockly.Python.AI_Nlp = function(){
 };
 
 Blockly.Python.AI_Nlp_Sim = function(){
-    Blockly.Python.definitions_['import_aip_Nlp'] = 'from aip import Nlp';
+    Blockly.Python.definitions_['import_aip'] = 'import aip';
+    //Blockly.Python.definitions_['import_aip_Nlp'] = 'from aip import Nlp';
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var s1 = Blockly.Python.valueToCode(this, 'STR1', Blockly.Python.ORDER_ATOMIC);
     var s2 = Blockly.Python.valueToCode(this, 'STR2', Blockly.Python.ORDER_ATOMIC);
@@ -84,7 +90,8 @@ Blockly.Python.AI_Nlp_Sim = function(){
 };
 
 Blockly.Python.AI_Nlp_Topic = function(){
-    Blockly.Python.definitions_['import_aip_Nlp'] = 'from aip import Nlp';
+    Blockly.Python.definitions_['import_aip'] = 'import aip';
+    //Blockly.Python.definitions_['import_aip_Nlp'] = 'from aip import Nlp';
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var s1 = Blockly.Python.valueToCode(this, 'STR1', Blockly.Python.ORDER_ATOMIC);
     var s2 = Blockly.Python.valueToCode(this, 'STR2', Blockly.Python.ORDER_ATOMIC);
@@ -93,7 +100,8 @@ Blockly.Python.AI_Nlp_Topic = function(){
 };
 
 Blockly.Python.AI_Nlp_newsSummary = function(){
-    Blockly.Python.definitions_['import_aip_Nlp'] = 'from aip import Nlp';
+    Blockly.Python.definitions_['import_aip'] = 'import aip';
+    //Blockly.Python.definitions_['import_aip_Nlp'] = 'from aip import Nlp';
     var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
     var s = Blockly.Python.valueToCode(this, 'STR', Blockly.Python.ORDER_ATOMIC);
     var n = Blockly.Python.valueToCode(this, 'LEN', Blockly.Python.ORDER_ATOMIC);
