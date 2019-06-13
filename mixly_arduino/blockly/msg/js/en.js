@@ -748,7 +748,6 @@ var MSG = {
 	catMonitor:"Monitor",
 	catLCD:"LCD 1602",
 	cat4Digitdisplay:"Digit Display",
-	catWS2812:"WS2812",
 	catOLED:"OLED Screen",
 	catMatrix:"Matrix",
 	catVar: "Variables",
@@ -757,9 +756,6 @@ var MSG = {
 	catNetwork:"Network",
 	catEthernet_init:"Init",
 	catEthernet_clinet:"Client",
-	catSense: "Labplus(Box)",
-	catSense2: "Labplus(Robot)",
-	catLuxe:"LuxeRobot",
 	tab_blocks: "Blocks",
 	tab_arduino: "Code",
 	copyright:"Copyright © Mixly Team@BNU				 HTTP://MIXLY.ORG",
@@ -2456,8 +2452,8 @@ Blockly.MIXLY_MP3_EQ_ROCK='rock';
 Blockly.MIXLY_MP3_EQ_JAZZ='jazz';
 Blockly.MIXLY_MP3_EQ_CLASSIC='classic';
 Blockly.MIXLY_MP3_EQ_BASS='低音';
-Blockly.MIXLY_MP3_VOL='音量';
-Blockly.MIXLY_MP3_PLAY_NUM='播放第';
+Blockly.MIXLY_MP3_VOL='Vol';
+Blockly.MIXLY_MP3_PLAY_NUM='Play NO.';
 Blockly.blynk_NOTIFY_CONTENT='Content';
 Blockly.blynk_NOTIFY='Send Notify';
 Blockly.blynk_USB_SERVER_INFO='USB连接模式';
@@ -2469,8 +2465,8 @@ Blockly.blynk_VIDEOURL='Video URL';
 Blockly.blynk_LIGHT='Light Sensor';
 Blockly.blynk_GRAVITY='Gravity Sensor';
 Blockly.blynk_ACC='acceleration Sensor';
-Blockly.blynk_ACC_tooltip='返回值范围-9~9。';
-Blockly.blynk_time_input_1='时间输入组件(简单)';
+Blockly.blynk_ACC_tooltip='return range-9~9。';
+Blockly.blynk_time_input_1='Timer INPUT(Simple)';
 Blockly.BLYNK_CONNECTED='Hardware Connected';
 Blockly.BLYNK_APP_CONNECTED='APP Connected';
 Blockly.BLYNK_APP_DISCONNECTED='APP Offline';
@@ -2601,8 +2597,8 @@ Blockly.MIXLY_AipImageClassify_animalDetect='Animal Recognition';
 Blockly.MIXLY_AipImageClassify_plantDetect='Plant Recognition';
 Blockly.MIXLY_AipImageClassify_logoSearch='logo trademark recognition';
 Blockly.MIXLY_AipImageClassify_Image='Picture';
-Blockly.MIXLY_AipImageClassify_advanced General_TOOLTIP='Recognize the picture, return the data as a dictionary, where result is the result content. ';
-Blockly.MIXLY_AipOcr_basic General='Universal Text Recognition';
+Blockly.MIXLY_AipImageClassify_advancedGeneral_TOOLTIP='Recognize the picture, return the data as a dictionary, where result is the result content. ';
+Blockly.MIXLY_AipOcr_basic_General='Universal Text Recognition';
 Blockly.MIXLY_AipOcr_webImage='Web Photo Text Recognition';
 Blockly.MIXLY_AipOcr_idcard='ID identification';
 Blockly.MIXLY_AipOcr_bankcard='bank card identification';
