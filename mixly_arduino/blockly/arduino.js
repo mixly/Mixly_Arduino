@@ -297,7 +297,11 @@ profile['Arduino ESP32 Generic']=profile['Arduino HandBit']=profile['Arduino Mix
 		}
 		else if (def.match(/^#include/)) {
 			imports.push(def);
-		} else if (name.match(/^var_declare/)) {
+		} 
+		else if (def.match(/^WiFiClient/)) {
+			imports.push(def);
+		} 
+		else if (name.match(/^var_declare/)) {
 			definitions_var.push(def);
 		} else {
 			definitions_fun.push(def);

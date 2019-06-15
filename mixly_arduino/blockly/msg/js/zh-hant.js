@@ -2613,3 +2613,12 @@ Blockly.MIXLY_AipNlp_Topic_TOOLTIP = '返回的資料為字典，其中item為�
 Blockly.MIXLY_AipNlp_Summary_TOOLTIP = '返回的資料為字典，其中summary為結果。';
 Blockly.MIXLY_AipNlp_Topic_Title = '標題';
 Blockly.MIXLY_AipNlp_Topic_Content = '正文';
+//mqtt
+Blockly.MQTT_publish='MQTT:發送消息';
+Blockly.MQTT_SERVER='MQTT服務器';
+Blockly.MQTT_SERVER_ADD='地址';
+Blockly.MQTT_Client_ID='項目 ID';
+Blockly.MQTT_IOT_ID='IOT ID';
+Blockly.MQTT_IOT_PWD='IOT_PWD';
+Blockly.MQTT_subscribe2='接收到';
+Blockly.MQTT_Topic='主题';

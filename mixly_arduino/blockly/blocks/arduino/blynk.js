@@ -583,7 +583,7 @@ Blockly.Blocks.blynk_iot_WidgetLED_VALUE = {
     this.appendDummyInput("").appendField(new Blockly.FieldDropdown(BLYNK_VIRTUALPIN_SELECT), "Vpin").appendField(Blockly.blynk_iot_WidgetLED_COLOR);
     this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldColour("#ff0000"), "RGB_LED_COLOR");
     this.appendValueInput("NUM", Number)
-    .appendField(Blockly.blynk_IOT_WidgetLED_VALUE)
+    .appendField(Blockly.MIXLY_BRIGHTNESS)
     .setCheck(Number);
     //this.appendValueInput("data").appendField(Blockly.blynk_IOT_DATA);
     this.setPreviousStatement(true, null);
@@ -600,7 +600,7 @@ var AC_TYPE = [
 ];
 
 var AC_POWER = [
-[Blockly.blynk_IOT_ON, "true"],
+[Blockly.MIXLY_ON, "true"],
 [Blockly.blynk_IOT_OFF, "false"]
 ];
 var AC_MODE = [

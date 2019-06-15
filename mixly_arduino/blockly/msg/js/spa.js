@@ -2336,3 +2336,12 @@ Blockly.MIXLY_AipNlp_topic='Article Category';
 Blockly.MIXLY_AipNlp_ecnet='text error correction';
 Blockly.MIXLY_AipNlp_emotion='conversational emotion recognition';
 Blockly.MIXLY_AipNlp_summary='text summary';
+//mqtt
+Blockly.MQTT_publish='MQTT:Send Message';
+Blockly.MQTT_SERVER='MQTT Server';
+Blockly.MQTT_SERVER_ADD='Add ';
+Blockly.MQTT_Client_ID='Client ID';
+Blockly.MQTT_IOT_ID='IOT ID';
+Blockly.MQTT_IOT_PWD='IOT PWD';
+Blockly.MQTT_subscribe2='Received';
+Blockly.MQTT_Topic='Topic';

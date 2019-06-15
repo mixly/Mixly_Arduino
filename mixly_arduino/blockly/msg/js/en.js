@@ -2644,3 +2644,13 @@ Blockly.MIXLY_AipNlp_Summary_TOOLTIP='returns data as a dictionary, where summar
 Blockly.MIXLY_AipNlp_Topic_Title='Title';
 
 Blockly.MIXLY_AipNlp_Topic_Content='body';
+
+//mqtt
+Blockly.MQTT_publish='MQTT:Send Message';
+Blockly.MQTT_SERVER='MQTT Server';
+Blockly.MQTT_SERVER_ADD='Add ';
+Blockly.MQTT_Client_ID='Client ID';
+Blockly.MQTT_IOT_ID='IOT ID';
+Blockly.MQTT_IOT_PWD='IOT PWD';
+Blockly.MQTT_subscribe2='Received';
+Blockly.MQTT_Topic='Topic';
