@@ -30,7 +30,7 @@ Blockly.Blocks.blynk_usb_server = {
 Blockly.Blocks.blynk_smartconfig = {
   init: function() {
     this.setColour(Blockly.Blocks.blynk.HUE1);
-    this.appendDummyInput("").appendField(new Blockly.FieldImage("../../media/blynk/smartconfig.png", 20, 20)).appendField(Blockly.blynk_smartconfig);
+    this.appendDummyInput("").appendField(Blockly.blynk_smartconfig);
     this.appendValueInput("server_add").appendField(Blockly.blynk_SERVER_ADD).setCheck(String);
     this.appendValueInput("auth_key", String).appendField(Blockly.blynk_IOT_AUTH).setCheck([String, Number]);
     this.setPreviousStatement(true, null);
