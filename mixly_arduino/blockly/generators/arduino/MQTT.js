@@ -7,7 +7,6 @@ Blockly.Arduino.WIFI_info = function() {
 	var SSID = Blockly.Arduino.valueToCode(this, 'SSID', Blockly.Arduino.ORDER_ATOMIC);
 	var PWD = Blockly.Arduino.valueToCode(this, 'PWD', Blockly.Arduino.ORDER_ATOMIC);
 	Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>';
-	Blockly.Arduino.definitions_['include__WiFiClient'] = 'WiFiClient client;';
 	Blockly.Arduino.setups_['WiFi.begin'] = 'WiFi.begin('+SSID+', '+PWD+');';
 	return "";
 };
@@ -35,9 +34,9 @@ Blockly.Arduino.MQTT_server = function() {
 		{Client_ID+='/';
 }
 	Client_ID = Client_ID.replace(/\"/g, "");
-
 	Blockly.Arduino.definitions_['include_Adafruit_MQTT'] ='#include "Adafruit_MQTT.h"';
 	Blockly.Arduino.definitions_['include_Adafruit_MQTT_Client'] ='#include "Adafruit_MQTT_Client.h"';
+	Blockly.Arduino.definitions_['include__WiFiClient'] = 'WiFiClient client;';
 	Blockly.Arduino.definitions_['var_declare_Adafruit_MQTT_Client'] ='Adafruit_MQTT_Client mqtt(&client, '+server_add+', '+server_port+', '+IOT_ID+', '+IOT_PWD+');';
 	var funcName = 'MQTT_connect';
 	var code = 'void' + ' ' + funcName + '() {\n'

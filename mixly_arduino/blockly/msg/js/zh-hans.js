@@ -2729,4 +2729,4 @@ Blockly.MQTT_Client_ID='项目 ID';
 Blockly.MQTT_IOT_ID='IOT ID';
 Blockly.MQTT_IOT_PWD='IOT PWD';
 Blockly.MQTT_subscribe2='接收到';
-Blockly.MQTT_Topic='主題';
+Blockly.MQTT_Topic='主题';
