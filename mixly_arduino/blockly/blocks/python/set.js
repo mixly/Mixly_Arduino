@@ -10,27 +10,27 @@ Blockly.Blocks['set_create_with'] = {
    * Block for creating a list with any number of elements of any type.
    * @this Blockly.Block
    */
-  init: function() {
+   init: function() {
     this.setColour(Blockly.Blocks.set.HUE);
-  this.appendDummyInput("")
+    this.appendDummyInput("")
   //don't need to specify the data type in Python
         // .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_TYPE_NUMBER, 'Array<number>'], [Blockly.MIXLY_MICROBIT_JS_TYPE_STRING, 'Array<string>'], [Blockly.MIXLY_MICROBIT_JS_TYPE_BOOLEAN, 'Array<boolean>']]), 'TYPE')
         // .appendField(' ')
         .appendField(new Blockly.FieldTextInput('s1'), 'VAR')
-       
-    this.itemCount_ = 3;
-    this.updateShape_();
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setMutator(new Blockly.Mutator(['set_create_with_item']));
-    this.setTooltip(Blockly.Msg.blockpy_SET_CREATE_WITH_TOOLTIP);
-  },
+        
+        this.itemCount_ = 3;
+        this.updateShape_();
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setMutator(new Blockly.Mutator(['set_create_with_item']));
+        this.setTooltip(Blockly.Msg.blockpy_SET_CREATE_WITH_TOOLTIP);
+      },
   /**
    * Create XML to represent list inputs.
    * @return {Element} XML storage element.
    * @this Blockly.Block
    */
-  mutationToDom: function() {
+   mutationToDom: function() {
     var container = document.createElement('mutation');
     container.setAttribute('items', this.itemCount_);
     return container;
@@ -40,7 +40,7 @@ Blockly.Blocks['set_create_with'] = {
    * @param {!Element} xmlElement XML storage element.
    * @this Blockly.Block
    */
-  domToMutation: function(xmlElement) {
+   domToMutation: function(xmlElement) {
     this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
     this.updateShape_();
   },
@@ -50,11 +50,12 @@ Blockly.Blocks['set_create_with'] = {
    * @return {!Blockly.Block} Root block in mutator.
    * @this Blockly.Block
    */
-  decompose: function(workspace) {
+   decompose: function(workspace) {
     var containerBlock =
-        Blockly.Block.obtain(workspace, 'set_create_with_container');
+    Blockly.Block.obtain(workspace, 'set_create_with_container');
     containerBlock.initSvg();
-    var connection = containerBlock.getInput('STACK').connection;
+    var connection = containerBlock.getInput('STACK')
+    .connection;
     for (var i = 0; i < this.itemCount_; i++) {
       var itemBlock = Blockly.Block.obtain(workspace, 'set_create_with_item');
       itemBlock.initSvg();
@@ -68,7 +69,7 @@ Blockly.Blocks['set_create_with'] = {
    * @param {!Blockly.Block} containerBlock Root block in mutator.
    * @this Blockly.Block
    */
-  compose: function(containerBlock) {
+   compose: function(containerBlock) {
     var itemBlock = containerBlock.getInputTargetBlock('STACK');
     // Count number of inputs.
     var connections = [];
@@ -76,7 +77,7 @@ Blockly.Blocks['set_create_with'] = {
     while (itemBlock) {
       connections[i] = itemBlock.valueConnection_;
       itemBlock = itemBlock.nextConnection &&
-          itemBlock.nextConnection.targetBlock();
+      itemBlock.nextConnection.targetBlock();
       i++;
     }
     this.itemCount_ = i;
@@ -84,7 +85,8 @@ Blockly.Blocks['set_create_with'] = {
     // Reconnect any child blocks.
     for (var i = 0; i < this.itemCount_; i++) {
       if (connections[i]) {
-        this.getInput('ADD' + i).connection.connect(connections[i]);
+        this.getInput('ADD' + i)
+        .connection.connect(connections[i]);
       }
     }
   },
@@ -93,7 +95,7 @@ Blockly.Blocks['set_create_with'] = {
    * @param {!Blockly.Block} containerBlock Root block in mutator.
    * @this Blockly.Block
    */
-  saveConnections: function(containerBlock) {
+   saveConnections: function(containerBlock) {
     var itemBlock = containerBlock.getInputTargetBlock('STACK');
     var i = 0;
     while (itemBlock) {
@@ -101,7 +103,7 @@ Blockly.Blocks['set_create_with'] = {
       itemBlock.valueConnection_ = input && input.connection.targetConnection;
       i++;
       itemBlock = itemBlock.nextConnection &&
-          itemBlock.nextConnection.targetBlock();
+      itemBlock.nextConnection.targetBlock();
     }
   },
   /**
@@ -109,7 +111,7 @@ Blockly.Blocks['set_create_with'] = {
    * @private
    * @this Blockly.Block
    */
-  updateShape_: function() {
+   updateShape_: function() {
     // Delete everything.
     if (this.getInput('EMPTY')) {
       this.removeInput('EMPTY');
@@ -123,7 +125,7 @@ Blockly.Blocks['set_create_with'] = {
     // Rebuild block.
     if (this.itemCount_ == 0) {
       this.appendDummyInput('EMPTY')
-          .appendField(Blockly.Msg.blockpy_SET_CREATE_EMPTY_TITLE);
+      .appendField(Blockly.Msg.blockpy_SET_CREATE_EMPTY_TITLE);
     } else {
       for (var i = 0; i < this.itemCount_; i++) {
         var input = this.appendValueInput('ADD' + i);
@@ -148,10 +150,10 @@ Blockly.Blocks['set_create_with_container'] = {
    * Mutator block for list container.
    * @this Blockly.Block
    */
-  init: function() {
+   init: function() {
     this.setColour(Blockly.Blocks.set.HUE);
     this.appendDummyInput()
-        .appendField(Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TITLE_ADD);
+    .appendField(Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TITLE_ADD);
     this.appendStatementInput('STACK');
     this.setTooltip(Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TOOLTIP);
     this.contextMenu = false;
@@ -163,10 +165,10 @@ Blockly.Blocks['set_create_with_item'] = {
    * Mutator bolck for adding items.
    * @this Blockly.Block
    */
-  init: function() {
+   init: function() {
     this.setColour(Blockly.Blocks.set.HUE);
     this.appendDummyInput()
-        .appendField(Blockly.Msg.blockpy_SET_VARIABLES_NAME);
+    .appendField(Blockly.Msg.blockpy_SET_VARIABLES_NAME);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.Msg.blockpy_SET_CREATE_WITH_ITEM_TOOLTIP);
@@ -178,12 +180,12 @@ Blockly.Blocks['set_length'] = {
   
   init: function() {
     this.setColour(Blockly.Blocks.set.HUE);
-  this.appendDummyInput("")
-        .appendField(Blockly.Msg.LISTS_LENGTH_TITLE);        
-  this.appendValueInput('SET');
-  this.setInputsInline(true);
-  this.setTooltip(Blockly.Msg.SET_LENGTH_TOOLTIP);
-  this.setOutput(true, Number);
+    this.appendDummyInput("")
+    .appendField(Blockly.Msg.LISTS_LENGTH_TITLE);        
+    this.appendValueInput('SET');
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.Msg.SET_LENGTH_TOOLTIP);
+    this.setOutput(true, Number);
   }
 };
 
@@ -191,9 +193,9 @@ Blockly.Blocks['set_get_remove_last'] = {
   init: function() {
     this.setColour(Blockly.Blocks.set.HUE);
     this.appendValueInput('SET')
-        .setCheck('Set')
+    .setCheck('Set')
     this.appendDummyInput("")
-        .appendField(Blockly.blockpy_SET_GET_AND_REMOVE_LAST);
+    .appendField(Blockly.blockpy_SET_GET_AND_REMOVE_LAST);
     this.setTooltip(Blockly.Msg.SET_POP_TOOLTIP);
     this.setInputsInline(true);
     this.setOutput(true);
@@ -205,12 +207,12 @@ Blockly.Blocks['set_clear'] = {
    * Block for list length.
    * @this Blockly.Block
    */
-  init: function() {
+   init: function() {
     this.setColour(Blockly.Blocks.set.HUE);
     this.appendValueInput('SET')
-        .setCheck('Set')
+    .setCheck('Set')
     this.appendDummyInput("")        
-        .appendField(Blockly.Msg.SET_CLEAR);  
+    .appendField(Blockly.Msg.SET_CLEAR);  
     
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -221,24 +223,24 @@ Blockly.Blocks['set_operate'] = {
   init: function() {
     
     this.appendDummyInput("")
-      .appendField(Blockly.blockpy_set)
+    .appendField(Blockly.blockpy_set)
     this.appendValueInput('SET1')
-        .setCheck('Set')  
-  var operate =
-        [[Blockly.blockpy_set_union, 'union'],
-        [Blockly.blockpy_set_intersection, 'intersection'],[Blockly.blockpy_set_difference, 'difference']];
+    .setCheck('Set')  
+    var operate =
+    [[Blockly.blockpy_set_union, 'union'],
+    [Blockly.blockpy_set_intersection, 'intersection'],[Blockly.blockpy_set_difference, 'difference']];
     this.setColour(Blockly.Blocks.set.HUE);    
     this.appendDummyInput("")
-        .appendField(Blockly.blockpy_and_set)    
+    .appendField(Blockly.blockpy_and_set)    
     this.appendValueInput('SET2')
-        .setCheck('Set')       
+    .setCheck('Set')       
     this.appendDummyInput("")
-        .appendField(Blockly.blockpy_set_get_operate)
-        .appendField(new Blockly.FieldDropdown(operate), 'OPERATE')
+    .appendField(Blockly.blockpy_set_get_operate)
+    .appendField(new Blockly.FieldDropdown(operate), 'OPERATE')
 
     this.setInputsInline(true);
     this.setOutput(true, "set");
-  var thisBlock = this;
+    var thisBlock = this;
     this.setTooltip(function() {
       var mode = thisBlock.getFieldValue('OPERATE');
       var TOOLTIPS = {
@@ -254,29 +256,29 @@ Blockly.Blocks['set_operate'] = {
 Blockly.Blocks['set_operate_update'] = {
   init: function() {
     this.appendDummyInput("")
-      .appendField(Blockly.blockpy_set)
-      
+    .appendField(Blockly.blockpy_set)
+    
     this.appendValueInput('SET1')
-        .setCheck('Set')  
-  var operate_update =
-        [[Blockly.blockpy_set_union, 'update'],
-        [Blockly.blockpy_set_intersection, 'intersection_update'],
-        [Blockly.blockpy_set_difference, 'difference_update']];
+    .setCheck('Set')  
+    var operate_update =
+    [[Blockly.blockpy_set_union, 'update'],
+    [Blockly.blockpy_set_intersection, 'intersection_update'],
+    [Blockly.blockpy_set_difference, 'difference_update']];
     this.setColour(Blockly.Blocks.set.HUE);
     this.appendDummyInput("")
-        .appendField(Blockly.blockpy_and_set)   
+    .appendField(Blockly.blockpy_and_set)   
     this.appendValueInput('SET2')
-        .setCheck('Set')      
+    .setCheck('Set')      
     this.appendDummyInput("")
-        .appendField(Blockly.blockpy_set_get_operate)
-        .appendField(new Blockly.FieldDropdown(operate_update), 'OPERATE')
-         
+    .appendField(Blockly.blockpy_set_get_operate)
+    .appendField(new Blockly.FieldDropdown(operate_update), 'OPERATE')
+    
     this.appendDummyInput("")
-        .appendField(Blockly.blockpy_set_update)  
+    .appendField(Blockly.blockpy_set_update)  
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-  var thisBlock = this;
+    var thisBlock = this;
     this.setTooltip(function() {
       var mode = thisBlock.getFieldValue('OPERATE');
       var TOOLTIPS = {
@@ -292,23 +294,23 @@ Blockly.Blocks['set_operate_update'] = {
 Blockly.Blocks['set_add_discard'] = {
   init: function() {
     this.appendDummyInput("")
-      .appendField(Blockly.blockpy_set)
-      
+    .appendField(Blockly.blockpy_set)
+    
     this.appendValueInput('SET')
-        .setCheck('Set')  
-  var changenum =
-        [[Blockly.MIXLY_blockpy_set_add, 'add'],[Blockly.MIXLY_blockpy_set_discard, 'discard']];
+    .setCheck('Set')  
+    var changenum =
+    [[Blockly.MIXLY_blockpy_set_add, 'add'],[Blockly.MIXLY_blockpy_set_discard, 'discard']];
     this.setColour(Blockly.Blocks.set.HUE);
     this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_MID)        
-        .appendField(new Blockly.FieldDropdown(changenum), 'OPERATE')
+    .appendField(Blockly.MIXLY_MID)        
+    .appendField(new Blockly.FieldDropdown(changenum), 'OPERATE')
     this.appendValueInput('data')
-        .setCheck(Number)
-        .appendField(Blockly.Msg.blockpy_SET_VARIABLES_NAME)    
+    .setCheck(Number)
+    .appendField(Blockly.Msg.blockpy_SET_VARIABLES_NAME)    
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-  var thisBlock = this;
+    var thisBlock = this;
     this.setTooltip(function() {
       var mode = thisBlock.getFieldValue('OPERATE');
       var TOOLTIPS = {
@@ -323,54 +325,54 @@ Blockly.Blocks['set_add_discard'] = {
 
 Blockly.Blocks['set_sub'] = {
   init: function() {
-     this.appendDummyInput("")
-      .appendField(Blockly.blockpy_set)
-      
-    this.appendValueInput('SET1')
-        .setCheck('Set') 
-  var sub_super =
-        [[Blockly.blockpy_set_sub, 'issubset'],
-        [Blockly.blockpy_set_super, 'issuperset']];
-    this.setColour(Blockly.Blocks.set.HUE);
-    this.appendDummyInput("")
-        .appendField(Blockly.blockpy_is_set) 
-    this.appendValueInput('SET2')
-        .setCheck('Set')       
-    this.appendDummyInput("")
-        .appendField(Blockly.blockpy_set_of)
-        .appendField(new Blockly.FieldDropdown(sub_super), 'OPERATE')
-        
+   this.appendDummyInput("")
+   .appendField(Blockly.blockpy_set)
+   
+   this.appendValueInput('SET1')
+   .setCheck('Set') 
+   var sub_super =
+   [[Blockly.blockpy_set_sub, 'issubset'],
+   [Blockly.blockpy_set_super, 'issuperset']];
+   this.setColour(Blockly.Blocks.set.HUE);
+   this.appendDummyInput("")
+   .appendField(Blockly.blockpy_is_set) 
+   this.appendValueInput('SET2')
+   .setCheck('Set')       
+   this.appendDummyInput("")
+   .appendField(Blockly.blockpy_set_of)
+   .appendField(new Blockly.FieldDropdown(sub_super), 'OPERATE')
+   
 
-    this.setInputsInline(true);
-    this.setOutput(true, Boolean);
-  var thisBlock = this;
-    this.setTooltip(function() {
-      var mode = thisBlock.getFieldValue('OPERATE');
-      var TOOLTIPS = {
-        'issubset': Blockly.MIXLY_TOOLTIP_SET_SUB,
-        'issuperset': Blockly.MIXLY_TOOLTIP_SET_SUPER
-        
-      };
-      return TOOLTIPS[mode];
-    });
-  }
+   this.setInputsInline(true);
+   this.setOutput(true, Boolean);
+   var thisBlock = this;
+   this.setTooltip(function() {
+    var mode = thisBlock.getFieldValue('OPERATE');
+    var TOOLTIPS = {
+      'issubset': Blockly.MIXLY_TOOLTIP_SET_SUB,
+      'issuperset': Blockly.MIXLY_TOOLTIP_SET_SUPER
+      
+    };
+    return TOOLTIPS[mode];
+  });
+ }
 };
 
 Blockly.Blocks['set_update'] = {
  init: function() {
-    this.appendDummyInput("")
-        .appendField(Blockly.blockpy_set)
-    this.appendValueInput('SET')
-        .setCheck('Set')
-    this.setColour(Blockly.Blocks.set.HUE);
-    this.appendValueInput('VAR')
-        .setCheck([String,'List'])
-        .appendField(Blockly.blockpy_set_add_update);    
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip(Blockly.Msg.SET_UPDATE_TOOLTIP); 
-  }
+  this.appendDummyInput("")
+  .appendField(Blockly.blockpy_set)
+  this.appendValueInput('SET')
+  .setCheck('Set')
+  this.setColour(Blockly.Blocks.set.HUE);
+  this.appendValueInput('VAR')
+  .setCheck([String,'List'])
+  .appendField(Blockly.blockpy_set_add_update);    
+  this.setInputsInline(true);
+  this.setPreviousStatement(true);
+  this.setNextStatement(true);
+  this.setTooltip(Blockly.Msg.SET_UPDATE_TOOLTIP); 
+}
 };
 
 // Blockly.Blocks['set_change_to'] = {

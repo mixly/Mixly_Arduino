@@ -7,69 +7,69 @@ goog.require('Blockly.Blocks');
 
 
 Blockly.Blocks['inout_input']={
-init: function() {
+  init: function() {
     this.setColour(20);
     this.appendValueInput("VAR")
-        .appendField(Blockly.blockpy_inout_raw_input)
-        .setCheck(String);
+    .appendField(Blockly.blockpy_inout_raw_input)
+    .setCheck(String);
     this.setOutput(true);
-        this.setTooltip(Blockly.Msg.INOUT_input_TOOLTIP);
+    this.setTooltip(Blockly.Msg.INOUT_input_TOOLTIP);
   }
 }
 
 Blockly.Blocks['inout_print'] = {
   init: function() {
     this.setColour(20);
-        this.appendValueInput("VAR")
-        .appendField(Blockly.blockpy_inout_print);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setTooltip(Blockly.Msg.BLOCKPY_PRINT_TOOLTIP);
+    this.appendValueInput("VAR")
+    .appendField(Blockly.blockpy_inout_print);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.Msg.BLOCKPY_PRINT_TOOLTIP);
   }
 };
 
 Blockly.Blocks['inout_print_inline'] = {
   init: function() {
     this.setColour(20);
-        this.appendValueInput("VAR")
-        .appendField(Blockly.blockpy_inout_print_inline);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setTooltip(Blockly.Msg.TEXT_PRINT_INLINE_TOOLTIP);
+    this.appendValueInput("VAR")
+    .appendField(Blockly.blockpy_inout_print_inline);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.Msg.TEXT_PRINT_INLINE_TOOLTIP);
   }
 };
 
 Blockly.Blocks['inout_print_end'] = {
   init: function() {
     this.setColour(20);
-        this.appendValueInput("VAR")
-            .appendField(Blockly.blockpy_inout_print_inline);
-        this.appendValueInput("END")
-            .appendField(Blockly.MIXLY_ENDSWITH);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_PYTHON_INOUT_PRINT_END_TOOLTIP);
+    this.appendValueInput("VAR")
+    .appendField(Blockly.blockpy_inout_print_inline);
+    this.appendValueInput("END")
+    .appendField(Blockly.MIXLY_ENDSWITH);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_PYTHON_INOUT_PRINT_END_TOOLTIP);
   }
 };
 
 Blockly.Blocks['inout_type_input'] = {
   init: function() {
     
-  var input_type =
-        [[Blockly.LANG_MATH_STRING, 'str'],[Blockly.LANG_MATH_INT, 'int']
-        ,[Blockly.LANG_MATH_FLOAT, 'float']];
+    var input_type =
+    [[Blockly.LANG_MATH_STRING, 'str'],[Blockly.LANG_MATH_INT, 'int']
+    ,[Blockly.LANG_MATH_FLOAT, 'float']];
     this.setColour(20);
     this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET)
-        .appendField(new Blockly.FieldDropdown(input_type), 'DIR')
+    .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET)
+    .appendField(new Blockly.FieldDropdown(input_type), 'DIR')
     this.appendValueInput("VAR")
-        .appendField(Blockly.Msg.PROCEDURES_MUTATORCONTAINER_TITLE)
-        .setCheck(String);    
+    .appendField(Blockly.Msg.PROCEDURES_MUTATORCONTAINER_TITLE)
+    .setCheck(String);    
 
-  this.setInputsInline(true);
-   this.setOutput(true);
-  var thisBlock = this;
+    this.setInputsInline(true);
+    this.setOutput(true);
+    var thisBlock = this;
     this.setTooltip(function() {
       var mode = thisBlock.getFieldValue('DIR');
       var TOOLTIPS = {
@@ -111,9 +111,10 @@ Blockly.Blocks['inout_print_many'] = {
 
   decompose: function(workspace) {
     var containerBlock =
-        Blockly.Block.obtain(workspace, 'inout_print_container');
+    Blockly.Block.obtain(workspace, 'inout_print_container');
     containerBlock.initSvg();
-    var connection = containerBlock.getInput('STACK').connection;
+    var connection = containerBlock.getInput('STACK')
+    .connection;
     for (var i = 0; i < this.itemCount_; i++) {
       var itemBlock = Blockly.Block.obtain(workspace, 'inout_print_item');
       itemBlock.initSvg();
@@ -131,7 +132,7 @@ Blockly.Blocks['inout_print_many'] = {
     while (itemBlock) {
       connections[i] = itemBlock.valueConnection_;
       itemBlock = itemBlock.nextConnection &&
-          itemBlock.nextConnection.targetBlock();
+      itemBlock.nextConnection.targetBlock();
       i++;
     }
     this.itemCount_ = i;
@@ -139,7 +140,8 @@ Blockly.Blocks['inout_print_many'] = {
     // Reconnect any child blocks.
     for (var i = 0; i < this.itemCount_; i++) {
       if (connections[i]) {
-        this.getInput('ADD' + i).connection.connect(connections[i]);
+        this.getInput('ADD' + i)
+        .connection.connect(connections[i]);
       }
     }
   },
@@ -152,7 +154,7 @@ Blockly.Blocks['inout_print_many'] = {
       itemBlock.valueConnection_ = input && input.connection.targetConnection;
       i++;
       itemBlock = itemBlock.nextConnection &&
-          itemBlock.nextConnection.targetBlock();
+      itemBlock.nextConnection.targetBlock();
     }
   },
 
@@ -170,7 +172,7 @@ Blockly.Blocks['inout_print_many'] = {
     // Rebuild block.
     if (this.itemCount_ == 0) {
       this.appendDummyInput('EMPTY')
-          .appendField(Blockly.MIXLY_MIXPY_INOUT_PRINT_EMPTY);
+      .appendField(Blockly.MIXLY_MIXPY_INOUT_PRINT_EMPTY);
     } else {
       for (var i = 0; i < this.itemCount_; i++) {
         var input = this.appendValueInput('ADD' + i);
@@ -185,7 +187,7 @@ Blockly.Blocks['inout_print_container'] = {
   init: function() {
     this.setColour(20);
     this.appendDummyInput()
-        .appendField(Blockly.blockpy_inout_print);
+    .appendField(Blockly.blockpy_inout_print);
     this.appendStatementInput('STACK');
     this.setTooltip(Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP);
     this.contextMenu = false;
@@ -196,7 +198,7 @@ Blockly.Blocks['inout_print_item'] = {
   init: function() {
     this.setColour(20);
     this.appendDummyInput()
-        .appendField(Blockly.Msg.LISTS_CREATE_WITH_ITEM_TITLE);
+    .appendField(Blockly.Msg.LISTS_CREATE_WITH_ITEM_TITLE);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_ITEM_TOOLTIP);
