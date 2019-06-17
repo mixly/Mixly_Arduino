@@ -15,7 +15,7 @@ Blockly.Blocks['lists_create_with'] = {
    init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'int'],[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char'],[Blockly.LANG_MATH_BYTE, 'byte'], [Blockly.LANG_MATH_STRING, 'char *']]), "TYPE")
+    .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'int'],[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char'],[Blockly.LANG_MATH_BYTE, 'byte'], ['char *', 'char *'],[Blockly.LANG_MATH_STRING, 'String']]), "TYPE")
     .appendField(' ')
     .appendField(new Blockly.FieldTextInput('mylist'), 'VAR')
     .appendField('[')
@@ -142,7 +142,7 @@ Blockly.Blocks['lists_create_with_text'] = {
   init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'int'],[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char'], [Blockly.LANG_MATH_BYTE, 'byte'], [Blockly.LANG_MATH_STRING, 'char *']]), "TYPE")
+    .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'int'],[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char'], [Blockly.LANG_MATH_BYTE, 'byte'], ['char *', 'char *'],[Blockly.LANG_MATH_STRING, 'String']]), "TYPE")
     .appendField(' ')
     .appendField(new Blockly.FieldTextInput('mylist'), 'VAR')
     .appendField('[')
@@ -175,7 +175,7 @@ Blockly.Blocks['lists_create_with2'] = {
    init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'int'],[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char'], [Blockly.LANG_MATH_BYTE, 'byte'], [Blockly.LANG_MATH_STRING, 'char *']]), "TYPE")
+    .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'int'],[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char'], [Blockly.LANG_MATH_BYTE, 'byte'], ['char *', 'char *'],[Blockly.LANG_MATH_STRING, 'String']]), "TYPE")
     .appendField(' ')
     .appendField(new Blockly.FieldTextInput('mylist'), 'VAR')
     .appendField('[')
@@ -302,7 +302,7 @@ Blockly.Blocks['lists_create_with_text2'] = {
   init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'int'],[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char'],[Blockly.LANG_MATH_BYTE, 'byte'], [Blockly.LANG_MATH_STRING, 'char *']]), "TYPE")
+    .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'int'],[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char'],[Blockly.LANG_MATH_BYTE, 'byte'], ['char *', 'char *'],[Blockly.LANG_MATH_STRING, 'String']]), "TYPE")
     .appendField(' ')
     .appendField(new Blockly.FieldTextInput('mylist'), 'VAR')
     .appendField('[')
