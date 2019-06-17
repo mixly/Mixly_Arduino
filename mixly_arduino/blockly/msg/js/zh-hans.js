@@ -906,22 +906,6 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = '停止播放声音。';
  Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = '向指定地址发送一个GET请求';
  Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = '对常量或变量进行强制类型转换';
 
- Blockly.LUXE_LED='灯 #';
- Blockly.LUXE_MOTOR='电机 #';
- Blockly.LUXE_STAT='为';
- Blockly.LUXE_SPEED='速度为';
- Blockly.LUXE_DIR='方向为';
- Blockly.LUXE_LED_ON='亮';
- Blockly.LUXE_LED_OFF='灭';
- Blockly.LUXE_MOTOR_FORWARD='顺时针';
- Blockly.LUXE_MOTOR_REVERSE='逆时针';
- Blockly.LUXE_LED_CHANGE='转换状态';
- Blockly.LUXE_MOTOR_CHANGE='改变方向';
- Blockly.LUXE_MOTOR_STOP='停止';
- Blockly.LUXE_SPEAKER_PLAYSOUND='播放声音';
- Blockly.LUXE_SPEANER_NOSOUND='停止播放声音';
- Blockly.LUXE_SPEAKER_FREQUENCY='频率';
- Blockly.LUXE_SPEAKER_DURATION='持续时间';
 
 //-----------------NOVA---------------------------------
 Blockly.MIXLY_NOVA_PORT = '端口';
