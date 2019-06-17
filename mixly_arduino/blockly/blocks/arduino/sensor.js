@@ -135,8 +135,11 @@ Blockly.Blocks.DHT = {
 Blockly.Blocks.LM35 = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("").appendField(Blockly.MIXLY_LM35);
-    this.appendValueInput("PIN", Number).appendField(Blockly.MIXLY_PIN).setCheck(Number);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_LM35);
+    this.appendValueInput("PIN", Number)
+    .appendField(Blockly.MIXLY_PIN)
+    .setCheck(Number);
     this.setInputsInline(true);
     this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_LM35);
@@ -147,7 +150,8 @@ Blockly.Blocks.ds18b20 = {
   init: function () {
     var UNIT = [[Blockly.MIXLY_DS18B20_C, '0'], [Blockly.MIXLY_DS18B20_F, '1']];
     this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("").appendField(Blockly.MIXLY_DS18B20)
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_DS18B20)
     .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
     .appendField(Blockly.MIXLY_DS18B20_GET_TEMP)
     .appendField(new Blockly.FieldDropdown(UNIT), "UNIT");
@@ -205,7 +209,9 @@ Blockly.Blocks.DS1307_init = {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("").appendField(Blockly.MIXLY_RTCINIT);
         //this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTCTypeList), 'RTCType');
-        this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
+        this.appendDummyInput("")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
         this.appendValueInput("SDA")
         .appendField("SDA#")
         .setCheck(Number);
@@ -269,9 +275,15 @@ var RTC_TIME_TYPE = [
 Blockly.Blocks.RTC_get_time = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_RTCGETTIME);
-    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
-    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
+    this.appendDummyInput("")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_RTCGETTIME);
+    this.appendDummyInput("")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
+    this.appendDummyInput("")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
     this.setInputsInline(true);
     this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_RTC_GETTIME.replace('%1',this.getFieldValue("TIME_TYPE")));
@@ -281,10 +293,22 @@ Blockly.Blocks.RTC_get_time = {
 Blockly.Blocks.RTC_set_time = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_RTCSETTIME).appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
-    this.appendValueInput("hour").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("  "+Blockly.MIXLY_HOUR);
-    this.appendValueInput("minute").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("  "+Blockly.MIXLY_MINUTE);
-    this.appendValueInput("second").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("  "+Blockly.MIXLY_SECOND);
+    this.appendDummyInput("")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_RTCSETTIME)
+    .appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
+    this.appendValueInput("hour")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("  "+Blockly.MIXLY_HOUR);
+    this.appendValueInput("minute")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("  "+Blockly.MIXLY_MINUTE);
+    this.appendValueInput("second")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("  "+Blockly.MIXLY_SECOND);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(false);
@@ -295,10 +319,22 @@ Blockly.Blocks.RTC_set_time = {
 Blockly.Blocks.RTC_set_date = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_RTCSETDATE).appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
-    this.appendValueInput("year").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("  "+Blockly.MIXLY_YEAR);
-    this.appendValueInput("month").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("  "+Blockly.MIXLY_MONTH);
-    this.appendValueInput("day").setCheck(Number).setAlign(Blockly.ALIGN_RIGHT).appendField("  "+Blockly.MIXLY_DAY);
+    this.appendDummyInput("")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_RTCSETDATE)
+    .appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
+    this.appendValueInput("year")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("  "+Blockly.MIXLY_YEAR);
+    this.appendValueInput("month")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("  "+Blockly.MIXLY_MONTH);
+    this.appendValueInput("day")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("  "+Blockly.MIXLY_DAY);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_RTC_SETDATE);
@@ -317,8 +353,11 @@ var ADXL345_GETAB = [
 Blockly.Blocks.ADXL345 = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("").appendField(Blockly.MIXLY_ADXL345);
-    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(ADXL345_GETAB), "ADXL345_PIN");
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_ADXL345);
+    this.appendDummyInput("")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(new Blockly.FieldDropdown(ADXL345_GETAB), "ADXL345_PIN");
     this.setInputsInline(true);
     this.setOutput(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_ADXL345.replace('%1',this.getFieldValue("ADXL345_PIN")));
@@ -329,8 +368,11 @@ Blockly.Blocks.ADXL345 = {
 Blockly.Blocks.MPU6050= {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("").appendField(Blockly.MIXLY_MPU6050);
-    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown([
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_MPU6050);
+    this.appendDummyInput("")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(new Blockly.FieldDropdown([
       [Blockly.MIXLY_Accel_X, "normAccel.XAxis"], 
       [Blockly.MIXLY_Accel_Y, "normAccel.YAxis"], 
       [Blockly.MIXLY_Accel_Z, "normAccel.ZAxis"],
@@ -348,7 +390,8 @@ Blockly.Blocks.MPU6050= {
 Blockly.Blocks.MPU6050_update= {
   init: function() {
    this.setColour(Blockly.Blocks.sensor.HUE);
-   this.appendDummyInput("").appendField(Blockly.MIXLY_MPU6050_update);
+   this.appendDummyInput("")
+   .appendField(Blockly.MIXLY_MPU6050_update);
    this.setPreviousStatement(true);
    this.setNextStatement(true);
    this.setInputsInline(true);

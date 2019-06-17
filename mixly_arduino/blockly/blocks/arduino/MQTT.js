@@ -14,12 +14,24 @@ Blockly.Blocks.blynk.ICON_HEIGHT = 20; //传感器图标高度
 Blockly.Blocks.MQTT_server = {
   init: function() {
     this.setColour(Blockly.Blocks.blynk.HUE1);
-    this.appendDummyInput("").appendField(new Blockly.FieldImage("../../media/blynk/iot.png", 20, 20)).appendField(Blockly.MQTT_SERVER);
-    this.appendValueInput("server_add").appendField(Blockly.MQTT_SERVER_ADD).setCheck(String);
-    this.appendValueInput("server_port").appendField(Blockly.MIXLY_ETHERNET_CLINET_PORT).setCheck(Number);
-    this.appendValueInput("Client_ID").appendField(Blockly.MQTT_Client_ID).setCheck(String);
-    this.appendValueInput("IOT_ID").appendField(Blockly.MQTT_IOT_ID).setCheck(String);
-    this.appendValueInput("IOT_PWD", String).appendField(Blockly.MQTT_IOT_PWD).setCheck([String, Number]);
+    this.appendDummyInput("")
+    .appendField(new Blockly.FieldImage("../../media/blynk/iot.png", 20, 20))
+    .appendField(Blockly.MQTT_SERVER);
+    this.appendValueInput("server_add")
+    .appendField(Blockly.MQTT_SERVER_ADD)
+    .setCheck(String);
+    this.appendValueInput("server_port")
+    .appendField(Blockly.MIXLY_ETHERNET_CLINET_PORT)
+    .setCheck(Number);
+    this.appendValueInput("Client_ID")
+    .appendField(Blockly.MQTT_Client_ID)
+    .setCheck(String);
+    this.appendValueInput("IOT_ID")
+    .appendField(Blockly.MQTT_IOT_ID)
+    .setCheck(String);
+    this.appendValueInput("IOT_PWD", String)
+    .appendField(Blockly.MQTT_IOT_PWD)
+    .setCheck([String, Number]);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip();
@@ -31,9 +43,13 @@ Blockly.Blocks.MQTT_server = {
 Blockly.Blocks.WIFI_info = {
   init: function() {
     this.setColour(Blockly.Blocks.blynk.HUE1);
-    this.appendDummyInput("").appendField(new Blockly.FieldImage("../../media/blynk/iot.png", 20, 20)).appendField(Blockly.MIXLY_NETWORK_INIT);
-    this.appendValueInput("SSID").appendField(Blockly.MIXLY_ESP32_NETWORK_ID);
-    this.appendValueInput("PWD").appendField(Blockly.MIXLY_ESP32_NETWORK_PASSWORD);
+    this.appendDummyInput("")
+    .appendField(new Blockly.FieldImage("../../media/blynk/iot.png", 20, 20))
+    .appendField(Blockly.MIXLY_NETWORK_INIT);
+    this.appendValueInput("SSID")
+    .appendField(Blockly.MIXLY_ESP32_NETWORK_ID);
+    this.appendValueInput("PWD")
+    .appendField(Blockly.MIXLY_ESP32_NETWORK_PASSWORD);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
@@ -77,7 +93,8 @@ Blockly.Blocks['network_get_connect'] = {
   init: function() {
     this.setColour(Blockly.Blocks.storage.HUE);
     this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_ESP32_NETWORK_GET_CONNECT).appendField(Blockly.MIXLY_ESP32_NETWORK_IP);
+    .appendField(Blockly.MIXLY_ESP32_NETWORK_GET_CONNECT)
+    .appendField(Blockly.MIXLY_ESP32_NETWORK_IP);
     this.setOutput(true);
     this.setInputsInline(true);
   }
@@ -111,18 +128,21 @@ Blockly.Blocks['MQTT_connect'] = {
 Blockly.Blocks.MQTT_publish = {
   init: function() {
     this.setColour(Blockly.Blocks.blynk.HUE1);
-    this.appendDummyInput("").appendField(new Blockly.FieldImage("../../media/blynk/iot.png", 20, 20)).appendField(Blockly.MQTT_publish);
+    this.appendDummyInput("")
+    .appendField(new Blockly.FieldImage("../../media/blynk/iot.png", 20, 20))
+    .appendField(Blockly.MQTT_publish);
     this.appendValueInput("data");
-    this.appendDummyInput("").appendField(Blockly.LANG_MATH_RANDOM_INT_INPUT_TO);
-
-    this.appendValueInput("Topic").appendField(Blockly.MQTT_Topic).setCheck(String);
-   // this.appendDummyInput("").appendField(new Blockly.FieldDropdown(MQTT_TOPIC_SELECT), "Topic");
-   this.setPreviousStatement(true, null);
-   this.setNextStatement(true, null);
-   this.setInputsInline(true);
-   this.setTooltip(" ");
-   this.setHelpUrl();
- }
+    this.appendDummyInput("")
+    .appendField(Blockly.LANG_MATH_RANDOM_INT_INPUT_TO);
+    this.appendValueInput("Topic")
+    .appendField(Blockly.MQTT_Topic)
+    .setCheck(String);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(" ");
+    this.setHelpUrl();
+  }
 };
 
 // 
@@ -130,9 +150,11 @@ Blockly.Blocks.MQTT_publish = {
 Blockly.Blocks.MQTT_subscribe_value = {
   init: function() {
     this.setColour(Blockly.Blocks.blynk.HUE1);
-    this.appendDummyInput("").appendField(Blockly.MQTT_Topic);
+    this.appendDummyInput("")
+    .appendField(Blockly.MQTT_Topic);
     this.appendValueInput("Topic");
-    this.appendDummyInput("").appendField(Blockly.MIXLY_I2C_VALUE)
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_I2C_VALUE)
     this.setInputsInline(true);
     this.setOutput(true, Boolean);
   }
@@ -145,7 +167,6 @@ Blockly.Blocks['MQTT_subscribe'] = {
    * @this Blockly.Block
    */
    init: function() {
-    //this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('IF0')
     .setCheck([Boolean,Number])
