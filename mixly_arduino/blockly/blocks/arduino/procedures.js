@@ -167,13 +167,11 @@ Blockly.Procedures.mutateCallers(this);
       containerBlock.setFieldValue(this.hasStatements_ ? 'TRUE' : 'FALSE',
        'STATEMENTS');
     } else {
-      containerBlock.getInput('STATEMENT_INPUT')
-      .setVisible(false);
+      containerBlock.getInput('STATEMENT_INPUT').setVisible(false);
     }
 
     // Parameter list.
-    var connection = containerBlock.getInput('STACK')
-    .connection;
+    var connection = containerBlock.getInput('STACK').connection;
     for (var i = 0; i < this.arguments_.length; i++) {
       var paramBlock = workspace.newBlock('procedures_mutatorarg');
       paramBlock.initSvg();
@@ -221,8 +219,7 @@ Blockly.Procedures.mutateCallers(this);
           this.statementConnection_ = null;
         } else {
           // Save the stack, then disconnect it.
-          var stackConnection = this.getInput('STACK')
-          .connection;
+          var stackConnection = this.getInput('STACK').connection;
           this.statementConnection_ = stackConnection.targetConnection;
           if (this.statementConnection_) {
             var stackBlock = stackConnection.targetBlock();
@@ -505,7 +502,7 @@ Blockly.Blocks['procedures_callnoreturn'] = {
     }
     if (!paramIds) {
       // Reset the quarks (a mutator is about to open)
-      .
+      this.quarkIds_ = paramIds;
       return;
     }
     if (goog.array.equals(this.arguments_, paramNames)) {
@@ -541,11 +538,10 @@ Blockly.Blocks['procedures_callnoreturn'] = {
           paramIds.indexOf(this.quarkIds_[i]) == -1) {
           // This connection should no longer be attached to this block.
         connection.disconnect();
-        connection.getSourceBlock()
-        .bumpNeighbours_();
+          connection.getSourceBlock().bumpNeighbours_();
+        }
       }
     }
-  }
     // Rebuild the block's arguments.
     this.arguments_ = [].concat(paramNames);
     this.updateShape_();

@@ -333,13 +333,11 @@ Blockly.Procedures.mutateCallers(this);
       containerBlock.setFieldValue(this.hasStatements_ ? "TRUE" : "FALSE",
        "STATEMENTS");
     } else {
-      containerBlock.getInput("STATEMENT_INPUT")
-      .setVisible(false);
+      containerBlock.getInput("STATEMENT_INPUT").setVisible(false);
     }
 
     // Parameter list.
-    var connection = containerBlock.getInput("STACK")
-    .connection;
+    var connection = containerBlock.getInput("STACK").connection;
     for (var i = 0; i < this.arguments_.length; i++) {
       var paramBlock = workspace.newBlock("procedures_mutatorarg");
       paramBlock.initSvg();
@@ -387,8 +385,7 @@ Blockly.Procedures.mutateCallers(this);
           this.statementConnection_ = null;
         } else {
           // Save the stack, then disconnect it.
-          var stackConnection = this.getInput("STACK")
-          .connection;
+          var stackConnection = this.getInput("STACK").connection;
           this.statementConnection_ = stackConnection.targetConnection;
           if (this.statementConnection_) {
             var stackBlock = stackConnection.targetBlock();
@@ -659,8 +656,7 @@ Blockly.Blocks.blynk_iot_WidgetLED_VALUE = {
     this.appendValueInput("NUM", Number)
     .appendField(Blockly.MIXLY_BRIGHTNESS)
     .setCheck(Number);
-    //this.appendValueInput("data")
-    .appendField(Blockly.blynk_IOT_DATA);
+    //this.appendValueInput("data").appendField(Blockly.blynk_IOT_DATA);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
@@ -724,12 +720,8 @@ Blockly.Blocks.blynk_iot_ir_send_ac = {
 Blockly.Blocks.blynk_iot_ir_recv_raw = {
   init: function () {
     this.setColour(Blockly.Blocks.blynk.HUE1);
-    this.appendValueInput("PIN", Number)
-    .appendField(Blockly.blynk_IOT_IR_RECEIVE_RAW)
-    .setCheck(Number);
-      //  this.appendValueInput("PIN", Number)
-      .appendField(Blockly.MIXLY_PIN)
-      .setCheck(Number);
+    this.appendValueInput("PIN", Number).appendField(Blockly.blynk_IOT_IR_RECEIVE_RAW).setCheck(Number);
+      //  this.appendValueInput("PIN", Number).appendField(Blockly.MIXLY_PIN).setCheck(Number);
       this.setPreviousStatement(true);
       this.setNextStatement(true);
       this.setInputsInline(true);

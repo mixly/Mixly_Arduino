@@ -540,11 +540,10 @@ Blockly.Blocks['procedures_callnoreturn'] = {
           paramIds.indexOf(this.quarkIds_[i]) == -1) {
           // This connection should no longer be attached to this block.
         connection.disconnect();
-        connection.getSourceBlock()
-        .bumpNeighbours_();
+          connection.getSourceBlock().bumpNeighbours_();
+        }
       }
     }
-  }
     // Rebuild the block's arguments.
     this.arguments_ = [].concat(paramNames);
     this.updateShape_();

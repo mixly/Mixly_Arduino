@@ -268,8 +268,7 @@ Blockly.Blocks['controls_if'] = {
    decompose: function(workspace) {
     var containerBlock = Blockly.Block.obtain(workspace, 'controls_if_if');
     containerBlock.initSvg();
-    var connection = containerBlock.getInput('STACK')
-    .connection;
+    var connection = containerBlock.getInput('STACK').connection;
     for (var i = 1; i <= this.elseifCount_; i++) {
       var elseifBlock = Blockly.Block.obtain(workspace, 'controls_if_elseif');
       elseifBlock.initSvg();

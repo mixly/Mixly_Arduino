@@ -288,16 +288,10 @@ Blockly.Blocks.RTC_get_time = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendValueInput('SUB')
-    .setCheck("var");
-    this.appendDummyInput()
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_RTCGETTIME);
-    // this.appendDummyInput("")
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('myRTC');
-    // this.appendDummyInput("")
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
+        .setCheck("var");
+    this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_RTCGETTIME);
+    // this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField('myRTC');
+    // this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
     this.setInputsInline(true);
     this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_ESP32_RTC_GET_TIME_TOOLTIP);

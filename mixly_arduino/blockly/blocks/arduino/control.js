@@ -227,14 +227,12 @@ Blockly.Blocks['controls_if'] = {
     var elseStatementConnection = null;
     if (this.elseCount_) {
       if(containerBlock.getInputTargetBlock('ELSE') && containerBlock.getInputTargetBlock('ELSE').previousConnection)
-        elseStatementConnection = containerBlock.getInputTargetBlock('ELSE')
-      .previousConnection;
+        elseStatementConnection = containerBlock.getInputTargetBlock('ELSE').previousConnection;
       this.removeInput('ELSE');
     }
     for (var i = this.elseifCount_; i > 0; i--) {
       if(containerBlock.getInputTargetBlock('IF' + i) && containerBlock.getInputTargetBlock('IF' + i).previousConnection)
-        valueConnections[i] = (containerBlock.getInputTargetBlock('IF' + i)
-          .previousConnection);
+        valueConnections[i] = (containerBlock.getInputTargetBlock('IF' + i).previousConnection);
       else
         valueConnections[i] = null;
       this.removeInput('IF' + i);
@@ -276,8 +274,7 @@ Blockly.Blocks['controls_if'] = {
    decompose: function(workspace) {
     var containerBlock = workspace.newBlock('controls_if_if');
     containerBlock.initSvg();
-    var connection = containerBlock.getInput('STACK')
-    .connection;
+    var connection = containerBlock.getInput('STACK').connection;
     for (var i = 1; i <= this.elseifCount_; i++) {
       var elseifBlock = workspace.newBlock('controls_if_elseif');
       elseifBlock.initSvg();
@@ -376,8 +373,7 @@ Blockly.Blocks['controls_if'] = {
     var elseStatementConnection = null;
 
     if (this.getInput('ELSE')) {
-      elseStatementConnection = this.getInput('ELSE')
-      .connection.targetConnection;
+      elseStatementConnection = this.getInput('ELSE').connection.targetConnection;
     }
     var i = 1;
     while (this.getInput('IF' + i)) {
@@ -546,8 +542,7 @@ Blockly.Blocks['controls_switch_case'] = {
    decompose: function(workspace) {
     var containerBlock = Blockly.Block.obtain(workspace, 'controls_switch');
     containerBlock.initSvg();
-    var connection = containerBlock.getInput('STACK')
-    .connection;
+    var connection = containerBlock.getInput('STACK').connection;
     for (var i = 1; i <= this.elseifCount_; i++) {
       var elseifBlock = Blockly.Block.obtain(workspace, 'controls_case');
       elseifBlock.initSvg();

@@ -418,14 +418,9 @@ Blockly.Blocks['sensor_distance_hrsc04'] = {
 Blockly.Blocks.DS1307_init = {
     init: function () {
         this.setColour(Blockly.Blocks.sensor.HUE);
-        this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_RTCINIT);
-        //this.appendDummyInput("")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(new Blockly.FieldDropdown(RTCTypeList), 'RTCType');
-        this.appendDummyInput("")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField('myRTC');
+        this.appendDummyInput("").appendField(Blockly.MIXLY_RTCINIT);
+        //this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTCTypeList), 'RTCType');
+        this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField('myRTC');
         this.appendValueInput("SDA")
         .appendField("SDA#")
         .setCheck(Number);

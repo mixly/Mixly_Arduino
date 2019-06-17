@@ -100,8 +100,7 @@ compose: function(containerBlock) {
     // Reconnect any child blocks.
     for (var i = 0; i < this.itemCount_; i++) {
       if (connections[i]) {
-        this.getInput('ADD' + i)
-        .connection.connect(connections[i]);
+        this.getInput('ADD' + i).connection.connect(connections[i]);
       }
     }
   },

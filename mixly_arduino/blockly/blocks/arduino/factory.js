@@ -58,8 +58,7 @@ decompose: function(workspace) {
     var containerBlock =
     Blockly.Block.obtain(workspace, 'factory_create_with_container');
     containerBlock.initSvg();
-    var connection = containerBlock.getInput('STACK')
-    .connection;
+    var connection = containerBlock.getInput('STACK').connection;
     for (var i = 0; i < this.itemCount_; i++) {
       var itemBlock = Blockly.Block.obtain(workspace, 'factory_create_with_item');
       itemBlock.initSvg();
@@ -88,8 +87,7 @@ compose: function(containerBlock) {
     // Reconnect any child blocks.
     for (var i = 0; i < this.itemCount_; i++) {
       if (connections[i]) {
-        this.getInput('ADD' + i)
-        .connection.connect(connections[i]);
+        this.getInput('ADD' + i).connection.connect(connections[i]);
       }
     }
   },
@@ -119,10 +117,8 @@ compose: function(containerBlock) {
   }
     // Rebuild block.
     for (var i = 0; i < this.itemCount_; i++) {
-      var input = this.appendValueInput('ADD' + i)
-      .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField(this.arguments_[i]);
-    }
+		var input = this.appendValueInput('ADD' + i).setAlign(Blockly.ALIGN_RIGHT).appendField(this.arguments_[i]);
+	}
   }
 };
 

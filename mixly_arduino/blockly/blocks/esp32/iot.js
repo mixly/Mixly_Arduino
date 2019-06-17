@@ -152,8 +152,7 @@ Blockly.Blocks['iot_onenet_publish'] = {
         var containerBlock =
         workspace.newBlock('iot_publish_container');
         containerBlock.initSvg();
-        var connection = containerBlock.getInput('STACK')
-        .connection;
+        var connection = containerBlock.getInput('STACK').connection;
         for (var i = 0; i < this.itemCount_; i++) {
             var itemBlock = workspace.newBlock('iot_create_with_item');
             itemBlock.initSvg();
@@ -183,8 +182,7 @@ Blockly.Blocks['iot_onenet_publish'] = {
         // Reconnect any child blocks.
         for (var i = 0; i < this.itemCount_; i++) {
             if (connections[i]) {
-                this.getInput('ADD' + i)
-                .connection.connect(connections[i]);
+                this.getInput('ADD' + i).connection.connect(connections[i]);
             }
         }
     },
@@ -216,8 +214,7 @@ Blockly.Blocks['iot_onenet_publish'] = {
         }
         var keyNames = [];
         for (var i = 0; this.getInput('ADD' + i); i++) {
-            //this.getInput('VALUE' + i)
-            .removeField("KEY"+i);
+            //this.getInput('VALUE' + i).removeField("KEY"+i);
             keyNames.push(this.getFieldValue("KEY" + i))
             this.removeInput('ADD' + i);
         }

@@ -50,16 +50,13 @@ Blockly.FieldTextInput.char_validator = function(text) {
      charAtOne === "t" ||
      charAtOne === "\\" ||
      charAtOne === "'" ){
-      return String(text)
-    .substring(0, 2);
+      return String(text).substring(0, 2);
   }else if(charAtOne === "x" && text.charAt(2) === "0" && text.charAt(3) === "B"){
-   return String(text)
-   .substring(0, 4);
+   return String(text).substring(0, 4);
  } 
 }
 }
-return String(text)
-.substring(0, 1);
+return String(text).substring(0, 1);
 };
 
 Blockly.Blocks['text_char'] = {

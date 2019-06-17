@@ -207,11 +207,8 @@ var RTCTypeList = [['DS1302','DS1302'],['DS1307','DS1307']];
 Blockly.Blocks.DS1307_init = {
   init: function () {
     this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_RTCINIT);
-        //this.appendDummyInput("")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(new Blockly.FieldDropdown(RTCTypeList), 'RTCType');
+    this.appendDummyInput("").appendField(Blockly.MIXLY_RTCINIT);
+        //this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTCTypeList), 'RTCType');
         this.appendDummyInput("")
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');

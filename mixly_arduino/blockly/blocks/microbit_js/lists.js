@@ -88,8 +88,7 @@ Blockly.Blocks['lists_create_with'] = {
     // Reconnect any child blocks.
     for (var i = 0; i < this.itemCount_; i++) {
       if (connections[i]) {
-        this.getInput('ADD' + i)
-        .connection.connect(connections[i]);
+        this.getInput('ADD' + i).connection.connect(connections[i]);
       }
     }
   },
@@ -219,8 +218,7 @@ Blockly.Blocks['lists_create_with2'] = {
     var containerBlock =
     Blockly.Block.obtain(workspace, 'lists_create_with_container');
     containerBlock.initSvg();
-    var connection = containerBlock.getInput('STACK')
-    .connection;
+    var connection = containerBlock.getInput('STACK').connection;
     for (var i = 0; i < this.itemCount_; i++) {
       var itemBlock = Blockly.Block.obtain(workspace, 'lists_create_with_item');
       itemBlock.initSvg();
@@ -250,8 +248,7 @@ Blockly.Blocks['lists_create_with2'] = {
     // Reconnect any child blocks.
     for (var i = 0; i < this.itemCount_; i++) {
       if (connections[i]) {
-        this.getInput('ADD' + i)
-        .connection.connect(connections[i]);
+        this.getInput('ADD' + i).connection.connect(connections[i]);
       }
     }
   },

@@ -134,18 +134,15 @@ Blockly.Blocks.MQTT_publish = {
     this.appendValueInput("data");
     this.appendDummyInput("")
     .appendField(Blockly.LANG_MATH_RANDOM_INT_INPUT_TO);
-
     this.appendValueInput("Topic")
     .appendField(Blockly.MQTT_Topic)
     .setCheck(String);
-   // this.appendDummyInput("")
-   .appendField(new Blockly.FieldDropdown(MQTT_TOPIC_SELECT), "Topic");
-   this.setPreviousStatement(true, null);
-   this.setNextStatement(true, null);
-   this.setInputsInline(true);
-   this.setTooltip(" ");
-   this.setHelpUrl();
- }
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(" ");
+    this.setHelpUrl();
+  }
 };
 
 // 
@@ -170,7 +167,6 @@ Blockly.Blocks['MQTT_subscribe'] = {
    * @this Blockly.Block
    */
    init: function() {
-    //this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('IF0')
     .setCheck([Boolean,Number])
@@ -229,24 +225,18 @@ Blockly.Blocks['MQTT_subscribe'] = {
     var statementConnections = [];
     var elseStatementConnection = null;
     if (this.elseCount_) {
-      if(containerBlock.getInputTargetBlock('ELSE') && containerBlock.getInputTargetBlock('ELSE')
-        .previousConnection)
-        elseStatementConnection = containerBlock.getInputTargetBlock('ELSE')
-      .previousConnection;
+      if(containerBlock.getInputTargetBlock('ELSE') && containerBlock.getInputTargetBlock('ELSE').previousConnection)
+        elseStatementConnection = containerBlock.getInputTargetBlock('ELSE').previousConnection;
       this.removeInput('ELSE');
     }
     for (var i = this.elseifCount_; i > 0; i--) {
-      if(containerBlock.getInputTargetBlock('IF' + i) && containerBlock.getInputTargetBlock('IF' + i)
-        .previousConnection)
-        valueConnections[i] = (containerBlock.getInputTargetBlock('IF' + i)
-          .previousConnection);
+      if(containerBlock.getInputTargetBlock('IF' + i) && containerBlock.getInputTargetBlock('IF' + i).previousConnection)
+        valueConnections[i] = (containerBlock.getInputTargetBlock('IF' + i).previousConnection);
       else
         valueConnections[i] = null;
       this.removeInput('IF' + i);
-      if(containerBlock.getInputTargetBlock('DO' + i) && containerBlock.getInputTargetBlock('DO' + i)
-        .previousConnection)
-        statementConnections[i] = (containerBlock.getInputTargetBlock('DO' + i)
-          .previousConnection);
+      if(containerBlock.getInputTargetBlock('DO' + i) && containerBlock.getInputTargetBlock('DO' + i).previousConnection)
+        statementConnections[i] = (containerBlock.getInputTargetBlock('DO' + i).previousConnection);
       else
         statementConnections[i] = null;
       this.removeInput('DO' + i);
@@ -283,8 +273,7 @@ Blockly.Blocks['MQTT_subscribe'] = {
    decompose: function(workspace) {
     var containerBlock = workspace.newBlock('controls_if_if');
     containerBlock.initSvg();
-    var connection = containerBlock.getInput('STACK')
-    .connection;
+    var connection = containerBlock.getInput('STACK').connection;
     for (var i = 1; i <= this.elseifCount_; i++) {
       var elseifBlock = workspace.newBlock('controls_if_elseif');
       elseifBlock.initSvg();
@@ -383,8 +372,7 @@ Blockly.Blocks['MQTT_subscribe'] = {
     var elseStatementConnection = null;
 
     if (this.getInput('ELSE')) {
-      elseStatementConnection = this.getInput('ELSE')
-      .connection.targetConnection;
+      elseStatementConnection = this.getInput('ELSE').connection.targetConnection;
     }
     var i = 1;
     while (this.getInput('IF' + i)) {

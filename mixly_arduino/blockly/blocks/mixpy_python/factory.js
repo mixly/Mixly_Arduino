@@ -70,8 +70,7 @@ decompose: function(workspace) {
     var containerBlock =
     Blockly.Block.obtain(workspace, 'factory_create_with_container');
     containerBlock.initSvg();
-    var connection = containerBlock.getInput('STACK')
-    .connection;
+    var connection = containerBlock.getInput('STACK').connection;
     for (var i = 0; i < this.itemCount_; i++) {
       var itemBlock = Blockly.Block.obtain(workspace, 'factory_create_with_item');
       itemBlock.initSvg();
