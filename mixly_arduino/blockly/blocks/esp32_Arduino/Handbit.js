@@ -8,10 +8,8 @@ Blockly.Blocks.actuator.HUE = 100;
 Blockly.Blocks.handbit_button_is_pressed = {
   init: function(){
     this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_BUTTON);
-    this.appendDummyInput("")
-    .appendField(new Blockly.FieldDropdown([['A', '0'], ['B', '2']]), 'btn');
+    this.appendDummyInput("").appendField(Blockly.MIXLY_BUTTON);
+    this.appendDummyInput("").appendField(new Blockly.FieldDropdown([['A', '0'], ['B', '2']]), 'btn');
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_IS_PRESSED);
     this.setOutput(true, Boolean);
@@ -113,11 +111,8 @@ var MixGo_MPU9250_GETAB = [
 Blockly.Blocks.mixgo_MPU9250 = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.MixGo_MPU9250);
-    this.appendDummyInput("")
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(new Blockly.FieldDropdown(MixGo_MPU9250_GETAB), "MixGo_MPU9250_GETAB");
+    this.appendDummyInput("").appendField(Blockly.MixGo_MPU9250);
+    this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(MixGo_MPU9250_GETAB), "MixGo_MPU9250_GETAB");
     this.setInputsInline(true);
     this.setOutput(true);
     this.setTooltip("");
@@ -126,16 +121,16 @@ Blockly.Blocks.mixgo_MPU9250 = {
 };
 
 Blockly.Blocks.inout_touchRead = {
-  init: function(){
-    this.setColour(20);
-    this.appendDummyInput()
-    .appendField(Blockly.MIXLY_ESP32_TOUCH)
-    .appendField(Blockly.MIXLY_PIN)
-    .appendField(new Blockly.FieldDropdown([["P", "27"], ["Y", "14"],["T", "12"],["H", "13"],["O", "15"],["N", "4"]]), 'touch_pin');
-    this.appendDummyInput()
-    .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
-    this.setOutput(true, Number);
-    this.setInputsInline(true);
-    this.setTooltip(Blockly.MIXLY_ESP32_INOUT_PIN_PRESSED_TOOLTIP);
-  }
+    init: function(){
+        this.setColour(20);
+        this.appendDummyInput()
+        .appendField(Blockly.MIXLY_ESP32_TOUCH)
+        .appendField(Blockly.MIXLY_PIN)
+        .appendField(new Blockly.FieldDropdown([["P", "27"], ["Y", "14"],["T", "12"],["H", "13"],["O", "15"],["N", "4"]]), 'touch_pin');
+        this.appendDummyInput()
+        .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
+        this.setOutput(true, Number);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_INOUT_PIN_PRESSED_TOOLTIP);
+    }
 };

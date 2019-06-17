@@ -8,8 +8,8 @@ Blockly.Blocks['radio_send_number'] = {
     init:function(){
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('data')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_SEND_NUMBER);
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_SEND_NUMBER);
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -21,11 +21,11 @@ Blockly.Blocks['radio_send_value'] = {
     init:function(){
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('name')
-        .setCheck(String)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_SEND_VALUE);
+            .setCheck(String)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_SEND_VALUE);
         this.appendValueInput('data')
-        .setCheck(Number)
-        .appendField(" = ");
+            .setCheck(Number)
+            .appendField(" = ");
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
@@ -36,8 +36,8 @@ Blockly.Blocks['radio_send_string'] = {
     init:function(){
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('data')
-        .setCheck(String)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_SEND_STRING);
+            .setCheck(String)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_SEND_STRING);
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -50,12 +50,12 @@ Blockly.Blocks['radio_receive_args'] = {
      * Mutator block for procedure argument.
      * @this Blockly.Block
      */
-     init: function() {
+    init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput()
-        .appendField(Blockly.Msg.PROCEDURES_MUTATORARG_TITLE)
-        .appendField(new Blockly.FieldDropdown([['receivedNumber', 'receivedNumber'], ['receivedString', 'receivedNumber'], ['time', 'time'], ['serial', 'serial'], ['signal', 'signal']]), "TYPEVAR")
-        .appendField(new Blockly.FieldTextInput('x', this.validator_), 'NAME');
+            .appendField(Blockly.Msg.PROCEDURES_MUTATORARG_TITLE)
+            .appendField(new Blockly.FieldDropdown([['receivedNumber', 'receivedNumber'], ['receivedString', 'receivedNumber'], ['time', 'time'], ['serial', 'serial'], ['signal', 'signal']]), "TYPEVAR")
+            .appendField(new Blockly.FieldTextInput('x', this.validator_), 'NAME');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.PROCEDURES_MUTATORARG_TOOLTIP);
@@ -70,9 +70,8 @@ Blockly.Blocks['radio_receive_args'] = {
      * @private
      * @this Blockly.Block
      */
-     validator_: function(newVar) {
-        newVar = newVar.replace(/[\s\xa0]+/g, ' ')
-        .replace(/^ | $/g, '');
+    validator_: function(newVar) {
+        newVar = newVar.replace(/[\s\xa0]+/g, ' ').replace(/^ | $/g, '');
         return newVar || null;
     }
 };
@@ -82,14 +81,14 @@ Blockly.Blocks['procedures_mutatorcontainer'] = {
      * Mutator block for procedure container.
      * @this Blockly.Block
      */
-     init: function() {
+    init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput()
-        .appendField(Blockly.Msg.PROCEDURES_MUTATORCONTAINER_TITLE);
+            .appendField(Blockly.Msg.PROCEDURES_MUTATORCONTAINER_TITLE);
         this.appendStatementInput('STACK');
         this.appendDummyInput('STATEMENT_INPUT')
-        .appendField(Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS)
-        .appendField(new Blockly.FieldCheckbox('TRUE'), 'STATEMENTS');
+            .appendField(Blockly.Msg.PROCEDURES_ALLOW_STATEMENTS)
+            .appendField(new Blockly.FieldCheckbox('TRUE'), 'STATEMENTS');
         this.setTooltip(Blockly.Msg.PROCEDURES_MUTATORCONTAINER_TOOLTIP);
         this.contextMenu = false;
     }
@@ -99,7 +98,7 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
     init:function(){
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_ON_RECEIVE)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_ON_RECEIVE)
             //.appendField(new Blockly.FieldTextInput('receivedNumber'), 'var')
             .appendField('', 'PARAMS');
         //this.appendStatementInput('do')
@@ -116,7 +115,7 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
         }
         if (hasStatements) {
             this.appendStatementInput('STACK')
-            .appendField(Blockly.Msg.PROCEDURES_DEFNORETURN_DO);
+                .appendField(Blockly.Msg.PROCEDURES_DEFNORETURN_DO);
             if (this.getInput('RETURN')) {
                 this.moveInputBefore('STACK', 'RETURN');
             }
@@ -131,7 +130,7 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
      * @private
      * @this Blockly.Block
      */
-     updateParams_: function() {
+    updateParams_: function() {
         // Check for duplicated arguments.
         var badArg = false;
         var hash = {};
@@ -151,7 +150,7 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
         var paramString = '';
         if (this.arguments_.length) {
             paramString = Blockly.Msg.PROCEDURES_BEFORE_PARAMS +
-            ' ' + this.arguments_.join(', ');
+                ' ' + this.arguments_.join(', ');
         }
         // The params field is deterministic based on the mutation,
         // no need to fire a change event.
@@ -166,7 +165,7 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
      * @return {!Element} XML storage element.
      * @this Blockly.Block
      */
-     mutationToDom: function() {
+    mutationToDom: function() {
         var container = document.createElement('mutation');
         for (var i = 0; i < this.arguments_.length; i++) {
             var parameter = document.createElement('arg');
@@ -186,7 +185,7 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
      * @param {!Element} xmlElement XML storage element.
      * @this Blockly.Block
      */
-     domToMutation: function(xmlElement) {
+    domToMutation: function(xmlElement) {
         this.arguments_ = [];
         this.argumentstype_ = [];//新增
         for (var i = 0, childNode; childNode = xmlElement.childNodes[i]; i++) {
@@ -207,7 +206,7 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
      * @return {!Blockly.Block} Root block in mutator.
      * @this Blockly.Block
      */
-     decompose: function(workspace) {
+    decompose: function(workspace) {
         var containerBlock = workspace.newBlock('procedures_mutatorcontainer');
         containerBlock.initSvg();
 
@@ -216,13 +215,11 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
             containerBlock.setFieldValue(this.hasStatements_ ? 'TRUE' : 'FALSE',
                 'STATEMENTS');
         } else {
-            containerBlock.getInput('STATEMENT_INPUT')
-            .setVisible(false);
+            containerBlock.getInput('STATEMENT_INPUT').setVisible(false);
         }
 
         // Parameter list.
-        var connection = containerBlock.getInput('STACK')
-        .connection;
+        var connection = containerBlock.getInput('STACK').connection;
         for (var i = 0; i < this.arguments_.length; i++) {
             var paramBlock = workspace.newBlock('procedures_mutatorarg');
             paramBlock.initSvg();
@@ -242,7 +239,7 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
      * @param {!Blockly.Block} containerBlock Root block in mutator.
      * @this Blockly.Block
      */
-     compose: function(containerBlock) {
+    compose: function(containerBlock) {
         // Parameter list.
         this.arguments_ = [];
         this.paramIds_ = [];
@@ -253,7 +250,7 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
             this.argumentstype_.push(paramBlock.getFieldValue('TYPEVAR'));//新增
             this.paramIds_.push(paramBlock.id);
             paramBlock = paramBlock.nextConnection &&
-            paramBlock.nextConnection.targetBlock();
+                paramBlock.nextConnection.targetBlock();
         }
         this.updateParams_();
         Blockly.Procedures.mutateCallers(this);
@@ -270,8 +267,7 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
                     this.statementConnection_ = null;
                 } else {
                     // Save the stack, then disconnect it.
-                    var stackConnection = this.getInput('STACK')
-                    .connection;
+                    var stackConnection = this.getInput('STACK').connection;
                     this.statementConnection_ = stackConnection.targetConnection;
                     if (this.statementConnection_) {
                         var stackBlock = stackConnection.targetBlock();
@@ -287,7 +283,7 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
      * Dispose of any callers.
      * @this Blockly.Block
      */
-     dispose: function() {
+    dispose: function() {
         var name = this.getFieldValue('NAME');
         Blockly.Procedures.disposeCallers(name, this.workspace);
         // Call parent's destructor.
@@ -301,7 +297,7 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
      *     - that it DOES NOT have a return value.
      * @this Blockly.Block
      */
-     getProcedureDef: function() {
+    getProcedureDef: function() {
         return [this.getFieldValue('NAME'), this.arguments_, false];
     },
     /**
@@ -309,7 +305,7 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
      * @return {!Array.<string>} List of variable names.
      * @this Blockly.Block
      */
-     getVars: function() {
+    getVars: function() {
         return this.arguments_;
     },
     /**
@@ -319,7 +315,7 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
      * @param {string} newName Renamed variable.
      * @this Blockly.Block
      */
-     renameVar: function(oldName, newName) {
+    renameVar: function(oldName, newName) {
         var change = false;
         for (var i = 0; i < this.arguments_.length; i++) {
             if (Blockly.Names.equals(oldName, this.arguments_[i])) {
@@ -336,17 +332,17 @@ Blockly.Blocks['radio_receive_number_mutator'] = {
                     if (block.type == 'procedures_mutatorarg' &&
                         Blockly.Names.equals(oldName, block.getFieldValue('NAME'))) {
                         block.setFieldValue(newName, 'NAME');
+                    }
                 }
             }
         }
-    }
-},
+    },
     /**
      * Add custom menu options to this block's context menu.
      * @param {!Array} options List of menu options to add to.
      * @this Blockly.Block
      */
-     customContextMenu: function(options) {
+    customContextMenu: function(options) {
         // Add option to create caller.
         var option = {enabled: true};
         var name = this.getFieldValue('NAME');
@@ -387,11 +383,11 @@ Blockly.Blocks['radio_receive_number'] = {
     init:function(){
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_ON_RECEIVE)
-        .appendField(new Blockly.FieldTextInput('receivedNumber'), 'var');
+            .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_ON_RECEIVE)
+            .appendField(new Blockly.FieldTextInput('receivedNumber'), 'var');
 
         this.appendStatementInput('do')
-        .appendField(Blockly.MIXLY_DO);
+            .appendField(Blockly.MIXLY_DO);
     },
     getVars: function() {
         return [this.getFieldValue('var')];
@@ -406,13 +402,13 @@ Blockly.Blocks['radio_receive_value'] = {
     init:function(){
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_ON_RECEIVE)
-        .appendField(new Blockly.FieldTextInput('key'), 'key')
-        .appendField(" = ")
-        .appendField(new Blockly.FieldTextInput('value'), 'value')
+            .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_ON_RECEIVE)
+            .appendField(new Blockly.FieldTextInput('key'), 'key')
+            .appendField(" = ")
+            .appendField(new Blockly.FieldTextInput('value'), 'value')
 
         this.appendStatementInput('do')
-        .appendField(Blockly.MIXLY_DO);
+            .appendField(Blockly.MIXLY_DO);
     },
     getVars: function() {
         return [this.getFieldValue('key'), this.getFieldValue('value')];
@@ -420,12 +416,12 @@ Blockly.Blocks['radio_receive_value'] = {
     renameVar: function(oldName, newName) {
         if (Blockly.Names.equals(oldName, this.getFieldValue('key'))) {
           this.setTitleValue(newName, 'key');
-      }
+        }
 
-      if (Blockly.Names.equals(oldName, this.getFieldValue('value'))) {
-        this.setTitleValue(newName, 'value');
+        if (Blockly.Names.equals(oldName, this.getFieldValue('value'))) {
+            this.setTitleValue(newName, 'value');
+        }
     }
-}
 }
 
 
@@ -433,11 +429,11 @@ Blockly.Blocks['radio_receive_string'] = {
     init:function(){
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_ON_RECEIVE)
-        .appendField(new Blockly.FieldTextInput('receivedString'), 'var');
+            .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_ON_RECEIVE)
+            .appendField(new Blockly.FieldTextInput('receivedString'), 'var');
 
         this.appendStatementInput('do')
-        .appendField(Blockly.MIXLY_DO);
+            .appendField(Blockly.MIXLY_DO);
     },
     getVars: function() {
         return [this.getFieldValue('var')];
@@ -445,16 +441,16 @@ Blockly.Blocks['radio_receive_string'] = {
     renameVar: function(oldName, newName) {
         if (Blockly.Names.equals(oldName, this.getFieldValue('var'))) {
           this.setTitleValue(newName, 'var');
-      }
-  }
+        }
+    }
 }
 
 Blockly.Blocks['radio_set_group'] = {
     init:function(){
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('data')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_SET_GROUP);
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_SET_GROUP);
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -466,8 +462,8 @@ Blockly.Blocks['radio_send_transmit_power'] = {
     init:function(){
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('data')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_SET_TRANSMIT_POWER);
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_SET_TRANSMIT_POWER);
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -479,8 +475,8 @@ Blockly.Blocks['radio_set_transmit_serial_number'] = {
     init:function(){
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_SET_TRANSMIT_SERIAL_NUMBER)
-        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.LOGIC_BOOLEAN_TRUE, "true"], [Blockly.Msg.LOGIC_BOOLEAN_FALSE, "false"]]), "stat");
+            .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_SET_TRANSMIT_SERIAL_NUMBER)
+            .appendField(new Blockly.FieldDropdown([[Blockly.Msg.LOGIC_BOOLEAN_TRUE, "true"], [Blockly.Msg.LOGIC_BOOLEAN_FALSE, "false"]]), "stat");
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -492,7 +488,7 @@ Blockly.Blocks['radio_write_received_packet_to_serial'] = {
     init:function(){
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_WRITE_RECEIVE_PACKET_TO_SERIAL);
+            .appendField(Blockly.MIXLY_MICROBIT_JS_RADIO_WRITE_RECEIVE_PACKET_TO_SERIAL);
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -505,27 +501,27 @@ Blockly.Blocks['i2c_read'] = {
     init:function(){
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('data')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_READ_ADDRESS);
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_READ_ADDRESS);
 
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_FORMAT)
-        .appendField(new Blockly.FieldDropdown([
-            ["Int8LE", "NumberFormat.Int8LE"],
-            ["UInt8LE", "NumberFormat.UInt8LE"],
-            ["Int16LE", "NumberFormat.Int16LE"],
-            ["UInt16LE", "NumberFormat.UInt16LE"],
-            ["Int32LE", "NumberFormat.Int32LE"],
-            ["Int8BE", "NumberFormat.Int8BE"],
-            ["UInt8BE", "NumberFormat.UInt8BE"],
-            ["Int16BE", "NumberFormat.Int16BE"],
-            ["UInt16BE", "NumberFormat.UInt16BE"],
-            ["Int32BE", "NumberFormat.Int32BE"]
+            .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_FORMAT)
+            .appendField(new Blockly.FieldDropdown([
+                ["Int8LE", "NumberFormat.Int8LE"],
+                ["UInt8LE", "NumberFormat.UInt8LE"],
+                ["Int16LE", "NumberFormat.Int16LE"],
+                ["UInt16LE", "NumberFormat.UInt16LE"],
+                ["Int32LE", "NumberFormat.Int32LE"],
+                ["Int8BE", "NumberFormat.Int8BE"],
+                ["UInt8BE", "NumberFormat.UInt8BE"],
+                ["Int16BE", "NumberFormat.Int16BE"],
+                ["UInt16BE", "NumberFormat.UInt16BE"],
+                ["Int32BE", "NumberFormat.Int32BE"]
             ]), "format")
-        .appendField(Blockly.Msg.CONTROLS_REPEAT_TITLE_REPEAT)
-        .appendField(new Blockly.FieldDropdown([
-            [Blockly.Msg.LOGIC_BOOLEAN_TRUE, 'true'],
-            [Blockly.Msg.LOGIC_BOOLEAN_FALSE, 'false']
+            .appendField(Blockly.Msg.CONTROLS_REPEAT_TITLE_REPEAT)
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.LOGIC_BOOLEAN_TRUE, 'true'],
+                [Blockly.Msg.LOGIC_BOOLEAN_FALSE, 'false']
             ]), "is_repeated");
 
         this.setPreviousStatement(true);
@@ -538,29 +534,29 @@ Blockly.Blocks['i2c_write'] = {
     init:function(){
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('address')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_WRITE_ADDRESS);
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_WRITE_ADDRESS);
         this.appendValueInput('data')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_VALUE);
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_VALUE);
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_FORMAT)
-        .appendField(new Blockly.FieldDropdown([
-            ["Int8LE", "NumberFormat.Int8LE"],
-            ["UInt8LE", "NumberFormat.UInt8LE"],
-            ["Int16LE", "NumberFormat.Int16LE"],
-            ["UInt16LE", "NumberFormat.UInt16LE"],
-            ["Int32LE", "NumberFormat.Int32LE"],
-            ["Int8BE", "NumberFormat.Int8BE"],
-            ["UInt8BE", "NumberFormat.UInt8BE"],
-            ["Int16BE", "NumberFormat.Int16BE"],
-            ["UInt16BE", "NumberFormat.UInt16BE"],
-            ["Int32BE", "NumberFormat.Int32BE"]
+            .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_FORMAT)
+            .appendField(new Blockly.FieldDropdown([
+                ["Int8LE", "NumberFormat.Int8LE"],
+                ["UInt8LE", "NumberFormat.UInt8LE"],
+                ["Int16LE", "NumberFormat.Int16LE"],
+                ["UInt16LE", "NumberFormat.UInt16LE"],
+                ["Int32LE", "NumberFormat.Int32LE"],
+                ["Int8BE", "NumberFormat.Int8BE"],
+                ["UInt8BE", "NumberFormat.UInt8BE"],
+                ["Int16BE", "NumberFormat.Int16BE"],
+                ["UInt16BE", "NumberFormat.UInt16BE"],
+                ["Int32BE", "NumberFormat.Int32BE"]
             ]), "format")
-        .appendField(Blockly.Msg.CONTROLS_REPEAT_TITLE_REPEAT)
-        .appendField(new Blockly.FieldDropdown([
-            [Blockly.Msg.LOGIC_BOOLEAN_TRUE, 'true'],
-            [Blockly.Msg.LOGIC_BOOLEAN_FALSE, 'false']
+            .appendField(Blockly.Msg.CONTROLS_REPEAT_TITLE_REPEAT)
+            .appendField(new Blockly.FieldDropdown([
+                [Blockly.Msg.LOGIC_BOOLEAN_TRUE, 'true'],
+                [Blockly.Msg.LOGIC_BOOLEAN_FALSE, 'false']
             ]), "is_repeated");
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -572,8 +568,8 @@ Blockly.Blocks['spi_write'] = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('data')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_SPI_WRITE);
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_SPI_WRITE);
 
         this.setOutput(true, Number);
         this.setInputsInline(true);
@@ -584,8 +580,8 @@ Blockly.Blocks['spi_frequency'] = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('data')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_SPI_FREQUENCY);
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_SPI_FREQUENCY);
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -596,11 +592,11 @@ Blockly.Blocks['spi_format'] = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('bits')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_SPI_FORMAT + " bits");
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_SPI_FORMAT + " bits");
         this.appendValueInput('mode')
-        .setCheck(Number)
-        .appendField('mode');
+            .setCheck(Number)
+            .appendField('mode');
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -611,15 +607,15 @@ Blockly.Blocks['spi_set_pins'] = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('MOSI')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_SPI_SET_PINS + " MOSI#");
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_SPI_SET_PINS + " MOSI#");
         this.appendValueInput('MISO')
-        .setCheck(Number)
-        .appendField('MISO#');
+            .setCheck(Number)
+            .appendField('MISO#');
 
         this.appendValueInput('SCK')
-        .setCheck(Number)
-        .appendField('SCK#');
+            .setCheck(Number)
+            .appendField('SCK#');
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -632,14 +628,14 @@ Blockly.Blocks['ble_service'] = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_SERVICE)
-        .appendField(new Blockly.FieldDropdown([
-            ["accelerometer", "startAccelerometerService"],
-            ["button", "startButtonService"],
-            ["io pin", "startIOPinService"],
-            ["led", "startLEDService"],
-            ["temperature", "startTemperatureService"],
-            ["magnetometer", "startMagnetometerService"],
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_SERVICE)
+            .appendField(new Blockly.FieldDropdown([
+                ["accelerometer", "startAccelerometerService"],
+                ["button", "startButtonService"],
+                ["io pin", "startIOPinService"],
+                ["led", "startLEDService"],
+                ["temperature", "startTemperatureService"],
+                ["magnetometer", "startMagnetometerService"],
             ]), 'key')
 
         this.setPreviousStatement(true);
@@ -652,10 +648,10 @@ Blockly.Blocks['ble_on_connected'] = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_ON_CONNECTED);
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_ON_CONNECTED);
 
         this.appendStatementInput('do')
-        .appendField(Blockly.MIXLY_DO);
+            .appendField(Blockly.MIXLY_DO);
 
     }
 };
@@ -663,21 +659,21 @@ Blockly.Blocks['ble_on_disconnected'] = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_ON_DISCONNECTED);
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_ON_DISCONNECTED);
 
         this.appendStatementInput('do')
-        .appendField(Blockly.MIXLY_DO);
+            .appendField(Blockly.MIXLY_DO);
     }
 };
 Blockly.Blocks['ble_on_received'] = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('data')
-        .setCheck(String)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_ON_RECEIVE);
+            .setCheck(String)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_ON_RECEIVE);
 
         this.appendStatementInput('do')
-        .appendField(Blockly.MIXLY_DO);
+            .appendField(Blockly.MIXLY_DO);
     }
 };
 Blockly.Blocks['ble_advertise_uid'] = {
@@ -685,23 +681,23 @@ Blockly.Blocks['ble_advertise_uid'] = {
         this.setColour(Blockly.Blocks.communicate.HUE);
 
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_UID_CONNECTED)
-        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.LOGIC_BOOLEAN_TRUE, "true"], [Blockly.Msg.LOGIC_BOOLEAN_FALSE, "false"]]), "is_connected");
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_UID_CONNECTED)
+            .appendField(new Blockly.FieldDropdown([[Blockly.Msg.LOGIC_BOOLEAN_TRUE, "true"], [Blockly.Msg.LOGIC_BOOLEAN_FALSE, "false"]]), "is_connected");
 
         this.appendValueInput('namespace')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_NAMESPACE)
-        .setAlign(Blockly.ALIGN_RIGHT);
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_NAMESPACE)
+            .setAlign(Blockly.ALIGN_RIGHT);
 
         this.appendValueInput('instance')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_INSTANCE)
-        .setAlign(Blockly.ALIGN_RIGHT);
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_INSTANCE)
+            .setAlign(Blockly.ALIGN_RIGHT);
 
         this.appendValueInput('power')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_POWER)
-        .setAlign(Blockly.ALIGN_RIGHT);
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_POWER)
+            .setAlign(Blockly.ALIGN_RIGHT);
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -712,18 +708,18 @@ Blockly.Blocks['ble_advertise_url'] = {
         this.setColour(Blockly.Blocks.communicate.HUE);
 
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_URL_CONNECTED)
-        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.LOGIC_BOOLEAN_TRUE, "true"], [Blockly.Msg.LOGIC_BOOLEAN_FALSE, "false"]]), "is_connected");
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_URL_CONNECTED)
+            .appendField(new Blockly.FieldDropdown([[Blockly.Msg.LOGIC_BOOLEAN_TRUE, "true"], [Blockly.Msg.LOGIC_BOOLEAN_FALSE, "false"]]), "is_connected");
 
         this.appendValueInput('url')
-        .setCheck(String)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_URL)
-        .setAlign(Blockly.ALIGN_RIGHT);
+            .setCheck(String)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_URL)
+            .setAlign(Blockly.ALIGN_RIGHT);
 
         this.appendValueInput('power')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_POWER)
-        .setAlign(Blockly.ALIGN_RIGHT);
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_POWER)
+            .setAlign(Blockly.ALIGN_RIGHT);
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -734,8 +730,8 @@ Blockly.Blocks['ble_write_number'] = {
         this.setColour(Blockly.Blocks.communicate.HUE);
 
         this.appendValueInput('data')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_WRITE_NUMBER);
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_WRITE_NUMBER);
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -747,8 +743,8 @@ Blockly.Blocks['ble_write_string'] = {
         this.setColour(Blockly.Blocks.communicate.HUE);
 
         this.appendValueInput('data')
-        .setCheck(String)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_WRITE_STRING);
+            .setCheck(String)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_WRITE_STRING);
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -760,12 +756,12 @@ Blockly.Blocks['ble_write_value'] = {
         this.setColour(Blockly.Blocks.communicate.HUE);
 
         this.appendValueInput('name')
-        .setCheck(String)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_WRITE_VALUE);
+            .setCheck(String)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_WRITE_VALUE);
 
         this.appendValueInput('value')
-        .setCheck(Number)
-        .appendField(' = ');
+            .setCheck(Number)
+            .appendField(' = ');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
@@ -776,8 +772,8 @@ Blockly.Blocks['ble_read_until'] = {
         this.setColour(Blockly.Blocks.communicate.HUE);
 
         this.appendValueInput('marker')
-        .setCheck(String)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_READ_UNTIL);
+            .setCheck(String)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_READ_UNTIL);
 
         this.setOutput(true, String);
         this.setInputsInline(true);
@@ -789,7 +785,7 @@ Blockly.Blocks['ble_uart_service'] = {
         this.setColour(Blockly.Blocks.communicate.HUE);
 
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_UART_SERVICE);
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_UART_SERVICE);
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -801,7 +797,7 @@ Blockly.Blocks['ble_stop_advertising'] = {
         this.setColour(Blockly.Blocks.communicate.HUE);
 
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_STOP_ADVERTISING);
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_STOP_ADVERTISING);
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -813,8 +809,8 @@ Blockly.Blocks['ble_set_power'] = {
         this.setColour(Blockly.Blocks.communicate.HUE);
 
         this.appendValueInput('data')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_SET_POWER);
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BLE_SET_POWER);
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);

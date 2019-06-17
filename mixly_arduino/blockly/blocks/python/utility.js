@@ -22,25 +22,25 @@
  * @fileoverview Utility blocks for Blockly.
  * @author acbart@vt.edu (Austin Cory Bart)
  */
- 'use strict';
+'use strict';
 
- goog.provide('Blockly.Blocks.utility');
+goog.provide('Blockly.Blocks.utility');
 
- goog.require('Blockly.Blocks');
+goog.require('Blockly.Blocks');
 
 
- Blockly.Blocks.utility.HUE = 160;
+Blockly.Blocks.utility.HUE = 160;
 
- Blockly.Blocks['raw_table'] = {
+Blockly.Blocks['raw_table'] = {
   // Container.
   init: function() {
     this.setColour(Blockly.Blocks.utility.HUE);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.appendDummyInput()
-    .appendField('Tabular Abstraction:');
+        .appendField('Tabular Abstraction:');
     this.appendDummyInput()
-    .appendField(new Blockly.FieldTable(''), 'TEXT');
+        .appendField(new Blockly.FieldTable(''), 'TEXT');
   }
 };
 
@@ -51,9 +51,9 @@ Blockly.Blocks['raw_block'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.appendDummyInput()
-    .appendField('Code Block:');
+        .appendField('Code Block:');
     this.appendDummyInput()
-    .appendField(new Blockly.FieldTextArea(''), 'TEXT');
+        .appendField(new Blockly.FieldTextArea(''), 'TEXT');
   }
 };
 
@@ -62,9 +62,9 @@ Blockly.Blocks['raw_expression'] = {
   init: function() {
     this.setColour(Blockly.Blocks.utility.HUE);
     this.appendDummyInput()
-    .appendField('Code Expression:');
+        .appendField('Code Expression:');
     this.appendDummyInput()
-    .appendField(new Blockly.FieldTextArea(''), 'TEXT');
+        .appendField(new Blockly.FieldTextArea(''), 'TEXT');
     this.setOutput(true);
   }
 };
@@ -76,7 +76,7 @@ Blockly.Blocks['raw_empty'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.appendValueInput('VALUE')
-    .appendField('');
+        .appendField('');
     this.setInputsInline(false);
   }
 };
@@ -86,8 +86,8 @@ Blockly.Blocks['text_comment'] = {
   init: function() {
     this.setColour(Blockly.Blocks.utility.HUE);
     this.appendDummyInput()
-    .appendTitle('Comment:')
-    .appendTitle(new Blockly.FieldTextInput(''), 'TEXT');
+        .appendTitle('Comment:')
+        .appendTitle(new Blockly.FieldTextInput(''), 'TEXT');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('This comment will be ignored by Python');
@@ -99,7 +99,7 @@ Blockly.Blocks['type_check'] = {
   init: function() {
     this.setColour(Blockly.Blocks.utility.HUE);
     this.appendValueInput('VALUE')
-    .appendField(Blockly.Msg.TYPE_CHECK);
+        .appendField(Blockly.Msg.TYPE_CHECK);
     this.setInputsInline(false);
     this.setOutput(true, 'Type');
     //this.setPreviousStatement(true);
@@ -113,33 +113,33 @@ Blockly.Blocks['text_print_multiple'] = {
      * Block for printing multiple things (including nothing)
      * @this Blockly.Block
      */
-     init: function() {
-      this.setColour(Blockly.Blocks.utility.HUE);
-      this.itemCount_ = 1;
-      this.updateShape_();
-      this.setPreviousStatement(true);
-      this.setNextStatement(true);
-      this.setMutator(new Blockly.Mutator(['text_print_multiple_item']));
-      this.setTooltip(Blockly.Msg.TEXT_PRINT_TOOLTIP);
-    },
+    init: function() {
+        this.setColour(Blockly.Blocks.utility.HUE);
+        this.itemCount_ = 1;
+        this.updateShape_();
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setMutator(new Blockly.Mutator(['text_print_multiple_item']));
+        this.setTooltip(Blockly.Msg.TEXT_PRINT_TOOLTIP);
+  },
     /**
      * Create XML to represent print inputs.
      * @return {Element} XML storage element.
      * @this Blockly.Block
      */
-     mutationToDom: function(workspace) {
-      var container = document.createElement('mutation');
-      container.setAttribute('items', this.itemCount_);
-      return container;
+    mutationToDom: function(workspace) {
+        var container = document.createElement('mutation');
+        container.setAttribute('items', this.itemCount_);
+        return container;
     },
     /**
      * Parse XML to restore the list inputs.
      * @param {!Element} xmlElement XML storage element.
      * @this Blockly.Block
      */
-     domToMutation: function(xmlElement) {
-      this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
-      this.updateShape_();
+    domToMutation: function(xmlElement) {
+        this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
+        this.updateShape_();
     },
     /**
      * Populate the mutator's dialog with this block's components.
@@ -147,101 +147,99 @@ Blockly.Blocks['text_print_multiple'] = {
      * @return {!Blockly.Block} Root block in mutator.
      * @this Blockly.Block
      */
-     decompose: function(workspace) {
-      var containerBlock = Blockly.Block.obtain(workspace,
-       'text_print_multiple_container');
-      containerBlock.initSvg();
-      var connection = containerBlock.getInput('STACK')
-      .connection;
-      for (var x = 0; x < this.itemCount_; x++) {
-        var itemBlock = Blockly.Block.obtain(workspace, 'text_print_multiple_item');
-        itemBlock.initSvg();
-        connection.connect(itemBlock.previousConnection);
-        connection = itemBlock.nextConnection;
-      }
-      return containerBlock;
+    decompose: function(workspace) {
+        var containerBlock = Blockly.Block.obtain(workspace,
+                                 'text_print_multiple_container');
+        containerBlock.initSvg();
+        var connection = containerBlock.getInput('STACK').connection;
+        for (var x = 0; x < this.itemCount_; x++) {
+          var itemBlock = Blockly.Block.obtain(workspace, 'text_print_multiple_item');
+          itemBlock.initSvg();
+          connection.connect(itemBlock.previousConnection);
+          connection = itemBlock.nextConnection;
+        }
+        return containerBlock;
     },
     /**
      * Reconfigure this block based on the mutator dialog's components.
      * @param {!Blockly.Block} containerBlock Root block in mutator.
      * @this Blockly.Block
      */
-     compose: function(containerBlock) {
-      var itemBlock = containerBlock.getInputTargetBlock('STACK');
+    compose: function(containerBlock) {
+        var itemBlock = containerBlock.getInputTargetBlock('STACK');
         // Count number of inputs.
         var connections = [];
         var i = 0;
         while (itemBlock) {
-          connections[i] = itemBlock.valueConnection_;
-          itemBlock = itemBlock.nextConnection &&
-          itemBlock.nextConnection.targetBlock();
-          i++;
+            connections[i] = itemBlock.valueConnection_;
+            itemBlock = itemBlock.nextConnection &&
+                        itemBlock.nextConnection.targetBlock();
+            i++;
         }
         this.itemCount_ = i;
         this.updateShape_();
         // Reconnect any child blocks.
         for (var i = 0; i < this.itemCount_; i++) {
-          if (connections[i]) {
-            this.getInput('PRINT' + i)
-            .connection.connect(connections[i]);
-          }
+            if (connections[i]) {
+                this.getInput('PRINT' + i).connection.connect(connections[i]);
+            }
         }
-      },
+    },
     /**
      * Store pointers to any connected child blocks.
      * @param {!Blockly.Block} containerBlock Root block in mutator.
      * @this Blockly.Block
      */
-     saveConnections: function(containerBlock) {
+    saveConnections: function(containerBlock) {
         // Store a pointer to any connected child blocks.
         var itemBlock = containerBlock.getInputTargetBlock('STACK');
         var x = 0;
         while (itemBlock) {
-          var input = this.getInput('PRINT' + x);
-          itemBlock.valueConnection_ = input && input.connection.targetConnection;
-          x++;
-          itemBlock = itemBlock.nextConnection &&
-          itemBlock.nextConnection.targetBlock();
+            var input = this.getInput('PRINT' + x);
+            itemBlock.valueConnection_ = input && input.connection.targetConnection;
+            x++;
+            itemBlock = itemBlock.nextConnection &&
+                        itemBlock.nextConnection.targetBlock();
         }
-      },
+    },
     /**
      * Modify this block to have the correct number of inputs.
      * @private
      * @this Blockly.Block
      */
-     updateShape_: function() {
+    updateShape_: function() {
         // Delete everything.
         if (this.getInput('EMPTY')) {
-          this.removeInput('EMPTY');
+            this.removeInput('EMPTY');
         } else {
-          var i = 0;
-          while (this.getInput('PRINT' + i)) {
-            this.removeInput('PRINT' + i);
-            i++;
-          }
+            var i = 0;
+            while (this.getInput('PRINT' + i)) {
+                this.removeInput('PRINT' + i);
+                i++;
+            }
         }
-        
+    
         // Rebuild block.
         if (this.itemCount_ == 0) {
-          this.appendDummyInput('EMPTY')
-          .appendField("print");
+            this.appendDummyInput('EMPTY')
+                .appendField("print");
         } else {
-          for (var i = 0; i < this.itemCount_; i++) {
-            var input = this.appendValueInput('PRINT' + i);
-            if (i == 0) {
-              input.appendField("print");
+            for (var i = 0; i < this.itemCount_; i++) {
+                var input = this.appendValueInput('PRINT' + i);
+                if (i == 0) {
+                    input.appendField("print");
+                }
             }
-          }
         }
-      }
-    };
+    }
+};
 
-    Blockly.Blocks['text_print_multiple_container'] = {
+Blockly.Blocks['text_print_multiple_container'] = {
   // Container.
   init: function() {
     this.setColour(Blockly.Blocks.utility.HUE);
     this.appendDummyInput()
-    .appendField('print');
+        .appendField('print');
     this.appendStatementInput('STACK');
     this.setTooltip('');
     this.contextMenu = false;
@@ -252,7 +250,7 @@ Blockly.Blocks['text_print_multiple_item'] = {
   init: function() {
     this.setColour(Blockly.Blocks.utility.HUE);
     this.appendDummyInput()
-    .appendField('item');
+        .appendField('item');
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -266,36 +264,36 @@ Blockly.Blocks['function_call'] = {
      * Block for printing multiple things (including nothing)
      * @this Blockly.Block
      */
-     init: function() {
-      this.setColour(Blockly.Blocks.utility.HUE);
-      this.itemCount_ = 1;
-      this.hasReturn_ = false;
-      this.appendDummyInput()
-      .appendField(new Blockly.FieldTextInput("str"), 'NAME');
-      this.updateShape_();
-      this.setMutator(new Blockly.Mutator(['function_call_item']));
-      this.setTooltip("Can be used to call any function");
-    },
+    init: function() {
+        this.setColour(Blockly.Blocks.utility.HUE);
+        this.itemCount_ = 1;
+        this.hasReturn_ = false;
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldTextInput("str"), 'NAME');
+        this.updateShape_();
+        this.setMutator(new Blockly.Mutator(['function_call_item']));
+        this.setTooltip("Can be used to call any function");
+  },
     /**
      * Create XML to represent print inputs.
      * @return {Element} XML storage element.
      * @this Blockly.Block
      */
-     mutationToDom: function(workspace) {
-      var container = document.createElement('mutation');
-      container.setAttribute('items', this.itemCount_);
-      container.setAttribute('hasReturn', this.hasReturn_ ? "TRUE": "FALSE");
-      return container;
+    mutationToDom: function(workspace) {
+        var container = document.createElement('mutation');
+        container.setAttribute('items', this.itemCount_);
+        container.setAttribute('hasReturn', this.hasReturn_ ? "TRUE": "FALSE");
+        return container;
     },
     /**
      * Parse XML to restore the list inputs.
      * @param {!Element} xmlElement XML storage element.
      * @this Blockly.Block
      */
-     domToMutation: function(xmlElement) {
-      this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
-      this.hasReturn_ = xmlElement.getAttribute('hasReturn') === "TRUE";
-      this.updateShape_();
+    domToMutation: function(xmlElement) {
+        this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
+        this.hasReturn_ = xmlElement.getAttribute('hasReturn') === "TRUE";
+        this.updateShape_();
     },
     /**
      * Populate the mutator's dialog with this block's components.
@@ -303,53 +301,52 @@ Blockly.Blocks['function_call'] = {
      * @return {!Blockly.Block} Root block in mutator.
      * @this Blockly.Block
      */
-     decompose: function(workspace) {
-      var containerBlock = Blockly.Block.obtain(workspace,
-       'function_call_container');
-      containerBlock.initSvg();
-      
-      containerBlock.setFieldValue(this.hasStatements_ ? 'TRUE' : 'FALSE',
-       'RETURN');
-      
-      var connection = containerBlock.getInput('STACK')
-      .connection;
-      for (var x = 0; x < this.itemCount_; x++) {
-        var itemBlock = Blockly.Block.obtain(workspace, 'function_call_item');
-        itemBlock.initSvg();
-        connection.connect(itemBlock.previousConnection);
-        connection = itemBlock.nextConnection;
-      }
-      return containerBlock;
+    decompose: function(workspace) {
+        var containerBlock = Blockly.Block.obtain(workspace,
+                                 'function_call_container');
+        containerBlock.initSvg();
+        
+        containerBlock.setFieldValue(this.hasStatements_ ? 'TRUE' : 'FALSE',
+                                   'RETURN');
+        
+        var connection = containerBlock.getInput('STACK').connection;
+        for (var x = 0; x < this.itemCount_; x++) {
+          var itemBlock = Blockly.Block.obtain(workspace, 'function_call_item');
+          itemBlock.initSvg();
+          connection.connect(itemBlock.previousConnection);
+          connection = itemBlock.nextConnection;
+        }
+        return containerBlock;
     },
     /**
      * Notification that the procedure's return state has changed.
      * @param {boolean} returnState New return state
      * @this Blockly.Block
      */
-     setReturn: function(returnState) {
-      this.unplug(true, true);
-      this.setOutput(returnState);
-      this.setPreviousStatement(!returnState);
-      this.setNextStatement(!returnState);
-      if (this.rendered) {
-        this.render();
-      }
+    setReturn: function(returnState) {
+        this.unplug(true, true);
+        this.setOutput(returnState);
+        this.setPreviousStatement(!returnState);
+        this.setNextStatement(!returnState);
+        if (this.rendered) {
+            this.render();
+        }
     },
     /**
      * Reconfigure this block based on the mutator dialog's components.
      * @param {!Blockly.Block} containerBlock Root block in mutator.
      * @this Blockly.Block
      */
-     compose: function(containerBlock) {
-      var itemBlock = containerBlock.getInputTargetBlock('STACK');
+    compose: function(containerBlock) {
+        var itemBlock = containerBlock.getInputTargetBlock('STACK');
         // Count number of inputs.
         var connections = [];
         var i = 0;
         while (itemBlock) {
-          connections[i] = itemBlock.valueConnection_;
-          itemBlock = itemBlock.nextConnection &&
-          itemBlock.nextConnection.targetBlock();
-          i++;
+            connections[i] = itemBlock.valueConnection_;
+            itemBlock = itemBlock.nextConnection &&
+                        itemBlock.nextConnection.targetBlock();
+            i++;
         }
         this.itemCount_ = i;
         
@@ -358,68 +355,67 @@ Blockly.Blocks['function_call'] = {
         this.updateShape_();
         // Reconnect any child blocks.
         for (var i = 0; i < this.itemCount_; i++) {
-          if (connections[i]) {
-            this.getInput('ARGUMENT' + i)
-            .connection.connect(connections[i]);
-          }
+            if (connections[i]) {
+                this.getInput('ARGUMENT' + i).connection.connect(connections[i]);
+            }
         }
-      },
+    },
     /**
      * Store pointers to any connected child blocks.
      * @param {!Blockly.Block} containerBlock Root block in mutator.
      * @this Blockly.Block
      */
-     saveConnections: function(containerBlock) {
+    saveConnections: function(containerBlock) {
         // Store a pointer to any connected child blocks.
         var itemBlock = containerBlock.getInputTargetBlock('STACK');
         var x = 0;
         while (itemBlock) {
-          var input = this.getInput('ARGUMENT' + x);
-          itemBlock.valueConnection_ = input && input.connection.targetConnection;
-          x++;
-          itemBlock = itemBlock.nextConnection &&
-          itemBlock.nextConnection.targetBlock();
+            var input = this.getInput('ARGUMENT' + x);
+            itemBlock.valueConnection_ = input && input.connection.targetConnection;
+            x++;
+            itemBlock = itemBlock.nextConnection &&
+                        itemBlock.nextConnection.targetBlock();
         }
-      },
+    },
     /**
      * Modify this block to have the correct number of inputs.
      * @private
      * @this Blockly.Block
      */
-     updateShape_: function() {
+    updateShape_: function() {
         // Delete everything.
         if (this.getInput('EMPTY')) {
-          this.removeInput('EMPTY');
+            this.removeInput('EMPTY');
         } else {
-          var i = 0;
-          while (this.getInput('ARGUMENT' + i)) {
-            this.removeInput('ARGUMENT' + i);
-            i++;
-          }
+            var i = 0;
+            while (this.getInput('ARGUMENT' + i)) {
+                this.removeInput('ARGUMENT' + i);
+                i++;
+            }
         }
-        
+    
         // Rebuild block.
         for (var i = 0; i < this.itemCount_; i++) {
-          var input = this.appendValueInput('ARGUMENT' + i);
+            var input = this.appendValueInput('ARGUMENT' + i);
         }
         
         // Set whether returns anything
         this.setReturn(this.hasReturn_);
-      }
-    };
+    }
+};
 
-    Blockly.Blocks['function_call_container'] = {
+Blockly.Blocks['function_call_container'] = {
   // Container.
   init: function() {
     this.setColour(Blockly.Blocks.utility.HUE);
     this.appendDummyInput()
-    .appendField('Arguments');
+        .appendField('Arguments');
     this.appendStatementInput('STACK');
     this.appendDummyInput()
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('has return')
-    .appendField(new Blockly.FieldCheckbox('TRUE'),
-     'RETURN');
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField('has return')
+        .appendField(new Blockly.FieldCheckbox('TRUE'),
+                     'RETURN');
     this.setTooltip('');
     this.contextMenu = false;
   }
@@ -429,7 +425,7 @@ Blockly.Blocks['function_call_item'] = {
   init: function() {
     this.setColour(Blockly.Blocks.utility.HUE);
     this.appendDummyInput()
-    .appendField('argument');
+        .appendField('argument');
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -439,16 +435,16 @@ Blockly.Blocks['function_call_item'] = {
 };
 
 Blockly.Blocks['attribute_access'] = {
-  init: function() {
-    this.appendValueInput("MODULE")
-    .setCheck(null);
-    this.appendValueInput("NAME")
-    .setCheck(null)
-    .appendField(".");
-    this.setInputsInline(true);
-    this.setOutput(true, null);
-    this.setColour(230);
-    this.setTooltip('');
-    this.setHelpUrl('');
-  }
+    init: function() {
+        this.appendValueInput("MODULE")
+            .setCheck(null);
+        this.appendValueInput("NAME")
+            .setCheck(null)
+            .appendField(".");
+        this.setInputsInline(true);
+        this.setOutput(true, null);
+        this.setColour(230);
+        this.setTooltip('');
+        this.setHelpUrl('');
+    }
 };
