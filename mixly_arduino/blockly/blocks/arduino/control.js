@@ -15,6 +15,7 @@ Blockly.Blocks.base_setup = {
     this.appendStatementInput('DO')
     .appendField('');
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_SETUP);
+    this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#id2");
   }
 };
 
@@ -32,6 +33,7 @@ Blockly.Blocks.controls_delay = {
    this.setNextStatement(true, null);
    this.setInputsInline(true);
    this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_DELAY);
+   this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#id9");
  }
 };
 
@@ -58,6 +60,7 @@ Blockly.Blocks.controls_for = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setInputsInline(true);
+    this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#id2");
     var thisBlock = this;
     this.setTooltip(function() {
       return Blockly.Msg.CONTROLS_FOR_TOOLTIP.replace('%1',
@@ -85,6 +88,7 @@ Blockly.Blocks.controls_whileUntil = {
     .appendField(Blockly.LANG_CONTROLS_WHILEUNTIL_INPUT_DO);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#while");
     var thisBlock = this;
     this.setTooltip(function() {
       var op = thisBlock.getFieldValue('MODE');
@@ -110,6 +114,7 @@ Blockly.Blocks.controls_flow_statements = {
     .appendField(Blockly.LANG_CONTROLS_FLOW_STATEMENTS_INPUT_OFLOOP);
     this.setPreviousStatement(true);
     var thisBlock = this;
+    this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#id2");
     this.setTooltip(function() {
       var op = thisBlock.getFieldValue('FLOW');
       var TOOLTIPS = {
@@ -178,6 +183,7 @@ Blockly.Blocks['controls_if'] = {
     .appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#if");
     this.setMutator(new Blockly.Mutator(['controls_if_elseif',
      'controls_if_else']));
     // Assign 'this' to a variable for use in the tooltip closure below.
@@ -489,6 +495,7 @@ Blockly.Blocks['controls_switch_case'] = {
     .appendField('switch');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#switch");
     this.setMutator(new Blockly.Mutator(['controls_case',
      'controls_default']));
     this.elseifCount_ = 0;
@@ -700,6 +707,7 @@ Blockly.Blocks.controls_mstimer2 = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2);
+    this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#MsTimer2");
   }
 };
 
@@ -711,6 +719,7 @@ Blockly.Blocks.controls_mstimer2_start = {
     .appendField(Blockly.MIXLY_MSTIMER2_START);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#id45");
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_START);
   }
 };
@@ -724,6 +733,7 @@ Blockly.Blocks.controls_mstimer2_stop = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_STOP);
+    this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#id48");
   }
 };
 
@@ -746,6 +756,7 @@ Blockly.Blocks.controls_interrupts = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_ALLOW_INTERRUPT);
+    this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#id51");
   }
 };
 
@@ -757,6 +768,7 @@ Blockly.Blocks.controls_nointerrupts = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_FORBID_INTERRUPT);
+    this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#id55");
   }
 };
 Blockly.Blocks.base_delay=Blockly.Blocks.controls_delay;
