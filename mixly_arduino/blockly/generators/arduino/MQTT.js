@@ -6,8 +6,17 @@ goog.require('Blockly.Arduino');
 Blockly.Arduino.WIFI_info = function() {
 	var SSID = Blockly.Arduino.valueToCode(this, 'SSID', Blockly.Arduino.ORDER_ATOMIC);
 	var PWD = Blockly.Arduino.valueToCode(this, 'PWD', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>';
+	
 	Blockly.Arduino.setups_['WiFi.begin'] = 'WiFi.begin('+SSID+', '+PWD+');';
+	if(JSFuncs.getPlatform()=="ESP8266_Boards_(2.5.2)")
+	{
+		Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>';
+	}
+	else if(JSFuncs.getPlatform()=="ESP32_Arduino")
+	{
+		Blockly.Arduino.definitions_['include_WiFi'] ='#include <WiFi.h>';
+		
+	}
 	return "";
 };
 
@@ -30,34 +39,34 @@ Blockly.Arduino.MQTT_server = function() {
 	var IOT_PWD = Blockly.Arduino.valueToCode(this, 'IOT_PWD', Blockly.Arduino.ORDER_ATOMIC);
 	Client_ID = Blockly.Arduino.valueToCode(this, 'Client_ID', Blockly.Arduino.ORDER_ATOMIC);
 //	alert(Client_ID.length);
-	if (Client_ID.length>2) 
-		{Client_ID+='/';
+if (Client_ID.length>2) 
+	{Client_ID+='/';
 }
-	Client_ID = Client_ID.replace(/\"/g, "");
-	Blockly.Arduino.definitions_['include_Adafruit_MQTT'] ='#include "Adafruit_MQTT.h"';
-	Blockly.Arduino.definitions_['include_Adafruit_MQTT_Client'] ='#include "Adafruit_MQTT_Client.h"';
-	Blockly.Arduino.definitions_['include__WiFiClient'] = 'WiFiClient client;';
-	Blockly.Arduino.definitions_['var_declare_Adafruit_MQTT_Client'] ='Adafruit_MQTT_Client mqtt(&client, '+server_add+', '+server_port+', '+IOT_ID+', '+IOT_PWD+');';
-	var funcName = 'MQTT_connect';
-	var code = 'void' + ' ' + funcName + '() {\n'
-	+ '  int8_t ret;\n'
-	+ '  if (mqtt.connected()) {\n'
-	+ '  return;\n'
-	+ '  }\n'
-	+ '  Serial.print("Connecting to MQTT... ");\n'
-	+ '  uint8_t retries = 3;\n'
-	+ 'while ((ret = mqtt.connect()) != 0) {\n'
-	+ '  Serial.println(mqtt.connectErrorString(ret));\n'
-	+ '  Serial.println("Retrying MQTT connection in 5 seconds...");\n'
-	+ '  mqtt.disconnect();\n'
-	+ '  delay(5000);\n'
-	+ '  retries--;\n'
-	+ 'if (retries == 0) {\n'
-	+ ' while (1);\n'
-	+ '  }\n}\n'
-	+ '  Serial.println("MQTT Connected!");\n}\n';
-	Blockly.Arduino.definitions_['var_declare_'+funcName] = code;
-	return funcName + '();\n';
+Client_ID = Client_ID.replace(/\"/g, "");
+Blockly.Arduino.definitions_['include_Adafruit_MQTT'] ='#include "Adafruit_MQTT.h"';
+Blockly.Arduino.definitions_['include_Adafruit_MQTT_Client'] ='#include "Adafruit_MQTT_Client.h"';
+Blockly.Arduino.definitions_['include__WiFiClient'] = 'WiFiClient client;';
+Blockly.Arduino.definitions_['var_declare_Adafruit_MQTT_Client'] ='Adafruit_MQTT_Client mqtt(&client, '+server_add+', '+server_port+', '+IOT_ID+', '+IOT_PWD+');';
+var funcName = 'MQTT_connect';
+var code = 'void' + ' ' + funcName + '() {\n'
++ '  int8_t ret;\n'
++ '  if (mqtt.connected()) {\n'
++ '  return;\n'
++ '  }\n'
++ '  Serial.print("Connecting to MQTT... ");\n'
++ '  uint8_t retries = 3;\n'
++ 'while ((ret = mqtt.connect()) != 0) {\n'
++ '  Serial.println(mqtt.connectErrorString(ret));\n'
++ '  Serial.println("Retrying MQTT connection in 5 seconds...");\n'
++ '  mqtt.disconnect();\n'
++ '  delay(5000);\n'
++ '  retries--;\n'
++ 'if (retries == 0) {\n'
++ ' while (1);\n'
++ '  }\n}\n'
++ '  Serial.println("MQTT Connected!");\n}\n';
+Blockly.Arduino.definitions_['var_declare_'+funcName] = code;
+return funcName + '();\n';
 };
 
 Blockly.Arduino.MQTT_connect= function() {
@@ -114,8 +123,8 @@ Blockly.Arduino.MQTT_subscribe = function () {
     	argument = Blockly.Arduino.valueToCode(this, 'IF' + n,
     		Blockly.Arduino.ORDER_NONE) || 'false';
     	branch = Blockly.Arduino.statementToCode(this, 'DO' + n);
-    	 Blockly.Arduino.definitions_['var_declare_Adafruit_MQTT_Subscribe'+Client_ID+argument] ='Adafruit_MQTT_Subscribe  '+argument+'= Adafruit_MQTT_Subscribe(&mqtt,"'+Client_ID+argument+'");';
-    Blockly.Arduino.setups_['mqtt.subscribe'+argument] = 'mqtt.subscribe(&'+argument+');';
+    	Blockly.Arduino.definitions_['var_declare_Adafruit_MQTT_Subscribe'+Client_ID+argument] ='Adafruit_MQTT_Subscribe  '+argument+'= Adafruit_MQTT_Subscribe(&mqtt,"'+Client_ID+argument+'");';
+    	Blockly.Arduino.setups_['mqtt.subscribe'+argument] = 'mqtt.subscribe(&'+argument+');';
     	code += ' else if (subscription ==&' + argument + ') {\n' + branch + '}';
     }
     if (this.elseCount_) {
