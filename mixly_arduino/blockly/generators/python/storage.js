@@ -19,6 +19,13 @@ Blockly.Python.storage_file_write = function () {
     return file+".write(" + data + ")\n";
 }
 
+Blockly.Python.storage_get_contents_without_para = function () {
+    var mode = this.getFieldValue('MODE');
+    var file = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
+    var code = file+'.'+mode+'()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python.storage_get_contents = function () {
     var mode = this.getFieldValue('MODE');
     var file = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);

@@ -62,6 +62,21 @@ Blockly.Blocks['storage_file_write'] = {
     }
 }
 
+ Blockly.Blocks['storage_get_contents_without_para'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.storage.HUE);
+     this.appendValueInput("FILE")
+         .setCheck('Variable')
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_FROM_FILE);
+     this.appendDummyInput()
+         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL,'read'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE,'readline'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES,'readlines']]),'MODE');
+     this.setInputsInline(true);
+     this.setPreviousStatement(false); //in front of the block has something
+     this.setNextStatement(false);  //beyond the ... has something
+     this.setOutput(true, String);
+   }
+ };
+
  Blockly.Blocks['storage_get_contents'] = {
    init: function() {
      this.setColour(Blockly.Blocks.storage.HUE);

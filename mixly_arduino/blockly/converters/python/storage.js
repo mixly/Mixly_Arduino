@@ -38,9 +38,7 @@ pbc.objectFunctionD.get('write')[fileClass] = function(py2block, func, args, key
 
 
 pbc.objectFunctionD.get('read')[fileClass] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 1) {
-        throw new Error("Incorrect number of arguments");
-    }
+    if (args.length == 1) {
     var fileblock = py2block.convert(func.value);
     var argblock = py2block.convert(args[0]);
     return block("storage_get_contents", func.lineno, {
@@ -51,13 +49,25 @@ pbc.objectFunctionD.get('read')[fileClass] = function(py2block, func, args, keyw
     }, {
         "inline": "true"
     });
+    }
+    if (args.length == 0) {
+    var fileblock = py2block.convert(func.value);
+    return block("storage_get_contents_without_para", func.lineno, {
+        "MODE":"read"
+    }, {
+         "FILE" : fileblock
+    }, {
+        "inline": "true"
+    });
+    }
+    else{
+        throw new Error("Incorrect number of arguments");
+    }
 }
 
 
 pbc.objectFunctionD.get('readline')[fileClass] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 1) {
-        throw new Error("Incorrect number of arguments");
-    }
+    if (args.length == 1) {
     var fileblock = py2block.convert(func.value);
     var argblock = py2block.convert(args[0]);
     return block("storage_get_contents", func.lineno, {
@@ -68,12 +78,24 @@ pbc.objectFunctionD.get('readline')[fileClass] = function(py2block, func, args, 
     }, {
         "inline": "true"
     });
+    }
+    if (args.length == 0) {
+    var fileblock = py2block.convert(func.value);
+    return block("storage_get_contents_without_para", func.lineno, {
+        "MODE":"readline"
+    }, {
+         "FILE" : fileblock
+    }, {
+        "inline": "true"
+    });
+    }
+    else{
+        throw new Error("Incorrect number of arguments");
+    }
 }
 
 pbc.objectFunctionD.get('readlines')[fileClass] = function(py2block, func, args, keywords, starargs, kwargs, node){
-    if (args.length !== 1) {
-        throw new Error("Incorrect number of arguments");
-    }
+    if (args.length == 1) {
     var fileblock = py2block.convert(func.value);
     var argblock = py2block.convert(args[0]);
     return block("storage_get_contents", func.lineno, {
@@ -84,6 +106,20 @@ pbc.objectFunctionD.get('readlines')[fileClass] = function(py2block, func, args,
     }, {
         "inline": "true"
     });
+    }
+    if (args.length == 0) {
+    var fileblock = py2block.convert(func.value);
+    return block("storage_get_contents_without_para", func.lineno, {
+        "MODE":"readlines"
+    }, {
+         "FILE" : fileblock
+    }, {
+        "inline": "true"
+    });
+    }
+    else{
+        throw new Error("Incorrect number of arguments");
+    }
 }
 
 

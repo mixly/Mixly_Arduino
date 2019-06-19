@@ -2345,3 +2345,7 @@ Blockly.MQTT_IOT_ID='IOT ID';
 Blockly.MQTT_IOT_PWD='IOT PWD';
 Blockly.MQTT_subscribe2='Received';
 Blockly.MQTT_Topic='Topic';
+
+Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL = "read";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE = "readline";
+Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES = "readlines";
