@@ -99,8 +99,8 @@ Blockly.Python.storage_file_seek = function () {
     }
     var file = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
     var size = Blockly.Python.valueToCode(this, 'SIZE', Blockly.Python.ORDER_ATOMIC);
-    var code = file+'.seek('+ size + ',' + mode_num + ')';
-    return [code, Blockly.Python.ORDER_ATOMIC];
+    var code = file+'.seek('+ size + ',' + mode_num + ')\n';
+    return code;
 };
 
 Blockly.Python.storage_change_dir = function () {
