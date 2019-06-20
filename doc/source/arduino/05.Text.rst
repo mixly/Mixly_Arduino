@@ -11,43 +11,58 @@
 
 .. image:: images/05/string.png
 
+.. note::
+	字符串常量。
 
 字符
 -------------
 
 .. image:: images/05/char.png
 
+.. note::
+	字符常量。
 
 字符串连接
 -------------
 
 .. image:: images/05/stringPlus.png
 
+.. note::
+	字符串连接，可以将两个或者多个字符串连接成一个。
 
-字符串转数字
---------------------
+字符串转数字(toInt()/toFloat())
+--------------------------------
 
 .. image:: images/05/stringtonum.png
+.. note::
+	将字符串中的数字转成整数或者小数。
 
-转ASCII字符
----------------
+转ASCII字符(char())
+--------------------
 
 .. image:: images/05/numtochar.png
 
+.. note::
+	将数字转成ASCII字符。
 
-转ASCII数值
---------------
+转ASCII数值(toascii)
+-----------------------
 
 .. image:: images/05/toascii.png
 
+.. note::
+	将字符转成ASCII码。
 
 进制 转字符串
 --------------------
 
 .. image:: images/05/numtostring.png
 
-获取字符串长度
----------------
+.. note::
+	将一个数字转化为字符串，支持二进制、八进制、十进制、十六进制数字。
+
+获取字符串长度(String().length())
+-----------------------------------
 
 .. image:: images/05/stringlength.png
 
