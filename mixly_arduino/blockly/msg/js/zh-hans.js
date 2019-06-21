@@ -2718,3 +2718,5 @@ Blockly.MQTT_Topic='主题';
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL = "读取内容";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE = "读取一行内容";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES = "读取所有行内容";
+
+Blockly.MIXLY_ENCODER='旋转编码器';

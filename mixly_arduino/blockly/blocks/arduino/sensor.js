@@ -397,3 +397,64 @@ Blockly.Blocks.MPU6050_update= {
    this.setInputsInline(true);
  }
 };
+
+var Encoder_NO = [
+[Blockly.MIXLY_ENCODER+1,"1"], 
+[Blockly.MIXLY_ENCODER+2,"2"], 
+[Blockly.MIXLY_ENCODER+3,"3"], 
+[Blockly.MIXLY_ENCODER+4,"4"]
+];
+//旋转编码器定义
+Blockly.Blocks['encoder_init'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput()
+    .appendField(Blockly.MIXLY_SETUP).appendField(Blockly.MIXLY_ENCODER);
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldDropdown(Encoder_NO), "Encoder_NO");
+    this.appendValueInput("DT")
+    .setCheck(Number)
+    .appendField("DT");
+    this.appendValueInput("CLK")
+    .setCheck(Number)
+    .appendField("CLK");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+//旋转编码器赋值
+Blockly.Blocks['encoder_write'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldDropdown(Encoder_NO), "Encoder_NO");
+    this.appendDummyInput()
+    .appendField(Blockly.MIXLY_VALUE2);
+    this.appendValueInput("value")
+    .setCheck(Number);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setInputsInline(true);
+  }
+};
+
+//旋转编码器读值
+Blockly.Blocks['encoder_read'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldDropdown(Encoder_NO), "Encoder_NO");
+    this.appendDummyInput()
+    .appendField(Blockly.MIXLY_SERIAL_READ);
+    this.setOutput(true, Number);
+    this.setTooltip("");
+    this.setHelpUrl("");
+    this.setInputsInline(true);
+  }
+};

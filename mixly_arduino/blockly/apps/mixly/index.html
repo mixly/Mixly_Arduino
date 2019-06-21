@@ -739,122 +739,142 @@
         <field name="PIN">3</field></shadow>
       </value>
     </block>
-    <!--DS302-->
-    <block type="DS1302_init">
-      <value name="RST">
-        <shadow type="pins_digital">
-          <field name="PIN">2</field>
-        </shadow>
-      </value>
-      <value name="DAT">
-        <shadow type="pins_digital">
-          <field name="PIN">3</field>
-        </shadow>
-      </value>
-      <value name="CLK">
-        <shadow type="pins_digital">
-          <field name="PIN">4</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="DS1307_init">
-      <value name="SDA">
-        <shadow type="pins_digital">
-          <field name="PIN">2</field>
-        </shadow>
-      </value>
-      <value name="SCL">
-        <shadow type="pins_digital">
-          <field name="PIN">3</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="RTC_get_time"></block>
-    <block type="RTC_set_time">
-      <value name="hour">
-        <shadow type="math_number">
-          <field name="NUM">8</field>
-        </shadow>
-      </value>
-      <value name="minute">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="second">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="RTC_set_date">
-      <value name="year">
-        <shadow type="math_number">
-          <field name="NUM">2000</field>
-        </shadow>
-      </value>
-      <value name="month">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-      <value name="day">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="gps_init">
-      <value name="RX">
-       <shadow type="pins_digital"></shadow>
-     </value>
-     <value name="TX">
-       <shadow type="pins_digital"></shadow>
-     </value>
-     <value name="CONTENT">
-       <shadow type="math_number">
-         <field name="NUM">4800</field>
-       </shadow>
-     </value>
-   </block>
-   <block type="controls_whileUntil">
-    <field name="MODE">WHILE</field>
-    <value name="BOOL">
-      <block type="gps_data_available"></block>
+    <block type="encoder_init">
+     <value name="CLK">
+      <shadow type="math_number">
+        <field name="NUM">2</field>
+      </shadow>
     </value>
-    <statement name="DO">
-      <block type="controls_if">
-       <value name="IF0">
-         <block type="gps_data_encode"></block>
+    <value name="DT">
+      <shadow type="math_number">
+        <field name="NUM">3</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="encoder_read"></block>
+  <block type="encoder_write">
+   <value name="value">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<!--DS302-->
+<block type="DS1302_init">
+  <value name="RST">
+    <shadow type="pins_digital">
+      <field name="PIN">2</field>
+    </shadow>
+  </value>
+  <value name="DAT">
+    <shadow type="pins_digital">
+      <field name="PIN">3</field>
+    </shadow>
+  </value>
+  <value name="CLK">
+    <shadow type="pins_digital">
+      <field name="PIN">4</field>
+    </shadow>
+  </value>
+</block>
+<block type="DS1307_init">
+  <value name="SDA">
+    <shadow type="pins_digital">
+      <field name="PIN">2</field>
+    </shadow>
+  </value>
+  <value name="SCL">
+    <shadow type="pins_digital">
+      <field name="PIN">3</field>
+    </shadow>
+  </value>
+</block>
+<block type="RTC_get_time"></block>
+<block type="RTC_set_time">
+  <value name="hour">
+    <shadow type="math_number">
+      <field name="NUM">8</field>
+    </shadow>
+  </value>
+  <value name="minute">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="second">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="RTC_set_date">
+  <value name="year">
+    <shadow type="math_number">
+      <field name="NUM">2000</field>
+    </shadow>
+  </value>
+  <value name="month">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="day">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="gps_init">
+  <value name="RX">
+   <shadow type="pins_digital"></shadow>
+ </value>
+ <value name="TX">
+   <shadow type="pins_digital"></shadow>
+ </value>
+ <value name="CONTENT">
+   <shadow type="math_number">
+     <field name="NUM">4800</field>
+   </shadow>
+ </value>
+</block>
+<block type="controls_whileUntil">
+  <field name="MODE">WHILE</field>
+  <value name="BOOL">
+    <block type="gps_data_available"></block>
+  </value>
+  <statement name="DO">
+    <block type="controls_if">
+     <value name="IF0">
+       <block type="gps_data_encode"></block>
+     </value>
+     <statement name="DO0">
+       <block type="controls_if">
+        <value name="IF0">
+          <block type="gps_xxx_isValid">
+           <field name="WHAT">location</field>
+         </block>
        </value>
        <statement name="DO0">
-         <block type="controls_if">
-          <value name="IF0">
-            <block type="gps_xxx_isValid">
-             <field name="WHAT">location</field>
+        <block type="serial_println">
+         <field name="serial_select">Serial</field>
+         <value name="CONTENT">
+           <block type="gps_getData_xxx">
+            <field name="WHAT">location.lat</field>
+          </block>
+        </value>
+        <next>
+         <block type="serial_println">
+          <field name="serial_select">Serial</field>
+          <value name="CONTENT">
+            <block type="gps_getData_xxx">
+             <field name="WHAT">location.lng</field>
            </block>
          </value>
-         <statement name="DO0">
-          <block type="serial_println">
-           <field name="serial_select">Serial</field>
-           <value name="CONTENT">
-             <block type="gps_getData_xxx">
-              <field name="WHAT">location.lat</field>
-            </block>
-          </value>
-          <next>
-           <block type="serial_println">
-            <field name="serial_select">Serial</field>
-            <value name="CONTENT">
-              <block type="gps_getData_xxx">
-               <field name="WHAT">location.lng</field>
-             </block>
-           </value>
-         </block>
-       </next>
-     </block>
-   </statement>
- </block>
+       </block>
+     </next>
+   </block>
+ </statement>
+</block>
 </statement>
 </block>
 </statement>

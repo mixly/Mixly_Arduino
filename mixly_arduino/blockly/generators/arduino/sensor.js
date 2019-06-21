@@ -193,3 +193,28 @@ Blockly.Arduino.MPU6050_update = function() {
  var code = 'Vector normAccel = mpu.readNormalizeAccel();\nVector normGyro = mpu.readNormalizeGyro();\n';
  return code;
 };
+
+//旋转编码器写
+Blockly.Arduino.encoder_write = function() {
+  var Encoder_NO= this.getFieldValue('Encoder_NO');
+  var value= Blockly.Arduino.valueToCode(this, 'value', Blockly.Arduino.ORDER_ATOMIC);
+  var code='encoder_'+Encoder_NO+'.write('+value+');\n ';
+  return code;
+};
+
+//旋转编码器读值
+Blockly.Arduino.encoder_read = function() {
+  var Encoder_NO= this.getFieldValue('Encoder_NO');
+  var code = 'encoder_' +Encoder_NO+ '.read()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+//旋转编码管脚定义
+Blockly.Arduino.encoder_init = function() {
+  var Encoder_NO= this.getFieldValue('Encoder_NO');
+  var CLK= Blockly.Arduino.valueToCode(this, 'CLK', Blockly.Arduino.ORDER_ATOMIC);
+  var DT= Blockly.Arduino.valueToCode(this, 'DT', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['include_Encoder'] ='#include <Encoder.h>\n';
+  Blockly.Arduino.definitions_['var_declare_EncoderDY'] = 'Encoder encoder_'+Encoder_NO+'('+CLK+','+DT+');\n ';
+  return  null;
+};

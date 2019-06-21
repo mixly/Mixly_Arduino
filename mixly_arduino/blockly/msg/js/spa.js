@@ -2349,3 +2349,5 @@ Blockly.MQTT_Topic='Topic';
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL = "read";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE = "readline";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES = "readlines";
+
+Blockly.MIXLY_ENCODER='Codificador rotatorio';
