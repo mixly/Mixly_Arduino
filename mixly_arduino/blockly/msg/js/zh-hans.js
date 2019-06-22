@@ -2720,3 +2720,4 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE = "读取一行内容";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES = "读取所有行内容";
 
 Blockly.MIXLY_ENCODER='旋转编码器';
+Blockly.MIXLY_SIMPLE_TIMER='简单定时器';

@@ -172,3 +172,17 @@ Blockly.Arduino.controls_nointerrupts = function () {
     return 'noInterrupts();\n';
 };
 Blockly.Arduino.base_delay=Blockly.Arduino.controls_delay;
+//简单定时器
+Blockly.Arduino.simple_timer = function () {
+    var NO = this.getFieldValue('NO');
+    var timein = Blockly.Arduino.valueToCode(this, 'timein', Blockly.Arduino.ORDER_ATOMIC);
+    var funcName = 'Simple_timer_'+NO;
+    var branch = Blockly.Arduino.statementToCode(this, 'zxhs');
+    branch = branch.replace(/(^\s*)|(\s*$)/g, "");
+    var code = 'void' + ' ' + funcName + '() {\n' + branch + '\n}\n';
+    Blockly.Arduino.definitions_[funcName]  = code;
+    Blockly.Arduino.definitions_['include_dsqk'] ='#include <SimpleTimer.h>\n';
+    Blockly.Arduino.definitions_['var_declare_Timer'] = 'SimpleTimer timer;';
+    Blockly.Arduino.setups_[funcName] = 'timer.setInterval('+ timein+'L, '+funcName+');\n';
+    return 'timer.run();\n';
+};

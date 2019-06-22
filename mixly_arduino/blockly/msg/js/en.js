@@ -2660,3 +2660,4 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE = "readline";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES = "readlines";
 
 Blockly.MIXLY_ENCODER='Encoder';
+Blockly.MIXLY_SIMPLE_TIMER='Simple Timer';

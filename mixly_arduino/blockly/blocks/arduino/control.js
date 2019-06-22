@@ -773,3 +773,23 @@ Blockly.Blocks.controls_nointerrupts = {
 };
 Blockly.Blocks.base_delay=Blockly.Blocks.controls_delay;
 
+
+//简单定时器
+Blockly.Blocks['simple_timer'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_SIMPLE_TIMER)
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"], ["6","6"], ["7","7"], ["8","8"], ["9","9"], ["10","10"], ["11","11"], ["12","12"], ["13","13"], ["14","14"], ["15","15"], ["16","16"]]), "NO")
+        .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_INTERVAL);
+    this.appendValueInput("timein")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_mSecond);
+    this.appendStatementInput("zxhs")
+        .setCheck(null)
+        .appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
+    this.setColour(120);
+ this.setTooltip();
+ this.setHelpUrl("");
+  }
+};

@@ -2351,3 +2351,4 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE = "readline";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES = "readlines";
 
 Blockly.MIXLY_ENCODER='Codificador rotatorio';
+Blockly.MIXLY_SIMPLE_TIMER='Temporizador simple';
