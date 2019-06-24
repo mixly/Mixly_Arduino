@@ -51,7 +51,7 @@ Blockly.Blocks['radio_receive_args'] = {
      init: function() {
       this.setColour(Blockly.Blocks.communicate.HUE);
       this.appendDummyInput()
-      .appendField(Blockly.Msg.PROCEDURES_MUTATORARG_TITLE)
+      .appendField(Blockly.Msg.PROCEDURES_BEFORE_PARAMS)
       .appendField(new Blockly.FieldDropdown([['receivedNumber', 'receivedNumber'], ['receivedString', 'receivedNumber'], ['time', 'time'], ['serial', 'serial'], ['signal', 'signal']]), "TYPEVAR")
       .appendField(new Blockly.FieldTextInput('x', this.validator_), 'NAME');
       this.setPreviousStatement(true);
@@ -148,7 +148,7 @@ Blockly.Blocks['radio_receive_args'] = {
         // Merge the arguments into a human-readable list.
         var paramString = '';
         if (this.arguments_.length) {
-          paramString = Blockly.Msg.PROCEDURES_BEFORE_PARAMS +
+          paramString = Blockly.Msg.PROCEDURES_BEFORE_PARAMS+
           ' ' + this.arguments_.join(', ');
         }
         // The params field is deterministic based on the mutation,

@@ -24,7 +24,7 @@ Blockly.Blocks.controls_delay = {
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_DELAY)
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_Second, "s"], [Blockly.MIXLY_mSecond, "ms"], [Blockly.MIXLY_uSecond, "us"]]), 'Time');
+    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_SECOND, "s"], [Blockly.MIXLY_mSecond, "ms"], [Blockly.MIXLY_uSecond, "us"]]), 'Time');
     this.appendValueInput("DELAY_TIME", Number)
     .setCheck(Number);
     this.setFieldValue('ms','Time')
@@ -492,9 +492,9 @@ Blockly.Blocks.controls_TypeLists = {
       [Blockly.MIXLY_MICROBIT_TYPE_LIST, "list"],
       [Blockly.MIXLY_MICROBIT_TYPE_TUPLE, "tuple"],
       [Blockly.MIXLY_MICROBIT_TYPE_DICT,"dict"],
-      [Blockly.MIXLY_MICROBIT_TYPE_SETS,"set"],
-              // [Blockly.MIXLY_MICROBIT_TYPE_IMAGE,"image"],
-              [Blockly.MIXLY_MICROBIT_TYPE_NONE,"NoneType"]]), "type");
+      [Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TITLE_ADD,"set"],
+              // [Blockly.MIXLY_MICROBIT_IMAGE,"image"],
+              [Blockly.Msg.LOGIC_NULL,"NoneType"]]), "type");
             //整数、浮点数、字符串、列表、元组、字典、集合、图像不太对, unfinished
             this.setInputsInline(true);
             this.setOutput(true);
@@ -509,9 +509,9 @@ Blockly.Blocks.controls_TypeLists = {
                 'list': Blockly.MIXLY_MICROBIT_TYPE_LIST,
                 'tuple':Blockly.MIXLY_MICROBIT_TYPE_TUPLE,
                 'dict': Blockly.MIXLY_MICROBIT_TYPE_DICT,
-                'set': Blockly.MIXLY_MICROBIT_TYPE_SETS,
-                'image':Blockly.MIXLY_MICROBIT_TYPE_IMAGE,
-                'NoneType': Blockly.MIXLY_MICROBIT_TYPE_NONE
+                'set': Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TITLE_ADD,
+                'image':Blockly.MIXLY_MICROBIT_IMAGE,
+                'NoneType': Blockly.Msg.LOGIC_NULL
               };
               return mode0 + TOOLTIPS[mode];
             });

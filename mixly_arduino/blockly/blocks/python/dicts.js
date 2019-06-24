@@ -253,7 +253,7 @@ Blockly.Blocks['dicts_get'] = {
     .appendField(Blockly.Msg.DICTS_GET_IN)
     this.appendDummyInput("")   
         // .appendField(new Blockly.FieldTextInput('"key"'), 'KEY')
-        .appendField(Blockly.Msg.DICTS_GET_VALUE);
+        .appendField(Blockly.Msg.DICTS_ADD_VALUE);
         
         this.setOutput(true);
         this.setTooltip(Blockly.Msg.DICTS_GET_TOOLTIP);
@@ -379,7 +379,7 @@ Blockly.Blocks['dicts_length'] = {
     this.appendValueInput('DICT')
     .setCheck('Dict')
     this.appendDummyInput("")
-    .appendField(Blockly.Msg.LISTS_LENGTH_TITLE)
+    .appendField(Blockly.MIXLY_LENGTH)
     
     this.setTooltip(Blockly.Msg.DICT_LENGTH_TOOLTIP);
     this.setOutput(true, Number);
@@ -422,7 +422,7 @@ Blockly.Blocks['dicts_add_change_del'] = {
     this.appendDummyInput('AT2')
     this.appendValueInput('KEY')
     this.appendDummyInput("")   
-    .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE)
+    .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_MAKE)
         // .appendField(new Blockly.FieldTextInput('"key"'), 'KEY')
         .appendField(Blockly.Msg.DICTS_ADD_VALUE);
         this.updateAt_(true);
@@ -521,7 +521,7 @@ Blockly.Blocks['dicts_pop'] = {
     this.appendValueInput('KEY')
     this.appendDummyInput("")
         // .appendField(new Blockly.FieldTextInput('"key"'), 'KEY')
-        .appendField(Blockly.Msg.DICTS_GET_VALUE);    
+        .appendField(Blockly.Msg.DICTS_ADD_VALUE);    
         this.setTooltip(Blockly.Msg.DICT_POP_TOOLTIP);
         this.setInputsInline(true);
         this.setOutput(true);

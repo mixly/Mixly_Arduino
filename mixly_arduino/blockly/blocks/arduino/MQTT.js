@@ -93,7 +93,7 @@ Blockly.Blocks['network_get_connect'] = {
   init: function() {
     this.setColour(Blockly.Blocks.storage.HUE);
     this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_ESP32_NETWORK_GET_CONNECT)
+    .appendField(Blockly.MIXLY_ESP32_NETWORK_GET_WIFI)
     .appendField(Blockly.MIXLY_ESP32_NETWORK_IP);
     this.setOutput(true);
     this.setInputsInline(true);

@@ -591,7 +591,7 @@ Blockly.Blocks.group_lcd_print = {
           */
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip(Blockly.MIXLY_LCD_PRINT4);
+    this.setTooltip(Blockly.MIXLY_LCD_PRINT4_TOOLTIP);
   }
 };
 
@@ -633,7 +633,7 @@ Blockly.Blocks.group_lcd_print2 = {
     this.setPreviousStatement(true, null);
     this.setInputsInline(true);
     this.setNextStatement(true, null);
-    this.setTooltip(Blockly.MIXLY_LCD_PRINT3);
+    this.setTooltip(Blockly.MIXLY_LCD_PRINT3_TOOLTIP);
   }
 };
 

@@ -363,7 +363,7 @@ Blockly.Blocks['speech_translate'] = {
           .setCheck(String)
           .appendField(Blockly.MICROBIT_SPEECH_translation);
         this.setOutput(true, String);
-        this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE+Blockly.MIXLY_MICROBIT_TYPE_STRING+Blockly.MICROBIT_SPEECH_translation);
+        this.setTooltip(Blockly.MIXLY_MICROPYTHON_SOCKET_MAKE+Blockly.MIXLY_MICROBIT_TYPE_STRING+Blockly.MICROBIT_SPEECH_translation);
     }
 };
 

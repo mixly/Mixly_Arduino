@@ -1034,7 +1034,7 @@ Blockly.Blocks.group_lcd_print = {
           */
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip(Blockly.MIXLY_LCD_PRINT4);
+    this.setTooltip(Blockly.MIXLY_LCD_PRINT4_TOOLTIP);
   }
 };
 
@@ -1076,7 +1076,7 @@ Blockly.Blocks.group_lcd_print2 = {
     this.setPreviousStatement(true, null);
     this.setInputsInline(true);
     this.setNextStatement(true, null);
-    this.setTooltip(Blockly.MIXLY_LCD_PRINT3);
+    this.setTooltip(Blockly.MIXLY_LCD_PRINT3_TOOLTIP);
   }
 };
 
@@ -1111,11 +1111,11 @@ Blockly.Blocks.group_lcd_power = {
 //   init: function() {
 //    this.setColour(Blockly.Blocks.display.HUE);
 //    this.appendValueInput('VAR')
-//             .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+//             .appendField(Blockly.OLED)
 //             .setCheck("var");
 //    this.appendValueInput("RX", Number)
 //        //.appendField(Blockly.MIXLY_SETUP)
-//        // .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+//        // .appendField(Blockly.OLED)
 //        // .appendField(new Blockly.FieldTextInput('lcd'), 'VAR')  
 //        .appendField(Blockly.MIXLY_SETUP)
 //        .appendField("sda")
@@ -1142,7 +1142,7 @@ Blockly.Blocks.display_use_i2c_init = {
             .appendField(Blockly.Msg.CONTROLS_FOR_INPUT_WITH+"I2C")
             .setCheck("var");
         this.appendValueInput('SUB')
-            .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE)
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_MAKE)
             .setCheck("var");
         // this.appendDummyInput("")
         //     .appendField(Blockly.MIXLY_SETUP + Blockly.Msg.LISTS_SET_INDEX_INPUT_TO + "OLED")
@@ -1165,13 +1165,13 @@ Blockly.Blocks.display_use_i2c_init = {
 Blockly.Blocks.display_draw_4strings = {
     init: function() {
         // this.appendDummyInput()
-        //     .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+        //     .appendField(Blockly.OLED)
         // this.appendDummyInput("")        
             // .appendField(new Blockly.FieldTextInput('lcd'), 'VAR')  
             // .appendField(Blockly.Msg.OLEDDISPLAY);  
         //.appendField(new Blockly.FieldImage(Blockly.pathToBlockly + 'blocks/display-oled-128x64-i2c/display-oled-128x64-i2c.jpg', Blockly.Arduino.imageSize, Blockly.Arduino.imageSize));
         this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .appendField(Blockly.OLED)
             .setCheck("var");
         this.appendValueInput("Text_line1" , 'String')
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -1231,10 +1231,10 @@ Blockly.Blocks.display_rect = {
         ];
         this.setColour(Blockly.Blocks.display.HUE);
         // this.appendDummyInput()
-        //     .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)         
+        //     .appendField(Blockly.OLED)         
         //     .appendField(new Blockly.FieldTextInput('lcd'), 'VAR') 
          this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .appendField(Blockly.OLED)
             .setCheck("var");
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_RECT)   
@@ -1283,10 +1283,10 @@ Blockly.Blocks.display_line = {
     init: function () {
         this.setColour(Blockly.Blocks.display.HUE);
         // this.appendDummyInput()
-        //     .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)         
+        //     .appendField(Blockly.OLED)         
         //     .appendField(new Blockly.FieldTextInput('lcd'), 'VAR') 
           this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .appendField(Blockly.OLED)
             .setCheck("var");
          // this.appendValueInput("PIN", Number)
          //    .setCheck(Number)
@@ -1323,10 +1323,10 @@ Blockly.Blocks.display_line_arbitrarily= {
     init: function () {
         this.setColour(Blockly.Blocks.display.HUE);
         // this.appendDummyInput()
-        //     .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)         
+        //     .appendField(Blockly.OLED)         
         //     .appendField(new Blockly.FieldTextInput('lcd'), 'VAR') 
         this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .appendField(Blockly.OLED)
             .setCheck("var");
          // this.appendValueInput("PIN", Number)
          //    .setCheck(Number)
@@ -1544,7 +1544,7 @@ Blockly.Blocks.display_tm_use_i2c_init = {
             .appendField(Blockly.Msg.CONTROLS_FOR_INPUT_WITH+"I2C")
             .setCheck("var");
         this.appendValueInput('SUB')
-            .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE)
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_MAKE)
             .setCheck("var");
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_SETUP + Blockly.Msg.LISTS_SET_INDEX_INPUT_TO)
@@ -1644,7 +1644,7 @@ Blockly.Blocks.display_circle = {
         ];
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .appendField(Blockly.OLED)
             .setCheck("var");
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_MIXPY_TURTLE_DRAW_CIRCLE)   
@@ -1688,7 +1688,7 @@ Blockly.Blocks.display_triangle = {
         ];
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .appendField(Blockly.OLED)
             .setCheck("var");
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_DISPLAY_DRAW+Blockly.MIXLY_HANBIT_DRAW_TRIANGLE)   

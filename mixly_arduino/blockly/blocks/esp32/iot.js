@@ -28,7 +28,7 @@ Blockly.Blocks['iot_onenet_connect'] = {
     this.setColour(Blockly.Blocks.iot.HUE);
     this.appendValueInput('VAR')
     .setCheck("var")
-    .appendField("OneNET" + Blockly.MIXLY_ESP32_CONNECT_ONENET);
+    .appendField("OneNET" + Blockly.Msg.TUPLE_JOIN);
     this.appendValueInput('CLIENT')
     .setCheck(String)
     .appendField(Blockly.MIXLY_ESP32_ONENET_CLIENT);

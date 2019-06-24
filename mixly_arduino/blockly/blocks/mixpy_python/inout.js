@@ -35,7 +35,7 @@ Blockly.Blocks['inout_print_inline'] = {
     .appendField(Blockly.blockpy_inout_print_inline);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip(Blockly.Msg.TEXT_PRINT_INLINE_TOOLTIP);
+    this.setTooltip(Blockly.Msg.TEXT_PRINT_TOOLTIP);
   }
 };
 

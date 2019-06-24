@@ -515,7 +515,7 @@ Blockly.Blocks['lists_change_to'] = {
   init: function() {
     var OPERATORS =
         [[Blockly.MIXLY_MICROBIT_TYPE_TUPLE, 'tuple'],
-         [Blockly.MIXLY_MICROBIT_TYPE_SETS, 'set']
+         [Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TITLE_ADD, 'set']
         ];
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendValueInput('VAR')
@@ -691,7 +691,7 @@ Blockly.Blocks['lists_change_to_general'] = {
         [
          [Blockly.MIXLY_MICROBIT_TYPE_LIST, 'list'],
          [Blockly.MIXLY_MICROBIT_TYPE_TUPLE, 'tuple'],
-         [Blockly.MIXLY_MICROBIT_TYPE_SETS, 'set']
+         [Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TITLE_ADD, 'set']
         ];
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendValueInput('VAR');

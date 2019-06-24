@@ -179,7 +179,7 @@ Blockly.Blocks['set_length'] = {
   init: function() {
     this.setColour(Blockly.Blocks.set.HUE);
   this.appendDummyInput("")
-        .appendField(Blockly.Msg.LISTS_LENGTH_TITLE);        
+        .appendField(Blockly.MIXLY_LENGTH);        
   this.appendValueInput('SET');
   this.setInputsInline(true);
   this.setTooltip(Blockly.Msg.SET_LENGTH_TOOLTIP);

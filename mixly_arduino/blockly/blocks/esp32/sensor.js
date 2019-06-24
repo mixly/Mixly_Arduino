@@ -556,7 +556,7 @@ Blockly.Blocks.sensor_use_i2c_init = {
         .appendField(Blockly.Msg.CONTROLS_FOR_INPUT_WITH+"I2C")
         .setCheck("var");
         this.appendValueInput('SUB')
-        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE)
+        .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_MAKE)
         .setCheck("var");
         this.appendDummyInput("")
         .appendField(Blockly.MIXLY_SETUP + Blockly.Msg.LISTS_SET_INDEX_INPUT_TO)

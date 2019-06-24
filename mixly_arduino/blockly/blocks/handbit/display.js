@@ -12,7 +12,7 @@ Blockly.Blocks.handbit_display_use_i2c_init = {
             .appendField(Blockly.Msg.CONTROLS_FOR_INPUT_WITH+"I2C")
             .setCheck("var");
         this.appendValueInput('SUB')
-            .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE)
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_MAKE)
             .setCheck("var");
         this.appendValueInput('row')
             .appendField(Blockly.MIXLY_SETUP + Blockly.Msg.LISTS_SET_INDEX_INPUT_TO + "OLED")
@@ -30,7 +30,7 @@ Blockly.Blocks.handbit_display_use_i2c_init = {
 Blockly.Blocks.handbit_display_draw_4strings = {
     init: function() {
         this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .appendField(Blockly.OLED)
             .setCheck("var");
         this.appendValueInput("Text_line1" , 'String')
             .setAlign(Blockly.ALIGN_RIGHT)
@@ -60,7 +60,7 @@ Blockly.Blocks.handbit_display_rect = {
         ];
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .appendField(Blockly.OLED)
             .setCheck("var");
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_RECT)   
@@ -104,7 +104,7 @@ Blockly.Blocks.handbit_display_line = {
     init: function () {
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .appendField(Blockly.OLED)
             .setCheck("var");
         this.appendDummyInput()
          .appendField(Blockly.MIXLY_DISPLAY_DRAW)
@@ -136,7 +136,7 @@ Blockly.Blocks.handbit_display_line_arbitrarily= {
     init: function () {
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .appendField(Blockly.OLED)
             .setCheck("var");
         this.jsonInit({
       "message0" : Blockly.MIXLY_MICROBIT_SHOW_LINE_ARBITRARILY,
@@ -198,7 +198,7 @@ Blockly.Blocks.handbit_display_circle = {
         ];
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .appendField(Blockly.OLED)
             .setCheck("var");
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_MIXPY_TURTLE_DRAW_CIRCLE)   
@@ -242,7 +242,7 @@ Blockly.Blocks.handbit_display_triangle = {
         ];
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_MICROBIT_JS_OLED)
+            .appendField(Blockly.OLED)
             .setCheck("var");
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_DISPLAY_DRAW+Blockly.MIXLY_HANBIT_DRAW_TRIANGLE)   

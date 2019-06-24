@@ -14,7 +14,7 @@ Blockly.Blocks.controls_delay = {
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_DELAY)
     this.appendDummyInput("")
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_Second, "s"], [Blockly.MIXLY_mSecond, "ms"], [Blockly.MIXLY_uSecond, "us"]]), 'Time');
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_SECOND, "s"], [Blockly.MIXLY_mSecond, "ms"], [Blockly.MIXLY_uSecond, "us"]]), 'Time');
      this.appendValueInput("DELAY_TIME", Number)
          .setCheck(Number);
     this.setFieldValue('ms','Time')

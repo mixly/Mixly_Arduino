@@ -101,7 +101,7 @@
     // Merge the arguments into a human-readable list.
     var paramString = '';
     if (this.arguments_.length) {
-      paramString = Blockly.Msg.PROCEDURES_BEFORE_PARAMS +
+      paramString = Blockly.Msg.PROCEDURES_BEFORE_PARAMS+
       ' ' + this.arguments_.join(', ');
     }
     // The params field is deterministic based on the mutation,
@@ -408,7 +408,7 @@ Blockly.Blocks['procedures_mutatorarg'] = {
    init: function() {
     this.setColour(Blockly.Blocks.procedures.HUE);
     this.appendDummyInput()
-    .appendField(Blockly.Msg.PROCEDURES_MUTATORARG_TITLE)
+    .appendField(Blockly.Msg.PROCEDURES_BEFORE_PARAMS)
     .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_TYPE_NUMBER, 'number'], [Blockly.MIXLY_MICROBIT_JS_TYPE_STRING, 'string'], [Blockly.MIXLY_MICROBIT_JS_TYPE_BOOLEAN, 'boolean'], [Blockly.MIXLY_MICROBIT_JS_TYPE_ARRAY_NUMBER, 'Array<number>'], [Blockly.MIXLY_MICROBIT_JS_TYPE_ARRAY_STRING, 'Array<string>']]), 'TYPEVAR')
     .appendField(new Blockly.FieldTextInput('x', this.validator_), 'NAME');
     this.setPreviousStatement(true);

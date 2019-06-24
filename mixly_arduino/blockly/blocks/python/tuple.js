@@ -270,7 +270,7 @@ Blockly.Blocks['tuple_length'] = {
     this.setColour(Blockly.Blocks.tuple.HUE);
     this.appendValueInput('TUP');
   this.appendDummyInput("")
-        .appendField(Blockly.Msg.LISTS_LENGTH_TITLE);
+        .appendField(Blockly.MIXLY_LENGTH);
         
   this.setTooltip(Blockly.Msg.TUPLE_LENGTH_TOOLTIP);
   this.setOutput(true, Number);
@@ -345,7 +345,7 @@ Blockly.Blocks['tuple_change_to'] = {
   init: function() {
     var OPERATORS =
         [[Blockly.MIXLY_MICROBIT_TYPE_LIST, 'list'],
-         [Blockly.MIXLY_MICROBIT_TYPE_SETS, 'set']
+         [Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TITLE_ADD, 'set']
         ];
     this.setColour(Blockly.Blocks.tuple.HUE);
     this.appendValueInput('VAR')

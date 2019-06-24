@@ -398,7 +398,7 @@ Blockly.Blocks['lists_length'] = {
    init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendDummyInput("")
-    .appendField(Blockly.Msg.LISTS_LENGTH_TITLE)
+    .appendField(Blockly.MIXLY_LENGTH)
     .appendField(new Blockly.FieldTextInput('mylist'), 'VAR');
     this.setTooltip(Blockly.Msg.LISTS_LENGTH_TOOLTIP);
     this.setOutput(true, Number);

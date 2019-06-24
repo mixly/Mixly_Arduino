@@ -247,7 +247,7 @@ Blockly.Blocks['pl_plot'] = {
 
     this.appendValueInput('SER')
         .setCheck('Series')
-        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE);   
+        .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_MAKE);   
     this.appendDummyInput()
         .appendField(Blockly.blockpy_PYLAB_PLOT); 
     this.appendDummyInput("")                

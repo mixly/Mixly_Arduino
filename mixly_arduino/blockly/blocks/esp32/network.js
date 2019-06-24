@@ -145,7 +145,7 @@ Blockly.Blocks['network_get_connect'] = {
         this.appendValueInput('VAR')
             .setCheck("var")
         this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_ESP32_NETWORK_GET_CONNECT);
+            .appendField(Blockly.MIXLY_ESP32_NETWORK_GET_WIFI);
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown([
                 [Blockly.MIXLY_ESP32_NETWORK_IP, "0"],
@@ -158,7 +158,7 @@ Blockly.Blocks['network_get_connect'] = {
         var thisBlock = this;
         this.setTooltip(function() {
         var mode = thisBlock.getFieldValue('mode');
-        var mode0 = Blockly.MIXLY_ESP32_NETWORK_GET_CONNECT_TOOLTIP
+        var mode0 = Blockly.MIXLY_ESP32_NETWORK_GET_WIFI_TOOLTIP
         var TOOLTIPS = {
         '0':Blockly.MIXLY_ESP32_NETWORK_IP,
         '1': Blockly.MIXLY_ESP32_NETWORK_MASK,
@@ -234,7 +234,7 @@ Blockly.Blocks['network_server'] = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SERVER_TOOLTIP);
+        this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_SOCKET_CLOSE_TOOLTIP);
     }
 };
 

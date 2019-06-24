@@ -127,7 +127,7 @@ Blockly.Blocks['variables_change'] = {
           [Blockly.MIXLY_MICROBIT_TYPE_LIST, "list"],
           [Blockly.MIXLY_MICROBIT_TYPE_TUPLE, "tuple"],
           [Blockly.MIXLY_MICROBIT_TYPE_DICT,"dict"],
-          [Blockly.MIXLY_MICROBIT_TYPE_SETS,"set"]
+          [Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TITLE_ADD,"set"]
           ];
         this.appendValueInput('MYVALUE')
             .appendField(new Blockly.FieldDropdown(DATATYPES), 'OP');
@@ -147,7 +147,7 @@ Blockly.Blocks['variables_global'] = {
         .setCheck("var");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setTooltip(Blockly.Msg.TEXT_PRINT_INLINE_TOOLTIP);
+        this.setTooltip(Blockly.Msg.TEXT_PRINT_TOOLTIP);
   }
 };
 
@@ -176,9 +176,9 @@ Blockly.Blocks.controls_typeLists = {
               [Blockly.MIXLY_MICROBIT_TYPE_LIST, "list"],
               [Blockly.MIXLY_MICROBIT_TYPE_TUPLE, "tuple"],
               [Blockly.MIXLY_MICROBIT_TYPE_DICT,"dict"],
-              [Blockly.MIXLY_MICROBIT_TYPE_SETS,"set"],
-              // [Blockly.MIXLY_MICROBIT_TYPE_IMAGE,"image"],
-              [Blockly.MIXLY_MICROBIT_TYPE_NONE,"NoneType"]]), "type");
+              [Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TITLE_ADD,"set"],
+              // [Blockly.MIXLY_MICROBIT_IMAGE,"image"],
+              [Blockly.Msg.LOGIC_NULL,"NoneType"]]), "type");
             //整数、浮点数、字符串、列表、元组、字典、集合、图像不太对, unfinished
         this.setInputsInline(true);
         this.setOutput(true);
@@ -193,9 +193,9 @@ Blockly.Blocks.controls_typeLists = {
         'list': Blockly.MIXLY_MICROBIT_TYPE_LIST,
         'tuple':Blockly.MIXLY_MICROBIT_TYPE_TUPLE,
         'dict': Blockly.MIXLY_MICROBIT_TYPE_DICT,
-        'set': Blockly.MIXLY_MICROBIT_TYPE_SETS,
-        'image':Blockly.MIXLY_MICROBIT_TYPE_IMAGE,
-        'NoneType': Blockly.MIXLY_MICROBIT_TYPE_NONE
+        'set': Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TITLE_ADD,
+        'image':Blockly.MIXLY_MICROBIT_IMAGE,
+        'NoneType': Blockly.Msg.LOGIC_NULL
       };
       return mode0 + TOOLTIPS[mode];
     });

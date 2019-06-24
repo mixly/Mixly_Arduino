@@ -51,14 +51,14 @@ Blockly.Blocks['storage_file_write'] = {
         this.setColour(Blockly.Blocks.storage.HUE);
         this.appendValueInput('data')
             .setCheck(String)
-            .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE);
+            .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_MAKE);
         this.appendValueInput("FILE")
             .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_WRITE);
         //    .appendField(new Blockly.FieldTextInput('f'), 'FILE');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
-        this.setTooltip(Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE+Blockly.MIXLY_MICROBIT_TYPE_STRING+Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_WRITE);
+        this.setTooltip(Blockly.MIXLY_MICROPYTHON_SOCKET_MAKE+Blockly.MIXLY_MICROBIT_TYPE_STRING+Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_WRITE);
     }
 }
 
@@ -299,9 +299,9 @@ Blockly.Blocks['storage_file_write'] = {
          .setCheck(String)
          .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_PATH);
      this.appendDummyInput()
-         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_CREATE);
+         .appendField(Blockly.MIXLY_ESP32_SET);
      this.appendDummyInput()
-         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_MKDIR,'mkdir'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKEDIRS,'makedirs']]),'MODE');
+         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_MKDIR,'mkdir'],[Blockly.MIXLY_MICROPYTHON_SOCKET_MAKEDIRS,'makedirs']]),'MODE');
      this.setInputsInline(true);
      this.setPreviousStatement(true); //in front of the block has something
      this.setNextStatement(true);  //beyond the ... has something
@@ -310,10 +310,10 @@ Blockly.Blocks['storage_file_write'] = {
      this.setTooltip(function() {
         var mode = thisBlock.getFieldValue('MODE');
         var mode0 = Blockly.MIXLY_MICROBIT_PY_STORAGE_PATH;
-        var mode2 = Blockly.MIXLY_MICROBIT_PY_STORAGE_CREATE;
+        var mode2 = Blockly.MIXLY_ESP32_SET;
         var TOOLTIPS = {
         'mkdir': Blockly.MIXLY_MICROBIT_PY_STORAGE_MKDIR,
-        'makedirs': Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKEDIRS
+        'makedirs': Blockly.MIXLY_MICROPYTHON_SOCKET_MAKEDIRS
       };
       return mode0 +'x'+ mode2 + TOOLTIPS[mode];
     });
@@ -371,7 +371,7 @@ Blockly.Blocks['storage_file_write'] = {
          var mode2 = Blockly.MIXLY_MICROBIT_PY_STORAGE_IS_OR_NOT;
          var TOOLTIPS = {
          'isfile': Blockly.MIXLY_MICROBIT_PY_STORAGE_MKDIR,
-         'isdir': Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKEDIRS
+         'isdir': Blockly.MIXLY_MICROPYTHON_SOCKET_MAKEDIRS
        };
        return mode0 +'x'+ mode2 + TOOLTIPS[mode];
      });
