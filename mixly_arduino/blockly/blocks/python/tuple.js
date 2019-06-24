@@ -322,7 +322,7 @@ Blockly.Blocks['tuple_max'] = {
         [[Blockly.blockpy_TUPLE_MAX, 'max'],[Blockly.blockpy_TUPLE_MIN, 'min'],[Blockly.Msg.MATH_ONLIST_OPERATOR_SUM,'sum']];
     this.setColour(Blockly.Blocks.tuple.HUE);
     this.appendDummyInput("")
-        .appendField(Blockly.blockpy_TUPLE_GET)
+        .appendField(Blockly.MIXLY_MICROBIT_JS_GET)
         .appendField(new Blockly.FieldDropdown(max_min), 'DIR')
         
 

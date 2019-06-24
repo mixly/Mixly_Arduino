@@ -29,7 +29,7 @@ Blockly.Blocks.monitor_get_pixel = {
     this.setColour(Blockly.Blocks.display.HUE);
 	this.appendValueInput('x')
         .setCheck(Number)
-        .appendField(Blockly.MIXLY_NOVA_GET_STAT)
+        .appendField(Blockly.MIXLY_MICROBIT_JS_GET)
         .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS)
 		    .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_GET_POINT_X);
 	this.appendValueInput('y')

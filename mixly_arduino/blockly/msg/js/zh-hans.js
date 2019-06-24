@@ -906,73 +906,9 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = '停止播放声音。';
  Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = '向指定地址发送一个GET请求';
  Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = '对常量或变量进行强制类型转换';
 
-
-//-----------------NOVA---------------------------------
-Blockly.MIXLY_NOVA_PORT = '端口';
-Blockly.MIXLY_NOVA_STAT = '设为';
-Blockly.MIXLY_NOVA_GET_STAT = '获取';
-
-// LED
-Blockly.MIXLY_NOVA_LED = 'LED灯';
-Blockly.MIXLY_NOVA_LED_ON = '开';
-Blockly.MIXLY_NOVA_LED_OFF = '关';
-
 // Button
 Blockly.MIXLY_NOVA_BUTTON_PRESSED = '按下';
 Blockly.MIXLY_NOVA_BUTTON_RELEASED = '松开';
-Blockly.MIXLY_NOVA_BTN = '按钮';
-Blockly.MIXLY_NOVA_ABCD = '#';
-
-Blockly.MIXLY_NOVA_TILTSWITCH = '倾斜开关';
-Blockly.MIXLY_NOVA_SOUND = '声音传感器';
-Blockly.MIXLY_NOVA_LIMISWICTH = '限位开关';
-Blockly.MIXLY_NOVA_LIGHT = '光敏';
-
-Blockly.MIXLY_NOVA_BUZZER = '蜂鸣器';
-Blockly.MIXLY_NOVA_FREQUENCY = '频率(Hz)';
-Blockly.MIXLY_NOVA_MIXLY_DURATION = '持续时间(ms)';
-
-Blockly.MIXLY_NOVA_MOTOR = '直流电机';
-Blockly.MIXLY_NOVA_MOTOR_SPEED = '转速(-100~100)%';
-
-Blockly.MIXLY_NOVA_ULTRASONIC = '超声波测距(cm)';
-
-Blockly.MIXLY_NOVA_DHT11 = '温湿度';
-Blockly.MIXLY_NOVA_TYPE = '类型';
-Blockly.MIXLY_NOVA_DHT11_H = '获取湿度';
-Blockly.MIXLY_NOVA_DHT11_T = '获取温度';
-
-Blockly.MIXLY_NOVA_SERVO = '舵机';
-Blockly.MIXLY_NOVA_DEGREE_0_180 = '角度（0~180）';
-Blockly.MIXLY_NOVA_DELAY = '延时';
-Blockly.MIXLY_NOVA_DELAY_MS = '毫秒';
-
-Blockly.MIXLY_NOVA_LINEFINDER = '巡线';
-Blockly.MIXLY_NOVA_L = '左边状态';
-Blockly.MIXLY_NOVA_R = '右边状态';
-Blockly.MIXLY_NOVA_READ = '获取黑白线状态';
-
-Blockly.MIXLY_NOVA_4DIGITDISPLAY = '数码管';
-Blockly.MIXLY_NOVA_DISPLAY_NUMBER = '显示数字';
-Blockly.MIXLY_NOVA_DISPLAY_HOUR= '显示小时';
-Blockly.MIXLY_NOVA_DISPLAY_MIN = '显示分钟';
-
-Blockly.MIXLY_NOVA_RTC = '时钟';
-Blockly.MIXLY_NOVA_RTC_SEC = '秒';
-Blockly.MIXLY_NOVA_RTC_MIN = '分';
-Blockly.MIXLY_NOVA_RTC_HOUR = '时';
-Blockly.MIXLY_NOVA_RTC_WEEK = '星期';
-Blockly.MIXLY_NOVA_RTC_DAY = '日';
-Blockly.MIXLY_NOVA_RTC_MON = '月';
-Blockly.MIXLY_NOVA_RTC_YEAR = '年';
-
-Blockly.MIXLY_NOVA_IR_REC = '红外接收';
-
-Blockly.MIXLY_NOVA_BLUETOOTH = '蓝牙';
-Blockly.MIXLY_NOVA_BLUETOOTH_AVAILABLE = '有数据可读？';
-Blockly.MIXLY_NOVA_BLUETOOTH_READ_STR = '读取数据（返回字符串）';
-Blockly.MIXLY_NOVA_BLUETOOTH_READ_NUM = '读取数据（返回数字）';
-
 //spi
 Blockly.TO_SPI_SLAVE_PIN='向SPI从机#';
 Blockly.SPI_TRANSFER='传输';
@@ -1157,6 +1093,7 @@ Blockly.MIXLY_HOUR = '时';
 Blockly.MIXLY_MINUTE = '分';
 Blockly.MIXLY_SECOND = '秒';
 Blockly.MIXLY_WEEK = '周';
+Blockly.MIXLY_WEEK2 = '星期';
 Blockly.MIXLY_MILLISECOND = '微秒';
 Blockly.MIXLY_DS1302_INITPIN = '初始化时钟模块DS1302 管脚';
 Blockly.MIXLY_SETDATE = '设置日期:';
@@ -1709,7 +1646,6 @@ Blockly.blockpy_TUPLE_MAX = '最大值';
 Blockly.blockpy_TUPLE_MIN = '最小值';
 Blockly.MIXLY_TOOLTIP_TUPLE_MAX = '返回元组中元素的最大值';
 Blockly.MIXLY_TOOLTIP_TUPLE_MIN = '返回元组中元素的最小值';
-Blockly.blockpy_TUPLE_GET = '获取';
 Blockly.blockpy_turtle_set_size = '设置画笔粗细为';
 Blockly.blockpy_turtle_set_speed = '设置画笔速度为';
 Blockly.blockpy_inout_print_inline='打印';

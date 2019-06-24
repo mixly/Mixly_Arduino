@@ -1596,7 +1596,7 @@ Blockly.Blocks.display_tm1650_show_num = {
         this.appendValueInput("VAR")
         this.appendValueInput("VALUE")
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MIXLY_NOVA_DISPLAY_NUMBER);
+            .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_NUMBER);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

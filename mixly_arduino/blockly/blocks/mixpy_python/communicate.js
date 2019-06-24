@@ -41,7 +41,7 @@ Blockly.Blocks['requests_attribute'] = {
         ,[Blockly.blockpy_REQUESTS_GET_ATTR_COOKIES, 'cookies'],[Blockly.blockpy_REQUESTS_GET_ATTR_CONTENT, 'content']];
     this.setColour(Blockly.Blocks.communicate.HUE);
     this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_NOVA_GET_STAT)
+        .appendField(Blockly.MIXLY_MICROBIT_JS_GET)
         .appendField(new Blockly.FieldDropdown(attr), 'ATTR')
         
 

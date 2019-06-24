@@ -55,8 +55,8 @@ Blockly.Blocks.handbit_display_draw_4strings = {
 Blockly.Blocks.handbit_display_rect = {
     init: function () {
       var brightness_or_not =
-        [[Blockly.LUXE_LED_ON, '1'],
-         [Blockly.LUXE_LED_OFF, '0']
+        [[Blockly.MIXLY_4DIGITDISPLAY_ON, '1'],
+         [Blockly.MIXLY_4DIGITDISPLAY_OFF, '0']
         ];
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendValueInput('VAR')
@@ -193,8 +193,8 @@ Blockly.Blocks['handbit_display_fill'] = {
 Blockly.Blocks.handbit_display_circle = {
     init: function () {
       var brightness_or_not =
-        [[Blockly.LUXE_LED_ON, '1'],
-         [Blockly.LUXE_LED_OFF, '0']
+        [[Blockly.MIXLY_4DIGITDISPLAY_ON, '1'],
+         [Blockly.MIXLY_4DIGITDISPLAY_OFF, '0']
         ];
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendValueInput('VAR')
@@ -237,8 +237,8 @@ Blockly.Blocks.handbit_display_circle = {
 Blockly.Blocks.handbit_display_triangle = {
     init: function () {
       var brightness_or_not =
-        [[Blockly.LUXE_LED_ON, '1'],
-         [Blockly.LUXE_LED_OFF, '0']
+        [[Blockly.MIXLY_4DIGITDISPLAY_ON, '1'],
+         [Blockly.MIXLY_4DIGITDISPLAY_OFF, '0']
         ];
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendValueInput('VAR')

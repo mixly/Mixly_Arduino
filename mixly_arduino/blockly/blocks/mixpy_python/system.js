@@ -140,7 +140,7 @@ Blockly.Blocks.time_sleep = {
         .appendField(Blockly.MIXLY_DELAY)        
         .setCheck(Number);
     this.appendDummyInput()
-        .appendField(Blockly.MIXLY_NOVA_RTC_SEC)
+        .appendField(Blockly.MIXLY_SECOND)
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
