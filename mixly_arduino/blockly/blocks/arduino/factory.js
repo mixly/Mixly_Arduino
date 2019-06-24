@@ -117,8 +117,10 @@ compose: function(containerBlock) {
   }
     // Rebuild block.
     for (var i = 0; i < this.itemCount_; i++) {
-		var input = this.appendValueInput('ADD' + i).setAlign(Blockly.ALIGN_RIGHT).appendField(this.arguments_[i]);
-	}
+      var input = this.appendValueInput('ADD' + i)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(this.arguments_[i]);
+    }
   }
 };
 

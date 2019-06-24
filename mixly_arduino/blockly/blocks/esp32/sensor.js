@@ -288,8 +288,10 @@ Blockly.Blocks.RTC_get_time = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendValueInput('SUB')
-        .setCheck("var");
-    this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.MIXLY_RTCGETTIME);
+    .setCheck("var");
+    this.appendDummyInput()
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_RTCGETTIME);
     // this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField('myRTC');
     // this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
     this.setInputsInline(true);
@@ -449,7 +451,7 @@ Blockly.Blocks['sensor_mixgo_sound'] = {
 };
 
 Blockly.Blocks['number1'] = {
- init: function() {
+   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
     .appendField(new Blockly.FieldDropdown([["1", "touch1"], ["2", "touch2"],["3", "touch3"],["4", "touch4"]]), 'op')
@@ -494,7 +496,7 @@ Blockly.Blocks['sensor_mixgo_pin_near'] = {
 };
 
 Blockly.Blocks.RTC_set_datetime = {
-   init: function() {    
+ init: function() {    
     this.setColour(Blockly.Blocks.sensor.HUE);
     // this.appendDummyInput()
     this.appendValueInput('SUB')
@@ -511,7 +513,8 @@ Blockly.Blocks.RTC_set_datetime = {
     .appendField("         "+Blockly.MIXLY_DAY);   
     this.appendValueInput('weekday')
     .setCheck(Number)
-    .appendField("         "+Blockly.MIXLY_NOVA_RTC_WEEK);   
+    .appendField("         "+
+        Blockly.MIXLY_WEEK2);   
     this.appendValueInput('hour')
     .setCheck(Number)
     .appendField("         "+Blockly.MIXLY_HOUR);                       
@@ -631,7 +634,7 @@ Blockly.Blocks['sensor_sht'] = {
 };
 
 Blockly.Blocks.sensor_ds18x20 = {
-   init: function () {
+ init: function () {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendValueInput("PIN", Number)
     .appendField("DS18x20 "+Blockly.MIXLY_PIN + " #")

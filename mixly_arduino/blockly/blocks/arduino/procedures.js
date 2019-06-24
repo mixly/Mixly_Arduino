@@ -167,7 +167,8 @@ Blockly.Procedures.mutateCallers(this);
       containerBlock.setFieldValue(this.hasStatements_ ? 'TRUE' : 'FALSE',
        'STATEMENTS');
     } else {
-      containerBlock.getInput('STATEMENT_INPUT').setVisible(false);
+      containerBlock.getInput('STATEMENT_INPUT')
+      .setVisible(false);
     }
 
     // Parameter list.
