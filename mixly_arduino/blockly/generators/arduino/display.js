@@ -382,10 +382,9 @@ Blockly.Arduino.oled_draw4Str = function() {
 };
 
 Blockly.Arduino.oled_drawPixe = function() {
-  var pos_x = Blockly.Arduino.valueToCode(this, 'POS_X', Blockly.Arduino.ORDER_ATOMIC);
-  var pos_y = Blockly.Arduino.valueToCode(this, 'POS_Y', Blockly.Arduino.ORDER_ATOMIC);
+  var pos_x = Blockly.Arduino.valueToCode(this, 'POS_X') || '0';
+  var pos_y = Blockly.Arduino.valueToCode(this, 'POS_Y') || '0';
   var code = "";
-
   if ((!isNaN(pos_x) && pos_x < 128 && pos_x >= 0) || (isNaN(pos_x))) {
     code += 'u8g2.drawPixel(' + pos_x + ',';
   }
@@ -406,8 +405,8 @@ Blockly.Arduino.oled_page = function() {
 };
 
 Blockly.Arduino.oled_showBitmap = function() {
-  var start_x = Blockly.Arduino.valueToCode(this, 'START_X', Blockly.Arduino.ORDER_ATOMIC);
-  var start_y = Blockly.Arduino.valueToCode(this, 'START_Y', Blockly.Arduino.ORDER_ATOMIC);
+  var start_x = Blockly.Arduino.valueToCode(this, 'START_X')||'0';
+  var start_y = Blockly.Arduino.valueToCode(this, 'START_Y')|| '0';
   var Height = this.getFieldValue('HEIGHT');
   var WIDTH = this.getFieldValue('WIDTH');
   var data_name = Blockly.Arduino.valueToCode(this, 'bitmap_name', Blockly.Arduino.ORDER_ATOMIC);
@@ -432,10 +431,10 @@ Blockly.Arduino.oled_define_bitmap_data = function() {
 };
 
 Blockly.Arduino.oled_drawLine = function() {
-  var start_x = Blockly.Arduino.valueToCode(this, 'START_X', Blockly.Arduino.ORDER_ATOMIC);
-  var start_y = Blockly.Arduino.valueToCode(this, 'START_Y', Blockly.Arduino.ORDER_ATOMIC);
-  var end_x = Blockly.Arduino.valueToCode(this, 'END_X', Blockly.Arduino.ORDER_ATOMIC);
-  var end_y = Blockly.Arduino.valueToCode(this, 'END_Y', Blockly.Arduino.ORDER_ATOMIC);
+  var start_x = Blockly.Arduino.valueToCode(this, 'START_X') || '0';
+  var start_y = Blockly.Arduino.valueToCode(this, 'START_Y') || '0';
+  var end_x = Blockly.Arduino.valueToCode(this, 'END_X') || '0';
+  var end_y = Blockly.Arduino.valueToCode(this, 'END_Y') || '0';
   var code = "";
   if ((!isNaN(start_x) && start_x < 128 && start_x >= 0) || (isNaN(start_x))) {
     code = 'u8g2.drawLine(' + start_x + ',';
@@ -454,9 +453,9 @@ Blockly.Arduino.oled_drawLine = function() {
 };
 
 Blockly.Arduino.oled_draw_Str_Line = function() {
-  var start_x = Blockly.Arduino.valueToCode(this, 'START_X', Blockly.Arduino.ORDER_ATOMIC);
-  var start_y = Blockly.Arduino.valueToCode(this, 'START_Y', Blockly.Arduino.ORDER_ATOMIC);
-  var length = Blockly.Arduino.valueToCode(this, 'LENGTH', Blockly.Arduino.ORDER_ATOMIC);
+  var start_x = Blockly.Arduino.valueToCode(this, 'START_X') || '0';
+  var start_y = Blockly.Arduino.valueToCode(this, 'START_Y') || '0';
+  var length = Blockly.Arduino.valueToCode(this, 'LENGTH') || '0';
   var TYPE = this.getFieldValue('TYPE');
   var code = "";
   if ((!isNaN(start_x) && start_x < 128 && start_x >= 0) || (isNaN(start_x))) {
@@ -474,12 +473,12 @@ Blockly.Arduino.oled_draw_Str_Line = function() {
 };
 
 Blockly.Arduino.oled_drawTriangle = function() {
-  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
-  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
-  var D1_x = Blockly.Arduino.valueToCode(this, 'D1_X', Blockly.Arduino.ORDER_ATOMIC);
-  var D1_y = Blockly.Arduino.valueToCode(this, 'D1_Y', Blockly.Arduino.ORDER_ATOMIC);
-  var D2_x = Blockly.Arduino.valueToCode(this, 'D2_X', Blockly.Arduino.ORDER_ATOMIC);
-  var D2_y = Blockly.Arduino.valueToCode(this, 'D2_Y', Blockly.Arduino.ORDER_ATOMIC);
+  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X') || '0';
+  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y') || '0';
+  var D1_x = Blockly.Arduino.valueToCode(this, 'D1_X') || '0';
+  var D1_y = Blockly.Arduino.valueToCode(this, 'D1_Y') || '0';
+  var D2_x = Blockly.Arduino.valueToCode(this, 'D2_X') || '0';
+  var D2_y = Blockly.Arduino.valueToCode(this, 'D2_Y') || '0';
   var code = "";
 
   if ((!isNaN(D0_x) && D0_x < 128 && D0_x >= 0) || (isNaN(D0_x))) {
@@ -505,10 +504,10 @@ Blockly.Arduino.oled_drawTriangle = function() {
 };
 
 Blockly.Arduino.oled_drawFrame = function() {
-  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
-  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
-  var Width = Blockly.Arduino.valueToCode(this, 'WIDTH', Blockly.Arduino.ORDER_ATOMIC);
-  var Height = Blockly.Arduino.valueToCode(this, 'HEIGHT', Blockly.Arduino.ORDER_ATOMIC);
+  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X') || '0';
+  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y') || '0';
+  var Width = Blockly.Arduino.valueToCode(this, 'WIDTH') || '0';
+  var Height = Blockly.Arduino.valueToCode(this, 'HEIGHT') || '0';
   var type = this.getFieldValue('TYPE');
   var code = "";
   if ((!isNaN(D0_x) && D0_x < 128 && D0_x >= 0) || (isNaN(D0_x))) 
@@ -524,11 +523,11 @@ Blockly.Arduino.oled_drawFrame = function() {
 };
 
 Blockly.Arduino.oled_drawRFrame = function() {
-  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
-  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
-  var Width = Blockly.Arduino.valueToCode(this, 'WIDTH', Blockly.Arduino.ORDER_ATOMIC);
-  var Height = Blockly.Arduino.valueToCode(this, 'HEIGHT', Blockly.Arduino.ORDER_ATOMIC);
-  var Rauius = Blockly.Arduino.valueToCode(this, 'RADIUS', Blockly.Arduino.ORDER_ATOMIC);
+  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X') || '0';
+  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y') || '0';
+  var Width = Blockly.Arduino.valueToCode(this, 'WIDTH') || '0';
+  var Height = Blockly.Arduino.valueToCode(this, 'HEIGHT') || '0';
+  var Rauius = Blockly.Arduino.valueToCode(this, 'RADIUS') || '0';
   var type = this.getFieldValue('TYPE');
   var code = "";
   if ((!isNaN(D0_x) && D0_x < 128 && D0_x >= 0) || (isNaN(D0_x))) 
@@ -546,9 +545,9 @@ Blockly.Arduino.oled_drawRFrame = function() {
 };
 
 Blockly.Arduino.oled_drawCircle = function() {
-  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
-  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
-  var Rauius = Blockly.Arduino.valueToCode(this, 'RADIUS', Blockly.Arduino.ORDER_ATOMIC);
+  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X') || '0';
+  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y') || '0';
+  var Rauius = Blockly.Arduino.valueToCode(this, 'RADIUS') || '0';
   var type = this.getFieldValue('TYPE');
   var opt = this.getFieldValue('OPT');
   var code = "";
@@ -563,10 +562,10 @@ Blockly.Arduino.oled_drawCircle = function() {
 };
 
 Blockly.Arduino.oled_drawEllipse = function() {
-  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X', Blockly.Arduino.ORDER_ATOMIC);
-  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y', Blockly.Arduino.ORDER_ATOMIC);
-  var Rauius_X = Blockly.Arduino.valueToCode(this, 'RADIUS_X', Blockly.Arduino.ORDER_ATOMIC);
-  var Rauius_Y = Blockly.Arduino.valueToCode(this, 'RADIUS_Y', Blockly.Arduino.ORDER_ATOMIC);
+  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X') || '0';
+  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y') || '0';
+  var Rauius_X = Blockly.Arduino.valueToCode(this, 'RADIUS_X') || '0';
+  var Rauius_Y = Blockly.Arduino.valueToCode(this, 'RADIUS_Y') || '0';
   var type = this.getFieldValue('TYPE');
   var opt = this.getFieldValue('OPT');
   var code = "";
@@ -583,9 +582,9 @@ Blockly.Arduino.oled_drawEllipse = function() {
 };
 
 Blockly.Arduino.oled_print = function() {
-  var POS_x = Blockly.Arduino.valueToCode(this, 'POS_X', Blockly.Arduino.ORDER_ATOMIC);
-  var POS_y = Blockly.Arduino.valueToCode(this, 'POS_Y', Blockly.Arduino.ORDER_ATOMIC);
-  var TEXT = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ATOMIC);
+  var POS_x = Blockly.Arduino.valueToCode(this, 'POS_X') || '0';
+  var POS_y = Blockly.Arduino.valueToCode(this, 'POS_Y') || '0';
+  var TEXT = Blockly.Arduino.valueToCode(this, 'TEXT') || '0';
   Blockly.Arduino.setups_["setup_enableUTF8Print"] ='u8g2.enableUTF8Print();\n';
   var code = "";
   if ((!isNaN(POS_x) && POS_x < 128 && POS_x >= 0) || (isNaN(POS_x))) 
