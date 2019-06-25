@@ -154,7 +154,7 @@ Blockly.Blocks.MQTT_subscribe_value = {
     .appendField(Blockly.MQTT_Topic);
     this.appendValueInput("Topic");
     this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_I2C_VALUE)
+    .appendField(Blockly.Msg.SERIES_VALUE)
     this.setInputsInline(true);
     this.setOutput(true, Boolean);
   }

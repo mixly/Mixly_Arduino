@@ -12,7 +12,7 @@ Blockly.Blocks.base_delay = {
   init: function() {
     this.setColour(Blockly.Blocks.system.HUE);
     this.appendValueInput("DELAY_TIME", Number)
-        .appendField(Blockly.MIXLY_DELAY + '(' + Blockly.MIXLY_DELAY_MS + ')')
+        .appendField(Blockly.MIXLY_DELAY + '(' + Blockly.MIXLY_MILLIS + ')')
         .setCheck(Number);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -126,7 +126,7 @@ Blockly.Blocks.controls_mstimer2_stop = {
     this.setColour(Blockly.Blocks.system.HUE);
     this.appendDummyInput()
 		.appendField('MsTimer2')
-		.appendField(Blockly.MIXLY_MSTIMER2_STOP);
+		.appendField(Blockly.MIXLY_STOP);
 	this.setPreviousStatement(true);
     this.setNextStatement(true);
   }

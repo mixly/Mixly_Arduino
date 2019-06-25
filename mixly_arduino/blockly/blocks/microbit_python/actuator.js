@@ -86,7 +86,7 @@ init:function(){
         //.setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.MIXLY_DURATION);
     this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_DELAY_MS)
+        .appendField(Blockly.MIXLY_MILLIS)
         .appendField(Blockly.MIXLY_MICROBIT_WAIT);
     this.appendDummyInput("")
         .appendField(new Blockly.FieldCheckbox(true),'wait');
@@ -381,7 +381,7 @@ Blockly.Blocks.servo_move = {
     // this.appendValueInput("DELAY_TIME", Number)
     //     .setCheck(Number)
     //     .setAlign(Blockly.ALIGN_RIGHT)
-    //     .appendField(Blockly.MIXLY_DELAY+'('+Blockly.MIXLY_DELAY_MS+')');
+    //     .appendField(Blockly.MIXLY_DELAY+'('+Blockly.MIXLY_MILLIS+')');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);

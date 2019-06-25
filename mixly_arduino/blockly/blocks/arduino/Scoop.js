@@ -42,7 +42,7 @@ Blockly.Blocks['SCoop_sleep'] = {
     this.appendValueInput("sleeplength", Number)
     .setCheck(Number);
     this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_DELAY_MS);
+    .appendField(Blockly.MIXLY_MILLIS);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_SCOOP_SLEEP);

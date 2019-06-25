@@ -458,10 +458,10 @@ Blockly.Blocks['microbit_image_create'] = {
 Blockly.Blocks['image_shift'] = {
   init: function() {
     var OPERATORS =
-        [[Blockly.MIXLY_MICROBIT_up, 'up'],
-         [Blockly.MIXLY_MICROBIT_down, 'down'],
-         [Blockly.MIXLY_MICROBIT_left, 'left'],
-         [Blockly.MIXLY_MICROBIT_right, 'right'],
+        [[Blockly.MIXLY_UP, 'up'],
+         [Blockly.MIXLY_DOWN, 'down'],
+         [Blockly.MIXLY_LEFT, 'left'],
+         [Blockly.MIXLY_RIGHT, 'right'],
         ];
     //this.setHelpUrl(Blockly.Msg.MATH_TRIG_HELPURL);
     this.setColour(Blockly.Blocks.display.HUE);
@@ -485,10 +485,10 @@ Blockly.Blocks['image_shift'] = {
         var mode1 = Blockly.Msg.DISPLAY_IMAGE_LET2;
         var mode2 = Blockly.Msg.DISPLAY_IMAGE_LET3;
         var TOOLTIPS = {
-        'up': Blockly.MIXLY_MICROBIT_up,
-        'down':Blockly.MIXLY_MICROBIT_down,
-        'left':Blockly.MIXLY_MICROBIT_left,
-        'right':Blockly.MIXLY_MICROBIT_right
+        'up': Blockly.MIXLY_UP,
+        'down':Blockly.MIXLY_DOWN,
+        'left':Blockly.MIXLY_LEFT,
+        'right':Blockly.MIXLY_RIGHT
       };
       return mode0 + mode1 +TOOLTIPS[mode]+mode2;
     });

@@ -14,7 +14,7 @@ Blockly.Blocks['set_create_with'] = {
     this.setColour(Blockly.Blocks.set.HUE);
   this.appendDummyInput("")
   //don't need to specify the data type in Python
-        // .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_TYPE_NUMBER, 'Array<number>'], [Blockly.MIXLY_MICROBIT_JS_TYPE_STRING, 'Array<string>'], [Blockly.MIXLY_MICROBIT_JS_TYPE_BOOLEAN, 'Array<boolean>']]), 'TYPE')
+        // .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_TYPE_NUMBER, 'Array<number>'], [Blockly.LANG_MATH_STRING, 'Array<string>'], [Blockly.LANG_MATH_BOOLEAN, 'Array<boolean>']]), 'TYPE')
         // .appendField(' ')
         .appendField(new Blockly.FieldTextInput('s1'), 'VAR')
        

@@ -117,7 +117,7 @@ Blockly.Blocks.i2c_master_writer = {
         this.appendValueInput('value')
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MIXLY_I2C_VALUE);
+            .appendField(Blockly.Msg.SERIES_VALUE);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_I2C_MASTER_WRITE);

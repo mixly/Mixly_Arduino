@@ -221,7 +221,7 @@ Blockly.Blocks['i2c_read'] = {
             .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_READ_ADDRESS);
         this.appendValueInput('data')
             .setCheck(Number)
-            .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_BIT);
+            .appendField(Blockly.LANG_MATH_BYTE);
         this.appendDummyInput()
             .appendField(Blockly.Msg.CONTROLS_REPEAT_TITLE_REPEAT)
             .appendField(new Blockly.FieldCheckbox(false), "is_repeated");

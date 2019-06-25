@@ -17,7 +17,7 @@ Blockly.Blocks['tuple_create_with'] = {
     this.setColour(Blockly.Blocks.tuple.HUE);
   this.appendDummyInput("")
   //don't need to specify the data type in Python
-        // .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_TYPE_NUMBER, 'Array<number>'], [Blockly.MIXLY_MICROBIT_JS_TYPE_STRING, 'Array<string>'], [Blockly.MIXLY_MICROBIT_JS_TYPE_BOOLEAN, 'Array<boolean>']]), 'TYPE')
+        // .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_TYPE_NUMBER, 'Array<number>'], [Blockly.LANG_MATH_STRING, 'Array<string>'], [Blockly.LANG_MATH_BOOLEAN, 'Array<boolean>']]), 'TYPE')
         // .appendField(' ')
         .appendField(new Blockly.FieldTextInput('mytup'), 'VAR');
     this.itemCount_ = 3;
@@ -379,7 +379,7 @@ Blockly.Blocks['tuple_find'] = {
         .setCheck('List')
     this.appendValueInput('data')
         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET)
-        .appendField(Blockly.MIXLY_I2C_VALUE)
+        .appendField(Blockly.Msg.SERIES_VALUE)
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_DE)
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');

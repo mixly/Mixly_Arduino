@@ -316,7 +316,7 @@ Blockly.Blocks['mpython_blynk_app_data'] = {
             // "output":null,
             "colour": Blockly.Blocks.blynk.HUE,
             "helpUrl": Blockly.MPYTHON_BLYNK_APP_DATA_HELPURL,
-            "tooltip": Blockly.MPYTHON_BLYNK_APP_DATA_TOOLTIP,
+            "tooltip": Blockly.MPYTHON_BLYNK_SENSOR_DATA_TO_APP_TOOLTIP,
             "message0": Blockly.MPYTHON_BLYNK_APP_DATA_MESSAGE0,
             "args0": [
                 {

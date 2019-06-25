@@ -54,7 +54,7 @@ Blockly.Blocks.sensor_current_gesture1 = {
         
         this.appendDummyInput("")
         .appendField(Blockly.MIXLY_MICROBIT_Current_gesture)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_MICROBIT_up, "up"], [Blockly.MIXLY_MICROBIT_down, "down"], [Blockly.MIXLY_MICROBIT_left, "left"], [Blockly.MIXLY_MICROBIT_right, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_UP, "up"], [Blockly.MIXLY_DOWN, "down"], [Blockly.MIXLY_LEFT, "left"], [Blockly.MIXLY_RIGHT, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
         this.setOutput(true);
         var thisBlock = this;
         this.setTooltip(function() {
@@ -65,10 +65,10 @@ Blockly.Blocks.sensor_current_gesture1 = {
             var mode3 = Blockly.MIXLY_MICROBIT_PERFORMANCE
             var TOOLTIPS = {
                 'shake': Blockly.MIXLY_MICROBIT_shake,
-                'up': Blockly.MIXLY_MICROBIT_up,
-                'down':Blockly.MIXLY_MICROBIT_down,
-                'left':Blockly.MIXLY_MICROBIT_left,
-                'right':Blockly.MIXLY_MICROBIT_right,
+                'up': Blockly.MIXLY_UP,
+                'down':Blockly.MIXLY_DOWN,
+                'left':Blockly.MIXLY_LEFT,
+                'right':Blockly.MIXLY_RIGHT,
                 'face up': Blockly.MIXLY_MICROBIT_face_up,
                 'face down': Blockly.MIXLY_MICROBIT_face_down,
                 'freefall':Blockly.MIXLY_MICROBIT_freefall,
@@ -87,7 +87,7 @@ Blockly.Blocks.sensor_current_gesture2 = {
         
         this.appendDummyInput("")
         .appendField(Blockly.MIXLY_MICROBIT_JS_WAS_GESTURE)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_MICROBIT_up, "up"], [Blockly.MIXLY_MICROBIT_down, "down"], [Blockly.MIXLY_MICROBIT_left, "left"], [Blockly.MIXLY_MICROBIT_right, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_UP, "up"], [Blockly.MIXLY_DOWN, "down"], [Blockly.MIXLY_LEFT, "left"], [Blockly.MIXLY_RIGHT, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
         this.setOutput(true);
         var thisBlock = this;
         this.setTooltip(function() {
@@ -98,10 +98,10 @@ Blockly.Blocks.sensor_current_gesture2 = {
             var mode3 = Blockly.MIXLY_MICROBIT_PERFORMANCE
             var TOOLTIPS = {
                 'shake': Blockly.MIXLY_MICROBIT_shake,
-                'up': Blockly.MIXLY_MICROBIT_up,
-                'down':Blockly.MIXLY_MICROBIT_down,
-                'left':Blockly.MIXLY_MICROBIT_left,
-                'right':Blockly.MIXLY_MICROBIT_right,
+                'up': Blockly.MIXLY_UP,
+                'down':Blockly.MIXLY_DOWN,
+                'left':Blockly.MIXLY_LEFT,
+                'right':Blockly.MIXLY_RIGHT,
                 'face up': Blockly.MIXLY_MICROBIT_face_up,
                 'face down': Blockly.MIXLY_MICROBIT_face_down,
                 'freefall':Blockly.MIXLY_MICROBIT_freefall,
@@ -119,7 +119,7 @@ Blockly.Blocks.controls_attachGestureInterrupt = {
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput("")
         .appendField(Blockly.MIXLY_MICROBIT_JS_CURRENT_GESTURE)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_MICROBIT_up, "up"], [Blockly.MIXLY_MICROBIT_down, "down"], [Blockly.MIXLY_MICROBIT_left, "left"], [Blockly.MIXLY_MICROBIT_right, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_UP, "up"], [Blockly.MIXLY_DOWN, "down"], [Blockly.MIXLY_LEFT, "left"], [Blockly.MIXLY_RIGHT, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
         this.appendStatementInput('DO')
         .appendField(Blockly.MIXLY_DO);
         this.setPreviousStatement(true);
@@ -133,10 +133,10 @@ Blockly.Blocks.controls_attachGestureInterrupt = {
             var mode3 = Blockly.MIXLY_MICROBIT_PERFORMANCE
             var TOOLTIPS = {
                 'shake': Blockly.MIXLY_MICROBIT_shake,
-                'up': Blockly.MIXLY_MICROBIT_up,
-                'down':Blockly.MIXLY_MICROBIT_down,
-                'left':Blockly.MIXLY_MICROBIT_left,
-                'right':Blockly.MIXLY_MICROBIT_right,
+                'up': Blockly.MIXLY_UP,
+                'down':Blockly.MIXLY_DOWN,
+                'left':Blockly.MIXLY_LEFT,
+                'right':Blockly.MIXLY_RIGHT,
                 'face up': Blockly.MIXLY_MICROBIT_face_up,
                 'face down': Blockly.MIXLY_MICROBIT_face_down,
                 'freefall':Blockly.MIXLY_MICROBIT_freefall,
@@ -153,7 +153,7 @@ Blockly.Blocks.controls_GestureLists = {
     init: function() {
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_MICROBIT_up, "up"], [Blockly.MIXLY_MICROBIT_down, "down"], [Blockly.MIXLY_MICROBIT_left, "left"], [Blockly.MIXLY_MICROBIT_right, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_UP, "up"], [Blockly.MIXLY_DOWN, "down"], [Blockly.MIXLY_LEFT, "left"], [Blockly.MIXLY_RIGHT, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
         this.setInputsInline(true);
         this.setOutput(true);
         var thisBlock = this;
@@ -161,10 +161,10 @@ Blockly.Blocks.controls_GestureLists = {
             var mode = thisBlock.getFieldValue('gesture');
             var TOOLTIPS = {
                 'shake': Blockly.MIXLY_MICROBIT_shake,
-                'up': Blockly.MIXLY_MICROBIT_up,
-                'down':Blockly.MIXLY_MICROBIT_down,
-                'left':Blockly.MIXLY_MICROBIT_left,
-                'right':Blockly.MIXLY_MICROBIT_right,
+                'up': Blockly.MIXLY_UP,
+                'down':Blockly.MIXLY_DOWN,
+                'left':Blockly.MIXLY_LEFT,
+                'right':Blockly.MIXLY_RIGHT,
                 'face up': Blockly.MIXLY_MICROBIT_face_up,
                 'face down': Blockly.MIXLY_MICROBIT_face_down,
                 'freefall':Blockly.MIXLY_MICROBIT_freefall,
@@ -182,7 +182,7 @@ Blockly.Blocks.controls_attachGestureInterrupt2 = {
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput("")
         .appendField(Blockly.MIXLY_MICROBIT_JS_WAS_GESTURE)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_MICROBIT_up, "up"], [Blockly.MIXLY_MICROBIT_down, "down"], [Blockly.MIXLY_MICROBIT_left, "left"], [Blockly.MIXLY_MICROBIT_right, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "shake"], [Blockly.MIXLY_UP, "up"], [Blockly.MIXLY_DOWN, "down"], [Blockly.MIXLY_LEFT, "left"], [Blockly.MIXLY_RIGHT, "right"], [Blockly.MIXLY_MICROBIT_face_up, "face up"], [Blockly.MIXLY_MICROBIT_face_down, "face down"], [Blockly.MIXLY_MICROBIT_freefall, "freefall"], ["3g", "3g"], ["6g", "6g"], ["8g", "8g"]]), "gesture");
         this.appendStatementInput('DO')
         .appendField(Blockly.MIXLY_DO);
         this.setPreviousStatement(true);
@@ -196,10 +196,10 @@ Blockly.Blocks.controls_attachGestureInterrupt2 = {
             var mode3 = Blockly.MIXLY_MICROBIT_PERFORMANCE;
             var TOOLTIPS = {
                 'shake': Blockly.MIXLY_MICROBIT_shake,
-                'up': Blockly.MIXLY_MICROBIT_up,
-                'down':Blockly.MIXLY_MICROBIT_down,
-                'left':Blockly.MIXLY_MICROBIT_left,
-                'right':Blockly.MIXLY_MICROBIT_right,
+                'up': Blockly.MIXLY_UP,
+                'down':Blockly.MIXLY_DOWN,
+                'left':Blockly.MIXLY_LEFT,
+                'right':Blockly.MIXLY_RIGHT,
                 'face up': Blockly.MIXLY_MICROBIT_face_up,
                 'face down': Blockly.MIXLY_MICROBIT_face_down,
                 'freefall':Blockly.MIXLY_MICROBIT_freefall,

@@ -52,7 +52,7 @@ Blockly.Blocks.control_core_delay = {
     this.appendValueInput("sleeplength", Number)
     .setCheck(Number);
     this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_DELAY_MS);
+    .appendField(Blockly.MIXLY_MILLIS);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_SCOOP_SLEEP);
@@ -77,7 +77,7 @@ Blockly.Blocks.controls_hw_timer_stop = {
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_ESP32_HW_TIMER)
     .appendField(new Blockly.FieldDropdown([["0", "0"], ["1", "1"],["2", "2"], ["3", "3"]]), "TIMER_NUM")
-    .appendField(Blockly.MIXLY_MSTIMER2_STOP);
+    .appendField(Blockly.MIXLY_STOP);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_STOP);

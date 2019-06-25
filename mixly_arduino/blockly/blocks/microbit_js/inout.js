@@ -341,7 +341,7 @@ Blockly.Blocks.inout_emit_events = {
             .setCheck(Number);
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_MICROBIT_JS_INOUT_EMITEVENTS)
-            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_INOUT_EVENT_EDGE, "Edge"], [Blockly.MIXLY_MICROBIT_JS_INOUT_EVENT_PULSE, "Pulse"], [Blockly.MIXLY_MICROBIT_JS_INOUT_EVENT_TOUCH, "Touch"], [Blockly.MIXLY_MICROBIT_JS_INOUT_EVENT_NONE, "None"]]), "event");
+            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_INOUT_EVENT_EDGE, "Edge"], [Blockly.MIXLY_MICROBIT_JS_INOUT_EVENT_PULSE, "Pulse"], [Blockly.MIXLY_MICROBIT_JS_INOUT_EVENT_TOUCH, "Touch"], [Blockly.MIXLY_MICROBIT_JS_INOUT_PULL_NONE, "None"]]), "event");
 
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

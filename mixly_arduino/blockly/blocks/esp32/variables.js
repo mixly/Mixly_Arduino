@@ -17,7 +17,7 @@ Blockly.Blocks.variables.HUE = 330//'#af5180'//330;
 //         .appendField(Blockly.MIXLY_DECLARE)
 //         .appendField(new Blockly.FieldTextInput(''), 'VAR')
 //         //.appendField(Blockly.MIXLY_AS)
-//         //.appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_TYPE_NUMBER, 'number'], [Blockly.MIXLY_MICROBIT_JS_TYPE_STRING, 'string'], [Blockly.MIXLY_MICROBIT_JS_TYPE_BOOLEAN, 'boolean']]), 'TYPE')
+//         //.appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_TYPE_NUMBER, 'number'], [Blockly.LANG_MATH_STRING, 'string'], [Blockly.LANG_MATH_BOOLEAN, 'boolean']]), 'TYPE')
 // 	    .appendField(Blockly.MIXLY_VALUE);
 //     this.setPreviousStatement(true);
 //     this.setNextStatement(true);

@@ -67,7 +67,7 @@
     }
     if (hasStatements) {
       this.appendStatementInput('STACK')
-      .appendField(Blockly.Msg.PROCEDURES_DEFNORETURN_DO);
+      .appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
       if (this.getInput('RETURN')) {
         this.moveInputBefore('STACK', 'RETURN');
       }
@@ -440,7 +440,7 @@ Blockly.Blocks['procedures_callnoreturn'] = {
     this.setHelpUrl(Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL);
     this.setColour(Blockly.Blocks.procedures.HUE);
     this.appendDummyInput('TOPROW')
-    .appendField(Blockly.Msg.PROCEDURES_CALLNORETURN_CALL)
+    .appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO)
     .appendField(this.id, 'NAME');
     this.setPreviousStatement(true);
     this.setNextStatement(true);

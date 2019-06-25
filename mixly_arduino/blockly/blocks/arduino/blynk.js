@@ -208,7 +208,7 @@ Blockly.Blocks.blynk_iot_get_data = {
     }
     if (hasStatements) {
       this.appendStatementInput("STACK")
-      .appendField(Blockly.Msg.PROCEDURES_DEFNORETURN_DO);
+      .appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
       if (this.getInput("RETURN")) {
         this.moveInputBefore("STACK", "RETURN");
       }

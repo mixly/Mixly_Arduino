@@ -22,8 +22,8 @@ Blockly.Blocks.base_setup = {
 Blockly.Blocks.controls_delay = {
   init: function() {
    var UNIT =
-   [[Blockly.MIXLY_DELAY_MS, 'delay'],
-   [Blockly.MIXLY_DELAY_US, 'delayMicroseconds']];
+   [[Blockly.MIXLY_MILLIS, 'delay'],
+   [Blockly.MIXLY_MILLISECOND, 'delayMicroseconds']];
    this.setColour(Blockly.Blocks.loops.HUE);
    this.appendValueInput("DELAY_TIME", Number)
    .appendField(Blockly.MIXLY_DELAY)
@@ -157,8 +157,8 @@ Blockly.Blocks.controls_flow_statements.OPERATORS =
 Blockly.Blocks.controls_millis = {
   init: function() {
    var UNIT =
-   [[Blockly.MIXLY_DELAY_MS, 'millis'],
-   [Blockly.MIXLY_DELAY_US, 'micros']];
+   [[Blockly.MIXLY_MILLIS, 'millis'],
+   [Blockly.MIXLY_MILLISECOND, 'micros']];
    this.setColour(Blockly.Blocks.loops.HUE);
    this.appendDummyInput()
    .appendField(Blockly.MIXLY_RUNTIME)
@@ -729,7 +729,7 @@ Blockly.Blocks.controls_mstimer2_stop = {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
     .appendField('MsTimer2')
-    .appendField(Blockly.MIXLY_MSTIMER2_STOP);
+    .appendField(Blockly.MIXLY_STOP);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_STOP);

@@ -131,7 +131,7 @@ Blockly.Blocks['storage_file_write'] = {
    init: function() {
      this.setColour(Blockly.Blocks.storage.HUE);
      this.appendValueInput("FILE")
-         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE);
+         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_IS_FILE);
      this.appendDummyInput()
          .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_CAN_WRITE_ORNOT);
      this.setInputsInline(true);

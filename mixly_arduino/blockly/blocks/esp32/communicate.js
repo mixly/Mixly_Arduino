@@ -42,7 +42,7 @@ Blockly.Blocks['communicate_i2c_read'] = {
             .appendField(Blockly.MIXLY_ESP32_RNUMBER);
         this.appendValueInput('data')
             .setCheck(Number)
-            .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_BIT);
+            .appendField(Blockly.LANG_MATH_BYTE);
         this.setOutput(true);
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_MICROBIT_JS_I2C_READ);
@@ -155,7 +155,7 @@ Blockly.Blocks['communicate_spi_read'] = {
             .setCheck(Number)
             .appendField(Blockly.MIXLY_SERIAL_READ);
         this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_4DIGITDISPLAY_NOMBER2 + Blockly.MIXLY_MICROBIT_JS_I2C_BIT)
+            .appendField(Blockly.MIXLY_4DIGITDISPLAY_NOMBER2 + Blockly.LANG_MATH_BYTE)
         this.setOutput(true);
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_ESP32_SPI_READ);
@@ -172,7 +172,7 @@ Blockly.Blocks['communicate_spi_read_output'] = {
             .setCheck(Number)
             .appendField(Blockly.MIXLY_SERIAL_READ);
         this.appendDummyInput("")
-            .appendField(Blockly.MIXLY_4DIGITDISPLAY_NOMBER2 + Blockly.MIXLY_MICROBIT_JS_I2C_BIT + ',' + Blockly.MIXLY_ESP32_SPI_OUTPUT);
+            .appendField(Blockly.MIXLY_4DIGITDISPLAY_NOMBER2 + Blockly.LANG_MATH_BYTE + ',' + Blockly.MIXLY_ESP32_SPI_OUTPUT);
         this.appendValueInput('val')
             .setCheck(Number);
         this.setOutput(true);
@@ -239,7 +239,7 @@ Blockly.Blocks['communicate_spi_write_readinto'] = {
             .setCheck(String)
             .appendField(Blockly.MIXLY_ESP32_WRITE)
             // .appendField(new Blockly.FieldDropdown([
-            //     [Blockly.MIXLY_MICROBIT_JS_I2C_BIT, "byte"],
+            //     [Blockly.LANG_MATH_BYTE, "byte"],
             //     [Blockly.MIXLY_ESP32_SPI_BUFFER, "buffer"]
             // ]), "op");
         this.appendValueInput('val')

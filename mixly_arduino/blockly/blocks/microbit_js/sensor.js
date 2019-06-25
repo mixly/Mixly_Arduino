@@ -10,7 +10,7 @@ Blockly.Blocks.controls_attachGestureInterrupt = {
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput("")
             .appendField(Blockly.MIXLY_MICROBIT_JS_IS_GESTURE)
-            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "Shake"], [Blockly.MIXLY_MICROBIT_up, "LogoUp"], [Blockly.MIXLY_MICROBIT_down, "LogoDown"], [Blockly.MIXLY_MICROBIT_left, "TiltLeft"], [Blockly.MIXLY_MICROBIT_right, "TiltRight"], [Blockly.MIXLY_MICROBIT_face_up, "ScreenUp"], [Blockly.MIXLY_MICROBIT_face_down, "ScreenDown"], [Blockly.MIXLY_MICROBIT_freefall, "FreeFall"], ["3g", "ThreeG"], ["6g", "SixG"], ["8G", "EightG"]]), "gesture");
+            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_shake, "Shake"], [Blockly.MIXLY_UP, "LogoUp"], [Blockly.MIXLY_DOWN, "LogoDown"], [Blockly.MIXLY_LEFT, "TiltLeft"], [Blockly.MIXLY_RIGHT, "TiltRight"], [Blockly.MIXLY_MICROBIT_face_up, "ScreenUp"], [Blockly.MIXLY_MICROBIT_face_down, "ScreenDown"], [Blockly.MIXLY_MICROBIT_freefall, "FreeFall"], ["3g", "ThreeG"], ["6g", "SixG"], ["8G", "EightG"]]), "gesture");
         this.appendStatementInput('DO')
             .appendField(Blockly.MIXLY_DO);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
