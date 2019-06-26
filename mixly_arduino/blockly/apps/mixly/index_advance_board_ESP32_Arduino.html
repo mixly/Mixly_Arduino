@@ -58,7 +58,7 @@
   <script type="text/javascript" src="../../generators/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/actuator.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/MixGo.js"></script>
-    <script type="text/javascript" src="../../generators/arduino/MQTT.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/MQTT.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script> 
   <script type="text/javascript" src="../../blocks/arduino/pins.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/inout.js"></script>
@@ -729,92 +729,90 @@
     </value>
   </block>
 </category>
- <category id="catNetwork" colour="0">
-      <block type="base_setup" >
-        <statement name="DO">
-          <block type="serial_begin">
-            <field name="serial_select">Serial</field>
-            <value name="CONTENT">
-              <shadow type="math_number" >
-                <field name="NUM">115200</field>
+<category id="catNetwork" colour="0">
+  <block type="base_setup" >
+    <statement name="DO">
+      <block type="serial_begin">
+        <field name="serial_select">Serial</field>
+        <value name="CONTENT">
+          <shadow type="math_number" >
+            <field name="NUM">115200</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="WIFI_info" >
+            <value name="SSID">
+              <shadow type="text" >
+                <field name="TEXT">ssid</field>
+              </shadow>
+            </value>
+            <value name="PWD">
+              <shadow type="text" >
+                <field name="TEXT">password</field>
               </shadow>
             </value>
             <next>
-              <block type="WIFI_info" >
-                <value name="SSID">
-                  <shadow type="text" >
-                    <field name="TEXT">ssid</field>
+              <block type="controls_whileUntil">
+                <field name="MODE">WHILE</field>
+                <value name="BOOL">
+                  <shadow type="logic_boolean">
+                    <field name="BOOL">TRUE</field>
                   </shadow>
-                </value>
-                <value name="PWD">
-                  <shadow type="text" >
-                    <field name="TEXT">password</field>
-                  </shadow>
-                </value>
-                <next>
-                  <block type="controls_whileUntil">
-                    <field name="MODE">WHILE</field>
-                    <value name="BOOL">
-                      <shadow type="logic_boolean">
-                        <field name="BOOL">TRUE</field>
-                      </shadow>
-                      <block type="logic_compare" >
-                        <field name="OP">NEQ</field>
-                        <value name="A">
-                          <block type="network_wifi_connect">
-                          </block>
-                        </value>
-                        <value name="B">
-                          <block type="math_number" >
-                            <field name="NUM">3</field>
-                          </block>
-                        </value>
-                      </block></value><statement name="DO">
-                        <block type="controls_delay" >
-                          <field name="UNIT">delay</field>
-                          <value name="DELAY_TIME">
-                            <shadow type="math_number">
-                              <field name="NUM">500</field>
-                            </shadow>
-                          </value>
-                          <next>
-                            <block type="serial_print">
-                              <field name="serial_select">Serial</field>
-                              <value name="CONTENT">
-                                <block type="text_char">
-                                  <field name="TEXT">.</field>
-                                </block>
-                              </value>
+                  <block type="logic_compare" >
+                    <field name="OP">NEQ</field>
+                    <value name="A">
+                      <block type="network_wifi_connect">
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" >
+                        <field name="NUM">3</field>
+                      </block>
+                    </value>
+                  </block></value><statement name="DO">
+                    <block type="controls_delay" >
+                      <field name="UNIT">delay</field>
+                      <value name="DELAY_TIME">
+                        <shadow type="math_number">
+                          <field name="NUM">500</field>
+                        </shadow>
+                      </value>
+                      <next>
+                        <block type="serial_print">
+                          <field name="serial_select">Serial</field>
+                          <value name="CONTENT">
+                            <block type="text_char">
+                              <field name="TEXT">.</field>
                             </block>
-                          </next>
+                          </value>
                         </block>
-                      </statement>
+                      </next>
+                    </block>
+                  </statement>
+                  <next>
+                    <block type="serial_println">
+                      <field name="serial_select">Serial</field>
+                      <value name="CONTENT">
+                        <block type="text">
+                          <field name="TEXT"></field>
+                        </block>
+                      </value>
                       <next>
                         <block type="serial_println">
                           <field name="serial_select">Serial</field>
                           <value name="CONTENT">
                             <block type="text">
-                              <field name="TEXT"></field>
+                              <field name="TEXT">Local IP:</field>
                             </block>
                           </value>
                           <next>
-                            <block type="serial_println">
+                            <block type="serial_print">
                               <field name="serial_select">Serial</field>
                               <value name="CONTENT">
-                                <block type="text">
-                                  <field name="TEXT">Local IP:</field>
+                                <block type="network_get_connect">
+                                  <field name="mode">WiFi.localIP()</field>
                                 </block>
                               </value>
-                              <next>
-                                <block type="serial_print">
-                                  <field name="serial_select">Serial</field>
-                                  <value name="CONTENT">
-                                    <block type="network_get_connect">
-                                      <field name="mode">WiFi.localIP()</field>
-                                    </block>
-                                  </value>
-                                </block>
-                              </next>
                             </block>
                           </next>
                         </block>
@@ -824,70 +822,72 @@
                 </block>
               </next>
             </block>
-          </statement>
-        </block>
-        <block type="network_stop"></block>
-        <block type="MQTT_server">
-          <value name="server_add">
-            <shadow type="text">
-              <field name="TEXT">192.168.1.101</field>
-            </shadow>
-          </value>
-          <value name="server_port">
-            <shadow type="math_number">
-             <field name="NUM">1883</field>
-           </shadow>
-         </value>
-         <value name="Client_ID">
-          <shadow type="text">
-            <field name="TEXT">ID</field>
-          </shadow>
-        </value>
-        <value name="IOT_ID">
-          <shadow type="text">
-            <field name="TEXT">siot</field>
-          </shadow>
-        </value>
-        <value name="IOT_PWD">
-          <shadow type="text">
-            <field name="TEXT">dfrobot</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="MQTT_publish">
-       <value name="data">
-        <shadow type="math_number">
-          <field name="NUM">120</field>
-        </shadow>
-      </value>
-      <value name="Topic">
-        <shadow type="text">
-          <field name="TEXT">Topic_0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="MQTT_subscribe">
-      <value name="IF0">
-        <block type="math_number">
-          <field name="NUM">Topic</field>
-        </block>
-      </value>
-      <statement name="DO0">
-        <block type="serial_println">
-          <field name="serial_select">Serial</field>
-          <value name="CONTENT">
-            <block type="MQTT_subscribe_value" >
-              <value name="Topic">
-                <shadow type="text">
-                  <field name="TEXT">Topic</field>
-                </shadow>
-              </value>
-            </block>
-          </value>
+          </next>
         </block>
       </statement>
     </block>
-  </category>
+    <block type="network_stop"></block>
+    <block type="MQTT_server">
+      <value name="server_add">
+        <shadow type="text">
+          <field name="TEXT">192.168.1.101</field>
+        </shadow>
+      </value>
+      <value name="server_port">
+        <shadow type="math_number">
+         <field name="NUM">1883</field>
+       </shadow>
+     </value>
+     <value name="Client_ID">
+      <shadow type="text">
+        <field name="TEXT">ID</field>
+      </shadow>
+    </value>
+    <value name="IOT_ID">
+      <shadow type="text">
+        <field name="TEXT">siot</field>
+      </shadow>
+    </value>
+    <value name="IOT_PWD">
+      <shadow type="text">
+        <field name="TEXT">dfrobot</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="MQTT_publish">
+   <value name="data">
+    <shadow type="math_number">
+      <field name="NUM">120</field>
+    </shadow>
+  </value>
+  <value name="Topic">
+    <shadow type="text">
+      <field name="TEXT">Topic_0</field>
+    </shadow>
+  </value>
+</block>
+<block type="MQTT_subscribe">
+  <value name="IF0">
+    <block type="math_number">
+      <field name="NUM">Topic</field>
+    </block>
+  </value>
+  <statement name="DO0">
+    <block type="serial_println">
+      <field name="serial_select">Serial</field>
+      <value name="CONTENT">
+        <block type="MQTT_subscribe_value" >
+          <value name="Topic">
+            <shadow type="text">
+              <field name="TEXT">Topic</field>
+            </shadow>
+          </value>
+        </block>
+      </value>
+    </block>
+  </statement>
+</block>
+</category>
 <category id="catSensor" colour="40">
   <block type="chaoshengbo2">
     <value name="PIN1">
@@ -1578,35 +1578,64 @@
       <shadow type="inout_highlow"></shadow>
     </value>
   </block>
-  <block type="display_Matrix_Rotation">
-  </block>
-  <block type="display_Matrix_TEXT">
-    <value name="TEXT">
-      <shadow type="text">
-        <field name="TEXT">Mixly</field>
-      </shadow>
-    </value>
-    <value name="Speed">
+  <block type="display_Max7219_Rotation">
+    <value name="NO">
       <shadow type="math_number">
-        <field name="NUM">300</field>
+        <field name="NUM">1</field>
       </shadow>
     </value>
   </block>
-  <block type="display_Matrix_DisplayChar">
-    <value name="LEDArray">
-      <block type="display_Matrix_LedArray"></block>
-    </value>
-  </block>
-  <block type="Matrix_img">
-  </block>
-  <block type="display_Matrix_fillScreen">
-  </block>
-  <block type="display_Matrix_Brightness">
-   <value name="Brightness">
+<!-- <block type="display_Max7219_setPosition">
+  <value name="NO">
     <shadow type="math_number">
-      <field name="NUM">5</field>
+      <field name="NUM">1</field>
     </shadow>
   </value>
+  <value name="X">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="Y">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block> -->
+<block type="display_HT16K33_Rotation">
+</block>
+<block type="display_Matrix_TEXT">
+  <value name="TEXT">
+    <shadow type="text">
+      <field name="TEXT">Mixly</field>
+    </shadow>
+  </value>
+  <value name="Speed">
+    <shadow type="math_number">
+      <field name="NUM">300</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_Matrix_DisplayChar">
+  <value name="NO">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="LEDArray">
+    <block type="display_Matrix_LedArray"></block>
+  </value>
+</block>
+<block type="Matrix_img">
+</block>
+<block type="display_Matrix_fillScreen">
+</block>
+<block type="display_Matrix_Brightness">
+ <value name="Brightness">
+  <shadow type="math_number">
+    <field name="NUM">5</field>
+  </shadow>
+</value>
 </block>
 </category>
 </category>

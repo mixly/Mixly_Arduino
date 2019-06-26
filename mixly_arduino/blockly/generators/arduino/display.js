@@ -215,13 +215,14 @@ return code;
 Blockly.Arduino.display_Matrix_DisplayChar = function() {
   var matrixType = this.getFieldValue('TYPE');
   var matrixName = this.getFieldValue('matrixName');
+  var NO = Blockly.Arduino.valueToCode(this, 'NO', Blockly.Arduino.ORDER_ASSIGNMENT);
   var dotMatrixArray = Blockly.Arduino.valueToCode(this, 'LEDArray', Blockly.Arduino.ORDER_ASSIGNMENT);
   Blockly.Arduino.definitions_['var_declare_LEDArray'] = 'uint8_t  LEDArray[8];';
   var code='';
   code+='for(int i=0; i<8; i++)\n';
   code+='{\n'
   code+='  LEDArray[i]='+dotMatrixArray+'[i];\n';
-  code+='  for(int j=0; j<8; j++)\n'
+  code+='  for(int j='+NO*8+'; j<'+ (NO*8+8)+'; j++)\n'
   //code+='  for(int j=7; j>=0; j--)\n'
   code+='  {\n'
   code+='    if((LEDArray[i]&0x01)>0)\n';
@@ -292,19 +293,30 @@ Blockly.Arduino.display_Matrix_fillScreen = function() {
 };
 
 //点阵屏旋转
-Blockly.Arduino.display_Matrix_Rotation = function() {
-  var matrixType = this.getFieldValue('TYPE');
+Blockly.Arduino.display_Max7219_Rotation = function() {
   var matrixName = this.getFieldValue('matrixName');
   var dropdown_type = this.getFieldValue('Rotation_TYPE');
-  if(matrixType=="HT16K33")
-  {
-    var code = matrixName + '.setRotation('+dropdown_type+');\n'
-  }
-  else
-  {
-   var code = matrixName + '.setRotation(4-'+dropdown_type+');\n'
- }
- return code;
+  var NO = Blockly.Arduino.valueToCode(this, 'NO', Blockly.Arduino.ORDER_ATOMIC);
+  var code = matrixName + '.setRotation('+NO+','+dropdown_type+');\n'
+  return code;
+};
+
+//点阵屏旋转
+Blockly.Arduino.display_Max7219_setPosition = function() {
+  var matrixName = this.getFieldValue('matrixName');
+  var NO = Blockly.Arduino.valueToCode(this, 'NO', Blockly.Arduino.ORDER_ATOMIC);
+  var X = Blockly.Arduino.valueToCode(this, 'X', Blockly.Arduino.ORDER_ATOMIC);
+  var Y = Blockly.Arduino.valueToCode(this, 'Y', Blockly.Arduino.ORDER_ATOMIC);
+  var code = matrixName + '.setPosition('+NO+','+X+','+Y+');\n'
+  return code;
+};
+
+//点阵屏旋转
+Blockly.Arduino.display_HT16K33_Rotation = function() {
+  var matrixName = this.getFieldValue('matrixName');
+  var dropdown_type = this.getFieldValue('Rotation_TYPE');
+  var code = matrixName + '.setRotation(4-'+dropdown_type+');\n'
+  return code;
 };
 
 //点阵屏 图案数组

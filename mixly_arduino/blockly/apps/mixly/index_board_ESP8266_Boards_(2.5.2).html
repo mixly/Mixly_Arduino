@@ -702,7 +702,7 @@
       </block>
       <block type="DHT">
         <value name="PIN">
-         </value>
+        </value>
       </block>
       <block type="LM35ESP">
         <value name="PIN">
@@ -1332,61 +1332,85 @@
     </block>
   </category>
   <category id="catMatrix">
-    <block type="MAX7219_init">
-  <value name="PIN1">
-    <shadow type="pins_MOSI">
-      <field name="PIN">11</field>
-    </shadow>
-  </value>
-  <value name="PIN2">
-    <shadow type="pins_digital">
-      <field name="PIN">9</field>
-    </shadow>
-  </value>
-  <value name="PIN3">
-    <shadow type="pins_SCK">
-      <field name="PIN">13</field>
-    </shadow>
-  </value>
-  <value name="hDisplays">
+   <block type="MAX7219_init">
+    <value name="PIN1">
+      <shadow type="pins_MOSI">
+        <field name="PIN">11</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">9</field>
+      </shadow>
+    </value>
+    <value name="PIN3">
+      <shadow type="pins_SCK">
+        <field name="PIN">13</field>
+      </shadow>
+    </value>
+    <value name="hDisplays">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="vDisplays">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="HT16K33_Init">
+    <value name="PIN1">
+      <shadow type="pins_digital">
+        <field name="PIN">2</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">3</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_Matrix_DrawPixel">
+    <value name="XVALUE">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="YVALUE">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="STAT">
+      <shadow type="inout_highlow"></shadow>
+    </value>
+  </block>
+  <block type="display_Max7219_Rotation">
+    <value name="NO">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+<!-- <block type="display_Max7219_setPosition">
+  <value name="NO">
     <shadow type="math_number">
       <field name="NUM">1</field>
     </shadow>
   </value>
-  <value name="vDisplays">
+  <value name="X">
     <shadow type="math_number">
       <field name="NUM">1</field>
     </shadow>
   </value>
-</block>
-<block type="HT16K33_Init">
-  <value name="PIN1">
-    <shadow type="pins_digital">
-      <field name="PIN">2</field>
-    </shadow>
-  </value>
-  <value name="PIN2">
-    <shadow type="pins_digital">
-      <field name="PIN">3</field>
-    </shadow>
-  </value>
-</block>
-<block type="display_Matrix_DrawPixel">
-  <value name="XVALUE">
+  <value name="Y">
     <shadow type="math_number">
       <field name="NUM">1</field>
     </shadow>
   </value>
-  <value name="YVALUE">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-  <value name="STAT">
-    <shadow type="inout_highlow"></shadow>
-  </value>
-</block>
-<block type="display_Matrix_Rotation">
+</block> -->
+<block type="display_HT16K33_Rotation">
 </block>
 <block type="display_Matrix_TEXT">
   <value name="TEXT">
@@ -1401,6 +1425,11 @@
   </value>
 </block>
 <block type="display_Matrix_DisplayChar">
+  <value name="NO">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
   <value name="LEDArray">
     <block type="display_Matrix_LedArray"></block>
   </value>
@@ -1416,7 +1445,7 @@
   </shadow>
 </value>
 </block>
-  </category>
+</category>
 </category>
 <sep>
 </sep>
