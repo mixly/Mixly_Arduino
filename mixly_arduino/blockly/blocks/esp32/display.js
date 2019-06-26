@@ -1226,8 +1226,8 @@ Blockly.Blocks['display_image_size'] = {
 Blockly.Blocks.display_rect = {
     init: function () {
       var brightness_or_not =
-        [[Blockly.LUXE_LED_ON, '1'],
-         [Blockly.LUXE_LED_OFF, '0']
+        [[Blockly.MIXLY_4DIGITDISPLAY_ON, '1'],
+         [Blockly.MIXLY_4DIGITDISPLAY_OFF, '0']
         ];
         this.setColour(Blockly.Blocks.display.HUE);
         // this.appendDummyInput()
@@ -1639,8 +1639,8 @@ Blockly.Blocks['display_animate'] = {
 Blockly.Blocks.display_circle = {
     init: function () {
       var brightness_or_not =
-        [[Blockly.LUXE_LED_ON, '1'],
-         [Blockly.LUXE_LED_OFF, '0']
+        [[Blockly.MIXLY_4DIGITDISPLAY_ON, '1'],
+         [Blockly.MIXLY_4DIGITDISPLAY_OFF, '0']
         ];
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendValueInput('VAR')
@@ -1683,8 +1683,8 @@ Blockly.Blocks.display_circle = {
 Blockly.Blocks.display_triangle = {
     init: function () {
       var brightness_or_not =
-        [[Blockly.LUXE_LED_ON, '1'],
-         [Blockly.LUXE_LED_OFF, '0']
+        [[Blockly.MIXLY_4DIGITDISPLAY_ON, '1'],
+         [Blockly.MIXLY_4DIGITDISPLAY_OFF, '0']
         ];
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendValueInput('VAR')
