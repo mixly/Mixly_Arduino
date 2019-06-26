@@ -11,22 +11,23 @@ Blockly.Arduino.blynk_iot_auth = function() {
 Blockly.Arduino.blynk_smartconfig = function() {
 	var auth_key = Blockly.Arduino.valueToCode(this, 'auth_key', Blockly.Arduino.ORDER_ATOMIC);
 	var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);
+	var board_type=JSFuncs.getPlatform();
 	Blockly.Arduino.definitions_['include_TimeLib'] ='#include <TimeLib.h>';
 	Blockly.Arduino.definitions_['include_WidgetRTC'] ='#include <WidgetRTC.h>';
 	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';
 	Blockly.Arduino.definitions_['var_declare_auth_key'] ='char auth[] = '+auth_key+';';
 	Blockly.Arduino.setups_['setup_smartconfig'] = 'Serial.begin(9600);\nWiFi.mode(WIFI_STA);\nint cnt = 0;\nwhile (WiFi.status() != WL_CONNECTED) {\ndelay(500); \nSerial.print("."); \nif (cnt++ >= 10) {\nWiFi.beginSmartConfig();\nwhile (1) {\ndelay(1000);\nif (WiFi.smartConfigDone()) {\nSerial.println();\nSerial.println("SmartConfig: Success");\nbreak;\n}\nSerial.print("|");\n}\n}\n}  WiFi.printDiag(Serial);\n';
-	if(JSFuncs.getPlatform()=="ESP8266_Boards_(2.5.2)")
+	if(board_type.match(RegExp(/ESP8266/)))
 	{
-		Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>\n';
+
+		Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>';
 		Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] ='#include <BlynkSimpleEsp8266.h>';
 	}
-	else if(JSFuncs.getPlatform()=="ESP32_Arduino")
+	else if(board_type.match(RegExp(/ESP32/)))
 	{
 		Blockly.Arduino.definitions_['include_WiFi'] ='#include <WiFi.h>';
 		Blockly.Arduino.definitions_['include_WiFiClient'] ='#include <WiFiClient.h>';
 		Blockly.Arduino.definitions_['include_BlynkSimpleEsp32'] ='#include <BlynkSimpleEsp32.h>';
-		
 	}
 	if(isNaN(server_add.charAt(2)))
 	{
@@ -47,13 +48,14 @@ Blockly.Arduino.blynk_server = function() {
 	var wifi_pass = Blockly.Arduino.valueToCode(this, 'wifi_pass', Blockly.Arduino.ORDER_ATOMIC);
 	var auth_key = Blockly.Arduino.valueToCode(this, 'auth_key', Blockly.Arduino.ORDER_ATOMIC);
 	var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);
+	var board_type=JSFuncs.getPlatform();
 	Blockly.Arduino.definitions_['include_TimeLib'] ='#include <TimeLib.h>';
 	Blockly.Arduino.definitions_['include_WidgetRTC'] ='#include <WidgetRTC.h>';
 	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';
 	Blockly.Arduino.definitions_['var_declare_auth_key'] ='char auth[] = '+auth_key+';';
 	Blockly.Arduino.definitions_['var_declare_wifi_ssid'] ='char ssid[] = '+wifi_ssid+';';
 	Blockly.Arduino.definitions_['var_declare_wifi_pass'] ='char pass[] = '+wifi_pass+';';
-	if(JSFuncs.getPlatform()=="Arduino_AVR_Boards")
+	if(board_type.match(RegExp(/AVR/)))
 	{
 		Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266_Lib.h>';
 		Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] ='#include <BlynkSimpleShieldEsp8266.h>';
@@ -69,7 +71,7 @@ Blockly.Arduino.blynk_server = function() {
 			Blockly.Arduino.setups_['setup_Blynk.begin'] = ' Serial.begin(9600);\n delay(10);\n Serial.begin(ESP8266_BAUD);\n delay(10);\nBlynk.begin(auth, wifi,ssid, pass,"'+server_add+'",8080);';
 		}
 	}
-	else if(JSFuncs.getPlatform()=="ESP8266_Boards_(2.5.2)")
+	else if(board_type.match(RegExp(/ESP8266/)))
 	{
 		Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>';
 		Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] ='#include <BlynkSimpleEsp8266.h>';
@@ -84,7 +86,7 @@ Blockly.Arduino.blynk_server = function() {
 			Blockly.Arduino.setups_['setup_Blynk.begin'] = ' Serial.begin(9600);\n Blynk.begin(auth, ssid, pass,'+'IPAddress('+server_add+'),8080);';
 		}
 	}
-	else if(JSFuncs.getPlatform()=="ESP32_Arduino")
+	else if(board_type.match(RegExp(/ESP32/)))
 	{
 		Blockly.Arduino.definitions_['include_WiFi'] ='#include <WiFi.h>';
 		Blockly.Arduino.definitions_['include_WiFiClient'] ='#include <WiFiClient.h>';
