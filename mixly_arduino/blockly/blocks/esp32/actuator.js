@@ -11,7 +11,7 @@ Blockly.Blocks.servo_move = {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
             .appendField(Blockly.MIXLY_SERVO)
-            .appendField(Blockly.MIXLY_PIN + " #")
+            .appendField(Blockly.MIXLY_PIN )
             .setCheck(Number);
         this.appendValueInput("DEGREE", Number)
             .setCheck(Number)
@@ -104,7 +104,7 @@ Blockly.Blocks.esp32_music_pitch = {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
             .appendField(Blockly.MIXLY_MBOT_TONE)
-            .appendField(Blockly.MIXLY_PIN + " #")
+            .appendField(Blockly.MIXLY_PIN )
             .setCheck(Number);
         this.appendValueInput('pitch')
             .setCheck(Number)
@@ -121,7 +121,7 @@ Blockly.Blocks.esp32_music_pitch_with_time = {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
             .appendField(Blockly.MIXLY_MBOT_TONE)
-            .appendField(Blockly.MIXLY_PIN + " #")
+            .appendField(Blockly.MIXLY_PIN )
             .setCheck(Number);
         this.appendValueInput('pitch')
             .setCheck(Number)
@@ -195,7 +195,7 @@ Blockly.Blocks.esp32_music_play_list = {
             .appendField(Blockly.MIXLY_ESP32_MUSIC_PLAY_LISTS)
         this.appendValueInput('PIN')
             .setCheck(Number)
-            .appendField(Blockly.MIXLY_PIN + " #");
+            .appendField(Blockly.MIXLY_PIN );
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
@@ -211,7 +211,7 @@ Blockly.Blocks.esp32_mixgo_music_play_list_show = {
             .appendField(Blockly.MIXLY_ESP32_MUSIC_PLAY_LISTS)
         this.appendValueInput('PIN')
             .setCheck(Number)
-            .appendField(Blockly.MIXLY_PIN + " #");
+            .appendField(Blockly.MIXLY_PIN );
         // this.appendValueInput('DISPLAY')
         //     .appendField(Blockly.MIXLY_ESP32_MIXGO_MUSIC_SHOW_IN);
         this.appendDummyInput()
@@ -234,7 +234,7 @@ Blockly.Blocks.actuator_neopixel_init = {
         this.appendValueInput("PIN", Number)
            .setCheck(Number)
            .setAlign(Blockly.ALIGN_RIGHT)
-           .appendField(Blockly.MIXLY_PIN+" #");
+           .appendField(Blockly.MIXLY_PIN);
         this.appendValueInput("LEDCOUNT")
             .setCheck(Number)
             .setAlign(Blockly.ALIGN_RIGHT)
