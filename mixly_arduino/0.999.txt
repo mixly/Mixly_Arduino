@@ -1,6 +1,0 @@
-Mixly0.999主要修改
-1.使用原生Python
-2.增加ESP32 Mixgo Handbit Generic
-3.支持Python，MicroPython的文本图形互换
-4.Arduino升级到1.8.8
-5.升级blockly core 到 2018.12
