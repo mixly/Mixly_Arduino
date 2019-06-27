@@ -301,7 +301,7 @@ Blockly.Blocks['storage_file_write'] = {
      this.appendDummyInput()
          .appendField(Blockly.MIXLY_ESP32_SET);
      this.appendDummyInput()
-         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_MKDIR,'mkdir'],[Blockly.MIXLY_MICROPYTHON_SOCKET_MAKEDIRS,'makedirs']]),'MODE');
+         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_MKDIR,'mkdir'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKEDIRS,'makedirs']]),'MODE');
      this.setInputsInline(true);
      this.setPreviousStatement(true); //in front of the block has something
      this.setNextStatement(true);  //beyond the ... has something
