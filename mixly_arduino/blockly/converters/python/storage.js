@@ -321,6 +321,19 @@ pbc.moduleFunctionD.get('os')['isfile'] = function(py2block, func, args, keyword
     })];
 }
 
+pbc.moduleFunctionD.get('os')['startfile'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var fun = func.attr.v;
+    var argblock = py2block.convert(args[0]);
+    return [block("storage_open_file_with_os", func.lineno, {"MODE":fun}, {
+         "fn" : argblock
+    }, {
+        "inline": "true"
+    })];
+}
+
 pbc.moduleFunctionD.get('os')['isdir'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");

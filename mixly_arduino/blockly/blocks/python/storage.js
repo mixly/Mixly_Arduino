@@ -11,7 +11,7 @@ Blockly.Blocks['storage_open_file_with_os'] = {
         this.setColour(Blockly.Blocks.storage.HUE);
         this.appendValueInput('fn')
             .setCheck(String)
-            .appendField(Blockly.Msg.MIXLY_PYTHON_STORAGE_OPEN_FILE_WITH_OS);
+            .appendField(Blockly.Msg.MIXLY_PYTHON_STORAGE_OPEN_FILE_WITH_OS+"(For Windows)");
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
