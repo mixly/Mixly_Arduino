@@ -6,6 +6,18 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.storage.HUE = 0//'#5d69c5'//0;
 
+Blockly.Blocks['storage_open_file_with_os'] = {
+    init:function(){
+        this.setColour(Blockly.Blocks.storage.HUE);
+        this.appendValueInput('fn')
+            .setCheck(String)
+            .appendField(Blockly.Msg.MIXLY_PYTHON_STORAGE_OPEN_FILE_WITH_OS);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+    }
+}
+
 Blockly.Blocks.storage_fileopen = {
   init: function() {
     this.setColour(Blockly.Blocks.storage.HUE);

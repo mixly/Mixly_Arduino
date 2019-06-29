@@ -4,6 +4,12 @@ goog.provide('Blockly.Python.storage');
 
 goog.require('Blockly.Python');
 
+Blockly.Python.storage_open_file_with_os = function () {
+    Blockly.Python.definitions_['import_os'] = 'import os';
+    var fn = Blockly.Python.valueToCode(this, 'fn', Blockly.Python.ORDER_ATOMIC);
+    return "os.startfile(" + fn + ")\n";
+}
+
 Blockly.Python['storage_fileopen'] = function(block) {
   // For each loop.
   var variable0 = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);

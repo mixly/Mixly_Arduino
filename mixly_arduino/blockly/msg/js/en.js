@@ -2661,3 +2661,5 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES = "readlines";
 
 Blockly.MIXLY_ENCODER='Encoder';
 Blockly.MIXLY_SIMPLE_TIMER='Simple Timer';
+
+Blockly.Msg.MIXLY_PYTHON_STORAGE_OPEN_FILE_WITH_OS = 'open file with default program';

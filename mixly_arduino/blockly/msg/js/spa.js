@@ -2352,3 +2352,4 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES = "readlines";
 
 Blockly.MIXLY_ENCODER='Codificador rotatorio';
 Blockly.MIXLY_SIMPLE_TIMER='Temporizador simple';
+Blockly.Msg.MIXLY_PYTHON_STORAGE_OPEN_FILE_WITH_OS = 'open file with default program';
