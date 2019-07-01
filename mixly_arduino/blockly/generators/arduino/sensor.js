@@ -54,21 +54,6 @@ Blockly.Arduino.chaoshengbo2 = function () {
   return [funcName + '()', Blockly.Arduino.ORDER_ATOMIC];
 }
 
-Blockly.Arduino.dht11 = function () {
-  var sensor_type = this.getFieldValue('TYPE');
-  var dropdown_pin = this.getFieldValue('PIN');
-  var what = this.getFieldValue('WHAT');
-  Blockly.Arduino.definitions_['include_dht'] = '#include <dht.h>';
-  Blockly.Arduino.definitions_['var_declare_dht' + dropdown_pin] = 'dht myDHT_' + dropdown_pin + ';';
-  var funcName = 'dht_' + dropdown_pin + '_get' + what;
-  var code = 'int' + ' ' + funcName + '() {\n'
-  + '  int chk = myDHT_' + dropdown_pin + '.read' + sensor_type + '(' + dropdown_pin + ');\n'
-  + '  int value = myDHT_' + dropdown_pin + '.' + what + ';\n'
-  + '  return value;\n'
-  + '}\n';
-  Blockly.Arduino.definitions_[funcName] = code;
-  return [funcName + '()', Blockly.Arduino.ORDER_ATOMIC];
-}
 Blockly.Arduino.DHT = function () {
   var sensor_type = this.getFieldValue('TYPE');
   var dropdown_pin = this.getFieldValue('PIN');
