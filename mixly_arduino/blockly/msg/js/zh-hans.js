@@ -649,7 +649,8 @@ var MSG = {
 	catSet: "集合",
 	catData: "数据",
 	catHardware: "硬件交互",
-	catAI: "人工智能"
+	catAI: "人工智能",
+	catDS: "数据结构"
 };
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW = '返回高电平或低电平';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ = '返回指定管脚的电平值';
@@ -2385,3 +2386,32 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES = "读取所有行内容";
 Blockly.MIXLY_ENCODER = '旋转编码器';
 Blockly.MIXLY_SIMPLE_TIMER = '简单定时器';
 Blockly.Msg.MIXLY_PYTHON_STORAGE_OPEN_FILE_WITH_OS = '使用系统默认软件打开文件';
+Blockly.Msg.DS_CREATE_LINKEDLIST_CONTAINER_TITLE = "链表节点";
+Blockly.Msg.DS_CREATE_LINKEDLIST_CONTAINER_TOOLTIP = "增加、删除或重新排列各部分以此重新配置这个节点的属性。";
+Blockly.Msg.DS_CREATE_LINKEDLIST_ITEM_TITLE = "属性"
+Blockly.Msg.DS_CREATE_LINKEDLIST_ITEM_TOOLTIP = "将一个属性添加到节点中。";
+Blockly.Msg.DS_CREATE_LINKEDLIST_NEW = "创建链表";
+Blockly.Msg.DS_CREATE_LINKEDLIST_HEAD = "头节点名称";
+Blockly.Msg.DS_CREATE_LINKEDLIST_TYPE = "节点类型  ";
+Blockly.Msg.DS_CREATE_LINKEDLIST_ATTRIBUTE = "内置属性及对应值";
+Blockly.Msg.DS_CREATE_LINKEDLIST_TOOLTIP = "创建一个链表头节点，节点类型为定义的类，属性为类的属性，头节点为使用该类定义的对象。";
+Blockly.Msg.DS_CREATE_NODE_USE = "使用已有节点类型";
+Blockly.Msg.DS_CREATE_NODE_NEW = "定义新的节点";
+Blockly.Msg.DS_CREATE_NODE_TOOLTIP = "使用已经定义的类创建一个新的对象节点。";
+Blockly.Msg.DS_GET_NODE_ATTR_NODE = "获取节点";
+Blockly.Msg.DS_SET_NODE_ATTR_NODE = "节点";
+Blockly.Msg.DS_SET_NODE_ATTR_SET = "对应值设置为";
+Blockly.Msg.DS_GET_NODE_ATTR_TOOLTIP = "获取节点（一个对象）某个属性的对应值。";
+Blockly.Msg.DS_SET_NODE_ATTR_TOOLTIP = "修改节点（一个对象）某个属性的对应值。";
+Blockly.Msg.DS_ADD_NODE_HEAD_NODE = "头节点为";
+Blockly.Msg.DS_ADD_NODE_LINKEDLIST = "的链表";
+Blockly.Msg.DS_ADD_NODE_BEFORE = "之前";
+Blockly.Msg.DS_ADD_NODE_AFTER = "之后";
+Blockly.Msg.DS_ADD_NODE = "插入节点";
+Blockly.Msg.DS_ADD_NODE_TOOLTIP = "在链表的指定位置插入新的节点，并将插入节点是否成功的结果打印。";
+Blockly.Msg.DS_ADD_NODE_ATTR = "的节点";
+Blockly.Msg.DS_DEL_NODE_NAME = "删除节点";
+Blockly.Msg.DS_DEL_NODE_ATTR = "删除属性";
+Blockly.Msg.DS_DEL_NODE_TOOLTIP = "删除链表指定位置的节点，并将删除节点是否成功的结果打印。";
+Blockly.Msg.DS_REVERSE_LINKEDLIST = "的链表转置";
+Blockly.Msg.DS_REVERSE_LINKEDLIST_NEW_HEAD = "新的头节点名称";
