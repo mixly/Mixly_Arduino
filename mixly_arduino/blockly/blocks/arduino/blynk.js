@@ -77,7 +77,6 @@ Blockly.Blocks.blynk_server = {
   }
 };
 
-
 //虚拟管脚选择
 var BLYNK_VIRTUALPIN_SELECT = [
 ["V0", "V0"],
@@ -1225,3 +1224,88 @@ Blockly.Blocks.factory_declare2 = {
   }
 };
 
+
+//一键配网（无需安可信）
+Blockly.Blocks.blynk_AP_config = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_AP_config);
+    this.appendValueInput("auth")
+    .setCheck(null)
+    .appendField(Blockly.blynk_IOT_AUTH)
+    this.appendValueInput("server")
+    .setCheck(null)
+    .appendField(Blockly.blynk_SERVER_ADD);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.blynk_AP_config_tooltip);
+    this.setHelpUrl("");
+  }
+};
+
+//一键配网手动配置授权码
+Blockly.Blocks.blynk_AP_config_2 = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_AP_config2);
+    this.appendValueInput("server")
+    .setCheck(null)
+    .appendField(Blockly.blynk_IOT_AUTH);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.blynk_AP_config_tooltip);
+    this.setHelpUrl("");
+  }
+};
+//blynk服务器连接状态
+Blockly.Blocks.Blynk_connected= {
+  init: function() {
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.appendDummyInput()
+    .appendField(Blockly.Blynk_connected);
+    this.setOutput(true, null);
+    this.setTooltip(Blockly.Blynk_connected_Tooltip);
+    this.setHelpUrl("");
+  }
+};
+//Blynk终端清屏
+Blockly.Blocks['blynk_terminal_clear'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_terminal_clear);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setHelpUrl("");
+  }
+};
+
+//Blynk LCD显示
+Blockly.Blocks['blynk_lcd'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_lcd)
+    .appendField(Blockly.BLYNK_VIRTUALPIN);
+     this.appendDummyInput("")
+    .appendField(new Blockly.FieldDropdown(BLYNK_VIRTUALPIN_SELECT), "Vpin");
+      this.appendDummyInput()
+    .appendField(Blockly.MIXLY_LCD_ROW);
+    this.appendValueInput("x")
+    .setCheck(null);
+    this.appendDummyInput()
+    .appendField(Blockly.MIXLY_LCD_COLUMN);
+    this.appendValueInput("y")
+    .setCheck(null);
+    this.appendDummyInput()
+    .appendField(Blockly.MIXLY_LCD_PRINT);
+    this.appendValueInput("value")
+    .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setHelpUrl("");
+    this.setInputsInline(true);
+  }
+};

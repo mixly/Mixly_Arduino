@@ -1905,6 +1905,25 @@
         </shadow>
       </value>
     </block>
+    <block type="blynk_AP_config">
+      <value name="auth">
+        <shadow type="text">
+          <field name="TEXT">59d948d79fe642aab95c1577b1ad419d</field>
+        </shadow>
+      </value>
+      <value name="server">
+        <shadow type="math_number">
+          <field name="NUM">116.62.49.166</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="blynk_AP_config_2">
+      <value name="server">
+        <shadow type="math_number">
+          <field name="NUM">116.62.49.166</field>
+        </shadow>
+      </value>
+    </block>
         <!-- <block type="blynk_usb_server" name="服务器USB信息">
         <value name="auth_key">
         <shadow type="text">
@@ -1985,6 +2004,7 @@
           </shadow>
         </value>
       </block>
+
       <block type="blynk_iot_terminal_get">
         <field name="Vpin">V0</field>
         <statement name="DO">
@@ -1998,6 +2018,7 @@
           </block>
         </statement>
       </block>
+      <block type="blynk_terminal_clear"></block>
       <block type="blynk_terminal">
         <value name="content">
           <shadow type="text">
@@ -2030,310 +2051,330 @@
           </block>
         </statement>
       </block>
-      <block type="blynk_videourl">
-        <value name="url">
-          <shadow type="text">
-            <field name="TEXT">http://yourvideostream.url</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="Blynk_iot_BLYNK_CONNECTED" >
-        <statement name="DO">
-          <block type="blynk_bridge_auth">
-            <field name="Vpin">V0</field>
-            <value name="auth">
-              <shadow type="text">
-                <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>
-              </shadow>
-            </value>
-          </block>
-        </statement>
-      </block>
-      <block type="blynk_bridge_digitalWrite">
-        <value name="PIN">
-          <shadow type="pins_digital"></shadow>
-        </value>
-        <value name="STAT">
-          <shadow type="inout_highlow"></shadow>
-        </value>
-      </block>
-      <block type="blynk_bridge_AnaloglWrite">
-        <value name="PIN">
-          <shadow type="pins_pwm"></shadow>
-        </value>
-        <value name="NUM">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="blynk_bridge_VPin">
-        <value name="NUM">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="Blynk_iot_BLYNK_CONNECTED">
-        <statement name="DO">
-          <block type="blynk_WidgetRTC_init">
-            <value name="NUM"><shadow type="math_number" >
-              <field name="NUM">10</field>
+      <block type="blynk_lcd">
+       <field name="Vpin">V0</field>
+       <value name="x">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="y">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="value">
+        <shadow type="math_number">
+          <field name="NUM">923</field>
+        </shadow>
+      </value> 
+
+    </block>
+    <block type="blynk_videourl">
+      <value name="url">
+        <shadow type="text">
+          <field name="TEXT">http://yourvideostream.url</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="Blynk_iot_BLYNK_CONNECTED" >
+      <statement name="DO">
+        <block type="blynk_bridge_auth">
+          <field name="Vpin">V0</field>
+          <value name="auth">
+            <shadow type="text">
+              <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>
             </shadow>
           </value>
         </block>
       </statement>
     </block>
-    <block type="blynk_WidgetRTC_get_time"></block>
-    <block type="blynk_iot_playmusic">
-      <field name="Vpin">V0</field>
-      <statement name="DO">
-        <block type="variables_declare">
-          <field name="VAR">action</field>
-          <field name="TYPE">String</field>
-          <value name="VALUE">
-            <block type="text">
-              <field name="TEXT"></field>
-            </block>
-          </value>
-          <next>
-            <block type="controls_if">
-              <mutation elseif="3"></mutation>
-              <value name="IF0">
-                <block type="logic_compare">
-                  <field name="OP">EQ</field>
-                  <value name="A">
-                    <block type="variables_get">
-                      <field name="VAR">action</field>
-                    </block>
-                  </value>
-                  <value name="B">
-                    <block type="text">
-                      <field name="TEXT">play</field>
-                    </block>
-                  </value>
-                </block>
-              </value>
-              <statement name="DO0">
-                <block type="GD5800_MP3_CONTROL">
-                  <field name="CONTROL_TYPE">play();</field>
-                  <value name="RXPIN">
-                    <shadow type="pins_digital">
-                      <field name="PIN">4</field>
-                    </shadow>
-                  </value>
-                  <value name="TXPIN">
-                    <shadow type="pins_digital">
-                      <field name="PIN">5</field>
-                    </shadow>
-                  </value>
-                </block>
-              </statement>
-              <value name="IF1">
-                <block type="logic_compare">
-                  <field name="OP">EQ</field>
-                  <value name="A">
-                    <block type="variables_get">
-                      <field name="VAR">action</field>
-                    </block>
-                  </value>
-                  <value name="B">
-                    <block type="text">
-                      <field name="TEXT">stop</field>
-                    </block>
-                  </value>
-                </block>
-              </value>
-              <statement name="DO1">
-                <block type="GD5800_MP3_CONTROL">
-                  <field name="CONTROL_TYPE">pause();</field>
-                  <value name="RXPIN">
-                    <shadow type="pins_digital">
-                      <field name="PIN">4</field>
-                    </shadow>
-                  </value>
-                  <value name="TXPIN">
-                    <shadow type="pins_digital">
-                      <field name="PIN">5</field>
-                    </shadow>
-                  </value>
-                </block>
-              </statement>
-              <value name="IF2">
-                <block type="logic_compare">
-                  <field name="OP">EQ</field>
-                  <value name="A">
-                    <block type="variables_get">
-                      <field name="VAR">action</field>
-                    </block>
-                  </value>
-                  <value name="B">
-                    <block type="text">
-                      <field name="TEXT">next</field>
-                    </block>
-                  </value>
-                </block>
-              </value>
-              <statement name="DO2">
-                <block type="GD5800_MP3_CONTROL">
-                  <field name="CONTROL_TYPE">next();</field>
-                  <value name="RXPIN">
-                    <shadow type="pins_digital">
-                      <field name="PIN">4</field>
-                    </shadow>
-                  </value>
-                  <value name="TXPIN">
-                    <shadow type="pins_digital">
-                      <field name="PIN">5</field>
-                    </shadow>
-                  </value>
-                </block>
-              </statement>
-              <value name="IF3">
-                <block type="logic_compare">
-                  <field name="OP">EQ</field>
-                  <value name="A">
-                    <block type="variables_get">
-                      <field name="VAR">action</field>
-                    </block>
-                  </value>
-                  <value name="B">
-                    <block type="text">
-                      <field name="TEXT">prev</field>
-                    </block>
-                  </value>
-                </block>
-              </value>
-              <statement name="DO3">
-                <block type="GD5800_MP3_CONTROL">
-                  <field name="CONTROL_TYPE">prev();</field>
-                  <value name="RXPIN">
-                    <shadow type="pins_digital">
-                      <field name="PIN">4</field>
-                    </shadow>
-                  </value>
-                  <value name="TXPIN">
-                    <shadow type="pins_digital">
-                      <field name="PIN">5</field>
-                    </shadow>
-                  </value>
-                </block>
-              </statement>
-            </block>
-          </next>
-        </block>
-      </statement>
+    <block type="blynk_bridge_digitalWrite">
+      <value name="PIN">
+        <shadow type="pins_digital"></shadow>
+      </value>
+      <value name="STAT">
+        <shadow type="inout_highlow"></shadow>
+      </value>
     </block>
-    <block type="blynk_light">
-      <field name="Vpin">V0</field>
-      <statement name="DO">
-        <block type="serial_println">
-          <field name="serial_select">Serial</field>
-          <value name="CONTENT">
-            <block type="variables_get">
-              <field name="VAR">lx</field>
-            </block>
-          </value>
-        </block>
-      </statement>
+    <block type="blynk_bridge_AnaloglWrite">
+      <value name="PIN">
+        <shadow type="pins_pwm"></shadow>
+      </value>
+      <value name="NUM">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
     </block>
-    <block type="blynk_gravity">
-      <field name="Vpin">V0</field>
-      <statement name="DO">
-        <block type="serial_println">
-          <field name="serial_select">Serial</field>
-          <value name="CONTENT">
-            <block type="variables_get">
-              <field name="VAR">x</field>
-            </block>
-          </value>
-          <next>
-            <block type="serial_println">
-              <field name="serial_select">Serial</field>
-              <value name="CONTENT">
-                <block type="variables_get">
-                  <field name="VAR">y</field>
-                </block>
-              </value>
-              <next>
-                <block type="serial_println">
-                  <field name="serial_select">Serial</field>
-                  <value name="CONTENT">
-                    <block type="variables_get">
-                      <field name="VAR">z</field>
-                    </block>
-                  </value>
-                </block>
-              </next>
-            </block>
-          </next>
-        </block>
-      </statement>
-    </block>
-    <block type="blynk_acc">
-      <field name="Vpin">V0</field>
-      <statement name="DO">
-        <block type="serial_println">
-          <field name="serial_select">Serial</field>
-          <value name="CONTENT">
-            <block type="variables_get">
-              <field name="VAR">x</field>
-            </block>
-          </value>
-          <next>
-            <block type="serial_println">
-              <field name="serial_select">Serial</field>
-              <value name="CONTENT">
-                <block type="variables_get">
-                  <field name="VAR">y</field>
-                </block>
-              </value>
-              <next>
-                <block type="serial_println">
-                  <field name="serial_select">Serial</field>
-                  <value name="CONTENT">
-                    <block type="variables_get">
-                      <field name="VAR">z</field>
-                    </block>
-                  </value>
-                </block>
-              </next>
-            </block>
-          </next>
-        </block>
-      </statement>
+    <block type="blynk_bridge_VPin">
+      <value name="NUM">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
     </block>
     <block type="Blynk_iot_BLYNK_CONNECTED">
-      <statement name="DO"></statement>
-    </block>
-    <block type="Blynk_iot_BLYNK_APP_CONNECTED">
-      <statement name="DO"></statement>
-    </block>
-    <block type="Blynk_iot_BLYNK_APP_DISCONNECTED">
-      <statement name="DO"></statement>
-    </block>
-    <block type="Blynk_iot_BLYNK_syncAll"></block>
-    <block type="blynk_iot_syncVirtual">
-      <field name="Vpin">V0</field>
-    </block>
-  </category>
-  <category id="catFactory" name="Factory" colour="65">
-    <block type="factory_notes"></block>
-    <block type="factory_include"></block>
-    <block type="factory_function_noreturn"></block>
-    <block type="factory_function_return"></block>
-    <block type="factory_declare"></block>
-    <block type="factory_declare2"></block>
-    <block type="factory_define"></block>
-    <block type="factory_callMethod_noreturn"></block>
-    <block type="factory_callMethod_return"></block>
-    <block type="factory_static_method_noreturn"></block>
-    <block type="factory_static_method_return"></block>
-    <block type="factory_block"></block>
-    <block type="factory_block_return"></block>
-    <block type="factory_block_with_textarea"></block>
-    <block type="factory_block_return_with_textarea"></block>
-  </category>
+      <statement name="DO">
+        <block type="blynk_WidgetRTC_init">
+          <value name="NUM"><shadow type="math_number" >
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="blynk_WidgetRTC_get_time"></block>
+  <block type="blynk_iot_playmusic">
+    <field name="Vpin">V0</field>
+    <statement name="DO">
+      <block type="variables_declare">
+        <field name="VAR">action</field>
+        <field name="TYPE">String</field>
+        <value name="VALUE">
+          <block type="text">
+            <field name="TEXT"></field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_if">
+            <mutation elseif="3"></mutation>
+            <value name="IF0">
+              <block type="logic_compare">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get">
+                    <field name="VAR">action</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="text">
+                    <field name="TEXT">play</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="GD5800_MP3_CONTROL">
+                <field name="CONTROL_TYPE">play();</field>
+                <value name="RXPIN">
+                  <shadow type="pins_digital">
+                    <field name="PIN">4</field>
+                  </shadow>
+                </value>
+                <value name="TXPIN">
+                  <shadow type="pins_digital">
+                    <field name="PIN">5</field>
+                  </shadow>
+                </value>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="logic_compare">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get">
+                    <field name="VAR">action</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="text">
+                    <field name="TEXT">stop</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO1">
+              <block type="GD5800_MP3_CONTROL">
+                <field name="CONTROL_TYPE">pause();</field>
+                <value name="RXPIN">
+                  <shadow type="pins_digital">
+                    <field name="PIN">4</field>
+                  </shadow>
+                </value>
+                <value name="TXPIN">
+                  <shadow type="pins_digital">
+                    <field name="PIN">5</field>
+                  </shadow>
+                </value>
+              </block>
+            </statement>
+            <value name="IF2">
+              <block type="logic_compare">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get">
+                    <field name="VAR">action</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="text">
+                    <field name="TEXT">next</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO2">
+              <block type="GD5800_MP3_CONTROL">
+                <field name="CONTROL_TYPE">next();</field>
+                <value name="RXPIN">
+                  <shadow type="pins_digital">
+                    <field name="PIN">4</field>
+                  </shadow>
+                </value>
+                <value name="TXPIN">
+                  <shadow type="pins_digital">
+                    <field name="PIN">5</field>
+                  </shadow>
+                </value>
+              </block>
+            </statement>
+            <value name="IF3">
+              <block type="logic_compare">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get">
+                    <field name="VAR">action</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="text">
+                    <field name="TEXT">prev</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO3">
+              <block type="GD5800_MP3_CONTROL">
+                <field name="CONTROL_TYPE">prev();</field>
+                <value name="RXPIN">
+                  <shadow type="pins_digital">
+                    <field name="PIN">4</field>
+                  </shadow>
+                </value>
+                <value name="TXPIN">
+                  <shadow type="pins_digital">
+                    <field name="PIN">5</field>
+                  </shadow>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="blynk_light">
+    <field name="Vpin">V0</field>
+    <statement name="DO">
+      <block type="serial_println">
+        <field name="serial_select">Serial</field>
+        <value name="CONTENT">
+          <block type="variables_get">
+            <field name="VAR">lx</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="blynk_gravity">
+    <field name="Vpin">V0</field>
+    <statement name="DO">
+      <block type="serial_println">
+        <field name="serial_select">Serial</field>
+        <value name="CONTENT">
+          <block type="variables_get">
+            <field name="VAR">x</field>
+          </block>
+        </value>
+        <next>
+          <block type="serial_println">
+            <field name="serial_select">Serial</field>
+            <value name="CONTENT">
+              <block type="variables_get">
+                <field name="VAR">y</field>
+              </block>
+            </value>
+            <next>
+              <block type="serial_println">
+                <field name="serial_select">Serial</field>
+                <value name="CONTENT">
+                  <block type="variables_get">
+                    <field name="VAR">z</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="blynk_acc">
+    <field name="Vpin">V0</field>
+    <statement name="DO">
+      <block type="serial_println">
+        <field name="serial_select">Serial</field>
+        <value name="CONTENT">
+          <block type="variables_get">
+            <field name="VAR">x</field>
+          </block>
+        </value>
+        <next>
+          <block type="serial_println">
+            <field name="serial_select">Serial</field>
+            <value name="CONTENT">
+              <block type="variables_get">
+                <field name="VAR">y</field>
+              </block>
+            </value>
+            <next>
+              <block type="serial_println">
+                <field name="serial_select">Serial</field>
+                <value name="CONTENT">
+                  <block type="variables_get">
+                    <field name="VAR">z</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="Blynk_iot_BLYNK_CONNECTED">
+    <statement name="DO"></statement>
+  </block>
+  <block type="Blynk_iot_BLYNK_APP_CONNECTED">
+    <statement name="DO"></statement>
+  </block>
+  <block type="Blynk_iot_BLYNK_APP_DISCONNECTED">
+    <statement name="DO"></statement>
+  </block>
+  <block type="Blynk_iot_BLYNK_syncAll"></block>
+  <block type="blynk_iot_syncVirtual">
+    <field name="Vpin">V0</field>
+  </block>
+  <block type="Blynk_connected"></block>
+</category>
+<category id="catFactory" name="Factory" colour="65">
+  <block type="factory_notes"></block>
+  <block type="factory_include"></block>
+  <block type="factory_function_noreturn"></block>
+  <block type="factory_function_return"></block>
+  <block type="factory_declare"></block>
+  <block type="factory_declare2"></block>
+  <block type="factory_define"></block>
+  <block type="factory_callMethod_noreturn"></block>
+  <block type="factory_callMethod_return"></block>
+  <block type="factory_static_method_noreturn"></block>
+  <block type="factory_static_method_return"></block>
+  <block type="factory_block"></block>
+  <block type="factory_block_return"></block>
+  <block type="factory_block_with_textarea"></block>
+  <block type="factory_block_return_with_textarea"></block>
+</category>
 </xml>
 <script>
   if (company_block != null) {

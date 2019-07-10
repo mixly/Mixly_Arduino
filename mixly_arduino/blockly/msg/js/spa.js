@@ -2353,3 +2353,11 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES = "readlines";
 Blockly.MIXLY_ENCODER='Codificador rotatorio';
 Blockly.MIXLY_SIMPLE_TIMER='Temporizador simple';
 Blockly.Msg.MIXLY_PYTHON_STORAGE_OPEN_FILE_WITH_OS = 'open file with default program';
+
+Blockly.blynk_AP_config="Smart Config WIFI(AP Mode)";
+Blockly.blynk_AP_config_tooltip="It will create a WIFI if disconnect to WiFi";
+Blockly.blynk_AP_config2="Smart Config WIFI & Blynk Auth(AP模式)";
+Blockly.Blynk_connected="blynk Server Connect State";
+Blockly.Blynk_connected_Tooltip="if OK,return 1,esle return 0";
+Blockly.blynk_terminal_clear="Blynk Terminal Clear";
+Blockly.blynk_lcd="LCD Widget Display";

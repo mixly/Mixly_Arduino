@@ -2630,3 +2630,11 @@ Blockly.MIXLY_ENCODER='旋轉編碼器';
 Blockly.MIXLY_SIMPLE_TIMER='簡單定時器';
 
 Blockly.Msg.MIXLY_PYTHON_STORAGE_OPEN_FILE_WITH_OS = '使用系统默认软件打开文件';
+
+Blockly.blynk_AP_config="一鍵配網(AP模式)";
+Blockly.blynk_AP_config_tooltip="沒有連接到WiFi時，自動打開熱點,手機或電腦連接磁熱點進行配置網絡";
+Blockly.blynk_AP_config2="一鍵配網及授權碼(AP模式)";
+Blockly.Blynk_connected="blynk服務器連接狀態";
+Blockly.Blynk_connected_Tooltip="返回blynk服務器連接狀態，正常返回1,不正常返回0";
+Blockly.blynk_terminal_clear="Blynk終端清屏";
+Blockly.blynk_lcd="LCD組件顯示";
