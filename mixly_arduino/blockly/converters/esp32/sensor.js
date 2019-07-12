@@ -464,7 +464,42 @@ pbc.moduleFunctionD.get('mixgo.button_a')['irq'] = function (py2block, func, arg
 
     var mode = mac+"."+pin+"."+py2block.identifier(keywords[1].value.attr);
 
-    pbc.pinType = "factory_block_return";
+    pbc.pinType = "pins_callback";
+    var callback = py2block.convert(keywords[0].value);
+    pbc.pinType = null;
+
+    return [block("sensor_mixgo_button_attachInterrupt", func.lineno, {"mode":mode}, {
+        "btn": objblock,
+        "DO": callback
+    }, {
+        "inline": "true"
+    })];
+
+}
+
+pbc.moduleFunctionD.get('mixgo.button_b')['irq'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0 || keywords.length!==2) {
+        throw new Error("Incorrect number of arguments");
+    }
+
+      var btn = {
+            '_astname': 'Name',
+            'id': {
+                '_astname': 'Str',
+                'v': py2block.identifier(func.value.attr)
+            }
+        };
+    pbc.pinType="pins_button";
+    var objblock=py2block.convert(btn);
+    pbc.pinType=null;
+    var irq=py2block.identifier(keywords[1].value.attr);
+    var pin=py2block.identifier(keywords[1].value.value.attr);
+    var mac=py2block.identifier(keywords[1].value.value.value.id)
+ 
+
+    var mode = mac+"."+pin+"."+py2block.identifier(keywords[1].value.attr);
+
+    pbc.pinType = "pins_callback";
     var callback = py2block.convert(keywords[0].value);
     pbc.pinType = null;
 
