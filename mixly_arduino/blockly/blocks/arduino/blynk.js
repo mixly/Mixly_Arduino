@@ -1289,9 +1289,9 @@ Blockly.Blocks['blynk_lcd'] = {
     this.appendDummyInput()
     .appendField(Blockly.blynk_lcd)
     .appendField(Blockly.BLYNK_VIRTUALPIN);
-     this.appendDummyInput("")
+    this.appendDummyInput("")
     .appendField(new Blockly.FieldDropdown(BLYNK_VIRTUALPIN_SELECT), "Vpin");
-      this.appendDummyInput()
+    this.appendDummyInput()
     .appendField(Blockly.MIXLY_LCD_ROW);
     this.appendValueInput("x")
     .setCheck(null);
@@ -1309,3 +1309,53 @@ Blockly.Blocks['blynk_lcd'] = {
     this.setInputsInline(true);
   }
 };
+
+
+//Blynk LCD清屏
+Blockly.Blocks.blynk_lcd_clear = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_lcd) 
+    .appendField(Blockly.MIXLY_LCD_STAT_CLEAR);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.setHelpUrl("");
+  }
+};
+
+
+//ESP32 blynk BLE连接方式
+Blockly.Blocks['blynk_esp32_ble'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_esp32_ble);
+    this.appendValueInput("auth")
+    .appendField(Blockly.blynk_IOT_AUTH);
+    this.appendValueInput("name")
+    .setCheck(null)
+    .appendField("BLE")
+    .appendField(Blockly.MIXLY_ESP32_NETWORK_ID );
+    this.setHelpUrl("");
+  }
+};
+
+//ESP32 blynk Bluetooth连接方式
+Blockly.Blocks['blynk_esp32_Bluetooth'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_esp32_Bluetooth);
+    this.appendValueInput("auth")
+    .setCheck(null)
+    .appendField(Blockly.blynk_IOT_AUTH);
+    this.appendValueInput("name")
+    .setCheck(null)
+    .appendField("Bluetooth")
+    .appendField(Blockly.MIXLY_ESP32_NETWORK_ID );
+    this.setHelpUrl("");
+  }
+};
+
+

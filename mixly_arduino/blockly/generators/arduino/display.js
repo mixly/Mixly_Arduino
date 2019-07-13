@@ -41,7 +41,6 @@ Blockly.Arduino.group_lcd_init3 = function () {
   var dropdown_pin4 = Blockly.Arduino.valueToCode(this, 'PIN4', Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_pin5 = Blockly.Arduino.valueToCode(this, 'PIN5', Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_pin6 = Blockly.Arduino.valueToCode(this, 'PIN6', Blockly.Arduino.ORDER_ATOMIC);
-
   Blockly.Arduino.definitions_['include_LiquidCrystal'] = '#include <LiquidCrystal.h>';
   Blockly.Arduino.definitions_['var_declare_LiquidCrystal' + varName] = 'LiquidCrystal ' + varName + '(' + dropdown_pin1 + ',' + dropdown_pin2 + ',' + dropdown_pin3 + ',' + dropdown_pin4 + ',' + dropdown_pin5 + ',' + dropdown_pin6 + ');';
   Blockly.Arduino.setups_['setup_lcd_begin_' + varName] = varName + '.begin('+TYPE+');';
@@ -363,12 +362,18 @@ Blockly.Arduino.oled_init = function() {
   var DC = Blockly.Arduino.valueToCode(this, 'DC', Blockly.Arduino.ORDER_ATOMIC);
   var CS1 = Blockly.Arduino.valueToCode(this, 'CS1', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
-  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
-  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-  var oled_setup = "u8g2.begin();";
-  Blockly.Arduino.setups_['setup_setup'] = oled_setup;
-  var code = '';
-  return code;
+  var board_type=JSFuncs.getPlatform();
+  if(board_type.match(RegExp(/ESP8266/)))
+   Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
+ else if(board_type.match(RegExp(/ESP32/)))
+   Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
+ else
+   Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
+ Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+ var oled_setup = "u8g2.begin();";
+ Blockly.Arduino.setups_['setup_setup'] = oled_setup;
+ var code = '';
+ return code;
 };
 
 Blockly.Arduino.oled_clear = function() {
@@ -619,7 +624,13 @@ Blockly.Arduino.lp2i_u8g_draw_4strings = function () {
   var value_text_line3 = Blockly.Arduino.valueToCode(this, 'Text_line3', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
   var value_text_line4 = Blockly.Arduino.valueToCode(this, 'Text_line4', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
   Blockly.Arduino.definitions_["include_U8g2lib"] = '#include <U8g2lib.h>\n';
-  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
+  var board_type=JSFuncs.getPlatform();
+  if(board_type.match(RegExp(/ESP8266/)))
+   Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
+ else if(board_type.match(RegExp(/ESP32/)))
+   Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
+ else
+   Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
   Blockly.Arduino.setups_["setup_u8g2"] =' u8g2.begin();\n';
   var code = 'u8g2.firstPage();\n'

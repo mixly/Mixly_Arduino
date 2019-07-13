@@ -2423,4 +2423,12 @@ Blockly.blynk_AP_config2="一键配网及授权码(AP模式)";
 Blockly.Blynk_connected="blynk服务器连接状态";
 Blockly.Blynk_connected_Tooltip="返回blynk服务器连接状态，正常返回1反之返回0";
 Blockly.blynk_terminal_clear="Blynk终端清屏";
-Blockly.blynk_lcd="LCD组件显示";
+Blockly.blynk_lcd="LCD组件";
+Blockly.blynk_esp32_ble="Blynk BLE 连接方式";
+Blockly.blynk_esp32_Bluetooth="Blynk Bluetooth 连接方式";
+
+Blockly.get_array2_value="获取二维数组";
+Blockly.array2_assignment="二维数组赋值";
+Blockly.array2_rows="行数";
+Blockly.array2_cols="列数";
+Blockly.create_array2_with_text="二维数组名";

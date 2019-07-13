@@ -6,8 +6,8 @@ goog.require('Blockly.Arduino');
 Blockly.Arduino.WIFI_info = function() {
 	var SSID = Blockly.Arduino.valueToCode(this, 'SSID', Blockly.Arduino.ORDER_ATOMIC);
 	var PWD = Blockly.Arduino.valueToCode(this, 'PWD', Blockly.Arduino.ORDER_ATOMIC);
-		var board_type=JSFuncs.getPlatform();
 	Blockly.Arduino.setups_['WiFi.begin'] = 'WiFi.begin('+SSID+', '+PWD+');';
+	var board_type=JSFuncs.getPlatform();
 	if(board_type.match(RegExp(/ESP8266/)))
 	{
 		Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>';

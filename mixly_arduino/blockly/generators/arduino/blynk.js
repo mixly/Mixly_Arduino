@@ -549,8 +549,26 @@ Blockly.Arduino.factory_declare2 = function() {
 Blockly.Arduino.blynk_AP_config = function() {
 	var auth= Blockly.Arduino.valueToCode(this, 'auth', Blockly.Arduino.ORDER_ATOMIC);
 	var server= Blockly.Arduino.valueToCode(this, 'server', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['include_pwku1'] ='#define BLYNK_PRINT Serial\n#include <BlynkSimpleEsp8266.h>\n#include <ESP8266WiFi.h>\n#include <TimeLib.h>\n#include <WidgetRTC.h>\n#include <DNSServer.h>\n#include <ESP8266WebServer.h>\n#include <WiFiManager.h>\nWiFiServer server(80);\n';
-	Blockly.Arduino.setups_['otasetup1'] = 'Serial.begin(9600);\nWiFiManager wifiManager;\nwifiManager.autoConnect("ESP8266 peien");\nSerial.println("Connected.");\nserver.begin();\nBlynk.config('+ auth+',IPAddress('+ server+'),8080);\n';
+	var board_type=JSFuncs.getPlatform();
+	Blockly.Arduino.definitions_['include_TimeLib'] ='#include <TimeLib.h>';
+	Blockly.Arduino.definitions_['include_WidgetRTC'] ='#include <WidgetRTC.h>';
+	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';
+	if(board_type.match(RegExp(/ESP8266/)))
+	{
+		Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>';
+		Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] ='#include <BlynkSimpleEsp8266.h>';
+	}
+	else if(board_type.match(RegExp(/ESP32/)))
+	{
+		Blockly.Arduino.definitions_['include_WiFi'] ='#include <WiFi.h>';
+		Blockly.Arduino.definitions_['include_WiFiClient'] ='#include <WiFiClient.h>';
+		Blockly.Arduino.definitions_['include_BlynkSimpleEsp32'] ='#include <BlynkSimpleEsp32.h>';
+	}
+	Blockly.Arduino.definitions_['include_DNSServer'] ='#include <DNSServer.h>';
+	Blockly.Arduino.definitions_['include_ESP8266WebServer'] ='#include <ESP8266WebServer.h>\n';
+	Blockly.Arduino.definitions_['include_WiFiManager'] ='#include <WiFiManager.h>';
+	Blockly.Arduino.definitions_['var_declare_WiFiServer'] ='WiFiServer server(80);';
+	Blockly.Arduino.setups_['otasetup1'] = 'Serial.begin(9600);\nWiFiManager wifiManager;\nwifiManager.autoConnect("Blynk");\nSerial.println("Connected.");\nserver.begin();\nBlynk.config('+ auth+',IPAddress('+ server+'),8080);\n';
 	var code='Blynk.run();\n';
 	return code;
 };
@@ -583,5 +601,40 @@ Blockly.Arduino.blynk_lcd = function() {
 	var value= Blockly.Arduino.valueToCode(this, 'value', Blockly.Arduino.ORDER_ATOMIC);
 	Blockly.Arduino.definitions_['include_lcd'] ='WidgetLCD lcd('+Vpin+');\n';
 	var code='lcd.print('+x+', '+y+', '+value+');\n';
+	return code;
+};
+
+//Blynk LCD清屏
+Blockly.Arduino.blynk_lcd_clear = function() {
+	var code='lcd.clear();\n';
+	return code;
+};
+
+
+//ESP32 blynk BLE连接方式
+Blockly.Arduino.blynk_esp32_ble = function() {
+	var auth= Blockly.Arduino.valueToCode(this, 'auth', Blockly.Arduino.ORDER_ATOMIC);
+	var name= Blockly.Arduino.valueToCode(this, 'name', Blockly.Arduino.ORDER_ATOMIC);
+	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';
+	Blockly.Arduino.definitions_['define_BLYNK_USE_DIRECT_CONNECT']='#define BLYNK_USE_DIRECT_CONNECT';
+	Blockly.Arduino.definitions_['include_BlynkSimpleEsp32_BLE'] ='#include <BlynkSimpleEsp32_BLE.h>';
+	Blockly.Arduino.definitions_['include_BLEDevice'] ='#include <BLEDevice.h>';
+	Blockly.Arduino.definitions_['include_BLEServer'] ='#include <BLEServer.h>\n';
+	Blockly.Arduino.definitions_['var_declare_auth_key'] ='char auth[] = "'+auth+'";';
+	Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Serial.begin(9600);\n  Serial.println("Waiting for connections...");\n  Blynk.setDeviceName("'+ name+'");\n  Blynk.begin(auth);\n';
+	var code='Blynk.run();\n';
+	return code;
+};
+
+//ESP32 blynk Bluetooth连接方式
+Blockly.Arduino.blynk_esp32_Bluetooth = function() {
+	var auth= Blockly.Arduino.valueToCode(this, 'auth', Blockly.Arduino.ORDER_ATOMIC);
+	var name= Blockly.Arduino.valueToCode(this, 'name', Blockly.Arduino.ORDER_ATOMIC);
+	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';
+	Blockly.Arduino.definitions_['define_BLYNK_USE_DIRECT_CONNECT']='#define BLYNK_USE_DIRECT_CONNECT';
+	Blockly.Arduino.definitions_['include_BlynkSimpleEsp32_BT'] ='#include <BlynkSimpleEsp32_BT.h>\n';
+	Blockly.Arduino.definitions_['var_declare_auth_key'] ='char auth[] = "'+auth+'";';
+	Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Serial.begin(9600);\n  Serial.println("Waiting for connections...");\n  Blynk.setDeviceName("'+ name+'");\n  Blynk.begin(auth);\n';
+	var code='Blynk.run();\n';
 	return code;
 };
