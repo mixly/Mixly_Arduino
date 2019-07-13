@@ -403,3 +403,66 @@ Blockly.Blocks['lists_length'] = {
     this.setOutput(true, Number);
   }
 };
+
+//创建二维数组
+Blockly.Blocks['create_array2_with_text'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.lists.HUE);
+    this.appendValueInput("name")
+    .setCheck(null)
+    .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, 'int'],[Blockly.LANG_MATH_LONG, 'long'],[Blockly.LANG_MATH_FLOAT, 'float'],[Blockly.LANG_MATH_CHAR, 'char'],[Blockly.LANG_MATH_BYTE, 'byte'], ['char *', 'char *'],[Blockly.LANG_MATH_STRING, 'String']]), "TYPE")
+    .appendField(Blockly.create_array2_with_text);
+    this.appendValueInput("line")
+    .setCheck(null)
+    .appendField(Blockly.array2_rows);
+    this.appendValueInput("list")
+    .setCheck(null)
+    .appendField(Blockly.array2_cols);
+    this.appendValueInput("String")
+    .setCheck(null)
+    .appendField(Blockly.MIXLY_MAKELISTFROM );
+    this.appendDummyInput()
+    .appendField(Blockly.MIXLY_ESP32_SET);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setHelpUrl("");
+  }
+};
+
+
+//二维数组赋值
+Blockly.Blocks['array2_assignment'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.lists.HUE);
+    this.appendValueInput("name")
+    .setCheck(null)
+    .appendField(Blockly.array2_assignment);
+    this.appendValueInput("line")
+    .appendField(Blockly.Msg.DATAFRAME_RAW)
+    this.appendValueInput("list")
+    .appendField(Blockly.Msg.DATAFRAME_COLUMN);
+    this.appendValueInput("assignment").appendField(Blockly.MIXLY_VALUE2);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setHelpUrl("");
+  }
+};
+
+
+//获取二维数组值
+Blockly.Blocks['get_array2_value'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.lists.HUE);
+    this.appendValueInput("name")
+    .setCheck(null)
+    .appendField(Blockly.get_array2_value);
+    this.appendValueInput("line")
+    .appendField(Blockly.Msg.DATAFRAME_RAW);
+    this.appendValueInput("list")
+    .appendField(Blockly.Msg.DATAFRAME_COLUMN);
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setHelpUrl("");
+  }
+};
