@@ -47,6 +47,7 @@
   <script src="../../blocks/esp32/blynk.js"></script>
   <script src="../../blocks/python/tuple.js"></script>
   <script src="../../blocks/python/set.js"></script>
+  <script src="../../blocks/python/html.js"></script>
   <!-- generator file -->
   <script src="../../generators/esp32/pins.js"></script>
   <script src="../../generators/esp32/inout.js"></script>
@@ -70,6 +71,7 @@
   <script src="../../generators/esp32/blynk.js"></script>
   <script src="../../generators/python/set.js"></script>
   <script src="../../generators/python/tuple.js"></script>
+  <script src="../../generators/python/html.js"></script>
   <!-- ace file -->
   <script src="python-main.js" type="application/javascript"></script>
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
@@ -3215,8 +3217,15 @@
         <value name="attribute_value"><shadow type="text"><field name="TEXT">#FF0000</field></shadow></value>
       </block> 
     </category>
-    <category id="catHtml" name="HTML" colour="#21d1e4">
-      
+    <category id="catHtml" name="HTML" colour="#1ec1e4">
+      <block type="html_document"></block>
+      <block type="html_title"></block>
+      <block type="html_content"></block>
+      <block type="html_content_more"></block>
+      <block type="html_style"></block>
+      <block type="html_form"></block>
+      <block type="html_style_content"></block>
+      <block type="html_text"></block>
     </category>
     <category id="catFactory" name="Factory" colour="#777777">
       <block type="factory_import"></block>
