@@ -1,0 +1,12 @@
+{
+  "name": "DS1307RTC",
+  "keywords": "i2c, rtc, time, clock",
+  "description": "DS1307 RTC (Real-Time-Clock)",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/PaulStoffregen/DS1307RTC.git"
+  },
+  "frameworks": "arduino",
+  "platforms": "atmelavr"
+}

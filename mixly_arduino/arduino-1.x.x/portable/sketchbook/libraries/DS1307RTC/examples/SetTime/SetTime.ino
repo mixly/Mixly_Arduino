@@ -1,5 +1,5 @@
 #include <Wire.h>
-#include <Time.h>
+#include <TimeLib.h>
 #include <DS1307RTC.h>
 
 const char *monthName[12] = {

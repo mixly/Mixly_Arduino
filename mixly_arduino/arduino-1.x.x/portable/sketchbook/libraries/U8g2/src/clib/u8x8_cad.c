@@ -120,6 +120,32 @@ uint8_t u8x8_cad_EndTransfer(u8x8_t *u8x8)
   return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_END_TRANSFER, 0, NULL);
 }
 
+void u8x8_cad_vsendf(u8x8_t * u8x8, const char *fmt, va_list va)
+{
+  uint8_t d;
+  u8x8_cad_StartTransfer(u8x8);
+  while( *fmt != '\0' )
+  {
+    d = (uint8_t)va_arg(va, int);
+    switch(*fmt)
+    {
+      case 'a':  u8x8_cad_SendArg(u8x8, d); break;
+      case 'c':  u8x8_cad_SendCmd(u8x8, d); break;
+      case 'd':  u8x8_cad_SendData(u8x8, 1, &d); break;
+    }
+    fmt++;
+  }
+  u8x8_cad_EndTransfer(u8x8);
+}
+
+void u8x8_SendF(u8x8_t * u8x8, const char *fmt, ...)
+{
+  va_list va;
+  va_start(va, fmt);
+  u8x8_cad_vsendf(u8x8, fmt, va);
+  va_end(va);
+}
+
 /*
   21 c		send command c
   22 a		send arg a
@@ -580,6 +606,8 @@ uint8_t u8x8_cad_st75256_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *a
 }
 
 /* cad i2c procedure for the ld7032 controller */
+/* Issue https://github.com/olikraus/u8g2/issues/865 mentiones, that I2C does not work */
+/* Workaround is to remove the while loop (or increase the value in the condition) */
 uint8_t u8x8_cad_ld7032_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
 {
   static uint8_t in_transfer = 0;

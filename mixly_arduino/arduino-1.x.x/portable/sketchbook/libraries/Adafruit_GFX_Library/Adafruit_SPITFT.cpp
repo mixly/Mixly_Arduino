@@ -35,6 +35,14 @@
 
 #include "Adafruit_SPITFT.h"
 
+#if defined(__AVR__)
+#if defined(__AVR_XMEGA__)  //only tested with __AVR_ATmega4809__
+#define AVR_WRITESPI(x) for(SPI0_DATA = (x); (!(SPI0_INTFLAGS & _BV(SPI_IF_bp))); )
+#else
+#define AVR_WRITESPI(x) for(SPDR = (x); (!(SPSR & _BV(SPIF))); )
+#endif
+#endif
+
 #if defined(PORT_IOBUS)
 // On SAMD21, redefine digitalPinToPort() to use the slightly-faster
 // PORT_IOBUS rather than PORT (not needed on SAMD51).
@@ -120,6 +128,8 @@ Adafruit_SPITFT::Adafruit_SPITFT(uint16_t w, uint16_t h,
   #if defined(CORE_TEENSY)
    #if !defined(KINETISK)
     dcPinMask          = digitalPinToBitMask(dc);
+    swspi.sckPinMask   = digitalPinToBitMask(sck);
+    swspi.mosiPinMask  = digitalPinToBitMask(mosi);
    #endif
     dcPortSet          = portSetRegister(dc);
     dcPortClr          = portClearRegister(dc);
@@ -142,6 +152,9 @@ Adafruit_SPITFT::Adafruit_SPITFT(uint16_t w, uint16_t h,
     }
     if(miso >= 0) {
         swspi.misoPort = portInputRegister(miso);
+        #if !defined(KINETISK)
+        swspi.misoPinMask = digitalPinToBitMask(miso);
+        #endif
     } else {
         swspi.misoPort = portInputRegister(dc);
     }
@@ -1215,8 +1228,8 @@ void Adafruit_SPITFT::writeColor(uint16_t color, uint32_t len) {
 #else  // !ESP8266
         while(len--) {
  #if defined(__AVR__)
-            for(SPDR = hi; !(SPSR & _BV(SPIF)); );
-            for(SPDR = lo; !(SPSR & _BV(SPIF)); );
+            AVR_WRITESPI(hi);
+            AVR_WRITESPI(lo);
  #elif defined(ESP32)
             hwspi._spi->write(hi);
             hwspi._spi->write(lo);
@@ -1823,7 +1836,7 @@ inline void Adafruit_SPITFT::SPI_END_TRANSACTION(void) {
 void Adafruit_SPITFT::spiWrite(uint8_t b) {
     if(connection == TFT_HARD_SPI) {
 #if defined(__AVR__)
-        for(SPDR = b; !(SPSR & _BV(SPIF)); );
+        AVR_WRITESPI(b);
 #elif defined(ESP8266) || defined(ESP32)
         hwspi._spi->write(b);
 #else
@@ -1981,6 +1994,9 @@ inline void Adafruit_SPITFT::SPI_SCK_HIGH(void) {
     *swspi.sckPortSet = 1;
   #else  // !KINETISK
     *swspi.sckPortSet = swspi.sckPinMask;
+    #if defined(__IMXRT1052__) || defined(__IMXRT1062__)  // Teensy 4.x
+    for(volatile uint8_t i=0; i<1; i++);
+    #endif  
   #endif
  #else  // !HAS_PORT_SET_CLR
     *swspi.sckPort   |= swspi.sckPinMaskSet;
@@ -2003,6 +2019,9 @@ inline void Adafruit_SPITFT::SPI_SCK_LOW(void) {
     *swspi.sckPortClr = 1;
   #else  // !KINETISK
     *swspi.sckPortClr = swspi.sckPinMask;
+    #if defined(__IMXRT1052__) || defined(__IMXRT1062__)  // Teensy 4.x
+    for(volatile uint8_t i=0; i<1; i++);
+    #endif  
   #endif
  #else  // !HAS_PORT_SET_CLR
     *swspi.sckPort   &= swspi.sckPinMaskClr;
@@ -2044,8 +2063,8 @@ inline bool Adafruit_SPITFT::SPI_MISO_READ(void) {
 void Adafruit_SPITFT::SPI_WRITE16(uint16_t w) {
     if(connection == TFT_HARD_SPI) {
 #if defined(__AVR__)
-        for(SPDR = (w >> 8); (!(SPSR & _BV(SPIF))); );
-        for(SPDR =  w      ; (!(SPSR & _BV(SPIF))); );
+        AVR_WRITESPI(w >> 8);
+        AVR_WRITESPI(w);
 #elif defined(ESP8266) || defined(ESP32)
         hwspi._spi->write16(w);
 #else
@@ -2091,10 +2110,10 @@ void Adafruit_SPITFT::SPI_WRITE16(uint16_t w) {
 void Adafruit_SPITFT::SPI_WRITE32(uint32_t l) {
     if(connection == TFT_HARD_SPI) {
 #if defined(__AVR__)
-        for(SPDR = (l >> 24); !(SPSR & _BV(SPIF)); );
-        for(SPDR = (l >> 16); !(SPSR & _BV(SPIF)); );
-        for(SPDR = (l >>  8); !(SPSR & _BV(SPIF)); );
-        for(SPDR =  l       ; !(SPSR & _BV(SPIF)); );
+        AVR_WRITESPI(l >> 24);
+        AVR_WRITESPI(l >> 16);
+        AVR_WRITESPI(l >>  8);
+        AVR_WRITESPI(l      );
 #elif defined(ESP8266) || defined(ESP32)
         hwspi._spi->write32(l);
 #else
