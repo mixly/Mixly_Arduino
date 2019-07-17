@@ -2678,3 +2678,7 @@ Blockly.Msg.HTML_WEEK = "星期";
 Blockly.Msg.HTML_NAME = "名稱";
 Blockly.Msg.HTML_VALUE = "值";
 Blockly.Msg.HTML_FORM_CONTENT = "表單項";
+
+Blockly.NTP_SERVER='NTP時間服務器';
+Blockly.MIXLY_TimeZone='時區';
+Blockly.NTP_server_get_time='NTP獲取';

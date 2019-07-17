@@ -864,318 +864,336 @@
           </statement>
         </block>
         <block type="network_stop"></block>
-        <block type="MQTT_server">
+        <block type="NTP_server">
           <value name="server_add">
             <shadow type="text">
-              <field name="TEXT">192.168.1.101</field>
+              <field name="TEXT">ntp1.aliyun.com</field>
             </shadow>
           </value>
-          <value name="server_port">
+          <value name="timeZone">
             <shadow type="math_number">
-             <field name="NUM">1883</field>
+             <field name="NUM">8</field>
            </shadow>
          </value>
-         <value name="Client_ID">
+          <value name="Interval">
+            <shadow type="math_number">
+             <field name="NUM">600</field>
+           </shadow>
+         </value>
+       </block>
+         <block type="NTP_server_get_time"></block>
+       <block type="MQTT_server">
+        <value name="server_add">
           <shadow type="text">
-            <field name="TEXT">ID</field>
+            <field name="TEXT">192.168.1.101</field>
           </shadow>
         </value>
-        <value name="IOT_ID">
-          <shadow type="text">
-            <field name="TEXT">siot</field>
-          </shadow>
-        </value>
-        <value name="IOT_PWD">
-          <shadow type="text">
-            <field name="TEXT">dfrobot</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="MQTT_publish">
-       <value name="data">
-        <shadow type="math_number">
-          <field name="NUM">120</field>
-        </shadow>
-      </value>
-      <value name="Topic">
+        <value name="server_port">
+          <shadow type="math_number">
+           <field name="NUM">1883</field>
+         </shadow>
+       </value>
+       <value name="Client_ID">
         <shadow type="text">
-          <field name="TEXT">Topic_0</field>
+          <field name="TEXT">ID</field>
+        </shadow>
+      </value>
+      <value name="IOT_ID">
+        <shadow type="text">
+          <field name="TEXT">siot</field>
+        </shadow>
+      </value>
+      <value name="IOT_PWD">
+        <shadow type="text">
+          <field name="TEXT">dfrobot</field>
         </shadow>
       </value>
     </block>
-    <block type="MQTT_subscribe">
-      <value name="IF0">
-        <block type="math_number">
-          <field name="NUM">Topic</field>
-        </block>
-      </value>
-      <statement name="DO0">
-        <block type="serial_println">
-          <field name="serial_select">Serial</field>
-          <value name="CONTENT">
-            <block type="MQTT_subscribe_value" >
-              <value name="Topic">
-                <shadow type="text">
-                  <field name="TEXT">Topic</field>
-                </shadow>
-              </value>
-            </block>
-          </value>
-        </block>
-      </statement>
-    </block>
-  </category>
-  <category id="catSensor" colour="40">
-    <block type="IICSCAN" name="IIC地址查找">
-    </block>
-    <block type="chaoshengbo2">
-      <value name="PIN1">
-        <shadow type="pins_digital">
-          <field name="PIN">1</field>
-        </shadow>
-      </value>
-      <value name="PIN2">
-        <shadow type="pins_digital">
-          <field name="PIN">2</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="weightSensor">
-      <value name="PIN1">
-        <shadow type="pins_digital">
-          <field name="PIN">2</field>
-        </shadow>
-      </value>
-      <value name="PIN2">
-        <shadow type="pins_digital">
-          <field name="PIN">3</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="DHT">
-      <value name="PIN">
-      </value>
-    </block>
-    <block type="LM35">
-      <value name="PIN">
-        <shadow type="pins_analog"></shadow>
-      </value>
-    </block>
-    <block type="LM35ESP">
-      <value name="PIN">
-        <shadow type="pins_analog"></shadow>
-      </value>
-    </block>
-    <block type="ds18b20">
-      <value name="PIN">
-        <shadow type="pins_digital"></shadow>
-      </value>
-    </block>
-    <block type="ADXL345"></block>
-  </category>
-  <category id="catActuator" colour="100">
-    <block type="Mixly_motor">
-      <value name="PIN1">
-        <shadow type="pins_digital">
-          <field name="PIN">5</field>
-        </shadow>
-      </value>
-      <value name="PIN2">
-        <shadow type="pins_digital">
-          <field name="PIN">4</field>
-        </shadow>
-      </value>
-      <value name="speed">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="servo_move">
-      <value name="PIN">
-        <shadow type="pins_digital"></shadow>
-      </value>
-      <value name="DEGREE">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="DELAY_TIME">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="servo_read_degrees">
-      <value name="PIN">
-        <shadow type="pins_digital"></shadow>
-      </value>
-    </block>
-    <block type="group_stepper_setup">
-      <value name="PIN1">
-        <shadow type="pins_digital">
-          <field name="PIN">0</field>
-        </shadow>
-      </value>
-      <value name="PIN2">
-        <shadow type="pins_digital">
-          <field name="PIN">2</field>
-        </shadow>
-      </value>
-      <value name="steps">
-        <shadow type="math_number">
-          <field name="NUM">100</field>
-        </shadow>
-      </value>
-      <value name="speed">
-        <shadow type="math_number">
-          <field name="NUM">10</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="group_stepper_setup2">
-      <value name="PIN1">
-        <shadow type="pins_digital">
-          <field name="PIN">0</field>
-        </shadow>
-      </value>
-      <value name="PIN2">
-        <shadow type="pins_digital">
-          <field name="PIN">2</field>
-        </shadow>
-      </value>
-      <value name="PIN3">
-        <shadow type="pins_digital">
-          <field name="PIN">4</field>
-        </shadow>
-      </value>
-      <value name="PIN4">
-        <shadow type="pins_digital">
-          <field name="PIN">5</field>
-        </shadow>
-      </value>
-      <value name="steps">
-        <shadow type="math_number">
-          <field name="NUM">100</field>
-        </shadow>
-      </value>
-      <value name="speed">
-        <shadow type="math_number">
-          <field name="NUM">10</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="group_stepper_move">
-      <value name="step">
-        <shadow type="math_number">
-          <field name="NUM">10</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_rgb_init">
-      <value name="PIN">
-        <shadow type="pins_digital" />
-      </value>
-      <value name="LEDCOUNT">
-        <shadow type="math_number">
-          <field name="NUM">4</field>
-        </shadow>
-      </value>
-      <value name="Brightness">
-        <shadow type="math_number">
-          <field name="NUM">20</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_rgb">
-      <value name="PIN">
-        <shadow type="pins_digital" />
-      </value>
-      <value name="_LED_">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-      <value name="RVALUE">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="GVALUE">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="BVALUE">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_rgb2">
-      <value name="PIN">
-        <shadow type="pins_digital"/>
-      </value>
-      <value name="_LED_">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-      <value name="Brightness">
-        <shadow type="math_number">
-          <field name="NUM">20</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_rgb_rainbow1">
-      <value name="PIN">
-        <shadow type="pins_digital" />
-      </value>
-      <value name="WAIT">
-        <shadow type="math_number">
-          <field name="NUM">20</field>
-        </shadow>
-      </value>
-      <value name="Brightness">
-        <shadow type="math_number">
-          <field name="NUM">20</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_rgb_rainbow3">
-      <value name="PIN">
-        <shadow type="pins_digital" />
-      </value>
-      <value name="rainbow_color">
-        <shadow type="math_number">
-          <field name="NUM">20</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_rgb_show">
-      <value name="PIN">
-        <shadow type="pins_digital" />
-      </value>
-    </block>
-    <block type="controls_tone_noTimer">
-      <value name="PIN">
-       <shadow type="pins_digital"></shadow>
-     </value>
-     <value name="FREQUENCY">
-      <shadow type="tone_notes"></shadow>
-    </value>
-    <value name="DURATION">
+    <block type="MQTT_publish">
+     <value name="data">
       <shadow type="math_number">
-        <field name="NUM">1000</field>
+        <field name="NUM">120</field>
+      </shadow>
+    </value>
+    <value name="Topic">
+      <shadow type="text">
+        <field name="TEXT">Topic_0</field>
       </shadow>
     </value>
   </block>
-  <block type="controls_notone_noTimer">
+  <block type="MQTT_subscribe">
+    <value name="IF0">
+      <block type="math_number">
+        <field name="NUM">Topic</field>
+      </block>
+    </value>
+    <statement name="DO0">
+      <block type="serial_println">
+        <field name="serial_select">Serial</field>
+        <value name="CONTENT">
+          <block type="MQTT_subscribe_value" >
+            <value name="Topic">
+              <shadow type="text">
+                <field name="TEXT">Topic</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+</category>
+<category id="catSensor" colour="40">
+  <block type="IICSCAN" name="IIC地址查找">
+  </block>
+  <block type="chaoshengbo2">
+    <value name="PIN1">
+      <shadow type="pins_digital">
+        <field name="PIN">1</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">2</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="weightSensor">
+    <value name="PIN1">
+      <shadow type="pins_digital">
+        <field name="PIN">2</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">3</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="DHT">
+    <value name="PIN">
+    </value>
+  </block>
+  <block type="LM35">
+    <value name="PIN">
+      <shadow type="pins_analog"></shadow>
+    </value>
+  </block>
+  <block type="LM35ESP">
+    <value name="PIN">
+      <shadow type="pins_analog"></shadow>
+    </value>
+  </block>
+  <block type="ds18b20">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+  </block>
+  <block type="ADXL345"></block>
+</category>
+<category id="catActuator" colour="100">
+  <block type="Mixly_motor">
+    <value name="PIN1">
+      <shadow type="pins_digital">
+        <field name="PIN">5</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">4</field>
+      </shadow>
+    </value>
+    <value name="speed">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="servo_move">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+    <value name="DEGREE">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="DELAY_TIME">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="servo_read_degrees">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+  </block>
+  <block type="group_stepper_setup">
+    <value name="PIN1">
+      <shadow type="pins_digital">
+        <field name="PIN">0</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">2</field>
+      </shadow>
+    </value>
+    <value name="steps">
+      <shadow type="math_number">
+        <field name="NUM">100</field>
+      </shadow>
+    </value>
+    <value name="speed">
+      <shadow type="math_number">
+        <field name="NUM">10</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="group_stepper_setup2">
+    <value name="PIN1">
+      <shadow type="pins_digital">
+        <field name="PIN">0</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">2</field>
+      </shadow>
+    </value>
+    <value name="PIN3">
+      <shadow type="pins_digital">
+        <field name="PIN">4</field>
+      </shadow>
+    </value>
+    <value name="PIN4">
+      <shadow type="pins_digital">
+        <field name="PIN">5</field>
+      </shadow>
+    </value>
+    <value name="steps">
+      <shadow type="math_number">
+        <field name="NUM">100</field>
+      </shadow>
+    </value>
+    <value name="speed">
+      <shadow type="math_number">
+        <field name="NUM">10</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="group_stepper_move">
+    <value name="step">
+      <shadow type="math_number">
+        <field name="NUM">10</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_rgb_init">
+    <value name="PIN">
+      <shadow type="pins_digital" />
+    </value>
+    <value name="LEDCOUNT">
+      <shadow type="math_number">
+        <field name="NUM">4</field>
+      </shadow>
+    </value>
+    <value name="Brightness">
+      <shadow type="math_number">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_rgb">
+    <value name="PIN">
+      <shadow type="pins_digital" />
+    </value>
+    <value name="_LED_">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="RVALUE">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="GVALUE">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="BVALUE">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_rgb2">
+    <value name="PIN">
+      <shadow type="pins_digital"/>
+    </value>
+    <value name="_LED_">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="Brightness">
+      <shadow type="math_number">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_rgb_rainbow1">
+    <value name="PIN">
+      <shadow type="pins_digital" />
+    </value>
+    <value name="WAIT">
+      <shadow type="math_number">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+    <value name="Brightness">
+      <shadow type="math_number">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_rgb_rainbow3">
+    <value name="PIN">
+      <shadow type="pins_digital" />
+    </value>
+    <value name="rainbow_color">
+      <shadow type="math_number">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_rgb_show">
+    <value name="PIN">
+      <shadow type="pins_digital" />
+    </value>
+  </block>
+  <block type="controls_tone_noTimer">
     <value name="PIN">
      <shadow type="pins_digital"></shadow>
    </value>
- </block>
- <block type="GD5800_MP3_CONTROL">
+   <value name="FREQUENCY">
+    <shadow type="tone_notes"></shadow>
+  </value>
+  <value name="DURATION">
+    <shadow type="math_number">
+      <field name="NUM">1000</field>
+    </shadow>
+  </value>
+</block>
+<block type="controls_notone_noTimer">
+  <value name="PIN">
+   <shadow type="pins_digital"></shadow>
+ </value>
+</block>
+<block type="GD5800_MP3_CONTROL">
   <value name="RXPIN">
     <shadow type="pins_digital" />
     <field name="PIN">4</field>

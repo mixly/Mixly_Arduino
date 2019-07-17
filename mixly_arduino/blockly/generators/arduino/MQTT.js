@@ -31,6 +31,26 @@ Blockly.Arduino.network_get_connect= function() {
 Blockly.Arduino.network_stop= function() {
 	return "WiFi.stop();";
 }
+
+Blockly.Arduino.NTP_server = function() {
+	var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);
+	var timeZone = Blockly.Arduino.valueToCode(this, 'timeZone', Blockly.Arduino.ORDER_ATOMIC);
+	var Interval = Blockly.Arduino.valueToCode(this, 'Interval', Blockly.Arduino.ORDER_ATOMIC);
+	Blockly.Arduino.definitions_['include_TimeLib'] ='#include <TimeLib.h>';
+	Blockly.Arduino.definitions_['include_NtpClientLib'] ='#include <NtpClientLib.h>';
+	Blockly.Arduino.definitions_['var_declare_timeZone'] = 'int8_t timeZone = '+timeZone+';';
+	Blockly.Arduino.definitions_['var_declare_ntpServer'] ='const PROGMEM char *ntpServer = '+server_add+';';
+	Blockly.Arduino.setups_['NTP.setInterval'] = 'NTP.setInterval ('+Interval+');';
+	Blockly.Arduino.setups_['NTP.setNTPTimeout'] = 'NTP.setNTPTimeout (1500);';
+	Blockly.Arduino.setups_['NTP.begin'] = 'NTP.begin (ntpServer, timeZone, false);';
+	return "";
+
+};
+Blockly.Arduino.NTP_server_get_time = function () {
+	var timeType = this.getFieldValue('TIME_TYPE');
+	var code = timeType ;
+	return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
 var Client_ID ;
 Blockly.Arduino.MQTT_server = function() {
 	var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);

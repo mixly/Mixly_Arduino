@@ -11,6 +11,51 @@ Blockly.Blocks.blynk.MusicHUE = 200;
 Blockly.Blocks.blynk.ICON_WIDTH = 20; //传感器图标宽度
 Blockly.Blocks.blynk.ICON_HEIGHT = 20; //传感器图标高度
 
+Blockly.Blocks.NTP_server = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.appendDummyInput("")
+    .appendField(Blockly.NTP_SERVER);
+    this.appendValueInput("server_add")
+    .appendField(Blockly.blynk_SERVER_ADD)
+    .setCheck(String);
+    this.appendValueInput("timeZone")
+    .appendField(Blockly.MIXLY_TimeZone)
+    .setCheck(Number);
+     this.appendValueInput("Interval")
+    .appendField(Blockly.blynk_WidgetRTC_setSyncInterval )
+    .setCheck(Number);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
+//传感器-实时时钟块_时间变量
+var NTP_TIME_TYPE = [
+[Blockly.MIXLY_YEAR, "NTP.getDateYear()"],
+[Blockly.MIXLY_MONTH, "NTP.getDateMonth()"],
+[Blockly.MIXLY_DAY, "NTP.getDateDay()"],
+[Blockly.MIXLY_HOUR, "NTP.getTimeHour24()"],
+[Blockly.MIXLY_MINUTE, "NTP.getTimeMinute()"],
+[Blockly.MIXLY_SECOND, "NTP.getTimeSecond()"],
+// [Blockly.MIXLY_WEEK, "weekday"]
+];
+//传感器-实时时钟块_获取时间
+Blockly.Blocks.NTP_server_get_time = {
+  init: function() {
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.appendDummyInput("")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.NTP_server_get_time);
+    this.appendDummyInput("")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(new Blockly.FieldDropdown(NTP_TIME_TYPE), "TIME_TYPE");
+    this.setInputsInline(true);
+    this.setOutput(true, Number);
+  }
+};
+
 Blockly.Blocks.MQTT_server = {
   init: function() {
     this.setColour(Blockly.Blocks.blynk.HUE1);
