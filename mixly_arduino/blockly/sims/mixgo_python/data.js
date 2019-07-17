@@ -6,6 +6,7 @@ var mbData = {
     'distance_infrared_right': 0,
     'soundlevel': 0,
     'brightness': 0,
+    'boardLED': [0,0,0],
     'servo': 0,
     'compass': {
        'heading': 0,

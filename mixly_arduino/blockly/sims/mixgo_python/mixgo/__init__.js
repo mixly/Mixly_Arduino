@@ -131,6 +131,7 @@ var $builtinmodule = function (name) {
             distance_infrared_right : mbData['distance_infrared_right'],
             brightness: mbData['brightness'],
             soundlevel: mbData['soundlevel'],
+            boardLED: mbData['boardLED'],
         }
     };
 
@@ -183,7 +184,6 @@ var $builtinmodule = function (name) {
 
     var led = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
         $loc.__init__ = new Sk.builtin.func(function(self, pin) {
-            self.val = 1;
             if(pin){
                 self.pin = pin.v;
                 ui.addPinOption('analog', 5 * (self.pin - 1));
@@ -205,14 +205,20 @@ var $builtinmodule = function (name) {
         });
 
         $loc.setonoff = new Sk.builtin.func(function(self, pin, val) {
-            if(val.v === -1)
-                self.val = 1 - val.v;
-            else
-                self.val = val.v;
-            ui.setBoardLEDonoff(pin.v, self.val);
+            var actualVal = val.v
+            if(actualVal === -1){
+                actualVal = (mod.data.boardLED[pin.v] - actualVal) % 2;
+            }
+            mod.data.boardLED[pin.v] = actualVal;
+            if(actualVal === 0){
+                ui.setBoardLEDonoff(pin.v, 0);
+            }
+            else if(actualVal === 1){
+                ui.setBoardLEDonoff(pin.v, 1024);
+            }
         });
-        $loc.getonoff = new Sk.builtin.func(function(self) {
-            return Sk.builtin.int_(1 - self.val);
+        $loc.getonoff = new Sk.builtin.func(function(self, pin) {
+            return Sk.builtin.int_(mod.data.boardLED[pin.v]);
         });
         $loc.setbrightness = new Sk.builtin.func(function(self, pin, brightness) {
             ui.setBoardLEDbrightness(pin.v, brightness.v);

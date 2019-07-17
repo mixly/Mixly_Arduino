@@ -251,7 +251,9 @@ var $builtinmodule = function(name) {
 					n.f = n.f * 2;
 				}
 				n.f = Math.round(n.f);
-				
+				//调用matrix模块显示，但是不起作用
+				var matrix = Sk.importModule("matrix");
+    			var show = Sk.misceval.callsim(matrix['$d'].display.showstatic.func_code, new Sk.builtin.str(n.note));				
 				if(n.f > 0) {
 					var osc = mod._data.audioCtx.createOscillator();
 					mod._data.osc = osc;

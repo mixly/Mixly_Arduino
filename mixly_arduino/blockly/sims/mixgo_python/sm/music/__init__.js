@@ -40,7 +40,7 @@ var $builtinmodule = function(name) {
 			var i = 0;
 			var timeout = 60000 / mod._data.bpm / mod._data.ticks;
 			
-			function playNextNote() {
+			function playNextNote(pin) {
 				if(mod._data.stop) {
 					delete mod._data.stop;
 					return;
@@ -138,11 +138,11 @@ var $builtinmodule = function(name) {
 				i++;
 				
 				if(i <= notes.length) {
-					setTimeout(playNextNote, timeout * n.ticks);
+					setTimeout(playNextNote, timeout * n.ticks, pin);
 					sm.time += timeout * n.ticks;
 				} 
 			}
-			playNextNote();
+			playNextNote(pin.v);
 			if(!wait.v) {
 				resolve();
 			}
@@ -170,7 +170,7 @@ var $builtinmodule = function(name) {
 			var i = 0;
 			var timeout = 60000 / mod._data.bpm / mod._data.ticks;
 			
-			function playNextNote() {
+			function playNextNote(pin) {
 				if(mod._data.stop) {
 					delete mod._data.stop;
 					return;
@@ -254,7 +254,9 @@ var $builtinmodule = function(name) {
 					n.f = n.f * 2;
 				}
 				n.f = Math.round(n.f);
-				
+				var sm_matrix = Sk.importModule("sm_matrix");
+    			var show = Sk.misceval.callsim(sm_matrix['$d'].display.showstatic.func_code, new Sk.builtin.str(n.note));
+				sm.music.set_pitch(pin, n.f);
 				if(n.f > 0) {
 					var osc = mod._data.audioCtx.createOscillator();
 					mod._data.osc = osc;
@@ -266,10 +268,10 @@ var $builtinmodule = function(name) {
 				i++;
 				
 				if(i <= notes.length) {
-					setTimeout(playNextNote, timeout * n.ticks);
+					setTimeout(playNextNote, timeout * n.ticks, pin);
 				} 
 			}
-			playNextNote();
+			playNextNote(pin.v);
 			if(!wait.v) {
 				resolve();
 			}
@@ -305,7 +307,7 @@ var $builtinmodule = function(name) {
 			osc.frequency.value = frequency.v;
 			osc.connect(mod._data.audioCtx.destination);
 			osc.start();
-			sm.music.set_pitch(pin, frequency.v);
+			sm.music.set_pitch(pin.v, frequency.v);
 			if(len.v > 0) {
 				setTimeout(function() {
 					sm.time += len.v

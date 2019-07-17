@@ -6,10 +6,10 @@ var $builtinmodule = function (name) {
 		}
 	};
 	var servo_write_angle = function(pin,degree){
+		debugger;
 		if (pin == undefined) {
                 throw new Sk.builtin.TypeError("parameter pin not defined");
         }
-		ui.updateServo(degree.v || 0);
 		mod._data.pin = pin.v;
 		mod._data.degree = degree.v;
 		sm.servo.write_angle(pin.v, degree.v);
@@ -17,7 +17,7 @@ var $builtinmodule = function (name) {
 	servo_write_angle.co_varnames = ['pin','degree'];
 	servo_write_angle.$defaults = [Sk.builtin.int_(0),Sk.builtin.int_(0)];
 	servo_write_angle.co_numargs = 2;
-	mod.servo_write_angle = new Sk.builtin.func(servo_write_angle);
+	mod.sm_servo_write_angle = new Sk.builtin.func(servo_write_angle);
 
 	return mod;
 };

@@ -15,7 +15,6 @@ var $builtinmodule = function(name) {
 
         function setLED(x, y, brightness) {
             sm.display.set_pixel(x,y,brightness);
-            ui.setMatrixLED(x, y, brightness);
             leds[y][x] = brightness;
         }
 
@@ -24,7 +23,6 @@ var $builtinmodule = function(name) {
             for(x = 0; x < 16; x++) {
                 for(y = 0; y < 8; y++) {
                     setLED(x, y, 0);
-                    sm.display.set_pixel(x, y, 0);
                 }
             }
 
@@ -34,21 +32,6 @@ var $builtinmodule = function(name) {
         }
         function getBrightness(){
             return mod.data.brightness;
-        }
-        function showCharacter(c) {
-            var x, y;
-            var rows = ['', '', '', '', ''];
-
-            var letter = letters[" "];
-            if(letters.hasOwnProperty(c)) {
-                letter = letters[c];
-            }
-            for(y = 0; y < 5; y++) {
-                for(x = 0; x < 5; x++) {
-                    setLED(x, y, letter[y][x]);
-                }
-            }
-
         }
         var bf = new Object();
         bf._font_width = parseInt(fontbinArr[0].substring(0,2),16);
@@ -72,7 +55,6 @@ var $builtinmodule = function(name) {
                     }
                 }
             }
-            sm.updateSnapshot();
         };
         bf.text = function(text, x, y){
             for(var i = 0; i < text.length; i++){
@@ -89,8 +71,8 @@ var $builtinmodule = function(name) {
         });
 
         mod.set_pixel = new Sk.builtin.func(function(x, y, brightness) {
-
             setLED(parseInt(x.v), parseInt(y.v), parseInt(brightness.v));
+            sm.forceUpdateSnapshot();
         });
 
         mod.clear = new Sk.builtin.func(function() {
@@ -152,13 +134,13 @@ var $builtinmodule = function(name) {
                             }
                         }
                         if(image.tp$name == "str") {
-                            showCharacter(image.v[i]);
+                            bf.text(image.v[i]);
                         }
 
                         if(image.v[i].tp$name == "str") {
-                            showCharacter(image.v[i].v[0]);
+                            bf.text(image.v[i].v[0]);
                         }
-
+                        sm.updateSnapshot();
                         i++;
                         setTimeout(showNextFrame, delay.v)
                     }
@@ -177,8 +159,9 @@ var $builtinmodule = function(name) {
                         }
                     }
                     if(image.tp$name == "str") {
-                        showCharacter(image.v[0]);
+                        bf.text(image.v[0]);
                     }
+                    sm.updateSnapshot();
                     resolve();
                 }
             });
@@ -204,24 +187,23 @@ var $builtinmodule = function(name) {
                 var current, delta_ms;
                 var pos = screenWidth; //X position of the message start.
                 var message_width = bf.width(message.v); //Message width in pixels.
-                var last = new Date(); //Last frame start time.
+                var last = sm.time; //Last frame start time.
                 var speed_ms = 1200 / speed.v / 1000.0;
+                var count = 0;//定时器运行次数计数器
                 clearScreen();
                 bf.text(message.v, parseInt(pos,10), 0);
-                var intervalId = setInterval(function(){
-                    current = new Date();
-                    delta_ms = current.getTime() - last.getTime();
-                    last = current;
-                    pos -= speed_ms * delta_ms;
-                    if (pos < -message_width){
-                        pos = screenWidth;
-                        clearInterval(intervalId);
-                        clearScreen();
-                    }
+                while(pos >= -message_width){
+                    //10ms刷新一次，约等于100fps
+                    sm.time += 10;
+                    pos -= speed_ms * 10;
                     clearScreen();
                     bf.text(message.v, parseInt(pos,10), 0);
-                    sm.time += speed_ms;
-                },30);
+                    count ++;
+                    if(count % 10 === 0) //100ms采样一次
+                        sm.updateSnapshot();
+                }
+                clearScreen();
+                resolve();
             });
         }
         scroll.co_varnames = ['message', 'delay'];
@@ -236,6 +218,8 @@ var $builtinmodule = function(name) {
             return sim.runAsync(function(resolve, reject) {
                 clearScreen();
                 bf.text(message.v, 0, 0);
+
+                resolve();
             });
         }
         showstatic.co_varnames = ['message'];

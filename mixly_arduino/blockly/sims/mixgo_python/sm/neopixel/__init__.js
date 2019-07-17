@@ -55,8 +55,8 @@ var $builtinmodule = function (name) {
         });
 
         $loc.write = new Sk.builtin.func(function(self) {
-            sm.neopixel.set_leds(self.pin, self.leds)
-            ui.updateNeopixel(self.leds);
+        	console.log(self);
+            sm.neopixel.set_leds(self.pin.pinNum, self.leds)
         });
     }, 'NeoPixel', []);
 

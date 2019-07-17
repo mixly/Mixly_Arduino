@@ -4,7 +4,7 @@ Sk.externalLibraries = {
     mixgo: {
         path: base_url + 'mixgo/__init__.js',
         dependencies: [
-            base_url + 'mixgo/accelerometer.js',
+            base_url + 'mixgo/mpu.js',
             base_url + 'mixgo/compass.js',
             base_url + 'mixgo/uart.js',
             base_url + 'mixgo/infrared_left.js',
