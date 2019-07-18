@@ -373,7 +373,7 @@ Blockly.Arduino.oled_init = function() {
    Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
  var oled_setup = "u8g2.begin();";
- Blockly.Arduino.setups_['setup_setup'] = oled_setup;
+ Blockly.Arduino.setups_['setup_u8g2begin()'] = oled_setup;
  var code = '';
  return code;
 };
