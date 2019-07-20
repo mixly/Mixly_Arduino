@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-13 21:23+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/ESP8266/06.Widget_LED.rst:2
+msgid "LED组件"
+msgstr ""
+
+#: ../../source/ESP8266/06.Widget_LED.rst:17
+msgid "App端 LED组件"
+msgstr ""
+
+#: ../../source/ESP8266/06.Widget_LED.rst:22
+#: ../../source/ESP8266/06.Widget_LED.rst:53
+msgid "描述"
+msgstr ""
+
+#: ../../source/ESP8266/06.Widget_LED.rst:24
+msgid "设置App端LED组件的颜色和开关状态。"
+msgstr ""
+
+#: ../../source/ESP8266/06.Widget_LED.rst:27
+#: ../../source/ESP8266/06.Widget_LED.rst:58
+msgid "参数"
+msgstr ""
+
+#: ../../source/ESP8266/06.Widget_LED.rst:29
+#: ../../source/ESP8266/06.Widget_LED.rst:60
+msgid "虚拟管脚：App端LED组件的虚拟管脚值。"
+msgstr ""
+
+#: ../../source/ESP8266/06.Widget_LED.rst:30
+#: ../../source/ESP8266/06.Widget_LED.rst:61
+msgid "颜色选择：选择LED组件的颜色。"
+msgstr ""
+
+#: ../../source/ESP8266/06.Widget_LED.rst:31
+msgid "开关值：高为开，低为关。"
+msgstr ""
+
+#: ../../source/ESP8266/06.Widget_LED.rst:34
+#: ../../source/ESP8266/06.Widget_LED.rst:65
+msgid "范例"
+msgstr ""
+
+#: ../../source/ESP8266/06.Widget_LED.rst:37
+msgid "LED组件颜色及亮度设置"
+msgstr ""
+
+#: ../../source/ESP8266/06.Widget_LED.rst:55
+msgid "设置手机端LED组件的颜色和亮度。"
+msgstr ""
+
+#: ../../source/ESP8266/06.Widget_LED.rst:62
+msgid "亮度值：设置LED组件亮度，最暗为0，最亮100。"
+msgstr ""
+

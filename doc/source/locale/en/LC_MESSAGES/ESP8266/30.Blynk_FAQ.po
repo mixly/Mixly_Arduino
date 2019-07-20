@@ -1,0 +1,138 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-13 21:23+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:2
+msgid "Bylnk 常见问题及解决办法"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:5
+msgid "现象1：无法找到端口"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:8
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:22
+msgid "可能原因"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:9
+msgid "没有正确安装驱动程序。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:10
+msgid "USB连接不稳定。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:13
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:26
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:75
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:91
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:121
+msgid "解决办法"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:15
+msgid ""
+"重新安装驱动，Mixly软件中自带驱动程序目录为 "
+"mixly/\\arduino-1.x.x/\\drivers，请根据开发板的串口芯片安装相应的驱动程序。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:16
+msgid "重新插拔USB线，更换USB线，换USB接口。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:19
+msgid "现象2：GPIO2连接传感器时无法上传程序"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:23
+msgid "上传程序时，GPIO0,2,15,UART四个接口不能连接传感器，如果连接可能会导致无法上传。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:27
+msgid "GPIO0,2,15不要连接传感器上传程序，传完程序再连接。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:31
+msgid "Blynk程序如何调试？"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:32
+msgid "上传程序，打开串口监视器，按下开发板上的Reset键。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:34
+msgid "如果连接正常，显示信息如下："
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:54
+msgid "服务器地址错误"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:72
+msgid "由于服务器地址错误，导致开发板每隔5秒钟连接一次服务器，但始终无法连接上。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:76
+msgid "检查服务器地址是否真实存在。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:77
+msgid "检查当前网络是否可以连接到该服务器。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:80
+msgid "Wi-Fi信息错误"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:88
+msgid "可能由于该WIFI不存在、密码错误等原因，无法连接到该WIFI，因此一直停在连接WIFI阶段。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:92
+msgid "检查Wi-Fi名称是否含有中文字。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:93
+msgid "检查Wi-Fi是否为2.4GHz，不支持5GHz。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:94
+msgid "Wi-Fi信息大小写敏感，必须与实际信息保持一致。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:95
+msgid "苹果手机分享的热点是无法连接的，安卓的热点可以使用。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:99
+msgid "授权码错误"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:118
+msgid "可能由于授权码复制错误，或者搞错服务器，导致授权码错误。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:122
+msgid "重新复制授权码贴入。"
+msgstr ""
+
+#: ../../source/ESP8266/30.Blynk_FAQ.rst:123
+msgid "检查手机端和程序端设置的服务器地址是否相同，很多时候会出现手机上的账号是国外服务器，而程序是连接国内服务器，导致授权码错误。"
+msgstr ""
+

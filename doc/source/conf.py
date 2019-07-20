@@ -19,9 +19,9 @@
 project = 'Mixly Wiki'
 copyright = '2019, Mixly Team'
 author = 'hznupeter'
-version='0.999'
+version='1.0'
 # The full version, including alpha/beta/rc tags
-release = '0.999'
+release = '1.0'
 
 # -- General configuration ---------------------------------------------------
 

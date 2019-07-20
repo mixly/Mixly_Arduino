@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-13 21:23+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/arduino/03.Control_advance.rst:2
+msgid "控制 (高级视图)"
+msgstr ""
+
+#: ../../source/arduino/03.Control_advance.rst:6
+msgid "允许中断"
+msgstr ""
+
+#: ../../source/arduino/03.Control_advance.rst:11
+#: ../../source/arduino/03.Control_advance.rst:48
+msgid "描述"
+msgstr ""
+
+#: ../../source/arduino/03.Control_advance.rst:14
+msgid "允许输入/输出模块中管脚中断的运行"
+msgstr ""
+
+#: ../../source/arduino/03.Control_advance.rst:17
+#: ../../source/arduino/03.Control_advance.rst:54
+msgid "用法"
+msgstr ""
+
+#: ../../source/arduino/03.Control_advance.rst:18
+msgid "主要用于加入禁止中断模块后恢复中断执行。"
+msgstr ""
+
+#: ../../source/arduino/03.Control_advance.rst:21
+#: ../../source/arduino/03.Control_advance.rst:58
+msgid "范例"
+msgstr ""
+
+#: ../../source/arduino/03.Control_advance.rst:22
+msgid "使用按钮模拟开关，每次按下，LED灯切换亮灭"
+msgstr ""
+
+#: ../../source/arduino/03.Control_advance.rst:43
+msgid "禁止中断"
+msgstr ""
+
+#: ../../source/arduino/03.Control_advance.rst:51
+msgid "禁止输入/输出模块中管脚中断的运行"
+msgstr ""
+
+#: ../../source/arduino/03.Control_advance.rst:55
+msgid "主要用于禁止中断模块的中断执行。"
+msgstr ""
+
+#: ../../source/arduino/03.Control_advance.rst:59
+msgid "在允许中断范例的基础上，尝试禁止中断"
+msgstr ""
+
+#: ../../source/arduino/03.Control_advance.rst:80
+msgid "SCoop Task"
+msgstr ""
+
+#: ../../source/arduino/03.Control_advance.rst:84
+msgid "执行SCoop"
+msgstr ""
+
+#: ../../source/arduino/03.Control_advance.rst:88
+msgid "SCoop 延时"
+msgstr ""
+

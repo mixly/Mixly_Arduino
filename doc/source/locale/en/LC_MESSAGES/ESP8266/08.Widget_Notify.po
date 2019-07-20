@@ -1,0 +1,55 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-13 21:23+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/ESP8266/08.Widget_Notify.rst:3
+msgid "通知组件"
+msgstr ""
+
+#: ../../source/ESP8266/08.Widget_Notify.rst:12
+msgid "App端 Notify组件"
+msgstr ""
+
+#: ../../source/ESP8266/08.Widget_Notify.rst:17
+msgid "描述"
+msgstr ""
+
+#: ../../source/ESP8266/08.Widget_Notify.rst:20
+msgid "发送通知到手机，可以用于提示传感器检测到数据或者报警情况。"
+msgstr ""
+
+#: ../../source/ESP8266/08.Widget_Notify.rst:23
+msgid "该功能在安卓手机上需要有google Play的支持，因此国内的安卓手机无法使用该功能。"
+msgstr ""
+
+#: ../../source/ESP8266/08.Widget_Notify.rst:25
+msgid "IOS手机需要连接官方服务器才能正常使用，本地服务器无法使用该功能。"
+msgstr ""
+
+#: ../../source/ESP8266/08.Widget_Notify.rst:28
+msgid "参数"
+msgstr ""
+
+#: ../../source/ESP8266/08.Widget_Notify.rst:30
+msgid "通知内容：设置通知内容，可以加入变量值。"
+msgstr ""
+
+#: ../../source/ESP8266/08.Widget_Notify.rst:33
+msgid "范例"
+msgstr ""
+

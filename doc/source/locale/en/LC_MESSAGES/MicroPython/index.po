@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mixly Wiki 0.999\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-15 19:08+0800\n"
+"POT-Creation-Date: 2019-05-13 21:23+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,9 @@ msgstr ""
 "Generated-By: Babel 2.6.0\n"
 
 #: ../../source/MicroPython/index.rst:2
-msgid "Python 编程"
+msgid "MicroPython 编程"
 msgstr ""
+
+#~ msgid "Python 编程"
+#~ msgstr ""
 

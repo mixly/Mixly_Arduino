@@ -8,20 +8,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mixly Wiki 0.999\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-15 19:08+0800\n"
+"POT-Creation-Date: 2019-07-17 21:19+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.7.0\n"
 
-#: ../../source/arduino/08.Communicate.rst:3
+#: ../../source/arduino/08.Communicate.rst:2
 msgid "通信"
 msgstr ""
 
-#: ../../source/arduino/08.Communicate.rst:5
+#: ../../source/arduino/08.Communicate.rst:4
 msgid "通信是为了方便人与计算机交互而采用的一种特殊通信方式。具体包括：串口通信(新增串口选择和波特率设置)、红外通信、I2C通信、SPI通信（新增）。"
 msgstr ""
 
@@ -63,4 +63,10 @@ msgid ""
 "SPI是串行外设接口（Serial Peripheral "
 "Interface）的缩写。SPI，是一种高速的，全双工，同步的通信总线，并且在芯片的管脚上只占用四根线，节约了芯片的管脚，同时为PCB的布局上节省空间，提供方便，拥有简单易用的特性。用户可以使用Mixly向SPI传输数据。"
 msgstr ""
+
+#~ msgid "通信"
+#~ msgstr ""
+
+#~ msgid "通信(普通视图)"
+#~ msgstr ""
 

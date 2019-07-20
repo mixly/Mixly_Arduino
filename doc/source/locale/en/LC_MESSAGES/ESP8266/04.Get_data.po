@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-13 21:23+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/ESP8266/04.Get_data.rst:3
+msgid "从App获取数据"
+msgstr ""
+
+#: ../../source/ESP8266/04.Get_data.rst:33
+msgid "描述"
+msgstr ""
+
+#: ../../source/ESP8266/04.Get_data.rst:36
+msgid "本模块用于从APP获取虚拟管脚的数值。因此必须在App端设置向该虚拟管脚发送数据。"
+msgstr ""
+
+#: ../../source/ESP8266/04.Get_data.rst:38
+msgid "可以接收的数据类型包括但不限于 整数，浮点数，字符，字符串。"
+msgstr ""
+
+#: ../../source/ESP8266/04.Get_data.rst:41
+msgid "参数"
+msgstr ""
+
+#: ../../source/ESP8266/04.Get_data.rst:43
+msgid "传入参数：点开齿轮设置传入参数的变量类型和变量名称。**该处变量为全局变量**"
+msgstr ""
+
+#: ../../source/ESP8266/04.Get_data.rst:44
+msgid "虚拟管脚：用于接收数据的虚拟管脚，需要与App端对应。"
+msgstr ""
+
+#: ../../source/ESP8266/04.Get_data.rst:47
+msgid "范例1：APP控制舵机"
+msgstr ""
+
+#: ../../source/ESP8266/04.Get_data.rst:49
+msgid "App端通过虚拟管脚发送数值，控制舵机的转动。"
+msgstr ""
+
+#: ../../source/ESP8266/04.Get_data.rst:52
+#: ../../source/ESP8266/04.Get_data.rst:106
+msgid "硬件连接"
+msgstr ""
+
+#: ../../source/ESP8266/04.Get_data.rst:57
+#: ../../source/ESP8266/04.Get_data.rst:111
+msgid "编写程序"
+msgstr ""
+
+#: ../../source/ESP8266/04.Get_data.rst:91
+#: ../../source/ESP8266/04.Get_data.rst:153
+msgid "APP设置"
+msgstr ""
+
+#: ../../source/ESP8266/04.Get_data.rst:96
+#: ../../source/ESP8266/04.Get_data.rst:158
+msgid "效果"
+msgstr ""
+
+#: ../../source/ESP8266/04.Get_data.rst:100
+msgid "范例2：远程控制七彩灯"
+msgstr ""
+
+#: ../../source/ESP8266/04.Get_data.rst:102
+msgid "App端添加斑马取色组件，通过斑马取色组件发送颜色值。 开发板收到颜色值后控制七彩灯发光。"
+msgstr ""
+

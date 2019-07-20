@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-13 21:23+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/ESP8266/01.Prepare.rst:2
+msgid "准备工作"
+msgstr ""
+
+#: ../../source/ESP8266/01.Prepare.rst:5
+msgid "Blynk App 下载"
+msgstr ""
+
+#: ../../source/ESP8266/01.Prepare.rst:6
+msgid "安卓用户扫描下方二维码下载Blynk App。"
+msgstr ""
+
+#: ../../source/ESP8266/01.Prepare.rst:12
+msgid "请不要使用微信扫描该二维码，微信会屏蔽该二维码。可以使用手机浏览器自带的二维码扫描功能。"
+msgstr ""
+
+#: ../../source/ESP8266/01.Prepare.rst:14
+msgid "苹果用户直接在app store 中搜索blynk并下载。"
+msgstr ""
+
+#: ../../source/ESP8266/01.Prepare.rst:19
+msgid "Blynk账号注册"
+msgstr ""
+
+#: ../../source/ESP8266/01.Prepare.rst:20
+msgid "安装好APP之后，进入app首页，点击Create New Account,输入邮箱和密码。"
+msgstr ""
+
+#: ../../source/ESP8266/01.Prepare.rst:22
+msgid "如果要注册国内服务器或者本地服务器的账号，在下方设置中将服务器地址改成本地服务器地址。"
+msgstr ""
+
+#: ../../source/ESP8266/01.Prepare.rst:27
+msgid "Blynk账号登录"
+msgstr ""
+
+#: ../../source/ESP8266/01.Prepare.rst:29
+msgid "注册好账号之后，就可以登录Blynk App了。"
+msgstr ""
+
+#: ../../source/ESP8266/01.Prepare.rst:35
+msgid "新建Blynk项目"
+msgstr ""
+
+#: ../../source/ESP8266/01.Prepare.rst:36
+msgid "注册完Blynk账号之后，登入App，点击New Project创建新项目。"
+msgstr ""
+
+#: ../../source/ESP8266/01.Prepare.rst:37
+msgid "设置项目名称，选择硬件类型，默认为ESP8266。"
+msgstr ""
+
+#: ../../source/ESP8266/01.Prepare.rst:38
+msgid "点击右上角 项目设置 按钮，进入项目设置界面。"
+msgstr ""
+
+#: ../../source/ESP8266/01.Prepare.rst:39
+msgid "找到Auth Token，点击Copy All复制授权码（IOS版本直接点击授权码进行复制）。"
+msgstr ""
+

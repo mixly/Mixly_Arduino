@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-13 21:23+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/ESP8266/05.Send_data.rst:2
+msgid "发送数据到App"
+msgstr ""
+
+#: ../../source/ESP8266/05.Send_data.rst:4
+msgid "开发板发送数据到App的虚拟管脚。"
+msgstr ""
+
+#: ../../source/ESP8266/05.Send_data.rst:34
+msgid "描述"
+msgstr ""
+
+#: ../../source/ESP8266/05.Send_data.rst:35
+msgid "本模块用于开发板向App发送数据。因此必须在App端设置相应组件用于接收数据。 可以发送的数据类型包括但不限于 整数，浮点数，字符，字符串。"
+msgstr ""
+
+#: ../../source/ESP8266/05.Send_data.rst:39
+msgid "参数"
+msgstr ""
+
+#: ../../source/ESP8266/05.Send_data.rst:41
+msgid "发送数据：需要发送的数据，支持常量和变量。"
+msgstr ""
+
+#: ../../source/ESP8266/05.Send_data.rst:42
+msgid "虚拟管脚：用于发送数据的虚拟管脚，需要与App端对应。"
+msgstr ""
+
+#: ../../source/ESP8266/05.Send_data.rst:45
+msgid "范例1：网络气象站"
+msgstr ""
+
+#: ../../source/ESP8266/05.Send_data.rst:47
+msgid "开发板将DHT11温湿度传感器检测到的数据发送到App端V0,V1管脚。"
+msgstr ""
+
+#: ../../source/ESP8266/05.Send_data.rst:50
+msgid "硬件连接"
+msgstr ""
+
+#: ../../source/ESP8266/05.Send_data.rst:54
+msgid "编写程序"
+msgstr ""
+
+#: ../../source/ESP8266/05.Send_data.rst:88
+msgid "效果"
+msgstr ""
+

@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, Mixly Team
+# This file is distributed under the same license as the Mixly Wiki package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Mixly Wiki 0.999\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-13 21:23+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/arduino/02.Input-Output_advance.rst:2
+msgid "输入/输出 (高级视图)"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:5
+msgid "管脚中断"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:10
+#: ../../source/arduino/02.Input-Output_advance.rst:46
+msgid "描述"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:13
+msgid "当发生外部中断时，调用一个指定函数。当中断发生时，该函数会取代正在执行的程序。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:15
+msgid "本模块为模拟中断，支持所有管脚使用。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:18
+#: ../../source/arduino/02.Input-Output_advance.rst:52
+msgid "参数"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:20
+#: ../../source/arduino/02.Input-Output_advance.rst:53
+msgid "管脚: 引脚编号（如2,3）不同的开发板中断引脚不一样。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:26
+msgid "模式："
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:22
+msgid "改变：当引脚电平发生改变时，触发中断"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:24
+msgid "上升：当引脚由低电平变为高电平时，触发中断"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:26
+msgid "下降：当引脚由高电平变为低电平时，触发中断"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:29
+msgid "范例"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:31
+msgid "利用中断，控制13号引脚的LED亮灭。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:35
+msgid "注释"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:37
+msgid "当中断函数发生时，delay()和millis()的数值将不会继续变化。当中断发生时，串口收到的数据可能会丢失。你应该声明一个变量来在未发生中断时储存变量。"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:41
+msgid "取消管脚中断"
+msgstr ""
+
+#: ../../source/arduino/02.Input-Output_advance.rst:49
+msgid "关闭给定的中断。"
+msgstr ""
+

@@ -1,8 +1,8 @@
 
 Email组件
------------------------
+===========
 
-.. image:: images/16/widget_email.png
+.. image:: images/16/widget_email_module.png
 
 .. code-block:: c
 	:linenos:
@@ -14,17 +14,21 @@ Email组件
 	  Blynk.email("example@blynk.cc", "Subject", "Content");
 	}
 
+App端 Email组件
+
+.. image:: images/16/widget_email.png
+
 描述
-++++++++++++++
+-----------
 
 给指定邮箱发送邮件。
 
 参数
-+++++++++++++++
+----------
 
 * 邮箱地址：收件人邮箱地址。
 * 邮件主题：设置邮件主题，可以加入变量值。
 * 邮件内容：设置邮件内容，可以加入变量值。
 
 范例
-+++++++++++++++++++++
+-----

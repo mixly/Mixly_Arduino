@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mixly Wiki 0.999\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-15 19:08+0800\n"
+"POT-Creation-Date: 2019-05-13 21:23+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,8 +26,7 @@ msgid "下载Mixly软件"
 msgstr ""
 
 #: ../../source/basic/01.Installation-for-Mixly.rst:5
-#, python-format
-msgid "`下载地址1 <https://pan.baidu.com/s/1dE3Z6db#list/path=%2F>`_"
+msgid "`下载地址1 <https://pan.baidu.com/s/1dE3Z6db>`_"
 msgstr ""
 
 #: ../../source/basic/01.Installation-for-Mixly.rst:6
@@ -69,4 +68,7 @@ msgstr ""
 #: ../../source/basic/01.Installation-for-Mixly.rst:32
 msgid "双击Mixly目录下的Mixly.exe即可启动。"
 msgstr ""
+
+#~ msgid "`下载地址1 <https://pan.baidu.com/s/1dE3Z6db#list/path=%2F>`_"
+#~ msgstr ""
 

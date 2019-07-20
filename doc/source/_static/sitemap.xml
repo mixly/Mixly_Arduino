@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/</loc>
+  <lastmod>2019-04-27T12:50:51+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/contents.html</loc>
+  <lastmod>2019-04-27T12:50:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/basic/index.html</loc>
+  <lastmod>2019-04-27T12:50:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/index.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/ESP8266/index.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/Python/index.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/MicroPython/index.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/basic/00.Mixly_introduction.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/basic/01.Installation-for-Mixly.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/basic/20.Programming-building-area.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/basic/21.Coding-area.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/basic/22.Message-area.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/basic/23.System-function-area.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/basic/24.Example.html</loc>
+  <lastmod>2019-04-27T12:50:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/basic/26.Company.html</loc>
+  <lastmod>2019-04-27T12:50:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/basic/27.Third-Party.html</loc>
+  <lastmod>2019-04-27T12:50:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/basic/25.FAQ.html</loc>
+  <lastmod>2019-04-27T12:50:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/02.Input-Output.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/02.Input-Output_advance.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control_advance.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/04.Mathematics.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/05.Text.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/06.Lists.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/07.Logic.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/08.Communicate.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/09.Storage.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/10.Sensor.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/11.Actuator.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/12.Ethernet.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/13.Variables.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/14.Functions.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/arduino/15.Factory.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/ESP8266/01.Prepare.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/ESP8266/02.Server_info.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/ESP8266/03.Smartconfig.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/ESP8266/04.Get_data.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/ESP8266/05.Send_data.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/ESP8266/06.Widget_LED.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/ESP8266/07.Widget_Email.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://mixly.readthedocs.io/zh_CN/latest/ESP8266/30.Blynk_FAQ.html</loc>
+  <lastmod>2019-04-27T12:50:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>
