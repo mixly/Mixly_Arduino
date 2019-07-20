@@ -2401,3 +2401,10 @@ Blockly.Msg.HTML_WEEK = "week";
 Blockly.NTP_SERVER='NTP Time Server';
 Blockly.MIXLY_TimeZone='TimeZone';
 Blockly.NTP_server_get_time='NTP Get';
+
+Blockly.MIXLY_CLICK='Click';
+Blockly.MIXLY_DOUBLE_CLICK='Double Click';
+Blockly.MIXLY_LONG_PRESS_START='Long Press Start';
+Blockly.MIXLY_DURING_LONG_PRESS='During Long Press';
+Blockly.MIXLY_LONG_PRESS_END='Long Press End';
+Blockly.ONEBUTTON="Multifunctional Button";

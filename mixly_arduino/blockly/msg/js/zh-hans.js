@@ -2476,3 +2476,10 @@ Blockly.Msg.HTML_FORM_CONTENT = "表单项";
 Blockly.NTP_SERVER='NTP时间服务器';
 Blockly.MIXLY_TimeZone='时区';
 Blockly.NTP_server_get_time='NTP获取';
+
+Blockly.MIXLY_CLICK='单击';
+Blockly.MIXLY_DOUBLE_CLICK='双击';
+Blockly.MIXLY_LONG_PRESS_START='长按开始';
+Blockly.MIXLY_DURING_LONG_PRESS='长按中';
+Blockly.MIXLY_LONG_PRESS_END='长按结束';
+Blockly.ONEBUTTON="多功能按键";
