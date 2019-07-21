@@ -949,3 +949,25 @@ Blockly.Blocks['text_format_noreturn'] = {
     }
   }
 };
+
+
+
+Blockly.Blocks['text_encode'] = {
+  init: function() {
+      this.setColour(Blockly.Blocks.texts.HUE);
+      var encode_decode =
+        [[Blockly.Msg.MIXPY_TEXT_ENCODE, 'encode'],[Blockly.Msg.MIXPY_TEXT_DECODE, 'decode']];
+      var code =
+        [['ASCII', 'ASCII'],['gb2313', 'gb2313'],['gbk', 'gbk'],['utf-8', 'utf-8'],['utf-16', 'utf-16'],['utf-32', 'utf-32']];  
+      this.appendDummyInput()          
+          .appendField(new Blockly.FieldDropdown(code), 'CODE')
+          .appendField(' ')
+      this.appendValueInput("VAR")
+          .appendField(new Blockly.FieldDropdown(encode_decode), 'DIR')
+          .appendField(Blockly.LANG_MATH_STRING);
+      this.setOutput(true, String);
+      this.setInputsInline(true);
+      this.setTooltip(Blockly.Msg.MIXPY_TEXT_ENCODE_DECODE_TOOLTIP);
+ 
+  }
+};

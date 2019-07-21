@@ -259,3 +259,10 @@ Blockly.Python.text_format_noreturn = function() {
 Blockly.Python.text_substring3 = Blockly.Python.text_substring 
 Blockly.Python.text_compareTo = Blockly.Python.text_compare_to
 Blockly.Python.text_char_at3 = Blockly.Python.text_char_at
+
+Blockly.Python.text_encode = function() {
+  var code = this.getFieldValue('DIR');
+  var varName = this.getFieldValue('CODE')
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
+  return [str + '.' + code + '("' + varName +'")', Blockly.Python.ORDER_ATOMIC];
+};

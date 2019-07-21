@@ -46,6 +46,7 @@
     <script src="../../blocks/python/tuple.js"></script>
     <script src="../../blocks/python/procedures.js"></script>
     <script src="../../blocks/mixpy_python/hardware.js"></script>
+    <script src="../../blocks/mixpy_python/serial.js"></script>
     <script src="../../blocks/mixpy_python/ai.js"></script>
 
 	<!-- generator file -->
@@ -68,6 +69,7 @@
     <script src="../../generators/python/tuple.js"></script>
     <script src="../../generators/python/procedures.js"></script>
     <script src="../../generators/mixpy_python/hardware.js"></script>
+    <script src="../../generators/mixpy_python/serial.js"></script>
     <script src="../../generators/mixpy_python/ai.js"></script>
     <script src="js/lib/ace/ace.js" type="application/javascript"></script>
     <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
@@ -91,8 +93,9 @@
     <script src="../../converters/mixpy_python/data.js" type="application/javascript"></script>
     <script src="../../converters/mixpy_python/datastructure.js" type="application/javascript"></script>
     <script src="../../converters/mixpy_python/communicate.js" type="application/javascript"></script>
-    <script src="../../converters/mixpy_python/hardware.js"></script>
-    <script src="../../converters/mixpy_python/ai.js"></script>
+    <script src="../../converters/mixpy_python/hardware.js" type="application/javascript"></script>
+    <script src="../../converters/mixpy_python/ai.js"type="application/javascript"></script>
+    <script src="../../converters/mixpy_python/serial.js" type="application/javascript"></script>
     <script src="./js/python_to_blockly.js" type="application/javascript"></script>
     <script src="js/mixpyProject.js" type="application/javascript"></script>
     <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
@@ -657,6 +660,13 @@
           </value>
         </block>
         <block type="text_length">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">Mixly</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="text_encode">
           <value name="VAR">
             <shadow type="text">
               <field name="TEXT">Mixly</field>
@@ -1881,9 +1891,83 @@
         </value>
       </block>
       </category>
+      <category id="catSerialPort" colour="65">
+        <block type="serial_open">
+          <value name="VAR">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        </block> 
+        <block type="serial_write">
+          <value name="SER">
+            <shadow type="variables_get">
+              <field name="VAR">ser</field>
+            </shadow>
+          </value>
+          <value name="VAR">
+            <block type="text_encode">
+              <value name="VAR">
+                <shadow type="text">
+                  <field name="TEXT">Hello\r</field>
+                </shadow>
+                </value>
+            </block>
+          </value>
+        </block>
+         <block type="text_encode">
+          <field name="DIR">decode</field>
+          <value name="VAR">
+            <block type="serial_read_b">
+              <value name="SER">
+                <shadow type="variables_get">
+                  <field name="VAR">ser</field>
+                </shadow>
+              </value>
+              <value name="VAR">
+                <shadow type="math_number">
+                  <field name="NUM">1</field>
+                </shadow>
+              </value>
+            </block> 
+          </value>
+        </block> 
+        
+        <block type="serial_close">
+          <value name="SER">
+            <shadow type="variables_get">
+              <field name="VAR">ser</field>
+            </shadow>
+          </value>
+        </block>
+      </category>  
       <category id="catAI" colour="205">
        <block type="AI_ChooseAndGet">
        </block>
+       <block type="AI_audio">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">d:\\1.wav</field>
+                  </shadow>
+              </value>
+              <value name="TIME">
+                <shadow type="math_number">
+                  <field name="NUM">3</field>
+                </shadow>
+              </value>
+          </block>
+          <block type="AI_photo">
+              <value name="VAR">
+                  <shadow type="text">
+                      <field name="TEXT">d:\\1.jpg</field>
+                  </shadow>
+              </value>
+              <value name="BUT">
+                <shadow type="text">
+                      <field name="TEXT">q</field>
+                  </shadow>
+              </value>
+          </block>
        <block type="AI_client">
           <value name="SUB">
             <shadow type="variables_get">
@@ -1949,6 +2033,28 @@
           <value name="ADDR">
             <shadow type="text">
               <field name="TEXT">C:/mixly.jpg</field>
+            </shadow>
+          </value>
+          <value name="ATTR">
+            <block type="dicts_create_with_noreturn">
+              <mutation items="0"></mutation>
+            </block>
+          </value>
+       </block>
+       <block type="AI_Face_match">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">client</field>
+            </shadow>
+          </value>
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">C:/mixly.jpg</field>
+            </shadow>
+          </value>
+          <value name="VAR2">
+            <shadow type="text">
+              <field name="TEXT">C:/mixpy.jpg</field>
             </shadow>
           </value>
           <value name="ATTR">

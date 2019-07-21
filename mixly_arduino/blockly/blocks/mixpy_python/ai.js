@@ -28,6 +28,7 @@ Blockly.Blocks.AI_client = {
             .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_AipImageClassify, "AipImageClassify"], 
                                                      [Blockly.MIXLY_AipSpeech, "AipSpeech"],
                                                      [Blockly.MIXLY_AipImageCensor, "AipImageCensor"],
+                                                     [Blockly.MIXLY_AipFace, "AipFace"],
                                                      [Blockly.MIXLY_AipOcr, "AipOcr"],
                                                      [Blockly.MIXLY_AipNlp, "AipNlp"]
                                                     ]),'CTYPE')
@@ -125,6 +126,27 @@ Blockly.Blocks.AI_ImageClassify_Func = {
   }
 };
 
+Blockly.Blocks.AI_Face_match = { //  AI_TYPE_FUNC
+    init: function () {
+        this.setColour(Blockly.Blocks.AI.HUE);
+        this.appendValueInput('SUB')
+            .appendField(Blockly.MIXLY_AipFace_match)
+            .appendField(Blockly.MIXLY_Client)
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('VAR')
+            .appendField(Blockly.MIXLY_AipImageClassify_Image+'1')
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.appendValueInput('VAR2')
+            .appendField(Blockly.MIXLY_AipImageClassify_Image+'2')
+            .setAlign(Blockly.ALIGN_RIGHT);    
+        this.appendValueInput('ATTR')
+            .appendField(Blockly.MIXLY_AIP_ATTR)   
+            .setAlign(Blockly.ALIGN_RIGHT);
+        this.setTooltip(Blockly.MIXLY_AipFace_match_TOOLTIP)     
+        this.setInputsInline(false);
+        this.setOutput(true);
+    }
+};
 
 Blockly.Blocks.AI_Ocr = { //  AI_TYPE_FUNC
     init: function () {
@@ -294,3 +316,31 @@ Blockly.Blocks.AI_Nlp_newsSummary = { //  AI_TYPE_FUNC
 
 // [Blockly.MIXLY_AipNlp_topic, "topic"]
 // [Blockly.MIXLY_AipNlp_keyword, "keyword"]
+
+ Blockly.Blocks['AI_audio'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.storage.HUE);
+    this.appendValueInput("VAR")
+        .appendField(Blockly.Msg.MIXPY_AI_AUDIO);
+    this.appendValueInput("TIME")
+        .appendField(Blockly.Msg.MIXPY_AI_AUDIO_TIME);    
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.Msg.MIXPY_AI_AUDIO_TOOLTIP);
+  }
+};
+
+ Blockly.Blocks['AI_photo'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.storage.HUE);
+    this.appendValueInput("VAR")
+        .appendField(Blockly.Msg.MIXPY_AI_PHOTO);
+    this.appendValueInput("BUT")
+        .appendField(Blockly.Msg.MIXPY_AI_PHOTO_BUTTON);    
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.Msg.MIXPY_AI_PHOTO_TOOLTIP);
+  }
+};

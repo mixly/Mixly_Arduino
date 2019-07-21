@@ -314,3 +314,27 @@ pbc.objectFunctionD.get('format')['Str'] = function converter(py2block, func, ar
             "@items":args.length
         });
     }
+
+
+
+function strEncodeDecode(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 1) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var objblock = py2block.convert(func.value);       
+        
+        return block("text_encode", func.lineno, {  
+            'DIR': mode,
+            'CODE':args[0].s.v         
+        }, {
+            "VAR": objblock,                       
+        }, {
+            "inline": "true"
+        });
+    }
+    return converter;
+}
+
+pbc.objectFunctionD.get('encode')['Str'] = strEncodeDecode('encode');
+pbc.objectFunctionD.get('decode')['Str'] = strEncodeDecode('decode');

@@ -116,6 +116,29 @@ pbc.assignD.get('AipNlp')['create_block'] = function(py2block, node, targets, va
     });
 }
 
+pbc.assignD.get('AipFace')['check_assign'] = function(py2block, node, targets, value) {
+    if(value._astname != "Call" ||  value.func._astname != "Attribute" || value.func.value._astname != "Name"){
+        return false;
+    }
+    var funcName = py2block.identifier(value.func.attr);
+    var moduleName = py2block.Name_str(value.func.value);
+    if(moduleName === "aip" && funcName === "AipFace" && value.args.length === 3)
+        return true;
+    return false;
+}
+
+pbc.assignD.get('AipFace')['create_block'] = function(py2block, node, targets, value){
+    //var mode = py2block.Str_value(value.args[1]);
+    return block("AI_client", node.lineno, {
+        "CTYPE":"AipFace"
+    }, {
+        "APP_ID":py2block.convert(value.args[0]),
+        "API_KEY":py2block.convert(value.args[1]),
+        "SECRET_KEY":py2block.convert(value.args[2]),
+        "SUB":py2block.convert(targets[0])
+    });
+}
+
 function AIChooseAndGet(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
         if (args.length !== 0) {
@@ -179,6 +202,22 @@ pbc.objectFunctionD.get('advancedGeneral')['Dict'] = function(py2block, func, ar
     });
 };
 
+pbc.objectFunctionD.get('match')['Dict'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var argument = py2block.convert(args[0]);
+    var argument1 = py2block.convert(args[1]);
+    return block("AI_Face_match", func.lineno, {}, {
+        "SUB": objblock,
+        "VAR": argument,
+        "VAR2": argument1,
+        'ATTR':py2block.convert(keywords[0].value)
+    }, {
+        "inline": "false"
+    });
+};
 
 function AIImageClassify(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
@@ -343,3 +382,31 @@ pbc.objectFunctionD.get('topic')['Dict'] = function(py2block, func, args, keywor
         });
     }
 };
+
+pbc.moduleFunctionD.get('audio')['audio_record'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var varblock = py2block.convert(args[0]);
+    var numblock = py2block.convert(args[1]);
+    return [block("AI_audio", func.lineno, {}, {
+        'VAR': varblock,
+        'TIME': numblock
+    }, {
+        "inline": "true"
+    })];
+}
+
+pbc.moduleFunctionD.get('cam')['photo_capture'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var varblock = py2block.convert(args[0]);
+    var numblock = py2block.convert(args[1]);
+    return [block("AI_photo", func.lineno, {}, {
+        'VAR': varblock,
+        'BUT': numblock
+    }, {
+        "inline": "true"
+    })];
+}
