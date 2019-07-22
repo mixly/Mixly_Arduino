@@ -240,6 +240,11 @@
         <shadow type="pins_analog"></shadow>
       </value>
     </block>
+    <block type="OneButton_interrupt">
+      <value name="PIN">
+        <shadow type="pins_digital"></shadow>
+      </value>
+    </block>
     <block type="controls_attachInterrupt">
       <value name="PIN">
         <shadow type="pins_interrupt"></shadow>
@@ -1614,7 +1619,7 @@
         </shadow>
       </value>
     </block>
-      <!-- ESP32 blynk BLE连接方式 -->
+    <!-- ESP32 blynk BLE连接方式 -->
     <block type="blynk_esp32_ble">
       <value name="auth">
         <shadow type="math_number">
