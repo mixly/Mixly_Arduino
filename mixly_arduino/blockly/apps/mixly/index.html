@@ -62,9 +62,7 @@
   <script type="text/javascript" src="../../blocks/arduino/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color.css"/>
-  <!-- 过去index.html中的js代码都会被放到这个js中-->
   <script src = "init.js"></script>
-  <!-- ACE中字体放缩按钮样式-->
   <link rel="stylesheet" type="text/css" href="css/ACEfont.css"/>
 </head>
 <body onload="init()">
@@ -82,7 +80,7 @@
              <span id="copyright" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
            </td>
            <td class="tabmode">
-            <a class="viewLeft" id="viewMode1" href="index_simple.html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;" >普通视图</a><span class="viewRight" id="viewMode2" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</span>
+            <a class="viewLeft" id="viewMode1" href="index_simple.html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;" >æ™®é€šè§†å›?/a><span class="viewRight" id="viewMode2" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">é«˜çº§è§†å›¾</span>
           </td>
           <script type="text/javascript">
             var viewMode1 = document.getElementById('viewMode1');
@@ -103,7 +101,7 @@
         </td>
         <td class="tabmin">
           <select id="aceTheme" style="width:100px; height:23px; margin-left: 10px;">
-            <optgroup label="代码区亮色主题">
+             <optgroup label="代码区亮色主题">
               <option value="ace/theme/chrome">Chrome</option>
               <option value="ace/theme/clouds">Clouds</option>
               <option value="ace/theme/crimson_editor">Crimson Editor</option>
@@ -694,31 +692,31 @@
     </shadow>
   </value>
 </block>
-<block type="RFID_init"></block>   <!--初始化-->
-<block type="RFID_on"></block>   <!--如果侦测到信号那么执行XXX-->
-<block type="RFID_readcardnum"></block>  <!--读取卡号-->
+<block type="RFID_init"></block>   
+<block type="RFID_on"></block>   
+<block type="RFID_readcardnum"></block> 
 <block type="RFID_in">
   <value name="uid_">
     <shadow type="text">
       <field name="TEXT">123</field>
     </shadow>
   </value>
-</block>    <!-- 如果卡号和XX一致，那么执行XXX-->
+</block> 
 <block type="RFID_writecarddata">
  <value name="address1">
   <shadow type="math_number">
    <field name="NUM">0</field>
  </shadow>
 </value>
-</block>   <!--写入卡数据块内容-->
+</block> 
 <block type="RFID_readcarddata">
  <value name="address">
    <shadow type="math_number">
      <field name="NUM">0</field>
    </shadow>
  </value>
-</block>   <!--读取卡数据块内容-->
-<block type="RFID_off"></block>     <!--关机---->
+</block> 
+<block type="RFID_off"></block>    
 </category>
 <category id="catStorage" colour="0">
  <block type="store_sd_write">
@@ -801,14 +799,10 @@
 </block>
 <block type="ADXL345">
 </block>
-<block type="weightSensor">
-  <value name="PIN1">
-    <shadow type="pins_digital">
-      <field name="PIN">2</field></shadow>
-    </value>
-    <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">3</field></shadow>
+    <block type="weightSensor">
+      <value name="PIN1">
+      </value>
+      <value name="PIN2">
       </value>
     </block>
     <block type="encoder_init">
@@ -1310,28 +1304,6 @@
     </block>
   </value>
 </block>
-<!-- <block type="oled_draw4Str" >
-  <value name="Text_line1">
-    <shadow type="text">
-      <field name="TEXT">Example Line1!</field>
-    </shadow>
-  </value>
-  <value name="Text_line2">
-    <shadow type="text">
-      <field name="TEXT">Example Line2!</field>
-    </shadow>
-  </value>
-  <value name="Text_line3">
-    <shadow type="text">
-      <field name="TEXT">Example Line3!</field>
-    </shadow>
-  </value>
-  <value name="Text_line4">
-    <shadow type="text">
-      <field name="TEXT">Example Line4!</field>
-    </shadow>
-  </value>
-</block> -->
 <block type="oled_drawPixe" >
   <value name="POS_X">
     <shadow type="math_number">
@@ -1557,7 +1529,8 @@
     </shadow>
   </value>
 </block>
-<block type="display_TM1637_clearDisplay"></block>
+<block type="display_TM1637_clearDisplay">
+</block>
 <block type="MAX7219_init">
   <value name="PIN1">
     <shadow type="pins_MOSI">
@@ -1635,8 +1608,8 @@
       <field name="NUM">1</field>
     </shadow>
   </value>
-</block> -->
-<block type="display_HT16K33_Rotation">
+</block>
+ --><block type="display_HT16K33_Rotation">
 </block>
 <block type="display_Matrix_TEXT">
   <value name="TEXT">
@@ -1743,7 +1716,7 @@
         </shadow>
       </value>
     </block> -->
-        <!-- <block type="blynk_usb_server" name="服务器USB信息">
+        <!-- <block type="blynk_usb_server">
         <value name="auth_key">
         <shadow type="text">
         <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>
