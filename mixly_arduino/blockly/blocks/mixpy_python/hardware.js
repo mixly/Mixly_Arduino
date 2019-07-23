@@ -39,7 +39,7 @@ Blockly.Blocks.hardware_arduino_digital_write = {
         .setCheck("var");
     this.appendValueInput("PIN",Number)
         .appendField(Blockly.MIXLY_Digital_PINMODEOUT)
-        .appendField(Blockly.MIXLY_PIN+"#")
+        .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
     this.appendValueInput("STAT")
         .appendField(Blockly.MIXLY_STAT)
@@ -59,7 +59,7 @@ Blockly.Blocks.hardware_arduino_digital_read = {
         .setCheck("var");
     this.appendValueInput("PIN", Number)
         .appendField(Blockly.MIXLY_Digital_PINMODEIN)
-        .appendField(Blockly.MIXLY_PIN+"#")
+        .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
@@ -77,7 +77,7 @@ Blockly.Blocks.hardware_arduino_analog_write = {
         .setCheck("var");
     this.appendValueInput("PIN",Number)
         .appendField(Blockly.MIXLY_Analog_PINMODEOUT)
-        .appendField(Blockly.MIXLY_PIN+"#")
+        .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
     this.appendValueInput("NUM", Number)
         .appendField(Blockly.MIXLY_VALUE2)
@@ -97,7 +97,7 @@ Blockly.Blocks.hardware_arduino_analog_read = {
         .setCheck("var");
     this.appendValueInput("PIN", Number)
         .appendField(Blockly.MIXLY_Analog_PINMODEIN)
-        .appendField(Blockly.MIXLY_PIN+"#")
+        .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)

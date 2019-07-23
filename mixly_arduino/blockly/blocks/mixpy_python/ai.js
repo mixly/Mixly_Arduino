@@ -134,10 +134,10 @@ Blockly.Blocks.AI_Face_match = { //  AI_TYPE_FUNC
             .appendField(Blockly.MIXLY_Client)
             .setAlign(Blockly.ALIGN_RIGHT);
         this.appendValueInput('VAR')
-            .appendField(Blockly.MIXLY_AipImageClassify_Image+'1')
+            .appendField(Blockly.MIXLY_AipImageClassify_Image+'1'+Blockly.MIXLY_MICROBIT_PY_STORAGE_THE_PATH)
             .setAlign(Blockly.ALIGN_RIGHT);
         this.appendValueInput('VAR2')
-            .appendField(Blockly.MIXLY_AipImageClassify_Image+'2')
+            .appendField(Blockly.MIXLY_AipImageClassify_Image+'2'+Blockly.MIXLY_MICROBIT_PY_STORAGE_THE_PATH)
             .setAlign(Blockly.ALIGN_RIGHT);    
         this.appendValueInput('ATTR')
             .appendField(Blockly.MIXLY_AIP_ATTR)   
@@ -342,5 +342,29 @@ Blockly.Blocks.AI_Nlp_newsSummary = { //  AI_TYPE_FUNC
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setTooltip(Blockly.Msg.MIXPY_AI_PHOTO_TOOLTIP);
+  }
+};
+
+Blockly.Blocks['AI_result'] = {
+  /**
+   * Block for negation.
+   * @this Blockly.Block
+   */
+  init: function() {
+    
+    this.setColour(Blockly.Blocks.AI.HUE);
+            
+    this.appendValueInput('AI')
+        .appendField(Blockly.Msg.MIXPY_AI_RESULT)
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_AipImageClassify, "Image"], 
+                                                     [Blockly.MIXLY_AipSpeech_asr, "Speech"],
+                                                     [Blockly.MIXLY_AipFace_match, "Face"],
+                                                     [Blockly.MIXLY_AipOcr, "Ocr"],
+                                                     [Blockly.MIXLY_AipNlp_simnet, "OcrSimilarity"],
+                                                     [Blockly.MIXLY_AipNlp_sentimentClassify, "Emotion"],
+                                                    ]),'CTYPE')
+      
+    this.setOutput(true);
+    this.setTooltip(Blockly.Msg.LOGIC_NEGATE_TOOLTIP);
   }
 };

@@ -2438,6 +2438,7 @@ Blockly.Msg.MIXPY_AI_AUDIO_TOOLTIP = "录制指定时长的音频，文件名需
 Blockly.Msg.MIXPY_AI_PHOTO = "使用摄像头拍摄照片 文件名";
 Blockly.Msg.MIXPY_AI_PHOTO_BUTTON = "拍摄按键";
 Blockly.Msg.MIXPY_AI_PHOTO_TOOLTIP = "使用摄像头拍摄照片，文件名不要包含中文路径";
+Blockly.Msg.MIXPY_AI_RESULT = "获取结果";
 
 Blockly.blynk_AP_config="一键配网(AP模式)";
 Blockly.blynk_AP_config_tooltip="没有连接到WiFi时，自动打开热点,手机连接此热点登录进行配置";

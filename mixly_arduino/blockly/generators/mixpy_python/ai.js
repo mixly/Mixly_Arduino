@@ -158,3 +158,14 @@ Blockly.Python.AI_photo = function() {
     var code = "cam.photo_capture(" + str + ',' + button + ")\n";
     return code;
 };
+
+Blockly.Python.AI_result = function() {
+  var varName = Blockly.Python.valueToCode(this, 'AI', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  
+  if(ctype == 'Image'){var code = varName + '["result"][0]["keyword"]'}
+  if(ctype == 'Speech'){var code = varName + '["result"][0]'}
+  if(ctype == 'Face' || ctype == 'OcrSimilarity'){var code = varName + '["score"]'}  
+  if(ctype == 'Ocr'){var code = varName + '["words_result"]'}  
+
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
