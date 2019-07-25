@@ -161,7 +161,7 @@ Blockly.Python.AI_photo = function() {
 
 Blockly.Python.AI_result = function() {
   var varName = Blockly.Python.valueToCode(this, 'AI', Blockly.Python.ORDER_ASSIGNMENT) || '0';
-  
+  var ctype = this.getFieldValue('CTYPE');
   if(ctype == 'Image'){var code = varName + '["result"][0]["keyword"]'}
   if(ctype == 'Speech'){var code = varName + '["result"][0]'}
   if(ctype == 'Face' || ctype == 'OcrSimilarity'){var code = varName + '["score"]'}  
