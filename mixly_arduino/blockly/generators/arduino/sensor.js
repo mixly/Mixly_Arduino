@@ -203,3 +203,16 @@ Blockly.Arduino.encoder_init = function() {
   Blockly.Arduino.definitions_['var_declare_EncoderDY'] = 'Encoder encoder_'+Encoder_NO+'('+CLK+','+DT+');\n ';
   return  null;
 };
+
+//BME280读取
+Blockly.Arduino.BME280_READ = function() {
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+  Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
+  Blockly.Arduino.definitions_['include_Adafruit_Sensor'] = '#include <Adafruit_Sensor.h>';
+  Blockly.Arduino.definitions_['include_Adafruit_BME280'] = '#include <Adafruit_BME280.h>';
+  Blockly.Arduino.definitions_['include_SEALEVELPRESSURE_HPA'] ='#define SEALEVELPRESSURE_HPA (1013.25)';
+  Blockly.Arduino.definitions_['var_declare_Adafruit_BME280'] = 'Adafruit_BME280 bme;';
+  Blockly.Arduino.setups_['setup_status'] = 'unsigned status;\n  status = bme.begin(); \n';
+  var code = this.getFieldValue('BME_TYPE');
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

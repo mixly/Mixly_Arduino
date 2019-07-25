@@ -436,3 +436,15 @@ Blockly.Blocks['encoder_read'] = {
     this.setInputsInline(true);
   }
 };
+//BME280读取
+Blockly.Blocks['BME280_READ'] = {
+  init: function() {
+   this.setColour(Blockly.Blocks.sensor.HUE);
+   this.appendDummyInput()
+   .appendField("读取BME280")
+   .appendField(new Blockly.FieldDropdown([[Blockly.blynk_IOT_IR_TEMP,"bme.readTemperature()"], [Blockly.MIXLY_Humidity,"bme.readHumidity()"], [Blockly.MIXLY_Altitude,"bme.readPressure()/100.0F"],[ Blockly.MIXLY_HEIGHT ,"bme.readAltitude(SEALEVELPRESSURE_HPA)"] ]), "BME_TYPE")
+   this.setOutput(true, null);
+   this.setTooltip("");
+   this.setHelpUrl("");
+ }
+};
