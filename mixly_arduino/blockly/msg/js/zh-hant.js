@@ -930,8 +930,10 @@ Blockly.MIXLY_NOVA_LED_ON = '開';
 Blockly.MIXLY_NOVA_LED_OFF = '關';
 
 // Button
-Blockly.MIXLY_NOVA_BUTTON_PRESSED = '按下';
-Blockly.MIXLY_NOVA_BUTTON_RELEASED = '鬆開';
+Blockly.MIXLY_BUTTON_PRESSED = '按下';
+Blockly.MIXLY_BUTTON_RELEASED = '鬆開';
+Blockly.MIXLY_BUTTON_HOLD = '按住';
+
 Blockly.MIXLY_NOVA_BTN = '按鈕';
 Blockly.MIXLY_NOVA_ABCD = '#';
 
@@ -2691,3 +2693,28 @@ Blockly.MIXLY_LONG_PRESS_START='長按開始';
 Blockly.MIXLY_DURING_LONG_PRESS='長按中';
 Blockly.MIXLY_LONG_PRESS_END='長按結束';
 Blockly.ONEBUTTON="多功能按鍵";
+//ps2
+Blockly.PS2_INIT='初始化PS2手柄';
+Blockly.PS2_TRIANGLE="三角形鍵";
+Blockly.PS2_CIRCLE="圆形鍵";
+Blockly.PS2_CROSS="×鍵";
+Blockly.PS2_SQUARE="方形鍵";
+Blockly.PS2_L1='左側1';
+Blockly.PS2_L2='左側2';
+Blockly.PS2_L3='左側3';
+Blockly.PS2_R1='右側1';
+Blockly.PS2_R2='右側2';
+Blockly.PS2_R3='右側3';
+Blockly.PS2_UP='方向鍵上';
+Blockly.PS2_DOWN='方向鍵下';
+Blockly.PS2_LEFT='方向鍵左';
+Blockly.PS2_RIGHT='方向鍵右';
+Blockly.PS2_SELECT='选择鍵';
+Blockly.PS2_START='开始鍵';
+Blockly.PS2_RX='右側X值';
+Blockly.PS2_RY='右側Y值';
+Blockly.PS2_LX='左側X值';
+Blockly.PS2_LY='左側Y值';
+Blockly.PS2_stick='PS2搖桿';
+Blockly.PS2_BUTTON='PS2按鍵';
+Blockly.PS2_setRumble='振動反饋';

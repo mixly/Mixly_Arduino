@@ -216,3 +216,29 @@ Blockly.Arduino.BME280_READ = function() {
   var code = this.getFieldValue('BME_TYPE');
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
+Blockly.Arduino.PS2_init = function() {
+  var PS2_DAT = Blockly.Arduino.valueToCode(this, 'PS2_DAT', Blockly.Arduino.ORDER_ATOMIC);
+  var PS2_CMD = Blockly.Arduino.valueToCode(this, 'PS2_CMD', Blockly.Arduino.ORDER_ATOMIC);
+  var PS2_SEL = Blockly.Arduino.valueToCode(this, 'PS2_SEL', Blockly.Arduino.ORDER_ATOMIC);
+  var PS2_CLK = Blockly.Arduino.valueToCode(this, 'PS2_CLK', Blockly.Arduino.ORDER_ATOMIC);
+  var rumble=this.getFieldValue('rumble');
+  Blockly.Arduino.definitions_['define_PS2'] = '#include <PS2X_lib.h>';   
+  Blockly.Arduino.definitions_['define_origin'] = 'PS2X ps2x;';
+  Blockly.Arduino.setups_['setup_output_1'] = 'ps2x.config_gamepad('+PS2_CLK+','+PS2_CMD+','+PS2_SEL+','+PS2_DAT+', true, '+rumble+');\ndelay(300);\n';  
+  return "ps2x.read_gamepad(false, 0);\n delay(30);\n";
+};
+
+//readcardnum
+Blockly.Arduino.PS2_Button = function() {
+  var bt=this.getFieldValue('psbt');
+  var btstate = this.getFieldValue('btstate');
+  var code= "ps2x."+btstate+"("+bt+")";
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.PS2_stk = function() {
+  var stk=this.getFieldValue('psstk');
+  var code= "ps2x.Analog("+stk+")";
+return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

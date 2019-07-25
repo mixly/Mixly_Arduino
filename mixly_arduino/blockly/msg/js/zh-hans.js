@@ -775,8 +775,10 @@ Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_READ = '读取服务端发送客户端缓�
 Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = '向指定地址发送一个GET请求';
 Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = '对常量或变量进行强制类型转换';
 // Button
-Blockly.MIXLY_NOVA_BUTTON_PRESSED = '按下';
-Blockly.MIXLY_NOVA_BUTTON_RELEASED = '松开';
+Blockly.MIXLY_BUTTON_PRESSED = '按下';
+Blockly.MIXLY_BUTTON_RELEASED = '松开';
+Blockly.MIXLY_BUTTON_HOLD = '按住';
+
 //spi
 Blockly.TO_SPI_SLAVE_PIN = '向SPI从机#';
 Blockly.SPI_TRANSFER = '传输';
@@ -2508,3 +2510,29 @@ Blockly.MIXLY_LONG_PRESS_START='长按开始';
 Blockly.MIXLY_DURING_LONG_PRESS='长按中';
 Blockly.MIXLY_LONG_PRESS_END='长按结束';
 Blockly.ONEBUTTON="多功能按键";
+
+//ps2
+Blockly.PS2_INIT='初始化PS2手柄';
+Blockly.PS2_TRIANGLE="三角形键";
+Blockly.PS2_CIRCLE="圆形键";
+Blockly.PS2_CROSS="×键";
+Blockly.PS2_SQUARE="方形键";
+Blockly.PS2_L1='左侧1';
+Blockly.PS2_L2='左侧2';
+Blockly.PS2_L3='左侧3';
+Blockly.PS2_R1='右侧1';
+Blockly.PS2_R2='右侧2';
+Blockly.PS2_R3='右侧3';
+Blockly.PS2_UP='方向键上';
+Blockly.PS2_DOWN='方向键下';
+Blockly.PS2_LEFT='方向键左';
+Blockly.PS2_RIGHT='方向键右';
+Blockly.PS2_SELECT='选择键';
+Blockly.PS2_START='开始键';
+Blockly.PS2_RX='右侧X值';
+Blockly.PS2_RY='右侧Y值';
+Blockly.PS2_LX='左侧X值';
+Blockly.PS2_LY='左侧Y值';
+Blockly.PS2_stick='PS2摇杆';
+Blockly.PS2_BUTTON='PS2按键';
+Blockly.PS2_setRumble='振动反馈';

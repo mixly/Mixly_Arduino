@@ -929,8 +929,9 @@ Blockly.MIXLY_NOVA_LED_ON = 'ON';
 Blockly.MIXLY_NOVA_LED_OFF = 'OFF';
 
 // Button
-Blockly.MIXLY_NOVA_BUTTON_PRESSED = 'Pressed';
-Blockly.MIXLY_NOVA_BUTTON_RELEASED = 'Released';
+Blockly.MIXLY_BUTTON_PRESSED = 'Pressed';
+Blockly.MIXLY_BUTTON_RELEASED = 'Released';
+Blockly.MIXLY_BUTTON_HOLD = 'Hold';
 Blockly.MIXLY_NOVA_BTN = 'Button ';
 Blockly.MIXLY_NOVA_ABCD = '#';
 

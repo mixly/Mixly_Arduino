@@ -448,3 +448,81 @@ Blockly.Blocks['BME280_READ'] = {
    this.setHelpUrl("");
  }
 };
+
+//PS2
+Blockly.Blocks.PS2_init={
+  init: function() {
+     this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.PS2_INIT);
+    this.appendValueInput("PS2_DAT", Number)
+    .appendField('DAT#')
+    .setCheck(Number);
+    this.appendValueInput("PS2_CMD", Number)
+    .appendField('CMD#')
+    .setCheck(Number);
+    this.appendValueInput("PS2_SEL", Number)
+    .appendField('SEL#')
+    .setCheck(Number);
+    this.appendValueInput("PS2_CLK", Number)
+    .appendField('CLK#')
+    .setCheck(Number);
+    this.appendDummyInput("")
+    .appendField(Blockly.PS2_setRumble)
+    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ON,"true"],[Blockly.MIXLY_OFF,"false"]]), "rumble");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+  }
+};
+
+var PSBUTTON =[
+[Blockly.PS2_TRIANGLE,"PSB_GREEN"],
+[Blockly.PS2_CIRCLE,"PSB_RED"],
+[Blockly.PS2_CROSS,"PSB_BLUE"],
+[Blockly.PS2_SQUARE,"PSB_PINK"],
+[Blockly.PS2_L1,"PSB_L1"],
+[Blockly.PS2_L2,"PSB_L2"],
+// ["PSB_L3","PSB_L3"],
+[Blockly.PS2_R1,"PSB_R1"],
+[Blockly.PS2_R2,"PSB_R2"],
+// ["PSB_R3","PSB_R3"],
+[Blockly.PS2_UP,"PSB_PAD_UP"],
+[Blockly.PS2_RIGHT,"PSB_PAD_RIGHT"],
+[Blockly.PS2_DOWN,"PSB_PAD_DOWN"],
+[Blockly.PS2_LEFT,"PSB_PAD_LEFT"],
+[Blockly.PS2_SELECT,"PSB_SELECT"],
+[Blockly.PS2_START,"PSB_START"]
+];
+
+//
+Blockly.Blocks.PS2_Button={
+  init: function() {
+   this.setColour(Blockly.Blocks.sensor.HUE);
+   this.appendDummyInput("")
+   .appendField(Blockly.PS2_BUTTON)
+   .appendField(new Blockly.FieldDropdown(PSBUTTON), "psbt")
+   .appendField(Blockly.MIXLY_PULSEIN_STAT)
+   .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_BUTTON_HOLD ,"Button"],[Blockly.MIXLY_BUTTON_PRESSED, "ButtonPressed"],[Blockly.MIXLY_BUTTON_RELEASED,"ButtonReleased"],[Blockly.MIXLY_MICROBIT_JS_CHANGE,"NewButtonState"]]), "btstate");
+   this.setOutput(true, Boolean);
+   this.setTooltip('');
+ }
+};
+
+Blockly.Blocks.PS2_stk={
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+   var PSSTK =[
+   [Blockly.PS2_RX,"PSS_RX"],
+   [Blockly.PS2_RY,"PSS_RY"],
+   [Blockly.PS2_LX,"PSS_LX"],
+   [Blockly.PS2_LY,"PSS_LY"],
+   ];
+   this.appendDummyInput("")
+   .appendField(Blockly.PS2_stick)
+   .appendField(new Blockly.FieldDropdown(PSSTK), "psstk");
+   this.setOutput(true, Number);
+   this.setTooltip('');
+ }
+};
