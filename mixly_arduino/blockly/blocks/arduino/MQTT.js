@@ -201,7 +201,7 @@ Blockly.Blocks.MQTT_subscribe_value = {
     this.appendDummyInput("")
     .appendField(Blockly.Msg.SERIES_VALUE)
     this.setInputsInline(true);
-    this.setOutput(true, Boolean);
+    this.setOutput(true, String);
   }
 };
 
