@@ -361,16 +361,17 @@ Blockly.Arduino.Matrix_img = function() {
 Blockly.Arduino.oled_init = function() {
   var CLK = Blockly.Arduino.valueToCode(this, 'CLK', Blockly.Arduino.ORDER_ATOMIC);
   var DIN = Blockly.Arduino.valueToCode(this, 'DIN', Blockly.Arduino.ORDER_ATOMIC);
-  var DC = Blockly.Arduino.valueToCode(this, 'DC', Blockly.Arduino.ORDER_ATOMIC);
-  var CS1 = Blockly.Arduino.valueToCode(this, 'CS1', Blockly.Arduino.ORDER_ATOMIC);
+
+  var SDA = Blockly.Arduino.valueToCode(this, 'SDA',Blockly.Arduino.ORDER_ATOMIC);
+  var SCL = Blockly.Arduino.valueToCode(this, 'SCL',Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
   var board_type=JSFuncs.getPlatform();
   if(board_type.match(RegExp(/ESP8266/)))
-   Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
+    Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, '+SDA+', '+SCL+', U8X8_PIN_NONE);';
  else if(board_type.match(RegExp(/ESP32/)))
-   Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
+   Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, '+SDA+', '+SCL+', U8X8_PIN_NONE);';
  else
-   Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
+   Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, '+SDA+', '+SCL+', U8X8_PIN_NONE);';
  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
  var oled_setup = "u8g2.begin();";
  Blockly.Arduino.setups_['setup_u8g2begin()'] = oled_setup;
