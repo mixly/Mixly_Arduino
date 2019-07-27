@@ -22,6 +22,7 @@
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
   <script type="text/javascript" src="myblock.js"></script>
+    <script type="text/javascript" src="../../generators/arduino/factory.js"></script>
   <script type="text/javascript" src="../../generators/arduino/blynk.js"></script>
   <script type="text/javascript" src="../../generators/arduino/MQTT.js"></script>
   <script type="text/javascript" src="../../generators/arduino/pins.js"></script>
@@ -58,6 +59,7 @@
   <script type="text/javascript" src="../../generators/esp32_Arduino/MixGo.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/Handbit.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script> 
+    <script type="text/javascript" src="../../blocks/arduino/factory.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/pins.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/inout.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/control.js"></script>
@@ -355,6 +357,14 @@
     <block type="controls_hw_timer_start">
     </block>
     <block type="controls_hw_timer_stop">
+    </block>
+    <block type="simple_timer" >
+      <field name="NO">1</field>
+      <value name="timein">
+        <shadow type="math_number">
+          <field name="NUM">1000</field>
+        </shadow>
+      </value>
     </block>
   </category>
   <category id="catMath" colour="230">
@@ -887,6 +897,24 @@
       </statement>
     </block>
     <block type="network_stop"></block>
+     <block type="NTP_server">
+          <value name="server_add">
+            <shadow type="text">
+              <field name="TEXT">ntp1.aliyun.com</field>
+            </shadow>
+          </value>
+          <value name="timeZone">
+            <shadow type="math_number">
+             <field name="NUM">8</field>
+           </shadow>
+         </value>
+         <value name="Interval">
+          <shadow type="math_number">
+           <field name="NUM">600</field>
+         </shadow>
+       </value>
+     </block>
+     <block type="NTP_server_get_time"></block>
     <block type="MQTT_server">
       <value name="server_add">
         <shadow type="text">
@@ -1366,53 +1394,63 @@
         </statement>
       </block>
     </next>
-  </block>
-  <block type="procedures_defnoreturn">
-    <field name="NAME">page1</field>
-    <statement name="STACK">
-      <block type="oled_setFont">
-        <field name="TYPE">timR08_tr</field>
-        <next>
-          <block type="oled_print" >
-            <value name="POS_X">
-              <shadow type="math_number">
-                <field name="NUM">0</field>
-              </shadow>
-            </value>
-            <value name="POS_Y">
-              <shadow type="math_number">
-                <field name="NUM">20</field>
-              </shadow>
-            </value>
-            <value name="TEXT">
-              <shadow type="text">
-                <field name="TEXT">1234</field>
-              </shadow>
-            </value>
-          </block>
-        </next>
-      </block>
-    </statement>
-  </block>
-  <block type="oled_define_bitmap_data"></block>
-  <block type="oled_clear"></block>
-  <block type="oled_showBitmap" >
-    <value name="START_X">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="START_Y">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="bitmap_name">
-      <block type="text">
-        <field name="TEXT">bitmap1</field>
-      </block>
-    </value>
-  </block>
+    <value name="SDA">
+     <shadow type="pins_digital">
+      <field name="PIN">SDA</field>
+    </shadow>
+  </value>
+  <value name="SCL">
+   <shadow type="pins_digital">
+    <field name="PIN">SCL</field>
+  </shadow>
+</value>
+</block>
+<block type="procedures_defnoreturn">
+  <field name="NAME">page1</field>
+  <statement name="STACK">
+    <block type="oled_setFont">
+      <field name="TYPE">timR08_tr</field>
+      <next>
+        <block type="oled_print" >
+          <value name="POS_X">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="POS_Y">
+            <shadow type="math_number">
+              <field name="NUM">20</field>
+            </shadow>
+          </value>
+          <value name="TEXT">
+            <shadow type="text">
+              <field name="TEXT">1234</field>
+            </shadow>
+          </value>
+        </block>
+      </next>
+    </block>
+  </statement>
+</block>
+<block type="oled_define_bitmap_data"></block>
+<block type="oled_clear"></block>
+<block type="oled_showBitmap" >
+  <value name="START_X">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="START_Y">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="bitmap_name">
+    <block type="text">
+      <field name="TEXT">bitmap1</field>
+    </block>
+  </value>
+</block>
  <!--  <block type="oled_draw4Str" >
     <value name="Text_line1">
       <shadow type="text">
@@ -2236,33 +2274,23 @@
     <field name="Vpin">V0</field>
   </block>
 </category>
-<!-- <category id="catMixGo" name="MixGo" colour="160">
-
-
-<block type="mixGo_led_brightness">
- <value name="STAT">
-  <shadow type="number">
-  </shadow>
-</value>
-<value name="bright">
-  <shadow type="math_number">
-    <field name="NUM">1023</field>
-  </shadow>
-</value>
-</block>
-<block type="mixgo_button_is_pressed">
-</block>
-<block type="mixgo_touch_pin">
-</block>
-<block type="sensor_mixgo_pin_near">
-</block>
-<block type="sensor_mixgo_light">
-</block>
-<block type="sensor_mixgo_sound">
-</block>
-<block type="mixgo_MPU9250"> 
-</block>
-</category> -->
+ <category id="catFactory" name="Factory" colour="65">
+    <block type="factory_notes"></block>
+    <block type="factory_include"></block>
+    <block type="factory_function_noreturn"></block>
+    <block type="factory_function_return"></block>
+    <block type="factory_declare"></block>
+    <block type="factory_declare2"></block>
+    <block type="factory_define"></block>
+    <block type="factory_callMethod_noreturn"></block>
+    <block type="factory_callMethod_return"></block>
+    <block type="factory_static_method_noreturn"></block>
+    <block type="factory_static_method_return"></block>
+    <block type="factory_block"></block>
+    <block type="factory_block_return"></block>
+    <block type="factory_block_with_textarea"></block>
+    <block type="factory_block_return_with_textarea"></block>
+  </category>
 </xml>
 <script>
   if(company_block!=null){
