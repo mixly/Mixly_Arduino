@@ -1359,3 +1359,167 @@ Blockly.Blocks['blynk_esp32_Bluetooth'] = {
 };
 
 
+//Arduino blynk Bluetooth 连接方式
+Blockly.Blocks['arduino_blynk_bluetooth'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(Blockly.arduino_blynk_bluetooth);
+    this.appendValueInput("auth")
+    .setCheck(null)
+    .appendField(Blockly.blynk_IOT_AUTH);
+    this.appendValueInput("RX")
+    .setCheck(null)
+    .appendField("RX");
+    this.appendValueInput("TX")
+    .setCheck(null)
+    .appendField("TX");
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+//Blynk Table小部件添加数据
+Blockly.Blocks['blynk_table'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_table)
+    .appendField("ID");
+    this.appendValueInput("id")
+    .setCheck(null);
+    this.appendDummyInput()
+    .appendField(Blockly.Msg.HTML_NAME);
+    this.appendValueInput("mingcheng")
+    .setCheck(null);
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_IOT_DATA);
+    this.appendValueInput("shujv")
+    .setCheck(null);
+    this.appendDummyInput()
+    .appendField(Blockly.BLYNK_VIRTUALPIN);
+    this.appendValueInput("xnyj")
+    .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.setTooltip();
+    this.setHelpUrl("");
+  }
+};
+
+//Blynk Table小部件更新数据
+Blockly.Blocks['blynk_table_update'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_table_update)
+    .appendField("ID");
+    this.appendValueInput("id")
+    .setCheck(null);
+    this.appendDummyInput()
+    .appendField(Blockly.Msg.HTML_NAME);
+    this.appendValueInput("mingcheng")
+    .setCheck(null);
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_IOT_DATA);
+    this.appendValueInput("shujv")
+    .setCheck(null);
+    this.appendDummyInput()
+    .appendField(Blockly.BLYNK_VIRTUALPIN);
+    this.appendValueInput("xnyj")
+    .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.setTooltip();
+    this.setHelpUrl("");
+  }
+};
+
+//Blynk Table小部件高亮显示数据
+Blockly.Blocks['blynk_table_highlight'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_table_highlight)
+    .appendField("ID");
+    this.appendValueInput("id")
+    .setCheck(null);
+    this.appendDummyInput()
+    .appendField(Blockly.BLYNK_VIRTUALPIN);
+    this.appendValueInput("xnyj")
+    .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.setTooltip();
+    this.setHelpUrl("");
+  }
+};
+
+//Blynk Table小部件选择数据
+Blockly.Blocks['blynk_table_select'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_table_select)
+    .appendField("ID");
+    this.appendValueInput("id")
+    .setCheck(null);
+    this.appendDummyInput()
+    .appendField(Blockly.BLYNK_VIRTUALPIN);
+    this.appendValueInput("xnyj")
+    .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.setTooltip();
+    this.setHelpUrl("");
+  }
+};
+
+//Blynk Table小部件取消选择数据
+Blockly.Blocks['blynk_table_unselect'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_table_unselect)
+    .appendField("ID");
+    this.appendValueInput("id")
+    .setCheck(null);
+    this.appendDummyInput()
+    .appendField(Blockly.BLYNK_VIRTUALPIN);
+    this.appendValueInput("xnyj")
+    .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.setTooltip();
+    this.setHelpUrl("");
+  }
+};
+
+//Blynk Table小部件数据清除
+Blockly.Blocks['blynk_table_cleardata'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_table_cleardata)
+    .appendField("ID");
+    this.appendValueInput("xnyj")
+    .setCheck(null)
+    .appendField(Blockly.BLYNK_VIRTUALPIN);
+    this.appendDummyInput();
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.setTooltip();
+    this.setHelpUrl("");
+  }
+};
+//blynk服务器连接状态
+Blockly.Blocks['blynk_connected'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(Blockly.blynk_connected);
+    this.setOutput(true, null);
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};

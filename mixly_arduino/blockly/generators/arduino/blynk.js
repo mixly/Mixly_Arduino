@@ -638,3 +638,82 @@ Blockly.Arduino.blynk_esp32_Bluetooth = function() {
 	var code='Blynk.run();\n';
 	return code;
 };
+
+//Arduino blynk Bluetooth 连接方式
+Blockly.Arduino.arduino_blynk_bluetooth = function() {
+	var auth= Blockly.Arduino.valueToCode(this, 'auth', Blockly.Arduino.ORDER_ATOMIC);
+	var RX= Blockly.Arduino.valueToCode(this, 'RX', Blockly.Arduino.ORDER_ATOMIC);
+	var TX= Blockly.Arduino.valueToCode(this, 'TX', Blockly.Arduino.ORDER_ATOMIC);
+	Blockly.Arduino.definitions_['define_BLYNK_PRINT']='#define BLYNK_PRINT Serial';
+	Blockly.Arduino.definitions_['include_SoftwareSerial'] ='#include <SoftwareSerial.h>';
+	Blockly.Arduino.definitions_['include_BlynkSimpleSerialBLE'] ='#include <BlynkSimpleSerialBLE.h>';
+	Blockly.Arduino.definitions_['define_auth'] ='char auth[] = "'+ auth+'";';
+	if(RX!=0||TX!=1)
+	{
+		Blockly.Arduino.definitions_['var_declare_SoftwareSerial'] ='  SoftwareSerial SerialBLE('+ RX+', '+ TX+');';
+		Blockly.Arduino.setups_['setup_SerialBLE_begin'] = 'SerialBLE.begin(9600);';
+	}
+	Blockly.Arduino.setups_['setup_Serial_begin'] = '  Serial.begin(9600);';
+	Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Blynk.begin(SerialBLE, auth);';
+	Blockly.Arduino.setups_['setup_Serial.println'] = 'Serial.println("Waiting for connections...");';
+	var code='Blynk.run();\n';
+	return code;
+};
+
+
+//Blynk Table小部件添加数据
+Blockly.Arduino.blynk_table = function() {
+    var id= Blockly.Arduino.valueToCode(this, 'id', Blockly.Arduino.ORDER_ATOMIC);
+    var mingcheng= Blockly.Arduino.valueToCode(this, 'mingcheng', Blockly.Arduino.ORDER_ATOMIC);
+    var shujv= Blockly.Arduino.valueToCode(this, 'shujv', Blockly.Arduino.ORDER_ATOMIC);
+    var xnyj= Blockly.Arduino.valueToCode(this, 'xnyj', Blockly.Arduino.ORDER_ATOMIC);
+    var code='Blynk.virtualWrite('+xnyj+', "add", '+id+','+mingcheng+', '+shujv+');\n';
+    return code;
+};
+
+//Blynk Table小部件更新数据
+Blockly.Arduino.blynk_table_update = function() {
+    var id= Blockly.Arduino.valueToCode(this, 'id', Blockly.Arduino.ORDER_ATOMIC);
+    var mingcheng= Blockly.Arduino.valueToCode(this, 'mingcheng', Blockly.Arduino.ORDER_ATOMIC);
+    var shujv= Blockly.Arduino.valueToCode(this, 'shujv', Blockly.Arduino.ORDER_ATOMIC);
+    var xnyj= Blockly.Arduino.valueToCode(this, 'xnyj', Blockly.Arduino.ORDER_ATOMIC);
+    var code='Blynk.virtualWrite('+xnyj+', "update", '+id+','+mingcheng+', '+shujv+');\n';
+    return code;
+};
+
+//Blynk Table小部件高亮显示数据
+Blockly.Arduino.blynk_table_highlight = function() {
+    var id= Blockly.Arduino.valueToCode(this, 'id', Blockly.Arduino.ORDER_ATOMIC);
+    var xnyj= Blockly.Arduino.valueToCode(this, 'xnyj', Blockly.Arduino.ORDER_ATOMIC);
+    var code='Blynk.virtualWrite('+xnyj+', "pick", '+id+');\n';
+    return code;
+};
+
+//Blynk Table小部件选择数据
+Blockly.Arduino.blynk_table_select = function() {
+    var id= Blockly.Arduino.valueToCode(this, 'id', Blockly.Arduino.ORDER_ATOMIC);
+    var xnyj= Blockly.Arduino.valueToCode(this, 'xnyj', Blockly.Arduino.ORDER_ATOMIC);
+    var code='Blynk.virtualWrite('+xnyj+', "select", '+id+');\n';
+    return code;
+};
+
+//Blynk Table小部件取消选择数据
+Blockly.Arduino.blynk_table_unselect = function() {
+    var id= Blockly.Arduino.valueToCode(this, 'id', Blockly.Arduino.ORDER_ATOMIC);
+    var xnyj= Blockly.Arduino.valueToCode(this, 'xnyj', Blockly.Arduino.ORDER_ATOMIC);
+    var code='Blynk.virtualWrite('+xnyj+', "deselect", '+id+');\n';
+    return code;
+};
+
+//Blynk Table小部件数据清除
+Blockly.Arduino.blynk_table_cleardata = function() {
+    var xnyj= Blockly.Arduino.valueToCode(this, 'xnyj', Blockly.Arduino.ORDER_ATOMIC);
+    var code='Blynk.virtualWrite('+xnyj+', "clr");\n';
+    return code;
+};
+
+//blynk服务器连接状态
+Blockly.Arduino.blynk_connected = function() {
+    var code = 'Blynk.connected()';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

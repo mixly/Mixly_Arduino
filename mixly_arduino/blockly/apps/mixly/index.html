@@ -1740,6 +1740,7 @@
         </shadow>
       </value>
     </block>
+    <block type="blynk_connected"></block>
     <!-- <block type="blynk_smartconfig">
       <value name="server_add">
         <shadow type="text">
@@ -1759,6 +1760,23 @@
 </shadow>
         </value>
       </block> -->
+      <block type="arduino_blynk_bluetooth">
+        <value name="auth">
+          <shadow type="math_number">
+            <field name="NUM">59d948d79fe642aab95c1577b1ad419d</field>
+          </shadow>
+        </value>
+        <value name="TX">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="RX">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
       <block type="blynk_iot_get_data">
         <mutation>
           <arg name="vpin_value" vartype="int"></arg>
@@ -2150,37 +2168,150 @@
         </block>
       </statement>
     </block>
-    <block type="Blynk_iot_BLYNK_CONNECTED">
-      <statement name="DO"></statement>
-    </block>
-    <block type="Blynk_iot_BLYNK_APP_CONNECTED">
-      <statement name="DO"></statement>
-    </block>
-    <block type="Blynk_iot_BLYNK_APP_DISCONNECTED">
-      <statement name="DO"></statement>
-    </block>
-    <block type="Blynk_iot_BLYNK_syncAll"></block>
-    <block type="blynk_iot_syncVirtual">
-      <field name="Vpin">V0</field>
-    </block>
-  </category>
-  <category id="catFactory" name="Factory" colour="65">
-    <block type="factory_notes"></block>
-    <block type="factory_include"></block>
-    <block type="factory_function_noreturn"></block>
-    <block type="factory_function_return"></block>
-    <block type="factory_declare"></block>
-    <block type="factory_declare2"></block>
-    <block type="factory_define"></block>
-    <block type="factory_callMethod_noreturn"></block>
-    <block type="factory_callMethod_return"></block>
-    <block type="factory_static_method_noreturn"></block>
-    <block type="factory_static_method_return"></block>
-    <block type="factory_block"></block>
-    <block type="factory_block_return"></block>
-    <block type="factory_block_with_textarea"></block>
-    <block type="factory_block_return_with_textarea"></block>
-  </category>
+    <block type="blynk_table">
+     <value name="xnyj">
+      <shadow type="math_number">
+        <field name="NUM">V0</field>
+      </shadow> 
+    </value> 
+    <value name="id">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value> 
+    <value name="mingcheng">
+      <shadow type="text">
+        <field name="TEXT">名称</field>
+      </shadow>
+    </value>
+    <value name="shujv">
+      <shadow type="text">
+        <field name="TEXT">张三</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="blynk_table_update">
+   <value name="xnyj">
+    <shadow type="math_number">
+      <field name="NUM">V0</field>
+    </shadow> <value name="xnyj">
+      <shadow type="math_number">
+        <field name="NUM">V0</field>
+      </shadow>
+    </value> 
+  </value> 
+  <value name="id">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value> 
+  <value name="mingcheng">
+    <shadow type="text">
+      <field name="TEXT">名称</field>
+    </shadow>
+  </value>
+  <value name="shujv">
+    <shadow type="text">
+      <field name="TEXT">张三</field>
+    </shadow>
+  </value>
+</block>
+<block type="blynk_table_highlight">
+  <value name="xnyj">
+    <shadow type="math_number">
+      <field name="NUM">V0</field>
+    </shadow> <value name="xnyj">
+      <shadow type="math_number">
+        <field name="NUM">V0</field>
+      </shadow>
+    </value> 
+  </value> 
+  <value name="id">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value> 
+</block>
+<block type="blynk_table_select">
+  <value name="xnyj">
+    <shadow type="math_number">
+      <field name="NUM">V0</field>
+    </shadow> <value name="xnyj">
+      <shadow type="math_number">
+        <field name="NUM">V0</field>
+      </shadow>
+    </value> 
+  </value> 
+  <value name="id">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value> 
+</block>
+<block type="blynk_table_unselect">
+ <value name="xnyj">
+  <shadow type="math_number">
+    <field name="NUM">V0</field>
+  </shadow> <value name="xnyj">
+    <shadow type="math_number">
+      <field name="NUM">V0</field>
+    </shadow>
+  </value> 
+</value> 
+<value name="id">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value> 
+</block>
+<block type="blynk_table_cleardata">
+ <value name="xnyj">
+  <shadow type="math_number">
+    <field name="NUM">V0</field>
+  </shadow> <value name="xnyj">
+    <shadow type="math_number">
+      <field name="NUM">V0</field>
+    </shadow>
+  </value> 
+</value> 
+<value name="id">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value> 
+</block>
+<block type="Blynk_iot_BLYNK_CONNECTED">
+  <statement name="DO"></statement>
+</block>
+<block type="Blynk_iot_BLYNK_APP_CONNECTED">
+  <statement name="DO"></statement>
+</block>
+<block type="Blynk_iot_BLYNK_APP_DISCONNECTED">
+  <statement name="DO"></statement>
+</block>
+<block type="Blynk_iot_BLYNK_syncAll"></block>
+<block type="blynk_iot_syncVirtual">
+  <field name="Vpin">V0</field>
+</block>
+
+</category>
+<category id="catFactory" name="Factory" colour="65">
+  <block type="factory_notes"></block>
+  <block type="factory_include"></block>
+  <block type="factory_function_noreturn"></block>
+  <block type="factory_function_return"></block>
+  <block type="factory_declare"></block>
+  <block type="factory_declare2"></block>
+  <block type="factory_define"></block>
+  <block type="factory_callMethod_noreturn"></block>
+  <block type="factory_callMethod_return"></block>
+  <block type="factory_static_method_noreturn"></block>
+  <block type="factory_static_method_return"></block>
+  <block type="factory_block"></block>
+  <block type="factory_block_return"></block>
+  <block type="factory_block_with_textarea"></block>
+  <block type="factory_block_return_with_textarea"></block>
+</category>
 </xml>
 <script>
   if(company_block!=null){
