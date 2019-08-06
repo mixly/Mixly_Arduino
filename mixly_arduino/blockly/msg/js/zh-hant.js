@@ -4,7 +4,51 @@
 goog.provide('Blockly.Msg.zh.hant');
 
 goog.require('Blockly.Msg');
-
+var MSG = {
+catInOut:"輸入/輸出",
+catControl:"控制",
+catMath:"數學",
+catText:"文字",
+catLists:"數組",
+catMicropyLists: "列表",
+catDicts: "字典",
+catLogic:"邏輯",
+catSerialPort:"串口",
+catGroup:"通信",
+catStorage:"存儲",
+catSensor:"感測器",
+catActuator:"執行器",
+catMonitor:"顯示器",
+catLCD:"LCD顯示屏",
+cat4Digitdisplay:"四位數碼管",
+catOLED:"OLED顯示屏",
+catMatrix:"點陣屏",
+catVar:"變數",
+catFun:"函數",
+catEthernet:"以太網",
+catNetwork:"網路",
+catEthernet_init:"初始化",
+catEthernet_clinet:"客戶端",
+catSense:"盛思（盒子）",
+catSense2:"盛思（機器人）",
+catLuxe:"濼喜機器人",
+tab_blocks:"模塊",
+tab_arduino:"程式碼",
+copyright:"Copyright © 北京師範大學米思齊團隊				HTTP://MIXLY.ORG",
+viewNormal:"普通視圖",
+viewAdvanced:"高級視圖",
+catGame:"遊戲",
+catSystem:"系統",
+catTurtle:"烏龜",
+catTuple:"元組",
+catIot:"物聯網",
+catSet:"集合",
+catData:"數據",
+catHardware:"硬件交互",
+catAI:"人工智慧",
+catDS: "数据结构",
+catMorpxVS2:"小MU视觉"
+};
 Blockly.Msg.ADD_COMMENT = "添加注釋";
 Blockly.Msg.AUTH = "請授權這個應用程序以保存您的作品並共亯。";
 Blockly.Msg.CHANGE_VALUE_TITLE = "更改值：";
@@ -733,49 +777,6 @@ Blockly.MIXLY_LABPLUS_ROBOT_DISPLAY_NOTHING='黑屏';
 Blockly.MIXLY_LABPLUS_ROBOT_LED_TOP='設定頂燈為';
 Blockly.MIXLY_LABPLUS_ROBOT_LED_SIDE='設定側燈顏色為';
 Blockly.MIXLY_LCD_ADDRESS="設備地址";
-var MSG = {
-catInOut:"輸入/輸出",
-catControl:"控制",
-catMath:"數學",
-catText:"文字",
-catLists:"數組",
-catMicropyLists: "列表",
-catDicts: "字典",
-catLogic:"邏輯",
-catSerialPort:"串口",
-catGroup:"通信",
-catStorage:"存儲",
-catSensor:"感測器",
-catActuator:"執行器",
-catMonitor:"顯示器",
-catLCD:"LCD顯示屏",
-cat4Digitdisplay:"四位數碼管",
-catOLED:"OLED顯示屏",
-catMatrix:"點陣屏",
-catVar:"變數",
-catFun:"函數",
-catEthernet:"以太網",
-catNetwork:"網路",
-catEthernet_init:"初始化",
-catEthernet_clinet:"客戶端",
-catSense:"盛思（盒子）",
-catSense2:"盛思（機器人）",
-catLuxe:"濼喜機器人",
-tab_blocks:"模塊",
-tab_arduino:"程式碼",
-copyright:"Copyright © 北京師範大學米思齊團隊				HTTP://MIXLY.ORG",
-viewNormal:"普通視圖",
-viewAdvanced:"高級視圖",
-catGame:"遊戲",
-catSystem:"系統",
-catTurtle:"烏龜",
-catTuple:"元組",
-catIot:"物聯網",
-catSet:"集合",
-catData:"數據",
-catHardware:"硬件交互",
-catAI:"人工智慧"
-};
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='返回高電平或低電平';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='返回指定管脚的電平值';
 Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE='設定指定管脚的值（0~255）';

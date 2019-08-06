@@ -2,6 +2,51 @@
 'use strict';
 goog.provide('Blockly.Msg.zh.hans');
 goog.require('Blockly.Msg');
+var MSG = {
+	catInOut: "输入/输出",
+	catControl: "控制",
+	catMath: "数学",
+	catText: "文本",
+	catLists: "数组",
+	catMicropyLists: "列表",
+	catDicts: "字典",
+	catLogic: "逻辑",
+	catSerialPort: "串口",
+	catGroup: "通信",
+	catStorage: "存储",
+	catSensor: "传感器",
+	catActuator: "执行器",
+	catMonitor: "显示器",
+	catLCD: "LCD显示屏",
+	cat4Digitdisplay: "四位数码管",
+	catOLED: "OLED显示屏",
+	catMatrix: "点阵屏",
+	catVar: "变量",
+	catFun: "函数",
+	catEthernet: "以太网",
+	catNetwork: "网络",
+	catEthernet_init: "初始化",
+	catEthernet_clinet: "客户端",
+	catSense: "盛思(盒子)",
+	catSense2: "盛思(机器人)",
+	catLuxe: "泺喜机器人",
+	tab_blocks: "模块",
+	tab_arduino: "代码",
+	copyright: "Copyright © 北京师范大学米思齐团队				HTTP://MIXLY.ORG",
+	viewNormal: "普通视图",
+	viewAdvanced: "高级视图",
+	catGame: "游戏",
+	catSystem: "系统",
+	catTurtle: "乌龟",
+	catTuple: "元组",
+	catIot: "物联网",
+	catSet: "集合",
+	catData: "数据",
+	catHardware: "硬件交互",
+	catAI: "人工智能",
+	catDS: "数据结构",
+	catMorpxVS2:"MU视觉"
+};
 Blockly.Msg.ADD_COMMENT = "添加注释";
 Blockly.Msg.AUTH = "请授权这个应用程序以保存您的作品并共享。";
 Blockly.Msg.CHANGE_VALUE_TITLE = "更改值：";
@@ -511,7 +556,7 @@ Blockly.MIXLY_SPLITBYDOU = '创建数组';
 Blockly.MIXLY_SETUP = '初始化';
 Blockly.MIXLY_WARNING_INTERRUPT = '该管脚号不能作为中断';
 Blockly.MIXLY_CHAOSHENGBO = '超声波测距(cm) ';
-Blockly.MIXLY_WEIGHTSENSOR = '称重模块';
+Blockly.MIXLY_WEIGHTSENSOR = '称重模块读取重量(g)';
 Blockly.MIXLY_IR_RECEIVE_YES = '有信号';
 Blockly.MIXLY_IR_RECEIVE_NO = '无信号';
 Blockly.LANG_VARIABLES_SET_TITLE = '赋值为';
@@ -610,50 +655,6 @@ Blockly.MIXLY_SHOW_FACE_TIME = '显示时间';
 Blockly.MIXLY_LIGHT_SENSOR_ON_BOARD = '板载';
 Blockly.MIXLY_SETTING = '设置';
 Blockly.MIXLY_LCD_ADDRESS = "设备地址";
-var MSG = {
-	catInOut: "输入/输出",
-	catControl: "控制",
-	catMath: "数学",
-	catText: "文本",
-	catLists: "数组",
-	catMicropyLists: "列表",
-	catDicts: "字典",
-	catLogic: "逻辑",
-	catSerialPort: "串口",
-	catGroup: "通信",
-	catStorage: "存储",
-	catSensor: "传感器",
-	catActuator: "执行器",
-	catMonitor: "显示器",
-	catLCD: "LCD显示屏",
-	cat4Digitdisplay: "四位数码管",
-	catOLED: "OLED显示屏",
-	catMatrix: "点阵屏",
-	catVar: "变量",
-	catFun: "函数",
-	catEthernet: "以太网",
-	catNetwork: "网络",
-	catEthernet_init: "初始化",
-	catEthernet_clinet: "客户端",
-	catSense: "盛思(盒子)",
-	catSense2: "盛思(机器人)",
-	catLuxe: "泺喜机器人",
-	tab_blocks: "模块",
-	tab_arduino: "代码",
-	copyright: "Copyright © 北京师范大学米思齐团队				HTTP://MIXLY.ORG",
-	viewNormal: "普通视图",
-	viewAdvanced: "高级视图",
-	catGame: "游戏",
-	catSystem: "系统",
-	catTurtle: "乌龟",
-	catTuple: "元组",
-	catIot: "物联网",
-	catSet: "集合",
-	catData: "数据",
-	catHardware: "硬件交互",
-	catAI: "人工智能",
-	catDS: "数据结构"
-};
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW = '返回高电平或低电平';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ = '返回指定管脚的电平值';
 Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE = '设置指定管脚的值(0~255)';
@@ -2544,3 +2545,78 @@ Blockly.blynk_table_highlight='Table小部件高亮显示';
 Blockly.blynk_table_unselect='Table小部件取消选择';
 Blockly.blynk_table_cleardata='Table小部件清除数据';
 Blockly.blynk_connected="服务器连接状态";
+Blockly.HX711_offset="补偿值";
+Blockly.HX711_scale="比例系数";
+Blockly.LKL_VS2_HELP_INIT = '初始化视觉传感器，并选择相关的端口';
+Blockly.LKL_VS2_HELP_SAVE = '保存视觉传感器的相关设置（只能在设置模式中使用）';
+Blockly.LKL_VS2_HELP_VISION_LEVEL = '设置识别等级，等级升高，误报率降低，识别率也会相应降低';
+Blockly.LKL_VS2_HELP_VISION_ZOOM = '设置图像缩放等级，等级升高，识别距离越远，识别角度越小';
+Blockly.LKL_VS2_WARNING_SETUP_ONLY = '该模块只能置于设置模块中！';
+Blockly.LKL_VS2_WARNING_MU_INIT = '请勿同时使用Serial连接MU与电脑打印字符，此操作会导致电脑端打印字符错乱或通信异常';
+Blockly.LKL_VS2_LED_CLOSE = '关闭';
+Blockly.LKL_VS2_LED_RED = '红色';
+Blockly.LKL_VS2_LED_GREEN = '绿色';
+Blockly.LKL_VS2_LED_YELLOW = '黄色';
+Blockly.LKL_VS2_LED_BLUE = '蓝色';
+Blockly.LKL_VS2_LED_PURPLE = '紫色';
+Blockly.LKL_VS2_LED_CYAN = '青色';
+Blockly.LKL_VS2_LED_WHITE = '白色';
+Blockly.LKL_VS2_AUTO = '自动';
+Blockly.LKL_VS2_VISION_ZOOM = '缩放';
+Blockly.LKL_VS2_LEVEL = '等级';
+Blockly.LKL_VS2_HIGH_SPEED = '速度优先';
+Blockly.LKL_VS2_NORMAL = '性能均衡';
+Blockly.LKL_VS2_HIGH_ACCURACY = '准确率优先';
+Blockly.LKL_VS2_COLOR_BLOCK = '色块';
+Blockly.LKL_VS2_VISION_COLOR_DETECT = '色块检测';
+Blockly.LKL_VS2_VISION_COLOR_RECOGNITION = '颜色识别';
+Blockly.LKL_VS2_VISION_BALL = '球';
+Blockly.LKL_VS2_VISION_LINE = '线条';
+Blockly.LKL_VS2_VISION_BODY = '人体';
+Blockly.LKL_VS2_VISION_FACE = '人脸';
+Blockly.LKL_VS2_VISION_TRAFFIC_CARD = '交通卡片';
+Blockly.LKL_VS2_VISION_SHAPE_CARD = '形状卡片';
+Blockly.LKL_VS2_VISION_NUM_CARD = '数字卡片';
+Blockly.LKL_VS2_CARD_CIRCLE = '圆形';
+Blockly.LKL_VS2_CARD_TRIANGLE = '三角形';
+Blockly.LKL_VS2_CARD_SQUARE = '方形';
+Blockly.LKL_VS2_CARD_TICK = '钩';
+Blockly.LKL_VS2_CARD_CROSS = '叉';
+Blockly.LKL_VS2_CARD_STRAIGHT = '向前';
+Blockly.LKL_VS2_CARD_TURN_LEFT = '向左';
+Blockly.LKL_VS2_CARD_TURN_RIGHT = '向右';
+Blockly.LKL_VS2_CARD_TURN_AROUND = '掉头';
+Blockly.LKL_VS2_CARD_STOP = '停止';
+Blockly.LKL_VS2_STATE_VALUE_X = '横向坐标';
+Blockly.LKL_VS2_STATE_VALUE_Y = '纵向坐标';
+Blockly.LKL_VS2_STATE_VALUE_WIDTH = '宽度';
+Blockly.LKL_VS2_STATE_VALUE_HEIGHT = '高度';
+Blockly.LKL_VS2_STATE_VALUE_R_CHANNEL = '红色通道';
+Blockly.LKL_VS2_STATE_VALUE_G_CHANNEL = '绿色通道';
+Blockly.LKL_VS2_STATE_VALUE_B_CHANNEL = '蓝色通道';
+Blockly.LKL_VS2_STATE_VALUE_LABEL = '标签';
+Blockly.LKL_VS2_ENABLE = '启用';
+Blockly.LKL_VS2_DISABLE = '关闭';
+Blockly.LKL_VS2_LOCK_AWB = '锁定白平衡';
+Blockly.LKL_VS2_WHITE_LIGHT = '白光模式';
+Blockly.LKL_VS2_YELLOW_LIGHT = '黄光模式';
+Blockly.LKL_VS2_SERIAL = '端口';
+Blockly.LKL_VS2_ADDRESS = '地址';
+Blockly.LKL_VS2_RESET = '恢复默认设置';
+Blockly.LKL_VS2_LED_DETECT_COLOR = '检测到物体时显示';
+Blockly.LKL_VS2_LED_UNDETECT_COLOR = '否则';
+Blockly.LKL_VS2_VISION_TYPE = '算法';
+Blockly.LKL_VS2_SET_VISION_LEVEL = '性能';
+Blockly.LKL_VS2_SET_FRAME_ROTATE = '翻转图像';
+Blockly.LKL_VS2_SET_CAMERA_HFR = '高帧率模式';
+Blockly.LKL_VS2_SET_CAMERA_AWB = '摄像头白平衡';
+Blockly.LKL_VS2_SET_VISION_ZOOM = '数码变焦';
+Blockly.LKL_VS2_SET_UART_BAUD = '串口波特率';
+Blockly.LKL_VS2_DETECTED = '检测到';
+Blockly.LKL_VS2_RECOGNIZED = '识别到';
+Blockly.LKL_VS2_GET_DETECTED_MESSAGE = '获取';
+Blockly.LKL_VS2_VALUE = '值';
+Blockly.LKL_VS2_GET_PIX_COLOR = '捕获坐标';
+Blockly.LKL_VS2_CARD_TYPE = '卡片类型';
+Blockly.LKL_VS2_SET_DETECT_COLOR = '设置识别颜色';
+Blockly.LKL_VS2_COORDINATE = '坐标';

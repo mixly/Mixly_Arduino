@@ -9,14 +9,14 @@
   <script type="text/javascript" src="../../core/events.js"></script>
   <script type="text/javascript" src="../../arduino.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
-  <script type="text/javascript" src="drag.js"></script>
-  <script type="text/javascript" src="code.js"></script>
+  <script type="text/javascript" src="js/drag.js"></script>
+  <script type="text/javascript" src="js/code.js"></script>
   <script type="text/javascript" src="digitalPinToInterrupt.js"></script>
   <!--------from BlocklyDuino------------>
-  <script type="text/javascript" src="Blob.js"></script>
+  <script type="text/javascript" src="js/Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
-  <script type="text/javascript" src="FileSaver.min.js"></script>
-  <script type="text/javascript" src="blockly_helper.js"></script>
+  <script type="text/javascript" src="js/FileSaver.min.js"></script>
+  <script type="text/javascript" src="js/blockly_helper.js"></script>
   <!------------------------------------->
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
@@ -608,6 +608,16 @@
       </value>
       <value name="PIN2">
       </value>
+    <!--   <value name="offset">
+        <shadow type="math_number">
+          <field name="NUM">2</field>
+        </shadow>
+      </value> -->
+      <value name="scale">
+        <shadow type="math_number">
+          <field name="NUM">1992</field>
+        </shadow>
+      </value>
     </block>
     <block type="encoder_init">
      <value name="CLK">
@@ -629,10 +639,10 @@
     </shadow>
   </value>
 </block>
-    <!--DS302-->
-    <block type="DS1302_init">
-      <value name="RST">
-        <shadow type="pins_digital">
+<!--DS302-->
+<block type="DS1302_init">
+  <value name="RST">
+    <shadow type="pins_digital">
       <field name="PIN">2</field>
     </shadow>
   </value>
@@ -644,101 +654,101 @@
   <value name="CLK">
     <shadow type="pins_digital">
       <field name="PIN">4</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="DS1307_init">
-      <value name="SDA">
-        <shadow type="pins_digital">
-          <field name="PIN">2</field>
-        </shadow>
-      </value>
-      <value name="SCL">
-        <shadow type="pins_digital">
-          <field name="PIN">3</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="RTC_get_time"></block>
-    <block type="RTC_set_time">
-      <value name="hour">
-        <shadow type="math_number">
-          <field name="NUM">8</field>
-        </shadow>
-      </value>
-      <value name="minute">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="second">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="RTC_set_date">
-      <value name="year">
-        <shadow type="math_number">
-          <field name="NUM">2000</field>
-        </shadow>
-      </value>
-      <value name="month">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-      <value name="day">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-    </block>
-  </category>
-  <category id="catActuator" colour="100">
-   <block type="Mixly_motor">
-    <value name="PIN1">
-      <shadow type="pins_digital">
-        <field name="PIN">5</field>
-      </shadow>
-    </value>
-    <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">4</field>
-      </shadow>
-    </value>
-    <value name="speed">
-      <shadow type="math_number">
-      <field name="NUM">100</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="servo_move">
-    <value name="PIN">
-    </value>
-    <value name="DEGREE">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="DELAY_TIME">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="servo_read_degrees">
-    <value name="PIN">
-      <shadow type="pins_digital"></shadow>
-    </value>
-  </block>
-  <block type="controls_tone">
-    <value name="PIN">
-     <shadow type="pins_digital"></shadow>
-   </value>
-   <value name="FREQUENCY">
-    <shadow type="tone_notes"></shadow>
+    </shadow>
   </value>
+</block>
+<block type="DS1307_init">
+  <value name="SDA">
+    <shadow type="pins_digital">
+      <field name="PIN">2</field>
+    </shadow>
+  </value>
+  <value name="SCL">
+    <shadow type="pins_digital">
+      <field name="PIN">3</field>
+    </shadow>
+  </value>
+</block>
+<block type="RTC_get_time"></block>
+<block type="RTC_set_time">
+  <value name="hour">
+    <shadow type="math_number">
+      <field name="NUM">8</field>
+    </shadow>
+  </value>
+  <value name="minute">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="second">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="RTC_set_date">
+  <value name="year">
+    <shadow type="math_number">
+      <field name="NUM">2000</field>
+    </shadow>
+  </value>
+  <value name="month">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="day">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+</category>
+<category id="catActuator" colour="100">
+ <block type="Mixly_motor">
+  <value name="PIN1">
+    <shadow type="pins_digital">
+      <field name="PIN">5</field>
+    </shadow>
+  </value>
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">4</field>
+    </shadow>
+  </value>
+  <value name="speed">
+    <shadow type="math_number">
+      <field name="NUM">100</field>
+    </shadow>
+  </value>
+</block>
+<block type="servo_move">
+  <value name="PIN">
+  </value>
+  <value name="DEGREE">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="DELAY_TIME">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="servo_read_degrees">
+  <value name="PIN">
+    <shadow type="pins_digital"></shadow>
+  </value>
+</block>
+<block type="controls_tone">
+  <value name="PIN">
+   <shadow type="pins_digital"></shadow>
+ </value>
+ <value name="FREQUENCY">
+  <shadow type="tone_notes"></shadow>
+</value>
 </block>
 <block type="controls_notone">
   <value name="PIN">

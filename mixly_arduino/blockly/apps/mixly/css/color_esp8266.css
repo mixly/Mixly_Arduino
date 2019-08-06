@@ -396,10 +396,18 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background-size: 100% auto; 
 }
 #\:m>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
-	background:url('../../../media/mark/factory.png') no-repeat;
+	background:url('../../../media/mark/mu1.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:m>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../../media/mark/mu2.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:n>div>span.blocklyTreeIcon.blocklyTreeIconNone{ 
+	background:url('../../../media/mark/factory.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:n>.blocklyTreeSelected>span.blocklyTreeIcon.blocklyTreeIconNone{ 
 	background:url('../../../media/mark/factory2.png') no-repeat;
 	background-size: 100% auto; 
 }

@@ -9,19 +9,20 @@
   <script type="text/javascript" src="../../core/events.js"></script>
   <script type="text/javascript" src="../../arduino.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
-  <script type="text/javascript" src="drag.js"></script>
-  <script type="text/javascript" src="code.js"></script>
+  <script type="text/javascript" src="js/drag.js"></script>
+  <script type="text/javascript" src="js/code.js"></script>
   <script type="text/javascript" src="digitalPinToInterrupt.js"></script>
   <!--------from BlocklyDuino------------>
-  <script type="text/javascript" src="Blob.js"></script>
+  <script type="text/javascript" src="js/Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
-  <script type="text/javascript" src="FileSaver.min.js"></script>
-  <script type="text/javascript" src="blockly_helper.js"></script>
+  <script type="text/javascript" src="js/FileSaver.min.js"></script>
+  <script type="text/javascript" src="js/blockly_helper.js"></script>
   <!-----------------------------------   -->
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
   <script type="text/javascript" src="myblock.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/mu_vision.js"></script>
   <script type="text/javascript" src="../../generators/arduino/factory.js"></script>
   <script type="text/javascript" src="../../generators/arduino/blynk.js"></script>
   <script type="text/javascript" src="../../generators/arduino/MQTT.js"></script>
@@ -94,6 +95,7 @@
   <script type="text/javascript" src="../../blocks/esp32_Arduino/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/Handbit.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/MQTT.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/mu_vision.js"></script> 
   <!-- 过去index.html中的js代码都会被放到这个js中-->
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color_esp32_arduino_advance.css" />
@@ -216,9 +218,7 @@
         <shadow type="pins_digital"></shadow>
       </value>
     </block>
-    <block type="inout_touchRead">
 
-    </block>
     <block type="inout_pwm_analog_write">
       <value name="PIN">
         <shadow type="pins_pwm"></shadow>
@@ -800,122 +800,42 @@
   </block>
 </category>
 <category id="catNetwork" colour="0">
-  <block type="base_setup" >
-    <statement name="DO">
-      <block type="serial_begin">
-        <field name="serial_select">Serial</field>
-        <value name="CONTENT">
-          <shadow type="math_number" >
-            <field name="NUM">115200</field>
-          </shadow>
-        </value>
-        <next>
-          <block type="WIFI_info" >
-            <value name="SSID">
-              <shadow type="text" >
-                <field name="TEXT">ssid</field>
-              </shadow>
-            </value>
-            <value name="PWD">
-              <shadow type="text" >
-                <field name="TEXT">password</field>
-              </shadow>
-            </value>
-            <next>
-              <block type="controls_whileUntil">
-                <field name="MODE">WHILE</field>
-                <value name="BOOL">
-                  <shadow type="logic_boolean">
-                    <field name="BOOL">TRUE</field>
-                  </shadow>
-                  <block type="logic_compare" >
-                    <field name="OP">NEQ</field>
-                    <value name="A">
-                      <block type="network_wifi_connect">
-                      </block>
-                    </value>
-                    <value name="B">
-                      <block type="math_number" >
-                        <field name="NUM">WL_CONNECTED</field>
-                      </block>
-                    </value>
-                  </block></value><statement name="DO">
-                    <block type="controls_delay" >
-                      <field name="UNIT">delay</field>
-                      <value name="DELAY_TIME">
-                        <shadow type="math_number">
-                          <field name="NUM">500</field>
-                        </shadow>
-                      </value>
-                      <next>
-                        <block type="serial_print">
-                          <field name="serial_select">Serial</field>
-                          <value name="CONTENT">
-                            <block type="text_char">
-                              <field name="TEXT">.</field>
-                            </block>
-                          </value>
-                        </block>
-                      </next>
-                    </block>
-                  </statement>
-                  <next>
-                    <block type="serial_println">
-                      <field name="serial_select">Serial</field>
-                      <value name="CONTENT">
-                        <block type="text">
-                          <field name="TEXT"></field>
-                        </block>
-                      </value>
-                      <next>
-                        <block type="serial_println">
-                          <field name="serial_select">Serial</field>
-                          <value name="CONTENT">
-                            <block type="text">
-                              <field name="TEXT">Local IP:</field>
-                            </block>
-                          </value>
-                          <next>
-                            <block type="serial_print">
-                              <field name="serial_select">Serial</field>
-                              <value name="CONTENT">
-                                <block type="network_get_connect">
-                                  <field name="mode">WiFi.localIP()</field>
-                                </block>
-                              </value>
-                            </block>
-                          </next>
-                        </block>
-                      </next>
-                    </block>
-                  </next>
-                </block>
-              </next>
-            </block>
-          </next>
-        </block>
-      </statement>
-    </block>
-    <block type="network_stop"></block>
-    <block type="NTP_server">
-      <value name="server_add">
-        <shadow type="text">
-          <field name="TEXT">ntp1.aliyun.com</field>
-        </shadow>
-      </value>
-      <value name="timeZone">
-        <shadow type="math_number">
-         <field name="NUM">8</field>
-       </shadow>
-     </value>
-     <value name="Interval">
+  <block type="WIFI_info" >
+    <value name="SSID">
+      <shadow type="text" >
+        <field name="TEXT">ssid</field>
+      </shadow>
+    </value>
+    <value name="PWD">
+      <shadow type="text" >
+        <field name="TEXT">password</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="network_wifi_connect">
+  </block>
+  <block type="network_get_connect">
+  </block>
+  <block type="network_stop"></block>
+  <block type="NTP_server">
+    <value name="server_add">
+      <shadow type="text">
+        <field name="TEXT">ntp1.aliyun.com</field>
+      </shadow>
+    </value>
+    <value name="timeZone">
       <shadow type="math_number">
-       <field name="NUM">600</field>
+       <field name="NUM">8</field>
      </shadow>
    </value>
- </block>
- <block type="NTP_server_get_time"></block>
- <block type="MQTT_server">
+   <value name="Interval">
+    <shadow type="math_number">
+     <field name="NUM">600</field>
+   </shadow>
+ </value>
+</block>
+<block type="NTP_server_get_time"></block>
+<block type="MQTT_server">
   <value name="server_add">
     <shadow type="text">
       <field name="TEXT">192.168.1.101</field>
@@ -977,12 +897,7 @@
 </block>
 </category>
 <category id="catSensor" colour="40">
- <block type="handbit_button_is_pressed">
- </block>
- <block type="handbit_light">
- </block>
- <block type="handbit_sound">
- </block>
+
  <block type="chaoshengbo2">
   <value name="PIN1">
     <shadow type="pins_digital">
@@ -1011,72 +926,6 @@
   </value>
 </block>
 <block type="ADXL345">
-</block>
-
-<!--DS302-->
-<block type="DS1302_init">
-  <value name="RST">
-    <shadow type="pins_digital">
-      <field name="NUM">2</field>
-    </shadow>
-  </value>
-  <value name="DAT">
-    <shadow type="pins_digital">
-      <field name="NUM">3</field>
-    </shadow>
-  </value>
-  <value name="CLK">
-    <shadow type="pins_digital">
-      <field name="NUM">4</field>
-    </shadow>
-  </value>
-</block>
-<block type="DS1307_init">
-  <value name="SDA">
-    <shadow type="pins_digital">
-      <field name="PIN">2</field>
-    </shadow>
-  </value>
-  <value name="SCL">
-    <shadow type="pins_digital">
-      <field name="PIN">3</field>
-    </shadow>
-  </value>
-</block>
-<block type="RTC_get_time"></block>
-<block type="RTC_set_time">
-  <value name="hour">
-    <shadow type="math_number">
-      <field name="NUM">8</field>
-    </shadow>
-  </value>
-  <value name="minute">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="second">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-</block>
-<block type="RTC_set_date">
-  <value name="year">
-    <shadow type="math_number">
-      <field name="NUM">2000</field>
-    </shadow>
-  </value>
-  <value name="month">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-  <value name="day">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
 </block>
 <block type="BME280_READ">
 </block>
@@ -1126,44 +975,17 @@
       <shadow type="pins_digital"></shadow>
     </value>
   </block>
-  <block type="controls_tone">
-    <value name="PIN">
+
+  <block type="group_stepper_setup">
+    <value name="PIN1">
      <shadow type="pins_digital">
-      <field name="PIN">16</field>
+      <field name="PIN">1</field>
     </shadow>
   </value>
-  <value name="FREQUENCY">
-    <shadow type="tone_notes"></shadow>
-  </value>
-  <value name="DURATION">
-   <shadow type="math_number">
-    <field name="NUM">200</field>
-  </shadow>
-</value>
-<value name="CHANNEL">
-  <shadow type="channel_select"></shadow>
-</value>
-</block>
-<block type="controls_notone">
- <value name="PIN">
+  <value name="PIN2">
    <shadow type="pins_digital">
-    <field name="PIN">16</field>
+    <field name="PIN">2</field>
   </shadow>
-</value>
-<value name="CHANNEL">
-  <shadow type="channel_select"></shadow>
-</value>
-</block>
-<block type="group_stepper_setup">
-  <value name="PIN1">
-   <shadow type="pins_digital">
-    <field name="PIN">1</field>
-  </shadow>
-</value>
-<value name="PIN2">
- <shadow type="pins_digital">
-  <field name="PIN">2</field>
-</shadow>
 </value>
 <value name="steps">
   <shadow type="math_number">
@@ -1215,23 +1037,6 @@
     </shadow>
   </value>
 </block>
-<block type="display_rgb_init">
- <value name="PIN">
-   <shadow type="pins_digital">
-    <field name="PIN">17</field>
-  </shadow>
-</value>
-<value name="LEDCOUNT">
-  <shadow type="math_number">
-    <field name="NUM">4</field>
-  </shadow>
-</value>
-<value name="Brightness">
-  <shadow type="math_number">
-    <field name="NUM">20</field>
-  </shadow>
-</value>
-</block>
 <block type="display_rgb">
  <value name="PIN">
    <shadow type="pins_digital">
@@ -1271,35 +1076,6 @@
   </shadow>
 </value>
 </block>
-<block type="display_rgb_rainbow1">
-  <value name="PIN">
-   <shadow type="pins_digital">
-    <field name="PIN">17</field>
-  </shadow>
-</value>
-<value name="WAIT">
-  <shadow type="math_number">
-    <field name="NUM">20</field>
-  </shadow>
-</value>
-<value name="Brightness">
-  <shadow type="math_number">
-    <field name="NUM">20</field>
-  </shadow>
-</value>
-</block>
-<block type="display_rgb_rainbow3">
-  <value name="PIN">
-   <shadow type="pins_digital">
-    <field name="PIN">17</field>
-  </shadow>
-</value>
-<value name="rainbow_color">
-  <shadow type="math_number">
-    <field name="NUM">20</field>
-  </shadow>
-</value>
-</block>
 <block type="display_rgb_show">
   <value name="PIN">
    <shadow type="pins_digital">
@@ -1317,7 +1093,6 @@
         </shadow>
       </value>
     </block>
-    
     <block type="group_lcd_init3">
      <value name="PIN1">
       <shadow type="pins_digital">
@@ -2386,6 +2161,131 @@
 <block type="blynk_iot_syncVirtual">
   <field name="Vpin">V0</field>
 </block>
+</category>
+<category id="catHandbitSensor" name="HandbitSensor" colour="65">
+ <block type="handbit_button_is_pressed">
+ </block>
+ <block type="handbit_light">
+ </block>
+ <block type="handbit_sound">
+ </block>
+ <block type="inout_touchRead">
+ </block>
+ <block type="handbit_rgb">
+   <value name="PIN">
+     <shadow type="pins_digital">
+      <field name="PIN">17</field>
+    </shadow>
+  </value>
+  <value name="_LED_">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="RVALUE">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="GVALUE">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="BVALUE">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="handbit_rgb2">
+ <value name="PIN">
+   <shadow type="pins_digital">
+    <field name="PIN">17</field>
+  </shadow>
+</value>
+<value name="_LED_">
+  <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
+<value name="Brightness">
+  <shadow type="math_number">
+    <field name="NUM">20</field>
+  </shadow>
+</value>
+</block>
+<block type="handbit_rgb_show">
+  <value name="PIN">
+   <shadow type="pins_digital">
+    <field name="PIN">17</field>
+  </shadow>
+</value>
+</block>
+<block type="controls_tone">
+  <value name="PIN">
+   <shadow type="pins_digital">
+    <field name="PIN">16</field>
+  </shadow>
+</value>
+<value name="FREQUENCY">
+  <shadow type="tone_notes"></shadow>
+</value>
+<value name="DURATION">
+ <shadow type="math_number">
+  <field name="NUM">200</field>
+</shadow>
+</value>
+<value name="CHANNEL">
+  <shadow type="channel_select"></shadow>
+</value>
+</block>
+<block type="controls_notone">
+ <value name="PIN">
+   <shadow type="pins_digital">
+    <field name="PIN">16</field>
+  </shadow>
+</value>
+<value name="CHANNEL">
+  <shadow type="channel_select"></shadow>
+</value>
+</block>
+</category>
+<category id="catMorpxVS2" colour="#EF5411">
+  <block type="Vs2MuInit"></block>
+  <block type="Vs2Setup"></block>
+  <block type="Vs2Reset"></block>
+  <block type="Vs2SetLEDColor">
+    <value name="LEDLevel">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="Vs2VisionBegin"></block>
+  <block type="Vs2SetVisionLevel"></block>
+  <block type="Vs2SetVisionZoom"></block>
+  <block type="Vs2SetUARTBaud"></block>
+  <block type="Vs2SetCameraWhiteBalance"></block>
+  <block type="Vs2SetCameraHFR"></block>
+  <block type="Vs2Detected"></block>
+  <block type="Vs2DetectedRegionColor">
+    <value name="XValue">
+      <shadow type="math_number">
+        <field name="NUM">50</field>
+      </shadow>
+    </value>
+    <value name="YValue">
+      <shadow type="math_number">
+        <field name="NUM">50</field>
+      </shadow>
+    </value>
+  </block>
 </category>
 <category id="catFactory" name="Factory" colour="65">
   <block type="factory_notes"></block>

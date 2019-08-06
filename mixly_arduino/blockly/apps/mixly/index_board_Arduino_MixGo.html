@@ -9,20 +9,21 @@
   <script type="text/javascript" src="../../core/events.js"></script>
   <script type="text/javascript" src="../../arduino.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
-  <script type="text/javascript" src="drag.js"></script>
+  <script type="text/javascript" src="js/drag.js"></script>
   <script type="text/javascript" src="../../core/field_textarea.js"></script>
-  <script type="text/javascript" src="code.js"></script>
+  <script type="text/javascript" src="js/code.js"></script>
   <script type="text/javascript" src="digitalPinToInterrupt.js"></script>
   <!--------from BlocklyDuino------------>
-  <script type="text/javascript" src="Blob.js"></script>
+  <script type="text/javascript" src="js/Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
-  <script type="text/javascript" src="FileSaver.min.js"></script>
-  <script type="text/javascript" src="blockly_helper.js"></script>
+  <script type="text/javascript" src="js/FileSaver.min.js"></script>
+  <script type="text/javascript" src="js/blockly_helper.js"></script>
   <!------------------------------------->
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
   <script type="text/javascript" src="myblock.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/mu_vision.js"></script>
   <script type="text/javascript" src="../../generators/arduino/MQTT.js"></script>
   <script type="text/javascript" src="../../generators/arduino/factory.js"></script>
   <script type="text/javascript" src="../../generators/arduino/pins.js"></script>
@@ -94,6 +95,7 @@
   <script type="text/javascript" src="../../blocks/esp32_Arduino/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/MixGo.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/MQTT.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/mu_vision.js"></script> 
   <!-- 过去index.html中的js代码都会被放到这个js中-->
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color_esp32_arduino_advance.css" />
@@ -735,122 +737,42 @@
   </block>
 </category>
 <category id="catNetwork" colour="0">
-  <block type="base_setup" >
-    <statement name="DO">
-      <block type="serial_begin">
-        <field name="serial_select">Serial</field>
-        <value name="CONTENT">
-          <shadow type="math_number" >
-            <field name="NUM">115200</field>
-          </shadow>
-        </value>
-        <next>
-          <block type="WIFI_info" >
-            <value name="SSID">
-              <shadow type="text" >
-                <field name="TEXT">ssid</field>
-              </shadow>
-            </value>
-            <value name="PWD">
-              <shadow type="text" >
-                <field name="TEXT">password</field>
-              </shadow>
-            </value>
-            <next>
-              <block type="controls_whileUntil">
-                <field name="MODE">WHILE</field>
-                <value name="BOOL">
-                  <shadow type="logic_boolean">
-                    <field name="BOOL">TRUE</field>
-                  </shadow>
-                  <block type="logic_compare" >
-                    <field name="OP">NEQ</field>
-                    <value name="A">
-                      <block type="network_wifi_connect">
-                      </block>
-                    </value>
-                    <value name="B">
-                      <block type="math_number" >
-                        <field name="NUM">WL_CONNECTED</field>
-                      </block>
-                    </value>
-                  </block></value><statement name="DO">
-                    <block type="controls_delay" >
-                      <field name="UNIT">delay</field>
-                      <value name="DELAY_TIME">
-                        <shadow type="math_number">
-                          <field name="NUM">500</field>
-                        </shadow>
-                      </value>
-                      <next>
-                        <block type="serial_print">
-                          <field name="serial_select">Serial</field>
-                          <value name="CONTENT">
-                            <block type="text_char">
-                              <field name="TEXT">.</field>
-                            </block>
-                          </value>
-                        </block>
-                      </next>
-                    </block>
-                  </statement>
-                  <next>
-                    <block type="serial_println">
-                      <field name="serial_select">Serial</field>
-                      <value name="CONTENT">
-                        <block type="text">
-                          <field name="TEXT"></field>
-                        </block>
-                      </value>
-                      <next>
-                        <block type="serial_println">
-                          <field name="serial_select">Serial</field>
-                          <value name="CONTENT">
-                            <block type="text">
-                              <field name="TEXT">Local IP:</field>
-                            </block>
-                          </value>
-                          <next>
-                            <block type="serial_print">
-                              <field name="serial_select">Serial</field>
-                              <value name="CONTENT">
-                                <block type="network_get_connect">
-                                  <field name="mode">WiFi.localIP()</field>
-                                </block>
-                              </value>
-                            </block>
-                          </next>
-                        </block>
-                      </next>
-                    </block>
-                  </next>
-                </block>
-              </next>
-            </block>
-          </next>
-        </block>
-      </statement>
-    </block>
-    <block type="network_stop"></block>
-    <block type="NTP_server">
-      <value name="server_add">
-        <shadow type="text">
-          <field name="TEXT">ntp1.aliyun.com</field>
-        </shadow>
-      </value>
-      <value name="timeZone">
-        <shadow type="math_number">
-         <field name="NUM">8</field>
-       </shadow>
-     </value>
-     <value name="Interval">
+  <block type="WIFI_info" >
+    <value name="SSID">
+      <shadow type="text" >
+        <field name="TEXT">ssid</field>
+      </shadow>
+    </value>
+    <value name="PWD">
+      <shadow type="text" >
+        <field name="TEXT">password</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="network_wifi_connect">
+  </block>
+  <block type="network_get_connect">
+  </block>
+  <block type="network_stop"></block>
+  <block type="NTP_server">
+    <value name="server_add">
+      <shadow type="text">
+        <field name="TEXT">ntp1.aliyun.com</field>
+      </shadow>
+    </value>
+    <value name="timeZone">
       <shadow type="math_number">
-       <field name="NUM">600</field>
+       <field name="NUM">8</field>
      </shadow>
    </value>
- </block>
- <block type="NTP_server_get_time"></block>
- <block type="MQTT_server">
+   <value name="Interval">
+    <shadow type="math_number">
+     <field name="NUM">600</field>
+   </shadow>
+ </value>
+</block>
+<block type="NTP_server_get_time"></block>
+<block type="MQTT_server">
   <value name="server_add">
     <shadow type="text">
       <field name="TEXT">192.168.1.101</field>
@@ -2357,23 +2279,54 @@
   <field name="Vpin">V0</field>
 </block>
 </category>
-<category id="catFactory" name="Factory" colour="65">
-  <block type="factory_notes"></block>
-  <block type="factory_include"></block>
-  <block type="factory_function_noreturn"></block>
-  <block type="factory_function_return"></block>
-  <block type="factory_declare"></block>
-  <block type="factory_declare2"></block>
-  <block type="factory_define"></block>
-  <block type="factory_callMethod_noreturn"></block>
-  <block type="factory_callMethod_return"></block>
-  <block type="factory_static_method_noreturn"></block>
-  <block type="factory_static_method_return"></block>
-  <block type="factory_block"></block>
-  <block type="factory_block_return"></block>
-  <block type="factory_block_with_textarea"></block>
-  <block type="factory_block_return_with_textarea"></block>
-</category>
+<category id="catMorpxVS2" colour="#EF5411">
+  <block type="Vs2MuInit"></block>
+  <block type="Vs2Setup"></block>
+  <block type="Vs2Reset"></block>
+  <block type="Vs2SetLEDColor">
+    <value name="LEDLevel">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="Vs2VisionBegin"></block>
+  <block type="Vs2SetVisionLevel"></block>
+  <block type="Vs2SetVisionZoom"></block>
+  <block type="Vs2SetUARTBaud"></block>
+  <block type="Vs2SetCameraWhiteBalance"></block>
+  <block type="Vs2SetCameraHFR"></block>
+  <block type="Vs2Detected"></block>
+  <block type="Vs2DetectedRegionColor">
+    <value name="XValue">
+      <shadow type="math_number">
+        <field name="NUM">50</field>
+      </shadow>
+    </value>
+    <value name="YValue">
+      <shadow type="math_number">
+        <field name="NUM">50</field>
+      </shadow>
+    </value>
+  </block>
+  </category>
+  <category id="catFactory" name="Factory" colour="65">
+    <block type="factory_notes"></block>
+    <block type="factory_include"></block>
+    <block type="factory_function_noreturn"></block>
+    <block type="factory_function_return"></block>
+    <block type="factory_declare"></block>
+    <block type="factory_declare2"></block>
+    <block type="factory_define"></block>
+    <block type="factory_callMethod_noreturn"></block>
+    <block type="factory_callMethod_return"></block>
+    <block type="factory_static_method_noreturn"></block>
+    <block type="factory_static_method_return"></block>
+    <block type="factory_block"></block>
+    <block type="factory_block_return"></block>
+    <block type="factory_block_with_textarea"></block>
+    <block type="factory_block_return_with_textarea"></block>
+  </category>
 </xml>
 <script>
   if(company_block!=null){

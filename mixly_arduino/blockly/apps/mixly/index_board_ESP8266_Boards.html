@@ -10,19 +10,20 @@
   <script type="text/javascript" src="../../arduino.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
   <script type="text/javascript" src="../../core/field_textarea.js"></script>
-  <script type="text/javascript" src="drag.js"></script>
-  <script type="text/javascript" src="code.js"></script>
+  <script type="text/javascript" src="js/drag.js"></script>
+  <script type="text/javascript" src="js/code.js"></script>
   <script type="text/javascript" src="digitalPinToInterrupt.js"></script>
   <!--------from BlocklyDuino------------>
-  <script type="text/javascript" src="Blob.js"></script>
+  <script type="text/javascript" src="js/Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
-  <script type="text/javascript" src="FileSaver.min.js"></script>
-  <script type="text/javascript" src="blockly_helper.js"></script>
+  <script type="text/javascript" src="js/FileSaver.min.js"></script>
+  <script type="text/javascript" src="js/blockly_helper.js"></script>
   <!----------------------------------- -->
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
   <script type="text/javascript" src="myblock.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/mu_vision.js"></script>
   <script type="text/javascript" src="../../generators/arduino/pins.js"></script>
   <script type="text/javascript" src="../../generators/arduino/inout.js"></script>
   <script type="text/javascript" src="../../generators/arduino/control.js"></script>
@@ -61,6 +62,7 @@
   <script type="text/javascript" src="../../blocks/arduino/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/MQTT.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/mu_vision.js"></script> 
   <!-- 过去index.html中的js代码都会被放到这个js中-->
   <script src="init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color_esp8266.css" />
@@ -772,159 +774,80 @@
       </block>
     </category>
     <category id="catNetwork" colour="0">
-      <block type="base_setup" >
-        <statement name="DO">
-          <block type="serial_begin">
-            <field name="serial_select">Serial</field>
-            <value name="CONTENT">
-              <shadow type="math_number" >
-                <field name="NUM">115200</field>
-              </shadow>
-            </value>
-            <next>
-              <block type="WIFI_info" >
-                <value name="SSID">
-                  <shadow type="text" >
-                    <field name="TEXT">ssid</field>
-                  </shadow>
-                </value>
-                <value name="PWD">
-                  <shadow type="text" >
-                    <field name="TEXT">password</field>
-                  </shadow>
-                </value>
-                <next>
-                  <block type="controls_whileUntil">
-                    <field name="MODE">WHILE</field>
-                    <value name="BOOL">
-                      <shadow type="logic_boolean">
-                        <field name="BOOL">TRUE</field>
-                      </shadow>
-                      <block type="logic_compare" >
-                        <field name="OP">NEQ</field>
-                        <value name="A">
-                          <block type="network_wifi_connect">
-                          </block>
-                        </value>
-                        <value name="B">
-                          <block type="math_number" >
-                            <field name="NUM">WL_CONNECTED</field>
-                          </block>
-                        </value>
-                      </block></value><statement name="DO">
-                        <block type="controls_delay" >
-                          <field name="UNIT">delay</field>
-                          <value name="DELAY_TIME">
-                            <shadow type="math_number">
-                              <field name="NUM">500</field>
-                            </shadow>
-                          </value>
-                          <next>
-                            <block type="serial_print">
-                              <field name="serial_select">Serial</field>
-                              <value name="CONTENT">
-                                <block type="text_char">
-                                  <field name="TEXT">.</field>
-                                </block>
-                              </value>
-                            </block>
-                          </next>
-                        </block>
-                      </statement>
-                      <next>
-                        <block type="serial_println">
-                          <field name="serial_select">Serial</field>
-                          <value name="CONTENT">
-                            <block type="text">
-                              <field name="TEXT"></field>
-                            </block>
-                          </value>
-                          <next>
-                            <block type="serial_println">
-                              <field name="serial_select">Serial</field>
-                              <value name="CONTENT">
-                                <block type="text">
-                                  <field name="TEXT">Local IP:</field>
-                                </block>
-                              </value>
-                              <next>
-                                <block type="serial_print">
-                                  <field name="serial_select">Serial</field>
-                                  <value name="CONTENT">
-                                    <block type="network_get_connect">
-                                      <field name="mode">WiFi.localIP()</field>
-                                    </block>
-                                  </value>
-                                </block>
-                              </next>
-                            </block>
-                          </next>
-                        </block>
-                      </next>
-                    </block>
-                  </next>
-                </block>
-              </next>
-            </block>
-          </statement>
-        </block>
-        <block type="network_stop"></block>
-        <block type="NTP_server">
-          <value name="server_add">
-            <shadow type="text">
-              <field name="TEXT">ntp1.aliyun.com</field>
-            </shadow>
-          </value>
-          <value name="timeZone">
-            <shadow type="math_number">
-             <field name="NUM">8</field>
-           </shadow>
-         </value>
-         <value name="Interval">
+      <block type="WIFI_info" >
+        <value name="SSID">
+          <shadow type="text" >
+            <field name="TEXT">ssid</field>
+          </shadow>
+        </value>
+        <value name="PWD">
+          <shadow type="text" >
+            <field name="TEXT">password</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="network_wifi_connect">
+      </block>
+      <block type="network_get_connect">
+      </block>
+      <block type="network_stop"></block>
+      <block type="network_stop"></block>
+      <block type="NTP_server">
+        <value name="server_add">
+          <shadow type="text">
+            <field name="TEXT">ntp1.aliyun.com</field>
+          </shadow>
+        </value>
+        <value name="timeZone">
           <shadow type="math_number">
-           <field name="NUM">600</field>
+           <field name="NUM">8</field>
          </shadow>
        </value>
-     </block>
-     <block type="NTP_server_get_time"></block>
-     <block type="MQTT_server">
-      <value name="server_add">
-        <shadow type="text">
-          <field name="TEXT">192.168.1.101</field>
-        </shadow>
-      </value>
-      <value name="server_port">
+       <value name="Interval">
         <shadow type="math_number">
-         <field name="NUM">1883</field>
+         <field name="NUM">600</field>
        </shadow>
      </value>
-     <value name="Client_ID">
+   </block>
+   <block type="NTP_server_get_time"></block>
+   <block type="MQTT_server">
+    <value name="server_add">
       <shadow type="text">
-        <field name="TEXT">ID</field>
+        <field name="TEXT">192.168.1.101</field>
       </shadow>
     </value>
-    <value name="IOT_ID">
-      <shadow type="text">
-        <field name="TEXT">siot</field>
-      </shadow>
-    </value>
-    <value name="IOT_PWD">
-      <shadow type="text">
-        <field name="TEXT">dfrobot</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="MQTT_publish">
-   <value name="data">
-    <shadow type="math_number">
-      <field name="NUM">120</field>
-    </shadow>
-  </value>
-  <value name="Topic">
+    <value name="server_port">
+      <shadow type="math_number">
+       <field name="NUM">1883</field>
+     </shadow>
+   </value>
+   <value name="Client_ID">
     <shadow type="text">
-      <field name="TEXT">Topic_0</field>
+      <field name="TEXT">ID</field>
     </shadow>
   </value>
+  <value name="IOT_ID">
+    <shadow type="text">
+      <field name="TEXT">siot</field>
+    </shadow>
+  </value>
+  <value name="IOT_PWD">
+    <shadow type="text">
+      <field name="TEXT">dfrobot</field>
+    </shadow>
+  </value>
+</block>
+<block type="MQTT_publish">
+ <value name="data">
+  <shadow type="math_number">
+    <field name="NUM">120</field>
+  </shadow>
+</value>
+<value name="Topic">
+  <shadow type="text">
+    <field name="TEXT">Topic_0</field>
+  </shadow>
+</value>
 </block>
 <block type="MQTT_subscribe">
   <value name="IF0">
@@ -965,13 +888,17 @@
   </block>
   <block type="weightSensor">
     <value name="PIN1">
-      <shadow type="pins_digital">
-        <field name="PIN">2</field>
-      </shadow>
     </value>
     <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">3</field>
+    </value>
+    <value name="offset">
+      <shadow type="math_number">
+        <field name="NUM">2</field>
+      </shadow>
+    </value>
+    <value name="scale">
+      <shadow type="math_number">
+        <field name="NUM">1992</field>
       </shadow>
     </value>
   </block>
@@ -1396,53 +1323,63 @@
           </statement>
         </block>
       </next>
-    </block>
-    <block type="procedures_defnoreturn">
-      <field name="NAME">page1</field>
-      <statement name="STACK">
-        <block type="oled_setFont">
-          <field name="TYPE">timR08_tr</field>
-          <next>
-            <block type="oled_print" >
-              <value name="POS_X">
-                <shadow type="math_number">
-                  <field name="NUM">0</field>
-                </shadow>
-              </value>
-              <value name="POS_Y">
-                <shadow type="math_number">
-                  <field name="NUM">20</field>
-                </shadow>
-              </value>
-              <value name="TEXT">
-                <shadow type="text">
-                  <field name="TEXT">1234</field>
-                </shadow>
-              </value>
-            </block>
-          </next>
+      <value name="SDA">
+       <shadow type="pins_digital">
+        <field name="PIN">SDA</field>
+      </shadow>
+    </value>
+    <value name="SCL">
+     <shadow type="pins_digital">
+      <field name="PIN">SCL</field>
+    </shadow>
+  </value>
+</block>
+<block type="procedures_defnoreturn">
+  <field name="NAME">page1</field>
+  <statement name="STACK">
+    <block type="oled_setFont">
+      <field name="TYPE">timR08_tr</field>
+      <next>
+        <block type="oled_print" >
+          <value name="POS_X">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="POS_Y">
+            <shadow type="math_number">
+              <field name="NUM">20</field>
+            </shadow>
+          </value>
+          <value name="TEXT">
+            <shadow type="text">
+              <field name="TEXT">1234</field>
+            </shadow>
+          </value>
         </block>
-      </statement>
+      </next>
     </block>
-    <block type="oled_define_bitmap_data"></block>
-    <block type="oled_clear"></block>
-    <block type="oled_showBitmap" >
-      <value name="START_X">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="START_Y">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="bitmap_name">
-        <block type="text">
-          <field name="TEXT">bitmap1</field>
-        </block>
-      </value>
+  </statement>
+</block>
+<block type="oled_define_bitmap_data"></block>
+<block type="oled_clear"></block>
+<block type="oled_showBitmap" >
+  <value name="START_X">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="START_Y">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="bitmap_name">
+    <block type="text">
+      <field name="TEXT">bitmap1</field>
     </block>
+  </value>
+</block>
     <!-- <block type="oled_draw4Str" >
       <value name="Text_line1">
         <shadow type="text">
@@ -2577,6 +2514,37 @@
   <field name="Vpin">V0</field>
 </block>
 <block type="Blynk_connected"></block>
+</category>
+<category id="catMorpxVS2" colour="#EF5411">
+  <block type="Vs2MuInit"></block>
+  <block type="Vs2Setup"></block>
+  <block type="Vs2Reset"></block>
+  <block type="Vs2SetLEDColor">
+    <value name="LEDLevel">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="Vs2VisionBegin"></block>
+  <block type="Vs2SetVisionLevel"></block>
+  <block type="Vs2SetVisionZoom"></block>
+  <block type="Vs2SetUARTBaud"></block>
+  <block type="Vs2SetCameraWhiteBalance"></block>
+  <block type="Vs2SetCameraHFR"></block>
+  <block type="Vs2Detected"></block>
+  <block type="Vs2DetectedRegionColor">
+    <value name="XValue">
+      <shadow type="math_number">
+        <field name="NUM">50</field>
+      </shadow>
+    </value>
+    <value name="YValue">
+      <shadow type="math_number">
+        <field name="NUM">50</field>
+      </shadow>
+    </value>
+  </block>
 </category>
 <category id="catFactory" name="Factory" colour="65">
   <block type="factory_notes"></block>

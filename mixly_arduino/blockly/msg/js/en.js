@@ -4,7 +4,48 @@
 goog.provide('Blockly.Msg.en');
 
 goog.require('Blockly.Msg');
-
+var MSG = {
+	catInOut: "In/Out",
+	catControl: "Control",
+	catMath: "Math",
+	catText: "Text",
+	catLists: "Lists",
+	catMicropyLists: "Lists",
+	catDicts: "Dictory",
+	catLogic: "Logic",
+	catSerialPort:"SerialPort",
+	catGroup: "Communicate",
+	catStorage:"Storage",
+	catSensor: "Sensor",
+	catActuator: "Actuator",
+	catMonitor:"Monitor",
+	catLCD:"LCD 1602",
+	cat4Digitdisplay:"Digit Display",
+	catOLED:"OLED Screen",
+	catMatrix:"Matrix",
+	catVar: "Variables",
+	catFun: "Functions",
+	catEthernet:"Ethernet",
+	catNetwork:"Network",
+	catEthernet_init:"Init",
+	catEthernet_clinet:"Client",
+	tab_blocks: "Blocks",
+	tab_arduino: "Code",
+	copyright:"Copyright © Mixly Team@BNU				 HTTP://MIXLY.ORG",
+	viewNormal:"Normal",
+	viewAdvanced:"Advanced",
+	catGame:"Game",
+	catSystem:"System",
+	catTurtle:"Turtle",
+	catTuple:"Tuple",
+	catIot:"IOT",
+	catSet:"Set",
+	catData:"Data",
+	catHardware:"Hardware",
+	catAI:"AI",
+	catDS: "Data Structure",
+	catMorpxVS2:"MuVisionSensor"
+};
 Blockly.Msg.ADD_COMMENT = "Add Comment";
 Blockly.Msg.AUTH = "Please authorize this app to enable your work to be saved and to allow it to be shared by you.";
 Blockly.Msg.CHANGE_VALUE_TITLE = "Change value:";
@@ -733,46 +774,6 @@ Blockly.MIXLY_LABPLUS_ROBOT_DISPLAY_NOTHING='nothing';
 Blockly.MIXLY_LABPLUS_ROBOT_LED_TOP='Set led on top to';
 Blockly.MIXLY_LABPLUS_ROBOT_LED_SIDE='Set side leds\' color to';
 Blockly.MIXLY_LCD_ADDRESS="address";
-var MSG = {
-	catInOut: "In/Out",
-	catControl: "Control",
-	catMath: "Math",
-	catText: "Text",
-	catLists: "Lists",
-	catMicropyLists: "Lists",
-	catDicts: "Dictory",
-	catLogic: "Logic",
-	catSerialPort:"SerialPort",
-	catGroup: "Communicate",
-	catStorage:"Storage",
-	catSensor: "Sensor",
-	catActuator: "Actuator",
-	catMonitor:"Monitor",
-	catLCD:"LCD 1602",
-	cat4Digitdisplay:"Digit Display",
-	catOLED:"OLED Screen",
-	catMatrix:"Matrix",
-	catVar: "Variables",
-	catFun: "Functions",
-	catEthernet:"Ethernet",
-	catNetwork:"Network",
-	catEthernet_init:"Init",
-	catEthernet_clinet:"Client",
-	tab_blocks: "Blocks",
-	tab_arduino: "Code",
-	copyright:"Copyright © Mixly Team@BNU				 HTTP://MIXLY.ORG",
-	viewNormal:"Normal",
-	viewAdvanced:"Advanced",
-	catGame:"Game",
-	catSystem:"System",
-	catTurtle:"Turtle",
-	catTuple:"Tuple",
-	catIot:"IOT",
-	catSet:"Set",
-	catData:"Data",
-	catHardware:"Hardware",
-	catAI:"AI"
-};
 Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW='Returns high or low voltage.';
 Blockly.MIXLY_TOOLTIP_INOUT_DIGITAL_READ='Returns digital value of a specific Port';
 Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE='Writes analog value between 0 and 255 to a specific Port';
@@ -2755,3 +2756,74 @@ Blockly.blynk_table_highlight='Table Highlight';
 Blockly.blynk_table_unselect='Table cancel selection';
 Blockly.blynk_table_cleardata='Table Clear Data';
 Blockly.blynk_connected="Connection state";
+Blockly.LKL_VS2_HELP_INIT = 'Setup MU vision sensor, and select the port to connect';//'初始化视觉传感器，并选择相关的串口号';
+Blockly.LKL_VS2_HELP_VISION_LEVEL = 'Setting the recognition level, the higher the level, the lower the false alarm rate, and the lower the recognition rate accordingly.';//'设置识别等级，等级升高，误报率降低，识别率也会相应降低';
+Blockly.LKL_VS2_HELP_VISION_ZOOM = 'Setting the camera zoom level, the higher the level, the farther the recognition distance is, the smaller the recognition angle is.';//'设置图像缩放等级，等级升高，识别距离越远，识别角度越小';
+Blockly.LKL_VS2_WARNING_SETUP_ONLY = 'This block can only be placed in the setup block!';
+Blockly.LKL_VS2_WARNING_MU_INIT = 'Please DON\'T connect MU and your computer on Serial port in the same time, this operation will cause the computer to print error characters or communication abnormalities.';             //'请勿同时使用Serial连接MU与电脑打印字符，此操作会导致电脑端打印字符错乱或通信异常';
+Blockly.LKL_VS2_LED_CLOSE = 'Close';					//'关闭';
+Blockly.LKL_VS2_LED_RED = 'Red';						//'红色';
+Blockly.LKL_VS2_LED_GREEN = 'Green';					//'绿色';
+Blockly.LKL_VS2_LED_YELLOW = 'Yellow';					//'黄色';
+Blockly.LKL_VS2_LED_BLUE = 'Blue';						//'蓝色';
+Blockly.LKL_VS2_LED_PURPLE = 'Purple';					//'紫色';
+Blockly.LKL_VS2_LED_CYAN = 'Cyan';						//'青色';
+Blockly.LKL_VS2LED_WHITE = 'White';					//'白色';
+Blockly.LKL_VS2_AUTO = 'auto';							//'自动';
+Blockly.LKL_VS2_VISION_ZOOM = 'Zoom';					//'缩放';
+Blockly.LKL_VS2_LEVEL = 'level';						//'等级';
+Blockly.LKL_VS2_HIGH_SPEED = 'highSpeed';				//'速度优先';
+Blockly.LKL_VS2_NORMAL = 'normal';						//'性能均衡';
+Blockly.LKL_VS2_HIGH_ACCURACY = 'highAccuracy';			//'准确度优先';
+Blockly.LKL_VS2_COLOR_BLOCK = 'ColorBlock';             //'色块';
+Blockly.LKL_VS2_VISION_COLOR_DETECT = 'ColorBlock';	//'颜色识别';
+Blockly.LKL_VS2_VISION_COLOR_RECOGNITION = 'ColorRecognition';	//'颜色检测';
+Blockly.LKL_VS2_VISION_BALL = 'Ball';					//'球';
+Blockly.LKL_VS2_VISION_LINE = 'Line';					//'线条';
+Blockly.LKL_VS2_VISION_BODY = 'Body';					//'人体';
+Blockly.LKL_VS2_VISION_FACE = 'Face';					//'人脸';
+Blockly.LKL_VS2_VISION_TRAFFIC_CARD = 'TrafficCard';	//'交通卡片';
+Blockly.LKL_VS2_VISION_SHAPE_CARD = 'ShapeCard';		//'形状卡片';
+Blockly.LKL_VS2_VISION_NUM_CARD = 'NumberCard';			//'数字卡片';
+Blockly.LKL_VS2_CARD_CIRCLE = 'Circle';					//'圆形';
+Blockly.LKL_VS2_CARD_TRIANGLE = 'Triangle';				//'三角形';
+Blockly.LKL_VS2_CARD_SQUARE = 'Square';					//'方形';
+Blockly.LKL_VS2_CARD_TICK = 'Tick';						//'正确';
+Blockly.LKL_VS2_CARD_CROSS = 'Cross';					//'错误';
+Blockly.LKL_VS2_CARD_STRAIGHT = 'Straight';				//'向前';
+Blockly.LKL_VS2_CARD_TURN_LEFT = 'TurnLeft';			//'向左';
+Blockly.LKL_VS2_CARD_TURN_RIGHT = 'TurnRight';			//'向右';
+Blockly.LKL_VS2_CARD_STOP = 'Stop';						//'停止';
+Blockly.LKL_VS2_STATE_VALUE_X = 'Horizontal';			//'横向坐标';
+Blockly.LKL_VS2_STATE_VALUE_Y = 'Vertical';				//'纵向坐标';
+Blockly.LKL_VS2_STATE_VALUE_WIDTH = 'Width';			//'宽度';
+Blockly.LKL_VS2_STATE_VALUE_HEIGHT = 'Height';			//'高度';
+Blockly.LKL_VS2_STATE_VALUE_R_CHANNEL = 'ChannelR';		//'红色通道';
+Blockly.LKL_VS2_STATE_VALUE_G_CHANNEL = 'ChannelG';		//'绿色通道';
+Blockly.LKL_VS2_STATE_VALUE_B_CHANNEL = 'ChannelB';		//'蓝色通道';
+Blockly.LKL_VS2_STATE_VALUE_LABEL = 'Label';			//'类型';
+Blockly.LKL_VS2_ENABLE = 'enable';						//'开启';
+Blockly.LKL_VS2_DISABLE = 'disable';					//'关闭';
+Blockly.LKL_VS2_LOCK_AWB = 'LockAWB';					//'锁定白平衡';
+Blockly.LKL_VS2_WHITE_LIGHT = 'WhiteLight';				//'白光模式';
+Blockly.LKL_VS2_YELLOW_LIGHT = 'YellowLight';			//'黄光模式';
+Blockly.LKL_VS2_COLOR = 'color';						//'颜色';
+Blockly.LKL_VS2_ADDRESS = 'address';								//'地址';
+Blockly.LKL_VS2_RESET = 'reset to default';								//'恢复默认设置';
+Blockly.LKL_VS2_LED_DETECT_COLOR = 'when detected then';				//'识别到物体亮';
+Blockly.LKL_VS2_LED_UNDETECT_COLOR = 'else';				        //'没识别到物体亮';
+Blockly.LKL_VS2_VISION_TYPE = 'algorithm';						        //'算法';
+Blockly.LKL_VS2_SET_VISION_LEVEL = 'level';				            //'设置识别等级';
+Blockly.LKL_VS2_SET_FRAME_ROTATE = 'rotate Frame';					//'图像翻转';
+Blockly.LKL_VS2_SET_CAMERA_HFR = 'high FPS mode';   				//'高帧率模式';
+Blockly.LKL_VS2_SET_CAMERA_AWB = 'camera white balance';					    //'摄像头白平衡';
+Blockly.LKL_VS2_SET_VISION_ZOOM = 'zoom';   					    //'图像缩放等级';
+Blockly.LKL_VS2_SET_UART_BAUD = 'UART baudrate';					    //'串口波特率';
+Blockly.LKL_VS2_DETECTED = 'detected';								//'检测到';
+Blockly.LKL_VS2_RECOGNIZED = 'recognized';                          //'识别到';
+Blockly.LKL_VS2_GET_DETECTED_MESSAGE = 'get';						//'获取';
+Blockly.LKL_VS2_VALUE = 'value';									//'值';
+Blockly.LKL_VS2_GET_PIX_COLOR = 'get Position';						//'捕获坐标';
+Blockly.LKL_VS2_CARD_TYPE = 'type';								//'卡片类型';
+Blockly.LKL_VS2_SET_DETECT_COLOR = 'setDetectColor';				//'设置识别颜色';
+Blockly.LKL_VS2_COORDINATE = 'coordinate';                          //'坐标';
