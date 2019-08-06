@@ -85,6 +85,13 @@ generic.menu.FlashMode.qout.build.flash_flags=-DFLASHMODE_QOUT
 generic.menu.FlashMode.qio=QIO (fast)
 generic.menu.FlashMode.qio.build.flash_mode=qio
 generic.menu.FlashMode.qio.build.flash_flags=-DFLASHMODE_QIO
+generic.menu.eesz.4M=4M (no SPIFFS)
+generic.menu.eesz.4M.build.flash_size=4M
+generic.menu.eesz.4M.build.flash_size_bytes=0x400000
+generic.menu.eesz.4M.build.flash_ld=eagle.flash.4m.ld
+generic.menu.eesz.4M.build.spiffs_pagesize=256
+generic.menu.eesz.4M.upload.maximum_size=1044464
+generic.menu.eesz.4M.build.rfcal_addr=0x3FC000
 generic.menu.eesz.512K=512K (no SPIFFS)
 generic.menu.eesz.512K.build.flash_size=512K
 generic.menu.eesz.512K.build.flash_size_bytes=0x80000
@@ -246,13 +253,6 @@ generic.menu.eesz.2M1M.build.rfcal_addr=0x1FC000
 generic.menu.eesz.2M1M.build.spiffs_start=0x100000
 generic.menu.eesz.2M1M.build.spiffs_end=0x1FB000
 generic.menu.eesz.2M1M.build.spiffs_blocksize=8192
-generic.menu.eesz.4M=4M (no SPIFFS)
-generic.menu.eesz.4M.build.flash_size=4M
-generic.menu.eesz.4M.build.flash_size_bytes=0x400000
-generic.menu.eesz.4M.build.flash_ld=eagle.flash.4m.ld
-generic.menu.eesz.4M.build.spiffs_pagesize=256
-generic.menu.eesz.4M.upload.maximum_size=1044464
-generic.menu.eesz.4M.build.rfcal_addr=0x3FC000
 generic.menu.eesz.4M1M=4M (1M SPIFFS)
 generic.menu.eesz.4M1M.build.flash_size=4M
 generic.menu.eesz.4M1M.build.flash_size_bytes=0x400000
@@ -325,36 +325,6 @@ generic.menu.eesz.16M15M.build.spiffs_end=0xFFB000
 generic.menu.eesz.16M15M.build.spiffs_blocksize=8192
 generic.menu.led.2=2
 generic.menu.led.2.build.led=-DLED_BUILTIN=2
-generic.menu.led.0=0
-generic.menu.led.0.build.led=-DLED_BUILTIN=0
-generic.menu.led.1=1
-generic.menu.led.1.build.led=-DLED_BUILTIN=1
-generic.menu.led.3=3
-generic.menu.led.3.build.led=-DLED_BUILTIN=3
-generic.menu.led.4=4
-generic.menu.led.4.build.led=-DLED_BUILTIN=4
-generic.menu.led.5=5
-generic.menu.led.5.build.led=-DLED_BUILTIN=5
-generic.menu.led.6=6
-generic.menu.led.6.build.led=-DLED_BUILTIN=6
-generic.menu.led.7=7
-generic.menu.led.7.build.led=-DLED_BUILTIN=7
-generic.menu.led.8=8
-generic.menu.led.8.build.led=-DLED_BUILTIN=8
-generic.menu.led.9=9
-generic.menu.led.9.build.led=-DLED_BUILTIN=9
-generic.menu.led.10=10
-generic.menu.led.10.build.led=-DLED_BUILTIN=10
-generic.menu.led.11=11
-generic.menu.led.11.build.led=-DLED_BUILTIN=11
-generic.menu.led.12=12
-generic.menu.led.12.build.led=-DLED_BUILTIN=12
-generic.menu.led.13=13
-generic.menu.led.13.build.led=-DLED_BUILTIN=13
-generic.menu.led.14=14
-generic.menu.led.14.build.led=-DLED_BUILTIN=14
-generic.menu.led.15=15
-generic.menu.led.15.build.led=-DLED_BUILTIN=15
 generic.menu.sdk.nonosdk221=nonos-sdk 2.2.1 (legacy)
 generic.menu.sdk.nonosdk221.build.sdk=NONOSDK221
 generic.menu.sdk.nonosdk222=nonos-sdk 2.2.2-190313 (testing)
@@ -472,194 +442,6 @@ generic.menu.baud.512000.windows=512000
 generic.menu.baud.512000.upload.speed=512000
 generic.menu.baud.921600=921600
 generic.menu.baud.921600.upload.speed=921600
-
-##############################################################
-nodemcu.name=NodeMCU 0.9 (ESP-12 Module)
-nodemcu.build.board=ESP8266_NODEMCU
-nodemcu.build.variant=nodemcu
-nodemcu.upload.tool=esptool
-nodemcu.upload.maximum_data_size=81920
-nodemcu.upload.wait_for_upload_port=true
-nodemcu.upload.erase_cmd=version
-nodemcu.serial.disableDTR=true
-nodemcu.serial.disableRTS=true
-nodemcu.build.mcu=esp8266
-nodemcu.build.core=esp8266
-nodemcu.build.spiffs_pagesize=256
-nodemcu.build.debug_port=
-nodemcu.build.debug_level=
-nodemcu.menu.xtal.80=80 MHz
-nodemcu.menu.xtal.80.build.f_cpu=80000000L
-nodemcu.menu.xtal.160=160 MHz
-nodemcu.menu.xtal.160.build.f_cpu=160000000L
-nodemcu.menu.vt.flash=Flash
-nodemcu.menu.vt.flash.build.vtable_flags=-DVTABLES_IN_FLASH
-nodemcu.menu.vt.heap=Heap
-nodemcu.menu.vt.heap.build.vtable_flags=-DVTABLES_IN_DRAM
-nodemcu.menu.vt.iram=IRAM
-nodemcu.menu.vt.iram.build.vtable_flags=-DVTABLES_IN_IRAM
-nodemcu.menu.exception.disabled=Disabled
-nodemcu.menu.exception.disabled.build.exception_flags=-fno-exceptions
-nodemcu.menu.exception.disabled.build.stdcpp_lib=-lstdc++
-nodemcu.menu.exception.enabled=Enabled
-nodemcu.menu.exception.enabled.build.exception_flags=-fexceptions
-nodemcu.menu.exception.enabled.build.stdcpp_lib=-lstdc++-exc
-nodemcu.menu.ssl.all=All SSL ciphers (most compatible)
-nodemcu.menu.ssl.all.build.sslflags=
-nodemcu.menu.ssl.basic=Basic SSL ciphers (lower ROM use)
-nodemcu.menu.ssl.basic.build.sslflags=-DBEARSSL_SSL_BASIC
-nodemcu.upload.resetmethod=nodemcu
-nodemcu.build.flash_mode=qio
-nodemcu.build.flash_flags=-DFLASHMODE_QIO
-nodemcu.build.flash_freq=40
-nodemcu.menu.eesz.4M=4M (no SPIFFS)
-nodemcu.menu.eesz.4M.build.flash_size=4M
-nodemcu.menu.eesz.4M.build.flash_size_bytes=0x400000
-nodemcu.menu.eesz.4M.build.flash_ld=eagle.flash.4m.ld
-nodemcu.menu.eesz.4M.build.spiffs_pagesize=256
-nodemcu.menu.eesz.4M.upload.maximum_size=1044464
-nodemcu.menu.eesz.4M.build.rfcal_addr=0x3FC000
-nodemcu.menu.eesz.4M1M=4M (1M SPIFFS)
-nodemcu.menu.eesz.4M1M.build.flash_size=4M
-nodemcu.menu.eesz.4M1M.build.flash_size_bytes=0x400000
-nodemcu.menu.eesz.4M1M.build.flash_ld=eagle.flash.4m1m.ld
-nodemcu.menu.eesz.4M1M.build.spiffs_pagesize=256
-nodemcu.menu.eesz.4M1M.upload.maximum_size=1044464
-nodemcu.menu.eesz.4M1M.build.rfcal_addr=0x3FC000
-nodemcu.menu.eesz.4M1M.build.spiffs_start=0x300000
-nodemcu.menu.eesz.4M1M.build.spiffs_end=0x3FB000
-nodemcu.menu.eesz.4M1M.build.spiffs_blocksize=8192
-nodemcu.menu.eesz.4M2M=4M (2M SPIFFS)
-nodemcu.menu.eesz.4M2M.build.flash_size=4M
-nodemcu.menu.eesz.4M2M.build.flash_size_bytes=0x400000
-nodemcu.menu.eesz.4M2M.build.flash_ld=eagle.flash.4m2m.ld
-nodemcu.menu.eesz.4M2M.build.spiffs_pagesize=256
-nodemcu.menu.eesz.4M2M.upload.maximum_size=1044464
-nodemcu.menu.eesz.4M2M.build.rfcal_addr=0x3FC000
-nodemcu.menu.eesz.4M2M.build.spiffs_start=0x200000
-nodemcu.menu.eesz.4M2M.build.spiffs_end=0x3FB000
-nodemcu.menu.eesz.4M2M.build.spiffs_blocksize=8192
-nodemcu.menu.eesz.4M3M=4M (3M SPIFFS)
-nodemcu.menu.eesz.4M3M.build.flash_size=4M
-nodemcu.menu.eesz.4M3M.build.flash_size_bytes=0x400000
-nodemcu.menu.eesz.4M3M.build.flash_ld=eagle.flash.4m3m.ld
-nodemcu.menu.eesz.4M3M.build.spiffs_pagesize=256
-nodemcu.menu.eesz.4M3M.upload.maximum_size=1044464
-nodemcu.menu.eesz.4M3M.build.rfcal_addr=0x3FC000
-nodemcu.menu.eesz.4M3M.build.spiffs_start=0x100000
-nodemcu.menu.eesz.4M3M.build.spiffs_end=0x3FB000
-nodemcu.menu.eesz.4M3M.build.spiffs_blocksize=8192
-nodemcu.menu.ip.lm2f=v2 Lower Memory
-nodemcu.menu.ip.lm2f.build.lwip_include=lwip2/include
-nodemcu.menu.ip.lm2f.build.lwip_lib=-llwip2-536-feat
-nodemcu.menu.ip.lm2f.build.lwip_flags=-DLWIP_OPEN_SRC -DTCP_MSS=536 -DLWIP_FEATURES=1 -DLWIP_IPV6=0
-nodemcu.menu.ip.hb2f=v2 Higher Bandwidth
-nodemcu.menu.ip.hb2f.build.lwip_include=lwip2/include
-nodemcu.menu.ip.hb2f.build.lwip_lib=-llwip2-1460-feat
-nodemcu.menu.ip.hb2f.build.lwip_flags=-DLWIP_OPEN_SRC -DTCP_MSS=1460 -DLWIP_FEATURES=1 -DLWIP_IPV6=0
-nodemcu.menu.ip.lm2n=v2 Lower Memory (no features)
-nodemcu.menu.ip.lm2n.build.lwip_include=lwip2/include
-nodemcu.menu.ip.lm2n.build.lwip_lib=-llwip2-536
-nodemcu.menu.ip.lm2n.build.lwip_flags=-DLWIP_OPEN_SRC -DTCP_MSS=536 -DLWIP_FEATURES=0 -DLWIP_IPV6=0
-nodemcu.menu.ip.hb2n=v2 Higher Bandwidth (no features)
-nodemcu.menu.ip.hb2n.build.lwip_include=lwip2/include
-nodemcu.menu.ip.hb2n.build.lwip_lib=-llwip2-1460
-nodemcu.menu.ip.hb2n.build.lwip_flags=-DLWIP_OPEN_SRC -DTCP_MSS=1460 -DLWIP_FEATURES=0 -DLWIP_IPV6=0
-nodemcu.menu.ip.lm6f=v2 IPv6 Lower Memory
-nodemcu.menu.ip.lm6f.build.lwip_include=lwip2/include
-nodemcu.menu.ip.lm6f.build.lwip_lib=-llwip6-536-feat
-nodemcu.menu.ip.lm6f.build.lwip_flags=-DLWIP_OPEN_SRC -DTCP_MSS=536 -DLWIP_FEATURES=1 -DLWIP_IPV6=1
-nodemcu.menu.ip.hb6f=v2 IPv6 Higher Bandwidth
-nodemcu.menu.ip.hb6f.build.lwip_include=lwip2/include
-nodemcu.menu.ip.hb6f.build.lwip_lib=-llwip6-1460-feat
-nodemcu.menu.ip.hb6f.build.lwip_flags=-DLWIP_OPEN_SRC -DTCP_MSS=1460 -DLWIP_FEATURES=1 -DLWIP_IPV6=1
-nodemcu.menu.ip.hb1=v1.4 Higher Bandwidth
-nodemcu.menu.ip.hb1.build.lwip_lib=-llwip_gcc
-nodemcu.menu.ip.hb1.build.lwip_flags=-DLWIP_OPEN_SRC
-nodemcu.menu.ip.src=v1.4 Compile from source
-nodemcu.menu.ip.src.build.lwip_lib=-llwip_src
-nodemcu.menu.ip.src.build.lwip_flags=-DLWIP_OPEN_SRC
-nodemcu.menu.ip.src.recipe.hooks.sketch.prebuild.1.pattern=make -C "{runtime.platform.path}/tools/sdk/lwip/src" install TOOLS_PATH="{runtime.tools.xtensa-lx106-elf-gcc.path}/bin/xtensa-lx106-elf-"
-nodemcu.menu.dbg.Disabled=Disabled
-nodemcu.menu.dbg.Disabled.build.debug_port=
-nodemcu.menu.dbg.Serial=Serial
-nodemcu.menu.dbg.Serial.build.debug_port=-DDEBUG_ESP_PORT=Serial
-nodemcu.menu.dbg.Serial1=Serial1
-nodemcu.menu.dbg.Serial1.build.debug_port=-DDEBUG_ESP_PORT=Serial1
-nodemcu.menu.lvl.None____=None
-nodemcu.menu.lvl.None____.build.debug_level=
-nodemcu.menu.lvl.SSL=SSL
-nodemcu.menu.lvl.SSL.build.debug_level= -DDEBUG_ESP_SSL
-nodemcu.menu.lvl.TLS_MEM=TLS_MEM
-nodemcu.menu.lvl.TLS_MEM.build.debug_level= -DDEBUG_ESP_TLS_MEM
-nodemcu.menu.lvl.HTTP_CLIENT=HTTP_CLIENT
-nodemcu.menu.lvl.HTTP_CLIENT.build.debug_level= -DDEBUG_ESP_HTTP_CLIENT
-nodemcu.menu.lvl.HTTP_SERVER=HTTP_SERVER
-nodemcu.menu.lvl.HTTP_SERVER.build.debug_level= -DDEBUG_ESP_HTTP_SERVER
-nodemcu.menu.lvl.SSLTLS_MEM=SSL+TLS_MEM
-nodemcu.menu.lvl.SSLTLS_MEM.build.debug_level= -DDEBUG_ESP_SSL -DDEBUG_ESP_TLS_MEM
-nodemcu.menu.lvl.SSLHTTP_CLIENT=SSL+HTTP_CLIENT
-nodemcu.menu.lvl.SSLHTTP_CLIENT.build.debug_level= -DDEBUG_ESP_SSL -DDEBUG_ESP_HTTP_CLIENT
-nodemcu.menu.lvl.SSLHTTP_SERVER=SSL+HTTP_SERVER
-nodemcu.menu.lvl.SSLHTTP_SERVER.build.debug_level= -DDEBUG_ESP_SSL -DDEBUG_ESP_HTTP_SERVER
-nodemcu.menu.lvl.TLS_MEMHTTP_CLIENT=TLS_MEM+HTTP_CLIENT
-nodemcu.menu.lvl.TLS_MEMHTTP_CLIENT.build.debug_level= -DDEBUG_ESP_TLS_MEM -DDEBUG_ESP_HTTP_CLIENT
-nodemcu.menu.lvl.TLS_MEMHTTP_SERVER=TLS_MEM+HTTP_SERVER
-nodemcu.menu.lvl.TLS_MEMHTTP_SERVER.build.debug_level= -DDEBUG_ESP_TLS_MEM -DDEBUG_ESP_HTTP_SERVER
-nodemcu.menu.lvl.HTTP_CLIENTHTTP_SERVER=HTTP_CLIENT+HTTP_SERVER
-nodemcu.menu.lvl.HTTP_CLIENTHTTP_SERVER.build.debug_level= -DDEBUG_ESP_HTTP_CLIENT -DDEBUG_ESP_HTTP_SERVER
-nodemcu.menu.lvl.SSLTLS_MEMHTTP_CLIENT=SSL+TLS_MEM+HTTP_CLIENT
-nodemcu.menu.lvl.SSLTLS_MEMHTTP_CLIENT.build.debug_level= -DDEBUG_ESP_SSL -DDEBUG_ESP_TLS_MEM -DDEBUG_ESP_HTTP_CLIENT
-nodemcu.menu.lvl.SSLTLS_MEMHTTP_SERVER=SSL+TLS_MEM+HTTP_SERVER
-nodemcu.menu.lvl.SSLTLS_MEMHTTP_SERVER.build.debug_level= -DDEBUG_ESP_SSL -DDEBUG_ESP_TLS_MEM -DDEBUG_ESP_HTTP_SERVER
-nodemcu.menu.lvl.SSLHTTP_CLIENTHTTP_SERVER=SSL+HTTP_CLIENT+HTTP_SERVER
-nodemcu.menu.lvl.SSLHTTP_CLIENTHTTP_SERVER.build.debug_level= -DDEBUG_ESP_SSL -DDEBUG_ESP_HTTP_CLIENT -DDEBUG_ESP_HTTP_SERVER
-nodemcu.menu.lvl.TLS_MEMHTTP_CLIENTHTTP_SERVER=TLS_MEM+HTTP_CLIENT+HTTP_SERVER
-nodemcu.menu.lvl.TLS_MEMHTTP_CLIENTHTTP_SERVER.build.debug_level= -DDEBUG_ESP_TLS_MEM -DDEBUG_ESP_HTTP_CLIENT -DDEBUG_ESP_HTTP_SERVER
-nodemcu.menu.lvl.SSLTLS_MEMHTTP_CLIENTHTTP_SERVER=SSL+TLS_MEM+HTTP_CLIENT+HTTP_SERVER
-nodemcu.menu.lvl.SSLTLS_MEMHTTP_CLIENTHTTP_SERVER.build.debug_level= -DDEBUG_ESP_SSL -DDEBUG_ESP_TLS_MEM -DDEBUG_ESP_HTTP_CLIENT -DDEBUG_ESP_HTTP_SERVER
-nodemcu.menu.lvl.CORE=CORE
-nodemcu.menu.lvl.CORE.build.debug_level= -DDEBUG_ESP_CORE
-nodemcu.menu.lvl.WIFI=WIFI
-nodemcu.menu.lvl.WIFI.build.debug_level= -DDEBUG_ESP_WIFI
-nodemcu.menu.lvl.HTTP_UPDATE=HTTP_UPDATE
-nodemcu.menu.lvl.HTTP_UPDATE.build.debug_level= -DDEBUG_ESP_HTTP_UPDATE
-nodemcu.menu.lvl.UPDATER=UPDATER
-nodemcu.menu.lvl.UPDATER.build.debug_level= -DDEBUG_ESP_UPDATER
-nodemcu.menu.lvl.OTA=OTA
-nodemcu.menu.lvl.OTA.build.debug_level= -DDEBUG_ESP_OTA
-nodemcu.menu.lvl.OOM=OOM
-nodemcu.menu.lvl.OOM.build.debug_level= -DDEBUG_ESP_OOM
-nodemcu.menu.lvl.COREWIFIHTTP_UPDATEUPDATEROTAOOM=CORE+WIFI+HTTP_UPDATE+UPDATER+OTA+OOM
-nodemcu.menu.lvl.COREWIFIHTTP_UPDATEUPDATEROTAOOM.build.debug_level= -DDEBUG_ESP_CORE -DDEBUG_ESP_WIFI -DDEBUG_ESP_HTTP_UPDATE -DDEBUG_ESP_UPDATER -DDEBUG_ESP_OTA -DDEBUG_ESP_OOM
-nodemcu.menu.lvl.SSLTLS_MEMHTTP_CLIENTHTTP_SERVERCOREWIFIHTTP_UPDATEUPDATEROTAOOM=SSL+TLS_MEM+HTTP_CLIENT+HTTP_SERVER+CORE+WIFI+HTTP_UPDATE+UPDATER+OTA+OOM
-nodemcu.menu.lvl.SSLTLS_MEMHTTP_CLIENTHTTP_SERVERCOREWIFIHTTP_UPDATEUPDATEROTAOOM.build.debug_level= -DDEBUG_ESP_SSL -DDEBUG_ESP_TLS_MEM -DDEBUG_ESP_HTTP_CLIENT -DDEBUG_ESP_HTTP_SERVER -DDEBUG_ESP_CORE -DDEBUG_ESP_WIFI -DDEBUG_ESP_HTTP_UPDATE -DDEBUG_ESP_UPDATER -DDEBUG_ESP_OTA -DDEBUG_ESP_OOM
-nodemcu.menu.lvl.NoAssert-NDEBUG=NoAssert-NDEBUG
-nodemcu.menu.lvl.NoAssert-NDEBUG.build.debug_level= -DNDEBUG
-nodemcu.menu.wipe.none=Only Sketch
-nodemcu.menu.wipe.none.upload.erase_cmd=version
-nodemcu.menu.wipe.sdk=Sketch + WiFi Settings
-nodemcu.menu.wipe.sdk.upload.erase_cmd=erase_region "{build.rfcal_addr}" 0x4000
-nodemcu.menu.wipe.all=All Flash Contents
-nodemcu.menu.wipe.all.upload.erase_cmd=erase_flash
-nodemcu.menu.baud.115200=115200
-nodemcu.menu.baud.115200.upload.speed=115200
-nodemcu.menu.baud.9600=9600
-nodemcu.menu.baud.9600.upload.speed=9600
-nodemcu.menu.baud.57600=57600
-nodemcu.menu.baud.57600.upload.speed=57600
-nodemcu.menu.baud.230400.linux=230400
-nodemcu.menu.baud.230400.macosx=230400
-nodemcu.menu.baud.230400.upload.speed=230400
-nodemcu.menu.baud.256000.windows=256000
-nodemcu.menu.baud.256000.upload.speed=256000
-nodemcu.menu.baud.460800.linux=460800
-nodemcu.menu.baud.460800.macosx=460800
-nodemcu.menu.baud.460800.upload.speed=460800
-nodemcu.menu.baud.512000.windows=512000
-nodemcu.menu.baud.512000.upload.speed=512000
-nodemcu.menu.baud.921600=921600
-nodemcu.menu.baud.921600.upload.speed=921600
 
 ##############################################################
 nodemcuv2.name=NodeMCU 1.0 (ESP-12E Module)
