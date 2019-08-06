@@ -1,4 +1,4 @@
-/* Blob.js
+/* js/Blob.js
  * A Blob implementation.
  * 2013-01-23
  * 
@@ -12,7 +12,7 @@
 /*jslint bitwise: true, regexp: true, confusion: true, es5: true, vars: true, white: true,
   plusplus: true */
 
-/*! @source http://purl.eligrey.com/github/Blob.js/blob/master/Blob.js */
+/*! @source http://purl.eligrey.com/github/js/Blob.js/blob/master/js/Blob.js */
 
 if (typeof Blob !== "function")
 var Blob = (function (view) {
