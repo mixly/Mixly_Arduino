@@ -2,7 +2,6 @@
 goog.provide('Blockly.Blocks.pins');
 goog.require('Blockly.Blocks');
 Blockly.Blocks.pins.HUE = 230;
-
 Blockly.Blocks['pins_digital'] = {
    init: function() {
     this.setColour(Blockly.Blocks.pins.HUE);
