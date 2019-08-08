@@ -811,14 +811,13 @@ Blockly.Blocks.oled_init = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.OLED_INIT2);
-      this.appendValueInput("SDA")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('SDA#');
       this.appendValueInput("SCL")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('SCL#');
+    .appendField('SCL#');this.appendValueInput("SDA")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField('SDA#');
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);

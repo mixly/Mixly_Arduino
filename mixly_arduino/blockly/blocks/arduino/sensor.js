@@ -149,6 +149,12 @@ Blockly.Blocks.weightSensor = {
     .appendField('SCK#')
     .appendField(new Blockly
       .FieldDropdown(profile.default.digital), "PIN2");
+    // this.appendValueInput("offset")
+    // .setCheck(Number)
+    // .appendField(Blockly.HX711_offset);
+    this.appendValueInput("scale")
+    .setCheck(Number)
+    .appendField(Blockly.HX711_scale);
     this.setInputsInline(true);
     this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_WEIGHTSENSOR);
@@ -452,29 +458,29 @@ Blockly.Blocks['BME280_READ'] = {
 //PS2
 Blockly.Blocks.PS2_init={
   init: function() {
-     this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.PS2_INIT);
-    this.appendValueInput("PS2_DAT", Number)
-    .appendField('DAT#')
-    .setCheck(Number);
-    this.appendValueInput("PS2_CMD", Number)
-    .appendField('CMD#')
-    .setCheck(Number);
-    this.appendValueInput("PS2_SEL", Number)
-    .appendField('SEL#')
-    .setCheck(Number);
-    this.appendValueInput("PS2_CLK", Number)
-    .appendField('CLK#')
-    .setCheck(Number);
-    this.appendDummyInput("")
-    .appendField(Blockly.PS2_setRumble)
-    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ON,"true"],[Blockly.MIXLY_OFF,"false"]]), "rumble");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip('');
-  }
+   this.setColour(Blockly.Blocks.sensor.HUE);
+   this.appendDummyInput("")
+   .appendField(Blockly.PS2_INIT);
+   this.appendValueInput("PS2_DAT", Number)
+   .appendField('DAT#')
+   .setCheck(Number);
+   this.appendValueInput("PS2_CMD", Number)
+   .appendField('CMD#')
+   .setCheck(Number);
+   this.appendValueInput("PS2_SEL", Number)
+   .appendField('SEL#')
+   .setCheck(Number);
+   this.appendValueInput("PS2_CLK", Number)
+   .appendField('CLK#')
+   .setCheck(Number);
+   this.appendDummyInput("")
+   .appendField(Blockly.PS2_setRumble)
+   .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ON,"true"],[Blockly.MIXLY_OFF,"false"]]), "rumble");
+   this.setInputsInline(true);
+   this.setPreviousStatement(true);
+   this.setNextStatement(true);
+   this.setTooltip('');
+ }
 };
 
 var PSBUTTON =[
@@ -513,16 +519,16 @@ Blockly.Blocks.PS2_Button={
 Blockly.Blocks.PS2_stk={
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
-   var PSSTK =[
-   [Blockly.PS2_RX,"PSS_RX"],
-   [Blockly.PS2_RY,"PSS_RY"],
-   [Blockly.PS2_LX,"PSS_LX"],
-   [Blockly.PS2_LY,"PSS_LY"],
-   ];
-   this.appendDummyInput("")
-   .appendField(Blockly.PS2_stick)
-   .appendField(new Blockly.FieldDropdown(PSSTK), "psstk");
-   this.setOutput(true, Number);
-   this.setTooltip('');
- }
+    var PSSTK =[
+    [Blockly.PS2_RX,"PSS_RX"],
+    [Blockly.PS2_RY,"PSS_RY"],
+    [Blockly.PS2_LX,"PSS_LX"],
+    [Blockly.PS2_LY,"PSS_LY"],
+    ];
+    this.appendDummyInput("")
+    .appendField(Blockly.PS2_stick)
+    .appendField(new Blockly.FieldDropdown(PSSTK), "psstk");
+    this.setOutput(true, Number);
+    this.setTooltip('');
+  }
 };

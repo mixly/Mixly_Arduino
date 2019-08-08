@@ -98,11 +98,15 @@ Blockly.Arduino.ds18b20 = function () {
 Blockly.Arduino.weightSensor = function () {
   var dropdown_pin1 = this.getFieldValue('PIN1');
   var dropdown_pin2 = this.getFieldValue('PIN2');
+  //var offset= Blockly.Arduino.valueToCode(this, 'offset', Blockly.Arduino.ORDER_ATOMIC);
+  var scale= Blockly.Arduino.valueToCode(this, 'scale', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_Hx711'] = '#include <Hx711.h>';
-  Blockly.Arduino.definitions_['var_declare_Hx711'] = 'Hx711 scale' + dropdown_pin1 + '_' + dropdown_pin2+" ("+dropdown_pin1+","+dropdown_pin2+");";
-  var code = ' scale' + dropdown_pin1 + '_' + dropdown_pin2+'.getGram()';
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
-}
+  Blockly.Arduino.definitions_['var_declare_Hx711'+dropdown_pin1+dropdown_pin2] = 'Hx711 scale' + dropdown_pin1 + '_' + dropdown_pin2+" ("+dropdown_pin1+","+dropdown_pin2+");";
+     // Blockly.Arduino.setups_['setup_'+'scale' + dropdown_pin1 + '_' + dropdown_pin2+' .setOffset'] = 'scale' + dropdown_pin1 + '_' + dropdown_pin2+" .setOffset("+offset+");";
+     Blockly.Arduino.setups_['setup_'+'scale' + dropdown_pin1 + '_' + dropdown_pin2+' .setScale'] = 'scale' + dropdown_pin1 + '_' + dropdown_pin2+" .setScale("+scale+");";
+     var code = ' scale' + dropdown_pin1 + '_' + dropdown_pin2+'.getGram()';
+     return [code, Blockly.Arduino.ORDER_ATOMIC];
+   }
 //DS1302
 Blockly.Arduino.DS1302_init = function () {
   var RTCName = this.getFieldValue('RTCName');
@@ -151,8 +155,8 @@ Blockly.Arduino.ADXL345 = function() {
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
   Blockly.Arduino.definitions_['include_I2Cdev'] = '#include <I2Cdev.h>';
   Blockly.Arduino.definitions_['var_declare_ADXL345'] = 'ADXL345 accel;';
-  Blockly.Arduino.setups_['setup_ADXL345-A'] = 'Wire.begin();';
-  Blockly.Arduino.setups_['setup_ADXL345-B'] = 'accel.initialize();';
+  Blockly.Arduino.setups_['setup_Wire.begin()'] = 'Wire.begin();';
+  Blockly.Arduino.setups_['setup_accel.initialize'] = 'accel.initialize();';
   var dropdown_type = this.getFieldValue('ADXL345_PIN');
   var code = '';
   if (dropdown_type == "xa") code += 'accel.X_angle()';
@@ -240,5 +244,5 @@ Blockly.Arduino.PS2_Button = function() {
 Blockly.Arduino.PS2_stk = function() {
   var stk=this.getFieldValue('psstk');
   var code= "ps2x.Analog("+stk+")";
-return [code, Blockly.Arduino.ORDER_ATOMIC];
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
