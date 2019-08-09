@@ -834,18 +834,6 @@
 </block>
 </category>
 <category id="catSensor" colour="40">
-  <block type="mixgo_button_is_pressed">
-  </block>
-  <block type="mixgo_touch_pin">
-  </block>
-  <block type="sensor_mixgo_pin_near">
-  </block>
-  <block type="sensor_mixgo_light">
-  </block>
-  <block type="sensor_mixgo_sound">
-  </block>
-  <block type="mixgo_MPU9250"> 
-  </block>
   <block type="chaoshengbo2">
     <value name="PIN1">
       <shadow type="pins_digital">
@@ -874,72 +862,6 @@
     </value>
   </block>
   <block type="ADXL345">
-  </block>
-
-  <!--DS302-->
-  <block type="DS1302_init">
-    <value name="RST">
-      <shadow type="pins_digital">
-        <field name="NUM">2</field>
-      </shadow>
-    </value>
-    <value name="DAT">
-      <shadow type="pins_digital">
-        <field name="NUM">3</field>
-      </shadow>
-    </value>
-    <value name="CLK">
-      <shadow type="pins_digital">
-        <field name="NUM">4</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="DS1307_init">
-    <value name="SDA">
-      <shadow type="pins_digital">
-        <field name="PIN">2</field>
-      </shadow>
-    </value>
-    <value name="SCL">
-      <shadow type="pins_digital">
-        <field name="PIN">3</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="RTC_get_time"></block>
-  <block type="RTC_set_time">
-    <value name="hour">
-      <shadow type="math_number">
-        <field name="NUM">8</field>
-      </shadow>
-    </value>
-    <value name="minute">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="second">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="RTC_set_date">
-    <value name="year">
-      <shadow type="math_number">
-        <field name="NUM">2000</field>
-      </shadow>
-    </value>
-    <value name="month">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="day">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
   </block>
 </category>
 <category id="catActuator" colour="100">
@@ -1140,114 +1062,58 @@
   </shadow>
 </value>
 </block>
-<block type="HT16K33_TEXT">
-  <value name="TEXT">
-    <shadow type="text">
-      <field name="TEXT">Mixly MixGo</field>
-    </shadow>
-  </value>
-</block>
-<block type="HT16K33_POS">
-  <value name="XVALUE">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-  <value name="YVALUE">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-</block>
-<block type="HT16K33_DisplayChar">
-  <value name="Chars">
-    <block type="HT16K33_LedArray">
-    </block>
-  </value>
-</block>
-<block type="HT16K33_Displayclear">
-</block>
-<block type="HT16K33_show_image">
-  <value name="data">
-    <shadow type="pins_builtinimg"></shadow>
-  </value>
-</block>
-<block type="HT16K33_blink_rate">
-  <value name="x">
-    <shadow type="math_number">
-      <field name="NUM">2</field>
-    </shadow>
-  </value>
-</block>
-<block type="HT16K33_brightness">
-  <value name="Brightness">
-    <shadow type="math_number">
-      <field name="NUM">2</field>
-    </shadow>
-  </value>
-</block>
-<block type="mixGo_led">
- <value name="STAT">
-  <shadow type="number">
-  </shadow>
-</value>
-<value name="bright">
-  <shadow type="inout_highlow">
-  </shadow>
-</value>
-</block>
+
 </category>
 <category id="catMonitor" colour="180">
-  <category id="catLCD" colour="180">
-    <block type="group_lcd_init">
-      <value name="device">
-        <shadow type="math_number">
-          <field name="NUM">0x27</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="group_lcd_init3">
-     <value name="PIN1">
-      <shadow type="pins_digital">
-        <field name="PIN">7</field>
-      </shadow>
-    </value>
-    <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">8</field>
-      </shadow>
-    </value>
-    <value name="PIN3">
-      <shadow type="pins_digital">
-        <field name="PIN">9</field>
-      </shadow>
-    </value>
-    <value name="PIN4">
-      <shadow type="pins_digital">
-        <field name="PIN">10</field>
-      </shadow>
-    </value>
-    <value name="PIN5">
-      <shadow type="pins_digital">
-        <field name="PIN">11</field>
-      </shadow>
-    </value>
-    <value name="PIN6">
-      <shadow type="pins_digital">
-        <field name="PIN">12</field>
+  <block type="group_lcd_init">
+    <value name="device">
+      <shadow type="math_number">
+        <field name="NUM">0x27</field>
       </shadow>
     </value>
   </block>
-  <block type="group_lcd_print">
-    <value name="TEXT">
-     <block type="text">
-      <field name="TEXT"></field>
-    </block>
+  <block type="group_lcd_init3">
+   <value name="PIN1">
+    <shadow type="pins_digital">
+      <field name="PIN">7</field>
+    </shadow>
   </value>
-  <value name="TEXT2">
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">8</field>
+    </shadow>
+  </value>
+  <value name="PIN3">
+    <shadow type="pins_digital">
+      <field name="PIN">9</field>
+    </shadow>
+  </value>
+  <value name="PIN4">
+    <shadow type="pins_digital">
+      <field name="PIN">10</field>
+    </shadow>
+  </value>
+  <value name="PIN5">
+    <shadow type="pins_digital">
+      <field name="PIN">11</field>
+    </shadow>
+  </value>
+  <value name="PIN6">
+    <shadow type="pins_digital">
+      <field name="PIN">12</field>
+    </shadow>
+  </value>
+</block>
+<block type="group_lcd_print">
+  <value name="TEXT">
    <block type="text">
     <field name="TEXT"></field>
   </block>
+</value>
+<value name="TEXT2">
+ <block type="text">
+  <field name="TEXT"></field>
+</block>
 </value>
 </block>
 <block type="group_lcd_print2">
@@ -1270,27 +1136,25 @@
 <block type="group_lcd_power">
   <field name="STAT">clear</field>
 </block>
-</category>
-<category id="catOLED" colour="180">
-  <block type="oled_init">
-    <next>
-      <block type="oled_page">
-        <statement name="DO">
-          <block type="procedures_callnoreturn">
-            <mutation name="page1"></mutation>
-          </block>
-        </statement>
-      </block>
-    </next>
-    <value name="SDA">
-     <shadow type="pins_digital">
-      <field name="PIN">SDA</field>
-    </shadow>
-  </value>
-  <value name="SCL">
+<block type="oled_init">
+  <next>
+    <block type="oled_page">
+      <statement name="DO">
+        <block type="procedures_callnoreturn">
+          <mutation name="page1"></mutation>
+        </block>
+      </statement>
+    </block>
+  </next>
+  <value name="SDA">
    <shadow type="pins_digital">
-    <field name="PIN">SCL</field>
+    <field name="PIN">SDA</field>
   </shadow>
+</value>
+<value name="SCL">
+ <shadow type="pins_digital">
+  <field name="PIN">SCL</field>
+</shadow>
 </value>
 </block>
 <block type="procedures_defnoreturn">
@@ -1532,8 +1396,6 @@
       </shadow>
     </value>
   </block>
-</category>
-<category id="cat4Digitdisplay" colour="180">
   <block type="display_TM1637_init" >
     <value name="PIN1">
       <shadow type="pins_digital">
@@ -1578,9 +1440,7 @@
 </block>
 <block type="display_TM1637_clearDisplay">
 </block>
-</category>
-<category id="catMatrix">
- <block type="MAX7219_init">
+<block type="MAX7219_init">
   <value name="PIN1">
     <shadow type="pins_MOSI">
       <field name="PIN">11</field>
@@ -1693,7 +1553,6 @@
   </shadow>
 </value>
 </block>
-</category>
 </category>
 <category id="catVar" colour="330" custom="VARIABLE">
 </category>
@@ -2279,6 +2138,76 @@
   <field name="Vpin">V0</field>
 </block>
 </category>
+<category id="catInner" name="catInner" colour="65">
+ <block type="mixgo_button_is_pressed">
+ </block>
+ <block type="mixgo_touch_pin">
+ </block>
+ <block type="sensor_mixgo_pin_near">
+ </block>
+ <block type="sensor_mixgo_light">
+ </block>
+ <block type="sensor_mixgo_sound">
+ </block>
+ <block type="mixgo_MPU9250"> 
+ </block>
+ <block type="HT16K33_TEXT">
+  <value name="TEXT">
+    <shadow type="text">
+      <field name="TEXT">Mixly MixGo</field>
+    </shadow>
+  </value>
+</block>
+<block type="HT16K33_POS">
+  <value name="XVALUE">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="YVALUE">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="HT16K33_DisplayChar">
+  <value name="Chars">
+    <block type="HT16K33_LedArray">
+    </block>
+  </value>
+</block>
+<block type="HT16K33_Displayclear">
+</block>
+<block type="HT16K33_show_image">
+  <value name="data">
+    <shadow type="pins_builtinimg"></shadow>
+  </value>
+</block>
+<block type="HT16K33_blink_rate">
+  <value name="x">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+  </value>
+</block>
+<block type="HT16K33_brightness">
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+  </value>
+</block>
+<block type="mixGo_led">
+ <value name="STAT">
+  <shadow type="number">
+  </shadow>
+</value>
+<value name="bright">
+  <shadow type="inout_highlow">
+  </shadow>
+</value>
+</block>
+</category>
 <category id="catMorpxVS2" colour="#EF5411">
   <block type="Vs2MuInit"></block>
   <block type="Vs2Setup"></block>
@@ -2309,24 +2238,24 @@
       </shadow>
     </value>
   </block>
-  </category>
-  <category id="catFactory" name="Factory" colour="65">
-    <block type="factory_notes"></block>
-    <block type="factory_include"></block>
-    <block type="factory_function_noreturn"></block>
-    <block type="factory_function_return"></block>
-    <block type="factory_declare"></block>
-    <block type="factory_declare2"></block>
-    <block type="factory_define"></block>
-    <block type="factory_callMethod_noreturn"></block>
-    <block type="factory_callMethod_return"></block>
-    <block type="factory_static_method_noreturn"></block>
-    <block type="factory_static_method_return"></block>
-    <block type="factory_block"></block>
-    <block type="factory_block_return"></block>
-    <block type="factory_block_with_textarea"></block>
-    <block type="factory_block_return_with_textarea"></block>
-  </category>
+</category>
+<category id="catFactory" name="Factory" colour="65">
+  <block type="factory_notes"></block>
+  <block type="factory_include"></block>
+  <block type="factory_function_noreturn"></block>
+  <block type="factory_function_return"></block>
+  <block type="factory_declare"></block>
+  <block type="factory_declare2"></block>
+  <block type="factory_define"></block>
+  <block type="factory_callMethod_noreturn"></block>
+  <block type="factory_callMethod_return"></block>
+  <block type="factory_static_method_noreturn"></block>
+  <block type="factory_static_method_return"></block>
+  <block type="factory_block"></block>
+  <block type="factory_block_return"></block>
+  <block type="factory_block_with_textarea"></block>
+  <block type="factory_block_return_with_textarea"></block>
+</category>
 </xml>
 <script>
   if(company_block!=null){
