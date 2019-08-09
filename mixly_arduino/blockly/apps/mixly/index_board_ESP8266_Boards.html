@@ -1209,7 +1209,6 @@
 </block>
 </category>
 <category id="catMonitor" colour="180">
-  <category id="catLCD" name="LCD">
     <block type="group_lcd_init">
       <value name="device">
         <shadow type="math_number">
@@ -1249,8 +1248,6 @@
     <block type="group_lcd_power">
       <field name="STAT">clear</field>
     </block>
-  </category>
-  <category id="cat4Digitdisplay" name="4Digitdisplay">
     <block type="display_4digitdisplay_power">
       <field name="STAT">clear</field>
     </block>
@@ -1310,8 +1307,6 @@
         </shadow>
       </value>
     </block>
-  </category>
-  <category id="catoled" name="OLED">
     <!-- OLED 类 -->
     <block type="oled_init">
       <next>
@@ -1791,8 +1786,6 @@
         </shadow>
       </value>
     </block>
-  </category>
-  <category id="catMatrix">
     <block type="MAX7219_init">
       <value name="PIN1">
         <shadow type="pins_MOSI">
@@ -1906,7 +1899,6 @@
   </shadow>
 </value>
 </block>
-</category>
 </category>
 <sep>
 </sep>
