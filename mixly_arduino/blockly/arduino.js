@@ -216,6 +216,31 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		one_more:[["ONE_SHOT", "ONE_SHOT"], ["PERIODIC", "PERIODIC"]],
 		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"], ["SerialBT", "SerialBT"]],
 		serial : 115200
+	},
+	esp32_handbit: {
+		description: "esp32_handbit",
+		digital: [["P0", "P0"], ["P1", "P1"], ["P2", "P2"], ["P8", "P8"], ["P9", "P9"], ["P12", "P12"], ["P13", "P13"], ["P14", "P14"], ["P15", "P15"], ["P16", "P16"],["A", "BTN_A"], ["B", "BTN_B"],],
+		interrupt: [["P0", "P0"], ["P1", "P1"], ["P2", "P2"], ["P8", "P8"], ["P9", "P9"], ["P12", "P12"], ["P13", "P13"], ["P14", "P14"], ["P15", "P15"], ["P16", "P16"]],
+		pwm: [["P0", "P0"], ["P1", "P1"], ["P2", "P2"], ["P8", "P8"], ["P9", "P9"], ["P12", "P12"], ["P13", "P13"], ["P14", "P14"], ["P15", "P15"], ["P16", "P16"]],
+		analog: [["P0", "P0"], ["P1", "P1"], ["P2", "P2"]],
+		dac: [["25", "25"], ["26", "26"]],
+		SDA:[["23","23"]],
+		SCL:[["22","22"]],
+		MOSI:[["23","23"]],
+		MISO:[["19","19"]],
+		SCK:[["18","18"]],
+		touch: [["P", "P"], ["Y", "Y"], ["T", "T"], ["H", "H"], ["O", "O"], ["N", "N"]],
+		button:[["A", "BTN_A"], ["B", "BTN_B"]],
+		axis:[["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"]],
+		exlcdh:[["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"],["10", "10"], ["11", "11"],["12", "12"], ["13", "13"],["14", "14"], ["15", "15"]],
+		exlcdv:[["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"]],
+		brightness:[["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"]],
+		tone_notes: [["NOTE_C3", "131"],["NOTE_D3", "147"],["NOTE_E3", "165"],["NOTE_F3", "175"],["NOTE_G3", "196"],["NOTE_A3", "220"],["NOTE_B3", "247"],["NOTE_C4", "262"],["NOTE_D4", "294"],["NOTE_E4", "330"],["NOTE_F4", "349"],["NOTE_G4", "392"],["NOTE_A4", "440"],["NOTE_B4", "494"],["NOTE_C5", "532"],["NOTE_D5", "587"],["NOTE_E5", "659"],["NOTE_F5", "698"],["NOTE_G5", "784"],["NOTE_A5", "880"],["NOTE_B5", "988"]],
+		radio_power: [['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7']],
+		radio_datarate:[["1Mbit", "RATE_1MBIT"], ["250Kbit", "RATE_250KBIT"], ["2Mbit", "RATE_2MBIT"]],
+		one_more:[["ONE_SHOT", "ONE_SHOT"], ["PERIODIC", "PERIODIC"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"], ["SerialBT", "SerialBT"]],
+		serial : 115200
 	}
 };
 profile["Arduino Yun"] = profile["Arduino Yun Mini"] = profile["Arduino Leonardo"] = profile["Arduino Leonardo ETH"] = profile["Arduino/Genuino Micro"] = profile["Arduino Esplora"] = profile["LilyPad Arduino USB"] = profile["arduino_leonardo"];
@@ -231,7 +256,8 @@ profile["Invent One"]= profile["XinaBox CW01"]=profile["ESPresso Lite 1.0"]=prof
 profile["NodeMCU 1.0"]= profile["Olimex MOD-WIFI-ESP8266"]=profile["SparkFun ESP8266 Thing Dev"]=profile["LOLIN"]=profile["WeMos D1 R1"]=profile["ESPino"]=profile["ThaiEasyElec's ESPino"]=profile["arduino_esp8266"];
 profile["WifInfo"]=profile["Arduino"]=profile["4D Systems gen4 IoD Range"]=profile["Digistump Oak"]=profile["WiFiduino"]=profile["Amperka WiFi Slot"]=profile["Seeed Wio Link"]=profile["ESPectro Core"]=profile["arduino_esp8266"];;
 //esp32
-profile['Arduino ESP32 Generic']=profile['Arduino HandBit']=profile['Arduino MixGo']=profile['"WeMos" WiFi&Bluetooth Battery']=profile["ESP32 Dev Module"] =profile["ESP32 Wrover Module"] =profile["ESP32 Pico Kit"] =profile["Turta IoT Node"] =profile["TTGO LoRa32-OLED V1"] =profile["XinaBox CW02"] =profile["SparkFun ESP32 Thing"] =profile["u-blox NINA-W10 series (ESP32)"] =profile["Widora AIR"] =profile["Electronic SweetPeas - ESP320"] =profile["Nano32"] =profile["LOLIN D32"] =profile["LOLIN D32 PRO"] =profile["WEMOS LOLIN32"] =profile["Dongsen Tech Pocket 32"] =profile["ESPea32"] =profile["Noduino Quantum"] =profile["Node32s"] =profile["Hornbill ESP32 Dev"] =profile["Hornbill ESP32 Minima"] =profile["FireBeetle-ESP32"] =profile["IntoRobot Fig"] =profile["Onehorse ESP32 Dev Module"] =profile["Adafruit ESP32 Feather"] =profile["NodeMCU-32S"] =profile["MH ET LIVE ESP32DevKIT"] =profile["MH ET LIVE ESP32MiniKit"] =profile["ESP32vn IoT Uno"] =profile["ESP32 Dev Module"] =profile["DOIT ESP32 DEVKIT V1"] =profile["OLIMEX ESP32-EVB"] =profile["OLIMEX ESP32-GATEWAY"] =profile["OLIMEX ESP32-PoE"] =profile["ThaiEasyElec's ESPino32"] =profile["M5Stack-FIRE"] =profile["ODROID ESP32"] =profile["Heltec_WIFI_Kit_32"]=profile["Heltec_WIFI_LoRa_32"]=profile["ESPectro32"]=profile["Microduino-CoreESP32"]=profile["ALKS ESP32"]=profile["WiPy 3.0"]=profile["BPI-BIT"]=profile["Silicognition wESP32"]=profile["T-Beam"]=profile["D-duino-32"]= profile["LoPy"]=profile["LoPy4"]=profile["OROCA EduBot"]=profile["OROCA EduBot"]=profile["ESP32 FM DevKit"]=profile["esp32_arduino"];
+profile['Arduino ESP32 Generic']=profile['Arduino MixGo']=profile['"WeMos" WiFi&Bluetooth Battery']=profile["ESP32 Dev Module"] =profile["ESP32 Wrover Module"] =profile["ESP32 Pico Kit"] =profile["Turta IoT Node"] =profile["TTGO LoRa32-OLED V1"] =profile["XinaBox CW02"] =profile["SparkFun ESP32 Thing"] =profile["u-blox NINA-W10 series (ESP32)"] =profile["Widora AIR"] =profile["Electronic SweetPeas - ESP320"] =profile["Nano32"] =profile["LOLIN D32"] =profile["LOLIN D32 PRO"] =profile["WEMOS LOLIN32"] =profile["Dongsen Tech Pocket 32"] =profile["ESPea32"] =profile["Noduino Quantum"] =profile["Node32s"] =profile["Hornbill ESP32 Dev"] =profile["Hornbill ESP32 Minima"] =profile["FireBeetle-ESP32"] =profile["IntoRobot Fig"] =profile["Onehorse ESP32 Dev Module"] =profile["Adafruit ESP32 Feather"] =profile["NodeMCU-32S"] =profile["MH ET LIVE ESP32DevKIT"] =profile["MH ET LIVE ESP32MiniKit"] =profile["ESP32vn IoT Uno"] =profile["ESP32 Dev Module"] =profile["DOIT ESP32 DEVKIT V1"] =profile["OLIMEX ESP32-EVB"] =profile["OLIMEX ESP32-GATEWAY"] =profile["OLIMEX ESP32-PoE"] =profile["ThaiEasyElec's ESPino32"] =profile["M5Stack-FIRE"] =profile["ODROID ESP32"] =profile["Heltec_WIFI_Kit_32"]=profile["Heltec_WIFI_LoRa_32"]=profile["ESPectro32"]=profile["Microduino-CoreESP32"]=profile["ALKS ESP32"]=profile["WiPy 3.0"]=profile["BPI-BIT"]=profile["Silicognition wESP32"]=profile["T-Beam"]=profile["D-duino-32"]= profile["LoPy"]=profile["LoPy4"]=profile["OROCA EduBot"]=profile["OROCA EduBot"]=profile["ESP32 FM DevKit"]=profile["esp32_arduino"];
+profile['Arduino HandBit']=profile["esp32_handbit"];
 //set default profile to arduino standard-compatible board
 //profile["default"] = profile["arduino_standard"];
 //alert(profile.default.digital[0]);
