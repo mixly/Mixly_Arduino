@@ -2628,3 +2628,5 @@ Blockly.HANDBIT_LEFT='向左倾';
 Blockly.HANDBIT_RIGHT='向右倾';
 Blockly.HANDBIT_UP='正面向上';
 Blockly.HANDBIT_DOWN='正面向下';
+
+Blockly.BME280="读取BME280";
