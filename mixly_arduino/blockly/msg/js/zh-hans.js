@@ -45,7 +45,8 @@ var MSG = {
 	catHardware: "硬件交互",
 	catAI: "人工智能",
 	catDS: "数据结构",
-	catMorpxVS2:"MU视觉"
+	catMorpxVS2:"MU视觉",
+	catInner:'板载资源'
 };
 Blockly.Msg.ADD_COMMENT = "添加注释";
 Blockly.Msg.AUTH = "请授权这个应用程序以保存您的作品并共享。";
@@ -474,13 +475,13 @@ Blockly.MIXLY_SERIAL_PRINTLN = '打印（自动换行）';
 Blockly.MIXLY_SERIAL_PRINT_HEX = '打印（16进制/自动换行）';
 Blockly.MIXLY_SERIAL_FLUSH = '清空缓存区数据';
 Blockly.MIXLY_STEP = '步长为';
-Blockly.MIXLY_TONE_PIN = '播放声音 管脚 #';
-Blockly.MIXLY_TONE_NOTIMER_PIN = '播放声音(无定时器) 管脚 #';
+Blockly.MIXLY_TONE = '播放声音';
+Blockly.MIXLY_TONE_NOTIMER = '播放声音(无定时器)';
 Blockly.MIXLY_FREQUENCY = '频率';
 Blockly.MIXLY_CHANNEL = '通道';
 Blockly.MIXLY_DURATION = '持续时间';
-Blockly.MIXLY_NOTONE_PIN = '结束声音 管脚 #';
-Blockly.MIXLY_NOTONE_NOTIMER_PIN = '结束声音(无定时器) 管脚 #';
+Blockly.MIXLY_NOTONE = '结束声音';
+Blockly.MIXLY_NOTONE_NOTIMER = '结束声音(无定时器)';
 Blockly.MIXLY_BLOCKGROUP_CATEGORY = '模块组';
 Blockly.MIXLY_IR_RECEIVE = '红外接收 管脚 #';
 Blockly.MIXLY_IR_RECEIVE_ENABLE = '红外接收使能 管脚 #';
@@ -2145,7 +2146,7 @@ Blockly.OLED_ELLIPSE_RADIUS_X = 'x方向半径';
 Blockly.OLED_ELLIPSE_RADIUS_Y = 'y方向半径';
 Blockly.OLED_DRAW_ELLIPSE = '画椭圆';
 Blockly.OLED_DRAWSTR = '显示字符串';
-Blockly.OLED_PRINT_VAR = '显示变量';
+Blockly.OLED_PRINT_VAR = '显示文本';
 Blockly.OLED_STRING = '内容';
 Blockly.OLED_SET_FONT = '设置字体';
 Blockly.oled_draw4Str = '显示多行文本';
@@ -2162,7 +2163,7 @@ Blockly.OLED_UP_R = '右上';
 Blockly.OLED_UP_L = '左上';
 Blockly.OLED_LOW_R = '右下';
 Blockly.OLED_LOW_L = '左下';
-Blockly.OLED_BITMAP = '显示图像(汉字)';
+Blockly.OLED_BITMAP = '显示图像';
 Blockly.OLED_BITMAP_NAME = '字模名称';
 Blockly.OLED_BITMAP_DATA = '字模数据';
 Blockly.OLED_GET_HEIGHT_TOOLTIP = '获取OLED的宽度或高度';
@@ -2247,7 +2248,7 @@ Blockly.MIXLY_MOTOR_DIR_PIN = '方向管脚';
 Blockly.MIXLY_HARDWARE = '硬件交互';
 Blockly.MIXLY_HARDWARE_SERIAL = '串口号';
 Blockly.MIXLY_HARDWARE_START = '启动交互';
-Blockly.MixGo_MPU9250 = '9轴加速度传感器';
+Blockly.MixGo_MPU9250 = '加速度传感器';
 Blockly.MixGo_MPU9250_AX = 'x轴加速度';
 Blockly.MixGo_MPU9250_AY = 'y轴加速度';
 Blockly.MixGo_MPU9250_AZ = 'z轴加速度';
@@ -2620,3 +2621,10 @@ Blockly.LKL_VS2_GET_PIX_COLOR = '捕获坐标';
 Blockly.LKL_VS2_CARD_TYPE = '卡片类型';
 Blockly.LKL_VS2_SET_DETECT_COLOR = '设置识别颜色';
 Blockly.LKL_VS2_COORDINATE = '坐标';
+Blockly.Handbit='掌控板';
+Blockly.HANDBIT_FORWARD='向前倾';
+Blockly.HANDBIT_BACKWARD='向后倾';
+Blockly.HANDBIT_LEFT='向左倾';
+Blockly.HANDBIT_RIGHT='向右倾';
+Blockly.HANDBIT_UP='正面向上';
+Blockly.HANDBIT_DOWN='正面向下';

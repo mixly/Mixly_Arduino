@@ -196,11 +196,12 @@ Blockly.Blocks.microbit_music_stop={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendValueInput("PIN")
-        .appendField(Blockly.MIXLY_NOTONE_PIN);
+        .appendField(Blockly.MIXLY_NOTONE)
+        .appendField(Blockly.MIXLY_PIN);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setTooltip(Blockly.MIXLY_NOTONE_PIN);
+    this.setTooltip(Blockly.MIXLY_NOTONE);
   }
 };
 

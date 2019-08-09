@@ -74,7 +74,8 @@ Blockly.Blocks.controls_tone={
     init:function(){
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_TONE_PIN)
+        .appendField(Blockly.MIXLY_TONE)
+        .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
         this.appendValueInput('FREQUENCY')
         .setCheck(Number)
@@ -90,7 +91,8 @@ Blockly.Blocks.controls_notone={
     init:function(){
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_NOTONE_PIN)
+        .appendField(Blockly.MIXLY_NOTONE)
+        .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
         this.setInputsInline(true);
         this.setPreviousStatement(true);
@@ -102,7 +104,8 @@ Blockly.Blocks.controls_tone_noTimer={
     init:function(){
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_TONE_NOTIMER_PIN)
+        .appendField(Blockly.MIXLY_TONE_NOTIMER)
+        .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
         this.appendValueInput('FREQUENCY')
         .setCheck(Number)
@@ -125,7 +128,8 @@ Blockly.Blocks.controls_notone_noTimer={
     init:function(){
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_NOTONE_NOTIMER_PIN)
+        .appendField(Blockly.MIXLY_NOTONE_NOTIMER)
+        .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
         this.setInputsInline(true);
         this.setPreviousStatement(true);

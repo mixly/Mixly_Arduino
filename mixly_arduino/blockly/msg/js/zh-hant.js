@@ -5,49 +5,50 @@ goog.provide('Blockly.Msg.zh.hant');
 
 goog.require('Blockly.Msg');
 var MSG = {
-catInOut:"輸入/輸出",
-catControl:"控制",
-catMath:"數學",
-catText:"文字",
-catLists:"數組",
-catMicropyLists: "列表",
-catDicts: "字典",
-catLogic:"邏輯",
-catSerialPort:"串口",
-catGroup:"通信",
-catStorage:"存儲",
-catSensor:"感測器",
-catActuator:"執行器",
-catMonitor:"顯示器",
-catLCD:"LCD顯示屏",
-cat4Digitdisplay:"四位數碼管",
-catOLED:"OLED顯示屏",
-catMatrix:"點陣屏",
-catVar:"變數",
-catFun:"函數",
-catEthernet:"以太網",
-catNetwork:"網路",
-catEthernet_init:"初始化",
-catEthernet_clinet:"客戶端",
-catSense:"盛思（盒子）",
-catSense2:"盛思（機器人）",
-catLuxe:"濼喜機器人",
-tab_blocks:"模塊",
-tab_arduino:"程式碼",
-copyright:"Copyright © 北京師範大學米思齊團隊				HTTP://MIXLY.ORG",
-viewNormal:"普通視圖",
-viewAdvanced:"高級視圖",
-catGame:"遊戲",
-catSystem:"系統",
-catTurtle:"烏龜",
-catTuple:"元組",
-catIot:"物聯網",
-catSet:"集合",
-catData:"數據",
-catHardware:"硬件交互",
-catAI:"人工智慧",
-catDS: "数据结构",
-catMorpxVS2:"小MU视觉"
+	catInOut:"輸入/輸出",
+	catControl:"控制",
+	catMath:"數學",
+	catText:"文字",
+	catLists:"數組",
+	catMicropyLists: "列表",
+	catDicts: "字典",
+	catLogic:"邏輯",
+	catSerialPort:"串口",
+	catGroup:"通信",
+	catStorage:"存儲",
+	catSensor:"感測器",
+	catActuator:"執行器",
+	catMonitor:"顯示器",
+	catLCD:"LCD顯示屏",
+	cat4Digitdisplay:"四位數碼管",
+	catOLED:"OLED顯示屏",
+	catMatrix:"點陣屏",
+	catVar:"變數",
+	catFun:"函數",
+	catEthernet:"以太網",
+	catNetwork:"網路",
+	catEthernet_init:"初始化",
+	catEthernet_clinet:"客戶端",
+	catSense:"盛思（盒子）",
+	catSense2:"盛思（機器人）",
+	catLuxe:"濼喜機器人",
+	tab_blocks:"模塊",
+	tab_arduino:"程式碼",
+	copyright:"Copyright © 北京師範大學米思齊團隊				HTTP://MIXLY.ORG",
+	viewNormal:"普通視圖",
+	viewAdvanced:"高級視圖",
+	catGame:"遊戲",
+	catSystem:"系統",
+	catTurtle:"烏龜",
+	catTuple:"元組",
+	catIot:"物聯網",
+	catSet:"集合",
+	catData:"數據",
+	catHardware:"硬件交互",
+	catAI:"人工智慧",
+	catDS: "数据结构",
+	catMorpxVS2:"小MU视觉",
+	catInner:'板载资源'
 };
 Blockly.Msg.ADD_COMMENT = "添加注釋";
 Blockly.Msg.AUTH = "請授權這個應用程序以保存您的作品並共亯。";
@@ -485,13 +486,13 @@ Blockly.MIXLY_SERIAL_PRINTLN='打印（自動換行）';
 Blockly.MIXLY_SERIAL_PRINT_HEX='打印（16進制/自動換行）';
 Blockly.MIXLY_SERIAL_FLUSH='清空緩存區數據';
 Blockly.MIXLY_STEP='步長為';
-Blockly.MIXLY_TONE_PIN='播放聲音 管脚#';
-Blockly.MIXLY_TONE_NOTIMER_PIN='播放聲音(無定時器) 管脚#';
+Blockly.MIXLY_TONE='播放聲音 管脚#';
+Blockly.MIXLY_TONE_NOTIMER='播放聲音(無定時器) 管脚#';
 Blockly.MIXLY_FREQUENCY='頻率';
 Blockly.MIXLY_CHANNEL='通道';
 Blockly.MIXLY_DURATION='持續時間';
-Blockly.MIXLY_NOTONE_PIN='結束聲音 管脚#';
-Blockly.MIXLY_NOTONE_NOTIMER_PIN='結束聲音(無定時器) 管脚#';
+Blockly.MIXLY_NOTONE='結束聲音 管脚#';
+Blockly.MIXLY_NOTONE_NOTIMER='結束聲音(無定時器) 管脚#';
 Blockly.MIXLY_BLOCKGROUP_CATEGORY='模塊組';
 Blockly.MIXLY_IR_RECEIVE='紅外接收 管腳#';
 Blockly.MIXLY_IR_RECEIVE_ENABLE='紅外接收使能 管腳#';
@@ -547,12 +548,12 @@ Blockly.LANG_MATH_STRING = '字符串';
  *add all data types supported in Arduino except void(only use in function) and array(in special catelogy)
  @author zyc
  @date 2018-12-29
-*/
-Blockly.LANG_MATH_UNSIGNED_INT = '無符號整數';
-Blockly.LANG_MATH_WORD = '字';
-Blockly.LANG_MATH_UNSIGNED_LONG = '無符號長整數';
-Blockly.LANG_MATH_UNSIGNED_CHAR = '無符號字符';
-Blockly.LANG_MATH_DOUBLE = '雙精度浮點數';
+ */
+ Blockly.LANG_MATH_UNSIGNED_INT = '無符號整數';
+ Blockly.LANG_MATH_WORD = '字';
+ Blockly.LANG_MATH_UNSIGNED_LONG = '無符號長整數';
+ Blockly.LANG_MATH_UNSIGNED_CHAR = '無符號字符';
+ Blockly.LANG_MATH_DOUBLE = '雙精度浮點數';
 //end
 Blockly.LANG_LISTS_GET_INDEX1 = '的第';
 Blockly.LANG_LISTS_GET_INDEX2 = '項';
@@ -815,93 +816,93 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = '停止播放聲音。';
  *@author:zyc
  *@date:2018-12-4
  */
-Blockly.MIXLY_TOOLTIP_INOUT_pinMode = '改變管脚模式';
-Blockly.MIXLY_TOOLTIP_INOUT_pulseIn = '獲取某個管脚最近一次脈衝的週期（微秒）';
-Blockly.MIXLY_TOOLTIP_INOUT_pulseIn2 = '獲取某個管脚最近一次脈衝的週期（微秒，可設定超時時間）';
-Blockly.MIXLY_TOOLTIP_INOUT_shiftout = '將數據通過串列的管道在引脚上輸出，相當於一般意義上的同步串列通信';
-Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2 = 'Arduino內部計时器中斷';
-Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_START = 'MsTimer2开始計时';
-Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_STOP = 'MsTimer2停止計时';
-Blockly.MIXLY_TOOLTIP_CONTROL_END_PROGRAM = '停止程式';
-Blockly.MIXLY_TOOLTIP_CONTROL_ALLOW_INTERRUPT = '允許設定中斷';
-Blockly.MIXLY_TOOLTIP_CONTROL_FORBID_INTERRUPT = '禁止中斷';
-Blockly.MIXLY_TOOLTIP_SCOOP = 'Arduino多執行緒';
-Blockly.MIXLY_TOOLTIP_SCOOP_YIELD = '開始執行多執行緒任務';
-Blockly.MIXLY_TOOLTIP_SCOOP_SLEEP = '延遲指定時間（僅用於多執行緒）';
-Blockly.MIXLY_TOOLTIP_MATH_RANDOM_SEED = '設定亂數種子';
-Blockly.MIXLY_TOOLTIP_TEXT_LENGTH = '求字串長度';
-Blockly.MIXLY_TOOLTIP_TEXT_FIND_CHAR_AT = '在字串中求子串 %1 的位置';
-Blockly.MIXLY_TOOLTIP_TEXT_EQUALS_STARTS_ENDS = '返回字串是否%1 %2';
-Blockly.MIXLY_TOOLTIP_SERIAL_BEGIN = '初始化串口並設定串口通信串列傳輸速率';
-Blockly.MIXLY_TOOLTIP_SERIAL_READSTRUNITL = '從串口讀取字串直到遇到%1';
-Blockly.MIXLY_TOOLTIP_SERIAL_FLUSH = '清除串口緩存區的數據';
-Blockly.MIXLY_TOOLTIP_SOFTSERIAL = '將數位管脚%1和%2類比成串口通信管脚';
-Blockly.MIXLY_TOOLTIP_SERIALEVENT = '在串口接收資訊時通過中斷管道執行某些命令';
-Blockly.MIXLY_TOOLTIP_IR_ENABLE = '';
-Blockly.MIXLY_TOOLTIP_I2C_MASTER_WRITE = 'I2C主設備發送數據，參數是主設備的地址和要發送的值';
-Blockly.MIXLY_TOOLTIP_I2C_MASTER_READ = 'I2C主設備讀取數據，參數是主設備的地址和要讀取內容的位元組長度';
-Blockly.MIXLY_TOOLTIP_I2C_MASTER_READ2 = '返回從I2C主設備讀取到的數據';
-Blockly.MIXLY_TOOLTIP_I2C_AVAILABLE = '返回是否成功讀取I2C設備數據';
-Blockly.MIXLY_TOOLTIP_I2C_SLAVE_ONRECEIVE = 'I2C從機接收主機產生的時鐘和數據訊號，並執行相應操作';
-Blockly.MIXLY_TOOLTIP_SPI_TRANSFER = '作為主設備以SPI管道通過管脚%1向從機傳輸數據';
-Blockly.MIXLY_TOOLTIP_RFID_INIT = '初始化RFID讀卡器，參數為數據線管脚號、時鐘線管脚號、主輸出從輸出線管脚號和主輸入從輸出先管脚號';
-Blockly.MIXLY_TOOLTIP_RFID_ON = '當RFID讀取到數據時執行一些指令';
-Blockly.MIXLY_TOOLTIP_RFID_READ = '返回RFID讀取到的卡號';
-Blockly.MIXLY_TOOLTIP_RFID_IN = '當RFID讀取到特定數據時執行一些指令';
-Blockly.MIXLY_TOOLTIP_RFID_WRITEBLOCK = '向電子標籤中的數據塊寫數據';
-Blockly.MIXLY_TOOLTIP_RFID_READBLOCK = '從電子標籤中的數據塊讀數據';
-Blockly.MIXLY_TOOLTIP_RFID_OFF = '使RFID設備不再繼續讀取數據';
-Blockly.MIXLY_TOOLTIP_STORE_SDWRITE = '向SD卡寫入檔案';
-Blockly.MIXLY_TOOLTIP_STORE_EEPROM_WRITELONG = '向EEPROM特定地址寫入長整型數據';
-Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READLONG = '從EEPROM的特定地址讀取長整型數據';
-Blockly.MIXLY_TOOLTIP_STORE_EEPROM_WRITEBYTE = '向EEPROM特定地址寫入位元組型數據';
-Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READBYTE = '從EEPROM的特定地址讀取位元組型數據';
-Blockly.MIXLY_TOOLTIP_GPS_INIT = '初始化GPS設備，參數為GPS通信管脚和串列傳輸速率';
-Blockly.MIXLY_TOOLTIP_GPS_DATA_AVAILABLE = '返回GPS數據是否為有效值';
-Blockly.MIXLY_TOOLTIP_GPS_GETDATA = '獲取GPS衛星傳回的%1數據';
-Blockly.MIXLY_TOOLTIP_LM35 = '獲取LM35感測器傳回的溫度值';
-Blockly.MIXLY_TOOLTIP_DS18 = '獲取DS18B20感測器傳回的溫度值';
-Blockly.MIXLY_TOOLTIP_DS1302_INIT = '初始化DS1302 RTC時鐘模塊，參數為重置線管脚號，數據線管脚號和時鐘線管脚號';
-Blockly.MIXLY_TOOLTIP_DS1307_INIT = '初始化DS1307 RTC時鐘模塊，參數為數據線管脚號和時鐘線管脚號';
-Blockly.MIXLY_TOOLTIP_RTC_GETTIME = '從RTC時鐘模塊獲取%1';
-Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
-Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
-Blockly.MIXLY_TOOLTIP_ADXL345 = '獲取ADXL345重力感應模塊傳回的%1';
-Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_WRITEMICROSECONDS = '設定舵機的旋轉時間，參數取值為[1000,2000]';
-Blockly.MIXLY_TOOLTIP_TONE_NOTE = '返回音名對應的頻率';
-Blockly.MIXLY_TOOLTIP_STEPPER_STEP = '用於初始化兩管脚步進電機';
-Blockly.MIXLY_TOOLTIP_STEPPER_STEP2 = '用於初始化四管脚步進電機';
-Blockly.MIXLY_TOOLTIP_STEPPER_MOVE = '設定步進電機的移動步數';
-Blockly.MIXLY_TOOLTIP_LCD_INIT = '初始化LCD顯示幕，設定地址';
-Blockly.MIXLY_TOOLTIP_LCD_INIT2 = '初始化LCD顯示幕，指定時鐘線和數據線連接管脚並設定地址';
-Blockly.MIXLY_TOOLTIP_LCD_INIT3 = '初始化LCD顯示幕，指定所有連接管脚並設定地址';
-Blockly.MIXLY_TOOLTIP_LCD_PRINT = 'LCD顯示幕分行列印';
-Blockly.MIXLY_TOOLTIP_LCD_PRINT2 = '從LCD顯示幕第%1行第%2列開始顯示指定內容';
-Blockly.MIXLY_TOOLTIP_LCD_POWER = '設定LCD顯示幕的顯示樣式';
-Blockly.MIXLY_TOOLTIP_OLED_DRAW4STRING = 'OLED顯示幕分行列印';
-Blockly.MIXLY_TOOLTIP_OLED_PRINT = '在OLED顯示幕第%1行第%2列顯示指定字符';
-Blockly.MIXLY_TOOLTIP_RGB_DISPLAY2 = '設定RGB彩燈模塊指定燈的顏色';
-Blockly.MIXLY_TOOLTIP_4digitdisplay_power = '設定TM1650四比特數碼管顯示模式';
-Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString = 'TM1650四比特數碼管顯示字串（超過四比特則滾動顯示）';
-Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot = '在TM1650四比特數碼管指定位置顯示小數點';
-Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS = '設定TM1637的亮度';
-Blockly.MIXLY_DISPLAY_TM1637_Time_Point='時鐘點 設為';
-Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT = '初始化HK16T33 8*8點陣屏';
-Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = '點陣屏顯示方向旋轉';
-Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT = '每次顯示一個字元，依次顯示';
-Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_LEDARRAY = '點亮點陣屏上的對應位置';
-Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_CLEAR = '清除點陣屏上內容';
-Blockly.MIXLY_TOOLTIP_ETHERNET_INIT = '啟動以太網服務，參數為以太網擴展卡的MAC地址，返回1表示成功啟動，0表示失敗';
-Blockly.MIXLY_TOOLTIP_ETHERNET_MACADDRESS = 'MAC地址，格式為XX-XX-XX-XX-XX-XX，X為任意十六進位數';
-Blockly.MIXLY_TOOLTIP_ETHERNET_LOCALIP = '返回本機IP地址';
-Blockly.MIXLY_TOOLTIP_ETHERNET_CONNECT = '連接遠程服務器，返回1表示成功啟動，其他表示失敗';
-Blockly.MIXLY_TOOLTIP_ETHERNET_STOP = '與服務器斷開連接';
-Blockly.MIXLY_TOOLTIP_ETHERNET_CONNECTED = '返回是否已連接某個服務器';
-Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_AVAILABLE = '返回是否有服務端發送的數據可讀';
-Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_PRINT = '將數據列印到用戶端連接到的服務器。發送內容會轉為對應的ASCII碼並在最後添加分行符號（例如，數位123作為三個字元“1”、“2”、“3”發送）。';
-Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_READ = '讀取服務端發送用戶端緩衝區的下一個位元組';
-Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = '向指定地址發送一個GET請求';
-Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = '對常數或變數進行強制類型轉換';
+ Blockly.MIXLY_TOOLTIP_INOUT_pinMode = '改變管脚模式';
+ Blockly.MIXLY_TOOLTIP_INOUT_pulseIn = '獲取某個管脚最近一次脈衝的週期（微秒）';
+ Blockly.MIXLY_TOOLTIP_INOUT_pulseIn2 = '獲取某個管脚最近一次脈衝的週期（微秒，可設定超時時間）';
+ Blockly.MIXLY_TOOLTIP_INOUT_shiftout = '將數據通過串列的管道在引脚上輸出，相當於一般意義上的同步串列通信';
+ Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2 = 'Arduino內部計时器中斷';
+ Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_START = 'MsTimer2开始計时';
+ Blockly.MIXLY_TOOLTIP_CONTROL_MSTIMER2_STOP = 'MsTimer2停止計时';
+ Blockly.MIXLY_TOOLTIP_CONTROL_END_PROGRAM = '停止程式';
+ Blockly.MIXLY_TOOLTIP_CONTROL_ALLOW_INTERRUPT = '允許設定中斷';
+ Blockly.MIXLY_TOOLTIP_CONTROL_FORBID_INTERRUPT = '禁止中斷';
+ Blockly.MIXLY_TOOLTIP_SCOOP = 'Arduino多執行緒';
+ Blockly.MIXLY_TOOLTIP_SCOOP_YIELD = '開始執行多執行緒任務';
+ Blockly.MIXLY_TOOLTIP_SCOOP_SLEEP = '延遲指定時間（僅用於多執行緒）';
+ Blockly.MIXLY_TOOLTIP_MATH_RANDOM_SEED = '設定亂數種子';
+ Blockly.MIXLY_TOOLTIP_TEXT_LENGTH = '求字串長度';
+ Blockly.MIXLY_TOOLTIP_TEXT_FIND_CHAR_AT = '在字串中求子串 %1 的位置';
+ Blockly.MIXLY_TOOLTIP_TEXT_EQUALS_STARTS_ENDS = '返回字串是否%1 %2';
+ Blockly.MIXLY_TOOLTIP_SERIAL_BEGIN = '初始化串口並設定串口通信串列傳輸速率';
+ Blockly.MIXLY_TOOLTIP_SERIAL_READSTRUNITL = '從串口讀取字串直到遇到%1';
+ Blockly.MIXLY_TOOLTIP_SERIAL_FLUSH = '清除串口緩存區的數據';
+ Blockly.MIXLY_TOOLTIP_SOFTSERIAL = '將數位管脚%1和%2類比成串口通信管脚';
+ Blockly.MIXLY_TOOLTIP_SERIALEVENT = '在串口接收資訊時通過中斷管道執行某些命令';
+ Blockly.MIXLY_TOOLTIP_IR_ENABLE = '';
+ Blockly.MIXLY_TOOLTIP_I2C_MASTER_WRITE = 'I2C主設備發送數據，參數是主設備的地址和要發送的值';
+ Blockly.MIXLY_TOOLTIP_I2C_MASTER_READ = 'I2C主設備讀取數據，參數是主設備的地址和要讀取內容的位元組長度';
+ Blockly.MIXLY_TOOLTIP_I2C_MASTER_READ2 = '返回從I2C主設備讀取到的數據';
+ Blockly.MIXLY_TOOLTIP_I2C_AVAILABLE = '返回是否成功讀取I2C設備數據';
+ Blockly.MIXLY_TOOLTIP_I2C_SLAVE_ONRECEIVE = 'I2C從機接收主機產生的時鐘和數據訊號，並執行相應操作';
+ Blockly.MIXLY_TOOLTIP_SPI_TRANSFER = '作為主設備以SPI管道通過管脚%1向從機傳輸數據';
+ Blockly.MIXLY_TOOLTIP_RFID_INIT = '初始化RFID讀卡器，參數為數據線管脚號、時鐘線管脚號、主輸出從輸出線管脚號和主輸入從輸出先管脚號';
+ Blockly.MIXLY_TOOLTIP_RFID_ON = '當RFID讀取到數據時執行一些指令';
+ Blockly.MIXLY_TOOLTIP_RFID_READ = '返回RFID讀取到的卡號';
+ Blockly.MIXLY_TOOLTIP_RFID_IN = '當RFID讀取到特定數據時執行一些指令';
+ Blockly.MIXLY_TOOLTIP_RFID_WRITEBLOCK = '向電子標籤中的數據塊寫數據';
+ Blockly.MIXLY_TOOLTIP_RFID_READBLOCK = '從電子標籤中的數據塊讀數據';
+ Blockly.MIXLY_TOOLTIP_RFID_OFF = '使RFID設備不再繼續讀取數據';
+ Blockly.MIXLY_TOOLTIP_STORE_SDWRITE = '向SD卡寫入檔案';
+ Blockly.MIXLY_TOOLTIP_STORE_EEPROM_WRITELONG = '向EEPROM特定地址寫入長整型數據';
+ Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READLONG = '從EEPROM的特定地址讀取長整型數據';
+ Blockly.MIXLY_TOOLTIP_STORE_EEPROM_WRITEBYTE = '向EEPROM特定地址寫入位元組型數據';
+ Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READBYTE = '從EEPROM的特定地址讀取位元組型數據';
+ Blockly.MIXLY_TOOLTIP_GPS_INIT = '初始化GPS設備，參數為GPS通信管脚和串列傳輸速率';
+ Blockly.MIXLY_TOOLTIP_GPS_DATA_AVAILABLE = '返回GPS數據是否為有效值';
+ Blockly.MIXLY_TOOLTIP_GPS_GETDATA = '獲取GPS衛星傳回的%1數據';
+ Blockly.MIXLY_TOOLTIP_LM35 = '獲取LM35感測器傳回的溫度值';
+ Blockly.MIXLY_TOOLTIP_DS18 = '獲取DS18B20感測器傳回的溫度值';
+ Blockly.MIXLY_TOOLTIP_DS1302_INIT = '初始化DS1302 RTC時鐘模塊，參數為重置線管脚號，數據線管脚號和時鐘線管脚號';
+ Blockly.MIXLY_TOOLTIP_DS1307_INIT = '初始化DS1307 RTC時鐘模塊，參數為數據線管脚號和時鐘線管脚號';
+ Blockly.MIXLY_TOOLTIP_RTC_GETTIME = '從RTC時鐘模塊獲取%1';
+ Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
+ Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
+ Blockly.MIXLY_TOOLTIP_ADXL345 = '獲取ADXL345重力感應模塊傳回的%1';
+ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_WRITEMICROSECONDS = '設定舵機的旋轉時間，參數取值為[1000,2000]';
+ Blockly.MIXLY_TOOLTIP_TONE_NOTE = '返回音名對應的頻率';
+ Blockly.MIXLY_TOOLTIP_STEPPER_STEP = '用於初始化兩管脚步進電機';
+ Blockly.MIXLY_TOOLTIP_STEPPER_STEP2 = '用於初始化四管脚步進電機';
+ Blockly.MIXLY_TOOLTIP_STEPPER_MOVE = '設定步進電機的移動步數';
+ Blockly.MIXLY_TOOLTIP_LCD_INIT = '初始化LCD顯示幕，設定地址';
+ Blockly.MIXLY_TOOLTIP_LCD_INIT2 = '初始化LCD顯示幕，指定時鐘線和數據線連接管脚並設定地址';
+ Blockly.MIXLY_TOOLTIP_LCD_INIT3 = '初始化LCD顯示幕，指定所有連接管脚並設定地址';
+ Blockly.MIXLY_TOOLTIP_LCD_PRINT = 'LCD顯示幕分行列印';
+ Blockly.MIXLY_TOOLTIP_LCD_PRINT2 = '從LCD顯示幕第%1行第%2列開始顯示指定內容';
+ Blockly.MIXLY_TOOLTIP_LCD_POWER = '設定LCD顯示幕的顯示樣式';
+ Blockly.MIXLY_TOOLTIP_OLED_DRAW4STRING = 'OLED顯示幕分行列印';
+ Blockly.MIXLY_TOOLTIP_OLED_PRINT = '在OLED顯示幕第%1行第%2列顯示指定字符';
+ Blockly.MIXLY_TOOLTIP_RGB_DISPLAY2 = '設定RGB彩燈模塊指定燈的顏色';
+ Blockly.MIXLY_TOOLTIP_4digitdisplay_power = '設定TM1650四比特數碼管顯示模式';
+ Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString = 'TM1650四比特數碼管顯示字串（超過四比特則滾動顯示）';
+ Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot = '在TM1650四比特數碼管指定位置顯示小數點';
+ Blockly.MIXLY_TOOPTIP_4DIGITDISPLAY_TM1637_BRIGHTNESS = '設定TM1637的亮度';
+ Blockly.MIXLY_DISPLAY_TM1637_Time_Point='時鐘點 設為';
+ Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT = '初始化HK16T33 8*8點陣屏';
+ Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_ROTATION = '點陣屏顯示方向旋轉';
+ Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_TEXT = '每次顯示一個字元，依次顯示';
+ Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_LEDARRAY = '點亮點陣屏上的對應位置';
+ Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_CLEAR = '清除點陣屏上內容';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_INIT = '啟動以太網服務，參數為以太網擴展卡的MAC地址，返回1表示成功啟動，0表示失敗';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_MACADDRESS = 'MAC地址，格式為XX-XX-XX-XX-XX-XX，X為任意十六進位數';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_LOCALIP = '返回本機IP地址';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_CONNECT = '連接遠程服務器，返回1表示成功啟動，其他表示失敗';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_STOP = '與服務器斷開連接';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_CONNECTED = '返回是否已連接某個服務器';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_AVAILABLE = '返回是否有服務端發送的數據可讀';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_PRINT = '將數據列印到用戶端連接到的服務器。發送內容會轉為對應的ASCII碼並在最後添加分行符號（例如，數位123作為三個字元“1”、“2”、“3”發送）。';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_READ = '讀取服務端發送用戶端緩衝區的下一個位元組';
+ Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = '向指定地址發送一個GET請求';
+ Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = '對常數或變數進行強制類型轉換';
 //end
 Blockly.LUXE_LED='燈#';
 Blockly.LUXE_MOTOR='電機#';
@@ -1580,7 +1581,7 @@ Blockly.MIXLY_COMMUNICATION_RFID_TOOLTIP = "這是RFID的讀卡";
 Blockly.MIXLY_COMMUNICATION_RFID_READ = "RFID讀取";
 Blockly.MIXLY_COMMUNICATION_DATA_FROM = "的數據";
 Blockly.MIXLY_COMMUNICATION_RFID_OFF = "rfid停止偵測";
-  Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_RESET = "復位";
+Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_RESET = "復位";
 //mixpy
 Blockly.blockpy_inout_input='接收輸入';
 Blockly.blockpy_inout_raw_input='接收字串輸入';
@@ -2407,7 +2408,7 @@ Blockly.OLED_ELLIPSE_RADIUS_X = 'x方向半徑';
 Blockly.OLED_ELLIPSE_RADIUS_Y = 'y方向半徑';
 Blockly.OLED_DRAW_ELLIPSE = '畫橢圓';
 Blockly.OLED_DRAWSTR = '顯示字串';
-Blockly.OLED_PRINT_VAR = '顯示變數';
+Blockly.OLED_PRINT_VAR = '顯示文本';
 Blockly.OLED_STRING = '內容';
 Blockly.OLED_SET_FONT = '設置字體';
 Blockly.oled_draw4Str = '顯示多行文本';
@@ -2430,7 +2431,7 @@ Blockly.OLED_bold='加粗';
 Blockly.BIG='大';
 Blockly.MIDDLE='中';
 Blockly.SMALL='小';
-Blockly.OLED_BITMAP='顯示圖像(漢字)';
+Blockly.OLED_BITMAP='顯示圖像';
 Blockly.OLED_BITMAP_NAME='字模名稱';
 Blockly.OLED_BITMAP_DATA='字模數據';
 Blockly.OLED_GET_HEIGHT_TOOLTIP='獲取OLED的寬度或高度';

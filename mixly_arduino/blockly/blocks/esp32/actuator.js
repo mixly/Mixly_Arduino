@@ -140,7 +140,8 @@ Blockly.Blocks.esp32_music_stop = {
     init: function() {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
-            .appendField(Blockly.MIXLY_NOTONE_PIN)
+            .appendField(Blockly.MIXLY_NOTONE)
+            .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);
         this.setInputsInline(true);
         this.setPreviousStatement(true);

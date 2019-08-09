@@ -105,7 +105,7 @@ Blockly.Blocks.esp32_music_pitch = {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
             .appendField(Blockly.MIXLY_MBOT_TONE)
-            .appendField(Blockly.MIXLY_PIN + " #")
+            .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);
         this.appendValueInput('pitch')
             .setCheck(Number)
@@ -122,7 +122,7 @@ Blockly.Blocks.esp32_music_pitch_with_time = {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
             .appendField(Blockly.MIXLY_MBOT_TONE)
-            .appendField(Blockly.MIXLY_PIN + " #")
+            .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);
         this.appendValueInput('pitch')
             .setCheck(Number)
@@ -141,7 +141,8 @@ Blockly.Blocks.esp32_music_stop = {
     init: function() {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
-            .appendField(Blockly.MIXLY_NOTONE_PIN)
+            .appendField(Blockly.MIXLY_NOTONE)
+            .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);
         this.setInputsInline(true);
         this.setPreviousStatement(true);

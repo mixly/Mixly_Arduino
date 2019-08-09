@@ -44,7 +44,8 @@ var MSG = {
 	catHardware:"Hardware",
 	catAI:"AI",
 	catDS: "Data Structure",
-	catMorpxVS2:"MuVisionSensor"
+	catMorpxVS2:"MuVisionSensor",
+	catInner:'Board'
 };
 Blockly.Msg.ADD_COMMENT = "Add Comment";
 Blockly.Msg.AUTH = "Please authorize this app to enable your work to be saved and to allow it to be shared by you.";
@@ -482,13 +483,13 @@ Blockly.MIXLY_SERIAL_PRINTLN='println';
 Blockly.MIXLY_SERIAL_PRINT_HEX='println(hex)';
 Blockly.MIXLY_SERIAL_FLUSH='flush';
 Blockly.MIXLY_STEP='step';
-Blockly.MIXLY_TONE_PIN='Tone PIN#';
-Blockly.MIXLY_TONE_NOTIMER_PIN='Tone (NO Timer)PIN#';
+Blockly.MIXLY_TONE='Tone PIN#';
+Blockly.MIXLY_TONE_NOTIMER='Tone (NO Timer)PIN#';
 Blockly.MIXLY_FREQUENCY='frequency';
 Blockly.MIXLY_CHANNEL='channel';
 Blockly.MIXLY_DURATION='duration';
-Blockly.MIXLY_NOTONE_PIN='noTone PIN#';
-Blockly.MIXLY_NOTONE_NOTIMER_PIN='noTone(NO Timer) PIN#';
+Blockly.MIXLY_NOTONE='noTone PIN#';
+Blockly.MIXLY_NOTONE_NOTIMER='noTone(NO Timer) PIN#';
 Blockly.MIXLY_BLOCKGROUP_CATEGORY='BlockGroup';
 Blockly.MIXLY_IR_RECEIVE='IRreceive PIN#';
 Blockly.MIXLY_IR_RECEIVE_ENABLE='enableIRIn PIN#';
@@ -2371,7 +2372,7 @@ Blockly.OLED_ELLIPSE_RADIUS_X = 'x-axis Radius';
 Blockly.OLED_ELLIPSE_RADIUS_Y = 'y-axis Radius';
 Blockly.OLED_DRAW_ELLIPSE = 'Draw Ellipse';
 Blockly.OLED_DRAWSTR = 'Show String';
-Blockly.OLED_PRINT_VAR = 'Show Variables';
+Blockly.OLED_PRINT_VAR = 'Show Text';
 Blockly.OLED_STRING = 'String';
 Blockly.OLED_SET_FONT = 'Set font';
 Blockly.oled_draw4Str = 'Show 4 Lines';

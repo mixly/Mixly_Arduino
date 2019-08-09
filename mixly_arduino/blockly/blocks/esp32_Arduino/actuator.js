@@ -19,7 +19,8 @@ Blockly.Blocks.controls_tone={
     init:function(){
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_TONE_PIN)
+        .appendField(Blockly.MIXLY_TONE)
+        .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
         this.appendValueInput('FREQUENCY')
         .setCheck(Number)
@@ -41,7 +42,8 @@ Blockly.Blocks.controls_notone={
     init:function(){
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_NOTONE_PIN)
+        .appendField(Blockly.MIXLY_NOTONE)
+        .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
         this.appendValueInput('CHANNEL')
         .setCheck(Number)
