@@ -38,3 +38,15 @@ Blockly.Arduino.DHT = function () {
     code= 'dht'+dropdown_pin+'.readHumidity()'
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 }
+//ESP32片内霍尔传感器值
+Blockly.Arduino.ESP32_hallRead = function() {
+    var code = 'hallRead()';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+//ESP32片内温度传感器值
+Blockly.Arduino.ESP32_temprature = function() {
+    Blockly.Arduino.definitions_['wendu'] ='extern "C"\n{\nuint8_t temprature_sens_read();\n}\nuint8_t temprature_sens_read();\n';
+    var code = '(temprature_sens_read() - 32) / 1.8';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

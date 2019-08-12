@@ -2836,3 +2836,5 @@ Blockly.HANDBIT_RIGHT='Right';
 Blockly.HANDBIT_UP='Up';
 Blockly.HANDBIT_DOWN='Down';
 Blockly.BME280="Read BME280";
+Blockly.ESP32_HALL='ESP32 Hall';
+Blockly.ESP32_TEMP='ESP32 Temperature';
