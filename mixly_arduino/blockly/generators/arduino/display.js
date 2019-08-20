@@ -377,6 +377,15 @@ Blockly.Arduino.oled_clear = function() {
   return code;
 };
 
+Blockly.Arduino.oled_icons = function() {
+   var POS_x = Blockly.Arduino.valueToCode(this, 'POS_X') || '0';
+  var POS_y = Blockly.Arduino.valueToCode(this, 'POS_Y') || '0';
+  var ICON_SIZE = this.getFieldValue('ICON_SIZE');
+  var ICON_IMAGE = this.getFieldValue('ICON_IMAGE');
+  var code = "u8g2.setFont(u8g2_font_open_iconic_all_"+ICON_SIZE+"x_t);\n"
+  +"u8g2.drawGlyph("+POS_x+","+POS_y+"+"+ICON_SIZE+"*8,"+ICON_IMAGE+");\n";
+  return code;
+};
 Blockly.Arduino.oled_draw4Str = function() {
   var value_text_line1 = Blockly.Arduino.valueToCode(this, 'Text_line1', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
   var value_text_line2 = Blockly.Arduino.valueToCode(this, 'Text_line2', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
