@@ -138,3 +138,9 @@ Blockly.Arduino.factory_notes = function(){
         return '//\n';
      }
 }
+
+Blockly.Arduino.folding_block = function() {
+    var branch = Blockly.Arduino.statementToCode(this, 'DO');
+    branch = branch.replace(/(^\s*)|(\s*$)/g, "");//去除两端空格
+    return ''+branch+'\n';
+};
