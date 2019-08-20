@@ -27,3 +27,5 @@ Blockly.Arduino.pins_one_more = Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_MOSI=Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_MISO=Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_SCK=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_scl=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_sda=Blockly.Arduino.pins_digital;
