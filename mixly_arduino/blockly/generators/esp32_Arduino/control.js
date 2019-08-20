@@ -5,14 +5,14 @@ goog.provide('Blockly.Arduino.loops');
 goog.require('Blockly.Arduino');
 
 Blockly.Arduino.controls_runnig_core = function () {
-    var CORE_NUM = this.getFieldValue('CORE_NUM');
-     var CORE_Priority = this.getFieldValue('CORE_Priority');
-    Blockly.Arduino.definitions_['CORE_Define'] = '#if CONFIG_FREERTOS_UNICORE\n#define ARDUINO_RUNNING_CORE 0\n#else\n#define ARDUINO_RUNNING_CORE 1\n#endif\n';
-    var funcName = 'Task'+CORE_NUM+'(void *pvParameters)';
-    var branch = Blockly.Arduino.statementToCode(this, 'DO');
-    var code = 'void' + ' ' + funcName + ' {\n for (;;)\n {\n' + branch + '}\n}\n';
-    Blockly.Arduino.setups_['xTaskCreatePinnedToCore' + CORE_NUM] ='xTaskCreatePinnedToCore(Task'+CORE_NUM+' ,"'+'Task'+CORE_NUM+'",1024,NULL,'+CORE_Priority+',NULL,ARDUINO_RUNNING_CORE);';
-    Blockly.Arduino.definitions_[funcName] = code;
+    var core_priority1 = this.getFieldValue('core_priority1');
+    var core_priority2 = this.getFieldValue('core_priority2');
+    var branch1 = Blockly.Arduino.statementToCode(this, 'core1');
+    branch1 = branch1.replace(/(^\s*)|(\s*$)/g, "");
+    var branch2 = Blockly.Arduino.statementToCode(this, 'core2');
+    branch2 = branch2.replace(/(^\s*)|(\s*$)/g, "");
+    Blockly.Arduino.definitions_['Dual-core_multitasking'] ='TaskHandle_t Task1;\nTaskHandle_t Task2;\nvoid Task1code( void * pvParameters ){\nfor(;;){myTask1();}\n}\nvoid Task2code( void * pvParameters ){\nfor(;;){myTask2();}\n}\nvoid myTask1() {\n' + branch1 + '\n}\nvoid myTask2() {\n' + branch2 + '\n}\n';
+    Blockly.Arduino.setups_['setups_Dual-core_multitasking'] ='xTaskCreatePinnedToCore(Task1code,"Task1",10000,NULL,'+ core_priority1+',&Task1,0);\n  delay(500);\n  xTaskCreatePinnedToCore(Task2code,"Task2",10000,NULL,'+ core_priority2+',&Task2,1);\n  delay(500);\n';
     return '';
 };
 Blockly.Arduino.control_core_delay = function() {
