@@ -1,8 +1,6 @@
-﻿// This file was automatically generated.  Do not modify.
+// This file was automatically generated.  Do not modify.
 'use strict';
-
 goog.provide('Blockly.Msg.en');
-
 goog.require('Blockly.Msg');
 var MSG = {
 	catInOut: "In/Out",
@@ -302,7 +300,6 @@ Blockly.Msg.MATH_SINGLE_TOOLTIP_TOINT = "Returns the integer part a number.";
 Blockly.Msg.MATH_SINGLE_TOOLTIP_ROUND = "Returns the integer part a number using around.";
 Blockly.Msg.MATH_SINGLE_TOOLTIP_CEIL = "Returns the integer part a number using ceil.";
 Blockly.Msg.MATH_SINGLE_TOOLTIP_FLOOR = "Returns the integer part a number using floor.";
-
 Blockly.Msg.MATH_SUBTRACTION_SYMBOL = "-";
 Blockly.Msg.MATH_QUYU_SYMBOL="%";
 Blockly.Msg.MATH_TRIG_ACOS = "acos";
@@ -451,7 +448,6 @@ Blockly.Msg.CONTROLS_WHILEUNTIL_INPUT_DO = Blockly.Msg.CONTROLS_REPEAT_INPUT_DO;
 Blockly.Msg.CONTROLS_IF_ELSEIF_TITLE_ELSEIF = Blockly.Msg.CONTROLS_IF_MSG_ELSEIF;
 Blockly.Msg.TEXT_APPEND_VARIABLE = Blockly.Msg.VARIABLES_DEFAULT_NAME;
 Blockly.Msg.CONTROLS_IF_ELSE_TITLE_ELSE = Blockly.Msg.CONTROLS_IF_MSG_ELSE;
-//luokailiang
 Blockly.MIXLY_PINMODE = 'pinMode';
 Blockly.MIXLY_PINMODEIN = 'INPUT';
 Blockly.MIXLY_PINMODEOUT = 'OUTPUT';
@@ -541,17 +537,11 @@ Blockly.LANG_MATH_BOOLEAN = 'boolean';
 Blockly.LANG_MATH_BYTE = 'byte';
 Blockly.LANG_MATH_CHAR = 'char';
 Blockly.LANG_MATH_STRING = 'string';
-/*
- *add all data types supported in Arduino except void(only use in function) and array(in special catelogy)
- @author zyc
- @date 2018-12-29
- */
- Blockly.LANG_MATH_UNSIGNED_INT = 'unsigned int';
- Blockly.LANG_MATH_WORD = 'word';
- Blockly.LANG_MATH_UNSIGNED_LONG = 'unsigned long';
- Blockly.LANG_MATH_UNSIGNED_CHAR = 'unsigned char';
- Blockly.LANG_MATH_DOUBLE = 'double';
-//end
+Blockly.LANG_MATH_UNSIGNED_INT = 'unsigned int';
+Blockly.LANG_MATH_WORD = 'word';
+Blockly.LANG_MATH_UNSIGNED_LONG = 'unsigned long';
+Blockly.LANG_MATH_UNSIGNED_CHAR = 'unsigned char';
+Blockly.LANG_MATH_DOUBLE = 'double';
 Blockly.LANG_LISTS_GET_INDEX1 = 'get item at';
 Blockly.LANG_LISTS_GET_INDEX2 = '';
 Blockly.LANG_LISTS_GET_INDEX_TOOLTIP = 'Returns the value at the specified position in a list.';
@@ -644,7 +634,7 @@ Blockly.MIXLY_LCD_ROW='row';
 Blockly.MIXLY_LCD_COLUMN='column';
 Blockly.MIXLY_LCD_PRINT='print';
 Blockly.MIXLY_LCD_SETCOLOR='setColor';
-Blockly.MIXLY_LCD_STAT_ON='On';
+Blockly.MIXLY_ON='On';
 Blockly.MIXLY_LCD_STAT_OFF='Off';
 Blockly.MIXLY_LCD_STAT_CURSOR='Cursor';
 Blockly.MIXLY_LCD_STAT_NOCURSOR='noCursor';
@@ -808,11 +798,6 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_READ = 'Returns that degree with the last
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE = 'Play sound at the specified frequency.';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE2 = 'Play sound according to the specified frequency and duration.';
 Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = 'Stop playing sound.';
-/*
- *add tooltips missed in Arduino before
- *@author:zyc
- *@date:2018-12-4
- */
  Blockly.MIXLY_TOOLTIP_INOUT_pinMode = 'Change pin mode';
  Blockly.MIXLY_TOOLTIP_INOUT_pulseIn = 'Get the period of the last pulse of a pin (microseconds)';
  Blockly.MIXLY_TOOLTIP_INOUT_pulseIn2 = 'Get the period of the last pulse of a pin (microseconds, timeout parameter can be set)';
@@ -901,8 +886,6 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = 'Stop playing sound.';
  Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_READ = 'Read the next byte received from the server the client is connected to';
  Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = 'Send a GET request to the specified address';
  Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = 'Mandatory type conversion of constants or variables';
-//add max7219 clear tooltip 2019-1-10
-//end
 Blockly.LUXE_LED='LED #';
 Blockly.LUXE_MOTOR='Motor #';
 Blockly.LUXE_STAT='Stat';
@@ -919,58 +902,43 @@ Blockly.LUXE_SPEAKER_PLAYSOUND='Play sound';
 Blockly.LUXE_SPEANER_NOSOUND='No sound';
 Blockly.LUXE_SPEAKER_FREQUENCY='frequency';
 Blockly.LUXE_SPEAKER_DURATION='duration';
-
-//-----------------NOVA---------------------------------
 Blockly.MIXLY_NOVA_PORT = 'Port';
 Blockly.MIXLY_NOVA_STAT = 'Set';
 Blockly.MIXLY_NOVA_GET_STAT = 'Get';
-
-// LED
 Blockly.MIXLY_NOVA_LED = 'LED';
 Blockly.MIXLY_NOVA_LED_ON = 'ON';
 Blockly.MIXLY_NOVA_LED_OFF = 'OFF';
-
-// Button
 Blockly.MIXLY_BUTTON_PRESSED = 'Pressed';
 Blockly.MIXLY_BUTTON_RELEASED = 'Released';
 Blockly.MIXLY_BUTTON_HOLD = 'Hold';
 Blockly.MIXLY_NOVA_BTN = 'Button ';
 Blockly.MIXLY_NOVA_ABCD = '#';
-
 Blockly.MIXLY_NOVA_TILTSWITCH = 'Tilt Switch';
 Blockly.MIXLY_NOVA_SOUND = 'Sound';
 Blockly.MIXLY_NOVA_LIMISWICTH = 'Limit Switch';
 Blockly.MIXLY_NOVA_LIGHT = 'Light';
-
 Blockly.MIXLY_NOVA_BUZZER = 'Buzzer';
 Blockly.MIXLY_NOVA_FREQUENCY = 'Frequency(Hz)';
 Blockly.MIXLY_NOVA_MIXLY_DURATION = 'Duration(ms)';
-
 Blockly.MIXLY_NOVA_MOTOR = 'DC Motor';
 Blockly.MIXLY_NOVA_MOTOR_SPEED = 'Speed(-100~100)%';
-
 Blockly.MIXLY_NOVA_ULTRASONIC = 'Ultrasonic(cm)';
-
 Blockly.MIXLY_NOVA_DHT11 = 'DHT11';
 Blockly.MIXLY_NOVA_TYPE = 'Type';
 Blockly.MIXLY_NOVA_DHT11_H = 'GetHumidity';
 Blockly.MIXLY_NOVA_DHT11_T = 'GetTemperature';
-
 Blockly.MIXLY_NOVA_SERVO = 'Servo';
 Blockly.MIXLY_NOVA_DEGREE_0_180 = 'Degree（0~180）';
 Blockly.MIXLY_NOVA_DELAY = 'Delay';
 Blockly.MIXLY_NOVA_DELAY_MS = 'ms';
-
 Blockly.MIXLY_NOVA_LINEFINDER = 'LineFinder';
 Blockly.MIXLY_NOVA_L = 'LeftState';
 Blockly.MIXLY_NOVA_R = 'RightState';
 Blockly.MIXLY_NOVA_READ = 'GetLineState';
-
 Blockly.MIXLY_NOVA_4DIGITDISPLAY = 'Digitdisplay';
 Blockly.MIXLY_NOVA_NUMBER = 'Number';
 Blockly.MIXLY_NOVA_DISPLAY_HOUR= 'Display Hour';
 Blockly.MIXLY_NOVA_DISPLAY_MIN = 'Display Minute';
-
 Blockly.MIXLY_NOVA_RTC = 'Real Time Clock';
 Blockly.MIXLY_NOVA_RTC_SEC = 'Sec';
 Blockly.MIXLY_NOVA_RTC_MIN = 'Min';
@@ -979,18 +947,13 @@ Blockly.MIXLY_NOVA_RTC_WEEK = 'Week';
 Blockly.MIXLY_NOVA_RTC_DAY = 'Day';
 Blockly.MIXLY_NOVA_RTC_MON = 'Mon';
 Blockly.MIXLY_NOVA_RTC_YEAR = 'Year';
-
 Blockly.MIXLY_NOVA_IR_REC = 'Infrared Receiver';
-
 Blockly.MIXLY_NOVA_BLUETOOTH = 'Bluetooth';
 Blockly.MIXLY_NOVA_BLUETOOTH_AVAILABLE = 'Available？';
 Blockly.MIXLY_NOVA_BLUETOOTH_READ_STR = 'ReadString';
 Blockly.MIXLY_NOVA_BLUETOOTH_READ_NUM = 'ReadNumber';
-
-//spi
 Blockly.TO_SPI_SLAVE_PIN='To SPI Slave PIN#';
 Blockly.SPI_TRANSFER='transfer';
-
 Blockly.MIXLY_SERIAL_BEGIN='baud rate';
 Blockly.MIXLY_SERIALBT_BEGIN='init';
 Blockly.MIXLY_SERIALBT_INIT='ESP32 Bluetooth Name';
@@ -1000,7 +963,6 @@ Blockly.MIXLY_SERIALBT_WRITE='ESP32 Bluetooth Send Data';
 Blockly.MIXLY_ESP32_RUNNING_CORE='ESP32 Dual Core';
 Blockly.MIXLY_CONTROL_CORE_DELAY='ESP32 Dual Core Delay';
 Blockly.MIXLY_ESP32_RUNNING_CORE_PRIORITY='Priority';
-//stepper
 Blockly.MIXLY_STEPPER='Stepper';
 Blockly.MIXLY_STEPPER_SETUP_STEPPER='Setup Stepper';
 Blockly.MIXLY_STEPPER_PIN1='PIN1#';
@@ -1010,8 +972,6 @@ Blockly.MIXLY_STEPPER_PIN4='PIN4#';
 Blockly.MIXLY_STEPSPERREVOLUTION='steps per revolution';
 Blockly.MIXLY_STEPPER_SET_SPEED='setSpeed';
 Blockly.MIXLY_STEPPER_STEP='step';
-
-//-----------------Ethernet------------------------------------
 Blockly.MIXLY_ETHERNET_BEGIN='Begin (DHCP)';
 Blockly.MIXLY_ETHERNET='Ethernet';
 Blockly.MIXLY_ETHERNET2='Ethernet2';
@@ -1028,17 +988,11 @@ Blockly.MIXLY_ETHERNET_CLINET_READ='Client.read';
 Blockly.MIXLY_ETHERNET_CLINET_GET_REQUEST='GET Request';
 Blockly.MIXLY_ETHERNET_CLINET_URL='URL';
 Blockly.MIXLY_ETHERNET_CLINET_SERVER='Host';
-
-//lm35温度传感器
 Blockly.MIXLY_LM35='LM35 Temperature';
-
-//DS18B20温度传感器
 Blockly.MIXLY_DS18B20='DS18B20 PIN#';
 Blockly.MIXLY_DS18B20_GET_TEMP='getTemperature';
 Blockly.MIXLY_DS18B20_C='°C';
 Blockly.MIXLY_DS18B20_F='°F';
-
-//GPS
 Blockly.MIXLY_GPS_INIT='GPS init';
 Blockly.MIXLY_GPS_DATA_AVAILABLE='GPS data is available';
 Blockly.MIXLY_GPS_DATA_ENCODE='GPS encode data successful';
@@ -1056,24 +1010,17 @@ Blockly.MIXLY_GPS_TIME_HOUR='time-hour';
 Blockly.MIXLY_GPS_TIME_MINUTE='time-minute';
 Blockly.MIXLY_GPS_TIME_SECOND='time-second';
 Blockly.MIXLY_GPS_TIME_CENTISECOND='time-centisecond';
-
-//factory
 Blockly.MIXLY_PARAMS = 'parameters';
-
-//MsTimer2
 Blockly.MIXLY_MSTIMER2_EVERY='every';
 Blockly.MIXLY_MSTIMER2_DO='do';
 Blockly.MIXLY_MSTIMER2_START='start';
 Blockly.MIXLY_MSTIMER2_STOP='stop';
-//interrupts
 Blockly.MIXLY_CONTROL_INTERRUPTS = 'interrupts';
 Blockly.MIXLY_CONTROL_NOINTERRUPTS = 'nointerrupts';
-//SCoop
 Blockly.MIXLY_CONTROL_SCoop_Init = 'setup';
 Blockly.MIXLY_CONTROL_SCoop_loop = 'loop';
 Blockly.MIXLY_CONTROL_SCoop_yield = 'yield SCoop tasks';
 Blockly.MIXLY_CONTROL_SCoop_sleep = 'SCoop sleep(only for SCoop)';
-//others
 Blockly.MIXLY_WARNING_NOT_DECLARE='This variable is not declared!';
 Blockly.MIXLY_LENGTH = "length of";
 Blockly.MIXLY_EQUALS="equals";
@@ -1085,8 +1032,6 @@ Blockly.Msg.UNDO = "Undo";
 Blockly.Msg.REDO = "Redo";
 Blockly.MIXLY_CONTROL_END_PROGRAM = "end program";
 Blockly.MIXLY_CONTROL_NOTES = 'Notes:';
-
-//oled
 Blockly.Msg.texttodisplay = "texts to display:";
 Blockly.Msg.OLEDDISPLAY = "display";
 Blockly.Msg.todisplay = "to display:";
@@ -1100,20 +1045,16 @@ Blockly.Msg.num1 = "Number 1(at end)=";
 Blockly.Msg.num2 = "Number 2(at end)=";
 Blockly.Msg.num3 = "Number 3(at end)=";
 Blockly.Msg.num4 = "Number 4(at end)=";
-// RGB
 Blockly.MIXLY_RGB_INIT = 'RGB Initialize';
 Blockly.MIXLY_RGB_SET_BRIGHTNESS = 'RGB Set Brightness';
 Blockly.MIXLY_RGB_SET_COLOR = 'RGB Set color';
 Blockly.MIXLY_RGB_SHOW = 'RGB Show';
-Blockly.MIXLY_RGB_BRIGHTNESS = 'Brightness';
 Blockly.MIXLY_RGB = 'RGB Light';
 Blockly.MIXLY_RGB_NUM = 'Light number';
 Blockly.MIXLY_RGB_COUNT = 'Light Count';
 Blockly.MIXLY_RGB_R = 'R value';
 Blockly.MIXLY_RGB_G = 'G value';
 Blockly.MIXLY_RGB_B = 'B value';
-
-//四位数码管
 Blockly.MIXLY_4DIGITDISPLAY = 'Digitdisplay';
 Blockly.MIXLY_4DIGITDISPLAY_DISPLAYSTRING = 'displayString';
 Blockly.MIXLY_4DIGITDISPLAY_NOMBER1 = 'No.';
@@ -1125,8 +1066,6 @@ Blockly.MIXLY_0DEGREE='0度';
 Blockly.MIXLY_90DEGREE='90度';
 Blockly.MIXLY_180DEGREE='180度';
 Blockly.MIXLY_270DEGREE='270度';
-
-//MAX7219
 Blockly.MIXLY_MAX7219_INIT_NUM='Number of LED dot matrix modules';
 Blockly.MIXLY_MAX7219_PUTSTR='Number of LED dot matrix modules';
 Blockly.MIXLY_SPEED='speed';
@@ -1145,8 +1084,6 @@ Blockly.MIXLY_MAX7219_NO='Screen No';
 Blockly.MAX7219_INIT_TOOLTIP = 'Initialize LED(MAX7219) dot matrix ';
 Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_STRING = '按一定速度逐个显示字符串中的每个字符';
 Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_PREDEFARR = '返回预先定义的图案对应的数组';
-
-//TM1637
 Blockly.MIXLY_4DIGITDISPLAY_TM1637 = 'TM1637';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYPRINT = 'TM1637 Show';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING_TIP = 'Less than or equal to 4 characters for display and more than 4 characters for scroll.';
@@ -1157,7 +1094,6 @@ Blockly.MIXLY_4DIGITDISPLAY_TM1637_INIT = 'TM1637 Init';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_BRIGHTNESS = 'TM1637 Brightness';
 Blockly.MIXLY_4DIGITDISPLAY_4DIGITDISPLAY_BRIGHTNESS_TOOLTIP = '';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_CLEARDISPLAY = 'TM1637 clear screen';
-
 Blockly.MIXLY_YEAR = 'Y';
 Blockly.MIXLY_MONTH = 'M';
 Blockly.MIXLY_DAY = 'D';
@@ -1170,7 +1106,6 @@ Blockly.MIXLY_DS1302_INITPIN = 'Initialize DS1302 RTC clock module PIN'
 Blockly.MIXLY_SETDATE = 'SetDate:';
 Blockly.MIXLY_DATEFORMATE = 'DateFormat(Y-M-D)'
 Blockly.MIXLY_TIMEFORMATE = 'TimeForamt(H:M:S)';
-//8*8点阵显示屏
 Blockly.MIXLY_DISPLAY_MATRIX_INIT = "Init 8*8 dot matrix display screen(HT16K33)";
 Blockly.MIXLY_DISPLAY_MATRIX_SHOW = "Dot matrix display";
 Blockly.MIXLY_DISPLAY_MATRIX_X = 'X Axis';
@@ -1181,12 +1116,10 @@ Blockly.MIXLY_DISPLAY_MATRIX_CLEAR = " Dot matrix clear";
 Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "Array variable";
 Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " Pictur Array";
 Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "Rotate screen";
-
 Blockly.MIXLY_RTCINIT = 'Initialize DS1307 RTC clock module';
 Blockly.MIXLY_RTCGETTIME = 'from RTC clock module get';
 Blockly.MIXLY_RTCSETTIME = 'Set time of RTC clock module';
 Blockly.MIXLY_RTCSETDATE = 'Set date of RTC clock module';
-
 Blockly.MIXLY_ADXL345 = 'Acceleration_ADXL345';
 Blockly.MIXLY_ADXL345_X= 'X-axis acceleration';
 Blockly.MIXLY_ADXL345_Y= 'Y-axis acceleration';
@@ -1194,7 +1127,6 @@ Blockly.MIXLY_ADXL345_Z=  'Z-axis acceleration';
 Blockly.MIXLY_ADXL345_XA=  'X-axis angle';
 Blockly.MIXLY_ADXL345_YA=  'Y-axis angle';
 Blockly.MIXLY_ADXL345_ZA =  'Z-axis angle';
-//////////// microbit js ///////////////////
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='Is gesture ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='When Serial recevied data containing ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_READ_LINE='Serial read one line';
@@ -1327,7 +1259,6 @@ Blockly.MIXLY_MICROBIT_JS_LIST_FIND_INDEX_OF='find index of';
 Blockly.MIXLY_MICROBIT_JS_LIST_REMOVE_VALUE_AT='remove value at';
 Blockly.MIXLY_MICROBIT_JS_LIST_REMOVE_VALUE_XIANG='';
 Blockly.MIXLY_MICROBIT_JS_INTERRUPT_BTN='Interrupt Button#';
-
 Blockly.MIXLY_MICROBIT_JS_INOUT_ANALOG_PITCH = 'analog pitch ';
 Blockly.MIXLY_MICROBIT_JS_INOUT_FREQUENCY ='for (ms)';
 Blockly.Msg.INOUT_ANALOGPITCH  = "analog pitch for some time";
@@ -1353,7 +1284,6 @@ Blockly.MIXLY_MICROBIT_right='right';
 Blockly.MIXLY_MICROBIT_face_up='face up';
 Blockly.MIXLY_MICROBIT_face_down='face down';
 Blockly.MIXLY_MICROBIT_freefall='freefall';
-//microbit
 Blockly.MIXLY_MICROBIT_Accelerometer_X='acceleration(Dimension.X)';
 Blockly.MIXLY_MICROBIT_Accelerometer_Y='acceleration(Dimension.Y)';
 Blockly.MIXLY_MICROBIT_Accelerometer_Z='acceleration(Dimension.Z)';
@@ -1433,12 +1363,10 @@ Blockly.MIXLY_MICROBIT_JS_IS_COMPASS_CALIBRATED='is compass calibrated';
 Blockly.MIXLY_IS_TOUCHED='is touched';
 Blockly.MIXLY_WAS_PRESSED='was pressed';
 Blockly.MIXLY_GET_PRESSES='get presses';
-
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING='scroll string';
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY='speak'
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING='sing'
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE='read'
-//lists
 Blockly.Msg.LISTS_NAME_TOOLTIP= 'input list name';
 Blockly.blockpy_LIST_ADD_LIST = 'add list';
 Blockly.Msg.blockpy_LISTS_CREATE_WITH_INPUT_WITH = 'initialization list';
@@ -1450,11 +1378,9 @@ Blockly.blockpy_LANG_LISTS_GET_INDEX_TOOLTIP = 'return the value of the specifie
 Blockly.blockpy_LANG_LISTS_SET_INDEX_TOOLTIP = 'set the value of the location specified in the list. ';
 Blockly.Msg.LISTS_GET_INDEX_RANDOM2 = "random fetch list";
 Blockly.Msg.LISTS_GET_INDEX_RANDOM3 = "one of";
-
 Blockly.Msg.MATH_ZHENGCHU_SYMBOL = "//";
 Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL='The period (milliseconds) is set to';
 Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_PY='Sets the value of the specified pin(0~1023)';
-
 Blockly.Msg.LISTS_ISEMPTY_TITLE='Is it empty?';
 Blockly.Msg.LISTS_SORT_TITLE ='List sort %1 %2 %3';
 Blockly.Msg.LISTS_SORT_TYPE_NUMERIC ='By number';
@@ -1466,24 +1392,19 @@ Blockly.Msg.DISPLAY_IMAGE_LET='Image';
 Blockly.Msg.DISPLAY_IMAGE_LET2='towards';
 Blockly.Msg.DISPLAY_IMAGE_SHIFT='translation';
 Blockly.Msg.DISPLAY_IMAGE_UNIT='Unit';
-
 Blockly.LANG_MATH_RANDOM_FLOAT_INPUT_FROM ='Random decimal';
 Blockly.LANG_MATH_RANDOM_FLOAT_INPUT_TO ='reach';
 Blockly.LANG_MATH_RANDOM_FLOAT_TOOLTIP2 ='A random number that returns between two numbers (containing)';
-
 Blockly.MICROBIT_SPEECH_pitch ='pitch';
 Blockly.MICROBIT_SPEECH_speed ='speed';
 Blockly.MICROBIT_SPEECH_mouth ='Mouth';
 Blockly.MICROBIT_SPEECH_throat ='throat';
 Blockly.MICROBIT_SPEECH_translation ='Translation to phonetics';
-
 Blockly.MICROBIT_ACTUATOR_bpm ='bpm';
 Blockly.MICROBIT_ACTUATOR_ticks ='ticks';
-
 Blockly.MICROBIT_PYTHON_TYPE = 'get type';
 Blockly.MICROBIT_LOGIC_IS_IN = 'is in';
 Blockly.Msg.CONTROLS_FOREACH_INPUT = "for each";
-
 Blockly.MICROBIT_DISPLAY_UNION = 'union';
 Blockly.MICROBIT_DISPLAY_INTERSECTION = 'intersection';
 Blockly.MICROBIT_DISPLAY_MINUS = 'minus';
@@ -1522,7 +1443,6 @@ Blockly.Msg.MATH_BIN='binary';
 Blockly.Msg.MATH_OCT='octal';
 Blockly.Msg.MATH_DEC='decimal';
 Blockly.Msg.MATH_HEX='hex';
-
 Blockly.MIXLY_MICROBIT_TYPE_INT = 'Integer';
 Blockly.MIXLY_MICROBIT_TYPE_FLOAT = 'float';
 Blockly.MIXLY_MICROBIT_TYPE_STRING = "string";
@@ -1531,7 +1451,6 @@ Blockly.MIXLY_MICROBIT_TYPE_TUPLE = "tuple";
 Blockly.MIXLY_MICROBIT_TYPE_DICT = "dictionary";
 Blockly.MIXLY_MICROBIT_TYPE_SETS = "set";
 Blockly.MIXLY_MICROBIT_TYPE_IMAGE = "image";
-
 Blockly.MIXLY_MICROBIT_PY_STORAGE_OPEN_FILE = "open file";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE = "mode";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_READ = "read"
@@ -1541,8 +1460,6 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_WRITE = "bit write";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_AS = "as";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE = "make";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_WRITE = "write in file";
-
-
 Blockly.MIXLY_MICROBIT_PY_STORAGE_FROM_FILE = 'from file';
 Blockly.MIXLY_MICROBIT_PY_STORAGE_NO_MORE_THAN_SIZE = "read content, no more than";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE_NO_MORE_THAN_SIZE = "read in a line, no more than"
@@ -1556,13 +1473,10 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_LIST_ALL_FILES = "list all files";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_DELETE_FILE = "delete file";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_GET_FILE_SIZE = "get fill";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_SIZE = "size";
-
 Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE = "data type";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME = "current system information";
-
 Blockly.MIXLY_MICROBIT_SHOW_STRING = " %1 delay %2 millisecond %3 wait %4 %5 loop %6 %7 clear %8";
 Blockly.MIXLY_MICROBIT_Scroll_string = "scroll display string %1 delay %2 millisecond %3 wait %4 %5 loop %6 %7 clear %8";
-
 Blockly.MIXLY_COMMUNICATION_RFID_INITIAL = "initialize rfid as";
 Blockly.MIXLY_COMMUNICATION_RFID_ON_DETECTED = "on signal detected";
 Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM = "card number read by rfid";
@@ -1578,7 +1492,6 @@ Blockly.MIXLY_COMMUNICATION_RFID_READ = "RFID read";
 Blockly.MIXLY_COMMUNICATION_DATA_FROM = "data from";
 Blockly.MIXLY_COMMUNICATION_RFID_OFF = "rfid stop detection";
 Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_RESET = "reset";
-//mixpy
 Blockly.blockpy_inout_input='Receive input';
 Blockly.blockpy_inout_raw_input='Receive string input';
 Blockly.blockpy_inout_print='Print';
@@ -1720,11 +1633,9 @@ Blockly.Msg.MIXLY_LIST_LEN='length';
 Blockly.Msg.MIXLY_LIST_COUNT='count';
 Blockly.Msg.MIXLY_LIST_INDEX='index';
 Blockly.Msg.A_TO_B='into';
-
 Blockly.MIXLY_MICROBIT_TYPE_NONE = "NONE";
 Blockly.MIXLY_MICROBIT_WAIT = 'wait';
 Blockly.MIXLY_MICROBIT_RANDOM = 'random';
-
 Blockly.Msg.TUPLE_TO_SET = "Convert tuples to collections";
 Blockly.Msg.TUPLE_TO_LISTS = "Convert tuples to a list";
 Blockly.Msg.SET_TO_TUPLE = "Convert the collection to a tuple";
@@ -1972,7 +1883,6 @@ Blockly.MIXLY_MIXPY_REPLACE="Replace";
 Blockly.Msg.LIST_SPLIT_AS = "As";
 Blockly.Msg.LIST_SPLIT = "Split";
 Blockly.MIXLY_TOOLTIP_TEXT_SPLIT="Split and return list";
-
 Blockly.Msg.TEXT_STRIM = "Strim";
 Blockly.Msg.TEXT_TRIM_BOTH = "Both";
 Blockly.Msg.TEXT_TRIM_LEFT = "Left";
@@ -2001,7 +1911,6 @@ Blockly.blockpy_PYLAB_LABEL='Coordinate description text is';
 Blockly.Msg.PYLAB_LABEL_X = "X";
 Blockly.Msg.PYLAB_LABEL_Y = "Y";
 Blockly.blockpy_series_set_index = 'Index';
-
 Blockly.blockpy_PYLAB_PLOT='Draw a line graph';
 Blockly.blockpy_dataframe_create='Create two-dimensional data table';
 Blockly.blockpy_dataframe_via = 'By  dictionary';
@@ -2044,7 +1953,6 @@ Blockly.blockpy_PYLAB_PLOT_DOT_DIAMOND='Big Diamond';
 Blockly.blockpy_PYLAB_PLOT_DOT_DIAMOND_SMALL='Small Diamond';
 Blockly.blockpy_PYLAB_PLOT_DOT_VERTICAL='Vertical';
 Blockly.blockpy_PYLAB_PLOT_DOT_HORIZONTAL='Horizontal';
-
 Blockly.MIXLY_MICROBIT_JS_I2C="i2c";
 Blockly.MIXLY_ESP32_TOUCH="Touch";
 Blockly.MIXLY_ESP32_TOUCH_SENSOR="Touch Sensor";
@@ -2196,9 +2104,6 @@ Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TOOLTIP="send Message";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_RECEIVE_FROM_TOOLTIP="Return received data";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TO_TOOLTIP="Send a message to the specified network address";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CLOSE_TOOLTIP="Turn off network connection";
-
-
-//@author:zyc 2018-12-6
 Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
 Blockly.MIXLY_TOOLTIP_RGB_INIT = Blockly.MIXLY_RGB_PIN_COUNT;
@@ -2267,7 +2172,6 @@ Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION='show (image/string/animat
 Blockly.MIXLY_MIXPY_TURTLE_WIDTH = 'pensize';
 Blockly.MIXLY_TOOLTIP_TURTEL_HEADING =' get turtle current heading, return a float';
 Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH =' get the current pensize of the turtle and return an integer ';
-
 Blockly.MIXLY_PYTHON_SYSTEM_EVAL = 'execute the text code and get its return value     code';
 Blockly.MIXLY_PYTHON_SYSTEM_EVAL_TOOLTIP = 'returns the value of the execution of the parameter code, or None if the parameter code has no return';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_USE_STR = 'use string';
@@ -2282,10 +2186,8 @@ Blockly.MIXLY_MICROPYTHON_SOCKET_CONNECT_TO_ADDRESS='connect to address';
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CONNECT_TOOLTIP="connects a socket to a network address";
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE ="get active state";
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE_TOOLTIP ="get the active state of the specified network";
-
 Blockly.MIXLY_PYTHON_LOGIC_IS = "is";
 Blockly.MIXLY_ESP32_IOT_ONENET_PRINT_DATA="print data";
-////////blynk////////////////////////////
 Blockly.blynk_IOT_AUTH='Blynk Auth';
 Blockly.blynk_WIFI_SSID='Wi-Fi SSID';
 Blockly.blynk_WIFI_PASS='Wi-Fi Password';
@@ -2300,7 +2202,6 @@ Blockly.blynk_IOT_INT='int';
 Blockly.blynk_IOT_STRING='String';
 Blockly.blynk_IOT_DOUBLE='float';
 Blockly.blynk_IOT_VAR_NAME='variable name';
-
 Blockly.blynk_TIMER='Blynk Timer';
 Blockly.blynk_IOT_WidgetLED='LED Widget VPin';
 Blockly.blynk_IOT_WidgetLED_ON='ON';
@@ -2325,13 +2226,9 @@ Blockly.blynk_IOT_IR_MODE='模式';
 Blockly.blynk_IOT_IR_FAN='风速';
 Blockly.blynk_IOT_IR_TEMP='温度';
 Blockly.blynk_IOT_IR_POWER='电源';
-
 Blockly.blynk_IOT_IR_RECEIVE_RAW='红外信号解码 管脚';
 Blockly.blynk_IOT_IR_SEND='红外发送 管脚';
 Blockly.blynk_IOT_IR_SEND_CODE='编码内容';
-
-
-//OLED
 Blockly.OLED = 'OLED';
 Blockly.OLEDGET = 'Get OLED';
 Blockly.OLED_CLEAR='OLED Clean screen';
@@ -2410,40 +2307,30 @@ Blockly.blynk_EMAIL='Email';
 Blockly.blynk_EMAIL_ADD='Address';
 Blockly.blynk_EMAIL_SUBJECT='Email Subject';
 Blockly.blynk_EMAIL_CONTENT='Email Content';
-
 Blockly.blynk_BRIDGE_AUTH='Bridge Auth';
 Blockly.blynk_bridge_digitalWrite='Bridge DigitalWrite';
 Blockly.blynk_bridge_AnaloglWrite='Bridge AnglogWrite';
 Blockly.BLYNK_BRIDGE_VIRTUALPIN='Bridge Vpin';
-
 Blockly.blynk_WidgetRTC_init='RTC Widget Init';
 Blockly.blynk_WidgetRTC_setSyncInterval='setSyncInterval';
 Blockly.blynk_WidgetRTC_mintues='minute';
 Blockly.blynk_WidgetRTC_get_time='RTC Widget Get';
-
 Blockly.blynk_iot_playmusic='Play Music Widget';
-
-
 Blockly.GD5800_MP3='GD5800 MP3';
 Blockly.MIXLY_MP3_PLAY='Play';
-
 Blockly.MIXLY_MP3_PAUSE='Pause';
 Blockly.MIXLY_MP3_NEXT='Next';
 Blockly.MIXLY_MP3_PREV='Prev';
 Blockly.MIXLY_MP3_VOL_UP='VOL UP';
 Blockly.MIXLY_MP3_VOL_DOWN='VOL DOWN';
-
 Blockly.MIXLY_MP3_LOOP_MODE='Loop Mode';
 Blockly.MIXLY_MP3_LOOP_ALL='Loop All';
 Blockly.MIXLY_MP3_LOOP_FOLDER='Loop Folder';
 Blockly.MIXLY_MP3_LOOP_ONE='Single Cycle';
 Blockly.MIXLY_MP3_LOOP_RAM='Random Play';
-
-
 Blockly.MIXLY_MIXPY_TURTLE_WIDTH = 'pensize';
 Blockly.MIXLY_TOOLTIP_TURTEL_HEADING =' get turtle current heading, return a float';
 Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH =' get the current pensize of the turtle and return an integer ';
-
 Blockly.MIXLY_PYTHON_SYSTEM_EVAL = 'execute the text code and get its return value     code';
 Blockly.MIXLY_PYTHON_SYSTEM_EVAL_TOOLTIP = 'returns the value of the execution of the parameter code, or None if the parameter code has no return';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_USE_STR = 'use string';
@@ -2482,7 +2369,6 @@ Blockly.MIXLY_MOTOR_SPEED = 'Speed`(-255~255)';
 Blockly.MIXLY_MOTOR = 'Motor';
 Blockly.MIXLY_MOTOR_SPEED_PIN='Speed PIN';
 Blockly.MIXLY_MOTOR_DIR_PIN='Dir Pin';
-
 Blockly.MIXLY_HARDWARE='硬件交互';
 Blockly.MIXLY_HARDWARE_SERIAL='Serial';
 Blockly.MIXLY_HARDWARE_START='啟動交互';
@@ -2496,79 +2382,56 @@ Blockly.MixGo_MPU9250_GZ='z-Gyro';
 Blockly.MixGo_MPU9250_MX='x-Magnet';
 Blockly.MixGo_MPU9250_MY='y-Magnet';
 Blockly.MixGo_MPU9250_MZ='z-Magnet';
-
 Blockly.MIXLY_HANBIT_SHOW_CIRCLE = " center of circle (x %1, y %2) radius %3 %4 filling %5";
 Blockly.MIXLY_HANBIT_SHOW_triangle = " vertex (x0 %1, y0 %2) (x1 %3, y1 %4) (x2 %5, y2 %6) %7 filled %8";
 Blockly.MIXLY_HANBIT_DRAW_TRIANGLE = "triangle";
-
 Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = 'The value of the light sensor（0~255）'
-
-
-/* 掌控板_物联网 */
 Blockly.MPYTHON_BLYNK_TERMINAL_WIDGET_VPIN_HELPURL = '';
 Blockly.MPYTHON_BLYNK_TERMINAL_WIDGET_VPIN_MESSAGE0 = "custom terminal widget on virtual pin V %1";
 Blockly.MPYTHON_BLYNK_TERMINAL_WIDGET_VPIN_TOOLTIP = '';
-
 Blockly.MPYTHON_BLYNK_SYNC_VIRTUAL_HELPURL = '';
 Blockly.MPYTHON_BLYNK_SYNC_VIRTUAL_MESSAGE0 = "synchronizing the status of virtual pin V %1";
 Blockly.MPYTHON_BLYNK_SYNC_VIRTUAL_TOOLTIP = '';
-
 Blockly.MPYTHON_BLYNK_ON_DISCONNECTED_HELPURL = '';
 Blockly.MPYTHON_BLYNK_ON_DISCONNECTED_MESSAGE0 = "when Blynk disconnected";
 Blockly.MPYTHON_BLYNK_ON_DISCONNECTED_TOOLTIP = '';
-
 Blockly.MPYTHON_BLYNK_ON_CONNECTED_HELPURL = '';
 Blockly.MPYTHON_BLYNK_ON_CONNECTED_MESSAGE0 = "when Blynk connected";
 Blockly.MPYTHON_BLYNK_ON_CONNECTED_TOOLTIP = '';
-
 Blockly.MPYTHON_BLYNKTIMER_RUN_HELPURL = '';
 Blockly.MPYTHON_BLYNKTIMER_RUN_MESSAGE0 = "run the BlynkTimer processes";
 Blockly.MPYTHON_BLYNKTIMER_RUN_TOOLTIP = 'It is recommended to put this block in \'repeat forever\' block';
-
 Blockly.MPYTHON_BLYNK_RUN_HELPURL = '';
 Blockly.MPYTHON_BLYNK_RUN_MESSAGE0 = "run the Blynk processes";
 Blockly.MPYTHON_BLYNK_RUN_TOOLTIP = 'It is recommended to put this block in \'repeat forever\' block';
-
 Blockly.MPYTHON_BLYNK_APP_NOTIFY_HELPURL = '';
 Blockly.MPYTHON_BLYNK_APP_NOTIFY_MESSAGE0 = "Blynk APP notifies %1";
 Blockly.MPYTHON_BLYNK_APP_NOTIFY_TOOLTIP = '';
-
 Blockly.MPYTHON_BLYNKTIMER_HELPURL = '';
 Blockly.MPYTHON_BLYNKTIMER_MESSAGE0 = "BlynkTimer number %1 mode %2 period %3 seconds";
 Blockly.MPYTHON_BLYNKTIMER_TOOLTIP = 'Note:\nthe serial number of the timer is automatically obtained, from top to bottom, starting from 0 and continuous, don`t do this"timer 0, timer 2", the exposed serial number parameter is convenient to view here!\nParameter:\nno_timers_err=False - disable exception raise if all all timers were stopped';
-
 Blockly.MPYTHON_BLYNK_STOP_TIMERS_HELPURL = '';
 Blockly.MPYTHON_BLYNK_STOP_TIMERS_MESSAGE0 = 'stop Blynk timer %1';
 Blockly.MPYTHON_BLYNK_STOP_TIMERS_TOOLTIP =
     'Note:\nthe serial number of the timer is automatically obtained, from top to bottom, starting from 0 and continuous, don`t do this"timer 0, timer 2", the exposed serial number parameter is convenient to view here!\nParameter:\nno_timers_err=False - disable exception raise if all all timers were stopped';
-
-
 Blockly.MPYTHON_BLYNK_SET_PROPERTY_HELPURL = '';
 Blockly.MPYTHON_BLYNK_SET_PROPERTY_MESSAGE0 = 'set property %1 and value %2 to virtual pin';
 Blockly.MPYTHON_BLYNK_SET_PROPERTY_TOOLTIP = "Placed in a read or write event, the virtual pin is determined by the event,the component bound to the pin will have the added property";
-
-
 Blockly.MPYTHON_BLYNK_EMAIL_HELPURL = '';
 Blockly.MPYTHON_BLYNK_EMAIL_MESSAGE0 = 'email to %1 with subject %2 body %3';
 Blockly.MPYTHON_BLYNK_EMAIL_TOOLTIP = "";
-
 Blockly.MPYTHON_BLYNK_GET_TIMERS_HELPURL = '';
 Blockly.MPYTHON_BLYNK_GET_TIMERS_MESSAGE0 = 'available Blynk timers';
 Blockly.MPYTHON_BLYNK_GET_TIMERS_TOOLTIP = "";
-
 Blockly.MPYTHON_BLYNK_SENSOR_DATA_TO_APP_HELPURL = '';
 Blockly.MPYTHON_BLYNK_SENSOR_DATA_TO_APP_MESSAGE0 = "send data %1 to Blynk APP's virtual pin V %2";
 Blockly.MPYTHON_BLYNK_SENSOR_DATA_TO_APP_TOOLTIP = 'virtual pin: V0 ~ V255';
-
 Blockly.MPYTHON_BLYNK_APP_DATA_HELPURL = '';
 Blockly.MPYTHON_BLYNK_APP_DATA_MESSAGE0 = 'when received value %2 of virtual pin V %1 from Blynk APP';
 Blockly.MPYTHON_BLYNK_APP_DATA_TOOLTIP = 'Virtual pin: V0 ~ V255';
-
 Blockly.MPYTHON_BLYNK_SETUP_HELPURL = '';
 Blockly.MPYTHON_BLYNK_SETUP_MESSAGE0 = 'Blynk Settings %1 server %2 port %3 authorization code %4';
 Blockly.MPYTHON_BLYNK_SETUP_TOOLTIP = 'The default server is blynk-cloud.com and the default port is 80';
-
-
 Blockly.MIXLY_readTempC='Get Centigrade';
 Blockly.MIXLY_readTempF='Get Fahrenheit';
 Blockly.MIXLY_MPU6050='MPU6050 Gyroscope';
@@ -2579,12 +2442,10 @@ Blockly.MIXLY_Accel_Z ='Z-Accel';
 Blockly.MIXLY_Gyro_X ='X-Gyro';
 Blockly.MIXLY_Gyro_Y ='Y-Gyro';
 Blockly.MIXLY_Gyro_Z ='Z-Gyro';
-
 Blockly.MIXLY_CHOOSE_AND_GET='Select and Get';
 Blockly.MIXLY_CHOOSE_AND_GET_ONE_FILE_NAME='single file name';
 Blockly.MIXLY_CHOOSE_AND_GET_MANY_FILE_NAMES='multiple file names';
 Blockly.MIXLY_CHOOSE_AND_GET_DIR='File Directory';
-
 Blockly.MIXLY_AipImageClassify='Image Recognition';
 Blockly.MIXLY_AipSpeech='Voice Technology';
 Blockly.MIXLY_AipImageCensor='Image Audit';
@@ -2635,22 +2496,13 @@ Blockly.MIXLY_AipNlp_topic='Article Category';
 Blockly.MIXLY_AipNlp_ecnet='text error correction';
 Blockly.MIXLY_AipNlp_emotion='conversational emotion recognition';
 Blockly.MIXLY_AipNlp_summary='text summary';
-
 Blockly.MIXLY_AipNlp_TOOLTIP='returns data as a dictionary, where items are the result content. ';
-
 Blockly.MIXLY_AipNlp_Sim='Similarity Detection';
-
 Blockly.MIXLY_AipNlp_Sim_TOOLTIP='Returns data as dictionary, where score is the result of similarity. ';
-
 Blockly.MIXLY_AipNlp_Topic_TOOLTIP='The returned data is a dictionary, where item is the result. The results of lv1_tag_list and lv2_tag_list are the first and second classification results respectively. ';
-
 Blockly.MIXLY_AipNlp_Summary_TOOLTIP='returns data as a dictionary, where summary is the result. ';
-
 Blockly.MIXLY_AipNlp_Topic_Title='Title';
-
 Blockly.MIXLY_AipNlp_Topic_Content='body';
-
-//mqtt
 Blockly.MQTT_publish='MQTT:Send Message';
 Blockly.MQTT_SERVER='MQTT Server';
 Blockly.MQTT_SERVER_ADD='Add ';
@@ -2659,16 +2511,12 @@ Blockly.MQTT_IOT_ID='IOT ID';
 Blockly.MQTT_IOT_PWD='IOT PWD';
 Blockly.MQTT_subscribe2='Received';
 Blockly.MQTT_Topic='Topic';
-
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL = "read";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE = "readline";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES = "readlines";
-
 Blockly.MIXLY_ENCODER='Encoder';
 Blockly.MIXLY_SIMPLE_TIMER='Simple Timer';
-
 Blockly.Msg.MIXLY_PYTHON_STORAGE_OPEN_FILE_WITH_OS = 'open file with default program';
-
 Blockly.blynk_AP_config="Smart Config WIFI(AP Mode)";
 Blockly.blynk_AP_config_tooltip="It will create a WIFI if disconnect to WiFi";
 Blockly.blynk_AP_config2="Smart Config WIFI & Blynk Auth(AP Mode)";
@@ -2676,7 +2524,6 @@ Blockly.Blynk_connected="blynk Server Connect State";
 Blockly.Blynk_connected_Tooltip="if OK,return 1,esle return 0";
 Blockly.blynk_terminal_clear="Blynk Terminal Clear";
 Blockly.blynk_lcd="LCD Widget Display";
-
 Blockly.Msg.HTML_DOCUMENT = "HTML Document";
 Blockly.Msg.HTML_LEVEL = "h";
 Blockly.Msg.HTML_HEAD = "head";
@@ -2713,12 +2560,9 @@ Blockly.Msg.HTML_TELEPHONENUMBER = "telephone number";
 Blockly.Msg.HTML_TIME = "time";
 Blockly.Msg.HTML_URL = "url";
 Blockly.Msg.HTML_WEEK = "week";
-
 Blockly.NTP_SERVER='NTP Time Server';
 Blockly.MIXLY_TimeZone='TimeZone';
 Blockly.NTP_server_get_time='NTP Get';
-
-
 Blockly.MIXLY_CLICK='Click';
 Blockly.MIXLY_DOUBLE_CLICK='Double Click';
 Blockly.MIXLY_LONG_PRESS_START='Long Press Start';
@@ -2838,6 +2682,163 @@ Blockly.HANDBIT_DOWN='Down';
 Blockly.BME280="Read BME280";
 Blockly.ESP32_HALL='ESP32 Hall';
 Blockly.ESP32_TEMP='ESP32 Temperature';
+Blockly.MIXLY_BACKGROUND_COLOR='Background Color';
+Blockly.Msg.TELLO_ON = 'on';
+Blockly.Msg.TELLO_OFF = 'off';
+Blockly.Msg.TELLO_UP = 'up';
+Blockly.Msg.TELLO_DOWN = 'down';
+Blockly.Msg.TELLO_LEFT = 'left';
+Blockly.Msg.TELLO_RIGHT = 'right';
+Blockly.Msg.TELLO_FORWARD = 'forward';
+Blockly.Msg.TELLO_BACK = 'back';
+Blockly.Msg.TELLO_CLOCKWISE = 'clockwise';
+Blockly.Msg.TELLO_ANTICLOCKWISE = 'anti-clockwise';
+Blockly.Msg.TELLO_MDIRECTION0 = 'only bottom view';
+Blockly.Msg.TELLO_MDIRECTION1 = 'only front view';
+Blockly.Msg.TELLO_MDIRECTION2 = 'both front and bottom views';
+Blockly.Msg.TELLO_POINT_HELPURL = '';
+Blockly.Msg.TELLO_POINT_TOOLTIP = '';
+Blockly.Msg.TELLO_POINT_MESSAGE0 = 'point x %1 y %2 z %3';
+Blockly.Msg.TELLO_COMMAND_HELPURL = '';
+Blockly.Msg.TELLO_COMMAND_TOOLTIP = '';
+Blockly.Msg.TELLO_COMMAND_MESSAGE0 = 'enter the SDK command mode';
+Blockly.Msg.TELLO_TAKEOFF_HELPURL = '';
+Blockly.Msg.TELLO_TAKEOFF_TOOLTIP = '';
+Blockly.Msg.TELLO_TAKEOFF_MESSAGE0 = 'takeoff';
+Blockly.Msg.TELLO_LAND_HELPURL = '';
+Blockly.Msg.TELLO_LAND_TOOLTIP = '';
+Blockly.Msg.TELLO_LAND_MESSAGE0 = 'land';
+Blockly.Msg.TELLO_STREAM_HELPURL = '';
+Blockly.Msg.TELLO_STREAM_TOOLTIP = '';
+Blockly.Msg.TELLO_STREAM_MESSAGE0 = 'turn %1 video streaming';
+Blockly.Msg.TELLO_EMERGENCY_HELPURL = '';
+Blockly.Msg.TELLO_EMERGENCY_TOOLTIP = '';
+Blockly.Msg.TELLO_EMERGENCY_MESSAGE0 = 'emergency stop';
+Blockly.Msg.TELLO_FLY_HELPURL = '';
+Blockly.Msg.TELLO_FLY_TOOLTIP = 'Flight distance value is 20～500 cm';
+Blockly.Msg.TELLO_FLY_MESSAGE0 = 'fly %1 by %2 cm';
+Blockly.Msg.TELLO_ROTATE_HELPURL = '';
+Blockly.Msg.TELLO_ROTATE_TOOLTIP = 'Rotation angle value is 1～360 degree';
+Blockly.Msg.TELLO_ROTATE_MESSAGE0 = '%1 rotate by %2';
+Blockly.Msg.TELLO_ROLL_HELPURL = '';
+Blockly.Msg.TELLO_ROLL_TOOLTIP = '';
+Blockly.Msg.TELLO_ROLL_MESSAGE0 = 'roll in the direction of %1';
+Blockly.Msg.TELLO_GO_SPEED_HELPURL = '';
+Blockly.Msg.TELLO_GO_SPEED_TOOLTIP = 'Speed: 10 - 100 (cm / s) \ nx / y / z: -500 - 500 \ nx, y, z can not be between -20 ~ 20';
+Blockly.Msg.TELLO_GO_SPEED_MESSAGE0 = 'fly to %2 at speed %1';
+Blockly.Msg.TELLO_STOP_HELPURL = '';
+Blockly.Msg.TELLO_STOP_TOOLTIP = 'Anytime';
+Blockly.Msg.TELLO_STOP_MESSAGE0 = 'stop and hover';
+Blockly.Msg.TELLO_CURVE_SPEED_HELPURL = '';
+Blockly.Msg.TELLO_CURVE_SPEED_TOOLTIP = 'If the curve radius is not within the range of 0.5 to 10 meters, the corresponding reminder is returned. \nSpeed: 10 - 60 (cm/s)\nx/y/z: -500 - 500\nx, y, z cannot be between -20 and 20 at the same time';
+Blockly.Msg.TELLO_CURVE_SPEED_MESSAGE0 = 'flying curve at speed %1 from %2 to %3';
+Blockly.Msg.TELLO_GO_SPEED_MID_HELPURL = '';
+Blockly.Msg.TELLO_GO_SPEED_MID_TOOLTIP = 'm-1: Challenge card that Tello\'s internal algorithm recognizes fastest\nm-2: Challenge card closest to Tello\nSpeed: 10 - 100 (cm/s) \nx/y: -500 - 500\nz: 0 - 500\nx, y, z cannot be between -20 and 20 at the same time';
+Blockly.Msg.TELLO_GO_SPEED_MID_MESSAGE0 = 'fly at speed %1 to %3 of %2 challenge card coordinate system';
+Blockly.Msg.TELLO_CURVE_SPEED_MID_HELPURL = '';
+Blockly.Msg.TELLO_CURVE_SPEED_MID_TOOLTIP = 'If the curve radius is not within the range of 0.5 to 10 meters, the corresponding reminder is returned.\nm-1: Challenge card that Tello\'s internal algorithm recognizes fastest\nm-2: Challenge card closest to Tello\nSpeed: 10 - 60 (cm/s)\nx/y: -500 - 500\nz: 0 - 500\nx, y, z cannot be between -20 and 20 at the same time';
+Blockly.Msg.TELLO_CURVE_SPEED_MID_MESSAGE0 = 'flying curve at speed %1, in %2 challenge card coordinate system, from %3 to %4';
+Blockly.Msg.TELLO_JUMP_SPEED_MID_HELPURL = '';
+Blockly.Msg.TELLO_JUMP_SPEED_MID_TOOLTIP = 'm-1: Challenge card that Tello\'s internal algorithm recognizes fastest\nm-2: Challenge card closest to Tello';
+Blockly.Msg.TELLO_JUMP_SPEED_MID_MESSAGE0 = 'fly to %3 of %2 challenge card coordinate system at speed %1, then hover, recognize and fly parallel to %4 challenge card, then rotate to %5';
+Blockly.Msg.TELLO_SET_SPEED_HELPURL = '';
+Blockly.Msg.TELLO_SET_SPEED_TOOLTIP = 'Speed range 10~100 cm/s\n is valid only for commands that do not explicitly declare speed';
+Blockly.Msg.TELLO_SET_SPEED_MESSAGE0 = 'set speed as %1 cm/s';
+Blockly.Msg.TELLO_SET_RC_HELPURL = '';
+Blockly.Msg.TELLO_SET_RC_TOOLTIP = 'Roll / Pitch / Height / Yaw range -100 ~ 100';
+Blockly.Msg.TELLO_SET_RC_MESSAGE0 = 'set 4 channel levers of the remote control %1 Roll %2 Pitch %3 Height %4 Yaw %5';
+Blockly.Msg.TELLO_SET_WIFI_HELPURL = '';
+Blockly.Msg.TELLO_SET_WIFI_TOOLTIP = '';
+Blockly.Msg.TELLO_SET_WIFI_MESSAGE0 = 'change Tello Wi-Fi setting %1 SSID %2 PASS %3';
+Blockly.Msg.TELLO_SET_M_HELPURL = '';
+Blockly.Msg.TELLO_SET_M_TOOLTIP = 'When you open the challenge card probe, the front and bottom view detections are turned on by default.';
+Blockly.Msg.TELLO_SET_M_MESSAGE0 = '%1 challenge card detection';
+Blockly.Msg.TELLO_SET_MDIRECTION_HELPURL = '';
+Blockly.Msg.TELLO_SET_MDIRECTION_TOOLTIP = 'The challenge card detection function must be turned on before use; \n When the front view or the down view detection is turned on separately, the detection frequency is 20 Hz, and when the front view and the down view are turned on, the detection will be alternately detected, and the single reverse detection frequency is 10 Hz.';
+Blockly.Msg.TELLO_SET_MDIRECTION_MESSAGE0 = 'set detection mode to %1';
+Blockly.Msg.TELLO_SET_AP_HELPURL = '';
+Blockly.Msg.TELLO_SET_AP_TOOLTIP = '';
+Blockly.Msg.TELLO_SET_AP_MESSAGE0 = 'convert Tello to \'station\' mode and connect to AP %1 SSID %2 PASS %3';
+Blockly.Msg.TELLO_CUSTOM_HELPURL = '';
+Blockly.Msg.TELLO_CUSTOM_TOOLTIP = '';
+Blockly.Msg.TELLO_CUSTOM_MESSAGE0 = 'send command %1 to Tello';
+Blockly.Msg.TELLO_INIT_HELPURL = '';
+Blockly.Msg.TELLO_INIT_TOOLTIP = '';
+Blockly.Msg.TELLO_INIT_MESSAGE0 = 'Tello environment initialization';
+Blockly.Msg.TELLO_REPEAT_FOREVER_HELPURL = '';
+Blockly.Msg.TELLO_REPEAT_FOREVER_TOOLTIP = '';
+Blockly.Msg.TELLO_REPEAT_FOREVER_MESSAGE0 = 'Tello repeat forever';
+Blockly.Msg.TELLO_ASK_PARAM_HELPURL = '';
+Blockly.Msg.TELLO_ASK_PARAM_TOOLTIP = '';
+Blockly.Msg.TELLO_ASK_PARAM_MESSAGE0 = 'ask %1';
+Blockly.Msg.TELLO_GET_PARAM_HELPURL = '';
+Blockly.Msg.TELLO_GET_PARAM_TOOLTIP = '';
+Blockly.Msg.TELLO_GET_PARAM_MESSAGE0 = 'get %1';
+Blockly.Msg.TELLO_PARAM_SPEED = 'speed (cm/sec)';
+Blockly.Msg.TELLO_PARAM_BATTERY = 'the percentage of battery power remaining';
+Blockly.Msg.TELLO_PARAM_TIME = 'motor running time (sec)';
+Blockly.Msg.TELLO_PARAM_WIFI = 'Wi-Fi signal-noise ratio';
+Blockly.Msg.TELLO_PARAM_SDK = 'Tello SDK version number';
+Blockly.Msg.TELLO_PARAM_SN = 'Tello SN code';
+Blockly.Msg.TELLO_PARAM_MID = 'detected challenge card ID';
+Blockly.Msg.TELLO_PARAM_X = 'the X-axis coordinate of the Tello relative to the detected challenge card';
+Blockly.Msg.TELLO_PARAM_Y = 'the Y-axis coordinate of the Tello relative to the detected challenge card';
+Blockly.Msg.TELLO_PARAM_Z = 'the Z-axis coordinate of the Tello relative to the detected challenge card';
+Blockly.Msg.TELLO_PARAM_MPRY = 'pitch, roll and yaw angles of the Tello in the detected challenge card coordinate system';
+Blockly.Msg.TELLO_PARAM_PITCH = 'pitch angle';
+Blockly.Msg.TELLO_PARAM_ROLL = 'roll angle';
+Blockly.Msg.TELLO_PARAM_YAW = 'yaw angle';
+Blockly.Msg.TELLO_PARAM_VGX = 'X-axis speed (cm/sec)';
+Blockly.Msg.TELLO_PARAM_VGY = 'Y-axis speed (cm/sec)';
+Blockly.Msg.TELLO_PARAM_VGZ = 'Z-axis speed (cm/sec)';
+Blockly.Msg.TELLO_PARAM_TEMPL = 'the minimum temperature of the control board';
+Blockly.Msg.TELLO_PARAM_TEMPH = 'the maximum temperature of the control board';
+Blockly.Msg.TELLO_PARAM_TOF = 'ToF distance (cm)';
+Blockly.Msg.TELLO_PARAM_H = 'takeoff height (cm)';
+Blockly.Msg.TELLO_PARAM_BAT = Blockly.Msg.TELLO_PARAM_BATTERY;
+Blockly.Msg.TELLO_PARAM_BARO = 'barometer measuring height (m)';
+Blockly.Msg.TELLO_PARAM_AGX = 'X-axis acceleration';
+Blockly.Msg.TELLO_PARAM_AGY = 'Y-axis acceleration';
+Blockly.Msg.TELLO_PARAM_AGZ = 'Z-axis acceleration';
+Blockly.Msg.TELLO_STATE_HELPURL = '';
+Blockly.Msg.TELLO_STATE_TOOLTIP = 'Return a dictionary';
+Blockly.Msg.TELLO_STATE_MESSAGE0 = 'Tello state (dictionary)'
+Blockly.Msg.YEELIGHT_INIT_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_INIT_MESSAGE0 = 'set the instance of %1 Yeelight and name as %2';
+Blockly.Msg.YEELIGHT_INIT_TOOLTIP = 'An error will occur if the device list is empty';
+Blockly.Msg.YEELIGHT_INIT_IP_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_INIT_IP_MESSAGE0 = 'set the ip of instance %1 to %2';
+Blockly.Msg.YEELIGHT_INIT_IP_TOOLTIP = 'init Yeelight device with Yeelight ip.An error will occur if the device list is empty';
+Blockly.Msg.YEELIGHT_SEARCH_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_SEARCH_MESSAGE0 = 'in-network Yeelight devices list';
+Blockly.Msg.YEELIGHT_SEARCH_TOOLTIP = '';
+Blockly.Msg.YEELIGHT_CONFIG_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_CONFIG_MESSAGE0 = 'the %2 of Yeelight in the order %1';
+Blockly.Msg.YEELIGHT_CONFIG_TOOLTIP = 'An error will occur if the device list is empty';
+Blockly.Msg.BRIGHT = 'brightness';
+Blockly.Msg.YEELIGHT_SWITCH_STATE_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_SWITCH_STATE_TOOLTIP = '';
+Blockly.Msg.YEELIGHT_SWITCH_STATE_MESSAGE0 = '%2   %1';
+Blockly.Msg.YEELIGHT_SET_RGB_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_SET_RGB_MESSAGE0 = '%1 sets R %2 G %3 B %4';
+Blockly.Msg.YEELIGHT_SET_RGB_TOOLTIP = '';
+Blockly.Msg.YEELIGHT_SET_BRIGHTNESS_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_SET_BRIGHTNESS_MESSAGE0 = '%1 sets brightness %2';
+Blockly.Msg.YEELIGHT_SET_BRIGHTNESS_TOOLTIP = '';
+Blockly.Msg.YEELIGHT_SET_HSV_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_SET_HSV_MESSAGE0 = '%1 sets hue as %2 saturation as %3';
+Blockly.Msg.YEELIGHT_SET_HSV_TOOLTIP = 'hue: 0-359, saturation: 0-100';
+Blockly.Msg.zero_to_100_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.zero_to_100_MESSAGE0 = '%1';
+Blockly.Msg.zero_to_100_TOOLTIP = '';
+Blockly.Msg.YEELIGHT_SET_RGB_COLOR_HELPURL = '';
+Blockly.Msg.YEELIGHT_SET_RGB_COLOR_MESSAGE0 = '%1 sets color %2';
+Blockly.Msg.YEELIGHT_SET_RGB_COLOR_TOOLTIP = '';
+Blockly.Msg.YEELIGHT_SET_COLOR_TEMP_HELPURL = '';
+Blockly.Msg.YEELIGHT_SET_COLOR_TEMP_MESSAGE0 = '%1 sets color temperature %2';
+Blockly.Msg.YEELIGHT_SET_COLOR_TEMP_TOOLTIP = '1700-6500';
+Blockly.MIXEPI='MixePi';
+
 Blockly.DATA_TYPE_CONVERSION='Data type conversion';
 Blockly.TEXT_TO='to';
 Blockly.STRING_VARIABLE='String variable';

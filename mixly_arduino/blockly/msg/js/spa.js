@@ -1,11 +1,7 @@
 ﻿// This file was automatically generated.  Do not modify.
-
 'use strict';
-
 goog.provide('Blockly.Msg.spa');
-
 goog.require('Blockly.Msg');
-
 Blockly.Msg.ADD_COMMENT = "Añadir Comentario";
 Blockly.Msg.AUTH = "Por favor, autorice esta aplicación para que su trabajo se salven y para que pueda ser compartida por usted.";
 Blockly.Msg.CHANGE_VALUE_TITLE = "Cambiar valor:";
@@ -261,7 +257,6 @@ Blockly.Msg.MATH_SINGLE_TOOLTIP_TOINT = "Devuelve la parte entera de un número.
 Blockly.Msg.MATH_SINGLE_TOOLTIP_ROUND = "Devuelve la parte entera de un número utilizando around.";
 Blockly.Msg.MATH_SINGLE_TOOLTIP_CEIL = "Devuelve la parte entera de un número utilizando ceil.";
 Blockly.Msg.MATH_SINGLE_TOOLTIP_FLOOR = "Devuelve la parte entera de un número utilizando floor.";
-
 Blockly.Msg.MATH_SUBTRACTION_SYMBOL = "-";
 Blockly.Msg.MATH_QUYU_SYMBOL="%";
 Blockly.Msg.MATH_TRIG_ACOS = "acos";
@@ -603,7 +598,7 @@ Blockly.MIXLY_LCD_ROW='fila';
 Blockly.MIXLY_LCD_COLUMN='columna';
 Blockly.MIXLY_LCD_PRINT='imprime';
 Blockly.MIXLY_LCD_SETCOLOR='configuraColor';
-Blockly.MIXLY_LCD_STAT_ON='On';
+Blockly.MIXLY_ON='On';
 Blockly.MIXLY_LCD_STAT_OFF='Off';
 Blockly.MIXLY_LCD_STAT_CURSOR='Cursor';
 Blockly.MIXLY_LCD_STAT_NOCURSOR='noCursor';
@@ -925,58 +920,46 @@ Blockly.LUXE_SPEAKER_PLAYSOUND='Reproducir sonido';
 Blockly.LUXE_SPEANER_NOSOUND='Sin sonido';
 Blockly.LUXE_SPEAKER_FREQUENCY='frecuencia';
 Blockly.LUXE_SPEAKER_DURATION='duración';
-
 //-----------------NOVA---------------------------------
 Blockly.MIXLY_NOVA_PORT = 'Port';
 Blockly.MIXLY_NOVA_STAT = 'Set';
 Blockly.MIXLY_NOVA_GET_STAT = 'Get';
-
 // LED
 Blockly.MIXLY_NOVA_LED = 'LED';
 Blockly.MIXLY_NOVA_LED_ON = 'ON';
 Blockly.MIXLY_NOVA_LED_OFF = 'OFF';
-
 // Button
 Blockly.MIXLY_BUTTON_PRESSED = 'Pressed';
 Blockly.MIXLY_BUTTON_RELEASED = 'Released';
 Blockly.MIXLY_BUTTON_HOLD = 'Hold';
 Blockly.MIXLY_NOVA_BTN = 'Button ';
 Blockly.MIXLY_NOVA_ABCD = '#';
-
 Blockly.MIXLY_NOVA_TILTSWITCH = 'Tilt Switch';
 Blockly.MIXLY_NOVA_SOUND = 'Sound';
 Blockly.MIXLY_NOVA_LIMISWICTH = 'Limit Switch';
 Blockly.MIXLY_NOVA_LIGHT = 'Light';
-
 Blockly.MIXLY_NOVA_BUZZER = 'Buzzer';
 Blockly.MIXLY_NOVA_FREQUENCY = 'Frequency(Hz)';
 Blockly.MIXLY_NOVA_MIXLY_DURATION = 'Duration(ms)';
-
 Blockly.MIXLY_NOVA_MOTOR = 'DC Motor';
 Blockly.MIXLY_NOVA_MOTOR_SPEED = 'Speed(-100~100)%';
-
 Blockly.MIXLY_NOVA_ULTRASONIC = 'Ultrasonic(cm)';
-
 Blockly.MIXLY_NOVA_DHT11 = 'DHT11';
 Blockly.MIXLY_NOVA_TYPE = 'Type';
 Blockly.MIXLY_NOVA_DHT11_H = 'GetHumidity';
 Blockly.MIXLY_NOVA_DHT11_T = 'GetTemperature';
-
 Blockly.MIXLY_NOVA_SERVO = 'Servo';
 Blockly.MIXLY_NOVA_DEGREE_0_180 = 'Degree（0~180）';
 Blockly.MIXLY_NOVA_DELAY = 'Delay';
 Blockly.MIXLY_NOVA_DELAY_MS = 'ms';
-
 Blockly.MIXLY_NOVA_LINEFINDER = 'LineFinder';
 Blockly.MIXLY_NOVA_L = 'LeftState';
 Blockly.MIXLY_NOVA_R = 'RightState';
 Blockly.MIXLY_NOVA_READ = 'GetLineState';
-
 Blockly.MIXLY_NOVA_4DIGITDISPLAY = 'Digitdisplay';
 Blockly.MIXLY_NOVA_NUMBER = 'Number';
 Blockly.MIXLY_NOVA_DISPLAY_HOUR= 'Display Hour';
 Blockly.MIXLY_NOVA_DISPLAY_MIN = 'Display Minute';
-
 Blockly.MIXLY_NOVA_RTC = 'Real Time Clock';
 Blockly.MIXLY_NOVA_RTC_SEC = 'Sec';
 Blockly.MIXLY_NOVA_RTC_MIN = 'Min';
@@ -985,18 +968,14 @@ Blockly.MIXLY_NOVA_RTC_WEEK = 'Week';
 Blockly.MIXLY_NOVA_RTC_DAY = 'Day';
 Blockly.MIXLY_NOVA_RTC_MON = 'Mon';
 Blockly.MIXLY_NOVA_RTC_YEAR = 'Year';
-
 Blockly.MIXLY_NOVA_IR_REC = 'Infrared Receiver';
-
 Blockly.MIXLY_NOVA_BLUETOOTH = 'Bluetooth';
 Blockly.MIXLY_NOVA_BLUETOOTH_AVAILABLE = 'Available？';
 Blockly.MIXLY_NOVA_BLUETOOTH_READ_STR = 'ReadString';
 Blockly.MIXLY_NOVA_BLUETOOTH_READ_NUM = 'ReadNumber';
-
 //spi
 Blockly.TO_SPI_SLAVE_PIN='To SPI Slave PIN#';
 Blockly.SPI_TRANSFER='transfer';
-
 Blockly.MIXLY_SERIAL_BEGIN='velocidad en baudios';
 Blockly.MIXLY_SERIALBT_BEGIN='init ';
 Blockly.MIXLY_SERIALBT_INIT='ESP32 Bluetooth Nombre';
@@ -1016,7 +995,6 @@ Blockly.MIXLY_STEPPER_PIN4='PIN4#';
 Blockly.MIXLY_STEPSPERREVOLUTION='steps per revolution';
 Blockly.MIXLY_STEPPER_SET_SPEED='setSpeed';
 Blockly.MIXLY_STEPPER_STEP='step';
-
 //-----------------Ethernet------------------------------------
 Blockly.MIXLY_ETHERNET_BEGIN='Begin (DHCP)';
 Blockly.MIXLY_ETHERNET='Ethernet';
@@ -1041,7 +1019,6 @@ Blockly.MIXLY_DS18B20='DS18B20 PIN#';
 Blockly.MIXLY_DS18B20_GET_TEMP='getTemperature';
 Blockly.MIXLY_DS18B20_C='°C';
 Blockly.MIXLY_DS18B20_F='°F';
-
 //GPS
 Blockly.MIXLY_GPS_INIT='GPS init';
 Blockly.MIXLY_GPS_DATA_AVAILABLE='GPS data is available';
@@ -1060,10 +1037,8 @@ Blockly.MIXLY_GPS_TIME_HOUR='time-hour';
 Blockly.MIXLY_GPS_TIME_MINUTE='time-minute';
 Blockly.MIXLY_GPS_TIME_SECOND='time-second';
 Blockly.MIXLY_GPS_TIME_CENTISECOND='time-centisecond';
-
 //factory
 Blockly.MIXLY_PARAMS = 'parameters';
-
 //MsTimer2
 Blockly.MIXLY_MSTIMER2_EVERY='every';
 Blockly.MIXLY_MSTIMER2_DO='do';
@@ -1089,7 +1064,6 @@ Blockly.Msg.UNDO = "Deshacer";
 Blockly.Msg.REDO = "Rehacer";
 Blockly.MIXLY_CONTROL_END_PROGRAM = "fin del programa";
 Blockly.MIXLY_CONTROL_NOTES = 'Notas:';
-
 //oled
 Blockly.Msg.texttodisplay = "texts to display:";
 Blockly.Msg.OLEDDISPLAY = "display";
@@ -1111,7 +1085,6 @@ Blockly.MIXLY_RGB_COUNT = 'Luz Conde';
 Blockly.MIXLY_RGB_R = 'R Valor';
 Blockly.MIXLY_RGB_G = 'G Valor';
 Blockly.MIXLY_RGB_B = 'B Valor';
-
 //四位数码管
 Blockly.MIXLY_4DIGITDISPLAY = 'Digital Mostrar';
 Blockly.MIXLY_4DIGITDISPLAY_DISPLAYSTRING = 'Mostrar la cadena';
@@ -1120,7 +1093,6 @@ Blockly.MIXLY_4DIGITDISPLAY_NOMBER2 = '';
 Blockly.MIXLY_4DIGITDISPLAY_DOT = 'Dot';
 Blockly.MIXLY_4DIGITDISPLAY_ON = 'En';
 Blockly.MIXLY_4DIGITDISPLAY_OFF = 'Off';
-
 //MAX7219
 Blockly.MIXLY_MAX7219_INIT_NUM='Cantidad de módulos de matriz de puntos LED';
 Blockly.MIXLY_MAX7219_PUTSTR='Desplazar cadena(MAX7219)';
@@ -1135,7 +1107,6 @@ Blockly.MIXLY_MAX7219_INIT='Inicializar matriz(MAX7219) de puntos LED ';
 Blockly.MIXLY_MAX7219_INIT2='Inicializar matriz(MAX7219) de puntos LED(IIC)';
 Blockly.MIXLY_MAX7219_IMG='matriz(MAX7219) Patrón de presuposición';
 Blockly.MIXLY_MAX7219_CLEAR = 'matriz(MAX7219) clara';
-
 //TM1637
 Blockly.MIXLY_4DIGITDISPLAY_TM1637 = 'TM1637';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYPRINT = 'TM1637 monitor';
@@ -1147,7 +1118,6 @@ Blockly.MIXLY_4DIGITDISPLAY_TM1637_INIT = 'TM1637 Init';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_BRIGHTNESS = 'TM1637 Brillo';
 Blockly.MIXLY_4DIGITDISPLAY_4DIGITDISPLAY_BRIGHTNESS_TOOLTIP = '';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_CLEARDISPLAY = 'TM1637 pantalla clara';
-
 Blockly.MIXLY_YEAR = 'Y';
 Blockly.MIXLY_MONTH = 'M';
 Blockly.MIXLY_DAY = 'D';
@@ -1155,7 +1125,6 @@ Blockly.MIXLY_HOUR = 'H';
 Blockly.MIXLY_MINUTE = 'M';
 Blockly.MIXLY_SECOND = 'S';
 Blockly.MIXLY_WEEK = 'Semana';
-
 Blockly.MIXLY_DS1302_INITPIN = 'Inicializar modulo RTC CLOCK DS1302 PIN'
 Blockly.MIXLY_SETDATE = 'SetDate:';
 Blockly.MIXLY_DATEFORMATE = 'DateFormat(Y-M-D)'
@@ -1170,12 +1139,10 @@ Blockly.MIXLY_DISPLAY_MATRIX_CLEAR = " Dot Matrix claro";
 Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "Variable array";
 Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " Pictur array";
 Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "Rotar la pantalla";
-
 Blockly.MIXLY_RTCINIT = 'Inicializar modulo RTC CLOCK DS1307 ';
 Blockly.MIXLY_RTCGETTIME = 'Leer la hora del Modulo RTC CLOCK';
 Blockly.MIXLY_RTCSETTIME = 'Establecer el tiempo de Module RTC CLOCK';
 Blockly.MIXLY_RTCSETDATE = 'Fecha de creación del Modulo RTC CLOCK';
-
 Blockly.MIXLY_ADXL345 = 'Acceleration_ADXL345';
 Blockly.MIXLY_ADXL345_X = 'Aceleración del eje X';
 Blockly.MIXLY_ADXL345_Y = 'Aceleración del eje Y';
@@ -1315,7 +1282,6 @@ Blockly.MIXLY_MICROBIT_JS_LIST_FIND_INDEX_OF='encontrar el indice de';
 Blockly.MIXLY_MICROBIT_JS_LIST_REMOVE_VALUE_AT='quitar valor a';
 Blockly.MIXLY_MICROBIT_JS_LIST_REMOVE_VALUE_XIANG='';
 Blockly.MIXLY_MICROBIT_JS_INTERRUPT_BTN = 'Botón de interrupción #';
-
 Blockly.MIXLY_MICROBIT_JS_INOUT_ANALOG_PITCH = 'analog pitch ';
 Blockly.MIXLY_MICROBIT_JS_INOUT_FREQUENCY ='para (ms)';
 Blockly.Msg.INOUT_ANALOGPITCH  = "analog pitch durante algún tiempo";
@@ -1421,12 +1387,10 @@ Blockly.MIXLY_MICROBIT_JS_IS_COMPASS_CALIBRATED='esta brújula calibrada';
 Blockly.MIXLY_IS_TOUCHED='es tocado';
 Blockly.MIXLY_WAS_PRESSED='fue presionado';
 Blockly.MIXLY_GET_PRESSES='conseguir prensas';
-
 Blockly.MIXLY_MICROBIT_Animate_images_or_string='Mostrar a continuación(imagen/texto) %1 Se instalara %2 ms %3 espera %4 %5 el ciclo %6 %7 la %8';
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY='Dice';
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING='Cantar';
 Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE='Leer';
-
 Blockly.Msg.LISTS_NAME_TOOLTIP='La lista de nombres de entrada';
 Blockly.blockpy_LIST_ADD_LIST='Aumentar la lista de';
 Blockly.Msg.blockpy_LISTS_CREATE_WITH_INPUT_WITH ='En la lista de inicialización';
@@ -1438,11 +1402,9 @@ Blockly.blockpy_LANG_LISTS_GET_INDEX_TOOLTIP ='La lista de la ubicación especif
 Blockly.blockpy_LANG_LISTS_SET_INDEX_TOOLTIP ='Configuración de la lista de la ubicación especificada en el valor.';
 Blockly.Msg.LISTS_GET_INDEX_RANDOM2 ='La lista de sacar al azar';
 Blockly.Msg.LISTS_GET_INDEX_RANDOM3 ='Una de las';
-
 Blockly.Msg.MATH_ZHENGCHU_SYMBOL = "//";
 Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL='El ciclo (milisegundos)';
 Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_PY = 'Fijar valores de especificar los pies(0-1023)';
-
 Blockly.Msg.LISTS_ISEMPTY_TITLE='¿Es el vacío?';
 Blockly.Msg.LISTS_SORT_TITLE ='Para ordenar la lista de %1 %2 %3';
 Blockly.Msg.LISTS_SORT_TYPE_NUMERIC ='Según el número de';
@@ -1454,24 +1416,19 @@ Blockly.Msg.DISPLAY_IMAGE_LET='La imagen se';
 Blockly.Msg.DISPLAY_IMAGE_LET2='A';
 Blockly.Msg.DISPLAY_IMAGE_SHIFT='La traducción';
 Blockly.Msg.DISPLAY_IMAGE_UNIT='Unidades';
-
 Blockly.LANG_MATH_RANDOM_FLOAT_INPUT_FROM ='Aleatorio decimal de';
 Blockly.LANG_MATH_RANDOM_FLOAT_INPUT_TO ='A';
 Blockly.LANG_MATH_RANDOM_FLOAT_TOOLTIP2 ='Devuelve el número dos (con) aleatorio decimal entre';
-
 Blockly.MICROBIT_SPEECH_pitch ='El tono';
 Blockly.MICROBIT_SPEECH_speed ='La velocidad de';
 Blockly.MICROBIT_SPEECH_mouth ='Los labios';
 Blockly.MICROBIT_SPEECH_throat ='La garganta';
 Blockly.MICROBIT_SPEECH_translation ='La traducción de voz';
-
 Blockly.MICROBIT_ACTUATOR_bpm ='La velocidad de';
 Blockly.MICROBIT_ACTUATOR_ticks ='Resolución';
-
 Blockly.MICROBIT_PYTHON_TYPE = 'Los tipos de datos de acceso';
 Blockly.MICROBIT_LOGIC_IS_IN = 'Ahí dentro?';
 Blockly.Msg.CONTROLS_FOREACH_INPUT = "En cada";
-
 Blockly.MICROBIT_DISPLAY_UNION = ' Las Naciones Unidas ';
 Blockly.MICROBIT_DISPLAY_INTERSECTION = ' La intersección ';
 Blockly.MICROBIT_DISPLAY_MINUS = ' La deducción ';
@@ -1510,7 +1467,6 @@ Blockly.Msg.MATH_BIN = 'binary';
 Blockly.Msg.MATH_OCT = 'octal';
 Blockly.Msg.MATH_DEC = 'decimal';
 Blockly.Msg.MATH_HEX = 'hex';
-
 Blockly.MIXLY_MICROBIT_TYPE_INT = 'Entero';
 Blockly.MIXLY_MICROBIT_TYPE_FLOAT = 'float';
 Blockly.MIXLY_MICROBIT_TYPE_STRING = "La cadena";
@@ -1519,7 +1475,6 @@ Blockly.MIXLY_MICROBIT_TYPE_TUPLE = "Adas";
 Blockly.MIXLY_MICROBIT_TYPE_DICT = "Diccionario";
 Blockly.MIXLY_MICROBIT_TYPE_SETS = "La colección";
 Blockly.MIXLY_MICROBIT_TYPE_IMAGE = "La imagen";
-
 Blockly.MIXLY_MICROBIT_PY_STORAGE_OPEN_FILE = "Abrir el archivo";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE = "El modo de";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_READ = "Leer"
@@ -1529,7 +1484,6 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_WRITE = "Escribir en binario";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_AS = "Para";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE = "A";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_WRITE = "escribir en el archivo";
-
 
 Blockly.MIXLY_MICROBIT_PY_STORAGE_FROM_FILE = 'Desde el archivo';
 Blockly.MIXLY_MICROBIT_PY_STORAGE_NO_MORE_THAN_SIZE = "Leer el contenido de no más de";
@@ -1544,13 +1498,10 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_LIST_ALL_FILES = "Lista todos los archivos";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_DELETE_FILE = "Borrar archivos";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_GET_FILE_SIZE = "Obtención de Documentación";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_SIZE = "El tamaño de";
-
 Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE = "Los tipos de datos";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME = "El actual sistema de información";
-
 Blockly.MIXLY_MICROBIT_SHOW_STRING = " %1 retraso %2 milisegundos %3 la espera %4 %5 el ciclo %6 %7 la eliminación de %8";
 Blockly.MIXLY_MICROBIT_Scroll_string = "El despliegue de una cadena de caracteres %1 retraso %2 milisegundos %3 la espera %4 %5 el ciclo %6 %7 la eliminación de %8";
-
 Blockly.MIXLY_COMMUNICATION_RFID_INITIAL = "Para inicializar el RFID";
 Blockly.MIXLY_COMMUNICATION_RFID_ON_DETECTED = "Detecta la señal";
 Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM = "El número de la tarjeta de lectura de tarjetas RFID";
@@ -2101,7 +2052,6 @@ Blockly.MIXLY_ESP32_MONITOR_SHOW_STATIC='cadena que estática';
 Blockly.MIXLY_ESP32_SENOR_GYRO='velocidad angular (rad)/s';
 Blockly.Msg.DATAFRAME_RAW ='Línea';
 Blockly.Msg.DATAFRAME_COLUMN ='Columna';
-
 Blockly.MIXLY_ESP32_MUSIC_PLAY_LISTS='Tocar la lista de notas';
 Blockly.MIXLY_ESP32_MUSIC_WAIT='Esperando';
 Blockly.MIXLY_ESP32_MUSIC_LOOP='El ciclo';
@@ -2186,14 +2136,11 @@ Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TOOLTIP="Enviar mensaje";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_RECEIVE_FROM_TOOLTIP="Devolver datos recibidos";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TO_TOOLTIP="Enviar un mensaje a la dirección de red especificada.";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CLOSE_TOOLTIP="Apagar la conexión de red";
-
 //@author:zyc 2018-12-6
 Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
 Blockly.MIXLY_TOOLTIP_RGB_INIT = Blockly.MIXLY_RGB_PIN_COUNT;
 Blockly.MIXLY_TOOLTIP_RGB_DISPLAY = Blockly.MIXLY_RGB_NUM_R_G_B;
-
-
 
 Blockly.MIXLY_ESP32_INOUT_HIGHLOW_TOOLTIP ='Regresa a UN alto nivel o bajo nivel ';
 Blockly.MIXLY_ESP32_INOUT_DIGITAL_INIT_TOOLTIP ='Inicializar la señal de salida de UN pie en señal digital ';
@@ -2269,26 +2216,20 @@ Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_SEQ = 'secuenciar';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_GET_STR = 'conectada a una cadena';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_TOOLTIP = 'El segundo parámetro debe ser iterativo y cada uno de los tipos de iteración es una cadena; El resultado devuelve una cadena';
 Blockly.MIXLY_PYTHON_TURTLE_EXITONCLICK = 'configuración clic en la pantalla para terminar el dibujo de la tortuga';
-
 Blockly.MIXLY_MICROPYTHON_SOCKET_CONNECT_TO_ADDRESS='Conexión a la dirección';
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CONNECT_TOOLTIP='Conecta el socket a la dirección de la red';
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE ="obtener el estado de activación";
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE_TOOLTIP ="obtiene el estado de activación de la red especificada";
-
 Blockly.MIXLY_ESP32_IOT_ONENET_PRINT_DATA="Los datos de impresión";
 Blockly.MIXLY_PYTHON_LOGIC_IS = "Es";
-
 Blockly.MIXLY_HANBIT_SHOW_CIRCLE = "Radio del Centro(X %1, y %2) %3 %4 rellenado %5";
 Blockly.MIXLY_HANBIT_SHOW_triangle = "vértice(x0 %1,Y0 %2) (X1 %3,Y1 %4) (x2 %5,Y2 %6) %7 rellenado %8";
 Blockly.MIXLY_HANBIT_DRAW_TRIANGLE = "triángulo";
-
 Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = 'Devuelve el valor del sensor de luz（0~255）'
-
 Blockly.MIXLY_CHOOSE_AND_GET='Select and Get';
 Blockly.MIXLY_CHOOSE_AND_GET_ONE_FILE_NAME='single file name';
 Blockly.MIXLY_CHOOSE_AND_GET_MANY_FILE_NAMES='multiple file names';
 Blockly.MIXLY_CHOOSE_AND_GET_DIR='File Directory';
-
 Blockly.MIXLY_AipImageClassify='Image Recognition';
 Blockly.MIXLY_AipSpeech='Voice Technology';
 Blockly.MIXLY_AipImageCensor='Image Audit';
@@ -2348,15 +2289,12 @@ Blockly.MQTT_IOT_ID='IOT ID';
 Blockly.MQTT_IOT_PWD='IOT PWD';
 Blockly.MQTT_subscribe2='Received';
 Blockly.MQTT_Topic='Topic';
-
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL = "read";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE = "readline";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES = "readlines";
-
 Blockly.MIXLY_ENCODER='Codificador rotatorio';
 Blockly.MIXLY_SIMPLE_TIMER='Temporizador simple';
 Blockly.Msg.MIXLY_PYTHON_STORAGE_OPEN_FILE_WITH_OS = 'open file with default program';
-
 Blockly.blynk_AP_config="Smart Config WIFI(AP Mode)";
 Blockly.blynk_AP_config_tooltip="It will create a WIFI if disconnect to WiFi";
 Blockly.blynk_AP_config2="Smart Config WIFI & Blynk Auth(AP模式)";
@@ -2364,7 +2302,6 @@ Blockly.Blynk_connected="blynk Server Connect State";
 Blockly.Blynk_connected_Tooltip="if OK,return 1,esle return 0";
 Blockly.blynk_terminal_clear="Blynk Terminal Clear";
 Blockly.blynk_lcd="LCD Widget Display";
-
 Blockly.Msg.HTML_DOCUMENT = "HTML Document";
 Blockly.Msg.HTML_LEVEL = "h";
 Blockly.Msg.HTML_HEAD = "head";
@@ -2404,7 +2341,6 @@ Blockly.Msg.HTML_WEEK = "week";
 Blockly.NTP_SERVER='NTP Time Server';
 Blockly.MIXLY_TimeZone='TimeZone';
 Blockly.NTP_server_get_time='NTP Get';
-
 Blockly.MIXLY_CLICK='Click';
 Blockly.MIXLY_DOUBLE_CLICK='Double Click';
 Blockly.MIXLY_LONG_PRESS_START='Long Press Start';
