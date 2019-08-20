@@ -443,6 +443,85 @@
   </shadow>
 </value>
 </block>
+<block type="substring">
+  <value name="name">
+   <shadow type="text">
+    <field name="TEXT">substring</field>
+  </shadow>
+</value>
+<value name="Start">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
+<value name="end">
+  <shadow type="math_number">
+    <field name="NUM">3</field>
+  </shadow>
+</value>
+</block>
+<block type="decimal_places">
+  <value name="numeral">
+    <shadow type="math_number">
+      <field name="NUM">6.666</field>
+    </shadow>
+  </value>
+  <value name="decimal_places">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+  </value>
+</block>
+<block type="letter_conversion">
+  <value name="String">
+    <shadow type="math_number">
+      <field name="NUM">String</field>
+    </shadow>
+  </value>
+</block>
+<block type="data_replacement">
+  <value name="String">
+    <shadow type="math_number">
+      <field name="NUM">String</field>
+    </shadow>
+  </value>
+  <value name="source_data">
+   <shadow type="text">
+    <field name="TEXT">s</field>
+  </shadow>
+</value>
+<value name="replace">
+ <shadow type="text">
+  <field name="TEXT">Q</field>
+</shadow>
+</value>
+</block>
+<block type="eliminate">
+  <value name="String">
+    <shadow type="math_number">
+      <field name="NUM">String</field>
+    </shadow>
+  </value>
+</block>
+<block type="first_and_last">
+  <value name="String">
+   <shadow type="text">
+    <field name="TEXT">substring</field>
+  </shadow>
+</value>
+<value name="String1">
+ <shadow type="text">
+  <field name="TEXT">substring</field>
+</shadow>
+</value>
+</block>
+<block type="type_conversion">
+  <value name="variable">
+   <shadow type="text">
+    <field name="TEXT">substring</field>
+  </shadow>
+</value>
+</block>
 <block type="ascii_to_char">
   <value name="VAR">
     <shadow type="math_number">
@@ -453,7 +532,6 @@
 <block type="char_to_ascii">
   <field name="TEXT">a</field>
 </block>
-
 <block type="number_to_text">
   <value name="VAR">
     <shadow type="math_number">
@@ -694,24 +772,24 @@
     </shadow>
   </value>
 </block>
-  <block type="RFID_init">
-    <value name="SDA">
-      <shadow type="pins_digital">
-      </shadow>
-    </value>
-    <value name="SCK">
-      <shadow type="pins_SCK">
-      </shadow>
-    </value>
-    <value name="MISO">
-      <shadow type="pins_MISO">
-      </shadow>
-    </value>
-    <value name="MOSI">
-      <shadow type="pins_MOSI">
-      </shadow>
-    </value>
-  </block>  
+<block type="RFID_init">
+  <value name="SDA">
+    <shadow type="pins_digital">
+    </shadow>
+  </value>
+  <value name="SCK">
+    <shadow type="pins_SCK">
+    </shadow>
+  </value>
+  <value name="MISO">
+    <shadow type="pins_MISO">
+    </shadow>
+  </value>
+  <value name="MOSI">
+    <shadow type="pins_MOSI">
+    </shadow>
+  </value>
+</block>  
 <block type="RFID_on"></block>   
 <block type="RFID_readcardnum"></block> 
 <block type="RFID_in">
@@ -2348,8 +2426,13 @@
       </shadow>
     </value>
   </block>
+  <block type="Vs2DetectedColorDetect"></block>
+  <block type="Vs2GetMessage"></block>
+  <block type="Vs2GetCardType"></block>
+  <block type="Vs2GetColorLabel"></block>
 </category>
 <category id="catFactory" name="Factory" colour="65">
+  <block type="folding_block"></block>
   <block type="factory_notes"></block>
   <block type="factory_include"></block>
   <block type="factory_function_noreturn"></block>

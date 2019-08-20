@@ -1,4 +1,4 @@
-﻿<html manifest=node.manifest>
+<html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
   <title>Mixly ESP32 Arduino Advance</title>
@@ -480,180 +480,259 @@
         </shadow>
       </value>
     </block>
-    <block type="ascii_to_char">
-      <value name="VAR">
-        <shadow type="math_number">
-          <field name="NUM">223</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="char_to_ascii">
-      <field name="TEXT">a</field>
-    </block>
-    <block type="number_to_text">
-      <value name="VAR">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="text_length">
-      <value name="VAR">
-        <shadow type="text">
-          <field name="TEXT">hello</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="text_char_at">
-      <value name="VAR">
-        <shadow type="text">
-          <field name="TEXT">hello</field>
-        </shadow>
-      </value>
-      <value name="AT">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="text_equals_starts_ends">
-      <value name="STR1">
-        <shadow type="text">
-          <field name="TEXT"></field>
-        </shadow>
-      </value>
-      <value name="STR2">
-        <shadow type="text">
-          <field name="TEXT"></field>
-        </shadow>
-      </value>
-    </block>
-    <block type="text_compareTo">
-      <value name="STR1">
-        <shadow type="text">
-          <field name="TEXT"></field>
-        </shadow>
-      </value>
-      <value name="STR2">
-        <shadow type="text">
-          <field name="TEXT"></field>
-        </shadow>
-      </value>
-    </block>
-  </category>
-  <category id="catLists" colour="260">
-    <block type="lists_create_with2"></block>
-    <block type="lists_create_with_text2"></block>
-    <block type="lists_length"></block>
-    <block type="lists_getIndex">
-      <value name="AT">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="lists_setIndex">
-      <value name="AT">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="create_array2_with_text">
+    <block type="substring">
       <value name="name">
-        <shadow type="math_number">
-          <field name="NUM">array</field>
-        </shadow>
-      </value>
-      <value name="line">
-        <shadow type="math_number">
-          <field name="NUM">2</field>
-        </shadow>
-      </value>
-      <value name="list">
-        <shadow type="math_number">
-          <field name="NUM">2</field>
-        </shadow>
-      </value>
-      <value name="String">
-        <shadow type="math_number">
-          <field name="NUM">{0,0},{0,0}</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="array2_assignment">
-      <value name="name">
-        <shadow type="math_number">
-          <field name="NUM">array</field>
-        </shadow>
-      </value>
-      <value name="line">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-      <value name="list">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-      <value name="assignment">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="get_array2_value">
-      <value name="name">
-        <shadow type="math_number">
-          <field name="NUM">array</field>
-        </shadow>
-      </value>
-      <value name="line">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-      <value name="list">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-    </block>
-  </category>
-  <category id="catLogic" colour="210">
-    <block type="logic_compare"></block>
-    <block type="logic_operation"></block>
-    <block type="logic_negate"></block>
-    <block type="logic_boolean"></block>
-    <block type="logic_null"></block>
-    <block type="logic_true_or_false"></block>
-  </category>
-  <category id="catSerialPort" colour="65">
-   <block type="serial_begin">
-    <value name="CONTENT">
+       <shadow type="text">
+        <field name="TEXT">substring</field>
+      </shadow>
+    </value>
+    <value name="Start">
       <shadow type="math_number">
-        <field name="NUM">115200</field>
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="end">
+      <shadow type="math_number">
+        <field name="NUM">3</field>
       </shadow>
     </value>
   </block>
+  <block type="decimal_places">
+    <value name="numeral">
+      <shadow type="math_number">
+        <field name="NUM">6.666</field>
+      </shadow>
+    </value>
+    <value name="decimal_places">
+      <shadow type="math_number">
+        <field name="NUM">2</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="letter_conversion">
+    <value name="String">
+      <shadow type="math_number">
+        <field name="NUM">String</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="data_replacement">
+    <value name="String">
+      <shadow type="math_number">
+        <field name="NUM">String</field>
+      </shadow>
+    </value>
+    <value name="source_data">
+     <shadow type="text">
+      <field name="TEXT">s</field>
+    </shadow>
+  </value>
+  <value name="replace">
+   <shadow type="text">
+    <field name="TEXT">Q</field>
+  </shadow>
+</value>
+</block>
+<block type="eliminate">
+  <value name="String">
+    <shadow type="math_number">
+      <field name="NUM">String</field>
+    </shadow>
+  </value>
+</block>
+<block type="first_and_last">
+  <value name="String">
+   <shadow type="text">
+    <field name="TEXT">substring</field>
+  </shadow>
+</value>
+<value name="String1">
+ <shadow type="text">
+  <field name="TEXT">substring</field>
+</shadow>
+</value>
+</block>
+<block type="type_conversion">
+  <value name="variable">
+   <shadow type="text">
+    <field name="TEXT">substring</field>
+  </shadow>
+</value>
+</block>
+<block type="ascii_to_char">
+  <value name="VAR">
+    <shadow type="math_number">
+      <field name="NUM">223</field>
+    </shadow>
+  </value>
+</block>
+<block type="char_to_ascii">
+  <field name="TEXT">a</field>
+</block>
+<block type="number_to_text">
+  <value name="VAR">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="text_length">
+  <value name="VAR">
+    <shadow type="text">
+      <field name="TEXT">hello</field>
+    </shadow>
+  </value>
+</block>
+<block type="text_char_at">
+  <value name="VAR">
+    <shadow type="text">
+      <field name="TEXT">hello</field>
+    </shadow>
+  </value>
+  <value name="AT">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="text_equals_starts_ends">
+  <value name="STR1">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+  <value name="STR2">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+</block>
+<block type="text_compareTo">
+  <value name="STR1">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+  <value name="STR2">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+</block>
+</category>
+<category id="catLists" colour="260">
+  <block type="lists_create_with2"></block>
+  <block type="lists_create_with_text2"></block>
+  <block type="lists_length"></block>
+  <block type="lists_getIndex">
+    <value name="AT">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="lists_setIndex">
+    <value name="AT">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="create_array2_with_text">
+    <value name="name">
+      <shadow type="math_number">
+        <field name="NUM">array</field>
+      </shadow>
+    </value>
+    <value name="line">
+      <shadow type="math_number">
+        <field name="NUM">2</field>
+      </shadow>
+    </value>
+    <value name="list">
+      <shadow type="math_number">
+        <field name="NUM">2</field>
+      </shadow>
+    </value>
+    <value name="String">
+      <shadow type="math_number">
+        <field name="NUM">{0,0},{0,0}</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="array2_assignment">
+    <value name="name">
+      <shadow type="math_number">
+        <field name="NUM">array</field>
+      </shadow>
+    </value>
+    <value name="line">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="list">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="assignment">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="get_array2_value">
+    <value name="name">
+      <shadow type="math_number">
+        <field name="NUM">array</field>
+      </shadow>
+    </value>
+    <value name="line">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="list">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+</category>
+<category id="catLogic" colour="210">
+  <block type="logic_compare"></block>
+  <block type="logic_operation"></block>
+  <block type="logic_negate"></block>
+  <block type="logic_boolean"></block>
+  <block type="logic_null"></block>
+  <block type="logic_true_or_false"></block>
+</category>
+<category id="catSerialPort" colour="65">
+ <block type="serial_begin">
+  <value name="CONTENT">
+    <shadow type="math_number">
+      <field name="NUM">115200</field>
+    </shadow>
+  </value>
+</block>
 
-  <block type="serial_write"></block>
-  <block type="serial_print"></block>
-  <block type="serial_println"></block>
-  <block type="serial_print_hex"></block>
-  <block type="serial_available"></block>
-  <block type="serial_readstr"></block>
-  <block type="serial_readstr_until">
-    <value name="CONTENT">
-      <shadow type="text_char">
-       <field name="TEXT">a</field>
-     </shadow>
-   </value>
- </block>
- <block type="serial_parseInt_Float"></block>
- <block type="serial_flush"></block>
- <block type="serial_softserial">
+<block type="serial_write"></block>
+<block type="serial_print"></block>
+<block type="serial_println"></block>
+<block type="serial_print_hex"></block>
+<block type="serial_available"></block>
+<block type="serial_readstr"></block>
+<block type="serial_readstr_until">
+  <value name="CONTENT">
+    <shadow type="text_char">
+     <field name="TEXT">a</field>
+   </shadow>
+ </value>
+</block>
+<block type="serial_parseInt_Float"></block>
+<block type="serial_flush"></block>
+<block type="serial_softserial">
   <value name="TX">
     <shadow type="pins_digital"></shadow>
   </value>
@@ -693,7 +772,7 @@
       </shadow>
     </value>
   </block>
-    <block type="RFID_init">
+  <block type="RFID_init">
     <value name="SDA">
       <shadow type="pins_digital">
       </shadow>
@@ -2247,6 +2326,7 @@
   <block type="Vs2GetColorLabel"></block>
 </category>
 <category id="catFactory" name="Factory" colour="65">
+  <block type="folding_block"></block>
   <block type="factory_notes"></block>
   <block type="factory_include"></block>
   <block type="factory_function_noreturn"></block>
