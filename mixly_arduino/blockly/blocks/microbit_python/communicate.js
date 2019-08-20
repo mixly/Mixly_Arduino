@@ -9,7 +9,7 @@ Blockly.Blocks['radio_ons'] = {
     init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_ON,'on'],[Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_OFF,'off'],[Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_RESET,'reset']]), "type")
+            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_ON,'on'],[Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_OFF,'off'],[Blockly.Blockly.Msg.HTML_RESET,'reset']]), "type")
             .appendField(Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_WIFI);
         this.setInputsInline(true);
         this.setOutput(false);
@@ -22,7 +22,7 @@ Blockly.Blocks['radio_ons'] = {
         var TOOLTIPS = {
         'on':Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_ON,
         'off':Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_OFF,
-        'reset':Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_RESET
+        'reset':Blockly.Blockly.Msg.HTML_RESET
       };
       return TOOLTIPS[mode]+mode0;
     });

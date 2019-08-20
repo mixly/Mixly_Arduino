@@ -653,7 +653,7 @@ Blockly.Blocks['sensor_mpu9250_get_magnetic'] = {
         this.appendValueInput('SUB')
         .setCheck("var");
         this.appendDummyInput()
-        .appendField(Blockly.MIXLY_MICROBIT_JS_GET+Blockly.MIXLY_MICROBIT_Compass_field_strength)
+        .appendField(Blockly.MIXLY_MICROBIT_JS_GET+Blockly.MIXLY_MICROBIT_JS_FIELD_STRENGTH)
         .appendField(new Blockly.FieldDropdown([
             ["x", "x"],
             ["y", "y"],
@@ -667,7 +667,7 @@ Blockly.Blocks['sensor_mpu9250_get_magnetic'] = {
             var mode = thisBlock.getFieldValue('key');
             var mode0 = Blockly.MIXLY_MICROBIT_PY_STORAGE_GET;
             var mode1 = Blockly.MIXLY_MICROBIT_Direction;
-            var mode2 = Blockly.MIXLY_MICROBIT_Compass_field_strength;
+            var mode2 = Blockly.MIXLY_MICROBIT_JS_FIELD_STRENGTH;
             var TOOLTIPS = {
                 'x': 'x',
                 'y': 'y',

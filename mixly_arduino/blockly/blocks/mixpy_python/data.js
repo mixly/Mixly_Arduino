@@ -185,7 +185,7 @@ Blockly.Blocks['series_index_value'] = {
   init: function() {
     this.setColour(Blockly.Blocks.data.HUE);
     var index_value =
-        [[Blockly.Msg.SERIES_INDEX, 'index'],[Blockly.Msg.SERIES_VALUE, 'value']];
+        [[Blockly.Msg.SERIES_INDEX, 'index'],[Blockly.Msg.HTML_VALUE, 'value']];
     this.appendValueInput('SERIES')
         .setCheck('Series')
     this.appendDummyInput("")                
@@ -198,7 +198,7 @@ Blockly.Blocks['series_index_value'] = {
       var mode = thisBlock.getFieldValue('INDEX_VALUE');
       var TOOLTIPS = {
         'index': Blockly.Msg.SERIES_INDEX_TOOLTIP,
-        'value': Blockly.Msg.SERIES_VALUE_TOOLTIP
+        'value': Blockly.Msg.HTML_VALUE_TOOLTIP
       };
       return TOOLTIPS[mode];
     });
@@ -257,7 +257,7 @@ Blockly.Blocks['pl_plot'] = {
         .appendField(Blockly.blockpy_PYLAB_PLOT_LINE)  
         .appendField(new Blockly.FieldDropdown(line_type), 'LINE')  
     this.appendDummyInput("")                
-        .appendField(Blockly.Msg.COLOUR_RGB_TITLE)  
+        .appendField(Blockly.Msg.HTML_COLOUR)  
         .appendField(new Blockly.FieldDropdown(color_type), 'COLOR')              
     this.setInputsInline(true);
     this.setPreviousStatement(true);

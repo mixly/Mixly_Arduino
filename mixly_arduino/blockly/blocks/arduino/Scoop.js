@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 
 goog.provide('Blockly.Blocks.SCoop');
 
@@ -12,7 +12,7 @@ Blockly.Blocks['SCoopTask'] = {
    .appendField("Scoop Task")
    .appendField(new Blockly.FieldDropdown(_tasknum), "_tasknum");
    this.appendStatementInput("setup")
-   .appendField(Blockly.MIXLY_CONTROL_SCoop_Init)
+   .appendField(Blockly.MIXLY_SETUP)
    .setCheck(null);
    this.appendStatementInput("loop")
    .appendField(Blockly.MIXLY_CONTROL_SCoop_loop)

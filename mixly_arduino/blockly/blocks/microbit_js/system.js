@@ -19,7 +19,7 @@ Blockly.Blocks['system_reset'] = {
     init:function(){
         this.setColour(Blockly.Blocks.system.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_MICROBIT_JS_SYSTEM_RESET);
+            .appendField(Blockly.blockpy_turtle_reset);
 
         this.setPreviousStatement(true);
         this.setNextStatement(true);

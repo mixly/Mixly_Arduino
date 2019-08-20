@@ -211,7 +211,7 @@ Blockly.Blocks['turtle_clear'] = {
      this.appendValueInput('TUR')
         .setCheck('Turtle')
   var clear_reset =
-        [[Blockly.blockpy_turtle_clear, 'clear'],[Blockly.blockpy_turtle_reset, 'reset']
+        [[Blockly.MIXLY_LCD_STAT_CLEAR, 'clear'],[Blockly.blockpy_turtle_reset, 'reset']
         ,[Blockly.blockpy_turtle_home, 'home']];
     this.setColour(Blockly.Blocks.turtle.HUE);
     this.appendDummyInput("")
@@ -292,7 +292,7 @@ Blockly.Blocks['turtle_size_speed'] = {
      this.appendDummyInput("")
       .appendField(new Blockly.FieldTextInput('tina'), 'TUR')
   var size_speed =
-        [[Blockly.blockpy_turtle_size, 'pensize'],[Blockly.blockpy_turtle_speed, 'speed']];
+        [[Blockly.blockpy_turtle_size, 'pensize'],[Blockly.MIXLY_SPEED, 'speed']];
     this.setColour(Blockly.Blocks.turtle.HUE);
     this.appendValueInput('VAR')
         // .setCheck(String)

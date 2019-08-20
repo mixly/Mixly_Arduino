@@ -143,7 +143,7 @@ Blockly.Blocks['storage_file_write'] = {
    init: function() {
      this.setColour(Blockly.Blocks.storage.HUE);
      this.appendValueInput("FILE")
-         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_IS_FILE);
+         .appendField(Blockly.Msg.HTML_FILE);
      this.appendDummyInput()
          .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_CAN_WRITE_ORNOT);
      this.setInputsInline(true);
@@ -372,7 +372,7 @@ Blockly.Blocks['storage_file_write'] = {
      this.appendDummyInput()
          .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_IS_OR_NOT);
      this.appendDummyInput()
-         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_IS_FILE,'isfile'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_IS_DIR,'isdir']]),'MODE');
+         .appendField(new Blockly.FieldDropdown([[Blockly.Msg.HTML_FILE,'isfile'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_IS_DIR,'isdir']]),'MODE');
      this.setInputsInline(true);
      this.setPreviousStatement(false);
      this.setNextStatement(false);

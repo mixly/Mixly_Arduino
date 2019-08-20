@@ -72,7 +72,7 @@ Blockly.Blocks.monitor_clear_screen = {
     init: function () {
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_CLEAR_SCREEN);
+            .appendField(Blockly.MIXLY_LCD_STAT_CLEAR);
 
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -163,7 +163,7 @@ Blockly.Blocks.monitor_bright_point = {
 
       this.appendValueInput('brightness')
           .setCheck(Number)
-          .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS);
+          .appendField(Blockly.MIXLY_BRIGHTNESS);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
@@ -184,7 +184,7 @@ Blockly.Blocks.monitor_get_brightness = {
     init: function () {
         this.setColour(Blockly.Blocks.display.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS);
+            .appendField(Blockly.MIXLY_BRIGHTNESS);
         this.setOutput(true, Number);
         this.setInputsInline(true);
     }

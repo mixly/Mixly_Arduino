@@ -77,7 +77,7 @@ init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendValueInput('FREQUENCY')
         .setCheck(Number)
-        .appendField(Blockly.MIXLY_MBOT_TONE +  ' ' + Blockly.MIXLY_FREQUENCY);
+        .appendField(Blockly.MIXLY_TONE +  ' ' + Blockly.MIXLY_FREQUENCY);
     this.appendValueInput('BEAT')
         .setCheck(Number)
         .appendField(Blockly.MIXLY_MICROBIT_JS_BEAT);
@@ -192,7 +192,7 @@ Blockly.Blocks.tone_change_tempo = {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput('DEGREE')
             .setCheck(Number)
-            .appendField(Blockly.MIXLY_MICROBIT_JS_CHANGE_TEMPO);
+            .appendField(Blockly.MIXLY_CHANGE_TEMPO);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);

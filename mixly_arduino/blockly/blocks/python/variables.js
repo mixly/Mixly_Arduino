@@ -17,7 +17,7 @@ Blockly.Blocks.variables.HUE = 330//'#af5180'//330;
 //         .appendField(Blockly.MIXLY_DECLARE)
 //         .appendField(new Blockly.FieldTextInput(''), 'VAR')
 //         //.appendField(Blockly.MIXLY_AS)
-//         //.appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_TYPE_NUMBER, 'number'], [Blockly.LANG_MATH_STRING, 'string'], [Blockly.LANG_MATH_BOOLEAN, 'boolean']]), 'TYPE')
+//         //.appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_NUMBER, 'number'], [Blockly.LANG_MATH_STRING, 'string'], [Blockly.LANG_MATH_BOOLEAN, 'boolean']]), 'TYPE')
 // 	    .appendField(Blockly.MIXLY_VALUE);
 //     this.setPreviousStatement(true);
 //     this.setNextStatement(true);
@@ -65,7 +65,7 @@ Blockly.Blocks['variables_get'] = {
 //     this.setColour(Blockly.Blocks.variables.HUE);
 //     this.appendValueInput('VALUE')
 //         .appendField(new Blockly.FieldTextInput(''), 'VAR')
-// 		.appendField(Blockly.LANG_VARIABLES_SET_TITLE);
+// 		.appendField(Blockly.MIXLY_VALUE2);
 //     this.setPreviousStatement(true);
 //     this.setNextStatement(true);
 //     this.setTooltip(Blockly.Msg.VARIABLES_SET_TOOLTIP);
@@ -92,7 +92,7 @@ Blockly.Blocks['variables_set'] = {
     this.setColour(Blockly.Blocks.variables.HUE);
     this.appendValueInput('VALUE')
         .appendField(new Blockly.FieldTextInput(''), 'VAR')
-		.appendField(Blockly.LANG_VARIABLES_SET_TITLE);
+		.appendField(Blockly.MIXLY_VALUE2);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.Msg.VARIABLES_SET_TOOLTIP);

@@ -201,7 +201,7 @@
    init: function() {
     this.setColour(Blockly.Blocks.dicts.HUE);
     this.appendDummyInput()
-    .appendField(Blockly.Msg.DICTS_CREATE_WITH_CONTAINER_TITLE_ADD);
+    .appendField(Blockly.MIXLY_MICROBIT_TYPE_DICT);
     this.appendStatementInput('STACK');
     this.setTooltip(Blockly.Msg.DICTS_CREATE_WITH_CONTAINER_TOOLTIP);
     this.contextMenu = false;

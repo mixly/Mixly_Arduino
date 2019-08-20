@@ -150,7 +150,7 @@ Blockly.Blocks.blynk_iot_push_data = {
     this.appendDummyInput("")
     .appendField(new Blockly.FieldDropdown(BLYNK_VIRTUALPIN_SELECT), "Vpin");
     this.appendValueInput("data")
-    .appendField(Blockly.blynk_IOT_DATA);
+    .appendField(Blockly.MIXLY_SD_DATA);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
@@ -630,7 +630,7 @@ Blockly.Blocks.blynk_iot_WidgetLED_VALUE = {
     this.appendValueInput("NUM", Number)
     .appendField(Blockly.MIXLY_BRIGHTNESS)
     .setCheck(Number);
-    //this.appendValueInput("data").appendField(Blockly.blynk_IOT_DATA);
+    //this.appendValueInput("data").appendField(Blockly.MIXLY_SD_DATA);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
@@ -646,7 +646,7 @@ var AC_TYPE = [
 
 var AC_POWER = [
 [Blockly.MIXLY_ON, "true"],
-[Blockly.blynk_IOT_OFF, "false"]
+[Blockly.MIXLY_OFF, "false"]
 ];
 var AC_MODE = [
 [Blockly.blynk_IOT_FAN, "FAN"], 
@@ -674,7 +674,7 @@ Blockly.Blocks.blynk_iot_ir_send_ac = {
     .appendField(Blockly.blynk_IOT_IR_POWER)
     .appendField(new Blockly.FieldDropdown(AC_POWER), "AC_POWER");
     this.appendDummyInput("")
-    .appendField(Blockly.blynk_IOT_IR_MODE)
+    .appendField(Blockly.MIXLY_MODE)
     .appendField(new Blockly.FieldDropdown(AC_MODE), "AC_MODE");
     this.appendDummyInput("")
     .appendField(Blockly.blynk_IOT_IR_FAN)
@@ -1336,7 +1336,7 @@ Blockly.Blocks['blynk_esp32_ble'] = {
     this.appendValueInput("name")
     .setCheck(null)
     .appendField("BLE")
-    .appendField(Blockly.MIXLY_ESP32_NETWORK_ID );
+    .appendField(Blockly.Msg.HTML_NAME );
     this.setHelpUrl("");
   }
 };
@@ -1353,7 +1353,7 @@ Blockly.Blocks['blynk_esp32_Bluetooth'] = {
     this.appendValueInput("name")
     .setCheck(null)
     .appendField("Bluetooth")
-    .appendField(Blockly.MIXLY_ESP32_NETWORK_ID );
+    .appendField(Blockly.Msg.HTML_NAME );
     this.setHelpUrl("");
   }
 };
@@ -1392,7 +1392,7 @@ Blockly.Blocks['blynk_table'] = {
     this.appendValueInput("mingcheng")
     .setCheck(null);
     this.appendDummyInput()
-    .appendField(Blockly.blynk_IOT_DATA);
+    .appendField(Blockly.MIXLY_SD_DATA);
     this.appendValueInput("shujv")
     .setCheck(null);
     this.appendDummyInput()
@@ -1420,7 +1420,7 @@ Blockly.Blocks['blynk_table_update'] = {
     this.appendValueInput("mingcheng")
     .setCheck(null);
     this.appendDummyInput()
-    .appendField(Blockly.blynk_IOT_DATA);
+    .appendField(Blockly.MIXLY_SD_DATA);
     this.appendValueInput("shujv")
     .setCheck(null);
     this.appendDummyInput()

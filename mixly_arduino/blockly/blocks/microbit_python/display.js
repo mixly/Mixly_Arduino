@@ -30,14 +30,14 @@ Blockly.Blocks.monitor_get_pixel = {
 	this.appendValueInput('x')
         .setCheck(Number)
         .appendField(Blockly.MIXLY_MICROBIT_JS_GET)
-        .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS)
+        .appendField(Blockly.MIXLY_BRIGHTNESS)
 		    .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_GET_POINT_X);
 	this.appendValueInput('y')
           .setCheck(Number)
           .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_PLOT_POINT_Y);
     this.setInputsInline(true);
 	this.setOutput(true, Number);
-    this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS1);
+    this.setTooltip(Blockly.MIXLY_BRIGHTNESS1);
   }
 };
 
@@ -53,11 +53,11 @@ Blockly.Blocks.monitor_bright_point = {
           .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_PLOT_POINT_Y);
     this.appendValueInput('brightness')
           .setCheck(Number)
-          .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS);
+          .appendField(Blockly.MIXLY_BRIGHTNESS);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);
-  this.setTooltip(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS2);
+  this.setTooltip(Blockly.MIXLY_BRIGHTNESS2);
   }
 };
 
@@ -643,7 +643,7 @@ Blockly.Blocks.group_lcd_power = {
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_DF_LCD)
     .appendField('mylcd')
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_LCD_STAT_ON, "on()"], [Blockly.MIXLY_LCD_STAT_OFF, "off()"],  [Blockly.MIXLY_LCD_STAT_CLEAR, "clear()"], [Blockly.MIXLY_LCD_NOBACKLIGHT, "backlight(False)"], [Blockly.MIXLY_LCD_BACKLIGHT, "backlight(True)"]]), "STAT");
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ON, "on()"], [Blockly.MIXLY_OFF, "off()"],  [Blockly.MIXLY_LCD_STAT_CLEAR, "clear()"], [Blockly.MIXLY_LCD_NOBACKLIGHT, "backlight(False)"], [Blockly.MIXLY_LCD_BACKLIGHT, "backlight(True)"]]), "STAT");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -653,8 +653,8 @@ Blockly.Blocks.group_lcd_power = {
         var mode0 = Blockly.Msg.LISTS_SET_INDEX_SET;
         var mode1 = Blockly.MIXLY_DF_LCD;
         var TOOLTIPS = {
-        'on()':Blockly.MIXLY_LCD_STAT_ON,
-        'off()':Blockly.MIXLY_LCD_STAT_OFF,
+        'on()':Blockly.MIXLY_ON,
+        'off()':Blockly.MIXLY_OFF,
         'clear()':Blockly.MIXLY_LCD_STAT_CLEAR,
         'backlight(off)':Blockly.MIXLY_LCD_NOBACKLIGHT,
         'backlight(on)':Blockly.MIXLY_LCD_BACKLIGHT
@@ -725,7 +725,7 @@ Blockly.Blocks['display_fill'] = {
         this.appendValueInput('SUB');
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown([
-                [Blockly.MIXLY_HANDBIT_DISLPAY_OLED_CLEAR, "0"],
+                [Blockly.MIXLY_LCD_STAT_CLEAR, "0"],
                 [Blockly.MIXLY_HANDBIT_DISLPAY_OLED_FILL, "1"]
             ]), "key");
         this.setPreviousStatement(true, null);
@@ -735,7 +735,7 @@ Blockly.Blocks['display_fill'] = {
         this.setTooltip(function() {
         var mode = thisBlock.getFieldValue('key');
         var TOOLTIPS = {
-        '0': Blockly.MIXLY_HANDBIT_DISLPAY_OLED_CLEAR,
+        '0': Blockly.MIXLY_LCD_STAT_CLEAR,
         '1': Blockly.MIXLY_HANDBIT_DISLPAY_OLED_FILL
        };
       return Blockly.MIXLY_DF_LCD+TOOLTIPS[mode];

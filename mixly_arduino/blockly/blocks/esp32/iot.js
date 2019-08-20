@@ -12,10 +12,10 @@ Blockly.Blocks['iot_wifi_connect'] = {
     .appendField(Blockly.MIXLY_ESP32_IOT_CONNECT_WIFI);
     this.appendValueInput('WIFINAME')
     .setCheck(String)
-    .appendField(Blockly.MIXLY_ESP32_NETWORK_ID);
+    .appendField(Blockly.Msg.HTML_NAME);
     this.appendValueInput('PASSWORD')
     .setCheck(String)
-    .appendField(Blockly.MIXLY_ESP32_NETWORK_PASSWORD);
+    .appendField(Blockly.Msg.HTML_PASSWORD);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -256,7 +256,7 @@ Blockly.Blocks['iot_publish_container'] = {
    init: function() {
     this.setColour(Blockly.Blocks.iot.HUE);
     this.appendDummyInput()
-    .appendField(Blockly.Msg.DICTS_CREATE_WITH_CONTAINER_TITLE_ADD);
+    .appendField(Blockly.MIXLY_MICROBIT_TYPE_DICT);
     this.appendStatementInput('STACK');
     this.setTooltip(Blockly.Msg.DICTS_CREATE_WITH_CONTAINER_TOOLTIP);
     this.contextMenu = false;

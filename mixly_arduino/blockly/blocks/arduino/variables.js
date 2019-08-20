@@ -78,7 +78,7 @@ Blockly.Blocks['variables_set'] = {
     this.setColour(Blockly.Blocks.variables.HUE);
     this.appendValueInput('VALUE')
         .appendField(new Blockly.FieldTextInput('item'), 'VAR')
-		.appendField(Blockly.LANG_VARIABLES_SET_TITLE);
+		.appendField(Blockly.MIXLY_VALUE2);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.Msg.VARIABLES_SET_TOOLTIP);
@@ -105,7 +105,7 @@ Blockly.Blocks['variables_set'] = {
     this.setColour(Blockly.Blocks.variables.HUE);
     this.appendValueInput('VALUE')
         .appendField(new Blockly.FieldTextInput('item'), 'VAR')
-		.appendField(Blockly.LANG_VARIABLES_SET_TITLE);
+		.appendField(Blockly.MIXLY_VALUE2);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.Msg.VARIABLES_SET_TOOLTIP);

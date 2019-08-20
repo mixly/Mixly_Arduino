@@ -113,10 +113,10 @@ Blockly.Blocks['network_connect'] = {
             .appendField(Blockly.MIXLY_ESP32_NETWORK_CONNECT);
         this.appendValueInput('id')
             .setCheck(String)
-            .appendField(Blockly.MIXLY_ESP32_NETWORK_ID);
+            .appendField(Blockly.Msg.HTML_NAME);
         this.appendValueInput('password')
             .setCheck(String)
-            .appendField(Blockly.MIXLY_ESP32_NETWORK_PASSWORD);
+            .appendField(Blockly.Msg.HTML_PASSWORD);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);

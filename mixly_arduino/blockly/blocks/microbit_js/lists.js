@@ -15,7 +15,7 @@ Blockly.Blocks['lists_create_with'] = {
    init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_TYPE_NUMBER, 'number'], [Blockly.LANG_MATH_STRING, 'string'], [Blockly.LANG_MATH_BOOLEAN, 'boolean'], [Blockly.MIXLY_MICROBIT_JS_TYPE_ARRAY_NUMBER, 'Array<number>'], [Blockly.MIXLY_MICROBIT_JS_TYPE_ARRAY_STRING, 'Array<string>']]), 'TYPE')
+    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_NUMBER, 'number'], [Blockly.LANG_MATH_STRING, 'string'], [Blockly.LANG_MATH_BOOLEAN, 'boolean'], [Blockly.MIXLY_MICROBIT_JS_TYPE_ARRAY_NUMBER, 'Array<number>'], [Blockly.MIXLY_MICROBIT_JS_TYPE_ARRAY_STRING, 'Array<string>']]), 'TYPE')
     .appendField(' ')
     .appendField(new Blockly.FieldTextInput('mylist'), 'VAR')
     .appendField('[')
@@ -176,7 +176,7 @@ Blockly.Blocks['lists_create_with2'] = {
    init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_TYPE_NUMBER, 'Array<number>'], [Blockly.LANG_MATH_STRING, 'Array<string>'], [Blockly.LANG_MATH_BOOLEAN, 'Array<boolean>']]), 'TYPE')
+    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_NUMBER, 'Array<number>'], [Blockly.LANG_MATH_STRING, 'Array<string>'], [Blockly.LANG_MATH_BOOLEAN, 'Array<boolean>']]), 'TYPE')
     .appendField(' ')
     .appendField(new Blockly.FieldTextInput('mylist'), 'VAR')
     .appendField('[')
@@ -303,7 +303,7 @@ Blockly.Blocks['lists_create_with_text2'] = {
   init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_TYPE_NUMBER, 'Array<number>']]), 'TYPE')
+    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_NUMBER, 'Array<number>']]), 'TYPE')
     .appendField(' ')
     .appendField(new Blockly.FieldTextInput('mylist'), 'VAR')
     .appendField('[')

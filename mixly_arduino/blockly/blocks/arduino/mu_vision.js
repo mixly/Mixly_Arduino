@@ -22,12 +22,12 @@ var VS_VISION_TYPE = [
   // ["😉 "+Blockly.LKL_VS2_VISION_FACE, "VisionSensor::FACE"],
   ].concat(lVisionCardType);
 
-var lVisionZoom = [[Blockly.LKL_VS2_AUTO,"kZoomDefault"],[Blockly.LKL_VS2_LEVEL+"1", "kZoom1"],
+var lVisionZoom = [[Blockly.blynk_IOT_AUTO,"kZoomDefault"],[Blockly.LKL_VS2_LEVEL+"1", "kZoom1"],
 [Blockly.LKL_VS2_LEVEL+"2", "kZoom2"],[Blockly.LKL_VS2_LEVEL+"3", "kZoom3"],
 [Blockly.LKL_VS2_LEVEL+"4", "kZoom4"],[Blockly.LKL_VS2_LEVEL+"5", "kZoom5"]
 ];
 
-var lVisionLevel = [[Blockly.LKL_VS2_AUTO,"kLevelDefault"],
+var lVisionLevel = [[Blockly.blynk_IOT_AUTO,"kLevelDefault"],
 [Blockly.LKL_VS2_HIGH_SPEED, "kLevelSpeed"],
 [Blockly.LKL_VS2_NORMAL, "kLevelBalance"],
 [Blockly.LKL_VS2_HIGH_ACCURACY, "kLevelAccuracy"],
@@ -47,7 +47,7 @@ Blockly.Blocks['Vs2MuInit'] = {
     // .appendField(Blockly.LKL_VS2_MU)
     .appendField(Blockly.MIXLY_SETUP)
     .appendField(new Blockly.FieldDropdown(lVsMu), "MU_OBJ")
-    .appendField(' '+Blockly.LKL_VS2_SERIAL)
+    .appendField(' '+Blockly.MIXLY_ETHERNET_CLINET_PORT)
     .appendField(new Blockly.FieldDropdown(dropdown_list), "SERIAL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -250,7 +250,7 @@ Blockly.Blocks['Vs2SetCameraHFR'] = {
 
 Blockly.Blocks['Vs2SetCameraWhiteBalance'] = {
   init: function() {
-    var lCameraAWB = [[Blockly.LKL_VS2_AUTO, "kAutoWhiteBalance"],[Blockly.LKL_VS2_LOCK_AWB, "kLockWhiteBalance"],
+    var lCameraAWB = [[Blockly.blynk_IOT_AUTO, "kAutoWhiteBalance"],[Blockly.LKL_VS2_LOCK_AWB, "kLockWhiteBalance"],
     [Blockly.LKL_VS2_WHITE_LIGHT, "kWhiteLight"],[Blockly.LKL_VS2_YELLOW_LIGHT, "kYellowLight"]];
     this.setColour(Blockly.Blocks.VisionSensor.HUE_SetupMode);
     this.appendDummyInput('')
@@ -343,8 +343,8 @@ Blockly.Blocks['Vs2GetMessage'] = {
   init: function() {
    this.DETECTED_MESSAGE = [[Blockly.LKL_VS2_STATE_VALUE_X,"kXValue"], 
    [Blockly.LKL_VS2_STATE_VALUE_Y,"kYValue"],
-   [Blockly.LKL_VS2_STATE_VALUE_WIDTH,"kWidthValue"], 
-   [Blockly.LKL_VS2_STATE_VALUE_HEIGHT,"kHeightValue"],
+   [Blockly.MIXLY_WIDTH,"kWidthValue"], 
+   [Blockly.MIXLY_HEIGHT,"kHeightValue"],
    [Blockly.LKL_VS2_STATE_VALUE_LABEL,"kLabel"]
    ];
    this.ColorRCGMessage = [[Blockly.LKL_VS2_STATE_VALUE_R_CHANNEL,"kRValue"],
@@ -429,7 +429,7 @@ Blockly.Blocks['Vs2GetCardType'] = {
     ["⬅ "+Blockly.LKL_VS2_CARD_TURN_LEFT, "MU_TRAFFIC_CARD_LEFT"],
     ["➡ "+Blockly.LKL_VS2_CARD_TURN_RIGHT, "MU_TRAFFIC_CARD_RIGHT"],
     ["🔙 "+Blockly.LKL_VS2_CARD_TURN_AROUND, "MU_TRAFFIC_CARD_TURN_AROUND"],
-    ["🅿 "+Blockly.LKL_VS2_CARD_STOP, "MU_TRAFFIC_CARD_PARK"]
+    ["🅿 "+Blockly.MIXLY_STOP, "MU_TRAFFIC_CARD_PARK"]
     ];
     this.number_card_type_ = [["1", "1"],["2", "2"],["3", "3"],["4", "4"],["5", "5"],
     ["6", "6"],["7", "7"],["8", "8"],["9", "9"],["0", "0"]

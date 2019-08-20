@@ -118,7 +118,7 @@ Blockly.Blocks['communicate_spi_set'] = {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('VAR')
             .setCheck('var')
-            .appendField(Blockly.blockpy_turtle_setxy + " SPI")
+            .appendField(Blockly.MIXLY_SETTING + " SPI")
         this.appendValueInput('data')
             .setCheck(Number)
             .appendField(Blockly.MIXLY_SERIAL_BEGIN);

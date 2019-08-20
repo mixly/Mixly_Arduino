@@ -91,7 +91,7 @@ Blockly.Blocks['game_change_by'] = {
         this.appendValueInput('var')
             .setCheck("LedSprite");
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_MICROBIT_JS_CHANGE)
+            .appendField(Blockly.MIXLY_CHANGE)
             .appendField(new Blockly.FieldDropdown([
                 ['x', "LedSpriteProperty.X"],
                 ['y', "LedSpriteProperty.Y"],
@@ -238,7 +238,7 @@ Blockly.Blocks['game_change_score'] = {
     init: function () {
         this.setColour(Blockly.Blocks.game.HUE);
         this.appendValueInput("data")
-            .appendField(Blockly.MIXLY_MICROBIT_JS_CHANGE_SCORE);
+            .appendField(Blockly.MIXLY_CHANGE_SCORE);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);

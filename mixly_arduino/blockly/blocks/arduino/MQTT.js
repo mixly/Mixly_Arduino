@@ -92,9 +92,9 @@ Blockly.Blocks.WIFI_info = {
     .appendField(new Blockly.FieldImage("../../media/blynk/iot.png", 20, 20))
     .appendField(Blockly.MIXLY_NETWORK_INIT);
     this.appendValueInput("SSID")
-    .appendField(Blockly.MIXLY_ESP32_NETWORK_ID);
+    .appendField(Blockly.Msg.HTML_NAME);
     this.appendValueInput("PWD")
-    .appendField(Blockly.MIXLY_ESP32_NETWORK_PASSWORD);
+    .appendField(Blockly.Msg.HTML_PASSWORD);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
@@ -110,10 +110,10 @@ Blockly.Blocks['network_connect'] = {
     .appendField(Blockly.MIXLY_ESP32_NETWORK_CONNECT);
     this.appendValueInput('id')
     .setCheck(String)
-    .appendField(Blockly.MIXLY_ESP32_NETWORK_ID);
+    .appendField(Blockly.Msg.HTML_NAME);
     this.appendValueInput('password')
     .setCheck(String)
-    .appendField(Blockly.MIXLY_ESP32_NETWORK_PASSWORD);
+    .appendField(Blockly.Msg.HTML_PASSWORD);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setInputsInline(true);
@@ -199,7 +199,7 @@ Blockly.Blocks.MQTT_subscribe_value = {
     .appendField(Blockly.MQTT_Topic);
     this.appendValueInput("Topic");
     this.appendDummyInput("")
-    .appendField(Blockly.Msg.SERIES_VALUE)
+    .appendField(Blockly.Msg.HTML_VALUE)
     this.setInputsInline(true);
     this.setOutput(true, String);
   }

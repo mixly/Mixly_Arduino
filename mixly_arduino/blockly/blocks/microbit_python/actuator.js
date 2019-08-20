@@ -74,7 +74,7 @@ Blockly.Blocks.microbit_music_pitch_delay={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_MBOT_TONE)
+        .appendField(Blockly.MIXLY_TONE)
         .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
     this.appendValueInput('pitch')
@@ -101,7 +101,7 @@ Blockly.Blocks.microbit_music_pitch={
 init:function(){
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_MBOT_TONE)
+        .appendField(Blockly.MIXLY_TONE)
         .appendField(Blockly.MIXLY_PIN)
         .setCheck(Number);
     this.appendValueInput('pitch')
@@ -228,7 +228,7 @@ Blockly.Blocks.tone_set_tempo = {
             .appendField(Blockly.MICROBIT_ACTUATOR_ticks);
         this.appendValueInput('BPM')
             .setCheck(Number)
-            .appendField(Blockly.MICROBIT_ACTUATOR_bpm);
+            .appendField(Blockly.MIXLY_SPEED);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
@@ -248,7 +248,7 @@ Blockly.Blocks['speech_say'] = {
             .appendField(Blockly.MICROBIT_SPEECH_pitch);
         this.appendValueInput('speed')
             .setCheck(Number)
-            .appendField(Blockly.MICROBIT_SPEECH_speed);
+            .appendField(Blockly.MIXLY_SPEED);
         this.appendValueInput('mouth')
             .setCheck(Number)
             .appendField(Blockly.MICROBIT_SPEECH_mouth);
@@ -284,7 +284,7 @@ Blockly.Blocks['speech_say'] = {
 //             .appendField(Blockly.MICROBIT_SPEECH_pitch);
 //         this.appendValueInput('speed')
 //             .setCheck(Number)
-//             .appendField(Blockly.MICROBIT_SPEECH_speed);
+//             .appendField(Blockly.MIXLY_SPEED);
 //         this.appendValueInput('mouth')
 //             .setCheck(Number)
 //             .appendField(Blockly.MICROBIT_SPEECH_mouth);
@@ -308,7 +308,7 @@ Blockly.Blocks['speech_say'] = {
 //             .appendField(Blockly.MICROBIT_SPEECH_pitch);
 //         this.appendValueInput('speed')
 //             .setCheck(Number)
-//             .appendField(Blockly.MICROBIT_SPEECH_speed);
+//             .appendField(Blockly.MIXLY_SPEED);
 //         this.appendValueInput('mouth')
 //             .setCheck(Number)
 //             .appendField(Blockly.MICROBIT_SPEECH_mouth);

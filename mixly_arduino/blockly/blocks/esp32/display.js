@@ -1086,7 +1086,7 @@ Blockly.Blocks.group_lcd_power = {
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_DF_LCD)
     .appendField('mylcd')
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_LCD_STAT_ON, "on()"], [Blockly.MIXLY_LCD_STAT_OFF, "off()"],  [Blockly.MIXLY_LCD_STAT_CLEAR, "clear()"], [Blockly.MIXLY_LCD_NOBACKLIGHT, "backlight(off)"], [Blockly.MIXLY_LCD_BACKLIGHT, "backlight(on)"]]), "STAT");
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ON, "on()"], [Blockly.MIXLY_OFF, "off()"],  [Blockly.MIXLY_LCD_STAT_CLEAR, "clear()"], [Blockly.MIXLY_LCD_NOBACKLIGHT, "backlight(off)"], [Blockly.MIXLY_LCD_BACKLIGHT, "backlight(on)"]]), "STAT");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -1096,8 +1096,8 @@ Blockly.Blocks.group_lcd_power = {
         var mode0 = Blockly.Msg.LISTS_SET_INDEX_SET;
         var mode1 = Blockly.MIXLY_DF_LCD;
         var TOOLTIPS = {
-        'on()':Blockly.MIXLY_LCD_STAT_ON,
-        'off()':Blockly.MIXLY_LCD_STAT_OFF,
+        'on()':Blockly.MIXLY_ON,
+        'off()':Blockly.MIXLY_OFF,
         'clear()':Blockly.MIXLY_LCD_STAT_CLEAR,
         'backlight(off)':Blockly.MIXLY_LCD_NOBACKLIGHT,
         'backlight(on)':Blockly.MIXLY_LCD_BACKLIGHT
@@ -1518,7 +1518,7 @@ Blockly.Blocks['display_fill'] = {
         this.appendValueInput('SUB');
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown([
-                [Blockly.MIXLY_HANDBIT_DISLPAY_OLED_CLEAR, "0"],
+                [Blockly.MIXLY_LCD_STAT_CLEAR, "0"],
                 [Blockly.MIXLY_HANDBIT_DISLPAY_OLED_FILL, "1"]
             ]), "key");
         this.setPreviousStatement(true, null);
@@ -1529,7 +1529,7 @@ Blockly.Blocks['display_fill'] = {
         this.setTooltip(function() {
         var mode = thisBlock.getFieldValue('key');
         var TOOLTIPS = {
-        '0': Blockly.MIXLY_HANDBIT_DISLPAY_OLED_CLEAR,
+        '0': Blockly.MIXLY_LCD_STAT_CLEAR,
         '1': Blockly.MIXLY_HANDBIT_DISLPAY_OLED_FILL
        };
       return Blockly.MIXLY_DF_LCD+TOOLTIPS[mode];
@@ -1579,7 +1579,7 @@ Blockly.Blocks.display_tm1650_power = {
             .appendField(new Blockly.FieldDropdown([["TM1650", "tm1650"]]), "TYPE");
         this.appendValueInput("VAR")
         this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_LCD_STAT_ON, "_on"], [Blockly.MIXLY_LCD_STAT_OFF, "_off"], [Blockly.MIXLY_LCD_STAT_CLEAR, "_clear"]]), "STAT");
+            .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ON, "_on"], [Blockly.MIXLY_OFF, "_off"], [Blockly.MIXLY_LCD_STAT_CLEAR, "_clear"]]), "STAT");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

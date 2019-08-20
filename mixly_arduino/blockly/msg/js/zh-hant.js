@@ -1,8 +1,6 @@
-﻿// This file was automatically generated.  Do not modify.
+// This file was automatically generated.  Do not modify.
 'use strict';
-
 goog.provide('Blockly.Msg.zh.hant');
-
 goog.require('Blockly.Msg');
 var MSG = {
 	catInOut:"輸入/輸出",
@@ -305,7 +303,6 @@ Blockly.Msg.MATH_SINGLE_TOOLTIP_TOINT = "返回一個數的整數部分。";
 Blockly.Msg.MATH_SINGLE_TOOLTIP_ROUND = "按照四捨五入的原則返回一個數的整數部分。";
 Blockly.Msg.MATH_SINGLE_TOOLTIP_CEIL = "返回大於或者等於一個數的最小整數。";
 Blockly.Msg.MATH_SINGLE_TOOLTIP_FLOOR = "返回小於或者等於一個數的最大整數。";
-
 Blockly.Msg.MATH_SUBTRACTION_SYMBOL = "-";  // untranslated
 Blockly.Msg.MATH_QUYU_SYMBOL="%";
 Blockly.Msg.MATH_TRIG_ACOS = "acos";  // untranslated
@@ -544,11 +541,6 @@ Blockly.LANG_MATH_BOOLEAN = '布爾';
 Blockly.LANG_MATH_BYTE = '字節';
 Blockly.LANG_MATH_CHAR = '字符';
 Blockly.LANG_MATH_STRING = '字符串';
-/*
- *add all data types supported in Arduino except void(only use in function) and array(in special catelogy)
- @author zyc
- @date 2018-12-29
- */
  Blockly.LANG_MATH_UNSIGNED_INT = '無符號整數';
  Blockly.LANG_MATH_WORD = '字';
  Blockly.LANG_MATH_UNSIGNED_LONG = '無符號長整數';
@@ -647,7 +639,7 @@ Blockly.MIXLY_LCD_ROW='在第';
 Blockly.MIXLY_LCD_COLUMN='行第';
 Blockly.MIXLY_LCD_PRINT='列打印';
 Blockly.MIXLY_LCD_SETCOLOR='設定顏色';
-Blockly.MIXLY_LCD_STAT_ON='開';
+Blockly.MIXLY_ON='開';
 Blockly.MIXLY_LCD_STAT_OFF='關';
 Blockly.MIXLY_LCD_STAT_CURSOR='有光標';
 Blockly.MIXLY_LCD_STAT_NOCURSOR='無光標';
@@ -903,7 +895,6 @@ Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE = '停止播放聲音。';
  Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_READ = '讀取服務端發送用戶端緩衝區的下一個位元組';
  Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = '向指定地址發送一個GET請求';
  Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = '對常數或變數進行強制類型轉換';
-//end
 Blockly.LUXE_LED='燈#';
 Blockly.LUXE_MOTOR='電機#';
 Blockly.LUXE_STAT='為';
@@ -920,59 +911,46 @@ Blockly.LUXE_SPEAKER_PLAYSOUND='播放聲音';
 Blockly.LUXE_SPEANER_NOSOUND='停止播放聲音';
 Blockly.LUXE_SPEAKER_FREQUENCY='頻率';
 Blockly.LUXE_SPEAKER_DURATION='持續時間';
-
 //-----------------NOVA---------------------------------
 Blockly.MIXLY_NOVA_PORT = '端口';
 Blockly.MIXLY_NOVA_STAT = '設為';
 Blockly.MIXLY_NOVA_GET_STAT = '獲取';
-
 // LED
 Blockly.MIXLY_NOVA_LED = 'LED燈';
 Blockly.MIXLY_NOVA_LED_ON = '開';
 Blockly.MIXLY_NOVA_LED_OFF = '關';
-
 // Button
 Blockly.MIXLY_BUTTON_PRESSED = '按下';
 Blockly.MIXLY_BUTTON_RELEASED = '鬆開';
 Blockly.MIXLY_BUTTON_HOLD = '按住';
-
 Blockly.MIXLY_NOVA_BTN = '按鈕';
 Blockly.MIXLY_NOVA_ABCD = '#';
-
 Blockly.MIXLY_NOVA_TILTSWITCH = '傾斜開關';
 Blockly.MIXLY_NOVA_SOUND = '聲音傳感器';
 Blockly.MIXLY_NOVA_LIMISWICTH = '限位開關';
 Blockly.MIXLY_NOVA_LIGHT = '光敏';
-
 Blockly.MIXLY_NOVA_BUZZER = '蜂鳴器';
 Blockly.MIXLY_NOVA_FREQUENCY = '頻率(Hz)';
 Blockly.MIXLY_NOVA_MIXLY_DURATION = '持續時間(ms)';
-
 Blockly.MIXLY_NOVA_MOTOR = '直流電機';
 Blockly.MIXLY_NOVA_MOTOR_SPEED = '轉速(-100~100)%';
-
 Blockly.MIXLY_NOVA_ULTRASONIC = '超聲波測距(cm)';
-
 Blockly.MIXLY_NOVA_DHT11 = '溫濕度';
 Blockly.MIXLY_NOVA_TYPE = '類型';
 Blockly.MIXLY_NOVA_DHT11_H = '獲取濕度';
 Blockly.MIXLY_NOVA_DHT11_T = '獲取溫度';
-
 Blockly.MIXLY_NOVA_SERVO = '舵機';
 Blockly.MIXLY_NOVA_DEGREE_0_180 = '角度（0~180）';
 Blockly.MIXLY_NOVA_DELAY = '延時';
 Blockly.MIXLY_NOVA_DELAY_MS = '毫秒';
-
 Blockly.MIXLY_NOVA_LINEFINDER = '巡線';
 Blockly.MIXLY_NOVA_L = '左邊狀態';
 Blockly.MIXLY_NOVA_R = '右邊狀態';
 Blockly.MIXLY_NOVA_READ = '獲取黑白線狀態';
-
 Blockly.MIXLY_NOVA_4DIGITDISPLAY = '數碼管';
 Blockly.MIXLY_NOVA_NUMBER = '顯示數字';
 Blockly.MIXLY_NOVA_DISPLAY_HOUR= '顯示小時';
 Blockly.MIXLY_NOVA_DISPLAY_MIN = '顯示分鐘';
-
 Blockly.MIXLY_NOVA_RTC = '時鐘';
 Blockly.MIXLY_NOVA_RTC_SEC = '秒';
 Blockly.MIXLY_NOVA_RTC_MIN = '分';
@@ -981,18 +959,13 @@ Blockly.MIXLY_NOVA_RTC_WEEK = '星期';
 Blockly.MIXLY_NOVA_RTC_DAY = '日';
 Blockly.MIXLY_NOVA_RTC_MON = '月';
 Blockly.MIXLY_NOVA_RTC_YEAR = '年';
-
 Blockly.MIXLY_NOVA_IR_REC = '紅外接收';
-
 Blockly.MIXLY_NOVA_BLUETOOTH = '藍牙';
 Blockly.MIXLY_NOVA_BLUETOOTH_AVAILABLE = '有數據可讀？';
 Blockly.MIXLY_NOVA_BLUETOOTH_READ_STR = '讀取數據（返回字符串）';
 Blockly.MIXLY_NOVA_BLUETOOTH_READ_NUM = '讀取數據（返回數字）';
-
-//spi
 Blockly.TO_SPI_SLAVE_PIN='向SPI從機#';
 Blockly.SPI_TRANSFER='傳輸';
-
 Blockly.MIXLY_SERIAL_BEGIN='波特率';
 Blockly.MIXLY_SERIALBT_BEGIN='初始化';
 Blockly.MIXLY_SERIALBT_INIT='初始化ESP32藍牙 設備名稱';
@@ -1002,7 +975,6 @@ Blockly.MIXLY_SERIALBT_WRITE='ESP32藍牙發送數據';
 Blockly.MIXLY_ESP32_RUNNING_CORE='ESP32雙核';
 Blockly.MIXLY_CONTROL_CORE_DELAY='ESP32雙核延時';
 Blockly.MIXLY_ESP32_RUNNING_CORE_PRIORITY='優先級';
-//stepper
 Blockly.MIXLY_STEPPER='步進電機';
 Blockly.MIXLY_STEPPER_SETUP_STEPPER='初始化步進電機';
 Blockly.MIXLY_STEPPER_PIN1='管腳1#';
@@ -1012,8 +984,6 @@ Blockly.MIXLY_STEPPER_PIN4='管腳4#';
 Blockly.MIXLY_STEPSPERREVOLUTION='每轉步數';
 Blockly.MIXLY_STEPPER_SET_SPEED='設置轉速';
 Blockly.MIXLY_STEPPER_STEP='移動步數';
-
-//-----------------Ethernet------------------------------------
 Blockly.MIXLY_ETHERNET_BEGIN='初始化 (DHCP)';
 Blockly.MIXLY_ETHERNET='以太網';
 Blockly.MIXLY_ETHERNET2='以太網2';
@@ -1030,17 +1000,11 @@ Blockly.MIXLY_ETHERNET_CLINET_READ='客戶端-讀取';
 Blockly.MIXLY_ETHERNET_CLINET_GET_REQUEST='GET請求';
 Blockly.MIXLY_ETHERNET_CLINET_URL='URL';
 Blockly.MIXLY_ETHERNET_CLINET_SERVER='服務器';
-
-//lm35温度传感器
 Blockly.MIXLY_LM35='LM35 溫度传感器';
-
-//DS18B20温度传感器
 Blockly.MIXLY_DS18B20='DS18B20 管腳#';
 Blockly.MIXLY_DS18B20_GET_TEMP='獲取溫度';
 Blockly.MIXLY_DS18B20_C='°C';
 Blockly.MIXLY_DS18B20_F='°F';
-
-//GPS
 Blockly.MIXLY_GPS_INIT='GPS初始化';
 Blockly.MIXLY_GPS_DATA_AVAILABLE='GPS獲取到數據';
 Blockly.MIXLY_GPS_DATA_ENCODE='GPS解析數據成功';
@@ -1058,24 +1022,17 @@ Blockly.MIXLY_GPS_TIME_HOUR='時間-時';
 Blockly.MIXLY_GPS_TIME_MINUTE='時間-分';
 Blockly.MIXLY_GPS_TIME_SECOND='時間-秒';
 Blockly.MIXLY_GPS_TIME_CENTISECOND='時間-厘秒';
-
-//factory
 Blockly.MIXLY_PARAMS = '參數';
-
-//MsTimer2
 Blockly.MIXLY_MSTIMER2_EVERY='每隔';
 Blockly.MIXLY_MSTIMER2_DO='執行';
 Blockly.MIXLY_MSTIMER2_START='啟動';
 Blockly.MIXLY_MSTIMER2_STOP='停止';
-//interrupts
 Blockly.MIXLY_CONTROL_INTERRUPTS = '允許中斷';
 Blockly.MIXLY_CONTROL_NOINTERRUPTS = '禁止中斷';
-//SCoop
 Blockly.MIXLY_CONTROL_SCoop_Init = '初始化';
 Blockly.MIXLY_CONTROL_SCoop_loop = '迴圈';
 Blockly.MIXLY_CONTROL_SCoop_yield = '執行SCoop任務';
 Blockly.MIXLY_CONTROL_SCoop_sleep = 'SCoop 延時(僅用於SCoop)';
-//others
 Blockly.MIXLY_WARNING_NOT_DECLARE='該變量未聲明';
 Blockly.MIXLY_LENGTH ="獲取長度";
 Blockly.MIXLY_EQUALS="等於";
@@ -1087,8 +1044,6 @@ Blockly.Msg.UNDO = "還原";
 Blockly.Msg.REDO = "重試";
 Blockly.MIXLY_CONTROL_END_PROGRAM = "停止程序";
 Blockly.MIXLY_CONTROL_NOTES = '注釋:';
-
-//oled
 Blockly.Msg.texttodisplay = "顯示文本：";
 Blockly.Msg.OLEDDISPLAY = "顯示：";
 Blockly.Msg.todisplay = "顯示：";
@@ -1102,20 +1057,16 @@ Blockly.Msg.num1 = "數字1";
 Blockly.Msg.num2 = "數字2";
 Blockly.Msg.num3 = "數字3";
 Blockly.Msg.num4 = "數字4";
-// RGB
 Blockly.MIXLY_RGB_INIT = 'RGB燈初始化';
 Blockly.MIXLY_RGB_SET_BRIGHTNESS = 'RGB燈設置亮度';
 Blockly.MIXLY_RGB_SET_COLOUR = 'RGB燈設置顏色';
 Blockly.MIXLY_RGB_SHOW = 'RGB燈設置生效';
-Blockly.MIXLY_RGB_BRIGHTNESS = '亮度';
 Blockly.MIXLY_RGB = 'RGB燈';
 Blockly.MIXLY_RGB_NUM = '燈號';
 Blockly.MIXLY_RGB_COUNT = '燈數';
 Blockly.MIXLY_RGB_R = 'R值';
 Blockly.MIXLY_RGB_G = 'G值';
 Blockly.MIXLY_RGB_B = 'B值';
-
-//四位数码管
 Blockly.MIXLY_4DIGITDISPLAY = '四位數碼管';
 Blockly.MIXLY_4DIGITDISPLAY_DISPLAYSTRING = '顯示字符串';
 Blockly.MIXLY_4DIGITDISPLAY_NOMBER1 = '第';
@@ -1123,8 +1074,6 @@ Blockly.MIXLY_4DIGITDISPLAY_NOMBER2 = '個';
 Blockly.MIXLY_4DIGITDISPLAY_DOT = '小數點';
 Blockly.MIXLY_4DIGITDISPLAY_ON = '亮';
 Blockly.MIXLY_4DIGITDISPLAY_OFF = '滅';
-
-//MAX7219
 Blockly.MIXLY_MAX7219_INIT_NUM='點陣模塊數量';
 Blockly.MIXLY_MAX7219_PUTSTR='MAX7219點陣滾動顯示';
 Blockly.MIXLY_SPEED='速度';
@@ -1144,7 +1093,6 @@ Blockly.MIXLY_MAX7219_NO='屏幕序號';
 Blockly.MAX7219_INIT_TOOLTIP = '初始化點陣屏';
 Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_STRING = '按一定速度逐個顯示字符串中的每個字符';
 Blockly.MIXLY_TOOPTIP_Matrix_MAX7219_PREDEFARR = '返回預先定義的圖案';
-//TM1637
 Blockly.MIXLY_4DIGITDISPLAY_TM1637 = 'TM1637';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYPRINT = 'TM1637 顯示';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYSTRING_TIP = '少於等於4字元為顯示，超過4個字元為滾動。';
@@ -1160,7 +1108,6 @@ Blockly.MIXLY_4DIGITDISPLAY_STOPWATCH_RESET = '重置';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_BRIGHTNESS = 'TM1637 設置亮度';
 Blockly.MIXLY_4DIGITDISPLAY_4DIGITDISPLAY_BRIGHTNESS_TOOLTIP = '設置亮度,範圍是0-7';
 Blockly.MIXLY_4DIGITDISPLAY_TM1637_CLEARDISPLAY = 'TM1637 清屏';
-
 Blockly.MIXLY_YEAR = '年';
 Blockly.MIXLY_MONTH = '月';
 Blockly.MIXLY_DAY = '日';
@@ -1169,12 +1116,10 @@ Blockly.MIXLY_MINUTE = '分';
 Blockly.MIXLY_SECOND = '秒';
 Blockly.MIXLY_WEEK = '星期';
 Blockly.MIXLY_MILLISECOND = '微秒';
-
 Blockly.MIXLY_DS1302_INITPIN = '初始化DS1302 RTC時鐘模組 管腳'
 Blockly.MIXLY_SETDATE = '設置日期:';
 Blockly.MIXLY_DATEFORMATE = '日期格式(年-月-日)'
 Blockly.MIXLY_TIMEFORMATE = '時間格式(時:分:秒)'
-//8*8点阵显示屏
 Blockly.MIXLY_DISPLAY_MATRIX_INIT = "初始化8*8點陣幕(HT16K33)";
 Blockly.MIXLY_DISPLAY_MATRIX_SHOW = "點陣屏顯示";
 Blockly.MIXLY_DISPLAY_MATRIX_X = 'X軸';
@@ -1185,12 +1130,10 @@ Blockly.MIXLY_DISPLAY_MATRIX_CLEAR = " 顯示清屏";
 Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "陣列變數";
 Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " 圖案陣列";
 Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "螢幕旋轉";
-
 Blockly.MIXLY_RTCINIT = '初始化DS1307 RTC時鐘模組';
 Blockly.MIXLY_RTCGETTIME = '從RTC時鐘模組獲取';
 Blockly.MIXLY_RTCSETTIME = '設置RTC時鐘模組時間：';
 Blockly.MIXLY_RTCSETDATE = '設置RTC時鐘模組日期：';
-
 Blockly.MIXLY_ADXL345 = '重力感應塊_ADXL345';
 Blockly.MIXLY_ADXL345_X ='X軸加速度';
 Blockly.MIXLY_ADXL345_Y ='Y軸加速度';
@@ -1198,7 +1141,6 @@ Blockly.MIXLY_ADXL345_Z ='Z軸加速度';
 Blockly.MIXLY_ADXL345_XA ='X軸角度';
 Blockly.MIXLY_ADXL345_YA ='Y軸角度';
 Blockly.MIXLY_ADXL345_ZA ='Z軸角度';
-//microbit javascript
 Blockly.MIXLY_MICROBIT_JS_IS_GESTURE='發生手勢 ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_WHEN_CONTAIN_DATA='當 Serial 收到的資料包含 ';
 Blockly.MIXLY_MICROBIT_JS_SERIAL_READ_LINE='Serial 讀取一行';
@@ -1331,7 +1273,6 @@ Blockly.MIXLY_MICROBIT_JS_LIST_FIND_INDEX_OF='獲取下標 值';
 Blockly.MIXLY_MICROBIT_JS_LIST_REMOVE_VALUE_AT='刪除項 第';
 Blockly.MIXLY_MICROBIT_JS_LIST_REMOVE_VALUE_XIANG='項';
 Blockly.MIXLY_MICROBIT_JS_INTERRUPT_BTN='中斷 按鈕#';
-
 Blockly.MIXLY_MICROBIT_JS_INOUT_ANALOG_PITCH = '類比輸出頻率為';
 Blockly.MIXLY_MICROBIT_JS_INOUT_FREQUENCY = '赫茲的音調持續時長（秒）';
 Blockly.Msg.INOUT_ANALOGPITCH  = "輸出一定頻率的音調一段時間";
@@ -1357,7 +1298,6 @@ Blockly.MIXLY_MICROBIT_right='右';
 Blockly.MIXLY_MICROBIT_face_up='朝上';
 Blockly.MIXLY_MICROBIT_face_down='朝下';
 Blockly.MIXLY_MICROBIT_freefall='自由落體';
-//microbit
 Blockly.MIXLY_MICROBIT_Accelerometer_X='加速度計X軸';
 Blockly.MIXLY_MICROBIT_Accelerometer_Y='加速度計Y軸';
 Blockly.MIXLY_MICROBIT_Accelerometer_Z='加速度計Z軸';
@@ -1437,12 +1377,10 @@ Blockly.MIXLY_MICROBIT_JS_IS_COMPASS_CALIBRATED='指南針已經校準';
 Blockly.MIXLY_IS_TOUCHED='已經被觸摸';
 Blockly.MIXLY_WAS_PRESSED='曾經被按下';
 Blockly.MIXLY_GET_PRESSES='被按下的次數';
-
 Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING='滾動顯示字符串';
-Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY='說'
-Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING='唱'
-Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE='讀'
-//lists
+Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SAY='說';
+Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_SING='唱';
+Blockly.MIXLY_MICROBIT_PY_ACTUATOR_SPEECH_PRENOUNCE='讀';
 Blockly.Msg.LISTS_NAME_TOOLTIP='輸入列表名稱';
 Blockly.blockpy_LIST_ADD_LIST='增加 列表';
 Blockly.Msg.blockpy_LISTS_CREATE_WITH_INPUT_WITH ='初始化列表為';
@@ -1454,11 +1392,9 @@ Blockly.blockpy_LANG_LISTS_GET_INDEX_TOOLTIP = '返回列表中指定位置的�
 Blockly.blockpy_LANG_LISTS_SET_INDEX_TOOLTIP = '設置列表中指定位置的值。';
 Blockly.Msg.LISTS_GET_INDEX_RANDOM2 = "隨即取出列表";
 Blockly.Msg.LISTS_GET_INDEX_RANDOM3 = "中的一項";
-
 Blockly.Msg.MATH_ZHENGCHU_SYMBOL = "//";
 Blockly.MIXLY_MICROBIT_JS_PERIOD_MIL='週期(毫秒)設為';
 Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE_PY = '設置指定管腳的值(0~1023)';
-
 Blockly.Msg.LISTS_ISEMPTY_TITLE='是空的嗎?';
 Blockly.Msg.LISTS_SORT_TITLE =' 對列表排序 %1 %2 %3';
 Blockly.Msg.LISTS_SORT_TYPE_NUMERIC =' 按數字';
@@ -1470,24 +1406,19 @@ Blockly.Msg.DISPLAY_IMAGE_LET='將圖像';
 Blockly.Msg.DISPLAY_IMAGE_LET2='向';
 Blockly.Msg.DISPLAY_IMAGE_SHIFT='平移';
 Blockly.Msg.DISPLAY_IMAGE_UNIT='個單位';
-
 Blockly.LANG_MATH_RANDOM_FLOAT_INPUT_FROM =' 隨機小數 從';
 Blockly.LANG_MATH_RANDOM_FLOAT_INPUT_TO =' 到';
 Blockly.LANG_MATH_RANDOM_FLOAT_TOOLTIP2 =' 返回兩個數（含）之間的隨機小數';
-
 Blockly.MICROBIT_SPEECH_pitch =' 音高';
 Blockly.MICROBIT_SPEECH_speed =' 速度';
 Blockly.MICROBIT_SPEECH_mouth =' 嘴唇';
 Blockly.MICROBIT_SPEECH_throat =' 喉嚨';
 Blockly.MICROBIT_SPEECH_translation =' 翻譯為語音';
-
 Blockly.MICROBIT_ACTUATOR_bpm =' 速度';
 Blockly.MICROBIT_ACTUATOR_ticks =' 解析度';
-
 Blockly.MICROBIT_PYTHON_TYPE = '獲取資料類型';
 Blockly.MICROBIT_LOGIC_IS_IN = '中嗎？';
 Blockly.Msg.CONTROLS_FOREACH_INPUT = "對";
-
 Blockly.MICROBIT_DISPLAY_UNION = '聯合';
 Blockly.MICROBIT_DISPLAY_INTERSECTION = '相交';
 Blockly.MICROBIT_DISPLAY_MINUS = '減除';
@@ -1526,7 +1457,6 @@ Blockly.Msg.MATH_BIN='二進位';
 Blockly.Msg.MATH_DEC='十進制';
 Blockly.Msg.MATH_OCT='八進制';
 Blockly.Msg.MATH_HEX='十六進制';
-
 Blockly.MIXLY_MICROBIT_TYPE_INT = '整數';
 Blockly.MIXLY_MICROBIT_TYPE_FLOAT = '浮點數';
 Blockly.MIXLY_MICROBIT_TYPE_STRING = "字串";
@@ -1535,7 +1465,6 @@ Blockly.MIXLY_MICROBIT_TYPE_TUPLE = "元組";
 Blockly.MIXLY_MICROBIT_TYPE_DICT = "字典";
 Blockly.MIXLY_MICROBIT_TYPE_SETS = "集合";
 Blockly.MIXLY_MICROBIT_TYPE_IMAGE = "圖像";
-
 Blockly.MIXLY_MICROBIT_PY_STORAGE_OPEN_FILE = "打開文件";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE = "模式";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_READ = "讀"
@@ -1545,8 +1474,6 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_WRITE = "二進位寫";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_AS = "為";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_MAKE = "將";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_WRITE = "寫入文件";
-
-
 Blockly.MIXLY_MICROBIT_PY_STORAGE_FROM_FILE = '從文件';
 Blockly.MIXLY_MICROBIT_PY_STORAGE_NO_MORE_THAN_SIZE = "讀取內容 不超過";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE_NO_MORE_THAN_SIZE = "讀取一行內容 不超過"
@@ -1560,13 +1487,10 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_LIST_ALL_FILES = "列出所有檔";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_DELETE_FILE = "刪除檔";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_GET_FILE_SIZE = "獲得文件";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_SIZE = "大小";
-
 Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE = "資料類型";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME = "當前系統資訊";
-
 Blockly.MIXLY_MICROBIT_SHOW_STRING = " %1 延時 %2 毫秒 %3 等待 %4 %5 迴圈 %6 %7 清除 %8";
 Blockly.MIXLY_MICROBIT_Scroll_string = "滾動顯示字串 %1 延時 %2 毫秒 %3 等待 %4 %5 迴圈 %6 %7 清除 %8";
-
 Blockly.MIXLY_COMMUNICATION_RFID_INITIAL = "初始化rfid為";
 Blockly.MIXLY_COMMUNICATION_RFID_ON_DETECTED = "偵測到信號";
 Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM = "rfid所讀卡的卡號";
@@ -1582,7 +1506,6 @@ Blockly.MIXLY_COMMUNICATION_RFID_READ = "RFID讀取";
 Blockly.MIXLY_COMMUNICATION_DATA_FROM = "的數據";
 Blockly.MIXLY_COMMUNICATION_RFID_OFF = "rfid停止偵測";
 Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_RESET = "復位";
-//mixpy
 Blockly.blockpy_inout_input='接收輸入';
 Blockly.blockpy_inout_raw_input='接收字串輸入';
 Blockly.blockpy_inout_print='列印';
@@ -1724,11 +1647,9 @@ Blockly.Msg.MIXLY_LIST_LEN='長度';
 Blockly.Msg.MIXLY_LIST_COUNT='個數'
 Blockly.Msg.MIXLY_LIST_INDEX='位置'
 Blockly.Msg.A_TO_B='轉化為'
-
 Blockly.MIXLY_MICROBIT_TYPE_NONE = "空";
 Blockly.MIXLY_MICROBIT_WAIT = '等待';
 Blockly.MIXLY_MICROBIT_RANDOM = '隨機';
-
 Blockly.Msg.TUPLE_TO_SET = "將元組轉化為集合";
 Blockly.Msg.TUPLE_TO_LISTS = "將元組轉化為列表";
 Blockly.Msg.SET_TO_TUPLE = "將集合轉化為元組";
@@ -1976,7 +1897,6 @@ Blockly.MIXLY_MIXPY_REPLACE="替換";
 Blockly.Msg.LIST_SPLIT_AS = "按照";
 Blockly.Msg.LIST_SPLIT = "劃分";
 Blockly.MIXLY_TOOLTIP_TEXT_SPLIT="將字串劃分，返回一個清單。";
-
 Blockly.Msg.TEXT_STRIM = "消除";
 Blockly.Msg.TEXT_TRIM_BOTH = "兩側";
 Blockly.Msg.TEXT_TRIM_LEFT = "左側";
@@ -2005,7 +1925,6 @@ Blockly.blockpy_PYLAB_LABEL='座標說明文字為';
 Blockly.Msg.PYLAB_LABEL_X = "橫";
 Blockly.Msg.PYLAB_LABEL_Y = "縱";
 Blockly.blockpy_series_set_index = '索引為';
-
 Blockly.blockpy_PYLAB_PLOT='繪製成折線圖';
 Blockly.blockpy_dataframe_create='創建二維資料表';
 Blockly.blockpy_dataframe_via = '通過字典';
@@ -2048,7 +1967,6 @@ Blockly.blockpy_PYLAB_PLOT_DOT_DIAMOND='菱形（大）';
 Blockly.blockpy_PYLAB_PLOT_DOT_DIAMOND_SMALL='菱形（小）';
 Blockly.blockpy_PYLAB_PLOT_DOT_VERTICAL='短分隔號';
 Blockly.blockpy_PYLAB_PLOT_DOT_HORIZONTAL='短橫線';
-
 Blockly.MIXLY_MICROBIT_JS_I2C="i2c";
 Blockly.MIXLY_ESP32_TOUCH="觸摸";
 Blockly.MIXLY_ESP32_TOUCH_SENSOR="觸摸感測器";
@@ -2206,16 +2124,15 @@ Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TOOLTIP="發送信息";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_RECEIVE_FROM_TOOLTIP="返回接收的數據";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_SEND_TO_TOOLTIP="發送信息到指定的網絡地址";
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CLOSE_TOOLTIP="關閉網絡連接";
-Blockly.MIXLY_ESP32_SENSOR_MIXGO_PIN_NEAR_TOOLTIP='返回'
-Blockly.ESP32_SENSOR_NIXGO_LIGHT_TOOLTIP = '返回光線感測器的值（0~111）'
-Blockly.ESP32_SENSOR_NIXGO_SOUND_TOOLTIP = '返回聲音感測器的值（0~111）'
-Blockly.MIXLY_MICROBIT_SENSOR_BMP_temperature_TOOLTIP = "獲取溫度（-45~+85℃)"
-Blockly.MIXLY_MICROBIT_SENSOR_BMP_press_TOOLTIP = "獲取大氣壓強（0~20000hPa)"
-Blockly.MIXLY_MICROBIT_SENSOR_SHT_temperature_TOOLTIP = "獲取溫度（-40~+125℃）"
-Blockly.MIXLY_MICROBIT_SENSOR_SHT_HUM_TOOLTIP = "獲取濕度（0~100%）"
-Blockly.MIXLY_ESP32_SENSOR_USE_I2C_TOOLTIP='初始化感測器類型為：'
-Blockly.MIXLY_MICROBIT_SENSOR_DS18X20_TOOLTIP ='返回溫度，範圍為（-55~+125℃）'
-//@author:zyc 2018-12-6
+Blockly.MIXLY_ESP32_SENSOR_MIXGO_PIN_NEAR_TOOLTIP='返回';
+Blockly.ESP32_SENSOR_NIXGO_LIGHT_TOOLTIP = '返回光線感測器的值（0~111）';
+Blockly.ESP32_SENSOR_NIXGO_SOUND_TOOLTIP = '返回聲音感測器的值（0~111）';
+Blockly.MIXLY_MICROBIT_SENSOR_BMP_temperature_TOOLTIP = "獲取溫度（-45~+85℃)";
+Blockly.MIXLY_MICROBIT_SENSOR_BMP_press_TOOLTIP = "獲取大氣壓強（0~20000hPa)";
+Blockly.MIXLY_MICROBIT_SENSOR_SHT_temperature_TOOLTIP = "獲取溫度（-40~+125℃）";
+Blockly.MIXLY_MICROBIT_SENSOR_SHT_HUM_TOOLTIP = "獲取濕度（0~100%）";
+Blockly.MIXLY_ESP32_SENSOR_USE_I2C_TOOLTIP='初始化感測器類型為：';
+Blockly.MIXLY_MICROBIT_SENSOR_DS18X20_TOOLTIP ='返回溫度，範圍為（-55~+125℃）';
 Blockly.MIXLY_TOOLTIP_RTC_SETTIME = Blockly.MIXLY_RTCSETTIME;
 Blockly.MIXLY_TOOLTIP_RTC_SETDATE = Blockly.MIXLY_RTCSETDATE;
 Blockly.MIXLY_TOOLTIP_RGB_INIT = Blockly.MIXLY_RGB_PIN_COUNT;
@@ -2299,7 +2216,6 @@ Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION='顯示(圖像/字符串/�
 Blockly.MIXLY_MIXPY_TURTLE_WIDTH = '畫筆寬度';
 Blockly.MIXLY_TOOLTIP_TURTEL_HEADING='獲取烏龜當前朝向，返回一個浮點數';
 Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH='獲取烏龜當前畫筆寬度，返回一個整數';
-
 Blockly.MIXLY_PYTHON_SYSTEM_EVAL = '執行文本代碼並獲取其返回值 代碼';
 Blockly.MIXLY_PYTHON_SYSTEM_EVAL_TOOLTIP = '返回參數代碼執行的返回值，如參數代碼無返回值則返回None';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_USE_STR = '通過字串';
@@ -2307,12 +2223,10 @@ Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_SEQ = '將序列';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_GET_STR = '連接成一個字串';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_TOOLTIP = '第二個參數必須是可反覆運算的且反覆運算的每一項類型都是字串；結果返回一個字串';
 Blockly.MIXLY_PYTHON_TURTLE_EXITONCLICK = '設置點擊螢幕結束烏龜畫圖';
-
 Blockly.MIXLY_MICROPYTHON_SOCKET_CONNECT_TO_ADDRESS='連接到地址';
 Blockly.MIXLY_ESP32_NETWORK_SOCKET_CONNECT_TOOLTIP="將套接字連接到網絡地址";
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE="獲取激活狀態";
 Blockly.MIXLY_NETWORK_WIFI_IS_ACTIVE_TOOLTIP="獲取指定網絡的激活狀態";
-
 Blockly.MIXLY_ESP32_IOT_ONENET_PRINT_DATA="列印資料";
 Blockly.MIXLY_PYTHON_LOGIC_COMPARE_CONTINOUS_TOOLTIP = "如果中間項同時滿足左右兩個不等式則返回真，否則返回假";
 Blockly.MIXLY_PYTHON_LOGIC_IS = "是";
@@ -2321,7 +2235,6 @@ Blockly.MIXLY_PYTHON_INOUT_PRINT_END_TOOLTIP = "列印指定的文字、數位�
 Blockly.MIXLY_PYTHON_MATH_CONSTANT = "常數";
 Blockly.MIXLY_PYTHON_MATH_CONSTANT_PI_TOOLTIP = "圓周率常數的近似值（保留小數點後15位）";
 Blockly.MIXLY_PYTHON_MATH_CONSTANT_E_TOOLTIP = "自然常數的近似值（保留小數點後15位）";
-////////blynk////////////////////////////
 Blockly.blynk_IOT_AUTH='Blynk授權碼';
 Blockly.blynk_WIFI_SSID='Wi-Fi名稱';
 Blockly.blynk_WIFI_PASS='Wi-Fi密碼';
@@ -2336,7 +2249,6 @@ Blockly.blynk_IOT_INT='整型';
 Blockly.blynk_IOT_STRING='字串';
 Blockly.blynk_IOT_DOUBLE='浮點型';
 Blockly.blynk_IOT_VAR_NAME='變數名';
-
 Blockly.blynk_TIMER='Blynk計時器';
 Blockly.blynk_IOT_WidgetLED='LED組件 虛擬管腳';
 Blockly.blynk_IOT_WidgetLED_ON='開';
@@ -2361,13 +2273,9 @@ Blockly.blynk_IOT_IR_MODE='模式';
 Blockly.blynk_IOT_IR_FAN='風速';
 Blockly.blynk_IOT_IR_TEMP='溫度';
 Blockly.blynk_IOT_IR_POWER='電源';
-
 Blockly.blynk_IOT_IR_RECEIVE_RAW='紅外信號解碼 管腳';
 Blockly.blynk_IOT_IR_SEND='紅外發送 管腳';
 Blockly.blynk_IOT_IR_SEND_CODE='編碼內容';
-
-
-//OLED
 Blockly.OLED = 'OLED';
 Blockly.OLEDGET = '獲取OLED';
 Blockly.OLED_CLEAR='OLED清屏';
@@ -2457,25 +2365,19 @@ Blockly.OLED_FONT_wqy14_t_gb2312='宋體14號全集(7539字)';
 Blockly.OLED_FONT_wqy16_t_gb2312a='宋體16號大字體集A(4041字)';
 Blockly.OLED_FONT_wqy16_t_gb2312b='宋體16號大字體集B(4531字)';
 Blockly.OLED_FONT_wqy16_t_gb2312='宋體16號全集(7539字)';
-
 Blockly.blynk_EMAIL='發送郵件';
 Blockly.blynk_EMAIL_ADD='郵寄地址';
 Blockly.blynk_EMAIL_SUBJECT='郵件主題';
 Blockly.blynk_EMAIL_CONTENT='郵件內容';
-
 Blockly.blynk_BRIDGE_AUTH='橋接授權碼';
 Blockly.blynk_bridge_digitalWrite='橋接數位輸出';
 Blockly.blynk_bridge_AnaloglWrite='橋接模擬輸出';
 Blockly.BLYNK_BRIDGE_VIRTUALPIN='橋接虛擬管腳';
-
 Blockly.blynk_WidgetRTC_init='RTC組件初始化';
 Blockly.blynk_WidgetRTC_setSyncInterval='同步間隔';
 Blockly.blynk_WidgetRTC_mintues='分鐘';
 Blockly.blynk_WidgetRTC_get_time='RTC組件獲取';
-
 Blockly.blynk_iot_playmusic='播放音樂元件';
-
-
 Blockly.GD5800_MP3='GD5800 MP3模組';
 Blockly.MIXLY_MP3_PLAY='播放';
 Blockly.MIXLY_MP3_PAUSE='暫停';
@@ -2483,15 +2385,11 @@ Blockly.MIXLY_MP3_NEXT='下一曲';
 Blockly.MIXLY_MP3_PREV='上一曲';
 Blockly.MIXLY_MP3_VOL_UP='音量加';
 Blockly.MIXLY_MP3_VOL_DOWN='音量減';
-
 Blockly.MIXLY_MP3_LOOP_MODE='迴圈模式';
 Blockly.MIXLY_MP3_LOOP_ALL='全部迴圈';
 Blockly.MIXLY_MP3_LOOP_FOLDER='資料夾內迴圈';
 Blockly.MIXLY_MP3_LOOP_ONE='單曲迴圈';
 Blockly.MIXLY_MP3_LOOP_RAM='隨機播放';
-
-
-
 Blockly.MIXLY_MP3_EQ_MODE='音效';
 Blockly.MIXLY_MP3_EQ_NORMAL='普通';
 Blockly.MIXLY_MP3_EQ_POP='流行';
@@ -2519,12 +2417,10 @@ Blockly.BLYNK_APP_CONNECTED='APP已連接';
 Blockly.BLYNK_APP_DISCONNECTED='APP離線';
 Blockly.BLYNK_syncAll='同步所有管腳狀態';
 Blockly.blynk_IOT_syncVirtual='同步虛擬管腳狀態';
-
 Blockly.MIXLY_MOTOR_SPEED = '速度(-255~255)';
 Blockly.MIXLY_MOTOR = '電機';
 Blockly.MIXLY_MOTOR_SPEED_PIN='速度管腳';
 Blockly.MIXLY_MOTOR_DIR_PIN='方向管腳';
-
 Blockly.MIXLY_HARDWARE='硬件交互';
 Blockly.MIXLY_HARDWARE_SERIAL='串口號';
 Blockly.MIXLY_HARDWARE_START='啟動交互';
@@ -2538,13 +2434,10 @@ Blockly.MixGo_MPU9250_GZ='z轴角速度';
 Blockly.MixGo_MPU9250_MX='x轴磁場';
 Blockly.MixGo_MPU9250_MY='y轴磁場';
 Blockly.MixGo_MPU9250_MZ='z轴磁場';
-
 Blockly.MIXLY_HANBIT_SHOW_CIRCLE = " 圓心(x %1, y %2)半徑 %3 %4 填充 %5";
 Blockly.MIXLY_HANBIT_SHOW_triangle = " 頂點(x0 %1, y0 %2) (x1 %3, y1 %4) (x2 %5, y2 %6) %7 填充 %8";
 Blockly.MIXLY_HANBIT_DRAW_TRIANGLE = "三角形";
-
 Blockly.MICROBIT_SENSOR_LIGHT_TOOLTIP = '返回光線傳感器的值（0~255）';
-
 Blockly.MIXLY_readTempC='獲取攝氏度';
 Blockly.MIXLY_readTempF='獲取華氏度';
 Blockly.MIXLY_MPU6050='MPU6050陀螺儀';
@@ -2555,13 +2448,10 @@ Blockly.MIXLY_Accel_Z ='Z軸加速度';
 Blockly.MIXLY_Gyro_X ='X軸角速度';
 Blockly.MIXLY_Gyro_Y ='Y軸角速度';
 Blockly.MIXLY_Gyro_Z ='Z軸角速度';
-
 Blockly.MIXLY_CHOOSE_AND_GET= '選擇並獲取';
 Blockly.MIXLY_CHOOSE_AND_GET_ONE_FILE_NAME= '單個檔名';
 Blockly.MIXLY_CHOOSE_AND_GET_MANY_FILE_NAMES= '多個檔名';
 Blockly.MIXLY_CHOOSE_AND_GET_DIR= '檔案目錄';
-
-
 Blockly.MIXLY_AipImageClassify = '圖像識別';
 Blockly.MIXLY_AipSpeech = '語音技術';
 Blockly.MIXLY_AipImageCensor = '影像稽核';
@@ -2619,7 +2509,6 @@ Blockly.MIXLY_AipNlp_Topic_TOOLTIP = '返回的資料為字典，其中item為�
 Blockly.MIXLY_AipNlp_Summary_TOOLTIP = '返回的資料為字典，其中summary為結果。';
 Blockly.MIXLY_AipNlp_Topic_Title = '標題';
 Blockly.MIXLY_AipNlp_Topic_Content = '正文';
-//mqtt
 Blockly.MQTT_publish='MQTT:發送消息';
 Blockly.MQTT_SERVER='MQTT服務器';
 Blockly.MQTT_SERVER_ADD='地址';
@@ -2628,15 +2517,12 @@ Blockly.MQTT_IOT_ID='IOT ID';
 Blockly.MQTT_IOT_PWD='IOT_PWD';
 Blockly.MQTT_subscribe2='接收到';
 Blockly.MQTT_Topic='主题';
-
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL = "讀取内容";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ONE_LINE = "讀取一行内容";
 Blockly.MIXLY_MICROBIT_PY_STORAGE_ALL_LINES = "讀取所有行内容";
 Blockly.MIXLY_ENCODER='旋轉編碼器';
 Blockly.MIXLY_SIMPLE_TIMER='簡單定時器';
-
 Blockly.Msg.MIXLY_PYTHON_STORAGE_OPEN_FILE_WITH_OS = '使用系统默认软件打开文件';
-
 Blockly.blynk_AP_config="一鍵配網(AP模式)";
 Blockly.blynk_AP_config_tooltip="沒有連接到WiFi時，自動打開熱點,手機或電腦連接磁熱點進行配置網絡";
 Blockly.blynk_AP_config2="一鍵配網及授權碼(AP模式)";
@@ -2644,7 +2530,6 @@ Blockly.Blynk_connected="blynk服務器連接狀態";
 Blockly.Blynk_connected_Tooltip="返回blynk服務器連接狀態，正常返回1,不正常返回0";
 Blockly.blynk_terminal_clear="Blynk終端清屏";
 Blockly.blynk_lcd="LCD組件顯示";
-
 Blockly.Msg.HTML_DOCUMENT = "HTML文檔";
 Blockly.Msg.HTML_LEVEL = "標題 級別";
 Blockly.Msg.HTML_HEAD = "頭";
@@ -2684,18 +2569,15 @@ Blockly.Msg.HTML_WEEK = "星期";
 Blockly.Msg.HTML_NAME = "名稱";
 Blockly.Msg.HTML_VALUE = "值";
 Blockly.Msg.HTML_FORM_CONTENT = "表單項";
-
 Blockly.NTP_SERVER='NTP時間服務器';
 Blockly.MIXLY_TimeZone='時區';
 Blockly.NTP_server_get_time='NTP獲取';
-
 Blockly.MIXLY_CLICK='單擊';
 Blockly.MIXLY_DOUBLE_CLICK='雙擊';
 Blockly.MIXLY_LONG_PRESS_START='長按開始';
 Blockly.MIXLY_DURING_LONG_PRESS='長按中';
 Blockly.MIXLY_LONG_PRESS_END='長按結束';
 Blockly.ONEBUTTON="多功能按鍵";
-//ps2
 Blockly.PS2_INIT='初始化PS2手柄';
 Blockly.PS2_TRIANGLE="三角形鍵";
 Blockly.PS2_CIRCLE="圆形鍵";
@@ -2813,6 +2695,163 @@ Blockly.HANDBIT_DOWN='正面向下';
 Blockly.BME280="讀取BME280";
 Blockly.ESP32_HALL='ESP32 霍尔值';
 Blockly.ESP32_TEMP='ESP32 温度值';
+Blockly.MIXLY_BACKGROUND_COLOR='背景色';
+Blockly.Msg.YEELIGHT_INIT_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_INIT_MESSAGE0 = '設置實例  第 %1 個 Yeelight 命名為 %2';
+Blockly.Msg.YEELIGHT_INIT_TOOLTIP = '若設備列表爲空將導致報錯';
+Blockly.Msg.YEELIGHT_INIT_IP_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_INIT_IP_MESSAGE0 = '設置實例 %1 的 ip 為 %2';
+Blockly.Msg.YEELIGHT_INIT_IP_TOOLTIP = '根據設備列表中的網内 ip 初始化 Yeelight';
+Blockly.Msg.YEELIGHT_SEARCH_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_SEARCH_MESSAGE0 = '局域網内 Yeelight 設備列表';
+Blockly.Msg.YEELIGHT_SEARCH_TOOLTIP = '';
+Blockly.Msg.YEELIGHT_CONFIG_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_CONFIG_MESSAGE0 = '第 %1 個 Yeelight 的 %2';
+Blockly.Msg.YEELIGHT_CONFIG_TOOLTIP = '若設備列表爲空將導致報錯';
+Blockly.Msg.BRIGHT = '亮度';
+Blockly.Msg.YEELIGHT_SWITCH_STATE_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_SWITCH_STATE_MESSAGE0 = '%2   %1';
+Blockly.Msg.YEELIGHT_SWITCH_STATE_TOOLTIP = '';
+Blockly.Msg.YEELIGHT_SET_RGB_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_SET_RGB_MESSAGE0 = '%1 設顔色 R %2 G %3 B %4';
+Blockly.Msg.YEELIGHT_SET_RGB_TOOLTIP = '';
+Blockly.Msg.YEELIGHT_SET_BRIGHTNESS_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_SET_BRIGHTNESS_MESSAGE0 = '%1 設亮度 %2';
+Blockly.Msg.YEELIGHT_SET_BRIGHTNESS_TOOLTIP = '';
+Blockly.Msg.YEELIGHT_SET_HSV_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_SET_HSV_MESSAGE0 = '%1 設 HSV 色調 %2 飽和度 %3';
+Blockly.Msg.YEELIGHT_SET_HSV_TOOLTIP = '色調: 0-359, 飽和度: 0-100';
+Blockly.Msg.zero_to_100_HELPURL = '';
+Blockly.Msg.zero_to_100_MESSAGE0 = '%1';
+Blockly.Msg.zero_to_100_TOOLTIP = '';
+Blockly.Msg.YEELIGHT_SET_RGB_COLOR_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_SET_RGB_COLOR_MESSAGE0 = '%1 設顔色 %2';
+Blockly.Msg.YEELIGHT_SET_RGB_COLOR_TOOLTIP = '';
+Blockly.Msg.YEELIGHT_SET_COLOR_TEMP_HELPURL = 'https://mpython.readthedocs.io/zh/master/tutorials/advance/iot/yeelight.html?highlight=yeelight#yeelight';
+Blockly.Msg.YEELIGHT_SET_COLOR_TEMP_MESSAGE0 = '%1 設色温 %2';
+Blockly.Msg.YEELIGHT_SET_COLOR_TEMP_TOOLTIP = '1700-6500';
+Blockly.Msg.TELLO_ON = '打開';
+Blockly.Msg.TELLO_OFF = '關閉';
+Blockly.Msg.TELLO_UP = '上';
+Blockly.Msg.TELLO_DOWN = '下';
+Blockly.Msg.TELLO_LEFT = '左';
+Blockly.Msg.TELLO_RIGHT = '右';
+Blockly.Msg.TELLO_FORWARD = '前';
+Blockly.Msg.TELLO_BACK = '後';
+Blockly.Msg.TELLO_CLOCKWISE = '順時針';
+Blockly.Msg.TELLO_ANTICLOCKWISE = '逆時針';
+Blockly.Msg.TELLO_MDIRECTION0 = '僅打開下視探測';
+Blockly.Msg.TELLO_MDIRECTION1 = '僅打開前視探測';
+Blockly.Msg.TELLO_MDIRECTION2 = '同時打開前視和下視探測';
+Blockly.Msg.TELLO_POINT_HELPURL = '';
+Blockly.Msg.TELLO_POINT_TOOLTIP = '';
+Blockly.Msg.TELLO_POINT_MESSAGE0 = '點 x %1 y %2 z %3';
+Blockly.Msg.TELLO_COMMAND_HELPURL = '';
+Blockly.Msg.TELLO_COMMAND_TOOLTIP = '';
+Blockly.Msg.TELLO_COMMAND_MESSAGE0 = '進入SDK命令模式';
+Blockly.Msg.TELLO_TAKEOFF_HELPURL = '';
+Blockly.Msg.TELLO_TAKEOFF_TOOLTIP = '';
+Blockly.Msg.TELLO_TAKEOFF_MESSAGE0 = '自動起飛';
+Blockly.Msg.TELLO_LAND_HELPURL = '';
+Blockly.Msg.TELLO_LAND_TOOLTIP = '';
+Blockly.Msg.TELLO_LAND_MESSAGE0 = '自動降落';
+Blockly.Msg.TELLO_STREAM_HELPURL = '';
+Blockly.Msg.TELLO_STREAM_TOOLTIP = '';
+Blockly.Msg.TELLO_STREAM_MESSAGE0 = '%1 視頻流';
+Blockly.Msg.TELLO_EMERGENCY_HELPURL = '';
+Blockly.Msg.TELLO_EMERGENCY_TOOLTIP = '';
+Blockly.Msg.TELLO_EMERGENCY_MESSAGE0 = '停止電機轉動';
+Blockly.Msg.TELLO_FLY_HELPURL = '';
+Blockly.Msg.TELLO_FLY_TOOLTIP = '飛行距離取值 20～500';
+Blockly.Msg.TELLO_FLY_MESSAGE0 = '向 %1 飛 %2 厘米';
+Blockly.Msg.TELLO_ROTATE_HELPURL = '';
+Blockly.Msg.TELLO_ROTATE_TOOLTIP = '旋轉角度取值 1～360';
+Blockly.Msg.TELLO_ROTATE_MESSAGE0 = '%1 旋轉 %2';
+Blockly.Msg.TELLO_ROLL_HELPURL = '';
+Blockly.Msg.TELLO_ROLL_TOOLTIP = '';
+Blockly.Msg.TELLO_ROLL_MESSAGE0 = '朝 %1 方向翻滾';
+Blockly.Msg.TELLO_GO_SPEED_HELPURL = '';
+Blockly.Msg.TELLO_GO_SPEED_TOOLTIP = '速度: 10 - 100(cm/s)\nx/y/z: -500 - 500\nx、y、z不能同時在 -20 ～ 20 之間';
+Blockly.Msg.TELLO_GO_SPEED_MESSAGE0 = '以速度 %1 飛往 %2';
+Blockly.Msg.TELLO_STOP_HELPURL = '';
+Blockly.Msg.TELLO_STOP_TOOLTIP = '停止運動並懸停，任何時候都可以';
+Blockly.Msg.TELLO_STOP_MESSAGE0 = '停止運動並懸停';
+Blockly.Msg.TELLO_CURVE_SPEED_HELPURL = '';
+Blockly.Msg.TELLO_CURVE_SPEED_TOOLTIP = '如果弧線半徑不在0.5～10米範圍內，則返回相應提醒。\n速度: 10 - 60(cm/s)\nx/y/z: -500 - 500\nx、y、z不能同時在 -20 ～ 20 之間';
+Blockly.Msg.TELLO_CURVE_SPEED_MESSAGE0 = '以速度 %1 飛弧線，從 %2 到 %3';
+Blockly.Msg.TELLO_GO_SPEED_MID_HELPURL = '';
+Blockly.Msg.TELLO_GO_SPEED_MID_TOOLTIP = 'm-1: Tello內部算法最快識別到的挑戰卡\nm-2: 距離Tello最近的挑戰卡\n速度: 10 - 100(cm/s)\nx/y: -500 - 500\nz: 0 - 500\nx、y、z不能同時在 -20 ～ 20 之間';
+Blockly.Msg.TELLO_GO_SPEED_MID_MESSAGE0 = '以速度 %1 飛往 %2 挑戰卡坐標系的 %3';
+Blockly.Msg.TELLO_CURVE_SPEED_MID_HELPURL = '';
+Blockly.Msg.TELLO_CURVE_SPEED_MID_TOOLTIP = '如果弧線半徑不在0.5～10米範圍內，則返回相應提醒。\nm-1: Tello內部算法最快識別到的挑戰卡\nm-2: 距離Tello最近的挑戰卡\n速度: 10 - 60(cm/s)\nx/y: -500 - 500\nz: 0 - 500\nx、y、z不能同時在 -20 ～ 20 之間';
+Blockly.Msg.TELLO_CURVE_SPEED_MID_MESSAGE0 = '以速度 %1 飛弧線，在 %2 挑戰卡坐標系中，從 %3 到 %4';
+Blockly.Msg.TELLO_JUMP_SPEED_MID_HELPURL = '';
+Blockly.Msg.TELLO_JUMP_SPEED_MID_TOOLTIP = 'm-1: Tello內部算法最快識別到的挑戰卡\nm-2: 距離Tello最近的挑戰卡';
+Blockly.Msg.TELLO_JUMP_SPEED_MID_MESSAGE0 = '以速度 %1 飛往 %2 挑戰卡坐標系的 %3 後懸停，識別並平行飛向 %4 挑戰卡，然後旋轉到 %5';
+Blockly.Msg.TELLO_SET_SPEED_HELPURL = '';
+Blockly.Msg.TELLO_SET_SPEED_TOOLTIP = '速度取值範圍 10～100 cm/s\n只對未明確申明速度的指令有效';
+Blockly.Msg.TELLO_SET_SPEED_MESSAGE0 = '將當前速度設為 %1 cm/s';
+Blockly.Msg.TELLO_SET_RC_HELPURL = '';
+Blockly.Msg.TELLO_SET_RC_TOOLTIP = '橫滾/俯仰/高度/偏航 取值範圍均為 -100 ～ 100';
+Blockly.Msg.TELLO_SET_RC_MESSAGE0 = '設置遙控器的4個通道桿量 %1 橫滾 %2 俯仰 %3 高度 %4 偏航 %5';
+Blockly.Msg.TELLO_SET_WIFI_HELPURL = '';
+Blockly.Msg.TELLO_SET_WIFI_TOOLTIP = '';
+Blockly.Msg.TELLO_SET_WIFI_MESSAGE0 = '更改 Tello Wi-Fi 設置 %1 SSID %2 PASS %3';
+Blockly.Msg.TELLO_SET_M_HELPURL = '';
+Blockly.Msg.TELLO_SET_M_TOOLTIP = '打開挑戰卡探測時，默認同時打開前視和下視探測';
+Blockly.Msg.TELLO_SET_M_MESSAGE0 = '%1 挑戰卡探測';
+Blockly.Msg.TELLO_SET_MDIRECTION_HELPURL = '';
+Blockly.Msg.TELLO_SET_MDIRECTION_TOOLTIP = '使用前必須打開挑戰卡探測功能；\n單獨打開前視或者下視探測時，探測頻率為 20Hz，同時打開前視和下視時，將交替探測，單個反向的探測頻率為 10Hz。';
+Blockly.Msg.TELLO_SET_MDIRECTION_MESSAGE0 = '設置探測模式 %1';
+Blockly.Msg.TELLO_SET_AP_HELPURL = '';
+Blockly.Msg.TELLO_SET_AP_TOOLTIP = '';
+Blockly.Msg.TELLO_SET_AP_MESSAGE0 = '將 Tello 轉為 station 模式，並連入到 AP %1 SSID %2 PASS %3';
+Blockly.Msg.TELLO_CUSTOM_HELPURL = '';
+Blockly.Msg.TELLO_CUSTOM_TOOLTIP = '';
+Blockly.Msg.TELLO_CUSTOM_MESSAGE0 = '向 Tello 發送指令 %1';
+Blockly.Msg.TELLO_INIT_HELPURL = '';
+Blockly.Msg.TELLO_INIT_TOOLTIP = '';
+Blockly.Msg.TELLO_INIT_MESSAGE0 = 'Tello 運行環境初始化';
+Blockly.Msg.TELLO_REPEAT_FOREVER_HELPURL = '';
+Blockly.Msg.TELLO_REPEAT_FOREVER_TOOLTIP = '';
+Blockly.Msg.TELLO_REPEAT_FOREVER_MESSAGE0 = 'Tello 一直重復';
+Blockly.Msg.TELLO_ASK_PARAM_HELPURL = '';
+Blockly.Msg.TELLO_ASK_PARAM_TOOLTIP = '';
+Blockly.Msg.TELLO_ASK_PARAM_MESSAGE0 = '問詢 %1';
+Blockly.Msg.TELLO_GET_PARAM_HELPURL = '';
+Blockly.Msg.TELLO_GET_PARAM_TOOLTIP = '';
+Blockly.Msg.TELLO_GET_PARAM_MESSAGE0 = '獲取 %1';
+Blockly.Msg.TELLO_PARAM_SPEED = '速度（厘米/秒）';
+Blockly.Msg.TELLO_PARAM_BATTERY = '電池剩余電量的百分比值';
+Blockly.Msg.TELLO_PARAM_TIME = '電機運轉時間（秒）';
+Blockly.Msg.TELLO_PARAM_WIFI = 'Wi-Fi 性噪比';
+Blockly.Msg.TELLO_PARAM_SDK = 'Tello SDK 版本號';
+Blockly.Msg.TELLO_PARAM_SN = 'Tello SN 碼';
+Blockly.Msg.TELLO_PARAM_MID = '檢測到的挑戰卡 ID';
+Blockly.Msg.TELLO_PARAM_X = '飛行器相對於檢測到的挑戰卡的 X 軸坐標';
+Blockly.Msg.TELLO_PARAM_Y = '飛行器相對於檢測到的挑戰卡的 Y 軸坐標';
+Blockly.Msg.TELLO_PARAM_Z = '飛行器相對於檢測到的挑戰卡的 Z 軸坐標';
+Blockly.Msg.TELLO_PARAM_MPRY = '飛行器在檢測到的挑戰卡坐標系中的俯仰、橫滾及偏航角度';
+Blockly.Msg.TELLO_PARAM_PITCH = '俯仰角度';
+Blockly.Msg.TELLO_PARAM_ROLL = '橫滾角度';
+Blockly.Msg.TELLO_PARAM_YAW = '偏航角度';
+Blockly.Msg.TELLO_PARAM_VGX = 'X 軸速度（厘米/秒）';
+Blockly.Msg.TELLO_PARAM_VGY = 'Y 軸速度（厘米/秒）';
+Blockly.Msg.TELLO_PARAM_VGZ = 'Z 軸速度（厘米/秒）';
+Blockly.Msg.TELLO_PARAM_TEMPL = '主板最低溫度';
+Blockly.Msg.TELLO_PARAM_TEMPH = '主板最高溫度';
+Blockly.Msg.TELLO_PARAM_TOF = 'ToF 距離（厘米）';
+Blockly.Msg.TELLO_PARAM_H = '相對起飛點高度（厘米）';
+Blockly.Msg.TELLO_PARAM_BAT = Blockly.Msg.TELLO_PARAM_BATTERY;
+Blockly.Msg.TELLO_PARAM_BARO = '氣壓計測量高度（米）';
+Blockly.Msg.TELLO_PARAM_AGX = 'X 軸加速度';
+Blockly.Msg.TELLO_PARAM_AGY = 'Y 軸加速度';
+Blockly.Msg.TELLO_PARAM_AGZ = 'Z 軸加速度';
+Blockly.Msg.TELLO_STATE_HELPURL = '';
+Blockly.Msg.TELLO_STATE_TOOLTIP = '返回數據字典';
+Blockly.Msg.TELLO_STATE_MESSAGE0 = 'Tello 狀態 (字典)';
+Blockly.MIXEPI='米派';
+
 Blockly.DATA_TYPE_CONVERSION='數據類型轉換';
 Blockly.TEXT_TO='至';
 Blockly.STRING_VARIABLE='字符串變量';
@@ -2839,3 +2878,4 @@ Blockly.CORE_PRIORITY2='核心2 優先級';
 Blockly.DUALL_CORE_MULTITASKING_HELP='ESP32雙核多任務，同時處理兩個任務互不干擾，優先級最高為3（若有看門狗被觸發則需要添加僅用於雙核多任務的延時函數，延時時間不宜影響其他函數執行）';
 Blockly.FOLDING_BLOCK='折疊塊請在此描述功能';
 Blockly.FOLDING_BLOCK_HELP='當使用到的塊太多時閱讀非常頭疼，放入它的代碼塊不會改變，僅僅作為外殼使用，不要為什麼？你懂的^.^非常方便';
+Blockly.OLED_ICON='內置圖標';

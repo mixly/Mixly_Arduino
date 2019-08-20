@@ -90,7 +90,7 @@ Blockly.Blocks.actuator_led_brightness = {
     this.appendValueInput('led')
     .appendField(Blockly.MIXLY_BUILDIN_LED)
     this.appendValueInput('bright')
-    .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_BRIGHTNESS)
+    .appendField(Blockly.MIXLY_BRIGHTNESS)
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
@@ -103,7 +103,7 @@ Blockly.Blocks.esp32_music_pitch = {
     init: function() {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
-            .appendField(Blockly.MIXLY_MBOT_TONE)
+            .appendField(Blockly.MIXLY_TONE)
             .appendField(Blockly.MIXLY_PIN )
             .setCheck(Number);
         this.appendValueInput('pitch')
@@ -120,7 +120,7 @@ Blockly.Blocks.esp32_music_pitch_with_time = {
     init: function() {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendValueInput("PIN", Number)
-            .appendField(Blockly.MIXLY_MBOT_TONE)
+            .appendField(Blockly.MIXLY_TONE)
             .appendField(Blockly.MIXLY_PIN )
             .setCheck(Number);
         this.appendValueInput('pitch')
@@ -158,7 +158,7 @@ Blockly.Blocks.esp32_music_set_tempo = {
             .appendField(Blockly.MICROBIT_ACTUATOR_ticks);
         this.appendValueInput('BPM')
             .setCheck(Number)
-            .appendField(Blockly.MICROBIT_ACTUATOR_bpm);
+            .appendField(Blockly.MIXLY_SPEED);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
