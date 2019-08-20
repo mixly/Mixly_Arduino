@@ -83,7 +83,6 @@ Blockly.Arduino.ds18b20 = function () {
  Blockly.Arduino.definitions_['include_DallasTemperature'] = '#include <DallasTemperature.h>';
  Blockly.Arduino.definitions_['var_declare_OneWire_DallasTemperature_sensors_' + dropdown_pin] = 'OneWire oneWire_' + dropdown_pin + '(' + dropdown_pin + ');\nDallasTemperature sensors_' + dropdown_pin + '(&oneWire_' + dropdown_pin + ');';
  Blockly.Arduino.definitions_['var_declare_DeviceAddress_insideThermometer'] = 'DeviceAddress insideThermometer;';
-
  Blockly.Arduino.setups_['setup_sensors_' + dropdown_pin + '_getAddress'] = 'sensors_' + dropdown_pin + '.getAddress(insideThermometer, 0);';
  Blockly.Arduino.setups_['setup_sensors_' + dropdown_pin + '_setResolution'] = 'sensors_' + dropdown_pin + '.setResolution(insideThermometer, 9);';
  var funcName = 'ds18b20_' + dropdown_pin + '_getTemp';
@@ -96,17 +95,16 @@ Blockly.Arduino.ds18b20 = function () {
  return ['ds18b20_' + dropdown_pin + '_getTemp(' + unit + ')', Blockly.Arduino.ORDER_ATOMIC];
 }
 Blockly.Arduino.weightSensor = function () {
-  var dropdown_pin1 = this.getFieldValue('PIN1');
-  var dropdown_pin2 = this.getFieldValue('PIN2');
-  //var offset= Blockly.Arduino.valueToCode(this, 'offset', Blockly.Arduino.ORDER_ATOMIC);
+  var DOUT = this.getFieldValue('DOUT');
+  var SCK = this.getFieldValue('SCK');
   var scale= Blockly.Arduino.valueToCode(this, 'scale', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_Hx711'] = '#include <Hx711.h>';
-  Blockly.Arduino.definitions_['var_declare_Hx711'+dropdown_pin1+dropdown_pin2] = 'Hx711 scale' + dropdown_pin1 + '_' + dropdown_pin2+" ("+dropdown_pin1+","+dropdown_pin2+");";
-     // Blockly.Arduino.setups_['setup_'+'scale' + dropdown_pin1 + '_' + dropdown_pin2+' .setOffset'] = 'scale' + dropdown_pin1 + '_' + dropdown_pin2+" .setOffset("+offset+");";
-     Blockly.Arduino.setups_['setup_'+'scale' + dropdown_pin1 + '_' + dropdown_pin2+' .setScale'] = 'scale' + dropdown_pin1 + '_' + dropdown_pin2+" .setScale("+scale+");";
-     var code = ' scale' + dropdown_pin1 + '_' + dropdown_pin2+'.getGram()';
-     return [code, Blockly.Arduino.ORDER_ATOMIC];
-   }
+  Blockly.Arduino.definitions_['var_declare_Hx711'+DOUT+SCK] = 'Hx711 scale' + DOUT + '_' + SCK+" ("+DOUT+","+SCK+");";
+  Blockly.Arduino.setups_['setup_HX711'+DOUT+SCK] = 'scale' + DOUT + '_' + SCK+'.setOffset(scale'+DOUT+'_'+SCK+'.getAverageValue(30));\n' ;
+  Blockly.Arduino.setups_['setup_'+'scale' + DOUT + '_' + SCK+' .setScale'] =  'scale'+DOUT+'_'+SCK+'.setScale('+scale+');';
+  var code = ' scale' + DOUT + '_' + SCK+'.getWeight(10)';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+}
 //DS1302
 Blockly.Arduino.DS1302_init = function () {
   var RTCName = this.getFieldValue('RTCName');

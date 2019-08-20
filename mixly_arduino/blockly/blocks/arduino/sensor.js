@@ -145,10 +145,10 @@ Blockly.Blocks.weightSensor = {
     this.appendDummyInput("")  
     .appendField('Dout#')
     .appendField(new Blockly
-      .FieldDropdown(profile.default.digital), "PIN1")
+      .FieldDropdown(profile.default.digital), "DOUT")
     .appendField('SCK#')
     .appendField(new Blockly
-      .FieldDropdown(profile.default.digital), "PIN2");
+      .FieldDropdown(profile.default.digital), "SCK");
     // this.appendValueInput("offset")
     // .setCheck(Number)
     // .appendField(Blockly.HX711_offset);
@@ -510,7 +510,7 @@ Blockly.Blocks.PS2_Button={
    .appendField(Blockly.PS2_BUTTON)
    .appendField(new Blockly.FieldDropdown(PSBUTTON), "psbt")
    .appendField(Blockly.MIXLY_PULSEIN_STAT)
-   .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_BUTTON_HOLD ,"Button"],[Blockly.MIXLY_BUTTON_PRESSED, "ButtonPressed"],[Blockly.MIXLY_BUTTON_RELEASED,"ButtonReleased"],[Blockly.MIXLY_MICROBIT_JS_CHANGE,"NewButtonState"]]), "btstate");
+   .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_BUTTON_HOLD ,"Button"],[Blockly.MIXLY_BUTTON_PRESSED, "ButtonPressed"],[Blockly.MIXLY_BUTTON_RELEASED,"ButtonReleased"],[Blockly.MIXLY_CHANGE,"NewButtonState"]]), "btstate");
    this.setOutput(true, Boolean);
    this.setTooltip('');
  }
