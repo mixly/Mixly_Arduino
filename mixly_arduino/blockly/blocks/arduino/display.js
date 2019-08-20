@@ -741,10 +741,14 @@ var ELLIPSESELECT = [
 
 //字体选择
 var FONT_TYPE_SELECT = [
-["timR14", "timR14_tr"],
-["timR08", "timR08_tr"],
-["timR18", "timR18_tr"],
-["timR24", "timR24_tr"],
+["timR14", "timR14_tf"],
+["timR08", "timR08_tf"],
+["timR18", "timR18_tf"],
+["timR24", "timR24_tf"],
+["helvR08", "helvB08_tf"],
+["helvR14", "helvB14_tf"],
+["helvR18", "helvB18_tf"],
+["helvR24", "helvB24_tf"],
 ["fur11", "fur11_tf"],
 ["fur14", "fur14_tf"],
 ["fur17", "fur17_tf"],
