@@ -695,7 +695,24 @@
       </shadow>
     </value>
   </block>
-  <block type="RFID_init"></block>   <!--初始化-->
+  <block type="RFID_init">
+    <value name="SDA">
+      <shadow type="pins_digital">
+      </shadow>
+    </value>
+    <value name="SCK">
+      <shadow type="pins_SCK">
+      </shadow>
+    </value>
+    <value name="MISO">
+      <shadow type="pins_MISO">
+      </shadow>
+    </value>
+    <value name="MOSI">
+      <shadow type="pins_MOSI">
+      </shadow>
+    </value>
+  </block>   <!--初始化-->
   <block type="RFID_on"></block>   <!--如果侦测到信号那么执行XXX-->
   <block type="RFID_readcardnum"></block>  <!--读取卡号-->
   <block type="RFID_in">
@@ -889,16 +906,13 @@
 </block>
 </category>
 <category id="catSensor" colour="40">
-
  <block type="chaoshengbo2">
   <value name="PIN1">
     <shadow type="pins_digital">
-      <field name="PIN">2</field>
     </shadow>
   </value>
   <value name="PIN2">
     <shadow type="pins_digital">
-      <field name="PIN">5</field>
     </shadow>
   </value>
 </block>
@@ -924,22 +938,18 @@
 <block type="PS2_init">
   <value name="PS2_DAT">
     <shadow type="pins_digital">
-      <field name="PIN">13</field>
     </shadow>
   </value>
   <value name="PS2_CMD">
     <shadow type="pins_digital">
-      <field name="PIN">11</field>
     </shadow>
   </value>
   <value name="PS2_SEL">
     <shadow type="pins_digital">
-      <field name="PIN">10</field>
     </shadow>
   </value>
   <value name="PS2_CLK">
     <shadow type="pins_digital">
-      <field name="PIN">12</field>
     </shadow>
   </value>
 </block>
@@ -971,47 +981,41 @@
   <block type="group_stepper_setup">
     <value name="PIN1">
      <shadow type="pins_digital">
-      <field name="PIN">1</field>
+     </shadow>
+   </value>
+   <value name="PIN2">
+     <shadow type="pins_digital">
+     </shadow>
+   </value>
+   <value name="steps">
+    <shadow type="math_number">
+      <field name="NUM">100</field>
     </shadow>
   </value>
-  <value name="PIN2">
-   <shadow type="pins_digital">
-    <field name="PIN">2</field>
-  </shadow>
-</value>
-<value name="steps">
-  <shadow type="math_number">
-    <field name="NUM">100</field>
-  </shadow>
-</value>
-<value name="speed">
-  <shadow type="math_number">
-    <field name="NUM">10</field>
-  </shadow>
-</value>
+  <value name="speed">
+    <shadow type="math_number">
+      <field name="NUM">10</field>
+    </shadow>
+  </value>
 </block>
 <block type="group_stepper_setup2">
   <value name="PIN1">
    <shadow type="pins_digital">
-    <field name="PIN">1</field>
-  </shadow>
-</value>
-<value name="PIN2">
- <shadow type="pins_digital">
-  <field name="PIN">2</field>
-</shadow>
-</value>
-<value name="PIN3">
- <shadow type="pins_digital">
-  <field name="PIN">3</field>
-</shadow>
-</value>
-<value name="PIN4">
- <shadow type="pins_digital">
-  <field name="PIN">4</field>
-</shadow>
-</value>
-<value name="steps">
+   </shadow>
+ </value>
+ <value name="PIN2">
+   <shadow type="pins_digital">
+   </shadow>
+ </value>
+ <value name="PIN3">
+   <shadow type="pins_digital">
+   </shadow>
+ </value>
+ <value name="PIN4">
+   <shadow type="pins_digital">
+   </shadow>
+ </value>
+ <value name="steps">
   <shadow type="math_number">
     <field name="NUM">100</field>
   </shadow>
@@ -1047,10 +1051,9 @@
 <block type="display_rgb">
  <value name="PIN">
    <shadow type="pins_digital">
-    <field name="PIN">17</field>
-  </shadow>
-</value>
-<value name="_LED_">
+   </shadow>
+ </value>
+ <value name="_LED_">
   <shadow type="math_number">
     <field name="NUM">1</field>
   </shadow>
@@ -1074,10 +1077,9 @@
 <block type="display_rgb2">
  <value name="PIN">
    <shadow type="pins_digital">
-    <field name="PIN">17</field>
-  </shadow>
-</value>
-<value name="_LED_">
+   </shadow>
+ </value>
+ <value name="_LED_">
   <shadow type="math_number">
     <field name="NUM">1</field>
   </shadow>
@@ -1086,9 +1088,8 @@
 <block type="display_rgb_show">
   <value name="PIN">
    <shadow type="pins_digital">
-    <field name="PIN">17</field>
-  </shadow>
-</value>
+   </shadow>
+ </value>
 </block>
 </category>
 <category id="catMonitor" colour="180">
@@ -1099,48 +1100,16 @@
       </shadow>
     </value>
   </block>
-  <block type="group_lcd_init3">
-   <value name="PIN1">
-    <shadow type="pins_digital">
-      <field name="PIN">7</field>
-    </shadow>
+  <block type="group_lcd_print">
+    <value name="TEXT">
+     <block type="text">
+      <field name="TEXT"></field>
+    </block>
   </value>
-  <value name="PIN2">
-    <shadow type="pins_digital">
-      <field name="PIN">8</field>
-    </shadow>
-  </value>
-  <value name="PIN3">
-    <shadow type="pins_digital">
-      <field name="PIN">9</field>
-    </shadow>
-  </value>
-  <value name="PIN4">
-    <shadow type="pins_digital">
-      <field name="PIN">10</field>
-    </shadow>
-  </value>
-  <value name="PIN5">
-    <shadow type="pins_digital">
-      <field name="PIN">11</field>
-    </shadow>
-  </value>
-  <value name="PIN6">
-    <shadow type="pins_digital">
-      <field name="PIN">12</field>
-    </shadow>
-  </value>
-</block>
-<block type="group_lcd_print">
-  <value name="TEXT">
+  <value name="TEXT2">
    <block type="text">
     <field name="TEXT"></field>
   </block>
-</value>
-<value name="TEXT2">
- <block type="text">
-  <field name="TEXT"></field>
-</block>
 </value>
 </block>
 <block type="group_lcd_print2">
@@ -1155,9 +1124,9 @@
 </shadow>
 </value>
 <value name="TEXT">
- <block type="text">
+ <shadow type="text">
   <field name="TEXT"></field>
-</block>
+</shadow>
 </value>
 </block>
 <block type="group_lcd_power">
@@ -1166,12 +1135,10 @@
 <block type="display_TM1637_init" >
   <value name="PIN1">
     <shadow type="pins_digital">
-      <field name="PIN">5</field>
     </shadow>
   </value>
   <value name="PIN2">
     <shadow type="pins_digital">
-      <field name="PIN">4</field>
     </shadow>
   </value>
 </block>
@@ -1200,23 +1167,24 @@
       <field name="NUM">30</field>
     </shadow>
   </value>
+  <value name="STAT">
+    <shadow type="inout_highlow">
+    </shadow>
+  </value>
 </block>
 <block type="display_TM1637_clearDisplay">
 </block>
 <block type="MAX7219_init">
   <value name="PIN1">
     <shadow type="pins_MOSI">
-      <field name="PIN">11</field>
     </shadow>
   </value>
   <value name="PIN2">
     <shadow type="pins_digital">
-      <field name="PIN">9</field>
     </shadow>
   </value>
   <value name="PIN3">
     <shadow type="pins_SCK">
-      <field name="PIN">13</field>
     </shadow>
   </value>
   <value name="hDisplays">
@@ -1233,12 +1201,12 @@
 <block type="HT16K33_Init">
   <value name="PIN1">
     <shadow type="pins_digital">
-      <field name="PIN">2</field>
+      <field name="PIN">SDA</field>
     </shadow>
   </value>
   <value name="PIN2">
     <shadow type="pins_digital">
-      <field name="PIN">3</field>
+      <field name="PIN">SCL</field>
     </shadow>
   </value>
 </block>
@@ -2248,7 +2216,7 @@
 </block>
 </category>
 <category id="catMorpxVS2" colour="#EF5411">
-<block type="Vs2MuInit"></block>
+  <block type="Vs2MuInit"></block>
   <block type="Vs2Setup"></block>
   <block type="Vs2Reset"></block>
   <block type="Vs2SetLEDColor">
