@@ -2732,3 +2732,4 @@ Blockly.DUALL_CORE_MULTITASKING_HELP='ESP32双核多任务，同时处理两个�
 Blockly.FOLDING_BLOCK='折叠块请在此描述功能';
 Blockly.FOLDING_BLOCK_HELP='当使用到的块太多时阅读非常头疼，放入它的代码块不会改变，仅仅作为外壳使用，不要为什么？你懂的^.^非常方便';
 Blockly.OLED_ICON='内置图标';
+Blockly.TCS34725_Get_RGB='颜色传感器 获取颜色';

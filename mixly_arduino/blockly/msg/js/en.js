@@ -2866,3 +2866,4 @@ Blockly.DUALL_CORE_MULTITASKING_HELP='ESP32 dual-core multi-tasking, processing 
 Blockly.FOLDING_BLOCK='Folding block please describe the function here';
 Blockly.FOLDING_BLOCK_HELP='Reading is very headache when using too many blocks, the code block put into it will not change, just used as a shell, why not? You know ^.^ very convenient';
 Blockly.OLED_ICON='Icon';
+Blockly.TCS34725_Get_RGB='Get Color';

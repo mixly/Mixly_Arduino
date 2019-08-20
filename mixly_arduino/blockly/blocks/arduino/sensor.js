@@ -532,3 +532,22 @@ Blockly.Blocks.PS2_stk={
     this.setTooltip('');
   }
 };
+
+//传感器-颜色识别-获取数据
+var TCS34725_GETRGB = [
+[Blockly.Msg.COLOUR_RGB_RED, "tcs.getR()"],
+[Blockly.Msg.COLOUR_RGB_GREEN, "tcs.getG()"],
+[Blockly.Msg.COLOUR_RGB_BLUE, "tcs.getB()"],
+];
+
+Blockly.Blocks.TCS34725_Get_RGB = {
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput("")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.TCS34725_Get_RGB)
+    .appendField(new Blockly.FieldDropdown(TCS34725_GETRGB), "TCS34725_GETRGB");
+    this.setInputsInline(true);
+    this.setOutput(true);
+  }
+};
