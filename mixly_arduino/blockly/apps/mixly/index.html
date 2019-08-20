@@ -694,7 +694,24 @@
     </shadow>
   </value>
 </block>
-<block type="RFID_init"></block>   
+  <block type="RFID_init">
+    <value name="SDA">
+      <shadow type="pins_digital">
+      </shadow>
+    </value>
+    <value name="SCK">
+      <shadow type="pins_SCK">
+      </shadow>
+    </value>
+    <value name="MISO">
+      <shadow type="pins_MISO">
+      </shadow>
+    </value>
+    <value name="MOSI">
+      <shadow type="pins_MOSI">
+      </shadow>
+    </value>
+  </block>  
 <block type="RFID_on"></block>   
 <block type="RFID_readcardnum"></block> 
 <block type="RFID_in">
@@ -1604,12 +1621,12 @@
 <block type="HT16K33_Init">
   <value name="PIN1">
     <shadow type="pins_digital">
-      <field name="PIN">2</field>
+      <field name="PIN">SDA</field>
     </shadow>
   </value>
   <value name="PIN2">
     <shadow type="pins_digital">
-      <field name="PIN">3</field>
+      <field name="PIN">SCL</field>
     </shadow>
   </value>
 </block>

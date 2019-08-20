@@ -693,8 +693,24 @@
         <shadow type="pins_digital"></shadow>
         </value>
       </block> -->
-      <block type="RFID_init"></block>
-      <!--初始化-->
+      <block type="RFID_init">
+        <value name="SDA">
+          <shadow type="pins_digital">
+          </shadow>
+        </value>
+        <value name="SCK">
+          <shadow type="pins_SCK">
+          </shadow>
+        </value>
+        <value name="MISO">
+          <shadow type="pins_MISO">
+          </shadow>
+        </value>
+        <value name="MOSI">
+          <shadow type="pins_MOSI">
+          </shadow>
+        </value>
+      </block>   <!--初始化-->
       <block type="RFID_on"></block>
       <!--如果侦测到信号那么执行XXX-->
       <block type="RFID_readcardnum"></block>
