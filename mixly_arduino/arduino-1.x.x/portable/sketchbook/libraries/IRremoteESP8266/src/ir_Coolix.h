@@ -9,8 +9,6 @@
 #include <stdint.h>
 #ifndef UNIT_TEST
 #include <Arduino.h>
-#else
-#include <string>
 #endif
 #include "IRremoteESP8266.h"
 #include "IRsend.h"
@@ -18,16 +16,14 @@
 #include "IRsend_test.h"
 #endif
 
-//             CCCCC   OOOOO   OOOOO  LL      IIIII XX    XX
-//            CC    C OO   OO OO   OO LL       III   XX  XX
-//            CC      OO   OO OO   OO LL       III    XXXX
-//            CC    C OO   OO OO   OO LL       III   XX  XX
-//             CCCCC   OOOO0   OOOO0  LLLLLLL IIIII XX    XX
-
 // Supports:
-//   RG57K7(B)/BGEF remote control for Beko BINR 070/071 split-type aircon.
+//   Brand: Beko, Model: RG57K7(B)/BGEF Remote
+//   Brand: Beko, Model: BINR 070/071 split-type A/C
+//   Brand: Midea, Model: RG52D/BGE Remote
+//   Brand: Midea, Model: MS12FU-10HRDN1-QRD0GW(B) A/C
+//   Brand: Midea, Model: MSABAU-07HRFN1-QRD0GW A/C (circa 2016)
 // Ref:
-//   https://github.com/markszabo/IRremoteESP8266/issues/484
+//   https://github.com/crankyoldgit/IRremoteESP8266/issues/484
 // Kudos:
 //   Hamper: For the breakdown and mapping of the bit values.
 
@@ -90,11 +86,13 @@ const uint32_t kCoolixDefaultState = 0b101100101011111111001000;  // 0xB2BFC8
 // Classes
 class IRCoolixAC {
  public:
-  explicit IRCoolixAC(uint16_t pin);
+  explicit IRCoolixAC(const uint16_t pin, const bool inverted = false,
+                      const bool use_modulation = true);
 
   void stateReset();
 #if SEND_COOLIX
   void send(const uint16_t repeat = kCoolixDefaultRepeat);
+  uint8_t calibrate(void) { return _irsend.calibrate(); }
 #endif  // SEND_COOLIX
   void begin();
   void on();
@@ -106,7 +104,7 @@ class IRCoolixAC {
   void setSensorTemp(const uint8_t desired);
   uint8_t getSensorTemp();
   void clearSensorTemp();
-  void setFan(const uint8_t fan);
+  void setFan(const uint8_t speed, const bool modecheck = true);
   uint8_t getFan();
   void setMode(const uint8_t mode);
   uint8_t getMode();
@@ -125,11 +123,10 @@ class IRCoolixAC {
   void setRaw(const uint32_t new_code);
   uint8_t convertMode(const stdAc::opmode_t mode);
   uint8_t convertFan(const stdAc::fanspeed_t speed);
-#ifdef ARDUINO
+  static stdAc::opmode_t toCommonMode(const uint8_t mode);
+  static stdAc::fanspeed_t toCommonFanSpeed(const uint8_t speed);
+  stdAc::state_t toCommon(const stdAc::state_t *prev = NULL);
   String toString();
-#else
-  std::string toString();
-#endif
 #ifndef UNIT_TEST
 
  private:

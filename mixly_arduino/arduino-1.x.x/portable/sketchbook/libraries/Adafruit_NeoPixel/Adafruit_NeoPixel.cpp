@@ -45,6 +45,10 @@
 
 #include "Adafruit_NeoPixel.h"
 
+#ifdef TARGET_LPC1768
+  #include <time.h>
+#endif
+
 #if defined(NRF52) || defined(NRF52_SERIES)
 #include "nrf.h"
 
@@ -65,7 +69,7 @@
               pixel.
   @return  Adafruit_NeoPixel object. Call the begin() function before use.
 */
-Adafruit_NeoPixel::Adafruit_NeoPixel(uint16_t n, uint8_t p, neoPixelType t) :
+Adafruit_NeoPixel::Adafruit_NeoPixel(uint16_t n, uint16_t p, neoPixelType t) :
   begun(false), brightness(0), pixels(NULL), endTime(0) {
   updateType(t);
   updateLength(n);
@@ -171,10 +175,10 @@ void Adafruit_NeoPixel::updateType(neoPixelType t) {
 #if defined(ESP8266)
 // ESP8266 show() is external to enforce ICACHE_RAM_ATTR execution
 extern "C" void ICACHE_RAM_ATTR espShow(
-  uint8_t pin, uint8_t *pixels, uint32_t numBytes, uint8_t type);
+  uint16_t pin, uint8_t *pixels, uint32_t numBytes, uint8_t type);
 #elif defined(ESP32)
 extern "C" void espShow(
-  uint8_t pin, uint8_t *pixels, uint32_t numBytes, uint8_t type);
+  uint16_t pin, uint8_t *pixels, uint32_t numBytes, uint8_t type);
 #endif // ESP8266
 
 /*!
@@ -1184,6 +1188,64 @@ void Adafruit_NeoPixel::show(void) {
   }
 #endif // NEO_KHZ400
 
+#elif defined(TEENSYDUINO) && (defined(__IMXRT1052__) || defined(__IMXRT1062__))
+#define CYCLES_800_T0H  (F_CPU_ACTUAL / 4000000)
+#define CYCLES_800_T1H  (F_CPU_ACTUAL / 1250000)
+#define CYCLES_800      (F_CPU_ACTUAL /  800000)
+#define CYCLES_400_T0H  (F_CPU_ACTUAL / 2000000)
+#define CYCLES_400_T1H  (F_CPU_ACTUAL /  833333)
+#define CYCLES_400      (F_CPU_ACTUAL /  400000)
+
+  uint8_t           *p   = pixels,
+                    *end = p + numBytes, pix, mask;
+  volatile uint32_t *set = portSetRegister(pin),
+                    *clr = portClearRegister(pin);
+  uint32_t          cyc,
+                    msk = digitalPinToBitMask(pin);
+
+  ARM_DEMCR    |= ARM_DEMCR_TRCENA;
+  ARM_DWT_CTRL |= ARM_DWT_CTRL_CYCCNTENA;
+
+#ifdef NEO_KHZ400 // 800 KHz check needed only if 400 KHz support enabled
+  if(is800KHz) {
+#endif
+    cyc = ARM_DWT_CYCCNT + CYCLES_800;
+    while(p < end) {
+      pix = *p++;
+      for(mask = 0x80; mask; mask >>= 1) {
+        while(ARM_DWT_CYCCNT - cyc < CYCLES_800);
+        cyc  = ARM_DWT_CYCCNT;
+        *set = msk;
+        if(pix & mask) {
+          while(ARM_DWT_CYCCNT - cyc < CYCLES_800_T1H);
+        } else {
+          while(ARM_DWT_CYCCNT - cyc < CYCLES_800_T0H);
+        }
+        *clr = msk;
+      }
+    }
+    while(ARM_DWT_CYCCNT - cyc < CYCLES_800);
+#ifdef NEO_KHZ400
+  } else { // 400 kHz bitstream
+    cyc = ARM_DWT_CYCCNT + CYCLES_400;
+    while(p < end) {
+      pix = *p++;
+      for(mask = 0x80; mask; mask >>= 1) {
+        while(ARM_DWT_CYCCNT - cyc < CYCLES_400);
+        cyc  = ARM_DWT_CYCCNT;
+        *set = msk;
+        if(pix & mask) {
+          while(ARM_DWT_CYCCNT - cyc < CYCLES_400_T1H);
+        } else {
+          while(ARM_DWT_CYCCNT - cyc < CYCLES_400_T0H);
+        }
+        *clr = msk;
+      }
+    }
+    while(ARM_DWT_CYCCNT - cyc < CYCLES_400);
+  }
+#endif // NEO_KHZ400
+
 #elif defined(TEENSYDUINO) && defined(__MKL26Z64__) // Teensy-LC
 
 #if F_CPU == 48000000
@@ -1788,6 +1850,50 @@ void Adafruit_NeoPixel::show(void) {
   }
 #endif
 
+#elif defined(TARGET_LPC1768)
+  uint8_t  *ptr, *end, p, bitMask;
+  ptr     =  pixels;
+  end     =  ptr + numBytes;
+  p       = *ptr++;
+  bitMask =  0x80;
+
+#ifdef NEO_KHZ400 // 800 KHz check needed only if 400 KHz support enabled
+  if(is800KHz) {
+#endif
+    for(;;) {
+      if(p & bitMask) {
+        // data ONE high
+        // min: 550 typ: 700 max: 5,500
+        gpio_set(pin);
+        time::delay_ns(550);
+        // min: 450 typ: 600 max: 5,000
+        gpio_clear(pin);
+        time::delay_ns(450);
+      } else {
+        // data ZERO high
+        // min: 200  typ: 350 max: 500
+        gpio_set(pin);
+        time::delay_ns(200);
+        // data low
+        // min: 450 typ: 600 max: 5,000
+        gpio_clear(pin);
+        time::delay_ns(450);
+      }
+      if(bitMask >>= 1) {
+        // Move on to the next pixel
+        asm("nop;");
+      } else {
+        if(ptr >= end) break;
+        p       = *ptr++;
+        bitMask = 0x80;
+      }
+    }
+#ifdef NEO_KHZ400
+  } else { // 400 KHz bitstream
+    // ToDo!
+  }
+#endif
+
 #elif defined (NRF51)
   uint8_t          *p   = pixels,
                     pix, count, mask;
@@ -2056,7 +2162,7 @@ void Adafruit_NeoPixel::show(void) {
            if any, is set to INPUT and the new pin is set to OUTPUT.
   @param   p  Arduino pin number (-1 = no pin).
 */
-void Adafruit_NeoPixel::setPin(uint8_t p) {
+void Adafruit_NeoPixel::setPin(uint16_t p) {
   if(begun && (pin >= 0)) pinMode(pin, INPUT);
     pin = p;
     if(begun) {

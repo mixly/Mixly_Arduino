@@ -422,7 +422,7 @@ TEST(TestKelvinatorClass, HumanReadable) {
   IRKelvinatorAC irkelv(0);
 
   EXPECT_EQ(
-      "Power: Off, Mode: 0 (AUTO), Temp: 16C, Fan: 0 (AUTO), Turbo: Off, "
+      "Power: Off, Mode: 0 (AUTO), Temp: 16C, Fan: 0 (Auto), Turbo: Off, "
       "Quiet: Off, XFan: Off, IonFilter: Off, Light: Off, "
       "Swing (Horizontal): Off, Swing (Vertical): Off",
       irkelv.toString());
@@ -435,7 +435,7 @@ TEST(TestKelvinatorClass, HumanReadable) {
   irkelv.setLight(true);
   irkelv.setSwingHorizontal(true);
   EXPECT_EQ(
-      "Power: On, Mode: 1 (COOL), Temp: 25C, Fan: 5 (MAX), Turbo: Off, "
+      "Power: On, Mode: 1 (COOL), Temp: 25C, Fan: 5 (High), Turbo: Off, "
       "Quiet: Off, XFan: On, IonFilter: On, Light: On, "
       "Swing (Horizontal): On, Swing (Vertical): Off",
       irkelv.toString());
@@ -519,4 +519,40 @@ TEST(TestDecodeKelvinator, NormalSynthetic) {
   EXPECT_EQ(KELVINATOR, irsend.capture.decode_type);
   ASSERT_EQ(kKelvinatorBits, irsend.capture.bits);
   EXPECT_STATE_EQ(kelv_code, irsend.capture.state, kKelvinatorBits);
+}
+
+TEST(TestKelvinatorClass, toCommon) {
+  IRKelvinatorAC ac(0);
+  ac.setPower(true);
+  ac.setMode(kKelvinatorCool);
+  ac.setTemp(20);
+  ac.setFan(kKelvinatorFanMax);
+  ac.setIonFilter(true);
+  ac.setXFan(true);
+  ac.setQuiet(false);
+  ac.setTurbo(true);
+  ac.setLight(true);
+  ac.setSwingHorizontal(false);
+  ac.setSwingVertical(true);
+
+  // Now test it.
+  ASSERT_EQ(decode_type_t::KELVINATOR, ac.toCommon().protocol);
+  ASSERT_EQ(-1, ac.toCommon().model);
+  ASSERT_TRUE(ac.toCommon().power);
+  ASSERT_TRUE(ac.toCommon().celsius);
+  ASSERT_EQ(20, ac.toCommon().degrees);
+  ASSERT_TRUE(ac.toCommon().filter);
+  ASSERT_TRUE(ac.toCommon().clean);
+  ASSERT_FALSE(ac.toCommon().quiet);
+  ASSERT_TRUE(ac.toCommon().turbo);
+  ASSERT_TRUE(ac.toCommon().light);
+  ASSERT_EQ(stdAc::opmode_t::kCool, ac.toCommon().mode);
+  ASSERT_EQ(stdAc::fanspeed_t::kMax, ac.toCommon().fanspeed);
+  ASSERT_EQ(stdAc::swingv_t::kAuto, ac.toCommon().swingv);
+  ASSERT_EQ(stdAc::swingh_t::kOff, ac.toCommon().swingh);
+  // Unsupported.
+  ASSERT_FALSE(ac.toCommon().econo);
+  ASSERT_FALSE(ac.toCommon().beep);
+  ASSERT_EQ(-1, ac.toCommon().sleep);
+  ASSERT_EQ(-1, ac.toCommon().clock);
 }

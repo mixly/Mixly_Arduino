@@ -321,7 +321,7 @@ TEST(TestVestelAcClass, MessageConstuction) {
   IRVestelAc ac(0);
 
   EXPECT_EQ(
-      "Power: On, Mode: 0 (AUTO), Temp: 25C, Fan: 13 (AUTO HOT), Sleep: Off, "
+      "Power: On, Mode: 0 (AUTO), Temp: 25C, Fan: 13 (Auto Hot), Sleep: Off, "
       "Turbo: Off, Ion: Off, Swing: Off",
       ac.toString());
   ac.setMode(kVestelAcCool);
@@ -329,7 +329,7 @@ TEST(TestVestelAcClass, MessageConstuction) {
   ac.setFan(kVestelAcFanHigh);
   EXPECT_FALSE(ac.isTimeCommand());
   EXPECT_EQ(
-      "Power: On, Mode: 1 (COOL), Temp: 21C, Fan: 11 (HIGH), Sleep: Off, "
+      "Power: On, Mode: 1 (COOL), Temp: 21C, Fan: 11 (High), Sleep: Off, "
       "Turbo: Off, Ion: Off, Swing: Off",
       ac.toString());
   ac.setSwing(true);
@@ -337,7 +337,7 @@ TEST(TestVestelAcClass, MessageConstuction) {
   ac.setTurbo(true);
   EXPECT_FALSE(ac.isTimeCommand());
   EXPECT_EQ(
-      "Power: On, Mode: 1 (COOL), Temp: 21C, Fan: 11 (HIGH), Sleep: Off, "
+      "Power: On, Mode: 1 (COOL), Temp: 21C, Fan: 11 (High), Sleep: Off, "
       "Turbo: On, Ion: On, Swing: On",
       ac.toString());
 
@@ -345,7 +345,7 @@ TEST(TestVestelAcClass, MessageConstuction) {
   ac.setSleep(true);
   ac.setMode(kVestelAcHeat);
   EXPECT_EQ(
-      "Power: On, Mode: 4 (HEAT), Temp: 21C, Fan: 11 (HIGH), Sleep: On, "
+      "Power: On, Mode: 4 (HEAT), Temp: 21C, Fan: 11 (High), Sleep: On, "
       "Turbo: Off, Ion: On, Swing: On",
       ac.toString());
   EXPECT_FALSE(ac.isTimeCommand());
@@ -353,7 +353,7 @@ TEST(TestVestelAcClass, MessageConstuction) {
   ac.setTemp(25);
   ac.setPower(false);
   EXPECT_EQ(
-      "Power: Off, Mode: 4 (HEAT), Temp: 25C, Fan: 11 (HIGH), Sleep: On, "
+      "Power: Off, Mode: 4 (HEAT), Temp: 25C, Fan: 11 (High), Sleep: On, "
       "Turbo: Off, Ion: On, Swing: On",
       ac.toString());
   EXPECT_FALSE(ac.isTimeCommand());
@@ -368,19 +368,19 @@ TEST(TestVestelAcClass, MessageConstuction) {
   ac.setTimer(8 * 60 + 0);
   EXPECT_TRUE(ac.isTimeCommand());
   EXPECT_EQ(
-      "Time: 23:59, Timer: 8:00, On Timer: Off, Off Timer: Off",
+      "Time: 23:59, Timer: 08:00, On Timer: Off, Off Timer: Off",
       ac.toString());
   ac.setOnTimer(7 * 60 + 40);
   EXPECT_EQ(
-      "Time: 23:59, Timer: Off, On Timer: 7:40, Off Timer: Off",
+      "Time: 23:59, Timer: Off, On Timer: 07:40, Off Timer: Off",
       ac.toString());
   ac.setOffTimer(17 * 60 + 10);
   EXPECT_EQ(
-      "Time: 23:59, Timer: Off, On Timer: 7:40, Off Timer: 17:10",
+      "Time: 23:59, Timer: Off, On Timer: 07:40, Off Timer: 17:10",
       ac.toString());
   ac.setTimer(8 * 60 + 0);
   EXPECT_EQ(
-      "Time: 23:59, Timer: 8:00, On Timer: Off, Off Timer: Off",
+      "Time: 23:59, Timer: 08:00, On Timer: Off, Off Timer: Off",
       ac.toString());
   ac.setTimer(0);
   EXPECT_EQ(
@@ -389,7 +389,7 @@ TEST(TestVestelAcClass, MessageConstuction) {
   ac.on();
   EXPECT_FALSE(ac.isTimeCommand());
   EXPECT_EQ(
-      "Power: On, Mode: 4 (HEAT), Temp: 25C, Fan: 11 (HIGH), Sleep: On, "
+      "Power: On, Mode: 4 (HEAT), Temp: 25C, Fan: 11 (High), Sleep: On, "
       "Turbo: Off, Ion: On, Swing: On",
       ac.toString());
 }
@@ -431,7 +431,7 @@ TEST(TestDecodeVestelAc, NormalDecodeWithStrict) {
   ac.begin();
   ac.setRaw(irsend.capture.value);
   EXPECT_EQ(
-      "Power: On, Mode: 0 (AUTO), Temp: 25C, Fan: 13 (AUTO HOT), Sleep: Off, "
+      "Power: On, Mode: 0 (AUTO), Temp: 25C, Fan: 13 (Auto Hot), Sleep: Off, "
       "Turbo: Off, Ion: Off, Swing: Off",
       ac.toString());
 }
@@ -467,7 +467,7 @@ TEST(TestDecodeVestelAc, RealNormalExample) {
   ac.begin();
   ac.setRaw(irsend.capture.value);
   EXPECT_EQ(
-      "Power: On, Mode: 4 (HEAT), Temp: 16C, Fan: 1 (AUTO), Sleep: Off, "
+      "Power: On, Mode: 4 (HEAT), Temp: 16C, Fan: 1 (Auto), Sleep: Off, "
       "Turbo: Off, Ion: On, Swing: Off",
       ac.toString());
 }
@@ -502,7 +502,7 @@ TEST(TestDecodeVestelAc, RealTimerExample) {
   ac.begin();
   ac.setRaw(irsend.capture.value);
   EXPECT_EQ(
-      "Time: 5:45, Timer: Off, On Timer: 14:00, Off Timer: 23:00",
+      "Time: 05:45, Timer: Off, On Timer: 14:00, Off Timer: 23:00",
       ac.toString());
 }
 
@@ -510,4 +510,35 @@ TEST(TestDecodeVestelAc, RealTimerExample) {
 TEST(TestDecodeVestelAc, Housekeeping) {
   ASSERT_EQ("VESTEL_AC", typeToString(VESTEL_AC));
   ASSERT_FALSE(hasACState(VESTEL_AC));  // Uses uint64_t, not uint8_t*.
+}
+
+TEST(TestVestelAcClass, toCommon) {
+  IRVestelAc ac(0);
+  ac.setPower(true);
+  ac.setMode(kVestelAcCool);
+  ac.setTemp(20);
+  ac.setFan(kVestelAcFanHigh);
+  ac.setSwing(true);
+  ac.setTurbo(true);
+  ac.setIon(true);
+  // Now test it.
+  ASSERT_EQ(decode_type_t::VESTEL_AC, ac.toCommon().protocol);
+  ASSERT_EQ(-1, ac.toCommon().model);
+  ASSERT_TRUE(ac.toCommon().power);
+  ASSERT_TRUE(ac.toCommon().celsius);
+  ASSERT_EQ(20, ac.toCommon().degrees);
+  ASSERT_EQ(stdAc::opmode_t::kCool, ac.toCommon().mode);
+  ASSERT_EQ(stdAc::fanspeed_t::kMax, ac.toCommon().fanspeed);
+  ASSERT_EQ(stdAc::swingv_t::kAuto, ac.toCommon().swingv);
+  ASSERT_TRUE(ac.toCommon().turbo);
+  ASSERT_TRUE(ac.toCommon().filter);
+  // Unsupported.
+  ASSERT_EQ(stdAc::swingh_t::kOff, ac.toCommon().swingh);
+  ASSERT_FALSE(ac.toCommon().econo);
+  ASSERT_FALSE(ac.toCommon().light);
+  ASSERT_FALSE(ac.toCommon().clean);
+  ASSERT_FALSE(ac.toCommon().beep);
+  ASSERT_FALSE(ac.toCommon().quiet);
+  ASSERT_EQ(-1, ac.toCommon().sleep);
+  ASSERT_EQ(-1, ac.toCommon().clock);
 }

@@ -1,8 +1,12 @@
 // Copyright 2017 stufisher
+// Copyright 2019 crankyoldgit
 
 #ifndef IR_TROTEC_H_
 #define IR_TROTEC_H_
 
+#ifndef UNIT_TEST
+#include <Arduino.h>
+#endif
 #include "IRremoteESP8266.h"
 #include "IRsend.h"
 #ifdef UNIT_TEST
@@ -55,35 +59,43 @@ const uint8_t kTrotecMaxTimer = 23;
 
 class IRTrotecESP {
  public:
-  explicit IRTrotecESP(uint16_t pin);
+  explicit IRTrotecESP(const uint16_t pin, const bool inverted = false,
+                       const bool use_modulation = true);
 
 #if SEND_TROTEC
   void send(const uint16_t repeat = kTrotecDefaultRepeat);
+  uint8_t calibrate(void) { return _irsend.calibrate(); }
 #endif  // SEND_TROTEC
-  void begin();
+  void begin(void);
 
   void setPower(const bool state);
-  bool getPower();
+  bool getPower(void);
 
   void setTemp(const uint8_t celsius);
-  uint8_t getTemp();
+  uint8_t getTemp(void);
 
   void setSpeed(const uint8_t fan);
-  uint8_t getSpeed();
+  uint8_t getSpeed(void);
 
-  uint8_t getMode();
+  uint8_t getMode(void);
   void setMode(const uint8_t mode);
 
-  bool getSleep();
-  void setSleep(bool sleep);
+  bool getSleep(void);
+  void setSleep(const bool on);
 
-  uint8_t getTimer();
+  uint8_t getTimer(void);
   void setTimer(const uint8_t timer);
 
-  uint8_t* getRaw();
-
+  uint8_t* getRaw(void);
+  void setRaw(const uint8_t state[]);
+  static bool validChecksum(const uint8_t state[],
+                            const uint16_t length = kTrotecStateLength);
   uint8_t convertMode(const stdAc::opmode_t mode);
   uint8_t convertFan(const stdAc::fanspeed_t speed);
+  static stdAc::opmode_t toCommonMode(const uint8_t mode);
+  static stdAc::fanspeed_t toCommonFanSpeed(const uint8_t speed);
+  stdAc::state_t toCommon(void);
+  String toString(void);
 #ifndef UNIT_TEST
 
  private:
@@ -92,8 +104,10 @@ class IRTrotecESP {
   IRsendTest _irsend;
 #endif
   uint8_t remote_state[kTrotecStateLength];
-  void stateReset();
-  void checksum();
+  static uint8_t calcChecksum(const uint8_t state[],
+                              const uint16_t length = kTrotecStateLength);
+  void stateReset(void);
+  void checksum(void);
 };
 
 #endif  // IR_TROTEC_H_

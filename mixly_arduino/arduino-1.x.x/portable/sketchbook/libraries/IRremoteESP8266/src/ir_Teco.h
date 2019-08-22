@@ -5,8 +5,6 @@
 
 #ifndef UNIT_TEST
 #include <Arduino.h>
-#else
-#include <string>
 #endif
 #include "IRremoteESP8266.h"
 #include "IRsend.h"
@@ -89,7 +87,8 @@ const uint64_t kTecoReset =      0b01001010000000000000010000000000000;
 // Classes
 class IRTecoAc {
  public:
-  explicit IRTecoAc(const uint16_t pin);
+  explicit IRTecoAc(const uint16_t pin, const bool inverted = false,
+                    const bool use_modulation = true);
 
   void stateReset(void);
 #if SEND_TECO
@@ -125,11 +124,10 @@ class IRTecoAc {
 
   uint8_t convertMode(const stdAc::opmode_t mode);
   uint8_t convertFan(const stdAc::fanspeed_t speed);
-#ifdef ARDUINO
+  static stdAc::opmode_t toCommonMode(const uint8_t mode);
+  static stdAc::fanspeed_t toCommonFanSpeed(const uint8_t speed);
+  stdAc::state_t toCommon(void);
   String toString(void);
-#else
-  std::string toString(void);
-#endif
 #ifndef UNIT_TEST
 
  private:

@@ -7,72 +7,59 @@
 
 #include "Hx711.h"
 
-Hx711::Hx711(uint8_t pin_dout, uint8_t pin_slk) :
-		_pin_dout(pin_dout), _pin_slk(pin_slk)
+Hx711::Hx711(int IO_DOUT,int IO_SCK)
 {
-	pinMode(_pin_slk, OUTPUT);
-	pinMode(_pin_dout, INPUT);
-
-	digitalWrite(_pin_slk, HIGH);
-	delayMicroseconds(100);
-	digitalWrite(_pin_slk, LOW);
-
-	averageValue();
-	this->setOffset(averageValue());
-	this->setScale();
+	DOUT = IO_DOUT;
+	SCK = IO_SCK;
+	pinMode(SCK, OUTPUT);
+	pinMode(DOUT, INPUT);
 }
 
-Hx711::~Hx711()
+void Hx711::setScale(float IO_scale)
 {
-
+	scale = IO_scale;
 }
 
-long Hx711::averageValue(byte times)
+void Hx711::setOffset(long IO_offset)
 {
-	long sum = 0;
-	for (byte i = 0; i < times; i++)
-	{
-		sum += getValue();
-	}
-
-	return sum / times;
+	offset = IO_offset;
 }
 
 long Hx711::getValue()
 {
-	byte data[3];
-
-	while (digitalRead(_pin_dout))
-		;
-
-	for (byte j = 0; j < 3; j++)
+	unsigned long Count;
+	unsigned char i;
+	digitalWrite(SCK,LOW);
+	Count = 0;
+	while(digitalRead(DOUT) == 1);
+	for(i=0;i<24;i++)
 	{
-		for (byte i = 0; i < 8; i++)
-		{
-			digitalWrite(_pin_slk, HIGH);
-			bitWrite(data[2 - j], 7 - i, digitalRead(_pin_dout));
-			digitalWrite(_pin_slk, LOW);
-		}
+		digitalWrite(SCK,HIGH);
+		Count = Count<<1;
+		digitalWrite(SCK,LOW);
+		if(digitalRead(DOUT) == 1) Count++;
 	}
-
-	digitalWrite(_pin_slk, HIGH);
-	digitalWrite(_pin_slk, LOW);
-
-	return ((long) data[2] << 16) | ((long) data[1] << 8) | (long) data[0];
+	digitalWrite(SCK,HIGH);
+	Count = Count^0x800000;
+	digitalWrite(SCK,LOW);
+	return Count;
 }
 
-void Hx711::setOffset(long offset)
+long Hx711::getAverageValue(char IO_times)
 {
-	_offset = offset;
+	long sum=0;
+	char i;
+	for(i=0;i<IO_times;i++)
+	{
+		sum += getValue();
+	}
+	return sum/IO_times;
 }
 
-void Hx711::setScale(float scale)
+float Hx711::getWeight(char IO_times)
 {
-	_scale = scale;
+	long temp;
+	temp = getAverageValue(IO_times) - offset;
+	return (float)temp/scale;
 }
 
-float Hx711::getGram()
-{
-	long val = (averageValue() - _offset);
-	return (float) val / _scale;
-}

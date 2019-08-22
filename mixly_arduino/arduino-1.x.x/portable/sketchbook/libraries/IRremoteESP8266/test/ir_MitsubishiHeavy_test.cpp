@@ -293,7 +293,7 @@ TEST(TestMitsubishiHeavy152AcClass, HumanReadable) {
   IRMitsubishiHeavy152Ac ac(0);
 
   EXPECT_EQ(
-      "Power: Off, Mode: 0 (Auto), Temp: 17C, Fan: 0 (Auto), "
+      "Power: Off, Mode: 0 (AUTO), Temp: 17C, Fan: 0 (Auto), "
       "Swing (V): 0 (Auto), Swing (H): 0 (Auto), Silent: Off, Turbo: Off, "
       "Econo: Off, Night: Off, Filter: Off, 3D: Off, Clean: Off",
       ac.toString());
@@ -310,7 +310,7 @@ TEST(TestMitsubishiHeavy152AcClass, HumanReadable) {
   ac.setSwingVertical(kMitsubishiHeavy152SwingVAuto);
   ac.setSwingHorizontal(kMitsubishiHeavy152SwingHAuto);
   EXPECT_EQ(
-      "Power: On, Mode: 1 (Cool), Temp: 17C, Fan: 4 (Max), "
+      "Power: On, Mode: 1 (COOL), Temp: 17C, Fan: 4 (Max), "
       "Swing (V): 0 (Auto), Swing (H): 0 (Auto), Silent: On, Turbo: Off, "
       "Econo: Off, Night: On, Filter: On, 3D: On, Clean: Off",
       ac.toString());
@@ -327,7 +327,7 @@ TEST(TestMitsubishiHeavy152AcClass, HumanReadable) {
   ac.setSwingHorizontal(kMitsubishiHeavy152SwingHLeftMax);
 
   EXPECT_EQ(
-      "Power: On, Mode: 4 (Heat), Temp: 31C, Fan: 8 (Turbo), "
+      "Power: On, Mode: 4 (HEAT), Temp: 31C, Fan: 8 (Turbo), "
       "Swing (V): 5 (Lowest), Swing (H): 1 (Max Left), Silent: Off, Turbo: On, "
       "Econo: Off, Night: Off, Filter: On, 3D: Off, Clean: Off",
       ac.toString());
@@ -338,7 +338,7 @@ TEST(TestMitsubishiHeavy152AcClass, HumanReadable) {
   ac.setSwingVertical(kMitsubishiHeavy152SwingVOff);
 
   EXPECT_EQ(
-      "Power: On, Mode: 0 (Auto), Temp: 31C, Fan: 6 (Econo), "
+      "Power: On, Mode: 0 (AUTO), Temp: 31C, Fan: 6 (Econo), "
       "Swing (V): 6 (Off), Swing (H): 1 (Max Left), Silent: Off, "
       "Turbo: Off, Econo: On, Night: Off, Filter: On, 3D: Off, Clean: On",
       ac.toString());
@@ -349,7 +349,7 @@ TEST(TestMitsubishiHeavy152AcClass, HumanReadable) {
   ac.setMode(kMitsubishiHeavyDry);
   ac.setSwingHorizontal(kMitsubishiHeavy152SwingHLeftRight);
   EXPECT_EQ(
-      "Power: On, Mode: 2 (Dry), Temp: 25C, Fan: 0 (Auto), "
+      "Power: On, Mode: 2 (DRY), Temp: 25C, Fan: 0 (Auto), "
       "Swing (V): 6 (Off), Swing (H): 7 (Left Right), Silent: Off, "
       "Turbo: Off, Econo: Off, Night: Off, Filter: Off, 3D: Off, Clean: Off",
       ac.toString());
@@ -359,7 +359,7 @@ TEST(TestMitsubishiHeavy152AcClass, ReconstructKnownExample) {
   IRMitsubishiHeavy152Ac ac(0);
 
   EXPECT_EQ(
-      "Power: Off, Mode: 0 (Auto), Temp: 17C, Fan: 0 (Auto), "
+      "Power: Off, Mode: 0 (AUTO), Temp: 17C, Fan: 0 (Auto), "
       "Swing (V): 0 (Auto), Swing (H): 0 (Auto), Silent: Off, Turbo: Off, "
       "Econo: Off, Night: Off, Filter: Off, 3D: Off, Clean: Off",
       ac.toString());
@@ -377,7 +377,7 @@ TEST(TestMitsubishiHeavy152AcClass, ReconstructKnownExample) {
   ac.setSwingVertical(kMitsubishiHeavy152SwingVAuto);
   ac.setSwingHorizontal(kMitsubishiHeavy152SwingHAuto);
   EXPECT_EQ(
-      "Power: On, Mode: 4 (Heat), Temp: 24C, Fan: 4 (Max), "
+      "Power: On, Mode: 4 (HEAT), Temp: 24C, Fan: 4 (Max), "
       "Swing (V): 0 (Auto), Swing (H): 0 (Auto), Silent: Off, Turbo: Off, "
       "Econo: Off, Night: Off, Filter: Off, 3D: Off, Clean: Off",
       ac.toString());
@@ -635,7 +635,7 @@ TEST(TestMitsubishiHeavy88AcClass, HumanReadable) {
   IRMitsubishiHeavy88Ac ac(0);
 
   EXPECT_EQ(
-      "Power: Off, Mode: 0 (Auto), Temp: 17C, Fan: 0 (Auto), "
+      "Power: Off, Mode: 0 (AUTO), Temp: 17C, Fan: 0 (Auto), "
       "Swing (V): 0 (Off), Swing (H): 0 (Off), "
       "Turbo: Off, Econo: Off, 3D: Off, Clean: Off",
       ac.toString());
@@ -648,7 +648,7 @@ TEST(TestMitsubishiHeavy88AcClass, HumanReadable) {
   ac.set3D(true);
   ac.setSwingVertical(kMitsubishiHeavy88SwingVAuto);
   EXPECT_EQ(
-      "Power: On, Mode: 1 (Cool), Temp: 17C, Fan: 4 (High), "
+      "Power: On, Mode: 1 (COOL), Temp: 17C, Fan: 4 (High), "
       "Swing (V): 16 (Auto), Swing (H): 200 (3D), "
       "Turbo: Off, Econo: Off, 3D: On, Clean: Off",
       ac.toString());
@@ -662,7 +662,7 @@ TEST(TestMitsubishiHeavy88AcClass, HumanReadable) {
   ac.setSwingHorizontal(kMitsubishiHeavy88SwingHLeftMax);
 
   EXPECT_EQ(
-      "Power: On, Mode: 4 (Heat), Temp: 31C, Fan: 6 (Turbo), "
+      "Power: On, Mode: 4 (HEAT), Temp: 31C, Fan: 6 (Turbo), "
       "Swing (V): 26 (Lowest), Swing (H): 4 (Max Left), Turbo: On, Econo: Off, "
       "3D: Off, Clean: Off",
       ac.toString());
@@ -673,7 +673,7 @@ TEST(TestMitsubishiHeavy88AcClass, HumanReadable) {
   ac.setSwingVertical(kMitsubishiHeavy88SwingVOff);
 
   EXPECT_EQ(
-      "Power: On, Mode: 0 (Auto), Temp: 31C, Fan: 7 (Econo), "
+      "Power: On, Mode: 0 (AUTO), Temp: 31C, Fan: 7 (Econo), "
       "Swing (V): 0 (Off), Swing (H): 4 (Max Left), Turbo: Off, Econo: On, "
       "3D: Off, Clean: On",
       ac.toString());
@@ -684,7 +684,7 @@ TEST(TestMitsubishiHeavy88AcClass, HumanReadable) {
   ac.setMode(kMitsubishiHeavyDry);
   ac.setSwingHorizontal(kMitsubishiHeavy88SwingHLeftRight);
   EXPECT_EQ(
-      "Power: On, Mode: 2 (Dry), Temp: 25C, Fan: 0 (Auto), "
+      "Power: On, Mode: 2 (DRY), Temp: 25C, Fan: 0 (Auto), "
       "Swing (V): 0 (Off), Swing (H): 72 (Left Right), Turbo: Off, Econo: Off, "
       "3D: Off, Clean: Off",
       ac.toString());
@@ -704,7 +704,7 @@ TEST(TestDecodeMitsubishiHeavy, ZmsRealExample) {
       0xF8, 0x04, 0xFB, 0x00, 0xFF, 0x00, 0xFF, 0x00,
       0xFF, 0x80, 0x7F};
 
-  // Ref: https://github.com/markszabo/IRremoteESP8266/issues/660#issuecomment-480571466
+  // Ref: https://github.com/crankyoldgit/IRremoteESP8266/issues/660#issuecomment-480571466
   uint16_t rawData[307] = {
       3136, 1638, 364, 428, 366, 1224, 362, 432, 364, 430, 364, 1226, 362, 432,
       364, 1224, 366, 428, 366, 430, 366, 1224, 362, 1228, 362, 1228, 362, 432,
@@ -739,7 +739,7 @@ TEST(TestDecodeMitsubishiHeavy, ZmsRealExample) {
   EXPECT_STATE_EQ(expected, irsend.capture.state, irsend.capture.bits);
   ac.setRaw(irsend.capture.state);
   EXPECT_EQ(
-      "Power: On, Mode: 4 (Heat), Temp: 24C, Fan: 4 (Max), "
+      "Power: On, Mode: 4 (HEAT), Temp: 24C, Fan: 4 (Max), "
       "Swing (V): 0 (Auto), Swing (H): 0 (Auto), Silent: Off, Turbo: Off, "
       "Econo: Off, Night: Off, Filter: Off, 3D: Off, Clean: Off",
       ac.toString());
@@ -766,7 +766,7 @@ TEST(TestDecodeMitsubishiHeavy, ZmsSyntheticExample) {
   EXPECT_STATE_EQ(expected, irsend.capture.state, irsend.capture.bits);
   ac.setRaw(irsend.capture.state);
   EXPECT_EQ(
-      "Power: On, Mode: 4 (Heat), Temp: 24C, Fan: 4 (Max), "
+      "Power: On, Mode: 4 (HEAT), Temp: 24C, Fan: 4 (Max), "
       "Swing (V): 0 (Auto), Swing (H): 0 (Auto), Silent: Off, Turbo: Off, "
       "Econo: Off, Night: Off, Filter: Off, 3D: Off, Clean: Off",
       ac.toString());
@@ -784,7 +784,7 @@ TEST(TestDecodeMitsubishiHeavy, ZmsRealExample2) {
       0xF8, 0x04, 0xFB, 0x00, 0xFF, 0x00, 0xFF, 0x00,
       0xFF, 0x80, 0x7F};
 
-  // Ref: https://github.com/markszabo/IRremoteESP8266/issues/660#issuecomment-480571466
+  // Ref: https://github.com/crankyoldgit/IRremoteESP8266/issues/660#issuecomment-480571466
   uint16_t rawData[307] = {
       3196, 1580, 398, 390, 404, 1190, 400, 390, 402, 390, 402, 1192, 402, 388,
       402, 1192, 400, 390, 402, 392, 402, 1192, 400, 1188, 400, 1188, 400, 390,
@@ -819,7 +819,7 @@ TEST(TestDecodeMitsubishiHeavy, ZmsRealExample2) {
   EXPECT_STATE_EQ(expected, irsend.capture.state, irsend.capture.bits);
   ac.setRaw(irsend.capture.state);
   EXPECT_EQ(
-      "Power: Off, Mode: 4 (Heat), Temp: 24C, Fan: 4 (Max), "
+      "Power: Off, Mode: 4 (HEAT), Temp: 24C, Fan: 4 (Max), "
       "Swing (V): 0 (Auto), Swing (H): 0 (Auto), Silent: Off, Turbo: Off, "
       "Econo: Off, Night: Off, Filter: Off, 3D: Off, Clean: Off",
       ac.toString());
@@ -844,8 +844,77 @@ TEST(TestDecodeMitsubishiHeavy, ZjsSyntheticExample) {
   EXPECT_STATE_EQ(expected, irsend.capture.state, irsend.capture.bits);
   ac.setRaw(irsend.capture.state);
   EXPECT_EQ(
-      "Power: On, Mode: 2 (Dry), Temp: 25C, Fan: 0 (Auto), "
+      "Power: On, Mode: 2 (DRY), Temp: 25C, Fan: 0 (Auto), "
       "Swing (V): 0 (Off), Swing (H): 72 (Left Right), Turbo: Off, Econo: Off, "
       "3D: Off, Clean: Off",
       ac.toString());
+}
+
+TEST(TestMitsubishiHeavy152AcClass, toCommon) {
+  IRMitsubishiHeavy152Ac ac(0);
+  ac.setPower(true);
+  ac.setMode(kMitsubishiHeavyCool);
+  ac.setTemp(20);
+  ac.setFan(kMitsubishiHeavy152FanLow);
+  ac.setSwingVertical(kMitsubishiHeavy152SwingVHighest);
+  ac.setSwingHorizontal(kMitsubishiHeavy152SwingHRightMax);
+  ac.setTurbo(false);
+  ac.setEcono(true);
+  ac.setClean(true);
+  ac.setFilter(true);
+  ac.setSilent(true);
+  ac.setNight(true);
+  // Now test it.
+  ASSERT_EQ(decode_type_t::MITSUBISHI_HEAVY_152, ac.toCommon().protocol);
+  ASSERT_EQ(-1, ac.toCommon().model);
+  ASSERT_TRUE(ac.toCommon().power);
+  ASSERT_TRUE(ac.toCommon().celsius);
+  ASSERT_EQ(20, ac.toCommon().degrees);
+  ASSERT_EQ(stdAc::opmode_t::kCool, ac.toCommon().mode);
+  ASSERT_EQ(stdAc::fanspeed_t::kMin, ac.toCommon().fanspeed);
+  ASSERT_EQ(stdAc::swingv_t::kHighest, ac.toCommon().swingv);
+  ASSERT_EQ(stdAc::swingh_t::kRightMax, ac.toCommon().swingh);
+  ASSERT_FALSE(ac.toCommon().turbo);
+  ASSERT_TRUE(ac.toCommon().econo);
+  ASSERT_TRUE(ac.toCommon().clean);
+  ASSERT_TRUE(ac.toCommon().quiet);
+  ASSERT_TRUE(ac.toCommon().filter);
+  ASSERT_EQ(0, ac.toCommon().sleep);
+  // Unsupported.
+  ASSERT_FALSE(ac.toCommon().light);
+  ASSERT_FALSE(ac.toCommon().beep);
+  ASSERT_EQ(-1, ac.toCommon().clock);
+}
+
+TEST(TestMitsubishiHeavy88AcClass, toCommon) {
+  IRMitsubishiHeavy88Ac ac(0);
+  ac.setPower(true);
+  ac.setMode(kMitsubishiHeavyCool);
+  ac.setTemp(20);
+  ac.setFan(kMitsubishiHeavy88FanLow);
+  ac.setSwingVertical(kMitsubishiHeavy88SwingVHighest);
+  ac.setSwingHorizontal(kMitsubishiHeavy88SwingHRightMax);
+  ac.setTurbo(false);
+  ac.setEcono(true);
+  ac.setClean(true);
+  // Now test it.
+  ASSERT_EQ(decode_type_t::MITSUBISHI_HEAVY_88, ac.toCommon().protocol);
+  ASSERT_EQ(-1, ac.toCommon().model);
+  ASSERT_TRUE(ac.toCommon().power);
+  ASSERT_TRUE(ac.toCommon().celsius);
+  ASSERT_EQ(20, ac.toCommon().degrees);
+  ASSERT_EQ(stdAc::opmode_t::kCool, ac.toCommon().mode);
+  ASSERT_EQ(stdAc::fanspeed_t::kMin, ac.toCommon().fanspeed);
+  ASSERT_EQ(stdAc::swingv_t::kHighest, ac.toCommon().swingv);
+  ASSERT_EQ(stdAc::swingh_t::kRightMax, ac.toCommon().swingh);
+  ASSERT_FALSE(ac.toCommon().turbo);
+  ASSERT_TRUE(ac.toCommon().econo);
+  ASSERT_TRUE(ac.toCommon().clean);
+  // Unsupported.
+  ASSERT_FALSE(ac.toCommon().quiet);
+  ASSERT_FALSE(ac.toCommon().light);
+  ASSERT_FALSE(ac.toCommon().filter);
+  ASSERT_FALSE(ac.toCommon().beep);
+  ASSERT_EQ(-1, ac.toCommon().sleep);
+  ASSERT_EQ(-1, ac.toCommon().clock);
 }

@@ -1,12 +1,17 @@
 // Copyright 2019 David Conran
 
+// Supports:
+//   Brand: Mitsubishi Heavy Industries,  Model: RLA502A700B remote
+//   Brand: Mitsubishi Heavy Industries,  Model: SRKxxZM-S A/C
+//   Brand: Mitsubishi Heavy Industries,  Model: SRKxxZMXA-S A/C
+//   Brand: Mitsubishi Heavy Industries,  Model: RKX502A001C remote
+//   Brand: Mitsubishi Heavy Industries,  Model: SRKxxZJ-S A/C
+
 #ifndef IR_MITSUBISHIHEAVY_H_
 #define IR_MITSUBISHIHEAVY_H_
 
 #ifndef UNIT_TEST
 #include <Arduino.h>
-#else
-#include <string>
 #endif
 #include "IRremoteESP8266.h"
 #include "IRsend.h"
@@ -15,7 +20,7 @@
 #endif
 
 // Ref:
-//   https://github.com/markszabo/IRremoteESP8266/issues/660
+//   https://github.com/crankyoldgit/IRremoteESP8266/issues/660
 //   https://github.com/ToniA/Raw-IR-decoder-for-Arduino/blob/master/MitsubishiHeavy.cpp
 //   https://github.com/ToniA/arduino-heatpumpir/blob/master/MitsubishiHeavyHeatpumpIR.cpp
 
@@ -117,11 +122,14 @@ const uint8_t kMitsubishiHeavy88SwingVOff =       0b00000000;  // 0x00
 // Classes
 class IRMitsubishiHeavy152Ac {
  public:
-  explicit IRMitsubishiHeavy152Ac(const uint16_t pin);
+  explicit IRMitsubishiHeavy152Ac(const uint16_t pin,
+                                  const bool inverted = false,
+                                  const bool use_modulation = true);
 
   void stateReset(void);
 #if SEND_MITSUBISHIHEAVY
   void send(const uint16_t repeat = kMitsubishiHeavy152MinRepeat);
+  uint8_t calibrate(void) { return _irsend.calibrate(); }
 #endif  // SEND_MITSUBISHIHEAVY
   void begin(void);
   void on(void);
@@ -176,11 +184,12 @@ class IRMitsubishiHeavy152Ac {
   static uint8_t convertFan(const stdAc::fanspeed_t speed);
   static uint8_t convertSwingV(const stdAc::swingv_t position);
   static uint8_t convertSwingH(const stdAc::swingh_t position);
-#ifdef ARDUINO
+  static stdAc::opmode_t toCommonMode(const uint8_t mode);
+  static stdAc::fanspeed_t toCommonFanSpeed(const uint8_t speed);
+  static stdAc::swingv_t toCommonSwingV(const uint8_t pos);
+  static stdAc::swingh_t toCommonSwingH(const uint8_t pos);
+  stdAc::state_t toCommon(void);
   String toString(void);
-#else  // ARDUINO
-  std::string toString(void);
-#endif  // ARDUINO
 #ifndef UNIT_TEST
 
  private:
@@ -190,12 +199,14 @@ class IRMitsubishiHeavy152Ac {
 #endif  // UNIT_TEST
   // The state of the IR remote in IR code form.
   uint8_t remote_state[kMitsubishiHeavy152StateLength];
-  void checksum();
+  void checksum(void);
 };
 
 class IRMitsubishiHeavy88Ac {
  public:
-  explicit IRMitsubishiHeavy88Ac(const uint16_t pin);
+  explicit IRMitsubishiHeavy88Ac(const uint16_t pin,
+                                 const bool inverted = false,
+                                 const bool use_modulation = true);
 
   void stateReset(void);
 #if SEND_MITSUBISHIHEAVY
@@ -245,11 +256,11 @@ class IRMitsubishiHeavy88Ac {
   static uint8_t convertFan(const stdAc::fanspeed_t speed);
   static uint8_t convertSwingV(const stdAc::swingv_t position);
   static uint8_t convertSwingH(const stdAc::swingh_t position);
-#ifdef ARDUINO
+  static stdAc::fanspeed_t toCommonFanSpeed(const uint8_t speed);
+  static stdAc::swingv_t toCommonSwingV(const uint8_t pos);
+  static stdAc::swingh_t toCommonSwingH(const uint8_t pos);
+  stdAc::state_t toCommon(void);
   String toString(void);
-#else  // ARDUINO
-  std::string toString(void);
-#endif  // ARDUINO
 #ifndef UNIT_TEST
 
  private:
@@ -259,6 +270,6 @@ class IRMitsubishiHeavy88Ac {
 #endif  // UNIT_TEST
   // The state of the IR remote in IR code form.
   uint8_t remote_state[kMitsubishiHeavy152StateLength];
-  void checksum();
+  void checksum(void);
 };
 #endif  // IR_MITSUBISHIHEAVY_H_

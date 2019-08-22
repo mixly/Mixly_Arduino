@@ -22,7 +22,7 @@
 #endif
 
 // Ref:
-//   https://github.com/markszabo/IRremoteESP8266/issues/660
+//   https://github.com/crankyoldgit/IRremoteESP8266/issues/660
 //   https://github.com/ToniA/Raw-IR-decoder-for-Arduino/blob/master/MitsubishiHeavy.cpp
 //   https://github.com/ToniA/arduino-heatpumpir/blob/master/MitsubishiHeavyHeatpumpIR.cpp
 
@@ -33,6 +33,12 @@ const uint16_t kMitsubishiHeavyBitMark = 370;
 const uint16_t kMitsubishiHeavyOneSpace = 420;
 const uint16_t kMitsubishiHeavyZeroSpace = 1220;
 const uint32_t kMitsubishiHeavyGap = kDefaultMessageGap;  // Just a guess.
+
+using irutils::addBoolToString;
+using irutils::addIntToString;
+using irutils::addLabeledString;
+using irutils::addModeToString;
+using irutils::addTempToString;
 
 #if SEND_MITSUBISHIHEAVY
 // Send a MitsubishiHeavy 88 bit A/C message.
@@ -73,10 +79,12 @@ void IRsend::sendMitsubishiHeavy152(const unsigned char data[],
 #endif  // SEND_MITSUBISHIHEAVY
 
 // Class for decoding and constructing MitsubishiHeavy152 AC messages.
-IRMitsubishiHeavy152Ac::IRMitsubishiHeavy152Ac(
-    const uint16_t pin) : _irsend(pin) { stateReset(); }
+IRMitsubishiHeavy152Ac::IRMitsubishiHeavy152Ac(const uint16_t pin,
+                                               const bool inverted,
+                                               const bool use_modulation)
+    : _irsend(pin, inverted, use_modulation) { stateReset(); }
 
-void IRMitsubishiHeavy152Ac::begin() { _irsend.begin(); }
+void IRMitsubishiHeavy152Ac::begin(void) { _irsend.begin(); }
 
 #if SEND_MITSUBISHIHEAVY
 void IRMitsubishiHeavy152Ac::send(const uint16_t repeat) {
@@ -303,7 +311,6 @@ bool IRMitsubishiHeavy152Ac::validChecksum(const uint8_t *state,
   return true;
 }
 
-
 // Convert a standard A/C mode into its native mode.
 uint8_t IRMitsubishiHeavy152Ac::convertMode(const stdAc::opmode_t mode) {
   switch (mode) {
@@ -378,68 +385,118 @@ uint8_t IRMitsubishiHeavy152Ac::convertSwingH(const stdAc::swingh_t position) {
   }
 }
 
+// Convert a native mode to it's common equivalent.
+stdAc::opmode_t IRMitsubishiHeavy152Ac::toCommonMode(const uint8_t mode) {
+  switch (mode) {
+    case kMitsubishiHeavyCool: return stdAc::opmode_t::kCool;
+    case kMitsubishiHeavyHeat: return stdAc::opmode_t::kHeat;
+    case kMitsubishiHeavyDry: return stdAc::opmode_t::kDry;
+    case kMitsubishiHeavyFan: return stdAc::opmode_t::kFan;
+    default: return stdAc::opmode_t::kAuto;
+  }
+}
+
+// Convert a native fan speed to it's common equivalent.
+stdAc::fanspeed_t IRMitsubishiHeavy152Ac::toCommonFanSpeed(const uint8_t spd) {
+  switch (spd) {
+    case kMitsubishiHeavy152FanMax: return stdAc::fanspeed_t::kMax;
+    case kMitsubishiHeavy152FanHigh: return stdAc::fanspeed_t::kHigh;
+    case kMitsubishiHeavy152FanMed: return stdAc::fanspeed_t::kMedium;
+    case kMitsubishiHeavy152FanLow: return stdAc::fanspeed_t::kLow;
+    case kMitsubishiHeavy152FanEcono: return stdAc::fanspeed_t::kMin;
+    default: return stdAc::fanspeed_t::kAuto;
+  }
+}
+
+// Convert a native vertical swing to it's common equivalent.
+stdAc::swingh_t IRMitsubishiHeavy152Ac::toCommonSwingH(const uint8_t pos) {
+  switch (pos) {
+    case kMitsubishiHeavy152SwingHLeftMax: return stdAc::swingh_t::kLeftMax;
+    case kMitsubishiHeavy152SwingHLeft: return stdAc::swingh_t::kLeft;
+    case kMitsubishiHeavy152SwingHMiddle: return stdAc::swingh_t::kMiddle;
+    case kMitsubishiHeavy152SwingHRight: return stdAc::swingh_t::kRight;
+    case kMitsubishiHeavy152SwingHRightMax: return stdAc::swingh_t::kRightMax;
+    case kMitsubishiHeavy152SwingHOff: return stdAc::swingh_t::kOff;
+    default: return stdAc::swingh_t::kAuto;
+  }
+}
+
+// Convert a native vertical swing to it's common equivalent.
+stdAc::swingv_t IRMitsubishiHeavy152Ac::toCommonSwingV(const uint8_t pos) {
+  switch (pos) {
+    case kMitsubishiHeavy152SwingVHighest: return stdAc::swingv_t::kHighest;
+    case kMitsubishiHeavy152SwingVHigh: return stdAc::swingv_t::kHigh;
+    case kMitsubishiHeavy152SwingVMiddle: return stdAc::swingv_t::kMiddle;
+    case kMitsubishiHeavy152SwingVLow: return stdAc::swingv_t::kLow;
+    case kMitsubishiHeavy152SwingVLowest: return stdAc::swingv_t::kLowest;
+    case kMitsubishiHeavy152SwingVOff: return stdAc::swingv_t::kOff;
+    default: return stdAc::swingv_t::kAuto;
+  }
+}
+
+// Convert the A/C state to it's common equivalent.
+stdAc::state_t IRMitsubishiHeavy152Ac::toCommon(void) {
+  stdAc::state_t result;
+  result.protocol = decode_type_t::MITSUBISHI_HEAVY_152;
+  result.model = -1;  // No models used.
+  result.power = this->getPower();
+  result.mode = this->toCommonMode(this->getMode());
+  result.celsius = true;
+  result.degrees = this->getTemp();
+  result.fanspeed = this->toCommonFanSpeed(this->getFan());
+  result.swingv = this->toCommonSwingV(this->getSwingVertical());
+  result.swingh = this->toCommonSwingH(this->getSwingHorizontal());
+  result.turbo = this->getTurbo();
+  result.econo = this->getEcono();
+  result.clean = this->getClean();
+  result.quiet = this->getSilent();
+  result.filter = this->getFilter();
+  result.sleep = this->getNight() ? 0 : -1;
+  // Not supported.
+  result.light = false;
+  result.beep = false;
+  result.clock = -1;
+  return result;
+}
+
 // Convert the internal state into a human readable string.
-#ifdef ARDUINO
 String IRMitsubishiHeavy152Ac::toString(void) {
   String result = "";
-#else
-std::string IRMitsubishiHeavy152Ac::toString(void) {
-  std::string result = "";
-#endif  // ARDUINO
-  result += F("Power: ");
-  result += (this->getPower() ? F("On") : F("Off"));
-  result += F(", Mode: ");
-  result += uint64ToString(this->getMode());
-  switch (this->getMode()) {
-    case kMitsubishiHeavyAuto:
-      result += F(" (Auto)");
-      break;
-    case kMitsubishiHeavyCool:
-      result += F(" (Cool)");
-      break;
-    case kMitsubishiHeavyHeat:
-      result += F(" (Heat)");
-      break;
-    case kMitsubishiHeavyDry:
-      result += F(" (Dry)");
-      break;
-    case kMitsubishiHeavyFan:
-      result += F(" (Fan)");
-      break;
-    default:
-      result += F(" (UNKNOWN)");
-  }
-  result += F(", Temp: ");
-  result += uint64ToString(this->getTemp()) + 'C';
-  result += F(", Fan: ");
-  result += uint64ToString(this->getFan());
+  result.reserve(180);  // Reserve some heap for the string to reduce fragging.
+  result += addBoolToString(getPower(), F("Power"), false);
+  result += addModeToString(getMode(), kMitsubishiHeavyAuto,
+                            kMitsubishiHeavyCool, kMitsubishiHeavyHeat,
+                            kMitsubishiHeavyDry, kMitsubishiHeavyFan);
+  result += addTempToString(getTemp());
+  result += addIntToString(getFan(), F("Fan"));
+  result += F(" (");
   switch (this->getFan()) {
     case kMitsubishiHeavy152FanAuto:
-      result += F(" (Auto)");
+      result += F("Auto");
       break;
     case kMitsubishiHeavy152FanHigh:
-      result += F(" (High)");
+      result += F("High");
       break;
     case kMitsubishiHeavy152FanLow:
-      result += F(" (Low)");
+      result += F("Low");
       break;
     case kMitsubishiHeavy152FanMed:
-      result += F(" (Med)");
+      result += F("Medium");
       break;
     case kMitsubishiHeavy152FanMax:
-      result += F(" (Max)");
+      result += F("Max");
       break;
     case kMitsubishiHeavy152FanEcono:
-      result += F(" (Econo)");
+      result += F("Econo");
       break;
     case kMitsubishiHeavy152FanTurbo:
-      result += F(" (Turbo)");
+      result += F("Turbo");
       break;
     default:
-      result += F(" (UNKNOWN)");
+      result += F("UNKNOWN");
   }
-  result += F(", Swing (V): ");
-  result += uint64ToString(this->getSwingVertical());
+  result += ')';
+  result += addIntToString(getSwingVertical(), F("Swing (V)"));
   switch (this->getSwingVertical()) {
     case kMitsubishiHeavy152SwingVAuto:
       result += F(" (Auto)");
@@ -465,8 +522,7 @@ std::string IRMitsubishiHeavy152Ac::toString(void) {
     default:
       result += F(" (UNKNOWN)");
   }
-  result += F(", Swing (H): ");
-  result += uint64ToString(this->getSwingHorizontal());
+  result += addIntToString(getSwingHorizontal(), F("Swing (H)"));
   switch (this->getSwingHorizontal()) {
     case kMitsubishiHeavy152SwingHAuto:
       result += F(" (Auto)");
@@ -498,29 +554,24 @@ std::string IRMitsubishiHeavy152Ac::toString(void) {
     default:
       result += F(" (UNKNOWN)");
   }
-  result += F(", Silent: ");
-  result += (this->getSilent() ? F("On") : F("Off"));
-  result += F(", Turbo: ");
-  result += (this->getTurbo() ? F("On") : F("Off"));
-  result += F(", Econo: ");
-  result += (this->getEcono() ? F("On") : F("Off"));
-  result += F(", Night: ");
-  result += (this->getNight() ? F("On") : F("Off"));
-  result += F(", Filter: ");
-  result += (this->getFilter() ? F("On") : F("Off"));
-  result += F(", 3D: ");
-  result += (this->get3D() ? F("On") : F("Off"));
-  result += F(", Clean: ");
-  result += (this->getClean() ? F("On") : F("Off"));
+  result += addBoolToString(getSilent(), F("Silent"));
+  result += addBoolToString(getTurbo(), F("Turbo"));
+  result += addBoolToString(getEcono(), F("Econo"));
+  result += addBoolToString(getNight(), F("Night"));
+  result += addBoolToString(getFilter(), F("Filter"));
+  result += addBoolToString(get3D(), F("3D"));
+  result += addBoolToString(getClean(), F("Clean"));
   return result;
 }
 
 
 // Class for decoding and constructing MitsubishiHeavy88 AC messages.
-IRMitsubishiHeavy88Ac::IRMitsubishiHeavy88Ac(
-    const uint16_t pin) : _irsend(pin) { stateReset(); }
+IRMitsubishiHeavy88Ac::IRMitsubishiHeavy88Ac(const uint16_t pin,
+                                             const bool inverted,
+                                             const bool use_modulation)
+    : _irsend(pin, inverted, use_modulation) { stateReset(); }
 
-void IRMitsubishiHeavy88Ac::begin() { _irsend.begin(); }
+void IRMitsubishiHeavy88Ac::begin(void) { _irsend.begin(); }
 
 #if SEND_MITSUBISHIHEAVY
 void IRMitsubishiHeavy88Ac::send(const uint16_t repeat) {
@@ -737,7 +788,6 @@ uint8_t IRMitsubishiHeavy88Ac::convertMode(const stdAc::opmode_t mode) {
   return IRMitsubishiHeavy152Ac::convertMode(mode);
 }
 
-
 // Convert a standard A/C Fan speed into its native fan speed.
 uint8_t IRMitsubishiHeavy88Ac::convertFan(const stdAc::fanspeed_t speed) {
   switch (speed) {
@@ -796,65 +846,104 @@ uint8_t IRMitsubishiHeavy88Ac::convertSwingH(const stdAc::swingh_t position) {
   }
 }
 
+// Convert a native fan speed to it's common equivalent.
+stdAc::fanspeed_t IRMitsubishiHeavy88Ac::toCommonFanSpeed(const uint8_t speed) {
+  switch (speed) {
+    case kMitsubishiHeavy88FanTurbo: return stdAc::fanspeed_t::kMax;
+    case kMitsubishiHeavy88FanHigh: return stdAc::fanspeed_t::kHigh;
+    case kMitsubishiHeavy88FanMed: return stdAc::fanspeed_t::kMedium;
+    case kMitsubishiHeavy88FanLow: return stdAc::fanspeed_t::kLow;
+    case kMitsubishiHeavy88FanEcono: return stdAc::fanspeed_t::kMin;
+    default: return stdAc::fanspeed_t::kAuto;
+  }
+}
+
+// Convert a native vertical swing to it's common equivalent.
+stdAc::swingh_t IRMitsubishiHeavy88Ac::toCommonSwingH(const uint8_t pos) {
+  switch (pos) {
+    case kMitsubishiHeavy88SwingHLeftMax: return stdAc::swingh_t::kLeftMax;
+    case kMitsubishiHeavy88SwingHLeft: return stdAc::swingh_t::kLeft;
+    case kMitsubishiHeavy88SwingHMiddle: return stdAc::swingh_t::kMiddle;
+    case kMitsubishiHeavy88SwingHRight: return stdAc::swingh_t::kRight;
+    case kMitsubishiHeavy88SwingHRightMax: return stdAc::swingh_t::kRightMax;
+    case kMitsubishiHeavy88SwingHOff: return stdAc::swingh_t::kOff;
+    default: return stdAc::swingh_t::kAuto;
+  }
+}
+
+// Convert a native vertical swing to it's common equivalent.
+stdAc::swingv_t IRMitsubishiHeavy88Ac::toCommonSwingV(const uint8_t pos) {
+  switch (pos) {
+    case kMitsubishiHeavy88SwingVHighest: return stdAc::swingv_t::kHighest;
+    case kMitsubishiHeavy88SwingVHigh: return stdAc::swingv_t::kHigh;
+    case kMitsubishiHeavy88SwingVMiddle: return stdAc::swingv_t::kMiddle;
+    case kMitsubishiHeavy88SwingVLow: return stdAc::swingv_t::kLow;
+    case kMitsubishiHeavy88SwingVLowest: return stdAc::swingv_t::kLowest;
+    case kMitsubishiHeavy88SwingVOff: return stdAc::swingv_t::kOff;
+    default: return stdAc::swingv_t::kAuto;
+  }
+}
+
+// Convert the A/C state to it's common equivalent.
+stdAc::state_t IRMitsubishiHeavy88Ac::toCommon(void) {
+  stdAc::state_t result;
+  result.protocol = decode_type_t::MITSUBISHI_HEAVY_88;
+  result.model = -1;  // No models used.
+  result.power = this->getPower();
+  result.mode = IRMitsubishiHeavy152Ac::toCommonMode(this->getMode());
+  result.celsius = true;
+  result.degrees = this->getTemp();
+  result.fanspeed = this->toCommonFanSpeed(this->getFan());
+  result.swingv = this->toCommonSwingV(this->getSwingVertical());
+  result.swingh = this->toCommonSwingH(this->getSwingHorizontal());
+  result.turbo = this->getTurbo();
+  result.econo = this->getEcono();
+  result.clean = this->getClean();
+  // Not supported.
+  result.quiet = false;
+  result.filter = false;
+  result.light = false;
+  result.beep = false;
+  result.sleep = -1;
+  result.clock = -1;
+  return result;
+}
+
 // Convert the internal state into a human readable string.
-#ifdef ARDUINO
 String IRMitsubishiHeavy88Ac::toString(void) {
   String result = "";
-#else
-std::string IRMitsubishiHeavy88Ac::toString(void) {
-  std::string result = "";
-#endif  // ARDUINO
-  result += F("Power: ");
-  result += (this->getPower() ? F("On") : F("Off"));
-  result += F(", Mode: ");
-  result += uint64ToString(this->getMode());
-  switch (this->getMode()) {
-    case kMitsubishiHeavyAuto:
-      result += F(" (Auto)");
-      break;
-    case kMitsubishiHeavyCool:
-      result += F(" (Cool)");
-      break;
-    case kMitsubishiHeavyHeat:
-      result += F(" (Heat)");
-      break;
-    case kMitsubishiHeavyDry:
-      result += F(" (Dry)");
-      break;
-    case kMitsubishiHeavyFan:
-      result += F(" (Fan)");
-      break;
-    default:
-      result += F(" (UNKNOWN)");
-  }
-  result += F(", Temp: ");
-  result += uint64ToString(this->getTemp()) + 'C';
-  result += F(", Fan: ");
-  result += uint64ToString(this->getFan());
+  result.reserve(140);  // Reserve some heap for the string to reduce fragging.
+  result += addBoolToString(getPower(), F("Power"), false);
+  result += addModeToString(getMode(), kMitsubishiHeavyAuto,
+                            kMitsubishiHeavyCool, kMitsubishiHeavyHeat,
+                            kMitsubishiHeavyDry, kMitsubishiHeavyFan);
+  result += addTempToString(getTemp());
+  result += addIntToString(getFan(), F("Fan"));
+  result += F(" (");
   switch (this->getFan()) {
     case kMitsubishiHeavy88FanAuto:
-      result += F(" (Auto)");
+      result += F("Auto");
       break;
     case kMitsubishiHeavy88FanHigh:
-      result += F(" (High)");
+      result += F("High");
       break;
     case kMitsubishiHeavy88FanLow:
-      result += F(" (Low)");
+      result += F("Low");
       break;
     case kMitsubishiHeavy88FanMed:
-      result += F(" (Med)");
+      result += F("Medium");
       break;
     case kMitsubishiHeavy88FanEcono:
-      result += F(" (Econo)");
+      result += F("Econo");
       break;
     case kMitsubishiHeavy88FanTurbo:
-      result += F(" (Turbo)");
+      result += F("Turbo");
       break;
     default:
-      result += F(" (UNKNOWN)");
+      result += F("UNKNOWN");
   }
-  result += F(", Swing (V): ");
-  result += uint64ToString(this->getSwingVertical());
+  result += ')';
+  result += addIntToString(getSwingVertical(), F("Swing (V)"));
   switch (this->getSwingVertical()) {
     case kMitsubishiHeavy88SwingVAuto:
       result += F(" (Auto)");
@@ -880,8 +969,7 @@ std::string IRMitsubishiHeavy88Ac::toString(void) {
     default:
       result += F(" (UNKNOWN)");
   }
-  result += F(", Swing (H): ");
-  result += uint64ToString(this->getSwingHorizontal());
+  result += addIntToString(getSwingHorizontal(), F("Swing (H)"));
   switch (this->getSwingHorizontal()) {
     case kMitsubishiHeavy88SwingHAuto:
       result += F(" (Auto)");
@@ -916,14 +1004,10 @@ std::string IRMitsubishiHeavy88Ac::toString(void) {
     default:
       result += F(" (UNKNOWN)");
   }
-  result += F(", Turbo: ");
-  result += (this->getTurbo() ? F("On") : F("Off"));
-  result += F(", Econo: ");
-  result += (this->getEcono() ? F("On") : F("Off"));
-  result += F(", 3D: ");
-  result += (this->get3D() ? F("On") : F("Off"));
-  result += F(", Clean: ");
-  result += (this->getClean() ? F("On") : F("Off"));
+  result += addBoolToString(getTurbo(), F("Turbo"));
+  result += addBoolToString(getEcono(), F("Econo"));
+  result += addBoolToString(get3D(), F("3D"));
+  result += addBoolToString(getClean(), F("Clean"));
   return result;
 }
 
@@ -953,41 +1037,19 @@ bool IRrecv::decodeMitsubishiHeavy(decode_results* results,
     }
   }
 
-  uint16_t actualBits = 0;
   uint16_t offset = kStartOffset;
-  match_result_t data_result;
-
-  // Header
-  if (!matchMark(results->rawbuf[offset++], kMitsubishiHeavyHdrMark))
-    return false;
-  if (!matchSpace(results->rawbuf[offset++], kMitsubishiHeavyHdrSpace))
-    return false;
-  // Data
-  // Keep reading bytes until we either run out of section or state to fill.
-  for (uint16_t i = 0;
-       offset <= results->rawlen - 16 && actualBits < nbits;
-       i++, actualBits += 8, offset += data_result.used) {
-    data_result = matchData(&(results->rawbuf[offset]), 8,
-                            kMitsubishiHeavyBitMark, kMitsubishiHeavyOneSpace,
-                            kMitsubishiHeavyBitMark, kMitsubishiHeavyZeroSpace,
-                            kTolerance, 0, false);
-    if (data_result.success == false) {
-      DPRINT("DEBUG: offset = ");
-      DPRINTLN(offset + data_result.used);
-      return false;  // Fail
-    }
-    results->state[i] = data_result.data;
-  }
-  // Footer.
-  if (!matchMark(results->rawbuf[offset++], kMitsubishiHeavyBitMark))
-    return false;
-  if (offset < results->rawlen &&
-      !matchAtLeast(results->rawbuf[offset], kMitsubishiHeavyGap)) return false;
-
+  uint16_t used;
+  used = matchGeneric(results->rawbuf + offset, results->state,
+                      results->rawlen - offset, nbits,
+                      kMitsubishiHeavyHdrMark, kMitsubishiHeavyHdrSpace,
+                      kMitsubishiHeavyBitMark, kMitsubishiHeavyOneSpace,
+                      kMitsubishiHeavyBitMark, kMitsubishiHeavyZeroSpace,
+                      kMitsubishiHeavyBitMark, kMitsubishiHeavyGap, true,
+                      kTolerance, 0, false);
+  if (used == 0) return false;
+  offset += used;
   // Compliance
-  if (actualBits < nbits) return false;
-  if (strict && actualBits != nbits) return false;  // Not as we expected.
-  switch (actualBits) {
+  switch (nbits) {
     case kMitsubishiHeavy88Bits:
       if (strict && !(IRMitsubishiHeavy88Ac::checkZjsSig(results->state) &&
                       IRMitsubishiHeavy88Ac::validChecksum(results->state)))
@@ -1005,7 +1067,7 @@ bool IRrecv::decodeMitsubishiHeavy(decode_results* results,
   }
 
   // Success
-  results->bits = actualBits;
+  results->bits = nbits;
   // No need to record the state as we stored it as we decoded it.
   // As we use result->state, we don't record value, address, or command as it
   // is a union data type.

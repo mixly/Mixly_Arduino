@@ -1,13 +1,16 @@
 // Copyright 2018 crankyoldgit
 // The specifics of reverse engineering the protocol details by kuzin2006
 
+// Supports:
+//   Brand: Haier,  Model: HSU07-HEA03 remote
+//   Brand: Haier,  Model: YR-W02 remote
+//   Brand: Haier,  Model: HSU-09HMC203 A/C
+
 #ifndef IR_HAIER_H_
 #define IR_HAIER_H_
 
 #ifndef UNIT_TEST
 #include <Arduino.h>
-#else
-#include <string>
 #endif
 #include "IRremoteESP8266.h"
 #include "IRsend.h"
@@ -15,16 +18,10 @@
 #include "IRsend_test.h"
 #endif
 
-//                      HH   HH   AAA   IIIII EEEEEEE RRRRRR
-//                      HH   HH  AAAAA   III  EE      RR   RR
-//                      HHHHHHH AA   AA  III  EEEEE   RRRRRR
-//                      HH   HH AAAAAAA  III  EE      RR  RR
-//                      HH   HH AA   AA IIIII EEEEEEE RR   RR
-
 // Ref:
-//   https://github.com/markszabo/IRremoteESP8266/issues/404
+//   https://github.com/crankyoldgit/IRremoteESP8266/issues/404
 //   https://www.dropbox.com/s/mecyib3lhdxc8c6/IR%20data%20reverse%20engineering.xlsx?dl=0
-//   https://github.com/markszabo/IRremoteESP8266/issues/485
+//   https://github.com/crankyoldgit/IRremoteESP8266/issues/485
 //   https://www.dropbox.com/sh/w0bt7egp0fjger5/AADRFV6Wg4wZskJVdFvzb8Z0a?dl=0&preview=haer2.ods
 
 // Constants
@@ -56,6 +53,7 @@ const uint8_t kHaierAcSwingDown = 0b00000010;
 const uint8_t kHaierAcSwingChg = 0b00000011;
 
 // Byte 6
+const uint8_t kHaierAcModeMask = 0b11100000;
 const uint8_t kHaierAcAuto = 0;
 const uint8_t kHaierAcCool = 1;
 const uint8_t kHaierAcDry = 2;
@@ -68,6 +66,9 @@ const uint8_t kHaierAcFanMed = 2;
 const uint8_t kHaierAcFanHigh = 3;
 
 const uint16_t kHaierAcMaxTime = (23 * 60) + 59;
+
+// Byte 7
+const uint8_t kHaierAcSleepBit = 0b01000000;
 
 // Legacy Haier AC defines.
 #define HAIER_AC_MIN_TEMP kHaierAcMinTemp
@@ -186,57 +187,56 @@ const uint8_t kHaierAcYrw02ButtonSleep = 0xB;
 
 class IRHaierAC {
  public:
-  explicit IRHaierAC(uint16_t pin);
+  explicit IRHaierAC(const uint16_t pin, const bool inverted = false,
+                     const bool use_modulation = true);
 
 #if SEND_HAIER_AC
   void send(const uint16_t repeat = kHaierAcDefaultRepeat);
+  uint8_t calibrate(void) { return _irsend.calibrate(); }
 #endif  // SEND_HAIER_AC
-  void begin();
+  void begin(void);
 
   void setCommand(const uint8_t command);
-  uint8_t getCommand();
+  uint8_t getCommand(void);
 
   void setTemp(const uint8_t temp);
-  uint8_t getTemp();
+  uint8_t getTemp(void);
 
   void setFan(const uint8_t speed);
-  uint8_t getFan();
+  uint8_t getFan(void);
 
-  uint8_t getMode();
+  uint8_t getMode(void);
   void setMode(const uint8_t mode);
 
-  bool getSleep();
-  void setSleep(const bool state);
-  bool getHealth();
-  void setHealth(const bool state);
+  bool getSleep(void);
+  void setSleep(const bool on);
+  bool getHealth(void);
+  void setHealth(const bool on);
 
-  int16_t getOnTimer();
+  int16_t getOnTimer(void);
   void setOnTimer(const uint16_t mins);
-  int16_t getOffTimer();
+  int16_t getOffTimer(void);
   void setOffTimer(const uint16_t mins);
-  void cancelTimers();
+  void cancelTimers(void);
 
-  uint16_t getCurrTime();
+  uint16_t getCurrTime(void);
   void setCurrTime(const uint16_t mins);
 
-  uint8_t getSwing();
+  uint8_t getSwing(void);
   void setSwing(const uint8_t state);
 
-  uint8_t* getRaw();
-  void setRaw(uint8_t new_code[]);
+  uint8_t* getRaw(void);
+  void setRaw(const uint8_t new_code[]);
   static bool validChecksum(uint8_t state[],
                             const uint16_t length = kHaierACStateLength);
   uint8_t convertMode(const stdAc::opmode_t mode);
   uint8_t convertFan(const stdAc::fanspeed_t speed);
   uint8_t convertSwingV(const stdAc::swingv_t position);
-
-#ifdef ARDUINO
-  String toString();
-  static String timeToString(const uint16_t nr_mins);
-#else
-  std::string toString();
-  static std::string timeToString(const uint16_t nr_mins);
-#endif
+  static stdAc::opmode_t toCommonMode(const uint8_t mode);
+  static stdAc::fanspeed_t toCommonFanSpeed(const uint8_t speed);
+  static stdAc::swingv_t toCommonSwingV(const uint8_t pos);
+  stdAc::state_t toCommon(void);
+  String toString(void);
 #ifndef UNIT_TEST
 
  private:
@@ -245,61 +245,62 @@ class IRHaierAC {
   IRsendTest _irsend;
 #endif
   uint8_t remote_state[kHaierACStateLength];
-  void stateReset();
-  void checksum();
+  void stateReset(void);
+  void checksum(void);
   static uint16_t getTime(const uint8_t ptr[]);
   static void setTime(uint8_t ptr[], const uint16_t nr_mins);
 };
 
 class IRHaierACYRW02 {
  public:
-  explicit IRHaierACYRW02(uint16_t pin);
+  explicit IRHaierACYRW02(const uint16_t pin, const bool inverted = false,
+                          const bool use_modulation = true);
 
 #if SEND_HAIER_AC_YRW02
   void send(const uint16_t repeat = kHaierAcYrw02DefaultRepeat);
 #endif  // SEND_HAIER_AC_YRW02
-  void begin();
+  void begin(void);
 
   void setButton(const uint8_t button);
-  uint8_t getButton();
+  uint8_t getButton(void);
 
   void setTemp(const uint8_t temp);
-  uint8_t getTemp();
+  uint8_t getTemp(void);
 
   void setFan(const uint8_t speed);
-  uint8_t getFan();
+  uint8_t getFan(void);
 
-  uint8_t getMode();
+  uint8_t getMode(void);
   void setMode(const uint8_t mode);
 
-  bool getPower();
-  void setPower(const bool state);
-  void on();
-  void off();
+  bool getPower(void);
+  void setPower(const bool on);
+  void on(void);
+  void off(void);
 
-  bool getSleep();
-  void setSleep(const bool state);
-  bool getHealth();
-  void setHealth(const bool state);
+  bool getSleep(void);
+  void setSleep(const bool on);
+  bool getHealth(void);
+  void setHealth(const bool on);
 
-  uint8_t getTurbo();
+  uint8_t getTurbo(void);
   void setTurbo(const uint8_t speed);
 
-  uint8_t getSwing();
+  uint8_t getSwing(void);
   void setSwing(const uint8_t state);
 
-  uint8_t* getRaw();
-  void setRaw(uint8_t new_code[]);
+  uint8_t* getRaw(void);
+  void setRaw(const uint8_t new_code[]);
   static bool validChecksum(uint8_t state[],
                             const uint16_t length = kHaierACYRW02StateLength);
   uint8_t convertMode(const stdAc::opmode_t mode);
   uint8_t convertFan(const stdAc::fanspeed_t speed);
   uint8_t convertSwingV(const stdAc::swingv_t position);
-#ifdef ARDUINO
-  String toString();
-#else
-  std::string toString();
-#endif
+  static stdAc::opmode_t toCommonMode(const uint8_t mode);
+  static stdAc::fanspeed_t toCommonFanSpeed(const uint8_t speed);
+  static stdAc::swingv_t toCommonSwingV(const uint8_t pos);
+  stdAc::state_t toCommon(void);
+  String toString(void);
 #ifndef UNIT_TEST
 
  private:
@@ -308,8 +309,8 @@ class IRHaierACYRW02 {
   IRsendTest _irsend;
 #endif
   uint8_t remote_state[kHaierACYRW02StateLength];
-  void stateReset();
-  void checksum();
+  void stateReset(void);
+  void checksum(void);
 };
 
 #endif  // IR_HAIER_H_

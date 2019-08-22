@@ -26,7 +26,7 @@
  * DISH decode by marcosamarinho
  * Gree Heatpump sending added by Ville Skyttä (scop)
  *     (derived from https://github.com/ToniA/arduino-heatpumpir/blob/master/GreeHeatpumpIR.cpp)
- * Updated by markszabo (https://github.com/markszabo/IRremoteESP8266) for sending IR code on ESP8266
+ * Updated by markszabo (https://github.com/crankyoldgit/IRremoteESP8266) for sending IR code on ESP8266
  * Updated by Sebastien Warin (http://sebastien.warin.fr) for receiving IR code on ESP8266
  *
  * Updated by sillyfrog for Daikin, adopted from
@@ -47,10 +47,11 @@
 #include <stdint.h>
 #ifdef UNIT_TEST
 #include <iostream>
-#endif
+#include <string>
+#endif  // UNIT_TEST
 
 // Library Version
-#define _IRREMOTEESP8266_VERSION_ "2.6.0"
+#define _IRREMOTEESP8266_VERSION_ "2.6.4"
 // Supported IR protocols
 // Each protocol you include costs memory and, during decode, costs time
 // Disable (set to false) all the protocols you do not need/want!
@@ -117,6 +118,9 @@
 #define DECODE_SHARP           true
 #define SEND_SHARP             true
 
+#define DECODE_SHARP_AC        true
+#define SEND_SHARP_AC          true
+
 #define DECODE_DENON           true
 #define SEND_DENON             true
 
@@ -129,6 +133,9 @@
 #define DECODE_FUJITSU_AC      true
 #define SEND_FUJITSU_AC        true
 
+#define DECODE_INAX            true
+#define SEND_INAX              true
+
 #define DECODE_DAIKIN          true
 #define SEND_DAIKIN            true
 
@@ -138,16 +145,19 @@
 #define DECODE_GLOBALCACHE     false  // Not written.
 #define SEND_GLOBALCACHE       true
 
+#define DECODE_GOODWEATHER     true
+#define SEND_GOODWEATHER       true
+
 #define DECODE_GREE            true
 #define SEND_GREE              true
 
 #define DECODE_PRONTO          false  // Not written.
 #define SEND_PRONTO            true
 
-#define DECODE_ARGO            false  // Not written.
+#define DECODE_ARGO            true  // Experimental
 #define SEND_ARGO              true
 
-#define DECODE_TROTEC          false  // Not implemented.
+#define DECODE_TROTEC          true
 #define SEND_TROTEC            true
 
 #define DECODE_NIKAI           true
@@ -225,6 +235,18 @@
 #define DECODE_DAIKIN216       true
 #define SEND_DAIKIN216         true
 
+#define DECODE_DAIKIN160       true
+#define SEND_DAIKIN160         true
+
+#define DECODE_NEOCLIMA        true
+#define SEND_NEOCLIMA          true
+
+#define DECODE_DAIKIN176       true
+#define SEND_DAIKIN176         true
+
+#define DECODE_DAIKIN128       true
+#define SEND_DAIKIN128         true
+
 #if (DECODE_ARGO || DECODE_DAIKIN || DECODE_FUJITSU_AC || DECODE_GREE || \
      DECODE_KELVINATOR || DECODE_MITSUBISHI_AC || DECODE_TOSHIBA_AC || \
      DECODE_TROTEC || DECODE_HAIER_AC || DECODE_HITACHI_AC || \
@@ -232,7 +254,8 @@
      DECODE_WHIRLPOOL_AC || DECODE_SAMSUNG_AC || DECODE_ELECTRA_AC || \
      DECODE_PANASONIC_AC || DECODE_MWM || DECODE_DAIKIN2 || \
      DECODE_VESTEL_AC || DECODE_TCL112AC || DECODE_MITSUBISHIHEAVY || \
-     DECODE_DAIKIN216)
+     DECODE_DAIKIN216 || DECODE_SHARP_AC || DECODE_DAIKIN160 || \
+     DECODE_NEOCLIMA || DECODE_DAIKIN176 || DECODE_DAIKIN128)
 #define DECODE_AC true  // We need some common infrastructure for decoding A/Cs.
 #else
 #define DECODE_AC false   // We don't need that infrastructure.
@@ -241,7 +264,7 @@
 // Use millisecond 'delay()' calls where we can to avoid tripping the WDT.
 // Note: If you plan to send IR messages in the callbacks of the AsyncWebserver
 //       library, you need to set ALLOW_DELAY_CALLS to false.
-//       Ref: https://github.com/markszabo/IRremoteESP8266/issues/430
+//       Ref: https://github.com/crankyoldgit/IRremoteESP8266/issues/430
 #define ALLOW_DELAY_CALLS true
 
 /*
@@ -313,8 +336,15 @@ enum decode_type_t {
   MITSUBISHI_HEAVY_88,
   MITSUBISHI_HEAVY_152,  // 60
   DAIKIN216,
+  SHARP_AC,
+  GOODWEATHER,
+  INAX,
+  DAIKIN160,  // 65
+  NEOCLIMA,
+  DAIKIN176,
+  DAIKIN128,
   // Add new entries before this one, and update it to point to the last entry.
-  kLastDecodeType = DAIKIN216,
+  kLastDecodeType = DAIKIN128,
 };
 
 // Message lengths & required repeat values
@@ -324,9 +354,10 @@ const uint16_t kSingleRepeat = 1;
 const uint16_t kAiwaRcT501Bits = 15;
 const uint16_t kAiwaRcT501MinRepeats = kSingleRepeat;
 const uint16_t kArgoStateLength = 12;
+const uint16_t kArgoBits = kArgoStateLength * 8;
 const uint16_t kArgoDefaultRepeat = kNoRepeat;
 const uint16_t kCoolixBits = 24;
-const uint16_t kCoolixDefaultRepeat = 1;
+const uint16_t kCoolixDefaultRepeat = kSingleRepeat;
 const uint16_t kCarrierAcBits = 32;
 const uint16_t kCarrierAcMinRepeat = kNoRepeat;
 const uint16_t kDaikinStateLength = 35;
@@ -337,15 +368,26 @@ const uint16_t kDaikinDefaultRepeat = kNoRepeat;
 const uint16_t kDaikin2StateLength = 39;
 const uint16_t kDaikin2Bits = kDaikin2StateLength * 8;
 const uint16_t kDaikin2DefaultRepeat = kNoRepeat;
+const uint16_t kDaikin160StateLength = 20;
+const uint16_t kDaikin160Bits = kDaikin160StateLength * 8;
+const uint16_t kDaikin160DefaultRepeat = kNoRepeat;
+const uint16_t kDaikin128StateLength = 16;
+const uint16_t kDaikin128Bits = kDaikin128StateLength * 8;
+const uint16_t kDaikin128DefaultRepeat = kNoRepeat;
+const uint16_t kDaikin176StateLength = 22;
+const uint16_t kDaikin176Bits = kDaikin176StateLength * 8;
+const uint16_t kDaikin176DefaultRepeat = kNoRepeat;
 const uint16_t kDaikin216StateLength = 27;
 const uint16_t kDaikin216Bits = kDaikin216StateLength * 8;
 const uint16_t kDaikin216DefaultRepeat = kNoRepeat;
 const uint16_t kDenonBits = 15;
+const uint16_t kDenon48Bits = 48;
 const uint16_t kDenonLegacyBits = 14;
 const uint16_t kDishBits = 16;
 const uint16_t kDishMinRepeat = 3;
 const uint16_t kElectraAcStateLength = 13;
 const uint16_t kElectraAcBits = kElectraAcStateLength * 8;
+const uint16_t kElectraAcMinRepeat = kNoRepeat;
 const uint16_t kFujitsuAcMinRepeat = kNoRepeat;
 const uint16_t kFujitsuAcStateLength = 16;
 const uint16_t kFujitsuAcStateLengthShort = 7;
@@ -353,6 +395,8 @@ const uint16_t kFujitsuAcBits = kFujitsuAcStateLength * 8;
 const uint16_t kFujitsuAcMinBits = (kFujitsuAcStateLengthShort - 1) * 8;
 const uint16_t kGicableBits = 16;
 const uint16_t kGicableMinRepeat = kSingleRepeat;
+const uint16_t kGoodweatherBits = 48;
+const uint16_t kGoodweatherMinRepeat = kNoRepeat;
 const uint16_t kGreeStateLength = 8;
 const uint16_t kGreeBits = kGreeStateLength * 8;
 const uint16_t kGreeDefaultRepeat = kNoRepeat;
@@ -369,6 +413,8 @@ const uint16_t kHitachiAc1StateLength = 13;
 const uint16_t kHitachiAc1Bits = kHitachiAc1StateLength * 8;
 const uint16_t kHitachiAc2StateLength = 53;
 const uint16_t kHitachiAc2Bits = kHitachiAc2StateLength * 8;
+const uint16_t kInaxBits = 24;
+const uint16_t kInaxMinRepeat = kSingleRepeat;
 const uint16_t kJvcBits = 16;
 const uint16_t kKelvinatorStateLength = 16;
 const uint16_t kKelvinatorBits = kKelvinatorStateLength * 8;
@@ -398,6 +444,9 @@ const uint16_t kMitsubishiHeavy152Bits = kMitsubishiHeavy152StateLength * 8;
 const uint16_t kMitsubishiHeavy152MinRepeat = kNoRepeat;
 const uint16_t kNikaiBits = 24;
 const uint16_t kNECBits = 32;
+const uint16_t kNeoclimaStateLength = 12;
+const uint16_t kNeoclimaBits = kNeoclimaStateLength * 8;
+const uint16_t kNeoclimaMinRepeat = kNoRepeat;
 const uint16_t kPanasonicBits = 48;
 const uint32_t kPanasonicManufacturer = 0x4004;
 const uint16_t kPanasonicAcStateLength = 27;
@@ -428,6 +477,9 @@ const uint16_t kSanyoLC7461Bits = (kSanyoLC7461AddressBits +
 const uint8_t  kSharpAddressBits = 5;
 const uint8_t  kSharpCommandBits = 8;
 const uint16_t kSharpBits = kSharpAddressBits + kSharpCommandBits + 2;  // 15
+const uint16_t kSharpAcStateLength = 13;
+const uint16_t kSharpAcBits = kSharpAcStateLength * 8;  // 104
+const uint16_t kSharpAcDefaultRepeat = kNoRepeat;
 const uint8_t  kSherwoodBits = kNECBits;
 const uint16_t kSherwoodMinRepeat = kSingleRepeat;
 const uint16_t kSony12Bits = 12;
@@ -444,6 +496,7 @@ const uint16_t kToshibaACStateLength = 9;
 const uint16_t kToshibaACBits = kToshibaACStateLength * 8;
 const uint16_t kToshibaACMinRepeat = kSingleRepeat;
 const uint16_t kTrotecStateLength = 9;
+const uint16_t kTrotecBits = kTrotecStateLength * 8;
 const uint16_t kTrotecDefaultRepeat = kNoRepeat;
 const uint16_t kWhirlpoolAcStateLength = 21;
 const uint16_t kWhirlpoolAcBits = kWhirlpoolAcStateLength * 8;
@@ -459,7 +512,7 @@ const uint8_t  kVestelAcBits = 56;
 #define CARRIER_AC_BITS               kCarrierAcBits
 #define DAIKIN_COMMAND_LENGTH         kDaikinStateLength
 #define DENON_BITS                    kDenonBits
-#define DENON_48_BITS                 kPanasonicBits
+#define DENON_48_BITS                 kDenon48Bits
 #define DENON_LEGACY_BITS             kDenonLegacyBits
 #define DISH_BITS                     kDishBits
 #define FUJITSU_AC_MIN_REPEAT         kFujitsuAcMinRepeat
@@ -528,9 +581,10 @@ const uint8_t  kVestelAcBits = 56;
 // Create a no-op F() macro so the code base still compiles outside of the
 // Arduino framework. Thus we can safely use the Arduino 'F()' macro through-out
 // the code base. That macro stores constants in Flash (PROGMEM) memory.
-// See: https://github.com/markszabo/IRremoteESP8266/issues/667
+// See: https://github.com/crankyoldgit/IRremoteESP8266/issues/667
 #define F(x) x
 #endif  // F
+typedef std::string String;
 #endif  // UNIT_TEST
 
 #endif  // IRREMOTEESP8266_H_

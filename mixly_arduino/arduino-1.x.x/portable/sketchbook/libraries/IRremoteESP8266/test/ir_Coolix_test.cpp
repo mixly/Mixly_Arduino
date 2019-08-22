@@ -31,7 +31,7 @@ TEST(TestSendCoolix, SendDataOnly) {
       "m560s1680m560s1680m560s1680m560s1680m560s1680m560s1680m560s1680m560s1680"
       "m560s560m560s560m560s560m560s560m560s560m560s560m560s560m560s560"
       "m560s1680m560s1680m560s1680m560s1680m560s1680m560s1680m560s1680m560s1680"
-      "m560s5040",
+      "m560s105040",
       irsend.outputStr());
 
   irsend.reset();
@@ -53,7 +53,7 @@ TEST(TestSendCoolix, SendDataOnly) {
       "m560s1680m560s560m560s1680m560s560m560s1680m560s560m560s1680m560s560"
       "m560s1680m560s560m560s1680m560s560m560s1680m560s560m560s1680m560s560"
       "m560s560m560s1680m560s560m560s1680m560s560m560s1680m560s560m560s1680"
-      "m560s5040",
+      "m560s105040",
       irsend.outputStr());
 
   irsend.reset();
@@ -75,7 +75,7 @@ TEST(TestSendCoolix, SendDataOnly) {
       "m560s560m560s560m560s560m560s560m560s560m560s560m560s560m560s560"
       "m560s1680m560s1680m560s1680m560s1680m560s1680m560s1680m560s1680m560s1680"
       "m560s560m560s560m560s560m560s560m560s560m560s560m560s560m560s560"
-      "m560s5040",
+      "m560s105040",
       irsend.outputStr());
 }
 
@@ -103,7 +103,7 @@ TEST(TestSendCoolix, SendWithRepeats) {
       "m560s1680m560s560m560s1680m560s560m560s1680m560s560m560s1680m560s560"
       "m560s1680m560s560m560s1680m560s560m560s1680m560s560m560s1680m560s560"
       "m560s560m560s1680m560s560m560s1680m560s560m560s1680m560s560m560s1680"
-      "m560s5040",
+      "m560s105040",
       irsend.outputStr());
   irsend.sendCOOLIX(0xAA55AA, kCoolixBits, 2);  // 2 repeats.
   EXPECT_EQ(
@@ -131,7 +131,7 @@ TEST(TestSendCoolix, SendWithRepeats) {
       "m560s1680m560s560m560s1680m560s560m560s1680m560s560m560s1680m560s560"
       "m560s1680m560s560m560s1680m560s560m560s1680m560s560m560s1680m560s560"
       "m560s560m560s1680m560s560m560s1680m560s560m560s1680m560s560m560s1680"
-      "m560s5040",
+      "m560s105040",
       irsend.outputStr());
 }
 
@@ -151,7 +151,7 @@ TEST(TestSendCoolix, SendUnusualSize) {
       "m4480s4480"
       "m560s560m560s560m560s560m560s560m560s560m560s560m560s560m560s560"
       "m560s1680m560s1680m560s1680m560s1680m560s1680m560s1680m560s1680m560s1680"
-      "m560s5040",
+      "m560s105040",
       irsend.outputStr());
 
   irsend.reset();
@@ -193,7 +193,7 @@ TEST(TestSendCoolix, SendUnusualSize) {
       "m560s560m560s560m560s1680m560s1680m560s560m560s560m560s1680m560s560"
       "m560s1680m560s1680m560s1680m560s560m560s1680m560s1680m560s1680m560s1680"
       "m560s560m560s560m560s560m560s1680m560s560m560s560m560s560m560s560"
-      "m560s5040",
+      "m560s105040",
       irsend.outputStr());
 
   // Bit sizes must be a multiple of 8.
@@ -395,6 +395,8 @@ TEST(TestCoolixACClass, SetAndGetMode) {
 TEST(TestCoolixACClass, SetAndGetFan) {
   IRCoolixAC ircoolix(0);
 
+  // This mode allows pretty much everything except Auto0 speed.
+  ircoolix.setMode(kCoolixCool);
   ircoolix.setFan(kCoolixFanMax);
   EXPECT_EQ(kCoolixFanMax, ircoolix.getFan());
   ircoolix.setFan(kCoolixFanMin);
@@ -403,12 +405,29 @@ TEST(TestCoolixACClass, SetAndGetFan) {
   EXPECT_EQ(kCoolixFanZoneFollow, ircoolix.getFan());
   ircoolix.setFan(kCoolixFanAuto);
   EXPECT_EQ(kCoolixFanAuto, ircoolix.getFan());
+  ircoolix.setFan(kCoolixFanAuto0);
+  EXPECT_EQ(kCoolixFanAuto, ircoolix.getFan());
   ircoolix.setFan(kCoolixFanMax);
   EXPECT_EQ(kCoolixFanMax, ircoolix.getFan());
   ASSERT_NE(3, kCoolixFanAuto);
   // Now try some unexpected value.
   ircoolix.setFan(3);
   EXPECT_EQ(kCoolixFanAuto, ircoolix.getFan());
+
+  // These modes allows pretty much everything except Auto speed.
+  ircoolix.setMode(kCoolixDry);
+  EXPECT_EQ(kCoolixFanAuto0, ircoolix.getFan());
+  ircoolix.setFan(kCoolixFanMax);
+  EXPECT_EQ(kCoolixFanMax, ircoolix.getFan());
+  ircoolix.setFan(kCoolixFanAuto);
+  EXPECT_EQ(kCoolixFanAuto0, ircoolix.getFan());
+
+  ircoolix.setMode(kCoolixAuto);
+  EXPECT_EQ(kCoolixFanAuto0, ircoolix.getFan());
+  ircoolix.setFan(kCoolixFanMax);
+  EXPECT_EQ(kCoolixFanMax, ircoolix.getFan());
+  ircoolix.setFan(kCoolixFanAuto0);
+  EXPECT_EQ(kCoolixFanAuto0, ircoolix.getFan());
 }
 
 TEST(TestCoolixACClass, SetGetClearSensorTempAndZoneFollow) {
@@ -547,7 +566,7 @@ TEST(TestCoolixACClass, RealCaptureExample) {
 
 
 // Tests to debug/fix:
-//   https://github.com/markszabo/IRremoteESP8266/issues/624
+//   https://github.com/crankyoldgit/IRremoteESP8266/issues/624
 TEST(TestCoolixACClass, Issue624HandleSpecialStatesBetter) {
   IRCoolixAC ac(0);
   ac.begin();
@@ -596,4 +615,133 @@ TEST(TestCoolixACClass, Issue624HandleSpecialStatesBetter) {
       "Sensor Temp: Ignored",
       ac.toString());
   EXPECT_EQ(0xB2BF40, ac.getRaw());
+}
+
+TEST(TestCoolixACClass, toCommon) {
+  IRCoolixAC ac(0);
+  ac.setPower(true);
+  ac.setMode(kCoolixCool);
+  ac.setTemp(20);
+  ac.setFan(kCoolixFanMax);
+
+  // Now test it.
+  ASSERT_EQ(decode_type_t::COOLIX, ac.toCommon().protocol);
+  ASSERT_EQ(-1, ac.toCommon().model);
+  ASSERT_TRUE(ac.toCommon().power);
+  ASSERT_TRUE(ac.toCommon().celsius);
+  ASSERT_EQ(20, ac.toCommon().degrees);
+  ASSERT_FALSE(ac.toCommon().turbo);
+  ASSERT_FALSE(ac.toCommon().clean);
+  ASSERT_FALSE(ac.toCommon().light);
+  ASSERT_EQ(-1, ac.toCommon().sleep);
+  ASSERT_EQ(stdAc::opmode_t::kCool, ac.toCommon().mode);
+  ASSERT_EQ(stdAc::fanspeed_t::kMax, ac.toCommon().fanspeed);
+  ASSERT_EQ(stdAc::swingv_t::kOff, ac.toCommon().swingv);
+  ASSERT_EQ(stdAc::swingh_t::kOff, ac.toCommon().swingh);
+  // Unsupported.
+  ASSERT_FALSE(ac.toCommon().quiet);
+  ASSERT_FALSE(ac.toCommon().econo);
+  ASSERT_FALSE(ac.toCommon().filter);
+  ASSERT_FALSE(ac.toCommon().beep);
+  ASSERT_EQ(-1, ac.toCommon().clock);
+}
+
+TEST(TestCoolixACClass, Issue722) {
+  IRrecv irrecv(0);
+  IRCoolixAC ac(0);
+
+  // Auto 17C ON pressed
+  uint32_t on_auto_17c_fan_auto0 = 0xB21F08;
+  ac.begin();
+  ac.setPower(true);
+  ac.setMode(kCoolixAuto);
+  ac.setFan(kCoolixFanAuto);
+  ac.setTemp(17);
+  EXPECT_EQ(on_auto_17c_fan_auto0, ac.getRaw());
+
+  // Off
+  uint32_t off = 0xB27BE0;
+  ac.off();
+  EXPECT_EQ(off, ac.getRaw());
+
+  // ON Auto Temp 18C
+  uint32_t on_auto_18c_fan_auto0 = 0xB21F18;
+  ac.setTemp(18);
+  EXPECT_EQ(on_auto_18c_fan_auto0, ac.getRaw());
+
+  // Set Mode Cool 18C
+  uint32_t on_cool_18c_fan_auto = 0xB2BF10;
+  ac.setMode(kCoolixCool);
+  EXPECT_EQ(on_cool_18c_fan_auto, ac.getRaw());
+
+  // Set Mode DRY 18C
+  uint32_t on_dry_18c_fan_auto0 = 0xB21F14;
+  ac.setMode(kCoolixDry);
+  EXPECT_EQ(on_dry_18c_fan_auto0, ac.getRaw());
+
+  // Set Mode HEAT 18C
+  uint32_t on_heat_18c_fan_auto = 0xB2BF1C;
+  ac.setMode(kCoolixHeat);
+  EXPECT_EQ(on_heat_18c_fan_auto, ac.getRaw());
+
+  // Set mode FAN
+  uint32_t on_fan_18c_fan_auto = 0xB2BFE4;
+  ac.setMode(kCoolixFan);
+  EXPECT_EQ(on_fan_18c_fan_auto, ac.getRaw());
+
+  // Fan level 2 (initial was auto)
+  uint32_t on_fan_18c_fan_min = 0xB29FE4;
+  ac.setFan(kCoolixFanMin);
+  EXPECT_EQ(on_fan_18c_fan_min, ac.getRaw());
+
+  // Fan level 3
+  uint32_t on_fan_18c_fan_med = 0xB25FE4;
+  ac.setFan(kCoolixFanMed);
+  EXPECT_EQ(on_fan_18c_fan_med, ac.getRaw());
+
+  // Fan level 4
+  uint32_t on_fan_18c_fan_max = 0xB23FE4;
+  ac.setFan(kCoolixFanMax);
+  EXPECT_EQ(on_fan_18c_fan_max, ac.getRaw());
+
+  // Test sending the last message to verify the class send() method works.
+  ac.send();
+  ac._irsend.makeDecodeResult();
+  ASSERT_TRUE(irrecv.decode(&ac._irsend.capture));
+  EXPECT_EQ(COOLIX, ac._irsend.capture.decode_type);
+  EXPECT_EQ(kCoolixBits, ac._irsend.capture.bits);
+  EXPECT_EQ(on_fan_18c_fan_max, ac._irsend.capture.value);
+  EXPECT_EQ(0x0, ac._irsend.capture.address);
+  EXPECT_EQ(0x0, ac._irsend.capture.command);
+  EXPECT_EQ(
+      // Raw data supplied by @mariusmotea
+      "f38000d50"
+      // 4434,4376,
+      "m4480s4480"
+      // 566,1614,592,504,566,1618,566,1616,568,528,564,532,564,1616,568,532,
+      "m560s1680m560s560m560s1680m560s1680m560s560m560s560m560s1680m560s560"
+      // 566,530,566,1620,568,528,566,530,566,1618,564,1618,566,530,564,1624,
+      "m560s560m560s1680m560s560m560s560m560s1680m560s1680m560s560m560s1680"
+      // 538,560,566,530,564,1620,566,1618,566,1618,566,1616,566,1616,566,1620,
+      "m560s560m560s560m560s1680m560s1680m560s1680m560s1680m560s1680m560s1680"
+      // 568,1620,566,1616,566,530,566,530,564,530,562,532,564,530,566,530,
+      "m560s1680m560s1680m560s560m560s560m560s560m560s560m560s560m560s560"
+      // 566,1622,566,1616,540,1642,566,528,566,530,566,1616,566,530,566,532,
+      "m560s1680m560s1680m560s1680m560s560m560s560m560s1680m560s560m560s560"
+      // 564,532,564,530,566,530,566,1614,566,1616,562,532,564,1620,566,1618,
+      "m560s560m560s560m560s560m560s1680m560s1680m560s560m560s1680m560s1680"
+      // 538,5254,4432,4364,566,1616,568,530,564,1620,568,1616,564,532,564,530,
+      "m560s5040m4480s4480m560s1680m560s560m560s1680m560s1680m560s560m560s560"
+      // 566,1616,566,532,564,532,566,1620,568,528,566,530,566,1616,564,1618,
+      "m560s1680m560s560m560s560m560s1680m560s560m560s560m560s1680m560s1680"
+      // 566,530,566,1622,566,532,566,528,566,1620,568,1614,566,1618,566,1618,
+      "m560s560m560s1680m560s560m560s560m560s1680m560s1680m560s1680m560s1680"
+      // 566,1614,568,1618,566,1622,568,1616,566,530,564,530,566,530,566,528,
+      "m560s1680m560s1680m560s1680m560s1680m560s560m560s560m560s560m560s560"
+      // 564,530,566,532,566,1622,564,1616,566,1616,564,532,564,530,564,1616,
+      "m560s560m560s560m560s1680m560s1680m560s1680m560s560m560s560m560s1680"
+      // 564,530,564,532,566,530,564,530,566,528,564,1618,564,1618,564,532,
+      "m560s560m560s560m560s560m560s560m560s560m560s1680m560s1680m560s560"
+      // 564,1620,566,1618,562  // Raw data matches what is expected.
+      "m560s1680m560s1680m560s105040", ac._irsend.outputStr());
 }

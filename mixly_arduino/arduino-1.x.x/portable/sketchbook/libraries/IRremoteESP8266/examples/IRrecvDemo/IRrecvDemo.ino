@@ -6,7 +6,7 @@
  * An IR detector/demodulator must be connected to the input kRecvPin.
  * Copyright 2009 Ken Shirriff, http://arcfn.com
  * Example circuit diagram:
- *  https://github.com/markszabo/IRremoteESP8266/wiki#ir-receiving
+ *  https://github.com/crankyoldgit/IRremoteESP8266/wiki#ir-receiving
  * Changes:
  *   Version 0.2 June, 2017
  *     Changed GPIO pin to the same as other examples.
@@ -16,9 +16,7 @@
  *     Based on Ken Shirriff's IrsendDemo Version 0.1 July, 2009
  */
 
-#ifndef UNIT_TEST
 #include <Arduino.h>
-#endif
 #include <IRremoteESP8266.h>
 #include <IRrecv.h>
 #include <IRutils.h>

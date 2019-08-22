@@ -1,5 +1,121 @@
 # Release Notes
 
+## _v2.6.4 (20190726)_
+
+**[Bug Fixes]**
+- Fix some swing problems with the Mitsubishi HAVC protocol (#831)
+- Fix parameter ordering for Gree in common a/c code. (#815)
+- Fix parameters for Coolix in IRac::sendAc() (#829)
+- IRMQTTServer: Fix sending >64 bit codes. (#811)
+
+**[Features]**
+- Daikin128: Full detailed support & common a/c support. (#832)
+- Midea: Support native temp units of Celsius & SwingV. (#823)
+- Gree: Support `YBOFB` models and bug fix. (#815)
+- Pioneer: Fix sendPioneer with Pioneer specific timings (#830)
+- Daikin128: Initial support for Daikin 17 Series/BRC52B63 (#828)
+- Coolix: Better `toCommon()` support. (#825)
+- Experimental detailed support for Daikin 176 bits (#816)
+- Add setting of output options to A/C classes. (#808)
+- Add invert flag support to Samsung AC (#807)
+
+**[Misc]**
+- Daikin176: making some change on Daikin176 to work with IRMQTTServer (#826)
+- Reduce duplicate code to save (3K+) space. (#813)
+- Daikin176: Experiment Daikin176bits with IRMQTTServer (#824)
+- Update platformio.ini files for PlatformIO v4.0.0 (#812)
+- Change repo URLs to new location. (#806)
+- Move `htmlEscape()` to the IRutils namespace (#801)
+
+
+## _v2.6.3 (20190704)_
+
+**[Bug Fixes]**
+- IRMQTTServer: REPLAY_DECODED_AC_MESSAGE not working. (#784, #797)
+- ESP32: Ensure `IRrecv`'s GPIO is set to input mode. (#774)
+
+**[Features]**
+- IRMQTTServer: Show available sketch space for OTA uploads. (#795)
+- Experimental detailed support for Electra/AUX protocol (#788)
+- IRMQTTServer: Ability to resend existing climate state via MQTT & HTTP (#784)
+- Daikin160: Add detailed & common a/c support. (#777)
+- Experimental detailed support for Neoclima protocol. (#767)
+- Gree: add WiFi and IFeel bits (#770)
+- Handle A/Cs with toggles better. (#758)
+- IRMQTTServer: Allow sending/receiving climate via JSON over MQTT. (#763)
+
+**[Misc]**
+- Move converting of IR A/C messages out of example code. (#798)
+- Reduce example code size and complexity (#790)
+- Change `ControlSamsungAC` example to not use `sendExtended()` (#792)
+- IRMQTTServer: Add MQTT_CLIMATE_IR_SEND_ON_RESTART compile-time flag. (#784)
+- Refactor A/C's toString()'s to reduce code size. Saves ~3.5k (#782)
+- Add sanity tests for unexpected conditions in IRrecv. (#773)
+- IRMQTTServer: Fixed the HA config documentation (missing '-') (#776)
+- Improve `mkkeywords` tool. (#766)
+- Refactor with generic decode routines in `IRrecv` class. Saves ~7k. (#765)
+
+
+## _v2.6.2 (20190616)_
+
+**[Features]**
+- Initial support for the ESP32 architecture & boards. (#742)
+- Add changable GPIO settings to IRMQTTServer. (#730)
+- IRMQTTServer: Enforce a repeat for all Coolix calls (#752)
+- Basic DAIKIN 160bit send and decode. (#754)
+- Add example code for a Smart(er) IR Repeater. (#740)
+- Enforce Samsung A/C Quiet & Powerful mutual exclusivity.
+
+**[Misc]**
+- IRMQTTServer: Add some memory alloc safety checks. (#749)
+- Move some ToString() functions to IRac.cpp (#748)
+- Increase tolerance value for TCL112AC protocol. (#745)
+- Fix compiler warning in IRutils_test.cpp (#756)
+- Scrape Supported Protocols and generate SupportedProtocols.md (#755)
+- Make supported device info more organised. (#753)
+
+
+## _v2.6.1 (20190609)_
+
+**[Breaking Changes]**
+- Major rework/breaking changes to Argo A/C support. (#705)
+
+**[Bug Fixes]**
+- Correct `set/getQuiet` for Samsung A/C (#736)
+- Add missing `on/off()` to IRCoolixAC class. (#725)
+- Daikin `set/getEye()` uses wrong bit. (#711)
+- IRMQTTServer: Continue to use same Temperature units. (#710)
+- Fixed a bug with `setMode()`/`getMode()` for HAIER_AC. (#705)
+
+**[Features]**
+- Add set/getPowerful for Samsung A/C (#736)
+- Add `calibrate()` to all the A/C classes. (#735)
+- IRMQTTServer: Add sequencing for sending MQTT IR commands. (#723)
+- Add support for Fujitsu AR-REB1E & AR-JW2 remotes. (#718)
+- Add Beta `decodeTrotec()` support. (#719)
+- Add experimental `decodeArgo()` support. (#717)
+- Support for Goodweather A/Cs. (#715)
+- Add `DISABLE_CAPTURE_WHILE_TRANSMITTING` feature to IRMQTTServer. (#713)
+- Support for Lixil Inax Toilet protocol. (#712)
+- Add `set/getWeeklyTimerEnable()` to Daikin (#711)
+- IRMQTTServer: Update Common A/C settings based on received IR messages. (#705)
+- Add day of week to DAIKIN protocol (#699)
+- Add limited support for Sharp A/C (#696)
+- SAMSUNG_AC: Make sure special power mode messages are sent. (#695)
+- Add `set/getPowerful()` (turbo) to DAIKIN216 (#693)
+
+**[Misc]**
+- Add kPeriodOffset for CPU Freq of 160MHz. (#729)
+- Example code for a Dumb IR repeater. (#737)
+- Update swing handling for Fujitsu A/Cs. (#724)
+- Add function to convert `decode_results` to `sendRaw()` array. (#721)
+- Attempt to reduce heap fragmentation from strings. (#707)
+- Update Fujitsu A/C example code to safer settings (#716)
+- Enforce better `const` usage in IRUtils. (#708)
+- Attempt to reduce heap fragmentation by A/C `toString()`s. (#694)
+- Minor changes to DAIKIN216 timings and features. (#693)
+
+
 ## _v2.6.0 (20190430)_
 
 **[Bug Fixes]**

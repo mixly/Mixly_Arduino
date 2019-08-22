@@ -352,16 +352,17 @@ TEST(TestToshibaACClass, HumanReadableOutput) {
                                                    0x00, 0xC1, 0x00, 0xC0};
 
   toshiba.setRaw(initial_state);
-  EXPECT_EQ("Power: On, Mode: 0 (AUTO), Temp: 17C, Fan: 0 (AUTO)",
+  EXPECT_EQ("Power: On, Mode: 0 (AUTO), Temp: 17C, Fan: 0 (Auto)",
             toshiba.toString());
   toshiba.setRaw(modified_state);
-  EXPECT_EQ("Power: On, Mode: 1 (COOL), Temp: 17C, Fan: 5 (MAX)",
+  EXPECT_EQ("Power: On, Mode: 1 (COOL), Temp: 17C, Fan: 5 (High)",
             toshiba.toString());
   toshiba.off();
   toshiba.setTemp(25);
   toshiba.setFan(3);
   toshiba.setMode(kToshibaAcDry);
-  EXPECT_EQ("Power: Off, Mode: 2 (DRY), Temp: 25C, Fan: 3", toshiba.toString());
+  EXPECT_EQ("Power: Off, Mode: 2 (DRY), Temp: 25C, Fan: 3 (Medium)",
+            toshiba.toString());
 }
 
 TEST(TestToshibaACClass, MessageConstuction) {
@@ -668,4 +669,32 @@ TEST(TestDecodeToshibaAC, RealExamples) {
   // The previous state the remote was in was 'AUTO' just prior to
   // sending the power off message.
   EXPECT_EQ(kToshibaAcHeat, toshiba.getMode());
+}
+
+TEST(TestToshibaACClass, toCommon) {
+  IRToshibaAC ac(0);
+  ac.setPower(true);
+  ac.setMode(kToshibaAcCool);
+  ac.setTemp(20);
+  ac.setFan(kToshibaAcFanMax);
+  // Now test it.
+  ASSERT_EQ(decode_type_t::TOSHIBA_AC, ac.toCommon().protocol);
+  ASSERT_EQ(-1, ac.toCommon().model);
+  ASSERT_TRUE(ac.toCommon().power);
+  ASSERT_TRUE(ac.toCommon().celsius);
+  ASSERT_EQ(20, ac.toCommon().degrees);
+  ASSERT_EQ(stdAc::opmode_t::kCool, ac.toCommon().mode);
+  ASSERT_EQ(stdAc::fanspeed_t::kMax, ac.toCommon().fanspeed);
+  // Unsupported.
+  ASSERT_EQ(stdAc::swingv_t::kOff, ac.toCommon().swingv);
+  ASSERT_EQ(stdAc::swingh_t::kOff, ac.toCommon().swingh);
+  ASSERT_FALSE(ac.toCommon().turbo);
+  ASSERT_FALSE(ac.toCommon().econo);
+  ASSERT_FALSE(ac.toCommon().light);
+  ASSERT_FALSE(ac.toCommon().filter);
+  ASSERT_FALSE(ac.toCommon().clean);
+  ASSERT_FALSE(ac.toCommon().beep);
+  ASSERT_FALSE(ac.toCommon().quiet);
+  ASSERT_EQ(-1, ac.toCommon().sleep);
+  ASSERT_EQ(-1, ac.toCommon().clock);
 }

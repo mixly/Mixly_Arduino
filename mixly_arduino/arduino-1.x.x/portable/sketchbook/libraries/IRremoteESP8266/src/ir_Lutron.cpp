@@ -1,4 +1,5 @@
 // Copyright 2018 David Conran
+// Lutron
 
 #define __STDC_LIMIT_MACROS
 #include <stdint.h>
@@ -6,12 +7,6 @@
 #include "IRrecv.h"
 #include "IRsend.h"
 #include "IRutils.h"
-
-//                LL      UU   UU TTTTTTT RRRRRR   OOOOO  NN   NN
-//                LL      UU   UU   TTT   RR   RR OO   OO NNN  NN
-//                LL      UU   UU   TTT   RRRRRR  OO   OO NN N NN
-//                LL      UU   UU   TTT   RR  RR  OO   OO NN  NNN
-//                LLLLLLL  UUUUU    TTT   RR   RR  OOOO0  NN   NN
 
 // Notes:
 //   The Lutron protocol uses a sort of Run Length encoding to encode
@@ -22,7 +17,7 @@
 
 // Constants
 // Ref:
-//  https://github.com/markszabo/IRremoteESP8266/issues/515
+//  https://github.com/crankyoldgit/IRremoteESP8266/issues/515
 const uint16_t kLutronTick = 2288;
 const uint32_t kLutronGap = 150000;  // Completely made up value.
 const uint16_t kLutronDelta = 400;   // +/- 300 usecs.
@@ -42,7 +37,7 @@ const uint16_t kLutronDelta = 400;   // +/- 300 usecs.
 //   So, assume the 1 and only have a normal payload of 35 bits.
 //
 // Ref:
-//   https://github.com/markszabo/IRremoteESP8266/issues/515
+//   https://github.com/crankyoldgit/IRremoteESP8266/issues/515
 void IRsend::sendLutron(uint64_t data, uint16_t nbits, uint16_t repeat) {
   enableIROut(40000, 40);  // 40Khz & 40% dutycycle.
   for (uint16_t r = 0; r <= repeat; r++) {
@@ -73,7 +68,7 @@ void IRsend::sendLutron(uint64_t data, uint16_t nbits, uint16_t repeat) {
 // Notes:
 //
 // Ref:
-//   https://github.com/markszabo/IRremoteESP8266/issues/515
+//   https://github.com/crankyoldgit/IRremoteESP8266/issues/515
 bool IRrecv::decodeLutron(decode_results *results, uint16_t nbits,
                           bool strict) {
   // Technically the smallest number of entries for the smallest message is '1'.

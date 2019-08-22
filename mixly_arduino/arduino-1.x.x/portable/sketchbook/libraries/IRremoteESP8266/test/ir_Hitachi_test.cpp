@@ -300,7 +300,7 @@ TEST(TestIRHitachiAcClass, HumanReadable) {
   ac.setFan(kHitachiAcFanHigh);
   ac.setSwingVertical(true);
   EXPECT_EQ(
-      "Power: On, Mode: 3 (HEAT), Temp: 32C, Fan: 5 (HIGH), "
+      "Power: On, Mode: 3 (HEAT), Temp: 32C, Fan: 5 (High), "
       "Swing (Vertical): On, Swing (Horizontal): Off",
       ac.toString());
   ac.setMode(kHitachiAcCool);
@@ -309,7 +309,7 @@ TEST(TestIRHitachiAcClass, HumanReadable) {
   ac.setSwingVertical(false);
   ac.setSwingHorizontal(true);
   EXPECT_EQ(
-      "Power: On, Mode: 4 (COOL), Temp: 16C, Fan: 2 (LOW), "
+      "Power: On, Mode: 4 (COOL), Temp: 16C, Fan: 2 (Low), "
       "Swing (Vertical): Off, Swing (Horizontal): On",
       ac.toString());
 }
@@ -376,7 +376,7 @@ TEST(TestDecodeHitachiAC, NormalRealExample1) {
       0x20, 0x04, 0x00, 0x80, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00,
       0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0xAC};
 
-  // Ref: https://github.com/markszabo/IRremoteESP8266/issues/417
+  // Ref: https://github.com/crankyoldgit/IRremoteESP8266/issues/417
   // 'On' '16c' 'auto fan' 'cooling mode'
   uint16_t rawData[451] = {
       3318, 1720, 400, 1276, 400, 432,  398, 434,  398, 434,  400, 432,
@@ -428,7 +428,7 @@ TEST(TestDecodeHitachiAC, NormalRealExample1) {
   IRHitachiAc ac(0);
   ac.setRaw(irsend.capture.state);
   EXPECT_EQ(
-      "Power: On, Mode: 4 (COOL), Temp: 16C, Fan: 1 (AUTO), "
+      "Power: On, Mode: 4 (COOL), Temp: 16C, Fan: 1 (Auto), "
       "Swing (Vertical): Off, Swing (Horizontal): Off",
       ac.toString());
 }
@@ -444,7 +444,7 @@ TEST(TestDecodeHitachiAC, NormalRealExample2) {
       0xC0, 0x02, 0x00, 0xA0, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00,
       0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0xD0};
 
-  // Ref: https://github.com/markszabo/IRremoteESP8266/issues/417
+  // Ref: https://github.com/crankyoldgit/IRremoteESP8266/issues/417
   // 'On' '32c' 'auto fan' 'heating mode'
   uint16_t rawData[451] = {
       3322, 1718, 400, 1278, 398, 432,  402, 430,  400, 430,  402, 430,
@@ -496,7 +496,7 @@ TEST(TestDecodeHitachiAC, NormalRealExample2) {
   IRHitachiAc ac(0);
   ac.setRaw(irsend.capture.state);
   EXPECT_EQ(
-      "Power: On, Mode: 3 (HEAT), Temp: 32C, Fan: 5 (HIGH), "
+      "Power: On, Mode: 3 (HEAT), Temp: 32C, Fan: 5 (High), "
       "Swing (Vertical): Off, Swing (Horizontal): Off",
       ac.toString());
 }
@@ -543,7 +543,7 @@ TEST(TestDecodeHitachiAC1, NormalRealExample) {
                                                   0x61, 0x84, 0x00, 0x00, 0x00,
                                                   0x00, 0x10, 0x98};
 
-  // Ref: https://github.com/markszabo/IRremoteESP8266/issues/453
+  // Ref: https://github.com/crankyoldgit/IRremoteESP8266/issues/453
   uint16_t rawData[211] = {
       3400, 3350, 450, 1250, 450, 400,  400, 1300, 400, 1300, 400, 400,
       450,  400,  400, 1300, 400, 400,  400, 1300, 400, 400,  450, 1250,
@@ -685,7 +685,7 @@ TEST(TestDecodeHitachiAC2, NormalRealExample) {
       0x01, 0xFE, 0xC0, 0x3F, 0x80, 0x7F, 0x11, 0xEE, 0x00, 0xFF, 0x00,
       0xFF, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00};
 
-  // Ref: https://github.com/markszabo/IRremoteESP8266/issues/417
+  // Ref: https://github.com/crankyoldgit/IRremoteESP8266/issues/417
   uint16_t rawData[851] = {
       // ON - 32c cool (fan auto)
       3432, 1654, 492, 1180, 488, 360,  486, 360,  486, 360,  486, 362,
@@ -767,4 +767,34 @@ TEST(TestDecodeHitachiAC2, NormalRealExample) {
   EXPECT_EQ(HITACHI_AC2, irsend.capture.decode_type);
   ASSERT_EQ(kHitachiAc2Bits, irsend.capture.bits);
   EXPECT_STATE_EQ(hitachi_code, irsend.capture.state, kHitachiAc2Bits);
+}
+
+TEST(TestIRHitachiAcClass, toCommon) {
+  IRHitachiAc ac(0);
+  ac.setPower(true);
+  ac.setMode(kHitachiAcCool);
+  ac.setTemp(20);
+  ac.setFan(kHitachiAcFanHigh);
+  ac.setSwingVertical(true);
+  ac.setSwingHorizontal(true);
+  // Now test it.
+  ASSERT_EQ(decode_type_t::HITACHI_AC, ac.toCommon().protocol);
+  ASSERT_EQ(-1, ac.toCommon().model);
+  ASSERT_TRUE(ac.toCommon().power);
+  ASSERT_TRUE(ac.toCommon().celsius);
+  ASSERT_EQ(20, ac.toCommon().degrees);
+  ASSERT_EQ(stdAc::opmode_t::kCool, ac.toCommon().mode);
+  ASSERT_EQ(stdAc::fanspeed_t::kMax, ac.toCommon().fanspeed);
+  ASSERT_EQ(stdAc::swingv_t::kAuto, ac.toCommon().swingv);
+  ASSERT_EQ(stdAc::swingh_t::kAuto, ac.toCommon().swingh);
+  // Unsupported.
+  ASSERT_FALSE(ac.toCommon().turbo);
+  ASSERT_FALSE(ac.toCommon().clean);
+  ASSERT_FALSE(ac.toCommon().light);
+  ASSERT_FALSE(ac.toCommon().quiet);
+  ASSERT_FALSE(ac.toCommon().econo);
+  ASSERT_FALSE(ac.toCommon().filter);
+  ASSERT_FALSE(ac.toCommon().beep);
+  ASSERT_EQ(-1, ac.toCommon().sleep);
+  ASSERT_EQ(-1, ac.toCommon().clock);
 }

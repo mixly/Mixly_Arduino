@@ -20,6 +20,13 @@ const uint16_t kTecoOneSpace = 1650;
 const uint16_t kTecoZeroSpace = 580;
 const uint32_t kTecoGap = kDefaultMessageGap;  // Made-up value. Just a guess.
 
+using irutils::addBoolToString;
+using irutils::addFanToString;
+using irutils::addIntToString;
+using irutils::addLabeledString;
+using irutils::addModeToString;
+using irutils::addTempToString;
+
 #if SEND_TECO
 // Send a Teco A/C message.
 //
@@ -27,7 +34,8 @@ const uint32_t kTecoGap = kDefaultMessageGap;  // Made-up value. Just a guess.
 //   data:   Contents of the message to be sent.
 //   nbits:  Nr. of bits of data to be sent. Typically kTecoBits.
 //   repeat: Nr. of additional times the message is to be sent.
-void IRsend::sendTeco(uint64_t data, uint16_t nbits, uint16_t repeat) {
+void IRsend::sendTeco(const uint64_t data, const uint16_t nbits,
+                      const uint16_t repeat) {
   sendGeneric(kTecoHdrMark, kTecoHdrSpace, kTecoBitMark, kTecoOneSpace,
               kTecoBitMark, kTecoZeroSpace, kTecoBitMark, kTecoGap,
               data, nbits, 38000, false, repeat, kDutyDefault);
@@ -35,9 +43,11 @@ void IRsend::sendTeco(uint64_t data, uint16_t nbits, uint16_t repeat) {
 #endif  // SEND_TECO
 
 // Class for decoding and constructing Teco AC messages.
-IRTecoAc::IRTecoAc(const uint16_t pin) : _irsend(pin) { stateReset(); }
+IRTecoAc::IRTecoAc(const uint16_t pin, const bool inverted,
+                   const bool use_modulation)
+    : _irsend(pin, inverted, use_modulation) { this->stateReset(); }
 
-void IRTecoAc::begin() { _irsend.begin(); }
+void IRTecoAc::begin(void) { _irsend.begin(); }
 
 #if SEND_TECO
 void IRTecoAc::send(const uint16_t repeat) {
@@ -168,61 +178,65 @@ uint8_t IRTecoAc::convertFan(const stdAc::fanspeed_t speed) {
   }
 }
 
+// Convert a native mode to it's common equivalent.
+stdAc::opmode_t IRTecoAc::toCommonMode(const uint8_t mode) {
+  switch (mode) {
+    case kTecoCool: return stdAc::opmode_t::kCool;
+    case kTecoHeat: return stdAc::opmode_t::kHeat;
+    case kTecoDry: return stdAc::opmode_t::kDry;
+    case kTecoFan: return stdAc::opmode_t::kFan;
+    default: return stdAc::opmode_t::kAuto;
+  }
+}
+
+// Convert a native fan speed to it's common equivalent.
+stdAc::fanspeed_t IRTecoAc::toCommonFanSpeed(const uint8_t speed) {
+  switch (speed) {
+    case kTecoFanHigh: return stdAc::fanspeed_t::kMax;
+    case kTecoFanMed: return stdAc::fanspeed_t::kMedium;
+    case kTecoFanLow: return stdAc::fanspeed_t::kMin;
+    default: return stdAc::fanspeed_t::kAuto;
+  }
+}
+
+// Convert the A/C state to it's common equivalent.
+stdAc::state_t IRTecoAc::toCommon(void) {
+  stdAc::state_t result;
+  result.protocol = decode_type_t::TECO;
+  result.model = -1;  // Not supported.
+  result.power = this->getPower();
+  result.mode = this->toCommonMode(this->getMode());
+  result.celsius = true;
+  result.degrees = this->getTemp();
+  result.fanspeed = this->toCommonFanSpeed(this->getFan());
+  result.swingv = this->getSwing() ? stdAc::swingv_t::kAuto :
+                                     stdAc::swingv_t::kOff;
+  result.sleep = this->getSleep() ? 0 : -1;
+  // Not supported.
+  result.swingh = stdAc::swingh_t::kOff;
+  result.turbo = false;
+  result.light = false;
+  result.filter = false;
+  result.econo = false;
+  result.quiet = false;
+  result.clean = false;
+  result.beep = false;
+  result.clock = -1;
+  return result;
+}
+
 // Convert the internal state into a human readable string.
-#ifdef ARDUINO
 String IRTecoAc::toString(void) {
   String result = "";
-#else
-std::string IRTecoAc::toString(void) {
-  std::string result = "";
-#endif  // ARDUINO
-  result += F("Power: ");
-  result += (this->getPower() ? F("On") : F("Off"));
-  result += F(", Mode: ");
-  result += uint64ToString(this->getMode());
-  switch (this->getMode()) {
-    case kTecoAuto:
-      result += F(" (AUTO)");
-      break;
-    case kTecoCool:
-      result += F(" (COOL)");
-      break;
-    case kTecoHeat:
-      result += F(" (HEAT)");
-      break;
-    case kTecoDry:
-      result += F(" (DRY)");
-      break;
-    case kTecoFan:
-      result += F(" (FAN)");
-      break;
-    default:
-      result += F(" (UNKNOWN)");
-  }
-  result += F(", Temp: ");
-  result += uint64ToString(getTemp());
-  result += F("C, Fan: ");
-  result += uint64ToString(getFan());
-  switch (this->getFan()) {
-    case kTecoFanAuto:
-      result += F(" (Auto)");
-      break;
-    case kTecoFanHigh:
-      result += F(" (High)");
-      break;
-    case kTecoFanLow:
-      result += F(" (Low)");
-      break;
-    case kTecoFanMed:
-      result += F(" (Med)");
-      break;
-    default:
-      result += F(" (UNKNOWN)");
-  }
-  result += F(", Sleep: ");
-  result += (this->getSleep() ? F("On") : F("Off"));
-  result += F(", Swing: ");
-  result += (this->getSwing() ? F("On") : F("Off"));
+  result.reserve(80);  // Reserve some heap for the string to reduce fragging.
+  result += addBoolToString(getPower(), F("Power"), false);
+  result += addModeToString(getMode(), kTecoAuto, kTecoCool, kTecoHeat,
+                            kTecoDry, kTecoFan);
+  result += addTempToString(getTemp());
+  result += addFanToString(getFan(), kTecoFanHigh, kTecoFanLow,
+                           kTecoFanAuto, kTecoFanAuto, kTecoFanMed);
+  result += addBoolToString(getSleep(), F("Sleep"));
+  result += addBoolToString(getSwing(), F("Swing"));
   return result;
 }
 
@@ -237,39 +251,24 @@ std::string IRTecoAc::toString(void) {
 //   boolean: True if it can decode it, false if it can't.
 //
 // Status: STABLE / Tested.
-bool IRrecv::decodeTeco(decode_results* results, uint16_t nbits, bool strict) {
-  // Check if can possibly be a valid Teco message.
-  if (results->rawlen < 2 * nbits + kHeader + kFooter - 1) return false;
+bool IRrecv::decodeTeco(decode_results* results,
+                        const uint16_t nbits, const bool strict) {
   if (strict && nbits != kTecoBits) return false;  // Not what is expected
 
   uint64_t data = 0;
   uint16_t offset = kStartOffset;
-  match_result_t data_result;
-
-  // Header
-  if (!matchMark(results->rawbuf[offset++], kTecoHdrMark)) return false;
-  if (!matchSpace(results->rawbuf[offset++], kTecoHdrSpace)) return false;
-  // Data (35 bits)
-  data_result =
-      matchData(&(results->rawbuf[offset]), 35, kTecoBitMark, kTecoOneSpace,
-                kTecoBitMark, kTecoZeroSpace, kTolerance, kMarkExcess, false);
-  if (data_result.success == false) return false;
-  data = data_result.data;
-  offset += data_result.used;
-  uint16_t actualBits = data_result.used / 2;
-
-  // Footer.
-  if (!matchMark(results->rawbuf[offset++], kTecoBitMark)) return false;
-  if (offset < results->rawlen &&
-      !matchAtLeast(results->rawbuf[offset], kTecoGap)) return false;
-
-  // Compliance
-  if (actualBits < nbits) return false;
-  if (strict && actualBits != nbits) return false;  // Not as we expected.
+  // Match Header + Data + Footer
+  if (!matchGeneric(results->rawbuf + offset, &data,
+                    results->rawlen - offset, nbits,
+                    kTecoHdrMark, kTecoHdrSpace,
+                    kTecoBitMark, kTecoOneSpace,
+                    kTecoBitMark, kTecoZeroSpace,
+                    kTecoBitMark, kTecoGap, true,
+                    kTolerance, kMarkExcess, false)) return false;
 
   // Success
   results->decode_type = TECO;
-  results->bits = actualBits;
+  results->bits = nbits;
   results->value = data;
   results->address = 0;
   results->command = 0;

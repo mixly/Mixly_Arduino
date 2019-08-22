@@ -19,20 +19,20 @@
 
 class Hx711
 {
-public:
-	Hx711(uint8_t pin_din, uint8_t pin_slk);
-	virtual ~Hx711();
-	long getValue();
-	long averageValue(byte times = 25);
-	void setOffset(long offset);
-	void setScale(float scale = 1992.f);
-	float getGram();
-
 private:
-	const uint8_t _pin_dout;
-	const uint8_t _pin_slk;
-	long _offset;
-	float _scale;
+	int DOUT;
+	int SCK;
+
+	float scale;
+	long offset;
+public:
+	Hx711(int IO_DOUT,int IO_SCK);
+	void setScale(float IO_scale);
+	void setOffset(long IO_offset);
+
+	long getValue();
+	long getAverageValue(char IO_times);
+	float getWeight(char IO_times);
 };
 
 #endif /* HX711_H_ */
