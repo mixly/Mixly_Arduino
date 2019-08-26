@@ -548,7 +548,7 @@ Blockly.Arduino.factory_declare2 = function() {
 //一键配网（无需安可信）
 Blockly.Arduino.blynk_AP_config = function() {
 	var auth= Blockly.Arduino.valueToCode(this, 'auth', Blockly.Arduino.ORDER_ATOMIC);
-	var server= Blockly.Arduino.valueToCode(this, 'server', Blockly.Arduino.ORDER_ATOMIC);
+	var server_add= Blockly.Arduino.valueToCode(this, 'server', Blockly.Arduino.ORDER_ATOMIC);
 	var board_type=JSFuncs.getPlatform();
 	Blockly.Arduino.definitions_['include_TimeLib'] ='#include <TimeLib.h>';
 	Blockly.Arduino.definitions_['include_WidgetRTC'] ='#include <WidgetRTC.h>';
@@ -568,7 +568,16 @@ Blockly.Arduino.blynk_AP_config = function() {
 	Blockly.Arduino.definitions_['include_ESP8266WebServer'] ='#include <ESP8266WebServer.h>\n';
 	Blockly.Arduino.definitions_['include_WiFiManager'] ='#include <WiFiManager.h>';
 	Blockly.Arduino.definitions_['var_declare_WiFiServer'] ='WiFiServer server(80);';
-	Blockly.Arduino.setups_['otasetup1'] = 'Serial.begin(9600);\nWiFiManager wifiManager;\nwifiManager.autoConnect("Blynk");\nSerial.println("Connected.");\nserver.begin();\nBlynk.config('+ auth+',IPAddress('+ server+'),8080);\n';
+	Blockly.Arduino.setups_['otasetup1'] = 'Serial.begin(9600);\nWiFiManager wifiManager;\nwifiManager.autoConnect("Blynk");\nSerial.println("Connected.");\nserver.begin();\n';
+		if(isNaN(server_add.charAt(2)))
+	{
+		Blockly.Arduino.setups_['otasetup1'] += ' Blynk.config(auth,'+server_add+',8080);';
+	}
+	else
+	{
+		server_add = server_add.replace(/\"/g, "").replace(/\./g,",");
+		Blockly.Arduino.setups_['otasetup1'] += ' Blynk.config(auth,'+'IPAddress('+server_add+'),8080);';
+	}
 	var code='Blynk.run();\n';
 	return code;
 };
@@ -576,14 +585,23 @@ Blockly.Arduino.blynk_AP_config = function() {
 
 //一键配网手动配置授权码（无需安可信）
 Blockly.Arduino.blynk_AP_config_2 = function() {
-	var server= Blockly.Arduino.valueToCode(this, 'server', Blockly.Arduino.ORDER_ATOMIC);
+	var server_add= Blockly.Arduino.valueToCode(this, 'server', Blockly.Arduino.ORDER_ATOMIC);
 	Blockly.Arduino.definitions_['include_pwku1'] ='#define BLYNK_PRINT Serial\n#include <FS.h>\n#include <ESP8266WiFi.h>\n#include <BlynkSimpleEsp8266.h>\n#include <DNSServer.h>\n#include <ESP8266WebServer.h>\n#include <WiFiManager.h>\n#include <ArduinoJson.h>\nchar blynk_token[34] = "YOUR_BLYNK_TOKEN";\nbool shouldSaveConfig = false;\nvoid saveConfigCallback () {\nSerial.println("Should save config");\nshouldSaveConfig = true;\n}\n';
-	Blockly.Arduino.setups_['otasetup1'] = 'Serial.begin(9600);\n  Serial.println();\n  Serial.println("mounting FS...");\n  if (SPIFFS.begin()) {\n    Serial.println("mounted file system");\n    if (SPIFFS.exists("/config.json")) {\n      Serial.println("reading config file");\n      File configFile = SPIFFS.open("/config.json", "r");\n      if (configFile) {\n        Serial.println("opened config file");\n        size_t size = configFile.size();\n        std::unique_ptr<char[]> buf(new char[size]);\n        configFile.readBytes(buf.get(), size);\n        DynamicJsonBuffer jsonBuffer;\n        JsonObject& json = jsonBuffer.parseObject(buf.get());\n        json.printTo(Serial);\n        if (json.success()) {\n          Serial.println("parsed json");\n          strcpy(blynk_token, json["blynk_token"]);\n        } else {\n          Serial.println("failed to load json config");\n        }\n        configFile.close();\n      }\n    }\n  } else {\n    Serial.println("failed to mount FS");\n  }\n  WiFiManagerParameter custom_blynk_token("blynk", "blynk token", blynk_token, 32);\n  WiFiManager wifiManager;\n  wifiManager.setSaveConfigCallback(saveConfigCallback);\n  wifiManager.addParameter(&custom_blynk_token);\n  wifiManager.setMinimumSignalQuality(10);\n  if (!wifiManager.autoConnect()) {\n    Serial.println("failed to connect and hit timeout");\n    delay(3000);\n    ESP.reset();\n    delay(5000);\n  }\n  Serial.println("connected...yeey :)");\n  strcpy(blynk_token, custom_blynk_token.getValue());\n  if (shouldSaveConfig) {\n    Serial.println("saving config");\n    DynamicJsonBuffer jsonBuffer;\n    JsonObject& json = jsonBuffer.createObject();\n    json["blynk_token"] = blynk_token;    File configFile = SPIFFS.open("/config.json", "w");\n    if (!configFile) {\n      Serial.println("failed to open config file for writing");\n    }\n    json.printTo(Serial);\n    json.printTo(configFile);\n    configFile.close();\n  }\n  Serial.println("local ip");\n  Serial.println(WiFi.localIP());\n  Blynk.config(blynk_token, IPAddress('+ server+'), 8080);\n';
+	Blockly.Arduino.setups_['otasetup1'] = 'Serial.begin(9600);\n  Serial.println();\n  Serial.println("mounting FS...");\n  if (SPIFFS.begin()) {\n    Serial.println("mounted file system");\n    if (SPIFFS.exists("/config.json")) {\n      Serial.println("reading config file");\n      File configFile = SPIFFS.open("/config.json", "r");\n      if (configFile) {\n        Serial.println("opened config file");\n        size_t size = configFile.size();\n        std::unique_ptr<char[]> buf(new char[size]);\n        configFile.readBytes(buf.get(), size);\n        DynamicJsonBuffer jsonBuffer;\n        JsonObject& json = jsonBuffer.parseObject(buf.get());\n        json.printTo(Serial);\n        if (json.success()) {\n          Serial.println("parsed json");\n          strcpy(blynk_token, json["blynk_token"]);\n        } else {\n          Serial.println("failed to load json config");\n        }\n        configFile.close();\n      }\n    }\n  } else {\n    Serial.println("failed to mount FS");\n  }\n  WiFiManagerParameter custom_blynk_token("blynk", "blynk token", blynk_token, 32);\n  WiFiManager wifiManager;\n  wifiManager.setSaveConfigCallback(saveConfigCallback);\n  wifiManager.addParameter(&custom_blynk_token);\n  wifiManager.setMinimumSignalQuality(10);\n  if (!wifiManager.autoConnect()) {\n    Serial.println("failed to connect and hit timeout");\n    delay(3000);\n    ESP.reset();\n    delay(5000);\n  }\n  Serial.println("connected...yeey :)");\n  strcpy(blynk_token, custom_blynk_token.getValue());\n  if (shouldSaveConfig) {\n    Serial.println("saving config");\n    DynamicJsonBuffer jsonBuffer;\n    JsonObject& json = jsonBuffer.createObject();\n    json["blynk_token"] = blynk_token;    File configFile = SPIFFS.open("/config.json", "w");\n    if (!configFile) {\n      Serial.println("failed to open config file for writing");\n    }\n    json.printTo(Serial);\n    json.printTo(configFile);\n    configFile.close();\n  }\n  Serial.println("local ip");\n  Serial.println(WiFi.localIP());\n';
+	if(isNaN(server_add.charAt(2)))
+	{
+		Blockly.Arduino.setups_['otasetup1'] += ' Blynk.config(auth,'+server_add+',8080);';
+	}
+	else
+	{
+		server_add = server_add.replace(/\"/g, "").replace(/\./g,",");
+		Blockly.Arduino.setups_['otasetup1'] += ' Blynk.config(auth,'+'IPAddress('+server_add+'),8080);';
+	}
 	var code='Blynk.run();\n';
 	return code;
 };
 
-Blockly.Arduino.Blynk_connected = function() {
+Blockly.Arduino.Blynk_connecte_state = function() {
 	var code = 'Blynk.connected()';
 	return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
@@ -609,7 +627,6 @@ Blockly.Arduino.blynk_lcd_clear = function() {
 	var code='lcd.clear();\n';
 	return code;
 };
-
 
 //ESP32 blynk BLE连接方式
 Blockly.Arduino.blynk_esp32_ble = function() {
@@ -716,4 +733,30 @@ Blockly.Arduino.blynk_table_cleardata = function() {
 Blockly.Arduino.blynk_connected = function() {
     var code = 'Blynk.connected()';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+//ESP32 CAM相机
+Blockly.Arduino.esp_camera = function () {
+    var wifi_ssid= Blockly.Arduino.valueToCode(this, 'wifi_ssid', Blockly.Arduino.ORDER_ATOMIC);
+    var wifi_pass= Blockly.Arduino.valueToCode(this, 'wifi_pass', Blockly.Arduino.ORDER_ATOMIC);
+    var mode= this.getFieldValue('mode');
+    var code = "";
+        if (mode>0) {
+        code ='  WiFi.begin(wif_ssid,wif_password);\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(500);\n    Serial.print(".");\n }\n  Serial.println("");\n  Serial.println("WiFi connected");\n  Serial.print("Camera Stream Ready! Go to: http://");\n  Serial.print(WiFi.localIP());\n  Serial.println("");\n';
+    } else {
+        code =' Serial.print("Setting AP (Access Point)…");\n  WiFi.softAP(wif_ssid,wif_password);\n  IPAddress IP = WiFi.softAPIP();\n  Serial.print("Camera Stream Ready! Connect to the ESP32 AP and go to: http://");\n  Serial.println(IP);\n  Serial.println("");\n';
+    }
+    Blockly.Arduino.definitions_['esp_camera'] ='#include "esp_camera.h"\n#include <WiFi.h>\n#include "esp_timer.h"\n#include "img_converters.h"\n#include "Arduino.h"\n#include "fb_gfx.h"\n#include "soc/soc.h"\n#include "soc/rtc_cntl_reg.h"\n#include "dl_lib.h"\n#include "esp_http_server.h"\nconst char*wif_ssid = '+wifi_ssid+';\nconst char*wif_password = '+wifi_pass+';\n#define PART_BOUNDARY "123456789000000000000987654321"\n#define PWDN_GPIO_NUM     32\n#define RESET_GPIO_NUM    -1\n#define XCLK_GPIO_NUM      0\n#define SIOD_GPIO_NUM     26\n#define SIOC_GPIO_NUM     27\n#define Y9_GPIO_NUM       35\n#define Y8_GPIO_NUM       34\n#define Y7_GPIO_NUM       39\n#define Y6_GPIO_NUM       36\n#define Y5_GPIO_NUM       21\n#define Y4_GPIO_NUM       19\n#define Y3_GPIO_NUM       18\n#define Y2_GPIO_NUM        5\n#define VSYNC_GPIO_NUM    25\n#define HREF_GPIO_NUM     23\n#define PCLK_GPIO_NUM     22\nstatic const char* _STREAM_CONTENT_TYPE = "multipart/x-mixed-replace;boundary=" PART_BOUNDARY;\nstatic const char* _STREAM_BOUNDARY = "\\r\\n--" PART_BOUNDARY "\\r\\n";\nstatic const char* _STREAM_PART = "Content-Type: image/jpeg\\r\\nContent-Length: %u\\r\\n\\r\\n";\nhttpd_handle_t stream_httpd = NULL;\nstatic esp_err_t stream_handler(httpd_req_t *req){\n  camera_fb_t * fb = NULL;\n  esp_err_t res = ESP_OK;\n  size_t _jpg_buf_len = 0;\n  uint8_t * _jpg_buf = NULL;\n  char * part_buf[64];\n  res = httpd_resp_set_type(req, _STREAM_CONTENT_TYPE);\n  if(res != ESP_OK){\n    return res;\n  }\n  while(true){\n    fb = esp_camera_fb_get();\n    if (!fb) {\n      Serial.println("Camera capture failed");\n      res = ESP_FAIL;\n    } else {\n      if(fb->width > 400){\n        if(fb->format != PIXFORMAT_JPEG){\n          bool jpeg_converted = frame2jpg(fb, 80, &_jpg_buf, &_jpg_buf_len);\n          esp_camera_fb_return(fb);\n          fb = NULL;\n          if(!jpeg_converted){\n            Serial.println("JPEG compression failed");\n            res = ESP_FAIL;\n          }\n        } else {\n          _jpg_buf_len = fb->len;\n          _jpg_buf = fb->buf;\n        }\n      }\n    }\n    if(res == ESP_OK){\n      size_t hlen = snprintf((char *)part_buf, 64, _STREAM_PART, _jpg_buf_len);\n      res = httpd_resp_send_chunk(req, (const char *)part_buf, hlen);\n    }\n    if(res == ESP_OK){\n      res = httpd_resp_send_chunk(req, (const char *)_jpg_buf, _jpg_buf_len);\n    }\n    if(res == ESP_OK){\n      res = httpd_resp_send_chunk(req, _STREAM_BOUNDARY, strlen(_STREAM_BOUNDARY));\n    }\n    if(fb){\n      esp_camera_fb_return(fb);\n      fb = NULL;\n      _jpg_buf = NULL;\n    } else if(_jpg_buf){\n      free(_jpg_buf);\n      _jpg_buf = NULL;\n    }\n    if(res != ESP_OK){\n      break;\n    }\n  }\n  return res;\n}\nvoid startCameraServer(){\n  httpd_config_t config = HTTPD_DEFAULT_CONFIG();\n  config.server_port = 80;\n  httpd_uri_t index_uri = {\n    .uri       = "/",\n    .method    = HTTP_GET,\n    .handler   = stream_handler,\n    .user_ctx  = NULL\n  };\n  if (httpd_start(&stream_httpd, &config) == ESP_OK) {\n    httpd_register_uri_handler(stream_httpd, &index_uri);\n } \n}\n';
+    Blockly.Arduino.setups_['setups_esp_camera'] ='  WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);\n  Serial.begin(115200);\n  Serial.setDebugOutput(false);\n  camera_config_t config;\n  config.ledc_channel = LEDC_CHANNEL_0;\n  config.ledc_timer = LEDC_TIMER_0;\n  config.pin_d0 = Y2_GPIO_NUM;\n  config.pin_d1 = Y3_GPIO_NUM;\n  config.pin_d2 = Y4_GPIO_NUM;\n  config.pin_d3 = Y5_GPIO_NUM;\n  config.pin_d4 = Y6_GPIO_NUM;\n  config.pin_d5 = Y7_GPIO_NUM;\n  config.pin_d6 = Y8_GPIO_NUM;\n  config.pin_d7 = Y9_GPIO_NUM;\n  config.pin_xclk = XCLK_GPIO_NUM;\n  config.pin_pclk = PCLK_GPIO_NUM;\n  config.pin_vsync = VSYNC_GPIO_NUM;\n  config.pin_href = HREF_GPIO_NUM;\n  config.pin_sscb_sda = SIOD_GPIO_NUM;\n  config.pin_sscb_scl = SIOC_GPIO_NUM;\n  config.pin_pwdn = PWDN_GPIO_NUM;\n  config.pin_reset = RESET_GPIO_NUM;\n  config.xclk_freq_hz = 20000000;\n  config.pixel_format = PIXFORMAT_JPEG; \n  if(psramFound()){\n    config.frame_size = FRAMESIZE_UXGA;\n    config.jpeg_quality = 10;\n    config.fb_count = 2;\n  } else {\n    config.frame_size = FRAMESIZE_SVGA;\n    config.jpeg_quality = 12;\n    config.fb_count = 1;\n  }\n  esp_err_t err = esp_camera_init(&config);\n  if (err != ESP_OK) {\n    Serial.printf("Camera init failed with error 0x%x", err);\n    return;\n  }\n  '+code+'  startCameraServer();\n';
+    return 'delay(1);\n';
+};
+
+//ESP32 CAM相机 & blynk
+Blockly.Arduino.esp_camera_blynk = function () {
+    var wifi_ssid= Blockly.Arduino.valueToCode(this, 'wifi_ssid', Blockly.Arduino.ORDER_ATOMIC);
+    var wifi_pass= Blockly.Arduino.valueToCode(this, 'wifi_pass', Blockly.Arduino.ORDER_ATOMIC);
+    var server= Blockly.Arduino.valueToCode(this, 'server', Blockly.Arduino.ORDER_ATOMIC);
+    var auth= Blockly.Arduino.valueToCode(this, 'auth', Blockly.Arduino.ORDER_ATOMIC);
+    Blockly.Arduino.definitions_['esp_camera'] ='#include "esp_camera.h"\n#include <WiFi.h>\n#include "esp_timer.h"\n#include "img_converters.h"\n#include "Arduino.h"\n#include "fb_gfx.h"\n#include "soc/soc.h"\n#include "soc/rtc_cntl_reg.h"\n#include "dl_lib.h"\n#include "esp_http_server.h"\n#define BLYNK_PRINT Serial\n#include <BlynkSimpleEsp32.h>\n#include <TimeLib.h>\n#include <WiFi.h>\n#include <WiFiClient.h>\n#include <WidgetRTC.h>\nchar auth[] = '+auth+';\nconst char*wif_ssid = '+wifi_ssid+';\nconst char*wif_password = '+wifi_pass+';\n#define PART_BOUNDARY "123456789000000000000987654321"\n#define PWDN_GPIO_NUM     32\n#define RESET_GPIO_NUM    -1\n#define XCLK_GPIO_NUM      0\n#define SIOD_GPIO_NUM     26\n#define SIOC_GPIO_NUM     27\n#define Y9_GPIO_NUM       35\n#define Y8_GPIO_NUM       34\n#define Y7_GPIO_NUM       39\n#define Y6_GPIO_NUM       36\n#define Y5_GPIO_NUM       21\n#define Y4_GPIO_NUM       19\n#define Y3_GPIO_NUM       18\n#define Y2_GPIO_NUM        5\n#define VSYNC_GPIO_NUM    25\n#define HREF_GPIO_NUM     23\n#define PCLK_GPIO_NUM     22\nstatic const char* _STREAM_CONTENT_TYPE = "multipart/x-mixed-replace;boundary=" PART_BOUNDARY;\nstatic const char* _STREAM_BOUNDARY = "\\r\\n--" PART_BOUNDARY "\\r\\n";\nstatic const char* _STREAM_PART = "Content-Type: image/jpeg\\r\\nContent-Length: %u\\r\\n\\r\\n";\nhttpd_handle_t stream_httpd = NULL;\nstatic esp_err_t stream_handler(httpd_req_t *req){\n  camera_fb_t * fb = NULL;\n  esp_err_t res = ESP_OK;\n  size_t _jpg_buf_len = 0;\n  uint8_t * _jpg_buf = NULL;\n  char * part_buf[64];\n  res = httpd_resp_set_type(req, _STREAM_CONTENT_TYPE);\n  if(res != ESP_OK){\n    return res;\n  }\n  while(true){\n    fb = esp_camera_fb_get();\n    if (!fb) {\n      Serial.println("Camera capture failed");\n      res = ESP_FAIL;\n    } else {\n      if(fb->width > 400){\n        if(fb->format != PIXFORMAT_JPEG){\n          bool jpeg_converted = frame2jpg(fb, 80, &_jpg_buf, &_jpg_buf_len);\n          esp_camera_fb_return(fb);\n          fb = NULL;\n          if(!jpeg_converted){\n            Serial.println("JPEG compression failed");\n            res = ESP_FAIL;\n          }\n        } else {\n          _jpg_buf_len = fb->len;\n          _jpg_buf = fb->buf;\n        }\n      }\n    }\n    if(res == ESP_OK){\n      size_t hlen = snprintf((char *)part_buf, 64, _STREAM_PART, _jpg_buf_len);\n      res = httpd_resp_send_chunk(req, (const char *)part_buf, hlen);\n    }\n    if(res == ESP_OK){\n      res = httpd_resp_send_chunk(req, (const char *)_jpg_buf, _jpg_buf_len);\n    }\n    if(res == ESP_OK){\n      res = httpd_resp_send_chunk(req, _STREAM_BOUNDARY, strlen(_STREAM_BOUNDARY));\n    }\n    if(fb){\n      esp_camera_fb_return(fb);\n      fb = NULL;\n      _jpg_buf = NULL;\n    } else if(_jpg_buf){\n      free(_jpg_buf);\n      _jpg_buf = NULL;\n    }\n    if(res != ESP_OK){\n      break;\n    }\n  }\n  return res;\n}\nvoid startCameraServer(){\n  httpd_config_t config = HTTPD_DEFAULT_CONFIG();\n  config.server_port = 80;\n  httpd_uri_t index_uri = {\n    .uri       = "/",\n    .method    = HTTP_GET,\n    .handler   = stream_handler,\n    .user_ctx  = NULL\n  };\n  if (httpd_start(&stream_httpd, &config) == ESP_OK) {\n    httpd_register_uri_handler(stream_httpd, &index_uri);\n } \n}\n';
+    Blockly.Arduino.setups_['setups_esp_camera'] ='  WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);\n  Serial.begin(115200);\n  Serial.setDebugOutput(false);\n  camera_config_t config;\n  config.ledc_channel = LEDC_CHANNEL_0;\n  config.ledc_timer = LEDC_TIMER_0;\n  config.pin_d0 = Y2_GPIO_NUM;\n  config.pin_d1 = Y3_GPIO_NUM;\n  config.pin_d2 = Y4_GPIO_NUM;\n  config.pin_d3 = Y5_GPIO_NUM;\n  config.pin_d4 = Y6_GPIO_NUM;\n  config.pin_d5 = Y7_GPIO_NUM;\n  config.pin_d6 = Y8_GPIO_NUM;\n  config.pin_d7 = Y9_GPIO_NUM;\n  config.pin_xclk = XCLK_GPIO_NUM;\n  config.pin_pclk = PCLK_GPIO_NUM;\n  config.pin_vsync = VSYNC_GPIO_NUM;\n  config.pin_href = HREF_GPIO_NUM;\n  config.pin_sscb_sda = SIOD_GPIO_NUM;\n  config.pin_sscb_scl = SIOC_GPIO_NUM;\n  config.pin_pwdn = PWDN_GPIO_NUM;\n  config.pin_reset = RESET_GPIO_NUM;\n  config.xclk_freq_hz = 20000000;\n  config.pixel_format = PIXFORMAT_JPEG; \n  if(psramFound()){\n    config.frame_size = FRAMESIZE_UXGA;\n    config.jpeg_quality = 10;\n    config.fb_count = 2;\n  } else {\n    config.frame_size = FRAMESIZE_SVGA;\n    config.jpeg_quality = 12;\n    config.fb_count = 1;\n  }\n  esp_err_t err = esp_camera_init(&config);\n  if (err != ESP_OK) {\n    Serial.printf("Camera init failed with error 0x%x", err);\n    return;\n  }\n  WiFi.begin(wif_ssid,wif_password);\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(500);\n    Serial.print(".");\n }\n  Serial.println("");\n  Serial.println("WiFi connected");\n  Serial.print("Camera Stream Ready! Go to: http://");\n  Serial.print(WiFi.localIP());\n  Serial.println("");\n  startCameraServer();\n  Blynk.config(auth,IPAddress('+server+'),8080);\n';
+    return 'Blynk.run();\n';
 };
