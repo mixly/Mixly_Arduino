@@ -513,9 +513,9 @@ Blockly.Blocks['tuple_getSublist'] = {
     // Create either a value 'AT' input or a dummy input.
     if (isAt) {
       this.appendValueInput('AT' + n).setCheck(Number);
-      if (Blockly.Msg.ORDINAL_NUMBER_SUFFIX) {
+      if (Blockly.Msg.TEXT_CHARAT_TAIL) {
         this.appendDummyInput('ORDINAL' + n)
-            .appendField(Blockly.Msg.ORDINAL_NUMBER_SUFFIX);
+            .appendField(Blockly.Msg.TEXT_CHARAT_TAIL);
       }
     } else {
       this.appendDummyInput('AT' + n);
@@ -695,9 +695,9 @@ Blockly.Blocks['tuple_get_sublist'] = {
         this.appendValueInput('AT1')
             .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET + " " + Blockly.Msg.LISTS_GET_INDEX_FROM_START);
         this.appendValueInput('AT2')
-            .appendField(Blockly.Msg.TEXT_INDEXOF_TAIL + " " + Blockly.Msg.LISTS_GET_SUBLIST_END_FROM_START);
+            .appendField(Blockly.Msg.TEXT_CHARAT_TAIL + " " + Blockly.Msg.LISTS_GET_SUBLIST_END_FROM_START);
         this.appendDummyInput()
-            .appendField(Blockly.Msg.TEXT_INDEXOF_TAIL);
+            .appendField(Blockly.Msg.TEXT_CHARAT_TAIL);
         this.setInputsInline(true);
         this.setOutput(true, 'Tuple');
         this.setTooltip(Blockly.Msg.PYTHON_TUPLE_GET_SUBLIST_TOOLTIP);

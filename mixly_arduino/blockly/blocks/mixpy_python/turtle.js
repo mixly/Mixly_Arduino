@@ -60,9 +60,9 @@ Blockly.Blocks['turtle_move'] = {
     this.setColour(Blockly.Blocks.turtle.HUE);
     this.appendValueInput('VAR')
         // .setCheck(String)
-        .appendField(Blockly.blockpy_turtle_move)
+        .appendField(Blockly.MIXLY_MICROBIT_JS_MOVE_BY)
         .appendField(new Blockly.FieldDropdown(front_back), 'DIR')
-        .appendField(Blockly.blockpy_turtle_move_num);
+        .appendField(Blockly.MIXLY_MICROBIT_JS_MOVE_BY_num);
 
   this.setInputsInline(true);
    this.setPreviousStatement(true);
@@ -90,7 +90,7 @@ Blockly.Blocks['turtle_rotate'] = {
         // .setCheck(String)
         .appendField(Blockly.blockpy_turtle_rotate)
         .appendField(new Blockly.FieldDropdown(front_back), 'DIR')
-        .appendField(Blockly.blockpy_turtle_rotate_num);
+        .appendField(Blockly.MIXLY_MICROBIT_JS_BY_ANGLE);
 
   this.setInputsInline(true);
    this.setPreviousStatement(true);

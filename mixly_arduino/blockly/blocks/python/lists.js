@@ -17,7 +17,7 @@ Blockly.Blocks.lists_get_index = {
             .setCheck(Number)
             .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET + " " + Blockly.Msg.LISTS_GET_INDEX_FROM_START)
         this.appendDummyInput()
-            .appendField(Blockly.Msg.TEXT_INDEXOF_TAIL);
+            .appendField(Blockly.Msg.TEXT_CHARAT_TAIL);
         this.setInputsInline(true);
         this.setOutput(true);
         this.setTooltip(Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_FROM);
@@ -38,9 +38,9 @@ Blockly.Blocks['lists_get_sublist'] = {
         this.appendValueInput('AT1')
             .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET + " " + Blockly.Msg.LISTS_GET_INDEX_FROM_START);
         this.appendValueInput('AT2')
-            .appendField(Blockly.Msg.TEXT_INDEXOF_TAIL + " " + Blockly.Msg.LISTS_GET_SUBLIST_END_FROM_START);
+            .appendField(Blockly.Msg.TEXT_CHARAT_TAIL + " " + Blockly.Msg.LISTS_GET_SUBLIST_END_FROM_START);
         this.appendDummyInput()
-            .appendField(Blockly.Msg.TEXT_INDEXOF_TAIL);
+            .appendField(Blockly.Msg.TEXT_CHARAT_TAIL);
         this.setInputsInline(true);
         this.setOutput(true, 'List');
         this.setTooltip(Blockly.Msg.PYTHON_LISTS_GET_SUBLIST_TOOLTIP);
@@ -392,7 +392,7 @@ Blockly.Blocks.lists_pop = {
     this.appendValueInput('VALUE')
         .appendField(Blockly.MIXLY_MICROBIT_LIST_POP);
     this.appendDummyInput()
-        .appendField(Blockly.Msg.TEXT_INDEXOF_TAIL);
+        .appendField(Blockly.Msg.TEXT_CHARAT_TAIL);
     this.setInputsInline(true);
     this.setOutput(true);
     this.setTooltip(Blockly.Msg.LISTS_GET_INDEX_TOOLTIP_GET_REMOVE_FROM);

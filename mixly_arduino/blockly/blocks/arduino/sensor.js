@@ -87,7 +87,7 @@ Blockly.Blocks.chaoshengbo2 = {
 //DHT11温湿度传感器
 Blockly.Blocks.DHT = {
   init: function () {
-    var WHAT = [[Blockly.MIXLY_DHT11_T, 'temperature'], [Blockly.MIXLY_DHT11_H, 'humidity']];
+    var WHAT = [[Blockly.MIXLY_GETTEMPERATUE, 'temperature'], [Blockly.MIXLY_GETHUMIDITY, 'humidity']];
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
     .appendField(new Blockly.FieldDropdown([['DHT11', '11'], ['DHT21', '21'], ['DHT22', '22']]), 'TYPE')
@@ -129,7 +129,7 @@ Blockly.Blocks.ds18b20 = {
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_DS18B20)
     .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
-    .appendField(Blockly.MIXLY_DS18B20_GET_TEMP)
+    .appendField(Blockly.MIXLY_GETTEMPERATUE)
     .appendField(new Blockly.FieldDropdown(UNIT), "UNIT");
     this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_DS18);
@@ -250,7 +250,7 @@ var RTC_TIME_TYPE = [
 [Blockly.MIXLY_HOUR, "getHour"],
 [Blockly.MIXLY_MINUTE, "getMinute"],
 [Blockly.MIXLY_SECOND, "getSecond"],
-[Blockly.MIXLY_WEEK, "getWeek"]
+[Blockly.MIXLY_WEEK, "getWeek"],
 ];
 
 

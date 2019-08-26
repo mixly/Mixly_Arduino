@@ -213,7 +213,7 @@ Blockly.Blocks['sensor_mpu9250_calibrate_compass'] = {
 //         this.appendValueInput('SUB')
 //             .setCheck("var");
 //         this.appendDummyInput()
-//             .appendField(Blockly.MIXLY_MICROBIT_JS_COMPASS_HEADING)
+//             .appendField(Blockly.MIXLY_MICROBIT_JS_BY_ANGLE)
 //         this.setOutput(true, Number);
 //         this.setInputsInline(true);
 //     }
@@ -241,7 +241,7 @@ Blockly.Blocks['sensor_mpu9250_field_strength'] = {
         .setCheck("var");
         this.appendDummyInput()
         .appendField(Blockly.MIXLY_MICROBIT_JS_GET_COMPASS)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_FIELD_STRENGTH,'strength'],[Blockly.MIXLY_MICROBIT_JS_COMPASS_HEADING,'heading']]),'compass');
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_FIELD_STRENGTH,'strength'],[Blockly.MIXLY_MICROBIT_JS_BY_ANGLE,'heading']]),'compass');
         this.setOutput(true, Number);
         this.setInputsInline(true);
         var thisBlock = this;
@@ -250,7 +250,7 @@ Blockly.Blocks['sensor_mpu9250_field_strength'] = {
             var mode0 = Blockly.MIXLY_MICROBIT_JS_GET_COMPASS;
             var TOOLTIPS = {
                 'strength':Blockly.MIXLY_MICROBIT_JS_FIELD_STRENGTH,
-                'heading':Blockly.MIXLY_MICROBIT_JS_COMPASS_HEADING
+                'heading':Blockly.MIXLY_MICROBIT_JS_BY_ANGLE
             };
             return mode0 +TOOLTIPS[mode];
         });
@@ -402,7 +402,7 @@ Blockly.Blocks.HCSR04 = {
 
 Blockly.Blocks.sensor_dht11 = {
     init: function () {
-        var WHAT = [[Blockly.MIXLY_DHT11_T, 'temperature'], [Blockly.MIXLY_DHT11_H, 'relative_humidity'], [Blockly.MIXLY_DHT11_T_H, 'tempandhum']];
+        var WHAT = [[Blockly.MIXLY_GETTEMPERATUE, 'temperature'], [Blockly.MIXLY_GETHUMIDITY, 'relative_humidity'], [Blockly.MIXLY_DHT11_T_H, 'tempandhum']];
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput("PIN", Number)
         .appendField(new Blockly.FieldDropdown([['DHT11', 'dht11']

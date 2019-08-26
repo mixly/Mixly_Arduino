@@ -139,9 +139,9 @@ Blockly.Blocks.handbit_rgb_show = {
 }
 };
 var HANDBIT_MSA300_GETAB = [
-[Blockly.MixGo_MPU9250_AX, "msa.getX();"],
-[Blockly.MixGo_MPU9250_AY, "msa.getY();"],
-[Blockly.MixGo_MPU9250_AZ, "msa.getZ();"],
+[Blockly.MixGo_MPU9250_AX, "msa.getX()"],
+[Blockly.MixGo_MPU9250_AY, "msa.getY()"],
+[Blockly.MixGo_MPU9250_AZ, "msa.getZ()"],
 ];
 
 var HANDBIT_MSA300_ACTION = [

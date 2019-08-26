@@ -22,7 +22,7 @@ Blockly.Blocks.monitor_show_string = {
     this.setColour(Blockly.Blocks.display.HUE);
 	this.appendValueInput('data')
         .setCheck(String)
-		.appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING);
+		.appendField(Blockly.OLED_DRAWSTR);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	this.setInputsInline(true);

@@ -183,7 +183,7 @@ Blockly.Blocks['system_print'] = {
   init: function() {
     this.setColour(Blockly.Blocks.serial.HUE);
         this.appendValueInput("VAR")
-        .appendField(Blockly.blockpy_inout_print);
+        .appendField(Blockly.MIXLY_SERIAL_PRINTLN);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip(Blockly.Msg.BLOCKPY_PRINT_TOOLTIP);

@@ -170,7 +170,7 @@ Blockly.Blocks.controls_typeLists = {
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE)
             .appendField(new Blockly.FieldDropdown([
-              [Blockly.MIXLY_MICROBIT_TYPE_INT, "int"],
+              [Blockly.LANG_MATH_INT, "int"],
               [Blockly.MIXLY_MICROBIT_TYPE_FLOAT, "float"],
               [Blockly.MIXLY_MICROBIT_TYPE_STRING, "str"],
               [Blockly.MIXLY_MICROBIT_TYPE_LIST, "list"],
@@ -187,7 +187,7 @@ Blockly.Blocks.controls_typeLists = {
         var mode = thisBlock.getFieldValue('type');
         var mode0 = Blockly.MICROBIT_controls_TypeLists;
         var TOOLTIPS = {
-        'int': Blockly.MIXLY_MICROBIT_TYPE_INT,
+        'int': Blockly.LANG_MATH_INT,
         'float': Blockly.MIXLY_MICROBIT_TYPE_FLOAT,
         'str': Blockly.MIXLY_MICROBIT_TYPE_STRING,
         'list': Blockly.MIXLY_MICROBIT_TYPE_LIST,

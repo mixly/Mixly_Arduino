@@ -280,7 +280,7 @@ Blockly.Blocks.HT16K33_show_image = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.display.HUE);
-    this.setTooltip(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
+    this.setTooltip(Blockly.OLED_BITMAP_OR_STRING);
     this.setHelpUrl('');
   }
 };

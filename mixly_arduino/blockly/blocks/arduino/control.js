@@ -56,7 +56,7 @@ Blockly.Blocks.controls_for = {
     .setAlign(Blockly.ALIGN_RIGHT)
     .appendField(Blockly.MIXLY_STEP);
     this.appendStatementInput('DO')
-    .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_DO);
+    .appendField(Blockly.MIXLY_DO);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setInputsInline(true);
@@ -85,7 +85,7 @@ Blockly.Blocks.controls_whileUntil = {
     .appendField(Blockly.LANG_CONTROLS_WHILEUNTIL_TITLE_REPEAT)
     .appendField(new Blockly.FieldDropdown(this.OPERATORS), 'MODE');
     this.appendStatementInput('DO')
-    .appendField(Blockly.LANG_CONTROLS_WHILEUNTIL_INPUT_DO);
+    .appendField(Blockly.MIXLY_DO);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#while");
@@ -767,7 +767,7 @@ Blockly.Blocks.controls_nointerrupts = {
     .appendField(Blockly.MIXLY_CONTROL_NOINTERRUPTS);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_FORBID_INTERRUPT);
+    this.setTooltip(Blockly.MIXLY_CONTROL_NOINTERRUPTS);
     this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#id55");
   }
 };

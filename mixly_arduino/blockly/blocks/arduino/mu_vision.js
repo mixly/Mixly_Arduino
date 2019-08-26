@@ -128,7 +128,7 @@ Blockly.Blocks['Vs2SetLEDColor'] = {
 
 Blockly.Blocks['Vs2VisionBegin'] = {
   init: function() {
-    var lVs2VisionStatus = [[Blockly.LKL_VS2_ENABLE, "Begin"],[Blockly.LKL_VS2_DISABLE, "End"]];
+    var lVs2VisionStatus = [[Blockly.LKL_VS2_ENABLE, "Begin"],[Blockly.MIXLY_MICROBIT_Turn_off_display, "End"]];
     this.setColour(Blockly.Blocks.VisionSensor.HUE_SetupMode);
     this.appendDummyInput()
     .appendField(new Blockly.FieldDropdown(lVs2VisionStatus), "VisionStatus")
@@ -425,9 +425,9 @@ generateMessageType: function() {
 
 Blockly.Blocks['Vs2GetCardType'] = {
   init: function() {
-    this.traffic_card_type_ = [["⬆ "+Blockly.LKL_VS2_CARD_STRAIGHT, "MU_TRAFFIC_CARD_FORWARD"],
-    ["⬅ "+Blockly.LKL_VS2_CARD_TURN_LEFT, "MU_TRAFFIC_CARD_LEFT"],
-    ["➡ "+Blockly.LKL_VS2_CARD_TURN_RIGHT, "MU_TRAFFIC_CARD_RIGHT"],
+    this.traffic_card_type_ = [["⬆ "+Blockly.blockpy_forward, "MU_TRAFFIC_CARD_FORWARD"],
+    ["⬅ "+Blockly.blockpy_left, "MU_TRAFFIC_CARD_LEFT"],
+    ["➡ "+Blockly.blockpy_right, "MU_TRAFFIC_CARD_RIGHT"],
     ["🔙 "+Blockly.LKL_VS2_CARD_TURN_AROUND, "MU_TRAFFIC_CARD_TURN_AROUND"],
     ["🅿 "+Blockly.MIXLY_STOP, "MU_TRAFFIC_CARD_PARK"]
     ];

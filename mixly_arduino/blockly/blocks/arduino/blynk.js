@@ -534,7 +534,16 @@ Blockly.Blocks.Blynk_iot_BLYNK_CONNECTED = {
     this.setNextStatement(false);
   }
 };
-
+//blynk服务器连接状态
+Blockly.Blocks.Blynk_connecte_state= {
+  init: function() {
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+    this.appendDummyInput()
+    .appendField(Blockly.Blynk_connecte_state);
+    this.setOutput(true, null);
+    this.setHelpUrl("");
+  }
+};
 //blynk硬件已连接
 Blockly.Blocks.Blynk_iot_BLYNK_APP_CONNECTED = {
   init: function() {
@@ -751,7 +760,7 @@ Blockly.Blocks.blynk_notify = {
     .appendField(new Blockly.FieldImage("../../media/blynk/widget_push_notifications.png", 20, 20))
     .appendField(Blockly.blynk_NOTIFY);
     this.appendValueInput("content")
-    .appendField(Blockly.blynk_NOTIFY_CONTENT)
+    .appendField(Blockly.OLED_STRING)
     .setCheck([String,Number,Boolean]);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -769,7 +778,7 @@ Blockly.Blocks.blynk_terminal = {
     .appendField(new Blockly.FieldImage("../../media/blynk/widget_terminal.png", 20, 20))
     .appendField(Blockly.blynk_terminal);
     this.appendValueInput("content")
-    .appendField(Blockly.blynk_NOTIFY_CONTENT)
+    .appendField(Blockly.OLED_STRING)
     .setCheck([String,Number,Boolean]);
     this.appendDummyInput("")
     .appendField(Blockly.BLYNK_VIRTUALPIN);
@@ -1259,17 +1268,7 @@ Blockly.Blocks.blynk_AP_config_2 = {
     this.setHelpUrl("");
   }
 };
-//blynk服务器连接状态
-Blockly.Blocks.Blynk_connected= {
-  init: function() {
-    this.setColour(Blockly.Blocks.blynk.HUE1);
-    this.appendDummyInput()
-    .appendField(Blockly.Blynk_connected);
-    this.setOutput(true, null);
-    this.setTooltip(Blockly.Blynk_connected_Tooltip);
-    this.setHelpUrl("");
-  }
-};
+
 //Blynk终端清屏
 Blockly.Blocks['blynk_terminal_clear'] = {
   init: function() {
@@ -1512,14 +1511,48 @@ Blockly.Blocks['blynk_table_cleardata'] = {
     this.setHelpUrl("");
   }
 };
-//blynk服务器连接状态
-Blockly.Blocks['blynk_connected'] = {
+
+//ESP32 CAM相机
+Blockly.Blocks['esp_camera'] = {
   init: function() {
     this.appendDummyInput()
-    .appendField(Blockly.blynk_connected);
-    this.setOutput(true, null);
+        .appendField("ESP32 CAM mode")
+        .appendField(new Blockly.FieldDropdown([["STA","1"], ["AP","0"]]), "mode");
+    this.appendValueInput("wifi_ssid")
+        .setCheck(null)
+        .appendField(Blockly.blynk_WIFI_SSID);
+    this.appendValueInput("wifi_pass")
+        .setCheck(null)
+        .appendField(Blockly.blynk_WIFI_PASS);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
     this.setColour(Blockly.Blocks.blynk.HUE1);
-    this.setTooltip("");
-    this.setHelpUrl("");
+ this.setTooltip(Blockly.esp_camera);
+ this.setHelpUrl("");
+  }
+};
+
+//ESP32 CAM相机 & blynk
+Blockly.Blocks['esp_camera_blynk'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("ESP32 CAM & Blynk");
+    this.appendValueInput("wifi_ssid")
+        .setCheck(null)
+        .appendField(Blockly.blynk_WIFI_SSID);
+    this.appendValueInput("wifi_pass")
+        .setCheck(null)
+        .appendField(Blockly.blynk_WIFI_PASS);
+    this.appendValueInput("server")
+        .setCheck(null)
+        .appendField(Blockly.blynk_SERVER_ADD);
+    this.appendValueInput("auth")
+        .setCheck(null)
+        .appendField(Blockly.blynk_IOT_AUTH);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+  this.setTooltip(Blockly.esp_camera);
+ this.setHelpUrl("");
   }
 };

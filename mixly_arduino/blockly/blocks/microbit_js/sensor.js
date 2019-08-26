@@ -73,7 +73,7 @@ Blockly.Blocks['sensor_compass_heading'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_MICROBIT_JS_COMPASS_HEADING)
+            .appendField(Blockly.MIXLY_MICROBIT_JS_BY_ANGLE)
         this.setOutput(true, Number);
         this.setInputsInline(true);
     }

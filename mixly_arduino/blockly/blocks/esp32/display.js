@@ -67,17 +67,17 @@ Blockly.Blocks.monitor_show_string = {
     this.setColour(Blockly.Blocks.display.HUE);
 	  this.appendValueInput('data')
         .setCheck(String)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,'show'],[Blockly.MIXLY_ESP32_MONITOR_SCROLL,'scroll']]),"MODE")
-		    .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING);
+        .appendField(new Blockly.FieldDropdown([[Blockly.OLED_DRAWSTR_ONE_BY_ONE,'show'],[Blockly.MIXLY_ESP32_MONITOR_SCROLL,'scroll']]),"MODE")
+		    .appendField(Blockly.OLED_DRAWSTR);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
 	  this.setInputsInline(true);
     var thisBlock = this;
         this.setTooltip(function() {
         var mode = thisBlock.getFieldValue('MODE');
-        var mode0 = Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING;
+        var mode0 = Blockly.OLED_DRAWSTR;
         var TOOLTIPS = {
-        'show':Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,
+        'show':Blockly.OLED_DRAWSTR_ONE_BY_ONE,
         'scroll':Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING
       };
       return TOOLTIPS[mode]+mode0;
@@ -90,8 +90,8 @@ Blockly.Blocks.monitor_show_scroll_string = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendValueInput('data')
         .setCheck(String)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,'show'],[Blockly.MIXLY_ESP32_MONITOR_SCROLL,'scroll']]),"MODE")
-        .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING);
+        .appendField(new Blockly.FieldDropdown([[Blockly.OLED_DRAWSTR_ONE_BY_ONE,'show'],[Blockly.MIXLY_ESP32_MONITOR_SCROLL,'scroll']]),"MODE")
+        .appendField(Blockly.OLED_DRAWSTR);
     this.appendValueInput("time")
         .setCheck(Number)
         // .setAlign(Blockly.ALIGN_RIGHT)
@@ -102,9 +102,9 @@ Blockly.Blocks.monitor_show_scroll_string = {
     var thisBlock = this;
         this.setTooltip(function() {
         var mode = thisBlock.getFieldValue('MODE');
-        var mode0 = Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING;
+        var mode0 = Blockly.OLED_DRAWSTR;
         var TOOLTIPS = {
-        'show':Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,
+        'show':Blockly.OLED_DRAWSTR_ONE_BY_ONE,
         'scroll':Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING
       };
       return TOOLTIPS[mode]+mode0;
@@ -142,11 +142,11 @@ Blockly.Blocks.microbit_display_show_image = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendValueInput('PIN',String)
         .setCheck("esp32_image")
-        .appendField(Blockly.MIXLY_MICROBIT_Show_image);
+        .appendField(Blockly.OLED_BITMAP);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
-    this.setTooltip(Blockly.MIXLY_MICROBIT_Show_image);
+    this.setTooltip(Blockly.OLED_BITMAP);
   }
 };
 
@@ -161,7 +161,7 @@ Blockly.Blocks['esp32_display_show_default_image'] = {
       "previousStatement" : null,
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/display.html#microbit.display.show",
       "tooltip" : "Show the referenced image on the display.",
-      "message0" : Blockly.MIXLY_MICROBIT_Show_image,
+      "message0" : Blockly.OLED_BITMAP,
       "args0" : [{
           "name" : "image",
           "options" : [["HEART", "HEART"],["HEART_SMALL", "HEART_SMALL"],["HAPPY", "HAPPY"],["SAD", "SAD"],["SMILE", "SMILE"],["SILLY", "SILLY"],["FABULOUS", "FABULOUS"],["SURPRISED", "SURPRISED"],["ASLEEP", "ASLEEP"],["ANGRY", "ANGRY"],["CONFUSED", "CONFUSED"],["NO", "NO"],["YES", "YES"],["LEFT_ARROW", "LEFT_ARROW"],["RIGHT_ARROW", "RIGHT_ARROW"],["DRESS", "DRESS"],["TRANSFORMERS", "TRANSFORMERS"],["SCISSORS", "SCISSORS"],["EXIT", "EXIT"],["TREE", "TREE"],["PACMAN", "PACMAN"],["TARGET", "TARGET"],["TSHIRT", "TSHIRT"],["ROLLERSKATE", "ROLLERSKATE"],["DUCK", "DUCK"],["HOUSE", "HOUSE"],["TORTOISE", "TORTOISE"],["BUTTERFLY", "BUTTERFLY"],["STICKFIGURE", "STICKFIGURE"],["GHOST", "GHOST"],["PITCHFORK", "PITCHFORK"],["MUSIC_QUAVERS", "MUSIC_QUAVERS"],["MUSIC_QUAVER", "MUSIC_QUAVER"],["MUSIC_CROTCHET", "MUSIC_CROTCHET"],["COW", "COW"],["RABBIT", "RABBIT"],["SQUARE_SMALL", "SQUARE_SMALL"],["SQUARE", "SQUARE"],["DIAMOND_SMALL", "DIAMOND_SMALL"],["DIAMOND", "DIAMOND"],["CHESSBOARD", "CHESSBOARD"],["TRIANGLE_LEFT", "TRIANGLE_LEFT"],["TRIANGLE", "TRIANGLE"],["SNAKE", "SNAKE"],["UMBRELLA", "UMBRELLA"],["SKULL", "SKULL"],["GIRAFFE", "GIRAFFE"],["SWORD", "SWORD"]],
@@ -915,7 +915,7 @@ Blockly.Blocks['image_arithmetic'] = {
 Blockly.Blocks['esp32_display_show_string'] = {
   init : function () {
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,'show'],[Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING,'scroll']]),"MODE");
+        .appendField(new Blockly.FieldDropdown([[Blockly.OLED_DRAWSTR_ONE_BY_ONE,'show'],[Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING,'scroll']]),"MODE");
     this.jsonInit({
       "colour" : Blockly.Blocks.display.HUE,
       "inputsInline": true,
@@ -956,10 +956,10 @@ Blockly.Blocks['esp32_display_show_string'] = {
     var thisBlock = this;
         this.setTooltip(function() {
         var mode = thisBlock.getFieldValue('MODE');
-        var mode0 = Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING;
+        var mode0 = Blockly.OLED_DRAWSTR;
         var mode1 = Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_delay;
         var TOOLTIPS = {
-        'show':Blockly.MIXLY_MICROBIT_JS_MONITOR_SHOW_STRING_ONE_BY_ONE,
+        'show':Blockly.OLED_DRAWSTR_ONE_BY_ONE,
         'scroll':Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_STRING
       };
       return mode1+TOOLTIPS[mode]+mode0;
@@ -1441,7 +1441,7 @@ Blockly.Blocks.display_show_image_or_string = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
-    this.setTooltip(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
+    this.setTooltip(Blockly.OLED_BITMAP_OR_STRING);
   }
 };
 

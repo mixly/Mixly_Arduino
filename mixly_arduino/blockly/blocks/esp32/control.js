@@ -78,7 +78,7 @@ Blockly.Blocks.controls_for = {
     .setAlign(Blockly.ALIGN_RIGHT)
     .appendField(Blockly.MIXLY_STEP);
     this.appendStatementInput('DO')
-    .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_DO);
+    .appendField(Blockly.MIXLY_DO);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setInputsInline(true);
@@ -106,7 +106,7 @@ Blockly.Blocks.controls_whileUntil = {
     .appendField(Blockly.LANG_CONTROLS_WHILEUNTIL_TITLE_REPEAT)
     .appendField(new Blockly.FieldDropdown(this.OPERATORS), 'MODE');
     this.appendStatementInput('DO')
-    .appendField(Blockly.LANG_CONTROLS_WHILEUNTIL_INPUT_DO);
+    .appendField(Blockly.MIXLY_DO);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     var thisBlock = this;
@@ -436,7 +436,7 @@ Blockly.Blocks.controls_forEach = {
     .appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT_ITEM)
     .appendField(new Blockly.FieldTextInput('i'), 'VAR');
     this.appendStatementInput('DO')
-    .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_DO);
+    .appendField(Blockly.MIXLY_DO);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setInputsInline(true);
@@ -486,7 +486,7 @@ Blockly.Blocks.controls_TypeLists = {
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE)
     .appendField(new Blockly.FieldDropdown([
-      [Blockly.MIXLY_MICROBIT_TYPE_INT, "int"],
+      [Blockly.LANG_MATH_INT, "int"],
       [Blockly.MIXLY_MICROBIT_TYPE_FLOAT, "float"],
       [Blockly.MIXLY_MICROBIT_TYPE_STRING, "str"],
       [Blockly.MIXLY_MICROBIT_TYPE_LIST, "list"],
@@ -503,7 +503,7 @@ Blockly.Blocks.controls_TypeLists = {
               var mode = thisBlock.getFieldValue('type');
               var mode0 = Blockly.MICROBIT_controls_TypeLists;
               var TOOLTIPS = {
-                'int': Blockly.MIXLY_MICROBIT_TYPE_INT,
+                'int': Blockly.LANG_MATH_INT,
                 'float': Blockly.MIXLY_MICROBIT_TYPE_FLOAT,
                 'str': Blockly.MIXLY_MICROBIT_TYPE_STRING,
                 'list': Blockly.MIXLY_MICROBIT_TYPE_LIST,

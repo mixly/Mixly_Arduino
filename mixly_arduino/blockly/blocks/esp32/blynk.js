@@ -148,7 +148,7 @@ Blockly.Blocks['mpython_blynk_stop_timers'] = {
             // "output": null,
             "colour": Blockly.Blocks.blynk.HUE,
             "helpUrl": Blockly.MPYTHON_BLYNK_STOP_TIMERS_HELPURL,
-            "tooltip": Blockly.MPYTHON_BLYNK_STOP_TIMERS_TOOLTIP,
+            "tooltip": Blockly.MPYTHON_BLYNKTIMER_TOOLTIP,
             "message0": Blockly.MPYTHON_BLYNK_STOP_TIMERS_MESSAGE0,
             "args0": [
             {

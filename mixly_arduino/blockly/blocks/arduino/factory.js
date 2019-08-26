@@ -333,7 +333,7 @@ Blockly.Blocks.factory_notes = {
 
 Blockly.Blocks.folding_block = {
   init: function() {
-    this.setColour(120);
+    this.setColour(Blockly.Blocks.factory.HUE);
     this.appendDummyInput()
         .appendField(new Blockly.FieldTextInput(Blockly.FOLDING_BLOCK), "peien");
     this.appendStatementInput('DO')

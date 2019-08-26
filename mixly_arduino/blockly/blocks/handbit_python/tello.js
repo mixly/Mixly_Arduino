@@ -121,8 +121,8 @@ Blockly.Blocks['tello_stream'] = {
 			"args0": [
 				{
                   "options": [
-                    [Blockly.Msg.TELLO_ON, 'on'],
-                    [Blockly.Msg.TELLO_OFF, 'off']
+                    [Blockly.MIXLY_MICROBIT_Turn_on_display, 'on'],
+                    [Blockly.MIXLY_MICROBIT_Turn_off_display, 'off']
                   ],
                   "type": "field_dropdown",
                   "name": "tello_mode"
@@ -515,8 +515,8 @@ Blockly.Blocks['tello_set_m'] = {
 			"args0": [
                 {
                   "options": [
-                    [Blockly.Msg.TELLO_ON, 'on'],
-                    [Blockly.Msg.TELLO_OFF, 'off']
+                    [Blockly.MIXLY_MICROBIT_Turn_on_display, 'on'],
+                    [Blockly.MIXLY_MICROBIT_Turn_off_display, 'off']
                   ],
                   "type": "field_dropdown",
                   "name": "tello_mode"

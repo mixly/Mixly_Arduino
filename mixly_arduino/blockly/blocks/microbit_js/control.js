@@ -50,7 +50,7 @@ Blockly.Blocks.controls_for = {
     .setAlign(Blockly.ALIGN_RIGHT)
     .appendField(Blockly.MIXLY_STEP);
     this.appendStatementInput('DO')
-    .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_DO);
+    .appendField(Blockly.MIXLY_DO);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setInputsInline(true);
@@ -78,7 +78,7 @@ Blockly.Blocks.controls_whileUntil = {
     .appendField(Blockly.LANG_CONTROLS_WHILEUNTIL_TITLE_REPEAT)
     .appendField(new Blockly.FieldDropdown(this.OPERATORS), 'MODE');
     this.appendStatementInput('DO')
-    .appendField(Blockly.LANG_CONTROLS_WHILEUNTIL_INPUT_DO);
+    .appendField(Blockly.MIXLY_DO);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     var thisBlock = this;

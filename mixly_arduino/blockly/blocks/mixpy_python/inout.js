@@ -21,7 +21,7 @@ Blockly.Blocks['inout_print'] = {
   init: function() {
     this.setColour(20);
     this.appendValueInput("VAR")
-    .appendField(Blockly.blockpy_inout_print);
+    .appendField(Blockly.MIXLY_SERIAL_PRINTLN);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.Msg.BLOCKPY_PRINT_TOOLTIP);
@@ -176,7 +176,7 @@ Blockly.Blocks['inout_print_many'] = {
       for (var i = 0; i < this.itemCount_; i++) {
         var input = this.appendValueInput('ADD' + i);
         if (i == 0) {
-          input.appendField(Blockly.blockpy_inout_print);
+          input.appendField(Blockly.MIXLY_SERIAL_PRINTLN);
         }
       }
     }
@@ -186,7 +186,7 @@ Blockly.Blocks['inout_print_container'] = {
   init: function() {
     this.setColour(20);
     this.appendDummyInput()
-    .appendField(Blockly.blockpy_inout_print);
+    .appendField(Blockly.MIXLY_SERIAL_PRINTLN);
     this.appendStatementInput('STACK');
     this.setTooltip(Blockly.MIXLY_MIXPY_INOUT_PRINT_MANY_CONTAINER_TOOLTIP);
     this.contextMenu = false;

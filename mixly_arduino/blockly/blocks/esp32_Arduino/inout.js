@@ -19,7 +19,7 @@ Blockly.Blocks.inout_analog_write = {
    this.setPreviousStatement(true, null);
    this.setNextStatement(true, null);
    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE);
-}
+ }
 };
 Blockly.Blocks.inout_pwm_analog_write = {
   init: function(){
@@ -41,21 +41,20 @@ Blockly.Blocks.inout_pwm_analog_write = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.MIXLY_ESP32_INOUT_PWM_ANALOG_WRITE_SET_FREQ_TOOLTIP);
-}
+  }
 };
 
 Blockly.Blocks.inout_touchRead = {
   init: function(){
-     this.setColour(Blockly.Blocks.base.HUE);
-     this.appendDummyInput()
-     .appendField(Blockly.MIXLY_ESP32_TOUCH)
-     .appendField(Blockly.MIXLY_PIN)
-     .appendField(new Blockly.FieldDropdown(profile.default.touch), 'touch_pin');
-     this.appendDummyInput()
-     .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
-     this.setOutput(true, Number);
-     this.setInputsInline(true);
-     this.setTooltip(Blockly.MIXLY_ESP32_INOUT_PIN_PRESSED_TOOLTIP);
+   this.setColour(Blockly.Blocks.base.HUE);
+    this.appendValueInput("PIN", Number)
+   .appendField(Blockly.MIXLY_ESP32_TOUCH)
+   .appendField(Blockly.MIXLY_PIN);
+   this.appendDummyInput()
+   .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
+   this.setOutput(true, Number);
+   this.setInputsInline(true);
+   this.setTooltip(Blockly.MIXLY_ESP32_INOUT_PIN_PRESSED_TOOLTIP);
  }
 };
 
@@ -74,5 +73,5 @@ Blockly.Blocks.touchAttachInterrupt = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
-}
+  }
 };
