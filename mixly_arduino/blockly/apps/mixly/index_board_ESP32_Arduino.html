@@ -1322,10 +1322,14 @@
 </shadow>
 </value>
 </block>
+<block type="oled_set_EN_Font">
+</block>
+<block type="oled_set_CN_Font">
+</block>
 <block type="procedures_defnoreturn">
   <field name="NAME">page1</field>
   <statement name="STACK">
-    <block type="oled_setFont">
+    <block type="oled_set_EN_Font">
       <field name="TYPE">timR08_tr</field>
       <next>
         <block type="oled_print" >
@@ -1351,6 +1355,32 @@
 </block>
 <block type="oled_define_bitmap_data"></block>
 <block type="oled_clear"></block>
+<block type="oled_face">
+ <value name="POS_X">
+  <shadow type="math_number">
+    <field name="NUM">20</field>
+  </shadow>
+</value>
+<value name="POS_Y">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
+<field name="Icon_size"></field>
+</block>
+<block type="oled_icons">
+ <value name="POS_X">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
+<value name="POS_Y">
+  <shadow type="math_number">
+    <field name="NUM">20</field>
+  </shadow>
+</value>
+<field name="Icon_size"></field>
+</block>
 <block type="oled_showBitmap" >
   <value name="START_X">
     <shadow type="math_number">
@@ -1360,6 +1390,16 @@
   <value name="START_Y">
     <shadow type="math_number">
       <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="WIDTH">
+    <shadow type="math_number">
+      <field name="NUM">128</field>
+    </shadow>
+  </value>
+  <value name="HEIGHT">
+    <shadow type="math_number">
+      <field name="NUM">64</field>
     </shadow>
   </value>
   <value name="bitmap_name">
@@ -1723,7 +1763,7 @@
         </shadow>
       </value>
     </block>
-    <block type="blynk_connected"></block>
+    <block type="Blynk_connecte_state"></block>
     <block type="blynk_smartconfig" name="一键配网">
       <value name="server_add">
         <shadow type="text">
@@ -2279,6 +2319,43 @@
 </block>
 <block type="blynk_iot_syncVirtual">
   <field name="Vpin">V0</field>
+</block>
+//ESP32 CAM相机
+<block type="esp_camera">
+ <value name="wifi_ssid">
+   <shadow type="text">
+    <field name="TEXT">wifi_ssid</field>
+  </shadow>
+</value>
+  <value name="wifi_pass">
+   <shadow type="text">
+    <field name="TEXT">wifi_pass</field>
+  </shadow>
+</value>
+</block>
+
+//ESP32 CAM相机 blynk
+<block type="esp_camera_blynk">
+ <value name="wifi_ssid">
+   <shadow type="text">
+    <field name="TEXT">wifi_ssid</field>
+  </shadow>
+</value>
+  <value name="wifi_pass">
+   <shadow type="text">
+    <field name="TEXT">wifi_pass</field>
+  </shadow>
+</value>
+  <value name="server">
+   <shadow type="math_number">
+    <field name="NUM">116,62,49,166</field>
+  </shadow>
+</value>
+  <value name="auth">
+   <shadow type="text">
+    <field name="TEXT">d3zp3AugUO0Y0wetEbHmHDk192q2LwzA</field>
+  </shadow>
+</value>
 </block>
 </category>
 <category id="catInner" name="catInner" colour="65">
