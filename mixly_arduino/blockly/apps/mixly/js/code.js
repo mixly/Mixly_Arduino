@@ -21,34 +21,35 @@
  * @fileoverview JavaScript for Blockly's Code demo.
  * @author fraser@google.com (Neil Fraser)
  */
-'use strict';
+ 'use strict';
 
 /**
  * Create a namespace for the application.
  */
-var Code = {};
+ var Code = {};
 
 /**
  * Lookup for names of supported languages.  Keys should be in ISO 639 format.
  */
-Code.LANGUAGE_NAME = {
+ Code.LANGUAGE_NAME = {
   'zh-hans': '简体中文',
   'zh-hant': '繁體中文',
   'en': 'English',
   'spa': 'Español',
-
+  'ja': '日本語',
+  'ru':'русский',
 };
 
 /**
  * List of RTL languages.
  */
-Code.LANGUAGE_RTL = ['ar', 'fa', 'he', 'lki'];
+ Code.LANGUAGE_RTL = ['ar', 'fa', 'he', 'lki'];
 
 /**
  * Blockly's main workspace.
  * @type {Blockly.WorkspaceSvg}
  */
-Code.workspace = null;
+ Code.workspace = null;
 
 /**
  * Extracts a parameter from the URL.
@@ -57,7 +58,7 @@ Code.workspace = null;
  * @param {string} defaultValue Value to return if paramater not found.
  * @return {string} The parameter value or the default value if not found.
  */
-Code.getStringParamFromUrl = function(name, defaultValue) {
+ Code.getStringParamFromUrl = function(name, defaultValue) {
   var val = location.search.match(new RegExp('[?&]' + name + '=([^&]+)'));
   return val ? decodeURIComponent(val[1].replace(/\+/g, '%20')) : defaultValue;
 };
@@ -66,7 +67,7 @@ Code.getStringParamFromUrl = function(name, defaultValue) {
  * Get the language of this user from the URL.
  * @return {string} User's language.
  */
-Code.getLang = function() {
+ Code.getLang = function() {
   var lang = Code.getStringParamFromUrl('lang', '');
   if (Code.LANGUAGE_NAME[lang] === undefined) {
     // Default to zh-hans.
@@ -79,7 +80,7 @@ Code.getLang = function() {
  * Is the current language (Code.LANG) an RTL language?
  * @return {boolean} True if RTL, false if LTR.
  */
-Code.isRtl = function() {
+ Code.isRtl = function() {
   return Code.LANGUAGE_RTL.indexOf(Code.LANG) != -1;
 };
 
@@ -87,7 +88,7 @@ Code.isRtl = function() {
  * Load blocks saved on App Engine Storage or in session/local storage.
  * @param {string} defaultXml Text representation of default blocks.
  */
-Code.loadBlocks = function(defaultXml) {
+ Code.loadBlocks = function(defaultXml) {
   try {
     var loadOnce = window.sessionStorage.loadOnceBlocks;
   } catch(e) {
@@ -117,7 +118,7 @@ Code.loadBlocks = function(defaultXml) {
 /**
  * Save the blocks and reload with a different language.
  */
-Code.changeLanguage = function() {
+ Code.changeLanguage = function() {
   // Store the blocks for the duration of the reload.
   // This should be skipped for the index page, which has no blocks and does
   // not load Blockly.
@@ -130,7 +131,7 @@ Code.changeLanguage = function() {
 
   var languageMenu = document.getElementById('languageMenu');
   var newLang = encodeURIComponent(
-      languageMenu.options[languageMenu.selectedIndex].value);
+    languageMenu.options[languageMenu.selectedIndex].value);
   var search = window.location.search;
   if (search.length <= 1) {
     search = '?lang=' + newLang;
@@ -141,7 +142,7 @@ Code.changeLanguage = function() {
   }
   
   window.location = window.location.protocol + '//' +
-      window.location.host + window.location.pathname + search;
+  window.location.host + window.location.pathname + search;
   
 };
 
@@ -149,13 +150,13 @@ Code.changeEditorTheme = function() {
   var themeMenu = document.getElementById('aceTheme');
   var theme = themeMenu.options[themeMenu.selectedIndex].value;
   if(editor != null){
-      editor.setOption("theme", theme);
+    editor.setOption("theme", theme);
   }
   if(editor_side_code != null){
-      editor_side_code.setOption("theme", theme);
+    editor_side_code.setOption("theme", theme);
   }
   try{
-      JSFuncs.saveEditorTheme(theme);
+    JSFuncs.saveEditorTheme(theme);
   }catch(e){
 
   }
@@ -167,7 +168,7 @@ Code.changeEditorTheme = function() {
  * @param {!Element|string} el Button element or ID thereof.
  * @param {!Function} func Event handler to bind.
  */
-Code.bindClick = function(el, func) {
+ Code.bindClick = function(el, func) {
   if (typeof el == 'string') {
     el = document.getElementById(el);
   }
@@ -178,7 +179,7 @@ Code.bindClick = function(el, func) {
 /**
  * Load the Prettify CSS and JavaScript.
  */
-Code.importPrettify = function() {
+ Code.importPrettify = function() {
   //<link rel="stylesheet" href="../prettify.css">
   //<script src="../prettify.js"></script>
   var link = document.createElement('link');
@@ -196,7 +197,7 @@ Code.importPrettify = function() {
  * @return {!Object} Contains height, width, x, and y properties.
  * @private
  */
-Code.getBBox_ = function(element) {
+ Code.getBBox_ = function(element) {
   var height = element.offsetHeight;
   var width = element.offsetWidth;
   var x = 0;
@@ -218,21 +219,21 @@ Code.getBBox_ = function(element) {
  * User's language (e.g. "en").
  * @type {string}
  */
-Code.LANG = Code.getLang();
+ Code.LANG = Code.getLang();
 
 /**
  * List of tab names.
  * @private
  */
-Code.TABS_ = ['blocks', 'javascript', 'php', 'python', 'dart', 'lua', 'xml'];
+ Code.TABS_ = ['blocks', 'javascript', 'php', 'python', 'dart', 'lua', 'xml'];
 
-Code.selected = 'blocks';
+ Code.selected = 'blocks';
 
 /**
  * Switch the visible pane when a tab is clicked.
  * @param {string} clickedName Name of tab clicked.
  */
-Code.tabClick = function(clickedName) {
+ Code.tabClick = function(clickedName) {
   // If the XML tab was open, save and render the content.
   if (document.getElementById('tab_xml').className == 'tabon') {
     var xmlTextarea = document.getElementById('content_xml');
@@ -242,7 +243,7 @@ Code.tabClick = function(clickedName) {
       xmlDom = Blockly.Xml.textToDom(xmlText);
     } catch (e) {
       var q =
-          window.confirm(MSG['badXml'].replace('%1', e));
+      window.confirm(MSG['badXml'].replace('%1', e));
       if (!q) {
         // Leave the user on the XML tab.
         return;
@@ -269,7 +270,7 @@ Code.tabClick = function(clickedName) {
   document.getElementById('tab_' + clickedName).className = 'tabon';
   // Show the selected pane.
   document.getElementById('content_' + clickedName).style.visibility =
-      'visible';
+  'visible';
   Code.renderContent();
   if (clickedName == 'blocks') {
     Code.workspace.setVisible(true);
@@ -280,7 +281,7 @@ Code.tabClick = function(clickedName) {
 /**
  * Populate the currently selected pane with content generated from the blocks.
  */
-Code.renderContent = function() {
+ Code.renderContent = function() {
   var content = document.getElementById('content_' + Code.selected);
   // Initialize the pane.
   if (content.id == 'content_xml') {
@@ -335,10 +336,10 @@ Code.renderContent = function() {
 /**
  * Initialize Blockly.  Called on page load.
  */
-Code.init = function() {
+ Code.init = function() {
   Code.initLanguage();
   document.getElementById('aceTheme')
-      .addEventListener('change', Code.changeEditorTheme, true);
+  .addEventListener('change', Code.changeEditorTheme, true);
   var rtl = Code.isRtl();
   var container = document.getElementById('content_area');
   var onresize = function(e) {
@@ -357,27 +358,27 @@ Code.init = function() {
     // Make the 'Blocks' tab line up with the toolbox.
     if (Code.workspace && Code.workspace.toolbox_.width) {
       document.getElementById('tab_blocks').style.minWidth =
-          (Code.workspace.toolbox_.width - 38) + 'px';
+      (Code.workspace.toolbox_.width - 38) + 'px';
           // Account for the 19 pixel margin and on each side.
-    }
-  };
-  onresize();
-  window.addEventListener('resize', onresize, false);
+        }
+      };
+      onresize();
+      window.addEventListener('resize', onresize, false);
 
-  var toolbox = document.getElementById('toolbox');
-  Code.workspace = Blockly.inject('content_blocks',
-      {grid:
+      var toolbox = document.getElementById('toolbox');
+      Code.workspace = Blockly.inject('content_blocks',
+        {grid:
           {spacing: 25,
            length: 3,
            colour: '#ccc',
            snap: true},
-       media: '../../media/',
-       rtl: rtl,
-       toolbox: toolbox,
-       zoom:
+           media: '../../media/',
+           rtl: rtl,
+           toolbox: toolbox,
+           zoom:
            {controls: true,
             wheel: true}
-      });
+          });
 
   // Add to reserved word list: Local variables in execution environment (runJS)
   // and the infinite loop detection function.
@@ -393,7 +394,7 @@ Code.init = function() {
   Code.tabClick(Code.selected);
 
   Code.bindClick('trashButton',
-      function() {Code.discard(); Code.renderContent();});
+    function() {Code.discard(); Code.renderContent();});
   Code.bindClick('runButton', Code.runJS);
   // Disable the link button if page isn't backed by App Engine storage.
   var linkButton = document.getElementById('linkButton');
@@ -403,7 +404,7 @@ Code.init = function() {
     BlocklyStorage['HASH_ERROR'] = MSG['hashError'];
     BlocklyStorage['XML_ERROR'] = MSG['xmlError'];
     Code.bindClick(linkButton,
-        function() {BlocklyStorage.link(Code.workspace);});
+      function() {BlocklyStorage.link(Code.workspace);});
   } else if (linkButton) {
     linkButton.className = 'disabled';
   }
@@ -411,7 +412,7 @@ Code.init = function() {
   for (var i = 0; i < Code.TABS_.length; i++) {
     var name = Code.TABS_[i];
     Code.bindClick('tab_' + name,
-        function(name_) {return function() {Code.tabClick(name_);};}(name));
+      function(name_) {return function() {Code.tabClick(name_);};}(name));
   }
 
   // Lazy-load the syntax-highlighting.
@@ -421,7 +422,7 @@ Code.init = function() {
 /**
  * Initialize the page language.
  */
-Code.initLanguage = function() {
+ Code.initLanguage = function() {
   // Set the HTML's language and direction.
   var rtl = Code.isRtl();
   document.dir = rtl ? 'rtl' : 'ltr';
@@ -455,10 +456,10 @@ Code.initLanguage = function() {
   var categories = ['catInOut', 'catControl', 'catMath', 'catText', 'catLists', 'catMicropyLists','catDicts','catLogic','catSerialPort','catGroup','catStorage','catSensor','catActuator','catMonitor','catLCD','catOLED','cat4Digitdisplay','catMatrix','catVar','catFun','catEthernet','catNetwork','catEthernet_init','catEthernet_clinet','catSense','catSense2','catLuxe', 'catGame', 'catSystem', 'catSet', 'catTurtle', 'catTuple','catIot','catData','catHardware','catAI','catDS','catHTML','catMorpxVS2','catInner'
   ];
   for (var i = 0, cat; cat = categories[i]; i++) {
-	if(document.getElementById(cat)!=null){
-		document.getElementById(cat).setAttribute('name', MSG[cat]);
-	}
+   if(document.getElementById(cat)!=null){
+    document.getElementById(cat).setAttribute('name', MSG[cat]);
   }
+}
 
   // Inject language strings.
   //document.title += ' ' + MSG['title'];
@@ -487,7 +488,7 @@ Code.initLanguage = function() {
  * Execute the user's code.
  * Just a quick and dirty eval.  Catch infinite loops.
  */
-Code.runJS = function() {
+ Code.runJS = function() {
   Blockly.JavaScript.INFINITE_LOOP_TRAP = '  checkTimeout();\n';
   var timeouts = 0;
   var checkTimeout = function() {
@@ -507,15 +508,15 @@ Code.runJS = function() {
 /**
  * Discard all blocks from the workspace.
  */
-Code.discard = function() {
+ Code.discard = function() {
   var count = Code.workspace.getAllBlocks().length;
   if (count < 2 ||
-      window.confirm(Blockly.Msg.DELETE_ALL_BLOCKS.replace('%1', count))) {
+    window.confirm(Blockly.Msg.DELETE_ALL_BLOCKS.replace('%1', count))) {
     Code.workspace.clear();
-    if (window.location.hash) {
-      window.location.hash = '';
-    }
+  if (window.location.hash) {
+    window.location.hash = '';
   }
+}
 };
 
 // Load the Code demo's language strings.
