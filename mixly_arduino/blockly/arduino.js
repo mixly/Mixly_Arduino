@@ -167,30 +167,6 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
-	'Arduino/Genuino 101' : {
-		description : "",
-		digital : [["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"], ["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
-		analog : [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
-		pwm : [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"]],
-		interrupt : [["2", "2"], ["5", "5"], ["7", "7"], ["8", "8"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]],
-		MOSI:[["11","11"]],
-		MISO:[["12","12"]],
-		SCK:[["13","13"]],
-		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
-		serial : 9600
-	},
-	mixio_xia : {
-		description : "mixio",
-		digital : [["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"], ["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
-		analog : [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
-		pwm : [["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]],
-		interrupt : [["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]],
-		MOSI:[["11","11"]],
-		MISO:[["12","12"]],
-		SCK:[["13","13"]],
-		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
-		serial : 9600
-	},
 	esp32_arduino: {
 		description: "esp32_arduino",
 		digital: [["0", "0"], ["2", "2"], ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["17", "17"], ["18", "18"], ["19", "19"], ["20", "20"], ["21", "21"], ["22", "22"], ["23", "23"], ["25", "25"], ["26", "26"], ["27", "27"], ["32", "32"], ["33", "33"], ["34", "34"], ["35", "35"], ["36", "36"], ["39", "39"]],
@@ -204,54 +180,42 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		MISO:[["19","19"]],
 		SCK:[["18","18"]],
 		touch: [["0", "0"], ["2", "2"], ["4", "4"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["27", "27"], ["32", "32"], ["33", "33"]],
-		tone_notes: [["NOTE_C3", "131"],["NOTE_D3", "147"],["NOTE_E3", "165"],["NOTE_F3", "175"],["NOTE_G3", "196"],["NOTE_A3", "220"],["NOTE_B3", "247"],["NOTE_C4", "262"],["NOTE_D4", "294"],["NOTE_E4", "330"],["NOTE_F4", "349"],["NOTE_G4", "392"],["NOTE_A4", "440"],["NOTE_B4", "494"],["NOTE_C5", "532"],["NOTE_D5", "587"],["NOTE_E5", "659"],["NOTE_F5", "698"],["NOTE_G5", "784"],["NOTE_A5", "880"],["NOTE_B5", "988"]],
-		serial_pin: [["pin0", "0"], ["pin1", "1"], ["pin2", "2"], ["pin8", "8"], ["pin12", "12"], ["pin13", "13"], ["pin14", "14"], ["pin15", "15"], ["pin16", "16"]],
-		radio_power: [['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7']],
-		radio_datarate:[["1Mbit", "RATE_1MBIT"], ["250Kbit", "RATE_250KBIT"], ["2Mbit", "RATE_2MBIT"]],
-		one_more:[["ONE_SHOT", "ONE_SHOT"], ["PERIODIC", "PERIODIC"]],
-		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"], ["SerialBT", "SerialBT"]],
+		serial_select: [["Serial0", "Serial0"], ["Serial1", "Serial1"], ["Serial2", "Serial2"], ["SerialBT", "SerialBT"]],
 		serial : 115200
 	},
 	esp32_handbit: {
 		description: "esp32_handbit",
-		digital: [["P0", "P0"], ["P1", "P1"], ["P2", "P2"], ["P8", "P8"], ["P9", "P9"], ["P13", "P13"], ["P14", "P14"], ["P15", "P15"], ["P16", "P16"],["A", "BTN_A"], ["B", "BTN_B"],],
-		interrupt: [["P0", "P0"], ["P1", "P1"], ["P2", "P2"], ["P8", "P8"], ["P9", "P9"], ["P13", "P13"], ["P14", "P14"], ["P15", "P15"], ["P16", "P16"]],
-		pwm: [["P0", "P0"], ["P1", "P1"], ["P2", "P2"], ["P8", "P8"], ["P9", "P9"], ["P13", "P13"], ["P14", "P14"], ["P15", "P15"], ["P16", "P16"]],
-		analog: [["P0", "P0"], ["P1", "P1"], ["P2", "P2"]],
+		digital: [["P0", "33"], ["P1", "32"], ["P2", "35"], ["P8", "26"], ["P9", "25"], ["P13", "18"], ["P14", "19"], ["P15", "21"], ["P16", "5"],["A", "0"], ["B", "2"]],
+		interrupt: [["P0", "33"], ["P1", "32"], ["P2", "35"], ["P8", "26"], ["P9", "25"], ["P13", "18"], ["P14", "19"], ["P15", "21"], ["P16", "5"],["A", "0"], ["B", "2"]],
+		pwm: [["P0", "33"], ["P1", "32"], ["P2", "35"], ["P8", "26"], ["P9", "25"], ["P13", "18"], ["P14", "19"], ["P15", "21"], ["P16", "5"]],
+		analog: [["P0", "33"], ["P1", "32"], ["P2", "35"]],
 		dac: [["25", "25"], ["26", "26"]],
 		SDA:[["23","23"]],
 		SCL:[["22","22"]],
-		MOSI:[["P20","P20"]],
-		MISO:[["P14","P14"]],
-		SCK:[["P13","P13"]],
-		touch: [["P", "P"], ["Y", "Y"], ["T", "T"], ["H", "H"], ["O", "O"], ["N", "N"]],
-		button:[["A", "BTN_A"], ["B", "BTN_B"]],
-		tone_notes: [["NOTE_C3", "131"],["NOTE_D3", "147"],["NOTE_E3", "165"],["NOTE_F3", "175"],["NOTE_G3", "196"],["NOTE_A3", "220"],["NOTE_B3", "247"],["NOTE_C4", "262"],["NOTE_D4", "294"],["NOTE_E4", "330"],["NOTE_F4", "349"],["NOTE_G4", "392"],["NOTE_A4", "440"],["NOTE_B4", "494"],["NOTE_C5", "532"],["NOTE_D5", "587"],["NOTE_E5", "659"],["NOTE_F5", "698"],["NOTE_G5", "784"],["NOTE_A5", "880"],["NOTE_B5", "988"]],
-		radio_power: [['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7']],
-		radio_datarate:[["1Mbit", "RATE_1MBIT"], ["250Kbit", "RATE_250KBIT"], ["2Mbit", "RATE_2MBIT"]],
-		one_more:[["ONE_SHOT", "ONE_SHOT"], ["PERIODIC", "PERIODIC"]],
+		MOSI:[["P20","23"]],
+		MISO:[["P14","19"]],
+		SCK:[["P13","18"]],
+		touch: [["P", "27"], ["Y", "14"], ["T", "12"], ["H", "13"], ["O", "15"], ["N", "4"]],
+		button:[["A", "0"], ["B", "2"]],
 		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"], ["SerialBT", "SerialBT"]],
 		serial : 115200
 	},
 	esp32_mixepi: {
 		description: "esp32_mixepi",
-		digital: [["P0", "P0"], ["P1", "P1"], ["P2", "P2"], ["P8", "P8"], ["P9", "P9"], ["P13", "P13"], ["P14", "P14"], ["P15", "P15"], ["P16", "P16"],["A", "BTN_A"], ["B", "BTN_B"],],
+		digital: [["0", "0"], ["2", "2"], ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["17", "17"], ["18", "18"], ["19", "19"], ["20", "20"], ["21", "21"], ["22", "22"], ["23", "23"], ["25", "25"], ["26", "26"], ["27", "27"], ["32", "32"], ["33", "33"], ["34", "34"], ["35", "35"], ["36", "36"], ["39", "39"],["A", "BTN_A"], ["B", "BTN_B"],["C", "BTN_C"]],
 		interrupt: [["P0", "P0"], ["P1", "P1"], ["P2", "P2"], ["P8", "P8"], ["P9", "P9"], ["P13", "P13"], ["P14", "P14"], ["P15", "P15"], ["P16", "P16"]],
-		pwm: [["P0", "P0"], ["P1", "P1"], ["P2", "P2"], ["P8", "P8"], ["P9", "P9"], ["P13", "P13"], ["P14", "P14"], ["P15", "P15"], ["P16", "P16"]],
+		pwm: [["0", "0"], ["2", "2"], ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["17", "17"], ["18", "18"], ["19", "19"], ["20", "20"], ["21", "21"], ["22", "22"], ["23", "23"], ["25", "25"], ["26", "26"], ["27", "27"], ["32", "32"]],
 		analog: [["P0", "P0"], ["P1", "P1"], ["P2", "P2"]],
 		dac: [["25", "25"], ["26", "26"]],
-		SDA:[["23","23"]],
+		brightness:[["0","0"],["1","1"],["2","2"],["3","3"],["4","4"],["5","5"],["6","6"],["7","7"],["8","8"]],
+		SDA:[["21","21"]],
 		SCL:[["22","22"]],
-		MOSI:[["P20","P20"]],
-		MISO:[["P14","P14"]],
-		SCK:[["P13","P13"]],
-		touch: [["P", "P"], ["Y", "Y"], ["T", "T"], ["H", "H"], ["O", "O"], ["N", "N"]],
+		MOSI:[["MOSI","MOSI"]],
+		MISO:[["MISO","MISO"]],
+		SCK:[["SCK","SCK"]],
+		touch: [["C", "TOUCH_C"], ["D", "TOUCH_D"], ["E", "TOUCH_E"], ["F", "TOUCH_F"], ["G", "TOUCH_G"], ["A", "TOUCH_A"], ["B", "TOUCH_B"]],
 		button:[["A", "BTN_A"], ["B", "BTN_B"], ["C", "BTN_C"]],
-		tone_notes: [["NOTE_C3", "131"],["NOTE_D3", "147"],["NOTE_E3", "165"],["NOTE_F3", "175"],["NOTE_G3", "196"],["NOTE_A3", "220"],["NOTE_B3", "247"],["NOTE_C4", "262"],["NOTE_D4", "294"],["NOTE_E4", "330"],["NOTE_F4", "349"],["NOTE_G4", "392"],["NOTE_A4", "440"],["NOTE_B4", "494"],["NOTE_C5", "532"],["NOTE_D5", "587"],["NOTE_E5", "659"],["NOTE_F5", "698"],["NOTE_G5", "784"],["NOTE_A5", "880"],["NOTE_B5", "988"]],
-		radio_power: [['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7']],
-		radio_datarate:[["1Mbit", "RATE_1MBIT"], ["250Kbit", "RATE_250KBIT"], ["2Mbit", "RATE_2MBIT"]],
-		one_more:[["ONE_SHOT", "ONE_SHOT"], ["PERIODIC", "PERIODIC"]],
-		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"], ["SerialBT", "SerialBT"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SerialBT", "SerialBT"]],
 		serial : 115200
 	}
 };
@@ -270,6 +234,8 @@ profile["WifInfo"]=profile["Arduino"]=profile["4D Systems gen4 IoD Range"]=profi
 //esp32
 profile['Arduino ESP32 Generic']=profile['Arduino MixGo']=profile['"WeMos" WiFi&Bluetooth Battery']=profile["ESP32 Dev Module"] =profile["ESP32 Wrover Module"] =profile["ESP32 Pico Kit"] =profile["Turta IoT Node"] =profile["TTGO LoRa32-OLED V1"] =profile["XinaBox CW02"] =profile["SparkFun ESP32 Thing"] =profile["u-blox NINA-W10 series (ESP32)"] =profile["Widora AIR"] =profile["Electronic SweetPeas - ESP320"] =profile["Nano32"] =profile["LOLIN D32"] =profile["LOLIN D32 PRO"] =profile["WEMOS LOLIN32"] =profile["Dongsen Tech Pocket 32"] =profile["ESPea32"] =profile["Noduino Quantum"] =profile["Node32s"] =profile["Hornbill ESP32 Dev"] =profile["Hornbill ESP32 Minima"] =profile["FireBeetle-ESP32"] =profile["IntoRobot Fig"] =profile["Onehorse ESP32 Dev Module"] =profile["Adafruit ESP32 Feather"] =profile["NodeMCU-32S"] =profile["MH ET LIVE ESP32DevKIT"] =profile["MH ET LIVE ESP32MiniKit"] =profile["ESP32vn IoT Uno"] =profile["ESP32 Dev Module"] =profile["DOIT ESP32 DEVKIT V1"] =profile["OLIMEX ESP32-EVB"] =profile["OLIMEX ESP32-GATEWAY"] =profile["OLIMEX ESP32-PoE"] =profile["ThaiEasyElec's ESPino32"] =profile["M5Stack-FIRE"] =profile["ODROID ESP32"] =profile["Heltec_WIFI_Kit_32"]=profile["Heltec_WIFI_LoRa_32"]=profile["ESPectro32"]=profile["Microduino-CoreESP32"]=profile["ALKS ESP32"]=profile["WiPy 3.0"]=profile["BPI-BIT"]=profile["Silicognition wESP32"]=profile["T-Beam"]=profile["D-duino-32"]= profile["LoPy"]=profile["LoPy4"]=profile["OROCA EduBot"]=profile["OROCA EduBot"]=profile["ESP32 FM DevKit"]=profile["esp32_arduino"];
 profile['Arduino HandBit']=profile["esp32_handbit"];
+profile['Arduino MixePi']=profile["esp32_mixepi"];
+
 //set default profile to arduino standard-compatible board
 //profile["default"] = profile["arduino_standard"];
 //alert(profile.default.digital[0]);
