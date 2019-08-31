@@ -223,11 +223,14 @@
       </value>
       <value name="FREQ">
         <shadow type="math_number">
-          <field name="NUM">2000</field>
+          <field name="NUM">5000</field>
         </shadow>
       </value>
       <value name="CHANNEL">
         <shadow type="channel_select"></shadow>
+      </value>
+      <value name="RESOLUTION">
+        
       </value>
       <value name="NUM">
         <shadow type="math_number">
@@ -235,6 +238,13 @@
         </shadow>
       </value>
     </block>
+<block type="inout_esp32_dac">
+  <value name="value">
+   <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
+</block>
     <block type="inout_analog_read">
       <value name="PIN">
         <shadow type="pins_analog"></shadow>
@@ -739,6 +749,11 @@
   <value name="RX">
     <shadow type="pins_digital"></shadow>
   </value>
+  <value name="CONTENT">
+    <shadow type="math_number">
+      <field name="NUM">115200</field>
+    </shadow>
+  </value>
 </block>
 <block type="serial_event"></block>
 </category>
@@ -1014,7 +1029,7 @@
   <block type="ADXL345">
   </block>
   <block type="TCS34725_Get_RGB">
-</block>
+  </block>
   <block type="BME280_READ">
   </block>
   <block type="PS2_init">
@@ -1221,11 +1236,6 @@
     <shadow type="math_number">
       <field name="NUM">20</field>
     </shadow>
-  </value>
-</block>
-<block type="display_rgb_show">
-  <value name="PIN">
-    <shadow type="pins_digital" />
   </value>
 </block>
 </category>
@@ -2327,10 +2337,10 @@
     <field name="TEXT">wifi_ssid</field>
   </shadow>
 </value>
-  <value name="wifi_pass">
-   <shadow type="text">
-    <field name="TEXT">wifi_pass</field>
-  </shadow>
+<value name="wifi_pass">
+ <shadow type="text">
+  <field name="TEXT">wifi_pass</field>
+</shadow>
 </value>
 </block>
 
@@ -2341,22 +2351,23 @@
     <field name="TEXT">wifi_ssid</field>
   </shadow>
 </value>
-  <value name="wifi_pass">
-   <shadow type="text">
-    <field name="TEXT">wifi_pass</field>
-  </shadow>
+<value name="wifi_pass">
+ <shadow type="text">
+  <field name="TEXT">wifi_pass</field>
+</shadow>
 </value>
-  <value name="server">
-   <shadow type="math_number">
-    <field name="NUM">116,62,49,166</field>
-  </shadow>
+<value name="server">
+ <shadow type="math_number">
+  <field name="NUM">116,62,49,166</field>
+</shadow>
 </value>
-  <value name="auth">
-   <shadow type="text">
-    <field name="TEXT">d3zp3AugUO0Y0wetEbHmHDk192q2LwzA</field>
-  </shadow>
+<value name="auth">
+ <shadow type="text">
+  <field name="TEXT">d3zp3AugUO0Y0wetEbHmHDk192q2LwzA</field>
+</shadow>
 </value>
 </block>
+<block type="take_a_photo1"></block>
 </category>
 <category id="catInner" name="catInner" colour="65">
  <block type="inout_touchRead">
