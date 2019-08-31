@@ -1556,3 +1556,14 @@ Blockly.Blocks['esp_camera_blynk'] = {
  this.setHelpUrl("");
   }
 };
+Blockly.Blocks['take_a_photo1'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.take_a_photo1);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.blynk.HUE1);
+ this.setTooltip(Blockly.take_a_photo1);
+ this.setHelpUrl("");
+  }
+};
