@@ -2694,3 +2694,6 @@ Blockly.set_CN_Font="设置中文字体";
 Blockly.FontSize="字号";
 Blockly.Font_Style="字形";
 Blockly.esp_camera="ESP32 CAM相机，上传程序后通过串口监视器输出相机地址浏览器打开即可(默认波特率115200)";
+Blockly.MIXLY_RESOLUTION='精度';
+Blockly.inout_esp32_dac='DAC输出管脚';
+Blockly.take_a_photo1='ESP32 CAM拍照';

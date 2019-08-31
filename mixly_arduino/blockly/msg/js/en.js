@@ -2694,3 +2694,6 @@ Blockly.Msg.TURTLE_HEADING= "Heading";
 Blockly.Msg.TURTLE_POS_SHAPE= "获取乌龟当前";
 Blockly.Msg.TURTLE_SHAPE= "shape";
 Blockly.MIXLY_AipOcr_drivingLicense = '驾驶证识别';
+Blockly.MIXLY_RESOLUTION='resolution';
+Blockly.FOLDING_BLOCK_HELP='Reading is very headache when using too many blocks, the code block put into it will not change, just used as a shell, why not? You know ^.^ very convenient';
+Blockly.take_a_photo1='ESP32 CAM photo';

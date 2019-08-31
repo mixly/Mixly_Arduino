@@ -2873,3 +2873,6 @@ Blockly.set_CN_Font="設置中文字體";
 Blockly.FontSize="字號";
 Blockly.Font_Style="字形";
 Blockly.esp_camera="ESP32 CAM相機，上傳程序後通過串口監視器輸出相機地址瀏覽器打開即可(默認波特率115200)";
+Blockly.MIXLY_RESOLUTION='精度';
+Blockly.inout_esp32_dac='DAC輸出管腳';
+Blockly.take_a_photo1='ESP32 CAM拍照';

@@ -357,20 +357,6 @@ Blockly.Blocks.display_rgb_rainbow3 = {
 }
 };
 
-Blockly.Blocks.display_rgb_show = {
-    init: function () {
-        this.setColour(Blockly.Blocks.actuator.HUE);
-        this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_RGB_SHOW)
-        .appendField(Blockly.MIXLY_PIN)
-        .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
-        .setAlign(Blockly.ALIGN_RIGHT);
-        this.setInputsInline(true);
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-    }
-};
-
 Blockly.Blocks.Mixly_motor = {
   init: function() {
     this.setColour(Blockly.Blocks.actuator.HUE);

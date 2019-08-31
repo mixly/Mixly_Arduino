@@ -21,14 +21,13 @@ Blockly.Arduino.inout_pinMode = function () {
 Blockly.Arduino.inout_digital_write2 = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_stat = Blockly.Arduino.valueToCode(this, 'STAT', Blockly.Arduino.ORDER_ATOMIC);
-    var code = "";
+    var code="";
     if (window.isNaN(dropdown_pin)) {
         code = code + 'pinMode(' + dropdown_pin + ', OUTPUT);\n';
     } else {
         if (Blockly.Arduino.setups_['setup_input_' + dropdown_pin])
             delete Blockly.Arduino.setups_['setup_input_' + dropdown_pin];
         Blockly.Arduino.setups_['setup_output_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', OUTPUT);';
-
     }
     code += 'digitalWrite(' + dropdown_pin + ',' + dropdown_stat + ');\n'
     return code;
@@ -68,6 +67,7 @@ Blockly.Arduino.inout_digital_read2 = function () {
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+
 Blockly.Arduino.inout_analog_write = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     //var dropdown_stat = this.getFieldValue('STAT');
@@ -90,17 +90,17 @@ Blockly.Arduino.inout_buildin_led = function () {
     return code;
 };
 Blockly.Arduino.OneButton_interrupt = function () {
-   Blockly.Arduino.definitions_['include_OneButton'] = '#include <OneButton.h>';
-   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
-   var dropdown_mode = this.getFieldValue('mode');
-   Blockly.Arduino.definitions_['var_declare_button'+dropdown_pin] = 'OneButton button'+dropdown_pin+'('+dropdown_pin+ ',true);';
-   Blockly.Arduino.setups_['setup_onebutton_' + dropdown_pin+dropdown_mode] = 'button'+dropdown_pin+'.' + dropdown_mode + '('+dropdown_mode+dropdown_pin+');';
-   var code = 'button' +dropdown_pin+ '.tick();';
-   var funcName = dropdown_mode+dropdown_pin;
-   var branch = Blockly.Arduino.statementToCode(this, 'DO');
-   var code2 = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
-   Blockly.Arduino.definitions_[funcName] = code2;
-   return code;
+ Blockly.Arduino.definitions_['include_OneButton'] = '#include <OneButton.h>';
+ var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+ var dropdown_mode = this.getFieldValue('mode');
+ Blockly.Arduino.definitions_['var_declare_button'+dropdown_pin] = 'OneButton button'+dropdown_pin+'('+dropdown_pin+ ',true);';
+ Blockly.Arduino.setups_['setup_onebutton_' + dropdown_pin+dropdown_mode] = 'button'+dropdown_pin+'.' + dropdown_mode + '('+dropdown_mode+dropdown_pin+');';
+ var code = 'button' +dropdown_pin+ '.tick();';
+ var funcName = dropdown_mode+dropdown_pin;
+ var branch = Blockly.Arduino.statementToCode(this, 'DO');
+ var code2 = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
+ Blockly.Arduino.definitions_[funcName] = code2;
+ return code;
 };
 
 Blockly.Arduino.controls_attachInterrupt = function () {
