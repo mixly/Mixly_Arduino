@@ -116,36 +116,45 @@ Blockly.Arduino.group_stepper_move = function () {
   return varName + '.step(' + step + ');\n';
 };
 
+Blockly.Arduino.RGB_color_seclet = function() {
+  var colour = this.getFieldValue('COLOR');
+  return [colour, Blockly.Arduino.ORDER_NONE];
+};
+
+Blockly.Arduino.RGB_color_rgb=function(){
+  var R = Blockly.Arduino.valueToCode(this, 'R', Blockly.Arduino.ORDER_ATOMIC);
+  var G = Blockly.Arduino.valueToCode(this, 'G', Blockly.Arduino.ORDER_ATOMIC);
+  var B = Blockly.Arduino.valueToCode(this, 'B', Blockly.Arduino.ORDER_ATOMIC);
+  var colour=R+"*65536"+"+"+G+"*256"+"+"+B;
+  return [colour, Blockly.Arduino.ORDER_NONE];
+};
+
 Blockly.Arduino.display_rgb_init=function(){
   var dropdown_rgbpin = this.getFieldValue('PIN');
   var value_ledcount = Blockly.Arduino.valueToCode(this, 'LEDCOUNT', Blockly.Arduino.ORDER_ATOMIC);
-  var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness',Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
   Blockly.Arduino.definitions_['var_declare_rgb_display' + dropdown_rgbpin] = 'Adafruit_NeoPixel  rgb_display_' + dropdown_rgbpin +  '= Adafruit_NeoPixel(' + value_ledcount + ','+dropdown_rgbpin+',NEO_GRB + NEO_KHZ800);';
   Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();';
-  Blockly.Arduino.setups_['setup_rgb_display_setBrightness' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.setBrightness('+Brightness+');';
   return '';
+};
+
+Blockly.Arduino.display_rgb_Brightness=function(){
+  var dropdown_rgbpin = this.getFieldValue('PIN');
+  var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness',Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
+  Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();';
+   var code='rgb_display_' + dropdown_rgbpin + '.setBrightness('+Brightness+');';
+  return code;
 };
 
 Blockly.Arduino.display_rgb=function(){
   var dropdown_rgbpin = this.getFieldValue('PIN');
   var value_led = Blockly.Arduino.valueToCode(this, '_LED_', Blockly.Arduino.ORDER_ATOMIC);
-  var value_rvalue = Blockly.Arduino.valueToCode(this, 'RVALUE', Blockly.Arduino.ORDER_ATOMIC);
-  var value_gvalue = Blockly.Arduino.valueToCode(this, 'GVALUE', Blockly.Arduino.ORDER_ATOMIC);
-  var value_bvalue = Blockly.Arduino.valueToCode(this, 'BVALUE', Blockly.Arduino.ORDER_ATOMIC);
-  var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness',Blockly.Arduino.ORDER_ATOMIC);
-  var code = 'rgb_display_'+dropdown_rgbpin+'.setPixelColor('+value_led+'-1, '+'rgb_display_' + dropdown_rgbpin+'.Color('+value_rvalue+','+value_gvalue+','+value_bvalue+'));\n';
-   code +='rgb_display_'+dropdown_rgbpin+'.show();\n';
-  return code;
-};
-
-Blockly.Arduino.display_rgb2=function(){
-  var dropdown_rgbpin = this.getFieldValue('PIN');
-  var value_led = Blockly.Arduino.valueToCode(this, '_LED_', Blockly.Arduino.ORDER_ATOMIC);
-  var colour_rgb_led_color = this.getFieldValue('RGB_LED_COLOR');
-  var color = goog.color.hexToRgb(colour_rgb_led_color);
-  var code = 'rgb_display_'+dropdown_rgbpin+'.setPixelColor('+value_led+'-1, '+color+');\n';
-   code +='rgb_display_'+dropdown_rgbpin+'.show();\n';
+   var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness',Blockly.Arduino.ORDER_ATOMIC);
+   var COLOR = Blockly.Arduino.valueToCode(this, 'COLOR');
+  COLOR=COLOR.replace(/#/g,"0x");
+  var code = 'rgb_display_'+dropdown_rgbpin+'.setPixelColor('+value_led+'-1, '+COLOR+');\n';
+  code +='rgb_display_'+dropdown_rgbpin+'.show();\n';
   return code;
 };
 
