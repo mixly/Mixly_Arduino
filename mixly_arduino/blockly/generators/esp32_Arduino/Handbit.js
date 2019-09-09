@@ -21,26 +21,6 @@ Blockly.Arduino.oled_clear = function() {
  return code;
 };
 
-Blockly.Arduino.oled_draw4Str = function() {
- Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
- Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SH1106_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
- Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
- var value_text_line1 = Blockly.Arduino.valueToCode(this, 'Text_line1', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
- var value_text_line2 = Blockly.Arduino.valueToCode(this, 'Text_line2', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
- var value_text_line3 = Blockly.Arduino.valueToCode(this, 'Text_line3', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
- var value_text_line4 = Blockly.Arduino.valueToCode(this, 'Text_line4', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
- var code ='u8g2.setFontPosTop();\n'
- +'u8g2.setCursor(0,0);\n'
- +'u8g2.print(' + value_text_line1 + ');\n'
- +'u8g2.setCursor(0,15);\n'
- +'u8g2.print(' + value_text_line2 + ');\n' 
- +'u8g2.setCursor(0,29);\n'
- +'u8g2.print(' + value_text_line3 + ');\n'
- +'u8g2.setCursor(0,43);\n'
- +'u8g2.print(' + value_text_line4 + ');\n'
- return code;
-};
-
 Blockly.Arduino.oled_drawPixe = function() {
  Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SH1106_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
@@ -229,32 +209,6 @@ Blockly.Arduino.oled_print = function() {
 Blockly.Arduino.oled_setFont = function() {
   var type = this.getFieldValue('TYPE');
   var code = "u8g2.setFont(u8g2_font_"+type+");\nu8g2.setFontPosTop();\n";
-  return code;
-};
-
-Blockly.Arduino.lp2i_u8g_draw_4strings = function () {
-  var value_text_line1 = Blockly.Arduino.valueToCode(this, 'Text_line1', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
-  var value_text_line2 = Blockly.Arduino.valueToCode(this, 'Text_line2', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
-  var value_text_line3 = Blockly.Arduino.valueToCode(this, 'Text_line3', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
-  var value_text_line4 = Blockly.Arduino.valueToCode(this, 'Text_line4', Blockly.Arduino.ORDER_ATOMIC) || '\'\'';
-  Blockly.Arduino.definitions_["include_U8g2lib"] = '#include <U8g2lib.h>\n';
-  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
-  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-  Blockly.Arduino.setups_["setup_u8g2"] =' u8g2.begin();\n';
-  var code = 'u8g2.firstPage();\n'
-  +'do {\n'
-  +'u8g2.setFont(u8g2_font_timR14_tr);\n'
-  +'u8g2.setFontPosTop();\n'
-  +'u8g2.setCursor(0,0);\n'
-  +'u8g2.print(' + value_text_line1 + ');\n'
-  +'u8g2.setCursor(0,15);\n'
-  +'u8g2.print(' + value_text_line2 + ');\n' 
-  +'u8g2.setCursor(0,29);\n'
-  +'u8g2.print(' + value_text_line3 + ');\n'
-  +'u8g2.setCursor(0,43);\n'
-  +'u8g2.print(' + value_text_line4 + ');\n'
-  +'}\n'
-  +'while(u8g2.nextPage() );\n';
   return code;
 };
 

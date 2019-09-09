@@ -4,29 +4,27 @@
   <title>Mixly ESP32 Arduino Advance</title>
   <script type="text/javascript" src="../../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../core/variables.js"></script>
-  <script type="text/javascript" src="../../core/procedures.js"></script> 
+  <script type="text/javascript" src="../../core/procedures.js"></script>
   <script type="text/javascript" src="../../core/blockly.js"></script>
   <script type="text/javascript" src="../../core/events.js"></script>
-  <script type="text/javascript" src="../../arduino.js"></script>
   <script type="text/javascript" src="../../core/field_textarea.js"></script>
+  <script type="text/javascript" src="../../arduino.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
   <script type="text/javascript" src="js/drag.js"></script>
   <script type="text/javascript" src="js/code.js"></script>
   <script type="text/javascript" src="digitalPinToInterrupt.js"></script>
-  <!--------from BlocklyDuino------------>
   <script type="text/javascript" src="js/Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
   <script type="text/javascript" src="js/FileSaver.min.js"></script>
   <script type="text/javascript" src="js/blockly_helper.js"></script>
-  <!-----------------------------------   -->
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
   <script type="text/javascript" src="myblock.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/blynk.js"></script>
   <script type="text/javascript" src="../../generators/arduino/mu_vision.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/factory.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/blynk.js"></script>
   <script type="text/javascript" src="../../generators/arduino/pins.js"></script>
-  <script type="text/javascript" src="../../generators/esp32_Arduino/pins.js"></script>
   <script type="text/javascript" src="../../generators/arduino/inout.js"></script>
   <script type="text/javascript" src="../../generators/arduino/control.js"></script>
   <script type="text/javascript" src="../../generators/arduino/math.js"></script>
@@ -42,7 +40,8 @@
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/arduino/actuator.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/factory.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/MQTT.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/pins.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/inout.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/control.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/math.js"></script>
@@ -57,11 +56,9 @@
   <script type="text/javascript" src="../../generators/esp32_Arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/actuator.js"></script>
-  <script type="text/javascript" src="../../generators/esp32_Arduino/MixGo.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/MQTT.js"></script>
-  <script type="text/javascript" src="../../blocks/arduino/factory.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script> 
-  <script type="text/javascript" src="../../blocks/arduino/mu_vision.js"></script> 
+  <script type="text/javascript" src="../../blocks/arduino/factory.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/pins.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/inout.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/control.js"></script>
@@ -95,10 +92,9 @@
   <script type="text/javascript" src="../../blocks/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/MQTT.js"></script>
-  <!-- 过去index.html中的js代码都会被放到这个js中-->
+  <script type="text/javascript" src="../../blocks/arduino/mu_vision.js"></script> 
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color_esp32_arduino_advance.css" />
-  <!-- ACE中字体放缩按钮样式-->
   <link rel="stylesheet" type="text/css" href="css/ACEfont.css" />
 </head>
 <body onload="init()">
@@ -107,21 +103,19 @@
       <td colspan=3>
         <table width="100%">
           <tr id="tabRow" height="1em">
-            <td style="vertical-align: center;" id="tab_blocks" class="tabon" onclick="tabClick('blocks')"><img style="vertical-align:middle" width="25" src="media/blocks.png" /><span id="span_blocks">Blocks</span></td>
-            <td class="tabmin">&nbsp;</td>
-            <td style="vertical-align: center;text-align:center;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')"><span id="span_arduino">Code</span></td>
-            <td class="tabmin">&nbsp;</td>
-            <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
-            <td class="tabcoyright">
-              <span id="copyright" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
-            </td>
-           <!--  <td class="tabmode">
-             <a class="viewLeft" id="viewMode1" href="index_board_ESP32_Arduino.html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;" >普通视图</a><span class="viewRight" id="viewMode2" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</span>
-           </td> -->
-           <script type="text/javascript">
-            var viewMode2 = document.getElementById('viewMode2');
-            viewMode2.href = 'index_board_ESP32_Arduino.html?lang='+Code.LANG;
-          </script>
+            <td style="vertical-align: center;" id="tab_blocks" class="tabon" onclick="tabClick('blocks')">
+             <img style="vertical-align:middle" width="25" src="media/blocks.png"/>
+             <span id="span_blocks">Blocks</span>
+           </td>
+           <td class="tabmin">&nbsp;</td>
+           <td style="vertical-align: center;text-align:center;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')">
+             <span id="span_arduino">Code</span>
+           </td>
+           <td class="tabmin">&nbsp;</td>
+           <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
+           <td class="tabcoyright">
+            <span id="copyright" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
+          </td>
           <td class="tabmin">
             <input name="undo" type="image" title="undo(ctrl+z)" src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
           </td>
@@ -202,7 +196,8 @@
 <textarea id="content_xml" class="content" wrap="off" readonly></textarea>
 <xml id="toolbox" style="display: none">
   <category name="" id="catInOut" colour="20">
-    <block type="inout_highlow"></block>
+    <block type="inout_highlow">
+    </block>
     <block type="inout_digital_write2">
       <value name="PIN">
         <shadow type="pins_digital"></shadow>
@@ -230,7 +225,6 @@
         <shadow type="channel_select"></shadow>
       </value>
       <value name="RESOLUTION">
-        
       </value>
       <value name="NUM">
         <shadow type="math_number">
@@ -275,11 +269,7 @@
       </shadow>
     </value>
   </block>
-  <block type="inout_pinMode">
-    <value name="PIN">
-      <shadow type="pins_digital"></shadow>
-    </value>
-  </block>
+
   <block type="inout_pulseIn">
     <value name="PIN">
       <shadow type="pins_digital"></shadow>
@@ -293,6 +283,11 @@
       <shadow type="math_number">
         <field name="NUM">1000000</field>
       </shadow>
+    </value>
+  </block>
+  <block type="inout_pinMode">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
     </value>
   </block>
   <block type="inout_shiftout">
@@ -310,8 +305,10 @@
   </block>
 </category>
 <category id="catControl" colour="120">
-  <block type="base_setup"></block>
-  <block type="controls_end_program"></block>
+  <block type="base_setup">
+  </block>
+  <block type="controls_end_program">
+  </block>
   <block type="controls_whileUntil">
     <value name="BOOL">
       <shadow type="logic_boolean">
@@ -325,8 +322,10 @@
       </shadow>
     </value>
   </block>
-  <block type="controls_if"></block>
-  <block type="controls_switch_case"></block>
+  <block type="controls_if">
+  </block>
+  <block type="controls_switch_case">
+  </block>
   <block type="controls_for">
     <value name="FROM">
       <shadow type="math_number">
@@ -344,8 +343,10 @@
       </shadow>
     </value>
   </block>
-  <block type="controls_flow_statements"></block>
-  <block type="controls_millis"></block>
+  <block type="controls_flow_statements">
+  </block>
+  <block type="controls_millis">
+  </block>
   <block type="controls_runnig_core">
   </block>
   <block type="control_core_delay">
@@ -631,9 +632,12 @@
 </block>
 </category>
 <category id="catLists" colour="260">
-  <block type="lists_create_with2"></block>
-  <block type="lists_create_with_text2"></block>
-  <block type="lists_length"></block>
+  <block type="lists_create_with2">
+  </block>
+  <block type="lists_create_with_text2">
+  </block>
+  <block type="lists_length">
+  </block>
   <block type="lists_getIndex">
     <value name="AT">
       <shadow type="math_number">
@@ -711,28 +715,39 @@
   </block>
 </category>
 <category id="catLogic" colour="210">
-  <block type="logic_compare"></block>
-  <block type="logic_operation"></block>
-  <block type="logic_negate"></block>
-  <block type="logic_boolean"></block>
-  <block type="logic_null"></block>
-  <block type="logic_true_or_false"></block>
+  <block type="logic_compare">
+  </block>
+  <block type="logic_operation">
+  </block>
+  <block type="logic_negate">
+  </block>
+  <block type="logic_boolean">
+  </block>
+  <block type="logic_null">
+  </block>
+  <block type="logic_true_or_false">
+  </block>
 </category>
 <category id="catSerialPort" colour="65">
  <block type="serial_begin">
   <value name="CONTENT">
     <shadow type="math_number">
-      <field name="NUM">115200</field>
+      <field name="NUM">9600</field>
     </shadow>
   </value>
 </block>
-
-<block type="serial_write"></block>
-<block type="serial_print"></block>
-<block type="serial_println"></block>
-<block type="serial_print_hex"></block>
-<block type="serial_available"></block>
-<block type="serial_readstr"></block>
+<block type="serial_write">
+</block>
+<block type="serial_print">
+</block>
+<block type="serial_println">
+</block>
+<block type="serial_print_hex">
+</block>
+<block type="serial_available">
+</block>
+<block type="serial_readstr">
+</block>
 <block type="serial_readstr_until">
   <value name="CONTENT">
     <shadow type="text_char">
@@ -740,8 +755,10 @@
    </shadow>
  </value>
 </block>
-<block type="serial_parseInt_Float"></block>
-<block type="serial_flush"></block>
+<block type="serial_parseInt_Float">
+</block>
+<block type="serial_flush">
+</block>
 <block type="serial_softserial">
   <value name="TX">
     <shadow type="pins_digital"></shadow>
@@ -749,13 +766,9 @@
   <value name="RX">
     <shadow type="pins_digital"></shadow>
   </value>
-  <value name="CONTENT">
-    <shadow type="math_number">
-      <field name="NUM">115200</field>
-    </shadow>
-  </value>
 </block>
-<block type="serial_event"></block>
+<block type="serial_event">
+</block>
 </category>
 <category id="catGroup" colour="140">
   <block type="serialBT_Init">
@@ -804,31 +817,31 @@
       <shadow type="pins_MOSI">
       </shadow>
     </value>
-  </block>  <!--初始化-->
-  <block type="RFID_on"></block>   <!--如果侦测到信号那么执行XXX-->
-  <block type="RFID_readcardnum"></block>  <!--读取卡号-->
+  </block>  
+  <block type="RFID_on"></block>   
+  <block type="RFID_readcardnum"></block> 
   <block type="RFID_in">
     <value name="uid_">
       <shadow type="text">
         <field name="TEXT">123</field>
       </shadow>
     </value>
-  </block>    <!-- 如果卡号和XX一致，那么执行XXX-->
+  </block> 
   <block type="RFID_writecarddata">
    <value name="address1">
     <shadow type="math_number">
      <field name="NUM">0</field>
    </shadow>
  </value>
-</block>   <!--写入卡数据块内容-->
+</block> 
 <block type="RFID_readcarddata">
  <value name="address">
    <shadow type="math_number">
      <field name="NUM">0</field>
    </shadow>
  </value>
-</block>   <!--读取卡数据块内容-->
-<block type="RFID_off"></block>     <!--关机---->
+</block> 
+<block type="RFID_off"></block>    
 </category>
 <category id="catStorage" colour="0">
  <!--  <block type="storage_fileopen">
@@ -850,7 +863,6 @@
         <field name="TEXT">Mixly</field>
       </shadow>
     </value>
-
   </block>
   <block type="storage_get_contents">
     <value name="FILE">
@@ -897,6 +909,44 @@
     <value name="FILE">
       <shadow type="text">
         <field name="TEXT">filename.txt</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_write_byte">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="DATA">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_read_byte">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_write_long">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="DATA">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_read_long">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
       </shadow>
     </value>
   </block>
@@ -999,6 +1049,8 @@
 </block>
 </category>
 <category id="catSensor" colour="40">
+  <block type="IICSCAN">
+  </block>
   <block type="chaoshengbo2">
     <value name="PIN1">
       <shadow type="pins_digital">
@@ -1026,73 +1078,135 @@
       <shadow type="pins_digital"></shadow>
     </value>
   </block>
-  <block type="ADXL345">
-  </block>
   <block type="TCS34725_Get_RGB">
   </block>
-  <block type="BME280_READ">
+  <block type="ADXL345">
   </block>
-  <block type="PS2_init">
-    <value name="PS2_DAT">
-      <shadow type="pins_digital">
-        <field name="PIN">13</field>
-      </shadow>
+  <block type="weightSensor">
+    <value name="PIN1">
     </value>
-    <value name="PS2_CMD">
-      <shadow type="pins_digital">
-        <field name="PIN">11</field>
-      </shadow>
+    <value name="PIN2">
     </value>
-    <value name="PS2_SEL">
-      <shadow type="pins_digital">
-        <field name="PIN">10</field>
-      </shadow>
-    </value>
-    <value name="PS2_CLK">
-      <shadow type="pins_digital">
-        <field name="PIN">12</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="PS2_Button"></block>  
-  <block type="PS2_stk"></block> 
-</category>
-<category id="catActuator" colour="100">
-  <block type="servo_move">
-    <value name="PIN">
-      <shadow type="pins_pwm"></shadow>
-    </value>
-    <value name="DEGREE">
+    <value name="scale">
       <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="DELAY_TIME">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
+        <field name="NUM">1992</field>
       </shadow>
     </value>
   </block>
-  <block type="servo_read_degrees">
-    <value name="PIN">
-      <shadow type="pins_digital"></shadow>
-    </value>
-  </block>
-  <block type="controls_tone">
-    <value name="PIN">
-      <shadow type="pins_digital"></shadow>
-    </value>
-    <value name="FREQUENCY">
-      <shadow type="tone_notes"></shadow>
-    </value>
-    <value name="DURATION">
-     <shadow type="math_number">
-      <field name="NUM">200</field>
+  <block type="encoder_init">
+   <value name="CLK">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
     </shadow>
   </value>
-  <value name="CHANNEL">
-    <shadow type="channel_select"></shadow>
+  <value name="DT">
+    <shadow type="math_number">
+      <field name="NUM">3</field>
+    </shadow>
   </value>
+</block>
+<block type="encoder_read"></block>
+<block type="encoder_write">
+ <value name="value">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
+</block>
+<block type="MPU6050_update">
+</block>
+<block type="MPU6050">
+</block>
+<block type="BME280_READ">
+</block>
+<block type="PS2_init">
+  <value name="PS2_DAT">
+    <shadow type="pins_digital">
+      <field name="PIN">13</field>
+    </shadow>
+  </value>
+  <value name="PS2_CMD">
+    <shadow type="pins_digital">
+      <field name="PIN">11</field>
+    </shadow>
+  </value>
+  <value name="PS2_SEL">
+    <shadow type="pins_digital">
+      <field name="PIN">10</field>
+    </shadow>
+  </value>
+  <value name="PS2_CLK">
+    <shadow type="pins_digital">
+      <field name="PIN">12</field>
+    </shadow>
+  </value>
+</block>
+<block type="PS2_Button"></block>  
+<block type="PS2_stk"></block> 
+</category>
+<category id="catActuator" colour="100">
+ <block type="Mixly_motor">
+  <value name="PIN1">
+    <shadow type="pins_digital">
+      <field name="PIN">5</field>
+    </shadow>
+  </value>
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">4</field>
+    </shadow>
+  </value>
+  <value name="speed">
+    <shadow type="math_number">
+      <field name="NUM">100</field>
+    </shadow>
+  </value>
+</block>
+<block type="servo_move">
+  <value name="PIN">
+    <shadow type="pins_digital"></shadow>
+  </value>
+  <value name="DEGREE">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="DELAY_TIME">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="servo_writeMicroseconds">
+  <value name="PIN">
+   <shadow type="pins_digital"></shadow>
+ </value>
+ <value name="DEGREE">
+  <shadow type="math_number">
+    <field name="NUM">1500</field>
+  </shadow>
+</value>
+</block>
+<block type="servo_read_degrees">
+  <value name="PIN">
+    <shadow type="pins_digital"></shadow>
+  </value>
+</block>
+<block type="controls_tone">
+  <value name="PIN">
+    <shadow type="pins_digital"></shadow>
+  </value>
+  <value name="FREQUENCY">
+    <shadow type="tone_notes"></shadow>
+  </value>
+  <value name="DURATION">
+   <shadow type="math_number">
+    <field name="NUM">200</field>
+  </shadow>
+</value>
+<value name="CHANNEL">
+  <shadow type="channel_select"></shadow>
+</value>
 </block>
 <block type="controls_notone">
   <value name="PIN">
@@ -1339,6 +1453,66 @@
 <block type="group_lcd_power">
   <field name="STAT">clear</field>
 </block>
+<block type="display_4digitdisplay_power">
+  <field name="STAT">clear</field>
+</block>
+<block type="display_4digitdisplay_displayString">
+  <value name="VALUE">
+    <shadow type="text">
+      <field name="TEXT">abcd</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_4digitdisplay_showDot"></block>
+<block type="display_TM1637_init">
+  <value name="PIN1">
+    <shadow type="pins_digital">
+      <field name="PIN">5</field>
+    </shadow>
+  </value>
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">4</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_TM1637_Brightness">
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_TM1637_clearDisplay">
+</block>
+<block type="display_TM1637_displyPrint">
+  <value name="VALUE">
+    <shadow type="text">
+      <field name="TEXT">2345</field>
+    </shadow>
+  </value>
+  <value name="Speed">
+    <shadow type="math_number">
+      <field name="NUM">300</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_TM1637_displayTime">
+  <value name="hour">
+    <shadow type="math_number">
+      <field name="NUM">12</field>
+    </shadow>
+  </value>
+  <value name="minute">
+    <shadow type="math_number">
+      <field name="NUM">30</field>
+    </shadow>
+  </value>
+  <value name="STAT">
+    <shadow type="inout_highlow">
+    </shadow>
+  </value>
+</block>
 <block type="oled_init">
   <next>
     <block type="oled_page">
@@ -1349,14 +1523,14 @@
       </statement>
     </block>
   </next>
-  <value name="SDA">
+  <value name="SCL">
    <shadow type="pins_digital">
-    <field name="PIN">SDA</field>
+    <field name="PIN">SCL</field>
   </shadow>
 </value>
-<value name="SCL">
+<value name="SDA">
  <shadow type="pins_digital">
-  <field name="PIN">SCL</field>
+  <field name="PIN">SDA</field>
 </shadow>
 </value>
 </block>
@@ -1617,64 +1791,17 @@
     </shadow>
   </value>
 </block>
-<block type="display_TM1637_init" >
-  <value name="PIN1">
-    <shadow type="pins_digital">
-      <field name="PIN">5</field>
-    </shadow>
-  </value>
-  <value name="PIN2">
-    <shadow type="pins_digital">
-      <field name="PIN">4</field>
-    </shadow>
-  </value>
-</block>
-<block type="display_TM1637_Brightness" >
- <value name="Brightness">
-  <shadow type="math_number">
-    <field name="NUM">20</field>
-  </shadow>
-</value>
-</block>
-<block type="display_TM1637_displyPrint" >
-  <value name="VALUE">
-    <shadow type="text">
-      <field name="TEXT">2345</field>
-    </shadow>
-  </value>
-</block>
-<block type="display_TM1637_displayTime">
-  <value name="hour">
-    <shadow type="math_number">
-      <field name="NUM">12</field>
-    </shadow>
-  </value>
-  <value name="minute">
-    <shadow type="math_number">
-      <field name="NUM">30</field>
-    </shadow>
-  </value>
-  <value name="STAT">
-    <shadow type="inout_highlow">
-    </shadow>
-  </value>
-</block>
-<block type="display_TM1637_clearDisplay">
-</block>
 <block type="MAX7219_init">
   <value name="PIN1">
     <shadow type="pins_MOSI">
-      <field name="PIN">11</field>
     </shadow>
   </value>
   <value name="PIN2">
     <shadow type="pins_digital">
-      <field name="PIN">9</field>
     </shadow>
   </value>
   <value name="PIN3">
     <shadow type="pins_SCK">
-      <field name="PIN">13</field>
     </shadow>
   </value>
   <value name="hDisplays">
@@ -1691,12 +1818,12 @@
 <block type="HT16K33_Init">
   <value name="PIN1">
     <shadow type="pins_digital">
-      <field name="PIN">2</field>
+      <field name="PIN">SDA</field>
     </shadow>
   </value>
   <value name="PIN2">
     <shadow type="pins_digital">
-      <field name="PIN">3</field>
+      <field name="PIN">SCL</field>
     </shadow>
   </value>
 </block>
@@ -1738,7 +1865,8 @@
       <field name="NUM">1</field>
     </shadow>
   </value>
-</block> -->
+</block>
+-->
 <block type="display_HT16K33_Rotation">
 </block>
 <block type="display_Matrix_TEXT">
@@ -1775,12 +1903,14 @@
 </value>
 </block>
 </category>
+<sep>
+</sep>
 <category id="catVar" colour="330" custom="VARIABLE">
 </category>
 <category id="catFun" custom="PROCEDURE" colour="290">
 </category>
 <category id="catblynkIOT" name="Blynk IoT" colour="160">
-  <block type="blynk_server" name="服务器信息">
+  <block type="blynk_server">
     <value name="server_add">
       <shadow type="text">
         <field name="TEXT">116.62.49.166</field>
@@ -1802,7 +1932,7 @@
       </value>
     </block>
     <block type="Blynk_connecte_state"></block>
-    <block type="blynk_smartconfig" name="一键配网">
+    <block type="blynk_smartconfig">
       <value name="server_add">
         <shadow type="text">
           <field name="TEXT">116.62.49.166</field>
@@ -1840,7 +1970,7 @@
         </shadow>
       </value>
     </block>
-    <block type="blynk_iot_get_data" name="从app获取数据">
+    <block type="blynk_iot_get_data">
       <mutation>
         <arg name="vpin_value" vartype="int"></arg>
       </mutation>
@@ -1856,7 +1986,7 @@
         </block>
       </statement>
     </block>
-    <block type="Blynk_iot_timer" name="定时器">
+    <block type="Blynk_iot_timer">
       <mutation>
         <arg name="vpin_value" vartype="int"></arg>
       </mutation>
@@ -1867,7 +1997,7 @@
         </shadow>
       </value>
       <statement name="DO">
-        <block type="blynk_iot_push_data" name="发送数据到app">
+        <block type="blynk_iot_push_data">
           <field name="Vpin">V0</field>
           <value name="data">
             <shadow type="math_number">
@@ -1877,19 +2007,19 @@
         </block>
       </statement>
     </block>
-    <block type="blynk_iot_WidgetLED_COLOR" name="LED组件颜色">
+    <block type="blynk_iot_WidgetLED_COLOR">
       <value name="STAT">
         <shadow type="inout_highlow"></shadow>
       </value>
     </block>
-    <block type="blynk_iot_WidgetLED_VALUE" name="LED组件亮度">
+    <block type="blynk_iot_WidgetLED_VALUE">
       <value name="NUM">
         <shadow type="math_number">
           <field name="NUM">0</field>
         </shadow>
       </value>
     </block>
-    <block type="blynk_email" name="发送邮件">
+    <block type="blynk_email">
       <value name="email_add">
         <shadow type="text">
           <field name="TEXT">example@blynk.cc</field>
@@ -1906,14 +2036,14 @@
         </shadow>
       </value>
     </block>
-    <block type="blynk_notify" name="发送通知">
+    <block type="blynk_notify">
       <value name="content">
         <shadow type="text">
           <field name="TEXT">通知内容</field>
         </shadow>
       </value>
     </block>
-    <block type="blynk_iot_terminal_get" name="终端组件获取文本">
+    <block type="blynk_iot_terminal_get">
       <field name="Vpin">V0</field>
       <statement name="DO">
         <block type="serial_println">
@@ -1926,14 +2056,16 @@
         </block>
       </statement>
     </block>
-    <block type="blynk_terminal" name="终端组件显示文本">
+    <block type="blynk_terminal_clear">
+    </block>
+    <block type="blynk_terminal">
       <value name="content">
         <shadow type="text">
           <field name="TEXT">Hello,World!</field>
         </shadow>
       </value>
     </block>
-    <block type="blynk_time_input_1" name="时间输入">
+    <block type="blynk_time_input_1">
       <field name="Vpin">V0</field>
       <statement name="DO">
         <block type="serial_println">
@@ -1958,44 +2090,38 @@
         </block>
       </statement>
     </block>
-    <block type="blynk_videourl" name="视频流">
-      <value name="url">
-        <shadow type="text">
-          <field name="TEXT">http://yourvideostream.url</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="blynk_table">
-     <value name="xnyj">
-      <shadow type="math_number">
-        <field name="NUM">V0</field>
-      </shadow> 
-    </value> 
-    <value name="id">
+    <block type="blynk_lcd">
+     <field name="Vpin">V0</field>
+     <value name="x">
       <shadow type="math_number">
         <field name="NUM">0</field>
       </shadow>
-    </value> 
-    <value name="mingcheng">
-      <shadow type="text">
-        <field name="TEXT">名称</field>
+    </value>
+    <value name="y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
       </shadow>
     </value>
-    <value name="shujv">
+    <value name="value">
+      <shadow type="math_number">
+        <field name="NUM">923</field>
+      </shadow>
+    </value> 
+  </block>
+  <block type="blynk_lcd_clear">
+  </block>
+  <block type="blynk_videourl">
+    <value name="url">
       <shadow type="text">
-        <field name="TEXT">张三</field>
+        <field name="TEXT">http://yourvideostream.url</field>
       </shadow>
     </value>
   </block>
-  <block type="blynk_table_update">
+  <block type="blynk_table">
    <value name="xnyj">
     <shadow type="math_number">
       <field name="NUM">V0</field>
-    </shadow> <value name="xnyj">
-      <shadow type="math_number">
-        <field name="NUM">V0</field>
-      </shadow>
-    </value> 
+    </shadow> 
   </value> 
   <value name="id">
     <shadow type="math_number">
@@ -2012,6 +2138,32 @@
       <field name="TEXT">张三</field>
     </shadow>
   </value>
+</block>
+<block type="blynk_table_update">
+ <value name="xnyj">
+  <shadow type="math_number">
+    <field name="NUM">V0</field>
+  </shadow> <value name="xnyj">
+    <shadow type="math_number">
+      <field name="NUM">V0</field>
+    </shadow>
+  </value> 
+</value> 
+<value name="id">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value> 
+<value name="mingcheng">
+  <shadow type="text">
+    <field name="TEXT">名称</field>
+  </shadow>
+</value>
+<value name="shujv">
+  <shadow type="text">
+    <field name="TEXT">张三</field>
+  </shadow>
+</value>
 </block>
 <block type="blynk_table_highlight">
   <value name="xnyj">
@@ -2075,7 +2227,7 @@
   <shadow type="math_number">
     <field name="NUM">0</field>
   </shadow>
-</value> 
+</value>
 </block>
 <block type="Blynk_iot_BLYNK_CONNECTED" >
   <statement name="DO">
@@ -2089,7 +2241,7 @@
     </block>
   </statement>
 </block>
-<block type="blynk_bridge_digitalWrite" name="桥接数字输出">
+<block type="blynk_bridge_digitalWrite">
   <value name="PIN">
     <shadow type="pins_digital"></shadow>
   </value>
@@ -2097,7 +2249,7 @@
     <shadow type="inout_highlow"></shadow>
   </value>
 </block>
-<block type="blynk_bridge_AnaloglWrite" name="桥接模拟输出">
+<block type="blynk_bridge_AnaloglWrite">
   <value name="PIN">
     <shadow type="pins_pwm"></shadow>
   </value>
@@ -2107,7 +2259,7 @@
     </shadow>
   </value>
 </block>
-<block type="blynk_bridge_VPin" name="桥接虚拟管脚">
+<block type="blynk_bridge_VPin">
   <value name="NUM">
     <shadow type="math_number">
       <field name="NUM">0</field>
@@ -2347,7 +2499,7 @@
 <block type="Blynk_iot_BLYNK_CONNECTED">
   <statement name="DO"></statement>
 </block>
-<block type="Blynk_iot_BLYNK_APP_CONNECTED" >
+<block type="Blynk_iot_BLYNK_APP_CONNECTED">
   <statement name="DO"></statement>
 </block>
 <block type="Blynk_iot_BLYNK_APP_DISCONNECTED">

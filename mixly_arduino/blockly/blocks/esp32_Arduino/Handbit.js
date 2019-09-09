@@ -106,6 +106,7 @@ Blockly.Blocks.handbit_rgb = {
     this.setTooltip('');
 }
 };
+
 Blockly.Blocks.handbit_rgb2 = {
   init: function () {
     this.setColour(Blockly.Blocks.Handbit.HUE);

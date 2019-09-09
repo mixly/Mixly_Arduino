@@ -17,16 +17,6 @@ Blockly.Blocks.chaoshengbo = {
     }
 };
 
-//IIC地址查找
-Blockly.Blocks.IICSCAN = {
-  init: function() {
-    this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.IICSCAN);
-    this.setInputsInline(true);
-    this.setTooltip('');
-}
-};
 //ESP32片内霍尔传感器值
 Blockly.Blocks['ESP32_hallRead'] = {
   init: function() {

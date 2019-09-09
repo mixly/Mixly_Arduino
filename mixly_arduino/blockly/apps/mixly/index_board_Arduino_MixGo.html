@@ -4,30 +4,27 @@
   <title>Mixly MixGo Arduino Simple</title>
   <script type="text/javascript" src="../../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../core/variables.js"></script>
-  <script type="text/javascript" src="../../core/procedures.js"></script> 
+  <script type="text/javascript" src="../../core/procedures.js"></script>
   <script type="text/javascript" src="../../core/blockly.js"></script>
   <script type="text/javascript" src="../../core/events.js"></script>
+  <script type="text/javascript" src="../../core/field_textarea.js"></script>
   <script type="text/javascript" src="../../arduino.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
   <script type="text/javascript" src="js/drag.js"></script>
-  <script type="text/javascript" src="../../core/field_textarea.js"></script>
   <script type="text/javascript" src="js/code.js"></script>
   <script type="text/javascript" src="digitalPinToInterrupt.js"></script>
-  <!--------from BlocklyDuino------------>
   <script type="text/javascript" src="js/Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
   <script type="text/javascript" src="js/FileSaver.min.js"></script>
   <script type="text/javascript" src="js/blockly_helper.js"></script>
-  <!------------------------------------->
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
   <script type="text/javascript" src="myblock.js"></script>
   <script type="text/javascript" src="../../generators/arduino/mu_vision.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/MQTT.js"></script>
   <script type="text/javascript" src="../../generators/arduino/factory.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/blynk.js"></script>
   <script type="text/javascript" src="../../generators/arduino/pins.js"></script>
-  <script type="text/javascript" src="../../generators/esp32_Arduino/pins.js"></script>
   <script type="text/javascript" src="../../generators/arduino/inout.js"></script>
   <script type="text/javascript" src="../../generators/arduino/control.js"></script>
   <script type="text/javascript" src="../../generators/arduino/math.js"></script>
@@ -43,7 +40,8 @@
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/arduino/actuator.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/blynk.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/MQTT.js"></script>
+  <script type="text/javascript" src="../../generators/esp32_Arduino/pins.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/inout.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/control.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/math.js"></script>
@@ -96,10 +94,8 @@
   <script type="text/javascript" src="../../blocks/esp32_Arduino/MixGo.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/MQTT.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/mu_vision.js"></script> 
-  <!-- 过去index.html中的js代码都会被放到这个js中-->
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color_esp32_arduino_advance.css" />
-  <!-- ACE中字体放缩按钮样式-->
   <link rel="stylesheet" type="text/css" href="css/ACEfont.css" />
 </head>
 <body onload="init()">
@@ -108,102 +104,101 @@
       <td colspan=3>
         <table width="100%">
           <tr id="tabRow" height="1em">
-            <td style="vertical-align: center;" id="tab_blocks" class="tabon" onclick="tabClick('blocks')"><img style="vertical-align:middle" width="25" src="media/blocks.png" /><span id="span_blocks">Blocks</span></td>
-            <td class="tabmin">&nbsp;</td>
-            <td style="vertical-align: center;text-align:center;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')"><span id="span_arduino">Code</span></td>
-            <td class="tabmin">&nbsp;</td>
-            <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
-            <td class="tabcoyright">
-              <span id="copyright" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
-            </td>
-            <!-- <td class="tabmode">
-              <span class="viewLeft" id="viewMode1" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">普通视图</span><a class="viewRight" id="viewMode2" href="index_advance_board_ESP32_Arduino.html" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;">高级视图</a>
-            </td> -->
-            <script type="text/javascript">
-              var viewMode2 = document.getElementById('viewMode2');
-              viewMode2.href = 'index_advance_board_ESP32_Arduino.html?lang='+Code.LANG;
-            </script>
-            <td class="tabmin">
-              <input name="undo" type="image" title="undo(ctrl+z)" src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
-            </td>
-            <td class="tabmin" style="padding-right:20px">
-              <input onclick="Blockly.mainWorkspace.undo(1);" name="redo" type="image" title="redo(ctrl+y)" src="media/redo.png" style="padding:5px" onmouseover="this.src='media/redo1.png'" onmousedown="this.src='media/redo2.png'" onmouseup="this.src='media/redo1.png'" onmouseout="this.src='media/redo.png'" width="20" height="20" border="0">
-            </td>
-            <td class="tabmin" style="padding-right:20px;display:none;">
-              <button id="fakeload">LoadXML</button>
-              <input type="file" id="load" style="display: none;" />
-            </td>
-            <td class="tabmin">
-              <select id="languageMenu"></select>
-            </td>
-            <td class="tabmin">
-              <select id="aceTheme" style="width:100px; height:23px; margin-left: 10px;">
-                <optgroup label="代码区亮色主题">
-                  <option value="ace/theme/chrome">Chrome</option>
-                  <option value="ace/theme/clouds">Clouds</option>
-                  <option value="ace/theme/crimson_editor">Crimson Editor</option>
-                  <option value="ace/theme/dawn">Dawn</option>
-                  <option value="ace/theme/dreamweaver">Dreamweaver</option>
-                  <option value="ace/theme/eclipse">Eclipse</option>
-                  <option value="ace/theme/github">GitHub</option>
-                  <option value="ace/theme/iplastic">IPlastic</option>
-                  <option value="ace/theme/solarized_light">Solarized Light</option>
-                  <option value="ace/theme/textmate">TextMate</option>
-                  <option value="ace/theme/tomorrow">Tomorrow</option>
-                  <option value="ace/theme/xcode">XCode</option>
-                  <option value="ace/theme/kuroir">Kuroir</option>
-                  <option value="ace/theme/katzenmilch">KatzenMilch</option>
-                  <option value="ace/theme/sqlserver">SQL Server</option>
-                </optgroup>
-                <optgroup label="代码区暗色主题">
-                  <option value="ace/theme/ambiance">Ambiance</option>
-                  <option value="ace/theme/chaos">Chaos</option>
-                  <option value="ace/theme/clouds_midnight">Clouds Midnight</option>
-                  <option value="ace/theme/dracula">Dracula</option>
-                  <option value="ace/theme/cobalt">Cobalt</option>
-                  <option value="ace/theme/gruvbox">Gruvbox</option>
-                  <option value="ace/theme/gob">Green on Black</option>
-                  <option value="ace/theme/idle_fingers">idle Fingers</option>
-                  <option value="ace/theme/kr_theme">krTheme</option>
-                  <option value="ace/theme/merbivore">Merbivore</option>
-                  <option value="ace/theme/merbivore_soft">Merbivore Soft</option>
-                  <option value="ace/theme/mono_industrial">Mono Industrial</option>
-                  <option value="ace/theme/monokai">Monokai</option>
-                  <option value="ace/theme/pastel_on_dark">Pastel on dark</option>
-                  <option value="ace/theme/solarized_dark">Solarized Dark</option>
-                  <option value="ace/theme/terminal">Terminal</option>
-                  <option value="ace/theme/tomorrow_night">Tomorrow Night</option>
-                  <option value="ace/theme/tomorrow_night_blue">Tomorrow Night Blue</option>
-                  <option value="ace/theme/tomorrow_night_bright">Tomorrow Night Bright</option>
-                  <option value="ace/theme/tomorrow_night_eighties">Tomorrow Night 80s</option>
-                  <option value="ace/theme/twilight">Twilight</option>
-                  <option value="ace/theme/vibrant_ink">Vibrant Ink</option>
-                </optgroup>
-              </select>
-            </td>
-            <script>
-             document.getElementById('span_blocks').textContent = MSG['tab_blocks'];
-             document.getElementById('span_arduino').textContent = MSG['tab_arduino'];
-           </script>
-         </tr>
-       </table>
-     </td>
-   </tr>
-   <tr>
-    <td height="100%" width="75%" id="content_area"></td>
-    <td style="display:none;height:100%;width:0.3%;background: #ddd;cursor: w-resize;" id="mid_td"></td>
-    <td width="25%" style="background-color:#eee;display:none;" id="side_code_parent">
-      <div id="side_code" wrap="off" readonly></div>
-    </td>
-    <div id="sidebar" class="right-top" onclick="sidecodeClick()"></div>
-  </tr>
+            <td style="vertical-align: center;" id="tab_blocks" class="tabon" onclick="tabClick('blocks')">
+             <img style="vertical-align:middle" width="25" src="media/blocks.png"/>
+             <span id="span_blocks">Blocks</span>
+           </td>
+           <td class="tabmin">&nbsp;</td>
+           <td style="vertical-align: center;text-align:center;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')">
+             <span id="span_arduino">Code</span>
+           </td>
+           <td class="tabmin">&nbsp;</td>
+           <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
+           <td class="tabcoyright">
+            <span id="copyright" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
+          </td>
+          <td class="tabmin">
+            <input name="undo" type="image" title="undo(ctrl+z)" src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
+          </td>
+          <td class="tabmin" style="padding-right:20px">
+            <input onclick="Blockly.mainWorkspace.undo(1);" name="redo" type="image" title="redo(ctrl+y)" src="media/redo.png" style="padding:5px" onmouseover="this.src='media/redo1.png'" onmousedown="this.src='media/redo2.png'" onmouseup="this.src='media/redo1.png'" onmouseout="this.src='media/redo.png'" width="20" height="20" border="0">
+          </td>
+          <td class="tabmin" style="padding-right:20px;display:none;">
+            <button id="fakeload">LoadXML</button>
+            <input type="file" id="load" style="display: none;" />
+          </td>
+          <td class="tabmin">
+            <select id="languageMenu"></select>
+          </td>
+          <td class="tabmin">
+            <select id="aceTheme" style="width:100px; height:23px; margin-left: 10px;">
+              <optgroup label="代码区亮色主题">
+                <option value="ace/theme/chrome">Chrome</option>
+                <option value="ace/theme/clouds">Clouds</option>
+                <option value="ace/theme/crimson_editor">Crimson Editor</option>
+                <option value="ace/theme/dawn">Dawn</option>
+                <option value="ace/theme/dreamweaver">Dreamweaver</option>
+                <option value="ace/theme/eclipse">Eclipse</option>
+                <option value="ace/theme/github">GitHub</option>
+                <option value="ace/theme/iplastic">IPlastic</option>
+                <option value="ace/theme/solarized_light">Solarized Light</option>
+                <option value="ace/theme/textmate">TextMate</option>
+                <option value="ace/theme/tomorrow">Tomorrow</option>
+                <option value="ace/theme/xcode">XCode</option>
+                <option value="ace/theme/kuroir">Kuroir</option>
+                <option value="ace/theme/katzenmilch">KatzenMilch</option>
+                <option value="ace/theme/sqlserver">SQL Server</option>
+              </optgroup>
+              <optgroup label="代码区暗色主题">
+                <option value="ace/theme/ambiance">Ambiance</option>
+                <option value="ace/theme/chaos">Chaos</option>
+                <option value="ace/theme/clouds_midnight">Clouds Midnight</option>
+                <option value="ace/theme/dracula">Dracula</option>
+                <option value="ace/theme/cobalt">Cobalt</option>
+                <option value="ace/theme/gruvbox">Gruvbox</option>
+                <option value="ace/theme/gob">Green on Black</option>
+                <option value="ace/theme/idle_fingers">idle Fingers</option>
+                <option value="ace/theme/kr_theme">krTheme</option>
+                <option value="ace/theme/merbivore">Merbivore</option>
+                <option value="ace/theme/merbivore_soft">Merbivore Soft</option>
+                <option value="ace/theme/mono_industrial">Mono Industrial</option>
+                <option value="ace/theme/monokai">Monokai</option>
+                <option value="ace/theme/pastel_on_dark">Pastel on dark</option>
+                <option value="ace/theme/solarized_dark">Solarized Dark</option>
+                <option value="ace/theme/terminal">Terminal</option>
+                <option value="ace/theme/tomorrow_night">Tomorrow Night</option>
+                <option value="ace/theme/tomorrow_night_blue">Tomorrow Night Blue</option>
+                <option value="ace/theme/tomorrow_night_bright">Tomorrow Night Bright</option>
+                <option value="ace/theme/tomorrow_night_eighties">Tomorrow Night 80s</option>
+                <option value="ace/theme/twilight">Twilight</option>
+                <option value="ace/theme/vibrant_ink">Vibrant Ink</option>
+              </optgroup>
+            </select>
+          </td>
+          <script>
+           document.getElementById('span_blocks').textContent = MSG['tab_blocks'];
+           document.getElementById('span_arduino').textContent = MSG['tab_arduino'];
+         </script>
+       </tr>
+     </table>
+   </td>
+ </tr>
+ <tr>
+  <td height="100%" width="75%" id="content_area"></td>
+  <td style="display:none;height:100%;width:0.3%;background: #ddd;cursor: w-resize;" id="mid_td"></td>
+  <td width="25%" style="background-color:#eee;display:none;" id="side_code_parent">
+    <div id="side_code" wrap="off" readonly></div>
+  </td>
+  <div id="sidebar" class="right-top" onclick="sidecodeClick()"></div>
+</tr>
 </table>
 <div id="content_blocks" class="content"></div>
 <div id="content_arduino" class="content" wrap="off"></div>
 <textarea id="content_xml" class="content" wrap="off" readonly></textarea>
 <xml id="toolbox" style="display: none">
   <category name="" id="catInOut" colour="20">
-    <block type="inout_highlow"></block>
+    <block type="inout_highlow">
+    </block>
     <block type="inout_digital_write2">
       <value name="PIN">
         <shadow type="pins_digital"></shadow>
@@ -245,6 +240,13 @@
         </shadow>
       </value>
     </block>
+    <block type="inout_esp32_dac">
+      <value name="value">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+    </block>
     <block type="inout_analog_read">
       <value name="PIN">
         <shadow type="pins_analog"></shadow>
@@ -275,11 +277,7 @@
         </shadow>
       </value>
     </block>
-    <block type="inout_pinMode">
-      <value name="PIN">
-        <shadow type="pins_digital"></shadow>
-      </value>
-    </block>
+
     <block type="inout_pulseIn">
       <value name="PIN">
         <shadow type="pins_digital"></shadow>
@@ -293,6 +291,11 @@
         <shadow type="math_number">
           <field name="NUM">1000000</field>
         </shadow>
+      </value>
+    </block>
+    <block type="inout_pinMode">
+      <value name="PIN">
+        <shadow type="pins_digital"></shadow>
       </value>
     </block>
     <block type="inout_shiftout">
@@ -310,8 +313,10 @@
     </block>
   </category>
   <category id="catControl" colour="120">
-    <block type="base_setup"></block>
-    <block type="controls_end_program"></block>
+    <block type="base_setup">
+    </block>
+    <block type="controls_end_program">
+    </block>
     <block type="controls_whileUntil">
       <value name="BOOL">
         <shadow type="logic_boolean">
@@ -325,8 +330,10 @@
         </shadow>
       </value>
     </block>
-    <block type="controls_if"></block>
-    <block type="controls_switch_case"></block>
+    <block type="controls_if">
+    </block>
+    <block type="controls_switch_case">
+    </block>
     <block type="controls_for">
       <value name="FROM">
         <shadow type="math_number">
@@ -344,8 +351,10 @@
         </shadow>
       </value>
     </block>
-    <block type="controls_flow_statements"></block>
-    <block type="controls_millis"></block>
+    <block type="controls_flow_statements">
+    </block>
+    <block type="controls_millis">
+    </block>
     <block type="controls_runnig_core">
     </block>
     <block type="control_core_delay">
@@ -490,119 +499,275 @@
         </shadow>
       </value>
     </block>
-    <block type="ascii_to_char">
-      <value name="VAR">
-        <shadow type="math_number">
-          <field name="NUM">223</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="char_to_ascii">
-      <field name="TEXT">a</field>
-    </block>
-    <block type="number_to_text">
-      <value name="VAR">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="text_length">
-      <value name="VAR">
-        <shadow type="text">
-          <field name="TEXT">hello</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="text_char_at">
-      <value name="VAR">
-        <shadow type="text">
-          <field name="TEXT">hello</field>
-        </shadow>
-      </value>
-      <value name="AT">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="text_equals_starts_ends">
-      <value name="STR1">
-        <shadow type="text">
-          <field name="TEXT"></field>
-        </shadow>
-      </value>
-      <value name="STR2">
-        <shadow type="text">
-          <field name="TEXT"></field>
-        </shadow>
-      </value>
-    </block>
-    <block type="text_compareTo">
-      <value name="STR1">
-        <shadow type="text">
-          <field name="TEXT"></field>
-        </shadow>
-      </value>
-      <value name="STR2">
-        <shadow type="text">
-          <field name="TEXT"></field>
-        </shadow>
-      </value>
-    </block>
-  </category>
-  <category id="catLists" colour="260">
-    <block type="lists_create_with2"></block>
-    <block type="lists_create_with_text2"></block>
-    <block type="lists_length"></block>
-    <block type="lists_getIndex">
-      <value name="AT">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="lists_setIndex">
-      <value name="AT">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-    </block>
-  </category>
-  <category id="catLogic" colour="210">
-    <block type="logic_compare"></block>
-    <block type="logic_operation"></block>
-    <block type="logic_negate"></block>
-    <block type="logic_boolean"></block>
-    <block type="logic_null"></block>
-    <block type="logic_true_or_false"></block>
-  </category>
-  <category id="catSerialPort" colour="65">
-   <block type="serial_begin">
-    <value name="CONTENT">
+    <block type="substring">
+      <value name="name">
+       <shadow type="text">
+        <field name="TEXT">substring</field>
+      </shadow>
+    </value>
+    <value name="Start">
       <shadow type="math_number">
-        <field name="NUM">115200</field>
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="end">
+      <shadow type="math_number">
+        <field name="NUM">3</field>
       </shadow>
     </value>
   </block>
-
-  <block type="serial_write"></block>
-  <block type="serial_print"></block>
-  <block type="serial_println"></block>
-  <block type="serial_print_hex"></block>
-  <block type="serial_available"></block>
-  <block type="serial_readstr"></block>
-  <block type="serial_readstr_until">
-    <value name="CONTENT">
-      <shadow type="text_char">
-       <field name="TEXT">a</field>
-     </shadow>
-   </value>
- </block>
- <block type="serial_parseInt_Float"></block>
- <block type="serial_flush"></block>
- <block type="serial_softserial">
+  <block type="decimal_places">
+    <value name="numeral">
+      <shadow type="math_number">
+        <field name="NUM">6.666</field>
+      </shadow>
+    </value>
+    <value name="decimal_places">
+      <shadow type="math_number">
+        <field name="NUM">2</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="letter_conversion">
+    <value name="String">
+      <shadow type="math_number">
+        <field name="NUM">String</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="data_replacement">
+    <value name="String">
+      <shadow type="math_number">
+        <field name="NUM">String</field>
+      </shadow>
+    </value>
+    <value name="source_data">
+     <shadow type="text">
+      <field name="TEXT">s</field>
+    </shadow>
+  </value>
+  <value name="replace">
+   <shadow type="text">
+    <field name="TEXT">Q</field>
+  </shadow>
+</value>
+</block>
+<block type="eliminate">
+  <value name="String">
+    <shadow type="math_number">
+      <field name="NUM">String</field>
+    </shadow>
+  </value>
+</block>
+<block type="first_and_last">
+  <value name="String">
+   <shadow type="text">
+    <field name="TEXT">substring</field>
+  </shadow>
+</value>
+<value name="String1">
+ <shadow type="text">
+  <field name="TEXT">substring</field>
+</shadow>
+</value>
+</block>
+<block type="type_conversion">
+  <value name="variable">
+   <shadow type="text">
+    <field name="TEXT">substring</field>
+  </shadow>
+</value>
+</block>
+<block type="ascii_to_char">
+  <value name="VAR">
+    <shadow type="math_number">
+      <field name="NUM">223</field>
+    </shadow>
+  </value>
+</block>
+<block type="char_to_ascii">
+  <field name="TEXT">a</field>
+</block>
+<block type="number_to_text">
+  <value name="VAR">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="text_length">
+  <value name="VAR">
+    <shadow type="text">
+      <field name="TEXT">hello</field>
+    </shadow>
+  </value>
+</block>
+<block type="text_char_at">
+  <value name="VAR">
+    <shadow type="text">
+      <field name="TEXT">hello</field>
+    </shadow>
+  </value>
+  <value name="AT">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="text_equals_starts_ends">
+  <value name="STR1">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+  <value name="STR2">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+</block>
+<block type="text_compareTo">
+  <value name="STR1">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+  <value name="STR2">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+</block>
+</category>
+<category id="catLists" colour="260">
+  <block type="lists_create_with2">
+  </block>
+  <block type="lists_create_with_text2">
+  </block>
+  <block type="lists_length">
+  </block>
+  <block type="lists_getIndex">
+    <value name="AT">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="lists_setIndex">
+    <value name="AT">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="create_array2_with_text">
+    <value name="name">
+      <shadow type="math_number">
+        <field name="NUM">array</field>
+      </shadow>
+    </value>
+    <value name="line">
+      <shadow type="math_number">
+        <field name="NUM">2</field>
+      </shadow>
+    </value>
+    <value name="list">
+      <shadow type="math_number">
+        <field name="NUM">2</field>
+      </shadow>
+    </value>
+    <value name="String">
+      <shadow type="math_number">
+        <field name="NUM">{0,0},{0,0}</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="array2_assignment">
+    <value name="name">
+      <shadow type="math_number">
+        <field name="NUM">array</field>
+      </shadow>
+    </value>
+    <value name="line">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="list">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="assignment">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="get_array2_value">
+    <value name="name">
+      <shadow type="math_number">
+        <field name="NUM">array</field>
+      </shadow>
+    </value>
+    <value name="line">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="list">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+</category>
+<category id="catLogic" colour="210">
+  <block type="logic_compare">
+  </block>
+  <block type="logic_operation">
+  </block>
+  <block type="logic_negate">
+  </block>
+  <block type="logic_boolean">
+  </block>
+  <block type="logic_null">
+  </block>
+  <block type="logic_true_or_false">
+  </block>
+</category>
+<category id="catSerialPort" colour="65">
+ <block type="serial_begin">
+  <value name="CONTENT">
+    <shadow type="math_number">
+      <field name="NUM">9600</field>
+    </shadow>
+  </value>
+</block>
+<block type="serial_write">
+</block>
+<block type="serial_print">
+</block>
+<block type="serial_println">
+</block>
+<block type="serial_print_hex">
+</block>
+<block type="serial_available">
+</block>
+<block type="serial_readstr">
+</block>
+<block type="serial_readstr_until">
+  <value name="CONTENT">
+    <shadow type="text_char">
+     <field name="TEXT">a</field>
+   </shadow>
+ </value>
+</block>
+<block type="serial_parseInt_Float">
+</block>
+<block type="serial_flush">
+</block>
+<block type="serial_softserial">
   <value name="TX">
     <shadow type="pins_digital"></shadow>
   </value>
@@ -610,7 +775,8 @@
     <shadow type="pins_digital"></shadow>
   </value>
 </block>
-<block type="serial_event"></block>
+<block type="serial_event">
+</block>
 </category>
 <category id="catGroup" colour="140">
   <block type="serialBT_Init">
@@ -659,31 +825,31 @@
       <shadow type="pins_MOSI">
       </shadow>
     </value>
-  </block>  <!--初始化-->
-  <block type="RFID_on"></block>   <!--如果侦测到信号那么执行XXX-->
-  <block type="RFID_readcardnum"></block>  <!--读取卡号-->
+  </block>  
+  <block type="RFID_on"></block>   
+  <block type="RFID_readcardnum"></block> 
   <block type="RFID_in">
     <value name="uid_">
       <shadow type="text">
         <field name="TEXT">123</field>
       </shadow>
     </value>
-  </block>    <!-- 如果卡号和XX一致，那么执行XXX-->
+  </block> 
   <block type="RFID_writecarddata">
    <value name="address1">
     <shadow type="math_number">
      <field name="NUM">0</field>
    </shadow>
  </value>
-</block>   <!--写入卡数据块内容-->
+</block> 
 <block type="RFID_readcarddata">
  <value name="address">
    <shadow type="math_number">
      <field name="NUM">0</field>
    </shadow>
  </value>
-</block>   <!--读取卡数据块内容-->
-<block type="RFID_off"></block>     <!--关机---->
+</block> 
+<block type="RFID_off"></block>    
 </category>
 <category id="catStorage" colour="0">
  <!--  <block type="storage_fileopen">
@@ -705,7 +871,6 @@
         <field name="TEXT">Mixly</field>
       </shadow>
     </value>
-
   </block>
   <block type="storage_get_contents">
     <value name="FILE">
@@ -752,6 +917,44 @@
     <value name="FILE">
       <shadow type="text">
         <field name="TEXT">filename.txt</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_write_byte">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="DATA">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_read_byte">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_write_long">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="DATA">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_read_long">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
       </shadow>
     </value>
   </block>
@@ -854,6 +1057,8 @@
 </block>
 </category>
 <category id="catSensor" colour="40">
+  <block type="IICSCAN">
+  </block>
   <block type="chaoshengbo2">
     <value name="PIN1">
       <shadow type="pins_digital">
@@ -881,69 +1086,131 @@
       <shadow type="pins_digital"></shadow>
     </value>
   </block>
-  <block type="ADXL345">
-  </block>
   <block type="TCS34725_Get_RGB">
   </block>
-  <block type="BME280_READ">
+  <block type="ADXL345">
   </block>
-  <block type="PS2_init">
-    <value name="PS2_DAT">
-      <shadow type="pins_digital">
-      </shadow>
+  <block type="weightSensor">
+    <value name="PIN1">
     </value>
-    <value name="PS2_CMD">
-      <shadow type="pins_digital">
-      </shadow>
+    <value name="PIN2">
     </value>
-    <value name="PS2_SEL">
-      <shadow type="pins_digital">
-      </shadow>
-    </value>
-    <value name="PS2_CLK">
-      <shadow type="pins_digital">
-      </shadow>
-    </value>
-  </block>
-  <block type="PS2_Button"></block>  
-  <block type="PS2_stk"></block> 
-</category>
-<category id="catActuator" colour="100">
-  <block type="servo_move">
-    <value name="PIN">
-      <shadow type="pins_pwm"></shadow>
-    </value>
-    <value name="DEGREE">
+    <value name="scale">
       <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="DELAY_TIME">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
+        <field name="NUM">1992</field>
       </shadow>
     </value>
   </block>
-  <block type="servo_read_degrees">
-    <value name="PIN">
-      <shadow type="pins_digital"></shadow>
-    </value>
-  </block>
-  <block type="controls_tone">
-    <value name="PIN">
-      <shadow type="pins_digital"></shadow>
-    </value>
-    <value name="FREQUENCY">
-      <shadow type="tone_notes"></shadow>
-    </value>
-    <value name="DURATION">
-     <shadow type="math_number">
-      <field name="NUM">200</field>
+  <block type="encoder_init">
+   <value name="CLK">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
     </shadow>
   </value>
-  <value name="CHANNEL">
-    <shadow type="channel_select"></shadow>
+  <value name="DT">
+    <shadow type="math_number">
+      <field name="NUM">3</field>
+    </shadow>
   </value>
+</block>
+<block type="encoder_read"></block>
+<block type="encoder_write">
+ <value name="value">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
+</block>
+<block type="MPU6050_update">
+</block>
+<block type="MPU6050">
+</block>
+<block type="BME280_READ">
+</block>
+<block type="PS2_init">
+  <value name="PS2_DAT">
+    <shadow type="pins_digital">
+    </shadow>
+  </value>
+  <value name="PS2_CMD">
+    <shadow type="pins_digital">
+    </shadow>
+  </value>
+  <value name="PS2_SEL">
+    <shadow type="pins_digital">
+    </shadow>
+  </value>
+  <value name="PS2_CLK">
+    <shadow type="pins_digital">
+    </shadow>
+  </value>
+</block>
+<block type="PS2_Button"></block>  
+<block type="PS2_stk"></block> 
+</category>
+<category id="catActuator" colour="100">
+ <block type="Mixly_motor">
+  <value name="PIN1">
+    <shadow type="pins_digital">
+      <field name="PIN">5</field>
+    </shadow>
+  </value>
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">4</field>
+    </shadow>
+  </value>
+  <value name="speed">
+    <shadow type="math_number">
+      <field name="NUM">100</field>
+    </shadow>
+  </value>
+</block>
+<block type="servo_move">
+  <value name="PIN">
+    <shadow type="pins_digital"></shadow>
+  </value>
+  <value name="DEGREE">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="DELAY_TIME">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="servo_writeMicroseconds">
+  <value name="PIN">
+   <shadow type="pins_digital"></shadow>
+ </value>
+ <value name="DEGREE">
+  <shadow type="math_number">
+    <field name="NUM">1500</field>
+  </shadow>
+</value>
+</block>
+<block type="servo_read_degrees">
+  <value name="PIN">
+    <shadow type="pins_digital"></shadow>
+  </value>
+</block>
+<block type="controls_tone">
+  <value name="PIN">
+    <shadow type="pins_digital"></shadow>
+  </value>
+  <value name="FREQUENCY">
+    <shadow type="tone_notes"></shadow>
+  </value>
+  <value name="DURATION">
+   <shadow type="math_number">
+    <field name="NUM">200</field>
+  </shadow>
+</value>
+<value name="CHANNEL">
+  <shadow type="channel_select"></shadow>
+</value>
 </block>
 <block type="controls_notone">
   <value name="PIN">
@@ -1093,27 +1360,23 @@
   </value>
 </block>
 <block type="display_rgb_rainbow1">
- <value name="PIN">
-  <shadow type="pins_digital">
-    <field name="PIN">2</field>
-  </shadow>
-</value>
-<value name="WAIT">
-  <shadow type="math_number">
-    <field name="NUM">20</field>
-  </shadow>
-</value>
-<value name="Brightness">
-  <shadow type="math_number">
-    <field name="NUM">20</field>
-  </shadow>
-</value>
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="WAIT">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
 </block>
 <block type="display_rgb_rainbow3">
   <value name="PIN">
-    <shadow type="pins_digital">
-      <field name="PIN">2</field>
-    </shadow>
+    <shadow type="pins_digital" />
   </value>
   <value name="rainbow_color">
     <shadow type="math_number">
@@ -1130,16 +1393,48 @@
       </shadow>
     </value>
   </block>
-  <block type="group_lcd_print">
-    <value name="TEXT">
-     <block type="text">
-      <field name="TEXT"></field>
-    </block>
+  <block type="group_lcd_init3">
+   <value name="PIN1">
+    <shadow type="pins_digital">
+      <field name="PIN">7</field>
+    </shadow>
   </value>
-  <value name="TEXT2">
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">8</field>
+    </shadow>
+  </value>
+  <value name="PIN3">
+    <shadow type="pins_digital">
+      <field name="PIN">9</field>
+    </shadow>
+  </value>
+  <value name="PIN4">
+    <shadow type="pins_digital">
+      <field name="PIN">10</field>
+    </shadow>
+  </value>
+  <value name="PIN5">
+    <shadow type="pins_digital">
+      <field name="PIN">11</field>
+    </shadow>
+  </value>
+  <value name="PIN6">
+    <shadow type="pins_digital">
+      <field name="PIN">12</field>
+    </shadow>
+  </value>
+</block>
+<block type="group_lcd_print">
+  <value name="TEXT">
    <block type="text">
     <field name="TEXT"></field>
   </block>
+</value>
+<value name="TEXT2">
+ <block type="text">
+  <field name="TEXT"></field>
+</block>
 </value>
 </block>
 <block type="group_lcd_print2">
@@ -1162,6 +1457,66 @@
 <block type="group_lcd_power">
   <field name="STAT">clear</field>
 </block>
+<block type="display_4digitdisplay_power">
+  <field name="STAT">clear</field>
+</block>
+<block type="display_4digitdisplay_displayString">
+  <value name="VALUE">
+    <shadow type="text">
+      <field name="TEXT">abcd</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_4digitdisplay_showDot"></block>
+<block type="display_TM1637_init">
+  <value name="PIN1">
+    <shadow type="pins_digital">
+      <field name="PIN">5</field>
+    </shadow>
+  </value>
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">4</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_TM1637_Brightness">
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_TM1637_clearDisplay">
+</block>
+<block type="display_TM1637_displyPrint">
+  <value name="VALUE">
+    <shadow type="text">
+      <field name="TEXT">2345</field>
+    </shadow>
+  </value>
+  <value name="Speed">
+    <shadow type="math_number">
+      <field name="NUM">300</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_TM1637_displayTime">
+  <value name="hour">
+    <shadow type="math_number">
+      <field name="NUM">12</field>
+    </shadow>
+  </value>
+  <value name="minute">
+    <shadow type="math_number">
+      <field name="NUM">30</field>
+    </shadow>
+  </value>
+  <value name="STAT">
+    <shadow type="inout_highlow">
+    </shadow>
+  </value>
+</block>
 <block type="oled_init">
   <next>
     <block type="oled_page">
@@ -1172,21 +1527,25 @@
       </statement>
     </block>
   </next>
-  <value name="SDA">
+  <value name="SCL">
    <shadow type="pins_digital">
-    <field name="PIN">SDA</field>
+    <field name="PIN">SCL</field>
   </shadow>
 </value>
-<value name="SCL">
+<value name="SDA">
  <shadow type="pins_digital">
-  <field name="PIN">SCL</field>
+  <field name="PIN">SDA</field>
 </shadow>
 </value>
+</block>
+<block type="oled_set_EN_Font">
+</block>
+<block type="oled_set_CN_Font">
 </block>
 <block type="procedures_defnoreturn">
   <field name="NAME">page1</field>
   <statement name="STACK">
-    <block type="oled_setFont">
+    <block type="oled_set_EN_Font">
       <field name="TYPE">timR08_tr</field>
       <next>
         <block type="oled_print" >
@@ -1265,257 +1624,188 @@
     </block>
   </value>
 </block>
- <!--  <block type="oled_draw4Str" >
-    <value name="Text_line1">
-      <shadow type="text">
-        <field name="TEXT">Example Line1!</field>
-      </shadow>
-    </value>
-    <value name="Text_line2">
-      <shadow type="text">
-        <field name="TEXT">Example Line2!</field>
-      </shadow>
-    </value>
-    <value name="Text_line3">
-      <shadow type="text">
-        <field name="TEXT">Example Line3!</field>
-      </shadow>
-    </value>
-    <value name="Text_line4">
-      <shadow type="text">
-        <field name="TEXT">Example Line4!</field>
-      </shadow>
-    </value>
-  </block> -->
-  <block type="oled_drawPixe" >
-    <value name="POS_X">
-      <shadow type="math_number">
-        <field name="NUM">64</field>
-      </shadow>
-    </value>
-    <value name="POS_Y">
-      <shadow type="math_number">
-        <field name="NUM">32</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="oled_drawLine">
-    <value name="START_X">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="START_Y">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="END_X">
-      <shadow type="math_number">
-        <field name="NUM">15</field>
-      </shadow>
-    </value>
-    <value name="END_Y">
-      <shadow type="math_number">
-        <field name="NUM">20</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="oled_draw_Str_Line">
-    <value name="START_X">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="START_Y">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="LENGTH">
-      <shadow type="math_number">
-        <field name="NUM">30</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="oled_drawFrame">
-    <value name="D0_X">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="D0_Y">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="WIDTH">
-      <shadow type="math_number">
-        <field name="NUM">10</field>
-      </shadow>
-    </value>
-    <value name="HEIGHT">
-      <shadow type="math_number">
-        <field name="NUM">20</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="oled_drawRFrame">
-    <value name="D0_X">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="D0_Y">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="WIDTH">
-      <shadow type="math_number">
-        <field name="NUM">10</field>
-      </shadow>
-    </value>
-    <value name="HEIGHT">
-      <shadow type="math_number">
-        <field name="NUM">20</field>
-      </shadow>
-    </value>
-    <value name="RADIUS">
-      <shadow type="math_number">
-        <field name="NUM">3</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="oled_drawCircle">
-    <value name="D0_X">
-      <shadow type="math_number">
-        <field name="NUM">30</field>
-      </shadow>
-    </value>
-    <value name="D0_Y">
-      <shadow type="math_number">
-        <field name="NUM">30</field>
-      </shadow>
-    </value>
-    <value name="RADIUS">
-      <shadow type="math_number">
-        <field name="NUM">6</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="oled_drawEllipse">
-    <value name="D0_X">
-      <shadow type="math_number">
-        <field name="NUM">30</field>
-      </shadow>
-    </value>
-    <value name="D0_Y">
-      <shadow type="math_number">
-        <field name="NUM">30</field>
-      </shadow>
-    </value>
-    <value name="RADIUS_X">
-      <shadow type="math_number">
-        <field name="NUM">6</field>
-      </shadow>
-    </value>
-    <value name="RADIUS_Y">
-      <shadow type="math_number">
-        <field name="NUM">15</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="oled_drawTriangle" >
-    <value name="D0_X">
-      <shadow type="math_number">
-        <field name="NUM">14</field>
-      </shadow>
-    </value>
-    <value name="D0_Y">
-      <shadow type="math_number">
-        <field name="NUM">55</field>
-      </shadow>
-    </value>
-    <value name="D1_X">
-      <shadow type="math_number">
-        <field name="NUM">45</field>
-      </shadow>
-    </value>
-    <value name="D1_Y">
-      <shadow type="math_number">
-        <field name="NUM">33</field>
-      </shadow>
-    </value>
-    <value name="D2_X">
-      <shadow type="math_number">
-        <field name="NUM">8</field>
-      </shadow>
-    </value>
-    <value name="D2_Y">
-      <shadow type="math_number">
-        <field name="NUM">43</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="display_TM1637_init" >
-    <value name="PIN1">
-      <shadow type="pins_digital">
-        <field name="PIN">5</field>
-      </shadow>
-    </value>
-    <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">4</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="display_TM1637_Brightness" >
-   <value name="Brightness">
+<block type="oled_drawPixe" >
+  <value name="POS_X">
+    <shadow type="math_number">
+      <field name="NUM">64</field>
+    </shadow>
+  </value>
+  <value name="POS_Y">
+    <shadow type="math_number">
+      <field name="NUM">32</field>
+    </shadow>
+  </value>
+</block>
+<block type="oled_drawLine">
+  <value name="START_X">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="START_Y">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="END_X">
+    <shadow type="math_number">
+      <field name="NUM">15</field>
+    </shadow>
+  </value>
+  <value name="END_Y">
     <shadow type="math_number">
       <field name="NUM">20</field>
     </shadow>
   </value>
 </block>
-<block type="display_TM1637_displyPrint" >
-  <value name="VALUE">
-    <shadow type="text">
-      <field name="TEXT">2345</field>
-    </shadow>
-  </value>
-</block>
-<block type="display_TM1637_displayTime">
-  <value name="hour">
+<block type="oled_draw_Str_Line">
+  <value name="START_X">
     <shadow type="math_number">
-      <field name="NUM">12</field>
+      <field name="NUM">1</field>
     </shadow>
   </value>
-  <value name="minute">
+  <value name="START_Y">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="LENGTH">
     <shadow type="math_number">
       <field name="NUM">30</field>
     </shadow>
   </value>
-  <value name="STAT">
-    <shadow type="inout_highlow">
+</block>
+<block type="oled_drawFrame">
+  <value name="D0_X">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="D0_Y">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="WIDTH">
+    <shadow type="math_number">
+      <field name="NUM">10</field>
+    </shadow>
+  </value>
+  <value name="HEIGHT">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
     </shadow>
   </value>
 </block>
-<block type="display_TM1637_clearDisplay">
+<block type="oled_drawRFrame">
+  <value name="D0_X">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="D0_Y">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="WIDTH">
+    <shadow type="math_number">
+      <field name="NUM">10</field>
+    </shadow>
+  </value>
+  <value name="HEIGHT">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+  <value name="RADIUS">
+    <shadow type="math_number">
+      <field name="NUM">3</field>
+    </shadow>
+  </value>
+</block>
+<block type="oled_drawCircle">
+  <value name="D0_X">
+    <shadow type="math_number">
+      <field name="NUM">30</field>
+    </shadow>
+  </value>
+  <value name="D0_Y">
+    <shadow type="math_number">
+      <field name="NUM">30</field>
+    </shadow>
+  </value>
+  <value name="RADIUS">
+    <shadow type="math_number">
+      <field name="NUM">6</field>
+    </shadow>
+  </value>
+</block>
+<block type="oled_drawEllipse">
+  <value name="D0_X">
+    <shadow type="math_number">
+      <field name="NUM">30</field>
+    </shadow>
+  </value>
+  <value name="D0_Y">
+    <shadow type="math_number">
+      <field name="NUM">30</field>
+    </shadow>
+  </value>
+  <value name="RADIUS_X">
+    <shadow type="math_number">
+      <field name="NUM">6</field>
+    </shadow>
+  </value>
+  <value name="RADIUS_Y">
+    <shadow type="math_number">
+      <field name="NUM">15</field>
+    </shadow>
+  </value>
+</block>
+<block type="oled_drawTriangle" >
+  <value name="D0_X">
+    <shadow type="math_number">
+      <field name="NUM">14</field>
+    </shadow>
+  </value>
+  <value name="D0_Y">
+    <shadow type="math_number">
+      <field name="NUM">55</field>
+    </shadow>
+  </value>
+  <value name="D1_X">
+    <shadow type="math_number">
+      <field name="NUM">45</field>
+    </shadow>
+  </value>
+  <value name="D1_Y">
+    <shadow type="math_number">
+      <field name="NUM">33</field>
+    </shadow>
+  </value>
+  <value name="D2_X">
+    <shadow type="math_number">
+      <field name="NUM">8</field>
+    </shadow>
+  </value>
+  <value name="D2_Y">
+    <shadow type="math_number">
+      <field name="NUM">43</field>
+    </shadow>
+  </value>
 </block>
 <block type="MAX7219_init">
   <value name="PIN1">
     <shadow type="pins_MOSI">
-      <field name="PIN">11</field>
     </shadow>
   </value>
   <value name="PIN2">
     <shadow type="pins_digital">
-      <field name="PIN">9</field>
     </shadow>
   </value>
   <value name="PIN3">
     <shadow type="pins_SCK">
-      <field name="PIN">13</field>
     </shadow>
   </value>
   <value name="hDisplays">
@@ -1532,12 +1822,12 @@
 <block type="HT16K33_Init">
   <value name="PIN1">
     <shadow type="pins_digital">
-      <field name="PIN">2</field>
+      <field name="PIN">SDA</field>
     </shadow>
   </value>
   <value name="PIN2">
     <shadow type="pins_digital">
-      <field name="PIN">3</field>
+      <field name="PIN">SCL</field>
     </shadow>
   </value>
 </block>
@@ -1579,7 +1869,8 @@
       <field name="NUM">1</field>
     </shadow>
   </value>
-</block> -->
+</block>
+-->
 <block type="display_HT16K33_Rotation">
 </block>
 <block type="display_Matrix_TEXT">
@@ -1616,12 +1907,14 @@
 </value>
 </block>
 </category>
+<sep>
+</sep>
 <category id="catVar" colour="330" custom="VARIABLE">
 </category>
 <category id="catFun" custom="PROCEDURE" colour="290">
 </category>
 <category id="catblynkIOT" name="Blynk IoT" colour="160">
-  <block type="blynk_server" name="服务器信息">
+  <block type="blynk_server">
     <value name="server_add">
       <shadow type="text">
         <field name="TEXT">116.62.49.166</field>
@@ -1681,7 +1974,7 @@
         </shadow>
       </value>
     </block>
-    <block type="blynk_iot_get_data" name="从app获取数据">
+    <block type="blynk_iot_get_data">
       <mutation>
         <arg name="vpin_value" vartype="int"></arg>
       </mutation>
@@ -1697,7 +1990,7 @@
         </block>
       </statement>
     </block>
-    <block type="Blynk_iot_timer" name="定时器">
+    <block type="Blynk_iot_timer">
       <mutation>
         <arg name="vpin_value" vartype="int"></arg>
       </mutation>
@@ -1708,7 +2001,7 @@
         </shadow>
       </value>
       <statement name="DO">
-        <block type="blynk_iot_push_data" name="发送数据到app">
+        <block type="blynk_iot_push_data">
           <field name="Vpin">V0</field>
           <value name="data">
             <shadow type="math_number">
@@ -1718,19 +2011,19 @@
         </block>
       </statement>
     </block>
-    <block type="blynk_iot_WidgetLED_COLOR" name="LED组件颜色">
+    <block type="blynk_iot_WidgetLED_COLOR">
       <value name="STAT">
         <shadow type="inout_highlow"></shadow>
       </value>
     </block>
-    <block type="blynk_iot_WidgetLED_VALUE" name="LED组件亮度">
+    <block type="blynk_iot_WidgetLED_VALUE">
       <value name="NUM">
         <shadow type="math_number">
           <field name="NUM">0</field>
         </shadow>
       </value>
     </block>
-    <block type="blynk_email" name="发送邮件">
+    <block type="blynk_email">
       <value name="email_add">
         <shadow type="text">
           <field name="TEXT">example@blynk.cc</field>
@@ -1747,14 +2040,14 @@
         </shadow>
       </value>
     </block>
-    <block type="blynk_notify" name="发送通知">
+    <block type="blynk_notify">
       <value name="content">
         <shadow type="text">
           <field name="TEXT">通知内容</field>
         </shadow>
       </value>
     </block>
-    <block type="blynk_iot_terminal_get" name="终端组件获取文本">
+    <block type="blynk_iot_terminal_get">
       <field name="Vpin">V0</field>
       <statement name="DO">
         <block type="serial_println">
@@ -1767,14 +2060,16 @@
         </block>
       </statement>
     </block>
-    <block type="blynk_terminal" name="终端组件显示文本">
+    <block type="blynk_terminal_clear">
+    </block>
+    <block type="blynk_terminal">
       <value name="content">
         <shadow type="text">
           <field name="TEXT">Hello,World!</field>
         </shadow>
       </value>
     </block>
-    <block type="blynk_time_input_1" name="时间输入">
+    <block type="blynk_time_input_1">
       <field name="Vpin">V0</field>
       <statement name="DO">
         <block type="serial_println">
@@ -1799,44 +2094,38 @@
         </block>
       </statement>
     </block>
-    <block type="blynk_videourl" name="视频流">
-      <value name="url">
-        <shadow type="text">
-          <field name="TEXT">http://yourvideostream.url</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="blynk_table">
-     <value name="xnyj">
-      <shadow type="math_number">
-        <field name="NUM">V0</field>
-      </shadow> 
-    </value> 
-    <value name="id">
+    <block type="blynk_lcd">
+     <field name="Vpin">V0</field>
+     <value name="x">
       <shadow type="math_number">
         <field name="NUM">0</field>
       </shadow>
-    </value> 
-    <value name="mingcheng">
-      <shadow type="text">
-        <field name="TEXT">名称</field>
+    </value>
+    <value name="y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
       </shadow>
     </value>
-    <value name="shujv">
+    <value name="value">
+      <shadow type="math_number">
+        <field name="NUM">923</field>
+      </shadow>
+    </value> 
+  </block>
+  <block type="blynk_lcd_clear">
+  </block>
+  <block type="blynk_videourl">
+    <value name="url">
       <shadow type="text">
-        <field name="TEXT">张三</field>
+        <field name="TEXT">http://yourvideostream.url</field>
       </shadow>
     </value>
   </block>
-  <block type="blynk_table_update">
+  <block type="blynk_table">
    <value name="xnyj">
     <shadow type="math_number">
       <field name="NUM">V0</field>
-    </shadow> <value name="xnyj">
-      <shadow type="math_number">
-        <field name="NUM">V0</field>
-      </shadow>
-    </value> 
+    </shadow> 
   </value> 
   <value name="id">
     <shadow type="math_number">
@@ -1853,6 +2142,32 @@
       <field name="TEXT">张三</field>
     </shadow>
   </value>
+</block>
+<block type="blynk_table_update">
+ <value name="xnyj">
+  <shadow type="math_number">
+    <field name="NUM">V0</field>
+  </shadow> <value name="xnyj">
+    <shadow type="math_number">
+      <field name="NUM">V0</field>
+    </shadow>
+  </value> 
+</value> 
+<value name="id">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value> 
+<value name="mingcheng">
+  <shadow type="text">
+    <field name="TEXT">名称</field>
+  </shadow>
+</value>
+<value name="shujv">
+  <shadow type="text">
+    <field name="TEXT">张三</field>
+  </shadow>
+</value>
 </block>
 <block type="blynk_table_highlight">
   <value name="xnyj">
@@ -1918,7 +2233,7 @@
   </shadow>
 </value> 
 </block>
-<block type="Blynk_iot_Blynk_connecte_state" >
+<block type="Blynk_iot_BLYNK_CONNECTED" >
   <statement name="DO">
     <block type="blynk_bridge_auth">
       <field name="Vpin">V0</field>
@@ -1930,7 +2245,7 @@
     </block>
   </statement>
 </block>
-<block type="blynk_bridge_digitalWrite" name="桥接数字输出">
+<block type="blynk_bridge_digitalWrite">
   <value name="PIN">
     <shadow type="pins_digital"></shadow>
   </value>
@@ -1938,7 +2253,7 @@
     <shadow type="inout_highlow"></shadow>
   </value>
 </block>
-<block type="blynk_bridge_AnaloglWrite" name="桥接模拟输出">
+<block type="blynk_bridge_AnaloglWrite">
   <value name="PIN">
     <shadow type="pins_pwm"></shadow>
   </value>
@@ -1948,14 +2263,14 @@
     </shadow>
   </value>
 </block>
-<block type="blynk_bridge_VPin" name="桥接虚拟管脚">
+<block type="blynk_bridge_VPin">
   <value name="NUM">
     <shadow type="math_number">
       <field name="NUM">0</field>
     </shadow>
   </value>
 </block>
-<block type="Blynk_iot_Blynk_connecte_state">
+<block type="Blynk_iot_BLYNK_CONNECTED">
   <statement name="DO">
     <block type="blynk_WidgetRTC_init">
       <value name="NUM"><shadow type="math_number" >
@@ -2185,7 +2500,7 @@
     </block>
   </statement>
 </block>
-<block type="Blynk_iot_Blynk_connecte_state">
+<block type="Blynk_iot_BLYNK_CONNECTED">
   <statement name="DO"></statement>
 </block>
 <block type="Blynk_iot_BLYNK_APP_CONNECTED" >
@@ -2269,6 +2584,8 @@
   </shadow>
 </value>
 </block>
+<block type="ESP32_hallRead"></block>
+<block type="ESP32_temprature"></block>
 </category>
 <category id="catMorpxVS2" colour="#EF5411">
   <block type="Vs2MuInit"></block>
@@ -2300,9 +2617,14 @@
       </shadow>
     </value>
   </block>
+  <block type="Vs2DetectedColorDetect"></block>
+  <block type="Vs2GetMessage"></block>
+  <block type="Vs2GetCardType"></block>
+  <block type="Vs2GetColorLabel"></block>
 </category>
 <category id="catFactory" name="Factory" colour="65">
   <block type="folding_block"></block>
+  <block type="factory_notes"></block>
   <block type="factory_include"></block>
   <block type="factory_function_noreturn"></block>
   <block type="factory_function_return"></block>
