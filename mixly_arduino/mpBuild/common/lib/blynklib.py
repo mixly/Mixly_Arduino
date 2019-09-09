@@ -2,7 +2,7 @@
 # Copyright (c) 2015-2019 Volodymyr Shymanskyy.
 # See the file LICENSE for copying permission.
 
-__version__ = '0.2.4'
+__version__ = '0.2.5'
 
 try:
     import usocket as socket
@@ -25,18 +25,11 @@ except ImportError:
     ticks_ms = lambda: int(time.time() * 1000)
     sleep_ms = lambda x: time.sleep(x // 1000)
 
-# LOGO = """
-#         ___  __          __
-#        / _ )/ /_ _____  / /__
-#       / _  / / // / _ \\/  '_/
-#      /____/_/\\_, /_//_/_/\\_\\
-#             /___/ for Python v{}\n""".format(__version__)
-
 LOGO = """
         ___  __          __
        / _ )/ /_ _____  / /__
-      / _  / / // / _ \\\\/  '_/
-     /____/_/\\\\_, /_//_/_/\\\\_\\\\
+      / _  / / // / _ \\/  '_/
+     /____/_/\\_, /_//_/_/\\_\\
             /___/ for Python v{}\n""".format(__version__)
 
 
@@ -46,6 +39,12 @@ def stub_log(*args):
 
 class BlynkError(Exception):
     pass
+
+
+class RedirectError(Exception):
+    def __init__(self, server, port):
+        self.server = server
+        self.port = port
 
 
 class Protocol(object):
@@ -60,9 +59,11 @@ class Protocol(object):
     MSG_INTERNAL = const(17)
     MSG_PROPERTY = const(19)
     MSG_HW = const(20)
+    MSG_REDIRECT = const(41)
     MSG_HEAD_LEN = const(5)
 
     STATUS_INVALID_TOKEN = const(9)
+    STATUS_NO_DATA = const(17)
     STATUS_OK = const(200)
     VPIN_MAX_NUM = const(32)
 
@@ -88,9 +89,9 @@ class Protocol(object):
             raise BlynkError('invalid msg_id == 0')
         elif h_data >= msg_buffer:
             raise BlynkError('Command too long. Length = {}'.format(h_data))
-        elif msg_type in (self.MSG_RSP, self.MSG_PING, self.MSG_INTERNAL):
+        elif msg_type in (self.MSG_RSP, self.MSG_PING):
             pass
-        elif msg_type in (self.MSG_HW, self.MSG_BRIDGE):
+        elif msg_type in (self.MSG_HW, self.MSG_BRIDGE, self.MSG_INTERNAL, self.MSG_REDIRECT):
             msg_body = rsp_data[self.MSG_HEAD_LEN: self.MSG_HEAD_LEN + h_data]
             msg_args = [itm.decode('utf-8') for itm in msg_body.split(b'\0')]
         else:
@@ -127,6 +128,9 @@ class Protocol(object):
 
     def set_property_msg(self, pin, prop, *val):
         return self._pack_msg(self.MSG_PROPERTY, pin, prop, *val)
+
+    def internal_msg(self, *args):
+        return self._pack_msg(self.MSG_INTERNAL, *args)
 
 
 class Connection(Protocol):
@@ -221,10 +225,12 @@ class Connection(Protocol):
         rsp_data = self.receive(self.rcv_buffer, self.SOCK_MAX_TIMEOUT)
         if not rsp_data:
             raise BlynkError('Auth stage timeout')
-        _, _, status, _ = self.parse_response(rsp_data, self.rcv_buffer)
+        msg_type, _, status, args = self.parse_response(rsp_data, self.rcv_buffer)
         if status != self.STATUS_OK:
             if status == self.STATUS_INVALID_TOKEN:
                 raise BlynkError('Invalid Auth Token')
+            if msg_type == self.MSG_REDIRECT:
+                raise RedirectError(*args)
             raise BlynkError('Auth stage failed. Status={}'.format(status))
         self._state = self.AUTHENTICATED
         self.log('Access granted')
@@ -278,17 +284,22 @@ class Blynk(Connection):
                 except BlynkError as b_err:
                     self.disconnect(b_err)
                     sleep_ms(self.TASK_PERIOD_RES)
+                except RedirectError as r_err:
+                    self.disconnect()
+                    self.server = r_err.server
+                    self.port = r_err.port
+                    sleep_ms(self.TASK_PERIOD_RES)
             if time.time() >= end_time:
                 return False
 
     def disconnect(self, err_msg=None):
+        self.call_handler(self._DISCONNECT)
         if self._socket:
             self._socket.close()
         self._state = self.DISCONNECTED
         if err_msg:
             self.log('[ERROR]: {}\nConnection closed'.format(err_msg))
         time.sleep(self.RECONNECT_SLEEP)
-        self.call_handler(self._DISCONNECT)
 
     def virtual_write(self, v_pin, *val):
         return self.send(self.virtual_write_msg(v_pin, *val))
@@ -308,6 +319,9 @@ class Blynk(Connection):
     def set_property(self, v_pin, property_name, *val):
         return self.send(self.set_property_msg(v_pin, property_name, *val))
 
+    def internal(self, *args):
+        return self.send(self.internal_msg(*args))
+
     def handle_event(blynk, event_name):
         class Deco(object):
             def __init__(self, func):
@@ -315,7 +329,7 @@ class Blynk(Connection):
                 # wildcard 'read V*' and 'write V*' events handling
                 if str(event_name).lower() in (blynk._VPIN_READ_ALL, blynk._VPIN_WRITE_ALL):
                     event_base_name = str(event_name).split(blynk._VPIN_WILDCARD)[0]
-                    for i in range(1, blynk.VPIN_MAX_NUM + 1):
+                    for i in range(blynk.VPIN_MAX_NUM + 1):
                         blynk._events['{}{}'.format(event_base_name.lower(), i)] = func
                 else:
                     blynk._events[str(event_name).lower()] = func
@@ -336,23 +350,28 @@ class Blynk(Connection):
         elif msg_type == self.MSG_PING:
             self.send(self.response_msg(self.STATUS_OK, msg_id=msg_id))
         elif msg_type in (self.MSG_HW, self.MSG_BRIDGE, self.MSG_INTERNAL):
-            if msg_type == self.MSG_INTERNAL and len(msg_args) >= const(3):
-                self.call_handler("{}{}".format(self._INTERNAL, msg_args[1]), msg_args[2:])
+            if msg_type == self.MSG_INTERNAL and len(msg_args) >= const(2):
+                self.call_handler("{}{}".format(self._INTERNAL, msg_args[0]), msg_args[1:])
             elif len(msg_args) >= const(3) and msg_args[0] == 'vw':
                 self.call_handler("{}{}".format(self._VPIN_WRITE, msg_args[1]), int(msg_args[1]), msg_args[2:])
             elif len(msg_args) == const(2) and msg_args[0] == 'vr':
                 self.call_handler("{}{}".format(self._VPIN_READ, msg_args[1]), int(msg_args[1]))
+
+    def read_response(self, timeout=0.5):
+        end_time = time.time() + timeout
+        while time.time() <= end_time:
+            rsp_data = self.receive(self.rcv_buffer, self.SOCK_TIMEOUT)
+            self._last_rcv_time = ticks_ms()
+            if rsp_data:
+                msg_type, msg_id, h_data, msg_args = self.parse_response(rsp_data, self.rcv_buffer)
+                self.process(msg_type, msg_id, h_data, msg_args)
 
     def run(self):
         if not self.connected():
             self.connect()
         else:
             try:
-                rsp_data = self.receive(self.rcv_buffer, self.SOCK_TIMEOUT)
-                self._last_rcv_time = ticks_ms()
-                if rsp_data:
-                    msg_type, msg_id, h_data, msg_args = self.parse_response(rsp_data, self.rcv_buffer)
-                    self.process(msg_type, msg_id, h_data, msg_args)
+                self.read_response(timeout=self.SOCK_TIMEOUT)
                 if not self.is_server_alive():
                     self.disconnect('Blynk server is offline')
             except KeyboardInterrupt:

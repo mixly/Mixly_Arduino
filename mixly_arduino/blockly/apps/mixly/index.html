@@ -1207,6 +1207,26 @@
     </shadow>
   </value>
 </block>
+<block type="RGB_color_seclet" >
+ <field name="COLOR">#ff0000</field>
+</block>
+<block type="RGB_color_rgb">
+  <value name="R">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="G">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="B">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
 <block type="display_rgb_init">
   <value name="PIN">
     <shadow type="pins_digital" />
@@ -1215,6 +1235,16 @@
     <shadow type="math_number">
       <field name="NUM">4</field>
     </shadow>
+  </value>
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_rgb_Brightness">
+  <value name="PIN">
+    <shadow type="pins_digital" />
   </value>
   <value name="Brightness">
     <shadow type="math_number">
@@ -1231,30 +1261,28 @@
       <field name="NUM">1</field>
     </shadow>
   </value>
-  <value name="RVALUE">
+  <value name="COLOR">
     <shadow type="math_number">
-      <field name="NUM">0</field>
+      <field name="NUM">
+      </field>
     </shadow>
-  </value>
-  <value name="GVALUE">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="BVALUE">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-</block>
-<block type="display_rgb2">
-  <value name="PIN">
-    <shadow type="pins_digital" />
-  </value>
-  <value name="_LED_">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
+    <block type="RGB_color_rgb">
+      <value name="R">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="G">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="B">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+    </block>
   </value>
 </block>
 <block type="display_rgb_rainbow1">
