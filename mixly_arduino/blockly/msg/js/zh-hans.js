@@ -25,7 +25,7 @@ var MSG = {
 	catEthernet_clinet: "客户端",
 	tab_blocks: "模块",
 	tab_arduino: "代码",
-	copyright: "Copyright © 北京师范大学米思齐团队				HTTP://MIXLY.ORG",
+	copyright: "Copyright © 北京师范大学米思齐团队				http://mixly.org/",
 	viewNormal: "普通视图",
 	viewAdvanced: "高级视图",
 	catGame: "游戏",

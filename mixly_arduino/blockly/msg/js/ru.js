@@ -25,7 +25,7 @@ var MSG = {
 	catEthernet_clinet:"Client",
 	tab_blocks: "Blocks",
 	tab_arduino: "Code",
-	copyright:"Copyright © Mixly Team@BNU				 HTTP://MIXLY.ORG",
+	copyright:"Copyright © Mixly Team@BNU				 http://mixly.org/",
 	viewNormal:"Normal",
 	viewAdvanced:"Advanced",
 	catGame:"Game",

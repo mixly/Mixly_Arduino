@@ -760,7 +760,7 @@ var MSG = {
 	catLuxe:"LuxeRobot",
 	tab_blocks: "Bloques",
 	tab_arduino: "Código",
-	copyright:"Copyright © Mixly Team@BNU				HTTP://MIXLY.ORG",
+	copyright:"Copyright © Mixly Team@BNU				http://mixly.org/",
 	viewNormal:"Normal",
 	viewAdvanced:"Advanced",
 	catGame:"Game",

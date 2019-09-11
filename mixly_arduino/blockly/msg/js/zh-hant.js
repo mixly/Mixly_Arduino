@@ -32,7 +32,7 @@ var MSG = {
 	catLuxe:"濼喜機器人",
 	tab_blocks:"模塊",
 	tab_arduino:"程式碼",
-	copyright:"Copyright © 北京師範大學米思齊團隊				HTTP://MIXLY.ORG",
+	copyright:"Copyright © 北京師範大學米思齊團隊				http://mixly.org/",
 	viewNormal:"普通視圖",
 	viewAdvanced:"高級視圖",
 	catGame:"遊戲",
