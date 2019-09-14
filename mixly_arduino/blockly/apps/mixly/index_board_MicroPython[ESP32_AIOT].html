@@ -12,20 +12,19 @@
   <script type="text/javascript" src="../../core/esp32/names.js"></script>
   <script src="../../generators/esp32/python.js"></script>
   <script type="text/javascript" src="company_pin.js"></script>
-  <script type="text/javascript" src="js/drag.js"></script>
-  <script type="text/javascript" src="js/code.js"></script>
-  <script type="text/javascript" src="js/Blob.js"></script>
+  <script type="text/javascript" src="drag.js"></script>
+  <script type="text/javascript" src="code.js"></script>
+  <script type="text/javascript" src="Blob.js"></script>
   <script type="text/javascript" src="spin.js"></script>
-  <script type="text/javascript" src="js/FileSaver.min.js"></script>
-  <script type="text/javascript" src="js/blockly_helper.js"></script>
+  <script type="text/javascript" src="FileSaver.min.js"></script>
+  <script type="text/javascript" src="blockly_helper.js"></script>
   <!---profiles-->
   <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
-  <script type="text/javascript" src="MicroPython[ESP32_HandBit]/myblock.js"></script>
+  <script type="text/javascript" src="ESP32_Generic/myblock.js"></script>
   <script type="text/javascript" src="../../blocks/python/variables.js"></script>
   <script type="text/javascript" src="../../generators/python/variables.js"></script>
   <script src="../../blocks/esp32/esp32_profile.js"></script>
   <!-- blocks file -->
-  <!------ blocks generic -->
   <script src="../../blocks/esp32/pins.js"></script>
   <script src="../../blocks/esp32/inout.js"></script>
   <script src="../../blocks/python/control.js"></script>
@@ -38,17 +37,14 @@
   <script src="../../blocks/esp32/serial.js"></script>
   <script src="../../blocks/esp32/communicate.js"></script>
   <script src="../../blocks/esp32/sensor.js"></script>
-  <script src="../../blocks/handbit_python/actuator.js"></script>
+  <script src="../../blocks/esp32/actuator.js"></script>
   <script src="../../blocks/esp32/display.js"></script>
   <script src="../../blocks/python/procedures.js"></script>
   <script src="../../blocks/esp32/factory.js"></script>
   <script src="../../blocks/python/tuple.js"></script>
   <script src="../../blocks/python/set.js"></script>
-  <!------ blocks handbit -->
-  <script src="../../blocks/handbit_python/sensor.js"></script>
-  <script src="../../blocks/handbit_python/display.js"></script>
-  <!-- generator file -->
-  <!------ generator generic -->
+	<!-- generator file -->
+  
   <script src="../../generators/esp32/pins.js"></script>
   <script src="../../generators/esp32/inout.js"></script>
   <script src="../../generators/python/control.js"></script>
@@ -61,15 +57,12 @@
   <script src="../../generators/esp32/serial.js"></script>
   <script src="../../generators/esp32/communicate.js"></script>
   <script src="../../generators/esp32/sensor.js"></script>
-  <script src="../../generators/handbit/actuator.js"></script>
+  <script src="../../generators/esp32/actuator.js"></script>
   <script src="../../generators/esp32/display.js"></script>
   <script src="../../generators/python/procedures.js"></script>
   <script src="../../generators/esp32/factory.js"></script>
   <script src="../../generators/python/set.js"></script>
   <script src="../../generators/python/tuple.js"></script>
-  <!------ generator handbit -->
-  <script src="../../generators/handbit/sensor.js"></script>  
-  <script src="../../generators/handbit/display.js"></script> 
   <!-- ace file -->
   <script src="python-main.js" type="application/javascript"></script>
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
@@ -77,15 +70,13 @@
 
   <script src="../../blocks/python/utility.js"></script>
   <script src="../../generators/python/utility.js"></script>
-  <!-- convertor file -->
-  <!------ convertor generic -->  
   <script src="./js/py2block_editor.js" type="application/javascript"></script>
-  <script src="../../converters/handbit/py2block_config.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/py2block_config.js" type="application/javascript"></script>
   <script src="../../converters/esp32/inout.js" type="application/javascript"></script>
   <script src="../../converters/esp32/serial.js" type="application/javascript"></script>
   <script src="../../converters/esp32/communicate.js" type="application/javascript"></script>
   <script src="../../converters/esp32/display.js" type="application/javascript"></script>
-  <script src="../../converters/handbit/actuator.js" type="application/javascript"></script>
+  <script src="../../converters/esp32/actuator.js" type="application/javascript"></script>
   <script src="../../converters/esp32/control.js" type="application/javascript"></script>
   <script src="../../converters/esp32/sensor.js" type="application/javascript"></script>
   <script src="../../converters/python/control.js" type="application/javascript"></script>
@@ -96,10 +87,6 @@
   <script src="../../converters/python/tuple.js" type="application/javascript"></script>
   <script src="../../converters/python/dicts.js" type="application/javascript"></script>
   <script src="../../converters/python/set.js" type="application/javascript"></script>
-  <!------ convertor handbit -->
-  <script src="../../converters/handbit/sensor.js" type="application/javascript"></script> 
-  <script src="../../converters/handbit/display.js" type="application/javascript"></script> 
-
   <script src="./js/python_to_blockly.js" type="application/javascript"></script>
   <script src="js/skulpt/dist/skulpt.min.js" type="application/javascript"></script>
   <script src="js/skulpt/dist/skulpt-stdlib.js" type="application/javascript"></script>
@@ -384,7 +371,7 @@
             </td>
             <script type="text/javascript">
               var viewMode2 = document.getElementById('viewMode2');
-              viewMode2.href = 'index_advance_board_MicroPython[ESP32_HandBit].html?lang='+Code.LANG;
+              viewMode2.href = 'index_advance_board_MicroPython[ESP32_Generic].html?lang='+Code.LANG;
             </script>
             <td class="tabmin">
              <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
@@ -491,7 +478,7 @@
           <shadow type="pins_analog_pin"></shadow>
         </value>
       </block>
-      <block type="inout_analog_atten">
+	  <block type="inout_analog_atten">
         <value name="PIN">
           <shadow type="pins_analog"></shadow>
         </value>
@@ -543,8 +530,8 @@
           <shadow type="pins_digital_pin"></shadow>
         </value>
         <value name="DO">
-          <shadow type="factory_block_return">
-              <field name="VALUE">attachInterrupt_func</field>
+          <shadow type="variables_get">
+              <field name="VAR">attachInterrupt_func</field>
           </shadow>
         </value>
       </block>
@@ -572,7 +559,7 @@
           </shadow>
         </value>
       </block>
-
+      
     </category>
     <category id="catControl" colour="120">
        <block type="controls_whileUntil">
@@ -717,8 +704,8 @@
           </shadow>
         </value>
         <value name="callback">
-          <shadow type="factory_block_return">
-            <field name="VALUE">tim_callback</field>
+          <shadow type="variables_get">
+            <field name="VAR">tim_callback</field>
           </shadow>
         </value>
       </block>
@@ -1548,42 +1535,16 @@
           </value>
           <value name="RX">
             <shadow type="pins_digital_pin">
-              <field name="PIN">23</field>
+              <field name="PIN">21</field>
             </shadow>
           </value>
           <value name="freq">
-            <shadow type="math_number"><field name="NUM">400000</field></shadow>
+            <shadow type="math_number"><field name="NUM">100000</field></shadow>
           </value>
         </block>
       </category>
       <category id="catSensor" colour="40">
-        <block type="sensor_handbit_button_is_pressed">
-          <value name="btn">
-            <shadow type="pins_button">
-            </shadow>
-          </value>
-        </block>
-        <block type="sensor_handbit_button_was_pressed">
-          <value name="btn">
-            <shadow type="pins_button">
-            </shadow>
-          </value>
-        </block>
-        <block type="sensor_handbit_button_get_presses">
-          <value name="btn">
-            <shadow type="pins_button">
-            </shadow>
-          </value>
-        </block>
-        <block type="sensor_handbit_pin_pressed">
-          <value name="button">
-          <shadow type="handbit_number1">
-          </shadow>
-        </value>
-        </block>
-        <block type="sensor_handbit_light"></block>
-        <block type="sensor_handbit_sound"></block>
-       <block type="sensor_use_i2c_init">
+         <block type="sensor_use_i2c_init">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">sensor</field>
@@ -1595,27 +1556,42 @@
             </shadow>
           </value>
         </block>
-        <block type="sensor_handbit_gesture">
+        <block type="sensor_mpu9250_gesture">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">mpu</field>
             </shadow>
           </value>
         </block>
-        <block type="sensor_handbit_get_acceleration">
+        <block type="sensor_mpu9250_get_acceleration">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">accelerometer</field>
+              <field name="VAR">mpu</field>
             </shadow>
           </value>
         </block>
-		 <block type="sensor_rtc_init">
+        <block type="sensor_mpu9250_field_strength">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mpu</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensor_mpu9250_temperature">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">mpu</field>
+            </shadow>
+          </value>
+        </block>
+		<block type="sensor_rtc_init">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">rtc</field>
             </shadow>
           </value>
         </block>
+        
         <block type="RTC_set_datetime">
           <value name="SUB">
             <shadow type="variables_get">
@@ -1670,21 +1646,21 @@
             </shadow>
           </value>
         </block>
-		<block type="sensor_bmp">
+        <block type="sensor_bmp">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">sensor</field>
+              <field name="VAR">bmp</field>
             </shadow>
           </value>
         </block>
         <block type="sensor_sht">
           <value name="SUB">
             <shadow type="variables_get">
-              <field name="VAR">sensor</field>
+              <field name="VAR">sht</field>
             </shadow>
           </value>
         </block>
-        <block type="HCSR04">
+       <block type="HCSR04">
           <value name="PIN1">
               <shadow type="pins_digital_pin">
 				<field name="PIN">0</field>
@@ -1701,40 +1677,27 @@
                     <shadow type="pins_digital_pin"></shadow>
                 </value>
         </block>
-
-	</category>
-      <category id="catActuator" colour="100">
-        <block type="actuator_led_bright">
-           <value name="led">
-          <shadow type="number">
-          </shadow>
-        </value>
-         <value name="bright">
-          <shadow type="ledswitch">
-          </shadow>
-        </value>
+        <block type="sensor_ds18x20">
+                <value name="PIN">
+                    <shadow type="pins_digital_pin"></shadow>
+                </value>
         </block>
-        <block type="actuator_get_led_bright">
-          <value name="led">
-            <shadow type="number">
+      </category>
+      <category id="catActuator" colour="100">
+        <block type="servo_move">
+          <value name="PIN">
+            <shadow type="pins_pwm_pin"></shadow>
+          </value>
+          <value name="DEGREE">
+            <shadow type="math_number">
+              <field name="NUM">100</field>
             </shadow>
           </value>
-        </block>
-        <block type="actuator_led_brightness">
-           <value name="led">
-          <shadow type="number">
-          </shadow>
-        </value>
-        <value name="bright">
-          <shadow type="math_number">
-          <field name="NUM">1023</field>
-          </shadow>
-        </value>
         </block>
         <block type="esp32_music_pitch">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
-              <field name="PIN">16</field>
+              <field name="PIN">27</field>
             </shadow>
           </value>
           <value name="pitch">
@@ -1746,7 +1709,7 @@
         <block type="esp32_music_pitch_with_time">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
-              <field name="PIN">16</field>
+              <field name="PIN">27</field>
             </shadow>
           </value>
           <value name="pitch">
@@ -1763,7 +1726,7 @@
         <block type="esp32_music_stop">
           <value name="PIN">
             <shadow type="pins_pwm_pin">
-              <field name="PIN">16</field>
+              <field name="PIN">27</field>
             </shadow>
           </value>
         </block>
@@ -1773,7 +1736,7 @@
           </value>          
           <value name="PIN">
             <shadow type="pins_pwm_pin">
-              <field name="PIN">16</field>
+              <field name="PIN">27</field>
             </shadow>
           </value>
         </block>
@@ -1791,7 +1754,7 @@
         </block>
         <block type="esp32_music_get_tempo"></block>
         <block type="esp32_music_reset"></block>
-		<block type="actuator_neopixel_init">
+	<block type="actuator_neopixel_init">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">rgb</field>
@@ -1799,12 +1762,12 @@
           </value>
           <value name="PIN">
             <shadow type="pins_digital_pin">
-              <field name="PIN">17</field>
+              <field name="PIN">2</field>
             </shadow>
           </value>
           <value name="LEDCOUNT">
             <shadow type="math_number">
-              <field name="NUM">3</field>
+              <field name="NUM">2</field>
             </shadow>
           </value>
         </block>
@@ -1814,7 +1777,7 @@
               <field name="VAR">rgb</field>
             </shadow>
           </value>
-          <value name="_LED_">
+		 <value name="_LED_">
             <shadow type="math_number">
               <field name="NUM">0</field>
             </shadow>
@@ -1842,19 +1805,9 @@
             </shadow>
           </value>
         </block>
-<!--         <block type="display_rgb_color">
-          <value name="PIN">
-            <shadow type="pins_digital" />
-          </value>
-          <value name="_LED_">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-        </block> -->
       </category>
       <category id="catMonitor" colour="180">
-        <block type="handbit_display_use_i2c_init">
+          <block type="display_use_i2c_init">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">oled</field>
@@ -1876,14 +1829,14 @@
             </shadow>
           </value>
         </block>
-        <block type="handbit_display_fill">
+        <block type="display_fill">
           <value name="SUB">
             <shadow type="variables_get">
               <field name="VAR">oled</field>
             </shadow>
           </value>
         </block>
-        <block type="handbit_display_draw_4strings">
+        <block type="display_draw_4strings">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">oled</field>
@@ -1910,7 +1863,7 @@
             </shadow>
           </value>
         </block>
-        <block type="handbit_display_rect">
+        <block type="display_rect">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">oled</field>
@@ -1937,7 +1890,7 @@
             </shadow>
           </value>
         </block>
-        <block type="handbit_display_circle">
+        <block type="display_circle">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">oled</field>
@@ -1959,7 +1912,7 @@
             </shadow>
           </value>
         </block>
-        <block type="handbit_display_triangle">
+        <block type="display_triangle">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">oled</field>
@@ -1996,7 +1949,7 @@
             </shadow>
           </value>
         </block>
-        <block type="handbit_display_line">
+        <block type="display_line">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">oled</field>
@@ -2018,7 +1971,7 @@
             </shadow>
           </value>
         </block>
-        <block type="handbit_display_line_arbitrarily">
+        <block type="display_line_arbitrarily">
           <value name="VAR">
             <shadow type="variables_get">
               <field name="VAR">oled</field>
@@ -2045,7 +1998,7 @@
             </shadow>
           </value>
         </block>
-        </category>
+      </category>
       <sep></sep>
       <category id="catVar" colour="330" custom="VARIABLE">
       </category>
