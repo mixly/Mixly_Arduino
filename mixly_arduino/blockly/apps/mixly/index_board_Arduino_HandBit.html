@@ -2232,54 +2232,117 @@
 </block>
 <block type="handbit_MSA300_action"> 
 </block>
+
+<block type="RGB_color_seclet" >
+   <field name="COLOR">#ff0000</field>
+ </block>
+ <block type="RGB_color_rgb">
+  <value name="R">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="G">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="B">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
 <block type="handbit_rgb">
- <value name="PIN">
-   <shadow type="pins_digital">
-    <field name="PIN">17</field>
-  </shadow>
-</value>
-<value name="_LED_">
-  <shadow type="math_number">
-    <field name="NUM">1</field>
-  </shadow>
-</value>
-<value name="RVALUE">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value>
-<value name="GVALUE">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value>
-<value name="BVALUE">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value>
-<value name="Brightness">
-  <shadow type="math_number">
-    <field name="NUM">20</field>
-  </shadow>
-</value>
+  <value name="_LED_">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="COLOR">
+    <shadow type="math_number">
+      <field name="NUM">
+      </field>
+    </shadow>
+    <block type="RGB_color_rgb">
+      <value name="R">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="G">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="B">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+    </block>
+  </value>
 </block>
 <block type="handbit_rgb2">
- <value name="PIN">
-   <shadow type="pins_digital">
-    <field name="PIN">17</field>
-  </shadow>
-</value>
-<value name="_LED_">
-  <shadow type="math_number">
-    <field name="NUM">1</field>
-  </shadow>
-</value>
-<value name="Brightness">
-  <shadow type="math_number">
-    <field name="NUM">20</field>
-  </shadow>
-</value>
+  <value name="COLOR1">
+    <shadow type="math_number">
+      <field name="NUM">
+      </field>
+    </shadow>
+    <block type="RGB_color_seclet" >
+      <field name="COLOR">#ff0000</field>
+    </block>
+  </value>
+  <value name="COLOR2">
+    <shadow type="math_number">
+      <field name="NUM">
+      </field>
+    </shadow>
+    <block type="RGB_color_seclet">
+      <field name="COLOR">#ffff33</field>
+    </block>
+  </value>
+  <value name="COLOR3">
+    <shadow type="math_number">
+      <field name="NUM">
+      </field>
+    </shadow>
+    <block type="RGB_color_seclet">
+      <field name="COLOR">#00cccc</field>
+    </block>
+  </value>
+</block>
+<block type="handbit_rgb_Brightness">
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="handbit_rgb_rainbow1">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="WAIT">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+  <value name="BRIGHTNESS">
+    <shadow type="pins_digital">
+      <field name="PIN">2</field>
+    </shadow>
+  </value>
+</block>
+<block type="handbit_rgb_rainbow3">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="rainbow_color">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
 </block>
 <block type="controls_tone">
   <value name="PIN">
