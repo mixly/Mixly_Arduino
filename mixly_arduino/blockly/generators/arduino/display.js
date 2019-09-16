@@ -359,19 +359,29 @@ Blockly.Arduino.Matrix_img = function() {
 Blockly.Arduino.oled_init = function() {
   var SDA = Blockly.Arduino.valueToCode(this, 'SDA',Blockly.Arduino.ORDER_ATOMIC);
   var SCL = Blockly.Arduino.valueToCode(this, 'SCL',Blockly.Arduino.ORDER_ATOMIC);
+  var board_type=JSFuncs.getPlatform();
   Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
-  if(SDA=="SDA"&&SCL=="SCL")
-    Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0,U8X8_PIN_NONE);';
+  if(board_type.match(RegExp(/AVR/)))
+  {
+   if(SDA=="SDA"&&SCL=="SCL")
+    Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0,U8X8_PIN_NONE);';
   else
-    Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0,  '+SCL+', '+SDA+',U8X8_PIN_NONE);';
-  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-  Blockly.Arduino.setups_["setup_u8g2"] =' u8g2.begin();\n';
-  var code = '';
-  return code;
+    Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_1_SW_I2C u8g2(U8G2_R0,  '+SCL+', '+SDA+',U8X8_PIN_NONE);';
+}
+else{
+ if(SDA=="SDA"&&SCL=="SCL")
+  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0,U8X8_PIN_NONE);';
+else
+  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0,  '+SCL+', '+SDA+',U8X8_PIN_NONE);';
+}  
+Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+Blockly.Arduino.setups_["setup_u8g2"] =' u8g2.begin();\n';
+var code = '';
+return code;
 };
 
 Blockly.Arduino.oled_clear = function() {
-  var code="u8g2.clearDisplay();";
+  var code="u8g2.clearDisplay();\n";
   return code;
 };
 
@@ -433,7 +443,7 @@ Blockly.Arduino.oled_showBitmap = function() {
 Blockly.Arduino.oled_define_bitmap_data = function() {
   var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
   var text = this.getFieldValue('TEXT');
-  Blockly.Arduino.definitions_['var_declare' + varName] = 'static unsigned char ' + varName + '[]={' + text + ' };\n';
+  Blockly.Arduino.definitions_['var_declare' + varName] = 'static unsigned char ' + varName + '[]={' + FACE_IMAGE + ' };\n';
   return '';
 };
 
