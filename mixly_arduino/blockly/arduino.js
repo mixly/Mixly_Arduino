@@ -180,7 +180,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		MISO:[["19","19"]],
 		SCK:[["18","18"]],
 		touch: [["0", "0"], ["2", "2"], ["4", "4"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["27", "27"], ["32", "32"], ["33", "33"]],
-		serial_select: [["Serial0", "Serial0"], ["Serial1", "Serial1"], ["Serial2", "Serial2"], ["SerialBT", "SerialBT"]],
+		serial_select: [["Serial", "Serial"],["Serial0", "Serial0"], ["Serial1", "Serial1"], ["Serial2", "Serial2"], ["SerialBT", "SerialBT"]],
 		serial : 115200
 	},
 	esp32_handbit: {
