@@ -39,7 +39,11 @@ var MSG = {
 	catAI: "人工智能",
 	catDS: "数据结构",
 	catMorpxVS2:"MU视觉",
-	catInner:'板载资源'
+	catInner:'板载资源',
+	cat4Digitdisplay:'四位数码管',
+	catLCD:'LCD液晶屏',
+	catOLED:'OLED显示屏',
+	catMatrix:'点阵屏'
 };
 Blockly.Msg.ADD_COMMENT = "添加注释";
 Blockly.Msg.AUTH = "请授权这个应用程序以保存您的作品并共享。";
