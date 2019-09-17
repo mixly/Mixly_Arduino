@@ -42,20 +42,17 @@ Blockly.Arduino.channel_select = function() {
 Blockly.Arduino.controls_tone=function(){
   Blockly.Arduino.definitions_['include_ESP32Tone'] = '#include <ESP32Tone.h>';
   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
-  var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',
-    Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
+  var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
   var duration = Blockly.Arduino.valueToCode(this, 'DURATION', Blockly.Arduino.ORDER_ATOMIC) || '0';
-  var channle = Blockly.Arduino.valueToCode(this, 'CHANNEL',
-    Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
+  var channle = Blockly.Arduino.valueToCode(this, 'CHANNEL',Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
   var code = ""; 
-  code += "tone("+dropdown_pin+","+fre+","+duration+","+channle+");\n";
+  code = "tone("+dropdown_pin+","+fre+","+duration+","+channle+");\n";
   return code;
 };
 Blockly.Arduino.controls_notone=function(){
- var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
- var channle = Blockly.Arduino.valueToCode(this, 'CHANNEL',
-  Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
- var code='';
- code += "noTone("+dropdown_pin+");\n";
- return code;
+  Blockly.Arduino.definitions_['include_ESP32Tone'] = '#include <ESP32Tone.h>';
+  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
+  var code='';
+  code = "noTone("+dropdown_pin+");\n";
+  return code;
 };

@@ -200,6 +200,22 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"], ["SerialBT", "SerialBT"]],
 		serial : 115200
 	},
+	esp32_MixGo: {
+		description: "esp32_MixGo",
+		digital: [["0", "0"], ["2", "2"], ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["17", "17"], ["18", "18"], ["19", "19"], ["20", "20"], ["21", "21"], ["22", "22"], ["23", "23"], ["25", "25"], ["26", "26"], ["27", "27"], ["32", "32"], ["33", "33"], ["34", "34"], ["35", "35"], ["36", "36"], ["39", "39"]],
+		interrupt: [["0", "0"], ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["17", "17"], ["18", "18"], ["19", "19"], ["20", "20"], ["21", "21"], ["22", "22"], ["23", "23"], ["25", "25"], ["26", "26"], ["27", "27"], ["32", "32"], ["33", "33"], ["34", "34"], ["35", "35"], ["36", "36"], ["39", "39"]],
+		pwm: [["0", "0"], ["2", "2"], ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["17", "17"], ["18", "18"], ["19", "19"], ["20", "20"], ["21", "21"], ["22", "22"], ["23", "23"], ["25", "25"], ["26", "26"], ["27", "27"], ["32", "32"]],
+		analog: [["32", "32"], ["33", "33"], ["34", "34"], ["35", "35"], ["36", "36"], ["39", "39"]],
+		dac: [["25", "25"], ["26", "26"]],
+		SDA:[["21","21"]],
+		SCL:[["22","22"]],
+		MOSI:[["23","23"]],
+		MISO:[["19","19"]],
+		SCK:[["18","18"]],
+		touch: [["1", "32"], ["2", "33"], ["3", "25"], ["4", "26"]],
+		serial_select: [["Serial", "Serial"],["Serial0", "Serial0"], ["Serial1", "Serial1"], ["Serial2", "Serial2"], ["SerialBT", "SerialBT"]],
+		serial : 115200
+	},
 	esp32_mixepi: {
 		description: "esp32_mixepi",
 		digital: [["0", "0"], ["2", "2"], ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["17", "17"], ["18", "18"], ["19", "19"], ["20", "20"], ["21", "21"], ["22", "22"], ["23", "23"], ["25", "25"], ["26", "26"], ["27", "27"], ["32", "32"], ["33", "33"], ["34", "34"], ["35", "35"], ["36", "36"], ["39", "39"],["A", "BTN_A"], ["B", "BTN_B"],["C", "BTN_C"]],
@@ -232,10 +248,10 @@ profile["Invent One"]= profile["XinaBox CW01"]=profile["ESPresso Lite 1.0"]=prof
 profile["NodeMCU 1.0"]= profile["Olimex MOD-WIFI-ESP8266"]=profile["SparkFun ESP8266 Thing Dev"]=profile["LOLIN"]=profile["WeMos D1 R1"]=profile["ESPino"]=profile["ThaiEasyElec's ESPino"]=profile["arduino_esp8266"];
 profile["WifInfo"]=profile["Arduino"]=profile["4D Systems gen4 IoD Range"]=profile["Digistump Oak"]=profile["WiFiduino"]=profile["Amperka WiFi Slot"]=profile["Seeed Wio Link"]=profile["ESPectro Core"]=profile["arduino_esp8266"];;
 //esp32
-profile['Arduino ESP32 Generic']=profile['Arduino MixGo']=profile['"WeMos" WiFi&Bluetooth Battery']=profile["ESP32 Dev Module"] =profile["ESP32 Wrover Module"] =profile["ESP32 Pico Kit"] =profile["Turta IoT Node"] =profile["TTGO LoRa32-OLED V1"] =profile["XinaBox CW02"] =profile["SparkFun ESP32 Thing"] =profile["u-blox NINA-W10 series (ESP32)"] =profile["Widora AIR"] =profile["Electronic SweetPeas - ESP320"] =profile["Nano32"] =profile["LOLIN D32"] =profile["LOLIN D32 PRO"] =profile["WEMOS LOLIN32"] =profile["Dongsen Tech Pocket 32"] =profile["ESPea32"] =profile["Noduino Quantum"] =profile["Node32s"] =profile["Hornbill ESP32 Dev"] =profile["Hornbill ESP32 Minima"] =profile["FireBeetle-ESP32"] =profile["IntoRobot Fig"] =profile["Onehorse ESP32 Dev Module"] =profile["Adafruit ESP32 Feather"] =profile["NodeMCU-32S"] =profile["MH ET LIVE ESP32DevKIT"] =profile["MH ET LIVE ESP32MiniKit"] =profile["ESP32vn IoT Uno"] =profile["ESP32 Dev Module"] =profile["DOIT ESP32 DEVKIT V1"] =profile["OLIMEX ESP32-EVB"] =profile["OLIMEX ESP32-GATEWAY"] =profile["OLIMEX ESP32-PoE"] =profile["ThaiEasyElec's ESPino32"] =profile["M5Stack-FIRE"] =profile["ODROID ESP32"] =profile["Heltec_WIFI_Kit_32"]=profile["Heltec_WIFI_LoRa_32"]=profile["ESPectro32"]=profile["Microduino-CoreESP32"]=profile["ALKS ESP32"]=profile["WiPy 3.0"]=profile["BPI-BIT"]=profile["Silicognition wESP32"]=profile["T-Beam"]=profile["D-duino-32"]= profile["LoPy"]=profile["LoPy4"]=profile["OROCA EduBot"]=profile["OROCA EduBot"]=profile["ESP32 FM DevKit"]=profile["esp32_arduino"];
+profile['Arduino ESP32 Generic']=profile['"WeMos" WiFi&Bluetooth Battery']=profile["ESP32 Dev Module"] =profile["ESP32 Wrover Module"] =profile["ESP32 Pico Kit"] =profile["Turta IoT Node"] =profile["TTGO LoRa32-OLED V1"] =profile["XinaBox CW02"] =profile["SparkFun ESP32 Thing"] =profile["u-blox NINA-W10 series (ESP32)"] =profile["Widora AIR"] =profile["Electronic SweetPeas - ESP320"] =profile["Nano32"] =profile["LOLIN D32"] =profile["LOLIN D32 PRO"] =profile["WEMOS LOLIN32"] =profile["Dongsen Tech Pocket 32"] =profile["ESPea32"] =profile["Noduino Quantum"] =profile["Node32s"] =profile["Hornbill ESP32 Dev"] =profile["Hornbill ESP32 Minima"] =profile["FireBeetle-ESP32"] =profile["IntoRobot Fig"] =profile["Onehorse ESP32 Dev Module"] =profile["Adafruit ESP32 Feather"] =profile["NodeMCU-32S"] =profile["MH ET LIVE ESP32DevKIT"] =profile["MH ET LIVE ESP32MiniKit"] =profile["ESP32vn IoT Uno"] =profile["ESP32 Dev Module"] =profile["DOIT ESP32 DEVKIT V1"] =profile["OLIMEX ESP32-EVB"] =profile["OLIMEX ESP32-GATEWAY"] =profile["OLIMEX ESP32-PoE"] =profile["ThaiEasyElec's ESPino32"] =profile["M5Stack-FIRE"] =profile["ODROID ESP32"] =profile["Heltec_WIFI_Kit_32"]=profile["Heltec_WIFI_LoRa_32"]=profile["ESPectro32"]=profile["Microduino-CoreESP32"]=profile["ALKS ESP32"]=profile["WiPy 3.0"]=profile["BPI-BIT"]=profile["Silicognition wESP32"]=profile["T-Beam"]=profile["D-duino-32"]= profile["LoPy"]=profile["LoPy4"]=profile["OROCA EduBot"]=profile["OROCA EduBot"]=profile["ESP32 FM DevKit"]=profile["esp32_arduino"];
 profile['Arduino HandBit']=profile["esp32_handbit"];
 profile['Arduino MixePi']=profile["esp32_mixepi"];
-
+profile['Arduino MixGo']=profile["esp32_MixGo"];
 //set default profile to arduino standard-compatible board
 //profile["default"] = profile["arduino_standard"];
 //alert(profile.default.digital[0]);

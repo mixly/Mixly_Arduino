@@ -4,7 +4,7 @@ goog.provide('Blockly.Blocks.MixGo');
 goog.require('Blockly.Blocks');
 
 Blockly.Blocks.actuator.HUE = 100;
-
+profile["default"] = profile["esp32_MixGo"];
 
 //执行器_点阵屏显示_字符显示
 Blockly.Blocks.HT16K33_TEXT={
@@ -357,10 +357,10 @@ Blockly.Blocks.sensor_mixgo_sound= {
 Blockly.Blocks.mixgo_touch_pin= {
   init: function(){
     this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_ESP32_TOUCH_SENSOR)
-    .appendField(new Blockly.FieldDropdown([["1", "32"], ["2", "33"],["3", "25"],["4", "26"]]), 'touch_pin')
-    ;
+    this.appendDummyInput()
+     .appendField(Blockly.MIXLY_ESP32_TOUCH)
+     .appendField(Blockly.MIXLY_PIN)
+     .appendField(new Blockly.FieldDropdown(profile.default.touch), 'touch_pin');
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_IS_TOUCHED);
     this.setOutput(true, Boolean);
@@ -448,4 +448,130 @@ Blockly.Blocks.mixgo_MPU9250 = {
     this.setTooltip("");
     this.setHelpUrl('');
   }
+};
+
+Blockly.Blocks.controls_tone={
+    init:function(){
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_TONE);
+        this.appendValueInput('FREQUENCY')
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_FREQUENCY);
+        this.appendValueInput('DURATION')
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_DELAY);
+        this.appendValueInput('CHANNEL')
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_CHANNEL);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE);
+    }
+};
+
+Blockly.Blocks.controls_notone={
+    init:function(){
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_NOTONE);
+        this.appendValueInput('CHANNEL')
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_CHANNEL);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE);
+    }
+};
+
+
+Blockly.Blocks.MixGo_rgb_rainbow1 = {
+  init: function () {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_RGB);
+    this.appendValueInput("WAIT")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_RGBdisplay_rgb_rainbow1);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+}
+};
+
+Blockly.Blocks.MixGo_rgb_rainbow3 = {
+  init: function () {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_RGB);
+    this.appendDummyInput("")
+    .appendField(new Blockly.FieldDropdown(DISPLAY_RAINBOW_TYPE), "TYPE");
+    this.appendValueInput("rainbow_color")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_RGB_display_rgb_rainbow3);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+}
+};
+
+Blockly.Blocks.MixGo_rgb = {
+  init: function () {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_RGB);
+    this.appendValueInput("_LED_")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_RGB_NUM);
+    this.appendDummyInput("")
+    .appendField(Blockly.Msg.HTML_COLOUR);
+    this.appendValueInput("COLOR", Number)
+    .setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+}
+};
+
+Blockly.Blocks.MixGo_rgb2 = {
+  init: function () {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_RGB);
+    this.appendDummyInput("")
+    .appendField("1")
+    .appendField(Blockly.Msg.HTML_COLOUR);
+    this.appendValueInput("COLOR1", Number)
+    .setCheck(Number);
+    this.appendDummyInput("")
+    .appendField("2")
+    .appendField(Blockly.Msg.HTML_COLOUR);
+    this.appendValueInput("COLOR2", Number)
+    .setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+}
+};
+
+Blockly.Blocks.MixGo_rgb_Brightness = {
+  init: function () {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_RGB);
+    this.appendValueInput("Brightness")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_BRIGHTNESS);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+}
 };

@@ -1355,29 +1355,91 @@
 </block>
 </category>
 <category id="catMonitor" colour="180">
- <block type="group_lcd_init">
-  <value name="device">
-    <shadow type="math_number">
-      <field name="NUM">0x27</field>
+  <category id="cat4Digitdisplay" colour="180">
+    <block type="display_4digitdisplay_power">
+      <field name="STAT">clear</field>
+    </block>
+    <block type="display_4digitdisplay_displayString">
+      <value name="VALUE">
+        <shadow type="text">
+          <field name="TEXT">abcd</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="display_4digitdisplay_showDot"></block>
+    <block type="display_TM1637_init">
+      <value name="PIN1">
+        <shadow type="pins_digital">
+          <field name="PIN">5</field>
+        </shadow>
+      </value>
+      <value name="PIN2">
+        <shadow type="pins_digital">
+          <field name="PIN">4</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="display_TM1637_Brightness">
+      <value name="Brightness">
+        <shadow type="math_number">
+          <field name="NUM">20</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="display_TM1637_clearDisplay"></block>
+    <block type="display_TM1637_displyPrint">
+      <value name="VALUE">
+        <shadow type="text">
+          <field name="TEXT">2345</field>
+        </shadow>
+      </value>
+      <value name="Speed">
+        <shadow type="math_number">
+          <field name="NUM">300</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="display_TM1637_displayTime">
+      <value name="hour">
+        <shadow type="math_number">
+          <field name="NUM">12</field>
+        </shadow>
+      </value>
+      <value name="minute">
+        <shadow type="math_number">
+          <field name="NUM">30</field>
+        </shadow>
+      </value>
+      <value name="STAT">
+        <shadow type="inout_highlow">
+        </shadow>
+      </value>
+    </block>
+  </category>
+  <category id="catLCD" colour="180">
+    <block type="group_lcd_init">
+      <value name="device">
+        <shadow type="math_number">
+          <field name="NUM">0x27</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="group_lcd_init2">
+      <value name="device">
+        <shadow type="math_number">
+          <field name="NUM">0x27</field>
+        </shadow>
+      </value>
+      <value name="PIN1">
+       <shadow type="pins_digital">
+        <field name="PIN">A1</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+     <shadow type="pins_digital">
+      <field name="PIN">A2</field>
     </shadow>
   </value>
-</block>
-<block type="group_lcd_init2">
-  <value name="device">
-    <shadow type="math_number">
-      <field name="NUM">0x27</field>
-    </shadow>
-  </value>
-  <value name="PIN1">
-   <shadow type="pins_digital">
-    <field name="PIN">A1</field>
-  </shadow>
-</value>
-<value name="PIN2">
- <shadow type="pins_digital">
-  <field name="PIN">A2</field>
-</shadow>
-</value>
 </block>
 <block type="group_lcd_init3">
  <value name="PIN1">
@@ -1443,84 +1505,27 @@
 <block type="group_lcd_power">
   <field name="STAT">clear</field>
 </block>
-<block type="display_4digitdisplay_power">
-  <field name="STAT">clear</field>
-</block>
-<block type="display_4digitdisplay_displayString">
-  <value name="VALUE">
-    <shadow type="text">
-      <field name="TEXT">abcd</field>
+</category>
+<category id="catOLED" colour="180">
+  <block type="oled_init">
+    <next>
+      <block type="oled_page">
+        <statement name="DO">
+          <block type="procedures_callnoreturn">
+            <mutation name="page1"></mutation>
+          </block>
+        </statement>
+      </block>
+    </next>
+    <value name="SCL">
+     <shadow type="pins_digital">
+      <field name="PIN">SCL</field>
     </shadow>
   </value>
-</block>
-<block type="display_4digitdisplay_showDot"></block>
-<block type="display_TM1637_init">
-  <value name="PIN1">
-    <shadow type="pins_digital">
-      <field name="PIN">5</field>
-    </shadow>
-  </value>
-  <value name="PIN2">
-    <shadow type="pins_digital">
-      <field name="PIN">4</field>
-    </shadow>
-  </value>
-</block>
-<block type="display_TM1637_Brightness">
-  <value name="Brightness">
-    <shadow type="math_number">
-      <field name="NUM">20</field>
-    </shadow>
-  </value>
-</block>
-<block type="display_TM1637_clearDisplay"></block>
-<block type="display_TM1637_displyPrint">
-  <value name="VALUE">
-    <shadow type="text">
-      <field name="TEXT">2345</field>
-    </shadow>
-  </value>
-  <value name="Speed">
-    <shadow type="math_number">
-      <field name="NUM">300</field>
-    </shadow>
-  </value>
-</block>
-<block type="display_TM1637_displayTime">
-  <value name="hour">
-    <shadow type="math_number">
-      <field name="NUM">12</field>
-    </shadow>
-  </value>
-  <value name="minute">
-    <shadow type="math_number">
-      <field name="NUM">30</field>
-    </shadow>
-  </value>
-  <value name="STAT">
-    <shadow type="inout_highlow">
-    </shadow>
-  </value>
-</block>
-<block type="oled_init">
-  <next>
-    <block type="oled_page">
-      <statement name="DO">
-        <block type="procedures_callnoreturn">
-          <mutation name="page1"></mutation>
-        </block>
-      </statement>
-    </block>
-  </next>
-  <value name="SCL">
+  <value name="SDA">
    <shadow type="pins_digital">
-    <field name="PIN">SCL</field>
+    <field name="PIN">SDA</field>
   </shadow>
-</value>
-<value name="SDA">
- <shadow type="pins_digital">
-  <field name="PIN">SDA</field>
-</shadow>
 </value>
 </block>
 <block type="oled_set_EN_Font">
@@ -1780,68 +1785,70 @@
     </shadow>
   </value>
 </block>
-<block type="MAX7219_init">
-  <value name="PIN1">
-    <shadow type="pins_MOSI">
-      <field name="PIN">11</field>
-    </shadow>
-  </value>
-  <value name="PIN2">
-    <shadow type="pins_digital">
-      <field name="PIN">9</field>
-    </shadow>
-  </value>
-  <value name="PIN3">
-    <shadow type="pins_SCK">
-      <field name="PIN">13</field>
-    </shadow>
-  </value>
-  <value name="hDisplays">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-  <value name="vDisplays">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-</block>
-<block type="HT16K33_Init">
-  <value name="PIN1">
-    <shadow type="pins_digital">
-      <field name="PIN">SDA</field>
-    </shadow>
-  </value>
-  <value name="PIN2">
-    <shadow type="pins_digital">
-      <field name="PIN">SCL</field>
-    </shadow>
-  </value>
-</block>
-<block type="display_Matrix_DrawPixel">
-  <value name="XVALUE">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-  <value name="YVALUE">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-  <value name="STAT">
-    <shadow type="inout_highlow"></shadow>
-  </value>
-</block>
-<block type="display_Max7219_Rotation">
-  <value name="NO">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-</block>
-<!-- <block type="display_Max7219_setPosition">
+</category>
+<category id="catMatrix" colour="180">
+  <block type="MAX7219_init">
+    <value name="PIN1">
+      <shadow type="pins_MOSI">
+        <field name="PIN">11</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">9</field>
+      </shadow>
+    </value>
+    <value name="PIN3">
+      <shadow type="pins_SCK">
+        <field name="PIN">13</field>
+      </shadow>
+    </value>
+    <value name="hDisplays">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="vDisplays">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="HT16K33_Init">
+    <value name="PIN1">
+      <shadow type="pins_digital">
+        <field name="PIN">SDA</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">SCL</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_Matrix_DrawPixel">
+    <value name="XVALUE">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="YVALUE">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="STAT">
+      <shadow type="inout_highlow"></shadow>
+    </value>
+  </block>
+  <block type="display_Max7219_Rotation">
+    <value name="NO">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+ <block type="display_Max7219_setPosition">
   <value name="NO">
     <shadow type="math_number">
       <field name="NUM">1</field>
@@ -1858,7 +1865,7 @@
     </shadow>
   </value>
 </block>
--->
+
 <block type="display_HT16K33_Rotation">
 </block>
 <block type="display_Matrix_TEXT">
@@ -1894,6 +1901,7 @@
   </shadow>
 </value>
 </block>
+</category>
 </category>
 <category id="catEthernet" colour="0">
   <block type="ethernet_init_begin">

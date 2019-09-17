@@ -155,7 +155,7 @@ Blockly.Arduino.mixGo_led= function() {
   var op = this.getFieldValue('STAT');
   var bright = Blockly.Arduino.valueToCode(this,'bright', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.setups_['setup_pinmode'+op] = 'pinMode('+op+',OUTPUT);';
-  var code = "digitalWrite("+op+","+bright+");\n";
+  var code = "digitalWrite("+op+",!"+bright+");\n";
   return code;
 };
 
@@ -188,3 +188,111 @@ Blockly.Arduino.mixgo_MPU9250 = function() {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+ Blockly.Arduino.controls_tone=function(){
+  Blockly.Arduino.definitions_['include_ESP32Tone'] = '#include <ESP32Tone.h>';
+  var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
+  var duration = Blockly.Arduino.valueToCode(this, 'DURATION', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  var channle = Blockly.Arduino.valueToCode(this, 'CHANNEL',
+    Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
+  var code = ""; 
+  code += "tone(27,"+fre+","+duration+","+channle+");\n";
+  return code;
+};
+
+Blockly.Arduino.controls_notone=function(){
+  Blockly.Arduino.definitions_['include_ESP32Tone'] = '#include <ESP32Tone.h>';
+  var code = "noTone(27);\n";
+  return code;
+};
+function RGB_RGB565(colour){
+  colour=colour.substr(1);
+  var R,G,B;
+  R=colour.substr(0,2);
+  G=colour.substr(2,2);
+  B=colour.substr(4,2);
+  colour=B+G+R;
+  colour="0x"+colour;
+  var RGB565_red= (colour & 0xf80000)>>8;
+  var RGB565_green= (colour & 0xfc00)>>5;
+  var RGB565_blue= (colour & 0xf8)>>3;
+  var n565Color = RGB565_red+RGB565_green + RGB565_blue ;
+  return n565Color;
+}
+Blockly.Arduino.MixGo_rgb=function(){
+  var value_led = Blockly.Arduino.valueToCode(this, '_LED_', Blockly.Arduino.ORDER_ATOMIC);
+  var COLOR = Blockly.Arduino.valueToCode(this, 'COLOR');
+  COLOR=COLOR.replace(/#/g,"0x");
+  Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
+  Blockly.Arduino.definitions_['var_declare_rgb_display02'] = 'Adafruit_NeoPixel rgb_display_02= Adafruit_NeoPixel(2,2,NEO_GRB + NEO_KHZ800);';
+  Blockly.Arduino.setups_['setup_rgb_display_begin_02'] = 'rgb_display_02.begin();';
+  var code = 'rgb_display_02.setPixelColor('+value_led+'-1,'+COLOR+');\n';
+  code +='rgb_display_02.show();\n';
+  return code;
+};
+
+Blockly.Arduino.MixGo_rgb2=function(){
+ var COLOR1 = Blockly.Arduino.valueToCode(this, 'COLOR1');
+ var COLOR2 = Blockly.Arduino.valueToCode(this, 'COLOR2');
+ COLOR1=COLOR1.replace(/#/g,"0x");
+ COLOR2=COLOR2.replace(/#/g,"0x");
+ Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
+ Blockly.Arduino.definitions_['var_declare_rgb_display02'] = 'Adafruit_NeoPixel rgb_display_02= Adafruit_NeoPixel(2,2,NEO_GRB + NEO_KHZ800);';
+ Blockly.Arduino.setups_['setup_rgb_display_begin_02'] = 'rgb_display_02.begin();';
+ var code = 'rgb_display_02.setPixelColor(0,'+COLOR1+');\n';
+ code += 'rgb_display_02.setPixelColor(1,'+COLOR2+');\n';
+ code+='rgb_display_02.show();\n';
+ return code;
+};
+
+Blockly.Arduino.MixGo_rgb_Brightness=function(){
+  var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness',Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
+  Blockly.Arduino.definitions_['var_declare_rgb_display02'] = 'Adafruit_NeoPixel rgb_display_02= Adafruit_NeoPixel(2,2,NEO_GRB + NEO_KHZ800);';
+  Blockly.Arduino.setups_['setup_rgb_display_begin_02'] = 'rgb_display_02.begin();';
+  var code='rgb_display_02.setBrightness('+Brightness+');\n';
+  code +='rgb_display_02.show();\n';
+  return code;
+};
+
+Blockly.Arduino.MixGo_rgb_rainbow1=function(){
+ Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
+ Blockly.Arduino.definitions_['var_declare_rgb_display02'] = 'Adafruit_NeoPixel rgb_display_02= Adafruit_NeoPixel(2,2,NEO_GRB + NEO_KHZ800);';
+ var wait_time=Blockly.Arduino.valueToCode(this, 'WAIT',Blockly.Arduino.ORDER_ATOMIC);
+ Blockly.Arduino.setups_['setup_rgb_display_begin_02'] = 'rgb_display_02.begin();';
+ var funcName2 = 'Wheel';
+ var code2= 'uint32_t Wheel(byte WheelPos) {\n';
+ code2 += 'if(WheelPos < 85) \n{\nreturn rgb_display_02.Color(WheelPos * 3, 255 - WheelPos * 3, 0);\n} \n';
+ code2 += 'else if(WheelPos < 170) \n{\nWheelPos -= 85; \nreturn rgb_display_02.Color(255 - WheelPos * 3, 0, WheelPos * 3);\n}\n ';
+ code2 += 'else\n {\nWheelPos -= 170;\nreturn rgb_display_02.Color(0, WheelPos * 3, 255 - WheelPos * 3);\n}\n';
+ code2 += '}\n';
+ Blockly.Arduino.definitions_[funcName2] = code2;
+ var funcName3 = 'rainbow';
+ var code3= 'void rainbow(uint8_t wait) {\n uint16_t i, j;\n';
+ code3 += 'for(j=0; j<256; j++) {\n';
+ code3 += 'for(i=0; i<rgb_display_02.numPixels(); i++)\n {\n';
+ code3 += 'rgb_display_02.setPixelColor(i, Wheel((i+j) & 255));\n}\n';
+ code3 += 'rgb_display_02.show();\n';
+ code3 += 'delay(wait);\n}\n}\n';
+ Blockly.Arduino.definitions_[funcName3] = code3;
+ var code = 'rainbow('+ wait_time+');\n'
+ return code;
+};
+
+Blockly.Arduino.MixGo_rgb_rainbow3=function(){
+  Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
+  Blockly.Arduino.definitions_['var_declare_rgb_display02'] = 'Adafruit_NeoPixel rgb_display_02= Adafruit_NeoPixel(2,2,NEO_GRB + NEO_KHZ800);';
+  var rainbow_color = Blockly.Arduino.valueToCode(this, 'rainbow_color',Blockly.Arduino.ORDER_ATOMIC);
+  var type = this.getFieldValue('TYPE');
+  var funcName2 = 'Wheel';
+  var code2= 'uint32_t Wheel(byte WheelPos) {\n';
+  code2 += 'if(WheelPos < 85)\n {\nreturn rgb_display_02.Color(WheelPos * 3, 255 - WheelPos * 3, 0);} \n';
+  code2 += 'else if(WheelPos < 170)\n {\nWheelPos -= 85; return rgb_display_02.Color(255 - WheelPos * 3, 0, WheelPos * 3);}\n ';
+  code2 += 'else {\nWheelPos -= 170;return rgb_display_02.Color(0, WheelPos * 3, 255 - WheelPos * 3);}\n';
+  code2 += '}\n';
+  Blockly.Arduino.definitions_[funcName2] = code2;
+  if(type=="normal")
+    var code3= 'for (int i = 0; i < rgb_display_02.numPixels(); i++)\n{rgb_display_02.setPixelColor(i, Wheel('+rainbow_color+' & 255));\n}\n';
+  else 
+    var code3= 'for (int i = 0; i < rgb_display_02.numPixels(); i++)\n {rgb_display_02.setPixelColor(i, Wheel(((i * 256 / rgb_display_02.numPixels()) + '+rainbow_color+') & 255));\n}\n';
+  return code3;
+};
