@@ -66,11 +66,11 @@ Blockly.Blocks.monitor_show_image_or_string = {
     this.setColour(Blockly.Blocks.display.HUE);
 	this.appendValueInput('data')
         .setCheck([String, "microbit_image"])
-        .appendField(Blockly.OLED_BITMAP_OR_STRING);
+        .appendField(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
-    this.setTooltip(Blockly.OLED_BITMAP_OR_STRING);
+    this.setTooltip(Blockly.MIXLY_MICROBIT_SHOW_IMAGE_OR_STRING);
   }
 };
 
