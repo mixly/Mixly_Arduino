@@ -38,11 +38,11 @@ Blockly.Blocks.group_lcd_init2 = {
     this.appendValueInput("PIN1")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('sclPin#');
+    .appendField('SCL');
     this.appendValueInput("PIN2")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('sdaPin#')
+    .appendField('SDA')
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);

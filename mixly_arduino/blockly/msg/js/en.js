@@ -19,7 +19,6 @@ var MSG = {
 	catMonitor:"Monitor",
 	catVar: "Variables",
 	catFun: "Functions",
-	catEthernet:"Ethernet",
 	catNetwork:"Network",
 	catEthernet_init:"Init",
 	catEthernet_clinet:"Client",
@@ -46,7 +45,8 @@ var MSG = {
 	cat4Digitdisplay:'4Digitdisplay',
 	catLCD:'LCD',
 	catOLED:'OLED',
-	catMatrix:'Matrix'
+	catMatrix:'Matrix',
+	catFactory:'Factory'
 };
 Blockly.blynk_connected='Connection state';
 Blockly.BLYNK_CONNECTED='Hardware Connected';

@@ -751,7 +751,6 @@ var MSG = {
 	catMatrix:"Matrix",
 	catVar: "Variables",
 	catFun: "Funciones",
-	catEthernet:"Ethernet",
 	catNetwork:"Network",
 	catEthernet_init:"Init",
 	catEthernet_clinet:"Client",

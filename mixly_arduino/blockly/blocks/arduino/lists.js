@@ -306,7 +306,7 @@ Blockly.Blocks['lists_create_with_text2'] = {
     .appendField(' ')
     .appendField(new Blockly.FieldTextInput('mylist'), 'VAR')
     .appendField('[')
-        //.appendField(new Blockly.FieldTextInput('3',Blockly.FieldTextInput.math_number_validator), 'SIZE')
+        .appendField(new Blockly.FieldTextInput("3"), "SIZE")
         .appendField(']')
         .appendField(Blockly.MIXLY_MAKELISTFROM)
         .appendField(this.newQuote_(true))

@@ -19,7 +19,6 @@ var MSG = {
 	catMonitor:"Monitor",
 	catVar: "Variables",
 	catFun: "Functions",
-	catEthernet:"Ethernet",
 	catNetwork:"Network",
 	catEthernet_init:"Init",
 	catEthernet_clinet:"Client",

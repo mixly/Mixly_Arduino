@@ -23,16 +23,17 @@ Blockly.Blocks.servo_move = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_MOVE);
+    this.setFieldValue("2","PIN");
 }
 };
 
 Blockly.Blocks.servo_writeMicroseconds = {
   init: function() {
     this.setColour(Blockly.Blocks.actuator.HUE);
-    this.appendValueInput("PIN", Number)
+    this.appendDummyInput("")
     .appendField(Blockly.MIXLY_SERVO)
     .appendField(Blockly.MIXLY_PIN)
-    .setCheck(Number);
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN");
     this.appendValueInput("DEGREE", Number)
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
@@ -41,6 +42,7 @@ Blockly.Blocks.servo_writeMicroseconds = {
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_SERVO_WRITEMICROSECONDS);
+    this.setFieldValue("2","PIN");
 }
 };
 
@@ -57,12 +59,13 @@ Blockly.Blocks.servo_read_degrees = {
     this.setOutput(true, Number);
     this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_READ);
+    this.setFieldValue("2","PIN");
 }
 };
 var TONE_NOTES=[["NOTE_C3", "131"],["NOTE_D3", "147"],["NOTE_E3", "165"],["NOTE_F3", "175"],["NOTE_G3", "196"],["NOTE_A3", "220"],["NOTE_B3", "247"],["NOTE_C4", "262"],["NOTE_D4", "294"],["NOTE_E4", "330"],["NOTE_F4", "349"],["NOTE_G4", "392"],["NOTE_A4", "440"],["NOTE_B4", "494"],["NOTE_C5", "532"],["NOTE_D5", "587"],["NOTE_E5", "659"],["NOTE_F5", "698"],["NOTE_G5", "784"],["NOTE_A5", "880"],["NOTE_B5", "988"],["NOTE_C6", "1047"],["NOTE_D6", "1175"],["NOTE_E6", "1319"],["NOTE_F6", "1397"],["NOTE_G6", "1568"],["NOTE_A6", "1760"],["NOTE_B6", "1976"],["NOTE_C7", "2093"],["NOTE_D7", "2349"],["NOTE_E7", "2637"],["NOTE_F7", "2794"],["NOTE_G7", "3136"],["NOTE_A7", "3520"],["NOTE_B7", "3951"]];
 
 Blockly.Blocks.tone_notes = {
- init: function() {
+   init: function() {
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(new Blockly.FieldDropdown(TONE_NOTES), 'STAT');
@@ -270,13 +273,14 @@ Blockly.Blocks.display_rgb_init = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('');
+    this.setFieldValue("12","PIN");
 }
 };
 
 Blockly.Blocks.display_rgb_Brightness = {
   init: function () {
     this.setColour(Blockly.Blocks.actuator.HUE);
-      this.appendDummyInput("")
+    this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB)
     .appendField(Blockly.MIXLY_PIN)
     .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
@@ -289,6 +293,7 @@ Blockly.Blocks.display_rgb_Brightness = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('');
+    this.setFieldValue("12","PIN");
 }
 };
 
@@ -313,6 +318,7 @@ Blockly.Blocks.display_rgb = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('');
+    this.setFieldValue("12","PIN");
 }
 };
 
@@ -337,26 +343,27 @@ Blockly.Blocks.display_rgb_rainbow1 = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setFieldValue("12","PIN");
 }
 };
 
 Blockly.Blocks.display_rgb_rainbow2 = {
   init: function () {
-   this.appendDummyInput("")
-   .appendField(Blockly.MIXLY_RGB)
-   .appendField(Blockly.MIXLY_PIN)
-   .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
-   .setAlign(Blockly.ALIGN_RIGHT);
-   this.appendValueInput("WAIT")
-   .setCheck(Number)
-   .setAlign(Blockly.ALIGN_RIGHT)
-   .appendField(Blockly.MIXLY_RGBdisplay_rgb_rainbow2);
-   this.setInputsInline(true);
-   this.setPreviousStatement(true, null);
-   this.setNextStatement(true, null);
-}
+     this.appendDummyInput("")
+     .appendField(Blockly.MIXLY_RGB)
+     .appendField(Blockly.MIXLY_PIN)
+     .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+     .setAlign(Blockly.ALIGN_RIGHT);
+     this.appendValueInput("WAIT")
+     .setCheck(Number)
+     .setAlign(Blockly.ALIGN_RIGHT)
+     .appendField(Blockly.MIXLY_RGBdisplay_rgb_rainbow2);
+     this.setInputsInline(true);
+     this.setPreviousStatement(true, null);
+     this.setNextStatement(true, null);
+     this.setFieldValue("12","PIN");
+ }
 };
-
 
 Blockly.Blocks.display_rgb_rainbow3 = {
   init: function () {
@@ -375,6 +382,7 @@ Blockly.Blocks.display_rgb_rainbow3 = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setFieldValue("12","PIN");
 }
 };
 

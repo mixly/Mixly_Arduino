@@ -23,7 +23,6 @@ var MSG = {
 	catMatrix:"點陣屏",
 	catVar:"變數",
 	catFun:"函數",
-	catEthernet:"以太網",
 	catNetwork:"網路",
 	catEthernet_init:"初始化",
 	catEthernet_clinet:"客戶端",
@@ -53,7 +52,9 @@ var MSG = {
 	cat4Digitdisplay:'四位数码管',
 	catLCD:'LCD液晶屏',
 	catOLED:'OLED显示屏',
-	catMatrix:'点阵屏'
+	catMatrix:'点阵屏',
+	catFactory:'自定義模塊',
+	catBlynk:'Blynk 物聯網'
 };
 Blockly.Msg.ADD_COMMENT = "添加注釋";
 Blockly.Msg.AUTH = "請授權這個應用程序以保存您的作品並共亯。";

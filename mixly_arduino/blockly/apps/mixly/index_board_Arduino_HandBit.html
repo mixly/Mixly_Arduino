@@ -953,103 +953,6 @@
     </value>
   </block>
 </category>
-<category id="catNetwork" colour="0">
-  <block type="WIFI_info" >
-    <value name="SSID">
-      <shadow type="text" >
-        <field name="TEXT">ssid</field>
-      </shadow>
-    </value>
-    <value name="PWD">
-      <shadow type="text" >
-        <field name="TEXT">password</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="network_wifi_connect">
-  </block>
-  <block type="network_get_connect">
-  </block>
-  <block type="network_stop"></block>
-  <block type="NTP_server">
-    <value name="server_add">
-      <shadow type="text">
-        <field name="TEXT">ntp1.aliyun.com</field>
-      </shadow>
-    </value>
-    <value name="timeZone">
-      <shadow type="math_number">
-       <field name="NUM">8</field>
-     </shadow>
-   </value>
-   <value name="Interval">
-    <shadow type="math_number">
-     <field name="NUM">600</field>
-   </shadow>
- </value>
-</block>
-<block type="NTP_server_get_time"></block>
-<block type="MQTT_server">
-  <value name="server_add">
-    <shadow type="text">
-      <field name="TEXT">192.168.1.101</field>
-    </shadow>
-  </value>
-  <value name="server_port">
-    <shadow type="math_number">
-     <field name="NUM">1883</field>
-   </shadow>
- </value>
- <value name="Client_ID">
-  <shadow type="text">
-    <field name="TEXT">ID</field>
-  </shadow>
-</value>
-<value name="IOT_ID">
-  <shadow type="text">
-    <field name="TEXT">siot</field>
-  </shadow>
-</value>
-<value name="IOT_PWD">
-  <shadow type="text">
-    <field name="TEXT">dfrobot</field>
-  </shadow>
-</value>
-</block>
-<block type="MQTT_publish">
- <value name="data">
-  <shadow type="math_number">
-    <field name="NUM">120</field>
-  </shadow>
-</value>
-<value name="Topic">
-  <shadow type="text">
-    <field name="TEXT">Topic_0</field>
-  </shadow>
-</value>
-</block>
-<block type="MQTT_subscribe">
-  <value name="IF0">
-    <block type="math_number">
-      <field name="NUM">Topic</field>
-    </block>
-  </value>
-  <statement name="DO0">
-    <block type="serial_println">
-      <field name="serial_select">Serial</field>
-      <value name="CONTENT">
-        <block type="MQTT_subscribe_value" >
-          <value name="Topic">
-            <shadow type="text">
-              <field name="TEXT">Topic</field>
-            </shadow>
-          </value>
-        </block>
-      </value>
-    </block>
-  </statement>
-</block>
-</category>
 <category id="catSensor" colour="40">
   <block type="IICSCAN">
   </block>
@@ -1096,24 +999,14 @@
     </value>
   </block>
   <block type="encoder_init">
-   <value name="CLK">
+  </block>
+  <block type="encoder_read"></block>
+  <block type="encoder_write">
+   <value name="value">
     <shadow type="math_number">
-      <field name="NUM">2</field>
+      <field name="NUM">0</field>
     </shadow>
   </value>
-  <value name="DT">
-    <shadow type="math_number">
-      <field name="NUM">3</field>
-    </shadow>
-  </value>
-</block>
-<block type="encoder_read"></block>
-<block type="encoder_write">
- <value name="value">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value>
 </block>
 <block type="MPU6050_update">
 </block>
@@ -1823,7 +1716,6 @@
   <block type="MAX7219_init">
     <value name="PIN1">
       <shadow type="pins_MOSI">
-        <field name="PIN">11</field>
       </shadow>
     </value>
     <value name="PIN2">
@@ -1833,7 +1725,6 @@
     </value>
     <value name="PIN3">
       <shadow type="pins_SCK">
-        <field name="PIN">13</field>
       </shadow>
     </value>
     <value name="hDisplays">
@@ -1936,6 +1827,104 @@
 </block>
 </category>
 </category>
+<category id="catNetwork" colour="0">
+  <block type="WIFI_info" >
+    <value name="SSID">
+      <shadow type="text" >
+        <field name="TEXT">ssid</field>
+      </shadow>
+    </value>
+    <value name="PWD">
+      <shadow type="text" >
+        <field name="TEXT">password</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="network_wifi_connect">
+  </block>
+  <block type="network_get_connect">
+  </block>
+  <block type="network_stop"></block>
+  <block type="NTP_server">
+    <value name="server_add">
+      <shadow type="text">
+        <field name="TEXT">ntp1.aliyun.com</field>
+      </shadow>
+    </value>
+    <value name="timeZone">
+      <shadow type="math_number">
+       <field name="NUM">8</field>
+     </shadow>
+   </value>
+   <value name="Interval">
+    <shadow type="math_number">
+     <field name="NUM">600</field>
+   </shadow>
+ </value>
+</block>
+<block type="NTP_server_get_time"></block>
+<block type="MQTT_server">
+  <value name="server_add">
+    <shadow type="text">
+      <field name="TEXT">192.168.1.101</field>
+    </shadow>
+  </value>
+  <value name="server_port">
+    <shadow type="math_number">
+     <field name="NUM">1883</field>
+   </shadow>
+ </value>
+ <value name="Client_ID">
+  <shadow type="text">
+    <field name="TEXT">ID</field>
+  </shadow>
+</value>
+<value name="IOT_ID">
+  <shadow type="text">
+    <field name="TEXT">siot</field>
+  </shadow>
+</value>
+<value name="IOT_PWD">
+  <shadow type="text">
+    <field name="TEXT">dfrobot</field>
+  </shadow>
+</value>
+</block>
+<block type="MQTT_publish">
+ <value name="data">
+  <shadow type="math_number">
+    <field name="NUM">120</field>
+  </shadow>
+</value>
+<value name="Topic">
+  <shadow type="text">
+    <field name="TEXT">Topic_0</field>
+  </shadow>
+</value>
+</block>
+<block type="MQTT_subscribe">
+  <value name="IF0">
+    <block type="math_number">
+      <field name="NUM">Topic</field>
+    </block>
+  </value>
+  <statement name="DO0">
+    <block type="serial_println">
+      <field name="serial_select">Serial</field>
+      <value name="CONTENT">
+        <block type="MQTT_subscribe_value" >
+          <value name="Topic">
+            <shadow type="text">
+              <field name="TEXT">Topic</field>
+            </shadow>
+          </value>
+        </block>
+      </value>
+    </block>
+  </statement>
+</block>
+</category>
+<sep></sep>
 <category id="catVar" colour="330" custom="VARIABLE">
 </category>
 <category id="catFun" custom="PROCEDURE" colour="290">

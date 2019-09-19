@@ -898,16 +898,6 @@
   <block type="IICSCAN">
   </block>
   <block type="chaoshengbo2">
-    <value name="PIN1">
-     <shadow type="pins_digital">
-      <field name="PIN">2</field>
-    </shadow>
-  </value>
-  <value name="PIN2">
-   <shadow type="pins_digital">
-    <field name="PIN">5</field>
-  </shadow>
-</value>
 </block>
 <block type="DHT">
   <value name="PIN">
@@ -929,10 +919,6 @@
 <block type="ADXL345">
 </block>
 <block type="weightSensor">
-  <value name="PIN1">
-  </value>
-  <value name="PIN2">
-  </value>
   <value name="scale">
     <shadow type="math_number">
       <field name="NUM">1992</field>
@@ -940,16 +926,6 @@
   </value>
 </block>
 <block type="encoder_init">
- <value name="CLK">
-  <shadow type="math_number">
-    <field name="NUM">2</field>
-  </shadow>
-</value>
-<value name="DT">
-  <shadow type="math_number">
-    <field name="NUM">3</field>
-  </shadow>
-</value>
 </block>
 <block type="encoder_read"></block>
 <block type="encoder_write">
@@ -1790,7 +1766,6 @@
   <block type="MAX7219_init">
     <value name="PIN1">
       <shadow type="pins_MOSI">
-        <field name="PIN">11</field>
       </shadow>
     </value>
     <value name="PIN2">
@@ -1800,7 +1775,6 @@
     </value>
     <value name="PIN3">
       <shadow type="pins_SCK">
-        <field name="PIN">13</field>
       </shadow>
     </value>
     <value name="hDisplays">
@@ -1848,62 +1822,62 @@
       </shadow>
     </value>
   </block>
- <block type="display_Max7219_setPosition">
-  <value name="NO">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-  <value name="X">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-  <value name="Y">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-</block>
+  <block type="display_Max7219_setPosition">
+    <value name="NO">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="X">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="Y">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
 
-<block type="display_HT16K33_Rotation">
-</block>
-<block type="display_Matrix_TEXT">
-  <value name="TEXT">
-    <shadow type="text">
-      <field name="TEXT">Mixly</field>
-    </shadow>
-  </value>
-  <value name="Speed">
+  <block type="display_HT16K33_Rotation">
+  </block>
+  <block type="display_Matrix_TEXT">
+    <value name="TEXT">
+      <shadow type="text">
+        <field name="TEXT">Mixly</field>
+      </shadow>
+    </value>
+    <value name="Speed">
+      <shadow type="math_number">
+        <field name="NUM">300</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_Matrix_DisplayChar">
+    <value name="NO">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="LEDArray">
+      <block type="display_Matrix_LedArray"></block>
+    </value>
+  </block>
+  <block type="Matrix_img">
+  </block>
+  <block type="display_Matrix_fillScreen">
+  </block>
+  <block type="display_Matrix_Brightness">
+   <value name="Brightness">
     <shadow type="math_number">
-      <field name="NUM">300</field>
+      <field name="NUM">5</field>
     </shadow>
   </value>
-</block>
-<block type="display_Matrix_DisplayChar">
-  <value name="NO">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="LEDArray">
-    <block type="display_Matrix_LedArray"></block>
-  </value>
-</block>
-<block type="Matrix_img">
-</block>
-<block type="display_Matrix_fillScreen">
-</block>
-<block type="display_Matrix_Brightness">
- <value name="Brightness">
-  <shadow type="math_number">
-    <field name="NUM">5</field>
-  </shadow>
-</value>
 </block>
 </category>
 </category>
-<category id="catEthernet" colour="0">
+<category id="catNetwork" colour="0">
   <block type="ethernet_init_begin">
    <value name="MAC">
     <block type="ethernet_mac_address"></block>
@@ -1942,7 +1916,7 @@
 </category>
 <category id="catFun" custom="PROCEDURE" colour="290">
 </category>
-<category id="catblynkIOT" name="Blynk IoT" colour="160">
+<category id="catBlynk" name="catBlynk" colour="160">
   <block type="blynk_server">
     <value name="server_add">
       <shadow type="text">
@@ -2566,7 +2540,7 @@
   <block type="Vs2GetCardType"></block>
   <block type="Vs2GetColorLabel"></block>
 </category>
-<category id="catFactory" name="Factory" colour="65">
+<category id="catFactory" name="catFactory" colour="65">
   <block type="folding_block"></block>
   <block type="factory_notes"></block>
   <block type="factory_include"></block>

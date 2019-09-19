@@ -72,15 +72,16 @@ Blockly.Blocks.chaoshengbo2 = {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_CHAOSHENGBO);
-    this.appendValueInput("PIN1", Number)
+    this.appendDummyInput("")  
     .appendField('Trig#')
-    .setCheck(Number);
-    this.appendValueInput("PIN2", Number)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "Trig")
     .appendField('Echo#')
-    .setCheck(Number);
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "Echo");
     this.setInputsInline(true);
     this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_CHAOSHENGBO);
+    this.setFieldValue("2","Trig");
+    this.setFieldValue("4","Echo");
   }
 };
 
@@ -104,6 +105,7 @@ Blockly.Blocks.DHT = {
       };
       return TOOLTIPS[op];
     });
+    this.setFieldValue("4","PIN");
   }
 };
 
@@ -133,6 +135,7 @@ Blockly.Blocks.ds18b20 = {
     .appendField(new Blockly.FieldDropdown(UNIT), "UNIT");
     this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_DS18);
+    this.setFieldValue("4","PIN");
   }
 };
 //DF称重模块
@@ -144,20 +147,17 @@ Blockly.Blocks.weightSensor = {
     .appendField(Blockly.MIXLY_WEIGHTSENSOR);
     this.appendDummyInput("")  
     .appendField('Dout#')
-    .appendField(new Blockly
-      .FieldDropdown(profile.default.digital), "DOUT")
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "DOUT")
     .appendField('SCK#')
-    .appendField(new Blockly
-      .FieldDropdown(profile.default.digital), "SCK");
-    // this.appendValueInput("offset")
-    // .setCheck(Number)
-    // .appendField(Blockly.HX711_offset);
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "SCK");
     this.appendValueInput("scale")
     .setCheck(Number)
     .appendField(Blockly.HX711_scale);
     this.setInputsInline(true);
     this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_WEIGHTSENSOR);
+    this.setFieldValue("2","DOUT");
+    this.setFieldValue("4","SCK");
   }
 };
 //DS1302 RTC
@@ -396,17 +396,20 @@ Blockly.Blocks['encoder_init'] = {
     .appendField(Blockly.MIXLY_ENCODER);
     this.appendDummyInput()
     .appendField(new Blockly.FieldDropdown(Encoder_NO), "Encoder_NO");
-    this.appendValueInput("DT")
-    .setCheck(Number)
-    .appendField("DT");
-    this.appendValueInput("CLK")
-    .setCheck(Number)
-    .appendField("CLK");
+    this.appendDummyInput("")  
+    .appendField('DT')
+    .appendField(new Blockly
+      .FieldDropdown(profile.default.digital), "DT")
+    .appendField('CLK')
+    .appendField(new Blockly
+      .FieldDropdown(profile.default.digital), "CLK");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setInputsInline(true);
     this.setTooltip("");
     this.setHelpUrl("");
+    this.setFieldValue("2","DT");
+    this.setFieldValue("4","CLK");
   }
 };
 
@@ -442,6 +445,7 @@ Blockly.Blocks['encoder_read'] = {
     this.setInputsInline(true);
   }
 };
+
 //BME280读取
 Blockly.Blocks['BME280_READ'] = {
   init: function() {
@@ -461,18 +465,15 @@ Blockly.Blocks.PS2_init={
    this.setColour(Blockly.Blocks.sensor.HUE);
    this.appendDummyInput("")
    .appendField(Blockly.PS2_INIT);
-   this.appendValueInput("PS2_DAT", Number)
+   this.appendDummyInput("")  
    .appendField('DAT#')
-   .setCheck(Number);
-   this.appendValueInput("PS2_CMD", Number)
+   .appendField(new Blockly.FieldDropdown(profile.default.digital), "PS2_DAT")
    .appendField('CMD#')
-   .setCheck(Number);
-   this.appendValueInput("PS2_SEL", Number)
+   .appendField(new Blockly.FieldDropdown(profile.default.digital), "PS2_CMD")
    .appendField('SEL#')
-   .setCheck(Number);
-   this.appendValueInput("PS2_CLK", Number)
+   .appendField(new Blockly.FieldDropdown(profile.default.digital), "PS2_SEL")
    .appendField('CLK#')
-   .setCheck(Number);
+   .appendField(new Blockly.FieldDropdown(profile.default.digital), "PS2_CLK");
    this.appendDummyInput("")
    .appendField(Blockly.PS2_setRumble)
    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ON,"true"],[Blockly.MIXLY_OFF,"false"]]), "rumble");
@@ -480,6 +481,10 @@ Blockly.Blocks.PS2_init={
    this.setPreviousStatement(true);
    this.setNextStatement(true);
    this.setTooltip('');
+   this.setFieldValue("2","PS2_DAT");
+   this.setFieldValue("4","PS2_CMD");
+   this.setFieldValue("5","PS2_SEL");
+   this.setFieldValue("12","PS2_CLK");
  }
 };
 

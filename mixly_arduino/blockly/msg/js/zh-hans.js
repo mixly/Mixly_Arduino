@@ -19,7 +19,6 @@ var MSG = {
 	catMonitor: "显示器",
 	catVar: "变量",
 	catFun: "函数",
-	catEthernet: "以太网",
 	catNetwork: "网络",
 	catEthernet_init: "初始化",
 	catEthernet_clinet: "客户端",
@@ -46,7 +45,9 @@ var MSG = {
 	cat4Digitdisplay:'四位数码管',
 	catLCD:'LCD液晶屏',
 	catOLED:'OLED显示屏',
-	catMatrix:'点阵屏'
+	catMatrix:'点阵屏',
+	catFactory:'自定义模块',
+	catBlynk:'Blynk 物联网'
 };
 Blockly.Msg.ADD_COMMENT = "添加注释";
 Blockly.Msg.AUTH = "请授权这个应用程序以保存您的作品并共享。";

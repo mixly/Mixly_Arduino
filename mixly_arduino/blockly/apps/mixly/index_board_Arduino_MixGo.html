@@ -1102,24 +1102,14 @@
     </value>
   </block>
   <block type="encoder_init">
-   <value name="CLK">
+  </block>
+  <block type="encoder_read"></block>
+  <block type="encoder_write">
+   <value name="value">
     <shadow type="math_number">
-      <field name="NUM">2</field>
+      <field name="NUM">0</field>
     </shadow>
   </value>
-  <value name="DT">
-    <shadow type="math_number">
-      <field name="NUM">3</field>
-    </shadow>
-  </value>
-</block>
-<block type="encoder_read"></block>
-<block type="encoder_write">
- <value name="value">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value>
 </block>
 <block type="MPU6050_update">
 </block>
@@ -1821,7 +1811,6 @@
   <block type="MAX7219_init">
     <value name="PIN1">
       <shadow type="pins_MOSI">
-        <field name="PIN">11</field>
       </shadow>
     </value>
     <value name="PIN2">
@@ -1831,7 +1820,6 @@
     </value>
     <value name="PIN3">
       <shadow type="pins_SCK">
-        <field name="PIN">13</field>
       </shadow>
     </value>
     <value name="hDisplays">
@@ -2568,7 +2556,7 @@
       </shadow>
     </value>
   </block>
-   <block type="RGB_color_seclet" >
+  <block type="RGB_color_seclet" >
    <field name="COLOR">#ff0000</field>
  </block>
  <block type="RGB_color_rgb">

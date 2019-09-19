@@ -1222,7 +1222,6 @@ Blockly.Blocks.IICSCAN = {
   }
 };
 
-
 Blockly.Blocks.factory_declare2 = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);

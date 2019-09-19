@@ -38,16 +38,16 @@ Blockly.Arduino.gps_getData_xxx = function() {
 };
 
 Blockly.Arduino.chaoshengbo2 = function () {
-  var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
-  var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.setups_['setup_output_' + dropdown_pin1] = 'pinMode(' + dropdown_pin1 + ', OUTPUT);';
-  Blockly.Arduino.setups_['setup_output_' + dropdown_pin2] = 'pinMode(' + dropdown_pin2 + ', INPUT);';
-  var funcName = 'checkdistance_' + dropdown_pin1 + '_' + dropdown_pin2;
+  var Trig = this.getFieldValue('Trig');
+  var Echo = this.getFieldValue('Echo');
+  Blockly.Arduino.setups_['setup_output_' + Trig] = 'pinMode(' + Trig + ', OUTPUT);';
+  Blockly.Arduino.setups_['setup_output_' + Echo] = 'pinMode(' + Echo + ', INPUT);';
+  var funcName = 'checkdistance_' + Trig + '_' + Echo;
   var code = 'float' + ' ' + funcName + '() {\n'
-  + '  digitalWrite(' + dropdown_pin1 + ', LOW);\n' + '  delayMicroseconds(2);\n'
-  + '  digitalWrite(' + dropdown_pin1 + ', HIGH);\n' + '  delayMicroseconds(10);\n'
-  + '  digitalWrite(' + dropdown_pin1 + ', LOW);\n'
-  + '  float distance = pulseIn(' + dropdown_pin2 + ', HIGH) / 58.00;\n'
+  + '  digitalWrite(' + Trig + ', LOW);\n' + '  delayMicroseconds(2);\n'
+  + '  digitalWrite(' + Trig + ', HIGH);\n' + '  delayMicroseconds(10);\n'
+  + '  digitalWrite(' + Trig + ', LOW);\n'
+  + '  float distance = pulseIn(' + Echo + ', HIGH) / 58.00;\n'
   + '  delay(10);\n' + '  return distance;\n'
   + '}\n';
   Blockly.Arduino.definitions_[funcName] = code;
@@ -198,9 +198,9 @@ Blockly.Arduino.encoder_read = function() {
 
 //旋转编码管脚定义
 Blockly.Arduino.encoder_init = function() {
+  var CLK = this.getFieldValue('CLK');
+  var DT = this.getFieldValue('DT');
   var Encoder_NO= this.getFieldValue('Encoder_NO');
-  var CLK= Blockly.Arduino.valueToCode(this, 'CLK', Blockly.Arduino.ORDER_ATOMIC);
-  var DT= Blockly.Arduino.valueToCode(this, 'DT', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_Encoder'] ='#include <Encoder.h>\n';
   Blockly.Arduino.definitions_['var_declare_EncoderDY'] = 'Encoder encoder_'+Encoder_NO+'('+CLK+','+DT+');\n ';
   return  null;
@@ -220,10 +220,10 @@ Blockly.Arduino.BME280_READ = function() {
 };
 
 Blockly.Arduino.PS2_init = function() {
-  var PS2_DAT = Blockly.Arduino.valueToCode(this, 'PS2_DAT', Blockly.Arduino.ORDER_ATOMIC);
-  var PS2_CMD = Blockly.Arduino.valueToCode(this, 'PS2_CMD', Blockly.Arduino.ORDER_ATOMIC);
-  var PS2_SEL = Blockly.Arduino.valueToCode(this, 'PS2_SEL', Blockly.Arduino.ORDER_ATOMIC);
-  var PS2_CLK = Blockly.Arduino.valueToCode(this, 'PS2_CLK', Blockly.Arduino.ORDER_ATOMIC);
+  var PS2_DAT = this.getFieldValue('PS2_DAT');
+  var PS2_CMD = this.getFieldValue('PS2_CMD');
+  var PS2_SEL = this.getFieldValue('PS2_SEL');
+  var PS2_CLK = this.getFieldValue('PS2_CLK');
   var rumble=this.getFieldValue('rumble');
   Blockly.Arduino.definitions_['define_PS2'] = '#include <PS2X_lib.h>';   
   Blockly.Arduino.definitions_['define_origin'] = 'PS2X ps2x;';
@@ -246,14 +246,14 @@ Blockly.Arduino.PS2_stk = function() {
 };
 
 Blockly.Arduino.TCS34725_Get_RGB = function() {
-   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-  Blockly.Arduino.definitions_['include_Adafruit_TCS34725'] = '#include <Adafruit_TCS34725.h>';
-  Blockly.Arduino.definitions_['var_Adafruit_TCS34725'] = 'Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);';
-  Blockly.Arduino.definitions_['var_declare_RGB'] = 'float red, green, blue;';
-  Blockly.Arduino.setups_['setup_Adafruit_TCS34725' ] = 'if (tcs.begin()) {\nSerial.println("Found sensor");\n} \nelse { \nSerial.println("No TCS34725 found ... check your connections");\nwhile (1);\n}';
-  var code = "delay(60);\ntcs.getRGB(&red, &green, &blue);\n";  
-  var RGB = this.getFieldValue('TCS34725_GETRGB');
-  return [RGB, Blockly.Arduino.ORDER_ATOMIC];
+ Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+ Blockly.Arduino.definitions_['include_Adafruit_TCS34725'] = '#include <Adafruit_TCS34725.h>';
+ Blockly.Arduino.definitions_['var_Adafruit_TCS34725'] = 'Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);';
+ Blockly.Arduino.definitions_['var_declare_RGB'] = 'float red, green, blue;';
+ Blockly.Arduino.setups_['setup_Adafruit_TCS34725' ] = 'if (tcs.begin()) {\nSerial.println("Found sensor");\n} \nelse { \nSerial.println("No TCS34725 found ... check your connections");\nwhile (1);\n}';
+ var code = "delay(60);\ntcs.getRGB(&red, &green, &blue);\n";  
+ var RGB = this.getFieldValue('TCS34725_GETRGB');
+ return [RGB, Blockly.Arduino.ORDER_ATOMIC];
 };
 Blockly.Arduino.IICSCAN = function() {
   Blockly.Arduino.definitions_['include_WIRE'] = '#include <Wire.h>';
