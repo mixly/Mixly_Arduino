@@ -898,42 +898,42 @@
   <block type="IICSCAN">
   </block>
   <block type="chaoshengbo2">
-</block>
-<block type="DHT">
-  <value name="PIN">
-    <shadow type="pins_digital"></shadow>
-  </value>
-</block>
-<block type="LM35">
-  <value name="PIN">
-    <shadow type="pins_analog"></shadow>
-  </value>
-</block>
-<block type="ds18b20">
-  <value name="PIN">
-    <shadow type="pins_digital"></shadow>
-  </value>
-</block>
-<block type="TCS34725_Get_RGB">
-</block>
-<block type="ADXL345">
-</block>
-<block type="weightSensor">
-  <value name="scale">
+  </block>
+  <block type="DHT">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+  </block>
+  <block type="LM35">
+    <value name="PIN">
+      <shadow type="pins_analog"></shadow>
+    </value>
+  </block>
+  <block type="ds18b20">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+  </block>
+  <block type="TCS34725_Get_RGB">
+  </block>
+  <block type="ADXL345">
+  </block>
+  <block type="weightSensor">
+    <value name="scale">
+      <shadow type="math_number">
+        <field name="NUM">1992</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="encoder_init">
+  </block>
+  <block type="encoder_read"></block>
+  <block type="encoder_write">
+   <value name="value">
     <shadow type="math_number">
-      <field name="NUM">1992</field>
+      <field name="NUM">0</field>
     </shadow>
   </value>
-</block>
-<block type="encoder_init">
-</block>
-<block type="encoder_read"></block>
-<block type="encoder_write">
- <value name="value">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value>
 </block>
 <!--DS302-->
 <block type="DS1302_init">
@@ -1344,16 +1344,6 @@
     </block>
     <block type="display_4digitdisplay_showDot"></block>
     <block type="display_TM1637_init">
-      <value name="PIN1">
-        <shadow type="pins_digital">
-          <field name="PIN">5</field>
-        </shadow>
-      </value>
-      <value name="PIN2">
-        <shadow type="pins_digital">
-          <field name="PIN">4</field>
-        </shadow>
-      </value>
     </block>
     <block type="display_TM1637_Brightness">
       <value name="Brightness">
@@ -1393,72 +1383,55 @@
     </block>
   </category>
   <category id="catLCD" colour="180">
-    <block type="group_lcd_init">
-      <value name="device">
-        <shadow type="math_number">
-          <field name="NUM">0x27</field>
-        </shadow>
-      </value>
-    </block>
     <block type="group_lcd_init2">
       <value name="device">
         <shadow type="math_number">
           <field name="NUM">0x27</field>
         </shadow>
       </value>
-      <value name="PIN1">
-       <shadow type="pins_digital">
-        <field name="PIN">A1</field>
+    </block>
+    <block type="group_lcd_init3">
+     <value name="PIN1">
+      <shadow type="pins_digital">
+        <field name="PIN">7</field>
       </shadow>
     </value>
     <value name="PIN2">
-     <shadow type="pins_digital">
-      <field name="PIN">A2</field>
-    </shadow>
+      <shadow type="pins_digital">
+        <field name="PIN">8</field>
+      </shadow>
+    </value>
+    <value name="PIN3">
+      <shadow type="pins_digital">
+        <field name="PIN">9</field>
+      </shadow>
+    </value>
+    <value name="PIN4">
+      <shadow type="pins_digital">
+        <field name="PIN">10</field>
+      </shadow>
+    </value>
+    <value name="PIN5">
+      <shadow type="pins_digital">
+        <field name="PIN">11</field>
+      </shadow>
+    </value>
+    <value name="PIN6">
+      <shadow type="pins_digital">
+        <field name="PIN">12</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="group_lcd_print">
+    <value name="TEXT">
+     <block type="text">
+      <field name="TEXT"></field>
+    </block>
   </value>
-</block>
-<block type="group_lcd_init3">
- <value name="PIN1">
-  <shadow type="pins_digital">
-    <field name="PIN">7</field>
-  </shadow>
-</value>
-<value name="PIN2">
-  <shadow type="pins_digital">
-    <field name="PIN">8</field>
-  </shadow>
-</value>
-<value name="PIN3">
-  <shadow type="pins_digital">
-    <field name="PIN">9</field>
-  </shadow>
-</value>
-<value name="PIN4">
-  <shadow type="pins_digital">
-    <field name="PIN">10</field>
-  </shadow>
-</value>
-<value name="PIN5">
-  <shadow type="pins_digital">
-    <field name="PIN">11</field>
-  </shadow>
-</value>
-<value name="PIN6">
-  <shadow type="pins_digital">
-    <field name="PIN">12</field>
-  </shadow>
-</value>
-</block>
-<block type="group_lcd_print">
-  <value name="TEXT">
+  <value name="TEXT2">
    <block type="text">
     <field name="TEXT"></field>
   </block>
-</value>
-<value name="TEXT2">
- <block type="text">
-  <field name="TEXT"></field>
-</block>
 </value>
 </block>
 <block type="group_lcd_print2">

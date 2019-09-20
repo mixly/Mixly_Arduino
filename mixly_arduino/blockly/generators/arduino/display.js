@@ -4,27 +4,24 @@ goog.provide('Blockly.Arduino.display');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino.group_lcd_init = function() {
-  var varName = this.getFieldValue('VAR');
-  var TYPE = this.getFieldValue('TYPE');
-  var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27';
-  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-  Blockly.Arduino.definitions_['include_LiquidCrystal_I2C'] = '#include <LiquidCrystal_I2C.h>';
-  Blockly.Arduino.definitions_['var_declare_LiquidCrystal_I2C_'+varName] = 'LiquidCrystal_I2C '+varName+'('+device+','+TYPE+');';
-  Blockly.Arduino.setups_['setup_lcd_init_' + varName] = varName + '.init();';
-  Blockly.Arduino.setups_['setup_lcd_backlight_' + varName] = varName + '.backlight();';  
-  return '';
-};
-
 Blockly.Arduino.group_lcd_init2 = function() {
   var varName = this.getFieldValue('VAR');
   var TYPE = this.getFieldValue('TYPE');
-  var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27';
-  var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'PIN1',Blockly.Arduino.ORDER_ATOMIC);
-  var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'PIN2',Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.definitions_['include_SoftI2CMaster'] = '#include <SoftI2CMaster.h>';
-  Blockly.Arduino.definitions_['include_LiquidCrystal_SoftI2C'] = '#include <LiquidCrystal_SoftI2C.h>';
-  Blockly.Arduino.definitions_['var_declare_LiquidCrystal_SoftI2C_' + varName] = 'LiquidCrystal_SoftI2C ' + varName + '(' + device + ',' + TYPE + ',' + dropdown_pin1 + ',' + dropdown_pin2 + ');';
+  var SCL = this.getFieldValue('SCL');
+  var SDA = this.getFieldValue('SDA');
+  var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27';  
+  if(SDA=="SDA"&&SCL=="SCL")
+  {
+    Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+    Blockly.Arduino.definitions_['include_LiquidCrystal_I2C'] = '#include <LiquidCrystal_I2C.h>';
+    Blockly.Arduino.definitions_['var_declare_LiquidCrystal_I2C_'+varName] = 'LiquidCrystal_I2C '+varName+'('+device+','+TYPE+');';
+  }
+  else
+  {
+    Blockly.Arduino.definitions_['include_SoftI2CMaster'] = '#include <SoftI2CMaster.h>';
+    Blockly.Arduino.definitions_['include_LiquidCrystal_SoftI2C'] = '#include <LiquidCrystal_SoftI2C.h>';
+    Blockly.Arduino.definitions_['var_declare_LiquidCrystal_SoftI2C_' + varName] = 'LiquidCrystal_SoftI2C ' + varName + '(' + device + ',' + TYPE + ',' + SCL + ',' + SDA + ');';
+  }
   Blockly.Arduino.setups_['setup_lcd_init_' + varName] = varName + '.init();';
   Blockly.Arduino.setups_['setup_lcd_backlight_' + varName] = varName + '.backlight();';    
   return '';
@@ -111,12 +108,12 @@ var tm1637_DIO;
 var tm1637_CLK;
 
 Blockly.Arduino.display_TM1637_init = function () {
- tm1637_CLK = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
- tm1637_DIO= Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
- Blockly.Arduino.definitions_['include_SevenSegmentTM1637'] = '#include <SevenSegmentTM1637.h>';
- Blockly.Arduino.definitions_['var_declare_SevenSegmentTM1637'] = 'SevenSegmentTM1637  display(' + tm1637_CLK + ',' + tm1637_DIO + ');';
- Blockly.Arduino.setups_['setup_ display.begin()'] = ' display.begin();';
- return '';
+  var tm1637_CLK = this.getFieldValue('CLK');
+  var tm1637_DIO = this.getFieldValue('DIO');
+  Blockly.Arduino.definitions_['include_SevenSegmentTM1637'] = '#include <SevenSegmentTM1637.h>';
+  Blockly.Arduino.definitions_['var_declare_SevenSegmentTM1637'] = 'SevenSegmentTM1637  display(' + tm1637_CLK + ',' + tm1637_DIO + ');';
+  Blockly.Arduino.setups_['setup_ display.begin()'] = ' display.begin();';
+  return '';
 };
 
 Blockly.Arduino.display_TM1637_displyPrint = function () {
