@@ -6,24 +6,6 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.display.HUE = 180;
 
-Blockly.Blocks.group_lcd_init = {
-  init: function() {
-    this.setColour(Blockly.Blocks.display.HUE);
-    this.appendValueInput('device')
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_SETUP)
-    .appendField(Blockly.MIXLY_DF_LCD)
-    .appendField(new Blockly.FieldDropdown([['1602','16,2'],['2004','20,4']]),'TYPE')
-    .appendField(new Blockly.FieldTextInput('mylcd'), 'VAR')
-    .appendField(Blockly.MIXLY_LCD_ADDRESS);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setInputsInline(true);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_LCD_INIT);
-}
-};
-
 Blockly.Blocks.group_lcd_init2 = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
@@ -35,18 +17,19 @@ Blockly.Blocks.group_lcd_init2 = {
     .appendField(new Blockly.FieldDropdown([['1602','16,2'],['2004','20,4']]),'TYPE')
     .appendField(new Blockly.FieldTextInput('mylcd'), 'VAR')
     .appendField(Blockly.MIXLY_LCD_ADDRESS);
-    this.appendValueInput("PIN1")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('SCL');
-    this.appendValueInput("PIN2")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
+ this.appendDummyInput("")  
+     .appendField('SCL')
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "SCL")
     .appendField('SDA')
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "SDA");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_LCD_INIT2);
+     this.setFieldValue("SCL","SCL");
+    this.setFieldValue("SDA","SDA");
 }
 };
 
@@ -202,28 +185,27 @@ Blockly.Blocks.display_4digitdisplay_showDot = {
     this.setTooltip(Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot);
 }
 };
+
 Blockly.Blocks.display_TM1637_init = {
   init: function () {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendValueInput("PIN1")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
+    this.appendDummyInput("")  
     .appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_INIT)
-    .appendField("CLK")
-    .appendField(Blockly.MIXLY_PIN);
-    this.appendValueInput("PIN2")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField("DIO")
-    .appendField(Blockly.MIXLY_PIN);
+    .appendField('CLK')
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "CLK")
+    .appendField('DIO')
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "DIO");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP);
     this.setHelpUrl('');
+    this.setFieldValue("2","CLK");
+    this.setFieldValue("4","DIO");
 }
 };
-
 
 Blockly.Blocks.display_TM1637_displyPrint = {
   init: function () {
@@ -321,41 +303,41 @@ Blockly.Blocks.HT16K33_Init = {
 //MAX7219点阵屏幕初始化
 Blockly.Blocks.MAX7219_init = {
   init: function() {
-   this.appendDummyInput("")
-   .appendField(Blockly.MIXLY_MAX7219_INIT);
-   this.appendDummyInput("")
-   .appendField(Blockly.MIXLY_MATRIX_NAME)
-   .appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName');
-   this.appendValueInput("PIN1")
-   .setCheck(Number)
-   .setAlign(Blockly.ALIGN_RIGHT)
-   .appendField("DIN(MOSI)")
-   .appendField(Blockly.MIXLY_PIN);
-   this.appendValueInput("PIN2")
-   .setCheck(Number)
-   .setAlign(Blockly.ALIGN_RIGHT)
-   .appendField("CS")
-   .appendField(Blockly.MIXLY_PIN);
-   this.appendValueInput("PIN3")
-   .setCheck(Number)
-   .setAlign(Blockly.ALIGN_RIGHT)
-   .appendField("CLK(SCK)")
-   .appendField(Blockly.MIXLY_PIN);
-   this.appendValueInput("hDisplays")
-   .setCheck(Number)
-   .setAlign(Blockly.ALIGN_RIGHT)
-   .appendField(Blockly.MIXLY_MAX7219_HDISPALY);
-   this.appendValueInput("vDisplays")
-   .setCheck(Number)
-   .setAlign(Blockly.ALIGN_RIGHT)
-   .appendField(Blockly.MIXLY_MAX7219_VDISPALY);
-   this.setPreviousStatement(true, null);
-   this.setNextStatement(true, null);
-   this.setColour(Blockly.Blocks.display.HUE);
-   this.setInputsInline(false);
-   this.setTooltip(Blockly.MAX7219_INIT_TOOLTIP);
-   this.setHelpUrl('');
-}
+     this.appendDummyInput("")
+     .appendField(Blockly.MIXLY_MAX7219_INIT);
+     this.appendDummyInput("")
+     .appendField(Blockly.MIXLY_MATRIX_NAME)
+     .appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName');
+     this.appendValueInput("PIN1")
+     .setCheck(Number)
+     .setAlign(Blockly.ALIGN_RIGHT)
+     .appendField("DIN(MOSI)")
+     .appendField(Blockly.MIXLY_PIN);
+     this.appendValueInput("PIN2")
+     .setCheck(Number)
+     .setAlign(Blockly.ALIGN_RIGHT)
+     .appendField("CS")
+     .appendField(Blockly.MIXLY_PIN);
+     this.appendValueInput("PIN3")
+     .setCheck(Number)
+     .setAlign(Blockly.ALIGN_RIGHT)
+     .appendField("CLK(SCK)")
+     .appendField(Blockly.MIXLY_PIN);
+     this.appendValueInput("hDisplays")
+     .setCheck(Number)
+     .setAlign(Blockly.ALIGN_RIGHT)
+     .appendField(Blockly.MIXLY_MAX7219_HDISPALY);
+     this.appendValueInput("vDisplays")
+     .setCheck(Number)
+     .setAlign(Blockly.ALIGN_RIGHT)
+     .appendField(Blockly.MIXLY_MAX7219_VDISPALY);
+     this.setPreviousStatement(true, null);
+     this.setNextStatement(true, null);
+     this.setColour(Blockly.Blocks.display.HUE);
+     this.setInputsInline(false);
+     this.setTooltip(Blockly.MAX7219_INIT_TOOLTIP);
+     this.setHelpUrl('');
+ }
 };
 
 //点阵屏显示点
@@ -1443,10 +1425,10 @@ Blockly.Blocks.oled_set_EN_Font = {
     this.appendDummyInput("")
     .appendField(Blockly.set_EN_Font)
     .appendField(new Blockly.FieldDropdown(EN_FONT_NAME), "FONT_NAME");
-     this.appendDummyInput("")
+    this.appendDummyInput("")
     .appendField(Blockly.FontSize)
     .appendField(new Blockly.FieldDropdown(EN_FONT_SIZE), "FONT_SIZE");
-     this.appendDummyInput("")
+    this.appendDummyInput("")
     .appendField(Blockly.Font_Style)
     .appendField(new Blockly.FieldDropdown(EN_FONT_STYLE), "FONT_STYLE");
     this.setInputsInline(true);
@@ -1464,7 +1446,7 @@ Blockly.Blocks.oled_set_CN_Font = {
     this.appendDummyInput("")
     .appendField(Blockly.set_CN_Font)
     .appendField(new Blockly.FieldDropdown(CN_FONT_NAME), "FONT_NAME");
-     this.appendDummyInput("")
+    this.appendDummyInput("")
     .appendField(Blockly.FontSize)
     .appendField(new Blockly.FieldDropdown(CN_FONT_SIZE), "FONT_SIZE");
     this.setInputsInline(true);
