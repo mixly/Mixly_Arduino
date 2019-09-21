@@ -405,6 +405,14 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../../media/blynk/blynk2.png') no-repeat;
 	background-size: 100% auto; 
 }
+#\:0 > div:nth-child(2) > div:nth-child(18) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
+	background:url('../../../media/mark/monitor.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(18) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/monitor2.png') no-repeat;
+	background-size: 100% auto; 
+}
 /*没有点开折叠面板的图标*/
 #\:0 > div:nth-child(2) > div:nth-child(18) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconClosedLtr {
 	background:url('../../../media/mark/monitor.png') no-repeat;
