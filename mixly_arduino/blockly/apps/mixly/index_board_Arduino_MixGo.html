@@ -40,7 +40,7 @@
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/arduino/actuator.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/MQTT.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/ethernet.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/pins.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/inout.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/control.js"></script>
@@ -51,7 +51,6 @@
   <script type="text/javascript" src="../../generators/esp32_Arduino/communicate.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/storage.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/sensor.js"></script>
-  <script type="text/javascript" src="../../generators/esp32_Arduino/ethernet.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/variables.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/serial.js"></script>
@@ -92,7 +91,7 @@
   <script type="text/javascript" src="../../blocks/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/MixGo.js"></script>
-  <script type="text/javascript" src="../../blocks/arduino/MQTT.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/ethernet.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/mu_vision.js"></script> 
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color_esp32_arduino_advance.css" />
@@ -959,117 +958,10 @@
     </value>
   </block>
 </category>
-<category id="catNetwork" colour="0">
-  <block type="WIFI_info" >
-    <value name="SSID">
-      <shadow type="text" >
-        <field name="TEXT">ssid</field>
-      </shadow>
-    </value>
-    <value name="PWD">
-      <shadow type="text" >
-        <field name="TEXT">password</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="network_wifi_connect">
-  </block>
-  <block type="network_get_connect">
-  </block>
-  <block type="network_stop"></block>
-  <block type="NTP_server">
-    <value name="server_add">
-      <shadow type="text">
-        <field name="TEXT">ntp1.aliyun.com</field>
-      </shadow>
-    </value>
-    <value name="timeZone">
-      <shadow type="math_number">
-       <field name="NUM">8</field>
-     </shadow>
-   </value>
-   <value name="Interval">
-    <shadow type="math_number">
-     <field name="NUM">600</field>
-   </shadow>
- </value>
-</block>
-<block type="NTP_server_get_time"></block>
-<block type="MQTT_server">
-  <value name="server_add">
-    <shadow type="text">
-      <field name="TEXT">192.168.1.101</field>
-    </shadow>
-  </value>
-  <value name="server_port">
-    <shadow type="math_number">
-     <field name="NUM">1883</field>
-   </shadow>
- </value>
- <value name="Client_ID">
-  <shadow type="text">
-    <field name="TEXT">ID</field>
-  </shadow>
-</value>
-<value name="IOT_ID">
-  <shadow type="text">
-    <field name="TEXT">siot</field>
-  </shadow>
-</value>
-<value name="IOT_PWD">
-  <shadow type="text">
-    <field name="TEXT">dfrobot</field>
-  </shadow>
-</value>
-</block>
-<block type="MQTT_publish">
- <value name="data">
-  <shadow type="math_number">
-    <field name="NUM">120</field>
-  </shadow>
-</value>
-<value name="Topic">
-  <shadow type="text">
-    <field name="TEXT">Topic_0</field>
-  </shadow>
-</value>
-</block>
-<block type="MQTT_subscribe">
-  <value name="IF0">
-    <block type="math_number">
-      <field name="NUM">Topic</field>
-    </block>
-  </value>
-  <statement name="DO0">
-    <block type="serial_println">
-      <field name="serial_select">Serial</field>
-      <value name="CONTENT">
-        <block type="MQTT_subscribe_value" >
-          <value name="Topic">
-            <shadow type="text">
-              <field name="TEXT">Topic</field>
-            </shadow>
-          </value>
-        </block>
-      </value>
-    </block>
-  </statement>
-</block>
-</category>
 <category id="catSensor" colour="40">
   <block type="IICSCAN">
   </block>
   <block type="chaoshengbo2">
-    <value name="PIN1">
-      <shadow type="pins_digital">
-        <field name="PIN">2</field>
-      </shadow>
-    </value>
-    <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">5</field>
-      </shadow>
-    </value>
   </block>
   <block type="DHT">
     <value name="PIN">
@@ -1091,10 +983,6 @@
   <block type="ADXL345">
   </block>
   <block type="weightSensor">
-    <value name="PIN1">
-    </value>
-    <value name="PIN2">
-    </value>
     <value name="scale">
       <shadow type="math_number">
         <field name="NUM">1992</field>
@@ -1102,14 +990,22 @@
     </value>
   </block>
   <block type="encoder_init">
-  </block>
-  <block type="encoder_read"></block>
-  <block type="encoder_write">
-   <value name="value">
+   <value name="CLK">
     <shadow type="math_number">
-      <field name="NUM">0</field>
     </shadow>
   </value>
+  <value name="DT">
+    <shadow type="math_number">
+    </shadow>
+  </value>
+</block>
+<block type="encoder_read"></block>
+<block type="encoder_write">
+ <value name="value">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
 </block>
 <block type="MPU6050_update">
 </block>
@@ -1117,26 +1013,7 @@
 </block>
 <block type="BME280_READ">
 </block>
-<block type="PS2_init">
-  <value name="PS2_DAT">
-    <shadow type="pins_digital">
-    </shadow>
-  </value>
-  <value name="PS2_CMD">
-    <shadow type="pins_digital">
-    </shadow>
-  </value>
-  <value name="PS2_SEL">
-    <shadow type="pins_digital">
-    </shadow>
-  </value>
-  <value name="PS2_CLK">
-    <shadow type="pins_digital">
-    </shadow>
-  </value>
-</block>
-<block type="PS2_Button"></block>  
-<block type="PS2_stk"></block> 
+
 </category>
 <category id="catActuator" colour="100">
  <block type="Mixly_motor">
@@ -1374,6 +1251,66 @@
     </shadow>
   </value>
 </block>
+<block type="GD5800_MP3_CONTROL">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+</block>
+<block type="GD5800_MP3_PLAY_NUM">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+  <value name="NUM">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+  </value>
+</block>
+<block type="GD5800_MP3_LOOP_MODE">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+</block>
+<block type="GD5800_MP3_EQ_MODE">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+</block>
+<block type="GD5800_MP3_VOL">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+  <value name="vol">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
 </category>
 <category id="catMonitor" colour="180">
   <category id="cat4Digitdisplay" colour="180">
@@ -1389,16 +1326,6 @@
     </block>
     <block type="display_4digitdisplay_showDot"></block>
     <block type="display_TM1637_init">
-      <value name="PIN1">
-        <shadow type="pins_digital">
-          <field name="PIN">5</field>
-        </shadow>
-      </value>
-      <value name="PIN2">
-        <shadow type="pins_digital">
-          <field name="PIN">4</field>
-        </shadow>
-      </value>
     </block>
     <block type="display_TM1637_Brightness">
       <value name="Brightness">
@@ -1438,66 +1365,55 @@
     </block>
   </category>
   <category id="catLCD" colour="180">
-setup_rgb_display_begin_02
     <block type="group_lcd_init2">
       <value name="device">
         <shadow type="math_number">
           <field name="NUM">0x27</field>
         </shadow>
       </value>
-      <value name="PIN1">
-       <shadow type="pins_digital">
-        <field name="PIN">A1</field>
+    </block>
+    <block type="group_lcd_init3">
+     <value name="PIN1">
+      <shadow type="pins_digital">
+        <field name="PIN">7</field>
       </shadow>
     </value>
     <value name="PIN2">
-     <shadow type="pins_digital">
-      <field name="PIN">A2</field>
-    </shadow>
+      <shadow type="pins_digital">
+        <field name="PIN">8</field>
+      </shadow>
+    </value>
+    <value name="PIN3">
+      <shadow type="pins_digital">
+        <field name="PIN">9</field>
+      </shadow>
+    </value>
+    <value name="PIN4">
+      <shadow type="pins_digital">
+        <field name="PIN">10</field>
+      </shadow>
+    </value>
+    <value name="PIN5">
+      <shadow type="pins_digital">
+        <field name="PIN">11</field>
+      </shadow>
+    </value>
+    <value name="PIN6">
+      <shadow type="pins_digital">
+        <field name="PIN">12</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="group_lcd_print">
+    <value name="TEXT">
+     <block type="text">
+      <field name="TEXT"></field>
+    </block>
   </value>
-</block>
-<block type="group_lcd_init3">
- <value name="PIN1">
-  <shadow type="pins_digital">
-    <field name="PIN">7</field>
-  </shadow>
-</value>
-<value name="PIN2">
-  <shadow type="pins_digital">
-    <field name="PIN">8</field>
-  </shadow>
-</value>
-<value name="PIN3">
-  <shadow type="pins_digital">
-    <field name="PIN">9</field>
-  </shadow>
-</value>
-<value name="PIN4">
-  <shadow type="pins_digital">
-    <field name="PIN">10</field>
-  </shadow>
-</value>
-<value name="PIN5">
-  <shadow type="pins_digital">
-    <field name="PIN">11</field>
-  </shadow>
-</value>
-<value name="PIN6">
-  <shadow type="pins_digital">
-    <field name="PIN">12</field>
-  </shadow>
-</value>
-</block>
-<block type="group_lcd_print">
-  <value name="TEXT">
+  <value name="TEXT2">
    <block type="text">
     <field name="TEXT"></field>
   </block>
-</value>
-<value name="TEXT2">
- <block type="text">
-  <field name="TEXT"></field>
-</block>
 </value>
 </block>
 <block type="group_lcd_print2">
@@ -1532,62 +1448,53 @@ setup_rgb_display_begin_02
         </statement>
       </block>
     </next>
-    <value name="SCL">
-     <shadow type="pins_digital">
-      <field name="PIN">SCL</field>
+    
+  </block>
+  <block type="oled_set_EN_Font">
+  </block>
+  <block type="oled_set_CN_Font">
+  </block>
+  <block type="procedures_defnoreturn">
+    <field name="NAME">page1</field>
+    <statement name="STACK">
+      <block type="oled_set_EN_Font">
+        <field name="TYPE">timR08_tr</field>
+        <next>
+          <block type="oled_print" >
+            <value name="POS_X">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="POS_Y">
+              <shadow type="math_number">
+                <field name="NUM">20</field>
+              </shadow>
+            </value>
+            <value name="TEXT">
+              <shadow type="text">
+                <field name="TEXT">1234</field>
+              </shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="oled_define_bitmap_data"></block>
+  <block type="oled_clear"></block>
+  <block type="oled_face">
+   <value name="POS_X">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
     </shadow>
   </value>
-  <value name="SDA">
-   <shadow type="pins_digital">
-    <field name="PIN">SDA</field>
-  </shadow>
-</value>
-</block>
-<block type="oled_set_EN_Font">
-</block>
-<block type="oled_set_CN_Font">
-</block>
-<block type="procedures_defnoreturn">
-  <field name="NAME">page1</field>
-  <statement name="STACK">
-    <block type="oled_set_EN_Font">
-      <field name="TYPE">timR08_tr</field>
-      <next>
-        <block type="oled_print" >
-          <value name="POS_X">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="POS_Y">
-            <shadow type="math_number">
-              <field name="NUM">20</field>
-            </shadow>
-          </value>
-          <value name="TEXT">
-            <shadow type="text">
-              <field name="TEXT">1234</field>
-            </shadow>
-          </value>
-        </block>
-      </next>
-    </block>
-  </statement>
-</block>
-<block type="oled_define_bitmap_data"></block>
-<block type="oled_clear"></block>
-<block type="oled_face">
- <value name="POS_X">
-  <shadow type="math_number">
-    <field name="NUM">20</field>
-  </shadow>
-</value>
-<value name="POS_Y">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value>
-<field name="Icon_size"></field>
+  <value name="POS_Y">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <field name="Icon_size"></field>
 </block>
 <block type="oled_icons">
  <value name="POS_X">
@@ -1916,11 +1823,109 @@ setup_rgb_display_begin_02
 </block>
 </category>
 </category>
+<category id="catNetwork" colour="0">
+  <block type="WIFI_info" >
+    <value name="SSID">
+      <shadow type="text" >
+        <field name="TEXT">ssid</field>
+      </shadow>
+    </value>
+    <value name="PWD">
+      <shadow type="text" >
+        <field name="TEXT">password</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="network_wifi_connect">
+  </block>
+  <block type="network_get_connect">
+  </block>
+  <block type="network_stop"></block>
+  <block type="NTP_server">
+    <value name="server_add">
+      <shadow type="text">
+        <field name="TEXT">ntp1.aliyun.com</field>
+      </shadow>
+    </value>
+    <value name="timeZone">
+      <shadow type="math_number">
+       <field name="NUM">8</field>
+     </shadow>
+   </value>
+   <value name="Interval">
+    <shadow type="math_number">
+     <field name="NUM">600</field>
+   </shadow>
+ </value>
+</block>
+<block type="NTP_server_get_time"></block>
+<block type="MQTT_server">
+  <value name="server_add">
+    <shadow type="text">
+      <field name="TEXT">192.168.1.101</field>
+    </shadow>
+  </value>
+  <value name="server_port">
+    <shadow type="math_number">
+     <field name="NUM">1883</field>
+   </shadow>
+ </value>
+ <value name="Client_ID">
+  <shadow type="text">
+    <field name="TEXT">ID</field>
+  </shadow>
+</value>
+<value name="IOT_ID">
+  <shadow type="text">
+    <field name="TEXT">siot</field>
+  </shadow>
+</value>
+<value name="IOT_PWD">
+  <shadow type="text">
+    <field name="TEXT">dfrobot</field>
+  </shadow>
+</value>
+</block>
+<block type="MQTT_publish">
+ <value name="data">
+  <shadow type="math_number">
+    <field name="NUM">120</field>
+  </shadow>
+</value>
+<value name="Topic">
+  <shadow type="text">
+    <field name="TEXT">Topic_0</field>
+  </shadow>
+</value>
+</block>
+<block type="MQTT_subscribe">
+  <value name="IF0">
+    <block type="math_number">
+      <field name="NUM">Topic</field>
+    </block>
+  </value>
+  <statement name="DO0">
+    <block type="serial_println">
+      <field name="serial_select">Serial</field>
+      <value name="CONTENT">
+        <block type="MQTT_subscribe_value" >
+          <value name="Topic">
+            <shadow type="text">
+              <field name="TEXT">Topic</field>
+            </shadow>
+          </value>
+        </block>
+      </value>
+    </block>
+  </statement>
+</block>
+</category>
+<sep></sep>
 <category id="catVar" colour="330" custom="VARIABLE">
 </category>
 <category id="catFun" custom="PROCEDURE" colour="290">
 </category>
-<category id="catblynkIOT" name="Blynk IoT" colour="160">
+<category id="catBlynk" name="catBlynk" colour="160">
   <block type="blynk_server">
     <value name="server_add">
       <shadow type="text">
@@ -2765,7 +2770,7 @@ setup_rgb_display_begin_02
   <block type="Vs2GetCardType"></block>
   <block type="Vs2GetColorLabel"></block>
 </category>
-<category id="catFactory" name="Factory" colour="65">
+<category id="catFactory" name="catFactory" colour="65">
   <block type="folding_block"></block>
   <block type="factory_notes"></block>
   <block type="factory_include"></block>

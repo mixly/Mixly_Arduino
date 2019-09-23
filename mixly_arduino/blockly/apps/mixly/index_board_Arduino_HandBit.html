@@ -40,7 +40,7 @@
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/arduino/actuator.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/MQTT.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/ethernet.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/pins.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/inout.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/control.js"></script>
@@ -51,7 +51,6 @@
   <script type="text/javascript" src="../../generators/esp32_Arduino/communicate.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/storage.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/sensor.js"></script>
-  <script type="text/javascript" src="../../generators/esp32_Arduino/ethernet.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/variables.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/esp32_Arduino/serial.js"></script>
@@ -93,7 +92,6 @@
   <script type="text/javascript" src="../../blocks/esp32_Arduino/serial.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/esp32_Arduino/Handbit.js"></script>
-  <script type="text/javascript" src="../../blocks/arduino/MQTT.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/mu_vision.js"></script> 
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color_esp32_arduino_advance.css" />
@@ -119,72 +117,72 @@
             <span id="copyright" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
           </td>
           <td class="tabmin">
-            <input name="undo" type="image" title="undo(ctrl+z)" src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
-          </td>
-          <td class="tabmin" style="padding-right:20px">
-            <input onclick="Blockly.mainWorkspace.undo(1);" name="redo" type="image" title="redo(ctrl+y)" src="media/redo.png" style="padding:5px" onmouseover="this.src='media/redo1.png'" onmousedown="this.src='media/redo2.png'" onmouseup="this.src='media/redo1.png'" onmouseout="this.src='media/redo.png'" width="20" height="20" border="0">
-          </td>
-          <td class="tabmin" style="padding-right:20px;display:none;">
-            <button id="fakeload">LoadXML</button>
-            <input type="file" id="load" style="display: none;" />
-          </td>
-          <td class="tabmin">
-            <select id="languageMenu"></select>
-          </td>
-          <td class="tabmin">
-            <select id="aceTheme" style="width:100px; height:23px; margin-left: 10px;">
-              <optgroup label="代码区亮色主题">
-                <option value="ace/theme/chrome">Chrome</option>
-                <option value="ace/theme/clouds">Clouds</option>
-                <option value="ace/theme/crimson_editor">Crimson Editor</option>
-                <option value="ace/theme/dawn">Dawn</option>
-                <option value="ace/theme/dreamweaver">Dreamweaver</option>
-                <option value="ace/theme/eclipse">Eclipse</option>
-                <option value="ace/theme/github">GitHub</option>
-                <option value="ace/theme/iplastic">IPlastic</option>
-                <option value="ace/theme/solarized_light">Solarized Light</option>
-                <option value="ace/theme/textmate">TextMate</option>
-                <option value="ace/theme/tomorrow">Tomorrow</option>
-                <option value="ace/theme/xcode">XCode</option>
-                <option value="ace/theme/kuroir">Kuroir</option>
-                <option value="ace/theme/katzenmilch">KatzenMilch</option>
-                <option value="ace/theme/sqlserver">SQL Server</option>
-              </optgroup>
-              <optgroup label="代码区暗色主题">
-                <option value="ace/theme/ambiance">Ambiance</option>
-                <option value="ace/theme/chaos">Chaos</option>
-                <option value="ace/theme/clouds_midnight">Clouds Midnight</option>
-                <option value="ace/theme/dracula">Dracula</option>
-                <option value="ace/theme/cobalt">Cobalt</option>
-                <option value="ace/theme/gruvbox">Gruvbox</option>
-                <option value="ace/theme/gob">Green on Black</option>
-                <option value="ace/theme/idle_fingers">idle Fingers</option>
-                <option value="ace/theme/kr_theme">krTheme</option>
-                <option value="ace/theme/merbivore">Merbivore</option>
-                <option value="ace/theme/merbivore_soft">Merbivore Soft</option>
-                <option value="ace/theme/mono_industrial">Mono Industrial</option>
-                <option value="ace/theme/monokai">Monokai</option>
-                <option value="ace/theme/pastel_on_dark">Pastel on dark</option>
-                <option value="ace/theme/solarized_dark">Solarized Dark</option>
-                <option value="ace/theme/terminal">Terminal</option>
-                <option value="ace/theme/tomorrow_night">Tomorrow Night</option>
-                <option value="ace/theme/tomorrow_night_blue">Tomorrow Night Blue</option>
-                <option value="ace/theme/tomorrow_night_bright">Tomorrow Night Bright</option>
-                <option value="ace/theme/tomorrow_night_eighties">Tomorrow Night 80s</option>
-                <option value="ace/theme/twilight">Twilight</option>
-                <option value="ace/theme/vibrant_ink">Vibrant Ink</option>
-              </optgroup>
-            </select>
-          </td>
-          <script>
-           document.getElementById('span_blocks').textContent = MSG['tab_blocks'];
-           document.getElementById('span_arduino').textContent = MSG['tab_arduino'];
-         </script>
-       </tr>
-     </table>
-   </td>
- </tr>
- <tr>
+           <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
+         </td>
+         <td class="tabmin" style="padding-right:20px">
+           <input onclick="Blockly.mainWorkspace.undo(1);" name="redo" type="image" title="redo(ctrl+y)"  src="media/redo.png" style="padding:5px" onmouseover="this.src='media/redo1.png'" onmousedown="this.src='media/redo2.png'" onmouseup="this.src='media/redo1.png'" onmouseout="this.src='media/redo.png'" width="20" height="20" border="0">
+         </td>
+         <td class="tabmin" style="padding-right:20px;display:none;">
+          <button id="fakeload">LoadXML</button>
+          <input type="file" id="load" style="display: none;"/>
+        </td>
+        <td class="tabmin">
+          <select id="languageMenu"></select>
+        </td>
+        <td class="tabmin">
+          <select id="aceTheme" style="width:100px; height:23px; margin-left: 10px;">
+           <optgroup label="代码区亮色主题">
+            <option value="ace/theme/chrome">Chrome</option>
+            <option value="ace/theme/clouds">Clouds</option>
+            <option value="ace/theme/crimson_editor">Crimson Editor</option>
+            <option value="ace/theme/dawn">Dawn</option>
+            <option value="ace/theme/dreamweaver">Dreamweaver</option>
+            <option value="ace/theme/eclipse">Eclipse</option>
+            <option value="ace/theme/github">GitHub</option>
+            <option value="ace/theme/iplastic">IPlastic</option>
+            <option value="ace/theme/solarized_light">Solarized Light</option>
+            <option value="ace/theme/textmate">TextMate</option>
+            <option value="ace/theme/tomorrow">Tomorrow</option>
+            <option value="ace/theme/xcode">XCode</option>
+            <option value="ace/theme/kuroir">Kuroir</option>
+            <option value="ace/theme/katzenmilch">KatzenMilch</option>
+            <option value="ace/theme/sqlserver">SQL Server</option>
+          </optgroup>
+          <optgroup label="代码区暗色主题">
+            <option value="ace/theme/ambiance">Ambiance</option>
+            <option value="ace/theme/chaos">Chaos</option>
+            <option value="ace/theme/clouds_midnight">Clouds Midnight</option>
+            <option value="ace/theme/dracula">Dracula</option>
+            <option value="ace/theme/cobalt">Cobalt</option>
+            <option value="ace/theme/gruvbox">Gruvbox</option>
+            <option value="ace/theme/gob">Green on Black</option>
+            <option value="ace/theme/idle_fingers">idle Fingers</option>
+            <option value="ace/theme/kr_theme">krTheme</option>
+            <option value="ace/theme/merbivore">Merbivore</option>
+            <option value="ace/theme/merbivore_soft">Merbivore Soft</option>
+            <option value="ace/theme/mono_industrial">Mono Industrial</option>
+            <option value="ace/theme/monokai">Monokai</option>
+            <option value="ace/theme/pastel_on_dark">Pastel on dark</option>
+            <option value="ace/theme/solarized_dark">Solarized Dark</option>
+            <option value="ace/theme/terminal">Terminal</option>
+            <option value="ace/theme/tomorrow_night">Tomorrow Night</option>
+            <option value="ace/theme/tomorrow_night_blue">Tomorrow Night Blue</option>
+            <option value="ace/theme/tomorrow_night_bright">Tomorrow Night Bright</option>
+            <option value="ace/theme/tomorrow_night_eighties">Tomorrow Night 80s</option>
+            <option value="ace/theme/twilight">Twilight</option>
+            <option value="ace/theme/vibrant_ink">Vibrant Ink</option>
+          </optgroup>
+        </select>
+      </td>
+      <script>
+       document.getElementById('span_blocks').textContent = MSG['tab_blocks'];
+       document.getElementById('span_arduino').textContent = MSG['tab_arduino'];
+     </script>
+   </tr>
+ </table>
+</td>
+</tr>
+<tr>
   <td height="100%" width="75%" id="content_area"></td>
   <td style="display:none;height:100%;width:0.3%;background: #ddd;cursor: w-resize;" id="mid_td"></td>
   <td width="25%" style="background-color:#eee;display:none;" id="side_code_parent">
@@ -957,16 +955,6 @@
   <block type="IICSCAN">
   </block>
   <block type="chaoshengbo2">
-    <value name="PIN1">
-      <shadow type="pins_digital">
-        <field name="PIN">2</field>
-      </shadow>
-    </value>
-    <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">5</field>
-      </shadow>
-    </value>
   </block>
   <block type="DHT">
     <value name="PIN">
@@ -988,10 +976,6 @@
   <block type="ADXL345">
   </block>
   <block type="weightSensor">
-    <value name="PIN1">
-    </value>
-    <value name="PIN2">
-    </value>
     <value name="scale">
       <shadow type="math_number">
         <field name="NUM">1992</field>
@@ -999,14 +983,22 @@
     </value>
   </block>
   <block type="encoder_init">
-  </block>
-  <block type="encoder_read"></block>
-  <block type="encoder_write">
-   <value name="value">
+   <value name="CLK">
     <shadow type="math_number">
-      <field name="NUM">0</field>
     </shadow>
   </value>
+  <value name="DT">
+    <shadow type="math_number">
+    </shadow>
+  </value>
+</block>
+<block type="encoder_read"></block>
+<block type="encoder_write">
+ <value name="value">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
 </block>
 <block type="MPU6050_update">
 </block>
@@ -1014,30 +1006,6 @@
 </block>
 <block type="BME280_READ">
 </block>
-<block type="PS2_init">
-  <value name="PS2_DAT">
-    <shadow type="pins_digital">
-      <field name="PIN">13</field>
-    </shadow>
-  </value>
-  <value name="PS2_CMD">
-    <shadow type="pins_digital">
-      <field name="PIN">11</field>
-    </shadow>
-  </value>
-  <value name="PS2_SEL">
-    <shadow type="pins_digital">
-      <field name="PIN">10</field>
-    </shadow>
-  </value>
-  <value name="PS2_CLK">
-    <shadow type="pins_digital">
-      <field name="PIN">12</field>
-    </shadow>
-  </value>
-</block>
-<block type="PS2_Button"></block>  
-<block type="PS2_stk"></block> 
 </category>
 <category id="catActuator" colour="100">
  <block type="Mixly_motor">
@@ -1275,6 +1243,66 @@
     </shadow>
   </value>
 </block>
+<block type="GD5800_MP3_CONTROL">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+</block>
+<block type="GD5800_MP3_PLAY_NUM">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+  <value name="NUM">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+  </value>
+</block>
+<block type="GD5800_MP3_LOOP_MODE">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+</block>
+<block type="GD5800_MP3_EQ_MODE">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+</block>
+<block type="GD5800_MP3_VOL">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+  <value name="vol">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
 </category>
 <category id="catMonitor" colour="180">
 
@@ -1292,16 +1320,6 @@
     </block>
     <block type="display_4digitdisplay_showDot"></block>
     <block type="display_TM1637_init">
-      <value name="PIN1">
-        <shadow type="pins_digital">
-          <field name="PIN">5</field>
-        </shadow>
-      </value>
-      <value name="PIN2">
-        <shadow type="pins_digital">
-          <field name="PIN">4</field>
-        </shadow>
-      </value>
     </block>
     <block type="display_TM1637_Brightness">
       <value name="Brightness">
@@ -1341,66 +1359,55 @@
     </block>
   </category>
   <category id="catLCD" colour="180">
-setup_rgb_display_begin_02
     <block type="group_lcd_init2">
       <value name="device">
         <shadow type="math_number">
           <field name="NUM">0x27</field>
         </shadow>
       </value>
-      <value name="PIN1">
-       <shadow type="pins_digital">
-        <field name="PIN">A1</field>
+    </block>
+    <block type="group_lcd_init3">
+     <value name="PIN1">
+      <shadow type="pins_digital">
+        <field name="PIN">7</field>
       </shadow>
     </value>
     <value name="PIN2">
-     <shadow type="pins_digital">
-      <field name="PIN">A2</field>
-    </shadow>
+      <shadow type="pins_digital">
+        <field name="PIN">8</field>
+      </shadow>
+    </value>
+    <value name="PIN3">
+      <shadow type="pins_digital">
+        <field name="PIN">9</field>
+      </shadow>
+    </value>
+    <value name="PIN4">
+      <shadow type="pins_digital">
+        <field name="PIN">10</field>
+      </shadow>
+    </value>
+    <value name="PIN5">
+      <shadow type="pins_digital">
+        <field name="PIN">11</field>
+      </shadow>
+    </value>
+    <value name="PIN6">
+      <shadow type="pins_digital">
+        <field name="PIN">12</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="group_lcd_print">
+    <value name="TEXT">
+     <block type="text">
+      <field name="TEXT"></field>
+    </block>
   </value>
-</block>
-<block type="group_lcd_init3">
- <value name="PIN1">
-  <shadow type="pins_digital">
-    <field name="PIN">7</field>
-  </shadow>
-</value>
-<value name="PIN2">
-  <shadow type="pins_digital">
-    <field name="PIN">8</field>
-  </shadow>
-</value>
-<value name="PIN3">
-  <shadow type="pins_digital">
-    <field name="PIN">9</field>
-  </shadow>
-</value>
-<value name="PIN4">
-  <shadow type="pins_digital">
-    <field name="PIN">10</field>
-  </shadow>
-</value>
-<value name="PIN5">
-  <shadow type="pins_digital">
-    <field name="PIN">11</field>
-  </shadow>
-</value>
-<value name="PIN6">
-  <shadow type="pins_digital">
-    <field name="PIN">12</field>
-  </shadow>
-</value>
-</block>
-<block type="group_lcd_print">
-  <value name="TEXT">
+  <value name="TEXT2">
    <block type="text">
     <field name="TEXT"></field>
   </block>
-</value>
-<value name="TEXT2">
- <block type="text">
-  <field name="TEXT"></field>
-</block>
 </value>
 </block>
 <block type="group_lcd_print2">
@@ -1436,62 +1443,53 @@ setup_rgb_display_begin_02
         </statement>
       </block>
     </next>
-    <value name="SCL">
-     <shadow type="pins_digital">
-      <field name="PIN">SCL</field>
+    
+  </block>
+  <block type="oled_set_EN_Font">
+  </block>
+  <block type="oled_set_CN_Font">
+  </block>
+  <block type="procedures_defnoreturn">
+    <field name="NAME">page1</field>
+    <statement name="STACK">
+      <block type="oled_set_EN_Font">
+        <field name="TYPE">timR08_tr</field>
+        <next>
+          <block type="oled_print" >
+            <value name="POS_X">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="POS_Y">
+              <shadow type="math_number">
+                <field name="NUM">20</field>
+              </shadow>
+            </value>
+            <value name="TEXT">
+              <shadow type="text">
+                <field name="TEXT">1234</field>
+              </shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="oled_define_bitmap_data"></block>
+  <block type="oled_clear"></block>
+  <block type="oled_face">
+   <value name="POS_X">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
     </shadow>
   </value>
-  <value name="SDA">
-   <shadow type="pins_digital">
-    <field name="PIN">SDA</field>
-  </shadow>
-</value>
-</block>
-<block type="oled_set_EN_Font">
-</block>
-<block type="oled_set_CN_Font">
-</block>
-<block type="procedures_defnoreturn">
-  <field name="NAME">page1</field>
-  <statement name="STACK">
-    <block type="oled_set_EN_Font">
-      <field name="TYPE">timR08_tr</field>
-      <next>
-        <block type="oled_print" >
-          <value name="POS_X">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="POS_Y">
-            <shadow type="math_number">
-              <field name="NUM">20</field>
-            </shadow>
-          </value>
-          <value name="TEXT">
-            <shadow type="text">
-              <field name="TEXT">1234</field>
-            </shadow>
-          </value>
-        </block>
-      </next>
-    </block>
-  </statement>
-</block>
-<block type="oled_define_bitmap_data"></block>
-<block type="oled_clear"></block>
-<block type="oled_face">
- <value name="POS_X">
-  <shadow type="math_number">
-    <field name="NUM">20</field>
-  </shadow>
-</value>
-<value name="POS_Y">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value>
-<field name="Icon_size"></field>
+  <value name="POS_Y">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <field name="Icon_size"></field>
 </block>
 <block type="oled_icons">
  <value name="POS_X">
@@ -1766,58 +1764,58 @@ setup_rgb_display_begin_02
       </shadow>
     </value>
   </block>
-<!-- <block type="display_Max7219_setPosition">
-  <value name="NO">
+  <block type="display_Max7219_setPosition">
+    <value name="NO">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="X">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="Y">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="display_HT16K33_Rotation">
+  </block>
+  <block type="display_Matrix_TEXT">
+    <value name="TEXT">
+      <shadow type="text">
+        <field name="TEXT">Mixly</field>
+      </shadow>
+    </value>
+    <value name="Speed">
+      <shadow type="math_number">
+        <field name="NUM">300</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="display_Matrix_DisplayChar">
+    <value name="NO">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="LEDArray">
+      <block type="display_Matrix_LedArray"></block>
+    </value>
+  </block>
+  <block type="Matrix_img">
+  </block>
+  <block type="display_Matrix_fillScreen">
+  </block>
+  <block type="display_Matrix_Brightness">
+   <value name="Brightness">
     <shadow type="math_number">
-      <field name="NUM">1</field>
+      <field name="NUM">5</field>
     </shadow>
   </value>
-  <value name="X">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-  <value name="Y">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-</block>
--->
-<block type="display_HT16K33_Rotation">
-</block>
-<block type="display_Matrix_TEXT">
-  <value name="TEXT">
-    <shadow type="text">
-      <field name="TEXT">Mixly</field>
-    </shadow>
-  </value>
-  <value name="Speed">
-    <shadow type="math_number">
-      <field name="NUM">300</field>
-    </shadow>
-  </value>
-</block>
-<block type="display_Matrix_DisplayChar">
-  <value name="NO">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="LEDArray">
-    <block type="display_Matrix_LedArray"></block>
-  </value>
-</block>
-<block type="Matrix_img">
-</block>
-<block type="display_Matrix_fillScreen">
-</block>
-<block type="display_Matrix_Brightness">
- <value name="Brightness">
-  <shadow type="math_number">
-    <field name="NUM">5</field>
-  </shadow>
-</value>
 </block>
 </category>
 </category>
@@ -1923,7 +1921,7 @@ setup_rgb_display_begin_02
 </category>
 <category id="catFun" custom="PROCEDURE" colour="290">
 </category>
-<category id="catblynkIOT" name="Blynk IoT" colour="160">
+<category id="catBlynk" name="catBlynk" colour="160">
   <block type="blynk_server">
     <value name="server_add">
       <shadow type="text">
@@ -3007,7 +3005,7 @@ setup_rgb_display_begin_02
   <block type="Vs2GetCardType"></block>
   <block type="Vs2GetColorLabel"></block>
 </category>
-<category id="catFactory" name="Factory" colour="65">
+<category id="catFactory" name="catFactory" colour="65">
   <block type="folding_block"></block>
   <block type="factory_notes"></block>
   <block type="factory_include"></block>

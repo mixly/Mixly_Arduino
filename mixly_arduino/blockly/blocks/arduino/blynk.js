@@ -3,11 +3,6 @@ goog.provide("Blockly.Blocks.blynk");
 goog.require("Blockly.Blocks");
 Blockly.Blocks.blynk.HUE0 = 0; //红色
 Blockly.Blocks.blynk.HUE1 = 159; //Mountain Meadow
-Blockly.Blocks.blynk.HUE2 = 120; //绿色
-Blockly.Blocks.blynk.HUE3 = 180; //青色
-Blockly.Blocks.blynk.HUE4 = 240; //蓝色
-Blockly.Blocks.blynk.HUE5 = 300; //紫色
-Blockly.Blocks.blynk.MusicHUE = 200;
 Blockly.Blocks.blynk.ICON_WIDTH = 20; //传感器图标宽度
 Blockly.Blocks.blynk.ICON_HEIGHT = 20; //传感器图标高度
 
@@ -1045,158 +1040,6 @@ Blockly.Blocks.blynk_time_input_1 = {
     this.setTooltip(Blockly.blynk_ACC_tooltip);
   }
 };
-
-
-//MP3播放控制
-var GD5800_MP3_CONTROL_TYPE = [
-[Blockly.MIXLY_MP3_PLAY, "play();"],
-[Blockly.MIXLY_MP3_PAUSE, "pause();"],
-[Blockly.MIXLY_MP3_NEXT, "next();"],
-[Blockly.MIXLY_MP3_PREV, "prev();"],
-[Blockly.MIXLY_MP3_VOL_UP, "volumeUp();"],
-[Blockly.MIXLY_MP3_VOL_DOWN, "volumeDn();"]
-];
-
-//GD5800 MP3模块
-Blockly.Blocks.GD5800_MP3_CONTROL = {
-  init: function() {
-    this.setColour(Blockly.Blocks.blynk.MusicHUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.GD5800_MP3);
-    this.appendValueInput("RXPIN", Number)
-    .appendField(Blockly.MIXLY_TX_PIN)
-    .setCheck(Number);
-    this.appendValueInput("TXPIN", Number)
-    .appendField(Blockly.MIXLY_RX_PIN)
-    .setCheck(Number);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_STAT)
-    .appendField(new Blockly.FieldDropdown(GD5800_MP3_CONTROL_TYPE), "CONTROL_TYPE");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip();
-    this.setHelpUrl();
-  }
-};
-
-//MP3循环模式
-var GD5800_MP3_LOOP_MODE = [
-[Blockly.MIXLY_MP3_LOOP_ALL, "MP3_LOOP_ALL"],
-[Blockly.MIXLY_MP3_LOOP_FOLDER, "MP3_LOOP_FOLDER"],
-[Blockly.MIXLY_MP3_LOOP_ONE, "MP3_LOOP_ONE"],
-[Blockly.MIXLY_MP3_LOOP_RAM, "MP3_LOOP_RAM"]
-];
-
-//GD5800 MP3模块循环模式
-Blockly.Blocks.GD5800_MP3_LOOP_MODE = {
-  init: function() {
-    this.setColour(Blockly.Blocks.blynk.MusicHUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.GD5800_MP3);
-    this.appendValueInput("RXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
-    .setCheck(Number);
-    this.appendValueInput("TXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
-    .setCheck(Number);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_MP3_LOOP_MODE)
-    .appendField(Blockly.MIXLY_STAT)
-    .appendField(new Blockly.FieldDropdown(GD5800_MP3_LOOP_MODE), "LOOP_MODE");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip();
-    this.setHelpUrl();
-  }
-};
-
-//MP3 设置EQ
-var GD5800_MP3_EQ_MODE = [
-[Blockly.MIXLY_MP3_EQ_NORMAL, "MP3_EQ_NORMAL"],
-[Blockly.MIXLY_MP3_EQ_POP, "MP3_EQ_POP"],
-[Blockly.MIXLY_MP3_EQ_ROCK, "MP3_EQ_ROCK"],
-[Blockly.MIXLY_MP3_EQ_JAZZ, "MP3_EQ_JAZZ"],
-[Blockly.MIXLY_MP3_EQ_CLASSIC, "MP3_EQ_CLASSIC"],
-[Blockly.MIXLY_MP3_EQ_BASS, "MP3_EQ_BASS"]
-];
-
-//GD5800 MP3模块EQ模式
-Blockly.Blocks.GD5800_MP3_EQ_MODE = {
-  init: function() {
-    this.setColour(Blockly.Blocks.blynk.MusicHUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.GD5800_MP3);
-    this.appendValueInput("RXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
-    .setCheck(Number);
-    this.appendValueInput("TXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
-    .setCheck(Number);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_MP3_EQ_MODE)
-    .appendField(Blockly.MIXLY_STAT)
-    .appendField(new Blockly.FieldDropdown(GD5800_MP3_EQ_MODE), "EQ_MODE");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip();
-    this.setHelpUrl();
-  }
-};
-
-//GD5800 MP3模块设置音量
-Blockly.Blocks.GD5800_MP3_VOL = {
-  init: function() {
-    this.setColour(Blockly.Blocks.blynk.MusicHUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.GD5800_MP3);
-    this.appendValueInput("RXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
-    .setCheck(Number);
-    this.appendValueInput("TXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
-    .setCheck(Number);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_MP3_VOL);
-    this.appendValueInput("vol", Number)
-    .appendField(Blockly.MIXLY_STAT)
-    .setCheck(Number);  
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip();
-    this.setHelpUrl();
-  }
-};
-
-//GD5800 MP3模块播放第N首
-Blockly.Blocks.GD5800_MP3_PLAY_NUM = {
-  init: function() {
-    this.setColour(Blockly.Blocks.blynk.MusicHUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.GD5800_MP3);
-    this.appendValueInput("RXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
-    .setCheck(Number);
-    this.appendValueInput("TXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
-    .setCheck(Number);
-    this.appendValueInput("NUM", Number)
-    .appendField(Blockly.MIXLY_MP3_PLAY_NUM)
-    .setCheck(Number);  
-    this.appendDummyInput("")
-    .appendField("首");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip('歌曲顺序按照存入U盘时间排序。');
-    this.setHelpUrl();
-  }
-};
-
-
 //lm35温度传感器-arduino
 Blockly.Blocks.LM35ESP = {
   init: function() {
@@ -1221,17 +1064,6 @@ Blockly.Blocks.IICSCAN = {
     this.setTooltip('');
   }
 };
-
-Blockly.Blocks.factory_declare2 = {
-  init: function() {
-    this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("")
-    .appendField(new Blockly.FieldTextArea('//define user code;'), 'VALUE');
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-  }
-};
-
 
 //一键配网（无需安可信）
 Blockly.Blocks.blynk_AP_config = {

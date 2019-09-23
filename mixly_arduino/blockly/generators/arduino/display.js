@@ -354,12 +354,12 @@ Blockly.Arduino.Matrix_img = function() {
 };
 
 Blockly.Arduino.oled_init = function() {
-  var SDA = Blockly.Arduino.valueToCode(this, 'SDA',Blockly.Arduino.ORDER_ATOMIC);
-  var SCL = Blockly.Arduino.valueToCode(this, 'SCL',Blockly.Arduino.ORDER_ATOMIC);
-  var board_type=JSFuncs.getPlatform();
-  Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
-  if(board_type.match(RegExp(/AVR/)))
-  {
+ var SDA = this.getFieldValue('SDA');
+ var SCL = this.getFieldValue('SCL');
+ var board_type=JSFuncs.getPlatform();
+ Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
+ if(board_type.match(RegExp(/AVR/)))
+ {
    if(SDA=="SDA"&&SCL=="SCL")
     Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0,U8X8_PIN_NONE);';
   else
@@ -440,7 +440,7 @@ Blockly.Arduino.oled_showBitmap = function() {
 Blockly.Arduino.oled_define_bitmap_data = function() {
   var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
   var text = this.getFieldValue('TEXT');
-  Blockly.Arduino.definitions_['var_declare' + varName] = 'static unsigned char ' + varName + '[]={' + FACE_IMAGE + ' };\n';
+  Blockly.Arduino.definitions_['var_declare' + varName] = 'static unsigned char ' + varName + '[]={' + text + ' };\n';
   return '';
 };
 
