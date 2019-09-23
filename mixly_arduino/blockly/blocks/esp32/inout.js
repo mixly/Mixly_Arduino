@@ -201,7 +201,7 @@ Blockly.Blocks['inout_digital_init'] = {
                 [Blockly.MIXLY_PINMODEPULLDOWN, "machine.Pin.IN, machine.Pin.PULL_DOWN"]
                 ]),"MODE")
         this.appendValueInput("PIN", Number)
-            .appendField(Blockly.MIXLY_PIN + " #")
+            .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -235,7 +235,7 @@ Blockly.Blocks.inout_pwm_analog_write_init = {
         // .appendField('pwm')
         // .appendField(new Blockly.FieldDropdown(profile.default.pwm_pin),"PIN")
         this.appendValueInput("PIN", Number)
-            .appendField(Blockly.MIXLY_PIN + " #")
+            .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
@@ -269,7 +269,7 @@ Blockly.Blocks.inout_analog_write_init = {
         // .appendField('dac')
         // .appendField(new Blockly.FieldDropdown(profile.default.dac_pin),"PIN")
         this.appendValueInput("PIN", Number)
-            .appendField(Blockly.MIXLY_PIN + " #")
+            .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
@@ -303,7 +303,7 @@ Blockly.Blocks.inout_analog_read_init = {
         // .appendField('adc')
         // .appendField(new Blockly.FieldDropdown(profile.default.adc_pin),"PIN")
         this.appendValueInput("PIN", Number)
-            .appendField(Blockly.MIXLY_PIN + " #")
+            .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
@@ -337,7 +337,7 @@ Blockly.Blocks['inout_pin_pressed_init'] = {
         // .appendField('tc')
         // .appendField(new Blockly.FieldDropdown(profile.default.tc_pin),"PIN")
         this.appendValueInput("PIN", Number)
-            .appendField(Blockly.MIXLY_PIN + " #")
+            .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
