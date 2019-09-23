@@ -8,7 +8,6 @@ from machine import RTC
 from machine import TouchPad
 import time
 from neopixel import NeoPixel
-from mpu9250 import *
 
 def get_brightness():
     return ADCSensor(pin = 39).read()
@@ -183,8 +182,18 @@ touch3 = MyPin(25)
 touch4 = MyPin(26)
 
 i2c = I2C(scl = Pin(22), sda = Pin(21), freq = 100000)
+buf = bytearray(1)
 rgb = NeoPixel(Pin(2), 2)
 tim = Timer(-1)
 rtc = RTC()
-mpu = MPU9250(i2c)
-compass = Compass(mpu)
+
+try:
+    i2c.readfrom_mem_into(0x68, 0X75, buf)
+except:
+    pass
+else:
+    if buf[0] == 0x71:
+        from mpu9250 import *
+
+        mpu = MPU9250(i2c)
+        compass = Compass(mpu)
