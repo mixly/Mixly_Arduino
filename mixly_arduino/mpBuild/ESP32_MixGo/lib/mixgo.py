@@ -10,21 +10,13 @@ import time
 from neopixel import NeoPixel
 from mpu9250 import *
 
-
-# Button
-
-# def btn_a(p):
-#     button_a.val = 1
-
-# def btn_b(p):
-#     button_b.val = 1
-
-def mixgo_get_brightness():
+def get_brightness():
     return ADCSensor(pin = 39).read()
 
-def mixgo_get_soundlevel():
+def get_soundlevel():
     return ADCSensor(pin = 35).read()
     
+# Button
 class Button:
     def __init__(self, pin):
         from machine import Pin
@@ -52,12 +44,10 @@ class Button:
                 time.sleep_ms(10)
             return True
 
-
     def irq(self, handler, trigger):
         self.pin.irq(handler = handler, trigger = trigger)
 
 # Pin
-
 class MyPin(Pin):
     def write_digital(self,val):
         self.init(Pin.OUT)
@@ -103,7 +93,6 @@ class MyPin(Pin):
         pin15.value(0)
         return approximate
 
-
 # Servo
 class Servo:
     def __init__(self,pin):
@@ -120,7 +109,6 @@ class Sonar:
         self.echo=Pin(echo, Pin.IN)
 
     def checkdist(self):
-        #trig, echo = Pin(trig, Pin.OUT), Pin(echo, Pin.IN)
         self.trig.value(0)
         self.echo.value(0)
         self.trig.value(1)
@@ -134,6 +122,7 @@ class Sonar:
         t2 = time.ticks_us()
         return round(time.ticks_diff(t2, t1) / 10000 * 340 / 2, 2)   
 
+# Led
 class led:
     def __init__(self, pin):
         self.val = 1
@@ -166,7 +155,6 @@ class led:
             n = 5 * (n - 1)
             return 1 - Pin(n).value()
 
-
 class ADCSensor:
     def __init__(self,pin):
         self.adc=ADC(Pin(pin))
@@ -176,34 +164,23 @@ class ADCSensor:
 
 class RGB:
     def __init__(self, pin, num):
-        # self.pin = Pin(pin)
-        # self.num = num
         self = NeoPixel(Pin(pin), num)
     def write(self,n,r,g,b):
         self[n] = (r, g, b)
         self.write()
            
-# pin16 = MyPin(16)
-# pin17 = MyPin(17)
-# pin17.read_digital()
-# pin16.read_digital()
-# pin17.irq(handler = btn_a, trigger = Pin.IRQ_FALLING)
-# pin16.irq(handler = btn_b, trigger = Pin.IRQ_FALLING)
 button_a = Button(17)
 button_b = Button(16)
-# buttonA = MyPin(17)
-# buttonB = MyPin(16)
 Pin(0, Pin.OUT).value(1)
 Pin(5, Pin.OUT).value(1)
 led1 = led(pin = 0)
 led2 = led(pin = 5)
-Infrared_left = MyPin(34)
-Infrared_right = MyPin(36)
+infrared_left = MyPin(34)
+infrared_right = MyPin(36)
 touch1 = MyPin(32)
 touch2 = MyPin(33)
 touch3 = MyPin(25)
 touch4 = MyPin(26)
-#music = music(pin=27)
 
 i2c = I2C(scl = Pin(22), sda = Pin(21), freq = 100000)
 rgb = NeoPixel(Pin(2), 2)

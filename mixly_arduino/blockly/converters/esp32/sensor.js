@@ -119,7 +119,7 @@ pbc.moduleFunctionD.get('mixgo.touch4')['is_touched'] = function (py2block, func
 }
 
 
-pbc.moduleFunctionD.get('mixgo.Infrared_left')['near'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('mixgo.infrared_left')['near'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -129,7 +129,7 @@ pbc.moduleFunctionD.get('mixgo.Infrared_left')['near'] = function (py2block, fun
 
 }
 
-pbc.moduleFunctionD.get('mixgo.Infrared_right')['near'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('mixgo.infrared_right')['near'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -138,7 +138,7 @@ pbc.moduleFunctionD.get('mixgo.Infrared_right')['near'] = function (py2block, fu
     });
 }
 
-pbc.moduleFunctionD.get('mixgo')['mixgo_get_brightness'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('mixgo')['get_brightness'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
@@ -147,7 +147,7 @@ pbc.moduleFunctionD.get('mixgo')['mixgo_get_brightness'] = function (py2block, f
     });
 }
 
-pbc.moduleFunctionD.get('mixgo')['mixgo_get_soundlevel'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('mixgo')['get_soundlevel'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
