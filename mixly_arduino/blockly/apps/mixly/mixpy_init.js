@@ -289,7 +289,7 @@ for (var i = 0; i < TABS_.length; i++) {
 // Make the 'Blocks' tab line up with the toolbox.
 if (Blockly.mainWorkspace.toolbox_.width) {
   document.getElementById('tab_blocks').style.minWidth =
-      (Blockly.mainWorkspace.toolbox_.width - 47) + 'px';
+      (Blockly.mainWorkspace.toolbox_.width - 38) + 'px';
       // Account for the 19 pixel margin and on each side.
 }
 };
