@@ -264,7 +264,6 @@ Blockly.Blocks['dicts_get'] = {
       init: function() {
         this.setColour(Blockly.Blocks.dicts.HUE);
         this.appendValueInput('DICT')
-        .appendField(Blockly.Msg.DICTS_GET_FROM_DICTS)
         this.appendValueInput('KEY')
         .appendField(Blockly.Msg.DICTS_ADD)
         // .appendField(new Blockly.FieldTextInput('"key"'), 'KEY')
@@ -283,7 +282,6 @@ Blockly.Blocks['dicts_get'] = {
       init: function() {
         this.setColour(Blockly.Blocks.dicts.HUE);
         this.appendValueInput('DICT')
-        .appendField(Blockly.Msg.DICTS_GET_FROM_DICTS);
         this.appendValueInput('KEY')
         .appendField(Blockly.Msg.DICTS_DELETE_IN)
         this.appendDummyInput("")

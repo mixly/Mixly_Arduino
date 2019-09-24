@@ -177,17 +177,17 @@ Blockly.Blocks['set_create_with_item'] = {
 Blockly.Blocks['set_length'] = {
   
   init: function() {
-    this.setColour(Blockly.Blocks.set.HUE);
-  this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_LENGTH);        
-  this.appendValueInput('SET');
-  this.setInputsInline(true);
-  this.setTooltip(Blockly.Msg.SET_LENGTH_TOOLTIP);
-  this.setOutput(true, Number);
+    this.setColour(Blockly.Blocks.set.HUE);          
+    this.appendValueInput('SET');
+    this.appendDummyInput("")
+          .appendField(Blockly.MIXLY_LENGTH);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.Msg.SET_LENGTH_TOOLTIP);
+    this.setOutput(true, Number);
   }
 };
 
-Blockly.Blocks['set_get_remove_last'] = {
+Blockly.Blocks['set_pop'] = {
   init: function() {
     this.setColour(Blockly.Blocks.set.HUE);
     this.appendValueInput('SET')
@@ -220,8 +220,7 @@ Blockly.Blocks['set_clear'] = {
 Blockly.Blocks['set_operate'] = {
   init: function() {
     
-    this.appendDummyInput("")
-      .appendField(Blockly.blockpy_set)
+    
     this.appendValueInput('SET1')
         .setCheck('Set')  
   var operate =
@@ -253,9 +252,7 @@ Blockly.Blocks['set_operate'] = {
 
 Blockly.Blocks['set_operate_update'] = {
   init: function() {
-    this.appendDummyInput("")
-      .appendField(Blockly.blockpy_set)
-      
+    
     this.appendValueInput('SET1')
         .setCheck('Set')  
   var operate_update =
@@ -291,16 +288,13 @@ Blockly.Blocks['set_operate_update'] = {
 
 Blockly.Blocks['set_add_discard'] = {
   init: function() {
-    this.appendDummyInput("")
-      .appendField(Blockly.blockpy_set)
-      
+          
     this.appendValueInput('SET')
         .setCheck('Set')  
   var changenum =
         [[Blockly.MIXLY_blockpy_set_add, 'add'],[Blockly.MIXLY_blockpy_set_discard, 'discard']];
     this.setColour(Blockly.Blocks.set.HUE);
-    this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_MID)        
+    this.appendDummyInput("")   
         .appendField(new Blockly.FieldDropdown(changenum), 'OPERATE')
     this.appendValueInput('data')
         .setCheck(Number)
@@ -323,9 +317,7 @@ Blockly.Blocks['set_add_discard'] = {
 
 Blockly.Blocks['set_sub'] = {
   init: function() {
-     this.appendDummyInput("")
-      .appendField(Blockly.blockpy_set)
-      
+     
     this.appendValueInput('SET1')
         .setCheck('Set') 
   var sub_super =
@@ -358,8 +350,6 @@ Blockly.Blocks['set_sub'] = {
 
 Blockly.Blocks['set_update'] = {
  init: function() {
-    this.appendDummyInput("")
-        .appendField(Blockly.blockpy_set)
     this.appendValueInput('SET')
         .setCheck('Set')
     this.setColour(Blockly.Blocks.set.HUE);

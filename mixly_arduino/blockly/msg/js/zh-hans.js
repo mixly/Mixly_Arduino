@@ -33,7 +33,7 @@ var MSG = {
 	catTuple: "元组",
 	catIot: "物联网",
 	catSet: "集合",
-	catData: "数据",
+	catData: "数据分析",
 	catHardware: "硬件交互",
 	catAI: "人工智能",
 	catDS: "数据结构",
@@ -1223,10 +1223,10 @@ Blockly.Msg.DICTS_GET_FROM_DICTS = "从字典";
 Blockly.Msg.DICTS_GET_IN = "获取键";
 Blockly.Msg.DICTS_GET_TOOLTIP = "访问字典中某个键的对应值";
 Blockly.Msg.DICTS_ADD_in_DICT = "在字典";
-Blockly.Msg.DICTS_ADD = "中添加或修改条目 键";
+Blockly.Msg.DICTS_ADD = "添加或修改条目 键";
 Blockly.Msg.DICTS_ADD_VALUE = "对应值";
 Blockly.Msg.DICTS_ADD_OR_CHANGE_TOOLTIP = "在字典中添加或删除条目";
-Blockly.Msg.DICTS_DELETE_IN = "中删除条目 键";
+Blockly.Msg.DICTS_DELETE_IN = "删除条目 键";
 Blockly.Msg.DICTS_DELETE_VALUE = "及对应值";
 Blockly.Msg.DICTS_DELETE_TOOLTIP = "删除字典中某个条目";
 Blockly.Msg.DICT_CLEAR = "清空字典中所有条目";
@@ -1341,7 +1341,7 @@ Blockly.blockpy_set_union = '并集';
 Blockly.blockpy_set_intersection = '交集';
 Blockly.blockpy_set_difference = '差集';
 Blockly.blockpy_set = '集合';
-Blockly.blockpy_and_set = '与集合';
+Blockly.blockpy_and_set = '与';
 Blockly.blockpy_set_get_operate = '取';
 Blockly.MIXLY_TOOLTIP_SET_UNION = '返回两个集合的并集';
 Blockly.MIXLY_TOOLTIP_SET_INTERSECTION = '返回两个集合的交集';
@@ -1355,7 +1355,7 @@ Blockly.MIXLY_TOOLTIP_SET_UPDATE = '取两个集合的并集，并赋值给前�
 Blockly.MIXLY_TOOLTIP_SET_INTERSECTION_UPDATE = '取两个集合的交集，并赋值给前一个集合';
 Blockly.MIXLY_TOOLTIP_SET_DIFFERENCE_UPDATE = '取两个集合的差集，并赋值给前一个集合';
 Blockly.blockpy_set_of = '的';
-Blockly.blockpy_is_set = '是否是集合';
+Blockly.blockpy_is_set = '是否是';
 Blockly.blockpy_set_sub = '子集';
 Blockly.blockpy_set_super = '超集';
 Blockly.MIXLY_TOOLTIP_SET_SUB = '判断前一个集合是否是后一个集合的子集，返回布尔值';
@@ -2335,14 +2335,14 @@ Blockly.Msg.DS_DEL_NODE_ATTR = "删除属性";
 Blockly.Msg.DS_DEL_NODE_TOOLTIP = "删除链表指定位置的节点，并将删除节点是否成功的结果打印。";
 Blockly.Msg.DS_REVERSE_LINKEDLIST = "的链表转置";
 Blockly.Msg.DS_REVERSE_LINKEDLIST_NEW_HEAD = "新的头节点名称";
-Blockly.Msg.MIXPY_SERIAL_OPEN = "打开可用串口";
+Blockly.Msg.MIXPY_SERIAL_OPEN = "连接可用串口";
 Blockly.Msg.MIXPY_SERIAL_OPEN_TIMEOUT = "读等待时间（秒）";
 Blockly.Msg.MIXPY_SERIAL_OPEN_TOOLTIP = "打开可用串口，读等待时间是指从串口读取数据无响应时等待的时间";
-Blockly.Msg.MIXPY_SERIAL_WRITE = "串口打印";
+Blockly.Msg.MIXPY_SERIAL_WRITE = "串口写入";
 Blockly.Msg.MIXPY_SERIAL_WRITE_TOOLTIP = "向可用串口发送数据，数据类型为字符串，以\\r结尾";
 Blockly.Msg.MIXPY_SERIAL_READ = "串口读取数据 长度为";
 Blockly.Msg.MIXPY_SERIAL_READ_TOOLTIP = "从可用串口读取指定长度的数据";
-Blockly.Msg.MIXPY_SERIAL_CLOSE = "关闭串口";
+Blockly.Msg.MIXPY_SERIAL_CLOSE = "串口断开连接";
 Blockly.Msg.MIXPY_SERIAL_CLOSE_TOOLTIP = "关闭串口，结束与串口的数据交互";
 Blockly.Msg.MIXPY_TEXT_ENCODE = "编码";
 Blockly.Msg.MIXPY_TEXT_DECODE = "解码";

@@ -40,7 +40,7 @@ var MSG = {
 	catTuple:"元組",
 	catIot:"物聯網",
 	catSet:"集合",
-	catData:"數據",
+	catData:"數據分析",
 	catHardware:"硬件交互",
 	catAI:"人工智慧",
 	catDS: "数据结构",

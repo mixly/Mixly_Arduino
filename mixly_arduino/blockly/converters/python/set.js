@@ -22,7 +22,7 @@ pbc.assignD.get('Set')['create_block'] = function (py2block, node, targets, valu
 pbc.objectFunctionD.get('pop')['Set'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length === 0) {
         var popblock = py2block.convert(func.value);
-        return block("set_get_remove_last", func.lineno, {}, {
+        return block("set_pop", func.lineno, {}, {
             "SET":popblock
         }, {
             "inline": "true"

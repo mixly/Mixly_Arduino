@@ -1164,7 +1164,7 @@
             </shadow>
           </value>
         </block>
-        <block type="set_get_remove_last">
+        <block type="set_pop">
           <value name="SET">
             <shadow type="variables_get">
               <field name="VAR">s1</field>
@@ -1687,244 +1687,6 @@
 
 
       </category>
-      <category id="catData" colour="170">
-          <block type="series_create">
-            <value name="SER">
-                <shadow type="variables_get">
-                  <field name="VAR">mylist</field>
-                </shadow>
-              </value>
-          </block>
-          <block type="series_create_from_index">
-            <value name="SER">
-                <shadow type="variables_get">
-                  <field name="VAR">mylist</field>
-                </shadow>
-              </value>
-            <value name="INDEX">
-              <shadow type="list_many_input">
-                <field name="CONTENT">0,1,2,3</field>
-              </shadow>
-            </value>
-          </block>
-          <block type="series_create_from_text"></block>
-          <block type="dataframe_create">
-            <value name="SER">
-                <shadow type="variables_get">
-                  <field name="VAR">mydict</field>
-                </shadow>
-              </value>
-          </block>
-          <block type="dataframe_create_from_one_index">
-            <value name="SER">
-                <shadow type="variables_get">
-                  <field name="VAR">mydict</field>
-                </shadow>
-              </value>
-            <value name="INDEX">
-              <shadow type="list_many_input">
-                <field name="CONTENT">'a','b','c','d'</field>
-              </shadow>
-            </value>
-          </block>
-          <block type="dataframe_create_from_index">
-            <value name="SER">
-                <shadow type="variables_get">
-                  <field name="VAR">mydict</field>
-                </shadow>
-              </value>
-            <value name="INDEX_COLUMN">
-              <shadow type="list_many_input">
-                <field name="CONTENT">'ABCD'</field>
-              </shadow>
-            </value>
-            <value name="INDEX_RAW">
-              <shadow type="list_many_input">
-                <field name="CONTENT">'a','b','c','d'</field>
-              </shadow>
-            </value>
-          </block>
-          <block type="series_index_value">
-            <value name="SERIES">
-                <shadow type="variables_get">
-                  <field name="VAR">ser1</field>
-                </shadow>
-              </value>
-          </block>
-          <block type="series_get_num">
-            <value name="SER">
-              <shadow type="variables_get">
-                <field name="VAR">ser1</field>
-              </shadow>
-            </value>
-            <value name="AT">
-              <shadow type="math_number">
-                <field name="NUM">0</field>
-              </shadow>
-            </value>
-          </block>
-
-
-          <block type="pl_plot">
-              <value name="SER">
-                <shadow type="variables_get">
-                  <field name="VAR">ser1</field>
-                </shadow>
-              </value>
-          </block>
-          <block type="pl_show"></block>
-          <block type="pl_legend"></block>
-          <block type="pl_title">
-            <value name="TITLE">
-              <shadow type="text">
-                <field name="TEXT">Title</field>
-              </shadow>
-            </value>
-          </block>
-          <block type="pl_label">
-            <value name="LABEL">
-              <shadow type="text">
-                <field name="TEXT">axis</field>
-              </shadow>
-            </value>
-          </block>
-      </category>
-
-      <category id="catNetwork" colour="0">
-        <block type="requests_get">
-          <value name="DOMAIN">
-            <shadow type="text">
-              <field name="TEXT">http://www.baidu.com</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="requests_attribute">
-              <value name="VAL">
-                <shadow type="variables_get">
-                  <field name="VAR">response</field>
-                </shadow>
-              </value>
-        </block>
-        <block type="requests_method">
-          <value name="VAR">
-            <shadow type="text">
-              <field name="TEXT">http://www.baidu.com</field>
-            </shadow>
-          </value>
-        </block>
-      </category>
-      <category id="catHardware" colour="40">
-        <block type="hardware_arduino_start">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">s4a</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="hardware_arduino_digital_write">
-        <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">s4a</field>
-            </shadow>
-          </value>
-        <value name="PIN">
-          <shadow type="pins_digital_write"></shadow>
-        <field name="PIN">13</field>
-        </value>
-        <value name="STAT">
-          <shadow type="inout_highlow">
-          </shadow>
-        </value>
-      </block>
-      <block type="hardware_arduino_digital_read">
-        <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">s4a</field>
-            </shadow>
-          </value>
-        <value name="PIN">
-          <shadow type="pins_digital_read"></shadow>
-        <field name="PIN">2</field>
-        </value>
-      </block>
-      <block type="hardware_arduino_analog_write">
-         <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">s4a</field>
-            </shadow>
-          </value>
-        <value name="PIN">
-          <shadow type="pins_analog_write"></shadow>
-        <field name="PIN">5</field>
-        </value>
-        <value name="NUM">
-          <shadow type="math_number">
-            <field name="NUM">255</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="hardware_arduino_analog_read">
-        <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">s4a</field>
-            </shadow>
-          </value>
-        <value name="PIN">
-          <shadow type="pins_analog_read"></shadow>
-        <field name="PIN">0</field>
-        </value>
-      </block>
-      </category>
-      <category id="catSerialPort" colour="65">
-        <block type="serial_open">
-          <value name="VAR">
-          <shadow type="math_number">
-            <field name="NUM">5</field>
-          </shadow>
-        </value>
-        </block> 
-        <block type="serial_write">
-          <value name="SER">
-            <shadow type="variables_get">
-              <field name="VAR">ser</field>
-            </shadow>
-          </value>
-          <value name="VAR">
-            <block type="text_encode">
-              <value name="VAR">
-                <shadow type="text">
-                  <field name="TEXT">Hello\r\n</field>
-                </shadow>
-                </value>
-            </block>
-          </value>
-        </block>
-         <block type="text_encode">
-          <field name="DIR">decode</field>
-          <value name="VAR">
-            <block type="serial_read_b">
-              <value name="SER">
-                <shadow type="variables_get">
-                  <field name="VAR">ser</field>
-                </shadow>
-              </value>
-              <value name="VAR">
-                <shadow type="math_number">
-                  <field name="NUM">1</field>
-                </shadow>
-              </value>
-            </block> 
-          </value>
-        </block> 
-        
-        <block type="serial_close">
-          <value name="SER">
-            <shadow type="variables_get">
-              <field name="VAR">ser</field>
-            </shadow>
-          </value>
-        </block>
-      </category>  
       <category id="catAI" colour="205">
        <block type="AI_ChooseAndGet">
        </block>
@@ -2156,6 +1918,244 @@
           </value>
        </block>
       </category>
+     
+
+     <!-- <category id="catNetwork" colour="0">
+        <block type="requests_get">
+          <value name="DOMAIN">
+            <shadow type="text">
+              <field name="TEXT">http://www.baidu.com</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="requests_attribute">
+              <value name="VAL">
+                <shadow type="variables_get">
+                  <field name="VAR">response</field>
+                </shadow>
+              </value>
+        </block>
+        <block type="requests_method">
+          <value name="VAR">
+            <shadow type="text">
+              <field name="TEXT">http://www.baidu.com</field>
+            </shadow>
+          </value>
+        </block>
+      </category>-->
+      <category id="catHardware" colour="40">
+        <block type="hardware_arduino_start">
+          <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">s4a</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="hardware_arduino_digital_write">
+        <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">s4a</field>
+            </shadow>
+          </value>
+        <value name="PIN">
+          <shadow type="pins_digital_write"></shadow>
+        <field name="PIN">13</field>
+        </value>
+        <value name="STAT">
+          <shadow type="inout_highlow">
+          </shadow>
+        </value>
+      </block>
+      <block type="hardware_arduino_digital_read">
+        <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">s4a</field>
+            </shadow>
+          </value>
+        <value name="PIN">
+          <shadow type="pins_digital_read"></shadow>
+        <field name="PIN">2</field>
+        </value>
+      </block>
+      <block type="hardware_arduino_analog_write">
+         <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">s4a</field>
+            </shadow>
+          </value>
+        <value name="PIN">
+          <shadow type="pins_analog_write"></shadow>
+        <field name="PIN">5</field>
+        </value>
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">255</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="hardware_arduino_analog_read">
+        <value name="SUB">
+            <shadow type="variables_get">
+              <field name="VAR">s4a</field>
+            </shadow>
+          </value>
+        <value name="PIN">
+          <shadow type="pins_analog_read"></shadow>
+        <field name="PIN">0</field>
+        </value>
+      </block>
+      <block type="serial_open">
+          <value name="VAR">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        </block> 
+        <block type="serial_write">
+          <value name="SER">
+            <shadow type="variables_get">
+              <field name="VAR">ser</field>
+            </shadow>
+          </value>
+          <value name="VAR">
+            <block type="text_encode">
+              <value name="VAR">
+                <shadow type="text">
+                  <field name="TEXT">Hello\r\n</field>
+                </shadow>
+                </value>
+            </block>
+          </value>
+        </block>
+         <block type="text_encode">
+          <field name="DIR">decode</field>
+          <value name="VAR">
+            <block type="serial_read_b">
+              <value name="SER">
+                <shadow type="variables_get">
+                  <field name="VAR">ser</field>
+                </shadow>
+              </value>
+              <value name="VAR">
+                <shadow type="math_number">
+                  <field name="NUM">1</field>
+                </shadow>
+              </value>
+            </block> 
+          </value>
+        </block> 
+        
+        <block type="serial_close">
+          <value name="SER">
+            <shadow type="variables_get">
+              <field name="VAR">ser</field>
+            </shadow>
+          </value>
+        </block>
+      </category>
+       <category id="catData" colour="170">
+          <block type="series_create">
+            <value name="SER">
+                <shadow type="variables_get">
+                  <field name="VAR">mylist</field>
+                </shadow>
+              </value>
+          </block>
+          <block type="series_create_from_index">
+            <value name="SER">
+                <shadow type="variables_get">
+                  <field name="VAR">mylist</field>
+                </shadow>
+              </value>
+            <value name="INDEX">
+              <shadow type="list_many_input">
+                <field name="CONTENT">0,1,2,3</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="series_create_from_text"></block>
+          <block type="dataframe_create">
+            <value name="SER">
+                <shadow type="variables_get">
+                  <field name="VAR">mydict</field>
+                </shadow>
+              </value>
+          </block>
+          <block type="dataframe_create_from_one_index">
+            <value name="SER">
+                <shadow type="variables_get">
+                  <field name="VAR">mydict</field>
+                </shadow>
+              </value>
+            <value name="INDEX">
+              <shadow type="list_many_input">
+                <field name="CONTENT">'a','b','c','d'</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="dataframe_create_from_index">
+            <value name="SER">
+                <shadow type="variables_get">
+                  <field name="VAR">mydict</field>
+                </shadow>
+              </value>
+            <value name="INDEX_COLUMN">
+              <shadow type="list_many_input">
+                <field name="CONTENT">'ABCD'</field>
+              </shadow>
+            </value>
+            <value name="INDEX_RAW">
+              <shadow type="list_many_input">
+                <field name="CONTENT">'a','b','c','d'</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="series_index_value">
+            <value name="SERIES">
+                <shadow type="variables_get">
+                  <field name="VAR">ser1</field>
+                </shadow>
+              </value>
+          </block>
+          <block type="series_get_num">
+            <value name="SER">
+              <shadow type="variables_get">
+                <field name="VAR">ser1</field>
+              </shadow>
+            </value>
+            <value name="AT">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+          </block>
+
+
+          <block type="pl_plot">
+              <value name="SER">
+                <shadow type="variables_get">
+                  <field name="VAR">ser1</field>
+                </shadow>
+              </value>
+          </block>
+          <block type="pl_show"></block>
+          <block type="pl_legend"></block>
+          <block type="pl_title">
+            <value name="TITLE">
+              <shadow type="text">
+                <field name="TEXT">Title</field>
+              </shadow>
+            </value>
+          </block>
+          <block type="pl_label">
+            <value name="LABEL">
+              <shadow type="text">
+                <field name="TEXT">axis</field>
+              </shadow>
+            </value>
+          </block>
+      </category>
+      
       <category id="catDS" colour="80">
         <block type="ds_create_linkedlist"></block>
         <block type="ds_create_node">

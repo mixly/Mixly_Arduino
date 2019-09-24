@@ -30,7 +30,7 @@ Blockly.Python.set_length = function() {
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.set_get_remove_last = function(){
+Blockly.Python.set_pop = function(){
   var varName = Blockly.Python.valueToCode(this, 'SET', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var code=varName + '.pop()';
   return [code, Blockly.Python.ORDER_ATOMIC];
