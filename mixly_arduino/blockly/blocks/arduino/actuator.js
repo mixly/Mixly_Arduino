@@ -407,3 +407,153 @@ Blockly.Blocks.Mixly_motor = {
     this.setNextStatement(true);
 }
 };
+
+
+//MP3播放控制
+var GD5800_MP3_CONTROL_TYPE = [
+[Blockly.MIXLY_MP3_PLAY, "play();"],
+[Blockly.MIXLY_MP3_PAUSE, "pause();"],
+[Blockly.MIXLY_MP3_NEXT, "next();"],
+[Blockly.MIXLY_MP3_PREV, "prev();"],
+[Blockly.MIXLY_MP3_VOL_UP, "volumeUp();"],
+[Blockly.MIXLY_MP3_VOL_DOWN, "volumeDn();"]
+];
+
+//GD5800 MP3模块
+Blockly.Blocks.GD5800_MP3_CONTROL = {
+  init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.GD5800_MP3);
+    this.appendValueInput("RXPIN", Number)
+    .appendField(Blockly.MIXLY_TX_PIN)
+    .setCheck(Number);
+    this.appendValueInput("TXPIN", Number)
+    .appendField(Blockly.MIXLY_RX_PIN)
+    .setCheck(Number);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_STAT)
+    .appendField(new Blockly.FieldDropdown(GD5800_MP3_CONTROL_TYPE), "CONTROL_TYPE");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
+
+//MP3循环模式
+var GD5800_MP3_LOOP_MODE = [
+[Blockly.MIXLY_MP3_LOOP_ALL, "MP3_LOOP_ALL"],
+[Blockly.MIXLY_MP3_LOOP_FOLDER, "MP3_LOOP_FOLDER"],
+[Blockly.MIXLY_MP3_LOOP_ONE, "MP3_LOOP_ONE"],
+[Blockly.MIXLY_MP3_LOOP_RAM, "MP3_LOOP_RAM"]
+];
+
+//GD5800 MP3模块循环模式
+Blockly.Blocks.GD5800_MP3_LOOP_MODE = {
+  init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.GD5800_MP3);
+    this.appendValueInput("RXPIN", Number)
+    .appendField(Blockly.MIXLY_PIN)
+    .setCheck(Number);
+    this.appendValueInput("TXPIN", Number)
+    .appendField(Blockly.MIXLY_PIN)
+    .setCheck(Number);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_MP3_LOOP_MODE)
+    .appendField(Blockly.MIXLY_STAT)
+    .appendField(new Blockly.FieldDropdown(GD5800_MP3_LOOP_MODE), "LOOP_MODE");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
+
+//MP3 设置EQ
+var GD5800_MP3_EQ_MODE = [
+[Blockly.MIXLY_MP3_EQ_NORMAL, "MP3_EQ_NORMAL"],
+[Blockly.MIXLY_MP3_EQ_POP, "MP3_EQ_POP"],
+[Blockly.MIXLY_MP3_EQ_ROCK, "MP3_EQ_ROCK"],
+[Blockly.MIXLY_MP3_EQ_JAZZ, "MP3_EQ_JAZZ"],
+[Blockly.MIXLY_MP3_EQ_CLASSIC, "MP3_EQ_CLASSIC"],
+[Blockly.MIXLY_MP3_EQ_BASS, "MP3_EQ_BASS"]
+];
+
+//GD5800 MP3模块EQ模式
+Blockly.Blocks.GD5800_MP3_EQ_MODE = {
+  init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.GD5800_MP3);
+    this.appendValueInput("RXPIN", Number)
+    .appendField(Blockly.MIXLY_PIN)
+    .setCheck(Number);
+    this.appendValueInput("TXPIN", Number)
+    .appendField(Blockly.MIXLY_PIN)
+    .setCheck(Number);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_MP3_EQ_MODE)
+    .appendField(Blockly.MIXLY_STAT)
+    .appendField(new Blockly.FieldDropdown(GD5800_MP3_EQ_MODE), "EQ_MODE");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
+
+//GD5800 MP3模块设置音量
+Blockly.Blocks.GD5800_MP3_VOL = {
+  init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.GD5800_MP3);
+    this.appendValueInput("RXPIN", Number)
+    .appendField(Blockly.MIXLY_PIN)
+    .setCheck(Number);
+    this.appendValueInput("TXPIN", Number)
+    .appendField(Blockly.MIXLY_PIN)
+    .setCheck(Number);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_MP3_VOL);
+    this.appendValueInput("vol", Number)
+    .appendField(Blockly.MIXLY_STAT)
+    .setCheck(Number);  
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
+
+//GD5800 MP3模块播放第N首
+Blockly.Blocks.GD5800_MP3_PLAY_NUM = {
+  init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.GD5800_MP3);
+    this.appendValueInput("RXPIN", Number)
+    .appendField(Blockly.MIXLY_PIN)
+    .setCheck(Number);
+    this.appendValueInput("TXPIN", Number)
+    .appendField(Blockly.MIXLY_PIN)
+    .setCheck(Number);
+    this.appendValueInput("NUM", Number)
+    .appendField(Blockly.MIXLY_MP3_PLAY_NUM)
+    .setCheck(Number);  
+    this.appendDummyInput("")
+    .appendField("首");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('歌曲顺序按照存入U盘时间排序。');
+    this.setHelpUrl();
+  }
+};

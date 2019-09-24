@@ -17,8 +17,8 @@ Blockly.Blocks.group_lcd_init2 = {
     .appendField(new Blockly.FieldDropdown([['1602','16,2'],['2004','20,4']]),'TYPE')
     .appendField(new Blockly.FieldTextInput('mylcd'), 'VAR')
     .appendField(Blockly.MIXLY_LCD_ADDRESS);
- this.appendDummyInput("")  
-     .appendField('SCL')
+    this.appendDummyInput("")  
+    .appendField('SCL')
     .appendField(Blockly.MIXLY_PIN)
     .appendField(new Blockly.FieldDropdown(profile.default.digital), "SCL")
     .appendField('SDA')
@@ -28,7 +28,7 @@ Blockly.Blocks.group_lcd_init2 = {
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_LCD_INIT2);
-     this.setFieldValue("SCL","SCL");
+    this.setFieldValue("SCL","SCL");
     this.setFieldValue("SDA","SDA");
 }
 };
@@ -286,58 +286,62 @@ Blockly.Blocks.HT16K33_Init = {
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_MATRIX_NAME)
     .appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName');
-    this.appendValueInput("PIN1")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField("SDA#");
-    this.appendValueInput("PIN2")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField("SCL#"); 
+     this.appendDummyInput("")  
+    .appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_INIT)
+    .appendField('SCL')
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "SCL")
+    .appendField('SDA')
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "SDA");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+     this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_TOOPTIP_Matrix_HK16T33_INIT);
+    this.setFieldValue("SCL","SCL");
+    this.setFieldValue("SDA","SDA");
+
 }
 };
 
 //MAX7219点阵屏幕初始化
 Blockly.Blocks.MAX7219_init = {
   init: function() {
-     this.appendDummyInput("")
-     .appendField(Blockly.MIXLY_MAX7219_INIT);
-     this.appendDummyInput("")
-     .appendField(Blockly.MIXLY_MATRIX_NAME)
-     .appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName');
-     this.appendValueInput("PIN1")
-     .setCheck(Number)
-     .setAlign(Blockly.ALIGN_RIGHT)
-     .appendField("DIN(MOSI)")
-     .appendField(Blockly.MIXLY_PIN);
-     this.appendValueInput("PIN2")
-     .setCheck(Number)
-     .setAlign(Blockly.ALIGN_RIGHT)
-     .appendField("CS")
-     .appendField(Blockly.MIXLY_PIN);
-     this.appendValueInput("PIN3")
-     .setCheck(Number)
-     .setAlign(Blockly.ALIGN_RIGHT)
-     .appendField("CLK(SCK)")
-     .appendField(Blockly.MIXLY_PIN);
-     this.appendValueInput("hDisplays")
-     .setCheck(Number)
-     .setAlign(Blockly.ALIGN_RIGHT)
-     .appendField(Blockly.MIXLY_MAX7219_HDISPALY);
-     this.appendValueInput("vDisplays")
-     .setCheck(Number)
-     .setAlign(Blockly.ALIGN_RIGHT)
-     .appendField(Blockly.MIXLY_MAX7219_VDISPALY);
-     this.setPreviousStatement(true, null);
-     this.setNextStatement(true, null);
-     this.setColour(Blockly.Blocks.display.HUE);
-     this.setInputsInline(false);
-     this.setTooltip(Blockly.MAX7219_INIT_TOOLTIP);
-     this.setHelpUrl('');
- }
+   this.appendDummyInput("")
+   .appendField(Blockly.MIXLY_MAX7219_INIT);
+   this.appendDummyInput("")
+   .appendField(Blockly.MIXLY_MATRIX_NAME)
+   .appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName');
+   this.appendValueInput("PIN1")
+   .setCheck(Number)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField("DIN(MOSI)")
+   .appendField(Blockly.MIXLY_PIN);
+   this.appendValueInput("PIN2")
+   .setCheck(Number)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField("CS")
+   .appendField(Blockly.MIXLY_PIN);
+   this.appendValueInput("PIN3")
+   .setCheck(Number)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField("CLK(SCK)")
+   .appendField(Blockly.MIXLY_PIN);
+   this.appendValueInput("hDisplays")
+   .setCheck(Number)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField(Blockly.MIXLY_MAX7219_HDISPALY);
+   this.appendValueInput("vDisplays")
+   .setCheck(Number)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField(Blockly.MIXLY_MAX7219_VDISPALY);
+   this.setPreviousStatement(true, null);
+   this.setNextStatement(true, null);
+   this.setColour(Blockly.Blocks.display.HUE);
+   this.setInputsInline(false);
+   this.setTooltip(Blockly.MAX7219_INIT_TOOLTIP);
+   this.setHelpUrl('');
+}
 };
 
 //点阵屏显示点
@@ -1038,17 +1042,20 @@ Blockly.Blocks.oled_init = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.OLED_INIT2);
-    this.appendValueInput("SCL")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('SCL#');this.appendValueInput("SDA")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('SDA#');
+    this.appendDummyInput("")  
+    .appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_INIT)
+    .appendField('SCL')
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "SCL")
+    .appendField('SDA')
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "SDA");
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.OLED_INIT2_TOOLTIP);
+    this.setFieldValue("SCL","SCL");
+    this.setFieldValue("SDA","SDA");
 }
 };
 //显示-OLED-清屏幕
