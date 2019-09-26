@@ -1,7 +1,7 @@
 <html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
-  <title>Mixly Esp8266 Arduino Advance</title>
+  <title>Mixly ESP8266 Arduino</title>
   <script type="text/javascript" src="../../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../core/variables.js"></script>
   <script type="text/javascript" src="../../core/procedures.js"></script>
@@ -1848,7 +1848,9 @@
 </category>
 <category id="catFun" custom="PROCEDURE" colour="290">
 </category>
+
 <category id="catBlynk" name="catBlynk" colour="160">
+
   <block type="blynk_server">
     <value name="server_add">
       <shadow type="text">
@@ -1857,20 +1859,23 @@
     </value>
     <value name="auth_key">
       <shadow type="text">
-        <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>n</shadow>
-      </value>
-      <value name="wifi_ssid">
-        <shadow type="text">
-          <field name="TEXT">wifi-ssid</field>
-        </shadow>
-      </value>
-      <value name="wifi_pass">
-        <shadow type="text">
-          <field name="TEXT">wifi-pass</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="Blynk_connecte_state"></block>
+        <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>
+      </shadow>
+    </value>
+    <value name="wifi_ssid">
+      <shadow type="text">
+        <field name="TEXT">wifi-ssid</field>
+      </shadow>
+    </value>
+    <value name="wifi_pass">
+      <shadow type="text">
+        <field name="TEXT">wifi-pass</field>
+      </shadow>
+    </value>
+  </block>
+
+    <block type="Blynk_connect_state"></block>
+
     <block type="blynk_smartconfig">
       <value name="server_add">
         <shadow type="text">
@@ -1883,25 +1888,28 @@
         </shadow>
       </value>
     </block>
+
     <block type="blynk_AP_config">
-      <value name="auth">
+      <value name="server_add">
+          <shadow type="text">
+            <field name="TEXT">116.62.49.166</field>
+          </shadow>
+      </value>
+      <value name="auth_key">
         <shadow type="text">
-          <field name="TEXT">59d948d79fe642aab95c1577b1ad419d</field>
-        </shadow>
-      </value>
-      <value name="server">
-        <shadow type="math_number">
-          <field name="NUM">116.62.49.166</field>
+          <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>
         </shadow>
       </value>
     </block>
+
     <block type="blynk_AP_config_2">
-      <value name="server">
-        <shadow type="math_number">
-          <field name="NUM">116.62.49.166</field>
+      <value name="server_add">
+        <shadow type="text">
+          <field name="TEXT">116.62.49.166</field>
         </shadow>
       </value>
     </block>
+
     <block type="blynk_iot_get_data">
       <mutation>
         <arg name="vpin_value" vartype="int"></arg>
@@ -1997,7 +2005,7 @@
         </shadow>
       </value>
     </block>
-    <block type="blynk_time_input_1">
+   <block type="blynk_time_input_1">
       <field name="Vpin">V0</field>
       <statement name="DO">
         <block type="serial_println">
@@ -2008,16 +2016,26 @@
             </block>
           </value>
           <next>
+        <block type="serial_println">
+          <field name="serial_select">Serial</field>
+          <value name="CONTENT">
+            <block type="variables_get">
+              <field name="VAR">minute</field>
+            </block>
+          </value>
+          <next>
             <block type="serial_println">
               <field name="serial_select">Serial</field>
               <value name="CONTENT">
                 <block type="variables_get">
-                  <field name="VAR">minute</field>
+                  <field name="VAR">second</field>
                 </block>
               </value>
               <next>
               </next>
             </block>
+          </next>
+        </block>
           </next>
         </block>
       </statement>
@@ -2442,7 +2460,9 @@
 <block type="blynk_iot_syncVirtual">
   <field name="Vpin">V0</field>
 </block>
-<block type="Blynk_connecte_state"></block>
+
+<block type="Blynk_connect_state"></block>
+
 </category>
 <category id="catMorpxVS2" colour="#EF5411">
   <block type="Vs2MuInit"></block>

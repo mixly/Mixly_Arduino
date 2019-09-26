@@ -1942,7 +1942,7 @@
         </shadow>
       </value>
     </block>
-    <block type="Blynk_connecte_state"></block>
+    <block type="Blynk_connect_state"></block>
     <block type="arduino_blynk_bluetooth">
       <value name="auth">
         <shadow type="text">
@@ -2055,7 +2055,7 @@
         </shadow>
       </value>
     </block>
-    <block type="blynk_time_input_1">
+   <block type="blynk_time_input_1">
       <field name="Vpin">V0</field>
       <statement name="DO">
         <block type="serial_println">
@@ -2066,16 +2066,26 @@
             </block>
           </value>
           <next>
+        <block type="serial_println">
+          <field name="serial_select">Serial</field>
+          <value name="CONTENT">
+            <block type="variables_get">
+              <field name="VAR">minute</field>
+            </block>
+          </value>
+          <next>
             <block type="serial_println">
               <field name="serial_select">Serial</field>
               <value name="CONTENT">
                 <block type="variables_get">
-                  <field name="VAR">minute</field>
+                  <field name="VAR">second</field>
                 </block>
               </value>
               <next>
               </next>
             </block>
+          </next>
+        </block>
           </next>
         </block>
       </statement>

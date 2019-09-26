@@ -530,11 +530,11 @@ Blockly.Blocks.Blynk_iot_BLYNK_CONNECTED = {
   }
 };
 //blynk服务器连接状态
-Blockly.Blocks.Blynk_connecte_state= {
+Blockly.Blocks.Blynk_connect_state= {
   init: function() {
     this.setColour(Blockly.Blocks.blynk.HUE1);
     this.appendDummyInput()
-    .appendField(Blockly.Blynk_connecte_state);
+    .appendField(Blockly.Blynk_connect_state);
     this.setOutput(true, null);
     this.setHelpUrl("");
   }
@@ -1071,12 +1071,12 @@ Blockly.Blocks.blynk_AP_config = {
     this.setColour(Blockly.Blocks.blynk.HUE1);
     this.appendDummyInput()
     .appendField(Blockly.blynk_AP_config);
-    this.appendValueInput("auth")
-    .setCheck(null)
-    .appendField(Blockly.blynk_IOT_AUTH)
-    this.appendValueInput("server")
-    .setCheck(null)
+    this.appendValueInput("server_add")
+    .setCheck(String)
     .appendField(Blockly.blynk_SERVER_ADD);
+    this.appendValueInput("auth_key")
+    .setCheck(String)
+    .appendField(Blockly.blynk_IOT_AUTH)
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.blynk_AP_config_tooltip);
@@ -1090,8 +1090,8 @@ Blockly.Blocks.blynk_AP_config_2 = {
     this.setColour(Blockly.Blocks.blynk.HUE1);
     this.appendDummyInput()
     .appendField(Blockly.blynk_AP_config2);
-    this.appendValueInput("server")
-    .setCheck(null)
+    this.appendValueInput("server_add")
+    .setCheck(String)
     .appendField(Blockly.blynk_IOT_AUTH);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -1164,7 +1164,7 @@ Blockly.Blocks['blynk_esp32_ble'] = {
     this.appendValueInput("auth")
     .appendField(Blockly.blynk_IOT_AUTH);
     this.appendValueInput("name")
-    .setCheck(null)
+    .setCheck(String)
     .appendField("BLE")
     .appendField(Blockly.Msg.HTML_NAME );
     this.setHelpUrl("");
@@ -1178,10 +1178,10 @@ Blockly.Blocks['blynk_esp32_Bluetooth'] = {
     this.appendDummyInput()
     .appendField(Blockly.blynk_esp32_Bluetooth);
     this.appendValueInput("auth")
-    .setCheck(null)
+    .setCheck(String)
     .appendField(Blockly.blynk_IOT_AUTH);
     this.appendValueInput("name")
-    .setCheck(null)
+    .setCheck(String)
     .appendField("Bluetooth")
     .appendField(Blockly.Msg.HTML_NAME );
     this.setHelpUrl("");
@@ -1195,7 +1195,7 @@ Blockly.Blocks['arduino_blynk_bluetooth'] = {
     this.appendDummyInput()
     .appendField(Blockly.arduino_blynk_bluetooth);
     this.appendValueInput("auth")
-    .setCheck(null)
+    .setCheck(String)
     .appendField(Blockly.blynk_IOT_AUTH);
     this.appendValueInput("RX")
     .setCheck(null)
