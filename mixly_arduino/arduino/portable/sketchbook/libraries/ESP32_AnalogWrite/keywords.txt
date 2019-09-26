@@ -1,0 +1,19 @@
+#######################################
+# Datatypes
+#######################################
+
+analog_write_channel_t	KEYWORD1
+
+#######################################
+# Methods and Functions
+#######################################
+
+analogWrite	KEYWORD2
+analogWriteChannel	KEYWORD2
+analogWriteFrequency	KEYWORD2
+analogWriteResolution	KEYWORD2
+
+#######################################
+# Constants
+#######################################
+

@@ -1,0 +1,19 @@
+{
+    "name": "ESP32 AnalogWrite",
+    "keywords": "esp32, analogWrite, LEDC",
+    "description": "Provides an analogWrite polyfill for ESP32 using the LEDC functions",
+    "license": "MIT",
+    "version": "0.2",
+    "frameworks": "arduino",
+    "platforms": "espressif32",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ERROPiX/ESP32_AnalogWrite.git"
+    },
+    "authors": [
+        {
+            "name": "Abdelouahed ERROUAGUY",
+            "email": "errouaguy.pro@gmail.com"
+        }
+    ]
+}
