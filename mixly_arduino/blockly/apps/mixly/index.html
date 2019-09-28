@@ -316,6 +316,21 @@
     </shadow>
   </value>
 </block>
+//注册超级延时函数
+<block type="super_delay_function1"></block>
+//执行超级延时函数
+<block type="execute_super_delay_function1">
+ <value name="time_interval">
+  <shadow type="math_number">
+    <field name="NUM">1000</field>
+  </shadow>
+</value>
+<value name="frequency">
+  <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
+</block>
 <block type="controls_interrupts"></block>
 <block type="controls_nointerrupts"></block>
 <block type="SCoopTask"></block>
@@ -702,7 +717,12 @@
 </block>
 <block type="serial_println">
 </block>
-<block type="serial_print_hex">
+<block type="serial_print_num">
+  <value name="CONTENT">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
 </block>
 <block type="serial_available">
 </block>
@@ -731,53 +751,58 @@
 </block>
 </category>
 <category id="catGroup"  colour="140">
- <block type="ir_recv">
-  <value name="PIN">
-    <shadow type="pins_digital"></shadow>
-  </value>
-  <statement name="DO">
-   <block type="serial_print_hex">
-    <value name="CONTENT">
-     <block type="variables_get">
-      <field name="VAR">ir_item</field>
-    </block>
-  </value>
-</block>
-</statement>
-</block>
-<block type="ir_send_nec">
-  <value name="data">
+  <block type="ir_recv">
+    <field name="VAR">ir_item</field>
+    <value name="PIN">
+      <shadow type="pins_digital">
+        <field name="PIN">0</field>
+      </shadow>
+    </value>
+    <statement name="DO">
+      <block type="serial_print_num">
+        <field name="serial_select">Serial</field>
+        <field name="STAT">HEX</field>
+        <value name="CONTENT">
+          <block type="variables_get">
+            <field name="VAR">ir_item</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="ir_send_nec">
+    <value name="data">
+      <shadow type="math_number">
+        <field name="NUM">0x89ABCDEF</field>
+      </shadow>
+    </value>
+    <value name="bits">
+      <shadow type="math_number">
+        <field name="NUM">32</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="ir_recv_enable">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+  </block>
+  <block type="ir_recv_raw">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+  </block>
+  <block type="ir_send_raw">
+   <value name="length">
     <shadow type="math_number">
-      <field name="NUM">0x89ABCDEF</field>
+      <field name="NUM">3</field>
     </shadow>
   </value>
-  <value name="bits">
+  <value name="freq">
     <shadow type="math_number">
-      <field name="NUM">32</field>
+      <field name="NUM">38</field>
     </shadow>
   </value>
-</block>
-<block type="ir_recv_enable">
-  <value name="PIN">
-    <shadow type="pins_digital"></shadow>
-  </value>
-</block>
-<block type="ir_recv_raw">
-  <value name="PIN">
-    <shadow type="pins_digital"></shadow>
-  </value>
-</block>
-<block type="ir_send_raw">
- <value name="length">
-  <shadow type="math_number">
-    <field name="NUM">3</field>
-  </shadow>
-</value>
-<value name="freq">
-  <shadow type="math_number">
-    <field name="NUM">38</field>
-  </shadow>
-</value>
 </block>
 <block type="i2c_master_writer"></block>
 <block type="i2c_master_reader"></block>
@@ -1508,10 +1533,10 @@
         </statement>
       </block>
     </next>
-   
-</block>
-<block type="oled_set_EN_Font">
-</block>
+    
+  </block>
+  <block type="oled_set_EN_Font">
+  </block>
 <!-- <block type="oled_set_CN_Font">
 </block> -->
 <block type="procedures_defnoreturn">
@@ -1884,18 +1909,19 @@
 </category>
 </category>
 <category id="catNetwork" colour="0">
-  <block type="ethernet_init_begin">
-   <value name="MAC">
-    <block type="ethernet_mac_address"></block>
+  <category id="catEthernet" colour="0">
+   <block type="ethernet_init_begin">
+     <value name="MAC">
+      <block type="ethernet_mac_address"></block>
+    </value>
+  </block>
+  <block type="ethernet_init_local_ip"></block>
+  <block type="ethernet_client_connect_server">
+   <value name="PORT">
+     <shadow type="math_number">
+      <field name="NUM">80</field>
+    </shadow>
   </value>
-</block>
-<block type="ethernet_init_local_ip"></block>
-<block type="ethernet_client_connect_server">
- <value name="PORT">
-   <shadow type="math_number">
-    <field name="NUM">80</field>
-  </shadow>
-</value>
 </block>
 <block type="ethernet_client_connected"></block>
 <block type="ethernet_client_available"></block>
@@ -1916,11 +1942,6 @@
 </value>
 </block>
 <block type="ethernet_client_get_request"></block>
-</category>
-<sep></sep>
-<category id="catVar" colour="330" custom="VARIABLE">
-</category>
-<category id="catFun" custom="PROCEDURE" colour="290">
 </category>
 <category id="catBlynk" name="catBlynk" colour="160">
   <block type="blynk_server">
@@ -2057,7 +2078,7 @@
         </shadow>
       </value>
     </block>
-   <block type="blynk_time_input_1">
+    <block type="blynk_time_input_1">
       <field name="Vpin">V0</field>
       <statement name="DO">
         <block type="serial_println">
@@ -2068,26 +2089,26 @@
             </block>
           </value>
           <next>
-        <block type="serial_println">
-          <field name="serial_select">Serial</field>
-          <value name="CONTENT">
-            <block type="variables_get">
-              <field name="VAR">minute</field>
-            </block>
-          </value>
-          <next>
             <block type="serial_println">
               <field name="serial_select">Serial</field>
               <value name="CONTENT">
                 <block type="variables_get">
-                  <field name="VAR">second</field>
+                  <field name="VAR">minute</field>
                 </block>
               </value>
               <next>
+                <block type="serial_println">
+                  <field name="serial_select">Serial</field>
+                  <value name="CONTENT">
+                    <block type="variables_get">
+                      <field name="VAR">second</field>
+                    </block>
+                  </value>
+                  <next>
+                  </next>
+                </block>
               </next>
             </block>
-          </next>
-        </block>
           </next>
         </block>
       </statement>
@@ -2513,6 +2534,13 @@
   <field name="Vpin">V0</field>
 </block>
 </category>
+</category>
+<sep></sep>
+<category id="catVar" colour="330" custom="VARIABLE">
+</category>
+<category id="catFun" custom="PROCEDURE" colour="290">
+</category>
+
 <category id="catMorpxVS2" colour="#EF5411">
   <block type="Vs2MuInit"></block>
   <block type="Vs2Setup"></block>
