@@ -364,6 +364,29 @@
   </block>
   <block type="controls_hw_timer_stop">
   </block>
+   <block type="simple_timer" >
+      <field name="NO">1</field>
+      <value name="timein">
+        <shadow type="math_number">
+          <field name="NUM">1000</field>
+        </shadow>
+      </value>
+    </block>
+//注册超级延时函数
+ <block type="super_delay_function1"></block>
+//执行超级延时函数
+ <block type="execute_super_delay_function1">
+ <value name="time_interval">
+  <shadow type="math_number">
+    <field name="NUM">1000</field>
+  </shadow>
+</value>
+ <value name="frequency">
+  <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
+</block>
 </category>
 <category id="catMath" colour="230">
   <block type="math_number">
@@ -739,7 +762,12 @@
 </block>
 <block type="serial_println">
 </block>
-<block type="serial_print_hex">
+<block type="serial_print_num">
+  <value name="CONTENT">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
 </block>
 <block type="serial_available">
 </block>
