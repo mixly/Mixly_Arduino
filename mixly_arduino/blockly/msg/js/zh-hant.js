@@ -24,11 +24,9 @@ var MSG = {
 	catVar:"變數",
 	catFun:"函數",
 	catNetwork:"網路",
+	catEthernet:"以太網",
 	catEthernet_init:"初始化",
 	catEthernet_clinet:"客戶端",
-	catSense:"盛思（盒子）",
-	catSense2:"盛思（機器人）",
-	catLuxe:"濼喜機器人",
 	tab_blocks:"模塊",
 	tab_arduino:"程式碼",
 	copyright:"Copyright © 北京師範大學米思齊團隊				http://mixly.org/",
@@ -2886,3 +2884,9 @@ Blockly.esp_camera="ESP32 CAM相機，上傳程序後通過串口監視器輸出
 Blockly.MIXLY_RESOLUTION='精度';
 Blockly.inout_esp32_dac='DAC輸出管腳';
 Blockly.take_a_photo1='ESP32 CAM拍照';
+Blockly.super_delay_function='註冊延時函數';
+Blockly.execute_super_delay_function='執行延時函數';
+Blockly.time_interval='時間間隔（ms）';
+Blockly.number_of_executions='執行次數';
+Blockly.super_delay_function_help='註冊需要延時執行的函數';
+Blockly.execute_super_delay_function_help='執行延時函數，設置延時時間及執行的次數';

@@ -20,6 +20,7 @@ var MSG = {
 	catVar: "Variables",
 	catFun: "Functions",
 	catNetwork:"Network",
+	catEthernet:"Ethernet",
 	catEthernet_init:"Init",
 	catEthernet_clinet:"Client",
 	tab_blocks: "Blocks",
@@ -2706,3 +2707,9 @@ Blockly.MIXLY_AipOcr_drivingLicense = 'Driver\'s license identification';
 Blockly.MIXLY_RESOLUTION='resolution';
 Blockly.FOLDING_BLOCK_HELP='Reading is very headache when using too many blocks, the code block put into it will not change, just used as a shell, why not? You know ^.^ very convenient';
 Blockly.take_a_photo1='ESP32 CAM photo';
+Blockly.super_delay_function='Registration delay function';
+Blockly.execute_super_delay_function='Execution delay function';
+Blockly.time_interval='Time interval (ms)';
+Blockly.number_of_executions='Number of executions';
+Blockly.super_delay_function_help='Register a function that requires a delayed execution';
+Blockly.execute_super_delay_function_help='Execute the delay function, set the delay time and the number of executions';
