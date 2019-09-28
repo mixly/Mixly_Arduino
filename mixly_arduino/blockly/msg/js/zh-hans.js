@@ -47,7 +47,9 @@ var MSG = {
 	catOLED:'OLED显示屏',
 	catMatrix:'点阵屏',
 	catFactory:'自定义模块',
-	catBlynk:'Blynk 物联网'
+	catBlynk:'Blynk 物联网',
+	catFile:'文件',
+	catOnenet:'Onenet'
 };
 Blockly.Msg.ADD_COMMENT = "添加注释";
 Blockly.Msg.AUTH = "请授权这个应用程序以保存您的作品并共享。";

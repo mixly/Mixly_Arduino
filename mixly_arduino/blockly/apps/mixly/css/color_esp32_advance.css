@@ -301,99 +301,106 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
   background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(10) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/store.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(10) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
-	background:url('../../../media/mark/store2.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(11) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/port.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(11) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
-	background:url('../../../media/mark/port2.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(12) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/comuni.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(12) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
-	background:url('../../../media/mark/comuni2.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(13) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/net.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(13) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
-	background:url('../../../media/mark/net2.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(14) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/iot.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(14) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
-	background:url('../../../media/mark/iot2.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(15) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/sensor.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(15) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
-	background:url('../../../media/mark/sensor2.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(16) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/act.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(16) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
-	background:url('../../../media/mark/act2.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(17) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/monitor.png') no-repeat;
-	background-size: 100% auto; 
-}
-#\:0 > div:nth-child(2) > div:nth-child(17) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
-	background:url('../../../media/mark/monitor2.png') no-repeat;
-	background-size: 100% auto; 
-}
-
-#\:0 > div:nth-child(2) > div:nth-child(19) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
 	background:url('../../../media/mark/var.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:0 > div:nth-child(2) > div:nth-child(19) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+#\:0 > div:nth-child(2) > div:nth-child(10) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../../media/mark/var2.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:0 > div:nth-child(2) > div:nth-child(20) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
+#\:0 > div:nth-child(2) > div:nth-child(11) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
 	background:url('../../../media/mark/func.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:0 > div:nth-child(2) > div:nth-child(20) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+#\:0 > div:nth-child(2) > div:nth-child(11) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../../media/mark/func2.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:0 > div:nth-child(2) > div:nth-child(21) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
+#\:0 > div:nth-child(2) > div:nth-child(12) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
+	background:url('../../../media/mark/port.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(12) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/port2.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(13) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
+	background:url('../../../media/mark/sensor.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(13) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/sensor2.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(14) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
+	background:url('../../../media/mark/act.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(14) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/act2.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(15) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
+	background:url('../../../media/mark/monitor.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(15) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/monitor2.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(16) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
+	background:url('../../../media/mark/file.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(16) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/file2.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(17) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
+	background:url('../../../media/mark/comuni.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(17) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/comuni2.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(18) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
+	background:url('../../../media/mark/net.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(18) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/net2.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(19) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
+	background:url('../../../media/mark/iot.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(19) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/iot2.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(19) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
+	background:url('../../../media/mark/iot.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(19) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/iot2.png') no-repeat;
+	background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(19) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
 	background:url('../../../media/blynk/blynk.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:0 > div:nth-child(2) > div:nth-child(21) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+#\:0 > div:nth-child(2) > div:nth-child(19) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../../media/blynk/blynk2.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:0 > div:nth-child(2) > div:nth-child(22) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
+#\:0 > div:nth-child(2) > div:nth-child(20) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
 	background:url('../../../media/mark/factory3.png') no-repeat;
 	background-size: 100% auto; 
 }
-#\:0 > div:nth-child(2) > div:nth-child(22) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+#\:0 > div:nth-child(2) > div:nth-child(20) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../../media/mark/factory4.png') no-repeat;
 	background-size: 100% auto; 
 }

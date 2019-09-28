@@ -54,7 +54,9 @@ var MSG = {
 	catOLED:'OLED显示屏',
 	catMatrix:'点阵屏',
 	catFactory:'自定義模塊',
-	catBlynk:'Blynk 物聯網'
+	catBlynk:'Blynk 物聯網',
+	catFile:'檔案',
+	catOnenet:'Onenet'
 };
 Blockly.Msg.ADD_COMMENT = "添加注釋";
 Blockly.Msg.AUTH = "請授權這個應用程序以保存您的作品並共亯。";

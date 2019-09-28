@@ -46,7 +46,9 @@ var MSG = {
 	catLCD:'LCD',
 	catOLED:'OLED',
 	catMatrix:'Matrix',
-	catFactory:'Factory'
+	catFactory:'Factory',
+	catFile:'File',
+	catOnenet:'Onenet'
 };
 Blockly.blynk_connected='Connection state';
 Blockly.BLYNK_CONNECTED='Hardware Connected';
