@@ -92,3 +92,9 @@ Blockly.Python.set_update = function(block) {
 //   var code = op + '(' + varName + ')\n';
 //   return [code, Blockly.Python.ORDER_ATOMIC];
 // }
+
+Blockly.Python.set_create_with_text_return = function() {
+  var text=this.getFieldValue('TEXT');
+  var code = '{' + text + '}';
+  return [code,Blockly.Python.ORDER_ATOMIC];
+};

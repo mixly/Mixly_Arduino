@@ -274,8 +274,7 @@
             <field name="NUM">2</field>
           </shadow>
         </value>
-      </block>
-      <block type="controls_pass"></block>
+      </block>      
       <block type="controls_if"></block>
       <block type="controls_range">
         <value name="FROM">
@@ -324,6 +323,7 @@
         </value>
       </block>
       <block type="controls_try_finally"></block>
+      <block type="controls_pass"></block>
       <!--0    <block type="controls_repeat_ext">
               <value name="TIMES">
                   <shadow type="math_number">
@@ -396,6 +396,13 @@
     <category id="catMath" colour="230">
       <block type="math_number"></block>
       <block type="math_constant"></block>
+      <block type="math_trig">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">90</field>
+          </shadow>
+        </value>
+      </block>
       <block type="math_arithmetic">
         <value name="A">
           <shadow type="math_number">
@@ -407,19 +414,7 @@
             <field name="NUM">1</field>
           </shadow>
         </value>
-      </block>
-      <block type="math_selfcalcu">
-        <value name="A">
-          <shadow type="variables_get">
-            <field name="VAR">a</field>
-          </shadow>
-        </value>
-        <value name="B">
-          <shadow type="math_number">
-            <field name="NUM">1</field>
-          </shadow>
-        </value>
-      </block>
+      </block>      
       <block type="math_bit">
         <value name="A">
           <shadow type="math_number">
@@ -432,10 +427,15 @@
           </shadow>
         </value>
       </block>
-      <block type="math_trig">
-        <value name="NUM">
+      <block type="math_selfcalcu">
+        <value name="A">
+          <shadow type="variables_get">
+            <field name="VAR">a</field>
+          </shadow>
+        </value>
+        <value name="B">
           <shadow type="math_number">
-            <field name="NUM">90</field>
+            <field name="NUM">1</field>
           </shadow>
         </value>
       </block>
@@ -575,30 +575,7 @@
         <field name="TEXT">Mixly</field>
       </block>
       <block type="text_textarea">
-      </block>
-      <block type="text_format_noreturn">
-        <mutation items="1"></mutation>
-        <value name="VAR">
-          <shadow type="text">
-            <field name="TEXT">Random No. is {}</field>
-          </shadow>
-        </value>
-        <value name="ADD0">
-          <block type="math_random">
-            <field name="TYPE">int</field>
-            <value name="FROM">
-              <shadow type="math_number">
-                <field name="NUM">1</field>
-              </shadow>
-            </value>
-            <value name="TO">
-              <shadow type="math_number">
-                <field name="NUM">100</field>
-              </shadow>
-            </value>
-          </block>
-        </value>
-      </block>
+      </block>      
       <block type="text_join">
         <value name="A">
           <shadow type="text">
@@ -645,33 +622,7 @@
             <field name="TEXT">Mixly</field>
           </shadow>
         </value>
-      </block>
-      <block type="text_encode">
-        <value name="VAR">
-          <shadow type="text">
-            <field name="TEXT">Mixly</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="text_char_at">
-        <value name="VAR">
-          <shadow type="text">
-            <field name="TEXT">Mixly</field>
-          </shadow>
-        </value>
-        <value name="AT">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="text_random_char">
-        <value name="VAR">
-          <shadow type="text">
-            <field name="TEXT">Mixly</field>
-          </shadow>
-        </value>
-      </block>
+      </block>     
       <block type="text_equals_starts_ends">
         <value name="STR1">
           <shadow type="text">
@@ -683,7 +634,19 @@
             <field name="TEXT"></field>
           </shadow>
         </value>
-      </block>
+      </block> 
+      <block type="text_char_at">
+        <value name="VAR">
+          <shadow type="text">
+            <field name="TEXT">Mixly</field>
+          </shadow>
+        </value>
+        <value name="AT">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>     
       <block type="text_substring">
         <value name="VAR">
           <shadow type="text">
@@ -698,6 +661,20 @@
         <value name="AT2">
           <shadow type="math_indexer_number">
             <field name="NUM">2</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_random_char">
+        <value name="VAR">
+          <shadow type="text">
+            <field name="TEXT">Mixly</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_encode">
+        <value name="VAR">
+          <shadow type="text">
+            <field name="TEXT">Mixly</field>
           </shadow>
         </value>
       </block>
@@ -785,23 +762,41 @@
           </shadow>
         </value>
       </block>
-    </category>
-    <category id="catMicropyLists" colour="260">
-      <block type="lists_create_with"></block>
-      <block type="lists_create_with_text"></block>
-      <block type="lists_zip">
-        <mutation items="2"></mutation>
-        <value name="ADD0">
-          <block type="list_many_input">
-            <field name="CONTENT">0,1,2,3</field>
-          </block>
+      <block type="text_format_noreturn">
+        <mutation items="1"></mutation>
+        <value name="VAR">
+          <shadow type="text">
+            <field name="TEXT">Random No. is {}</field>
+          </shadow>
         </value>
-        <value name="ADD1">
-          <block type="list_many_input">
-            <field name="CONTENT">0,1,2,3</field>
+        <value name="ADD0">
+          <block type="math_random">
+            <field name="TYPE">int</field>
+            <value name="FROM">
+              <shadow type="math_number">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+            <value name="TO">
+              <shadow type="math_number">
+                <field name="NUM">100</field>
+              </shadow>
+            </value>
           </block>
         </value>
       </block>
+    </category>
+    <category id="catMicropyLists" colour="260">
+      <block type="lists_create_with"></block>
+      <block type="variables_set">        
+        <field name="VAR">mylist</field>
+        <value name="VALUE">
+          <block type="list_many_input">
+            <field name="CONTENT">1,2,3,4,5</field>
+          </block>
+        </value>
+      </block>
+      <!--<block type="lists_create_with_text"></block>  -->    
       <block type="lists_get_index">
         <value name="LIST">
           <shadow type="variables_get">
@@ -831,10 +826,29 @@
           </shadow>
         </value>
       </block>
+      <block type="lists_get_random_item">
+        <value name="LIST">
+          <shadow type="variables_get">
+            <field name="VAR">mylist</field>
+          </shadow>
+        </value>
+      </block>
       <block type="list_trig">
         <value name="data">
           <shadow type="variables_get">
             <field name="VAR">mylist</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="lists_find">
+        <value name="VAR">
+          <shadow type="variables_get">
+            <field name="VAR">mylist</field>
+          </shadow>
+        </value>
+        <value name="data">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
           </shadow>
         </value>
       </block>
@@ -907,26 +921,7 @@
             <field name="NUM">0</field>
           </shadow>
         </value>
-      </block>
-      <block type="lists_get_random_item">
-        <value name="LIST">
-          <shadow type="variables_get">
-            <field name="VAR">mylist</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="lists_find">
-        <value name="VAR">
-          <shadow type="variables_get">
-            <field name="VAR">mylist</field>
-          </shadow>
-        </value>
-        <value name="data">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-      </block>
+      </block>        
       <block type="lists_sort">
         <value name="LIST">
           <shadow type="variables_get">
@@ -955,10 +950,31 @@
           </shadow>
         </value>
       </block>
+      <block type="lists_zip">
+        <mutation items="2"></mutation>
+        <value name="ADD0">
+          <block type="list_many_input">
+            <field name="CONTENT">0,1,2,3</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="list_many_input">
+            <field name="CONTENT">0,1,2,3</field>
+          </block>
+        </value>
+      </block>
     </category>
     <category id="catTuple" colour="195">
       <block type="tuple_create_with"></block>
-      <block type="tuple_create_with_text2"></block>
+      <block type="variables_set">        
+        <field name="VAR">mytup</field>
+        <value name="VALUE">
+          <block type="tuple_create_with_text_return">
+            <field name="TEXT">1,2,3,4,5</field>
+          </block>
+        </value>
+      </block>
+      <!--<block type="tuple_create_with_text2"></block>-->
       <block type="tuple_getIndex">
         <value name="TUP">
           <shadow type="variables_get">
@@ -988,7 +1004,21 @@
           </shadow>
         </value>
       </block>
+      <block type="tuple_get_random_item">
+        <value name="TUP">
+          <shadow type="variables_get">
+            <field name="VAR">mytup</field>
+          </shadow>
+        </value>
+      </block>
       <block type="tuple_length">
+        <value name="TUP">
+          <shadow type="variables_get">
+            <field name="VAR">mytup</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="tuple_max">
         <value name="TUP">
           <shadow type="variables_get">
             <field name="VAR">mytup</field>
@@ -1011,20 +1041,6 @@
         <value name="TUP2">
           <shadow type="variables_get">
             <field name="VAR">mytup2</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="tuple_max">
-        <value name="TUP">
-          <shadow type="variables_get">
-            <field name="VAR">mytup</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="tuple_get_random_item">
-        <value name="TUP">
-          <shadow type="variables_get">
-            <field name="VAR">mytup</field>
           </shadow>
         </value>
       </block>
@@ -1153,6 +1169,14 @@
     </category>
     <category id="catSet" colour="100">
       <block type="set_create_with"></block>
+      <block type="variables_set">        
+        <field name="VAR">s1</field>
+        <value name="VALUE">
+          <block type="set_create_with_text_return">
+            <field name="TEXT">1,2,3,4,5</field>
+          </block>
+        </value>
+      </block>
       <block type="set_length">
         <value name="SET">
           <shadow type="variables_get">
@@ -1228,7 +1252,7 @@
         </value>
       </block>
     </category>
-    <category id="catStorage" colour="0">
+    <category id="catFile" colour="0">
       <block type="storage_open_file_with_os">
         <value name="fn">
           <shadow type="text">
@@ -1268,25 +1292,6 @@
         </value>
       </block>
       <block type="storage_get_contents">
-        <value name="FILE">
-          <shadow type="variables_get">
-            <field name="VAR">f</field>
-          </shadow>
-        </value>
-        <value name="SIZE">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_file_tell">
-        <value name="FILE">
-          <shadow type="variables_get">
-            <field name="VAR">f</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_file_seek">
         <value name="FILE">
           <shadow type="variables_get">
             <field name="VAR">f</field>
@@ -1365,6 +1370,25 @@
         <value name="FILE">
           <shadow type="text">
             <field name="TEXT">path</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="storage_file_tell">
+        <value name="FILE">
+          <shadow type="variables_get">
+            <field name="VAR">f</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="storage_file_seek">
+        <value name="FILE">
+          <shadow type="variables_get">
+            <field name="VAR">f</field>
+          </shadow>
+        </value>
+        <value name="SIZE">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
           </shadow>
         </value>
       </block>
@@ -1459,6 +1483,20 @@
           </shadow>
         </value>
       </block>
+      <block type="turtle_clone">
+        <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">tina</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="turtle_visible">
+        <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">tina</field>
+          </shadow>
+        </value>
+      </block>
       <!--      <block type="turtle_size_speed">
               <value name="VAR">
                   <shadow type="math_number">
@@ -1494,6 +1532,28 @@
         <value name="data">
           <shadow type="math_number">
             <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="turtle_bgcolor"></block>
+      <block type="turtle_pencolor">
+        <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">tina</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="turtle_fillcolor">
+        <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">tina</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="turtle_fill">
+        <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">tina</field>
           </shadow>
         </value>
       </block>
@@ -1537,18 +1597,36 @@
             <field name="NUM">360</field>
           </shadow>
         </value>
-      </block>
-      <block type="turtle_clone">
+      </block>      
+      <block type="turtle_write">
         <value name="TUR">
           <shadow type="variables_get">
             <field name="VAR">tina</field>
           </shadow>
         </value>
+        <value name="VAR">
+          <shadow type="text">
+            <field name="TEXT">Mixly!</field>
+          </shadow>
+        </value>
       </block>
-      <block type="turtle_visible">
+      <block type="turtle_write_format">
         <value name="TUR">
           <shadow type="variables_get">
             <field name="VAR">tina</field>
+          </shadow>
+        </value>
+        <value name="VAR">
+          <shadow type="text">
+            <field name="TEXT">Mixly!</field>
+        </value>
+        <value name="FONTNAME">
+          <shadow type="text">
+            <field name="TEXT">Arial</field>
+        </value>
+        <value name="FONTNUM">
+          <shadow type="math_number">
+            <field name="NUM">8</field>
           </shadow>
         </value>
       </block>
@@ -1590,54 +1668,7 @@
             <field name="TEXT">What's your name?</field>
           </shadow>
         </value>
-      </block>
-      <block type="turtle_write">
-        <value name="TUR">
-          <shadow type="variables_get">
-            <field name="VAR">tina</field>
-          </shadow>
-        </value>
-        <value name="VAR">
-          <shadow type="text">
-            <field name="TEXT">Mixly!</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="turtle_write_format">
-        <value name="TUR">
-          <shadow type="variables_get">
-            <field name="VAR">tina</field>
-          </shadow>
-        </value>
-        <value name="VAR">
-          <shadow type="text">
-            <field name="TEXT">Mixly!</field>
-        </value>
-        <value name="FONTNAME">
-          <shadow type="text">
-            <field name="TEXT">Arial</field>
-        </value>
-        <value name="FONTNUM">
-          <shadow type="math_number">
-            <field name="NUM">8</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="turtle_bgcolor"></block>
-      <block type="turtle_pencolor">
-        <value name="TUR">
-          <shadow type="variables_get">
-            <field name="VAR">tina</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="turtle_fillcolor">
-        <value name="TUR">
-          <shadow type="variables_get">
-            <field name="VAR">tina</field>
-          </shadow>
-        </value>
-      </block>
+      </block>         
       <block type="turtle_bgcolor_hex">
         <value name="VAR">
           <shadow type="text">
@@ -1666,13 +1697,6 @@
         <value name="VAR">
           <shadow type="text">
             <field name="TEXT">FF0000</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="turtle_fill">
-        <value name="TUR">
-          <shadow type="variables_get">
-            <field name="VAR">tina</field>
           </shadow>
         </value>
       </block>
@@ -2060,7 +2084,7 @@
           </shadow>
         </value>
       </block>
-      <block type="series_create_from_text"></block>
+      <!--<block type="series_create_from_text"></block>-->
       <block type="dataframe_create">
         <value name="SER">
           <shadow type="variables_get">

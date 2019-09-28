@@ -1417,6 +1417,7 @@ Blockly.blockpy_turtle_set_size = '设置画笔粗细为';
 Blockly.blockpy_turtle_set_speed = '设置画笔速度为';
 Blockly.MICROPYTHON_TOOLTIP_LISTS_CREATE_WITH_TEXT = "通过一个字符串来创建一个列表。";
 Blockly.MIXPY_TOOLTIP_TUPLE_CREATE_WITH_TEXT = "通过一个字符串来创建一个元组。";
+Blockly.MIXPY_TOOLTIP_SET_CREATE_WITH_TEXT = "通过一个字符串来创建一个集合。";
 Blockly.blockpy_MIXLY_TUPLE_CREATE = '创建元组';
 Blockly.Msg.TURTLE_CLONE = "复制乌龟";
 Blockly.Msg.TURTLE_CLONE_TOOLTIP = "创建一个当前乌龟的复制。";
