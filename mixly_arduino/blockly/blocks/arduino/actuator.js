@@ -322,6 +322,19 @@ Blockly.Blocks.display_rgb = {
 }
 };
 
+Blockly.Blocks.display_rgb_show = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_RGB_SHOW)
+        .appendField(Blockly.MIXLY_PIN)
+        .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+        .setAlign(Blockly.ALIGN_RIGHT);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+    }
+};
 var DISPLAY_RAINBOW_TYPE = [
 [Blockly.MIXLY_RGB_DISPLAY_RAINBOW_TYPE_1, "normal"],
 [Blockly.MIXLY_RGB_DISPLAY_RAINBOW_TYPE_2, "change"]

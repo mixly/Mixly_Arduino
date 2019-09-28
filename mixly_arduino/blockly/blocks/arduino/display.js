@@ -1041,9 +1041,7 @@ Blockly.Blocks.oled_init = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
-    .appendField(Blockly.OLED_INIT2);
-    this.appendDummyInput("")  
-    .appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_INIT)
+    .appendField(Blockly.OLED_INIT2)
     .appendField('SCL')
     .appendField(Blockly.MIXLY_PIN)
     .appendField(new Blockly.FieldDropdown(profile.default.digital), "SCL")
