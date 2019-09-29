@@ -34,7 +34,7 @@ var MSG = {
 	viewAdvanced:"高級視圖",
 	catGame:"遊戲",
 	catSystem:"系統",
-	catTurtle:"烏龜",
+	catTurtle:"海龜",
 	catTuple:"元組",
 	catIot:"物聯網",
 	catSet:"集合",
@@ -54,7 +54,7 @@ var MSG = {
 	catFactory:'自定義模塊',
 	catBlynk:'Blynk 物聯網',
 	catFile:'檔案',
-	catOnenet:'Onenet'
+	catOnenet:'OneNET'
 };
 Blockly.Msg.ADD_COMMENT = "添加注釋";
 Blockly.Msg.AUTH = "請授權這個應用程序以保存您的作品並共亯。";
@@ -1139,9 +1139,9 @@ Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "陣列變數";
 Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " 圖案陣列";
 Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "螢幕旋轉";
 Blockly.MIXLY_RTCINIT = '初始化DS1307 RTC時鐘模組';
-Blockly.MIXLY_RTCGETTIME = '從RTC時鐘模組獲取';
-Blockly.MIXLY_RTCSETTIME = '設置RTC時鐘模組時間：';
-Blockly.MIXLY_RTCSETDATE = '設置RTC時鐘模組日期：';
+Blockly.MIXLY_RTCGETTIME = '從時鐘模組獲取';
+Blockly.MIXLY_RTCSETTIME = '設置時鐘模組時間：';
+Blockly.MIXLY_RTCSETDATE = '設置時鐘模組日期：';
 Blockly.MIXLY_ADXL345 = '重力感應塊_ADXL345';
 Blockly.MIXLY_ADXL345_X ='X軸加速度';
 Blockly.MIXLY_ADXL345_Y ='Y軸加速度';
@@ -1978,7 +1978,7 @@ Blockly.blockpy_PYLAB_PLOT_DOT_HORIZONTAL='短橫線';
 Blockly.MIXLY_MICROBIT_JS_I2C="I2C";
 Blockly.MIXLY_ESP32_TOUCH="觸摸";
 Blockly.MIXLY_ESP32_TOUCH_SENSOR="觸摸感測器";
-Blockly.MIXLY_ESP32_NEAR="紅外反射接近感測器數值";
+Blockly.MIXLY_ESP32_NEAR="接近感測器的值";
 Blockly.MIXLY_ESP32_INTERRUPT="中斷";
 Blockly.MIXLY_ESP32_PITCH="音高";
 Blockly.MIXLY_ESP32_DUTY="音調";

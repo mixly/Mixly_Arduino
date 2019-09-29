@@ -50,7 +50,7 @@ var MSG = {
 	catFactory:'自定义模块',
 	catBlynk:'Blynk 物联网',
 	catFile:'文件',
-	catOnenet:'Onenet'
+	catOnenet:'OneNET'
 };
 Blockly.Msg.ADD_COMMENT = "添加注释";
 Blockly.Msg.AUTH = "请授权这个应用程序以保存您的作品并共享。";
@@ -933,9 +933,9 @@ Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "数组变量";
 Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " 图案数组";
 Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "旋转";
 Blockly.MIXLY_RTCINIT = '初始化时钟模块DS1307';
-Blockly.MIXLY_RTCGETTIME = '获取RTC时钟时间';
-Blockly.MIXLY_RTCSETTIME = '设置RTC时钟模块时间：';
-Blockly.MIXLY_RTCSETDATE = '设置RTC时钟模块日期：';
+Blockly.MIXLY_RTCGETTIME = '获取实时时钟时间';
+Blockly.MIXLY_RTCSETTIME = '设置实时时钟模块时间：';
+Blockly.MIXLY_RTCSETDATE = '设置实时时钟模块日期：';
 Blockly.MIXLY_ADXL345 = '重力感应块_ADXL345';
 Blockly.MIXLY_ADXL345_X = 'X轴加速度';
 Blockly.MIXLY_ADXL345_Y = 'Y轴加速度';
@@ -1751,7 +1751,7 @@ Blockly.blockpy_PYLAB_PLOT_DOT_HORIZONTAL = '短横线';
 Blockly.MIXLY_MICROBIT_JS_I2C = "I2C";
 Blockly.MIXLY_ESP32_TOUCH = "触摸";
 Blockly.MIXLY_ESP32_TOUCH_SENSOR = "触摸传感器";
-Blockly.MIXLY_ESP32_NEAR = "红外反射接近传感器数值";
+Blockly.MIXLY_ESP32_NEAR = "接近传感器的值";
 Blockly.MIXLY_ESP32_INTERRUPT = "中断";
 Blockly.MIXLY_ESP32_PITCH = "音高";
 Blockly.MIXLY_ESP32_DUTY = "音调";
@@ -1782,7 +1782,7 @@ Blockly.MIXLY_ESP32_ONEWIRE_RESET = "重置 OneWire";
 Blockly.MIXLY_ESP32_ONEWIRE_READ = "读取字节";
 Blockly.MIXLY_ESP32_ONEWIRE_INIT = "初始化 bus";
 Blockly.MIXLY_ESP32_ONEWIRE_SELECT = "设置 OneWire";
-Blockly.MIXLY_ESP32_I2C_SCAN1 = "搜索I2C";
+Blockly.MIXLY_ESP32_I2C_SCAN1 = "搜索";
 Blockly.MIXLY_ESP32_I2C_SCAN2 = "总线上设备";
 Blockly.MIXLY_ESP32_SPI_SET = "设置 SPI 波特率";
 Blockly.MIXLY_ESP32_SPI_BUFFER = "缓冲器";

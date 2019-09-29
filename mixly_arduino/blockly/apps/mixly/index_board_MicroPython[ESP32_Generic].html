@@ -528,8 +528,8 @@
           <shadow type="pins_digital_pin"></shadow>
         </value>
         <value name="DO">
-          <shadow type="variables_get">
-            <field name="VAR">attachInterrupt_func</field>
+          <shadow type="factory_block_return">
+            <field name="VALUE">attachInterrupt_func</field>
           </shadow>
         </value>
       </block>
@@ -693,8 +693,8 @@
           </shadow>
         </value>
         <value name="callback">
-          <shadow type="variables_get">
-            <field name="VAR">tim_callback</field>
+          <shadow type="factory_block_return">
+            <field name="VALUE">tim_callback</field>
           </shadow>
         </value>
       </block>
@@ -1689,6 +1689,20 @@
           </shadow>
         </value>
       </block>
+      <block type="sensor_bmp">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">bmp</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_sht">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">sht</field>
+          </shadow>
+        </value>
+      </block>
       <block type="sensor_rtc_init">
         <value name="SUB">
           <shadow type="variables_get">
@@ -1750,18 +1764,14 @@
           </shadow>
         </value>
       </block>
-      <block type="sensor_bmp">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">bmp</field>
-          </shadow>
+      <block type="sensor_dht11">
+        <value name="PIN">
+          <shadow type="pins_digital_pin"></shadow>
         </value>
       </block>
-      <block type="sensor_sht">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">sht</field>
-          </shadow>
+      <block type="sensor_ds18x20">
+        <value name="PIN">
+          <shadow type="pins_digital_pin"></shadow>
         </value>
       </block>
       <block type="HCSR04">
@@ -1776,28 +1786,8 @@
           </shadow>
         </value>
       </block>
-      <block type="sensor_dht11">
-        <value name="PIN">
-          <shadow type="pins_digital_pin"></shadow>
-        </value>
-      </block>
-      <block type="sensor_ds18x20">
-        <value name="PIN">
-          <shadow type="pins_digital_pin"></shadow>
-        </value>
-      </block>
     </category>
     <category id="catActuator" colour="100">
-      <block type="servo_move">
-        <value name="PIN">
-          <shadow type="pins_pwm_pin"></shadow>
-        </value>
-        <value name="DEGREE">
-          <shadow type="math_number">
-            <field name="NUM">100</field>
-          </shadow>
-        </value>
-      </block>
       <block type="esp32_music_pitch">
         <value name="PIN">
           <shadow type="pins_pwm_pin">
@@ -1906,6 +1896,16 @@
         <value name="SUB">
           <shadow type="variables_get">
             <field name="VAR">rgb</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="servo_move">
+        <value name="PIN">
+          <shadow type="pins_pwm_pin"></shadow>
+        </value>
+        <value name="DEGREE">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
           </shadow>
         </value>
       </block>

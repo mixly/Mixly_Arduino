@@ -49,7 +49,7 @@ var MSG = {
 	catMatrix:'Matrix',
 	catFactory:'Factory',
 	catFile:'File',
-	catOnenet:'Onenet'
+	catOnenet:'OneNET'
 };
 Blockly.blynk_connected='Connection state';
 Blockly.BLYNK_CONNECTED='Hardware Connected';

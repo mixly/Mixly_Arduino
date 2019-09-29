@@ -7,7 +7,7 @@ Blockly.Blocks.communicate.HUE = 140//'#3288dd';
 
 Blockly.Blocks['radio_ons'] = {
     init: function() {
-        this.setColour(Blockly.Blocks.communicate.HUE);
+        this.setColour(Blockly.Blocks.storage.HUE);
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_ON,'on'],[Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_OFF,'off'],[Blockly.Msg.HTML_RESET,'reset']]), "type")
             .appendField(Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_WIFI);
@@ -32,7 +32,7 @@ Blockly.Blocks['radio_ons'] = {
 Blockly.Blocks['microbit_radio_on'] = {
   init : function () {
     this.jsonInit({
-      "colour" : Blockly.Blocks.communicate.HUE,
+      "colour" : Blockly.Blocks.storage.HUE,
       "nextStatement" : null,
       "previousStatement" : null,
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/radio.html#radio.on",
@@ -45,7 +45,7 @@ Blockly.Blocks['microbit_radio_on'] = {
 Blockly.Blocks['microbit_radio_off'] = {
   init : function () {
     this.jsonInit({
-      "colour" : Blockly.Blocks.communicate.HUE,
+      "colour" : Blockly.Blocks.storage.HUE,
       "nextStatement" : null,
       "previousStatement" : null,
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/radio.html#radio.off",
@@ -58,7 +58,7 @@ Blockly.Blocks['microbit_radio_off'] = {
 Blockly.Blocks['microbit_radio_config'] = {
   init : function () {
     this.jsonInit({
-      "colour" : Blockly.Blocks.communicate.HUE,
+      "colour" : Blockly.Blocks.storage.HUE,
       "nextStatement" : null,
       "previousStatement" : null,
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/radio.html#radio.config",
@@ -115,7 +115,7 @@ Blockly.Blocks['microbit_radio_config'] = {
 Blockly.Blocks['microbit_radio_reset'] = {
   init : function () {
     this.jsonInit({
-      "colour" : Blockly.Blocks.communicate.HUE,
+      "colour" : Blockly.Blocks.storage.HUE,
       "nextStatement" : null,
       "previousStatement" : null,
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/radio.html#radio.reset",
@@ -128,7 +128,7 @@ Blockly.Blocks['microbit_radio_reset'] = {
 Blockly.Blocks['microbit_radio_send_string'] = {
   init : function () {
     this.jsonInit({
-      "colour" : Blockly.Blocks.communicate.HUE,
+      "colour" : Blockly.Blocks.storage.HUE,
       "nextStatement" : null,
       "previousStatement" : null,
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/radio.html#radio.send",
@@ -146,7 +146,7 @@ Blockly.Blocks['microbit_radio_send_string'] = {
 
 Blockly.Blocks['radio_send_string'] = {
     init:function(){
-        this.setColour(Blockly.Blocks.communicate.HUE);
+        this.setColour(Blockly.Blocks.storage.HUE);
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_RADIO_SEND);
         this.appendDummyInput()
@@ -165,7 +165,7 @@ Blockly.Blocks['radio_send_string'] = {
 Blockly.Blocks['microbit_radio_receive'] = {
   init : function () {
     this.jsonInit({
-      "colour" : Blockly.Blocks.communicate.HUE,
+      "colour" : Blockly.Blocks.storage.HUE,
       "output" : "String",
       "helpUrl" : "https://microbit-micropython.readthedocs.io/en/latest/radio.html#radio.receive",
       "tooltip" :  Blockly.MIXLY_MICROBIT_Receive_message,
@@ -176,7 +176,7 @@ Blockly.Blocks['microbit_radio_receive'] = {
 
 Blockly.Blocks['radio_receive_string'] = {
     init:function(){
-        this.setColour(Blockly.Blocks.communicate.HUE);
+        this.setColour(Blockly.Blocks.storage.HUE);
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_MICROBIT_Receive_message);
         this.appendDummyInput()

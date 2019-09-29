@@ -576,23 +576,6 @@
         </value>
       </block>      
       <block type="controls_if"></block>
-      <!--<block type="controls_range">
-        <value name="FROM">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-        <value name="TO">
-          <shadow type="math_number">
-            <field name="NUM">5</field>
-          </shadow>
-        </value>
-        <value name="STEP">
-          <shadow type="math_number">
-            <field name="NUM">1</field>
-          </shadow>
-        </value>
-      </block>-->
       <block type="controls_forEach">
         <value name="LIST">
           <shadow type="list_many_input">
@@ -624,15 +607,6 @@
       </block>
       
       <block type="controls_pass"></block>
-      <!--0    <block type="controls_repeat_ext">
-              <value name="TIMES">
-                  <shadow type="math_number">
-                      <field name="NUM">10</field>
-                  </shadow>
-              </value>
-        </shadow>
-        </statement>
-      </block> -->
       <block type="controls_flow_statements"></block>
       <block type="controls_try_finally"></block>
       <block type="controls_thread">
@@ -1679,12 +1653,6 @@
           </shadow>
         </value>
       </block>
-      <block type="sensor_mixgo_pin_pressed">
-        <value name="button">
-          <shadow type="number1">
-          </shadow>
-        </value>
-      </block>
       <block type="sensor_mixgo_button_attachInterrupt">
         <value name="btn">
           <shadow type="pins_button">
@@ -1705,28 +1673,15 @@
           <block type="controls_pass"></block>
         </statement>
       </block>
-      <block type="sensor_mixgo_pin_near"></block>
-      <block type="sensor_mixgo_light"></block>
-      <block type="sensor_mixgo_sound"></block>
-      <block type="sensor_use_i2c_init">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">sensor</field>
-          </shadow>
-        </value>
-        <value name="I2CSUB">
-          <shadow type="variables_get">
-            <field name="VAR">i2c</field>
+      <block type="sensor_mixgo_pin_pressed">
+        <value name="button">
+          <shadow type="number1">
           </shadow>
         </value>
       </block>
-      <!--         <block type="sensor_mpu9250_attachGestureInterrupt">
-          <value name="SUB">
-            <shadow type="variables_get">
-              <field name="VAR">mpu</field>
-            </shadow>
-          </value>
-        </block> -->
+      <block type="sensor_mixgo_pin_near"></block>
+      <block type="sensor_mixgo_light"></block>
+      <block type="sensor_mixgo_sound"></block>
       <block type="sensor_mpu9250_gesture">
         <value name="SUB">
           <shadow type="variables_get">
@@ -1755,6 +1710,13 @@
           </shadow>
         </value>
       </block>
+      <block type="sensor_mpu9250_temperature">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">mpu</field>
+          </shadow>
+        </value>
+      </block>
       <block type="sensor_mpu9250_calibrate_compass">
         <value name="SUB">
           <shadow type="variables_get">
@@ -1773,20 +1735,6 @@
         <value name="SUB">
           <shadow type="variables_get">
             <field name="VAR">compass</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="sensor_mpu9250_temperature">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">mpu</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="sensor_rtc_init">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">rtc</field>
           </shadow>
         </value>
       </block>
@@ -1844,6 +1792,19 @@
           </shadow>
         </value>
       </block>
+      <sep gap="50"></sep>
+      <block type="sensor_use_i2c_init">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">sensor</field>
+          </shadow>
+        </value>
+        <value name="I2CSUB">
+          <shadow type="variables_get">
+            <field name="VAR">i2c</field>
+          </shadow>
+        </value>
+      </block>
       <block type="sensor_bmp">
         <value name="SUB">
           <shadow type="variables_get">
@@ -1858,6 +1819,16 @@
           </shadow>
         </value>
       </block>
+      <block type="sensor_dht11">
+        <value name="PIN">
+          <shadow type="pins_digital_pin"></shadow>
+        </value>
+      </block>
+      <block type="sensor_ds18x20">
+        <value name="PIN">
+          <shadow type="pins_digital_pin"></shadow>
+        </value>
+      </block>
       <block type="HCSR04">
         <value name="PIN1">
           <shadow type="pins_digital_pin">
@@ -1870,28 +1841,8 @@
           </shadow>
         </value>
       </block>
-      <block type="sensor_dht11">
-        <value name="PIN">
-          <shadow type="pins_digital_pin"></shadow>
-        </value>
-      </block>
-      <block type="sensor_ds18x20">
-        <value name="PIN">
-          <shadow type="pins_digital_pin"></shadow>
-        </value>
-      </block>
     </category>
     <category id="catActuator" colour="100">
-      <block type="servo_move">
-        <value name="PIN">
-          <shadow type="pins_pwm_pin"></shadow>
-        </value>
-        <value name="DEGREE">
-          <shadow type="math_number">
-            <field name="NUM">100</field>
-          </shadow>
-        </value>
-      </block>
       <block type="actuator_led_bright">
         <value name="led">
           <shadow type="number">
@@ -1989,6 +1940,7 @@
       </block>
       <block type="esp32_music_get_tempo"></block>
       <block type="esp32_music_reset"></block>
+      <sep gap='50'></sep>
       <block type="actuator_neopixel_init">
         <value name="SUB">
           <shadow type="variables_get">
@@ -2040,16 +1992,16 @@
           </shadow>
         </value>
       </block>
-      <!--         <block type="display_rgb_color">
-          <value name="PIN">
-            <shadow type="pins_digital" />
-          </value>
-          <value name="_LED_">
-            <shadow type="math_number">
-              <field name="NUM">1</field>
-            </shadow>
-          </value>
-        </block> -->
+      <block type="servo_move">
+        <value name="PIN">
+          <shadow type="pins_pwm_pin"></shadow>
+        </value>
+        <value name="DEGREE">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
     </category>
     <category id="catMonitor" colour="180">
       <block type="display_show_image_or_string">
@@ -2093,23 +2045,6 @@
           </shadow>
         </value>
       </block>
-      <!-- <block type="monitor_show_scroll_string">
-          <value name="data">
-            <shadow type="text">
-              <field name="TEXT">hello</field>
-            </shadow>
-          </value>
-          <value name="time">
-            <shadow type="math_number">
-              <field name="NUM">120</field>
-            </shadow>
-          </value>
-        </block>
-        <block type="esp32_display_show_image">
-          <value name="PIN">
-            <shadow type="pins_builtinimg"></shadow>
-          </value>
-        </block>-->
       <block type="display_image_create"></block>
       <block type="display_image_builtins"></block>
       <block type="display_animate"></block>
@@ -2166,6 +2101,7 @@
         </value>
       </block>
       <block type="display_clear"></block>
+      <sep gap='50'></sep>
       <block type="display_use_i2c_init">
         <value name="SUB">
           <shadow type="variables_get">
