@@ -9,17 +9,7 @@ pbc.globalFunctionD['exit'] = function (py2block, func, args, keywords, starargs
         })];
 }
 
-pbc.globalFunctionD['eval'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length != 1) {
-        throw new Error("Incorrect number of arguments");
-    }
-    var argblock = py2block.convert(args[0]);
-    return block("system_eval", func.lineno, {}, {
-        "VAR":argblock
-    }, {
-            "inline": "true"
-        });
-}
+
 
 pbc.moduleFunctionD.get('time')['time'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 0) {
