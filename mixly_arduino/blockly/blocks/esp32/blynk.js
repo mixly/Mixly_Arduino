@@ -5,7 +5,7 @@ goog.require('Blockly.Blocks');
 
 
 /******************* Blynk *****************/
-Blockly.Blocks.blynk.HUE ='#24c48e';
+Blockly.Blocks.blynk.HUE ='#2FAD7A';
 
 
 // 自定义终端部件 Terminal Blynk
