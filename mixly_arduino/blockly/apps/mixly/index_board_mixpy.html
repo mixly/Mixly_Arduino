@@ -205,13 +205,6 @@
   <textarea id="content_xml" class="content" wrap="off" readonly></textarea>
   <xml id="toolbox" style="display: none">
     <category name="" id="catInOut" colour="20">
-      <!--      <block type="inout_input">
-              <value name="VAR">
-                  <shadow type="text">
-                      <field name="TEXT">prompt</field>
-                  </shadow>
-              </value>
-          </block>-->
       <block type="inout_type_input">
         <value name="VAR">
           <shadow type="text">
@@ -1254,6 +1247,9 @@
         </value>
       </block>
     </category>
+    <category id="catVar" colour="330" custom="VARIABLE">
+    </category>
+    <category id="catFun" custom="PROCEDURE" colour="290"></category>
     <category id="catFile" colour="0">
       <block type="storage_open_file_with_os">
         <value name="fn">
@@ -2265,10 +2261,6 @@
         </value>
       </block>
     </category>
-    <sep></sep>
-    <category id="catVar" colour="330" custom="VARIABLE">
-    </category>
-    <category id="catFun" custom="PROCEDURE" colour="290"></category>
   </xml>
   <script>
   if (company_block != null) {

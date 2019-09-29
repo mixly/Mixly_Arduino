@@ -389,11 +389,11 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(19) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/blynk/blynk.png') no-repeat;
+	background:url('../../../media/mark/blynk.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(19) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
-	background:url('../../../media/blynk/blynk2.png') no-repeat;
+	background:url('../../../media/mark/blynk2.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(20) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
