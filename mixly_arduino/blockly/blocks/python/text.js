@@ -971,3 +971,19 @@ Blockly.Blocks['text_encode'] = {
  
   }
 };
+
+
+Blockly.Blocks['text_eval'] = {
+ init: function() {
+    
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.appendValueInput('VAR')
+        .setCheck(String)
+        .appendField(Blockly.MIXLY_PYTHON_TEXT_EVAL);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_PYTHON_TEXT_EVAL_RESULT);    
+    this.setInputsInline(true);
+    this.setOutput(true);
+    this.setTooltip(Blockly.MIXLY_PYTHON_TEXT_EVAL_TOOLTIP);
+  }
+};

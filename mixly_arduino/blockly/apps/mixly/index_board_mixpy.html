@@ -276,7 +276,7 @@
         </value>
       </block>      
       <block type="controls_if"></block>
-      <block type="controls_range">
+      <!--<block type="controls_range">
         <value name="FROM">
           <shadow type="math_number">
             <field name="NUM">0</field>
@@ -292,7 +292,7 @@
             <field name="NUM">1</field>
           </shadow>
         </value>
-      </block>
+      </block>-->
       <block type="controls_forEach">
         <value name="LIST">
           <shadow type="list_many_input">
@@ -322,7 +322,7 @@
           </shadow>
         </value>
       </block>
-      <block type="controls_try_finally"></block>
+      
       <block type="controls_pass"></block>
       <!--0    <block type="controls_repeat_ext">
               <value name="TIMES">
@@ -332,6 +332,7 @@
               </value>
           </block>-->
       <block type="controls_flow_statements"></block>
+      <block type="controls_try_finally"></block>
       <block type="controls_thread">
         <value name="callback">
           <shadow type="factory_block_return">
@@ -375,13 +376,7 @@
           </block>
         </statement>
       </block>
-      <block type="system_eval">
-        <value name="VAR">
-          <shadow type="text">
-            <field name="TEXT">input('Please enter your name')</field>
-          </shadow>
-        </value>
-      </block>
+      
       <!--<block type="controls_millis"></block>-->
       <block type="time_localtime"></block>
       <!--   <block type="Panic_with_status_code">
@@ -783,6 +778,13 @@
               </shadow>
             </value>
           </block>
+        </value>
+      </block>
+      <block type="text_eval">
+        <value name="VAR">
+          <shadow type="text">
+            <field name="TEXT">input('1+2*3')</field>
+          </shadow>
         </value>
       </block>
     </category>

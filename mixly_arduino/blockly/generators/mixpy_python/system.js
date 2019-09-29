@@ -31,8 +31,3 @@ Blockly.Python.time_localtime= function() {
   }
 }
 
-Blockly.Python.system_eval = function(block) {  
-  var codestr =  Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
-  var code="eval" +  '(' + codestr + ')';
-  return [code, Blockly.Python.ORDER_ATOMIC];
-};
