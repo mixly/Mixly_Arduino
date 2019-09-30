@@ -38,7 +38,6 @@ var MSG = {
 	catHardware: "硬件交互",
 	catAI: "人工智能",
 	catDS: "数据结构",
-	catMorpxVS2:"MU视觉",
 	catOnBoard:'板载资源',
 	catOnBoardDisplay:'板载显示',
 	catOnBoardSensor:'板载传感',
@@ -50,7 +49,10 @@ var MSG = {
 	catFactory:'自定义模块',
 	catBlynk:'Blynk 物联网',
 	catFile:'文件',
-	catOnenet:'OneNET'
+	catOnenet:'OneNET',
+	catTools:'工具',
+	catWIFI:'Wi-Fi',
+	catMQTT:'MQTT'
 };
 Blockly.Msg.ADD_COMMENT = "添加注释";
 Blockly.Msg.AUTH = "请授权这个应用程序以保存您的作品并共享。";
@@ -2715,3 +2717,4 @@ Blockly.time_interval='时间间隔（ms）';
 Blockly.number_of_executions='执行次数';
 Blockly.super_delay_function_help='注册需要延时执行的函数';
 Blockly.execute_super_delay_function_help='执行延时函数，设置延时时间及执行的次数';
+Blockly.MIXLY_SERVO_WRITEMICROSECONDS='脉冲时长';

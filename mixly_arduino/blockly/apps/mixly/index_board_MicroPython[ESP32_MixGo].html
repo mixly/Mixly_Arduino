@@ -1,5 +1,4 @@
 <html manifest=node.manifest>
-
 <head>
   <meta charset="utf-8">
   <title>Mixly Micropython MixGo</title>
@@ -128,9 +127,7 @@
    * @private
    */
   var TABS_ = ['blocks', 'arduino', 'xml'];
-
   var selected = 'blocks';
-
   /**
    * Switch the visible pane when a tab is clicked.
    * @param {string} clickedName Name of tab clicked.
@@ -165,7 +162,6 @@
       document.getElementById('tab_' + name).className = 'taboff';
       document.getElementById('content_' + name).style.visibility = 'hidden';
     }
-
     // Select the active tab.
     selected = clickedName;
     document.getElementById('tab_' + clickedName).className = 'tabon';
@@ -199,7 +195,6 @@
     }
     Blockly.fireUiEvent(window, 'resize');
   }
-
   /**
    * Populate the currently selected pane with content generated from the blocks.
    */
@@ -227,7 +222,6 @@
     }
   }
 
-
   /**
    * Compute the absolute coordinates and dimensions of an HTML element.
    * @param {!Element} element Element to match.
@@ -251,14 +245,12 @@
       y: y
     };
   }
-
   /**
    * Initialize Blockly.  Called on page load.
    */
   var editor;
   var editor_side_code;
   var py2block_editor;
-
   function init() {
     //window.onbeforeunload = function() {
     //  return 'Leaving this page will result in the loss of your work.';
@@ -286,7 +278,6 @@
     editor_side_code.setReadOnly(true);
     editor_side_code.setScrollSpeed(0.05);
     $('#aceTheme').val(window.conf.lastEditorTheme);
-
     var py2block_converter = new PythonToBlocks();
     py2block_editor = new Py2blockEditor(py2block_converter, editor);
     Sk.python3 = true;
@@ -312,9 +303,7 @@
       }
     };
     window.addEventListener('resize', onresize, false);
-
     var toolbox = document.getElementById('toolbox');
-
     var masterWorkspace = Blockly.inject(document.getElementById('content_blocks'), { //grid:
       //{spacing: 25,
       //length: 3,
@@ -327,10 +316,8 @@
         wheel: true
       }
     });
-
     //实时更新右侧对比代码
     masterWorkspace.addChangeListener(rightCodeEvent);
-
     function rightCodeEvent(masterEvent) {
       if (masterEvent.type == Blockly.Events.UI) {
         return; // Don't update UI events.
@@ -341,7 +328,6 @@
       var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function(s) { return decodeURIComponent(s.replace(/_/g, '%')); });
       editor_side_code.setValue(chinese_code, -1);
     }
-
     auto_save_and_restore_blocks();
     //load from url parameter (single param)
     //http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
@@ -352,7 +338,6 @@
   }
   </script>
 </head>
-
 <body onload="init()">
   <table height="100%" width="100%" id="table_whole">
     <tr>
@@ -2705,7 +2690,7 @@
         </value>
       </block>
     </category>
-    <category id="catNetwork" colour="225">
+    <category id="catNetwork" colour="0">
       <block type="network_init">
         <value name="VAR">
           <shadow type="variables_get">
@@ -3031,8 +3016,8 @@
         </value>
       </block>
     </category>
-    <category id="catIot" colour="#2FAD7A">
-      <category id="catOnenet" colour="#2FAD7A">
+    <category id="catIot" colour="225">
+      <category id="catOnenet" colour="225">
         <block type="iot_wifi_connect">
           <value name="WIFINAME">
             <shadow type="text">
@@ -3162,7 +3147,7 @@
           </value>
         </block>
       </category>
-      <category name="BlynkIOT" colour="#2FAD7A">
+      <category name="BlynkIOT" colour="#24c48e">
         <block type="mpython_blynk_setup">
           <value name="server">
             <shadow type="text">
@@ -3307,5 +3292,4 @@
   }
   </script>
 </body>
-
 </html>

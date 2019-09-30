@@ -7,7 +7,7 @@ profile["default"] = profile["esp32_handbit"];
 
 Blockly.Blocks.handbit_button_is_pressed = {
   init: function(){
-    this.setColour(Blockly.Blocks.Handbit.HUE);
+    this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_BUTTON);
     this.appendDummyInput("")
@@ -22,7 +22,7 @@ Blockly.Blocks.handbit_button_is_pressed = {
 
 Blockly.Blocks.handbit_light= {
   init: function(){
-    this.setColour(Blockly.Blocks.Handbit.HUE);
+    this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_ESP32_LIGHT);
     this.setOutput(true, Number);
@@ -33,7 +33,7 @@ Blockly.Blocks.handbit_light= {
 
 Blockly.Blocks.handbit_sound= {
   init: function(){
-    this.setColour(Blockly.Blocks.Handbit.HUE);
+    this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_ESP32_SOUND);
     this.setOutput(true, Number);
@@ -44,7 +44,7 @@ Blockly.Blocks.handbit_sound= {
 
 Blockly.Blocks.inout_touchRead = {
   init: function(){
-     this.setColour(Blockly.Blocks.Handbit.HUE);
+     this.setColour(Blockly.Blocks.sensor.HUE);
      this.appendDummyInput()
      .appendField(Blockly.MIXLY_ESP32_TOUCH)
      .appendField(Blockly.MIXLY_PIN)
@@ -59,7 +59,7 @@ Blockly.Blocks.inout_touchRead = {
 
 Blockly.Blocks.touchAttachInterrupt = {
   init: function() {
-    this.setColour(Blockly.Blocks.Handbit.HUE);
+    this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendValueInput("PIN", Number)
     .appendField(Blockly.MIXLY_TOUCHATTACHINTERRUPT_PIN)
     .setCheck(Number);
@@ -94,7 +94,7 @@ var HANDBIT_MSA300_ACTION = [
 //传感器_重力感应
 Blockly.Blocks.handbit_MSA300 = {
   init: function() {
-    this.setColour(Blockly.Blocks.Handbit.HUE);
+    this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MixGo_MPU9250);
     this.appendDummyInput("")
@@ -109,7 +109,7 @@ Blockly.Blocks.handbit_MSA300 = {
 
 Blockly.Blocks.handbit_MSA300_action = {
   init: function() {
-    this.setColour(Blockly.Blocks.Handbit.HUE);
+    this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.Handbit);
     this.appendDummyInput("")
@@ -122,9 +122,9 @@ Blockly.Blocks.handbit_MSA300_action = {
 }
 };
 
-Blockly.Blocks.controls_tone={
+Blockly.Blocks.handbit_controls_tone={
     init:function(){
-        this.setColour(Blockly.Blocks.Handbit.HUE);
+        this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
         .appendField(Blockly.MIXLY_TONE);
         this.appendValueInput('FREQUENCY')
@@ -143,9 +143,9 @@ Blockly.Blocks.controls_tone={
     }
 };
 
-Blockly.Blocks.controls_notone={
+Blockly.Blocks.handbit_controls_notone={
     init:function(){
-        this.setColour(Blockly.Blocks.Handbit.HUE);
+        this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
         .appendField(Blockly.MIXLY_NOTONE);
         this.appendValueInput('CHANNEL')
@@ -161,7 +161,7 @@ Blockly.Blocks.controls_notone={
 
 Blockly.Blocks.handbit_rgb_rainbow1 = {
   init: function () {
-    this.setColour(Blockly.Blocks.Handbit.HUE);
+    this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB);
     this.appendValueInput("WAIT")
@@ -176,7 +176,7 @@ Blockly.Blocks.handbit_rgb_rainbow1 = {
 
 Blockly.Blocks.handbit_rgb_rainbow3 = {
   init: function () {
-    this.setColour(Blockly.Blocks.Handbit.HUE);
+    this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB);
     this.appendDummyInput("")
@@ -193,7 +193,7 @@ Blockly.Blocks.handbit_rgb_rainbow3 = {
 
 Blockly.Blocks.handbit_rgb = {
   init: function () {
-    this.setColour(Blockly.Blocks.Handbit.HUE);
+    this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB);
     this.appendValueInput("_LED_")
@@ -213,7 +213,7 @@ Blockly.Blocks.handbit_rgb = {
 
 Blockly.Blocks.handbit_rgb2 = {
   init: function () {
-    this.setColour(Blockly.Blocks.Handbit.HUE);
+    this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB);
     this.appendDummyInput("")
@@ -239,7 +239,7 @@ Blockly.Blocks.handbit_rgb2 = {
 
 Blockly.Blocks.handbit_rgb_Brightness = {
   init: function () {
-    this.setColour(Blockly.Blocks.Handbit.HUE);
+    this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB);
     this.appendValueInput("Brightness")

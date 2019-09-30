@@ -1063,17 +1063,6 @@ Blockly.Blocks.LM35ESP = {
   }
 };
 
-//模拟传感器-IIC地址查找
-Blockly.Blocks.IICSCAN = {
-  init: function () {
-    this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("")
-      .appendField(Blockly.IICSCAN);
-    this.setInputsInline(true);
-    this.setTooltip('');
-  }
-};
-
 //一键配网（无需安可信）
 Blockly.Blocks.blynk_AP_config = {
   init: function () {

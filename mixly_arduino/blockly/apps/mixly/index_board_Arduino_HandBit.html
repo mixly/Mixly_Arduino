@@ -1,4 +1,4 @@
-﻿<html manifest=node.manifest>
+<html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
   <title>Mixly Handbit Arduino</title>
@@ -57,8 +57,9 @@
   <script type="text/javascript" src="../../generators/arduino/esp32/actuator.js"></script>
   <script type="text/javascript" src="../../generators/arduino/esp32/MixGo.js"></script>
   <script type="text/javascript" src="../../generators/arduino/esp32/Handbit.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/esp32/tools.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script> 
   <script type="text/javascript" src="../../blocks/arduino/factory.js"></script>
-  <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/pins.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/inout.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/control.js"></script>
@@ -92,7 +93,8 @@
   <script type="text/javascript" src="../../blocks/arduino/esp32/serial.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/esp32/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/esp32/Handbit.js"></script>
-  <script type="text/javascript" src="../../blocks/arduino/mu_vision.js"></script> 
+  <script type="text/javascript" src="../../blocks/arduino/mu_vision.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/tools.js"></script> 
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color_esp32_arduino_advance.css" />
   <link rel="stylesheet" type="text/css" href="css/ACEfont.css" />
@@ -212,6 +214,12 @@
         <shadow type="pins_digital"></shadow>
       </value>
     </block>
+    <block type="inout_touchRead">
+      <value name="PIN">
+        <shadow type="pins_touch">
+        </shadow>
+      </value>
+    </block>
     <block type="inout_pwm_analog_write">
       <value name="PIN">
         <shadow type="pins_pwm"></shadow>
@@ -269,7 +277,6 @@
       </shadow>
     </value>
   </block>
-
   <block type="inout_pulseIn">
     <value name="PIN">
       <shadow type="pins_digital"></shadow>
@@ -367,6 +374,27 @@
   </block>
   <block type="controls_hw_timer_stop">
   </block>
+  <block type="simple_timer" >
+    <field name="NO">1</field>
+    <value name="timein">
+      <shadow type="math_number">
+        <field name="NUM">1000</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="super_delay_function1"></block>
+  <block type="execute_super_delay_function1">
+   <value name="time_interval">
+    <shadow type="math_number">
+      <field name="NUM">1000</field>
+    </shadow>
+  </value>
+  <value name="frequency">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
 </category>
 <category id="catMath" colour="230">
   <block type="math_number">
@@ -743,6 +771,11 @@
 <block type="serial_println">
 </block>
 <block type="serial_print_num">
+  <value name="CONTENT">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
 </block>
 <block type="serial_available">
 </block>
@@ -801,22 +834,6 @@
     </value>
   </block>
   <block type="RFID_init">
-    <value name="SDA">
-      <shadow type="pins_digital">
-      </shadow>
-    </value>
-    <value name="SCK">
-      <shadow type="pins_SCK">
-      </shadow>
-    </value>
-    <value name="MISO">
-      <shadow type="pins_MISO">
-      </shadow>
-    </value>
-    <value name="MOSI">
-      <shadow type="pins_MOSI">
-      </shadow>
-    </value>
   </block>   <!--初始化-->
   <block type="RFID_on"></block>   <!--如果侦测到信号那么执行XXX-->
   <block type="RFID_readcardnum"></block>  <!--读取卡号-->
@@ -845,7 +862,6 @@
 </category>
 <category id="catStorage" colour="0">
  <!--  <block type="storage_fileopen">
-
     <value name="FILE">
       <shadow type="variables_get">
         <field name="VAR">f</field>
@@ -952,8 +968,6 @@
   </block>
 </category>
 <category id="catSensor" colour="40">
-  <block type="IICSCAN">
-  </block>
   <block type="chaoshengbo2">
   </block>
   <block type="DHT">
@@ -982,30 +996,12 @@
       </shadow>
     </value>
   </block>
-  <block type="encoder_init">
-   <value name="CLK">
-    <shadow type="math_number">
-    </shadow>
-  </value>
-  <value name="DT">
-    <shadow type="math_number">
-    </shadow>
-  </value>
-</block>
-<block type="encoder_read"></block>
-<block type="encoder_write">
- <value name="value">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value>
-</block>
-<block type="MPU6050_update">
-</block>
-<block type="MPU6050">
-</block>
-<block type="BME280_READ">
-</block>
+  <block type="MPU6050_update">
+  </block>
+  <block type="MPU6050">
+  </block>
+  <block type="BME280_READ">
+  </block>
 </category>
 <category id="catActuator" colour="100">
  <block type="Mixly_motor">
@@ -1307,20 +1303,7 @@
 </block>
 </category>
 <category id="catMonitor" colour="180">
-
   <category id="cat4Digitdisplay" colour="180">
-
-    <block type="display_4digitdisplay_power">
-      <field name="STAT">clear</field>
-    </block>
-    <block type="display_4digitdisplay_displayString">
-      <value name="VALUE">
-        <shadow type="text">
-          <field name="TEXT">abcd</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="display_4digitdisplay_showDot"></block>
     <block type="display_TM1637_init">
     </block>
     <block type="display_TM1637_Brightness">
@@ -1434,7 +1417,6 @@
 </block>
 </category>
 <category id="catOLED" colour="180">
-
   <block type="oled_init">
     <next>
       <block type="oled_page">
@@ -1706,7 +1688,6 @@
 </block>
 </category>
 <category id="catMatrix" colour="180">
-
   <block type="MAX7219_init">
     <value name="PIN1">
       <shadow type="pins_MOSI">
@@ -1783,7 +1764,6 @@
       </shadow>
     </value>
   </block>
-
   <block type="display_HT16K33_Rotation">
   </block>
   <block type="display_Matrix_TEXT">
@@ -1822,109 +1802,44 @@
 </category>
 </category>
 <category id="catNetwork" colour="0">
-  <block type="WIFI_info" >
-    <value name="SSID">
-      <shadow type="text" >
-        <field name="TEXT">ssid</field>
-      </shadow>
-    </value>
-    <value name="PWD">
-      <shadow type="text" >
-        <field name="TEXT">password</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="network_wifi_connect">
-  </block>
-  <block type="network_get_connect">
-  </block>
-  <block type="network_stop"></block>
-  <block type="NTP_server">
-    <value name="server_add">
-      <shadow type="text">
-        <field name="TEXT">ntp1.aliyun.com</field>
-      </shadow>
-    </value>
-    <value name="timeZone">
-      <shadow type="math_number">
-       <field name="NUM">8</field>
-     </shadow>
-   </value>
-   <value name="Interval">
-    <shadow type="math_number">
-     <field name="NUM">600</field>
-   </shadow>
- </value>
-</block>
-<block type="NTP_server_get_time"></block>
-<block type="MQTT_server">
-  <value name="server_add">
-    <shadow type="text">
-      <field name="TEXT">192.168.1.101</field>
-    </shadow>
-  </value>
-  <value name="server_port">
-    <shadow type="math_number">
-     <field name="NUM">1883</field>
-   </shadow>
- </value>
- <value name="Client_ID">
-  <shadow type="text">
-    <field name="TEXT">ID</field>
-  </shadow>
-</value>
-<value name="IOT_ID">
-  <shadow type="text">
-    <field name="TEXT">siot</field>
-  </shadow>
-</value>
-<value name="IOT_PWD">
-  <shadow type="text">
-    <field name="TEXT">dfrobot</field>
-  </shadow>
-</value>
-</block>
-<block type="MQTT_publish">
- <value name="data">
-  <shadow type="math_number">
-    <field name="NUM">120</field>
-  </shadow>
-</value>
-<value name="Topic">
-  <shadow type="text">
-    <field name="TEXT">Topic_0</field>
-  </shadow>
-</value>
-</block>
-<block type="MQTT_subscribe">
-  <value name="IF0">
-    <block type="math_number">
-      <field name="NUM">Topic</field>
-    </block>
-  </value>
-  <statement name="DO0">
-    <block type="serial_println">
-      <field name="serial_select">Serial</field>
-      <value name="CONTENT">
-        <block type="MQTT_subscribe_value" >
-          <value name="Topic">
-            <shadow type="text">
-              <field name="TEXT">Topic</field>
-            </shadow>
-          </value>
-        </block>
+  <category id="catWIFI" colour="0">
+    <block type="WIFI_info" >
+      <value name="SSID">
+        <shadow type="text" >
+          <field name="TEXT">ssid</field>
+        </shadow>
+      </value>
+      <value name="PWD">
+        <shadow type="text" >
+          <field name="TEXT">password</field>
+        </shadow>
       </value>
     </block>
-  </statement>
-</block>
-</category>
-<sep></sep>
-<category id="catVar" colour="330" custom="VARIABLE">
-</category>
-<category id="catFun" custom="PROCEDURE" colour="290">
+    <block type="network_wifi_connect">
+    </block>
+    <block type="network_get_connect">
+    </block>
+    <block type="network_stop"></block>
+    <block type="NTP_server">
+      <value name="server_add">
+        <shadow type="text">
+          <field name="TEXT">ntp1.aliyun.com</field>
+        </shadow>
+      </value>
+      <value name="timeZone">
+        <shadow type="math_number">
+         <field name="NUM">8</field>
+       </shadow>
+     </value>
+     <value name="Interval">
+      <shadow type="math_number">
+       <field name="NUM">600</field>
+     </shadow>
+   </value>
+ </block>
+ <block type="NTP_server_get_time"></block>
 </category>
 <category id="catBlynk" name="catBlynk" colour="160">
-
   <block type="blynk_server">
     <value name="server_add">
       <shadow type="text">
@@ -1946,9 +1861,7 @@
         </shadow>
       </value>
     </block>
-
     <block type="Blynk_connect_state"></block>
-
     <block type="blynk_smartconfig">
       <value name="server_add">
         <shadow type="text">
@@ -1961,8 +1874,6 @@
         </shadow>
       </value>
     </block>
-
-    <!-- ESP32 blynk BLE连接方式 -->
     <block type="blynk_esp32_ble">
       <value name="auth">
         <shadow type="text">
@@ -1975,8 +1886,6 @@
         </shadow>
       </value>
     </block>
-
-    <!-- ESP32 blynk Bluetooth连接方式 -->
     <block type="blynk_esp32_Bluetooth">
       <value name="auth">
         <shadow type="text">
@@ -1989,7 +1898,6 @@
         </shadow>
       </value>
     </block>
-    
     <block type="blynk_iot_get_data">
       <mutation>
         <arg name="vpin_value" vartype="int"></arg>
@@ -2104,6 +2012,16 @@
                 </block>
               </value>
               <next>
+                <block type="serial_println">
+                  <field name="serial_select">Serial</field>
+                  <value name="CONTENT">
+                    <block type="variables_get">
+                      <field name="VAR">second</field>
+                    </block>
+                  </value>
+                  <next>
+                  </next>
+                </block>
               </next>
             </block>
           </next>
@@ -2531,8 +2449,76 @@
   <field name="Vpin">V0</field>
 </block>
 </category>
+<category id="catMQTT" colour="0">
+  <block type="MQTT_server">
+    <value name="server_add">
+      <shadow type="text">
+        <field name="TEXT">192.168.1.101</field>
+      </shadow>
+    </value>
+    <value name="server_port">
+      <shadow type="math_number">
+       <field name="NUM">1883</field>
+     </shadow>
+   </value>
+   <value name="Client_ID">
+    <shadow type="text">
+      <field name="TEXT">ID</field>
+    </shadow>
+  </value>
+  <value name="IOT_ID">
+    <shadow type="text">
+      <field name="TEXT">siot</field>
+    </shadow>
+  </value>
+  <value name="IOT_PWD">
+    <shadow type="text">
+      <field name="TEXT">dfrobot</field>
+    </shadow>
+  </value>
+</block>
+<block type="MQTT_publish">
+ <value name="data">
+  <shadow type="math_number">
+    <field name="NUM">120</field>
+  </shadow>
+</value>
+<value name="Topic">
+  <shadow type="text">
+    <field name="TEXT">Topic_0</field>
+  </shadow>
+</value>
+</block>
+<block type="MQTT_subscribe">
+  <value name="IF0">
+    <block type="math_number">
+      <field name="NUM">Topic</field>
+    </block>
+  </value>
+  <statement name="DO0">
+    <block type="serial_println">
+      <field name="serial_select">Serial</field>
+      <value name="CONTENT">
+        <block type="MQTT_subscribe_value" >
+          <value name="Topic">
+            <shadow type="text">
+              <field name="TEXT">Topic</field>
+            </shadow>
+          </value>
+        </block>
+      </value>
+    </block>
+  </statement>
+</block>
+</category>
+</category>
+<sep></sep>
+<category id="catVar" colour="330" custom="VARIABLE">
+</category>
+<category id="catFun" custom="PROCEDURE" colour="290">
+</category>
 <category id="catOnBoard" name="catOnBoard" colour="65">
-  <category id="catOnBoardSensor"  colour="65">
+  <category id="catOnBoardSensor" name="catOnBoardSensor" colour="40">
    <block type="handbit_button_is_pressed">
    </block>
    <block type="handbit_light">
@@ -2556,7 +2542,7 @@
   <block type="handbit_MSA300_action"> 
   </block>
 </category>
-<category id="catOnBoardActuator" name="catOnBoardActuator" colour="65">
+<category id="catOnBoardActuator" name="catOnBoardActuator" colour="100">
   <block type="RGB_color_seclet" >
    <field name="COLOR">#ff0000</field>
  </block>
@@ -2643,7 +2629,7 @@
     </shadow>
   </value>
 </block>
-<block type="controls_tone">
+<block type="handbit_controls_tone">
   <value name="PIN">
    <shadow type="pins_digital">
     <field name="PIN">16</field>
@@ -2661,7 +2647,7 @@
   <shadow type="channel_select"></shadow>
 </value>
 </block>
-<block type="controls_notone">
+<block type="handbit_controls_notone">
  <value name="PIN">
    <shadow type="pins_digital">
     <field name="PIN">16</field>
@@ -2672,7 +2658,7 @@
 </value>
 </block>
 </category>
-<category id="catOnBoardDisplay" name="catOnBoardDisplay" colour="65">
+<category id="catOnBoardDisplay" name="catOnBoardDisplay" colour="180">
   <block type="oled_init">
     <next>
       <block type="oled_page">
@@ -2953,44 +2939,8 @@
 </block>
 </category>
 </category>
-<category id="catMorpxVS2" colour="#EF5411">
-  <block type="Vs2MuInit"></block>
-  <block type="Vs2Setup"></block>
-  <block type="Vs2Reset"></block>
-  <block type="Vs2SetLEDColor">
-    <value name="LEDLevel">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="Vs2VisionBegin"></block>
-  <block type="Vs2SetVisionLevel"></block>
-  <block type="Vs2SetVisionZoom"></block>
-  <block type="Vs2SetUARTBaud"></block>
-  <block type="Vs2SetCameraWhiteBalance"></block>
-  <block type="Vs2SetCameraHFR"></block>
-  <block type="Vs2Detected"></block>
-  <block type="Vs2DetectedRegionColor">
-    <value name="XValue">
-      <shadow type="math_number">
-        <field name="NUM">50</field>
-      </shadow>
-    </value>
-    <value name="YValue">
-      <shadow type="math_number">
-        <field name="NUM">50</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="Vs2DetectedColorDetect"></block>
-  <block type="Vs2GetMessage"></block>
-  <block type="Vs2GetCardType"></block>
-  <block type="Vs2GetColorLabel"></block>
-</category>
+
 <category id="catFactory" name="catFactory" colour="65">
-  <block type="folding_block"></block>
-  <block type="factory_notes"></block>
   <block type="factory_include"></block>
   <block type="factory_function_noreturn"></block>
   <block type="factory_function_return"></block>
@@ -3005,6 +2955,11 @@
   <block type="factory_block_return"></block>
   <block type="factory_block_with_textarea"></block>
   <block type="factory_block_return_with_textarea"></block>
+</category>
+<category  id="catTools" name="catTools" colour="65">
+ <block type="IICSCAN"></block>
+ <block type="factory_notes"></block>
+ <block type="folding_block"></block>
 </category>
 </xml>
 <script>

@@ -118,29 +118,3 @@ Blockly.Arduino.factory_block_return_with_textarea = function() {
 	return [VALUE,Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino.factory_notes = function(){
-     var content = this.getFieldValue('VALUE');
-     console.log(content);
-     if(content){
-        var content2arr = content.split('\n');
-         var code = '';
-         for (var eachElement in content2arr){
-            console.log(content2arr[eachElement]);
-            content2arr[eachElement] = '//'+ content2arr[eachElement] +'\n';
-            console.log(content2arr[eachElement]);
-         }
-         for (var eachElement of content2arr){
-            code += eachElement;
-         }
-         return code;
-     }
-     else{
-        return '//\n';
-     }
-}
-
-Blockly.Arduino.folding_block = function() {
-    var branch = Blockly.Arduino.statementToCode(this, 'DO');
-    branch = branch.replace(/(^\s*)|(\s*$)/g, "");//去除两端空格
-    return ''+branch+'\n';
-};

@@ -38,7 +38,6 @@ var MSG = {
 	catHardware:"Hardware",
 	catAI:"AI",
 	catDS: "Data Structure",
-	catMorpxVS2:"MuVisionSensor",
 	catOnBoard:'Board',
 	catOnBoardDisplay:'Board Display',
 	catOnBoardSensor:'Board Sensor',
@@ -49,7 +48,8 @@ var MSG = {
 	catMatrix:'Matrix',
 	catFactory:'Factory',
 	catFile:'File',
-	catOnenet:'OneNET'
+	catOnenet:'OneNET',
+	catTools:'Tools'
 };
 Blockly.blynk_connected='Connection state';
 Blockly.BLYNK_CONNECTED='Hardware Connected';
@@ -2713,3 +2713,4 @@ Blockly.time_interval='Time interval (ms)';
 Blockly.number_of_executions='Number of executions';
 Blockly.super_delay_function_help='Register a function that requires a delayed execution';
 Blockly.execute_super_delay_function_help='Execute the delay function, set the delay time and the number of executions';
+Blockly.MIXLY_SERVO_WRITEMICROSECONDS='write microseconds';

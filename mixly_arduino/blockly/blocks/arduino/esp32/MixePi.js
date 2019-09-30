@@ -4,7 +4,7 @@ goog.provide('Blockly.Blocks.MixePi');
 goog.require('Blockly.Blocks');
 Blockly.Blocks.MixePi.HUE = "#e4324f";
 Blockly.Blocks.MixePi.HUE1 = "#64b72f";
-Blockly.Blocks.MixePi.HUE2 = "#13ae67";
+Blockly.Blocks.display.HUE = "#13ae67";
 Blockly.Blocks.MixePi.HUE3 = "#EF5411";
 profile["default"] = profile["esp32_mixepi"];
 
@@ -34,7 +34,7 @@ var BRIGHTNESS_SELECT=[["0", "0"],["1", "1"],["2", "2"],["3", "3"],["4", "4"],["
 
 Blockly.Blocks.brightness_select = {
  init: function() {
-  this.setColour(Blockly.Blocks.MixePi.HUE2);
+  this.setColour(Blockly.Blocks.display.HUE);
   this.appendDummyInput("")
   .appendField(new Blockly.FieldDropdown(BRIGHTNESS_SELECT), 'STAT');
   this.setOutput(true, Number);
@@ -43,7 +43,7 @@ Blockly.Blocks.brightness_select = {
 
 Blockly.Blocks.mixePi_button_is_pressed = {
   init: function(){
-    this.setColour(Blockly.Blocks.MixePi.HUE);
+    this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_BUTTON);
     this.appendDummyInput("")
@@ -58,7 +58,7 @@ Blockly.Blocks.mixePi_button_is_pressed = {
 
 Blockly.Blocks.mixepi_light= {
   init: function(){
-    this.setColour(Blockly.Blocks.MixePi.HUE);
+    this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_ESP32_LIGHT);
     this.setOutput(true, Number);
@@ -69,7 +69,7 @@ Blockly.Blocks.mixepi_light= {
 
 Blockly.Blocks.mixepi_sound= {
   init: function(){
-    this.setColour(Blockly.Blocks.MixePi.HUE);
+    this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_ESP32_SOUND);
     this.setOutput(true, Number);
@@ -80,7 +80,7 @@ Blockly.Blocks.mixepi_sound= {
 
 Blockly.Blocks.mixepi_inout_touchRead = {
   init: function(){
-     this.setColour(Blockly.Blocks.MixePi.HUE);
+     this.setColour(Blockly.Blocks.sensor.HUE);
      this.appendDummyInput()
      .appendField(Blockly.MIXLY_ESP32_TOUCH)
      .appendField(Blockly.MIXLY_PIN)
@@ -93,9 +93,9 @@ Blockly.Blocks.mixepi_inout_touchRead = {
  }
 };
 
-Blockly.Blocks.controls_tone={
+Blockly.Blocks.mixepi_controls_tone={
     init:function(){
-        this.setColour(Blockly.Blocks.MixePi.HUE1);
+        this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput()
         .appendField(Blockly.MIXLY_TONE);
         this.appendValueInput('FREQUENCY')
@@ -114,9 +114,9 @@ Blockly.Blocks.controls_tone={
     }
 };
 
-Blockly.Blocks.controls_notone={
+Blockly.Blocks.mixepi_controls_notone={
     init:function(){
-        this.setColour(Blockly.Blocks.MixePi.HUE1);
+        this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput()
         .appendField(Blockly.MIXLY_NOTONE);
         this.appendValueInput('CHANNEL')
@@ -132,7 +132,7 @@ Blockly.Blocks.controls_notone={
 //传感器_重力感应
 Blockly.Blocks.mixepi_ADXL345 = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE);
+    this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MixGo_MPU9250);
     this.appendDummyInput("")
@@ -147,7 +147,7 @@ Blockly.Blocks.mixepi_ADXL345 = {
 
 Blockly.Blocks.mixepi_ADXL345_setOffset = {
   init: function () {
-    this.setColour(Blockly.Blocks.MixePi.HUE);
+    this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
         .appendField("设置加速度传感器");
     this.appendValueInput("OFFSET")
@@ -162,7 +162,7 @@ Blockly.Blocks.mixepi_ADXL345_setOffset = {
 
 Blockly.Blocks.mixepi_ADXL345_action = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE);
+    this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
     .appendField("MIXEPI");
     this.appendDummyInput("")
@@ -177,7 +177,7 @@ Blockly.Blocks.mixepi_ADXL345_action = {
 
 Blockly.Blocks.mixepi_rgb_rainbow1 = {
   init: function () {
-    this.setColour(Blockly.Blocks.MixePi.HUE1);
+    this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB);
     this.appendValueInput("WAIT")
@@ -192,7 +192,7 @@ Blockly.Blocks.mixepi_rgb_rainbow1 = {
 
 Blockly.Blocks.mixepi_rgb_rainbow3 = {
   init: function () {
-    this.setColour(Blockly.Blocks.MixePi.HUE1);
+    this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB);
     this.appendDummyInput("")
@@ -209,7 +209,7 @@ Blockly.Blocks.mixepi_rgb_rainbow3 = {
 
 Blockly.Blocks.RGB_color_seclet = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE1);
+    this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .setAlign(Blockly.ALIGN_RIGHT)
     .appendField(new Blockly.FieldColour("ff0000"), "COLOR");
@@ -221,7 +221,7 @@ Blockly.Blocks.RGB_color_seclet = {
 
 Blockly.Blocks.RGB_color_rgb = {
   init: function () {
-    this.setColour(Blockly.Blocks.MixePi.HUE1);
+    this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendValueInput("R")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
@@ -242,7 +242,7 @@ Blockly.Blocks.RGB_color_rgb = {
 
 Blockly.Blocks.mixepi_rgb = {
   init: function () {
-    this.setColour(Blockly.Blocks.MixePi.HUE1);
+    this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB);
     this.appendValueInput("_LED_")
@@ -262,7 +262,7 @@ Blockly.Blocks.mixepi_rgb = {
 
 Blockly.Blocks.mixepi_rgb2 = {
   init: function () {
-    this.setColour(Blockly.Blocks.MixePi.HUE1);
+    this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB);
     this.appendDummyInput("")
@@ -288,7 +288,7 @@ Blockly.Blocks.mixepi_rgb2 = {
 
 Blockly.Blocks.mixepi_rgb_Brightness = {
   init: function () {
-    this.setColour(Blockly.Blocks.MixePi.HUE1);
+    this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RGB);
     this.appendValueInput("Brightness")
@@ -304,7 +304,7 @@ Blockly.Blocks.mixepi_rgb_Brightness = {
 
 Blockly.Blocks.TFT_Brightness = {
   init: function(){
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendValueInput('BRIGHTNESS')
     .setCheck(Number)
     .appendField("TFT背光"+Blockly.MIXLY_BRIGHTNESS);
@@ -317,7 +317,7 @@ Blockly.Blocks.TFT_Brightness = {
 
 Blockly.Blocks.TFT_color_seclet = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .setAlign(Blockly.ALIGN_RIGHT)
     .appendField(new Blockly.FieldColour("ff0000"), "COLOR");
@@ -329,7 +329,7 @@ Blockly.Blocks.TFT_color_seclet = {
 
 Blockly.Blocks.TFT_color_rgb = {
   init: function () {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendValueInput("R")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
@@ -351,7 +351,7 @@ Blockly.Blocks.TFT_color_rgb = {
 
 Blockly.Blocks.TFT_fillScreen = {
   init: function () {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
     .appendField(Blockly.MIXLY_BACKGROUND_COLOR);
@@ -374,7 +374,7 @@ var display_Rotation_NUM = [
 
 Blockly.Blocks.TFT_Rotation = {
   init: function(){
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField('TFT');
     this.appendDummyInput("")
@@ -391,7 +391,7 @@ Blockly.Blocks.TFT_Rotation = {
 //显示-TFT-定义字模名称和数据
 Blockly.Blocks['tft_define_bitmap_data'] = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
     .appendField(Blockly.OLED_BITMAP_NAME)
@@ -407,7 +407,7 @@ Blockly.Blocks['tft_define_bitmap_data'] = {
 //显示-TFT-显示位图（汉字）
 Blockly.Blocks.tft_showBitmap = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
     .appendField(Blockly.OLED_BITMAP);
@@ -436,7 +436,7 @@ Blockly.Blocks.tft_showBitmap = {
 
 Blockly.Blocks.tft_drawPixel = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
     .appendField(Blockly.OLED_DRAWPIXE);
@@ -460,7 +460,7 @@ Blockly.Blocks.tft_drawPixel = {
 //显示-TFT-画线
 Blockly.Blocks.tft_drawLine = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
     .appendField(Blockly.OLED_DRAWLINE);
@@ -490,7 +490,7 @@ Blockly.Blocks.tft_drawLine = {
 //显示-TFT-画直线
 Blockly.Blocks.tft_drawFastLine = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
     .appendField(Blockly.OLED_DRAWSTRLINE);
@@ -518,7 +518,7 @@ Blockly.Blocks.tft_drawFastLine = {
 //显示-TFT-新建页面
 Blockly.Blocks.oled_page = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
     .appendField(Blockly.OLED_PAGE);
@@ -533,7 +533,7 @@ Blockly.Blocks.oled_page = {
 //显示-TFT-画三角
 Blockly.Blocks.tft_Triangle = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
     .appendField(Blockly.OLED_DRAW_TRIANGLE);
@@ -571,7 +571,7 @@ Blockly.Blocks.tft_Triangle = {
 //显示-TFT-画长方形
 Blockly.Blocks.tft_Rect = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
     .appendField(Blockly.OLED_DRAW_RECTANGLE);
@@ -603,7 +603,7 @@ Blockly.Blocks.tft_Rect = {
 //显示-TFT-画圆角矩形
 Blockly.Blocks.tft_RoundRect = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
     .appendField(Blockly.OLED_DRAW_RAD_RECTANGLE);
@@ -637,7 +637,7 @@ Blockly.Blocks.tft_RoundRect = {
 //显示-TFT-画圆（空心，实心）
 Blockly.Blocks.tft_Circle = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
     .appendField(Blockly.OLED_DRAW_CIRCLE);
@@ -669,7 +669,7 @@ Blockly.Blocks.tft_Circle = {
 //显示-OLED-设置字体
 Blockly.Blocks.tft_set_EN_Font = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT");
     this.appendDummyInput("")
@@ -690,7 +690,7 @@ Blockly.Blocks.tft_set_EN_Font = {
 //显示-OLED-设置字体
 Blockly.Blocks.tft_set_CN_Font = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT");
     this.appendDummyInput("")
@@ -710,7 +710,7 @@ Blockly.Blocks.tft_set_CN_Font = {
 //显示-TFT-设置图标
 Blockly.Blocks.tft_icons = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
     .appendField(Blockly.OLED_BITMAP);
@@ -741,7 +741,7 @@ Blockly.Blocks.tft_icons = {
 //显示-TFT-显示字符串
 Blockly.Blocks.tft_print = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
     .appendField(Blockly.OLED_PRINT_VAR);
@@ -768,7 +768,7 @@ Blockly.Blocks.tft_print = {
 //显示-TFT-显示字符串
 Blockly.Blocks.tft_print_refresh = {
   init: function() {
-    this.setColour(Blockly.Blocks.MixePi.HUE2);
+    this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
     .appendField(Blockly.OLED_PRINT_VAR);

@@ -1,5 +1,4 @@
 <html manifest=node.manifest>
-
 <head>
   <meta charset="utf-8">
   <title>Mixly micro:bit</title>
@@ -119,9 +118,7 @@
    * @private
    */
   var TABS_ = ['blocks', 'arduino', 'xml'];
-
   var selected = 'blocks';
-
   /**
    * Switch the visible pane when a tab is clicked.
    * @param {string} clickedName Name of tab clicked.
@@ -156,7 +153,6 @@
       document.getElementById('tab_' + name).className = 'taboff';
       document.getElementById('content_' + name).style.visibility = 'hidden';
     }
-
     // Select the active tab.
     selected = clickedName;
     document.getElementById('tab_' + clickedName).className = 'tabon';
@@ -190,7 +186,6 @@
     }
     Blockly.fireUiEvent(window, 'resize');
   }
-
   /**
    * Populate the currently selected pane with content generated from the blocks.
    */
@@ -220,7 +215,6 @@
       //arduinoTextarea.focus();
     }
   }
-
   /**
    * Compute the absolute coordinates and dimensions of an HTML element.
    * @param {!Element} element Element to match.
@@ -244,14 +238,12 @@
       y: y
     };
   }
-
   /**
    * Initialize Blockly.  Called on page load.
    */
   var editor;
   var editor_side_code;
   var py2block_editor;
-
   function init() {
     //window.onbeforeunload = function() {
     //  return 'Leaving this page will result in the loss of your work.';
@@ -304,9 +296,7 @@
       }
     };
     window.addEventListener('resize', onresize, false);
-
     var toolbox = document.getElementById('toolbox');
-
     var masterWorkspace = Blockly.inject(document.getElementById('content_blocks'), { //grid:
       //{spacing: 25,
       //length: 3,
@@ -319,10 +309,8 @@
         wheel: true
       }
     });
-
     //实时更新右侧对比代码
     masterWorkspace.addChangeListener(rightCodeEvent);
-
     function rightCodeEvent(masterEvent) {
       if (masterEvent.type == Blockly.Events.UI) {
         return; // Don't update UI events.
@@ -333,7 +321,6 @@
       var chinese_code = code.replace(/(_[0-9A-F]{2}_[0-9A-F]{2}_[0-9A-F]{2})+/g, function(s) { return decodeURIComponent(s.replace(/_/g, '%')); });
       editor_side_code.setValue(chinese_code, -1);
     }
-
     auto_save_and_restore_blocks();
     //load from url parameter (single param)
     //http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
@@ -344,7 +331,6 @@
   }
   </script>
 </head>
-
 <body onload="init()">
   <table height="100%" width="100%" id="table_whole">
     <tr>
@@ -1479,7 +1465,6 @@
     <category id="catVar" colour="330" custom="VARIABLE">
     </category>
     <category id="catFun" custom="PROCEDURE" colour="290"></category>
-
     <category id="catSerialPort" colour="65">
       <block type="IO_print_inline">
         <value name="VAR">
@@ -1522,7 +1507,6 @@
         </value>
       </block>
     </category>
-
     <category id="catSensor" colour="40">
       <block type="sensor_button_is_pressed">
         <value name="btn">
@@ -16669,5 +16653,4 @@
     :00000001FF
   </div>
 </body>
-
 </html>
