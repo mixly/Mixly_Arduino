@@ -989,6 +989,13 @@
   </block>
   <block type="ADXL345">
   </block>
+  <block type="ADXL345_setOffset">
+    <value name="OFFSET">
+      <shadow type="math_number">
+        <field name="NUM">120</field>
+      </shadow>
+    </value>
+  </block>
   <block type="weightSensor">
     <value name="scale">
       <shadow type="math_number">
@@ -2519,9 +2526,9 @@
 </category>
 <category id="catOnBoard" name="catOnBoard" colour="65">
   <category id="catOnBoardSensor" name="catOnBoardSensor" colour="40">
-   <block type="mixepi_ADXL345">
+   <block type="ADXL345">
    </block>
-   <block type="mixepi_ADXL345_setOffset">
+   <block type="ADXL345_setOffset">
     <value name="OFFSET">
       <shadow type="math_number">
         <field name="NUM">120</field>

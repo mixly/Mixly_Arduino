@@ -2714,3 +2714,4 @@ Blockly.number_of_executions='Number of executions';
 Blockly.super_delay_function_help='Register a function that requires a delayed execution';
 Blockly.execute_super_delay_function_help='Execute the delay function, set the delay time and the number of executions';
 Blockly.MIXLY_SERVO_WRITEMICROSECONDS='write microseconds';
+Blockly.MIXLY_Z_AXIS='z-axis';

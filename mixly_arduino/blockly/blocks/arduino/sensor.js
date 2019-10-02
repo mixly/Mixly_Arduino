@@ -250,7 +250,7 @@ var RTC_TIME_TYPE = [
 [Blockly.MIXLY_HOUR, "getHour"],
 [Blockly.MIXLY_MINUTE, "getMinute"],
 [Blockly.MIXLY_SECOND, "getSecond"],
-[Blockly.MIXLY_WEEK, "getWeek"],
+// [Blockly.MIXLY_WEEK, "getWeek"],
 ];
 
 
@@ -325,12 +325,9 @@ Blockly.Blocks.RTC_set_date = {
 };
 
 var ADXL345_GETAB = [
-[Blockly.MIXLY_ADXL345_X, "x"],
-[Blockly.MIXLY_ADXL345_Y, "y"],
-[Blockly.MIXLY_ADXL345_Z, "z"],
-[Blockly.MIXLY_ADXL345_XA, "xa"],
-[Blockly.MIXLY_ADXL345_YA, "ya"]
-  //, [Blockly.MIXLY_ADXL345_ZA, "za"]
+[Blockly.MixGo_MPU9250_AX, "accel.getAccelerationX()"],
+[Blockly.MixGo_MPU9250_AY, "accel.getAccelerationY()"],
+[Blockly.MixGo_MPU9250_AZ, "accel.getAccelerationZ()"],
   ];
 //传感器-重力感应块-获取数据
 Blockly.Blocks.ADXL345 = {
@@ -343,8 +340,25 @@ Blockly.Blocks.ADXL345 = {
     .appendField(new Blockly.FieldDropdown(ADXL345_GETAB), "ADXL345_PIN");
     this.setInputsInline(true);
     this.setOutput(true);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_ADXL345.replace('%1',this.getFieldValue("ADXL345_PIN")));
+    this.setTooltip();
   }
+};
+
+Blockly.Blocks.ADXL345_setOffset = {
+  init: function () {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_SETTING)
+        .appendField('ADXL345')
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_OFFSET);
+    this.appendValueInput("OFFSET")
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_DISPLAY_MATRIX_X,"setOffsetX"],[Blockly.MIXLY_DISPLAY_MATRIX_Y,"setOffsetY"],[Blockly.MIXLY_Z_AXIS,"setOffsetZ"]]), "MIXEPI_ADXL345_OFFSET");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+}
 };
 
 //传感器-MPU6050-获取数据

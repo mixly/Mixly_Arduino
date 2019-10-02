@@ -147,23 +147,45 @@ Blockly.Arduino.RTC_set_date = function () {
   code += RTCName + '.setDOW('+ year + ','+ month + ','+ day +');\n';
   return code;
 }
-//传感器-重力感应块-获取数据
+
+
+//传感器_重力感应块
 Blockly.Arduino.ADXL345 = function() {
-  Blockly.Arduino.definitions_['include_ADXL345'] = '#include <ADXL345.h>';
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
   Blockly.Arduino.definitions_['include_I2Cdev'] = '#include <I2Cdev.h>';
-  Blockly.Arduino.definitions_['var_declare_ADXL345'] = 'ADXL345 accel;';
-  Blockly.Arduino.setups_['setup_Wire.begin()'] = 'Wire.begin();';
-  Blockly.Arduino.setups_['setup_accel.initialize'] = 'accel.initialize();';
+  Blockly.Arduino.definitions_['include_ADXL345'] = '#include <ADXL345.h>';
+  Blockly.Arduino.definitions_['var_declare_ADXL345'] = 'ADXL345 accel;\n';
+  Blockly.Arduino.setups_['setup_Wire.begin'] = 'Wire.begin();';
+  Blockly.Arduino.setups_['setup_accel.begin'] = 'accel.initialize(); \n';
   var dropdown_type = this.getFieldValue('ADXL345_PIN');
-  var code = '';
-  if (dropdown_type == "xa") code += 'accel.X_angle()';
-  if (dropdown_type == "ya") code += 'accel.Y_angle()';
-  if (dropdown_type == "x") code += 'accel.getAccelerationX()';
-  if (dropdown_type == "y") code += 'accel.getAccelerationY()';
-  if (dropdown_type == "z") code += 'accel.getAccelerationZ()';
+  var code = dropdown_type;
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
+//传感器_重力感应块
+Blockly.Arduino.ADXL345_setOffset = function() {
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+  Blockly.Arduino.definitions_['include_I2Cdev'] = '#include <I2Cdev.h>';
+  Blockly.Arduino.definitions_['include_ADXL345'] = '#include <ADXL345.h>';
+  Blockly.Arduino.definitions_['var_declare_ADXL345'] = 'ADXL345 accel;\n';
+  Blockly.Arduino.setups_['setup_Wire.begin'] = 'Wire.begin();';
+  Blockly.Arduino.setups_['setup_accel.begin'] = 'accel.initialize(); \n';
+
+  var dropdown_type = this.getFieldValue('MIXEPI_ADXL345_OFFSET');
+  var offset_value = Blockly.Arduino.valueToCode(this, 'OFFSET', Blockly.Arduino.ORDER_ATOMIC);
+  var code;
+
+  if(dropdown_type=="setOffsetX"){
+   code = 'accel.setOffsetX(round('+offset_value+'*4/15.9));\n';
+ }else  if(dropdown_type=="setOffsetY"){
+   code = 'accel.setOffsetY(round('+offset_value+'*4/15.9));\n';
+ }else if(dropdown_type=="setOffsetZ"){
+   code = 'accel.setOffsetZ(round('+offset_value+'*4/15.9));\n';
+ }
+ 
+ return code;
+};
+
 
 //传感器-MPU6050-获取数据
 Blockly.Arduino.MPU6050 = function() {
