@@ -2694,3 +2694,4 @@ Blockly.Msg.TURTLE_HEADING= "朝向";
 Blockly.Msg.TURTLE_POS_SHAPE= "获取乌龟当前";
 Blockly.Msg.TURTLE_SHAPE= "shape";
 Blockly.MIXLY_AipOcr_drivingLicense = '驾驶证识别';
+Blockly.MIXLY_Z_AXIS='z-axis';

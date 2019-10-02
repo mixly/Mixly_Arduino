@@ -2380,3 +2380,4 @@ Blockly.blynk_table_highlight='Table Highlight';
 Blockly.blynk_table_unselect='Table cancel selection';
 Blockly.blynk_table_cleardata='Table Clear Data';
 Blockly.blynk_connected="Connection state";
+Blockly.MIXLY_Z_AXIS='z-axis';

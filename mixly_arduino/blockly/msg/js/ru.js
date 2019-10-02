@@ -2689,3 +2689,4 @@ Blockly.TEXT_TO='to';
 Blockly.TO_SPI_SLAVE_PIN='To SPI Slave PIN#';
 Blockly.TUPLE_GET_INDEX_TOOLTIP= 'Return the value of the specified position in the tuple. ';
 Blockly.TYPE_CONVERSION_HELP='Convert a variable to the corresponding type value.';
+Blockly.MIXLY_Z_AXIS='z-axis';

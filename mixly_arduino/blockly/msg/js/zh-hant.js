@@ -2891,3 +2891,4 @@ Blockly.number_of_executions='執行次數';
 Blockly.super_delay_function_help='註冊需要延時執行的函數';
 Blockly.execute_super_delay_function_help='執行延時函數，設置延時時間及執行的次數';
 Blockly.MIXLY_SERVO_WRITEMICROSECONDS='脈衝時長';
+Blockly.MIXLY_Z_AXIS='z轴';
