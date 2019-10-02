@@ -111,7 +111,7 @@ Blockly.Blocks['serial_softserial'] = {
        .setCheck(Number)
 	   .setAlign(Blockly.ALIGN_RIGHT);
     this.appendDummyInput()
-          .appendField("BAUDRATE#")
+          .appendField(Blockly.MIXLY_SERIAL_BEGIN)
           .appendField(new Blockly.FieldDropdown([['115200', '115200'], ['57600', '57600'], ['38400', '38400'], ['28800', '28800'], ['19200', '19200'], ['14400', '14400'], ['9600', '9600']]), 'baudrate');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
