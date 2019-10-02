@@ -37,10 +37,10 @@ var MSG = {
 	catHardware:"Hardware",
 	catAI:"AI",
 	catDS: "Data Structure",
-	catMorpxVS2:"MuVisionSensor",
 	catOnBoard:'Board',
 	catFile:'File',
-	catOnenet:'Onenet'
+	catOnenet:'Onenet',
+	catTools:'Tools'
 };
 Blockly.Msg.ADD_COMMENT = "Добавить комментарий";
 Blockly.Msg.AUTH = "Пожалуйста, авторизуйте это приложение, чтоб можно было сохранять вашу работу и чтобы дать возможность вам делиться ей.";

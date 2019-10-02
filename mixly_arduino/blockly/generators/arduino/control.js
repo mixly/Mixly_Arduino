@@ -186,3 +186,26 @@ Blockly.Arduino.simple_timer = function () {
     Blockly.Arduino.setups_[funcName] = 'timer.setInterval('+ timein+'L, '+funcName+');\n';
     return 'timer.run();\n';
 };
+
+//注册超级延时函数
+Blockly.Arduino.super_delay_function1 = function () {
+    var number = this.getFieldValue('number');
+    var timein = Blockly.Arduino.valueToCode(this, 'timein', Blockly.Arduino.ORDER_ATOMIC);
+    var funcName = 'super_delay_function'+number;
+    var branch = Blockly.Arduino.statementToCode(this, 'delay_function');
+    branch = branch.replace(/(^\s*)|(\s*$)/g, "");
+    var code = 'void' + ' ' + funcName + '() {\n' + branch + '\n}\n';
+    Blockly.Arduino.definitions_[funcName]  = code;
+    Blockly.Arduino.definitions_['include_dsqk'] ='#include <SimpleTimer.h>\n';
+    Blockly.Arduino.definitions_['var_declare_Timer'] = 'SimpleTimer timer;';
+    return 'timer.run();\n';
+};
+
+//执行超级延时函数
+Blockly.Arduino.execute_super_delay_function1 = function() {
+    var number= this.getFieldValue('number');
+    var time_interval= Blockly.Arduino.valueToCode(this, 'time_interval', Blockly.Arduino.ORDER_ATOMIC);
+    var frequency= Blockly.Arduino.valueToCode(this, 'frequency', Blockly.Arduino.ORDER_ATOMIC);
+    var code='timer.setTimer('+ time_interval+', super_delay_function'+ number+', '+ frequency+');\n';
+    return code;
+};

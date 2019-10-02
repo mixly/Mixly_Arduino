@@ -3,7 +3,7 @@
 goog.provide('Blockly.Blocks.iot');
 goog.require('Blockly.Blocks');
 
-Blockly.Blocks.iot.HUE = 225//'#3288dd';
+Blockly.Blocks.iot.HUE = '#2FAD7A';
 
 Blockly.Blocks['iot_wifi_connect'] = {
    init: function() {

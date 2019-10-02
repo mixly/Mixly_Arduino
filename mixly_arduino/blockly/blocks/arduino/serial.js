@@ -53,16 +53,19 @@ Blockly.Blocks['serial_println'] = {
   this.setTooltip(Blockly.Msg.TEXT_PRINT_TOOLTIP);
 }
 };
-//打印16进制数
-Blockly.Blocks['serial_print_hex'] = {
+Blockly.Blocks['serial_print_num'] = {
  init: function() {
   this.setColour(Blockly.Blocks.serial.HUE);
-  this.appendValueInput("CONTENT", Number)
+  this.appendDummyInput()
   .appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
-  .appendField(Blockly.MIXLY_SERIAL_PRINT_HEX)
+  .appendField(Blockly.MIXLY_SERIAL_PRINT)
+  .appendField(Blockly.MIXLY_NUMBER);
+  this.appendValueInput("CONTENT", Number)
+  .appendField(new Blockly.FieldDropdown([[Blockly.Msg.MATH_BIN, "BIN"],[Blockly.Msg.MATH_OCT, "OCT"],[Blockly.Msg.MATH_DEC, "DEC"],[Blockly.Msg.MATH_HEX, "HEX"]]), "STAT")
   .setCheck(Number);
   this.setPreviousStatement(true, null);
   this.setNextStatement(true, null);
+  this.setInputsInline(true);
   this.setTooltip(Blockly.Msg.TEXT_PRINT_HEX_TOOLTIP);
 }
 };

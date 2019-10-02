@@ -51,6 +51,7 @@
 #endif // end PORT_IOBUS
 
 #if defined(USE_SPI_DMA)
+ #pragma message ("GFX DMA IS ENABLED. HIGHLY EXPERIMENTAL.")
  #include <Adafruit_ZeroDMA.h>
  #include "wiring_private.h"  // pinPeripheral() function
  #include <malloc.h>          // memalign() function
@@ -885,6 +886,19 @@ void Adafruit_SPITFT::initSPI(uint32_t freq, uint8_t spiMode) {
         dma.free(); // Deallocate DMA channel
     }
 #endif // end USE_SPI_DMA
+}
+
+/*!
+    @brief  Allow changing the SPI clock speed after initialization
+    @param  freq Desired frequency of SPI clock, may not be the
+    end frequency you get based on what the chip can do!
+*/
+void Adafruit_SPITFT::setSPISpeed(uint32_t freq) {
+#if defined(SPI_HAS_TRANSACTION)
+  hwspi.settings = SPISettings(freq, MSBFIRST, hwspi._mode);
+#else
+  hwspi._freq    = freq;    // Save freq value for later
+#endif
 }
 
 /*!

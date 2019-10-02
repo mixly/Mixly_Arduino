@@ -21,18 +21,6 @@ Blockly.Blocks.base_delay = {
   }
 };
 
-Blockly.Blocks['system_eval'] = {
- init: function() {
-    
-    this.setColour(Blockly.Blocks.system.HUE);
-    this.appendValueInput('VAR')
-        .setCheck(String)
-        .appendField(Blockly.MIXLY_PYTHON_SYSTEM_EVAL);
-    this.setInputsInline(true);
-    this.setOutput(true);
-    this.setTooltip(Blockly.MIXLY_PYTHON_SYSTEM_EVAL_TOOLTIP);
-  }
-};
 
 
 Blockly.Blocks.controls_millis = {

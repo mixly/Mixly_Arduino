@@ -389,3 +389,17 @@ Blockly.Blocks['set_update'] = {
 //     });
 //   }
 // };
+
+Blockly.Blocks['set_create_with_text_return'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.set.HUE);
+  this.appendDummyInput("")
+        .appendField('{')
+        .appendField(new Blockly.FieldTextInput('0,0,0'), 'TEXT')
+        .appendField('}');
+        // .appendField(this.newQuote_(false))
+  this.setOutput(true);
+  this.setInputsInline(true);
+  this.setTooltip(Blockly.MIXPY_TOOLTIP_SET_CREATE_WITH_TEXT);  
+  }
+}

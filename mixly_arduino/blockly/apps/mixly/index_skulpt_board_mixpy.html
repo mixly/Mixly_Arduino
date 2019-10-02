@@ -1,5 +1,4 @@
 <html manifest=node.manifest>
-
 <head>
   <meta charset="utf-8">
   <title>Mixly mixpy</title>
@@ -99,9 +98,7 @@ function sidecodeClick(){
  * @private
  */
 var TABS_ = ['blocks', 'arduino', 'xml'];
-
 var selected = 'blocks';
-
 /**
  * Switch the visible pane when a tab is clicked.
  * @param {string} clickedName Name of tab clicked.
@@ -136,7 +133,6 @@ function tabClick(clickedName) {
     document.getElementById('tab_' + name).className = 'taboff';
     document.getElementById('content_' + name).style.visibility = 'hidden';
   }
-
  // Select the active tab.
   selected = clickedName;
   document.getElementById('tab_' + clickedName).className = 'tabon';
@@ -167,7 +163,6 @@ function tabClick(clickedName) {
   }
   Blockly.fireUiEvent(window, 'resize');
 }
-
 /**
  * Populate the currently selected pane with content generated from the blocks.
  */
@@ -200,7 +195,6 @@ function renderContent() {
     //arduinoTextarea.focus();
   }
 }
-
 /**
  * Compute the absolute coordinates and dimensions of an HTML element.
  * @param {!Element} element Element to match.
@@ -224,7 +218,6 @@ function getBBox_(element) {
     y: y
   };
 }
-
 /**
  * Initialize Blockly.  Called on page load.
  */
@@ -265,7 +258,6 @@ function init() {
       var py2block_converter = new PythonToBlocks();
       py2block_editor = new Py2blockEditor(py2block_converter, editor);
       Sk.python3 = true;
-
   var container = document.getElementById('content_area');
   var onresize = function(e) {
     var bBox = getBBox_(container);
@@ -288,9 +280,7 @@ function init() {
     }
   };
   window.addEventListener('resize', onresize, false);
-
   var toolbox = document.getElementById('toolbox');
-
     var masterWorkspace = Blockly.inject(document.getElementById('content_blocks'),
       {//grid:
           //{spacing: 25,
@@ -303,7 +293,6 @@ function init() {
            {controls: true,
             wheel: true}
      });
-
   //实时更新右侧对比代码
     masterWorkspace.addChangeListener(rightCodeEvent);
   function rightCodeEvent(masterEvent) {
@@ -328,10 +317,8 @@ function init() {
   
   sidecodeClick();
 }
-
 </script>
 </head>
-
 <body onload="init()">
   <table height="100%" width="100%" id="table_whole">
     <tr>
@@ -1638,47 +1625,33 @@ function init() {
   function clearOutput() {
     $("#side_code").text("");
   }
-
   jQuery.fn.putCursorAtEnd = function() {
-
     return this.each(function() {
-
       // Cache references
       var $el = $(this),
         el = this;
-
       // Only focus if input isn't already
       if (!$el.is(":focus")) {
         $el.focus();
       }
-
       // If this function exists... (IE 9+)
       if (el.setSelectionRange) {
-
         // Double the length because Opera is inconsistent about whether a carriage return is one character or two.
         var len = $el.val().length * 2;
-
         // Timeout seems to be required for Blink
         setTimeout(function() {
           el.setSelectionRange(len, len);
         }, 1);
-
       } else {
-
         // As a fallback, replace the contents with itself
         // Doesn't work in Chrome, but Chrome supports setSelectionRange
         $el.val($el.val());
-
       }
-
       // Scroll to the bottom, in case we're in a tall textarea
       // (Necessary for Firefox and Chrome)
       this.scrollTop = 999999;
-
     });
-
   };
   </script>
 </body>
-
 </html>

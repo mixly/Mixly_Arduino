@@ -20,6 +20,7 @@ var MSG = {
 	catVar: "变量",
 	catFun: "函数",
 	catNetwork: "网络",
+	catEthernet:"以太网",
 	catEthernet_init: "初始化",
 	catEthernet_clinet: "客户端",
 	tab_blocks: "模块",
@@ -29,7 +30,7 @@ var MSG = {
 	viewAdvanced: "高级视图",
 	catGame: "游戏",
 	catSystem: "系统",
-	catTurtle: "乌龟",
+	catTurtle: "海龟",
 	catTuple: "元组",
 	catIot: "物联网",
 	catSet: "集合",
@@ -37,7 +38,6 @@ var MSG = {
 	catHardware: "硬件交互",
 	catAI: "人工智能",
 	catDS: "数据结构",
-	catMorpxVS2:"MU视觉",
 	catOnBoard:'板载资源',
 	catOnBoardDisplay:'板载显示',
 	catOnBoardSensor:'板载传感',
@@ -49,7 +49,10 @@ var MSG = {
 	catFactory:'自定义模块',
 	catBlynk:'Blynk 物联网',
 	catFile:'文件',
-	catOnenet:'Onenet'
+	catOnenet:'OneNET',
+	catTools:'工具',
+	catWIFI:'Wi-Fi',
+	catMQTT:'MQTT'
 };
 Blockly.Msg.ADD_COMMENT = "添加注释";
 Blockly.Msg.AUTH = "请授权这个应用程序以保存您的作品并共享。";
@@ -470,7 +473,6 @@ Blockly.MIXLY_ANALOGREAD_PIN = '模拟输入 管脚 #';
 Blockly.MIXLY_SERIAL_WRITE = '原始输出';
 Blockly.MIXLY_SERIAL_PRINT = '打印';
 Blockly.MIXLY_SERIAL_PRINTLN = '打印（自动换行）';
-Blockly.MIXLY_SERIAL_PRINT_HEX = '打印（16进制/自动换行）';
 Blockly.MIXLY_SERIAL_FLUSH = '清空缓存区数据';
 Blockly.MIXLY_STEP = '步长为';
 Blockly.MIXLY_TONE = '播放声音';
@@ -933,9 +935,9 @@ Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "数组变量";
 Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " 图案数组";
 Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "旋转";
 Blockly.MIXLY_RTCINIT = '初始化时钟模块DS1307';
-Blockly.MIXLY_RTCGETTIME = '获取RTC时钟时间';
-Blockly.MIXLY_RTCSETTIME = '设置RTC时钟模块时间：';
-Blockly.MIXLY_RTCSETDATE = '设置RTC时钟模块日期：';
+Blockly.MIXLY_RTCGETTIME = '获取实时时钟时间';
+Blockly.MIXLY_RTCSETTIME = '设置实时时钟模块时间：';
+Blockly.MIXLY_RTCSETDATE = '设置实时时钟模块日期：';
 Blockly.MIXLY_ADXL345 = '重力感应块_ADXL345';
 Blockly.MIXLY_ADXL345_X = 'X轴加速度';
 Blockly.MIXLY_ADXL345_Y = 'Y轴加速度';
@@ -1417,6 +1419,7 @@ Blockly.blockpy_turtle_set_size = '设置画笔粗细为';
 Blockly.blockpy_turtle_set_speed = '设置画笔速度为';
 Blockly.MICROPYTHON_TOOLTIP_LISTS_CREATE_WITH_TEXT = "通过一个字符串来创建一个列表。";
 Blockly.MIXPY_TOOLTIP_TUPLE_CREATE_WITH_TEXT = "通过一个字符串来创建一个元组。";
+Blockly.MIXPY_TOOLTIP_SET_CREATE_WITH_TEXT = "通过一个字符串来创建一个集合。";
 Blockly.blockpy_MIXLY_TUPLE_CREATE = '创建元组';
 Blockly.Msg.TURTLE_CLONE = "复制乌龟";
 Blockly.Msg.TURTLE_CLONE_TOOLTIP = "创建一个当前乌龟的复制。";
@@ -1750,7 +1753,7 @@ Blockly.blockpy_PYLAB_PLOT_DOT_HORIZONTAL = '短横线';
 Blockly.MIXLY_MICROBIT_JS_I2C = "I2C";
 Blockly.MIXLY_ESP32_TOUCH = "触摸";
 Blockly.MIXLY_ESP32_TOUCH_SENSOR = "触摸传感器";
-Blockly.MIXLY_ESP32_NEAR = "红外反射接近传感器数值";
+Blockly.MIXLY_ESP32_NEAR = "接近传感器的值";
 Blockly.MIXLY_ESP32_INTERRUPT = "中断";
 Blockly.MIXLY_ESP32_PITCH = "音高";
 Blockly.MIXLY_ESP32_DUTY = "音调";
@@ -1781,7 +1784,7 @@ Blockly.MIXLY_ESP32_ONEWIRE_RESET = "重置 OneWire";
 Blockly.MIXLY_ESP32_ONEWIRE_READ = "读取字节";
 Blockly.MIXLY_ESP32_ONEWIRE_INIT = "初始化 bus";
 Blockly.MIXLY_ESP32_ONEWIRE_SELECT = "设置 OneWire";
-Blockly.MIXLY_ESP32_I2C_SCAN1 = "搜索I2C";
+Blockly.MIXLY_ESP32_I2C_SCAN1 = "搜索";
 Blockly.MIXLY_ESP32_I2C_SCAN2 = "总线上设备";
 Blockly.MIXLY_ESP32_SPI_SET = "设置 SPI 波特率";
 Blockly.MIXLY_ESP32_SPI_BUFFER = "缓冲器";
@@ -1993,8 +1996,9 @@ Blockly.MIXLY_ESP32_SHOW_IMAGE_OR_STRING_OR_ANIMATION = '显示(图像/字符串
 Blockly.MIXLY_MIXPY_TURTLE_WIDTH = '画笔宽度';
 Blockly.MIXLY_TOOLTIP_TURTEL_HEADING = '获取乌龟当前朝向，返回一个浮点数';
 Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH = '获取乌龟当前画笔宽度，返回一个整数';
-Blockly.MIXLY_PYTHON_SYSTEM_EVAL = '执行文本代码并获取其返回值 代码';
-Blockly.MIXLY_PYTHON_SYSTEM_EVAL_TOOLTIP = '返回参数代码执行的返回值，如参数代码无返回值则返回None';
+Blockly.MIXLY_PYTHON_TEXT_EVAL = '获取字符串';
+Blockly.MIXLY_PYTHON_TEXT_EVAL_RESULT = '执行结果';
+Blockly.MIXLY_PYTHON_TEXT_EVAL_TOOLTIP = '获取参数代码执行的返回值，如参数代码无返回值则返回None';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_USE_STR = '通过字符串';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_SEQ = '将序列';
 Blockly.MIXLY_PYTHON_TEXT_JOIN_SEQ_GET_STR = '连接成一个字符串';
@@ -2670,40 +2674,47 @@ Blockly.Msg.YEELIGHT_SET_RGB_COLOR_TOOLTIP = '';
 Blockly.Msg.YEELIGHT_SET_COLOR_TEMP_HELPURL = '';
 Blockly.Msg.YEELIGHT_SET_COLOR_TEMP_MESSAGE0 = '%1 设色温 %2';
 Blockly.Msg.YEELIGHT_SET_COLOR_TEMP_TOOLTIP = '1700-6500';
-Blockly.MIXEPI='米派';
-Blockly.DATA_TYPE_CONVERSION='数据类型转换';
-Blockly.TEXT_TO='至';
-Blockly.STRING_VARIABLE='字符串变量';
-Blockly.TEXT_KEEP='保留';
-Blockly.TEXT_DECIMAL='位';
-Blockly.SUBSTRING_HELP='截取字符串例如substring截取0—3则返回sub';
-Blockly.DECIMAL_PLACES_HELP='小数四舍五入获取有效位，例如6.66666保留2位为6.67';
-Blockly.LETTER_CONVERSION_HELP='字符串变量转化为大小写，将字符串变量赋值为字符串大小写转换后的值';
-Blockly.DATA_REPLACEMENT_HELP='字符串变量部分数据替换，将字符串变量赋值为字符串替换后的值';
-Blockly.ELIMINATE_HELP='当你知道在String的开头或结尾有无关的空白字符并且你想要消除它们时，它很有用。空格是指占据空间但未被看到的角色。它包括单个空格';
-Blockly.FIRST_AND_LAST_HELP='返回是否以特定字符串开头或结尾';
-Blockly.TYPE_CONVERSION_HELP='将一个变量转换为对应类型数值。';
-Blockly.STARTSWITH='开头';
-Blockly.ENDSWITH='结尾';
-Blockly.ELIMINATE_NON_VISUAL_CHARACTERS='消除非可视字符';
-Blockly.LETTERS_ARE_CONVERTED_TO='字母转化为';
-Blockly.REPLACE_WITH='替换为';
-Blockly.AS_A_STRING='以字符串';
-Blockly.CAPITAL='大写';
-Blockly.LOWER_CASE='小写';
-Blockly.DUALL_CORE_MULTITASKING='ESP32双核多任务';
-Blockly.CORE_PRIORITY1='核心1  优先级';
-Blockly.CORE_PRIORITY2='核心2  优先级';
-Blockly.DUALL_CORE_MULTITASKING_HELP='ESP32双核多任务，同时处理两个任务互不干扰，优先级最高为3（若有看门狗被触发则需要添加仅用于双核多任务的延时函数，延时时间不宜影响其他函数执行）';
-Blockly.FOLDING_BLOCK='折叠块请在此描述功能';
-Blockly.FOLDING_BLOCK_HELP='当使用到的块太多时阅读非常头疼，放入它的代码块不会改变，仅仅作为外壳使用，不要为什么？你懂的^.^非常方便';
-Blockly.OLED_ICON='内置图标';
-Blockly.TCS34725_Get_RGB='TCS34725颜色传感器 获取颜色';
-Blockly.set_EN_Font="设置英文字体";
-Blockly.set_CN_Font="设置中文字体";
-Blockly.FontSize="字号";
-Blockly.Font_Style="字形";
-Blockly.esp_camera="ESP32 CAM相机，上传程序后通过串口监视器输出相机地址浏览器打开即可(默认波特率115200)";
-Blockly.MIXLY_RESOLUTION='精度';
-Blockly.inout_esp32_dac='DAC输出管脚';
-Blockly.take_a_photo1='ESP32 CAM拍照';
+Blockly.MIXEPI = '米派';
+Blockly.DATA_TYPE_CONVERSION = '数据类型转换';
+Blockly.TEXT_TO = '至';
+Blockly.STRING_VARIABLE = '字符串变量';
+Blockly.TEXT_KEEP = '保留';
+Blockly.TEXT_DECIMAL = '位';
+Blockly.SUBSTRING_HELP = '截取字符串例如substring截取0—3则返回sub';
+Blockly.DECIMAL_PLACES_HELP = '小数四舍五入获取有效位，例如6.66666保留2位为6.67';
+Blockly.LETTER_CONVERSION_HELP = '字符串变量转化为大小写，将字符串变量赋值为字符串大小写转换后的值';
+Blockly.DATA_REPLACEMENT_HELP = '字符串变量部分数据替换，将字符串变量赋值为字符串替换后的值';
+Blockly.ELIMINATE_HELP = '当你知道在String的开头或结尾有无关的空白字符并且你想要消除它们时，它很有用。空格是指占据空间但未被看到的角色。它包括单个空格';
+Blockly.FIRST_AND_LAST_HELP = '返回是否以特定字符串开头或结尾';
+Blockly.TYPE_CONVERSION_HELP = '将一个变量转换为对应类型数值。';
+Blockly.STARTSWITH = '开头';
+Blockly.ENDSWITH = '结尾';
+Blockly.ELIMINATE_NON_VISUAL_CHARACTERS = '消除非可视字符';
+Blockly.LETTERS_ARE_CONVERTED_TO = '字母转化为';
+Blockly.REPLACE_WITH = '替换为';
+Blockly.AS_A_STRING = '以字符串';
+Blockly.CAPITAL = '大写';
+Blockly.LOWER_CASE = '小写';
+Blockly.DUALL_CORE_MULTITASKING = 'ESP32双核多任务';
+Blockly.CORE_PRIORITY1 = '核心1  优先级';
+Blockly.CORE_PRIORITY2 = '核心2  优先级';
+Blockly.DUALL_CORE_MULTITASKING_HELP = 'ESP32双核多任务，同时处理两个任务互不干扰，优先级最高为3（若有看门狗被触发则需要添加仅用于双核多任务的延时函数，延时时间不宜影响其他函数执行）';
+Blockly.FOLDING_BLOCK = '折叠块请在此描述功能';
+Blockly.FOLDING_BLOCK_HELP = '当使用到的块太多时阅读非常头疼，放入它的代码块不会改变，仅仅作为外壳使用，不要为什么？你懂的^.^非常方便';
+Blockly.OLED_ICON = '内置图标';
+Blockly.TCS34725_Get_RGB = 'TCS34725颜色传感器 获取颜色';
+Blockly.set_EN_Font = "设置英文字体";
+Blockly.set_CN_Font = "设置中文字体";
+Blockly.FontSize = "字号";
+Blockly.Font_Style = "字形";
+Blockly.esp_camera = "ESP32 CAM相机，上传程序后通过串口监视器输出相机地址浏览器打开即可(默认波特率115200)";
+Blockly.MIXLY_RESOLUTION = '精度';
+Blockly.inout_esp32_dac = 'DAC输出管脚';
+Blockly.take_a_photo1 = 'ESP32 CAM拍照';
+Blockly.super_delay_function='注册延时函数';
+Blockly.execute_super_delay_function='执行延时函数';
+Blockly.time_interval='时间间隔（ms）';
+Blockly.number_of_executions='执行次数';
+Blockly.super_delay_function_help='注册需要延时执行的函数';
+Blockly.execute_super_delay_function_help='执行延时函数，设置延时时间及执行的次数';
+Blockly.MIXLY_SERVO_WRITEMICROSECONDS='脉冲时长';

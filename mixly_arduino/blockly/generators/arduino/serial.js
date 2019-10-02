@@ -44,14 +44,15 @@ Blockly.Arduino.serial_println = function () {
     return code;
 };
 
-Blockly.Arduino.serial_print_hex = function () {
+Blockly.Arduino.serial_print_num = function () {
     var serial_select = this.getFieldValue('serial_select');
+    var Decimal = this.getFieldValue('STAT');
     var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0'
     if (Blockly.Arduino.setups_['setup_serial_' + serial_select + profile.default.serial]) {
     } else {
         Blockly.Arduino.setups_['setup_serial_' + serial_select + profile.default.serial] = serial_select + '.begin(' + profile.default.serial + ');';
     }
-    var code = serial_select + '.println(' + content + ',HEX);\n';
+    var code = serial_select + '.println(' + content + ','+Decimal+');\n';
     return code;
 };
 

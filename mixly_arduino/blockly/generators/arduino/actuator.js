@@ -154,7 +154,12 @@ Blockly.Arduino.display_rgb=function(){
    var COLOR = Blockly.Arduino.valueToCode(this, 'COLOR');
   COLOR=COLOR.replace(/#/g,"0x");
   var code = 'rgb_display_'+dropdown_rgbpin+'.setPixelColor('+value_led+'-1, '+COLOR+');\n';
-  code +='rgb_display_'+dropdown_rgbpin+'.show();\n';
+  return code;
+};
+
+Blockly.Arduino.display_rgb_show=function(){
+  var dropdown_rgbpin = this.getFieldValue('PIN');
+  var code ='rgb_display_'+dropdown_rgbpin+'.show();\n';
   return code;
 };
 

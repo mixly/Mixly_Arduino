@@ -266,3 +266,9 @@ Blockly.Python.text_encode = function() {
   var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
   return [str + '.' + code + '("' + varName +'")', Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.text_eval = function(block) {  
+  var codestr =  Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
+  var code="eval" +  '(' + codestr + ')';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};

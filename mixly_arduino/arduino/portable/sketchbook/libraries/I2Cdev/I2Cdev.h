@@ -1,23 +1,28 @@
 // I2Cdev library collection - Main I2C device class header file
 // Abstracts bit and byte I2C R/W functions into a convenient class
-// 11/1/2011 by Jeff Rowberg <jeff@rowberg.net>
+// 2013-06-05 by Jeff Rowberg <jeff@rowberg.net>
 //
 // Changelog:
-//     2011-11-01 - fix write*Bits mask calculation (thanks sasquatch @ Arduino forums)
-//     2011-10-03 - added automatic Arduino version detection for ease of use
-//     2011-10-02 - added Gene Knight's NBWire TwoWire class implementation with small modifications
-//     2011-08-31 - added support for Arduino 1.0 Wire library (methods are different from 0.x)
-//     2011-08-03 - added optional timeout parameter to read* methods to easily change from default
-//     2011-08-02 - added support for 16-bit registers
-//                - fixed incorrect Doxygen comments on some methods
-//                - added timeout value for read operations (thanks mem @ Arduino forums)
-//     2011-07-30 - changed read/write function structures to return success or byte counts
-//                - made all methods static for multi-device memory savings
-//     2011-07-28 - initial release
+//      2015-10-30 - simondlevy : support i2c_t3 for Teensy3.1
+//      2013-05-06 - add Francesco Ferrara's Fastwire v0.24 implementation with small modifications
+//      2013-05-05 - fix issue with writing bit values to words (Sasquatch/Farzanegan)
+//      2012-06-09 - fix major issue with reading > 32 bytes at a time with Arduino Wire
+//                 - add compiler warnings when using outdated or IDE or limited I2Cdev implementation
+//      2011-11-01 - fix write*Bits mask calculation (thanks sasquatch @ Arduino forums)
+//      2011-10-03 - added automatic Arduino version detection for ease of use
+//      2011-10-02 - added Gene Knight's NBWire TwoWire class implementation with small modifications
+//      2011-08-31 - added support for Arduino 1.0 Wire library (methods are different from 0.x)
+//      2011-08-03 - added optional timeout parameter to read* methods to easily change from default
+//      2011-08-02 - added support for 16-bit registers
+//                 - fixed incorrect Doxygen comments on some methods
+//                 - added timeout value for read operations (thanks mem @ Arduino forums)
+//      2011-07-30 - changed read/write function structures to return success or byte counts
+//                 - made all methods static for multi-device memory savings
+//      2011-07-28 - initial release
 
 /* ============================================
 I2Cdev device library code is placed under the MIT license
-Copyright (c) 2011 Jeff Rowberg
+Copyright (c) 2013 Jeff Rowberg
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +50,15 @@ THE SOFTWARE.
 // -----------------------------------------------------------------------------
 // I2C interface implementation setting
 // -----------------------------------------------------------------------------
+#ifndef I2CDEV_IMPLEMENTATION
 #define I2CDEV_IMPLEMENTATION       I2CDEV_ARDUINO_WIRE
+//#define I2CDEV_IMPLEMENTATION       I2CDEV_BUILTIN_SBWIRE
+//#define I2CDEV_IMPLEMENTATION       I2CDEV_BUILTIN_FASTWIRE
+#endif // I2CDEV_IMPLEMENTATION
+
+// comment this out if you are using a non-optimal IDE/implementation setting
+// but want the compiler to shut up about it
+#define I2CDEV_IMPLEMENTATION_WARNINGS
 
 // -----------------------------------------------------------------------------
 // I2C interface implementation options
@@ -54,6 +67,8 @@ THE SOFTWARE.
 #define I2CDEV_BUILTIN_NBWIRE       2 // Tweaked Wire object from Gene Knight's NBWire project
                                       // ^^^ NBWire implementation is still buggy w/some interrupts!
 #define I2CDEV_BUILTIN_FASTWIRE     3 // FastWire object from Francesco Ferrara's project
+#define I2CDEV_I2CMASTER_LIBRARY    4 // I2C object from DSSCircuits I2C-Master Library at https://github.com/DSSCircuits/I2C-Master-Library
+#define I2CDEV_BUILTIN_SBWIRE       5 // I2C object from Shuning (Steve) Bian's SBWire Library at https://github.com/freespace/SBWire 
 
 // -----------------------------------------------------------------------------
 // Arduino-style "Serial.print" debug constant (uncomment to enable)
@@ -69,9 +84,19 @@ THE SOFTWARE.
     #if I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE
         #include <Wire.h>
     #endif
-#else
-    #include "ArduinoWrapper.h"
+    #if I2CDEV_IMPLEMENTATION == I2CDEV_I2CMASTER_LIBRARY
+        #include <I2C.h>
+    #endif
+    #if I2CDEV_IMPLEMENTATION == I2CDEV_BUILTIN_SBWIRE
+        #include "SBWire.h"
+    #endif
 #endif
+
+#ifdef SPARK
+    #include <spark_wiring_i2c.h>
+    #define ARDUINO 101
+#endif
+
 
 // 1000ms default read timeout (modify with "I2Cdev::readTimeout = [ms];")
 #define I2CDEV_DEFAULT_READ_TIMEOUT     1000
@@ -79,7 +104,7 @@ THE SOFTWARE.
 class I2Cdev {
     public:
         I2Cdev();
-        
+
         static int8_t readBit(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint8_t *data, uint16_t timeout=I2Cdev::readTimeout);
         static int8_t readBitW(uint8_t devAddr, uint8_t regAddr, uint8_t bitNum, uint16_t *data, uint16_t timeout=I2Cdev::readTimeout);
         static int8_t readBits(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, uint8_t length, uint8_t *data, uint16_t timeout=I2Cdev::readTimeout);
@@ -102,12 +127,13 @@ class I2Cdev {
 };
 
 #if I2CDEV_IMPLEMENTATION == I2CDEV_BUILTIN_FASTWIRE
-    // I2C library
     //////////////////////
-    // Copyright(C) 2011
+    // FastWire 0.24
+    // This is a library to help faster programs to read I2C devices.
+    // Copyright(C) 2012
     // Francesco Ferrara
     //////////////////////
-    
+
     /* Master */
     #define TW_START                0x08
     #define TW_REP_START            0x10
@@ -131,12 +157,16 @@ class I2Cdev {
 
     class Fastwire {
         private:
-          static boolean waitInt();
+            static boolean waitInt();
 
         public:
-          static void setup(int khz, boolean pullup);
-          static byte write(byte device, byte address, byte value);
-          static byte readBuf(byte device, byte address, byte *data, byte num);
+            static void setup(int khz, boolean pullup);
+            static byte beginTransmission(byte device);
+            static byte write(byte value);
+            static byte writeBuf(byte device, byte address, byte *data, byte num);
+            static byte readBuf(byte device, byte address, byte *data, byte num);
+            static void reset();
+            static byte stop();
     };
 #endif
 
@@ -146,24 +176,24 @@ class I2Cdev {
     // Originally offered to the i2cdevlib project at http://arduino.cc/forum/index.php/topic,68210.30.html
 
     #define NBWIRE_BUFFER_LENGTH 32
-    
+
     class TwoWire {
         private:
             static uint8_t rxBuffer[];
             static uint8_t rxBufferIndex;
             static uint8_t rxBufferLength;
-        
+
             static uint8_t txAddress;
             static uint8_t txBuffer[];
             static uint8_t txBufferIndex;
             static uint8_t txBufferLength;
-        
+
             // static uint8_t transmitting;
             static void (*user_onRequest)(void);
             static void (*user_onReceive)(int);
             static void onRequestService(void);
             static void onReceiveService(uint8_t*, int);
-    
+
         public:
             TwoWire();
             void begin();
@@ -185,25 +215,25 @@ class I2Cdev {
             void onReceive(void (*)(int));
             void onRequest(void (*)(void));
     };
-    
+
     #define TWI_READY   0
     #define TWI_MRX     1
     #define TWI_MTX     2
     #define TWI_SRX     3
     #define TWI_STX     4
-    
+
     #define TW_WRITE    0
     #define TW_READ     1
-    
+
     #define TW_MT_SLA_NACK      0x20
     #define TW_MT_DATA_NACK     0x30
-    
+
     #define CPU_FREQ            16000000L
     #define TWI_FREQ            100000L
     #define TWI_BUFFER_LENGTH   32
-    
+
     /* TWI Status is in TWSR, in the top 5 bits: TWS7 - TWS3 */
-    
+
     #define TW_STATUS_MASK              (_BV(TWS7)|_BV(TWS6)|_BV(TWS5)|_BV(TWS4)|_BV(TWS3))
     #define TW_STATUS                   (TWSR & TW_STATUS_MASK)
     #define TW_START                    0x08
@@ -234,18 +264,18 @@ class I2Cdev {
     #define TW_SR_STOP                  0xA0
     #define TW_NO_INFO                  0xF8
     #define TW_BUS_ERROR                0x00
-    
+
     //#define _MMIO_BYTE(mem_addr) (*(volatile uint8_t *)(mem_addr))
     //#define _SFR_BYTE(sfr) _MMIO_BYTE(_SFR_ADDR(sfr))
-    
+
     #ifndef sbi // set bit
         #define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
     #endif // sbi
-    
+
     #ifndef cbi // clear bit
         #define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
     #endif // cbi
-    
+
     extern TwoWire Wire;
 
 #endif // I2CDEV_IMPLEMENTATION == I2CDEV_BUILTIN_NBWIRE

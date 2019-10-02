@@ -793,3 +793,38 @@ Blockly.Blocks['simple_timer'] = {
  this.setHelpUrl("");
   }
 };
+
+//注册超级延时函数
+Blockly.Blocks['super_delay_function1'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.super_delay_function)
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"], ["6","6"], ["7","7"], ["8","8"], ["9","9"], ["10","10"], ["11","11"], ["12","12"], ["13","13"], ["14","14"], ["15","15"], ["16","16"]]), "number");
+    this.appendStatementInput("delay_function")
+        .setCheck(null);
+    this.setColour(120);
+ this.setTooltip(Blockly.super_delay_function_help);
+ this.setHelpUrl("");
+  }
+};
+
+//执行超级延时函数
+Blockly.Blocks['execute_super_delay_function1'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.execute_super_delay_function)
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"], ["6","6"], ["7","7"], ["8","8"], ["9","9"], ["10","10"], ["11","11"], ["12","12"], ["13","13"], ["14","14"], ["15","15"], ["16","16"]]), "number");
+    this.appendValueInput("time_interval")
+        .setCheck(null)
+        .appendField(Blockly.time_interval);
+    this.appendValueInput("frequency")
+        .setCheck(null)
+        .appendField(Blockly.number_of_executions);
+    this.appendDummyInput();
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+ this.setTooltip(Blockly.execute_super_delay_function_help);
+ this.setHelpUrl("");
+  }
+};

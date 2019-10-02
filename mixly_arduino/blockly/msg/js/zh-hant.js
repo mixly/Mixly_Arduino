@@ -24,11 +24,9 @@ var MSG = {
 	catVar:"變數",
 	catFun:"函數",
 	catNetwork:"網路",
+	catEthernet:"以太網",
 	catEthernet_init:"初始化",
 	catEthernet_clinet:"客戶端",
-	catSense:"盛思（盒子）",
-	catSense2:"盛思（機器人）",
-	catLuxe:"濼喜機器人",
 	tab_blocks:"模塊",
 	tab_arduino:"程式碼",
 	copyright:"Copyright © 北京師範大學米思齊團隊				http://mixly.org/",
@@ -36,7 +34,7 @@ var MSG = {
 	viewAdvanced:"高級視圖",
 	catGame:"遊戲",
 	catSystem:"系統",
-	catTurtle:"烏龜",
+	catTurtle:"海龜",
 	catTuple:"元組",
 	catIot:"物聯網",
 	catSet:"集合",
@@ -44,7 +42,6 @@ var MSG = {
 	catHardware:"硬件交互",
 	catAI:"人工智慧",
 	catDS: "数据结构",
-	catMorpxVS2:"小MU视觉",
 	catOnBoard:'板载资源',
 	catOnBoardDisplay:'板载显示',
 	catOnBoardSensor:'板载传感',
@@ -56,7 +53,8 @@ var MSG = {
 	catFactory:'自定義模塊',
 	catBlynk:'Blynk 物聯網',
 	catFile:'檔案',
-	catOnenet:'Onenet'
+	catOnenet:'OneNET',
+	catTools:'工具'
 };
 Blockly.Msg.ADD_COMMENT = "添加注釋";
 Blockly.Msg.AUTH = "請授權這個應用程序以保存您的作品並共亯。";
@@ -1141,9 +1139,9 @@ Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR = "陣列變數";
 Blockly.MIXLY_DISPLAY_MATRIX_PICARRAY = " 圖案陣列";
 Blockly.MIXLY_DISPLAY_MATRIX_ROTATE = "螢幕旋轉";
 Blockly.MIXLY_RTCINIT = '初始化DS1307 RTC時鐘模組';
-Blockly.MIXLY_RTCGETTIME = '從RTC時鐘模組獲取';
-Blockly.MIXLY_RTCSETTIME = '設置RTC時鐘模組時間：';
-Blockly.MIXLY_RTCSETDATE = '設置RTC時鐘模組日期：';
+Blockly.MIXLY_RTCGETTIME = '從時鐘模組獲取';
+Blockly.MIXLY_RTCSETTIME = '設置時鐘模組時間：';
+Blockly.MIXLY_RTCSETDATE = '設置時鐘模組日期：';
 Blockly.MIXLY_ADXL345 = '重力感應塊_ADXL345';
 Blockly.MIXLY_ADXL345_X ='X軸加速度';
 Blockly.MIXLY_ADXL345_Y ='Y軸加速度';
@@ -1980,7 +1978,7 @@ Blockly.blockpy_PYLAB_PLOT_DOT_HORIZONTAL='短橫線';
 Blockly.MIXLY_MICROBIT_JS_I2C="I2C";
 Blockly.MIXLY_ESP32_TOUCH="觸摸";
 Blockly.MIXLY_ESP32_TOUCH_SENSOR="觸摸感測器";
-Blockly.MIXLY_ESP32_NEAR="紅外反射接近感測器數值";
+Blockly.MIXLY_ESP32_NEAR="接近感測器的值";
 Blockly.MIXLY_ESP32_INTERRUPT="中斷";
 Blockly.MIXLY_ESP32_PITCH="音高";
 Blockly.MIXLY_ESP32_DUTY="音調";
@@ -2886,3 +2884,10 @@ Blockly.esp_camera="ESP32 CAM相機，上傳程序後通過串口監視器輸出
 Blockly.MIXLY_RESOLUTION='精度';
 Blockly.inout_esp32_dac='DAC輸出管腳';
 Blockly.take_a_photo1='ESP32 CAM拍照';
+Blockly.super_delay_function='註冊延時函數';
+Blockly.execute_super_delay_function='執行延時函數';
+Blockly.time_interval='時間間隔（ms）';
+Blockly.number_of_executions='執行次數';
+Blockly.super_delay_function_help='註冊需要延時執行的函數';
+Blockly.execute_super_delay_function_help='執行延時函數，設置延時時間及執行的次數';
+Blockly.MIXLY_SERVO_WRITEMICROSECONDS='脈衝時長';

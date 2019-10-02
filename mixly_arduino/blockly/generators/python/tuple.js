@@ -80,7 +80,7 @@ Blockly.Python.tuple_del = function() {
 Blockly.Python.tuple_join = function() {
   var varName1 =  Blockly.Python.valueToCode(this, 'TUP1', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var varName2 =  Blockly.Python.valueToCode(this, 'TUP2', Blockly.Python.ORDER_ASSIGNMENT) || '0';
-  var code = varName1 + "+" + varName2;
+  var code = varName1 + " + " + varName2;
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
 

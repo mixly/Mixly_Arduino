@@ -320,26 +320,3 @@ Blockly.Blocks.factory_block_return_with_textarea = {
     this.setOutput(true);
   }
 };
-Blockly.Blocks.factory_notes = {
-  init: function() {
-    this.setColour(Blockly.Blocks.factory.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_CONTROL_NOTES)
-    .appendField(new Blockly.FieldTextArea(''), 'VALUE');
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-  }
-};
-
-Blockly.Blocks.folding_block = {
-  init: function() {
-    this.setColour(Blockly.Blocks.factory.HUE);
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldTextInput(Blockly.FOLDING_BLOCK), "peien");
-    this.appendStatementInput('DO')
-        .appendField('');
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-  this.setTooltip(Blockly.FOLDING_BLOCK_HELP);
-  }
-};

@@ -195,33 +195,24 @@ Blockly.Blocks.spi_transfer = {
 Blockly.Blocks.RFID_init={
 	init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
-        this.appendValueInput("SDA")
-        .setCheck(Number)
-        .setAlign(Blockly.ALIGN_RIGHT)
+        this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_COMMUNICATION_RFID_INITIAL);
+        this.appendDummyInput("")
         .appendField("SDA")
-        .appendField(Blockly.MIXLY_PIN);
-        this.appendValueInput("SCK")
-        .setCheck(Number)
-        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(new Blockly.FieldDropdown(profile.default.digital), "SDA");
+        this.appendDummyInput("")
         .appendField("SCK")
-        .appendField(Blockly.MIXLY_PIN);
-        this.appendValueInput("MOSI")
-        .setCheck(Number)
-        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(new Blockly.FieldDropdown(profile.default.SCK), "SCK");
+        this.appendDummyInput("")
         .appendField("MOSI")
-        .appendField(Blockly.MIXLY_PIN);
-        this.appendValueInput("MISO")
-        .setCheck(Number)
-        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(new Blockly.FieldDropdown(profile.default.MOSI), "MOSI");
+        this.appendDummyInput("")
         .appendField("MISO")
-        .appendField(Blockly.MIXLY_PIN);
+        .appendField(new Blockly.FieldDropdown(profile.default.MISO), "MISO");
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_RFID_INIT);
-	//this.setOutput(true, Number);
-	//var thisBlock = this;
- 
 }
 };
 

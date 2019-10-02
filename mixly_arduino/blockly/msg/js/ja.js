@@ -37,10 +37,10 @@ var MSG = {
 	catHardware:"Hardware",
 	catAI:"AI",
 	catDS: "Data Structure",
-	catMorpxVS2:"MuVisionSensor",
 	catOnBoard:'Board',
 	catFile:'File',
-	catOnenet:'Onenet'
+	catOnenet:'Onenet',
+	catTools:'Tools'
 };
 Blockly.blynk_connected='Connection state';
 Blockly.BLYNK_CONNECTED='Hardware Connected';

@@ -365,7 +365,7 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(18) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/net.png') no-repeat;
+	background:url('../../../media/mark/net3.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(18) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
@@ -373,7 +373,7 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(19) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/iot.png') no-repeat;
+	background:url('../../../media/mark/iot3.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(19) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
@@ -381,7 +381,7 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(19) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/iot.png') no-repeat;
+	background:url('../../../media/mark/iot3.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(19) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
@@ -389,11 +389,11 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(19) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/blynk/blynk.png') no-repeat;
+	background:url('../../../media/mark/blynk.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(19) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
-	background:url('../../../media/blynk/blynk2.png') no-repeat;
+	background:url('../../../media/mark/blynk2.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(20) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
