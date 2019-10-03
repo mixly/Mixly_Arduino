@@ -70,7 +70,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
  *
  */
  var profile = {
- 	softserial_select: [["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
+ 	softserial_select: [["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSerial2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
  	arduino_standard : {
  		description : "standard",
  		digital : [["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"], ["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"]],
@@ -80,7 +80,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
  		MOSI:[["11","11"]],
  		MISO:[["12","12"]],
  		SCK:[["13","13"]],
- 		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
+ 		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSerial2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
  		serial : 9600
  	},
  	arduino_mega : {
@@ -92,7 +92,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
  		MOSI:[["11","11"]],
  		MISO:[["12","12"]],
  		SCK:[["13","13"]],
- 		serial_select : [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"], ["Serial3", "Serial3"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSeria2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
+ 		serial_select : [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"], ["Serial3", "Serial3"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSerial2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
  		serial : 9600
  	},
  	arduino_eightanaloginputs : {
@@ -104,7 +104,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
  		MOSI:[["11","11"]],
  		MISO:[["12","12"]],
  		SCK:[["13","13"]],
- 		serial_select : [["Serial", "Serial"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSeria2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
+ 		serial_select : [["Serial", "Serial"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSerial2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
  		serial : 9600
  	},
  	arduino_ethernet : {
@@ -116,7 +116,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		MOSI:[["11","11"]],
 		MISO:[["12","12"]],
 		SCK:[["13","13"]],
-		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSeria2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSerial2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	arduino_gemma : {
@@ -128,7 +128,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		MOSI:[["11","11"]],
 		MISO:[["12","12"]],
 		SCK:[["13","13"]],
-		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSeria2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSerial2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	arduino_leonardo : {
@@ -140,7 +140,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		MOSI:[["11","11"]],
 		MISO:[["12","12"]],
 		SCK:[["13","13"]],
-		serial_select: [["Serial", "Serial"], ["Serial1", "Serial1"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSeria2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
+		serial_select: [["Serial", "Serial"], ["Serial1", "Serial1"], ["SoftwareSerial", "mySerial"],["SoftwareSerial1", "mySerial1"],["SoftwareSerial2", "mySerial2"],["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	arduino_robot : {
@@ -152,7 +152,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		MOSI:[["11","11"]],
 		MISO:[["12","12"]],
 		SCK:[["13","13"]],
-		serial_select: [["Serial", "Serial"], ["Serial1", "Serial1"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
+		serial_select: [["Serial", "Serial"], ["Serial1", "Serial1"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSerial2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	arduino_esp8266 : { 
@@ -164,7 +164,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		MOSI:[["13","13"]],
 		MISO:[["12","12"]],
 		SCK:[["14","14"]],
-		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSerial2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	esp32_arduino: {
@@ -197,7 +197,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		SCK:[["P13","18"]],
 		touch: [["P", "27"], ["Y", "14"], ["T", "12"], ["H", "13"], ["O", "15"], ["N", "4"]],
 		button:[["A", "0"], ["B", "2"]],
-		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SoftwareSerial3", "mySerial3"], ["SerialBT", "SerialBT"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSerial2", "mySerial2"], ["SoftwareSerial3", "mySerial3"], ["SerialBT", "SerialBT"]],
 		serial : 115200
 	},
 	esp32_MixGo: {
@@ -231,7 +231,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		SCK:[["SCK","SCK"]],
 		touch: [["C", "TOUCH_C"], ["D", "TOUCH_D"], ["E", "TOUCH_E"], ["F", "TOUCH_F"], ["G", "TOUCH_G"], ["A", "TOUCH_A"], ["B", "TOUCH_B"]],
 		button:[["A", "BTN_A"], ["B", "BTN_B"], ["C", "BTN_C"]],
-		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSeria2", "mySerial2"], ["SerialBT", "SerialBT"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSerial2", "mySerial2"], ["SerialBT", "SerialBT"]],
 		serial : 115200
 	}
 };

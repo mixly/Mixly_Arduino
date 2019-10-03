@@ -2,7 +2,7 @@
 
 goog.provide('Blockly.Blocks.factory');
 goog.require('Blockly.Blocks');
-Blockly.Blocks.factory.HUE = 65;
+Blockly.Blocks.factory.HUE = "#777777";
 
 Blockly.Blocks.factory_include = {
   init: function() {

@@ -118,10 +118,13 @@
           <td class="tabmin">
            <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
          </td>
-         <td class="tabmin" style="padding-right:20px">
+         <td class="tabmin">
            <input onclick="Blockly.mainWorkspace.undo(1);" name="redo" type="image" title="redo(ctrl+y)"  src="media/redo.png" style="padding:5px" onmouseover="this.src='media/redo1.png'" onmousedown="this.src='media/redo2.png'" onmouseup="this.src='media/redo1.png'" onmouseout="this.src='media/redo.png'" width="20" height="20" border="0">
          </td>
-         <td class="tabmin" style="padding-right:20px;display:none;">
+         <td class="tabmin"style="padding-right:20px">
+          <input onclick="JSFuncs.openUrlInBrowser('http://wiki.mixly.org/')" name="help" type="image" src="media/help.png" style="padding:5px" onmouseover="this.src='media/help1.png'" onmousedown="this.src='media/help2.png'" onmouseup="this.src='media/help1.png'" onmouseout="this.src='media/help.png'" width="20" height="20" border="0">
+        </td>
+        <td class="tabmin" style="padding-right:20px;display:none;">
           <button id="fakeload">LoadXML</button>
           <input type="file" id="load" style="display: none;"/>
         </td>
@@ -484,6 +487,20 @@
     </value>
   </block>
 </category>
+<category id="catLogic" colour="210">
+  <block type="logic_compare">
+  </block>
+  <block type="logic_operation">
+  </block>
+  <block type="logic_negate">
+  </block>
+  <block type="logic_boolean">
+  </block>
+  <block type="logic_null">
+  </block>
+  <block type="logic_true_or_false">
+  </block>
+</category>
 <category id="catText" colour="160">
   <block type="text">
     <field name="TEXT">hello</field>
@@ -733,19 +750,9 @@
     </value>
   </block>
 </category>
-<category id="catLogic" colour="210">
-  <block type="logic_compare">
-  </block>
-  <block type="logic_operation">
-  </block>
-  <block type="logic_negate">
-  </block>
-  <block type="logic_boolean">
-  </block>
-  <block type="logic_null">
-  </block>
-  <block type="logic_true_or_false">
-  </block>
+<category id="catVar" colour="330" custom="VARIABLE">
+</category>
+<category id="catFun" custom="PROCEDURE" colour="290">
 </category>
 <category id="catSerialPort" colour="65">
  <block type="serial_begin">
@@ -794,169 +801,15 @@
 <block type="serial_event">
 </block>
 </category>
-<category id="catGroup" colour="140">
-  <block type="serialBT_Init">
-    <value name="CONTENT">
-      <shadow type="text">
-        <field name="TEXT">ESP32BT</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="serialBT_available"></block>
-  <block type="serialBT_read"></block>
-  <block type="serialBT_write"></block>
-  <block type="i2c_master_writer"></block>
-  <block type="i2c_master_reader"></block>
-  <block type="i2c_master_reader2"></block>
-  <block type="i2c_available"></block>
-  <block type="i2c_slave_onreceive">
-    <value name="PIN">
-      <shadow type="pins_digital"></shadow>
-    </value>
-  </block>
-  <block type="spi_transfer">
-    <value name="pin">
-      <shadow type="pins_digital"></shadow>
-    </value>
-    <value name="value">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="RFID_init">
-  </block>  
-  <block type="RFID_on"></block>   
-  <block type="RFID_readcardnum"></block> 
-  <block type="RFID_in">
-    <value name="uid_">
-      <shadow type="text">
-        <field name="TEXT">123</field>
-      </shadow>
-    </value>
-  </block> 
-  <block type="RFID_writecarddata">
-   <value name="address1">
-    <shadow type="math_number">
-     <field name="NUM">0</field>
-   </shadow>
- </value>
-</block> 
-<block type="RFID_readcarddata">
- <value name="address">
-   <shadow type="math_number">
-     <field name="NUM">0</field>
-   </shadow>
- </value>
-</block> 
-<block type="RFID_off"></block>    
-</category>
-<category id="catStorage" colour="0">
- <!--  <block type="storage_fileopen">
-    <value name="FILE">
-      <shadow type="variables_get">
-        <field name="VAR">f</field>
-      </shadow>
-    </value>
-  </block> -->
-  <block type="storage_file_write">
-    <value name="FILENAME">
-      <shadow type="text">
-        <field name="TEXT">filename.txt</field>
-      </shadow>
-    </value>
-    <value name="data">
-      <shadow type="text">
-        <field name="TEXT">Mixly</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="storage_get_contents">
-    <value name="FILE">
-      <shadow type="variables_get">
-        <field name="VAR">f</field>
-      </shadow>
-    </value>
-    <value name="SIZE">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="storage_can_write_ornot">
-    <value name="FILE">
-      <shadow type="variables_get">
-        <field name="VAR">f</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="storage_get_filename">
-    <value name="FILE">
-      <shadow type="variables_get">
-        <field name="VAR">f</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="storage_close_file">
-    <value name="FILE">
-      <shadow type="variables_get">
-        <field name="VAR">f</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="storage_list_all_files"> </block>
-  <block type="storage_delete_file">
-    <value name="FILE">
-      <shadow type="text">
-        <field name="TEXT">filename.txt</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="storage_get_file_size">
-    <value name="FILE">
-      <shadow type="text">
-        <field name="TEXT">filename.txt</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="store_eeprom_write_byte">
-    <value name="ADDRESS">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="DATA">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="store_eeprom_read_byte">
-    <value name="ADDRESS">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="store_eeprom_write_long">
-    <value name="ADDRESS">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="DATA">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="store_eeprom_read_long">
-    <value name="ADDRESS">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
+<category id="catOnBoard" name="catOnBoard" colour="65">
+ <block type="inout_touchRead">
+  <value name="PIN">
+    <shadow type="pins_touch">
+    </shadow>
+  </value>
+</block>
+<block type="ESP32_hallRead"></block>
+<block type="ESP32_temprature"></block>
 </category>
 <category id="catSensor" colour="40">
   <block type="chaoshengbo2">
@@ -1513,7 +1366,7 @@
     </block>
   </value>
 </block>
-<block type="oled_drawPixe" >
+<block type="oled_drawPixel" >
   <value name="POS_X">
     <shadow type="math_number">
       <field name="NUM">64</field>
@@ -1798,6 +1651,170 @@
   </value>
 </block>
 </category>
+</category>
+<category id="catGroup" colour="140">
+  <block type="serialBT_Init">
+    <value name="CONTENT">
+      <shadow type="text">
+        <field name="TEXT">ESP32BT</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="serialBT_available"></block>
+  <block type="serialBT_read"></block>
+  <block type="serialBT_write"></block>
+  <block type="i2c_master_writer"></block>
+  <block type="i2c_master_reader"></block>
+  <block type="i2c_master_reader2"></block>
+  <block type="i2c_available"></block>
+  <block type="i2c_slave_onreceive">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+  </block>
+  <block type="spi_transfer">
+    <value name="pin">
+      <shadow type="pins_digital"></shadow>
+    </value>
+    <value name="value">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="RFID_init">
+  </block>  
+  <block type="RFID_on"></block>   
+  <block type="RFID_readcardnum"></block> 
+  <block type="RFID_in">
+    <value name="uid_">
+      <shadow type="text">
+        <field name="TEXT">123</field>
+      </shadow>
+    </value>
+  </block> 
+  <block type="RFID_writecarddata">
+   <value name="address1">
+    <shadow type="math_number">
+     <field name="NUM">0</field>
+   </shadow>
+ </value>
+</block> 
+<block type="RFID_readcarddata">
+ <value name="address">
+   <shadow type="math_number">
+     <field name="NUM">0</field>
+   </shadow>
+ </value>
+</block> 
+<block type="RFID_off"></block>    
+</category>
+<category id="catStorage" colour="0">
+ <!--  <block type="storage_fileopen">
+    <value name="FILE">
+      <shadow type="variables_get">
+        <field name="VAR">f</field>
+      </shadow>
+    </value>
+  </block> -->
+  <block type="storage_file_write">
+    <value name="FILENAME">
+      <shadow type="text">
+        <field name="TEXT">filename.txt</field>
+      </shadow>
+    </value>
+    <value name="data">
+      <shadow type="text">
+        <field name="TEXT">Mixly</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="storage_get_contents">
+    <value name="FILE">
+      <shadow type="variables_get">
+        <field name="VAR">f</field>
+      </shadow>
+    </value>
+    <value name="SIZE">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="storage_can_write_ornot">
+    <value name="FILE">
+      <shadow type="variables_get">
+        <field name="VAR">f</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="storage_get_filename">
+    <value name="FILE">
+      <shadow type="variables_get">
+        <field name="VAR">f</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="storage_close_file">
+    <value name="FILE">
+      <shadow type="variables_get">
+        <field name="VAR">f</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="storage_list_all_files"> </block>
+  <block type="storage_delete_file">
+    <value name="FILE">
+      <shadow type="text">
+        <field name="TEXT">filename.txt</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="storage_get_file_size">
+    <value name="FILE">
+      <shadow type="text">
+        <field name="TEXT">filename.txt</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_write_byte">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="DATA">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_read_byte">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_write_long">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="DATA">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_read_long">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
 </category>
 <category id="catNetwork" colour="0">
   <category id="catWIFI" colour="0">
@@ -2551,23 +2568,7 @@
 </category>
 </category>
 <sep></sep>
-<category id="catVar" colour="330" custom="VARIABLE">
-</category>
-<category id="catFun" custom="PROCEDURE" colour="290">
-</category>
-</category>
-<category id="catOnBoard" name="catOnBoard" colour="65">
- <block type="inout_touchRead">
-  <value name="PIN">
-    <shadow type="pins_touch">
-    </shadow>
-  </value>
-</block>
-<block type="ESP32_hallRead"></block>
-<block type="ESP32_temprature"></block>
-</category>
-
-<category id="catFactory" name="catFactory" colour="65">
+<category id="catFactory" name="catFactory" colour="#777777">
   <block type="factory_include"></block>
   <block type="factory_function_noreturn"></block>
   <block type="factory_function_return"></block>
@@ -2583,7 +2584,7 @@
   <block type="factory_block_with_textarea"></block>
   <block type="factory_block_return_with_textarea"></block>
 </category>
-<category  id="catTools" name="catTools" colour="65">
+<category  id="catTools" name="catTools" colour="#555555">
  <block type="IICSCAN"></block>
  <block type="factory_notes"></block>
  <block type="folding_block"></block>

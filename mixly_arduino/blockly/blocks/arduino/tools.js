@@ -2,7 +2,7 @@
 
 goog.provide('Blockly.Blocks.tools');
 goog.require('Blockly.Blocks');
-Blockly.Blocks.tools.HUE = 65;
+Blockly.Blocks.tools.HUE = "#555555";
 Blockly.Blocks.factory_notes = {
   init: function() {
     this.setColour(Blockly.Blocks.tools.HUE);

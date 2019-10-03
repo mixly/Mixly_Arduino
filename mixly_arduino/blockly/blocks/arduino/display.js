@@ -1165,12 +1165,12 @@ Blockly.Blocks.oled_showBitmap = {
 };
 
 //显示-OLED-画点
-Blockly.Blocks.oled_drawPixe = {
+Blockly.Blocks.oled_drawPixel = {
   init: function () {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
       .appendField("OLED")
-      .appendField(Blockly.OLED_DRAWPIXE);
+      .appendField(Blockly.OLED_DRAWPIXEL);
     this.appendValueInput("POS_X", Number)
       .appendField(Blockly.OLED_POSX)
       .setCheck(Number);

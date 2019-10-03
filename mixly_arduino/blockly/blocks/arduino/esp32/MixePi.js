@@ -17,14 +17,6 @@ var MIXEPI_ADXL345_ACTION = [
 [Blockly.HANDBIT_DOWN, "accel.getAcceleration().z>8&&accel.getAcceleration().z<9.8"]
 ];
 
-var MIXEPI_ADXL345_GETAB = [
-[Blockly.MixGo_MPU9250_AX, "accel.getAccelerationX()"],
-[Blockly.MixGo_MPU9250_AY, "accel.getAccelerationY()"],
-[Blockly.MixGo_MPU9250_AZ, "accel.getAccelerationZ()"],
-];
-
-
-
 var DRAWFIll = [
 [Blockly.OLED_HOLLOW, "draw"],
 [Blockly.OLED_SOLID, "fill"]
@@ -127,37 +119,6 @@ Blockly.Blocks.mixepi_controls_notone={
         this.setNextStatement(true);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE);
     }
-};
-
-//传感器_重力感应
-Blockly.Blocks.mixepi_ADXL345 = {
-  init: function() {
-    this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.MixGo_MPU9250);
-    this.appendDummyInput("")
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(new Blockly.FieldDropdown(MIXEPI_ADXL345_GETAB), "MIXEPI_ADXL345_GETAB");
-    this.setInputsInline(true);
-    this.setOutput(true);
-    this.setTooltip("");
-    this.setHelpUrl('');
-}
-};
-
-Blockly.Blocks.mixepi_ADXL345_setOffset = {
-  init: function () {
-    this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("")
-        .appendField("设置加速度传感器");
-    this.appendValueInput("OFFSET")
-        .setCheck(Number)
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(new Blockly.FieldDropdown([["x轴偏移量","setOffsetX"],["y轴偏移量","setOffsetY"],["z轴偏移量","setOffsetZ"]]), "MIXEPI_ADXL345_OFFSET");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-}
 };
 
 Blockly.Blocks.mixepi_ADXL345_action = {
@@ -439,7 +400,7 @@ Blockly.Blocks.tft_drawPixel = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField("TFT")
-    .appendField(Blockly.OLED_DRAWPIXE);
+    .appendField(Blockly.OLED_DRAWPIXEL);
     this.appendValueInput("POS_X", Number)
     .appendField(Blockly.OLED_POSX)
     .setCheck(Number);

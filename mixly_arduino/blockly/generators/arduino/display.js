@@ -404,7 +404,7 @@ Blockly.Arduino.oled_icons = function() {
  return code;
 };
 
-Blockly.Arduino.oled_drawPixe = function() {
+Blockly.Arduino.oled_drawPixel = function() {
   var pos_x = Blockly.Arduino.valueToCode(this, 'POS_X') || '0';
   var pos_y = Blockly.Arduino.valueToCode(this, 'POS_Y') || '0';
   var code = "";

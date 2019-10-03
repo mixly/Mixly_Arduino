@@ -4,7 +4,6 @@ goog.provide('Blockly.Blocks.communicate');
 
 goog.require('Blockly.Blocks');
 
-
 Blockly.Blocks.communicate.HUE = 140;
 
 //红外接收模块
@@ -213,6 +212,7 @@ Blockly.Blocks.RFID_init={
         this.setNextStatement(true);
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_RFID_INIT);
+         this.setFieldValue("10", "SDA");
 }
 };
 
