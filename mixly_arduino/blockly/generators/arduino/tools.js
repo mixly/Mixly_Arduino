@@ -36,3 +36,12 @@ Blockly.Arduino.IICSCAN = function() {
   var code = 'byte error, address;\nint nDevices;\nSerial.println("Scanning...");\nnDevices = 0;\nfor (address = 1; address < 127; address++ )\n{\n Wire.beginTransmission(address);\nerror = Wire.endTransmission();\nif (error == 0){\nSerial.print("I2C device found at address 0x");\nif (address < 16)\nSerial.print("0"); \nSerial.print(address, HEX);  \nSerial.println(" !");\nnDevices++;\n}\nelse if (error == 4){\nSerial.print("Unknow error at address 0x");\nif (address < 16)Serial.print("0"); \nSerial.println(address, HEX);  }\n}\nif (nDevices == 0)\nSerial.println("No I2C devices found");\nelse \nSerial.println("done");\ndelay(5000); ';
   return code;
 };
+
+Blockly.Arduino.nano_pin = function() {
+  return "";
+};
+Blockly.Arduino.uno_pin=Blockly.Arduino.nano_pin;
+Blockly.Arduino.mega_pin=Blockly.Arduino.nano_pin;
+Blockly.Arduino.esp32_pin=Blockly.Arduino.nano_pin;
+Blockly.Arduino.esp8266_pin=Blockly.Arduino.nano_pin;
+Blockly.Arduino.wemos_d1_mini_pin=Blockly.Arduino.nano_pin;
