@@ -99,10 +99,10 @@ Blockly.Arduino.math_single = function() {
       code = 'pow(10,' + arg + ')';
       break;
     case '++':
-        code = '(' + arg + '++)';
+        code = '(++'+ arg +')';
       break;
     case '--':
-        code = '(' + arg + '--)';
+        code = '(--'+ arg +')';
       break;
     case '~':
         code = '~(' + arg + ')';
@@ -204,4 +204,12 @@ Blockly.Arduino.math_constrain = function() {
   var code = 'constrain(' + argument0 + ', ' + argument1 + ', ' +
 	    argument2 + ')';
   return [code, Blockly.Arduino.ORDER_UNARY_POSTFIX];
+};
+
+Blockly.Arduino.variables_operation = function() {
+    var type = this.getFieldValue('type');
+    var variables = Blockly.Arduino.valueToCode(this, 'variables', Blockly.Arduino.ORDER_ATOMIC);
+    var data = Blockly.Arduino.valueToCode(this, 'data', Blockly.Arduino.ORDER_ATOMIC);
+    var code=''+ variables+' = '+ variables+' '+ type+' '+ data+';\n';
+    return code;
 };

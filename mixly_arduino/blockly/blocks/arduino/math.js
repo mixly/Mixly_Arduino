@@ -286,3 +286,19 @@ Blockly.Blocks.base_map = {
     this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/04.Mathematics.html#map");
   }
 };
+
+Blockly.Blocks['variables_operation'] = {
+  init: function() {
+       this.setColour(Blockly.Blocks.math.HUE);
+    this.appendValueInput("variables")
+        .setCheck(null);
+    this.appendValueInput("data")
+        .setCheck(null)
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_SELFADD,"+"], [Blockly.MIXLY_SELFSUB,"-"], [Blockly.MIXLY_SELFMULT,"*"], [Blockly.MIXLY_SELFDIVI,"/"]]), "type");
+    this.appendDummyInput();
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+ this.setTooltip();
+ this.setHelpUrl("");
+  }
+};

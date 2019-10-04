@@ -154,7 +154,7 @@ Blockly.Arduino.spi_transfer = function () {
   return code;
 };
 Blockly.Arduino.RFID_init = function() {
-  var sda = Blockly.Arduino.valueToCode(this, 'SDA', Blockly.Arduino.ORDER_ATOMIC);
+  var sda = this.getFieldValue('SDA');
   Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
   Blockly.Arduino.definitions_['include_RFID'] = '#include <RFID.h>';		
   Blockly.Arduino.definitions_['var_declare_RFID'] = 'RFID rfid('+sda+',5);';
@@ -163,7 +163,6 @@ Blockly.Arduino.RFID_init = function() {
   Blockly.Arduino.definitions_['var_declare__strmax'] = 'unsigned char str[MAX_LEN];';
   Blockly.Arduino.definitions_['var_declare__RC_size'] = 'unsigned char RC_size;';
   Blockly.Arduino.definitions_['var_declare__blockAddr'] = 'unsigned char blockAddr;        //选择操作的块地址0～63';		
-
   Blockly.Arduino.definitions_['define_1'] = '//4字节卡序列号，第5字节为校验字节';
   Blockly.Arduino.definitions_['define_2'] = 'unsigned char serNum[5];';		
   Blockly.Arduino.definitions_['define_3'] = '//写卡数据';	
