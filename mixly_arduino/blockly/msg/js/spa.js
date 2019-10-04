@@ -758,8 +758,6 @@ var MSG = {
 	tab_blocks: "Bloques",
 	tab_arduino: "Código",
 	copyright:"Copyright © Mixly Team@BNU				http://mixly.org/",
-	viewNormal:"Normal",
-	viewAdvanced:"Advanced",
 	catGame:"Game",
 	catSystem:"System",
 	catTurtle: "Tortuga",
