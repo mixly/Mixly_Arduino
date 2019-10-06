@@ -1,0 +1,36 @@
+$(start_block_header)
+/*******************************************************************************
+* $(doc_data_type)
+* filename: $(doc_filename)
+* name: $(doc_name)
+*
+* preset name: $(out_preset_name)
+* data block size: $(img_data_block_size) bit(s), uint$(img_data_block_size)_t
+* RLE compression enabled: $(img_rle)
+* conversion type: $(pre_conv_type), $(pre_mono_type) $(pre_mono_edge)
+* bits per pixel: $(out_bpp)
+*
+* preprocess:
+*  main scan direction: $(pre_scan_main)
+*  line scan direction: $(pre_scan_sub)
+*  inverse: $(pre_inverse)
+*******************************************************************************/
+
+/*
+ typedef struct {
+     const uint$(img_data_block_size)_t *data;
+     uint16_t width;
+     uint16_t height;
+     uint8_t dataSize;
+     } tImage;
+*/
+#include <stdint.h>
+$(end_block_header)
+
+$(start_block_images_table)
+static const uint$(img_data_block_size)_t image_data_$(doc_name_ws)[$(out_blocks_count)] = {
+    $(out_image_data)
+};
+const tImage $(doc_name_ws) = { image_data_$(doc_name_ws), $(out_image_width), $(out_image_height),
+    $(img_data_block_size) };
+$(end_block_images_table)

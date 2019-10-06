@@ -1,0 +1,65 @@
+$(start_block_header)
+/*******************************************************************************
+* $(doc_data_type)
+* filename: $(doc_filename)
+* name: $(doc_name)
+* family: $(fnt_family)
+* size: $(fnt_size)
+* style: $(fnt_style)
+* included characters: $(fnt_string)
+* antialiasing: $(fnt_antialiasing)
+* type: $(fnt_width_type)
+* encoding: $(fnt_encoding)
+* unicode bom: $(fnt_use_bom)
+*
+* preset name: $(out_preset_name)
+* data block size: $(img_data_block_size) bit(s), uint$(img_data_block_size)_t
+* RLE compression enabled: $(img_rle)
+* conversion type: $(pre_conv_type), $(pre_mono_type) $(pre_mono_edge)
+* bits per pixel: $(out_bpp)
+*
+* preprocess:
+*  main scan direction: $(pre_scan_main)
+*  line scan direction: $(pre_scan_sub)
+*  inverse: $(pre_inverse)
+*******************************************************************************/
+
+/*
+ typedef struct {
+     long int code;
+     const tImage *image;
+     } tChar;
+ typedef struct {
+     int length;
+     const tChar *chars;
+     } tFont;
+*/
+
+#include <stdint.h>
+$(end_block_header)
+
+$(start_block_images_table)
+#if (0x0$(out_char_code_sim) == 0x0)
+static const uint$(img_data_block_size)_t image_data_$(doc_name_ws)_0x$(out_char_code)[$(out_blocks_count)] = {
+    $(out_image_data)
+};
+static const tImage $(doc_name_ws)_0x$(out_char_code) = { image_data_$(doc_name_ws)_0x$(out_char_code),
+    $(out_image_width), $(out_image_height), $(img_data_block_size)};
+#endif
+$(end_block_images_table)
+
+static const tChar $(doc_name_ws)_array[] = {
+$(start_block_images_table)
+#if (0x0$(out_char_code_sim) == 0x0)
+  // character: '$(out_char_text)'
+  {0x$(out_char_code), &$(doc_name_ws)_0x$(out_char_code)}$(out_comma)
+#else
+  // character: '$(out_char_text)' == '$(out_char_text_sim)'
+  {0x$(out_char_code), &$(doc_name_ws)_0x$(out_char_code_sim)}$(out_comma)
+#endif
+$(end_block_images_table)
+};
+
+$(start_block_font_def)
+const tFont $(doc_name_ws) = { $(out_images_count), $(doc_name_ws)_array };
+$(end_block_font_def)
