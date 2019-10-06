@@ -328,6 +328,9 @@ var ADXL345_GETAB = [
 [Blockly.MixGo_MPU9250_AX, "accel.getAccelerationX()"],
 [Blockly.MixGo_MPU9250_AY, "accel.getAccelerationY()"],
 [Blockly.MixGo_MPU9250_AZ, "accel.getAccelerationZ()"],
+[Blockly.MixGo_MPU9250_AX+"(g)", "accel.getAccelerationX()/256.0"],
+[Blockly.MixGo_MPU9250_AY+"(g)", "accel.getAccelerationY()/256.0"],
+[Blockly.MixGo_MPU9250_AZ+"(g)", "accel.getAccelerationZ()/256.0"],
   ];
 //传感器-重力感应块-获取数据
 Blockly.Blocks.ADXL345 = {

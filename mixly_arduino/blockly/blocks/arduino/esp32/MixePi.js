@@ -281,7 +281,7 @@ Blockly.Blocks.TFT_color_seclet = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(new Blockly.FieldColour("ff0000"), "COLOR");
+    .appendField(new Blockly.FieldColour("33ccff"), "COLOR");
     this.setInputsInline(true);
     this.setOutput(true, Number);
     this.setTooltip(Blockly.OLED_DRAW_PIXE_TOOLTIP);
