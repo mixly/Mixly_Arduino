@@ -1,5 +1,7 @@
 = SD Library for Arduino =
 
+image:https://travis-ci.org/arduino-libraries/SD.svg?branch=master[Build Status, link=https://travis-ci.org/arduino-libraries/SD]
+
 The SD library allows for reading from and writing to SD cards.
 
 For more information about this library please visit us at

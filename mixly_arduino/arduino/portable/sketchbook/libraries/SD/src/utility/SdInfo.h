@@ -1,22 +1,22 @@
 /* Arduino Sd2Card Library
- * Copyright (C) 2009 by William Greiman
- *
- * This file is part of the Arduino Sd2Card Library
- *
- * This Library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This Library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with the Arduino Sd2Card Library.  If not, see
- * <http://www.gnu.org/licenses/>.
- */
+   Copyright (C) 2009 by William Greiman
+
+   This file is part of the Arduino Sd2Card Library
+
+   This Library is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   This Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with the Arduino Sd2Card Library.  If not, see
+   <http://www.gnu.org/licenses/>.
+*/
 #ifndef SdInfo_h
 #define SdInfo_h
 #include <stdint.h>
@@ -100,11 +100,11 @@ typedef struct CID {
   unsigned reserved : 4;
   // byte 14
   unsigned mdt_month : 4;
-  unsigned mdt_year_low :4;
+  unsigned mdt_year_low : 4;
   // byte 15
   unsigned always1 : 1;
   unsigned crc : 7;
-}cid_t;
+} cid_t;
 //------------------------------------------------------------------------------
 // CSD for version 1.00 cards
 typedef struct CSDV1 {
@@ -126,7 +126,7 @@ typedef struct CSDV1 {
   unsigned c_size_high : 2;
   unsigned reserved2 : 2;
   unsigned dsr_imp : 1;
-  unsigned read_blk_misalign :1;
+  unsigned read_blk_misalign : 1;
   unsigned write_blk_misalign : 1;
   unsigned read_bl_partial : 1;
   // byte 7
@@ -134,7 +134,7 @@ typedef struct CSDV1 {
   // byte 8
   unsigned vdd_r_curr_max : 3;
   unsigned vdd_r_curr_min : 3;
-  unsigned c_size_low :2;
+  unsigned c_size_low : 2;
   // byte 9
   unsigned c_size_mult_high : 2;
   unsigned vdd_w_cur_max : 3;
@@ -165,7 +165,7 @@ typedef struct CSDV1 {
   // byte 15
   unsigned always1 : 1;
   unsigned crc : 7;
-}csd1_t;
+} csd1_t;
 //------------------------------------------------------------------------------
 // CSD for version 2.00 cards
 typedef struct CSDV2 {
@@ -186,7 +186,7 @@ typedef struct CSDV2 {
   // byte 6
   unsigned reserved2 : 4;
   unsigned dsr_imp : 1;
-  unsigned read_blk_misalign :1;
+  unsigned read_blk_misalign : 1;
   unsigned write_blk_misalign : 1;
   unsigned read_bl_partial : 1;
   // byte 7
@@ -222,7 +222,7 @@ typedef struct CSDV2 {
   // byte 15
   unsigned always1 : 1;
   unsigned crc : 7;
-}csd2_t;
+} csd2_t;
 //------------------------------------------------------------------------------
 // union of old and new style CSD register
 union csd_t {

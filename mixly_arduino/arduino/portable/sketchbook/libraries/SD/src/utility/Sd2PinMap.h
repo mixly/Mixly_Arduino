@@ -1,47 +1,47 @@
 /* Arduino SdFat Library
- * Copyright (C) 2010 by William Greiman
- *
- * This file is part of the Arduino SdFat Library
- *
- * This Library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This Library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with the Arduino SdFat Library.  If not, see
- * <http://www.gnu.org/licenses/>.
- */
+   Copyright (C) 2010 by William Greiman
+
+   This file is part of the Arduino SdFat Library
+
+   This Library is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   This Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with the Arduino SdFat Library.  If not, see
+   <http://www.gnu.org/licenses/>.
+*/
 #if defined(__arm__) // Arduino Due Board follows
 
 #ifndef Sd2PinMap_h
-#define Sd2PinMap_h
+  #define Sd2PinMap_h
 
-#include <Arduino.h>
+  #include <Arduino.h>
 
-uint8_t const SS_PIN = SS;
-uint8_t const MOSI_PIN = MOSI;
-uint8_t const MISO_PIN = MISO;
-uint8_t const SCK_PIN = SCK;
+  uint8_t const SS_PIN = SS;
+  uint8_t const MOSI_PIN = MOSI;
+  uint8_t const MISO_PIN = MISO;
+  uint8_t const SCK_PIN = SCK;
 
 #endif // Sd2PinMap_h
 
 #elif defined(__AVR_ATmega4809__) // Arduino UNO WiFI Rev2 follows
 
 #ifndef Sd2PinMap_h
-#define Sd2PinMap_h
+  #define Sd2PinMap_h
 
-#include <Arduino.h>
+  #include <Arduino.h>
 
-uint8_t const SS_PIN = SS;
-uint8_t const MOSI_PIN = MOSI;
-uint8_t const MISO_PIN = MISO;
-uint8_t const SCK_PIN = SCK;
+  uint8_t const SS_PIN = SS;
+  uint8_t const MOSI_PIN = MOSI;
+  uint8_t const MISO_PIN = MISO;
+  uint8_t const SCK_PIN = SCK;
 
 #endif // Sd2PinMap_h
 
@@ -193,7 +193,7 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRA, &PINA, &PORTA, 2},  // D29 PA2
   {&DDRA, &PINA, &PORTA, 1},  // D30 PA1
   {&DDRA, &PINA, &PORTA, 0}   // D31 PA0
-};                         
+};
 //------------------------------------------------------------------------------
 #elif defined(__AVR_ATmega128RFA1__) && defined(CORE_MICRODUINO)
 // Microduino Core RF
@@ -231,7 +231,7 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRD, &PIND, &PORTD, 0},  // D19 PD0
   {&DDRF, &PINF, &PORTF, 3},  // D20 PF3
   {&DDRF, &PINF, &PORTF, 2},  // D21 PF2
-};                         
+};
 //------------------------------------------------------------------------------
 #elif defined(__AVR_ATmega32U4__) && defined(CORE_MICRODUINO)
 // Microduino Core USB
@@ -269,7 +269,7 @@ static const pin_map_t digitalPinMap[] = {
   {&DDRD, &PIND, &PORTD, 0},  // D19 - PD0
   {&DDRF, &PINF, &PORTF, 1},  // D20 - A6 - PF1
   {&DDRF, &PINF, &PORTF, 0},  // D21 - A7 - PF0
-};               
+};
 //------------------------------------------------------------------------------
 #elif defined(__AVR_ATmega644P__) || defined(__AVR_ATmega644__)
 // Sanguino
@@ -458,13 +458,13 @@ static const pin_map_t digitalPinMap[] = {
 };
 #endif  // defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
 //------------------------------------------------------------------------------
-static const uint8_t digitalPinCount = sizeof(digitalPinMap)/sizeof(pin_map_t);
+static const uint8_t digitalPinCount = sizeof(digitalPinMap) / sizeof(pin_map_t);
 
 uint8_t badPinNumber(void)
-  __attribute__((error("Pin number is too large or not a constant")));
+__attribute__((error("Pin number is too large or not a constant")));
 
 static inline __attribute__((always_inline))
-  uint8_t getPinMode(uint8_t pin) {
+uint8_t getPinMode(uint8_t pin) {
   if (__builtin_constant_p(pin) && pin < digitalPinCount) {
     return (*digitalPinMap[pin].ddr >> digitalPinMap[pin].bit) & 1;
   } else {
@@ -472,7 +472,7 @@ static inline __attribute__((always_inline))
   }
 }
 static inline __attribute__((always_inline))
-  void setPinMode(uint8_t pin, uint8_t mode) {
+void setPinMode(uint8_t pin, uint8_t mode) {
   if (__builtin_constant_p(pin) && pin < digitalPinCount) {
     if (mode) {
       *digitalPinMap[pin].ddr |= 1 << digitalPinMap[pin].bit;
@@ -484,7 +484,7 @@ static inline __attribute__((always_inline))
   }
 }
 static inline __attribute__((always_inline))
-  uint8_t fastDigitalRead(uint8_t pin) {
+uint8_t fastDigitalRead(uint8_t pin) {
   if (__builtin_constant_p(pin) && pin < digitalPinCount) {
     return (*digitalPinMap[pin].pin >> digitalPinMap[pin].bit) & 1;
   } else {
@@ -492,7 +492,7 @@ static inline __attribute__((always_inline))
   }
 }
 static inline __attribute__((always_inline))
-  void fastDigitalWrite(uint8_t pin, uint8_t value) {
+void fastDigitalWrite(uint8_t pin, uint8_t value) {
   if (__builtin_constant_p(pin) && pin < digitalPinCount) {
     if (value) {
       *digitalPinMap[pin].port |= 1 << digitalPinMap[pin].bit;
@@ -508,15 +508,15 @@ static inline __attribute__((always_inline))
 #elif defined (__CPU_ARC__)
 
 #if defined (__ARDUINO_ARC__)
-// Two Wire (aka I2C) ports
-uint8_t const SDA_PIN = 18;
-uint8_t const SCL_PIN = 19;
+  // Two Wire (aka I2C) ports
+  uint8_t const SDA_PIN = 18;
+  uint8_t const SCL_PIN = 19;
 
-// SPI port
-uint8_t const SS_PIN = 10;
-uint8_t const MOSI_PIN = 11;
-uint8_t const MISO_PIN = 12;
-uint8_t const SCK_PIN = 13;
+  // SPI port
+  uint8_t const SS_PIN = 10;
+  uint8_t const MOSI_PIN = 11;
+  uint8_t const MISO_PIN = 12;
+  uint8_t const SCK_PIN = 13;
 
 #endif	// Arduino ARC
 
