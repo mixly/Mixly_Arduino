@@ -87,7 +87,7 @@ Blockly.Arduino.WIFI_info = function() {
   {
     Blockly.Arduino.definitions_['include_WiFi'] ='#include <WiFi.h>';
   }
-  Blockly.Arduino.setups_['setup_Serial.begin(115200)']='Serial.begin(115200);\n'
+  //Blockly.Arduino.setups_['setup_Serial.begin(115200)']='Serial.begin(115200);\n'
   Blockly.Arduino.setups_['setup_WiFi_begin'] = 'WiFi.begin('+SSID+', '+PWD+');\n'
   +''
   +'while (WiFi.status() != WL_CONNECTED) {\n'

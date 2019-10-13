@@ -21,7 +21,7 @@
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
   <script type="text/javascript" src="myblock.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/mu_vision.js"></script>
+  
   <script type="text/javascript" src="../../generators/arduino/factory.js"></script>
   <script type="text/javascript" src="../../generators/arduino/blynk.js"></script>
   <script type="text/javascript" src="../../generators/arduino/pins.js"></script>
@@ -56,7 +56,7 @@
   <script type="text/javascript" src="../../generators/arduino/esp32/serial.js"></script>
   <script type="text/javascript" src="../../generators/arduino/esp32/actuator.js"></script>
   <script type="text/javascript" src="../../generators/arduino/esp32/MixGo.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/esp32/tools.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/tools.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script> 
   <script type="text/javascript" src="../../blocks/arduino/factory.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/pins.js"></script>
@@ -92,7 +92,7 @@
   <script type="text/javascript" src="../../blocks/arduino/esp32/serial.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/esp32/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/esp32/MixGo.js"></script>
-  <script type="text/javascript" src="../../blocks/arduino/mu_vision.js"></script> 
+   
   <script type="text/javascript" src="../../blocks/arduino/tools.js"></script> 
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color_esp32_arduino_advance.css" />
@@ -812,10 +812,15 @@
 </block>
 <block type="serial_softserial">
   <value name="TX">
-    <shadow type="pins_digital"></shadow>
+    <shadow type="pins_tx"></shadow>
   </value>
   <value name="RX">
     <shadow type="pins_digital"></shadow>
+  </value>
+  <value name="CONTENT">
+    <shadow type="math_number">
+      <field name="NUM">9600</field>
+    </shadow>
   </value>
 </block>
 <block type="serial_event">
@@ -1852,10 +1857,63 @@
         <field name="TEXT">ESP32BT</field>
       </shadow>
     </value>
+    <next>
+      <block type="serial_begin" >
+        <field name="serial_select">Serial</field>
+        <value name="CONTENT">
+          <shadow type="math_number">
+            <field name="NUM">115200</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="controls_if">
+            <value name="IF0">
+              <block type="serialBT_available">
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="serial_write">
+                <field name="serial_select">Serial</field>
+                <value name="CONTENT">
+                  <block type="serialBT_read">
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_if">
+                <value name="IF0">
+                  <block type="serial_available">
+                    <field name="serial_select">Serial</field>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="serialBT_write">
+                    <value name="CONTENT">
+                      <block type="serial_parseInt_Float">
+                        <field name="serial_select">Serial</field>
+                        <field name="STAT">read</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_delay">
+                    <field name="UNIT">delay</field>
+                    <value name="DELAY_TIME">
+                      <shadow type="math_number">
+                        <field name="NUM">20</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
   </block>
-  <block type="serialBT_available"></block>
-  <block type="serialBT_read"></block>
-  <block type="serialBT_write"></block>
   <block type="i2c_master_writer"></block>
   <block type="i2c_master_reader"></block>
   <block type="i2c_master_reader2"></block>

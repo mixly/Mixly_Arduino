@@ -143,17 +143,18 @@ Blockly.Arduino.display_TM1637_displyPrint = function () {
     var code = 'display.setBacklight(' + BRIGHTNESS + ');\n';
     return code;
   };
+  
   //HT16K33点阵初始化
   Blockly.Arduino.HT16K33_Init = function() {
-    var SDA = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
-    var SCL = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
-    var matrixName = this.getFieldValue('matrixName');
-    Blockly.Arduino.definitions_['include_Matrix'] = '#include <Matrix.h>';
-    Blockly.Arduino.definitions_['var_declare'+matrixName] = 'Matrix '+ matrixName +'('+SDA+','+SCL+');';
-    Blockly.Arduino.setups_['setup_' + matrixName] = matrixName + '.begin(0x70); \n';
-    var code= matrixName+'.clear();\n';
-    return code;
-  };
+   var SDA = this.getFieldValue('SDA');
+   var SCL = this.getFieldValue('SCL');
+   var matrixName = this.getFieldValue('matrixName');
+   Blockly.Arduino.definitions_['include_Matrix'] = '#include <Matrix.h>';
+   Blockly.Arduino.definitions_['var_declare'+matrixName] = 'Matrix '+ matrixName +'('+SDA+','+SCL+');';
+   Blockly.Arduino.setups_['setup_' + matrixName] = matrixName + '.begin(0x70); \n';
+   var code= matrixName+'.clear();\n';
+   return code;
+ };
 
   //Max7219点阵初始化
   Blockly.Arduino.MAX7219_init = function() {
