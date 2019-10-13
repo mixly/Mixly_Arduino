@@ -304,7 +304,7 @@ var resetACEFontSize = function(){
            {controls: true,
             wheel: true}
           });
-
+      onresize();
 	//实时更新右侧对比代码
   masterWorkspace.addChangeListener(rightCodeEvent);
   function rightCodeEvent(masterEvent) {

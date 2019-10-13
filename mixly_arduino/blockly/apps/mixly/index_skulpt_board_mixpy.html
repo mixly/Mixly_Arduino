@@ -281,18 +281,19 @@ function init() {
   };
   window.addEventListener('resize', onresize, false);
   var toolbox = document.getElementById('toolbox');
-    var masterWorkspace = Blockly.inject(document.getElementById('content_blocks'),
-      {//grid:
-          //{spacing: 25,
-           //length: 3,
-           //colour: '#ccc',
-           //snap: true},
-     media: '../../media/',
-       toolbox: toolbox,
-     zoom:
-           {controls: true,
-            wheel: true}
-     });
+  var masterWorkspace = Blockly.inject(document.getElementById('content_blocks'),
+    {//grid:
+        //{spacing: 25,
+          //length: 3,
+          //colour: '#ccc',
+          //snap: true},
+    media: '../../media/',
+      toolbox: toolbox,
+    zoom:
+          {controls: true,
+          wheel: true}
+    });
+    onresize();
   //实时更新右侧对比代码
     masterWorkspace.addChangeListener(rightCodeEvent);
   function rightCodeEvent(masterEvent) {
