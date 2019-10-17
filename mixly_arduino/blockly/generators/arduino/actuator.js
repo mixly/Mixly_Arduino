@@ -247,3 +247,28 @@ Blockly.Arduino.Mixly_motor = function() {
   Blockly.Arduino.definitions_[funcName] = code2;
   return code;
 };
+//语音模块（68段日常用语）
+Blockly.Arduino.voice_module = function() {
+  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_voice =  this.getFieldValue('VOICE');
+  var wait_time = Blockly.Arduino.valueToCode(this, 'WAIT', Blockly.Arduino.ORDER_ASSIGNMENT) || '0'; 
+   Blockly.Arduino.setups_['setup_output_sda'] = 'pinMode('+dropdown_pin+', OUTPUT);';
+   var code =  'send_data('+dropdown_voice+'); //volume control 0xE0-E7;\n';
+       code += 'delay('+wait_time +');\n'
+   var funcName = 'voice_out';
+   var code2 =  'void send_data(int addr)\n ';
+       code2 += '{int i;digitalWrite('+dropdown_pin+' , LOW);\n';
+       code2 += 'delay(3); //>2ms\n';
+       code2 += 'for(i=0;i<8;i++)\n';
+       code2 += '{digitalWrite('+dropdown_pin+ ', HIGH);\n';
+       code2 += 'if(addr&1){delayMicroseconds(2400); //>2400us\n';
+       code2 += '          digitalWrite('+dropdown_pin+', LOW);\n';
+       code2 += '          delayMicroseconds(800);} //>800us\n';
+       code2 += 'else{ delayMicroseconds(800); //>800us\n';
+       code2 += '      digitalWrite('+dropdown_pin+ ' , LOW);\n';
+       code2 += '      delayMicroseconds(2400);} //>2400us\n';
+       code2 += '      addr>>=1;} ';
+       code2 += '      digitalWrite('+dropdown_pin+', HIGH); }\n';
+   Blockly.Arduino.definitions_['funcName'] = code2;   
+  return code;
+};

@@ -470,10 +470,10 @@ Blockly.Blocks.GD5800_MP3_LOOP_MODE = {
     this.appendDummyInput("")
     .appendField(Blockly.GD5800_MP3);
     this.appendValueInput("RXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
+    .appendField(Blockly.MIXLY_TX_PIN)
     .setCheck(Number);
     this.appendValueInput("TXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
+    .appendField(Blockly.MIXLY_RX_PIN)
     .setCheck(Number);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_MP3_LOOP_MODE)
@@ -501,13 +501,13 @@ var GD5800_MP3_EQ_MODE = [
 Blockly.Blocks.GD5800_MP3_EQ_MODE = {
   init: function() {
     this.setColour(Blockly.Blocks.actuator.HUE);
-    this.appendDummyInput("")
+   this.appendDummyInput("")
     .appendField(Blockly.GD5800_MP3);
     this.appendValueInput("RXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
+    .appendField(Blockly.MIXLY_TX_PIN)
     .setCheck(Number);
     this.appendValueInput("TXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
+    .appendField(Blockly.MIXLY_RX_PIN)
     .setCheck(Number);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_MP3_EQ_MODE)
@@ -528,10 +528,10 @@ Blockly.Blocks.GD5800_MP3_VOL = {
     this.appendDummyInput("")
     .appendField(Blockly.GD5800_MP3);
     this.appendValueInput("RXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
+    .appendField(Blockly.MIXLY_TX_PIN)
     .setCheck(Number);
     this.appendValueInput("TXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
+    .appendField(Blockly.MIXLY_RX_PIN)
     .setCheck(Number);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_MP3_VOL);
@@ -553,10 +553,10 @@ Blockly.Blocks.GD5800_MP3_PLAY_NUM = {
     this.appendDummyInput("")
     .appendField(Blockly.GD5800_MP3);
     this.appendValueInput("RXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
+    .appendField(Blockly.MIXLY_TX_PIN)
     .setCheck(Number);
     this.appendValueInput("TXPIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
+    .appendField(Blockly.MIXLY_RX_PIN)
     .setCheck(Number);
     this.appendValueInput("NUM", Number)
     .appendField(Blockly.MIXLY_MP3_PLAY_NUM)
@@ -566,7 +566,27 @@ Blockly.Blocks.GD5800_MP3_PLAY_NUM = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip('歌曲顺序按照存入U盘时间排序。');
+    this.setTooltip();
     this.setHelpUrl();
+  }
+};
+
+var VOICE_LIST=[["老师", "0x00"],["爸爸", "0x01"],["妈妈", "0x02"],["爷爷", "0x03"],["奶奶", "0x04"],["姥姥", "0x05"],["姥爷", "0x06"],["哥哥", "0x07"],["姐姐", "0x08"],["叔叔", "0x09"],["阿姨", "0x0A"],["上午", "0x0B"],["下午", "0x0C"],["晚上", "0x0D"],["前方", "0x0E"],["厘米", "0x0F"],["新年快乐", "0x10"],["身体健康", "0x11"],["工作顺利", "0x12"],["学习进步", "0x13"],["您好", "0x14"],["谢谢", "0x15"],["的", "0x16"],["祝", "0x17"],["慢走", "0x18"],["欢迎光临", "0x19"],["亲爱的", "0x1A"],["同学们", "0x1B"],["工作辛苦了", "0x1C"],["点", "0x1D"],["打开", "0x1E"],["关闭", "0x1F"],["千", "0x20"],["百", "0x21"],["十", "0x22"],["1", "0x23"],["2", "0x24"],["3", "0x25"],["4", "0x26"],["5", "0x27"],["6", "0x28"],["7", "0x29"],["8", "0x2A"],["9", "0x2B"],["0", "0x2C"],["当前", "0x2D"],["转", "0x2E"],["左", "0x2F"],["右", "0x30"],["请", "0x31"],["已", "0x32"],["现在", "0x33"],["是", "0x34"],["红灯", "0x35"],["绿灯", "0x36"],["黄灯", "0x37"],["温度", "0x38"],["湿度", "0x39"],["欢迎常来", "0x3A"],["还有", "0x3B"],["秒", "0x3C"],["分", "0x3D"],["变", "0x3E"],["等", "0x3F"],["下一次", "0x40"],["功能", "0x41"],["障碍物", "0x42"],["世界那么大，我想去看看", "0x43"]];
+              
+Blockly.Blocks.voice_module = {
+  init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+        .appendField("语音模块(68段日常用语)");
+    this.appendValueInput("PIN", Number)
+         .appendField(Blockly.MIXLY_PIN)
+         .setCheck(Number);
+    this.appendDummyInput("")
+         .appendField(Blockly.MIXLY_MP3_PLAY)
+         .appendField(new Blockly.FieldDropdown(VOICE_LIST), "VOICE");
+    this.appendValueInput("WAIT").setCheck(Number).appendField(Blockly.MIXLY_MICROBIT_WAIT);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
   }
 };
