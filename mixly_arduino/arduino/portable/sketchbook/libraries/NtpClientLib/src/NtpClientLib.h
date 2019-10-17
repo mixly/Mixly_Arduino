@@ -46,6 +46,8 @@ using namespace std;
 using namespace placeholders;
 
 extern "C" {
+#include "lwip/init.h"
+#include "lwip/ip_addr.h"
 #include "lwip/err.h"
 #include "lwip/dns.h"
 }
@@ -131,9 +133,9 @@ typedef enum NTPStatus {
 } NTPStatus_t; // Only for internal library use
 
 typedef enum DNSStatus {
-	idle = 0, // Idle state
-	dnsRequested = 1, // DNS resolution requested, waiting for response
-    dnsSolved = 2,
+	DNS_IDLE = 0, // Idle state
+	DNS_REQUESTED = 1, // DNS resolution requested, waiting for response
+    DNS_SOLVED = 2,
 } DNSStatus_t; // Only for internal library use//
 #endif
 
@@ -312,7 +314,11 @@ public:
     * TODO: Add internationalization support
     */
     String getTimeStr () { return getTimeStr (now ()); }
-
+    String getHourMinuteStr () { return getHourMinuteStr (now ()); }
+    int getTimeHour24 () { return getTimeHour24 (now ()); }
+    int getTimeHour12 () { return getTimeHour12 (now ()); }
+    int getTimeMinute () { return getTimeMinute (now ()); }
+    int getTimeSecond () { return getTimeSecond (now ()); }
     /**
     * Convert a time in UNIX format to a String representing time.
     * @param[out] String constructed from current time.
@@ -320,6 +326,11 @@ public:
     * TODO: Add internationalization support
     */
     String getTimeStr (time_t moment);
+    String getHourMinuteStr (time_t moment);
+    int getTimeHour24 (time_t moment);
+    int getTimeHour12 (time_t moment);
+    int getTimeMinute (time_t moment);
+    int getTimeSecond (time_t moment);
 
     /**
     * Convert current date to a String.
@@ -327,6 +338,9 @@ public:
     * TODO: Add internationalization support
     */
     String getDateStr () { return getDateStr (now ()); }
+    int getDateYear () { return getDateYear (now ()); }
+    int getDateMonth () { return getDateMonth (now ()); }
+    int getDateDay () { return getDateDay (now ()); }
 
     /**
     * Convert a time in UNIX format to a String representing its date.
@@ -335,6 +349,9 @@ public:
     * TODO: Add internationalization support
     */
     String getDateStr (time_t moment);
+    int getDateYear (time_t moment);
+    int getDateMonth (time_t moment);
+    int getDateDay (time_t moment);
 
     /**
     * Convert current time and date to a String.
@@ -446,7 +463,7 @@ protected:
 
 #if NETWORK_TYPE == NETWORK_ESP8266 || NETWORK_TYPE == NETWORK_ESP32
     NTPStatus_t status = unsyncd; ///< Sync status
-    DNSStatus_t dnsStatus = idle; ///< DNS request status
+    DNSStatus_t dnsStatus = DNS_IDLE; ///< DNS request status
     Ticker responseTimer;       ///< Timer to trigger response timeout
     Ticker responseTimer2;       ///< Timer to trigger response timeout
 
@@ -454,7 +471,7 @@ protected:
                                 * Get packet response and update time as of its data
                                 * @param[in] UDP response packet.
                                 */
-    void processPacket (AsyncUDPPacket packet);
+    void processPacket (AsyncUDPPacket& packet);
 
     /**
     * Send NTP request to server

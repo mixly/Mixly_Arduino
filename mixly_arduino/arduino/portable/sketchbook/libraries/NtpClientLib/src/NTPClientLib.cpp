@@ -204,7 +204,13 @@ void NTPClient::s_dnsFound (const char *name, const ip_addr_t *ipaddr, void *cal
 
 #if NETWORK_TYPE == NETWORK_ESP8266
 IPAddress getIPClass (const ip_addr_t *ipaddr) {
-    IPAddress ip;
+
+	if (!ipaddr) {
+		DEBUGLOG ("%s - IP address not found\n", __FUNCTION__);
+		return IPAddress (0, 0, 0, 0);
+	}
+
+	IPAddress ip;
 #ifdef ESP8266
     ip = IPAddress (ipaddr->addr);
 #elif defined ESP32
@@ -217,19 +223,20 @@ IPAddress getIPClass (const ip_addr_t *ipaddr) {
 void NTPClient::dnsFound (const ip_addr_t *ipaddr) {
     //IPAddress ip;
 
-    dnsStatus = dnsSolved;
+    dnsStatus = DNS_SOLVED;
     responseTimer2.detach ();
     ntpServerIPAddress = getIPClass (ipaddr);
     DEBUGLOG ("%s - %s\n", __FUNCTION__, ntpServerIPAddress.toString ().c_str ());
     if (ipaddr != NULL && ntpServerIPAddress != (uint32_t)(0)) {
        time_t newTime = getTime();
+	   DEBUGLOG ("%s - Get time\n", __FUNCTION__);
        if (newTime) setTime(newTime);
     }
 }
 
 void  NTPClient::processDNSTimeout () {
     status = unsyncd;
-    dnsStatus = idle;
+    dnsStatus = DNS_IDLE;
     //timer1_disable ();
     responseTimer2.detach ();
     DEBUGLOG ("%s - DNS response Timeout\n", __FUNCTION__);
@@ -253,29 +260,37 @@ time_t NTPClient::getTime () {
     DEBUGLOG ("%s\n", __FUNCTION__);
     //timeServerIP = IPAddress (ipaddress.addr); // ip address format conversion test
     //ipaddress.addr = (uint32_t)timeServerIP;
-    if (dnsStatus == idle)
+    if (dnsStatus == DNS_IDLE)
     {
         DEBUGLOG ("%s - Resolving DNS of %s\n", __FUNCTION__, getNtpServerName ().c_str ());
         error = dns_gethostbyname (getNtpServerName ().c_str (), &ipaddress, (dns_found_callback)&s_dnsFound, this);
         DEBUGLOG ("%s - DNS result: %d\n", __FUNCTION__, (int)error);
         if (error == ERR_INPROGRESS) {
-            dnsStatus = dnsRequested;
+            dnsStatus = DNS_REQUESTED;
             DEBUGLOG ("%s - DNS Resolution in progress\n", __FUNCTION__);
             responseTimer2.once_ms (dnsTimeout, &NTPClient::s_processDNSTimeout, static_cast<void*>(this));
             return 0;
         } else if (error == ERR_OK) {
-            dnsStatus = dnsSolved;
+            dnsStatus = DNS_SOLVED;
             ntpServerIPAddress = getIPClass (&ipaddress);
-        }
+		} else {
+			DEBUGLOG ("%s - DNS Resolution error\n", __FUNCTION__);
+			return 0;
+		}
     }
     DEBUGLOG ("%s - DNS name IP solved: %s\n", __FUNCTION__, ntpServerIPAddress.toString ().c_str ());
-    if (error == ERR_OK && dnsStatus == dnsSolved) {
-        dnsStatus = idle;
+    if (error == ERR_OK && dnsStatus == DNS_SOLVED) {
+        dnsStatus = DNS_IDLE;
 #elif NETWORK_TYPE == NETWORK_ESP32
     int error = WiFi.hostByName (getNtpServerName ().c_str (), ntpServerIPAddress);
     if (error) {
 #endif
         DEBUGLOG ("%s - Starting UDP. IP: %s\n", __FUNCTION__, ntpServerIPAddress.toString ().c_str ());
+		if (ntpServerIPAddress == (uint32_t)(0)) {
+			DEBUGLOG ("%s - IP address unset. Aborting.\n", __FUNCTION__);
+			//DEBUGLOG ("%s - DNS Status: %d\n", __FUNCTION__, dnsStatus);
+			return 0;
+		}
         if (udp->connect (ntpServerIPAddress, DEFAULT_NTP_PORT)) {
             udp->onPacket (std::bind (&NTPClient::processPacket, this, _1));
             DEBUGLOG ("%s - Sending UDP packet\n", __FUNCTION__);
@@ -353,7 +368,7 @@ boolean NTPClient::sendNTPpacket (AsyncUDP *udp) {
     }
 }
 
-void NTPClient::processPacket (AsyncUDPPacket packet) {
+void NTPClient::processPacket (AsyncUDPPacket& packet) {
     uint8_t *ntpPacketBuffer;
     int size;
 
@@ -561,16 +576,44 @@ bool NTPClient::getDayLight () {
 String NTPClient::getTimeStr (time_t moment) {
     char timeStr[10];
     sprintf (timeStr, "%02d:%02d:%02d", hour (moment), minute (moment), second (moment));
-
     return timeStr;
 }
-
+String NTPClient::getHourMinuteStr (time_t moment) {
+    char timeStr[6];
+    if( second (moment)%2)
+        sprintf (timeStr, "%02d:%02d", hour (moment), minute (moment));
+    else
+        sprintf (timeStr, "%02d %02d", hour (moment), minute (moment));
+    return timeStr;
+}
+int NTPClient::getTimeHour24 (time_t moment) {
+    return hour (moment);
+}
+int NTPClient::getTimeHour12 (time_t moment) {
+ return hour (moment)%12;
+}
+int NTPClient::getTimeMinute (time_t moment) {
+    return minute (moment);
+}
+int NTPClient::getTimeSecond (time_t moment) {
+    return second (moment);
+}
 String NTPClient::getDateStr (time_t moment) {
     char dateStr[12];
-    sprintf (dateStr, "%02d/%02d/%4d", day (moment), month (moment), year (moment));
-
+    sprintf (dateStr, "%4d/%02d/%02d/",year (moment),month (moment),  day (moment) );
     return dateStr;
 }
+int NTPClient::getDateYear (time_t moment) {
+    return year (moment) ;
+}
+int NTPClient::getDateMonth (time_t moment) {
+    return month (moment);
+}
+int NTPClient::getDateDay (time_t moment) {
+    return day (moment);
+}
+
+
 
 String NTPClient::getTimeDateString (time_t moment) {
     return getTimeStr (moment) + " " + getDateStr (moment);

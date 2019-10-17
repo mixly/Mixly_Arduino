@@ -50,7 +50,7 @@ bool Adafruit_CircuitPlayground::begin(uint8_t brightness) {
   pinMode(CPLAY_SLIDESWITCHPIN, INPUT_PULLUP);
   pinMode(CPLAY_SPEAKER_SHUTDOWN, OUTPUT);
   digitalWrite(CPLAY_SPEAKER_SHUTDOWN, HIGH);
-#elif defined(__SAMD21__) // Circuit Playground Express
+#elif defined(__SAMD21G18A__) // Circuit Playground Express
   pinMode(CPLAY_LEFTBUTTON, INPUT_PULLDOWN);
   pinMode(CPLAY_RIGHTBUTTON, INPUT_PULLDOWN);
   pinMode(CPLAY_SLIDESWITCHPIN, INPUT_PULLUP);
@@ -83,7 +83,7 @@ bool Adafruit_CircuitPlayground::begin(uint8_t brightness) {
   cap[5] = CPlay_CapacitiveSensor(CPLAY_CAPSENSE_SHARED, 9);
   cap[6] = CPlay_CapacitiveSensor(CPLAY_CAPSENSE_SHARED, 10);
   cap[7] = CPlay_CapacitiveSensor(CPLAY_CAPSENSE_SHARED, 12);
-#elif defined(__SAMD21__) // Circuit Playground Express
+#elif defined(__SAMD21G18A__) // Circuit Playground Express
   for(int i=0; i<7; i++) {
     cap[i] = Adafruit_CPlay_FreeTouch(A1+i, OVERSAMPLE_4, RESISTOR_50K, FREQ_MODE_NONE);
     if (! cap[i].begin()) return false;
@@ -114,7 +114,7 @@ uint16_t Adafruit_CircuitPlayground::readCap(uint8_t p, uint8_t samples) {
     case 12:   return cap[7].capacitiveSensor(samples);
     default:   return 0;
   }
-#elif defined(__SAMD21__) // Circuit Playground Express
+#elif defined(__SAMD21G18A__) // Circuit Playground Express
   // analog pins r ez!
   if ((p >= A1) && (p <= A7)) {
     return cap[p - A1].measure();
