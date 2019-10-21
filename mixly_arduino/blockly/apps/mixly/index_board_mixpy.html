@@ -1,4 +1,5 @@
 ﻿<html manifest=node.manifest>
+
 <head>
   <meta charset="utf-8">
   <title>Mixly mixpy</title>
@@ -104,6 +105,7 @@
   <!-- ACE中字体放缩按钮样式-->
   <link rel="stylesheet" type="text/css" href="css/ACEfont.css" />
 </head>
+
 <body onload="init()">
   <table height="100%" width="100%" id="table_whole">
     <tr>
@@ -1519,6 +1521,28 @@
           </shadow>
         </value>
       </block>
+      <block type="turtle_shapesize">
+        <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">tina</field>
+          </shadow>
+        </value>
+        <value name="WID">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+        <value name="LEN">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+        <value name="OUTLINE">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
       <block type="turtle_speed">
         <value name="TUR">
           <shadow type="variables_get">
@@ -1531,18 +1555,43 @@
           </shadow>
         </value>
       </block>
-      <block type="turtle_bgcolor"></block>
-      <block type="turtle_pencolor">
+      <block type="turtle_bgcolor_hex">
+        <value name="VAR">
+          <block type="turtle_color_seclet" >
+            <field name="COLOR">#ff0000</field>
+          </block>
+          <shadow type="text">
+            <field name="TEXT">FF0000</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="turtle_pencolor_hex">
         <value name="TUR">
           <shadow type="variables_get">
             <field name="VAR">tina</field>
           </shadow>
         </value>
+        <value name="VAR">
+          <block type="turtle_color_seclet" >
+            <field name="COLOR">#ff0000</field>
+          </block>
+          <shadow type="text">
+            <field name="TEXT">FF0000</field>
+          </shadow>
+        </value>
       </block>
-      <block type="turtle_fillcolor">
+      <block type="turtle_fillcolor_hex">
         <value name="TUR">
           <shadow type="variables_get">
             <field name="VAR">tina</field>
+          </shadow>
+        </value>
+        <value name="VAR">
+          <block type="turtle_color_seclet" >
+            <field name="COLOR">#ff0000</field>
+          </block>
+          <shadow type="text">
+            <field name="TEXT">FF0000</field>
           </shadow>
         </value>
       </block>
@@ -1552,19 +1601,7 @@
             <field name="VAR">tina</field>
           </shadow>
         </value>
-      </block>
-      <block type="turtle_screen_delay">
-        <value name="TUR">
-          <shadow type="variables_get">
-            <field name="VAR">tina</field>
-          </shadow>
-        </value>
-        <value name="data">
-          <shadow type="math_number">
-            <field name="NUM">10</field>
-          </shadow>
-        </value>
-      </block>
+      </block>      
       <block type="turtle_circle">
         <value name="TUR">
           <shadow type="variables_get">
@@ -1593,7 +1630,74 @@
             <field name="NUM">360</field>
           </shadow>
         </value>
-      </block>      
+      </block> 
+      <block type="turtle_getscreen"></block>    
+      <block type="turtle_onkey">
+        <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">screen</field>
+          </shadow>
+        </value>
+        <value name="callback">
+          <shadow type="factory_block_return">
+            <field name="VALUE">turtlefunc</field>
+          </shadow>
+        </value>
+        <value name="VAR">
+          <shadow type="text">
+            <field name="TEXT">Up</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="turtle_onclick">
+        <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">screen</field>
+          </shadow>
+        </value>
+        <value name="callback">
+          <shadow type="factory_block_return">
+            <field name="VALUE">turtlefunc</field>
+          </shadow>
+        </value>
+       
+      </block>
+      <block type="turtle_ontimer">
+        <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">screen</field>
+          </shadow>
+        </value>
+        <value name="callback">
+          <shadow type="factory_block_return">
+            <field name="VALUE">turtlefunc</field>
+          </shadow>
+        </value>
+        <value name="VAR">
+          <shadow type="math_number">
+            <field name="NUM">3000</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="turtle_listen">
+          <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">screen</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="turtle_screen_delay">
+        <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">tina</field>
+          </shadow>
+        </value>
+        <value name="data">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block> 
       <block type="turtle_write">
         <value name="TUR">
           <shadow type="variables_get">
@@ -1664,38 +1768,7 @@
             <field name="TEXT">What's your name?</field>
           </shadow>
         </value>
-      </block>         
-      <block type="turtle_bgcolor_hex">
-        <value name="VAR">
-          <shadow type="text">
-            <field name="TEXT">FF0000</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="turtle_pencolor_hex">
-        <value name="TUR">
-          <shadow type="variables_get">
-            <field name="VAR">tina</field>
-          </shadow>
-        </value>
-        <value name="VAR">
-          <shadow type="text">
-            <field name="TEXT">FF0000</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="turtle_fillcolor_hex">
-        <value name="TUR">
-          <shadow type="variables_get">
-            <field name="VAR">tina</field>
-          </shadow>
-        </value>
-        <value name="VAR">
-          <shadow type="text">
-            <field name="TEXT">FF0000</field>
-          </shadow>
-        </value>
-      </block>
+      </block>  
     </category>
     <category id="catAI" colour="205">
       <block type="AI_ChooseAndGet">
@@ -1787,7 +1860,11 @@
           <shadow type="AI_ImageClassify_Func">
           </shadow>
         </value>
-        <value name="ADDR"></value>
+        <value name="ADDR">
+          <shadow type="text">
+            <field name="TEXT">C:/mixly.jpg</field>
+          </shadow>
+        </value>
         <value name="ATTR">
           <block type="dicts_create_with_noreturn">
             <mutation items="0"></mutation>
@@ -1826,7 +1903,11 @@
           <shadow type="AI_Ocr_Func">
           </shadow>
         </value>
-        <value name="ADDR"></value>
+        <value name="ADDR">
+          <shadow type="text">
+            <field name="TEXT">C:/mixly.jpg</field>
+          </shadow>
+        </value>
         <value name="ATTR">
           <block type="dicts_create_with_noreturn">
             <mutation items="0"></mutation>
@@ -2261,4 +2342,5 @@
   }
   </script>
 </body>
+
 </html>

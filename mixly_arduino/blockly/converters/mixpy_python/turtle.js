@@ -1,6 +1,7 @@
 'use strict';
 
 var turtleClass = 'turtle.Turtle';
+var screenClass = 'turtle.getscreen';
 pbc.assignD.get('Turtle')['check_assign'] = function (py2block, node, targets, value) {
     if(value.func._astname != "Attribute" || value.func.value._astname != "Name"){
         return false;
@@ -27,6 +28,24 @@ pbc.assignD.get('Pen')['create_block'] = function (py2block, node, targets, valu
         }, {});
 }
 
+pbc.assignD.get('getscreen')['check_assign'] = function (py2block, node, targets, value) {
+    if(value.func._astname != "Attribute" || value.func.value._astname != "Name"){
+        return false;
+    }
+    var moduleName = py2block.Name_str(value.func.value);
+    var funcName = py2block.identifier(value.func.attr);
+    if (value._astname === "Call" && moduleName === "turtle"
+        && funcName === "getscreen" && value.args.length === 0)
+        return true;
+    return false;
+}
+
+pbc.assignD.get('getscreen')['create_block'] = function (py2block, node, targets, value) {
+    var turtle = py2block.Name_str(node.targets[0]);
+    return block('turtle_getscreen', node.lineno, {
+            'VAR': turtle
+        }, {});
+}
 
 function turtleForwardBackward(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
@@ -162,9 +181,19 @@ pbc.moduleFunctionD.get('turtle')['bgcolor'] = function(py2block, func, args, ke
         throw new Error("Incorrect number of arguments");
     }
     var argblock = py2block.convert(args[0]);
+    if (args[0]._astname != "Str")  {
+        return [block("turtle_bgcolor_hex", func.lineno, {}, {
+            'VAR': argblock
+        }, {
+            "inline": "true"
+        })];
+    }
+    else{
+    
     return [block("turtle_bgcolor", func.lineno, {"FIELDNAME":py2block.Str_value(args[0])}, {}, {
             "inline": "true"
         })];
+    }
 }
 
 
@@ -285,6 +314,37 @@ pbc.objectFunctionD.get('shape')[turtleClass] = function (py2block, func, args, 
         "inline": "true"
     });}
 }
+
+pbc.objectFunctionD.get('shapesize')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 3 && args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    if (args.length == 3){
+    var turtleblock = py2block.convert(func.value);
+    var widblock = py2block.convert(args[0]);
+    var lenblock = py2block.convert(args[1]);
+    var outlineblock = py2block.convert(args[2]);
+    return [block('turtle_shapesize', func.lineno, {}, {
+        'TUR': turtleblock,        
+        'WID': widblock,
+        'LEN': lenblock,
+        'OUTLINE': outlineblock,
+
+        
+    }, {
+        "inline": "true"
+    })];}
+    if(args.length == 0){
+    var turtleblock = py2block.convert(func.value);
+    return block('turtle_pos_shape', func.lineno, {
+       'DIR': 'shapesize'
+    }, {
+        'TUR': turtleblock
+    }, {
+        "inline": "true"
+    });}
+}
+
 
 pbc.objectFunctionD.get('width')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1 && args.length !== 0) {
@@ -916,3 +976,71 @@ function turtleBeginEndFill(mode){
 pbc.objectFunctionD.get('begin_fill')[turtleClass] = turtleBeginEndFill('begin');
 pbc.objectFunctionD.get('end_fill')[turtleClass] = turtleBeginEndFill('end');
 
+
+pbc.objectFunctionD.get('onkey')[screenClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var turtleblock = py2block.convert(func.value);
+    pbc.pinType = "pins_callback";
+    var callback = py2block.convert(args[0]);
+    pbc.pinType=null;
+    var tupblock = py2block.convert(args[1]);
+    return [block("turtle_onkey", func.lineno, {},{
+        'TUR': turtleblock,
+    "callback":callback,
+    "VAR":tupblock
+    },{
+        "inline": "true"
+    })];
+};
+
+pbc.objectFunctionD.get('onclick')[screenClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var turtleblock = py2block.convert(func.value);
+    pbc.pinType = "pins_callback";
+    var callback = py2block.convert(args[0]);
+    
+    return [block("turtle_onclick", func.lineno, {},{
+        'TUR': turtleblock,
+    "callback":callback,
+    
+    },{
+        "inline": "true"
+    })];
+};
+
+pbc.objectFunctionD.get('ontimer')[screenClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var turtleblock = py2block.convert(func.value);
+    pbc.pinType = "pins_callback";
+    var callback = py2block.convert(args[0]);
+    pbc.pinType=null;
+    var tupblock = py2block.convert(args[1]);
+    return [block("turtle_ontimer", func.lineno, {},{
+        'TUR': turtleblock,
+    "callback":callback,
+    "VAR":tupblock
+    },{
+        "inline": "true"
+    })];
+};
+
+
+pbc.objectFunctionD.get('listen')['Turtle'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var turtleblock = py2block.convert(func.value);
+        return [block('turtle_listen', func.lineno, {
+            
+        }, {
+            'TUR': turtleblock
+        }, {
+            "inline": "true"
+        })];
+}

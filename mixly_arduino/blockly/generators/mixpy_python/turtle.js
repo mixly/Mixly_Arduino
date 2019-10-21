@@ -11,7 +11,7 @@ Blockly.Python.turtle_create = function() {
   //var size=window.parseFloat(this.getFieldValue('SIZE'));
   
   //Blockly.Python.definitions_['var_declare'+varName] = varName+'= '+ 'turtle.Turtle()\n';
-  var code=varName+'= '+ 'turtle.Turtle()\n';
+  var code=varName+' = '+ 'turtle.Turtle()\n';
   return code;
  // return '';
 };
@@ -238,6 +238,16 @@ Blockly.Python.turtle_shape = function() {
   return code;
 };
 
+Blockly.Python.turtle_shapesize = function() {
+  Blockly.Python.definitions_.import_turtle = "import turtle";
+  var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';  
+  var argument1 = Blockly.Python.valueToCode(this, 'WID', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var argument2 = Blockly.Python.valueToCode(this, 'LEN', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var argument3 = Blockly.Python.valueToCode(this, 'OUTLINE', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var code=varName+".shapesize(" +  argument1  +','+ argument2+ ','+ argument3+')\n';
+  return code;
+};
+
 Blockly.Python.turtle_textinput = function(block) {
   Blockly.Python.definitions_.import_turtle = "import turtle";  
   var title =  Blockly.Python.valueToCode(this, 'TITLE', Blockly.Python.ORDER_ATOMIC) ;
@@ -289,5 +299,54 @@ Blockly.Python.turtle_write_format_skulpt = function(block) {
   var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var write =  Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
   var code=varName+"." + 'write' + '(' + write + ',' + move + ',align="' + align + '",font=(' + fontname + ',' + fontnum + ',"' + fonttype + '"))\n';
+  return code;
+};
+
+
+Blockly.Python.turtle_color_seclet = function() {
+  var colour = this.getFieldValue('COLOR');
+  var code = '"' + colour +'"'
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.turtle_getscreen = function() {
+  Blockly.Python.definitions_.import_turtle = "import turtle";
+  var dropdown_type = this.getFieldValue('TYPE');
+  var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
+    Blockly.Variables.NAME_TYPE);
+  var code=varName+' = '+ 'turtle.getscreen()\n';
+  return code;
+};
+
+Blockly.Python.turtle_onkey = function () {
+   Blockly.Python.definitions_.import_turtle = "import turtle";
+   var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+    var v = Blockly.Python.valueToCode(this, "VAR", Blockly.Python.ORDER_NONE) || "None";
+    var callback = Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
+    var code = varName + ".onkey("+ callback +", "+ v +")\n";
+    return code;
+};
+
+Blockly.Python.turtle_onclick = function () {
+   Blockly.Python.definitions_.import_turtle = "import turtle";
+   var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+    var callback = Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
+    var code = varName + ".onclick("+ callback +")\n";
+    return code;
+};
+
+Blockly.Python.turtle_ontimer = function () {
+   Blockly.Python.definitions_.import_turtle = "import turtle";
+   var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+    var v = Blockly.Python.valueToCode(this, "VAR", Blockly.Python.ORDER_NONE) || "None";
+    var callback = Blockly.Python.valueToCode(this, "callback", Blockly.Python.ORDER_NONE) || "None";
+    var code = varName + ".ontimer("+ callback +", "+ v +")\n";
+    return code;
+};
+
+Blockly.Python.turtle_listen = function(){
+  Blockly.Python.definitions_.import_turtle = "import turtle";
+  var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var code=varName + '.listen()\n';
   return code;
 };

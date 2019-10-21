@@ -182,7 +182,7 @@ Blockly.Blocks['turtle_pos_shape'] = {
   init: function() {    
     this.setColour(Blockly.Blocks.turtle.HUE);
     var pos_shape =
-        [[Blockly.Msg.TURTLE_POS, 'pos'],[Blockly.Msg.TURTLE_SHAPE, 'shape'],[Blockly.Msg.TURTLE_HEADING, 'heading'],[Blockly.MIXLY_MIXPY_TURTLE_WIDTH,'width']];
+        [[Blockly.Msg.TURTLE_POS, 'pos'],[Blockly.Msg.TURTLE_SHAPE, 'shape'],[Blockly.Msg.TURTLE_HEADING, 'heading'],[Blockly.MIXLY_MIXPY_TURTLE_WIDTH,'width'],[Blockly.MIXLY_TURTEL_GET_SHAPESIZE,'shapesize']];
     this.appendValueInput('TUR')
         .setCheck('Turtle')
     this.appendDummyInput("")
@@ -195,7 +195,8 @@ Blockly.Blocks['turtle_pos_shape'] = {
         'pos': Blockly.MIXLY_TOOLTIP_TURTEL_POS,
         'shape': Blockly.MIXLY_TOOLTIP_TURTEL_SHAPE,
         'heading': Blockly.MIXLY_TOOLTIP_TURTEL_HEADING,
-        'width': Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH        
+        'width': Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH,
+        'shapesize':Blockly.MIXLY_TURTEL_GET_SHAPESIZE_TOOLTIP         
       };
       return TOOLTIPS[mode];
     });
@@ -481,7 +482,7 @@ Blockly.Blocks['turtle_bgcolor_hex'] = {
     this.setColour(Blockly.Blocks.turtle.HUE);
     this.appendValueInput('VAR')
         .setCheck(String)
-        .appendField(Blockly.blockpy_turtle_bgcolor_hex);
+        .appendField(Blockly.blockpy_turtle_bgcolor);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -495,7 +496,7 @@ Blockly.Blocks['turtle_pencolor_hex'] = {
     this.setColour(Blockly.Blocks.turtle.HUE);
     this.appendValueInput('VAR')
         .setCheck(String)
-        .appendField(Blockly.blockpy_turtle_pencolor_hex);    
+        .appendField(Blockly.blockpy_turtle_pencolor);    
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -509,7 +510,7 @@ Blockly.Blocks['turtle_fillcolor_hex'] = {
     this.setColour(Blockly.Blocks.turtle.HUE);
     this.appendValueInput('VAR')
         .setCheck(String)
-        .appendField(Blockly.blockpy_turtle_fillcolor_hex);
+        .appendField(Blockly.blockpy_turtle_fillcolor);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -534,6 +535,30 @@ Blockly.Blocks['turtle_shape'] = {
     this.setNextStatement(true);
     this.setTooltip(Blockly.Msg.TURTLE_SHAPE_TOOLTIP);
   }
+};
+
+Blockly.Blocks['turtle_shapesize'] = {
+  init: function() {
+     this.appendValueInput('TUR')
+        .setCheck('Turtle')
+      
+      this.setColour(Blockly.Blocks.turtle.HUE);
+      this.appendDummyInput("")
+          .appendField(Blockly.MIXLY_TURTEL_SHAPESIZE);
+      this.appendValueInput('WID')
+          .setCheck(Number)
+          .appendField(Blockly.MIXLY_TURTEL_SHAPESIZE_WID);    
+      this.appendValueInput('LEN')
+          .setCheck(Number)
+          .appendField(Blockly.MIXLY_TURTEL_SHAPESIZE_LEN);      
+      this.appendValueInput('OUTLINE')
+          .setCheck(Number)
+          .appendField(Blockly.MIXLY_TURTEL_SHAPESIZE_OUTLINE);       
+      this.setInputsInline(true);
+      this.setPreviousStatement(true);
+      this.setNextStatement(true);
+      this.setTooltip(Blockly.MIXLY_TOOLTIP_SHAPESIZE);
+    }
 };
 
 Blockly.Blocks['turtle_numinput'] = {
@@ -663,5 +688,99 @@ Blockly.Blocks['turtle_write_format_skulpt'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.Msg.TURTLE_WRITE_TOOLTIP);    
+  }
+};
+
+
+Blockly.Blocks.turtle_color_seclet = {
+  init: function() {
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendDummyInput("")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(new Blockly.FieldColour("ff0000"), "COLOR");
+    this.setInputsInline(true);
+    this.setOutput(true, String);
+}
+};
+
+Blockly.Blocks['turtle_getscreen'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.turtle.HUE);
+  this.appendDummyInput("")
+  
+      .appendField(Blockly.MIXLY_TURTEL_GETSCREEN)
+      .appendField(new Blockly.FieldTextInput('screen'), 'VAR')
+                       
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  this.setTooltip(Blockly.MIXLY_TURTEL_GETSCREEN_TOOLTIP);
+  },
+  getVars: function() {
+    return [this.getFieldValue('VAR')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
+      this.setTitleValue(newName, 'VAR');
+    }
+  }
+ 
+}
+
+Blockly.Blocks.turtle_onkey = {
+  init: function() {
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('TUR')
+    this.appendValueInput('VAR')
+        .appendField(Blockly.MIXLY_TURTEL_EVENT_ONKEY);
+    this.appendValueInput('callback')
+        .appendField(Blockly.MIXLY_PYTHON_CONTROLS_THREAD_USE)    
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_TURTEL_EVENT_ONKEY_TOOLTIP);
+  }
+};
+
+Blockly.Blocks.turtle_onclick = {
+  init: function() {
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('TUR')
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_TURTEL_EVENT_ONCLICK);
+    this.appendValueInput('callback')
+        .appendField(Blockly.MIXLY_PYTHON_CONTROLS_THREAD_USE)    
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_TURTEL_EVENT_ONCLICK_TOOLTIP);
+  }
+};
+
+Blockly.Blocks.turtle_ontimer = {
+  init: function() {
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('TUR')
+    this.appendValueInput('VAR')
+        .appendField(Blockly.MIXLY_TURTEL_EVENT_ONTIMER);
+    this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_mSecond);    
+    this.appendValueInput('callback')
+        .appendField(Blockly.MIXLY_PYTHON_CONTROLS_THREAD_USE)    
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_TURTEL_EVENT_ONTIMER_TOOLTIP);
+  }
+};
+
+Blockly.Blocks['turtle_listen'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('TUR')
+    this.appendDummyInput()
+          .appendField(Blockly.MIXLY_TURTEL_SCREEN_LISTEN);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
   }
 };
