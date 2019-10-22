@@ -272,3 +272,73 @@ Blockly.Arduino.voice_module = function() {
    Blockly.Arduino.definitions_['funcName'] = code2;   
   return code;
 };
+
+//gd5800 mp3 控制播放
+Blockly.Arduino.GD5800_MP3_CONTROL = function () {
+  var rxpin = Blockly.Arduino.valueToCode(this, 'RXPIN', Blockly.Arduino.ORDER_ATOMIC);
+  var txpin = Blockly.Arduino.valueToCode(this, 'TXPIN', Blockly.Arduino.ORDER_ATOMIC);
+  var CONTROL_TYPE = this.getFieldValue('CONTROL_TYPE');
+  Blockly.Arduino.definitions_['include_Arduino'] = '#include <Arduino.h>\n';
+  Blockly.Arduino.definitions_['include_SoftwareSerial'] = '#include <SoftwareSerial.h>\n';
+  Blockly.Arduino.definitions_['include_GD5800'] = '#include <GD5800_Serial.h>';
+  Blockly.Arduino.definitions_['var_declare_GD5800_ mp3' + rxpin + txpin] = 'GD5800_Serial mp3' + rxpin + txpin + '(' + rxpin + ', ' + txpin + ');';
+  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = ' mp3' + rxpin + txpin + '.begin(9600);';
+  var code = 'mp3' + rxpin + txpin + '.' + CONTROL_TYPE+'\n';
+  return code;
+};
+
+//gd5800 mp3 循环模式
+Blockly.Arduino.GD5800_MP3_LOOP_MODE = function () {
+  var rxpin = Blockly.Arduino.valueToCode(this, 'RXPIN', Blockly.Arduino.ORDER_ATOMIC);
+  var txpin = Blockly.Arduino.valueToCode(this, 'TXPIN', Blockly.Arduino.ORDER_ATOMIC);
+  var LOOP_MODE = this.getFieldValue('LOOP_MODE');
+  Blockly.Arduino.definitions_['include_Arduino'] = '#include <Arduino.h>\n';
+  Blockly.Arduino.definitions_['include_SoftwareSerial'] = '#include <SoftwareSerial.h>\n';
+  Blockly.Arduino.definitions_['include_GD5800'] = '#include <GD5800_Serial.h>';
+  Blockly.Arduino.definitions_['var_declare_GD5800_ mp3' + rxpin + txpin] = 'GD5800_Serial mp3' + rxpin + txpin + '(' + rxpin + ', ' + txpin + ');';
+  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = ' mp3' + rxpin + txpin + '.begin(9600);';
+  var code = 'mp3' + rxpin + txpin + '.setLoopMode(' + LOOP_MODE + ');\n';
+  return code;
+};
+
+//gd5800 mp3 EQ模式
+Blockly.Arduino.GD5800_MP3_EQ_MODE = function () {
+  var rxpin = Blockly.Arduino.valueToCode(this, 'RXPIN', Blockly.Arduino.ORDER_ATOMIC);
+  var txpin = Blockly.Arduino.valueToCode(this, 'TXPIN', Blockly.Arduino.ORDER_ATOMIC);
+  var EQ_MODE = this.getFieldValue('EQ_MODE');
+  Blockly.Arduino.definitions_['include_Arduino'] = '#include <Arduino.h>\n';
+  Blockly.Arduino.definitions_['include_SoftwareSerial'] = '#include <SoftwareSerial.h>\n';
+  Blockly.Arduino.definitions_['include_GD5800'] = '#include <GD5800_Serial.h>';
+  Blockly.Arduino.definitions_['var_declare_GD5800_ mp3' + rxpin + txpin] = 'GD5800_Serial mp3' + rxpin + txpin + '(' + rxpin + ', ' + txpin + ');';
+  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = ' mp3' + rxpin + txpin + '.begin(9600);';
+  var code = 'mp3' + rxpin + txpin + '.setEqualizer(' + EQ_MODE + ');\n';
+  return code;
+};
+
+//gd5800 mp3 设置音量
+Blockly.Arduino.GD5800_MP3_VOL = function () {
+  var rxpin = Blockly.Arduino.valueToCode(this, 'RXPIN', Blockly.Arduino.ORDER_ATOMIC);
+  var txpin = Blockly.Arduino.valueToCode(this, 'TXPIN', Blockly.Arduino.ORDER_ATOMIC);
+  var vol = Blockly.Arduino.valueToCode(this, 'vol', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['include_Arduino'] = '#include <Arduino.h>\n';
+  Blockly.Arduino.definitions_['include_SoftwareSerial'] = '#include <SoftwareSerial.h>\n';
+  Blockly.Arduino.definitions_['include_GD5800'] = '#include <GD5800_Serial.h>';
+  Blockly.Arduino.definitions_['var_declare_GD5800_ mp3' + rxpin + txpin] = 'GD5800_Serial mp3' + rxpin + txpin + '(' + rxpin + ', ' + txpin + ');';
+  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = ' mp3' + rxpin + txpin + '.begin(9600);';
+  var code = 'mp3' + rxpin + txpin + '.setVolume(' + vol + ');\n';
+  return code;
+};
+
+//gd5800 mp3 播放第N首
+Blockly.Arduino.GD5800_MP3_PLAY_NUM = function () {
+  var rxpin = Blockly.Arduino.valueToCode(this, 'RXPIN', Blockly.Arduino.ORDER_ATOMIC);
+  var txpin = Blockly.Arduino.valueToCode(this, 'TXPIN', Blockly.Arduino.ORDER_ATOMIC);
+  var NUM = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['include_Arduino'] = '#include <Arduino.h>\n';
+  Blockly.Arduino.definitions_['include_SoftwareSerial'] = '#include <SoftwareSerial.h>\n';
+  Blockly.Arduino.definitions_['include_GD5800'] = '#include <GD5800_Serial.h>';
+  Blockly.Arduino.definitions_['var_declare_GD5800_ mp3' + rxpin + txpin] = 'GD5800_Serial mp3' + rxpin + txpin + '(' + rxpin + ', ' + txpin + ');';
+  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = ' mp3' + rxpin + txpin + '.begin(9600);';
+  var code = 'mp3' + rxpin + txpin + '.playFileByIndexNumber(' + NUM + ');\n';
+  return code;
+};

@@ -108,8 +108,8 @@ var tm1637_DIO;
 var tm1637_CLK;
 
 Blockly.Arduino.display_TM1637_init = function () {
-  var tm1637_CLK = this.getFieldValue('CLK');
-  var tm1637_DIO = this.getFieldValue('DIO');
+ tm1637_CLK = this.getFieldValue('CLK');
+ tm1637_DIO = this.getFieldValue('DIO');
   Blockly.Arduino.definitions_['include_SevenSegmentTM1637'] = '#include <SevenSegmentTM1637.h>';
   Blockly.Arduino.definitions_['var_declare_SevenSegmentTM1637'] = 'SevenSegmentTM1637  display(' + tm1637_CLK + ',' + tm1637_DIO + ');';
   Blockly.Arduino.setups_['setup_ display.begin()'] = ' display.begin();';
@@ -214,24 +214,24 @@ Blockly.Arduino.display_Matrix_DisplayChar = function() {
   var dotMatrixArray = Blockly.Arduino.valueToCode(this, 'LEDArray', Blockly.Arduino.ORDER_ASSIGNMENT);
   Blockly.Arduino.definitions_['var_declare_LEDArray'] = 'uint8_t  LEDArray[8];';
   var code='';
-  code+='for(int i=0; i<8; i++)\n';
+  code+='for(int index_i=0; index_i<8; index_i++)\n';
   code+='{\n'
-  code+='  LEDArray[i]='+dotMatrixArray+'[i];\n';
-  code+='  for(int j='+(NO)+'*8; j<'+ (NO)+'*8+8; j++)\n'
-  //code+='  for(int j=7; j>=0; j--)\n'
+  code+='  LEDArray[index_i]='+dotMatrixArray+'[index_i];\n';
+  code+='  for(int index_j='+(NO)+'*8; index_j<'+ (NO)+'*8+8; index_j++)\n'
+  //code+='  for(int index_j=7; index_j>=0; index_j--)\n'
   code+='  {\n'
-  code+='    if((LEDArray[i]&0x01)>0)\n';
+  code+='    if((LEDArray[index_i]&0x01)>0)\n';
   if(matrixType=="HT16K33")
   {
-   code+='      '+  matrixName +'.drawPixel(j, i,1);\n';
-   code+='else\n'+  matrixName +'.drawPixel(j, i,0);\n';
+   code+='      '+  matrixName +'.drawPixel(index_j, index_i,1);\n';
+   code+='else\n'+  matrixName +'.drawPixel(index_j, index_i,0);\n';
  }
  else
  {
-  code+='     '+  matrixName +'.drawPixel(j, 7-i,1);\n';
-  code+='else\n'+  matrixName +'.drawPixel(j, 7-i,0);\n';
+  code+='     '+  matrixName +'.drawPixel(index_j, 7-index_i,1);\n';
+  code+='else\n'+  matrixName +'.drawPixel(index_j, 7-index_i,0);\n';
 }
-code+='    	LEDArray[i] = LEDArray[i]>>1;\n';
+code+='     LEDArray[index_i] = LEDArray[index_i]>>1;\n';
 code+='  }  \n'
 code+='}\n'
 code+= matrixName+'.write();\n'
