@@ -17,35 +17,31 @@ def get_soundlevel():
     
 # Button
 class Button:
-    def __init__(self, pin):
+    def __init__(self, pin_id):
         from machine import Pin
-        self.pin = Pin(pin, Pin.IN)
+        self.pin = Pin(pin_id, Pin.IN)
+        self.irq = self.pin.irq(trigger=Pin.IRQ_FALLING, handler=self.__irq_sc)
+        self.presses = 0
 
-    def get_presses(self, delay = 1):
-        last_time, last_state, presses = time.time(), 0, 0
-        while time.time() < last_time + delay:
-            time.sleep_ms(50)
-            if last_state == 0 and self.pin.value() == 1:
-                last_state = 1
-            if last_state == 1 and self.pin.value() == 0:
-                last_state, presses = 0, presses + 1
-        return presses
+    def __irq_sc(self, p):
+        self.presses += 1
+        
+    def close(self):
+        self.irq.trigger(0) 
+
+    def reset(self):
+        self.presses = 0
+
+    def get_presses(self):
+    	p = self.presses
+    	self.presses = 0
+        return p
 
     def is_pressed(self):
         return self.pin.value() == 0
 
     def was_pressed(self):
-        last_state = self.pin.value()
-        if last_state :
-            return False
-        else :
-            while not self.pin.value():
-                time.sleep_ms(10)
-            return True
-
-    def irq(self, handler, trigger):
-        self.pin.irq(handler = handler, trigger = trigger)
-
+        return self.presses != 0
 # Pin
 class MyPin(Pin):
     def write_digital(self,val):
