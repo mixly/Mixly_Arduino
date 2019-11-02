@@ -55,14 +55,6 @@ Blockly.Python['mpython_blynk_sync_virtual'] = function (block) {
 
 // 斷開连接 Blynk
 Blockly.Python['mpython_blynk_on_disconnected'] = function (block) {
-    var globals = block.workspace.variableList;
-    for (var i = globals.length - 1; i >= 0; i--) {
-        var varName = globals[i];
-        globals[i] = Blockly.Python.variableDB_.getName(varName, Blockly.Variables.NAME_TYPE);
-    }
-    try { globals.remove('_value'); } catch (e) { }
-    globals = globals.length ? '    global ' + globals.join(', ') + '\n' : '';
-
     // Blockly.Python.definitions_['import_BlynkLib'] = 'import blynklib';
 
     var branch = Blockly.Python.statementToCode(block, 'DO');
@@ -70,7 +62,7 @@ Blockly.Python['mpython_blynk_on_disconnected'] = function (block) {
 
     Blockly.Python.definitions_['blynk_on_disconnected'] =
         '@blynk.handle_event("disconnect")\n' +
-        'def connect_handler():\n' + globals +
+        'def connect_handler():\n' + 
         "    print('Blynk disconnected')\n" + branch;
 
     return '';
@@ -78,14 +70,6 @@ Blockly.Python['mpython_blynk_on_disconnected'] = function (block) {
 
 // 连接上 Blynk
 Blockly.Python['mpython_blynk_on_connected'] = function (block) {
-    var globals = block.workspace.variableList;
-    for (var i = globals.length - 1; i >= 0; i--) {
-        var varName = globals[i];
-        globals[i] = Blockly.Python.variableDB_.getName(varName, Blockly.Variables.NAME_TYPE);
-    }
-    try { globals.remove('_value'); } catch (e) { }
-    globals = globals.length ? '    global ' + globals.join(', ') + '\n' : '';
-
     // Blockly.Python.definitions_['import_BlynkLib'] = 'import blynklib';
 
     var branch = Blockly.Python.statementToCode(block, 'DO');
@@ -93,7 +77,7 @@ Blockly.Python['mpython_blynk_on_connected'] = function (block) {
 
     Blockly.Python.definitions_['blynk_on_connected'] =
         '@blynk.handle_event("connect")\n' +
-        'def connect_handler():\n' + globals +
+        'def connect_handler():\n' + 
         "    print('Blynk connected')\n" + branch;
 
     return '';
@@ -149,14 +133,6 @@ Blockly.Python['mpython_blynk_get_timers'] = function (block) {
 Blockly.Python['mpython_blynktimer'] = function (block) {
     Blockly.Python.definitions_['import_blynktimer'] = 'import blynktimer';
 
-    var globals = block.workspace.variableList;
-    for (var i = globals.length - 1; i >= 0; i--) {
-        var varName = globals[i];
-        globals[i] = Blockly.Python.variableDB_.getName(varName, Blockly.Variables.NAME_TYPE);
-    }
-    try { globals.remove('_value'); } catch (e) { }
-    globals = globals.length ? '    global ' + globals.join(', ') + '\n' : '';
-
     var Num = Blockly.Python.valueToCode(block, 'Num', Blockly.Python.ORDER_ATOMIC);
     var period = Blockly.Python.valueToCode(block, 'period', Blockly.Python.ORDER_ATOMIC);
     var Timer_mode = block.getFieldValue('Timer_mode');
@@ -171,7 +147,7 @@ Blockly.Python['mpython_blynktimer'] = function (block) {
 @blynk_timer.register(interval=${period}, run_once=${Timer_mode})
 def blynk_timer${Num}():
 `
-        + globals + branch;
+         + branch;
 
     return '';
 };
@@ -187,13 +163,6 @@ Blockly.Python['mpython_blynk_sensor_data_to_app'] = function (block) {
 
 // 从 Bylnk APP 获取虚拟管脚 %1 的值
 Blockly.Python['mpython_blynk_app_data'] = function (block) {
-    var globals = block.workspace.variableList;
-    for (var i = globals.length - 1; i >= 0; i--) {
-        var varName = globals[i];
-        globals[i] = Blockly.Python.variableDB_.getName(varName, Blockly.Variables.NAME_TYPE);
-    }
-    try { globals.remove('_value'); } catch (e) { }
-    globals = globals.length ? '    global ' + globals.join(', ') + '\n' : '';
 
     // Blockly.Python.definitions_['import_BlynkLib'] = 'import blynklib';
     var virtual_pin = Blockly.Python.valueToCode(block, 'virtual_pin', Blockly.Python.ORDER_ATOMIC);
@@ -203,7 +172,7 @@ Blockly.Python['mpython_blynk_app_data'] = function (block) {
 
     Blockly.Python.definitions_['blynk_VIRTUAL_WRITE_' + virtual_pin] =
         "@blynk.handle_event('write V" + virtual_pin + "')\n" +
-        'def write_virtual_pin_handler(pin, _value):\n' + globals +
+        'def write_virtual_pin_handler(pin, _value):\n' + 
         '    for i in range(0, len(_value)):\n' +
         '        try: _value[i] = eval(_value[i])\n' +
         '        except: pass\n' +
