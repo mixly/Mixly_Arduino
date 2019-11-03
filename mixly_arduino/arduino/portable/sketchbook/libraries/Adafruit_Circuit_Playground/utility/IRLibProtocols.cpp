@@ -8,7 +8,7 @@
  * It is used by both Send and Decode sections of the code but not Receive.
  */
 
-#if !defined(ARDUINO_CIRCUITPLAY_NRF52840)
+#if !defined(ARDUINO_NRF52840_CIRCUITPLAY)
 
 #include "IRLibProtocols.h"
 

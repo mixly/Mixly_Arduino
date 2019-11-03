@@ -500,6 +500,7 @@ uint16_t IRsend::minRepeats(const decode_type_t protocol) {
   switch (protocol) {
     // Single repeats
     case AIWA_RC_T501:
+    case AMCOR:
     case COOLIX:
     case GICABLE:
     case INAX:
@@ -574,6 +575,7 @@ uint16_t IRsend::defaultBits(const decode_type_t protocol) {
     case MAGIQUEST:
     case VESTEL_AC:
       return 56;
+    case AMCOR:
     case PIONEER:
       return 64;
     case ARGO:
@@ -581,7 +583,9 @@ uint16_t IRsend::defaultBits(const decode_type_t protocol) {
     case DAIKIN:
       return kDaikinBits;
     case DAIKIN128:
-        return kDaikin128Bits;
+      return kDaikin128Bits;
+    case DAIKIN152:
+      return kDaikin152Bits;
     case DAIKIN160:
       return kDaikin160Bits;
     case DAIKIN176:
@@ -604,10 +608,16 @@ uint16_t IRsend::defaultBits(const decode_type_t protocol) {
       return kHitachiAc1Bits;
     case HITACHI_AC2:
       return kHitachiAc2Bits;
+    case HITACHI_AC424:
+      return kHitachiAc424Bits;
     case KELVINATOR:
       return kKelvinatorBits;
     case MITSUBISHI_AC:
       return kMitsubishiACBits;
+    case MITSUBISHI136:
+      return kMitsubishi136Bits;
+    case MITSUBISHI112:
+      return kMitsubishi112Bits;
     case MITSUBISHI_HEAVY_152:
       return kMitsubishiHeavy152Bits;
     case MITSUBISHI_HEAVY_88:
@@ -841,6 +851,11 @@ bool IRsend::send(const decode_type_t type, const uint64_t data,
 bool IRsend::send(const decode_type_t type, const unsigned char *state,
                   const uint16_t nbytes) {
   switch (type) {
+#if SEND_AMCOR
+    case AMCOR:
+      sendAmcor(state, nbytes);
+      break;
+#endif
 #if SEND_ARGO
     case ARGO:
       sendArgo(state, nbytes);
@@ -856,6 +871,11 @@ bool IRsend::send(const decode_type_t type, const unsigned char *state,
         sendDaikin128(state, nbytes);
         break;
 #endif  // SEND_DAIKIN128
+#if SEND_DAIKIN152
+    case DAIKIN152:
+        sendDaikin152(state, nbytes);
+        break;
+#endif  // SEND_DAIKIN152
 #if SEND_DAIKIN160
     case DAIKIN160:
       sendDaikin160(state, nbytes);
@@ -916,6 +936,11 @@ bool IRsend::send(const decode_type_t type, const unsigned char *state,
       sendHitachiAC2(state, nbytes);
       break;
 #endif  // SEND_HITACHI_AC2
+#if SEND_HITACHI_AC424
+    case HITACHI_AC424:
+      sendHitachiAc424(state, nbytes);
+      break;
+#endif  // SEND_HITACHI_AC424
 #if SEND_KELVINATOR
     case KELVINATOR:
       sendKelvinator(state, nbytes);
@@ -926,6 +951,16 @@ bool IRsend::send(const decode_type_t type, const unsigned char *state,
       sendMitsubishiAC(state, nbytes);
       break;
 #endif  // SEND_MITSUBISHI_AC
+#if SEND_MITSUBISHI136
+    case MITSUBISHI136:
+      sendMitsubishi136(state, nbytes);
+      break;
+#endif  // SEND_MITSUBISHI136
+#if SEND_MITSUBISHI112
+    case MITSUBISHI112:
+      sendMitsubishi112(state, nbytes);
+      break;
+#endif  // SEND_MITSUBISHI112
 #if SEND_MITSUBISHIHEAVY
     case MITSUBISHI_HEAVY_88:
       sendMitsubishiHeavy88(state, nbytes);

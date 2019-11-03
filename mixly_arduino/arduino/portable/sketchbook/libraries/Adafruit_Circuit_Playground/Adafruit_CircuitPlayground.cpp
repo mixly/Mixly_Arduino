@@ -306,8 +306,7 @@ float Adafruit_CircuitPlayground::motionZ(void) {
 /**************************************************************************/
 float Adafruit_CircuitPlayground::temperature(void) {
    // Thermistor test
-  float reading;
-
+  double reading;
   reading = analogRead(CPLAY_THERMISTORPIN);
 
   //Serial.print("Thermistor reading: "); Serial.println(reading);
@@ -318,7 +317,7 @@ float Adafruit_CircuitPlayground::temperature(void) {
 
   //Serial.print("Thermistor resistance: "); Serial.println(reading);
 
-  float steinhart;
+  double steinhart;
   steinhart = reading / THERMISTORNOMINAL;     // (R/Ro)
   steinhart = log(steinhart);                  // ln(R/Ro)
   steinhart /= BCOEFFICIENT;                   // 1/B * ln(R/Ro)

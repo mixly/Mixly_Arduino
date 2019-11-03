@@ -28,7 +28,7 @@
  * enableIRIn after every decode and the system handles it.
  */
 
-#if !defined(ARDUINO_CIRCUITPLAY_NRF52840)
+#if !defined(ARDUINO_NRF52840_CIRCUITPLAY)
 
 #include "IRLibHardware.h"
 uint8_t IRLib_didIROut=false;

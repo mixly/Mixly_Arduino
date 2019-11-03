@@ -50,7 +50,8 @@
  #define CPLAY_LIS3DH_INTERRUPT  7 ///< LIS3DH interrupt pin
  #define CPLAY_LIS3DH_ADDRESS    0x18 ///< LIS3DH I2C address
 #elif defined(ARDUINO_NRF52840_CIRCUITPLAY)
- #define CPLAY_CAPSENSE_SHARED 255 ///< we use ground instead of capacitive sense pin
+ #include <math.h>
+ #define CPLAY_CAPSENSE_SHARED  255 ///< we use ground instead of capacitive sense pin
  #define CPLAY_LEFTBUTTON        4 ///< left button pin
  #define CPLAY_RIGHTBUTTON       5 ///< right button pin
  #define CPLAY_SLIDESWITCHPIN    7 ///< slide switch pin
@@ -107,7 +108,7 @@ class Adafruit_CircuitPlayground {
   Adafruit_CPlay_Mic mic; ///< the microphone object
   Adafruit_CPlay_Speaker speaker; ///< the speaker object
 
-#if defined (__AVR__) || defined(ARDUINO_CIRCUITPLAY_NRF52840) // Circuit Playground 'classic' or bluefruit
+#if defined (__AVR__) || defined(ARDUINO_NRF52840_CIRCUITPLAY) // Circuit Playground 'classic' or bluefruit
   CPlay_CapacitiveSensor cap[8]; ///< the array of capacitive touch sensors
 #else
   Adafruit_CPlay_FreeTouch     cap[7]; ///< the array of capacitive touch sensors
