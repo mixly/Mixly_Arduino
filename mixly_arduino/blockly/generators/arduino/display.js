@@ -214,9 +214,10 @@ Blockly.Arduino.display_Matrix_DisplayChar = function() {
   var dotMatrixArray = Blockly.Arduino.valueToCode(this, 'LEDArray', Blockly.Arduino.ORDER_ASSIGNMENT);
   Blockly.Arduino.definitions_['var_declare_LEDArray'] = 'uint8_t  LEDArray[8];';
   var code='';
+code+= 'memcpy_P (&LEDArray, &'+ dotMatrixArray + ', 8);\n';
   code+='for(int index_i=0; index_i<8; index_i++)\n';
   code+='{\n'
-  code+='  LEDArray[index_i]='+dotMatrixArray+'[index_i];\n';
+//code+='  LEDArray[index_i]='+dotMatrixArray+'[index_i];\n';
   code+='  for(int index_j='+(NO)+'*8; index_j<'+ (NO)+'*8+8; index_j++)\n'
   //code+='  for(int index_j=7; index_j>=0; index_j--)\n'
   code+='  {\n'
@@ -259,7 +260,8 @@ Blockly.Arduino.display_Matrix_LedArray = function() {
     code += '0x' + tmp + ((i != 8) ? ',' : '');
   }
   code += '};';
-  Blockly.Arduino.definitions_[varName] = "uint8_t " + varName + "[8]=" + code;
+  //Blockly.Arduino.definitions_[varName] = "uint8_t " + varName + "[8]=" + code;
+  Blockly.Arduino.definitions_[varName] = "const uint8_t " + varName + "[8] PROGMEM =" + code;
   return [varName, Blockly.Arduino.ORDER_ATOMIC];
 };
 
@@ -390,8 +392,11 @@ Blockly.Arduino.oled_face = function() {
  var pos=FACE_IMAGE.indexOf(',');
  var varName="FACE_"+FACE_IMAGE.substring(0,pos);
  FACE_IMAGE=FACE_IMAGE.substring(pos+1,FACE_IMAGE.length);
- Blockly.Arduino.definitions_['var_declare' + varName] = 'static unsigned char ' + varName + '[]={' + FACE_IMAGE + ' };\n';
- var code="u8g2.drawXBM("+POS_x+","+POS_y+",89,64,"+varName+");\n";
+ // YANG use PROGMEM to save the RAM space
+ //Blockly.Arduino.definitions_['var_declare' + varName] = 'static unsigned char ' + varName + '[]={' + FACE_IMAGE + ' };\n';
+ //var code="u8g2.drawXBM("+POS_x+","+POS_y+",89,64,"+varName+");\n";
+ Blockly.Arduino.definitions_['var_declare' + varName] = 'const static unsigned char ' + varName + '[] PROGMEM ={' + FACE_IMAGE + ' };\n';
+ var code="u8g2.drawXBMP("+POS_x+","+POS_y+",89,64,"+varName+");\n";
  return code;
 };
 
@@ -431,7 +436,9 @@ Blockly.Arduino.oled_showBitmap = function() {
   var data_name = Blockly.Arduino.valueToCode(this, 'bitmap_name', Blockly.Arduino.ORDER_ATOMIC);
   data_name = data_name.replace(/\"/g, ""); 
   var code = "";
-  code = 'u8g2.drawXBM(' + start_x + ', ';
+  //YANG use PROGMEM to save the RAM space
+  //code = 'u8g2.drawXBM(' + start_x + ', ';
+  code = 'u8g2.drawXBMP(' + start_x + ', ';
   code += start_y + ', ';
   code += width + ', ';
   code += height + ', ' + data_name + ');\n';
@@ -441,7 +448,9 @@ Blockly.Arduino.oled_showBitmap = function() {
 Blockly.Arduino.oled_define_bitmap_data = function() {
   var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
   var text = this.getFieldValue('TEXT');
-  Blockly.Arduino.definitions_['var_declare' + varName] = 'static unsigned char ' + varName + '[]={' + text + ' };\n';
+  //YANG use PROGMEM to save the RAM space
+  //Blockly.Arduino.definitions_['var_declare' + varName] = 'static unsigned char ' + varName + '[]={' + text + ' };\n';
+  Blockly.Arduino.definitions_['var_declare' + varName] = 'const static unsigned char ' + varName + '[] PROGMEM ={' + text + ' };\n';
   return '';
 };
 
