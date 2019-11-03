@@ -160,7 +160,7 @@ Blockly.Blocks.i2c_available = {
 Blockly.Blocks.i2c_slave_onreceive = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
-        this.appendValueInput("PIN", Number)
+		this.appendValueInput('device', Number)
         .appendField(Blockly.MIXLY_I2C_SLAVE_ONRECEIVE)
         .setCheck(Number);
         this.appendStatementInput('DO')
@@ -168,6 +168,61 @@ Blockly.Blocks.i2c_slave_onreceive = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_I2C_SLAVE_ONRECEIVE);
+    }
+};
+
+Blockly.Blocks.i2c_howmany = {
+    init: function () {
+        this.setColour(Blockly.Blocks.communicate.HUE);
+        this.appendDummyInput()
+        .appendField(Blockly.MIXLY_I2C_HOWMANY);
+        this.setOutput(true, Number);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_I2C_HOWMANY);
+    }
+};
+
+Blockly.Blocks.i2c_slave_onrequest = {
+    init: function () {
+        this.setColour(Blockly.Blocks.communicate.HUE);
+		this.appendValueInput('device', Number)
+        .appendField(Blockly.MIXLY_I2C_SLAVE_ONREQUEST)
+        .setCheck(Number);
+        this.appendStatementInput('DO')
+        .appendField(Blockly.MIXLY_DO);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_I2C_SLAVE_ONREQUEST);
+    }
+};
+Blockly.Blocks.i2c_slave_write = {
+    init: function () {
+        this.setColour(Blockly.Blocks.communicate.HUE);
+        this.appendValueInput('value')
+        .appendField(Blockly.MIXLY_I2C_SLAVE_WRITE)
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.HTML_VALUE);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_I2C_SLAVE_WRITE);
+    }
+};
+
+Blockly.Blocks.i2c_slave_write_array = {
+    init: function () {
+        this.setColour(Blockly.Blocks.communicate.HUE);
+        this.appendValueInput('array')
+        .appendField(Blockly.MIXLY_I2C_SLAVE_WRITE_ARRAY)
+        .setCheck(null)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_I2C_SLAVE_WRITE_ARRAY_ARRAYNAME);
+        this.appendValueInput('length')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_I2C_SLAVE_WRITE_ARRAY_ARRAYLENGTH);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_I2C_SLAVE_WRITE_ARRAY);
     }
 };
 

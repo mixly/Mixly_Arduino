@@ -1843,13 +1843,47 @@
 </block>
 <block type="i2c_master_writer"></block>
 <block type="i2c_master_reader"></block>
-<block type="i2c_master_reader2"></block>
-<block type="i2c_available"></block>
 <block type="i2c_slave_onreceive">
-  <value name="PIN">
-    <shadow type="pins_digital"></shadow>
+  <value name="device">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
   </value>
 </block>
+<block type="i2c_master_reader2"></block>
+<block type="i2c_available"></block>
+
+<block type="i2c_howmany"></block>
+
+<block type="i2c_slave_onrequest">
+  <value name="device">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+
+<block type="i2c_slave_write">
+  <value name="value">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+
+<block type="i2c_slave_write_array">
+  <value name="array">
+    <shadow type="math_number">
+      <field name="NUM">array</field>
+    </shadow>
+  </value>
+  <value name="length">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+
 <block type="spi_transfer">
   <value name="pin">
     <shadow type="pins_digital"></shadow>
