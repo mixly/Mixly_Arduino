@@ -17,7 +17,15 @@ Blockly.Arduino.servo_move = function() {
  var code = 'servo_'+dropdown_pin+'.write('+value_degree+');\n'+'delay(' + delay_time + ');\n';
  return code;
 };
-
+Blockly.Arduino.servo_writeMicroseconds = function() {
+  var dropdown_pin = this.getFieldValue('PIN');
+  var value_degree = Blockly.Arduino.valueToCode(this, 'DEGREE', Blockly.Arduino.ORDER_ATOMIC);  
+  Blockly.Arduino.definitions_['include_Servo'] = '#include <ESP32_Servo.h>';
+  Blockly.Arduino.definitions_['var_declare_servo'+dropdown_pin] = 'Servo servo_'+dropdown_pin+';';
+  Blockly.Arduino.setups_['setup_servo_'+dropdown_pin] = 'servo_'+dropdown_pin+'.attach('+dropdown_pin+');'; 
+  var code = 'servo_'+dropdown_pin+'.writeMicroseconds('+value_degree+');\n';
+  return code;
+};
 Blockly.Arduino.servo_read_degrees = function() {
   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
   
