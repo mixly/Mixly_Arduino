@@ -403,7 +403,9 @@ Blockly.Blocks.Mixly_motor = {
   init: function() {
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
+    .appendField("L293/298N")
     .appendField(Blockly.MIXLY_MOTOR);
+    this.appendDummyInput("")
     this.appendValueInput("PIN1")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
@@ -420,7 +422,31 @@ Blockly.Blocks.Mixly_motor = {
     this.setNextStatement(true);
 }
 };
-
+Blockly.Blocks.Motor_8833 = {
+  init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+     .appendField("DRV8833")
+    .appendField(Blockly.MIXLY_MOTOR);
+    this.appendDummyInput("")
+    this.appendValueInput("PIN1")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_PIN)
+      .appendField("1");
+    this.appendValueInput("PIN2")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField("2");
+    this.appendValueInput('speed')
+    .setCheck(Number)
+    .appendField(Blockly.MIXLY_MOTOR_SPEED);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+}
+};
 
 //MP3播放控制
 var GD5800_MP3_CONTROL_TYPE = [
