@@ -549,8 +549,8 @@ Blockly.Arduino.blynk_esp32_ble = function () {
 	Blockly.Arduino.definitions_['include_BlynkSimpleEsp32_BLE'] = '#include <BlynkSimpleEsp32_BLE.h>';
 	Blockly.Arduino.definitions_['include_BLEDevice'] = '#include <BLEDevice.h>';
 	Blockly.Arduino.definitions_['include_BLEServer'] = '#include <BLEServer.h>\n';
-	Blockly.Arduino.definitions_['var_declare_auth_key'] = 'char auth[] = "' + auth + '";';
-	Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Serial.begin(9600);\n  Serial.println("Waiting for connections...");\n  Blynk.setDeviceName("' + name + '");\n  Blynk.begin(auth);\n';
+	Blockly.Arduino.definitions_['var_declare_auth_key'] = 'char auth[] = ' + auth + ';';
+	Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Serial.begin(9600);\n  Serial.println("Waiting for connections...");\n  Blynk.setDeviceName(' + name + ');\n  Blynk.begin(auth);\n';
 	var code = 'Blynk.run();\n';
 	return code;
 };
@@ -562,8 +562,8 @@ Blockly.Arduino.blynk_esp32_Bluetooth = function () {
 	Blockly.Arduino.definitions_['define_BLYNK_PRINT'] = '#define BLYNK_PRINT Serial';
 	Blockly.Arduino.definitions_['define_BLYNK_USE_DIRECT_CONNECT'] = '#define BLYNK_USE_DIRECT_CONNECT';
 	Blockly.Arduino.definitions_['include_BlynkSimpleEsp32_BT'] = '#include <BlynkSimpleEsp32_BT.h>\n';
-	Blockly.Arduino.definitions_['var_declare_auth_key'] = 'char auth[] = "' + auth + '";';
-	Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Serial.begin(9600);\n  Serial.println("Waiting for connections...");\n  Blynk.setDeviceName("' + name + '");\n  Blynk.begin(auth);\n';
+	Blockly.Arduino.definitions_['var_declare_auth_key'] = 'char auth[] = ' + auth + ';';
+	Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Serial.begin(9600);\n  Serial.println("Waiting for connections...");\n  Blynk.setDeviceName(' + name + ');\n  Blynk.begin(auth);\n';
 	var code = 'Blynk.run();\n';
 	return code;
 };
@@ -576,7 +576,7 @@ Blockly.Arduino.arduino_blynk_bluetooth = function () {
 	Blockly.Arduino.definitions_['define_BLYNK_PRINT'] = '#define BLYNK_PRINT Serial';
 	Blockly.Arduino.definitions_['include_SoftwareSerial'] = '#include <SoftwareSerial.h>';
 	Blockly.Arduino.definitions_['include_BlynkSimpleSerialBLE'] = '#include <BlynkSimpleSerialBLE.h>';
-	Blockly.Arduino.definitions_['define_auth'] = 'char auth[] = "' + auth + '";';
+	Blockly.Arduino.definitions_['define_auth'] = 'char auth[] = ' + auth + ';';
 	if (RX != 0 || TX != 1) {
 		Blockly.Arduino.definitions_['var_declare_SoftwareSerial'] = '  SoftwareSerial SerialBLE(' + RX + ', ' + TX + ');';
 		Blockly.Arduino.setups_['setup_SerialBLE_begin'] = 'SerialBLE.begin(9600);';

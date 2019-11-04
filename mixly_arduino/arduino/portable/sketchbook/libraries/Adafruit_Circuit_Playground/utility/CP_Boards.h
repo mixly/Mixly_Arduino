@@ -722,7 +722,7 @@ writePort(port, value, bitmask):  Write an 8 bit port.
 #define PIN_TO_PWM(p)           PIN_TO_DIGITAL(p)
 
 // Circuit Playground Bluefruit
-#elif defined(ARDUINO_CIRCUITPLAY_NRF52840)
+#elif defined(ARDUINO_NRF52840_CIRCUITPLAY)
 #define TOTAL_ANALOG_PINS       6
 #define TOTAL_PINS              25 // 14 digital + 6 analog + 2 i2c + 3 spi
 #define TOTAL_PORTS             3  // set when TOTAL_PINS > num digitial I/O pins

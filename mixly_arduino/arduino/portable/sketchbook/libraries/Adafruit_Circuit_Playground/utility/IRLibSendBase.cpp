@@ -11,7 +11,7 @@
  * spaces of varying length of microseconds in the manner which the protocol defines.
  */
 
-#if !defined(ARDUINO_CIRCUITPLAY_NRF52840 ) 
+#if !defined(ARDUINO_NRF52840_CIRCUITPLAY) 
 
 #include "IRLibSendBase.h"
 #include "IRLibHardware.h"

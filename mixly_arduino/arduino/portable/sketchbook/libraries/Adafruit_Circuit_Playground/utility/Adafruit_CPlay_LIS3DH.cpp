@@ -357,6 +357,8 @@ bool Adafruit_CPlay_LIS3DH::getEvent(sensors_event_t *event) {
   event->acceleration.x = x_g * SENSORS_GRAVITY_STANDARD;
   event->acceleration.y = y_g * SENSORS_GRAVITY_STANDARD;
   event->acceleration.z = z_g * SENSORS_GRAVITY_STANDARD;
+
+  return true;
 }
 
 /**************************************************************************/

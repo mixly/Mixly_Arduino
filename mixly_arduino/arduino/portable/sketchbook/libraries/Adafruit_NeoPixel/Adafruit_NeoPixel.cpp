@@ -1507,7 +1507,11 @@ void Adafruit_NeoPixel::show(void) {
 //    pwm->INTEN |= (PWM_INTEN_SEQEND0_Enabled<<PWM_INTEN_SEQEND0_Pos);
 
     // PSEL must be configured before enabling PWM
+    #ifdef ARDUINO_ARCH_NRF52840
+    pwm->PSEL.OUT[0] = g_APinDescription[pin].name;
+    #else
     pwm->PSEL.OUT[0] = g_ADigitalPinMap[pin];
+    #endif
 
     // Enable the PWM
     pwm->ENABLE = 1;
@@ -1520,7 +1524,7 @@ void Adafruit_NeoPixel::show(void) {
     // But we have to wait for the flag to be set.
     while(!pwm->EVENTS_SEQEND[0])
     {
-      #ifdef ARDUINO_NRF52_ADAFRUIT
+      #ifdef ARDUINO_NRF52_ADAFRUIT || ARDUINO_ARCH_NRF52840
       yield();
       #endif
     }
@@ -1544,6 +1548,7 @@ void Adafruit_NeoPixel::show(void) {
   }// End of DMA implementation
   // ---------------------------------------------------------------------
   else{
+#ifndef ARDUINO_ARCH_NRF52840     
     // Fall back to DWT
     #ifdef ARDUINO_NRF52_ADAFRUIT
       // Bluefruit Feather 52 uses freeRTOS
@@ -1622,6 +1627,7 @@ void Adafruit_NeoPixel::show(void) {
     #elif defined(NRF52_DISABLE_INT)
       __enable_irq();
     #endif
+#endif
   }
 // END of NRF52 implementation
 
@@ -1893,7 +1899,7 @@ void Adafruit_NeoPixel::show(void) {
     // ToDo!
   }
 #endif
-#elif defined(ARDUINO_ARCH_STM32)
+#elif defined(ARDUINO_ARCH_STM32) || defined(ARDUINO_ARCH_ARDUINO_CORE_STM32)
   uint8_t           *p   = pixels, *end = p + numBytes,
                     pix = *p++, mask = 0x80;
   uint32_t          cyc;
@@ -2220,7 +2226,7 @@ void Adafruit_NeoPixel::setPin(uint16_t p) {
   port    = portOutputRegister(digitalPinToPort(p));
   pinMask = digitalPinToBitMask(p);
 #endif
-#ifdef ARDUINO_ARCH_STM32
+#if defined(ARDUINO_ARCH_STM32) || defined(ARDUINO_ARCH_ARDUINO_CORE_STM32)
   gpioPort = digitalPinToPort(p);
   gpioPin = STM_LL_GPIO_PIN(digitalPinToPinName(p));
 #endif

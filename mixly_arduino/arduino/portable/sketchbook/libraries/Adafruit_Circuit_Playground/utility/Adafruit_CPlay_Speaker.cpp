@@ -137,10 +137,14 @@ void Adafruit_CPlay_Speaker::playSound(
     }
     OCR4A = 127;
 #else
-    // Circuit Playground Express -- use 10-bit analogWrite()
     uint32_t idx = 0;
     uint16_t hiBits;
+#if defined(NRF52_SERIES)
+    analogWriteResolution(8);
+#else
+    // Circuit Playground Express -- use 10-bit analogWrite()
     analogWriteResolution(10);
+#endif
     for(i=0; i<len; i++) {
       if(++loIdx >= 4) {
         hiBits = (uint16_t)pgm_read_byte(&data[idx++]);

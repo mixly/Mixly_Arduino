@@ -21,7 +21,7 @@ INCLUDES = -I$(USER_DIR) -I.
 # Flags passed to the preprocessor.
 # Set Google Test's header directory as a system directory, such that
 # the compiler doesn't generate warnings in Google Test headers.
-CPPFLAGS += -isystem $(GTEST_DIR)/include -DUNIT_TEST
+CPPFLAGS += -isystem $(GTEST_DIR)/include -DUNIT_TEST -D_IR_LOCALE_=en-AU
 
 # Flags passed to the C++ compiler.
 CXXFLAGS += -g -Wall -Wextra -pthread -std=gnu++11
@@ -39,7 +39,7 @@ TESTS = IRutils_test IRsend_test ir_NEC_test ir_GlobalCache_test \
 	ir_Whirlpool_test ir_Lutron_test ir_Electra_test ir_Pioneer_test \
   ir_MWM_test ir_Vestel_test ir_Teco_test ir_Tcl_test ir_Lego_test IRac_test \
 	ir_MitsubishiHeavy_test ir_Trotec_test ir_Argo_test ir_Goodweather_test \
-	ir_Inax_test ir_Neoclima_test
+	ir_Inax_test ir_Neoclima_test ir_Amcor_test
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -84,15 +84,18 @@ PROTOCOLS = ir_NEC.o ir_Sony.o ir_Samsung.o ir_JVC.o ir_RCMM.o ir_RC5_RC6.o \
 	ir_Midea.o ir_Magiquest.o ir_Lasertag.o ir_Carrier.o ir_Haier.o \
 	ir_Hitachi.o ir_GICable.o ir_Whirlpool.o ir_Lutron.o ir_Electra.o \
 	ir_Pioneer.o ir_MWM.o ir_Vestel.o ir_Teco.o ir_Tcl.o ir_Lego.o ir_Argo.o \
-	ir_Trotec.o ir_MitsubishiHeavy.o ir_Goodweather.o ir_Inax.o ir_Neoclima.o
+	ir_Trotec.o ir_MitsubishiHeavy.o ir_Goodweather.o ir_Inax.o ir_Neoclima.o \
+  ir_Amcor.o
 
 # All the IR Protocol header files.
-PROTOCOLS_H = $(USER_DIR)/ir_Argo.h \
+PROTOCOLS_H = $(USER_DIR)/ir_Amcor.h \
+		$(USER_DIR)/ir_Argo.h \
 		$(USER_DIR)/ir_Gree.h \
 		$(USER_DIR)/ir_Magiquest.h \
 		$(USER_DIR)/ir_Coolix.h \
 		$(USER_DIR)/ir_Electra.h \
 		$(USER_DIR)/ir_Haier.h \
+		$(USER_DIR)/ir_Hitachi.h \
 		$(USER_DIR)/ir_Midea.h \
 		$(USER_DIR)/ir_Toshiba.h \
 		$(USER_DIR)/ir_Daikin.h \
@@ -115,11 +118,12 @@ PROTOCOLS_H = $(USER_DIR)/ir_Argo.h \
 		$(USER_DIR)/ir_Trotec.h
 # Common object files
 COMMON_OBJ = IRutils.o IRtimer.o IRsend.o IRrecv.o IRac.o ir_GlobalCache.o \
-             $(PROTOCOLS) gtest_main.a
+             IRtext.o $(PROTOCOLS) gtest_main.a
 # Common dependencies
 COMMON_DEPS = $(USER_DIR)/IRrecv.h $(USER_DIR)/IRsend.h $(USER_DIR)/IRtimer.h \
               $(USER_DIR)/IRutils.h $(USER_DIR)/IRremoteESP8266.h \
-							$(USER_DIR)/IRac.h $(PROTOCOLS_H)
+							$(USER_DIR)/IRac.h $(USER_DIR)/i18n.h $(USER_DIR)/IRtext.h \
+							$(PROTOCOLS_H)
 
 # Common test dependencies
 COMMON_TEST_DEPS = $(COMMON_DEPS) IRrecv_test.h IRsend_test.h
@@ -146,8 +150,11 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-IRutils.o : $(USER_DIR)/IRutils.cpp $(USER_DIR)/IRutils.h $(USER_DIR)/IRremoteESP8266.h
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/IRutils.cpp
+IRtext.o : $(USER_DIR)/IRtext.cpp $(USER_DIR)/IRtext.h $(USER_DIR)/IRremoteESP8266.h $(USER_DIR)/i18n.h $(USER_DIR)/locale/*.h
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDES) -c $(USER_DIR)/IRtext.cpp
+
+IRutils.o : $(USER_DIR)/IRutils.cpp $(USER_DIR)/IRutils.h $(USER_DIR)/IRremoteESP8266.h $(USER_DIR)/i18n.h
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDES) -c $(USER_DIR)/IRutils.cpp
 
 IRutils_test.o : IRutils_test.cpp $(COMMON_TEST_DEPS) $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDES) -c IRutils_test.cpp
@@ -419,7 +426,7 @@ ir_Toshiba_test.o : ir_Toshiba_test.cpp $(USER_DIR)/ir_Toshiba.h $(COMMON_TEST_D
 ir_Toshiba_test : $(COMMON_OBJ) ir_Toshiba_test.o
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
 
-ir_Midea.o : $(USER_DIR)/ir_Midea.cpp $(GTEST_HEADERS)
+ir_Midea.o : $(USER_DIR)/ir_Midea.cpp $(COMMON_TEST_DEPS) $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDES) -c $(USER_DIR)/ir_Midea.cpp
 
 ir_Midea_test.o : ir_Midea_test.cpp $(COMMON_TEST_DEPS) $(GTEST_HEADERS)
@@ -428,7 +435,7 @@ ir_Midea_test.o : ir_Midea_test.cpp $(COMMON_TEST_DEPS) $(GTEST_HEADERS)
 ir_Midea_test : $(COMMON_OBJ) ir_Midea_test.o
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
 
-ir_Magiquest.o : $(USER_DIR)/ir_Magiquest.cpp $(GTEST_HEADERS)
+ir_Magiquest.o : $(USER_DIR)/ir_Magiquest.cpp $(COMMON_TEST_DEPS) $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/ir_Magiquest.cpp
 
 ir_Magiquest_test.o : ir_Magiquest_test.cpp $(COMMON_TEST_DEPS) $(GTEST_HEADERS)
@@ -464,7 +471,7 @@ ir_Haier_test.o : ir_Haier_test.cpp $(COMMON_TEST_DEPS) $(GTEST_HEADERS)
 ir_Haier_test : $(COMMON_OBJ) ir_Haier_test.o
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
 
-ir_Hitachi.o : $(USER_DIR)/ir_Hitachi.cpp $(COMMON_DEPS) $(GTEST_HEADERS)
+ir_Hitachi.o : $(USER_DIR)/ir_Hitachi.cpp $(USER_DIR)/ir_Hitachi.h $(COMMON_DEPS) $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDES) -c $(USER_DIR)/ir_Hitachi.cpp
 
 ir_Hitachi_test.o : ir_Hitachi_test.cpp $(COMMON_TEST_DEPS) $(GTEST_HEADERS)
@@ -606,4 +613,13 @@ ir_Neoclima_test.o : ir_Neoclima_test.cpp $(COMMON_TEST_DEPS) $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDES) -c ir_Neoclima_test.cpp
 
 ir_Neoclima_test : $(COMMON_OBJ) ir_Neoclima_test.o
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+
+ir_Amcor.o : $(USER_DIR)/ir_Amcor.h $(USER_DIR)/ir_Amcor.cpp $(COMMON_DEPS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDES) -c $(USER_DIR)/ir_Amcor.cpp
+
+ir_Amcor_test.o : ir_Amcor_test.cpp $(COMMON_TEST_DEPS) $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDES) -c ir_Amcor_test.cpp
+
+ir_Amcor_test : $(COMMON_OBJ) ir_Amcor_test.o
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@

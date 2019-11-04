@@ -126,21 +126,90 @@ Blockly.Arduino.i2c_master_reader2 = function () {
 };
 Blockly.Arduino.i2c_available = function () {
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>\n';
-  Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();\n';
+  Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();';
   var code = "Wire.available()";
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
+// YANG fix the pin with device
+// Blockly.Arduino.i2c_slave_onreceive = function () {
+  // var pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+  // Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>\n';
+  // Blockly.Arduino.setups_['setup_i2c_' + pin] = 'Wire.begin(' + pin + ');';
+  // Blockly.Arduino.setups_['setup_i2c_onReceive_' + pin] = 'Wire.onReceive(i2cReceiveEvent_' + pin + ');';
+  // var funcName = 'i2cReceiveEvent_' + pin;
+  // var branch = Blockly.Arduino.statementToCode(this, 'DO');
+  // var code2 = 'void' + ' ' + funcName + '(int howMany) {\n' + branch + '}\n';
+  // Blockly.Arduino.definitions_[funcName] = code2;
+  // return '';
+// }
 Blockly.Arduino.i2c_slave_onreceive = function () {
-  var pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+  var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0';
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>\n';
-  Blockly.Arduino.setups_['setup_i2c_' + pin] = 'Wire.begin(' + pin + ');';
-  Blockly.Arduino.setups_['setup_i2c_onReceive_' + pin] = 'Wire.onReceive(i2cReceiveEvent_' + pin + ');';
-  var funcName = 'i2cReceiveEvent_' + pin;
+  // YANG change this to a fixed name
+  //Blockly.Arduino.setups_['setup_i2c_' + device] = 'Wire.begin(' + device + ');';
+  // YANG also set the frequency
+  //Blockly.Arduino.setups_['setup_i2c_slave'] = 'Wire.begin(' + device + ');';
+  Blockly.Arduino.setups_['setup_i2c_slave'] = 'Wire.begin(' + device + ');\n  Wire.setClock(400000);';
+  // YANG change this to fixed name
+  //Blockly.Arduino.setups_['setup_i2c_onReceive_' + device] = 'Wire.onReceive(i2cReceiveEvent_' + device + ');';
+  //var funcName = 'i2cReceiveEvent_' + device;
+  Blockly.Arduino.setups_['setup_i2c_onReceive'] = 'Wire.onReceive(i2cReceiveEvent);';
+  var funcName = 'i2cReceiveEvent';
   var branch = Blockly.Arduino.statementToCode(this, 'DO');
   var code2 = 'void' + ' ' + funcName + '(int howMany) {\n' + branch + '}\n';
   Blockly.Arduino.definitions_[funcName] = code2;
   return '';
 }
+
+//YANG add howMany
+Blockly.Arduino.i2c_howmany = function () {
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>\n';
+  Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();';
+  var code = "howMany";
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+// YANG add onrequest
+Blockly.Arduino.i2c_slave_onrequest = function () {
+  var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>\n';
+  // YANG change this to a fixed name
+  //Blockly.Arduino.setups_['setup_i2c_' + device] = 'Wire.begin(' + device + ');';
+  // YANG also set the frequency
+  //Blockly.Arduino.setups_['setup_i2c_slave'] = 'Wire.begin(' + device + ');';
+  Blockly.Arduino.setups_['setup_i2c_slave'] = 'Wire.begin(' + device + ');\n  Wire.setClock(400000);';
+  // YANG change this to fixed name
+  //Blockly.Arduino.setups_['setup_i2c_onReceive_' + device] = 'Wire.onReceive(i2cReceiveEvent_' + device + ');';
+  //var funcName = 'i2cReceiveEvent_' + device;
+  Blockly.Arduino.setups_['setup_i2c_onRequest'] = 'Wire.onRequest(i2cRequestEvent);';
+  var funcName = 'i2cRequestEvent';
+  var branch = Blockly.Arduino.statementToCode(this, 'DO');
+  var code2 = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
+  Blockly.Arduino.definitions_[funcName] = code2;
+  return '';
+}
+
+// YANG add slave write
+Blockly.Arduino.i2c_slave_write = function () {
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+  Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();';
+  var value = Blockly.Arduino.valueToCode(this, 'value', Blockly.Arduino.ORDER_ATOMIC) || '0';
+  var code = "Wire.write(" + value + ");\n";
+  return code;
+};
+
+//YANG add slave write array
+Blockly.Arduino.i2c_slave_write_array = function () {
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+  Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();';
+  var array = Blockly.Arduino.valueToCode(this, 'array', Blockly.Arduino.ORDER_ATOMIC);
+  var length = Blockly.Arduino.valueToCode(this, 'length', Blockly.Arduino.ORDER_ATOMIC) || '1';
+  var code = "Wire.write(" + array + "," + length + ");\n";
+  return code;
+};
+
+
 
 Blockly.Arduino.spi_transfer = function () {
   Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';

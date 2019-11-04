@@ -22,13 +22,29 @@ uint16_t sincfilter[DECIMATION] = {0, 2, 9, 21, 39, 63, 94, 132, 179, 236, 302, 
 
 static bool pdmConfigured = false;
 
-#elif defined(ARDUINO_CIRCUITPLAY_NRF52840)
+#elif defined(ARDUINO_NRF52840_CIRCUITPLAY)
 
 #include <PDM.h>
 // The default Circuit Playground Bluefruit pins 
 // data pin, clock pin, power pin (-1 if not used)
-PDMClass PDM(33, 34, -1);
+PDMClass PDM(24, 25, -1);
 #define SAMPLERATE_HZ 16000
+
+// buffer to read samples into, each sample is 16-bits
+uint16_t sampleBuffer[256];
+// number of samples read
+volatile int samplesRead;
+
+static void onPDMdata() {
+  // query the number of bytes available
+  int bytesAvailable = PDM.available();
+
+  // read into the sample buffer
+  PDM.read(sampleBuffer, bytesAvailable);
+
+  // 16-bit, 2 bytes per sample
+  samplesRead = bytesAvailable / 2;
+}
 
 static bool pdmConfigured = false;
 
@@ -155,11 +171,25 @@ void Adafruit_CPlay_Mic::capture(int16_t *buf, uint16_t nSamples) {
 
     *ptr++ = runningsum;
   }
-#elif defined(ARDUINO_CIRCUITPLAY_NRF52840)
+#elif defined(ARDUINO_NRF52840_CIRCUITPLAY)
   if(!pdmConfigured){
+    PDM.onReceive(onPDMdata);
     PDM.begin(1, SAMPLERATE_HZ);
-
     pdmConfigured = true;
+  }
+  memset(buf, 0,  sizeof(uint16_t)*nSamples);
+  while (nSamples) {
+    PDM.IrqHandler();
+    if (samplesRead) {
+      int toRead = min(nSamples, samplesRead);
+      for (int i = 0; i < toRead; i++) {
+	buf[0] = sampleBuffer[i];
+	buf++;
+	nSamples--;
+      }
+      samplesRead = 0;  // reset so we will get more data next time!
+    }
+    yield();
   }
 #else
   #error "no compatible architecture defined."
@@ -174,7 +204,7 @@ void Adafruit_CPlay_Mic::capture(int16_t *buf, uint16_t nSamples) {
 */
 /**************************************************************************/
 float Adafruit_CPlay_Mic::soundPressureLevel(uint16_t ms){
-  float gain;
+  double gain;
   int16_t *ptr;
   uint16_t len;
   int16_t minVal = 52;
@@ -184,8 +214,8 @@ float Adafruit_CPlay_Mic::soundPressureLevel(uint16_t ms){
 #elif defined(ARDUINO_ARCH_SAMD)
   gain = 9;
   len = (float)(SAMPLERATE_HZ/1000) * ms;
-#elif defined(ARDUINO_CIRCUITPLAY_NRF52840)
-  gain = 9;
+#elif defined(ARDUINO_NRF52840_CIRCUITPLAY)
+  gain = 2;
   len = (float)(SAMPLERATE_HZ/1000) * ms;
 #else
   #error "no compatible architecture defined."
@@ -194,7 +224,7 @@ float Adafruit_CPlay_Mic::soundPressureLevel(uint16_t ms){
   capture(data, len);
 
   int16_t *end = data + len;
-  float pref = 0.00002;
+  double pref = 0.00002;
 
   /*******************************
    *   REMOVE DC OFFSET
@@ -218,7 +248,7 @@ float Adafruit_CPlay_Mic::soundPressureLevel(uint16_t ms){
      if(v > maxVal) maxVal = v;
    }
    
-   float conv = ((float)maxVal)/1023 * gain;
+   double conv = ((float)maxVal)/1023 * gain;
 
    /*******************************
    *   CALCULATE SPL

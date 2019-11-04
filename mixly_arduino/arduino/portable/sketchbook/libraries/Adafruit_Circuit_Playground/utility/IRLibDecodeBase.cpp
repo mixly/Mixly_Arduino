@@ -8,7 +8,7 @@
  * protocol specific decoders.
  */
 
-#if !defined(ARDUINO_CIRCUITPLAY_NRF52840)
+#if !defined(ARDUINO_NRF52840_CIRCUITPLAY)
 
 #include "IRLibDecodeBase.h"
 #include "IRLibHardware.h"
