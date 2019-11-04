@@ -25,9 +25,10 @@ var $builtinmodule = function (name) {
 
     mod.sleep = new Sk.builtin.func(function(delay) {
         var v = delay.v;
+        var time = sm.time;
         return sim.runAsync(function(resolve, reject) {
             setTimeout(function() {
-                sm.time += v;
+                sm.time = time + v;
                 resolve();
             }, v);
         });
@@ -42,26 +43,18 @@ var $builtinmodule = function (name) {
         $loc.__init__ = new Sk.builtin.func(function(self, name) {
             self.name = name.v;
             self.value = 0;
+            sm.pin.data[self.name] = 0;
         });
 
         $loc.read_digital = new Sk.builtin.func(function(self){
-            var flag = false;
-            $('select.pinOption').each(function(){
-                if($(this).val()==self.name){
-                    flag = true;
-                    var id = $(this).attr('id').split('select_row').join('');
-                    self.value = parseInt($('#curr_pinValue'+id).text());
-                }
-            });
-            if(!flag){//找不到就新建一个
-                ui.updateMicrobitPins('digital',self.name,self.value);
-            }
-            return Sk.builtin.int_(self.value);
+            return Sk.builtin.int_(sm.pin.data[self.name]);
         });
 
         $loc.write_digital = new Sk.builtin.func(function(self, value){
-            self.value = value.v == 1? 1: 0;
-            ui.updateMicrobitPins('digital',self.name,self.value);
+            self.value = (value.v == 0 ? 0 : 1);
+            //ui.updateMicrobitPins('digital',self.name,self.value);
+            sm.pin.data[self.name] = value;
+            sm.pin.write_digital(self.name, self.value);
         });
     }, "MicroBitDigitalPin", []);
 
@@ -83,38 +76,30 @@ var $builtinmodule = function (name) {
         $loc.__init__ = new Sk.builtin.func(function(self,name) {
             self.value = 0;
             self.name = name.v
+            sm.pin.data[self.name] = self.value;
             self.period_us = 35;
         });
 
         $loc.read_analog = new Sk.builtin.func(function(self) {
-            var flag = false;//是否能够找到该列
-            $('select.pinOption').each(function(){
-                if($(this).val()==self.name){
-                    flag = true;
-                    var id = $(this).attr('id').split('select_row').join('');
-                    self.value = parseInt($('#curr_pinValue'+id).text());
-                }
-            });
-            if(!flag){//找不到就新建一个
-                ui.updateMicrobitPins('analog',self.name,self.value);
-            }
-            return Sk.builtin.int_(self.value);
-
+            return Sk.builtin.int_(sm.pin.data[self.name]);
         });
 
         $loc.write_analog = new Sk.builtin.func(function(self, value) {
             self.value = value.v;
-            ui.updateMicrobitPins('analog',self.name,self.value);
+            sm.pin.data[self.name] = value;
+            sm.pin.write_analog(self.name, self.value);
         });
 
         $loc.set_analog_period = new Sk.builtin.func(function(self, period) {
             self.period_us = period.v * 1000;
-            ui.updateUIAnalogPeriod(self.name,self.period_us);
+            //ui.updateUIAnalogPeriod(self.name,self.period_us);
+            sm.pin.set_analog_period(self.name, self.period_us);
         });
 
         $loc.set_analog_period_microseconds = new Sk.builtin.func(function(self, period) {
             self.period_us = period.v;
-            ui.updateUIAnalogPeriod(self.name,self.period_us);
+            //ui.updateUIAnalogPeriod(self.name,self.period_us);
+            sm.pin.set_analog_period(self.name, self.period_us);
         });
 
     }, "MicroBitAnalogPin", []);
@@ -126,21 +111,11 @@ var $builtinmodule = function (name) {
         $loc.__init__ = new Sk.builtin.func(function(self,name) {
             self.name = name.v;
             self.touched = false;
+            sm.pin.data[self.name] = 0;
         });
 
         $loc.is_touched = new Sk.builtin.func(function(self) {
-            var flag = false;
-            $('select.pinOption').each(function(){
-                if($(this).val()==self.name){
-                    flag = true;
-                    var id = $(this).attr('id').split('select_row').join('');
-                    self.touched = parseInt($('#curr_pinValue'+id).text()) === 1 ? true : false;
-                }
-            });
-            if(!flag){
-                 ui.updateMicrobitPins('touch',self.name,self.touched);
-            }
-            return Sk.builtin.bool(self.touched);
+            return Sk.builtin.int_(sm.pin.data[self.name]);
         });
     }, "MicroBitTouchPin", []);
 

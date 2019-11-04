@@ -5,7 +5,8 @@ var Infrared_left = function (name) {
         }
     };
     mod.near = new Sk.builtin.func(function(self) {
-        return new Sk.builtin.int_(mod.data.distance_infrared_left);
+        var value = sm.getInputer('Infrared_left', sm.time);
+        return new Sk.builtin.int_(value);
     });
     ui.bindInfraredEvent('Infrared_left',mod.data,'distance_infrared_left');
     return mod;

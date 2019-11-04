@@ -684,6 +684,22 @@ var ui = {
     getInfrared: function(id) {
         return $('#curr_'+id).val();
     },
+    updateProgressBar: function (timeout, value) {
+        var el = $('#markProgress');
+        var currValue = 0;
+        el.css('width', currValue + '%');
+        var progressBarItl = setInterval(function () {
+            if (currValue < 90 && !sm.markDone) {
+                currValue += 2;
+                if (currValue > 100) {
+                    currValue = 100;
+                }
+                el.css('width', currValue + '%');
+            } else {
+                clearInterval(progressBarItl);
+            }
+        }, 5);
+    },
 }
 
 

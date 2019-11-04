@@ -26,6 +26,7 @@ var $builtinmodule = function(name) {
 	});
 	
 	var play = function(music, pin, wait, loop){
+		debugger;
 		if(mod._data.stop) {
 			delete mod._data.stop;
 		}
@@ -35,120 +36,81 @@ var $builtinmodule = function(name) {
 			loop = new Sk.builtin.bool(false);
 		
 		var notes = Sk.ffi.remapToJs(music);
-		
-		return sim.runAsync(function(resolve, reject) {
-			var i = 0;
-			var timeout = 60000 / mod._data.bpm / mod._data.ticks;
-			
-			function playNextNote(pin) {
-				if(mod._data.stop) {
-					delete mod._data.stop;
+		var i = 0;
+		var timeout = 60000 / mod._data.bpm / mod._data.ticks;
+		for(i = 0; i < notes.length; i++){
+			var n = notes[i].toLowerCase();
+			var d = n.match(/([rcdefgab][b#]?)([0-9]?)(:([0-9]*))?/);
+			n = {short: n,
+				note: d[1],
+				octave: Number.parseInt(d[2]),
+				ticks: d[4]? Number.parseInt(d[4]) : 1
+				}
+			switch(n.note) {
+				case 'c':
+					n.f = 16.352;
+					break;
+				case 'c#':
+				case 'db':
+					n.f = 17.324;
+					break;
+				case 'd':
+					n.f = 18.354;
+				break;
+				case 'd#':
+				case 'eb':
+					n.f = 19.445;
+				break;
+				case 'e':
+					n.f = 20.602;
+				break;
+				case 'f':
+					n.f = 21.827;
+				break;
+				case 'f#':
+				case 'gb':
+					n.f = 23.125;
+				break;
+				case 'g':
+					n.f = 24.500;
+				break;
+				case 'g#':
+				case 'ab':
+					n.f = 25.957;
+				break;
+				case 'a':
+					n.f = 27.500;
+				break;
+				case 'a#':
+				case 'bb':
+					n.f = 29.135;
+				break;
+				case 'b':
+					n.f = 30.868;
+				break;
+				case 'r':
+					n.f = 0;
+				break;
+			}
+			if(!n.octave) {
+				n.octave = mod._data.octave;
+			} else {
+				mod._data.octave = n.octave;
+			}
+			for(var o = 0; o < n.octave; o++) {
+				n.f = n.f * 2;
+			}
+			n.f = Math.round(n.f);
+			sm.music.set_pitch(pin, n.f, timeout * n.ticks);
+			i++;
+			if(i >= notes.length){
+				if(loop.v) {
+					i = 0;
+				} else {
 					return;
 				}
-				if(!mod._data.audioCtx) {
-					mod._data.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-				}
-				if(mod._data.osc) {
-					sm.music.set_pitch(pin, 0);
-					mod._data.osc.stop();
-					delete mod._data.osc;
-				}
-				
-				if(i >= notes.length){
-					if(loop.v) {
-						i = 0;
-					} else {
-						if(wait.v)
-							resolve();
-						return;
-					}
-				}
-				var n = notes[i].toLowerCase();
-				var d = n.match(/([rcdefgab][b#]?)([0-9]?)(:([0-9]*))?/);
-				n = {short: n,
-					note: d[1],
-					octave: Number.parseInt(d[2]),
-					ticks: d[4]? Number.parseInt(d[4]) : 1
-					}
-				switch(n.note) {
-					case 'c':
-						n.f = 16.352;
-						break;
-					case 'c#':
-					case 'db':
-						n.f = 17.324;
-						break;
-					case 'd':
-						n.f = 18.354;
-					break;
-					case 'd#':
-					case 'eb':
-						n.f = 19.445;
-					break;
-					case 'e':
-						n.f = 20.602;
-					break;
-					case 'f':
-						n.f = 21.827;
-					break;
-					case 'f#':
-					case 'gb':
-						n.f = 23.125;
-					break;
-					case 'g':
-						n.f = 24.500;
-					break;
-					case 'g#':
-					case 'ab':
-						n.f = 25.957;
-					break;
-					case 'a':
-						n.f = 27.500;
-					break;
-					case 'a#':
-					case 'bb':
-						n.f = 29.135;
-					break;
-					case 'b':
-						n.f = 30.868;
-					break;
-					case 'r':
-						n.f = 0;
-					break;
-				}
-				if(!n.octave) {
-					n.octave = mod._data.octave;
-				} else {
-					mod._data.octave = n.octave;
-				}
-				for(var o = 0; o < n.octave; o++) {
-					n.f = n.f * 2;
-				}
-				n.f = Math.round(n.f);
-				
-				if(n.f > 0) {
-					var osc = mod._data.audioCtx.createOscillator();
-					mod._data.osc = osc;
-					osc.type = 'sine';
-					osc.frequency.value = n.f;
-					osc.connect(mod._data.audioCtx.destination);
-					osc.start();			
-				}
-				sm.music.set_pitch(pin, n.f);
-				i++;
-				
-				if(i <= notes.length) {
-					setTimeout(playNextNote, timeout * n.ticks, pin);
-					sm.time += timeout * n.ticks;
-				} 
 			}
-			playNextNote(pin.v);
-			if(!wait.v) {
-				resolve();
-			}
-			
-		});
-		
+		}
 	}
 	play.co_varnames = ['music', 'pin', 'wait', 'loop'];
 	play.$defaults = [undefined, undefined, Sk.builtin.bool(true), Sk.builtin.bool(false)];
@@ -165,119 +127,85 @@ var $builtinmodule = function(name) {
 			loop = new Sk.builtin.bool(false);
 		
 		var notes = Sk.ffi.remapToJs(music);
-		
-		return sim.runAsync(function(resolve, reject) {
-			var i = 0;
-			var timeout = 60000 / mod._data.bpm / mod._data.ticks;
-			
-			function playNextNote(pin) {
-				if(mod._data.stop) {
-					delete mod._data.stop;
+		var i = 0;
+		var timeout = 60000 / mod._data.bpm / mod._data.ticks;
+		function playNextNote(pin) {
+			var n = notes[i].toLowerCase();
+			var d = n.match(/([rcdefgab][b#]?)([0-9]?)(:([0-9]*))?/);
+			n = {short: n,
+				note: d[1],
+				octave: Number.parseInt(d[2]),
+				ticks: d[4]? Number.parseInt(d[4]) : 1
+				}
+			switch(n.note) {
+				case 'c':
+					n.f = 16.352;
+					break;
+				case 'c#':
+				case 'db':
+					n.f = 17.324;
+					break;
+				case 'd':
+					n.f = 18.354;
+				break;
+				case 'd#':
+				case 'eb':
+					n.f = 19.445;
+				break;
+				case 'e':
+					n.f = 20.602;
+				break;
+				case 'f':
+					n.f = 21.827;
+				break;
+				case 'f#':
+				case 'gb':
+					n.f = 23.125;
+				break;
+				case 'g':
+					n.f = 24.500;
+				break;
+				case 'g#':
+				case 'ab':
+					n.f = 25.957;
+				break;
+				case 'a':
+					n.f = 27.500;
+				break;
+				case 'a#':
+				case 'bb':
+					n.f = 29.135;
+				break;
+				case 'b':
+					n.f = 30.868;
+				break;
+				case 'r':
+					n.f = 0;
+				break;
+			}
+			if(!n.octave) {
+				n.octave = mod._data.octave;
+			} else {
+				mod._data.octave = n.octave;
+			}
+			for(var o = 0; o < n.octave; o++) {
+				n.f = n.f * 2;
+			}
+			n.f = Math.round(n.f);
+			sm.music.set_pitch(pin, n.f, timeout * n.ticks);
+			//how to import Matrix module?
+			var matrix = Sk.importModule("sm_matrix");
+    		Sk.misceval.callsim(matrix['$d'].display.show.func_code, new Sk.builtin.str(n.note));	
+			i++;
+			if(i >= notes.length){
+				if(loop.v) {
+					i = 0;
+				} else {
 					return;
 				}
-				if(!mod._data.audioCtx) {
-					mod._data.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-				}
-				if(mod._data.osc) {
-					mod._data.osc.stop();
-					delete mod._data.osc;
-				}
-				
-				if(i >= notes.length){
-					if(loop.v) {
-						i = 0;
-					} else {
-						if(wait.v)
-							resolve();
-						return;
-					}
-				}
-				var n = notes[i].toLowerCase();
-				var d = n.match(/([rcdefgab][b#]?)([0-9]?)(:([0-9]*))?/);
-				n = {short: n,
-					note: d[1],
-					octave: Number.parseInt(d[2]),
-					ticks: d[4]? Number.parseInt(d[4]) : 1
-					}
-				switch(n.note) {
-					case 'c':
-						n.f = 16.352;
-						break;
-					case 'c#':
-					case 'db':
-						n.f = 17.324;
-						break;
-					case 'd':
-						n.f = 18.354;
-					break;
-					case 'd#':
-					case 'eb':
-						n.f = 19.445;
-					break;
-					case 'e':
-						n.f = 20.602;
-					break;
-					case 'f':
-						n.f = 21.827;
-					break;
-					case 'f#':
-					case 'gb':
-						n.f = 23.125;
-					break;
-					case 'g':
-						n.f = 24.500;
-					break;
-					case 'g#':
-					case 'ab':
-						n.f = 25.957;
-					break;
-					case 'a':
-						n.f = 27.500;
-					break;
-					case 'a#':
-					case 'bb':
-						n.f = 29.135;
-					break;
-					case 'b':
-						n.f = 30.868;
-					break;
-					case 'r':
-						n.f = 0;
-					break;
-				}
-				if(!n.octave) {
-					n.octave = mod._data.octave;
-				} else {
-					mod._data.octave = n.octave;
-				}
-				for(var o = 0; o < n.octave; o++) {
-					n.f = n.f * 2;
-				}
-				n.f = Math.round(n.f);
-				var sm_matrix = Sk.importModule("sm_matrix");
-    			var show = Sk.misceval.callsim(sm_matrix['$d'].display.showstatic.func_code, new Sk.builtin.str(n.note));
-				sm.music.set_pitch(pin, n.f);
-				if(n.f > 0) {
-					var osc = mod._data.audioCtx.createOscillator();
-					mod._data.osc = osc;
-					osc.type = 'sine';
-					osc.frequency.value = n.f;
-					osc.connect(mod._data.audioCtx.destination);
-					osc.start();			
-				}
-				i++;
-				
-				if(i <= notes.length) {
-					setTimeout(playNextNote, timeout * n.ticks, pin);
-				} 
 			}
-			playNextNote(pin.v);
-			if(!wait.v) {
-				resolve();
-			}
-			
-		});
-		
+		}
+		playNextNote(pin.v);	
 	}
 	play_show.co_varnames = ['music', 'pin', 'wait', 'loop'];
 	play_show.$defaults = [undefined, undefined, Sk.builtin.bool(true), Sk.builtin.bool(false)];
@@ -285,57 +213,18 @@ var $builtinmodule = function(name) {
 	mod.play_show = new Sk.builtin.func(play);
 
 	var pitch = function(pin, frequency, len, wait){
-		if(mod._data.stop) {
-			delete mod._data.stop;
-		}
-		if(len === undefined) 
-			len = new Sk.builtin.int_(-1);
-		if(wait === undefined)
-			wait = new Sk.builtin.bool(false);
-		
-		return sim.runAsync(function(resolve, reject) {
-			if(!mod._data.audioCtx) {
-				mod._data.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-			}
-			if(mod._data.osc) {
-				mod._data.osc.stop();
-				delete mod._data.osc;
-			}
-			var osc = mod._data.audioCtx.createOscillator();
-			mod._data.osc = osc;
-			osc.type = 'sine';
-			osc.frequency.value = frequency.v;
-			osc.connect(mod._data.audioCtx.destination);
-			osc.start();
-			sm.music.set_pitch(pin.v, frequency.v);
-			if(len.v > 0) {
-				setTimeout(function() {
-					sm.time += len.v
-					osc.stop();
-					if(wait.v) {
-						osc.stop();
-						resolve();
-					}
-				}, len.v);	
-			}
-			if(!wait.v) {
-				resolve();
-			}
-		});
-		
+		debugger;
+		if (typeof(wait) == "undefined")
+			wait = Sk.builtin.bool(false)
+		sm.music.set_pitch(pin.v, frequency.v, len.v, wait.v);
 	}
-	pitch.co_varnames = ['frequency', 'len', 'pin', 'wait'];
-	pitch.$defaults = [undefined, Sk.builtin.int_(-1), undefined, Sk.builtin.bool(false)];
+	pitch.co_varnames = ['pin', 'frequency', 'len' , 'wait'];
+	pitch.$defaults = [Sk.builtin.int_(27), Sk.builtin.int_(0), Sk.builtin.int_(0), Sk.builtin.bool(false)];
 	pitch.co_numargs = 4;
 	mod.pitch = new Sk.builtin.func(pitch);
 	
 	var stop = function(pin) {
-		debugger;
-		if(mod._data.audioCtx && mod._data.osc) {
-			mod._data.osc.stop();
-			delete mod._data.osc;
-			mod._data.stop = true;
-		}
+		sm.music.set_pitch(pin.v, 0, 0);
 	}
 	stop.co_varnames = ['pin'];
 	stop.$defaults = [undefined];

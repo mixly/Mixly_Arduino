@@ -10,9 +10,11 @@ var $builtinmodule = function (name) {
             self.echo = pinEcho.v;
         });
         $loc.checkdist = new Sk.builtin.func(function(self) {
-            return new Sk.builtin.float_(mod.data.distance);
+            var value = sm.getInputer('sonar', sm.time);
+            if(value === 0)
+                value = 9999;
+            return new Sk.builtin.float_(value);
         });
     });
-    ui.bindHCSR04Event('HCSR04', mod.data, 'distance');
     return mod;
 }

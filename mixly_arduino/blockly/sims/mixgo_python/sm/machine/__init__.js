@@ -122,15 +122,25 @@ var $builtinmodule = function (name) {
             	microsecond: 0,
             };
             self.timeArr = [2000, 1, 1, 6, 8, 0, 0, 0];
+            self.date = new Date(2000, 1, 1, 6, 8, 0, 0, 0)
+            self.startTime = 0;
         });
 
         $loc.datetime = new Sk.builtin.func(function(self,timeTuple){
+            var currentDate = null;
             if(timeTuple){
             	for (eachData in timeTuple.v){
             		self.timeArr[eachData] = timeTuple.v[eachData];
-            	}
+                }
+                self.date = new Date(...self.timeArr);
+                self.startTime = sm.time;
+                currentDate = self.date;
             }
-            return new Sk.builtin.tuple(self.timeArr);
+            else{
+                var millsecond = self.date.getTime() + sm.time - self.startTime;
+                currentDate = new Date(millsecond);
+            }
+            return new Sk.builtin.tuple([currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(),currentDate.getDay(), currentDate.getHours(), currentDate.getMinutes(), currentDate.getSeconds(), currentDate.getMilliseconds()]);
         });
     }, "RTC", []);
     mod.I2C = new Sk.misceval.buildClass(mod, function($gbl, $loc) {

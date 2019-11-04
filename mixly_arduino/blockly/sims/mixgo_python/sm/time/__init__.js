@@ -5,28 +5,14 @@ var $builtinmodule = function (name) {
         }
     };
     mod.sleep = new Sk.builtin.func(function(delay) {
-        return sim.runAsync(function(resolve, reject) {
-            setTimeout(function() {
-                sm.time += v * 1000;
-                resolve();
-            }, delay.v * 1000);
-        });
+        sm.updateTime(delay.v * 1000);
     });
     mod.sleep_ms = new Sk.builtin.func(function(delay) {
-        return sim.runAsync(function(resolve, reject) {
-            setTimeout(function() {
-                sm.time += v;
-                resolve();
-            }, delay.v);
-        });
+        debugger;
+        sm.updateTime(delay.v);
     });
     mod.sleep_us = new Sk.builtin.func(function(delay) {
-        return sim.runAsync(function(resolve, reject) {
-            setTimeout(function() {
-                sm.time += v / 1000;
-                resolve();
-            }, delay.v / 1000);
-        });
+        sm.updateTime(delay.v / 1000);
     });
     mod.ticks_ms = new Sk.builtin.func(function() {
         return sm.time;

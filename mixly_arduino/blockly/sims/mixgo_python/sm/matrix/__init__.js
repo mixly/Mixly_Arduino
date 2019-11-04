@@ -96,7 +96,7 @@ var $builtinmodule = function(name) {
                 loop = Sk.builtin.bool(false);
 
             if(clear === undefined)
-                clear = Sk.builtin.bool(false);
+                clear = Sk.builtin.bool(true);
 
             if(delay === undefined)
                 delay = Sk.builtin.int_(400);
@@ -105,67 +105,53 @@ var $builtinmodule = function(name) {
                 throw new Sk.builtin.TypeError("Convert the number to a string before showing it");
                 image = new Sk.builtin.str(image.v);
             }
-
-            return sim.runAsync(function(resolve, reject) {
-                if(image && (image.tp$name == "list" || (image.tp$name == "str" && image.v.length > 1))) {
-                    var i = 0;
-
-                    function showNextFrame() {
-                        if(i >= image.v.length) {
-                            if(loop.v) {
-                                i = 0;
-                            } else {
-                                if(clear.v) {
-                                    clearScreen();
-                                }
-                                if(wait.v) {
-                                    resolve();
-                                }
-                                return;
-                            }
-
+            var i = 0;
+            if(image.v[0].v){
+                for(i = 0; i <= image.v.length; i++){
+                    if(i === image.v.length && loop.v) {
+                        i = 0;
+                    } else {
+                        if(clear.v) {
+                            clearScreen();
                         }
-
-                        if(image.v[i].tp$name == "Image") {
-                            for(y = 0; y < 8; y++) {
-                                for(x = 0; x < 16; x++) {
-                                    setLED(x, y, image.v[i].lines[y][x]);
-                                }
-                            }
-                        }
-                        if(image.tp$name == "str") {
-                            bf.text(image.v[i]);
-                        }
-
-                        if(image.v[i].tp$name == "str") {
-                            bf.text(image.v[i].v[0]);
-                        }
-                        sm.updateSnapshot();
-                        i++;
-                        setTimeout(showNextFrame, delay.v)
                     }
-
-                    showNextFrame();
-                    if(!wait.v) {
-                        resolve();
+                    if(image.v[i].tp$name == "str") {
+                        bf.text(image.v[i], 0, 0);
                     }
-                } else {
-                    if(image.tp$name == "Image") {
+                    else if(image.v[i].tp$name == "Image") {
                         for(y = 0; y < 8; y++) {
                             for(x = 0; x < 16; x++) {
-                                if(image.lines[y][x] > 0)
-                                setLED(x, y, mod.data.brightness);
+                                setLED(x, y, image.v[i].lines[y][x]);
                             }
                         }
                     }
-                    if(image.tp$name == "str") {
-                        bf.text(image.v[0]);
-                    }
                     sm.updateSnapshot();
-                    resolve();
+                    sm.updateTime(delay.v);
                 }
-            });
+            }
+            else if(image.tp$name == "str"){
+                for(i = 0; i <= image.v.length; i++){
+                    if(i === image.v.length && loop.v) {
+                        i = 0;
+                    } else {
+                        if(clear.v) {
+                            clearScreen();
+                        }
+                    }
+                    bf.text(image.v, 0, 0);
+                    sm.updateSnapshot();
+                }
+            }
+            else if(image.tp$name == "Image") {
+                for(y = 0; y < 8; y++) {
+                    for(x = 0; x < 16; x++) {
+                        setLED(x, y, image.v[i].lines[y][x]);
+                    }
+                }
+                sm.updateSnapshot();
+            }
         }
+            
         show.co_varnames = ['image', 'delay', 'wait', 'loop', 'clear'];
         show.$defaults = [Sk.builtin.none, Sk.builtin.none, true, true, false];
         show.co_numargs = 5;
@@ -194,7 +180,7 @@ var $builtinmodule = function(name) {
                 bf.text(message.v, parseInt(pos,10), 0);
                 while(pos >= -message_width){
                     //10ms刷新一次，约等于100fps
-                    sm.time += 10;
+                    sm.updateTime(10);
                     pos -= speed_ms * 10;
                     clearScreen();
                     bf.text(message.v, parseInt(pos,10), 0);
@@ -218,7 +204,7 @@ var $builtinmodule = function(name) {
             return sim.runAsync(function(resolve, reject) {
                 clearScreen();
                 bf.text(message.v, 0, 0);
-
+                sm.updateSnapshot();
                 resolve();
             });
         }

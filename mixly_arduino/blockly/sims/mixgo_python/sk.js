@@ -4,7 +4,7 @@ Sk.externalLibraries = {
     mixgo: {
         path: base_url + 'mixgo/__init__.js',
         dependencies: [
-            base_url + 'mixgo/mpu.js',
+            base_url + 'mixgo/accelerometer.js',
             base_url + 'mixgo/compass.js',
             base_url + 'mixgo/uart.js',
             base_url + 'mixgo/infrared_left.js',
@@ -13,6 +13,9 @@ Sk.externalLibraries = {
     },
     time:{
         path: conf.url + '/blockly/sims/mixgo_python/time/__init__.js'
+    },
+    random:{
+        path: conf.url + '/blockly/sims/mixgo_python/random/__init__.js'
     },
     machine: {
         path: conf.url + '/blockly/sims/mixgo_python/machine/__init__.js',
@@ -71,7 +74,7 @@ Sk.externalLibraries = {
             conf.url + '/blockly/sims/mixgo_python/sm/machine/UART.js'
         ],
     },
-    /*mpu9250: {
+    mpu9250: {
         path: conf.url + '/blockly/sims/mixgo_python/mpu9250/__init__.js'
     },
     bmp280: {
@@ -79,7 +82,7 @@ Sk.externalLibraries = {
     },
     dhtx: {
         path: conf.url + '/blockly/sims/mixgo_python/dhtx/__init__.js'
-    },*/
+    },
     sm_sonar: {
         path: conf.url + '/blockly/sims/mixgo_python/sm/sonar/__init__.js'
     },
@@ -97,6 +100,9 @@ Sk.externalLibraries = {
     },
     sm_neopixel: {
         path: conf.url + '/blockly/sims/mixgo_python/sm/neopixel/__init__.js'
+    },
+    sm_random: {
+        path: conf.url + '/blockly/sims/mixgo_python/sm/random/__init__.js'
     },
 }
 
@@ -133,7 +139,7 @@ function builtinRead(x) {
 }
 
 
-function sk_run (code, outputFunc, inputFunc, postFunc) {
+function sk_run (code, outputFunc, inputFunc, postFunc, showTip) {
     if(code == '') {
         return;
     }
@@ -159,6 +165,8 @@ function sk_run (code, outputFunc, inputFunc, postFunc) {
                 if(lineCount < 50) {
                     return;
                 }
+                if(sm.running)
+                    sm.updateTime(100);
                 startTime = new Date().getTime();
                 var p = new Promise(function(resolve, reject) {
                     setTimeout(function() {
@@ -184,12 +192,15 @@ function sk_run (code, outputFunc, inputFunc, postFunc) {
             return;
         }
         console.log(err);
-        ui.showTip(errString);
+        if (showTip != undefined) {
+            showTip(errString); 
+        }
     }
 
     Sk.misceval.callsimAsync(handlers, function () {
         return Sk.importMainWithBody("<stdin>", false, code, true);
     }).then(function (module) {
+        sm.running = false;
         if (postFunc != undefined) {
             postFunc();
         }
@@ -201,22 +212,60 @@ function mb_run () {
     $('#simModal').modal('toggle');
     ui.init();
     var code = codeProcessor.getCode(true);
+    if(Sk.execLimit === 0)
+        Sk.execLimit = Number.POSITIVE_INFINITY;
     sk_run(code, ui.updateSerialOutput, ui.serialInput);
 }
 
 
-function sm_run () {
+async function sm_run () {
+    $('#markModal').modal('toggle');
+    $('#mark_doing').show();
+    $('#mark_done').hide();
+    $('#mark_review').hide();
+    $('#mark_review_done').hide();
+    $('#mark_fb').text('');
+    $('#mark_score').text('');
+    $('#mark_note').hide();
     var code = codeProcessor.getCode(true);
+    if (code == '') {
+        $('#mark_doing').hide();
+        $('#mark_done').show();
+        $('#markProgress').css('width', '100%');
+        $('#mark_fb').text('代码不能为空');
+        return;
+    }
+    sm['markDone'] = false;
     code = smCodeProcessor.processImport(code);
     var taskId = Code.getStringParamFromUrl('task_id', '');
     if (taskId == '') {
         console.log('task_id is empty');
         return;
     }
-    var conf = task_conf['task_' + taskId];
-    sm['taskConf'] = conf;
-    smCodeProcessor.parseConfig(conf.steps);
-    smCodeProcessor.autoKillProgram(conf.programTimeout);
+    sm['taskConf'] = task_conf;
+    ui.updateProgressBar(task_conf.timeout, 90);
+    function asyncGenAns(ansPath, ansCode) {
+        return new Promise(resolve => {
+            smCodeProcessor.parseInputer(task_conf.inputer);
+            sm.init();
+            sk_run(ansCode, sm.uart.write, sm.uart.input, function () {
+                submit_gen_ans(ansPath, resolve);
+            }, ui.showMarkFb);
+        });
+    }
+    if (task_ans != null) {
+        for (var ansPath in task_ans) {
+            var ansCode = task_ans[ansPath];
+            ansCode = codeProcessor.replaceCode(ansCode);
+            ansCode = smCodeProcessor.processImport(ansCode);
+            await asyncGenAns(ansPath, ansCode);
+        }
+    }
+    task_ans = null;
+    smCodeProcessor.parseInputer(task_conf.inputer);
+    smCodeProcessor.autoKillProgram(task_conf.timeout);
     sm.init();
-    sk_run(code, sm.uart.write, sm.uart.input, sm.getSnapshotArr);
+    sk_run(code, sm.uart.write, sm.uart.input, function () {
+        submit('judge');
+    }, ui.showMarkFb);
 }

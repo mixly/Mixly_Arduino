@@ -51,7 +51,7 @@ var $builtinmodule = function (name) {
         });
 
         $loc.write_digital = new Sk.builtin.func(function(self, value){
-            self.value = value.v == 1? 1: 0;
+            self.value = value.v == 0? 0: 1;
             ui.updateMicrobitPins('digital',self.name,self.value);
         });
     }, "MicroBitDigitalPin", []);

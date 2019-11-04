@@ -239,6 +239,12 @@ var $builtinmodule = function (name) {
         });
     }, "Servo", []);
 
+    mod.mixgo_get_brightness = new Sk.builtin.func(function() {
+        return sk.Sk.builtin.int_(mod.data.brightness);
+    });
+    mod.mixgo_get_soundlevel = new Sk.builtin.func(function() {
+        return sk.Sk.builtin.int_(mod.data.soundlevel);
+    });
     mod.compass = new Sk.builtin.module();
     mod.compass.$d = new compass("mixgo.compass");
 

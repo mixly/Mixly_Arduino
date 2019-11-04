@@ -97,11 +97,11 @@ var ui = {
                     name: '舵机',
                     type: 'gauge',
                     detail: {
-                        formatter: function (value) {
+                        formatter:function (value) {
                             if (value < 0) {
-                                return 'min:0';
+                                return 'min:0'; 
                             } else if(value > 180) {
-                                return 'max:180';
+                                return 'max:180'; 
                             } else {
                                 return value;
                             }
@@ -146,6 +146,8 @@ var ui = {
             ui.music_data.osc.stop();
             delete ui.music_data;
         }
+        //重置管脚
+        $('#pin_area').empty();
         //绑定事情只需要初始化一次
         ui.inited = true;
     },
@@ -220,11 +222,11 @@ var ui = {
                     '<option value="2">2</option>'+
                 '</select>'+
             '</div>'+
-            '<div class="col-sm-3 pinInput switch">'+
-                '<input id="pinValue'+ ui.pinCount.rowid +'" data-on-color="danger" type="checkbox"/>'+
+            '<div class="col-sm-2 col-sm-offset-1 pinInput switch">'+
+                '<input id="pinValue'+ ui.pinCount.rowid +'" data-on-color="danger" type="checkbox" data-width="300px"/>'+
                 '<label class="control-label"></label>'+
             '</div>'+
-            '<div class="col-sm-1 col-sm-offest-2 form-inline">'+
+            '<div class="col-sm-1 form-inline" style="padding-top: 7px;">'+
                 '<span id="curr_pinValue'+ ui.pinCount.rowid + '">0</span>'+
             '</div>'+
             '<div class="col-sm-2 form-inline">'+
@@ -263,17 +265,17 @@ var ui = {
             ui.pinCount.rowid++;
             $('#pin_area').append(ui.pinTouchModule());
             var thisRowId = ui.pinCount.rowid;
-            var Switch = $("#pinValue"+thisRowId).bootstrapSwitch({
-            onText: '触摸',
-            offText: '离开',
-            size:'Small',
-            onSwitchChange: function(event,state){        
-                if(state==true){
-                    $("#curr_pinValue"+ thisRowId).text('1'); 
-                }else{
-                    $("#curr_pinValue"+ thisRowId).text('0'); 
+            var Switch = $("#pinValue" + thisRowId).bootstrapSwitch({
+                onText: '摸',
+                offText: '离',
+                size: 'large',
+                onSwitchChange: function (event, state) {
+                    if (state == true) {
+                        $("#curr_pinValue" + thisRowId).text('1');
+                    } else {
+                        $("#curr_pinValue" + thisRowId).text('0');
+                    }
                 }
-            }
             });                 
         }
     },
@@ -489,6 +491,15 @@ var ui = {
         el.text(text);
         el.show();
     },
+    showMarkFb: function (text) {
+        $('#mark_fb').text("语法错误. " + text);
+        sm.markDone = true;
+        $('#markProgress').css('width', '100%');
+        $('#mark_doing').hide();
+        $('#mark_done').show();
+        $('#mark_review').show();
+        $('#mark_fb').show();
+    },
     clearScreen: function () {
         var x,y;
         for(x = 0; x < 5; x++) {
@@ -541,6 +552,22 @@ var ui = {
         $('#' + id).off('change').on('change', function () {
             ui.updatePeerSerialParam(data);
         })
+    },
+    updateProgressBar: function (timeout, value) {
+        var el = $('#markProgress');
+        var currValue = 0;
+        el.css('width', currValue + '%');
+        var progressBarItl = setInterval(function () {
+            if (currValue < 90 && !sm.markDone) {
+                currValue += 2;
+                if (currValue > 100) {
+                    currValue = 100;
+                }
+                el.css('width', currValue + '%');
+            } else {
+                clearInterval(progressBarItl);
+            }
+        }, 5);
     }
 }
 

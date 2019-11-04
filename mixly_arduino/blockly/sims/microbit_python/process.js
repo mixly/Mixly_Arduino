@@ -1,4 +1,14 @@
 var codeProcessor = {
+    replaceCode: function (code) {
+        if (code.indexOf('class HCSR04:') != -1) {
+            code = code.replace(/class HCSR04[\s\S]*?self.distance_mm\(\) \/ 10\.0/, '');
+        }
+
+        if (code.indexOf('class Servo:') != -1) {
+            code = code.replace(/class Servo[\s\S]*?self\.write_us\(us\)/, '');
+        }
+        return code;
+    },
     getCode: function (trick) {
         var code = '';
         if(document.getElementById('tab_arduino').className == 'tabon'){
@@ -11,16 +21,11 @@ var codeProcessor = {
         }
         if (trick == true) {
             // trick
-            if (code.indexOf('class HCSR04:') != -1) {
-                code = code.replace(/class HCSR04[\s\S]*?self.distance_mm\(\) \/ 10\.0/,'');
-            }
-
-            if (code.indexOf('class Servo:') != -1) {
-                code = code.replace(/class Servo[\s\S]*?self\.write_us\(us\)/,'');
-            }
+            code = codeProcessor.replaceCode(code);
         }
         return code;
     },
+    //需要修改板卡名称
     saveXmlFileAs: function () {
         var xmlCodes = goog.string.quote(Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(Blockly.mainWorkspace)));
         xmlCodes = xmlCodes.replace("<xml", "<xml version=\\\"mixgo_0.999\\\" board=\\\"" + "MicroPython[NRF51822_microbit]" + "\\\"");
@@ -28,7 +33,13 @@ var codeProcessor = {
         var blob = new Blob(
             [xmlCodes],
             { type: 'text/plain;charset=utf-8' });
-        saveAs(blob, "Mixgo.xml");
+        saveAs(blob, "Mixoj.xml");
+    },
+    savePyFileAs: function () {
+        var blob = new Blob(
+            [codeProcessor.getCode(false)],
+            { type: 'text/plain;charset=utf-8' });
+        saveAs(blob, "Mixoj.py");
     },
     translateQuote: function(str, trimEscaped){
         var xml = "";
@@ -40,28 +51,28 @@ var codeProcessor = {
             }else if(str[i] === ">"){
                 hasComleteAngleBracket = true;
             }
-
+    
             if(trimEscaped === true
-                && hasComleteAngleBracket === false
-                && i + 1 < lenStr
-                && str[i] === "\\"
-                && str[i + 1] === '"'){
-                i += 1;
+                    && hasComleteAngleBracket === false
+                    && i + 1 < lenStr
+                    && str[i] === "\\"
+                    && str[i + 1] === '"'){
+                i += 1;			
             }
-
-            if(trimEscaped === false
-                && hasComleteAngleBracket === false
-                && i > 0
-                && str[i - 1] !== "\\"
-                && str[i] === '"'){
-                xml += "\\";
+    
+            if(trimEscaped === false 
+                    && hasComleteAngleBracket === false
+                    && i > 0
+                    && str[i - 1] !== "\\"
+                    && str[i] === '"'){
+                xml += "\\";			
             }
             xml += str[i];
         }
         return xml;
     },
     decodeUnicode: function(s){
-        return unescape(s.replace(/\\u/g, '%u'));
+	    return unescape(s.replace(/\\u/g, '%u'));
     },
     renderXml: function (xmlContent) {
         try {
@@ -139,16 +150,17 @@ var smCodeProcessor = {
     //1. import XXX ==> import sm_XXX
     processImport: function (code) {
         var microbitModuleArr = ['microbit', 'music', 'radio', 'neopixel', 'speech'];
-        var codeArr = code.replace('\r\n', '\n').split('\n');
+        var codeArr = code.replace('\r\n', '\n').replace('\r', '\n').split('\n');
         var usedModuleSet = new Set();
         for (var i = 0; i < codeArr.length; i++) {
-            var line = codeArr[i].replace(/^( *?)from( +?)(\w*?) import (.*?)$/g, function () {
+			var line = codeArr[i];
+            line.replace(/^( *?)from( +?)(\w*?) import (.*?)$/g, function () {
                 var module = arguments[3];
                 if (microbitModuleArr.indexOf(module) != -1) {
                     usedModuleSet.add(module);
                 }
             });
-            line = line.replace(/^( *?)import (.*?)$/g, function () {
+            line.replace(/^( *?)import (.*?)$/g, function () {
                 var module = arguments[2];
                 if (microbitModuleArr.indexOf(module) != -1) {
                     usedModuleSet.add(module);
@@ -162,23 +174,11 @@ var smCodeProcessor = {
     },
 
     //2. 多线程修改内部状态
-    parseConfig: function (config) {
-        if (config == undefined) {
+    parseInputer: function (inputer) {
+        if (inputer == undefined) {
             return;
         }
-        for (var i = 0; i < config.length; i ++) {
-            var code = config[i].code;
-            var time = parseInt(config[i].time);
-            function evalCode (_code, _t) {
-                return function () {
-                    if(sm.time < _t) {
-                        sm.time = _t;
-                    }
-                    eval(_code);
-                }
-            }
-            setTimeout(evalCode(code, time), time);
-        }
+        eval(inputer); 
     },
 
     //3. 超时kill掉
@@ -186,8 +186,10 @@ var smCodeProcessor = {
         setTimeout(function () {
             sm.time += 10;
             sm.updateSnapshot();
-            Sk.execLimit = 0;
+            if (sm.running == true) {
+                Sk.execLimit = 0;
+                sm.running = false;
+            }
         }, timeout);
     }
 }
-

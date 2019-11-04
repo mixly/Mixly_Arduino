@@ -2,12 +2,14 @@ var sm = {
     time: 0,
     preTime: 0,
     input: {},
+    running: false,
     //button: [is_pressed, presses]
     snapshot: {},
     preSnapshot: {},
     snapshotArr: [],
     lenSnapshotArr: 1,
     init: function () {
+        sm.running = true;
         sm.time = 0;
         sm.preTime = 0;
         sm.snapshot = {};
@@ -21,9 +23,9 @@ var sm = {
             if (i > 0 && eq(sm.snapshotArr[i]['snapshot'], sm.snapshotArr[i - 1]['snapshot'])) {
                 continue;
             }
-            newSnapshotArr.push(JSON.stringify(sm.snapshotArr[i]));
+            newSnapshotArr.push(sm.snapshotArr[i]);
         }
-        console.log(newSnapshotArr);
+        console.log(JSON.stringify(newSnapshotArr));
         return newSnapshotArr;
     },
     updateSnapshot: function () {
@@ -49,7 +51,7 @@ var sm = {
     display: {
         set_pixel: function (x, y, brightness) {
             if (sm.snapshot['display'] == undefined) {
-                sm.snapshot['display'] = [[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0]];
+                sm.snapshot['display'] =  [['0','0','0','0','0'],['0','0','0','0','0'], ['0','0','0','0','0'], ['0','0','0','0','0'], ['0','0','0','0','0']];
             }
             sm.snapshot['display'][y][x] = brightness;
             sm.updateSnapshot();
@@ -188,7 +190,7 @@ var sm = {
                         resolve(inputText);
                         return;
                     }
-                    sm.time += 10;
+                    sm.updateTime(10);
                 }, 10);
             });
         },
@@ -204,7 +206,89 @@ var sm = {
         changeBaudrate: function (baudrate) {
             sm.peer.baudrate = baudrate;
         }
-    }
+    },
+    pin: {
+        data: {},
+        write_digital: function(name, value) {
+            sm.snapshot['pin_digital_' + name] = value;
+            sm.updateSnapshot();
+        },
+        write_analog: function(name, value) {
+            sm.snapshot['pin_analog_' + name] = value;
+            sm.updateSnapshot();
+        },
+        set_analog_period: function(name, period) {
+            sm.snapshot['pin_analog_period_' + name] = period;
+            sm.updateSnapshot();
+        },
+        mock_write_digital: function (name, value) {
+            sm.pin.data[name] = value;
+            //sm.pin.write_digital(name, value);
+        },
+        mock_write_analog: function (name, value) {
+            sm.pin.data[name] = value;
+            //sm.pin.write_analog(name, value);
+        },
+        mock_touched: function (name, value) {
+            sm.pin.data[name] = value;
+        }
+    },
+    radio: {
+        data: {
+            buffer: [],
+            queue: mbData.radio.queue
+        },
+        peer: {
+            length: mbData.radio.length,
+            queue: mbData.radio.queue,
+            channel: mbData.radio.channel,
+            power: mbData.radio.power,
+            address: mbData.radio.address,
+            group: mbData.radio.group,
+            data_rate: mbData.radio.data_rate,
+        },
+        //self send 
+        send: function (message) {
+            if (sm.time != sm.preTime || sm.snapshot['radio'] == undefined) {
+                sm.snapshot['radio'] = '';
+            }
+            sm.snapshot['radio'] += message;
+            sm.updateSnapshot();
+        },
+        //peer send 
+        peer_send: function (message) {
+            var data = sm.radio.data;
+            if(data['buffer'].length < data['queue']){
+                data['buffer'].push("\x00\x01\x00" + message);
+            } else {
+                console.log('warning:radio queue is full.');
+            }
+        },
+        config_peer: function (length, queue, channel, power, address, group, data_rate) {
+            if (length === undefined)
+                length = Sk.builtin.int_(mbData.radio.length);
+            if (queue === undefined)
+                queue = Sk.builtin.int_(mbData.radio.queue);
+            if (channel === undefined)
+                channel = Sk.builtin.int_(mbData.radio.channel);
+            if (power === undefined)
+                power = Sk.builtin.int_(mbData.radio.power);
+            if (address === undefined)
+                address = Sk.builtin.str(mbData.radio.address);
+            if (group === undefined)
+                group = Sk.builtin.int_(mbData.radio.group);
+            if (data_rate === undefined)
+                data_rate = Sk.builtin.int_(mbData.radio.data_rate);
+
+            sm.radio.peer.length = length.v;
+            sm.radio.peer.queue = queue.v;
+            sm.radio.peer.channel = channel.v;
+            sm.radio.peer.power = power.v;
+            sm.radio.peer.address = address.v;
+            sm.radio.peer.group = group.v;
+            sm.radio.peer.data_rate = data_rate.v;
+        }
+    },
 
 }
 

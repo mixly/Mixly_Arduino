@@ -147,11 +147,11 @@ var $builtinmodule = function(name) {
                             }
                         }
                         if(image.tp$name == "str") {
-                            showCharacter(image.v[i]);
+                           bf.text(image.v[i], 0, 0);
                         }
 
                         if(image.v[i].tp$name == "str") {
-                            showCharacter(image.v[i].v[0]);
+                            bf.text(image.v[i].v[0], 0, 0);
                         }
 
                         i++;
@@ -172,7 +172,7 @@ var $builtinmodule = function(name) {
                         }
                     }
                     if(image.tp$name == "str") {
-                        showCharacter(image.v[0]);
+                        bf.text(image.v[0], 0, 0);
                     }
                     resolve();
                 }
@@ -227,12 +227,8 @@ var $builtinmodule = function(name) {
             if(message.tp$name == "number") {
                 message = new Sk.builtin.str(message.v);
             }
-            //message.v = ' ' + message.v + ' ';
-            return sim.runAsync(function(resolve, reject) {
-                clearScreen();
-                bf.text(message.v, 0, 0);
-                resolve();
-            });
+            clearScreen();
+            bf.text(message.v, 0, 0);
         }
         showstatic.co_varnames = ['message'];
         showstatic.$defaults = [Sk.builtin.none];

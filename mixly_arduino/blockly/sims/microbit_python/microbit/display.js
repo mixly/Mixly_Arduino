@@ -1,7 +1,7 @@
 
 
 var display = function(name) {
-	var leds = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]];
+	var leds = [['0','0','0','0','0'],['0','0','0','0','0'], ['0','0','0','0','0'], ['0','0','0','0','0'], ['0','0','0','0','0']];
 	var letters = {
 		A: [" 99  ",
 			"9  9 ",
@@ -567,8 +567,11 @@ var display = function(name) {
 	};
 
 	function setLED(x, y, brightness) {
-	    ui.setLED(x, y, brightness);
-		leds[y][x] = brightness;
+		ui.setLED(x, y, brightness);
+		if (brightness == ' ') {
+			brightness = 0;
+		}
+		leds[y][x] = '' + brightness;
 	}
 
 	function clearScreen() {
@@ -623,9 +626,8 @@ var display = function(name) {
 		if(delay === undefined)
 			delay = Sk.builtin.int_(400);
 
-		if(image.tp$name == "number") {
+		if(image.tp$name == "int" || image.tp$name == "float") {
 			throw new Sk.builtin.TypeError("Convert the number to a string before showing it");
-			image = new Sk.builtin.str(image.v);
 		}
 
 		return sim.runAsync(function(resolve, reject) {
@@ -695,7 +697,7 @@ var display = function(name) {
 		if(delay == undefined)
 			delay = Sk.builtin.int_(400);
 
-		if(message.tp$name == "number") {
+		if(message.tp$name == "int" || message.tp$name == "float") {
 			message = new Sk.builtin.str(message.v);
 		}
 

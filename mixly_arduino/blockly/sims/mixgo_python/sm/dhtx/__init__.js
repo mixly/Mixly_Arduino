@@ -5,18 +5,18 @@ var $builtinmodule = function (name) {
 			humidity: mbData['humidity'],
 		}
 	};
-	var get_dht_relative_humidity = function(type,pin) {
-		mod._data.humidity = mbData['humidity'];
-        return new Sk.builtin.int_(mod._data.humidity);
+	var get_dht_relative_humidity = function(type, pin) {
+		var value = sm.getInputer('humidity', sm.time)
+        return new Sk.builtin.int_(value);
     };
     get_dht_relative_humidity.co_varnames = ['type', 'pin'];
 	get_dht_relative_humidity.$defaults = [Sk.builtin.str('dht11'), Sk.builtin.int_(0)];
 	get_dht_relative_humidity.co_numargs = 2;
 	mod.get_dht_relative_humidity = new Sk.builtin.func(get_dht_relative_humidity);
 
-	var get_dht_temperature = function(type,pin) {
-		mod._data.temperature = mbData['temperature'];
-        return new Sk.builtin.int_(mod._data.temperature);
+	var get_dht_temperature = function(type, pin) {
+		var value = sm.getInputer('temperature', sm.time)
+        return new Sk.builtin.int_(value);
     };
     get_dht_temperature.co_varnames = ['type', 'pin'];
 	get_dht_temperature.$defaults = [Sk.builtin.str('dht11'), Sk.builtin.int_(0)];
@@ -24,18 +24,20 @@ var $builtinmodule = function (name) {
 	mod.get_dht_temperature = new Sk.builtin.func(get_dht_temperature);
 	console.log(mod.get_dht_temperature.func_code.apply);
 
-	var get_dht_tempandhum = function(type,pin) {
+	var get_dht_tempandhum = function(type, pin) {
 		var humIntstr = '00000000';
 		var tempIntstr = '00000000';
 		var humFloatstr = '00000000';
 		var tempFloatstr = '00000000';
 		var checksumStr = '00000000';
-		if(mod._data.humidity instanceof Number && mod._data.temperature instanceof Number){
-			var humidityInt = Math.floor(mod._data.humidity) > 90 ? Math.floor(mod._data.humidity): 90;//intenger for high 8-bit
-			var temperatureInt = Math.floor(mod._data.temperature)> 50 ? Math.floor(mod._data.temperature): 50;//intenger for high 8-bit
-			var humidityFloat = mod._data.humidity - humhumidityInt;
-			var temperatureFloat = mod._data.humidity - humhumidityInt;
-			var lossBitLength = 0; //less than 8 bit	
+		var humidity = sm.getInputer('humidity', sm.time);
+		var temperature = sm.getInputer('temperature', sm.time);
+		if(humidity instanceof Number && temperature instanceof Number){
+			var humidityInt = Math.floor(humidity) > 90 ? Math.floor(humidity): 90;//intenger for high 8-bit
+			var temperatureInt = Math.floor(temperature)> 50 ? Math.floor(temperature): 50;//intenger for high 8-bit
+			var humidityFloat = humidity - humhumidityInt;
+			var temperatureFloat = humidity - humhumidityInt;
+			var lossBitLength = 0; //fulfill 0 if length less than 8 bit	
 			humIntstr = humidityInt.toString(2);
 			tempIntstr = temperatureInt.toString(2);
 			//Intergers dont have chance to overflow
@@ -88,9 +90,5 @@ var $builtinmodule = function (name) {
 	get_dht_tempandhum.$defaults = [Sk.builtin.str('dht11'), Sk.builtin.int_(0)];
 	get_dht_tempandhum.co_numargs = 2;
 	mod.get_dht_tempandhum = new Sk.builtin.func(get_dht_tempandhum);
-
-	ui.bindTemperatureEvent('temperature', mbData, 'temperature');
-	ui.bindTemperatureEvent('humidity', mbData, 'humidity');
-
 	return mod;
 }

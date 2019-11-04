@@ -41,6 +41,9 @@ Sk.externalLibraries = {
     sm_neopixel: {
         path: base_url + 'sm/neopixel/__init__.js'
     },
+    sm_radio: {
+        path: base_url + 'sm/radio/__init__.js'
+    },
 }
 
 
@@ -76,7 +79,7 @@ function builtinRead(x) {
 }
 
 
-function sk_run (code, outputFunc, inputFunc, postFunc) {
+function sk_run (code, outputFunc, inputFunc, postFunc, showTip) {
     if(code == '') {
         return;
     }
@@ -127,12 +130,15 @@ function sk_run (code, outputFunc, inputFunc, postFunc) {
             return;
         }
         console.log(err);
-        ui.showTip(errString);
+        if (showTip != undefined) {
+            showTip(errString); 
+        }
     }
 
     Sk.misceval.callsimAsync(handlers, function () {
         return Sk.importMainWithBody("<stdin>", false, code, true);
     }).then(function (module) {
+        sm.running = false;
         if (postFunc != undefined) {
             postFunc();
         }
@@ -144,22 +150,59 @@ function mb_run () {
     $('#simModal').modal('toggle');
     ui.init();
     var code = codeProcessor.getCode(true);
-    sk_run(code, ui.updateSerialOutput, ui.serialInput);
+    sk_run(code, ui.updateSerialOutput, ui.serialInput, submit, ui.showTip);
 }
 
 
-function sm_run () {
+async function sm_run () {
+    $('#markModal').modal('toggle');
+    $('#mark_doing').show();
+    $('#mark_done').hide();
+    $('#mark_review').hide();
+    $('#mark_review_done').hide();
+    $('#mark_fb').text('');
+    $('#mark_score').text('');
+    $('#mark_note').hide();
     var code = codeProcessor.getCode(true);
+    if (code == '') {
+        $('#mark_doing').hide();
+        $('#mark_done').show();
+        $('#markProgress').css('width', '100%');
+        $('#mark_fb').text('代码不能为空');
+        return;
+    }
+    sm['markDone'] = false;
     code = smCodeProcessor.processImport(code);
     var taskId = Code.getStringParamFromUrl('task_id', '');
     if (taskId == '') {
         console.log('task_id is empty');
         return;
     }
-    var conf = task_conf['task_' + taskId];
-    sm['taskConf'] = conf;
-    smCodeProcessor.parseConfig(conf.steps);
-    smCodeProcessor.autoKillProgram(conf.programTimeout);
+    sm['taskConf'] = task_conf;
+    ui.updateProgressBar(task_conf.timeout, 90);
+    function asyncGenAns(ansPath, ansCode) {
+        return new Promise(resolve => {
+            smCodeProcessor.parseInputer(task_conf.inputer);
+            smCodeProcessor.autoKillProgram(task_conf.timeout);
+            sm.init();
+            sk_run(ansCode, sm.uart.write, sm.uart.input, function () {
+                submit_gen_ans(ansPath, resolve);
+            }, ui.showMarkFb);
+        });
+    }
+    if (task_ans != null) {
+        for (var ansPath in task_ans) {
+            var ansCode = task_ans[ansPath];
+            ansCode = codeProcessor.replaceCode(ansCode);
+            ansCode = smCodeProcessor.processImport(ansCode);
+            await asyncGenAns(ansPath, ansCode);
+        }
+    }
+    task_ans = null;
+    smCodeProcessor.parseInputer(task_conf.inputer);
+    smCodeProcessor.autoKillProgram(task_conf.timeout);
     sm.init();
-    sk_run(code, sm.uart.write, sm.uart.input, sm.getSnapshotArr);
+    sk_run(code, sm.uart.write, sm.uart.input, function () {
+        submit('judge');
+    }, ui.showMarkFb);
 }

@@ -7,8 +7,12 @@ var $builtinmodule = function (name) {
         });
 
         $loc.get_BMP_temperature = new Sk.builtin.func(function(self){
-            self.temperature = mbData['temperature'];
-        	return Sk.builtin.int_(self.temperature);
+            var temperature = sm.getInputer('temperature', sm.time);
+        	return Sk.builtin.int_(temperature);
+        });
+        $loc.get_BMP_pressure = new Sk.builtin.func(function(self){
+            var pressure = sm.getInputer('pressure', sm.time);
+        	return Sk.builtin.int_(pressure);
         });
     }, "BMP280", []);
 

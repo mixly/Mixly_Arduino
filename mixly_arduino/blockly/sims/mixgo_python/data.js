@@ -1,5 +1,6 @@
 var mbData = {
     'temperature': 23,
+    'pressure': 1000,
     'humidity': 0,
     'distance': 0,
     'distance_infrared_left': 0,

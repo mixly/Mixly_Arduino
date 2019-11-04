@@ -26,8 +26,8 @@ var $builtinmodule = function (name) {
         });
     });
     mod.ticks_ms = new Sk.builtin.func(function() {
-        var now = new Date()
-        return now.getTime() - startTime.getTime();
+        var now = new Date();
+        return (now.getTime() - mod.data.startTime.getTime());
     });
     return mod;
 }
