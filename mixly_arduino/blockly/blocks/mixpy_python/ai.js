@@ -186,7 +186,7 @@ Blockly.Blocks.AI_Ocr_Func = {
                                                  [Blockly.MIXLY_AipOcr_receipt, "receipt"],
                                                  [Blockly.MIXLY_AipOcr_trainTicket, "trainTicket"],
                                                  [Blockly.MIXLY_AipOcr_taxiReceipt, "taxiReceipt"],
-                                                 [Blockly.MIXLY_AipOcr_form, "form"],
+                                                 [Blockly.MIXLY_AipOcr_form, "tableRecognition"],
                                                  [Blockly.MIXLY_AipOcr_vatInvoice, "vatInvoice"],
                                                  [Blockly.MIXLY_AipOcr_passport, "passport"],
                                                  [Blockly.MIXLY_AipOcr_handwriting, "handwriting"]
