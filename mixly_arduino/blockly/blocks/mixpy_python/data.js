@@ -326,3 +326,26 @@ Blockly.Blocks['pl_label'] = {
     // });
   }
 };
+
+
+Blockly.Blocks.array_create = {
+  init: function() {
+    this.setColour(Blockly.Blocks.data.HUE);
+    this.appendValueInput('FROM')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_SPLITBYDOU)
+        .appendField(Blockly.MIXPY_DATA_ARRAY_CREATE_FROM);
+    this.appendValueInput('TO')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXPY_DATA_ARRAY_CREATE_TO);
+    this.appendValueInput('STEP')
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_STEP);
+    this.setInputsInline(true);
+    this.setOutput(true);
+    this.setTooltip(Blockly.MIXLY_PYTHON_CONTROLS_RANGE_TOOLTIP);
+  }
+};

@@ -311,10 +311,11 @@ Blockly.Python.turtle_color_seclet = function() {
 
 Blockly.Python.turtle_getscreen = function() {
   Blockly.Python.definitions_.import_turtle = "import turtle";
+  var turName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var dropdown_type = this.getFieldValue('TYPE');
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
     Blockly.Variables.NAME_TYPE);
-  var code=varName+' = '+ 'turtle.getscreen()\n';
+  var code=varName+' = '+ turName +'.getscreen()\n';
   return code;
 };
 

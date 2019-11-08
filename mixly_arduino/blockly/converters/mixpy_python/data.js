@@ -340,3 +340,49 @@ function series_index_value(py2block, node, value, attr) {
 
 pbc.objectAttrD.get('index')['Series'] = series_index_value;
 pbc.objectAttrD.get('value')['Series'] = series_index_value;
+
+pbc.moduleFunctionD.get('numpy')['arange'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length > 3 || args.length < 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var arg1block, arg2block, arg3block;
+    if (args.length == 1) {
+        arg2block = py2block.convert(args[0]);
+        var args0 = {
+            _astname: "Num",
+            n: {
+                'v': 0
+            }
+
+        };
+        arg1block = py2block.convert(args0);
+        var args2 = {
+            _astname: "Num",
+            n: {
+                'v': 1
+            }
+        };
+        arg3block = py2block.convert(args2);
+    }else if (args.length == 2) {
+        var args2 = {
+            _astname: "Num",
+            n: {
+                'v': 1
+            }
+        };
+        arg1block = py2block.convert(args[0]);
+        arg2block = py2block.convert(args[1]);
+        arg3block = py2block.convert(args2);
+    }else {
+        arg1block = py2block.convert(args[0]);
+        arg2block = py2block.convert(args[1]);
+        arg3block = py2block.convert(args[2]);
+    }
+    return block("array_create", func.lineno, {}, {
+        'FROM': arg1block,
+        'TO': arg2block,
+        'STEP': arg3block
+    }, {
+            "inline": "true"
+        });
+}

@@ -24,8 +24,7 @@ Blockly.Python.series_create_from_index = function() {
   var varName = Blockly.Python.variableDB_.getName(this.getFieldValue('VAR'),
     Blockly.Variables.NAME_TYPE);
   var code=varName+' = ' + 'pandas.Series('  + varName1 + ','  + 'index=' + varName2 + ')\n';
-  return code;
- 
+  return code; 
 };
 
 Blockly.Python.dataframe_create = function() {
@@ -133,3 +132,11 @@ Blockly.Python.pl_label = function(){
 };
 
 
+Blockly.Python.array_create = function () {
+    Blockly.Python.definitions_.import_numpy = "import numpy";
+    var from = Blockly.Python.valueToCode(this, "FROM", Blockly.Python.ORDER_NONE) || "0";
+    var end = Blockly.Python.valueToCode(this, "TO", Blockly.Python.ORDER_NONE) || "0";
+    var step = Blockly.Python.valueToCode(this, "STEP", Blockly.Python.ORDER_NONE) || "1";
+    var code = "numpy.arange(" + from + ", " + end + ", " + step + ")";
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};

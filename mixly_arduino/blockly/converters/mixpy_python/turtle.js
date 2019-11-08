@@ -34,7 +34,7 @@ pbc.assignD.get('getscreen')['check_assign'] = function (py2block, node, targets
     }
     var moduleName = py2block.Name_str(value.func.value);
     var funcName = py2block.identifier(value.func.attr);
-    if (value._astname === "Call" && moduleName === "turtle"
+    if (value._astname === "Call" 
         && funcName === "getscreen" && value.args.length === 0)
         return true;
     return false;
@@ -42,9 +42,12 @@ pbc.assignD.get('getscreen')['check_assign'] = function (py2block, node, targets
 
 pbc.assignD.get('getscreen')['create_block'] = function (py2block, node, targets, value) {
     var turtle = py2block.Name_str(node.targets[0]);
+    var moduleName = py2block.convert(value.func.value);
     return block('turtle_getscreen', node.lineno, {
             'VAR': turtle
-        }, {});
+        }, {
+            'TUR':moduleName
+        });
 }
 
 function turtleForwardBackward(mode){

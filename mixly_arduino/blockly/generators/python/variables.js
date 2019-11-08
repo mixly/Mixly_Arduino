@@ -55,7 +55,7 @@ Blockly.Python.variables_set = function() {
 Blockly.Python.variables_change = function () {
     // Variable setter.
     var operator = this.getFieldValue('OP');
-    var varName = Blockly.Python.valueToCode(this, 'MYVALUE', Blockly.Python.ORDER_ASSIGNMENT);
+    var varName = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || 'None';
     var code = operator + '(' + varName + ')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
@@ -69,7 +69,7 @@ Blockly.Python.variables_global = function() {
 
 //ok
 Blockly.Python.controls_type = function () {
-    var data = Blockly.Python.valueToCode(this, 'DATA', Blockly.Python.ORDER_ATOMIC) || '1000'
+    var data = Blockly.Python.valueToCode(this, 'DATA', Blockly.Python.ORDER_ATOMIC) || 'None'
     var code = 'type(' + data + ')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };

@@ -706,6 +706,8 @@ Blockly.Blocks.turtle_color_seclet = {
 Blockly.Blocks['turtle_getscreen'] = {
   init: function() {
     this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
   this.appendDummyInput("")
   
       .appendField(Blockly.MIXLY_TURTEL_GETSCREEN)
