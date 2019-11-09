@@ -277,9 +277,10 @@ pbc.objectFunctionD.get('pensize')[turtleClass] = function (py2block, func, args
 
 
 pbc.objectFunctionD.get('speed')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 1) {
+    if (args.length !== 1&& args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
+    if (args.length == 1){
     var turtleblock = py2block.convert(func.value);
     var speedblock = py2block.convert(args[0]);
     return [block('turtle_speed', func.lineno, {}, {
@@ -287,7 +288,16 @@ pbc.objectFunctionD.get('speed')[turtleClass] = function (py2block, func, args, 
         'data': speedblock,
     }, {
         "inline": "true"
-    })];
+    })];}
+     if(args.length == 0){
+    var turtleblock = py2block.convert(func.value);
+    return block('turtle_pos_shape', func.lineno, {
+       'DIR': 'speed'
+    }, {
+        'TUR': turtleblock
+    }, {
+        "inline": "true"
+    });}
 }
 
 pbc.objectFunctionD.get('shape')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {

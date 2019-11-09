@@ -182,7 +182,7 @@ Blockly.Blocks['turtle_pos_shape'] = {
   init: function() {    
     this.setColour(Blockly.Blocks.turtle.HUE);
     var pos_shape =
-        [[Blockly.Msg.TURTLE_POS, 'pos'],[Blockly.Msg.TURTLE_SHAPE, 'shape'],[Blockly.Msg.TURTLE_HEADING, 'heading'],[Blockly.MIXLY_MIXPY_TURTLE_WIDTH,'width'],[Blockly.MIXLY_TURTEL_GET_SHAPESIZE,'shapesize']];
+        [[Blockly.Msg.TURTLE_POS, 'pos'],[Blockly.Msg.TURTLE_SHAPE, 'shape'],[Blockly.Msg.TURTLE_HEADING, 'heading'],[Blockly.MIXLY_MIXPY_TURTLE_WIDTH,'width'],[Blockly.MIXLY_TURTEL_GET_SHAPESIZE,'shapesize'],[Blockly.MIXLY_SPEED,'speed']];
     this.appendValueInput('TUR')
         .setCheck('Turtle')
     this.appendDummyInput("")
@@ -196,6 +196,7 @@ Blockly.Blocks['turtle_pos_shape'] = {
         'shape': Blockly.MIXLY_TOOLTIP_TURTEL_SHAPE,
         'heading': Blockly.MIXLY_TOOLTIP_TURTEL_HEADING,
         'width': Blockly.MIXLY_TOOLTIP_TURTEL_WIDTH,
+        'speed':Blockly.MIXLY_TOOLTIP_TURTEL_GET_SPEED,
         'shapesize':Blockly.MIXLY_TURTEL_GET_SHAPESIZE_TOOLTIP         
       };
       return TOOLTIPS[mode];

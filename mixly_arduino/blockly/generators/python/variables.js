@@ -55,7 +55,7 @@ Blockly.Python.variables_set = function() {
 Blockly.Python.variables_change = function () {
     // Variable setter.
     var operator = this.getFieldValue('OP');
-    var varName = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || 'None';
+    var varName = Blockly.Python.valueToCode(this, 'MYVALUE', Blockly.Python.ORDER_ATOMIC) || 'None';
     var code = operator + '(' + varName + ')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
