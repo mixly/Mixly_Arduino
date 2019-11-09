@@ -52,19 +52,19 @@ Blockly.Blocks.group_lcd_init3 = {
     this.appendValueInput("PIN3")
       .setCheck(Number)
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField('d1');
+      .appendField('d4');
     this.appendValueInput("PIN4")
       .setCheck(Number)
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField('d2')
+      .appendField('d5')
     this.appendValueInput("PIN5")
       .setCheck(Number)
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField('d3');
+      .appendField('d6');
     this.appendValueInput("PIN6")
       .setCheck(Number)
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField('d4')
+      .appendField('d7')
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);

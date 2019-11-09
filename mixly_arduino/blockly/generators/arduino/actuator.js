@@ -69,7 +69,7 @@ Blockly.Arduino.controls_tone_noTimer = function() {
   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
   var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY', Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
   var dur = Blockly.Arduino.valueToCode(this, 'DURATION', Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-  Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <NewTone.h>';
+  Blockly.Arduino.definitions_['include_NewTone'] = '#include <NewTone.h>';
   Blockly.Arduino.setups_['setup_output_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', OUTPUT);';
   var code = "NewTone(" + dropdown_pin + "," + fre + "," + dur + ");\n";
   return code;
@@ -143,15 +143,15 @@ Blockly.Arduino.display_rgb_Brightness=function(){
   var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness',Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
   Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();';
-   var code='rgb_display_' + dropdown_rgbpin + '.setBrightness('+Brightness+');';
+  var code='rgb_display_' + dropdown_rgbpin + '.setBrightness('+Brightness+');';
   return code;
 };
 
 Blockly.Arduino.display_rgb=function(){
   var dropdown_rgbpin = this.getFieldValue('PIN');
   var value_led = Blockly.Arduino.valueToCode(this, '_LED_', Blockly.Arduino.ORDER_ATOMIC);
-   var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness',Blockly.Arduino.ORDER_ATOMIC);
-   var COLOR = Blockly.Arduino.valueToCode(this, 'COLOR');
+  var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness',Blockly.Arduino.ORDER_ATOMIC);
+  var COLOR = Blockly.Arduino.valueToCode(this, 'COLOR');
   COLOR=COLOR.replace(/#/g,"0x");
   var code = 'rgb_display_'+dropdown_rgbpin+'.setPixelColor(('+value_led+')-1, '+COLOR+');\n';
   return code;
@@ -286,7 +286,7 @@ Blockly.Arduino.Motor_8833 = function() {
   +'} \n'
   +'else \n'
   +'{\n'
-  +'digitalWrite(dirpin, HIGH);\n';
+  +'digitalWrite(dirpin, HIGH);\n'
   +'analogWrite(speedpin,255+speed);\n'
   +'}\n'
   +'}\n';
@@ -298,24 +298,24 @@ Blockly.Arduino.voice_module = function() {
   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_voice =  this.getFieldValue('VOICE');
   var wait_time = Blockly.Arduino.valueToCode(this, 'WAIT', Blockly.Arduino.ORDER_ASSIGNMENT) || '0'; 
-   Blockly.Arduino.setups_['setup_output_sda'] = 'pinMode('+dropdown_pin+', OUTPUT);';
-   var code =  'send_data('+dropdown_voice+'); //volume control 0xE0-E7;\n';
-       code += 'delay('+wait_time +');\n'
-   var funcName = 'voice_out';
-   var code2 =  'void send_data(int addr)\n ';
-       code2 += '{int i;digitalWrite('+dropdown_pin+' , LOW);\n';
-       code2 += 'delay(3); //>2ms\n';
-       code2 += 'for(i=0;i<8;i++)\n';
-       code2 += '{digitalWrite('+dropdown_pin+ ', HIGH);\n';
-       code2 += 'if(addr&1){delayMicroseconds(2400); //>2400us\n';
-       code2 += '          digitalWrite('+dropdown_pin+', LOW);\n';
-       code2 += '          delayMicroseconds(800);} //>800us\n';
-       code2 += 'else{ delayMicroseconds(800); //>800us\n';
-       code2 += '      digitalWrite('+dropdown_pin+ ' , LOW);\n';
-       code2 += '      delayMicroseconds(2400);} //>2400us\n';
-       code2 += '      addr>>=1;} ';
-       code2 += '      digitalWrite('+dropdown_pin+', HIGH); }\n';
-   Blockly.Arduino.definitions_['funcName'] = code2;   
+  Blockly.Arduino.setups_['setup_output_sda'] = 'pinMode('+dropdown_pin+', OUTPUT);';
+  var code =  'send_data('+dropdown_voice+'); //volume control 0xE0-E7;\n';
+  code += 'delay('+wait_time +');\n'
+  var funcName = 'voice_out';
+  var code2 =  'void send_data(int addr)\n ';
+  code2 += '{int i;digitalWrite('+dropdown_pin+' , LOW);\n';
+  code2 += 'delay(3); //>2ms\n';
+  code2 += 'for(i=0;i<8;i++)\n';
+  code2 += '{digitalWrite('+dropdown_pin+ ', HIGH);\n';
+  code2 += 'if(addr&1){delayMicroseconds(2400); //>2400us\n';
+  code2 += '          digitalWrite('+dropdown_pin+', LOW);\n';
+  code2 += '          delayMicroseconds(800);} //>800us\n';
+  code2 += 'else{ delayMicroseconds(800); //>800us\n';
+  code2 += '      digitalWrite('+dropdown_pin+ ' , LOW);\n';
+  code2 += '      delayMicroseconds(2400);} //>2400us\n';
+  code2 += '      addr>>=1;} ';
+  code2 += '      digitalWrite('+dropdown_pin+', HIGH); }\n';
+  Blockly.Arduino.definitions_['funcName'] = code2;   
   return code;
 };
 

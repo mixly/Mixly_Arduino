@@ -250,7 +250,7 @@ var RTC_TIME_TYPE = [
 [Blockly.MIXLY_HOUR, "getHour"],
 [Blockly.MIXLY_MINUTE, "getMinute"],
 [Blockly.MIXLY_SECOND, "getSecond"],
-// [Blockly.MIXLY_WEEK, "getWeek"],
+[Blockly.MIXLY_WEEK, "getDOW"],
 ];
 
 
