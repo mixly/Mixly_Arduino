@@ -1922,17 +1922,39 @@
 <block type="RFID_off"></block>    
 </category>
 <category id="catStorage" colour="0">
- <block type="store_sd_write">
-  <field name="FILE">file.txt</field>
-  <value name="DATA">
-   <shadow type="text">
-    <field name="TEXT">hello world</field>
+  <block type="store_sd_init">
+    <value name="PIN_MOSI">
+      <shadow type="pins_MOSI">
+      </shadow>
+    </value>
+    <value name="PIN_MISO">
+      <shadow type="pins_MISO">
+      </shadow>
+    </value>
+    <value name="PIN_SCK">
+      <shadow type="pins_SCK">
+      </shadow>
+    </value>
+    <value name="PIN_CS">
+      <shadow type="pins_digital">
+        <field name="PIN">4</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="sd_exist"> </block>
+  <block type="sd_DelFile"> </block>
+  <block type="sd_read"> </block>
+  <block type="store_sd_write">
+    <field name="FILE">file.txt</field>
+    <value name="DATA">
+     <shadow type="text">
+      <field name="TEXT">hello world</field>
+    </shadow>
+  </value>
+  <value name="NEWLINE">
+   <shadow type="logic_boolean">
+    <field name="BOOL">TRUE</field>
   </shadow>
-</value>
-<value name="NEWLINE">
- <shadow type="logic_boolean">
-  <field name="BOOL">TRUE</field>
-</shadow>
 </value>
 </block>
 <block type="store_eeprom_write_byte">

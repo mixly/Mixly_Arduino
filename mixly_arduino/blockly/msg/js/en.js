@@ -2523,3 +2523,4 @@ Blockly.MIXLY_SELFSUB="self sub";
 Blockly.MIXLY_SELFMULT="self mult";
 Blockly.MIXLY_SELFDIVI="self divi";
 Blockly.Msg.PROCEDURES_DEFRETURN_DO = Blockly.Msg.PROCEDURES_DEFNORETURN_DO;
+Blockly.MIXLY_SD_FILE_Exist='File Exist?';

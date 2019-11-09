@@ -2542,5 +2542,6 @@ Blockly.MIXLY_SELFADD="自加";
 Blockly.MIXLY_SELFSUB="自减";
 Blockly.MIXLY_SELFMULT="自乘";
 Blockly.MIXLY_SELFDIVI="自除";
+Blockly.MIXLY_SD_FILE_Exist='文件存在?';
 Blockly.MIXPY_DATA_ARRAY_CREATE_FROM = '首项';
 Blockly.MIXPY_DATA_ARRAY_CREATE_TO = '末项';
