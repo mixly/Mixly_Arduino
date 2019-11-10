@@ -72,26 +72,6 @@ Blockly.Arduino.mixepi_ADXL345_action = function() {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino.mixepi_controls_tone=function(){
-  Blockly.Arduino.definitions_['include_ESP32Tone'] = '#include <ESP32Tone.h>';
-  var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',
-    Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-  var duration = Blockly.Arduino.valueToCode(this, 'DURATION', Blockly.Arduino.ORDER_ATOMIC) || '0';
-  var channle = Blockly.Arduino.valueToCode(this, 'CHANNEL',
-    Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-  var code = ""; 
-  code += "tone(16,"+fre+","+duration+","+channle+");\n";
-  return code;
-};
-
-Blockly.Arduino.mixepi_controls_notone=function(){
- var channle = Blockly.Arduino.valueToCode(this, 'CHANNEL',
-  Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
- var code='';
- code += "noTone(16);\n";
- return code;
-};
-
 Blockly.Arduino.RGB_color_seclet = function() {
   var colour = this.getFieldValue('COLOR');
   return [colour, Blockly.Arduino.ORDER_NONE];

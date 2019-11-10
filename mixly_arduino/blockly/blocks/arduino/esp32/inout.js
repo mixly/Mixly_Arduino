@@ -6,45 +6,70 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.base.HUE = 20//'#ae3838';//40;
 
-var CHANNEL_NOTES=[["0", "0"],["1", "1"],["2", "2"],["3", "3"],["4", "4"],["5", "5"],["6", "6"],["7", "7"],["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"]];
-Blockly.Blocks.channel_select = {
- init: function() {
-  this.setColour(Blockly.Blocks.actuator.HUE);
-  this.appendDummyInput("")
-  .appendField(new Blockly.FieldDropdown(CHANNEL_NOTES), 'STAT');
-  this.setOutput(true, Number);
-  this.setTooltip(Blockly.MIXLY_TOOLTIP_CHANNEL_NOTE);
-}
+Blockly.Blocks.ledcSetup = {
+  init: function(){
+    this.setColour(Blockly.Blocks.base.HUE);
+    this.appendValueInput('CHANNEL')
+    .setCheck(Number)
+    .appendField("ledc"+Blockly.MIXLY_SETUP+Blockly.MIXLY_CHANNEL);
+    this.appendValueInput("FREQ", Number)
+    .appendField(Blockly.MIXLY_FREQUENCY)
+    .setCheck(Number);
+    this.appendValueInput('PWM_RESOLUTION')
+    .setCheck(Number)
+    .appendField(Blockly.MIXLY_RESOLUTION);
+    this.appendDummyInput("")
+    .appendField("bit");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip();
+  }
 };
 
-var RESOLUTION=[["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"]];
-
-Blockly.Blocks.inout_pwm_analog_write = {
+Blockly.Blocks.ledcAttachPin = {
   init: function(){
     this.setColour(Blockly.Blocks.base.HUE);
     this.appendValueInput("PIN", Number)
-    .appendField("PWM"+Blockly.MIXLY_Analog_PINMODEOUT)
-    .appendField(Blockly.MIXLY_PIN)
-    .setCheck(Number);
-    this.appendValueInput("FREQ", Number)
-    .appendField(Blockly.MIXLY_FREQUENCY + Blockly.MIXLY_STAT)
+    .appendField("ledc"+Blockly.MIXLY_ATTATCH+Blockly.MIXLY_PIN)
     .setCheck(Number);
     this.appendValueInput('CHANNEL')
     .setCheck(Number)
     .appendField(Blockly.MIXLY_CHANNEL);
-    this.appendDummyInput()
-    .appendField(Blockly.MIXLY_RESOLUTION);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip();
+  }
+};
+Blockly.Blocks.ledcDetachPin = {
+  init: function(){
+    this.setColour(Blockly.Blocks.base.HUE);
+    this.appendValueInput("PIN", Number)
+    .appendField("ledc"+Blockly.MIXLY_DETACH+Blockly.MIXLY_PIN)
+    .setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip();
+  }
+};
+
+Blockly.Blocks.ledcWrite = {
+  init: function(){
+    this.setColour(Blockly.Blocks.base.HUE);
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldDropdown(RESOLUTION), 'RESOLUTION');
-    this.appendDummyInput()
-    .appendField("bit");
+    .appendField("ledc"+Blockly.MIXLY_Analog_PINMODEOUT);
+    this.appendValueInput('CHANNEL')
+    .setCheck(Number)
+    .appendField(Blockly.MIXLY_CHANNEL);
     this.appendValueInput("NUM", Number)
     .appendField(Blockly.MIXLY_VALUE2)
     .setCheck(Number);
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setTooltip(Blockly.MIXLY_ESP32_INOUT_PWM_ANALOG_WRITE_SET_FREQ_TOOLTIP);
+    this.setTooltip();
   }
 };
 
@@ -82,15 +107,15 @@ Blockly.Blocks.touchAttachInterrupt = {
 Blockly.Blocks['inout_esp32_dac'] = {
   init: function() {
     this.appendValueInput("value")
-        .setCheck(null)
-        .appendField(Blockly.inout_esp32_dac)
-        .appendField(new Blockly.FieldDropdown([["25","25"], ["26","26"]]), "pin")
-        .appendField(Blockly.MIXLY_VALUE2);
+    .setCheck(null)
+    .appendField(Blockly.inout_esp32_dac)
+    .appendField(new Blockly.FieldDropdown([["25","25"], ["26","26"]]), "pin")
+    .appendField(Blockly.MIXLY_VALUE2);
     this.appendDummyInput();
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(20);
- this.setTooltip(Blockly.inout_esp32_dac_HELP);
- this.setHelpUrl("");
+    this.setTooltip(Blockly.inout_esp32_dac_HELP);
+    this.setHelpUrl("");
   }
 };

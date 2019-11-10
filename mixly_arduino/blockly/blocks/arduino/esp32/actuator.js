@@ -4,24 +4,20 @@ goog.provide('Blockly.Blocks.actuator');
 goog.require('Blockly.Blocks');
 
 Blockly.Blocks.actuator.HUE = 100;
-
-
 Blockly.Blocks.controls_tone={
     init:function(){
         this.setColour(Blockly.Blocks.actuator.HUE);
-        this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_TONE)
-        .appendField(Blockly.MIXLY_PIN)
-        .setCheck(Number);
-        this.appendValueInput('FREQUENCY')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_FREQUENCY);
-        this.appendValueInput('DURATION')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_DELAY);
+        this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_TONE);
         this.appendValueInput('CHANNEL')
         .setCheck(Number)
         .appendField(Blockly.MIXLY_CHANNEL);
+        this.appendValueInput('TONE_NOTE')
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_ESP32_DUTY);
+        this.appendValueInput('OCTAVE')
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_ESP32_PITCH);
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -32,10 +28,8 @@ Blockly.Blocks.controls_tone={
 Blockly.Blocks.controls_notone={
     init:function(){
         this.setColour(Blockly.Blocks.actuator.HUE);
-        this.appendValueInput("PIN", Number)
-        .appendField(Blockly.MIXLY_NOTONE)
-        .appendField(Blockly.MIXLY_PIN)
-        .setCheck(Number);
+        this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_NOTONE);
         this.appendValueInput('CHANNEL')
         .setCheck(Number)
         .appendField(Blockly.MIXLY_CHANNEL);

@@ -162,3 +162,40 @@ Blockly.Blocks['brightness'] = {
         this.setOutput(true);
     }
 };
+
+
+Blockly.Blocks['CHANNEL'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.CHANNEL), 'PIN');
+        this.setOutput(true);
+    }
+};
+
+Blockly.Blocks['PWM_RESOLUTION'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.PWM_RESOLUTION), 'PIN');
+        this.setOutput(true);
+    }
+};
+
+Blockly.Blocks['OCTAVE'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.OCTAVE), 'PIN');
+        this.setOutput(true);
+    }
+};
+
+Blockly.Blocks['TONE_NOTE'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.TONE_NOTE), 'PIN');
+        this.setOutput(true);
+    }
+};

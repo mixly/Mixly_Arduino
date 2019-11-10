@@ -31,3 +31,7 @@ Blockly.Arduino.pins_scl=Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_sda=Blockly.Arduino.pins_digital;
 Blockly.Arduino.brightness=Blockly.Arduino.pins_digital;
 Blockly.Arduino.pins_tx=Blockly.Arduino.pins_digital;
+Blockly.Arduino.CHANNEL=Blockly.Arduino.pins_digital;
+Blockly.Arduino.PWM_RESOLUTION=Blockly.Arduino.pins_digital;
+Blockly.Arduino.OCTAVE=Blockly.Arduino.pins_digital;
+Blockly.Arduino.TONE_NOTE=Blockly.Arduino.pins_digital;

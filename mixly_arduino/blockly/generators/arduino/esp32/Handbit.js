@@ -245,23 +245,7 @@ Blockly.Arduino.touchAttachInterrupt = function () {
    return [code, Blockly.Arduino.ORDER_ATOMIC];
  };
 
- Blockly.Arduino.handbit_controls_tone=function(){
-  Blockly.Arduino.definitions_['include_ESP32Tone'] = '#include <ESP32Tone.h>';
-  var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-  var duration = Blockly.Arduino.valueToCode(this, 'DURATION', Blockly.Arduino.ORDER_ATOMIC) || '0';
-  var channle = Blockly.Arduino.valueToCode(this, 'CHANNEL',
-    Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-  var code = ""; 
-  code += "tone(16,"+fre+","+duration+","+channle+");\n";
-  return code;
-};
-
-Blockly.Arduino.handbit_controls_notone=function(){
-  Blockly.Arduino.definitions_['include_ESP32Tone'] = '#include <ESP32Tone.h>';
-  var code = "noTone(16);\n";
-  return code;
-};
-
+ 
 function RGB_RGB565(colour){
   colour=colour.substr(1);
   var R,G,B;
