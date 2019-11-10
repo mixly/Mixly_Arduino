@@ -95,3 +95,40 @@ Blockly.Blocks['wemos_d1_mini_pin'] = {
     this.setHelpUrl();
   }
 };
+
+Blockly.Blocks['handbit_A'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldImage("../../media/board_pin/handbit_A.jpg", 525, 376, "*"));
+    this.setColour(Blockly.Blocks.tools.HUE);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
+Blockly.Blocks['handbit_B'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldImage("../../media/board_pin/handbit_B.jpg", 525, 376, "*"));
+    this.setColour(Blockly.Blocks.tools.HUE);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
+Blockly.Blocks['handbit_pin_A'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldImage("../../media/board_pin/handbit_pin_A.jpg", 525, 376, "*"));
+    this.setColour(Blockly.Blocks.tools.HUE);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
+Blockly.Blocks['handbit_pin_B'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldImage("../../media/board_pin/handbit_pin_B.jpg", 525, 376, "*"));
+    this.setColour(Blockly.Blocks.tools.HUE);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};

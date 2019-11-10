@@ -40,8 +40,13 @@ Blockly.Arduino.IICSCAN = function() {
 Blockly.Arduino.nano_pin = function() {
   return "";
 };
+
 Blockly.Arduino.uno_pin=Blockly.Arduino.nano_pin;
 Blockly.Arduino.mega_pin=Blockly.Arduino.nano_pin;
 Blockly.Arduino.esp32_pin=Blockly.Arduino.nano_pin;
 Blockly.Arduino.esp8266_pin=Blockly.Arduino.nano_pin;
 Blockly.Arduino.wemos_d1_mini_pin=Blockly.Arduino.nano_pin;
+Blockly.Arduino.handbit_A=Blockly.Arduino.nano_pin;
+Blockly.Arduino.handbit_B=Blockly.Arduino.nano_pin;
+Blockly.Arduino.handbit_pin_A=Blockly.Arduino.nano_pin;
+Blockly.Arduino.handbit_pin_B=Blockly.Arduino.nano_pin;
