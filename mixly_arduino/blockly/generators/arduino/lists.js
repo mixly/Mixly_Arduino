@@ -53,7 +53,7 @@ Blockly.Arduino.lists_create_with_text2 = function() {
   var dropdown_type = this.getFieldValue('TYPE');
   var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'),
     Blockly.Variables.NAME_TYPE);
-  var size=window.parseFloat(this.getFieldValue('SIZE'));
+  var size=window.parseFloat(this.getFieldValue('SIZE'))||'';
   var text=this.getFieldValue('TEXT');
   Blockly.Arduino.definitions_['var_declare'+varName] = dropdown_type+' '+varName+'['+size+']'+'='+ '{' + text + '};\n';
   return '';
