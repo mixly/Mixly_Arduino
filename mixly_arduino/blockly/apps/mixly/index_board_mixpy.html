@@ -89,7 +89,7 @@
   <script src="../../converters/python/storage.js" type="application/javascript"></script>
   <script src="../../converters/mixpy_python/turtle.js" type="application/javascript"></script>
   <script src="../../converters/mixpy_python/data.js" type="application/javascript"></script>
-  <script src="../../converters/mixpy_python/datastructure.js" type="application/javascript"></script>
+  <!--<script src="../../converters/mixpy_python/datastructure.js" type="application/javascript"></script>-->
   <script src="../../converters/mixpy_python/communicate.js" type="application/javascript"></script>
   <script src="../../converters/mixpy_python/hardware.js" type="application/javascript"></script>
   <script src="../../converters/mixpy_python/ai.js" type="application/javascript"></script>
@@ -2140,7 +2140,23 @@
       </block>
     </category>
     <category id="catData" colour="170">
-      <block type="array_create">
+      <block type="variables_set">        
+        <field name="VAR">df1</field>
+        <value name="VALUE">
+          <block type="pandas_readcsv">
+        <value name="FILENAME">
+          <shadow type="text">
+            <field name="TEXT">data.csv</field>
+          </shadow>
+        </value>
+      </block>
+        </value>
+      </block>
+      
+      <block type="variables_set">        
+        <field name="VAR">x</field>
+        <value name="VALUE">
+          <block type="array_create">
         <value name="FROM">
           <shadow type="math_number">
             <field name="NUM">1.5</field>
@@ -2154,6 +2170,15 @@
         <value name="STEP">
           <shadow type="math_number">
             <field name="NUM">0.5</field>
+          </shadow>
+        </value>
+      </block>
+        </value>
+      </block>
+      <block type="numpy_trig">
+        <value name="NUM">
+          <shadow type="variables_get">
+            <field name="VAR">x</field>
           </shadow>
         </value>
       </block>
@@ -2231,6 +2256,25 @@
             <field name="NUM">0</field>
           </shadow>
         </value>
+      </block>      
+      <block type="dataframe_get">
+        <value name="DICT">
+          <shadow type="variables_get">
+            <field name="VAR">df1</field>
+          </shadow>
+        </value>
+        <value name="KEY">
+          <shadow type="text">
+            <field name="TEXT">tag</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="pl_plot_easy">
+        <value name="SER">
+          <shadow type="variables_get">
+            <field name="VAR">ser1</field>
+          </shadow>
+        </value>
       </block>
       <block type="pl_plot">
         <value name="SER">
@@ -2239,7 +2283,115 @@
           </shadow>
         </value>
       </block>
+      <block type="pl_plot_bar">
+        <value name="A">
+          <shadow type="list_many_input">
+            <field name="CONTENT">1,2,3,4</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="list_many_input">
+            <field name="CONTENT">5,6,7,8</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="pl_plot_xy">
+        <value name="A">
+          <shadow type="list_many_input">
+            <field name="CONTENT">1,2,3,4</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="list_many_input">
+            <field name="CONTENT">5,6,7,8</field>
+          </shadow>
+        </value>
+        <value name="TAG">
+          <shadow type="text">
+            <field name="TEXT">tag</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="pl_bar">
+        <value name="A">
+          <shadow type="list_many_input">
+            <field name="CONTENT">1,2,3,4</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="list_many_input">
+            <field name="CONTENT">5,6,7,8</field>
+          </shadow>
+        </value>
+        <value name="WIDTH">
+          <shadow type="math_number">
+            <field name="NUM">0.5</field>
+          </shadow>
+        </value>
+        <value name="COLOR">
+          <block type="turtle_color_seclet" >
+            <field name="COLOR">#0000ff</field>
+          </block>
+        </value>
+        <value name="TAG">
+          <shadow type="text">
+            <field name="TEXT">tag</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="pl_pie">
+        <value name="A">
+          <shadow type="list_many_input">
+            <field name="CONTENT">0.25,0.35,0.1,0.3</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="list_many_input">
+            <field name="CONTENT">'a','b','c','d'</field>
+          </shadow>
+        </value>
+        <value name="TAG">
+          <shadow type="text">
+            <field name="TEXT">tag</field>
+          </shadow>
+        </value>
+        <value name="EXPLODE">
+          <shadow type="list_many_input">
+            <field name="CONTENT">0.2,0,0,0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="pl_hist">
+        <value name="A">
+          <shadow type="list_many_input">
+            <field name="CONTENT">11,21,31,41,51,61,71,81,91</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="list_many_input">
+            <field name="CONTENT">0,20,40,60,80,100</field>
+          </shadow>
+        </value>
+      </block>
       <block type="pl_show"></block>
+      <block type="pl_subplot">
+        <value name="VET">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+        <value name="HOR">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+       </block> 
+      <block type="pl_axes"></block> 
       <block type="pl_legend"></block>
       <block type="pl_title">
         <value name="TITLE">
@@ -2255,7 +2407,49 @@
           </shadow>
         </value>
       </block>
+      <block type="pl_ticks">
+        <value name="A">
+          <shadow type="list_many_input">
+            <field name="CONTENT">1,2,3,4</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="list_many_input">
+            <field name="CONTENT">1,2,3,4</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="pl_text">
+        <value name="VET">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="HOR">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        <value name="FONTNUM">
+          <shadow type="math_number">
+            <field name="NUM">8</field>
+          </shadow>
+        </value>
+       </block>
+      <block type="pl_savefig">
+        <value name="FILE">
+          <shadow type="text">
+            <field name="TEXT">1.png</field>
+          </shadow>
+        </value>
+      </block>
     </category>
+
     <!--<category id="catDS" colour="80">
       <block type="ds_create_linkedlist"></block>
       <block type="ds_create_node">

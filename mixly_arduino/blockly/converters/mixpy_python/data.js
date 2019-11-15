@@ -43,6 +43,32 @@ pbc.moduleFunctionD.get('pylab')['show'] = function(py2block, func, args, keywor
         })];
 }
 
+
+pbc.moduleFunctionD.get('pylab')['axes'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 0||keywords.length!=1||keywords[0].arg.v!='aspect') {
+        throw new Error("Incorrect number of arguments");
+    }
+    return [block("pl_axes", func.lineno, {}, {}, {
+            "inline": "true"
+        })];
+}
+
+pbc.moduleFunctionD.get('pylab')['hist'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var arg1block = py2block.convert(args[0]);
+        var arg2block = py2block.convert(args[1]);
+        return [block("pl_hist", func.lineno, {
+            'DIR':"plot"
+        }, {
+                'A': arg1block,
+                'B':arg2block
+        }, {
+                "inline": "true"
+            })];
+}
+
 pbc.moduleFunctionD.get('pylab')['legend'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 0) {
         throw new Error("Incorrect number of arguments");
@@ -83,6 +109,55 @@ function dataxylabel(mode){
 
 pbc.moduleFunctionD.get('pylab')['xlabel'] = dataxylabel('x');
 pbc.moduleFunctionD.get('pylab')['ylabel'] = dataxylabel('y');
+
+function dataxyticks(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 2) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var arg1block = py2block.convert(args[0]);
+        var arg2block = py2block.convert(args[1]);
+        return [block("pl_ticks", func.lineno, {
+            "DIR":mode
+        }, {
+                'A': arg1block,
+                'B':arg2block
+        }, {
+                "inline": "true"
+            })];
+    }
+    return converter;
+}
+
+pbc.moduleFunctionD.get('pylab')['xticks'] = dataxyticks('x');
+pbc.moduleFunctionD.get('pylab')['yticks'] = dataxyticks('y');
+
+function dataNumpyTrig(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 1) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var argblock = py2block.convert(args[0]);
+        return block("numpy_trig", func.lineno, {
+            "OP":mode
+        }, {
+                'NUM': argblock,
+        }, {
+                "inline": "true"
+            });
+    }
+    return converter;
+}
+
+pbc.moduleFunctionD.get('numpy')['sin'] = dataNumpyTrig('sin');
+pbc.moduleFunctionD.get('numpy')['cos'] = dataNumpyTrig('cos');
+pbc.moduleFunctionD.get('numpy')['tan'] = dataNumpyTrig('tan');
+pbc.moduleFunctionD.get('numpy')['asin'] = dataNumpyTrig('asin');
+pbc.moduleFunctionD.get('numpy')['atan'] = dataNumpyTrig('atan');
+pbc.moduleFunctionD.get('numpy')['acos'] = dataNumpyTrig('acos');
+pbc.moduleFunctionD.get('numpy')['round'] = dataNumpyTrig('round');
+pbc.moduleFunctionD.get('numpy')['ceil'] = dataNumpyTrig('ceil');
+pbc.moduleFunctionD.get('numpy')['floor'] = dataNumpyTrig('floor');
 
 pbc.assignD.get('DataFrame')['check_assign'] = function (py2block, node, targets, value) {
     if(value.func._astname != "Attribute" || value.func.value._astname != "Name"){
@@ -152,16 +227,14 @@ pbc.assignD.get('DataFrame')['create_block'] = function (py2block, node, targets
 }
 
 pbc.moduleFunctionD.get('pylab')['plot'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length != 1&&args.length != 2) {
+    if (args.length != 1&&args.length != 2&&args.length != 3) {
         throw new Error("Incorrect number of arguments");
     }
     
-    var argblock = py2block.convert(args[0]);
+    
     if (args.length == 1){
-        return [block("pl_plot", func.lineno, {
-                'DOT':',',
-                'LINE':'-',
-                'COLOR':'b'
+        var argblock = py2block.convert(args[0]);
+        return [block("pl_plot_easy", func.lineno, {
         }, {
                 'SER': argblock
         }, {
@@ -169,22 +242,24 @@ pbc.moduleFunctionD.get('pylab')['plot'] = function(py2block, func, args, keywor
             })];
     }
     else if(args.length == 2){
+        if(args[1]._astname == 'Str'){
+
+        var argblock = py2block.convert(args[0]);
         var lineblock = args[1].s.v;
         if (lineblock.length>4) {
         throw new Error("Incorrect number of arguments");
     }
         var dottype = ',';
-        var linetype = '-';
+        var linetype = '';
         var colortype = 'b';
         for(var i=0;i<lineblock.length;i++){
             if(lineblock[i]=='-'&&(lineblock[i+1]=='-'||lineblock[i+1]=='.')){
                 linetype=lineblock[i]+lineblock[i+1];
                 i++;
-                break;
             } 
             else{
                 var operate=lineblock[i];
-            }
+            
             switch(operate){
                 case '-':
                 linetype=operate;
@@ -313,6 +388,7 @@ pbc.moduleFunctionD.get('pylab')['plot'] = function(py2block, func, args, keywor
                 case 'H':
                 dottype=operate;
                 break;
+            }
 
             }
         }
@@ -327,8 +403,244 @@ pbc.moduleFunctionD.get('pylab')['plot'] = function(py2block, func, args, keywor
                 "inline": "true"
             })];
     }
+    else{
+        var arg1block = py2block.convert(args[0]);
+        var arg2block = py2block.convert(args[1]);
+        return [block("pl_plot_bar", func.lineno, {
+            'DIR':"plot"
+        }, {
+                'A': arg1block,
+                'B':arg2block
+        }, {
+                "inline": "true"
+            })];
+    }
+    }
+    else if(args.length == 3){
+
+        var arg1block = py2block.convert(args[0]);
+        var arg2block = py2block.convert(args[1]);
+        var lineblock = args[2].s.v;
+        if (lineblock.length>4) {
+        throw new Error("Incorrect number of arguments");
+        }
+        var dottype = ',';
+        var linetype = '';
+        var colortype = 'b';
+        for(var i=0;i<lineblock.length;i++){
+            if(lineblock[i]=='-'&&(lineblock[i+1]=='-'||lineblock[i+1]=='.')){
+                linetype=lineblock[i]+lineblock[i+1];
+                i++;
+            } 
+            else{
+                var operate=lineblock[i];
+            
+            switch(operate){
+                case '-':
+                linetype=operate;
+                break;
+
+                case ':':
+                linetype=operate;
+                break;
+
+                case 'b':
+                colortype=operate;
+                break;
+
+                case 'g':
+                colortype=operate;
+                break;
+
+                case 'r':
+                colortype=operate;
+                break;
+
+                case 'c':
+                colortype=operate;
+                break;
+
+                case 'm':
+                colortype=operate;
+                break;
+
+                case 'y':
+                colortype=operate;
+                break;
+
+                case 'k':
+                colortype=operate;
+                break;
+
+                case 'w':
+                colortype=operate;
+                break;
+
+                case '.':
+                dottype=operate;
+                break;
+
+                case '^':
+                dottype=operate;
+                break;
+
+                case '2':
+                dottype=operate;
+                break;
+
+                case 'p':
+                dottype=operate;
+                break;
+
+                case '+':
+                dottype=operate;
+                break;
+
+                case '|':
+                dottype=operate;
+                break;
+
+                case ',':
+                dottype=operate;
+                break;
+
+                case '<':
+                dottype=operate;
+                break;
+
+                case '3':
+                dottype=operate;
+                break;
+
+                case '*':
+                dottype=operate;
+                break;
+
+                case 'x':
+                dottype=operate;
+                break;
+
+                case '_':
+                dottype=operate;
+                break;
+
+                case 'o':
+                dottype=operate;
+                break;
+
+                case '>':
+                dottype=operate;
+                break;
+
+                case '4':
+                dottype=operate;
+                break;
+
+                case 'h':
+                dottype=operate;
+                break;
+
+                case 'D':
+                dottype=operate;
+                break;
+
+                case 'v':
+                dottype=operate;
+                break;
+
+                case '1':
+                dottype=operate;
+                break;
+
+                case 's':
+                dottype=operate;
+                break;
+
+                case 'd':
+                dottype=operate;
+                break;
+
+                case 'H':
+                dottype=operate;
+                break;
+            }
+
+            }
+        }
+        var args0 = {
+            _astname: "Str",
+            n: {
+                'v': ""
+            }
+        }
+        if(keywords.length==1&&keywords[0].arg.v=='label'){
+            args0=py2block.convert(keywords[0].value)
+        }   
+        return [block("pl_plot_xy", func.lineno, {
+                'DOT':dottype,
+                'LINE':linetype,
+                'COLOR':colortype
+        }, {
+                'A': arg1block,
+                'B':arg2block,
+                'TAG':args0
+        }, {
+                "inline": "true"
+            })];
+    }
 }
 
+pbc.moduleFunctionD.get('pylab')['bar'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length >2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    
+    
+    if (args.length == 2){
+        if(keywords.length==0){
+            var arg1block = py2block.convert(args[0]);
+        var arg2block = py2block.convert(args[1]);
+        return [block("pl_plot_bar", func.lineno, {
+            'DIR':"bar"
+        }, {
+                'A': arg1block,
+                'B':arg2block
+        }, {
+                "inline": "true"
+            })];
+        }
+        else{
+        var arg1block = py2block.convert(args[0]);
+        var arg2block = py2block.convert(args[1]);
+
+        for(var i=0;i<keywords.length;i++){
+            if (keywords[i].arg.v=='align'){
+                var align=py2block.Str_value(keywords[i].value)
+            }
+            else if(keywords[i].arg.v=='color'){
+                var color = py2block.Str_value(keywords[i].value)
+            }
+            else if(keywords[i].arg.v=='width'){
+                var width = py2block.convert(keywords[i].value)
+            }
+            else if(keywords[i].arg.v=='label'){
+                var tag = py2block.convert(keywords[i].value)
+            }
+        }
+        return [block("pl_bar", func.lineno, {
+            'ALIGN':align,
+            "COLOR":color,
+        }, {
+                'A': arg1block,
+                'B':arg2block,
+                'WIDTH':width,
+                'TAG':tag
+        }, {
+                "inline": "true"
+            })];
+    }
+    }
+}    
 
 function series_index_value(py2block, node, value, attr) {
     return block('series_index_value', node.lineno, {
@@ -386,3 +698,141 @@ pbc.moduleFunctionD.get('numpy')['arange'] = function(py2block, func, args, keyw
             "inline": "true"
         });
 }
+
+pbc.moduleFunctionD.get('pylab')['subplot'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 3 ) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var arg1block, arg2block, arg3block;
+     {
+        arg1block = py2block.convert(args[0]);
+        arg2block = py2block.convert(args[1]);
+        arg3block = py2block.convert(args[2]);
+    }
+    return [block("pl_subplot", func.lineno, {}, {
+        'VET': arg1block,
+        'HOR': arg2block,
+        'NUM': arg3block
+    }, {
+            "inline": "true"
+        })];
+}
+
+
+pbc.moduleFunctionD.get('pandas')['read_csv'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 1 ) {
+        throw new Error("Incorrect number of arguments");
+    }
+    
+        var argblock = py2block.convert(args[0]);
+        if(keywords.length>0){
+        if (keywords[0].value._astname=='Num'){
+        var args0=keywords[0].value.n.v
+    }
+    else if (keywords[0].value._astname=='Name'){
+        var args0=keywords[0].value.id.v
+    }
+}
+    else{
+        var args0=0
+    }
+    return block("pandas_readcsv", func.lineno, {
+        'MODE':args0
+    }, {
+        'FILENAME': argblock,
+        
+    }, {
+            "inline": "true"
+        });
+}
+
+pbc.moduleFunctionD.get('pylab')['savefig'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var argblock = py2block.convert(args[0]);
+    return [block("pl_savefig", func.lineno, {}, {
+         "FILE" : argblock
+    }, {
+        "inline": "true"
+    })];
+}
+
+pbc.moduleFunctionD.get('pylab')['text'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 3 ) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var arg1block, arg2block, arg3block;
+     {
+        arg1block = py2block.convert(args[0]);
+        arg2block = py2block.convert(args[1]);
+        arg3block = py2block.convert(args[2]);
+    }
+    for(var i=0;i<keywords.length;i++){
+            if (keywords[i].arg.v=='ha'){
+                var ha=keywords[i].value.s.v
+            }
+            else if(keywords[i].arg.v=='va'){
+                var va = keywords[i].value.s.v
+            }
+            else if(keywords[i].arg.v=='fontsize'){
+                var ft = py2block.convert(keywords[i].value)
+            }
+        }
+    return [block("pl_text", func.lineno, {
+        'HALIGN':ha,
+        'VALIGN':va
+    }, {
+        'VET': arg1block,
+        'HOR': arg2block,
+        'NUM': arg3block,
+        'FONTNUM':ft
+
+    }, {
+            "inline": "true"
+        })];
+}
+
+pbc.moduleFunctionD.get('pylab')['pie'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length >1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    
+    
+    
+        
+        var arg1block = py2block.convert(args[0]);
+        
+
+        for(var i=0;i<keywords.length;i++){
+            if (keywords[i].arg.v=='explode'){
+                var explode=py2block.convert(keywords[i].value)
+            }
+            else if(keywords[i].arg.v=='autopct'){
+                if(keywords[i].value._astname=='Str'){
+                var autopct = keywords[i].value.s.v
+            }
+            else if(keywords[i].value._astname=='Name'){
+                var autopct = keywords[i].value.id.v
+            }
+            }
+            else if(keywords[i].arg.v=='labels'){
+                var label = py2block.convert(keywords[i].value)
+            }
+            else if(keywords[i].arg.v=='shadow'){
+                var shadow = keywords[i].value.id.v
+            }
+        }
+        return [block("pl_pie", func.lineno, {
+            'SHADOW':shadow,
+            "autopct":autopct,
+        }, {
+                'A': arg1block,
+                'B':label,
+                'EXPLODE':explode,
+        }, {
+                "inline": "true"
+            })];
+    
+    
+}    
