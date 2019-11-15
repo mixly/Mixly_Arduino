@@ -114,11 +114,12 @@ Blockly.Blocks.i2c_master_writer = {
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.MIXLY_I2C_MASTER_WRITE);
         this.appendValueInput('value')
-        .setCheck(Number)
+        .setCheck([String,Number])
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.Msg.HTML_VALUE);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
+        
         this.setTooltip(Blockly.MIXLY_TOOLTIP_I2C_MASTER_WRITE);
     }
 };
@@ -377,8 +378,7 @@ Blockly.Blocks.RFID_off={
 	init: function() {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_COMMUNICATION_RFID_OFF)
-	//this.setOutput(true, Number);
+        .appendField(Blockly.MIXLY_COMMUNICATION_RFID_OFF);	
 	this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_RFID_OFF);  

@@ -6,7 +6,7 @@ goog.require('Blockly.Arduino');
 
 Blockly.Arduino.store_sd_init = function() {
 	var pin_cs = Blockly.Arduino.valueToCode(this, 'PIN_CS', Blockly.Arduino.ORDER_ATOMIC);
-		Blockly.Arduino.definitions_['include_SD'] = '#include <SD.h>';
+	Blockly.Arduino.definitions_['include_SD'] = '#include <SD.h>';
 	Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
 	Blockly.Arduino.setups_['setup_sd_write_begin'] = 'SD.begin('+pin_cs+');';
 	var code = '';
@@ -31,15 +31,16 @@ Blockly.Arduino.store_sd_write = function() {
 	return code;
 }
 Blockly.Arduino.sd_exist = function() {
-  var text_FileName = this.getFieldValue('FileName');
-  var code = 'SD.exists("'+text_FileName+'")';
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
+	var text_FileName = this.getFieldValue('FileName');
+	var code = 'SD.exists("'+text_FileName+'")';
+	return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.sd_read = function() {
   var text_FileName = this.getFieldValue('FileName');
   const serial_select='Serial';
   var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || profile.default.serial;
+  Blockly.Arduino.definitions_['var_declare_File_datafile'] = 'File datafile;';
   Blockly.Arduino.setups_['setup_serial_' + serial_select + profile.default.serial] = serial_select + '.begin(' + content + ');';
   var code ='datafile = SD.open("'+text_FileName+'");\n'
   code+= 'while (datafile.available()) {\n'
@@ -50,9 +51,9 @@ Blockly.Arduino.sd_read = function() {
 };
 
 Blockly.Arduino.sd_DelFile = function() {
-  var text_FileName = this.getFieldValue('FileName');
-  var code = 'SD.remove("'+text_FileName+'");';
-  return code;
+	var text_FileName = this.getFieldValue('FileName');
+	var code = 'SD.remove("'+text_FileName+'");';
+	return code;
 };
 
 Blockly.Arduino.store_eeprom_write_long = function() {
