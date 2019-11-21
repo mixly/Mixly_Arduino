@@ -477,7 +477,7 @@ Blockly.Blocks['turtle_clone'] = {
   }
 };
 
-Blockly.Blocks['turtle_bgcolor_hex'] = {
+Blockly.Blocks['turtle_bgcolor_hex_new'] = {
  init: function() {
     
     this.setColour(Blockly.Blocks.turtle.HUE);
@@ -490,7 +490,7 @@ Blockly.Blocks['turtle_bgcolor_hex'] = {
   }
 };
 
-Blockly.Blocks['turtle_pencolor_hex'] = {
+Blockly.Blocks['turtle_pencolor_hex_new'] = {
  init: function() {
     this.appendValueInput('TUR')
         .setCheck('Turtle')
@@ -504,7 +504,7 @@ Blockly.Blocks['turtle_pencolor_hex'] = {
   }
 };
 
-Blockly.Blocks['turtle_fillcolor_hex'] = {
+Blockly.Blocks['turtle_fillcolor_hex_new'] = {
  init: function() {
     this.appendValueInput('TUR')
         .setCheck('Turtle')
@@ -512,6 +512,47 @@ Blockly.Blocks['turtle_fillcolor_hex'] = {
     this.appendValueInput('VAR')
         .setCheck(String)
         .appendField(Blockly.blockpy_turtle_fillcolor);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Blocks['turtle_bgcolor_hex'] = {
+ init: function() {
+    
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('VAR')
+        .setCheck(String)
+        .appendField(Blockly.blockpy_turtle_bgcolor_hex);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Blocks['turtle_pencolor_hex'] = {
+ init: function() {
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('VAR')
+        .setCheck(String)
+        .appendField(Blockly.blockpy_turtle_pencolor_hex);    
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Blocks['turtle_fillcolor_hex'] = {
+ init: function() {
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('VAR')
+        .setCheck(String)
+        .appendField(Blockly.blockpy_turtle_fillcolor_hex);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
