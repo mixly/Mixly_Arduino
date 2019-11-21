@@ -110,10 +110,10 @@ var tm1637_CLK;
 Blockly.Arduino.display_TM1637_init = function () {
  tm1637_CLK = this.getFieldValue('CLK');
  tm1637_DIO = this.getFieldValue('DIO');
-  Blockly.Arduino.definitions_['include_SevenSegmentTM1637'] = '#include <SevenSegmentTM1637.h>';
-  Blockly.Arduino.definitions_['var_declare_SevenSegmentTM1637'] = 'SevenSegmentTM1637  display(' + tm1637_CLK + ',' + tm1637_DIO + ');';
-  Blockly.Arduino.setups_['setup_ display.begin()'] = ' display.begin();';
-  return '';
+ Blockly.Arduino.definitions_['include_SevenSegmentTM1637'] = '#include <SevenSegmentTM1637.h>';
+ Blockly.Arduino.definitions_['var_declare_SevenSegmentTM1637'] = 'SevenSegmentTM1637  display(' + tm1637_CLK + ',' + tm1637_DIO + ');';
+ Blockly.Arduino.setups_['setup_ display.begin()'] = ' display.begin();';
+ return '';
 };
 
 Blockly.Arduino.display_TM1637_displyPrint = function () {
@@ -214,11 +214,11 @@ Blockly.Arduino.display_Matrix_DisplayChar = function() {
   var dotMatrixArray = Blockly.Arduino.valueToCode(this, 'LEDArray', Blockly.Arduino.ORDER_ASSIGNMENT);
   Blockly.Arduino.definitions_['var_declare_LEDArray'] = 'uint8_t  LEDArray[8];';
   var code='';
-code+= 'memcpy_P (&LEDArray, &'+ dotMatrixArray + ', 8);\n';
+  code+= 'memcpy_P (&LEDArray, &'+ dotMatrixArray + ', 8);\n';
   code+='for(int index_i=0; index_i<8; index_i++)\n';
   code+='{\n'
 //code+='  LEDArray[index_i]='+dotMatrixArray+'[index_i];\n';
-  code+='  for(int index_j='+(NO)+'*8; index_j<'+ (NO)+'*8+8; index_j++)\n'
+code+='  for(int index_j='+(NO)+'*8; index_j<'+ (NO)+'*8+8; index_j++)\n'
   //code+='  for(int index_j=7; index_j>=0; index_j--)\n'
   code+='  {\n'
   code+='    if((LEDArray[index_i]&0x01)>0)\n';
@@ -357,22 +357,24 @@ Blockly.Arduino.Matrix_img = function() {
 };
 
 Blockly.Arduino.oled_init = function() {
- var SDA = this.getFieldValue('SDA');
- var SCL = this.getFieldValue('SCL');
- var board_type=JSFuncs.getPlatform();
- Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
- if(board_type.match(RegExp(/AVR/)))
- {
+  var OLED_TYPE = this.getFieldValue('OLED_TYPE');
+  var SDA = this.getFieldValue('SDA');
+  var SCL = this.getFieldValue('SCL');
+  var board_type=JSFuncs.getPlatform();
+  Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
+  if(board_type.match(RegExp(/AVR/)))
+  {
    if(SDA=="SDA"&&SCL=="SCL")
-    Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0,U8X8_PIN_NONE);';
+    Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_'+OLED_TYPE+'_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0,U8X8_PIN_NONE);';
   else
-    Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_1_SW_I2C u8g2(U8G2_R0,  '+SCL+', '+SDA+',U8X8_PIN_NONE);';
+    Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_'+OLED_TYPE+'_128X64_NONAME_1_SW_I2C u8g2(U8G2_R0,  '+SCL+', '+SDA+',U8X8_PIN_NONE);';
 }
-else{
- if(SDA=="SDA"&&SCL=="SCL")
-  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0,U8X8_PIN_NONE);';
 else
-  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0,  '+SCL+', '+SDA+',U8X8_PIN_NONE);';
+{
+ if(SDA=="SDA"&&SCL=="SCL")
+  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_'+OLED_TYPE+'_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0,U8X8_PIN_NONE);';
+else
+  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_'+OLED_TYPE+'_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0,  '+SCL+', '+SDA+',U8X8_PIN_NONE);';
 }  
 Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
 Blockly.Arduino.setups_["setup_u8g2"] =' u8g2.begin();\n';

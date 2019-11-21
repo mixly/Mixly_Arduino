@@ -953,6 +953,8 @@
     </shadow>
   </value>
 </block>
+      <block type="handbit_rgb_show">
+      </block>
 <block type="ledcSetup">
   <value name="CHANNEL">
     <shadow type="CHANNEL">
@@ -1012,26 +1014,20 @@
 </category>
 <category id="catOnBoardDisplay" name="catOnBoardDisplay" colour="180">
   <block type="oled_init">
+        <field name="OLED_TYPE">SH1106</field>
+        <field name="SCL">SCL</field>
+        <field name="SDA">SDA</field>
     <next>
       <block type="oled_page">
         <statement name="DO">
           <block type="procedures_callnoreturn">
-            <mutation name="page1"></mutation>
+                <mutation name="page1">
+                </mutation>
+              </block>
+            </statement>
           </block>
-        </statement>
+        </next>
       </block>
-    </next>
-    <value name="SCL">
-     <shadow type="pins_digital">
-      <field name="PIN">SCL</field>
-    </shadow>
-  </value>
-  <value name="SDA">
-   <shadow type="pins_digital">
-    <field name="PIN">SDA</field>
-  </shadow>
-</value>
-</block>
 <block type="oled_set_EN_Font">
 </block>
 <block type="oled_set_CN_Font">
@@ -2456,7 +2452,8 @@
     </value>
     <value name="auth_key">
       <shadow type="text">
-        <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>n</shadow>
+          <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>n
+        </shadow>
       </value>
       <value name="wifi_ssid">
         <shadow type="text">
@@ -2688,9 +2685,10 @@
 <block type="blynk_table_update">
  <value name="xnyj">
   <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow> <value name="xnyj">
-    <shadow type="math_number">
+          <field name="NUM">V0</field>
+        </shadow>
+        <value name="xnyj">
+          <shadow type="math_number">
       <field name="NUM">V0</field>
     </shadow>
   </value> 
@@ -2713,11 +2711,12 @@
 </block>
 <block type="blynk_table_highlight">
   <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow> <value name="xnyj">
-      <shadow type="math_number">
-        <field name="NUM">V0</field>
+        <shadow type="math_number">
+          <field name="NUM">V0</field>
+        </shadow>
+        <value name="xnyj">
+          <shadow type="math_number">
+            <field name="NUM">V0</field>
       </shadow>
     </value> 
   </value> 
@@ -2730,10 +2729,11 @@
 <block type="blynk_table_select">
   <value name="xnyj">
     <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow> <value name="xnyj">
-      <shadow type="math_number">
-        <field name="NUM">V0</field>
+          <field name="NUM">V0</field>
+        </shadow>
+        <value name="xnyj">
+          <shadow type="math_number">
+            <field name="NUM">V0</field>
       </shadow>
     </value> 
   </value> 
@@ -2746,10 +2746,11 @@
 <block type="blynk_table_unselect">
  <value name="xnyj">
   <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow> <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
+          <field name="NUM">V0</field>
+        </shadow>
+        <value name="xnyj">
+          <shadow type="math_number">
+            <field name="NUM">V0</field>
     </shadow>
   </value> 
 </value> 
@@ -2762,12 +2763,13 @@
 <block type="blynk_table_cleardata">
  <value name="xnyj">
   <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow> <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow>
-  </value> 
+          <field name="NUM">V0</field>
+        </shadow>
+        <value name="xnyj">
+          <shadow type="math_number">
+            <field name="NUM">V0</field>
+          </shadow>
+        </value>
 </value> 
 <value name="id">
   <shadow type="math_number">
@@ -2814,10 +2816,11 @@
 </block>
 <block type="Blynk_iot_BLYNK_CONNECTED">
   <statement name="DO">
-    <block type="blynk_WidgetRTC_init">
-      <value name="NUM"><shadow type="math_number" >
-        <field name="NUM">10</field>
-      </shadow>
+        <block type="blynk_WidgetRTC_init">
+          <value name="NUM">
+            <shadow type="math_number">
+              <field name="NUM">10</field>
+            </shadow>
     </value>
   </block>
 </statement>

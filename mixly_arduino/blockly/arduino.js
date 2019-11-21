@@ -187,7 +187,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		PWM_RESOLUTION:[["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"],["16", "16"],["17", "17"],["18", "18"],["19", "19"],["20", "20"]],
 		touch: [["0", "0"], ["2", "2"], ["4", "4"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["27", "27"], ["32", "32"], ["33", "33"]],
 		serial_select: [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"]],
-		serial : 115200
+		serial : 9600
 	},
 	esp32_handbit: {
 		description: "esp32_handbit",
@@ -209,7 +209,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		touch: [["P", "27"], ["Y", "14"], ["T", "12"], ["H", "13"], ["O", "15"], ["N", "4"]],
 		button:[["A", "0"], ["B", "2"]],
 		serial_select: [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"]],
-		serial : 115200
+		serial : 9600
 	},
 	esp32_MixGo: {
 		description: "esp32_MixGo",
@@ -230,7 +230,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		PWM_RESOLUTION:[["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"],["16", "16"],["17", "17"],["18", "18"],["19", "19"],["20", "20"]],
 		touch: [["1", "32"], ["2", "33"], ["3", "25"], ["4", "26"]],
 		serial_select: [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"]],
-		serial : 115200
+		serial : 9600
 	},
 	esp32_mixepi: {
 		description: "esp32_mixepi",
@@ -253,7 +253,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		PWM_RESOLUTION:[["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"],["16", "16"],["17", "17"],["18", "18"],["19", "19"],["20", "20"]],
 		button:[["A", "BTN_A"], ["B", "BTN_B"], ["C", "BTN_C"]],
 		serial_select: [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"]],
-		serial : 115200
+		serial : 9600
 	}
 };
 profile["Arduino Yun"] = profile["Arduino Yun Mini"] = profile["Arduino Leonardo"] = profile["Arduino Leonardo ETH"] = profile["Arduino/Genuino Micro"] = profile["Arduino Esplora"] = profile["LilyPad Arduino USB"] = profile["arduino_leonardo"];

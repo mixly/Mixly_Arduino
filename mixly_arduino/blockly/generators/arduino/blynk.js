@@ -171,7 +171,7 @@ Blockly.Arduino.blynk_iot_get_data = function () {
 	if (this.arguments_.length > 0)
 		Blockly.Arduino.definitions_['var_declare_' + args] = args.join(';\n') + ";";
 	var code = ' BLYNK_WRITE(' + Vpin + ') {\n' + GetDataCode +
-		branch + '}\n';
+	branch + '}\n';
 	// var code =  'BLYNK_WRITE(' + Vpin+ ') {\n'+variable+" = param.as"+datatype+"();\n"+branch+'}\n';
 	code = Blockly.Arduino.scrub_(this, code);
 	Blockly.Arduino.definitions_[Vpin] = code;
@@ -287,8 +287,8 @@ Blockly.Arduino.blynk_iot_ir_recv_raw = function () {
 	code += ' dumpACInfo(&results);\n'
 	code += 'Serial.println(resultToSourceCode(&results));}\n';
 	var funcode = 'void dumpACInfo(decode_results *results) {\n'
-		+ 'String description="";\n#if DECODE_DAIKIN\nif(results->decode_type == DAIKIN){\nIRDaikinESP ac(0);\n'
-		+ 'ac.setRaw(results->state);\ndescription=ac.toString();\n}\n#endif\n#if DECODE_FUJITSU_AC\nif(results->decode_type==FUJITSU_AC){\nIRFujitsuAC ac(0);\nac.setRaw(results->state, results->bits / 8);\ndescription = ac.toString();\n}\n#endif\n#if DECODE_KELVINATOR\nif(results->decode_type == KELVINATOR) {\nIRKelvinatorAC ac(0);\nac.setRaw(results->state);\ndescription = ac.toString();\n}\n#endif\n#if DECODE_TOSHIBA_AC\nif(results->decode_type == TOSHIBA_AC){\nIRToshibaAC ac(0);\nac.setRaw(results->state);\n    description = ac.toString();\n  }\n#endif\n#if DECODE_GREE\nif (results->decode_type == GREE){\nIRGreeAC ac(0);\nac.setRaw(results->state);\ndescription = ac.toString();\n}\n#endif\n#if DECODE_MIDEA\nif(results->decode_type == MIDEA){\nIRMideaAC ac(0);\nac.setRaw(results->value);\ndescription=ac.toString();\n}\n#endif\n#if DECODE_HAIER_AC\nif(results->decode_type == HAIER_AC) {\nIRHaierAC ac(0);\nac.setRaw(results->state);\ndescription = ac.toString();\n}\n#endif\nif(description != "")\nSerial.println("Mesg Desc.: " + description);\n}\n';
+	+ 'String description="";\n#if DECODE_DAIKIN\nif(results->decode_type == DAIKIN){\nIRDaikinESP ac(0);\n'
+	+ 'ac.setRaw(results->state);\ndescription=ac.toString();\n}\n#endif\n#if DECODE_FUJITSU_AC\nif(results->decode_type==FUJITSU_AC){\nIRFujitsuAC ac(0);\nac.setRaw(results->state, results->bits / 8);\ndescription = ac.toString();\n}\n#endif\n#if DECODE_KELVINATOR\nif(results->decode_type == KELVINATOR) {\nIRKelvinatorAC ac(0);\nac.setRaw(results->state);\ndescription = ac.toString();\n}\n#endif\n#if DECODE_TOSHIBA_AC\nif(results->decode_type == TOSHIBA_AC){\nIRToshibaAC ac(0);\nac.setRaw(results->state);\n    description = ac.toString();\n  }\n#endif\n#if DECODE_GREE\nif (results->decode_type == GREE){\nIRGreeAC ac(0);\nac.setRaw(results->state);\ndescription = ac.toString();\n}\n#endif\n#if DECODE_MIDEA\nif(results->decode_type == MIDEA){\nIRMideaAC ac(0);\nac.setRaw(results->value);\ndescription=ac.toString();\n}\n#endif\n#if DECODE_HAIER_AC\nif(results->decode_type == HAIER_AC) {\nIRHaierAC ac(0);\nac.setRaw(results->state);\ndescription = ac.toString();\n}\n#endif\nif(description != "")\nSerial.println("Mesg Desc.: " + description);\n}\n';
 	Blockly.Arduino.definitions_['dumpACInfo'] = funcode;
 	return code;
 };
@@ -580,9 +580,12 @@ Blockly.Arduino.arduino_blynk_bluetooth = function () {
 	if (RX != 0 || TX != 1) {
 		Blockly.Arduino.definitions_['var_declare_SoftwareSerial'] = '  SoftwareSerial SerialBLE(' + RX + ', ' + TX + ');';
 		Blockly.Arduino.setups_['setup_SerialBLE_begin'] = 'SerialBLE.begin(9600);';
+		Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Blynk.begin(SerialBLE, auth);';
+	}
+	else{
+		Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Blynk.begin(Serial, auth);';
 	}
 	Blockly.Arduino.setups_['setup_Serial_begin'] = '  Serial.begin(9600);';
-	Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Blynk.begin(SerialBLE, auth);';
 	Blockly.Arduino.setups_['setup_Serial.println'] = 'Serial.println("Waiting for connections...");';
 	var code = 'Blynk.run();\n';
 	return code;

@@ -729,6 +729,10 @@ var EN_FONT_NAME = [
   ["ncen", "ncen"],
   ["courier new", "cour"]
 ];
+var OLED_TYPE = [
+  [Blockly.OLED_TYPE_SSD1306, "SSD1306"],
+  [Blockly.OLED_TYPE_SH1106, "SH1106"],
+];
 var EN_FONT_SIZE = [
   ["08", "08"],
   ["10", "10"],
@@ -1042,6 +1046,7 @@ Blockly.Blocks.oled_init = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
       .appendField(Blockly.OLED_INIT2)
+      .appendField(new Blockly.FieldDropdown(OLED_TYPE), "OLED_TYPE")
       .appendField('SCL')
       .appendField(Blockly.MIXLY_PIN)
       .appendField(new Blockly.FieldDropdown(profile.default.digital), "SCL")

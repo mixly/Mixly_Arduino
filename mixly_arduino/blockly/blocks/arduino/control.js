@@ -698,8 +698,7 @@ Blockly.Blocks.controls_mstimer2 = {
     this.appendValueInput('TIME')
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('MsTimer2')
-    .appendField(Blockly.MIXLY_MSTIMER2_EVERY);
+    .appendField('MsTimer2'+Blockly.MIXLY_MSTIMER2_EVERY);
     this.appendDummyInput()
     .appendField('ms');
     this.appendStatementInput('DO')
@@ -715,8 +714,7 @@ Blockly.Blocks.controls_mstimer2_start = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-    .appendField('MsTimer2')
-    .appendField(Blockly.MIXLY_MSTIMER2_START);
+    .appendField('MsTimer2'+Blockly.MIXLY_MSTIMER2_START);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/03.Control.html#id45");

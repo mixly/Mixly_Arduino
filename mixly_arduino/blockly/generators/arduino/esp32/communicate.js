@@ -21,6 +21,7 @@ Blockly.Arduino.spi_transfer = function () {
     var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || profile.default.serial;
     Blockly.Arduino.definitions_['var_declare_BluetoothSerial'] = '#include "BluetoothSerial.h"\nBluetoothSerial SerialBT;';
     Blockly.Arduino.setups_['setup_serial_BT'] =  'SerialBT.begin(' + content + ');';
+    Blockly.Arduino.setups_['setup_serial_started'] =  'Serial.println("The device started, now you can pair it with bluetooth!");';
     return '';
   };
 

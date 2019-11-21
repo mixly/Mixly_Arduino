@@ -121,7 +121,7 @@ Blockly.Blocks.OneButton_interrupt = {
   init: function() {
     this.setColour(Blockly.Blocks.base.HUE);
     this.appendValueInput("PIN", Number)
-    .appendField(Blockly.ONEBUTTON)
+    .appendField(Blockly.ONEBUTTON+" "+Blockly.MIXLY_PIN)
     .setCheck(Number);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_MODE)
