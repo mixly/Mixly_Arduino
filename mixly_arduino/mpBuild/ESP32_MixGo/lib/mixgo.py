@@ -41,7 +41,11 @@ class Button:
         return self.pin.value() == 0
 
     def was_pressed(self):
-        return self.presses != 0
+        if self.presses != 0:
+        	self.presses = 0
+        	return True
+        else:
+        	return False
 # Pin
 class MyPin(Pin):
     def write_digital(self,val):
