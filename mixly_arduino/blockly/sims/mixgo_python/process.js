@@ -10,15 +10,7 @@ var codeProcessor = {
         return code;
     },
     getCode: function (trick) {
-        var code = '';
-        if(document.getElementById('tab_arduino').className == 'tabon'){
-            code = editor.getValue();
-        }else{
-            code = Blockly.Python.workspaceToCode(Blockly.mainWorkspace) || '';
-        }
-        if (code == '') {
-            return '';
-        }
+        var code = mixlyjs.getCodeContent();
         if (trick == true) {
             // trick
             if (code.indexOf('class HCSR04:') != -1) {
@@ -169,6 +161,9 @@ var smCodeProcessor = {
         for (var x of usedModuleSet) {
             code = code.replace(new RegExp(x,'g'), 'sm_' + x);
         }
+        //处理input和print
+        code = code.replace(new RegExp('input','g'), 'sm_machine.sm_input');
+        code = code.replace(new RegExp('print','g'), 'sm_machine.sm_print');
         return code;
     },
 
@@ -180,17 +175,14 @@ var smCodeProcessor = {
         })
     },
 
-    //3. 超时kill掉
+    //3. 超1分钟认为是死循环，kill掉
     autoKillProgram: function (timeout) {
-        var intervalId = setInterval(function () {
-            if(sm.running === true && sm.time >= timeout){
-                sm.updateSnapshot();
-                Sk.execLimit = 0;
-                sm.running = false;
-                clearInterval(intervalId);
-            }
-           
-        }, 100);
+        var timeoutId = setTimeout(function () {
+            sm.updateSnapshot();
+            Sk.execLimit = 0;
+            sm.running = false;
+            clearTimeout(timeoutId);
+        }, 60000);
     },
     forceKillProgram: function () {
         if(sm.running === true){

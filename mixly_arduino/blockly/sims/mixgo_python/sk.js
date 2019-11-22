@@ -1,4 +1,4 @@
-conf.url = conf.url || "";
+conf.url = conf.url || "static";
 var base_url = conf.url + '/blockly/sims/mixgo_python/';
 Sk.externalLibraries = {
     mixgo: {
@@ -60,7 +60,6 @@ Sk.externalLibraries = {
         dependencies: [
             conf.url + '/blockly/sims/mixgo_python/sm/mixgo/accelerometer.js',
             conf.url + '/blockly/sims/mixgo_python/sm/mixgo/compass.js',
-            conf.url + '/blockly/sims/mixgo_python/sm/mixgo/uart.js',
             conf.url + '/blockly/sims/mixgo_python/sm/mixgo/infrared_left.js',
             conf.url + '/blockly/sims/mixgo_python/sm/mixgo/infrared_right.js',
         ]
@@ -69,10 +68,7 @@ Sk.externalLibraries = {
         path: conf.url + '/blockly/sims/mixgo_python/sm/time/__init__.js'
     },
     sm_machine: {
-        path: conf.url + '/blockly/sims/mixgo_python/sm/machine/__init__.js',
-        dependencies: [
-            conf.url + '/blockly/sims/mixgo_python/sm/machine/UART.js'
-        ],
+        path: conf.url + '/blockly/sims/mixgo_python/sm/machine/__init__.js'
     },
     mpu9250: {
         path: conf.url + '/blockly/sims/mixgo_python/mpu9250/__init__.js'
@@ -165,8 +161,19 @@ function sk_run (code, outputFunc, inputFunc, postFunc, showTip) {
                 if(lineCount < 50) {
                     return;
                 }
-                if(sm.running)
-                    sm.updateTime(100);
+                if(sm.running) {
+                    if(sm.inputer[sm.nextInputEventIndex]){
+                        if(sm.inputer[sm.nextInputEventIndex].ts > sm.time)
+                                sm.updateTimeTo(sm.inputer[sm.nextInputEventIndex].ts);
+                            else{
+                                sm.nextInputEventIndex++;
+                            }
+                        }
+                        else{
+                            sm.updateTimeTo(sm['taskConf'].timeout)
+                            return Sk.builtin.none;
+                        }
+                }
                 startTime = new Date().getTime();
                 var p = new Promise(function(resolve, reject) {
                     setTimeout(function() {

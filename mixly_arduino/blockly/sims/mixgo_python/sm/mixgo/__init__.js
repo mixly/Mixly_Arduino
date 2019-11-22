@@ -262,9 +262,5 @@ var $builtinmodule = function (name) {
     mod.Infrared_right = new Sk.builtin.module();
     mod.Infrared_right.$d = new Infrared_right("mixgo.Infrared_right");
 
-    mod.uart = new Sk.builtin.module();
-    mod.uart.$d = new uart("mixgo.uart");
-
-
     return mod;
 }

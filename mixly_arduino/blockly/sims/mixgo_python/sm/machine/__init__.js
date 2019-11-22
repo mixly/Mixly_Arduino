@@ -174,14 +174,16 @@ var $builtinmodule = function (name) {
             mod.data.UART.rx = rx.v;
             mod.data.UART.buffer = "";
             sm.uart.changeBaudrate(baudrate.v);
-            ui.updatePeerSerialParam(mod.data.UART);
-            ui.bindUartSendMessageEvent('uart', mod.data.UART);
-            ui.bindUartBaudrateEvent('uart_baudrate',mod.data.UART);
+            //ui.updatePeerSerialParam(mod.data.UART);
+            //ui.bindUartSendMessageEvent('uart', mod.data.UART);
+            //ui.bindUartBaudrateEvent('uart_baudrate',mod.data.UART);
         });
         $loc.read = new Sk.builtin.func(function(self){
             if (sm.uart.peer.baudrate != mod.data.UART.baudrate) {
                 return;
             }
+            sm.uart.data.buffer += sm.getUart(sm.time);
+            sm.uart.data.buffer = sm.uart.data.buffer.substring(0,1023) //maximum buffer size 1024
             if (sm.uart.data.buffer.length > 0) {
                 var content = sm.uart.data.buffer;
                 sm.uart.data.buffer = "";
@@ -194,11 +196,13 @@ var $builtinmodule = function (name) {
             if (sm.uart.peer.baudrate != mod.data.UART.baudrate) {
                 return;
             }
+            sm.uart.data.buffer += sm.getUart(sm.time);
+            sm.uart.data.buffer = sm.uart.data.buffer.substring(0,1023)
             if (sm.uart.data.buffer.length > 0) {
                 var idx = sm.uart.data.buffer.indexOf('\r');
                 if (idx != -1) {
                     var content = sm.uart.data.buffer.substring(0, idx + 1);
-                    mod.data.UART.buffer = sm.uart.data.buffer.substring(idx + 1);;
+                    sm.uart.data.buffer = sm.uart.data.buffer.substring(idx + 1);;
                     //ui.updateSerialStatus('Uart read message: ' + content);
                     return Sk.builtin.str(content);
                 }
@@ -221,6 +225,55 @@ var $builtinmodule = function (name) {
             return Sk.builtin.bool(sm.uart.data.buffer.length > 0);
         });
     }, "UART", []);
+
+    var sm_input_func = function(prompt){
+        if(prompt && prompt.v){
+            sm_print_func(prompt.v)
+            sm.updateSnapshot()
+        }
+        //虚拟阻塞，阻塞时间单位为1ms
+        /*
+        while(!sm.getInputer('textInput', sm.time)){
+            sm.updateTime(1);
+        }
+        return Sk.builtin.str(sm.getInputer('textInput', sm.time))
+        */
+        while(sm.getInputer('uart', sm.time) === ''){
+            if(sm.inputer[sm.nextInputEventIndex]){
+                if(sm.inputer[sm.nextInputEventIndex].ts > sm.time)
+                    sm.updateTimeTo(sm.inputer[sm.nextInputEventIndex].ts);
+                else{
+                    sm.nextInputEventIndex++;
+                }
+            }
+            else{
+                sm.updateTimeTo(sm['taskConf'].timeout)
+                return Sk.builtin.none;
+            }
+        }
+        return Sk.builtin.str(sm.getInputer('uart', sm.time))
+    }
+    sm_input_func.co_varnames = ['prompt'];
+    sm_input_func.$defaults = [Sk.builtin.none];
+    sm_input_func.co_numargs = 1;
+    mod.sm_input = new Sk.builtin.func(sm_input_func);
+
+    var sm_print_func = function(content){
+        if(content && content.v){
+            if(typeof(content.v) != 'string'){
+                var content2Str = String(content.v)
+                sm.snapshot['print'] = content2Str;
+            }
+            else{
+                sm.snapshot['print'] = content.v;
+            }
+            sm.updateSnapshot();
+        }
+    }
+    sm_print_func.co_varnames = ['content'];
+    sm_print_func.$defaults = [Sk.builtin.none];
+    sm_print_func.co_numargs = 1;
+    mod.sm_print = new Sk.builtin.func(sm_print_func);
 
 	return mod;
 }

@@ -1,3 +1,18 @@
+//加法函数，用来得到精确的加法结果
+//说明：javascript的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的加法结果。
+//调用：accAdd(arg1,arg2)
+//返回值：arg1加上arg2的精确到两位小数
+function accAdd(arg1,arg2){
+    var r1=0,r2=0;
+    var i1=0,i2=0;
+    i1 = parseInt(arg1.toString().split(".")[0])
+    if(arg1.toString().split(".")[1])
+        r1 = parseInt(arg1.toString().split(".")[1].substring(0,2))
+    i2 = parseInt(arg2.toString().split(".")[0])
+    if(arg2.toString().split(".")[1])
+        r2 = parseInt(arg2.toString().split(".")[1].substring(0,2))
+    return parseFloat((i1 + i2 + (r1 + r2) / 100).toFixed(2))
+}
 var sm = {
     running: false,
     time: 0,
@@ -9,6 +24,7 @@ var sm = {
     preSnapshot: {},
     snapshotArr: [],
     lenSnapshotArr: 1,
+    nextInputEventIndex: 0,
     init: function () {
         sm.running = true;
         sm.time = 0;
@@ -17,6 +33,7 @@ var sm = {
         sm.preSnapshot = $.extend(true, {}, sm.snapshot);
         sm.snapshotArr = [{'snapshot': $.extend(true, {}, sm.snapshot), 'ts': sm.time}];
         sm.lenSnapshotArr = 1;
+        sm.nextInputEventIndex = 0;
     },
     getSnapshotArr: function () {
         var newSnapshotArr = [];
@@ -30,8 +47,16 @@ var sm = {
         return newSnapshotArr;
     },
     updateTime: function (time) {
-        sm.time += time;
-        if(sm.time > sm['taskConf'].timeout){
+        if(time > 0)
+            sm.time = accAdd(sm.time, time);
+        if(sm.time >= sm['taskConf'].timeout){
+            smCodeProcessor.forceKillProgram();
+        }
+    },
+    updateTimeTo: function (time) {
+        if(time > 0 && time > sm.time)
+            sm.time = time;
+        if(sm.time >= sm['taskConf'].timeout){
             smCodeProcessor.forceKillProgram();
         }
     },
@@ -91,7 +116,6 @@ var sm = {
             insertObj[name].getTime = 0;
             sm.inputer.push(insertObj);
         }
-
     },
     /**
      * push inputer that needs history record like gesture to its history list
@@ -128,18 +152,49 @@ var sm = {
      * @param {Number} ts the occasion that this input happened
      */
     getInputer: function(name, ts){
-        var prevInputEvent = null;
-        for(each of sm.inputer){
-            if(each.ts <= sm.time){
-                prevInputEvent = each;
+        for(var i = sm.nextInputEventIndex; i < sm.inputer.length; i++){
+            if(sm.inputer[i].ts <= sm.time){
+                sm.nextInputEventIndex = i;
+            }
+            else{
+                break;
             }
         }
-        //默认事件持续事件100ms,100ms内的输入视为有效。
-        if(each.ts >= (ts - 100) && prevInputEvent && prevInputEvent.hasOwnProperty(name)){
-            return prevInputEvent[name];
-        }               
-        else //没有相关外部输入，返回默认值0
-            return 0;
+        //输入即时生效
+        if(name === 'uart' || name === 'textInput'){
+            if(sm.inputer[sm.nextInputEventIndex] && sm.inputer[sm.nextInputEventIndex].ts == ts && sm.inputer[sm.nextInputEventIndex].hasOwnProperty(name)){
+                sm.inputer[sm.nextInputEventIndex][name].getTime ++;
+                return sm.inputer[sm.nextInputEventIndex][name];
+            }      
+            else //没有相关外部输入，返回默认值为空
+                return ''; 
+        }
+        //其他事件默认持续事件100ms,100ms内的输入视为有效。
+        else{
+            if(sm.inputer[sm.nextInputEventIndex] && sm.inputer[sm.nextInputEventIndex].ts >= (ts - 100) && sm.inputer[sm.nextInputEventIndex].hasOwnProperty(name)){
+                sm.inputer[sm.nextInputEventIndex][name].getTime ++;
+                return sm.inputer[sm.nextInputEventIndex][name];
+            }      
+            else //没有相关外部输入，返回默认值0
+                return 0;  
+        }
+    },
+     /**
+     * get uart like buffer's work
+     * @param {Number} ts the occasion that this input happened
+     */
+    getUart: function(ts){
+        var buffer = '';
+        for(each of sm.inputer){
+            if(each && each['uart']){
+                buffer += each['uart'];
+                delete each['uart'];//delete after read
+            }
+            if(each.ts <= sm.time){
+                break;
+            }
+        }
+        return buffer;
     },
     /**
      * get all inputer in this time from Array sm.inputer current time
@@ -391,6 +446,9 @@ var sm = {
         }
     },
     uart: {
+        data: {
+            buffer: '',
+        },
         peer: {
             baudrate: mbData.uart.baudrate
         },
@@ -403,19 +461,11 @@ var sm = {
             sm.updateSnapshot();
         },
         input: function (prompt) {
-            return new Promise((resolve, reject) => {
-                var itl = setInterval(function () {
-                    var idx = sm.uart.data.buffer.indexOf('\r');
-                    if (idx != -1) {
-                        clearInterval(itl);
-                        var inputText = sm.uart.data.buffer.substring(0, idx);
-                        sm.uart.data.buffer = sm.uart.data.buffer.substring(idx + 1);
-                        resolve(inputText);
-                        return;
-                    }
-                    sm.updateTime(10);
-                }, 10);
-            });
+            var idx = sm.uart.data.buffer.indexOf('\r');
+            if (idx != -1) {
+                var inputText = sm.uart.data.buffer.substring(0, idx);
+                sm.uart.data.buffer = sm.uart.data.buffer.substring(idx + 1);
+            }
         },
         //peer write
         send: function (message) {

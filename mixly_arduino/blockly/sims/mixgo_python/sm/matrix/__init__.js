@@ -1,3 +1,10 @@
+function accMul(arg1,arg2){
+    var m=0, s1 = arg1.toString(), s2=arg2.toString();
+    try{m += s1.split(".")[1].length} catch(e){}
+    try{m += s2.split(".")[1].length} catch(e){}
+    return Number(s1.replace(".",""))*Number(s2.replace(".",""))/Math.pow(10,m)
+}
+
 var $builtinmodule = function(name) {
     var mod = {
 
@@ -51,7 +58,8 @@ var $builtinmodule = function(name) {
                 var line = parseInt(linestr,16);
                 for(var char_y = 0; char_y < _font_height; char_y++){
                     if((line >>> char_y) & 0x1){
-                        setLED(x + char_x, y + char_y, 15);
+                        if(x + char_x >= 0 && x + char_x <= 15 && y + char_y >= 0 && y + char_y <= 15) //防止出界
+                            setLED(x + char_x, y + char_y, mod.data.brightness);
                     }
                 }
             }
@@ -106,7 +114,7 @@ var $builtinmodule = function(name) {
                 image = new Sk.builtin.str(image.v);
             }
             var i = 0;
-            if(image.v[0].v){
+            if(image.v instanceof Array){
                 for(i = 0; i <= image.v.length; i++){
                     if(i === image.v.length && loop.v) {
                         i = 0;
@@ -145,7 +153,8 @@ var $builtinmodule = function(name) {
             else if(image.tp$name == "Image") {
                 for(y = 0; y < 8; y++) {
                     for(x = 0; x < 16; x++) {
-                        setLED(x, y, image.v[i].lines[y][x]);
+                        console.log(image.v)
+                        setLED(x, y, image.v.lines[y][x]);
                     }
                 }
                 sm.updateSnapshot();
@@ -167,35 +176,34 @@ var $builtinmodule = function(name) {
             if(message.tp$name == "number") {
                 message = new Sk.builtin.str(message.v);
             }
-
-            //message.v = ' ' + message.v + ' ';
-            return sim.runAsync(function(resolve, reject) {
-                var current, delta_ms;
-                var pos = screenWidth; //X position of the message start.
-                var message_width = bf.width(message.v); //Message width in pixels.
-                var last = sm.time; //Last frame start time.
-                var speed_ms = 1200 / speed.v / 1000.0;
-                var count = 0;//定时器运行次数计数器
+            var current, delta_ms;
+            var pos = screenWidth; //X position of the message start.
+            var message_width = bf.width(message.v); //Message width in pixels.
+            var lastPostion = pos; //Last frame start postion.
+            var speed_ms = 1000 / speed.v /1000;
+            var count = 0;//定时器运行次数计数器
+            clearScreen();
+            bf.text(message.v, parseInt(pos,10), 0);
+            while(pos >= -message_width){
+                //bug:js浮点数相加
+                sm.updateTime(speed.v);
+                pos -= 1;
                 clearScreen();
                 bf.text(message.v, parseInt(pos,10), 0);
-                while(pos >= -message_width){
-                    //10ms刷新一次，约等于100fps
-                    sm.updateTime(10);
-                    pos -= speed_ms * 10;
-                    clearScreen();
-                    bf.text(message.v, parseInt(pos,10), 0);
-                    count ++;
-                    if(count % 10 === 0) //100ms采样一次
-                        sm.updateSnapshot();
-                }
-                clearScreen();
-                resolve();
-            });
+                count ++;
+                if(parseInt(pos) != parseInt(lastPostion)){//位置改变再采样
+                    lastPostion = pos;
+                    sm.updateSnapshot();
+                }      
+            }
+            clearScreen();
+            //message.v = ' ' + message.v + ' ';
         }
         scroll.co_varnames = ['message', 'delay'];
         scroll.$defaults = [Sk.builtin.none, Sk.builtin.int_(400)];
         scroll.co_numargs = 2;
         mod.scroll = new Sk.builtin.func(scroll);
+
         function showstatic(message) {
             if(message.tp$name == "number") {
                 message = new Sk.builtin.str(message.v);
