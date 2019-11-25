@@ -8,7 +8,6 @@ var $builtinmodule = function (name) {
         sm.updateTime(delay.v * 1000);
     });
     mod.sleep_ms = new Sk.builtin.func(function(delay) {
-        debugger;
         sm.updateTime(delay.v);
     });
     mod.sleep_us = new Sk.builtin.func(function(delay) {

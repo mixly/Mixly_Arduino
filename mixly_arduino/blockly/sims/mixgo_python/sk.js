@@ -171,7 +171,6 @@ function sk_run (code, outputFunc, inputFunc, postFunc, showTip) {
                         }
                         else{
                             sm.updateTimeTo(sm['taskConf'].timeout)
-                            return Sk.builtin.none;
                         }
                 }
                 startTime = new Date().getTime();
@@ -244,9 +243,9 @@ async function sm_run () {
     }
     sm['markDone'] = false;
     code = smCodeProcessor.processImport(code);
-    var taskId = Code.getStringParamFromUrl('task_id', '');
+    var taskId = Code.getStringParamFromUrl('eid', '');
     if (taskId == '') {
-        console.log('task_id is empty');
+        console.log('eid is empty');
         return;
     }
     sm['taskConf'] = task_conf;

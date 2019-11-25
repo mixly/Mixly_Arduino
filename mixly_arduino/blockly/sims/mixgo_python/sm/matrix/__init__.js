@@ -109,7 +109,7 @@ var $builtinmodule = function(name) {
             if(delay === undefined)
                 delay = Sk.builtin.int_(400);
 
-            if(image.tp$name == "number") {
+            if(image.tp$name == "number" || image.tp$name == "int") {
                 throw new Sk.builtin.TypeError("Convert the number to a string before showing it");
                 image = new Sk.builtin.str(image.v);
             }
@@ -127,9 +127,13 @@ var $builtinmodule = function(name) {
                         bf.text(image.v[i], 0, 0);
                     }
                     else if(image.v[i].tp$name == "Image") {
+                        var lines = image.v[i].str.v.split(':');
                         for(y = 0; y < 8; y++) {
                             for(x = 0; x < 16; x++) {
-                                setLED(x, y, image.v[i].lines[y][x]);
+                                if(lines[y][x] == '1')
+                                    setLED(x, y, mod.data.brightness);
+                                else
+                                    setLED(x, y, 0);
                             }
                         }
                     }
@@ -151,10 +155,13 @@ var $builtinmodule = function(name) {
                 }
             }
             else if(image.tp$name == "Image") {
+                var lines = image.str.v.split(':');
                 for(y = 0; y < 8; y++) {
                     for(x = 0; x < 16; x++) {
-                        console.log(image.v)
-                        setLED(x, y, image.v.lines[y][x]);
+                        if(lines[y][x] == '1')
+                            setLED(x, y, mod.data.brightness);
+                        else
+                            setLED(x, y, 0);
                     }
                 }
                 sm.updateSnapshot();
@@ -223,18 +230,24 @@ var $builtinmodule = function(name) {
         return mod;
     };
     mod.Image = new Sk.misceval.buildClass(mod, function($gbl, $loc) {
-        $loc.__init__ = new Sk.builtin.func(function(self, str, y) {
-            if(str === undefined | y !== undefined) str = Sk.builtin.str(",,,,,,,");
-            var hexLines = str.v.split(/[,:\n]/); //hexLines likes follow string: '59,45689a,3456789ab,3456789ab,456789a,56789,678,7'
-            self.lines = new Array();
-            for (i = 0; i < 8; i++){
-                self.lines[i] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-            }
-            for (i = 0; i < 8; i++){
-                for (eachChar of hexLines[i]){
-                    var char2Num = parseInt(eachChar,16);
-                    self.lines[i][char2Num] = 15;
+        //bug
+        $loc.__init__ = new Sk.builtin.func(function(self, str) {
+            if(str === undefined) str = Sk.builtin.str(",,,,,,,");
+            if(str.v.indexOf(',') != -1){
+                var rows = [];
+                var new_row;
+                for(var row of str.v.split(',')){
+                    new_row = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+                    for(var hex of row){
+                        idx = parseInt(hex, 16)
+                        new_row[idx] = '1'
+                    }
+                    rows.push('' + new_row.join(''))
                 }
+                self.str = rows.join(':');
+            }
+            else{
+                self.str = str;
             }
         });
 
@@ -373,7 +386,6 @@ var $builtinmodule = function(name) {
                     }
                 }
             }
-            console.log()
             var newImage = Sk.misceval.callsim(mod.Image, Sk.builtin.str(copy.join(",")));
             return newImage;
         });
