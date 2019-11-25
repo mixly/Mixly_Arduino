@@ -172,9 +172,8 @@ Blockly.Blocks.blynk_iot_get_data = {
       .appendField(new Blockly.FieldDropdown(BLYNK_VIRTUALPIN_SELECT), "Vpin");
     this.appendDummyInput()
       .appendField("", "PARAMS");
-    //add Gear to left top
-    this.setMutator(new Blockly.Mutator(["procedures_mutatorarg"]));
-    this.setTooltip(Blockly.Msg.PROCEDURES_DEFNORETURN_TOOLTIP);
+    this.setMutator(new Blockly.Mutator(["procedures_mutatorarg"]));//添加齿轮
+    this.setTooltip();
     this.arguments_ = [];//新增参数名称
     this.argumentstype_ = [];//新增参数类型
     this.setStatements_(true);
@@ -285,7 +284,7 @@ Blockly.Blocks.blynk_iot_get_data = {
       }
     }
     this.updateParams_();
-    Blockly.Procedures.mutateCallers(this);
+   // Blockly.Procedures.mutateCallers(this);
 
     // Show or hide the statement input.
     this.setStatements_(xmlElement.getAttribute("statements") !== "false");
@@ -321,7 +320,7 @@ Blockly.Blocks.blynk_iot_get_data = {
       connection = paramBlock.nextConnection;
     }
     // Initialize procedure"s callers with blank IDs.
-    Blockly.Procedures.mutateCallers(this);
+   // Blockly.Procedures.mutateCallers(this);
     return containerBlock;
   },
   /**
@@ -343,7 +342,7 @@ Blockly.Blocks.blynk_iot_get_data = {
         paramBlock.nextConnection.targetBlock();
     }
     this.updateParams_();
-    Blockly.Procedures.mutateCallers(this);
+  //  Blockly.Procedures.mutateCallers(this);
 
     // Show/hide the statement input.
     var hasStatements = containerBlock.getFieldValue("STATEMENTS");
@@ -375,7 +374,7 @@ Blockly.Blocks.blynk_iot_get_data = {
    */
   dispose: function () {
     var name = this.getFieldValue("NAME");
-    Blockly.Procedures.disposeCallers(name, this.workspace);
+   // Blockly.Procedures.disposeCallers(name, this.workspace);
     // Call parent"s destructor.
     this.constructor.prototype.dispose.apply(this, arguments);
   },
@@ -387,9 +386,9 @@ Blockly.Blocks.blynk_iot_get_data = {
    *     - that it DOES NOT have a return value.
    * @this Blockly.Block
    */
-  getProcedureDef: function () {
-    return ["ignoreProcedureIotGetData", this.arguments_, false];
-  },
+  // getProcedureDef: function () {
+  //   return ["ignoreProcedureIotGetData", this.arguments_, false];
+  // },
   /**
    * Return all variables referenced by this block.
    * @return {!Array.<string>} List of variable names.
@@ -469,37 +468,6 @@ Blockly.Blocks.blynk_iot_get_data = {
   callType_: "procedures_callnoreturn"
 };
 
-Blockly.Blocks["procedures_mutatorarg"] = {
-  /**
-   * Mutator block for procedure argument.
-   * @this Blockly.Block
-   */
-  init: function () {
-    this.setColour(Blockly.Blocks.blynk.HUE1);
-    this.appendDummyInput()
-      .appendField(Blockly.Msg.PROCEDURES_BEFORE_PARAMS)
-      .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT, "int"], [Blockly.LANG_MATH_LONG, "long"], [Blockly.LANG_MATH_FLOAT, "float"], [Blockly.LANG_MATH_BOOLEAN, "boolean"], [Blockly.LANG_MATH_BYTE, "byte"], [Blockly.LANG_MATH_CHAR, "char"], [Blockly.LANG_MATH_STRING, "String"]]), "TYPEVAR")
-      .appendField(new Blockly.FieldTextInput("x", this.validator_), "NAME");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip(Blockly.Msg.PROCEDURES_MUTATORARG_TOOLTIP);
-    this.contextMenu = false;
-  },
-  /**
-   * Obtain a valid name for the procedure.
-   * Merge runs of whitespace.  Strip leading and trailing whitespace.
-   * Beyond this, all names are legal.
-   * @param {string} newVar User-supplied name.
-   * @return {?string} Valid name, or null if a name was not specified.
-   * @private
-   * @this Blockly.Block
-   */
-  validator_: function (newVar) {
-    newVar = newVar.replace(/[\s\xa0]+/g, " ")
-      .replace(/^ | $/g, "");
-    return newVar || null;
-  }
-};
 
 //blynk定时器
 Blockly.Blocks.Blynk_iot_timer = {
