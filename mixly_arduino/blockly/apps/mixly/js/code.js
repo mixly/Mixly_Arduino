@@ -35,7 +35,7 @@
   'zh-hans': '简体中文',
   'zh-hant': '繁體中文',
   'en': 'English',
-  // 'spa': 'Español',
+   'spa': 'Español',
   // 'ja': '日本語',
   // 'ru':'русский',
 };
