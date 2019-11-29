@@ -303,7 +303,7 @@ pbc.globalFunctionD['oct'] = radix('eight');
 pbc.globalFunctionD['bin'] = radix('two');
 
 
-pbc.globalFunctionD['mixly_mapping'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.globalFunctionD['math_map'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 5) {
         throw new Error("Incorrect number of arguments");
     }
