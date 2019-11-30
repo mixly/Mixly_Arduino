@@ -331,7 +331,7 @@ var ADXL345_GETAB = [
 [Blockly.MixGo_MPU9250_AX+"(g)", "accel.getAccelerationX()/256.0"],
 [Blockly.MixGo_MPU9250_AY+"(g)", "accel.getAccelerationY()/256.0"],
 [Blockly.MixGo_MPU9250_AZ+"(g)", "accel.getAccelerationZ()/256.0"],
-  ];
+];
 //传感器-重力感应块-获取数据
 Blockly.Blocks.ADXL345 = {
   init: function() {
@@ -351,17 +351,17 @@ Blockly.Blocks.ADXL345_setOffset = {
   init: function () {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_SETTING)
-        .appendField('ADXL345')
-        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_OFFSET);
+    .appendField(Blockly.MIXLY_SETTING)
+    .appendField('ADXL345')
+    .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_FILE_SEEK_OFFSET);
     this.appendValueInput("OFFSET")
-        .setCheck(Number)
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_DISPLAY_MATRIX_X,"setOffsetX"],[Blockly.MIXLY_DISPLAY_MATRIX_Y,"setOffsetY"],[Blockly.MIXLY_Z_AXIS,"setOffsetZ"]]), "MIXEPI_ADXL345_OFFSET");
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_DISPLAY_MATRIX_X,"setOffsetX"],[Blockly.MIXLY_DISPLAY_MATRIX_Y,"setOffsetY"],[Blockly.MIXLY_Z_AXIS,"setOffsetZ"]]), "MIXEPI_ADXL345_OFFSET");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-}
+  }
 };
 
 //传感器-MPU6050-获取数据
@@ -573,3 +573,154 @@ Blockly.Blocks.TCS34725_Get_RGB = {
     this.setOutput(true);
   }
 };
+
+Blockly.Blocks['Arduino_keypad_4_4_start'] = {
+  init: function() {
+   this.setColour(Blockly.Blocks.sensor.HUE);
+   this.appendDummyInput()
+   .setAlign(Blockly.ALIGN_CENTRE)
+   .appendField(Blockly.MIXLY_SETUP+Blockly.MIXLY_Keypad);
+   this.appendDummyInput()
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField(new Blockly.FieldTextInput("KEYPAD_4_4"), "keypad_name");
+   this.appendValueInput("keypad_row")
+   .setCheck(null)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField(Blockly.Msg.DATAFRAME_RAW+Blockly.MIXLY_PIN);
+   this.appendValueInput("keypad_col")
+   .setCheck(null)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField(Blockly.Msg.DATAFRAME_COLUMN+Blockly.MIXLY_PIN);
+   this.appendValueInput("keypad_type")
+   .setCheck(null)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField(Blockly.MIXLY_Keypad_define);
+   this.setNextStatement(true, null);   
+   this.setTooltip("");
+   this.setHelpUrl("");
+ }
+};
+
+Blockly.Blocks['keypad_row_data'] = {
+  init: function() {
+   this.setColour(Blockly.Blocks.sensor.HUE);
+   this.appendValueInput("keypad_row_1", Number)
+   .setCheck(Number)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField("1#");
+   this.appendValueInput("keypad_row_2", Number)
+   .setCheck(Number)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField("2#");
+   this.appendValueInput("keypad_row_3", Number)
+   .setCheck(Number)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField("3#");
+   this.appendValueInput("keypad_row_4", Number)
+   .setCheck(Number)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField("4#");
+   this.setInputsInline(true);
+   this.setOutput(true, null);    
+   this.setTooltip("");
+   this.setHelpUrl("");
+ }
+};
+
+Blockly.Blocks['keypad_col_data'] = {
+  init: function() {
+   this.setColour(Blockly.Blocks.sensor.HUE);
+   this.appendValueInput("keypad_col_1", Number)
+   .setCheck(Number)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField("1#");
+   this.appendValueInput("keypad_col_2", Number)
+   .setCheck(Number)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField("2#");
+   this.appendValueInput("keypad_col_3", Number)
+   .setCheck(Number)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField("3#");
+   this.appendValueInput("keypad_col_4", Number)
+   .setCheck(Number)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField("4#");
+   this.setInputsInline(true);
+   this.setOutput(true, null);    
+   this.setTooltip("");
+   this.setHelpUrl("");
+ }
+};
+
+Blockly.Blocks['keypad_type_data'] = {
+  init: function() {
+   this.setColour(Blockly.Blocks.sensor.HUE);
+   this.appendDummyInput()
+   .setAlign(Blockly.ALIGN_CENTRE)
+   .appendField(new Blockly.FieldTextInput("1"), "keypad_1_1")
+   .appendField(new Blockly.FieldTextInput("2"), "keypad_1_2")
+   .appendField(new Blockly.FieldTextInput("3"), "keypad_1_3")
+   .appendField(new Blockly.FieldTextInput("A"), "keypad_1_4");
+   this.appendDummyInput()
+   .setAlign(Blockly.ALIGN_CENTRE)
+   .appendField(new Blockly.FieldTextInput("4"), "keypad_2_1")
+   .appendField(new Blockly.FieldTextInput("5"), "keypad_2_2")
+   .appendField(new Blockly.FieldTextInput("6"), "keypad_2_3")
+   .appendField(new Blockly.FieldTextInput("B"), "keypad_2_4");
+   this.appendDummyInput()
+   .setAlign(Blockly.ALIGN_CENTRE)
+   .appendField(new Blockly.FieldTextInput("7"), "keypad_3_1")
+   .appendField(new Blockly.FieldTextInput("8"), "keypad_3_2")
+   .appendField(new Blockly.FieldTextInput("9"), "keypad_3_3")
+   .appendField(new Blockly.FieldTextInput("C"), "keypad_3_4");
+   this.appendDummyInput()
+   .setAlign(Blockly.ALIGN_CENTRE)
+   .appendField(new Blockly.FieldTextInput("0"), "keypad_4_1")
+   .appendField(new Blockly.FieldTextInput("#"), "keypad_4_2")
+   .appendField(new Blockly.FieldTextInput("D"), "keypad_4_3")
+   .appendField(new Blockly.FieldTextInput("*"), "keypad_4_4");
+   this.setOutput(true, null);
+   this.setTooltip("");
+   this.setHelpUrl("");
+ }
+};
+
+Blockly.Blocks['get_keypad_num'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldTextInput("KEYPAD_4_4"), "keypad_name")
+    .appendField(Blockly.MIXLY_Keypad_GETKEY);
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['arduino_keypad_event'] = {
+  init: function() {
+   this.setColour(Blockly.Blocks.sensor.HUE);
+   this.appendDummyInput()
+   .appendField(Blockly.MIXLY_Keypad)
+   .appendField(new Blockly.FieldTextInput("KEYPAD_4_4"), "keypad_name");
+   this.appendValueInput("keypad_event_input")
+   .setCheck(null)
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField(Blockly.MIXLY_Keypad_EVENT);
+   this.appendDummyInput()
+   .setAlign(Blockly.ALIGN_RIGHT)
+   .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SCROLL_INTERVAL)
+   .appendField(new Blockly.FieldTextInput("1000"), "keypad_start_event_delay")
+   .appendField(Blockly.MIXLY_MILLIS);
+   this.appendStatementInput("keypad_event_data")
+   .setCheck(null)
+   .appendField(Blockly.MIXLY_DO );
+   this.setInputsInline(false);    
+   this.setTooltip("");
+   this.setHelpUrl("");
+ }
+};
+
+
