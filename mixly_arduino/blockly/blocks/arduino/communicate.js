@@ -90,7 +90,7 @@ Blockly.Blocks.ir_send_raw = {
         .appendField(Blockly.MIXLY_IR_SEND_RAW)
         .appendField(new Blockly.FieldDropdown([["3", "3"]]), "PIN");
         this.appendDummyInput("")
-        .appendField(' ' + Blockly.MIXLY_LIST_NAME)
+        .appendField(' ' + Blockly.MIXLY_I2C_SLAVE_WRITE_ARRAY_ARRAYNAME)
         .appendField(new Blockly.FieldTextInput('0,0,0'), 'TEXT');
         this.appendValueInput('length')
         .setCheck(Number)
@@ -161,7 +161,7 @@ Blockly.Blocks.i2c_available = {
 Blockly.Blocks.i2c_slave_onreceive = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
-		this.appendValueInput('device', Number)
+        this.appendValueInput('device', Number)
         .appendField(Blockly.MIXLY_I2C_SLAVE_ONRECEIVE)
         .setCheck(Number);
         this.appendStatementInput('DO')
@@ -185,7 +185,7 @@ Blockly.Blocks.i2c_howmany = {
 Blockly.Blocks.i2c_slave_onrequest = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
-		this.appendValueInput('device', Number)
+        this.appendValueInput('device', Number)
         .appendField(Blockly.MIXLY_I2C_SLAVE_ONREQUEST)
         .setCheck(Number);
         this.appendStatementInput('DO')
@@ -220,7 +220,7 @@ Blockly.Blocks.i2c_slave_write_array = {
         this.appendValueInput('length')
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.MIXLY_I2C_SLAVE_WRITE_ARRAY_ARRAYLENGTH);
+        .appendField(Blockly.Msg.MIXLY_LIST_LEN);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_I2C_SLAVE_WRITE_ARRAY);
@@ -268,8 +268,8 @@ Blockly.Blocks.RFID_init={
         this.setNextStatement(true);
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_RFID_INIT);
-         this.setFieldValue("10", "SDA");
-}
+        this.setFieldValue("10", "SDA");
+    }
 };
 
 Blockly.Blocks.RFID_on = {
@@ -379,73 +379,73 @@ Blockly.Blocks.RFID_off={
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput("")
         .appendField(Blockly.MIXLY_COMMUNICATION_RFID_OFF);	
-	this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_RFID_OFF);  
-}
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_RFID_OFF);  
+    }
 };
   // IIC通信
   
   // IIC初始化主机
   Blockly.Blocks.i2c_master_Init= {
-  init: function() { 
-  this.appendDummyInput()        
-      .appendField(Blockly.MIXLY_I2C_MASTER_INIT);
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(Blockly.Blocks.communicate.HUE);
-  this.setTooltip(Blockly.MIXLY_I2C_MASTER_INITHelp);
-  this.setHelpUrl("");
-  }
-};
+      init: function() { 
+          this.appendDummyInput()        
+          .appendField(Blockly.MIXLY_SETUP+'I2C'+Blockly.MIXLY_MASTER);
+          this.setPreviousStatement(true, null);
+          this.setNextStatement(true, null);
+          this.setColour(Blockly.Blocks.communicate.HUE);
+          this.setTooltip();
+          this.setHelpUrl("");
+      }
+  };
 // IIC初始化从机
 Blockly.Blocks.i2c_slave_Init= {
   init: function() { 
-  this.appendDummyInput()       
-      .appendField(Blockly.MIXLY_I2C_SLAVE_INIT+Blockly.MIXLY_LCD_ADDRESS);
-  this.appendValueInput("i2c_address")
+      this.appendDummyInput()       
+      .appendField(Blockly.MIXLY_SETUP+'I2C'+Blockly.MIXLY_SALVE+Blockly.MIXLY_LCD_ADDRESS);
+      this.appendValueInput("i2c_address")
       .setCheck(null);
-  this.setInputsInline(true);
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(Blockly.Blocks.communicate.HUE);
-  this.setTooltip(Blockly.MIXLY_I2C_MASTER_INITHelp);
-  this.setHelpUrl("");
+      this.setInputsInline(true);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(Blockly.Blocks.communicate.HUE);
+      this.setTooltip(Blockly.MIXLY_I2C_MASTER_INITHelp);
+      this.setHelpUrl("");
   }
 };
 
 //IIC主机发送数据
 Blockly.Blocks.i2c_begin_end_transmission= {
   init: function() { 
-  this.appendDummyInput()        
+      this.appendDummyInput()        
       .appendField("I2C"+Blockly.MIXLY_MASTER+Blockly.MIXLY_SEND_DATA);
-  this.appendValueInput("i2c_address")
+      this.appendValueInput("i2c_address")
       .setCheck(null)
       .setAlign(Blockly.ALIGN_RIGHT)  
       .appendField(Blockly.MIXLY_LCD_ADDRESS);
-  this.appendStatementInput("transmission_data")
+      this.appendStatementInput("transmission_data")
       .setCheck(null);
-  this.setInputsInline(true);
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(Blockly.Blocks.communicate.HUE);
-  this.setTooltip("");
-  this.setHelpUrl("");
+      this.setInputsInline(true);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(Blockly.Blocks.communicate.HUE);
+      this.setTooltip("");
+      this.setHelpUrl("");
   }
 };
 
 //IIC写入主从机数据
 Blockly.Blocks.i2c_write= {
   init: function() { 
-  this.appendValueInput("i2c_write_data")
+      this.appendValueInput("i2c_write_data")
       .setCheck(null)
       .setAlign(Blockly.ALIGN_RIGHT)        
       .appendField("I2C"+Blockly.MIXLY_MICROPYTHON_SOCKET_SEND);
-  this.setInputsInline(true);
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(Blockly.Blocks.communicate.HUE);
-  this.setTooltip("");
+      this.setInputsInline(true);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(Blockly.Blocks.communicate.HUE);
+      this.setTooltip("");
   }
 };
 
@@ -461,7 +461,7 @@ Blockly.Blocks.i2c_slave_write_array = {
         this.appendValueInput('length')
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.MIXLY_I2C_SLAVE_WRITE_ARRAY_ARRAYLENGTH);
+        .appendField(Blockly.Msg.MIXLY_LIST_LEN);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
@@ -502,22 +502,21 @@ Blockly.Blocks.i2c_read = {
 };
 
 //写入寄存器地址
- 
-  Blockly.Blocks.i2c_master_writerReg = {       
+Blockly.Blocks.i2c_master_writerReg = {       
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('device')
-            .setCheck(Number)
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MIXLY_I2C_MASTER_WRITE);
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_I2C_MASTER_WRITE);
         this.appendValueInput('regadd')
-            .setCheck(Number)
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MIXLY_I2C_REGADD);
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_I2C_REGADD);
         this.appendValueInput('value')
-            .setCheck(Number)
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MIXLY_I2C_VALUE);
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_MICROBIT_JS_I2C_VALUE);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
@@ -525,22 +524,21 @@ Blockly.Blocks.i2c_read = {
 };
 
 //读取寄存器地址
-
 Blockly.Blocks.i2c_master_readerReg = {        
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendValueInput('device')
-            .setCheck(Number)
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MIXLY_I2C_MASTER_READ);
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_I2C_MASTER_READ);
         this.appendValueInput('regadd')
-            .setCheck(Number)
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MIXLY_I2C_REGADD);
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_I2C_REGADD);
         this.appendValueInput('bytes')
-            .setCheck(Number)
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField(Blockly.MIXLY_I2C_BYTES);
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_I2C_BYTES);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setInputsInline(true);
@@ -564,7 +562,7 @@ Blockly.Blocks.i2c_slave_onrequest = {
     init: function () {
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput("")
-         .appendField(Blockly.MIXLY_I2C_SLAVE_ONREQUEST);  
+        .appendField(Blockly.MIXLY_I2C_SLAVE_ONREQUEST);  
         this.appendStatementInput('DO')
         .appendField(Blockly.MIXLY_DO);
         this.setPreviousStatement(true);
@@ -596,107 +594,107 @@ Blockly.Blocks.i2c_master_reader = {
 
 Blockly.Blocks.spi_begin_slave= {
   init: function() { 
-  this.appendDummyInput()        
+      this.appendDummyInput()        
       .appendField(Blockly.MIXLY_SETUP+"SPI"+Blockly.MIXLY_DEVICE+Blockly.MIXLY_AS+Blockly.MIXLY_SALVE);
-  this.setInputsInline(true);
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(Blockly.Blocks.communicate.HUE);
-  this.setTooltip("");
-  this.setHelpUrl("");
+      this.setInputsInline(true);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(Blockly.Blocks.communicate.HUE);
+      this.setTooltip("");
+      this.setHelpUrl("");
   }
 };
 
 Blockly.Blocks.spi_begin_master= {
   init: function() { 
-  this.appendDummyInput()
-   .appendField(Blockly.MIXLY_SETUP+"SPI"+Blockly.MIXLY_DEVICE+Blockly.MIXLY_AS+Blockly.MIXLY_MASTER);
-  this.appendValueInput("spi_slave_pin")
+      this.appendDummyInput()
+      .appendField(Blockly.MIXLY_SETUP+"SPI"+Blockly.MIXLY_DEVICE+Blockly.MIXLY_AS+Blockly.MIXLY_MASTER);
+      this.appendValueInput("spi_slave_pin")
       .setCheck(null)
       .setAlign(Blockly.ALIGN_RIGHT)  
       .appendField(Blockly.MIXLY_SALVE+Blockly.MIXLY_PIN);
-  this.setInputsInline(true);
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(Blockly.Blocks.communicate.HUE);
-  this.setTooltip("");
-  this.setHelpUrl("");
+      this.setInputsInline(true);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(Blockly.Blocks.communicate.HUE);
+      this.setTooltip("");
+      this.setHelpUrl("");
   }
 };
 
 Blockly.Blocks.spi_transfer_Init= {
   init: function() { 
-  this.appendValueInput("slave_pin")
+      this.appendValueInput("slave_pin")
       .setCheck(null)        
       .appendField("SPI"+Blockly.MIXLY_SEND_DATA+Blockly.MIXLY_SALVE+Blockly.MIXLY_PIN);
-  this.appendStatementInput("transfer_data")
+      this.appendStatementInput("transfer_data")
       .setCheck(null);
-  this.setInputsInline(true);
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(Blockly.Blocks.communicate.HUE);
-  this.setTooltip("");
-  this.setHelpUrl("");
+      this.setInputsInline(true);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(Blockly.Blocks.communicate.HUE);
+      this.setTooltip("");
+      this.setHelpUrl("");
   }
 };
 
 Blockly.Blocks.spi_transfer_1= {
   init: function() { 
-  this.appendValueInput("transfer_data")
+      this.appendValueInput("transfer_data")
       .setCheck(null)  
       
       .appendField("SPI"+Blockly.MIXLY_MICROPYTHON_SOCKET_SEND);
-  this.setInputsInline(true);
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(Blockly.Blocks.communicate.HUE);
-  this.setTooltip("");
-  this.setHelpUrl("");
+      this.setInputsInline(true);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(Blockly.Blocks.communicate.HUE);
+      this.setTooltip("");
+      this.setHelpUrl("");
   }
 };
 
 Blockly.Blocks.spi_transfer_2= {
   init: function() { 
-  this.appendValueInput("transfer_data")
+      this.appendValueInput("transfer_data")
       .setCheck(null)
       .appendField("SPI"+Blockly.MIXLY_MICROPYTHON_SOCKET_SEND);
-  this.appendDummyInput()
+      this.appendDummyInput()
       .setAlign(Blockly.ALIGN_RIGHT)
       .appendField(Blockly.MIXLY_RETURN_DATA);
-  this.setInputsInline(true);
-  this.setOutput(true, null);
-  this.setColour(Blockly.Blocks.communicate.HUE);
-  this.setTooltip("");
-  this.setHelpUrl("");
+      this.setInputsInline(true);
+      this.setOutput(true, null);
+      this.setColour(Blockly.Blocks.communicate.HUE);
+      this.setTooltip("");
+      this.setHelpUrl("");
   }
 };
 
 Blockly.Blocks.spi_slave_interrupt= {
   init: function() { 
-  this.appendValueInput("slave_interrupt_input")
+      this.appendValueInput("slave_interrupt_input")
       .setCheck(null)  
       .appendField("SPI"+Blockly.MIXLY_SALVE+"接收到数据 获取寄存器数据");
-  this.appendStatementInput("slave_interrupt_data")
+      this.appendStatementInput("slave_interrupt_data")
       .setCheck(null)  
       .appendField("执行");
-  this.setInputsInline(true);
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(Blockly.Blocks.communicate.HUE);
-  this.setTooltip("");
-  this.setHelpUrl("");
+      this.setInputsInline(true);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(Blockly.Blocks.communicate.HUE);
+      this.setTooltip("");
+      this.setHelpUrl("");
   }
 };
 
 Blockly.Blocks.spi_slave_receive= {
   init: function() { 
-  this.appendValueInput("slave_receive_data")
+      this.appendValueInput("slave_receive_data")
       .setCheck(null)  
       .appendField("SPI从机获取寄存器数据");
-  this.setInputsInline(true);
-  this.setOutput(true, null);
-  this.setColour(Blockly.Blocks.communicate.HUE);
-  this.setTooltip("");
-  this.setHelpUrl("");
+      this.setInputsInline(true);
+      this.setOutput(true, null);
+      this.setColour(Blockly.Blocks.communicate.HUE);
+      this.setTooltip("");
+      this.setHelpUrl("");
   }
 };
