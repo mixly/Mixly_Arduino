@@ -49,7 +49,7 @@ Blockly.Blocks.sd_exist= {
       .appendField(Blockly.MIXLY_SD_FILE_Exist);
   this.setOutput(true, null);
   this.setColour(Blockly.Blocks.storage.HUE);
-  this.setTooltip("在SD卡上是否存在？");
+  this.setTooltip("");
   this.setHelpUrl("");
   },
   newQuote_: function(open) {
@@ -72,7 +72,7 @@ Blockly.Blocks.sd_DelFile= {
   this.setPreviousStatement(true, null);
   this.setNextStatement(true, null);
   this.setColour(Blockly.Blocks.storage.HUE);
-  this.setTooltip("删除SD卡上的文件");
+  this.setTooltip("");
   this.setHelpUrl("");
   },
   newQuote_: function(open) {
@@ -95,7 +95,7 @@ Blockly.Blocks.sd_read= {
   this.setPreviousStatement(true, null);
   this.setNextStatement(true, null);
   this.setColour(Blockly.Blocks.storage.HUE);
-  this.setTooltip("在串口监视器中查看文件的内容");
+  this.setTooltip("");
   this.setHelpUrl("");
   },
   newQuote_: function(open) {

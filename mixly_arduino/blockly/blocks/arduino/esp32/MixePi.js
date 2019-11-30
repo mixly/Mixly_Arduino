@@ -268,7 +268,7 @@ Blockly.Blocks.TFT_Brightness = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendValueInput('BRIGHTNESS')
     .setCheck(Number)
-    .appendField("TFT背光"+Blockly.MIXLY_BRIGHTNESS);
+    .appendField("TFT"+Blockly.TFT_Brightness+Blockly.MIXLY_BRIGHTNESS);
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
