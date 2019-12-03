@@ -200,24 +200,9 @@ Blockly.Arduino.Blynk_iot_timer = function () {
 	return "timer.run();\n";
 };
 
-//blynk 硬件已连接
-Blockly.Arduino.Blynk_iot_BLYNK_CONNECTED = function () {
-	var funcName = 'BLYNK_CONNECTED';
-	var branch = Blockly.Arduino.statementToCode(this, 'DO');
-	var code = funcName + '() {\n' + branch + '}\n';
-	Blockly.Arduino.definitions_[funcName] = code;
-};
-
-//blynk APP已连接
-Blockly.Arduino.Blynk_iot_BLYNK_APP_CONNECTED = function () {
-	var funcName = 'BLYNK_APP_CONNECTED';
-	var branch = Blockly.Arduino.statementToCode(this, 'DO');
-	var code = funcName + '() {\n' + branch + '}\n';
-	Blockly.Arduino.definitions_[funcName] = code;
-};
-//blynk APP离线
-Blockly.Arduino.Blynk_iot_BLYNK_APP_DISCONNECTED = function () {
-	var funcName = 'BLYNK_APP_DISCONNECTED';
+//blynk 连接状态函数
+Blockly.Arduino.Blynk_iot_CONNECT_STATE = function () {
+	var funcName = this.getFieldValue('state');
 	var branch = Blockly.Arduino.statementToCode(this, 'DO');
 	var code = funcName + '() {\n' + branch + '}\n';
 	Blockly.Arduino.definitions_[funcName] = code;

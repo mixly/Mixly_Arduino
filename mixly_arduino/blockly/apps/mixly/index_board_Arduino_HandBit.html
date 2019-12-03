@@ -91,7 +91,6 @@
   <script type="text/javascript" src="../../blocks/arduino/esp32/variables.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/esp32/procedures.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/esp32/serial.js"></script>
-  <script type="text/javascript" src="../../blocks/arduino/esp32/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/esp32/Handbit.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/tools.js"></script>
   <script src="init.js"></script>
@@ -1004,15 +1003,8 @@
                     <field name="PIN">0</field>
                   </shadow>
                 </value>
-                <value name="TONE_NOTE">
-                  <shadow type="TONE_NOTE">
-                    <field name="PIN">NOTE_C</field>
-                  </shadow>
-                </value>
-                <value name="OCTAVE">
-                  <shadow type="OCTAVE">
-                    <field name="PIN">0</field>
-                  </shadow>
+                <value name="FREQUENCY">
+                  <shadow type="tone_notes"></shadow>
                 </value>
               </block>
             </next>
@@ -1411,7 +1403,7 @@
         <block type="ledcAttachPin">
           <value name="PIN">
             <shadow type="pins_pwm">
-              <field name="PIN">5</field>
+              <field name="PIN">P6</field>
             </shadow>
           </value>
           <value name="CHANNEL">
@@ -1426,15 +1418,8 @@
                   <field name="PIN">0</field>
                 </shadow>
               </value>
-              <value name="TONE_NOTE">
-                <shadow type="TONE_NOTE">
-                  <field name="PIN">NOTE_C</field>
-                </shadow>
-              </value>
-              <value name="OCTAVE">
-                <shadow type="OCTAVE">
-                  <field name="PIN">0</field>
-                </shadow>
+              <value name="FREQUENCY">
+                <shadow type="tone_notes"></shadow>
               </value>
             </block>
           </next>
@@ -2464,8 +2449,7 @@
       </value>
       <value name="auth_key">
         <shadow type="text">
-          <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>n
-        </shadow>
+        <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>n</shadow>
       </value>
       <value name="wifi_ssid">
         <shadow type="text">
@@ -2789,7 +2773,8 @@
         </shadow>
       </value>
     </block>
-    <block type="Blynk_iot_BLYNK_CONNECTED">
+    <block type="Blynk_iot_CONNECT_STATE" >
+      <field name="state">BLYNK_CONNECTED</field>
       <statement name="DO">
         <block type="blynk_bridge_auth">
           <field name="Vpin">V0</field>
@@ -2826,7 +2811,8 @@
         </shadow>
       </value>
     </block>
-    <block type="Blynk_iot_BLYNK_CONNECTED">
+    <block type="Blynk_iot_CONNECT_STATE" >
+      <field name="state">BLYNK_CONNECTED</field>
       <statement name="DO">
         <block type="blynk_WidgetRTC_init">
           <value name="NUM">
@@ -3057,13 +3043,7 @@
         </block>
       </statement>
     </block>
-    <block type="Blynk_iot_BLYNK_CONNECTED">
-      <statement name="DO"></statement>
-    </block>
-    <block type="Blynk_iot_BLYNK_APP_CONNECTED">
-      <statement name="DO"></statement>
-    </block>
-    <block type="Blynk_iot_BLYNK_APP_DISCONNECTED">
+    <block type="Blynk_iot_CONNECT_STATE">
       <statement name="DO"></statement>
     </block>
     <block type="Blynk_iot_BLYNK_syncAll">

@@ -40,11 +40,10 @@ Blockly.Arduino.tone_notes = function() {
 };
 
 Blockly.Arduino.controls_tone=function(){
-   var TONE_NOTE = Blockly.Arduino.valueToCode(this, 'TONE_NOTE',Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-   var OCTAVE = Blockly.Arduino.valueToCode(this, 'OCTAVE',Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
+    var fre = Blockly.Arduino.valueToCode(this, 'FREQUENCY',Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
     var channel = Blockly.Arduino.valueToCode(this, 'CHANNEL',Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
   var code = ""; 
-  code = "ledcWriteNote("+channel+","+TONE_NOTE+","+OCTAVE+");\n";
+  code = "ledcWriteTone("+channel+","+fre+");\n";
   return code;
 };
 

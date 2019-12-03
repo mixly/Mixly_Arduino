@@ -807,7 +807,7 @@ Blockly.Blocks['procedures_ifreturn'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setTooltip(Blockly.Msg.PROCEDURES_IFRETURN_TOOLTIP);
+    this.setTooltip();
     this.hasReturnValue_ = true;
   },
   /**

@@ -122,43 +122,6 @@ Blockly.Blocks.handbit_MSA300_action = {
 }
 };
 
-Blockly.Blocks.handbit_controls_tone = {
-  init: function () {
-    this.setColour(Blockly.Blocks.actuator.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_TONE);
-    this.appendValueInput('FREQUENCY')
-    .setCheck(Number)
-    .appendField(Blockly.MIXLY_FREQUENCY);
-    this.appendValueInput('DURATION')
-    .setCheck(Number)
-    .appendField(Blockly.MIXLY_DELAY);
-    this.appendValueInput('CHANNEL')
-    .setCheck(Number)
-    .appendField(Blockly.MIXLY_CHANNEL);
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE);
-}
-};
-
-Blockly.Blocks.handbit_controls_notone = {
-  init: function () {
-    this.setColour(Blockly.Blocks.actuator.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_NOTONE);
-    this.appendValueInput('CHANNEL')
-    .setCheck(Number)
-    .appendField(Blockly.MIXLY_CHANNEL);
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE);
-}
-};
-
-
 Blockly.Blocks.handbit_rgb_rainbow1 = {
   init: function () {
     this.setColour(Blockly.Blocks.actuator.HUE);
