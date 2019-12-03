@@ -1777,6 +1777,7 @@ Blockly.mixpy_DATAFRAME_GET_INDEX = "对应的";
 Blockly.mixpy_DATAFRAME_GET_TOOLTIP = "按照标题名或索引名获取Dataframe的行或列";
 Blockly.mixpy_PL_SAVEFIG = "将绘制的图形保存为图片";
 Blockly.mixpy_PL_SAVEFIG_TOOLTIP="保存绘制的图形，参数可以设置保存图片的路径、名称和扩展名"
+Blockly.mixpy_TURTLE_SAVEFIG_TOOLTIP="通过海龟屏幕保存绘制的图形，支持的文件格式为.eps，需要预先初始化海龟屏幕"
 Blockly.mixpy_PL_TEXT_X = '横坐标';
 Blockly.mixpy_PL_TEXT_Y = '纵坐标';
 Blockly.mixpy_PL_TEXT_TAG = '处的数据标签为';

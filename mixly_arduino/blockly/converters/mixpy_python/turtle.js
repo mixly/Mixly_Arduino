@@ -152,6 +152,18 @@ pbc.objectFunctionD.get('delay')[turtleClass] = function (py2block, func, args, 
     })];
 }
 
+pbc.objectFunctionD.get('postscript')[screenClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    
+    var turtleblock = py2block.convert(func.value.func.value);
+    var argblock = py2block.convert(keywords[0].value);
+    return [block('turtle_screen_savefig', func.lineno, {}, {
+        'TUR': turtleblock,
+        'FILE': argblock,
+    }, {
+        "inline": "true"
+    })];
+}
+
 pbc.moduleFunctionD.get('turtle')['done'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 0) {
         throw new Error("Incorrect number of arguments");

@@ -828,3 +828,18 @@ Blockly.Blocks['turtle_listen'] = {
     this.setNextStatement(true);
   }
 };
+
+ Blockly.Blocks['turtle_screen_savefig'] = {
+   init: function() {
+     this.setColour(Blockly.Blocks.data.HUE);
+     this.appendValueInput('TUR')
+     this.appendValueInput("FILE")
+         .setCheck(String)
+         .appendField(Blockly.mixpy_PL_SAVEFIG);
+     this.setInputsInline(true);
+     this.setPreviousStatement(true);
+     this.setNextStatement(true);
+     this.setOutput(false);
+     this.setTooltip(Blockly.mixpy_TURTLE_SAVEFIG_TOOLTIP);
+   }
+ };
