@@ -831,7 +831,7 @@ Blockly.Blocks['turtle_listen'] = {
 
  Blockly.Blocks['turtle_screen_savefig'] = {
    init: function() {
-     this.setColour(Blockly.Blocks.data.HUE);
+     this.setColour(Blockly.Blocks.turtle.HUE);
      this.appendValueInput('TUR')
      this.appendValueInput("FILE")
          .setCheck(String)
