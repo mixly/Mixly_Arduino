@@ -286,8 +286,6 @@ Blockly.Blocks['network_wifi_connect'] = {
     this.setColour(Blockly.Blocks.storage.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_NETWORK_WIFI_CONNECT);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_SYMBOL_QUESTION);
     this.setOutput(true, Number);
     this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_WIFI_CONNECT_TOOLTIP);
@@ -302,18 +300,6 @@ Blockly.Blocks['network_get_connect'] = {
     .appendField(Blockly.MIXLY_ESP32_NETWORK_IP);
     this.setOutput(true);
     this.setInputsInline(true);
-  }
-};
-
-Blockly.Blocks['network_stop'] = {
-  init: function() {
-    this.setColour(Blockly.Blocks.storage.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_ESP32_NETWORK_STOP_CONNECT);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setInputsInline(true);
-    this.setTooltip(Blockly.MIXLY_ESP32_NETWORK_STOP_TOOLTIP);
   }
 };
 

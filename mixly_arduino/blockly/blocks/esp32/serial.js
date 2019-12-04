@@ -35,14 +35,17 @@ Blockly.Blocks['serial_println'] = {
 Blockly.Blocks['serial_print_hex'] = {
    init: function() {
     this.setColour(Blockly.Blocks.serial.HUE);
-    this.appendValueInput("CONTENT", Number)
+    this.appendDummyInput()
         .appendField("Serial")
         .appendField(new Blockly.FieldDropdown([['uart1', '1'], ['uart2', '2']]), 'mode')
-        .appendField(Blockly.MIXLY_SERIAL_PRINT_HEX)
+        .appendField(Blockly.MIXLY_SERIAL_PRINTLN);
+    this.appendValueInput("CONTENT", Number)
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.MATH_BIN, "bin"],[Blockly.Msg.MATH_OCT, "oct"],[Blockly.Msg.MATH_DEC, "int"],[Blockly.Msg.MATH_HEX, "hex"]]), "STAT")
         .setCheck(Number);
-    //this.setFieldValue('1','mode')
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setFieldValue('hex','STAT')
 	this.setTooltip(Blockly.Msg.TEXT_PRINT_HEX_TOOLTIP);
   }
 };

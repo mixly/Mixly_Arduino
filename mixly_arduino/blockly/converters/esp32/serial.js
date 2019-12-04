@@ -86,17 +86,18 @@ function converter(py2block, func, args, keywords, starargs, kwargs, node){
         ){
             if(args[0].left.args[0]._astname === "Call"
                 && args[0].left.args[0].func._astname === "Name"
-                && py2block.Name_str(args[0].left.args[0].func) === "hex"){ 
+                && py2block.Name_str(args[0].left.args[0].func) in {"hex":16,"bin":2,"oct":8}){ 
                 //serial.write(str(hex(XX)) + "\r\n")
                 pbc.inScope = "lcd_init";
                 var numblock=py2block.convert(args[0].left.args[0].args[0]);
                 pbc.inScope=null;
                 return [block("serial_print_hex", func.lineno, {
-                     "mode":mode
+                     "mode":mode,
+                    "STAT":py2block.Name_str(args[0].left.args[0].func),
                 }, {
                     "CONTENT":numblock,
                 }, {
-                    "inline": "false"
+                    "inline": "true"
                 })];
             }else{
                 return [block("serial_println", func.lineno, {

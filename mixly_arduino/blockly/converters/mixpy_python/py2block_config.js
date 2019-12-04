@@ -42,10 +42,6 @@ pbc.formatModuleL = [];
 //忽略某些方法、类、赋值
 pbc.initIgnoreS = function(){
     var pythonIgnoreL = [
-        //math.js
-        'mixly_mapping',
-        //lists.js
-        'lists_sort', 'math_mean', 'math_median', 'math_modes', 'math_standard_deviation',
     ];
     var boardIgnoreL = [];
 

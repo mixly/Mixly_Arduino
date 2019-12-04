@@ -88,8 +88,6 @@
   <script type="text/javascript" src="../../blocks/arduino/esp32/variables.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/esp32/procedures.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/esp32/serial.js"></script>
-  <script type="text/javascript" src="../../blocks/arduino/esp32/actuator.js"></script>
-  
   <script type="text/javascript" src="../../blocks/arduino/tools.js"></script> 
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color_esp32_arduino_advance.css" />
@@ -887,7 +885,7 @@
   </block>
 </category>
 <category id="catActuator" colour="100">
- <block type="Mixly_motor">
+<!-- <block type="Mixly_motor">
   <value name="PIN1">
     <shadow type="pins_digital">
       <field name="PIN">5</field>
@@ -899,6 +897,35 @@
     </shadow>
   </value>
   <value name="speed">
+    <shadow type="math_number">
+      <field name="NUM">100</field>
+    </shadow>
+  </value>
+</block>-->
+<block type="HR8833_Motor_Setup">
+  <value name="MOTOR_ID">
+    <shadow type="motor_id">
+      <field name="CHANNEL">1</field>
+    </shadow>
+  </value>
+  <value name="PIN1">
+    <shadow type="pins_digital">
+      <field name="PIN">16</field>
+    </shadow>
+  </value>
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">17</field>
+    </shadow>
+  </value>
+</block>
+<block type="HR8833_Motor_Speed">
+  <value name="MOTOR_ID">
+    <shadow type="motor_id">
+      <field name="CHANNEL">1</field>
+    </shadow>
+  </value>
+  <value name="SPEED">
     <shadow type="math_number">
       <field name="NUM">100</field>
     </shadow>
@@ -969,15 +996,8 @@
               <field name="PIN">0</field>
             </shadow>
           </value>
-          <value name="TONE_NOTE">
-            <shadow type="TONE_NOTE">
-              <field name="PIN">NOTE_C</field>
-            </shadow>
-          </value>
-          <value name="OCTAVE">
-            <shadow type="OCTAVE">
-              <field name="PIN">0</field>
-            </shadow>
+          <value name="FREQUENCY">
+            <shadow type="tone_notes"></shadow>
           </value>
         </block>
       </next>
@@ -1817,7 +1837,7 @@
       </shadow>
     </value>
   </block>
-  <block type="spi_transfer">
+<!--   <block type="spi_transfer">
     <value name="pin">
       <shadow type="pins_digital"></shadow>
     </value>
@@ -1826,7 +1846,7 @@
         <field name="NUM">0</field>
       </shadow>
     </value>
-  </block>
+  </block> -->
   <block type="RFID_init">
   </block>  
   <block type="RFID_on"></block>   
@@ -1979,7 +1999,6 @@
   </block>
   <block type="network_get_connect">
   </block>
-  <block type="network_stop"></block>
   <block type="NTP_server">
     <value name="server_add">
       <shadow type="text">
@@ -2244,7 +2263,8 @@
  <value name="xnyj">
   <shadow type="math_number">
     <field name="NUM">V0</field>
-  </shadow> <value name="xnyj">
+        </shadow>
+        <value name="xnyj">
     <shadow type="math_number">
       <field name="NUM">V0</field>
     </shadow>
@@ -2270,8 +2290,9 @@
   <value name="xnyj">
     <shadow type="math_number">
       <field name="NUM">V0</field>
-    </shadow> <value name="xnyj">
-      <shadow type="math_number">
+        </shadow>
+        <value name="xnyj">
+          <shadow type="math_number">
         <field name="NUM">V0</field>
       </shadow>
     </value> 
@@ -2286,7 +2307,8 @@
   <value name="xnyj">
     <shadow type="math_number">
       <field name="NUM">V0</field>
-    </shadow> <value name="xnyj">
+        </shadow>
+        <value name="xnyj">
       <shadow type="math_number">
         <field name="NUM">V0</field>
       </shadow>
@@ -2302,8 +2324,9 @@
  <value name="xnyj">
   <shadow type="math_number">
     <field name="NUM">V0</field>
-  </shadow> <value name="xnyj">
-    <shadow type="math_number">
+        </shadow>
+        <value name="xnyj">
+          <shadow type="math_number">
       <field name="NUM">V0</field>
     </shadow>
   </value> 
@@ -2317,9 +2340,10 @@
 <block type="blynk_table_cleardata">
  <value name="xnyj">
   <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow> <value name="xnyj">
-    <shadow type="math_number">
+          <field name="NUM">V0</field>
+        </shadow>
+        <value name="xnyj">
+          <shadow type="math_number">
       <field name="NUM">V0</field>
     </shadow>
   </value> 
@@ -2330,7 +2354,8 @@
   </shadow>
 </value>
 </block>
-<block type="Blynk_iot_BLYNK_CONNECTED" >
+<block type="Blynk_iot_CONNECT_STATE" >
+  <field name="state">BLYNK_CONNECTED</field>
   <statement name="DO">
     <block type="blynk_bridge_auth">
       <field name="Vpin">V0</field>
@@ -2367,10 +2392,12 @@
     </shadow>
   </value>
 </block>
-<block type="Blynk_iot_BLYNK_CONNECTED">
+<block type="Blynk_iot_CONNECT_STATE" >
+  <field name="state">BLYNK_CONNECTED</field>
   <statement name="DO">
     <block type="blynk_WidgetRTC_init">
-      <value name="NUM"><shadow type="math_number" >
+          <value name="NUM">
+            <shadow type="math_number">
         <field name="NUM">10</field>
       </shadow>
     </value>
@@ -2597,14 +2624,10 @@
     </block>
   </statement>
 </block>
-<block type="Blynk_iot_BLYNK_CONNECTED">
+<block type="Blynk_iot_CONNECT_STATE">
   <statement name="DO"></statement>
 </block>
-<block type="Blynk_iot_BLYNK_APP_CONNECTED">
-  <statement name="DO"></statement>
-</block>
-<block type="Blynk_iot_BLYNK_APP_DISCONNECTED">
-  <statement name="DO"></statement>
+
 </block>
 <block type="Blynk_iot_BLYNK_syncAll" >
 </block>

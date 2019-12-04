@@ -84,7 +84,7 @@ Blockly.Blocks['math_bit'] = {
     .setCheck(Number)
     .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
     this.setInputsInline(true);
-    this.setTooltip("位运算");
+    this.setTooltip("");
     this.setHelpUrl("https://mixly.readthedocs.io/zh_CN/latest/arduino/04.Mathematics.html#id8");
   }
 };

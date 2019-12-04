@@ -11,15 +11,14 @@ Blockly.Blocks.HT16K33_TEXT={
   init:function(){
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
-    .appendField("点阵屏"); 
+    .appendField(Blockly.MIXLY_MAX7219_PUTSTR); 
     this.appendValueInput("TEXT", String)
     .setCheck([Number, String])
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(" 显示");
+    .setAlign(Blockly.ALIGN_RIGHT);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
-    this.setTooltip("ArduBits_EX源_点阵屏显示_输入_字符串");
+    this.setTooltip("");
   }
 };
 
@@ -28,8 +27,8 @@ Blockly.Blocks.HT16K33_POS = {
   init: function() {
     //执行器_点阵屏显示_画点变量
     var MixGo_DrawPixel_NUM = [
-    ["亮", "LED_ON"],
-    ["灭", "LED_OFF"]
+    [Blockly.MIXLY_4DIGITDISPLAY_ON, "LED_ON"],
+    [Blockly.MIXLY_4DIGITDISPLAY_OFF, "LED_OFF"]
     ];
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
@@ -449,43 +448,6 @@ Blockly.Blocks.mixgo_MPU9250 = {
     this.setHelpUrl('');
   }
 };
-
-Blockly.Blocks.controls_tone={
-    init:function(){
-        this.setColour(Blockly.Blocks.actuator.HUE);
-        this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_TONE);
-        this.appendValueInput('FREQUENCY')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_FREQUENCY);
-        this.appendValueInput('DURATION')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_DELAY);
-        this.appendValueInput('CHANNEL')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_CHANNEL);
-        this.setInputsInline(true);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE);
-    }
-};
-
-Blockly.Blocks.controls_notone={
-    init:function(){
-        this.setColour(Blockly.Blocks.actuator.HUE);
-        this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_NOTONE);
-        this.appendValueInput('CHANNEL')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_CHANNEL);
-        this.setInputsInline(true);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE);
-    }
-};
-
 
 Blockly.Blocks.MixGo_rgb_rainbow1 = {
   init: function () {

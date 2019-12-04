@@ -376,3 +376,11 @@ Blockly.Python.turtle_listen = function(){
   var code=varName + '.listen()\n';
   return code;
 };
+
+Blockly.Python.turtle_screen_savefig = function () {
+    Blockly.Python.definitions_.import_turtle = "import turtle";
+    var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+    var file = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
+    var code = varName + ".getcanvas().postscript(file="+file+")\n";
+    return code;
+};

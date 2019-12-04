@@ -813,7 +813,7 @@
     </shadow>
   </value>
 </block>
-<!--DS302-->
+<!--DS1302-->
 <block type="DS1302_init">
   <value name="RST">
     <shadow type="pins_digital">
@@ -877,6 +877,71 @@
       <field name="NUM">1</field>
     </shadow>
   </value>
+</block>
+<block type="Arduino_keypad_4_4_start">
+  <value name="keypad_name">
+  </value>
+  <value name="keypad_row">
+    <block type="keypad_row_data">
+      <value name="keypad_row_1">
+        <shadow type="pins_digital">
+          <field name="PIN">2</field>
+        </shadow>
+      </value>
+      <value name="keypad_row_2">
+        <shadow type="pins_digital">
+          <field name="PIN">3</field>
+        </shadow>
+      </value>
+      <value name="keypad_row_3">
+        <shadow type="pins_digital">
+          <field name="PIN">4</field>
+        </shadow>
+      </value>
+      <value name="keypad_row_4">
+        <shadow type="pins_digital">
+          <field name="PIN">5</field>
+        </shadow>
+      </value>
+    </block>
+  </value>
+  <value name="keypad_col">
+    <block type="keypad_col_data">
+      <value name="keypad_col_1">
+        <shadow type="pins_digital">
+          <field name="PIN">6</field>
+        </shadow>
+      </value>
+      <value name="keypad_col_2">
+        <shadow type="pins_digital">
+          <field name="PIN">7</field>
+        </shadow>
+      </value>
+      <value name="keypad_col_3">
+        <shadow type="pins_digital">
+          <field name="PIN">8</field>
+        </shadow>
+      </value>
+      <value name="keypad_col_4">
+        <shadow type="pins_digital">
+          <field name="PIN">9</field>
+        </shadow>
+      </value>
+    </block>
+  </value>
+  <value name="keypad_type">
+    <block type="keypad_type_data"></block>
+  </value>
+</block>
+<block type="get_keypad_num">
+  <value name="keypad_name"></value>
+</block>
+<block type="arduino_keypad_event">
+  <value name="keypad_event_input">
+   <block type="variables_get">
+    <field name="VAR">key</field>
+  </block>
+</value>
 </block>
 <block type="gps_init">
   <value name="RX">
@@ -1413,7 +1478,6 @@
         </statement>
       </block>
     </next>
-    
   </block>
   <block type="oled_set_EN_Font">
   </block>
@@ -1841,36 +1905,68 @@
     </shadow>
   </value>
 </block>
-<block type="i2c_master_writer"></block>
-<block type="i2c_master_reader"></block>
-<block type="i2c_slave_onreceive">
-  <value name="device">
+<block type="i2c_master_Init"> </block>
+
+<block type="i2c_begin_end_transmission">
+  <value name="i2c_address">
     <shadow type="math_number">
-      <field name="NUM">1</field>
+      <field name="NUM">8</field>
     </shadow>
   </value>
 </block>
-<block type="i2c_master_reader2"></block>
-<block type="i2c_available"></block>
-
-<block type="i2c_howmany"></block>
-
-<block type="i2c_slave_onrequest">
+<block type="i2c_master_reader">
   <value name="device">
     <shadow type="math_number">
-      <field name="NUM">1</field>
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="bytes">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
     </shadow>
   </value>
 </block>
-
-<block type="i2c_slave_write">
+<block type="i2c_master_writerReg">          
+  <value name="device">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="regadd">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
   <value name="value">
     <shadow type="math_number">
-      <field name="NUM">1</field>
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>    
+<block type="i2c_master_readerReg">   
+  <value name="device">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="regadd">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="bytes">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
     </shadow>
   </value>
 </block>
-
+<block type="i2c_write">
+  <value name="i2c_write_data">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+</block>
 <block type="i2c_slave_write_array">
   <value name="array">
     <shadow type="math_number">
@@ -1883,7 +1979,30 @@
     </shadow>
   </value>
 </block>
-
+<block type="i2c_available"></block>
+<block type="i2c_read"></block>
+<block type="i2c_slave_Init"> 
+ <value name="i2c_address">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
+</block>
+<block type="i2c_howmany">
+</block>
+<block type="i2c_slave_onreceive">
+</block>
+<block type="i2c_slave_onrequest">
+</block>
+<block type="spi_begin_master" >
+ <value name="spi_slave_pin">
+   <shadow type="pins_digital" >
+     <field name="PIN">10</field>
+   </shadow>
+ </value>
+</block>
+<block type="spi_begin_slave">
+</block>
 <block type="spi_transfer">
   <value name="pin">
     <shadow type="pins_digital"></shadow>
@@ -1892,6 +2011,41 @@
     <shadow type="math_number">
       <field name="NUM">0</field>
     </shadow>
+  </value>
+</block>
+<block type="spi_transfer_Init">
+  <value name="slave_pin">
+    <shadow type="pins_digital">
+      <field name="PIN">10</field>
+    </shadow>
+  </value>
+</block>
+<block type="spi_transfer_1">
+  <value name="transfer_data">
+    <shadow type="text_char">
+      <field name="TEXT">A</field>
+    </shadow>
+  </value>
+</block>
+<block type="spi_transfer_2">
+  <value name="transfer_data">
+    <shadow type="text_char">
+      <field name="TEXT">A</field>
+    </shadow>
+  </value>
+</block>
+<block type="spi_slave_interrupt">
+  <value name="slave_interrupt_input">
+    <block type="variables_get">
+      <field name="VAR">SPDR</field>
+    </block>
+  </value>
+</block>
+<block type="spi_slave_receive">
+  <value name="slave_receive_data">
+    <block type="variables_get">
+      <field name="VAR">SPDR</field>
+    </block>
   </value>
 </block>
 <block type="RFID_init">
@@ -1919,7 +2073,8 @@
    </shadow>
  </value>
 </block> 
-<block type="RFID_off"></block>    
+<block type="RFID_off">
+</block>    
 </category>
 <category id="catStorage" colour="0">
   <block type="store_sd_init">
@@ -2032,207 +2187,239 @@
 <block type="ethernet_client_get_request"></block>
 </category>
 <category id="catBlynk" name="catBlynk" colour="160">
-  <block type="blynk_server">
-    <value name="server_add">
-      <shadow type="text">
-        <field name="TEXT">116.62.49.166</field>
-      </shadow>
-    </value>
+  <block type="blynk_usb_server">
     <value name="auth_key">
       <shadow type="text">
         <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>n</shadow>
       </value>
-      <value name="wifi_ssid">
-        <shadow type="text">
-          <field name="TEXT">wifi-ssid</field>
-        </shadow>
-      </value>
-      <value name="wifi_pass">
-        <shadow type="text">
-          <field name="TEXT">wifi-pass</field>
-        </shadow>
-      </value>
     </block>
-    <block type="Blynk_connect_state"></block>
-    <block type="arduino_blynk_bluetooth">
-      <value name="auth">
+    <block type="blynk_server">
+      <value name="server_add">
         <shadow type="text">
-          <field name="TEXT">59d948d79fe642aab95c1577b1ad419d</field>
+          <field name="TEXT">116.62.49.166</field>
         </shadow>
       </value>
-      <value name="TX">
-        <shadow type="math_number">
-          <field name="NUM">1</field>
-        </shadow>
-      </value>
-      <value name="RX">
+      <value name="auth_key">
+        <shadow type="text">
+          <field name="TEXT">d9efdd0413ec4b74ab0057a0b8675654</field>n</shadow>
+        </value>
+        <value name="wifi_ssid">
+          <shadow type="text">
+            <field name="TEXT">wifi-ssid</field>
+          </shadow>
+        </value>
+        <value name="wifi_pass">
+          <shadow type="text">
+            <field name="TEXT">wifi-pass</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="Blynk_connect_state"></block>
+      <block type="arduino_blynk_bluetooth">
+        <value name="auth">
+          <shadow type="text">
+            <field name="TEXT">59d948d79fe642aab95c1577b1ad419d</field>
+          </shadow>
+        </value>
+        <value name="TX">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="RX">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="blynk_iot_get_data">
+        <mutation>
+          <arg name="vpin_value" vartype="int"></arg>
+        </mutation>
+        <field name="Vpin">V0</field>
+        <statement name="STACK">
+          <block type="serial_println">
+            <field name="serial_select">Serial</field>
+            <value name="CONTENT">
+              <block type="variables_get">
+                <field name="VAR">vpin_value</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+      <block type="Blynk_iot_timer">
+        <mutation>
+          <arg name="vpin_value" vartype="int"></arg>
+        </mutation>
+        <field name="Vpin">V0</field>
+        <value name="TIME">
+          <shadow type="math_number">
+            <field name="NUM">1000</field>
+          </shadow>
+        </value>
+        <statement name="DO">
+          <block type="blynk_iot_push_data">
+            <field name="Vpin">V0</field>
+            <value name="data">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+          </block>
+        </statement>
+      </block>
+      <block type="blynk_iot_WidgetLED_COLOR">
+        <value name="STAT">
+          <shadow type="inout_highlow"></shadow>
+        </value>
+      </block>
+      <block type="blynk_iot_WidgetLED_VALUE">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="blynk_email">
+        <value name="email_add">
+          <shadow type="text">
+            <field name="TEXT">example@blynk.cc</field>
+          </shadow>
+        </value>
+        <value name="Subject">
+          <shadow type="text">
+            <field name="TEXT">Subject</field>
+          </shadow>
+        </value>
+        <value name="content">
+          <shadow type="text">
+            <field name="TEXT">Content</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="blynk_notify">
+        <value name="content">
+          <shadow type="text">
+            <field name="TEXT">通知内容</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="blynk_iot_terminal_get">
+        <field name="Vpin">V0</field>
+        <statement name="DO">
+          <block type="serial_println">
+            <field name="serial_select">Serial</field>
+            <value name="CONTENT">
+              <block type="variables_get">
+                <field name="VAR">terminal_text</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+      <block type="blynk_terminal_clear">
+      </block>
+      <block type="blynk_terminal">
+        <value name="content">
+          <shadow type="text">
+            <field name="TEXT">Hello,World!</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="blynk_time_input_1">
+        <field name="Vpin">V0</field>
+        <statement name="DO">
+          <block type="serial_println">
+            <field name="serial_select">Serial</field>
+            <value name="CONTENT">
+              <block type="variables_get">
+                <field name="VAR">hour</field>
+              </block>
+            </value>
+            <next>
+              <block type="serial_println">
+                <field name="serial_select">Serial</field>
+                <value name="CONTENT">
+                  <block type="variables_get">
+                    <field name="VAR">minute</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="serial_println">
+                    <field name="serial_select">Serial</field>
+                    <value name="CONTENT">
+                      <block type="variables_get">
+                        <field name="VAR">second</field>
+                      </block>
+                    </value>
+                    <next>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+      <block type="blynk_lcd">
+       <field name="Vpin">V0</field>
+       <value name="x">
         <shadow type="math_number">
           <field name="NUM">0</field>
         </shadow>
       </value>
-    </block>
-    <block type="blynk_iot_get_data">
-      <mutation>
-        <arg name="vpin_value" vartype="int"></arg>
-      </mutation>
-      <field name="Vpin">V0</field>
-      <statement name="STACK">
-        <block type="serial_println">
-          <field name="serial_select">Serial</field>
-          <value name="CONTENT">
-            <block type="variables_get">
-              <field name="VAR">vpin_value</field>
-            </block>
-          </value>
-        </block>
-      </statement>
-    </block>
-    <block type="Blynk_iot_timer">
-      <mutation>
-        <arg name="vpin_value" vartype="int"></arg>
-      </mutation>
-      <field name="Vpin">V0</field>
-      <value name="TIME">
-        <shadow type="math_number">
-          <field name="NUM">1000</field>
-        </shadow>
-      </value>
-      <statement name="DO">
-        <block type="blynk_iot_push_data">
-          <field name="Vpin">V0</field>
-          <value name="data">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-        </block>
-      </statement>
-    </block>
-    <block type="blynk_iot_WidgetLED_COLOR">
-      <value name="STAT">
-        <shadow type="inout_highlow"></shadow>
-      </value>
-    </block>
-    <block type="blynk_iot_WidgetLED_VALUE">
-      <value name="NUM">
+      <value name="y">
         <shadow type="math_number">
           <field name="NUM">0</field>
         </shadow>
       </value>
+      <value name="value">
+        <shadow type="math_number">
+          <field name="NUM">923</field>
+        </shadow>
+      </value> 
     </block>
-    <block type="blynk_email">
-      <value name="email_add">
+    <block type="blynk_lcd_clear">
+    </block>
+    <block type="blynk_videourl">
+      <value name="url">
         <shadow type="text">
-          <field name="TEXT">example@blynk.cc</field>
-        </shadow>
-      </value>
-      <value name="Subject">
-        <shadow type="text">
-          <field name="TEXT">Subject</field>
-        </shadow>
-      </value>
-      <value name="content">
-        <shadow type="text">
-          <field name="TEXT">Content</field>
+          <field name="TEXT">http://yourvideostream.url</field>
         </shadow>
       </value>
     </block>
-    <block type="blynk_notify">
-      <value name="content">
-        <shadow type="text">
-          <field name="TEXT">通知内容</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="blynk_iot_terminal_get">
-      <field name="Vpin">V0</field>
-      <statement name="DO">
-        <block type="serial_println">
-          <field name="serial_select">Serial</field>
-          <value name="CONTENT">
-            <block type="variables_get">
-              <field name="VAR">terminal_text</field>
-            </block>
-          </value>
-        </block>
-      </statement>
-    </block>
-    <block type="blynk_terminal_clear">
-    </block>
-    <block type="blynk_terminal">
-      <value name="content">
-        <shadow type="text">
-          <field name="TEXT">Hello,World!</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="blynk_time_input_1">
-      <field name="Vpin">V0</field>
-      <statement name="DO">
-        <block type="serial_println">
-          <field name="serial_select">Serial</field>
-          <value name="CONTENT">
-            <block type="variables_get">
-              <field name="VAR">hour</field>
-            </block>
-          </value>
-          <next>
-            <block type="serial_println">
-              <field name="serial_select">Serial</field>
-              <value name="CONTENT">
-                <block type="variables_get">
-                  <field name="VAR">minute</field>
-                </block>
-              </value>
-              <next>
-                <block type="serial_println">
-                  <field name="serial_select">Serial</field>
-                  <value name="CONTENT">
-                    <block type="variables_get">
-                      <field name="VAR">second</field>
-                    </block>
-                  </value>
-                  <next>
-                  </next>
-                </block>
-              </next>
-            </block>
-          </next>
-        </block>
-      </statement>
-    </block>
-    <block type="blynk_lcd">
-     <field name="Vpin">V0</field>
-     <value name="x">
+    <block type="blynk_table">
+     <value name="xnyj">
+      <shadow type="math_number">
+        <field name="NUM">V0</field>
+      </shadow> 
+    </value> 
+    <value name="id">
       <shadow type="math_number">
         <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="y">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="value">
-      <shadow type="math_number">
-        <field name="NUM">923</field>
       </shadow>
     </value> 
-  </block>
-  <block type="blynk_lcd_clear">
-  </block>
-  <block type="blynk_videourl">
-    <value name="url">
+    <value name="mingcheng">
       <shadow type="text">
-        <field name="TEXT">http://yourvideostream.url</field>
+        <field name="TEXT">名称</field>
+      </shadow>
+    </value>
+    <value name="shujv">
+      <shadow type="text">
+        <field name="TEXT">张三</field>
       </shadow>
     </value>
   </block>
-  <block type="blynk_table">
+  <block type="blynk_table_update">
    <value name="xnyj">
     <shadow type="math_number">
       <field name="NUM">V0</field>
-    </shadow> 
+    </shadow> <value name="xnyj">
+      <shadow type="math_number">
+        <field name="NUM">V0</field>
+      </shadow>
+    </value> 
   </value> 
   <value name="id">
     <shadow type="math_number">
@@ -2249,32 +2436,6 @@
       <field name="TEXT">张三</field>
     </shadow>
   </value>
-</block>
-<block type="blynk_table_update">
- <value name="xnyj">
-  <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow> <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow>
-  </value> 
-</value> 
-<value name="id">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value> 
-<value name="mingcheng">
-  <shadow type="text">
-    <field name="TEXT">名称</field>
-  </shadow>
-</value>
-<value name="shujv">
-  <shadow type="text">
-    <field name="TEXT">张三</field>
-  </shadow>
-</value>
 </block>
 <block type="blynk_table_highlight">
   <value name="xnyj">
@@ -2340,7 +2501,8 @@
   </shadow>
 </value>
 </block>
-<block type="Blynk_iot_BLYNK_CONNECTED" >
+<block type="Blynk_iot_CONNECT_STATE" >
+  <field name="state">BLYNK_CONNECTED</field>
   <statement name="DO">
     <block type="blynk_bridge_auth">
       <field name="Vpin">V0</field>
@@ -2377,15 +2539,17 @@
     </shadow>
   </value>
 </block>
-<block type="Blynk_iot_BLYNK_CONNECTED">
+<block type="Blynk_iot_CONNECT_STATE" >
+  <field name="state">BLYNK_CONNECTED</field>
   <statement name="DO">
     <block type="blynk_WidgetRTC_init">
-      <value name="NUM"><shadow type="math_number" >
-        <field name="NUM">10</field>
-      </shadow>
-    </value>
-  </block>
-</statement>
+      <value name="NUM">
+        <shadow type="math_number" >
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+    </block>
+  </statement>
 </block>
 <block type="blynk_WidgetRTC_get_time">
 </block>
@@ -2607,14 +2771,9 @@
     </block>
   </statement>
 </block>
-<block type="Blynk_iot_BLYNK_CONNECTED">
+<block type="Blynk_iot_CONNECT_STATE">
   <statement name="DO"></statement>
 </block>
-<block type="Blynk_iot_BLYNK_APP_CONNECTED">
-  <statement name="DO"></statement>
-</block>
-<block type="Blynk_iot_BLYNK_APP_DISCONNECTED">
-  <statement name="DO"></statement>
 </block>
 <block type="Blynk_iot_BLYNK_syncAll" >
 </block>

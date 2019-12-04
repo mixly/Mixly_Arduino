@@ -209,9 +209,8 @@ Blockly.Python.math_map = function() {
   var value_fh = Blockly.Python.valueToCode(this, 'fromHigh', Blockly.Python.ORDER_ATOMIC);
   var value_tl = Blockly.Python.valueToCode(this, 'toLow', Blockly.Python.ORDER_ATOMIC);
   var value_th = Blockly.Python.valueToCode(this, 'toHigh', Blockly.Python.ORDER_ATOMIC);
-  Blockly.Python.setups_["mixly_mapping"] = "def mixly_mapping(v, al, ah, bl, bh):\n" +
-                                            "    return bl +  (bh - bl) * (v - al) / (ah - al)\n"
-  var code = 'mixly_mapping('+value_num+', '+value_fl+', '+value_fh+', '+value_tl+', '+value_th+')';
+  Blockly.Python.definitions_['import_mixpy_math_map'] = "from mixpy import math_map";
+  var code = 'math_map('+value_num+', '+value_fl+', '+value_fh+', '+value_tl+', '+value_th+')';
   return [code, Blockly.Python.ORDER_NONE];
 };
 
@@ -262,95 +261,6 @@ Blockly.Python.math_number_base_conversion = function (a) {
 
   }
   return [code, Blockly.Python.ORDER_ATOMIC];
-  /*
-  switch (c1) {
-    case "two":
-    switch (c2){
-      case "two":
-      var code = '\'{0:b}\''+ '.' + 'format' + '(' + '0b' + '('+d +')'+')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-      case "eight":
-      var code = '\'{0:o}\''+ '.' + 'format'+ '(' + '0b' +'('+d +')'+')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-      case "ten":
-      var code ='int'+  '(' + d +','+'2'+')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-      case "sixteen":
-      var code = '\'{0:x}\''+ '.' + 'format' + '(' + '0b' +'('+d +')'+')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-    }
-    break;
-
-    case "eight":
-    switch (c2){
-      case "two":
-      var code = '\'{0:b}\''+ '.' + 'format' + '(' + '0o' + '('+d +')' +')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-      case "eight":
-      var code = '\'{0:o}\''+ '.' + 'format'+ '(' + '0o' + '('+d +')' +')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-      case "ten":
-      var code ='int'+  '(' +d +','+'8'+')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-      case "sixteen":
-      var code = '\'{0:x}\''+ '.' + 'format' + '(' + '0o' + '('+d +')' +')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-    }
-    break;
-
-    case "ten":
-    switch (c2){
-      case "two":
-      var code = '\'{0:b}\''+ '.' + 'format' + '('  + d  +')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-      case "eight":
-      var code = '\'{0:o}\''+ '.' + 'format'+ '('  + d  +')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-      case "ten":
-      var code ='int'+  '(' +d +','+'10'+')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-      case "sixteen":
-      var code = '\'{0:x}\''+ '.' + 'format' + '('  + d  +')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-    }
-    break;
-
-    case "sixteen":
-    switch (c2){
-      case "two":
-      var code = '\'{0:b}\''+ '.' + 'format' + '(' + '0x' + '('+d +')' +')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-      case "eight":
-      var code = '\'{0:o}\''+ '.' + 'format'+ '(' + '0x' + '('+d +')' +')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-      case "ten":
-      var code ='int'+  '(' +d +','+'16'+')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-      case "sixteen":
-      var code = '\'{0:x}\''+ '.' + 'format' + '(' + '0x' + '('+d +')' +')';
-      return [code, Blockly.Python.ORDER_ATOMIC];
-      break;
-    }
-    break;
-
-    default:
-  }
-  */
 };
 
 Blockly.Python.math_random_seed = function () {

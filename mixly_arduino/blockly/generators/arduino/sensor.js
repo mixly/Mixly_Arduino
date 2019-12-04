@@ -278,3 +278,89 @@ Blockly.Arduino.TCS34725_Get_RGB = function() {
  var RGB = this.getFieldValue('TCS34725_GETRGB');
  return [RGB, Blockly.Arduino.ORDER_ATOMIC];
 };
+
+Blockly.Arduino.Arduino_keypad_4_4_start = function() {
+  var text_keypad_name = this.getFieldValue('keypad_name');
+  var text_keypad_row = Blockly.Arduino.valueToCode(this, 'keypad_row',Blockly.Arduino.ORDER_ATOMIC);
+  var text_keypad_col = Blockly.Arduino.valueToCode(this, 'keypad_col',Blockly.Arduino.ORDER_ATOMIC);
+  var text_keypad_type = Blockly.Arduino.valueToCode(this, 'keypad_type',Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['define_library_keypad'] = '#include <Keypad.h>';
+  Blockly.Arduino.definitions_['var_keypadstart1' + text_keypad_name] = 'const byte '+text_keypad_name+'_ROWS = 4;';
+  Blockly.Arduino.definitions_['var_keypadstart2' + text_keypad_name] = 'const byte '+text_keypad_name+'_COLS = 4;';
+  Blockly.Arduino.definitions_['var_keypadstart3' + text_keypad_name] = 'char '+text_keypad_name+'_hexaKeys['+text_keypad_name+'_ROWS]['+text_keypad_name+'_COLS] = {' + '\n' + text_keypad_type + '\n};';
+  Blockly.Arduino.definitions_['var_keypadstart4' + text_keypad_name] = 'byte '+text_keypad_name+'_rowPins['+text_keypad_name+'_ROWS] = '+text_keypad_row;
+  Blockly.Arduino.definitions_['var_keypadstart5' + text_keypad_name] = 'byte '+text_keypad_name+'_colPins['+text_keypad_name+'_COLS] = '+text_keypad_col;
+  Blockly.Arduino.definitions_['var_keypadstart6' + text_keypad_name] = 'Keypad '+text_keypad_name+' = Keypad( makeKeymap('+text_keypad_name+'_hexaKeys), '+text_keypad_name+'_rowPins, '+text_keypad_name+'_colPins, '+text_keypad_name+'_ROWS, '+text_keypad_name+'_COLS);';
+  Blockly.Arduino.setups_['setup_serial_Serial'] = 'Serial.begin(9600);';
+  var code = '';
+  return code;
+};
+
+Blockly.Arduino.keypad_row_data= function() {
+  var pin_keypad_row_1 = Blockly.Arduino.valueToCode(this, 'keypad_row_1',Blockly.Arduino.ORDER_ATOMIC);
+  var pin_keypad_row_2 = Blockly.Arduino.valueToCode(this, 'keypad_row_2',Blockly.Arduino.ORDER_ATOMIC);
+  var pin_keypad_row_3 = Blockly.Arduino.valueToCode(this, 'keypad_row_3',Blockly.Arduino.ORDER_ATOMIC);
+  var pin_keypad_row_4 = Blockly.Arduino.valueToCode(this, 'keypad_row_4',Blockly.Arduino.ORDER_ATOMIC);
+  var code = '{'+pin_keypad_row_1+', '+pin_keypad_row_2+', '+pin_keypad_row_3+', '+pin_keypad_row_4+'};';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.keypad_col_data= function() {
+  var pin_keypad_col_1 = Blockly.Arduino.valueToCode(this, 'keypad_col_1',Blockly.Arduino.ORDER_ATOMIC);
+  var pin_keypad_col_2 = Blockly.Arduino.valueToCode(this, 'keypad_col_2',Blockly.Arduino.ORDER_ATOMIC);
+  var pin_keypad_col_3 = Blockly.Arduino.valueToCode(this, 'keypad_col_3',Blockly.Arduino.ORDER_ATOMIC);
+  var pin_keypad_col_4 = Blockly.Arduino.valueToCode(this, 'keypad_col_4',Blockly.Arduino.ORDER_ATOMIC);
+  var code = '{'+pin_keypad_col_1+', '+pin_keypad_col_2+', '+pin_keypad_col_3+', '+pin_keypad_col_4+'};';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.keypad_type_data= function() {
+  var text_keypad_1_1 = this.getFieldValue('keypad_1_1');
+  var text_keypad_1_2 = this.getFieldValue('keypad_1_2');
+  var text_keypad_1_3 = this.getFieldValue('keypad_1_3');
+  var text_keypad_1_4 = this.getFieldValue('keypad_1_4');
+
+  var text_keypad_2_1 = this.getFieldValue('keypad_2_1');
+  var text_keypad_2_2 = this.getFieldValue('keypad_2_2');
+  var text_keypad_2_3 = this.getFieldValue('keypad_2_3');
+  var text_keypad_2_4 = this.getFieldValue('keypad_2_4');
+
+  var text_keypad_3_1 = this.getFieldValue('keypad_3_1');
+  var text_keypad_3_2 = this.getFieldValue('keypad_3_2');
+  var text_keypad_3_3 = this.getFieldValue('keypad_3_3');
+  var text_keypad_3_4 = this.getFieldValue('keypad_3_4');
+
+  var text_keypad_4_1 = this.getFieldValue('keypad_4_1');
+  var text_keypad_4_2 = this.getFieldValue('keypad_4_2');
+  var text_keypad_4_3 = this.getFieldValue('keypad_4_3');
+  var text_keypad_4_4 = this.getFieldValue('keypad_4_4');
+  var code =   
+  '  {\''+text_keypad_1_1+'\',\''+text_keypad_1_2+'\',\''+text_keypad_1_3+'\',\''+text_keypad_1_4+'\'},'+
+  '\n  {\''+text_keypad_2_1+'\',\''+text_keypad_2_2+'\',\''+text_keypad_2_3+'\',\''+text_keypad_2_4+'\'},'+
+  '\n  {\''+text_keypad_3_1+'\',\''+text_keypad_3_2+'\',\''+text_keypad_3_3+'\',\''+text_keypad_3_4+'\'},'+
+  '\n  {\''+text_keypad_4_1+'\',\''+text_keypad_4_2+'\',\''+text_keypad_4_3+'\',\''+text_keypad_4_4+'\'}';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.get_keypad_num = function() {
+  var text_keypad_name = this.getFieldValue('keypad_name');
+  var code = ''+text_keypad_name+'.getKey()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['arduino_keypad_event'] = function() {
+  var text_keypad_name = this.getFieldValue('keypad_name');
+  var value_keypad_event_input = Blockly.Arduino.valueToCode(this, 'keypad_event_input', Blockly.Arduino.ORDER_ATOMIC);
+  var text_keypad_start_event_delay = this.getFieldValue('keypad_start_event_delay');
+  var statements_keypad_event_data = Blockly.Arduino.statementToCode(this, 'keypad_event_data');
+
+  Blockly.Arduino.definitions_['define_variate_' + value_keypad_event_input] = 'volatile char ' + value_keypad_event_input + ';';
+  Blockly.Arduino.definitions_['var_keypadstart7_event' + text_keypad_name] = 'void keypadEvent_' + text_keypad_name + '(KeypadEvent ' + value_keypad_event_input + ') {' + 
+  '\n' + statements_keypad_event_data +
+  '\n}';
+  Blockly.Arduino.setups_['setup_keypad_event_and_delay' + text_keypad_name] = text_keypad_name + '.addEventListener(keypadEvent_' + text_keypad_name + ');' + 
+  '\n  ' + text_keypad_name + '.setHoldTime(' + text_keypad_start_event_delay + ');';
+
+  var code = '';
+  return code;
+};

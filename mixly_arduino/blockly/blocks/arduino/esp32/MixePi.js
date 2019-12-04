@@ -85,41 +85,6 @@ Blockly.Blocks.mixepi_inout_touchRead = {
  }
 };
 
-Blockly.Blocks.mixepi_controls_tone={
-    init:function(){
-        this.setColour(Blockly.Blocks.actuator.HUE);
-        this.appendDummyInput()
-        .appendField(Blockly.MIXLY_TONE);
-        this.appendValueInput('FREQUENCY')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_FREQUENCY);
-        this.appendValueInput('DURATION')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_DELAY);
-        this.appendValueInput('CHANNEL')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_CHANNEL);
-        this.setInputsInline(true);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE);
-    }
-};
-
-Blockly.Blocks.mixepi_controls_notone={
-    init:function(){
-        this.setColour(Blockly.Blocks.actuator.HUE);
-        this.appendDummyInput()
-        .appendField(Blockly.MIXLY_NOTONE);
-        this.appendValueInput('CHANNEL')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_CHANNEL);
-        this.setInputsInline(true);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE);
-    }
-};
 
 Blockly.Blocks.mixepi_ADXL345_action = {
   init: function() {
@@ -268,7 +233,7 @@ Blockly.Blocks.TFT_Brightness = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendValueInput('BRIGHTNESS')
     .setCheck(Number)
-    .appendField("TFT背光"+Blockly.MIXLY_BRIGHTNESS);
+    .appendField("TFT"+Blockly.TFT_Brightness+Blockly.MIXLY_BRIGHTNESS);
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

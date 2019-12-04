@@ -12,12 +12,10 @@ Blockly.Blocks.controls_tone={
         this.appendValueInput('CHANNEL')
         .setCheck(Number)
         .appendField(Blockly.MIXLY_CHANNEL);
-        this.appendValueInput('TONE_NOTE')
+        this.appendValueInput('FREQUENCY')
         .setCheck(Number)
-        .appendField(Blockly.MIXLY_ESP32_DUTY);
-        this.appendValueInput('OCTAVE')
-        .setCheck(Number)
-        .appendField(Blockly.MIXLY_ESP32_PITCH);
+        .appendField(Blockly.MIXLY_FREQUENCY);
+        
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -51,8 +49,8 @@ Blockly.Blocks['motor_id'] = {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
         .appendField(new Blockly.FieldDropdown([
-         ["1","1"],["2","2"],["3","3"],["4","4"]
-         ]), "CHANNEL");
+           ["1","1"],["2","2"],["3","3"],["4","4"]
+           ]), "CHANNEL");
         this.setOutput(true);
    // this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW);
 }
