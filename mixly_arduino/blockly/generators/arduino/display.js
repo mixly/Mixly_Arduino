@@ -582,3 +582,9 @@ Blockly.Arduino.oled_set_CN_Font = function() {
   var code = "u8g2.setFont(u8g2_font_"+FONT_SIZE+FONT_NAME+");\nu8g2.setFontPosTop();\n";
   return code;
 };
+//OLED背光亮度
+Blockly.Arduino.u8g2_setContrast = function() {
+    var Contrast= Blockly.Arduino.valueToCode(this, 'Contrast', Blockly.Arduino.ORDER_ATOMIC);
+    var code='u8g2.setContrast(' +Contrast+ ');\n';
+    return code;
+};

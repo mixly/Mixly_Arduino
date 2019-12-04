@@ -1487,3 +1487,18 @@ Blockly.Blocks.oled_print = {
     this.setTooltip(Blockly.oled_print_tooltip);
   }
 };
+
+//OLED背光亮度
+Blockly.Blocks['u8g2_setContrast1'] = {
+  init: function() {
+    this.appendValueInput("Contrast")
+        .setCheck(null)
+        .appendField(Blockly.MIXLY_U8G2_SETCONTRAST);
+    this.appendDummyInput();
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.display.HUE);
+ this.setTooltip(Blockly.MIXLY_U8G2_SETCONTRAST_HELP);
+ this.setHelpUrl("");
+  }
+};

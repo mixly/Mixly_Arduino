@@ -2609,4 +2609,6 @@ Blockly.MIXLY_SALVE="从机";
 Blockly.MIXLY_SEND_DATA="发送数据";
 Blockly.MIXLY_RETURN_DATA="返回值";
 Blockly.TFT_Brightness="背光";
-Blockly.BLYNK_DISCONNECTED = '硬件已离接';
+Blockly.BLYNK_DISCONNECTED = '硬件已离线';
+Blockly.MIXLY_U8G2_SETCONTRAST="OLED背光亮度";
+Blockly.MIXLY_U8G2_SETCONTRAST_HELP="OLED背光亮度范围（0-255）";

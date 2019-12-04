@@ -1512,6 +1512,14 @@
 </block>
 <block type="oled_define_bitmap_data"></block>
 <block type="oled_clear"></block>
+//OLED背光亮度
+<block type="u8g2_setContrast">
+   <value name="Contrast">
+  <shadow type="math_number">
+    <field name="NUM">100</field>
+  </shadow>
+</value> 
+</block>
 <block type="oled_face">
  <value name="POS_X">
   <shadow type="math_number">
