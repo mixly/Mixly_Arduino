@@ -1067,16 +1067,17 @@ Blockly.Blocks['blynk_lcd'] = {
     this.appendDummyInput("")
     .appendField(new Blockly.FieldDropdown(BLYNK_VIRTUALPIN_SELECT), "Vpin");
     this.appendDummyInput()
-    .appendField(Blockly.MIXLY_LCD_ROW);
+    .appendField(Blockly.MIXLY_ESP32_MIXGO_MUSIC_SHOW_IN+Blockly.MIXLY_4DIGITDISPLAY_NOMBER1);
     this.appendValueInput("x")
     .setCheck(null);
     this.appendDummyInput()
-    .appendField(Blockly.MIXLY_LCD_COLUMN);
+    .appendField(Blockly.Msg.DATAFRAME_COLUMN+Blockly.MIXLY_4DIGITDISPLAY_NOMBER1);
     this.appendValueInput("y")
     .setCheck(null);
     this.appendDummyInput()
-    .appendField(Blockly.MIXLY_LCD_PRINT);
+    .appendField(Blockly.Msg.DATAFRAME_RAW);
     this.appendValueInput("value")
+    .appendField(Blockly.Msg.OLEDDISPLAY)
     .setCheck(null);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

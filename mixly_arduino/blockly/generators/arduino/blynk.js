@@ -107,7 +107,9 @@ Blockly.Arduino.blynk_usb_server = function () {
 	var auth_key = Blockly.Arduino.valueToCode(this, 'auth_key', Blockly.Arduino.ORDER_ATOMIC);
 	Blockly.Arduino.definitions_['var_declare_auth_key'] = 'char auth[] = ' + auth_key + ';';
 	Blockly.Arduino.setups_['setup_serial_Serial'] = 'Serial.begin(9600);';
-	Blockly.Arduino.setups_['setup_Blynk.begin'] = ' DebugSerial.begin(9600);\n  Blynk.begin(Serial, auth);';
+	Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Blynk.begin(Serial, auth);';
+	Blockly.Arduino.setups_['setup_DebugSerial'] = 'DebugSerial.begin(9600);';
+	
 	var code = "Blynk.run();";
 	return code;
 };
