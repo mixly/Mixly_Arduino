@@ -33,7 +33,7 @@
 
 // Default values //////////////////////////////////////////////////////////////
 #define TM1637_DEFAULT_PRINT_DELAY    300 // 300 ms delay between characters
-#define TM1637_DEFAULT_BLINK_DELAY    50      // ms
+#define TM1637_DEFAULT_BLINK_DELAY    1000      // ms
 #define TM1637_DEFAULT_BLINK_REPEAT   10
 #define TM1637_DEFAULT_CURSOR_POS     0       // 0-MAX-1 (e.g 3)
 #define TM1637_DEFAULT_COLON_ON       false   //

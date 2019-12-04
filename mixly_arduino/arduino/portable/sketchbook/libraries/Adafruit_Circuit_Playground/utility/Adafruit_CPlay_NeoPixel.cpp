@@ -58,7 +58,6 @@
               NeoPixels expecting an 800 KHz (vs 400 KHz) data stream
               with color bytes expressed in green, red, blue order per
               pixel.
-  @return  Adafruit_CPlay_NeoPixel object. Call the begin() function before use.
 */
 Adafruit_CPlay_NeoPixel::Adafruit_CPlay_NeoPixel(uint16_t n, uint16_t p, neoPixelType t) :
   begun(false), brightness(0), pixels(NULL), endTime(0) {
@@ -71,7 +70,6 @@ Adafruit_CPlay_NeoPixel::Adafruit_CPlay_NeoPixel(uint16_t n, uint16_t p, neoPixe
   @brief   "Empty" NeoPixel constructor when length, pin and/or pixel type
            are not known at compile-time, and must be initialized later with
            updateType(), updateLength() and setPin().
-  @return  Adafruit_CPlay_NeoPixel object. Call the begin() function before use.
   @note    This function is deprecated, here only for old projects that
            may still be calling it. New projects should instead use the
            'new' keyword with the first constructor syntax (length, pin,
