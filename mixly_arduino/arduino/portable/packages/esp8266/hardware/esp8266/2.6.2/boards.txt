@@ -24,7 +24,7 @@ menu.sdk=Espressif FW
 menu.ssl=SSL Support
 
 ##############################################################
-d1.name=Generic ESP8266 Module
+d1.name=Arduino ESP8266
 d1.build.board=ESP8266_WEMOS_D1R1
 d1.build.variant=d1
 d1.upload.tool=esptool
