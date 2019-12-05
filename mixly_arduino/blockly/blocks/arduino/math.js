@@ -294,7 +294,7 @@ Blockly.Blocks['variables_operation'] = {
         .setCheck(null);
     this.appendValueInput("data")
         .setCheck(null)
-        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_SELFADD,"+"], [Blockly.MIXLY_SELFSUB,"-"], [Blockly.MIXLY_SELFMULT,"*"], [Blockly.MIXLY_SELFDIVI,"/"]]), "type");
+        .appendField(new Blockly.FieldDropdown([["+=","+"], ["-=","-"], ["*=","*"], ["/=","/"]]), "type");
     this.appendDummyInput();
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

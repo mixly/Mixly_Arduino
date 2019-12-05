@@ -6,11 +6,6 @@ Blockly.Blocks.blynk.HUE1 = 159; //Mountain Meadow
 Blockly.Blocks.blynk.ICON_WIDTH = 20; //传感器图标宽度
 Blockly.Blocks.blynk.ICON_HEIGHT = 20; //传感器图标高度
 
-var HW_TYPE = [
-["USB", "USB"],
-["WIFI", "WIFI"]
-];
-
 //物联网-服务器信息
 Blockly.Blocks.blynk_usb_server = {
   init: function () {

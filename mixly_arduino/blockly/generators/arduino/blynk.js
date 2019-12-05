@@ -100,7 +100,7 @@ Blockly.Arduino.blynk_server = function () {
 
 //物联网-wifi信息
 Blockly.Arduino.blynk_usb_server = function () {
-	Blockly.Arduino.definitions_['define_BLYNK_PRINT'] = '#define BLYNK_PRINT DebugSerial';
+	//Blockly.Arduino.definitions_['define_BLYNK_PRINT'] = '#define BLYNK_PRINT DebugSerial';
 	Blockly.Arduino.definitions_['include_SoftwareSerial'] = '#include <SoftwareSerial.h>';
 	Blockly.Arduino.definitions_['include_BlynkSimpleStream'] = '#include <BlynkSimpleStream.h>';
 	Blockly.Arduino.definitions_['var_declare_SoftwareSerial'] = 'SoftwareSerial DebugSerial(2, 3);';

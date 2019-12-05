@@ -1493,7 +1493,7 @@ Blockly.Blocks['u8g2_setContrast'] = {
   init: function() {
     this.appendValueInput("Contrast")
         .setCheck(null)
-        .appendField(Blockly.MIXLY_U8G2_SETCONTRAST);
+        .appendField("OLED"+Blockly.TFT_Brightness+Blockly.MIXLY_BRIGHTNESS);
     this.appendDummyInput();
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

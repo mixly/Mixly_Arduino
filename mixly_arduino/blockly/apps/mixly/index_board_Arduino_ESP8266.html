@@ -1690,13 +1690,13 @@
         </block>  
         <block type="RFID_on"></block>   
         <block type="RFID_readcardnum"></block> 
-        <block type="RFID_in">
+        <!-- <block type="RFID_in">
           <value name="uid_">
             <shadow type="text">
               <field name="TEXT">123</field>
             </shadow>
           </value>
-        </block> 
+        </block>  -->
         <block type="RFID_writecarddata">
          <value name="address1">
           <shadow type="math_number">
@@ -2407,7 +2407,6 @@
 <block type="blynk_iot_syncVirtual">
   <field name="Vpin">V0</field>
 </block>
-<block type="Blynk_connect_state"></block>
 </category>
 <category id="catMQTT" colour="0">
   <block type="MQTT_server">
