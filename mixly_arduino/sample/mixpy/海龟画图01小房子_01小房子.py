@@ -1,0 +1,17 @@
+import turtle
+
+tina= turtle.Turtle()
+tina.forward(200)
+tina.left(150)
+tina.forward(115)
+tina.left(60)
+tina.forward(115)
+tina.left(150)
+tina.forward(40)
+tina.right(90)
+tina.forward(120)
+tina.left(90)
+tina.forward(120)
+tina.left(90)
+tina.forward(120)
+tina.hideturtle()

@@ -1,0 +1,21 @@
+import turtle
+
+tina= turtle.Turtle()
+tina.pensize(10)
+tina.pencolor("#ff6600")
+tina.circle (100,360)
+tina.penup()
+tina.goto(0,100)
+tina.pendown()
+tina.setheading(90)
+tina.pencolor("#ffffff")
+tina.fillcolor("#ff9900")
+for i in range(0, 8, 1):
+    tina.begin_fill()
+    tina.backward(90)
+    tina.right(90)
+    tina.circle (90,45)
+    tina.left(90)
+    tina.forward(90)
+    tina.end_fill()
+tina.hideturtle()
