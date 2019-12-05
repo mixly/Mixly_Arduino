@@ -1489,7 +1489,7 @@ Blockly.Blocks.oled_print = {
 };
 
 //OLED背光亮度
-Blockly.Blocks['u8g2_setContrast1'] = {
+Blockly.Blocks['u8g2_setContrast'] = {
   init: function() {
     this.appendValueInput("Contrast")
         .setCheck(null)

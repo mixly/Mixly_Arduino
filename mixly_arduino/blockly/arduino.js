@@ -157,7 +157,7 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		serial : 9600
 	},
 	arduino_esp8266 : { 
-		description : "esp8266",
+		description : "esp8266_Arduino",
 		digital : [["0", "0"],["2", "2"],  ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["A0", "A0"]],
 		analog : [["A0", "A0"]],
 		pwm : [["0", "0"],["2", "2"],  ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"],["A0", "A0"]],
@@ -168,8 +168,8 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSerial2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
-	esp32_arduino: {
-		description: "esp32_arduino",
+	arduino_esp32: {
+		description: "esp32_Arduino",
 		digital: [["0", "0"], ["2", "2"], ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["17", "17"], ["18", "18"], ["19", "19"], ["20", "20"], ["21", "21"], ["22", "22"], ["23", "23"], ["25", "25"], ["26", "26"], ["27", "27"], ["32", "32"], ["33", "33"], ["34", "34"], ["35", "35"], ["36", "36"], ["39", "39"]],
 		interrupt: [["0", "0"], ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["17", "17"], ["18", "18"], ["19", "19"], ["20", "20"], ["21", "21"], ["22", "22"], ["23", "23"], ["25", "25"], ["26", "26"], ["27", "27"], ["32", "32"], ["33", "33"], ["34", "34"], ["35", "35"], ["36", "36"], ["39", "39"]],
 		pwm: [["0", "0"], ["2", "2"], ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["16", "16"], ["17", "17"], ["18", "18"], ["19", "19"], ["20", "20"], ["21", "21"], ["22", "22"], ["23", "23"], ["25", "25"], ["26", "26"], ["27", "27"], ["32", "32"]],
@@ -181,11 +181,11 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		MOSI:[["23","23"]],
 		MISO:[["19","19"]],
 		SCK:[["18","18"]],
-		TONE_NOTE:[["NOTE_C","NOTE_C"],["NOTE_Cs","NOTE_Cs"],["NOTE_D","NOTE_D"],["NOTE_Eb","NOTE_Eb"],["NOTE_E","NOTE_E"],["NOTE_F","NOTE_F"],["NOTE_Fs","NOTE_Fs"],["NOTE_G","NOTE_G"],["NOTE_Gs","NOTE_Gs"],["NOTE_A","NOTE_A"],["NOTE_Bb","NOTE_Bb"],["NOTE_B","NOTE_B"],["NOTE_MAX","NOTE_MAX"]],
+			TONE_NOTE:[["NOTE_C","NOTE_C"],["NOTE_Cs","NOTE_Cs"],["NOTE_D","NOTE_D"],["NOTE_Eb","NOTE_Eb"],["NOTE_E","NOTE_E"],["NOTE_F","NOTE_F"],["NOTE_Fs","NOTE_Fs"],["NOTE_G","NOTE_G"],["NOTE_Gs","NOTE_Gs"],["NOTE_A","NOTE_A"],["NOTE_Bb","NOTE_Bb"],["NOTE_B","NOTE_B"],["NOTE_MAX","NOTE_MAX"]],
 		OCTAVE:[["0", "0"],["1", "1"],["2", "2"],["3", "3"],["4", "4"],["5", "5"],["6", "6"],["7", "7"]],
 		CHANNEL:[["0", "0"],["1", "1"],["2", "2"],["3", "3"],["4", "4"],["5", "5"],["6", "6"],["7", "7"],["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"]],
 		PWM_RESOLUTION:[["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"],["16", "16"],["17", "17"],["18", "18"],["19", "19"],["20", "20"]],
-		touch: [["0", "0"], ["2", "2"], ["4", "4"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"], ["27", "27"], ["32", "32"], ["33", "33"]],
+		touch: [["1", "32"], ["2", "33"], ["3", "25"], ["4", "26"]],
 		serial_select: [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"]],
 		serial : 9600
 	},
@@ -267,9 +267,9 @@ profile["Arduino Nano"] = profile["Arduino Mini"] = profile["Arduino Fio"] = pro
 profile['Arduino ESP8266 Generic']=profile["Generic_ESP8266"]=profile["ESP8266_Modules"]=profile["Generic ESP8266 Module"]=profile["Generic ESP8285 Module"] = profile["Adafruit HUZZAH ESP8266"] = profile["NodeMCU 0.9 (ESP-12 Module)"] = profile["NodeMCU 1.0 (ESP-12E Module)"] = profile["Olimex MOD-WIFI-ESP8266(-DEV)"] = profile["SparkFun ESP8266 Thing"] = profile["SweetPea ESP-210"] = profile["ESPDuino"] =  profile["Adafruit Feather HUZZAH ESP8266"] =profile["arduino_esp8266"];
 profile["Invent One"]= profile["XinaBox CW01"]=profile["ESPresso Lite 1.0"]=profile["ESPresso Lite 2.0"]=profile["Phoenix 1.0"]=profile["Phoenix 2.0"]=profile["NodeMCU 0.9"]=profile["arduino_esp8266"];
 profile["NodeMCU 1.0"]= profile["Olimex MOD-WIFI-ESP8266"]=profile["SparkFun ESP8266 Thing Dev"]=profile["LOLIN"]=profile["WeMos D1 R1"]=profile["ESPino"]=profile["ThaiEasyElec's ESPino"]=profile["arduino_esp8266"];
-profile["WifInfo"]=profile["Arduino"]=profile["4D Systems gen4 IoD Range"]=profile["Digistump Oak"]=profile["WiFiduino"]=profile["Amperka WiFi Slot"]=profile["Seeed Wio Link"]=profile["ESPectro Core"]=profile["arduino_esp8266"];;
+profile["Arduino ESP8266"]=profile["WifInfo"]=profile["esp8266_Arduino"]=profile["4D Systems gen4 IoD Range"]=profile["Digistump Oak"]=profile["WiFiduino"]=profile["Amperka WiFi Slot"]=profile["Seeed Wio Link"]=profile["ESPectro Core"]=profile["arduino_esp8266"];
 //esp32
-profile['Arduino ESP32 Generic']=profile['"WeMos" WiFi&Bluetooth Battery']=profile["ESP32 Dev Module"] =profile["ESP32 Wrover Module"] =profile["ESP32 Pico Kit"] =profile["Turta IoT Node"] =profile["TTGO LoRa32-OLED V1"] =profile["XinaBox CW02"] =profile["SparkFun ESP32 Thing"] =profile["u-blox NINA-W10 series (ESP32)"] =profile["Widora AIR"] =profile["Electronic SweetPeas - ESP320"] =profile["Nano32"] =profile["LOLIN D32"] =profile["LOLIN D32 PRO"] =profile["WEMOS LOLIN32"] =profile["Dongsen Tech Pocket 32"] =profile["ESPea32"] =profile["Noduino Quantum"] =profile["Node32s"] =profile["Hornbill ESP32 Dev"] =profile["Hornbill ESP32 Minima"] =profile["FireBeetle-ESP32"] =profile["IntoRobot Fig"] =profile["Onehorse ESP32 Dev Module"] =profile["Adafruit ESP32 Feather"] =profile["NodeMCU-32S"] =profile["MH ET LIVE ESP32DevKIT"] =profile["MH ET LIVE ESP32MiniKit"] =profile["ESP32vn IoT Uno"] =profile["ESP32 Dev Module"] =profile["DOIT ESP32 DEVKIT V1"] =profile["OLIMEX ESP32-EVB"] =profile["OLIMEX ESP32-GATEWAY"] =profile["OLIMEX ESP32-PoE"] =profile["ThaiEasyElec's ESPino32"] =profile["M5Stack-FIRE"] =profile["ODROID ESP32"] =profile["Heltec_WIFI_Kit_32"]=profile["Heltec_WIFI_LoRa_32"]=profile["ESPectro32"]=profile["Microduino-CoreESP32"]=profile["ALKS ESP32"]=profile["WiPy 3.0"]=profile["BPI-BIT"]=profile["Silicognition wESP32"]=profile["T-Beam"]=profile["D-duino-32"]= profile["LoPy"]=profile["LoPy4"]=profile["OROCA EduBot"]=profile["OROCA EduBot"]=profile["ESP32 FM DevKit"]=profile["esp32_arduino"];
+profile['Arduino ESP32']=profile['Arduino ESP32 Generic']=profile['"WeMos" WiFi&Bluetooth Battery']=profile["ESP32 Dev Module"] =profile["ESP32 Wrover Module"] =profile["ESP32 Pico Kit"] =profile["Turta IoT Node"] =profile["TTGO LoRa32-OLED V1"] =profile["XinaBox CW02"] =profile["SparkFun ESP32 Thing"] =profile["u-blox NINA-W10 series (ESP32)"] =profile["Widora AIR"] =profile["Electronic SweetPeas - ESP320"] =profile["Nano32"] =profile["LOLIN D32"] =profile["LOLIN D32 PRO"] =profile["WEMOS LOLIN32"] =profile["Dongsen Tech Pocket 32"] =profile["ESPea32"] =profile["Noduino Quantum"] =profile["Node32s"] =profile["Hornbill ESP32 Dev"] =profile["Hornbill ESP32 Minima"] =profile["FireBeetle-ESP32"] =profile["IntoRobot Fig"] =profile["Onehorse ESP32 Dev Module"] =profile["Adafruit ESP32 Feather"] =profile["NodeMCU-32S"] =profile["MH ET LIVE ESP32DevKIT"] =profile["MH ET LIVE ESP32MiniKit"] =profile["ESP32vn IoT Uno"] =profile["ESP32 Dev Module"] =profile["DOIT ESP32 DEVKIT V1"] =profile["OLIMEX ESP32-EVB"] =profile["OLIMEX ESP32-GATEWAY"] =profile["OLIMEX ESP32-PoE"] =profile["ThaiEasyElec's ESPino32"] =profile["M5Stack-FIRE"] =profile["ODROID ESP32"] =profile["Heltec_WIFI_Kit_32"]=profile["Heltec_WIFI_LoRa_32"]=profile["ESPectro32"]=profile["Microduino-CoreESP32"]=profile["ALKS ESP32"]=profile["WiPy 3.0"]=profile["BPI-BIT"]=profile["Silicognition wESP32"]=profile["T-Beam"]=profile["D-duino-32"]= profile["LoPy"]=profile["LoPy4"]=profile["OROCA EduBot"]=profile["OROCA EduBot"]=profile["ESP32 FM DevKit"]=profile["arduino_esp32"];
 profile['Arduino HandBit']=profile["esp32_handbit"];
 profile['Arduino MixePi']=profile["esp32_mixepi"];
 profile['Arduino MixGo']=profile["esp32_MixGo"];

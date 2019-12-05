@@ -45,12 +45,12 @@ var MSG = {
 	catOLED:'OLED',
 	catMatrix:'Matrix',
 	catFactory:'Factory',
-	catFile:'File',
 	catBlynk:'Blynk IoT',
-	catWIFI:'Wi-Fi',
-	catMQTT:'MQTT',
+	catFile:'File',
 	catOnenet:'OneNET',
 	catTools:'Tools',
+	catWIFI:'Wi-Fi',
+	catMQTT:'MQTT',
 };
 Blockly.blynk_connected='Connection state';
 Blockly.BLYNK_CONNECTED='Hardware Connected';
