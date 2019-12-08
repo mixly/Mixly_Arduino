@@ -257,7 +257,7 @@ var $builtinmodule = function(name) {
                     }
                     rows.push('' + new_row.join(''))
                 }
-                self.str = rows.join(':');
+                self.str = Sk.builtin.str(rows.join(':'));
             }
             else{
                 self.str = str;
