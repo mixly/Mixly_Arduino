@@ -1502,3 +1502,5 @@ Blockly.Blocks['u8g2_setContrast'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks.group_lcd_init=Blockly.Blocks.group_lcd_init2;

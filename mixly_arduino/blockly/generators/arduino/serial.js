@@ -55,7 +55,7 @@ Blockly.Arduino.serial_print_num = function () {
     var code = serial_select + '.println(' + content + ','+Decimal+');\n';
     return code;
 };
-
+Blockly.Arduino.serial_print_hex=Blockly.Arduino.serial_print_num;
 Blockly.Arduino.serial_available = function () {
     var serial_select = this.getFieldValue('serial_select');
     if (Blockly.Arduino.setups_['setup_serial_' + serial_select + profile.default.serial]) {

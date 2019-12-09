@@ -61,7 +61,7 @@ Blockly.Blocks['serial_print_num'] = {
   .appendField(Blockly.MIXLY_SERIAL_PRINT)
   .appendField(Blockly.MIXLY_NUMBER);
   this.appendValueInput("CONTENT", Number)
-  .appendField(new Blockly.FieldDropdown([[Blockly.Msg.MATH_BIN, "BIN"],[Blockly.Msg.MATH_OCT, "OCT"],[Blockly.Msg.MATH_DEC, "DEC"],[Blockly.Msg.MATH_HEX, "HEX"]]), "STAT")
+  .appendField(new Blockly.FieldDropdown([[Blockly.Msg.MATH_HEX, "HEX"],[Blockly.Msg.MATH_BIN, "BIN"],[Blockly.Msg.MATH_OCT, "OCT"],[Blockly.Msg.MATH_DEC, "DEC"]]), "STAT")
   .setCheck(Number);
   this.setPreviousStatement(true, null);
   this.setNextStatement(true, null);
@@ -70,6 +70,7 @@ Blockly.Blocks['serial_print_num'] = {
 }
 };
 
+Blockly.Blocks['serial_print_hex']=Blockly.Blocks['serial_print_num'];
 Blockly.Blocks['serial_available'] = {
   init: function() {
     this.setColour(Blockly.Blocks.serial.HUE);

@@ -588,3 +588,5 @@ Blockly.Arduino.u8g2_setContrast = function() {
     var code='u8g2.setContrast(' +Contrast+ ');\n';
     return code;
 };
+
+Blockly.Arduino.group_lcd_init=Blockly.Arduino.group_lcd_init2;
