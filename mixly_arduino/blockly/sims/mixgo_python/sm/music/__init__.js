@@ -213,7 +213,8 @@ var $builtinmodule = function(name) {
 	mod.play_show = new Sk.builtin.func(play);
 
 	var pitch = function(pin, frequency, len, wait){
-		debugger;
+		if (typeof(len) == "undefined")
+			len = Sk.builtin.int_(Number.POSITIVE_INFINITY)
 		if (typeof(wait) == "undefined")
 			wait = Sk.builtin.bool(false)
 		sm.music.set_pitch(pin.v, frequency.v, len.v, wait.v);

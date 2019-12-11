@@ -238,7 +238,7 @@ var $builtinmodule = function (name) {
         }
         return Sk.builtin.str(sm.getInputer('textInput', sm.time))
         */
-        while(sm.getInputer('uart', sm.time) === ''){
+        while(sm.getInputer('textInput', sm.time) === ''){
             if(sm.inputer[sm.nextInputEventIndex]){
                 if(sm.inputer[sm.nextInputEventIndex].ts > sm.time)
                     sm.updateTimeTo(sm.inputer[sm.nextInputEventIndex].ts);
@@ -251,28 +251,29 @@ var $builtinmodule = function (name) {
                 return Sk.builtin.none;
             }
         }
-        return Sk.builtin.str(sm.getInputer('uart', sm.time))
+        return Sk.builtin.str(sm.getInputer('textInput', sm.time))
     }
     sm_input_func.co_varnames = ['prompt'];
     sm_input_func.$defaults = [Sk.builtin.none];
     sm_input_func.co_numargs = 1;
     mod.sm_input = new Sk.builtin.func(sm_input_func);
 
-    var sm_print_func = function(content){
+    var sm_print_func = function(content, sep, end, file, flush){
         if(content && content.v){
-            if(typeof(content.v) != 'string'){
-                var content2Str = String(content.v)
+            var contentWithEnd = end.v? content.v + end.v: content.v;
+            if(typeof(contentWithEnd) != 'string'){
+                var content2Str = String(contentWithEnd)
                 sm.snapshot['print'] = content2Str;
             }
             else{
-                sm.snapshot['print'] = content.v;
+                sm.snapshot['print'] = contentWithEnd;
             }
             sm.updateSnapshot();
         }
     }
-    sm_print_func.co_varnames = ['content'];
+    sm_print_func.co_varnames = ['content', 'sep','end', 'file', 'flush'];
     sm_print_func.$defaults = [Sk.builtin.none];
-    sm_print_func.co_numargs = 1;
+    sm_input_func.co_numargs = 5;
     mod.sm_print = new Sk.builtin.func(sm_print_func);
 
 	return mod;

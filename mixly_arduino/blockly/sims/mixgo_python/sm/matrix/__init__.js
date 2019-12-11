@@ -155,7 +155,7 @@ var $builtinmodule = function(name) {
                 }
             }
             else if(image.tp$name == "Image") {
-                var lines = image.str.v.split(':');
+                var lines = image.str.split(':');
                 for(y = 0; y < 8; y++) {
                     for(x = 0; x < 16; x++) {
                         if(lines[y][x] == '1')
@@ -244,7 +244,7 @@ var $builtinmodule = function(name) {
                     }
                     rows.push('' + new_row.join(''))
                 }
-                self.str = Sk.builtin.str(rows.join(':'));
+                self.str = rows.join(':');
             }
             else{
                 self.str = str;

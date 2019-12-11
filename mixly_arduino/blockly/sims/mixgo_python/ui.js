@@ -92,6 +92,11 @@ var ui = {
         if (!ui.inited) {
             $('#simModal').on('hidden.bs.modal', function () {
                 Sk.execLimit = 0;
+                //关闭声音
+                if(ui.music_data){
+                    ui.music_data.osc.stop();
+                    delete ui.music_data;
+                }
             });
         }
 
@@ -509,8 +514,10 @@ var ui = {
             $('#mixgo_led_' + pinNum).css('background-color','#00f');
     },
     setBoardLEDbrightness: function (pinNum, val) {
+        debugger;
         if(typeof(val) == 'number' && val > 0 && val < 1024){
-            var decval = (val / 8) + 127; //将0~1023转换成RGB(127,255)区间
+            var decval = parseInt((val / 8) + 127); //将0~1023转换成RGB(127,255)区间
+            console.log(decval.toString(16));
             $('#mixgo_led_' + pinNum).css('background-color', '#0000' + decval.toString(16));
         }
         else{
@@ -570,7 +577,10 @@ var ui = {
         var el = $('#neopixel');
         el.empty();
         for (var i = 0; i < leds.length; i ++) {
-            var currLed = leds[i];
+            var aumentLed = leds[i].map((currentValue, index, arr) => {
+                return currentValue > 0 ? 255 : 0
+            });
+            var currLed = aumentLed;
             var color = currLed.join(',');
             el.append('<img class="neopixel-led" style="background-color: rgb(' + color + ');">');
         }

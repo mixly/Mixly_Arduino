@@ -178,11 +178,13 @@ var smCodeProcessor = {
     //3. 超1分钟认为是死循环，kill掉
     autoKillProgram: function (timeout) {
         var timeoutId = setTimeout(function () {
-            sm.updateSnapshot();
-            Sk.execLimit = 0;
-            sm.running = false;
-            clearTimeout(timeoutId);
-        }, 60000);
+            if(sm.running){
+                sm.updateSnapshot();
+                Sk.execLimit = 0;
+                sm.running = false;
+                clearTimeout(timeoutId);
+            }
+        }, timeout);
     },
     forceKillProgram: function () {
         if(sm.running === true){

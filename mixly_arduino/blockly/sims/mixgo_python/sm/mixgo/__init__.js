@@ -162,6 +162,10 @@ var $builtinmodule = function (name) {
         });
         //bug：was_pressed还没有处理
         $loc.was_pressed = new Sk.builtin.func(function(self) {
+            if(sm.inputer[sm.nextInputEventIndex] && sm.inputer[sm.nextInputEventIndex].ts <= sm.time)
+                self.presses = sm.inputer[sm.nextInputEventIndex][self.name + '_press_time'] || 0;
+            else
+                self.presses = sm.getInputer(self.name + '_press_time', sm.time);
             var r = self.presses > self.last_checked;
             self.last_checked = self.presses;
             return Sk.builtin.bool(r);

@@ -85,7 +85,10 @@ var $builtinmodule = function(name) {
         });
 
         mod.set_pixel = new Sk.builtin.func(function(x, y, brightness) {
-            setLED(parseInt(x.v), parseInt(y.v), parseInt(brightness.v));
+            if(brightness.v > 0 && brightness.v < 16)
+                setLED(parseInt(x.v), parseInt(y.v), mod.data.brightness);
+            else
+                setLED(parseInt(x.v), parseInt(y.v), 0);
         });
 
         mod.clear = new Sk.builtin.func(function() {
@@ -168,6 +171,7 @@ var $builtinmodule = function(name) {
                     }
                 } else {
                     if(image.tp$name == "Image") {
+                        debugger;
                         var lines = image.str.v.split(':');
                             for(y = 0; y < 8; y++) {
                                 for(x = 0; x < 16; x++) {

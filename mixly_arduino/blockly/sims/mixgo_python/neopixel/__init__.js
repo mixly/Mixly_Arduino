@@ -9,7 +9,7 @@ var $builtinmodule = function (name) {
             if (n == undefined) {
                 throw new Sk.builtin.TypeError("parameter n not defined");
             } else if (n.v < 1) {
-                throw new Sk.builtin.TypeError("parameter n > 0");
+                throw new Sk.builtin.TypeError("parameter n should more than 0");
             }
             if(typeof(kwa[0]) != 'undefined'){
                 self.timing = kwa[1];

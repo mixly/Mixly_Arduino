@@ -103,6 +103,9 @@ var sm = {
         for(each of sm.inputer){ //find the occusion
             if(ts === each.ts){
                 each[name] = value;
+                if(name === 'button_a' || name === 'button_b' || name === 'button_both'){
+                    each[name + '_press_time'] = each[name + '_press_time'] ? each[name + '_press_time']++ : 1;
+                }
                 flag = true;
             }
             else if(each.ts < ts){
@@ -114,6 +117,9 @@ var sm = {
             insertObj.ts = ts;
             insertObj[name] = value;
             insertObj[name].getTime = 0;
+            if(name === 'button_a' || name === 'button_b' || name === 'button_both'){
+                insertObj[name + '_press_time'] = insertObj[name + '_press_time'] ? insertObj[name + '_press_time']++ : 1
+            }
             sm.inputer.push(insertObj);
         }
     },
@@ -160,7 +166,7 @@ var sm = {
                 break;
             }
         }
-        //输入即时生效
+        //输入只能即时生效
         if(name === 'uart' || name === 'textInput'){
             if(sm.inputer[sm.nextInputEventIndex] && sm.inputer[sm.nextInputEventIndex].ts == ts && sm.inputer[sm.nextInputEventIndex].hasOwnProperty(name)){
                 sm.inputer[sm.nextInputEventIndex][name].getTime ++;
@@ -171,7 +177,7 @@ var sm = {
         }
         //其他事件默认持续事件100ms,100ms内的输入视为有效。
         else{
-            if(sm.inputer[sm.nextInputEventIndex] && sm.inputer[sm.nextInputEventIndex].ts >= (ts - 100) && sm.inputer[sm.nextInputEventIndex].hasOwnProperty(name)){
+            if(sm.inputer[sm.nextInputEventIndex] && sm.inputer[sm.nextInputEventIndex].ts <= (sm.time - 100) && sm.inputer[sm.nextInputEventIndex].hasOwnProperty(name)){
                 sm.inputer[sm.nextInputEventIndex][name].getTime ++;
                 return sm.inputer[sm.nextInputEventIndex][name];
             }      

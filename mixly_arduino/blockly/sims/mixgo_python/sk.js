@@ -100,7 +100,7 @@ Sk.externalLibraries = {
     sm_random: {
         path: conf.url + '/blockly/sims/mixgo_python/sm/random/__init__.js'
     },
-}
+};
 
 
 var sim = {
@@ -137,8 +137,13 @@ function builtinRead(x) {
 
 function sk_run (code, outputFunc, inputFunc, postFunc, showTip) {
     if(code == '') {
+        if(sm.running) {
+            sm.running = false;
+        }
         return;
     }
+    if(Sk.execLimit === 0)
+        Sk.execLimit = Number.POSITIVE_INFINITY;
     Sk.configure({
         inputfun: inputFunc,
         inputfunTakesPrompt: true,
@@ -218,8 +223,6 @@ function mb_run () {
     $('#simModal').modal('toggle');
     ui.init();
     var code = codeProcessor.getCode(true);
-    if(Sk.execLimit === 0)
-        Sk.execLimit = Number.POSITIVE_INFINITY;
     sk_run(code, ui.updateSerialOutput, ui.serialInput);
 }
 
@@ -274,4 +277,21 @@ async function sm_run () {
     sk_run(code, sm.uart.write, sm.uart.input, function () {
         submit('judge');
     }, ui.showMarkFb);
+}
+
+function generateResearchData(){
+    var code = codeProcessor.getCode(true);
+    code = smCodeProcessor.processImport(code);
+    var taskId = Code.getStringParamFromUrl('eid', '');
+    if (taskId == '') {
+        console.log('eid is empty');
+        return;
+    }
+    sm['taskConf'] = task_conf;
+    smCodeProcessor.parseInputer(task_conf.inputer);
+    smCodeProcessor.autoKillProgram(task_conf.timeout);
+    sm.init();
+    sk_run(code, sm.uart.write, sm.uart.input, function () {
+        submit('save_research_data');
+    });
 }
