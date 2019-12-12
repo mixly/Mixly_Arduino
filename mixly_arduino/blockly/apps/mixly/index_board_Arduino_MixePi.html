@@ -1393,18 +1393,30 @@
   </block>
 </category>
 <category id="catActuator" colour="100">
- <block type="Mixly_motor">
+  <block type="HR8833_Motor_Setup">
+  <value name="MOTOR_ID">
+    <shadow type="motor_id">
+      <field name="CHANNEL">1</field>
+    </shadow>
+  </value>
   <value name="PIN1">
     <shadow type="pins_digital">
-      <field name="PIN">5</field>
+      <field name="PIN">16</field>
     </shadow>
   </value>
   <value name="PIN2">
     <shadow type="pins_digital">
-      <field name="PIN">4</field>
+      <field name="PIN">17</field>
     </shadow>
   </value>
-  <value name="speed">
+</block>
+<block type="HR8833_Motor_Speed">
+  <value name="MOTOR_ID">
+    <shadow type="motor_id">
+      <field name="CHANNEL">1</field>
+    </shadow>
+  </value>
+  <value name="SPEED">
     <shadow type="math_number">
       <field name="NUM">100</field>
     </shadow>
@@ -1875,6 +1887,13 @@
   </block>
   <block type="oled_define_bitmap_data"></block>
   <block type="oled_clear"></block>
+<block type="u8g2_setContrast">
+   <value name="Contrast">
+  <shadow type="math_number">
+    <field name="NUM">100</field>
+  </shadow>
+</value> 
+</block>
   <block type="oled_face">
    <value name="POS_X">
     <shadow type="math_number">
