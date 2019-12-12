@@ -152,9 +152,9 @@ function dataNumpyTrig(mode){
 pbc.moduleFunctionD.get('numpy')['sin'] = dataNumpyTrig('sin');
 pbc.moduleFunctionD.get('numpy')['cos'] = dataNumpyTrig('cos');
 pbc.moduleFunctionD.get('numpy')['tan'] = dataNumpyTrig('tan');
-pbc.moduleFunctionD.get('numpy')['asin'] = dataNumpyTrig('asin');
-pbc.moduleFunctionD.get('numpy')['atan'] = dataNumpyTrig('atan');
-pbc.moduleFunctionD.get('numpy')['acos'] = dataNumpyTrig('acos');
+pbc.moduleFunctionD.get('numpy')['arcsin'] = dataNumpyTrig('arcsin');
+pbc.moduleFunctionD.get('numpy')['arctan'] = dataNumpyTrig('arctan');
+pbc.moduleFunctionD.get('numpy')['arccos'] = dataNumpyTrig('arccos');
 pbc.moduleFunctionD.get('numpy')['round'] = dataNumpyTrig('round');
 pbc.moduleFunctionD.get('numpy')['ceil'] = dataNumpyTrig('ceil');
 pbc.moduleFunctionD.get('numpy')['floor'] = dataNumpyTrig('floor');

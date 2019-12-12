@@ -72,7 +72,7 @@ Blockly.Python.logic_true_or_false = function() {
   var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_ATOMIC) || 'False';
   var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_ATOMIC) || 'False';
   var c = Blockly.Python.valueToCode(this, 'C',Blockly.Python.ORDER_ATOMIC) || 'False';
-  var code=b+' if '+a+' else '+c;
+  var code='(' + b+' if '+a+' else '+c+')';
   return [code ,Blockly.Python.ORDER_ATOMIC];
 };
 

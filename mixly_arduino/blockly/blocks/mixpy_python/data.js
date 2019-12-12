@@ -551,9 +551,9 @@ Blockly.Blocks['numpy_trig'] = {
         [['sin', 'sin'],
          ['cos', 'cos'],
          ['tan', 'tan'],
-         ['asin', 'asin'],
-         ['acos', 'acos'],
-         ['atan', 'atan'],
+         ['arcsin', 'arcsin'],
+         ['arccos', 'arccos'],
+         ['arctan', 'arctan'],
          [Blockly.LANG_MATH_TO_ROUND, 'round'],
          [Blockly.LANG_MATH_TO_CEIL, 'ceil'],
          [Blockly.LANG_MATH_TO_FLOOR, 'floor']
