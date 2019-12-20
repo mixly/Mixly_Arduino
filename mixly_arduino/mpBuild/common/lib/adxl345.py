@@ -83,14 +83,14 @@ class adxl345:
     def readByte(self, addr):
         return self.i2c.readfrom_mem(self.slvAddr, addr, 1)
 
+if __name__ == '__main__':
+	#初始化
+	snsr = adxl345(i2c)
 
-#初始化
-snsr = adxl345(i2c)
+	#getXYZ
+	x,y,z = snsr.readXYZ()
 
-#getXYZ
-x,y,z = snsr.readXYZ()
-
-#getX/Y/Z
-x0 = snsr.readX()
-y0 = snsr.readY()
-z0 = snsr.readZ()
+	#getX/Y/Z
+	x0 = snsr.readX()
+	y0 = snsr.readY()
+	z0 = snsr.readZ()
