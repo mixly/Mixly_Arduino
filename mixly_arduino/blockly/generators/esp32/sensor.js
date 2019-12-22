@@ -73,6 +73,24 @@ Blockly.Python.sensor_mpu9250_get_acceleration = function(){
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.sensor_adxl345_get_acceleration = function(){
+    Blockly.Python.definitions_['import_adxl345'] = 'import adxl345';
+    // Blockly.Python.definitions_['import_machine'] = 'import machine';
+    var key = this.getFieldValue('key');
+    var v = Blockly.Python.valueToCode(this, 'SUB', Blockly.Python.ORDER_ATOMIC);
+    var code;
+    if (key=='x') {
+        code = v + '.readX()';
+    }else if (key=='y') {
+        code = v + '.readY()';
+    }else if (key=='z') {
+        code = v + '.readZ()';
+    }else if (key=='values') {
+        code = v + '.readXYZ()';
+    }
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python.sensor_mpu9250_get_magnetic = function(){
     Blockly.Python.definitions_['import_mpu9250'] = 'import mpu9250';
     Blockly.Python.definitions_['import_machine'] = 'import machine';
@@ -294,6 +312,9 @@ Blockly.Python.sensor_use_i2c_init=function(){
     }else if (key=='SHT20') {
       Blockly.Python.definitions_['import_sht20'] = 'import sht20';
 	  code = v + ' = sht20.' + key + "("+ iv+ ')\n';
+    }else if (key=='ADXL345') {
+      Blockly.Python.definitions_['import_adxl345'] = 'import adxl345';
+      code = v + ' = adxl345.' + key + "("+ iv+ ')\n';
     }
     return code;
 };
@@ -321,6 +342,13 @@ Blockly.Python.sensor_ds18x20=function(){
     var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var code ='ds18x20x.get_ds18x20_temperature('+dropdown_pin+')';
     return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.sensor_lm35 = function() {
+  Blockly.Python.definitions_['import_lm35'] = 'import lm35';
+  var dropdown_pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+  var code = 'lm35.get_LM35_temperature(' + dropdown_pin + ')';
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Blocks.sensor_button_is_pressed=Blockly.Blocks.sensor_mixgo_button_is_pressed;

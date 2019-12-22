@@ -174,6 +174,41 @@ Blockly.Blocks['sensor_mpu9250_get_acceleration'] = {
 };
 
 
+Blockly.Blocks['sensor_adxl345_get_acceleration'] = {
+    init: function(){
+        this.setColour(Blockly.Blocks.sensor.HUE);
+        this.appendValueInput('SUB')
+        .appendField("ADXL重力传感器")
+        .setCheck("var");
+        this.appendDummyInput()
+        .appendField(Blockly.MIXLY_MICROBIT_JS_ACCELERATION)
+        .appendField(new Blockly.FieldDropdown([
+            ["x", "x"],
+            ["y", "y"],
+            ["z", "z"],
+            ["(x,y,z)", "values"]
+            ]), "key");
+        this.setOutput(true, Number);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_MICROBIT_JS_ACCELERATION);
+        var thisBlock = this;
+        this.setTooltip(function() {
+            var mode = thisBlock.getFieldValue('key');
+            var mode0 = Blockly.MIXLY_MICROBIT_PY_STORAGE_GET;
+            var mode1 = Blockly.MIXLY_MICROBIT_Direction;
+            var mode2 = Blockly.MIXLY_MICROBIT_JS_ACCELERATION1;
+            var TOOLTIPS = {
+                'x': 'x',
+                'y': 'y',
+                'z': 'z',
+                '(x,y,z)':Blockly.MIXLY_MICROBIT_Shiliang_Direction,
+            };
+            return mode0 +TOOLTIPS[mode]+mode1+mode2;
+        });
+    }
+};
+
+
 Blockly.Blocks['sensor_light_level'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
@@ -573,7 +608,8 @@ Blockly.Blocks.sensor_use_i2c_init = {
         .appendField(new Blockly.FieldDropdown([
             ["MPU9250", "MPU9250"],
             ["SHT20", "SHT20"],
-            ["BMP280", "BMP280"]
+            ["BMP280", "BMP280"],
+            ["ADXL345","ADXL345"]
             ]), "key");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
@@ -587,7 +623,8 @@ Blockly.Blocks.sensor_use_i2c_init = {
             var TOOLTIPS = {
                 "MPU9250": "MPU9250",
                 "SHT20": "SHT20",
-                "BMP280": "BMP280"
+                "BMP280": "BMP280",
+                "ADXL345": "ADXL345"
             };
             return mode0 +TOOLTIPS[mode]
         });
@@ -722,6 +759,20 @@ Blockly.Blocks['sensor_mpu9250_get_gyro'] = {
             return mode0 +TOOLTIPS[mode]+mode1+mode2;
         });
     }
+};
+
+Blockly.Blocks['sensor_lm35'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_LM35);
+    this.appendValueInput("PIN", Number)
+    .appendField(Blockly.MIXLY_PIN)
+    .setCheck(Number);
+    this.setInputsInline(true);
+    this.setOutput(true, Number);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_LM35);
+  }
 };
 
 Blockly.Blocks['sensor_button_is_pressed']=Blockly.Blocks['sensor_mixgo_button_is_pressed'];
