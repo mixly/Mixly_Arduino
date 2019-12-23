@@ -131,9 +131,10 @@ Blockly.Arduino.RGB_color_rgb = function () {
 
 Blockly.Arduino.display_rgb_init = function () {
   var dropdown_rgbpin = this.getFieldValue('PIN');
+  var type = this.getFieldValue('TYPE');
   var value_ledcount = Blockly.Arduino.valueToCode(this, 'LEDCOUNT', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
-  Blockly.Arduino.definitions_['var_declare_rgb_display' + dropdown_rgbpin] = 'Adafruit_NeoPixel  rgb_display_' + dropdown_rgbpin + '= Adafruit_NeoPixel(' + value_ledcount + ',' + dropdown_rgbpin + ',NEO_GRB + NEO_KHZ800);';
+  Blockly.Arduino.definitions_['var_declare_rgb_display' + dropdown_rgbpin] = 'Adafruit_NeoPixel  rgb_display_' + dropdown_rgbpin + '= Adafruit_NeoPixel(' + value_ledcount + ',' + dropdown_rgbpin + ','+type+' + NEO_KHZ800);';
   Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();';
   return '';
 };

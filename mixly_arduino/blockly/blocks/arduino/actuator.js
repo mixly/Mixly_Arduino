@@ -256,6 +256,12 @@ Blockly.Blocks.controls_tone = {
     }
   };
 
+var DISPLAY_RGB_TYPE = [
+["NEO_GRB", "NEO_GRB"],
+["NEO_RGB", "NEO_RGB"],
+["NEO_RGBW", "NEO_RGBW"]
+];
+
 //RGB
 Blockly.Blocks.display_rgb_init = {
   init: function () {
@@ -265,6 +271,9 @@ Blockly.Blocks.display_rgb_init = {
     .appendField(Blockly.MIXLY_PIN)
     .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
     .setAlign(Blockly.ALIGN_RIGHT);
+     this.appendDummyInput("")
+      .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_TYPE)
+    .appendField(new Blockly.FieldDropdown(DISPLAY_RGB_TYPE), "TYPE");
     this.appendValueInput("LEDCOUNT")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
