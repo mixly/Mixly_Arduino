@@ -1,0 +1,22 @@
+#######################################
+# Syntax Coloring Map 
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DFRobot_SHT20	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+initSHT20	KEYWORD2
+readHumidity	KEYWORD2
+readTemperature	KEYWORD2
+checkSHT20	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################

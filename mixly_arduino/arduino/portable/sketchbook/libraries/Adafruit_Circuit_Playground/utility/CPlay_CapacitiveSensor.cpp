@@ -34,6 +34,9 @@ CPlay_CapacitiveSensor::CPlay_CapacitiveSensor(uint8_t sendPin, uint8_t receiveP
 
 	CS_Timeout_Millis = (2000 * (float)loopTimingFactor * (float)F_CPU) / 16000000;
 	CS_AutocaL_Millis = 20000;
+	
+	_sendPin = sendPin;
+	_receivePin = receivePin;
 
 	// Serial.print("timeOut =  ");
 	// Serial.println(CS_Timeout_Millis);
@@ -96,6 +99,8 @@ long CPlay_CapacitiveSensor::capacitiveSensor(uint8_t samples)
   if (error < 0) {
     return -1;            // bad pin
   }
+
+  pinMode(_receivePin, INPUT);
 
   for (uint8_t i = 0; i < samples; i++) {    // loop for samples parameter - simple lowpass filter
     if (SenseOneCycle() < 0)  return -2;   // variable over timeout

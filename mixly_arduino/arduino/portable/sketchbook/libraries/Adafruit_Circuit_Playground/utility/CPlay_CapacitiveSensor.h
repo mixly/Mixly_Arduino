@@ -52,6 +52,7 @@ class CPlay_CapacitiveSensor
 	unsigned long  CS_AutocaL_Millis;
 	unsigned long  lastCal;
 	unsigned long  total;
+	uint8_t _sendPin, _receivePin;
 	volatile RwReg *send_outport, *recv_outport, *recv_inport, *recv_direction;
 	RwReg send_mask, recv_mask;
   
