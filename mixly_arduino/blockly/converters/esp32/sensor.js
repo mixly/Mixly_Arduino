@@ -223,11 +223,12 @@ pbc.objectFunctionD.get('datetime')['RTC'] = function (py2block, func, args, key
 pbc.assignD.get('i2c')['check_assign'] = function (py2block, node, targets, value) {
     var funcName = py2block.identifier(value.func.attr);
     var moduleName = py2block.identifier(value.func.value.id);
-    if (value._astname === "Call" && ['MPU9250', 'SHT20', 'BMP280'].indexOf(funcName) != -1
-        && ['mpu9250', 'sht20', 'bmp280'].indexOf(moduleName) != -1 && value.args.length === 1)
+    if (value._astname === "Call" && ['MPU9250', 'SHT20', 'BMP280', 'ADXL345'].indexOf(funcName) != -1
+        && ['mpu9250', 'sht20', 'bmp280', 'adxl345'].indexOf(moduleName) != -1 && value.args.length === 1)
         return true;
 
     return false;
+    
 }
 pbc.assignD.get('i2c')['create_block'] = function (py2block, node, targets, value) {
     var funcblock = py2block.identifier(value.func.attr);
@@ -263,6 +264,28 @@ pbc.objectFunctionD.get('mpu9250_get_x')['mpu'] = getAcceleration('x');
 pbc.objectFunctionD.get('mpu9250_get_y')['mpu'] = getAcceleration('y');
 pbc.objectFunctionD.get('mpu9250_get_z')['mpu'] = getAcceleration('z');
 pbc.objectFunctionD.get('mpu9250_get_values')['mpu'] = getAcceleration('values');
+
+function getADXLAcceleration(mode){
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length !== 0) {
+            throw new Error("Incorrect number of arguments");
+        }
+        var mpublock=py2block.convert(func.value)
+        return block('sensor_adxl345_get_acceleration', func.lineno, {
+                "key": mode
+            }, {
+                'SUB': mpublock
+            }, {
+                "inline": "true"
+            });
+    }
+    return converter;
+}
+
+pbc.objectFunctionD.get('readX')['snsr'] = getADXLAcceleration('x');
+pbc.objectFunctionD.get('readY')['snsr'] = getADXLAcceleration('y');
+pbc.objectFunctionD.get('readZ')['snsr'] = getADXLAcceleration('z');
+pbc.objectFunctionD.get('readXYZ')['snsr'] = getADXLAcceleration('values');
 
 function getMagnetic(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
@@ -549,3 +572,17 @@ pbc.objectFunctionD.get('reset_calibrate')['mpu'] = function(py2block, func, arg
         "inline": "true"
     })];
 };
+
+pbc.moduleFunctionD.get('lm35')['get_LM35_temperature'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    pbc.pinType="pins_digital_pin";
+    var argblock = py2block.convert(args[0]);
+    pbc.pinType = null;
+    return block("sensor_lm35", func.lineno, {}, {
+        "PIN":argblock,
+    }, {
+        "inline": "true"
+    });
+}
