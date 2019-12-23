@@ -178,7 +178,7 @@ Blockly.Blocks['sensor_adxl345_get_acceleration'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('SUB')
-        .appendField("ADXL重力传感器")
+        .appendField(Blockly.MIXLY_ADXL345)
         .setCheck("var");
         this.appendDummyInput()
         .appendField(Blockly.MIXLY_MICROBIT_JS_ACCELERATION)
