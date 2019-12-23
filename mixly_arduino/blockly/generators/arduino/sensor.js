@@ -147,7 +147,17 @@ Blockly.Arduino.RTC_set_date = function () {
   code += RTCName + '.setDOW('+ year + ','+ month + ','+ day +');\n';
   return code;
 }
-
+//传感器_sht20
+Blockly.Arduino.SHT20 = function() {
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+  Blockly.Arduino.definitions_['include_DFRobot_SHT20'] = '#include <DFRobot_SHT20.h>';
+  Blockly.Arduino.definitions_['var_declare_DFRobot_SHT20'] = 'DFRobot_SHT20 sht20;\n';
+  Blockly.Arduino.setups_['setup_sht20initSHT20'] = 'sht20.initSHT20();';
+  Blockly.Arduino.setups_['setup_sht20.checkSHT20'] = 'sht20.checkSHT20(); \n';
+  var dropdown_type = this.getFieldValue('SHT20_TYPE');
+  var code = dropdown_type;
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
 
 //传感器_重力感应块
 Blockly.Arduino.ADXL345 = function() {

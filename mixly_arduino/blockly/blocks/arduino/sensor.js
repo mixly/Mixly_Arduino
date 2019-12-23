@@ -324,6 +324,23 @@ Blockly.Blocks.RTC_set_date = {
   }
 };
 
+var SHT20_TYPE = [
+[Blockly.MIXLY_TEMPERATURE, "sht20.readTemperature()"],
+[Blockly.MIXLY_Humidity, "sht20.readHumidity()"],
+];
+Blockly.Blocks.SHT20 = {
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput("")
+    .appendField("SHT20"+Blockly.MIXLY_DHT11_T_H);
+    this.appendDummyInput("")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(new Blockly.FieldDropdown(SHT20_TYPE), "SHT20_TYPE");
+    this.setInputsInline(true);
+    this.setOutput(true);
+    this.setTooltip();
+  }
+};
 var ADXL345_GETAB = [
 [Blockly.MixGo_MPU9250_AX, "accel.getAccelerationX()"],
 [Blockly.MixGo_MPU9250_AY, "accel.getAccelerationY()"],
