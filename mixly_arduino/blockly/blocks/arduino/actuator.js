@@ -442,13 +442,11 @@ Blockly.Blocks.Motor_8833 = {
     this.appendValueInput("PIN1")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_PIN)
-    .appendField("1");
+    .appendField(Blockly.MIXLY_MOTOR_SPEED_PIN);
     this.appendValueInput("PIN2")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_PIN)
-    .appendField("2");
+    .appendField(Blockly.MIXLY_MOTOR_DIR_PIN);
     this.appendValueInput('speed')
     .setCheck(Number)
     .appendField(Blockly.MIXLY_MOTOR_SPEED);
