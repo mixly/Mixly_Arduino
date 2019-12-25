@@ -11,7 +11,7 @@ OFSX = 0x1e
 OFSY =0x1f
 OFSZ =0x20
 
-class adxl345:
+class ADXL345:
     def __init__(self, i2c, cs = Pin(33, Pin.OUT)):
         self.cs = cs
         cs.value(1)
@@ -85,12 +85,12 @@ class adxl345:
 
 if __name__ == '__main__':
 	#初始化
-	snsr = adxl345(i2c)
+	sensor = ADXL345(i2c)
 
 	#getXYZ
-	x,y,z = snsr.readXYZ()
+	x,y,z = sensor.readXYZ()
 
 	#getX/Y/Z
-	x0 = snsr.readX()
-	y0 = snsr.readY()
-	z0 = snsr.readZ()
+	x0 = sensor.readX()
+	y0 = sensor.readY()
+	z0 = sensor.readZ()

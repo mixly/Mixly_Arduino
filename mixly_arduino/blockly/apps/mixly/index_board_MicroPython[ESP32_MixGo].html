@@ -1683,13 +1683,6 @@
           </shadow>
         </value>
       </block>
-      <block type="sensor_adxl345_get_acceleration">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">snsr</field>
-          </shadow>
-        </value>
-      </block>
       <block type="sensor_mpu9250_get_magnetic">
         <value name="SUB">
           <shadow type="variables_get">
@@ -1802,15 +1795,27 @@
       <block type="sensor_bmp">
         <value name="SUB">
           <shadow type="variables_get">
-            <field name="VAR">bmp</field>
+            <field name="VAR">sensor</field>
           </shadow>
         </value>
       </block>
       <block type="sensor_sht">
         <value name="SUB">
           <shadow type="variables_get">
-            <field name="VAR">sht</field>
+            <field name="VAR">sensor</field>
           </shadow>
+        </value>
+      </block>
+      <block type="sensor_adxl345_get_acceleration">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">sensor</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_lm35">
+        <value name="PIN">
+          <shadow type="pins_analog_pin"></shadow>
         </value>
       </block>
       <block type="sensor_dht11">
@@ -1835,11 +1840,6 @@
           </shadow>
         </value>
       </block>
-      <block type="sensor_lm35">
-    <value name="PIN">
-      <shadow type="pins_analog_pin"></shadow>
-    </value>
-  </block>
     </category>
     <category id="catActuator" colour="100">
       <block type="actuator_led_bright">
