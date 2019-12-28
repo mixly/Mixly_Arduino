@@ -544,6 +544,7 @@ Blockly.Blocks.blynk_iot_syncVirtual = {
 Blockly.Blocks.blynk_iot_WidgetLED_COLOR = {
   init: function () {
     this.setColour(Blockly.Blocks.blynk.HUE1);
+
     this.appendDummyInput("")
     .appendField(new Blockly.FieldImage("../../media/blynk/widget_led.png", 20, 20))
     .appendField(Blockly.blynk_IOT_WidgetLED);
@@ -553,9 +554,9 @@ Blockly.Blocks.blynk_iot_WidgetLED_COLOR = {
     this.appendDummyInput("")
     .setAlign(Blockly.ALIGN_RIGHT)
     .appendField(new Blockly.FieldColour("#ff0000"), "RGB_LED_COLOR");
-    this.appendDummyInput("")
+    this.appendValueInput("STAT")
     .appendField(Blockly.MIXLY_STAT)
-    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_HIGH, "HIGH"], [Blockly.MIXLY_LOW, "LOW"]]), "STAT");
+    .setCheck([Number,Boolean]);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);

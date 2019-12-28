@@ -226,8 +226,8 @@ Blockly.Arduino.blynk_iot_syncVirtual = function () {
 //LED组件颜色&开关
 Blockly.Arduino.blynk_iot_WidgetLED_COLOR = function () {
 	var Vpin = this.getFieldValue('Vpin');
+	  var dropdown_stat = Blockly.Arduino.valueToCode(this, 'STAT', Blockly.Arduino.ORDER_ATOMIC);
 	var colour_rgb_led_color = this.getFieldValue('RGB_LED_COLOR');
-	var dropdown_stat = this.getFieldValue('STAT');
 	Blockly.Arduino.definitions_['var_declare_WidgetLED' + Vpin] = 'WidgetLED led' + Vpin + '(' + Vpin + ');';
 	var code = 'led' + Vpin + '.setColor("' + colour_rgb_led_color + '");\n';
 	if (dropdown_stat == "HIGH")
