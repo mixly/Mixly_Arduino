@@ -350,7 +350,7 @@ Blockly.Blocks.display_Matrix_DrawPixel = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
       .appendField(Blockly.MIXLY_MATRIX_TYPE)
-      .appendField(new Blockly.FieldDropdown([['HT16K33', 'HT16K33'], ['MAX7219', 'MAX7219']]), 'TYPE');
+      .appendField(new Blockly.FieldDropdown([['MAX7219', 'MAX7219'],['HT16K33', 'HT16K33']]), 'TYPE');
     this.appendDummyInput("")
       .appendField(Blockly.MIXLY_MATRIX_NAME)
       .appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName');
@@ -460,7 +460,7 @@ Blockly.Blocks.display_Matrix_TEXT = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
       .appendField(Blockly.MIXLY_MATRIX_TYPE)
-      .appendField(new Blockly.FieldDropdown([['HT16K33', 'HT16K33'], ['MAX7219', 'MAX7219']]), 'TYPE');
+      .appendField(new Blockly.FieldDropdown([['MAX7219', 'MAX7219'],['HT16K33', 'HT16K33']]), 'TYPE');
     this.appendDummyInput("")
       .appendField(Blockly.MIXLY_MATRIX_NAME)
       .appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName');
@@ -485,7 +485,7 @@ Blockly.Blocks.display_Matrix_DisplayChar = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
       .appendField(Blockly.MIXLY_MATRIX_TYPE)
-      .appendField(new Blockly.FieldDropdown([['HT16K33', 'HT16K33'], ['MAX7219', 'MAX7219']]), 'TYPE');
+      .appendField(new Blockly.FieldDropdown([['MAX7219', 'MAX7219'],['HT16K33', 'HT16K33']]), 'TYPE');
     this.appendDummyInput("")
       .appendField(Blockly.MIXLY_MATRIX_NAME)
       .appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName');
@@ -593,7 +593,7 @@ Blockly.Blocks.display_Matrix_Brightness = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
       .appendField(Blockly.MIXLY_MATRIX_TYPE)
-      .appendField(new Blockly.FieldDropdown([['HT16K33', 'HT16K33'], ['MAX7219', 'MAX7219']]), 'TYPE');
+      .appendField(new Blockly.FieldDropdown([['MAX7219', 'MAX7219'],['HT16K33', 'HT16K33']]), 'TYPE');
     this.appendDummyInput("")
       .appendField(Blockly.MIXLY_MATRIX_NAME)
       .appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName');
@@ -621,7 +621,7 @@ Blockly.Blocks.display_Matrix_fillScreen = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
       .appendField(Blockly.MIXLY_MATRIX_TYPE)
-      .appendField(new Blockly.FieldDropdown([['HT16K33', 'HT16K33'], ['MAX7219', 'MAX7219']]), 'TYPE');
+      .appendField(new Blockly.FieldDropdown([['MAX7219', 'MAX7219'],['HT16K33', 'HT16K33']]), 'TYPE');
     this.appendDummyInput("")
       .appendField(Blockly.MIXLY_MATRIX_NAME)
       .appendField(new Blockly.FieldTextInput('myMatrix'), 'matrixName')

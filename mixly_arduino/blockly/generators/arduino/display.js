@@ -352,7 +352,7 @@ Blockly.Arduino.Matrix_img = function() {
     code += '0x' + dropdown_img_.substr(i, 2) + ((i != 14) ? ',' : '');
   }
   code += '};\n';
-  Blockly.Arduino.definitions_['matrix_img_' + dropdown_img_] = "byte " + 'matrix_img_' + dropdown_img_ + "[]=" + code;
+  Blockly.Arduino.definitions_['matrix_img_' + dropdown_img_] = "const uint8_t " + 'matrix_img_' + dropdown_img_ + "[8] PROGMEM=" + code;
   return ['matrix_img_' + dropdown_img_, Blockly.Arduino.ORDER_ATOMIC];
 };
 
