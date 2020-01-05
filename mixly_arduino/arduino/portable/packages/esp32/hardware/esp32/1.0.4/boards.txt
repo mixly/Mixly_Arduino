@@ -164,7 +164,7 @@ mixgo.serial.disableRTS=true
 
 mixgo.build.mcu=esp32
 mixgo.build.core=esp32
-mixgo.build.variant=esp32
+mixgo.build.variant=MixGo
 mixgo.build.board=ESP32_DEV
 
 mixgo.build.f_cpu=240000000L
@@ -554,7 +554,7 @@ m5stack-fire.serial.disableRTS=true
 m5stack-fire.build.mcu=esp32
 m5stack-fire.build.core=esp32
 m5stack-fire.build.variant=m5stack_fire
-m5stack-fire.build.board=M5STACK_FIRE
+m5stack-fire.build.board=Arduino M5STACK_FIRE
 
 m5stack-fire.build.f_cpu=240000000L
 m5stack-fire.build.flash_size=16MB

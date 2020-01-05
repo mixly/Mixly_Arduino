@@ -537,3 +537,12 @@ Blockly.Blocks.MixGo_rgb_Brightness = {
     this.setTooltip('');
 }
 };
+Blockly.Blocks.MixGo_rgb_show = {
+  init: function () {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_RGB_SHOW)
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+}
+};

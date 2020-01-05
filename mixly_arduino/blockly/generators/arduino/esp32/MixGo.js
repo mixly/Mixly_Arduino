@@ -131,14 +131,9 @@ Blockly.Arduino.mixgo_button_is_pressed = function(){
  return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino.sensor_mixgo_light= function(){
-  return ['analogRead(39)', Blockly.Arduino.ORDER_ATOMIC];
-};
+Blockly.Arduino.sensor_mixgo_light= Blockly.Arduino.sensor_light;
 
-Blockly.Arduino.sensor_mixgo_sound= function(){
-  return ['analogRead(35)', Blockly.Arduino.ORDER_ATOMIC];
-};
-
+Blockly.Arduino.sensor_mixgo_sound=Blockly.Arduino.sensor_sound; 
 
 Blockly.Arduino.mixgo_touch_pin = function(){
   var touch_pin = this.getFieldValue('touch_pin');
@@ -211,7 +206,6 @@ Blockly.Arduino.MixGo_rgb=function(){
   Blockly.Arduino.definitions_['var_declare_rgb_display02'] = 'Adafruit_NeoPixel rgb_display_02= Adafruit_NeoPixel(2,2,NEO_GRB + NEO_KHZ800);';
   Blockly.Arduino.setups_['setup_rgb_display_begin_02'] = 'rgb_display_02.begin();';
   var code = 'rgb_display_02.setPixelColor('+value_led+'-1,'+COLOR+');\n';
-  code +='rgb_display_02.show();\n';
   return code;
 };
 
@@ -225,7 +219,6 @@ Blockly.Arduino.MixGo_rgb2=function(){
  Blockly.Arduino.setups_['setup_rgb_display_begin_02'] = 'rgb_display_02.begin();';
  var code = 'rgb_display_02.setPixelColor(0,'+COLOR1+');\n';
  code += 'rgb_display_02.setPixelColor(1,'+COLOR2+');\n';
- code+='rgb_display_02.show();\n';
  return code;
 };
 
@@ -235,7 +228,6 @@ Blockly.Arduino.MixGo_rgb_Brightness=function(){
   Blockly.Arduino.definitions_['var_declare_rgb_display02'] = 'Adafruit_NeoPixel rgb_display_02= Adafruit_NeoPixel(2,2,NEO_GRB + NEO_KHZ800);';
   Blockly.Arduino.setups_['setup_rgb_display_begin_02'] = 'rgb_display_02.begin();';
   var code='rgb_display_02.setBrightness('+Brightness+');\n';
-  code +='rgb_display_02.show();\n';
   return code;
 };
 
@@ -280,4 +272,8 @@ Blockly.Arduino.MixGo_rgb_rainbow3=function(){
   else 
     var code3= 'for (int i = 0; i < rgb_display_02.numPixels(); i++)\n {rgb_display_02.setPixelColor(i, Wheel(((i * 256 / rgb_display_02.numPixels()) + '+rainbow_color+') & 255));\n}\n';
   return code3;
+};
+Blockly.Arduino.MixGo_rgb_show = function () {
+  var code = 'rgb_display_02.show();\ndelay(1);\n';
+  return code;
 };

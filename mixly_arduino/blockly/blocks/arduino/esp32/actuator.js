@@ -9,13 +9,21 @@ Blockly.Blocks.controls_tone={
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
         .appendField(Blockly.MIXLY_TONE);
+        this.appendValueInput("PIN")
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_PIN);
         this.appendValueInput('CHANNEL')
         .setCheck(Number)
         .appendField(Blockly.MIXLY_CHANNEL);
         this.appendValueInput('FREQUENCY')
         .setCheck(Number)
         .appendField(Blockly.MIXLY_FREQUENCY);
-        
+        this.appendValueInput('DELAY_TIME')
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_DELAY);
+        this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_MILLIS);
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -24,6 +32,48 @@ Blockly.Blocks.controls_tone={
 };
 
 Blockly.Blocks.controls_notone={
+    init:function(){
+        this.setColour(Blockly.Blocks.actuator.HUE);
+          this.appendValueInput("PIN")
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.MIXLY_PIN);
+        this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_NOTONE);
+        this.appendValueInput('CHANNEL')
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_CHANNEL);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_NOTONE);
+    }
+};
+
+Blockly.Blocks.onboard_tone={
+    init:function(){
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_TONE);
+        this.appendValueInput('CHANNEL')
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_CHANNEL);
+        this.appendValueInput('FREQUENCY')
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_FREQUENCY);
+        this.appendValueInput('DELAY_TIME')
+        .setCheck(Number)
+        .appendField(Blockly.MIXLY_DELAY);
+        this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_MILLIS);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE);
+    }
+};
+
+Blockly.Blocks.onboard_notone={
     init:function(){
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
@@ -38,7 +88,6 @@ Blockly.Blocks.controls_notone={
     }
 };
 
-
 Blockly.Arduino.motor_id = function() {
   var code = this.getFieldValue('CHANNEL');
   return [code, Blockly.Arduino.ORDER_ATOMIC];
@@ -49,8 +98,8 @@ Blockly.Blocks['motor_id'] = {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
         .appendField(new Blockly.FieldDropdown([
-           ["1","1"],["2","2"],["3","3"],["4","4"]
-           ]), "CHANNEL");
+         ["1","1"],["2","2"],["3","3"],["4","4"]
+         ]), "CHANNEL");
         this.setOutput(true);
    // this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW);
 }

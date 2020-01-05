@@ -59,7 +59,10 @@ Blockly.Blocks.ledcWrite = {
   init: function(){
     this.setColour(Blockly.Blocks.base.HUE);
     this.appendDummyInput("")
-    .appendField("ledc"+Blockly.MIXLY_Analog_PINMODEOUT);
+    .appendField(Blockly.MIXLY_Analog_PINMODEOUT);
+    this.appendValueInput("PIN", Number)
+    .appendField(Blockly.MIXLY_PIN)
+    .setCheck(Number);
     this.appendValueInput('CHANNEL')
     .setCheck(Number)
     .appendField(Blockly.MIXLY_CHANNEL);

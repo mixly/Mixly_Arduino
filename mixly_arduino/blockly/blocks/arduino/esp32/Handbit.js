@@ -222,3 +222,12 @@ Blockly.Blocks.handbit_rgb_show = {
     this.setNextStatement(true, null);
 }
 };
+Blockly.Blocks.board_setup = {
+  init: function () {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_SETUP+Blockly.Handbit)
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+}
+};

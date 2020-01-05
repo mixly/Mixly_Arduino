@@ -21,7 +21,6 @@ Blockly.Arduino.chaoshengbo = function () {
     return [funcName + '()', Blockly.Arduino.ORDER_ATOMIC];
 }
 
-
 Blockly.Arduino.DHT = function () {
   var sensor_type = this.getFieldValue('TYPE');
   var dropdown_pin = this.getFieldValue('PIN');
@@ -49,4 +48,26 @@ Blockly.Arduino.ESP32_temprature = function() {
     Blockly.Arduino.definitions_['wendu'] ='extern "C"\n{\nuint8_t temprature_sens_read();\n}\nuint8_t temprature_sens_read();\n';
     var code = '(temprature_sens_read() - 32) / 1.8';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.sensor_light= function(){
+  return ['analogRead(LIGHT)', Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.sensor_sound= function(){
+  return ['analogRead(SOUND)', Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.OneButton = function () {
+ Blockly.Arduino.definitions_['include_OneButton'] = '#include <OneButton.h>';
+ var dropdown_pin = this.getFieldValue('PIN');
+ var dropdown_mode = this.getFieldValue('mode');
+ Blockly.Arduino.definitions_['var_declare_button'+dropdown_pin] = 'OneButton button'+dropdown_pin+'('+dropdown_pin+ ',true);';
+ Blockly.Arduino.setups_['setup_onebutton_' + dropdown_pin+dropdown_mode] = 'button'+dropdown_pin+'.' + dropdown_mode + '('+dropdown_mode+dropdown_pin+');';
+ var code = 'button' +dropdown_pin+ '.tick();';
+ var funcName = dropdown_mode+dropdown_pin;
+ var branch = Blockly.Arduino.statementToCode(this, 'DO');
+ var code2 = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
+ Blockly.Arduino.definitions_[funcName] = code2;
+ return code;
 };

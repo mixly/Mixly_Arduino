@@ -26,3 +26,21 @@ Blockly.Blocks['ESP32_temprature'] = {
     this.setHelpUrl("");
 }
 };
+
+Blockly.Blocks.OneButton = {
+  init: function() {
+    this.setColour(Blockly.Blocks.base.HUE);
+     this.appendDummyInput()
+    .appendField(Blockly.MIXLY_MICROBIT_JS_CURRENT);
+    this.appendDummyInput("")
+    .appendField(new Blockly.FieldDropdown(profile.default.button), 'PIN');
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_BUTTON)
+    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_CLICK, "attachClick"], [Blockly.MIXLY_DOUBLE_CLICK, "attachDoubleClick"], [Blockly.MIXLY_LONG_PRESS_START, "attachLongPressStart"], [Blockly.MIXLY_DURING_LONG_PRESS, "attachDuringLongPress"], [Blockly.MIXLY_LONG_PRESS_END, "attachLongPressStop"]]), "mode");
+    this.appendStatementInput('DO')
+    .appendField(Blockly.MIXLY_DO);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
+    this.setInputsInline(true);
+    this.setHelpUrl();
+}
+};

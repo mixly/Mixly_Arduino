@@ -159,8 +159,12 @@ Blockly.Arduino.display_rgb = function () {
 };
 
 Blockly.Arduino.display_rgb_show = function () {
+  var board_type = JSFuncs.getPlatform();
   var dropdown_rgbpin = this.getFieldValue('PIN');
   var code = 'rgb_display_' + dropdown_rgbpin + '.show();\n';
+  if (board_type.match(RegExp(/ESP32/))) {
+    code+="delay(1);"
+  }
   return code;
 };
 

@@ -1,8 +1,18 @@
 #### 更新日志
+#### 1.0.5 2020-01-
+* 调整 一键更新规则，每次更新时删除.git目录的冗余文件，防止.git目录越来越大。
+* handbit mpy页面添加 RGB初始化
+* 修正mage的SPI管脚
+* 简化ESP32 arduino PWM操作
+* 简化ESP32 arduino 蜂鸣器操作
+
 #### 1.0.4 2019-12-31
 * 修复 arduino esp8266 一键配网上传失败问题。
-* 修复handbit范例错误问题。
-
+* 修复掌控板范例错误问题。
+* 修复掌控板micropython中无法上传的问题。
+* 重新定义第三方库的C的导入路径，改为arduino\portable\sketchbook\libraries
+* 更新micropython ssd1306库
+* 优化 blynk  led组件
 
 #### 1.0.3 2019-12-25
 * micropython增加lm35,adxl345库。

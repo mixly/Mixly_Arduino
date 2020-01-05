@@ -40,7 +40,7 @@ Blockly.Arduino.blynk_smartconfig = function () {
 	return code;
 };
 
-//物联网-wifi信息-uno
+//物联网-wifi信息
 Blockly.Arduino.blynk_server = function () {
 	var wifi_ssid = Blockly.Arduino.valueToCode(this, 'wifi_ssid', Blockly.Arduino.ORDER_ATOMIC);
 	var wifi_pass = Blockly.Arduino.valueToCode(this, 'wifi_pass', Blockly.Arduino.ORDER_ATOMIC);
@@ -498,15 +498,25 @@ Blockly.Arduino.blynk_AP_config = function () {
 //一键配网手动配置授权码（无需安可信）
 Blockly.Arduino.blynk_AP_config_2 = function () {
 	var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['include_pwku1'] = '#define BLYNK_PRINT Serial\n#include <FS.h>\n#include <ESP8266WiFi.h>\n#include <BlynkSimpleEsp8266.h>\n#include <DNSServer.h>\n#include <ESP8266WebServer.h>\n#include <WiFiManager.h>\n#include <ArduinoJson.h>\nchar blynk_token[34] = "YOUR_BLYNK_TOKEN";\nbool shouldSaveConfig = false;\nvoid saveConfigCallback () {\nSerial.println("Should save config");\nshouldSaveConfig = true;\n}\n';
+	Blockly.Arduino.definitions_['define_BLYNK_PRINT'] = '#define BLYNK_PRINT Serial';
+	Blockly.Arduino.definitions_['include_FS'] = '#include <FS.h>';
+	Blockly.Arduino.definitions_['include_ESP8266WiFi'] = '#include <ESP8266WiFi.h>';
+	Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] = '#include <BlynkSimpleEsp8266.h>';
+	Blockly.Arduino.definitions_['include_DNSServer'] = '#include <DNSServer.h>';
+	Blockly.Arduino.definitions_['include_ESP8266WebServer'] = '#include <ESP8266WebServer.h>';
+	Blockly.Arduino.definitions_['include_WiFiManager'] = '#include <WiFiManager.h>';
+	Blockly.Arduino.definitions_['include_ArduinoJson'] = '#include <ArduinoJson.h>';
+	Blockly.Arduino.definitions_['var_declare_auth_key']='char blynk_token[34] = "YOUR_BLYNK_TOKEN";';
+	Blockly.Arduino.definitions_['var_declare_shouldSaveConfig']='bool shouldSaveConfig = false;';
+	Blockly.Arduino.definitions_['saveConfigCallback'] = 'void saveConfigCallback () {\nSerial.println("Should save config");\nshouldSaveConfig = true;\n}';
 	Blockly.Arduino.setups_['setup_serial_Serial'] = 'Serial.begin(9600);';
-	Blockly.Arduino.setups_['otasetup1'] = 'Serial.println();\n  Serial.println("mounting FS...");\n  if (SPIFFS.begin()) {\n    Serial.println("mounted file system");\n    if (SPIFFS.exists("/config.json")) {\n      Serial.println("reading config file");\n      File configFile = SPIFFS.open("/config.json", "r");\n      if (configFile) {\n        Serial.println("opened config file");\n        size_t size = configFile.size();\n        std::unique_ptr<char[]> buf(new char[size]);\n        configFile.readBytes(buf.get(), size);\n        DynamicJsonBuffer jsonBuffer;\n        JsonObject& json = jsonBuffer.parseObject(buf.get());\n        json.printTo(Serial);\n        if (json.success()) {\n          Serial.println("parsed json");\n          strcpy(blynk_token, json["blynk_token"]);\n        } else {\n          Serial.println("failed to load json config");\n        }\n        configFile.close();\n      }\n    }\n  } else {\n    Serial.println("failed to mount FS");\n  }\n  WiFiManagerParameter custom_blynk_token("blynk", "blynk token", blynk_token, 32);\n  WiFiManager wifiManager;\n  wifiManager.setSaveConfigCallback(saveConfigCallback);\n  wifiManager.addParameter(&custom_blynk_token);\n  wifiManager.setMinimumSignalQuality(10);\n  if (!wifiManager.autoConnect()) {\n    Serial.println("failed to connect and hit timeout");\n    delay(3000);\n    ESP.reset();\n    delay(5000);\n  }\n  Serial.println("connected...yeey :)");\n  strcpy(blynk_token, custom_blynk_token.getValue());\n  if (shouldSaveConfig) {\n    Serial.println("saving config");\n    DynamicJsonBuffer jsonBuffer;\n    JsonObject& json = jsonBuffer.createObject();\n    json["blynk_token"] = blynk_token;    File configFile = SPIFFS.open("/config.json", "w");\n    if (!configFile) {\n      Serial.println("failed to open config file for writing");\n    }\n    json.printTo(Serial);\n    json.printTo(configFile);\n    configFile.close();\n  }\n  Serial.println("local ip");\n  Serial.println(WiFi.localIP());\n';
+	Blockly.Arduino.setups_['otasetup1'] = 'Serial.println("mounting FS...");\n  if (SPIFFS.begin()) {\n    Serial.println("mounted file system");\n    if (SPIFFS.exists("/config.json")) {\n      Serial.println("reading config file");\n      File configFile = SPIFFS.open("/config.json", "r");\n      if (configFile) {\n        Serial.println("opened config file");\n        size_t size = configFile.size();\n        std::unique_ptr<char[]> buf(new char[size]);\n        configFile.readBytes(buf.get(), size);\n        DynamicJsonBuffer jsonBuffer;\n        JsonObject& json = jsonBuffer.parseObject(buf.get());\n        json.printTo(Serial);\n        if (json.success()) {\n          Serial.println("parsed json");\n          strcpy(blynk_token, json["blynk_token"]);\n        } else {\n          Serial.println("failed to load json config");\n        }\n        configFile.close();\n      }\n    }\n  } else {\n    Serial.println("failed to mount FS");\n  }\n  WiFiManagerParameter custom_blynk_token("blynk", "blynk token", blynk_token, 32);\n  WiFiManager wifiManager;\n  wifiManager.setSaveConfigCallback(saveConfigCallback);\n  wifiManager.addParameter(&custom_blynk_token);\n  wifiManager.setMinimumSignalQuality(10);\n  if (!wifiManager.autoConnect()) {\n    Serial.println("failed to connect and hit timeout");\n    delay(3000);\n    ESP.reset();\n    delay(5000);\n  }\n  Serial.println("connected...yeey :)");\n  strcpy(blynk_token, custom_blynk_token.getValue());\n  if (shouldSaveConfig) {\n    Serial.println("saving config");\n    DynamicJsonBuffer jsonBuffer;\n    JsonObject& json = jsonBuffer.createObject();\n    json["blynk_token"] = blynk_token;    File configFile = SPIFFS.open("/config.json", "w");\n    if (!configFile) {\n      Serial.println("failed to open config file for writing");\n    }\n    json.printTo(Serial);\n    json.printTo(configFile);\n    configFile.close();\n  }\n  Serial.println("local ip");\n  Serial.println(WiFi.localIP());\n';
 	if (isNaN(server_add.charAt(2))) {
-		Blockly.Arduino.setups_['otasetup1'] += ' Blynk.config(auth,' + server_add + ',8080);';
+		Blockly.Arduino.setups_['otasetup1'] += ' Blynk.config(blynk_token,' + server_add + ',8080);';
 	}
 	else {
 		server_add = server_add.replace(/\"/g, "").replace(/\./g, ",");
-		Blockly.Arduino.setups_['otasetup1'] += ' Blynk.config(auth,' + 'IPAddress(' + server_add + '),8080);';
+		Blockly.Arduino.setups_['otasetup1'] += ' Blynk.config(blynk_token,' + 'IPAddress(' + server_add + '),8080);';
 	}
 	var code = 'Blynk.run();';
 	return code;

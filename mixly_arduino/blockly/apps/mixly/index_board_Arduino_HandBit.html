@@ -234,33 +234,21 @@
         </shadow>
       </value>
     </block>
-    <block type="ledcSetup">
-      <value name="CHANNEL">
-        <shadow type="CHANNEL"></shadow>
+    <block type="touchAttachInterrupt">
+      <value name="PIN">
+        <shadow type="pins_touch"></shadow>
       </value>
-      <value name="FREQ">
+      <value name="threshold">
         <shadow type="math_number">
-          <field name="NUM">5000</field>
+          <field name="NUM">20</field>
         </shadow>
       </value>
-      <value name="PWM_RESOLUTION">
-        <shadow type="PWM_RESOLUTION"></shadow>
-      </value>
     </block>
-    <block type="ledcAttachPin">
-      <value name="PIN">
-        <shadow type="pins_pwm"></shadow>
-      </value>
-      <value name="CHANNEL">
-        <shadow type="CHANNEL"></shadow>
-      </value>
-    </block>
-    <block type="ledcDetachPin">
-      <value name="PIN">
-        <shadow type="pins_pwm"></shadow>
-      </value>
-    </block>
+
     <block type="ledcWrite">
+      <value name="PIN">
+        <shadow type="pins_pwm"></shadow>
+      </value>
       <value name="CHANNEL">
         <shadow type="CHANNEL"></shadow>
       </value>
@@ -856,6 +844,7 @@
   </category>
   <category id="catOnBoard" name="catOnBoard" colour="65">
     <category id="catOnBoardSensor" name="catOnBoardSensor" colour="40">
+    <block type="OneButton"></block>
       <block type="handbit_button_is_pressed">
       </block>
       <block type="handbit_light">
@@ -864,23 +853,15 @@
       </block>
       <block type="inout_touchRead">
       </block>
-      <block type="touchAttachInterrupt">
-        <value name="PIN">
-          <shadow type="pins_touch"></shadow>
-        </value>
-        <value name="threshold">
-          <shadow type="math_number">
-            <field name="NUM">20</field>
-          </shadow>
-        </value>
-      </block>
       <block type="handbit_MSA300">
       </block>
       <block type="handbit_MSA300_action">
       </block>
     </category>
     <category id="catOnBoardActuator" name="catOnBoardActuator" colour="100">
-      <block type="RGB_color_seclet">
+      <block type="board_setup">
+      </block>
+           <block type="RGB_color_seclet">
         <field name="COLOR">#ff0000</field>
       </block>
       <block type="RGB_color_rgb">
@@ -968,50 +949,22 @@
       </block>
       <block type="handbit_rgb_show">
       </block>
-      <block type="ledcSetup">
+      <block type="onboard_tone">
         <value name="CHANNEL">
           <shadow type="CHANNEL">
             <field name="PIN">0</field>
           </shadow>
         </value>
-        <value name="FREQ">
+        <value name="FREQUENCY">
+          <shadow type="tone_notes"></shadow>
+        </value>
+        <value name="DELAY_TIME">
           <shadow type="math_number">
-            <field name="NUM">5000</field>
+            <field name="NUM">1000</field>
           </shadow>
         </value>
-        <value name="PWM_RESOLUTION">
-          <shadow type="PWM_RESOLUTION">
-            <field name="PIN">8</field>
-          </shadow>
-        </value>
-        <next>
-          <block type="ledcAttachPin">
-            <value name="PIN">
-              <shadow type="pins_pwm">
-                <field name="PIN">P6</field>
-              </shadow>
-            </value>
-            <value name="CHANNEL">
-              <shadow type="CHANNEL">
-                <field name="PIN">0</field>
-              </shadow>
-            </value>
-            <next>
-              <block type="controls_tone">
-                <value name="CHANNEL">
-                  <shadow type="CHANNEL">
-                    <field name="PIN">0</field>
-                  </shadow>
-                </value>
-                <value name="FREQUENCY">
-                  <shadow type="tone_notes"></shadow>
-                </value>
-              </block>
-            </next>
-          </block>
-        </next>
       </block>
-      <block type="controls_notone">
+      <block type="onboard_notone">
         <value name="CHANNEL">
           <shadow type="CHANNEL"></shadow>
         </value>
@@ -1392,280 +1345,262 @@
       <shadow type="pins_digital"></shadow>
     </value>
   </block>
-  <block type="ledcSetup">
+  <block type="controls_tone">
+    <value name="PIN">
+      <shadow type="pins_digital">
+        <field name="PIN">17</field>
+      </shadow>
+    </value>
     <value name="CHANNEL">
       <shadow type="CHANNEL">
         <field name="PIN">0</field>
       </shadow>
     </value>
-    <value name="FREQ">
+    <value name="FREQUENCY">
+      <shadow type="tone_notes"></shadow>
+    </value>
+    <value name="DELAY_TIME">
       <shadow type="math_number">
-        <field name="NUM">5000</field>
-      </shadow>
-    </value>
-    <value name="PWM_RESOLUTION">
-      <shadow type="PWM_RESOLUTION">
-        <field name="PIN">8</field>
-      </shadow>
-    </value>
-    <next>
-      <block type="ledcAttachPin">
-        <value name="PIN">
-          <shadow type="pins_pwm">
-            <field name="PIN">P6</field>
-          </shadow>
-        </value>
-        <value name="CHANNEL">
-          <shadow type="CHANNEL">
-            <field name="PIN">0</field>
-          </shadow>
-        </value>
-        <next>
-          <block type="controls_tone">
-            <value name="CHANNEL">
-              <shadow type="CHANNEL">
-                <field name="PIN">0</field>
-              </shadow>
-            </value>
-            <value name="FREQUENCY">
-              <shadow type="tone_notes"></shadow>
-            </value>
-          </block>
-        </next>
-      </block>
-    </next>
-  </block>
-  <block type="controls_notone">
-    <value name="CHANNEL">
-      <shadow type="CHANNEL"></shadow>
-    </value>
-  </block>
-  <block type="group_stepper_setup">
-    <value name="PIN1">
-      <shadow type="pins_digital">
-        <field name="PIN">1</field>
-      </shadow>
-    </value>
-    <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">2</field>
-      </shadow>
-    </value>
-    <value name="steps">
-      <shadow type="math_number">
-        <field name="NUM">100</field>
-      </shadow>
-    </value>
-    <value name="speed">
-      <shadow type="math_number">
-        <field name="NUM">10</field>
+        <field name="NUM">1000</field>
       </shadow>
     </value>
   </block>
-  <block type="group_stepper_setup2">
-    <value name="PIN1">
-      <shadow type="pins_digital">
-        <field name="PIN">1</field>
-      </shadow>
-    </value>
-    <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">2</field>
-      </shadow>
-    </value>
-    <value name="PIN3">
-      <shadow type="pins_digital">
-        <field name="PIN">3</field>
-      </shadow>
-    </value>
-    <value name="PIN4">
-      <shadow type="pins_digital">
-        <field name="PIN">4</field>
-      </shadow>
-    </value>
-    <value name="steps">
-      <shadow type="math_number">
-        <field name="NUM">100</field>
-      </shadow>
-    </value>
-    <value name="speed">
-      <shadow type="math_number">
-        <field name="NUM">10</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="group_stepper_move">
-    <value name="step">
-      <shadow type="math_number">
-        <field name="NUM">10</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="RGB_color_seclet">
-    <field name="COLOR">#ff0000</field>
-  </block>
-  <block type="RGB_color_rgb">
-    <value name="R">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="G">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="B">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="display_rgb_init">
-    <value name="PIN">
-      <shadow type="pins_digital" />
-    </value>
-    <value name="LEDCOUNT">
-      <shadow type="math_number">
-        <field name="NUM">4</field>
-      </shadow>
-    </value>
-    <value name="Brightness">
-      <shadow type="math_number">
-        <field name="NUM">20</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="display_rgb_Brightness">
-    <value name="PIN">
-      <shadow type="pins_digital" />
-    </value>
-    <value name="Brightness">
-      <shadow type="math_number">
-        <field name="NUM">20</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="display_rgb">
-    <value name="PIN">
-      <shadow type="pins_digital" />
-    </value>
-    <value name="_LED_">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-    <value name="COLOR">
-      <shadow type="math_number">
-        <field name="NUM">
-        </field>
-      </shadow>
-      <block type="RGB_color_rgb">
-        <value name="R">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-        <value name="G">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-        <value name="B">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-      </block>
-    </value>
-  </block>
-  <block type="display_rgb_show">
-  </block>
-  <block type="display_rgb_rainbow1">
-    <value name="PIN">
-      <shadow type="pins_digital" />
-    </value>
-    <value name="WAIT">
-      <shadow type="math_number">
-        <field name="NUM">20</field>
-      </shadow>
-    </value>
-    <value name="Brightness">
-      <shadow type="math_number">
-        <field name="NUM">20</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="display_rgb_rainbow3">
-    <value name="PIN">
-      <shadow type="pins_digital" />
-    </value>
-    <value name="rainbow_color">
-      <shadow type="math_number">
-        <field name="NUM">20</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="GD5800_MP3_CONTROL">
-    <value name="RXPIN">
-      <shadow type="pins_digital" />
+  <block type="controls_notone">
+   <value name="PIN">
+    <shadow type="pins_digital">
+      <field name="PIN">17</field>
+    </shadow>
+  </value>
+  <value name="CHANNEL">
+    <shadow type="CHANNEL"></shadow>
+  </value>
+</block>
+<block type="group_stepper_setup">
+  <value name="PIN1">
+    <shadow type="pins_digital">
+      <field name="PIN">1</field>
+    </shadow>
+  </value>
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">2</field>
+    </shadow>
+  </value>
+  <value name="steps">
+    <shadow type="math_number">
+      <field name="NUM">100</field>
+    </shadow>
+  </value>
+  <value name="speed">
+    <shadow type="math_number">
+      <field name="NUM">10</field>
+    </shadow>
+  </value>
+</block>
+<block type="group_stepper_setup2">
+  <value name="PIN1">
+    <shadow type="pins_digital">
+      <field name="PIN">1</field>
+    </shadow>
+  </value>
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">2</field>
+    </shadow>
+  </value>
+  <value name="PIN3">
+    <shadow type="pins_digital">
+      <field name="PIN">3</field>
+    </shadow>
+  </value>
+  <value name="PIN4">
+    <shadow type="pins_digital">
       <field name="PIN">4</field>
-    </value>
-    <value name="TXPIN">
-      <shadow type="pins_digital" />
-      <field name="PIN">5</field>
-    </value>
-  </block>
-  <block type="GD5800_MP3_PLAY_NUM">
-    <value name="RXPIN">
-      <shadow type="pins_digital" />
-      <field name="PIN">4</field>
-    </value>
-    <value name="TXPIN">
-      <shadow type="pins_digital" />
-      <field name="PIN">5</field>
-    </value>
-    <value name="NUM">
-      <shadow type="math_number">
-        <field name="NUM">2</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="GD5800_MP3_LOOP_MODE">
-    <value name="RXPIN">
-      <shadow type="pins_digital" />
-      <field name="PIN">4</field>
-    </value>
-    <value name="TXPIN">
-      <shadow type="pins_digital" />
-      <field name="PIN">5</field>
-    </value>
-  </block>
-  <block type="GD5800_MP3_EQ_MODE">
-    <value name="RXPIN">
-      <shadow type="pins_digital" />
-      <field name="PIN">4</field>
-    </value>
-    <value name="TXPIN">
-      <shadow type="pins_digital" />
-      <field name="PIN">5</field>
-    </value>
-  </block>
-  <block type="GD5800_MP3_VOL">
-    <value name="RXPIN">
-      <shadow type="pins_digital" />
-      <field name="PIN">4</field>
-    </value>
-    <value name="TXPIN">
-      <shadow type="pins_digital" />
-      <field name="PIN">5</field>
-    </value>
-    <value name="vol">
-      <shadow type="math_number">
-        <field name="NUM">20</field>
-      </shadow>
-    </value>
-  </block>
+    </shadow>
+  </value>
+  <value name="steps">
+    <shadow type="math_number">
+      <field name="NUM">100</field>
+    </shadow>
+  </value>
+  <value name="speed">
+    <shadow type="math_number">
+      <field name="NUM">10</field>
+    </shadow>
+  </value>
+</block>
+<block type="group_stepper_move">
+  <value name="step">
+    <shadow type="math_number">
+      <field name="NUM">10</field>
+    </shadow>
+  </value>
+</block>
+<block type="RGB_color_seclet">
+  <field name="COLOR">#ff0000</field>
+</block>
+<block type="RGB_color_rgb">
+  <value name="R">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="G">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="B">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_rgb_init">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="LEDCOUNT">
+    <shadow type="math_number">
+      <field name="NUM">4</field>
+    </shadow>
+  </value>
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_rgb_Brightness">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_rgb">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="_LED_">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="COLOR">
+    <shadow type="math_number">
+      <field name="NUM">
+      </field>
+    </shadow>
+    <block type="RGB_color_rgb">
+      <value name="R">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="G">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="B">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+    </block>
+  </value>
+</block>
+<block type="display_rgb_show">
+</block>
+<block type="display_rgb_rainbow1">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="WAIT">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="display_rgb_rainbow3">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="rainbow_color">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="GD5800_MP3_CONTROL">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+</block>
+<block type="GD5800_MP3_PLAY_NUM">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+  <value name="NUM">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+  </value>
+</block>
+<block type="GD5800_MP3_LOOP_MODE">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+</block>
+<block type="GD5800_MP3_EQ_MODE">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+</block>
+<block type="GD5800_MP3_VOL">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+  <value name="vol">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
 </category>
 <category id="catMonitor" colour="180">
   <category id="cat4Digitdisplay" colour="180">
@@ -2535,10 +2470,10 @@
         <value name="STAT">
           <shadow type="inout_highlow"></shadow>
         </value>
-         <value name="STAT">
-      <shadow type="inout_highlow">
-      </shadow>
-    </value>
+        <value name="STAT">
+          <shadow type="inout_highlow">
+          </shadow>
+        </value>
       </block>
       <block type="blynk_iot_WidgetLED_VALUE">
         <value name="NUM">
@@ -3150,5 +3085,4 @@
   }
 </script>
 </body>
-
 </html>

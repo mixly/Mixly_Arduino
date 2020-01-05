@@ -113,7 +113,7 @@ var BLYNK_VIRTUALPIN_SELECT = [
 ["V40", "V40"]
 ];
 
-//虚拟管脚选择
+//定时器选择
 var BLYNK_TIMER_SELECT = [
 ["1", "1"],
 ["2", "2"],
@@ -1033,7 +1033,7 @@ Blockly.Blocks.blynk_AP_config_2 = {
     .appendField(Blockly.blynk_AP_config2);
     this.appendValueInput("server_add")
     .setCheck(String)
-    .appendField(Blockly.blynk_IOT_AUTH);
+    .appendField(Blockly.blynk_SERVER_ADD);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.blynk_AP_config_tooltip);

@@ -25,13 +25,17 @@ Blockly.Arduino.ledcAttachPin= function () {
 };
 Blockly.Arduino.ledcDetachPin= function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
-     var code = 'ledcDetachPin('+dropdown_pin+');\n';
+    var code = 'ledcDetachPin('+dropdown_pin+');\n';
     return code;
 };
 Blockly.Arduino.ledcWrite= function () {
+    var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
     var channel = Blockly.Arduino.valueToCode(this, 'CHANNEL',Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-    var code = 'ledcWrite('+channel+', '+value_num+');\n';
+    Blockly.Arduino.definitions_['include_Arduino'] = '#include <Arduino.h>';
+    Blockly.Arduino.definitions_['include_analogWrite'] = '#include <analogWrite.h>';
+    Blockly.Arduino.setups_['setup_analogWriteResolution'+dropdown_pin] = "analogWriteResolution("+dropdown_pin+", "+channel+");";
+    var code = 'analogWrite('+dropdown_pin+', '+value_num+');\n';
     return code;
 };
 Blockly.Arduino.inout_pwm_analog_write= function () {
