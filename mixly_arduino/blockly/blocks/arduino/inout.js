@@ -124,11 +124,12 @@ Blockly.Blocks.OneButton_interrupt = {
     .appendField(Blockly.ONEBUTTON+" "+Blockly.MIXLY_PIN)
     .setCheck(Number);
     this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_MODE)
     .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_CLICK, "attachClick"], [Blockly.MIXLY_DOUBLE_CLICK, "attachDoubleClick"], [Blockly.MIXLY_LONG_PRESS_START, "attachLongPressStart"], [Blockly.MIXLY_DURING_LONG_PRESS, "attachDuringLongPress"], [Blockly.MIXLY_LONG_PRESS_END, "attachLongPressStop"]]), "mode");
+    this.appendValueInput("STAT")
+    .appendField(Blockly.MIXLY_PINMODE);
     this.appendStatementInput('DO')
     .appendField(Blockly.MIXLY_DO);
-   
+    this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ATTACHINTERRUPT);
     this.setHelpUrl();
   }
