@@ -2051,126 +2051,15 @@
           </shadow>
         </value>
       </block>
-      <block type="sensor_mixgo_button_attachInterrupt">
-        <value name="PIN">
-          <shadow type="pins_pwm_pin">
-            <field name="PIN">0</field>
-          </shadow>
-        </value>
-        <value name="DO">
-          <shadow type="factory_block_return">
-            <field name="VALUE">attachInterrupt_func</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="procedures_defnoreturn">
-        <mutation>
-          <arg name="x"></arg>
-        </mutation>
-        <field name="NAME">attachInterrupt_func</field>
-        <statement name="STACK">
-          <block type="controls_pass"></block>
-        </statement>
-      </block>
-      <!--<block type="sensor_mixgo_pin_pressed">
+<!--       <block type="sensor_mixgo_pin_pressed">
         <value name="button">
           <shadow type="number1">
           </shadow>
         </value>
-      </block>
-      <block type="sensor_mixgo_pin_near"></block>-->
+      </block> -->
+      <block type="sensor_mixgo_pin_near"></block>
       <block type="sensor_mixgo_light"></block>
       <block type="sensor_mixgo_sound"></block>
-      <block type="sensor_mpu9250_gesture">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">mpu</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="sensor_mpu9250_get_acceleration">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">mpu</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="sensor_mpu9250_get_magnetic">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">mpu</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="sensor_mpu9250_get_gyro">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">mpu</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="sensor_mpu9250_temperature">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">mpu</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="sensor_mpu9250_calibrate_compass">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">compass</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="sensor_mpu9250_field_strength">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">compass</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="sensor_compass_reset">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">compass</field>
-          </shadow>
-        </value>
-      </block>      
-      <sep gap="50"></sep>
-      <block type="sensor_use_i2c_init">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">sensor</field>
-          </shadow>
-        </value>
-        <value name="I2CSUB">
-          <shadow type="variables_get">
-            <field name="VAR">i2c</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="sensor_bmp">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">sensor</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="sensor_sht">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">sensor</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="sensor_adxl345_get_acceleration">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">sensor</field>
-          </shadow>
-        </value>
-      </block>
       <block type="sensor_lm35">
         <value name="PIN">
           <shadow type="pins_analog_pin"></shadow>
@@ -2195,6 +2084,67 @@
         <value name="PIN2">
           <shadow type="pins_digital_pin">
             <field name="PIN">4</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_use_i2c_init">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">sensor</field>
+          </shadow>
+        </value>
+        <value name="I2CSUB">
+          <shadow type="variables_get">
+            <field name="VAR">i2c</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_mpu9250_get_acceleration">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">sensor</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_mpu9250_get_magnetic">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">sensor</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_mpu9250_get_gyro">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">sensor</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_mpu9250_temperature">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">sensor</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_bmp">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">sensor</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_sht">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">sensor</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_adxl345_get_acceleration">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">sensor</field>
           </shadow>
         </value>
       </block>
@@ -2273,31 +2223,6 @@
           </shadow>
         </value>
       </block>
-      <!--<block type="esp32_mixgo_music_play_list_show">
-        <value name="LIST">
-          <shadow type="pins_playlist"></shadow>
-        </value>
-        <value name="PIN">
-          <shadow type="pins_pwm_pin">
-            <field name="PIN">27</field>
-          </shadow>
-        </value>
-      </block>-->
-      <block type="esp32_music_set_tempo">
-        <value name="TICKS">
-          <shadow type="math_number">
-            <field name="NUM">4</field>
-          </shadow>
-        </value>
-        <value name="BPM">
-          <shadow type="math_number">
-            <field name="NUM">120</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="esp32_music_get_tempo"></block>
-      <block type="esp32_music_reset"></block>
-      <sep gap='50'></sep>
       <block type="actuator_neopixel_init">
         <value name="SUB">
           <shadow type="variables_get">

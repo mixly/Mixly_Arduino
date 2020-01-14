@@ -2616,5 +2616,5 @@ Blockly.MIXLY_LCD_STAT_ON=Blockly.MIXLY_ON;
 Blockly.MIXLY_LCD_STAT_OFF=Blockly.MIXLY_OFF;
 Blockly.MIXGO_ONBOARDDISPLAY_HELP = "MixGo Max硬件使用板载显示模块时需要将显示屏连接至21、22号管脚";
 Blockly.MIXLY_ELECLEVEL = "电平触发";
-Blockly.MIXLY_GET_PRESSES_TIME = "时长（秒）";
+Blockly.MIXLY_GET_PRESSES_TIME = "时长(秒)";
 

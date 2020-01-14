@@ -679,14 +679,14 @@ Blockly.Blocks.sensor_use_i2c_init = {
         .appendField(Blockly.MIXLY_SETUP + Blockly.Msg.LISTS_SET_INDEX_INPUT_TO)
         .appendField(new Blockly.FieldDropdown([
             ["MPU9250", "MPU9250"],
-            ["SHT20", "SHT20"],
             ["BMP280", "BMP280"],
+            ["SHT20", "SHT20"],
             ["ADXL345","ADXL345"]
             ]), "key");
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setFieldValue("BMP280","key");
+        this.setFieldValue("MPU9250","key");
         var thisBlock = this;
         this.setTooltip(function() {
             var mode = thisBlock.getFieldValue('key');
@@ -841,6 +841,8 @@ Blockly.Blocks['sensor_lm35'] = {
     this.appendValueInput("PIN", Number)
     .appendField(Blockly.MIXLY_PIN)
     .setCheck(Number);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_GETTEMPERATUE);
     this.setInputsInline(true);
     this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_LM35);
