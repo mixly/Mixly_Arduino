@@ -1621,26 +1621,32 @@
       <block type="serial_readstr"></block>
       <block type="serial_readline"></block>
     </category>
-    <category id="catSensor" colour="40">
-      <block type="sensor_mixgo_button_is_pressed">
+    <category id="catOnBoard" name="catOnBoard" colour="65">
+    <category id="catOnBoardSensor" name="catOnBoardSensor" colour="40">
+    <block type="sensor_mixgo_onboard_button_is_pressed">
         <value name="btn">
           <shadow type="pins_button">
           </shadow>
         </value>
       </block>
-      <block type="sensor_mixgo_button_was_pressed">
+      <block type="sensor_mixgo_onboard_button_was_pressed">
         <value name="btn">
           <shadow type="pins_button">
           </shadow>
         </value>
       </block>
-      <block type="sensor_mixgo_button_get_presses">
+      <block type="sensor_mixgo_onboard_button_get_presses">
         <value name="btn">
           <shadow type="pins_button">
           </shadow>
         </value>
+        <value name="VAR">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
       </block>
-      <block type="sensor_mixgo_button_attachInterrupt">
+      <block type="sensor_mixgo_onboard_button_attachInterrupt">
         <value name="btn">
           <shadow type="pins_button">
           </shadow>
@@ -1779,6 +1785,324 @@
           </shadow>
         </value>
       </block>
+    </category>
+    <category id="catOnBoardActuator" name="catOnBoardActuator" colour="100">
+      <block type="actuator_led_bright">
+        <value name="led">
+          <shadow type="number">
+          </shadow>
+        </value>
+        <value name="bright">
+          <shadow type="ledswitch">
+          </shadow>
+        </value>
+      </block>
+      <block type="actuator_get_led_bright">
+        <value name="led">
+          <shadow type="number">
+          </shadow>
+        </value>
+      </block>
+      <block type="actuator_led_brightness">
+        <value name="led">
+          <shadow type="number">
+          </shadow>
+        </value>
+        <value name="bright">
+          <shadow type="math_number">
+            <field name="NUM">1023</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="esp32_music_pitch">
+        <value name="PIN">
+          <shadow type="pins_pwm_pin">
+            <field name="PIN">27</field>
+          </shadow>
+        </value>
+        <value name="pitch">
+          <shadow type="pins_tone_notes">
+            <field name="PIN">440</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="esp32_music_pitch_with_time">
+        <value name="PIN">
+          <shadow type="pins_pwm_pin">
+            <field name="PIN">27</field>
+          </shadow>
+        </value>
+        <value name="pitch">
+          <shadow type="pins_tone_notes">
+            <field name="PIN">440</field>
+          </shadow>
+        </value>
+        <value name="time">
+          <shadow type="math_number">
+            <field name="NUM">1000</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="esp32_music_stop">
+        <value name="PIN">
+          <shadow type="pins_pwm_pin">
+            <field name="PIN">27</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="esp32_music_play_list">
+        <value name="LIST">
+          <shadow type="pins_playlist"></shadow>
+        </value>
+        <value name="PIN">
+          <shadow type="pins_pwm_pin">
+            <field name="PIN">27</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="esp32_mixgo_music_play_list_show">
+        <value name="LIST">
+          <shadow type="pins_playlist"></shadow>
+        </value>
+        <value name="PIN">
+          <shadow type="pins_pwm_pin">
+            <field name="PIN">27</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="esp32_music_set_tempo">
+        <value name="TICKS">
+          <shadow type="math_number">
+            <field name="NUM">4</field>
+          </shadow>
+        </value>
+        <value name="BPM">
+          <shadow type="math_number">
+            <field name="NUM">120</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="esp32_music_get_tempo"></block>
+      <block type="esp32_music_reset"></block>
+    </category>
+    <category id="catOnBoardDisplay" name="catOnBoardDisplay" colour="180">
+      <block type="display_help"></block>
+      <block type="display_show_image_or_string">
+        <value name="data">
+          <shadow type="pins_builtinimg"></shadow>
+        </value>
+      </block>
+      <block type="display_scroll_string">
+        <value name="data">
+          <shadow type="text">
+            <field name="TEXT">Mixly</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="display_show_image_or_string_delay">
+        <value name="data">
+          <shadow type="pins_builtinimg"></shadow>
+        </value>
+        <value name="time">
+          <shadow type="math_number">
+            <field name="NUM">120</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="display_show_static">
+        <value name="data">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="display_scroll_string_delay">
+        <value name="data">
+          <shadow type="text">
+            <field name="TEXT">Mixly</field>
+          </shadow>
+        </value>
+        <value name="time">
+          <shadow type="math_number">
+            <field name="NUM">120</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="display_image_create"></block>
+      <block type="display_image_builtins"></block>
+      <block type="display_animate"></block>
+      <block type="image_arithmetic">
+        <value name="A">
+          <shadow type="pins_builtinimg"></shadow>
+        </value>>
+        <value name="B">
+          <shadow type="pins_builtinimg"></shadow>
+        </value>
+      </block>
+      <block type="image_shift">
+        <value name="val">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="img">
+          <shadow type="pins_builtinimg"></shadow>
+        </value>
+      </block>
+      <block type="display_get_pixel">
+        <value name="x">
+          <shadow type="pins_exlcdh"></shadow>
+        </value>
+        <value name="y">
+          <shadow type="pins_exlcdv"></shadow>
+        </value>
+      </block>
+      <block type="display_bright_point">
+        <value name="x">
+          <shadow type="pins_exlcdh"></shadow>
+        </value>
+        <value name="y">
+          <shadow type="pins_exlcdv"></shadow>
+        </value>
+        <value name="STAT">
+          <shadow type="display_onoff">
+          </shadow>
+        </value>
+      </block>
+      <block type="display_bright_screen">
+        <value name="x">
+          <shadow type="pins_exlcdh"></shadow>
+        </value>
+      </block>
+      <block type="display_get_screen_pixel"></block>
+      <block type="display_get_screen_image"></block>
+      <block type="display_blink_rate">
+        <value name="x">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="display_clear"></block>
+  </category>
+</category>
+    <category id="catSensor" colour="40">
+      <block type="sensor_mixgo_button_is_pressed">
+        <value name="PIN">
+          <shadow type="pins_pwm_pin">
+            <field name="PIN">0</field>
+          </shadow>
+        </value>
+        <value name="STAT">
+          <shadow type="inout_highlow">
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_mixgo_button_was_pressed">
+        <value name="PIN">
+          <shadow type="pins_pwm_pin">
+            <field name="PIN">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_mixgo_button_get_presses">
+        <value name="PIN">
+          <shadow type="pins_pwm_pin">
+            <field name="PIN">0</field>
+          </shadow>
+        </value>
+        <value name="VAR">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_mixgo_button_attachInterrupt">
+        <value name="PIN">
+          <shadow type="pins_pwm_pin">
+            <field name="PIN">0</field>
+          </shadow>
+        </value>
+        <value name="DO">
+          <shadow type="factory_block_return">
+            <field name="VALUE">attachInterrupt_func</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="procedures_defnoreturn">
+        <mutation>
+          <arg name="x"></arg>
+        </mutation>
+        <field name="NAME">attachInterrupt_func</field>
+        <statement name="STACK">
+          <block type="controls_pass"></block>
+        </statement>
+      </block>
+      <!--<block type="sensor_mixgo_pin_pressed">
+        <value name="button">
+          <shadow type="number1">
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_mixgo_pin_near"></block>-->
+      <block type="sensor_mixgo_light"></block>
+      <block type="sensor_mixgo_sound"></block>
+      <block type="sensor_mpu9250_gesture">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">mpu</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_mpu9250_get_acceleration">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">mpu</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_mpu9250_get_magnetic">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">mpu</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_mpu9250_get_gyro">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">mpu</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_mpu9250_temperature">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">mpu</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_mpu9250_calibrate_compass">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">compass</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_mpu9250_field_strength">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">compass</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_compass_reset">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">compass</field>
+          </shadow>
+        </value>
+      </block>      
       <sep gap="50"></sep>
       <block type="sensor_use_i2c_init">
         <value name="SUB">
@@ -2003,104 +2327,6 @@
       </block>
     </category>
     <category id="catMonitor" colour="180">
-      <block type="display_show_image_or_string">
-        <value name="data">
-          <shadow type="pins_builtinimg"></shadow>
-        </value>
-      </block>
-      <block type="display_scroll_string">
-        <value name="data">
-          <shadow type="text">
-            <field name="TEXT">Mixly</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="display_show_image_or_string_delay">
-        <value name="data">
-          <shadow type="pins_builtinimg"></shadow>
-        </value>
-        <value name="time">
-          <shadow type="math_number">
-            <field name="NUM">120</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="display_show_static">
-        <value name="data">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="display_scroll_string_delay">
-        <value name="data">
-          <shadow type="text">
-            <field name="TEXT">Mixly</field>
-          </shadow>
-        </value>
-        <value name="time">
-          <shadow type="math_number">
-            <field name="NUM">120</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="display_image_create"></block>
-      <block type="display_image_builtins"></block>
-      <block type="display_animate"></block>
-      <block type="image_arithmetic">
-        <value name="A">
-          <shadow type="pins_builtinimg"></shadow>
-        </value>>
-        <value name="B">
-          <shadow type="pins_builtinimg"></shadow>
-        </value>
-      </block>
-      <block type="image_shift">
-        <value name="val">
-          <shadow type="math_number">
-            <field name="NUM">1</field>
-          </shadow>
-        </value>
-        <value name="img">
-          <shadow type="pins_builtinimg"></shadow>
-        </value>
-      </block>
-      <block type="display_get_pixel">
-        <value name="x">
-          <shadow type="pins_exlcdh"></shadow>
-        </value>
-        <value name="y">
-          <shadow type="pins_exlcdv"></shadow>
-        </value>
-      </block>
-      <block type="display_bright_point">
-        <value name="x">
-          <shadow type="pins_exlcdh"></shadow>
-        </value>
-        <value name="y">
-          <shadow type="pins_exlcdv"></shadow>
-        </value>
-        <value name="STAT">
-          <shadow type="display_onoff">
-          </shadow>
-        </value>
-      </block>
-      <block type="display_bright_screen">
-        <value name="x">
-          <shadow type="pins_exlcdh"></shadow>
-        </value>
-      </block>
-      <block type="display_get_screen_pixel"></block>
-      <block type="display_get_screen_image"></block>
-      <block type="display_blink_rate">
-        <value name="x">
-          <shadow type="math_number">
-            <field name="NUM">2</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="display_clear"></block>
-      <sep gap='50'></sep>
       <block type="display_use_i2c_init">
         <value name="SUB">
           <shadow type="variables_get">

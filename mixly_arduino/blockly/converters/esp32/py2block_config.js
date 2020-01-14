@@ -19,7 +19,7 @@ function Py2blockConfig (){
     this.formatModuleKeyL = [
         ['Pin', 'ADC', 'TouchPad', 'PWM', 'DAC', 'I2C'],
         ['button_a', 'button_b', 'touch1', 'touch2', 'touch3', 'touch4', 'Infrared_left', 'Infrared_right',
-            'mixgo_get_brightness', 'mixgo_get_soundlevel', 'Sonar', 'led'],
+            'mixgo_get_brightness', 'mixgo_get_soundlevel', 'Sonar', 'led', 'Button'],
         ['NeoPixel'],
         ['display', 'Image']
     ];

@@ -1733,3 +1733,13 @@ Blockly.Blocks.display_triangle = {
         this.setTooltip(Blockly.MIXLY_DISPLAY_DRAW+Blockly.MIXLY_HANBIT_DRAW_TRIANGLE);
     }
 };
+
+Blockly.Blocks.display_help = {
+  init: function () {
+    this.setColour('#555555');
+    this.appendDummyInput("")
+      .appendField(Blockly.MIXGO_ONBOARDDISPLAY_HELP);
+    this.setInputsInline(true);
+    this.setTooltip('');
+  }
+};
