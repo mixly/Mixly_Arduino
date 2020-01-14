@@ -189,6 +189,63 @@ Blockly.Blocks.esp32_music_reset = {
     }
 }
 
+Blockly.Blocks.esp32_onboard_music_pitch = {
+    init: function() {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_TONE);  
+        this.appendValueInput('pitch')
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_FREQUENCY);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE);
+    }
+};
+
+Blockly.Blocks.esp32_onboard_music_pitch_with_time = {
+    init: function() {
+        this.setColour(Blockly.Blocks.actuator.HUE);        
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_TONE);    
+        this.appendValueInput('pitch')
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_FREQUENCY);
+        this.appendValueInput('time')
+            .setCheck(Number)
+            .appendField(Blockly.MIXLY_DURATION);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_TONE2);
+    }
+};
+
+Blockly.Blocks.esp32_onboard_music_stop = {
+    init: function() {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_NOTONE); 
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+    }
+};
+
+Blockly.Blocks.esp32_onboard_music_play_list = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendValueInput('LIST')
+            .appendField(Blockly.MIXLY_ESP32_MUSIC_PLAY_LISTS)        
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+        this.setTooltip(Blockly.MIXLY_ESP32_MUSIC_PLAY_LISTS);
+
+    }
+}
+
 Blockly.Blocks.esp32_music_play_list = {
     init: function () {
         this.setColour(Blockly.Blocks.actuator.HUE);

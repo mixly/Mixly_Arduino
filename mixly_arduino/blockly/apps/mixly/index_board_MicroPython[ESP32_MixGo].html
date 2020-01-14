@@ -1814,7 +1814,7 @@
           </shadow>
         </value>
       </block>
-      <block type="esp32_music_pitch">
+      <block type="esp32_onboard_music_pitch">
         <value name="PIN">
           <shadow type="pins_pwm_pin">
             <field name="PIN">27</field>
@@ -1826,7 +1826,7 @@
           </shadow>
         </value>
       </block>
-      <block type="esp32_music_pitch_with_time">
+      <block type="esp32_onboard_music_pitch_with_time">
         <value name="PIN">
           <shadow type="pins_pwm_pin">
             <field name="PIN">27</field>
@@ -1843,14 +1843,14 @@
           </shadow>
         </value>
       </block>
-      <block type="esp32_music_stop">
+      <block type="esp32_onboard_music_stop">
         <value name="PIN">
           <shadow type="pins_pwm_pin">
             <field name="PIN">27</field>
           </shadow>
         </value>
       </block>
-      <block type="esp32_music_play_list">
+      <block type="esp32_onboard_music_play_list">
         <value name="LIST">
           <shadow type="pins_playlist"></shadow>
         </value>
@@ -1860,7 +1860,7 @@
           </shadow>
         </value>
       </block>
-      <block type="esp32_mixgo_music_play_list_show">
+      <!--<block type="esp32_mixgo_music_play_list_show">
         <value name="LIST">
           <shadow type="pins_playlist"></shadow>
         </value>
@@ -1869,7 +1869,7 @@
             <field name="PIN">27</field>
           </shadow>
         </value>
-      </block>
+      </block>-->
       <block type="esp32_music_set_tempo">
         <value name="TICKS">
           <shadow type="math_number">
@@ -1884,6 +1884,40 @@
       </block>
       <block type="esp32_music_get_tempo"></block>
       <block type="esp32_music_reset"></block>
+      <block type="actuator_neopixel_rgb">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">rgb</field>
+          </shadow>
+        </value>
+        <value name="_LED_">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="RVALUE">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="GVALUE">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="BVALUE">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="actuator_neopixel_write">
+        <value name="SUB">
+          <shadow type="variables_get">
+            <field name="VAR">rgb</field>
+          </shadow>
+        </value>
+      </block>
     </category>
     <category id="catOnBoardDisplay" name="catOnBoardDisplay" colour="180">
       <block type="display_help"></block>
@@ -2239,7 +2273,7 @@
           </shadow>
         </value>
       </block>
-      <block type="esp32_mixgo_music_play_list_show">
+      <!--<block type="esp32_mixgo_music_play_list_show">
         <value name="LIST">
           <shadow type="pins_playlist"></shadow>
         </value>
@@ -2248,7 +2282,7 @@
             <field name="PIN">27</field>
           </shadow>
         </value>
-      </block>
+      </block>-->
       <block type="esp32_music_set_tempo">
         <value name="TICKS">
           <shadow type="math_number">

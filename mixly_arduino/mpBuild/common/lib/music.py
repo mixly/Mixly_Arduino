@@ -226,9 +226,15 @@ class MIDI():
             sleep_ms(midi[1])
         pwm.deinit()
 
-    def pitch(self, pin=27, freq=440, tim=0):
+    def pitch(self, *args, tim=0):
         from machine import Pin, PWM
         from utime import sleep_ms
+        if(len(args)==1):
+            pin = 27
+            freq = args[0]
+        elif(len(args)==2):
+            pin = args[0]
+            freq = args[1]
         pwm = PWM(Pin(pin))
         if freq > 0:
             pwm.freq(int(freq))  # set frequency
@@ -238,6 +244,27 @@ class MIDI():
             #pwm.duty(tim)  # set duty cycle
             sleep_ms(tim)
             pwm.deinit()
+
+    def pitch_time(self, *args):
+        from machine import Pin, PWM
+        from utime import sleep_ms
+        if(len(args)==2):
+            pin = 27
+            freq = args[0]
+            tim = args[1]
+        elif(len(args)==3):
+            pin = args[0]
+            freq = args[1] 
+            tim = args[2]    
+        pwm = PWM(Pin(pin))
+        if freq > 0:
+            pwm.freq(int(freq)) # set frequency
+        else:
+            pwm.duty(0)
+        if tim > 0:
+            #pwm.duty(tim)  # set duty cycle
+            sleep_ms(tim)
+            pwm.deinit()         
 
     def stop(self, pin=27):
         from machine import Pin, PWM
@@ -250,6 +277,7 @@ __music__ = MIDI()
 
 play = __music__.play
 pitch = __music__.pitch
+pitch_time = __music__.pitch_time
 stop = __music__.stop
 set_default = __music__.set_default
 set_tempo = __music__.set_tempo

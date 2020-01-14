@@ -17,7 +17,7 @@ Blockly.Python.esp32_music_pitch_with_time = function(block) {
   var number_pitch = Blockly.Python.valueToCode(block, 'pitch', Blockly.Python.ORDER_ATOMIC);
   var number_time = Blockly.Python.valueToCode(block, 'time', Blockly.Python.ORDER_ATOMIC);
   var pin = Blockly.Python.valueToCode(block, 'PIN', Blockly.Python.ORDER_ATOMIC);
-  var code = 'music.pitch(' + pin + ', '+  number_pitch+ ', ' + number_time + ')\n';
+  var code = 'music.pitch_time(' + pin + ', '+  number_pitch+ ', ' + number_time + ')\n';
   return code;
 };
 
@@ -40,6 +40,34 @@ Blockly.Python.esp32_music_get_tempo=function(){
     Blockly.Python.definitions_['import_music'] = 'import music';
     var code =  "music.get_tempo()";
     return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.esp32_onboard_music_pitch = function(block) {
+  Blockly.Python.definitions_['import_music'] = 'import music';
+  var number_pitch = Blockly.Python.valueToCode(block, 'pitch', Blockly.Python.ORDER_ATOMIC);
+  var code = 'music.pitch(' + number_pitch + ')\n';
+  return code;
+};
+
+Blockly.Python.esp32_onboard_music_pitch_with_time = function(block) {
+  Blockly.Python.definitions_['import_music'] = 'import music';
+  var number_pitch = Blockly.Python.valueToCode(block, 'pitch', Blockly.Python.ORDER_ATOMIC);
+  var number_time = Blockly.Python.valueToCode(block, 'time', Blockly.Python.ORDER_ATOMIC);
+  var code = 'music.pitch_time(' + number_pitch + ', ' + number_time + ')\n';
+  return code;
+};
+
+Blockly.Python.esp32_onboard_music_stop = function(block) {
+  Blockly.Python.definitions_['import_music'] = 'import music';
+  var code = 'music.stop('+')\n';
+  return code;
+};
+
+Blockly.Python.esp32_onboard_music_play_list=function(){
+    Blockly.Python.definitions_['import_music'] = 'import music';
+    var lst = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_ASSIGNMENT);
+    var code = "music.play("+ lst +")\n";
+    return code;
 };
 
 Blockly.Python.esp32_music_play_list=function(){

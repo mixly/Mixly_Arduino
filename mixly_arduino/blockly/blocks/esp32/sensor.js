@@ -39,11 +39,12 @@ Blockly.Blocks['sensor_mixgo_onboard_button_get_presses'] = {
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('btn')
         .appendField(Blockly.MIXLY_BUTTON)
-        .setCheck(Number);
-        this.appendValueInput('VAR')
-            .setCheck(Number)
+        .setCheck(Number);        
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_GET_PRESSES_SECONDS);
+            .appendField(Blockly.MIXLY_GET_PRESSES);
+        this.appendValueInput('VAR')
+            .setCheck(Number)    
+            .appendField(Blockly.MIXLY_GET_PRESSES_TIME);
         this.setOutput(true, Number);
         this.setInputsInline(true);
         this.setTooltip(Blockly.Msg.PROCEDURES_DEFRETURN_RETURN+Blockly.MIXLY_BUTTON+Blockly.MIXLY_GET_PRESSES);
@@ -79,7 +80,7 @@ Blockly.Blocks['sensor_mixgo_button_is_pressed'] = {
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_IS_PRESSED);
         this.appendValueInput("STAT")
-            .appendField(Blockly.MIXLY_PINMODE);    
+            .appendField(Blockly.MIXLY_ELECLEVEL);    
         this.setOutput(true, Boolean);
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_SENOR_IS_PRESSED);
@@ -108,10 +109,11 @@ Blockly.Blocks['sensor_mixgo_button_get_presses'] = {
             .appendField(Blockly.MIXLY_BUTTON)
             .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_GET_PRESSES);
         this.appendValueInput('VAR')
             .setCheck(Number)    
-        this.appendDummyInput()
-        .appendField(Blockly.MIXLY_GET_PRESSES_SECONDS);
+            .appendField(Blockly.MIXLY_GET_PRESSES_TIME);
         this.setOutput(true, Number);
         this.setInputsInline(true);
         this.setTooltip(Blockly.Msg.PROCEDURES_DEFRETURN_RETURN+Blockly.MIXLY_BUTTON+Blockly.MIXLY_GET_PRESSES);

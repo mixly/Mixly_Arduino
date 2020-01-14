@@ -82,9 +82,9 @@ pbc.moduleFunctionD.get('mixgo.led')['setbrightness'] = function (py2block, func
 
 
 pbc.moduleFunctionD.get('music')['pitch'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-	/*if(args.length!==2){
+	if(args.length!==1 && args.length!==2){
 		throw new Error("Incorrect number of arguments");
-	}*/
+	}
 
 	 if (args.length === 2) {
         pbc.pinType = "pins_pwm_pin";
@@ -98,6 +98,37 @@ pbc.moduleFunctionD.get('music')['pitch'] = function (py2block, func, args, keyw
         return [block("esp32_music_pitch", func.lineno, {}, {
             'pitch': pitchblock,
             'PIN': pinblock,
+        }, {
+            "inline": "true"
+        })];
+    } 
+    else if (args.length=== 1){
+        pbc.pinType = "pins_tone_notes";
+        var pitchblock = py2block.convert(args[0]);
+        pbc.pinType=null;
+     return [block("esp32_onboard_music_pitch", func.lineno, {}, {
+                'pitch': pitchblock,
+            }, {
+                "inline": "true"
+            })];
+
+    }
+
+}
+
+pbc.moduleFunctionD.get('music')['pitch_time'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if(args.length!==2 && args.length!==3){
+        throw new Error("Incorrect number of arguments");
+    }
+
+     if (args.length === 2) {
+        pbc.pinType = "pins_tone_notes";
+        var pitchblock = py2block.convert(args[0]);
+        pbc.pinType=null;
+        var timeblock=py2block.convert(args[1]);        
+        return [block("esp32_onboard_music_pitch_with_time", func.lineno, {}, {
+            'pitch': pitchblock,
+            "time":timeblock
         }, {
             "inline": "true"
         })];
@@ -124,9 +155,10 @@ pbc.moduleFunctionD.get('music')['pitch'] = function (py2block, func, args, keyw
 
 
 pbc.moduleFunctionD.get('music')['stop'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 1) {
+    if (args.length !== 1 && args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
+    if (args.length == 1){
     pbc.pinType = "pins_pwm_pin";
     var argblock = py2block.convert(args[0]);
     pbc.pinType = null;
@@ -135,13 +167,21 @@ pbc.moduleFunctionD.get('music')['stop'] = function (py2block, func, args, keywo
     }, {
         "inline": "true"
     })];
+    }
+    if (args.length == 0){
+    return [block("esp32_onboard_music_stop", func.lineno, {}, {}, {
+        "inline": "true"
+    })];
+    }
+
 }
 
 
 pbc.moduleFunctionD.get('music')['play'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 2) {
+    if (args.length !== 2 && args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
+    if(args.length == 2){
     pbc.pinType = "pins_playlist_pin";
     var nameblock= py2block.convert(args[0]);
     pbc.pinType = "pins_pwm_pin";
@@ -153,6 +193,17 @@ pbc.moduleFunctionD.get('music')['play'] = function (py2block, func, args, keywo
     }, {
         "inline": "true"
     })];
+    }
+    if(args.length == 1){
+    pbc.pinType = "pins_playlist_pin";
+    var nameblock= py2block.convert(args[0]);
+    pbc.pinType = null;
+    return [block("esp32_onboard_music_play_list", func.lineno, {}, {
+        "LIST":nameblock,
+    }, {
+        "inline": "true"
+    })];
+    }
 }
 
 pbc.moduleFunctionD.get('music')['play_show'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
