@@ -9,12 +9,12 @@ from machine import TouchPad
 import time
 from neopixel import NeoPixel
 
-def get_brightness():
-    return ADCSensor(pin = 39).read()
+def get_brightness(pin = 39):
+    return ADCSensor(pin).read()
 
-def get_soundlevel():
-    return ADCSensor(pin = 35).read()
-    
+def get_soundlevel(pin = 35):
+    return ADCSensor(pin).read()
+  
 # Button
 class Button:
     def __init__(self, pin):
@@ -81,6 +81,7 @@ class MyPin(Pin):
             self.init(Pin.IN)
             return self.value() == 1
 
+class Infrared(MyPin):
     def near(self): 
         id = int(str(self)[4:-1]) #unsafe!
         pin15=Pin(15,Pin.OUT)
@@ -173,8 +174,8 @@ Pin(0, Pin.OUT).value(1)
 Pin(5, Pin.OUT).value(1)
 led1 = led(pin = 0)
 led2 = led(pin = 5)
-infrared_left = MyPin(34)
-infrared_right = MyPin(36)
+infrared_left = Infrared(34)
+infrared_right = Infrared(36)
 touch1 = MyPin(32)
 touch2 = MyPin(33)
 touch3 = MyPin(25)
