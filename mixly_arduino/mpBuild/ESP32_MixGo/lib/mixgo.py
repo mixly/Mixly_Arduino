@@ -31,8 +31,8 @@ class Button:
                 last_state, presses = 0, presses + 1
         return presses
 
-    def is_pressed(self, flag = 0):
-        return self.pin.value() == flag
+    def is_pressed(self):
+        return self.pin.value() == 0
 
     def was_pressed(self):
         last_state = self.pin.value()
@@ -121,38 +121,29 @@ class Sonar:
         t2 = time.ticks_us()
         return round(time.ticks_diff(t2, t1) / 10000 * 340 / 2, 2)   
 
-# Led
 class led:
-    def __init__(self, pin):
-        self.val = 1
+    def __init__(self, pin, flag=1):
+        self.val = flag
         self.pin = pin
-    def on(self):
-        self.val = 0
-        Pin(self.pin).value(0)
-    def off(self):
-        self.val = 1
-        Pin(self.pin).value(1)
-    def toggle(self):
-        self.val = 1-self.val
-        Pin(self.pin).value(self.val)
-    def value(self,val):
+        self.flag = flag
+    def setbrightness(self,val):
         self.val = val
-        PWM(Pin(self.pin)).duty(1023-self.val)
-    def setbrightness(n,val):
-        if n in (1,2):
-            n = 5 * (n - 1)
-            PWM(Pin(n)).duty(1023 - val)
-    def setonoff(n,val):
-        if n in (1,2):
-            n = 5 * (n - 1)
-            if(val==-1):
-                Pin(n).value(1 - Pin(n).value())
-            else:
-                Pin(n).value(1-val)
-    def getonoff(n):
-        if n in (1,2):
-            n = 5 * (n - 1)
-            return 1 - Pin(n).value()
+        if self.flag:
+            PWM(Pin(self.pin)).duty(self.val)
+        else:
+            PWM(Pin(self.pin)).duty(1023 - self.val)
+    def setonoff(self,val):
+        if(val == -1):
+            Pin(self.pin).value(1 - Pin(self.pin).value())
+        elif(val == 1):
+            Pin(self.pin).value(self.flag)
+        elif(val == 0):
+            Pin(self.pin).value(1 - self.flag)
+    def getonoff(self):
+        if self.flag:
+            return Pin(self.pin).value()
+        else:
+            return 1 - Pin(self.pin).value()
 
 class ADCSensor:
     def __init__(self,pin):
@@ -168,24 +159,10 @@ class RGB:
         self[n] = (r, g, b)
         self.write()
            
-button_a = Button(17)
-button_b = Button(16)
-Pin(0, Pin.OUT).value(1)
-Pin(5, Pin.OUT).value(1)
-led1 = led(pin = 0)
-led2 = led(pin = 5)
-infrared_left = Infrared(34)
-infrared_right = Infrared(36)
-touch1 = MyPin(32)
-touch2 = MyPin(33)
-touch3 = MyPin(25)
-touch4 = MyPin(26)
-
 i2c = I2C(scl = Pin(22), sda = Pin(21), freq = 100000)
 buf = bytearray(1)
-rgb = NeoPixel(Pin(2), 2)
-tim = Timer(-1)
 rtc = RTC()
+tim = Timer(-1)
 
 try:
     i2c.readfrom_mem_into(0x68, 0X75, buf)
@@ -197,3 +174,16 @@ else:
 
         mpu = MPU9250(i2c)
         compass = Compass(mpu)
+
+        button_a = Button(17)
+        button_b = Button(16)
+        led1 = led(pin = 0, flag = 0)
+        led2 = led(pin = 5, flag = 0)
+        infrared_left = Infrared(34)
+        infrared_right = Infrared(36)
+        touch1 = MyPin(32)
+        touch2 = MyPin(33)
+        touch3 = MyPin(25)
+        touch4 = MyPin(26)
+
+        rgb = NeoPixel(Pin(2), 2)
