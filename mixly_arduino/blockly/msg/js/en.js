@@ -2618,3 +2618,5 @@ Blockly.MIXLY_LCD_STAT_OFF=Blockly.MIXLY_OFF;
 Blockly.MIXGO_ONBOARDDISPLAY_HELP = "When the hardware of mixgo Max uses the on-board display module, it needs to connect the display to pin 21 and pin 22";
 Blockly.MIXLY_ELECLEVEL = "Level trigger";
 Blockly.MIXLY_GET_PRESSES_TIME = "Duration(seconds)";
+Blockly.MIXLY_PYTHON_LOGIC_IS_NOT = "is not";
+Blockly.MIXLY_PYTHON_LOGIC_IS_NOT_IN = "is not in";

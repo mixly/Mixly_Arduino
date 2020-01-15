@@ -2619,3 +2619,5 @@ Blockly.MIXLY_LCD_STAT_OFF=Blockly.MIXLY_OFF;
 Blockly.MIXGO_ONBOARDDISPLAY_HELP = "MixGo Max硬體使用板載顯示模塊時需要將顯示幕連接至21、22號管脚";
 Blockly.MIXLY_ELECLEVEL = "電平觸發";
 Blockly.MIXLY_GET_PRESSES_TIME = "時長(秒)";
+Blockly.MIXLY_PYTHON_LOGIC_IS_NOT = "不是";
+Blockly.MIXLY_PYTHON_LOGIC_IS_NOT_IN = "不在";

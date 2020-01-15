@@ -2620,3 +2620,5 @@ Blockly.MIXLY_LCD_STAT_OFF=Blockly.MIXLY_OFF;
 Blockly.MIXGO_ONBOARDDISPLAY_HELP = "Mixgo Max necesita conectar la pantalla al pie de los tubos 21 y 22 para usar el módulo de visualización de la pizarra.";
 Blockly.MIXLY_ELECLEVEL = "Nivel de activación";
 Blockly.MIXLY_GET_PRESSES_TIME = "Duración (segundos)";
+Blockly.MIXLY_PYTHON_LOGIC_IS_NOT = "is not";
+Blockly.MIXLY_PYTHON_LOGIC_IS_NOT_IN = "is not in";

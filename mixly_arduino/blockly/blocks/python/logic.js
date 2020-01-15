@@ -218,11 +218,15 @@ Blockly.Blocks['logic_true_or_false'] = {
 
 Blockly.Blocks['logic_is_in'] = {
   init: function() {
+    var BOOLEANS =
+        [[Blockly.Msg.TEXT_APPEND_TO, 'in'],
+         [Blockly.MIXLY_PYTHON_LOGIC_IS_NOT_IN, 'not in']];
     this.setColour(Blockly.Blocks.logic.HUE);
     this.appendValueInput('A');
     this.appendValueInput('B')
         .setCheck([String,'List'])
-        .appendField(Blockly.Msg.TEXT_APPEND_TO);
+        //.appendField(Blockly.Msg.TEXT_APPEND_TO)
+        .appendField(new Blockly.FieldDropdown(BOOLEANS), 'BOOL');
     this.appendDummyInput("")
         .appendField(Blockly.MICROBIT_LOGIC_IS_IN);
     this.setOutput(true, Boolean);
@@ -233,10 +237,14 @@ Blockly.Blocks['logic_is_in'] = {
 
 Blockly.Blocks['logic_is'] = {
   init: function() {
+    var BOOLEANS =
+        [[Blockly.MIXLY_PYTHON_LOGIC_IS, 'is'],
+         [Blockly.MIXLY_PYTHON_LOGIC_IS_NOT, 'is not']];
     this.setColour(Blockly.Blocks.logic.HUE);
     this.appendValueInput('A');
     this.appendValueInput('B')
-        .appendField(Blockly.MIXLY_PYTHON_LOGIC_IS);    
+        .appendField(new Blockly.FieldDropdown(BOOLEANS), 'BOOL');
+        //.appendField(Blockly.MIXLY_PYTHON_LOGIC_IS);    
     this.setOutput(true, Boolean);
     this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_PYTHON_LOGIC_IS_TOOLTIP);

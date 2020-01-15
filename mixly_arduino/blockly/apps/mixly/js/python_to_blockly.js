@@ -1386,8 +1386,10 @@ PythonToBlocks.prototype.compareOperator = function(op) {
         case "Gt": return "GT";
         case "LtE": return "LTE";
         case "GtE": return "GTE";
-        case "In_": return "IN";
-        case "NotIn": return "NOTIN";
+        case "In_": return "in";
+        case "NotIn": return "not in";
+        case "Is": return "is";
+        case "IsNot": return "is not";
         // Is, IsNot, In, NotIn
         default: throw new Error("Operator not supported:"+op.name);
     }
@@ -1422,15 +1424,29 @@ PythonToBlocks.prototype.Compare = function(node)
             throw new Error("Only one comparison operator is supported");
         } 
     } else if (ops[0].name == "In_" || ops[0].name == "NotIn") {
+        if (ops[0].name == "In_"){
+           var mode="in"
+        }
+        else if (ops[0].name == "NotIn"){
+           var mode="not in"
+        }
         return block("logic_is_in", node.lineno, {
+            "BOOL":mode
         }, {
             "A": this.convert(left),
             "B": this.convert(comparators[0])
         }, {
             "inline": "true"
         });
-    } else if (ops[0].name == "Is") {
+    } else if (ops[0].name == "Is" || ops[0].name == "IsNot") {
+        if (ops[0].name == "Is"){
+           var mode="is"
+        }
+        else if (ops[0].name == "IsNot"){
+           var mode="is not"
+        }
         return block("logic_is", node.lineno, {
+            "BOOL":mode
         }, {
             "A": this.convert(left),
             "B": this.convert(comparators[0])

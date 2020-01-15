@@ -79,13 +79,15 @@ Blockly.Python.logic_true_or_false = function() {
 Blockly.Python.logic_is_in = function() {
   var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_ATOMIC) || '\'\'';
   var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_ATOMIC) || '\'\'';
-  var code=a+' in '+b;
+  var bool = this.getFieldValue('BOOL');
+  var code=a+' '+bool+' '+b;
   return [code ,Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.logic_is = function() {
   var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_ATOMIC) || '\'\'';
   var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_ATOMIC) || '\'\'';
-  var code=a+' is '+b;
+  var bool = this.getFieldValue('BOOL');
+  var code=a+' '+bool+' '+b;
   return [code ,Blockly.Python.ORDER_ATOMIC];
 };
