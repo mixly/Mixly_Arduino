@@ -96,6 +96,8 @@ Blockly.Blocks['sensor_mixgo_extern_button_was_pressed'] = {
             .setCheck(Number);
         this.appendDummyInput()
         .appendField(Blockly.MIXLY_WAS_PRESSED);
+        this.appendValueInput("STAT")
+            .appendField(Blockly.MIXLY_ELECLEVEL); 
         this.setOutput(true, Boolean);
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_SENOR_WAS_PRESSED);

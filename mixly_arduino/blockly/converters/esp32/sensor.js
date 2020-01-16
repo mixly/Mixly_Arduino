@@ -610,7 +610,7 @@ pbc.moduleFunctionD.get('mixgo.button_b')['irq'] = function (py2block, func, arg
 }
 
 pbc.objectFunctionD.get('was_pressed')['Button'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0) {
+    if (args.length !== 1) {
             throw new Error("Incorrect number of arguments");
         }
         var pin=py2block.identifier(func.value.func.attr);
@@ -620,8 +620,14 @@ pbc.objectFunctionD.get('was_pressed')['Button'] = function (py2block, func, arg
         pbc.pinType = "pins_digital_pin";
         var pinblock = py2block.convert(func.value.args[0]);
         pbc.pinType = null;
+
+        pbc.pinType = "pins_digital";
+        var argblock = py2block.convert(args[0]);
+        pbc.pinType = null;
+
         return block('sensor_mixgo_extern_button_was_pressed', func.lineno, {}, {
             "PIN": pinblock,
+            "STAT": argblock
         }, {
             "inline": "true"
         });

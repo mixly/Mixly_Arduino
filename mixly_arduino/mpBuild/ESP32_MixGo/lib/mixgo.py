@@ -34,14 +34,19 @@ class Button:
     def is_pressed(self, flag = 0):
         return self.pin.value() == flag
 
-    def was_pressed(self):
+    def was_pressed(self, flag = 0):
         last_state = self.pin.value()
         if last_state :
             return False
-        else :
-            while not self.pin.value():
-                time.sleep_ms(10)
-            return True
+        else:
+            if flag:
+                while self.pin.value():
+                    time.sleep_ms(10)
+                return True
+            else:
+                while not self.pin.value():
+                    time.sleep_ms(10)
+                return True
 
     def irq(self, handler, trigger):
         self.pin.irq(handler = handler, trigger = trigger)
@@ -134,11 +139,11 @@ class led:
             PWM(Pin(self.pin)).duty(1023 - self.val)
     def setonoff(self,val):
         if(val == -1):
-            Pin(self.pin,Pin.OUT).value(1 - Pin(self.pin).value())
+            Pin(self.pin).value(1 - Pin(self.pin).value())
         elif(val == 1):
-            Pin(self.pin,Pin.OUT).value(self.flag)
+            Pin(self.pin).value(self.flag)
         elif(val == 0):
-            Pin(self.pin,Pin.OUT).value(1 - self.flag)
+            Pin(self.pin).value(1 - self.flag)
     def getonoff(self):
         if self.flag:
             return Pin(self.pin).value()
