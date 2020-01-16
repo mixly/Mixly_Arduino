@@ -6,7 +6,7 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.sensor.HUE = 40//'#9e77c9'//40;
 
-Blockly.Blocks['sensor_mixgo_onboard_button_is_pressed'] = {
+Blockly.Blocks['sensor_mixgo_button_is_pressed'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('btn')
@@ -20,7 +20,7 @@ Blockly.Blocks['sensor_mixgo_onboard_button_is_pressed'] = {
     }
 };
 
-Blockly.Blocks['sensor_mixgo_onboard_button_was_pressed'] = {
+Blockly.Blocks['sensor_mixgo_button_was_pressed'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('btn')
@@ -34,7 +34,7 @@ Blockly.Blocks['sensor_mixgo_onboard_button_was_pressed'] = {
     }
 };
 
-Blockly.Blocks['sensor_mixgo_onboard_button_get_presses'] = {
+Blockly.Blocks['sensor_mixgo_button_get_presses'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput('btn')
@@ -51,7 +51,7 @@ Blockly.Blocks['sensor_mixgo_onboard_button_get_presses'] = {
     }
 };
 
-Blockly.Blocks.sensor_mixgo_onboard_button_attachInterrupt = {
+Blockly.Blocks.sensor_mixgo_button_attachInterrupt = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendValueInput("btn")
@@ -70,7 +70,7 @@ Blockly.Blocks.sensor_mixgo_onboard_button_attachInterrupt = {
 };
 
 
-Blockly.Blocks['sensor_mixgo_button_is_pressed'] = {
+Blockly.Blocks['sensor_mixgo_extern_button_is_pressed'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput("PIN", Number)
@@ -87,7 +87,7 @@ Blockly.Blocks['sensor_mixgo_button_is_pressed'] = {
     }
 };
 
-Blockly.Blocks['sensor_mixgo_button_was_pressed'] = {
+Blockly.Blocks['sensor_mixgo_extern_button_was_pressed'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput("PIN", Number)
@@ -102,7 +102,7 @@ Blockly.Blocks['sensor_mixgo_button_was_pressed'] = {
     }
 };
 
-Blockly.Blocks['sensor_mixgo_button_get_presses'] = {
+Blockly.Blocks['sensor_mixgo_extern_button_get_presses'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendValueInput("PIN", Number)
@@ -120,7 +120,7 @@ Blockly.Blocks['sensor_mixgo_button_get_presses'] = {
     }
 };
 
-Blockly.Blocks.sensor_mixgo_button_attachInterrupt = {
+Blockly.Blocks.sensor_mixgo_extern_button_attachInterrupt = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendValueInput("PIN", Number)
@@ -541,7 +541,7 @@ Blockly.Blocks.sensor_dht11 = {
     }
 };
 
-Blockly.Blocks['sensor_mixgo_onboard_light'] = {
+Blockly.Blocks['sensor_mixgo_light'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()
@@ -552,7 +552,7 @@ Blockly.Blocks['sensor_mixgo_onboard_light'] = {
     }
 };
 
-Blockly.Blocks['sensor_mixgo_onboard_sound'] = {
+Blockly.Blocks['sensor_mixgo_sound'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()
@@ -563,32 +563,32 @@ Blockly.Blocks['sensor_mixgo_onboard_sound'] = {
     }
 };
 
-Blockly.Blocks['sensor_mixgo_light'] = {
+Blockly.Blocks['sensor_mixgo_extern_light'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_ESP32_MIXGOMAX_LIGHT);
+            .appendField(Blockly.MIXLY_ESP32_EXTERN_LIGHT);
         this.appendValueInput("PIN", Number)
             .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);   
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_ESP32_MIXGOMAX_VALUE);     
+            .appendField(Blockly.MIXLY_ESP32_EXTERN_VALUE);     
         this.setOutput(true, Number);
         this.setInputsInline(true);
         this.setTooltip(Blockly.ESP32_SENSOR_NIXGO_LIGHT_TOOLTIP);
     }
 };
 
-Blockly.Blocks['sensor_mixgo_sound'] = {
+Blockly.Blocks['sensor_mixgo_extern_sound'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_ESP32_MIXGOMAX_SOUND);
+            .appendField(Blockly.MIXLY_ESP32_EXTERN_SOUND);
         this.appendValueInput("PIN", Number)
             .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_ESP32_MIXGOMAX_VALUE);    
+            .appendField(Blockly.MIXLY_ESP32_EXTERN_VALUE);    
         this.setOutput(true, Number);
         this.setInputsInline(true);
         this.setTooltip(Blockly.ESP32_SENSOR_NIXGO_SOUND_TOOLTIP);
@@ -618,16 +618,16 @@ Blockly.Blocks['sensor_mixgo_pin_pressed'] = {
     }
 };
 
-Blockly.Blocks['sensor_mixgo_pin_near'] = {
+Blockly.Blocks['sensor_mixgo_extern_pin_near'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_ESP32_MIXGOMAX_NEAR);
+            .appendField(Blockly.MIXLY_ESP32_EXTERN_NEAR);
         this.appendValueInput("PIN", Number)
             .appendField(Blockly.MIXLY_PIN)
             .setCheck(Number);   
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_ESP32_MIXGOMAX_VALUE);     
+            .appendField(Blockly.MIXLY_ESP32_EXTERN_VALUE);     
         this.setOutput(true, Number);
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_ESP32_SENSOR_MIXGO_PIN_NEAR_TOOLTIP+Blockly.MIXLY_ESP32_NEAR);
@@ -635,7 +635,7 @@ Blockly.Blocks['sensor_mixgo_pin_near'] = {
 };
 
 
-Blockly.Blocks['sensor_mixgo_onboard_pin_near'] = {
+Blockly.Blocks['sensor_mixgo_pin_near'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()

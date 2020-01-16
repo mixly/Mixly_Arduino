@@ -163,6 +163,13 @@ Blockly.Python.math_single = function (a) {
 
 Blockly.Python.math_trig = Blockly.Python.math_single;
 
+Blockly.Python.math_dec = function (a) {
+  var argument0 = Blockly.Python.valueToCode(this, 'NUM',Blockly.Python.ORDER_NONE) || '0';
+  var operator = this.getFieldValue('OP');
+  var code = operator + '(' + argument0 + ')';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+
+};
 
 Blockly.Python.math_to_int = function() {
   var argument0 = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_NONE) || '0';

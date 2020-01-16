@@ -18,6 +18,16 @@ pbc.globalFunctionD['print'] = function(py2block, func, args, keywords, starargs
         }, {
             "inline": "false"
         })];
+    }else if (args.length != 1 && keywords.length === 0) { //print()
+        var d = py2block.convertElements("ADD", args);
+        
+        return [block("system_print_many", node.lineno, {
+        }, d, {
+            "inline": "true",
+        }, {
+            "@items":args.length
+        })];
+        
     }else{
         throw new Error("Incorrect number of arguments");
     }

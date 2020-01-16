@@ -112,19 +112,43 @@ Blockly.Python.ledswitch = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.actuator_extern_led_bright= function() {
+    Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    var bright = Blockly.Python.valueToCode(this,'bright', Blockly.Python.ORDER_ATOMIC);    
+    var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    // var bright = this.getFieldValue('bright');
+    var code = "mixgo.led(" + pin + ").setonoff("+bright+")\n";
+    return code;
+};
+
+Blockly.Python.actuator_extern_get_led_bright= function() {
+    Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var code = "mixgo.led(" + pin +").getonoff("+")";
+    return [code, Blockly.Python.ORDER_ATOMIC];;
+};
+
+Blockly.Python.actuator_extern_led_brightness= function() {
+    Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var flag = Blockly.Python.valueToCode(this,'bright', Blockly.Python.ORDER_ATOMIC);
+    var code = 'mixgo.led(' + pin +').setbrightness('+flag+')\n';
+    return code;
+};
+
 Blockly.Python.actuator_led_bright= function() {
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var op = Blockly.Python.valueToCode(this,'led', Blockly.Python.ORDER_ATOMIC);
     var bright = Blockly.Python.valueToCode(this,'bright', Blockly.Python.ORDER_ATOMIC);
     // var bright = this.getFieldValue('bright');
-    var code = "mixgo.led.setonoff("+op+","+bright+")\n";
+    var code = "mixgo.led" + op + ".setonoff("+bright+")\n";
     return code;
 };
 
 Blockly.Python.actuator_get_led_bright= function() {
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var op = Blockly.Python.valueToCode(this,'led', Blockly.Python.ORDER_ATOMIC);
-    var code = "mixgo.led.getonoff("+op+")";
+    var code = "mixgo.led" + op + ".getonoff("+")";
     return [code, Blockly.Python.ORDER_ATOMIC];;
 };
 
@@ -132,7 +156,7 @@ Blockly.Python.actuator_led_brightness= function() {
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var op = Blockly.Python.valueToCode(this,'led', Blockly.Python.ORDER_ATOMIC);
     var flag = Blockly.Python.valueToCode(this,'bright', Blockly.Python.ORDER_ATOMIC);
-    var code = 'mixgo.led.setbrightness('+op+','+flag+')\n';
+    var code = 'mixgo.led'+op+'.setbrightness('+flag+')\n';
     return code;
 };
 
@@ -167,6 +191,6 @@ Blockly.Python.actuator_neopixel_rgb=function(){
 };
 
 
-Blockly.Blocks.led_light=Blockly.Blocks.actuator_led_bright;
-Blockly.Blocks.get_led_bright=Blockly.Blocks.actuator_get_led_bright;
-Blockly.Blocks.led_brightness=Blockly.Blocks.actuator_led_brightness;
+Blockly.Python.led_light=Blockly.Python.actuator_led_bright;
+Blockly.Python.get_led_bright=Blockly.Python.actuator_get_led_bright;
+Blockly.Python.led_brightness=Blockly.Python.actuator_led_brightness;

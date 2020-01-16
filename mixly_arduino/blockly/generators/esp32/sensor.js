@@ -4,21 +4,21 @@ goog.provide('Blockly.Python.sensor');
 
 goog.require('Blockly.Python');
 
-Blockly.Python.sensor_mixgo_onboard_button_is_pressed = function(){
+Blockly.Python.sensor_mixgo_button_is_pressed = function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
     var code =  'mixgo.'+btn + '.is_pressed()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 //ok
-Blockly.Python.sensor_mixgo_onboard_button_was_pressed = function(){
+Blockly.Python.sensor_mixgo_button_was_pressed = function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
     var code =  'mixgo.'+btn + '.was_pressed()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_mixgo_onboard_button_get_presses = function(){
+Blockly.Python.sensor_mixgo_button_get_presses = function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
     var argument = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
@@ -26,7 +26,7 @@ Blockly.Python.sensor_mixgo_onboard_button_get_presses = function(){
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_mixgo_onboard_button_attachInterrupt = function () {
+Blockly.Python.sensor_mixgo_button_attachInterrupt = function () {
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var dropdown_btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
@@ -36,7 +36,7 @@ Blockly.Python.sensor_mixgo_onboard_button_attachInterrupt = function () {
     return code;
 };
 //ok
-Blockly.Python.sensor_mixgo_button_is_pressed = function(){
+Blockly.Python.sensor_mixgo_extern_button_is_pressed = function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var dropdown_stat = Blockly.Python.valueToCode(this, 'STAT', Blockly.Python.ORDER_ATOMIC);
@@ -44,14 +44,14 @@ Blockly.Python.sensor_mixgo_button_is_pressed = function(){
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 //ok
-Blockly.Python.sensor_mixgo_button_was_pressed = function(){
+Blockly.Python.sensor_mixgo_extern_button_was_pressed = function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var code =  'mixgo.Button('+pin + ').was_pressed()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_mixgo_button_get_presses = function(){
+Blockly.Python.sensor_mixgo_extern_button_get_presses = function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var argument = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
@@ -59,7 +59,7 @@ Blockly.Python.sensor_mixgo_button_get_presses = function(){
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_mixgo_button_attachInterrupt = function () {
+Blockly.Python.sensor_mixgo_extern_button_attachInterrupt = function () {
     Blockly.Python.definitions_['import_machine'] = 'import machine';
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
@@ -276,24 +276,24 @@ Blockly.Python.sensor_dht11 = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_mixgo_onboard_light= function(){
+Blockly.Python.sensor_mixgo_light= function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     return ['mixgo.get_brightness()', Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_mixgo_onboard_sound= function(){
+Blockly.Python.sensor_mixgo_sound= function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     return ['mixgo.get_soundlevel()', Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_mixgo_light= function(){
+Blockly.Python.sensor_mixgo_extern_light= function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var code = 'mixgo.get_brightness(' + pin + ')';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_mixgo_sound= function(){
+Blockly.Python.sensor_mixgo_extern_sound= function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var code = 'mixgo.get_soundlevel(' + pin + ')';
@@ -313,14 +313,14 @@ Blockly.Python.sensor_mixgo_pin_pressed = function(){
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_mixgo_pin_near = function(){
+Blockly.Python.sensor_mixgo_extern_pin_near = function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
     var code = 'mixgo.'+'Infrared('+ pin +').near()';
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_mixgo_onboard_pin_near = function(){
+Blockly.Python.sensor_mixgo_pin_near = function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var direction = this.getFieldValue('direction');
     var code = 'mixgo.'+'infrared_'+ direction +'.near()';
@@ -405,12 +405,12 @@ Blockly.Python.sensor_lm35 = function() {
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Blocks.sensor_button_is_pressed=Blockly.Blocks.sensor_mixgo_button_is_pressed;
-Blockly.Blocks.sensor_button_was_pressed=Blockly.Blocks.sensor_mixgo_button_was_pressed;
-Blockly.Blocks.sensor_button_get_presses=Blockly.Blocks.sensor_mixgo_button_get_presses;
-Blockly.Blocks.sensor_pin_pressed=Blockly.Blocks.sensor_mixgo_pin_pressed;
-Blockly.Blocks.sensor_pin_near=Blockly.Blocks.sensor_mixgo_pin_near;
-Blockly.Blocks.sensor_light=Blockly.Blocks.sensor_mixgo_light;
-Blockly.Blocks.sensor_sound=Blockly.Blocks.sensor_mixgo_sound;
-Blockly.Blocks.sensor_get_acceleration=Blockly.Blocks.sensor_mixgo_get_acceleration;
-Blockly.Blocks.dht11=Blockly.Blocks.sensor_dht11
+Blockly.Python.sensor_button_is_pressed=Blockly.Python.sensor_mixgo_button_is_pressed;
+Blockly.Python.sensor_button_was_pressed=Blockly.Python.sensor_mixgo_button_was_pressed;
+Blockly.Python.sensor_button_get_presses=Blockly.Python.sensor_mixgo_button_get_presses;
+Blockly.Python.sensor_pin_pressed=Blockly.Python.sensor_mixgo_pin_pressed;
+Blockly.Python.sensor_pin_near=Blockly.Python.sensor_mixgo_pin_near;
+Blockly.Python.sensor_light=Blockly.Python.sensor_mixgo_light;
+Blockly.Python.sensor_sound=Blockly.Python.sensor_mixgo_sound;
+Blockly.Python.sensor_get_acceleration=Blockly.Python.sensor_mixgo_get_acceleration;
+Blockly.Python.dht11=Blockly.Python.sensor_dht11

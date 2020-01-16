@@ -24,53 +24,121 @@ pbc.moduleFunctionD.get('servo')['servo_write_angle'] = function (py2block, func
     })];
 }
 
-pbc.moduleFunctionD.get('mixgo.led')['setonoff'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 2) {
+pbc.moduleFunctionD.get('mixgo.led1')['setonoff'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
     pbc.pinType="number";
-    var argblock = py2block.convert(args[0]);
+    var ledblock = {
+            _astname: "Num",
+            n: {
+                'v': "1"
+            }
+        }
+    var mode = py2block.convert(ledblock);   
     pbc.pinType=null;
     pbc.inScope="ledswitch";
-    var mode = py2block.convert(args[1]);
+    var argblock = py2block.convert(args[0]);
+    
      pbc.inScope=null;
     return [block("actuator_led_bright", func.lineno, {
         
     }, {
-        'led': argblock,
-        'bright':mode,
+        'led': mode,
+        'bright':argblock,
     }, {
         "inline": "true"
     }),
     ];
 }
 
-pbc.moduleFunctionD.get('mixgo.led')['getonoff'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+pbc.moduleFunctionD.get('mixgo.led2')['setonoff'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
     pbc.pinType="number";
+    var ledblock = {
+            _astname: "Num",
+            n: {
+                'v': "2"
+            }
+        }
+    var mode = py2block.convert(ledblock);   
+    pbc.pinType=null;
+    pbc.inScope="ledswitch";
     var argblock = py2block.convert(args[0]);
+    
+     pbc.inScope=null;
+    return [block("actuator_led_bright", func.lineno, {
+        
+    }, {
+        'led': mode,
+        'bright':argblock,
+    }, {
+        "inline": "true"
+    }),
+    ];
+}
+
+pbc.moduleFunctionD.get('mixgo.led1')['getonoff'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    pbc.pinType="number";
+    var ledblock = {
+            _astname: "Num",
+            n: {
+                'v': "1"
+            }
+        }
+    var mode = py2block.convert(ledblock);
     pbc.pinType=null;
     return block("actuator_get_led_bright", func.lineno, {
     }, {
-        'led': argblock,
+        'led': mode,
     }, {
         "inline": "true"
     });
 }
 
-pbc.moduleFunctionD.get('mixgo.led')['setbrightness'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 2) {
+pbc.moduleFunctionD.get('mixgo.led2')['getonoff'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
     pbc.pinType="number";
-    var argblock = py2block.convert(args[0]);
+    var ledblock = {
+            _astname: "Num",
+            n: {
+                'v': "2"
+            }
+        }
+    var mode = py2block.convert(ledblock);
     pbc.pinType=null;
-    var brightblock = py2block.convert(args[1]);
+    return block("actuator_get_led_bright", func.lineno, {
+    }, {
+        'led': mode,
+    }, {
+        "inline": "true"
+    });
+}
+
+pbc.moduleFunctionD.get('mixgo.led1')['setbrightness'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    pbc.pinType="number";
+    var ledblock = {
+            _astname: "Num",
+            n: {
+                'v': "1"
+            }
+        }
+    var mode = py2block.convert(ledblock);
+    pbc.pinType=null;
+    var brightblock = py2block.convert(args[0]);
 
     return [block("actuator_led_brightness", func.lineno, {}, {
-        'led': argblock,
+        'led': mode,
         'bright':brightblock,
     }, {
         "inline": "true"
@@ -78,7 +146,29 @@ pbc.moduleFunctionD.get('mixgo.led')['setbrightness'] = function (py2block, func
     ];
 }
 
+pbc.moduleFunctionD.get('mixgo.led2')['setbrightness'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    pbc.pinType="number";
+    var ledblock = {
+            _astname: "Num",
+            n: {
+                'v': "2"
+            }
+        }
+    var mode = py2block.convert(ledblock);
+    pbc.pinType=null;
+    var brightblock = py2block.convert(args[0]);
 
+    return [block("actuator_led_brightness", func.lineno, {}, {
+        'led': mode,
+        'bright':brightblock,
+    }, {
+        "inline": "true"
+    }),
+    ];
+}
 
 
 pbc.moduleFunctionD.get('music')['pitch'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -307,4 +397,71 @@ pbc.moduleFunctionD.get('music')['reset'] = function(py2block, func, args, keywo
     })];
 }
 
+pbc.objectFunctionD.get('setonoff')['led'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var pin=py2block.identifier(func.value.func.attr);
+    var mac=py2block.identifier(func.value.func.value.id);
+    if(pin==="led" && mac==="mixgo"){
 
+    pbc.pinType = "pins_pwm_pin";
+    var pinblock = py2block.convert(func.value.args[0]);
+    pbc.pinType = null;
+    pbc.inScope="ledswitch";
+    var mode = py2block.convert(args[0]);
+     pbc.inScope=null;
+
+    return [block("actuator_extern_led_bright", func.lineno, {}, {
+        "PIN": pinblock,
+        'bright':mode
+    }, {
+        "inline": "true"
+    })];
+}
+
+}
+
+pbc.objectFunctionD.get('getonoff')['led'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var pin=py2block.identifier(func.value.func.attr);
+    var mac=py2block.identifier(func.value.func.value.id);
+    if(pin==="led" && mac==="mixgo"){
+
+    pbc.pinType = "pins_pwm_pin";
+    var pinblock = py2block.convert(func.value.args[0]);
+    pbc.pinType = null;
+
+    return block("actuator_extern_get_led_bright", func.lineno, {}, {
+        "PIN": pinblock,
+    }, {
+        "inline": "true"
+    });
+}
+
+}
+
+pbc.objectFunctionD.get('setbrightness')['led'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var pin=py2block.identifier(func.value.func.attr);
+    var mac=py2block.identifier(func.value.func.value.id);
+    if(pin==="led" && mac==="mixgo"){
+
+    pbc.pinType = "pins_pwm_pin";
+    var pinblock = py2block.convert(func.value.args[0]);
+    pbc.pinType = null;
+    var mode = py2block.convert(args[0]);
+
+    return [block("actuator_extern_led_brightness", func.lineno, {}, {
+        "PIN": pinblock,
+        'bright':mode
+    }, {
+        "inline": "true"
+    })];
+}
+
+}
