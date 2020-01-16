@@ -510,3 +510,11 @@ class SSD1306_I2C(SSD1306_I2C_MID):
     def show_fill(self, flag): 
         self.fill(flag)
         self.show()
+
+    def show_pixel(self, x, y, c=1):
+        self.pixel(x, y, c)
+        self.show()
+
+    def show_bitmap(self, x, y, bitmap, w, h, c=1):
+        self.Bitmap(x, y, bitmap, w, h, c)
+        self.show()
