@@ -150,7 +150,7 @@ pbc.moduleFunctionD.get('mixgo.infrared_left')['near'] = function (py2block, fun
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("sensor_mixgo_pin_near", func.lineno, {"direction":'left'}, {}, {
+    return block("sensor_mixgo_onboard_pin_near", func.lineno, {"direction":'left'}, {}, {
         "inline": "true"
     });
 
@@ -160,27 +160,74 @@ pbc.moduleFunctionD.get('mixgo.infrared_right')['near'] = function (py2block, fu
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("sensor_mixgo_pin_near", func.lineno, {"direction":'right'}, {}, {
+    return block("sensor_mixgo_onboard_pin_near", func.lineno, {"direction":'right'}, {}, {
         "inline": "true"
     });
+}
+
+pbc.objectFunctionD.get('near')['Infrared'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 0) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var pin=py2block.identifier(func.value.func.attr);
+    var mac=py2block.identifier(func.value.func.value.id);
+    if(pin==="Infrared" && mac==="mixgo"){
+
+    pbc.pinType = "pins_analog_pin";
+    var pinblock = py2block.convert(func.value.args[0]);
+    pbc.pinType = null;
+
+
+    return [block("sensor_mixgo_pin_near", func.lineno, {}, {
+        "PIN": pinblock,
+    }, {
+        "inline": "true"
+    })];
+}
+
 }
 
 pbc.moduleFunctionD.get('mixgo')['get_brightness'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0) {
+    if (args.length !== 0 && args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("sensor_mixgo_light", func.lineno, {}, {}, {
+    if (args.length == 0){
+    return block("sensor_mixgo_onboard_light", func.lineno, {}, {}, {
         "inline": "true"
     });
+    }
+    if (args.length == 1){
+    pbc.pinType = "pins_analog_pin";
+    var pinblock = py2block.convert(args[0]);
+    pbc.pinType = null;    
+    return block("sensor_mixgo_light", func.lineno, {}, {
+        'PIN':pinblock
+    }, {
+        "inline": "true"
+    });
+    }
+
 }
 
 pbc.moduleFunctionD.get('mixgo')['get_soundlevel'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 0) {
+    if (args.length !== 0 && args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("sensor_mixgo_sound", func.lineno, {}, {}, {
+    if (args.length == 0){
+    return block("sensor_mixgo_onboard_sound", func.lineno, {}, {}, {
         "inline": "true"
     });
+    }
+    if (args.length == 1){
+    pbc.pinType = "pins_analog_pin";
+    var pinblock = py2block.convert(args[0]);
+    pbc.pinType = null;    
+    return block("sensor_mixgo_sound", func.lineno, {}, {
+        'PIN':pinblock
+    }, {
+        "inline": "true"
+    });
+    }
 }
 
 pbc.assignD.get('RTC')['check_assign'] = function(py2block, node, targets, value) {
@@ -669,7 +716,7 @@ pbc.moduleFunctionD.get('lm35')['get_LM35_temperature'] = function(py2block, fun
     if (args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
-    pbc.pinType="pins_digital_pin";
+    pbc.pinType="pins_analog_pin";
     var argblock = py2block.convert(args[0]);
     pbc.pinType = null;
     return block("sensor_lm35", func.lineno, {}, {

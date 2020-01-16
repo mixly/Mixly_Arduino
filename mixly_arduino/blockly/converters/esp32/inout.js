@@ -273,25 +273,7 @@ pbc.objectFunctionD.get('irq')['Pin'] = function (py2block, func, args, keywords
         "inline": "true"
     })];
 }
-if(pin==="Button" && mac==="mixgo"){
 
-    pbc.pinType = "pins_digital_pin";
-    var pinblock = py2block.convert(func.value.args[0]);
-    pbc.pinType = null;
-
-    var mode = "machine.Pin"+"."+py2block.identifier(keywords[1].value.attr);
-
-    pbc.pinType = "pins_callback";
-    var callback = py2block.convert(keywords[0].value);
-    pbc.pinType = null;
-
-    return [block("sensor_mixgo_button_attachInterrupt", func.lineno, {"mode":mode}, {
-        "PIN": pinblock,
-        "DO": callback
-    }, {
-        "inline": "true"
-    })];
-}
 }
 
 pbc.objectFunctionD.get('atten')['Pin'] = function (py2block, func, args, keywords, starargs, kwargs, node) {

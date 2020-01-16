@@ -276,14 +276,28 @@ Blockly.Python.sensor_dht11 = function () {
     return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_mixgo_light= function(){
+Blockly.Python.sensor_mixgo_onboard_light= function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     return ['mixgo.get_brightness()', Blockly.Python.ORDER_ATOMIC];
 };
 
-Blockly.Python.sensor_mixgo_sound= function(){
+Blockly.Python.sensor_mixgo_onboard_sound= function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     return ['mixgo.get_soundlevel()', Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.sensor_mixgo_light= function(){
+    Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var code = 'mixgo.get_brightness(' + pin + ')';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.sensor_mixgo_sound= function(){
+    Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var code = 'mixgo.get_soundlevel(' + pin + ')';
+    return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python.number1 = function(){
@@ -300,6 +314,13 @@ Blockly.Python.sensor_mixgo_pin_pressed = function(){
 };
 
 Blockly.Python.sensor_mixgo_pin_near = function(){
+    Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+    var pin = Blockly.Python.valueToCode(this, 'PIN', Blockly.Python.ORDER_ATOMIC);
+    var code = 'mixgo.'+'Infrared('+ pin +').near()';
+    return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.sensor_mixgo_onboard_pin_near = function(){
     Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var direction = this.getFieldValue('direction');
     var code = 'mixgo.'+'infrared_'+ direction +'.near()';

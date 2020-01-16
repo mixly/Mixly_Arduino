@@ -1672,9 +1672,9 @@
           </shadow>
         </value>
       </block>
-      <block type="sensor_mixgo_pin_near"></block>
-      <block type="sensor_mixgo_light"></block>
-      <block type="sensor_mixgo_sound"></block>
+      <block type="sensor_mixgo_onboard_pin_near"></block>
+      <block type="sensor_mixgo_onboard_light"></block>
+      <block type="sensor_mixgo_onboard_sound"></block>
       <block type="sensor_mpu9250_gesture">
         <value name="SUB">
           <shadow type="variables_get">
@@ -2023,7 +2023,7 @@
     <category id="catSensor" colour="40">
       <block type="sensor_mixgo_button_is_pressed">
         <value name="PIN">
-          <shadow type="pins_pwm_pin">
+          <shadow type="pins_digital_pin">
             <field name="PIN">0</field>
           </shadow>
         </value>
@@ -2034,14 +2034,14 @@
       </block>
       <block type="sensor_mixgo_button_was_pressed">
         <value name="PIN">
-          <shadow type="pins_pwm_pin">
+          <shadow type="pins_digital_pin">
             <field name="PIN">0</field>
           </shadow>
         </value>
       </block>
       <block type="sensor_mixgo_button_get_presses">
         <value name="PIN">
-          <shadow type="pins_pwm_pin">
+          <shadow type="pins_digital_pin">
             <field name="PIN">0</field>
           </shadow>
         </value>
@@ -2057,9 +2057,21 @@
           </shadow>
         </value>
       </block> -->
-      <block type="sensor_mixgo_pin_near"></block>
-      <block type="sensor_mixgo_light"></block>
-      <block type="sensor_mixgo_sound"></block>
+      <block type="sensor_mixgo_pin_near">
+        <value name="PIN">
+          <shadow type="pins_analog_pin"></shadow>
+        </value>
+      </block>
+      <block type="sensor_mixgo_light">
+        <value name="PIN">
+          <shadow type="pins_analog_pin"></shadow>
+        </value>
+      </block>
+      <block type="sensor_mixgo_sound">
+        <value name="PIN">
+          <shadow type="pins_analog_pin"></shadow>
+        </value>
+      </block>
       <block type="sensor_lm35">
         <value name="PIN">
           <shadow type="pins_analog_pin"></shadow>
