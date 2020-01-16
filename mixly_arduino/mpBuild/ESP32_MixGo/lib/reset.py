@@ -4,6 +4,9 @@ from machine import Pin
 
 i2c = I2C(scl = Pin(22), sda = Pin(21), freq = 100000)
 buf = bytearray(1)
+pins = [0,2,4,5,18,21,22,19,23,20,15,12,13,27,14,25,26,17,16,32,33]
+for i in pins:
+    Pin(i, Pin.OUT).value(0)    
 
 try:
     i2c.readfrom_mem_into(0x68, 0X75, buf)
