@@ -25,10 +25,10 @@ function pressed_converter (mode) {
 }
 
 
-pbc.moduleFunctionD.get('mixgo.button_a')['is_pressed'] = pressed_converter('sensor_mixgo_onboard_button_is_pressed'); 
-pbc.moduleFunctionD.get('mixgo.button_b')['is_pressed'] = pressed_converter('sensor_mixgo_onboard_button_is_pressed'); 
-pbc.moduleFunctionD.get('mixgo.button_a')['was_pressed'] = pressed_converter('sensor_mixgo_onboard_button_was_pressed'); 
-pbc.moduleFunctionD.get('mixgo.button_b')['was_pressed'] = pressed_converter('sensor_mixgo_onboard_button_was_pressed'); 
+pbc.moduleFunctionD.get('mixgo.button_a')['is_pressed'] = pressed_converter('sensor_mixgo_button_is_pressed'); 
+pbc.moduleFunctionD.get('mixgo.button_b')['is_pressed'] = pressed_converter('sensor_mixgo_button_is_pressed'); 
+pbc.moduleFunctionD.get('mixgo.button_a')['was_pressed'] = pressed_converter('sensor_mixgo_button_was_pressed'); 
+pbc.moduleFunctionD.get('mixgo.button_b')['was_pressed'] = pressed_converter('sensor_mixgo_button_was_pressed'); 
 
 
 function getpresses_converter (mode) {
@@ -56,8 +56,8 @@ function getpresses_converter (mode) {
     }
     return converter;
 }
-pbc.moduleFunctionD.get('mixgo.button_a')['get_presses'] = getpresses_converter('sensor_mixgo_onboard_button_get_presses'); 
-pbc.moduleFunctionD.get('mixgo.button_b')['get_presses'] = getpresses_converter('sensor_mixgo_onboard_button_get_presses'); 
+pbc.moduleFunctionD.get('mixgo.button_a')['get_presses'] = getpresses_converter('sensor_mixgo_button_get_presses'); 
+pbc.moduleFunctionD.get('mixgo.button_b')['get_presses'] = getpresses_converter('sensor_mixgo_button_get_presses'); 
 
 
 pbc.moduleFunctionD.get('mixgo.touch1')['is_touched'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
@@ -150,7 +150,7 @@ pbc.moduleFunctionD.get('mixgo.infrared_left')['near'] = function (py2block, fun
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("sensor_mixgo_onboard_pin_near", func.lineno, {"direction":'left'}, {}, {
+    return block("sensor_mixgo_pin_near", func.lineno, {"direction":'left'}, {}, {
         "inline": "true"
     });
 
@@ -160,7 +160,7 @@ pbc.moduleFunctionD.get('mixgo.infrared_right')['near'] = function (py2block, fu
     if (args.length !== 0) {
         throw new Error("Incorrect number of arguments");
     }
-    return block("sensor_mixgo_onboard_pin_near", func.lineno, {"direction":'right'}, {}, {
+    return block("sensor_mixgo_pin_near", func.lineno, {"direction":'right'}, {}, {
         "inline": "true"
     });
 }
@@ -178,7 +178,7 @@ pbc.objectFunctionD.get('near')['Infrared'] = function (py2block, func, args, ke
     pbc.pinType = null;
 
 
-    return block("sensor_mixgo_pin_near", func.lineno, {}, {
+    return block("sensor_mixgo_extern_pin_near", func.lineno, {}, {
         "PIN": pinblock,
     }, {
         "inline": "true"
@@ -192,7 +192,7 @@ pbc.moduleFunctionD.get('mixgo')['get_brightness'] = function (py2block, func, a
         throw new Error("Incorrect number of arguments");
     }
     if (args.length == 0){
-    return block("sensor_mixgo_onboard_light", func.lineno, {}, {}, {
+    return block("sensor_mixgo_light", func.lineno, {}, {}, {
         "inline": "true"
     });
     }
@@ -200,7 +200,7 @@ pbc.moduleFunctionD.get('mixgo')['get_brightness'] = function (py2block, func, a
     pbc.pinType = "pins_analog_pin";
     var pinblock = py2block.convert(args[0]);
     pbc.pinType = null;    
-    return block("sensor_mixgo_light", func.lineno, {}, {
+    return block("sensor_mixgo_extern_light", func.lineno, {}, {
         'PIN':pinblock
     }, {
         "inline": "true"
@@ -214,7 +214,7 @@ pbc.moduleFunctionD.get('mixgo')['get_soundlevel'] = function (py2block, func, a
         throw new Error("Incorrect number of arguments");
     }
     if (args.length == 0){
-    return block("sensor_mixgo_onboard_sound", func.lineno, {}, {}, {
+    return block("sensor_mixgo_sound", func.lineno, {}, {}, {
         "inline": "true"
     });
     }
@@ -222,7 +222,7 @@ pbc.moduleFunctionD.get('mixgo')['get_soundlevel'] = function (py2block, func, a
     pbc.pinType = "pins_analog_pin";
     var pinblock = py2block.convert(args[0]);
     pbc.pinType = null;    
-    return block("sensor_mixgo_sound", func.lineno, {}, {
+    return block("sensor_mixgo_extern_sound", func.lineno, {}, {
         'PIN':pinblock
     }, {
         "inline": "true"
@@ -565,7 +565,7 @@ pbc.moduleFunctionD.get('mixgo.button_a')['irq'] = function (py2block, func, arg
     var callback = py2block.convert(keywords[0].value);
     pbc.pinType = null;
 
-    return [block("sensor_mixgo_onboard_button_attachInterrupt", func.lineno, {"mode":mode}, {
+    return [block("sensor_mixgo_button_attachInterrupt", func.lineno, {"mode":mode}, {
         "btn": objblock,
         "DO": callback
     }, {
@@ -600,7 +600,7 @@ pbc.moduleFunctionD.get('mixgo.button_b')['irq'] = function (py2block, func, arg
     var callback = py2block.convert(keywords[0].value);
     pbc.pinType = null;
 
-    return [block("sensor_mixgo_button_onboard_attachInterrupt", func.lineno, {"mode":mode}, {
+    return [block("sensor_mixgo_button_attachInterrupt", func.lineno, {"mode":mode}, {
         "btn": objblock,
         "DO": callback
     }, {
@@ -620,7 +620,7 @@ pbc.objectFunctionD.get('was_pressed')['Button'] = function (py2block, func, arg
         pbc.pinType = "pins_digital_pin";
         var pinblock = py2block.convert(func.value.args[0]);
         pbc.pinType = null;
-        return block('sensor_mixgo_button_was_pressed', func.lineno, {}, {
+        return block('sensor_mixgo_extern_button_was_pressed', func.lineno, {}, {
             "PIN": pinblock,
         }, {
             "inline": "true"
@@ -640,7 +640,7 @@ pbc.objectFunctionD.get('get_presses')['Button'] = function (py2block, func, arg
         var pinblock = py2block.convert(func.value.args[0]);
         pbc.pinType = null;
         var argblock = py2block.convert(args[0]);
-        return block('sensor_mixgo_button_get_presses', func.lineno, {}, {
+        return block('sensor_mixgo_extern_button_get_presses', func.lineno, {}, {
             "PIN": pinblock,
             'VAR':argblock
         }, {
@@ -665,7 +665,7 @@ pbc.objectFunctionD.get('is_pressed')['Button'] = function (py2block, func, args
         var argblock = py2block.convert(args[0]);
         pbc.pinType = null;
 
-        return block('sensor_mixgo_button_is_pressed', func.lineno, {}, {
+        return block('sensor_mixgo_extern_button_is_pressed', func.lineno, {}, {
             "PIN": pinblock,
             "STAT": argblock
         }, {

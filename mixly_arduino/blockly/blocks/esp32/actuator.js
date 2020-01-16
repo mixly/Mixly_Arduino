@@ -51,6 +51,59 @@ Blockly.Blocks['ledswitch'] = {
     }
 };
 
+Blockly.Blocks.actuator_extern_led_bright = {
+  init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_SETTING)
+        .appendField(Blockly.MIXLY_EXTERN_LED)
+    this.appendValueInput("PIN", Number)
+            .appendField(Blockly.MIXLY_PIN)
+            .setCheck(Number);
+    this.appendValueInput('bright')
+    .appendField(Blockly.MIXLY_PULSEIN_STAT)  
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_ESP32_EXTERN_LED_SETONOFF);
+  }
+};
+
+Blockly.Blocks.actuator_extern_get_led_bright = {
+  init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET)
+        .appendField(Blockly.MIXLY_EXTERN_LED)
+    this.appendValueInput("PIN", Number)
+            .appendField(Blockly.MIXLY_PIN)
+            .setCheck(Number);
+    this.appendDummyInput()
+    .appendField(Blockly.MIXLY_PULSEIN_STAT)  
+    this.setOutput(true);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_ESP32_EXTERN_LED_GETONOFF);
+  }
+};
+
+Blockly.Blocks.actuator_extern_led_brightness = {
+  init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_SETTING)
+        .appendField(Blockly.MIXLY_EXTERN_LED)
+    this.appendValueInput("PIN", Number)
+            .appendField(Blockly.MIXLY_PIN)
+            .setCheck(Number);
+    this.appendValueInput('bright')
+    .appendField(Blockly.MIXLY_BRIGHTNESS)
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_ESP32_EXTERN_LED_SETBRIGHT);
+  }
+};
+
 Blockly.Blocks.actuator_led_bright = {
   init: function() {
     this.setColour(Blockly.Blocks.actuator.HUE);

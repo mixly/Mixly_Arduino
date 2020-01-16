@@ -202,6 +202,38 @@ Blockly.Blocks['math_trig'] = {
   }
 };
 
+Blockly.Blocks['math_dec'] = {
+  /**
+   * Block for trigonometry operators.
+   * @this Blockly.Block
+   */
+  init: function() {
+    var OPERATORS =
+        [[Blockly.Msg.MATH_BIN, 'bin'],
+         [Blockly.Msg.MATH_OCT, 'oct'],
+         [Blockly.Msg.MATH_HEX, 'hex'],
+                 ];
+    //this.setHelpUrl(Blockly.Msg.MATH_TRIG_HELPURL);
+    this.setColour(Blockly.Blocks.math.HUE);
+    this.setOutput(true, String);
+    this.appendValueInput('NUM')
+        .setCheck(Number)
+        .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getFieldValue('OP');
+      var TOOLTIPS = {
+        'bin': Blockly.Msg.MATH_DEC_TOOLTIP_BIN,
+        'oct': Blockly.Msg.MATH_DEC_TOOLTIP_OCT,
+        'hex': Blockly.Msg.MATH_DEC_TOOLTIP_HEX,
+        
+      };
+      return TOOLTIPS[mode];
+    });
+  }
+};
+
 //取整等
 Blockly.Blocks['math_to_int']= {
   init: function() {

@@ -2,6 +2,29 @@
 
 //加减乘除 在python_to_blockly.js中实现
 //位操作 在python_to_blockly.js中实现
+function mathDecchange(mode) {
+    function converter(py2block, func, args, keywords, starargs, kwargs, node) {
+        if (args.length != 1) {
+            throw new Error("Incorrect number of arguments");
+        }
+        
+            return block("math_dec", func.lineno, {
+                'OP': mode
+            }, {
+                'NUM': py2block.convert(args[0])
+            }, {
+                "inline": "true"
+            });
+        
+    }
+
+    return converter;
+}
+
+pbc.globalFunctionD['bin'] = mathDecchange('bin');
+pbc.globalFunctionD['oct'] = mathDecchange('oct');
+pbc.globalFunctionD['hex'] = mathDecchange('hex');
+
 function mathTrigonometric(mode) {
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
         if (args.length != 1) {
@@ -276,7 +299,7 @@ pbc.globalFunctionD['int'] = function (py2block, func, args, keywords, starargs,
 }
 
 
-function radix(mode){
+/*function radix(mode){
     function converter(py2block, func, args, keywords, starargs, kwargs, node) {
         if (args.length != 1) {
             throw new Error("Incorrect number of arguments");
@@ -300,7 +323,7 @@ function radix(mode){
 
 pbc.globalFunctionD['hex'] = radix('sixteen');
 pbc.globalFunctionD['oct'] = radix('eight');
-pbc.globalFunctionD['bin'] = radix('two');
+pbc.globalFunctionD['bin'] = radix('two');*/
 
 
 pbc.globalFunctionD['math_map'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
