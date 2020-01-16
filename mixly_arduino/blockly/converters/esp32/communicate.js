@@ -420,3 +420,22 @@ pbc.objectFunctionD.get('writebyte')[owClass] = function (py2block, func, args, 
         "inline": "true"
     })];
 }
+
+pbc.objectFunctionD.get('resume')['irremote'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    //var objblock = py2block.convert(func.value);
+    pbc.pinType = "pins_pwm_pin";
+    var adblock = py2block.convert(args[0]);
+    pbc.pinType = "pins_callback";
+    var datablock = py2block.convert(args[1]);
+    pbc.pinType=null;
+    return [block("communicate_ir_recv", func.lineno, {}, {
+        "PIN": adblock,
+        "SUB": datablock,
+        //"VAR": objblock
+    }, {
+        "inline": "true"
+    })];
+}

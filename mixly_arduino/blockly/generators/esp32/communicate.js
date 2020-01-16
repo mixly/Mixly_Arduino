@@ -162,6 +162,13 @@ Blockly.Python.communicate_ow_select = function () {
     return code;
 };
 
+Blockly.Python.communicate_ir_recv = function(){
+    Blockly.Python.definitions_['import_irremote'] = 'import irremote';   
+    var pin = Blockly.Python.valueToCode(this, 'PIN',Blockly.Python.ORDER_ATOMIC);
+    var sub = Blockly.Python.valueToCode(this, 'SUB',Blockly.Python.ORDER_ATOMIC);
+    return "irremote.resume("+pin+", "+sub+")"
+};
+
 Blockly.Blocks['i2c_init'] = Blockly.Blocks['communicate_i2c_init'];
 Blockly.Blocks['i2c_read'] = Blockly.Blocks['communicate_i2c_read'];
 Blockly.Blocks['i2c_write'] = Blockly.Blocks['communicate_i2c_write'];

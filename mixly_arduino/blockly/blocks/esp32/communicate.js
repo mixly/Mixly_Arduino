@@ -386,6 +386,19 @@ Blockly.Blocks['communicate_ow_reset'] = {
     }
 };
 
+Blockly.Blocks['communicate_ir_recv'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.communicate.HUE);
+        this.appendValueInput('PIN')
+            .appendField(Blockly.MIXLY_IR_RECEIVE);
+        this.appendValueInput('SUB')
+            .appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setInputsInline(true);
+    }
+};
+
 Blockly.Blocks['i2c_init'] = Blockly.Blocks['communicate_i2c_init'];
 Blockly.Blocks['i2c_read'] = Blockly.Blocks['communicate_i2c_read'];
 Blockly.Blocks['i2c_write'] = Blockly.Blocks['communicate_i2c_write'];

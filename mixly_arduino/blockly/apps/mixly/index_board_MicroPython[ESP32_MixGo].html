@@ -2618,6 +2618,44 @@
       </block>
     </category>
     <category id="catGroup" colour="140">
+      <block type="communicate_ir_recv">
+        <value name="PIN">
+          <shadow type="pins_digital_pin">
+            <field name="PIN">22</field>
+          </shadow>
+        </value>
+        <value name="SUB">
+          <shadow type="factory_block_return">
+            <field name="VALUE">cb</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="procedures_defnoreturn">
+        <mutation>
+          <arg name="data"></arg>
+          <arg name="addr"></arg>
+        </mutation>
+        <field name="NAME">cb</field>
+        <statement name="STACK">
+          <block type="controls_if">
+            <value name="IF0">
+              <block type="logic_compare">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="variables_get">
+                    <field name="VAR">data</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
       <block type="communicate_i2c_init">
         <value name="SUB">
           <shadow type="variables_get">
