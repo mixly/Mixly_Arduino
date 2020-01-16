@@ -178,11 +178,11 @@ pbc.objectFunctionD.get('near')['Infrared'] = function (py2block, func, args, ke
     pbc.pinType = null;
 
 
-    return [block("sensor_mixgo_pin_near", func.lineno, {}, {
+    return block("sensor_mixgo_pin_near", func.lineno, {}, {
         "PIN": pinblock,
     }, {
         "inline": "true"
-    })];
+    });
 }
 
 }
