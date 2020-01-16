@@ -139,11 +139,11 @@ class led:
             PWM(Pin(self.pin)).duty(1023 - self.val)
     def setonoff(self,val):
         if(val == -1):
-            Pin(self.pin).value(1 - Pin(self.pin).value())
+            Pin(self.pin,Pin.OUT).value(1 - Pin(self.pin).value())
         elif(val == 1):
-            Pin(self.pin).value(self.flag)
+            Pin(self.pin,Pin.OUT).value(self.flag)
         elif(val == 0):
-            Pin(self.pin).value(1 - self.flag)
+            Pin(self.pin,Pin.OUT).value(1 - self.flag)
     def getonoff(self):
         if self.flag:
             return Pin(self.pin).value()
