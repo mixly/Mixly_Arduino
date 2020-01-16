@@ -31,8 +31,8 @@ class Button:
                 last_state, presses = 0, presses + 1
         return presses
 
-    def is_pressed(self):
-        return self.pin.value() == 0
+    def is_pressed(self, flag = 0):
+        return self.pin.value() == flag
 
     def was_pressed(self):
         last_state = self.pin.value()
