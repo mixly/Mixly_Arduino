@@ -1,13 +1,5 @@
 'use strict';
 
-/*
-这个部分存在的问题有：
-1. display.show()的我都没写，不知道为什么不可行，没找到原因
-2. 内置图像、合并图像
-3. rgb灯设置管脚的时候，依旧出现了管脚被自动识别成变量的问题
-4. rgb灯号的那个块不会做……
-*/
-
 pbc.moduleFunctionD.get('matrix.display')['show'] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1 && args.length !== 2 ){
         throw new Error("Incorrect number of arguments");
@@ -32,8 +24,6 @@ pbc.moduleFunctionD.get('matrix.display')['show'] = function(py2block, func, arg
         "inline": "true"
     })];
     }
-
-
 }
 
 pbc.moduleFunctionD.get('matrix.display')['scroll'] = function(py2block, func, args, keywords, starargs, kwargs, node){
@@ -392,11 +382,35 @@ pbc.moduleFunctionD.get('matrix.display')['clear'] = function(py2block, func, ar
     })];
 }
 
+pbc.objectFunctionD.get('show_pixel')['monitor'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if(args.length!=2){
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var x1block=py2block.convert(args[0]);
+    var y1block=py2block.convert(args[1]);
 
+    return [block("display_oled_drawPixel", func.lineno, {}, { "VAR":objblock,'POS_X':x1block,'POS_Y':y1block,
+    }, {
+        "inline": "true"
+    })];
+}
 
-
-
-
+pbc.objectFunctionD.get('show_bitmap')['monitor'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if(args.length!=5){
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var x=py2block.convert(args[0]);
+    var y=py2block.convert(args[1]);
+    var b=py2block.convert(args[2]);
+    var w=py2block.convert(args[3]);
+    var h=py2block.convert(args[4]);
+    return [block("display_oled_showBitmap", func.lineno, {}, { "VAR":objblock,'START_X':x,'START_Y':y,'bitmap_name':b,'WIDTH':w,'HEIGHT':h,
+    }, {
+        "inline": "true"
+    })];
+}
 
 pbc.objectFunctionD.get('show_str')['monitor'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
     if(args.length!=4){
@@ -517,6 +531,107 @@ pbc.objectFunctionD.get('show_fill_rect')['monitor'] = function (py2block, func,
             "inline": "true"
         })];
 }
+
+pbc.objectFunctionD.get('show_triangle')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 7) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var x0 = py2block.convert(args[0]);
+    var y0 = py2block.convert(args[1]);
+    var x1 = py2block.convert(args[2]);
+    var y1 = py2block.convert(args[3]);
+    var x2 = py2block.convert(args[4]);
+    var y2 = py2block.convert(args[5]);
+    var lightblock = py2block.identifier(args[6].n);
+    return [block("display_triangle", func.lineno, {
+            "fill": false,
+            "OP": lightblock,
+        }, {
+            "VAR":objblock,
+            "x0": x0,
+            "y0": y0,
+            "x1": x1,
+            "y1": y1,
+            "x2": x2,
+            "y2": y2,
+        }, {
+            "inline": "true"
+        })];
+}
+
+pbc.objectFunctionD.get('show_fill_triangle')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 7) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var x0 = py2block.convert(args[0]);
+    var y0 = py2block.convert(args[1]);
+    var x1 = py2block.convert(args[2]);
+    var y1 = py2block.convert(args[3]);
+    var x2 = py2block.convert(args[4]);
+    var y2 = py2block.convert(args[5]);
+    var lightblock = py2block.identifier(args[6].n);
+    return [block("display_triangle", func.lineno, {
+            "fill": true,
+            "OP": lightblock,
+        }, {
+            "VAR":objblock,
+            "x0": x0,
+            "y0": y0,
+            "x1": x1,
+            "y1": y1,
+            "x2": x2,
+            "y2": y2,
+        }, {
+            "inline": "true"
+        })];
+}
+
+pbc.objectFunctionD.get('show_circle')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 4) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var xblock = py2block.convert(args[0]);
+    var yblock = py2block.convert(args[1]);
+    var rblock = py2block.convert(args[2]);
+    var lightblock = py2block.identifier(args[3].n);
+    return [block("display_circle", func.lineno, {
+            "fill": false,
+            "OP": lightblock,
+        }, {
+            "VAR":objblock,
+            "x": xblock,
+            "y": yblock,
+            "r": rblock,
+        }, {
+            "inline": "true"
+        })];
+}
+
+pbc.objectFunctionD.get('show_fill_circle')['monitor'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 4) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    var xblock = py2block.convert(args[0]);
+    var yblock = py2block.convert(args[1]);
+    var rblock = py2block.convert(args[2]);
+    var lightblock = py2block.identifier(args[3].n);
+    return [block("display_circle", func.lineno, {
+            "fill": true,
+            "OP": lightblock,
+        }, {
+            "VAR":objblock,
+            "x": xblock,
+            "y": yblock,
+            "r": rblock,
+        }, {
+            "inline": "true"
+        })];
+}
+
 
 pbc.assignD.get('oled')['check_assign'] = function(py2block, node, targets, value) {
     if(value._astname != "Call" || value.func._astname != "Attribute" || value.func.value._astname != "Name"){

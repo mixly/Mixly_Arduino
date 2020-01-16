@@ -452,5 +452,28 @@ Blockly.Python.display_triangle=function(){
      }
 };
 
+Blockly.Python.display_oled_showBitmap=function(){
+  Blockly.Python.definitions_['import_machine'] = 'import machine';
+  Blockly.Python.definitions_['import_ssd1306'] = 'import ssd1306';
+  var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+  var location_x = Blockly.Python.valueToCode(this, 'START_X', Blockly.Python.ORDER_ATOMIC);
+  var location_y = Blockly.Python.valueToCode(this, 'START_Y', Blockly.Python.ORDER_ATOMIC);
+  var bmp = Blockly.Python.valueToCode(this, 'bitmap_name', Blockly.Python.ORDER_ATOMIC);
+  var w = Blockly.Python.valueToCode(this, 'WIDTH', Blockly.Python.ORDER_ATOMIC);
+  var h = Blockly.Python.valueToCode(this, 'HEIGHT', Blockly.Python.ORDER_ATOMIC);
+  var code = varName + '.show_bitmap('+location_x+', '+location_y+', '+bmp+','+w+','+h+')\n';
+  return code;
+};
+
+Blockly.Python.display_oled_drawPixel=function(){
+  Blockly.Python.definitions_['import_machine'] = 'import machine';
+  Blockly.Python.definitions_['import_ssd1306'] = 'import ssd1306';
+  var varName =Blockly.Python.valueToCode(this, 'VAR',Blockly.Python.ORDER_ATOMIC);
+  var location_x = Blockly.Python.valueToCode(this, 'POS_X', Blockly.Python.ORDER_ATOMIC);
+  var location_y = Blockly.Python.valueToCode(this, 'POS_Y', Blockly.Python.ORDER_ATOMIC);
+  var code = varName + '.show_pixel('+location_x+', '+location_y+')\n';
+  return code;
+};
+
 goog.provide('Blockly.Python.display');
 goog.require('Blockly.Python');

@@ -1743,3 +1743,52 @@ Blockly.Blocks.display_help = {
     this.setTooltip('');
   }
 };
+
+//显示-OLED-显示图像
+Blockly.Blocks.display_oled_showBitmap = {
+  init: function () {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendValueInput('VAR')
+        .appendField(Blockly.OLED)
+        .setCheck("var");
+    this.appendDummyInput("")
+      .appendField(Blockly.OLED_BITMAP);
+    this.appendValueInput("START_X", Number)
+      .appendField(Blockly.OLED_START_X)
+      .setCheck(Number);
+    this.appendValueInput("START_Y", Number)
+      .appendField(Blockly.OLED_START_Y)
+      .setCheck(Number);
+    this.appendValueInput("bitmap_name", String)
+      .appendField(Blockly.OLED_BITMAP_NAME);
+    this.appendValueInput("WIDTH", Number)
+      .appendField(Blockly.MIXLY_WIDTH)
+      .setCheck(Number);
+    this.appendValueInput("HEIGHT", Number)
+      .appendField(Blockly.MIXLY_HEIGHT)
+      .setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.OLED_SHOW_BMP_TOOLTIP);
+  }
+};
+
+//显示-OLED-画点
+Blockly.Blocks.display_oled_drawPixel = {
+  init: function () {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendValueInput('VAR')
+        .appendField(Blockly.OLED)
+    this.appendDummyInput("")
+      .appendField(Blockly.OLED_DRAWPIXEL);
+    this.appendValueInput("POS_X")
+      .appendField(Blockly.OLED_POSX)
+    this.appendValueInput("POS_Y")
+      .appendField(Blockly.OLED_POSY)
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.OLED_DRAW_PIXE_TOOLTIP);
+  }
+};
