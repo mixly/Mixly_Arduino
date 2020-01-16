@@ -36,13 +36,16 @@ class Button:
 
     def was_pressed(self, flag = 0):
         last_state = self.pin.value()
-        if last_state :
-            return False
-        else:
-            if flag:
+        if flag:
+            if not last_state:
+                return False
+            else:
                 while self.pin.value():
                     time.sleep_ms(10)
                 return True
+        else:
+            if last_state:
+                return False
             else:
                 while not self.pin.value():
                     time.sleep_ms(10)
