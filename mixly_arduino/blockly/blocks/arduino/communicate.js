@@ -268,7 +268,7 @@ Blockly.Blocks.RFID_init={
         this.setNextStatement(true);
         this.setInputsInline(true);
         this.setTooltip(Blockly.MIXLY_TOOLTIP_RFID_INIT);
-        this.setFieldValue("10", "SDA");
+       // this.setFieldValue("10", "SDA");
     }
 };
 

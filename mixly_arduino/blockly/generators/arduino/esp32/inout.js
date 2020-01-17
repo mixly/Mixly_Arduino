@@ -82,8 +82,8 @@ Blockly.Arduino.touchAttachInterrupt = function () {
     return code;
 };
 Blockly.Arduino.inout_esp32_dac = function() {
-    var pin= this.getFieldValue('pin');
+    var PIN= this.getFieldValue('PIN');
     var value= Blockly.Arduino.valueToCode(this, 'value', Blockly.Arduino.ORDER_ATOMIC);
-    var code='dacWrite('+pin+', '+value+');\n';
+    var code='dacWrite('+PIN+', '+value+');\n';
     return code;
 };

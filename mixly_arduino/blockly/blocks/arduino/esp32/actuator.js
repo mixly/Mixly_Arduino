@@ -34,12 +34,12 @@ Blockly.Blocks.controls_tone={
 Blockly.Blocks.controls_notone={
     init:function(){
         this.setColour(Blockly.Blocks.actuator.HUE);
-          this.appendValueInput("PIN")
+        this.appendDummyInput("")
+        .appendField(Blockly.MIXLY_NOTONE);
+        this.appendValueInput("PIN")
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.MIXLY_PIN);
-        this.appendDummyInput("")
-        .appendField(Blockly.MIXLY_NOTONE);
         this.appendValueInput('CHANNEL')
         .setCheck(Number)
         .appendField(Blockly.MIXLY_CHANNEL);
@@ -98,8 +98,8 @@ Blockly.Blocks['motor_id'] = {
         this.setColour(Blockly.Blocks.actuator.HUE);
         this.appendDummyInput("")
         .appendField(new Blockly.FieldDropdown([
-         ["1","1"],["2","2"],["3","3"],["4","4"]
-         ]), "CHANNEL");
+           ["1","1"],["2","2"],["3","3"],["4","4"]
+           ]), "CHANNEL");
         this.setOutput(true);
    // this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_HIGHLOW);
 }

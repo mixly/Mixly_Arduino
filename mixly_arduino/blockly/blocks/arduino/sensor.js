@@ -80,8 +80,8 @@ Blockly.Blocks.chaoshengbo2 = {
     this.setInputsInline(true);
     this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_CHAOSHENGBO);
-    this.setFieldValue("2","Trig");
-    this.setFieldValue("4","Echo");
+    // this.setFieldValue("2","Trig");
+    // this.setFieldValue("4","Echo");
   }
 };
 
@@ -105,7 +105,6 @@ Blockly.Blocks.DHT = {
       };
       return TOOLTIPS[op];
     });
-    this.setFieldValue("4","PIN");
   }
 };
 
@@ -135,8 +134,7 @@ Blockly.Blocks.ds18b20 = {
     .appendField(new Blockly.FieldDropdown(UNIT), "UNIT");
     this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_DS18);
-    this.setFieldValue("4","PIN");
-  }
+    }
 };
 //DF称重模块
 Blockly.Blocks.weightSensor = {
@@ -156,8 +154,8 @@ Blockly.Blocks.weightSensor = {
     this.setInputsInline(true);
     this.setOutput(true, Number);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_WEIGHTSENSOR);
-    this.setFieldValue("2","DOUT");
-    this.setFieldValue("4","SCK");
+    // this.setFieldValue("2","DOUT");
+    // this.setFieldValue("4","SCK");
   }
 };
 //DS1302 RTC
@@ -442,8 +440,8 @@ Blockly.Blocks['encoder_init'] = {
     this.setInputsInline(true);
     this.setTooltip("");
     this.setHelpUrl("");
-    this.setFieldValue("2","DT");
-    this.setFieldValue("4","CLK");
+    // this.setFieldValue("2","DT");
+    // this.setFieldValue("4","CLK");
   }
 };
 
