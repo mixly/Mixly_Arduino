@@ -213,7 +213,7 @@
     </block>
     <block type="inout_digital_write2">
       <value name="PIN">
-        <shadow type="pins_digital"></shadow>
+        <shadow type="pins_digitalWrite"></shadow>
       </value>
       <value name="STAT">
         <shadow type="inout_highlow">
@@ -241,13 +241,9 @@
         </shadow>
       </value>
     </block>
-
     <block type="ledcWrite">
       <value name="PIN">
         <shadow type="pins_pwm"></shadow>
-      </value>
-      <value name="CHANNEL">
-        <shadow type="CHANNEL"></shadow>
       </value>
       <value name="NUM">
         <shadow type="math_number">
@@ -951,50 +947,32 @@
 </block>
 <block type="MixGo_rgb_show">
 </block>
-<block type="ledcSetup">
-  <value name="CHANNEL">
-    <shadow type="CHANNEL">
-      <field name="PIN">0</field>
+<block type="controls_tone">
+    <value name="PIN">
+      <shadow type="pins_digitalWrite">
+        <field name="PIN">27</field>
+      </shadow>
+    </value>
+    <value name="CHANNEL">
+      <shadow type="CHANNEL">
+        <field name="PIN">0</field>
+      </shadow>
+    </value>
+    <value name="FREQUENCY">
+      <shadow type="tone_notes"></shadow>
+    </value>
+    <value name="DELAY_TIME">
+      <shadow type="math_number">
+        <field name="NUM">1000</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="controls_notone">
+   <value name="PIN">
+    <shadow type="pins_digitalWrite">
+      <field name="PIN">27</field>
     </shadow>
   </value>
-  <value name="FREQ">
-    <shadow type="math_number">
-      <field name="NUM">5000</field>
-    </shadow>
-  </value>
-  <value name="PWM_RESOLUTION">
-    <shadow type="PWM_RESOLUTION">
-      <field name="PIN">8</field>
-    </shadow>
-  </value>
-  <next>
-    <block type="ledcAttachPin">
-      <value name="PIN">
-        <shadow type="pins_pwm">
-          <field name="PIN">5</field>
-        </shadow>
-      </value>
-      <value name="CHANNEL">
-        <shadow type="CHANNEL">
-          <field name="PIN">0</field>
-        </shadow>
-      </value>
-      <next>
-        <block type="controls_tone">
-          <value name="CHANNEL">
-            <shadow type="CHANNEL">
-              <field name="PIN">0</field>
-            </shadow>
-          </value>
-          <value name="FREQUENCY">
-            <shadow type="tone_notes"></shadow>
-          </value>
-        </block>
-      </next>
-    </block>
-  </next>
-</block>
-<block type="controls_notone">
   <value name="CHANNEL">
     <shadow type="CHANNEL"></shadow>
   </value>
@@ -1142,50 +1120,32 @@
     <shadow type="pins_digital"></shadow>
   </value>
 </block>
-<block type="ledcSetup">
-  <value name="CHANNEL">
-    <shadow type="CHANNEL">
-      <field name="PIN">0</field>
+<block type="controls_tone">
+    <value name="PIN">
+      <shadow type="pins_digitalWrite">
+        <field name="PIN">17</field>
+      </shadow>
+    </value>
+    <value name="CHANNEL">
+      <shadow type="CHANNEL">
+        <field name="PIN">0</field>
+      </shadow>
+    </value>
+    <value name="FREQUENCY">
+      <shadow type="tone_notes"></shadow>
+    </value>
+    <value name="DELAY_TIME">
+      <shadow type="math_number">
+        <field name="NUM">1000</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="controls_notone">
+   <value name="PIN">
+    <shadow type="pins_digitalWrite">
+      <field name="PIN">17</field>
     </shadow>
   </value>
-  <value name="FREQ">
-    <shadow type="math_number">
-      <field name="NUM">5000</field>
-    </shadow>
-  </value>
-  <value name="PWM_RESOLUTION">
-    <shadow type="PWM_RESOLUTION">
-      <field name="PIN">8</field>
-    </shadow>
-  </value>
-  <next>
-    <block type="ledcAttachPin">
-      <value name="PIN">
-        <shadow type="pins_pwm">
-          <field name="PIN">5</field>
-        </shadow>
-      </value>
-      <value name="CHANNEL">
-        <shadow type="CHANNEL">
-          <field name="PIN">0</field>
-        </shadow>
-      </value>
-      <next>
-        <block type="controls_tone">
-          <value name="CHANNEL">
-            <shadow type="CHANNEL">
-              <field name="PIN">0</field>
-            </shadow>
-          </value>
-          <value name="FREQUENCY">
-            <shadow type="tone_notes"></shadow>
-          </value>
-        </block>
-      </next>
-    </block>
-  </next>
-</block>
-<block type="controls_notone">
   <value name="CHANNEL">
     <shadow type="CHANNEL"></shadow>
   </value>
@@ -1273,7 +1233,7 @@
 </block>
 <block type="display_rgb_init">
   <value name="PIN">
-    <shadow type="pins_digital" />
+    <shadow type="pins_digitalWrite" />
   </value>
   <value name="LEDCOUNT">
     <shadow type="math_number">
@@ -1288,7 +1248,7 @@
 </block>
 <block type="display_rgb_Brightness">
   <value name="PIN">
-    <shadow type="pins_digital" />
+    <shadow type="pins_digitalWrite" />
   </value>
   <value name="Brightness">
     <shadow type="math_number">
@@ -1298,7 +1258,7 @@
 </block>
 <block type="display_rgb">
   <value name="PIN">
-    <shadow type="pins_digital" />
+    <shadow type="pins_digitalWrite" />
   </value>
   <value name="_LED_">
     <shadow type="math_number">
@@ -1333,7 +1293,7 @@
 </block>
 <block type="display_rgb_rainbow1">
   <value name="PIN">
-    <shadow type="pins_digital" />
+    <shadow type="pins_digitalWrite" />
   </value>
   <value name="WAIT">
     <shadow type="math_number">
@@ -1348,7 +1308,7 @@
 </block>
 <block type="display_rgb_rainbow3">
   <value name="PIN">
-    <shadow type="pins_digital" />
+    <shadow type="pins_digitalWrite" />
   </value>
   <value name="rainbow_color">
     <shadow type="math_number">
@@ -2440,7 +2400,8 @@
  <value name="xnyj">
   <shadow type="math_number">
     <field name="NUM">V0</field>
-  </shadow> <value name="xnyj">
+  </shadow>
+  <value name="xnyj">
     <shadow type="math_number">
       <field name="NUM">V0</field>
     </shadow>
@@ -2466,7 +2427,8 @@
   <value name="xnyj">
     <shadow type="math_number">
       <field name="NUM">V0</field>
-    </shadow> <value name="xnyj">
+    </shadow>
+    <value name="xnyj">
       <shadow type="math_number">
         <field name="NUM">V0</field>
       </shadow>
@@ -2482,7 +2444,8 @@
   <value name="xnyj">
     <shadow type="math_number">
       <field name="NUM">V0</field>
-    </shadow> <value name="xnyj">
+    </shadow>
+    <value name="xnyj">
       <shadow type="math_number">
         <field name="NUM">V0</field>
       </shadow>
@@ -2498,7 +2461,8 @@
  <value name="xnyj">
   <shadow type="math_number">
     <field name="NUM">V0</field>
-  </shadow> <value name="xnyj">
+  </shadow>
+  <value name="xnyj">
     <shadow type="math_number">
       <field name="NUM">V0</field>
     </shadow>
@@ -2514,7 +2478,8 @@
  <value name="xnyj">
   <shadow type="math_number">
     <field name="NUM">V0</field>
-  </shadow> <value name="xnyj">
+  </shadow>
+  <value name="xnyj">
     <shadow type="math_number">
       <field name="NUM">V0</field>
     </shadow>
@@ -2568,12 +2533,13 @@
   <field name="state">BLYNK_CONNECTED</field>
   <statement name="DO">
     <block type="blynk_WidgetRTC_init">
-      <value name="NUM"><shadow type="math_number" >
-        <field name="NUM">10</field>
-      </shadow>
-    </value>
-  </block>
-</statement>
+      <value name="NUM">
+        <shadow type="math_number">
+          <field name="NUM">10</field>
+        </shadow>
+      </value>
+    </block>
+  </statement>
 </block>
 <block type="blynk_WidgetRTC_get_time">
 </block>
@@ -2889,7 +2855,8 @@
  <block type="IICSCAN"></block>
  <block type="factory_notes"></block>
  <block type="folding_block"></block>
- <block type="esp32_pin"></block>
+ <block type="mixgo_pin_A"></block>
+ <block type="mixgo_pin_B"></block>
 </category>
 </xml>
 <script>
