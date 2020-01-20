@@ -35,3 +35,4 @@ Blockly.Arduino.CHANNEL=Blockly.Arduino.pins_digital;
 Blockly.Arduino.PWM_RESOLUTION=Blockly.Arduino.pins_digital;
 Blockly.Arduino.OCTAVE=Blockly.Arduino.pins_digital;
 Blockly.Arduino.TONE_NOTE=Blockly.Arduino.pins_digital;
+Blockly.Arduino.pins_digitalWrite=Blockly.Arduino.pins_digital;

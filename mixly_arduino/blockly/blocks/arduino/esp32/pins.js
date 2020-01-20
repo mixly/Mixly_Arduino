@@ -199,3 +199,12 @@ Blockly.Blocks['TONE_NOTE'] = {
         this.setOutput(true);
     }
 };
+
+Blockly.Blocks['pins_digitalWrite'] = {
+ init: function() {
+  this.setColour(Blockly.Blocks.pins.HUE);
+  this.appendDummyInput("")
+  .appendField(new Blockly.FieldDropdown(profile.default.digitalWrite), 'PIN');
+  this.setOutput(true, Number);
+}
+};

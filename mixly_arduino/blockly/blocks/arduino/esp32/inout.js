@@ -54,27 +54,7 @@ Blockly.Blocks.ledcDetachPin = {
     this.setTooltip();
   }
 };
-
-Blockly.Blocks.ledcWrite = {
-  init: function(){
-    this.setColour(Blockly.Blocks.base.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_Analog_PINMODEOUT);
-    this.appendValueInput("PIN", Number)
-    .appendField(Blockly.MIXLY_PIN)
-    .setCheck(Number);
-    this.appendValueInput('CHANNEL')
-    .setCheck(Number)
-    .appendField(Blockly.MIXLY_CHANNEL);
-    this.appendValueInput("NUM", Number)
-    .appendField(Blockly.MIXLY_VALUE2)
-    .setCheck(Number);
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip();
-  }
-};
+Blockly.Blocks.ledcWrite=Blockly.Blocks.inout_analog_write;
 
 Blockly.Blocks.inout_touchRead = {
   init: function(){

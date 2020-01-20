@@ -31,10 +31,8 @@ Blockly.Arduino.ledcDetachPin= function () {
 Blockly.Arduino.ledcWrite= function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
-    var channel = Blockly.Arduino.valueToCode(this, 'CHANNEL',Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
     Blockly.Arduino.definitions_['include_Arduino'] = '#include <Arduino.h>';
     Blockly.Arduino.definitions_['include_analogWrite'] = '#include <analogWrite.h>';
-    Blockly.Arduino.setups_['setup_analogWriteResolution'+dropdown_pin] = "analogWriteResolution("+dropdown_pin+", "+channel+");";
     var code = 'analogWrite('+dropdown_pin+', '+value_num+');\n';
     return code;
 };
