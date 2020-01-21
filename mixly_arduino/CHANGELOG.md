@@ -1,12 +1,15 @@
 #### 更新日志
 #### 1.0.5 2020-01-24
 * 调整 一键更新规则，每次更新时删除.git目录的冗余文件，防止.git目录越来越大。
-* handbit mpy页面添加 RGB初始化
-* 修正mage的SPI管脚
-* 简化ESP32 arduino PWM操作
-* 简化ESP32 arduino 蜂鸣器操作
-* handbit arduino 增加初始化模块
+* Handbit mpy 页面添加 RGB 初始化
+* 修正 mage 的 SPI 管脚
+* 简化 ESP32 arduino PWM 操作
+* 简化 ESP32 arduino 蜂鸣器操作
+* Handbit arduino 增加初始化模块
 * 重新优化部分模块的初始管脚
+* MixGo microPython 新增板载资源分类
+* microPython 新增 irremote 库，支持遥控器
+* microPython OLED(SSD1306) 增加显示 bitmap 图片功能并增加绘制点、圆形、三角形
 
 
 #### 1.0.4 2019-12-31
