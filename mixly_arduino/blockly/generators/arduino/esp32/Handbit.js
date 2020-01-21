@@ -2,184 +2,6 @@
 
 goog.provide('Blockly.Arduino.Handbit');
 goog.require('Blockly.Arduino');
-Blockly.Arduino.oled_init = function () {
-  Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
-  Blockly.Arduino.definitions_['var_declare_U8G2'] = 'U8G2_SH1106_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
-  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-  Blockly.Arduino.setups_['setup_u8g2.begin'] = "u8g2.begin();";
-  var code = '';
-  return code;
-};
-
-Blockly.Arduino.oled_clear = function () {
-  Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
-  Blockly.Arduino.definitions_['var_declare_U8G2'] = 'U8G2_SH1106_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
-  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-  var code = "u8g2.clearDisplay();";
-  return code;
-};
-
-Blockly.Arduino.oled_drawPixel = function () {
-  Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
-  Blockly.Arduino.definitions_['var_declare_U8G2'] = 'U8G2_SH1106_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
-  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-  var pos_x = Blockly.Arduino.valueToCode(this, 'POS_X') || '0';
-  var pos_y = Blockly.Arduino.valueToCode(this, 'POS_Y') || '0';
-  var code = "";
-  code += 'u8g2.drawPixel(' + pos_x + ',';
-  code += pos_y + ');\n';
-  return code;
-};
-
-Blockly.Arduino.oled_page = function () {
-  var branch = Blockly.Arduino.statementToCode(this, 'DO');
-  branch = branch.replace(/(^\s*)|(\s*$)/g, "");
-  if (branch) {
-    var code = "u8g2.firstPage();\ndo\n{\n" + branch + "\n}\nwhile (u8g2.nextPage());\n";
-    return code;
-  }
-};
-
-Blockly.Arduino.oled_showBitmap = function () {
-  var start_x = Blockly.Arduino.valueToCode(this, 'START_X') || '0';
-  var start_y = Blockly.Arduino.valueToCode(this, 'START_Y') || '0';
-  var width = Blockly.Arduino.valueToCode(this, 'WIDTH') || '0';
-  var height = Blockly.Arduino.valueToCode(this, 'HEIGHT') || '0';
-  var data_name = Blockly.Arduino.valueToCode(this, 'bitmap_name', Blockly.Arduino.ORDER_ATOMIC);
-  data_name = data_name.replace(/\"/g, "");
-  var code = "";
-  code = 'u8g2.drawXBM(' + start_x + ', ';
-  code += start_y + ', ';
-  code += width + ', ';
-  code += height + ', ' + data_name + ');\n';
-  return code;
-
-};
-
-Blockly.Arduino.oled_define_bitmap_data = function () {
-  var varName = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  var text = this.getFieldValue('TEXT');
-  Blockly.Arduino.definitions_['var_declare' + varName] = 'static unsigned char ' + varName + '[]={' + text + ' };\n';
-  return '';
-};
-
-Blockly.Arduino.oled_drawLine = function () {
-  var start_x = Blockly.Arduino.valueToCode(this, 'START_X') || '0';
-  var start_y = Blockly.Arduino.valueToCode(this, 'START_Y') || '0';
-  var end_x = Blockly.Arduino.valueToCode(this, 'END_X') || '0';
-  var end_y = Blockly.Arduino.valueToCode(this, 'END_Y') || '0';
-  var code = "";
-  code = 'u8g2.drawLine(' + start_x + ',';
-  code += start_y + ',';
-  code += end_x + ',';
-  code += end_y + ');\n';
-  return code;
-};
-
-Blockly.Arduino.oled_draw_Str_Line = function () {
-  var start_x = Blockly.Arduino.valueToCode(this, 'START_X') || '0';
-  var start_y = Blockly.Arduino.valueToCode(this, 'START_Y') || '0';
-  var length = Blockly.Arduino.valueToCode(this, 'LENGTH') || '0';
-  var TYPE = this.getFieldValue('TYPE');
-  var code = "";
-  code = "u8g2.draw" + TYPE + "Line(" + start_x + ',';
-  code += start_y + ',';
-  code += length + ');\n';
-  return code;
-};
-
-Blockly.Arduino.oled_drawTriangle = function () {
-  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X') || '0';
-  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y') || '0';
-  var D1_x = Blockly.Arduino.valueToCode(this, 'D1_X') || '0';
-  var D1_y = Blockly.Arduino.valueToCode(this, 'D1_Y') || '0';
-  var D2_x = Blockly.Arduino.valueToCode(this, 'D2_X') || '0';
-  var D2_y = Blockly.Arduino.valueToCode(this, 'D2_Y') || '0';
-  var code = "";
-  code = 'u8g2.drawTriangle(' + D0_x + ',';
-  code += D0_y + ',';
-  code += D1_x + ',';
-  code += D1_y + ',';
-  code += D2_x + ',';
-  code += D2_y + ');\n';
-  return code;
-};
-
-Blockly.Arduino.oled_drawFrame = function () {
-  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X') || '0';
-  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y') || '0';
-  var Width = Blockly.Arduino.valueToCode(this, 'WIDTH') || '0';
-  var Height = Blockly.Arduino.valueToCode(this, 'HEIGHT') || '0';
-  var type = this.getFieldValue('TYPE');
-  var code = "";
-  code = 'u8g2.' + type + '(' + D0_x + ',';
-  code += D0_y + ',';
-  code += Width + ',';
-  code += Height + ');\n';
-  return code;
-};
-
-Blockly.Arduino.oled_drawRFrame = function () {
-  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X') || '0';
-  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y') || '0';
-  var Width = Blockly.Arduino.valueToCode(this, 'WIDTH') || '0';
-  var Height = Blockly.Arduino.valueToCode(this, 'HEIGHT') || '0';
-  var Rauius = Blockly.Arduino.valueToCode(this, 'RADIUS') || '0';
-  var type = this.getFieldValue('TYPE');
-  var code = "";
-  code = 'u8g2.' + type + '(' + D0_x + ',';
-  code += D0_y + ',';
-  code += Width + ',';
-  code += Height + ',';
-  code += Rauius + ');\n';
-  return code;
-};
-
-Blockly.Arduino.oled_drawCircle = function () {
-  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X') || '0';
-  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y') || '0';
-  var Rauius = Blockly.Arduino.valueToCode(this, 'RADIUS') || '0';
-  var type = this.getFieldValue('TYPE');
-  var opt = this.getFieldValue('OPT');
-  var code = "";
-  code = 'u8g2.' + type + '(' + D0_x + ',';
-  code += D0_y + ',';
-  code += Rauius + "," + opt + "); \n";
-  return code;
-};
-
-Blockly.Arduino.oled_drawEllipse = function () {
-  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X') || '0';
-  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y') || '0';
-  var Rauius_X = Blockly.Arduino.valueToCode(this, 'RADIUS_X') || '0';
-  var Rauius_Y = Blockly.Arduino.valueToCode(this, 'RADIUS_Y') || '0';
-  var type = this.getFieldValue('TYPE');
-  var opt = this.getFieldValue('OPT');
-  var code = "";
-  code = 'u8g2.' + type + '(' + D0_x + ',';
-  code += D0_y + ',';
-  code += Rauius_X + ",";
-  code += Rauius_Y + "," + opt + "); \n";
-  return code;
-};
-
-Blockly.Arduino.oled_print = function () {
-  var POS_x = Blockly.Arduino.valueToCode(this, 'POS_X') || '0';
-  var POS_y = Blockly.Arduino.valueToCode(this, 'POS_Y') || '0';
-  var TEXT = Blockly.Arduino.valueToCode(this, 'TEXT') || '0';
-  Blockly.Arduino.setups_["setup_enableUTF8Print"] = 'u8g2.enableUTF8Print();\n';
-  var code = "";
-  code = 'u8g2.setCursor(' + POS_x + ',';
-  code += POS_y + "); \n";
-  code += "u8g2.print(" + TEXT + "); \n";
-  return code;
-};
-
-Blockly.Arduino.oled_setFont = function () {
-  var type = this.getFieldValue('TYPE');
-  var code = "u8g2.setFont(u8g2_font_" + type + ");\nu8g2.setFontPosTop();\n";
-  return code;
-};
 
 Blockly.Arduino.inout_touchRead = function () {
   var touch_pin = this.getFieldValue('touch_pin');
@@ -263,7 +85,6 @@ Blockly.Arduino.handbit_rgb = function () {
   Blockly.Arduino.definitions_['var_declare_rgb_display17'] = 'Adafruit_NeoPixel rgb_display_17= Adafruit_NeoPixel(3,17,NEO_GRB + NEO_KHZ800);';
   Blockly.Arduino.setups_['setup_rgb_display_begin_17'] = 'rgb_display_17.begin();';
   var code = 'rgb_display_17.setPixelColor(' + value_led + '-1,' + COLOR + ');\n';
-  // code += 'rgb_display_17.show();\n';
   return code;
 };
 
@@ -280,7 +101,6 @@ Blockly.Arduino.handbit_rgb2 = function () {
   var code = 'rgb_display_17.setPixelColor(0,' + COLOR1 + ');\n';
   code += 'rgb_display_17.setPixelColor(1,' + COLOR2 + ');\n';
   code += 'rgb_display_17.setPixelColor(2,' + COLOR3 + ');\n';
-  //  code += 'rgb_display_17.show();\n';
   return code;
 };
 
@@ -290,7 +110,6 @@ Blockly.Arduino.handbit_rgb_Brightness = function () {
   Blockly.Arduino.definitions_['var_declare_rgb_display17'] = 'Adafruit_NeoPixel rgb_display_17= Adafruit_NeoPixel(3,17,NEO_GRB + NEO_KHZ800);';
   Blockly.Arduino.setups_['setup_rgb_display_begin_17'] = 'rgb_display_17.begin();';
   var code = 'rgb_display_17.setBrightness(' + Brightness + ');\n';
-  // code += 'rgb_display_17.show();\n';
   return code;
 };
 
@@ -349,11 +168,22 @@ Blockly.Arduino.board_setup = function () {
   Blockly.Arduino.definitions_['var_declare_U8G2'] = 'U8G2_SH1106_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
   Blockly.Arduino.setups_['setup_u8g2.begin'] = "u8g2.begin();";
-    Blockly.Arduino.setups_['setup_rgb_display_begin_17'] = 'rgb_display_17.begin();';
-     Blockly.Arduino.setups_['setup_u8g2.clearDisplay'] = 'u8g2.clearDisplay();';
-      Blockly.Arduino.setups_['setup_RGB_init'] = ' for(int j=0;j<3;j++)\n{for(int i=0;i<3;i++)\nrgb_display_17.setPixelColor(i,0x000000);\nrgb_display_17.show();}\ndigitalWrite(P6,LOW);';
-     
+  Blockly.Arduino.setups_['setup_rgb_display_begin_17'] = 'rgb_display_17.begin();';
+  Blockly.Arduino.setups_['setup_u8g2.clearDisplay'] = 'u8g2.clearDisplay();';
+  Blockly.Arduino.setups_['setup_RGB_init'] = ' for(int j=0;j<3;j++)\n{\nfor(int i=0;i<3;i++)\nrgb_display_17.setPixelColor(i,0x000000);\nrgb_display_17.show();\n}\ndigitalWrite(P6,LOW);';
+  return "";
 
-  //return code3;
-
+};
+Blockly.Arduino.OneButton = function () {
+ Blockly.Arduino.definitions_['include_OneButton'] = '#include <OneButton.h>';
+ var dropdown_pin = this.getFieldValue('PIN');
+ var dropdown_mode = this.getFieldValue('mode');
+ Blockly.Arduino.definitions_['var_declare_button'+dropdown_pin] = 'OneButton button'+dropdown_pin+'('+dropdown_pin+ ',true);';
+ Blockly.Arduino.setups_['setup_onebutton_' + dropdown_pin+dropdown_mode] = 'button'+dropdown_pin+'.' + dropdown_mode + '('+dropdown_mode+dropdown_pin+');';
+ var code = 'button' +dropdown_pin+ '.tick();';
+ var funcName = dropdown_mode+dropdown_pin;
+ var branch = Blockly.Arduino.statementToCode(this, 'DO');
+ var code2 = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
+ Blockly.Arduino.definitions_[funcName] = code2;
+ return code;
 };

@@ -51,3 +51,5 @@ Blockly.Arduino.handbit_A=Blockly.Arduino.nano_pin;
 Blockly.Arduino.handbit_B=Blockly.Arduino.nano_pin;
 Blockly.Arduino.handbit_pin_A=Blockly.Arduino.nano_pin;
 Blockly.Arduino.handbit_pin_B=Blockly.Arduino.nano_pin;
+Blockly.Arduino.mixgo_pin_A=Blockly.Arduino.nano_pin;
+Blockly.Arduino.mixgo_pin_B=Blockly.Arduino.nano_pin;

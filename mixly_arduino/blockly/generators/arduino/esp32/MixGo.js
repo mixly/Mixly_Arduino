@@ -273,7 +273,22 @@ Blockly.Arduino.MixGo_rgb_rainbow3=function(){
     var code3= 'for (int i = 0; i < rgb_display_02.numPixels(); i++)\n {rgb_display_02.setPixelColor(i, Wheel(((i * 256 / rgb_display_02.numPixels()) + '+rainbow_color+') & 255));\n}\n';
   return code3;
 };
+
 Blockly.Arduino.MixGo_rgb_show = function () {
   var code = 'rgb_display_02.show();\ndelay(1);\n';
   return code;
+};
+
+Blockly.Arduino.OneButton = function () {
+ Blockly.Arduino.definitions_['include_OneButton'] = '#include <OneButton.h>';
+ var dropdown_pin = this.getFieldValue('PIN');
+ var dropdown_mode = this.getFieldValue('mode');
+ Blockly.Arduino.definitions_['var_declare_button'+dropdown_pin] = 'OneButton button'+dropdown_pin+'('+dropdown_pin+ ',false);';
+ Blockly.Arduino.setups_['setup_onebutton_' + dropdown_pin+dropdown_mode] = 'button'+dropdown_pin+'.' + dropdown_mode + '('+dropdown_mode+dropdown_pin+');';
+ var code = 'button' +dropdown_pin+ '.tick();';
+ var funcName = dropdown_mode+dropdown_pin;
+ var branch = Blockly.Arduino.statementToCode(this, 'DO');
+ var code2 = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
+ Blockly.Arduino.definitions_[funcName] = code2;
+ return code;
 };

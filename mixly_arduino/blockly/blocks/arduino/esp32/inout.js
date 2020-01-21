@@ -112,7 +112,7 @@ Blockly.Blocks['inout_esp32_dac'] = {
     this.appendValueInput("value")
     .setCheck(null)
     .appendField(Blockly.inout_esp32_dac)
-    .appendField(new Blockly.FieldDropdown([["25","25"], ["26","26"]]), "pin")
+    .appendField(new Blockly.FieldDropdown(profile.default.dac), "PIN")
     .appendField(Blockly.MIXLY_VALUE2);
     this.appendDummyInput();
     this.setPreviousStatement(true, null);

@@ -202,8 +202,8 @@ Blockly.Blocks.display_TM1637_init = {
     this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP);
     this.setHelpUrl('');
-    this.setFieldValue("2", "CLK");
-    this.setFieldValue("4", "DIO");
+//    this.setFieldValue("2", "CLK");
+ //   this.setFieldValue("4", "DIO");
   }
 };
 

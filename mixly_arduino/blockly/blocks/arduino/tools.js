@@ -132,3 +132,21 @@ Blockly.Blocks['handbit_pin_B'] = {
     this.setHelpUrl();
   }
 };
+Blockly.Blocks['mixgo_pin_A'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldImage("../../media/board_pin/MixGo_pin_A.png", 525, 376, "*"));
+    this.setColour(Blockly.Blocks.tools.HUE);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
+Blockly.Blocks['mixgo_pin_B'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldImage("../../media/board_pin/MixGo_pin_B.png", 525, 376, "*"));
+    this.setColour(Blockly.Blocks.tools.HUE);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
