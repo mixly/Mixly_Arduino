@@ -191,6 +191,26 @@ Blockly.Python.actuator_neopixel_rgb=function(){
 };
 
 
+Blockly.Python.actuator_onboard_neopixel_write=function(){
+  Blockly.Python.definitions_['import_machine'] = 'import machine';
+  Blockly.Python.definitions_['import_neopixel'] = 'import neopixel';
+  Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+  var code= 'mixgo.rgb.write()\n';   
+  return code;
+};
+
+Blockly.Python.actuator_onboard_neopixel_rgb=function(){
+  Blockly.Python.definitions_['import_machine'] = 'import machine';
+  Blockly.Python.definitions_['import_neopixel'] = 'import neopixel';
+  Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
+  var value_led = Blockly.Python.valueToCode(this, '_LED_', Blockly.Python.ORDER_ATOMIC);
+  var value_rvalue = Blockly.Python.valueToCode(this, 'RVALUE', Blockly.Python.ORDER_ATOMIC);
+  var value_gvalue = Blockly.Python.valueToCode(this, 'GVALUE', Blockly.Python.ORDER_ATOMIC);
+  var value_bvalue = Blockly.Python.valueToCode(this, 'BVALUE', Blockly.Python.ORDER_ATOMIC);
+  var code= 'mixgo.rgb['+value_led+'] = ('+value_rvalue+', '+value_gvalue+', '+value_bvalue+')\n';
+  return code;
+};
+
 Blockly.Python.led_light=Blockly.Python.actuator_led_bright;
 Blockly.Python.get_led_bright=Blockly.Python.actuator_get_led_bright;
 Blockly.Python.led_brightness=Blockly.Python.actuator_led_brightness;
