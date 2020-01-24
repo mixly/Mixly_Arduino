@@ -410,6 +410,50 @@ Blockly.Blocks.actuator_neopixel_write = {
     }
 };
 
+Blockly.Blocks.actuator_onboard_neopixel_rgb = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_RGB)
+        this.appendValueInput("_LED_")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_RGB_NUM);
+        this.appendValueInput("RVALUE")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_RGB_R);
+        this.appendValueInput("GVALUE")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_RGB_G);
+        this.appendValueInput("BVALUE")
+            .setCheck(Number)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField(Blockly.MIXLY_RGB_B);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_RGB_NUM_R_G_B);
+    }
+};
+
+Blockly.Blocks.actuator_onboard_neopixel_write = {
+    init: function () {
+        this.setColour(Blockly.Blocks.actuator.HUE);
+        this.appendDummyInput("")
+            .appendField(Blockly.MIXLY_RGB)
+        this.appendDummyInput()
+            .appendField(Blockly.MIXLY_ESP32_RGB_WRITE)
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setTooltip('');
+        this.setTooltip(Blockly.MIXLY_ESP32_MUSIC_WRI);
+    }
+};
+
 
 Blockly.Blocks.led_light=Blockly.Blocks.actuator_led_bright;
 Blockly.Blocks.get_led_bright=Blockly.Blocks.actuator_get_led_bright;

@@ -1904,12 +1904,7 @@
       </block>
       <block type="esp32_music_get_tempo"></block>
       <block type="esp32_music_reset"></block>
-      <block type="actuator_neopixel_rgb">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">rgb</field>
-          </shadow>
-        </value>
+      <block type="actuator_onboard_neopixel_rgb">
         <value name="_LED_">
           <shadow type="math_number">
             <field name="NUM">0</field>
@@ -1931,12 +1926,7 @@
           </shadow>
         </value>
       </block>
-      <block type="actuator_neopixel_write">
-        <value name="SUB">
-          <shadow type="variables_get">
-            <field name="VAR">rgb</field>
-          </shadow>
-        </value>
+      <block type="actuator_onboard_neopixel_write">
       </block>
     </category>
     <category id="catOnBoardDisplay" name="catOnBoardDisplay" colour="180">

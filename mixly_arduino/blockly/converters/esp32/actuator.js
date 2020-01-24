@@ -465,3 +465,14 @@ pbc.objectFunctionD.get('setbrightness')['led'] = function (py2block, func, args
 }
 
 }
+
+pbc.moduleFunctionD.get('mixgo.rgb')['write'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if(args.length!=0){
+        throw new Error("Incorrect number of arguments");
+    }
+
+    return [block("actuator_onboard_neopixel_write", func.lineno, {}, { 
+    }, {
+        "inline": "true"
+    })];
+}
