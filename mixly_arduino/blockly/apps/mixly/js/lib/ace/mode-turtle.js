@@ -9,13 +9,15 @@ var PythonHighlightRules = function() {
     var keywords = (
         "and|as|assert|break|class|continue|def|del|elif|else|except|exec|" +
         "finally|for|from|global|if|import|in|is|lambda|not|or|pass|print|time|requests|turtle|pandas|pylab|" +
-        "raise|return|try|while|with|yield|async|await" 
+        "raise|return|try|while|with|yield|async|await|" +
+        "os|FileDialog|cam|audio|aip|s4alib|serial|NoneType|null|"+
+        "numpy|matplotlib|font_manager|_thread|math|mixpy|math_map|math_mean|math_median|math_modes|math_standard_deviation"
     );
 
     var builtinConstants = (
         "True|False|None|NotImplemented|Ellipsis|__debug__|"+
         // mixpyConstants
-        "RATE_250KBIT|RATE_1MBIT|RATE_2MBIT"
+        "RATE_250KBIT|RATE_1MBIT|RATE_2MBIT|pi|e"
         
     );
 
@@ -29,15 +31,15 @@ var PythonHighlightRules = function() {
         "__import__|complex|hash|min|set|apply|delattr|help|next|setattr|" +
         "buffer|dict|hex|object|slice|coerce|dir|id|oct|sorted|intern|exit|localtime|"+
         // mixpyFunctions
-        "sleep|running_time|panic|reset|temperature|"+
+        "sleep|running_time|panic|reset|temperature|end|start_new_thread|"+
         // mixpyRandomFunctions
         "getrandbits|seed|randint|randrange|choice|random|uniform|"+
         // mixpyTextFunctions
-        "lower|ljust|center|rjust|find|replace|split|strip|lstrip|rstrip|"+
+        "lower|ljust|center|rjust|find|replace|split|strip|lstrip|rstrip|startswith|endswith|capitalize|swapcase|join|"+
         // mixpyMathFunctions
-        "sin|cos|tan|asin|acos|atan|degrees|log|log10|exp|ceil|floor|fabs|sqrt|"+
+        "sin|cos|tan|asin|acos|atan|degrees|log|log10|exp|ceil|floor|fabs|sqrt|math_map|"+
         // mixpyListFunctions
-        "insert|append|extend|index|lists_sort|reverse|remove|count|"+
+        "insert|append|extend|index|lists_sort|reverse|remove|count|math_mean|math_median|math_modes|math_standard_deviation|"+
         // mixpyDictFunctions
         "keys|setdefault|items|values|pop|"+
         // mixpySetFunctions
@@ -45,12 +47,23 @@ var PythonHighlightRules = function() {
         // mixpyCommunicateFunctions
         "post|get|put|status_code|delete|head|option|text|cookies|content|"+
         // mixpyDataFunctions
-        "Series|DataFrame|value|columns|plot|show|legend|title|xlabel|ylabel|"+
+        "Series|DataFrame|value|columns|plot|show|legend|title|xlabel|ylabel|arcsin|arccos|arctan|"+
+        "read_csv|header|arange|bar|label|color|pie|explode|labels|autopct|shadow|hist|subplot|axes|aspect|prop|fontproperties|xticks|yticks|ha|va|fontsize|savefig|"+
         // mixpyFileFunctions
-        "read|name|writable|listdir|close|"+
+        "read|name|writable|listdir|close|startfile|readline|readlines|getcwd|chdir|mkdir|makedirs|removedirs|rename|size|isfile|isdir|tell|seek|"+
         // mixpyturtleFunctions
         "backward|left|right|home|forward|Turtle|setheading|goto|penup|pendown|end_fill|begin_fill|pensize|"+
-        "circle|dot|speed|showturtle|hideturtle|clone|pencolor|fillcolor|shape|pos|done|clear|delay|write|bgcolor"
+        "circle|dot|speed|showturtle|hideturtle|clone|pencolor|fillcolor|shape|pos|done|clear|delay|write|bgcolor|"+
+        "exitonclick|setx|sety|heading|width|screen|numinput|textinput|size|isfile|isdir|tell|seek|align|font|minval|maxval|"+
+        "shapesize|getscreen|onkey|onclick|ontimer|listen|getcanvas|postscript|file|"+
+        // mixpyAIFunctions
+        "getOneFile|getManyFiles|getDirectory|audio_record|photo_capture|AipImageClassify|synthesis|asr|advancedGeneral|"+
+        "dishDetect|carDetect|animalDetect|plantDetect|logoSearch|"+
+        "match|basicGeneral|webImage|idcard|bankcard|drivingLicense|vehicleLicense|licensePlate|businessLicense|receipt|"+
+        "trainTicket|taxiReceipt|form|vatInvoice|passport|handwriting|lexer|depParser|wordEmbedding|dnnlm|commentTag|"+
+        "sentimentClassify|keyword|topic|ecnet|emotion|wordSimEmbedding|simnet|topic|newsSummary|options|"+
+        // mixpyHardwareFunctions
+        "s4a_start|digital_write|digital_read|analog_write|analog_read|Serial|encode|decode|timeout"
     );
 
     var mixpyKeywords = (
