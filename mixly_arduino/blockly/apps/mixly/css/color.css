@@ -364,11 +364,71 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../../media/mark/comuni2.png') no-repeat;
 	background-size: 100% auto; 
 }
+/*子模块的第1个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(13) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/comuni.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第1个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(13) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+	background:url('../../../media/mark/comuni2.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第2个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(13) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/comuni.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第2个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(13) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+	background:url('../../../media/mark/comuni2.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第3个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(13) > div:nth-child(2) > div:nth-child(3) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/comuni.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第3个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(13) > div:nth-child(2) > div:nth-child(3) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+	background:url('../../../media/mark/comuni2.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第4个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(13) > div:nth-child(2) > div:nth-child(4) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/comuni.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第4个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(13) > div:nth-child(2) > div:nth-child(4) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+	background:url('../../../media/mark/comuni2.png') no-repeat;
+	background-size: 100% auto; 
+}
 #\:0 > div:nth-child(2) > div:nth-child(14) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
 	background:url('../../../media/mark/store.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(14) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/store2.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第一个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(14) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/store.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第一个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(14) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+	background:url('../../../media/mark/store2.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第二个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(14) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/store.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第二个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(14) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
 	background:url('../../../media/mark/store2.png') no-repeat;
 	background-size: 100% auto; 
 }

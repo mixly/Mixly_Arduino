@@ -77,6 +77,8 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
  		analog: [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"]],
  		pwm : [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"]],
  		interrupt : [["2", "2"], ["3", "3"]],
+ 		SDA:[["A4","A4"]],
+		SCL:[["A5","A5"]],
  		MOSI:[["11","11"]],
  		MISO:[["12","12"]],
  		SCK:[["13","13"]],
@@ -89,6 +91,8 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
  		analog : [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"], ["A8", "A8"], ["A9", "A9"], ["A10", "A10"], ["A11", "A11"], ["A12", "A12"], ["A13", "A13"], ["A14", "A14"], ["A15", "A15"]],
  		pwm : [["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["13", "13"]],
  		interrupt: [["2", "2"], ["3", "3"], ["18", "18"], ["19", "19"], ["20", "20"], ["21", "21"]],
+ 		SDA:[["20","20"]],
+		SCL:[["21","21"]],
  		MOSI:[["51","51"]],
  		MISO:[["50","50"]],
  		SCK:[["52","52"]],
@@ -102,6 +106,8 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
  		analog : [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"]],
  		pwm : [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"]],
  		interrupt : [["2", "2"], ["3", "3"]],
+		SDA:[["A4","A4"]],
+		SCL:[["A5","A5"]],
  		MOSI:[["11","11"]],
  		MISO:[["12","12"]],
  		SCK:[["13","13"]],
@@ -138,6 +144,8 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		analog : [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"], ["A8", "A8"], ["A9", "A9"], ["A10", "A10"], ["A11", "A11"]],
 		pwm : [["3", "3"], ["5", "5"], ["6", "6"], ["9", "9"], ["10", "10"], ["11", "11"], ["13", "13"]],
 		interrupt : [["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["7", "7"]],
+		SDA:[["2","2"]],
+		SCL:[["3","3"]],
 		MOSI:[["11","11"]],
 		MISO:[["12","12"]],
 		SCK:[["13","13"]],
@@ -162,6 +170,8 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		analog : [["A0", "A0"]],
 		pwm : [["0", "0"],["2", "2"],  ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"],["A0", "A0"]],
 		interrupt : [["0", "0"],["2", "2"],  ["4", "4"], ["5", "5"], ["12", "12"], ["13", "13"], ["14", "14"], ["15", "15"],["A0", "A0"]],
+		SDA:[["4","4"]],
+		SCL:[["5","5"]],
 		MOSI:[["13","13"]],
 		MISO:[["12","12"]],
 		SCK:[["14","14"]],
@@ -332,15 +342,17 @@ profile['Arduino MixGo']=profile["esp32_MixGo"];
 	code = 'void loop(){\n' + code + '\n}';
 	// Convert the definitions dictionary into a list.
 	var imports = [];
+	var define = [];
 	var definitions_var = []; //变量定义
 	var definitions_fun = []; //函数定义
-	var sorted_keys=Object.keys(Blockly.Arduino.definitions_).sort();
+	//var sorted_keys=Object.keys(Blockly.Arduino.definitions_).sort();
+	var sorted_keys=Object.keys(Blockly.Arduino.definitions_);
 	for(var idx in sorted_keys){
 		var name=sorted_keys[idx];
 		var def = Blockly.Arduino.definitions_[name];
-		if (name.match(/^define_BLYNK_PRINT/)) {
-			imports.push(def);
-		}
+		if (name.match(/^define/)) {
+			define.push(def);
+			}
 		else if (def.match(/^#include/)) {
 			imports.push(def);
 		} 
@@ -360,7 +372,7 @@ profile['Arduino MixGo']=profile["esp32_MixGo"];
 		setups.push(Blockly.Arduino.setups_[name]);
 	}
 
-	var allDefs = imports.join('\n') + '\n\n' + definitions_var.join('\n') + '\n\n' + definitions_fun.join('\n') + '\n\nvoid setup(){\n  ' + setups.join('\n  ') + '\n}' + '\n\n';
+	var allDefs = define.join('\n') + '\n' +imports.join('\n') + '\n\n' + definitions_var.join('\n') + '\n\n' + definitions_fun.join('\n') + '\n\nvoid setup(){\n  ' + setups.join('\n  ') + '\n}' + '\n\n';
 	return allDefs.replace(/\n\n+/g, '\n\n').replace(/\n*$/, '\n\n') + code;
 };
 

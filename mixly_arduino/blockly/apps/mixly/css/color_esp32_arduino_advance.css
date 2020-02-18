@@ -401,6 +401,36 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background-size: 100% auto; 
 }
 /*子模块的第一个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(15) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/store.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第一个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(15) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+	background:url('../../../media/mark/store2.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第二个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(15) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/store.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第二个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(15) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+	background:url('../../../media/mark/store2.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第三个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(15) > div:nth-child(2) > div:nth-child(3) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/store.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第三个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(15) > div:nth-child(2) > div:nth-child(3) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+	background:url('../../../media/mark/store2.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第一个图标（未选中时）*/
 #\:0 > div:nth-child(2) > div:nth-child(16) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../../media/mark/WIFI.png') no-repeat;
 	background-size: 100% auto; 
