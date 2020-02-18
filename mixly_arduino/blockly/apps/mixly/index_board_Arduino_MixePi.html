@@ -39,7 +39,7 @@
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/arduino/actuator.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/ethernet.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/esp32/ethernet.js"></script>
   <script type="text/javascript" src="../../generators/arduino/esp32/pins.js"></script>
   <script type="text/javascript" src="../../generators/arduino/esp32/inout.js"></script>
   <script type="text/javascript" src="../../generators/arduino/esp32/control.js"></script>
@@ -91,7 +91,7 @@
   <script type="text/javascript" src="../../blocks/arduino/esp32/procedures.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/esp32/serial.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/esp32/MixePi.js"></script>
-  
+  <script type="text/javascript" src="../../blocks/arduino/esp32/display.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/tools.js"></script> 
   <script src = "init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color_esp32_arduino_advance.css" />
@@ -461,6 +461,9 @@
       <shadow type="math_number">
         <field name="NUM">997</field>
       </shadow>
+      <block type="controls_millis">
+        <field name="UNIT">millis</field>
+      </block>
     </value>
   </block>
   <block type="math_random_int">

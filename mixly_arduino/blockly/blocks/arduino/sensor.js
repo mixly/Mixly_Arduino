@@ -164,8 +164,8 @@ Blockly.Blocks.DS1302_init = {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
     .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_DS1302_INITPIN)
-    .appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
+    .appendField(Blockly.MIXLY_DS1302_INITPIN);
+    //.appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
     this.appendValueInput("RST", Number)
     .appendField("RST#")
     .setCheck(Number);
@@ -182,17 +182,18 @@ Blockly.Blocks.DS1302_init = {
   }
 }
 
-var RTCTypeList = [['DS1302','DS1302'],['DS1307','DS1307']];
+var RTCTypeList = [['DS1307','RtcDS1307'],['DS3231','RtcDS3231']];
 //DS1307 RTC
 Blockly.Blocks.DS1307_init = {
   init: function () {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_RTCINIT);
-        //this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTCTypeList), 'RTCType');
+        this.appendDummyInput("").setAlign(Blockly.ALIGN_RIGHT).appendField(new Blockly.FieldDropdown(RTCTypeList), 'RTCType');
         this.appendDummyInput("")
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
+        .appendField(Blockly.MIXLY_PIN);
+        //.appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
         this.appendValueInput("SDA")
         .appendField("SDA#")
         .setCheck(Number);
@@ -242,13 +243,14 @@ Blockly.Blocks.DS1307_init = {
 };
 //传感器-实时时钟块_时间变量
 var RTC_TIME_TYPE = [
-[Blockly.MIXLY_YEAR, "getYear"],
-[Blockly.MIXLY_MONTH, "getMonth"],
-[Blockly.MIXLY_DAY, "getDay"],
-[Blockly.MIXLY_HOUR, "getHour"],
-[Blockly.MIXLY_MINUTE, "getMinute"],
-[Blockly.MIXLY_SECOND, "getSecond"],
-[Blockly.MIXLY_WEEK, "getDOW"],
+[Blockly.MIXLY_YEAR, "Year"],
+[Blockly.MIXLY_MONTH, "Month"],
+[Blockly.MIXLY_DAY, "Day"],
+[Blockly.MIXLY_HOUR, "Hour"],
+[Blockly.MIXLY_MINUTE, "Minute"],
+[Blockly.MIXLY_SECOND, "Second"],
+[Blockly.MIXLY_WEEK, "DayOfWeek"],
+
 ];
 
 
@@ -260,8 +262,8 @@ Blockly.Blocks.RTC_get_time = {
     .setAlign(Blockly.ALIGN_RIGHT)
     .appendField(Blockly.MIXLY_RTCGETTIME);
     this.appendDummyInput("")
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
+    .setAlign(Blockly.ALIGN_RIGHT);
+    //.appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
     this.appendDummyInput("")
     .setAlign(Blockly.ALIGN_RIGHT)
     .appendField(new Blockly.FieldDropdown(RTC_TIME_TYPE), "TIME_TYPE");
@@ -276,8 +278,19 @@ Blockly.Blocks.RTC_set_time = {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
     .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_RTCSETTIME)
-    .appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
+    .appendField(Blockly.MIXLY_RTCSETTIME);
+this.appendValueInput("year")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("  "+Blockly.MIXLY_YEAR);
+    this.appendValueInput("month")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("  "+Blockly.MIXLY_MONTH);
+    this.appendValueInput("day")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("  "+Blockly.MIXLY_DAY);
     this.appendValueInput("hour")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
@@ -302,20 +315,9 @@ Blockly.Blocks.RTC_set_date = {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
     .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_RTCSETDATE)
-    .appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
-    this.appendValueInput("year")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField("  "+Blockly.MIXLY_YEAR);
-    this.appendValueInput("month")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField("  "+Blockly.MIXLY_MONTH);
-    this.appendValueInput("day")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField("  "+Blockly.MIXLY_DAY);
+    .appendField(Blockly.MIXLY_RTCSETDATE);
+   // .appendField(new Blockly.FieldTextInput('myRTC'), 'RTCName');
+    
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_RTC_SETDATE);
@@ -406,7 +408,7 @@ Blockly.Blocks.MPU6050_update= {
   init: function() {
    this.setColour(Blockly.Blocks.sensor.HUE);
    this.appendDummyInput("")
-   .appendField(Blockly.MIXLY_MPU6050_update);
+   .appendField(Blockly.MIXLY_MPU6050+Blockly.MIXLY_update_data);
    this.setPreviousStatement(true);
    this.setNextStatement(true);
    this.setInputsInline(true);
@@ -496,7 +498,7 @@ Blockly.Blocks.PS2_init={
   init: function() {
    this.setColour(Blockly.Blocks.sensor.HUE);
    this.appendDummyInput("")
-   .appendField(Blockly.PS2_INIT);
+   .appendField(Blockly.MIXLY_SETUP+Blockly.PS2);
    this.appendDummyInput("")  
    .appendField('DAT#')
    .appendField(new Blockly.FieldDropdown(profile.default.digital), "PS2_DAT")
@@ -519,7 +521,16 @@ Blockly.Blocks.PS2_init={
    this.setFieldValue("12","PS2_CLK");
  }
 };
-
+Blockly.Blocks.PS2_update= {
+  init: function() {
+   this.setColour(Blockly.Blocks.sensor.HUE);
+   this.appendDummyInput("")
+   .appendField(Blockly.PS2+Blockly.MIXLY_update_data);
+   this.setPreviousStatement(true);
+   this.setNextStatement(true);
+   this.setInputsInline(true);
+ }
+};
 var PSBUTTON =[
 [Blockly.PS2_TRIANGLE,"PSB_GREEN"],
 [Blockly.PS2_CIRCLE,"PSB_RED"],
@@ -610,7 +621,8 @@ Blockly.Blocks['Arduino_keypad_4_4_start'] = {
    .setCheck(null)
    .setAlign(Blockly.ALIGN_RIGHT)
    .appendField(Blockly.MIXLY_Keypad_define);
-   this.setNextStatement(true, null);   
+   this.setNextStatement(true, null);
+   this.setPreviousStatement(true);  
    this.setTooltip("");
    this.setHelpUrl("");
  }

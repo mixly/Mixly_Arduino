@@ -13,6 +13,10 @@ var MSG = {
 	catLogic: "Logic",
 	catSerialPort:"SerialPort",
 	catGroup: "Communicate",
+	catIR: "IR Communicate",
+	catI2C: "I2C",
+	catSPI: "SPI",
+	catRFID: "RFID",
 	catStorage:"Storage",
 	catSensor: "Sensor",
 	catActuator: "Actuator",
@@ -796,7 +800,7 @@ Blockly.MIXLY_STEPPER_STEP='step';
 Blockly.MIXLY_ETHERNET_BEGIN='Begin (DHCP)';
 Blockly.MIXLY_ETHERNET='Ethernet';
 Blockly.MIXLY_ETHERNET2='Ethernet2';
-Blockly.MIXLY_ETHERNET_MAC_ADDRESS='Mac Address';
+Blockly.MIXLY_ETHERNET_MAC_ADDRESS='MAC Address';
 Blockly.MIXLY_ETHERNET_LOCALIP='localIP';
 Blockly.MIXLY_ETHERNET_CLINET_CONNECT_SERVER='Clinet.Connect Host';
 Blockly.MIXLY_ETHERNET_CLINET_PORT='Port';
@@ -1301,9 +1305,9 @@ Blockly.MIXLY_MICROBIT_PY_STORAGE_THE_PATH= "path";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE= "data type";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME= "current system information";
 Blockly.MIXLY_MICROBIT_SHOW_STRING= " %1 delay %2 millisecond %3 wait %4 %5 loop %6 %7 clear %8";
-Blockly.MIXLY_COMMUNICATION_RFID_INITIAL= "initialize rfid as";
+Blockly.MIXLY_COMMUNICATION_RFID_INITIAL= "initialize RFID as";
 Blockly.MIXLY_COMMUNICATION_RFID_ON_DETECTED= "on signal detected";
-Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM= "card number read by rfid";
+Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM= "card number read by RFID";
 Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM_IS= "card numbers detected by RFID is";
 Blockly.MIXLY_COMMUNICATION_RFID_WRITE= "RFID write card";
 Blockly.MIXLY_COMMUNICATION_DATA_BLOCK= "data block";
@@ -1314,7 +1318,7 @@ Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_OFF= "off";
 Blockly.MIXLY_COMMUNICATION_RFID_TOOLTIP= "This is RFID's reading card";
 Blockly.MIXLY_COMMUNICATION_RFID_READ= "RFID read";
 Blockly.MIXLY_COMMUNICATION_DATA_FROM= "data from";
-Blockly.MIXLY_COMMUNICATION_RFID_OFF= "rfid stop detection";
+Blockly.MIXLY_COMMUNICATION_RFID_OFF= "RFID stop detection";
 Blockly.Msg.HTML_RESET= "reset";
 Blockly.blockpy_inout_input='Receive input';
 Blockly.blockpy_inout_raw_input='Receive string input';
@@ -2306,7 +2310,7 @@ Blockly.MPYTHON_BLYNK_APP_DATA_MESSAGE0= 'when received value %2 of virtual pin 
 Blockly.MIXLY_readTempC='Get Centigrade';
 Blockly.MIXLY_readTempF='Get Fahrenheit';
 Blockly.MIXLY_MPU6050='MPU6050 Gyroscope';
-Blockly.MIXLY_MPU6050_update='MPU6050 Gyroscope refresh data';
+Blockly.MIXLY_update_data='refresh data';
 Blockly.MIXLY_CHOOSE_AND_GET='Select and Get';
 Blockly.MIXLY_CHOOSE_AND_GET_ONE_FILE_NAME='single file name';
 Blockly.MIXLY_CHOOSE_AND_GET_MANY_FILE_NAMES='multiple file names';
@@ -2447,7 +2451,7 @@ Blockly.get_array2_value='Get Two-dimensional array Value';
 Blockly.array2_assignment='Two-dimensional array assignment';
 Blockly.array2_rows='rows';
 Blockly.array2_cols='cols';
-Blockly.create_array2_with_text='Two-dimensional array Name';
+Blockly.MIXLY_ARRAY2='Two-dimensional array Name';
 Blockly.Msg.HTML_DOCUMENT= "HTML Document";
 Blockly.Msg.HTML_LEVEL= "h";
 Blockly.Msg.HTML_HEAD= "head";
@@ -2495,7 +2499,7 @@ Blockly.MIXLY_LONG_PRESS_START='Long Press Start';
 Blockly.MIXLY_DURING_LONG_PRESS='During Long Press';
 Blockly.MIXLY_LONG_PRESS_END='Long Press End';
 Blockly.ONEBUTTON='Multifunctional Button';
-Blockly.PS2_INIT='Init PS2 handle';
+Blockly.PS2='PS2 handle';
 Blockly.PS2_TRIANGLE='Triangle';
 Blockly.PS2_CIRCLE='Circle';
 Blockly.PS2_CROSS='Cross';
@@ -2620,3 +2624,14 @@ Blockly.MIXLY_ELECLEVEL = "Level trigger";
 Blockly.MIXLY_GET_PRESSES_TIME = "Duration(seconds)";
 Blockly.MIXLY_PYTHON_LOGIC_IS_NOT = "is not";
 Blockly.MIXLY_PYTHON_LOGIC_IS_NOT_IN = "is not in";
+Blockly.Msg.MATH_DEC_MODE = "mode";
+Blockly.Msg.REQUEST_SUCCEEDED = "Request failed";
+Blockly.Msg.REQUEST_FAILED = "Request succeeded";
+Blockly.Msg.RIGHT_CYCLE = "Right cycle";
+Blockly.Msg.LEFT_CYCLE = "Left cycle";
+Blockly.MIXLY_FAILED = "Failed";
+Blockly.MIXLY_SUCCESS = "Success";
+Blockly.MIXLY_WRITE="Write";
+Blockly.MIXLY_READONLY="read only";
+Blockly.MIXLY_FILE_PATH="File Path";
+

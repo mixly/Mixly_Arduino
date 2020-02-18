@@ -336,8 +336,6 @@ Blockly.Blocks.MQTT_publish = {
   }
 };
 
-// 
-
 Blockly.Blocks.MQTT_subscribe_value = {
   init: function() {
     this.setColour(Blockly.Blocks.ethernet.HUE);
@@ -637,5 +635,26 @@ Blockly.Blocks['controls_if_if'] = {
     this.appendStatementInput('STACK');
     this.setTooltip(Blockly.Msg.CONTROLS_IF_IF_TOOLTIP);
     this.contextMenu = false;
+  }
+};
+
+//GET请求
+Blockly.Blocks.http_get = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_ETHERNET_CLINET_GET_REQUEST);
+    this.appendValueInput("api")
+        .setCheck(null)
+        .appendField(Blockly.blynk_SERVER_ADD);
+    this.appendStatementInput("success")
+        .setCheck(null)
+        .appendField(Blockly.MIXLY_SUCCESS);
+    this.appendStatementInput("failure")
+        .setCheck(null)
+        .appendField(Blockly.MIXLY_FAILED);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.ethernet.HUE);
+ this.setTooltip("");
   }
 };

@@ -64,3 +64,19 @@ Blockly.Blocks['pins_SCK'] = {
   this.setOutput(true, Number);
 }
 };
+Blockly.Blocks['pins_SCL'] = {
+ init: function() {
+  this.setColour(Blockly.Blocks.pins.HUE);
+  this.appendDummyInput("")
+  .appendField(new Blockly.FieldDropdown(profile.default.SCL), 'PIN');
+  this.setOutput(true, Number);
+}
+};
+Blockly.Blocks['pins_SDA'] = {
+ init: function() {
+  this.setColour(Blockly.Blocks.pins.HUE);
+  this.appendDummyInput("")
+  .appendField(new Blockly.FieldDropdown(profile.default.SDA), 'PIN');
+  this.setOutput(true, Number);
+}
+};

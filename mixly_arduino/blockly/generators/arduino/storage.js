@@ -98,8 +98,6 @@ Blockly.Arduino.store_eeprom_read_long = function() {
 	return [code,Blockly.Arduino.ORDER_ATOMIC];
 }
 
-
-
 Blockly.Arduino.store_eeprom_write_byte = function() {
 	var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
 	var data = Blockly.Arduino.valueToCode(this, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '0';

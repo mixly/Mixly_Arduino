@@ -21,7 +21,6 @@
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
   <script type="text/javascript" src="myblock.js"></script>
-  
   <script type="text/javascript" src="../../generators/arduino/factory.js"></script>
   <script type="text/javascript" src="../../generators/arduino/blynk.js"></script>
   <script type="text/javascript" src="../../generators/arduino/pins.js"></script>
@@ -41,6 +40,7 @@
   <script type="text/javascript" src="../../generators/arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/arduino/actuator.js"></script>
   <script type="text/javascript" src="../../generators/arduino/tools.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/esp8266.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/factory.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/blynk.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/pins.js"></script>
@@ -59,7 +59,6 @@
   <script type="text/javascript" src="../../blocks/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/serial.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/actuator.js"></script>
-  
   <script type="text/javascript" src="../../blocks/arduino/tools.js"></script> 
   <script src="init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color.css" />
@@ -266,6 +265,12 @@
     </block>
     <block type="controls_end_program">
     </block>
+    <block type="do_while">
+      <value name="select_data">
+        <shadow type="logic_boolean">
+        </shadow>
+      </value>
+    </block>
     <block type="controls_whileUntil">
       <value name="BOOL">
         <shadow type="logic_boolean">
@@ -304,12 +309,16 @@
     </block>
     <block type="controls_millis">
     </block>
-    <block type="controls_mstimer2">
-      <value name="TIME">
-        <shadow type="math_number">
-          <field name="NUM">500</field>
-        </shadow>
-      </value>
+    <block type="base_setup">
+      <statement name="DO">
+        <block type="controls_mstimer2">
+          <value name="TIME">
+            <shadow type="math_number">
+              <field name="NUM">500</field>
+            </shadow>
+          </value>
+        </block>
+      </statement>
     </block>
     <block type="controls_mstimer2_start">
     </block>
@@ -400,6 +409,9 @@
       <shadow type="math_number">
         <field name="NUM">997</field>
       </shadow>
+      <block type="controls_millis">
+        <field name="UNIT">millis</field>
+      </block>
     </value>
   </block>
   <block type="math_random_int">
@@ -482,10 +494,39 @@
       </shadow>
     </value>
   </block>
+  <block type="text_join2">
+    <value name="ADD0">
+      <shadow type="text">
+        <field name="TEXT">A</field>
+      </shadow>
+    </value>
+    <value name="ADD1">
+      <shadow type="text">
+        <field name="TEXT">B</field>
+      </shadow>
+    </value>
+    <value name="ADD2">
+      <shadow type="text">
+        <field name="TEXT">C</field>
+      </shadow>
+    </value>
+  </block>
   <block type="text_to_number">
     <value name="VAR">
       <shadow type="text">
         <field name="TEXT">123</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="String_indexOf">
+    <value name="str1">
+      <shadow type="text">
+        <field name="TEXT">Mixly</field>
+      </shadow>
+    </value>
+    <value name="str2">
+      <shadow type="text">
+        <field name="TEXT">y</field>
       </shadow>
     </value>
   </block>
@@ -650,6 +691,69 @@
       </shadow>
     </value>
   </block>
+  <block type="lists_array2_setup">
+    <field name="lists_create_type">int</field>
+    <field name="lists_create_name">mylist</field>
+    <statement name="lists_with_2_1_data">
+      <block type="lists_array2_setup_get_data">
+        <mutation items="3"></mutation>
+        <value name="ADD0">
+          <block type="math_number" >
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="math_number" >
+            <field name="NUM">1</field>
+          </block>
+        </value><value name="ADD2">
+          <block type="math_number">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+        <next>
+          <block type="lists_array2_setup_get_data">
+            <mutation items="3"></mutation>
+            <value name="ADD0">
+              <block type="math_number">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="math_number">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+            <value name="ADD2">
+              <block type="math_number">
+                <field name="NUM">3</field>
+              </block>
+            </value>
+            <next>
+              <block type="lists_array2_setup_get_data">
+                <mutation items="3">
+                </mutation><value name="ADD0">
+                  <block type="math_number">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="math_number">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="math_number">
+                    <field name="NUM">4</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
   <block type="create_array2_with_text">
     <value name="name">
       <shadow type="math_number">
@@ -711,6 +815,13 @@
       </shadow>
     </value>
   </block>
+  <block type="loop_array">
+    <value name="name">
+      <shadow type="math_number">
+        <field name="NUM">array</field>
+      </shadow>
+    </value>
+  </block>
 </category>
 <category id="catVar" colour="330" custom="VARIABLE">
 </category>
@@ -731,6 +842,11 @@
   <block type="serial_println">
   </block>
   <block type="serial_print_num">
+    <value name="CONTENT">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
   </block>
   <block type="serial_available">
   </block>
@@ -796,17 +912,82 @@
       </shadow>
     </value>
   </block>
-  <block type="MPU6050_update">
+  <block type="Arduino_keypad_4_4_start">
+    <value name="keypad_name">
+    </value>
+    <value name="keypad_row">
+      <block type="keypad_row_data">
+        <value name="keypad_row_1">
+          <shadow type="pins_digital">
+            <field name="PIN">2</field>
+          </shadow>
+        </value>
+        <value name="keypad_row_2">
+          <shadow type="pins_digital">
+            <field name="PIN">3</field>
+          </shadow>
+        </value>
+        <value name="keypad_row_3">
+          <shadow type="pins_digital">
+            <field name="PIN">4</field>
+          </shadow>
+        </value>
+        <value name="keypad_row_4">
+          <shadow type="pins_digital">
+            <field name="PIN">5</field>
+          </shadow>
+        </value>
+      </block>
+    </value>
+    <value name="keypad_col">
+      <block type="keypad_col_data">
+        <value name="keypad_col_1">
+          <shadow type="pins_digital">
+            <field name="PIN">6</field>
+          </shadow>
+        </value>
+        <value name="keypad_col_2">
+          <shadow type="pins_digital">
+            <field name="PIN">7</field>
+          </shadow>
+        </value>
+        <value name="keypad_col_3">
+          <shadow type="pins_digital">
+            <field name="PIN">8</field>
+          </shadow>
+        </value>
+        <value name="keypad_col_4">
+          <shadow type="pins_digital">
+            <field name="PIN">9</field>
+          </shadow>
+        </value>
+      </block>
+    </value>
+    <value name="keypad_type">
+      <block type="keypad_type_data"></block>
+    </value>
   </block>
-  <block type="MPU6050">
+  <block type="get_keypad_num">
+    <value name="keypad_name"></value>
   </block>
-  <block type="BME280_READ">
-  </block>
+  <block type="arduino_keypad_event">
+    <value name="keypad_event_input">
+     <block type="variables_get">
+      <field name="VAR">key</field>
+    </block>
+  </value>
+</block>
+<block type="MPU6050_update">
+</block>
+<block type="MPU6050">
+</block>
+<block type="BME280_READ">
+</block>
 </category>
 <category id="catActuator" colour="100">
   <block type="Mixly_motor">
     <value name="PIN1">
-      <shadow type="pins_digital">
+      <shadow type="pins_pwm">
         <field name="PIN">5</field>
       </shadow>
     </value>
@@ -820,6 +1001,32 @@
         <field name="NUM">100</field>
       </shadow>
     </value>
+  </block>
+  <block type="Motor_8833">
+    <value name="PIN1">
+      <shadow type="pins_pwm">
+        <field name="PIN">5</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">4</field>
+      </shadow>
+    </value>
+    <value name="speed">
+      <shadow type="math_number">
+        <field name="NUM">100</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="AFMotorRun">
+    <value name="speed">
+      <shadow type="math_number">
+        <field name="NUM">100</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="AFMotorStop">
   </block>
   <block type="servo_move">
     <value name="PIN">
@@ -885,7 +1092,7 @@
 <block type="group_stepper_setup">
   <value name="PIN1">
     <shadow type="pins_digital">
-      <field name="PIN">0</field>
+      <field name="PIN">1</field>
     </shadow>
   </value>
   <value name="PIN2">
@@ -907,7 +1114,7 @@
 <block type="group_stepper_setup2">
   <value name="PIN1">
     <shadow type="pins_digital">
-      <field name="PIN">0</field>
+      <field name="PIN">1</field>
     </shadow>
   </value>
   <value name="PIN2">
@@ -917,12 +1124,12 @@
   </value>
   <value name="PIN3">
     <shadow type="pins_digital">
-      <field name="PIN">4</field>
+      <field name="PIN">3</field>
     </shadow>
   </value>
   <value name="PIN4">
     <shadow type="pins_digital">
-      <field name="PIN">5</field>
+      <field name="PIN">4</field>
     </shadow>
   </value>
   <value name="steps">
@@ -1108,6 +1315,16 @@
     </shadow>
   </value>
 </block>
+<block type="voice_module">
+  <value name="PIN">
+    <shadow type="pins_digital"/>
+  </value>
+  <value name="WAIT">
+    <shadow type="math_number">
+      <field name="NUM">1000</field>
+    </shadow>
+  </value>
+</block>
 </category>
 <category id="catMonitor" colour="180">
   <category id="cat4Digitdisplay" colour="180">
@@ -1279,26 +1496,25 @@
   </block>
   <block type="oled_define_bitmap_data"></block>
   <block type="oled_clear"></block>
-//OLED背光亮度
-<block type="u8g2_setContrast">
+  <block type="u8g2_setContrast">
    <value name="Contrast">
-  <shadow type="math_number">
-    <field name="NUM">100</field>
-  </shadow>
-</value> 
+    <shadow type="math_number">
+      <field name="NUM">100</field>
+    </shadow>
+  </value> 
 </block>
-  <block type="oled_face">
-   <value name="POS_X">
-    <shadow type="math_number">
-      <field name="NUM">20</field>
-    </shadow>
-  </value>
-  <value name="POS_Y">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <field name="Icon_size"></field>
+<block type="oled_face">
+ <value name="POS_X">
+  <shadow type="math_number">
+    <field name="NUM">20</field>
+  </shadow>
+</value>
+<value name="POS_Y">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
+<field name="Icon_size"></field>
 </block>
 <block type="oled_icons">
  <value name="POS_X">
@@ -1627,7 +1843,49 @@
 </category>
 </category>
 <category id="catGroup" colour="140" name='通讯类'>
-        <!--<block type="blynk_iot_ir_send_ac" name='红外发送空调编码'>
+ <category id="catIR"  colour="140">
+  <block type="blynk_iot_ir_recv_raw" name='红外信号解码'>
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+  </block>
+  <block type="blynk_iot_ir_send" name='红外发送'>
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+    <value name="data">
+      <shadow type="math_number"></shadow>
+    </value>
+    <value name="bits">
+      <shadow type="math_number">
+        <field name="NUM">32</field>
+      </shadow>
+    </value>
+  </block>
+</category>
+<category id="catRFID"  colour="140">
+  <block type="RFID_init">
+    <value name="SDA">
+    </block>  
+    <block type="RFID_on"></block>   
+    <block type="RFID_readcardnum"></block> 
+    <block type="RFID_writecarddata">
+     <value name="address1">
+      <shadow type="math_number">
+       <field name="NUM">0</field>
+     </shadow>
+   </value>
+ </block> 
+ <block type="RFID_readcarddata">
+   <value name="address">
+     <shadow type="math_number">
+       <field name="NUM">0</field>
+     </shadow>
+   </value>
+ </block> 
+ <block type="RFID_off"></block>
+</category>
+   <!--<block type="blynk_iot_ir_send_ac" name='红外发送空调编码'>
         <value name="PIN">
         <shadow type="pins_digital"></shadow>
         </value>
@@ -1637,24 +1895,7 @@
 </shadow>
         </value>
       </block>-->
-      <block type="blynk_iot_ir_recv_raw" name='红外信号解码'>
-        <value name="PIN">
-          <shadow type="pins_digital"></shadow>
-        </value>
-      </block>
-      <block type="blynk_iot_ir_send" name='红外发送'>
-        <value name="PIN">
-          <shadow type="pins_digital"></shadow>
-        </value>
-        <value name="data">
-          <shadow type="math_number"></shadow>
-        </value>
-        <value name="bits">
-          <shadow type="math_number">
-            <field name="NUM">32</field>
-          </shadow>
-        </value>
-      </block>
+      
         <!-- <block type="ir_recv">
         <value name="PIN">
         <shadow type="pins_digital"></shadow>
@@ -1690,49 +1931,54 @@
         <value name="PIN">
         <shadow type="pins_digital"></shadow>
         </value>
-      </block> -->
-      <block type="RFID_init">
-        <value name="SDA">
-        </block>  
-        <block type="RFID_on"></block>   
-        <block type="RFID_readcardnum"></block> 
-        <!-- <block type="RFID_in">
+      </block> 
+ <block type="RFID_in">
           <value name="uid_">
             <shadow type="text">
               <field name="TEXT">123</field>
             </shadow>
           </value>
         </block>  -->
-        <block type="RFID_writecarddata">
-         <value name="address1">
-          <shadow type="math_number">
-           <field name="NUM">0</field>
-         </shadow>
-       </value>
-     </block> 
-     <block type="RFID_readcarddata">
-       <value name="address">
-         <shadow type="math_number">
-           <field name="NUM">0</field>
-         </shadow>
-       </value>
-     </block> 
-     <block type="RFID_off"></block>    
-   </category>
-   <category id="catStorage" colour="0">
-    <block type="store_sd_write">
-      <field name="FILE">file.txt</field>
-      <value name="DATA">
-        <shadow type="text">
-          <field name="TEXT">hello world</field>
-        </shadow>
-      </value>
-      <value name="NEWLINE">
-        <shadow type="logic_boolean">
+      </category>
+      <category id="catStorage" colour="0">
+       <category id="catStorageSD" colour="0">
+        <block type="store_sd_init">
+          <value name="PIN_MOSI">
+            <shadow type="pins_MOSI">
+            </shadow>
+          </value>
+          <value name="PIN_MISO">
+            <shadow type="pins_MISO">
+            </shadow>
+          </value>
+          <value name="PIN_SCK">
+            <shadow type="pins_SCK">
+            </shadow>
+          </value>
+          <value name="PIN_CS">
+            <shadow type="pins_digital">
+              <field name="PIN">4</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sd_exist"> </block>
+        <block type="sd_DelFile"> </block>
+        <block type="sd_read"> </block>
+        <block type="store_sd_write">
+          <field name="FILE">fileName.txt</field>
+          <value name="DATA">
+           <shadow type="text">
+            <field name="TEXT">hello world</field>
+          </shadow>
+        </value>
+        <value name="NEWLINE">
+         <shadow type="logic_boolean">
           <field name="BOOL">TRUE</field>
         </shadow>
       </value>
     </block>
+  </category>
+  <category id="catStorageEEPROM" colour="0">
     <block type="store_eeprom_write_byte">
       <value name="ADDRESS">
         <shadow type="math_number">
@@ -1771,46 +2017,76 @@
         </shadow>
       </value>
     </block>
-  </category>
-  
-  <category id="catNetwork" colour="0">
-    <category id="catWIFI" colour="0">
-      <block type="WIFI_info" >
-        <value name="SSID">
-          <shadow type="text" >
-            <field name="TEXT">ssid</field>
-          </shadow>
-        </value>
-        <value name="PWD">
-          <shadow type="text" >
-            <field name="TEXT">password</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="network_wifi_connect">
-      </block>
-      <block type="network_get_connect">
-      </block>
-      <block type="NTP_server">
-        <value name="server_add">
-          <shadow type="text">
-            <field name="TEXT">ntp1.aliyun.com</field>
-          </shadow>
-        </value>
-        <value name="timeZone">
-          <shadow type="math_number">
-           <field name="NUM">8</field>
-         </shadow>
-       </value>
-       <value name="Interval">
+  </category> 
+</category> 
+<category id="catNetwork" colour="0">
+  <category id="catWIFI" colour="0">
+    <block type="WIFI_info" >
+      <value name="SSID">
+        <shadow type="text" >
+          <field name="TEXT">ssid</field>
+        </shadow>
+      </value>
+      <value name="PWD">
+        <shadow type="text" >
+          <field name="TEXT">password</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="network_wifi_connect">
+    </block>
+    <block type="network_get_connect">
+    </block>
+    <block type="NTP_server">
+      <value name="server_add">
+        <shadow type="text">
+          <field name="TEXT">ntp1.aliyun.com</field>
+        </shadow>
+      </value>
+      <value name="timeZone">
         <shadow type="math_number">
-         <field name="NUM">600</field>
+         <field name="NUM">8</field>
        </shadow>
      </value>
-   </block>
-   <block type="NTP_server_get_time"></block>
- </category>
- <category id="catBlynk" name="catBlynk" colour="160">
+     <value name="Interval">
+      <shadow type="math_number">
+       <field name="NUM">600</field>
+     </shadow>
+   </value>
+ </block>
+ <block type="NTP_server_get_time"></block>
+ <block type="http_get">
+  <value name="api">
+    <shadow type="math_number">
+      <field name="NUM">http://jsonplaceholder.typicode.com/users/1</field>
+    </shadow>
+    <block type="text">
+      <field name="TEXT">http://jsonplaceholder.typicode.com/posts/1</field>
+    </block>
+  </value>
+  <statement name="success">
+    <block type="serial_println">
+      <field name="serial_select">Serial</field>
+      <value name="CONTENT">
+        <block type="variables_get">
+          <field name="VAR">Request_result</field>
+        </block>
+      </value>
+    </block>
+  </statement>
+  <statement name="failure">
+    <block type="serial_println">
+      <field name="serial_select">Serial</field>
+      <value name="CONTENT">
+        <block type="text">
+          <field name="TEXT">Invalid response!</field>
+        </block>
+      </value>
+    </block>
+  </statement>
+</block>
+</category>
+<category id="catBlynk" name="catBlynk" colour="160">
   <block type="blynk_server">
     <value name="server_add">
       <shadow type="text">
@@ -1902,15 +2178,15 @@
       </block>
     </statement>
   </block>
- <block type="blynk_iot_WidgetLED_COLOR">
-        <value name="STAT">
-          <shadow type="inout_highlow"></shadow>
-        </value>
-         <value name="STAT">
+  <block type="blynk_iot_WidgetLED_COLOR">
+    <value name="STAT">
+      <shadow type="inout_highlow"></shadow>
+    </value>
+    <value name="STAT">
       <shadow type="inout_highlow">
       </shadow>
     </value>
-      </block>
+  </block>
   <block type="blynk_iot_WidgetLED_VALUE">
     <value name="NUM">
       <shadow type="math_number">

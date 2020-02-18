@@ -17,27 +17,27 @@ Blockly.Arduino.spi_transfer = function () {
   return code;
 };
 
-  Blockly.Arduino.serialBT_Init = function () {
-    var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || profile.default.serial;
-    Blockly.Arduino.definitions_['var_declare_BluetoothSerial'] = '#include "BluetoothSerial.h"\nBluetoothSerial SerialBT;';
-    Blockly.Arduino.setups_['setup_serial_BT'] =  'SerialBT.begin(' + content + ');';
-    Blockly.Arduino.setups_['setup_serial_started'] =  'Serial.println("The device started, now you can pair it with bluetooth!");';
-    return '';
-  };
+Blockly.Arduino.serialBT_Init = function () {
+  var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || profile.default.serial;
+  Blockly.Arduino.definitions_['var_declare_BluetoothSerial'] = '#include "BluetoothSerial.h"\nBluetoothSerial SerialBT;';
+  Blockly.Arduino.setups_['setup_serial_BT'] =  'SerialBT.begin(' + content + ');';
+  Blockly.Arduino.setups_['setup_serial_started'] =  'Serial.println("The device started, now you can pair it with bluetooth!");';
+  return '';
+};
 
-  Blockly.Arduino.serialBT_available = function () {
-    var code =  "SerialBT.available() > 0";
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-  };
+Blockly.Arduino.serialBT_available = function () {
+  var code =  "SerialBT.available() > 0";
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
 
-  Blockly.Arduino.serialBT_read = function () {
+Blockly.Arduino.serialBT_read = function () {
 
-    var code = 'SerialBT.read()';
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-  };
+  var code = 'SerialBT.read()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
 
-  Blockly.Arduino.serialBT_write = function () {
-    var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '\"\"'
-    var code =  'SerialBT.write(' + content + ');\n';
-    return code;
-  };
+Blockly.Arduino.serialBT_write = function () {
+  var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '\"\"'
+  var code =  'SerialBT.write(' + content + ');\n';
+  return code;
+};

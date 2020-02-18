@@ -24,7 +24,7 @@ Blockly.Blocks.servo_move = {
     this.setNextStatement(true, null);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_MOVE);
    // this.setFieldValue("2", "PIN");
-  }
+ }
 };
 
 Blockly.Blocks.servo_writeMicroseconds = {
@@ -43,7 +43,7 @@ Blockly.Blocks.servo_writeMicroseconds = {
     this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_SERVO_WRITEMICROSECONDS);
   //  this.setFieldValue("2", "PIN");
-  }
+}
 };
 
 Blockly.Blocks.servo_read_degrees = {
@@ -60,7 +60,7 @@ Blockly.Blocks.servo_read_degrees = {
     this.setInputsInline(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_BLOCKGROUP_SERVO_READ);
   //  this.setFieldValue("2", "PIN");
-  }
+}
 };
 var TONE_NOTES = [["NOTE_C3", "131"], ["NOTE_D3", "147"], ["NOTE_E3", "165"], ["NOTE_F3", "175"], ["NOTE_G3", "196"], ["NOTE_A3", "220"], ["NOTE_B3", "247"], ["NOTE_C4", "262"], ["NOTE_D4", "294"], ["NOTE_E4", "330"], ["NOTE_F4", "349"], ["NOTE_G4", "392"], ["NOTE_A4", "440"], ["NOTE_B4", "494"], ["NOTE_C5", "532"], ["NOTE_D5", "587"], ["NOTE_E5", "659"], ["NOTE_F5", "698"], ["NOTE_G5", "784"], ["NOTE_A5", "880"], ["NOTE_B5", "988"], ["NOTE_C6", "1047"], ["NOTE_D6", "1175"], ["NOTE_E6", "1319"], ["NOTE_F6", "1397"], ["NOTE_G6", "1568"], ["NOTE_A6", "1760"], ["NOTE_B6", "1976"], ["NOTE_C7", "2093"], ["NOTE_D7", "2349"], ["NOTE_E7", "2637"], ["NOTE_F7", "2794"], ["NOTE_G7", "3136"], ["NOTE_A7", "3520"], ["NOTE_B7", "3951"]];
 
@@ -256,23 +256,23 @@ Blockly.Blocks.controls_tone = {
     }
   };
 
-var DISPLAY_RGB_TYPE = [
-["NEO_GRB", "NEO_GRB"],
-["NEO_RGB", "NEO_RGB"],
-["NEO_RGBW", "NEO_RGBW"]
-];
+  var DISPLAY_RGB_TYPE = [
+  ["NEO_GRB", "NEO_GRB"],
+  ["NEO_RGB", "NEO_RGB"],
+  ["NEO_RGBW", "NEO_RGBW"]
+  ];
 
 //RGB
 Blockly.Blocks.display_rgb_init = {
   init: function () {
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_RGB)
+    .appendField(Blockly.MIXLY_RGB+Blockly.MIXLY_SETUP)
     .appendField(Blockly.MIXLY_PIN)
     .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
     .setAlign(Blockly.ALIGN_RIGHT);
-     this.appendDummyInput("")
-      .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_TYPE)
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_TYPE)
     .appendField(new Blockly.FieldDropdown(DISPLAY_RGB_TYPE), "TYPE");
     this.appendValueInput("LEDCOUNT")
     .setCheck(Number)
@@ -283,7 +283,7 @@ Blockly.Blocks.display_rgb_init = {
     this.setNextStatement(true, null);
     this.setTooltip('');
   //  this.setFieldValue("12", "PIN");
-  }
+}
 };
 
 Blockly.Blocks.display_rgb_Brightness = {
@@ -303,7 +303,7 @@ Blockly.Blocks.display_rgb_Brightness = {
     this.setNextStatement(true, null);
     this.setTooltip('');
   //  this.setFieldValue("12", "PIN");
-  }
+}
 };
 
 
@@ -328,7 +328,7 @@ Blockly.Blocks.display_rgb = {
     this.setNextStatement(true, null);
     this.setTooltip('');
    // this.setFieldValue("12", "PIN");
-  }
+ }
 };
 
 Blockly.Blocks.display_rgb_show = {
@@ -367,7 +367,7 @@ Blockly.Blocks.display_rgb_rainbow1 = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
    // this.setFieldValue("12", "PIN");
-  }
+ }
 };
 
 Blockly.Blocks.display_rgb_rainbow2 = {
@@ -406,7 +406,7 @@ Blockly.Blocks.display_rgb_rainbow3 = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
    // this.setFieldValue("12", "PIN");
-  }
+ }
 };
 
 Blockly.Blocks.Mixly_motor = {
@@ -625,3 +625,51 @@ Blockly.Blocks.voice_module = {
   }
 };
 
+
+//DCMotorRun
+Blockly.Blocks.AFMotorRun={
+  init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    var MOTOR =[
+    ["M1","1"],
+    ["M2","2"],
+    ["M3","3"],
+    ["M4","4"],
+    ];  
+    var DIRECTION =[
+    [Blockly.MIXLY_FORWARD,"FORWARD"],
+    [Blockly.MIXLY_BACKWARD,"BACKWARD"],
+    ];
+    this.appendDummyInput("")
+    .appendField("AFMotor"+Blockly.MIXLY_MOTOR)
+    .appendField(new Blockly.FieldDropdown(MOTOR), "motor")
+    .appendField(Blockly.MIXLY_MICROBIT_Direction)
+    .appendField(new Blockly.FieldDropdown(DIRECTION), "direction")
+    .appendField(Blockly.MIXLY_SPEED);
+    this.appendValueInput("speed", Number)
+    .setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+  }
+};
+
+//DCMotorStop
+Blockly.Blocks.AFMotorStop={
+  init: function() {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    var MOTOR =[
+    ["M1","1"],
+    ["M2","2"],
+    ["M3","3"],
+    ["M4","4"],
+    ];  
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_STOP+"AFMotor"+Blockly.MIXLY_MOTOR)
+    .appendField(new Blockly.FieldDropdown(MOTOR), "motor");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+
+  }
+};

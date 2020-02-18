@@ -39,7 +39,7 @@
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/arduino/serial.js"></script>
   <script type="text/javascript" src="../../generators/arduino/actuator.js"></script>
-  <script type="text/javascript" src="../../generators/arduino/ethernet.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/esp32/ethernet.js"></script>
   <script type="text/javascript" src="../../generators/arduino/esp32/pins.js"></script>
   <script type="text/javascript" src="../../generators/arduino/esp32/inout.js"></script>
   <script type="text/javascript" src="../../generators/arduino/esp32/control.js"></script>
@@ -88,6 +88,7 @@
   <script type="text/javascript" src="../../blocks/arduino/esp32/variables.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/esp32/procedures.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/esp32/serial.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/esp32/display.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/tools.js"></script>
   <script src="init.js"></script>
   <link rel="stylesheet" type="text/css" href="css/color_esp32_arduino_advance.css" />
@@ -329,6 +330,12 @@
   </block>
   <block type="controls_end_program">
   </block>
+  <block type="do_while">
+    <value name="select_data">
+      <shadow type="logic_boolean">
+      </shadow>
+    </value>
+  </block>
   <block type="controls_whileUntil">
     <value name="BOOL">
       <shadow type="logic_boolean">
@@ -469,6 +476,9 @@
       <shadow type="math_number">
         <field name="NUM">997</field>
       </shadow>
+      <block type="controls_millis">
+        <field name="UNIT">millis</field>
+      </block>
     </value>
   </block>
   <block type="math_random_int">
@@ -551,10 +561,39 @@
       </shadow>
     </value>
   </block>
+  <block type="text_join2">
+    <value name="ADD0">
+      <shadow type="text">
+        <field name="TEXT">A</field>
+      </shadow>
+    </value>
+    <value name="ADD1">
+      <shadow type="text">
+        <field name="TEXT">B</field>
+      </shadow>
+    </value>
+    <value name="ADD2">
+      <shadow type="text">
+        <field name="TEXT">C</field>
+      </shadow>
+    </value>
+  </block>
   <block type="text_to_number">
     <value name="VAR">
       <shadow type="text">
         <field name="TEXT">123</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="String_indexOf">
+    <value name="str1">
+      <shadow type="text">
+        <field name="TEXT">Mixly</field>
+      </shadow>
+    </value>
+    <value name="str2">
+      <shadow type="text">
+        <field name="TEXT">y</field>
       </shadow>
     </value>
   </block>
@@ -719,6 +758,69 @@
       </shadow>
     </value>
   </block>
+  <block type="lists_array2_setup">
+    <field name="lists_create_type">int</field>
+    <field name="lists_create_name">mylist</field>
+    <statement name="lists_with_2_1_data">
+      <block type="lists_array2_setup_get_data">
+        <mutation items="3"></mutation>
+        <value name="ADD0">
+          <block type="math_number" >
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="math_number" >
+            <field name="NUM">1</field>
+          </block>
+        </value><value name="ADD2">
+          <block type="math_number">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+        <next>
+          <block type="lists_array2_setup_get_data">
+            <mutation items="3"></mutation>
+            <value name="ADD0">
+              <block type="math_number">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="math_number">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+            <value name="ADD2">
+              <block type="math_number">
+                <field name="NUM">3</field>
+              </block>
+            </value>
+            <next>
+              <block type="lists_array2_setup_get_data">
+                <mutation items="3">
+                </mutation><value name="ADD0">
+                  <block type="math_number">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="math_number">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="math_number">
+                    <field name="NUM">4</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
   <block type="create_array2_with_text">
     <value name="name">
       <shadow type="math_number">
@@ -780,6 +882,13 @@
       </shadow>
     </value>
   </block>
+  <block type="loop_array">
+    <value name="name">
+      <shadow type="math_number">
+        <field name="NUM">array</field>
+      </shadow>
+    </value>
+  </block>
 </category>
 <category id="catVar" colour="330" custom="VARIABLE">
 </category>
@@ -823,7 +932,7 @@
 </block>
 <block type="serial_softserial">
   <value name="TX">
-    <shadow type="pins_tx"></shadow>
+    <shadow type="pins_digital"></shadow>
   </value>
   <value name="RX">
     <shadow type="pins_digital"></shadow>
@@ -953,34 +1062,34 @@
   </value>
 </block>
 <block type="controls_tone">
-    <value name="PIN">
-      <shadow type="pins_digitalWrite">
-        <field name="PIN">17</field>
-      </shadow>
-    </value>
-    <value name="CHANNEL">
-      <shadow type="CHANNEL">
-        <field name="PIN">0</field>
-      </shadow>
-    </value>
-    <value name="FREQUENCY">
-      <shadow type="tone_notes"></shadow>
-    </value>
-    <value name="DELAY_TIME">
-      <shadow type="math_number">
-        <field name="NUM">1000</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="controls_notone">
-   <value name="PIN">
+  <value name="PIN">
     <shadow type="pins_digitalWrite">
       <field name="PIN">17</field>
     </shadow>
   </value>
   <value name="CHANNEL">
-    <shadow type="CHANNEL"></shadow>
+    <shadow type="CHANNEL">
+      <field name="PIN">0</field>
+    </shadow>
   </value>
+  <value name="FREQUENCY">
+    <shadow type="tone_notes"></shadow>
+  </value>
+  <value name="DELAY_TIME">
+    <shadow type="math_number">
+      <field name="NUM">1000</field>
+    </shadow>
+  </value>
+</block>
+<block type="controls_notone">
+ <value name="PIN">
+  <shadow type="pins_digitalWrite">
+    <field name="PIN">17</field>
+  </shadow>
+</value>
+<value name="CHANNEL">
+  <shadow type="CHANNEL"></shadow>
+</value>
 </block>
 <block type="group_stepper_setup">
   <value name="PIN1">
@@ -1841,111 +1950,145 @@
 <block type="RFID_off"></block>    
 </category>
 <category id="catStorage" colour="0">
- <!--  <block type="storage_fileopen">
-    <value name="FILE">
-      <shadow type="variables_get">
-        <field name="VAR">f</field>
+    <category id="catStorageSD" colour="0">
+      <block type="store_sd_init">
+        <value name="PIN_MOSI">
+          <shadow type="pins_MOSI">
+          </shadow>
+        </value>
+        <value name="PIN_MISO">
+          <shadow type="pins_MISO">
+          </shadow>
+        </value>
+        <value name="PIN_SCK">
+          <shadow type="pins_SCK">
+          </shadow>
+        </value>
+        <value name="PIN_CS">
+          <shadow type="pins_digital">
+          </shadow>
+        </value>
+      </block>
+      <block type="sd_exist"> </block>
+      <block type="sd_DelFile"> </block>
+      <block type="sd_read"> </block>
+      <block type="store_sd_write">
+        <field name="FILE">fileName.txt</field>
+        <value name="DATA">
+         <shadow type="text">
+          <field name="TEXT">hello world</field>
+        </shadow>
+      </value>
+      <value name="NEWLINE">
+       <shadow type="logic_boolean">
+        <field name="BOOL">TRUE</field>
       </shadow>
     </value>
-  </block> -->
-  <block type="storage_file_write">
-    <value name="FILENAME">
+  </block>
+</category>
+<category id="catStorageSPIFFS" colour="0">
+  <block type="initialize_spiffs"> 
+  </block>
+  <block type="spiffs_open_file">
+    <value name="file_var">
       <shadow type="text">
-        <field name="TEXT">filename.txt</field>
+        <field name="TEXT">myFile</field>
       </shadow>
     </value>
-    <value name="data">
+    <value name="file_path">
       <shadow type="text">
-        <field name="TEXT">Mixly</field>
+        <field name="TEXT">/fileName.txt</field>
       </shadow>
     </value>
   </block>
-  <block type="storage_get_contents">
-    <value name="FILE">
-      <shadow type="variables_get">
-        <field name="VAR">f</field>
-      </shadow>
-    </value>
-    <value name="SIZE">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="storage_can_write_ornot">
-    <value name="FILE">
-      <shadow type="variables_get">
-        <field name="VAR">f</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="storage_get_filename">
-    <value name="FILE">
-      <shadow type="variables_get">
-        <field name="VAR">f</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="storage_close_file">
-    <value name="FILE">
-      <shadow type="variables_get">
-        <field name="VAR">f</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="storage_list_all_files"> </block>
-  <block type="storage_delete_file">
-    <value name="FILE">
+  <block type="spiffs_close_file">
+    <value name="file_var">
       <shadow type="text">
-        <field name="TEXT">filename.txt</field>
+        <field name="TEXT">myFile</field>
       </shadow>
     </value>
   </block>
-  <block type="storage_get_file_size">
-    <value name="FILE">
+  <block type="spiffs_write_data">
+    <value name="file_var">
       <shadow type="text">
-        <field name="TEXT">filename.txt</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="store_eeprom_write_byte">
-    <value name="ADDRESS">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="DATA">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="store_eeprom_read_byte">
-    <value name="ADDRESS">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="store_eeprom_write_long">
-    <value name="ADDRESS">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="DATA">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="store_eeprom_read_long">
-    <value name="ADDRESS">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
+       <field name="TEXT">myFile</field>
+     </shadow>
+   </value>
+   <value name="data">
+    <shadow type="text">
+     <field name="TEXT">hello</field>
+   </shadow>
+ </value>
+</block>
+<block type="spiffs_read_available">
+  <value name="file_var">
+    <shadow type="text">
+      <field name="TEXT">myFile</field>
+    </shadow>
+  </value>
+</block>
+<block type="spiffs_read_data">
+ <value name="file_var">
+  <shadow type="text">
+    <field name="TEXT">myFile</field>
+  </shadow>
+</value>
+</block>
+<block type="spiffs_file_size">
+  <value name="file_var">
+    <shadow type="text">
+     <field name="TEXT">myFile</field>
+   </shadow>
+ </value>
+</block>
+<block type="spiffs_delete_file">
+  <value name="file_path">
+    <shadow type="text">
+     <field name="TEXT">/fileName.txt</field>
+   </shadow>
+ </value>
+</block>
+</category>
+<category id="catStorageEEPROM" colour="0">
+ <block type="store_eeprom_write_byte">
+  <value name="ADDRESS">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="DATA">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="store_eeprom_read_byte">
+  <value name="ADDRESS">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="store_eeprom_write_long">
+  <value name="ADDRESS">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="DATA">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="store_eeprom_read_long">
+  <value name="ADDRESS">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+</category>
 </category>
 <category id="catNetwork" colour="0">
   <category id="catWIFI" colour="0">
@@ -1983,6 +2126,82 @@
  </value>
 </block>
 <block type="NTP_server_get_time"></block>
+<block type="esp_now_send" >
+  <value name="mac">
+    <block type="text" >
+      <field name="TEXT">30:AE:A4:58:9D:7C</field>
+    </block>
+  </value>
+  <value name="data">
+    <block type="text_join" >
+      <value name="A">
+        <shadow type="text" >
+          <field name="TEXT">random_</field>
+        </shadow>
+      </value>
+      <value name="B">
+        <shadow type="text" >
+          <field name="TEXT">Mixly</field>
+        </shadow>
+        <block type="math_random_int">
+          <value name="FROM">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="TO">
+            <shadow type="math_number">
+              <field name="NUM">100</field>
+            </shadow>
+          </value>
+        </block>
+      </value>
+    </block>
+  </value>
+</block>
+<block type="esp_now_receive">
+  <statement name="receive_data">
+    <block type="serial_println" >
+      <field name="serial_select">Serial</field>
+      <value name="CONTENT">
+        <block type="variables_get" >
+          <field name="VAR">mydata</field>
+        </block>
+      </value>
+    </block>
+  </statement>
+</block>
+<block type="mac_address"></block>
+<block type="http_get">
+  <value name="api">
+    <shadow type="math_number">
+      <field name="NUM">http://jsonplaceholder.typicode.com/users/1</field>
+    </shadow>
+    <block type="text">
+      <field name="TEXT">http://jsonplaceholder.typicode.com/posts/1</field>
+    </block>
+  </value>
+  <statement name="success">
+    <block type="serial_println">
+      <field name="serial_select">Serial</field>
+      <value name="CONTENT">
+        <block type="variables_get">
+          <field name="VAR">Request_result</field>
+        </block>
+      </value>
+    </block>
+  </statement>
+  <statement name="failure">
+    <block type="serial_println">
+      <field name="serial_select">Serial</field>
+      <value name="CONTENT">
+        <block type="text">
+          <field name="TEXT">Invalid response!</field>
+        </block>
+      </value>
+    </block>
+  </statement>
+</block>
 </category>
 <category id="catBlynk" name="catBlynk" colour="160">
   <block type="blynk_server">

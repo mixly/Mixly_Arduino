@@ -13,6 +13,10 @@ var MSG = {
 	catLogic: "邏輯",
 	catSerialPort: "串口",
 	catGroup: "通信",
+	catIR: "红外通信",
+	catI2C: "I2C通信",
+	catSPI: "SPI通信",
+	catRFID: "RFID",
 	catStorage: "存儲",
 	catSensor: "感測器",
 	catActuator: "執行器",
@@ -796,7 +800,7 @@ Blockly.MIXLY_STEPPER_STEP = '移動步數';
 Blockly.MIXLY_ETHERNET_BEGIN = '初始化 (DHCP)';
 Blockly.MIXLY_ETHERNET = '乙太網';
 Blockly.MIXLY_ETHERNET2 = '乙太網2';
-Blockly.MIXLY_ETHERNET_MAC_ADDRESS = 'Mac地址';
+Blockly.MIXLY_ETHERNET_MAC_ADDRESS = 'MAC地址';
 Blockly.MIXLY_ETHERNET_LOCALIP = '本地IP';
 Blockly.MIXLY_ETHERNET_CLINET_CONNECT_SERVER = '用戶端連接到伺服器';
 Blockly.MIXLY_ETHERNET_CLINET_PORT = '埠';
@@ -1302,9 +1306,9 @@ Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE = "資料類型";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME = "當前系統資訊";
 Blockly.MIXLY_MICROBIT_SHOW_STRING = " %1 延時 %2 毫秒 %3 等待 %4 %5 迴圈 %6 %7 清除 %8";
 // Blockly.MIXLY_MICROBIT_Scroll_string = "滾動顯示字串 %1 延時 %2 毫秒 %3 等待 %4 %5 迴圈 %6 %7 清除 %8";
-Blockly.MIXLY_COMMUNICATION_RFID_INITIAL = "初始化rfid為";
+Blockly.MIXLY_COMMUNICATION_RFID_INITIAL = "初始化RFID為";
 Blockly.MIXLY_COMMUNICATION_RFID_ON_DETECTED = "偵測到信號";
-Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM = "rfid所讀卡的卡號";
+Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM = "RFID所讀卡的卡號";
 Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM_IS = "RFID偵測到的卡號為";
 Blockly.MIXLY_COMMUNICATION_RFID_WRITE = "RFID寫卡";
 Blockly.MIXLY_COMMUNICATION_DATA_BLOCK = "資料塊";
@@ -1315,7 +1319,7 @@ Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_OFF = "關閉";
 Blockly.MIXLY_COMMUNICATION_RFID_TOOLTIP = "這是RFID的讀卡";
 Blockly.MIXLY_COMMUNICATION_RFID_READ = "RFID讀取";
 Blockly.MIXLY_COMMUNICATION_DATA_FROM = "的數據";
-Blockly.MIXLY_COMMUNICATION_RFID_OFF = "rfid停止偵測";
+Blockly.MIXLY_COMMUNICATION_RFID_OFF = "RFID停止偵測";
 Blockly.Msg.HTML_RESET = "復位";
 Blockly.blockpy_inout_input = '接收輸入';
 Blockly.blockpy_inout_raw_input = '接收字串輸入';
@@ -2307,7 +2311,7 @@ Blockly.MPYTHON_BLYNK_APP_DATA_MESSAGE0 = '當 從 Blynk App 收到 虛擬管腳
 Blockly.MIXLY_readTempC = '獲取攝氏度';
 Blockly.MIXLY_readTempF = '獲取華氏度';
 Blockly.MIXLY_MPU6050 = 'MPU6050陀螺儀';
-Blockly.MIXLY_MPU6050_update = 'MPU6050陀螺儀刷新資料';
+Blockly.MIXLY_update_data = '儀刷新資料';
 Blockly.MIXLY_CHOOSE_AND_GET = '選擇並獲取';
 Blockly.MIXLY_CHOOSE_AND_GET_ONE_FILE_NAME = '單個檔案名';
 Blockly.MIXLY_CHOOSE_AND_GET_MANY_FILE_NAMES = '多個檔案名';
@@ -2447,7 +2451,7 @@ Blockly.get_array2_value="獲取二維陣列";
 Blockly.array2_assignment="二維陣列賦值";
 Blockly.array2_rows="行數";
 Blockly.array2_cols="列數";
-Blockly.create_array2_with_text="二維陣列名稱";
+Blockly.MIXLY_ARRAY2="二維陣列名稱";
 Blockly.Msg.HTML_DOCUMENT = "HTML 文檔";
 Blockly.Msg.HTML_LEVEL = "標題 級別";
 Blockly.Msg.HTML_HEAD = "頭";
@@ -2495,7 +2499,7 @@ Blockly.MIXLY_LONG_PRESS_START='長按開始';
 Blockly.MIXLY_DURING_LONG_PRESS='長按中';
 Blockly.MIXLY_LONG_PRESS_END='長按結束';
 Blockly.ONEBUTTON="多功能按鍵";
-Blockly.PS2_INIT='初始化PS2手柄';
+Blockly.PS2='PS2手柄';
 Blockly.PS2_TRIANGLE="三角形鍵";
 Blockly.PS2_CIRCLE="圓形鍵";
 Blockly.PS2_CROSS="×鍵";
@@ -2621,3 +2625,13 @@ Blockly.MIXLY_ELECLEVEL = "電平觸發";
 Blockly.MIXLY_GET_PRESSES_TIME = "時長(秒)";
 Blockly.MIXLY_PYTHON_LOGIC_IS_NOT = "不是";
 Blockly.MIXLY_PYTHON_LOGIC_IS_NOT_IN = "不在";
+Blockly.Msg.MATH_DEC_TOOLTIP_BIN = "将十进制整数转换成二进制，以字符串形式表示";
+Blockly.Msg.MATH_DEC_TOOLTIP_OCT = "将十进制整数转换成八进制，以字符串形式表示";
+Blockly.Msg.MATH_DEC_TOOLTIP_HEX = "将十进制整数转换成十六进制，以字符串形式表示";
+Blockly.Msg.RIGHT_CYCLE = "右循环";
+Blockly.Msg.LEFT_CYCLE = "左循环";
+Blockly.MIXLY_FAILED = "失败";
+Blockly.MIXLY_SUCCESS = "成功";
+Blockly.MIXLY_WRITE="寫入";
+Blockly.MIXLY_READONLY="只读";
+Blockly.MIXLY_FILE_PATH="文件路径";

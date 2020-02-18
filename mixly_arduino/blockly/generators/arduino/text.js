@@ -124,3 +124,23 @@ Blockly.Arduino.type_conversion = function() {
   var code = ''+ type+'('+ variable+')';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+Blockly.Arduino.String_indexOf = function() {
+  var str1 = Blockly.Arduino.valueToCode(this, 'str1', Blockly.Arduino.ORDER_ATOMIC);
+  var str2 = Blockly.Arduino.valueToCode(this, 'str2', Blockly.Arduino.ORDER_ATOMIC);
+  var code = 'String('+str1+').indexOf(String('+str2+'))';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+Blockly.Arduino.text_join2 = function() {
+  // Create a list with any number of elements of any type.
+  var code = new Array(this.itemCount_);
+  for (var n = 0; n < this.itemCount_; n++) {
+    code[n] = Blockly.Arduino.valueToCode(this, 'ADD' + n,
+      Blockly.Arduino.ORDER_NONE) || '0';
+  }
+  var code1 = '';
+  for (var n = 0; n < this.itemCount_; n++) {
+    code1 = code1 + ' + ' + 'String(' + code[n] + ')';
+  }
+  code1 = code1.substring(3);
+  return [code1, Blockly.Arduino.ORDER_ATOMIC];
+};

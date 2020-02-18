@@ -107,42 +107,55 @@ Blockly.Arduino.weightSensor = function () {
 }
 //DS1302
 Blockly.Arduino.DS1302_init = function () {
-  var RTCName = this.getFieldValue('RTCName');
   var dropdown_rst = Blockly.Arduino.valueToCode(this, 'RST', Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_dat = Blockly.Arduino.valueToCode(this, 'DAT', Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_clk = Blockly.Arduino.valueToCode(this, 'CLK', Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.definitions_['include_DS1302'] = '#include <DS1302.h>';
-  Blockly.Arduino.definitions_['var_declare_DS1302'+RTCName] = 'DS1302 '+ RTCName +'(' + dropdown_rst + ',' + dropdown_dat + ',' + dropdown_clk + ');';
+  Blockly.Arduino.definitions_['include_ThreeWire'] = '#include <ThreeWire.h>';
+  Blockly.Arduino.definitions_['include_RtcDS1302'] = '#include <RtcDS1302.h>';
+  Blockly.Arduino.definitions_['var_declare_RtcDateTime_dt'] = 'const RtcDateTime dt;';
+  Blockly.Arduino.definitions_['var_declare_ThreeWire'] = 'ThreeWire ' +'myWire(' + dropdown_dat + ',' + dropdown_clk + ',' + dropdown_rst + ');';
+  Blockly.Arduino.definitions_['var_declare_RtcDS1302'] = 'RtcDS1302<ThreeWire> Rtc(myWire);';
+  Blockly.Arduino.setups_['setup_Rtc.Begin'] = ' Rtc.Begin();' ;
   return "";
 };
 
 Blockly.Arduino.DS1307_init = function () {
   var SDA = Blockly.Arduino.valueToCode(this, 'SDA', Blockly.Arduino.ORDER_ATOMIC);
   var SCL = Blockly.Arduino.valueToCode(this, 'SCL', Blockly.Arduino.ORDER_ATOMIC);
-  var RTCName = this.getFieldValue('RTCName');
-  Blockly.Arduino.definitions_['include_RTC'] = '#include <RTC.h>';
-  Blockly.Arduino.definitions_['DS1307'+RTCName] = 'DS1307 ' + RTCName + '('+SDA+','+SCL+');';
+  var RTCType = this.getFieldValue('RTCType');
+  Blockly.Arduino.definitions_['include_'+RTCType] = '#include <'+RTCType+'.h>';
+    Blockly.Arduino.definitions_['var_declare_RtcDateTime_dt'] = 'const RtcDateTime dt;';
+  if(SDA!="SDA"||SCL!="SCL"){
+    Blockly.Arduino.definitions_['include_Wire'] = '#include <SoftwareWire.h>';
+    Blockly.Arduino.definitions_['var_declare_SoftwareWire'] = 'SoftwareWire myWire('+SDA+','+SCL+');';
+    Blockly.Arduino.definitions_['var_declare_'+RTCType] = RTCType+'<SoftwareWire> Rtc(myWire);';
+  }  
+  else{
+    Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+    Blockly.Arduino.definitions_['var_declare_'+RTCType] = RTCType+'<TwoWire> Rtc(Wire);';
+  }
+  Blockly.Arduino.setups_['setup_Rtc.Begin'] = ' Rtc.Begin();' ;
   return "";
 }
+
 Blockly.Arduino.RTC_get_time = function () {
-  var RTCName = this.getFieldValue('RTCName');
   var timeType = this.getFieldValue('TIME_TYPE');
-  var code = RTCName + '.' + timeType +'()';
+  var code = 'dt.' + timeType +'()';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 }
+
 Blockly.Arduino.RTC_set_time = function () {
-  var RTCName = this.getFieldValue('RTCName');
-  var hour = Blockly.Arduino.valueToCode(this, "hour", Blockly.Arduino.ORDER_ATOMIC);
-  var minute = Blockly.Arduino.valueToCode(this, "minute", Blockly.Arduino.ORDER_ATOMIC);
-  var second = Blockly.Arduino.valueToCode(this, "second", Blockly.Arduino.ORDER_ATOMIC);
-  var code = RTCName + '.setTime('+ hour + ','+ minute + ','+ second +');\n';
-  return code;
+ var year = Blockly.Arduino.valueToCode(this, "year", Blockly.Arduino.ORDER_ATOMIC);
+ var month = Blockly.Arduino.valueToCode(this, "month", Blockly.Arduino.ORDER_ATOMIC);
+ var day = Blockly.Arduino.valueToCode(this, "day", Blockly.Arduino.ORDER_ATOMIC);
+ var hour = Blockly.Arduino.valueToCode(this, "hour", Blockly.Arduino.ORDER_ATOMIC);
+ var minute = Blockly.Arduino.valueToCode(this, "minute", Blockly.Arduino.ORDER_ATOMIC);
+ var second = Blockly.Arduino.valueToCode(this, "second", Blockly.Arduino.ORDER_ATOMIC);
+ var code = 'Rtc.SetDateTime(RtcDateTime('+ year + ','+ month + ','+ day +','+ hour + ','+ minute + ','+ second +'));\n';
+ return code;
 }
 Blockly.Arduino.RTC_set_date = function () {
-  var RTCName = this.getFieldValue('RTCName');
-  var year = Blockly.Arduino.valueToCode(this, "year", Blockly.Arduino.ORDER_ATOMIC);
-  var month = Blockly.Arduino.valueToCode(this, "month", Blockly.Arduino.ORDER_ATOMIC);
-  var day = Blockly.Arduino.valueToCode(this, "day", Blockly.Arduino.ORDER_ATOMIC);
+  var RTCName = "myRTC";
   var code = RTCName + '.setDate('+ year + ','+ month + ','+ day +');\n';
   code += RTCName + '.setDOW('+ year + ','+ month + ','+ day +');\n';
   return code;
@@ -261,10 +274,14 @@ Blockly.Arduino.PS2_init = function() {
   Blockly.Arduino.definitions_['define_PS2'] = '#include <PS2X_lib.h>';   
   Blockly.Arduino.definitions_['define_origin'] = 'PS2X ps2x;';
   Blockly.Arduino.setups_['setup_output_1'] = 'ps2x.config_gamepad('+PS2_CLK+','+PS2_CMD+','+PS2_SEL+','+PS2_DAT+', true, '+rumble+');\ndelay(300);\n';  
-  return "ps2x.read_gamepad(false, 0);\n delay(30);\n";
+  return "";
 };
 
-//readcardnum
+Blockly.Arduino.PS2_update = function() {
+ var code = 'ps2x.read_gamepad(false, 0);\n delay(30);\n';
+ return code;
+};
+
 Blockly.Arduino.PS2_Button = function() {
   var bt=this.getFieldValue('psbt');
   var btstate = this.getFieldValue('btstate');

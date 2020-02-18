@@ -826,3 +826,21 @@ Blockly.Blocks['execute_super_delay_function1'] = {
  this.setHelpUrl("");
   }
 };
+
+//do-while循环
+Blockly.Blocks.do_while= {
+  init: function() { 
+  this.appendStatementInput("input_data")
+      .setCheck(null)  
+      .appendField("执行");
+  this.appendValueInput("select_data")
+      .setCheck(null)  
+      .appendField("重复")
+      .appendField(new Blockly.FieldDropdown([["满足条件","true"],["不满足条件","false"]]), "type");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(120);
+  this.setTooltip("do-while循环");
+  this.setHelpUrl("");
+  }
+};

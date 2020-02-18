@@ -4,7 +4,7 @@ goog.provide('Blockly.Blocks.communicate');
 
 goog.require('Blockly.Blocks');
 
-
+profile["default"] = profile["arduino_esp32"];
 Blockly.Blocks.communicate.HUE = 140;
 
 
@@ -50,3 +50,4 @@ Blockly.Blocks['serialBT_write'] = {
     this.setTooltip(Blockly.Msg.TEXT_WRITE_TOOLTIP);
   }
 };
+

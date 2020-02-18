@@ -13,6 +13,10 @@ var MSG = {
   catLogic: "Lógica",
   catSerialPort: "Puerto serie",
   catGroup: "Comunicación",
+  catIR: "IR Comunicación",
+  catI2C: "I2C Comunicación",
+  catSPI: "SPI Comunicación",
+  catRFID: "RFID",
   catStorage: "Almacenamiento",
   catSensor: "Sensor",
   catActuator: "Actuador",
@@ -1302,9 +1306,9 @@ Blockly.MIXLY_MICROBIT_PY_CONTORL_GET_TYPE = "Tipo de datos";
 Blockly.MIXLY_MICROBIT_PY_CONTORL_UNAME = "Información actual del sistema";
 Blockly.MIXLY_MICROBIT_SHOW_STRING = "% 1 delay% 2 ms% 3 wait% 4% 5 cycle% 6% 7 clear% 8";
 // Blockly.MIXLY_MICROBIT_Scroll_string = "Desplazar cadena de visualización% 1 retraso% 2 milisegundos% 3 espera% 4% 5 ciclo% 6% 7 clear% 8";
-Blockly.MIXLY_COMMUNICATION_RFID_INITIAL = "Inicializar rfid a";
+Blockly.MIXLY_COMMUNICATION_RFID_INITIAL = "Inicializar RFID a";
 Blockly.MIXLY_COMMUNICATION_RFID_ON_DETECTED = "Señal detectada";
-Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM = "Número de tarjeta leído por rfid";
+Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM = "Número de tarjeta leído por RFID";
 Blockly.MIXLY_COMMUNICATION_RFID_READ_CARDNUM_IS = "Número de tarjeta detectado por RFID";
 Blockly.MIXLY_COMMUNICATION_RFID_WRITE = "Tarjeta de escritura RFID";
 Blockly.MIXLY_COMMUNICATION_DATA_BLOCK = "Bloque de datos";
@@ -1315,7 +1319,7 @@ Blockly.MIXLY_MICROBIT_PY_COMMUNICATE_OFF = "Desactivado";
 Blockly.MIXLY_COMMUNICATION_RFID_TOOLTIP = "Este es el lector de tarjetas RFID";
 Blockly.MIXLY_COMMUNICATION_RFID_READ = "Lectura RFID";
 Blockly.MIXLY_COMMUNICATION_DATA_FROM = "datos";
-Blockly.MIXLY_COMMUNICATION_RFID_OFF = "rfid deja de detectar";
+Blockly.MIXLY_COMMUNICATION_RFID_OFF = "RFID deja de detectar";
 Blockly.Msg.HTML_RESET = "Restablecer";
 Blockly.blockpy_inout_input = 'Recibir entrada';
 Blockly.blockpy_inout_raw_input = 'Recibir entrada de cadena';
@@ -2308,7 +2312,7 @@ Blockly.MPYTHON_BLYNK_APP_DATA_MESSAGE0 = 'Al recibir el valor del pin virtual V
 Blockly.MIXLY_readTempC = 'Obtener Celsius';
 Blockly.MIXLY_readTempF = 'Obtener Fahrenheit';
 Blockly.MIXLY_MPU6050 = 'Giroscopio MPU6050';
-Blockly.MIXLY_MPU6050_update = 'Datos de actualización del giroscopio MPU6050';
+Blockly.MIXLY_update_data = 'Datos de actualización del';
 Blockly.MIXLY_CHOOSE_AND_GET = 'Seleccionar y obtener';
 Blockly.MIXLY_CHOOSE_AND_GET_ONE_FILE_NAME = 'Nombre de archivo único';
 Blockly.MIXLY_CHOOSE_AND_GET_MANY_FILE_NAMES = 'Múltiples nombres de archivos';
@@ -2448,7 +2452,7 @@ Blockly.get_array2_value = "Obtener una matriz bidimensional";
 Blockly.array2_assignment = "Asignación de matriz bidimensional";
 Blockly.array2_rows = "Número de filas";
 Blockly.array2_cols = "Número de columnas";
-Blockly.create_array2_with_text = "Nombre de matriz bidimensional";
+Blockly.MIXLY_ARRAY2 = "Nombre de matriz bidimensional";
 Blockly.Msg.HTML_DOCUMENT = "documento HTML";
 Blockly.Msg.HTML_LEVEL = "Nivel de título";
 Blockly.Msg.HTML_HEAD = "Head";
@@ -2496,7 +2500,7 @@ Blockly.MIXLY_LONG_PRESS_START = 'Pulsación larga de inicio';
 Blockly.MIXLY_DURING_LONG_PRESS = 'Pulsación larga';
 Blockly.MIXLY_LONG_PRESS_END = 'La prensa larga termina';
 Blockly.ONEBUTTON = "Botón multifunción";
-Blockly.PS2_INIT = 'Inicializar controlador PS2';
+Blockly.PS2= 'controlador PS2';
 Blockly.PS2_TRIANGLE = "Clave de triángulo";
 Blockly.PS2_CIRCLE = 'Llave redonda';
 Blockly.PS2_CROSS = '× Clave';
@@ -2612,7 +2616,6 @@ Blockly.MIXLY_RETURN_DATA = "Valor de retorno";
 Blockly.TFT_Brightness = "Luz de fondo";
 Blockly.BLYNK_DISCONNECTED = 'El hardware está fuera de línea';
 Blockly.MIXLY_U8G2_SETCONTRAST = "Brillo de luz de fondo OLED";
-Blockly.MIXLY_U8G2_SETCONTRAST_HELP = "Rango de brillo de retroiluminación OLED (0-255)";
 Blockly.MIXLY_DHT11_T=Blockly.MIXLY_TEMPERATURE;
 Blockly.MIXLY_DHT11_H=Blockly.MIXLY_Humidity;
 Blockly.MIXLY_LCD_STAT_ON=Blockly.MIXLY_ON;
@@ -2622,3 +2625,13 @@ Blockly.MIXLY_ELECLEVEL = "Nivel de activación";
 Blockly.MIXLY_GET_PRESSES_TIME = "Duración (segundos)";
 Blockly.MIXLY_PYTHON_LOGIC_IS_NOT = "is not";
 Blockly.MIXLY_PYTHON_LOGIC_IS_NOT_IN = "is not in";
+Blockly.Msg.MATH_DEC_TOOLTIP_BIN = "将十进制整数转换成二进制，以字符串形式表示";
+Blockly.Msg.MATH_DEC_TOOLTIP_OCT = "将十进制整数转换成八进制，以字符串形式表示";
+Blockly.Msg.MATH_DEC_TOOLTIP_HEX = "将十进制整数转换成十六进制，以字符串形式表示";
+Blockly.Msg.RIGHT_CYCLE = "Ciclo correcto";
+Blockly.Msg.LEFT_CYCLE = "Ciclo izquierdo";
+Blockly.MIXLY_FAILED = "Fallar";
+Blockly.MIXLY_SUCCESS = "El éxito";
+Blockly.MIXLY_WRITE="Escribir";
+Blockly.MIXLY_READONLY="Solo lectura";
+Blockly.MIXLY_FILE_PATH="Ruta del archivo";

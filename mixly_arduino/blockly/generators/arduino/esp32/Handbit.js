@@ -3,11 +3,7 @@
 goog.provide('Blockly.Arduino.Handbit');
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino.inout_touchRead = function () {
-  var touch_pin = this.getFieldValue('touch_pin');
-  var code = 'touchRead(' + touch_pin + ')';
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
+
 Blockly.Arduino.handbit_button_is_pressed = function () {
   var btn = this.getFieldValue('btn');
   Blockly.Arduino.setups_['setup_btn' + btn] = 'pinMode(' + btn + ',INPUT);';
@@ -55,6 +51,7 @@ Blockly.Arduino.touchAttachInterrupt = function () {
   Blockly.Arduino.definitions_[funcName] = code2;
   return code;
 };
+
 Blockly.Arduino.inout_touchRead = function () {
   var pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
   var code = 'touchRead(' + pin + ')';

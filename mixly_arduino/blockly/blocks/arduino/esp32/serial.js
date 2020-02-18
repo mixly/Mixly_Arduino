@@ -10,8 +10,7 @@ Blockly.Blocks['serial_softserial'] = {
 		this.setColour(Blockly.Blocks.serial.HUE);
 		this.appendDummyInput("")
 		.appendField(Blockly.MIXLY_SETUP)
-		.appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
-		.appendField(Blockly.MIXLY_SERIAL_BEGIN);
+		.appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select");
 		this.appendValueInput("RX", Number)
 		.setCheck(Number)
 		.appendField("RX#")

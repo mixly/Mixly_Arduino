@@ -393,3 +393,24 @@ Blockly.Arduino.GD5800_MP3_PLAY_NUM = function () {
   var code = 'mp3' + rxpin + txpin + '.playFileByIndexNumber(' + NUM + ');\n';
   return code;
 };
+
+Blockly.Arduino.AFMotorRun = function () {
+  Blockly.Arduino.definitions_['include_AFMotor'] = '#include <AFMotor.h>';
+  var motorNO = this.getFieldValue('motor');
+  var direction = this.getFieldValue('direction');
+  var speed = Blockly.Arduino.valueToCode(this, 'speed', Blockly.Arduino.ORDER_ATOMIC);
+  var code = "";
+  Blockly.Arduino.definitions_['var_declare_motor_' + motorNO] =  "AF_DCMotor" + ' motor'+motorNO+'(' + motorNO + ');';
+  code = ' motor'+motorNO + ".setSpeed(" + speed + ");\n" + ' motor'+motorNO  + ".run(" + direction + ");\n";
+  return code;
+};
+
+Blockly.Arduino.AFMotorStop = function () {
+  Blockly.Arduino.definitions_['include_AFMotor'] = '#include <AFMotor.h>';
+  var motorNO = this.getFieldValue('motor');
+  var code = "";
+  Blockly.Arduino.definitions_['var_declare_motor_' + motorNO] =  "AF_DCMotor" + ' motor'+motorNO+'(' + motorNO + ');';
+  code = ' motor'+motorNO + "->setSpeed(0);\n" +' motor'+motorNO + ".run(RELEASE);\n";
+  return code;
+};
+

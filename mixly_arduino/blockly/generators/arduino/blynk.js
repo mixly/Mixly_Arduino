@@ -13,14 +13,11 @@ Blockly.Arduino.blynk_smartconfig = function () {
 	var auth_key = Blockly.Arduino.valueToCode(this, 'auth_key', Blockly.Arduino.ORDER_ATOMIC);
 	var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);
 	var board_type = JSFuncs.getPlatform();
-	Blockly.Arduino.definitions_['include_TimeLib'] = '#include <TimeLib.h>';
-	Blockly.Arduino.definitions_['include_WidgetRTC'] = '#include <WidgetRTC.h>';
 	Blockly.Arduino.definitions_['define_BLYNK_PRINT'] = '#define BLYNK_PRINT Serial';
 	Blockly.Arduino.definitions_['var_declare_auth_key'] = 'char auth[] = ' + auth_key + ';';
 	Blockly.Arduino.setups_['setup_serial_Serial'] = 'Serial.begin(9600);';
 	Blockly.Arduino.setups_['setup_smartconfig'] = 'WiFi.mode(WIFI_STA);\nint cnt = 0;\nwhile (WiFi.status() != WL_CONNECTED) {\ndelay(500); \nSerial.print("."); \nif (cnt++ >= 10) {\nWiFi.beginSmartConfig();\nwhile (1) {\ndelay(1000);\nif (WiFi.smartConfigDone()) {\nSerial.println();\nSerial.println("SmartConfig: Success");\nbreak;\n}\nSerial.print("|");\n}\n}\n}  WiFi.printDiag(Serial);\n';
 	if (board_type.match(RegExp(/ESP8266/))) {
-
 		Blockly.Arduino.definitions_['include_ESP8266WiFi'] = '#include <ESP8266WiFi.h>';
 		Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] = '#include <BlynkSimpleEsp8266.h>';
 	}
@@ -46,9 +43,8 @@ Blockly.Arduino.blynk_server = function () {
 	var wifi_pass = Blockly.Arduino.valueToCode(this, 'wifi_pass', Blockly.Arduino.ORDER_ATOMIC);
 	var auth_key = Blockly.Arduino.valueToCode(this, 'auth_key', Blockly.Arduino.ORDER_ATOMIC);
 	var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);
-	var board_type = JSFuncs.getPlatform();
-	Blockly.Arduino.definitions_['include_TimeLib'] = '#include <TimeLib.h>';
-	Blockly.Arduino.definitions_['include_WidgetRTC'] = '#include <WidgetRTC.h>';
+	 var board_type = JSFuncs.getPlatform();
+	//var board_type ="ESP8266";
 	Blockly.Arduino.definitions_['define_BLYNK_PRINT'] = '#define BLYNK_PRINT Serial';
 	Blockly.Arduino.definitions_['var_declare_auth_key'] = 'char auth[] = ' + auth_key + ';';
 	Blockly.Arduino.definitions_['var_declare_wifi_ssid'] = 'char ssid[] = ' + wifi_ssid + ';';
@@ -109,7 +105,6 @@ Blockly.Arduino.blynk_usb_server = function () {
 	Blockly.Arduino.setups_['setup_serial_Serial'] = 'Serial.begin(9600);';
 	Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Blynk.begin(Serial, auth);';
 	Blockly.Arduino.setups_['setup_DebugSerial'] = 'DebugSerial.begin(9600);';
-	
 	var code = "Blynk.run();";
 	return code;
 };
@@ -345,7 +340,6 @@ Blockly.Arduino.blynk_iot_terminal_get = function () {
 Blockly.Arduino.blynk_videourl = function () {
 	var Vpin = this.getFieldValue('Vpin');
 	var url = Blockly.Arduino.valueToCode(this, 'url', Blockly.Arduino.ORDER_ATOMIC);
-
 	var code = 'Blynk.setProperty(' + Vpin + ',"url",' + url + ');';
 	return code;
 };
@@ -463,8 +457,6 @@ Blockly.Arduino.blynk_AP_config = function () {
 	var server_add = Blockly.Arduino.valueToCode(this, 'server_add', Blockly.Arduino.ORDER_ATOMIC);
 	var auth_key = Blockly.Arduino.valueToCode(this, 'auth_key', Blockly.Arduino.ORDER_ATOMIC);
 	var board_type = JSFuncs.getPlatform();
-	Blockly.Arduino.definitions_['include_TimeLib'] = '#include <TimeLib.h>';
-	Blockly.Arduino.definitions_['include_WidgetRTC'] = '#include <WidgetRTC.h>';
 	Blockly.Arduino.definitions_['define_BLYNK_PRINT'] = '#define BLYNK_PRINT Serial';
 	if (board_type.match(RegExp(/ESP8266/))) {
 		Blockly.Arduino.definitions_['include_ESP8266WiFi'] = '#include <ESP8266WiFi.h>';
@@ -475,6 +467,7 @@ Blockly.Arduino.blynk_AP_config = function () {
 		Blockly.Arduino.definitions_['include_WiFiClient'] = '#include <WiFiClient.h>';
 		Blockly.Arduino.definitions_['include_BlynkSimpleEsp32'] = '#include <BlynkSimpleEsp32.h>';
 	}
+
 	Blockly.Arduino.definitions_['include_DNSServer'] = '#include <DNSServer.h>';
 	Blockly.Arduino.definitions_['include_ESP8266WebServer'] = '#include <ESP8266WebServer.h>\n';
 	Blockly.Arduino.definitions_['include_WiFiManager'] = '#include <WiFiManager.h>';

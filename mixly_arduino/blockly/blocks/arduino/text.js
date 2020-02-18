@@ -360,3 +360,196 @@ Blockly.Blocks['type_conversion'] = {
     this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['create_with_item'] = {
+  /**
+   * Mutator bolck for adding items.
+   * @this Blockly.Block
+   */
+   init: function() {
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.appendDummyInput()
+    .appendField(Blockly.Msg.LISTS_CREATE_WITH_ITEM_TITLE);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.Msg.LISTS_CREATE_WITH_ITEM_TOOLTIP);
+    this.contextMenu = false;
+  }
+};
+
+Blockly.Blocks['create_with_container'] = {
+  /**
+   * Mutator block for list container.
+   * @this Blockly.Block
+   */
+   init: function() {
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.appendDummyInput()
+    .appendField(Blockly.Msg.HTML_TEXT);
+    this.appendStatementInput('STACK');
+    this.setTooltip("");
+    this.contextMenu = false;
+  }
+};
+
+Blockly.Blocks.String_indexOf= {
+  init: function() { 
+    this.appendValueInput("str1")
+    .setCheck(null);
+    this.appendDummyInput()
+    .setAlign(Blockly.ALIGN_RIGHT)  
+    .appendField(Blockly.Msg.PROCEDURES_DEFRETURN_RETURN);
+    this.appendValueInput("str2")
+    .setCheck(null);
+    this.appendDummyInput()
+    .setAlign(Blockly.ALIGN_RIGHT)  
+    .appendField(Blockly.Msg.SERIES_INDEX);
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(160);
+    this.setTooltip();
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.text_join2 = {
+  /**
+   * Block for creating a list with any number of elements of any type.
+   * @this Blockly.Block
+   */
+   init: function() {
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_TEXT_JOIN+Blockly.MIXLY_MICROBIT_TYPE_STRING);
+    this.itemCount_ = 3;
+    this.updateShape_();
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setMutator(new Blockly.Mutator(['create_with_item']));
+    this.setTooltip("");
+  },
+  /**
+   * Create XML to represent list inputs.
+   * @return {Element} XML storage element.
+   * @this Blockly.Block
+   */
+   mutationToDom: function() {
+    var container = document.createElement('mutation');
+    container.setAttribute('items', this.itemCount_);
+    return container;
+  },
+  /**
+   * Parse XML to restore the list inputs.
+   * @param {!Element} xmlElement XML storage element.
+   * @this Blockly.Block
+   */
+   domToMutation: function(xmlElement) {
+    this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
+    this.updateShape_();
+  },
+  /**
+   * Populate the mutator's dialog with this block's components.
+   * @param {!Blockly.Workspace} workspace Mutator's workspace.
+   * @return {!Blockly.Block} Root block in mutator.
+   * @this Blockly.Block
+   */
+   decompose: function(workspace) {
+    var containerBlock =
+    Blockly.Block.obtain(workspace, 'create_with_container');
+    containerBlock.initSvg();
+    var connection = containerBlock.getInput('STACK').connection;
+    for (var i = 0; i < this.itemCount_; i++) {
+      var itemBlock = Blockly.Block.obtain(workspace, 'create_with_item');
+      itemBlock.initSvg();
+      connection.connect(itemBlock.previousConnection);
+      connection = itemBlock.nextConnection;
+    }
+    return containerBlock;
+  },
+  /**
+   * Reconfigure this block based on the mutator dialog's components.
+   * @param {!Blockly.Block} containerBlock Root block in mutator.
+   * @this Blockly.Block
+   */
+   compose: function(containerBlock) {
+    var itemBlock = containerBlock.getInputTargetBlock('STACK');
+    // Count number of inputs.
+    var connections = [];
+    var i = 0;
+    while (itemBlock) {
+      connections[i] = itemBlock.valueConnection_;
+      itemBlock = itemBlock.nextConnection &&
+      itemBlock.nextConnection.targetBlock();
+      i++;
+    }
+    this.itemCount_ = i;
+    this.updateShape_();
+    // Reconnect any child blocks.
+    for (var i = 0; i < this.itemCount_; i++) {
+      if (connections[i]) {
+        this.getInput('ADD' + i).connection.connect(connections[i]);
+      }
+    }
+  },
+  /**
+   * Store pointers to any connected child blocks.
+   * @param {!Blockly.Block} containerBlock Root block in mutator.
+   * @this Blockly.Block
+   */
+   saveConnections: function(containerBlock) {
+    var itemBlock = containerBlock.getInputTargetBlock('STACK');
+    var i = 0;
+    while (itemBlock) {
+      var input = this.getInput('ADD' + i);
+      itemBlock.valueConnection_ = input && input.connection.targetConnection;
+      i++;
+      itemBlock = itemBlock.nextConnection &&
+      itemBlock.nextConnection.targetBlock();
+    }
+  },
+  /**
+   * Modify this block to have the correct number of inputs.
+   * @private
+   * @this Blockly.Block
+   */
+   updateShape_: function() {
+    // Delete everything.
+    if (this.getInput('EMPTY')) {
+      this.removeInput('EMPTY');
+    } else {
+      var i = 0;
+      while (this.getInput('ADD' + i)) {
+        this.removeInput('ADD' + i);
+        i++;
+      }
+    }
+    // Rebuild block.
+    if (this.itemCount_ == 0) {
+      this.appendDummyInput('EMPTY')
+      .appendField("无需要连接的字符串");
+    } else {
+      for (var i = 0; i < this.itemCount_; i++) {
+        var input = this.appendValueInput('ADD' + i);
+        if (i > 0) {
+          input.setAlign(Blockly.ALIGN_RIGHT)
+          input.appendField("+");
+        }
+      }
+    }
+  }
+};
+
+//Arduinojson数据解析
+Blockly.Blocks.Arduinojson = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.ARDUINOJSON_STRING_PARSING);
+    this.appendDummyInput("")
+        .appendField(new Blockly.FieldTextArea('const size_t capacity = JSON_ARRAY_SIZE(3) + 10;\nDynamicJsonBuffer jsonBuffer(capacity);\nconst char* json = "[\\"0\\",\\"74\\",\\"134\\"]";\nJsonArray& root = jsonBuffer.parseArray(json);\nconst char* root_0 = root[0]; // "0"\nconst char* root_1 = root[1]; // "74"\nconst char* root_2 = root[2]; // "134"'), 'VALUE');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(120);
+ this.setTooltip(Blockly.Msg.ARDUINOJSON_STRING_PARSING1);
+ this.setHelpUrl("https://arduinojson.org/v5/assistant/");
+  }
+};

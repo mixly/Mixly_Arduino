@@ -4,7 +4,9 @@ goog.provide('Blockly.Blocks.Handbit');
 goog.require('Blockly.Blocks');
 Blockly.Blocks.Handbit.HUE = 65;
 profile["default"] = profile["esp32_handbit"];
-
+var OLED_TYPE = [
+[Blockly.OLED_TYPE_SH1106, "SH1106"]
+];
 Blockly.Blocks.handbit_button_is_pressed = {
   init: function () {
     this.setColour(Blockly.Blocks.sensor.HUE);
@@ -45,10 +47,9 @@ Blockly.Blocks.handbit_sound = {
 Blockly.Blocks.inout_touchRead = {
   init: function () {
     this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput()
-    .appendField(Blockly.MIXLY_ESP32_TOUCH)
-    .appendField(Blockly.MIXLY_PIN)
-    .appendField(new Blockly.FieldDropdown(profile.default.touch), 'touch_pin');
+     this.appendValueInput("PIN", Number)
+    .appendField(Blockly.MIXLY_ESP32_TOUCH+Blockly.MIXLY_PIN)
+    .setCheck(Number);
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_ESP32_MACHINE_VALUE)
     this.setOutput(true, Number);

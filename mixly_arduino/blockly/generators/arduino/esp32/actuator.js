@@ -4,6 +4,13 @@ goog.provide('Blockly.Arduino.actuator');
 
 goog.require('Blockly.Arduino');
 
+Blockly.Arduino.display_rgb_show = function () {
+  var dropdown_rgbpin = this.getFieldValue('PIN');
+  var code = 'rgb_display_' + dropdown_rgbpin + '.show();\n';
+  code+="delay(1);"
+  return code;
+};
+
 Blockly.Arduino.servo_move = function() {
  var dropdown_pin = this.getFieldValue('PIN');
  var value_degree = Blockly.Arduino.valueToCode(this, 'DEGREE', Blockly.Arduino.ORDER_ATOMIC);

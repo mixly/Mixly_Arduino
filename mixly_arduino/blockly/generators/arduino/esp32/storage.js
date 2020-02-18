@@ -4,137 +4,140 @@ goog.provide('Blockly.Arduino.storage');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino['storage_fileopen'] = function() {
-  // For each loop.
-  var variable0 = Blockly.Arduino.valueToCode(this, 'FILE', Blockly.Arduino.ORDER_ATOMIC);
-  var fn = Blockly.Arduino.valueToCode(this, 'FILENAME', Blockly.Arduino.ORDER_ATOMIC);
-  var mode = this.getFieldValue('MODE');
-  var code = variable0 + ' = open(' + fn + ', \'' + mode +'\')\n';
-  return code;
+//初始化SPIFFS
+Blockly.Arduino.initialize_spiffs = function () {
+	Blockly.Arduino.definitions_['include_FS'] ='#include "FS.h"';
+	Blockly.Arduino.definitions_['include_SPIFFS'] ='#include "SPIFFS.h"';
+	Blockly.Arduino.definitions_['esp32_spiffs'] ='File myFile;\n';
+	Blockly.Arduino.setups_['setup_SPIFFS.begin'] = 'SPIFFS.begin(true);';
+	var code='';
+	return code;
 };
 
-Blockly.Arduino.storage_file_write = function () {
+//打开文件
+Blockly.Arduino.spiffs_open_file = function () {
+	var file_var = this.getFieldValue('file_var');
+	var file_path = this.getFieldValue('file_path');
+	file_path='"'+file_path+'"';
 	var mode = this.getFieldValue('MODE');
-	var data = Blockly.Arduino.valueToCode(this, 'data', Blockly.Arduino.ORDER_ATOMIC);
-	var filename = Blockly.Arduino.valueToCode(this, 'FILENAME', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['include_FS_SPIFFS'] = '#include "FS.h"\n#include "SPIFFS.h"';
-	var funcName = "FS_"+mode;
-	var code2 = 'void' + ' ' + funcName + '(fs::FS &fs, const char * path, const char * message) {\nFile file = fs.open(path, '+mode+');\nfile.print(message);\n}\n';
+	Blockly.Arduino.definitions_['include_FS'] ='#include "FS.h"';
+	Blockly.Arduino.definitions_['include_SPIFFS'] ='#include "SPIFFS.h"';
+	Blockly.Arduino.definitions_['esp32_spiffs'] ='File '+file_var+';\n';
+	return file_var+'= SPIFFS.open(String(' + file_path + '), '+mode+');\n';
+};
+Blockly.Arduino.spiffs_close_file = function () {
+	var file_var = this.getFieldValue('file_var');
+	Blockly.Arduino.definitions_['include_FS'] ='#include "FS.h"';
+	Blockly.Arduino.definitions_['include_SPIFFS'] ='#include "SPIFFS.h"';
+	Blockly.Arduino.definitions_['esp32_spiffs'] ='File '+file_var+';\n';
+	return file_var+'.close();\n';
+};
+
+//将数据追加到文件
+Blockly.Arduino.spiffs_write_data = function () {
+	var file_var = this.getFieldValue('file_var');
+	var data= Blockly.Arduino.valueToCode(this, 'data', Blockly.Arduino.ORDER_ATOMIC);
+	Blockly.Arduino.definitions_['include_FS'] ='#include "FS.h"';
+	Blockly.Arduino.definitions_['include_SPIFFS'] ='#include "SPIFFS.h"';
+	Blockly.Arduino.definitions_['esp32_spiffs'] ='File '+file_var+';\n';
+	return file_var+'.print(String(' + data + '));\n';
+};
+
+//文件可读 
+Blockly.Arduino.spiffs_read_available = function () {
+	var file_var = this.getFieldValue('file_var');
+	Blockly.Arduino.definitions_['include_FS'] ='#include "FS.h"';
+	Blockly.Arduino.definitions_['include_SPIFFS'] ='#include "SPIFFS.h"';
+	Blockly.Arduino.definitions_['esp32_spiffs'] ='File '+file_var+';\n';
+	var code=file_var+'.available()';
+	return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+//读取文件内容
+Blockly.Arduino.spiffs_read_data = function () {
+	var file_var = this.getFieldValue('file_var');
+	Blockly.Arduino.definitions_['include_FS'] ='#include "FS.h"';
+	Blockly.Arduino.definitions_['include_SPIFFS'] ='#include "SPIFFS.h"';
+	Blockly.Arduino.definitions_['esp32_spiffs'] ='File '+file_var+';\n';
+	var code = file_var+'.read()';
+	return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+//检查文件大小
+Blockly.Arduino.spiffs_file_size = function () {
+	var file_var = this.getFieldValue('file_var');
+	Blockly.Arduino.definitions_['include_FS'] ='#include "FS.h"';
+	Blockly.Arduino.definitions_['include_SPIFFS'] ='#include "SPIFFS.h"';
+	Blockly.Arduino.definitions_['esp32_spiffs'] ='File '+file_var+';\n';
+	var code = file_var+'.size()';
+	return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+//删除文件
+Blockly.Arduino.spiffs_delete_file = function () {
+	Blockly.Arduino.definitions_['include_FS'] ='#include "FS.h"';
+	Blockly.Arduino.definitions_['include_SPIFFS'] ='#include "SPIFFS.h"';
+	var file_path = this.getFieldValue('file_path');
+	file_path='"'+file_path+'"';
+	return 'SPIFFS.remove(String(' + file_path + '));';
+};
+
+Blockly.Arduino.store_eeprom_write_long = function() {
+	var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
+	var data = Blockly.Arduino.valueToCode(this, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '0';
+	Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
+		Blockly.Arduino.setups_['setup_EEPROM.begin'] = 'EEPROM.begin(512);';
+	var funcName='eepromWriteLong';
+	var code2='void '+funcName+'(int address, unsigned long value) {\n' 
+	+ '  union u_tag {\n'
+	+ '  	byte b[4];\n'
+	+ '  	unsigned long ULtime;\n'
+	+ '  }\n'
+	+ '  time;\n'
+	+ '  time.ULtime=value;\n'
+	+ '  EEPROM.write(address, time.b[0]);\n'
+	+ '  EEPROM.write(address+1, time.b[1]);\n'
+	+ '  if (time.b[2] != EEPROM.read(address+2) ) EEPROM.write(address+2, time.b[2]);\n'
+	+ '  if (time.b[3] != EEPROM.read(address+3) ) EEPROM.write(address+3, time.b[3]);\n'
+	+ '}\nEEPROM.commit();\n';
 	Blockly.Arduino.definitions_[funcName] = code2;
-	var code=funcName+"(SPIFFS,"+filename+", "+data+");";
-	return code;
+	return 'eepromWriteLong('+address+', '+data+');\n';
 }
 
-Blockly.Arduino.storage_get_contents = function () {
-	var mode = this.getFieldValue('MODE');
-	var file = Blockly.Arduino.valueToCode(this, 'FILE', Blockly.Arduino.ORDER_ATOMIC);
-	var size = Blockly.Arduino.valueToCode(this, 'SIZE', Blockly.Arduino.ORDER_ATOMIC);
-	var code = file+'.'+mode+'(' + size + ')';
-	return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino.storage_get_a_line = function () {
-	var file = Blockly.Arduino.valueToCode(this, 'FILE', Blockly.Arduino.ORDER_ATOMIC);
-	var size = Blockly.Arduino.valueToCode(this, 'SIZE', Blockly.Arduino.ORDER_ATOMIC);
-	var code = file+".readline(" + size + ')';
-	return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino.storage_can_write_ornot = function () {
-	var file = Blockly.Arduino.valueToCode(this, 'FILE', Blockly.Arduino.ORDER_ATOMIC);
-	var code = file+".writable()";
-	return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino.storage_get_filename = function () {
-	var file = Blockly.Arduino.valueToCode(this, 'FILE', Blockly.Arduino.ORDER_ATOMIC);
-	var code = file+".name()";
-	return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino.storage_close_file = function () {
-	var file = Blockly.Arduino.valueToCode(this, 'FILE', Blockly.Arduino.ORDER_ATOMIC);
-	var code = file+".close()\n";
-	return code;
-};
-
-Blockly.Arduino.storage_list_all_files = function() {
-	Blockly.Arduino.definitions_['import_os'] = 'import os';
-	var code = 'os.listdir()';
-	return [code, Blockly.Arduino.ORDER_ATOMIC];
+Blockly.Arduino.store_eeprom_read_long = function() {
+	var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
+	Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
+		Blockly.Arduino.setups_['setup_EEPROM.begin'] = 'EEPROM.begin(512);';
+	var code ='eepromReadLong('+address+')';
+	var funcName='eepromReadLong';
+	var code2='unsigned long '+funcName+'(int address) {\n' 
+	+ '  union u_tag {\n'
+	+ '  	byte b[4];\n'
+	+ '  	unsigned long ULtime;\n'
+	+ '  }\n'
+	+ '  time;\n'
+	+ '  time.b[0] = EEPROM.read(address);\n'
+	+ '  time.b[1] = EEPROM.read(address+1);\n'
+	+ '  time.b[2] = EEPROM.read(address+2);\n'
+	+ '  time.b[3] = EEPROM.read(address+3);\n'
+	+ '  return time.ULtime;\n'
+	+ '}\n';
+	Blockly.Arduino.definitions_[funcName] = code2;
+	return [code,Blockly.Arduino.ORDER_ATOMIC];
 }
 
-Blockly.Arduino.storage_delete_file = function () {
-	Blockly.Arduino.definitions_['import_os'] = 'import os';
-	var mode = this.getFieldValue('MODE');
-	var file = Blockly.Arduino.valueToCode(this, 'FILE', Blockly.Arduino.ORDER_ATOMIC);
-	var code = "os."+mode+"("+file+")\n";
-	return code;
-};
+Blockly.Arduino.store_eeprom_write_byte = function() {
+	var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
+	var data = Blockly.Arduino.valueToCode(this, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '0';
+	Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
+	Blockly.Arduino.setups_['setup_EEPROM.begin'] = 'EEPROM.begin(512);';
+	return 'EEPROM.write('+address+', '+data+');\nEEPROM.commit();\n';
+}
 
-Blockly.Arduino.storage_get_file_size = function () {
-	Blockly.Arduino.definitions_['import_os'] = 'import os';
-	var file = Blockly.Arduino.valueToCode(this, 'FILE', Blockly.Arduino.ORDER_ATOMIC);
-	var code = "os.size("+file+")";
-	return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino.storage_file_tell = function () {
-	var file = Blockly.Arduino.valueToCode(this, 'FILE', Blockly.Arduino.ORDER_ATOMIC);
-	var code = file+".tell()";
-	return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino.storage_file_seek = function () {
-	var mode = this.getFieldValue('MODE');
-	var mode_num = 0;
-	if (mode == 'start'){
-		mode_num = 0;}
-		else if(mode == 'current'){
-			mode_num = 1;
-		}
-		else{
-			mode_num = 2;
-		}
-		var file = Blockly.Arduino.valueToCode(this, 'FILE', Blockly.Arduino.ORDER_ATOMIC);
-		var size = Blockly.Arduino.valueToCode(this, 'SIZE', Blockly.Arduino.ORDER_ATOMIC);
-		var code = file+'.seek('+ size + ',' + mode_num + ')';
-		return [code, Blockly.Arduino.ORDER_ATOMIC];
-	};
-
-	Blockly.Arduino.storage_change_dir = function () {
-		Blockly.Arduino.definitions_['import_os'] = 'import os';
-		var file = Blockly.Arduino.valueToCode(this, 'FILE', Blockly.Arduino.ORDER_ATOMIC);
-		var code = "os.chdir("+file+")\n";
-		return code;
-	};
-
-	Blockly.Arduino.storage_get_current_dir = function() {
-		Blockly.Arduino.definitions_['import_os'] = 'import os';
-		var code = 'os.getcwd()';
-		return [code, Blockly.Arduino.ORDER_ATOMIC];
-	}
-
-	Blockly.Arduino.storage_make_dir = function () {
-		Blockly.Arduino.definitions_['import_os'] = 'import os';
-		var mode = this.getFieldValue('MODE');
-		var path = Blockly.Arduino.valueToCode(this, 'PATH', Blockly.Arduino.ORDER_ATOMIC);
-		var code = 'os.'+mode+'(' + path + ')';
-		return [code, Blockly.Arduino.ORDER_ATOMIC];
-	};
-
-	Blockly.Arduino.storage_rename = function () {
-		Blockly.Arduino.definitions_['import_os'] = 'import os';
-		var file = Blockly.Arduino.valueToCode(this, 'FILE', Blockly.Arduino.ORDER_ATOMIC);
-		var file1 = Blockly.Arduino.valueToCode(this, 'NEWFILE', Blockly.Arduino.ORDER_ATOMIC);
-		var code = "os.rename("+file+","+file1+")\n";
-		return code;
-	};
-
-	Blockly.Arduino.storage_is_file = function () {
-		Blockly.Arduino.definitions_['import_os'] = 'import os';
-		var file = Blockly.Arduino.valueToCode(this, 'FILE', Blockly.Arduino.ORDER_ATOMIC);
-		var mode = this.getFieldValue('MODE');
-		var code = "os."+ mode + "(" + file + ")";
-		return [code, Blockly.Arduino.ORDER_ATOMIC];
-	};
+Blockly.Arduino.store_eeprom_read_byte = function() {
+	var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
+	Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
+	Blockly.Arduino.setups_['setup_EEPROM.begin'] = 'EEPROM.begin(512);';
+	var code ='EEPROM.read('+address+')';
+	return [code,Blockly.Arduino.ORDER_ATOMIC];
+}

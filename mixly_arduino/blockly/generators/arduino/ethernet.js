@@ -74,21 +74,11 @@ Blockly.Arduino.ethernet_client_get_request = function() {
   return code;
 };
 
-//物联网-发送数据到app
 Blockly.Arduino.WIFI_info = function() {
   var SSID = Blockly.Arduino.valueToCode(this, 'SSID', Blockly.Arduino.ORDER_ATOMIC);
   var PWD = Blockly.Arduino.valueToCode(this, 'PWD', Blockly.Arduino.ORDER_ATOMIC);
-  var board_type=JSFuncs.getPlatform();
-  if(board_type.match(RegExp(/ESP8266/)))
-  {
-    Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>';
-  }
-  else if(board_type.match(RegExp(/ESP32/)))
-  {
-    Blockly.Arduino.definitions_['include_WiFi'] ='#include <WiFi.h>';
-  }
+  Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>';
   Blockly.Arduino.setups_['setup_WiFi_begin'] = 'WiFi.begin('+SSID+', '+PWD+');\n'
-  +''
   +'while (WiFi.status() != WL_CONNECTED) {\n'
   +'delay(500);\n'
   +'Serial.print(".");\n'
@@ -229,4 +219,17 @@ Blockly.Arduino.MQTT_subscribe = function () {
       code += ' else {\n' + branch + '\n}';
     }
     return  ' Adafruit_MQTT_Subscribe *subscription;\nwhile ((subscription = mqtt.readSubscription(5000))) {\n'+code + '\n}\n';
+};
+
+//ESP8266 GET请求
+Blockly.Arduino.http_get = function () { 
+    var api= Blockly.Arduino.valueToCode(this, 'api', Blockly.Arduino.ORDER_ATOMIC);
+    var branch = Blockly.Arduino.statementToCode(this, 'success');
+    branch = branch.replace(/(^\s*)|(\s*$)/g, "");
+    var branch1 = Blockly.Arduino.statementToCode(this, 'failure');
+    branch1 = branch1.replace(/(^\s*)|(\s*$)/g, "");
+    Blockly.Arduino.definitions_['include_ESP8266WiFi'] = '#include <ESP8266WiFi.h>';
+    Blockly.Arduino.definitions_['include_ESP8266HTTPClient'] = '#include <ESP8266HTTPClient.h>';
+    var code='if (WiFi.status() == WL_CONNECTED) {\nHTTPClient http;\nhttp.begin('+ api+');\nint httpCode = http.GET();\nif (httpCode > 0) {\nString Request_result = http.getString();\n' + branch + '\n}\nelse {\n' + branch1 + '\n} \nhttp.end();\n}\n';
+    return code;
 };
