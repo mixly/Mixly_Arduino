@@ -217,3 +217,17 @@ pbc.globalFunctionD['zip'] = function(py2block, func, args, keywords, starargs, 
             "@items":args.length
         });
     }
+
+pbc.moduleFunctionD.get('random')['sample'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var listname = py2block.convert(args[0]);
+    var varblock = py2block.convert(args[1]);
+    return block("lists_get_random_sublist", func.lineno, {}, {
+        'LIST':listname,
+        'VAR': varblock
+    }, {
+        "inline": "true"
+    });
+}    

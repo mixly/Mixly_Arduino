@@ -3,14 +3,25 @@ pbc.globalFunctionD['print'] = function(py2block, func, args, keywords, starargs
     if (args.length === 1 && keywords.length === 1
         && py2block.identifier(keywords[0].arg) === "end"
         && keywords[0].value._astname === "Str"
-        && py2block.Str_value(keywords[0].value) === ""
-    ){
+        //&& py2block.Str_value(keywords[0].value) === ""
+    ){  if(py2block.Str_value(keywords[0].value) === ""){
         var argblock = py2block.convert(args[0]);
         return [block("system_print_inline", func.lineno, {}, {
             'VAR':argblock
         }, {
             "inline": "false"
         })];
+        }
+        else{
+            var argblock = py2block.convert(args[0]);
+            return [block("system_print_end", func.lineno, {                
+            }, {
+                'VAR':argblock,
+                'END':py2block.convert(keywords[0].value)
+            }, {
+                "inline": "true"
+            })];
+        }
     }else if (args.length === 1 && keywords.length === 0) {
         var argblock = py2block.convert(args[0]);
         return [block("system_print", func.lineno, {}, {

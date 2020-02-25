@@ -83,6 +83,15 @@ Blockly.Python.lists_get_random_item = function() {
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
 
+
+Blockly.Python.lists_get_random_sublist = function() {
+  Blockly.Python.definitions_['import_random'] = 'import random';
+  var varName = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_ADDITIVE) || 'mylist';
+  var VALUE = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var code='random.sample(' +varName + ',' + VALUE + ')';
+  return [code,Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python.lists_insert_value = function(){
   var varName = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_ASSIGNMENT) || '0';
   var at = Blockly.Python.valueToCode(this, 'AT', Blockly.Python.ORDER_ADDITIVE) || '0';

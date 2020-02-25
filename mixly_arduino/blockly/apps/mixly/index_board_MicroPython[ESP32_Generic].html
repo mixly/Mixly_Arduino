@@ -1172,6 +1172,18 @@
           </shadow>
         </value>
       </block>
+      <block type="lists_get_random_sublist">
+        <value name="LIST">
+          <shadow type="variables_get">
+            <field name="VAR">mylist</field>
+          </shadow>
+        </value>
+        <value name="VAR">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+      </block>
       <block type="list_trig">
         <value name="data">
           <shadow type="variables_get">
@@ -1409,6 +1421,23 @@
         <value name="KEY">
           <shadow type="text">
             <field name="TEXT">key</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="dicts_get_default">
+        <value name="DICT">
+          <shadow type="variables_get">
+            <field name="VAR">mydict</field>
+          </shadow>
+        </value>
+        <value name="KEY">
+          <shadow type="text">
+            <field name="TEXT">key</field>
+          </shadow>
+        </value>
+        <value name="VAR">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
           </shadow>
         </value>
       </block>

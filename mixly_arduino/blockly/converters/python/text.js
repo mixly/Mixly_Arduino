@@ -168,6 +168,8 @@ function strTitle(mode){
     }
     return converter;
 }
+
+pbc.objectFunctionD.get('upper')['Str'] = strTitle('upper');
 pbc.objectFunctionD.get('title')['Str'] = strTitle('title');
 pbc.objectFunctionD.get('lower')['Str'] = strTitle('lower');
 pbc.objectFunctionD.get('swapcase')['Str'] = strTitle('swapcase');
@@ -349,4 +351,16 @@ pbc.globalFunctionD['eval'] = function (py2block, func, args, keywords, starargs
     }, {
             "inline": "true"
         });
+}
+
+pbc.moduleFunctionD.get('os')['system'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var varblock = py2block.convert(args[0]);
+    return [block("os_system", func.lineno, {}, {
+        'VAR': varblock
+    }, {
+        "inline": "true"
+    })];
 }

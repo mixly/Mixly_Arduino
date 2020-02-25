@@ -272,3 +272,10 @@ Blockly.Python.text_eval = function(block) {
   var code="eval" +  '(' + codestr + ')';
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.os_system = function(block) {  
+  Blockly.Python.definitions_['import_os'] = 'import os';
+  var codestr =  Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) ;
+  var code="os.system" +  '(' + codestr + ')\n';
+  return code;
+};

@@ -499,7 +499,7 @@ Blockly.Blocks['text_substring'] = {
 Blockly.Blocks['text_capital']={
   init: function() {
     var TEXT_CAPITAL =
-    [[Blockly.Msg.TEXT_TITLE, 'title'],[Blockly.Msg.TEXT_CAPITALIZE, 'capitalize'],[Blockly.Msg.TEXT_SWAPCASE, 'swapcase'],
+    [[Blockly.Msg.TEXT_UPPER, 'upper'],[Blockly.Msg.TEXT_TITLE, 'title'],[Blockly.Msg.TEXT_CAPITALIZE, 'capitalize'],[Blockly.Msg.TEXT_SWAPCASE, 'swapcase'],
     [Blockly.Msg.TEXT_LOWER, 'lower']];
     this.setColour(Blockly.Blocks.texts.HUE);
     this.appendValueInput("VAR")
@@ -511,6 +511,7 @@ Blockly.Blocks['text_capital']={
     this.setTooltip(function() {
       var mode = thisBlock.getFieldValue('CAPITAL');
       var TOOLTIPS = {
+        'upper': Blockly.MIXLY_MIXPY_TEXT_UPPER_TOOLTIP,
         'title': Blockly.MIXLY_MIXPY_TEXT_TITLE_TOOLTIP,
         'swapcase': Blockly.MIXLY_MIXPY_TEXT_SWAPCASE_TOOLTIP,
         'capitalize': Blockly.MIXLY_MIXPY_TEXT_CAPITALIZE_TOOLTIP,
@@ -958,7 +959,7 @@ Blockly.Blocks['text_encode'] = {
       var encode_decode =
         [[Blockly.Msg.MIXPY_TEXT_ENCODE, 'encode'],[Blockly.Msg.MIXPY_TEXT_DECODE, 'decode']];
       var code =
-        [['ASCII', 'ASCII'],['gb2313', 'gb2313'],['gbk', 'gbk'],['utf-8', 'utf-8'],['utf-16', 'utf-16'],['utf-32', 'utf-32']];  
+        [['ASCII', 'ASCII'],['gb2312', 'gb2312'],['gbk', 'gbk'],['utf-8', 'utf-8'],['utf-16', 'utf-16'],['utf-32', 'utf-32']];  
       this.appendDummyInput()          
           .appendField(new Blockly.FieldDropdown(code), 'CODE')
           .appendField(' ')
@@ -985,5 +986,19 @@ Blockly.Blocks['text_eval'] = {
     this.setInputsInline(true);
     this.setOutput(true);
     this.setTooltip(Blockly.MIXLY_PYTHON_TEXT_EVAL_TOOLTIP);
+  }
+};
+
+Blockly.Blocks['os_system'] = {
+ init: function() {    
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.appendValueInput('VAR')
+        .setCheck(String)
+        .appendField(Blockly.MIXLY_PYTHON_OS_SYSTEM);
+    this.setInputsInline(true);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip(Blockly.MIXLY_PYTHON_OS_SYSTEM_TOOLTIP);
   }
 };

@@ -28,16 +28,6 @@ goog.provide('Blockly.Python.dicts');
 
 goog.require('Blockly.Python');
 
-Blockly.Python['dict_get'] = function(block) {
-  var dict = Blockly.Python.valueToCode(block, 'DICT',
-      Blockly.Python.ORDER_MEMBER) || '___';
-  var value = Blockly.Python.valueToCode(block, 'ITEM',
-      Blockly.Python.ORDER_NONE) || '___';
-  var code = dict + '[' + value + ']';
-  return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-
 Blockly.Python.dicts_create_with = function() {
   // Create a list with any number of elements of any type.
   //var dropdown_type = this.getFieldValue('TYPE');
@@ -76,6 +66,17 @@ Blockly.Python.dicts_get = function() {
   var text = Blockly.Python.valueToCode(this, 'KEY', Blockly.Python.ORDER_ASSIGNMENT);
   // var text=this.getFieldValue('KEY');
   var code = varName+"[" + text + "]";
+  return [code,Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.dicts_get_default = function() {
+  var dropdown_type = this.getFieldValue('TYPE');
+  var varName = Blockly.Python.valueToCode(this, 'DICT', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  //var size=window.parseFloat(this.getFieldValue('SIZE'));
+  var text = Blockly.Python.valueToCode(this, 'KEY', Blockly.Python.ORDER_ASSIGNMENT);
+  var argument = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  // var text=this.getFieldValue('KEY');
+  var code = varName+".get(" + text + ',' + argument + ")";
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
 

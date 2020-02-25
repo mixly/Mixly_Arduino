@@ -40,6 +40,42 @@ pbc.objectFunctionD.get('keys')['Dict'] = function(py2block, func, args, keyword
     });
 };
 
+pbc.objectFunctionD.get('get')['Dict'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length !== 1 && args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var objblock = py2block.convert(func.value);
+    if (args.length == 2){
+    var args0 = py2block.convert(args[0]);
+    var args1 = py2block.convert(args[1]);
+    return block("dicts_get_default", func.lineno, {}, {
+        "DICT": objblock,
+        "KEY": args0,
+        "VAR": args1,
+    }, {
+        "inline": "true"
+    });
+    }
+    else{
+
+        var args1block = {
+            _astname: "Name",
+            id: {
+                'v': 'None'
+            }
+        };    
+    var args0 = py2block.convert(args[0]);
+    var args1 = py2block.convert(args1block);
+    return block("dicts_get_default", func.lineno, {}, {
+        "DICT": objblock,
+        "KEY": args0,
+        "VAR": args1,
+    }, {
+        "inline": "true"
+    });    
+    }
+};
+
 //d['key']在python_to_blockly.js中实现
 
 //d['key'] = 11;在python_to_blockly.js中实现

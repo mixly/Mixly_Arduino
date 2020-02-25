@@ -1158,6 +1158,18 @@
           </shadow>
         </value>
       </block>
+      <block type="lists_get_random_sublist">
+        <value name="LIST">
+          <shadow type="variables_get">
+            <field name="VAR">mylist</field>
+          </shadow>
+        </value>
+        <value name="VAR">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+      </block>
       <block type="list_trig">
         <value name="data">
           <shadow type="variables_get">
@@ -1398,6 +1410,23 @@
           </shadow>
         </value>
       </block>
+      <block type="dicts_get_default">
+        <value name="DICT">
+          <shadow type="variables_get">
+            <field name="VAR">mydict</field>
+          </shadow>
+        </value>
+        <value name="KEY">
+          <shadow type="text">
+            <field name="TEXT">key</field>
+          </shadow>
+        </value>
+        <value name="VAR">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
       <block type="dicts_add_or_change">
         <value name="DICT">
           <shadow type="variables_get">
@@ -1581,6 +1610,13 @@
     </category>
     <category id="catFun" custom="PROCEDURE" colour="290"></category>
     <category id="catSerialPort" colour="65">
+      <block type="system_print">
+        <value name="VAR">
+          <shadow type="text">
+            <field name="TEXT">Mixly</field>
+          </shadow>
+        </value>
+      </block>
       <block type="system_print_inline">
         <value name="VAR">
           <shadow type="text">
@@ -1588,10 +1624,15 @@
           </shadow>
         </value>
       </block>
-      <block type="system_print">
+      <block type="system_print_end">
         <value name="VAR">
           <shadow type="text">
             <field name="TEXT">Mixly</field>
+          </shadow>
+        </value>
+        <value name="END">
+          <shadow type="text">
+            <field name="TEXT">,</field>
           </shadow>
         </value>
       </block>

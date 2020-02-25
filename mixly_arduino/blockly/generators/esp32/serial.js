@@ -77,6 +77,13 @@ Blockly.Python.system_print_inline = function() {
   return code;
 };
 
+Blockly.Python.system_print_end = function() {
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
+  var end = Blockly.Python.valueToCode(this, 'END', Blockly.Python.ORDER_ATOMIC) || '\"\"';
+  var code = "print("+str+',end =' + end + ')\n';
+  return code;
+};
+
 Blockly.Python.system_print_many = function() {
   
   var dropdown_type = this.getFieldValue('TYPE');

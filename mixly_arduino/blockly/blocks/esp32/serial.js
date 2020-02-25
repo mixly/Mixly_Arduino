@@ -205,6 +205,20 @@ Blockly.Blocks['system_print_inline'] = {
   }
 };
 
+Blockly.Blocks['system_print_end'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.serial.HUE);
+    this.appendValueInput("VAR")
+    .appendField(Blockly.MIXLY_SERIAL_PRINT);
+    this.appendValueInput("END")
+    .appendField(Blockly.MIXLY_ENDSWITH);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_PYTHON_INOUT_PRINT_END_TOOLTIP);
+  }
+};
+
 Blockly.Blocks['system_print_many'] = {
   
   init: function() {

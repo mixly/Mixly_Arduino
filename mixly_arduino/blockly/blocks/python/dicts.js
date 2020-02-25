@@ -257,8 +257,24 @@ Blockly.Blocks['dicts_get'] = {
         
         this.setOutput(true);
         this.setTooltip(Blockly.Msg.DICTS_GET_TOOLTIP);
-      }
-    };
+  }
+};
+
+Blockly.Blocks['dicts_get_default'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.dicts.HUE);
+    this.appendValueInput('DICT')
+    .setCheck('Dict')    
+    this.appendValueInput('KEY')
+    .appendField(Blockly.Msg.DICTS_GET_IN)
+    this.appendDummyInput("")   
+        .appendField(Blockly.Msg.DICTS_ADD_VALUE);
+    this.appendValueInput('VAR')
+        .appendField(Blockly.Msg.DICTS_DEFAULT_VALUE);    
+    this.setOutput(true);
+    this.setTooltip(Blockly.Msg.DICTS_GET_DEFAULT_TOOLTIP);
+  }
+};
 
     Blockly.Blocks['dicts_add_or_change'] = {
       init: function() {

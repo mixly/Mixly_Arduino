@@ -314,6 +314,23 @@ Blockly.Blocks['lists_get_random_item'] = {
   }
 };
 
+Blockly.Blocks['lists_get_random_sublist'] = {
+  /**
+   * Block for get a random item from list.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.setColour(Blockly.Blocks.lists.HUE);
+  this.appendValueInput("LIST");
+  this.appendValueInput('VAR')
+      .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET + Blockly.MIXLY_MICROBIT_RANDOM)
+  this.appendDummyInput()
+      .appendField(Blockly.LANG_LISTS_GET_INDEX2 + Blockly.Msg.LISTS_GET_RANDOM_SUBLIST)      
+  this.setTooltip(Blockly.Msg.LISTS_GET_RANDOM_SUBLIST_TOOLTIP);
+  this.setOutput(true,'List');
+  }
+};
+
 Blockly.Blocks.lists_insert_value = {
   init: function() {
     this.setColour(Blockly.Blocks.lists.HUE);
