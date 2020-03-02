@@ -184,12 +184,24 @@ Blockly.Arduino.math_random_int = function() {
 };
 
 Blockly.Arduino.base_map = function() {
+  var dropdown_maptype = this.getFieldValue('maptype');
   var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_NONE);
   var value_fl = Blockly.Arduino.valueToCode(this, 'fromLow', Blockly.Arduino.ORDER_ATOMIC);
   var value_fh = Blockly.Arduino.valueToCode(this, 'fromHigh', Blockly.Arduino.ORDER_ATOMIC);
   var value_tl = Blockly.Arduino.valueToCode(this, 'toLow', Blockly.Arduino.ORDER_ATOMIC);
   var value_th = Blockly.Arduino.valueToCode(this, 'toHigh', Blockly.Arduino.ORDER_ATOMIC);
-  var code = 'map('+value_num+', '+value_fl+', '+value_fh+', '+value_tl+', '+value_th+')';
+  if(dropdown_maptype == 'map_float')
+  {
+    Blockly.Arduino.definitions_['function_mapfloat'] = 'float mapfloat(float x, float in_min, float in_max, float out_min, float out_max)'
+                                                    +'\n{'
+                                                    +'\n  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;'
+                                                    +'\n}';
+    var code = 'mapfloat('+value_num+', '+value_fl+', '+value_fh+', '+value_tl+', '+value_th+')';                                              
+  }
+  else
+  {
+    var code = 'map('+value_num+', '+value_fl+', '+value_fh+', '+value_tl+', '+value_th+')';
+  }
   return [code, Blockly.Arduino.ORDER_NONE];
 };
 

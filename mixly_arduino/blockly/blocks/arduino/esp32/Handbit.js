@@ -5,7 +5,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks.Handbit.HUE = 65;
 profile["default"] = profile["esp32_handbit"];
 var OLED_TYPE = [
-[Blockly.OLED_TYPE_SH1106, "SH1106"]
+[Blockly.OLED_TYPE_SH1106, "SH1106_128X64_NONAME"]
 ];
 Blockly.Blocks.handbit_button_is_pressed = {
   init: function () {

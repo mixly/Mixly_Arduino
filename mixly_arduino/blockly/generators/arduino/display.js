@@ -150,7 +150,7 @@ Blockly.Arduino.display_TM1637_displyPrint = function () {
    var SCL = this.getFieldValue('SCL');
    //var matrixName = this.getFieldValue('matrixName');
    var matrixName = "myMatrix";
-      Blockly.Arduino.definitions_['include_Matrix'] = '#include <Matrix.h>';
+   Blockly.Arduino.definitions_['include_Matrix'] = '#include <Matrix.h>';
    Blockly.Arduino.definitions_['var_declare'+matrixName] = 'Matrix '+ matrixName +'('+SDA+','+SCL+');';
    Blockly.Arduino.setups_['setup_' + matrixName] = matrixName + '.begin(0x70);';
    var code= matrixName+'.clear();\n';
@@ -178,7 +178,7 @@ Blockly.Arduino.display_TM1637_displyPrint = function () {
   var pos_x = Blockly.Arduino.valueToCode(this, 'XVALUE', Blockly.Arduino.ORDER_ASSIGNMENT);
   var pos_y = Blockly.Arduino.valueToCode(this, 'YVALUE', Blockly.Arduino.ORDER_ASSIGNMENT);
   //var matrixName = this.getFieldValue('matrixName');
-   var matrixName = "myMatrix";
+  var matrixName = "myMatrix";
   var dropdown_type = Blockly.Arduino.valueToCode(this, 'STAT', Blockly.Arduino.ORDER_ATOMIC);
   if(matrixType=="HT16K33")
   {
@@ -195,26 +195,29 @@ Blockly.Arduino.display_TM1637_displyPrint = function () {
 //点阵屏滚动显示文本
 Blockly.Arduino.display_Matrix_TEXT = function() {
   var matrixType = this.getFieldValue('TYPE');
-  //var matrixName = this.getFieldValue('matrixName');
-   var matrixName = "myMatrix";
+  var matrixName = "myMatrix";
   var textString = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ASSIGNMENT);
   var speed = Blockly.Arduino.valueToCode(this, 'Speed', Blockly.Arduino.ORDER_ATOMIC);
-  if(matrixType=="HT16K33")
-  {
-   var code = matrixName + '.scrollMessage('+textString+','+speed+');\n'
- }
- else
- {
   var code = matrixName + '.scrollMessage('+textString+','+speed+');\n'
-}
-return code;
+  return code;
+};
+
+//点阵屏显示文本
+Blockly.Arduino.display_Matrix_print = function() {
+  var matrixType = this.getFieldValue('TYPE');
+  var matrixName = "myMatrix";
+  var textString = Blockly.Arduino.valueToCode(this, 'TEXT', Blockly.Arduino.ORDER_ASSIGNMENT);
+  var code=matrixName+'.setCursor(0, 0);\n'
+  code += matrixName + '.print('+textString+');\n'
+  code += matrixName + '.write();\n'
+  return code;
 };
 
 //点阵屏显示_显示图案
 Blockly.Arduino.display_Matrix_DisplayChar = function() {
   var matrixType = this.getFieldValue('TYPE');
   //var matrixName = this.getFieldValue('matrixName');
-   var matrixName = "myMatrix";
+  var matrixName = "myMatrix";
   var NO = Blockly.Arduino.valueToCode(this, 'NO', Blockly.Arduino.ORDER_ATOMIC);
   var dotMatrixArray = Blockly.Arduino.valueToCode(this, 'LEDArray', Blockly.Arduino.ORDER_ASSIGNMENT);
   Blockly.Arduino.definitions_['var_declare_LEDArray'] = 'uint8_t  LEDArray[8];';
@@ -274,7 +277,7 @@ Blockly.Arduino.display_Matrix_LedArray = function() {
 Blockly.Arduino.display_Matrix_Brightness = function () {
  var matrixType = this.getFieldValue('TYPE');
  //var matrixName = this.getFieldValue('matrixName');
-   var matrixName = "myMatrix";
+ var matrixName = "myMatrix";
  var BRIGHTNESS = Blockly.Arduino.valueToCode(this, 'Brightness', Blockly.Arduino.ORDER_ATOMIC);
  if(matrixType=="HT16K33")
  {
@@ -291,7 +294,7 @@ return code;
 Blockly.Arduino.display_Matrix_fillScreen = function() {
   var matrixType = this.getFieldValue('TYPE');
   //var matrixName = this.getFieldValue('matrixName');
-   var matrixName = "myMatrix";
+  var matrixName = "myMatrix";
   var FILLSCREEN_TYPE = this.getFieldValue('FILLSCREEN_TYPE');
   var code = matrixName+'.'+FILLSCREEN_TYPE+';\n'
   code+= matrixName+'.write();\n';
@@ -301,7 +304,7 @@ Blockly.Arduino.display_Matrix_fillScreen = function() {
 //点阵屏旋转
 Blockly.Arduino.display_Max7219_Rotation = function() {
   //var matrixName = this.getFieldValue('matrixName');
-   var matrixName = "myMatrix";
+  var matrixName = "myMatrix";
   var dropdown_type = this.getFieldValue('Rotation_TYPE');
   var NO = Blockly.Arduino.valueToCode(this, 'NO', Blockly.Arduino.ORDER_ATOMIC);
   var code = matrixName + '.setRotation('+NO+','+dropdown_type+');\n'
@@ -311,7 +314,7 @@ Blockly.Arduino.display_Max7219_Rotation = function() {
 //点阵屏位置
 Blockly.Arduino.display_Max7219_setPosition = function() {
   //var matrixName = this.getFieldValue('matrixName');
-   var matrixName = "myMatrix";
+  var matrixName = "myMatrix";
   var NO = Blockly.Arduino.valueToCode(this, 'NO', Blockly.Arduino.ORDER_ATOMIC);
   var X = Blockly.Arduino.valueToCode(this, 'X', Blockly.Arduino.ORDER_ATOMIC);
   var Y = Blockly.Arduino.valueToCode(this, 'Y', Blockly.Arduino.ORDER_ATOMIC);
@@ -322,10 +325,10 @@ Blockly.Arduino.display_Max7219_setPosition = function() {
 //点阵屏旋转
 Blockly.Arduino.display_HT16K33_Rotation = function() {
  //var matrixName = this.getFieldValue('matrixName');
-   var matrixName = "myMatrix";
-  var dropdown_type = this.getFieldValue('Rotation_TYPE');
-  var code = matrixName + '.setRotation(4-'+dropdown_type+');\n'
-  return code;
+ var matrixName = "myMatrix";
+ var dropdown_type = this.getFieldValue('Rotation_TYPE');
+ var code = matrixName + '.setRotation(4-'+dropdown_type+');\n'
+ return code;
 };
 
 //点阵屏 图案数组
@@ -368,29 +371,77 @@ Blockly.Arduino.Matrix_img = function() {
 
 Blockly.Arduino.oled_init = function() {
   var OLED_TYPE = this.getFieldValue('OLED_TYPE');
+  var ROTATION = this.getFieldValue('ROTATION');
   var SDA = this.getFieldValue('SDA');
   var SCL = this.getFieldValue('SCL');
   //var board_type=JSFuncs.getPlatform();
-    var board_type ="ESP8266";
+  var board_type ="ESP8266";
   Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
   if(board_type.match(RegExp(/AVR/)))
   {
-   if(SDA=="SDA"&&SCL=="SCL")
-    Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_'+OLED_TYPE+'_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0,U8X8_PIN_NONE);';
+    if(SDA=="SDA"&&SCL=="SCL")
+      Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_'+OLED_TYPE+'_F_HW_I2C u8g2('+ROTATION+', U8X8_PIN_NONE);';
+    else
+      Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_'+OLED_TYPE+'_F_SW_I2C u8g2('+ROTATION+',  '+SCL+', '+SDA+', U8X8_PIN_NONE);';
+  }
   else
-    Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_'+OLED_TYPE+'_128X64_NONAME_1_SW_I2C u8g2(U8G2_R0,  '+SCL+', '+SDA+',U8X8_PIN_NONE);';
-}
-else
-{
- if(SDA=="SDA"&&SCL=="SCL")
-  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_'+OLED_TYPE+'_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0,U8X8_PIN_NONE);';
-else
-  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_'+OLED_TYPE+'_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0,  '+SCL+', '+SDA+',U8X8_PIN_NONE);';
-}  
-Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-Blockly.Arduino.setups_["setup_u8g2"] =' u8g2.begin();\n';
-var code = '';
-return code;
+  {
+    if(SDA=="SDA"&&SCL=="SCL")
+      Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_'+OLED_TYPE+'_1_HW_I2C u8g2('+ROTATION+', U8X8_PIN_NONE);';
+    else
+      Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_'+OLED_TYPE+'_1_SW_I2C u8g2('+ROTATION+',  '+SCL+', '+SDA+', U8X8_PIN_NONE);';
+  }  
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+  Blockly.Arduino.setups_["setup_u8g2"] ='u8g2.begin();';
+  var code = '';
+  return code;
+};
+
+Blockly.Arduino.u8g2_spi_init = function() {
+  var U8G2_TYPE_SPI = this.getFieldValue('U8G2_TYPE_SPI');
+  var ROTATION = this.getFieldValue('ROTATION');
+  var CS = this.getFieldValue('CS');
+  var DC = this.getFieldValue('DC');
+  var RST = this.getFieldValue('RST');
+  Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
+  Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
+  Blockly.Arduino.setups_["setup_u8g2"] ='u8g2.begin();';
+  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_'+U8G2_TYPE_SPI+'_1_4W_HW_SPI u8g2('+ROTATION+', '+CS+', '+DC+', '+RST+');';
+  var code = '';
+  return code;
+};
+
+Blockly.Arduino.u8g2_LCD12864_spi_init = function() {
+  var ROTATION = this.getFieldValue('ROTATION');
+  
+  var DC = this.getFieldValue('DC');
+  //var RST = this.getFieldValue('RST');
+  Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
+  Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
+  Blockly.Arduino.setups_["setup_u8g2"] ='u8g2.begin();';
+  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_ST7920_128X64_1_HW_SPI u8g2('+ROTATION+', '+DC+', U8X8_PIN_NONE);';
+  var code = '';
+  return code;
+};
+
+Blockly.Arduino.u8g2_LCD12864_8080_init = function() {
+  var ROTATION = this.getFieldValue('ROTATION');
+  var DB0 = this.getFieldValue('DB0');
+  var DB1 = this.getFieldValue('DB1');
+  var DB2 = this.getFieldValue('DB2');
+  var DB3 = this.getFieldValue('DB3');
+  var DB4 = this.getFieldValue('DB4');
+  var DB5 = this.getFieldValue('DB5');
+  var DB6 = this.getFieldValue('DB6');
+  var DB7 = this.getFieldValue('DB7');
+  var ENABLE = this.getFieldValue('ENABLE');
+  var DC = this.getFieldValue('DC');
+  //var RST = this.getFieldValue('RST');
+  Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
+  Blockly.Arduino.setups_["setup_u8g2"] ='u8g2.begin();';
+  Blockly.Arduino.definitions_['var_declare_U8G2'] ='U8G2_ST7920_128X64_1_8080 u8g2('+ROTATION+', '+DB0+', '+DB1+', '+DB2+', '+DB3+', '+DB4+', '+DB5+', '+DB6+', '+DB7+', '+ENABLE+', U8X8_PIN_NONE, '+DC+');';
+  var code = '';
+  return code;
 };
 
 Blockly.Arduino.oled_clear = function() {
@@ -434,9 +485,13 @@ Blockly.Arduino.oled_drawPixel = function() {
 
 Blockly.Arduino.oled_page = function() {
   var branch = Blockly.Arduino.statementToCode(this, 'DO');
-  branch = branch.replace(/(^\s*)|(\s*$)/g, ""); 
+  //branch = branch.replace(/(^\s*)|(\s*$)/g, ""); 
   if (branch) {
-    var code = "u8g2.firstPage();\ndo\n{\n" + branch + "\n}\nwhile (u8g2.nextPage());\n";
+    var code = "u8g2.firstPage();"
+    +"\ndo"
+    +"\n{"
+    +"\n"+branch 
+    +  "}while(u8g2.nextPage());\n";
     return code;
   }
 };
@@ -595,9 +650,17 @@ Blockly.Arduino.oled_set_CN_Font = function() {
 };
 //OLED背光亮度
 Blockly.Arduino.u8g2_setContrast = function() {
-    var Contrast= Blockly.Arduino.valueToCode(this, 'Contrast', Blockly.Arduino.ORDER_ATOMIC);
-    var code='u8g2.setContrast(' +Contrast+ ');\n';
-    return code;
+  var Contrast= Blockly.Arduino.valueToCode(this, 'Contrast', Blockly.Arduino.ORDER_ATOMIC);
+  var code='u8g2.setContrast(' +Contrast+ ');\n';
+  return code;
+};
+
+//返回UTF8字符串宽度
+Blockly.Arduino.get_utf8_width = function() {
+    var str= Blockly.Arduino.valueToCode(this, 'str', Blockly.Arduino.ORDER_ATOMIC);
+    Blockly.Arduino.definitions_['getutf8width'] ='int getUTF8Width(String str) {\n  const char *string_variable = str.c_str();\n  return u8g2.getUTF8Width(string_variable);\n}';
+    var code='getUTF8Width(String('+str+'))';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.group_lcd_init=Blockly.Arduino.group_lcd_init2;

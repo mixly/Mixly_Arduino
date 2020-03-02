@@ -3,17 +3,23 @@ goog.provide('Blockly.Blocks.ethernet');
 goog.require('Blockly.Blocks');
 
 Blockly.Blocks.ethernet.HUE = 0;
-//esp_now发送数据
+//esp_now
 Blockly.Blocks['esp_now_send'] = {
   init: function() {
   	 this.appendDummyInput()
-        .appendField("ESP NOW发送");
+        .appendField("ESP NOW"+Blockly.MIXLY_MICROPYTHON_SOCKET_SEND);
     this.appendValueInput("mac")
         .setCheck(null)
         .appendField(Blockly.MIXLY_ETHERNET_MAC_ADDRESS);
     this.appendValueInput("data")
         .setCheck(null)
         .appendField(Blockly.MIXLY_SD_DATA);
+    this.appendStatementInput("success")
+        .setCheck(null)
+        .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_SEND+Blockly.MIXLY_SUCCESS);
+    this.appendStatementInput("failure")
+        .setCheck(null)
+        .appendField(Blockly.MIXLY_MICROPYTHON_SOCKET_SEND+Blockly.MIXLY_FAILED);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(Blockly.Blocks.ethernet.HUE);
@@ -22,7 +28,7 @@ Blockly.Blocks['esp_now_send'] = {
   }
 };
 
-//esp_now接收数据
+//esp_now
 Blockly.Blocks['esp_now_receive'] = {
   init: function() {
     this.appendDummyInput()

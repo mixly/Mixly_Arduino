@@ -31,6 +31,10 @@ Blockly.Arduino.http_get = function () {
   Blockly.Arduino.esp_now_send = function () {
   	var mac= Blockly.Arduino.valueToCode(this, 'mac', Blockly.Arduino.ORDER_ATOMIC);
   	var data= Blockly.Arduino.valueToCode(this, 'data', Blockly.Arduino.ORDER_ATOMIC);
+  	var branch = Blockly.Arduino.statementToCode(this, 'success');
+    branch = branch.replace(/(^\s*)|(\s*$)/g, "");
+    var branch1 = Blockly.Arduino.statementToCode(this, 'failure');
+    branch1 = branch1.replace(/(^\s*)|(\s*$)/g, "");
   	mac = ':' + mac + '';
   	mac = mac.replace(/\"/g, "").replace(/\:/g,",0x");
   	mac = ':' + mac + '';
@@ -45,7 +49,7 @@ Blockly.Arduino.http_get = function () {
   	Blockly.Arduino.setups_['var_declare_peerInfo_channel'] = 'peerInfo.channel = 0;';
   	Blockly.Arduino.setups_['var_declare_peerInfo_encrypt'] = 'peerInfo.encrypt = false;';
   	Blockly.Arduino.setups_['setups_esp_now_add_peer'] = 'esp_now_add_peer(&peerInfo);';
-  	var code='  String(' + data + ').toCharArray(myData.a, sizeof(myData.a));\n  esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));\n';
+  	var code='  String(' + data + ').toCharArray(myData.a, sizeof(myData.a));\n  esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));\n  if (result == ESP_OK) {\n' + branch + '\n}\n  else {\n' + branch1 + '\n}\n';
   	return code;
   };
 

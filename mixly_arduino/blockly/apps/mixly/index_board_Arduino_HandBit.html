@@ -2553,7 +2553,27 @@
           </value>
         </block>
       </value>
-    </block>
+    <statement name="success">
+  <block type="serial_println">
+    <field name="serial_select">Serial</field>
+    <value name="CONTENT">
+      <block type="text">
+        <field name="TEXT">Sent with success</field>
+      </block>
+    </value>
+  </block>
+</statement>
+<statement name="failure">
+  <block type="serial_println">
+    <field name="serial_select">Serial</field>
+    <value name="CONTENT">
+      <block type="text">
+        <field name="TEXT">Error sending the data</field>
+      </block>
+    </value>
+  </block>
+</statement>
+</block>
     <block type="esp_now_receive">
       <statement name="receive_data">
         <block type="serial_println" >

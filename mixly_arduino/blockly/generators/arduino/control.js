@@ -218,13 +218,13 @@ Blockly.Arduino.do_while = function() {
   {
     var code = 'do{\n'
               +statements_input_data
-              +'}while(!('+value_select_data+'))\n';
+              +'}while(!('+value_select_data+'));\n';
   }
   else
   {
     var code = 'do{\n'
               +statements_input_data
-              +'}while('+value_select_data+')\n';
+              +'}while('+value_select_data+');\n';
   }
   return code;
 };

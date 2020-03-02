@@ -168,7 +168,7 @@ Blockly.Arduino.mixgo_MPU9250 = function() {
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
   Blockly.Arduino.definitions_['include_FaBo9Axis_MPU9250'] = '#include <FaBo9Axis_MPU9250.h>';
   Blockly.Arduino.definitions_['var_declare_MPU9250'] = 'FaBo9Axis fabo_9axis;\n float ax,ay,az,gx,gy,gz,mx,my,mz;';
-  Blockly.Arduino.setups_['setup_mpu9250'] = 'Serial.begin(115200);\nfabo_9axis.begin();';
+  Blockly.Arduino.setups_['setup_mpu9250'] = 'fabo_9axis.begin();';
   var dropdown_type = this.getFieldValue('MixGo_MPU9250_GETAB');
   var code = '';
   if (dropdown_type == "a") code += 'fabo_9axis.readAccelX()';

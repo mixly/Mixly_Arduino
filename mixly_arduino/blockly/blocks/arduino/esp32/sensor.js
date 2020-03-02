@@ -4,6 +4,7 @@ goog.provide('Blockly.Blocks.sensor');
 goog.require('Blockly.Blocks');
 Blockly.Blocks.sensor.HUE = 40;
 //ESP32片内霍尔传感器值
+profile["default"] = profile["esp32_handbit"];
 Blockly.Blocks['ESP32_hallRead'] = {
   init: function() {
     this.appendDummyInput()

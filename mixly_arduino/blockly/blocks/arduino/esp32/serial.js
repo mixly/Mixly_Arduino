@@ -4,7 +4,7 @@ goog.provide('Blockly.Blocks.serial');
 
 goog.require('Blockly.Blocks');
 Blockly.Blocks.serial.HUE = 65;
-profile["default"] = profile["esp32_arduino"];
+
 Blockly.Blocks['serial_softserial'] = {
 	init: function() {
 		this.setColour(Blockly.Blocks.serial.HUE);

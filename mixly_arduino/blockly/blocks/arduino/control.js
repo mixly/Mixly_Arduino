@@ -832,15 +832,15 @@ Blockly.Blocks.do_while= {
   init: function() { 
   this.appendStatementInput("input_data")
       .setCheck(null)  
-      .appendField("执行");
+      .appendField(Blockly.MIXLY_DO);
   this.appendValueInput("select_data")
       .setCheck(null)  
-      .appendField("重复")
-      .appendField(new Blockly.FieldDropdown([["满足条件","true"],["不满足条件","false"]]), "type");
+      .appendField(Blockly.LANG_CONTROLS_WHILEUNTIL_TITLE_REPEAT)
+      .appendField(new Blockly.FieldDropdown([[Blockly.LANG_CONTROLS_WHILEUNTIL_OPERATOR_WHILE,"true"],[Blockly.LANG_CONTROLS_WHILEUNTIL_OPERATOR_UNTIL ,"false"]]), "type");
   this.setPreviousStatement(true, null);
   this.setNextStatement(true, null);
   this.setColour(120);
-  this.setTooltip("do-while循环");
+  this.setTooltip("do-while loop");
   this.setHelpUrl("");
   }
 };

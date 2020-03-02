@@ -467,7 +467,6 @@ Blockly.Arduino.blynk_AP_config = function () {
 		Blockly.Arduino.definitions_['include_WiFiClient'] = '#include <WiFiClient.h>';
 		Blockly.Arduino.definitions_['include_BlynkSimpleEsp32'] = '#include <BlynkSimpleEsp32.h>';
 	}
-
 	Blockly.Arduino.definitions_['include_DNSServer'] = '#include <DNSServer.h>';
 	Blockly.Arduino.definitions_['include_ESP8266WebServer'] = '#include <ESP8266WebServer.h>\n';
 	Blockly.Arduino.definitions_['include_WiFiManager'] = '#include <WiFiManager.h>';
