@@ -399,7 +399,21 @@
       </shadow>
     </value>
   </block>
+  <block type="math_auto_add_or_minus">
+    <field name="math_auto_add_minus_type">++</field>
+    <value name="math_auto_add_minus_output">
+      <shadow type="variables_get">
+        <field name="VAR">item</field>
+      </shadow>
+    </value>
+  </block>
   <block type="math_to_int">
+  </block>
+  <block type="math_SizeOf">
+    <value name="data">
+      <shadow type="arduino_variate_type">
+      </shadow>
+    </value>
   </block>
   <block type="math_max_min">
     <value name="A">
@@ -831,6 +845,8 @@
     </shadow>
   </value>
 </block>
+<block type="lists_array2_get_length">
+</block>
 </category>
 <category id="catVar" colour="330" custom="VARIABLE">
 </category>
@@ -901,7 +917,50 @@
       <shadow type="pins_digital"></shadow>
     </value>
   </block>
+  <block type="mlx90614_init">
+    <value name="mlx90614_address">
+      <shadow type="math_number">
+        <field name="NUM">0x5A</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="mlx90614_get_data">
+  </block>
   <block type="TCS34725_Get_RGB">
+  </block>
+  <block type="tcs230_init">
+    <value name="tcs230_s0">
+      <shadow type="pins_digital">
+        <field name="PIN">2</field>
+      </shadow>
+    </value>
+    <value name="tcs230_s1">
+      <shadow type="pins_digital">
+        <field name="PIN">3</field>
+      </shadow>
+    </value>
+    <value name="tcs230_s2">
+      <shadow type="pins_digital">
+        <field name="PIN">4</field>
+      </shadow>
+    </value>
+    <value name="tcs230_s3">
+      <shadow type="pins_digital">
+        <field name="PIN">5</field>
+      </shadow>
+    </value>
+    <value name="tcs230_led">
+      <shadow type="pins_digital">
+        <field name="PIN">6</field>
+      </shadow>
+    </value>
+    <value name="tcs230_out">
+      <shadow type="pins_digital">
+        <field name="PIN">7</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="tcs230_Get_RGB">
   </block>
   <block type="SHT20">
   </block>
@@ -1101,13 +1160,6 @@
 </block>
 <block type="get_keypad_num">
   <value name="keypad_name"></value>
-</block>
-<block type="arduino_keypad_event">
-  <value name="keypad_event_input">
-   <block type="variables_get">
-    <field name="VAR">key</field>
-  </block>
-</value>
 </block>
 <block type="gps_init">
   <value name="RX">

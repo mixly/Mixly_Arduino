@@ -94,6 +94,24 @@ Blockly.Arduino.ds18b20 = function () {
  Blockly.Arduino.definitions_[funcName] = code;
  return ['ds18b20_' + dropdown_pin + '_getTemp(' + unit + ')', Blockly.Arduino.ORDER_ATOMIC];
 }
+//初始化MLX90614红外测温传感器
+Blockly.Arduino.mlx90614_init = function() {
+  var value_mlx90614_address = Blockly.Arduino.valueToCode(this, 'mlx90614_address', Blockly.Arduino.ORDER_ATOMIC);
+  var text_mlx90614_name = 'MLX';
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+  Blockly.Arduino.definitions_['include_Adafruit_MLX90614'] = '#include <Adafruit_MLX90614.h>';
+  Blockly.Arduino.definitions_['var_declare_MLX90614_'+text_mlx90614_name] = 'Adafruit_MLX90614 '+text_mlx90614_name+' = Adafruit_MLX90614('+value_mlx90614_address+');';
+  Blockly.Arduino.setups_['setup_MLX90614_'+text_mlx90614_name] = ''+text_mlx90614_name+'.begin();';
+  var code = '';
+  return code;
+};
+//MLX90614获取数据
+Blockly.Arduino.mlx90614_get_data = function() {
+  var text_mlx90614_name = 'MLX';
+  var dropdown_mlx90614_data = this.getFieldValue('mlx90614_data');
+  var code = ''+text_mlx90614_name+'.'+dropdown_mlx90614_data+'()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
 Blockly.Arduino.weightSensor = function () {
   var DOUT = this.getFieldValue('DOUT');
   var SCK = this.getFieldValue('SCK');
@@ -374,6 +392,82 @@ Blockly.Arduino.TCS34725_Get_RGB = function() {
  var code = "delay(60);\ntcs.getRGB(&red, &green, &blue);\n";  
  var RGB = this.getFieldValue('TCS34725_GETRGB');
  return [RGB, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+//初始化TCS230颜色传感器
+Blockly.Arduino.tcs230_init = function() {
+    var value_tcs230_s0 = Blockly.Arduino.valueToCode(this, 'tcs230_s0', Blockly.Arduino.ORDER_ATOMIC);
+    var value_tcs230_s1 = Blockly.Arduino.valueToCode(this, 'tcs230_s1', Blockly.Arduino.ORDER_ATOMIC);
+    var value_tcs230_s2 = Blockly.Arduino.valueToCode(this, 'tcs230_s2', Blockly.Arduino.ORDER_ATOMIC);
+    var value_tcs230_s3 = Blockly.Arduino.valueToCode(this, 'tcs230_s3', Blockly.Arduino.ORDER_ATOMIC);
+    var value_tcs230_led = Blockly.Arduino.valueToCode(this, 'tcs230_led', Blockly.Arduino.ORDER_ATOMIC);
+    var value_tcs230_out = Blockly.Arduino.valueToCode(this, 'tcs230_out', Blockly.Arduino.ORDER_ATOMIC);
+
+  Blockly.Arduino.definitions_['var_declare_tcs230_pin'] = '#define tcs230_S0 '+value_tcs230_s0+''
+                                                     +'\n#define tcs230_S1 '+value_tcs230_s1+''
+                                                     +'\n#define tcs230_S2 '+value_tcs230_s2+''
+                                                     +'\n#define tcs230_S3 '+value_tcs230_s3+''
+                                                     +'\n#define tcs230_sensorOut '+value_tcs230_out+''
+                                                     +'\n#define tcs230_LED '+value_tcs230_led+'';
+
+  Blockly.Arduino.definitions_['function_tcs230_Getcolor'] = '//TCS230颜色传感器获取RGB值'
+                                                          +'\nint tcs230_Getcolor(char data)'
+                                                          +'\n{'
+                                                          +'\n  int frequency = 0;'
+                                                          +'\n  switch(data)'
+                                                          +'\n  {'
+                                                          +'\n    case \'R\':'
+                                                          +'\n    {'
+                                                          +'\n      digitalWrite(tcs230_S2,LOW);'
+                                                          +'\n      digitalWrite(tcs230_S3,LOW);'
+                                                          +'\n      frequency = pulseIn(tcs230_sensorOut, LOW);'
+                                                          +'\n      frequency = map(frequency, 25, 72, 255, 0);'
+                                                          +'\n      break;'
+                                                          +'\n    }'
+                                                          +'\n    case \'G\':'
+                                                          +'\n    {'
+                                                          +'\n      digitalWrite(tcs230_S2,HIGH);'
+                                                          +'\n      digitalWrite(tcs230_S3,HIGH);'
+                                                          +'\n      frequency = pulseIn(tcs230_sensorOut, LOW);'
+                                                          +'\n      frequency = map(frequency, 30, 90, 255, 0);'
+                                                          +'\n      break;'
+                                                          +'\n    }'
+                                                          +'\n    case \'B\':'
+                                                          +'\n    {'
+                                                          +'\n      digitalWrite(tcs230_S2,LOW);'
+                                                          +'\n      digitalWrite(tcs230_S3,HIGH);'
+                                                          +'\n      frequency = pulseIn(tcs230_sensorOut, LOW);'
+                                                          +'\n      frequency = map(frequency, 25, 70, 255, 0);'
+                                                          +'\n      break;'
+                                                          +'\n    }'
+                                                          +'\n    default:'
+                                                          +'\n      return -1;'
+                                                          +'\n  }'
+                                                          +'\n  if (frequency < 0)'
+                                                          +'\n    frequency = 0;'
+                                                          +'\n  if (frequency > 255)'
+                                                          +'\n    frequency = 255;'
+                                                          +'\n  return frequency;'
+                                                          +'\n}\n';
+
+  Blockly.Arduino.setups_['setup_tcs230_pin'] = 'pinMode(tcs230_S0, OUTPUT);'
+                                             +'\n  pinMode(tcs230_S1, OUTPUT);'
+                                             +'\n  pinMode(tcs230_S2, OUTPUT);'
+                                             +'\n  pinMode(tcs230_S3, OUTPUT);'
+                                             +'\n  pinMode(tcs230_LED, OUTPUT);'
+                                             +'\n  pinMode(tcs230_sensorOut, INPUT);'
+                                             +'\n  digitalWrite(tcs230_S0,HIGH);'
+                                             +'\n  digitalWrite(tcs230_S1,LOW);'
+                                             +'\n  digitalWrite(tcs230_LED,HIGH);';
+  var code = '';
+  return code;
+};
+
+//TCS230颜色传感器 获取RGB值
+Blockly.Arduino.tcs230_Get_RGB = function() {
+  var dropdown_tcs230_color = this.getFieldValue('tcs230_color');
+  var code = 'tcs230_Getcolor(\''+dropdown_tcs230_color+'\')';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.Arduino_keypad_4_4_start = function() {

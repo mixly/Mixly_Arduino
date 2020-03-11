@@ -158,6 +158,21 @@ Blockly.Arduino.math_to_int = function() {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+//变量定义
+Blockly.Arduino.arduino_variate_type = function() {
+    var dropdown_variate_type = this.getFieldValue('variate_type');
+  var code = dropdown_variate_type;
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+//获取某个变量在内存中所占用的字节数
+Blockly.Arduino.math_SizeOf = function() {
+  this.setTooltip("以字节形式返回某个操作数的储存大小");
+    var value_data = Blockly.Arduino.valueToCode(this, 'data', Blockly.Arduino.ORDER_ATOMIC);
+  var code = 'sizeof('+value_data+')';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 Blockly.Arduino.math_max_min = function() {
   var a = Blockly.Arduino.valueToCode(this, 'A',Blockly.Arduino.ORDER_NONE) || '0';
   var b = Blockly.Arduino.valueToCode(this, 'B',Blockly.Arduino.ORDER_NONE) || '0';
@@ -224,4 +239,10 @@ Blockly.Arduino.variables_operation = function() {
     var data = Blockly.Arduino.valueToCode(this, 'data', Blockly.Arduino.ORDER_ATOMIC);
     var code=''+ variables+' = '+ variables+' '+ type+' '+ data+';\n';
     return code;
+};
+Blockly.Arduino.math_auto_add_or_minus = function() {
+  var value_math_auto_add_minus_output = Blockly.Arduino.valueToCode(this, 'math_auto_add_minus_output', Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_math_auto_add_minus_type = this.getFieldValue('math_auto_add_minus_type');
+  var code = value_math_auto_add_minus_output + dropdown_math_auto_add_minus_type + ';\n';
+  return code;
 };

@@ -166,6 +166,47 @@ Blockly.Blocks['math_to_int']= {
   });
  }
 };
+//变量定义
+Blockly.Blocks.arduino_variate_type= {
+  init: function() { 
+  var DATATYPES =
+  [[Blockly.LANG_MATH_INT, 'int'],
+  [Blockly.LANG_MATH_UNSIGNED_INT, 'unsigned int'],
+  [Blockly.LANG_MATH_WORD, 'word'],
+  [Blockly.LANG_MATH_LONG, 'long'],
+  [Blockly.LANG_MATH_UNSIGNED_LONG, 'unsigned long'],
+  [Blockly.LANG_MATH_FLOAT, 'float'],
+  [Blockly.LANG_MATH_DOUBLE, 'double'],
+  [Blockly.LANG_MATH_BOOLEAN, 'boolean'],
+  [Blockly.LANG_MATH_BYTE, 'byte'],
+  [Blockly.LANG_MATH_CHAR, 'char'],
+  [Blockly.LANG_MATH_UNSIGNED_CHAR, 'unsigned char'],
+  [Blockly.LANG_MATH_STRING, 'String'],
+  ["uint8_t","uint8_t"],
+  ["uint16_t","uint16_t"],
+  ["uint32_t","uint32_t"],
+  ["uint64_t","uint64_t"]];
+  this.appendDummyInput()  
+      .appendField(new Blockly.FieldDropdown(DATATYPES), "variate_type");
+  this.setOutput(true, null);
+  this.setColour(Blockly.Blocks.math.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+//获取某个变量在内存中所占用的字节数
+Blockly.Blocks.math_SizeOf= {
+  init: function() { 
+  this.appendValueInput("data")
+  .setCheck(null)  
+  .appendField(Blockly.MIXLY_GET+" "+Blockly.MIXLY_I2C_BYTES);
+  this.setInputsInline(false);
+  this.setOutput(true, null);
+  this.setColour(Blockly.Blocks.math.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
 //最大最小值
 Blockly.Blocks['math_max_min']= {
   init: function() {
@@ -290,16 +331,31 @@ Blockly.Blocks.base_map = {
 
 Blockly.Blocks['variables_operation'] = {
   init: function() {
-       this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.Blocks.math.HUE);
     this.appendValueInput("variables")
-        .setCheck(null);
+    .setCheck(null);
     this.appendValueInput("data")
-        .setCheck(null)
-        .appendField(new Blockly.FieldDropdown([["+=","+"], ["-=","-"], ["*=","*"], ["/=","/"]]), "type");
+    .setCheck(null)
+    .appendField(new Blockly.FieldDropdown([["+=","+"], ["-=","-"], ["*=","*"], ["/=","/"]]), "type");
     this.appendDummyInput();
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
  this.setTooltip();
  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.math_auto_add_or_minus= {
+  init: function() { 
+  this.appendValueInput("math_auto_add_minus_output")
+  .setCheck(null);
+  this.appendDummyInput()  
+  .appendField(new Blockly.FieldDropdown([["++","++"],["--","--"]]), "math_auto_add_minus_type");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.math.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
   }
 };

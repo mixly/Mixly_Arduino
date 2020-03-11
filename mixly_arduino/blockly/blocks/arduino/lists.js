@@ -640,3 +640,19 @@ Blockly.Blocks.loop_array= {
     this.setHelpUrl("");
   }
 };
+
+//获取二维数组的行数与列数
+Blockly.Blocks.lists_array2_get_length= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(Blockly.MIXLY_ARRAY2)
+  .appendField(new Blockly.FieldTextInput("mylist"), "list_name")
+  .appendField(" "+Blockly.MIXLY_GET)
+  .appendField(new Blockly.FieldDropdown([[Blockly.array2_rows,"row"],[Blockly.array2_cols,"col"]]), "type");
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(Blockly.Blocks.lists.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};

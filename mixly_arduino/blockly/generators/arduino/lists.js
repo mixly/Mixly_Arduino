@@ -251,3 +251,14 @@ Blockly.Arduino.loop_array = function() {
   }
     return code;
 };
+//获取二维数组的行数与列数
+Blockly.Arduino.lists_array2_get_length = function() {
+  var text_list_name = this.getFieldValue('list_name');
+  var dropdown_type = this.getFieldValue('type');
+  var code = '';
+  if(dropdown_type == 'col')
+    code = '(sizeof('+text_list_name+'[0]) / sizeof('+text_list_name+'[0][0]))';
+  else
+    code = '(sizeof('+text_list_name+') / sizeof('+text_list_name+'[0]))';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
