@@ -46,7 +46,7 @@ var MSG = {
 	catOnBoardActuator:'Board Actuator',
 	cat4Digitdisplay:'4Digitdisplay',
 	catLCD:'LCD',
-	catOLED:'OLED',
+	catOLED:'Display',
 	catMatrix:'Matrix',
 	catFactory:'Factory',
 	catBlynk:'Blynk IoT',
@@ -778,6 +778,7 @@ Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_PRINTLN= 'Print data, followed by a carria
 Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_PRINTLN= 'Print data, followed by a carriage return and newline, to the server a client is connected to. Prints numbers as a sequence of digits, each an ASCII character (e.g. the number 123 is sent as the three characters \'1\', \'2\', \'3\').';
 Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_READ= 'Read the next byte received from the server the client is connected to';
 Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = 'Casting a constant or variable';
+Blockly.MIXLY_TOOLTIP_MLX90614_GET_DATA = 'MLX90614 infrared temperature sensor obtains temperature, and the type of data returned is float';
 Blockly.MIXLY_BUTTON_PRESSED= 'Pressed';
 Blockly.MIXLY_BUTTON_RELEASED= 'Released';
 Blockly.MIXLY_BUTTON_HOLD= 'Hold';
@@ -2141,9 +2142,10 @@ Blockly.blynk_IOT_IR_POWER = 'Power';
 Blockly.blynk_IOT_IR_RECEIVE_RAW = 'Infrared signal decoding pin';
 Blockly.blynk_IOT_IR_SEND = 'Infrared Transmit Pin';
 Blockly.blynk_IOT_IR_SEND_CODE = 'Encoded Content';
+Blockly.DISPLAY = 'Display';
 Blockly.OLED = 'OLED';
 Blockly.OLEDGET = 'Get OLED';
-Blockly.OLED_CLEAR = 'OLED clear screen';
+Blockly.OLED_CLEAR = 'clear screen';
 Blockly.MIXLY_HEIGHT = 'Height';
 Blockly.MIXLY_WIDTH = 'Width';
 Blockly.OLED_DRAWPIXEL = 'Draw points';
@@ -2202,6 +2204,7 @@ Blockly.OLED_BITMAP = 'Display image';
 Blockly.OLED_BITMAP_NAME = 'Image Name';
 Blockly.OLED_BITMAP_DATA = 'Image data';
 Blockly.SAVETO = 'Save to';
+Blockly.MIRROR = 'Mirror';
 Blockly.OLED_GET_HEIGHT_TOOLTIP = 'Get the width or height of the OLED';
 Blockly.OLED_DEF_BMP_DATA_TOOLTIP = 'Set an image name and paste the result of the image / kanji modulus into the image data. ';
 Blockly.OLED_SHOW_BMP_TOOLTIP = 'Set the coordinates of the image / Chinese character to be displayed and its width and height, and then set the image name. ';
@@ -2646,4 +2649,9 @@ Blockly.MIXLY_SUCCESS = "Success";
 Blockly.MIXLY_WRITE="Write";
 Blockly.MIXLY_READONLY="read only";
 Blockly.MIXLY_FILE_PATH="File Path";
-
+Blockly.GET_THE_DIFFERENCE_BETWEEN_TWO_DATES = 'Get the difference between two dates';
+Blockly.START = 'start ';
+Blockly.END = 'end ';
+Blockly.MLX90614_TYPE = 'Infrared temperature sensor';
+Blockly.MLX90614_TARGET_OBJECT_TEMP = 'Target object temperature';
+Blockly.MLX90614_AMBIENT_TEMP = 'Ambient temperature';

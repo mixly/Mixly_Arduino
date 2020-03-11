@@ -46,7 +46,7 @@ var MSG = {
 	catOnBoardActuator:'板載執行',
 	cat4Digitdisplay:'四位數碼管',
 	catLCD:'LCD液晶屏',
-	catOLED:'OLED顯示幕',
+	catOLED:'顯示幕',
 	catMatrix:'點陣屏',
 	catFactory:'自訂模組',
 	catBlynk:'Blynk 物聯網',
@@ -778,6 +778,7 @@ Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_PRINTLN = '將資料列印到用戶端連�
 Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_READ = '讀取服務端發送用戶端緩衝區的下一個位元組';
 Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = '向指定位址發送一個GET請求';
 Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = '對常量或變數進行強制類型轉換';
+Blockly.MIXLY_TOOLTIP_MLX90614_GET_DATA = 'MLX90614紅外測溫傳感器獲取溫度，返回數據的類型為float';
 Blockly.MIXLY_BUTTON_PRESSED = '按下';
 Blockly.MIXLY_BUTTON_RELEASED = '鬆開';
 Blockly.MIXLY_BUTTON_HOLD = '按住';
@@ -2142,9 +2143,10 @@ Blockly.blynk_IOT_IR_POWER = '電源';
 Blockly.blynk_IOT_IR_RECEIVE_RAW = '紅外信號解碼 管腳';
 Blockly.blynk_IOT_IR_SEND = '紅外發送 管腳';
 Blockly.blynk_IOT_IR_SEND_CODE = '編碼內容';
+Blockly.DISPLAY = '顯示屏';
 Blockly.OLED = 'OLED';
 Blockly.OLEDGET = '獲取OLED';
-Blockly.OLED_CLEAR = 'OLED清屏';
+Blockly.OLED_CLEAR = '清屏';
 Blockly.MIXLY_HEIGHT = '高度';
 Blockly.MIXLY_WIDTH = '寬度';
 Blockly.OLED_DRAWPIXEL = '畫點';
@@ -2203,6 +2205,7 @@ Blockly.OLED_BITMAP = '顯示圖像';
 Blockly.OLED_BITMAP_NAME = '圖像名稱';
 Blockly.OLED_BITMAP_DATA = '圖像資料';
 Blockly.SAVETO = '保存到';
+Blockly.MIRROR = '鏡像';
 Blockly.OLED_GET_HEIGHT_TOOLTIP = '獲取OLED的寬度或高度';
 Blockly.OLED_DEF_BMP_DATA_TOOLTIP = '設置一個圖像名稱，將圖像/漢字取模結果粘貼到圖像資料中。';
 Blockly.OLED_SHOW_BMP_TOOLTIP = '設置需要顯示圖像/漢字的座標和它的寬高，再設置圖像名稱。';
@@ -2647,3 +2650,9 @@ Blockly.MIXLY_SUCCESS = "成功";
 Blockly.MIXLY_WRITE="寫入";
 Blockly.MIXLY_READONLY="只读";
 Blockly.MIXLY_FILE_PATH="文件路径";
+Blockly.GET_THE_DIFFERENCE_BETWEEN_TWO_DATES = '獲取兩個日期差值';
+Blockly.START = '起始';
+Blockly.END = '結束';
+Blockly.MLX90614_TYPE = '紅外測溫傳感器';
+Blockly.MLX90614_TARGET_OBJECT_TEMP = '目標物體溫度';
+Blockly.MLX90614_AMBIENT_TEMP = '周圍環境溫度';

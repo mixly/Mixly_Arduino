@@ -46,7 +46,7 @@ var MSG = {
   catOnBoardActuator: 'Ejecución a bordo',
   cat4Digitdisplay: 'Cuatro tubos digitales',
   catLCD: 'LCD',
-  catOLED: 'pantalla OLED',
+  catOLED: 'Display',
   catMatrix: 'Pantalla de matriz de puntos',
   catFactory: 'Módulo personalizado',
   catBlynk: 'Blynk IoT',
@@ -778,6 +778,7 @@ Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_PRINTLN = 'Imprimir datos en el servidor a
 Blockly.MIXLY_TOOLTIP_ETHERNET_CLIENT_READ = 'Leer el siguiente byte del búfer del cliente enviado por el servidor';
 Blockly.MIXLY_TOOLTIP_ETHERNET_GET_REQUEST = 'Enviar una solicitud GET a la dirección especificada';
 Blockly.MIXLY_TOOLTIP_VARIABLES_CHANGE = 'Forzar una constante o variable';
+Blockly.MIXLY_TOOLTIP_MLX90614_GET_DATA = 'El sensor de temperatura infrarrojo MLX90614 obtiene la temperatura y el tipo de datos devueltos es flotante';
 Blockly.MIXLY_BUTTON_PRESSED = 'Presionado';
 Blockly.MIXLY_BUTTON_RELEASED = 'Release';
 Blockly.MIXLY_BUTTON_HOLD = 'Hold';
@@ -2143,9 +2144,10 @@ Blockly.blynk_IOT_IR_POWER = 'Poder';
 Blockly.blynk_IOT_IR_RECEIVE_RAW = 'Pin de decodificación de señal infrarroja';
 Blockly.blynk_IOT_IR_SEND = 'Pin de transmisión infrarroja';
 Blockly.blynk_IOT_IR_SEND_CODE = 'Contenido codificado';
+Blockly.DISPLAY = 'Display';
 Blockly.OLED = 'OLED';
 Blockly.OLEDGET = 'Obtener OLED';
-Blockly.OLED_CLEAR = 'Pantalla clara OLED';
+Blockly.OLED_CLEAR = 'Pantalla clara';
 Blockly.MIXLY_HEIGHT = 'Altura';
 Blockly.MIXLY_WIDTH = 'Ancho';
 Blockly.OLED_DRAWPIXEL = 'Dibujar puntos';
@@ -2204,6 +2206,7 @@ Blockly.OLED_BITMAP = 'Mostrar imagen';
 Blockly.OLED_BITMAP_NAME = 'Nombre de imagen';
 Blockly.OLED_BITMAP_DATA = 'Datos de imagen';
 Blockly.SAVETO = 'Guardar en';
+Blockly.MIRROR = 'Espejo';
 Blockly.OLED_GET_HEIGHT_TOOLTIP = 'Obtener el ancho o alto del OLED';
 Blockly.OLED_DEF_BMP_DATA_TOOLTIP = 'Establecer un nombre de imagen y pegar el resultado de la imagen / módulo kanji en los datos de la imagen. ';
 Blockly.OLED_SHOW_BMP_TOOLTIP = 'Establecer las coordenadas de la imagen / carácter chino que se mostrará y su ancho y alto, y luego establecer el nombre de la imagen. ';
@@ -2647,3 +2650,9 @@ Blockly.MIXLY_SUCCESS = "El éxito";
 Blockly.MIXLY_WRITE="Escribir";
 Blockly.MIXLY_READONLY="Solo lectura";
 Blockly.MIXLY_FILE_PATH="Ruta del archivo";
+Blockly.GET_THE_DIFFERENCE_BETWEEN_TWO_DATES = 'Obtén la diferencia entre dos fechas';
+Blockly.START = 'Inicio ';
+Blockly.END = 'Fin ';
+Blockly.MLX90614_TYPE = 'Sensor de temperatura infrarroja';
+Blockly.MLX90614_TARGET_OBJECT_TEMP = 'Temperatura objetivo del objeto';
+Blockly.MLX90614_AMBIENT_TEMP = 'Temperatura ambiente';
