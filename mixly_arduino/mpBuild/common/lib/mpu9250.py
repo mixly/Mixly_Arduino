@@ -441,22 +441,22 @@ class MPU9250:
     		else:
     			return False
         if choice == 'up':
-    		if self.mpu6500.acceleration()[0] >= 9:
+    		if self.mpu6500.acceleration()[1] >= 9:
     			return True
     		else:
     			return False
     	if choice == 'down':
-    		if self.mpu6500.acceleration()[0] <= -9:
-    			return True
-    		else:
-    			return False
-        if choice == 'right':
     		if self.mpu6500.acceleration()[1] <= -9:
     			return True
     		else:
     			return False
+        if choice == 'right':
+    		if self.mpu6500.acceleration()[0] <= -9:
+    			return True
+    		else:
+    			return False
     	if choice == 'left':
-    		if self.mpu6500.acceleration()[1] >= 9:
+    		if self.mpu6500.acceleration()[0] >= 9:
     			return True
     		else:
     			return False
