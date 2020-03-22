@@ -2665,3 +2665,4 @@ Blockly.END = '结束';
 Blockly.MLX90614_TYPE = '红外测温传感器';
 Blockly.MLX90614_TARGET_OBJECT_TEMP = '目标物体温度';
 Blockly.MLX90614_AMBIENT_TEMP = '周围环境温度';
+Blockly.IR_AND_TONE_WARNING = '警告：\n'+'蜂鸣器模块和红外接收模块不可同时使用，\n'+'请考虑使用蜂鸣器模块(无定时器)或删除红外接收模块。';

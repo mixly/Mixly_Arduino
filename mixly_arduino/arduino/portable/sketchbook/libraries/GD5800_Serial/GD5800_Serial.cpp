@@ -2,9 +2,9 @@
 
  */
 
- #include <Arduino.h>
+ 
  #include "GD5800_Serial.h"
- #include <SoftwareSerial.h>
+
 
 
  void  GD5800_Serial::play()

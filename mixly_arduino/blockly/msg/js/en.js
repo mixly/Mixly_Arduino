@@ -18,6 +18,9 @@ var MSG = {
 	catSPI: "SPI",
 	catRFID: "RFID",
 	catStorage:"Storage",
+	catStorageSD:'SD',
+	catStorageSPIFFS:'SPIFFS',
+	catStorageEEPROM:'EEPROM',
 	catSensor: "Sensor",
 	catActuator: "Actuator",
 	catMonitor:"Monitor",
@@ -2655,3 +2658,4 @@ Blockly.END = 'end ';
 Blockly.MLX90614_TYPE = 'Infrared temperature sensor';
 Blockly.MLX90614_TARGET_OBJECT_TEMP = 'Target object temperature';
 Blockly.MLX90614_AMBIENT_TEMP = 'Ambient temperature';
+Blockly.IR_AND_TONE_WARNING = 'Warning:\n'+'The buzzer module and the infrared receiving module cannot be used at the same time.\n'+'Please consider using a buzzer module (no timer) or removing the infrared receiving module';

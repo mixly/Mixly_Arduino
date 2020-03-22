@@ -1083,7 +1083,7 @@
   </category>
   <category id="catOnBoardDisplay" name="catOnBoardDisplay" colour="180">
     <block type="oled_init">
-      <field name="OLED_TYPE">SH1106</field>
+      <field name="OLED_TYPE">1.3寸SH1106</field>
       <field name="SCL">SCL</field>
       <field name="SDA">SDA</field>
       <next>
@@ -1163,6 +1163,28 @@
     </value>
     <field name="Icon_size"></field>
   </block>
+  <block type="tool_modulus_show">
+  <field name="VAR">bitmap</field>
+  <field name="x">96</field>
+  <field name="save_hz">TRUE</field>
+  <value name="input_data">
+    <block type="tool_modulus">
+      <field name="bitmap_formats">1</field>
+      <field name="modulus_way">2</field>
+      <field name="modulus_direction">2</field>
+      <field name="hz_sharp">STHeiti</field>
+      <field name="hz_line_height">16</field>
+      <field name="hz_up_down">hz_up</field>
+      <field name="hz_up_down_data">0</field>
+      <field name="hz_left_right">hz_left</field>
+      <field name="hz_left_right_data">0</field>
+      <field name="bitmap_width">48</field>
+      <field name="bitmap_height">16</field>
+      <field name="show_hz">TRUE</field>
+      <field name="input_data">米思齐</field>
+    </block>
+  </value>
+</block>
   <block type="oled_showBitmap">
     <value name="START_X">
       <shadow type="math_number">

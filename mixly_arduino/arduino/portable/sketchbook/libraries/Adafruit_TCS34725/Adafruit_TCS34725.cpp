@@ -74,7 +74,7 @@ uint8_t Adafruit_TCS34725::read8(uint8_t reg) {
 #endif
   _wire->endTransmission();
 
-  _wire->requestFrom(_i2caddr, 1);
+  _wire->requestFrom(_i2caddr, (uint8_t)1);
 #if ARDUINO >= 100
   return _wire->read();
 #else
@@ -99,7 +99,7 @@ uint16_t Adafruit_TCS34725::read16(uint8_t reg) {
 #endif
   _wire->endTransmission();
 
-  _wire->requestFrom(_i2caddr, 2);
+  _wire->requestFrom(_i2caddr, (uint8_t)2);
 #if ARDUINO >= 100
   t = _wire->read();
   x = _wire->read();
@@ -126,22 +126,22 @@ void Adafruit_TCS34725::enable() {
     performed too quickly, the data is not yet valid and all 0's are
     returned */
   switch (_tcs34725IntegrationTime) {
-    case TCS34725_INTEGRATIONTIME_2_4MS:
+  case TCS34725_INTEGRATIONTIME_2_4MS:
     delay(3);
     break;
-    case TCS34725_INTEGRATIONTIME_24MS:
+  case TCS34725_INTEGRATIONTIME_24MS:
     delay(24);
     break;
-    case TCS34725_INTEGRATIONTIME_50MS:
+  case TCS34725_INTEGRATIONTIME_50MS:
     delay(50);
     break;
-    case TCS34725_INTEGRATIONTIME_101MS:
+  case TCS34725_INTEGRATIONTIME_101MS:
     delay(101);
     break;
-    case TCS34725_INTEGRATIONTIME_154MS:
+  case TCS34725_INTEGRATIONTIME_154MS:
     delay(154);
     break;
-    case TCS34725_INTEGRATIONTIME_700MS:
+  case TCS34725_INTEGRATIONTIME_700MS:
     delay(700);
     break;
   }
@@ -369,7 +369,7 @@ int Adafruit_TCS34725::getR() {
   // Avoid divide by zero errors ... if clear = 0 return black
   if (clear == 0) {
     r=0;
-    return;
+    return 0;
   }
   r = (float)red / sum * 255.0;
   return r;
@@ -384,7 +384,7 @@ int Adafruit_TCS34725::getG() {
   // Avoid divide by zero errors ... if clear = 0 return black
   if (clear == 0) {
     g=0;
-    return;
+    return 0;
   }
   g = (float)green / sum * 255.0;
   return g;
@@ -399,7 +399,7 @@ int Adafruit_TCS34725::getB() {
   // Avoid divide by zero errors ... if clear = 0 return black
   if (clear == 0) {
     b=0;
-    return;
+    return 0;
   }
   b = (float)blue / sum * 255.0;
   return b;
@@ -416,11 +416,15 @@ int Adafruit_TCS34725::getB() {
  *  @return Color temperature in degrees Kelvin
  */
 uint16_t Adafruit_TCS34725::calculateColorTemperature(uint16_t r, uint16_t g,
-  uint16_t b) {
+                                                      uint16_t b) {
   float X, Y, Z; /* RGB to XYZ correlation      */
   float xc, yc;  /* Chromaticity co-ordinates   */
   float n;       /* McCamy's formula            */
   float cct;
+
+  if (r == 0 && g == 0 && b == 0) {
+    return 0;
+  }
 
   /* 1. Map RGB values to their XYZ counterparts.    */
   /* Based on 6500K fluorescent, 3000K fluorescent   */
@@ -459,15 +463,16 @@ uint16_t Adafruit_TCS34725::calculateColorTemperature(uint16_t r, uint16_t g,
  *  @return Color temperature in degrees Kelvin
  */
 uint16_t Adafruit_TCS34725::calculateColorTemperature_dn40(uint16_t r,
- uint16_t g,
- uint16_t b,
- uint16_t c) {
-  int rc;              /* Error return code */
-  uint16_t r2, g2, b2; /* RGB values minus IR component */
-  int gl;              /* Results of the initial lux conversion */
-  uint8_t gain_int;    /* Gain multiplier as a normal integer */
+                                                           uint16_t g,
+                                                           uint16_t b,
+                                                           uint16_t c) {
+  uint16_t r2, b2; /* RGB values minus IR component */
   uint16_t sat;        /* Digital saturation level */
   uint16_t ir;         /* Inferred IR content */
+
+  if (c == 0) {
+    return 0;
+  }
 
   /* Analog/Digital saturation:
    *
@@ -522,59 +527,11 @@ uint16_t Adafruit_TCS34725::calculateColorTemperature_dn40(uint16_t r,
 
   /* Remove the IR component from the raw RGB values */
   r2 = r - ir;
-  g2 = g - ir;
   b2 = b - ir;
 
-  /* Convert gain to a usable integer value */
-  switch (_tcs34725Gain) {
-  case TCS34725_GAIN_4X: /* GAIN 4X */
-    gain_int = 4;
-    break;
-  case TCS34725_GAIN_16X: /* GAIN 16X */
-    gain_int = 16;
-    break;
-  case TCS34725_GAIN_60X: /* GAIN 60X */
-    gain_int = 60;
-    break;
-  case TCS34725_GAIN_1X: /* GAIN 1X */
-    default:
-    gain_int = 1;
-    break;
+  if (r2 == 0) {
+    return 0;
   }
-
-  /* Calculate the counts per lux (CPL), taking into account the optional
-   * arguments for Glass Attenuation (GA) and Device Factor (DF).
-   *
-   * GA = 1/T where T is glass transmissivity, meaning if glass is 50%
-   * transmissive, the GA is 2 (1/0.5=2), and if the glass attenuates light
-   * 95% the GA is 20 (1/0.05). A GA of 1.0 assumes perfect transmission.
-   *
-   * NOTE: It is recommended to have a CPL > 5 to have a lux accuracy
-   *       < +/- 0.5 lux, where the digitization error can be calculated via:
-   *       'DER = (+/-2) / CPL'.
-   */
-  float cpl =
-  (((256 - _tcs34725IntegrationTime) * 2.4f) * gain_int) / (1.0f * 310.0f);
-
-  /* Determine lux accuracy (+/- lux) */
-  float der = 2.0f / cpl;
-
-  /* Determine the maximum lux value */
-  float max_lux = 65535.0 / (cpl * 3);
-
-  /* Lux is a function of the IR-compensated RGB channels and the associated
-   * color coefficients, with G having a particularly heavy influence to
-   * match the nature of the human eye.
-   *
-   * NOTE: The green value should be > 10 to ensure the accuracy of the lux
-   *       conversions. If it is below 10, the gain should be increased, but
-   *       the clear<100 check earlier should cover this edge case.
-   */
-  gl = 0.136f * (float)r2 + /** Red coefficient. */
-       1.000f * (float)g2 + /** Green coefficient. */
-       -0.444f * (float)b2; /** Blue coefficient. */
-
-  float lux = gl / cpl;
 
   /* A simple method of measuring color temp is to use the ratio of blue */
   /* to red light, taking IR cancellation into account. */

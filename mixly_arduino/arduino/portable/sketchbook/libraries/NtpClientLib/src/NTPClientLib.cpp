@@ -281,7 +281,7 @@ time_t NTPClient::getTime () {
     if (error) {
 #endif
         DEBUGLOG ("%s - Starting UDP. IP: %s\n", __FUNCTION__, ntpServerIPAddress.toString ().c_str ());
-        if (ntpServerIPAddress == (uint32_t)(0)) {
+        if (ntpServerIPAddress == INADDR_NONE) {
             DEBUGLOG ("%s - IP address unset. Aborting.\n", __FUNCTION__);
             //DEBUGLOG ("%s - DNS Status: %d\n", __FUNCTION__, dnsStatus);
             return 0;

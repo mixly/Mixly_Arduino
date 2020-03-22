@@ -2656,3 +2656,4 @@ Blockly.END = '結束';
 Blockly.MLX90614_TYPE = '紅外測溫傳感器';
 Blockly.MLX90614_TARGET_OBJECT_TEMP = '目標物體溫度';
 Blockly.MLX90614_AMBIENT_TEMP = '周圍環境溫度';
+Blockly.IR_AND_TONE_WARNING = '警告：\n'+'蜂鳴器模塊和紅外接收模塊不可同時使用，\n'+'請考慮使用蜂鳴器模塊(無定時器)或刪除紅外接收模塊。';

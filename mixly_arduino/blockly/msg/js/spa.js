@@ -2656,3 +2656,4 @@ Blockly.END = 'Fin ';
 Blockly.MLX90614_TYPE = 'Sensor de temperatura infrarroja';
 Blockly.MLX90614_TARGET_OBJECT_TEMP = 'Temperatura objetivo del objeto';
 Blockly.MLX90614_AMBIENT_TEMP = 'Temperatura ambiente';
+Blockly.IR_AND_TONE_WARNING = 'Advertencia:\n'+'El módulo de timbre y el módulo de recepción de infrarrojos no se pueden usar al mismo tiempo.\n'+'Considere usar un módulo de timbre (sin temporizador) o quitar el módulo receptor de infrarrojos';

@@ -5,6 +5,17 @@ goog.provide('Blockly.Arduino.communicate');
 goog.require('Blockly.Arduino');
 
 Blockly.Arduino.ir_recv = function () {
+  var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+  var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+  if(xmlText.indexOf("type=\"controls_tone\"") == -1 && xmlText.indexOf("type=\"controls_notone\"") == -1)
+  {
+    this.setWarningText(null);
+  }
+  else
+  {
+    this.setWarningText(Blockly.IR_AND_TONE_WARNING);
+  }
+
   var variable = Blockly.Arduino.variableDB_.getName(this.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
   Blockly.Arduino.definitions_['var_declare' + variable] = 'long ' + variable + ';';
   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
@@ -34,6 +45,17 @@ Blockly.Arduino.ir_recv = function () {
 
 
   Blockly.Arduino.ir_recv_enable = function () {
+    var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+    var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+    if(xmlText.indexOf("type=\"controls_tone\"") == -1 && xmlText.indexOf("type=\"controls_notone\"") == -1)
+    {
+      this.setWarningText(null);
+    }
+    else
+    {
+      this.setWarningText(Blockly.IR_AND_TONE_WARNING);
+    }
+
     Blockly.Arduino.definitions_['include_IRremote'] = '#include <IRremote.h>';
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     var code = 'irrecv_' + dropdown_pin + '.enableIRIn();\n';
@@ -59,6 +81,17 @@ Blockly.Arduino.ir_recv = function () {
 }
 
 Blockly.Arduino.ir_recv_raw = function () {
+  var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+  var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+  if(xmlText.indexOf("type=\"controls_tone\"") == -1 && xmlText.indexOf("type=\"controls_notone\"") == -1)
+  {
+    this.setWarningText(null);
+  }
+  else
+  {
+    this.setWarningText(Blockly.IR_AND_TONE_WARNING);
+  }
+
   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_IRremote'] = '#include <IRremote.h>\n';
   Blockly.Arduino.definitions_['var_declare_ir_recv' + dropdown_pin] = 'IRrecv irrecv_' + dropdown_pin + '(' + dropdown_pin + ');\ndecode_results results_' + dropdown_pin + ';\n';

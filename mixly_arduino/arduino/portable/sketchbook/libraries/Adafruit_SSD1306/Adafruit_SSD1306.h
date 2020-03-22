@@ -117,7 +117,7 @@
  #define SSD1306_LCDHEIGHT  16 ///< DEPRECATED: height w/SSD1306_96_16 defined
 #endif
 
-/*! 
+/*!
     @brief  Class that stores state and functions for interacting with
             SSD1306 OLED displays.
 */
@@ -176,12 +176,15 @@ class Adafruit_SSD1306 : public Adafruit_GFX {
   PortReg     *mosiPort   , *clkPort   , *dcPort   , *csPort;
   PortMask     mosiPinMask,  clkPinMask,  dcPinMask,  csPinMask;
 #endif
-#if defined(SPI_HAS_TRANSACTION)
-  SPISettings  spiSettings;
-#endif
 #if ARDUINO >= 157
   uint32_t     wireClk;    // Wire speed for SSD1306 transfers
   uint32_t     restoreClk; // Wire speed following SSD1306 transfers
+#endif
+  uint8_t      contrast;    // normal contrast setting for this device
+#if defined(SPI_HAS_TRANSACTION)
+protected:
+  // Allow sub-class to change
+  SPISettings  spiSettings;
 #endif
 };
 

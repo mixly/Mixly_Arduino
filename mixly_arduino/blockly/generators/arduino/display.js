@@ -9,6 +9,7 @@ Blockly.Arduino.group_lcd_init2 = function() {
   var TYPE = this.getFieldValue('TYPE');
   var SCL = this.getFieldValue('SCL');
   var SDA = this.getFieldValue('SDA');
+  var board_type = JSFuncs.getPlatform();
   var device = Blockly.Arduino.valueToCode(this, 'device', Blockly.Arduino.ORDER_ATOMIC) || '0x27';  
   if(SDA=="SDA"&&SCL=="SCL")
   {
@@ -18,9 +19,17 @@ Blockly.Arduino.group_lcd_init2 = function() {
   }
   else
   {
-    Blockly.Arduino.definitions_['include_SoftI2CMaster'] = '#include <SoftI2CMaster.h>';
-    Blockly.Arduino.definitions_['include_LiquidCrystal_SoftI2C'] = '#include <LiquidCrystal_SoftI2C.h>';
-    Blockly.Arduino.definitions_['var_declare_LiquidCrystal_SoftI2C_' + varName] = 'LiquidCrystal_SoftI2C ' + varName + '(' + device + ',' + TYPE + ',' + SCL + ',' + SDA + ');';
+    if (board_type.match(RegExp(/AVR/))) {
+      Blockly.Arduino.definitions_['include_SoftI2CMaster'] = '#include <SoftI2CMaster.h>';
+      Blockly.Arduino.definitions_['include_LiquidCrystal_SoftI2C'] = '#include <LiquidCrystal_SoftI2C.h>';
+      Blockly.Arduino.definitions_['var_declare_LiquidCrystal_SoftI2C_' + varName] = 'LiquidCrystal_SoftI2C ' + varName + '(' + device + ',' + TYPE + ',' + SCL + ',' + SDA + ');';
+    }
+    else{
+      Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+      Blockly.Arduino.definitions_['include_LiquidCrystal_SoftI2C'] = '#include <LiquidCrystal_I2C.h>';
+      Blockly.Arduino.definitions_['var_declare_LiquidCrystal_I2C_'+varName] = 'LiquidCrystal_I2C '+varName+'('+device+','+TYPE+');';
+      Blockly.Arduino.setups_["setup_Wire"] ='Wire.begin(' +SDA+ ',' +SCL+ ');';
+    }
   }
   Blockly.Arduino.setups_['setup_lcd_init_' + varName] = varName + '.init();';
   Blockly.Arduino.setups_['setup_lcd_backlight_' + varName] = varName + '.backlight();';    
@@ -657,10 +666,10 @@ Blockly.Arduino.u8g2_setContrast = function() {
 
 //返回UTF8字符串宽度
 Blockly.Arduino.get_utf8_width = function() {
-    var str= Blockly.Arduino.valueToCode(this, 'str', Blockly.Arduino.ORDER_ATOMIC);
-    Blockly.Arduino.definitions_['getutf8width'] ='int getUTF8Width(String str) {\n  const char *string_variable = str.c_str();\n  return u8g2.getUTF8Width(string_variable);\n}';
-    var code='getUTF8Width(String('+str+'))';
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
+  var str= Blockly.Arduino.valueToCode(this, 'str', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['getutf8width'] ='int getUTF8Width(String str) {\n  const char *string_variable = str.c_str();\n  return u8g2.getUTF8Width(string_variable);\n}';
+  var code='getUTF8Width(String('+str+'))';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.group_lcd_init=Blockly.Arduino.group_lcd_init2;
