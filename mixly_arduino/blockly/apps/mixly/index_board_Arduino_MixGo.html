@@ -405,18 +405,18 @@
       </value>
     </block>
     <block type="super_delay_function1"></block>
-    <block type="execute_super_delay_function1">
-     <value name="time_interval">
-      <shadow type="math_number">
-        <field name="NUM">1000</field>
-      </shadow>
-    </value>
-    <value name="frequency">
-      <shadow type="math_number">
-        <field name="NUM">1</field>
-      </shadow>
-    </value>
-  </block>
+<block type="execute_super_delay_function1">
+ <value name="time_interval">
+  <shadow type="math_number">
+    <field name="NUM">1000</field>
+  </shadow>
+</value>
+<value name="frequency">
+  <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
+</block>
 </category>
 <category id="catMath" colour="230">
   <block type="math_number">
@@ -2517,12 +2517,67 @@
       </shadow>
     </value>
   </block>
-  <block type="blynk_table">
-   <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow> 
-  </value> 
+  <block type="blynk_table_add_data">
+ <value name="name">
+   <shadow type="text">
+    <field name="TEXT">Test row</field>
+  </shadow>
+ </value>
+ <value name="data">
+   <shadow type="text">
+    <field name="TEXT">hello</field>
+  </shadow>
+ </value>
+</block>
+
+<block type="blynk_table_click">
+    <field name="Vpin">V0</field>
+    <statement name="function">
+        <block type="serial_println">
+            <field name="serial_select">Serial</field>
+            <value name="CONTENT">
+                <block type="variables_get">
+                    <field name="VAR">index</field>
+                </block>
+            </value>
+            <next>
+                <block type="serial_println">
+                    <field name="serial_select">Serial</field>
+                    <value name="CONTENT">
+                        <block type="variables_get">
+                            <field name="VAR">selected</field>
+                        </block>
+                    </value>
+                </block>
+            </next>
+        </block>
+    </statement>
+</block>
+
+<block type="blynk_table_order">
+    <field name="Vpin">V0</field>
+    <statement name="function">
+        <block type="serial_println">
+            <field name="serial_select">Serial</field>
+            <value name="CONTENT">
+                <block type="variables_get">
+                    <field name="VAR">indexFrom</field>
+                </block>
+            </value>
+            <next>
+                <block type="serial_println">
+                    <field name="serial_select">Serial</field>
+                    <value name="CONTENT">
+                        <block type="variables_get">
+                            <field name="VAR">indexTo</field>
+                        </block>
+                    </value>
+                </block>
+            </next>
+        </block>
+    </statement>
+</block>
+    <block type="blynk_table"> 
   <value name="id">
     <shadow type="math_number">
       <field name="NUM">0</field>
@@ -2539,17 +2594,7 @@
     </shadow>
   </value>
 </block>
-<block type="blynk_table_update">
- <value name="xnyj">
-  <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow>
-  <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow>
-  </value> 
-</value> 
+<block type="blynk_table_update"> 
 <value name="id">
   <shadow type="math_number">
     <field name="NUM">0</field>
@@ -2566,17 +2611,7 @@
   </shadow>
 </value>
 </block>
-<block type="blynk_table_highlight">
-  <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow>
-    <value name="xnyj">
-      <shadow type="math_number">
-        <field name="NUM">V0</field>
-      </shadow>
-    </value> 
-  </value> 
+<block type="blynk_table_highlight"> 
   <value name="id">
     <shadow type="math_number">
       <field name="NUM">0</field>
@@ -2584,56 +2619,20 @@
   </value> 
 </block>
 <block type="blynk_table_select">
-  <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow>
-    <value name="xnyj">
-      <shadow type="math_number">
-        <field name="NUM">V0</field>
-      </shadow>
-    </value> 
-  </value> 
   <value name="id">
     <shadow type="math_number">
       <field name="NUM">0</field>
     </shadow>
   </value> 
 </block>
-<block type="blynk_table_unselect">
- <value name="xnyj">
-  <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow>
-  <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow>
-  </value> 
-</value> 
+<block type="blynk_table_unselect"> 
 <value name="id">
   <shadow type="math_number">
     <field name="NUM">0</field>
   </shadow>
 </value> 
 </block>
-<block type="blynk_table_cleardata">
- <value name="xnyj">
-  <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow>
-  <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow>
-  </value> 
-</value> 
-<value name="id">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value> 
-</block>
+<block type="blynk_table_cleardata"></block>
 <block type="Blynk_iot_CONNECT_STATE" >
   <field name="state">BLYNK_CONNECTED</field>
   <statement name="DO">

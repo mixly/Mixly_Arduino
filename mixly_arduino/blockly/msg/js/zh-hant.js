@@ -20,6 +20,9 @@ var MSG = {
 	catStorage: "存儲",
 	catSensor: "感測器",
 	catActuator: "執行器",
+	catActuator_motor: "電機",
+	catActuator_voice: "聲音",
+	catActuator_light: "光線",
 	catMonitor: "顯示器",
 	catVar: "變數",
 	catFun: "函數",
@@ -1761,6 +1764,7 @@ Blockly.blockpy_PYLAB_PLOT_LINE_DOTTED = '虛線';
 Blockly.blockpy_PYLAB_PLOT_LINE_CHAIN = '點劃線';
 Blockly.blockpy_PYLAB_PLOT_LINE_POINT_DOTTED = '點虛線';
 Blockly.mixpy_PYLAB_PLOT_XY = '繪製折線圖';
+Blockly.mixpy_PYLAB_SCATTER = '繪製散點圖';
 Blockly.mixpy_SUBPLOT = '分割子圖 ';
 Blockly.mixpy_SUBPLOT_VERTICLE = '上下分割成';
 Blockly.mixpy_SUBPLOT_HORIZEN = '份 左右分割成';
@@ -2657,3 +2661,49 @@ Blockly.MLX90614_TYPE = '紅外測溫傳感器';
 Blockly.MLX90614_TARGET_OBJECT_TEMP = '目標物體溫度';
 Blockly.MLX90614_AMBIENT_TEMP = '周圍環境溫度';
 Blockly.IR_AND_TONE_WARNING = '警告：\n'+'蜂鳴器模塊和紅外接收模塊不可同時使用，\n'+'請考慮使用蜂鳴器模塊(無定時器)或刪除紅外接收模塊。';
+Blockly.USE_SERIAL_PORT = '使用串口';
+Blockly.DFPLAYER_MINI_SET_TIMEOUT = " 串口通信超時時間設為";
+Blockly.DFPLAYER_MINI_SET_TIMEOUT_TOOLTIP = "DFPlayer Mini 設置串口通信的超時時間";
+Blockly.DFPLAYER_MINI_SET_VOLUME = " 音量設為";
+Blockly.DFPLAYER_MINI_SET_VOLUME_TOOLTIP = "DFPlayer Mini 設置音量，範圍為0~30";
+Blockly.DFPLAYER_MINI_VOLUME_UP_DOWN_TOOLTIP = "DFPlayer Mini 音量 + 或 -";
+Blockly.DFPLAYER_MINI_SET_EQ = " 音效設為";
+Blockly.DFPLAYER_MINI_SET_EQ_TOOLTIP = "DFPlayer Mini 設置音效";
+Blockly.DFPLAYER_MINI_SET_OUTPUTDEVICE = " 設置播放設備為";
+Blockly.DFPLAYER_MINI_SET_OUTPUTDEVICE_TOOLTIP = "DFPlayer Mini 指定播放設備";
+Blockly.DFPLAYER_MINI_STOP_ADVERTISE = "停止插播曲目";
+Blockly.DFPLAYER_MINI_ENABLE_LOOP = "循環播放開始";
+Blockly.DFPLAYER_MINI_DISABLE_LOOP = "循環播放停止";
+Blockly.DFPLAYER_MINI_ENABLE_LOOP_ALL = "循環播放所有曲目";
+Blockly.DFPLAYER_MINI_DISABLE_LOOP_ALL = "停止循環播放曲目";
+Blockly.DFPLAYER_MINI_RANDOM_ALL = "隨機播放所有曲目";
+Blockly.DFPLAYER_MINI_ENABLE_DAC = "開啟音頻輸出";
+Blockly.DFPLAYER_MINI_DISABLE_DAC = "關閉音頻輸出";
+Blockly.DFPLAYER_MINI_SLEEP = "進入睡眠狀態";
+Blockly.DFPLAYER_MINI_ADVERTISE = "插播";
+Blockly.DFPLAYER_MINI_PLAYMP3FOLDER = "播放MP3文件夾下";
+Blockly.DFPLAYER_MINI_SONG = "曲目";
+Blockly.DFPLAYER_MINI_PLAY_LOOP_TOOLTIP = "DFPlayer Mini 播放、循環、插播指定曲目";
+Blockly.DFPLAYER_MINI_PLAY_ADVERTISE_TOOLTIP = "DFPlayer Mini 插播指定曲目，文件名(0~65535)";
+Blockly.DFPLAYER_MINI_PLAY_PLAYMP3FOLDER_TOOLTIP = "DFPlayer Mini 播放MP3文件夾下指定曲目，文件名(0~65535)";
+Blockly.DFPLAYER_MINI_FOLDER = "文件夾";
+Blockly.DFPLAYER_MINI_LARGEFOLDER = "大文件夾";
+Blockly.DFPLAYER_MINI_PLAY_PLAYFOLDER_TOOLTIP = "DFPlayer Mini 播放指定文件夾下的曲目，文件夾名(1~99)，文件名(1~255)";
+Blockly.DFPLAYER_MINI_PLAY_PLAYLARGEFOLDER_TOOLTIP = "DFPlayer Mini 播放指定大文件夾下的曲目，文件夾名(1~10)，文件名(1~1000)";
+Blockly.DFPLAYER_MINI_LOOP_FOLDER = " 循環播放文件夾";
+Blockly.DFPLAYER_MINI_LOOP_FOLDER_TOOLTIP = "DFPlayer Mini 循環播放指定文件夾下的曲目";
+Blockly.DFPLAYER_MINI_READ_NOW_DATA_TOOLTIP = "DFPlayer Mini 獲取當前狀態、當前音量、當前音效，返回數據的類型為int";
+Blockly.DFPLAYER_MINI_READ_FILE_COUNTS = "總文件數";
+Blockly.DFPLAYER_MINI_READ_CURRENT_FILE_NUMBER = "當前曲目號";
+Blockly.DFPLAYER_MINI_READ_FILE_COUNTS_TOOLTIP = "DFPlayer Mini 獲取U盤、SD卡、FLASH的總文件數或當前曲目，返回數據的類型為int";
+Blockly.DFPLAYER_MINI_READ_FILE_COUNTS_INFOLDER_TOOLTIP = "DFPlayer Mini 獲取指定文件夾下的文件數，返回數據的類型為int";
+Blockly.DFPLAYER_MINI_AVAILABLE_TOOLTIP = "myDFPlayer.available()，返回數據的類型為boolean";
+Blockly.DFPLAYER_MINI_READ_TYPE_TOOLTIP = "myDFPlayer.readType()，返回數據的類型為uint8_t";
+Blockly.DFPLAYER_MINI_READ_TOOLTIP = "myDFPlayer.read()，返回數據的類型為uint16_t";
+Blockly.YX5200_MP3 = 'Mini MP3模組';
+Blockly.RETURN_DATA_ANALYSIS = "返回數據解析";
+Blockly.LCD_NUMBERING = '編號';
+Blockly.COLUMN_DISPLAY_IMAGE = '列顯示圖像';
+Blockly.SCOOPTASK_WARNING = "警告：\nSCoopTask模塊的編號不可重複，\n請考慮修改此模塊的編號或刪除此模塊。";
+Blockly.BLYNK_TABLE_ORDER = 'Table 移動事件';
+Blockly.BLYNK_TABLE_CLICK = "Table 點擊事件";

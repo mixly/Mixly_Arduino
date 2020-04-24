@@ -317,6 +317,36 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background-size: 100% auto; 
 }
 /*子模块的第一个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(11) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/motor.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第一个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(11) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+	background:url('../../../media/mark/motor2.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第一个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(11) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/voice.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第一个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(11) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+	background:url('../../../media/mark/voice2.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第一个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(11) > div:nth-child(2) > div:nth-child(3) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+	background:url('../../../media/mark/light.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第一个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(11) > div:nth-child(2) > div:nth-child(3) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+	background:url('../../../media/mark/light2.png') no-repeat;
+	background-size: 100% auto; 
+}
+/*子模块的第一个图标（未选中时）*/
 #\:0 > div:nth-child(2) > div:nth-child(12) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
 	background:url('../../../media/mark/4Digitdisplay.png') no-repeat;
 	background-size: 100% auto; 

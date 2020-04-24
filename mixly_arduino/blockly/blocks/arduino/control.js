@@ -253,7 +253,7 @@ Blockly.Blocks['controls_if'] = {
     //this.compose(containerBlock);
     for (var i = 1; i <= this.elseifCount_; i++) {
       this.appendValueInput('IF' + i)
-      .setCheck(Boolean)
+      .setCheck([Boolean,Number])
       .appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSEIF);
       this.appendStatementInput('DO' + i)
       .appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
@@ -791,6 +791,23 @@ Blockly.Blocks['simple_timer'] = {
  this.setHelpUrl("");
   }
 };
+//do-while循环
+Blockly.Blocks.do_while= {
+  init: function() { 
+  this.appendStatementInput("input_data")
+      .setCheck(null)  
+      .appendField(Blockly.MIXLY_DO);
+  this.appendValueInput("select_data")
+      .setCheck(null)  
+      .appendField(Blockly.LANG_CONTROLS_WHILEUNTIL_TITLE_REPEAT)
+      .appendField(new Blockly.FieldDropdown([[Blockly.LANG_CONTROLS_WHILEUNTIL_OPERATOR_WHILE,"true"],[Blockly.LANG_CONTROLS_WHILEUNTIL_OPERATOR_UNTIL ,"false"]]), "type");
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(120);
+  this.setTooltip("do-while loop");
+  this.setHelpUrl("");
+  }
+};
 
 //注册超级延时函数
 Blockly.Blocks['super_delay_function1'] = {
@@ -824,23 +841,5 @@ Blockly.Blocks['execute_super_delay_function1'] = {
     this.setColour(120);
  this.setTooltip(Blockly.execute_super_delay_function_help);
  this.setHelpUrl("");
-  }
-};
-
-//do-while循环
-Blockly.Blocks.do_while= {
-  init: function() { 
-  this.appendStatementInput("input_data")
-      .setCheck(null)  
-      .appendField(Blockly.MIXLY_DO);
-  this.appendValueInput("select_data")
-      .setCheck(null)  
-      .appendField(Blockly.LANG_CONTROLS_WHILEUNTIL_TITLE_REPEAT)
-      .appendField(new Blockly.FieldDropdown([[Blockly.LANG_CONTROLS_WHILEUNTIL_OPERATOR_WHILE,"true"],[Blockly.LANG_CONTROLS_WHILEUNTIL_OPERATOR_UNTIL ,"false"]]), "type");
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(120);
-  this.setTooltip("do-while loop");
-  this.setHelpUrl("");
   }
 };

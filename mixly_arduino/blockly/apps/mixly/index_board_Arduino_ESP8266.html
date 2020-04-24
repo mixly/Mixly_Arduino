@@ -309,21 +309,6 @@
     </block>
     <block type="controls_millis">
     </block>
-    <block type="base_setup">
-      <statement name="DO">
-        <block type="controls_mstimer2">
-          <value name="TIME">
-            <shadow type="math_number">
-              <field name="NUM">500</field>
-            </shadow>
-          </value>
-        </block>
-      </statement>
-    </block>
-    <block type="controls_mstimer2_start">
-    </block>
-    <block type="controls_mstimer2_stop">
-    </block>
     <block type="simple_timer" >
       <field name="NO">1</field>
       <value name="timein">
@@ -333,7 +318,6 @@
       </value>
     </block>
     <block type="super_delay_function1"></block>
-    
     <block type="execute_super_delay_function1">
      <value name="time_interval">
       <shadow type="math_number">
@@ -390,7 +374,21 @@
       </shadow>
     </value>
   </block>
+  <block type="math_auto_add_or_minus">
+    <field name="math_auto_add_minus_type">++</field>
+    <value name="math_auto_add_minus_output">
+      <shadow type="variables_get">
+        <field name="VAR">item</field>
+      </shadow>
+    </value>
+  </block>
   <block type="math_to_int">
+  </block>
+  <block type="math_SizeOf">
+    <value name="data">
+      <shadow type="arduino_variate_type">
+      </shadow>
+    </value>
   </block>
   <block type="math_max_min">
     <value name="A">
@@ -496,19 +494,19 @@
   </block>
   <block type="text_join2">
     <value name="ADD0">
-      <shadow type="text">
+      <block type="text">
         <field name="TEXT">A</field>
-      </shadow>
+      </block>
     </value>
     <value name="ADD1">
-      <shadow type="text">
+      <block type="text">
         <field name="TEXT">B</field>
-      </shadow>
+      </block>
     </value>
     <value name="ADD2">
-      <shadow type="text">
+      <block type="text">
         <field name="TEXT">C</field>
-      </shadow>
+      </block>
     </value>
   </block>
   <block type="text_to_number">
@@ -822,6 +820,8 @@
       </shadow>
     </value>
   </block>
+  <block type="lists_array2_get_length">
+  </block>
 </category>
 <category id="catVar" colour="330" custom="VARIABLE">
 </category>
@@ -892,7 +892,50 @@
       <shadow type="pins_digital"></shadow>
     </value>
   </block>
+  <block type="mlx90614_init">
+    <value name="mlx90614_address">
+      <shadow type="math_number">
+        <field name="NUM">0x5A</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="mlx90614_get_data">
+  </block>
   <block type="TCS34725_Get_RGB">
+  </block>
+  <block type="tcs230_init">
+    <value name="tcs230_s0">
+      <shadow type="pins_digital">
+        <field name="PIN">2</field>
+      </shadow>
+    </value>
+    <value name="tcs230_s1">
+      <shadow type="pins_digital">
+        <field name="PIN">3</field>
+      </shadow>
+    </value>
+    <value name="tcs230_s2">
+      <shadow type="pins_digital">
+        <field name="PIN">4</field>
+      </shadow>
+    </value>
+    <value name="tcs230_s3">
+      <shadow type="pins_digital">
+        <field name="PIN">5</field>
+      </shadow>
+    </value>
+    <value name="tcs230_led">
+      <shadow type="pins_digital">
+        <field name="PIN">6</field>
+      </shadow>
+    </value>
+    <value name="tcs230_out">
+      <shadow type="pins_digital">
+        <field name="PIN">7</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="tcs230_Get_RGB">
   </block>
   <block type="SHT20">
   </block>
@@ -912,70 +955,241 @@
       </shadow>
     </value>
   </block>
-  <block type="Arduino_keypad_4_4_start">
-    <value name="keypad_name">
-    </value>
-    <value name="keypad_row">
-      <block type="keypad_row_data">
-        <value name="keypad_row_1">
-          <shadow type="pins_digital">
-            <field name="PIN">2</field>
-          </shadow>
-        </value>
-        <value name="keypad_row_2">
-          <shadow type="pins_digital">
-            <field name="PIN">3</field>
-          </shadow>
-        </value>
-        <value name="keypad_row_3">
-          <shadow type="pins_digital">
-            <field name="PIN">4</field>
-          </shadow>
-        </value>
-        <value name="keypad_row_4">
-          <shadow type="pins_digital">
-            <field name="PIN">5</field>
-          </shadow>
-        </value>
-      </block>
-    </value>
-    <value name="keypad_col">
-      <block type="keypad_col_data">
-        <value name="keypad_col_1">
-          <shadow type="pins_digital">
-            <field name="PIN">6</field>
-          </shadow>
-        </value>
-        <value name="keypad_col_2">
-          <shadow type="pins_digital">
-            <field name="PIN">7</field>
-          </shadow>
-        </value>
-        <value name="keypad_col_3">
-          <shadow type="pins_digital">
-            <field name="PIN">8</field>
-          </shadow>
-        </value>
-        <value name="keypad_col_4">
-          <shadow type="pins_digital">
-            <field name="PIN">9</field>
-          </shadow>
-        </value>
-      </block>
-    </value>
-    <value name="keypad_type">
-      <block type="keypad_type_data"></block>
-    </value>
+  <block type="encoder_init">
   </block>
-  <block type="get_keypad_num">
-    <value name="keypad_name"></value>
-  </block>
-  <block type="arduino_keypad_event">
-    <value name="keypad_event_input">
-     <block type="variables_get">
-      <field name="VAR">key</field>
+  <block type="encoder_read"></block>
+  <block type="encoder_write">
+   <value name="value">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<!--DS1302-->
+<block type="DS1302_init">
+  <value name="RST">
+    <shadow type="pins_digital">
+      <field name="PIN">2</field>
+    </shadow>
+  </value>
+  <value name="DAT">
+    <shadow type="pins_digital">
+      <field name="PIN">3</field>
+    </shadow>
+  </value>
+  <value name="CLK">
+    <shadow type="pins_digital">
+      <field name="PIN">4</field>
+    </shadow>
+  </value>
+</block>
+<block type="DS1307_init">
+  <value name="SDA">
+    <shadow type="pins_digital">
+      <field name="PIN">SDA</field>
+    </shadow>
+  </value>
+  <value name="SCL">
+    <shadow type="pins_digital">
+      <field name="PIN">SCL</field>
+    </shadow>
+  </value>
+</block>
+<block type="RTC_get_time"></block>
+<block type="RTC_time">
+  <value name="hour">
+    <shadow type="math_number">
+      <field name="NUM">8</field>
+    </shadow>
+  </value>
+  <value name="minute">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="second">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="RTC_date">
+  <value name="year">
+    <shadow type="math_number">
+      <field name="NUM">2020</field>
+    </shadow>
+  </value>
+  <value name="month">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="day">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="RTC_set_time">
+  <value name="date">
+    <shadow type="text" >
+      <field name="TEXT">Jan/01/2020</field>
+    </shadow>
+    <block type="RTC_date" >
+      <value name="year">
+        <shadow type="math_number">
+          <field name="NUM">2020</field>
+        </shadow>
+      </value>
+      <value name="month">
+        <shadow type="math_number">
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
+      <value name="day">
+        <shadow type="math_number" >
+          <field name="NUM">1</field>
+        </shadow>
+      </value>
     </block>
   </value>
+  <value name="time">
+    <shadow type="text" >
+      <field name="TEXT">12:34:56</field>
+    </shadow>
+    <block type="RTC_time">
+      <value name="hour">
+        <shadow type="math_number">
+          <field name="NUM">8</field>
+        </shadow>
+      </value><value name="minute">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="second">
+        <shadow type="math_number" >
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+    </block>
+  </value>
+</block>
+<block type="get_system_date_time">
+</block>
+<field name="type">DATE</field>
+<block type="Arduino_keypad_4_4_start">
+  <value name="keypad_name">
+  </value>
+  <value name="keypad_row">
+    <block type="keypad_row_data">
+      <value name="keypad_row_1">
+        <shadow type="pins_digital">
+          <field name="PIN">2</field>
+        </shadow>
+      </value>
+      <value name="keypad_row_2">
+        <shadow type="pins_digital">
+          <field name="PIN">3</field>
+        </shadow>
+      </value>
+      <value name="keypad_row_3">
+        <shadow type="pins_digital">
+          <field name="PIN">4</field>
+        </shadow>
+      </value>
+      <value name="keypad_row_4">
+        <shadow type="pins_digital">
+          <field name="PIN">5</field>
+        </shadow>
+      </value>
+    </block>
+  </value>
+  <value name="keypad_col">
+    <block type="keypad_col_data">
+      <value name="keypad_col_1">
+        <shadow type="pins_digital">
+          <field name="PIN">6</field>
+        </shadow>
+      </value>
+      <value name="keypad_col_2">
+        <shadow type="pins_digital">
+          <field name="PIN">7</field>
+        </shadow>
+      </value>
+      <value name="keypad_col_3">
+        <shadow type="pins_digital">
+          <field name="PIN">8</field>
+        </shadow>
+      </value>
+      <value name="keypad_col_4">
+        <shadow type="pins_digital">
+          <field name="PIN">9</field>
+        </shadow>
+      </value>
+    </block>
+  </value>
+  <value name="keypad_type">
+    <block type="keypad_type_data"></block>
+  </value>
+</block>
+<block type="get_keypad_num">
+  <value name="keypad_name"></value>
+</block>
+<block type="gps_init">
+  <value name="RX">
+   <shadow type="pins_digital"></shadow>
+ </value>
+ <value name="TX">
+   <shadow type="pins_digital"></shadow>
+ </value>
+ <value name="CONTENT">
+   <shadow type="math_number">
+     <field name="NUM">4800</field>
+   </shadow>
+ </value>
+</block>
+<block type="controls_whileUntil">
+  <field name="MODE">WHILE</field>
+  <value name="BOOL">
+    <block type="gps_data_available"></block>
+  </value>
+  <statement name="DO">
+    <block type="controls_if">
+     <value name="IF0">
+       <block type="gps_data_encode"></block>
+     </value>
+     <statement name="DO0">
+       <block type="controls_if">
+        <value name="IF0">
+          <block type="gps_xxx_isValid">
+           <field name="WHAT">location</field>
+         </block>
+       </value>
+       <statement name="DO0">
+        <block type="serial_println">
+         <field name="serial_select">Serial</field>
+         <value name="CONTENT">
+           <block type="gps_getData_xxx">
+            <field name="WHAT">location.lat</field>
+          </block>
+        </value>
+        <next>
+         <block type="serial_println">
+          <field name="serial_select">Serial</field>
+          <value name="CONTENT">
+            <block type="gps_getData_xxx">
+             <field name="WHAT">location.lng</field>
+           </block>
+         </value>
+       </block>
+     </next>
+   </block>
+ </statement>
+</block>
+</statement>
+</block>
+</statement>
 </block>
 <block type="MPU6050_update">
 </block>
@@ -985,86 +1199,152 @@
 </block>
 </category>
 <category id="catActuator" colour="100">
-  <block type="Mixly_motor">
-    <value name="PIN1">
-      <shadow type="pins_pwm">
-        <field name="PIN">5</field>
-      </shadow>
-    </value>
-    <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">4</field>
-      </shadow>
-    </value>
-    <value name="speed">
+  <category id="catActuator_motor" colour="100">
+    <block type="Mixly_motor">
+      <value name="PIN1">
+        <shadow type="pins_pwm">
+          <field name="PIN">5</field>
+        </shadow>
+      </value>
+      <value name="PIN2">
+        <shadow type="pins_digital">
+          <field name="PIN">4</field>
+        </shadow>
+      </value>
+      <value name="speed">
+        <shadow type="math_number">
+          <field name="NUM">100</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="Motor_8833">
+      <value name="PIN1">
+        <shadow type="pins_pwm">
+          <field name="PIN">5</field>
+        </shadow>
+      </value>
+      <value name="PIN2">
+        <shadow type="pins_digital">
+          <field name="PIN">4</field>
+        </shadow>
+      </value>
+      <value name="speed">
+        <shadow type="math_number">
+          <field name="NUM">100</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="AFMotorRun">
+      <value name="speed">
+        <shadow type="math_number">
+          <field name="NUM">100</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="AFMotorStop">
+    </block>
+    <block type="servo_move">
+      <value name="PIN">
+        <shadow type="pins_digital"></shadow>
+      </value>
+      <value name="DEGREE">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="DELAY_TIME">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="servo_writeMicroseconds">
+      <value name="PIN">
+       <shadow type="pins_digital"></shadow>
+     </value>
+     <value name="DEGREE">
       <shadow type="math_number">
-        <field name="NUM">100</field>
+        <field name="NUM">1500</field>
       </shadow>
     </value>
   </block>
-  <block type="Motor_8833">
-    <value name="PIN1">
-      <shadow type="pins_pwm">
-        <field name="PIN">5</field>
-      </shadow>
-    </value>
-    <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">4</field>
-      </shadow>
-    </value>
-    <value name="speed">
-      <shadow type="math_number">
-        <field name="NUM">100</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="AFMotorRun">
-    <value name="speed">
-      <shadow type="math_number">
-        <field name="NUM">100</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="AFMotorStop">
-  </block>
-  <block type="servo_move">
+  <block type="servo_read_degrees">
     <value name="PIN">
       <shadow type="pins_digital"></shadow>
     </value>
-    <value name="DEGREE">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
+  </block>
+
+  <block type="group_stepper_setup">
+    <value name="PIN1">
+      <shadow type="pins_digital">
+        <field name="PIN">1</field>
       </shadow>
     </value>
-    <value name="DELAY_TIME">
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">2</field>
+      </shadow>
+    </value>
+    <value name="steps">
       <shadow type="math_number">
-        <field name="NUM">0</field>
+        <field name="NUM">100</field>
+      </shadow>
+    </value>
+    <value name="speed">
+      <shadow type="math_number">
+        <field name="NUM">10</field>
       </shadow>
     </value>
   </block>
-  <block type="servo_writeMicroseconds">
+  <block type="group_stepper_setup2">
+    <value name="PIN1">
+      <shadow type="pins_digital">
+        <field name="PIN">1</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">2</field>
+      </shadow>
+    </value>
+    <value name="PIN3">
+      <shadow type="pins_digital">
+        <field name="PIN">3</field>
+      </shadow>
+    </value>
+    <value name="PIN4">
+      <shadow type="pins_digital">
+        <field name="PIN">4</field>
+      </shadow>
+    </value>
+    <value name="steps">
+      <shadow type="math_number">
+        <field name="NUM">100</field>
+      </shadow>
+    </value>
+    <value name="speed">
+      <shadow type="math_number">
+        <field name="NUM">10</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="group_stepper_move">
+    <value name="step">
+      <shadow type="math_number">
+        <field name="NUM">10</field>
+      </shadow>
+    </value>
+  </block>
+  
+</category>
+<category id="catActuator_voice" colour="100">
+  <block type="controls_tone">
     <value name="PIN">
      <shadow type="pins_digital"></shadow>
    </value>
-   <value name="DEGREE">
-    <shadow type="math_number">
-      <field name="NUM">1500</field>
-    </shadow>
+   <value name="FREQUENCY">
+    <shadow type="tone_notes"></shadow>
   </value>
-</block>
-<block type="servo_read_degrees">
-  <value name="PIN">
-    <shadow type="pins_digital"></shadow>
-  </value>
-</block>
-<block type="controls_tone">
-  <value name="PIN">
-   <shadow type="pins_digital"></shadow>
- </value>
- <value name="FREQUENCY">
-  <shadow type="tone_notes"></shadow>
-</value>
 </block>
 <block type="controls_notone">
   <value name="PIN">
@@ -1089,71 +1369,206 @@
    <shadow type="pins_digital"></shadow>
  </value>
 </block>
-<block type="group_stepper_setup">
-  <value name="PIN1">
-    <shadow type="pins_digital">
-      <field name="PIN">1</field>
-    </shadow>
+
+<block type="GD5800_MP3_CONTROL">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
   </value>
-  <value name="PIN2">
-    <shadow type="pins_digital">
-      <field name="PIN">2</field>
-    </shadow>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
   </value>
-  <value name="steps">
+</block>
+<block type="GD5800_MP3_PLAY_NUM">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+  <value name="NUM">
     <shadow type="math_number">
-      <field name="NUM">100</field>
-    </shadow>
-  </value>
-  <value name="speed">
-    <shadow type="math_number">
-      <field name="NUM">10</field>
+      <field name="NUM">2</field>
     </shadow>
   </value>
 </block>
-<block type="group_stepper_setup2">
-  <value name="PIN1">
-    <shadow type="pins_digital">
-      <field name="PIN">1</field>
-    </shadow>
+<block type="GD5800_MP3_LOOP_MODE">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
   </value>
-  <value name="PIN2">
-    <shadow type="pins_digital">
-      <field name="PIN">2</field>
-    </shadow>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
   </value>
-  <value name="PIN3">
-    <shadow type="pins_digital">
-      <field name="PIN">3</field>
-    </shadow>
+</block>
+<block type="GD5800_MP3_EQ_MODE">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
   </value>
-  <value name="PIN4">
-    <shadow type="pins_digital">
-      <field name="PIN">4</field>
-    </shadow>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
   </value>
-  <value name="steps">
+</block>
+<block type="GD5800_MP3_VOL">
+  <value name="RXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">4</field>
+  </value>
+  <value name="TXPIN">
+    <shadow type="pins_digital" />
+    <field name="PIN">5</field>
+  </value>
+  <value name="vol">
     <shadow type="math_number">
-      <field name="NUM">100</field>
-    </shadow>
-  </value>
-  <value name="speed">
-    <shadow type="math_number">
-      <field name="NUM">10</field>
+      <field name="NUM">20</field>
     </shadow>
   </value>
 </block>
-<block type="group_stepper_move">
-  <value name="step">
+<block type="voice_module">
+  <value name="PIN">
+    <shadow type="pins_digital"/>
+  </value>
+  <value name="WAIT">
     <shadow type="math_number">
-      <field name="NUM">10</field>
+      <field name="NUM">1000</field>
     </shadow>
   </value>
 </block>
-<block type="RGB_color_seclet" >
- <field name="COLOR">#ff0000</field>
+<block type="serial_softserial">
+  <field name="serial_select">mySerial</field>
+  <value name="RX">
+    <shadow type="pins_digital">
+      <field name="PIN">10</field>
+    </shadow>
+  </value>
+  <value name="TX">
+    <shadow type="pins_digital">
+      <field name="PIN">11</field>
+    </shadow>
+  </value>
+  <next>
+    <block type="serial_begin">
+      <field name="serial_select">mySerial</field>
+      <value name="CONTENT">
+        <shadow type="math_number">
+          <field name="NUM">9600</field>
+        </shadow>
+      </value>
+      <next>
+        <block type="arduino_dfplayer_mini_begin">
+          <field name="dfplayer_name">myDFPlayer</field>
+          <value name="dfplayer_pin">
+            <shadow type="arduino_dfplayer_mini_pin">
+              <field name="pin_type">mySerial</field>
+            </shadow>
+          </value>
+        </block>
+      </next>
+    </block>
+  </next>
 </block>
-<block type="RGB_color_rgb">
+<block type="arduino_dfplayer_mini_setTimeOut">
+  <value name="timeout_data">
+    <shadow type="math_number">
+      <field name="NUM">500</field>
+    </shadow>
+  </value>
+</block>
+<block type="arduino_dfplayer_mini_volume">
+  <value name="volume_data">
+    <shadow type="math_number">
+      <field name="NUM">15</field>
+    </shadow>
+  </value>
+</block>
+
+<block type="arduino_dfplayer_mini_volume_up_down">
+</block>
+<block type="arduino_dfplayer_mini_EQ">
+  <field name="dfplayer_name">myDFPlayer</field>
+  <value name="eq_data">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+    <block type="arduino_dfplayer_mini_EQ_type">
+      <field name="eq_type">DFPLAYER_EQ_NORMAL</field>
+    </block>
+  </value>
+</block>
+<block type="arduino_dfplayer_mini_outputDevice">
+  <field name="dfplayer_name">myDFPlayer</field>
+  <value name="outputdevice_data">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+    <block type="arduino_dfplayer_mini_outputDevice_type">
+      <field name="outputdevice_type">DFPLAYER_DEVICE_SD</field>
+    </block>
+  </value>
+</block>
+<block type="arduino_dfplayer_set_1">
+</block>
+<block type="arduino_dfplayer_play_loop">
+  <value name="play_data">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="arduino_dfplayer_playFolder">
+  <value name="fold_data">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="play_data">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="arduino_dfplayer_loopFolder">
+  <value name="fold_data">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="arduino_dfplayer_read_now">
+</block>
+<block type="arduino_dfplayer_readFileCounts">
+  <field name="dfplayer_name">myDFPlayer</field>
+  <field name="play_data">readFileCounts</field>
+  <value name="device_type">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+    <block type="arduino_dfplayer_mini_outputDevice_type">
+      <field name="outputdevice_type">DFPLAYER_DEVICE_SD</field>
+    </block>
+  </value>
+</block>
+<block type="arduino_dfplayer_readFileCountsInFolder">
+  <value name="folder_data">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="arduino_dfplayer_available">
+</block>
+</category>
+<category id="catActuator_light" colour="100">
+ <block type="RGB_color_seclet" >
+   <field name="COLOR">#ff0000</field>
+ </block>
+ <block type="RGB_color_rgb">
   <value name="R">
     <shadow type="math_number">
       <field name="NUM">0</field>
@@ -1255,76 +1670,7 @@
     </shadow>
   </value>
 </block>
-<block type="GD5800_MP3_CONTROL">
-  <value name="RXPIN">
-    <shadow type="pins_digital" />
-    <field name="PIN">4</field>
-  </value>
-  <value name="TXPIN">
-    <shadow type="pins_digital" />
-    <field name="PIN">5</field>
-  </value>
-</block>
-<block type="GD5800_MP3_PLAY_NUM">
-  <value name="RXPIN">
-    <shadow type="pins_digital" />
-    <field name="PIN">4</field>
-  </value>
-  <value name="TXPIN">
-    <shadow type="pins_digital" />
-    <field name="PIN">5</field>
-  </value>
-  <value name="NUM">
-    <shadow type="math_number">
-      <field name="NUM">2</field>
-    </shadow>
-  </value>
-</block>
-<block type="GD5800_MP3_LOOP_MODE">
-  <value name="RXPIN">
-    <shadow type="pins_digital" />
-    <field name="PIN">4</field>
-  </value>
-  <value name="TXPIN">
-    <shadow type="pins_digital" />
-    <field name="PIN">5</field>
-  </value>
-</block>
-<block type="GD5800_MP3_EQ_MODE">
-  <value name="RXPIN">
-    <shadow type="pins_digital" />
-    <field name="PIN">4</field>
-  </value>
-  <value name="TXPIN">
-    <shadow type="pins_digital" />
-    <field name="PIN">5</field>
-  </value>
-</block>
-<block type="GD5800_MP3_VOL">
-  <value name="RXPIN">
-    <shadow type="pins_digital" />
-    <field name="PIN">4</field>
-  </value>
-  <value name="TXPIN">
-    <shadow type="pins_digital" />
-    <field name="PIN">5</field>
-  </value>
-  <value name="vol">
-    <shadow type="math_number">
-      <field name="NUM">20</field>
-    </shadow>
-  </value>
-</block>
-<block type="voice_module">
-  <value name="PIN">
-    <shadow type="pins_digital"/>
-  </value>
-  <value name="WAIT">
-    <shadow type="math_number">
-      <field name="NUM">1000</field>
-    </shadow>
-  </value>
-</block>
+</category>
 </category>
 <category id="catMonitor" colour="180">
   <category id="cat4Digitdisplay" colour="180">
@@ -1447,6 +1793,65 @@
 </block>
 </value>
 </block>
+-<block type="lcd_display_pattern">
+  <field name="name">mylcd</field>
+  <field name="number">0</field>
+  <value name="row">
+    <shadow type="math_number"">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="column">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="pattern">
+    <block type="lcd_pattern">
+      <field name=\ "VAR\">lcd</field>
+      <field name=\ "a81\">FALSE</field>
+      <field name=\ "a82\">FALSE</field>
+      <field name=\ "a83\">FALSE</field>
+      <field name=\ "a84\">FALSE</field>
+      <field name=\ "a85\">FALSE</field>
+      <field name=\ "a71\">FALSE</field>
+      <field name=\ "a72\">TRUE</field>
+      <field name=\ "a73\">TRUE</field>
+      <field name=\ "a74\">TRUE</field>
+      <field name=\ "a75\">FALSE</field>
+      <field name=\ "a61\">TRUE</field>
+      <field name=\ "a62\">FALSE</field>
+      <field name=\ "a63\">FALSE</field>
+      <field name=\ "a64\">FALSE</field>
+      <field name=\ "a65\">TRUE</field>
+      <field name=\ "a51\">TRUE</field>
+      <field name=\ "a52\">FALSE</field>
+      <field name=\ "a53\">TRUE</field>
+      <field name=\ "a54\">FALSE</field>
+      <field name=\ "a55\">TRUE</field>
+      <field name=\ "a41\">TRUE</field>
+      <field name=\ "a42\">FALSE</field>
+      <field name=\ "a43\">TRUE</field>
+      <field name=\ "a44\">FALSE</field>
+      <field name=\ "a45\">TRUE</field>
+      <field name=\ "a31\">TRUE</field>
+      <field name=\ "a32\">FALSE</field>
+      <field name=\ "a33\">FALSE</field>
+      <field name=\ "a34\">FALSE</field>
+      <field name=\ "a35\">TRUE</field>
+      <field name=\ "a21\">FALSE</field>
+      <field name=\ "a22\">TRUE</field>
+      <field name=\ "a23\">TRUE</field>
+      <field name=\ "a24\">TRUE</field>
+      <field name=\ "a25\">FALSE</field>
+      <field name=\ "a11\">FALSE</field>
+      <field name=\ "a12\">FALSE</field>
+      <field name=\ "a13\">FALSE</field>
+      <field name=\ "a14\">FALSE</field>
+      <field name=\ "a15\">FALSE</field>
+    </block>
+  </value>
+</block>
 <block type="group_lcd_power">
   <field name="STAT">clear</field>
 </block>
@@ -1463,6 +1868,52 @@
       </block>
     </next>
   </block>
+  <block type="u8g2_spi_init">
+    <field name="U8G2_TYPE_SPI">SSD1306_128X64_NONAME</field>
+    <field name="ROTATION">U8G2_R0</field>
+    <value name="CLK">
+      <shadow type="pins_SCK">
+      </shadow>
+    </value>
+    <value name="MOSI">
+      <shadow type="pins_MOSI">
+      </shadow>
+    </value>
+    <field name="CS">3</field>
+    <field name="DC">4</field>
+    <field name="RST">5</field>
+    <next>
+      <block type="oled_page">
+        <statement name="DO">
+          <block type="procedures_callnoreturn">
+            <mutation name="page1"></mutation>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+  <block type="u8g2_LCD12864_spi_init">
+    <field name="ROTATION">U8G2_R0</field>
+    <value name="CLK">
+      <shadow type="pins_SCK">
+      </shadow>
+    </value>
+    <value name="MOSI">
+      <shadow type="pins_MOSI">
+      </shadow>
+    </value>
+    <field name="DC">10</field>
+    <next>
+      <block type="oled_page">
+        <statement name="DO">
+          <block type="procedures_callnoreturn">
+            <mutation name="page1"></mutation>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+  <sep gap="50"></sep>
   <block type="oled_set_EN_Font">
   </block>
   <block type="oled_set_CN_Font">
@@ -1494,7 +1945,56 @@
       </block>
     </statement>
   </block>
-  <block type="oled_define_bitmap_data"></block>
+  <!-- <block type="oled_define_bitmap_data"></block> -->
+  <block type="tool_modulus_show">
+    <field name="VAR">bitmap</field>
+    <field name="x">96</field>
+    <field name="save_hz">TRUE</field>
+    <value name="input_data">
+      <block type="tool_modulus">
+        <field name="bitmap_formats">1</field>
+        <field name="modulus_way">2</field>
+        <field name="modulus_direction">2</field>
+        <field name="hz_sharp">STHeiti</field>
+        <field name="hz_line_height">16</field>
+        <field name="hz_up_down">hz_up</field>
+        <field name="hz_up_down_data">0</field>
+        <field name="hz_left_right">hz_left</field>
+        <field name="hz_left_right_data">0</field>
+        <field name="bitmap_width">48</field>
+        <field name="bitmap_height">16</field>
+        <field name="show_hz">TRUE</field>
+        <field name="input_data">米思齐</field>
+      </block>
+    </value>
+  </block>
+  <block type="oled_showBitmap" >
+    <value name="START_X">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="START_Y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="WIDTH">
+      <shadow type="math_number">
+        <field name="NUM">128</field>
+      </shadow>
+    </value>
+    <value name="HEIGHT">
+      <shadow type="math_number">
+        <field name="NUM">64</field>
+      </shadow>
+    </value>
+    <value name="bitmap_name">
+      <block type="text">
+        <field name="TEXT">bitmap1</field>
+      </block>
+    </value>
+  </block>
   <block type="oled_clear"></block>
   <block type="u8g2_setContrast">
    <value name="Contrast">
@@ -1528,33 +2028,6 @@
   </shadow>
 </value>
 <field name="Icon_size"></field>
-</block>
-<block type="oled_showBitmap" >
-  <value name="START_X">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="START_Y">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="WIDTH">
-    <shadow type="math_number">
-      <field name="NUM">128</field>
-    </shadow>
-  </value>
-  <value name="HEIGHT">
-    <shadow type="math_number">
-      <field name="NUM">64</field>
-    </shadow>
-  </value>
-  <value name="bitmap_name">
-    <block type="text">
-      <field name="TEXT">bitmap1</field>
-    </block>
-  </value>
 </block>
 <block type="oled_drawPixel" >
   <value name="POS_X">
@@ -1819,7 +2292,7 @@
       </shadow>
     </value>
   </block>
-   <block type="display_Matrix_print">
+  <block type="display_Matrix_print">
     <value name="TEXT">
       <shadow type="text">
         <field name="TEXT">Mixly</field>
@@ -2311,64 +2784,101 @@
     </shadow>
   </value>
 </block>
-<block type="blynk_table">
- <value name="xnyj">
-  <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow> 
-</value> 
-<value name="id">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value> 
-<value name="mingcheng">
-  <shadow type="text">
-    <field name="TEXT">Name</field>
+<block type="blynk_table_add_data">
+ <value name="name">
+   <shadow type="text">
+    <field name="TEXT">Test row</field>
   </shadow>
 </value>
-<value name="shujv">
-  <shadow type="text">
-    <field name="TEXT">John</field>
-  </shadow>
+<value name="data">
+ <shadow type="text">
+  <field name="TEXT">hello</field>
+</shadow>
 </value>
 </block>
-<block type="blynk_table_update">
- <value name="xnyj">
-  <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow> <value name="xnyj">
+
+<block type="blynk_table_click">
+  <field name="Vpin">V0</field>
+  <statement name="function">
+    <block type="serial_println">
+      <field name="serial_select">Serial</field>
+      <value name="CONTENT">
+        <block type="variables_get">
+          <field name="VAR">index</field>
+        </block>
+      </value>
+      <next>
+        <block type="serial_println">
+          <field name="serial_select">Serial</field>
+          <value name="CONTENT">
+            <block type="variables_get">
+              <field name="VAR">selected</field>
+            </block>
+          </value>
+        </block>
+      </next>
+    </block>
+  </statement>
+</block>
+
+<block type="blynk_table_order">
+  <field name="Vpin">V0</field>
+  <statement name="function">
+    <block type="serial_println">
+      <field name="serial_select">Serial</field>
+      <value name="CONTENT">
+        <block type="variables_get">
+          <field name="VAR">indexFrom</field>
+        </block>
+      </value>
+      <next>
+        <block type="serial_println">
+          <field name="serial_select">Serial</field>
+          <value name="CONTENT">
+            <block type="variables_get">
+              <field name="VAR">indexTo</field>
+            </block>
+          </value>
+        </block>
+      </next>
+    </block>
+  </statement>
+</block>
+<block type="blynk_table"> 
+  <value name="id">
     <shadow type="math_number">
-      <field name="NUM">V0</field>
+      <field name="NUM">0</field>
     </shadow>
   </value> 
-</value> 
-<value name="id">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value> 
-<value name="mingcheng">
-  <shadow type="text">
-    <field name="TEXT">Name</field>
-  </shadow>
-</value>
-<value name="shujv">
-  <shadow type="text">
-    <field name="TEXT">John</field>
-  </shadow>
-</value>
+  <value name="mingcheng">
+    <shadow type="text">
+      <field name="TEXT">Name</field>
+    </shadow>
+  </value>
+  <value name="shujv">
+    <shadow type="text">
+      <field name="TEXT">John</field>
+    </shadow>
+  </value>
 </block>
-<block type="blynk_table_highlight">
-  <value name="xnyj">
+<block type="blynk_table_update"> 
+  <value name="id">
     <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow> <value name="xnyj">
-      <shadow type="math_number">
-        <field name="NUM">V0</field>
-      </shadow>
-    </value> 
+      <field name="NUM">0</field>
+    </shadow>
   </value> 
+  <value name="mingcheng">
+    <shadow type="text">
+      <field name="TEXT">Name</field>
+    </shadow>
+  </value>
+  <value name="shujv">
+    <shadow type="text">
+      <field name="TEXT">John</field>
+    </shadow>
+  </value>
+</block>
+<block type="blynk_table_highlight"> 
   <value name="id">
     <shadow type="math_number">
       <field name="NUM">0</field>
@@ -2376,53 +2886,20 @@
   </value> 
 </block>
 <block type="blynk_table_select">
-  <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow> <value name="xnyj">
-      <shadow type="math_number">
-        <field name="NUM">V0</field>
-      </shadow>
-    </value> 
-  </value> 
   <value name="id">
     <shadow type="math_number">
       <field name="NUM">0</field>
     </shadow>
   </value> 
 </block>
-<block type="blynk_table_unselect">
- <value name="xnyj">
-  <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow> <value name="xnyj">
+<block type="blynk_table_unselect"> 
+  <value name="id">
     <shadow type="math_number">
-      <field name="NUM">V0</field>
+      <field name="NUM">0</field>
     </shadow>
   </value> 
-</value> 
-<value name="id">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value> 
 </block>
-<block type="blynk_table_cleardata">
- <value name="xnyj">
-  <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow> <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow>
-  </value> 
-</value> 
-<value name="id">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value> 
-</block>
+<block type="blynk_table_cleardata"></block>
 <block type="Blynk_iot_CONNECT_STATE" >
   <field name="state">BLYNK_CONNECTED</field>
   <statement name="DO">

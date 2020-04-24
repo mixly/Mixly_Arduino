@@ -187,6 +187,26 @@ Blockly.Arduino.simple_timer = function () {
     return 'timer.run();\n';
 };
 
+//do-while循环
+Blockly.Arduino.do_while = function() {
+    var statements_input_data = Blockly.Arduino.statementToCode(this, 'input_data');  
+    var value_select_data = Blockly.Arduino.valueToCode(this, 'select_data', Blockly.Arduino.ORDER_ATOMIC);
+    var dropdown_type = this.getFieldValue('type');
+  if(dropdown_type == 'false')
+  {
+    var code = 'do{\n'
+              +statements_input_data
+              +'}while(!('+value_select_data+'));\n';
+  }
+  else
+  {
+    var code = 'do{\n'
+              +statements_input_data
+              +'}while('+value_select_data+');\n';
+  }
+  return code;
+};
+
 //注册超级延时函数
 Blockly.Arduino.super_delay_function1 = function () {
     var number = this.getFieldValue('number');
@@ -208,23 +228,4 @@ Blockly.Arduino.execute_super_delay_function1 = function() {
     var frequency= Blockly.Arduino.valueToCode(this, 'frequency', Blockly.Arduino.ORDER_ATOMIC);
     var code='timer.setTimer('+ time_interval+', super_delay_function'+ number+', '+ frequency+');\n';
     return code;
-};
-//do-while循环
-Blockly.Arduino.do_while = function() {
-    var statements_input_data = Blockly.Arduino.statementToCode(this, 'input_data');  
-    var value_select_data = Blockly.Arduino.valueToCode(this, 'select_data', Blockly.Arduino.ORDER_ATOMIC);
-    var dropdown_type = this.getFieldValue('type');
-  if(dropdown_type == 'false')
-  {
-    var code = 'do{\n'
-              +statements_input_data
-              +'}while(!('+value_select_data+'));\n';
-  }
-  else
-  {
-    var code = 'do{\n'
-              +statements_input_data
-              +'}while('+value_select_data+');\n';
-  }
-  return code;
 };

@@ -23,6 +23,9 @@ var MSG = {
 	catStorageEEPROM:'EEPROM',
 	catSensor: "Sensor",
 	catActuator: "Actuator",
+	catActuator_motor: "Motor",
+	catActuator_voice: "Sound",
+	catActuator_light: "Light",
 	catMonitor:"Monitor",
 	catVar: "Variables",
 	catFun: "Functions",
@@ -1763,6 +1766,7 @@ Blockly.blockpy_PYLAB_PLOT_LINE_DOTTED='Dotted Line';
 Blockly.blockpy_PYLAB_PLOT_LINE_CHAIN='Chain Line';
 Blockly.blockpy_PYLAB_PLOT_LINE_POINT_DOTTED='Point dotted Line';
 Blockly.mixpy_PYLAB_PLOT_XY ="draw line chart;";
+Blockly.mixpy_PYLAB_SCATTER = 'Draw a scatterplot;';
 Blockly.mixpy_SUBPLOT ="split sub graph;";
 Blockly.mixpy_SUBPLOT_VERTICLE ="split up and down;";
 Blockly.mixpy_SUBPLOT_HORIZEN ="left and right parts are divided into;";
@@ -2659,3 +2663,49 @@ Blockly.MLX90614_TYPE = 'Infrared temperature sensor';
 Blockly.MLX90614_TARGET_OBJECT_TEMP = 'Target object temperature';
 Blockly.MLX90614_AMBIENT_TEMP = 'Ambient temperature';
 Blockly.IR_AND_TONE_WARNING = 'Warning:\n'+'The buzzer module and the infrared receiving module cannot be used at the same time.\n'+'Please consider using a buzzer module (no timer) or removing the infrared receiving module';
+Blockly.USE_SERIAL_PORT = 'Use serial port';
+Blockly.DFPLAYER_MINI_SET_TIMEOUT = "Serial communication timeout is set to";
+Blockly.DFPLAYER_MINI_SET_TIMEOUT_TOOLTIP = "DFPlayer Mini sets the timeout for serial communication";
+Blockly.DFPLAYER_MINI_SET_VOLUME = "Volume is set to";
+Blockly.DFPLAYER_MINI_SET_VOLUME_TOOLTIP = "DFPlayer Mini Set the volume, the range is 0 ~ 30";
+Blockly.DFPLAYER_MINI_VOLUME_UP_DOWN_TOOLTIP = "DFPlayer Mini volume + or -";
+Blockly.DFPLAYER_MINI_SET_EQ = " Sound effect set";
+Blockly.DFPLAYER_MINI_SET_EQ_TOOLTIP = "DFPlayer Mini settings";
+Blockly.DFPLAYER_MINI_SET_OUTPUTDEVICE = "Set the playback device to";
+Blockly.DFPLAYER_MINI_SET_OUTPUTDEVICE_TOOLTIP = "DFPlayer Mini designated playback device";
+Blockly.DFPLAYER_MINI_STOP_ADVERTISE = "Stop interruption";
+Blockly.DFPLAYER_MINI_ENABLE_LOOP = "Loop playback starts";
+Blockly.DFPLAYER_MINI_DISABLE_LOOP = "Loop playback stops";
+Blockly.DFPLAYER_MINI_ENABLE_LOOP_ALL = "Loop all tracks";
+Blockly.DFPLAYER_MINI_DISABLE_LOOP_ALL = "Stop looping tracks";
+Blockly.DFPLAYER_MINI_RANDOM_ALL = "Shuffle all tracks";
+Blockly.DFPLAYER_MINI_ENABLE_DAC = "Turn on audio output";
+Blockly.DFPLAYER_MINI_DISABLE_DAC = "Turn off audio output";
+Blockly.DFPLAYER_MINI_SLEEP = "Go to sleep";
+Blockly.DFPLAYER_MINI_ADVERTISE = "Insert";
+Blockly.DFPLAYER_MINI_PLAYMP3FOLDER = "Play MP3 folder";
+Blockly.DFPLAYER_MINI_SONG = "Track";
+Blockly.DFPLAYER_MINI_PLAY_LOOP_TOOLTIP = "DFPlayer Mini plays, loops, and inserts specified tracks";
+Blockly.DFPLAYER_MINI_PLAY_ADVERTISE_TOOLTIP = "DFPlayer Mini inserts the specified track, file name (0 ~ 65535)";
+Blockly.DFPLAYER_MINI_PLAY_PLAYMP3FOLDER_TOOLTIP = "DFPlayer Mini plays the specified track in the MP3 folder with the file name (0 ~ 65535)";
+Blockly.DFPLAYER_MINI_FOLDER = "Under the folder";
+Blockly.DFPLAYER_MINI_LARGEFOLDER = "Under big folder";
+Blockly.DFPLAYER_MINI_PLAY_PLAYFOLDER_TOOLTIP = "DFPlayer Mini plays the tracks in the specified folder, folder name (1 ~ 99), file name (1 ~ 255)";
+Blockly.DFPLAYER_MINI_PLAY_PLAYLARGEFOLDER_TOOLTIP = "DFPlayer Mini plays the tracks in the specified large folder, folder name (1 ~ 10), file name (1 ~ 1000)";
+Blockly.DFPLAYER_MINI_LOOP_FOLDER = "Loop folder";
+Blockly.DFPLAYER_MINI_LOOP_FOLDER_TOOLTIP = "DFPlayer Mini loops tracks in a specified folder";
+Blockly.DFPLAYER_MINI_READ_NOW_DATA_TOOLTIP = "DFPlayer Mini Gets the current status, current volume, current sound effect, and the type of the returned data is int";
+Blockly.DFPLAYER_MINI_READ_FILE_COUNTS = "Total number of files";
+Blockly.DFPLAYER_MINI_READ_CURRENT_FILE_NUMBER = "Current track number";
+Blockly.DFPLAYER_MINI_READ_FILE_COUNTS_TOOLTIP = "DFPlayer Mini Gets the total number of files or the current track of U disk, SD card, FLASH, and the type of returned data is int";
+Blockly.DFPLAYER_MINI_READ_FILE_COUNTS_INFOLDER_TOOLTIP = "DFPlayer Mini gets the number of files in the specified folder, and the type of the returned data is int";
+Blockly.DFPLAYER_MINI_AVAILABLE_TOOLTIP = "myDFPlayer.available (), the type of the returned data is boolean";
+Blockly.DFPLAYER_MINI_READ_TYPE_TOOLTIP = "myDFPlayer.readType (), the type of the returned data is uint8_t";
+Blockly.DFPLAYER_MINI_READ_TOOLTIP = "myDFPlayer.read (), the type of the returned data is uint16_t";
+Blockly.YX5200_MP3 = 'Mini MP3 module';
+Blockly.RETURN_DATA_ANALYSIS = "Return data analysis";
+Blockly.LCD_NUMBERING = 'Numbering';
+Blockly.COLUMN_DISPLAY_IMAGE = 'Column display image';
+Blockly.SCOOPTASK_WARNING = "Warning: \nThe number of the SCoopTask module cannot be duplicated, \nplease consider modifying the number of this module or deleting this module.";
+Blockly.BLYNK_TABLE_ORDER = 'Table click';
+Blockly.BLYNK_TABLE_CLICK = "Table order";

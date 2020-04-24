@@ -271,6 +271,12 @@
       </shadow>
     </value>
   </block>
+  <block type="ESP32touchButton">
+  <value name="PIN">
+    <shadow type="pins_touch">
+    </shadow>
+  </value>
+ </block>
   <block type="controls_attachInterrupt">
     <value name="PIN">
       <shadow type="pins_interrupt"></shadow>
@@ -402,13 +408,19 @@
       </shadow>
     </value>
   </block>
-  <block type="super_delay_function1"></block>
-  <block type="execute_super_delay_function1">
-   <value name="time_interval">
-    <shadow type="math_number">
-      <field name="NUM">1000</field>
-    </shadow>
-  </value>
+<block type="super_delay_function1"></block>
+<block type="execute_super_delay_function1">
+ <value name="time_interval">
+  <shadow type="math_number">
+    <field name="NUM">1000</field>
+  </shadow>
+</value>
+<value name="frequency">
+  <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
+</block>
   <value name="frequency">
     <shadow type="math_number">
       <field name="NUM">1</field>
@@ -457,7 +469,21 @@
       </shadow>
     </value>
   </block>
+  <block type="math_auto_add_or_minus">
+    <field name="math_auto_add_minus_type">++</field>
+    <value name="math_auto_add_minus_output">
+      <shadow type="variables_get">
+        <field name="VAR">item</field>
+      </shadow>
+    </value>
+  </block>
   <block type="math_to_int">
+  </block>
+  <block type="math_SizeOf">
+    <value name="data">
+      <shadow type="arduino_variate_type">
+      </shadow>
+    </value>
   </block>
   <block type="math_max_min">
     <value name="A">
@@ -563,19 +589,19 @@
   </block>
   <block type="text_join2">
     <value name="ADD0">
-      <shadow type="text">
-        <field name="TEXT">A</field>
-      </shadow>
-    </value>
-    <value name="ADD1">
-      <shadow type="text">
-        <field name="TEXT">B</field>
-      </shadow>
-    </value>
-    <value name="ADD2">
-      <shadow type="text">
-        <field name="TEXT">C</field>
-      </shadow>
+    <block type="text">
+      <field name="TEXT">A</field>
+    </block>
+  </value>
+  <value name="ADD1">
+    <block type="text">
+      <field name="TEXT">B</field>
+    </block>
+  </value>
+  <value name="ADD2">
+    <block type="text">
+      <field name="TEXT">C</field>
+    </block>
     </value>
   </block>
   <block type="text_to_number">
@@ -889,6 +915,8 @@
       </shadow>
     </value>
   </block>
+<block type="lists_array2_get_length">
+</block>
 </category>
 <category id="catVar" colour="330" custom="VARIABLE">
 </category>
@@ -974,7 +1002,50 @@
       <shadow type="pins_digital"></shadow>
     </value>
   </block>
+  <block type="mlx90614_init">
+    <value name="mlx90614_address">
+      <shadow type="math_number">
+        <field name="NUM">0x5A</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="mlx90614_get_data">
+  </block>
   <block type="TCS34725_Get_RGB">
+  </block>
+  <block type="tcs230_init">
+    <value name="tcs230_s0">
+      <shadow type="pins_digital">
+        <field name="PIN">2</field>
+      </shadow>
+    </value>
+    <value name="tcs230_s1">
+      <shadow type="pins_digital">
+        <field name="PIN">3</field>
+      </shadow>
+    </value>
+    <value name="tcs230_s2">
+      <shadow type="pins_digital">
+        <field name="PIN">4</field>
+      </shadow>
+    </value>
+    <value name="tcs230_s3">
+      <shadow type="pins_digital">
+        <field name="PIN">5</field>
+      </shadow>
+    </value>
+    <value name="tcs230_led">
+      <shadow type="pins_digital">
+        <field name="PIN">6</field>
+      </shadow>
+    </value>
+    <value name="tcs230_out">
+      <shadow type="pins_digital">
+        <field name="PIN">7</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="tcs230_Get_RGB">
   </block>
   <block type="SHT20">
   </block>
@@ -1427,6 +1498,65 @@
   <field name="TEXT"></field>
 </block>
 </value>
+</block>
+-<block type="lcd_display_pattern">
+    <field name="name">mylcd</field>
+    <field name="number">0</field>
+    <value name="row">
+        <shadow type="math_number"">
+            <field name="NUM">1</field>
+        </shadow>
+    </value>
+    <value name="column">
+        <shadow type="math_number">
+            <field name="NUM">1</field>
+        </shadow>
+    </value>
+    <value name="pattern">
+        <block type="lcd_pattern">
+            <field name=\ "VAR\">lcd</field>
+            <field name=\ "a81\">FALSE</field>
+            <field name=\ "a82\">FALSE</field>
+            <field name=\ "a83\">FALSE</field>
+            <field name=\ "a84\">FALSE</field>
+            <field name=\ "a85\">FALSE</field>
+            <field name=\ "a71\">FALSE</field>
+            <field name=\ "a72\">TRUE</field>
+            <field name=\ "a73\">TRUE</field>
+            <field name=\ "a74\">TRUE</field>
+            <field name=\ "a75\">FALSE</field>
+            <field name=\ "a61\">TRUE</field>
+            <field name=\ "a62\">FALSE</field>
+            <field name=\ "a63\">FALSE</field>
+            <field name=\ "a64\">FALSE</field>
+            <field name=\ "a65\">TRUE</field>
+            <field name=\ "a51\">TRUE</field>
+            <field name=\ "a52\">FALSE</field>
+            <field name=\ "a53\">TRUE</field>
+            <field name=\ "a54\">FALSE</field>
+            <field name=\ "a55\">TRUE</field>
+            <field name=\ "a41\">TRUE</field>
+            <field name=\ "a42\">FALSE</field>
+            <field name=\ "a43\">TRUE</field>
+            <field name=\ "a44\">FALSE</field>
+            <field name=\ "a45\">TRUE</field>
+            <field name=\ "a31\">TRUE</field>
+            <field name=\ "a32\">FALSE</field>
+            <field name=\ "a33\">FALSE</field>
+            <field name=\ "a34\">FALSE</field>
+            <field name=\ "a35\">TRUE</field>
+            <field name=\ "a21\">FALSE</field>
+            <field name=\ "a22\">TRUE</field>
+            <field name=\ "a23\">TRUE</field>
+            <field name=\ "a24\">TRUE</field>
+            <field name=\ "a25\">FALSE</field>
+            <field name=\ "a11\">FALSE</field>
+            <field name=\ "a12\">FALSE</field>
+            <field name=\ "a13\">FALSE</field>
+            <field name=\ "a14\">FALSE</field>
+            <field name=\ "a15\">FALSE</field>
+        </block>
+    </value>
 </block>
 <block type="group_lcd_power">
   <field name="STAT">clear</field>
@@ -2446,12 +2576,67 @@
       </shadow>
     </value>
   </block>
-  <block type="blynk_table">
-   <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow> 
-  </value> 
+  <block type="blynk_table_add_data">
+ <value name="name">
+   <shadow type="text">
+    <field name="TEXT">Test row</field>
+  </shadow>
+ </value>
+ <value name="data">
+   <shadow type="text">
+    <field name="TEXT">hello</field>
+  </shadow>
+ </value>
+</block>
+
+<block type="blynk_table_click">
+    <field name="Vpin">V0</field>
+    <statement name="function">
+        <block type="serial_println">
+            <field name="serial_select">Serial</field>
+            <value name="CONTENT">
+                <block type="variables_get">
+                    <field name="VAR">index</field>
+                </block>
+            </value>
+            <next>
+                <block type="serial_println">
+                    <field name="serial_select">Serial</field>
+                    <value name="CONTENT">
+                        <block type="variables_get">
+                            <field name="VAR">selected</field>
+                        </block>
+                    </value>
+                </block>
+            </next>
+        </block>
+    </statement>
+</block>
+
+<block type="blynk_table_order">
+    <field name="Vpin">V0</field>
+    <statement name="function">
+        <block type="serial_println">
+            <field name="serial_select">Serial</field>
+            <value name="CONTENT">
+                <block type="variables_get">
+                    <field name="VAR">indexFrom</field>
+                </block>
+            </value>
+            <next>
+                <block type="serial_println">
+                    <field name="serial_select">Serial</field>
+                    <value name="CONTENT">
+                        <block type="variables_get">
+                            <field name="VAR">indexTo</field>
+                        </block>
+                    </value>
+                </block>
+            </next>
+        </block>
+    </statement>
+</block>
+  <block type="blynk_table"> 
   <value name="id">
     <shadow type="math_number">
       <field name="NUM">0</field>
@@ -2468,17 +2653,7 @@
     </shadow>
   </value>
 </block>
-<block type="blynk_table_update">
- <value name="xnyj">
-  <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow>
-  <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow>
-  </value> 
-</value> 
+<block type="blynk_table_update"> 
 <value name="id">
   <shadow type="math_number">
     <field name="NUM">0</field>
@@ -2495,17 +2670,7 @@
   </shadow>
 </value>
 </block>
-<block type="blynk_table_highlight">
-  <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow>
-    <value name="xnyj">
-      <shadow type="math_number">
-        <field name="NUM">V0</field>
-      </shadow>
-    </value> 
-  </value> 
+<block type="blynk_table_highlight"> 
   <value name="id">
     <shadow type="math_number">
       <field name="NUM">0</field>
@@ -2513,56 +2678,20 @@
   </value> 
 </block>
 <block type="blynk_table_select">
-  <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow>
-    <value name="xnyj">
-      <shadow type="math_number">
-        <field name="NUM">V0</field>
-      </shadow>
-    </value> 
-  </value> 
   <value name="id">
     <shadow type="math_number">
       <field name="NUM">0</field>
     </shadow>
   </value> 
 </block>
-<block type="blynk_table_unselect">
- <value name="xnyj">
-  <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow>
-  <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow>
-  </value> 
-</value> 
+<block type="blynk_table_unselect"> 
 <value name="id">
   <shadow type="math_number">
     <field name="NUM">0</field>
   </shadow>
 </value> 
 </block>
-<block type="blynk_table_cleardata">
- <value name="xnyj">
-  <shadow type="math_number">
-    <field name="NUM">V0</field>
-  </shadow>
-  <value name="xnyj">
-    <shadow type="math_number">
-      <field name="NUM">V0</field>
-    </shadow>
-  </value> 
-</value> 
-<value name="id">
-  <shadow type="math_number">
-    <field name="NUM">0</field>
-  </shadow>
-</value>
-</block>
+<block type="blynk_table_cleardata"></block>
 <block type="Blynk_iot_CONNECT_STATE" >
   <field name="state">BLYNK_CONNECTED</field>
   <statement name="DO">

@@ -1,8 +1,17 @@
 #### 更新日志
-#### 1.0.9 2020-03-22
+#### 1.0.9 2020-04-11
 * 红外接收和蜂鸣器增加warning
 * 修复LCD的软IIC问题
-* 开发板列表增加arduino Pro Mini
+* arduino 类开发板列表保持与官方一致
+* 增加LCD自定义字符显示
+* 增加dfplayermini支持
+* 执行器下分类为电机、声音、光线
+* 删除esp8266下的get请求（不稳定）
+* 更新mixgo固件
+* 增加多个scoop使用时的warning
+* 改进blynk terminal显示
+* 统一blynk table的格式
+* 更新若干个C库
 
 
 #### 1.0.8 2020-03-11
