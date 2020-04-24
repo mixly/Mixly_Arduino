@@ -165,7 +165,7 @@ void Adafruit_TCS34725::disable() {
  *          Gain
  */
 Adafruit_TCS34725::Adafruit_TCS34725(tcs34725IntegrationTime_t it,
- tcs34725Gain_t gain) {
+                                     tcs34725Gain_t gain) {
   _tcs34725Initialised = false;
   _tcs34725IntegrationTime = it;
   _tcs34725Gain = gain;
@@ -278,7 +278,7 @@ void Adafruit_TCS34725::setGain(tcs34725Gain_t gain) {
  *          Clear channel value
  */
 void Adafruit_TCS34725::getRawData(uint16_t *r, uint16_t *g, uint16_t *b,
- uint16_t *c) {
+                                   uint16_t *c) {
   if (!_tcs34725Initialised)
     begin();
 
@@ -289,22 +289,22 @@ void Adafruit_TCS34725::getRawData(uint16_t *r, uint16_t *g, uint16_t *b,
 
   /* Set a delay for the integration time */
   switch (_tcs34725IntegrationTime) {
-    case TCS34725_INTEGRATIONTIME_2_4MS:
+  case TCS34725_INTEGRATIONTIME_2_4MS:
     delay(3);
     break;
-    case TCS34725_INTEGRATIONTIME_24MS:
+  case TCS34725_INTEGRATIONTIME_24MS:
     delay(24);
     break;
-    case TCS34725_INTEGRATIONTIME_50MS:
+  case TCS34725_INTEGRATIONTIME_50MS:
     delay(50);
     break;
-    case TCS34725_INTEGRATIONTIME_101MS:
+  case TCS34725_INTEGRATIONTIME_101MS:
     delay(101);
     break;
-    case TCS34725_INTEGRATIONTIME_154MS:
+  case TCS34725_INTEGRATIONTIME_154MS:
     delay(154);
     break;
-    case TCS34725_INTEGRATIONTIME_700MS:
+  case TCS34725_INTEGRATIONTIME_700MS:
     delay(700);
     break;
   }
@@ -324,7 +324,7 @@ void Adafruit_TCS34725::getRawData(uint16_t *r, uint16_t *g, uint16_t *b,
  *          Clear channel value
  */
 void Adafruit_TCS34725::getRawDataOneShot(uint16_t *r, uint16_t *g, uint16_t *b,
-  uint16_t *c) {
+                                          uint16_t *c) {
   if (!_tcs34725Initialised)
     begin();
 
@@ -356,53 +356,6 @@ void Adafruit_TCS34725::getRGB(float *r, float *g, float *b) {
   *r = (float)red / sum * 255.0;
   *g = (float)green / sum * 255.0;
   *b = (float)blue / sum * 255.0;
-}
-/*!
- *  @brief  Read the RGB color detected by the sensor.
- */
-int Adafruit_TCS34725::getR() {
-  float r;
-  uint16_t red, green, blue, clear;
-  getRawData(&red, &green, &blue, &clear);
-  uint32_t sum = clear;
-
-  // Avoid divide by zero errors ... if clear = 0 return black
-  if (clear == 0) {
-    r=0;
-    return 0;
-  }
-  r = (float)red / sum * 255.0;
-  return r;
-}
-
-int Adafruit_TCS34725::getG() {
-  float g;
-  uint16_t red, green, blue, clear;
-  getRawData(&red, &green, &blue, &clear);
-  uint32_t sum = clear;
-
-  // Avoid divide by zero errors ... if clear = 0 return black
-  if (clear == 0) {
-    g=0;
-    return 0;
-  }
-  g = (float)green / sum * 255.0;
-  return g;
-}
-
-int Adafruit_TCS34725::getB() {
-  float b;
-  uint16_t red, green, blue, clear;
-  getRawData(&red, &green, &blue, &clear);
-  uint32_t sum = clear;
-
-  // Avoid divide by zero errors ... if clear = 0 return black
-  if (clear == 0) {
-    b=0;
-    return 0;
-  }
-  b = (float)blue / sum * 255.0;
-  return b;
 }
 
 /*!
@@ -443,7 +396,7 @@ uint16_t Adafruit_TCS34725::calculateColorTemperature(uint16_t r, uint16_t g,
 
   /* Calculate the final CCT */
   cct =
-  (449.0F * powf(n, 3)) + (3525.0F * powf(n, 2)) + (6823.3F * n) + 5520.33F;
+      (449.0F * powf(n, 3)) + (3525.0F * powf(n, 2)) + (6823.3F * n) + 5520.33F;
 
   /* Return the results in degrees Kelvin */
   return (uint16_t)cct;
@@ -467,8 +420,8 @@ uint16_t Adafruit_TCS34725::calculateColorTemperature_dn40(uint16_t r,
                                                            uint16_t b,
                                                            uint16_t c) {
   uint16_t r2, b2; /* RGB values minus IR component */
-  uint16_t sat;        /* Digital saturation level */
-  uint16_t ir;         /* Inferred IR content */
+  uint16_t sat;    /* Digital saturation level */
+  uint16_t ir;     /* Inferred IR content */
 
   if (c == 0) {
     return 0;
@@ -536,7 +489,7 @@ uint16_t Adafruit_TCS34725::calculateColorTemperature_dn40(uint16_t r,
   /* A simple method of measuring color temp is to use the ratio of blue */
   /* to red light, taking IR cancellation into account. */
   uint16_t cct = (3810 * (uint32_t)b2) / /** Color temp coefficient. */
-  (uint32_t)r2 +
+                     (uint32_t)r2 +
                  1391; /** Color temp offset. */
 
   return cct;

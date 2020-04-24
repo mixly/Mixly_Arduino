@@ -1,0 +1,51 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+MD_MAXPanel	KEYWORD1
+rotation_t	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+clear	KEYWORD2
+setPoint	KEYWORD2
+getPoint	KEYWORD2
+drawLine	KEYWORD2
+drawHLine	KEYWORD2
+drawVLine	KEYWORD2
+drawRecangle	KEYWORD2
+drawFillRectangle	KEYWORD2
+drawTriangle	KEYWORD2
+drawFillTriangle	KEYWORD2
+drawCircle	KEYWORD2
+drawFillCircle	KEYWORD2
+drawQuadrilateral	KEYWORD2
+getXMax	KEYWORD2
+getYMax	KEYWORD2
+getGraphicObject	KEYWORD2
+update	KEYWORD2
+setIntensity	KEYWORD2
+setFont	KEYWORD2
+setCharSpacing	KEYWORD2
+getCharSpacing	KEYWORD2
+setRotation	KEYWORD2
+getRotation	KEYWORD2
+getTextWidth	KEYWORD2
+getFontHeight	KEYWORD2
+drawText	KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################
+
+ROT_0	LITERAL1
+ROT_90	LITERAL1
+ROT_180	LITERAL1
+ROT_270	LITERAL1
