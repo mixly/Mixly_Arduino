@@ -672,4 +672,30 @@ Blockly.Arduino.get_utf8_width = function() {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+//LCD自定义图案显示
+Blockly.Arduino.lcd_display_pattern = function() {
+  var name = this.getFieldValue('name');
+  var number = this.getFieldValue('number');
+  var row= Blockly.Arduino.valueToCode(this, 'row', Blockly.Arduino.ORDER_ATOMIC);
+  var column= Blockly.Arduino.valueToCode(this, 'column', Blockly.Arduino.ORDER_ATOMIC); 
+  var pattern= Blockly.Arduino.valueToCode(this, 'pattern', Blockly.Arduino.ORDER_ATOMIC); 
+  Blockly.Arduino.setups_["setup_lcd_display_pattern"+number] ='' +name+ '.createChar(' +number+ ', ' +pattern+ ');';
+  var code = '' +name+ '.setCursor(' +column+ '-1, ' +row+ '-1);\n' +name+ '.write(' +number+ ');\n';
+  return code;
+};
+
+Blockly.Arduino.lcd_pattern = function() {
+  var varName = this.getFieldValue('VAR');
+  var a = new Array();
+  for (var i = 1; i < 9; i++) {
+    a[i] = new Array();
+    for (var j = 1; j < 6; j++) {
+      a[i][6-j] = (this.getFieldValue('a' + i + j) == "TRUE") ? 1 : 0;
+    }
+  }
+  var code = '{0B' +a[8][5]+ '' +a[8][4]+ '' +a[8][3]+ '' +a[8][2]+ '' +a[8][1]+ ',0B' +a[7][5]+ '' +a[7][4]+ '' +a[7][3]+ '' +a[7][2]+ '' +a[7][1]+ ',0B' +a[6][5]+ '' +a[6][4]+ '' +a[6][3]+ '' +a[6][2]+ '' +a[6][1]+ ',0B' +a[5][5]+ '' +a[5][4]+ '' +a[5][3]+ '' +a[5][2]+ '' +a[5][1]+ ',0B' +a[4][5]+ '' +a[4][4]+ '' +a[4][3]+ '' +a[4][2]+ '' +a[4][1]+ ',0B' +a[3][5]+ '' +a[3][4]+ '' +a[3][3]+ '' +a[3][2]+ '' +a[3][1]+ ',0B' +a[2][5]+ '' +a[2][4]+ '' +a[2][3]+ '' +a[2][2]+ '' +a[2][1]+ ',0B' +a[1][5]+ '' +a[1][4]+ '' +a[1][3]+ '' +a[1][2]+ '' +a[1][1]+ '};';
+  Blockly.Arduino.definitions_[varName] = "byte " + varName + "[]=" + code;
+  return [varName, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 Blockly.Arduino.group_lcd_init=Blockly.Arduino.group_lcd_init2;

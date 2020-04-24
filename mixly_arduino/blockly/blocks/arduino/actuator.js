@@ -673,3 +673,361 @@ Blockly.Blocks.AFMotorStop={
 
   }
 };
+
+//初始化DFPlayer Mini
+Blockly.Blocks.arduino_dfplayer_mini_begin= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(Blockly.MIXLY_SETUP+" "+Blockly.YX5200_MP3)
+  .appendField(new Blockly.FieldTextInput("myPlayer"), "dfplayer_name");
+  this.appendValueInput("dfplayer_pin")
+  .setCheck(null)  
+  .appendField(Blockly.USE_SERIAL_PORT);
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip(Blockly.MIXLY_SETUP+" DFPlayer Mini");
+  this.setHelpUrl("");
+  }
+};
+
+//定义DFPlayer Mini 所使用的串口类型
+Blockly.Blocks.arduino_dfplayer_mini_pin= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(new Blockly.FieldDropdown([["Serial","Serial"],["SoftwareSerial","mySerial"],["SoftwareSerial1","mySerial1"],["SoftwareSerial2","mySerial2"],["SoftwareSerial3","mySerial3"]]), "pin_type");
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(65);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+//DFPlayer Mini 设置串口通信的超时时间
+Blockly.Blocks.arduino_dfplayer_mini_setTimeOut= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(Blockly.YX5200_MP3)
+  .appendField(new Blockly.FieldTextInput("myPlayer"), "dfplayer_name");
+  this.appendValueInput("timeout_data")
+  .setCheck(null)  
+  .appendField(Blockly.DFPLAYER_MINI_SET_TIMEOUT);
+  this.appendDummyInput()  
+  .appendField(Blockly.MIXLY_MILLIS);
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip(Blockly.DFPLAYER_MINI_SET_TIMEOUT_TOOLTIP);
+  this.setHelpUrl("");
+  }
+};
+
+//DFPlayer Mini 设置音量
+Blockly.Blocks.arduino_dfplayer_mini_volume= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(Blockly.YX5200_MP3)
+  .appendField(new Blockly.FieldTextInput("myPlayer"), "dfplayer_name");
+  this.appendValueInput("volume_data")
+  .setCheck(null)  
+  .appendField(Blockly.DFPLAYER_MINI_SET_VOLUME);
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip(Blockly.DFPLAYER_MINI_SET_VOLUME_TOOLTIP);
+  this.setHelpUrl("");
+  }
+};
+
+//DFPlayer Mini 音量+|-
+Blockly.Blocks.arduino_dfplayer_mini_volume_up_down= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(Blockly.YX5200_MP3)
+  .appendField(new Blockly.FieldTextInput("myPlayer"), "dfplayer_name")
+  .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MP3_VOL_UP,"volumeUp"],[Blockly.MIXLY_MP3_VOL_DOWN,"volumeDown"]]), "volume_type");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip(Blockly.DFPLAYER_MINI_VOLUME_UP_DOWN_TOOLTIP);
+  this.setHelpUrl("");
+  }
+};
+
+//DFPlayer Mini 设置音效
+Blockly.Blocks.arduino_dfplayer_mini_EQ= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(Blockly.YX5200_MP3)
+  .appendField(new Blockly.FieldTextInput("myPlayer"), "dfplayer_name");
+  this.appendValueInput("eq_data")
+  .setCheck(null)  
+  .appendField(Blockly.DFPLAYER_MINI_SET_EQ);
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip(Blockly.DFPLAYER_MINI_SET_EQ_TOOLTIP);
+  this.setHelpUrl("");
+  }
+};
+
+//DFPlayer Mini 定义音效类型
+Blockly.Blocks.arduino_dfplayer_mini_EQ_type= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MP3_EQ_NORMAL,"DFPLAYER_EQ_NORMAL"],[Blockly.MIXLY_MP3_EQ_POP,"DFPLAYER_EQ_POP"],[Blockly.MIXLY_MP3_EQ_ROCK,"DFPLAYER_EQ_ROCK"],[Blockly.MIXLY_MP3_EQ_CLASSIC,"DFPLAYER_EQ_CLASSIC"],[Blockly.MIXLY_MP3_EQ_JAZZ,"DFPLAYER_EQ_JAZZ"],[Blockly.MIXLY_MP3_EQ_BASS,"DFPLAYER_EQ_BASS"]]), "eq_type");
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+//DFPlayer Mini 指定播放设备
+Blockly.Blocks.arduino_dfplayer_mini_outputDevice= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(Blockly.YX5200_MP3)
+  .appendField(new Blockly.FieldTextInput("myPlayer"), "dfplayer_name");
+  this.appendValueInput("outputdevice_data")
+  .setCheck(null)  
+  .appendField(Blockly.DFPLAYER_MINI_SET_OUTPUTDEVICE);
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip(Blockly.DFPLAYER_MINI_SET_OUTPUTDEVICE_TOOLTIP);
+  this.setHelpUrl("");
+  }
+};
+
+//DFPlayer Mini 定义播放设备类型
+Blockly.Blocks.arduino_dfplayer_mini_outputDevice_type= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(new Blockly.FieldDropdown([["SD卡","DFPLAYER_DEVICE_SD"],["U盘","DFPLAYER_DEVICE_U_DISK"],["AUX","DFPLAYER_DEVICE_AUX"],["SLEEP","DFPLAYER_DEVICE_SLEEP"],["FLASH","DFPLAYER_DEVICE_FLASH"]]), "outputdevice_type");
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+//DFPlayer Mini 设置-1
+Blockly.Blocks.arduino_dfplayer_set_1= {
+  init: function() { 
+  var DATA = [
+  [Blockly.MIXLY_MP3_PREV,"previous"],
+  [Blockly.MIXLY_MP3_NEXT,"next"],
+  [Blockly.MIXLY_MP3_PLAY,"start"],
+  [Blockly.MIXLY_MP3_PAUSE,"pause"],
+  [Blockly.DFPLAYER_MINI_STOP_ADVERTISE,"stopAdvertise"],
+  [Blockly.DFPLAYER_MINI_ENABLE_LOOP,"enableLoop"],
+  [Blockly.DFPLAYER_MINI_DISABLE_LOOP,"disableLoop"],
+  [Blockly.DFPLAYER_MINI_ENABLE_LOOP_ALL,"enableLoopAll"],
+  [Blockly.DFPLAYER_MINI_DISABLE_LOOP_ALL,"disableLoopAll"],
+  [Blockly.DFPLAYER_MINI_RANDOM_ALL,"randomAll"],
+  [Blockly.DFPLAYER_MINI_ENABLE_DAC,"enableDAC"],
+  [Blockly.DFPLAYER_MINI_DISABLE_DAC,"disableDAC"],
+  [Blockly.DFPLAYER_MINI_SLEEP,"sleep"],
+  [Blockly.Msg.HTML_RESET,"reset"]
+  ];
+  this.appendDummyInput()  
+  .appendField(Blockly.YX5200_MP3)
+  .appendField(new Blockly.FieldTextInput("myPlayer"), "dfplayer_name")
+  .appendField(" ")
+  .appendField(new Blockly.FieldDropdown(DATA), "set_data");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+//DFPlayer Mini 播放和循环指定曲目
+Blockly.Blocks.arduino_dfplayer_play_loop= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(Blockly.YX5200_MP3)
+  .appendField(new Blockly.FieldTextInput("myPlayer"), "dfplayer_name");
+  this.appendValueInput("play_data")
+  .setCheck(null)  
+  .appendField(" ")
+  .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MP3_PLAY,"play"],[Blockly.MIXLY_MP3_LOOP_ONE,"loop"],[Blockly.DFPLAYER_MINI_ADVERTISE,"advertise"],[Blockly.DFPLAYER_MINI_PLAYMP3FOLDER,"playMp3Folder"]]), "play_type")
+  .appendField(Blockly.DFPLAYER_MINI_SONG);
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip(Blockly.DFPLAYER_MINI_PLAY_LOOP_TOOLTIP);
+  this.setHelpUrl("");
+  },
+  onchange: function(){
+    var dropdown_play_type = this.getFieldValue('play_type');
+    if(dropdown_play_type == 'advertise')
+      this.setTooltip(Blockly.DFPLAYER_MINI_PLAY_ADVERTISE_TOOLTIP);
+    else if(dropdown_play_type == 'playMp3Folder')
+      this.setTooltip(Blockly.DFPLAYER_MINI_PLAY_PLAYMP3FOLDER_TOOLTIP);
+    else
+      this.setTooltip(Blockly.DFPLAYER_MINI_PLAY_LOOP_TOOLTIP);
+  }
+};
+
+//DFPlayer Mini 播放指定文件夹下的曲目
+Blockly.Blocks.arduino_dfplayer_playFolder= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(Blockly.YX5200_MP3)
+  .appendField(new Blockly.FieldTextInput("myPlayer"), "dfplayer_name");
+  this.appendValueInput("fold_data")
+  .setCheck(null)  
+  .appendField(Blockly.MIXLY_MP3_PLAY)
+  .appendField(new Blockly.FieldDropdown([[Blockly.DFPLAYER_MINI_FOLDER,"playFolder"],[Blockly.DFPLAYER_MINI_LARGEFOLDER,"playLargeFolder"]]), "fold_type");
+  this.appendValueInput("play_data")
+  .setCheck(null)  
+  .appendField(Blockly.DFPLAYER_MINI_SONG);
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip(Blockly.DFPLAYER_MINI_PLAY_PLAYFOLDER_TOOLTIP);
+  this.setHelpUrl("");
+  },
+  onchange: function(){
+    var dropdown_fold_type = this.getFieldValue('fold_type');
+    if(dropdown_fold_type == 'playFolder')
+      this.setTooltip(Blockly.DFPLAYER_MINI_PLAY_PLAYFOLDER_TOOLTIP);
+    else
+      this.setTooltip(Blockly.DFPLAYER_MINI_PLAY_PLAYLARGEFOLDER_TOOLTIP);
+  }
+};
+
+//DFPlayer Mini 循环播放指定文件夹下的曲目
+Blockly.Blocks.arduino_dfplayer_loopFolder= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(Blockly.YX5200_MP3)
+  .appendField(new Blockly.FieldTextInput("myPlayer"), "dfplayer_name");
+  this.appendValueInput("fold_data")
+  .setCheck(null)  
+  .appendField(Blockly.DFPLAYER_MINI_LOOP_FOLDER);
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip(Blockly.DFPLAYER_MINI_LOOP_FOLDER_TOOLTIP);
+  this.setHelpUrl("");
+  }
+};
+
+//DFPlayer Mini 获取当前信息
+Blockly.Blocks.arduino_dfplayer_read_now= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(Blockly.YX5200_MP3)
+  .appendField(new Blockly.FieldTextInput("myPlayer"), "dfplayer_name");
+  this.appendDummyInput()  
+  .appendField(' '+Blockly.MIXLY_GET)
+  .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_PULSEIN_STAT,"readState"],[Blockly.MIXLY_MP3_VOL,"readVolume"],[Blockly.MIXLY_MP3_EQ_MODE,"readEQ"]]), "read_type");
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip(Blockly.DFPLAYER_MINI_READ_NOW_DATA_TOOLTIP);
+  this.setHelpUrl("");
+  }
+};
+
+//DFPlayer Mini 获取U盘|SD卡|FLASH的总文件数
+Blockly.Blocks.arduino_dfplayer_readFileCounts= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(Blockly.YX5200_MP3)
+  .appendField(new Blockly.FieldTextInput("myPlayer"), "dfplayer_name");
+  this.appendValueInput("device_type")
+  .setCheck(null)
+  .appendField(' '+Blockly.MIXLY_GET);
+  this.appendDummyInput()
+  .appendField(new Blockly.FieldDropdown([[Blockly.DFPLAYER_MINI_READ_FILE_COUNTS,"readFileCounts"],[Blockly.DFPLAYER_MINI_READ_CURRENT_FILE_NUMBER,"readCurrentFileNumber"]]), "play_data");
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip(Blockly.DFPLAYER_MINI_READ_FILE_COUNTS_TOOLTIP);
+  this.setHelpUrl("");
+  }
+};
+
+//DFPlayer Mini 获取指定文件夹下的文件数
+Blockly.Blocks.arduino_dfplayer_readFileCountsInFolder= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(Blockly.YX5200_MP3)
+  .appendField(new Blockly.FieldTextInput("myPlayer"), "dfplayer_name");
+  this.appendValueInput("folder_data")
+  .setCheck(null)  
+  .appendField(' '+Blockly.MIXLY_GET+' '+Blockly.MIXLY_MICROBIT_PY_STORAGE_MKDIR);
+  this.appendDummyInput()  
+  .appendField(Blockly.DFPLAYER_MINI_READ_FILE_COUNTS);
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip(Blockly.DFPLAYER_MINI_READ_FILE_COUNTS_INFOLDER_TOOLTIP);
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.arduino_dfplayer_available= {
+  init: function() { 
+  this.appendDummyInput()  
+  .appendField(Blockly.YX5200_MP3)
+  .appendField(new Blockly.FieldTextInput("myPlayer"), "dfplayer_name");
+  this.appendDummyInput()  
+  .appendField(".")
+  .appendField(new Blockly.FieldDropdown([["available","available"],["readType","readType"],["read","read"]]), "type");
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(Blockly.Blocks.actuator.HUE);
+  this.setTooltip(Blockly.DFPLAYER_MINI_AVAILABLE_TOOLTIP);
+  this.setHelpUrl("");
+  },
+  onchange: function(){
+    var dropdown_type = this.getFieldValue('type');
+    if(dropdown_type == 'available')
+      this.setTooltip(Blockly.DFPLAYER_MINI_AVAILABLE_TOOLTIP);
+    else if(dropdown_type == 'readType')
+      this.setTooltip(
+          Blockly.DFPLAYER_MINI_READ_TYPE_TOOLTIP
+      +"\n"+Blockly.RETURN_DATA_ANALYSIS+"："
+      +"\n0 - TimeOut"
+      +"\n1 - WrongStack"
+      +"\n2 - DFPlayerCardInserted"
+      +"\n3 - DFPlayerCardRemoved"
+      +"\n4 - DFPlayerCardOnline"
+      +"\n5 - DFPlayerUSBInserted"
+      +"\n6 - DFPlayerUSBRemoved"
+      +"\n7 - DFPlayerPlayFinished"
+      +"\n8 - DFPlayerError"
+        );
+    else
+      this.setTooltip(
+          Blockly.DFPLAYER_MINI_READ_TOOLTIP
+      +"\n"+Blockly.RETURN_DATA_ANALYSIS+"："
+      +"\n1 - Busy"
+      +"\n2 - Sleeping"
+      +"\n3 - SerialWrongStack"
+      +"\n4 - CheckSumNotMatch"
+      +"\n5 - FileIndexOut"
+      +"\n6 - FileMismatch"
+      +"\n7 - Advertise"
+        );
+  }
+};

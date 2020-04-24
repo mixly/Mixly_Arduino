@@ -1637,4 +1637,89 @@ Blockly.Blocks['get_utf8_width'] = {
   }
 };
 
+//LCD自定义图案显示
+Blockly.Blocks['lcd_display_pattern'] = {
+  init: function() {
+    this.appendValueInput("row")
+        .setCheck(null)
+        .appendField(Blockly.MIXLY_DF_LCD)
+        .appendField(new Blockly.FieldTextInput("mylcd"), "name")
+        .appendField(Blockly.MIXLY_LCD_ROW);
+    this.appendValueInput("column")
+        .setCheck(null)
+        .appendField(Blockly.MIXLY_LCD_COLUMN);
+    this.appendValueInput("pattern")
+        .setCheck(null)
+        .appendField(Blockly.COLUMN_DISPLAY_IMAGE);
+    this.appendDummyInput()
+        .appendField(Blockly.LCD_NUMBERING)
+        .appendField(new Blockly.FieldDropdown([["0","0"], ["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"], ["6","6"], ["7","7"]]), "number");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.display.HUE);
+ this.setTooltip("");
+ this.setHelpUrl("https://www.arduino.cc/en/Reference/LiquidCrystalCreateChar");
+  }
+};
+
+//点阵屏显示_图案数组
+Blockly.Blocks.lcd_pattern = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_DISPLAY_MATRIX_ARRAYVAR)
+    .appendField(new Blockly.FieldTextInput("lcd"), "VAR");
+    this.appendDummyInput("")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a81")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a82")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a83")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a84")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a85");
+    this.appendDummyInput("")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a71")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a72")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a73")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a74")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a75");
+    this.appendDummyInput("")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a61")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a62")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a63")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a64")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a65");
+    this.appendDummyInput("")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a51")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a52")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a53")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a54")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a55");
+    this.appendDummyInput("")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a41")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a42")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a43")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a44")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a45");
+    this.appendDummyInput("")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a31")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a32")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a33")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a34")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a35");
+    this.appendDummyInput("")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a21")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a22")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a23")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a24")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a25");
+    this.appendDummyInput("")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a11")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a12")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a13")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a14")
+    .appendField(new Blockly.FieldCheckbox("FALSE"), "a15");
+    this.setOutput(true, Number);
+    this.setTooltip("");
+}
+};
+
 Blockly.Blocks.group_lcd_init=Blockly.Blocks.group_lcd_init2;

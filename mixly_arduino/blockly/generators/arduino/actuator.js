@@ -426,3 +426,143 @@ Blockly.Arduino.AFMotorStop = function () {
   return code;
 };
 
+//初始化DFPlayer Mini
+Blockly.Arduino.arduino_dfplayer_mini_begin = function() {
+  var text_dfplayer_name = this.getFieldValue('dfplayer_name');
+  var value_dfplayer_pin = Blockly.Arduino.valueToCode(this, 'dfplayer_pin', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['include_Arduino'] = '#include "Arduino.h"';
+  Blockly.Arduino.definitions_['include_DFRobotDFPlayerMini'] = '#include "DFRobotDFPlayerMini.h"';
+  Blockly.Arduino.definitions_['var_declare_DFPlayerMini_' + text_dfplayer_name] = 'DFRobotDFPlayerMini '+text_dfplayer_name+';';
+  Blockly.Arduino.setups_['setup_DFPlayerMini_' + text_dfplayer_name] = ''+text_dfplayer_name+'.begin('+value_dfplayer_pin+');';
+  var code = '';
+  return code;
+};
+
+//定义DFPlayer Mini 所使用的串口类型
+Blockly.Arduino.arduino_dfplayer_mini_pin = function() {
+  var dropdown_pin_type = this.getFieldValue('pin_type');
+  Blockly.Arduino.definitions_['include_SoftwareSerial'] = '#include "SoftwareSerial.h"';
+  var code = dropdown_pin_type;
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+//DFPlayer Mini 设置串口通信的超时时间
+Blockly.Arduino.arduino_dfplayer_mini_setTimeOut = function() {
+  var text_dfplayer_name = this.getFieldValue('dfplayer_name');
+  var value_timeout_data = Blockly.Arduino.valueToCode(this, 'timeout_data', Blockly.Arduino.ORDER_ATOMIC);
+  var code = ''+text_dfplayer_name+'.setTimeOut('+value_timeout_data+');\n';
+  return code;
+};
+
+//DFPlayer Mini 设置音量
+Blockly.Arduino.arduino_dfplayer_mini_volume = function() {
+  var text_dfplayer_name = this.getFieldValue('dfplayer_name');
+  var value_volume_data = Blockly.Arduino.valueToCode(this, 'volume_data', Blockly.Arduino.ORDER_ATOMIC);
+  var code = ''+text_dfplayer_name+'.volume('+value_volume_data+');\n';
+  return code;
+};
+
+//DFPlayer Mini 音量+|-
+Blockly.Arduino.arduino_dfplayer_mini_volume_up_down = function() {
+  var text_dfplayer_name = this.getFieldValue('dfplayer_name');
+  var dropdown_volume_type = this.getFieldValue('volume_type');
+  var code = ''+text_dfplayer_name+'.'+dropdown_volume_type+'();\n';
+  return code;
+};
+
+//DFPlayer Mini 设置音效
+Blockly.Arduino.arduino_dfplayer_mini_EQ = function() {
+  var text_dfplayer_name = this.getFieldValue('dfplayer_name');
+  var value_eq_data = Blockly.Arduino.valueToCode(this, 'eq_data', Blockly.Arduino.ORDER_ATOMIC);
+  var code = ''+text_dfplayer_name+'.EQ('+value_eq_data+');\n';
+  return code;
+};
+
+//DFPlayer Mini 定义音效类型
+Blockly.Arduino.arduino_dfplayer_mini_EQ_type = function() {
+  var dropdown_eq_type = this.getFieldValue('eq_type');
+  var code = dropdown_eq_type;
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+//DFPlayer Mini 指定播放设备
+Blockly.Arduino.arduino_dfplayer_mini_outputDevice = function() {
+  var text_dfplayer_name = this.getFieldValue('dfplayer_name');
+  var value_outputdevice_data = Blockly.Arduino.valueToCode(this, 'outputdevice_data', Blockly.Arduino.ORDER_ATOMIC);
+  var code = ''+text_dfplayer_name+'.outputDevice('+value_outputdevice_data+');\n';
+  return code;
+};
+
+//DFPlayer Mini 定义播放设备类型
+Blockly.Arduino.arduino_dfplayer_mini_outputDevice_type = function() {
+  var dropdown_outputdevice_type = this.getFieldValue('outputdevice_type');
+  var code = dropdown_outputdevice_type;
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+//DFPlayer Mini 设置-1
+Blockly.Arduino.arduino_dfplayer_set_1 = function() {
+  var text_dfplayer_name = this.getFieldValue('dfplayer_name');
+  var dropdown_set_data = this.getFieldValue('set_data');
+  var code = ''+text_dfplayer_name+'.'+dropdown_set_data+'();\n';
+  return code;
+};
+
+//DFPlayer Mini 播放和循环指定曲目
+Blockly.Arduino.arduino_dfplayer_play_loop = function() {
+  var text_dfplayer_name = this.getFieldValue('dfplayer_name');
+  var value_play_data = Blockly.Arduino.valueToCode(this, 'play_data', Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_play_type = this.getFieldValue('play_type');
+  var code = ''+text_dfplayer_name+'.'+dropdown_play_type+'('+value_play_data+');\n';
+  return code;
+};
+
+//DFPlayer Mini 播放指定文件夹下的曲目
+Blockly.Arduino.arduino_dfplayer_playFolder = function() {
+  var text_dfplayer_name = this.getFieldValue('dfplayer_name');
+  var value_fold_data = Blockly.Arduino.valueToCode(this, 'fold_data', Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_fold_type = this.getFieldValue('fold_type');
+  var value_play_data = Blockly.Arduino.valueToCode(this, 'play_data', Blockly.Arduino.ORDER_ATOMIC);
+  var code = ''+text_dfplayer_name+'.'+dropdown_fold_type+'('+value_fold_data+', '+value_play_data+');\n';
+  return code;
+};
+
+//DFPlayer Mini 循环播放指定文件夹下的曲目
+Blockly.Arduino.arduino_dfplayer_loopFolder = function() {
+  var text_dfplayer_name = this.getFieldValue('dfplayer_name');
+  var value_fold_data = Blockly.Arduino.valueToCode(this, 'fold_data', Blockly.Arduino.ORDER_ATOMIC);
+  var code = ''+text_dfplayer_name+'.loopFolder('+value_fold_data+');\n';
+  return code;
+};
+
+//DFPlayer Mini 获取当前信息
+Blockly.Arduino.arduino_dfplayer_read_now = function() {
+  var text_dfplayer_name = this.getFieldValue('dfplayer_name');
+  var dropdown_read_type = this.getFieldValue('read_type');
+  var code = ''+text_dfplayer_name+'.'+dropdown_read_type+'()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+//DFPlayer Mini 获取U盘|SD卡|FLASH的总文件数
+Blockly.Arduino.arduino_dfplayer_readFileCounts = function() {
+  var text_dfplayer_name = this.getFieldValue('dfplayer_name');
+  var value_device_type = Blockly.Arduino.valueToCode(this, 'device_type', Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_play_data = this.getFieldValue('play_data');
+  var code = ''+text_dfplayer_name+'.'+dropdown_play_data+'('+value_device_type+')';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+//DFPlayer Mini 获取指定文件夹下的文件数
+Blockly.Arduino.arduino_dfplayer_readFileCountsInFolder = function() {
+  var text_dfplayer_name = this.getFieldValue('dfplayer_name');
+  var value_folder_data = Blockly.Arduino.valueToCode(this, 'folder_data', Blockly.Arduino.ORDER_ATOMIC);
+  var code = ''+text_dfplayer_name+'.readFileCountsInFolder('+value_folder_data+')';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.arduino_dfplayer_available = function() {
+  var text_dfplayer_name = this.getFieldValue('dfplayer_name');
+  var dropdown_type = this.getFieldValue('type');
+  var code = ''+text_dfplayer_name+'.'+dropdown_type+'()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

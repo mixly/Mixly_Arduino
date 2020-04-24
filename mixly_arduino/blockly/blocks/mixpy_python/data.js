@@ -403,6 +403,47 @@ Blockly.Blocks['pl_plot_bar'] = {
   }
 };
 
+Blockly.Blocks['pl_plot_scatter'] = {
+  init: function() {
+    this.setColour(Blockly.Blocks.data.HUE);
+    var line_type =
+        [[Blockly.blockpy_PYLAB_PLOT_LINE_SOLID, '-'],[Blockly.blockpy_PYLAB_PLOT_LINE_DOTTED, '--'],
+        [Blockly.blockpy_PYLAB_PLOT_LINE_CHAIN, '-.'],[Blockly.blockpy_PYLAB_PLOT_LINE_POINT_DOTTED, ':']
+        ,[Blockly.MIXLY_MICROBIT_JS_INOUT_PULL_NONE,""]];
+    var color_type =
+        [[Blockly.Msg.COLOUR_RGB_BLUE, 'b'],[Blockly.Msg.COLOUR_RGB_GREEN, 'g'],
+        [Blockly.Msg.COLOUR_RGB_RED, 'r'],[Blockly.Msg.COLOUR_CYAN, 'c'],
+        [Blockly.Msg.COLOUR_MAGENTA, 'm'],[Blockly.Msg.COLOUR_YELLOW, 'y'],
+        [Blockly.Msg.COLOUR_BLACK, 'k'],[Blockly.Msg.COLOUR_WHITE, 'w']
+        ];
+    var dot_type =
+        [[Blockly.blockpy_PYLAB_PLOT_DOT_CIRCULAR, '.'],[Blockly.blockpy_PYLAB_PLOT_DOT_PIXEL, ','],[Blockly.blockpy_PYLAB_PLOT_DOT_LARGE_DOT, 'o'],[Blockly.blockpy_PYLAB_PLOT_DOT_TRIANGLE_DOWN, 'v'],
+        [Blockly.blockpy_PYLAB_PLOT_DOT_TRIANGLE_UP, '^'],[Blockly.blockpy_PYLAB_PLOT_DOT_TRIANGLE_LEFT, '<'],[Blockly.blockpy_PYLAB_PLOT_DOT_TRIANGLE_RIGHT, '>'],[Blockly.blockpy_PYLAB_PLOT_DOT_TRIMARKER_UP, '1'],
+        [Blockly.blockpy_PYLAB_PLOT_DOT_TRIMARKER_DOWN, '2'],[Blockly.blockpy_PYLAB_PLOT_DOT_TRIMARKER_LEFT, '3'],[Blockly.blockpy_PYLAB_PLOT_DOT_TRIMARKER_RIGHT, '4'],[Blockly.blockpy_PYLAB_PLOT_DOT_SQUARE, 's'],
+        [Blockly.blockpy_PYLAB_PLOT_DOT_PENTAGON, 'p'],[Blockly.blockpy_PYLAB_PLOT_DOT_STAR, '*'],[Blockly.blockpy_PYLAB_PLOT_DOT_HEXAGON_VERTICAL, 'h'],[Blockly.blockpy_PYLAB_PLOT_DOT_HEXAGON_HORIZONTAL, 'H'],
+        [Blockly.blockpy_PYLAB_PLOT_DOT_PLUS, '+'],[Blockly.blockpy_PYLAB_PLOT_DOT_CROSS, 'x'],[Blockly.blockpy_PYLAB_PLOT_DOT_DIAMOND, 'D'],[Blockly.blockpy_PYLAB_PLOT_DOT_DIAMOND_SMALL, 'd'],
+        [Blockly.blockpy_PYLAB_PLOT_DOT_VERTICAL, '|'],[Blockly.blockpy_PYLAB_PLOT_DOT_HORIZONTAL, '_']
+        ];    
+    this.appendValueInput('A')
+        .appendField(Blockly.mixpy_PYLAB_SCATTER)
+        .appendField(Blockly.mixpy_PYLAB_PLOT_X);
+    this.appendValueInput('B')
+        .appendField(Blockly.mixpy_PYLAB_PLOT_Y);   
+    this.appendValueInput('S')
+        .appendField(Blockly.MIXLY_MICROBIT_JS_NUMBER);  
+    this.appendDummyInput("")                
+        .appendField(Blockly.blockpy_PYLAB_PLOT_DOT)  
+        .appendField(new Blockly.FieldDropdown(dot_type), 'DOT');
+    this.appendDummyInput("")                
+        .appendField(Blockly.Msg.HTML_COLOUR)  
+        .appendField(new Blockly.FieldDropdown(color_type), 'COLOR');     
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip("");
+  }
+};
+
 Blockly.Blocks['pl_plot_xy'] = {
   init: function() {
     this.setColour(Blockly.Blocks.data.HUE);

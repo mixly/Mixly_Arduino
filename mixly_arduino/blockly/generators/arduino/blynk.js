@@ -320,7 +320,7 @@ Blockly.Arduino.blynk_terminal = function () {
 	var Vpin = this.getFieldValue('Vpin');
 	Blockly.Arduino.definitions_['var_declare_WidgetTerminal'] = 'WidgetTerminal terminal(' + Vpin + ');\n';
 	var content = Blockly.Arduino.valueToCode(this, 'content', Blockly.Arduino.ORDER_ATOMIC);
-	var code = 'terminal.println(' + content + ');\n';
+	var code = 'terminal.println(' + content + ');\nterminal.flush();\n';
 	return code;
 };
 
@@ -600,8 +600,8 @@ Blockly.Arduino.blynk_table = function () {
 	var id = Blockly.Arduino.valueToCode(this, 'id', Blockly.Arduino.ORDER_ATOMIC);
 	var mingcheng = Blockly.Arduino.valueToCode(this, 'mingcheng', Blockly.Arduino.ORDER_ATOMIC);
 	var shujv = Blockly.Arduino.valueToCode(this, 'shujv', Blockly.Arduino.ORDER_ATOMIC);
-	var xnyj = Blockly.Arduino.valueToCode(this, 'xnyj', Blockly.Arduino.ORDER_ATOMIC);
-	var code = 'Blynk.virtualWrite(' + xnyj + ', "add", ' + id + ',' + mingcheng + ', ' + shujv + ');\n';
+    var Vpin= this.getFieldValue('Vpin');
+	var code = 'Blynk.virtualWrite(' + Vpin + ', "add", ' + id + ',' + mingcheng + ', ' + shujv + ');\n';
 	return code;
 };
 
@@ -610,40 +610,41 @@ Blockly.Arduino.blynk_table_update = function () {
 	var id = Blockly.Arduino.valueToCode(this, 'id', Blockly.Arduino.ORDER_ATOMIC);
 	var mingcheng = Blockly.Arduino.valueToCode(this, 'mingcheng', Blockly.Arduino.ORDER_ATOMIC);
 	var shujv = Blockly.Arduino.valueToCode(this, 'shujv', Blockly.Arduino.ORDER_ATOMIC);
-	var xnyj = Blockly.Arduino.valueToCode(this, 'xnyj', Blockly.Arduino.ORDER_ATOMIC);
-	var code = 'Blynk.virtualWrite(' + xnyj + ', "update", ' + id + ',' + mingcheng + ', ' + shujv + ');\n';
+    var Vpin= this.getFieldValue('Vpin');
+	var code = 'Blynk.virtualWrite(' + Vpin + ', "update", ' + id + ',' + mingcheng + ', ' + shujv + ');\n';
 	return code;
 };
 
 //Blynk Table小部件高亮显示数据
 Blockly.Arduino.blynk_table_highlight = function () {
 	var id = Blockly.Arduino.valueToCode(this, 'id', Blockly.Arduino.ORDER_ATOMIC);
-	var xnyj = Blockly.Arduino.valueToCode(this, 'xnyj', Blockly.Arduino.ORDER_ATOMIC);
-	var code = 'Blynk.virtualWrite(' + xnyj + ', "pick", ' + id + ');\n';
+    var Vpin= this.getFieldValue('Vpin');
+	var code = 'Blynk.virtualWrite(' + Vpin + ', "pick", ' + id + ');\n';
 	return code;
 };
 
 //Blynk Table小部件选择数据
 Blockly.Arduino.blynk_table_select = function () {
 	var id = Blockly.Arduino.valueToCode(this, 'id', Blockly.Arduino.ORDER_ATOMIC);
-	var xnyj = Blockly.Arduino.valueToCode(this, 'xnyj', Blockly.Arduino.ORDER_ATOMIC);
-	var code = 'Blynk.virtualWrite(' + xnyj + ', "select", ' + id + ');\n';
+    var Vpin= this.getFieldValue('Vpin');
+	var code = 'Blynk.virtualWrite(' + Vpin + ', "select", ' + id + ');\n';
 	return code;
 };
 
 //Blynk Table小部件取消选择数据
 Blockly.Arduino.blynk_table_unselect = function () {
 	var id = Blockly.Arduino.valueToCode(this, 'id', Blockly.Arduino.ORDER_ATOMIC);
-	var xnyj = Blockly.Arduino.valueToCode(this, 'xnyj', Blockly.Arduino.ORDER_ATOMIC);
-	var code = 'Blynk.virtualWrite(' + xnyj + ', "deselect", ' + id + ');\n';
+    var Vpin= this.getFieldValue('Vpin');
+	var code = 'Blynk.virtualWrite(' + Vpin + ', "deselect", ' + id + ');\n';
 	return code;
 };
 
 //Blynk Table小部件数据清除
-Blockly.Arduino.blynk_table_cleardata = function () {
-	var xnyj = Blockly.Arduino.valueToCode(this, 'xnyj', Blockly.Arduino.ORDER_ATOMIC);
-	var code = 'Blynk.virtualWrite(' + xnyj + ', "clr");\n';
-	return code;
+Blockly.Arduino.blynk_table_cleardata = function() {
+    var Vpin= this.getFieldValue('Vpin');
+    Blockly.Arduino.definitions_["rowIndex_"+Vpin] = 'int rowIndex_' +Vpin+ ' = 0;\n';
+    var code='Blynk.virtualWrite('+Vpin+', "clr");\nrowIndex_' +Vpin+ ' = 0;\n';
+    return code;
 };
 
 //blynk服务器连接状态
@@ -684,4 +685,33 @@ Blockly.Arduino.take_a_photo1 = function () {
 	Blockly.Arduino.definitions_['take_a_photo'] = '#include "esp_camera.h"\n#include "esp_timer.h"\n#include "img_converters.h"\n#include "Arduino.h"\n#include "fb_gfx.h"\n#include "fd_forward.h"\n#include "fr_forward.h"\n#include "FS.h" \n#include "SD_MMC.h" \n#include "soc/soc.h"\n#include "soc/rtc_cntl_reg.h" \n#include "dl_lib.h"\n#include "driver/rtc_io.h"\n#include <EEPROM.h>\n#define EEPROM_SIZE 1\n#define PWDN_GPIO_NUM     32\n#define RESET_GPIO_NUM    -1\n#define XCLK_GPIO_NUM      0\n#define SIOD_GPIO_NUM     26\n#define SIOC_GPIO_NUM     27\n#define Y9_GPIO_NUM       35\n#define Y8_GPIO_NUM       34\n#define Y7_GPIO_NUM       39\n#define Y6_GPIO_NUM       36\n#define Y5_GPIO_NUM       21\n#define Y4_GPIO_NUM       19\n#define Y3_GPIO_NUM       18\n#define Y2_GPIO_NUM        5\n#define VSYNC_GPIO_NUM    25\n#define HREF_GPIO_NUM     23\n#define PCLK_GPIO_NUM     22\nint pictureNumber = 0;\n';
 	var code = '  WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);\n  Serial.begin(115200);\n  camera_config_t config;\n  config.ledc_channel = LEDC_CHANNEL_0;\n  config.ledc_timer = LEDC_TIMER_0;\n  config.pin_d0 = Y2_GPIO_NUM;\n  config.pin_d1 = Y3_GPIO_NUM;\n  config.pin_d2 = Y4_GPIO_NUM;\n  config.pin_d3 = Y5_GPIO_NUM;\n  config.pin_d4 = Y6_GPIO_NUM;\n  config.pin_d5 = Y7_GPIO_NUM;\n  config.pin_d6 = Y8_GPIO_NUM;\n  config.pin_d7 = Y9_GPIO_NUM;\n  config.pin_xclk = XCLK_GPIO_NUM;\n  config.pin_pclk = PCLK_GPIO_NUM;\n  config.pin_vsync = VSYNC_GPIO_NUM;\n  config.pin_href = HREF_GPIO_NUM;\n  config.pin_sscb_sda = SIOD_GPIO_NUM;\n  config.pin_sscb_scl = SIOC_GPIO_NUM;\n  config.pin_pwdn = PWDN_GPIO_NUM;\n  config.pin_reset = RESET_GPIO_NUM;\n  config.xclk_freq_hz = 20000000;\n  config.pixel_format = PIXFORMAT_JPEG; \n  if(psramFound()){\n    config.frame_size = FRAMESIZE_UXGA;\n    config.jpeg_quality = 10;\n    config.fb_count = 2;\n  } else {\n    config.frame_size = FRAMESIZE_SVGA;\n    config.jpeg_quality = 12;\n    config.fb_count = 1;\n  }\n  esp_err_t err = esp_camera_init(&config);\n  if (err != ESP_OK) {\n    Serial.printf("Camera init failed with error 0x%x", err);\n    return;\n  }\n  if(!SD_MMC.begin()){\n    Serial.println("SD Card Mount Failed");\n    return;\n  }\n  uint8_t cardType = SD_MMC.cardType();\n  if(cardType == CARD_NONE){\n    Serial.println("No SD Card attached");\n    return;\n  }\n  camera_fb_t * fb = NULL;\n  fb = esp_camera_fb_get();  \n  if(!fb) {\n    Serial.println("Camera capture failed");\n    return;\n  }\n  EEPROM.begin(EEPROM_SIZE);\n  pictureNumber = EEPROM.read(0) + 1;\n  String path = "/picture" + String(pictureNumber) +".jpg";\n  fs::FS &fs = SD_MMC; \n  Serial.printf("Picture file name: %s\\n", path.c_str());\n  File file = fs.open(path.c_str(), FILE_WRITE);\n  if(!file){\n    Serial.println("Failed to open file in writing mode");\n  } \n  else {\n    file.write(fb->buf, fb->len);\n    Serial.printf("Saved file to path: %s\\n", path.c_str());\n    EEPROM.write(0, pictureNumber);\n    EEPROM.commit();\n  }\n  file.close();\n  esp_camera_fb_return(fb); \n  pinMode(4, OUTPUT);\n  digitalWrite(4, LOW);\n  rtc_gpio_hold_en(GPIO_NUM_4);\n';
 	return code;
+};
+
+Blockly.Arduino.blynk_table_click = function() {
+  var Vpin= this.getFieldValue('Vpin');
+  var branch = Blockly.Arduino.statementToCode(this, 'function');
+  branch = branch.replace(/(^\s*)|(\s*$)/g, "");
+  Blockly.Arduino.definitions_["blynk_table"+Vpin] = 'WidgetTable table_' +Vpin+ ';\nBLYNK_ATTACH_WIDGET(table_' +Vpin+ ', ' +Vpin+ ');\n';
+  Blockly.Arduino.setups_["setup_blynk_table_click"+Vpin] ='table_' +Vpin+ '.onSelectChange([](int index, bool selected) {\n  ' +branch+ '\n  });\n';
+  var code = '';
+  return code;
+};
+
+Blockly.Arduino.blynk_table_order = function() {
+  var Vpin= this.getFieldValue('Vpin');
+  var branch = Blockly.Arduino.statementToCode(this, 'function');
+  branch = branch.replace(/(^\s*)|(\s*$)/g, "");
+  Blockly.Arduino.definitions_["blynk_table"+Vpin] = 'WidgetTable table_' +Vpin+ ';\nBLYNK_ATTACH_WIDGET(table_' +Vpin+ ', ' +Vpin+ ');\n';
+  Blockly.Arduino.setups_["setup_blynk_table_order"+Vpin] ='table_' +Vpin+ '.onOrderChange([](int indexFrom, int indexTo) {\n  ' +branch+ '\n  });\n';
+  var code = '';
+  return code;
+};
+
+Blockly.Arduino.blynk_table_add_data = function() {
+  var Vpin= this.getFieldValue('Vpin');
+  var data= Blockly.Arduino.valueToCode(this, 'data', Blockly.Arduino.ORDER_ATOMIC);
+  var name= Blockly.Arduino.valueToCode(this, 'name', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_["rowIndex_"+Vpin] = 'int rowIndex_' +Vpin+ ' = 0;\n';
+  var code = 'table_' +Vpin+ '.addRow(rowIndex_' +Vpin+ ', ' +name+ ', ' +data+ ');\ntable_' +Vpin+ '.pickRow(rowIndex_' +Vpin+ ');\nrowIndex_' +Vpin+ '++;\n';
+  return code;
 };

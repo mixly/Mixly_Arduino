@@ -226,6 +226,30 @@ pbc.assignD.get('DataFrame')['create_block'] = function (py2block, node, targets
     }
 }
 
+pbc.moduleFunctionD.get('pylab')['scatter'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length != 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+
+    var arg1block = py2block.convert(args[0]);
+    var arg2block = py2block.convert(args[1]);
+    var key1block = py2block.convert(keywords[0].value);
+    var key2block = py2block.Str_value(keywords[1].value);
+    var key3block = py2block.Str_value(keywords[2].value);  
+    key2block = key2block.substring(3,key2block.length - 1);
+    key3block = key3block.substring(7,key3block.length - 1);
+    return [block("pl_plot_scatter", func.lineno, {
+            'DOT':key3block,
+            'COLOR':key2block
+    }, {
+            'A': arg1block,
+            'B': arg2block,
+            'S': key1block
+    }, {
+            "inline": "true"
+        })];
+}
+
 pbc.moduleFunctionD.get('pylab')['plot'] = function(py2block, func, args, keywords, starargs, kwargs, node) {
     if (args.length != 1&&args.length != 2&&args.length != 3) {
         throw new Error("Incorrect number of arguments");

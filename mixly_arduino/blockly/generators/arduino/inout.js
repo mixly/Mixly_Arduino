@@ -177,3 +177,17 @@ Blockly.Arduino.inout_shiftout = function () {
     var code = 'shiftOut(' + dropdown_pin1 + ',' + dropdown_pin2 + ',' + dropdown_order + ',' + value + ');\n'
     return code;
 };
+
+Blockly.Arduino.ESP32touchButton = function () {
+ Blockly.Arduino.definitions_['include_ESP32touchButton'] = '#include <ESP32touchButton.h>';
+ var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+ var dropdown_mode = this.getFieldValue('mode');
+ Blockly.Arduino.definitions_['var_declare_button'+dropdown_pin] = 'ESP32touchButton button'+dropdown_pin+'('+dropdown_pin+ ',true);';
+ Blockly.Arduino.setups_['setup_onebutton_' + dropdown_pin+dropdown_mode] = 'button'+dropdown_pin+'.' + dropdown_mode + '('+dropdown_mode+dropdown_pin+');';
+ var code = 'button' +dropdown_pin+ '.tick();';
+ var funcName = dropdown_mode+dropdown_pin;
+ var branch = Blockly.Arduino.statementToCode(this, 'DO');
+ var code2 = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
+ Blockly.Arduino.definitions_[funcName] = code2;
+ return code;
+};

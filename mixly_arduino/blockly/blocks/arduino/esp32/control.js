@@ -29,22 +29,23 @@ Blockly.Blocks.controls_hw_timer = {
 };
 
 Blockly.Blocks.controls_runnig_core = {
-    init: function() {
+  init: function() {
     this.appendDummyInput()
-        .appendField(Blockly.DUALL_CORE_MULTITASKING);
-    this.appendStatementInput("core1")
+        .appendField("ESP32")
+        .appendField("Task")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"], ["6","6"], ["7","7"], ["8","8"]]), "task");
+    this.appendStatementInput("setup")
         .setCheck(null)
-        .appendField(Blockly.CORE_PRIORITY1)
-        .appendField(new Blockly.FieldDropdown([["3","3"], ["2","2"], ["1","1"], ["0","0"]]), "core_priority1");
-    this.appendStatementInput("core2")
+        .appendField(Blockly.MIXLY_SETUP);
+    this.appendStatementInput("loop")
         .setCheck(null)
-        .appendField(Blockly.CORE_PRIORITY2)
-        .appendField(new Blockly.FieldDropdown([["3","3"], ["2","2"], ["1","1"], ["0","0"]]), "core_priority2");
+        .appendField(Blockly.LANG_CONTROLS_FLOW_STATEMENTS_INPUT_OFLOOP);
     this.setColour(Blockly.Blocks.loops.HUE);
- this.setTooltip(Blockly.DUALL_CORE_MULTITASKING_HELP);
+ this.setTooltip("");
  this.setHelpUrl("");
   }
 };
+
 Blockly.Blocks.control_core_delay = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
