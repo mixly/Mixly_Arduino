@@ -284,7 +284,7 @@ Blockly.Arduino.Mixly_motor = function () {
   + 'else \n'
   + '{\n'
   +'digitalWrite(dirpin, HIGH);\n'
-  +'analogWrite(speedpin, speed);\n'
+  +'analogWrite(speedpin, -speed);\n'
   + '}\n'
   + '}\n';
   Blockly.Arduino.definitions_[funcName] = code2;
@@ -422,7 +422,7 @@ Blockly.Arduino.AFMotorStop = function () {
   var motorNO = this.getFieldValue('motor');
   var code = "";
   Blockly.Arduino.definitions_['var_declare_motor_' + motorNO] =  "AF_DCMotor" + ' motor'+motorNO+'(' + motorNO + ');';
-  code = ' motor'+motorNO + "->setSpeed(0);\n" +' motor'+motorNO + ".run(RELEASE);\n";
+  code = ' motor'+motorNO+".setSpeed(0);\n" +' motor'+motorNO + ".run(RELEASE);\n";
   return code;
 };
 

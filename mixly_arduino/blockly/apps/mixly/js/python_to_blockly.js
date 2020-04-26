@@ -1995,7 +1995,16 @@ PythonToBlocks.prototype.Subscript = function(node) {
                 "KEY": this.convert(slice.value),
                 "DICT": this.convert(value)
             });
-        }else {
+        }
+        else if(slice.value._astname == "Tuple")
+        {
+            return block("lists_2d_get_data_with_col_row", node.lineno, {}, {
+                "row": this.convert(slice.value.elts[0]),
+                "col": this.convert(slice.value.elts[1]),
+                "LIST": this.convert(value)
+            });
+        }
+        else {
             if(slice.value._astname == "Num" && value.func != null
                 && value.func._astname == "Attribute" && this.identifier(value.func.attr) == "ifconfig"){
                 return block('network_get_connect', node.lineno, {
@@ -2055,7 +2064,48 @@ PythonToBlocks.prototype.Subscript = function(node) {
             "LIST": this.convert(value),
         });
     }
-
+    else if(slice._astname == "ExtSlice"){
+        var at1block;
+        var at2block;
+        var at3block;
+        var at4block;
+        if(slice.dims["0"].lower !== null){
+            py2block_config.pinType = "math_indexer_number";
+            at1block = this.convert(slice.dims["0"].lower);
+            py2block_config.pinType = null;
+        }else{
+            at1block = block("math_indexer_number", node.lineno, {"NUM": ''});
+        }
+        if(slice.dims["0"].upper !== null){
+            py2block_config.pinType = "math_indexer_number";
+            at2block = this.convert(slice.dims["0"].upper);
+            py2block_config.pinType = null;
+        }else{
+            at2block = block("math_indexer_number", node.lineno, {"NUM": ''});
+        }
+        if(slice.dims["1"].lower !== null){
+            py2block_config.pinType = "math_indexer_number";
+            at3block = this.convert(slice.dims["1"].lower);
+            py2block_config.pinType = null;
+        }else{
+            at3block = block("math_indexer_number", node.lineno, {"NUM": ''});
+        }
+        if(slice.dims["1"].upper !== null){
+            py2block_config.pinType = "math_indexer_number";
+            at4block = this.convert(slice.dims["1"].upper);
+            py2block_config.pinType = null;
+        }else{
+            at4block = block("math_indexer_number", node.lineno, {"NUM": ''});
+        }
+        return block("lists_2d_get_col_row_data", node.lineno, {}, {
+            "row_start": at1block,
+            "row_end": at2block,
+            "col_start": at3block,
+            "col_end": at4block,
+            "LIST": this.convert(value),
+        });
+    }
+    
     throw new Error("This kind of subscript is not supported.");
 }
 

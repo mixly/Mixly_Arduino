@@ -47,6 +47,49 @@ Blockly.Blocks['lists_get_sublist'] = {
     }
 }
 
+Blockly.Blocks.lists_2d_get_data_with_col_row= {
+  init: function() { 
+  this.appendValueInput("LIST")
+      .setCheck(null);
+  this.appendValueInput("row")
+      .setCheck(null) 
+      .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_GET+" "+Blockly.Msg.DATAFRAME_RAW);
+  this.appendValueInput("col")
+      .setCheck(null) 
+      .appendField(Blockly.Msg.DATAFRAME_COLUMN);
+  this.setInputsInline(true);
+  this.setOutput(true, null);
+  this.setColour(Blockly.Blocks.lists.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.lists_2d_get_col_row_data= {
+  init: function() { 
+  this.appendValueInput("LIST")
+      .setCheck(null);
+  this.appendValueInput("row_start")
+      .setCheck(null) 
+      .appendField(Blockly.MIXLY_GET+" "+Blockly.Msg.DATAFRAME_RAW+" [");
+  this.appendValueInput("row_end")
+      .setCheck(null) 
+      .appendField(",");
+  this.appendValueInput("col_start")
+      .setCheck(null) 
+      .appendField(")  "+Blockly.Msg.DATAFRAME_COLUMN+" [");
+  this.appendValueInput("col_end")
+      .setCheck(null)
+      .appendField(",");
+  this.appendDummyInput()  
+      .appendField(") "+Blockly.Msg.DICTS_ADD_VALUE);
+  this.setInputsInline(true);
+  this.setOutput(true, 'List');
+  this.setColour(Blockly.Blocks.lists.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
 
 Blockly.Blocks['lists_create_with'] = {
   /**

@@ -16,6 +16,24 @@ Blockly.Python['lists_get_sublist'] = function(block) {
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.lists_2d_get_data_with_col_row = function() {
+  var value_LIST = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_ATOMIC) || 'mylist';
+  var value_row = Blockly.Python.valueToCode(this, 'row', Blockly.Python.ORDER_ATOMIC) || 0;
+  var value_col = Blockly.Python.valueToCode(this, 'col', Blockly.Python.ORDER_ATOMIC) || 0;
+  var code = value_LIST+'['+value_row+','+value_col+']';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+Blockly.Python.lists_2d_get_col_row_data = function() {
+  var value_LIST = Blockly.Python.valueToCode(this, 'LIST', Blockly.Python.ORDER_ATOMIC) || 'mylist';
+  var value_row_start = Blockly.Python.valueToCode(this, 'row_start', Blockly.Python.ORDER_ATOMIC) || 0;
+  var value_row_end = Blockly.Python.valueToCode(this, 'row_end', Blockly.Python.ORDER_ATOMIC) || 1;
+  var value_col_start = Blockly.Python.valueToCode(this, 'col_start', Blockly.Python.ORDER_ATOMIC) || 0;
+  var value_col_end = Blockly.Python.valueToCode(this, 'col_end', Blockly.Python.ORDER_ATOMIC) || 1;
+  var code = value_LIST+'['+value_row_start+' : '+value_row_end+','+value_col_start+' : '+value_col_end+']';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
 
 
 Blockly.Python.lists_create_with = function() {
