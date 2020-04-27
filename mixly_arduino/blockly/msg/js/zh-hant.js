@@ -57,7 +57,8 @@ var MSG = {
 	catOnenet:'OneNET',
 	catTools:'工具',
 	catWIFI:'Wi-Fi',
-	catMQTT:'MQTT'
+	catMQTT:'MQTT',
+	catsklearn:'機器學習'
 };
 Blockly.Msg.ADD_COMMENT = "添加注釋";
 Blockly.Msg.AUTH = "請授權這個應用程式以保存您的作品並共用。";
@@ -2707,3 +2708,64 @@ Blockly.COLUMN_DISPLAY_IMAGE = '列顯示圖像';
 Blockly.SCOOPTASK_WARNING = "警告：\nSCoopTask模塊的編號不可重複，\n請考慮修改此模塊的編號或刪除此模塊。";
 Blockly.BLYNK_TABLE_ORDER = 'Table 移動事件';
 Blockly.BLYNK_TABLE_CLICK = "Table 點擊事件";
+Blockly.SKLEARN_CLASSIFICATION_GENERATION = "sklearn 分類樣本生成";
+Blockly.NUMBER_OF_SAMPLES = "樣本數目";
+Blockly.NUMBER_OF_FEATURES = "特徵數目";
+Blockly.NUMBER_OF_EFFECTIVE_FEATURES = "有效特徵數目";
+Blockly.NUMBER_OF_REDUNDANT_FEATURES = "冗餘特徵數目";
+Blockly.NUMBER_OF_REPEATED_FEATURES = "重複特徵數目";
+Blockly.NUMBER_OF_CLASSES = "類數目";
+Blockly.NUMBER_OF_CLUSTERS_PER_CLASSES = "每個類的簇數目";
+Blockly.NUMBER_OF_LABELS = "標籤數目";
+Blockly.NUMBER_OF_CLUSTERS = "簇數目/簇中心坐標";
+Blockly.RANDOM_SEED = "偽隨機種子";
+Blockly.SKLEARN_REGRESSION_GENERATION = "sklearn 回歸樣本生成";
+Blockly.DEVIATION = "偏差";
+Blockly.NOISE = "噪音";
+Blockly.SKLEARN_CLUSTERING_GENERATION = "sklearn 聚類樣本生成";
+Blockly.STANDARD_DEVIATION_OF_CLUSTER = "簇的標準差";
+Blockly.CLUSTER_BOUNDING_BOX = "簇的邊界框";
+Blockly.SHUFFLE_SAMPLES = "洗牌樣本";
+Blockly.LOAD = "加載";
+Blockly.SKLEARN_LOAD_IRIS = "鳶尾花數據集";
+Blockly.SKLEARN_LOAD_BOSTON = "波士頓房價數據集";
+Blockly.SKLEARN_LOAD_DIABETES = "糖尿病數據集";
+Blockly.SKLEARN_LOAD_BREAST_CANCER = "乳腺癌數據集";
+Blockly.SKLEARN_LOAD_LINNERUD = "體能訓練數據集";
+Blockly.SKLEARN_LOAD_DIGITS = "手寫數字數據集";
+Blockly.DATA_SET = "數據集";
+Blockly.EIGENVALUES = "特徵值";
+Blockly.LABEL_VALUE = "標籤值";
+Blockly.FEATURE = "特徵";
+Blockly.DATA_SEGMENTATION = "數據分割";
+Blockly.TEST_SET_PROPORTION = "測試集占比";
+Blockly.SKLEARN_LINEARREGRESSION_INIT = "初始化線性回歸算法";
+Blockly.SKLEARN_RIDGE_INIT = "初始化嶺回歸算法";
+Blockly.SKLEARN_DECISIONTREE_INIT = "初始化決策樹";
+Blockly.SKLEARN_RANDOMFOREST_INIT = "初始化隨機森林";
+Blockly.SKLEARN_KNN_INIT = "初始化K近鄰";
+Blockly.SKLEARN_GAUSSINNB_INIT = "初始化高斯貝葉斯分類算法";
+Blockly.SKLEARN_KMEANS_INIT = "初始化K-均值聚類算法";
+Blockly.MODEL_NAME = "模型名";
+Blockly.SKLEARN_CALCULATE_MODEL_INTERRUPT = "計算模型截距";
+Blockly.SKLEARN_REGRESSION_NORMIALIZATION = "回歸量歸一化";
+Blockly.SKLEARN_THREADS = "線程數";
+Blockly.SKLEARN_REGULA_INTENSITY = "正則強度";
+Blockly.SKLEARN_MAX_ITER = "最多迭代次數";
+Blockly.SKLEARN_CLASSIFICATION_ALGORITHM = "分類算法";
+Blockly.SKLEARN_REGRESSION_ALGORITHM = "回歸算法";
+Blockly.SKLEARN_MAXIMUM_TREE_DEPTH = "最大樹深";
+Blockly.NUMBER_OF_TREES = "樹的數目";
+Blockly.NUMBER_OF_CLUSTERS_JUST = "簇數目";
+Blockly.TRAINING_MODEL = "訓練模型";
+Blockly.MODEL_PRODICTION = "模型預測";
+Blockly.CALCULATE_THE_SCORE = "計算得分";
+Blockly.SKLEARN_GENERALIZED_LINEAR_REGRESSION = "廣義線性回歸";
+Blockly.SKLEARN_COEF = "權重";
+Blockly.SKLEARN_INTERCEPT = "偏置";
+Blockly.SKLEARN_CLUSTERING = "聚類";
+Blockly.SKLEARN_CLUSTER_CENTER = "簇中心坐標";
+Blockly.SKLEARN_LABELS_AFTER_CLUSTERING = "聚類後標籤";
+Blockly.SKLEARN_CLUSTERING_SUM_OF_SQUARED_DISTANCES = "所有點到對應簇中心的距離平方和";
+Blockly.SKLEARN_SAVE_MODEL = "保存模型";
+Blockly.SKLEARN_LOAD_MODEL = "加載模型";

@@ -171,7 +171,8 @@ Blockly.Python.pl_plot_scatter = function() {
   var s = Blockly.Python.valueToCode(this, 'S',Blockly.Python.ORDER_ATOMIC) || '\'\'';
   var color = this.getFieldValue('COLOR');
   var dot = this.getFieldValue('DOT');
-  var code='pylab.scatter(' + a +','+ b +  ",s=" + s + ",c='" + color + "',marker='"+dot+"')\n";
+  var tag =  Blockly.Python.valueToCode(this, 'TAG', Blockly.Python.ORDER_ATOMIC)||'\'\'';
+  var code='pylab.scatter(' + a +','+ b +  ",s=" + s + ",c='" + color + "',marker='"+dot+"',label=" + tag + ")\n";
   return code ;
 };
 

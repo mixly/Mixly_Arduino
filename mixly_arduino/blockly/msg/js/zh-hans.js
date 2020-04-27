@@ -60,7 +60,8 @@ var MSG = {
 	catOnenet:'OneNET',
 	catTools:'工具',
 	catWIFI:'Wi-Fi',
-	catMQTT:'MQTT'
+	catMQTT:'MQTT',
+	catsklearn:'机器学习'
 };
 Blockly.Msg.ADD_COMMENT = "添加注释";
 Blockly.Msg.AUTH = "请授权这个应用程序以保存您的作品并共享。";
@@ -2716,3 +2717,64 @@ Blockly.COLUMN_DISPLAY_IMAGE = '列显示图像';
 Blockly.SCOOPTASK_WARNING = "警告：\nSCoopTask模块的编号不可重复，\n请考虑修改此模块的编号或删除此模块。";
 Blockly.BLYNK_TABLE_ORDER = 'Table 移动事件';
 Blockly.BLYNK_TABLE_CLICK = "Table 点击事件";
+Blockly.SKLEARN_CLASSIFICATION_GENERATION = "sklearn 分类样本生成";
+Blockly.NUMBER_OF_SAMPLES = "样本数目";
+Blockly.NUMBER_OF_FEATURES = "特征数目";
+Blockly.NUMBER_OF_EFFECTIVE_FEATURES = "有效特征数目";
+Blockly.NUMBER_OF_REDUNDANT_FEATURES = "冗余特征数目";
+Blockly.NUMBER_OF_REPEATED_FEATURES = "重复特征数目";
+Blockly.NUMBER_OF_CLASSES = "类数目";
+Blockly.NUMBER_OF_CLUSTERS_PER_CLASSES = "每个类的簇数目";
+Blockly.NUMBER_OF_LABELS = "标签数目";
+Blockly.NUMBER_OF_CLUSTERS = "簇数目/簇中心坐标";
+Blockly.RANDOM_SEED = "伪随机种子";
+Blockly.SKLEARN_REGRESSION_GENERATION = "sklearn 回归样本生成";
+Blockly.DEVIATION = "偏差";
+Blockly.NOISE = "噪音";
+Blockly.SKLEARN_CLUSTERING_GENERATION = "sklearn 聚类样本生成";
+Blockly.STANDARD_DEVIATION_OF_CLUSTER = "簇的标准差";
+Blockly.CLUSTER_BOUNDING_BOX = "簇的边界框";
+Blockly.SHUFFLE_SAMPLES = "洗牌样本";
+Blockly.LOAD = "加载";
+Blockly.SKLEARN_LOAD_IRIS = "鸢尾花数据集";
+Blockly.SKLEARN_LOAD_BOSTON = "波士顿房价数据集";
+Blockly.SKLEARN_LOAD_DIABETES = "糖尿病数据集";
+Blockly.SKLEARN_LOAD_BREAST_CANCER = "乳腺癌数据集";
+Blockly.SKLEARN_LOAD_LINNERUD = "体能训练数据集";
+Blockly.SKLEARN_LOAD_DIGITS = "手写数字数据集";
+Blockly.DATA_SET = "数据集";
+Blockly.EIGENVALUES = "特征值";
+Blockly.LABEL_VALUE = "标签值";
+Blockly.FEATURE = "特征";
+Blockly.DATA_SEGMENTATION = "数据分割";
+Blockly.TEST_SET_PROPORTION = "测试集占比";
+Blockly.SKLEARN_LINEARREGRESSION_INIT = "初始化线性回归算法";
+Blockly.SKLEARN_RIDGE_INIT = "初始化岭回归算法";
+Blockly.SKLEARN_DECISIONTREE_INIT = "初始化决策树";
+Blockly.SKLEARN_RANDOMFOREST_INIT = "初始化随机森林";
+Blockly.SKLEARN_KNN_INIT = "初始化K近邻";
+Blockly.SKLEARN_GAUSSINNB_INIT = "初始化高斯贝叶斯分类算法";
+Blockly.SKLEARN_KMEANS_INIT = "初始化K-均值聚类算法";
+Blockly.MODEL_NAME = "模型名";
+Blockly.SKLEARN_CALCULATE_MODEL_INTERRUPT = "计算模型截距";
+Blockly.SKLEARN_REGRESSION_NORMIALIZATION = "回归量归一化";
+Blockly.SKLEARN_THREADS = "线程数";
+Blockly.SKLEARN_REGULA_INTENSITY = "正则强度";
+Blockly.SKLEARN_MAX_ITER = "最多迭代次数";
+Blockly.SKLEARN_CLASSIFICATION_ALGORITHM = "分类算法";
+Blockly.SKLEARN_REGRESSION_ALGORITHM = "回归算法";
+Blockly.SKLEARN_MAXIMUM_TREE_DEPTH = "最大树深";
+Blockly.NUMBER_OF_TREES = "树的数目";
+Blockly.NUMBER_OF_CLUSTERS_JUST = "簇数目";
+Blockly.TRAINING_MODEL = "训练模型";
+Blockly.MODEL_PRODICTION = "模型预测";
+Blockly.CALCULATE_THE_SCORE = "计算得分";
+Blockly.SKLEARN_GENERALIZED_LINEAR_REGRESSION = "广义线性回归";
+Blockly.SKLEARN_COEF = "权重";
+Blockly.SKLEARN_INTERCEPT = "偏置";
+Blockly.SKLEARN_CLUSTERING = "聚类";
+Blockly.SKLEARN_CLUSTER_CENTER = "簇中心坐标";
+Blockly.SKLEARN_LABELS_AFTER_CLUSTERING = "聚类后标签";
+Blockly.SKLEARN_CLUSTERING_SUM_OF_SQUARED_DISTANCES = "所有点到对应簇中心的距离平方和";
+Blockly.SKLEARN_SAVE_MODEL = "保存模型";
+Blockly.SKLEARN_LOAD_MODEL = "加载模型";

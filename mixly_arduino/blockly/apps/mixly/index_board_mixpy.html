@@ -48,6 +48,7 @@
   <script src="../../blocks/mixpy_python/hardware.js"></script>
   <script src="../../blocks/mixpy_python/serial.js"></script>
   <script src="../../blocks/mixpy_python/ai.js"></script>
+  <script src="../../blocks/mixpy_python/sklearn.js"></script>
   <!-- generator file -->
   <script src="../../generators/mixpy_python/pins.js"></script>
   <script src="../../generators/mixpy_python/inout.js"></script>
@@ -70,6 +71,7 @@
   <script src="../../generators/mixpy_python/hardware.js"></script>
   <script src="../../generators/mixpy_python/serial.js"></script>
   <script src="../../generators/mixpy_python/ai.js"></script>
+  <script src="../../generators/mixpy_python/sklearn.js"></script>
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
   <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
   <script src="../../blocks/python/utility.js"></script>
@@ -93,6 +95,7 @@
   <script src="../../converters/mixpy_python/communicate.js" type="application/javascript"></script>
   <script src="../../converters/mixpy_python/hardware.js" type="application/javascript"></script>
   <script src="../../converters/mixpy_python/ai.js" type="application/javascript"></script>
+  <script src="../../converters/mixpy_python/sklearn.js" type="application/javascript"></script>
   <script src="../../converters/mixpy_python/serial.js" type="application/javascript"></script>
   <script src="./js/python_to_blockly.js" type="application/javascript"></script>
   <script src="js/mixpyProject.js" type="application/javascript"></script>
@@ -2468,6 +2471,11 @@
             <field name="CONTENT">20,20,20,20</field>
           </shadow>
         </value>
+        <value name="TAG">
+          <shadow type="text">
+            <field name="TEXT">tag</field>
+          </shadow>
+        </value>
       </block>
       <block type="pl_plot_xy">
         <value name="A">
@@ -2623,7 +2631,376 @@
         </value>
       </block>
     </category>
-
+    <category id="catsklearn" colour="80">
+      <block type="sklearn_make_classification">
+        <value name="n_samples">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+        <value name="n_features">
+          <shadow type="math_number">
+            <field name="NUM">20</field>
+          </shadow>
+        </value>
+        <value name="n_informative">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+        <value name="n_redundant">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+        <value name="n_repeated">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+        <value name="n_classes">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+        <value name="n_clusters_per_class">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+        <value name="random_state">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_make_regression">
+        <value name="n_samples">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+        <value name="n_features">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+        <value name="n_informative">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <value name="n_targets">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="bias">
+          <shadow type="math_number">
+            <field name="NUM">0.0</field>
+          </shadow>
+        </value>
+        <value name="noise">
+          <shadow type="math_number">
+            <field name="NUM">0.0</field>
+          </shadow>
+        </value>
+        <value name="random_state">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_make_blobs">
+        <value name="n_samples">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+        <value name="n_features">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+        <value name="centers">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+        <value name="cluster_std">
+          <shadow type="math_number">
+            <field name="NUM">1.0</field>
+          </shadow>
+        </value>
+        <value name="center_box">
+          <block type="tuple_create_with_text_return">
+            <field name="TEXT">-10.0,10.0</field>
+          </block>
+        </value>
+        <value name="shuffle">
+          <shadow type="logic_boolean">
+            <field name="BOOL">TRUE</field>
+          </shadow>
+        </value>
+        <value name="random_state">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_load">
+      </block>
+      <block type="sklearn_data_target">
+        <value name="name">
+          <shadow type="variables_get">
+            <field name="VAR">iris</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_train_test_split">
+        <value name="train_data">
+          <shadow type="variables_get">
+            <field name="VAR">iris_X</field>
+          </shadow>
+        </value>
+        <value name="train_target">
+          <shadow type="variables_get">
+            <field name="VAR">iris_y</field>
+          </shadow>
+        </value>
+        <value name="test_size">
+          <shadow type="math_number">
+            <field name="NUM">0.3</field>
+          </shadow>
+        </value>
+        <value name="rondom_state">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_LinearRegression">
+        <value name="model_name">
+          <shadow type="variables_get">
+            <field name="VAR">model</field>
+          </shadow>
+        </value>
+        <value name="fit_intercept">
+          <shadow type="logic_boolean">
+            <field name="BOOL">TRUE</field>
+          </shadow>
+        </value>
+        <value name="normalize">
+          <shadow type="logic_boolean">
+            <field name="BOOL">FALSE</field>
+          </shadow>
+        </value>
+        <value name="n_jobs">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_Ridge">
+        <value name="model_name">
+          <shadow type="variables_get">
+            <field name="VAR">model</field>
+          </shadow>
+        </value>
+        <value name="alpha">
+          <shadow type="math_number">
+            <field name="NUM">1.0</field>
+          </shadow>
+        </value>
+        <value name="fit_intercept">
+          <shadow type="logic_boolean">
+            <field name="BOOL">TRUE</field>
+          </shadow>
+        </value>
+        <value name="normalize">
+          <shadow type="logic_boolean">
+            <field name="BOOL">FALSE</field>
+          </shadow>
+        </value>
+        <value name="max_iter">
+          <shadow type="math_number">
+            <field name="NUM">300</field>
+          </shadow>
+        </value>
+        <value name="random_state">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_DecisionTreeClassifier_Regressor">
+        <value name="model_name">
+          <shadow type="variables_get">
+            <field name="VAR">model</field>
+          </shadow>
+        </value>
+        <value name="max_depth">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+        <value name="random_state">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_RandomForestClassifier_Regressor">
+        <value name="model_name">
+          <shadow type="variables_get">
+            <field name="VAR">model</field>
+          </shadow>
+        </value>
+        <value name="n_estimators">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+        <value name="max_depth">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+        <value name="n_jobs">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+        <value name="random_state">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_KNeighborsClassifier_Regressor">
+        <value name="model_name">
+          <shadow type="variables_get">
+            <field name="VAR">model</field>
+          </shadow>
+        </value>
+        <value name="K">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        <value name="n_jobs">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_GaussianNB">
+        <value name="model_name">
+          <shadow type="variables_get">
+            <field name="VAR">model</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_KMeans">
+        <value name="model_name">
+          <shadow type="variables_get">
+            <field name="VAR">model</field>
+          </shadow>
+        </value>
+        <value name="n_clusters">
+          <shadow type="math_number">
+            <field name="NUM">8</field>
+          </shadow>
+        </value>
+        <value name="max_iter">
+          <shadow type="math_number">
+            <field name="NUM">300</field>
+          </shadow>
+        </value>
+        <value name="random_state">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+        <value name="n_jobs">
+          <shadow type="math_number">
+            <field name="NUM">None</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_fit">
+        <value name="model_name">
+          <shadow type="variables_get">
+            <field name="VAR">model</field>
+          </shadow>
+        </value>
+        <value name="train_data">
+          <shadow type="variables_get">
+            <field name="VAR">X_train</field>
+          </shadow>
+        </value>
+        <value name="train_target">
+          <shadow type="variables_get">
+            <field name="VAR">y_train</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_score">
+        <value name="model_name">
+          <shadow type="variables_get">
+            <field name="VAR">model</field>
+          </shadow>
+        </value>
+        <value name="train_data">
+          <shadow type="variables_get">
+            <field name="VAR">X_test</field>
+          </shadow>
+        </value>
+        <value name="train_target">
+          <shadow type="variables_get">
+            <field name="VAR">y_test</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_predict">
+        <value name="model_name">
+          <shadow type="variables_get">
+            <field name="VAR">model</field>
+          </shadow>
+        </value>
+        <value name="train_data">
+          <shadow type="variables_get">
+            <field name="VAR">X_test</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_coef_intercept">
+        <value name="model_name">
+          <shadow type="variables_get">
+            <field name="VAR">model</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_cluster_centers_labels_inertia">
+        <value name="model_name">
+          <shadow type="variables_get">
+            <field name="VAR">model</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sklearn_save_load_model">
+        <value name="model_name">
+          <shadow type="variables_get">
+            <field name="VAR">model</field>
+          </shadow>
+        </value>
+        <value name="address">
+          <shadow type="text">
+            <field name="TEXT">D:/mixly/test.pkl</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
     <!--<category id="catDS" colour="80">
       <block type="ds_create_linkedlist"></block>
       <block type="ds_create_node">

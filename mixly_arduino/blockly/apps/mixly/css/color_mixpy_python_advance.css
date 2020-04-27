@@ -360,6 +360,15 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
   background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(17) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
+  background:url('../../../media/mark/machine_learning.png') no-repeat;
+  background-size: 100% auto; 
+}
+#\:0 > div:nth-child(2) > div:nth-child(17) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
+  background:url('../../../media/mark/machine_learning2.png') no-repeat;
+  background-size: 100% auto; 
+}
+/*
+#\:0 > div:nth-child(2) > div:nth-child(17) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
   background:url('../../../media/mark/ds.png') no-repeat;
   background-size: 100% auto; 
 }
@@ -367,6 +376,7 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
   background:url('../../../media/mark/ds2.png') no-repeat;
   background-size: 100% auto; 
 }
+*/
 /*text.blocklyCheckbox {
   fill: #ff3030!important;
   text-shadow: 0 0 3px red;

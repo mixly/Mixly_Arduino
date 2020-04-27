@@ -436,7 +436,10 @@ Blockly.Blocks['pl_plot_scatter'] = {
         .appendField(new Blockly.FieldDropdown(dot_type), 'DOT');
     this.appendDummyInput("")                
         .appendField(Blockly.Msg.HTML_COLOUR)  
-        .appendField(new Blockly.FieldDropdown(color_type), 'COLOR');     
+        .appendField(new Blockly.FieldDropdown(color_type), 'COLOR');   
+    this.appendValueInput('TAG')
+        .setCheck(String)    
+        .appendField(Blockly.mixpy_PYLAB_TICKS_TAG);  
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);

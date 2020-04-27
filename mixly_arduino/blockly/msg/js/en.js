@@ -60,7 +60,8 @@ var MSG = {
 	catOnenet:'OneNET',
 	catTools:'Tools',
 	catWIFI:'Wi-Fi',
-	catMQTT:'MQTT'
+	catMQTT:'MQTT',
+	catsklearn:'Machine learning'
 };
 Blockly.Msg.ADD_COMMENT= "Add Comment";
 Blockly.Msg.AUTH= "Please authorize this app to enable your work to be saved and to allow it to be shared by you.";
@@ -2709,3 +2710,64 @@ Blockly.COLUMN_DISPLAY_IMAGE = 'Column display image';
 Blockly.SCOOPTASK_WARNING = "Warning: \nThe number of the SCoopTask module cannot be duplicated, \nplease consider modifying the number of this module or deleting this module.";
 Blockly.BLYNK_TABLE_ORDER = 'Table click';
 Blockly.BLYNK_TABLE_CLICK = "Table order";
+Blockly.SKLEARN_CLASSIFICATION_GENERATION = "sklearn classification sample generation";
+Blockly.NUMBER_OF_SAMPLES = "Number of samples";
+Blockly.NUMBER_OF_FEATURES = "Number of features";
+Blockly.NUMBER_OF_EFFECTIVE_FEATURES = "Number of effective features";
+Blockly.NUMBER_OF_REDUNDANT_FEATURES = "Number of redundant features";
+Blockly.NUMBER_OF_REPEATED_FEATURES = "Number of repeated features";
+Blockly.NUMBER_OF_CLASSES = "Number of classes";
+Blockly.NUMBER_OF_CLUSTERS_PER_CLASSES = "Number of clusters per class";
+Blockly.NUMBER_OF_LABELS = "Number of labels";
+Blockly.NUMBER_OF_CLUSTERS = "Number of clusters/cluster center coordinates";
+Blockly.RANDOM_SEED = "Pseudo-random seed";
+Blockly.SKLEARN_REGRESSION_GENERATION = "sklearn regression sample generation";
+Blockly.DEVIATION = "deviation";
+Blockly.NOISE = "noise";
+Blockly.SKLEARN_CLUSTERING_GENERATION = "sklearn clustering sample generation";
+Blockly.STANDARD_DEVIATION_OF_CLUSTER = "Standard deviation of cluster";
+Blockly.CLUSTER_BOUNDING_BOX = "Cluster bounding box";
+Blockly.SHUFFLE_SAMPLES = "Shuffle samples";
+Blockly.LOAD = "load";
+Blockly.SKLEARN_LOAD_IRIS = "Iris dataset";
+Blockly.SKLEARN_LOAD_BOSTON = "Boston house price data set";
+Blockly.SKLEARN_LOAD_DIABETES = "Diabetes data set";
+Blockly.SKLEARN_LOAD_BREAST_CANCER = "Breast cancer data set";
+Blockly.SKLEARN_LOAD_LINNERUD = "Fitness training data set";
+Blockly.SKLEARN_LOAD_DIGITS = "Handwritten digital data set";
+Blockly.DATA_SET = "data set";
+Blockly.EIGENVALUES = "Eigenvalues";
+Blockly.LABEL_VALUE = "Label value";
+Blockly.FEATURE = "feature";
+Blockly.DATA_SEGMENTATION = "Data segmentation";
+Blockly.TEST_SET_PROPORTION = "Test set proportion";
+Blockly.SKLEARN_LINEARREGRESSION_INIT = "Initialize linear regression algorithm";
+Blockly.SKLEARN_RIDGE_INIT = "Initialized Ridge Regression Algorithm";
+Blockly.SKLEARN_DECISIONTREE_INIT = "Initialize decision tree";
+Blockly.SKLEARN_RANDOMFOREST_INIT = "Initialize random forest";
+Blockly.SKLEARN_KNN_INIT = "Initialize K nearest neighbors";
+Blockly.SKLEARN_GAUSSINNB_INIT = "Initialized Gaussian Bayesian classification algorithm";
+Blockly.SKLEARN_KMEANS_INIT = "Initial K-means clustering algorithm";
+Blockly.MODEL_NAME = "Model name";
+Blockly.SKLEARN_CALCULATE_MODEL_INTERRUPT = "Calculate model intercept";
+Blockly.SKLEARN_REGRESSION_NORMIALIZATION = "Regression normalization";
+Blockly.SKLEARN_THREADS = "Threads";
+Blockly.SKLEARN_REGULA_INTENSITY = "Regular intensity";
+Blockly.SKLEARN_MAX_ITER = "Maximum number of iterations";
+Blockly.SKLEARN_CLASSIFICATION_ALGORITHM = "Classification algorithm";
+Blockly.SKLEARN_REGRESSION_ALGORITHM = "Regression algorithm";
+Blockly.SKLEARN_MAXIMUM_TREE_DEPTH = "Maximum tree depth";
+Blockly.NUMBER_OF_TREES = "Number of trees";
+Blockly.NUMBER_OF_CLUSTERS_JUST = "Number of clusters";
+Blockly.TRAINING_MODEL = "Training model";
+Blockly.MODEL_PRODICTION = "Model prediction";
+Blockly.CALCULATE_THE_SCORE = "Calculate the score";
+Blockly.SKLEARN_GENERALIZED_LINEAR_REGRESSION = "Generalized linear regression";
+Blockly.SKLEARN_COEF = "Weights";
+Blockly.SKLEARN_INTERCEPT = "Bias";
+Blockly.SKLEARN_CLUSTERING = "Clustering";
+Blockly.SKLEARN_CLUSTER_CENTER = "Cluster center coordinates";
+Blockly.SKLEARN_LABELS_AFTER_CLUSTERING = "Label after clustering";
+Blockly.SKLEARN_CLUSTERING_SUM_OF_SQUARED_DISTANCES = "Sum of squared distances";
+Blockly.SKLEARN_SAVE_MODEL = "Save the model";
+Blockly.SKLEARN_LOAD_MODEL = "Load the model";

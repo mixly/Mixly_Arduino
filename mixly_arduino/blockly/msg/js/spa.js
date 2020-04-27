@@ -57,7 +57,8 @@ var MSG = {
   catOnenet: 'OneNET',
   catTools: 'Herramientas',
   catWIFI: 'Wi-Fi',
-  catMQTT: 'MQTT'
+  catMQTT: 'MQTT',
+  catsklearn:'Aprendizaje automático'
 };
 Blockly.Msg.ADD_COMMENT = "Añadir comentario";
 Blockly.Msg.AUTH = "Por favor, autorice esta aplicación para guardar su trabajo y compartirlo";
@@ -2707,3 +2708,64 @@ Blockly.COLUMN_DISPLAY_IMAGE = 'Imagen de visualización de columna';
 Blockly.SCOOPTASK_WARNING = "Advertencia: \nEl número del módulo SCoopTask no se puede duplicar, \nconsidere modificar el número de este módulo o eliminarlo.";
 Blockly.BLYNK_TABLE_ORDER = 'Table Evento móvil';
 Blockly.BLYNK_TABLE_CLICK = "Table Haga clic en evento";
+Blockly.SKLEARN_CLASSIFICATION_GENERATION = "sklearn clasificación generación de muestra";
+Blockly.NUMBER_OF_SAMPLES = "Número de muestras";
+Blockly.NUMBER_OF_FEATURES = "Numero de caracteristicas";
+Blockly.NUMBER_OF_EFFECTIVE_FEATURES = "Número de características efectivas";
+Blockly.NUMBER_OF_REDUNDANT_FEATURES = "Cantidad de funciones redundantes";
+Blockly.NUMBER_OF_REPEATED_FEATURES = "Número de características repetidas";
+Blockly.NUMBER_OF_CLASSES = "Numero de clases";
+Blockly.NUMBER_OF_CLUSTERS_PER_CLASSES = "Número de grupos por clase";
+Blockly.NUMBER_OF_LABELS = "Numero de etiquetas";
+Blockly.NUMBER_OF_CLUSTERS = "Número de grupos/coordenadas del centro del grupo";
+Blockly.RANDOM_SEED = "Semilla pseudoaleatoria";
+Blockly.SKLEARN_REGRESSION_GENERATION = "generación de muestras de regresión sklearn";
+Blockly.DEVIATION = "Desviación";
+Blockly.NOISE = "Ruido";
+Blockly.SKLEARN_CLUSTERING_GENERATION = "generación de muestras de agrupación de sklearn";
+Blockly.STANDARD_DEVIATION_OF_CLUSTER = "Desviación estándar de cluster";
+Blockly.CLUSTER_BOUNDING_BOX = "Cuadro delimitador de racimo";
+Blockly.SHUFFLE_SAMPLES = "Mezclar muestras";
+Blockly.LOAD = "Cargando";
+Blockly.SKLEARN_LOAD_IRIS = "Conjunto de datos de iris";
+Blockly.SKLEARN_LOAD_BOSTON = "Conjunto de datos de precios de vivienda de Boston";
+Blockly.SKLEARN_LOAD_DIABETES = "Conjunto de datos sobre diabetes";
+Blockly.SKLEARN_LOAD_BREAST_CANCER = "Conjunto de datos sobre el cáncer de mama";
+Blockly.SKLEARN_LOAD_LINNERUD = "Conjunto de datos de entrenamiento físico";
+Blockly.SKLEARN_LOAD_DIGITS = "Conjunto de datos digitales escritos a mano";
+Blockly.DATA_SET = "Conjunto de datos";
+Blockly.EIGENVALUES = "Valor propio";
+Blockly.LABEL_VALUE = "Valor de la etiqueta";
+Blockly.FEATURE = "Caracteristicas";
+Blockly.DATA_SEGMENTATION = "Segmentación de datos";
+Blockly.TEST_SET_PROPORTION = "Proporción de conjunto de prueba";
+Blockly.SKLEARN_LINEARREGRESSION_INIT = "Inicializar algoritmo de regresión lineal";
+Blockly.SKLEARN_RIDGE_INIT = "Algoritmo de regresión de cresta inicializado";
+Blockly.SKLEARN_DECISIONTREE_INIT = "Inicializar árbol de decisiones";
+Blockly.SKLEARN_RANDOMFOREST_INIT = "Inicializar bosque aleatorio";
+Blockly.SKLEARN_KNN_INIT = "Inicializa K vecinos más cercanos";
+Blockly.SKLEARN_GAUSSINNB_INIT = "Inicializado algoritmo de clasificación bayesiano gaussiano";
+Blockly.SKLEARN_KMEANS_INIT = "Algoritmo de agrupamiento inicial de K-medias";
+Blockly.MODEL_NAME = "Nombre del modelo";
+Blockly.SKLEARN_CALCULATE_MODEL_INTERRUPT = "Calcular intercepción del modelo";
+Blockly.SKLEARN_REGRESSION_NORMIALIZATION = "Normalización de regresión";
+Blockly.SKLEARN_THREADS = "Numero de hilos";
+Blockly.SKLEARN_REGULA_INTENSITY = "Intensidad regular";
+Blockly.SKLEARN_MAX_ITER = "Número máximo de iteraciones";
+Blockly.SKLEARN_CLASSIFICATION_ALGORITHM = "Algoritmo de clasificación";
+Blockly.SKLEARN_REGRESSION_ALGORITHM = "Algoritmo de regresión";
+Blockly.SKLEARN_MAXIMUM_TREE_DEPTH = "Profundidad máxima del árbol";
+Blockly.NUMBER_OF_TREES = "Numero de arboles";
+Blockly.NUMBER_OF_CLUSTERS_JUST = "Numero de racimos";
+Blockly.TRAINING_MODEL = "Modelo de entrenamiento";
+Blockly.MODEL_PRODICTION = "Predicción del modelo";
+Blockly.CALCULATE_THE_SCORE = "Calcular la puntuación";
+Blockly.SKLEARN_GENERALIZED_LINEAR_REGRESSION = "Regresión lineal generalizada";
+Blockly.SKLEARN_COEF = "Peso";
+Blockly.SKLEARN_INTERCEPT = "Sesgo";
+Blockly.SKLEARN_CLUSTERING = "Agrupamiento";
+Blockly.SKLEARN_CLUSTER_CENTER = "Coordenada central del clúster";
+Blockly.SKLEARN_LABELS_AFTER_CLUSTERING = "Etiqueta después de la agrupación";
+Blockly.SKLEARN_CLUSTERING_SUM_OF_SQUARED_DISTANCES = "Suma de distancias al cuadrado";
+Blockly.SKLEARN_SAVE_MODEL = "Guardar el modelo";
+Blockly.SKLEARN_LOAD_MODEL = "Cargar el modelo";

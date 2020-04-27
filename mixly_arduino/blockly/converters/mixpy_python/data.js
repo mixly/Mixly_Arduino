@@ -236,6 +236,7 @@ pbc.moduleFunctionD.get('pylab')['scatter'] = function(py2block, func, args, key
     var key1block = py2block.convert(keywords[0].value);
     var key2block = py2block.Str_value(keywords[1].value);
     var key3block = py2block.Str_value(keywords[2].value);  
+    var key4block = py2block.convert(keywords[3].value);
     key2block = key2block.substring(3,key2block.length - 1);
     key3block = key3block.substring(7,key3block.length - 1);
     return [block("pl_plot_scatter", func.lineno, {
@@ -244,7 +245,8 @@ pbc.moduleFunctionD.get('pylab')['scatter'] = function(py2block, func, args, key
     }, {
             'A': arg1block,
             'B': arg2block,
-            'S': key1block
+            'S': key1block,
+            'TAG': key4block
     }, {
             "inline": "true"
         })];
