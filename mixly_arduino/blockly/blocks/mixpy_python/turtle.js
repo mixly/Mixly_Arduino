@@ -518,6 +518,40 @@ Blockly.Blocks['turtle_fillcolor_hex_new'] = {
   }
 };
 
+Blockly.Blocks['turtle_color'] = {
+ init: function() {
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendDummyInput()
+        .appendField(Blockly.blockpy_turtle_pencolor)
+        .appendField(new Blockly.FieldColour('#ff0000'), 'FIELDNAME');
+    this.appendDummyInput()
+        .appendField(Blockly.blockpy_turtle_fillcolor)
+        .appendField(new Blockly.FieldColour('#ff0000'), 'FIELDNAME2');    
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.Blocks['turtle_color_hex'] = {
+ init: function() {
+    this.appendValueInput('TUR')
+        .setCheck('Turtle')
+    this.setColour(Blockly.Blocks.turtle.HUE);
+    this.appendValueInput('VAR1')
+        .setCheck(String)
+        .appendField(Blockly.blockpy_turtle_pencolor);
+    this.appendValueInput('VAR2')
+        .setCheck(String)
+        .appendField(Blockly.blockpy_turtle_fillcolor);        
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
 Blockly.Blocks['turtle_bgcolor_hex'] = {
  init: function() {
     

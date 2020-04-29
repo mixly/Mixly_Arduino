@@ -448,4 +448,22 @@ Blockly.Blocks['math_random_seed'] = {
     }
 };
 
+Blockly.Blocks['math_round'] = {
+  
+  init: function() {
+    this.setColour(Blockly.Blocks.math.HUE);
+    this.setOutput(true, Number);
+    this.appendValueInput('VALUE')
+        .setCheck(Number)
+    this.appendValueInput('VAR')
+        .setCheck(Number)
+        .appendField(Blockly.MATH_ROUND)
+        .appendField(Blockly.TEXT_KEEP);  
+    this.appendDummyInput()
+        .appendField(Blockly.TEXT_DECIMAL);        
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MATH_ROUND_NEW_TOOLTIP);
+  }
+};
+
 Blockly.Blocks.base_map = Blockly.Blocks.math_map

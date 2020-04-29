@@ -2771,3 +2771,5 @@ Blockly.SKLEARN_LABELS_AFTER_CLUSTERING = "Label after clustering";
 Blockly.SKLEARN_CLUSTERING_SUM_OF_SQUARED_DISTANCES = "Sum of squared distances";
 Blockly.SKLEARN_SAVE_MODEL = "Save the model";
 Blockly.SKLEARN_LOAD_MODEL = "Load the model";
+Blockly.MATH_ROUND = 'rounding';
+Blockly.MATH_ROUND_NEW_TOOLTIP = 'Rounds a number to the number of digits specified after the decimal point is retained';

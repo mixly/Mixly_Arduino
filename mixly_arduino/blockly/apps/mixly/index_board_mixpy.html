@@ -443,7 +443,7 @@
             <field name="NUM">0.998</field>
           </shadow>
         </value>
-      </block>
+      </block>      
       <block type="math_max_min">
         <value name="A">
           <shadow type="math_number">
@@ -455,6 +455,18 @@
             <field name="NUM">2</field>
           </shadow>
         </value>
+      </block>
+      <block type="math_round">
+        <value name="VALUE">
+          <shadow type="math_number">
+            <field name="NUM">4.8</field>
+          </shadow>
+        </value>
+        <value name="VAR">
+          <shadow type="math_number">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>        
       </block>
       <block type="math_random">
         <value name="FROM">
@@ -1677,6 +1689,29 @@
           </shadow>
         </value>
         <value name="VAR">
+          <block type="turtle_color_seclet" >
+            <field name="COLOR">#ff0000</field>
+          </block>
+          <shadow type="text">
+            <field name="TEXT">FF0000</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="turtle_color_hex">
+        <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">tina</field>
+          </shadow>
+        </value>
+        <value name="VAR1">
+          <block type="turtle_color_seclet" >
+            <field name="COLOR">#ff0000</field>
+          </block>
+          <shadow type="text">
+            <field name="TEXT">FF0000</field>
+          </shadow>
+        </value>
+        <value name="VAR2">
           <block type="turtle_color_seclet" >
             <field name="COLOR">#ff0000</field>
           </block>

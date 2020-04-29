@@ -287,5 +287,14 @@ Blockly.Python.math_indexer_number = function () {
     return [code, order];
 }
 
+Blockly.Python.math_round = function() {
+  var argument0 = Blockly.Python.valueToCode(this, 'VALUE',
+      Blockly.Python.ORDER_NONE) || '0';
+  var argument1 = Blockly.Python.valueToCode(this, 'VAR',
+      Blockly.Python.ORDER_NONE) || '0';
+  
+  var code = 'round(' + argument0 + ', ' + argument1 + ')';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
 
 Blockly.Python.base_map = Blockly.Python.math_map

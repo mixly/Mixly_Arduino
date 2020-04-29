@@ -694,7 +694,7 @@ Blockly.Blocks['dataframe_get'] = {
     var halign =
         [[Blockly.Msg.TEXT_TRIM_LEFT, 'right'],[Blockly.mixpy_PL_TEXT_CENTER, 'center'],[Blockly.Msg.TEXT_TRIM_RIGHT, 'left']];    
     var valign =
-        [[Blockly.mixpy_PL_TEXT_TOP, 'bottom'],[Blockly.mixpy_PL_TEXT_CENTER, 'center'],[Blockly.MIXLY_TURTLE_WRITE_ALIGN_RIGHT, 'top']];    
+        [[Blockly.mixpy_PL_TEXT_TOP, 'bottom'],[Blockly.mixpy_PL_TEXT_CENTER, 'center'],[Blockly.mixpy_PL_TEXT_BOTTOM, 'top']];    
     this.appendValueInput('VET')
         .setCheck(Number)
         .appendField(Blockly.MIXLY_SETTING)

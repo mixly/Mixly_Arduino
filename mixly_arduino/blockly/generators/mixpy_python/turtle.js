@@ -254,6 +254,24 @@ Blockly.Python.turtle_fillcolor_hex_new = function(block) {
   return code;
 };
 
+Blockly.Python.turtle_color_hex = function(block) {
+  Blockly.Python.definitions_.import_turtle = "import turtle";
+  var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var color1 =  Blockly.Python.valueToCode(this, 'VAR1', Blockly.Python.ORDER_ATOMIC) ;
+  var color2 =  Blockly.Python.valueToCode(this, 'VAR2', Blockly.Python.ORDER_ATOMIC) ;
+  var code = varName+"." + 'color' + '(' + color1 + ',' + color2 + ')\n';
+  return code;
+};
+
+Blockly.Python.turtle_color = function(block) {
+  Blockly.Python.definitions_.import_turtle = "import turtle";
+  var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var color1 = this.getFieldValue('FIELDNAME');
+  var color2 = this.getFieldValue('FIELDNAME2');
+  var code=varName+"." + 'color' + '("' + color1 + '","' + color2 + '")\n';
+  return code;
+};
+
 Blockly.Python.turtle_shape = function() {
   Blockly.Python.definitions_.import_turtle = "import turtle";
     var varName = Blockly.Python.valueToCode(this, 'TUR', Blockly.Python.ORDER_ASSIGNMENT) || '0';

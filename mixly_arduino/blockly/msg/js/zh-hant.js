@@ -2769,3 +2769,5 @@ Blockly.SKLEARN_LABELS_AFTER_CLUSTERING = "聚類後標籤";
 Blockly.SKLEARN_CLUSTERING_SUM_OF_SQUARED_DISTANCES = "所有點到對應簇中心的距離平方和";
 Blockly.SKLEARN_SAVE_MODEL = "保存模型";
 Blockly.SKLEARN_LOAD_MODEL = "加載模型";
+Blockly.MATH_ROUND = '四捨五入';
+Blockly.MATH_ROUND_NEW_TOOLTIP = '將數值四捨五入保留小數點後指定的位數';

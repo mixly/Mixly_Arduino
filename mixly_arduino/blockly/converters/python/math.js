@@ -142,9 +142,10 @@ function mathIntFunc(mode) {
 }
 
 pbc.globalFunctionD['round'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 1) {
+    if (args.length !== 1 && args.length !== 2) {
         throw new Error("Incorrect number of arguments");
     }
+    if (args.length == 1){
     var varblock = py2block.convert(args[0]);
     return block("math_to_int", func.lineno, {
         'OP': "round"
@@ -153,6 +154,18 @@ pbc.globalFunctionD['round'] = function (py2block, func, args, keywords, stararg
     }, {
         "inline": "true"
     });
+    }
+    if (args.length == 2){
+    var varblock = py2block.convert(args[0]);
+    var varblock1 = py2block.convert(args[1]);
+    return block("math_round", func.lineno, {}, {
+        'VALUE': varblock,
+        'VAR': varblock1
+    }, {
+        "inline": "true"
+    });
+    }
+
 }
 
 
