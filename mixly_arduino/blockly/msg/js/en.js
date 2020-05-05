@@ -2773,3 +2773,4 @@ Blockly.SKLEARN_SAVE_MODEL = "Save the model";
 Blockly.SKLEARN_LOAD_MODEL = "Load the model";
 Blockly.MATH_ROUND = 'rounding';
 Blockly.MATH_ROUND_NEW_TOOLTIP = 'Rounds a number to the number of digits specified after the decimal point is retained';
+Blockly.PY_STORAGE_FILE_OBJECT = ", and return the file object";

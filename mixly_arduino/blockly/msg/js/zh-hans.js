@@ -2780,3 +2780,4 @@ Blockly.SKLEARN_SAVE_MODEL = "保存模型";
 Blockly.SKLEARN_LOAD_MODEL = "加载模型";
 Blockly.MATH_ROUND = '四舍五入';
 Blockly.MATH_ROUND_NEW_TOOLTIP = '将数值四舍五入保留小数点后指定的位数';
+Blockly.PY_STORAGE_FILE_OBJECT = "，并返回文件对象";

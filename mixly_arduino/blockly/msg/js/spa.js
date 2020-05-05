@@ -2771,4 +2771,4 @@ Blockly.SKLEARN_SAVE_MODEL = "Guardar el modelo";
 Blockly.SKLEARN_LOAD_MODEL = "Cargar el modelo";
 Blockly.MATH_ROUND = 'En miles de dólares EE.UU.';
 Blockly.MATH_ROUND_NEW_TOOLTIP = 'Redondear los valores al dígito especificado después de mantener el decimal';
-
+Blockly.PY_STORAGE_FILE_OBJECT = ",devuelve el objeto del archivo";

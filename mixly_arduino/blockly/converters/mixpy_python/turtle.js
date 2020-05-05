@@ -981,9 +981,10 @@ pbc.objectFunctionD.get('fillcolor')[turtleClass] = function (py2block, func, ar
 }
 
 pbc.objectFunctionD.get('color')[turtleClass] = function (py2block, func, args, keywords, starargs, kwargs, node) {
-    if (args.length !== 2) {
+    if (args.length !== 2 &&args.length !== 1) {
         throw new Error("Incorrect number of arguments");
     }
+    if(args.length == 2){
     var turtleblock = py2block.convert(func.value);
     var argblock = py2block.convert(args[0]);
     var argblock1 = py2block.convert(args[1]);
@@ -1005,7 +1006,29 @@ pbc.objectFunctionD.get('color')[turtleClass] = function (py2block, func, args, 
             "inline": "true"
         })];
     }
-
+    }
+    if(args.length == 1){
+    var turtleblock = py2block.convert(func.value);
+    var argblock = py2block.convert(args[0]);    
+    if (args[0]._astname != "Str")  {
+        return [block("turtle_pencolor_hex", func.lineno, {}, {
+            'TUR': turtleblock,
+            'VAR': argblock
+        }, {
+            "inline": "true"
+        })];
+    }
+    else{
+        return [block('turtle_pencolor', func.lineno, {
+            "FIELDNAME":py2block.Str_value(args[0])
+        }, {
+            'TUR': turtleblock
+        }, {
+            "inline": "true"
+        })];
+    
+    }
+    }
 
 }
 

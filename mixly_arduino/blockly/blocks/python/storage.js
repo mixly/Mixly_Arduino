@@ -27,11 +27,10 @@ Blockly.Blocks.storage_fileopen = {
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE)
         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_READ, 'r'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_WRITE, 'w'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_READ, 'rb'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_WRITE, 'wb']]), 'MODE');
-    this.appendValueInput("FILE")
-        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_AS);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setPreviousStatement(false);
+    this.setNextStatement(false);
     this.setInputsInline(true);
+    this.setOutput(true);
      var thisBlock = this;
         this.setTooltip(function() {
         var mode = thisBlock.getFieldValue('MODE');
@@ -39,22 +38,15 @@ Blockly.Blocks.storage_fileopen = {
         var mode1 = Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE;
         var mode2 = Blockly.MIXLY_MICROBIT_PY_STORAGE_OPEN_FILE;
         var mode3 =Blockly.MIXLY_BELONG;
+        var mode4 =Blockly.PY_STORAGE_FILE_OBJECT;
         var TOOLTIPS = {
         'r': Blockly.MIXLY_MICROBIT_PY_STORAGE_READ,
         'w': Blockly.MIXLY_MICROBIT_PY_STORAGE_WRITE,
         'rb':Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_READ,
         'wb':Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_WRITE
       };
-      return mode0 + TOOLTIPS[mode]+mode3+mode1+mode2;
+      return mode0 + TOOLTIPS[mode]+mode3+mode1+mode2+mode4;
     });
-  },
-  getVars: function() {
-    return [this.getFieldValue('VAR')];
-  },
-  renameVar: function(oldName, newName) {
-    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
-      this.setTitleValue(newName, 'VAR');
-    }
   }
 };
 

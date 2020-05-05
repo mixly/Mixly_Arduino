@@ -1360,7 +1360,10 @@
           </shadow>
         </value>
       </block>
-      <block type="storage_fileopen">
+      <block type="variables_set">        
+        <field name="VAR">f</field>
+        <value name="VALUE">
+          <block type="storage_fileopen">
         <value name="FILENAME">
           <shadow type="text">
             <field name="TEXT">filename.txt</field>
@@ -1372,6 +1375,9 @@
           </shadow>
         </value>
       </block>
+        </value>
+      </block>
+      
       <block type="storage_file_write">
         <value name="data">
           <shadow type="text">

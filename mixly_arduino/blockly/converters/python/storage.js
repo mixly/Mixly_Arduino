@@ -1,26 +1,25 @@
 'use strict';
 
 var fileClass = 'open';
-pbc.assignD.get('File')['check_assign'] = function(py2block, node, targets, value) {
-    if(value._astname != "Call" || value.func._astname != "Name"){
-        return false;
-    }
-    var funcName = py2block.Name_str(value.func);
-    if(funcName === "open" && value.args.length === 2)
-        return true;
-    return false;
-}
 
-pbc.assignD.get('File')['create_block'] = function(py2block, node, targets, value){
-    var mode = py2block.Str_value(value.args[1]);
-    return block("storage_fileopen", node.lineno, {
+
+
+
+pbc.globalFunctionD['open'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }    
+    
+    var varblock = py2block.convert(args[0]);
+    var mode = py2block.Str_value(args[1]);
+   return block("storage_fileopen", node.lineno, {
         "MODE":mode
     }, {
-        "FILENAME":py2block.convert(value.args[0]),
-        "FILE":py2block.convert(targets[0])
+        "FILENAME":varblock
     });
-}
+    
 
+}
 
 pbc.objectFunctionD.get('write')[fileClass] = function(py2block, func, args, keywords, starargs, kwargs, node){
     if (args.length !== 1) {
