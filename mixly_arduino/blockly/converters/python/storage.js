@@ -12,7 +12,7 @@ pbc.globalFunctionD['open'] = function (py2block, func, args, keywords, starargs
     
     var varblock = py2block.convert(args[0]);
     var mode = py2block.Str_value(args[1]);
-   return block("storage_fileopen", node.lineno, {
+   return block("storage_fileopen_new", node.lineno, {
         "MODE":mode
     }, {
         "FILENAME":varblock

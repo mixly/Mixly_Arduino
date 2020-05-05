@@ -27,6 +27,47 @@ Blockly.Blocks.storage_fileopen = {
     this.appendDummyInput()
         .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE)
         .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_READ, 'r'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_WRITE, 'w'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_READ, 'rb'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_WRITE, 'wb']]), 'MODE');
+    this.appendValueInput("FILE")
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_AS);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+     var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('MODE');
+        var mode0 = Blockly.MIXLY_USE;
+        var mode1 = Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE;
+        var mode2 = Blockly.MIXLY_MICROBIT_PY_STORAGE_OPEN_FILE;
+        var mode3 =Blockly.MIXLY_BELONG;
+        var TOOLTIPS = {
+        'r': Blockly.MIXLY_MICROBIT_PY_STORAGE_READ,
+        'w': Blockly.MIXLY_MICROBIT_PY_STORAGE_WRITE,
+        'rb':Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_READ,
+        'wb':Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_WRITE
+      };
+      return mode0 + TOOLTIPS[mode]+mode3+mode1+mode2;
+    });
+  },
+  getVars: function() {
+    return [this.getFieldValue('VAR')];
+  },
+  renameVar: function(oldName, newName) {
+    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
+      this.setTitleValue(newName, 'VAR');
+    }
+  }
+};
+
+
+Blockly.Blocks.storage_fileopen_new = {
+  init: function() {
+    this.setColour(Blockly.Blocks.storage.HUE);
+    this.appendValueInput("FILENAME")
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_OPEN_FILE);
+        //.appendField(new Blockly.FieldTextInput('filename.txt'), 'FILENAME');
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE)
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_READ, 'r'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_WRITE, 'w'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_READ, 'rb'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_WRITE, 'wb']]), 'MODE');
     this.setPreviousStatement(false);
     this.setNextStatement(false);
     this.setInputsInline(true);

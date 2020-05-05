@@ -10,7 +10,16 @@ Blockly.Python.storage_open_file_with_os = function () {
     return "os.startfile(" + fn + ")\n";
 }
 
-Blockly.Python['storage_fileopen'] = function(block) {  // For each loop.
+Blockly.Python['storage_fileopen'] = function(block) {
+  // For each loop.
+  var variable0 = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
+  var fn = Blockly.Python.valueToCode(this, 'FILENAME', Blockly.Python.ORDER_ATOMIC);
+  var mode = this.getFieldValue('MODE');
+  var code = variable0 + ' = open(' + fn + ', \'' + mode +'\')\n';
+  return code;
+};
+
+Blockly.Python['storage_fileopen_new'] = function(block) {  // For each loop.
   
   var fn = Blockly.Python.valueToCode(this, 'FILENAME', Blockly.Python.ORDER_ATOMIC);
   var mode = this.getFieldValue('MODE');
