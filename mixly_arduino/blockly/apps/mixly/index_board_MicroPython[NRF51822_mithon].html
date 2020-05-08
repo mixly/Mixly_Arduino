@@ -45,6 +45,7 @@
   <script src="../../blocks/microbit_python/factory.js"></script>
   <script src="../../blocks/python/tuple.js"></script>
   <script src="../../blocks/python/set.js"></script>
+  <script src="../../blocks/mithon/mithon.js"></script>
   <!-- generator file -->
   <script src="../../generators/microbit_python/pins.js"></script>
   <script src="../../generators/microbit_python/inout.js"></script>
@@ -65,6 +66,7 @@
   <script src="../../generators/microbit_python/factory.js"></script>
   <script src="../../generators/python/set.js"></script>
   <script src="../../generators/python/tuple.js"></script>
+  <script src="../../generators/mithon/mithon.js"></script>
   <!-- ace file -->
   <script src="python-main.js" type="application/javascript"></script>
   <script src="js/lib/ace/ace.js" type="application/javascript"></script>
@@ -432,12 +434,7 @@
   <textarea id="content_xml" class="content" wrap="off" readonly></textarea>
   <xml id="toolbox" style="display: none">
     <category id="catControl" colour="120">
-      <block type="controls_whileUntil">
-        <value name="BOOL">
-          <shadow type="logic_boolean">
-          </shadow>
-        </value>
-      </block>
+      <block type="base_loop"></block>
       <block type="base_delay">
         <value name="DELAY_TIME">
           <shadow type="math_number">
@@ -463,6 +460,19 @@
           </shadow>
         </value>
       </block>-->
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_whileUntil">
+        <value name="BOOL">
+          <shadow type="logic_boolean">
+          </shadow>
+        </value>
+      </block>
       <block type="controls_forEach">
         <value name="LIST">
           <shadow type="list_many_input">
@@ -492,12 +502,11 @@
           </shadow>
         </value>
       </block>
-      
-      <block type="controls_pass"></block>
+      <!--<block type="controls_pass"></block> -->
       <block type="controls_flow_statements"></block>
-      <block type="controls_try_finally"></block>
+      <!-- <block type="controls_try_finally"></block> -->
       <block type="controls_millis"></block>
-      <block type="Panic_with_status_code">
+      <!-- <block type="Panic_with_status_code">
         <value name="STATUS_CODE">
           <shadow type="math_number">
             <field name="NUM">233</field>
@@ -505,7 +514,7 @@
         </value>
       </block>
       <block type="reset"></block>
-      <block type="controls_uname"></block>
+      <block type="controls_uname"></block> -->
     </category>
     <category id="catMath" colour="230">
       <block type="math_number"></block>
@@ -1448,6 +1457,13 @@
       </block>
     </category>
     <category id="catSensor" colour="40">
+      <block type="sensor_while_btn_pressed">
+        <value name="btn">
+          <shadow type="pins_button">
+          </shadow>
+        </value>
+      </block>
+      <block type="sensor_while_is_gesture"></block>
       <block type="sensor_button_is_pressed">
         <value name="btn">
           <shadow type="pins_button">
@@ -1466,6 +1482,7 @@
           </shadow>
         </value>
       </block>
+      <block type="sensor_pin_near"></block>
       <block type="sensor_light"></block>
       <block type="sensor_current_gesture1"></block>
       <block type="sensor_current_gesture2"></block>
@@ -1479,119 +1496,12 @@
       <block type="sensor_temperature"></block>
     </category>
     <category id="catActuator" colour="100">
-      <block type="servo_move">
-        <value name="PIN">
-          <shadow type="pins_pwm"></shadow>
-        </value>
-        <value name="DEGREE">
-          <shadow type="math_number">
-            <field name="NUM">100</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="microbit_music_pitch">
-        <value name="PIN">
-          <shadow type="pins_pwm"></shadow>
-        </value>
-        <value name="pitch">
-          <shadow type="pins_tone_notes"></shadow>
-        </value>
-      </block>
-      <block type="microbit_music_pitch_delay">
-        <value name="PIN">
-          <shadow type="pins_pwm"></shadow>
-        </value>
-        <value name="pitch">
-          <shadow type="pins_tone_notes"></shadow>
-        </value>
-        <value name="duration">
-          <shadow type="math_number">
-            <field name="NUM">500</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="microbit_music_play_built_in">
-        <value name="PIN">
-          <shadow type="pins_pwm"></shadow>
-        </value>
-      </block>
-      <block type="microbit_music_play_list_of_notes">
-        <value name="notes">
-          <shadow type="variables_get">
-            <field name="VAR">mylist</field>
-          </shadow>
-        </value>
-        <value name="PIN">
-          <shadow type="pins_pwm"></shadow>
-        </value>
-      </block>
-      <block type="microbit_music_stop">
-        <value name="PIN">
-          <shadow type="pins_pwm"></shadow>
-        </value>
-      </block>
-      <block type="microbit_music_reset"></block>
-      <block type="microbit_music_get_tempo"></block>
-      <block type="tone_set_tempo">
-        <value name="TICKS">
-          <shadow type="math_number">
-            <field name="NUM">4</field>
-          </shadow>
-        </value>
-        <value name="BPM">
-          <shadow type="math_number">
-            <field name="NUM">120</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="speech_translate">
-        <value name="VAR">
-          <shadow type="text">
-            <field name="TEXT">Mixly</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="speech_say">
-        <value name="VAR">
-          <shadow type="text">
-            <field name="TEXT">Mixly 0.999 is great!</field>
-          </shadow>
-        </value>
-        <value name="pitch">
-          <shadow type="math_number">
-            <field name="NUM">64</field>
-          </shadow>
-        </value>
-        <value name="speed">
-          <shadow type="math_number">
-            <field name="NUM">72</field>
-          </shadow>
-        </value>
-        <value name="mouth">
-          <shadow type="math_number">
-            <field name="NUM">128</field>
-          </shadow>
-        </value>
-        <value name="throat">
-          <shadow type="math_number">
-            <field name="NUM">128</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="display_rgb_init">
-        <value name="PIN">
-          <shadow type="pins_digital" />
-        </value>
-        <value name="LEDCOUNT">
-          <shadow type="math_number">
-            <field name="NUM">4</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="display_rgb">
+      <block type="actuator_rgb_color"></block>
+      <block type="actuator_rgb_off"></block>
+      <block type="actuator_rgb">
         <value name="_LED_">
           <shadow type="math_number">
-            <field name="NUM">0</field>
+            <field name="NUM">1</field>
           </shadow>
         </value>
         <value name="RVALUE">
@@ -1610,6 +1520,14 @@
           </shadow>
         </value>
       </block>
+      <block type="actuator_motor_on">
+        <value name="SPEED">
+          <shadow type="math_number">
+            <field name="NUM">12</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="actuator_motor_off"></block>
     </category>
     <category id="catMonitor" colour="180">
       <block type="monitor_show_image_or_string">

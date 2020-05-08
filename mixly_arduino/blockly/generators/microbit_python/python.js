@@ -503,3 +503,40 @@ Blockly.Python.CLASS_DS1307_INIT =  'DS1307_I2C_ADDRESS  = (104)\n'+
 Blockly.Python.FUNCTION_MIXLY_RGB_SHOW = 'def mixly_rgb_show(led, r, g, b):\n' +
                                          '    np[led] = (r, g, b)\n' +
                                          '    np.show()\n';
+Blockly.Python.FUNCTION_MIXLY_RGB_SHOW_ALL = 'def mixly_rgb_show_all(r, g, b):\n' +
+                                             '    for led in range(4):\n' +
+                                             '        np[led] = (r, g, b)\n' +
+                                             '    np.show()\n';
+Blockly.Python.FUNCTION_MIXLY_MOTOR1 =  'def motor1(v,d):\n' +
+                                        '    v = min(12,max(0,v))\n' +
+                                        '    if v==0:\n' +
+                                        '        pin14.write_analog(0)\n' +
+                                        '        pin13.write_analog(0)\n' +
+                                        '    elif d==1:\n' +
+                                        '        pin14.write_analog(int(v/12*1023))\n' +
+                                        '        pin13.write_analog(0)\n' +
+                                        '    elif d==0:\n' +
+                                        '        pin14.write_analog(int(v/12*1023))\n' +
+                                        '        pin13.write_analog(0)\n'
+Blockly.Python.FUNCTION_MIXLY_MOTOR2 =  'def motor2(v,d):\n' +
+                                        '    v = min(12,max(0,v))\n' +
+                                        '    if v==0:\n' +
+                                        '        pin15.write_analog(0)\n' +
+                                        '        pin0.write_analog(0)\n' +
+                                        '    elif d==1:\n' +
+                                        '        pin15.write_analog(int(v/12*1023))\n' +
+                                        '        pin0.write_analog(0)\n' +
+                                        '    elif d==0:\n' +
+                                        '        pin15.write_analog(int(v/12*1023))\n' +
+                                        '        pin0.write_analog(0)\n'
+Blockly.Python.FUNCTION_MIXLY_MOTOR3 =  'def motor3(v,d):\n' +
+                                        '    v = min(12,max(0,v))\n' +
+                                        '    if v==0:\n' +
+                                        '        pin8.write_analog(0)\n' +
+                                        '        pin16.write_analog(0)\n' +
+                                        '    elif d==1:\n' +
+                                        '        pin8.write_analog(int(v/12*1023))\n' +
+                                        '        pin16.write_analog(0)\n' +
+                                        '    elif d==0:\n' +
+                                        '        pin8.write_analog(int(v/12*1023))\n' +
+                                        '        pin16.write_analog(0)\n'

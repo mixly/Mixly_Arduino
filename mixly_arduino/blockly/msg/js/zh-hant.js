@@ -2772,3 +2772,11 @@ Blockly.SKLEARN_LOAD_MODEL = "加載模型";
 Blockly.MATH_ROUND = '四捨五入';
 Blockly.MATH_ROUND_NEW_TOOLTIP = '將數值四捨五入保留小數點後指定的位數';
 Blockly.PY_STORAGE_FILE_OBJECT = ",並返回文件對象";
+//红绿蓝都有了
+Blockly.Msg.COLOUR_RGB_ORANGE ="橙色";
+Blockly.Msg.COLOUR_RGB_YELLOW ="黃色";
+Blockly.Msg.COLOUR_RGB_CYAN ="青色";
+Blockly.Msg.COLOUR_RGB_PURPLE ="紫色";
+Blockly.Msg.COLOUR_RGB_WHITE ="白色";
+Blockly.Msg.CLOCKWISE ="順時針";
+Blockly.Msg.ANTI_CLOCKWISE ="逆時針";
