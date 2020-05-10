@@ -9,8 +9,8 @@ Blockly.Python.base_loop = function (a) {
     //var c = Blockly.Python.valueToCode(a, "BOOL", b ? Blockly.Python.ORDER_LOGICAL_NOT : Blockly.Python.ORDER_NONE) || "False",
     var d = Blockly.Python.statementToCode(a, "DO"),
     d = Blockly.Python.addLoopTrap(d, a.id) || Blockly.Python.PASS;
-    //b && (c = "not " + c);
-    return "while True:\n" + d
+    Blockly.Python.loops_['base_loop'] = d;
+    return "";
 };
 
 Blockly.Python.actuator_rgb_color=function(){
@@ -100,17 +100,35 @@ Blockly.Python.sensor_pin_near = function(){
 Blockly.Python.sensor_while_btn_pressed = function (a) {
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var btn = Blockly.Python.valueToCode(this, 'btn', Blockly.Python.ORDER_ATOMIC);
+    Blockly.Python.setups_['on_'+btn] = 'def on_'+btn+'():\n' +
+                                        '    while True:\n' +
+                                        '        if '+btn+'.is_pressed():\n' +
+                                        '            yield callback_'+btn+'()\n' +
+                                        '        else:\n' +
+                                        '            yield\n' +
+                                        '\n' +
+                                        'func_'+btn+' = on_'+btn+'()\n'
     var d = Blockly.Python.statementToCode(a, "DO"),
     d = Blockly.Python.addLoopTrap(d, a.id) || Blockly.Python.PASS;
-    return "while "+ btn +" is_pressed():\n" + d;
+    Blockly.Python.loops_[btn+'_loop'] = '    next(func_' + btn + ')\n';
+    return "def callback_"+ btn +"():\n" + d;
 };
 
 Blockly.Python.sensor_while_is_gesture = function(a){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var gesture = this.getFieldValue('gesture');
+    Blockly.Python.setups_['on_'+gesture] = 'def on_gesture_'+gesture+'():\n' +
+                                            '    while True:\n' +
+                                            '        if accelerometer.is_gesture("'+gesture+'"):\n' +
+                                            '            yield callback_gesture_'+gesture+'()\n' +
+                                            '        else:\n' +
+                                            '            yield\n' +
+                                            '\n' +
+                                            'func_gesture_'+gesture+' = on_gesture_'+gesture+'()\n'
     var d = Blockly.Python.statementToCode(a, "DO"),
     d = Blockly.Python.addLoopTrap(d, a.id) || Blockly.Python.PASS;
-    return 'while accelerometer.is_gesture("' + gesture + '"):\n' + d;
+    Blockly.Python.loops_[gesture+'_loop'] = '    next(func_gesture_' + gesture + ')\n';
+    return "def callback_"+ gesture + '():\n' + d;
 };
 
 Blockly.Python.controls_repeat_ext = function(a){
@@ -118,7 +136,7 @@ Blockly.Python.controls_repeat_ext = function(a){
     var times = Blockly.Python.valueToCode(this, 'TIMES', Blockly.Python.ORDER_ATOMIC);
     var d = Blockly.Python.statementToCode(a, "DO"),
     d = Blockly.Python.addLoopTrap(d, a.id) || Blockly.Python.PASS;
-    return 'for i in range(' + times + '):\n' + d;
+    return 'for _my_variable in range(' + times + '):\n' + d;
 };
 
 

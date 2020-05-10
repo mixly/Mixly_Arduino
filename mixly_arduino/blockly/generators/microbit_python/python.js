@@ -12,7 +12,7 @@ Blockly.Python = new Blockly.Generator('Python');
 Blockly.Python.ORDER_ATOMIC = 0; // 0 "" ...
 Blockly.Python.ORDER_UNARY_POSTFIX = 1; // expr++ expr-- () [] .
 Blockly.Python.ORDER_UNARY_PREFIX = 2; // -expr !expr ~expr ++expr --expr
-Blockly.Python.ORDER_EXPONENTIATION = 2.5;    // **
+Blockly.Python.ORDER_EXPONENTIATION = 2.5;// **
 Blockly.Python.ORDER_MULTIPLICATIVE = 3; // * / % ~/
 Blockly.Python.ORDER_ADDITIVE = 4; // + -
 Blockly.Python.ORDER_SHIFT = 5; // << >>
@@ -38,6 +38,7 @@ Blockly.Python.init = function(workspace) {
   // to actual function names (to avoid collisions with user functions).
   Blockly.Python.functionNames_ = Object.create(null);
   Blockly.Python.setups_ = Object.create(null);
+  Blockly.Python.loops_ = Object.create(null);
 
   if (!Blockly.Python.variableDB_) {
     Blockly.Python.variableDB_ =
@@ -64,15 +65,19 @@ Blockly.Python.finish = function(code) {
     }
     if(setups.length !== 0)
       setups.push('\n');
+    var loops = [];
+      for (var name in Blockly.Python.loops_) {
+        loops.push(Blockly.Python.loops_[name]);
+      }
     // Clean up temporary data.
     //delete Blockly.Python.definitions_;
     //delete Blockly.Python.functionNames_;
     //Blockly.Python.variableDB_.reset();
-    if(code !== "") 
-      return definitions.join('\n') + '\n\n' + setups.join('') + '\n' + code;
+    var a = code + '\n\nwhile True:\n'
+    if(loops.length > 0) 
+      return definitions.join('\n') + '\n\n' + setups.join('') + '\n' + code + 'while True:\n' + loops.join('');
     else
       return definitions.join('\n') + '\n\n' + setups.join('') + '\n' + code;
-
 };
 
 
@@ -540,3 +545,48 @@ Blockly.Python.FUNCTION_MIXLY_MOTOR3 =  'def motor3(v,d):\n' +
                                         '    elif d==0:\n' +
                                         '        pin8.write_analog(int(v/12*1023))\n' +
                                         '        pin16.write_analog(0)\n'
+ 
+Blockly.Python.FUNCTION_MIXLY_ON_BUTTON_A = 'def on_button_a():\n' +
+                                            '    while True:\n' +
+                                            '        if button_a.is_pressed() and not button_b.is_pressed():\n' +
+                                            '            yield callback_button_a()\n' +
+                                            '        else:\n' +
+                                            '            yield\n' +
+                                            '\n' +
+                                            'func_button_a = on_button_a()\n'
+
+Blockly.Python.FUNCTION_MIXLY_ON_BUTTON_B = 'def on_button_b():\n' +
+                                            '    while True:\n' +
+                                            '        if button_b.is_pressed() and not button_a.is_pressed():\n' +
+                                            '            yield callback_button_b()\n' +
+                                            '        else:\n' +
+                                            '            yield\n' +
+                                            '\n' +
+                                            'func_button_b = on_button_b()\n'
+
+Blockly.Python.FUNCTION_MIXLY_ON_BUTTON_AB = 'def on_button_ab():\n' +
+                                            '    while True:\n' +
+                                            '        if button_a.is_pressed() and button_b.is_pressed():\n' +
+                                            '            yield callback_button_ab()\n' +
+                                            '        else:\n' +
+                                            '            yield\n' +
+                                            '\n' +
+                                            'func_button_ab = on_button_ab()\n'
+
+Blockly.Python.FUNCTION_MIXLY_ON_NEAR_1 = 'def on_near_1():\n' +
+                                            '    while True:\n' +
+                                            '        if not pin1.read_digital() and pin2.read_digital():\n' +
+                                            '            yield callback_near_1()\n' +
+                                            '        else:\n' +
+                                            '            yield\n' +
+                                            '\n' +
+                                            'func_near_1 = on_near_1()\n'
+
+Blockly.Python.FUNCTION_MIXLY_ON_NEAR_2 = 'def on_near_2():\n' +
+                                            '    while True:\n' +
+                                            '        if not pin2.read_digital() and pin1.read_digital():\n' +
+                                            '            yield callback_near_2()\n' +
+                                            '        else:\n' +
+                                            '            yield\n' +
+                                            '\n' +
+                                            'func_near_2 = on_near_2()\n'

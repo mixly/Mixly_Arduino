@@ -22,12 +22,11 @@ Blockly.Blocks.base_loop = {
               "name": "DO"
             }
           ],
-        "style":{"hat": "cap"}, 
+        //"style":{"hat": "not"}, 
         "tooltip": "",
         "helpUrl": ""
       });
       this.setPreviousStatement(true, null);
-      this.setNextStatement(true, null);
     }
   };
 
