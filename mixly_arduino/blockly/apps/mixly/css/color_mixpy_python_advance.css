@@ -367,6 +367,46 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
   background:url('../../../media/mark/machine_learning2.png') no-repeat;
   background-size: 100% auto; 
 }
+/*子模块的第一个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(18) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+  background:url('../../../media/mark/class.png') no-repeat;
+  background-size: 100% auto; 
+}
+/*子模块的第一个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(18) > div:nth-child(2) > div:nth-child(1) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+  background:url('../../../media/mark/class2.png') no-repeat;
+  background-size: 100% auto; 
+}
+/*子模块的第二个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(18) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+  background:url('../../../media/mark/property.png') no-repeat;
+  background-size: 100% auto; 
+}
+/*子模块的第二个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(18) > div:nth-child(2) > div:nth-child(2) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+  background:url('../../../media/mark/property2.png') no-repeat;
+  background-size: 100% auto; 
+}
+/*子模块的第三个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(18) > div:nth-child(2) > div:nth-child(3) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+  background:url('../../../media/mark/method.png') no-repeat;
+  background-size: 100% auto; 
+}
+/*子模块的第三个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(18) > div:nth-child(2) > div:nth-child(3) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+  background:url('../../../media/mark/method2.png') no-repeat;
+  background-size: 100% auto; 
+}
+/*子模块的第四个图标（未选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(18) > div:nth-child(2) > div:nth-child(4) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone{
+  background:url('../../../media/mark/object.png') no-repeat;
+  background-size: 100% auto; 
+}
+/*子模块的第四个图标（选中时）*/
+#\:0 > div:nth-child(2) > div:nth-child(18) > div:nth-child(2) > div:nth-child(4) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon{
+  background:url('../../../media/mark/object2.png') no-repeat;
+  background-size: 100% auto; 
+}
 /*
 #\:0 > div:nth-child(2) > div:nth-child(17) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
   background:url('../../../media/mark/ds.png') no-repeat;

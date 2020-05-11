@@ -61,7 +61,12 @@ var MSG = {
 	catTools:'工具',
 	catWIFI:'Wi-Fi',
 	catMQTT:'MQTT',
-	catsklearn:'机器学习'
+	catsklearn:'机器学习',
+	catclass_make: "类与对象",
+	catclass: "类",
+	catproperty: "属性",
+	catmethod: "方法",
+	catobject: "对象"
 };
 Blockly.Msg.ADD_COMMENT = "添加注释";
 Blockly.Msg.AUTH = "请授权这个应用程序以保存您的作品并共享。";
@@ -2789,3 +2794,11 @@ Blockly.Msg.COLOUR_RGB_PURPLE = "紫色";
 Blockly.Msg.COLOUR_RGB_WHITE = "白色";
 Blockly.Msg.CLOCKWISE = "顺时针";
 Blockly.Msg.ANTI_CLOCKWISE = "逆时针";
+Blockly.CREATE_CLASS = "创建类";
+Blockly.FATHER_CLASS = "父类";
+Blockly.MIXPY_CLASS = "类";
+Blockly.MIXPY_ATTRIBUTE_OF = "的属性";
+Blockly.MIXPY_CREATE_METHOD = "创建方法";
+Blockly.MIXPY_EXECUTION_METHOD = "执行方法";
+Blockly.MIXPY_OBJECT = "对象";
+Blockly.MIXPY_ADD_PARAMETERS = "添加参数";

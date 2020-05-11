@@ -61,7 +61,12 @@ var MSG = {
 	catTools:'Tools',
 	catWIFI:'Wi-Fi',
 	catMQTT:'MQTT',
-	catsklearn:'Machine learning'
+	catsklearn:'Machine learning',
+	catclass_make: "Classes and objects",
+	catclass: "Class",
+	catproperty: "Attributes",
+	catmethod: "Method",
+	catobject: "Object"
 };
 Blockly.Msg.ADD_COMMENT= "Add Comment";
 Blockly.Msg.AUTH= "Please authorize this app to enable your work to be saved and to allow it to be shared by you.";
@@ -2781,3 +2786,11 @@ Blockly.Msg.COLOUR_RGB_PURPLE ="purple";
 Blockly.Msg.COLOUR_RGB_WHITE ="white";
 Blockly.Msg.CLOCKWISE ="clockwise";
 Blockly.Msg.ANTI_CLOCKWISE ="anti_clockwise";
+Blockly.CREATE_CLASS = "Create Class";
+Blockly.FATHER_CLASS = "Father";
+Blockly.MIXPY_CLASS = "Class";
+Blockly.MIXPY_ATTRIBUTE_OF = "Attribute of";
+Blockly.MIXPY_CREATE_METHOD = "Create method";
+Blockly.MIXPY_EXECUTION_METHOD = "Execution method";
+Blockly.MIXPY_OBJECT = "Object";
+Blockly.MIXPY_ADD_PARAMETERS = "Add parameters";

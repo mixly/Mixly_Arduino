@@ -35,6 +35,7 @@ function hasReturn(block){
 }
 
 PythonToBlocks.prototype.funcname_to_type = {};
+PythonToBlocks.prototype.funcname_to_type_class = {};
 PythonToBlocks.prototype.convertSourceToCodeBlock = function(python_source) {
     var xml = document.createElement("xml");
     xml.appendChild(raw_block(python_source));
@@ -512,25 +513,48 @@ PythonToBlocks.prototype.FunctionDef = function(node)
     }
     var body_length = body.length;
     var return_block = {};
-
-    var blockid = hasReturn(body) ? "procedures_defreturn" : "procedures_defnoreturn";
-    if(body_length > 0){
-        var last = body_length - 1;
-        if(body[last]._astname == "Return") {
-            return_block = {"RETURN": this.convert(body[last].value)};
-            body = body.slice(0, last);
+    if (node.col_offset == 0)
+    {
+        var blockid = hasReturn(body) ? "procedures_defreturn" : "procedures_defnoreturn";
+        if(body_length > 0){
+            var last = body_length - 1;
+            if(body[last]._astname == "Return") {
+                return_block = {"RETURN": this.convert(body[last].value)};
+                body = body.slice(0, last);
+            }
         }
+        this.funcname_to_type[this.identifier(name)] = blockid;
+        return block(blockid, node.lineno, {
+            "NAME": this.identifier(name)
+        }, return_block, {
+            "inline": "false"
+        }, {
+            "arg": this.arguments_(args)
+        }, {
+            "STACK": this.convertBody(body)
+        });
     }
-    this.funcname_to_type[this.identifier(name)] = blockid;
-    return block(blockid, node.lineno, {
-        "NAME": this.identifier(name)
-    }, return_block, {
-        "inline": "false"
-    }, {
-        "arg": this.arguments_(args)
-    }, {
-        "STACK": this.convertBody(body)
-    });
+    else
+    {
+        var blockid = hasReturn(body) ? "method_procedures_defreturn" : "method_procedures_defnoreturn";
+        if(body_length > 0){
+            var last = body_length - 1;
+            if(body[last]._astname == "Return") {
+                return_block = {"RETURN": this.convert(body[last].value)};
+                body = body.slice(0, last);
+            }
+        }
+        this.funcname_to_type_class[this.identifier(name)] = blockid;
+        return block(blockid, node.lineno, {
+            "NAME": this.identifier(name)
+        }, return_block, {
+            "inline": "false"
+        }, {
+            "arg": this.arguments_(args)
+        }, {
+            "STACK": this.convertBody(body)
+        });
+    }
 }
 
 /*
@@ -551,16 +575,35 @@ PythonToBlocks.prototype.ClassDef = function(node)
     }
     if(py2block_config.ignoreS.has(name.v))
         return null;
-    return block("class_creation", node.lineno, {
-        "CLASS": this.identifier(name)
-    }, {
-    }, {
-        "inline": "false"
-    }, {
-        //"arg": this.arguments_(args)
-    }, {
-        "BODY": this.convertBody(body)
-    });
+    if(bases.length)
+    {
+        if(bases.length == 1)
+        {
+            py2block_config.pinType = "class_get";
+            var mode = this.convert(node.bases["0"]);   
+            py2block_config.pinType=null;
+            return block("class_make_with_base", node.lineno, {
+                "VAR": this.identifier(name)
+            }, {
+                "NAME": mode
+            }, {
+                "inline": "false"
+            }, {}, {
+                "data": this.convertBody(body)
+            });
+        }
+    }
+    else
+    {
+        return block("class_make", node.lineno, {
+            "VAR": this.identifier(name)
+        }, {
+        }, {
+            "inline": "false"
+        }, {}, {
+            "data": this.convertBody(body)
+        });
+    }
 }
 
 /*
@@ -687,6 +730,17 @@ PythonToBlocks.prototype.Assign = function(node)
                 "VAR":varNameStr
             },{
                 "VALUE":this.convert(value)
+            });
+        }
+        else if(targets[0]._astname == "Attribute"){
+            py2block_config.pinType = "object_get";
+            var mode = this.convert(node.targets["0"].value);   
+            py2block_config.pinType=null;
+            return block("property_set", targets.lineno, {
+                "VAR":node.targets["0"].attr.v
+            },{
+                "VALUE":mode,
+                "DATA":this.convert(node.value),
             });
         }
         return block("variables_set", node.lineno, {
@@ -1812,7 +1866,7 @@ PythonToBlocks.prototype.Call = function(node) {
                         argumentsNormal["ARG"+i] = this.convert(args[i]);
                         argumentsMutation[i] = this.convert(args[i]);
                     }
-                    var functype = this.funcname_to_type[this.identifier(func.id)]
+                    var functype = this.funcname_to_type[this.identifier(func.id)];
                     var blockid = "procedures_callreturn";
                     if(functype == "procedures_defnoreturn"){
                         blockid = "procedures_callnoreturn";
@@ -1828,8 +1882,51 @@ PythonToBlocks.prototype.Call = function(node) {
             }
         // Direct function call
         case "Attribute":
-            // Module function call
-            return this.CallAttribute(func, args, keywords, starargs, kwargs, node);
+        {
+            var functype = this.funcname_to_type_class[func.attr.v];
+            if(functype == "method_procedures_defnoreturn" || functype == "method_procedures_defreturn")
+            {
+                if (starargs !== null && starargs.length > 0) {
+                    throw new Error("*args (variable arguments) are not implemented yet.");
+                } else if (kwargs !== null && kwargs.length > 0) {
+                    throw new Error("**args (keyword arguments) are not implemented yet.");
+                } else if (keywords !== null && keywords.length > 0) {
+                    throw new Error("**args (keyword arguments) are not implemented yet.");
+                }
+                var funcname = func.attr.v;
+                var argumentsNormal = {};
+                var argumentsMutation = {"@name": funcname};
+                if(args.length)
+                {
+                    argumentsNormal["ARG0"] = this.convert(args[0]);
+                    argumentsMutation[0] = this.convert(args[0]);
+                }
+                for (var i = 1; i <= args.length; i+= 1) {
+                    argumentsNormal["ARG"+i] = this.convert(args[i-1]);
+                    argumentsMutation[i] = this.convert(args[i-1]);
+                }
+                py2block_config.pinType = "object_get";
+                argumentsNormal["DATA"] = this.convert(node.func.value);   
+                py2block_config.pinType=null;
+                var blockid = "method_procedures_callreturn";
+                if(functype.indexOf("method_procedures_defnoreturn") != -1){
+                    blockid = "method_procedures_callnoreturn";
+                }
+                var b = block(blockid, node.lineno, {},argumentsNormal, {
+                            "inline": "true"
+                        }, argumentsMutation);
+                if(blockid.indexOf("method_procedures_callnoreturn") != -1){
+                    return [b];
+                }else{
+                    return b;
+                }
+            }
+            else
+            {
+                // Module function call
+                return this.CallAttribute(func, args, keywords, starargs, kwargs, node);
+            }
+        }
     }
 }
 
@@ -1970,10 +2067,14 @@ PythonToBlocks.prototype.Attribute = function(node)
             }
         }
     }
-    return block("attribute_access", node.lineno, {
-        "MODULE": this.convert(value),
-        "NAME": this.convert(attr)
-    });
+    py2block_config.pinType = "object_get";
+    var mode = this.convert(value);   
+    py2block_config.pinType=null;
+    return block("property_get", node.lineno, {
+        "VAR": node.attr.v
+    }, {
+        "VALUE": mode
+    }, { "inline": "true"}, {});
 
     //throw new Error("Attribute access not implemented");
 }
@@ -2105,7 +2206,7 @@ PythonToBlocks.prototype.Subscript = function(node) {
             "LIST": this.convert(value),
         });
     }
-    
+
     throw new Error("This kind of subscript is not supported.");
 }
 
@@ -2207,9 +2308,24 @@ PythonToBlocks.prototype.Name = function(node)
         case "___":
             return null;
         default:
-            return block('variables_get', node.lineno, {
-                "VAR": this.identifier(id)
-            });
+            if(py2block_config.pinType == "object_get")
+            {
+                return block('object_get', node.lineno, {
+                    "VAR": this.identifier(id)
+                });
+            }
+            else if(py2block_config.pinType == "class_get")
+            {
+                return block('class_get', node.lineno, {
+                    "VAR": this.identifier(id)
+                });
+            }
+            else
+            {
+                return block('variables_get', node.lineno, {
+                    "VAR": this.identifier(id)
+                });
+            }
     }
 
 }

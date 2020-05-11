@@ -58,7 +58,12 @@ var MSG = {
   catTools: 'Herramientas',
   catWIFI: 'Wi-Fi',
   catMQTT: 'MQTT',
-  catsklearn:'Aprendizaje automático'
+  catsklearn:'Aprendizaje automático',
+  catclass_make: "Clases y objetos",
+  catclass: "Clase",
+  catproperty: "Atributos",
+  catmethod: "Método",
+  catobject: "Objeto"
 };
 Blockly.Msg.ADD_COMMENT = "Añadir comentario";
 Blockly.Msg.AUTH = "Por favor, autorice esta aplicación para guardar su trabajo y compartirlo";
@@ -2779,3 +2784,11 @@ Blockly.Msg.COLOUR_RGB_PURPLE ="Púrpura";
 Blockly.Msg.COLOUR_RGB_WHITE ="Blanco";
 Blockly.Msg.CLOCKWISE ="En sentido horario.";
 Blockly.Msg.ANTI_CLOCKWISE ="Reloj reversible";
+Blockly.CREATE_CLASS = "Crear clase";
+Blockly.FATHER_CLASS = "Clase de padres";
+Blockly.MIXPY_CLASS = "Clase";
+Blockly.MIXPY_ATTRIBUTE_OF = "Atributo de";
+Blockly.MIXPY_CREATE_METHOD = "Crear método";
+Blockly.MIXPY_EXECUTION_METHOD = "Método de ejecución";
+Blockly.MIXPY_OBJECT = "Objeto";
+Blockly.MIXPY_ADD_PARAMETERS = "Agregar parámetros";

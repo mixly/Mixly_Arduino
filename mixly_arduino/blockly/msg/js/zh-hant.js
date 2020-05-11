@@ -58,7 +58,12 @@ var MSG = {
 	catTools:'工具',
 	catWIFI:'Wi-Fi',
 	catMQTT:'MQTT',
-	catsklearn:'機器學習'
+	catsklearn:'機器學習',
+	catclass_make: "類與對象",
+	catclass: "類",
+	catproperty: "屬性",
+	catmethod: "方法",
+	catobject: "對象"
 };
 Blockly.Msg.ADD_COMMENT = "添加注釋";
 Blockly.Msg.AUTH = "請授權這個應用程式以保存您的作品並共用。";
@@ -2780,3 +2785,11 @@ Blockly.Msg.COLOUR_RGB_PURPLE ="紫色";
 Blockly.Msg.COLOUR_RGB_WHITE ="白色";
 Blockly.Msg.CLOCKWISE ="順時針";
 Blockly.Msg.ANTI_CLOCKWISE ="逆時針";
+Blockly.CREATE_CLASS = "創建類";
+Blockly.FATHER_CLASS = "父類";
+Blockly.MIXPY_CLASS = "類";
+Blockly.MIXPY_ATTRIBUTE_OF = "的屬性";
+Blockly.MIXPY_CREATE_METHOD = "創建方法";
+Blockly.MIXPY_EXECUTION_METHOD = "執行方法";
+Blockly.MIXPY_OBJECT = "對象";
+Blockly.MIXPY_ADD_PARAMETERS = "添加參數";
