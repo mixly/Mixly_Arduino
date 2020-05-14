@@ -28,7 +28,7 @@ Blockly.Python.text_join = function() {
   // Text value.
     var a = Blockly.Python.valueToCode(this, 'A', Blockly.Python.ORDER_ATOMIC);
     var b = Blockly.Python.valueToCode(this, 'B', Blockly.Python.ORDER_ATOMIC);
-    return [a  + ' + ' + b , Blockly.Python.ORDER_ATOMIC];
+    return [a  + ' + ' + b , Blockly.Python.ORDER_ADDITIVE];
 };
 
 Blockly.Python.text_to_number = function() {
