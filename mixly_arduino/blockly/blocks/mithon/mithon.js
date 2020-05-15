@@ -26,7 +26,7 @@ Blockly.Blocks.base_loop = {
         "tooltip": "",
         "helpUrl": ""
       });
-      this.setPreviousStatement(true, null);
+      //this.setPreviousStatement(true, null);
     }
   };
 

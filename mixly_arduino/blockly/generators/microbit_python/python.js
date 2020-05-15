@@ -548,7 +548,7 @@ Blockly.Python.FUNCTION_MIXLY_MOTOR3 =  'def motor3(v,d=1):\n' +
  
 Blockly.Python.FUNCTION_MIXLY_ON_BUTTON_A = 'def on_button_a():\n' +
                                             '    while True:\n' +
-                                            '        if button_a.is_pressed() and not button_b.is_pressed():\n' +
+                                            '        if button_a.was_pressed() and not button_b.was_pressed():\n' +
                                             '            yield callback_button_a()\n' +
                                             '        else:\n' +
                                             '            yield\n' +
@@ -557,7 +557,7 @@ Blockly.Python.FUNCTION_MIXLY_ON_BUTTON_A = 'def on_button_a():\n' +
 
 Blockly.Python.FUNCTION_MIXLY_ON_BUTTON_B = 'def on_button_b():\n' +
                                             '    while True:\n' +
-                                            '        if button_b.is_pressed() and not button_a.is_pressed():\n' +
+                                            '        if button_b.was_pressed() and not button_a.was_pressed():\n' +
                                             '            yield callback_button_b()\n' +
                                             '        else:\n' +
                                             '            yield\n' +
@@ -566,7 +566,7 @@ Blockly.Python.FUNCTION_MIXLY_ON_BUTTON_B = 'def on_button_b():\n' +
 
 Blockly.Python.FUNCTION_MIXLY_ON_BUTTON_AB = 'def on_button_ab():\n' +
                                             '    while True:\n' +
-                                            '        if button_a.is_pressed() and button_b.is_pressed():\n' +
+                                            '        if button_a.was_pressed() or button_b.was_pressed():\n' +
                                             '            yield callback_button_ab()\n' +
                                             '        else:\n' +
                                             '            yield\n' +
