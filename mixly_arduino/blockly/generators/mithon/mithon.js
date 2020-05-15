@@ -90,8 +90,31 @@ Blockly.Python.actuator_motor_on = function(){
     return code;
 };
 
+Blockly.Python.actuator_motor_off = function(){
+    var n = this.getFieldValue('NUMBER');
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    if(n==0){
+        Blockly.Python.setups_['mixly_motor1'] = Blockly.Python.FUNCTION_MIXLY_MOTOR1;
+        Blockly.Python.setups_['mixly_motor2'] = Blockly.Python.FUNCTION_MIXLY_MOTOR2; 
+        Blockly.Python.setups_['mixly_motor3'] = Blockly.Python.FUNCTION_MIXLY_MOTOR3;
+        var code = 'motor1(0)\nmotor2(0)\nmotor3(0)\n';
+    }
+    else if(n==1){
+        Blockly.Python.setups_['mixly_motor1'] = Blockly.Python.FUNCTION_MIXLY_MOTOR1;
+        var code = 'motor1(0)\n';
+    }
+    else if(n==2){
+        Blockly.Python.setups_['mixly_motor2'] = Blockly.Python.FUNCTION_MIXLY_MOTOR2;        
+        var code = 'motor2(0)\n';
+    }
+    else if(n==3){
+        Blockly.Python.setups_['mixly_motor3'] = Blockly.Python.FUNCTION_MIXLY_MOTOR3;
+        var code = 'motor3(0)\n';
+    }    
+    return code;
+};
+
 Blockly.Python.sensor_pin_near = function(){
-    Blockly.Python.definitions_['import_mixgo'] = 'import mixgo';
     var number = this.getFieldValue('NUMBER');
     var code = 'pin'+number+'.read_analog()';
     return [code, Blockly.Python.ORDER_ATOMIC];
