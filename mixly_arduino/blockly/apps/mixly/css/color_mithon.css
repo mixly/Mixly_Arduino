@@ -80,10 +80,7 @@ td.taboff:hover {
 	resize:none;
 }
 
-@font-face { 
-	font-family: myfont; 
-	src: url('../font/xiongtuti.ttf'); 
-} 
+
 html, body {
   height: 100%;
 }
