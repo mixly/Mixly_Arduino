@@ -230,4 +230,18 @@ pbc.moduleFunctionD.get('random')['sample'] = function (py2block, func, args, ke
     }, {
         "inline": "true"
     });
+}
+
+pbc.moduleFunctionD.get('numpy')['array'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var varblock = py2block.convert(args[0]);
+    return block("lists_change_to", func.lineno, {
+        "OP": "array"
+    }, {
+        'VAR': varblock
+    }, {
+        "inline": "true"
+    });
 }    

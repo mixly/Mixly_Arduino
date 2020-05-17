@@ -220,7 +220,16 @@ Blockly.Python['lists_sort'] = function(block) {
 Blockly.Python.lists_change_to = function(){
   var op = this.getFieldValue('OP');
   var varName = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ASSIGNMENT) || '0';
-  var code = op + '(' + varName + ')';
+  var code = '';
+  if(op == 'array')
+  {
+    Blockly.Python.definitions_['import_numpy'] = 'import numpy';
+    code = 'numpy.array('+varName+')';
+  }
+  else
+  {
+    code = op + '(' + varName + ')';
+  }
   return [code, Blockly.Python.ORDER_ATOMIC];
 }
 

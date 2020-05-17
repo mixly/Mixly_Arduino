@@ -570,12 +570,12 @@ Blockly.Blocks['lists_sort'] = {
   }
 };
 
-
 Blockly.Blocks['lists_change_to'] = {
   init: function() {
     var OPERATORS =
         [[Blockly.MIXLY_MICROBIT_TYPE_TUPLE, 'tuple'],
-         [Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TITLE_ADD, 'set']
+         [Blockly.Msg.blockpy_SET_CREATE_WITH_CONTAINER_TITLE_ADD, 'set'],
+         [Blockly.Msg.LISTS_CREATE_WITH_CONTAINER_TITLE_ADD, 'array']
         ];
     this.setColour(Blockly.Blocks.lists.HUE);
     this.appendValueInput('VAR')
@@ -589,8 +589,8 @@ Blockly.Blocks['lists_change_to'] = {
       var mode = thisBlock.getFieldValue('OP');
       var TOOLTIPS = {
         'tuple': Blockly.MIXLY_TOOLTIP_CONVERT_LIST_TO_TUPLE,
-        'set': Blockly.MIXLY_TOOLTIP_CONVERT_LIST_TO_SET
-        
+        'set': Blockly.MIXLY_TOOLTIP_CONVERT_LIST_TO_SET,
+        'array': Blockly.MIXLY_TOOLTIP_CONVERT_LIST_TO_ARRAY
       };
       return TOOLTIPS[mode];
     });    

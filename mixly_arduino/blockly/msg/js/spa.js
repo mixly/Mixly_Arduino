@@ -1616,6 +1616,7 @@ Blockly.Msg.LISTS_CREATE_PYTHON_EMPTY_TOOLTIP = "Devuelve una lista con una long
 Blockly.Msg.LISTS_CREATE_WITH_PYTHON_TOOLTIP = "Cree una lista con cualquier número de elementos";
 Blockly.MIXLY_TOOLTIP_CONVERT_LIST_TO_TUPLE = 'Convertir la lista en tuplas. ';
 Blockly.MIXLY_TOOLTIP_CONVERT_LIST_TO_SET = 'Convertir la lista en una colección. ';
+Blockly.MIXLY_TOOLTIP_CONVERT_LIST_TO_ARRAY = 'Convierta la lista en una matriz.';
 Blockly.LANG_LISTS_REVERSE_TOOLTIP = 'Invierte el orden de todos los elementos de la lista. ';
 Blockly.Msg.LISTS_SORT_TOOLTIP = 'Ordenar todos los elementos de la lista en el orden especificado. ';
 Blockly.MIXLY_TOOLTIP_LIST_FIND_INDEX = 'Devuelve la posición del valor especificado en la lista. Si hay varios valores, devuelve la posición del primer valor. ';

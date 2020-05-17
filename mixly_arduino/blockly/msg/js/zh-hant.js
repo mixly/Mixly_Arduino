@@ -1616,6 +1616,7 @@ Blockly.Msg.LISTS_CREATE_PYTHON_EMPTY_TOOLTIP = "返回一個列表，長度為 
 Blockly.Msg.LISTS_CREATE_WITH_PYTHON_TOOLTIP = "建立一個具有任意數量項目的列表。";
 Blockly.MIXLY_TOOLTIP_CONVERT_LIST_TO_TUPLE = '將列表轉化成元組。';
 Blockly.MIXLY_TOOLTIP_CONVERT_LIST_TO_SET = '將清單轉化成集合。';
+Blockly.MIXLY_TOOLTIP_CONVERT_LIST_TO_ARRAY = '將列表轉化成整數。';
 Blockly.LANG_LISTS_REVERSE_TOOLTIP = '逆轉清單中所有項的順序。';
 Blockly.Msg.LISTS_SORT_TOOLTIP = '將清單中的所有項按照指定順序指定方式進行排序。';
 Blockly.MIXLY_TOOLTIP_LIST_FIND_INDEX = '返回指定值在列表中的位置，如果值有多個則返回第一個值的位置。';
