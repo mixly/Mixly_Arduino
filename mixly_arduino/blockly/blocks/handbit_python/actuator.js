@@ -305,3 +305,21 @@ Blockly.Blocks.actuator_neopixel_write = {
 Blockly.Blocks.led_light=Blockly.Blocks.actuator_led_bright;
 Blockly.Blocks.get_led_bright=Blockly.Blocks.actuator_get_led_bright;
 Blockly.Blocks.led_brightness=Blockly.Blocks.actuator_led_brightness;
+
+Blockly.Blocks.handbit_motor_move= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField(Blockly.MIXLY_MOTOR)
+      .appendField(new Blockly.FieldDropdown([["M1","1"],["M2","2"]]), "type");
+  this.appendValueInput("speed")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.MIXLY_SPEED+"(-100~100)");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(100);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};

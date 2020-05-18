@@ -142,3 +142,12 @@ Blockly.Python.actuator_neopixel_rgb=function(){
 Blockly.Blocks.led_light=Blockly.Blocks.actuator_led_bright;
 Blockly.Blocks.get_led_bright=Blockly.Blocks.actuator_get_led_bright;
 Blockly.Blocks.led_brightness=Blockly.Blocks.actuator_led_brightness;
+
+Blockly.Python.handbit_motor_move = function() {
+  var dropdown_type = this.getFieldValue('type');
+  var value_speed = Blockly.Python.valueToCode(this, 'speed', Blockly.Python.ORDER_ATOMIC) || '0';
+  //Blockly.Python.definitions_['import_handbit'] = 'import handbit';
+  Blockly.Python.definitions_['import_handbit_Motor'] = 'from handbit import Motor';
+  var code = 'Motor.Set_Speed('+dropdown_type+', '+value_speed+')\n';
+  return code;
+};

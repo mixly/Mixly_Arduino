@@ -507,10 +507,21 @@ class OLED(SSD1106_I2C):
     def show_fill(self, flag): 
         self.fill(flag)
         self.show()
+
+class Motor():
+    def __init__(self):
+        self.addr = 16
+        self.i2c = i2c
+
+    def Set_Speed(self, pin, speed):
+        self.i2c.writeto(self.addr, bytearray([pin, speed]))
+
     
 i2c = I2C(scl=Pin(22), sda=Pin(23), freq=400000)
 
 accelerometer = Accelerometer()
+
+Motor = Motor()
 
 oled = OLED()
 

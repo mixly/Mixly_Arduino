@@ -256,4 +256,17 @@ pbc.moduleFunctionD.get('music')['reset'] = function(py2block, func, args, keywo
     })];
 }
 
-
+pbc.moduleFunctionD.get('Motor')['Set_Speed'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 2) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var varblock1 = args[0].n.v;
+    var varblock2 = py2block.convert(args[1]);
+    return [block("handbit_motor_move", func.lineno, {
+        "type": varblock1
+    }, {
+        'speed': varblock2
+    }, {
+        "inline": "true"
+    })];
+}
