@@ -91,3 +91,8 @@ Blockly.Python.logic_is = function() {
   var code=a+' '+bool+' '+b;
   return [code ,Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.logic_tobool = function() {  
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '0'
+  return ['bool('+str+')', Blockly.Python.ORDER_ATOMIC];
+};

@@ -901,6 +901,16 @@ Blockly.Blocks['lists_zip_item'] = {
   }
 };
 
+Blockly.Blocks['list_tolist'] = {
+  init: function () {
+    this.setColour(Blockly.Blocks.lists.HUE);
+    this.appendValueInput('VAR')
+    .appendField(Blockly.MIXLY_TOLIST);
+    this.setOutput(true, 'List');
+    this.setTooltip(Blockly.MIXLY_PYTHON_TOOLTIP_TOLIST);
+  }
+};
+
 Blockly.Blocks['lists_create_with2'] = Blockly.Blocks['lists_create_with']
 Blockly.Blocks['lists_create_with_text2'] = Blockly.Blocks['lists_create_with_text']
 Blockly.Blocks['lists_getIndex3'] = Blockly.Blocks['lists_get_index']

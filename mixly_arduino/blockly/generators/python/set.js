@@ -98,3 +98,8 @@ Blockly.Python.set_create_with_text_return = function() {
   var code = '{' + text + '}';
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.set_toset = function() {  
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '0'
+  return ['set('+str+')', Blockly.Python.ORDER_ATOMIC];
+};

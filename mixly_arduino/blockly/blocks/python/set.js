@@ -403,3 +403,13 @@ Blockly.Blocks['set_create_with_text_return'] = {
   this.setTooltip(Blockly.MIXPY_TOOLTIP_SET_CREATE_WITH_TEXT);  
   }
 }
+
+Blockly.Blocks['set_toset'] = {
+  init: function () {
+    this.setColour(Blockly.Blocks.set.HUE);
+    this.appendValueInput('VAR')
+    .appendField(Blockly.MIXLY_TOSET);
+    this.setOutput(true);
+    this.setTooltip(Blockly.MIXLY_PYTHON_TOOLTIP_TOSET);
+  }
+};    

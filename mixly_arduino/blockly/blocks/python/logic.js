@@ -250,3 +250,13 @@ Blockly.Blocks['logic_is'] = {
     this.setTooltip(Blockly.MIXLY_PYTHON_LOGIC_IS_TOOLTIP);
   }
 };
+
+Blockly.Blocks['logic_tobool'] = {
+  init: function () {
+    this.setColour(Blockly.Blocks.logic.HUE);
+    this.appendValueInput('VAR')
+    .appendField(Blockly.MIXLY_TOBOOL);
+    this.setOutput(true, Boolean);
+    this.setTooltip(Blockly.MIXLY_PYTHON_TOOLTIP_TOBOOL);
+  }
+};

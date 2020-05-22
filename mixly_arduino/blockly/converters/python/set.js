@@ -151,6 +151,29 @@ function setSub(mode){
     return converter;
 }
 
+pbc.globalFunctionD['set'] = function(py2block, func, args, keywords, starargs, kwargs, node){
+    if (args.length > 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    if (args.length ==0){
+        return block("set_create_with_noreturn", node.lineno, {},{}
+            , {
+                "inline": "true",
+            }, {
+                "@items": 0
+            });
+    }
+    if (args.length ==1){
+        var numblock = py2block.convert(args[0]);
+    return block("set_toset", func.lineno, {}, {
+            'VAR': numblock,
+        }, {
+            "inline": "false"
+        });
+    }
+}
+
+
 
 pbc.objectFunctionD.get('issubset')['Set'] = setSub('issubset');
 pbc.objectFunctionD.get('issuperset')['Set'] = setSub('issuperset');

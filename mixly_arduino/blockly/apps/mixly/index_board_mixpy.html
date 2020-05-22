@@ -397,6 +397,13 @@
           </shadow>
         </value>
       </block>
+      <block type="text_to_number">
+        <value name="VAR">
+          <shadow type="variables_get">
+            <field name="VAR">x</field>
+          </shadow>
+        </value>
+      </block>
       <block type="math_dec">
         <value name="NUM">
           <shadow type="math_number">
@@ -533,6 +540,7 @@
           </shadow>
         </value>
       </block>
+      
     </category>
     <category id="catLogic" colour="210">
       <block type="logic_compare"></block>
@@ -582,6 +590,13 @@
           </shadow>
         </value>
       </block>
+      <block type="logic_tobool">
+        <value name="VAR">
+          <shadow type="variables_get">
+            <field name="VAR">x</field>
+          </shadow>
+        </value>
+      </block>
     </category>
     <category id="catText" colour="160">
       <block type="text">
@@ -601,13 +616,7 @@
           </shadow>
         </value>
       </block>
-      <block type="text_to_number">
-        <value name="VAR">
-          <shadow type="text">
-            <field name="TEXT">123</field>
-          </shadow>
-        </value>
-      </block>
+      
       <block type="ascii_to_char">
         <value name="VAR">
           <shadow type="math_number">
@@ -624,8 +633,8 @@
       </block>
       <block type="number_to_text">
         <value name="VAR">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
+          <shadow type="variables_get">
+            <field name="VAR">x</field>
           </shadow>
         </value>
       </block>
@@ -1027,10 +1036,17 @@
           </shadow>
         </value>
       </block>
-      <block type="lists_change_to">
+      <!--<block type="lists_change_to">
         <value name="VAR">
           <shadow type="variables_get">
             <field name="VAR">mylist</field>
+          </shadow>
+        </value>
+      </block>-->
+      <block type="list_tolist">
+        <value name="VAR">
+          <shadow type="variables_get">
+            <field name="VAR">x</field>
           </shadow>
         </value>
       </block>
@@ -1128,10 +1144,17 @@
           </shadow>
         </value>
       </block>
-      <block type="tuple_change_to">
+      <!--<block type="tuple_change_to">
         <value name="VAR">
           <shadow type="variables_get">
             <field name="VAR">mytup</field>
+          </shadow>
+        </value>
+      </block>-->
+      <block type="tuple_totuple">
+        <value name="VAR">
+          <shadow type="variables_get">
+            <field name="VAR">x</field>
           </shadow>
         </value>
       </block>
@@ -1239,13 +1262,13 @@
           </shadow>
         </value>
       </block>
-      <block type="dicts_items">
+      <!--<block type="dicts_items">
         <value name="DICT">
           <shadow type="variables_get">
             <field name="VAR">mydict</field>
           </shadow>
         </value>
-      </block>
+      </block>-->
       <block type="dicts_values">
         <value name="DICT">
           <shadow type="variables_get">
@@ -1264,6 +1287,13 @@
         <value name="DICT">
           <shadow type="variables_get">
             <field name="VAR">mydict</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="dicts_todict">
+        <value name="VAR">
+          <shadow type="variables_get">
+            <field name="VAR">x</field>
           </shadow>
         </value>
       </block>
@@ -1349,6 +1379,13 @@
         <value name="SET2">
           <shadow type="variables_get">
             <field name="VAR">s2</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="set_toset">
+        <value name="VAR">
+          <shadow type="variables_get">
+            <field name="VAR">x</field>
           </shadow>
         </value>
       </block>

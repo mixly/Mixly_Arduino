@@ -281,3 +281,8 @@ Blockly.Python.lists_zip = function() {
   var code = 'zip(' + code.join(', ') + ')';
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.list_tolist = function() {  
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '0'
+  return ['list('+str+')', Blockly.Python.ORDER_ATOMIC];
+};

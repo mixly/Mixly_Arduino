@@ -216,7 +216,7 @@ Blockly.Blocks.controls_range = {
     this.appendValueInput('FROM')
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("range")
+        .appendField(Blockly.PYTHON_RANGE)
         .appendField(Blockly.LANG_CONTROLS_FOR_INPUT_FROM);
     this.appendValueInput('TO')
         .setCheck(Number)
@@ -225,7 +225,7 @@ Blockly.Blocks.controls_range = {
     this.appendValueInput('STEP')
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.MIXLY_STEP);
+        .appendField(Blockly.PYTHON_RANGE_STEP);
     this.setInputsInline(true);
     this.setOutput(true);
     this.setTooltip(Blockly.MIXLY_PYTHON_CONTROLS_RANGE_TOOLTIP);

@@ -201,3 +201,8 @@ Blockly.Python.dicts_create_with_noreturn = function() {
 
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.dicts_todict = function() {  
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '0'
+  return ['dict('+str+')', Blockly.Python.ORDER_ATOMIC];
+};

@@ -291,3 +291,8 @@ Blockly.Python.tuple_get_random_item = function() {
   var code='random.choice(' +varName + ')';
   return [code,Blockly.Python.ORDER_ATOMIC];
 };
+
+Blockly.Python.tuple_totuple = function() {  
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '0'
+  return ['tuple('+str+')', Blockly.Python.ORDER_ATOMIC];
+};

@@ -715,3 +715,14 @@ Blockly.Blocks['dicts_pop'] = {
         }
       }
     };
+
+
+Blockly.Blocks['dicts_todict'] = {
+  init: function () {
+    this.setColour(Blockly.Blocks.dicts.HUE);
+    this.appendValueInput('VAR')
+    .appendField(Blockly.MIXLY_TODICT);
+    this.setOutput(true);
+    this.setTooltip(Blockly.MIXLY_PYTHON_TOOLTIP_TODICT);
+  }
+};    

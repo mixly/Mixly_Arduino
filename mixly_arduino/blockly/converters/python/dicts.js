@@ -143,13 +143,11 @@ pbc.globalFunctionD['dict'] = function(py2block, func, args, keywords, starargs,
             });
     }
     if (args.length ==1){
-        var objblock = py2block.convert(args[0]);
-        return block("variables_change", func.lineno, {
-            'OP':"dict"
+        var numblock = py2block.convert(args[0]);
+    return block("dicts_todict", func.lineno, {}, {
+            'VAR': numblock,
         }, {
-        "MYVALUE": objblock,
-    }, {
-        "inline": "false"
-    });
+            "inline": "false"
+        });
     }
 }

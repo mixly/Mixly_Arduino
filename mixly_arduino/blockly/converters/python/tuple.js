@@ -37,13 +37,11 @@ pbc.globalFunctionD['tuple'] = function(py2block, func, args, keywords, starargs
             });
     }
     if (args.length ==1){
-        var objblock = py2block.convert(args[0]);
-        return block("variables_change", func.lineno, {
-            'OP':"tuple"
+        var numblock = py2block.convert(args[0]);
+    return block("tuple_totuple", func.lineno, {}, {
+            'VAR': numblock,
         }, {
-        "MYVALUE": objblock,
-    }, {
-        "inline": "false"
-    });
+            "inline": "false"
+        });
     }
 }

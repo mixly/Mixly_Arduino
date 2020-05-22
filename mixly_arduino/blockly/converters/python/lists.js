@@ -195,14 +195,12 @@ pbc.globalFunctionD['list'] = function(py2block, func, args, keywords, starargs,
             });
     }
     if (args.length ==1){
-        var objblock = py2block.convert(args[0]);
-        return block("variables_change", func.lineno, {
-            'OP':"list"
+        var numblock = py2block.convert(args[0]);
+    return block("list_tolist", func.lineno, {}, {
+            'VAR': numblock,
         }, {
-        "MYVALUE": objblock,
-    }, {
-        "inline": "false"
-    });
+            "inline": "false"
+        })
     }
 }
 

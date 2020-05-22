@@ -130,7 +130,7 @@ Blockly.Blocks['text_to_number'] = {
   init: function() {
    var TO_INT_FLOAT =
    [[Blockly.MIXLY_TO_INT, 'int'],[Blockly.MIXLY_TO_FLOAT, 'float'],[Blockly.MIXLY_TO_BITES, 'b']];
-   this.setColour(Blockly.Blocks.texts.HUE);
+   this.setColour(Blockly.Blocks.math.HUE);
    this.appendValueInput('VAR')
    .appendField(new Blockly.FieldDropdown(TO_INT_FLOAT), 'TOWHAT');
    this.setOutput(true, Number);
@@ -138,8 +138,8 @@ Blockly.Blocks['text_to_number'] = {
    this.setTooltip(function() {
     var mode = thisBlock.getFieldValue('TOWHAT');
     var TOOLTIPS = {
-      'int': Blockly.MIXLY_TOOLTIP_TEXT_TOINT,
-      'float': Blockly.MIXLY_TOOLTIP_TEXT_TOFLOAT,
+      'int': Blockly.MIXLY_PYTHON_TOOLTIP_TOINT,
+      'float': Blockly.MIXLY_PYTHON_TOOLTIP_TOFLOAT,
       'b': Blockly.MIXLY_TOOLTIP_TEXT_TOBYTE
     };
     return TOOLTIPS[mode];
@@ -193,9 +193,9 @@ Blockly.Blocks['number_to_text'] = {
   init: function () {
     this.setColour(Blockly.Blocks.texts.HUE);
     this.appendValueInput('VAR')
-    .appendField(Blockly.MIXLY_TOSTRING);;
+    .appendField(Blockly.MIXLY_TOSTRING);
     this.setOutput(true, String);
-    this.setTooltip(Blockly.MIXLY_TOOLTIP_TEXT_TOTEXT);
+    this.setTooltip(Blockly.MIXLY_PYTHON_TOOLTIP_TOTEXT);
   }
 };
 

@@ -714,3 +714,13 @@ Blockly.Blocks['tuple_get_random_item'] = {
   this.setOutput(true);
   }
 };
+
+Blockly.Blocks['tuple_totuple'] = {
+  init: function () {
+    this.setColour(Blockly.Blocks.tuple.HUE);
+    this.appendValueInput('VAR')
+    .appendField(Blockly.MIXLY_TOTUPLE);
+    this.setOutput(true);
+    this.setTooltip(Blockly.MIXLY_PYTHON_TOOLTIP_TOTUPLE);
+  }
+};
