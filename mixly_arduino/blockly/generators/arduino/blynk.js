@@ -290,8 +290,8 @@ Blockly.Arduino.blynk_iot_ir_send = function () {
 	var IR_CODE = this.getFieldValue('IR_CODE');
 	var IR_CODE_LENGTH = IR_CODE.match(new RegExp(",", 'g')).length + 1;
 	var random_num = Math.ceil(Math.random() * 100000);
-	Blockly.Arduino.definitions_['include_IRremote'] = '#ifndef UNIT_TEST\n#include <Arduino.h>\n#endif\n#include <IRremoteESP8266.h>\n#include <IRsend.h>\n#define IR_LED ' + dropdown_pin;
-	Blockly.Arduino.definitions_['var_declare_IRsend irsend'] = 'IRsend irsend(IR_LED);\n';
+	Blockly.Arduino.definitions_['define_IRremote'] = '#ifndef UNIT_TEST\n#include <Arduino.h>\n#endif\n#include <IRremoteESP8266.h>\n#include <IRsend.h>\n#define IR_LED ' + dropdown_pin;
+	Blockly.Arduino.definitions_['var_declare_IRsend_irsend'] = 'IRsend irsend(IR_LED);\n';
 	Blockly.Arduino.definitions_['var_declare_send' + random_num] = 'uint16_t rawData' + random_num + '[' + IR_CODE_LENGTH + '] = {' + IR_CODE + '}';
 	Blockly.Arduino.setups_['Serial.begin'] = ' irsend.begin();\n  Serial.begin(115200, SERIAL_8N1, SERIAL_TX_ONLY);\n';
 	var code = 'irsend.sendRaw(rawData' + random_num + ', ' + IR_CODE_LENGTH + ', 38); \n delay(2000);\n';

@@ -29,29 +29,48 @@ Blockly.Arduino.http_get = function () {
 };
   //esp_now发送数据
   Blockly.Arduino.esp_now_send = function () {
-  	var mac= Blockly.Arduino.valueToCode(this, 'mac', Blockly.Arduino.ORDER_ATOMIC);
-  	var data= Blockly.Arduino.valueToCode(this, 'data', Blockly.Arduino.ORDER_ATOMIC);
-  	var branch = Blockly.Arduino.statementToCode(this, 'success');
+    var serial_number = Math.ceil(Math.random() * 100000);
+    var mac= Blockly.Arduino.valueToCode(this, 'mac', Blockly.Arduino.ORDER_ATOMIC);
+    var data= Blockly.Arduino.valueToCode(this, 'data', Blockly.Arduino.ORDER_ATOMIC);
+    var branch = Blockly.Arduino.statementToCode(this, 'success');
     branch = branch.replace(/(^\s*)|(\s*$)/g, "");
     var branch1 = Blockly.Arduino.statementToCode(this, 'failure');
     branch1 = branch1.replace(/(^\s*)|(\s*$)/g, "");
-  	mac = ':' + mac + '';
-  	mac = mac.replace(/\"/g, "").replace(/\:/g,",0x");
-  	mac = ':' + mac + '';
-  	mac = mac.replace(/\:,/g, "");
-  	Blockly.Arduino.definitions_['include_esp_now'] ='#include <esp_now.h>';
-  	Blockly.Arduino.definitions_['include_WiFi'] ='#include <WiFi.h>';
-  	Blockly.Arduino.definitions_['var_declare_struct_message'] ='typedef struct struct_message {\n  char a[250];\n} struct_message;\nstruct_message myData;\n';
-  	Blockly.Arduino.definitions_['var_declare_broadcastAddress'] ='uint8_t broadcastAddress[] = {' + mac + '};\n';
-  	Blockly.Arduino.setups_['setups_WiFi.mode'] = 'WiFi.mode(WIFI_STA);\n esp_now_init();';
-  	Blockly.Arduino.setups_['var_declare_esp_now_peer_info_t'] = 'esp_now_peer_info_t peerInfo;';  	
-  	Blockly.Arduino.setups_['setups_memcpy_peerInfo'] = 'memcpy(peerInfo.peer_addr, broadcastAddress, 6);';
-  	Blockly.Arduino.setups_['var_declare_peerInfo_channel'] = 'peerInfo.channel = 0;';
-  	Blockly.Arduino.setups_['var_declare_peerInfo_encrypt'] = 'peerInfo.encrypt = false;';
-  	Blockly.Arduino.setups_['setups_esp_now_add_peer'] = 'esp_now_add_peer(&peerInfo);';
-  	var code='  String(' + data + ').toCharArray(myData.a, sizeof(myData.a));\n  esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));\n  if (result == ESP_OK) {\n' + branch + '\n}\n  else {\n' + branch1 + '\n}\n';
-  	return code;
-  };
+    mac = ':' + mac + '';
+    mac = mac.replace(/\"/g, "").replace(/\:/g,",0x");
+    mac = ':' + mac + '';
+    mac = mac.replace(/\:,/g, "");
+    Blockly.Arduino.definitions_['include_esp_now'] ='#include <esp_now.h>';
+    Blockly.Arduino.definitions_['include_WiFi'] ='#include <WiFi.h>';
+    Blockly.Arduino.definitions_['var_declare_struct_message'] ='typedef struct struct_message {\n  char a[250];\n} struct_message;\nstruct_message myData;\n';
+    Blockly.Arduino.definitions_['include_esp_now_'] ='void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {\n'
+                                                    +'char macStr[18];'
+                                                    +'Serial.print("Packet to: ");\n'
+                                                    +'snprintf(macStr, sizeof(macStr), "%02x:%02x:%02x:%02x:%02x:%02x",\n'
+                                                    +'mac_addr[0], mac_addr[1], mac_addr[2], mac_addr[3], mac_addr[4], mac_addr[5]);\n'
+                                                    +'Serial.print(macStr);\n'
+                                                    +'Serial.print(" send status:\t");\n'
+                                                    +'Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");\n'
+                                                    +'}\n';
+    Blockly.Arduino.definitions_['include_esp_now_send'+ serial_number] ='uint8_t broadcastAddress' + serial_number + '[] = {' + mac + '};\n';                                              
+    Blockly.Arduino.setups_['var_declare_esp_now'] = 'Serial.begin(9600);\n'
+                                                    +'WiFi.mode(WIFI_STA);\n'
+                                                    +'if (esp_now_init() != ESP_OK) {\n'
+                                                    +'Serial.println("Error initializing ESP-NOW");\n'
+                                                    +'return;\n'
+                                                    +'}\n'
+                                                    +'esp_now_register_send_cb(OnDataSent);\n'
+                                                    +'esp_now_peer_info_t peerInfo;\n'
+                                                    +'peerInfo.channel = 0;  \n'
+                                                    +'peerInfo.encrypt = false;\n';
+    Blockly.Arduino.setups_['var_declare_esp_now_send'+ serial_number] = 'memcpy(peerInfo.peer_addr, broadcastAddress' + serial_number + ', 6);\n'
+                                                    +'if (esp_now_add_peer(&peerInfo) != ESP_OK){\n'
+                                                    +'Serial.println("Failed to add peer");\n'
+                                                    +'return;\n'
+                                                    +'}';                                                 
+    var code='  String(' + data + ').toCharArray(myData.a, sizeof(myData.a));\nesp_err_t result' + serial_number + ' = esp_now_send(broadcastAddress' + serial_number + ', (uint8_t *) &myData, sizeof(myData));\nif (result' + serial_number + ' == ESP_OK) {\n' + branch + '\n}\nelse {\n' + branch1 + '\n}\n';                                                
+    return code;
+};
 
 //esp_now接收数据
 Blockly.Arduino.esp_now_receive = function () {

@@ -4,7 +4,8 @@ goog.provide('Blockly.Blocks.MixePi');
 goog.require('Blockly.Blocks');
 Blockly.Blocks.MixePi.HUE = "#e4324f";
 Blockly.Blocks.MixePi.HUE1 = "#64b72f";
-Blockly.Blocks.display.HUE = "#13ae67";
+//Blockly.Blocks.display.HUE = "#13ae67";
+Blockly.Blocks.display.HUE = 180;
 Blockly.Blocks.MixePi.HUE3 = "#EF5411";
 profile["default"] = profile["esp32_mixepi"];
 
@@ -271,6 +272,18 @@ Blockly.Blocks.TFT_color_rgb = {
     this.setInputsInline(true);
     this.setOutput(true);
     this.setTooltip('');
+}
+};
+
+Blockly.Blocks.TFT_init = {
+  init: function() {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendDummyInput("")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_SETUP+" TFT "+Blockly.DISPLAY);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
 }
 };
 
