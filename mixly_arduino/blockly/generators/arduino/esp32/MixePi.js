@@ -107,7 +107,7 @@ Blockly.Arduino.mixepi_rgb=function(){
   Blockly.Arduino.definitions_['var_declare_rgb_display17'] = 'Adafruit_NeoPixel rgb_display_17= Adafruit_NeoPixel(3,17,NEO_RGB + NEO_KHZ800);';
   Blockly.Arduino.setups_['setup_rgb_display_begin_17'] = 'rgb_display_17.begin();';
   var code = 'rgb_display_17.setPixelColor('+value_led+'-1,'+COLOR+');\n';
-  code +='rgb_display_17.show();\n';
+  code +='rgb_display_17.show();\nrgb_display_17.show();\n';
   return code;
 };
 
@@ -124,7 +124,7 @@ Blockly.Arduino.mixepi_rgb2=function(){
  var code = 'rgb_display_17.setPixelColor(0,'+COLOR1+');\n';
  code += 'rgb_display_17.setPixelColor(1,'+COLOR2+');\n';
  code += 'rgb_display_17.setPixelColor(2,'+COLOR3+');\n';
- code+='rgb_display_17.show();\n';
+ code+='rgb_display_17.show();\nrgb_display_17.show();\n';
  return code;
 };
 
@@ -134,7 +134,7 @@ Blockly.Arduino.mixepi_rgb_Brightness=function(){
   Blockly.Arduino.definitions_['var_declare_rgb_display17'] = 'Adafruit_NeoPixel rgb_display_17= Adafruit_NeoPixel(3,17,NEO_RGB + NEO_KHZ800);';
   Blockly.Arduino.setups_['setup_rgb_display_begin_17'] = 'rgb_display_17.begin();';
   var code='rgb_display_17.setBrightness('+Brightness+');\n';
-  code +='rgb_display_17.show();\n';
+  code +='rgb_display_17.show();\nrgb_display_17.show();\n';
   return code;
 };
 
@@ -155,7 +155,7 @@ Blockly.Arduino.mixepi_rgb_rainbow1=function(){
  code3 += 'for(j=0; j<256; j++) {\n';
  code3 += 'for(i=0; i<rgb_display_17.numPixels(); i++)\n {\n';
  code3 += 'rgb_display_17.setPixelColor(i, Wheel((i+j) & 255));\n}\n';
- code3 += 'rgb_display_17.show();\n';
+ code3 += 'rgb_display_17.show();\nrgb_display_17.show();\n';
  code3 += 'delay(wait);\n}\n}\n';
  Blockly.Arduino.definitions_[funcName3] = code3;
  var code = 'rainbow('+ wait_time+');\n'
@@ -195,16 +195,6 @@ Blockly.Arduino.TFT_Brightness= function () {
 };
 
 Blockly.Arduino.tft_icons = function() {
-  Blockly.Arduino.definitions_["include_U8g2_for_Adafruit_GFX"] = '#include <U8g2_for_Adafruit_GFX.h>';
-  Blockly.Arduino.definitions_["include_Adafruit_GFX"] = '#include <Adafruit_GFX.h>';
-  Blockly.Arduino.definitions_["include_Adafruit_ST7735"] = '#include <Adafruit_ST7735.h>';
-  Blockly.Arduino.definitions_["include_SPI"] = '#include <SPI.h>';
-  Blockly.Arduino.definitions_['var_declare_Adafruit_ST7735'] ='Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC,-1);';
-  Blockly.Arduino.definitions_['var_declare_U8G2_FOR_ADAFRUIT_GFX'] ='U8G2_FOR_ADAFRUIT_GFX u8g2_for_adafruit_gfx;';
-  Blockly.Arduino.setups_["setup_u8g2_for_adafruit_gfx"] ='u8g2_for_adafruit_gfx.begin(tft);';
-  Blockly.Arduino.setups_["setup_tft.initR"] =' tft.initR(INITR_18GREENTAB);';
-  Blockly.Arduino.setups_["setup_tft.fillScreen(ST7735_BLACK)"] ='tft.fillScreen(ST7735_BLACK);';
-  Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'dacWrite(26, 255);\n';
  var colour = Blockly.Arduino.valueToCode(this, 'COLOR');
  var POS_x = Blockly.Arduino.valueToCode(this, 'POS_X') || '0';
  var POS_y = Blockly.Arduino.valueToCode(this, 'POS_Y') || '0';
@@ -222,30 +212,12 @@ Blockly.Arduino.TFT_Rotation = function() {
   return code;
 };
 Blockly.Arduino.tft_setFont = function() {
-  Blockly.Arduino.definitions_["include_U8g2_for_Adafruit_GFX"] = '#include <U8g2_for_Adafruit_GFX.h>';
-  Blockly.Arduino.definitions_["include_Adafruit_GFX"] = '#include <Adafruit_GFX.h>';
-  Blockly.Arduino.definitions_["include_Adafruit_ST7735"] = '#include <Adafruit_ST7735.h>';
-  Blockly.Arduino.definitions_["include_SPI"] = '#include <SPI.h>';
-  Blockly.Arduino.definitions_['var_declare_Adafruit_ST7735'] ='Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC,-1);';
-  Blockly.Arduino.definitions_['var_declare_U8G2_FOR_ADAFRUIT_GFX'] ='U8G2_FOR_ADAFRUIT_GFX u8g2_for_adafruit_gfx;';
-  Blockly.Arduino.setups_["setup_u8g2_for_adafruit_gfx"] ='u8g2_for_adafruit_gfx.begin(tft);';
-  Blockly.Arduino.setups_["setup_tft.initR"] =' tft.initR(INITR_18GREENTAB);';
-  Blockly.Arduino.setups_["setup_tft.fillScreen(ST7735_BLACK)"] ='tft.fillScreen(ST7735_BLACK);';  
-  Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'dacWrite(26, 255);\n';
  var type = this.getFieldValue('TYPE');
  var code = "u8g2_for_adafruit_gfx.setFont(u8g2_font_"+type+");\nu8g2_for_adafruit_gfx.setFontMode(1);\n";
  return code;
 };
 
 Blockly.Arduino.tft_print = function() {
-  Blockly.Arduino.definitions_["include_U8g2_for_Adafruit_GFX"] = '#include <U8g2_for_Adafruit_GFX.h>';
-  Blockly.Arduino.definitions_["include_Adafruit_GFX"] = '#include <Adafruit_GFX.h>';
-  Blockly.Arduino.definitions_["include_Adafruit_ST7735"] = '#include <Adafruit_ST7735.h>';
-  Blockly.Arduino.definitions_["include_SPI"] = '#include <SPI.h>';
-  Blockly.Arduino.definitions_['var_declare_Adafruit_ST7735'] ='Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC,-1);';
-  Blockly.Arduino.setups_["setup_tft.initR"] =' tft.initR(INITR_18GREENTAB);';
-  Blockly.Arduino.setups_["setup_tft.fillScreen(ST7735_BLACK)"] ='tft.fillScreen(ST7735_BLACK);';
-  Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'dacWrite(26, 255);\n';
  var POS_x = Blockly.Arduino.valueToCode(this, 'POS_X') || '0';
  var POS_y = Blockly.Arduino.valueToCode(this, 'POS_Y') || '0';
  var TEXT = Blockly.Arduino.valueToCode(this, 'TEXT') || '0';
@@ -276,29 +248,27 @@ Blockly.Arduino.TFT_color_rgb=function(){
  return [colour, Blockly.Arduino.ORDER_NONE];
 };
 
-Blockly.Arduino.TFT_fillScreen=function(){
-  Blockly.Arduino.definitions_["include_U8g2_for_Adafruit_GFX"] = '#include <U8g2_for_Adafruit_GFX.h>';
+Blockly.Arduino.TFT_init = function() {
   Blockly.Arduino.definitions_["include_Adafruit_GFX"] = '#include <Adafruit_GFX.h>';
   Blockly.Arduino.definitions_["include_Adafruit_ST7735"] = '#include <Adafruit_ST7735.h>';
   Blockly.Arduino.definitions_["include_SPI"] = '#include <SPI.h>';
   Blockly.Arduino.definitions_['var_declare_Adafruit_ST7735'] ='Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC,-1);';
-  Blockly.Arduino.setups_["setup_tft.initR"] =' tft.initR(INITR_18GREENTAB);';
+  Blockly.Arduino.setups_["setup_tft.initR"] ='tft.initR(INITR_18GREENTAB);';
   Blockly.Arduino.setups_["setup_tft.fillScreen(ST7735_BLACK)"] ='tft.fillScreen(ST7735_BLACK);';
-  Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'dacWrite(26, 255);\n';
+  Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'dacWrite(26, 255);';
+  Blockly.Arduino.definitions_["include_U8g2_for_Adafruit_GFX"] = '#include <U8g2_for_Adafruit_GFX.h>';
+  Blockly.Arduino.definitions_['var_declare_U8G2_FOR_ADAFRUIT_GFX'] ='U8G2_FOR_ADAFRUIT_GFX u8g2_for_adafruit_gfx;';
+  Blockly.Arduino.setups_["setup_u8g2_for_adafruit_gfx"] ='u8g2_for_adafruit_gfx.begin(tft);';
+  return '';
+};
+
+Blockly.Arduino.TFT_fillScreen=function(){
  var colour = Blockly.Arduino.valueToCode(this, 'COLOR');
- // 
  var code = 'tft.fillScreen'+'('+colour+');\n';
  return code;
 };
 
 Blockly.Arduino.tft_drawPixel = function() {
-  Blockly.Arduino.definitions_["include_Adafruit_GFX"] = '#include <Adafruit_GFX.h>';
-  Blockly.Arduino.definitions_["include_Adafruit_ST7735"] = '#include <Adafruit_ST7735.h>';
-  Blockly.Arduino.definitions_["include_SPI"] = '#include <SPI.h>';
-  Blockly.Arduino.definitions_['var_declare_Adafruit_ST7735'] ='Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC,-1);';
-  Blockly.Arduino.setups_["setup_tft.initR"] =' tft.initR(INITR_18GREENTAB);';
-  Blockly.Arduino.setups_["setup_tft.fillScreen(ST7735_BLACK)"] ='tft.fillScreen(ST7735_BLACK);';
-  Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'dacWrite(26, 255);\n';
  var pos_x = Blockly.Arduino.valueToCode(this, 'POS_X') || '0';
  var pos_y = Blockly.Arduino.valueToCode(this, 'POS_Y') || '0';
  var code = "";
@@ -312,13 +282,6 @@ Blockly.Arduino.tft_drawPixel = function() {
 };
 
 Blockly.Arduino.tft_drawLine = function() {
-  Blockly.Arduino.definitions_["include_Adafruit_GFX"] = '#include <Adafruit_GFX.h>';
-  Blockly.Arduino.definitions_["include_Adafruit_ST7735"] = '#include <Adafruit_ST7735.h>';
-  Blockly.Arduino.definitions_["include_SPI"] = '#include <SPI.h>';
-  Blockly.Arduino.definitions_['var_declare_Adafruit_ST7735'] ='Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC,-1);';
-  Blockly.Arduino.setups_["setup_tft.initR"] =' tft.initR(INITR_18GREENTAB);';
-  Blockly.Arduino.setups_["setup_tft.fillScreen(ST7735_BLACK)"] ='tft.fillScreen(ST7735_BLACK);';
-  Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'dacWrite(26, 255);\n';
  var start_x = Blockly.Arduino.valueToCode(this, 'START_X') || '0';
  var start_y = Blockly.Arduino.valueToCode(this, 'START_Y') || '0';
  var end_x = Blockly.Arduino.valueToCode(this, 'END_X') || '0';
@@ -335,13 +298,6 @@ Blockly.Arduino.tft_drawLine = function() {
 };
 
 Blockly.Arduino.tft_drawFastLine = function() {
-  Blockly.Arduino.definitions_["include_Adafruit_GFX"] = '#include <Adafruit_GFX.h>';
-  Blockly.Arduino.definitions_["include_Adafruit_ST7735"] = '#include <Adafruit_ST7735.h>';
-  Blockly.Arduino.definitions_["include_SPI"] = '#include <SPI.h>';
-  Blockly.Arduino.definitions_['var_declare_Adafruit_ST7735'] ='Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC,-1);';
-  Blockly.Arduino.setups_["setup_tft.initR"] =' tft.initR(INITR_18GREENTAB);';
-  Blockly.Arduino.setups_["setup_tft.fillScreen(ST7735_BLACK)"] ='tft.fillScreen(ST7735_BLACK);';
-  Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'dacWrite(26, 255);\n';
  var start_x = Blockly.Arduino.valueToCode(this, 'START_X') || '0';
  var start_y = Blockly.Arduino.valueToCode(this, 'START_Y') || '0';
  var length = Blockly.Arduino.valueToCode(this, 'LENGTH') || '0';
@@ -357,13 +313,6 @@ Blockly.Arduino.tft_drawFastLine = function() {
 };
 
 Blockly.Arduino.tft_Triangle = function() {
-  Blockly.Arduino.definitions_["include_Adafruit_GFX"] = '#include <Adafruit_GFX.h>';
-  Blockly.Arduino.definitions_["include_Adafruit_ST7735"] = '#include <Adafruit_ST7735.h>';
-  Blockly.Arduino.definitions_["include_SPI"] = '#include <SPI.h>';
-  Blockly.Arduino.definitions_['var_declare_Adafruit_ST7735'] ='Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC,-1);';
-  Blockly.Arduino.setups_["setup_tft.initR"] =' tft.initR(INITR_18GREENTAB);';
-  Blockly.Arduino.setups_["setup_tft.fillScreen(ST7735_BLACK)"] ='tft.fillScreen(ST7735_BLACK);';
-  Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'dacWrite(26, 255);\n';
  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X') || '0';
  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y') || '0';
  var D1_x = Blockly.Arduino.valueToCode(this, 'D1_X') || '0';
@@ -385,13 +334,6 @@ Blockly.Arduino.tft_Triangle = function() {
 };
 
 Blockly.Arduino.tft_Rect = function() {
- Blockly.Arduino.definitions_["include_Adafruit_GFX"] = '#include <Adafruit_GFX.h>';
- Blockly.Arduino.definitions_["include_Adafruit_ST7735"] = '#include <Adafruit_ST7735.h>';
- Blockly.Arduino.definitions_["include_SPI"] = '#include <SPI.h>';
- Blockly.Arduino.definitions_['var_declare_Adafruit_ST7735'] ='Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC,-1);';
- Blockly.Arduino.setups_["setup_tft.initR"] =' tft.initR(INITR_18GREENTAB);';
- Blockly.Arduino.setups_["setup_tft.fillScreen(ST7735_BLACK)"] ='tft.fillScreen(ST7735_BLACK);';
-  Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'dacWrite(26, 255);\n';
  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X') || '0';
  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y') || '0';
  var Width = Blockly.Arduino.valueToCode(this, 'WIDTH') || '0';
@@ -409,13 +351,6 @@ Blockly.Arduino.tft_Rect = function() {
 };
 
 Blockly.Arduino.tft_RoundRect = function() {
- Blockly.Arduino.definitions_["include_Adafruit_GFX"] = '#include <Adafruit_GFX.h>';
- Blockly.Arduino.definitions_["include_Adafruit_ST7735"] = '#include <Adafruit_ST7735.h>';
- Blockly.Arduino.definitions_["include_SPI"] = '#include <SPI.h>';
- Blockly.Arduino.definitions_['var_declare_Adafruit_ST7735'] ='Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC,-1);';
- Blockly.Arduino.setups_["setup_tft.initR"] =' tft.initR(INITR_18GREENTAB);';
- Blockly.Arduino.setups_["setup_tft.fillScreen(ST7735_BLACK)"] ='tft.fillScreen(ST7735_BLACK);';
-  Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'dacWrite(26, 255);\n';
  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X') || '0';
  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y') || '0';
  var Width = Blockly.Arduino.valueToCode(this, 'WIDTH') || '0';
@@ -435,14 +370,6 @@ Blockly.Arduino.tft_RoundRect = function() {
 };
 
 Blockly.Arduino.tft_Circle = function() {
- Blockly.Arduino.definitions_["include_Adafruit_GFX"] = '#include <Adafruit_GFX.h>';
- Blockly.Arduino.definitions_["include_Adafruit_ST7735"] = '#include <Adafruit_ST7735.h>';
- Blockly.Arduino.definitions_["include_SPI"] = '#include <SPI.h>';
- Blockly.Arduino.definitions_['var_declare_Adafruit_ST7735'] ='Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC,-1);';
- Blockly.Arduino.setups_["setup_tft.initR"] =' tft.initR(INITR_18GREENTAB);';
- Blockly.Arduino.setups_["setup_tft.fillScreen(ST7735_BLACK)"] ='tft.fillScreen(ST7735_BLACK);';
-// Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'ledcSetup(0,5000,8);\n';
- // Blockly.Arduino.setups_['ledcAttachPin_tft_brightness'] = 'ledcAttachPin(26,0);\n ledcWrite(0, 255);\n';
  var D0_x = Blockly.Arduino.valueToCode(this, 'D0_X') || '0';
  var D0_y = Blockly.Arduino.valueToCode(this, 'D0_Y') || '0';
  var Rauius = Blockly.Arduino.valueToCode(this, 'RADIUS') || '0';
@@ -466,15 +393,6 @@ Blockly.Arduino.tft_define_bitmap_data = function() {
 };
 
 Blockly.Arduino.tft_showBitmap = function() {
- Blockly.Arduino.definitions_["include_Adafruit_GFX"] = '#include <Adafruit_GFX.h>';
- Blockly.Arduino.definitions_["include_Adafruit_ST7735"] = '#include <Adafruit_ST7735.h>';
- Blockly.Arduino.definitions_["include_SPI"] = '#include <SPI.h>';
- Blockly.Arduino.definitions_['var_declare_Adafruit_ST7735'] ='Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC,-1);';
- Blockly.Arduino.setups_["setup_tft.initR"] ='tft.initR(INITR_18GREENTAB);';
- Blockly.Arduino.setups_["setup_tft.fillScreen(ST7735_BLACK)"] ='tft.fillScreen(ST7735_BLACK);';
-// Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'ledcSetup(0,5000,8);\n';
- // Blockly.Arduino.setups_['ledcAttachPin_tft_brightness'] = 'ledcAttachPin(26,0);\n ledcWrite(0, 255);\n';
- Blockly.Arduino.definitions_["var_declare_int_row_col_buffidx"] ='int row, col, buffidx=0;';
  var start_x = Blockly.Arduino.valueToCode(this, 'START_X')||'0';
  var start_y = Blockly.Arduino.valueToCode(this, 'START_Y')|| '0';
  var Height = Blockly.Arduino.valueToCode(this, 'HEIGHT')|| '0';
@@ -487,17 +405,6 @@ Blockly.Arduino.tft_showBitmap = function() {
 };
 
 Blockly.Arduino.tft_set_EN_Font = function() {
-  Blockly.Arduino.definitions_["include_U8g2_for_Adafruit_GFX"] = '#include <U8g2_for_Adafruit_GFX.h>';
-  Blockly.Arduino.definitions_["include_Adafruit_GFX"] = '#include <Adafruit_GFX.h>';
-  Blockly.Arduino.definitions_["include_Adafruit_ST7735"] = '#include <Adafruit_ST7735.h>';
-  Blockly.Arduino.definitions_["include_SPI"] = '#include <SPI.h>';
-  Blockly.Arduino.definitions_['var_declare_Adafruit_ST7735'] ='Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC,-1);';
-  Blockly.Arduino.definitions_['var_declare_U8G2_FOR_ADAFRUIT_GFX'] ='U8G2_FOR_ADAFRUIT_GFX u8g2_for_adafruit_gfx;';
-  Blockly.Arduino.setups_["setup_u8g2_for_adafruit_gfx"] ='u8g2_for_adafruit_gfx.begin(tft);';
-  Blockly.Arduino.setups_["setup_tft.initR"] =' tft.initR(INITR_18GREENTAB);';
-  Blockly.Arduino.setups_["setup_tft.fillScreen(ST7735_BLACK)"] ='tft.fillScreen(ST7735_BLACK);';
- // Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'ledcSetup(0,5000,8);\n';
- // Blockly.Arduino.setups_['ledcAttachPin_tft_brightness'] = 'ledcAttachPin(26,0);\n ledcWrite(0, 255);\n';
  var FONT_NAME = this.getFieldValue('FONT_NAME');
  var FONT_SIZE = this.getFieldValue('FONT_SIZE');
  var FONT_STYLE = this.getFieldValue('FONT_STYLE');
@@ -506,17 +413,6 @@ Blockly.Arduino.tft_set_EN_Font = function() {
 };
 
 Blockly.Arduino.tft_set_CN_Font = function() {
-  Blockly.Arduino.definitions_["include_U8g2_for_Adafruit_GFX"] = '#include <U8g2_for_Adafruit_GFX.h>';
-  Blockly.Arduino.definitions_["include_Adafruit_GFX"] = '#include <Adafruit_GFX.h>';
-  Blockly.Arduino.definitions_["include_Adafruit_ST7735"] = '#include <Adafruit_ST7735.h>';
-  Blockly.Arduino.definitions_["include_SPI"] = '#include <SPI.h>';
-  Blockly.Arduino.definitions_['var_declare_Adafruit_ST7735'] ='Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC,-1);';
-  Blockly.Arduino.definitions_['var_declare_U8G2_FOR_ADAFRUIT_GFX'] ='U8G2_FOR_ADAFRUIT_GFX u8g2_for_adafruit_gfx;';
-  Blockly.Arduino.setups_["setup_u8g2_for_adafruit_gfx"] ='u8g2_for_adafruit_gfx.begin(tft);';
-  Blockly.Arduino.setups_["setup_tft.initR"] =' tft.initR(INITR_18GREENTAB);';
-  Blockly.Arduino.setups_["setup_tft.fillScreen(ST7735_BLACK)"] ='tft.fillScreen(ST7735_BLACK);';
- // Blockly.Arduino.setups_['ledcSetup_tft_brightness'] = 'ledcSetup(0,5000,8);\n';
- // Blockly.Arduino.setups_['ledcAttachPin_tft_brightness'] = 'ledcAttachPin(26,0);\n ledcWrite(0, 255);\n';
  var FONT_NAME = this.getFieldValue('FONT_NAME');
  var FONT_SIZE = this.getFieldValue('FONT_SIZE');
  var code = "u8g2_for_adafruit_gfx.setFont(u8g2_font_"+FONT_SIZE+FONT_NAME+");\n";

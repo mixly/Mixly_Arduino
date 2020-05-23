@@ -223,12 +223,21 @@ Blockly.Blocks.handbit_rgb_show = {
     this.setNextStatement(true, null);
 }
 };
-Blockly.Blocks.board_setup = {
-  init: function () {
-    this.setColour(Blockly.Blocks.actuator.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_SETUP+Blockly.Handbit)
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-}
+
+Blockly.Blocks.handbit_motor_move= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("掌控宝"+Blockly.MIXLY_MOTOR)
+      .appendField(new Blockly.FieldDropdown([["M1","0x01"],["M2","0x10"]]), "type");
+  this.appendValueInput("speed")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.MIXLY_SPEED+"(-100~100)");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(100);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
 };

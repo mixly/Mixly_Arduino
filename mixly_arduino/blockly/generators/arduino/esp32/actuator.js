@@ -6,7 +6,7 @@ goog.require('Blockly.Arduino');
 
 Blockly.Arduino.display_rgb_show = function () {
   var dropdown_rgbpin = this.getFieldValue('PIN');
-  var code = 'rgb_display_' + dropdown_rgbpin + '.show();\n';
+  var code = 'rgb_display_' + dropdown_rgbpin + '.show();\nrgb_display_' + dropdown_rgbpin + '.show();\n';
   code+="delay(1);"
   return code;
 };
@@ -33,7 +33,7 @@ Blockly.Arduino.servo_writeMicroseconds = function() {
 };
 
 Blockly.Arduino.servo_read_degrees = function() {
-  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN',Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_pin = this.getFieldValue('PIN');
   Blockly.Arduino.definitions_['include_Servo'] = '#include <ESP32_Servo.h>';
   Blockly.Arduino.definitions_['var_declare_servo'+dropdown_pin] = 'Servo servo_'+dropdown_pin+';';
   Blockly.Arduino.setups_['setup_servo_'+dropdown_pin] = 'servo_'+dropdown_pin+'.attach('+dropdown_pin+');';
@@ -80,7 +80,7 @@ Blockly.Arduino.Mixly_motor = function() {
   var SPEED_PIN = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
   var DIR_PIN = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
   var speed = Blockly.Arduino.valueToCode(this, 'speed', Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-  var code = 'setMotor(' + SPEED_PIN + ', '+DIR_PIN+',' + speed + ');\n';
+  var code = 'setMotor(' + SPEED_PIN + ', '+DIR_PIN+', ' + speed + ');\n';
   Blockly.Arduino.definitions_['include_Arduino'] = '#include <Arduino.h>';
   Blockly.Arduino.definitions_['include_analogWrite'] = '#include <analogWrite.h>';
   Blockly.Arduino.setups_['setup_output_'+SPEED_PIN+DIR_PIN+'_S'] = 'pinMode('+SPEED_PIN+', OUTPUT);';
@@ -88,7 +88,26 @@ Blockly.Arduino.Mixly_motor = function() {
   Blockly.Arduino.setups_['setup_output_'+SPEED_PIN+DIR_PIN+'_S_W'] = 'digitalWrite('+SPEED_PIN+', LOW);';
   Blockly.Arduino.setups_['setup_output_'+SPEED_PIN+DIR_PIN+'_D_W'] = 'digitalWrite('+DIR_PIN+', LOW);';
   var funcName= 'setMotor';
-  var code2 =' void '+funcName+'(int speedpin,int dirpin, int speed)\n {\nif (speed == 0)\n{\n   digitalWrite(speedpin, LOW);\n  } \n else if (speed > 0)\n{\n   digitalWrite(dirpin, LOW);\nanalogWrite(speedpin, speed);\n  } \nelse \n{\n digitalWrite(dirpin, HIGH);\n   analogWrite(speedpin, speed);  \n}\n}\n';
+  var code2 ='void '+funcName+'(int speedpin,int dirpin, int speed)\n '
+  +'{\n'
+  +'  if (speed == 0)\n'
+  +'  {\n'
+  +'    digitalWrite(dirpin, LOW);\n'
+  +'    analogWrite(speedpin, 0);\n'
+  +'  } \n'
+  +'  else if (speed > 0)\n'
+  +'  {\n'
+  +'    digitalWrite(dirpin, LOW);\n'
+  +'    analogWrite(speedpin, speed);\n'
+  +'  }\n'
+  +'  else\n'
+  +'  {\n'
+  +'    if(speed < -255)\n'
+  +'      speed = -255;'
+  +'    digitalWrite(dirpin, HIGH);\n'
+  +'    analogWrite(speedpin, 255 + speed);\n'
+  +'  }\n'
+  +'}\n';
   Blockly.Arduino.definitions_[funcName] = code2;
   return code;
 };
@@ -124,5 +143,20 @@ Blockly.Arduino.HR8833_Motor_Speed = function() {
   +'    }\n'
   +'}\n';
   var code ='HR8833_Motor_Speed('+motor_id+','+speed+'); ';
+  return code;
+};
+
+Blockly.Arduino.handbit_motor_move = function() {
+  var dropdown_type = this.getFieldValue('type');
+  var value_speed = Blockly.Arduino.valueToCode(this, 'speed', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+  Blockly.Arduino.setups_['setup_i2c_23_22'] = 'Wire.begin(23, 22);';
+  Blockly.Arduino.definitions_['HandBit_Motor_Speed_fun'] ='void HandBit_Motor_Speed(int pin, int speed){//电机速度设置 pin=1~2,speed=--100~100\n'
+  +'  Wire.beginTransmission(0x10);\n'
+  +'  Wire.write(pin);\n'
+  +'  Wire.write(speed);\n'
+  +'  Wire.endTransmission();\n'
+  +'}';
+  var code = 'HandBit_Motor_Speed('+dropdown_type+', '+value_speed+');\n';
   return code;
 };

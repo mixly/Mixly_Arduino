@@ -144,3 +144,21 @@ Blockly.Blocks.HR8833_Motor_Speed= {
     this.setNextStatement(true);
 }
 };
+
+Blockly.Blocks.handbit_motor_move= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField(Blockly.MIXLY_MOTOR)
+      .appendField(new Blockly.FieldDropdown([["M1","0x01"],["M2","0x10"]]), "type");
+  this.appendValueInput("speed")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.MIXLY_SPEED+"(-100~100)");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(100);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};

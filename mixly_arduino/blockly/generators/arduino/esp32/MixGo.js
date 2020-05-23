@@ -248,7 +248,7 @@ Blockly.Arduino.MixGo_rgb_rainbow1=function(){
  code3 += 'for(j=0; j<256; j++) {\n';
  code3 += 'for(i=0; i<rgb_display_02.numPixels(); i++)\n {\n';
  code3 += 'rgb_display_02.setPixelColor(i, Wheel((i+j) & 255));\n}\n';
- code3 += 'rgb_display_02.show();\n';
+ code3 += 'rgb_display_02.show();\nrgb_display_02.show();\n';
  code3 += 'delay(wait);\n}\n}\n';
  Blockly.Arduino.definitions_[funcName3] = code3;
  var code = 'rainbow('+ wait_time+');\n'
@@ -275,7 +275,7 @@ Blockly.Arduino.MixGo_rgb_rainbow3=function(){
 };
 
 Blockly.Arduino.MixGo_rgb_show = function () {
-  var code = 'rgb_display_02.show();\ndelay(1);\n';
+  var code = 'rgb_display_02.show();rgb_display_02.show();\ndelay(1);\n';
   return code;
 };
 

@@ -111,7 +111,7 @@ Blockly.Arduino.handbit_rgb_Brightness = function () {
 };
 
 Blockly.Arduino.handbit_rgb_show = function () {
-  var code = 'rgb_display_17.show();\ndelay(1);\n';
+  var code = 'rgb_display_17.show();\nrgb_display_17.show();\ndelay(1);\n';
   return code;
 };
 
@@ -158,19 +158,6 @@ Blockly.Arduino.handbit_rgb_rainbow3 = function () {
   return code3;
 };
 
-Blockly.Arduino.board_setup = function () {
-  Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
-  Blockly.Arduino.definitions_['var_declare_rgb_display17'] = 'Adafruit_NeoPixel rgb_display_17= Adafruit_NeoPixel(3,17,NEO_GRB + NEO_KHZ800);';
-  Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
-  Blockly.Arduino.definitions_['var_declare_U8G2'] = 'U8G2_SH1106_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, SCL, SDA, U8X8_PIN_NONE);';
-  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-  Blockly.Arduino.setups_['setup_u8g2.begin'] = "u8g2.begin();";
-  Blockly.Arduino.setups_['setup_rgb_display_begin_17'] = 'rgb_display_17.begin();';
-  Blockly.Arduino.setups_['setup_u8g2.clearDisplay'] = 'u8g2.clearDisplay();';
-  Blockly.Arduino.setups_['setup_RGB_init'] = ' for(int j=0;j<3;j++)\n{\nfor(int i=0;i<3;i++)\nrgb_display_17.setPixelColor(i,0x000000);\nrgb_display_17.show();\n}\ndigitalWrite(P6,LOW);';
-  return "";
-
-};
 Blockly.Arduino.OneButton = function () {
  Blockly.Arduino.definitions_['include_OneButton'] = '#include <OneButton.h>';
  var dropdown_pin = this.getFieldValue('PIN');
@@ -183,4 +170,19 @@ Blockly.Arduino.OneButton = function () {
  var code2 = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
  Blockly.Arduino.definitions_[funcName] = code2;
  return code;
+};
+
+Blockly.Arduino.handbit_motor_move = function() {
+  var dropdown_type = this.getFieldValue('type');
+  var value_speed = Blockly.Arduino.valueToCode(this, 'speed', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+  Blockly.Arduino.setups_['setup_i2c_23_22'] = 'Wire.begin(23, 22);';
+  Blockly.Arduino.definitions_['HandBit_Motor_Speed_fun'] ='void HandBit_Motor_Speed(int pin, int speed){//电机速度设置 pin=1~2,speed=--100~100\n'
+  +'  Wire.beginTransmission(0x10);\n'
+  +'  Wire.write(pin);\n'
+  +'  Wire.write(speed);\n'
+  +'  Wire.endTransmission();\n'
+  +'}';
+  var code = 'HandBit_Motor_Speed('+dropdown_type+', '+value_speed+');\n';
+  return code;
 };
