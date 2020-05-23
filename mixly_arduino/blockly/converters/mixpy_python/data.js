@@ -862,3 +862,15 @@ pbc.moduleFunctionD.get('pylab')['pie'] = function(py2block, func, args, keyword
     
     
 }    
+
+pbc.moduleFunctionD.get('numpy')['array'] = function (py2block, func, args, keywords, starargs, kwargs, node) {
+    if (args.length !== 1) {
+        throw new Error("Incorrect number of arguments");
+    }
+    var varblock = py2block.convert(args[0]);
+    return block("array_toarray", func.lineno, {}, {
+        'VAR': varblock
+    }, {
+        "inline": "true"
+    });
+}    

@@ -288,3 +288,10 @@ Blockly.Python.pl_text = function () {
     var code = "pylab.text(" + from + ", " + end + ", " + step +  ", ha='" + halign + "', va='" + valign + "', fontsize=" + fontnum +")\n";
     return code
 };
+
+Blockly.Python.array_toarray = function() {  
+  var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '0';
+  Blockly.Python.definitions_['import_numpy'] = 'import numpy';
+  var code = 'numpy.array('+str+')';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};

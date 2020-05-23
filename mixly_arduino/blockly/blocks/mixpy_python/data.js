@@ -720,3 +720,13 @@ Blockly.Blocks['dataframe_get'] = {
     this.setTooltip(Blockly.mixpy_PL_TEXT_TOOLTIP);
   }
 };
+
+Blockly.Blocks['array_toarray'] = {
+  init: function () {
+    this.setColour(Blockly.Blocks.data.HUE);
+    this.appendValueInput('VAR')
+    .appendField(Blockly.MIXLY_TOARRAY);
+    this.setOutput(true, 'List');
+    this.setTooltip(Blockly.MIXLY_PYTHON_TOOLTIP_TOARRAY);
+  }
+};
