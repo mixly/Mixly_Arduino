@@ -1,0 +1,8 @@
+#######################################
+# Syntax Coloring Map For ML8511
+#######################################
+Datatypes	KEYWORD1
+ML8511	KEYWORD1
+begin	KEYWORD2	
+getoutputVoltage	KEYWORD2
+getuvIntensity		KEYWORD2

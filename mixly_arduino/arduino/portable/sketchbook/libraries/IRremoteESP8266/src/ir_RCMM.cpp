@@ -45,7 +45,7 @@ const uint16_t kRcmmExcess = 50;
 //   nbits: The number of bits of data to send. (Typically 12, 24, or 32[Nokia])
 //   repeat: The nr. of times the message should be sent.
 //
-// Status:  BETA / Should be working.
+// Status:  STABLE / Should be working.
 //
 // Ref:
 //   http://www.sbprojects.com/knowledge/ir/rcmm.php
@@ -95,20 +95,22 @@ void IRsend::sendRCMM(uint64_t data, uint16_t nbits, uint16_t repeat) {
 // Places successful decode information in the results pointer.
 // Args:
 //   results: Ptr to the data to decode and where to store the decode result.
+//   offset:  The starting index to use when attempting to decode the raw data.
+//            Typically/Defaults to kStartOffset.
 //   nbits:   Nr. of bits to expect in the data portion. Typically kRCMMBits.
 //   strict:  Flag to indicate if we strictly adhere to the specification.
 // Returns:
 //   boolean: True if it can decode it, false if it can't.
 //
-// Status:  BETA / Should be working.
+// Status:  STABLE / Should be working.
 //
 // Ref:
 //   http://www.sbprojects.com/knowledge/ir/rcmm.php
-bool IRrecv::decodeRCMM(decode_results *results, uint16_t nbits, bool strict) {
+bool IRrecv::decodeRCMM(decode_results *results, uint16_t offset,
+                        const uint16_t nbits, const bool strict) {
   uint64_t data = 0;
-  uint16_t offset = kStartOffset;
 
-  if (results->rawlen <= 4)
+  if (results->rawlen <= 4 + offset - 1)
     return false;  // Not enough entries to ever be RCMM.
 
   // Calc the maximum size in bits, the message can be, or that we can accept.

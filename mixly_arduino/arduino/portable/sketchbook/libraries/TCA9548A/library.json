@@ -1,0 +1,35 @@
+{
+    "name": "TCA9548A",
+    "keywords": "i2c, mux, tca9548a",
+    "description": "A lightweight Arduino Library for the I²C Multiplexer TCA9548A.",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/teamonestone/TCA9548A.git"
+    },
+    "authors":
+    [
+      {
+        "name": "Jonas Merkle [JJM]",
+        "email": "jonas.merkle@tam-onestone.net"
+      },
+      {
+        "name": "Dominik Authaler",
+        "email": "dominik.authaler@tam-onestone.net"
+      },
+      {
+        "name": "Team Onestone",
+        "email": "info@team-onestone.net",
+        "url": "http://team-onestone.net",
+        "maintainer": true
+      }
+    ],
+    "dependencies":
+    {
+      "name": "Wire",
+      "frameworks": "arduino"
+    },
+    "version": "1.0.2",
+    "frameworks": "arduino",
+    "platforms": "*"
+  }

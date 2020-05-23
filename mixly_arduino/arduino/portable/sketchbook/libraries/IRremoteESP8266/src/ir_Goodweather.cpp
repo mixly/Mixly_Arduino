@@ -34,7 +34,7 @@ using irutils::setBits;
 //   nbits: Nr. of bits of data in the message. (Default is kGoodweatherBits)
 //   repeat: Nr. of times the message is to be repeated. (Default = 0).
 //
-// Status: ALPHA / Untested.
+// Status: BETA / Needs testing on real device.
 //
 // Ref:
 //   https://github.com/crankyoldgit/IRremoteESP8266/issues/697
@@ -300,9 +300,9 @@ String IRGoodweatherAc::toString(void) {
   result += addFanToString(getFan(), kGoodweatherFanHigh, kGoodweatherFanLow,
                            kGoodweatherFanAuto, kGoodweatherFanAuto,
                            kGoodweatherFanMed);
-  result += addLabeledString(getTurbo() ? kToggleStr : F("-"), kTurboStr);
-  result += addLabeledString(getLight() ? kToggleStr : F("-"), kLightStr);
-  result += addLabeledString(getSleep() ? kToggleStr : F("-"), kSleepStr);
+  result += addLabeledString(getTurbo() ? kToggleStr : "-", kTurboStr);
+  result += addLabeledString(getLight() ? kToggleStr : "-", kLightStr);
+  result += addLabeledString(getSleep() ? kToggleStr : "-", kSleepStr);
   result += addIntToString(getSwing(), kSwingStr);
   result += kSpaceLBraceStr;
   switch (this->getSwing()) {
@@ -370,23 +370,24 @@ String IRGoodweatherAc::toString(void) {
 //
 // Args:
 //   results: Ptr to the data to decode and where to store the decode result.
+//   offset:  The starting index to use when attempting to decode the raw data.
+//            Typically/Defaults to kStartOffset.
 //   nbits:   The number of data bits to expect. Typically kGoodweatherBits.
 //   strict:  Flag indicating if we should perform strict matching.
 // Returns:
 //   boolean: True if it can decode it, false if it can't.
 //
-// Status: ALPHA / Untested.
-bool IRrecv::decodeGoodweather(decode_results* results,
+// Status: BETA / Probably works.
+bool IRrecv::decodeGoodweather(decode_results* results, uint16_t offset,
                                const uint16_t nbits,
                                const bool strict) {
-  if (results->rawlen < 2 * (2 * nbits) + kHeader + 2 * kFooter - 1)
+  if (results->rawlen < 2 * (2 * nbits) + kHeader + 2 * kFooter - 1 + offset)
     return false;  // Can't possibly be a valid Goodweather message.
   if (strict && nbits != kGoodweatherBits)
     return false;  // Not strictly a Goodweather message.
 
   uint64_t dataSoFar = 0;
   uint16_t dataBitsSoFar = 0;
-  uint16_t offset = kStartOffset;
   match_result_t data_result;
 
   // Header

@@ -1,0 +1,38 @@
+#######################################
+# Syntax Coloring Map For PCF8574/PCF8575
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+PCF8574	KEYWORD1
+PCF8575	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin KEYWORD2
+pinMode KEYWORD2
+digitalWrite KEYWORD2
+digitalRead KEYWORD2
+write KEYWORD2
+read KEYWORD2
+clear KEYWORD2
+set KEYWORD2
+toggle KEYWORD2
+blink KEYWORD2
+attachInterrupt KEYWORD2
+detachInterrupt KEYWORD2
+disableInterrupt KEYWORD2
+enableInterrupt KEYWORD2
+checkForInterrupt KEYWORD2
+pullUp KEYWORD2
+pullDown KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+INPUT_PULLUP LITERAL1

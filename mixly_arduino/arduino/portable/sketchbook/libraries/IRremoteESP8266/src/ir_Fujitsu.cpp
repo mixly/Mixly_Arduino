@@ -632,26 +632,38 @@ String IRFujitsuAC::toString(void) {
           result += kSwingHStr;
           break;
         case kFujitsuAcSwingBoth:
-          result += kSwingVStr + '+' + kSwingHStr;
+          result += kSwingVStr;
+          result += '+';
+          result += kSwingHStr;
           break;
         default:
           result += kUnknownStr;
       }
       result += ')';
   }
-  result += kCommaSpaceStr + kCommandStr + kColonSpaceStr;
+  result += kCommaSpaceStr;
+  result += kCommandStr;
+  result += kColonSpaceStr;
   switch (this->getCmd()) {
     case kFujitsuAcCmdStepHoriz:
-      result += kStepStr + ' ' + kSwingHStr;
+      result += kStepStr;
+      result += ' ';
+      result += kSwingHStr;
       break;
     case kFujitsuAcCmdStepVert:
-      result += kStepStr + ' ' + kSwingVStr;
+      result += kStepStr;
+      result += ' ';
+      result += kSwingVStr;
       break;
     case kFujitsuAcCmdToggleSwingHoriz:
-      result += kToggleStr + ' ' + kSwingHStr;
+      result += kToggleStr;
+      result += ' ';
+      result += kSwingHStr;
       break;
     case kFujitsuAcCmdToggleSwingVert:
-      result += kToggleStr + ' ' + kSwingVStr;
+    result += kToggleStr;
+    result += ' ';
+    result += kSwingVStr;
       break;
     case kFujitsuAcCmdEcono:
       result += kEconoStr;
@@ -663,7 +675,7 @@ String IRFujitsuAC::toString(void) {
       result += kNAStr;
   }
   if (this->getModel() == fujitsu_ac_remote_model_t::ARREB1E)
-    result += addBoolToString(getOutsideQuiet(), kOutsideStr + ' ' + kQuietStr);
+    result += addBoolToString(getOutsideQuiet(), kOutsideQuietStr);
   return result;
 }
 
@@ -672,22 +684,25 @@ String IRFujitsuAC::toString(void) {
 // Places successful decode information in the results pointer.
 // Args:
 //   results: Ptr to the data to decode and where to store the decode result.
+//   offset:  The starting index to use when attempting to decode the raw data.
+//            Typically/Defaults to kStartOffset.
 //   nbits:   The number of data bits to expect. Typically kFujitsuAcBits.
 //   strict:  Flag to indicate if we strictly adhere to the specification.
 // Returns:
 //   boolean: True if it can decode it, false if it can't.
 //
-// Status:  ALPHA / Untested.
+// Status:  STABLE / Working.
 //
 // Ref:
 //
-bool IRrecv::decodeFujitsuAC(decode_results* results, uint16_t nbits,
-                             bool strict) {
-  uint16_t offset = kStartOffset;
+bool IRrecv::decodeFujitsuAC(decode_results* results, uint16_t offset,
+                             const uint16_t nbits,
+                             const bool strict) {
   uint16_t dataBitsSoFar = 0;
 
   // Have we got enough data to successfully decode?
-  if (results->rawlen < (2 * kFujitsuAcMinBits) + kHeader + kFooter - 1)
+  if (results->rawlen < (2 * kFujitsuAcMinBits) + kHeader + kFooter - 1 +
+      offset)
     return false;  // Can't possibly be a valid message.
 
   // Compliance

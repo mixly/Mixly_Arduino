@@ -238,21 +238,22 @@ String IRTrotecESP::toString(void) {
 //
 // Args:
 //   results: Ptr to the data to decode and where to store the decode result.
+//   offset:  The starting index to use when attempting to decode the raw data.
+//            Typically/Defaults to kStartOffset.
 //   nbits:   The number of data bits to expect. Typically kTrotecBits.
 //   strict:  Flag indicating if we should perform strict matching.
 // Returns:
 //   boolean: True if it can decode it, false if it can't.
 //
-// Status: BETA / Probably works. Untested on real devices.
+// Status: STABLE / Works. Untested on real devices.
 //
 // Ref:
-bool IRrecv::decodeTrotec(decode_results *results, const uint16_t nbits,
-                          const bool strict) {
-  if (results->rawlen < 2 * nbits + kHeader + 2 * kFooter - 1)
+bool IRrecv::decodeTrotec(decode_results *results, uint16_t offset,
+                          const uint16_t nbits, const bool strict) {
+  if (results->rawlen <= 2 * nbits + kHeader + 2 * kFooter - 1 + offset)
     return false;  // Can't possibly be a valid Samsung A/C message.
   if (strict && nbits != kTrotecBits) return false;
 
-  uint16_t offset = kStartOffset;
   uint16_t used;
   // Header + Data + Footer #1
   used = matchGeneric(results->rawbuf + offset, results->state,

@@ -1,0 +1,19 @@
+{
+    "name": "MAX44009 library",
+    "version": "1.0.1",
+    "keywords": "sensor luxmeter light ALS cjmcu MAX44009",
+    "description": "Library for the MAX44009 Ambient Light Sensor IC",
+    "authors": [{
+    "name": "Dan Tudose",
+    "email": "dan.s.tudose@gmail.com",
+    "url": "https://github.com/dantudose",
+    "maintainer": true
+    }],
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/dantudose/MAX44009.git"
+    },
+    "frameworks": "arduino",
+    "platforms": "*"
+}

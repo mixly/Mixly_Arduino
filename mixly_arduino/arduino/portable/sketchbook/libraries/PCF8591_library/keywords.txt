@@ -1,0 +1,21 @@
+###########################################
+# Syntax Coloring Map For PCF8591-library
+###########################################
+
+###########################################
+# Datatypes (KEYWORD1)
+###########################################
+
+PCF8591	KEYWORD1
+
+###########################################
+# Methods and Functions (KEYWORD2)
+###########################################
+
+begin	KEYWORD2
+AnalogInput	KEYWORD2
+analogRead	KEYWORD2
+analogWrite	KEYWORD2
+
+voltageWrite	KEYWORD2
+voltageRead	KEYWORD2

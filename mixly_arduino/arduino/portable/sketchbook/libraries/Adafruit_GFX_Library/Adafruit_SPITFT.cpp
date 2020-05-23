@@ -982,6 +982,10 @@ void Adafruit_SPITFT::writePixels(uint16_t *colors, uint32_t len, bool block,
   if (!len)
     return; // Avoid 0-byte transfers
 
+  // avoid paramater-not-used complaints
+  (void)block;
+  (void)bigEndian;
+
 #if defined(ESP32) // ESP32 has a special SPI pixel-writing function...
   if (connection == TFT_HARD_SPI) {
     hwspi._spi->writePixels(colors, len * 2);
@@ -1846,8 +1850,6 @@ void Adafruit_SPITFT::sendCommand(uint8_t commandByte, uint8_t *dataBytes,
 
   SPI_DC_HIGH();
   for (int i = 0; i < numDataBytes; i++) {
-    spiWrite(*dataBytes); // Send the data bytes
-    dataBytes++;
     if ((connection == TFT_PARALLEL) && tft8.wide) {
       SPI_WRITE16(*(uint16_t *)dataBytes);
       dataBytes += 2;

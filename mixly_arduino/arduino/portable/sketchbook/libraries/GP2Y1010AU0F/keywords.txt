@@ -1,0 +1,25 @@
+#######################################
+# Class (KEYWORD1)
+#######################################
+
+GP2Y1010AU0F	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+getOutputV	KEYWORD2
+getDustDensity	KEYWORD2
+getAQI	KEYWORD2
+getGradeInfo	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+GRADE_PERFECT	LITERAL1
+GRADE_GOOD	LITERAL1
+GRADE_POLLUTED_MILD	LITERAL1
+GRADE_POLLUTED_MEDIUM	LITERAL1
+GRADE_POLLUTED_HEAVY	LITERAL1
+GRADE_POLLUTED_SEVERE	LITERAL1

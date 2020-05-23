@@ -1,0 +1,38 @@
+*Pick And Place List
+*Company=
+*Author=
+*eMail=
+*
+*Project=schemaPCB
+*Date=11:12:17
+*CreatedBy=Fritzing 0.9.3b.04.19.5c895d327c44a3114e5fcc9d8260daf0cbb52806
+*
+*
+*Coordinates in mm, always center of component
+*Origin 0/0=Lower left corner of PCB
+*Rotation in degree (0-360, math. pos.)
+*
+*No;Value;Package;X;Y;Rotation;Side;Name
+1;;THT;3.87099;-29.8415;-90;Bottom;Voltage microcontroller out
+2;;DIP (Dual Inline) [THT];21.651;-15.8715;0;Bottom;IC1
+3;;dipswitch-02;8.95099;-20.9515;0;Bottom;SW2
+4;;;38.7405;-28.9546;0;Bottom;TXT1
+5;;THT;28.001;-8.25147;0;Bottom;SDA SCL
+6;;THT;28.001;-22.2215;0;Bottom;J1
+7;10k;THT;15.301;-27.3015;180;Bottom;R5
+8;;THT;33.081;-17.1415;0;Bottom;Voltage ref source
+9;;dipswitch-02;6.41099;-20.9515;0;Bottom;SW1
+10;220;THT;7.68099;-9.52147;180;Bottom;R3
+11;;;10.2209;-1.90157;0;Bottom;Via2
+12;10k;THT;28.001;-27.3015;0;Bottom;R4
+13;;power_jack_slot;37.0702;-5.84066;0;Bottom;J2
+14;1µF;100 mil [THT, electrolytic];33.081;-23.4915;90;Bottom;C1
+15;1µF;100 mil [THT, electrolytic];39.431;-17.1415;180;Bottom;C2
+16;;THT;3.87099;-1.90147;-90;Bottom;Voltage ref out
+17;;THT;15.301;-20.9515;0;Bottom;Analog input
+18;;THT;38.161;-23.4915;0;Bottom;Voltage microcontroller in
+19;;;10.2209;-6.98146;0;Bottom;Via1
+20;;;28.0011;-12.0615;0;Bottom;Via3
+21;220;THT;7.68099;-14.6015;180;Bottom;R1
+22;;;40.701;-12.0615;0;Bottom;Via4
+23;220;THT;7.68099;-12.0615;180;Bottom;R2

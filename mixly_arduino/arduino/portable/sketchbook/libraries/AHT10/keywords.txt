@@ -1,0 +1,16 @@
+AHT10Class	KEYWORD1
+begin KEYWORD2
+GetHumidity KEYWORD2
+GetTemperature  KEYWORD2
+GetDewPoint KEYWORD2
+Reset  KEYWORD2
+eAHT10Address LITERAL1
+eSensorCalibrateCmd LITERAL1
+eSensorResetCmd	LITERAL1
+eSensorNormalCmd	LITERAL1
+eSensorMeasureCmd	LITERAL1
+GetRHumidityCmd	LITERAL1
+GetTempCmd	LITERAL1
+eAHT10Address_default	LITERAL1
+eAHT10Address_Low	LITERAL1
+eAHT10Address_High	LITERAL1

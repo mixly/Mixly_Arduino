@@ -1,5 +1,131 @@
 # Release Notes
 
+## _v2.7.7 (20200519)_
+
+**[BREAKING CHANGES]**
+- Fix Symphony protocol. (#1107, #1105)
+  * Now 12 bits and bits are inverted. All previous codes will no longer work.
+- IRMQTTServer: Better handle power & mode operations for Home Assistant. (#1099, #1092)
+  * When `MQTT_CLIMATE_HA_MODE` is enabled (default) this will break previous operation mode resumption when power is changed.
+
+**[Bug Fixes]**
+- Set correct return type for `.calibrate()` (#1095, #1093)
+
+**[Features]**
+- Add basic support for Carrier 40 & 64 bit protocols. (#1125, #1112, #1127)
+- Gree: Enable native support for Fahrenheit (#1124, #1121)
+- Gree: Add option to control display temp source. (#1120, #1118)
+- Add support for Multibrackets protocol. (#1106, #1103)
+- Add RawToPronto.py tool & improve `sendPronto()` precision (#1104, #1103)
+- Add support for `Doshisha` LED light protocol (#1115)
+- Introduce IRrecvDumpV3 with basic OTA update support (#1111)
+- Add detailed support for Delonghi A/C (#1098, #1096)
+- Improved support for SharpAc. (#1094, #1091)
+- Update auto_analyse to use new decode call structure. (#1102, #1097)
+- Added Blynk app example (#1090)
+
+**[Misc]**
+- update auto_analyse script to use new param documentation (#1126)
+- Improve `raw_to_pronto_code.py` (#1122, #1103)
+- Use pattern rules in Makefiles to reduce specific rule (#1110)
+- Update list of supported Daikin models. (#1101)
+
+
+## _v2.7.6 (20200425)_
+
+**[Features]**
+- IRMQTTServer: Use more i18n text. (#1086)
+- Convert Protocol names to shared text. Saves ~3k of flash. (#1078)
+- Add Chinese translation (zh-CN) & add utf-8 support. (#1080, #1085)
+
+**[Misc]**
+- IRMQTTServer: Ensure MQTT_MAX_PACKET_SIZE is correctly set. (#1084)
+- Add Italian locale to IRrecvDumpV2 platformio file.
+
+
+## _v2.7.5 (20200409)_
+
+**[Features]**
+- Detailed support for `HITACHI_AC1` protocol. (#1056, #1061, #1072)
+- update sharp to match Sharp AH-A5SAY (#1074)
+- Experimental support for AIRWELL protocol. (#1069, #1070)
+- SamsungAC: Add Breeze (Aka WindFree) control (#1062, #1071)
+- Support for Daikin FFN-C A/C (#1064, #1065)
+- Add basic support for HITACHI_AC3 protocol. (#1060, #1063)
+- Add support for `SYMPHONY` 11 bit protocol. (#1057, #1058)
+- IRMQTTServer: Improve Home-Assistant discovery by sending a 'device' with the discovery packet (#1055)
+
+**[Misc]**
+- Clean up support status of various protocols.
+- Add `decodeToState()` unit tests to all supported protocols (#1067, #1068)
+- Add Gree AC example code. (#1066)
+
+
+## _v2.7.4 (20200226)_
+
+**[Bug Fixes]**
+- IRMQTTServer: Fix bug when receiving an IR A/C message and not re-transmitting it. (#1035, #1038)
+- Coolix: `setRaw()` doesn't update power state. (#1040, #1041)
+
+**[Features]**
+- Electra: Add improved feature support. (#1033, #1051)
+- Add support for Epson protocol. (#1034, #1050)
+- Add options to `decode()` to aid detection. Improve NEC detection. (#1042, #1046)
+- SamsungAc: Add support for Light & Ion (VirusDoctor). (#1045, #1048, #1049)
+- Add Italian (it-IT) locale/language support. (#1047) (kudos @egueli)
+- gc_decode: Add repeat support for pronto codes. (#1034, #1043)
+
+**[Misc]**
+- Update supported SamsungAc devices (#1045)
+- Coolix: Subtle protocol timing adjustments (#1036, #1037)
+- Add supported Electra device model info (#1033)
+
+
+## _v2.7.3 (20200130)_
+
+**[Features]**
+- Allow protocols to be enabled or disabled with compiler flags. (#1013, #1012)
+- Panasonic AC: Add Ion Filter support for DKE models. (#1025, #1024)
+- Add support for sending Sony at 38Khz (#1029, #1018, #1019)
+- auto_analyse_raw_data.py: Handle analysing messages with no headers. (#1017)
+
+**[Misc]**
+- Fix Coolix unit test errors when using Apple c++ compiler. (#1030, #1028)
+- Fix Apple clang c++ compiler error in unit tests. (#1027, #1026)
+- Improve/fix scraping of supported devices (#1022)
+- Panasonic PKR series A/C uses DKE protocol. (#1020, #1021)
+- Update NEC supported devices. (#1018)
+- Add note to avoid GPIO16 on the ESP8266 for receiving. (#1016, #1015)
+
+
+## _v2.7.2 (20200106)_
+
+**[Bug Fixes]**
+- Common AC api: Better handle protocols with power toggles. (#1002)
+
+**[Features]**
+- Experimental detailed support for LG a/c. (#1008 #1009)
+
+**[Misc]**
+- Add remote codes for Aloka LED lamp. (#1005)
+- Improve Supported Devices scraping. (#1006)
+
+
+## _v2.7.1 (20191125)_
+
+**[Bug Fixes]**
+- Hitachi424Ac: Fix Incorrect Power Byte Values (#987)
+- Coolix: Fix setPower(false) issue. (#990)
+
+**[Features]**
+- Use `char*` instead of `String` for common text. Saves ~1-3k. (#992, #989)
+- Hitachi424Ac: Add Vertical Swing ability (#986)
+
+**[Misc]**
+- IRMQTTServer: Update HA example/discovery message. (#995)
+- Move newly added common text to a better location. (#993)
+
+
 ## _v2.7.0 (20191030)_
 
 **[Bug Fixes]**

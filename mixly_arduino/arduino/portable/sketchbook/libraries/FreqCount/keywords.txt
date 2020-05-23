@@ -1,0 +1,5 @@
+FreqCount	KEYWORD1
+begin	KEYWORD2
+available	KEYWORD2
+read	KEYWORD2
+end	KEYWORD2

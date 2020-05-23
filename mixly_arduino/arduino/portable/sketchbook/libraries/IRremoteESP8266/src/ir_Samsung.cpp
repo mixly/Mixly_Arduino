@@ -72,7 +72,7 @@ using irutils::setBits;
 //   nbits:  The bit size of the message being sent. typically kSamsungBits.
 //   repeat: The number of times the message is to be repeated.
 //
-// Status: BETA / Should be working.
+// Status: STABLE / Should be working.
 //
 // Ref: http://elektrolab.wz.cz/katalog/samsung_protocol.pdf
 void IRsend::sendSAMSUNG(const uint64_t data, const uint16_t nbits,
@@ -92,7 +92,7 @@ void IRsend::sendSAMSUNG(const uint64_t data, const uint16_t nbits,
 // Returns:
 //   A raw 32-bit Samsung message suitable for sendSAMSUNG().
 //
-// Status: BETA / Should be working.
+// Status: STABLE / Should be working.
 uint32_t IRsend::encodeSAMSUNG(const uint8_t customer, const uint8_t command) {
   uint8_t revcustomer = reverseBits(customer, sizeof(customer) * 8);
   uint8_t revcommand = reverseBits(command, sizeof(command) * 8);
@@ -109,6 +109,8 @@ uint32_t IRsend::encodeSAMSUNG(const uint8_t customer, const uint8_t command) {
 //
 // Args:
 //   results: Ptr to the data to decode and where to store the decode result.
+//   offset:  The starting index to use when attempting to decode the raw data.
+//            Typically/Defaults to kStartOffset.
 //   nbits:   Nr. of bits to expect in the data portion. Typically kSamsungBits.
 //   strict:  Flag to indicate if we strictly adhere to the specification.
 // Returns:
@@ -121,15 +123,12 @@ uint32_t IRsend::encodeSAMSUNG(const uint8_t customer, const uint8_t command) {
 //   They differ on their compliance criteria and how they repeat.
 // Ref:
 //  http://elektrolab.wz.cz/katalog/samsung_protocol.pdf
-bool IRrecv::decodeSAMSUNG(decode_results *results, const uint16_t nbits,
-                           const bool strict) {
-  if (results->rawlen < 2 * nbits + kHeader + kFooter - 1)
-    return false;  // Can't possibly be a valid Samsung message.
+bool IRrecv::decodeSAMSUNG(decode_results *results, uint16_t offset,
+                           const uint16_t nbits, const bool strict) {
   if (strict && nbits != kSamsungBits)
     return false;  // We expect Samsung to be 32 bits of message.
 
   uint64_t data = 0;
-  uint16_t offset = kStartOffset;
 
   // Match Header + Data + Footer
   if (!matchGeneric(results->rawbuf + offset, &data,
@@ -201,6 +200,8 @@ void IRsend::sendSamsung36(const uint64_t data, const uint16_t nbits,
 //
 // Args:
 //   results: Ptr to the data to decode and where to store the decode result.
+//   offset:  The starting index to use when attempting to decode the raw data.
+//            Typically/Defaults to kStartOffset.
 //   nbits:   Nr. of bits to expect in the data portion.
 //            Typically kSamsung36Bits.
 //   strict:  Flag to indicate if we strictly adhere to the specification.
@@ -214,9 +215,9 @@ void IRsend::sendSamsung36(const uint64_t data, const uint16_t nbits,
 //
 // Ref:
 //   https://github.com/crankyoldgit/IRremoteESP8266/issues/621
-bool IRrecv::decodeSamsung36(decode_results *results, const uint16_t nbits,
-                             const bool strict) {
-  if (results->rawlen < 2 * nbits + kHeader + kFooter * 2 - 1)
+bool IRrecv::decodeSamsung36(decode_results *results, uint16_t offset,
+                             const uint16_t nbits, const bool strict) {
+  if (results->rawlen < 2 * nbits + kHeader + kFooter * 2 - 1 + offset)
     return false;  // Can't possibly be a valid Samsung message.
   // We need to be looking for > 16 bits to make sense.
   if (nbits <= 16) return false;
@@ -224,7 +225,6 @@ bool IRrecv::decodeSamsung36(decode_results *results, const uint16_t nbits,
     return false;  // We expect nbits to be 36 bits of message.
 
   uint64_t data = 0;
-  uint16_t offset = kStartOffset;
 
   // Match Header + Data + Footer
   uint16_t used;
@@ -271,7 +271,7 @@ bool IRrecv::decodeSamsung36(decode_results *results, const uint16_t nbits,
 //   https://github.com/crankyoldgit/IRremoteESP8266/issues/505
 void IRsend::sendSamsungAC(const uint8_t data[], const uint16_t nbytes,
                            const uint16_t repeat) {
-  if (nbytes < kSamsungAcStateLength && nbytes % kSamsungACSectionLength)
+  if (nbytes < kSamsungAcStateLength && nbytes % kSamsungAcSectionLength)
     return;  // Not an appropriate number of bytes to send a proper message.
 
   enableIROut(38);
@@ -281,11 +281,11 @@ void IRsend::sendSamsungAC(const uint8_t data[], const uint16_t nbytes,
     space(kSamsungAcHdrSpace);
     // Send in 7 byte sections.
     for (uint16_t offset = 0; offset < nbytes;
-         offset += kSamsungACSectionLength) {
+         offset += kSamsungAcSectionLength) {
       sendGeneric(kSamsungAcSectionMark, kSamsungAcSectionSpace,
                   kSamsungAcBitMark, kSamsungAcOneSpace, kSamsungAcBitMark,
                   kSamsungAcZeroSpace, kSamsungAcBitMark, kSamsungAcSectionGap,
-                  data + offset, kSamsungACSectionLength,  // 7 bytes == 56 bits
+                  data + offset, kSamsungAcSectionLength,  // 7 bytes == 56 bits
                   38000, false, 0, 50);                    // Send in LSBF order
     }
     // Complete made up guess at inter-message gap.
@@ -379,10 +379,10 @@ void IRSamsungAc::sendExtended(const uint16_t repeat, const bool calcchecksum) {
       0x01, 0xD2, 0x0F, 0x00, 0x00, 0x00, 0x00,
       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
   // Copy/convert the internal state to an extended state.
-  for (uint16_t i = 0; i < kSamsungACSectionLength; i++)
+  for (uint16_t i = 0; i < kSamsungAcSectionLength; i++)
     extended_state[i] = remote_state[i];
-  for (uint16_t i = kSamsungACSectionLength; i < kSamsungAcStateLength; i++)
-    extended_state[i + kSamsungACSectionLength] = remote_state[i];
+  for (uint16_t i = kSamsungAcSectionLength; i < kSamsungAcStateLength; i++)
+    extended_state[i + kSamsungAcSectionLength] = remote_state[i];
   // extended_state[8] seems special. This is a guess on how to calculate it.
   extended_state[8] = (extended_state[1] & 0x9F) | 0x40;
   // Send it.
@@ -425,7 +425,7 @@ void IRSamsungAc::setRaw(const uint8_t new_code[], const uint16_t length) {
   // Shrink the extended state into a normal state.
   if (length > kSamsungAcStateLength) {
     for (uint8_t i = kSamsungAcStateLength; i < length; i++)
-      remote_state[i - kSamsungACSectionLength] = remote_state[i];
+      remote_state[i - kSamsungAcSectionLength] = remote_state[i];
   }
 }
 
@@ -550,14 +550,15 @@ void IRSamsungAc::setQuiet(const bool on) {
 
 bool IRSamsungAc::getPowerful(void) {
   return !(remote_state[8] & kSamsungAcPowerfulMask8) &&
-         GETBITS8(remote_state[10], kSamsungAcPowerful10Offset,
-                  kSamsungAcPowerful10Offset) &&
+         (GETBITS8(remote_state[10], kSamsungAcPowerful10Offset,
+                   kSamsungAcPowerful10Size) == kSamsungAcPowerful10On) &&
          (this->getFan() == kSamsungAcFanTurbo);
 }
 
 void IRSamsungAc::setPowerful(const bool on) {
+  uint8_t off_value = this->getBreeze() ? kSamsungAcBreezeOn : 0b000;
   setBits(&remote_state[10], kSamsungAcPowerful10Offset,
-          kSamsungAcPowerful10Offset, on ? 0b11: 0b00);
+          kSamsungAcPowerful10Size, on ? kSamsungAcPowerful10On : off_value);
   if (on) {
     remote_state[8] &= ~kSamsungAcPowerfulMask8;  // Bit needs to be cleared.
     // Powerful mode sets fan speed to Turbo.
@@ -568,6 +569,42 @@ void IRSamsungAc::setPowerful(const bool on) {
     // Turning off Powerful mode sets fan speed to Auto if we were in Turbo mode
     if (this->getFan() == kSamsungAcFanTurbo) this->setFan(kSamsungAcFanAuto);
   }
+}
+
+// Ref: https://github.com/crankyoldgit/IRremoteESP8266/issues/1062
+// Are the vanes closed over the fan outlet, to stop direct wind? Aka. WindFree
+bool IRSamsungAc::getBreeze(void) {
+  return (GETBITS8(remote_state[10], kSamsungAcBreezeOffset,
+                   kSamsungAcBreezeSize) == kSamsungAcBreezeOn) &&
+         (this->getFan() == kSamsungAcFanAuto && !getSwing());
+}
+
+// Ref: https://github.com/crankyoldgit/IRremoteESP8266/issues/1062
+// Closes the vanes over the fan outlet, to stop direct wind. Aka. WindFree
+void IRSamsungAc::setBreeze(const bool on) {
+  uint8_t off_value = this->getPowerful() ? kSamsungAcPowerful10On : 0b000;
+  setBits(&remote_state[10], kSamsungAcBreezeOffset,
+          kSamsungAcBreezeSize, on ? kSamsungAcBreezeOn : off_value);
+  if (on) {
+    this->setFan(kSamsungAcFanAuto);
+    this->setSwing(false);
+  }
+}
+
+bool IRSamsungAc::getDisplay(void) {
+  return GETBIT8(remote_state[10], kSamsungAcDisplayOffset);
+}
+
+void IRSamsungAc::setDisplay(const bool on) {
+  setBit(&remote_state[10], kSamsungAcDisplayOffset, on);
+}
+
+bool IRSamsungAc::getIon(void) {
+  return GETBIT8(remote_state[11], kSamsungAcIonOffset);
+}
+
+void IRSamsungAc::setIon(const bool on) {
+  setBit(&remote_state[11], kSamsungAcIonOffset, on);
 }
 
 // Convert a standard A/C mode into its native mode.
@@ -631,11 +668,11 @@ stdAc::state_t IRSamsungAc::toCommon(void) {
   result.turbo = this->getPowerful();
   result.clean = this->getClean();
   result.beep = this->getBeep();
+  result.light = this->getDisplay();
+  result.filter = this->getIon();
   // Not supported.
   result.swingh = stdAc::swingh_t::kOff;
   result.econo = false;
-  result.filter = false;
-  result.light = false;
   result.sleep = -1;
   result.clock = -1;
   return result;
@@ -644,7 +681,7 @@ stdAc::state_t IRSamsungAc::toCommon(void) {
 // Convert the internal state into a human readable string.
 String IRSamsungAc::toString(void) {
   String result = "";
-  result.reserve(100);  // Reserve some heap for the string to reduce fragging.
+  result.reserve(115);  // Reserve some heap for the string to reduce fragging.
   result += addBoolToString(getPower(), kPowerStr, false);
   result += addModeToString(getMode(), kSamsungAcAuto, kSamsungAcCool,
                             kSamsungAcHeat, kSamsungAcDry,
@@ -679,6 +716,9 @@ String IRSamsungAc::toString(void) {
   result += addBoolToString(getClean(), kCleanStr);
   result += addBoolToString(getQuiet(), kQuietStr);
   result += addBoolToString(getPowerful(), kPowerfulStr);
+  result += addBoolToString(getBreeze(), kBreezeStr);
+  result += addBoolToString(getDisplay(), kLightStr);
+  result += addBoolToString(getIon(), kIonStr);
   return result;
 }
 
@@ -687,6 +727,8 @@ String IRSamsungAc::toString(void) {
 //
 // Args:
 //   results: Ptr to the data to decode and where to store the decode result.
+//   offset:  The starting index to use when attempting to decode the raw data.
+//            Typically/Defaults to kStartOffset.
 //   nbits:   The number of data bits to expect. Typically kSamsungAcBits
 //   strict:  Flag indicating if we should perform strict matching.
 // Returns:
@@ -696,29 +738,27 @@ String IRSamsungAc::toString(void) {
 //
 // Ref:
 //   https://github.com/crankyoldgit/IRremoteESP8266/issues/505
-bool IRrecv::decodeSamsungAC(decode_results *results, const uint16_t nbits,
-                             const bool strict) {
-  if (results->rawlen < 2 * nbits + kHeader * 3 + kFooter * 2 - 1)
+bool IRrecv::decodeSamsungAC(decode_results *results, uint16_t offset,
+                             const uint16_t nbits, const bool strict) {
+  if (results->rawlen < 2 * nbits + kHeader * 3 + kFooter * 2 - 1 + offset)
     return false;  // Can't possibly be a valid Samsung A/C message.
   if (nbits != kSamsungAcBits && nbits != kSamsungAcExtendedBits) return false;
-
-  uint16_t offset = kStartOffset;
 
   // Message Header
   if (!matchMark(results->rawbuf[offset++], kSamsungAcBitMark)) return false;
   if (!matchSpace(results->rawbuf[offset++], kSamsungAcHdrSpace)) return false;
   // Section(s)
-  for (uint16_t pos = 0; pos <= (nbits / 8) - kSamsungACSectionLength;
-       pos += kSamsungACSectionLength) {
+  for (uint16_t pos = 0; pos <= (nbits / 8) - kSamsungAcSectionLength;
+       pos += kSamsungAcSectionLength) {
     uint16_t used;
     // Section Header + Section Data (7 bytes) + Section Footer
     used = matchGeneric(results->rawbuf + offset, results->state + pos,
-                        results->rawlen - offset, kSamsungACSectionLength * 8,
+                        results->rawlen - offset, kSamsungAcSectionLength * 8,
                         kSamsungAcSectionMark, kSamsungAcSectionSpace,
                         kSamsungAcBitMark, kSamsungAcOneSpace,
                         kSamsungAcBitMark, kSamsungAcZeroSpace,
                         kSamsungAcBitMark, kSamsungAcSectionGap,
-                        pos + kSamsungACSectionLength >= nbits / 8,
+                        pos + kSamsungAcSectionLength >= nbits / 8,
                         _tolerance, 0, false);
     if (used == 0) return false;
     offset += used;

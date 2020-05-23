@@ -143,7 +143,8 @@ TEST(TestDecodeMitsubishi, NormalDecodeWithStrict) {
   irsend.reset();
   irsend.sendMitsubishi(0xC2B8);
   irsend.makeDecodeResult();
-  ASSERT_TRUE(irrecv.decodeMitsubishi(&irsend.capture, kMitsubishiBits, true));
+  ASSERT_TRUE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset,
+                                      kMitsubishiBits, true));
   EXPECT_EQ(MITSUBISHI, irsend.capture.decode_type);
   EXPECT_EQ(kMitsubishiBits, irsend.capture.bits);
   EXPECT_EQ(0xC2B8, irsend.capture.value);
@@ -154,7 +155,8 @@ TEST(TestDecodeMitsubishi, NormalDecodeWithStrict) {
   irsend.reset();
   irsend.sendMitsubishi(0x0);
   irsend.makeDecodeResult();
-  ASSERT_TRUE(irrecv.decodeMitsubishi(&irsend.capture, kMitsubishiBits, true));
+  ASSERT_TRUE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset,
+                                      kMitsubishiBits, true));
   EXPECT_EQ(MITSUBISHI, irsend.capture.decode_type);
   EXPECT_EQ(kMitsubishiBits, irsend.capture.bits);
   EXPECT_EQ(0x0, irsend.capture.value);
@@ -165,7 +167,8 @@ TEST(TestDecodeMitsubishi, NormalDecodeWithStrict) {
   irsend.reset();
   irsend.sendMitsubishi(0xFFFF);
   irsend.makeDecodeResult();
-  ASSERT_TRUE(irrecv.decodeMitsubishi(&irsend.capture, kMitsubishiBits, true));
+  ASSERT_TRUE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset,
+                                      kMitsubishiBits, true));
   EXPECT_EQ(MITSUBISHI, irsend.capture.decode_type);
   EXPECT_EQ(kMitsubishiBits, irsend.capture.bits);
   EXPECT_EQ(0xFFFF, irsend.capture.value);
@@ -178,17 +181,24 @@ TEST(TestDecodeMitsubishi, NormalDecodeWithStrict) {
   // 12 bits.
   irsend.sendMitsubishi(0xFFF, 12);
   irsend.makeDecodeResult();
-  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kMitsubishiBits, true));
-  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, 12, true));
-  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, 64, true));
+  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset,
+                                       kMitsubishiBits, true));
+  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset, 12,
+                                       true));
+  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset, 64,
+                                       true));
 
   // 32 bits.
   irsend.sendMitsubishi(0xFFF, 32);
   irsend.makeDecodeResult();
-  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kMitsubishiBits, true));
-  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, 12, true));
-  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, 32, true));
-  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, 64, true));
+  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset,
+                                       kMitsubishiBits, true));
+  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset, 12,
+                                       true));
+  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset, 32,
+                                       true));
+  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset, 64,
+                                       true));
 }
 
 // Decode normal repeated Mitsubishi messages.
@@ -201,7 +211,8 @@ TEST(TestDecodeMitsubishi, NormalDecodeWithRepeatAndStrict) {
   irsend.reset();
   irsend.sendMitsubishi(0xC2B8, kMitsubishiBits, 2);
   irsend.makeDecodeResult();
-  ASSERT_TRUE(irrecv.decodeMitsubishi(&irsend.capture, kMitsubishiBits, true));
+  ASSERT_TRUE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset,
+                                      kMitsubishiBits, true));
   EXPECT_EQ(MITSUBISHI, irsend.capture.decode_type);
   EXPECT_EQ(kMitsubishiBits, irsend.capture.bits);
   EXPECT_EQ(0xC2B8, irsend.capture.value);
@@ -213,7 +224,8 @@ TEST(TestDecodeMitsubishi, NormalDecodeWithRepeatAndStrict) {
   irsend.reset();
   irsend.sendMitsubishi(0xC2B8, kMitsubishiBits, 0);
   irsend.makeDecodeResult();
-  ASSERT_TRUE(irrecv.decodeMitsubishi(&irsend.capture, kMitsubishiBits, true));
+  ASSERT_TRUE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset,
+                                      kMitsubishiBits, true));
   EXPECT_EQ(MITSUBISHI, irsend.capture.decode_type);
   EXPECT_EQ(kMitsubishiBits, irsend.capture.bits);
   EXPECT_EQ(0xC2B8, irsend.capture.value);
@@ -232,31 +244,36 @@ TEST(TestDecodeMitsubishi, DecodeWithNonStrictValues) {
   irsend.sendMitsubishi(0x0, 8);  // Illegal sized Mitsubishi 8-bit message.
   irsend.makeDecodeResult();
   // Should fail with strict on.
-  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kMitsubishiBits, true));
+  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset,
+                                        kMitsubishiBits, true));
   // Should pass if strict off.
-  ASSERT_TRUE(irrecv.decodeMitsubishi(&irsend.capture, 8, false));
+  ASSERT_TRUE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset, 8, false));
   EXPECT_EQ(MITSUBISHI, irsend.capture.decode_type);
   EXPECT_EQ(8, irsend.capture.bits);
   EXPECT_EQ(0x0, irsend.capture.value);
   EXPECT_EQ(0x0, irsend.capture.address);
   EXPECT_EQ(0x0, irsend.capture.command);
-  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, 64, false));
+  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset, 64,
+                                       false));
 
   irsend.reset();
   // Illegal sized Mitsubishi 64-bit message.
   irsend.sendMitsubishi(0xFEDCBA9876543210, 64);
   irsend.makeDecodeResult();
   // Should fail with strict on.
-  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kMitsubishiBits, true));
+  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset,
+                                       kMitsubishiBits, true));
   // Should pass if strict off.
-  ASSERT_TRUE(irrecv.decodeMitsubishi(&irsend.capture, 64, false));
+  ASSERT_TRUE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset, 64,
+                                      false));
   EXPECT_EQ(MITSUBISHI, irsend.capture.decode_type);
   EXPECT_EQ(64, irsend.capture.bits);
   EXPECT_EQ(0xFEDCBA9876543210, irsend.capture.value);
   EXPECT_EQ(0x0, irsend.capture.address);
   EXPECT_EQ(0x0, irsend.capture.command);
   // Should fail when we are after a shorter message than we got.
-  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, 8, false));
+  ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture, kStartOffset, 8,
+                                       false));
 }
 
 // Decode a 'real' example via GlobalCache
@@ -299,7 +316,8 @@ TEST(TestDecodeMitsubishi, FailToDecodeNonMitsubishiExample) {
 
   ASSERT_FALSE(irrecv.decodeMitsubishi(&irsend.capture));
   ASSERT_FALSE(
-      irrecv.decodeMitsubishi(&irsend.capture, kMitsubishiBits, false));
+      irrecv.decodeMitsubishi(&irsend.capture, kStartOffset, kMitsubishiBits,
+                              false));
 }
 
 // Tests for Mitsubishi A/C methods.
@@ -1212,6 +1230,8 @@ TEST(TestDecodeMitsubishi136, DecodeRealExample) {
       "Power: On, Mode: 1 (Cool), Temp: 20C, Fan: 3 (High), "
       "Swing(V): 3 (Highest), Quiet: Off",
       IRAcUtils::resultAcToString(&irsend.capture));
+  stdAc::state_t r, p;
+  ASSERT_TRUE(IRAcUtils::decodeToState(&irsend.capture, &r, &p));
 }
 
 // Self decode a synthetic example.
@@ -1701,6 +1721,8 @@ TEST(TestDecodeMitsubishi112, DecodeRealExample) {
       "Power: On, Mode: 3 (Cool), Temp: 23C, Fan: 2 (Quiet), "
       "Swing(V): 7 (Auto), Swing(H): 12 (Auto), Quiet: On",
       IRAcUtils::resultAcToString(&irsend.capture));
+  stdAc::state_t r, p;
+  ASSERT_TRUE(IRAcUtils::decodeToState(&irsend.capture, &r, &p));
 }
 
 // Self decode a synthetic example.

@@ -107,7 +107,7 @@ using irutils::setBits;
 //   nbits:  Nr. of bits of data to be sent. Typically kMitsubishiBits.
 //   repeat: Nr. of additional times the message is to be sent.
 //
-// Status: ALPHA / untested.
+// Status: STABLE / Working.
 //
 // Notes:
 //   This protocol appears to have no header.
@@ -127,24 +127,25 @@ void IRsend::sendMitsubishi(uint64_t data, uint16_t nbits, uint16_t repeat) {
 //
 // Args:
 //   results: Ptr to the data to decode and where to store the decode result.
+//   offset:  The starting index to use when attempting to decode the raw data.
+//            Typically/Defaults to kStartOffset.
 //   nbits:   Nr. of data bits to expect.
 //   strict:  Flag indicating if we should perform strict matching.
 // Returns:
 //   boolean: True if it can decode it, false if it can't.
 //
-// Status: BETA / previously working.
+// Status: STABLE / Working.
 //
 // Notes:
 //   This protocol appears to have no header.
 //
 // Ref:
 //   GlobalCache's Control Tower's Mitsubishi TV data.
-bool IRrecv::decodeMitsubishi(decode_results *results, uint16_t nbits,
-                              bool strict) {
+bool IRrecv::decodeMitsubishi(decode_results *results, uint16_t offset,
+                              const uint16_t nbits, const bool strict) {
   if (strict && nbits != kMitsubishiBits)
     return false;  // Request is out of spec.
 
-  uint16_t offset = kStartOffset;
   uint64_t data = 0;
 
   // Match Data + Footer
@@ -173,7 +174,7 @@ bool IRrecv::decodeMitsubishi(decode_results *results, uint16_t nbits,
 //   nbits:  Nr. of bits of data to be sent. Typically kMitsubishiBits.
 //   repeat: Nr. of additional times the message is to be sent.
 //
-// Status: ALPHA / untested.
+// Status: BETA / Probably works.
 //
 // Notes:
 //   Based on a Mitsubishi HC3000 projector's remote.
@@ -206,12 +207,14 @@ void IRsend::sendMitsubishi2(uint64_t data, uint16_t nbits, uint16_t repeat) {
 //
 // Args:
 //   results: Ptr to the data to decode and where to store the decode result.
+//   offset:  The starting index to use when attempting to decode the raw data.
+//            Typically/Defaults to kStartOffset.
 //   nbits:   Nr. of data bits to expect.
 //   strict:  Flag indicating if we should perform strict matching.
 // Returns:
 //   boolean: True if it can decode it, false if it can't.
 //
-// Status: BETA / Works with simulated data.
+// Status: STABLE / Works.
 //
 // Notes:
 //   Hardware supported:
@@ -219,14 +222,13 @@ void IRsend::sendMitsubishi2(uint64_t data, uint16_t nbits, uint16_t repeat) {
 //
 // Ref:
 //   https://github.com/crankyoldgit/IRremoteESP8266/issues/441
-bool IRrecv::decodeMitsubishi2(decode_results *results, uint16_t nbits,
-                               bool strict) {
-  if (results->rawlen < 2 * nbits + kHeader + (kFooter * 2) - 1)
+bool IRrecv::decodeMitsubishi2(decode_results *results, uint16_t offset,
+                               const uint16_t nbits, const bool strict) {
+  if (results->rawlen <= 2 * nbits + kHeader + (kFooter * 2) - 1 + offset)
     return false;  // Shorter than shortest possibly expected.
   if (strict && nbits != kMitsubishiBits)
     return false;  // Request is out of spec.
 
-  uint16_t offset = kStartOffset;
   results->value = 0;
 
   // Header
@@ -268,7 +270,7 @@ bool IRrecv::decodeMitsubishi2(decode_results *results, uint16_t nbits,
 //   repeat: Nr. of times the message is to be repeated.
 //          (Default = kMitsubishiACMinRepeat).
 //
-// Status: BETA / Appears to be working.
+// Status: STABLE / Working.
 //
 void IRsend::sendMitsubishiAC(const unsigned char data[], const uint16_t nbytes,
                               const uint16_t repeat) {
@@ -287,18 +289,21 @@ void IRsend::sendMitsubishiAC(const unsigned char data[], const uint16_t nbytes,
 //
 // Args:
 //   results: Ptr to the data to decode and where to store the decode result.
+//   offset:  The starting index to use when attempting to decode the raw data.
+//            Typically/Defaults to kStartOffset.
 //   nbits:   Nr. of data bits to expect.
 //   strict:  Flag indicating if we should perform strict matching.
 // Returns:
 //   boolean: True if it can decode it, false if it can't.
 //
-// Status: ALPHA / Under development
+// Status: BETA / Probably works
 //
 // Ref:
 // https://www.analysir.com/blog/2015/01/06/reverse-engineering-mitsubishi-ac-infrared-protocol/
-bool IRrecv::decodeMitsubishiAC(decode_results *results, uint16_t nbits,
-                                bool strict) {
-  if (results->rawlen < ((kMitsubishiACBits * 2) + 2)) {
+bool IRrecv::decodeMitsubishiAC(decode_results *results, uint16_t offset,
+                                const uint16_t nbits,
+                                const bool strict) {
+  if (results->rawlen <= ((kMitsubishiACBits * 2) + 2) + offset) {
     DPRINTLN("Shorter than shortest possibly expected.");
     return false;  // Shorter than shortest possibly expected.
   }
@@ -306,10 +311,7 @@ bool IRrecv::decodeMitsubishiAC(decode_results *results, uint16_t nbits,
     DPRINTLN("Request is out of spec.");
     return false;  // Request is out of spec.
   }
-  uint16_t offset = kStartOffset;
-  for (uint8_t i = 0; i < kMitsubishiACStateLength; i++) {
-    results->state[i] = 0;
-  }
+  for (uint8_t i = 0; i < kMitsubishiACStateLength; i++) results->state[i] = 0;
   bool failure = false;
   uint8_t rep = 0;
   do {
@@ -745,9 +747,16 @@ String IRMitsubishiAC::toString(void) {
   result += addIntToString(this->getVane(), kSwingVStr);
   result += kSpaceLBraceStr;
   switch (this->getVane()) {
-    case kMitsubishiAcVaneAuto:     result += kAutoStr; break;
-    case kMitsubishiAcVaneAutoMove: result += kAutoStr + ' ' + kMoveStr; break;
-    default:                        result += kUnknownStr;
+    case kMitsubishiAcVaneAuto:
+      result += kAutoStr;
+      break;
+    case kMitsubishiAcVaneAutoMove:
+      result += kAutoStr;
+      result += ' ';
+      result += kMoveStr;
+      break;
+    default:
+      result += kUnknownStr;
   }
   result += ')';
   result += addIntToString(this->getWideVane(), kSwingHStr);
@@ -760,7 +769,9 @@ String IRMitsubishiAC::toString(void) {
   result += addLabeledString(minsToString(getClock() * 10), kClockStr);
   result += addLabeledString(minsToString(getStartClock() * 10), kOnTimerStr);
   result += addLabeledString(minsToString(getStopClock() * 10), kOffTimerStr);
-  result += kCommaSpaceStr + kTimerStr + kColonSpaceStr;
+  result += kCommaSpaceStr;
+  result += kTimerStr;
+  result += kColonSpaceStr;
   switch (this->getTimer()) {
     case kMitsubishiAcNoTimer:
       result += '-';
@@ -772,7 +783,9 @@ String IRMitsubishiAC::toString(void) {
       result += kStopStr;
       break;
     case kMitsubishiAcStartStopTimer:
-      result += kStartStr + '+' + kStopStr;
+      result += kStartStr;
+      result += '+';
+      result += kStopStr;
       break;
     default:
       result += F("? (");
@@ -791,7 +804,7 @@ String IRMitsubishiAC::toString(void) {
 //   repeat: Nr. of times the message is to be repeated.
 //          (Default = kMitsubishi136MinRepeat).
 //
-// Status: ALPHA / Probably working. Needs to be tested against a real device.
+// Status: BETA / Probably working. Needs to be tested against a real device.
 //
 // Ref:
 //   https://github.com/crankyoldgit/IRremoteESP8266/issues/888
@@ -814,6 +827,8 @@ void IRsend::sendMitsubishi136(const unsigned char data[],
 //
 // Args:
 //   results: Ptr to the data to decode and where to store the decode result.
+//   offset:  The starting index to use when attempting to decode the raw data.
+//            Typically/Defaults to kStartOffset.
 //   nbits:   Nr. of data bits to expect.
 //   strict:  Flag indicating if we should perform strict matching.
 // Returns:
@@ -823,16 +838,15 @@ void IRsend::sendMitsubishi136(const unsigned char data[],
 //
 // Ref:
 //   https://github.com/crankyoldgit/IRremoteESP8266/issues/888
-bool IRrecv::decodeMitsubishi136(decode_results *results, const uint16_t nbits,
+bool IRrecv::decodeMitsubishi136(decode_results *results, uint16_t offset,
+                                 const uint16_t nbits,
                                  const bool strict) {
-  // Too short to match?
-  if (results->rawlen < (2 * nbits) + kHeader + kFooter - 1) return false;
   if (nbits % 8 != 0) return false;  // Not a multiple of an 8 bit byte.
   if (strict) {  // Do checks to see if it matches the spec.
     if (nbits != kMitsubishi136Bits) return false;
   }
-  uint16_t used = matchGeneric(results->rawbuf + kStartOffset, results->state,
-                               results->rawlen - kStartOffset, nbits,
+  uint16_t used = matchGeneric(results->rawbuf + offset, results->state,
+                               results->rawlen - offset, nbits,
                                kMitsubishi136HdrMark, kMitsubishi136HdrSpace,
                                kMitsubishi136BitMark, kMitsubishi136OneSpace,
                                kMitsubishi136BitMark, kMitsubishi136ZeroSpace,
@@ -1163,6 +1177,8 @@ void IRsend::sendMitsubishi112(const unsigned char data[],
 //
 // Args:
 //   results: Ptr to the data to decode and where to store the decode result.
+//   offset:  The starting index to use when attempting to decode the raw data.
+//            Typically/Defaults to kStartOffset.
 //   nbits:   Nr. of data bits to expect.
 //   strict:  Flag indicating if we should perform strict matching.
 // Returns:
@@ -1180,14 +1196,14 @@ void IRsend::sendMitsubishi112(const unsigned char data[],
 // Ref:
 //   https://github.com/crankyoldgit/IRremoteESP8266/issues/619
 //   https://github.com/crankyoldgit/IRremoteESP8266/issues/947
-bool IRrecv::decodeMitsubishi112(decode_results *results, const uint16_t nbits,
-                                 const bool strict) {
-  if (results->rawlen < ((2 * nbits) + kHeader + kFooter - 1)) return false;
+bool IRrecv::decodeMitsubishi112(decode_results *results, uint16_t offset,
+                                 const uint16_t nbits, const bool strict) {
+  if (results->rawlen < (2 * nbits) + kHeader + kFooter - 1 + offset)
+    return false;
   if (nbits % 8 != 0) return false;  // Not a multiple of an 8 bit byte.
   if (strict) {  // Do checks to see if it matches the spec.
     if (nbits != kMitsubishi112Bits && nbits != kTcl112AcBits) return false;
   }
-  uint16_t offset = kStartOffset;
   decode_type_t typeguess = decode_type_t::UNKNOWN;
   uint16_t hdrspace;
   uint16_t bitmark;

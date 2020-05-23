@@ -1,0 +1,28 @@
+#######################################
+# Syntax Coloring Map for LEDbar
+# (74HC164 based) library
+# https://github.com/MCUdude/LEDbar
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+LEDbar	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+clear	KEYWORD2
+all	KEYWORD2
+brightness	KEYWORD2
+setDots	KEYWORD2
+setLevel	KEYWORD2
+setPattern	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

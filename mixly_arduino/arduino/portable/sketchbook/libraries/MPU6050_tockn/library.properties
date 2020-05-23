@@ -1,0 +1,9 @@
+name=MPU6050_tockn
+version=1.5.2
+author=tockn
+maintainer=tockn
+sentence=Arduino library for easy communicating with the MPU6050.
+paragraph=It can get accel, gyro, and angle data.
+category=Sensors
+url=https://github.com/Tockn/MPU6050_tockn
+architectures=*

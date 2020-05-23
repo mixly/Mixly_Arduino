@@ -41,7 +41,7 @@ const uint32_t kPioneerMinGap = kPioneerMinGapTicks * kPioneerTick;
 //           Typically kPioneerBits.
 //   repeat: The number of times the command is to be repeated.
 //
-// Status: BETA / Expected to be working.
+// Status: STABLE / Expected to be working.
 //
 // Ref:
 //  http://adrian-kingston.com/IRFormatPioneer.htm
@@ -75,7 +75,7 @@ void IRsend::sendPioneer(const uint64_t data, const uint16_t nbits,
 // Returns:
 //   A raw 64-bit Pioneer message code.
 //
-// Status: BETA / Expected to work.
+// Status: STABLE / Expected to work.
 //
 // Note:
 //   Address & Command can be take from a decode result OR from the spreadsheets
@@ -96,22 +96,23 @@ uint64_t IRsend::encodePioneer(const uint16_t address, const uint16_t command) {
 //
 // Args:
 //   results: Ptr to the data to decode and where to store the decode result.
+//   offset:  The starting index to use when attempting to decode the raw data.
+//            Typically/Defaults to kStartOffset.
 //   nbits:   The number of data bits to expect. Typically kPioneerBits.
 //   strict:  Flag indicating if we should perform strict matching.
 // Returns:
 //   boolean: True if it can decode it, false if it can't.
 //
-// Status: BETA / Should be working. (Self decodes & real examples)
+// Status: STABLE / Should be working. (Self decodes & real examples)
 //
-bool IRrecv::decodePioneer(decode_results *results, const uint16_t nbits,
-                           const bool strict) {
-  if (results->rawlen < 2 * (nbits + kHeader + kFooter) - 1)
+bool IRrecv::decodePioneer(decode_results *results, uint16_t offset,
+                           const uint16_t nbits, const bool strict) {
+  if (results->rawlen < 2 * (nbits + kHeader + kFooter) - 1 + offset)
     return false;  // Can't possibly be a valid Pioneer message.
   if (strict && nbits != kPioneerBits)
     return false;  // Not strictly an Pioneer message.
 
   uint64_t data = 0;
-  uint16_t offset = kStartOffset;
   results->value = 0;
   for (uint16_t section = 0; section < 2; section++) {
     // Match Header + Data + Footer

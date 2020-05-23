@@ -1,0 +1,29 @@
+#######################################
+# Syntax Coloring Map Servo
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+VarSpeedServo	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+attach	KEYWORD2
+detach	KEYWORD2
+write	KEYWORD2
+read	KEYWORD2
+stop	KEYWORD2
+attached	KEYWORD2
+writeMicroseconds	KEYWORD2
+readMicroseconds	KEYWORD2
+slowmove	KEYWORD2
+sequencePlay	KEYWORD2
+sequenceStop	KEYWORD2
+wait	KEYWORD2
+isMoving	KEYWORD2
+#######################################
+# Constants (LITERAL1)
+#######################################

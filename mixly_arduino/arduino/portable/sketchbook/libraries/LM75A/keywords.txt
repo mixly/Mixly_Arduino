@@ -1,0 +1,6 @@
+LM75A	KEYWORD1
+getTemperatureInDegrees	KEYWORD2
+getTemperatureInFahrenheit	KEYWORD2
+fahrenheitToDegrees	KEYWORD2
+degreesToFahrenheit	KEYWORD2
+INVALID_LM75A_TEMPERATURE	KEYWORD2

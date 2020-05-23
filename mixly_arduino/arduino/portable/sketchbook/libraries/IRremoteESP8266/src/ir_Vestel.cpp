@@ -469,7 +469,7 @@ String IRVestelAc::toString(void) {
   // Not a time command, it's a normal command.
   result += addBoolToString(getPower(), kPowerStr, false);
   result += addModeToString(getMode(), kVestelAcAuto, kVestelAcCool,
-                            kVestelAcHeat,   kVestelAcDry, kVestelAcFan);
+                            kVestelAcHeat, kVestelAcDry, kVestelAcFan);
   result += addTempToString(getTemp());
   result += addIntToString(getFan(), kFanStr);
   result += kSpaceLBraceStr;
@@ -487,10 +487,14 @@ String IRVestelAc::toString(void) {
       result += kHighStr;
       break;
     case kVestelAcFanAutoCool:
-      result += kAutoStr + ' ' + kCoolStr;
+      result += kAutoStr;
+      result += ' ';
+      result += kCoolStr;
       break;
     case kVestelAcFanAutoHot:
-      result += kAutoStr + ' ' + kHeatStr;
+      result += kAutoStr;
+      result += ' ';
+      result += kHeatStr;
       break;
     default:
       result += kUnknownStr;
@@ -508,6 +512,8 @@ String IRVestelAc::toString(void) {
 //
 // Args:
 //   results: Ptr to the data to decode and where to store the decode result.
+//   offset:  The starting index to use when attempting to decode the raw data.
+//            Typically/Defaults to kStartOffset.
 //   nbits:   The number of data bits to expect. Typically kVestelBits.
 //   strict:  Flag indicating if we should perform strict matching.
 // Returns:
@@ -515,8 +521,8 @@ String IRVestelAc::toString(void) {
 //
 // Status: Alpha / Needs testing against a real device.
 //
-bool IRrecv::decodeVestelAc(decode_results* results, const uint16_t nbits,
-                            const bool strict) {
+bool IRrecv::decodeVestelAc(decode_results* results, uint16_t offset,
+                            const uint16_t nbits, const bool strict) {
   if (nbits % 8 != 0)  // nbits has to be a multiple of nr. of bits in a byte.
     return false;
 
@@ -525,7 +531,6 @@ bool IRrecv::decodeVestelAc(decode_results* results, const uint16_t nbits,
       return false;  // Not strictly a Vestel AC message.
 
   uint64_t data = 0;
-  uint16_t offset = kStartOffset;
 
   if (nbits > sizeof(data) * 8)
     return false;  // We can't possibly capture a Vestel packet that big.

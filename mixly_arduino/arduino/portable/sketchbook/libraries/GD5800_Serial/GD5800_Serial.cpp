@@ -2,11 +2,18 @@
 
  */
 
- 
- #include "GD5800_Serial.h"
+ //#include <Arduino.h>
 
+ //#include <SoftwareSerial.h>
 
+#include <Arduino.h>
 
+#if defined __AVR__ //|| defined (ESP8266)
+#include <SoftwareSerial.h>
+#elif defined (ESP32)
+#include <ESP32SoftwareSerial.h>
+#endif
+#include "GD5800_Serial.h"
  void  GD5800_Serial::play()
  {
   this->sendCommand(0x01);

@@ -1,0 +1,21 @@
+Version:
+	1.0	01 Sep 2011  -	initial release
+	1.1	04 Sep 2011  -  added invertText();
+	2.0	18 Mar 2013  -	combined Arduino and chipKit libraries into a single library
+				updated library to support Arduino v1.0 (and higher)
+				added setContrast();
+				added support for Arduino Leonardo and Arduino Due
+				fixed a bug that caused bitmaps to use double the memory on chipKits
+				changed license to CC BY-NC-SA 3.0
+	2.1	08 May 2013  -  modified printNumI() and printNumF()
+				added support for String objects to print()
+				added support for chipKit uC32
+				reorganized files
+	2.11	14 Jun 2013  -  fixed the '%' symbol in SmallFont
+				added fillScr(), clrLine(), clrRect(), clrRoundRect() and clrCircle()
+	2.12	16 Mar 2014  -  added functions for enabling and disabling Sleep Mode
+				added an example for the use of Sleep Mode
+				added support for Bobuino
+	2.13	08 Sep 2014  -  fixed compatibility-issues with Arduino 1.5.7
+
+
