@@ -1022,11 +1022,12 @@
     </shadow>
   </value>
 </block>
+<block type="TFT_init">
+</block>
 <block type="TFT_fillScreen">
   <value name="COLOR">
     <shadow type="math_number">
-      <field name="NUM">
-      </field>
+      <field name="NUM">0</field>
     </shadow>
     <block type="TFT_color_seclet">
       <field name="COLOR">#000000</field>
@@ -1830,6 +1831,11 @@
 </category>
 <category id="catOLED" colour="180">
   <block type="oled_init">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0x3C</field>
+      </shadow>
+    </value>
     <next>
       <block type="oled_page">
         <statement name="DO">

@@ -1076,12 +1076,15 @@ Blockly.Blocks.oled_init = {
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_SETUP)
     .appendField(new Blockly.FieldDropdown(OLED_TYPE), "OLED_TYPE")
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(" "+Blockly.MIXLY_MICROBIT_monitor)
     .appendField(new Blockly.FieldDropdown(ROTATION_TYPE), "ROTATION")
     .appendField(' SCL')
     .appendField(new Blockly.FieldDropdown(profile.default.digital), "SCL")
     .appendField('SDA')
     .appendField(new Blockly.FieldDropdown(profile.default.digital), "SDA");
+    this.appendValueInput("ADDRESS")
+    .appendField(Blockly.MIXLY_LCD_ADDRESS);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -1096,6 +1099,7 @@ Blockly.Blocks.u8g2_spi_init= {
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_SETUP)
     .appendField(new Blockly.FieldDropdown(U8G2_TYPE_SSD1306_NOKIA5110), "U8G2_TYPE_SPI")
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(" "+Blockly.MIXLY_MICROBIT_monitor)
     .appendField(new Blockly.FieldDropdown(ROTATION_TYPE), "ROTATION");
      this.appendValueInput("CLK")
@@ -1125,10 +1129,10 @@ Blockly.Blocks.u8g2_LCD12864_spi_init= {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_SETUP+"LCD12864")
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(" "+Blockly.MIXLY_MICROBIT_monitor)
-    .appendField(new Blockly.FieldDropdown(ROTATION_TYPE), "ROTATION")
-    .appendField(' E');
-         this.appendValueInput("CLK")
+    .appendField(new Blockly.FieldDropdown(ROTATION_TYPE), "ROTATION");
+    this.appendValueInput("CLK")
     .setCheck(Number)
     .appendField("CLK");
     this.appendValueInput("MOSI")
@@ -1150,6 +1154,7 @@ Blockly.Blocks.u8g2_LCD12864_8080_init= {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_SETUP+"LCD12864")
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(" "+Blockly.MIXLY_MICROBIT_monitor)
     .appendField(new Blockly.FieldDropdown(ROTATION_TYPE), "ROTATION");
     this.appendDummyInput()
@@ -1188,6 +1193,7 @@ Blockly.Blocks.oled_clear = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_CLEAR);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -1201,6 +1207,7 @@ Blockly.Blocks['oled_define_bitmap_data'] = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_BITMAP_NAME)
     .appendField(new Blockly.FieldTextInput('bitmap1'), 'VAR')
     .appendField(Blockly.OLED_BITMAP_DATA)
@@ -1218,6 +1225,7 @@ Blockly.Blocks.oled_icons = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_BITMAP);
     this.appendValueInput("POS_X", Number)
     .appendField(Blockly.OLED_START_X)
@@ -1245,6 +1253,7 @@ Blockly.Blocks.oled_face = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_BITMAP);
     this.appendValueInput("POS_X", Number)
     .appendField(Blockly.OLED_START_X)
@@ -1268,6 +1277,7 @@ Blockly.Blocks.oled_showBitmap = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_BITMAP);
     this.appendValueInput("START_X", Number)
     .appendField(Blockly.OLED_START_X)
@@ -1297,6 +1307,7 @@ Blockly.Blocks.oled_drawPixel = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_DRAWPIXEL);
     this.appendValueInput("POS_X", Number)
     .appendField(Blockly.OLED_POSX)
@@ -1317,6 +1328,7 @@ Blockly.Blocks.oled_drawLine = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_DRAWLINE);
     this.appendValueInput("START_X", Number)
     .appendField(Blockly.OLED_START_X)
@@ -1343,6 +1355,7 @@ Blockly.Blocks.oled_draw_Str_Line = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_DRAWSTRLINE);
     this.appendValueInput("START_X", Number)
     .appendField(Blockly.OLED_START_X)
@@ -1368,6 +1381,7 @@ Blockly.Blocks.oled_page = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_PAGE);
     this.appendStatementInput('DO')
     .appendField('');
@@ -1383,6 +1397,7 @@ Blockly.Blocks.oled_drawTriangle = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_DRAW_TRIANGLE);
     this.appendValueInput("D0_X", Number)
     .appendField(Blockly.OLED_D0_X)
@@ -1415,6 +1430,7 @@ Blockly.Blocks.oled_drawFrame = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_DRAW_RECTANGLE);
     this.appendDummyInput("")
     .appendField(new Blockly.FieldDropdown(FRAMESELECT), "TYPE");
@@ -1443,6 +1459,7 @@ Blockly.Blocks.oled_drawRFrame = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_DRAW_RAD_RECTANGLE);
     this.appendDummyInput("")
     .appendField(new Blockly.FieldDropdown(RADSELECT), "TYPE");
@@ -1474,6 +1491,7 @@ Blockly.Blocks.oled_drawCircle = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_DRAW_CIRCLE);
     this.appendDummyInput("")
     .appendField(new Blockly.FieldDropdown(CIRCLESELECT), "TYPE");
@@ -1501,6 +1519,7 @@ Blockly.Blocks.oled_drawEllipse = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_DRAW_ELLIPSE);
     this.appendDummyInput("")
     .appendField(new Blockly.FieldDropdown(ELLIPSESELECT), "TYPE");
@@ -1531,6 +1550,7 @@ Blockly.Blocks.oled_drawStr = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_DRAWSTR);
     this.appendValueInput("POS_X", Number)
     .appendField(Blockly.OLED_START_X)
@@ -1554,6 +1574,7 @@ Blockly.Blocks.oled_set_EN_Font = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.set_EN_Font)
     .appendField(new Blockly.FieldDropdown(EN_FONT_NAME), "FONT_NAME");
     this.appendDummyInput("")
@@ -1574,6 +1595,7 @@ Blockly.Blocks.oled_set_CN_Font = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.set_CN_Font)
     .appendField(new Blockly.FieldDropdown(CN_FONT_NAME), "FONT_NAME");
     this.appendDummyInput("")
@@ -1591,6 +1613,7 @@ Blockly.Blocks.oled_print = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.OLED_PRINT_VAR);
     this.appendValueInput("POS_X", Number)
     .appendField(Blockly.OLED_START_X)
@@ -1614,6 +1637,7 @@ Blockly.Blocks['u8g2_setContrast'] = {
     this.appendValueInput("Contrast")
     .setCheck(null)
     .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(Blockly.TFT_Brightness+Blockly.MIXLY_BRIGHTNESS);
     this.appendDummyInput();
     this.setPreviousStatement(true, null);
@@ -1629,7 +1653,9 @@ Blockly.Blocks['get_utf8_width'] = {
   init: function() {
     this.appendValueInput("str")
         .setCheck(null)
-        .appendField(Blockly.DISPLAY+Blockly.OLED_DRAWSTR+Blockly.MIXLY_WIDTH);
+        .appendField(Blockly.DISPLAY)
+        .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
+        .appendField(' '+Blockly.OLED_DRAWSTR+Blockly.MIXLY_WIDTH);
     this.setOutput(true, null);
     this.setColour(Blockly.Blocks.display.HUE);
  this.setTooltip("");
