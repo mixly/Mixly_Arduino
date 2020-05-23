@@ -291,10 +291,10 @@ Blockly.Blocks['controls_try_finally'] = {
     init: function() {
         this.setColour(Blockly.Blocks.loops.HUE);
         this.appendDummyInput()
-            .appendField('try');
+            .appendField(Blockly.MIXLY_PYTHON_TRY);
         this.appendStatementInput('try');
         this.appendValueInput('IF1')
-            .appendField('except');
+            .appendField(Blockly.MIXLY_PYTHON_EXCEPT);
         this.appendStatementInput('DO1')
             .appendField('');
         this.setPreviousStatement(true);
@@ -333,13 +333,13 @@ Blockly.Blocks['controls_try_finally'] = {
     this.elseCount_ = parseInt(xmlElement.getAttribute('else'), 10);
     for (var i = 2; i <= this.elseifCount_; i++) {
       this.appendValueInput('IF' + i)
-          .appendField('except');
+          .appendField(Blockly.MIXLY_PYTHON_EXCEPT);
       this.appendStatementInput('DO' + i)
           .appendField('');
     }
     if (this.elseCount_) {
       this.appendStatementInput('ELSE')
-          .appendField('finally');
+          .appendField(Blockly.MIXLY_PYTHON_FINALLY);
     }
   },
   /**
@@ -390,7 +390,7 @@ Blockly.Blocks['controls_try_finally'] = {
           this.elseifCount_++;
           var ifInput = this.appendValueInput('IF' + this.elseifCount_)
               .setCheck([Number,Boolean])
-              .appendField('except');
+              .appendField(Blockly.MIXLY_PYTHON_EXCEPT);
           var doInput = this.appendStatementInput('DO' + this.elseifCount_);
           doInput.appendField('');
           // Reconnect any child blocks.
@@ -404,7 +404,7 @@ Blockly.Blocks['controls_try_finally'] = {
         case 'controls_finally':
           this.elseCount_++;
           var elseInput = this.appendStatementInput('ELSE');
-          elseInput.appendField('finally');
+          elseInput.appendField(Blockly.MIXLY_PYTHON_FINALLY);
           // Reconnect any child blocks.
           if (clauseBlock.statementConnection_) {
             elseInput.connection.connect(clauseBlock.statementConnection_);
@@ -661,7 +661,7 @@ Blockly.Blocks['controls_except'] = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-        .appendField('except');
+        .appendField(Blockly.MIXLY_PYTHON_EXCEPT);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.contextMenu = false;
@@ -677,7 +677,7 @@ Blockly.Blocks['controls_finally'] = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-        .appendField('finally');
+        .appendField(Blockly.MIXLY_PYTHON_FINALLY);
     this.setPreviousStatement(true);
     this.contextMenu = false;
     this.setTooltip(Blockly.MIXLY_MIXPY_CONTROL_FINALLY_TOOLTIP);
@@ -731,7 +731,7 @@ Blockly.Blocks.controls_pass = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendDummyInput()
-      .appendField('pass');
+      .appendField(Blockly.MIXLY_PYTHON_PASS);
   this.setPreviousStatement(true);
   this.setNextStatement(true);
   this.setTooltip(Blockly.MIXLY_PYTHON_CONTROLS_PASS_TOOLTIP);

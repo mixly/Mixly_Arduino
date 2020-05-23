@@ -2808,3 +2808,7 @@ Blockly.MIXLY_PYTHON_TOOLTIP_TOSET = '將一個值轉換為一個集合。';
 Blockly.MIXLY_TOSET = '轉集合';
 Blockly.MIXLY_PYTHON_TOOLTIP_TODICT = '將一個值轉換為一個字典。';
 Blockly.MIXLY_TODICT = '轉字典';
+Blockly.MIXLY_PYTHON_PASS = '佔位語句';
+Blockly.MIXLY_PYTHON_TRY = '嘗試執行';
+Blockly.MIXLY_PYTHON_EXCEPT = '出現異常';
+Blockly.MIXLY_PYTHON_FINALLY = '最終執行';

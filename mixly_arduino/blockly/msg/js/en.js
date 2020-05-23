@@ -2809,3 +2809,7 @@ Blockly.MIXLY_PYTHON_TOOLTIP_TOSET = "convert a value to a collection.";
 Blockly.MIXLY_TOSET = "to set";
 Blockly.MIXLY_PYTHON_TOOLTIP_TODICT = "convert a value to a dictionary.";
 Blockly.MIXLY_TODICT = "to dictionary";
+Blockly.MIXLY_PYTHON_PASS = 'pass';
+Blockly.MIXLY_PYTHON_TRY = 'try';
+Blockly.MIXLY_PYTHON_EXCEPT = 'except';
+Blockly.MIXLY_PYTHON_FINALLY = 'finally';

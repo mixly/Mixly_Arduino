@@ -2807,4 +2807,7 @@ Blockly.MIXLY_PYTHON_TOOLTIP_TOSET = "Convertir un valor en un conjunto.";
 Blockly.MIXLY_TOSET = "¡Giren!";
 Blockly.MIXLY_PYTHON_TOOLTIP_TODICT = "Convertir un valor en un diccionario.";
 Blockly.MIXLY_TODICT = "Cambiar diccionario";
-
+Blockly.MIXLY_PYTHON_PASS = 'microblog';
+Blockly.MIXLY_PYTHON_TRY = 'Intentar ejecutar';
+Blockly.MIXLY_PYTHON_EXCEPT = 'Aparición de anomalías';
+Blockly.MIXLY_PYTHON_FINALLY = 'Ejecución final';
