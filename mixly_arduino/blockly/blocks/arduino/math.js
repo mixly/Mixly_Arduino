@@ -73,7 +73,7 @@ Blockly.Blocks['math_bit'] = {
     var OPERATORS =
     [['&', '&'],
     ['|', '|'],
-    ['^', '^'],
+    ['xor', '^'],
     ['>>', '>>'],
     ['<<', '<<']];
     this.setColour(Blockly.Blocks.math.HUE);
