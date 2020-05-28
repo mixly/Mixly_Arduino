@@ -32,7 +32,7 @@ var MSG = {
 	catEthernet_clinet: "用戶端",
 	tab_blocks: "模組",
 	tab_arduino: "代碼",
-	copyright: "Copyright © 北京師範大學米思齊團隊				http://mixly.org/",
+	copyright: "Copyright © 北京師範大學傅騫博士團隊				http://mixly.org/",
 	catGame: "遊戲",
 	catSystem: "系統",
 	catTurtle: "海龜",
