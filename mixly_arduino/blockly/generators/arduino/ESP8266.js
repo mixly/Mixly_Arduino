@@ -63,3 +63,17 @@ Blockly.Arduino.store_eeprom_read_byte = function() {
 	var code ='EEPROM.read('+address+')';
 	return [code,Blockly.Arduino.ORDER_ATOMIC];
 }
+
+Blockly.Arduino.controls_attachInterrupt = function () {
+    var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+    var dropdown_mode = this.getFieldValue('mode');
+    Blockly.Arduino.setups_['setup_input_' + dropdown_pin] = 'pinMode(' + dropdown_pin + ', INPUT_PULLUP);';
+    //var interrupt_pin=digitalPinToInterrupt(dropdown_pin).toString();
+    var interrupt_pin = 'digitalPinToInterrupt(' + dropdown_pin + ')';
+    var code = 'attachInterrupt' + '(' + interrupt_pin + ',' + 'attachInterrupt_fun_' + dropdown_pin + ',' + dropdown_mode + ');\n'
+    var funcName = 'attachInterrupt_fun_' + dropdown_pin;
+    var branch = Blockly.Arduino.statementToCode(this, 'DO');
+    var code2 = 'ICACHE_RAM_ATTR void' + ' ' + funcName + '() {\n' + branch + '}\n';
+    Blockly.Arduino.definitions_[funcName] = code2;
+    return code;
+};
