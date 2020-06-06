@@ -103,7 +103,7 @@ Blockly.Arduino.Mixly_motor = function() {
   +'  else\n'
   +'  {\n'
   +'    if(speed < -255)\n'
-  +'      speed = -255;'
+  +'      speed = -255;\n'
   +'    digitalWrite(dirpin, HIGH);\n'
   +'    analogWrite(speedpin, 255 + speed);\n'
   +'  }\n'
@@ -117,11 +117,13 @@ Blockly.Arduino.HR8833_Motor_Setup = function() {
   var pin1 = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
   var pin2 = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['HR8833_Motor_Setup_fun'] ='void HR8833_Motor_Setup(int motorID,int pin1,int pin2){//电机初始化 ID=1~4 定义四组电机\n'
-  +'    ledcSetup(motorID*2-2, 5000, 8);ledcAttachPin(pin1, motorID*2-2);\n'
-  +'    ledcSetup(motorID*2-1, 5000, 8);ledcAttachPin(pin2, motorID*2-1);\n'
-  +' }';
+  +'  ledcSetup(motorID*2-2, 5000, 8);\n'
+  +'  ledcAttachPin(pin1, motorID*2-2);\n'
+  +'  ledcSetup(motorID*2-1, 5000, 8);\n'
+  +'  ledcAttachPin(pin2, motorID*2-1);\n'
+  +'}';
   Blockly.Arduino.setups_['motorID_'+motor_id]='HR8833_Motor_Setup('+motor_id+','+pin1+','+pin2+');';
-  var code =' ';
+  var code ='';
   return code;
 };
 
@@ -129,20 +131,20 @@ Blockly.Arduino.HR8833_Motor_Speed = function() {
   var motor_id = Blockly.Arduino.valueToCode(this, 'MOTOR_ID', Blockly.Arduino.ORDER_ATOMIC);
   var speed = Blockly.Arduino.valueToCode(this, 'SPEED', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['HR8833_Motor_Speed_fun'] ='void HR8833_Motor_Speed(int motorID,int speed){//电机速度设置 ID=1~4,speed=-255~255\n'
-  +'if (speed == 0){  \n'
-  +'  ledcWrite(motorID*2-2, 0);\n'
-  +'  ledcWrite(motorID*2-1, 0);\n'
-  +'}\n'
-  +'else if (speed > 0){\n'
-  +'  ledcWrite(motorID*2-2, speed);\n'
+  +'  if (speed == 0){  \n'
+  +'    ledcWrite(motorID*2-2, 0);\n'
   +'    ledcWrite(motorID*2-1, 0);\n'
-  +'}\n'
-  +'else{\n'
-  +'      ledcWrite(motorID*2-2, 0);\n'
-  +'     ledcWrite(motorID*2-1, -speed);\n'
-  +'    }\n'
+  +'  }\n'
+  +'  else if (speed > 0){\n'
+  +'    ledcWrite(motorID*2-2, speed);\n'
+  +'    ledcWrite(motorID*2-1, 0);\n'
+  +'  }\n'
+  +'  else{\n'
+  +'    ledcWrite(motorID*2-2, 0);\n'
+  +'    ledcWrite(motorID*2-1, -speed);\n'
+  +'  }\n'
   +'}\n';
-  var code ='HR8833_Motor_Speed('+motor_id+','+speed+'); ';
+  var code ='HR8833_Motor_Speed('+motor_id+','+speed+');\n';
   return code;
 };
 

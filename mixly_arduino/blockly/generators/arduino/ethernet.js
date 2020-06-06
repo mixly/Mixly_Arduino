@@ -79,12 +79,12 @@ Blockly.Arduino.WIFI_info = function() {
   var PWD = Blockly.Arduino.valueToCode(this, 'PWD', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_ESP8266WiFi'] ='#include <ESP8266WiFi.h>';
   Blockly.Arduino.setups_['setup_WiFi_begin'] = 'WiFi.begin('+SSID+', '+PWD+');\n'
-  +'while (WiFi.status() != WL_CONNECTED) {\n'
-  +'delay(500);\n'
-  +'Serial.print(".");\n'
-  +'}\n'
-  +'Serial.println("Local IP:");\n'
-  +'Serial.print(WiFi.localIP());\n'
+  +'  while (WiFi.status() != WL_CONNECTED) {\n'
+  +'    delay(500);\n'
+  +'    Serial.print(".");\n'
+  +'  }\n'
+  +'  Serial.println("Local IP:");\n'
+  +'  Serial.print(WiFi.localIP());'
   return "";
 };
 
@@ -139,20 +139,22 @@ Blockly.Arduino.MQTT_server = function() {
   var code = 'void' + ' ' + funcName + '() {\n'
   + '  int8_t ret;\n'
   + '  if (mqtt.connected()) {\n'
-  + '  return;\n'
+  + '    return;\n'
   + '  }\n'
   + '  Serial.print("Connecting to MQTT... ");\n'
   + '  uint8_t retries = 3;\n'
-  + 'while ((ret = mqtt.connect()) != 0) {\n'
-  + '  Serial.println(mqtt.connectErrorString(ret));\n'
-  + '  Serial.println("Retrying MQTT connection in 5 seconds...");\n'
-  + '  mqtt.disconnect();\n'
-  + '  delay(5000);\n'
-  + '  retries--;\n'
-  + 'if (retries == 0) {\n'
-  + ' while (1);\n'
-  + '  }\n}\n'
-  + '  Serial.println("MQTT Connected!");\n}\n';
+  + '  while ((ret = mqtt.connect()) != 0) {\n'
+  + '    Serial.println(mqtt.connectErrorString(ret));\n'
+  + '    Serial.println("Retrying MQTT connection in 5 seconds...");\n'
+  + '    mqtt.disconnect();\n'
+  + '    delay(5000);\n'
+  + '    retries--;\n'
+  + '    if (retries == 0) {\n'
+  + '      while (1);\n'
+  + '    }\n'
+  + '  }\n'
+  + '  Serial.println("MQTT Connected!");\n'
+  + '}\n';
   Blockly.Arduino.definitions_['var_declare_'+funcName] = code;
   return funcName + '();\n';
 };
@@ -166,16 +168,18 @@ Blockly.Arduino.MQTT_connect= function() {
   + '  }\n'
   + '  Serial.print("Connecting to MQTT... ");\n'
   + '  uint8_t retries = 3;\n'
-  + 'while ((ret = mqtt.connect()) != 0) {\n'
-  + '  Serial.println(mqtt.connectErrorString(ret));\n'
-  + '  Serial.println("Retrying MQTT connection in 5 seconds...");\n'
-  + '  mqtt.disconnect();\n'
-  + '  delay(5000);\n'
-  + '  retries--;\n'
-  + 'if (retries == 0) {\n'
-  + ' while (1);\n'
-  + '  }\n}\n'
-  + '  Serial.println("MQTT Connected!");\n}\n';
+  + '  while ((ret = mqtt.connect()) != 0) {\n'
+  + '    Serial.println(mqtt.connectErrorString(ret));\n'
+  + '    Serial.println("Retrying MQTT connection in 5 seconds...");\n'
+  + '    mqtt.disconnect();\n'
+  + '    delay(5000);\n'
+  + '    retries--;\n'
+  + '    if (retries == 0) {\n'
+  + '      while (1);\n'
+  + '    }\n'
+  + '  }\n'
+  + '  Serial.println("MQTT Connected!");\n'
+  + '}\n';
   return funcName + '();\n';
 }
 //物联网-发送数据到app
@@ -202,7 +206,7 @@ Blockly.Arduino.MQTT_subscribe = function () {
     var argument = Blockly.Arduino.valueToCode(this, 'IF' + n,
       Blockly.Arduino.ORDER_NONE) || 'false';
     var branch = Blockly.Arduino.statementToCode(this, 'DO' + n);
-    var code = 'if (subscription ==&' + argument + ') {\n' + branch + '\n}';
+    var code = 'if (subscription ==&' + argument + ') {\n  ' + branch + '\n  }';
     Blockly.Arduino.definitions_['var_declare_Adafruit_MQTT_Subscribe'+Client_ID+'/'+argument] ='Adafruit_MQTT_Subscribe '+argument+' = Adafruit_MQTT_Subscribe(&mqtt,"'+Client_ID+argument+'");';
     Blockly.Arduino.setups_['setup_mqtt.subscribe'+argument] = 'mqtt.subscribe(&'+argument+');';
     
@@ -212,13 +216,13 @@ Blockly.Arduino.MQTT_subscribe = function () {
       branch = Blockly.Arduino.statementToCode(this, 'DO' + n);
       Blockly.Arduino.definitions_['var_declare_Adafruit_MQTT_Subscribe'+Client_ID+argument] ='Adafruit_MQTT_Subscribe  '+argument+'= Adafruit_MQTT_Subscribe(&mqtt,"'+Client_ID+argument+'");';
       Blockly.Arduino.setups_['setup_mqtt.subscribe'+argument] = 'mqtt.subscribe(&'+argument+');';
-      code += ' else if (subscription ==&' + argument + ') {\n' + branch + '}';
+      code += ' else if (subscription ==&' + argument + ') {\n  ' + branch + '\n  }';
     }
     if (this.elseCount_) {
       branch = Blockly.Arduino.statementToCode(this, 'ELSE');
-      code += ' else {\n' + branch + '\n}';
+      code += ' else {\n  ' + branch + '\n  }';
     }
-    return  ' Adafruit_MQTT_Subscribe *subscription;\nwhile ((subscription = mqtt.readSubscription(5000))) {\n'+code + '\n}\n';
+    return  'Adafruit_MQTT_Subscribe *subscription;\nwhile ((subscription = mqtt.readSubscription(5000))) {\n  '+code + '\n}\n';
 };
 
 //ESP8266 GET请求

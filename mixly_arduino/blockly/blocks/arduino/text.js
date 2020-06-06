@@ -95,6 +95,7 @@ Blockly.Blocks['text_join'] = {
   }
 };
 
+
 Blockly.Blocks['text_to_number'] = {
   init: function() {
    var TO_INT_FLOAT =
@@ -102,7 +103,7 @@ Blockly.Blocks['text_to_number'] = {
    [Blockly.MIXLY_TO_FLOAT, 'toFloat']];
    this.setColour(Blockly.Blocks.texts.HUE);
    this.appendValueInput('VAR')
-   .setCheck(String)
+   .setCheck([String,Number])
    .appendField(new Blockly.FieldDropdown(TO_INT_FLOAT), 'TOWHAT');
    this.setOutput(true, Number);
    var thisBlock = this;

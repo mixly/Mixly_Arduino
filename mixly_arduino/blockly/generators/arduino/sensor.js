@@ -87,9 +87,9 @@ Blockly.Arduino.ds18b20 = function () {
  Blockly.Arduino.setups_['setup_sensors_' + dropdown_pin + '_setResolution'] = 'sensors_' + dropdown_pin + '.setResolution(insideThermometer, 9);';
  var funcName = 'ds18b20_' + dropdown_pin + '_getTemp';
  var code = 'float' + ' ' + funcName + '(int w) {\n'
- + 'sensors_' + dropdown_pin + '.requestTemperatures();\n'
- + 'if(w==0) {\nreturn sensors_' + dropdown_pin + '.getTempC(insideThermometer);\n}\n'
- + 'else {\nreturn sensors_' + dropdown_pin + '.getTempF(insideThermometer);\n}\n'
+ + '  sensors_' + dropdown_pin + '.requestTemperatures();\n'
+ + '  if(w==0) {\n    return sensors_' + dropdown_pin + '.getTempC(insideThermometer);\n  }\n'
+ + '  else {\n    return sensors_' + dropdown_pin + '.getTempF(insideThermometer);\n  }\n'
  + '}\n';
  Blockly.Arduino.definitions_[funcName] = code;
  return ['ds18b20_' + dropdown_pin + '_getTemp(' + unit + ')', Blockly.Arduino.ORDER_ATOMIC];
@@ -117,10 +117,10 @@ Blockly.Arduino.weightSensor = function () {
   var SCK = this.getFieldValue('SCK');
   var scale= Blockly.Arduino.valueToCode(this, 'scale', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_Hx711'] = '#include <Hx711.h>';
-  Blockly.Arduino.definitions_['var_declare_Hx711'+DOUT+SCK] = 'Hx711 scale' + DOUT + '_' + SCK+" ("+DOUT+","+SCK+");";
-  Blockly.Arduino.setups_['setup_HX711'+DOUT+SCK] = 'scale' + DOUT + '_' + SCK+'.setOffset(scale'+DOUT+'_'+SCK+'.getAverageValue(30));\n' ;
+  Blockly.Arduino.definitions_['var_declare_Hx711'+DOUT+SCK] = 'Hx711 scale' + DOUT + '_' + SCK+"("+DOUT+","+SCK+");";
+  Blockly.Arduino.setups_['setup_HX711'+DOUT+SCK] = 'scale' + DOUT + '_' + SCK+'.setOffset(scale'+DOUT+'_'+SCK+'.getAverageValue(30));';
   Blockly.Arduino.setups_['setup_'+'scale' + DOUT + '_' + SCK+' .setScale'] =  'scale'+DOUT+'_'+SCK+'.setScale('+scale+');';
-  var code = ' scale' + DOUT + '_' + SCK+'.getWeight(10)';
+  var code = 'scale' + DOUT + '_' + SCK+'.getWeight(10)';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 }
 //DS1302
@@ -133,7 +133,7 @@ Blockly.Arduino.DS1302_init = function () {
   //Blockly.Arduino.definitions_['var_declare_RtcDateTime_dt'] = 'const RtcDateTime dt;';
   Blockly.Arduino.definitions_['var_declare_ThreeWire'] = 'ThreeWire ' +'myWire(' + dropdown_dat + ',' + dropdown_clk + ',' + dropdown_rst + ');';
   Blockly.Arduino.definitions_['var_declare_RtcDS1302'] = 'RtcDS1302<ThreeWire> Rtc(myWire);';
-  Blockly.Arduino.setups_['setup_Rtc.Begin'] = 'Rtc.Begin();' ;
+  Blockly.Arduino.setups_['setup_Rtc.Begin'] = 'Rtc.Begin();\n  Rtc.SetIsRunning(true);';
   return "";
 };
 
@@ -152,7 +152,7 @@ Blockly.Arduino.DS1307_init = function () {
     Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
     Blockly.Arduino.definitions_['var_declare_'+RTCType] = RTCType+'<TwoWire> Rtc(Wire);';
   }
-  Blockly.Arduino.setups_['setup_Rtc.Begin'] = 'Rtc.Begin();' ;
+  Blockly.Arduino.setups_['setup_Rtc.Begin'] = 'Rtc.Begin();\n  Rtc.SetIsRunning(true);';
   return "";
 }
 
@@ -348,7 +348,7 @@ Blockly.Arduino.BME280_READ = function() {
   Blockly.Arduino.definitions_['include_Adafruit_BME280'] = '#include <Adafruit_BME280.h>';
   Blockly.Arduino.definitions_['include_SEALEVELPRESSURE_HPA'] ='#define SEALEVELPRESSURE_HPA (1013.25)';
   Blockly.Arduino.definitions_['var_declare_Adafruit_BME280'] = 'Adafruit_BME280 bme;';
-  Blockly.Arduino.setups_['setup_status'] = 'unsigned status;\n  status = bme.begin(); \n';
+  Blockly.Arduino.setups_['setup_status'] = 'unsigned status;\n  status = bme.begin();';
   var code = this.getFieldValue('BME_TYPE');
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
@@ -361,12 +361,12 @@ Blockly.Arduino.PS2_init = function() {
   var rumble=this.getFieldValue('rumble');
   Blockly.Arduino.definitions_['define_PS2'] = '#include <PS2X_lib.h>';   
   Blockly.Arduino.definitions_['define_origin'] = 'PS2X ps2x;';
-  Blockly.Arduino.setups_['setup_output_1'] = 'ps2x.config_gamepad('+PS2_CLK+','+PS2_CMD+','+PS2_SEL+','+PS2_DAT+', true, '+rumble+');\ndelay(300);\n';  
+  Blockly.Arduino.setups_['setup_output_1'] = 'ps2x.config_gamepad('+PS2_CLK+','+PS2_CMD+','+PS2_SEL+','+PS2_DAT+', true, '+rumble+');\n  delay(300);\n';  
   return "";
 };
 
 Blockly.Arduino.PS2_update = function() {
- var code = 'ps2x.read_gamepad(false, 0);\n delay(30);\n';
+ var code = 'ps2x.read_gamepad(false, 0);\ndelay(30);\n';
  return code;
 };
 
@@ -481,7 +481,7 @@ Blockly.Arduino.Arduino_keypad_4_4_start = function() {
   Blockly.Arduino.definitions_['var_keypadstart3' + text_keypad_name] = 'char '+text_keypad_name+'_hexaKeys['+text_keypad_name+'_ROWS]['+text_keypad_name+'_COLS] = {' + '\n' + text_keypad_type + '\n};';
   Blockly.Arduino.definitions_['var_keypadstart4' + text_keypad_name] = 'byte '+text_keypad_name+'_rowPins['+text_keypad_name+'_ROWS] = '+text_keypad_row;
   Blockly.Arduino.definitions_['var_keypadstart5' + text_keypad_name] = 'byte '+text_keypad_name+'_colPins['+text_keypad_name+'_COLS] = '+text_keypad_col;
-  Blockly.Arduino.definitions_['var_keypadstart6' + text_keypad_name] = 'Keypad '+text_keypad_name+' = Keypad( makeKeymap('+text_keypad_name+'_hexaKeys), '+text_keypad_name+'_rowPins, '+text_keypad_name+'_colPins, '+text_keypad_name+'_ROWS, '+text_keypad_name+'_COLS);';
+  Blockly.Arduino.definitions_['var_keypadstart6' + text_keypad_name] = 'Keypad '+text_keypad_name+' = Keypad(makeKeymap('+text_keypad_name+'_hexaKeys), '+text_keypad_name+'_rowPins, '+text_keypad_name+'_colPins, '+text_keypad_name+'_ROWS, '+text_keypad_name+'_COLS);';
   Blockly.Arduino.setups_['setup_serial_Serial'] = 'Serial.begin(9600);';
   var code = '';
   return code;

@@ -2815,3 +2815,6 @@ Blockly.MIXLY_PYTHON_PASS = 'pass';
 Blockly.MIXLY_PYTHON_TRY = 'try';
 Blockly.MIXLY_PYTHON_EXCEPT = 'except';
 Blockly.MIXLY_PYTHON_FINALLY = 'finally';
+Blockly.MIXLY_SOFT_ANALOGWRITE_PIN = 'Software analog output pin #';
+Blockly.MIXLY_CANCEL_SOFT_ANALOGWRITE_PIN = 'Cancel software analog output pin #';
+Blockly.MIXLY_TOOLTIP_CANCEL_SOFT_ANALOGWRITE_PIN = 'Cancel the software simulation PWM of the specified pin';

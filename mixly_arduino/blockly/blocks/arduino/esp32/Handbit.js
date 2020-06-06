@@ -60,7 +60,7 @@ Blockly.Blocks.inout_touchRead = {
 
 Blockly.Blocks.touchAttachInterrupt = {
   init: function () {
-    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.setColour(Blockly.Blocks.base.HUE);
     this.appendValueInput("PIN", Number)
     .appendField(Blockly.MIXLY_TOUCHATTACHINTERRUPT_PIN)
     .setCheck(Number);
@@ -236,7 +236,7 @@ Blockly.Blocks.handbit_motor_move= {
   this.setInputsInline(true);
   this.setPreviousStatement(true, null);
   this.setNextStatement(true, null);
-  this.setColour(100);
+  this.setColour(Blockly.Blocks.actuator.HUE);
   this.setTooltip("");
   this.setHelpUrl("");
   }

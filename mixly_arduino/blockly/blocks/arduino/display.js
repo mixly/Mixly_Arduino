@@ -1145,7 +1145,7 @@ this.appendDummyInput()
   //.appendField(new Blockly.FieldDropdown(profile.default.digital), "RST");
   this.setPreviousStatement(true, null);
   this.setNextStatement(true, null);
-  this.setTooltip("RSB = 0");
+  this.setTooltip("PSB = 0");
   this.setHelpUrl("");
 }
 };
@@ -1183,7 +1183,7 @@ Blockly.Blocks.u8g2_LCD12864_8080_init= {
   this.setInputsInline(false);
   this.setPreviousStatement(true, null);
   this.setNextStatement(true, null);
-  this.setTooltip("R/W = 0,RSB = 1");
+  this.setTooltip("R/W = 0,PSB = 1");
   this.setHelpUrl("");
 }
 };

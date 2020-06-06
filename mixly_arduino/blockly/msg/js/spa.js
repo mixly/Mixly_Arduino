@@ -2813,3 +2813,6 @@ Blockly.MIXLY_PYTHON_PASS = 'microblog';
 Blockly.MIXLY_PYTHON_TRY = 'Intentar ejecutar';
 Blockly.MIXLY_PYTHON_EXCEPT = 'Aparición de anomalías';
 Blockly.MIXLY_PYTHON_FINALLY = 'Ejecución final';
+Blockly.MIXLY_SOFT_ANALOGWRITE_PIN = 'Salida analógica de software pin #';
+Blockly.MIXLY_CANCEL_SOFT_ANALOGWRITE_PIN = 'Cancelar el pin de salida analógica de software #';
+Blockly.MIXLY_TOOLTIP_CANCEL_SOFT_ANALOGWRITE_PIN = 'Cancele la simulación de software PWM del pin especificado';

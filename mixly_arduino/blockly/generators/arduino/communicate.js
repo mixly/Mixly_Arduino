@@ -210,18 +210,18 @@ Blockly.Arduino.RFID_on = function() {
       '\'' + this.id + '\'') + branch;
   }
 
-  return 'if ( rfid.isCard()  ) {\n' + branch + '}\n';
+  return 'if(rfid.isCard()){\n' + branch + '}\n';
 };
 
 Blockly.Arduino.RFID_readcardnum = function() {
   var funcName='RFID_readcardnum';
-  var code='String'+ ' ' + funcName + '() {\n'
-  +"\n"+' rfid.readCardSerial();  '
-  +"\n"+'  String stringserNum=String(rfid.serNum[0], HEX)+String(rfid.serNum[1], HEX)+String(rfid.serNum[2], HEX)+String(rfid.serNum[3], HEX)+String(rfid.serNum[4], HEX);'
-  +"\n"+'      //选卡，返回卡容量（锁定卡片，防止多次读写）'		
-  +"\n"+'      rfid.selectTag(rfid.serNum);'
-		+"\n"+'  return stringserNum; '//直接返回string
-		+ '\n}\n';
+  var code='String ' + funcName + '(){\n'
+          +'  rfid.readCardSerial();\n'
+          +'  String stringserNum = String(rfid.serNum[0], HEX)+String(rfid.serNum[1], HEX)+String(rfid.serNum[2], HEX)+String(rfid.serNum[3], HEX)+String(rfid.serNum[4], HEX);\n'
+          +'  //选卡，返回卡容量（锁定卡片，防止多次读写）\n'		
+          +'  rfid.selectTag(rfid.serNum);\n'
+		      +'  return stringserNum;\n'//直接返回string
+		      +'}\n';
    Blockly.Arduino.definitions_[funcName] = code;	
    return  [funcName+'()', Blockly.Arduino.ORDER_ATOMIC];
  };
@@ -255,27 +255,24 @@ Blockly.Arduino.RFID_writecarddata = function() {
 	var address2 = Blockly.Arduino.valueToCode(this, 'address1', Blockly.Arduino.ORDER_ATOMIC);
 	var data2 = this.getFieldValue('data1');
 	var funcName='RFID_writecarddata';
-	var code='void'+ ' ' + funcName + '(int ad2) {\n' 
-	+"\n"+'rfid.readCardSerial();'
-	
-	+"\n"+'      //选卡，返回卡容量（锁定卡片，防止多次读写）'		
-	+"\n"+'      rfid.selectTag(rfid.serNum);'
-	+"\n"+'//写数据卡 '
-	+"\n"+'   blockAddr = ad2;     '
-	+"\n"+'   if (rfid.auth(PICC_AUTHENT1A, blockAddr, sectorKeyA[blockAddr/4], rfid.serNum) == MI_OK)'
-	+"\n"+'	{'
-	+"\n"+'  //写数据'
-	+"\n"+'   status = rfid.write(blockAddr, sectorKeyA[blockAddr/4]);'
-	+"\n"+'   Serial.print("set the new card password, and can modify the data of the Sector: "); '
-	+"\n"+'   Serial.println(blockAddr/4,DEC);'
-	+"\n"+'   blockAddr=blockAddr-3; '
-	+"\n"+'   status=rfid.write(blockAddr,(unsigned char*)'+data2+');'
-	+"\n"+'   if(status == MI_OK) '
-	+"\n"+'   { '
-	+"\n"+'   Serial.println("Write card OK!");'
-	+"\n"+' } '
-	+"\n"+'   }'
-	+ '\n}\n';
+	var code='void'+ ' ' + funcName + '(int ad2){\n' 
+        	+'  rfid.readCardSerial();\n'
+        	+'  //选卡，返回卡容量（锁定卡片，防止多次读写）\n'		
+        	+'  rfid.selectTag(rfid.serNum);\n'
+        	+'  //写数据卡\n'
+        	+'  blockAddr = ad2;\n'
+        	+'  if(rfid.auth(PICC_AUTHENT1A, blockAddr, sectorKeyA[blockAddr/4], rfid.serNum) == MI_OK){\n'
+        	+'    //写数据\n'
+        	+'    status = rfid.write(blockAddr, sectorKeyA[blockAddr/4]);\n'
+        	+'    Serial.print("set the new card password, and can modify the data of the Sector: ");\n'
+        	+'    Serial.println(blockAddr/4,DEC);\n'
+        	+'    blockAddr=blockAddr-3;\n'
+        	+'    status=rfid.write(blockAddr,(unsigned char*)'+data2+');\n'
+        	+'    if(status == MI_OK){\n'
+        	+'      Serial.println("Write card OK!");\n'
+        	+'    }\n'
+        	+'  }\n'
+	        +'}\n';
   Blockly.Arduino.definitions_[funcName] = code;
   return funcName+'('+address2+');\n';
 }
@@ -283,25 +280,24 @@ Blockly.Arduino.RFID_writecarddata = function() {
 Blockly.Arduino.RFID_readcarddata = function() {
 	var address3 = Blockly.Arduino.valueToCode(this, 'address', Blockly.Arduino.ORDER_ATOMIC);
 	var funcName='RFID_readcarddata'
-	var code='String'+ ' ' + funcName + '(int ad3) {\n' 
-	+"\n"+'//读卡 '
-	+"\n"+'  blockAddr =ad3; '
-	+"\n"+'  status = rfid.auth(PICC_AUTHENT1A, blockAddr, sectorNewKeyA[blockAddr/4], rfid.serNum);'
-	+"\n"+'	 if (status == MI_OK)  //认证'
-	+"\n"+'  {'
-	+"\n"+'  //读数据'
-	+"\n"+'  if( rfid.read(blockAddr, str) == MI_OK)'
-	+"\n"+'  {'
-	+"\n"+'  Serial.print("Read from the card ,the data is : ");'
-	+"\n"+'  Serial.println((char *)str);'
-	+"\n"+'  } '
-	+"\n"+'   } '
-	+"\n"+'  rfid.halt();'
-	+"\n"+'  String stringstr((char*)str);'//str是一个char数组，必须先转换成char*，才能继续转换成string
-	+"\n"+'  return stringstr;'
-	+ '\n}\n';
+	var code='String'+ ' ' + funcName + '(int ad3){\n' 
+        	+'  //读卡\n'
+        	+'  blockAddr =ad3;\n'
+        	+'  status = rfid.auth(PICC_AUTHENT1A, blockAddr, sectorNewKeyA[blockAddr/4], rfid.serNum);\n'
+        	+'	if(status == MI_OK){  //认证\n'
+        	+'    //读数据\n'
+        	+'    if(rfid.read(blockAddr, str) == MI_OK)\n'
+        	+'    {\n'
+        	+'      Serial.print("Read from the card ,the data is : ");\n'
+        	+'      Serial.println((char *)str);\n'
+        	+'    }\n'
+        	+'  }\n'
+        	+'  rfid.halt();\n'
+        	+'  String stringstr((char*)str);\n'//str是一个char数组，必须先转换成char*，才能继续转换成string
+        	+'  return stringstr;\n'
+	        +'}\n';
   Blockly.Arduino.definitions_[funcName] = code;
-  return [funcName+'('+address3+')\n', Blockly.Arduino.ORDER_ATOMIC];
+  return [funcName+'('+address3+')', Blockly.Arduino.ORDER_ATOMIC];
 };
 
 

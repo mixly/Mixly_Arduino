@@ -2814,3 +2814,6 @@ Blockly.MIXLY_PYTHON_PASS = '佔位語句';
 Blockly.MIXLY_PYTHON_TRY = '嘗試執行';
 Blockly.MIXLY_PYTHON_EXCEPT = '出現異常';
 Blockly.MIXLY_PYTHON_FINALLY = '最終執行';
+Blockly.MIXLY_SOFT_ANALOGWRITE_PIN = '軟件模擬輸出 管腳 #';
+Blockly.MIXLY_CANCEL_SOFT_ANALOGWRITE_PIN = '取消軟件模擬輸出 管腳 #';
+Blockly.MIXLY_TOOLTIP_CANCEL_SOFT_ANALOGWRITE_PIN = '取消指定管腳的軟件模擬PWM';

@@ -156,7 +156,7 @@ Blockly.Arduino.display_rgb_init = function () {
   var type = this.getFieldValue('TYPE');
   var value_ledcount = Blockly.Arduino.valueToCode(this, 'LEDCOUNT', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
-  Blockly.Arduino.definitions_['var_declare_rgb_display' + dropdown_rgbpin] = 'Adafruit_NeoPixel  rgb_display_' + dropdown_rgbpin + '= Adafruit_NeoPixel(' + value_ledcount + ',' + dropdown_rgbpin + ','+type+' + NEO_KHZ800);';
+  Blockly.Arduino.definitions_['var_declare_rgb_display' + dropdown_rgbpin] = 'Adafruit_NeoPixel rgb_display_' + dropdown_rgbpin + ' = Adafruit_NeoPixel(' + value_ledcount + ',' + dropdown_rgbpin + ','+type+' + NEO_KHZ800);';
   Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();';
   return '';
 };
@@ -195,19 +195,31 @@ Blockly.Arduino.display_rgb_rainbow1 = function () {
   var wait_time = Blockly.Arduino.valueToCode(this, 'WAIT', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();\n';
   var funcName2 = 'Wheel';
-  var code2 = 'uint32_t Wheel(byte WheelPos) {\n';
-  code2 += 'if(WheelPos < 85) \n{\nreturn rgb_display_' + dropdown_rgbpin + '.Color(WheelPos * 3, 255 - WheelPos * 3, 0);\n} \n';
-  code2 += 'else if(WheelPos < 170) \n{\nWheelPos -= 85; \nreturn rgb_display_' + dropdown_rgbpin + '.Color(255 - WheelPos * 3, 0, WheelPos * 3);\n}\n ';
-  code2 += 'else\n {\nWheelPos -= 170;\nreturn rgb_display_' + dropdown_rgbpin + '.Color(0, WheelPos * 3, 255 - WheelPos * 3);\n}\n';
-  code2 += '}\n';
+  var code2 = 'uint32_t Wheel(byte WheelPos){\n'
+            + '  if(WheelPos < 85){\n'
+            + '    return rgb_display_' + dropdown_rgbpin + '.Color(WheelPos * 3, 255 - WheelPos * 3, 0);\n'
+            + '  }\n'
+            + '  else if(WheelPos < 170){\n'
+            + '    WheelPos -= 85;\n'
+            + '    return rgb_display_' + dropdown_rgbpin + '.Color(255 - WheelPos * 3, 0, WheelPos * 3);\n'
+            + '  }\n '
+            + '  else{\n'
+            + '    WheelPos -= 170;\n'
+            + '    return rgb_display_' + dropdown_rgbpin + '.Color(0, WheelPos * 3, 255 - WheelPos * 3);\n'
+            + '  }\n'
+            + '}\n';
   Blockly.Arduino.definitions_[funcName2] = code2;
   var funcName3 = 'rainbow';
-  var code3 = 'void rainbow(uint8_t wait) {\n uint16_t i, j;\n';
-  code3 += 'for(j=0; j<256; j++) {\n';
-  code3 += 'for(i=0; i<rgb_display_' + dropdown_rgbpin + '.numPixels(); i++)\n {\n';
-  code3 += 'rgb_display_' + dropdown_rgbpin + '.setPixelColor(i, Wheel((i+j) & 255));\n}\n';
-  code3 += 'rgb_display_' + dropdown_rgbpin + '.show();\n';
-  code3 += 'delay(wait);\n}\n}\n';
+  var code3 = 'void rainbow(uint8_t wait){\n'
+            + '  uint16_t i, j;\n'
+            + '  for(j=0; j<256; j++){\n'
+            + '    for(i=0; i<rgb_display_' + dropdown_rgbpin + '.numPixels(); i++){\n'
+            + '      rgb_display_' + dropdown_rgbpin + '.setPixelColor(i, Wheel((i+j) & 255));\n'
+            + '    }\n'
+            + '    rgb_display_' + dropdown_rgbpin + '.show();\n'
+            + '    delay(wait);\n'
+            + '  }\n'
+            + '}\n';
   Blockly.Arduino.definitions_[funcName3] = code3;
   var code = 'rainbow(' + wait_time + ');\n'
   return code;
@@ -217,27 +229,43 @@ Blockly.Arduino.display_rgb_rainbow2 = function () {
   var dropdown_rgbpin = this.getFieldValue('PIN');
   var wait_time = Blockly.Arduino.valueToCode(this, 'WAIT', Blockly.Arduino.ORDER_ATOMIC);
   var funcName2 = 'Wheel';
-  var code2 = 'uint32_t Wheel(byte WheelPos) {\n';
-  code2 += 'if(WheelPos < 85)\n {\nreturn rgb_display_' + dropdown_rgbpin + '.Color(WheelPos * 3, 255 - WheelPos * 3, 0);} \n';
-  code2 += 'else if(WheelPos < 170)\n {\nWheelPos -= 85; return rgb_display_' + dropdown_rgbpin + '.Color(255 - WheelPos * 3, 0, WheelPos * 3);}\n ';
-  code2 += 'else {\nWheelPos -= 170;return rgb_display_' + dropdown_rgbpin + '.Color(0, WheelPos * 3, 255 - WheelPos * 3);}\n';
-  code2 += '}\n';
+  var code2 = 'uint32_t Wheel(byte WheelPos){\n'
+            + '  if(WheelPos < 85){\n'
+            + '    return rgb_display_' + dropdown_rgbpin + '.Color(WheelPos * 3, 255 - WheelPos * 3, 0);\n'
+            + '  }\n'
+            + '  else if(WheelPos < 170){\n'
+            + '    WheelPos -= 85;\n'
+            + '    return rgb_display_' + dropdown_rgbpin + '.Color(255 - WheelPos * 3, 0, WheelPos * 3);\n'
+            + '  }\n'
+            + '  else{\n'
+            + '    WheelPos -= 170;\n'
+            + '    return rgb_display_' + dropdown_rgbpin + '.Color(0, WheelPos * 3, 255 - WheelPos * 3);\n'
+            + '  }\n'
+            + '}\n';
   Blockly.Arduino.definitions_[funcName2] = code2;
   var funcName3 = 'rainbow';
-  var code3 = 'void rainbow(uint8_t wait) { uint16_t i, j;\n';
-  code3 += 'for(j=0; j<256; j++) {               \n';
-  code3 += 'for(i=0; i<rgb_display_' + dropdown_rgbpin + '.numPixels(); i++)\n{\n';
-  code3 += 'rgb_display_' + dropdown_rgbpin + '.setPixelColor(i, Wheel((i+j) & 255));\n}\n';
-  code3 += 'rgb_display_' + dropdown_rgbpin + '.show();\n';
-  code3 += 'delay(wait);\n}\n}\n';
+  var code3 = 'void rainbow(uint8_t wait){\n'
+            + '  uint16_t i, j;\n'
+            + '  for(j=0; j<256; j++){\n'
+            + '    for(i=0; i<rgb_display_' + dropdown_rgbpin + '.numPixels(); i++){\n'
+            + '      rgb_display_' + dropdown_rgbpin + '.setPixelColor(i, Wheel((i+j) & 255));\n'
+            + '    }\n'
+            + '    rgb_display_' + dropdown_rgbpin + '.show();\n'
+            + '    delay(wait);\n'
+            + '  }\n'
+            + '}\n';
   Blockly.Arduino.definitions_[funcName3] = code3;
   var funcName4 = 'rainbowCycle';
-  var code4 = 'void rainbowCycle(uint8_t wait) \n{\nuint16_t i, j;\n';
-  code4 += 'for(j=0; j<256*5; j++) {\n';
-  code4 += 'for(i=0; i< rgb_display_' + dropdown_rgbpin + '.numPixels(); i++) \n{\n';
-  code4 += 'rgb_display_' + dropdown_rgbpin + '.setPixelColor(i, Wheel(((i * 256 / rgb_display_' + dropdown_rgbpin + '.numPixels()) + j) & 255));}\n';
-  code4 += 'rgb_display_' + dropdown_rgbpin + '.show();\n';
-  code4 += 'delay(wait);\n}\n}\n';
+  var code4 = 'void rainbowCycle(uint8_t wait){\n'
+            + '  uint16_t i, j;\n'
+            + '  for(j=0; j<256*5; j++){\n'
+            + '    for(i=0; i< rgb_display_' + dropdown_rgbpin + '.numPixels(); i++){\n'
+            + '      rgb_display_' + dropdown_rgbpin + '.setPixelColor(i, Wheel(((i * 256 / rgb_display_' + dropdown_rgbpin + '.numPixels()) + j) & 255));\n'
+            + '    }\n'
+            + '    rgb_display_' + dropdown_rgbpin + '.show();\n'
+            + '    delay(wait);\n'
+            + '  }\n'
+            + '}\n';
   Blockly.Arduino.definitions_[funcName4] = code4;
   var code = 'rainbowCycle(' + wait_time + ');\n'
   return code;
@@ -247,16 +275,29 @@ Blockly.Arduino.display_rgb_rainbow3 = function () {
   var rainbow_color = Blockly.Arduino.valueToCode(this, 'rainbow_color', Blockly.Arduino.ORDER_ATOMIC);
   var type = this.getFieldValue('TYPE');
   var funcName2 = 'Wheel';
-  var code2 = 'uint32_t Wheel(byte WheelPos) {\n';
-  code2 += 'if(WheelPos < 85)\n {\nreturn rgb_display_' + dropdown_rgbpin + '.Color(WheelPos * 3, 255 - WheelPos * 3, 0);} \n';
-  code2 += 'else if(WheelPos < 170)\n {\nWheelPos -= 85; return rgb_display_' + dropdown_rgbpin + '.Color(255 - WheelPos * 3, 0, WheelPos * 3);}\n ';
-  code2 += 'else {\nWheelPos -= 170;return rgb_display_' + dropdown_rgbpin + '.Color(0, WheelPos * 3, 255 - WheelPos * 3);}\n';
-  code2 += '}\n';
+  var code2 = 'uint32_t Wheel(byte WheelPos){\n'
+            + '  if(WheelPos < 85){\n'
+            + '    return rgb_display_' + dropdown_rgbpin + '.Color(WheelPos * 3, 255 - WheelPos * 3, 0);\n'
+            + '  }\n'
+            + '  else if(WheelPos < 170){\n'
+            + '    WheelPos -= 85;\n'
+            + '    return rgb_display_' + dropdown_rgbpin + '.Color(255 - WheelPos * 3, 0, WheelPos * 3);\n'
+            + '  }\n'
+            + '  else{\n'
+            + '    WheelPos -= 170;return rgb_display_' + dropdown_rgbpin + '.Color(0, WheelPos * 3, 255 - WheelPos * 3);\n'
+            + '  }\n'
+            + '}\n';
   Blockly.Arduino.definitions_[funcName2] = code2;
   if (type == "normal")
-    var code3 = 'for (int i = 0; i < rgb_display_' + dropdown_rgbpin + '.numPixels(); i++)\n{rgb_display_' + dropdown_rgbpin + '.setPixelColor(i, Wheel(' + rainbow_color + ' & 255));\n}\nrgb_display_' + dropdown_rgbpin + '.show();\n';
+    var code3 = 'for(int i = 0; i < rgb_display_' + dropdown_rgbpin + '.numPixels(); i++){\n'
+              + '  rgb_display_' + dropdown_rgbpin + '.setPixelColor(i, Wheel(' + rainbow_color + ' & 255));\n'
+              + '}\n'
+              + 'rgb_display_' + dropdown_rgbpin + '.show();\n';
   else
-    var code3 = 'for (int i = 0; i < rgb_display_' + dropdown_rgbpin + '.numPixels(); i++)\n {rgb_display_' + dropdown_rgbpin + '.setPixelColor(i, Wheel(((i * 256 / rgb_display_' + dropdown_rgbpin + '.numPixels()) + ' + rainbow_color + ') & 255));\n}\nrgb_display_' + dropdown_rgbpin + '.show();\n';
+    var code3 = 'for(int i = 0; i < rgb_display_' + dropdown_rgbpin + '.numPixels(); i++){\n'
+              + '  rgb_display_' + dropdown_rgbpin + '.setPixelColor(i, Wheel(((i * 256 / rgb_display_' + dropdown_rgbpin + '.numPixels()) + ' + rainbow_color + ') & 255));\n'
+              + '}\n'
+              + 'rgb_display_' + dropdown_rgbpin + '.show();\n';
   return code3;
 };
 //执行器-电机转动
@@ -285,7 +326,7 @@ Blockly.Arduino.Mixly_motor = function () {
   + '  else \n'
   + '  {\n'
   +'     if(speed < -255)\n'
-  +'       speed = -255;'
+  +'       speed = -255;\n'
   +'     digitalWrite(dirpin, HIGH);\n'
   +'     analogWrite(speedpin, 255 + speed);\n'
   + '  }\n'
@@ -304,21 +345,21 @@ Blockly.Arduino.Motor_8833 = function () {
   Blockly.Arduino.setups_['setup_output_' + PIN1 + PIN2 + '_D_W'] = 'digitalWrite(' + PIN2 + ', LOW);';
   var funcName = 'setMotor';
   var code2 = ' void ' + funcName + '(int speedpin,int dirpin, int speed)\n '
+  + '{\n'
+  + '  if (speed == 0)\n'
   + '  {\n'
-  + 'if (speed == 0)\n'
-  + '{\n'
-  + 'digitalWrite(speedpin, LOW);\n'
-  + '} \n'
-  + 'else if (speed > 0)\n'
-  + '{\n'
-  + 'digitalWrite(dirpin, LOW);\n'
-  + 'analogWrite(speedpin, speed);\n'
-  + '} \n'
-  + 'else \n'
-  + '{\n'
-  + 'digitalWrite(dirpin, HIGH);\n'
-  + 'analogWrite(speedpin,255+speed);\n'
-  + '}\n'
+  + '    digitalWrite(speedpin, LOW);\n'
+  + '  } \n'
+  + '  else if (speed > 0)\n'
+  + '  {\n'
+  + '    digitalWrite(dirpin, LOW);\n'
+  + '    analogWrite(speedpin, speed);\n'
+  + '  } \n'
+  + '  else \n'
+  + '  {\n'
+  + '    digitalWrite(dirpin, HIGH);\n'
+  + '    analogWrite(speedpin,255+speed);\n'
+  + '  }\n'
   + '}\n';
   Blockly.Arduino.definitions_[funcName] = code2;
   return code;
@@ -332,19 +373,26 @@ Blockly.Arduino.voice_module = function () {
   var code = 'send_data(' + dropdown_voice + '); //volume control 0xE0-E7;\n';
   code += 'delay(' + wait_time + ');\n'
   var funcName = 'voice_out';
-  var code2 = 'void send_data(int addr)\n ';
-  code2 += '{int i;digitalWrite(' + dropdown_pin + ' , LOW);\n';
-  code2 += 'delay(3); //>2ms\n';
-  code2 += 'for(i=0;i<8;i++)\n';
-  code2 += '{digitalWrite(' + dropdown_pin + ', HIGH);\n';
-  code2 += 'if(addr&1){delayMicroseconds(2400); //>2400us\n';
-  code2 += '          digitalWrite(' + dropdown_pin + ', LOW);\n';
-  code2 += '          delayMicroseconds(800);} //>800us\n';
-  code2 += 'else{ delayMicroseconds(800); //>800us\n';
-  code2 += '      digitalWrite(' + dropdown_pin + ' , LOW);\n';
-  code2 += '      delayMicroseconds(2400);} //>2400us\n';
-  code2 += '      addr>>=1;} ';
-  code2 += '      digitalWrite(' + dropdown_pin + ', HIGH); }\n';
+  var code2 = 'void send_data(int addr){\n'
+            + '  int i;\n'
+            + '  digitalWrite(' + dropdown_pin + ' , LOW);\n'
+            + '  delay(3); //>2ms\n'
+            + '  for(i=0; i<8; i++){\n'
+            + '    digitalWrite(' + dropdown_pin + ', HIGH);\n'
+            + '    if(addr&1){\n'
+            + '      delayMicroseconds(2400); //>2400us\n'
+            + '      digitalWrite(' + dropdown_pin + ', LOW);\n'
+            + '      delayMicroseconds(800);\n'
+            + '    } //>800us\n'
+            + '    else{\n'
+            + '      delayMicroseconds(800); //>800us\n'
+            + '      digitalWrite(' + dropdown_pin + ', LOW);\n'
+            + '      delayMicroseconds(2400);\n'
+            + '    } //>2400us\n'
+            + '    addr>>=1;\n'
+            + '  }\n'
+            + '  digitalWrite(' + dropdown_pin + ', HIGH);\n'
+            + '}\n';
   Blockly.Arduino.definitions_['funcName'] = code2;
   return code;
 };
@@ -356,7 +404,7 @@ Blockly.Arduino.GD5800_MP3_CONTROL = function () {
   var CONTROL_TYPE = this.getFieldValue('CONTROL_TYPE');
   Blockly.Arduino.definitions_['include_GD5800'] = '#include <GD5800_Serial.h>';
   Blockly.Arduino.definitions_['var_declare_GD5800_ mp3' + rxpin + txpin] = 'GD5800_Serial mp3' + rxpin + txpin + '(' + rxpin + ', ' + txpin + ');';
-  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = ' mp3' + rxpin + txpin + '.begin(9600);';
+  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = 'mp3' + rxpin + txpin + '.begin(9600);';
   var code = 'mp3' + rxpin + txpin + '.' + CONTROL_TYPE + '\n';
   return code;
 };
@@ -368,7 +416,7 @@ Blockly.Arduino.GD5800_MP3_LOOP_MODE = function () {
   var LOOP_MODE = this.getFieldValue('LOOP_MODE');
   Blockly.Arduino.definitions_['include_GD5800'] = '#include <GD5800_Serial.h>';
   Blockly.Arduino.definitions_['var_declare_GD5800_ mp3' + rxpin + txpin] = 'GD5800_Serial mp3' + rxpin + txpin + '(' + rxpin + ', ' + txpin + ');';
-  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = ' mp3' + rxpin + txpin + '.begin(9600);';
+  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = 'mp3' + rxpin + txpin + '.begin(9600);';
   var code = 'mp3' + rxpin + txpin + '.setLoopMode(' + LOOP_MODE + ');\n';
   return code;
 };
@@ -380,7 +428,7 @@ Blockly.Arduino.GD5800_MP3_EQ_MODE = function () {
   var EQ_MODE = this.getFieldValue('EQ_MODE');
   Blockly.Arduino.definitions_['include_GD5800'] = '#include <GD5800_Serial.h>';
   Blockly.Arduino.definitions_['var_declare_GD5800_ mp3' + rxpin + txpin] = 'GD5800_Serial mp3' + rxpin + txpin + '(' + rxpin + ', ' + txpin + ');';
-  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = ' mp3' + rxpin + txpin + '.begin(9600);';
+  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = 'mp3' + rxpin + txpin + '.begin(9600);';
   var code = 'mp3' + rxpin + txpin + '.setEqualizer(' + EQ_MODE + ');\n';
   return code;
 };
@@ -392,7 +440,7 @@ Blockly.Arduino.GD5800_MP3_VOL = function () {
   var vol = Blockly.Arduino.valueToCode(this, 'vol', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_GD5800'] = '#include <GD5800_Serial.h>';
   Blockly.Arduino.definitions_['var_declare_GD5800_ mp3' + rxpin + txpin] = 'GD5800_Serial mp3' + rxpin + txpin + '(' + rxpin + ', ' + txpin + ');';
-  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = ' mp3' + rxpin + txpin + '.begin(9600);';
+  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = 'mp3' + rxpin + txpin + '.begin(9600);';
   var code = 'mp3' + rxpin + txpin + '.setVolume(' + vol + ');\n';
   return code;
 };
@@ -404,7 +452,7 @@ Blockly.Arduino.GD5800_MP3_PLAY_NUM = function () {
   var NUM = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_GD5800'] = '#include <GD5800_Serial.h>';
   Blockly.Arduino.definitions_['var_declare_GD5800_ mp3' + rxpin + txpin] = 'GD5800_Serial mp3' + rxpin + txpin + '(' + rxpin + ', ' + txpin + ');';
-  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = ' mp3' + rxpin + txpin + '.begin(9600);';
+  Blockly.Arduino.setups_['setup_ mp3' + rxpin + txpin] = 'mp3' + rxpin + txpin + '.begin(9600);';
   var code = 'mp3' + rxpin + txpin + '.playFileByIndexNumber(' + NUM + ');\n';
   return code;
 };

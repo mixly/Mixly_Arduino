@@ -43,8 +43,8 @@ Blockly.Arduino.sd_read = function() {
   Blockly.Arduino.definitions_['var_declare_File_datafile'] = 'File datafile;';
   Blockly.Arduino.setups_['setup_serial_' + serial_select + profile.default.serial] = serial_select + '.begin(' + content + ');';
   var code ='datafile = SD.open("'+text_FileName+'");\n'
-  code+= 'while (datafile.available()) {\n'
-  code+='Serial.write(datafile.read( ));\n'
+  code+='while(datafile.available()) {\n'
+  code+='  Serial.write(datafile.read());\n'
   code+='}\n'
   code+='datafile.close();\n'  
   return code;
@@ -61,7 +61,7 @@ Blockly.Arduino.store_eeprom_write_long = function() {
 	var data = Blockly.Arduino.valueToCode(this, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '0';
 	Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
 	var funcName='eepromWriteLong';
-	var code2='void '+funcName+'(int address, unsigned long value) {\n' 
+	var code2='void '+funcName+'(int address, unsigned long value){\n' 
 	+ '  union u_tag {\n'
 	+ '  	byte b[4];\n'
 	+ '  	unsigned long ULtime;\n'
@@ -70,8 +70,10 @@ Blockly.Arduino.store_eeprom_write_long = function() {
 	+ '  time.ULtime=value;\n'
 	+ '  EEPROM.write(address, time.b[0]);\n'
 	+ '  EEPROM.write(address+1, time.b[1]);\n'
-	+ '  if (time.b[2] != EEPROM.read(address+2) ) EEPROM.write(address+2, time.b[2]);\n'
-	+ '  if (time.b[3] != EEPROM.read(address+3) ) EEPROM.write(address+3, time.b[3]);\n'
+	+ '  if(time.b[2] != EEPROM.read(address+2))\n'
+	+ '    EEPROM.write(address+2, time.b[2]);\n'
+	+ '  if(time.b[3] != EEPROM.read(address+3))\n'
+	+ '    EEPROM.write(address+3, time.b[3]);\n'
 	+ '}\n';
 	Blockly.Arduino.definitions_[funcName] = code2;
 	return 'eepromWriteLong('+address+', '+data+');\n';

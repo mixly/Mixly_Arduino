@@ -231,25 +231,25 @@ Blockly.Arduino.display_Matrix_DisplayChar = function() {
   var dotMatrixArray = Blockly.Arduino.valueToCode(this, 'LEDArray', Blockly.Arduino.ORDER_ASSIGNMENT);
   Blockly.Arduino.definitions_['var_declare_LEDArray'] = 'uint8_t  LEDArray[8];';
   var code='';
-  code+= 'memcpy_P (&LEDArray, &'+ dotMatrixArray + ', 8);\n';
+  code+= 'memcpy_P(&LEDArray, &'+ dotMatrixArray + ', 8);\n';
   code+='for(int index_i=0; index_i<8; index_i++)\n';
   code+='{\n'
-//code+='  LEDArray[index_i]='+dotMatrixArray+'[index_i];\n';
-code+='  for(int index_j='+(NO)+'*8; index_j<'+ (NO)+'*8+8; index_j++)\n'
+  //code+='  LEDArray[index_i]='+dotMatrixArray+'[index_i];\n';
+  code+='  for(int index_j='+(NO)+'*8; index_j<'+ (NO)+'*8+8; index_j++)\n'
   //code+='  for(int index_j=7; index_j>=0; index_j--)\n'
   code+='  {\n'
   code+='    if((LEDArray[index_i]&0x01)>0)\n';
   if(matrixType=="HT16K33")
   {
-   code+='      '+  matrixName +'.drawPixel(index_j, index_i,1);\n';
-   code+='else\n'+  matrixName +'.drawPixel(index_j, index_i,0);\n';
- }
- else
- {
-  code+='     '+  matrixName +'.drawPixel(index_j, 7-index_i,1);\n';
-  code+='else\n'+  matrixName +'.drawPixel(index_j, 7-index_i,0);\n';
-}
-code+='     LEDArray[index_i] = LEDArray[index_i]>>1;\n';
+    code+='      '+  matrixName +'.drawPixel(index_j, index_i,1);\n';
+    code+='    else\n      '+  matrixName +'.drawPixel(index_j, index_i,0);\n';
+  }
+  else
+  {
+    code+='      '+  matrixName +'.drawPixel(index_j, 7-index_i,1);\n';
+    code+='    else\n      '+  matrixName +'.drawPixel(index_j, 7-index_i,0);\n';
+  }
+code+='    LEDArray[index_i] = LEDArray[index_i]>>1;\n';
 code+='  }  \n'
 code+='}\n'
 code+= matrixName+'.write();\n'
