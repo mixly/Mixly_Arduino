@@ -44,7 +44,15 @@ Blockly.Arduino.inout_digital_read2 = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     var code = "";
     if (window.isNaN(dropdown_pin) && !(new RegExp("^A([0-9]|10|11|12|13|14|15)$").test(dropdown_pin))) {
-        code = 'digitalRead(' + dropdown_pin + ')';
+        var funcName = 'mixly_digitalRead';
+        var code2 = 'boolean' + ' ' + funcName + '(uint8_t pin) {\n'
+        + '  pinMode(pin, INPUT);\n'
+        + '  boolean _return =  digitalRead(pin);\n'
+        + '  pinMode(pin, OUTPUT);\n'
+        + '  return _return;\n'
+        + '}\n';
+        Blockly.Arduino.definitions_[funcName] = code2;
+        code = 'mixly_digitalRead(' + dropdown_pin + ')';
     } else {
         if (Blockly.Arduino.setups_['setup_output_' + dropdown_pin]) {
             //存在pinMode已设为output则不再设为input
