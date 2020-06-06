@@ -271,3 +271,34 @@ Blockly.Blocks.ESP32touchButton = {
     this.setHelpUrl();
   }
 };
+
+Blockly.Blocks.inout_soft_analog_write = {
+  init: function() {
+    this.setColour(Blockly.Blocks.base.HUE);
+    this.appendValueInput("PIN", Number)
+    .appendField(Blockly.MIXLY_SOFT_ANALOGWRITE_PIN)
+    .setCheck(Number);
+    this.appendValueInput("NUM", Number)
+    .appendField(Blockly.MIXLY_VALUE2)
+    .setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_INOUT_ANALOG_WRITE);
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.inout_cancel_soft_analog_write = {
+  init: function() {
+    this.setColour(Blockly.Blocks.base.HUE);
+    this.appendValueInput("PIN", Number)
+    .appendField(Blockly.MIXLY_CANCEL_SOFT_ANALOGWRITE_PIN)
+    .setCheck(Number);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_CANCEL_SOFT_ANALOGWRITE_PIN);
+    this.setHelpUrl("");
+  }
+};

@@ -185,3 +185,20 @@ Blockly.Arduino.ESP32touchButton = function () {
  Blockly.Arduino.definitions_[funcName] = code2;
  return code;
 };
+
+Blockly.Arduino.inout_soft_analog_write = function () {
+    var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+    var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
+    Blockly.Arduino.definitions_['include_SoftPWM'] = '#include <SoftPWM.h>';
+    Blockly.Arduino.setups_['setup_soft_analog_write'] = 'SoftPWMBegin();';
+    var code = 'SoftPWMSet(' + dropdown_pin + ', ' + value_num + ');\n';
+    return code;
+};
+
+Blockly.Arduino.inout_cancel_soft_analog_write = function () {
+    var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+    Blockly.Arduino.definitions_['include_SoftPWM'] = '#include <SoftPWM.h>';
+    Blockly.Arduino.setups_['setup_soft_analog_write'] = 'SoftPWMBegin();';
+    var code = 'SoftPWMEnd(' + dropdown_pin + ');\n';
+    return code;
+};
