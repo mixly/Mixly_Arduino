@@ -198,6 +198,23 @@ Blockly.Python.sensor_while_is_gesture = function(a){
     return "def callback_gesture_"+ gesture + '():\n' + d;
 };
 
+Blockly.Python.sensor_while_is_near = function(a){
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    var near = this.getFieldValue('near');
+    Blockly.Python.setups_['on_'+near] = 'def on_near_'+near+'():\n' +
+                                            '    while True:\n' +
+                                            '        if !pin'+near+'.read_digital():\n' +
+                                            '            yield callback_near_'+near+'()\n' +
+                                            '        else:\n' +
+                                            '            yield\n' +
+                                            '\n' +
+                                            'func_near_'+near+' = on_near_'+near+'()\n'
+    var d = Blockly.Python.statementToCode(a, "DO"),
+    d = Blockly.Python.addLoopTrap(d, a.id) || Blockly.Python.PASS;
+    Blockly.Python.loops_[near+'_loop'] = '    next(func_near_' + near + ')\n';
+    return "def callback_near_"+ near + '():\n' + d;
+};
+
 Blockly.Python.controls_repeat_ext = function(a){
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var times = Blockly.Python.valueToCode(this, 'TIMES', Blockly.Python.ORDER_ATOMIC);

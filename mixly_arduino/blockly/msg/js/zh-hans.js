@@ -66,7 +66,8 @@ var MSG = {
 	catclass: "类",
 	catproperty: "属性",
 	catmethod: "方法",
-	catobject: "对象"
+	catobject: "对象",
+	catEvents: "事件"
 };
 Blockly.Msg.ADD_COMMENT = "添加注释";
 Blockly.Msg.AUTH = "请授权这个应用程序以保存您的作品并共享。";
@@ -2827,3 +2828,4 @@ Blockly.MIXLY_PYTHON_FINALLY = '最终执行';
 Blockly.MIXLY_SOFT_ANALOGWRITE_PIN = '软件模拟输出 管脚 #';
 Blockly.MIXLY_CANCEL_SOFT_ANALOGWRITE_PIN = '取消软件模拟输出 管脚 #';
 Blockly.MIXLY_TOOLTIP_CANCEL_SOFT_ANALOGWRITE_PIN = '取消指定管脚的软件模拟PWM';
+Blockly.MIXLY_MITHON_NEAR="被接近";

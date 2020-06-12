@@ -1234,14 +1234,17 @@
         </value>
       </block>
     </category>
-    <category id="catSensor" colour="40">
+    <category id="catEvents" colour="20">  
       <block type="sensor_while_btn_pressed">
         <value name="btn">
           <shadow type="pins_button">
           </shadow>
         </value>
       </block>
-      <block type="sensor_while_is_gesture"></block>
+      <block type="sensor_while_is_gesture"></block>  
+      <block type="sensor_while_is_near"></block>
+    </category>
+    <category id="catSensor" colour="40">
       <block type="sensor_button_is_pressed">
         <value name="btn">
           <shadow type="pins_button">
@@ -1399,147 +1402,6 @@
       <block type="microbit_display_on"></block>
       <block type="microbit_display_is_on"></block>
       <block type="microbit_display_clear"></block>
-    </category>
-    <category id="catFile" colour="0">
-      <block type="storage_open_file_with_os">
-        <value name="fn">
-          <shadow type="text">
-            <field name="TEXT">readme.txt</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_fileopen">
-        <value name="FILENAME">
-          <shadow type="text">
-            <field name="TEXT">filename.txt</field>
-          </shadow>
-        </value>
-        <value name="FILE">
-          <shadow type="variables_get">
-            <field name="VAR">f</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_file_write">
-        <value name="data">
-          <shadow type="text">
-            <field name="TEXT">Mixly</field>
-          </shadow>
-        </value>
-        <value name="FILE">
-          <shadow type="variables_get">
-            <field name="VAR">f</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_get_contents_without_para">
-        <value name="FILE">
-          <shadow type="variables_get">
-            <field name="VAR">f</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_get_contents">
-        <value name="FILE">
-          <shadow type="variables_get">
-            <field name="VAR">f</field>
-          </shadow>
-        </value>
-        <value name="SIZE">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_can_write_ornot">
-        <value name="FILE">
-          <shadow type="variables_get">
-            <field name="VAR">f</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_get_filename">
-        <value name="FILE">
-          <shadow type="variables_get">
-            <field name="VAR">f</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_close_file">
-        <value name="FILE">
-          <shadow type="variables_get">
-            <field name="VAR">f</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_list_all_files"> </block>
-      <block type="storage_get_current_dir"> </block>
-      <block type="storage_change_dir">
-        <value name="FILE">
-          <shadow type="text">
-            <field name="TEXT">path</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_make_dir">
-        <value name="PATH">
-          <shadow type="text">
-            <field name="TEXT">path</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_delete_file">
-        <value name="FILE">
-          <shadow type="text">
-            <field name="TEXT">filename.txt</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_rename">
-        <value name="FILE">
-          <shadow type="text">
-            <field name="TEXT">srcname.txt</field>
-          </shadow>
-        </value>
-        <value name="NEWFILE">
-          <shadow type="text">
-            <field name="TEXT">dstname.txt</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_get_file_size">
-        <value name="FILE">
-          <shadow type="text">
-            <field name="TEXT">filename.txt</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_is_file">
-        <value name="FILE">
-          <shadow type="text">
-            <field name="TEXT">path</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_file_tell">
-        <value name="FILE">
-          <shadow type="variables_get">
-            <field name="VAR">f</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="storage_file_seek">
-        <value name="FILE">
-          <shadow type="variables_get">
-            <field name="VAR">f</field>
-          </shadow>
-        </value>
-        <value name="SIZE">
-          <shadow type="math_number">
-            <field name="NUM">0</field>
-          </shadow>
-        </value>
-      </block>
     </category>
     <category id="catNetwork" colour="225">
       <block type="radio_ons"></block>

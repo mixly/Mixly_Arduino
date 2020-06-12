@@ -314,35 +314,35 @@ div>span.blocklyTreeIcon.blocklyTreeIconNone{
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(12) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/sensor.png') no-repeat;
+	background:url('../../../media/mark/event.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(12) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
-	background:url('../../../media/mark/sensor2.png') no-repeat;
+	background:url('../../../media/mark/event2.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(13) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/act.png') no-repeat;
+	background:url('../../../media/mark/sensor.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(13) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
-	background:url('../../../media/mark/act2.png') no-repeat;
+	background:url('../../../media/mark/sensor2.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(14) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/monitor.png') no-repeat;
+	background:url('../../../media/mark/act.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(14) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
-	background:url('../../../media/mark/monitor2.png') no-repeat;
+	background:url('../../../media/mark/act2.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(15) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {
-	background:url('../../../media/mark/file.png') no-repeat;
+	background:url('../../../media/mark/monitor.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(15) > div.blocklyTreeRow.blocklyTreeSelected > span.blocklyTreeIcon.blocklyTreeIconNone{
-	background:url('../../../media/mark/file2.png') no-repeat;
+	background:url('../../../media/mark/monitor2.png') no-repeat;
 	background-size: 100% auto; 
 }
 #\:0 > div:nth-child(2) > div:nth-child(16) > div.blocklyTreeRow > span.blocklyTreeIcon.blocklyTreeIconNone {

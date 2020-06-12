@@ -66,7 +66,8 @@ var MSG = {
 	catclass: "Class",
 	catproperty: "Attributes",
 	catmethod: "Method",
-	catobject: "Object"
+	catobject: "Object",
+	catEvents: "Events"
 };
 Blockly.Msg.ADD_COMMENT= "Add Comment";
 Blockly.Msg.AUTH= "Please authorize this app to enable your work to be saved and to allow it to be shared by you.";
@@ -2818,3 +2819,4 @@ Blockly.MIXLY_PYTHON_FINALLY = 'finally';
 Blockly.MIXLY_SOFT_ANALOGWRITE_PIN = 'Software analog output pin #';
 Blockly.MIXLY_CANCEL_SOFT_ANALOGWRITE_PIN = 'Cancel software analog output pin #';
 Blockly.MIXLY_TOOLTIP_CANCEL_SOFT_ANALOGWRITE_PIN = 'Cancel the software simulation PWM of the specified pin';
+Blockly.MIXLY_MITHON_NEAR="is worked";

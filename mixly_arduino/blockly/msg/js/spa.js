@@ -63,7 +63,8 @@ var MSG = {
   catclass: "Clase",
   catproperty: "Atributos",
   catmethod: "Método",
-  catobject: "Objeto"
+  catobject: "Objeto",
+  catEvents: "Incidente"
 };
 Blockly.Msg.ADD_COMMENT = "Añadir comentario";
 Blockly.Msg.AUTH = "Por favor, autorice esta aplicación para guardar su trabajo y compartirlo";
@@ -2816,3 +2817,4 @@ Blockly.MIXLY_PYTHON_FINALLY = 'Ejecución final';
 Blockly.MIXLY_SOFT_ANALOGWRITE_PIN = 'Salida analógica de software pin #';
 Blockly.MIXLY_CANCEL_SOFT_ANALOGWRITE_PIN = 'Cancelar el pin de salida analógica de software #';
 Blockly.MIXLY_TOOLTIP_CANCEL_SOFT_ANALOGWRITE_PIN = 'Cancele la simulación de software PWM del pin especificado';
+Blockly.MIXLY_MITHON_NEAR="Cerca.";
