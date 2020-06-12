@@ -408,13 +408,18 @@ Blockly.Blocks.display_rgb_rainbow3 = {
    // this.setFieldValue("12", "PIN");
  }
 };
-
+//电机驱动类型
+var MOTOR_TYPE = [
+["L293", "L293"],
+["L298", "L298"],
+["TB6612FNG", "TB6612FNG"]
+];
 Blockly.Blocks.Mixly_motor = {
   init: function () {
     this.setColour(Blockly.Blocks.actuator.HUE);
-    this.appendDummyInput("")
-    .appendField("L293/298N")
-    .appendField(Blockly.MIXLY_MOTOR);
+     this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_MOTOR)
+    .appendField(new Blockly.FieldDropdown(MOTOR_TYPE), "MOTOR_TYPE");
     this.appendDummyInput("")
     this.appendValueInput("PIN1")
     .setCheck(Number)
