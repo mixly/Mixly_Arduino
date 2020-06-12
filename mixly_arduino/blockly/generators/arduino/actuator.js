@@ -328,7 +328,7 @@ Blockly.Arduino.Mixly_motor = function () {
   +'     if(speed < -255)\n'
   +'       speed = -255;\n'
   +'     digitalWrite(dirpin, HIGH);\n'
-  +'     analogWrite(speedpin, 255 + speed);\n'
+  +'     analogWrite(speedpin, -speed);\n'
   + '  }\n'
   + '}\n';
   Blockly.Arduino.definitions_[funcName] = code2;
