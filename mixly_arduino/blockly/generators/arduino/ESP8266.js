@@ -4,6 +4,12 @@ goog.provide('Blockly.Arduino.storage');
 
 goog.require('Blockly.Arduino');
 
+//LM35 Temperature
+Blockly.Arduino.LM35 = function() {
+  var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+  var code = 'analogRead(' + dropdown_pin + ')*0.322';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
 Blockly.Arduino.store_eeprom_write_long = function() {
 	var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
 	var data = Blockly.Arduino.valueToCode(this, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '0';
