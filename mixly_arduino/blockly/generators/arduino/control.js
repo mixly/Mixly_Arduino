@@ -162,7 +162,11 @@ Blockly.Arduino.controls_mstimer2_stop = function () {
 };
 
 Blockly.Arduino.controls_end_program = function () {
-    return 'while(true);\n';
+    var board_type = JSFuncs.getPlatform();
+    if (board_type.match(RegExp(/ESP8266/)))
+        return 'while(true) delay(1000);\n';
+    else
+        return 'while(true);\n';
 };
 Blockly.Arduino.controls_interrupts = function () {
     return 'interrupts();\n';
