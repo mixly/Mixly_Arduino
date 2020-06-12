@@ -358,7 +358,7 @@ Blockly.Blocks['MQTT_subscribe'] = {
    init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('IF0')
-    .setCheck([Boolean,Number])
+    .setCheck(null)
     .appendField(Blockly.Msg.CONTROLS_IF_MSG_IF)
     .appendField(Blockly.MQTT_Topic)
     .appendField(Blockly.MQTT_subscribe2);
@@ -435,7 +435,7 @@ Blockly.Blocks['MQTT_subscribe'] = {
     //this.compose(containerBlock);
     for (var i = 1; i <= this.elseifCount_; i++) {
       this.appendValueInput('IF' + i)
-      .setCheck(Boolean)
+      .setCheck(null)
       .appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSEIF);
       this.appendStatementInput('DO' + i)
       .appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
@@ -594,7 +594,7 @@ Blockly.Blocks['MQTT_subscribe'] = {
     // Rebuild block.
     for (var i = 1; i <= this.elseifCount_; i++) {
       this.appendValueInput('IF' + i)
-      .setCheck([Number,Boolean])
+      .setCheck(null)
       .appendField(Blockly.Msg['CONTROLS_IF_MSG_ELSEIF']);
       this.appendStatementInput('DO' + i)
       .appendField(Blockly.Msg['CONTROLS_IF_MSG_THEN']);

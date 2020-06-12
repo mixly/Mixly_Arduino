@@ -227,12 +227,6 @@
         <shadow type="pins_digital"></shadow>
       </value>
     </block>
-    <block type="inout_touchRead">
-      <value name="PIN">
-        <shadow type="pins_touch">
-        </shadow>
-      </value>
-    </block>
     <block type="touchAttachInterrupt">
       <value name="PIN">
         <shadow type="pins_touch"></shadow>
@@ -265,6 +259,7 @@
         <shadow type="pins_analog"></shadow>
       </value>
     </block>
+    <block type="OneButton"></block>
     <block type="OneButton_interrupt">
       <value name="PIN">
         <shadow type="pins_digital"></shadow>
@@ -963,7 +958,6 @@
   </category>
   <category id="catOnBoard" name="catOnBoard" colour="65">
     <category id="catOnBoardSensor" name="catOnBoardSensor" colour="40">
-      <block type="OneButton"></block>
       <block type="handbit_button_is_pressed">
       </block>
       <block type="handbit_light">
@@ -982,8 +976,6 @@
     </block>
   </category>
   <category id="catOnBoardActuator" name="catOnBoardActuator" colour="100">
-    <block type="board_setup">
-    </block>
     <block type="RGB_color_seclet">
       <field name="COLOR">#ff0000</field>
     </block>
