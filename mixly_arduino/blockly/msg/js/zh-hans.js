@@ -38,7 +38,7 @@ var MSG = {
 	copyright: "Copyright © 北京师范大学傅骞博士团队				http://mixly.org/",
 	catGame: "游戏",
 	catSystem: "系统",
-	catTurtle: "海龟",
+	catTurtle: "海龟画图",
 	catTuple: "元组",
 	catIot: "物联网",
 	catSet: "集合",

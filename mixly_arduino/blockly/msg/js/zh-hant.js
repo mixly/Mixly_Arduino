@@ -35,7 +35,7 @@ var MSG = {
 	copyright: "Copyright © 北京師範大學傅騫博士團隊				http://mixly.org/",
 	catGame: "遊戲",
 	catSystem: "系統",
-	catTurtle: "海龜",
+	catTurtle: "海龜畫圖",
 	catTuple: "元組",
 	catIot: "物聯網",
 	catSet: "集合",
