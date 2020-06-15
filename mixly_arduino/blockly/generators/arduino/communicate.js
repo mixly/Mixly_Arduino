@@ -30,8 +30,8 @@ Blockly.Arduino.ir_recv = function () {
     var code = "if (irrecv_" + dropdown_pin + ".decode(&results_" + dropdown_pin + ")) {\n"
     code += '  ' + variable + '=results_' + dropdown_pin + '.value;\n';
     code += '  String type="UNKNOWN";\n';
-    code += '  String typelist[14]={"UNKNOWN", "NEC", "SONY", "RC5", "RC6", "DISH", "SHARP", "PANASONIC", "JVC", "SANYO", "MITSUBISHI", "SAMSUNG", "LG", "WHYNTER"};\n';
-    code += '  if(results_' + dropdown_pin + '.decode_type>=1&&results_' + dropdown_pin + '.decode_type<=13){\n';
+    code += '  String typelist[18]={"UNUSED", "RC5", "RC6", "NEC", "SONY", "PANASONIC", "JVC", "SAMSUNG", "WHYNTER", "AIWA_RC_T501", "LG", "SANYO", "MITSUBISHI", "DISH", "SHARP", "DENON", "PRONTO", "LEGO_PF"};\n';
+    code += '  if(results_' + dropdown_pin + '.decode_type>=1&&results_' + dropdown_pin + '.decode_type<=17){\n';
     code += '    type=typelist[results_' + dropdown_pin + '.decode_type];\n'
     code += '  }\n';
     code += '  Serial.print("IR TYPE:"+type+"  ");\n';

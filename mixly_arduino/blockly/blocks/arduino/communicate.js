@@ -35,7 +35,7 @@ Blockly.Blocks.ir_recv = {
 //红外发射模块（NEC）
 Blockly.Blocks.ir_send_nec = {
     init: function () {
-        var TYPE = [['NEC', 'NEC'], ['Whynter', 'Whynter'], ['Sony', 'Sony'], ['RC5', 'RC5'], ['RC6', 'RC6'], ['DISH', 'DISH'], ['SharpRaw', 'SharpRaw'], ['SAMSUNG', 'SAMSUNG']];
+        var TYPE = [['RC5', 'RC5'], ['RC6', 'RC6'], ['NEC', 'NEC'], ['Sony', 'Sony'], ['Panasonic', 'Panasonic'], ['JVC', 'JVC'], ['SAMSUNG', 'SAMSUNG'], ['Whynter', 'Whynter'], ['AiwaRCT501', 'AiwaRCT501'], ['LG', 'LG'], ['Sanyo', 'Sanyo'], ['Mitsubishi', 'Mitsubishi'], ['DISH', 'DISH'], ['SharpRaw', 'SharpRaw'], ['Denon', 'Denon']];
         this.setColour(Blockly.Blocks.communicate.HUE);
         this.appendDummyInput("")
         .appendField(Blockly.MIXLY_IR_SEND_NEC1)
