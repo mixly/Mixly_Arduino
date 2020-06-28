@@ -1420,6 +1420,24 @@
       </block>
         </value>
       </block>
+
+      <block type="variables_set">        
+        <field name="VAR">f</field>
+        <value name="VALUE">
+          <block type="storage_fileopen_new_encoding">
+        <value name="FILENAME">
+          <shadow type="text">
+            <field name="TEXT">filename.txt</field>
+          </shadow>
+        </value>
+        <value name="FILE">
+          <shadow type="variables_get">
+            <field name="VAR">f</field>
+          </shadow>
+        </value>
+      </block>
+        </value>
+      </block>
       
       <block type="storage_file_write">
         <value name="data">

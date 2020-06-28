@@ -9,7 +9,7 @@ pbc.globalFunctionD['open'] = function (py2block, func, args, keywords, starargs
     if (args.length !== 2) {
         throw new Error("Incorrect number of arguments");
     }    
-    
+    if (keywords.length == 0) {
     var varblock = py2block.convert(args[0]);
     var mode = py2block.Str_value(args[1]);
    return block("storage_fileopen_new", node.lineno, {
@@ -17,7 +17,18 @@ pbc.globalFunctionD['open'] = function (py2block, func, args, keywords, starargs
     }, {
         "FILENAME":varblock
     });
-    
+    }
+    if (keywords.length == 1) {
+    var varblock = py2block.convert(args[0]);
+    var mode = py2block.Str_value(args[1]);
+    var code = py2block.Str_value(keywords[0].value);
+   return block("storage_fileopen_new_encoding", node.lineno, {
+        "MODE":mode,
+        "CODE":code
+    }, {
+        "FILENAME":varblock
+    });
+    }
 
 }
 

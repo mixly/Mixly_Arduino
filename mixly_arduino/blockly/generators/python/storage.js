@@ -27,6 +27,16 @@ Blockly.Python['storage_fileopen_new'] = function(block) {  // For each loop.
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python['storage_fileopen_new_encoding'] = function(block) {  // For each loop.
+  
+  var fn = Blockly.Python.valueToCode(this, 'FILENAME', Blockly.Python.ORDER_ATOMIC);
+  var mode = this.getFieldValue('MODE');
+  var encode = this.getFieldValue('CODE');
+  var code = 'open(' + fn + ', \'' + mode + '\', encoding="'+ encode  +'")\n';
+  return [code, Blockly.Python.ORDER_ATOMIC];
+};
+
+
 Blockly.Python.storage_file_write = function () {
     var data = Blockly.Python.valueToCode(this, 'data', Blockly.Python.ORDER_ATOMIC);
     var file = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);

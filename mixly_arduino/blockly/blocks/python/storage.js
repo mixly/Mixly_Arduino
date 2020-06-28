@@ -91,6 +91,43 @@ Blockly.Blocks.storage_fileopen_new = {
   }
 };
 
+Blockly.Blocks.storage_fileopen_new_encoding = {
+  init: function() {
+    this.setColour(Blockly.Blocks.storage.HUE);
+    this.appendValueInput("FILENAME")
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_OPEN_FILE);
+        //.appendField(new Blockly.FieldTextInput('filename.txt'), 'FILENAME');
+    var code =
+        [['ANSI', 'ANSI'],['gbk', 'gbk'],['utf-8', 'utf-8']];    
+    this.appendDummyInput()
+        .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE)
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MICROBIT_PY_STORAGE_READ, 'r'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_WRITE, 'w'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_READ, 'rb'],[Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_WRITE, 'wb']]), 'MODE');
+    this.appendDummyInput()         
+        .appendField(Blockly.Msg.MIXPY_TEXT_ENCODE)     
+        .appendField(new Blockly.FieldDropdown(code), 'CODE')          
+    this.setPreviousStatement(false);
+    this.setNextStatement(false);
+    this.setInputsInline(true);
+    this.setOutput(true);
+     var thisBlock = this;
+        this.setTooltip(function() {
+        var mode = thisBlock.getFieldValue('MODE');
+        var mode0 = Blockly.MIXLY_USE;
+        var mode1 = Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE;
+        var mode2 = Blockly.MIXLY_MICROBIT_PY_STORAGE_OPEN_FILE;
+        var mode3 =Blockly.MIXLY_BELONG;
+        var mode4 =Blockly.PY_STORAGE_FILE_OBJECT;
+        var TOOLTIPS = {
+        'r': Blockly.MIXLY_MICROBIT_PY_STORAGE_READ,
+        'w': Blockly.MIXLY_MICROBIT_PY_STORAGE_WRITE,
+        'rb':Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_READ,
+        'wb':Blockly.MIXLY_MICROBIT_PY_STORAGE_BIT_WRITE
+      };
+      return mode0 + TOOLTIPS[mode]+mode3+mode1+mode2+mode4;
+    });
+  }
+};
+
 Blockly.Blocks['storage_file_write'] = {
     init:function(){
         this.setColour(Blockly.Blocks.storage.HUE);
