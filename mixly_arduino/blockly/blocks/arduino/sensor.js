@@ -652,18 +652,23 @@ Blockly.Blocks.PS2_stk={
 
 //传感器-颜色识别-获取数据
 var TCS34725_GETRGB = [
-[Blockly.Msg.COLOUR_RGB_RED, "tcs.getR()"],
-[Blockly.Msg.COLOUR_RGB_GREEN, "tcs.getG()"],
-[Blockly.Msg.COLOUR_RGB_BLUE, "tcs.getB()"],
+ [Blockly.Msg.COLOUR_RGB_RED, "getR()"],
+ [Blockly.Msg.COLOUR_RGB_GREEN, "getG()"],
+ [Blockly.Msg.COLOUR_RGB_BLUE, "getB()"]
+];
+
+var DF_TCS34725_COLOR = [
+  [Blockly.Msg.COLOUR_RGB_RED, "tcs34725.getRedToGamma()"],
+  [Blockly.Msg.COLOUR_RGB_GREEN, "tcs34725.getGreenToGamma()"],
+  [Blockly.Msg.COLOUR_RGB_BLUE, "tcs34725.getBlueToGamma()"],
 ];
 
 Blockly.Blocks.TCS34725_Get_RGB = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
-    .setAlign(Blockly.ALIGN_RIGHT)
     .appendField(Blockly.TCS34725_Get_RGB)
-    .appendField(new Blockly.FieldDropdown(TCS34725_GETRGB), "TCS34725_GETRGB");
+    .appendField(new Blockly.FieldDropdown(DF_TCS34725_COLOR), "DF_TCS34725_COLOR");
     this.setInputsInline(true);
     this.setOutput(true);
   }
@@ -819,10 +824,10 @@ Blockly.Blocks['keypad_type_data'] = {
    .appendField(new Blockly.FieldTextInput("C"), "keypad_3_4");
    this.appendDummyInput()
    .setAlign(Blockly.ALIGN_CENTRE)
-   .appendField(new Blockly.FieldTextInput("0"), "keypad_4_1")
-   .appendField(new Blockly.FieldTextInput("#"), "keypad_4_2")
-   .appendField(new Blockly.FieldTextInput("D"), "keypad_4_3")
-   .appendField(new Blockly.FieldTextInput("*"), "keypad_4_4");
+   .appendField(new Blockly.FieldTextInput("*"), "keypad_4_1")
+   .appendField(new Blockly.FieldTextInput("0"), "keypad_4_2")
+   .appendField(new Blockly.FieldTextInput("#"), "keypad_4_3")
+   .appendField(new Blockly.FieldTextInput("D"), "keypad_4_4");
    this.setOutput(true, null);
    this.setTooltip("");
    this.setHelpUrl("");

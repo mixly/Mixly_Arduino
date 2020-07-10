@@ -383,15 +383,16 @@ Blockly.Arduino.PS2_stk = function() {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+
+// 改用DF TCS34725 颜色识别传感器库
 Blockly.Arduino.TCS34725_Get_RGB = function() {
- Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
- Blockly.Arduino.definitions_['include_Adafruit_TCS34725'] = '#include <Adafruit_TCS34725.h>';
- Blockly.Arduino.definitions_['var_Adafruit_TCS34725'] = 'Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);';
- Blockly.Arduino.definitions_['var_declare_RGB'] = 'float red, green, blue;';
- Blockly.Arduino.setups_['setup_Adafruit_TCS34725' ] = 'if (tcs.begin()) {\nSerial.println("Found sensor");\n} \nelse { \nSerial.println("No TCS34725 found ... check your connections");\nwhile (1);\n}';
- var code = "delay(60);\ntcs.getRGB(&red, &green, &blue);\n";  
- var RGB = this.getFieldValue('TCS34725_GETRGB');
- return [RGB, Blockly.Arduino.ORDER_ATOMIC];
+  Blockly.Arduino.definitions_['include_DFRobot_TCS34725'] = '#include <DFRobot_TCS34725.h>';
+  Blockly.Arduino.definitions_['var_DFRobot_TCS34725'] = 'DFRobot_TCS34725 tcs34725;\n';
+  // Blockly.Arduino.setups_['setup_DFRobot_TCS34725' ] = 'if (tcs34725.begin()) {\n  Serial.println("Found sensor");\n} \nelse { \nSerial.println("No TCS34725 found ... check your connections");\nwhile (1);\n}';
+  Blockly.Arduino.setups_['setup_DFRobot_TCS34725' ] = 'tcs34725.begin();';
+
+  var RGB = this.getFieldValue('DF_TCS34725_COLOR');
+  return [RGB, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 //初始化TCS230颜色传感器
