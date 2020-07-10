@@ -186,6 +186,53 @@ Blockly.Python.sensor_distance_hrsc04= function(){
     return ['sonar.distance_cm()', Blockly.Python.ORDER_ATOMIC];
 };
 
+Blockly.Python.sensor_distance_hrsc04_= function(){
+    var Trig= this.getFieldValue('Trig');
+    var Echo= this.getFieldValue('Echo');
+    Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
+    Blockly.Python.setups_['class_hrsc04_'] =
+        'class HCSR04:\n'+
+        '    def __init__(self, tpin=pin'+Trig+', epin=pin'+Echo+', spin=pin13):\n'+
+        '        self.trigger_pin = tpin\n'+
+        '        self.echo_pin = epin\n'+
+        '        self.sclk_pin = spin\n'+
+        '\n'+
+        '    def distance_mm(self):\n'+
+        '        spi.init(baudrate=125000, sclk=self.sclk_pin,\n'+
+        '                 mosi=self.trigger_pin, miso=self.echo_pin)\n'+
+        '        pre = 0\n'+
+        '        post = 0\n'+
+        '        k = -1\n'+
+        '        length = 500\n'+
+        '        resp = bytearray(length)\n'+
+        '        resp[0] = 0xFF\n'+
+        '        spi.write_readinto(resp, resp)\n'+
+        '        # find first non zero value\n'+
+        '        try:\n'+
+        '            i, value = next((ind, v) for ind, v in enumerate(resp) if v)\n'+
+        '        except StopIteration:\n'+
+        '            i = -1\n'+
+        '        if i > 0:\n'+
+        '            pre = bin(value).count("1")\n'+
+        '            # find first non full high value afterwards\n'+
+        '            try:\n'+
+        '                k, value = next((ind, v)\n'+
+        '                                for ind, v in enumerate(resp[i:length - 2]) if resp[i + ind + 1] == 0)\n'+
+        '                post = bin(value).count("1") if k else 0\n'+
+        '                k = k + i\n'+
+        '            except StopIteration:\n'+
+        '                i = -1\n'+
+        '        dist= -1 if i < 0 else round((pre + (k - i) * 8. + post) * 8 * 0.172)\n'+
+        '        return dist\n'+
+        '\n'+
+        '    def distance_cm(self):\n'+
+        '        return self.distance_mm() / 10.0\n'+
+        '\n'+
+        'sonar=HCSR04()\n'+
+        '\n'
+    return ['sonar.distance_cm()', Blockly.Python.ORDER_ATOMIC];
+};
+
 Blockly.Python.DS1307_init = function () {
     Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
     var SDA = Blockly.Python.valueToCode(this, 'SDA', Blockly.Python.ORDER_ATOMIC);
