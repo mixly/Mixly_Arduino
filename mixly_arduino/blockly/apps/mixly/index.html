@@ -941,8 +941,13 @@
   </block>
   <block type="mlx90614_get_data">
   </block>
+
+  <!-- 改用DF TCS34725 颜色识别传感器库 -->
+  <!-- <block type="TCS34725_Get_RGB">
+  </block> -->
   <block type="TCS34725_Get_RGB">
   </block>
+
   <block type="tcs230_init">
     <value name="tcs230_s0">
       <shadow type="pins_digital">
@@ -1534,7 +1539,7 @@
 <block type="arduino_dfplayer_mini_volume_up_down">
 </block>
 <block type="arduino_dfplayer_mini_EQ">
-  <field name="dfplayer_name">myDFPlayer</field>
+  <field name="dfplayer_name">myPlayer</field>
   <value name="eq_data">
     <shadow type="math_number">
       <field name="NUM">0</field>
@@ -1545,7 +1550,7 @@
   </value>
 </block>
 <block type="arduino_dfplayer_mini_outputDevice">
-  <field name="dfplayer_name">myDFPlayer</field>
+  <field name="dfplayer_name">myPlayer</field>
   <value name="outputdevice_data">
     <shadow type="math_number">
       <field name="NUM">2</field>
@@ -1586,7 +1591,7 @@
 <block type="arduino_dfplayer_read_now">
 </block>
 <block type="arduino_dfplayer_readFileCounts">
-  <field name="dfplayer_name">myDFPlayer</field>
+  <field name="dfplayer_name">myPlayer</field>
   <field name="play_data">readFileCounts</field>
   <value name="device_type">
     <shadow type="math_number">
@@ -1903,7 +1908,7 @@
   <block type="oled_init">
     <value name="ADDRESS">
       <shadow type="math_number">
-        <field name="NUM">0x3C</field>
+        <field name="NUM">0x78</field>
       </shadow>
     </value>
     <next>
@@ -1989,90 +1994,90 @@
   <block type="oled_set_EN_Font">
   </block>
 
-<block type="procedures_defnoreturn">
-  <field name="NAME">page1</field>
-  <statement name="STACK">
-    <block type="oled_set_EN_Font">
-      <field name="TYPE">timR08_tr</field>
-      <next>
-        <block type="oled_print" >
-          <value name="POS_X">
-            <shadow type="math_number">
-              <field name="NUM">0</field>
-            </shadow>
-          </value>
-          <value name="POS_Y">
-            <shadow type="math_number">
-              <field name="NUM">20</field>
-            </shadow>
-          </value>
-          <value name="TEXT">
-            <shadow type="text">
-              <field name="TEXT">1234</field>
-            </shadow>
-          </value>
-        </block>
-      </next>
-    </block>
-  </statement>
-</block>
-<!-- <block type="oled_define_bitmap_data"></block> -->
-<block type="tool_modulus_show">
-  <field name="VAR">bitmap</field>
-  <field name="x">96</field>
-  <field name="save_hz">TRUE</field>
-  <value name="input_data">
-    <block type="tool_modulus">
-      <field name="bitmap_formats">1</field>
-      <field name="modulus_way">2</field>
-      <field name="modulus_direction">2</field>
-      <field name="hz_sharp">STHeiti</field>
-      <field name="hz_line_height">16</field>
-      <field name="hz_up_down">hz_up</field>
-      <field name="hz_up_down_data">0</field>
-      <field name="hz_left_right">hz_left</field>
-      <field name="hz_left_right_data">0</field>
-      <field name="bitmap_width">48</field>
-      <field name="bitmap_height">16</field>
-      <field name="show_hz">TRUE</field>
-      <field name="input_data">米思齐</field>
-    </block>
-  </value>
-</block>
-<block type="oled_showBitmap" >
-  <value name="START_X">
+  <block type="procedures_defnoreturn">
+    <field name="NAME">page1</field>
+    <statement name="STACK">
+      <block type="oled_set_EN_Font">
+        <field name="TYPE">timR08_tr</field>
+        <next>
+          <block type="oled_print" >
+            <value name="POS_X">
+              <shadow type="math_number">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="POS_Y">
+              <shadow type="math_number">
+                <field name="NUM">20</field>
+              </shadow>
+            </value>
+            <value name="TEXT">
+              <shadow type="text">
+                <field name="TEXT">1234</field>
+              </shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <!-- <block type="oled_define_bitmap_data"></block> -->
+  <block type="tool_modulus_show">
+    <field name="VAR">bitmap</field>
+    <field name="x">96</field>
+    <field name="save_hz">TRUE</field>
+    <value name="input_data">
+      <block type="tool_modulus">
+        <field name="bitmap_formats">1</field>
+        <field name="modulus_way">2</field>
+        <field name="modulus_direction">2</field>
+        <field name="hz_sharp">STHeiti</field>
+        <field name="hz_line_height">16</field>
+        <field name="hz_up_down">hz_up</field>
+        <field name="hz_up_down_data">0</field>
+        <field name="hz_left_right">hz_left</field>
+        <field name="hz_left_right_data">0</field>
+        <field name="bitmap_width">48</field>
+        <field name="bitmap_height">16</field>
+        <field name="show_hz">TRUE</field>
+        <field name="input_data">米思齐</field>
+      </block>
+    </value>
+  </block>
+  <block type="oled_showBitmap" >
+    <value name="START_X">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="START_Y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="WIDTH">
+      <shadow type="math_number">
+        <field name="NUM">128</field>
+      </shadow>
+    </value>
+    <value name="HEIGHT">
+      <shadow type="math_number">
+        <field name="NUM">64</field>
+      </shadow>
+    </value>
+    <value name="bitmap_name">
+      <block type="text">
+        <field name="TEXT">bitmap1</field>
+      </block>
+    </value>
+  </block>
+  <block type="oled_clear"></block>
+  <block type="u8g2_setContrast">
+   <value name="Contrast">
     <shadow type="math_number">
-      <field name="NUM">0</field>
+      <field name="NUM">100</field>
     </shadow>
-  </value>
-  <value name="START_Y">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="WIDTH">
-    <shadow type="math_number">
-      <field name="NUM">128</field>
-    </shadow>
-  </value>
-  <value name="HEIGHT">
-    <shadow type="math_number">
-      <field name="NUM">64</field>
-    </shadow>
-  </value>
-  <value name="bitmap_name">
-    <block type="text">
-      <field name="TEXT">bitmap1</field>
-    </block>
-  </value>
-</block>
-<block type="oled_clear"></block>
-<block type="u8g2_setContrast">
- <value name="Contrast">
-  <shadow type="math_number">
-    <field name="NUM">100</field>
-  </shadow>
-</value> 
+  </value> 
 </block>
 <block type="oled_face">
  <value name="POS_X">
@@ -2828,141 +2833,154 @@
         </block>
       </statement>
     </block>
-    <block type="blynk_iot_WidgetLED_COLOR">
-      <value name="STAT">
-        <shadow type="inout_highlow"></shadow>
-      </value>
-      <value name="STAT">
-        <shadow type="inout_highlow">
-        </shadow>
-      </value>
-    </block>
-    <block type="blynk_iot_WidgetLED_VALUE">
-      <value name="NUM">
+    <block type="blynk_iot_WidgetLED_COLOR">    
+      <value name="COLOR">
         <shadow type="math_number">
-          <field name="NUM">0</field>
+          <field name="NUM">
+          </field>
         </shadow>
-      </value>
-    </block>
-    <block type="blynk_email">
-      <value name="email_add">
-        <shadow type="text">
-          <field name="TEXT">example@blynk.cc</field>
-        </shadow>
-      </value>
-      <value name="Subject">
-        <shadow type="text">
-          <field name="TEXT">Subject</field>
-        </shadow>
-      </value>
-      <value name="content">
-        <shadow type="text">
-          <field name="TEXT">Content</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="blynk_notify">
-      <value name="content">
-        <shadow type="text">
-          <field name="TEXT">Notify</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="blynk_iot_terminal_get">
-      <field name="Vpin">V0</field>
-      <statement name="DO">
-        <block type="serial_println">
-          <field name="serial_select">Serial</field>
-          <value name="CONTENT">
-            <block type="variables_get">
-              <field name="VAR">terminal_text</field>
-            </block>
-          </value>
-        </block>
-      </statement>
-    </block>
-    <block type="blynk_terminal_clear">
-    </block>
-    <block type="blynk_terminal">
-      <value name="content">
-        <shadow type="text">
-          <field name="TEXT">Hello,World!</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="blynk_time_input_1">
-      <field name="Vpin">V0</field>
-      <statement name="DO">
-        <block type="serial_println">
-          <field name="serial_select">Serial</field>
-          <value name="CONTENT">
-            <block type="variables_get">
-              <field name="VAR">hour</field>
-            </block>
-          </value>
-          <next>
-            <block type="serial_println">
-              <field name="serial_select">Serial</field>
-              <value name="CONTENT">
-                <block type="variables_get">
-                  <field name="VAR">minute</field>
-                </block>
-              </value>
-              <next>
-                <block type="serial_println">
-                  <field name="serial_select">Serial</field>
-                  <value name="CONTENT">
-                    <block type="variables_get">
-                      <field name="VAR">second</field>
-                    </block>
-                  </value>
-                  <next>
-                  </next>
-                </block>
-              </next>
-            </block>
-          </next>
-        </block>
-      </statement>
-    </block>
-    <block type="blynk_lcd">
-     <field name="Vpin">V0</field>
-     <value name="x">
+        <block type="RGB_color_seclet" >
+         <field name="COLOR">#ff0000</field>
+       </block>
+     </value>
+     <value name="STAT">
+      <shadow type="inout_highlow"></shadow>
+    </value>
+  </block>
+  <block type="blynk_iot_WidgetLED_VALUE">
+    <value name="NUM">
       <shadow type="math_number">
         <field name="NUM">0</field>
       </shadow>
     </value>
-    <value name="y">
+    <value name="COLOR">
       <shadow type="math_number">
-        <field name="NUM">0</field>
+        <field name="NUM">
+        </field>
       </shadow>
-    </value>
-    <value name="value">
-      <shadow type="math_number">
-        <field name="NUM">923</field>
-      </shadow>
-    </value> 
-  </block>
-  <block type="blynk_lcd_clear">
-  </block>
-  <block type="blynk_videourl">
-    <value name="url">
+      <block type="RGB_color_seclet" >
+       <field name="COLOR">#ff0000</field>
+     </block>
+   </block>
+   <block type="blynk_email">
+    <value name="email_add">
       <shadow type="text">
-        <field name="TEXT">http://yourvideostream.url</field>
+        <field name="TEXT">example@blynk.cc</field>
+      </shadow>
+    </value>
+    <value name="Subject">
+      <shadow type="text">
+        <field name="TEXT">Subject</field>
+      </shadow>
+    </value>
+    <value name="content">
+      <shadow type="text">
+        <field name="TEXT">Content</field>
       </shadow>
     </value>
   </block>
-
-  <block type="blynk_table_add_data">
-   <value name="name">
-     <shadow type="text">
-      <field name="TEXT">Test row</field>
+  <block type="blynk_notify">
+    <value name="content">
+      <shadow type="text">
+        <field name="TEXT">Notify</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="blynk_iot_terminal_get">
+    <field name="Vpin">V0</field>
+    <statement name="DO">
+      <block type="serial_println">
+        <field name="serial_select">Serial</field>
+        <value name="CONTENT">
+          <block type="variables_get">
+            <field name="VAR">terminal_text</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="blynk_terminal_clear">
+  </block>
+  <block type="blynk_terminal">
+    <value name="content">
+      <shadow type="text">
+        <field name="TEXT">Hello,World!</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="blynk_time_input_1">
+    <field name="Vpin">V0</field>
+    <statement name="DO">
+      <block type="serial_println">
+        <field name="serial_select">Serial</field>
+        <value name="CONTENT">
+          <block type="variables_get">
+            <field name="VAR">hour</field>
+          </block>
+        </value>
+        <next>
+          <block type="serial_println">
+            <field name="serial_select">Serial</field>
+            <value name="CONTENT">
+              <block type="variables_get">
+                <field name="VAR">minute</field>
+              </block>
+            </value>
+            <next>
+              <block type="serial_println">
+                <field name="serial_select">Serial</field>
+                <value name="CONTENT">
+                  <block type="variables_get">
+                    <field name="VAR">second</field>
+                  </block>
+                </value>
+                <next>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="blynk_lcd">
+   <field name="Vpin">V0</field>
+   <value name="x">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
     </shadow>
   </value>
-  <value name="data">
+  <value name="y">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="value">
+    <shadow type="math_number">
+      <field name="NUM">923</field>
+    </shadow>
+  </value> 
+</block>
+<block type="blynk_lcd_clear">
+</block>
+<block type="blynk_videourl">
+  <value name="url">
+    <shadow type="text">
+      <field name="TEXT">http://yourvideostream.url</field>
+    </shadow>
+  </value>
+</block>
+
+<block type="blynk_table_add_data">
+ <value name="name">
    <shadow type="text">
-    <field name="TEXT">hello</field>
+    <field name="TEXT">Test row</field>
   </shadow>
+</value>
+<value name="data">
+ <shadow type="text">
+  <field name="TEXT">hello</field>
+</shadow>
 </value>
 </block>
 
