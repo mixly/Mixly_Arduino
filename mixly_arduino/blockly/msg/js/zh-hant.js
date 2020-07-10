@@ -42,6 +42,19 @@ var MSG = {
 	catData: "資料分析",
 	catHardware: "硬體交互",
 	catAI: "人工智慧",
+	catHear: "機器聽覺",
+	catImage: "機器視覺",
+	catTFT: "顯示屏",
+	catAV: "音視頻",
+	catCamera: "攝像頭",
+	catImage_Draw: "圖像繪制",
+	catImage_Base: "圖像基礎",
+	catImage_Filte: "圖像濾波",
+	catImage_Shpe: "形狀識別",
+	catImage_Color: "顏色識別",
+	catImage_Codes: "維碼識別",
+	catImage_Features: "特征識別",
+	catShaw:'硬件說明',		
 	catDS: "資料結構",
 	catOnBoard:'板載資源',
 	catOnBoardDisplay:'板載顯示',
@@ -2137,7 +2150,6 @@ Blockly.blynk_IOT_DOUBLE = '浮點型';
 Blockly.blynk_IOT_VAR_NAME = '變數名';
 Blockly.blynk_TIMER = 'Blynk計時器';
 Blockly.blynk_IOT_WidgetLED = 'LED組件 虛擬管腳';
-Blockly.blynk_iot_WidgetLED_COLOR = '顏色';
 Blockly.blynk_IOT_IR_SEND = '紅外控制空調 品牌';
 Blockly.blynk_IOT_GREE = '格力';
 Blockly.blynk_IOT_MIDEA = '美的';

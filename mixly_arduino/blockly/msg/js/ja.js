@@ -219,7 +219,6 @@ Blockly.blynk_IOT_syncVirtual='Sync All virtual Pin';
 Blockly.blynk_IOT_terminal_get='Get String From Terminal';
 Blockly.blynk_IOT_VAR_NAME='variable name';
 Blockly.blynk_IOT_WidgetLED='LED Widget VPin';
-Blockly.blynk_iot_WidgetLED_COLOR='Color';
 Blockly.blynk_lcd='LCD Widget Display';
 Blockly.blynk_LIGHT='Light Sensor';
 Blockly.blynk_NOTIFY='Send Notify';

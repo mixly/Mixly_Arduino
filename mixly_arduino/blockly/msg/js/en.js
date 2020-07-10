@@ -45,6 +45,19 @@ var MSG = {
 	catData:"Data",
 	catHardware:"Hardware",
 	catAI:"AI",
+	catHear: "machine Hear",
+	catImage: "machine vision",
+	catTFT: "Display",
+	catAV: "Audio/Video",
+	catCamera: "Camera ",
+	catImage_Draw: "Image rendering ",
+	catImage_Base: "Image foundation",
+	catImage_Filte: "Image filtering",
+	catImage_Shpe: "Shape recognition",
+	catImage_Color: "Color recognition",
+	catImage_Codes: "Code recognition ",
+	catImage_Features: "Feature recognition",
+	catShaw:'MixNo/MixPY',	
 	catDS: "Data Structure",
 	catOnBoard:'Board',
 	catOnBoardDisplay:'Board Display',
@@ -2139,7 +2152,6 @@ Blockly.blynk_IOT_DOUBLE = 'Float';
 Blockly.blynk_IOT_VAR_NAME = 'Variable name';
 Blockly.blynk_TIMER = 'Blynk timer';
 Blockly.blynk_IOT_WidgetLED = 'LED component virtual pin';
-Blockly.blynk_iot_WidgetLED_COLOR = 'Color';
 Blockly.blynk_IOT_IR_SEND = 'Infrared controlled air conditioner brand';
 Blockly.blynk_IOT_GREE = 'Gree';
 Blockly.blynk_IOT_MIDEA = 'Beautiful';

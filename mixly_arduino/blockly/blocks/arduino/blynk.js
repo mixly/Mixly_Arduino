@@ -463,7 +463,6 @@ Blockly.Blocks.blynk_iot_get_data = {
   callType_: "procedures_callnoreturn"
 };
 
-
 //blynk定时器
 Blockly.Blocks.Blynk_iot_timer = {
   init: function () {
@@ -481,6 +480,7 @@ Blockly.Blocks.Blynk_iot_timer = {
     this.setNextStatement(false);
   }
 };
+
 //blynk服务器连接状态
 Blockly.Blocks.Blynk_connect_state = {
   init: function () {
@@ -544,16 +544,15 @@ Blockly.Blocks.blynk_iot_syncVirtual = {
 Blockly.Blocks.blynk_iot_WidgetLED_COLOR = {
   init: function () {
     this.setColour(Blockly.Blocks.blynk.HUE1);
-
     this.appendDummyInput("")
     .appendField(new Blockly.FieldImage("../../media/blynk/widget_led.png", 20, 20))
     .appendField(Blockly.blynk_IOT_WidgetLED);
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldDropdown(BLYNK_VIRTUALPIN_SELECT), "Vpin")
-    .appendField(Blockly.blynk_iot_WidgetLED_COLOR);
+    .appendField(new Blockly.FieldDropdown(BLYNK_VIRTUALPIN_SELECT), "Vpin");
     this.appendDummyInput("")
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(new Blockly.FieldColour("#ff0000"), "RGB_LED_COLOR");
+    .appendField(Blockly.Msg.HTML_COLOUR);
+    this.appendValueInput("COLOR", Number)
+    .setCheck(Number);
     this.appendValueInput("STAT")
     .appendField(Blockly.MIXLY_STAT)
     .setCheck([Number,Boolean]);
@@ -574,14 +573,14 @@ Blockly.Blocks.blynk_iot_WidgetLED_VALUE = {
     .appendField(Blockly.blynk_IOT_WidgetLED);
     this.appendDummyInput("")
     .appendField(new Blockly.FieldDropdown(BLYNK_VIRTUALPIN_SELECT), "Vpin")
-    .appendField(Blockly.blynk_iot_WidgetLED_COLOR);
-    this.appendDummyInput("")
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(new Blockly.FieldColour("#ff0000"), "RGB_LED_COLOR");
+    .appendField(Blockly.Msg.HTML_COLOUR);
+     this.appendDummyInput("")
+    .appendField(Blockly.Msg.HTML_COLOUR);
+    this.appendValueInput("COLOR", Number)
+    .setCheck(Number);
     this.appendValueInput("NUM", Number)
     .appendField(Blockly.MIXLY_BRIGHTNESS)
     .setCheck(Number);
-    //this.appendValueInput("data").appendField(Blockly.MIXLY_SD_DATA);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);

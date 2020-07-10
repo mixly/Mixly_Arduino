@@ -455,6 +455,7 @@ Blockly.Blocks.tft_drawFastLine = {
 };
 
 //显示-TFT-新建页面
+/*
 Blockly.Blocks.oled_page = {
   init: function() {
     this.setColour(Blockly.Blocks.display.HUE);
@@ -468,6 +469,7 @@ Blockly.Blocks.oled_page = {
     this.setTooltip(Blockly.oled_page_tooltip);
 }
 };
+*/
 
 //显示-TFT-画三角
 Blockly.Blocks.tft_Triangle = {

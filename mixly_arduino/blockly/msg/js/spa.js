@@ -2138,7 +2138,6 @@ Blockly.blynk_IOT_DOUBLE = 'Flotar';
 Blockly.blynk_IOT_VAR_NAME = 'Nombre de variable';
 Blockly.blynk_TIMER = 'Blynk timer';
 Blockly.blynk_IOT_WidgetLED = 'Pin virtual del componente LED';
-Blockly.blynk_iot_WidgetLED_COLOR = 'Color';
 Blockly.blynk_IOT_IR_SEND = 'Marca de aire acondicionado controlado por infrarrojos';
 Blockly.blynk_IOT_GREE = 'Gree';
 Blockly.blynk_IOT_MIDEA = 'Hermosa';
