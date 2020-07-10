@@ -1,0 +1,859 @@
+<html manifest=node.manifest>
+<head>
+  <meta charset="utf-8">
+  <title>Mixly STM32F103C8T6 Arduino</title>
+  <script type="text/javascript" src="../../blockly_compressed.js"></script>
+  <script type="text/javascript" src="../../core/variables.js"></script>
+  <script type="text/javascript" src="../../core/procedures.js"></script>
+  <script type="text/javascript" src="../../core/blockly.js"></script>
+  <script type="text/javascript" src="../../core/events.js"></script>
+  <script type="text/javascript" src="../../core/field_textarea.js"></script>
+  <script type="text/javascript" src="../../arduino.js"></script>
+  <script type="text/javascript" src="company_pin.js"></script>
+  <script type="text/javascript" src="js/drag.js"></script>
+  <script type="text/javascript" src="js/code.js"></script>
+  <script type="text/javascript" src="digitalPinToInterrupt.js"></script>
+  <script type="text/javascript" src="js/Blob.js"></script>
+  <script type="text/javascript" src="spin.js"></script>
+  <script type="text/javascript" src="js/FileSaver.min.js"></script>
+  <script type="text/javascript" src="js/blockly_helper.js"></script>
+  <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+  <script src="js/lib/ace/ace.js" type="application/javascript"></script>
+  <script src="js/lib/ace/ext-language_tools.js" type="application/javascript"></script>
+  <script type="text/javascript" src="myblock.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/factory.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/pins.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/inout.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/control.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/math.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/text.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/lists.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/logic.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/variables.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/serial.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/scoop.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/tools.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/factory.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/pins.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/inout.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/control.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/math.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/text.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/lists.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/logic.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/variables.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/procedures.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/serial.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/scoop.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/tools.js"></script>
+  <script src = "init.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/color_stm32f103c8t6_arduino.css"/>
+  <link rel="stylesheet" type="text/css" href="css/ACEfont.css"/>
+</head>
+<body onload="init()">
+  <table height="100%" width="100%" id="table_whole">
+    <tr>
+      <td colspan=3>
+        <table width="100%">
+          <tr id="tabRow" height="1em">
+            <td style="vertical-align: center;" id="tab_blocks" class="tabon" onclick="tabClick('blocks')">
+             <img style="vertical-align:middle" width="25" src="media/blocks.png"/>
+             <span id="span_blocks">Blocks</span>
+           </td>
+           <td class="tabmin">&nbsp;</td>
+           <td style="vertical-align: center;text-align:center;" id="tab_arduino" class="taboff" onclick="tabClick('arduino')">
+             <span id="span_arduino">Code</span>
+           </td>
+           <td class="tabmin">&nbsp;</td>
+           <td style="vertical-align: center;text-align:center;display:none;" id="tab_xml" class="taboff" onclick="tabClick('xml')">XML</td>
+           <td class="tabcoyright">
+            <span id="copyright" style="font-family:'YaHei Consolas Hybrid', 'Microsoft Yahei Light', 'Arial';font-size:12px;color:#999;">copyright</span>
+          </td>
+          <td class="tabmin">
+           <input onclick="Blockly.mainWorkspace.undo(0);" name="undo" type="image" title="undo(ctrl+z)"  src="media/undo.png" style="padding:5px;" onmouseover="this.src='media/undo1.png'" onmousedown="this.src='media/undo2.png'" onmouseup="this.src='media/undo1.png'" onmouseout="this.src='media/undo.png'" width="20" height="20" border="0">
+         </td>
+         <td class="tabmin">
+           <input onclick="Blockly.mainWorkspace.undo(1);" name="redo" type="image" title="redo(ctrl+y)"  src="media/redo.png" style="padding:5px" onmouseover="this.src='media/redo1.png'" onmousedown="this.src='media/redo2.png'" onmouseup="this.src='media/redo1.png'" onmouseout="this.src='media/redo.png'" width="20" height="20" border="0">
+         </td>
+         <td class="tabmin"style="padding-right:20px">
+          <input onclick="JSFuncs.openUrlInBrowser('http://wiki.mixly.org/')" name="help" type="image" src="media/help.png" style="padding:5px" onmouseover="this.src='media/help1.png'" onmousedown="this.src='media/help2.png'" onmouseup="this.src='media/help1.png'" onmouseout="this.src='media/help.png'" width="20" height="20" border="0">
+        </td>
+        <td class="tabmin" style="padding-right:20px;display:none;">
+          <button id="fakeload">LoadXML</button>
+          <input type="file" id="load" style="display: none;"/>
+        </td>
+        <td class="tabmin">
+          <select id="languageMenu"></select>
+        </td>
+        <td class="tabmin">
+          <select id="aceTheme" style="width:100px; height:23px; margin-left: 10px;">
+           <optgroup label="代码区亮色主题">
+            <option value="ace/theme/chrome">Chrome</option>
+            <option value="ace/theme/clouds">Clouds</option>
+            <option value="ace/theme/crimson_editor">Crimson Editor</option>
+            <option value="ace/theme/dawn">Dawn</option>
+            <option value="ace/theme/dreamweaver">Dreamweaver</option>
+            <option value="ace/theme/eclipse">Eclipse</option>
+            <option value="ace/theme/github">GitHub</option>
+            <option value="ace/theme/iplastic">IPlastic</option>
+            <option value="ace/theme/solarized_light">Solarized Light</option>
+            <option value="ace/theme/textmate">TextMate</option>
+            <option value="ace/theme/tomorrow">Tomorrow</option>
+            <option value="ace/theme/xcode">XCode</option>
+            <option value="ace/theme/kuroir">Kuroir</option>
+            <option value="ace/theme/katzenmilch">KatzenMilch</option>
+            <option value="ace/theme/sqlserver">SQL Server</option>
+          </optgroup>
+          <optgroup label="代码区暗色主题">
+            <option value="ace/theme/ambiance">Ambiance</option>
+            <option value="ace/theme/chaos">Chaos</option>
+            <option value="ace/theme/clouds_midnight">Clouds Midnight</option>
+            <option value="ace/theme/dracula">Dracula</option>
+            <option value="ace/theme/cobalt">Cobalt</option>
+            <option value="ace/theme/gruvbox">Gruvbox</option>
+            <option value="ace/theme/gob">Green on Black</option>
+            <option value="ace/theme/idle_fingers">idle Fingers</option>
+            <option value="ace/theme/kr_theme">krTheme</option>
+            <option value="ace/theme/merbivore">Merbivore</option>
+            <option value="ace/theme/merbivore_soft">Merbivore Soft</option>
+            <option value="ace/theme/mono_industrial">Mono Industrial</option>
+            <option value="ace/theme/monokai">Monokai</option>
+            <option value="ace/theme/pastel_on_dark">Pastel on dark</option>
+            <option value="ace/theme/solarized_dark">Solarized Dark</option>
+            <option value="ace/theme/terminal">Terminal</option>
+            <option value="ace/theme/tomorrow_night">Tomorrow Night</option>
+            <option value="ace/theme/tomorrow_night_blue">Tomorrow Night Blue</option>
+            <option value="ace/theme/tomorrow_night_bright">Tomorrow Night Bright</option>
+            <option value="ace/theme/tomorrow_night_eighties">Tomorrow Night 80s</option>
+            <option value="ace/theme/twilight">Twilight</option>
+            <option value="ace/theme/vibrant_ink">Vibrant Ink</option>
+          </optgroup>
+        </select>
+      </td>
+      <script>
+       document.getElementById('span_blocks').textContent = MSG['tab_blocks'];
+       document.getElementById('span_arduino').textContent = MSG['tab_arduino'];
+     </script>
+   </tr>
+ </table>
+</td>
+</tr>
+<tr>
+  <td height="100%" width="75%" id="content_area"></td>
+  <td style="display:none;height:100%;width:0.3%;background: #ddd;cursor: w-resize;" id="mid_td"></td>
+  <td width="25%" style="background-color:#eee;display:none;" id="side_code_parent">
+    <div id="side_code" wrap="off" readonly></div>
+  </td>
+  <div id="sidebar" class="right-top" onclick="sidecodeClick()"></div>
+</tr>
+</table>
+<div id="content_blocks" class="content"></div>
+<div id="content_arduino" class="content" wrap="off" ></div>
+<textarea id="content_xml" class="content" wrap="off" readonly></textarea>
+<xml id="toolbox" style="display: none">
+  <category name="" id="catInOut" colour="20">
+    <block type="inout_highlow">
+    </block>
+    <block type="inout_digital_write2">
+     <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+    <value name="STAT">
+      <shadow type="inout_highlow">
+      </shadow>
+    </value>
+  </block>
+  <block type="inout_digital_read2">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+  </block>
+  <block type="inout_analog_write">
+    <value name="PIN">
+      <shadow type="pins_pwm"></shadow>
+    </value>
+    <value name="NUM">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="inout_analog_read">
+    <value name="PIN">
+      <shadow type="pins_analog"></shadow>
+    </value>
+  </block>
+  <block type="controls_attachInterrupt">
+    <value name="PIN">
+      <shadow type="pins_interrupt"></shadow>
+    </value>
+  </block>
+  <block type="controls_detachInterrupt">
+    <value name="PIN">
+      <shadow type="pins_interrupt"></shadow>
+    </value>
+  </block>
+  <block type="inout_pulseIn">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+  </block>
+  <block type="inout_pulseIn2">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+    <value name="TIMEOUT">
+      <shadow type="math_number">
+        <field name="NUM">1000000</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="inout_pinMode">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+  </block>
+  <block type="inout_shiftout">
+    <value name="PIN1">
+      <shadow type="pins_digital"></shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital"></shadow>
+    </value>
+    <value name="DATA">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+</category>
+<category id="catControl"  colour="120">
+  <block type="base_setup">
+  </block>
+  <block type="controls_end_program">
+  </block>
+  <block type="do_while">
+    <value name="select_data">
+      <shadow type="logic_boolean">
+      </shadow>
+    </value>
+  </block>
+  <block type="controls_whileUntil">
+    <value name="BOOL">
+      <shadow type="logic_boolean">
+      </shadow>
+    </value>
+  </block>
+  <block type="controls_delay">
+   <value name="DELAY_TIME">
+    <shadow type="math_number">
+      <field name="NUM">1000</field>
+    </shadow>
+  </value>
+</block>
+<block type="controls_if">
+</block>
+<block type="controls_switch_case">
+</block>
+<block type="controls_for">
+ <value name="FROM">
+  <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
+<value name="TO">
+  <shadow type="math_number">
+    <field name="NUM">10</field>
+  </shadow>
+</value>
+<value name="STEP">
+  <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
+</block>
+<block type="controls_flow_statements">
+</block>
+<block type="controls_millis">
+</block>
+</category>
+<category id="catMath"  colour="230">
+  <block type="math_number">
+  </block>
+  <block type="math_arithmetic">
+    <value name="A">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="B">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="math_bit">
+    <value name="A">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="B">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="math_trig">
+  </block>
+  <block type="variables_operation">
+    <value name="data">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="variables">
+      <shadow type="math_number">
+        <field name="NUM">item</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="math_auto_add_or_minus">
+    <field name="math_auto_add_minus_type">++</field>
+    <value name="math_auto_add_minus_output">
+      <shadow type="variables_get">
+        <field name="VAR">item</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="math_to_int">
+  </block>
+  <block type="math_SizeOf">
+    <value name="data">
+      <shadow type="arduino_variate_type">
+      </shadow>
+    </value>
+  </block>
+  <block type="math_max_min">
+    <value name="A">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="B">
+      <shadow type="math_number">
+        <field name="NUM">2</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="math_random_seed">
+    <value name="NUM">
+      <shadow type="math_number">
+        <field name="NUM">997</field>
+      </shadow>
+      <block type="controls_millis">
+        <field name="UNIT">millis</field>
+      </block>
+    </value>
+  </block>
+  <block type="math_random_int">
+   <value name="FROM">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="TO">
+    <shadow type="math_number">
+      <field name="NUM">100</field>
+    </shadow>
+  </value>
+</block>
+<block type="math_constrain">
+ <value name="LOW">
+  <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
+<value name="HIGH">
+  <shadow type="math_number">
+    <field name="NUM">100</field>
+  </shadow>
+</value>
+</block>
+<block type="base_map">
+ <value name="fromLow">
+  <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
+<value name="fromHigh">
+  <shadow type="math_number">
+    <field name="NUM">100</field>
+  </shadow>
+</value>
+<value name="toLow">
+  <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
+<value name="toHigh">
+  <shadow type="math_number">
+    <field name="NUM">1000</field>
+  </shadow>
+</value>
+</block>
+</category>
+<category id="catLogic"  colour="210">
+  <block type="logic_compare">
+  </block>
+  <block type="logic_operation">
+  </block>
+  <block type="logic_negate">
+  </block>
+  <block type="logic_boolean">
+  </block>
+  <block type="logic_null">
+  </block>
+  <block type="logic_true_or_false">
+  </block>
+</category>
+<category id="catText"  colour="160">
+  <block type="text">
+    <field name="TEXT">hello</field>
+  </block>
+  <block type="text_char">
+    <field name="TEXT">a</field>
+  </block>
+  <block type="text_join">
+   <value name="A">
+    <shadow type="text">
+      <field name="TEXT">Hello</field>
+    </shadow>
+  </value>
+  <value name="B">
+    <shadow type="text">
+      <field name="TEXT">Mixly</field>
+    </shadow>
+  </value>
+</block>
+<block type="text_join2">
+  <value name="ADD0">
+    <block type="text">
+      <field name="TEXT">A</field>
+    </block>
+  </value>
+  <value name="ADD1">
+    <block type="text">
+      <field name="TEXT">B</field>
+    </block>
+  </value>
+  <value name="ADD2">
+    <block type="text">
+      <field name="TEXT">C</field>
+    </block>
+  </value>
+</block>
+<block type="text_to_number">
+ <value name="VAR">
+  <shadow type="text">
+    <field name="TEXT">123</field>
+  </shadow>
+</value>
+</block>
+<block type="String_indexOf">
+  <value name="str1">
+    <shadow type="text">
+      <field name="TEXT">Mixly</field>
+    </shadow>
+  </value>
+  <value name="str2">
+    <shadow type="text">
+      <field name="TEXT">y</field>
+    </shadow>
+  </value>
+</block>
+<block type="substring">
+  <value name="name">
+   <shadow type="text">
+    <field name="TEXT">substring</field>
+  </shadow>
+</value>
+<value name="Start">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
+<value name="end">
+  <shadow type="math_number">
+    <field name="NUM">3</field>
+  </shadow>
+</value>
+</block>
+<block type="decimal_places">
+  <value name="numeral">
+    <shadow type="math_number">
+      <field name="NUM">6.666</field>
+    </shadow>
+  </value>
+  <value name="decimal_places">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+  </value>
+</block>
+<block type="letter_conversion">
+  <value name="String">
+    <shadow type="math_number">
+      <field name="NUM">String</field>
+    </shadow>
+  </value>
+</block>
+<block type="data_replacement">
+  <value name="String">
+    <shadow type="math_number">
+      <field name="NUM">String</field>
+    </shadow>
+  </value>
+  <value name="source_data">
+   <shadow type="text">
+    <field name="TEXT">s</field>
+  </shadow>
+</value>
+<value name="replace">
+ <shadow type="text">
+  <field name="TEXT">Q</field>
+</shadow>
+</value>
+</block>
+<block type="eliminate">
+  <value name="String">
+    <shadow type="math_number">
+      <field name="NUM">String</field>
+    </shadow>
+  </value>
+</block>
+<block type="first_and_last">
+  <value name="String">
+   <shadow type="text">
+    <field name="TEXT">substring</field>
+  </shadow>
+</value>
+<value name="String1">
+ <shadow type="text">
+  <field name="TEXT">substring</field>
+</shadow>
+</value>
+</block>
+<block type="type_conversion">
+  <value name="variable">
+   <shadow type="text">
+    <field name="TEXT">substring</field>
+  </shadow>
+</value>
+</block>
+<block type="ascii_to_char">
+  <value name="VAR">
+    <shadow type="math_number">
+      <field name="NUM">223</field>
+    </shadow>
+  </value>
+</block>
+<block type="char_to_ascii">
+  <field name="TEXT">a</field>
+</block>
+<block type="number_to_text">
+  <value name="VAR">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="text_length">
+ <value name="VAR">
+  <shadow type="text">
+    <field name="TEXT">hello</field>
+  </shadow>
+</value>
+</block>
+<block type="text_char_at">
+  <value name="VAR">
+    <shadow type="text">
+      <field name="TEXT">hello</field>
+    </shadow>
+  </value>
+  <value name="AT">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="text_equals_starts_ends">
+  <value name="STR1">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+  <value name="STR2">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+</block>
+<block type="text_compareTo">
+  <value name="STR1">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+  <value name="STR2">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+</block>
+</category>
+<category id="catLists"  colour="260">
+  <block type="lists_create_with2">
+  </block>
+  <block type="lists_create_with_text2">
+  </block>
+  <block type="lists_length">
+  </block>
+  <block type="lists_getIndex">
+   <value name="AT">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="lists_setIndex">
+ <value name="AT">
+  <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
+</block>
+<block type="lists_array2_setup">
+  <field name="lists_create_type">int</field>
+  <field name="lists_create_name">mylist</field>
+  <statement name="lists_with_2_1_data">
+    <block type="lists_array2_setup_get_data">
+      <mutation items="3"></mutation>
+      <value name="ADD0">
+        <block type="math_number" >
+          <field name="NUM">0</field>
+        </block>
+      </value>
+      <value name="ADD1">
+        <block type="math_number" >
+          <field name="NUM">1</field>
+        </block>
+      </value><value name="ADD2">
+        <block type="math_number">
+          <field name="NUM">2</field>
+        </block>
+      </value>
+      <next>
+        <block type="lists_array2_setup_get_data">
+          <mutation items="3"></mutation>
+          <value name="ADD0">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="ADD1">
+            <block type="math_number">
+              <field name="NUM">2</field>
+            </block>
+          </value>
+          <value name="ADD2">
+            <block type="math_number">
+              <field name="NUM">3</field>
+            </block>
+          </value>
+          <next>
+            <block type="lists_array2_setup_get_data">
+              <mutation items="3">
+              </mutation><value name="ADD0">
+                <block type="math_number">
+                  <field name="NUM">2</field>
+                </block>
+              </value>
+              <value name="ADD1">
+                <block type="math_number">
+                  <field name="NUM">3</field>
+                </block>
+              </value>
+              <value name="ADD2">
+                <block type="math_number">
+                  <field name="NUM">4</field>
+                </block>
+              </value>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+  </statement>
+</block>
+<block type="create_array2_with_text">
+  <value name="name">
+    <shadow type="math_number">
+      <field name="NUM">array</field>
+    </shadow>
+  </value>
+  <value name="line">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+  </value>
+  <value name="list">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+  </value>
+  <value name="String">
+    <shadow type="math_number">
+      <field name="NUM">{0,0},{0,0}</field>
+    </shadow>
+  </value>
+</block>
+<block type="array2_assignment">
+  <value name="name">
+    <shadow type="math_number">
+      <field name="NUM">array</field>
+    </shadow>
+  </value>
+  <value name="line">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="list">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="assignment">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="get_array2_value">
+  <value name="name">
+    <shadow type="math_number">
+      <field name="NUM">array</field>
+    </shadow>
+  </value>
+  <value name="line">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="list">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="loop_array">
+  <value name="name">
+    <shadow type="math_number">
+      <field name="NUM">array</field>
+    </shadow>
+  </value>
+</block>
+<block type="lists_array2_get_length">
+</block>
+</category>
+<category id="catVar" colour="330" custom="VARIABLE">
+</category>
+<category id="catFun" custom="PROCEDURE" colour="290">
+</category>
+<category id="catSerialPort"  colour="65">
+ <block type="serial_begin">
+  <value name="CONTENT">
+    <shadow type="math_number">
+      <field name="NUM">9600</field>
+    </shadow>
+  </value>
+</block>
+<block type="serial_write">
+</block>
+<block type="serial_print">
+</block>
+<block type="serial_println">
+</block>
+<block type="serial_print_num">
+  <value name="CONTENT">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="serial_available">
+</block>
+<block type="serial_readstr">
+</block>
+<block type="serial_readstr_until">
+  <value name="CONTENT">
+    <shadow type="text_char">
+     <field name="TEXT">a</field>
+   </shadow>
+ </value>
+</block>
+<block type="serial_parseInt_Float">
+</block>
+<block type="serial_flush">
+</block>
+<block type="serial_softserial">
+  <value name="TX">
+    <shadow type="pins_digital">
+      <field name="PIN">PB6</field>
+    </shadow>
+  </value>
+  <value name="RX">
+    <shadow type="pins_digital">
+      <field name="PIN">PB7</field>
+    </shadow>
+  </value>
+</block>
+<block type="serial_event">
+</block>
+</category>
+<sep></sep>
+<category id="catFactory" name="catFactory" colour="#777777">
+  <block type="factory_include"></block>
+  <block type="factory_function_noreturn"></block>
+  <block type="factory_function_return"></block>
+  <block type="factory_declare"></block>
+  <block type="factory_declare2"></block>
+  <block type="factory_define"></block>
+  <block type="factory_callMethod_noreturn"></block>
+  <block type="factory_callMethod_return"></block>
+  <block type="factory_static_method_noreturn"></block>
+  <block type="factory_static_method_return"></block>
+  <block type="factory_block"></block>
+  <block type="factory_block_return"></block>
+  <block type="factory_block_with_textarea"></block>
+  <block type="factory_block_return_with_textarea"></block>
+</category>
+<category  id="catTools" name="catTools" colour="#555555">
+ <block type="IICSCAN"></block>
+ <block type="factory_notes"></block>
+ <block type="folding_block"></block>
+ <block type="stm32f103c8t6_pin"></block>
+</category>
+</xml>
+<script>
+  if(company_block!=null){
+    $('#toolbox').append(company_block);
+  }
+  if(myblock!=null){
+    $('#toolbox').append(myblock);
+  }
+</script>
+</body>
+</html>

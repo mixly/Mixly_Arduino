@@ -641,6 +641,7 @@ Blockly.Arduino.tool_modulus = function() {
   Blockly.Arduino.handbit_pin_B=Blockly.Arduino.nano_pin;
   Blockly.Arduino.mixgo_pin_A=Blockly.Arduino.nano_pin;
   Blockly.Arduino.mixgo_pin_B=Blockly.Arduino.nano_pin;
+  Blockly.Arduino.stm32f103c8t6_pin=Blockly.Arduino.nano_pin;
 
   //获取两个日期差值
 Blockly.Arduino.get_the_number_of_days_between_the_two_dates = function() {

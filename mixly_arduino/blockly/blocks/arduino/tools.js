@@ -214,6 +214,16 @@ Blockly.Blocks['mixgo_pin_B'] = {
   }
 };
 
+Blockly.Blocks['stm32f103c8t6_pin'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldImage("../../media/board_pin/STM32F103C8T6.png", 525, 376, "*"));
+    this.setColour(Blockly.Blocks.tools.HUE);
+    this.setTooltip();
+    this.setHelpUrl("https://blog.csdn.net/xatsoft/article/details/90687016?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.nonecase");
+  }
+};
+
 
 //获取两个日期差值
 Blockly.Blocks['get_the_number_of_days_between_the_two_dates'] = {
