@@ -22,7 +22,8 @@ Blockly.Arduino.inout_digital_write2 = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_stat = Blockly.Arduino.valueToCode(this, 'STAT', Blockly.Arduino.ORDER_ATOMIC);
     var code="";
-    if (window.isNaN(dropdown_pin)) {
+    var board_type = JSFuncs.getPlatform();
+    if (window.isNaN(dropdown_pin) && board_type.match(RegExp(/STM32/)) == null) {
         code = code + 'pinMode(' + dropdown_pin + ', OUTPUT);\n';
     } else {
         if (Blockly.Arduino.setups_['setup_input_' + dropdown_pin])

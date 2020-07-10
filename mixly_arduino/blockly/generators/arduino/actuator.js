@@ -126,7 +126,7 @@ Blockly.Arduino.group_stepper_setup2 = function () {
   var steps = Blockly.Arduino.valueToCode(this, 'steps', Blockly.Arduino.ORDER_ATOMIC);
   var speed = Blockly.Arduino.valueToCode(this, 'speed', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_Stepper'] = '#include <Stepper.h>';
-  Blockly.Arduino.definitions_['var_declare_stepper' + varName] = 'Stepper ' + varName + '(' + steps + ',' + dropdown_pin1 + ',' + dropdown_pin2 + ',' + dropdown_pin3 + ',' + dropdown_pin4 + ');';
+  Blockly.Arduino.definitions_['var_declare_stepper' + varName] = 'Stepper ' + varName + '(' + steps + ',' + dropdown_pin1 + ',' + dropdown_pin3 + ',' + dropdown_pin2 + ',' + dropdown_pin4 + ');';
   Blockly.Arduino.setups_['setup_stepper' + varName] = varName + '.setSpeed(' + speed + ');';
   return '';
 };
@@ -147,7 +147,7 @@ Blockly.Arduino.RGB_color_rgb = function () {
   var R = Blockly.Arduino.valueToCode(this, 'R', Blockly.Arduino.ORDER_ATOMIC);
   var G = Blockly.Arduino.valueToCode(this, 'G', Blockly.Arduino.ORDER_ATOMIC);
   var B = Blockly.Arduino.valueToCode(this, 'B', Blockly.Arduino.ORDER_ATOMIC);
-  var colour = R + "*65536" + "+" + G + "*256" + "+" + B;
+  var colour = "(("+R+" & 0xffffff) << 16) | (("+G+" & 0xffffff) << 8) | "+B;
   return [colour, Blockly.Arduino.ORDER_NONE];
 };
 
@@ -166,7 +166,7 @@ Blockly.Arduino.display_rgb_Brightness = function () {
   var Brightness = Blockly.Arduino.valueToCode(this, 'Brightness', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
   Blockly.Arduino.setups_['setup_rgb_display_begin_' + dropdown_rgbpin] = 'rgb_display_' + dropdown_rgbpin + '.begin();';
-  var code = 'rgb_display_' + dropdown_rgbpin + '.setBrightness(' + Brightness + ');';
+  var code = 'rgb_display_' + dropdown_rgbpin + '.setBrightness(' + Brightness + ');\n';
   return code;
 };
 

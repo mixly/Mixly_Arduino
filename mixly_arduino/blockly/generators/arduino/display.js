@@ -403,7 +403,7 @@ Blockly.Arduino.oled_init = function() {
       Blockly.Arduino.definitions_['var_declare_U8G2'+NAME] ='U8G2_'+OLED_TYPE+'_1_SW_I2C '+NAME+'('+ROTATION+',  '+SCL+', '+SDA+', U8X8_PIN_NONE);';
   }  
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-  Blockly.Arduino.setups_["setup_u8g2"+NAME] =NAME+'.setI2CAddress('+ADDRESS+' * 2);\n'
+  Blockly.Arduino.setups_["setup_u8g2"+NAME] =NAME+'.setI2CAddress('+ADDRESS+');\n'
                                              +'  '+NAME+'.begin();';
   var code = '';
   return code;

@@ -414,7 +414,16 @@ Blockly.Arduino.i2c_slave_write_array = function () {
 
 Blockly.Arduino.i2c_available = function () {
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>\n';
-  Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();';
+  var workspace = this.workspace;
+  var blocks = workspace.getAllBlocks();
+  var y = 0;
+  for (y = 0; y < blocks.length; y++)
+  {
+    if(blocks[y].type == 'i2c_slave_Init')
+      break;
+  }
+  if(y == blocks.length)
+    Blockly.Arduino.setups_['setup_i2c'] = 'Wire.begin();';
   var code = "Wire.available()";
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
