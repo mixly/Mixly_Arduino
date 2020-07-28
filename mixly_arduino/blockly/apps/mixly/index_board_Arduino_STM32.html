@@ -1,7 +1,7 @@
 <html manifest=node.manifest>
 <head>
   <meta charset="utf-8">
-  <title>Mixly STM32F103C8T6 Arduino</title>
+  <title>Mixly STM32 Arduino</title>
   <script type="text/javascript" src="../../blockly_compressed.js"></script>
   <script type="text/javascript" src="../../core/variables.js"></script>
   <script type="text/javascript" src="../../core/procedures.js"></script>
@@ -29,11 +29,16 @@
   <script type="text/javascript" src="../../generators/arduino/text.js"></script>
   <script type="text/javascript" src="../../generators/arduino/lists.js"></script>
   <script type="text/javascript" src="../../generators/arduino/logic.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/storage.js"></script>
   <script type="text/javascript" src="../../generators/arduino/variables.js"></script>
   <script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
   <script type="text/javascript" src="../../generators/arduino/serial.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/actuator.js"></script>
   <script type="text/javascript" src="../../generators/arduino/scoop.js"></script>
   <script type="text/javascript" src="../../generators/arduino/tools.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/stm32/sensor.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/stm32/display.js"></script>
+  <script type="text/javascript" src="../../generators/arduino/stm32/communicate.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/factory.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/pins.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/inout.js"></script>
@@ -42,13 +47,18 @@
   <script type="text/javascript" src="../../blocks/arduino/text.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/lists.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/logic.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/storage.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/variables.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/procedures.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/actuator.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/serial.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/scoop.js"></script>
   <script type="text/javascript" src="../../blocks/arduino/tools.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/stm32/sensor.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/stm32/display.js"></script>
+  <script type="text/javascript" src="../../blocks/arduino/stm32/communicate.js"></script>
   <script src = "init.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/color_stm32f103c8t6_arduino.css"/>
+  <link rel="stylesheet" type="text/css" href="css/color_stm32_arduino.css"/>
   <link rel="stylesheet" type="text/css" href="css/ACEfont.css"/>
 </head>
 <body onload="init()">
@@ -823,6 +833,763 @@
 <block type="serial_event">
 </block>
 </category>
+<category id="catSensor" colour="40">
+  <block type="chaoshengbo2">
+    <field name="Trig">PA0</field>
+    <field name="Echo">PA1</field>
+  </block>
+  <block type="ds18b20">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+  </block>
+  <block type="tcs230_init">
+    <value name="tcs230_s0">
+      <shadow type="pins_digital">
+        <field name="PIN">PA0</field>
+      </shadow>
+    </value>
+    <value name="tcs230_s1">
+      <shadow type="pins_digital">
+        <field name="PIN">PA1</field>
+      </shadow>
+    </value>
+    <value name="tcs230_s2">
+      <shadow type="pins_digital">
+        <field name="PIN">PA2</field>
+      </shadow>
+    </value>
+    <value name="tcs230_s3">
+      <shadow type="pins_digital">
+        <field name="PIN">PA3</field>
+      </shadow>
+    </value>
+    <value name="tcs230_led">
+      <shadow type="pins_digital">
+        <field name="PIN">PA4</field>
+      </shadow>
+    </value>
+    <value name="tcs230_out">
+      <shadow type="pins_digital">
+        <field name="PIN">PA5</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="tcs230_Get_RGB">
+  </block>
+</category>
+<category id="catActuator_motor" colour="100">
+  <block type="Mixly_motor">
+    <value name="PIN1">
+      <shadow type="pins_pwm">
+        <field name="PIN">PA0</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">PA1</field>
+      </shadow>
+    </value>
+    <value name="speed">
+      <shadow type="math_number">
+        <field name="NUM">100</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="Motor_8833">
+    <value name="PIN1">
+      <shadow type="pins_pwm">
+        <field name="PIN">PA0</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">PA1</field>
+      </shadow>
+    </value>
+    <value name="speed">
+      <shadow type="math_number">
+        <field name="NUM">100</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="servo_move">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+    <value name="DEGREE">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="DELAY_TIME">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="servo_writeMicroseconds">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+    <value name="DEGREE">
+      <shadow type="math_number">
+        <field name="NUM">1500</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="servo_read_degrees">
+    <value name="PIN">
+     <shadow type="pins_digital"></shadow>
+   </value>
+  </block>
+  <block type="group_stepper_setup">
+  <value name="PIN1">
+   <shadow type="pins_digital">
+    <field name="PIN">PA0</field>
+  </shadow>
+</value>
+<value name="PIN2">
+ <shadow type="pins_digital">
+  <field name="PIN">PA1</field>
+</shadow>
+</value>
+<value name="steps">
+  <shadow type="math_number">
+    <field name="NUM">100</field>
+  </shadow>
+</value>
+<value name="speed">
+  <shadow type="math_number">
+    <field name="NUM">10</field>
+  </shadow>
+</value>
+</block>
+<block type="group_stepper_setup2">
+  <value name="PIN1">
+   <shadow type="pins_digital">
+    <field name="PIN">PA0</field>
+  </shadow>
+</value>
+<value name="PIN2">
+ <shadow type="pins_digital">
+  <field name="PIN">PA1</field>
+</shadow>
+</value>
+<value name="PIN3">
+ <shadow type="pins_digital">
+  <field name="PIN">PA2</field>
+</shadow>
+</value>
+<value name="PIN4">
+ <shadow type="pins_digital">
+  <field name="PIN">PA3</field>
+</shadow>
+</value>
+<value name="steps">
+  <shadow type="math_number">
+    <field name="NUM">100</field>
+  </shadow>
+</value>
+<value name="speed">
+  <shadow type="math_number">
+    <field name="NUM">10</field>
+  </shadow>
+</value>
+</block>
+<block type="group_stepper_move">
+  <value name="step">
+    <shadow type="math_number">
+      <field name="NUM">10</field>
+    </shadow>
+  </value>
+</block>
+</category>
+<category id="catMonitor" colour="180">
+<category id="catLCD" colour="180">
+    <block type="group_lcd_init2">
+      <value name="device">
+        <shadow type="math_number">
+          <field name="NUM">0x27</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="group_lcd_init3">
+      <field name="RS">PA0</field>
+      <field name="EN">PA1</field>
+      <field name="D4">PA2</field>
+      <field name="D5">PA3</field>
+      <field name="D6">PA4</field>
+      <field name="D7">PA5</field>
+    </block>
+    <block type="group_lcd_print">
+      <value name="TEXT">
+       <block type="text">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TEXT2">
+     <block type="text">
+      <field name="TEXT"></field>
+    </block>
+  </value>
+</block>
+<block type="group_lcd_print2">
+  <value name="row">
+   <shadow type="math_number">
+    <field name="NUM">1</field>
+  </shadow>
+</value>
+<value name="column">
+ <shadow type="math_number">
+  <field name="NUM">1</field>
+</shadow>
+</value>
+<value name="TEXT">
+ <block type="text">
+  <field name="TEXT"></field>
+</block>
+</value>
+</block>
+-<block type="lcd_display_pattern">
+  <field name="name">mylcd</field>
+  <field name="number">0</field>
+  <value name="row">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="column">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="pattern">
+    <block type="lcd_pattern">
+      <field name=\ "VAR\">lcd</field>
+      <field name=\ "a81\">FALSE</field>
+      <field name=\ "a82\">FALSE</field>
+      <field name=\ "a83\">FALSE</field>
+      <field name=\ "a84\">FALSE</field>
+      <field name=\ "a85\">FALSE</field>
+      <field name=\ "a71\">FALSE</field>
+      <field name=\ "a72\">TRUE</field>
+      <field name=\ "a73\">TRUE</field>
+      <field name=\ "a74\">TRUE</field>
+      <field name=\ "a75\">FALSE</field>
+      <field name=\ "a61\">TRUE</field>
+      <field name=\ "a62\">FALSE</field>
+      <field name=\ "a63\">FALSE</field>
+      <field name=\ "a64\">FALSE</field>
+      <field name=\ "a65\">TRUE</field>
+      <field name=\ "a51\">TRUE</field>
+      <field name=\ "a52\">FALSE</field>
+      <field name=\ "a53\">TRUE</field>
+      <field name=\ "a54\">FALSE</field>
+      <field name=\ "a55\">TRUE</field>
+      <field name=\ "a41\">TRUE</field>
+      <field name=\ "a42\">FALSE</field>
+      <field name=\ "a43\">TRUE</field>
+      <field name=\ "a44\">FALSE</field>
+      <field name=\ "a45\">TRUE</field>
+      <field name=\ "a31\">TRUE</field>
+      <field name=\ "a32\">FALSE</field>
+      <field name=\ "a33\">FALSE</field>
+      <field name=\ "a34\">FALSE</field>
+      <field name=\ "a35\">TRUE</field>
+      <field name=\ "a21\">FALSE</field>
+      <field name=\ "a22\">TRUE</field>
+      <field name=\ "a23\">TRUE</field>
+      <field name=\ "a24\">TRUE</field>
+      <field name=\ "a25\">FALSE</field>
+      <field name=\ "a11\">FALSE</field>
+      <field name=\ "a12\">FALSE</field>
+      <field name=\ "a13\">FALSE</field>
+      <field name=\ "a14\">FALSE</field>
+      <field name=\ "a15\">FALSE</field>
+    </block>
+  </value>
+</block>
+<block type="group_lcd_power">
+  <field name="STAT">clear</field>
+</block>
+</category>
+<category id="catOLED" colour="180">
+  <block type="arduino_oled_begin_i2c">
+    <field name="arduino_oled_begin_type">128x64</field>
+    <field name="oled_begin_name">display</field>
+    <value name="oled_begin_pin_reset">
+      <shadow type="pins_digital">
+        <field name="PIN">PA0</field>
+      </shadow>
+    </value>
+    <value name="oled_begin_address">
+      <shadow type="math_number">
+        <field name="NUM">0x3C</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_oled_begin_spi_1">
+    <value name="oled_begin_mosi">
+      <shadow type="pins_digital">
+        <field name="PIN">PA0</field>
+      </shadow>
+    </value>
+    <value name="oled_begin_clk">
+      <shadow type="pins_digital">
+        <field name="PIN">PA1</field>
+      </shadow>
+    </value>
+    <value name="oled_begin_dc">
+      <shadow type="pins_digital">
+        <field name="PIN">PA2</field>
+      </shadow>
+    </value>
+    <value name="oled_begin_reset">
+      <shadow type="pins_digital">
+        <field name="PIN">PA3</field>
+      </shadow>
+    </value>
+    <value name="oled_begin_cs">
+      <shadow type="pins_digital">
+        <field name="PIN">PA4</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_oled_begin_spi_2">
+    <value name="oled_begin_dc">
+      <shadow type="pins_digital">
+        <field name="PIN">PA0</field>
+      </shadow>
+    </value>
+    <value name="oled_begin_reset">
+      <shadow type="pins_digital">
+        <field name="PIN">PA1</field>
+      </shadow>
+    </value>
+    <value name="oled_begin_cs">
+      <shadow type="pins_digital">
+        <field name="PIN">PA2</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_oled_set_rotation">
+  </block>
+
+  <block type="arduino_oled_clear_update_display">
+  </block>
+
+  <block type="arduino_oled_set_cursor">
+    <value name="set_cursor_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="set_cursor_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_oled_set_font">
+  </block>
+
+  <block type="arduino_oled_set_font_color">
+  </block>
+
+  <block type="arduino_oled_show_text">
+    <value name="oled_show_text_auto_linefeed_data">
+      <shadow type="text">
+        <field name="TEXT">Hello world!</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_oled_show_num">
+    <field name="oled_name">display</field>
+    <field name="show_num_type">print</field>
+    <field name="oled_show_num_auto_linefeed_type">DEC</field>
+    <value name="oled_show_num_auto_linefeed_data">
+      <shadow type="math_number">
+        <field name="NUM">123</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_oled_draw_pixel">
+    <value name="oled_draw_pixel_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_pixel_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_oled_draw_line">
+    <value name="oled_draw_line_start_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_line_start_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_line_end_x">
+      <shadow type="math_number">
+        <field name="NUM">127</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_line_end_y">
+      <shadow type="math_number">
+        <field name="NUM">63</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_oled_draw_line1">
+    <value name="oled_draw_line_start_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_line_start_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_line_length">
+      <shadow type="math_number">
+        <field name="NUM">127</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_oled_draw_rect">
+    <value name="oled_draw_rect_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_rect_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_rect_width">
+      <shadow type="math_number">
+        <field name="NUM">127</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_rect_height">
+      <shadow type="math_number">
+        <field name="NUM">63</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_oled_draw_RoundRect">
+    <value name="oled_draw_rect_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_rect_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_rect_width">
+      <shadow type="math_number">
+        <field name="NUM">127</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_rect_height">
+      <shadow type="math_number">
+        <field name="NUM">63</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_rect_radius">
+      <shadow type="math_number">
+        <field name="NUM">5</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_oled_draw_circle">
+    <value name="oled_draw_circle_x">
+      <shadow type="math_number">
+        <field name="NUM">63</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_circle_y">
+      <shadow type="math_number">
+        <field name="NUM">31</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_circle_radius">
+      <shadow type="math_number">
+        <field name="NUM">31</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_oled_draw_triangle">
+    <value name="oled_draw_triangle_x1">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_triangle_y1">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_triangle_x2">
+      <shadow type="math_number">
+        <field name="NUM">127</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_triangle_y2">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_triangle_x3">
+      <shadow type="math_number">
+        <field name="NUM">63</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_triangle_y3">
+      <shadow type="math_number">
+        <field name="NUM">63</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="tool_modulus_show">
+    <field name="VAR">bitmap</field>
+    <field name="x">96</field>
+    <field name="save_hz">TRUE</field>
+    <value name="input_data">
+      <block type="tool_modulus">
+        <field name="bitmap_formats">1</field>
+        <field name="modulus_way">2</field>
+        <field name="modulus_direction">1</field>
+        <field name="hz_sharp">STHeiti</field>
+        <field name="hz_line_height">16</field>
+        <field name="bitmap_width">48</field>
+        <field name="bitmap_height">16</field>
+        <field name="input_data">米思齐</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="arduino_oled_draw_bitmap">
+    <value name="oled_draw_bitmap_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_bitmap_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_bitmap_data">
+      <shadow type="math_number">
+        <field name="NUM">bitmap</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_bitmap_width">
+      <shadow type="math_number">
+        <field name="NUM">128</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_bitmap_height">
+      <shadow type="math_number">
+        <field name="NUM">64</field>
+      </shadow>
+    </value>
+  </block>
+</category>
+</category>
+<category id="catGroup"  colour="140">
+<category id="catI2C"  colour="140">
+  <block type="i2c_master_Init"> </block>
+  <block type="i2c_slave_Init"> 
+   <value name="i2c_address">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="i2c_begin_end_transmission">
+  <value name="i2c_address">
+    <shadow type="math_number">
+      <field name="NUM">10</field>
+    </shadow>
+  </value>
+</block>
+<block type="i2c_write">
+  <value name="i2c_write_data">
+    <shadow type="text">
+      <field name="TEXT"></field>
+    </shadow>
+  </value>
+</block>
+<block type="i2c_master_reader">
+  <value name="device">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="bytes">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="i2c_master_writerReg">
+  <value name="device">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="regadd">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="value">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>    
+<block type="i2c_master_readerReg">   
+  <value name="device">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="regadd">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="bytes">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+</block>
+<block type="i2c_slave_write_array">
+  <value name="array">
+    <shadow type="math_number">
+      <field name="NUM">array</field>
+    </shadow>
+  </value>
+  <value name="length">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="i2c_available"></block>
+<block type="i2c_read"></block>
+<block type="i2c_slave_onreceive">
+  <value name="onReceive_length">
+    <block type="variables_get">
+      <field name="VAR">howMany</field> 
+    </block>
+  </value>
+</block>
+<block type="i2c_slave_onrequest">
+</block>
+</category>
+<category id="catSPI"  colour="140">
+  <block type="spi_begin_master" >
+   <value name="spi_slave_pin">
+     <shadow type="pins_digital" >
+       <field name="PIN">PA4</field>
+     </shadow>
+   </value>
+ </block>
+ <block type="spi_begin_slave">
+ </block>
+<block type="spi_transfer_Init">
+  <value name="slave_pin">
+    <shadow type="pins_digital">
+      <field name="PIN">PA4</field>
+    </shadow>
+  </value>
+</block>
+<block type="spi_transfer_1">
+  <value name="transfer_data">
+    <shadow type="text_char">
+      <field name="TEXT">A</field>
+    </shadow>
+  </value>
+</block>
+<block type="spi_transfer_2">
+  <value name="transfer_data">
+    <shadow type="text_char">
+      <field name="TEXT">A</field>
+    </shadow>
+  </value>
+</block>
+</category>
+</category>
+<category id="catStorageEEPROM" colour="0">
+  <block type="store_eeprom_write_byte">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="DATA">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_read_byte">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_write_long">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="DATA">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="store_eeprom_read_long">
+    <value name="ADDRESS">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+</category> 
 <sep></sep>
 <category id="catFactory" name="catFactory" colour="#777777">
   <block type="factory_include"></block>
