@@ -140,6 +140,7 @@ Blockly.Arduino.group_stepper_move = function () {
 
 Blockly.Arduino.RGB_color_seclet = function () {
   var colour = this.getFieldValue('COLOR');
+  colour = '0x' + colour.substring(1, colour.length);
   return [colour, Blockly.Arduino.ORDER_NONE];
 };
 
@@ -304,46 +305,47 @@ Blockly.Arduino.display_rgb_rainbow3 = function () {
 Blockly.Arduino.Mixly_motor = function () {
   var PIN1 = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
   var PIN2 = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
+  var PIN_EN = Blockly.Arduino.valueToCode(this, 'PIN_EN', Blockly.Arduino.ORDER_ATOMIC);
   var speed = Blockly.Arduino.valueToCode(this, 'speed', Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-  var code = 'setMotor(' + PIN1 + ', ' + PIN2 + ', ' + speed + ');\n';
+  var code = 'setMotor(' + PIN1 + ', ' + PIN2 + ', ' + PIN_EN + ', ' + speed + ');\n';
   Blockly.Arduino.setups_['setup_output_' + PIN1 + PIN2 + '_S'] = 'pinMode(' + PIN1 + ', OUTPUT);';
   Blockly.Arduino.setups_['setup_output_' + PIN1 + PIN2 + '_D'] = 'pinMode(' + PIN2 + ', OUTPUT);';
   Blockly.Arduino.setups_['setup_output_' + PIN1 + PIN2 + '_S_W'] = 'digitalWrite(' + PIN1 + ', LOW);';
   Blockly.Arduino.setups_['setup_output_' + PIN1 + PIN2 + '_D_W'] = 'digitalWrite(' + PIN2 + ', LOW);';
   var funcName = 'setMotor';
-  var code2 = 'void ' + funcName + '(int speedpin,int dirpin, int speed)\n'
+  var code2 = 'void ' + funcName + '(int dirpin1,int dirpin2,int speedpin, int speed)\n'
   + '{\n'
+  + ' digitalWrite(dirpin2,!digitalRead(dirpin1));\n'
   + '  if (speed == 0)\n'
   + '  {\n'
-  + '    digitalWrite(dirpin, LOW);\n'
+  + '    digitalWrite(dirpin1, LOW);\n'
   + '    analogWrite(speedpin, 0);\n'
   + '  } \n'
   + '    else if (speed > 0)\n'
   + '  {\n'
-  + '    digitalWrite(dirpin, LOW);\n'
+  + '    digitalWrite(dirpin1, LOW);\n'
   + '    analogWrite(speedpin, speed);\n'
   + '  } \n'
   + '  else\n'
   + '  {\n'
-  + '    if(speed < -255)\n'
-  + '      speed = -255;\n'
-  + '    digitalWrite(dirpin, HIGH);\n'
+  + '    digitalWrite(dirpin1, HIGH);\n'
   + '    analogWrite(speedpin, -speed);\n'
   + '  }\n'
   + '}\n';
   Blockly.Arduino.definitions_[funcName] = code2;
   return code;
+
 };
 Blockly.Arduino.Motor_8833 = function () {
   var PIN1 = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
   var PIN2 = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
   var speed = Blockly.Arduino.valueToCode(this, 'speed', Blockly.Arduino.ORDER_ASSIGNMENT) || '0';
-  var code = 'setMotor(' + PIN1 + ', ' + PIN2 + ', ' + speed + ');\n';
+  var code = 'setMotor8833(' + PIN1 + ', ' + PIN2 + ', ' + speed + ');\n';
   Blockly.Arduino.setups_['setup_output_' + PIN1 + PIN2 + '_S'] = 'pinMode(' + PIN1 + ', OUTPUT);';
   Blockly.Arduino.setups_['setup_output_' + PIN1 + PIN2 + '_D'] = 'pinMode(' + PIN2 + ', OUTPUT);';
   Blockly.Arduino.setups_['setup_output_' + PIN1 + PIN2 + '_S_W'] = 'digitalWrite(' + PIN1 + ', LOW);';
   Blockly.Arduino.setups_['setup_output_' + PIN1 + PIN2 + '_D_W'] = 'digitalWrite(' + PIN2 + ', LOW);';
-  var funcName = 'setMotor';
+  var funcName = 'setMotor8833';
   var code2 = 'void ' + funcName + '(int speedpin,int dirpin, int speed)\n'
   + '{\n'
   + '  if (speed == 0)\n'
@@ -358,8 +360,6 @@ Blockly.Arduino.Motor_8833 = function () {
   + '  } \n'
   + '  else \n'
   + '  {\n'
-  + '    if (speed < -255)\n'
-  + '      speed = -255;\n'
   + '    digitalWrite(dirpin, HIGH);\n'
   + '    analogWrite(speedpin, 255 + speed);\n'
   + '  }\n'

@@ -424,11 +424,15 @@ Blockly.Blocks.Mixly_motor = {
     this.appendValueInput("PIN1")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_MOTOR_SPEED_PIN);
+    .appendField(Blockly.MIXLY_MOTOR_DIR_PIN+"1");
     this.appendValueInput("PIN2")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_MOTOR_DIR_PIN);
+    .appendField(Blockly.MIXLY_MOTOR_DIR_PIN+"2");
+     this.appendValueInput("PIN_EN")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("EN"+Blockly.MIXLY_PIN);
     this.appendValueInput('speed')
     .setCheck(Number)
     .appendField(Blockly.MIXLY_MOTOR_SPEED);
@@ -441,7 +445,7 @@ Blockly.Blocks.Motor_8833 = {
   init: function () {
     this.setColour(Blockly.Blocks.actuator.HUE);
     this.appendDummyInput("")
-    .appendField("DRV8833")
+    .appendField("L293/298/DRV8833")
     .appendField(Blockly.MIXLY_MOTOR);
     this.appendDummyInput("")
     this.appendValueInput("PIN1")
