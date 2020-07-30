@@ -44,7 +44,7 @@ Blockly.Blocks.actuator_rgb_color = {
                 ["3", "3"],
                 ["4", "4"]
         ]),'LED')
-            .appendField(Blockly.blynk_iot_WidgetLED_COLOR);
+            .appendField(Blockly.Msg.HTML_COLOUR);
         this.appendDummyInput("")
             .appendField(new Blockly.FieldDropdown([
                 [Blockly.Msg.COLOUR_RGB_RED, "255,0,0"],
