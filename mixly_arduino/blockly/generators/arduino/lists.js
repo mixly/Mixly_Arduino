@@ -145,6 +145,7 @@ Blockly.Arduino.lists_array2_setup = function() {
     {
       if(i == '→')
       {
+        statements_lists_with_2_1_data1 += '\n  ';
         choice = true;
         continue;
       }
@@ -173,7 +174,7 @@ Blockly.Arduino.lists_array2_setup = function() {
       statements_lists_with_2_1_data1 = statements_lists_with_2_1_data1 + i;
     }
     num_x++;
-    Blockly.Arduino.definitions_['var_declare'+text_lists_create_name] = dropdown_lists_create_type+' '+text_lists_create_name+'['+num_x+']['+num_y+'] = {'+statements_lists_with_2_1_data1+'};';
+    Blockly.Arduino.definitions_['var_declare'+text_lists_create_name] = dropdown_lists_create_type+' '+text_lists_create_name+'['+num_x+']['+num_y+'] = {'+statements_lists_with_2_1_data1+'\n};';
   }
   else
   {

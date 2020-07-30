@@ -36,35 +36,26 @@ Blockly.Blocks.group_lcd_init2 = {
 Blockly.Blocks.group_lcd_init3 = {
   init: function () {
     this.setColour(Blockly.Blocks.display.HUE);
-    this.appendValueInput("PIN1")
+    this.appendDummyInput()
     .setAlign(Blockly.ALIGN_RIGHT)
     .appendField(Blockly.MIXLY_SETUP)
     .appendField(Blockly.MIXLY_DF_LCD)
     .appendField(new Blockly.FieldDropdown([['1602', '16,2'], ['2004', '20,4']]), 'TYPE')
     .appendField(new Blockly.FieldTextInput('mylcd'), 'VAR')
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('rs');
-    this.appendValueInput("PIN2")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('en')
-    this.appendValueInput("PIN3")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('d4');
-    this.appendValueInput("PIN4")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('d5')
-    this.appendValueInput("PIN5")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('d6');
-    this.appendValueInput("PIN6")
-    .setCheck(Number)
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('d7')
+    .setAlign(Blockly.ALIGN_LEFT);      
+    this.appendDummyInput()
+    .appendField('RS')
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "RS")
+    .appendField('EN')
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "EN")
+    .appendField('D4')
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "D4")
+    .appendField('D5')
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "D5")
+    .appendField('D6')
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "D6")
+    .appendField('D7')
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "D7");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setInputsInline(true);
@@ -1102,27 +1093,29 @@ Blockly.Blocks.u8g2_spi_init= {
     .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(" "+Blockly.MIXLY_MICROBIT_monitor)
     .appendField(new Blockly.FieldDropdown(ROTATION_TYPE), "ROTATION");
-     this.appendValueInput("CLK")
+    this.appendDummyInput();
+    this.appendValueInput("CLK")
     .setCheck(Number)
     .appendField("CLK");
     this.appendValueInput("MOSI")
     .setCheck(Number)
     .appendField("MOSI");
-  this.appendDummyInput()
-  .appendField('CS')
-  .appendField(new Blockly.FieldDropdown(profile.default.digital), "CS")
-  .appendField('DC')
-  .appendField(new Blockly.FieldDropdown(profile.default.digital), "DC")
-  .appendField('RST')
-  .appendField(new Blockly.FieldDropdown(profile.default.digital), "RST");
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setTooltip(
-    "CLK - SCL(SSD1306) - CLK(NOKIA5110)\n"
-    +"MOSI - SDA(SSD1306) - DIN(NOKIA5110)"
-    );
-  this.setHelpUrl("");
-}
+    this.appendDummyInput()
+    .appendField('CS')
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "CS")
+    .appendField('DC')
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "DC")
+    .appendField('RST')
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "RST");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(
+      "CLK - SCL(SSD1306) - CLK(NOKIA5110)\n"
+      +"MOSI - SDA(SSD1306) - DIN(NOKIA5110)"
+      );
+    this.setHelpUrl("");
+  }
 };
 Blockly.Blocks.u8g2_LCD12864_spi_init= {
   init: function() {
@@ -1138,7 +1131,7 @@ Blockly.Blocks.u8g2_LCD12864_spi_init= {
     this.appendValueInput("MOSI")
     .setCheck(Number)
     .appendField("MOSI");
-this.appendDummyInput()
+    this.appendDummyInput()
     .appendField('RS')
     .appendField(new Blockly.FieldDropdown(profile.default.digital), "DC");
   //.appendField(' RST'+Blockly.MIXLY_PIN)
@@ -1652,14 +1645,14 @@ Blockly.Blocks['u8g2_setContrast'] = {
 Blockly.Blocks['get_utf8_width'] = {
   init: function() {
     this.appendValueInput("str")
-        .setCheck(null)
-        .appendField(Blockly.DISPLAY)
-        .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
-        .appendField(' '+Blockly.OLED_DRAWSTR+Blockly.MIXLY_WIDTH);
+    .setCheck(null)
+    .appendField(Blockly.DISPLAY)
+    .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
+    .appendField(' '+Blockly.OLED_DRAWSTR+Blockly.MIXLY_WIDTH);
     this.setOutput(true, null);
     this.setColour(Blockly.Blocks.display.HUE);
- this.setTooltip("");
- this.setHelpUrl("https://www.cnblogs.com/danpianjicainiao/p/11048729.html#_label3_1_39");
+    this.setTooltip("");
+    this.setHelpUrl("https://www.cnblogs.com/danpianjicainiao/p/11048729.html#_label3_1_39");
   }
 };
 
@@ -1667,24 +1660,24 @@ Blockly.Blocks['get_utf8_width'] = {
 Blockly.Blocks['lcd_display_pattern'] = {
   init: function() {
     this.appendValueInput("row")
-        .setCheck(null)
-        .appendField(Blockly.MIXLY_DF_LCD)
-        .appendField(new Blockly.FieldTextInput("mylcd"), "name")
-        .appendField(Blockly.MIXLY_LCD_ROW);
+    .setCheck(null)
+    .appendField(Blockly.MIXLY_DF_LCD)
+    .appendField(new Blockly.FieldTextInput("mylcd"), "name")
+    .appendField(Blockly.MIXLY_LCD_ROW);
     this.appendValueInput("column")
-        .setCheck(null)
-        .appendField(Blockly.MIXLY_LCD_COLUMN);
+    .setCheck(null)
+    .appendField(Blockly.MIXLY_LCD_COLUMN);
     this.appendValueInput("pattern")
-        .setCheck(null)
-        .appendField(Blockly.COLUMN_DISPLAY_IMAGE);
+    .setCheck(null)
+    .appendField(Blockly.COLUMN_DISPLAY_IMAGE);
     this.appendDummyInput()
-        .appendField(Blockly.LCD_NUMBERING)
-        .appendField(new Blockly.FieldDropdown([["0","0"], ["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"], ["6","6"], ["7","7"]]), "number");
+    .appendField(Blockly.LCD_NUMBERING)
+    .appendField(new Blockly.FieldDropdown([["0","0"], ["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"], ["6","6"], ["7","7"]]), "number");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(Blockly.Blocks.display.HUE);
- this.setTooltip("");
- this.setHelpUrl("https://www.arduino.cc/en/Reference/LiquidCrystalCreateChar");
+    this.setTooltip("");
+    this.setHelpUrl("https://www.arduino.cc/en/Reference/LiquidCrystalCreateChar");
   }
 };
 
@@ -1745,7 +1738,7 @@ Blockly.Blocks.lcd_pattern = {
     .appendField(new Blockly.FieldCheckbox("FALSE"), "a15");
     this.setOutput(true, Number);
     this.setTooltip("");
-}
+  }
 };
 
 Blockly.Blocks.group_lcd_init=Blockly.Blocks.group_lcd_init2;

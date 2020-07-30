@@ -39,14 +39,14 @@ Blockly.Arduino.group_lcd_init2 = function() {
 Blockly.Arduino.group_lcd_init3 = function () {
   var varName = this.getFieldValue('VAR');
   var TYPE = this.getFieldValue('TYPE');
-  var dropdown_pin1 = Blockly.Arduino.valueToCode(this, 'PIN1', Blockly.Arduino.ORDER_ATOMIC);
-  var dropdown_pin2 = Blockly.Arduino.valueToCode(this, 'PIN2', Blockly.Arduino.ORDER_ATOMIC);
-  var dropdown_pin3 = Blockly.Arduino.valueToCode(this, 'PIN3', Blockly.Arduino.ORDER_ATOMIC);
-  var dropdown_pin4 = Blockly.Arduino.valueToCode(this, 'PIN4', Blockly.Arduino.ORDER_ATOMIC);
-  var dropdown_pin5 = Blockly.Arduino.valueToCode(this, 'PIN5', Blockly.Arduino.ORDER_ATOMIC);
-  var dropdown_pin6 = Blockly.Arduino.valueToCode(this, 'PIN6', Blockly.Arduino.ORDER_ATOMIC);
+  var RS = this.getFieldValue('RS');
+  var EN = this.getFieldValue('EN');
+  var D4 = this.getFieldValue('D4');
+  var D5 = this.getFieldValue('D5');
+  var D6 = this.getFieldValue('D6');
+  var D7 = this.getFieldValue('D7');
   Blockly.Arduino.definitions_['include_LiquidCrystal'] = '#include <LiquidCrystal.h>';
-  Blockly.Arduino.definitions_['var_declare_LiquidCrystal' + varName] = 'LiquidCrystal ' + varName + '(' + dropdown_pin1 + ',' + dropdown_pin2 + ',' + dropdown_pin3 + ',' + dropdown_pin4 + ',' + dropdown_pin5 + ',' + dropdown_pin6 + ');';
+  Blockly.Arduino.definitions_['var_declare_LiquidCrystal' + varName] = 'LiquidCrystal ' + varName + '(' + RS + ',' + EN + ',' + D4 + ',' + D5 + ',' + D6 + ',' + D7 + ');';
   Blockly.Arduino.setups_['setup_lcd_begin_' + varName] = varName + '.begin('+TYPE+');';
 
   return '';
@@ -249,11 +249,11 @@ Blockly.Arduino.display_Matrix_DisplayChar = function() {
     code+='      '+  matrixName +'.drawPixel(index_j, 7-index_i,1);\n';
     code+='    else\n      '+  matrixName +'.drawPixel(index_j, 7-index_i,0);\n';
   }
-code+='    LEDArray[index_i] = LEDArray[index_i]>>1;\n';
-code+='  }  \n'
-code+='}\n'
-code+= matrixName+'.write();\n'
-return code;
+  code+='    LEDArray[index_i] = LEDArray[index_i]>>1;\n';
+  code+='  }  \n'
+  code+='}\n'
+  code+= matrixName+'.write();\n'
+  return code;
 };
 
 //点阵屏显示_点阵数组
@@ -403,8 +403,8 @@ Blockly.Arduino.oled_init = function() {
       Blockly.Arduino.definitions_['var_declare_U8G2'+NAME] ='U8G2_'+OLED_TYPE+'_1_SW_I2C '+NAME+'('+ROTATION+',  '+SCL+', '+SDA+', U8X8_PIN_NONE);';
   }  
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-  Blockly.Arduino.setups_["setup_u8g2"+NAME] =NAME+'.setI2CAddress('+ADDRESS+');\n'
-                                             +'  '+NAME+'.begin();';
+  Blockly.Arduino.setups_["setup_u8g2"+NAME] =NAME+'.setI2CAddress('+ADDRESS+'*2);\n'
+  +'  '+NAME+'.begin();';
   var code = '';
   return code;
 };
