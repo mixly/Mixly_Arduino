@@ -942,8 +942,8 @@
     <value name="PIN">
      <shadow type="pins_digital"></shadow>
    </value>
-  </block>
-  <block type="group_stepper_setup">
+ </block>
+ <block type="group_stepper_setup">
   <value name="PIN1">
    <shadow type="pins_digital">
     <field name="PIN">PA0</field>
@@ -1006,7 +1006,7 @@
 </block>
 </category>
 <category id="catMonitor" colour="180">
-<category id="catLCD" colour="180">
+  <category id="catLCD" colour="180">
     <block type="group_lcd_init2">
       <value name="device">
         <shadow type="math_number">
@@ -1424,98 +1424,98 @@
 </category>
 </category>
 <category id="catGroup"  colour="140">
-<category id="catI2C"  colour="140">
-  <block type="i2c_master_Init"> </block>
-  <block type="i2c_slave_Init"> 
-   <value name="i2c_address">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-</block>
-<block type="i2c_begin_end_transmission">
-  <value name="i2c_address">
-    <shadow type="math_number">
-      <field name="NUM">10</field>
-    </shadow>
-  </value>
-</block>
-<block type="i2c_write">
-  <value name="i2c_write_data">
-    <shadow type="text">
-      <field name="TEXT"></field>
-    </shadow>
-  </value>
-</block>
-<block type="i2c_master_reader">
-  <value name="device">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="bytes">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-</block>
-<block type="i2c_master_writerReg">
-  <value name="device">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="regadd">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="value">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-</block>    
-<block type="i2c_master_readerReg">   
-  <value name="device">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="regadd">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="bytes">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-</block>
-<block type="i2c_slave_write_array">
-  <value name="array">
-    <shadow type="math_number">
-      <field name="NUM">array</field>
-    </shadow>
-  </value>
-  <value name="length">
-    <shadow type="math_number">
-      <field name="NUM">1</field>
-    </shadow>
-  </value>
-</block>
-<block type="i2c_available"></block>
-<block type="i2c_read"></block>
-<block type="i2c_slave_onreceive">
-  <value name="onReceive_length">
-    <block type="variables_get">
-      <field name="VAR">howMany</field> 
-    </block>
-  </value>
-</block>
-<block type="i2c_slave_onrequest">
-</block>
+  <category id="catI2C"  colour="140">
+    <block type="i2c_master_Init"> </block>
+    <block type="i2c_slave_Init"> 
+     <value name="i2c_address">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="i2c_begin_end_transmission">
+    <value name="i2c_address">
+      <shadow type="math_number">
+        <field name="NUM">10</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="i2c_write">
+    <value name="i2c_write_data">
+      <shadow type="text">
+        <field name="TEXT"></field>
+      </shadow>
+    </value>
+  </block>
+  <block type="i2c_master_reader">
+    <value name="device">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="bytes">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="i2c_master_writerReg">
+    <value name="device">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="regadd">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="value">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>    
+  <block type="i2c_master_readerReg">   
+    <value name="device">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="regadd">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="bytes">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="i2c_slave_write_array">
+    <value name="array">
+      <shadow type="math_number">
+        <field name="NUM">array</field>
+      </shadow>
+    </value>
+    <value name="length">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="i2c_available"></block>
+  <block type="i2c_read"></block>
+  <block type="i2c_slave_onreceive">
+    <value name="onReceive_length">
+      <block type="variables_get">
+        <field name="VAR">howMany</field> 
+      </block>
+    </value>
+  </block>
+  <block type="i2c_slave_onrequest">
+  </block>
 </category>
 <category id="catSPI"  colour="140">
   <block type="spi_begin_master" >
@@ -1527,7 +1527,7 @@
  </block>
  <block type="spi_begin_slave">
  </block>
-<block type="spi_transfer_Init">
+ <block type="spi_transfer_Init">
   <value name="slave_pin">
     <shadow type="pins_digital">
       <field name="PIN">PA4</field>

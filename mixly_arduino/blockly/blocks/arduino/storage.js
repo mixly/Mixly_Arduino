@@ -39,18 +39,63 @@ Blockly.Blocks.store_sd_init = {
     this.setHelpUrl('');
   }
 };
+Blockly.Blocks.sd_card_type= {
+  init: function() { 
+    this.appendDummyInput() 
+    .appendField("SD"+Blockly.MIXLY_TYPE);
+    this.setOutput(true, null);
+    this.setColour(Blockly.Blocks.storage.HUE);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.sd_card_root_files= {
+  init: function() { 
+    this.appendDummyInput() 
+    .appendField(Blockly.MIXLY_SD_LIST_FILES);
+    this.setOutput(false, null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.storage.HUE);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+var volume_TYPE =
+[[Blockly.MIXLY_SD_clusterCount, 'volume.clusterCount()'],
+[Blockly.MIXLY_SD_blocksPerCluster, 'volume.blocksPerCluster()'],
+[Blockly.MIXLY_SD_TOTAL_blocks, 'volume.blocksPerCluster() * volume.clusterCount()'],
+["FAT"+Blockly.MIXLY_TYPE, 'volume.fatType()'],
+[Blockly.MIXLY_volume+"(KB)", 'volume.blocksPerCluster()*volume.clusterCount()/2'],
+[Blockly.MIXLY_volume+"(MB)", 'volume.blocksPerCluster()*volume.clusterCount()/2/1024'],
+[Blockly.MIXLY_volume+"(GB)", 'volume.blocksPerCluster()*volume.clusterCount()/2/1024/1024.0'],
+
+];
+
+Blockly.Blocks.sd_volume = {
+  init: function() {
+   this.setColour(Blockly.Blocks.storage.HUE);
+   this.appendDummyInput()
+   .appendField("SD")
+   .appendField(new Blockly.FieldDropdown(volume_TYPE), 'volume_TYPE');
+   this.setOutput(true, Number);
+   this.setTooltip();
+ }
+};
 
 Blockly.Blocks.sd_exist= {
   init: function() { 
-  this.appendDummyInput() 
-      .appendField(this.newQuote_(true))
-      .appendField(new Blockly.FieldTextInput("fileName.txt"), "FileName")
-      .appendField(this.newQuote_(false))
-      .appendField(Blockly.MIXLY_SD_FILE_Exist);
-  this.setOutput(true, null);
-  this.setColour(Blockly.Blocks.storage.HUE);
-  this.setTooltip("");
-  this.setHelpUrl("");
+    this.appendDummyInput() 
+    .appendField(this.newQuote_(true))
+    .appendField(new Blockly.FieldTextInput("fileName.txt"), "FileName")
+    .appendField(this.newQuote_(false))
+    .appendField(Blockly.MIXLY_SD_FILE_Exist);
+    this.setOutput(true, null);
+    this.setColour(Blockly.Blocks.storage.HUE);
+    this.setTooltip("");
+    this.setHelpUrl("");
   },
   newQuote_: function(open) {
     if (open == this.RTL) {
@@ -64,16 +109,16 @@ Blockly.Blocks.sd_exist= {
 
 Blockly.Blocks.sd_DelFile= {
   init: function() { 
-  this.appendDummyInput()  
-      .appendField(Blockly.MIXLY_MICROBIT_JS_DELETE_VAR)
-      .appendField(this.newQuote_(true))
-      .appendField(new Blockly.FieldTextInput("fileName.txt"), "FileName")
-      .appendField(this.newQuote_(false));      
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(Blockly.Blocks.storage.HUE);
-  this.setTooltip("");
-  this.setHelpUrl("");
+    this.appendDummyInput()  
+    .appendField(Blockly.MIXLY_MICROBIT_JS_DELETE_VAR)
+    .appendField(this.newQuote_(true))
+    .appendField(new Blockly.FieldTextInput("fileName.txt"), "FileName")
+    .appendField(this.newQuote_(false));      
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.storage.HUE);
+    this.setTooltip("");
+    this.setHelpUrl("");
   },
   newQuote_: function(open) {
     if (open == this.RTL) {
@@ -87,16 +132,16 @@ Blockly.Blocks.sd_DelFile= {
 
 Blockly.Blocks.sd_read= {
   init: function() { 
-  this.appendDummyInput()  
-      .appendField(Blockly.MIXLY_SERIAL_READ)
-      .appendField(this.newQuote_(true))
-      .appendField(new Blockly.FieldTextInput("fileName.txt"), "FileName")
-      .appendField(this.newQuote_(false));       
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(Blockly.Blocks.storage.HUE);
-  this.setTooltip("");
-  this.setHelpUrl("");
+    this.appendDummyInput()  
+    .appendField(Blockly.MIXLY_SERIAL_READ)
+    .appendField(this.newQuote_(true))
+    .appendField(new Blockly.FieldTextInput("fileName.txt"), "FileName")
+    .appendField(this.newQuote_(false));       
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.storage.HUE);
+    this.setTooltip("");
+    this.setHelpUrl("");
   },
   newQuote_: function(open) {
     if (open == this.RTL) {

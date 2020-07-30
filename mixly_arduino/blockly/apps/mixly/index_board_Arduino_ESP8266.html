@@ -1190,142 +1190,147 @@
 </category>
 <category id="catActuator" colour="100">
   <category id="catActuator_motor" colour="100">
-    <block type="Mixly_motor">
-      <value name="PIN1">
-        <shadow type="pins_pwm">
-          <field name="PIN">5</field>
-        </shadow>
-      </value>
-      <value name="PIN2">
-        <shadow type="pins_digital">
-          <field name="PIN">4</field>
-        </shadow>
-      </value>
-      <value name="speed">
-        <shadow type="math_number">
-          <field name="NUM">100</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="Motor_8833">
-      <value name="PIN1">
-        <shadow type="pins_pwm">
-          <field name="PIN">5</field>
-        </shadow>
-      </value>
-      <value name="PIN2">
-        <shadow type="pins_digital">
-          <field name="PIN">4</field>
-        </shadow>
-      </value>
-      <value name="speed">
-        <shadow type="math_number">
-          <field name="NUM">100</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="AFMotorRun">
-      <value name="speed">
-        <shadow type="math_number">
-          <field name="NUM">100</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="AFMotorStop">
-    </block>
-    <block type="servo_move">
-      <value name="PIN">
-        <shadow type="pins_digital"></shadow>
-      </value>
-      <value name="DEGREE">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-      <value name="DELAY_TIME">
-        <shadow type="math_number">
-          <field name="NUM">0</field>
-        </shadow>
-      </value>
-    </block>
-    <block type="servo_writeMicroseconds">
-      <value name="PIN">
-       <shadow type="pins_digital"></shadow>
-     </value>
-     <value name="DEGREE">
-      <shadow type="math_number">
-        <field name="NUM">1500</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="servo_read_degrees">
-    <value name="PIN">
-      <shadow type="pins_digital"></shadow>
-    </value>
-  </block>
-
-  <block type="group_stepper_setup">
+   <block type="Mixly_motor">
     <value name="PIN1">
-      <shadow type="pins_digital">
-        <field name="PIN">1</field>
-      </shadow>
-    </value>
-    <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">2</field>
-      </shadow>
-    </value>
-    <value name="steps">
-      <shadow type="math_number">
-        <field name="NUM">100</field>
-      </shadow>
-    </value>
-    <value name="speed">
-      <shadow type="math_number">
-        <field name="NUM">10</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="group_stepper_setup2">
-    <value name="PIN1">
-      <shadow type="pins_digital">
-        <field name="PIN">1</field>
-      </shadow>
-    </value>
-    <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">2</field>
-      </shadow>
-    </value>
-    <value name="PIN3">
-      <shadow type="pins_digital">
-        <field name="PIN">3</field>
-      </shadow>
-    </value>
-    <value name="PIN4">
       <shadow type="pins_digital">
         <field name="PIN">4</field>
       </shadow>
     </value>
-    <value name="steps">
-      <shadow type="math_number">
-        <field name="NUM">100</field>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">5</field>
+      </shadow>
+    </value>
+    <value name="PIN_EN">
+      <shadow type="pins_pwm">
+        <field name="PIN">6</field>
       </shadow>
     </value>
     <value name="speed">
       <shadow type="math_number">
-        <field name="NUM">10</field>
+        <field name="NUM">100</field>
       </shadow>
     </value>
   </block>
-  <block type="group_stepper_move">
-    <value name="step">
+  <block type="Motor_8833">
+    <value name="PIN1">
+      <shadow type="pins_pwm">
+        <field name="PIN">5</field>
+      </shadow>
+    </value>
+    <value name="PIN2">
+      <shadow type="pins_digital">
+        <field name="PIN">4</field>
+      </shadow>
+    </value>
+    <value name="speed">
       <shadow type="math_number">
-        <field name="NUM">10</field>
+        <field name="NUM">100</field>
       </shadow>
     </value>
   </block>
-  
+  <block type="AFMotorRun">
+    <value name="speed">
+      <shadow type="math_number">
+        <field name="NUM">100</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="AFMotorStop">
+  </block>
+  <block type="servo_move">
+    <value name="PIN">
+      <shadow type="pins_digital"></shadow>
+    </value>
+    <value name="DEGREE">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="DELAY_TIME">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="servo_writeMicroseconds">
+    <value name="PIN">
+     <shadow type="pins_digital"></shadow>
+   </value>
+   <value name="DEGREE">
+    <shadow type="math_number">
+      <field name="NUM">1500</field>
+    </shadow>
+  </value>
+</block>
+<block type="servo_read_degrees">
+  <value name="PIN">
+    <shadow type="pins_digital"></shadow>
+  </value>
+</block>
+
+<block type="group_stepper_setup">
+  <value name="PIN1">
+    <shadow type="pins_digital">
+      <field name="PIN">1</field>
+    </shadow>
+  </value>
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">2</field>
+    </shadow>
+  </value>
+  <value name="steps">
+    <shadow type="math_number">
+      <field name="NUM">100</field>
+    </shadow>
+  </value>
+  <value name="speed">
+    <shadow type="math_number">
+      <field name="NUM">10</field>
+    </shadow>
+  </value>
+</block>
+<block type="group_stepper_setup2">
+  <value name="PIN1">
+    <shadow type="pins_digital">
+      <field name="PIN">1</field>
+    </shadow>
+  </value>
+  <value name="PIN2">
+    <shadow type="pins_digital">
+      <field name="PIN">2</field>
+    </shadow>
+  </value>
+  <value name="PIN3">
+    <shadow type="pins_digital">
+      <field name="PIN">3</field>
+    </shadow>
+  </value>
+  <value name="PIN4">
+    <shadow type="pins_digital">
+      <field name="PIN">4</field>
+    </shadow>
+  </value>
+  <value name="steps">
+    <shadow type="math_number">
+      <field name="NUM">100</field>
+    </shadow>
+  </value>
+  <value name="speed">
+    <shadow type="math_number">
+      <field name="NUM">10</field>
+    </shadow>
+  </value>
+</block>
+<block type="group_stepper_move">
+  <value name="step">
+    <shadow type="math_number">
+      <field name="NUM">10</field>
+    </shadow>
+  </value>
+</block>
+
 </category>
 <category id="catActuator_voice" colour="100">
   <block type="controls_tone">
@@ -1723,38 +1728,14 @@
       </value>
     </block>
     <block type="group_lcd_init3">
-     <value name="PIN1">
-      <shadow type="pins_digital">
-        <field name="PIN">7</field>
-      </shadow>
-    </value>
-    <value name="PIN2">
-      <shadow type="pins_digital">
-        <field name="PIN">8</field>
-      </shadow>
-    </value>
-    <value name="PIN3">
-      <shadow type="pins_digital">
-        <field name="PIN">9</field>
-      </shadow>
-    </value>
-    <value name="PIN4">
-      <shadow type="pins_digital">
-        <field name="PIN">10</field>
-      </shadow>
-    </value>
-    <value name="PIN5">
-      <shadow type="pins_digital">
-        <field name="PIN">11</field>
-      </shadow>
-    </value>
-    <value name="PIN6">
-      <shadow type="pins_digital">
-        <field name="PIN">12</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="group_lcd_print">
+     <field name="RS">0</field>
+     <field name="EN">2</field>
+     <field name="D4">4</field>
+     <field name="D5">5</field>
+     <field name="D6">12</field>
+     <field name="D7">13</field>
+   </block>
+   <block type="group_lcd_print">
     <value name="TEXT">
      <block type="text">
       <field name="TEXT"></field>
@@ -1850,7 +1831,7 @@
   <block type="oled_init">
     <value name="ADDRESS">
       <shadow type="math_number">
-        <field name="NUM">0x78</field>
+        <field name="NUM">0x3C</field>
       </shadow>
     </value>
     <next>
@@ -2436,6 +2417,9 @@
             </shadow>
           </value>
         </block>
+        <block type="sd_card_type"> </block>
+        <block type="sd_card_root_files"> </block>
+        <block type="sd_volume"></block>
         <block type="sd_exist"> </block>
         <block type="sd_DelFile"> </block>
         <block type="sd_read"> </block>
@@ -2655,120 +2639,134 @@
       </block>
     </statement>
   </block>
-  <block type="blynk_iot_WidgetLED_COLOR">
-    <value name="STAT">
-      <shadow type="inout_highlow"></shadow>
-    </value>
-    <value name="STAT">
-      <shadow type="inout_highlow">
-      </shadow>
-    </value>
-  </block>
-  <block type="blynk_iot_WidgetLED_VALUE">
-    <value name="NUM">
+  <block type="blynk_iot_WidgetLED_COLOR">    
+    <value name="COLOR">
       <shadow type="math_number">
-        <field name="NUM">0</field>
+        <field name="NUM">
+        </field>
       </shadow>
-    </value>
-  </block>
-  <block type="blynk_email">
-    <value name="email_add">
-      <shadow type="text">
-        <field name="TEXT">example@blynk.cc</field>
-      </shadow>
-    </value>
-    <value name="Subject">
-      <shadow type="text">
-        <field name="TEXT">Subject</field>
-      </shadow>
-    </value>
-    <value name="content">
-      <shadow type="text">
-        <field name="TEXT">Content</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="blynk_notify">
-    <value name="content">
-      <shadow type="text">
-        <field name="TEXT">Notify</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="blynk_iot_terminal_get">
-    <field name="Vpin">V0</field>
-    <statement name="DO">
-      <block type="serial_println">
-        <field name="serial_select">Serial</field>
-        <value name="CONTENT">
-          <block type="variables_get">
-            <field name="VAR">terminal_text</field>
-          </block>
-        </value>
-      </block>
-    </statement>
-  </block>
-  <block type="blynk_terminal_clear">
-  </block>
-  <block type="blynk_terminal">
-    <value name="content">
-      <shadow type="text">
-        <field name="TEXT">Hello,World!</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="blynk_time_input_1">
-    <field name="Vpin">V0</field>
-    <statement name="DO">
-      <block type="serial_println">
-        <field name="serial_select">Serial</field>
-        <value name="CONTENT">
-          <block type="variables_get">
-            <field name="VAR">hour</field>
-          </block>
-        </value>
-        <next>
-          <block type="serial_println">
-            <field name="serial_select">Serial</field>
-            <value name="CONTENT">
-              <block type="variables_get">
-                <field name="VAR">minute</field>
-              </block>
-            </value>
-            <next>
-              <block type="serial_println">
-                <field name="serial_select">Serial</field>
-                <value name="CONTENT">
-                  <block type="variables_get">
-                    <field name="VAR">second</field>
-                  </block>
-                </value>
-                <next>
-                </next>
-              </block>
-            </next>
-          </block>
-        </next>
-      </block>
-    </statement>
-  </block>
-  <block type="blynk_lcd">
-   <field name="Vpin">V0</field>
-   <value name="x">
+      <block type="RGB_color_seclet" >
+       <field name="COLOR">#ff0000</field>
+     </block>
+   </value>
+   <value name="STAT">
+    <shadow type="inout_highlow"></shadow>
+  </value>
+</block>
+<block type="blynk_iot_WidgetLED_VALUE">
+  <value name="NUM">
     <shadow type="math_number">
       <field name="NUM">0</field>
     </shadow>
   </value>
-  <value name="y">
+  <value name="COLOR">
     <shadow type="math_number">
-      <field name="NUM">0</field>
+      <field name="NUM">
+      </field>
+    </shadow>
+    <block type="RGB_color_seclet" >
+      <field name="COLOR">#ff0000</field>
+    </block>
+  </value>
+</block>
+<block type="blynk_email">
+  <value name="email_add">
+    <shadow type="text">
+      <field name="TEXT">example@blynk.cc</field>
     </shadow>
   </value>
-  <value name="value">
-    <shadow type="math_number">
-      <field name="NUM">923</field>
+  <value name="Subject">
+    <shadow type="text">
+      <field name="TEXT">Subject</field>
     </shadow>
-  </value> 
+  </value>
+  <value name="content">
+    <shadow type="text">
+      <field name="TEXT">Content</field>
+    </shadow>
+  </value>
+</block>
+<block type="blynk_notify">
+  <value name="content">
+    <shadow type="text">
+      <field name="TEXT">Notify</field>
+    </shadow>
+  </value>
+</block>
+<block type="blynk_iot_terminal_get">
+  <field name="Vpin">V0</field>
+  <statement name="DO">
+    <block type="serial_println">
+      <field name="serial_select">Serial</field>
+      <value name="CONTENT">
+        <block type="variables_get">
+          <field name="VAR">terminal_text</field>
+        </block>
+      </value>
+    </block>
+  </statement>
+</block>
+<block type="blynk_terminal_clear">
+</block>
+<block type="blynk_terminal">
+  <value name="content">
+    <shadow type="text">
+      <field name="TEXT">Hello,World!</field>
+    </shadow>
+  </value>
+</block>
+<block type="blynk_time_input_1">
+  <field name="Vpin">V0</field>
+  <statement name="DO">
+    <block type="serial_println">
+      <field name="serial_select">Serial</field>
+      <value name="CONTENT">
+        <block type="variables_get">
+          <field name="VAR">hour</field>
+        </block>
+      </value>
+      <next>
+        <block type="serial_println">
+          <field name="serial_select">Serial</field>
+          <value name="CONTENT">
+            <block type="variables_get">
+              <field name="VAR">minute</field>
+            </block>
+          </value>
+          <next>
+            <block type="serial_println">
+              <field name="serial_select">Serial</field>
+              <value name="CONTENT">
+                <block type="variables_get">
+                  <field name="VAR">second</field>
+                </block>
+              </value>
+              <next>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+  </statement>
+</block>
+<block type="blynk_lcd">
+ <field name="Vpin">V0</field>
+ <value name="x">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
+<value name="y">
+  <shadow type="math_number">
+    <field name="NUM">0</field>
+  </shadow>
+</value>
+<value name="value">
+  <shadow type="math_number">
+    <field name="NUM">923</field>
+  </shadow>
+</value> 
 </block>
 <block type="blynk_lcd_clear">
 </block>
