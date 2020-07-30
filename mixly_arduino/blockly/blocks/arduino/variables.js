@@ -18,6 +18,7 @@ var DATATYPES =
 [Blockly.LANG_MATH_CHAR, 'char'],
 [Blockly.LANG_MATH_UNSIGNED_CHAR, 'unsigned char'],
 [Blockly.LANG_MATH_STRING, 'String'],
+["char*","char*"],
 ["uint8_t","uint8_t"],
 ["uint16_t","uint16_t"],
 ["uint32_t","uint32_t"],
@@ -29,11 +30,12 @@ Blockly.Blocks['variables_declare'] = {
   init: function() {
     this.setColour(Blockly.Blocks.variables.HUE);
     this.appendValueInput('VALUE', null)
-    .appendField(Blockly.MIXLY_DECLARE)
-    .appendField(new Blockly.FieldTextInput('item'), 'VAR')
-    .appendField(Blockly.MIXLY_AS)
-    .appendField(new Blockly.FieldDropdown(DATATYPES), "TYPE")
-    .appendField(Blockly.MIXLY_VALUE);
+        .appendField(Blockly.MIXLY_DECLARE)
+        .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_GLOBAL_VARIABLE,"global_variate"],[Blockly.MIXLY_LOCAL_VARIABLE,"local_variate"]]), "variables_type")
+        .appendField(new Blockly.FieldTextInput('item'), 'VAR')
+        .appendField(Blockly.MIXLY_AS)
+        .appendField(new Blockly.FieldDropdown(DATATYPES), "TYPE")
+        .appendField(Blockly.MIXLY_VALUE);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip(Blockly.MIXLY_TOOLTIP_VARIABLES_DECLARE);
