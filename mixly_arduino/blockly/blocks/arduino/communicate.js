@@ -594,10 +594,10 @@ Blockly.Blocks.spi_slave_interrupt= {
   init: function() { 
       this.appendValueInput("slave_interrupt_input")
       .setCheck(null)  
-      .appendField("SPI"+Blockly.MIXLY_SALVE+"接收到数据 获取寄存器数据");
+      .appendField("SPI "+Blockly.MIXLY_STM32_I2C_SLAVE_RECEIVE_EVENT+" "+Blockly.MIXLY_STM32_SPI_GET_REGISTER_DATA);
       this.appendStatementInput("slave_interrupt_data")
       .setCheck(null)  
-      .appendField("执行");
+      .appendField(Blockly.MIXLY_MSTIMER2_DO);
       this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -611,7 +611,7 @@ Blockly.Blocks.spi_slave_receive= {
   init: function() { 
       this.appendValueInput("slave_receive_data")
       .setCheck(null)  
-      .appendField("SPI从机获取寄存器数据");
+      .appendField("SPI "+Blockly.MIXLY_SALVE+" "+Blockly.MIXLY_STM32_SPI_GET_REGISTER_DATA);
       this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour(Blockly.Blocks.communicate.HUE);
