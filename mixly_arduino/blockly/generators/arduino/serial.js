@@ -24,35 +24,28 @@ Blockly.Arduino.serial_write = function () {
 
 Blockly.Arduino.serial_print = function () {
     var serial_select = this.getFieldValue('serial_select');
+        var new_line = this.getFieldValue('new_line');
     var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '\"\"'
     if (Blockly.Arduino.setups_['setup_serial_' + serial_select]) {
     } else {
         Blockly.Arduino.setups_['setup_serial_' + serial_select ] = serial_select + '.begin(' + profile.default.serial + ');';
     }
-    var code = serial_select + '.print(' + content + ');\n';
+    var code = serial_select + '.'+new_line+'(' + content + ');\n';
     return code;
 };
 
-Blockly.Arduino.serial_println = function () {
-    var serial_select = this.getFieldValue('serial_select');
-    var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '\"\"'
-    if (Blockly.Arduino.setups_['setup_serial_' + serial_select ]) {
-    } else {
-        Blockly.Arduino.setups_['setup_serial_' + serial_select ] = serial_select + '.begin(' + profile.default.serial + ');';
-    }
-    var code = serial_select + '.println(' + content + ');\n';
-    return code;
-};
+Blockly.Arduino.serial_println =Blockly.Arduino.serial_print ;
 
 Blockly.Arduino.serial_print_num = function () {
     var serial_select = this.getFieldValue('serial_select');
     var Decimal = this.getFieldValue('STAT');
+    var new_line = this.getFieldValue('new_line');
     var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0'
     if (Blockly.Arduino.setups_['setup_serial_' + serial_select ]) {
     } else {
         Blockly.Arduino.setups_['setup_serial_' + serial_select] = serial_select + '.begin(' + profile.default.serial + ');';
     }
-    var code = serial_select + '.print(' + content + ','+Decimal+');\n';
+    var code = serial_select + '.'+new_line+'(' + content + ','+Decimal+');\n';
     return code;
 };
 Blockly.Arduino.serial_print_hex=Blockly.Arduino.serial_print_num;

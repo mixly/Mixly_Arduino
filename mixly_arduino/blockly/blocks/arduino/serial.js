@@ -35,30 +35,35 @@ Blockly.Blocks['serial_print'] = {
    this.setColour(Blockly.Blocks.serial.HUE);
    this.appendValueInput("CONTENT", String)
    .appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
-   .appendField(Blockly.MIXLY_SERIAL_PRINT);
+   .appendField(Blockly.MIXLY_SERIAL_PRINT)
+    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_PRINT_INLINE, "print"],[Blockly.Msg.TEXT_PRINT_Huanhang_TOOLTIP, "println"]]), "new_line");
    this.setPreviousStatement(true, null);
    this.setNextStatement(true, null);
    this.setTooltip(Blockly.Msg.TEXT_PRINT_TOOLTIP);
  }
 };
 
-Blockly.Blocks['serial_println'] = {
- init: function() {
-  this.setColour(Blockly.Blocks.serial.HUE);
-  this.appendValueInput("CONTENT", String)
-  .appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
-  .appendField(Blockly.MIXLY_SERIAL_PRINTLN);
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setTooltip(Blockly.Msg.TEXT_PRINT_TOOLTIP);
-}
+Blockly.Blocks['serial_println'] =  {
+  init: function() {
+   this.setColour(Blockly.Blocks.serial.HUE);
+   this.appendValueInput("CONTENT", String)
+   .appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
+   .appendField(Blockly.MIXLY_SERIAL_PRINT)
+    .appendField(new Blockly.FieldDropdown([[Blockly.Msg.TEXT_PRINT_Huanhang_TOOLTIP, "println"],[Blockly.MIXLY_PRINT_INLINE, "print"]]), "new_line");
+   this.setPreviousStatement(true, null);
+   this.setNextStatement(true, null);
+   this.setTooltip(Blockly.Msg.TEXT_PRINT_TOOLTIP);
+ }
 };
+
+
 Blockly.Blocks['serial_print_num'] = {
  init: function() {
   this.setColour(Blockly.Blocks.serial.HUE);
   this.appendDummyInput()
   .appendField(new Blockly.FieldDropdown(profile.default.serial_select), "serial_select")
   .appendField(Blockly.MIXLY_SERIAL_PRINT)
+  .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_PRINT_INLINE, "print"],[Blockly.Msg.TEXT_PRINT_Huanhang_TOOLTIP, "println"]]), "new_line")
   .appendField(Blockly.MIXLY_NUMBER);
   this.appendValueInput("CONTENT", Number)
   .appendField(new Blockly.FieldDropdown([[Blockly.Msg.MATH_HEX, "HEX"],[Blockly.Msg.MATH_BIN, "BIN"],[Blockly.Msg.MATH_OCT, "OCT"],[Blockly.Msg.MATH_DEC, "DEC"]]), "STAT")
