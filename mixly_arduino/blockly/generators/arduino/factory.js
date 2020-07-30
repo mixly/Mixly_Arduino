@@ -45,7 +45,7 @@ Blockly.Arduino.factory_define = function () {
     if (TYPE.substr(0,1)=='#')
     	TYPE = TYPE.substr(1);
     var NAME = this.getFieldValue('NAME');
-    Blockly.Arduino.definitions_[TYPE + '_' + NAME] = '#'+TYPE + ' ' + NAME ;
+    Blockly.Arduino.definitions_["#define_"+TYPE + '_' + NAME] = '#'+TYPE + ' ' + NAME ;
     return '';
 };
 Blockly.Arduino.factory_static_method_noreturn = function() {
