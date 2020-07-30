@@ -1869,7 +1869,7 @@
         </value>
         <value name="callback">
           <shadow type="factory_block_return">
-            <field name="VALUE">turtlefunc</field>
+            <field name="VALUE">keyfunc</field>
           </shadow>
         </value>
         <value name="VAR">
@@ -1878,46 +1878,9 @@
           </shadow>
         </value>
       </block>
-      <block type="turtle_onclick">
-        <value name="TUR">
-          <shadow type="variables_get">
-            <field name="VAR">screen</field>
-          </shadow>
-        </value>
-        <value name="callback">
-          <shadow type="factory_block_return">
-            <field name="VALUE">turtlefunc</field>
-          </shadow>
-        </value>
-       
-      </block>
-      <block type="turtle_ontimer">
-        <value name="TUR">
-          <shadow type="variables_get">
-            <field name="VAR">screen</field>
-          </shadow>
-        </value>
-        <value name="callback">
-          <shadow type="factory_block_return">
-            <field name="VALUE">turtlefunc</field>
-          </shadow>
-        </value>
-        <value name="VAR">
-          <shadow type="math_number">
-            <field name="NUM">3000</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="turtle_listen">
-          <value name="TUR">
-          <shadow type="variables_get">
-            <field name="VAR">screen</field>
-          </shadow>
-        </value>
-      </block>
 
       <block type="procedures_defnoreturn" inline="false">
-        <field name="NAME">turtlefunc</field>
+        <field name="NAME">keyfunc</field>
           <statement name="STACK">
             <block type="turtle_move">
               <value name="TUR">
@@ -1946,6 +1909,111 @@
           </next>
             </block>      
           </statement>
+      </block>
+
+      <block type="turtle_onclick">
+        <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">screen</field>
+          </shadow>
+        </value>
+        <value name="callback">
+          <shadow type="factory_block_return">
+            <field name="VALUE">clickfunc</field>
+          </shadow>
+        </value>
+       
+      </block>
+
+      <block type="procedures_defnoreturn" inline="false">
+        <mutation>
+            <arg name="x"></arg>
+            <arg name="y"></arg>
+          </mutation>
+        <field name="NAME">clickfunc</field>
+          <statement name="STACK">
+            <block type="turtle_goto">
+              <value name="TUR">
+                <shadow type="variables_get">
+                  <field name="VAR">tina</field>
+                </shadow>
+              </value>
+              <value name="data">
+                <block type="variables_get" >
+                  <field name="VAR">x</field>
+                </block>
+                <shadow type="math_number">
+                  <field name="NUM">20</field>
+                </shadow>
+              </value>
+              <value name="val">
+                <block type="variables_get" >
+                  <field name="VAR">y</field>
+                </block>
+                <shadow type="math_number">
+                  <field name="NUM">20</field>
+                </shadow>
+              </value>
+            </block>      
+          </statement>
+      </block>
+
+      <block type="turtle_ontimer">
+        <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">screen</field>
+          </shadow>
+        </value>
+        <value name="callback">
+          <shadow type="factory_block_return">
+            <field name="VALUE">timerfunc</field>
+          </shadow>
+        </value>
+        <value name="VAR">
+          <shadow type="math_number">
+            <field name="NUM">3000</field>
+          </shadow>
+        </value>
+      </block>
+      
+      <block type="procedures_defnoreturn" inline="false">
+        <field name="NAME">timerfunc</field>
+          <statement name="STACK">
+            <block type="turtle_move">
+              <value name="TUR">
+                <shadow type="variables_get">
+                  <field name="VAR">tina</field>
+                </shadow>
+              </value>
+              <value name="VAR">
+                <shadow type="math_number">
+                  <field name="NUM">100</field>
+                </shadow>
+              </value>
+          <next>
+            <block type="turtle_rotate">
+              <value name="TUR">
+                <shadow type="variables_get">
+                  <field name="VAR">tina</field>
+                </shadow>
+              </value>
+              <value name="VAR">
+                <shadow type="math_number">
+                  <field name="NUM">90</field>
+                </shadow>
+              </value>
+            </block>
+          </next>
+            </block>      
+          </statement>
+      </block>
+
+      <block type="turtle_listen">
+          <value name="TUR">
+          <shadow type="variables_get">
+            <field name="VAR">screen</field>
+          </shadow>
+        </value>
       </block>
 
       <block type="turtle_screen_savefig">
