@@ -28,7 +28,7 @@ Blockly.Blocks.blynk_smartconfig = {
   init: function () {
     this.setColour(Blockly.Blocks.blynk.HUE1);
     this.appendDummyInput("")
-    .appendField(Blockly.blynk_smartconfig);
+    .appendField("SmartConfig"+Blockly.blynk_smartconfig);
     this.appendValueInput("server_add")
     .appendField(Blockly.blynk_SERVER_ADD)
     .setCheck(String);
