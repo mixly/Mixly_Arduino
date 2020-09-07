@@ -128,7 +128,24 @@ Blockly.Blocks['mega_pin'] = {
     this.setHelpUrl();
   }
 };
-
+Blockly.Blocks['promini_pin'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldImage("../../media/board_pin/ProMini.png", 525, 371, "*"));
+    this.setColour(Blockly.Blocks.tools.HUE);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
+Blockly.Blocks['leonardo_pin'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldImage("../../media/board_pin/leonardo.png", 525, 371, "*"));
+    this.setColour(Blockly.Blocks.tools.HUE);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
 Blockly.Blocks['esp32_pin'] = {
   init: function() {
     this.appendDummyInput()

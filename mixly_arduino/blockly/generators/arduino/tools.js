@@ -629,7 +629,8 @@ Blockly.Arduino.tool_modulus = function() {
   Blockly.Arduino.nano_pin = function() {
     return "";
   };
-
+  Blockly.Arduino.promini_pin=Blockly.Arduino.nano_pin;
+  Blockly.Arduino.leonardo_pin=Blockly.Arduino.nano_pin;
   Blockly.Arduino.uno_pin=Blockly.Arduino.nano_pin;
   Blockly.Arduino.mega_pin=Blockly.Arduino.nano_pin;
   Blockly.Arduino.esp32_pin=Blockly.Arduino.nano_pin;
