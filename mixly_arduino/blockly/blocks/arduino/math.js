@@ -305,8 +305,8 @@ Blockly.Blocks.base_map = {
   init: function() {
     this.setColour(Blockly.Blocks.math.HUE);
     this.appendValueInput("NUM", Number)
-    //.appendField(Blockly.MIXLY_MAP)
-    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_MAP_INT,"map_int"],[Blockly.MIXLY_MAP_FLOAT,"map_float"]]), "maptype")
+    .appendField(Blockly.MIXLY_MAP)
+    .appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT,"map_int"],[Blockly.LANG_MATH_FLOAT,"map_float"]]), "maptype")
     .setCheck(Number);
     this.appendValueInput("fromLow", Number)
     .appendField(Blockly.MIXLY_MAP_FROM)
