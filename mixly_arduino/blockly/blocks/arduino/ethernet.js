@@ -658,3 +658,122 @@ Blockly.Blocks.http_get = {
  this.setTooltip("");
   }
 };
+//自动配网
+Blockly.Blocks.WIFI_smartConfig = {
+  init: function() {
+    this.setColour(Blockly.Blocks.ethernet.HUE);
+    this.appendDummyInput("")
+       .appendField("SmartConfig"+Blockly.blynk_smartconfig)
+    this.setPreviousStatement(true, null);//可上下连接
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MQTT_TEST_TOOLTIP);
+  }
+};
+
+Blockly.Blocks.WIFI_ap_or_sta= {
+  init: function() { 
+  this.appendDummyInput()  
+      .appendField(new Blockly.FieldImage("../../media/blynk/wifi_udp.PNG", 25, 25, "*"))
+      .appendField(Blockly.MIXLY_SETUP+" UDP WIFI");
+  this.appendDummyInput()  
+      .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE+":")
+      .appendField(new Blockly.FieldDropdown([["STA","STA"],["AP","AP"]]), "mode");
+  this.appendValueInput("SSID")
+      .setCheck(null)  
+      .appendField("WIFI "+Blockly.Msg.HTML_NAME);
+  this.appendValueInput("PSK")
+      .setCheck(null)  
+      .appendField("WIFI "+Blockly.Msg.HTML_PASSWORD);
+  this.appendValueInput("IP1")
+      .setCheck(null)  
+      .appendField(Blockly.MIXLY_WIFI_LINK_DEVICE+" IP1");
+  this.appendValueInput("IP2")
+      .setCheck(null)  
+      .appendField(Blockly.MIXLY_WIFI_LINK_DEVICE+" IP2");
+  this.appendValueInput("IP")
+      .setCheck(null)  
+      .appendField(Blockly.MIXLY_ESP32_BLUETOOTH_FLAG+" IP");
+  this.appendValueInput("duankou")
+      .setCheck(null)  
+      .appendField(Blockly.MIXLY_ETHERNET_CLINET_PORT);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.ethernet.HUE);
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.WIFI_ap_and_sta= {
+  init: function() { 
+  this.appendDummyInput()  
+      .appendField(new Blockly.FieldImage("../../media/blynk/wifi_udp.PNG", 25, 25, "*"))
+      .appendField(Blockly.MIXLY_SETUP+" UDP WIFI");
+  this.appendDummyInput()  
+      .appendField(Blockly.MIXLY_MICROBIT_PY_STORAGE_MODE+": AP+STA");
+  this.appendValueInput("SSID1")
+      .setCheck(null)  
+      .appendField("WIFI "+Blockly.Msg.HTML_NAME+"(STA)");
+  this.appendValueInput("SSID2")
+      .setCheck(null)  
+      .appendField("WIFI "+Blockly.Msg.HTML_NAME+"(AP)");
+  this.appendValueInput("PSK1")
+      .setCheck(null)  
+      .appendField("WIFI "+Blockly.Msg.HTML_PASSWORD+"(STA)");
+  this.appendValueInput("PSK2")
+      .setCheck(null)  
+      .appendField("WIFI "+Blockly.Msg.HTML_PASSWORD+"(AP)");
+  this.appendValueInput("IP1")
+      .setCheck(null)  
+      .appendField(Blockly.MIXLY_WIFI_LINK_DEVICE+" IP1");
+  this.appendValueInput("IP2")
+      .setCheck(null)  
+      .appendField(Blockly.MIXLY_WIFI_LINK_DEVICE+" IP2");
+  this.appendValueInput("IP")
+      .setCheck(null)  
+      .appendField(Blockly.MIXLY_ESP32_BLUETOOTH_FLAG+" IP");
+  this.appendValueInput("duankou")
+      .setCheck(null)  
+      .appendField(Blockly.MIXLY_ETHERNET_CLINET_PORT);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.ethernet.HUE);
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.WIFI_incomingPacket= {
+  init: function() { 
+  this.appendDummyInput()  
+      .appendField(new Blockly.FieldImage("../../media/blynk/wifi_udp.PNG", 25, 25, "*"))
+      .appendField(Blockly.Msg.CONTROLS_IF_MSG_IF+" WIFI UDP "+Blockly.MIXLY_STM32_SPI_DATA_RECEIVED+"？")
+  this.appendValueInput("input_data")
+      .setCheck(null)  
+      .appendField(Blockly.Msg.PROCEDURES_CALL_BEFORE_PARAMS);
+  this.appendDummyInput()  
+      .appendField("("+Blockly.LANG_MATH_STRING+")");
+  this.appendStatementInput("do")
+      .setCheck(null);
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.ethernet.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks.WIFI_send_data= {
+  init: function() { 
+  this.appendDummyInput()  
+      .appendField(new Blockly.FieldImage("../../media/blynk/wifi_udp.PNG", 25, 25, "*"))
+      .appendField("WIFI UDP "+Blockly.MIXLY_SEND_DATA);
+  this.appendValueInput("data")
+      .setCheck(null);
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.ethernet.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};

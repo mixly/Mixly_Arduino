@@ -573,7 +573,6 @@ Blockly.Blocks.blynk_iot_WidgetLED_VALUE = {
     .appendField(Blockly.blynk_IOT_WidgetLED);
     this.appendDummyInput("")
     .appendField(new Blockly.FieldDropdown(BLYNK_VIRTUALPIN_SELECT), "Vpin");
-    // .appendField(Blockly.Msg.HTML_COLOUR);
     this.appendDummyInput("")
     .appendField(Blockly.Msg.HTML_COLOUR);
     this.appendValueInput("COLOR", Number)

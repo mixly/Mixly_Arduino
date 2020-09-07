@@ -2031,32 +2031,56 @@
       </shadow>
     </value>
   </block> -->
-  <block type="RFID_init">
-  </block>  
-  <block type="RFID_on"></block>   
-  <block type="RFID_readcardnum"></block> 
-  <!-- <block type="RFID_in">
-    <value name="uid_">
-      <shadow type="text">
-        <field name="TEXT">123</field>
+  <block type="MFRC522_init">
+    <value name="PIN_SDA">
+      <shadow type="pins_digital">
+        <field name="PIN">0</field>
       </shadow>
     </value>
-  </block>  -->
-  <block type="RFID_writecarddata">
-   <value name="address1">
-    <shadow type="math_number">
-     <field name="NUM">0</field>
-   </shadow>
- </value>
-</block> 
-<block type="RFID_readcarddata">
- <value name="address">
-   <shadow type="math_number">
-     <field name="NUM">0</field>
-   </shadow>
- </value>
-</block> 
-<block type="RFID_off"></block>    
+    <value name="PIN_RST">
+      <shadow type="pins_digital">
+        <field name="PIN">2</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="MFRC522_IsNewCard">
+  </block>
+  <block type="MFRC522_ReadCardUID">
+  </block>
+  <block type="MFRC522_WriteCard">
+    <value name="block">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="buffer">
+      <shadow type="math_number">
+        <field name="NUM">mylist</field>
+      </shadow>
+    </value>
+    <value name="length">
+      <shadow type="math_number">
+        <field name="NUM">16</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="MFRC522_ReadCard">
+    <value name="block">
+      <shadow type="math_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="buffer">
+      <shadow type="math_number">
+        <field name="NUM">mylist</field>
+      </shadow>
+    </value>
+    <value name="length">
+      <shadow type="math_number">
+        <field name="NUM">16</field>
+      </shadow>
+    </value>
+  </block>   
 </category>
 <category id="catStorage" colour="0">
   <category id="catStorageSD" colour="0">
@@ -2319,6 +2343,94 @@
       </value>
     </block>
   </statement>
+</block>
+<block type="WIFI_ap_or_sta">
+  <value name="SSID">
+   <shadow type="text">
+    <field name="TEXT">WIFI-SSID</field>
+   </shadow>
+  </value>
+  <value name="PSK">
+   <shadow type="text">
+    <field name="TEXT">WIFI-PSK</field>
+   </shadow>
+  </value>
+  <value name="IP1">
+   <shadow type="math_number">
+    <field name="NUM">192.168.43.214</field>
+   </shadow>
+  </value>
+  <value name="IP2">
+   <shadow type="math_number">
+    <field name="NUM">192.168.43.197</field>
+   </shadow>
+  </value>
+  <value name="IP">
+   <shadow type="math_number">
+    <field name="NUM">192.168.43.255</field>
+   </shadow>
+  </value>
+  <value name="duankou">
+   <shadow type="math_number">
+    <field name="NUM">8080</field>
+   </shadow>
+  </value>
+</block>
+<block type="WIFI_ap_and_sta">
+  <value name="SSID1">
+   <shadow type="text">
+    <field name="TEXT">WIFI-STA-SSID</field>
+   </shadow>
+  </value>
+  <value name="PSK1">
+   <shadow type="text">
+    <field name="TEXT">WIFI-STA-PSK</field>
+   </shadow>
+  </value>
+  <value name="SSID2">
+   <shadow type="text">
+    <field name="TEXT">WIFI-AP-SSID</field>
+   </shadow>
+  </value>
+  <value name="PSK2">
+   <shadow type="text">
+    <field name="TEXT">WIFI-AP-PSK</field>
+   </shadow>
+  </value>
+  <value name="IP1">
+   <shadow type="math_number">
+    <field name="NUM">192.168.4.2</field>
+   </shadow>
+  </value>
+  <value name="IP2">
+   <shadow type="math_number">
+    <field name="NUM">192.168.4.3</field>
+   </shadow>
+  </value>
+  <value name="IP">
+   <shadow type="math_number">
+    <field name="NUM">192.168.4.255</field>
+   </shadow>
+  </value>
+  <value name="duankou">
+   <shadow type="math_number">
+    <field name="NUM">8080</field>
+   </shadow>
+  </value>
+</block>
+<block type="WIFI_incomingPacket">
+  <value name="input_data">
+    <shadow type="variables_get">
+      <field name="VAR">COM</field>
+    </shadow>
+  </value>
+</block>
+<block type="WIFI_send_data">
+  <value name="data">
+    <shadow type="text">
+      <field name="TEXT">hello</field>
+    </shadow>
+  </value>
 </block>
 </category>
 <category id="catBlynk" name="catBlynk" colour="160">
