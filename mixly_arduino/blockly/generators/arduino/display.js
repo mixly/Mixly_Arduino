@@ -137,14 +137,14 @@ Blockly.Arduino.display_TM1637_displyPrint = function () {
     Blockly.Arduino.definitions_['var_declare_SevenSegmentTM1637'] = 'SevenSegmentExtended  display(' + tm1637_CLK + ',' + tm1637_DIO + ');';
     var hour = Blockly.Arduino.valueToCode(this, 'hour', Blockly.Arduino.ORDER_ATOMIC);
     var minute = Blockly.Arduino.valueToCode(this, 'minute', Blockly.Arduino.ORDER_ATOMIC);
-    var dropdown_stat = Blockly.Arduino.valueToCode(this, 'STAT', Blockly.Arduino.ORDER_ATOMIC);
+    var dropdown_stat = this.getFieldValue("STAT");
     var code = 'display.printTime(' + hour + ',' + minute +','+dropdown_stat+');\n';
     return code;
   };
 
   Blockly.Arduino.display_TM1637_clearDisplay = function () {
-    var code = 'display.clear();\n';
-    return code;
+    var stat=this.getFieldValue("STAT");
+  return 'display.'+stat+'();\n';
   };
 
   Blockly.Arduino.display_TM1637_Brightness = function () {
@@ -385,22 +385,22 @@ Blockly.Arduino.oled_init = function() {
   var SDA = this.getFieldValue('SDA');
   var SCL = this.getFieldValue('SCL');
   var ADDRESS = Blockly.Arduino.valueToCode(this, 'ADDRESS') || '0x3C';
-  //var board_type=JSFuncs.getPlatform();
-  var board_type ="ESP8266";
+  var board_type=JSFuncs.getPlatform();
+  //var board_type ="ESP8266";
   Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
   if(board_type.match(RegExp(/AVR/)))
-  {
-    if(SDA=="SDA"&&SCL=="SCL")
-      Blockly.Arduino.definitions_['var_declare_U8G2'+NAME] ='U8G2_'+OLED_TYPE+'_F_HW_I2C '+NAME+'('+ROTATION+', U8X8_PIN_NONE);';
-    else
-      Blockly.Arduino.definitions_['var_declare_U8G2'+NAME] ='U8G2_'+OLED_TYPE+'_F_SW_I2C '+NAME+'('+ROTATION+',  '+SCL+', '+SDA+', U8X8_PIN_NONE);';
-  }
-  else
   {
     if(SDA=="SDA"&&SCL=="SCL")
       Blockly.Arduino.definitions_['var_declare_U8G2'+NAME] ='U8G2_'+OLED_TYPE+'_1_HW_I2C '+NAME+'('+ROTATION+', U8X8_PIN_NONE);';
     else
       Blockly.Arduino.definitions_['var_declare_U8G2'+NAME] ='U8G2_'+OLED_TYPE+'_1_SW_I2C '+NAME+'('+ROTATION+',  '+SCL+', '+SDA+', U8X8_PIN_NONE);';
+  }
+  else
+  {
+    if(SDA=="SDA"&&SCL=="SCL")
+      Blockly.Arduino.definitions_['var_declare_U8G2'+NAME] ='U8G2_'+OLED_TYPE+'_F_HW_I2C '+NAME+'('+ROTATION+', U8X8_PIN_NONE);';
+    else
+      Blockly.Arduino.definitions_['var_declare_U8G2'+NAME] ='U8G2_'+OLED_TYPE+'_F_SW_I2C '+NAME+'('+ROTATION+',  '+SCL+', '+SDA+', U8X8_PIN_NONE);';
   }  
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
   Blockly.Arduino.setups_["setup_u8g2"+NAME] =NAME+'.setI2CAddress('+ADDRESS+'*2);\n'
