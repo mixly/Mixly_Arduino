@@ -2200,7 +2200,7 @@
 </block>
 </category>
 <category id="catStorageEEPROM" colour="0">
-  <block type="store_eeprom_write_byte">
+  <block type="store_eeprom_put">
     <value name="ADDRESS">
       <shadow type="math_number">
         <field name="NUM">0</field>
@@ -2212,14 +2212,7 @@
       </shadow>
     </value>
   </block>
-  <block type="store_eeprom_read_byte">
-    <value name="ADDRESS">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="store_eeprom_write_long">
+  <block type="store_eeprom_get">
     <value name="ADDRESS">
       <shadow type="math_number">
         <field name="NUM">0</field>
@@ -2227,14 +2220,7 @@
     </value>
     <value name="DATA">
       <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="store_eeprom_read_long">
-    <value name="ADDRESS">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
+        <field name="NUM">item</field>
       </shadow>
     </value>
   </block>

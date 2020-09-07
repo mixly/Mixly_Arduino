@@ -237,3 +237,41 @@ Blockly.Blocks.store_eeprom_read_byte = {
     this.setTooltip(Blockly.MIXLY_TOOLTIP_STORE_EEPROM_READBYTE);
   }
 };
+
+Blockly.Blocks.store_eeprom_put = {
+  init: function() {
+    this.setColour(Blockly.Blocks.storage.HUE);
+    this.appendValueInput("ADDRESS")
+    .setCheck(null)
+    .appendField(Blockly.MIXLY_ESP32_WRITE)
+    //.appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT,"int"],[Blockly.LANG_MATH_LONG,"long"],[Blockly.LANG_MATH_FLOAT,"float"],[Blockly.LANG_MATH_BYTE,"byte"],["字节数组","byte_array"],["字符数组","char_array"]]), "type")
+    .appendField("EEPROM")
+    .appendField(Blockly.MQTT_SERVER_ADD);
+    this.appendValueInput("DATA")
+    .setCheck(null)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_SD_DATA);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_STORE_EEPROM_PUT);
+  }
+};
+
+Blockly.Blocks.store_eeprom_get = {
+  init: function() {
+    this.setColour(Blockly.Blocks.storage.HUE);
+    this.appendValueInput("ADDRESS")
+    .setCheck(null)
+    .appendField(Blockly.MIXLY_SERIAL_READ)
+    //.appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT,"int"],[Blockly.LANG_MATH_LONG,"long"],[Blockly.LANG_MATH_FLOAT,"float"],[Blockly.LANG_MATH_BYTE,"byte"],["字节数组","byte_array"],["字符数组","char_array"]]), "type")
+    .appendField("EEPROM")
+    .appendField(Blockly.MQTT_SERVER_ADD);
+    this.appendValueInput("DATA")
+    .setCheck(null)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.SAVETO + ' ' + MSG["catVar"]);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_STORE_EEPROM_GET);
+  }
+};
