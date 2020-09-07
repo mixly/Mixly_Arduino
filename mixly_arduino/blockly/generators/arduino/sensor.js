@@ -71,9 +71,16 @@ Blockly.Arduino.DHT = function () {
 
 //LM35 Temperature
 Blockly.Arduino.LM35 = function() {
+  var board_type = JSFuncs.getPlatform();
   var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
   var code = 'analogRead(' + dropdown_pin + ')*0.488';
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
+  if (board_type.match(RegExp(/ESP8266/))) {
+    var code = 'analogRead(' + dropdown_pin + ')*0.322';
+  }
+  else if (board_type.match(RegExp(/ESP32/))) {
+   var code = 'analogRead(' + dropdown_pin + ')*0.161';
+ }
+ return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.ds18b20 = function () {
@@ -342,15 +349,23 @@ Blockly.Arduino.encoder_init = function() {
 
 //BME280读取
 Blockly.Arduino.BME280_READ = function() {
-  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-  Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
-  Blockly.Arduino.definitions_['include_Adafruit_Sensor'] = '#include <Adafruit_Sensor.h>';
+ var TYPE = this.getFieldValue('TYPE');
+ Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+ Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
+ Blockly.Arduino.definitions_['include_Adafruit_Sensor'] = '#include <Adafruit_Sensor.h>';
+ if(TYPE=="bme"){
   Blockly.Arduino.definitions_['include_Adafruit_BME280'] = '#include <Adafruit_BME280.h>';
-  Blockly.Arduino.definitions_['include_SEALEVELPRESSURE_HPA'] ='#define SEALEVELPRESSURE_HPA (1013.25)';
   Blockly.Arduino.definitions_['var_declare_Adafruit_BME280'] = 'Adafruit_BME280 bme;';
   Blockly.Arduino.setups_['setup_status'] = 'unsigned status;\n  status = bme.begin();';
-  var code = this.getFieldValue('BME_TYPE');
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
+}
+else{
+  Blockly.Arduino.definitions_['include_Adafruit_BME280'] = '#include <Adafruit_BMP280.h>';
+  Blockly.Arduino.definitions_['var_declare_Adafruit_BME280'] = 'Adafruit_BMP280 bmp;';
+  Blockly.Arduino.setups_['setup_status'] = 'unsigned status;\n  status = bmp.begin();';
+}
+Blockly.Arduino.definitions_['include_SEALEVELPRESSURE_HPA'] ='#define SEALEVELPRESSURE_HPA (1013.25)';
+var code = this.getFieldValue('BME_TYPE');
+return [TYPE+"."+code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.PS2_init = function() {
@@ -397,69 +412,69 @@ Blockly.Arduino.TCS34725_Get_RGB = function() {
 
 //初始化TCS230颜色传感器
 Blockly.Arduino.tcs230_init = function() {
-    var value_tcs230_s0 = Blockly.Arduino.valueToCode(this, 'tcs230_s0', Blockly.Arduino.ORDER_ATOMIC);
-    var value_tcs230_s1 = Blockly.Arduino.valueToCode(this, 'tcs230_s1', Blockly.Arduino.ORDER_ATOMIC);
-    var value_tcs230_s2 = Blockly.Arduino.valueToCode(this, 'tcs230_s2', Blockly.Arduino.ORDER_ATOMIC);
-    var value_tcs230_s3 = Blockly.Arduino.valueToCode(this, 'tcs230_s3', Blockly.Arduino.ORDER_ATOMIC);
-    var value_tcs230_led = Blockly.Arduino.valueToCode(this, 'tcs230_led', Blockly.Arduino.ORDER_ATOMIC);
-    var value_tcs230_out = Blockly.Arduino.valueToCode(this, 'tcs230_out', Blockly.Arduino.ORDER_ATOMIC);
+  var value_tcs230_s0 = Blockly.Arduino.valueToCode(this, 'tcs230_s0', Blockly.Arduino.ORDER_ATOMIC);
+  var value_tcs230_s1 = Blockly.Arduino.valueToCode(this, 'tcs230_s1', Blockly.Arduino.ORDER_ATOMIC);
+  var value_tcs230_s2 = Blockly.Arduino.valueToCode(this, 'tcs230_s2', Blockly.Arduino.ORDER_ATOMIC);
+  var value_tcs230_s3 = Blockly.Arduino.valueToCode(this, 'tcs230_s3', Blockly.Arduino.ORDER_ATOMIC);
+  var value_tcs230_led = Blockly.Arduino.valueToCode(this, 'tcs230_led', Blockly.Arduino.ORDER_ATOMIC);
+  var value_tcs230_out = Blockly.Arduino.valueToCode(this, 'tcs230_out', Blockly.Arduino.ORDER_ATOMIC);
 
   Blockly.Arduino.definitions_['var_declare_tcs230_pin'] = '#define tcs230_S0 '+value_tcs230_s0+''
-                                                     +'\n#define tcs230_S1 '+value_tcs230_s1+''
-                                                     +'\n#define tcs230_S2 '+value_tcs230_s2+''
-                                                     +'\n#define tcs230_S3 '+value_tcs230_s3+''
-                                                     +'\n#define tcs230_sensorOut '+value_tcs230_out+''
-                                                     +'\n#define tcs230_LED '+value_tcs230_led+'';
+  +'\n#define tcs230_S1 '+value_tcs230_s1+''
+  +'\n#define tcs230_S2 '+value_tcs230_s2+''
+  +'\n#define tcs230_S3 '+value_tcs230_s3+''
+  +'\n#define tcs230_sensorOut '+value_tcs230_out+''
+  +'\n#define tcs230_LED '+value_tcs230_led+'';
 
   Blockly.Arduino.definitions_['function_tcs230_Getcolor'] = '//TCS230颜色传感器获取RGB值'
-                                                          +'\nint tcs230_Getcolor(char data)'
-                                                          +'\n{'
-                                                          +'\n  int frequency = 0;'
-                                                          +'\n  switch(data)'
-                                                          +'\n  {'
-                                                          +'\n    case \'R\':'
-                                                          +'\n    {'
-                                                          +'\n      digitalWrite(tcs230_S2,LOW);'
-                                                          +'\n      digitalWrite(tcs230_S3,LOW);'
-                                                          +'\n      frequency = pulseIn(tcs230_sensorOut, LOW);'
-                                                          +'\n      frequency = map(frequency, 25, 72, 255, 0);'
-                                                          +'\n      break;'
-                                                          +'\n    }'
-                                                          +'\n    case \'G\':'
-                                                          +'\n    {'
-                                                          +'\n      digitalWrite(tcs230_S2,HIGH);'
-                                                          +'\n      digitalWrite(tcs230_S3,HIGH);'
-                                                          +'\n      frequency = pulseIn(tcs230_sensorOut, LOW);'
-                                                          +'\n      frequency = map(frequency, 30, 90, 255, 0);'
-                                                          +'\n      break;'
-                                                          +'\n    }'
-                                                          +'\n    case \'B\':'
-                                                          +'\n    {'
-                                                          +'\n      digitalWrite(tcs230_S2,LOW);'
-                                                          +'\n      digitalWrite(tcs230_S3,HIGH);'
-                                                          +'\n      frequency = pulseIn(tcs230_sensorOut, LOW);'
-                                                          +'\n      frequency = map(frequency, 25, 70, 255, 0);'
-                                                          +'\n      break;'
-                                                          +'\n    }'
-                                                          +'\n    default:'
-                                                          +'\n      return -1;'
-                                                          +'\n  }'
-                                                          +'\n  if (frequency < 0)'
-                                                          +'\n    frequency = 0;'
-                                                          +'\n  if (frequency > 255)'
-                                                          +'\n    frequency = 255;'
-                                                          +'\n  return frequency;'
-                                                          +'\n}\n';
+  +'\nint tcs230_Getcolor(char data)'
+  +'\n{'
+  +'\n  int frequency = 0;'
+  +'\n  switch(data)'
+  +'\n  {'
+  +'\n    case \'R\':'
+  +'\n    {'
+  +'\n      digitalWrite(tcs230_S2,LOW);'
+  +'\n      digitalWrite(tcs230_S3,LOW);'
+  +'\n      frequency = pulseIn(tcs230_sensorOut, LOW);'
+  +'\n      frequency = map(frequency, 25, 72, 255, 0);'
+  +'\n      break;'
+  +'\n    }'
+  +'\n    case \'G\':'
+  +'\n    {'
+  +'\n      digitalWrite(tcs230_S2,HIGH);'
+  +'\n      digitalWrite(tcs230_S3,HIGH);'
+  +'\n      frequency = pulseIn(tcs230_sensorOut, LOW);'
+  +'\n      frequency = map(frequency, 30, 90, 255, 0);'
+  +'\n      break;'
+  +'\n    }'
+  +'\n    case \'B\':'
+  +'\n    {'
+  +'\n      digitalWrite(tcs230_S2,LOW);'
+  +'\n      digitalWrite(tcs230_S3,HIGH);'
+  +'\n      frequency = pulseIn(tcs230_sensorOut, LOW);'
+  +'\n      frequency = map(frequency, 25, 70, 255, 0);'
+  +'\n      break;'
+  +'\n    }'
+  +'\n    default:'
+  +'\n      return -1;'
+  +'\n  }'
+  +'\n  if (frequency < 0)'
+  +'\n    frequency = 0;'
+  +'\n  if (frequency > 255)'
+  +'\n    frequency = 255;'
+  +'\n  return frequency;'
+  +'\n}\n';
 
   Blockly.Arduino.setups_['setup_tcs230_pin'] = 'pinMode(tcs230_S0, OUTPUT);'
-                                             +'\n  pinMode(tcs230_S1, OUTPUT);'
-                                             +'\n  pinMode(tcs230_S2, OUTPUT);'
-                                             +'\n  pinMode(tcs230_S3, OUTPUT);'
-                                             +'\n  pinMode(tcs230_LED, OUTPUT);'
-                                             +'\n  pinMode(tcs230_sensorOut, INPUT);'
-                                             +'\n  digitalWrite(tcs230_S0,HIGH);'
-                                             +'\n  digitalWrite(tcs230_S1,LOW);'
-                                             +'\n  digitalWrite(tcs230_LED,HIGH);';
+  +'\n  pinMode(tcs230_S1, OUTPUT);'
+  +'\n  pinMode(tcs230_S2, OUTPUT);'
+  +'\n  pinMode(tcs230_S3, OUTPUT);'
+  +'\n  pinMode(tcs230_LED, OUTPUT);'
+  +'\n  pinMode(tcs230_sensorOut, INPUT);'
+  +'\n  digitalWrite(tcs230_S0,HIGH);'
+  +'\n  digitalWrite(tcs230_S1,LOW);'
+  +'\n  digitalWrite(tcs230_LED,HIGH);';
   var code = '';
   return code;
 };

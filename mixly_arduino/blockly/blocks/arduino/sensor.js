@@ -139,35 +139,35 @@ Blockly.Blocks.ds18b20 = {
 //初始化MLX90614红外测温传感器
 Blockly.Blocks.mlx90614_init= {
   init: function() { 
-  this.appendValueInput("mlx90614_address")
-  .setCheck(null)  
-  .appendField(Blockly.MIXLY_SETUP+" MLX90614"+Blockly.MLX90614_TYPE)
-  .appendField(Blockly.MIXLY_LCD_ADDRESS);
-  this.setInputsInline(true);
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(40);
-  this.setTooltip("");
-  this.setHelpUrl("");
+    this.appendValueInput("mlx90614_address")
+    .setCheck(null)  
+    .appendField(Blockly.MIXLY_SETUP+" MLX90614"+Blockly.MLX90614_TYPE)
+    .appendField(Blockly.MIXLY_LCD_ADDRESS);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(40);
+    this.setTooltip("");
+    this.setHelpUrl("");
   }
 };
 //MLX90614获取数据
 Blockly.Blocks.mlx90614_get_data= {
   init: function() { 
-  var type = [
-  [Blockly.MLX90614_TARGET_OBJECT_TEMP+"(℃)","readObjectTempC"],
-  [Blockly.MLX90614_TARGET_OBJECT_TEMP+"(℉)","readObjectTempF"],
-  [Blockly.MLX90614_AMBIENT_TEMP+"(℃)","readAmbientTempC"],
-  [Blockly.MLX90614_AMBIENT_TEMP+"(℉)","readAmbientTempF"]];
-  this.appendDummyInput()  
-  .appendField("MLX90614"+Blockly.MLX90614_TYPE)
-  .appendField(Blockly.MIXLY_GET)
-  .appendField(new Blockly.FieldDropdown(type), "mlx90614_data");
-  this.setInputsInline(true);
-  this.setOutput(true, null);
-  this.setColour(40);
-  this.setTooltip(Blockly.MIXLY_TOOLTIP_MLX90614_GET_DATA);
-  this.setHelpUrl("");
+    var type = [
+    [Blockly.MLX90614_TARGET_OBJECT_TEMP+"(℃)","readObjectTempC"],
+    [Blockly.MLX90614_TARGET_OBJECT_TEMP+"(℉)","readObjectTempF"],
+    [Blockly.MLX90614_AMBIENT_TEMP+"(℃)","readAmbientTempC"],
+    [Blockly.MLX90614_AMBIENT_TEMP+"(℉)","readAmbientTempF"]];
+    this.appendDummyInput()  
+    .appendField("MLX90614"+Blockly.MLX90614_TYPE)
+    .appendField(Blockly.MIXLY_GET)
+    .appendField(new Blockly.FieldDropdown(type), "mlx90614_data");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(40);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_MLX90614_GET_DATA);
+    this.setHelpUrl("");
   }
 };
 //DF称重模块
@@ -554,8 +554,9 @@ Blockly.Blocks['BME280_READ'] = {
   init: function() {
    this.setColour(Blockly.Blocks.sensor.HUE);
    this.appendDummyInput()
-   .appendField(Blockly.BME280)
-   .appendField(new Blockly.FieldDropdown([[Blockly.blynk_IOT_IR_TEMP,"bme.readTemperature()"], [Blockly.MIXLY_Humidity,"bme.readHumidity()"], [Blockly.MIXLY_Altitude,"bme.readPressure()"],[ Blockly.MIXLY_HEIGHT ,"bme.readAltitude(SEALEVELPRESSURE_HPA)"] ]), "BME_TYPE")
+   .appendField(Blockly.MIXLY_SERIAL_READ)
+   .appendField(new Blockly.FieldDropdown([["BME280","bme"], ["BMP280","bmp"]]), "TYPE")
+   .appendField(new Blockly.FieldDropdown([[Blockly.blynk_IOT_IR_TEMP,"readTemperature()"], [Blockly.MIXLY_Humidity,"readHumidity()"], [Blockly.MIXLY_Altitude,"readPressure()"],[ Blockly.MIXLY_HEIGHT ,"readAltitude(SEALEVELPRESSURE_HPA)"] ]), "BME_TYPE")
    this.setOutput(true, null);
    this.setTooltip("");
    this.setHelpUrl("");
@@ -652,15 +653,15 @@ Blockly.Blocks.PS2_stk={
 
 //传感器-颜色识别-获取数据
 var TCS34725_GETRGB = [
- [Blockly.Msg.COLOUR_RGB_RED, "getR()"],
- [Blockly.Msg.COLOUR_RGB_GREEN, "getG()"],
- [Blockly.Msg.COLOUR_RGB_BLUE, "getB()"]
+[Blockly.Msg.COLOUR_RGB_RED, "getR()"],
+[Blockly.Msg.COLOUR_RGB_GREEN, "getG()"],
+[Blockly.Msg.COLOUR_RGB_BLUE, "getB()"]
 ];
 
 var DF_TCS34725_COLOR = [
-  [Blockly.Msg.COLOUR_RGB_RED, "tcs34725.getRedToGamma()"],
-  [Blockly.Msg.COLOUR_RGB_GREEN, "tcs34725.getGreenToGamma()"],
-  [Blockly.Msg.COLOUR_RGB_BLUE, "tcs34725.getBlueToGamma()"],
+[Blockly.Msg.COLOUR_RGB_RED, "tcs34725.getRedToGamma()"],
+[Blockly.Msg.COLOUR_RGB_GREEN, "tcs34725.getGreenToGamma()"],
+[Blockly.Msg.COLOUR_RGB_BLUE, "tcs34725.getBlueToGamma()"],
 ];
 
 Blockly.Blocks.TCS34725_Get_RGB = {
@@ -677,47 +678,47 @@ Blockly.Blocks.TCS34725_Get_RGB = {
 //初始化TCS230颜色传感器
 Blockly.Blocks.tcs230_init= {
   init: function() { 
-  this.appendDummyInput()  
-  .appendField(Blockly.MIXLY_SETUP+" TCS230");
-  this.appendValueInput("tcs230_s0")
-  .setCheck(null)  
-  .appendField("S0");
-  this.appendValueInput("tcs230_s1")
-  .setCheck(null)  
-  .appendField("S1");
-  this.appendValueInput("tcs230_s2")
-  .setCheck(null)  
-  .appendField("S2");
-  this.appendValueInput("tcs230_s3")
-  .setCheck(null)  
-  .appendField("S3");
-  this.appendValueInput("tcs230_led")
-  .setCheck(null)  
-  .appendField("LED");
-  this.appendValueInput("tcs230_out")
-  .setCheck(null)  
-  .appendField("OUT");
-  this.setInputsInline(true);
-  this.setPreviousStatement(true, null);
-  this.setNextStatement(true, null);
-  this.setColour(Blockly.Blocks.sensor.HUE);
-  this.setTooltip("");
-  this.setHelpUrl("");
+    this.appendDummyInput()  
+    .appendField(Blockly.MIXLY_SETUP+" TCS230");
+    this.appendValueInput("tcs230_s0")
+    .setCheck(null)  
+    .appendField("S0");
+    this.appendValueInput("tcs230_s1")
+    .setCheck(null)  
+    .appendField("S1");
+    this.appendValueInput("tcs230_s2")
+    .setCheck(null)  
+    .appendField("S2");
+    this.appendValueInput("tcs230_s3")
+    .setCheck(null)  
+    .appendField("S3");
+    this.appendValueInput("tcs230_led")
+    .setCheck(null)  
+    .appendField("LED");
+    this.appendValueInput("tcs230_out")
+    .setCheck(null)  
+    .appendField("OUT");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.setTooltip("");
+    this.setHelpUrl("");
   }
 };
 
 //TCS230颜色传感器 获取RGB值
 Blockly.Blocks.tcs230_Get_RGB= {
   init: function() { 
-  this.appendDummyInput()  
-  .appendField("TCS230")
-  .appendField(Blockly.MIXLY_GET)
-  .appendField(new Blockly.FieldDropdown([[Blockly.Msg.COLOUR_RGB_RED,"R"],[Blockly.Msg.COLOUR_RGB_GREEN,"G"],[Blockly.Msg.COLOUR_RGB_BLUE,"B"]]), "tcs230_color");
-  this.setInputsInline(true);
-  this.setOutput(true, null);
-  this.setColour(Blockly.Blocks.sensor.HUE);
-  this.setTooltip("");
-  this.setHelpUrl("");
+    this.appendDummyInput()  
+    .appendField("TCS230")
+    .appendField(Blockly.MIXLY_GET)
+    .appendField(new Blockly.FieldDropdown([[Blockly.Msg.COLOUR_RGB_RED,"R"],[Blockly.Msg.COLOUR_RGB_GREEN,"G"],[Blockly.Msg.COLOUR_RGB_BLUE,"B"]]), "tcs230_color");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.setTooltip("");
+    this.setHelpUrl("");
   }
 };
 
