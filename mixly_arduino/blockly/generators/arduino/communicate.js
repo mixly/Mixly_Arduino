@@ -34,7 +34,7 @@ Blockly.Arduino.ir_recv = function () {
     code += '  if(results_' + dropdown_pin + '.decode_type>=1&&results_' + dropdown_pin + '.decode_type<=17){\n';
     code += '    type=typelist[results_' + dropdown_pin + '.decode_type];\n'
     code += '  }\n';
-    code += '  Serial.print("IR TYPE:"+type+"  ");\n';
+    code += '  Serial.println("IR TYPE:"+type+"  ");\n';
     code += branch;
     code += '  irrecv_' + dropdown_pin + '.resume();\n'
     code += '} else {\n';
@@ -110,7 +110,7 @@ Blockly.Arduino.ir_recv_raw = function () {
   + '  Serial.print(count, DEC);\n'
   + '  Serial.print("): ");\n'
   + '  for (int i = 0; i < count; i++) {\n'
-  + '    Serial.print(results->rawbuf[i]*USECPERTICK, DEC);\n'
+  + '    Serial.print(results->rawbuf[i]*MICROS_PER_TICK, DEC);\n'
   + '    if(i!=count-1){\n'
   + '      Serial.print(",");\n'
   + '    }\n'
@@ -176,15 +176,15 @@ Blockly.Arduino.RFID_init = function() {
   Blockly.Arduino.definitions_['include_RFID'] = '#include <RFID.h>';		
   Blockly.Arduino.definitions_['var_declare_RFID'] = 'RFID rfid('+sda+',5);';
   Blockly.Arduino.definitions_['var_declare__i and tmp'] = 'unsigned char i,tmp;';
-  Blockly.Arduino.definitions_['var_declare__status'] = 'unsigned char status;';		
+  Blockly.Arduino.definitions_['var_declare__status'] = 'unsigned char status;';
   Blockly.Arduino.definitions_['var_declare__strmax'] = 'unsigned char str[MAX_LEN];';
   Blockly.Arduino.definitions_['var_declare__RC_size'] = 'unsigned char RC_size;';
-  Blockly.Arduino.definitions_['var_declare__blockAddr'] = 'unsigned char blockAddr;        //选择操作的块地址0～63';		
+  Blockly.Arduino.definitions_['var_declare__blockAddr'] = 'unsigned char blockAddr;        //选择操作的块地址0～63';
   Blockly.Arduino.definitions_['define_1'] = '//4字节卡序列号，第5字节为校验字节';
-  Blockly.Arduino.definitions_['define_2'] = 'unsigned char serNum[5];';		
-  Blockly.Arduino.definitions_['define_3'] = '//写卡数据';	
+  Blockly.Arduino.definitions_['define_2'] = 'unsigned char serNum[5];';
+  Blockly.Arduino.definitions_['define_3'] = '//写卡数据';
   Blockly.Arduino.definitions_['define_5'] = '//原扇区A密码，16个扇区，每个扇区密码6Byte';
-  Blockly.Arduino.definitions_['define_6'] = 'unsigned char sectorKeyA[16][16] = {';		
+  Blockly.Arduino.definitions_['define_6'] = 'unsigned char sectorKeyA[16][16] = {';
   Blockly.Arduino.definitions_['define_7'] = ' {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF},';
   Blockly.Arduino.definitions_['define_8'] = ' {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF},';
   Blockly.Arduino.definitions_['define_9'] = ' {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF},};';
@@ -366,6 +366,145 @@ Blockly.Arduino.RFID_in = function() {
       return '';
     
   };
+
+//初始化RFID
+Blockly.Arduino.MFRC522_init = function() {
+  var text_rfid_name = this.getFieldValue('rfid_name');
+  var value_PIN_SDA = Blockly.Arduino.valueToCode(this, 'PIN_SDA', Blockly.Arduino.ORDER_ATOMIC);
+  var value_PIN_RST = Blockly.Arduino.valueToCode(this, 'PIN_RST', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
+  Blockly.Arduino.definitions_['include_MFRC522'] = '#include <MFRC522.h>';
+  Blockly.Arduino.definitions_['var_declare_'+text_rfid_name] = 'MFRC522 '+text_rfid_name+'('+value_PIN_SDA+', '+value_PIN_RST+');';
+  Blockly.Arduino.setups_['setup_spi'] = 'SPI.begin();';
+  Blockly.Arduino.setups_['setup_mfc522_'+text_rfid_name] = text_rfid_name+'.PCD_Init();';
+  var code = '';
+  return code;
+};
+
+//RFID侦测到信号
+Blockly.Arduino.MFRC522_IsNewCard = function() {
+  var text_rfid_name = this.getFieldValue('rfid_name');
+  var statements_DO = Blockly.Arduino.statementToCode(this, 'DO');
+  Blockly.Arduino.definitions_['function_MFRC522_IsNewCard'] = 'boolean MFRC522_IsNewCard(MFRC522 *_name){\n'
+                                                             + '  if(!_name->PICC_IsNewCardPresent())\n'
+                                                             + '    return false;\n'
+                                                             + '  if(!_name->PICC_ReadCardSerial())\n'
+                                                             + '    return false;\n'
+                                                             + '  return true;\n'
+                                                             + '}\n';
+  var code = 'if(MFRC522_IsNewCard(&'+text_rfid_name+')){\n'
+           + (statements_DO != ''? statements_DO:'')
+           + '  ' + text_rfid_name + '.PICC_HaltA();\n'
+           + '  ' + text_rfid_name + '.PCD_StopCrypto1();\n'
+           + '}\n';
+  return code;
+};
+
+//RFID读取卡号
+Blockly.Arduino.MFRC522_ReadCardUID = function() {
+  var text_rfid_name = this.getFieldValue('rfid_name');
+  Blockly.Arduino.definitions_['function_MFRC522_ReadCardUID'] = 'String MFRC522_ReadCardUID(MFRC522 *_name){\n'
+                                                               + '  String _CardUID = "";\n'
+                                                               + '  for (byte _i = 0; _i < _name->uid.size; _i++){\n'
+                                                               + '    if(_name->uid.uidByte[_i] < 0x10)\n'
+                                                               + '      _CardUID += "0";\n'
+                                                               + '    _CardUID += String(_name->uid.uidByte[_i], HEX) + String(" ");\n'
+                                                               + '  }\n'
+                                                               + '  return _CardUID;\n'
+                                                               + '}\n';
+  var code = 'MFRC522_ReadCardUID(&'+text_rfid_name+')';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+//RFID写卡
+Blockly.Arduino.MFRC522_WriteCard = function() {
+  var text_rfid_name = this.getFieldValue('rfid_name');
+  var value_block = Blockly.Arduino.valueToCode(this, 'block', Blockly.Arduino.ORDER_ATOMIC);
+  var value_buffer = Blockly.Arduino.valueToCode(this, 'buffer', Blockly.Arduino.ORDER_ATOMIC);
+  var value_length = Blockly.Arduino.valueToCode(this, 'length', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['function_MFRC522_WriteCard'] = 'boolean MFRC522_WriteCard(MFRC522 *_name, byte _block, byte *_buffer, byte _length){\n'
+                                                             + '  MFRC522::MIFARE_Key _key;\n'
+                                                             + '  for(byte i = 0; i < 6; i++)\n'
+                                                             + '    _key.keyByte[i] = 0xFF;\n'
+                                                             + '  MFRC522::StatusCode _status;\n'
+                                                             + '  _status = _name->PCD_Authenticate(MFRC522::PICC_CMD_MF_AUTH_KEY_A, _block, &_key, &(_name->uid));\n'
+                                                             + '  if(_status != MFRC522::STATUS_OK){\n'
+                                                             + '    Serial.print(F("PCD_Authenticate() failed: "));\n'
+                                                             + '    Serial.println(_name->GetStatusCodeName(_status));\n'
+                                                             + '    return false;\n'
+                                                             + '  }\n'
+                                                             + '  else{\n'
+                                                             + '    Serial.println(F("PCD_Authenticate() success;"));\n'
+                                                             + '  }\n'
+                                                             + '  _status = _name->MIFARE_Write(_block, _buffer, _length);\n'
+                                                             + '  if(_status != MFRC522::STATUS_OK){\n'
+                                                             + '    Serial.print(F("MIFARE_Write() failed: "));\n'
+                                                             + '    Serial.println(_name->GetStatusCodeName(_status));\n'
+                                                             + '    return false;\n'
+                                                             + '  }\n'
+                                                             + '  else{\n'
+                                                             + '    Serial.println(F("MIFARE_Write() success;"));\n'
+                                                             + '  }\n'
+                                                             + '  return true;\n'
+                                                             + '}\n'
+  Blockly.Arduino.setups_['setup_serial_Serial'] = 'Serial.begin(9600);';                                                           
+  var code = 'MFRC522_WriteCard(&'+text_rfid_name+', '+value_block+', '+value_buffer+', '+value_length+');\n';
+  return code;
+};
+
+//RFID读卡
+Blockly.Arduino.MFRC522_ReadCard = function() {
+  var text_rfid_name = this.getFieldValue('rfid_name');
+  var value_block = Blockly.Arduino.valueToCode(this, 'block', Blockly.Arduino.ORDER_ATOMIC);
+  var value_buffer = Blockly.Arduino.valueToCode(this, 'buffer', Blockly.Arduino.ORDER_ATOMIC);
+  var value_length = Blockly.Arduino.valueToCode(this, 'length', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['function_MFRC522_ReadCard'] = 'boolean MFRC522_ReadCard(MFRC522 *_name, byte _block, byte *_buffer, byte _length){\n'
+                                                            + '  MFRC522::MIFARE_Key _key;\n'
+                                                            + '  for(byte i = 0; i < 6; i++)\n'
+                                                            + '    _key.keyByte[i] = 0xFF;\n'
+                                                            + '  MFRC522::StatusCode _status;\n'
+                                                            + '  _status = _name->PCD_Authenticate(MFRC522::PICC_CMD_MF_AUTH_KEY_A, _block, &_key, &(_name->uid));\n'
+                                                            + '  if(_status != MFRC522::STATUS_OK){\n'
+                                                            + '    Serial.print(F("PCD_Authenticate() failed: "));\n'
+                                                            + '    Serial.println(_name->GetStatusCodeName(_status));\n'
+                                                            + '    return false;\n'
+                                                            + '  }\n'
+                                                            + '  else{\n'
+                                                            + '    Serial.println(F("PCD_Authenticate() success;"));\n'
+                                                            + '  }\n'
+                                                            + '  if(_length < 18){\n'
+                                                            + '    byte _Read_buffer[18];\n'
+                                                            + '    byte _Read_buffer_length = 18;\n'
+                                                            + '    _status = _name->MIFARE_Read(_block, _Read_buffer, &_Read_buffer_length);\n'
+                                                            + '    if(_status != MFRC522::STATUS_OK){\n'
+                                                            + '      Serial.print(F("MIFARE_Read() failed: "));\n'
+                                                            + '      Serial.println(_name->GetStatusCodeName(_status));\n'
+                                                            + '      return false;\n'
+                                                            + '    }\n'
+                                                            + '    else{\n'
+                                                            + '      Serial.println(F("MIFARE_Read() success;"));\n'
+                                                            + '    }\n'
+                                                            + '    for(byte _i = 0; _i < _length; _i++)\n'
+                                                            + '      _buffer[_i] = _Read_buffer[_i];\n'
+                                                            + '  }\n'
+                                                            + '  else{\n'
+                                                            + '    _status = _name->MIFARE_Read(_block, _buffer, &_length);\n'
+                                                            + '    if(_status != MFRC522::STATUS_OK){\n'
+                                                            + '      Serial.print(F("MIFARE_Read() failed: "));\n'
+                                                            + '      Serial.println(_name->GetStatusCodeName(_status));\n'
+                                                            + '      return false;\n'
+                                                            + '    }\n'
+                                                            + '    else{\n'
+                                                            + '      Serial.println(F("MIFARE_Read() success;"));\n'
+                                                            + '    }\n'
+                                                            + '  }\n'
+                                                            + '  return true;\n'
+                                                            + '}\n'
+  Blockly.Arduino.setups_['setup_serial_Serial'] = 'Serial.begin(9600);';                                                          
+  var code = 'MFRC522_ReadCard(&'+text_rfid_name+', '+value_block+', '+value_buffer+', '+value_length+');\n'; 
+  return code;
+};
+
 //IIC主机初始化
 Blockly.Arduino.i2c_master_Init = function() {
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';

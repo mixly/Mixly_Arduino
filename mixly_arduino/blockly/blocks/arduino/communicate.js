@@ -511,8 +511,119 @@ Blockly.Blocks.RFID_off={
     }
 };
 
-//SPI 初始化从机
+//初始化RFID
+Blockly.Blocks.MFRC522_init= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField(Blockly.MIXLY_SETUP+" RFID")
+      .appendField(new Blockly.FieldTextInput("rfid"), "rfid_name");
+  this.appendValueInput("PIN_SDA")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(" SDA");
+  this.appendValueInput("PIN_RST")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField("RST");
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.communicate.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
 
+//RFID侦测到信号
+Blockly.Blocks.MFRC522_IsNewCard= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("RFID")
+      .appendField(new Blockly.FieldTextInput("rfid"), "rfid_name")
+      .appendField(" "+Blockly.MIXLY_COMMUNICATION_RFID_ON_DETECTED);
+  this.appendStatementInput("DO")
+      .setCheck(null);
+  this.setInputsInline(false);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.communicate.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+//RFID读取卡号
+Blockly.Blocks.MFRC522_ReadCardUID= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("RFID")
+      .appendField(new Blockly.FieldTextInput("rfid"), "rfid_name")
+      .appendField(" "+Blockly.MIXLY_RFID_READ_CARD_UID);
+  this.setInputsInline(false);
+  this.setOutput(true, null);
+  this.setColour(Blockly.Blocks.communicate.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+//RFID写卡
+Blockly.Blocks.MFRC522_WriteCard= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("RFID")
+      .appendField(new Blockly.FieldTextInput("rfid"), "rfid_name")
+      .appendField(" "+Blockly.MIXLY_RFID_WRITE_CARD);
+  this.appendValueInput("block")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.MIXLY_COMMUNICATION_DATA_BLOCK);
+  this.appendValueInput("buffer")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.MIXLY_RFID_BYTE_ARRAY);
+  this.appendValueInput("length")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.MIXLY_I2C_SLAVE_WRITE_ARRAY_ARRAYLENGTH);
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.communicate.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+//RFID读卡
+Blockly.Blocks.MFRC522_ReadCard= {
+  init: function() { 
+  this.appendDummyInput()
+      .appendField("RFID")
+      .appendField(new Blockly.FieldTextInput("rfid"), "rfid_name")
+      .appendField(" "+Blockly.MIXLY_RFID_READ_CARD);
+  this.appendValueInput("block")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.MIXLY_COMMUNICATION_DATA_BLOCK);
+  this.appendValueInput("buffer")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.SAVETO+" "+Blockly.MIXLY_RFID_BYTE_ARRAY);
+  this.appendValueInput("length")
+      .setCheck(null)
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.MIXLY_I2C_SLAVE_WRITE_ARRAY_ARRAYLENGTH);
+  this.setInputsInline(true);
+  this.setPreviousStatement(true, null);
+  this.setNextStatement(true, null);
+  this.setColour(Blockly.Blocks.communicate.HUE);
+  this.setTooltip("");
+  this.setHelpUrl("");
+  }
+};
+
+//SPI 初始化从机
 Blockly.Blocks.spi_begin_slave= {
   init: function() { 
       this.appendDummyInput()        
