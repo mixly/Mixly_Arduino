@@ -1847,17 +1847,9 @@
   <block type="u8g2_spi_init">
     <field name="U8G2_TYPE_SPI">SSD1306_128X64_NONAME</field>
     <field name="ROTATION">U8G2_R0</field>
-    <value name="CLK">
-      <shadow type="pins_SCK">
-      </shadow>
-    </value>
-    <value name="MOSI">
-      <shadow type="pins_MOSI">
-      </shadow>
-    </value>
-    <field name="CS">3</field>
-    <field name="DC">4</field>
-    <field name="RST">5</field>
+    <field name="CS">10</field>
+    <field name="DC">9</field>
+    <field name="RST">8</field>
     <next>
       <block type="oled_page">
         <statement name="DO">

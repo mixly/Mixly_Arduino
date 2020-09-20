@@ -144,7 +144,7 @@ Blockly.Arduino.display_TM1637_displyPrint = function () {
 
   Blockly.Arduino.display_TM1637_clearDisplay = function () {
     var stat=this.getFieldValue("STAT");
-  return 'display.'+stat+'();\n';
+    return 'display.'+stat+'();\n';
   };
 
   Blockly.Arduino.display_TM1637_Brightness = function () {
@@ -413,13 +413,18 @@ Blockly.Arduino.u8g2_spi_init = function() {
   var U8G2_TYPE_SPI = this.getFieldValue('U8G2_TYPE_SPI');
   var NAME = this.getFieldValue('NAME') || 'u8g2';
   var ROTATION = this.getFieldValue('ROTATION');
+  var CLK = this.getFieldValue('CLK');
+  var MOSI = this.getFieldValue('MOSI');
   var CS = this.getFieldValue('CS');
   var DC = this.getFieldValue('DC');
   var RST = this.getFieldValue('RST');
   Blockly.Arduino.definitions_['include_U8g2lib'] = '#include <U8g2lib.h>';
   Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
   Blockly.Arduino.setups_["setup_u8g2"+NAME] =NAME+'.begin();';
-  Blockly.Arduino.definitions_['var_declare_U8G2'+NAME] ='U8G2_'+U8G2_TYPE_SPI+'_1_4W_HW_SPI '+NAME+'('+ROTATION+', '+CS+', '+DC+', '+RST+');';
+  if(CLK=="SCK"&&MOSI=="MOSI")
+    Blockly.Arduino.definitions_['var_declare_U8G2'+NAME] ='U8G2_'+U8G2_TYPE_SPI+'_1_4W_HW_SPI '+NAME+'('+ROTATION+', '+CS+', '+DC+', '+RST+');';
+  else
+    Blockly.Arduino.definitions_['var_declare_U8G2'+NAME] ='U8G2_'+U8G2_TYPE_SPI+'_1_4W_SW_SPI '+NAME+'('+ROTATION+', '+CLK+','+MOSI+','+CS+', '+DC+', '+RST+');';
   var code = '';
   return code;
 };

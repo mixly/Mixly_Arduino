@@ -745,6 +745,7 @@ var OLED_TYPE = [
 ];
 var U8G2_TYPE_SSD1306_NOKIA5110 = [
 ["SSD1306(128×64)", "SSD1306_128X64_NONAME"],
+["LCM12864", "ST7565_NHD_C12864"],
 ["NOKIA5110", "PCD8544_84X48"]
 ];
 var ROTATION_TYPE = [
@@ -1094,13 +1095,11 @@ Blockly.Blocks.u8g2_spi_init= {
     .appendField(new Blockly.FieldTextInput("u8g2"), "NAME")
     .appendField(" "+Blockly.MIXLY_MICROBIT_monitor)
     .appendField(new Blockly.FieldDropdown(ROTATION_TYPE), "ROTATION");
-    this.appendDummyInput();
-    this.appendValueInput("CLK")
-    .setCheck(Number)
-    .appendField("CLK");
-    this.appendValueInput("MOSI")
-    .setCheck(Number)
-    .appendField("MOSI");
+    this.appendDummyInput()
+     .appendField('CLK')
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "CLK")
+    .appendField('MOSI')
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "MOSI");
     this.appendDummyInput()
     .appendField('CS')
     .appendField(new Blockly.FieldDropdown(profile.default.digital), "CS")
@@ -1116,6 +1115,8 @@ Blockly.Blocks.u8g2_spi_init= {
       +"MOSI - SDA(SSD1306) - DIN(NOKIA5110)"
       );
     this.setHelpUrl("");
+     this.setFieldValue("SCK", "CLK");
+    this.setFieldValue("MOSI", "MOSI");
   }
 };
 Blockly.Blocks.u8g2_LCD12864_spi_init= {
