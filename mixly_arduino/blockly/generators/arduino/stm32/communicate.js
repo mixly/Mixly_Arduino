@@ -11,7 +11,7 @@ Blockly.Arduino.i2c_master_writer = function () {
   var value = Blockly.Arduino.valueToCode(this, 'value', Blockly.Arduino.ORDER_ATOMIC) || '0';
   Blockly.Arduino.definitions_['include_Wire_slave'] = '#include <Wire_slave.h>';
   var code = dropdown_i2c_type+".beginTransmission(" + device + ");\n";
-  code += dropdown_i2c_type+".write(" + value + ");\n";
+  code += dropdown_i2c_type+".write((uint8_t)" + value + ");\n";
   code += dropdown_i2c_type+".endTransmission();\n";
   return code;
 };
@@ -28,7 +28,7 @@ Blockly.Arduino.i2c_slave_write = function () {
   var dropdown_i2c_type = this.getFieldValue('i2c_type');
   Blockly.Arduino.definitions_['include_Wire_slave'] = '#include <Wire_slave.h>';
   var value = Blockly.Arduino.valueToCode(this, 'value', Blockly.Arduino.ORDER_ATOMIC) || '0';
-  var code = dropdown_i2c_type+".write(" + value + ");\n";
+  var code = dropdown_i2c_type+".write((uint8_t)" + value + ");\n";
   return code;
 };
 
@@ -36,7 +36,17 @@ Blockly.Arduino.i2c_slave_write = function () {
 Blockly.Arduino.i2c_master_Init = function() {
   var dropdown_i2c_type = this.getFieldValue('i2c_type');
   Blockly.Arduino.definitions_['include_Wire_slave'] = '#include <Wire_slave.h>';
-  Blockly.Arduino.setups_['setup_i2c_'+dropdown_i2c_type] = dropdown_i2c_type+'.begin();';
+  if(dropdown_i2c_type != 'remap_I2C_1')
+  {
+    Blockly.Arduino.setups_['setup_i2c_'+dropdown_i2c_type] = dropdown_i2c_type+'.begin();';
+  }
+  else
+  {
+    Blockly.Arduino.setups_['setup_i2c_remap_I2C_1'] = 'afio_remap(AFIO_REMAP_I2C1);\n'
+                                                    +'  gpio_set_mode(GPIOB, 9, GPIO_AF_OUTPUT_OD);\n'
+                                                    +'  gpio_set_mode(GPIOB, 8, GPIO_AF_OUTPUT_OD);';
+    Blockly.Arduino.setups_['setup_i2c_Wire'] = 'Wire.begin();';
+  }
   var code = '';
   return code;
 };
@@ -46,7 +56,17 @@ Blockly.Arduino.i2c_slave_Init = function() {
   var value_i2c_address = Blockly.Arduino.valueToCode(this, 'i2c_address', Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_i2c_type = this.getFieldValue('i2c_type');
   Blockly.Arduino.definitions_['include_Wire_slave'] = '#include <Wire_slave.h>';
-  Blockly.Arduino.setups_['setup_i2c_'+dropdown_i2c_type] = dropdown_i2c_type+'.begin('+value_i2c_address+');';
+  if(dropdown_i2c_type != 'remap_I2C_1')
+  {
+    Blockly.Arduino.setups_['setup_i2c_'+dropdown_i2c_type] = dropdown_i2c_type+'.begin('+value_i2c_address+');';
+  }
+  else
+  {
+    Blockly.Arduino.setups_['setup_i2c_remap_I2C_1'] = 'afio_remap(AFIO_REMAP_I2C1);\n'
+                                                    +'  gpio_set_mode(GPIOB, 9, GPIO_AF_OUTPUT_OD);\n'
+                                                    +'  gpio_set_mode(GPIOB, 8, GPIO_AF_OUTPUT_OD);';
+    Blockly.Arduino.setups_['setup_i2c_Wire'] = 'Wire.begin('+value_i2c_address+');';
+  }
   var code = '';
   return code;
 };
@@ -68,7 +88,7 @@ Blockly.Arduino.i2c_write = function() {
   var dropdown_i2c_type = this.getFieldValue('i2c_type');
   Blockly.Arduino.definitions_['include_Wire_slave'] = '#include <Wire_slave.h>';
   var value_i2c_write_data = Blockly.Arduino.valueToCode(this, 'i2c_write_data', Blockly.Arduino.ORDER_ATOMIC);
-  var code = dropdown_i2c_type+'.write('+value_i2c_write_data+');\n';
+  var code = dropdown_i2c_type+'.write((uint8_t)'+value_i2c_write_data+');\n';
   return code;
 };
 
@@ -103,8 +123,8 @@ Blockly.Arduino.i2c_master_writerReg = function () {
   var regadd = Blockly.Arduino.valueToCode(this, 'regadd', Blockly.Arduino.ORDER_ATOMIC) || '0';
   var value = Blockly.Arduino.valueToCode(this, 'value', Blockly.Arduino.ORDER_ATOMIC) || '0';
   var code = dropdown_i2c_type+".beginTransmission(" + device + ");\n";
-  code += dropdown_i2c_type+".write(" + regadd + ");\n";
-  code += dropdown_i2c_type+".write(" + value + ");\n";
+  code += dropdown_i2c_type+".write((uint8_t)" + regadd + ");\n";
+  code += dropdown_i2c_type+".write((uint8_t)" + value + ");\n";
   code += dropdown_i2c_type+".endTransmission();\n";
   return code;
 };
@@ -116,7 +136,7 @@ Blockly.Arduino.i2c_master_readerReg = function () {
   var regadd = Blockly.Arduino.valueToCode(this, 'regadd', Blockly.Arduino.ORDER_ATOMIC) || '0';
   var bytes = Blockly.Arduino.valueToCode(this, 'bytes', Blockly.Arduino.ORDER_ATOMIC) || '0';
   var code = dropdown_i2c_type+".beginTransmission(" + device + ");\n";
-  code += dropdown_i2c_type+".write(" + regadd + ");\n";
+  code += dropdown_i2c_type+".write((uint8_t)" + regadd + ");\n";
   code += dropdown_i2c_type+".requestFrom(" + device + ", " + bytes + ");\n";
   code += dropdown_i2c_type+".endTransmission();\n";
   return code;
@@ -160,12 +180,29 @@ Blockly.Arduino.spi_begin_master = function() {
   var value_spi_slave_pin = Blockly.Arduino.valueToCode(this, 'spi_slave_pin', Blockly.Arduino.ORDER_ATOMIC);
   var dropdown_spi_type = this.getFieldValue('spi_type');
   Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
-  Blockly.Arduino.definitions_['var_declare_'+dropdown_spi_type] = 'SPIClass '+dropdown_spi_type+'('+ (dropdown_spi_type == 'SPI_1'? 1:2) +');';
-  Blockly.Arduino.setups_['setup_spi_'+dropdown_spi_type] = dropdown_spi_type+'.begin();\n'
-                                                      +'  '+dropdown_spi_type+'.setBitOrder(MSBFIRST);\n'
-                                                      +'  '+dropdown_spi_type+'.setDataMode(SPI_MODE0);\n'
-                                                      +'  '+dropdown_spi_type+'.setClockDivider(SPI_CLOCK_DIV16);\n'
-                                                      +'  '+'pinMode('+value_spi_slave_pin+', OUTPUT);';  
+  if(dropdown_spi_type != 'remap_SPI_1')
+  {
+    Blockly.Arduino.definitions_['var_declare_'+dropdown_spi_type] = 'SPIClass '+dropdown_spi_type+'('+ dropdown_spi_type.charAt(dropdown_spi_type.length-1) +');';
+    Blockly.Arduino.setups_['setup_spi_'+dropdown_spi_type] = dropdown_spi_type+'.begin();\n'
+                                                        +'  '+dropdown_spi_type+'.setBitOrder(MSBFIRST);\n'
+                                                        +'  '+dropdown_spi_type+'.setDataMode(SPI_MODE0);\n'
+                                                        +'  '+dropdown_spi_type+'.setClockDivider(SPI_CLOCK_DIV16);\n'
+                                                        +'  '+'pinMode('+value_spi_slave_pin+', OUTPUT);';  
+  }
+  else
+  {
+    Blockly.Arduino.definitions_['var_declare_SPI_1'] = 'SPIClass SPI_1(1);';
+    Blockly.Arduino.setups_['setup_spi_remap_SPI_1'] = 'afio_cfg_debug_ports(AFIO_DEBUG_SW_ONLY);\n'
+                                                   + '  afio_remap(AFIO_REMAP_SPI1);\n'
+                                                   + '  gpio_set_mode(GPIOB, 3, GPIO_AF_OUTPUT_PP);\n'
+                                                   + '  gpio_set_mode(GPIOB, 4, GPIO_INPUT_FLOATING);\n'
+                                                   + '  gpio_set_mode(GPIOB, 5, GPIO_AF_OUTPUT_PP);';
+    Blockly.Arduino.setups_['setup_spi_SPI_1'] = 'SPI_1.begin();\n'
+                                              +'  SPI_1.setBitOrder(MSBFIRST);\n'
+                                              +'  SPI_1.setDataMode(SPI_MODE0);\n'
+                                              +'  SPI_1.setClockDivider(SPI_CLOCK_DIV16);\n'
+                                              +'  pinMode('+value_spi_slave_pin+', OUTPUT);';  
+  }
   var code = '';
   return code;
 };
@@ -174,8 +211,22 @@ Blockly.Arduino.spi_begin_master = function() {
 Blockly.Arduino.spi_begin_slave = function() {
   var dropdown_spi_type = this.getFieldValue('spi_type');
   Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
-  Blockly.Arduino.definitions_['var_declare_'+dropdown_spi_type] = 'SPIClass '+dropdown_spi_type+'('+ (dropdown_spi_type == 'SPI_1'? 1:2) +');';
-  Blockly.Arduino.setups_['setup_spi_'+dropdown_spi_type] = dropdown_spi_type+'.beginTransactionSlave(SPISettings(18000000, MSBFIRST, SPI_MODE0, DATA_SIZE_8BIT));';
+  if(dropdown_spi_type != 'remap_SPI_1')
+  {
+    Blockly.Arduino.definitions_['var_declare_'+dropdown_spi_type] = 'SPIClass '+dropdown_spi_type+'('+ dropdown_spi_type.charAt(dropdown_spi_type.length-1) +');';
+    Blockly.Arduino.setups_['setup_spi_'+dropdown_spi_type] = dropdown_spi_type+'.beginTransactionSlave(SPISettings(18000000, MSBFIRST, SPI_MODE0, DATA_SIZE_8BIT));';
+  }
+  else
+  {
+    Blockly.Arduino.definitions_['var_declare_SPI_1'] = 'SPIClass SPI_1(1);';
+    Blockly.Arduino.setups_['setup_spi_remap_SPI_1'] = 'afio_cfg_debug_ports(AFIO_DEBUG_SW_ONLY);\n'
+                                                   + '  afio_remap(AFIO_REMAP_SPI1);\n'
+                                                   + '  gpio_set_mode(GPIOB, 3, GPIO_AF_OUTPUT_PP);\n'
+                                                   + '  gpio_set_mode(GPIOB, 4, GPIO_INPUT_FLOATING);\n'
+                                                   + '  gpio_set_mode(GPIOB, 5, GPIO_AF_OUTPUT_PP);';
+    Blockly.Arduino.setups_['setup_spi_SPI_1'] = 'SPI_1.beginTransactionSlave(SPISettings(18000000, MSBFIRST, SPI_MODE0, DATA_SIZE_8BIT));';
+
+  }
   var code = '';
   return code;
 };

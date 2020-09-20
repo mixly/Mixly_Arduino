@@ -45,7 +45,7 @@ Blockly.Blocks['variables_declare'] = {
   },
   renameVar: function(oldName, newName) {
     if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
-      this.setTitleValue(newName, 'VAR');
+      this.setFieldValue(newName, 'VAR');
     }
   }
 };

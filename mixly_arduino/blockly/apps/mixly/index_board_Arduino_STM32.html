@@ -793,6 +793,8 @@
 <block type="serial_write">
 </block>
 <block type="serial_print">
+  <field name="serial_select">Serial</field>
+  <field name="new_line">println</field>
 </block>
 <block type="serial_print_num">
   <value name="CONTENT">
@@ -886,6 +888,11 @@
     <value name="PIN2">
       <shadow type="pins_digital">
         <field name="PIN">PA1</field>
+      </shadow>
+    </value>
+    <value name="PIN_EN">
+      <shadow type="pins_pwm">
+        <field name="PIN">PA2</field>
       </shadow>
     </value>
     <value name="speed">
@@ -1341,6 +1348,92 @@
     </value>
   </block>
 
+  <block type="arduino_oled_draw_CircleHelper">
+    <value name="oled_draw_circle_x">
+      <shadow type="math_number">
+        <field name="NUM">63</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_circle_y">
+      <shadow type="math_number">
+        <field name="NUM">31</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_circle_radius">
+      <shadow type="math_number">
+        <field name="NUM">31</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_circle_cornername">
+      <shadow type="math_number">
+        <field name="NUM">0x0</field>
+      </shadow>
+      <block type="arduino_oled_draw_CircleHelper_data">
+      </block>
+    </value>
+  </block>
+
+  <block type="arduino_oled_fill_CircleHelper">
+    <value name="oled_draw_circle_x">
+      <shadow type="math_number">
+        <field name="NUM">63</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_circle_y">
+      <shadow type="math_number">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_circle_radius">
+      <shadow type="math_number">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_circle_cornername">
+      <shadow type="math_number">
+        <field name="NUM">0x0</field>
+      </shadow>
+      <block type="arduino_oled_fill_CircleHelper_data">
+      </block>
+    </value>
+    <value name="oled_draw_circle_delta">
+      <shadow type="math_number">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_oled_draw_ellipse">
+    <field name="oled_name">display</field>
+    <value name="oled_draw_ellipse_x">
+      <shadow type="math_number">
+        <field name="NUM">64</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_ellipse_y">
+      <shadow type="math_number">
+        <field name="NUM">32</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_ellipse_x_radius">
+      <shadow type="math_number">
+        <field name="NUM">30</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_ellipse_y_radius">
+      <shadow type="math_number">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_ellipse_cornername">
+      <shadow type="math_number">
+        <field name="NUM">0x0</field>
+      </shadow>
+      <block type="arduino_oled_draw_CircleHelper_data">
+      </block>
+    </value>
+  </block>
+
   <block type="arduino_oled_draw_triangle">
     <value name="oled_draw_triangle_x1">
       <shadow type="math_number">
@@ -1420,6 +1513,560 @@
     </value>
   </block>
 </category>
+<category id="catSTM32TFT" name="TFT" colour="180">
+  <block type="arduino_st7735_begin_software">
+    <value name="st7735_rst">
+      <shadow type="pins_digital">
+          <field name="PIN">PA0</field>
+      </shadow>
+    </value>
+    <value name="st7735_cs">
+      <shadow type="pins_digital">
+          <field name="PIN">PA1</field>
+      </shadow>
+    </value>
+    <value name="st7735_dc">
+      <shadow type="pins_digital">
+          <field name="PIN">PA2</field>
+      </shadow>
+    </value>
+    <value name="st7735_mosi">
+      <shadow type="pins_digital">
+          <field name="PIN">PA3</field>
+      </shadow>
+    </value>
+    <value name="st7735_sclk">
+      <shadow type="pins_digital">
+          <field name="PIN">PA4</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_begin_hardware">
+    <value name="st7735_rst">
+      <shadow type="pins_digital">
+          <field name="PIN">PA0</field>
+      </shadow>
+    </value>
+    <value name="st7735_cs">
+      <shadow type="pins_digital">
+          <field name="PIN">PA1</field>
+      </shadow>
+    </value>
+    <value name="st7735_dc">
+      <shadow type="pins_digital">
+          <field name="PIN">PA2</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_backlight">
+    <value name="st7735_backlight_pin">
+      <shadow type="pins_pwm">
+          <field name="PIN">PA3</field>
+      </shadow>
+    </value>
+    <value name="st7735_backlight_brightness">
+      <shadow type="math_number">
+          <field name="NUM">255</field>
+      </shadow>
+    </value>
+  </block>
+  
+  <block type="arduino_st7735_set_rotation">
+  </block>
+
+  <block type="arduino_st7735_set_cursor">
+    <value name="set_cursor_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="set_cursor_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_set_text_size">
+  </block>
+
+  <block type="arduino_st7735_color">
+  </block>
+  
+  <block type="arduino_st7735_color_2020_07_20">
+  </block>
+
+  <block type="arduino_st7735_set_text_screen_color">
+    <field name="st7735_name">tft</field>
+    <field name="choose_type">setTextColor</field>
+    <value name="set_text_color_data">
+      <shadow type="math_number">
+        <field name="NUM">0xFCDF</field>
+      </shadow>
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#ff9966</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_set_text_background_color">
+    <field name="st7735_name">tft</field>
+    <value name="set_text_color_data">
+      <shadow type="math_number">
+        <field name="NUM">0xFCDF</field>
+      </shadow>
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#ff9966</field>
+      </block>
+    </value>
+    <value name="set_text_color_background">
+      <shadow type="math_number">
+        <field name="NUM">0xFCDF</field>
+      </shadow>
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#000000</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_set_text">
+    <field name="st7735_name">tft</field>
+    <field name="set_text_size">0</field>
+    <field name="set_text_linebreak">FALSE</field>
+    <value name="set_text_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="set_text_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="set_text_color">
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#ff9966</field>
+      </block>
+    </value>
+    <value name="set_background_color">
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#000000</field>
+      </block>
+    </value>
+    <value name="set_text_data">
+      <shadow type="text">
+        <field name="TEXT">hello</field>
+    </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_show_text">
+    <value name="st7735_print_data">
+      <shadow type="text">
+        <field name="TEXT">Hello</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_show_num">
+    <field name="st7735_name">tft</field>
+    <field name="show_num_type">print</field>
+    <field name="st7735_print_type">DEC</field>
+    <value name="st7735_print_data">
+      <shadow type="math_number">
+        <field name="NUM">123</field>
+      </shadow>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_draw_pixel">
+    <field name="st7735_name">tft</field>
+    <value name="st7735_draw_pixel_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_pixel_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_pixel_color">
+      <shadow type="math_number">
+        <field name="NUM">0xFCDF</field>
+      </shadow>
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#ff9966</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_draw_line">
+    <field name="st7735_name">tft</field>
+    <value name="st7735_draw_pixel_start_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_pixel_start_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_pixel_end_x">
+      <shadow type="math_number">
+        <field name="NUM">127</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_pixel_end_y">
+      <shadow type="math_number">
+        <field name="NUM">127</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_pixel_color">
+      <shadow type="math_number">
+        <field name="NUM">0xFCDF</field>
+      </shadow>
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#ff9966</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_draw_line1">
+    <field name="st7735_name">tft</field>
+    <field name="st7735_draw_line1_type">drawFastHLine</field>
+    <value name="st7735_draw_pixel_start_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_pixel_start_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_pixel_length">
+      <shadow type="math_number">
+        <field name="NUM">127</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_pixel_color">
+      <shadow type="math_number">
+        <field name="NUM">0xFCDF</field>
+      </shadow>
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#ff9966</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_draw_rect">
+    <value name="st7735_draw_rect_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_rect_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_rect_width">
+      <shadow type="math_number">
+        <field name="NUM">127</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_rect_hight">
+      <shadow type="math_number">
+        <field name="NUM">127</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_rect_color">
+      <shadow type="math_number">
+        <field name="NUM">0xFCDF</field>
+      </shadow>
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#ff9966</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_draw_Roundrect">
+    <value name="st7735_draw_rect_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_rect_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_rect_width">
+      <shadow type="math_number">
+        <field name="NUM">127</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_rect_hight">
+      <shadow type="math_number">
+        <field name="NUM">127</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_rect_radius">
+      <shadow type="math_number">
+        <field name="NUM">5</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_rect_color">
+      <shadow type="math_number">
+        <field name="NUM">0xFCDF</field>
+      </shadow>
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#ff9966</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_draw_circle">
+    <field name="st7735_name">tft</field>
+    <field name="oled_draw_circle_type">draw</field>
+    <value name="st7735_draw_circle_x">
+      <shadow type="math_number">
+        <field name="NUM">64</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_circle_y">
+      <shadow type="math_number">
+        <field name="NUM">64</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_circle_radius">
+      <shadow type="math_number">
+        <field name="NUM">63</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_circle_color">
+      <shadow type="math_number">
+        <field name="NUM">0xFCDF</field>
+      </shadow>
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#ff9966</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_draw_CircleHelper">
+    <field name="st7735_name">tft</field>
+    <value name="st7735_draw_circle_x">
+      <shadow type="math_number">
+        <field name="NUM">64</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_circle_y">
+      <shadow type="math_number">
+        <field name="NUM">64</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_circle_radius">
+      <shadow type="math_number">
+        <field name="NUM">63</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_circle_cornername">
+      <shadow type="math_number">
+        <field name="NUM">0x0</field>
+      </shadow>
+      <block type="arduino_oled_draw_CircleHelper_data">
+      </block>
+    </value>
+    <value name="st7735_draw_circle_color">
+      <shadow type="math_number">
+        <field name="NUM">0xFCDF</field>
+      </shadow>
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#ff9966</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_fill_CircleHelper">
+    <field name="st7735_name">tft</field>
+    <value name="st7735_draw_circle_x">
+      <shadow type="math_number">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_circle_y">
+      <shadow type="math_number">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_circle_radius">
+      <shadow type="math_number">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_circle_cornername">
+      <shadow type="math_number">
+        <field name="NUM">0x0</field>
+      </shadow>
+      <block type="arduino_oled_fill_CircleHelper_data">
+      </block>
+    </value>
+    <value name="st7735_draw_circle_delta">
+      <shadow type="math_number">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_circle_color">
+      <shadow type="math_number">
+        <field name="NUM">0xFCDF</field>
+      </shadow>
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#ff9966</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_draw_ellipse">
+    <field name="st7735_name">tft</field>
+    <value name="st7735_draw_ellipse_x">
+      <shadow type="math_number">
+        <field name="NUM">64</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_ellipse_y">
+      <shadow type="math_number">
+        <field name="NUM">64</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_ellipse_x_radius">
+      <shadow type="math_number">
+        <field name="NUM">30</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_ellipse_y_radius">
+      <shadow type="math_number">
+        <field name="NUM">20</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_ellipse_cornername">
+      <shadow type="math_number">
+        <field name="NUM">0x0</field>
+      </shadow>
+      <block type="arduino_oled_draw_CircleHelper_data">
+      </block>
+    </value>
+    <value name="st7735_draw_ellipse_color">
+      <shadow type="math_number">
+        <field name="NUM">0xFCDF</field>
+      </shadow>
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#ff9966</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_draw_triangle">
+    <field name="st7735_name">tft</field>
+    <field name="st7735_draw_triangle_type">draw</field>
+    <value name="st7735_draw_triangle_x1">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_triangle_y1">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_triangle_x2">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_triangle_y2">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_triangle_x3">
+      <shadow type="math_number">
+        <field name="NUM">127</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_triangle_y3">
+      <shadow type="math_number">
+        <field name="NUM">127</field>
+      </shadow>
+    </value>
+    <value name="st7735_draw_triangle_color">
+      <shadow type="math_number">
+        <field name="NUM">0xFCDF</field>
+      </shadow>
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#ff9966</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="tool_modulus_show">
+    <field name="VAR">bitmap</field>
+    <field name="x">96</field>
+    <field name="save_hz">TRUE</field>
+    <value name="input_data">
+      <block type="tool_modulus">
+        <field name="bitmap_formats">1</field>
+        <field name="modulus_way">2</field>
+        <field name="modulus_direction">1</field>
+        <field name="hz_sharp">STHeiti</field>
+        <field name="hz_line_height">16</field>
+        <field name="bitmap_width">48</field>
+        <field name="bitmap_height">16</field>
+        <field name="input_data">米思齐</field>
+      </block>
+    </value>
+  </block>
+
+  <block type="arduino_st7735_draw_bitmap">
+    <value name="oled_draw_bitmap_x">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_bitmap_y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_bitmap_data">
+      <shadow type="math_number">
+        <field name="NUM">bitmap</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_bitmap_width">
+      <shadow type="math_number">
+        <field name="NUM">128</field>
+      </shadow>
+    </value>
+    <value name="oled_draw_bitmap_height">
+      <shadow type="math_number">
+        <field name="NUM">128</field>
+      </shadow>
+    </value>
+    <value name="st7735_color">
+      <shadow type="math_number">
+        <field name="NUM">0xFCDF</field>
+      </shadow>
+      <block type="arduino_st7735_color">
+        <field name="st7735_color_type">#ff9966</field>
+      </block>
+    </value>
+  </block>
+</category>
 </category>
 <category id="catGroup"  colour="140">
   <category id="catI2C"  colour="140">
@@ -1440,8 +2087,8 @@
   </block>
   <block type="i2c_write">
     <value name="i2c_write_data">
-      <shadow type="text">
-        <field name="TEXT"></field>
+      <shadow type="math_number">
+        <field name="NUM">0</field>
       </shadow>
     </value>
   </block>

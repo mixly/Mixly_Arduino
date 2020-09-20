@@ -15,7 +15,7 @@ Blockly.Blocks.communicate.HUE = 140;
           this.appendDummyInput()
           .setAlign(Blockly.ALIGN_RIGHT) 
           .appendField(' '+Blockly.Msg.CONTROLS_FOR_INPUT_WITH) 
-          .appendField(new Blockly.FieldDropdown([["I2C1","Wire"],["I2C2","Wire1"]]), "i2c_type");
+          .appendField(new Blockly.FieldDropdown([["I2C1","Wire"],["I2C1("+Blockly.MIXLY_STM32_SPI_REMAP+")","remap_I2C_1"],["I2C2","Wire1"]]), "i2c_type");
           this.setInputsInline(true);
           this.setPreviousStatement(true, null);
           this.setNextStatement(true, null);
@@ -35,7 +35,7 @@ Blockly.Blocks.i2c_slave_Init= {
       this.appendDummyInput()
       .setAlign(Blockly.ALIGN_RIGHT) 
       .appendField(' '+Blockly.Msg.CONTROLS_FOR_INPUT_WITH) 
-      .appendField(new Blockly.FieldDropdown([["I2C1","Wire"],["I2C2","Wire1"]]), "i2c_type");
+      .appendField(new Blockly.FieldDropdown([["I2C1","Wire"],["I2C1("+Blockly.MIXLY_STM32_SPI_REMAP+")","remap_I2C_1"],["I2C2","Wire1"]]), "i2c_type");
       this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -291,7 +291,7 @@ Blockly.Blocks.spi_begin_slave= {
       this.appendDummyInput()        
       .appendField(Blockly.MIXLY_SETUP+" SPI "+Blockly.MIXLY_SALVE)
       .appendField(' '+Blockly.Msg.CONTROLS_FOR_INPUT_WITH) 
-      .appendField(new Blockly.FieldDropdown([["SPI1","SPI_1"],["SPI2","SPI_2"]]), "spi_type");
+      .appendField(new Blockly.FieldDropdown([["SPI1","SPI_1"],["SPI1("+Blockly.MIXLY_STM32_SPI_REMAP+")","remap_SPI_1"],["SPI2","SPI_2"],["SPI3","SPI_3"]]), "spi_type");
       this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -312,7 +312,7 @@ Blockly.Blocks.spi_begin_master= {
       this.appendDummyInput()
       .setAlign(Blockly.ALIGN_RIGHT)  
       .appendField(' '+Blockly.Msg.CONTROLS_FOR_INPUT_WITH) 
-      .appendField(new Blockly.FieldDropdown([["SPI1","SPI_1"],["SPI2","SPI_2"]]), "spi_type");
+      .appendField(new Blockly.FieldDropdown([["SPI1","SPI_1"],["SPI1("+Blockly.MIXLY_STM32_SPI_REMAP+")","remap_SPI_1"],["SPI2","SPI_2"],["SPI3","SPI_3"]]), "spi_type");
       this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -344,7 +344,7 @@ Blockly.Blocks.spi_transfer_1= {
       this.appendValueInput("transfer_data")
       .setCheck(null)  
       .appendField("SPI")
-      .appendField(new Blockly.FieldDropdown([["SPI1","SPI_1"],["SPI2","SPI_2"]]), "spi_type")
+      .appendField(new Blockly.FieldDropdown([["SPI1","SPI_1"],["SPI2","SPI_2"],["SPI3","SPI_3"]]), "spi_type")
       .appendField(" "+Blockly.MIXLY_MICROPYTHON_SOCKET_SEND);
       this.setInputsInline(true);
       this.setPreviousStatement(true, null);
@@ -360,7 +360,7 @@ Blockly.Blocks.spi_transfer_2= {
       this.appendValueInput("transfer_data")
       .setCheck(null)
       .appendField("SPI")
-      .appendField(new Blockly.FieldDropdown([["SPI1","SPI_1"],["SPI2","SPI_2"]]), "spi_type")
+      .appendField(new Blockly.FieldDropdown([["SPI1","SPI_1"],["SPI2","SPI_2"],["SPI3","SPI_3"]]), "spi_type")
       .appendField(" "+Blockly.MIXLY_MICROPYTHON_SOCKET_SEND);
       this.appendDummyInput()
       .setAlign(Blockly.ALIGN_RIGHT)
