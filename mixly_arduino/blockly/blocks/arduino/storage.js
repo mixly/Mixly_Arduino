@@ -244,7 +244,7 @@ Blockly.Blocks.store_eeprom_put = {
     this.appendValueInput("ADDRESS")
     .setCheck(null)
     .appendField(Blockly.MIXLY_ESP32_WRITE)
-    //.appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT,"int"],[Blockly.LANG_MATH_LONG,"long"],[Blockly.LANG_MATH_FLOAT,"float"],[Blockly.LANG_MATH_BYTE,"byte"],["字节数组","byte_array"],["字符数组","char_array"]]), "type")
+    //.appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT,"int"],[Blockly.LANG_MATH_LONG,"long"],[Blockly.LANG_MATH_FLOAT,"float"],[Blockly.LANG_MATH_BYTE,"byte"],["瀛楄妭鏁扮粍","byte_array"],["瀛楃鏁扮粍","char_array"]]), "type")
     .appendField("EEPROM")
     .appendField(Blockly.MQTT_SERVER_ADD);
     this.appendValueInput("DATA")
@@ -263,7 +263,7 @@ Blockly.Blocks.store_eeprom_get = {
     this.appendValueInput("ADDRESS")
     .setCheck(null)
     .appendField(Blockly.MIXLY_SERIAL_READ)
-    //.appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT,"int"],[Blockly.LANG_MATH_LONG,"long"],[Blockly.LANG_MATH_FLOAT,"float"],[Blockly.LANG_MATH_BYTE,"byte"],["字节数组","byte_array"],["字符数组","char_array"]]), "type")
+    //.appendField(new Blockly.FieldDropdown([[Blockly.LANG_MATH_INT,"int"],[Blockly.LANG_MATH_LONG,"long"],[Blockly.LANG_MATH_FLOAT,"float"],[Blockly.LANG_MATH_BYTE,"byte"],["瀛楄妭鏁扮粍","byte_array"],["瀛楃鏁扮粍","char_array"]]), "type")
     .appendField("EEPROM")
     .appendField(Blockly.MQTT_SERVER_ADD);
     this.appendValueInput("DATA")

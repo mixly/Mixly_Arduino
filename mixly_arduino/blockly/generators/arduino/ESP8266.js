@@ -27,7 +27,8 @@ Blockly.Arduino.store_eeprom_write_long = function() {
 	+ '  EEPROM.write(address+1, time.b[1]);\n'
 	+ '  if (time.b[2] != EEPROM.read(address+2) ) EEPROM.write(address+2, time.b[2]);\n'
 	+ '  if (time.b[3] != EEPROM.read(address+3) ) EEPROM.write(address+3, time.b[3]);\n'
-	+ '}\nEEPROM.commit();\n';
+	+'   EEPROM.commit();\n'
+	+ '}\n';
 	Blockly.Arduino.definitions_[funcName] = code2;
 	return 'eepromWriteLong('+address+', '+data+');\n';
 }

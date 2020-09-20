@@ -139,7 +139,7 @@ Blockly.Arduino.blynk_usb_server = function () {
 	return code;
 };
 
-//物联网-发送数据到app
+//物联网-发送数据到app 
 Blockly.Arduino.blynk_iot_push_data = function () {
 	var Vpin = this.getFieldValue('Vpin');
 	var data = Blockly.Arduino.valueToCode(this, 'data', Blockly.Arduino.ORDER_ATOMIC);
@@ -254,7 +254,7 @@ Blockly.Arduino.blynk_iot_syncVirtual = function () {
 Blockly.Arduino.blynk_iot_WidgetLED_COLOR = function () {
 	var Vpin = this.getFieldValue('Vpin');
 	var COLOR = Blockly.Arduino.valueToCode(this, 'COLOR');
-	COLOR = COLOR.replace(/#/g, "#");
+	COLOR = "#"+COLOR.substring(2);
 	var dropdown_stat = Blockly.Arduino.valueToCode(this, 'STAT', Blockly.Arduino.ORDER_ATOMIC);
 	var colour_rgb_led_color = this.getFieldValue('RGB_LED_COLOR');
 	Blockly.Arduino.definitions_['var_declare_WidgetLED' + Vpin] = 'WidgetLED led' + Vpin + '(' + Vpin + ');';
@@ -548,9 +548,9 @@ Blockly.Arduino.blynk_time_input_1 = function () {
 	branch = branch.replace(/(^\s*)|(\s*$)/g, "");//去除两端空格
 	var code = 'BLYNK_WRITE' + '(' + Vpin + '){\n'
 	+ '  long startTimeInSecs = param[0].asLong();\n'
-	+ '  int hour =startTimeInSecs/3600;\n'
-	+ '  int minute=(startTimeInSecs-3600*hour)/60;\n'
-	+ '  int second=(startTimeInSecs-3600*hour)%60;\n'
+	+ '  long hour =startTimeInSecs/3600;\n'
+	+ '  long minute=(startTimeInSecs-3600*hour)/60;\n'
+	+ '  long second=(startTimeInSecs-3600*hour)%60;\n'
 	+ '  ' + branch + '\n'
 	+ '}\n';
 	Blockly.Arduino.definitions_[Vpin] = code;
