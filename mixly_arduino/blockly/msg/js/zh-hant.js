@@ -2853,3 +2853,5 @@ Blockly.MIXLY_SD_clusterCount="簇數";
 Blockly.MIXLY_SD_blocksPerCluster="每簇扇區數";
 Blockly.MIXLY_SD_TOTAL_blocks="總扇區數";
 Blockly.MIXLY_PRINT_INLINE="不換行";
+Blockly.MIXLY_STM32_OLED_DRAW_ARC="畫圓弧";
+Blockly.MIXLY_STM32_OLED_ARC="弧段";

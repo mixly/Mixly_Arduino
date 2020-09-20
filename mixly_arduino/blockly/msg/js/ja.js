@@ -245,7 +245,6 @@ Blockly.blynk_WidgetRTC_mintues='minute';
 Blockly.blynk_WidgetRTC_setSyncInterval='setSyncInterval(s)';
 Blockly.blynk_WIFI_PASS='Wi-Fi Password';
 Blockly.blynk_WIFI_SSID='Wi-Fi SSID';
-Blockly.BME280='Read BME280';
 Blockly.CAPITAL='capital';
 Blockly.CORE_PRIORITY1='Core 1 priority';
 Blockly.CORE_PRIORITY2='Core 2 priority';

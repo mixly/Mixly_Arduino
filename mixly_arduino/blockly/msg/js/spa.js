@@ -2848,3 +2848,5 @@ Blockly.MIXLY_RFID_READ_CARD_UID = 'Leer número de tarjeta';
 Blockly.MIXLY_RFID_WRITE_CARD = 'Escribir tarjeta';
 Blockly.MIXLY_RFID_READ_CARD = 'Leer tarjeta';
 Blockly.MIXLY_RFID_BYTE_ARRAY = 'Matriz de bytes';
+Blockly.MIXLY_STM32_OLED_DRAW_ARC="Dibujar arco";
+Blockly.MIXLY_STM32_OLED_ARC="Arco";

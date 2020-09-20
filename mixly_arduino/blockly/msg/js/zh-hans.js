@@ -2872,3 +2872,5 @@ Blockly.MIXLY_RFID_READ_CARD_UID = '读取卡号';
 Blockly.MIXLY_RFID_WRITE_CARD = '写卡';
 Blockly.MIXLY_RFID_READ_CARD = '读卡';
 Blockly.MIXLY_RFID_BYTE_ARRAY = '字节数组';
+Blockly.MIXLY_STM32_OLED_DRAW_ARC="画圆弧";
+Blockly.MIXLY_STM32_OLED_ARC="弧段";
