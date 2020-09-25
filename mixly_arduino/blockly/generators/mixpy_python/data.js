@@ -295,3 +295,164 @@ Blockly.Python.array_toarray = function() {
   var code = 'numpy.array('+str+')';
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
+
+
+
+
+
+
+Blockly.Python.plot_show = function(){
+  Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+  var code='matplotlib.pyplot.show()\n';
+  return code;
+};
+
+Blockly.Python.plot_axes = function(){
+  Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+  var code='matplotlib.pyplot.axes(aspect=1)\n';
+  return code;
+};
+
+Blockly.Python.plot_plot_easy = function(){
+  Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+  var varName = Blockly.Python.valueToCode(this, 'SER', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var code='matplotlib.pyplot.plot(' + varName + ")\n";
+  return code;
+};
+
+Blockly.Python.plot_plot = function(){
+  Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+  var line = this.getFieldValue('LINE');
+  var color = this.getFieldValue('COLOR');
+  var dot = this.getFieldValue('DOT');
+  var varName = Blockly.Python.valueToCode(this, 'SER', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+  var code='matplotlib.pyplot.plot(' + varName + ",'" + dot + line  + color + "')\n";
+  return code;
+};
+
+Blockly.Python.plot_legend = function(){
+  Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+  Blockly.Python.definitions_.import_matplotlib_font_manager = "import matplotlib.font_manager";
+  var code='matplotlib.pyplot.legend(' + 'prop=matplotlib.font_manager.FontProperties("'+ "STSong"+'")' + ')\n';
+  return code;
+};
+
+Blockly.Python.plot_title = function(){
+  Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+  var a =  Blockly.Python.valueToCode(this, 'TITLE', Blockly.Python.ORDER_ATOMIC);
+  var code='matplotlib.pyplot.title(' + a +  ', fontproperties = "' + "STSong" +'")\n';
+  return code;
+};
+
+Blockly.Python.plot_label = function(){
+  Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+  var direction = this.getFieldValue('DIR');
+  var a =  Blockly.Python.valueToCode(this, 'LABEL', Blockly.Python.ORDER_ATOMIC) ;
+  var code='matplotlib.pyplot.' + direction + 'label(' + a + ', fontproperties = "' + "STSong" + '")\n';
+  return code;
+};
+
+Blockly.Python.plot_plot_bar = function() {
+  Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+  var direction = this.getFieldValue('DIR');
+  var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var code='matplotlib.pyplot.' + direction + '(' + a +','+ b + ")\n";
+  return code ;
+};
+
+Blockly.Python.plot_plot_scatter = function() {
+  Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+  var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var s = Blockly.Python.valueToCode(this, 'S',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var color = this.getFieldValue('COLOR');
+  var dot = this.getFieldValue('DOT');
+  var tag =  Blockly.Python.valueToCode(this, 'TAG', Blockly.Python.ORDER_ATOMIC)||'\'\'';
+  var code='matplotlib.pyplot.scatter(' + a +','+ b +  ",s=" + s + ",c='" + color + "',marker='"+dot+"',label=" + tag + ")\n";
+  return code ;
+};
+
+Blockly.Python.plot_plot_xy = function() {
+  Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+  var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+   var line = this.getFieldValue('LINE');
+  var color = this.getFieldValue('COLOR');
+  var dot = this.getFieldValue('DOT');
+  var tag =  Blockly.Python.valueToCode(this, 'TAG', Blockly.Python.ORDER_ATOMIC)||'\'\'';
+  var code='matplotlib.pyplot.plot(' + a +','+ b +  ",'" + dot + line  + color + "'" + ',label='+ tag +")\n";
+  return code ;
+};
+
+Blockly.Python.plot_bar = function() {
+  Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+  var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var tag =  Blockly.Python.valueToCode(this, 'TAG', Blockly.Python.ORDER_ATOMIC)||'\'\'';
+  var width = Blockly.Python.valueToCode(this, 'WIDTH', Blockly.Python.ORDER_RELATIONAL) || '0';
+  var color = this.getFieldValue('COLOR')
+  var align = this.getFieldValue('ALIGN');
+  var code='matplotlib.pyplot.bar(' + a +','+ b + ',align="'+ align +'",color="'+ color +'",width='+ width+',label='+ tag +  ")\n";
+  return code ;
+};
+
+Blockly.Python.plot_pie = function() {
+  Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+  var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var explode = Blockly.Python.valueToCode(this, 'EXPLODE',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var shadow = this.getFieldValue('SHADOW');
+  var autopct = this.getFieldValue('autopct');
+  if(autopct!='None'){autopct="'"+autopct+"'"}
+  var code='matplotlib.pyplot.pie(' + a + ',explode=' + explode + ',labels=' + b + ',autopct=' + autopct +  ',shadow=' + shadow + ")\n";
+  return code ;
+};
+
+Blockly.Python.plot_hist = function() {
+  Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+  var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var code='matplotlib.pyplot.hist('  + a +','+ b + ")\n";
+  return code ;
+};
+
+
+Blockly.Python.plot_ticks = function() {
+  Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+  var direction = this.getFieldValue('DIR');
+  var a = Blockly.Python.valueToCode(this, 'A',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var b = Blockly.Python.valueToCode(this, 'B',Blockly.Python.ORDER_ATOMIC) || '\'\'';
+  var code='matplotlib.pyplot.' + direction + 'ticks(' + a +','+ b  + ",fontproperties = '" + "STSong" + "')\n";
+  return code ;
+};
+
+Blockly.Python.plot_subplot = function () {
+    Blockly.Python.definitions_.import_numpy = "import numpy";
+    Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+    var from = Blockly.Python.valueToCode(this, "VET", Blockly.Python.ORDER_NONE) || "0";
+    var end = Blockly.Python.valueToCode(this, "HOR", Blockly.Python.ORDER_NONE) || "0";
+    var step = Blockly.Python.valueToCode(this, "NUM", Blockly.Python.ORDER_NONE) || "0";
+    var code = "matplotlib.pyplot.subplot(" + from + ", " + end + ", " + step + ")\n";
+    return code
+};
+
+Blockly.Python.plot_savefig = function () {
+    Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+    var file = Blockly.Python.valueToCode(this, 'FILE', Blockly.Python.ORDER_ATOMIC);
+    var code = "matplotlib.pyplot.savefig("+file+")\n";
+    return code;
+};
+
+Blockly.Python.plot_text = function () {
+    Blockly.Python.definitions_.import_numpy = "import numpy";
+    Blockly.Python.definitions_.import_matplotlib_pyplot = "import matplotlib.pyplot";
+    var from = Blockly.Python.valueToCode(this, "VET", Blockly.Python.ORDER_NONE) || "0";
+    var end = Blockly.Python.valueToCode(this, "HOR", Blockly.Python.ORDER_NONE) || "0";
+    var step = Blockly.Python.valueToCode(this, "NUM", Blockly.Python.ORDER_NONE) || "0";
+    var halign = this.getFieldValue('HALIGN');
+    var valign = this.getFieldValue('VALIGN');
+    var fontnum = Blockly.Python.valueToCode(this, 'FONTNUM', Blockly.Python.ORDER_ASSIGNMENT) || '0';
+    var code = "matplotlib.pyplot.text(" + from + ", " + end + ", " + step +  ", ha='" + halign + "', va='" + valign + "', fontsize=" + fontnum +")\n";
+    return code
+};

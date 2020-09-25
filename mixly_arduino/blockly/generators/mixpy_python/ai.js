@@ -152,7 +152,7 @@ Blockly.Python.AI_audio = function() {
 };
 
 Blockly.Python.AI_photo = function() {
-    Blockly.Python.definitions_['import_audio'] = 'import cam';
+    Blockly.Python.definitions_['import_cam'] = 'import cam';
     var str = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC) || '\"\"';
     var button = Blockly.Python.valueToCode(this, 'BUT', Blockly.Python.ORDER_ATOMIC) || '\"\"';
     var code = "cam.photo_capture(" + str + ',' + button + ")\n";
