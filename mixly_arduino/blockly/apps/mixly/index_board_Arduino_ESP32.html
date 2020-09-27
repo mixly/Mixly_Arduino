@@ -1002,6 +1002,23 @@
       <shadow type="pins_digital"></shadow>
     </value>
   </block>
+  <block type="NTC_TEMP">
+    <value name="NominalResistance">
+      <shadow type="math_number">
+        <field name="NUM">10000</field>
+      </shadow>
+    </value>
+    <value name="betaCoefficient">
+      <shadow type="math_number">
+        <field name="NUM">3950</field>
+      </shadow>
+    </value>
+    <value name="seriesResistor">
+      <shadow type="math_number">
+        <field name="NUM">10000</field>
+      </shadow>
+    </value>
+  </block>
   <block type="mlx90614_init">
     <value name="mlx90614_address">
       <shadow type="math_number">
@@ -1068,6 +1085,8 @@
   <block type="MPU6050_update">
   </block>
   <block type="MPU6050">
+  </block>
+  <block type="mixgo_MPU9250">
   </block>
   <block type="BME280_READ">
   </block>
@@ -1554,11 +1573,70 @@
         </statement>
       </block>
     </next>
-    
   </block>
+  <block type="u8g2_spi_init">
+    <field name="U8G2_TYPE_SPI">SSD1306_128X64_NONAME</field>
+    <field name="ROTATION">U8G2_R0</field>
+    <field name="CS">10</field>
+    <field name="DC">9</field>
+    <field name="RST">8</field>
+    <next>
+      <block type="oled_page">
+        <statement name="DO">
+          <block type="procedures_callnoreturn">
+            <mutation name="page1"></mutation>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+  <block type="u8g2_LCD12864_spi_init">
+    <field name="ROTATION">U8G2_R0</field>
+    <value name="CLK">
+      <shadow type="pins_SCK">
+      </shadow>
+    </value>
+    <value name="MOSI">
+      <shadow type="pins_MOSI">
+      </shadow>
+    </value>
+    <field name="DC">10</field>
+    <next>
+      <block type="oled_page">
+        <statement name="DO">
+          <block type="procedures_callnoreturn">
+            <mutation name="page1"></mutation>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+  <block type="u8g2_LCD12864_8080_init">
+    <field name="ROTATION">U8G2_R0</field>
+    <field name="DB0">2</field>
+    <field name="DB1">3</field>
+    <field name="DB2">4</field>
+    <field name="DB3">5</field>
+    <field name="DB4">6</field>
+    <field name="DB5">7</field>
+    <field name="DB6">8</field>
+    <field name="DB7">9</field>
+    <field name="ENABLE">10</field>
+    <field name="DC">11</field>
+    <next>
+      <block type="oled_page">
+        <statement name="DO">
+          <block type="procedures_callnoreturn">
+            <mutation name="page1"></mutation>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+
+  <sep gap="50"></sep>
+
   <block type="oled_set_EN_Font">
-  </block>
-  <block type="oled_set_CN_Font">
   </block>
   <block type="procedures_defnoreturn">
     <field name="NAME">page1</field>
@@ -1587,7 +1665,56 @@
       </block>
     </statement>
   </block>
-  <block type="oled_define_bitmap_data"></block>
+  <!-- <block type="oled_define_bitmap_data"></block> -->
+  <block type="tool_modulus_show">
+    <field name="VAR">bitmap</field>
+    <field name="x">96</field>
+    <field name="save_hz">TRUE</field>
+    <value name="input_data">
+      <block type="tool_modulus">
+        <field name="bitmap_formats">1</field>
+        <field name="modulus_way">2</field>
+        <field name="modulus_direction">2</field>
+        <field name="hz_sharp">STHeiti</field>
+        <field name="hz_line_height">16</field>
+        <field name="hz_up_down">hz_up</field>
+        <field name="hz_up_down_data">0</field>
+        <field name="hz_left_right">hz_left</field>
+        <field name="hz_left_right_data">0</field>
+        <field name="bitmap_width">48</field>
+        <field name="bitmap_height">16</field>
+        <field name="show_hz">TRUE</field>
+        <field name="input_data">米思齐</field>
+      </block>
+    </value>
+  </block>
+  <block type="oled_showBitmap" >
+    <value name="START_X">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="START_Y">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="WIDTH">
+      <shadow type="math_number">
+        <field name="NUM">128</field>
+      </shadow>
+    </value>
+    <value name="HEIGHT">
+      <shadow type="math_number">
+        <field name="NUM">64</field>
+      </shadow>
+    </value>
+    <value name="bitmap_name">
+      <block type="text">
+        <field name="TEXT">bitmap1</field>
+      </block>
+    </value>
+  </block>
   <block type="oled_clear"></block>
   <block type="u8g2_setContrast">
    <value name="Contrast">
@@ -1621,33 +1748,6 @@
   </shadow>
 </value>
 <field name="Icon_size"></field>
-</block>
-<block type="oled_showBitmap" >
-  <value name="START_X">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="START_Y">
-    <shadow type="math_number">
-      <field name="NUM">0</field>
-    </shadow>
-  </value>
-  <value name="WIDTH">
-    <shadow type="math_number">
-      <field name="NUM">128</field>
-    </shadow>
-  </value>
-  <value name="HEIGHT">
-    <shadow type="math_number">
-      <field name="NUM">64</field>
-    </shadow>
-  </value>
-  <value name="bitmap_name">
-    <block type="text">
-      <field name="TEXT">bitmap1</field>
-    </block>
-  </value>
 </block>
 <block type="oled_drawPixel" >
   <value name="POS_X">

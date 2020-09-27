@@ -161,28 +161,6 @@ Blockly.Blocks.sensor_pin_pressed=Blockly.Blocks.sensor_mixgo_pin_pressed;
 Blockly.Blocks.sensor_pin_near=Blockly.Blocks.sensor_mixgo_pin_near;
 Blockly.Blocks.sensor_light=Blockly.Blocks.sensor_mixgo_light;
 Blockly.Blocks.sensor_sound=Blockly.Blocks.sensor_mixgo_sound;
-
-
-//传感器_重力感应块_获取9轴数据
-Blockly.Arduino.mixgo_MPU9250 = function() {
-  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
-  Blockly.Arduino.definitions_['include_FaBo9Axis_MPU9250'] = '#include <FaBo9Axis_MPU9250.h>';
-  Blockly.Arduino.definitions_['var_declare_MPU9250'] = 'FaBo9Axis fabo_9axis;\n float ax,ay,az,gx,gy,gz,mx,my,mz;';
-  Blockly.Arduino.setups_['setup_mpu9250'] = 'fabo_9axis.begin();';
-  var dropdown_type = this.getFieldValue('MixGo_MPU9250_GETAB');
-  var code = '';
-  if (dropdown_type == "a") code += 'fabo_9axis.readAccelX()';
-  if (dropdown_type == "b") code += 'fabo_9axis.readAccelY()';
-  if (dropdown_type == "c") code += 'fabo_9axis.readAccelZ()';
-  if (dropdown_type == "d") code += 'fabo_9axis.readGyroX()';
-  if (dropdown_type == "e") code += 'fabo_9axis.readGyroY()';
-  if (dropdown_type == "f") code += 'fabo_9axis.readGyroZ()';
-  if (dropdown_type == "g") code += 'fabo_9axis.readMagnetX()';
-  if (dropdown_type == "h") code += 'fabo_9axis.readMagnetY()';
-  if (dropdown_type == "i") code += 'fabo_9axis.readMagnetZ()';
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
  
 function RGB_RGB565(colour){
   colour=colour.substr(1);
