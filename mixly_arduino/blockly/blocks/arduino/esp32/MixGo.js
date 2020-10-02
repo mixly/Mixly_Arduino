@@ -421,34 +421,6 @@ Blockly.Blocks.mixGo_led_brightness = {
   }
 };
 
-var MixGo_MPU9250_GETAB = [
-[Blockly.MixGo_MPU9250_AX, "a"],
-[Blockly.MixGo_MPU9250_AY, "b"],
-[Blockly.MixGo_MPU9250_AZ, "c"],
-[Blockly.MixGo_MPU9250_GX, "d"],
-[Blockly.MixGo_MPU9250_GY, "e"],
-[Blockly.MixGo_MPU9250_GZ, "f"],
-[Blockly.MixGo_MPU9250_MX, "g"],
-[Blockly.MixGo_MPU9250_MY, "h"],
-[Blockly.MixGo_MPU9250_MZ, "i"]
-];
-
-//传感器_重力感应块_获取9轴数据
-Blockly.Blocks.mixgo_MPU9250 = {
-  init: function() {
-    this.setColour(Blockly.Blocks.sensor.HUE);
-    this.appendDummyInput("")
-    .appendField(Blockly.MixGo_MPU9250);
-    this.appendDummyInput("")
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(new Blockly.FieldDropdown(MixGo_MPU9250_GETAB), "MixGo_MPU9250_GETAB");
-    this.setInputsInline(true);
-    this.setOutput(true);
-    this.setTooltip("");
-    this.setHelpUrl('');
-  }
-};
-
 Blockly.Blocks.MixGo_rgb_rainbow1 = {
   init: function () {
     this.setColour(Blockly.Blocks.actuator.HUE);

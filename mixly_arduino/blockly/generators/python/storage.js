@@ -144,8 +144,8 @@ Blockly.Python.storage_make_dir = function () {
   Blockly.Python.definitions_['import_os'] = 'import os';
     var mode = this.getFieldValue('MODE');
     var path = Blockly.Python.valueToCode(this, 'PATH', Blockly.Python.ORDER_ATOMIC);
-    var code = 'os.'+mode+'(' + path + ')';
-    return [code, Blockly.Python.ORDER_ATOMIC];
+    var code = 'os.'+mode+'(' + path + ')\n';
+    return code;
 };
 
 Blockly.Python.storage_rename = function () {

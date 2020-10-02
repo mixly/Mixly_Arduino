@@ -932,6 +932,23 @@
       <shadow type="pins_digital"></shadow>
     </value>
   </block>
+  <block type="NTC_TEMP">
+    <value name="NominalResistance">
+      <shadow type="math_number">
+        <field name="NUM">10000</field>
+      </shadow>
+    </value>
+    <value name="betaCoefficient">
+      <shadow type="math_number">
+        <field name="NUM">3950</field>
+      </shadow>
+    </value>
+    <value name="seriesResistor">
+      <shadow type="math_number">
+        <field name="NUM">10000</field>
+      </shadow>
+    </value>
+  </block>
   <block type="mlx90614_init">
     <value name="mlx90614_address">
       <shadow type="math_number">
@@ -1239,6 +1256,8 @@
 <block type="MPU6050_update">
 </block>
 <block type="MPU6050">
+</block>
+<block type="mixgo_MPU9250">
 </block>
 <block type="BME280_READ">
 </block>

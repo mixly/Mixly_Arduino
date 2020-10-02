@@ -571,3 +571,35 @@ Blockly.Arduino['arduino_keypad_event'] = function() {
   var code = '';
   return code;
 };
+
+//传感器_重力感应块_获取9轴数据
+Blockly.Arduino.mixgo_MPU9250 = function() {
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+  Blockly.Arduino.definitions_['include_FaBo9Axis_MPU9250'] = '#include <FaBo9Axis_MPU9250.h>';
+  Blockly.Arduino.definitions_['var_declare_MPU9250'] = 'FaBo9Axis fabo_9axis;\n float ax,ay,az,gx,gy,gz,mx,my,mz;';
+  Blockly.Arduino.setups_['setup_mpu9250'] = 'fabo_9axis.begin();';
+  var dropdown_type = this.getFieldValue('MixGo_MPU9250_GETAB');
+  var code = '';
+  if (dropdown_type == "a") code += 'fabo_9axis.readAccelX()';
+  if (dropdown_type == "b") code += 'fabo_9axis.readAccelY()';
+  if (dropdown_type == "c") code += 'fabo_9axis.readAccelZ()';
+  if (dropdown_type == "d") code += 'fabo_9axis.readGyroX()';
+  if (dropdown_type == "e") code += 'fabo_9axis.readGyroY()';
+  if (dropdown_type == "f") code += 'fabo_9axis.readGyroZ()';
+  if (dropdown_type == "g") code += 'fabo_9axis.readMagnetX()';
+  if (dropdown_type == "h") code += 'fabo_9axis.readMagnetY()';
+  if (dropdown_type == "i") code += 'fabo_9axis.readMagnetZ()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.NTC_TEMP = function () {
+  var PIN = this.getFieldValue('PIN');
+  var NominalResistance= Blockly.Arduino.valueToCode(this, 'NominalResistance', Blockly.Arduino.ORDER_ATOMIC);
+  var betaCoefficient= Blockly.Arduino.valueToCode(this, 'betaCoefficient', Blockly.Arduino.ORDER_ATOMIC);
+  var seriesResistor= Blockly.Arduino.valueToCode(this, 'seriesResistor', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_['include_+PIN+'] = '#include <thermistor.h>';
+  Blockly.Arduino.definitions_['include_+PIN+'] = '#include <thermistor.h>';
+  Blockly.Arduino.definitions_['var_declare_Hx711'+PIN] = 'THERMISTOR thermistor'+PIN+'(' + PIN + ',' + NominalResistance+","+betaCoefficient+","+seriesResistor+");";
+  var code = 'thermistor'+PIN+'.read()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+}

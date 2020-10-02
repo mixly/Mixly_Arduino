@@ -886,7 +886,7 @@ Blockly.Blocks['sensor_lm35'] = {
   init: function() {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_LM35);
+    .appendField("LM35"+Blockly.MIXLY_TEMP);
     this.appendValueInput("PIN", Number)
     .appendField(Blockly.MIXLY_PIN)
     .setCheck(Number);

@@ -82,7 +82,7 @@ Blockly.Blocks['sensor_temperature'] = {
     init: function(){
         this.setColour(Blockly.Blocks.sensor.HUE);
         this.appendDummyInput()
-            .appendField(Blockly.MIXLY_TEMPERATURE)
+            .appendField("LM35"+Blockly.MIXLY_TEMPERATURE)
         this.setOutput(true, Number);
         this.setInputsInline(true);
     }
