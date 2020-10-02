@@ -10,3 +10,4 @@ mixly_arduino/blockly/apps/mixly/myblock.js
 doc/build
 *.mo
 *.tmp
+mixly_arduino/blockly.zip
