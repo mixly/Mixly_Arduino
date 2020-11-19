@@ -2695,6 +2695,18 @@
       </block>
     </category>
     <category id="catNetwork" colour="225">
+      <block type="iot_wifi_connect">
+        <value name="WIFINAME">
+          <shadow type="text">
+            <field name="TEXT">wifiname</field>
+          </shadow>
+        </value>
+        <value name="PASSWORD">
+          <shadow type="text">
+            <field name="TEXT">wifipassword</field>
+          </shadow>
+        </value>
+      </block>
       <block type="network_init">
         <value name="VAR">
           <shadow type="variables_get">
@@ -3022,18 +3034,6 @@
     </category>
     <category id="catIot" colour="225">
       <category id="catOnenet" colour="225">
-        <block type="iot_wifi_connect">
-          <value name="WIFINAME">
-            <shadow type="text">
-              <field name="TEXT">wifiname</field>
-            </shadow>
-          </value>
-          <value name="PASSWORD">
-            <shadow type="text">
-              <field name="TEXT">wifipassword</field>
-            </shadow>
-          </value>
-        </block>
         <block type="iot_onenet_connect">
           <value name="VAR">
             <shadow type="variables_get">

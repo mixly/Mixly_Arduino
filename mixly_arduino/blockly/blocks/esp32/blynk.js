@@ -57,8 +57,8 @@ Blockly.Blocks['mpython_blynk_on_disconnected'] = {
     init: function () {
         this.jsonInit({
             "inputsInline": true,
-            "nextStatement": null,
-            "previousStatement": null,
+            // "nextStatement": null,
+            // "previousStatement": null,
             "colour": Blockly.Blocks.blynk.HUE,
             "helpUrl": Blockly.MPYTHON_BLYNK_ON_DISCONNECTED_HELPURL,
             "tooltip": Blockly.MPYTHON_BLYNK_ON_DISCONNECTED_TOOLTIP,
@@ -74,8 +74,8 @@ Blockly.Blocks['mpython_blynk_on_connected'] = {
     init: function () {
         this.jsonInit({
             "inputsInline": true,
-            "nextStatement": null,
-            "previousStatement": null,
+            // "nextStatement": null,
+            // "previousStatement": null,
             "colour": Blockly.Blocks.blynk.HUE,
             "helpUrl": Blockly.MPYTHON_BLYNK_ON_CONNECTED_HELPURL,
             "tooltip": Blockly.MPYTHON_BLYNK_ON_CONNECTED_TOOLTIP,
@@ -246,8 +246,8 @@ Blockly.Blocks['mpython_blynktimer'] = {
     init: function () {
         this.jsonInit({
             "message0": Blockly.MPYTHON_BLYNKTIMER_MESSAGE0,
-            "nextStatement": null,
-            "previousStatement": null,
+            // "nextStatement": null,
+            // "previousStatement": null,
             "colour": Blockly.Blocks.blynk.HUE,
             "helpUrl": Blockly.MPYTHON_BLYNKTIMER_HELPURL,
             "tooltip": Blockly.MPYTHON_BLYNKTIMER_TOOLTIP,
@@ -311,8 +311,8 @@ Blockly.Blocks['mpython_blynk_app_data'] = {
     init: function () {
         this.jsonInit({
             "inputsInline": true,
-            "nextStatement": null,
-            "previousStatement": null,
+            // "nextStatement": null,
+            // "previousStatement": null,
             // "output":null,
             "colour": Blockly.Blocks.blynk.HUE,
             "helpUrl": Blockly.MPYTHON_BLYNK_APP_DATA_HELPURL,
