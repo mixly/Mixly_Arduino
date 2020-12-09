@@ -413,9 +413,9 @@ Blockly.Arduino.blynk_notify = function () {
 //物联网-终端组件显示文本
 Blockly.Arduino.blynk_terminal = function () {
 	var Vpin = this.getFieldValue('Vpin');
-	Blockly.Arduino.definitions_['var_declare_WidgetTerminal'] = 'WidgetTerminal terminal(' + Vpin + ');\n';
+	Blockly.Arduino.definitions_['var_declare_WidgetTerminal'+Vpin] = 'WidgetTerminal terminal'+Vpin+'(' + Vpin + ');\n';
 	var content = Blockly.Arduino.valueToCode(this, 'content', Blockly.Arduino.ORDER_ATOMIC);
-	var code = 'terminal.println(' + content + ');\nterminal.flush();\n';
+	var code = 'terminal'+Vpin+'.println(' + content + ');\nterminal'+Vpin+'.flush();\n';
 	return code;
 };
 
