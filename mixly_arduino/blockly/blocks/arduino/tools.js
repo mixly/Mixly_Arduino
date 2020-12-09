@@ -240,7 +240,33 @@ Blockly.Blocks['stm32f103c8t6_pin'] = {
     this.setHelpUrl("https://blog.csdn.net/xatsoft/article/details/90687016?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.nonecase");
   }
 };
-
+Blockly.Blocks['PocketCard_A'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldImage("../../media/board_pin/PocketCard_A.JPG", 525, 321, "*"));
+    this.setColour(Blockly.Blocks.tools.HUE);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
+Blockly.Blocks['PocketCard_B'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldImage("../../media/board_pin/PocketCard_B.JPG", 525, 339, "*"));
+    this.setColour(Blockly.Blocks.tools.HUE);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
+Blockly.Blocks['PocketCard_pin'] = {
+  init: function() {
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldImage("../../media/board_pin/PocketCard_pin.png", 525, 440, "*"));
+    this.setColour(Blockly.Blocks.tools.HUE);
+    this.setTooltip();
+    this.setHelpUrl();
+  }
+};
 
 //获取两个日期差值
 Blockly.Blocks['get_the_number_of_days_between_the_two_dates'] = {
