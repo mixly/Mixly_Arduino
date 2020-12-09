@@ -40,14 +40,3 @@ Blockly.Blocks['esp_now_receive'] = {
  this.setHelpUrl("https://randomnerdtutorials.com/esp-now-esp32-arduino-ide/");
   }
 };
-
-//Find MAC
-Blockly.Blocks['mac_address'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField(Blockly.MIXLY_SERIAL_PRINT+Blockly.MIXLY_ETHERNET_MAC_ADDRESS);
-    this.setColour(Blockly.Blocks.ethernet.HUE);
- this.setTooltip("");
- this.setHelpUrl("https://randomnerdtutorials.com/esp-now-esp32-arduino-ide/");
-  }
-};

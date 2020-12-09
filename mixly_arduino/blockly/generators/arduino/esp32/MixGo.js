@@ -123,13 +123,7 @@ Blockly.Arduino.HT16K33_show_image = function() {
   return ['matrix_img_' + dropdown_img_, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-//ok
-Blockly.Arduino.mixgo_button_is_pressed = function(){
- var btn = this.getFieldValue('btn');
- Blockly.Arduino.setups_['setup_btn'+btn] = 'pinMode('+btn+',INPUT);';
- var code =  'digitalRead('+btn+')';
- return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
+
 
 Blockly.Arduino.sensor_mixgo_light= Blockly.Arduino.sensor_light;
 
@@ -161,21 +155,8 @@ Blockly.Blocks.sensor_pin_pressed=Blockly.Blocks.sensor_mixgo_pin_pressed;
 Blockly.Blocks.sensor_pin_near=Blockly.Blocks.sensor_mixgo_pin_near;
 Blockly.Blocks.sensor_light=Blockly.Blocks.sensor_mixgo_light;
 Blockly.Blocks.sensor_sound=Blockly.Blocks.sensor_mixgo_sound;
- 
-function RGB_RGB565(colour){
-  colour=colour.substr(1);
-  var R,G,B;
-  R=colour.substr(0,2);
-  G=colour.substr(2,2);
-  B=colour.substr(4,2);
-  colour=B+G+R;
-  colour="0x"+colour;
-  var RGB565_red= (colour & 0xf80000)>>8;
-  var RGB565_green= (colour & 0xfc00)>>5;
-  var RGB565_blue= (colour & 0xf8)>>3;
-  var n565Color = RGB565_red+RGB565_green + RGB565_blue ;
-  return n565Color;
-}
+
+
 Blockly.Arduino.MixGo_rgb=function(){
   var value_led = Blockly.Arduino.valueToCode(this, '_LED_', Blockly.Arduino.ORDER_ATOMIC);
   var COLOR = Blockly.Arduino.valueToCode(this, 'COLOR');
@@ -226,8 +207,10 @@ Blockly.Arduino.MixGo_rgb_rainbow1=function(){
  code3 += 'for(j=0; j<256; j++) {\n';
  code3 += 'for(i=0; i<rgb_display_02.numPixels(); i++)\n {\n';
  code3 += 'rgb_display_02.setPixelColor(i, Wheel((i+j) & 255));\n}\n';
- code3 += 'rgb_display_02.show();\nrgb_display_02.show();\n';
- code3 += 'delay(wait);\n}\n}\n';
+ code3 += 'rgb_display_02.show();\n';
+ //code3 += 'rgb_display_02.show();\n';
+ //code3 += 'delay(wait);\n';
+ code3 += '\n}\n}\n';
  Blockly.Arduino.definitions_[funcName3] = code3;
  var code = 'rainbow('+ wait_time+');\n'
  return code;
@@ -269,4 +252,10 @@ Blockly.Arduino.OneButton = function () {
  var code2 = 'void' + ' ' + funcName + '() {\n' + branch + '}\n';
  Blockly.Arduino.definitions_[funcName] = code2;
  return code;
+};
+Blockly.Arduino.mixgo_button_is_pressed = function(){
+ var btn = this.getFieldValue('PIN');
+ Blockly.Arduino.setups_['setup_btn'+btn] = 'pinMode('+btn+',INPUT);';
+ var code =  'digitalRead('+btn+')';
+ return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

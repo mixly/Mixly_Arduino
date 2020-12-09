@@ -83,8 +83,6 @@ Blockly.Arduino.WIFI_info = function() {
   +'    delay(500);\n'
   +'    Serial.print(".");\n'
   +'  }\n'
-  +'  Serial.println("Local IP:");\n'
-  +'  Serial.print(WiFi.localIP());'
   return "";
 };
 
@@ -203,8 +201,7 @@ Blockly.Arduino.MQTT_subscribe_value = function() {
 Blockly.Arduino.MQTT_subscribe = function () {
     // If/elseif/else condition.
     var n = 0;
-    var argument = Blockly.Arduino.valueToCode(this, 'IF' + n,
-      Blockly.Arduino.ORDER_NONE) || 'false';
+    var argument = Blockly.Arduino.valueToCode(this, 'IF' + n,Blockly.Arduino.ORDER_NONE) || 'false';
     var branch = Blockly.Arduino.statementToCode(this, 'DO' + n);
     var code = 'if (subscription ==&' + argument + ') {\n  ' + branch.replace(new RegExp(/\n/g), "\n  ") + '\n  }';
     Blockly.Arduino.definitions_['var_declare_Adafruit_MQTT_Subscribe'+Client_ID+'/'+argument] ='Adafruit_MQTT_Subscribe '+argument+' = Adafruit_MQTT_Subscribe(&mqtt,"'+Client_ID+argument+'");';

@@ -4,7 +4,7 @@ goog.provide('Blockly.Arduino.serial');
 
 goog.require('Blockly.Arduino');
 
-Blockly.Arduino.serial_softserial = function () {
+Blockly.Arduino.serial_HardwareSerial = function () {
 	var serial_select = this.getFieldValue('serial_select');
 	var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC);
 	//var serial_no=serial_select.charAt(serial_select.length – 1);

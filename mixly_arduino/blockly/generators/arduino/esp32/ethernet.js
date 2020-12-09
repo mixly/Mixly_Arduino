@@ -10,8 +10,6 @@ Blockly.Arduino.WIFI_info = function() {
 	+'    delay(500);\n'
 	+'    Serial.print(".");\n'
 	+'  }\n'
-	+'  Serial.println("Local IP:");\n'
-	+'  Serial.print(WiFi.localIP());\n'
 	return "";
 };
 
@@ -58,7 +56,7 @@ Blockly.Arduino.http_get = function () {
                                                                +'  char a[250];\n'
                                                                +'} struct_message;\n'
                                                                +'struct_message myData;\n';
-    Blockly.Arduino.definitions_['include_esp_now_'] ='void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {\n'
+    Blockly.Arduino.definitions_['var_declare_function_OnDataSent'] ='void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {\n'
                                                      +'  char macStr[18];'
                                                      +'  Serial.print("Packet to: ");\n'
                                                      +'  snprintf(macStr, sizeof(macStr), "%02x:%02x:%02x:%02x:%02x:%02x",\n'
@@ -67,9 +65,8 @@ Blockly.Arduino.http_get = function () {
                                                      +'  Serial.print(" send status:\t");\n'
                                                      +'  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");\n'
                                                      +'}\n';
-    Blockly.Arduino.definitions_['include_esp_now_send'+ serial_number] ='uint8_t broadcastAddress' + serial_number + '[] = {' + mac + '};\n';                                              
-    Blockly.Arduino.setups_['var_declare_esp_now'] = 'Serial.begin(9600);\n'
-                                                    +'  WiFi.mode(WIFI_STA);\n'
+    Blockly.Arduino.definitions_['var_declare_broadcastAddress'+ serial_number] ='uint8_t broadcastAddress' + serial_number + '[] = {' + mac + '};\n';                                              
+    Blockly.Arduino.setups_['var_declare_esp_now'] = '  WiFi.mode(WIFI_STA);\n'
                                                     +'  if (esp_now_init() != ESP_OK) {\n'
                                                     +'    Serial.println("Error initializing ESP-NOW");\n'
                                                     +'    return;\n'
@@ -111,16 +108,6 @@ Blockly.Arduino.esp_now_receive = function () {
                                                                     +'}\n';
 	Blockly.Arduino.setups_['setups_WiFi.mode'] = 'WiFi.mode(WIFI_STA);\n  esp_now_init();';
 	Blockly.Arduino.setups_['setups_esp_now_register_recv_cb'] = 'esp_now_register_recv_cb(OnDataRecv);\n';
-	var code='';
-	return code;
-};
-
-//Find MAC
-Blockly.Arduino.mac_address = function () {
-	Blockly.Arduino.definitions_['include_WiFi'] ='#include <WiFi.h>\n';
-	Blockly.Arduino.setups_['setup_serial_9600'] = 'Serial.begin(9600);';
-	Blockly.Arduino.setups_['set_WiFi_mode'] = 'WiFi.mode(WIFI_MODE_STA);\n';
-	Blockly.Arduino.setups_['Serial_println_macAddress'] = 'Serial.println(WiFi.macAddress());\n';
 	var code='';
 	return code;
 };

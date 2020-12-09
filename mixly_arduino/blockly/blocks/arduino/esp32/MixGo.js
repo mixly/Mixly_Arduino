@@ -320,8 +320,8 @@ Blockly.Blocks.mixgo_button_is_pressed = {
     this.setColour(Blockly.Blocks.sensor.HUE);
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_BUTTON);
-    this.appendDummyInput("")
-    .appendField(new Blockly.FieldDropdown([['A', '17'], ['B', '16']]), 'btn');
+     this.appendDummyInput("")
+    .appendField(new Blockly.FieldDropdown(profile.default.button), 'PIN');
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_IS_PRESSED);
     this.setOutput(true, Boolean);

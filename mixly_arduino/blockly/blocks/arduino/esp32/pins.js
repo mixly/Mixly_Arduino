@@ -154,6 +154,15 @@ Blockly.Blocks['serial_select'] = {
     }
 };
 
+Blockly.Blocks['serial_HardwareSelect'] = {
+    init: function() {
+        this.setColour(Blockly.Blocks.pins.HUE);
+        this.appendDummyInput("")
+        .appendField(new Blockly.FieldDropdown(profile.default.serial_HardwareSelect), 'PIN');
+        this.setOutput(true);
+    }
+};
+
 Blockly.Blocks['brightness'] = {
     init: function() {
         this.setColour(Blockly.Blocks.pins.HUE);
