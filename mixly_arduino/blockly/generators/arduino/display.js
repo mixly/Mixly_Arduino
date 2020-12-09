@@ -119,37 +119,42 @@ var tm1637_CLK;
 Blockly.Arduino.display_TM1637_init = function () {
  tm1637_CLK = this.getFieldValue('CLK');
  tm1637_DIO = this.getFieldValue('DIO');
+  var NAME = this.getFieldValue('NAME') || 'display';
  Blockly.Arduino.definitions_['include_SevenSegmentTM1637'] = '#include <SevenSegmentTM1637.h>';
- Blockly.Arduino.definitions_['var_declare_SevenSegmentTM1637'] = 'SevenSegmentTM1637  display(' + tm1637_CLK + ',' + tm1637_DIO + ');';
- Blockly.Arduino.setups_['setup_ display.begin()'] = ' display.begin();';
+ Blockly.Arduino.definitions_['var_declare_SevenSegmentTM1637'+NAME] = 'SevenSegmentTM1637  '+NAME+'(' + tm1637_CLK + ',' + tm1637_DIO + ');';
+ Blockly.Arduino.setups_['setup_'+NAME+'.begin()'] = NAME+'.begin();';
  return '';
 };
 
 Blockly.Arduino.display_TM1637_displyPrint = function () {
+    var NAME = this.getFieldValue('NAME') || 'display';
     //var Speed = Blockly.Arduino.valueToCode(this, 'Speed', Blockly.Arduino.ORDER_ATOMIC);
     var VALUE = Blockly.Arduino.valueToCode(this, 'VALUE', Blockly.Arduino.ORDER_ATOMIC);
-    var code = 'display.print(' + VALUE + ');' + '\n';
+    var code = NAME+'.print(' + VALUE + ');' + '\n';
     return code;
   };
 
   Blockly.Arduino.display_TM1637_displayTime = function () {
+        var NAME = this.getFieldValue('NAME') || 'display';
     Blockly.Arduino.definitions_['include_SevenSegmentExtended'] = '#include <SevenSegmentExtended.h>';
-    Blockly.Arduino.definitions_['var_declare_SevenSegmentTM1637'] = 'SevenSegmentExtended  display(' + tm1637_CLK + ',' + tm1637_DIO + ');';
+    Blockly.Arduino.definitions_['var_declare_SevenSegmentTM1637'+NAME] = 'SevenSegmentExtended  '+NAME+'(' + tm1637_CLK + ',' + tm1637_DIO + ');';
     var hour = Blockly.Arduino.valueToCode(this, 'hour', Blockly.Arduino.ORDER_ATOMIC);
     var minute = Blockly.Arduino.valueToCode(this, 'minute', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_stat = this.getFieldValue("STAT");
-    var code = 'display.printTime(' + hour + ',' + minute +','+dropdown_stat+');\n';
+    var code = NAME+'.printTime(' + hour + ',' + minute +','+dropdown_stat+');\n';
     return code;
   };
 
   Blockly.Arduino.display_TM1637_clearDisplay = function () {
     var stat=this.getFieldValue("STAT");
-    return 'display.'+stat+'();\n';
+     var NAME = this.getFieldValue('NAME') || 'display';
+    return NAME+'.'+stat+'();\n';
   };
 
   Blockly.Arduino.display_TM1637_Brightness = function () {
+     var NAME = this.getFieldValue('NAME') || 'display';
     var BRIGHTNESS = Blockly.Arduino.valueToCode(this, 'Brightness', Blockly.Arduino.ORDER_ATOMIC);
-    var code = 'display.setBacklight(' + BRIGHTNESS + ');\n';
+    var code = NAME+'.setBacklight(' + BRIGHTNESS + ');\n';
     return code;
   };
   

@@ -6,6 +6,10 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.display.HUE = 180;
 
+var DRAWFIll = [
+[Blockly.OLED_HOLLOW, "draw"],
+[Blockly.OLED_SOLID, "fill"]
+];
 Blockly.Blocks.group_lcd_init2 = {
   init: function () {
     this.setColour(Blockly.Blocks.display.HUE);
@@ -150,49 +154,50 @@ Blockly.Blocks.display_4digitdisplay_displayString = {
     this.appendDummyInput()
     .appendField(Blockly.MIXLY_4DIGITDISPLAY + "_TM1650")
     this.appendValueInput("VALUE")
-      //            .setCheck(String)
-      .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField(Blockly.OLED_DRAWSTR);
-      this.setInputsInline(true);
-      this.setPreviousStatement(true, null);
-      this.setNextStatement(true, null);
-      this.setTooltip(Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString);
-    }
-  };
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.OLED_DRAWSTR);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_4digitdisplay_displayString);
+  }
+};
 
-  Blockly.Blocks.display_4digitdisplay_showDot = {
-    init: function () {
-      this.setColour(Blockly.Blocks.display.HUE);
-      this.appendDummyInput()
-      .appendField(Blockly.MIXLY_4DIGITDISPLAY + "_TM1650")
-      .appendField(Blockly.MIXLY_4DIGITDISPLAY_NOMBER1)
-      .appendField(new Blockly.FieldDropdown([["1", "0"], ["2", "1"], ["3", "2"], ["4", "3"]]), "NO")
-      .appendField(Blockly.MIXLY_4DIGITDISPLAY_NOMBER2)
-      .appendField(Blockly.MIXLY_4DIGITDISPLAY_DOT)
-      .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_4DIGITDISPLAY_ON, "true"], [Blockly.MIXLY_4DIGITDISPLAY_OFF, "false"]]), "STAT");
-      this.setInputsInline(true);
-      this.setPreviousStatement(true, null);
-      this.setNextStatement(true, null);
-      this.setTooltip(Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot);
-    }
-  };
+Blockly.Blocks.display_4digitdisplay_showDot = {
+  init: function () {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendDummyInput()
+    .appendField(Blockly.MIXLY_4DIGITDISPLAY + "_TM1650")
+    .appendField(Blockly.MIXLY_4DIGITDISPLAY_NOMBER1)
+    .appendField(new Blockly.FieldDropdown([["1", "0"], ["2", "1"], ["3", "2"], ["4", "3"]]), "NO")
+    .appendField(Blockly.MIXLY_4DIGITDISPLAY_NOMBER2)
+    .appendField(Blockly.MIXLY_4DIGITDISPLAY_DOT)
+    .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_4DIGITDISPLAY_ON, "true"], [Blockly.MIXLY_4DIGITDISPLAY_OFF, "false"]]), "STAT");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_4digitdisplay_showDot);
+  }
+};
 
-  Blockly.Blocks.display_TM1637_init = {
-    init: function () {
-      this.setColour(Blockly.Blocks.display.HUE);
-      this.appendDummyInput("")
-      .appendField(Blockly.MIXLY_4DIGITDISPLAY_TM1637_INIT)
-      .appendField('CLK')
-      .appendField(Blockly.MIXLY_PIN)
-      .appendField(new Blockly.FieldDropdown(profile.default.digital), "CLK")
-      .appendField('DIO')
-      .appendField(Blockly.MIXLY_PIN)
-      .appendField(new Blockly.FieldDropdown(profile.default.digital), "DIO");
-      this.setPreviousStatement(true, null);
-      this.setNextStatement(true, null);
-      this.setInputsInline(true);
-      this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP);
-      this.setHelpUrl('');
+Blockly.Blocks.display_TM1637_init = {
+  init: function () {
+    this.setColour(Blockly.Blocks.display.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_4DIGITDISPLAY + "TM1637")
+    .appendField(new Blockly.FieldTextInput("display"), "NAME")
+    .appendField(Blockly.MIXLY_SETUP)
+    .appendField('CLK')
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "CLK")
+    .appendField('DIO')
+    .appendField(Blockly.MIXLY_PIN)
+    .appendField(new Blockly.FieldDropdown(profile.default.digital), "DIO");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_TM1637_TIP);
+    this.setHelpUrl('');
 //    this.setFieldValue("2", "CLK");
  //   this.setFieldValue("4", "DIO");
 }
@@ -203,7 +208,9 @@ Blockly.Blocks.display_TM1637_displyPrint = {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendValueInput("VALUE")
     .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField(Blockly.MIXLY_4DIGITDISPLAY + " TM1637"+Blockly.Msg.OLEDDISPLAY);
+    .appendField(Blockly.MIXLY_4DIGITDISPLAY + "TM1637")
+    .appendField(new Blockly.FieldTextInput("display"), "NAME")
+    .appendField(Blockly.Msg.OLEDDISPLAY);
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -219,7 +226,9 @@ Blockly.Blocks.display_TM1637_displayTime = {
   init: function () {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_4DIGITDISPLAY + " TM1637"+Blockly.MIXLY_SHOW_FACE_TIME);
+    .appendField(Blockly.MIXLY_4DIGITDISPLAY + "TM1637")
+    .appendField(new Blockly.FieldTextInput("display"), "NAME")
+    .appendField(Blockly.MIXLY_SHOW_FACE_TIME);
     this.appendValueInput("hour")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT);
@@ -231,21 +240,21 @@ Blockly.Blocks.display_TM1637_displayTime = {
     this.appendDummyInput("")
     .appendField(Blockly.MIXLY_MINUTE);
      //  .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ON, "displayOn"], [Blockly.MIXLY_OFF, "displayOff"], [Blockly.MIXLY_LCD_STAT_CLEAR, "clear"]]), "STAT");
-    this.appendDummyInput("").appendField(Blockly.MIXLY_DISPLAY_TM1637_Time_Point).appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ON, "true"], [Blockly.MIXLY_OFF, "false"]]), "STAT");
-    
-    
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME_TOOLTIP);
-  }
-};
+     this.appendDummyInput("").appendField(Blockly.MIXLY_DISPLAY_TM1637_Time_Point).appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_ON, "true"], [Blockly.MIXLY_OFF, "false"]]), "STAT");
+     this.setInputsInline(true);
+     this.setPreviousStatement(true, null);
+     this.setNextStatement(true, null);
+     this.setTooltip(Blockly.MIXLY_4DIGITDISPLAY_TM1637_DISPLAYTIME_TOOLTIP);
+   }
+ };
 
-Blockly.Blocks.display_TM1637_Brightness = {
+ Blockly.Blocks.display_TM1637_Brightness = {
   init: function () {
     this.setColour(Blockly.Blocks.display.HUE);
     this.appendDummyInput("")
-    .appendField(Blockly.MIXLY_4DIGITDISPLAY + " TM1637"+Blockly.MIXLY_MICROBIT_JS_MONITOR_SET_BRIGHTNESS);
+    .appendField(Blockly.MIXLY_4DIGITDISPLAY + "TM1637")
+    .appendField(new Blockly.FieldTextInput("display"), "NAME")
+    .appendField(Blockly.MIXLY_MICROBIT_JS_MONITOR_SET_BRIGHTNESS);
     this.appendValueInput("Brightness")
     .setCheck(Number)
     .setAlign(Blockly.ALIGN_RIGHT);
@@ -260,8 +269,9 @@ Blockly.Blocks.display_TM1637_Brightness = {
 Blockly.Blocks.display_TM1637_clearDisplay = {
   init: function () {
     this.setColour(Blockly.Blocks.display.HUE);
-     this.appendDummyInput()
-    .appendField(Blockly.MIXLY_4DIGITDISPLAY + " TM1637")
+    this.appendDummyInput()
+    .appendField(Blockly.MIXLY_4DIGITDISPLAY + "TM1637")
+    .appendField(new Blockly.FieldTextInput("display"), "NAME")
     .appendField(new Blockly.FieldDropdown([[Blockly.MIXLY_LCD_STAT_CLEAR, "clear"],[Blockly.MIXLY_LCD_STAT_BLINK, "blink"],[Blockly.MIXLY_ON, "on"], [Blockly.MIXLY_OFF, "off"], ]), "STAT");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
