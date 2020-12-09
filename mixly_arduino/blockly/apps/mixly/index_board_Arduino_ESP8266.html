@@ -882,6 +882,13 @@
       <shadow type="pins_digital"></shadow>
     </value>
   </block>
+  <block type="BME280_READ">
+  <value name="address">
+    <shadow type="math_number">
+      <field name="NUM">0x77</field>
+    </shadow>
+  </value>
+</block>
   <block type="NTC_TEMP">
     <value name="NominalResistance">
       <shadow type="math_number">
@@ -1202,9 +1209,7 @@
 </block>
 <block type="MPU6050">
 </block>
-  <block type="mixgo_MPU9250">
-  </block>
-<block type="BME280_READ">
+<block type="mixgo_MPU9250">
 </block>
 </category>
 <category id="catActuator" colour="100">
@@ -2196,7 +2201,7 @@
     </value>
     <value name="PIN2">
       <shadow type="pins_digital">
-        <field name="PIN">9</field>
+        <field name="PIN">12</field>
       </shadow>
     </value>
     <value name="PIN3">
@@ -2667,7 +2672,7 @@
   <block type="blynk_server">
     <value name="server_add">
       <shadow type="text">
-        <field name="TEXT">116.62.49.166</field>
+        <field name="TEXT">blynk-cloud.com</field>
       </shadow>
     </value>
     <value name="auth_key">
@@ -2690,7 +2695,7 @@
   <block type="blynk_smartconfig">
     <value name="server_add">
       <shadow type="text">
-        <field name="TEXT">116.62.49.166</field>
+        <field name="TEXT">blynk-cloud.com</field>
       </shadow>
     </value>
     <value name="auth_key">
@@ -2702,7 +2707,7 @@
   <block type="blynk_AP_config">
     <value name="server_add">
       <shadow type="text">
-        <field name="TEXT">116.62.49.166</field>
+        <field name="TEXT">blynk-cloud.com</field>
       </shadow>
     </value>
     <value name="auth_key">
@@ -2714,7 +2719,7 @@
   <block type="blynk_AP_config_2">
     <value name="server_add">
       <shadow type="text">
-        <field name="TEXT">116.62.49.166</field>
+        <field name="TEXT">blynk-cloud.com</field>
       </shadow>
     </value>
   </block>
