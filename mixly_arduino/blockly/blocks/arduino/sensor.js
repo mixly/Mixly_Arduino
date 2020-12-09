@@ -394,7 +394,7 @@ Blockly.Blocks.RTC_set_date = {
 };
 
 var SHT20_TYPE = [
-["LM35"+Blockly.MIXLY_TEMPERATURE, "sht20.readTemperature()"],
+[Blockly.MIXLY_TEMPERATURE, "sht20.readTemperature()"],
 [Blockly.MIXLY_Humidity, "sht20.readHumidity()"],
 ];
 Blockly.Blocks.SHT20 = {
@@ -555,7 +555,11 @@ Blockly.Blocks['BME280_READ'] = {
    this.setColour(Blockly.Blocks.sensor.HUE);
    this.appendDummyInput()
    .appendField(Blockly.MIXLY_SERIAL_READ)
-   .appendField(new Blockly.FieldDropdown([["BME280","bme"], ["BMP280","bmp"]]), "TYPE")
+   .appendField(new Blockly.FieldDropdown([["BME280","bme"], ["BMP280","bmp"]]), "TYPE");
+   this.appendValueInput("address")
+   .appendField(Blockly.MIXLY_LCD_ADDRESS);
+   this.appendDummyInput()
+.appendField(Blockly.MIXLY_GET)
    .appendField(new Blockly.FieldDropdown([[Blockly.blynk_IOT_IR_TEMP,"readTemperature()"], [Blockly.MIXLY_Humidity,"readHumidity()"], [Blockly.MIXLY_Altitude,"readPressure()"],[ Blockly.MIXLY_HEIGHT ,"readAltitude(SEALEVELPRESSURE_HPA)"] ]), "BME_TYPE")
    this.setOutput(true, null);
    this.setTooltip("");

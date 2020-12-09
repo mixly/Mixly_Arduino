@@ -350,19 +350,20 @@ Blockly.Arduino.encoder_init = function() {
 //BME280读取
 Blockly.Arduino.BME280_READ = function() {
  var TYPE = this.getFieldValue('TYPE');
+var address = Blockly.Arduino.valueToCode(this, 'address', Blockly.Arduino.ORDER_ATOMIC);
  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
  Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
  Blockly.Arduino.definitions_['include_Adafruit_Sensor'] = '#include <Adafruit_Sensor.h>';
  if(TYPE=="bme"){
   Blockly.Arduino.definitions_['include_Adafruit_BME280'] = '#include <Adafruit_BME280.h>';
   Blockly.Arduino.definitions_['var_declare_Adafruit_BME280'] = 'Adafruit_BME280 bme;';
-  Blockly.Arduino.setups_['setup_status'] = 'unsigned status;\n  status = bme.begin();';
+  
 }
 else{
   Blockly.Arduino.definitions_['include_Adafruit_BME280'] = '#include <Adafruit_BMP280.h>';
   Blockly.Arduino.definitions_['var_declare_Adafruit_BME280'] = 'Adafruit_BMP280 bmp;';
-  Blockly.Arduino.setups_['setup_status'] = 'unsigned status;\n  status = bmp.begin();';
 }
+Blockly.Arduino.setups_['setup_status'] = 'unsigned status;\n  status = '+TYPE+'.begin('+address+');';
 Blockly.Arduino.definitions_['include_SEALEVELPRESSURE_HPA'] ='#define SEALEVELPRESSURE_HPA (1013.25)';
 var code = this.getFieldValue('BME_TYPE');
 return [TYPE+"."+code, Blockly.Arduino.ORDER_ATOMIC];
@@ -597,9 +598,8 @@ Blockly.Arduino.NTC_TEMP = function () {
   var NominalResistance= Blockly.Arduino.valueToCode(this, 'NominalResistance', Blockly.Arduino.ORDER_ATOMIC);
   var betaCoefficient= Blockly.Arduino.valueToCode(this, 'betaCoefficient', Blockly.Arduino.ORDER_ATOMIC);
   var seriesResistor= Blockly.Arduino.valueToCode(this, 'seriesResistor', Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.definitions_['include_+PIN+'] = '#include <thermistor.h>';
-  Blockly.Arduino.definitions_['include_+PIN+'] = '#include <thermistor.h>';
-  Blockly.Arduino.definitions_['var_declare_Hx711'+PIN] = 'THERMISTOR thermistor'+PIN+'(' + PIN + ',' + NominalResistance+","+betaCoefficient+","+seriesResistor+");";
+  Blockly.Arduino.definitions_['include_thermistor'] = '#include <thermistor.h>';
+  Blockly.Arduino.definitions_['var_declare_thermistor'+PIN] = 'THERMISTOR thermistor'+PIN+'(' + PIN + ',' + NominalResistance+","+betaCoefficient+","+seriesResistor+");";
   var code = 'thermistor'+PIN+'.read()';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 }
