@@ -432,7 +432,25 @@ Blockly.Blocks.ADXL345 = {
     this.setTooltip();
   }
 };
-
+var LIS3DHTR_GETDATA = [
+[Blockly.MixGo_MPU9250_AX, "LIS.getAccelerationX()"],
+[Blockly.MixGo_MPU9250_AY, "LIS.getAccelerationY()"],
+[Blockly.MixGo_MPU9250_AZ, "LIS.getAccelerationZ()"],
+[Blockly.MIXLY_TEMPERATURE, "LIS.getTemperature()"],
+];
+Blockly.Blocks.LIS3DHTR = {
+  init: function() {
+    this.setColour(Blockly.Blocks.sensor.HUE);
+    this.appendDummyInput("")
+    .appendField('LIS3DHTR'+Blockly.MixGo_MPU9250);
+    this.appendDummyInput("")
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(new Blockly.FieldDropdown(LIS3DHTR_GETDATA), "LIS3DHTR_GETDATA");
+    this.setInputsInline(true);
+    this.setOutput(true);
+    this.setTooltip();
+  }
+};
 Blockly.Blocks.ADXL345_setOffset = {
   init: function () {
     this.setColour(Blockly.Blocks.sensor.HUE);

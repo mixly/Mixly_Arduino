@@ -255,6 +255,8 @@
     </block>
     <block type="controls_end_program">
     </block>
+    <block type="controls_soft_reset">
+    </block>
     <block type="do_while">
       <value name="select_data">
         <shadow type="logic_boolean">
@@ -883,12 +885,12 @@
     </value>
   </block>
   <block type="BME280_READ">
-  <value name="address">
-    <shadow type="math_number">
-      <field name="NUM">0x77</field>
-    </shadow>
-  </value>
-</block>
+    <value name="address">
+      <shadow type="math_number">
+        <field name="NUM">0x77</field>
+      </shadow>
+    </value>
+  </block>
   <block type="NTC_TEMP">
     <value name="NominalResistance">
       <shadow type="math_number">
@@ -1660,6 +1662,31 @@
         </shadow>
       </value>
     </block>
+  </value>
+</block>
+<block type="RGB_color_HSV">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="_LED_">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="H">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="S">
+    <shadow type="math_number">
+      <field name="NUM">255</field>
+    </shadow>
+  </value>
+  <value name="V">
+    <shadow type="math_number">
+      <field name="NUM">255</field>
+    </shadow>
   </value>
 </block>
 <block type="display_rgb_show">
@@ -2485,29 +2512,29 @@
   </category>
   <category id="catStorageEEPROM" colour="0">
     <block type="store_eeprom_put">
-    <value name="ADDRESS">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="DATA">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-  </block>
-  <block type="store_eeprom_get">
-    <value name="ADDRESS">
-      <shadow type="math_number">
-        <field name="NUM">0</field>
-      </shadow>
-    </value>
-    <value name="DATA">
-      <shadow type="math_number">
-        <field name="NUM">item</field>
-      </shadow>
-    </value>
-  </block>
+      <value name="ADDRESS">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="DATA">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+    </block>
+    <block type="store_eeprom_get">
+      <value name="ADDRESS">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="DATA">
+        <shadow type="math_number">
+          <field name="NUM">item</field>
+        </shadow>
+      </value>
+    </block>
   </category> 
 </category> 
 <category id="catNetwork" colour="0">
@@ -2524,7 +2551,7 @@
         </shadow>
       </value>
     </block>
-     <block type="WIFI_smartConfig"></block>
+    <block type="WIFI_smartConfig"></block>
     <block type="network_wifi_connect">
     </block>
     <block type="network_get_connect">
@@ -2551,75 +2578,75 @@
   <value name="SSID">
    <shadow type="text">
     <field name="TEXT">WIFI-SSID</field>
-   </shadow>
-  </value>
-  <value name="PSK">
-   <shadow type="text">
-    <field name="TEXT">WIFI-PSK</field>
-   </shadow>
-  </value>
-  <value name="IP1">
-   <shadow type="math_number">
-    <field name="NUM">192.168.43.214</field>
-   </shadow>
-  </value>
-  <value name="IP2">
-   <shadow type="math_number">
-    <field name="NUM">192.168.43.197</field>
-   </shadow>
-  </value>
-  <value name="IP">
-   <shadow type="math_number">
-    <field name="NUM">192.168.43.255</field>
-   </shadow>
-  </value>
-  <value name="duankou">
-   <shadow type="math_number">
-    <field name="NUM">8080</field>
-   </shadow>
-  </value>
+  </shadow>
+</value>
+<value name="PSK">
+ <shadow type="text">
+  <field name="TEXT">WIFI-PSK</field>
+</shadow>
+</value>
+<value name="IP1">
+ <shadow type="math_number">
+  <field name="NUM">192.168.43.214</field>
+</shadow>
+</value>
+<value name="IP2">
+ <shadow type="math_number">
+  <field name="NUM">192.168.43.197</field>
+</shadow>
+</value>
+<value name="IP">
+ <shadow type="math_number">
+  <field name="NUM">192.168.43.255</field>
+</shadow>
+</value>
+<value name="duankou">
+ <shadow type="math_number">
+  <field name="NUM">8080</field>
+</shadow>
+</value>
 </block>
 <block type="WIFI_ap_and_sta">
   <value name="SSID1">
    <shadow type="text">
     <field name="TEXT">WIFI-STA-SSID</field>
-   </shadow>
-  </value>
-  <value name="PSK1">
-   <shadow type="text">
-    <field name="TEXT">WIFI-STA-PSK</field>
-   </shadow>
-  </value>
-  <value name="SSID2">
-   <shadow type="text">
-    <field name="TEXT">WIFI-AP-SSID</field>
-   </shadow>
-  </value>
-  <value name="PSK2">
-   <shadow type="text">
-    <field name="TEXT">WIFI-AP-PSK</field>
-   </shadow>
-  </value>
-  <value name="IP1">
-   <shadow type="math_number">
-    <field name="NUM">192.168.4.2</field>
-   </shadow>
-  </value>
-  <value name="IP2">
-   <shadow type="math_number">
-    <field name="NUM">192.168.4.3</field>
-   </shadow>
-  </value>
-  <value name="IP">
-   <shadow type="math_number">
-    <field name="NUM">192.168.4.255</field>
-   </shadow>
-  </value>
-  <value name="duankou">
-   <shadow type="math_number">
-    <field name="NUM">8080</field>
-   </shadow>
-  </value>
+  </shadow>
+</value>
+<value name="PSK1">
+ <shadow type="text">
+  <field name="TEXT">WIFI-STA-PSK</field>
+</shadow>
+</value>
+<value name="SSID2">
+ <shadow type="text">
+  <field name="TEXT">WIFI-AP-SSID</field>
+</shadow>
+</value>
+<value name="PSK2">
+ <shadow type="text">
+  <field name="TEXT">WIFI-AP-PSK</field>
+</shadow>
+</value>
+<value name="IP1">
+ <shadow type="math_number">
+  <field name="NUM">192.168.4.2</field>
+</shadow>
+</value>
+<value name="IP2">
+ <shadow type="math_number">
+  <field name="NUM">192.168.4.3</field>
+</shadow>
+</value>
+<value name="IP">
+ <shadow type="math_number">
+  <field name="NUM">192.168.4.255</field>
+</shadow>
+</value>
+<value name="duankou">
+ <shadow type="math_number">
+  <field name="NUM">8080</field>
+</shadow>
+</value>
 </block>
 <block type="WIFI_incomingPacket">
   <value name="input_data">

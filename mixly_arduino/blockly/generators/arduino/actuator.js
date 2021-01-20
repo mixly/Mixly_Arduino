@@ -126,7 +126,7 @@ Blockly.Arduino.group_stepper_setup2 = function () {
   var steps = Blockly.Arduino.valueToCode(this, 'steps', Blockly.Arduino.ORDER_ATOMIC);
   var speed = Blockly.Arduino.valueToCode(this, 'speed', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.definitions_['include_Stepper'] = '#include <Stepper.h>';
-  Blockly.Arduino.definitions_['var_declare_stepper' + varName] = 'Stepper ' + varName + '(' + steps + ',' + dropdown_pin1 + ',' + dropdown_pin3 + ',' + dropdown_pin2 + ',' + dropdown_pin4 + ');';
+  Blockly.Arduino.definitions_['var_declare_stepper' + varName] = 'Stepper ' + varName + '(' + steps + ',' + dropdown_pin1 + ',' + dropdown_pin2 + ',' + dropdown_pin3 + ',' + dropdown_pin4 + ');';
   Blockly.Arduino.setups_['setup_stepper' + varName] = varName + '.setSpeed(' + speed + ');';
   return '';
 };
@@ -178,6 +178,16 @@ Blockly.Arduino.display_rgb = function () {
   var COLOR = Blockly.Arduino.valueToCode(this, 'COLOR');
   COLOR = COLOR.replace(/#/g, "0x");
   var code = 'rgb_display_' + dropdown_rgbpin + '.setPixelColor((' + value_led + ')-1, ' + COLOR + ');\n';
+  return code;
+};
+
+Blockly.Arduino.RGB_color_HSV = function () {
+  var dropdown_rgbpin = this.getFieldValue('PIN');
+  var value_led = Blockly.Arduino.valueToCode(this, '_LED_', Blockly.Arduino.ORDER_ATOMIC);
+  var H = Blockly.Arduino.valueToCode(this, 'H', Blockly.Arduino.ORDER_ATOMIC);
+  var S= Blockly.Arduino.valueToCode(this, 'S', Blockly.Arduino.ORDER_ATOMIC);
+  var V = Blockly.Arduino.valueToCode(this, 'V', Blockly.Arduino.ORDER_ATOMIC);
+  var code = 'rgb_display_' + dropdown_rgbpin + '.setPixelColor((' + value_led + ')-1, ' + 'rgb_display_' + dropdown_rgbpin + 'ColorHSV(' +H+','+S+','+V+ '));\n';
   return code;
 };
 
@@ -496,7 +506,7 @@ Blockly.Arduino.arduino_dfplayer_mini_begin = function() {
 //定义DFPlayer Mini 所使用的串口类型
 Blockly.Arduino.arduino_dfplayer_mini_pin = function() {
   var dropdown_pin_type = this.getFieldValue('pin_type');
-  Blockly.Arduino.definitions_['include_SoftwareSerial'] = '#include "SoftwareSerial.h"';
+  Blockly.Arduino.definitions_['include_SoftwareSerial'] = '#include <SoftwareSerial.h>';
   var code = dropdown_pin_type;
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

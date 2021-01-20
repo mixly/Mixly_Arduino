@@ -5,8 +5,14 @@ goog.provide('Blockly.Arduino.storage');
 goog.require('Blockly.Arduino');
 var pin_cs ;
 Blockly.Arduino.store_sd_init = function() {
+	var board_type = JSFuncs.getPlatform();
 	pin_cs = Blockly.Arduino.valueToCode(this, 'PIN_CS', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.definitions_['include_SD'] = '#include <SD.h>';
+	if (board_type.match(RegExp(/ESP32/))) {
+		Blockly.Arduino.definitions_['include_mySD'] = '#include <mySD.h>';	
+	}
+	else{
+		Blockly.Arduino.definitions_['include_SD'] = '#include <SD.h>';
+	}
 	Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
 	Blockly.Arduino.setups_['setup_sd_write_begin'] = 'SD.begin('+pin_cs+');';
 	var code = '';

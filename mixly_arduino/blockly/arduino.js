@@ -221,7 +221,8 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		PWM_RESOLUTION:[["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"],["16", "16"],["17", "17"],["18", "18"],["19", "19"],["20", "20"]],
 		touch: [["P", "27"], ["Y", "14"], ["T", "12"], ["H", "13"], ["O", "15"], ["N", "4"]],
 		button:[["A", "0"], ["B", "2"]],
-		serial_select: [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"]],
+		serial_HardwareSelect: [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSerial2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	esp32_MixGo: {
@@ -244,7 +245,8 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		CHANNEL:[["0", "0"],["1", "1"],["2", "2"],["3", "3"],["4", "4"],["5", "5"],["6", "6"],["7", "7"],["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"]],
 		PWM_RESOLUTION:[["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"],["16", "16"],["17", "17"],["18", "18"],["19", "19"],["20", "20"]],
 		touch: [["1", "32"], ["2", "33"], ["3", "25"], ["4", "26"]],
-		serial_select: [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"]],
+		serial_HardwareSelect: [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSerial2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	PocketCard: {
@@ -264,10 +266,11 @@ Blockly.Arduino.ORDER_NONE = 99; // (...)
 		button:[["A", "14"], ["B", "25"]],
 		TONE_NOTE:[["NOTE_C","NOTE_C"],["NOTE_Cs","NOTE_Cs"],["NOTE_D","NOTE_D"],["NOTE_Eb","NOTE_Eb"],["NOTE_E","NOTE_E"],["NOTE_F","NOTE_F"],["NOTE_Fs","NOTE_Fs"],["NOTE_G","NOTE_G"],["NOTE_Gs","NOTE_Gs"],["NOTE_A","NOTE_A"],["NOTE_Bb","NOTE_Bb"],["NOTE_B","NOTE_B"],["NOTE_MAX","NOTE_MAX"]],
 		OCTAVE:[["0", "0"],["1", "1"],["P10", "2"],["3", "3"],["P4", "4"],["P16", "5"],["6", "6"],["7", "7"]],
-		CHANNEL:[["P10", "2"],["P4", "4"],["P16", "5"],["P9", "13"],["P5", "14"],["P12", "15"]],
+		CHANNEL:[["0", "0"],["1", "1"],["2", "2"],["3", "3"],["4", "4"],["5", "5"],["6", "6"],["7", "7"],["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"]],
 		PWM_RESOLUTION:[["P9", "13"],["P5", "14"],["P12", "15"],["P6", "16"],["P7", "17"],["P13", "18"],["P14", "19"]],
 		touch: [["P0", "26"], ["P1", "33"], ["P2", "32"]],
-		serial_select: [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"]],
+		serial_HardwareSelect: [["Serial", "Serial"], ["Serial1", "Serial1"], ["Serial2", "Serial2"]],
+		serial_select: [["Serial", "Serial"], ["SoftwareSerial", "mySerial"], ["SoftwareSerial1", "mySerial1"], ["SoftwareSerial2", "mySerial2"], ["SoftwareSerial3", "mySerial3"]],
 		serial : 9600
 	},
 	m5stick_c: {
@@ -404,7 +407,6 @@ profile['Generic STM32F103C series']=profile['Generic STM32F103C6/fake STM32F103
 			definitions_fun.push(def);
 		}
 	}
-
 	// Convert the setups dictionary into a list.
 	var setups = [];
 	for (var name in Blockly.Arduino.setups_) {

@@ -83,3 +83,82 @@ Blockly.Blocks.NTC_TEMP = {
     this.setTooltip();
   }
 };
+var MixGo_MPU9250_GETAB = [
+[Blockly.MixGo_MPU9250_AX, "a"],
+[Blockly.MixGo_MPU9250_AY, "b"],
+[Blockly.MixGo_MPU9250_AZ, "c"],
+[Blockly.MixGo_MPU9250_GX, "d"],
+[Blockly.MixGo_MPU9250_GY, "e"],
+[Blockly.MixGo_MPU9250_GZ, "f"],
+[Blockly.MixGo_MPU9250_MX, "g"],
+[Blockly.MixGo_MPU9250_MY, "h"],
+[Blockly.MixGo_MPU9250_MZ, "i"],
+[Blockly.MIXLY_MICROBIT_Compass_heading, "j"]
+];
+
+Blockly.Blocks.MPU9250_update= {
+  init: function() {
+   this.setColour(Blockly.Blocks.sensor.HUE);
+   this.appendDummyInput("")
+   .appendField("MPU9250"+Blockly.MIXLY_update_data);
+   this.setPreviousStatement(true);
+   this.setNextStatement(true);
+   this.setInputsInline(true);
+ }
+};
+Blockly.Blocks.Pocket_rgb = {
+  init: function () {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_RGB);
+  
+    this.appendDummyInput("")
+    .appendField(Blockly.Msg.HTML_COLOUR);
+    this.appendValueInput("COLOR", Number)
+    .setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+}
+};
+
+Blockly.Blocks.Pocket_rgb2 = {
+  init: function () {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_RGB);
+    this.appendDummyInput("")
+    .appendField(Blockly.Msg.HTML_COLOUR);
+    this.appendValueInput("COLOR1", Number)
+    .setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+}
+};
+
+Blockly.Blocks.Pocket_rgb_Brightness = {
+  init: function () {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_RGB);
+    this.appendValueInput("Brightness")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_BRIGHTNESS);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+}
+};
+Blockly.Blocks.Pocket_rgb_show = {
+  init: function () {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_RGB_SHOW)
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+}
+};
