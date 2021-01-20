@@ -7,6 +7,17 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.loops.HUE = 120;
 
+Blockly.Blocks.controls_main = {
+  init: function() {
+    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendDummyInput()
+    .appendField(Blockly.MIXLY_PYTHON_NAME_MAIN);
+    this.appendStatementInput('DO')
+    .appendField('');
+    this.setTooltip(Blockly.MIXLY_TOOLTIP_CONTROL_SETUP);
+  }
+};
+
 Blockly.Blocks.base_setup = {
   init: function() {
     this.setColour(Blockly.Blocks.loops.HUE);

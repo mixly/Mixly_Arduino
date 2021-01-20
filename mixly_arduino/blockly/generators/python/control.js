@@ -4,6 +4,13 @@ goog.provide('Blockly.Python.loops');
 
 goog.require('Blockly.Python');
 
+
+Blockly.Python.controls_main = function (a) {
+    var d = Blockly.Python.statementToCode(a, "DO"),
+        d = Blockly.Python.addLoopTrap(d, a.id) || Blockly.Python.PASS;
+    return "if __name__ == '__main__':\n" + d;
+};
+
 Blockly.Python.base_setup = function () {
     var branch = Blockly.Python.statementToCode(this, 'DO');
     branch = branch.replace(/(^\s*)|(\s*$)/g, "").replace(/\n    /g, '\n');//去除两端空格
