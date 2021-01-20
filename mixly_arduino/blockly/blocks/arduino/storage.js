@@ -39,6 +39,41 @@ Blockly.Blocks.store_sd_init = {
     this.setHelpUrl('');
   }
 };
+
+Blockly.Blocks.store_sd_init_32 = {
+  init: function () {
+    this.appendDummyInput("")
+    .appendField("SD")
+    .appendField(Blockly.MIXLY_SETUP);
+    this.appendValueInput("PIN_MOSI")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("MOSI")
+    .appendField(Blockly.MIXLY_PIN);
+    this.appendValueInput("PIN_MISO")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("MISO")
+    .appendField(Blockly.MIXLY_PIN);
+    this.appendValueInput("PIN_SCK")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("CLK")
+    .appendField(Blockly.MIXLY_PIN);
+    this.appendValueInput("PIN_CS")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField("CS")
+    .appendField(Blockly.MIXLY_PIN);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(Blockly.Blocks.storage.HUE);
+    this.setInputsInline(false);
+    this.setTooltip();
+    this.setHelpUrl('');
+  }
+};
+
 Blockly.Blocks.sd_card_type= {
   init: function() { 
     this.appendDummyInput() 

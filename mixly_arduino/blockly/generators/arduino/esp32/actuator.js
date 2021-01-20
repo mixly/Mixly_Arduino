@@ -6,8 +6,9 @@ goog.require('Blockly.Arduino');
 
 Blockly.Arduino.display_rgb_show = function () {
   var dropdown_rgbpin = this.getFieldValue('PIN');
-  var code = 'rgb_display_' + dropdown_rgbpin + '.show();\nrgb_display_' + dropdown_rgbpin + '.show();\n';
-  code+="delay(1);"
+  var code = 'rgb_display_' + dropdown_rgbpin + '.show();\n'
+ // +'rgb_display_' + dropdown_rgbpin + '.show();\n'
+  //+"delay(1);"
   return code;
 };
 

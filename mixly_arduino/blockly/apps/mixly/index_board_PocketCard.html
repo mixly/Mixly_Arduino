@@ -959,6 +959,8 @@
     </block>
     <block type="sensor_mixgo_light">
     </block>
+      <block type="MPU9250_update">
+  </block>
     <block type="mixgo_MPU9250">
     </block>
     <block type="NTC_TEMP">
@@ -980,7 +982,65 @@
   </block>
   </category>
   <category id="catOnBoardActuator" name="catOnBoardActuator" colour="100">
-   
+   <block type="Pocket_rgb">
+  <value name="_LED_">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="COLOR">
+    <shadow type="math_number">
+      <field name="NUM">
+      </field>
+    </shadow>
+    <block type="RGB_color_rgb">
+      <value name="R">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="G">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+      <value name="B">
+        <shadow type="math_number">
+          <field name="NUM">0</field>
+        </shadow>
+      </value>
+    </block>
+  </value>
+</block>
+<block type="Pocket_rgb2">
+  <value name="COLOR1">
+    <shadow type="math_number">
+      <field name="NUM">
+      </field>
+    </shadow>
+    <block type="RGB_color_seclet" >
+      <field name="COLOR">#ff0000</field>
+    </block>
+  </value>
+  <value name="COLOR2">
+    <shadow type="math_number">
+      <field name="NUM">
+      </field>
+    </shadow>
+    <block type="RGB_color_seclet">
+      <field name="COLOR">#ffff33</field>
+    </block>
+  </value>
+</block>
+<block type="Pocket_rgb_Brightness">
+  <value name="Brightness">
+    <shadow type="math_number">
+      <field name="NUM">20</field>
+    </shadow>
+  </value>
+</block>
+<block type="Pocket_rgb_show">
+</block>
 <block type="controls_tone">
   <value name="PIN">
     <shadow type="pins_digitalWrite">
@@ -1581,6 +1641,31 @@
         </shadow>
       </value>
     </block>
+  </value>
+</block>
+<block type="RGB_color_HSV">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="_LED_">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="H">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="S">
+    <shadow type="math_number">
+      <field name="NUM">255</field>
+    </shadow>
+  </value>
+  <value name="V">
+    <shadow type="math_number">
+      <field name="NUM">255</field>
+    </shadow>
   </value>
 </block>
 <block type="display_rgb_show">
@@ -2566,7 +2651,7 @@
   <block type="blynk_server">
     <value name="server_add">
       <shadow type="text">
-        <field name="TEXT">116.62.49.166</field>
+        <field name="TEXT">blynk-cloud.com</field>
       </shadow>
     </value>
     <value name="auth_key">
@@ -2588,7 +2673,7 @@
     <block type="blynk_smartconfig" >
       <value name="server_add">
         <shadow type="text">
-          <field name="TEXT">116.62.49.166</field>
+          <field name="TEXT">blynk-cloud.com</field>
         </shadow>
       </value>
       <value name="auth_key">

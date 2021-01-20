@@ -59,21 +59,6 @@ Blockly.Arduino.inout_touchRead = function () {
 };
 
 
-function RGB_RGB565(colour) {
-  colour = colour.substr(1);
-  var R, G, B;
-  R = colour.substr(0, 2);
-  G = colour.substr(2, 2);
-  B = colour.substr(4, 2);
-  colour = B + G + R;
-  colour = "0x" + colour;
-  var RGB565_red = (colour & 0xf80000) >> 8;
-  var RGB565_green = (colour & 0xfc00) >> 5;
-  var RGB565_blue = (colour & 0xf8) >> 3;
-  var n565Color = RGB565_red + RGB565_green + RGB565_blue;
-  return n565Color;
-}
-
 Blockly.Arduino.handbit_rgb = function () {
   var value_led = Blockly.Arduino.valueToCode(this, '_LED_', Blockly.Arduino.ORDER_ATOMIC);
   var COLOR = Blockly.Arduino.valueToCode(this, 'COLOR');
@@ -111,8 +96,9 @@ Blockly.Arduino.handbit_rgb_Brightness = function () {
 };
 
 Blockly.Arduino.handbit_rgb_show = function () {
-  var code = 'rgb_display_17.show();\nrgb_display_17.show();\ndelay(1);\n';
-  return code;
+  var code = 'rgb_display_17.show();\n'
+ // +'rgb_display_17.show();\ndelay(1);\n'
+ return code;
 };
 
 Blockly.Arduino.handbit_rgb_rainbow1 = function () {
@@ -133,10 +119,11 @@ Blockly.Arduino.handbit_rgb_rainbow1 = function () {
   code3 += 'for(i=0; i<rgb_display_17.numPixels(); i++)\n {\n';
   code3 += 'rgb_display_17.setPixelColor(i, Wheel((i+j) & 255));\n}\n';
   code3 += 'rgb_display_17.show();\n';
-  code3 += 'delay(wait);\n}\n}\n';
-  Blockly.Arduino.definitions_[funcName3] = code3;
-  var code = 'rainbow(' + wait_time + ');\n'
-  return code;
+ // code3 += 'delay(wait);'
+ code3 += ' \n}\n}\n';
+ Blockly.Arduino.definitions_[funcName3] = code3;
+ var code = 'rainbow(' + wait_time + ');\n'
+ return code;
 };
 
 Blockly.Arduino.handbit_rgb_rainbow3 = function () {

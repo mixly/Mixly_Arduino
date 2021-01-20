@@ -73,12 +73,12 @@ Blockly.Arduino.controls_for = function () {
     if (argument0.match(/^-?\d+(\.\d+)?$/) &&
         argument1.match(/^-?\d+(\.\d+)?$/)) {
         //起止数是常量
-        down = (argument1 - argument0 < 0);
-        code = 'for (int ' + variable0 + ' = ' + argument0 + '; ' +
-            variable0 + (down ? ' >= ' : ' <= ') + argument1 + '; ' +
-            variable0 + ' = ' + variable0 + ' + (' + step + ')) {\n' +
-            branch + '}\n';
-    } else {
+    down = (argument1 - argument0 < 0);
+    code = 'for (int ' + variable0 + ' = ' + argument0 + '; ' +
+    variable0 + (down ? ' >= ' : ' <= ') + argument1 + '; ' +
+    variable0 + ' = ' + variable0 + ' + (' + step + ')) {\n' +
+    branch + '}\n';
+} else {
         //起止数有变量
         if (step.match(/^-?\d+(\.\d+)?$/)) {
             //步长是常量
@@ -121,9 +121,9 @@ Blockly.Arduino.controls_flow_statements = function () {
     // Flow statements: continue, break.
     switch (this.getFieldValue('FLOW')) {
         case 'BREAK':
-            return 'break;\n';
+        return 'break;\n';
         case 'CONTINUE':
-            return 'continue;\n';
+        return 'continue;\n';
     }
     throw 'Unknown flow statement.';
 };
@@ -168,6 +168,12 @@ Blockly.Arduino.controls_end_program = function () {
     else
         return 'while(true);\n';
 };
+Blockly.Arduino.controls_soft_reset = function () {
+  var funcName = 'resetFunc';
+  var code = 'void(* resetFunc) (void) = 0;'
+  Blockly.Arduino.definitions_[funcName] = code;
+  return [' resetFunc();', Blockly.Arduino.ORDER_ATOMIC];
+};
 Blockly.Arduino.controls_interrupts = function () {
     return 'interrupts();\n';
 };
@@ -196,19 +202,19 @@ Blockly.Arduino.do_while = function() {
     var statements_input_data = Blockly.Arduino.statementToCode(this, 'input_data');  
     var value_select_data = Blockly.Arduino.valueToCode(this, 'select_data', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_type = this.getFieldValue('type');
-  if(dropdown_type == 'false')
-  {
-    var code = 'do{\n'
-              +statements_input_data
-              +'}while(!('+value_select_data+'));\n';
-  }
-  else
-  {
-    var code = 'do{\n'
-              +statements_input_data
-              +'}while('+value_select_data+');\n';
-  }
-  return code;
+    if(dropdown_type == 'false')
+    {
+        var code = 'do{\n'
+        +statements_input_data
+        +'}while(!('+value_select_data+'));\n';
+    }
+    else
+    {
+        var code = 'do{\n'
+        +statements_input_data
+        +'}while('+value_select_data+');\n';
+    }
+    return code;
 };
 
 //注册超级延时函数

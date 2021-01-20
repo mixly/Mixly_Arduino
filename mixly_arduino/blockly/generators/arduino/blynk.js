@@ -67,6 +67,10 @@ Blockly.Arduino.blynk_server = function () {
 	Blockly.Arduino.definitions_['var_declare_auth_key'] = 'char auth[] = ' + auth_key + ';';
 	Blockly.Arduino.definitions_['var_declare_wifi_ssid'] = 'char ssid[] = ' + wifi_ssid + ';';
 	Blockly.Arduino.definitions_['var_declare_wifi_pass'] = 'char pass[] = ' + wifi_pass + ';';
+	if (!isNaN(server_add.charAt(2))) {
+		server_add = server_add.replace(/\"/g, "").replace(/\./g, ",");
+		server_add='IPAddress(' + server_add + ')';
+	}
 	if (board_type.match(RegExp(/AVR/))) {
 		Blockly.Arduino.definitions_['include_ESP8266WiFi'] = '#include <ESP8266_Lib.h>';
 		Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] = '#include <BlynkSimpleShieldEsp8266.h>';
@@ -79,7 +83,7 @@ Blockly.Arduino.blynk_server = function () {
 			+ '  delay(10);\n'
 			+ '  wifi.enableMUX();\n'
 			+ '  delay(10);\n'
-			+ '  Blynk.begin(auth, ssid, pass,' + server_add + ',8080);';
+			+ '  Blynk.begin(auth, wifi,ssid, pass,' + server_add + ',8080);';
 		}
 		else {
 			server_add = server_add.replace(/\"/g, "");
@@ -95,30 +99,15 @@ Blockly.Arduino.blynk_server = function () {
 	else if (board_type.match(RegExp(/ESP8266/))) {
 		Blockly.Arduino.definitions_['include_ESP8266WiFi'] = '#include <ESP8266WiFi.h>';
 		Blockly.Arduino.definitions_['include_BlynkSimpleEsp8266'] = '#include <BlynkSimpleEsp8266.h>';
-
-		if (isNaN(server_add.charAt(2))) {
-			Blockly.Arduino.setups_['setup_serial_Serial'] = 'Serial.begin(9600);';
-			Blockly.Arduino.setups_['setup_Blynk.begin'] = ' Blynk.begin(auth, ssid, pass,' + server_add + ',8080);';
-		}
-		else {
-			server_add = server_add.replace(/\"/g, "").replace(/\./g, ",");
-			Blockly.Arduino.setups_['setup_serial_Serial'] = 'Serial.begin(9600);';
-			Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Blynk.begin(auth, ssid, pass,' + ' IPAddress(' + server_add + '),8080);';
-		}
+		Blockly.Arduino.setups_['setup_serial_Serial'] = 'Serial.begin(9600);';
+		Blockly.Arduino.setups_['setup_Blynk.begin'] = ' Blynk.begin(auth, ssid, pass,' + server_add + ',8080);';
 	}
 	else if (board_type.match(RegExp(/ESP32/))) {
 		Blockly.Arduino.definitions_['include_WiFi'] = '#include <WiFi.h>';
 		Blockly.Arduino.definitions_['include_WiFiClient'] = '#include <WiFiClient.h>';
 		Blockly.Arduino.definitions_['include_BlynkSimpleEsp32'] = '#include <BlynkSimpleEsp32.h>';
-		if (isNaN(server_add.charAt(2))) {
-			Blockly.Arduino.setups_['setup_serial_Serial'] = 'Serial.begin(9600);';
-			Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Blynk.begin(auth, ssid, pass,' + server_add + ',8080);';
-		}
-		else {
-			server_add = server_add.replace(/\"/g, "").replace(/\./g, ",");
-			Blockly.Arduino.setups_['setup_serial_Serial'] = 'Serial.begin(9600);';
-			Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Blynk.begin(auth, ssid, pass,' + 'IPAddress(' + server_add + '),8080);';
-		}
+		Blockly.Arduino.setups_['setup_serial_Serial'] = 'Serial.begin(9600);';
+		Blockly.Arduino.setups_['setup_Blynk.begin'] = 'Blynk.begin(auth, ssid, pass,' + server_add + ',8080);';
 	}
 	var code = "Blynk.run();\n";
 	return code;

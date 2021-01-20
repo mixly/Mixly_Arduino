@@ -151,7 +151,7 @@ Blockly.Arduino.DS1307_init = function () {
   Blockly.Arduino.definitions_['include_'+RTCType] = '#include <'+RTCType+'.h>';
   //Blockly.Arduino.definitions_['var_declare_RtcDateTime_dt'] = 'const RtcDateTime dt;';
   if(SDA!="SDA"||SCL!="SCL"){
-    Blockly.Arduino.definitions_['include_Wire'] = '#include <SoftwareWire.h>';
+    Blockly.Arduino.definitions_['include_SoftwareWire'] = '#include <SoftwareWire.h>';
     Blockly.Arduino.definitions_['var_declare_SoftwareWire'] = 'SoftwareWire myWire('+SDA+','+SCL+');';
     Blockly.Arduino.definitions_['var_declare_'+RTCType] = RTCType+'<SoftwareWire> Rtc(myWire);';
   }  
@@ -279,7 +279,20 @@ Blockly.Arduino.ADXL345 = function() {
   var code = dropdown_type;
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
-
+//传感器_重力感应块
+Blockly.Arduino.LIS3DHTR = function() {
+  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
+  Blockly.Arduino.definitions_['include_LIS3DHTR'] = '#include <LIS3DHTR.h>';
+  Blockly.Arduino.definitions_['include_define_Wire'] = '#define WIRE  Wire';
+  Blockly.Arduino.definitions_['var_declare_LIS3DHTR'] = 'LIS3DHTR<TwoWire> LIS;\n';
+  Blockly.Arduino.setups_['setup_LIS.begin'] = 'LIS.begin(WIRE,0x19);\n';
+    Blockly.Arduino.setups_['setup_LIS.openTemp'] = 'LIS.openTemp();';
+  Blockly.Arduino.setups_['setup_LIS.setFullScaleRange'] = 'LIS.setFullScaleRange(LIS3DHTR_RANGE_2G);';
+  Blockly.Arduino.setups_['setup_LIS.setOutputDataRate'] = 'LIS.setOutputDataRate(LIS3DHTR_DATARATE_50HZ);';
+  var dropdown_type = this.getFieldValue('LIS3DHTR_GETDATA');
+  var code = dropdown_type;
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
 //传感器_重力感应块
 Blockly.Arduino.ADXL345_setOffset = function() {
   Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
@@ -350,7 +363,7 @@ Blockly.Arduino.encoder_init = function() {
 //BME280读取
 Blockly.Arduino.BME280_READ = function() {
  var TYPE = this.getFieldValue('TYPE');
-var address = Blockly.Arduino.valueToCode(this, 'address', Blockly.Arduino.ORDER_ATOMIC);
+ var address = Blockly.Arduino.valueToCode(this, 'address', Blockly.Arduino.ORDER_ATOMIC);
  Blockly.Arduino.definitions_['include_Wire'] = '#include <Wire.h>';
  Blockly.Arduino.definitions_['include_SPI'] = '#include <SPI.h>';
  Blockly.Arduino.definitions_['include_Adafruit_Sensor'] = '#include <Adafruit_Sensor.h>';

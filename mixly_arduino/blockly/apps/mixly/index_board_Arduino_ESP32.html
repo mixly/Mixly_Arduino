@@ -958,7 +958,7 @@
 </block>
 <block type="serial_flush">
 </block>
-<block type="serial_softserial">
+<block type="serial_HardwareSerial">
   <value name="TX">
     <shadow type="pins_digital"></shadow>
   </value>
@@ -969,6 +969,14 @@
     <shadow type="math_number">
       <field name="NUM">9600</field>
     </shadow>
+  </value>
+</block>
+<block type="serial_softserial">
+  <value name="TX">
+    <shadow type="pins_digital"></shadow>
+  </value>
+  <value name="RX">
+    <shadow type="pins_digital"></shadow>
   </value>
 </block>
 <block type="serial_event">
@@ -1089,6 +1097,11 @@
   <block type="mixgo_MPU9250">
   </block>
   <block type="BME280_READ">
+    <value name="address">
+      <shadow type="math_number">
+        <field name="NUM">0x77</field>
+      </shadow>
+    </value>
   </block>
 </category>
 <category id="catActuator" colour="100">
@@ -1320,6 +1333,31 @@
     </block>
   </value>
 </block>
+<block type="RGB_color_HSV">
+  <value name="PIN">
+    <shadow type="pins_digital" />
+  </value>
+  <value name="_LED_">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="H">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+  </value>
+  <value name="S">
+    <shadow type="math_number">
+      <field name="NUM">255</field>
+    </shadow>
+  </value>
+  <value name="V">
+    <shadow type="math_number">
+      <field name="NUM">255</field>
+    </shadow>
+  </value>
+</block>
 <block type="display_rgb_show">
 </block>
 <block type="display_rgb_rainbow1">
@@ -1406,6 +1444,129 @@
       <field name="NUM">20</field>
     </shadow>
   </value>
+</block>
+<block type="serial_softserial">
+  <field name="serial_select">mySerial</field>
+  <value name="RX">
+    <shadow type="pins_digital">
+      <field name="PIN">12</field>
+    </shadow>
+  </value>
+  <value name="TX">
+    <shadow type="pins_digital">
+      <field name="PIN">13</field>
+    </shadow>
+  </value>
+  <next>
+    <block type="serial_begin">
+      <field name="serial_select">mySerial</field>
+      <value name="CONTENT">
+        <shadow type="math_number">
+          <field name="NUM">9600</field>
+        </shadow>
+      </value>
+      <next>
+        <block type="arduino_dfplayer_mini_begin">
+          <field name="dfplayer_name">myPlayer</field>
+          <value name="dfplayer_pin">
+            <shadow type="arduino_dfplayer_mini_pin">
+              <field name="pin_type">mySerial</field>
+            </shadow>
+          </value>
+        </block>
+      </next>
+    </block>
+  </next>
+</block>
+<block type="arduino_dfplayer_mini_setTimeOut">
+  <value name="timeout_data">
+    <shadow type="math_number">
+      <field name="NUM">500</field>
+    </shadow>
+  </value>
+</block>
+<block type="arduino_dfplayer_mini_volume">
+  <value name="volume_data">
+    <shadow type="math_number">
+      <field name="NUM">15</field>
+    </shadow>
+  </value>
+</block>
+
+<block type="arduino_dfplayer_mini_volume_up_down">
+</block>
+<block type="arduino_dfplayer_mini_EQ">
+  <field name="dfplayer_name">myPlayer</field>
+  <value name="eq_data">
+    <shadow type="math_number">
+      <field name="NUM">0</field>
+    </shadow>
+    <block type="arduino_dfplayer_mini_EQ_type">
+      <field name="eq_type">DFPLAYER_EQ_NORMAL</field>
+    </block>
+  </value>
+</block>
+<block type="arduino_dfplayer_mini_outputDevice">
+  <field name="dfplayer_name">myPlayer</field>
+  <value name="outputdevice_data">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+    <block type="arduino_dfplayer_mini_outputDevice_type">
+      <field name="outputdevice_type">DFPLAYER_DEVICE_SD</field>
+    </block>
+  </value>
+</block>
+<block type="arduino_dfplayer_set_1">
+</block>
+<block type="arduino_dfplayer_play_loop">
+  <value name="play_data">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="arduino_dfplayer_playFolder">
+  <value name="fold_data">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+  <value name="play_data">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="arduino_dfplayer_loopFolder">
+  <value name="fold_data">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="arduino_dfplayer_read_now">
+</block>
+<block type="arduino_dfplayer_readFileCounts">
+  <field name="dfplayer_name">myPlayer</field>
+  <field name="play_data">readFileCounts</field>
+  <value name="device_type">
+    <shadow type="math_number">
+      <field name="NUM">2</field>
+    </shadow>
+    <block type="arduino_dfplayer_mini_outputDevice_type">
+      <field name="outputdevice_type">DFPLAYER_DEVICE_SD</field>
+    </block>
+  </value>
+</block>
+<block type="arduino_dfplayer_readFileCountsInFolder">
+  <value name="folder_data">
+    <shadow type="math_number">
+      <field name="NUM">1</field>
+    </shadow>
+  </value>
+</block>
+<block type="arduino_dfplayer_available">
 </block>
 </category>
 <category id="catMonitor" colour="180">
@@ -1638,6 +1799,7 @@
 
   <block type="oled_set_EN_Font">
   </block>
+
   <block type="procedures_defnoreturn">
     <field name="NAME">page1</field>
     <statement name="STACK">
@@ -2415,7 +2577,6 @@
     </block>
   </statement>
 </block>
-<block type="mac_address"></block>
 <block type="http_get">
   <value name="api">
     <shadow type="math_number">
@@ -2450,75 +2611,75 @@
   <value name="SSID">
    <shadow type="text">
     <field name="TEXT">WIFI-SSID</field>
-   </shadow>
-  </value>
-  <value name="PSK">
-   <shadow type="text">
-    <field name="TEXT">WIFI-PSK</field>
-   </shadow>
-  </value>
-  <value name="IP1">
-   <shadow type="math_number">
-    <field name="NUM">192.168.43.214</field>
-   </shadow>
-  </value>
-  <value name="IP2">
-   <shadow type="math_number">
-    <field name="NUM">192.168.43.197</field>
-   </shadow>
-  </value>
-  <value name="IP">
-   <shadow type="math_number">
-    <field name="NUM">192.168.43.255</field>
-   </shadow>
-  </value>
-  <value name="duankou">
-   <shadow type="math_number">
-    <field name="NUM">8080</field>
-   </shadow>
-  </value>
+  </shadow>
+</value>
+<value name="PSK">
+ <shadow type="text">
+  <field name="TEXT">WIFI-PSK</field>
+</shadow>
+</value>
+<value name="IP1">
+ <shadow type="math_number">
+  <field name="NUM">192.168.43.214</field>
+</shadow>
+</value>
+<value name="IP2">
+ <shadow type="math_number">
+  <field name="NUM">192.168.43.197</field>
+</shadow>
+</value>
+<value name="IP">
+ <shadow type="math_number">
+  <field name="NUM">192.168.43.255</field>
+</shadow>
+</value>
+<value name="duankou">
+ <shadow type="math_number">
+  <field name="NUM">8080</field>
+</shadow>
+</value>
 </block>
 <block type="WIFI_ap_and_sta">
   <value name="SSID1">
    <shadow type="text">
     <field name="TEXT">WIFI-STA-SSID</field>
-   </shadow>
-  </value>
-  <value name="PSK1">
-   <shadow type="text">
-    <field name="TEXT">WIFI-STA-PSK</field>
-   </shadow>
-  </value>
-  <value name="SSID2">
-   <shadow type="text">
-    <field name="TEXT">WIFI-AP-SSID</field>
-   </shadow>
-  </value>
-  <value name="PSK2">
-   <shadow type="text">
-    <field name="TEXT">WIFI-AP-PSK</field>
-   </shadow>
-  </value>
-  <value name="IP1">
-   <shadow type="math_number">
-    <field name="NUM">192.168.4.2</field>
-   </shadow>
-  </value>
-  <value name="IP2">
-   <shadow type="math_number">
-    <field name="NUM">192.168.4.3</field>
-   </shadow>
-  </value>
-  <value name="IP">
-   <shadow type="math_number">
-    <field name="NUM">192.168.4.255</field>
-   </shadow>
-  </value>
-  <value name="duankou">
-   <shadow type="math_number">
-    <field name="NUM">8080</field>
-   </shadow>
-  </value>
+  </shadow>
+</value>
+<value name="PSK1">
+ <shadow type="text">
+  <field name="TEXT">WIFI-STA-PSK</field>
+</shadow>
+</value>
+<value name="SSID2">
+ <shadow type="text">
+  <field name="TEXT">WIFI-AP-SSID</field>
+</shadow>
+</value>
+<value name="PSK2">
+ <shadow type="text">
+  <field name="TEXT">WIFI-AP-PSK</field>
+</shadow>
+</value>
+<value name="IP1">
+ <shadow type="math_number">
+  <field name="NUM">192.168.4.2</field>
+</shadow>
+</value>
+<value name="IP2">
+ <shadow type="math_number">
+  <field name="NUM">192.168.4.3</field>
+</shadow>
+</value>
+<value name="IP">
+ <shadow type="math_number">
+  <field name="NUM">192.168.4.255</field>
+</shadow>
+</value>
+<value name="duankou">
+ <shadow type="math_number">
+  <field name="NUM">8080</field>
+</shadow>
+</value>
 </block>
 <block type="WIFI_incomingPacket">
   <value name="input_data">
@@ -2539,7 +2700,7 @@
   <block type="blynk_server">
     <value name="server_add">
       <shadow type="text">
-        <field name="TEXT">116.62.49.166</field>
+        <field name="TEXT">blynk-cloud.com</field>
       </shadow>
     </value>
     <value name="auth_key">
@@ -2562,7 +2723,7 @@
     <block type="blynk_smartconfig">
       <value name="server_add">
         <shadow type="text">
-          <field name="TEXT">116.62.49.166</field>
+          <field name="TEXT">blynk-cloud.com</field>
         </shadow>
       </value>
       <value name="auth_key">
@@ -3192,7 +3353,7 @@
 </value>
 <value name="server">
  <shadow type="text">
-  <field name="TEXT">116.62.49.166</field>
+  <field name="TEXT">blynk-cloud.com</field>
 </shadow>
 </value>
 <value name="auth">
