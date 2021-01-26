@@ -82,14 +82,14 @@ var code = "bytearray(b'"+ colour_0 + colour_1 + colour_2 + colour_3 + colour_4 
 Blockly.Python['display_image_builtins'] = function(block) {
   Blockly.Python.definitions_['import_mixgoce'] = 'import mixgoce';
   var dropdown_image = block.getFieldValue('image');
-  var code = 'mixgoce.Image.' + dropdown_image;
+  var code = 'mixgoce.IMAGE_' + dropdown_image;
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['display_animate'] = function(block) {
   Blockly.Python.definitions_['import_mixgoce'] = 'import mixgoce';
   var dropdown_image = block.getFieldValue('ANIMATION');
-  var code = 'mixgoce.Image.' + dropdown_image;
+  var code = 'mixgoce.IMAGE_' + dropdown_image;
   return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
