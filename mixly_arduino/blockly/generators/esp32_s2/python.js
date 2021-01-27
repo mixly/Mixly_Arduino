@@ -144,8 +144,7 @@ Blockly.Python.scrub_ = function(block, code, opt_thisOnly) {
     // Collect comment for this block.
     var comment = block.getCommentText();
     if (comment) {
-      comment = Blockly.utils.string.wrap(comment,
-          Blockly.Python.COMMENT_WRAP - 3);
+      comment = Blockly.utils.wrap(comment, Blockly.Python.COMMENT_WRAP - 3);
       commentCode += Blockly.Python.prefixLines(comment + '\n', '# ');
     }
     // Collect comments for all value arguments.
