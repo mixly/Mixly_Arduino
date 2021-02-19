@@ -9,7 +9,7 @@ Blockly.Blocks.factory_from_import = {
     this.setColour(Blockly.Blocks.factory.HUE);
     this.appendDummyInput("")
     .appendField("from ")
-    .appendField(new Blockly.FieldTextInput('ESP32'), 'path')
+    .appendField(new Blockly.FieldTextInput('module'), 'path')
     .appendField(" import ")
     .appendField(new Blockly.FieldTextInput('*'), 'module');
     this.setPreviousStatement(true);
@@ -33,7 +33,7 @@ Blockly.Blocks.factory_function_noreturn = {
     //console.log('init');
     this.setColour(Blockly.Blocks.factory.HUE);
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldTextInput('my_function'), 'NAME');
+    .appendField(new Blockly.FieldTextInput('callMethod'), 'NAME');
     this.itemCount_ = 1;
   this.arguments_ = ['x'];//add
   this.updateShape_();
@@ -164,7 +164,7 @@ Blockly.Blocks.factory_function_return = {
   init: function() {
     this.setColour(Blockly.Blocks.factory.HUE);
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldTextInput('my_function'), 'NAME');
+    .appendField(new Blockly.FieldTextInput('callMethod'), 'NAME');
     this.itemCount_ = 1;
   this.arguments_ = ['x'];//add
   this.updateShape_();
@@ -240,7 +240,7 @@ Blockly.Blocks.factory_block = {
   init: function() {
     this.setColour(Blockly.Blocks.factory.HUE);
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldTextInput('display.scroll("Hello World!")'), 'VALUE');
+    .appendField(new Blockly.FieldTextInput('test.callMethod("Hello Mixly!")'), 'VALUE');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -250,7 +250,7 @@ Blockly.Blocks.factory_block_return = {
   init: function() {
     this.setColour(Blockly.Blocks.factory.HUE);
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldTextInput('test'), 'VALUE');
+    .appendField(new Blockly.FieldTextInput('mixly'), 'VALUE');
     this.setOutput(true);
   }
 };
@@ -259,7 +259,7 @@ Blockly.Blocks.factory_block_with_textarea = {
   init: function() {
     this.setColour(Blockly.Blocks.factory.HUE);
     this.appendDummyInput("")
-    .appendField(new Blockly.FieldTextArea('display.scroll("Hello World!")\ndisplay.scroll("Hello Mixly!")'), 'VALUE');
+    .appendField(new Blockly.FieldTextArea('print("Hello Mixly!")\ntest.callMethod("Hello Mixly!")'), 'VALUE');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }

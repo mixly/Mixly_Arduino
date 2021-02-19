@@ -9,9 +9,11 @@ Blockly.Blocks.iot.HUE = 225
 Blockly.Blocks['IOT_EMQX_INIT'] = {
    init: function() {
     this.setColour(Blockly.Blocks.iot.HUE);
-    this.appendValueInput('VAR')
-	    .setCheck("var")
-	    .appendField("EMQX" + Blockly.MIXLY_EMQX_INIT_CLIENT);
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+    this.appendDummyInput()
+        .appendField("MQTT")
+	    .appendField(Blockly.MIXLY_EMQX_INIT_CLIENT);
     this.appendValueInput('SERVER')
 	    .appendField(Blockly.MIXLY_EMQX_SERVER)
 	    .setAlign(Blockly.ALIGN_RIGHT);
@@ -46,9 +48,10 @@ Blockly.Blocks['IOT_EMQX_INIT'] = {
 Blockly.Blocks['IOT_EMQX_PUBLISH'] = {
     init: function () {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField("EMQX")
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")
         this.appendValueInput('TOPIC')
             .appendField(Blockly.MIXLY_EMQX_PUBLISH)
             .appendField(Blockly.MIXLY_EMQX_PUBLISH_TOPIC);
@@ -64,9 +67,10 @@ Blockly.Blocks['IOT_EMQX_PUBLISH'] = {
 Blockly.Blocks['IOT_EMQX_PUBLISH_MORE'] = {
     init: function() {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-             .setCheck("var")
-             .appendField("EMQX")
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")
              .setAlign(Blockly.ALIGN_RIGHT);
         this.appendValueInput('TOPIC')
              .appendField(Blockly.MIXLY_EMQX_PUBLISH)
@@ -92,9 +96,10 @@ Blockly.Blocks['IOT_EMQX_PUBLISH_MORE'] = {
 Blockly.Blocks["IOT_EMQX_SUBSCRIBE"] = {
     init: function () {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField("EMQX")
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")
         this.appendValueInput('TOPIC')
             .appendField(Blockly.MIXLY_EMQX_SUBSCRIBE)
             .appendField(Blockly.MIXLY_EMQX_PUBLISH_TOPIC);
@@ -108,9 +113,10 @@ Blockly.Blocks["IOT_EMQX_SUBSCRIBE"] = {
 Blockly.Blocks["IOT_EMQX_SUBSCRIBE_MORE"] = {
     init: function () {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField("EMQX")
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")
         this.appendValueInput('TOPIC')
             .appendField(Blockly.MIXLY_EMQX_SUBSCRIBE)
             .appendField(Blockly.MIXLY_EMQX_PUBLISH_TOPIC);
@@ -125,9 +131,10 @@ Blockly.Blocks["IOT_EMQX_SUBSCRIBE_MORE"] = {
 Blockly.Blocks["IOT_EMQX_UNSUBSCRIBE"] = {
     init: function () {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField("EMQX")
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")
         this.appendValueInput('TOPIC')
             .appendField(Blockly.MIXLY_EMQX_UNSUBSCRIBE)
             .appendField(Blockly.MIXLY_EMQX_PUBLISH_TOPIC);
@@ -140,9 +147,10 @@ Blockly.Blocks["IOT_EMQX_UNSUBSCRIBE"] = {
 Blockly.Blocks['IOT_EMQX_RECONNECT']={
     init: function() {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField("EMQX")
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_EMQX_RECONNECT);
         this.setInputsInline(true);
@@ -155,9 +163,10 @@ Blockly.Blocks['IOT_EMQX_RECONNECT']={
 Blockly.Blocks["IOT_EMQX_LOOP"] = {
     init: function () {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField("EMQX")
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")
         //this.setOutput(true, Boolean);
         this.appendValueInput('TIMEOUT')
             .appendField(Blockly.MIXLY_EMQX_LOOP)
@@ -173,9 +182,10 @@ Blockly.Blocks["IOT_EMQX_LOOP"] = {
 Blockly.Blocks["IOT_EMQX_IS_CONNECT"] = {
     init: function () {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField("EMQX")
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")
         //DummyInput
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_EMQX_IS_CONNECT);
@@ -187,9 +197,10 @@ Blockly.Blocks["IOT_EMQX_IS_CONNECT"] = {
 Blockly.Blocks["IOT_EMQX_ENABLE_LOGGER"] = {
     init: function () {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField("EMQX")
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_EMQX_NABLE_LOGGER);
         this.appendValueInput('LEVEL')
@@ -204,9 +215,10 @@ Blockly.Blocks["IOT_EMQX_ENABLE_LOGGER"] = {
 Blockly.Blocks["IOT_EMQX_DISABLE_LOGGER"] = {
     init: function () {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField("EMQX")
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_EMQX_DISABLE_LOGGER);
 
@@ -219,9 +231,10 @@ Blockly.Blocks["IOT_EMQX_DISABLE_LOGGER"] = {
 Blockly.Blocks['IOT_EMQX_DEINIT']={
     init: function() {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-        .setCheck("var")
-        .appendField("EMQX")
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")
         this.appendDummyInput()
         .appendField(Blockly.MIXLY_EMQX_DEINIT);
         this.setInputsInline(true);
@@ -234,9 +247,10 @@ Blockly.Blocks['IOT_EMQX_DEINIT']={
 Blockly.Blocks['IOT_EMQX_ADD_TOPIC_CALLBACK'] = {
     init: function() {
      this.setColour(Blockly.Blocks.iot.HUE);
-     this.appendValueInput('VAR')
-         .setCheck("var")
-         .appendField("EMQX")
+     // this.appendValueInput('VAR')
+     //     .setCheck("var")
+     this.appendDummyInput()
+         .appendField("MQTT")
      this.appendValueInput('TOPIC')
          .appendField(Blockly.MIXLY_EMQX_FOR)
          .appendField(Blockly.MIXLY_EMQX_PUBLISH_TOPIC);
@@ -252,9 +266,10 @@ Blockly.Blocks['IOT_EMQX_ADD_TOPIC_CALLBACK'] = {
  Blockly.Blocks['IOT_EMQX_REMOVE_TOPIC_CALLBACK'] = {
     init: function() {
      this.setColour(Blockly.Blocks.iot.HUE);
-     this.appendValueInput('VAR')
-         .setCheck("var")
-         .appendField("EMQX")
+     // this.appendValueInput('VAR')
+     //     .setCheck("var")
+     this.appendDummyInput()
+         .appendField("MQTT")
      this.appendValueInput('TOPIC')
          .appendField(Blockly.MIXLY_EMQX_FOR)
          .appendField(Blockly.MIXLY_EMQX_PUBLISH_TOPIC);
@@ -270,9 +285,10 @@ Blockly.Blocks['IOT_EMQX_ADD_TOPIC_CALLBACK'] = {
  Blockly.Blocks['IOT_EMQX_USERNAME_PW_SET'] = {
     init: function() {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-               .setCheck("var")
-            .appendField("EMQX")
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")
         this.appendValueInput('USERNAME')
         .appendField(Blockly.MIXLY_EMQX_SET_USERNAME);
         this.appendValueInput('PASSWORD')
@@ -286,9 +302,10 @@ Blockly.Blocks['IOT_EMQX_ADD_TOPIC_CALLBACK'] = {
 Blockly.Blocks['IOT_EMQX_CONNECT']={
     init: function() {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField("EMQX")
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_EMQX_CONNECT);
         this.setInputsInline(true);
@@ -301,9 +318,10 @@ Blockly.Blocks['IOT_EMQX_CONNECT']={
 Blockly.Blocks['IOT_EMQX_DISCONNECT']={
     init: function() {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField("EMQX")
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_EMQX_DISCONNECT);
         this.setInputsInline(true);
@@ -316,9 +334,10 @@ Blockly.Blocks['IOT_EMQX_DISCONNECT']={
 Blockly.Blocks['IOT_EMQX_PING']={
     init: function() {
         this.setColour(Blockly.Blocks.iot.HUE);
-        this.appendValueInput('VAR')
-            .setCheck("var")
-            .appendField("EMQX")     
+        // this.appendValueInput('VAR')
+        //     .setCheck("var")
+        this.appendDummyInput()
+            .appendField("MQTT")     
         this.appendDummyInput()
             .appendField(Blockly.MIXLY_EMQX_PING);   
         this.setInputsInline(true);
