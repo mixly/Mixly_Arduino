@@ -142,3 +142,19 @@ Blockly.Arduino.store_eeprom_read_byte = function() {
 	var code ='EEPROM.read('+address+')';
 	return [code,Blockly.Arduino.ORDER_ATOMIC];
 }
+
+Blockly.Arduino.store_eeprom_put = function () {
+    Blockly.Arduino.setups_['setup_EEPROM_begin'] = 'EEPROM.begin(4000);';
+    var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var data = Blockly.Arduino.valueToCode(this, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
+    return 'EEPROM.put(' + address + ', ' + data + ');\nEEPROM.commit();';
+}
+
+Blockly.Arduino.store_eeprom_get = function () {
+    Blockly.Arduino.setups_['setup_EEPROM_begin'] = 'EEPROM.begin(4000);';
+    var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    var data = Blockly.Arduino.valueToCode(this, 'DATA', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
+    return 'EEPROM.get(' + address + ', ' + data + ');\n';
+}

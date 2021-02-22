@@ -187,7 +187,7 @@ Blockly.Arduino.RGB_color_HSV = function () {
   var H = Blockly.Arduino.valueToCode(this, 'H', Blockly.Arduino.ORDER_ATOMIC);
   var S= Blockly.Arduino.valueToCode(this, 'S', Blockly.Arduino.ORDER_ATOMIC);
   var V = Blockly.Arduino.valueToCode(this, 'V', Blockly.Arduino.ORDER_ATOMIC);
-  var code = 'rgb_display_' + dropdown_rgbpin + '.setPixelColor((' + value_led + ')-1, ' + 'rgb_display_' + dropdown_rgbpin + 'ColorHSV(' +H+','+S+','+V+ '));\n';
+  var code = 'rgb_display_' + dropdown_rgbpin + '.setPixelColor((' + value_led + ')-1, ' + 'rgb_display_' + dropdown_rgbpin + '.ColorHSV(' +H+','+S+','+V+ '));\n';
   return code;
 };
 

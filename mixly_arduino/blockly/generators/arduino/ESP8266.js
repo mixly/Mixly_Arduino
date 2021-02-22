@@ -63,13 +63,6 @@ Blockly.Arduino.store_eeprom_write_byte = function () {
     return 'EEPROM.write(' + address + ', ' + data + ');\nEEPROM.commit();\n';
 }
 
-Blockly.Arduino.store_eeprom_read_byte = function () {
-    var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
-    Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
-    Blockly.Arduino.setups_['setup_EEPROM.begin'] = 'EEPROM.begin(512);';
-    var code = 'EEPROM.read(' + address + ')';
-    return [code, Blockly.Arduino.ORDER_ATOMIC];
-}
 
 Blockly.Arduino.controls_attachInterrupt = function () {
     var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
@@ -84,6 +77,14 @@ Blockly.Arduino.controls_attachInterrupt = function () {
     Blockly.Arduino.definitions_[funcName] = code2;
     return code;
 };
+Blockly.Arduino.store_eeprom_read_byte = function () {
+    var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
+    Blockly.Arduino.definitions_['include_EEPROM'] = '#include <EEPROM.h>';
+    Blockly.Arduino.setups_['setup_EEPROM.begin'] = 'EEPROM.begin(512);';
+    var code = 'EEPROM.read(' + address + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+}
+
 Blockly.Arduino.store_eeprom_put = function () {
     Blockly.Arduino.setups_['setup_EEPROM_begin'] = 'EEPROM.begin(4000);';
     var address = Blockly.Arduino.valueToCode(this, 'ADDRESS', Blockly.Arduino.ORDER_ATOMIC) || '0';
