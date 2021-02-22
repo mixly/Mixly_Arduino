@@ -170,9 +170,9 @@ Blockly.Arduino.controls_end_program = function () {
 };
 Blockly.Arduino.controls_soft_reset = function () {
   var funcName = 'resetFunc';
-  var code = 'void(* resetFunc) (void) = 0;'
+  var code = 'void(* resetFunc) (void) = 0;\n';
   Blockly.Arduino.definitions_[funcName] = code;
-  return [' resetFunc();', Blockly.Arduino.ORDER_ATOMIC];
+  return 'resetFunc();\n';
 };
 Blockly.Arduino.controls_interrupts = function () {
     return 'interrupts();\n';
