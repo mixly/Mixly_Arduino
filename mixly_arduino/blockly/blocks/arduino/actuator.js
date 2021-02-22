@@ -409,7 +409,6 @@ Blockly.Blocks.display_rgb_rainbow3 = {
  }
 };
 
-
 Blockly.Blocks.RGB_color_HSV = {
   init: function () {
     this.setColour(Blockly.Blocks.actuator.HUE);

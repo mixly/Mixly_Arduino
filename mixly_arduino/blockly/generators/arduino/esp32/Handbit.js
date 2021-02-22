@@ -173,3 +173,14 @@ Blockly.Arduino.handbit_motor_move = function() {
   var code = 'HandBit_Motor_Speed('+dropdown_type+', '+value_speed+');\n';
   return code;
 };
+Blockly.Arduino.handbit_RGB_color_HSV = function () {
+    Blockly.Arduino.definitions_['include_Adafruit_NeoPixel'] = '#include <Adafruit_NeoPixel.h>';
+  Blockly.Arduino.definitions_['var_declare_rgb_display17'] = 'Adafruit_NeoPixel rgb_display_17= Adafruit_NeoPixel(3,17,NEO_GRB + NEO_KHZ800);';
+  var dropdown_rgbpin = 17;
+  var value_led = Blockly.Arduino.valueToCode(this, '_LED_', Blockly.Arduino.ORDER_ATOMIC);
+  var H = Blockly.Arduino.valueToCode(this, 'H', Blockly.Arduino.ORDER_ATOMIC);
+  var S= Blockly.Arduino.valueToCode(this, 'S', Blockly.Arduino.ORDER_ATOMIC);
+  var V = Blockly.Arduino.valueToCode(this, 'V', Blockly.Arduino.ORDER_ATOMIC);
+  var code = 'rgb_display_' + dropdown_rgbpin + '.setPixelColor(' + value_led + ')-1, ' + 'rgb_display_' + dropdown_rgbpin + '.ColorHSV(' +H+','+S+','+V+ '));\n';
+  return code;
+};

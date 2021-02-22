@@ -241,3 +241,31 @@ Blockly.Blocks.handbit_motor_move= {
   this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks.handbit_RGB_color_HSV = {
+  init: function () {
+    this.setColour(Blockly.Blocks.actuator.HUE);
+    this.appendDummyInput("")
+    .appendField(Blockly.MIXLY_RGB);
+    this.appendValueInput("_LED_")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.MIXLY_RGB_NUM);
+    this.appendValueInput("H")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.HSV_H);
+    this.appendValueInput("S")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.HSV_S);
+    this.appendValueInput("V")
+    .setCheck(Number)
+    .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField(Blockly.HSV_V);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('色调范围0-65536;饱和度范围0-255;明度范围0-255');
+  }
+};
