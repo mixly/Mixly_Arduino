@@ -26,19 +26,19 @@ Blockly.Blocks['IOT_EMQX_INIT'] = {
     this.appendValueInput('PASSWORD')
 	    .appendField(Blockly.MIXLY_EMQX_PASSWORD)
 	    .setAlign(Blockly.ALIGN_RIGHT);
-    this.appendValueInput('CLIENT_ID')
-	    .appendField(Blockly.MIXLY_EMQX_CLIENT_ID)
+    this.appendValueInput('PROJECT')
+	    .appendField(Blockly.MIXLY_EMQX_PROJECT)
 	    .setAlign(Blockly.ALIGN_RIGHT);
-    this.appendValueInput('IS_SSL')
-	    .appendField(Blockly.MIXLY_EMQX_IS_SSL)
-	    .setAlign(Blockly.ALIGN_RIGHT);
+    // this.appendValueInput('IS_SSL')
+	   //  .appendField(Blockly.MIXLY_EMQX_IS_SSL)
+	   //  .setAlign(Blockly.ALIGN_RIGHT);
     this.appendValueInput('SOCKET_POOL')
 	    .appendField(Blockly.MIXLY_EMQX_SOCKET_POOL)
 	    .setAlign(Blockly.ALIGN_RIGHT);
     this.appendValueInput('SSL_CONTEXT')
 	    .appendField(Blockly.MIXLY_EMQX_SSL_CONTEXT)
 	    .setAlign(Blockly.ALIGN_RIGHT);
-    //this.setInputsInline(true);
+    // this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     //this.setTooltip(Blockly.MIXLY_ESP32_IOT_ONENET_CONNECT_TOOLTIP);
@@ -376,5 +376,20 @@ Blockly.Blocks['CREATE_SOCKETPOOL']={
             .appendField(Blockly.MIXLY_CREATE_SOCKETPOOL);
         this.setInputsInline(true);
         this.setOutput(true);
+    }
+};
+
+
+Blockly.Blocks['WIFI_RESET']={
+    init: function() {
+        this.setColour(Blockly.Blocks.network.HUE);
+        this.appendDummyInput()
+            .appendField("Wi-Fi")
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.HTML_RESET);
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        //this.setTooltip();
     }
 };

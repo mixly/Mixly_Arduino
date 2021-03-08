@@ -2933,3 +2933,4 @@ Blockly.MIXLY_EMQX_NABLE_LOGGER ='enable logging';
 Blockly.MIXLY_EMQX_NABLE_LOGGERONE ='level';
 Blockly.MIXLY_EMQX_DISABLE_LOGGER ='disable logging';
 Blockly.MIXLY_EMQX_PING ='server response';
+Blockly.MIXLY_EMQX_PROJECT = 'project';

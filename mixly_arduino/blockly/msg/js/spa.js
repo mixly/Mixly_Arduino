@@ -2909,3 +2909,4 @@ Blockly.MIXLY_EMQX_NABLE_LOGGER  = 'Activar registro';
 Blockly.MIXLY_EMQX_NABLE_LOGGERONE  = 'Nivel';
 Blockly.MIXLY_EMQX_DISABLE_LOGGER  = 'Desactivar registro';
 Blockly.MIXLY_EMQX_PING  = 'Respuesta del servidor';
+Blockly.MIXLY_EMQX_PROJECT = 'El proyecto';

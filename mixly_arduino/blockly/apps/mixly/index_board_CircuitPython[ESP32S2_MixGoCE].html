@@ -2400,6 +2400,7 @@
           </shadow>
         </value> 
       </block>
+      <block type="WIFI_RESET"></block>
       <block type="IOT_EMQX_INIT">
         <value name="VAR">
           <shadow type="variables_get">
@@ -2426,20 +2427,17 @@
             <field name="TEXT">password</field>
           </shadow>
         </value>
-        <value name="CLIENT_ID">
+        <value name="PROJECT">
           <shadow type="text">
-            <field name="TEXT">client_id</field>
+            <field name="TEXT">project</field>
           </shadow>
         </value>
-        <value name="IS_SSL">
-          <shadow type="logic_boolean"></shadow>
-        </value>
         <value name="SOCKET_POOL">
-          <!-- <shadow type="logic_null"></shadow> -->
+           <shadow type="logic_null"></shadow>
           <shadow type="CREATE_SOCKETPOOL"></shadow>
         </value>
         <value name="SSL_CONTEXT">
-          <!-- <shadow type="logic_null"></shadow> -->
+           <shadow type="logic_null"></shadow>
           <shadow type="CREATE_DEFAULT_CONTEXT"></shadow>
         </value>
       </block>
