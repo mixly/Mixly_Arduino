@@ -252,7 +252,7 @@ Blockly.Python['display_image_size'] = function() {
   Blockly.Python.definitions_['import_microbit_*'] = 'from microbit import *';
   var data = Blockly.Python.valueToCode(this, 'VAR', Blockly.Python.ORDER_ATOMIC);
   var size  = this.getFieldValue('OP');
-  var code = ["image."+size+"("+data+")", Blockly.Python.ORDER_ATOMIC];
+  var code = ["Image."+size+"("+data+")", Blockly.Python.ORDER_ATOMIC];
   return code;
 };
 
