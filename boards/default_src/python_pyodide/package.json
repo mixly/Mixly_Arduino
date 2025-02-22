@@ -1,0 +1,47 @@
+{
+    "name": "@mixly/python-pyodide",
+    "version": "1.0.0",
+    "description": "适用于mixly的python pyodide模块",
+    "scripts": {
+        "serve": "webpack-dev-server --config=webpack.dev.js",
+        "build:dev": "webpack --config=webpack.dev.js",
+        "build:prod": "npm run build:examples & webpack --config=webpack.prod.js",
+        "build:examples": "node ../../../scripts/build-examples.js -t special",
+        "build:examples:ob": "node ../../../scripts/build-examples.js -t special --obfuscate",
+        "build:examples:": "node ../../../scripts/build-examples.js -t special",
+        "publish:board": "npm publish --registry https://registry.npmjs.org/"
+    },
+    "devDependencies": {
+        "buffer": "^6.0.3",
+        "crypto-browserify": "^3.12.0",
+        "path-browserify": "^1.0.1",
+        "stream-browserify": "^3.0.0",
+        "vm-browserify": "^1.1.2"
+    },
+    "dependencies": {
+        "@basthon/kernel-loader": "^0.62.21",
+        "@zenfs/core": "^1.4.0",
+        "@zenfs/dom": "^1.0.6",
+        "idb-keyval": "^6.2.1"
+    },
+    "main": "./export.js",
+    "author": "Mixly Team",
+    "keywords": [
+        "mixly",
+        "mixly-plugin",
+        "python-pyodide"
+    ],
+    "homepage": "https://gitee.com/bnu_mixly/mixly3/tree/master/boards/default_src/python_pyodide",
+    "bugs": {
+        "url": "https://gitee.com/bnu_mixly/mixly3/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://gitee.com/bnu_mixly/mixly3.git",
+        "directory": "default_src/python_pyodide"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "license": "Apache 2.0"
+}

@@ -1,0 +1,75 @@
+/*div.layui-form.layui-border-box.layui-table-view {
+    margin:0px !important;
+}
+
+div.layui-form.layui-border-box.layui-table-view {
+    margin: 0px !important;
+    position: relative;
+    height: 100%;
+    border-width: 2px;
+}*/
+
+div.layui-form > div.layui-table-tool {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 10px 15px;
+    height: 50px;
+    left: 0px;
+}
+
+div.layui-form > div.layui-table-box {
+    position: absolute;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    bottom: 0px;
+    width: 100%;
+    left: 0px;
+    top: 1px;
+}
+
+div.layui-form > div.layui-table-tool + div.layui-table-box {
+    top: 50px;
+}
+
+div.layui-form > div.layui-table-box > div.layui-table-header {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    /*height: 38px;*/
+    width: 100%;
+    border-bottom-width: 0px;
+    border-right-width: 17px;
+}
+
+div.layui-form > div.layui-table-tool > div.layui-table-tool-temp {
+    padding-right: 0px !important;
+}
+
+div.layui-form > div.layui-table-box > div.layui-table-header > table {
+    width: 100%;
+}
+
+div.layui-form > div.layui-table-box > div.layui-table-body.layui-table-main {
+    overflow-x: auto;
+    overflow-y: scroll;
+    position: absolute;
+    top: 38px;
+    left: 0px;
+    bottom: 2px;
+    width: 100%;
+}
+
+div.layui-form > div.layui-table-box > div.layui-table-body > table {
+    width: 100% !important;
+}
+
+.layui-table-header {
+    border-right-width: 10px !important;
+}
+
+.layui-table-tips-c:before {
+    position: relative;
+    right: -2px;
+    top: -0.5px;
+}

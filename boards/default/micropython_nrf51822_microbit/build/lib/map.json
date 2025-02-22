@@ -1,0 +1,91 @@
+{
+    "lcd1602": {
+        "__require__": [
+            "microbit"
+        ],
+        "__file__": true,
+        "__size__": 1988,
+        "__name__": "lcd1602.py"
+    },
+    "mixpy": {
+        "__require__": [
+            "math"
+        ],
+        "__file__": true,
+        "__size__": 1949,
+        "__name__": "mixpy.py"
+    },
+    "motor_control": {
+        "__require__": [
+            "microbit"
+        ],
+        "__file__": true,
+        "__size__": 2230,
+        "__name__": "motor_control.py"
+    },
+    "MP3": {
+        "__require__": [
+            "microbit"
+        ],
+        "__file__": true,
+        "__size__": 1984,
+        "__name__": "MP3.py"
+    },
+    "ntc": {
+        "__require__": [
+            "microbit",
+            "math"
+        ],
+        "__file__": true,
+        "__size__": 567,
+        "__name__": "ntc.py"
+    },
+    "oled": {
+        "__require__": [
+            "microbit"
+        ],
+        "__file__": true,
+        "__size__": 3778,
+        "__name__": "oled.py"
+    },
+    "rgb": {
+        "__require__": [
+            "microbit"
+        ],
+        "__file__": true,
+        "__size__": 109,
+        "__name__": "rgb.py"
+    },
+    "RTC": {
+        "__require__": [
+            "microbit"
+        ],
+        "__file__": true,
+        "__size__": 4141,
+        "__name__": "RTC.py"
+    },
+    "Servo": {
+        "__require__": [
+            "microbit"
+        ],
+        "__file__": true,
+        "__size__": 168,
+        "__name__": "Servo.py"
+    },
+    "TCS": {
+        "__require__": [
+            "microbit"
+        ],
+        "__file__": true,
+        "__size__": 7877,
+        "__name__": "TCS.py"
+    },
+    "ultrasonic": {
+        "__require__": [
+            "microbit"
+        ],
+        "__file__": true,
+        "__size__": 1055,
+        "__name__": "ultrasonic.py"
+    }
+}

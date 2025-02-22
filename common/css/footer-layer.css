@@ -1,0 +1,59 @@
+.footer-layer {
+    height:100%;
+    width:100%;
+    overflow:hidden;
+}
+
+.footer-layer > .footer-layer-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - var(--footer-height) - var(--nav-height) - 25px);
+}
+
+.footer-layer > .footer-layer-content > .layui-layer-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 16px;
+    padding: 3px 0px 5px 0px;
+    flex: 0 0;
+}
+
+html[data-bs-theme=light] .footer-layer > .footer-layer-content > .layui-layer-title {
+    border-bottom: 1.5px solid #ddd9d9;
+}
+
+html[data-bs-theme=dark] .footer-layer > .footer-layer-content > .layui-layer-title {
+    border-bottom: 1.5px solid rgba(255,255,255,.5);
+}
+
+.footer-layer > .footer-layer-content .footer-layer-btn {
+    font-size: 16px;
+    line-height: 16px;
+    color: #000;
+    cursor: pointer;
+    margin-right: 3px;
+}
+
+html[data-bs-theme=light] .footer-layer > .footer-layer-content .footer-layer-btn {
+    color: #000;
+}
+
+html[data-bs-theme=light] .footer-layer > .footer-layer-content .footer-layer-btn:hover {
+    color: #666;
+}
+
+html[data-bs-theme=dark] .footer-layer > .footer-layer-content .footer-layer-btn {
+    color: #fff;
+}
+
+html[data-bs-theme=dark] .footer-layer > .footer-layer-content .footer-layer-btn:hover {
+    color: #ccc;
+}
+
+.footer-layer > .footer-layer-content > .footer-layer-body {
+    
+}

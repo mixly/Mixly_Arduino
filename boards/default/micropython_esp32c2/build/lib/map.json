@@ -1,0 +1,82 @@
+{
+    "ble_central": {
+        "__require__": [
+            "time",
+            "gc",
+            "bluetooth",
+            "micropython",
+            "ubinascii",
+            "ble_advertising"
+        ],
+        "__file__": true,
+        "__size__": 7378,
+        "__name__": "ble_central.py"
+    },
+    "mini_bot": {
+        "__require__": [
+            "time",
+            "math",
+            "esp",
+            "micropython",
+            "framebuf"
+        ],
+        "__file__": true,
+        "__size__": 12696,
+        "__name__": "mini_bot.py"
+    },
+    "mini_g2": {
+        "__require__": [
+            "gc",
+            "machine",
+            "rc522"
+        ],
+        "__file__": true,
+        "__size__": 544,
+        "__name__": "mini_g2.py"
+    },
+    "mini_go": {
+        "__require__": [
+            "time",
+            "gc",
+            "math",
+            "tm1931",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 8481,
+        "__name__": "mini_go.py"
+    },
+    "mixgo_mini": {
+        "__require__": [
+            "time",
+            "gc",
+            "esp32",
+            "machine",
+            "ws2812x",
+            "musicx",
+            "sc7a20",
+            "ap3216c",
+            "mini_bot"
+        ],
+        "__file__": true,
+        "__size__": 4611,
+        "__name__": "mixgo_mini.py"
+    },
+    "musicx": {
+        "__require__": [
+            "time"
+        ],
+        "__file__": true,
+        "__size__": 3545,
+        "__name__": "musicx.py"
+    },
+    "ws2812x": {
+        "__require__": [
+            "time",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 1881,
+        "__name__": "ws2812x.py"
+    }
+}

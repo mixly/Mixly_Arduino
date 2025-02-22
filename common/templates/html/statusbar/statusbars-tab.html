@@ -1,0 +1,61 @@
+<style>
+    div[m-id="{{d.mId}}"] {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        height: 24px;
+        z-index: 3;
+        padding: 0px;
+        border-width: 1px 0px;
+        border-style: solid;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] {
+        background-color: #f8f8f8;
+        border-color: #c9c9c9;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] {
+        background-color: #252526;
+        border-color: rgba(128, 128, 128, 0.35);
+    }
+
+    div[m-id="{{d.mId}}"] > .chrome-tabs-content {
+        width: unset;
+    }
+
+    div[m-id="{{d.mId}}"] .x-scrollbar__content {
+        position: relative;
+        height: 100%;
+        display: block;
+        white-space: nowrap;
+    }
+
+    div[m-id="{{d.mId}}"] > .operation > button {
+        padding: 0 3px;
+        margin: 2px;
+        height: 20px;
+        width: 20px;
+        font-weight: bold;
+    }
+
+    div[m-id="{{d.mId}}"] > .statusbar-close {
+        position: absolute;
+        right: 2px;
+    }
+</style>
+<div m-id="{{d.mId}}" class="chrome-tabs">
+    <div class="chrome-tabs-content">
+    </div>
+    <div class="operation statusbar-dropdown-menu">
+        <button type="button" class="layui-btn layui-btn-xs m-btn tab-btn statusbar-btn">
+            <i class="layui-icon layui-icon-addition"></i>
+        </button>
+    </div>
+    <div class="operation statusbar-close">
+        <button type="button" class="layui-btn layui-btn-xs m-btn tab-btn statusbar-btn">
+            <i class="layui-icon layui-icon-close"></i>
+        </button>
+    </div>
+</div>

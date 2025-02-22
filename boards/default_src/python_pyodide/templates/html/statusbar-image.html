@@ -1,0 +1,17 @@
+<style>
+    div[m-id="{{d.mId}}"] {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] {
+        background-color: #ffffff;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] {
+        background-color: #1e1e1e;
+    }
+</style>
+<div m-id="{{d.mId}}" class="page-item"></div>

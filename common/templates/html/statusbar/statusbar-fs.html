@@ -1,0 +1,34 @@
+<style>
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] * {
+        background-color: #ffffff;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] * {
+        background-color: #1e1e1e;
+    }
+
+    div[m-id="{{d.mId}}"] > .content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 20px 0px;
+    }
+
+    div[m-id="{{d.mId}}"] > .mask {
+        position: absolute;
+        inset: 0;
+        background: transparent !important;
+        display: none;
+    }
+</style>
+<div m-id="{{d.mId}}" class="mixly-scrollbar page-item">
+    <div class="content">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <button class="manage-btn btn btn-primary btn-sm self-adaption-btn m-btn" type="button">{{ d.new }}</button>
+        </div>
+    </div>
+    <div class="mask"></div>
+</div>

@@ -1,0 +1,26 @@
+<div id="parse-mix-error-div" style="width:100%;height:100%;">
+    <style type="text/css">   
+        html[data-bs-theme=dark] #parse-mix-error-div > div:nth-child(3) {
+            border-top:1px solid #454343;
+        }
+
+        html[data-bs-theme=light] #parse-mix-error-div > div:nth-child(3) {
+            border-top:1px solid #eee;
+        }
+    </style>
+    <div class="layui-form" lay-filter="parse-mix-error-filter" style="position:absolute;left:0px;width:100%;top:0px;bottom:5px;overflow-y:auto;">
+        <div class="layui-row">
+            <div class="layui-col-md12" style="padding:5px;">
+                <blockquote class="layui-elem-quote layui-quote-nm" style="padding:5px;height:115px;overflow-y:auto;user-select: text;">{{-d.text}}</blockquote>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div style="text-align:center;">
+                <button class="layui-btn layui-btn-normal parse-mix-error-btn" m-id="0">{{d.btn1Name}}</button>
+                <button class="layui-btn layui-btn-normal parse-mix-error-btn" m-id="1">{{d.btn2Name}}</button>
+                <button class="layui-btn layui-btn-normal parse-mix-error-btn" m-id="2">{{d.btn3Name}}</button>
+            </div>
+        </div>
+    </div>
+    <div style="position:absolute;bottom:0px;left:0px;height:5px;width:100%;"></div>
+</div>

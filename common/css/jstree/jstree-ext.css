@@ -1,0 +1,107 @@
+.jstree-node, .jstree-ocl {
+    background-image: unset !important;
+}
+
+.jstree-icon:before {
+    font: normal normal normal 16px/1 codicon;
+    font-style: normal;
+    font-weight: normal;
+    speak: never;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: 0.2em;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    margin-left: 0.2em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: 1px 1px 1px rgb(127 127 127 / 30%);
+    top: 5px;
+    position: relative;
+    font-size: 15px;
+}
+
+.jstree-ocl {
+    width: 15px !important;
+}
+
+.jstree-ocl:before {
+    top: 3px;
+}
+
+.jstree-closed > .jstree-ocl:before {
+    content: "\eab6";
+}
+
+.jstree-open > .jstree-ocl:before {
+    content: "\eab4";
+}
+
+.jstree-container-ul .jstree-node {
+    margin-left: 10px;
+}
+
+.jstree-container-ul > .jstree-node {
+    margin-left: 0px;
+}
+
+.jstree-anchor {
+    font-size: 13px !important;
+    font-family: Segoe WPC,Segoe UI,Microsoft YaHei,sans-serif;
+    opacity: 0.8;
+}
+
+html[data-bs-theme=light] .jstree-anchor {
+    color: rgb(50, 50, 50) !important;
+}
+
+html[data-bs-theme=dark] .jstree-anchor {
+    color: rgb(204, 204, 204) !important;
+}
+
+.jstree-clicked {
+    box-shadow: unset !important;
+}
+
+.jstree-default-dark {
+    background-color: #1e1e1e;
+}
+
+.jstree-default-dark .jstree-clicked {
+    background-color: #37373b;
+}
+
+.jstree-default-dark .jstree-wholerow-clicked {
+    background: #474748;
+}
+
+.jstree-default .jstree-wholerow-clicked {
+    background: #e4e6f1;
+}
+
+.jstree {
+    cursor: pointer;
+}
+
+.jstree .jstree-node > .jstree-anchor > input {
+    width: calc(100% - 30px) !important;
+}
+
+html[data-bs-theme=light] .jstree .jstree-node > .jstree-anchor > input {
+    border-color: var(--app-light-color) !important;
+}
+
+html[data-bs-theme=light] .jstree .jstree-node > .jstree-anchor > input::selection {
+    color: var(--app-light-color);
+}
+
+html[data-bs-theme=dark] .jstree .jstree-node > .jstree-anchor > input {
+    border-color: var(--app-dark-color) !important;
+}
+
+html[data-bs-theme=dark] .jstree .jstree-node > .jstree-anchor > input::selection {
+    color: var(--app-dark-color);
+}

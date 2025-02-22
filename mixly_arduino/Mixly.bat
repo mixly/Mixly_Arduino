@@ -1,1 +1,0 @@
-start .\arduino\java\bin\javaw -jar Mixly.jar

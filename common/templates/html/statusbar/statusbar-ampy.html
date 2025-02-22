@@ -1,0 +1,31 @@
+<style>
+    div[m-id="{{d.mId}}"] {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    div[m-id="{{d.mId}}"] > .file-tree {
+        width: 15%;
+        height: 100%;
+        border-right-width: 1px;
+        border-right-style: solid;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] > .file-tree {
+        border-right-color: #c9c9c9;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] > .file-tree {
+        border-right-color: rgba(128, 128, 128, 0.35);
+    }
+
+    div[m-id="{{d.mId}}"] > .editor {
+        width: 85%;
+        height: 100%;
+    }
+</style>
+<div m-id="{{d.mId}}" class="page-item">
+    <div class="file-tree"></div>
+    <div class="editor"></div>
+</div>

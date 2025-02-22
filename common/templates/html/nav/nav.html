@@ -1,0 +1,333 @@
+<style>
+    ul[m-id="{{d.mId}}"] {
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 100%;
+        padding: 0 10px;
+        height: var(--nav-height);
+        max-height: var(--nav-height);
+        color: var(--lay-color-white) !important;
+    }
+
+    html[data-bs-theme=light] ul[m-id="{{d.mId}}"] {
+        border-bottom: 1px solid #c9c9c9;
+    }
+
+    html[data-bs-theme=dark] ul[m-id="{{d.mId}}"] {
+        border-bottom: 1px solid rgba(128, 128, 128, 0.35);
+    }
+
+    ul[m-id="{{d.mId}}"] button {
+        position: relative;
+        overflow: hidden;
+        padding: 0 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    ul[m-id="{{d.mId}}"] button {
+        border-color: transparent;
+        color: #fff !important;
+    }
+
+    html[data-bs-theme=light] ul[m-id="{{d.mId}}"] button:active {
+        border: 1px solid var(--app-light-color) !important;
+    }
+
+    html[data-bs-theme=dark] ul[m-id="{{d.mId}}"] button:active {
+        border: 1px solid #2f4056 !important;
+    }
+
+    ul[m-id="{{d.mId}}"] button:hover {
+        opacity: 1;
+    }
+
+    html[data-bs-theme=light] ul[m-id="{{d.mId}}"] button:hover {
+        box-shadow: 2px 0px 5px #7b7171;
+        /*box-shadow: none;*/
+        border-color: #19897f;
+    }
+
+    html[data-bs-theme=dark] ul[m-id="{{d.mId}}"] button:hover {
+        box-shadow: 2px 0px 5px #303030;
+        /*box-shadow: none;*/
+        border-color: #434242;
+    }
+
+    ul[m-id="{{d.mId}}"] button:hover a {
+        color: #fff;
+    }
+
+    ul[m-id="{{d.mId}}"] button > a {
+        color: rgba(255,255,255,.7);
+        -webkit-transition: all .3s;
+    }
+
+    html[data-bs-theme=light] ul[m-id="{{d.mId}}"] button > a:hover {
+        color: #fff;
+    }
+
+    ul[m-id="{{d.mId}}"] .layui-nav-child {
+        max-height: calc(100vh - var(--nav-height) - 12px);
+        line-height: 30px;
+        overflow-y: auto;
+    }
+
+    html[data-bs-theme=light] ul[m-id="{{d.mId}}"] {
+        background-color: var(--app-light-color) !important;
+    }
+
+    html[data-bs-theme=dark] ul[m-id="{{d.mId}}"] {
+        background-color: #3c3c3c !important;
+    }
+
+    ul[m-id="{{d.mId}}"] .layui-nav-item {
+        line-height: var(--nav-height);
+        cursor: pointer;
+    }
+
+    ul[m-id="{{d.mId}}"] .layui-nav-child {
+        top: calc(var(--nav-height) + 1px);
+    }
+
+    ul[m-id="{{d.mId}}"] dl {
+        z-index: 1001;
+    }
+
+    .layui-nav .layui-nav-item a {
+        padding: 0 17px !important;
+    }
+
+    ul[m-id="{{d.mId}}"] > div {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    ul[m-id="{{d.mId}}"] .left-btn-container {
+        display: inline-flex;
+    }
+
+    ul[m-id="{{d.mId}}"] .left-btn-container button {
+        height: var(--nav-left-btn-height);
+        font-size: calc(var(--nav-left-btn-font-size) + 4px);
+        margin: 2px;
+    }
+
+    ul[m-id="{{d.mId}}"] .right-area,
+    ul[m-id="{{d.mId}}"] .right-menu-container {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    ul[m-id="{{d.mId}}"] .right-btn-container,
+    ul[m-id="{{d.mId}}"] .dropdown-container {
+        display: flex;
+    }
+
+    ul[m-id="{{d.mId}}"] .dropdown-container > * {
+        margin-left: 5px;
+    }
+
+    ul[m-id="{{d.mId}}"] .right-btn-container button {
+        padding: 0;
+        margin: 2px;
+    }
+
+    ul[m-id="{{d.mId}}"] .right-btn-container button > a {
+        font-size: 18px;
+        padding: 2px;
+    }
+
+    ul[m-id="{{d.mId}}"] .layui-nav-item dd {
+        margin: 0;
+        font-family: Segoe WPC,Segoe UI,Microsoft YaHei,sans-serif;
+    }
+
+    ul[m-id="{{d.mId}}"] .layui-nav-item dd > a {
+        font-size: 14px;
+        line-height: 14px;
+        border-radius: 5px;
+        box-sizing: content-box;
+        padding: 5px 10px !important;
+        margin: 0px 5px;
+        border-radius: 5px;
+        min-width: 60px;
+        font-family: Segoe WPC,Segoe UI,Microsoft YaHei,sans-serif;
+    }
+
+    ul[m-id="{{d.mId}}"] .layui-nav-item dd > a {
+        transition: none;
+        -webkit-transition: none;
+    }
+
+    ul[m-id="{{d.mId}}"] .layui-nav-item dd > a:hover {
+        transition: none;
+        -webkit-transition: none;
+        color: #fff;
+    }
+
+    html[data-bs-theme=light] ul[m-id="{{d.mId}}"] .layui-nav-item dd > a:hover {
+        background-color: var(--app-light-color);
+    }
+
+    html[data-bs-theme=dark] ul[m-id="{{d.mId}}"] .layui-nav-item dd > a:hover {
+        background-color: #2980b9;
+    }
+
+    html[data-bs-theme=light] ul[m-id="{{d.mId}}"] hr {
+        border-bottom: 1px solid #000 !important;
+        margin: 4px 0;
+    }
+
+    html[data-bs-theme=dark] ul[m-id="{{d.mId}}"] hr {
+        border-bottom: 1px solid #fff !important;
+        margin: 4px 0;
+    }
+
+
+    ul[m-id="{{d.mId}}"] > .editor-btn-container {
+        line-height: 22px;
+        font-size: 16px;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.05);
+        margin: 4px;
+        padding: 0 2px;
+        border: 1px solid rgba(204, 204, 204, 0.2);
+    }
+
+    ul[m-id="{{d.mId}}"] > .editor-btn-container > .copyright {
+        font-family: "YaHei Consolas Hybrid", "Microsoft Yahei Light", "Arial";
+        font-size: 12px;
+        color: #fff !important;
+        text-align: center;
+        display: -webkit-box;
+        flex-direction: row;
+        align-items: center;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    ul[m-id="{{d.mId}}"] > .editor-btn-container.empty {
+        border: none;
+        background-color: transparent;
+        line-height: unset;
+        font-size: unset;
+        margin: unset;
+        padding: unset;
+    }
+
+    ul[m-id="{{d.mId}}"] > .editor-btn-container .group {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    ul[m-id="{{d.mId}}"] > .editor-btn-container .group > .line {
+        height: 12px;
+        width: 1px;
+        background-color: #fff;
+    }
+
+    ul[m-id="{{d.mId}}"] > .editor-btn-container .group > button {
+        border-radius: 4px;
+        padding: 0 2px;
+        margin: 0 4px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 12px;
+    }
+
+    ul[m-id="{{d.mId}}"] > .editor-btn-container .group > .self-adaption-btn {
+        color: #fff;
+    }
+
+    html[data-bs-theme=light] ul[m-id="{{d.mId}}"] > .editor-btn-container .group > .self-adaption-btn {
+        background-color: #118d81 !important;
+        border-color: #22857b;
+        box-shadow: 2px 0px 5px #7b7171;
+    }
+
+    html[data-bs-theme=dark] ul[m-id="{{d.mId}}"] > .editor-btn-container .group > .self-adaption-btn {
+        box-shadow: 2px 0px 5px #303030;
+    }
+
+    .select2-dropdown.mixly-{{d.mId}} li {
+        white-space: nowrap !important;
+    }
+
+    ul[m-id="{{d.mId}}"] select + .select2 > .selection > .select2-selection {
+        border-radius: 3px !important;
+        outline: 0;
+        -webkit-appearance: none;
+        transition: all .3s;
+        -webkit-transition: all .3s;
+    }
+
+    html[data-bs-theme=light] ul[m-id="{{d.mId}}"] select + .select2 > .selection > .select2-selection {
+        background-color: #009f90;
+        border-color: #009f90;
+    }
+
+    html[data-bs-theme=dark] ul[m-id="{{d.mId}}"] select + .select2 > .selection > .select2-selection {
+        background-color: var(--lay-color-fill-2);
+        border-color: var(--lay-color-border-1);
+    }
+
+    html[data-bs-theme=light] ul[m-id="{{d.mId}}"] select + .select2 > .selection > .select2-selection:hover {
+        border-color: #037a6f;
+    }
+
+    html[data-bs-theme=dark] ul[m-id="{{d.mId}}"] select + .select2 > .selection > .select2-selection:hover {
+        border-color: #1f1f1f;
+    }
+
+    ul[m-id="{{d.mId}}"] select + .select2 > .selection > .select2-selection > .select2-selection__rendered {
+        color: #fff;
+    }
+
+    ul[m-id="{{d.mId}}"] select + .select2 > .selection > .select2-selection > .select2-selection__arrow b {
+        border-color: #fff transparent transparent transparent;
+    }
+
+    ul[m-id="{{d.mId}}"] select + .select2-container--open > .selection > .select2-selection > .select2-selection__arrow b {
+        border-color: transparent transparent #fff transparent;
+    }
+</style>
+<ul class="layui-nav" lay-filter="nav-filter" m-id="{{d.mId}}" lay-bar="disabled">
+    <div>
+        <!--自适应时显示的按钮-->
+        <div class="left-btn-container">
+            <!--返回主页面按钮-->
+            <button
+                type="button"
+                m-id="home-btn"
+                class="layui-btn layui-btn-xs layui-btn-primary mixly-nav"
+            >Mixly</button>
+        </div>
+        <!--自适应时的更多按钮-->
+        <li class="layui-nav-item mixly-scrollbar" style="display:none;" lay-unselect>
+            <a style="white-space: nowrap;">{{ d.more }}</a>
+            <dl class="layui-nav-child left-btn-ext-container">
+                <!-- 二级菜单 -->
+            </dl>
+        </li>
+    </div>
+    <div class="editor-btn-container">
+        <a class="copyright">Copyright © Mixly Team@BNU, CHINA</a>
+    </div>
+    <div class="right-area">
+        <div class="right-btn-container"></div>
+        <div class="dropdown-container"></div>
+        <div class="right-menu-container"></div>
+    </div>
+</ul>

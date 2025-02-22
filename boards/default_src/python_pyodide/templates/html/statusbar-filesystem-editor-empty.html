@@ -1,0 +1,26 @@
+<style>
+    div[m-id="{{d.mId}}"] {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    div[m-id="{{d.mId}}"] > div {
+        width: 150px;
+        height: 150px;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] > div {
+        background: url('../common/css/svg/empty/empty-light.svg');
+        background-size: 100% auto;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] > div {
+        background: url('../common/css/svg/empty/empty-dark.svg');
+        background-size: 100% auto;
+    }
+</style>
+<div m-id="{{d.mId}}" class="page-item">
+    <div></div>
+</div>

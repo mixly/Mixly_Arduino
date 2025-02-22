@@ -1,0 +1,143 @@
+[
+    {
+        "path": "/common/board-manager.js",
+        "require": [
+            "path",
+            "layui",
+            "Mixly.Env",
+            "Mixly.Msg",
+            "Mixly.XML",
+            "Mixly.LayerExt",
+            "Mixly.Config",
+            "Mixly.MArray",
+            "Mixly.Url",
+            "Mixly.Storage",
+            "Mixly.Electron.CloudDownload",
+            "Mixly.Electron.PythonShell"
+        ],
+        "provide": [
+            "Mixly.BoardManager"
+        ]
+    },
+    {
+        "path": "/common/config.js",
+        "require": [
+            "Mixly.Url",
+            "Mixly.LocalStorage"
+        ],
+        "provide": [
+            "Mixly.Config"
+        ]
+    },
+    {
+        "path": "/common/env.js",
+        "require": [
+            "path",
+            "Mixly",
+            "Mixly.Config"
+        ],
+        "provide": [
+            "Mixly.Env"
+        ]
+    },
+    {
+        "path": "/common/events.js",
+        "require": [
+            "Mixly.BoardManager",
+            "Mixly.Env",
+            "Mixly.Config",
+            "Mixly.Url"
+        ],
+        "provide": [
+            "Mixly.Events"
+        ]
+    },
+    {
+        "path": "/common/loader.js",
+        "require": [
+            "layui",
+            "Mixly.Url",
+            "Mixly.Env",
+            "Mixly.Config",
+            "Mixly.BoardManager",
+            "Mixly.XML",
+            "Mixly.Msg",
+            "Mixly.Setting",
+            "Mixly.Events",
+            "Mixly.Electron.PythonShell",
+            "Mixly.WebSocket.Socket"
+        ],
+        "provide": [
+            "Mixly.Loader"
+        ]
+    },
+    {
+        "path": "/common/msg.js",
+        "require": [
+            "Mixly.MJSON",
+            "Mixly.Config"
+        ],
+        "provide": [
+            "Mixly.Msg"
+        ]
+    },
+    {
+        "path": "/common/setting.js",
+        "require": [
+            "ace",
+            "ace.ExtLanguageTools",
+            "layui",
+            "layui.loading",
+            "store",
+            "$.select2",
+            "Mixly.XML",
+            "Mixly.LayerExt",
+            "Mixly.Msg",
+            "Mixly.BoardManager",
+            "Mixly.Config",
+            "Mixly.Env",
+            "Mixly.MJSON",
+            "Mixly.Storage",
+            "Mixly.WebSocket.Socket"
+        ],
+        "provide": [
+            "Mixly.Setting"
+        ]
+    },
+    {
+        "path": "/common/xml.js",
+        "require": [
+            "layui",
+            "Mixly.Env",
+            "Mixly.Config",
+            "Mixly.Msg"
+        ],
+        "provide": [
+            "Mixly.XML"
+        ]
+    },
+    {
+        "path": "/electron/python-shell.js",
+        "require": [
+            "Mixly.Env",
+            "Mixly.Electron"
+        ],
+        "provide": [
+            "Mixly.Electron.PythonShell"
+        ]
+    },
+    {
+        "path": "/web-socket/socket.js",
+        "require": [
+            "Mixly.Env",
+            "Mixly.Config",
+            "Mixly.MJSON",
+            "Mixly.WebSocket",
+            "Mixly.LayerExt",
+            "Mixly.Command"
+        ],
+        "provide": [
+            "Mixly.WebSocket.Socket"
+        ]
+    }
+]

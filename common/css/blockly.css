@@ -1,0 +1,235 @@
+.blocklyTreeRoot {
+    min-width: 155px;
+}
+
+.blocklyTreeIconOpen {
+    margin: 8px;
+}
+
+.blocklyTreeIconClosedLtr {
+    margin: 8px;
+}
+
+.blocklySvg {
+    border-top: none !important;
+}
+
+.blocklyToolboxDiv {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0 2px 0 0;
+}
+
+.classic-theme .blocklyToolboxDiv {
+    border-right: 1px solid #c9c9c9;
+}
+
+.dark-theme .blocklyToolboxDiv {
+    border-right: 1px solid rgba(128, 128, 128, 0.35);
+}
+
+.blocklyTreeLabel {
+    font-size: 17px;
+}
+
+.blocklyScrollbarHandle {
+    rx: 2;
+    ry: 2;
+}
+
+.classic-theme .blocklyScrollbarHandle {
+    fill: #C3C1C1;
+}
+
+.classic-theme .blocklyScrollbarBackground:hover+.blocklyScrollbarHandle,
+.classic-theme .blocklyScrollbarHandle:hover {
+    fill: #AEB2AF;
+}
+
+.classic-theme .blocklyScrollbarBackground:active+.blocklyScrollbarHandle,
+.classic-theme .blocklyScrollbarHandle:active {
+    fill: #989998 !important;
+}
+
+.dark-theme .blocklyScrollbarHandle {
+    fill: #989998;
+}
+
+.dark-theme .blocklyScrollbarBackground:hover+.blocklyScrollbarHandle,
+.dark-theme .blocklyScrollbarHandle:hover {
+    fill: #AEB2AF;
+}
+
+.dark-theme .blocklyScrollbarBackground:active+.blocklyScrollbarHandle,
+.dark-theme .blocklyScrollbarHandle:active {
+    fill: #C3C1C1 !important;
+}
+
+.injectionDiv.classic-theme .blocklyTreeRow .blocklyTreeLabel,
+.injectionDiv.dark-theme .blocklyTreeRow.blocklyTreeSelected .blocklyTreeLabel {
+    color: #000 !important;
+}
+
+.injectionDiv.dark-theme .blocklyTreeRow .blocklyTreeLabel,
+.injectionDiv.classic-theme .blocklyTreeRow.blocklyTreeSelected .blocklyTreeLabel {
+    color: #fff !important;
+}
+
+#catSearch.blocklyTreeRow .blocklyTreeIcon {
+    background: url('../../common/media/mark/search.png') no-repeat;
+    background-size: 100% auto;
+}
+
+#catSearch.blocklyTreeRow.blocklyTreeSelected .blocklyTreeIcon {
+    background: url('../../common/media/mark/search2.png') no-repeat;
+    background-size: 100% auto;
+}
+
+.blocklyTreeRow > .blocklyTreeRowContentContainer {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    height: 36px;
+}
+
+.blocklyTreeRow .blocklyTreeIcon { 
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: 8px;
+    background: url('../../common/media/mark/default.png') no-repeat;
+    background-size: 100% auto; 
+}
+
+.blocklyTreeRow.blocklyTreeSelected .blocklyTreeIcon { 
+    background: url('../../common/media/mark/default2.png') no-repeat;
+    background-size: 100% auto; 
+}
+
+.blocklyTreeRow .blocklyTreeIcon.blocklyTreeIconOpen,
+.blocklyTreeRow .blocklyTreeIcon.blocklyTreeIconClosed {
+    height: 16px;
+    vertical-align: middle;
+    width: 16px;
+    margin: 10px;
+    background-size: auto !important;
+}
+
+.classic-theme .blocklyTreeRow.blocklyTreeSelected .blocklyTreeIcon.blocklyTreeIconOpen,
+.dark-theme .blocklyTreeRow .blocklyTreeIcon.blocklyTreeIconOpen {
+    background-image: url('../../common/media/sprites.png') !important;
+    background-position: -16px -17px !important;
+}
+
+.classic-theme .blocklyTreeRow.blocklyTreeSelected .blocklyTreeIcon.blocklyTreeIconClosed,
+.dark-theme .blocklyTreeRow .blocklyTreeIcon.blocklyTreeIconClosed {
+    background-image: url('../../common/media/sprites.png') !important;
+    background-position: -32px -17px !important;
+}
+
+.classic-theme .blocklyTreeRow .blocklyTreeIcon.blocklyTreeIconOpen,
+.dark-theme .blocklyTreeRow.blocklyTreeSelected .blocklyTreeIcon.blocklyTreeIconOpen {
+    background-image: url('../../common/media/sprites.png') !important;
+    background-position: -16px -1px !important;
+}
+
+.classic-theme .blocklyTreeRow .blocklyTreeIcon.blocklyTreeIconClosed,
+.dark-theme .blocklyTreeRow.blocklyTreeSelected .blocklyTreeIcon.blocklyTreeIconClosed {
+    background-image: url('../../common/media/sprites.png') !important;
+    background-position: -32px -1px !important;
+}
+
+.blocklyDropDownDiv.classic-theme,
+.blocklyWidgetDiv.classic-theme .blocklyMenu {
+    background: #fff;
+    border: 1px solid #bebebe;
+    box-sizing: unset;
+}
+
+.classic-theme.geras-renderer .blocklyMenu > .blocklyMenuItem {
+    background-color: #fff;
+    color: #000;
+}
+
+.classic-theme.zelos-renderer .blocklyMenu > .blocklyMenuItem {
+    background-color: unset;
+    color: #000;
+}
+
+.blocklyDropDownDiv.classic-theme.zelos-renderer .blocklyMenu > .blocklyMenuItem.blocklyMenuItemHighlight {
+    background-color: rgb(0 0 0 / 20%);
+}
+
+.classic-theme .blocklyMenu > .blocklyMenuItem.blocklyMenuItemHighlight {
+    background-color: var(--app-light-color);
+    color: #fff;
+}
+
+.classic-theme .blocklyMenu > .blocklyMenuItem.blocklyMenuItemDisabled {
+    color: #ccc;
+}
+
+.classic-theme .blocklyMenu > .blocklyMenuItem.blocklyMenuItemSelected {
+    background-color: rgb(0 150 136 / 60%);
+    color: #fff;
+}
+
+.blocklyDropDownDiv.classic-theme.zelos-renderer .blocklyMenu > .blocklyMenuItem.blocklyMenuItemSelected {
+    background-color: rgb(0 0 0 / 30%);
+}
+
+.dark-theme.blocklyDropDownDiv,
+.dark-theme.blocklyWidgetDiv .blocklyMenu {
+    background: #252525;
+    border: 1px solid #454545;
+    box-sizing: unset;
+}
+
+.dark-theme.geras-renderer .blocklyMenu > .blocklyMenuItem {
+    background-color: #252525;
+    color: #eee;
+    font-family: Segoe WPC,Segoe UI,Microsoft YaHei,sans-serif;
+}
+
+.dark-theme.zelos-renderer .blocklyMenu > .blocklyMenuItem {
+    background-color: unset;
+    color: #eee;
+}
+
+.dark-theme .blocklyMenu > .blocklyMenuItem.blocklyMenuItemHighlight {
+    background-color: #2980b9;
+}
+
+.blocklyDropDownDiv.dark-theme.zelos-renderer .blocklyMenu > .blocklyMenuItem.blocklyMenuItemHighlight {
+    background-color: rgb(255 255 255 / 20%);
+}
+
+.dark-theme .blocklyMenu > .blocklyMenuItem.blocklyMenuItemDisabled {
+    color: #919191;
+}
+
+.dark-theme .blocklyMenu > .blocklyMenuItem.blocklyMenuItemSelected {
+    background-color: rgb(41 128 185 / 60%);
+}
+
+.blocklyDropDownDiv.dark-theme.zelos-renderer .blocklyMenu > .blocklyMenuItem.blocklyMenuItemSelected {
+    background-color: rgb(255 255 255 / 30%);
+}
+
+.blocklyMenu > .blocklyMenuItem {
+    font-family: Lato, system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    margin: 0px 5px;
+    border-radius: 5px;
+    box-sizing: content-box;
+    padding: 0.2em 1em;
+    font-size: 13px;
+    min-width: 9em;
+}
+
+.blocklyMenu > .blocklyMenuItem.blocklyMenuItemSelected .blocklyMenuItemCheckbox {
+    display: none;
+}
+
+.geras-renderer.dark-theme .blocklyText {
+    color: #000;
+}

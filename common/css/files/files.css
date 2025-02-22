@@ -1,0 +1,2965 @@
+[class*='fileicon-']:before {
+    content: '';
+    display: block;
+    width: 19px;
+    height: 19px;
+    background-size: 100% 100% !important;
+    top: 3px;
+}
+
+.fileicon-default:before {
+    background: url(./icons/default_file.svg) no-repeat;
+    width: 17px;
+    height: 17px;
+    top: 4px;
+}
+
+.fileicon-access:before {
+    background: url(./icons/file_type_access.svg) no-repeat;
+}
+
+.fileicon-access2:before {
+    background: url(./icons/file_type_access2.svg) no-repeat;
+}
+
+.fileicon-actionscript:before {
+    background: url(./icons/file_type_actionscript.svg) no-repeat;
+}
+
+.fileicon-actionscript2:before {
+    background: url(./icons/file_type_actionscript2.svg) no-repeat;
+}
+
+.fileicon-ada:before {
+    background: url(./icons/file_type_ada.svg) no-repeat;
+}
+
+.fileicon-advpl:before {
+    background: url(./icons/file_type_advpl.svg) no-repeat;
+}
+
+.fileicon-affectscript:before {
+    background: url(./icons/file_type_affectscript.svg) no-repeat;
+}
+
+.fileicon-affinitydesigner:before {
+    background: url(./icons/file_type_affinitydesigner.svg) no-repeat;
+}
+
+.fileicon-affinityphoto:before {
+    background: url(./icons/file_type_affinityphoto.svg) no-repeat;
+}
+
+.fileicon-affinitypublisher:before {
+    background: url(./icons/file_type_affinitypublisher.svg) no-repeat;
+}
+
+.fileicon-ai:before {
+    background: url(./icons/file_type_ai.svg) no-repeat;
+}
+
+.fileicon-ai2:before {
+    background: url(./icons/file_type_ai2.svg) no-repeat;
+}
+
+.fileicon-al:before {
+    background: url(./icons/file_type_al.svg) no-repeat;
+}
+
+.fileicon-allcontributors:before {
+    background: url(./icons/file_type_allcontributors.svg) no-repeat;
+}
+
+.fileicon-al:before {
+    background: url(./icons/file_type_al.svg) no-repeat;
+}
+
+.fileicon-angular:before {
+    background: url(./icons/file_type_angular.svg) no-repeat;
+}
+
+.fileicon-ansible:before {
+    background: url(./icons/file_type_ansible.svg) no-repeat;
+}
+
+.fileicon-antlr:before {
+    background: url(./icons/file_type_antlr.svg) no-repeat;
+}
+
+.fileicon-anyscript:before {
+    background: url(./icons/file_type_anyscript.svg) no-repeat;
+}
+
+.fileicon-apache:before {
+    background: url(./icons/file_type_apache.svg) no-repeat;
+}
+
+.fileicon-apex:before {
+    background: url(./icons/file_type_apex.svg) no-repeat;
+}
+
+.fileicon-apib:before {
+    background: url(./icons/file_type_apib.svg) no-repeat;
+}
+
+.fileicon-apib2:before {
+    background: url(./icons/file_type_apib2.svg) no-repeat;
+}
+
+.fileicon-api:before {
+    background: url(./icons/file_type_api.svg) no-repeat;
+}
+
+.fileicon-apl:before {
+    background: url(./icons/file_type_apl.svg) no-repeat;
+}
+
+.fileicon-applescript:before {
+    background: url(./icons/file_type_applescript.svg) no-repeat;
+}
+
+.fileicon-appscript:before {
+    background: url(./icons/file_type_appscript.svg) no-repeat;
+}
+
+.fileicon-appsemble:before {
+    background: url(./icons/file_type_appsemble.svg) no-repeat;
+}
+
+.fileicon-appveyor:before {
+    background: url(./icons/file_type_appveyor.svg) no-repeat;
+}
+
+.fileicon-arduino:before {
+    background: url(./icons/file_type_arduino.svg) no-repeat;
+}
+
+.fileicon-asciidoc:before {
+    background: url(./icons/file_type_asciidoc.svg) no-repeat;
+}
+
+.fileicon-asp:before {
+    background: url(./icons/file_type_asp.svg) no-repeat;
+}
+
+.fileicon-aspx:before {
+    background: url(./icons/file_type_aspx.svg) no-repeat;
+}
+
+.fileicon-assembly:before {
+    background: url(./icons/file_type_assembly.svg) no-repeat;
+}
+
+.fileicon-astro:before {
+    background: url(./icons/file_type_astro.svg) no-repeat;
+}
+
+.fileicon-astroconfig:before {
+    background: url(./icons/file_type_astroconfig.svg) no-repeat;
+}
+
+.fileicon-ats:before {
+    background: url(./icons/file_type_ats.svg) no-repeat;
+}
+
+.fileicon-audio:before {
+    background: url(./icons/file_type_audio.svg) no-repeat;
+}
+
+.fileicon-aurelia:before {
+    background: url(./icons/file_type_aurelia.svg) no-repeat;
+}
+
+.fileicon-autohotkey:before {
+    background: url(./icons/file_type_autohotkey.svg) no-repeat;
+}
+
+.fileicon-autoit:before {
+    background: url(./icons/file_type_autoit.svg) no-repeat;
+}
+
+.fileicon-avif:before {
+    background: url(./icons/file_type_avif.svg) no-repeat;
+}
+
+.fileicon-avro:before {
+    background: url(./icons/file_type_avro.svg) no-repeat;
+}
+
+.fileicon-awk:before {
+    background: url(./icons/file_type_awk.svg) no-repeat;
+}
+
+.fileicon-aws:before {
+    background: url(./icons/file_type_aws.svg) no-repeat;
+}
+
+.fileicon-azure:before {
+    background: url(./icons/file_type_azure.svg) no-repeat;
+}
+
+.fileicon-azurepipelines:before {
+    background: url(./icons/file_type_azurepipelines.svg) no-repeat;
+}
+
+.fileicon-babel:before {
+    background: url(./icons/file_type_babel.svg) no-repeat;
+}
+
+.fileicon-babel2:before {
+    background: url(./icons/file_type_babel2.svg) no-repeat;
+}
+
+.fileicon-ballerina:before {
+    background: url(./icons/file_type_ballerina.svg) no-repeat;
+}
+
+.fileicon-bat:before {
+    background: url(./icons/file_type_bat.svg) no-repeat;
+}
+
+.fileicon-bats:before {
+    background: url(./icons/file_type_bats.svg) no-repeat;
+}
+
+.fileicon-bazaar:before {
+    background: url(./icons/file_type_bazaar.svg) no-repeat;
+}
+
+.fileicon-bazel:before {
+    background: url(./icons/file_type_bazel.svg) no-repeat;
+}
+
+.fileicon-bazel:before {
+    background: url(./icons/file_type_bazel.svg) no-repeat;
+}
+
+.fileicon-bazel:before {
+    background: url(./icons/file_type_bazel.svg) no-repeat;
+}
+
+.fileicon-befunge:before {
+    background: url(./icons/file_type_befunge.svg) no-repeat;
+}
+
+.fileicon-bicep:before {
+    background: url(./icons/file_type_bicep.svg) no-repeat;
+}
+
+.fileicon-biml:before {
+    background: url(./icons/file_type_biml.svg) no-repeat;
+}
+
+.fileicon-binary:before {
+    background: url(./icons/file_type_binary.svg) no-repeat;
+}
+
+.fileicon-biome:before {
+    background: url(./icons/file_type_biome.svg) no-repeat;
+}
+
+.fileicon-bitbucketpipeline:before {
+    background: url(./icons/file_type_bitbucketpipeline.svg) no-repeat;
+}
+
+.fileicon-bithound:before {
+    background: url(./icons/file_type_bithound.svg) no-repeat;
+}
+
+.fileicon-blade:before {
+    background: url(./icons/file_type_blade.svg) no-repeat;
+}
+
+.fileicon-blitzbasic:before {
+    background: url(./icons/file_type_blitzbasic.svg) no-repeat;
+}
+
+.fileicon-bolt:before {
+    background: url(./icons/file_type_bolt.svg) no-repeat;
+}
+
+.fileicon-bosque:before {
+    background: url(./icons/file_type_bosque.svg) no-repeat;
+}
+
+.fileicon-bower:before {
+    background: url(./icons/file_type_bower.svg) no-repeat;
+}
+
+.fileicon-bower2:before {
+    background: url(./icons/file_type_bower2.svg) no-repeat;
+}
+
+.fileicon-browserslist:before {
+    background: url(./icons/file_type_browserslist.svg) no-repeat;
+}
+
+.fileicon-buckbuild:before {
+    background: url(./icons/file_type_buckbuild.svg) no-repeat;
+}
+
+.fileicon-buf:before {
+    background: url(./icons/file_type_buf.svg) no-repeat;
+}
+
+.fileicon-bun:before {
+    background: url(./icons/file_type_bun.svg) no-repeat;
+}
+
+.fileicon-bundler:before {
+    background: url(./icons/file_type_bundler.svg) no-repeat;
+}
+
+.fileicon-bunfig:before {
+    background: url(./icons/file_type_bunfig.svg) no-repeat;
+}
+
+.fileicon-c:before {
+    background: url(./icons/file_type_c.svg) no-repeat;
+}
+
+.fileicon-c2:before {
+    background: url(./icons/file_type_c2.svg) no-repeat;
+}
+
+.fileicon-c3:before {
+    background: url(./icons/file_type_c3.svg) no-repeat;
+}
+
+.fileicon-cabal:before {
+    background: url(./icons/file_type_cabal.svg) no-repeat;
+}
+
+.fileicon-caddy:before {
+    background: url(./icons/file_type_caddy.svg) no-repeat;
+}
+
+.fileicon-cake:before {
+    background: url(./icons/file_type_cake.svg) no-repeat;
+}
+
+.fileicon-cakephp:before {
+    background: url(./icons/file_type_cakephp.svg) no-repeat;
+}
+
+.fileicon-capacitor:before {
+    background: url(./icons/file_type_capacitor.svg) no-repeat;
+}
+
+.fileicon-cargo:before {
+    background: url(./icons/file_type_cargo.svg) no-repeat;
+}
+
+.fileicon-casc:before {
+    background: url(./icons/file_type_casc.svg) no-repeat;
+}
+
+.fileicon-cddl:before {
+    background: url(./icons/file_type_cddl.svg) no-repeat;
+}
+
+.fileicon-cert:before {
+    background: url(./icons/file_type_cert.svg) no-repeat;
+}
+
+.fileicon-ceylon:before {
+    background: url(./icons/file_type_ceylon.svg) no-repeat;
+}
+
+.fileicon-cf:before {
+    background: url(./icons/file_type_cf.svg) no-repeat;
+}
+
+.fileicon-cf2:before {
+    background: url(./icons/file_type_cf2.svg) no-repeat;
+}
+
+.fileicon-cfc:before {
+    background: url(./icons/file_type_cfc.svg) no-repeat;
+}
+
+.fileicon-cfc2:before {
+    background: url(./icons/file_type_cfc2.svg) no-repeat;
+}
+
+.fileicon-cfm:before {
+    background: url(./icons/file_type_cfm.svg) no-repeat;
+}
+
+.fileicon-cfm2:before {
+    background: url(./icons/file_type_cfm2.svg) no-repeat;
+}
+
+.fileicon-cheader:before {
+    background: url(./icons/file_type_cheader.svg) no-repeat;
+}
+
+.fileicon-chef:before {
+    background: url(./icons/file_type_chef.svg) no-repeat;
+}
+
+.fileicon-chef:before {
+    background: url(./icons/file_type_chef.svg) no-repeat;
+}
+
+.fileicon-circleci:before {
+    background: url(./icons/file_type_circleci.svg) no-repeat;
+}
+
+.fileicon-class:before {
+    background: url(./icons/file_type_class.svg) no-repeat;
+}
+
+.fileicon-clojure:before {
+    background: url(./icons/file_type_clojure.svg) no-repeat;
+}
+
+.fileicon-clojurescript:before {
+    background: url(./icons/file_type_clojurescript.svg) no-repeat;
+}
+
+.fileicon-cloudfoundry:before {
+    background: url(./icons/file_type_cloudfoundry.svg) no-repeat;
+}
+
+.fileicon-cmake:before {
+    background: url(./icons/file_type_cmake.svg) no-repeat;
+}
+
+.fileicon-cobol:before {
+    background: url(./icons/file_type_cobol.svg) no-repeat;
+}
+
+.fileicon-codacy:before {
+    background: url(./icons/file_type_codacy.svg) no-repeat;
+}
+
+.fileicon-codeclimate:before {
+    background: url(./icons/file_type_codeclimate.svg) no-repeat;
+}
+
+.fileicon-codecov:before {
+    background: url(./icons/file_type_codecov.svg) no-repeat;
+}
+
+.fileicon-codekit:before {
+    background: url(./icons/file_type_codekit.svg) no-repeat;
+}
+
+.fileicon-codeowners:before {
+    background: url(./icons/file_type_codeowners.svg) no-repeat;
+}
+
+.fileicon-codeql:before {
+    background: url(./icons/file_type_codeql.svg) no-repeat;
+}
+
+.fileicon-coffeelint:before {
+    background: url(./icons/file_type_coffeelint.svg) no-repeat;
+}
+
+.fileicon-coffeescript:before {
+    background: url(./icons/file_type_coffeescript.svg) no-repeat;
+}
+
+.fileicon-commitizen:before {
+    background: url(./icons/file_type_commitizen.svg) no-repeat;
+}
+
+.fileicon-commitlint:before {
+    background: url(./icons/file_type_commitlint.svg) no-repeat;
+}
+
+.fileicon-compass:before {
+    background: url(./icons/file_type_compass.svg) no-repeat;
+}
+
+.fileicon-composer:before {
+    background: url(./icons/file_type_composer.svg) no-repeat;
+}
+
+.fileicon-conan:before {
+    background: url(./icons/file_type_conan.svg) no-repeat;
+}
+
+.fileicon-conda:before {
+    background: url(./icons/file_type_conda.svg) no-repeat;
+}
+
+.fileicon-config:before {
+    background: url(./icons/file_type_config.svg) no-repeat;
+}
+
+.fileicon-confluence:before {
+    background: url(./icons/file_type_confluence.svg) no-repeat;
+}
+
+.fileicon-coveralls:before {
+    background: url(./icons/file_type_coveralls.svg) no-repeat;
+}
+
+.fileicon-cpp:before {
+    background: url(./icons/file_type_cpp.svg) no-repeat;
+}
+
+.fileicon-cpp2:before {
+    background: url(./icons/file_type_cpp2.svg) no-repeat;
+}
+
+.fileicon-cpp3:before {
+    background: url(./icons/file_type_cpp3.svg) no-repeat;
+}
+
+.fileicon-cppheader:before {
+    background: url(./icons/file_type_cppheader.svg) no-repeat;
+}
+
+.fileicon-crowdin:before {
+    background: url(./icons/file_type_crowdin.svg) no-repeat;
+}
+
+.fileicon-crystal:before {
+    background: url(./icons/file_type_crystal.svg) no-repeat;
+}
+
+.fileicon-csharp:before {
+    background: url(./icons/file_type_csharp.svg) no-repeat;
+}
+
+.fileicon-csharp2:before {
+    background: url(./icons/file_type_csharp2.svg) no-repeat;
+}
+
+.fileicon-cspell:before {
+    background: url(./icons/file_type_cspell.svg) no-repeat;
+}
+
+.fileicon-csproj:before {
+    background: url(./icons/file_type_csproj.svg) no-repeat;
+}
+
+.fileicon-css:before {
+    background: url(./icons/file_type_css.svg) no-repeat;
+}
+
+.fileicon-csscomb:before {
+    background: url(./icons/file_type_csscomb.svg) no-repeat;
+}
+
+.fileicon-csslint:before {
+    background: url(./icons/file_type_csslint.svg) no-repeat;
+}
+
+.fileicon-cssmap:before {
+    background: url(./icons/file_type_cssmap.svg) no-repeat;
+}
+
+.fileicon-cucumber:before {
+    background: url(./icons/file_type_cucumber.svg) no-repeat;
+}
+
+.fileicon-cuda:before {
+    background: url(./icons/file_type_cuda.svg) no-repeat;
+}
+
+.fileicon-cvs:before {
+    background: url(./icons/file_type_cvs.svg) no-repeat;
+}
+
+.fileicon-cypress:before {
+    background: url(./icons/file_type_cypress.svg) no-repeat;
+}
+
+.fileicon-cypress:before {
+    background: url(./icons/file_type_cypress.svg) no-repeat;
+}
+
+.fileicon-cython:before {
+    background: url(./icons/file_type_cython.svg) no-repeat;
+}
+
+.fileicon-c:before {
+    background: url(./icons/file_type_c.svg) no-repeat;
+}
+
+.fileicon-dal:before {
+    background: url(./icons/file_type_dal.svg) no-repeat;
+}
+
+.fileicon-darcs:before {
+    background: url(./icons/file_type_darcs.svg) no-repeat;
+}
+
+.fileicon-dartlang:before {
+    background: url(./icons/file_type_dartlang.svg) no-repeat;
+}
+
+.fileicon-dartlang:before {
+    background: url(./icons/file_type_dartlang.svg) no-repeat;
+}
+
+.fileicon-dartlang:before {
+    background: url(./icons/file_type_dartlang.svg) no-repeat;
+}
+
+.fileicon-datadog:before {
+    background: url(./icons/file_type_datadog.svg) no-repeat;
+}
+
+.fileicon-db:before {
+    background: url(./icons/file_type_db.svg) no-repeat;
+}
+
+.fileicon-delphi:before {
+    background: url(./icons/file_type_delphi.svg) no-repeat;
+}
+
+.fileicon-deno:before {
+    background: url(./icons/file_type_deno.svg) no-repeat;
+}
+
+.fileicon-denoify:before {
+    background: url(./icons/file_type_denoify.svg) no-repeat;
+}
+
+.fileicon-dependabot:before {
+    background: url(./icons/file_type_dependabot.svg) no-repeat;
+}
+
+.fileicon-dependencies:before {
+    background: url(./icons/file_type_dependencies.svg) no-repeat;
+}
+
+.fileicon-devcontainer:before {
+    background: url(./icons/file_type_devcontainer.svg) no-repeat;
+}
+
+.fileicon-dhall:before {
+    background: url(./icons/file_type_dhall.svg) no-repeat;
+}
+
+.fileicon-diff:before {
+    background: url(./icons/file_type_diff.svg) no-repeat;
+}
+
+.fileicon-django:before {
+    background: url(./icons/file_type_django.svg) no-repeat;
+}
+
+.fileicon-dlang:before {
+    background: url(./icons/file_type_dlang.svg) no-repeat;
+}
+
+.fileicon-docker:before {
+    background: url(./icons/file_type_docker.svg) no-repeat;
+}
+
+.fileicon-docker2:before {
+    background: url(./icons/file_type_docker2.svg) no-repeat;
+}
+
+.fileicon-dockertest:before {
+    background: url(./icons/file_type_dockertest.svg) no-repeat;
+}
+
+.fileicon-dockertest2:before {
+    background: url(./icons/file_type_dockertest2.svg) no-repeat;
+}
+
+.fileicon-docpad:before {
+    background: url(./icons/file_type_docpad.svg) no-repeat;
+}
+
+.fileicon-docz:before {
+    background: url(./icons/file_type_docz.svg) no-repeat;
+}
+
+.fileicon-dojo:before {
+    background: url(./icons/file_type_dojo.svg) no-repeat;
+}
+
+.fileicon-doppler:before {
+    background: url(./icons/file_type_doppler.svg) no-repeat;
+}
+
+.fileicon-dotenv:before {
+    background: url(./icons/file_type_dotenv.svg) no-repeat;
+}
+
+.fileicon-dotjs:before {
+    background: url(./icons/file_type_dotjs.svg) no-repeat;
+}
+
+.fileicon-doxygen:before {
+    background: url(./icons/file_type_doxygen.svg) no-repeat;
+}
+
+.fileicon-drawio:before {
+    background: url(./icons/file_type_drawio.svg) no-repeat;
+}
+
+.fileicon-drone:before {
+    background: url(./icons/file_type_drone.svg) no-repeat;
+}
+
+.fileicon-drools:before {
+    background: url(./icons/file_type_drools.svg) no-repeat;
+}
+
+.fileicon-dustjs:before {
+    background: url(./icons/file_type_dustjs.svg) no-repeat;
+}
+
+.fileicon-dvc:before {
+    background: url(./icons/file_type_dvc.svg) no-repeat;
+}
+
+.fileicon-dylan:before {
+    background: url(./icons/file_type_dylan.svg) no-repeat;
+}
+
+.fileicon-earthly:before {
+    background: url(./icons/file_type_earthly.svg) no-repeat;
+}
+
+.fileicon-eas-metadata:before {
+    background: url(./icons/file_type_eas-metadata.svg) no-repeat;
+}
+
+.fileicon-edge:before {
+    background: url(./icons/file_type_edge.svg) no-repeat;
+}
+
+.fileicon-edge2:before {
+    background: url(./icons/file_type_edge2.svg) no-repeat;
+}
+
+.fileicon-editorconfig:before {
+    background: url(./icons/file_type_editorconfig.svg) no-repeat;
+}
+
+.fileicon-eex:before {
+    background: url(./icons/file_type_eex.svg) no-repeat;
+}
+
+.fileicon-ejs:before {
+    background: url(./icons/file_type_ejs.svg) no-repeat;
+}
+
+.fileicon-elastic:before {
+    background: url(./icons/file_type_elastic.svg) no-repeat;
+}
+
+.fileicon-elasticbeanstalk:before {
+    background: url(./icons/file_type_elasticbeanstalk.svg) no-repeat;
+}
+
+.fileicon-eleventy:before {
+    background: url(./icons/file_type_eleventy.svg) no-repeat;
+}
+
+.fileicon-eleventy2:before {
+    background: url(./icons/file_type_eleventy2.svg) no-repeat;
+}
+
+.fileicon-elixir:before {
+    background: url(./icons/file_type_elixir.svg) no-repeat;
+}
+
+.fileicon-elm:before {
+    background: url(./icons/file_type_elm.svg) no-repeat;
+}
+
+.fileicon-elm2:before {
+    background: url(./icons/file_type_elm2.svg) no-repeat;
+}
+
+.fileicon-emacs:before {
+    background: url(./icons/file_type_emacs.svg) no-repeat;
+}
+
+.fileicon-ember:before {
+    background: url(./icons/file_type_ember.svg) no-repeat;
+}
+
+.fileicon-ensime:before {
+    background: url(./icons/file_type_ensime.svg) no-repeat;
+}
+
+.fileicon-eps:before {
+    background: url(./icons/file_type_eps.svg) no-repeat;
+}
+
+.fileicon-erb:before {
+    background: url(./icons/file_type_erb.svg) no-repeat;
+}
+
+.fileicon-erlang:before {
+    background: url(./icons/file_type_erlang.svg) no-repeat;
+}
+
+.fileicon-erlang2:before {
+    background: url(./icons/file_type_erlang2.svg) no-repeat;
+}
+
+.fileicon-esbuild:before {
+    background: url(./icons/file_type_esbuild.svg) no-repeat;
+}
+
+.fileicon-eslint:before {
+    background: url(./icons/file_type_eslint.svg) no-repeat;
+}
+
+.fileicon-eslint2:before {
+    background: url(./icons/file_type_eslint2.svg) no-repeat;
+}
+
+.fileicon-esphome:before {
+    background: url(./icons/file_type_esphome.svg) no-repeat;
+}
+
+.fileicon-excel:before {
+    background: url(./icons/file_type_excel.svg) no-repeat;
+}
+
+.fileicon-excel2:before {
+    background: url(./icons/file_type_excel2.svg) no-repeat;
+}
+
+.fileicon-expo:before {
+    background: url(./icons/file_type_expo.svg) no-repeat;
+}
+
+.fileicon-falcon:before {
+    background: url(./icons/file_type_falcon.svg) no-repeat;
+}
+
+.fileicon-fantasticon:before {
+    background: url(./icons/file_type_fantasticon.svg) no-repeat;
+}
+
+.fileicon-fauna:before {
+    background: url(./icons/file_type_fauna.svg) no-repeat;
+}
+
+.fileicon-favicon:before {
+    background: url(./icons/file_type_favicon.svg) no-repeat;
+}
+
+.fileicon-fbx:before {
+    background: url(./icons/file_type_fbx.svg) no-repeat;
+}
+
+.fileicon-firebase:before {
+    background: url(./icons/file_type_firebase.svg) no-repeat;
+}
+
+.fileicon-firebasehosting:before {
+    background: url(./icons/file_type_firebasehosting.svg) no-repeat;
+}
+
+.fileicon-firestore:before {
+    background: url(./icons/file_type_firestore.svg) no-repeat;
+}
+
+.fileicon-fitbit:before {
+    background: url(./icons/file_type_fitbit.svg) no-repeat;
+}
+
+.fileicon-fla:before {
+    background: url(./icons/file_type_fla.svg) no-repeat;
+}
+
+.fileicon-flareact:before {
+    background: url(./icons/file_type_flareact.svg) no-repeat;
+}
+
+.fileicon-flash:before {
+    background: url(./icons/file_type_flash.svg) no-repeat;
+}
+
+.fileicon-floobits:before {
+    background: url(./icons/file_type_floobits.svg) no-repeat;
+}
+
+.fileicon-flow:before {
+    background: url(./icons/file_type_flow.svg) no-repeat;
+}
+
+.fileicon-flutter:before {
+    background: url(./icons/file_type_flutter.svg) no-repeat;
+}
+
+.fileicon-flutter:before {
+    background: url(./icons/file_type_flutter.svg) no-repeat;
+}
+
+.fileicon-font:before {
+    background: url(./icons/file_type_font.svg) no-repeat;
+}
+
+.fileicon-formkit:before {
+    background: url(./icons/file_type_formkit.svg) no-repeat;
+}
+
+.fileicon-fortran:before {
+    background: url(./icons/file_type_fortran.svg) no-repeat;
+}
+
+.fileicon-fossa:before {
+    background: url(./icons/file_type_fossa.svg) no-repeat;
+}
+
+.fileicon-fossil:before {
+    background: url(./icons/file_type_fossil.svg) no-repeat;
+}
+
+.fileicon-freemarker:before {
+    background: url(./icons/file_type_freemarker.svg) no-repeat;
+}
+
+.fileicon-fsharp:before {
+    background: url(./icons/file_type_fsharp.svg) no-repeat;
+}
+
+.fileicon-fsharp2:before {
+    background: url(./icons/file_type_fsharp2.svg) no-repeat;
+}
+
+.fileicon-fsproj:before {
+    background: url(./icons/file_type_fsproj.svg) no-repeat;
+}
+
+.fileicon-fthtml:before {
+    background: url(./icons/file_type_fthtml.svg) no-repeat;
+}
+
+.fileicon-funding:before {
+    background: url(./icons/file_type_funding.svg) no-repeat;
+}
+
+.fileicon-fusebox:before {
+    background: url(./icons/file_type_fusebox.svg) no-repeat;
+}
+
+.fileicon-galen:before {
+    background: url(./icons/file_type_galen.svg) no-repeat;
+}
+
+.fileicon-galen2:before {
+    background: url(./icons/file_type_galen2.svg) no-repeat;
+}
+
+.fileicon-gamemaker:before {
+    background: url(./icons/file_type_gamemaker.svg) no-repeat;
+}
+
+.fileicon-gamemaker2:before {
+    background: url(./icons/file_type_gamemaker2.svg) no-repeat;
+}
+
+.fileicon-gamemaker81:before {
+    background: url(./icons/file_type_gamemaker81.svg) no-repeat;
+}
+
+.fileicon-gatsby:before {
+    background: url(./icons/file_type_gatsby.svg) no-repeat;
+}
+
+.fileicon-gcloud:before {
+    background: url(./icons/file_type_gcloud.svg) no-repeat;
+}
+
+.fileicon-gcode:before {
+    background: url(./icons/file_type_gcode.svg) no-repeat;
+}
+
+.fileicon-gdscript:before {
+    background: url(./icons/file_type_gdscript.svg) no-repeat;
+}
+
+.fileicon-genstat:before {
+    background: url(./icons/file_type_genstat.svg) no-repeat;
+}
+
+.fileicon-git:before {
+    background: url(./icons/file_type_git.svg) no-repeat;
+}
+
+.fileicon-git2:before {
+    background: url(./icons/file_type_git2.svg) no-repeat;
+}
+
+.fileicon-gitlab:before {
+    background: url(./icons/file_type_gitlab.svg) no-repeat;
+}
+
+.fileicon-gitpod:before {
+    background: url(./icons/file_type_gitpod.svg) no-repeat;
+}
+
+.fileicon-glide:before {
+    background: url(./icons/file_type_glide.svg) no-repeat;
+}
+
+.fileicon-glitter:before {
+    background: url(./icons/file_type_glitter.svg) no-repeat;
+}
+
+.fileicon-glsl:before {
+    background: url(./icons/file_type_glsl.svg) no-repeat;
+}
+
+.fileicon-glyphs:before {
+    background: url(./icons/file_type_glyphs.svg) no-repeat;
+}
+
+.fileicon-gnu:before {
+    background: url(./icons/file_type_gnu.svg) no-repeat;
+}
+
+.fileicon-gnuplot:before {
+    background: url(./icons/file_type_gnuplot.svg) no-repeat;
+}
+
+.fileicon-go:before {
+    background: url(./icons/file_type_go.svg) no-repeat;
+}
+
+.fileicon-goctl:before {
+    background: url(./icons/file_type_goctl.svg) no-repeat;
+}
+
+.fileicon-godot:before {
+    background: url(./icons/file_type_godot.svg) no-repeat;
+}
+
+.fileicon-go:before {
+    background: url(./icons/file_type_go.svg) no-repeat;
+}
+
+.fileicon-gradle:before {
+    background: url(./icons/file_type_gradle.svg) no-repeat;
+}
+
+.fileicon-gradle2:before {
+    background: url(./icons/file_type_gradle2.svg) no-repeat;
+}
+
+.fileicon-grain:before {
+    background: url(./icons/file_type_grain.svg) no-repeat;
+}
+
+.fileicon-graphql:before {
+    background: url(./icons/file_type_graphql.svg) no-repeat;
+}
+
+.fileicon-graphviz:before {
+    background: url(./icons/file_type_graphviz.svg) no-repeat;
+}
+
+.fileicon-greenkeeper:before {
+    background: url(./icons/file_type_greenkeeper.svg) no-repeat;
+}
+
+.fileicon-gridsome:before {
+    background: url(./icons/file_type_gridsome.svg) no-repeat;
+}
+
+.fileicon-groovy:before {
+    background: url(./icons/file_type_groovy.svg) no-repeat;
+}
+
+.fileicon-groovy2:before {
+    background: url(./icons/file_type_groovy2.svg) no-repeat;
+}
+
+.fileicon-grunt:before {
+    background: url(./icons/file_type_grunt.svg) no-repeat;
+}
+
+.fileicon-gulp:before {
+    background: url(./icons/file_type_gulp.svg) no-repeat;
+}
+
+.fileicon-haml:before {
+    background: url(./icons/file_type_haml.svg) no-repeat;
+}
+
+.fileicon-handlebars:before {
+    background: url(./icons/file_type_handlebars.svg) no-repeat;
+}
+
+.fileicon-handlebars2:before {
+    background: url(./icons/file_type_handlebars2.svg) no-repeat;
+}
+
+.fileicon-harbour:before {
+    background: url(./icons/file_type_harbour.svg) no-repeat;
+}
+
+.fileicon-hardhat:before {
+    background: url(./icons/file_type_hardhat.svg) no-repeat;
+}
+
+.fileicon-hashicorp:before {
+    background: url(./icons/file_type_hashicorp.svg) no-repeat;
+}
+
+.fileicon-haskell:before {
+    background: url(./icons/file_type_haskell.svg) no-repeat;
+}
+
+.fileicon-haskell2:before {
+    background: url(./icons/file_type_haskell2.svg) no-repeat;
+}
+
+.fileicon-haxe:before {
+    background: url(./icons/file_type_haxe.svg) no-repeat;
+}
+
+.fileicon-haxecheckstyle:before {
+    background: url(./icons/file_type_haxecheckstyle.svg) no-repeat;
+}
+
+.fileicon-haxedevelop:before {
+    background: url(./icons/file_type_haxedevelop.svg) no-repeat;
+}
+
+.fileicon-helix:before {
+    background: url(./icons/file_type_helix.svg) no-repeat;
+}
+
+.fileicon-helm:before {
+    background: url(./icons/file_type_helm.svg) no-repeat;
+}
+
+.fileicon-hjson:before {
+    background: url(./icons/file_type_hjson.svg) no-repeat;
+}
+
+.fileicon-hlsl:before {
+    background: url(./icons/file_type_hlsl.svg) no-repeat;
+}
+
+.fileicon-homeassistant:before {
+    background: url(./icons/file_type_homeassistant.svg) no-repeat;
+}
+
+.fileicon-horusec:before {
+    background: url(./icons/file_type_horusec.svg) no-repeat;
+}
+
+.fileicon-host:before {
+    background: url(./icons/file_type_host.svg) no-repeat;
+}
+
+.fileicon-html:before {
+    background: url(./icons/file_type_html.svg) no-repeat;
+}
+
+.fileicon-htmlhint:before {
+    background: url(./icons/file_type_htmlhint.svg) no-repeat;
+}
+
+.fileicon-http:before {
+    background: url(./icons/file_type_http.svg) no-repeat;
+}
+
+.fileicon-hunspell:before {
+    background: url(./icons/file_type_hunspell.svg) no-repeat;
+}
+
+.fileicon-husky:before {
+    background: url(./icons/file_type_husky.svg) no-repeat;
+}
+
+.fileicon-hy:before {
+    background: url(./icons/file_type_hy.svg) no-repeat;
+}
+
+.fileicon-hygen:before {
+    background: url(./icons/file_type_hygen.svg) no-repeat;
+}
+
+.fileicon-hypr:before {
+    background: url(./icons/file_type_hypr.svg) no-repeat;
+}
+
+.fileicon-icl:before {
+    background: url(./icons/file_type_icl.svg) no-repeat;
+}
+
+.fileicon-idris:before {
+    background: url(./icons/file_type_idris.svg) no-repeat;
+}
+
+.fileicon-idrisbin:before {
+    background: url(./icons/file_type_idrisbin.svg) no-repeat;
+}
+
+.fileicon-idrispkg:before {
+    background: url(./icons/file_type_idrispkg.svg) no-repeat;
+}
+
+.fileicon-image:before {
+    background: url(./icons/file_type_image.svg) no-repeat;
+}
+
+.fileicon-imba:before {
+    background: url(./icons/file_type_imba.svg) no-repeat;
+}
+
+.fileicon-inc:before {
+    background: url(./icons/file_type_inc.svg) no-repeat;
+}
+
+.fileicon-infopath:before {
+    background: url(./icons/file_type_infopath.svg) no-repeat;
+}
+
+.fileicon-informix:before {
+    background: url(./icons/file_type_informix.svg) no-repeat;
+}
+
+.fileicon-ini:before {
+    background: url(./icons/file_type_ini.svg) no-repeat;
+}
+
+.fileicon-ink:before {
+    background: url(./icons/file_type_ink.svg) no-repeat;
+}
+
+.fileicon-innosetup:before {
+    background: url(./icons/file_type_innosetup.svg) no-repeat;
+}
+
+.fileicon-io:before {
+    background: url(./icons/file_type_io.svg) no-repeat;
+}
+
+.fileicon-iodine:before {
+    background: url(./icons/file_type_iodine.svg) no-repeat;
+}
+
+.fileicon-ionic:before {
+    background: url(./icons/file_type_ionic.svg) no-repeat;
+}
+
+.fileicon-jake:before {
+    background: url(./icons/file_type_jake.svg) no-repeat;
+}
+
+.fileicon-janet:before {
+    background: url(./icons/file_type_janet.svg) no-repeat;
+}
+
+.fileicon-jar:before {
+    background: url(./icons/file_type_jar.svg) no-repeat;
+}
+
+.fileicon-jasmine:before {
+    background: url(./icons/file_type_jasmine.svg) no-repeat;
+}
+
+.fileicon-java:before {
+    background: url(./icons/file_type_java.svg) no-repeat;
+}
+
+.fileicon-jbuilder:before {
+    background: url(./icons/file_type_jbuilder.svg) no-repeat;
+}
+
+.fileicon-jekyll:before {
+    background: url(./icons/file_type_jekyll.svg) no-repeat;
+}
+
+.fileicon-jenkins:before {
+    background: url(./icons/file_type_jenkins.svg) no-repeat;
+}
+
+.fileicon-jest:before {
+    background: url(./icons/file_type_jest.svg) no-repeat;
+}
+
+.fileicon-jinja:before {
+    background: url(./icons/file_type_jinja.svg) no-repeat;
+}
+
+.fileicon-jpm:before {
+    background: url(./icons/file_type_jpm.svg) no-repeat;
+}
+
+.fileicon-js:before {
+    background: url(./icons/file_type_js.svg) no-repeat;
+}
+
+.fileicon-jsbeautify:before {
+    background: url(./icons/file_type_jsbeautify.svg) no-repeat;
+}
+
+.fileicon-jsconfig:before {
+    background: url(./icons/file_type_jsconfig.svg) no-repeat;
+}
+
+.fileicon-jscpd:before {
+    background: url(./icons/file_type_jscpd.svg) no-repeat;
+}
+
+.fileicon-jshint:before {
+    background: url(./icons/file_type_jshint.svg) no-repeat;
+}
+
+.fileicon-jsmap:before {
+    background: url(./icons/file_type_jsmap.svg) no-repeat;
+}
+
+.fileicon-json:before {
+    background: url(./icons/file_type_json.svg) no-repeat;
+}
+
+.fileicon-json2:before {
+    background: url(./icons/file_type_json2.svg) no-repeat;
+}
+
+.fileicon-json5:before {
+    background: url(./icons/file_type_json5.svg) no-repeat;
+}
+
+.fileicon-jsonld:before {
+    background: url(./icons/file_type_jsonld.svg) no-repeat;
+}
+
+.fileicon-jsonnet:before {
+    background: url(./icons/file_type_jsonnet.svg) no-repeat;
+}
+
+.fileicon-jsp:before {
+    background: url(./icons/file_type_jsp.svg) no-repeat;
+}
+
+.fileicon-jss:before {
+    background: url(./icons/file_type_jss.svg) no-repeat;
+}
+
+.fileicon-js:before {
+    background: url(./icons/file_type_js.svg) no-repeat;
+}
+
+.fileicon-julia:before {
+    background: url(./icons/file_type_julia.svg) no-repeat;
+}
+
+.fileicon-julia2:before {
+    background: url(./icons/file_type_julia2.svg) no-repeat;
+}
+
+.fileicon-jupyter:before {
+    background: url(./icons/file_type_jupyter.svg) no-repeat;
+}
+
+.fileicon-k:before {
+    background: url(./icons/file_type_k.svg) no-repeat;
+}
+
+.fileicon-karma:before {
+    background: url(./icons/file_type_karma.svg) no-repeat;
+}
+
+.fileicon-key:before {
+    background: url(./icons/file_type_key.svg) no-repeat;
+}
+
+.fileicon-kitchenci:before {
+    background: url(./icons/file_type_kitchenci.svg) no-repeat;
+}
+
+.fileicon-kite:before {
+    background: url(./icons/file_type_kite.svg) no-repeat;
+}
+
+.fileicon-kivy:before {
+    background: url(./icons/file_type_kivy.svg) no-repeat;
+}
+
+.fileicon-kos:before {
+    background: url(./icons/file_type_kos.svg) no-repeat;
+}
+
+.fileicon-kotlin:before {
+    background: url(./icons/file_type_kotlin.svg) no-repeat;
+}
+
+.fileicon-kusto:before {
+    background: url(./icons/file_type_kusto.svg) no-repeat;
+}
+
+.fileicon-latino:before {
+    background: url(./icons/file_type_latino.svg) no-repeat;
+}
+
+.fileicon-layout:before {
+    background: url(./icons/file_type_layout.svg) no-repeat;
+}
+
+.fileicon-lerna:before {
+    background: url(./icons/file_type_lerna.svg) no-repeat;
+}
+
+.fileicon-less:before {
+    background: url(./icons/file_type_less.svg) no-repeat;
+}
+
+.fileicon-lex:before {
+    background: url(./icons/file_type_lex.svg) no-repeat;
+}
+
+.fileicon-license:before {
+    background: url(./icons/file_type_license.svg) no-repeat;
+}
+
+.fileicon-licensebat:before {
+    background: url(./icons/file_type_licensebat.svg) no-repeat;
+}
+
+.fileicon-lighthouse:before {
+    background: url(./icons/file_type_lighthouse.svg) no-repeat;
+}
+
+.fileicon-light:before {
+    background: url(./icons/file_type_light.svg) no-repeat;
+}
+
+.fileicon-lilypond:before {
+    background: url(./icons/file_type_lilypond.svg) no-repeat;
+}
+
+.fileicon-lime:before {
+    background: url(./icons/file_type_lime.svg) no-repeat;
+}
+
+.fileicon-lintstagedrc:before {
+    background: url(./icons/file_type_lintstagedrc.svg) no-repeat;
+}
+
+.fileicon-liquid:before {
+    background: url(./icons/file_type_liquid.svg) no-repeat;
+}
+
+.fileicon-lisp:before {
+    background: url(./icons/file_type_lisp.svg) no-repeat;
+}
+
+.fileicon-livescript:before {
+    background: url(./icons/file_type_livescript.svg) no-repeat;
+}
+
+.fileicon-lnk:before {
+    background: url(./icons/file_type_lnk.svg) no-repeat;
+}
+
+.fileicon-locale:before {
+    background: url(./icons/file_type_locale.svg) no-repeat;
+}
+
+.fileicon-log:before {
+    background: url(./icons/file_type_log.svg) no-repeat;
+}
+
+.fileicon-lolcode:before {
+    background: url(./icons/file_type_lolcode.svg) no-repeat;
+}
+
+.fileicon-lsl:before {
+    background: url(./icons/file_type_lsl.svg) no-repeat;
+}
+
+.fileicon-lua:before {
+    background: url(./icons/file_type_lua.svg) no-repeat;
+}
+
+.fileicon-luau:before {
+    background: url(./icons/file_type_luau.svg) no-repeat;
+}
+
+.fileicon-lync:before {
+    background: url(./icons/file_type_lync.svg) no-repeat;
+}
+
+.fileicon-mailing:before {
+    background: url(./icons/file_type_mailing.svg) no-repeat;
+}
+
+.fileicon-manifest:before {
+    background: url(./icons/file_type_manifest.svg) no-repeat;
+}
+
+.fileicon-manifest:before {
+    background: url(./icons/file_type_manifest.svg) no-repeat;
+}
+
+.fileicon-manifest:before {
+    background: url(./icons/file_type_manifest.svg) no-repeat;
+}
+
+.fileicon-map:before {
+    background: url(./icons/file_type_map.svg) no-repeat;
+}
+
+.fileicon-mariadb:before {
+    background: url(./icons/file_type_mariadb.svg) no-repeat;
+}
+
+.fileicon-markdown:before {
+    background: url(./icons/file_type_markdown.svg) no-repeat;
+}
+
+.fileicon-markdownlint:before {
+    background: url(./icons/file_type_markdownlint.svg) no-repeat;
+}
+
+.fileicon-marko:before {
+    background: url(./icons/file_type_marko.svg) no-repeat;
+}
+
+.fileicon-markojs:before {
+    background: url(./icons/file_type_markojs.svg) no-repeat;
+}
+
+.fileicon-master-co:before {
+    background: url(./icons/file_type_master-co.svg) no-repeat;
+}
+
+.fileicon-matlab:before {
+    background: url(./icons/file_type_matlab.svg) no-repeat;
+}
+
+.fileicon-maven:before {
+    background: url(./icons/file_type_maven.svg) no-repeat;
+}
+
+.fileicon-maxscript:before {
+    background: url(./icons/file_type_maxscript.svg) no-repeat;
+}
+
+.fileicon-maya:before {
+    background: url(./icons/file_type_maya.svg) no-repeat;
+}
+
+.fileicon-mdx:before {
+    background: url(./icons/file_type_mdx.svg) no-repeat;
+}
+
+.fileicon-mediawiki:before {
+    background: url(./icons/file_type_mediawiki.svg) no-repeat;
+}
+
+.fileicon-mercurial:before {
+    background: url(./icons/file_type_mercurial.svg) no-repeat;
+}
+
+.fileicon-mermaid:before {
+    background: url(./icons/file_type_mermaid.svg) no-repeat;
+}
+
+.fileicon-meson:before {
+    background: url(./icons/file_type_meson.svg) no-repeat;
+}
+
+.fileicon-meteor:before {
+    background: url(./icons/file_type_meteor.svg) no-repeat;
+}
+
+.fileicon-mjml:before {
+    background: url(./icons/file_type_mjml.svg) no-repeat;
+}
+
+.fileicon-mlang:before {
+    background: url(./icons/file_type_mlang.svg) no-repeat;
+}
+
+.fileicon-mocha:before {
+    background: url(./icons/file_type_mocha.svg) no-repeat;
+}
+
+.fileicon-modernizr:before {
+    background: url(./icons/file_type_modernizr.svg) no-repeat;
+}
+
+.fileicon-mojo:before {
+    background: url(./icons/file_type_mojo.svg) no-repeat;
+}
+
+.fileicon-mojolicious:before {
+    background: url(./icons/file_type_mojolicious.svg) no-repeat;
+}
+
+.fileicon-moleculer:before {
+    background: url(./icons/file_type_moleculer.svg) no-repeat;
+}
+
+.fileicon-mondoo:before {
+    background: url(./icons/file_type_mondoo.svg) no-repeat;
+}
+
+.fileicon-mongo:before {
+    background: url(./icons/file_type_mongo.svg) no-repeat;
+}
+
+.fileicon-monotone:before {
+    background: url(./icons/file_type_monotone.svg) no-repeat;
+}
+
+.fileicon-motif:before {
+    background: url(./icons/file_type_motif.svg) no-repeat;
+}
+
+.fileicon-mson:before {
+    background: url(./icons/file_type_mson.svg) no-repeat;
+}
+
+.fileicon-mustache:before {
+    background: url(./icons/file_type_mustache.svg) no-repeat;
+}
+
+.fileicon-mysql:before {
+    background: url(./icons/file_type_mysql.svg) no-repeat;
+}
+
+.fileicon-ndst:before {
+    background: url(./icons/file_type_ndst.svg) no-repeat;
+}
+
+.fileicon-nearly:before {
+    background: url(./icons/file_type_nearly.svg) no-repeat;
+}
+
+.fileicon-nestjs:before {
+    background: url(./icons/file_type_nestjs.svg) no-repeat;
+}
+
+.fileicon-nest:before {
+    background: url(./icons/file_type_nest.svg) no-repeat;
+}
+
+.fileicon-netlify:before {
+    background: url(./icons/file_type_netlify.svg) no-repeat;
+}
+
+.fileicon-next:before {
+    background: url(./icons/file_type_next.svg) no-repeat;
+}
+
+.fileicon-nginx:before {
+    background: url(./icons/file_type_nginx.svg) no-repeat;
+}
+
+.fileicon-ng:before {
+    background: url(./icons/file_type_ng.svg) no-repeat;
+}
+
+.fileicon-nim:before {
+    background: url(./icons/file_type_nim.svg) no-repeat;
+}
+
+.fileicon-nimble:before {
+    background: url(./icons/file_type_nimble.svg) no-repeat;
+}
+
+.fileicon-ninja:before {
+    background: url(./icons/file_type_ninja.svg) no-repeat;
+}
+
+.fileicon-nix:before {
+    background: url(./icons/file_type_nix.svg) no-repeat;
+}
+
+.fileicon-njsproj:before {
+    background: url(./icons/file_type_njsproj.svg) no-repeat;
+}
+
+.fileicon-noc:before {
+    background: url(./icons/file_type_noc.svg) no-repeat;
+}
+
+.fileicon-node:before {
+    background: url(./icons/file_type_node.svg) no-repeat;
+}
+
+.fileicon-node2:before {
+    background: url(./icons/file_type_node2.svg) no-repeat;
+}
+
+.fileicon-nodemon:before {
+    background: url(./icons/file_type_nodemon.svg) no-repeat;
+}
+
+.fileicon-npm:before {
+    background: url(./icons/file_type_npm.svg) no-repeat;
+}
+
+.fileicon-nsi:before {
+    background: url(./icons/file_type_nsi.svg) no-repeat;
+}
+
+.fileicon-nsri-integrity:before {
+    background: url(./icons/file_type_nsri-integrity.svg) no-repeat;
+}
+
+.fileicon-nsri:before {
+    background: url(./icons/file_type_nsri.svg) no-repeat;
+}
+
+.fileicon-nuget:before {
+    background: url(./icons/file_type_nuget.svg) no-repeat;
+}
+
+.fileicon-numpy:before {
+    background: url(./icons/file_type_numpy.svg) no-repeat;
+}
+
+.fileicon-nunjucks:before {
+    background: url(./icons/file_type_nunjucks.svg) no-repeat;
+}
+
+.fileicon-nuxt:before {
+    background: url(./icons/file_type_nuxt.svg) no-repeat;
+}
+
+.fileicon-nx:before {
+    background: url(./icons/file_type_nx.svg) no-repeat;
+}
+
+.fileicon-nyc:before {
+    background: url(./icons/file_type_nyc.svg) no-repeat;
+}
+
+.fileicon-objectivec:before {
+    background: url(./icons/file_type_objectivec.svg) no-repeat;
+}
+
+.fileicon-objectivecpp:before {
+    background: url(./icons/file_type_objectivecpp.svg) no-repeat;
+}
+
+.fileicon-objidconfig:before {
+    background: url(./icons/file_type_objidconfig.svg) no-repeat;
+}
+
+.fileicon-ocaml:before {
+    background: url(./icons/file_type_ocaml.svg) no-repeat;
+}
+
+.fileicon-ogone:before {
+    background: url(./icons/file_type_ogone.svg) no-repeat;
+}
+
+.fileicon-onenote:before {
+    background: url(./icons/file_type_onenote.svg) no-repeat;
+}
+
+.fileicon-opencl:before {
+    background: url(./icons/file_type_opencl.svg) no-repeat;
+}
+
+.fileicon-openHAB:before {
+    background: url(./icons/file_type_openHAB.svg) no-repeat;
+}
+
+.fileicon-openscad:before {
+    background: url(./icons/file_type_openscad.svg) no-repeat;
+}
+
+.fileicon-org:before {
+    background: url(./icons/file_type_org.svg) no-repeat;
+}
+
+.fileicon-outlook:before {
+    background: url(./icons/file_type_outlook.svg) no-repeat;
+}
+
+.fileicon-ovpn:before {
+    background: url(./icons/file_type_ovpn.svg) no-repeat;
+}
+
+.fileicon-package:before {
+    background: url(./icons/file_type_package.svg) no-repeat;
+}
+
+.fileicon-paket:before {
+    background: url(./icons/file_type_paket.svg) no-repeat;
+}
+
+.fileicon-patch:before {
+    background: url(./icons/file_type_patch.svg) no-repeat;
+}
+
+.fileicon-pcl:before {
+    background: url(./icons/file_type_pcl.svg) no-repeat;
+}
+
+.fileicon-pddl:before {
+    background: url(./icons/file_type_pddl.svg) no-repeat;
+}
+
+.fileicon-pddl:before {
+    background: url(./icons/file_type_pddl.svg) no-repeat;
+}
+
+.fileicon-pdf:before {
+    background: url(./icons/file_type_pdf.svg) no-repeat;
+}
+
+.fileicon-pdf2:before {
+    background: url(./icons/file_type_pdf2.svg) no-repeat;
+}
+
+.fileicon-peeky:before {
+    background: url(./icons/file_type_peeky.svg) no-repeat;
+}
+
+.fileicon-perl:before {
+    background: url(./icons/file_type_perl.svg) no-repeat;
+}
+
+.fileicon-perl2:before {
+    background: url(./icons/file_type_perl2.svg) no-repeat;
+}
+
+.fileicon-perl6:before {
+    background: url(./icons/file_type_perl6.svg) no-repeat;
+}
+
+.fileicon-pgsql:before {
+    background: url(./icons/file_type_pgsql.svg) no-repeat;
+}
+
+.fileicon-photoshop:before {
+    background: url(./icons/file_type_photoshop.svg) no-repeat;
+}
+
+.fileicon-photoshop2:before {
+    background: url(./icons/file_type_photoshop2.svg) no-repeat;
+}
+
+.fileicon-php:before {
+    background: url(./icons/file_type_php.svg) no-repeat;
+}
+
+.fileicon-php2:before {
+    background: url(./icons/file_type_php2.svg) no-repeat;
+}
+
+.fileicon-php3:before {
+    background: url(./icons/file_type_php3.svg) no-repeat;
+}
+
+.fileicon-phpcsfixer:before {
+    background: url(./icons/file_type_phpcsfixer.svg) no-repeat;
+}
+
+.fileicon-phpstan:before {
+    background: url(./icons/file_type_phpstan.svg) no-repeat;
+}
+
+.fileicon-phpunit:before {
+    background: url(./icons/file_type_phpunit.svg) no-repeat;
+}
+
+.fileicon-phraseapp:before {
+    background: url(./icons/file_type_phraseapp.svg) no-repeat;
+}
+
+.fileicon-pine:before {
+    background: url(./icons/file_type_pine.svg) no-repeat;
+}
+
+.fileicon-pip:before {
+    background: url(./icons/file_type_pip.svg) no-repeat;
+}
+
+.fileicon-pipeline:before {
+    background: url(./icons/file_type_pipeline.svg) no-repeat;
+}
+
+.fileicon-plantuml:before {
+    background: url(./icons/file_type_plantuml.svg) no-repeat;
+}
+
+.fileicon-platformio:before {
+    background: url(./icons/file_type_platformio.svg) no-repeat;
+}
+
+.fileicon-playwright:before {
+    background: url(./icons/file_type_playwright.svg) no-repeat;
+}
+
+.fileicon-plsql:before {
+    background: url(./icons/file_type_plsql.svg) no-repeat;
+}
+
+.fileicon-pm2:before {
+    background: url(./icons/file_type_pm2.svg) no-repeat;
+}
+
+.fileicon-pnpm:before {
+    background: url(./icons/file_type_pnpm.svg) no-repeat;
+}
+
+.fileicon-poedit:before {
+    background: url(./icons/file_type_poedit.svg) no-repeat;
+}
+
+.fileicon-poetry:before {
+    background: url(./icons/file_type_poetry.svg) no-repeat;
+}
+
+.fileicon-polymer:before {
+    background: url(./icons/file_type_polymer.svg) no-repeat;
+}
+
+.fileicon-pony:before {
+    background: url(./icons/file_type_pony.svg) no-repeat;
+}
+
+.fileicon-postcss:before {
+    background: url(./icons/file_type_postcss.svg) no-repeat;
+}
+
+.fileicon-postcssconfig:before {
+    background: url(./icons/file_type_postcssconfig.svg) no-repeat;
+}
+
+.fileicon-postman:before {
+    background: url(./icons/file_type_postman.svg) no-repeat;
+}
+
+.fileicon-powerpoint:before {
+    background: url(./icons/file_type_powerpoint.svg) no-repeat;
+}
+
+.fileicon-powerpoint2:before {
+    background: url(./icons/file_type_powerpoint2.svg) no-repeat;
+}
+
+.fileicon-powershell:before {
+    background: url(./icons/file_type_powershell.svg) no-repeat;
+}
+
+.fileicon-powershell2:before {
+    background: url(./icons/file_type_powershell2.svg) no-repeat;
+}
+
+.fileicon-preact:before {
+    background: url(./icons/file_type_preact.svg) no-repeat;
+}
+
+.fileicon-precommit:before {
+    background: url(./icons/file_type_precommit.svg) no-repeat;
+}
+
+.fileicon-prettier:before {
+    background: url(./icons/file_type_prettier.svg) no-repeat;
+}
+
+.fileicon-prisma:before {
+    background: url(./icons/file_type_prisma.svg) no-repeat;
+}
+
+.fileicon-processinglang:before {
+    background: url(./icons/file_type_processinglang.svg) no-repeat;
+}
+
+.fileicon-procfile:before {
+    background: url(./icons/file_type_procfile.svg) no-repeat;
+}
+
+.fileicon-progress:before {
+    background: url(./icons/file_type_progress.svg) no-repeat;
+}
+
+.fileicon-prolog:before {
+    background: url(./icons/file_type_prolog.svg) no-repeat;
+}
+
+.fileicon-prometheus:before {
+    background: url(./icons/file_type_prometheus.svg) no-repeat;
+}
+
+.fileicon-protobuf:before {
+    background: url(./icons/file_type_protobuf.svg) no-repeat;
+}
+
+.fileicon-protractor:before {
+    background: url(./icons/file_type_protractor.svg) no-repeat;
+}
+
+.fileicon-publiccode:before {
+    background: url(./icons/file_type_publiccode.svg) no-repeat;
+}
+
+.fileicon-publisher:before {
+    background: url(./icons/file_type_publisher.svg) no-repeat;
+}
+
+.fileicon-pug:before {
+    background: url(./icons/file_type_pug.svg) no-repeat;
+}
+
+.fileicon-pulumi:before {
+    background: url(./icons/file_type_pulumi.svg) no-repeat;
+}
+
+.fileicon-puppet:before {
+    background: url(./icons/file_type_puppet.svg) no-repeat;
+}
+
+.fileicon-purescript:before {
+    background: url(./icons/file_type_purescript.svg) no-repeat;
+}
+
+.fileicon-pyret:before {
+    background: url(./icons/file_type_pyret.svg) no-repeat;
+}
+
+.fileicon-python:before {
+    background: url(./icons/file_type_python.svg) no-repeat;
+}
+
+.fileicon-pythowo:before {
+    background: url(./icons/file_type_pythowo.svg) no-repeat;
+}
+
+.fileicon-pytyped:before {
+    background: url(./icons/file_type_pytyped.svg) no-repeat;
+}
+
+.fileicon-pyup:before {
+    background: url(./icons/file_type_pyup.svg) no-repeat;
+}
+
+.fileicon-q:before {
+    background: url(./icons/file_type_q.svg) no-repeat;
+}
+
+.fileicon-qbs:before {
+    background: url(./icons/file_type_qbs.svg) no-repeat;
+}
+
+.fileicon-qlikview:before {
+    background: url(./icons/file_type_qlikview.svg) no-repeat;
+}
+
+.fileicon-qml:before {
+    background: url(./icons/file_type_qml.svg) no-repeat;
+}
+
+.fileicon-qmldir:before {
+    background: url(./icons/file_type_qmldir.svg) no-repeat;
+}
+
+.fileicon-qsharp:before {
+    background: url(./icons/file_type_qsharp.svg) no-repeat;
+}
+
+.fileicon-quasar:before {
+    background: url(./icons/file_type_quasar.svg) no-repeat;
+}
+
+.fileicon-r:before {
+    background: url(./icons/file_type_r.svg) no-repeat;
+}
+
+.fileicon-racket:before {
+    background: url(./icons/file_type_racket.svg) no-repeat;
+}
+
+.fileicon-rails:before {
+    background: url(./icons/file_type_rails.svg) no-repeat;
+}
+
+.fileicon-rake:before {
+    background: url(./icons/file_type_rake.svg) no-repeat;
+}
+
+.fileicon-raml:before {
+    background: url(./icons/file_type_raml.svg) no-repeat;
+}
+
+.fileicon-razor:before {
+    background: url(./icons/file_type_razor.svg) no-repeat;
+}
+
+.fileicon-razzle:before {
+    background: url(./icons/file_type_razzle.svg) no-repeat;
+}
+
+.fileicon-reactjs:before {
+    background: url(./icons/file_type_reactjs.svg) no-repeat;
+}
+
+.fileicon-reacttemplate:before {
+    background: url(./icons/file_type_reacttemplate.svg) no-repeat;
+}
+
+.fileicon-reactts:before {
+    background: url(./icons/file_type_reactts.svg) no-repeat;
+}
+
+.fileicon-reason:before {
+    background: url(./icons/file_type_reason.svg) no-repeat;
+}
+
+.fileicon-red:before {
+    background: url(./icons/file_type_red.svg) no-repeat;
+}
+
+.fileicon-registry:before {
+    background: url(./icons/file_type_registry.svg) no-repeat;
+}
+
+.fileicon-rego:before {
+    background: url(./icons/file_type_rego.svg) no-repeat;
+}
+
+.fileicon-rehype:before {
+    background: url(./icons/file_type_rehype.svg) no-repeat;
+}
+
+.fileicon-remark:before {
+    background: url(./icons/file_type_remark.svg) no-repeat;
+}
+
+.fileicon-renovate:before {
+    background: url(./icons/file_type_renovate.svg) no-repeat;
+}
+
+.fileicon-replit:before {
+    background: url(./icons/file_type_replit.svg) no-repeat;
+}
+
+.fileicon-rescript:before {
+    background: url(./icons/file_type_rescript.svg) no-repeat;
+}
+
+.fileicon-rest:before {
+    background: url(./icons/file_type_rest.svg) no-repeat;
+}
+
+.fileicon-retext:before {
+    background: url(./icons/file_type_retext.svg) no-repeat;
+}
+
+.fileicon-rexx:before {
+    background: url(./icons/file_type_rexx.svg) no-repeat;
+}
+
+.fileicon-riot:before {
+    background: url(./icons/file_type_riot.svg) no-repeat;
+}
+
+.fileicon-rmd:before {
+    background: url(./icons/file_type_rmd.svg) no-repeat;
+}
+
+.fileicon-robotframework:before {
+    background: url(./icons/file_type_robotframework.svg) no-repeat;
+}
+
+.fileicon-robots:before {
+    background: url(./icons/file_type_robots.svg) no-repeat;
+}
+
+.fileicon-rollup:before {
+    background: url(./icons/file_type_rollup.svg) no-repeat;
+}
+
+.fileicon-rome:before {
+    background: url(./icons/file_type_rome.svg) no-repeat;
+}
+
+.fileicon-ron:before {
+    background: url(./icons/file_type_ron.svg) no-repeat;
+}
+
+.fileicon-rproj:before {
+    background: url(./icons/file_type_rproj.svg) no-repeat;
+}
+
+.fileicon-rspec:before {
+    background: url(./icons/file_type_rspec.svg) no-repeat;
+}
+
+.fileicon-rubocop:before {
+    background: url(./icons/file_type_rubocop.svg) no-repeat;
+}
+
+.fileicon-ruby:before {
+    background: url(./icons/file_type_ruby.svg) no-repeat;
+}
+
+.fileicon-rust:before {
+    background: url(./icons/file_type_rust.svg) no-repeat;
+}
+
+.fileicon-sails:before {
+    background: url(./icons/file_type_sails.svg) no-repeat;
+}
+
+.fileicon-saltstack:before {
+    background: url(./icons/file_type_saltstack.svg) no-repeat;
+}
+
+.fileicon-san:before {
+    background: url(./icons/file_type_san.svg) no-repeat;
+}
+
+.fileicon-sapphire:before {
+    background: url(./icons/file_type_sapphire.svg) no-repeat;
+}
+
+.fileicon-sas:before {
+    background: url(./icons/file_type_sas.svg) no-repeat;
+}
+
+.fileicon-sass:before {
+    background: url(./icons/file_type_sass.svg) no-repeat;
+}
+
+.fileicon-sbt:before {
+    background: url(./icons/file_type_sbt.svg) no-repeat;
+}
+
+.fileicon-scala:before {
+    background: url(./icons/file_type_scala.svg) no-repeat;
+}
+
+.fileicon-scilab:before {
+    background: url(./icons/file_type_scilab.svg) no-repeat;
+}
+
+.fileicon-script:before {
+    background: url(./icons/file_type_script.svg) no-repeat;
+}
+
+.fileicon-scss:before {
+    background: url(./icons/file_type_scss.svg) no-repeat;
+}
+
+.fileicon-scss2:before {
+    background: url(./icons/file_type_scss2.svg) no-repeat;
+}
+
+.fileicon-sdlang:before {
+    background: url(./icons/file_type_sdlang.svg) no-repeat;
+}
+
+.fileicon-sentry:before {
+    background: url(./icons/file_type_sentry.svg) no-repeat;
+}
+
+.fileicon-sequelize:before {
+    background: url(./icons/file_type_sequelize.svg) no-repeat;
+}
+
+.fileicon-serverless:before {
+    background: url(./icons/file_type_serverless.svg) no-repeat;
+}
+
+.fileicon-shaderlab:before {
+    background: url(./icons/file_type_shaderlab.svg) no-repeat;
+}
+
+.fileicon-shell:before {
+    background: url(./icons/file_type_shell.svg) no-repeat;
+}
+
+.fileicon-shellcheck:before {
+    background: url(./icons/file_type_shellcheck.svg) no-repeat;
+}
+
+.fileicon-shuttle:before {
+    background: url(./icons/file_type_shuttle.svg) no-repeat;
+}
+
+.fileicon-silverstripe:before {
+    background: url(./icons/file_type_silverstripe.svg) no-repeat;
+}
+
+.fileicon-sino:before {
+    background: url(./icons/file_type_sino.svg) no-repeat;
+}
+
+.fileicon-siyuan:before {
+    background: url(./icons/file_type_siyuan.svg) no-repeat;
+}
+
+.fileicon-sketch:before {
+    background: url(./icons/file_type_sketch.svg) no-repeat;
+}
+
+.fileicon-skipper:before {
+    background: url(./icons/file_type_skipper.svg) no-repeat;
+}
+
+.fileicon-slang:before {
+    background: url(./icons/file_type_slang.svg) no-repeat;
+}
+
+.fileicon-slashup:before {
+    background: url(./icons/file_type_slashup.svg) no-repeat;
+}
+
+.fileicon-slice:before {
+    background: url(./icons/file_type_slice.svg) no-repeat;
+}
+
+.fileicon-slim:before {
+    background: url(./icons/file_type_slim.svg) no-repeat;
+}
+
+.fileicon-sln:before {
+    background: url(./icons/file_type_sln.svg) no-repeat;
+}
+
+.fileicon-sln2:before {
+    background: url(./icons/file_type_sln2.svg) no-repeat;
+}
+
+.fileicon-smarty:before {
+    background: url(./icons/file_type_smarty.svg) no-repeat;
+}
+
+.fileicon-snapcraft:before {
+    background: url(./icons/file_type_snapcraft.svg) no-repeat;
+}
+
+.fileicon-snaplet:before {
+    background: url(./icons/file_type_snaplet.svg) no-repeat;
+}
+
+.fileicon-snort:before {
+    background: url(./icons/file_type_snort.svg) no-repeat;
+}
+
+.fileicon-snyk:before {
+    background: url(./icons/file_type_snyk.svg) no-repeat;
+}
+
+.fileicon-solidarity:before {
+    background: url(./icons/file_type_solidarity.svg) no-repeat;
+}
+
+.fileicon-solidity:before {
+    background: url(./icons/file_type_solidity.svg) no-repeat;
+}
+
+.fileicon-source:before {
+    background: url(./icons/file_type_source.svg) no-repeat;
+}
+
+.fileicon-spacengine:before {
+    background: url(./icons/file_type_spacengine.svg) no-repeat;
+}
+
+.fileicon-sparql:before {
+    background: url(./icons/file_type_sparql.svg) no-repeat;
+}
+
+.fileicon-spin:before {
+    background: url(./icons/file_type_spin.svg) no-repeat;
+}
+
+.fileicon-sqf:before {
+    background: url(./icons/file_type_sqf.svg) no-repeat;
+}
+
+.fileicon-sql:before {
+    background: url(./icons/file_type_sql.svg) no-repeat;
+}
+
+.fileicon-sqlite:before {
+    background: url(./icons/file_type_sqlite.svg) no-repeat;
+}
+
+.fileicon-squirrel:before {
+    background: url(./icons/file_type_squirrel.svg) no-repeat;
+}
+
+.fileicon-sss:before {
+    background: url(./icons/file_type_sss.svg) no-repeat;
+}
+
+.fileicon-stan:before {
+    background: url(./icons/file_type_stan.svg) no-repeat;
+}
+
+.fileicon-stata:before {
+    background: url(./icons/file_type_stata.svg) no-repeat;
+}
+
+.fileicon-stencil:before {
+    background: url(./icons/file_type_stencil.svg) no-repeat;
+}
+
+.fileicon-storyboard:before {
+    background: url(./icons/file_type_storyboard.svg) no-repeat;
+}
+
+.fileicon-storybook:before {
+    background: url(./icons/file_type_storybook.svg) no-repeat;
+}
+
+.fileicon-stryker:before {
+    background: url(./icons/file_type_stryker.svg) no-repeat;
+}
+
+.fileicon-stylable:before {
+    background: url(./icons/file_type_stylable.svg) no-repeat;
+}
+
+.fileicon-style:before {
+    background: url(./icons/file_type_style.svg) no-repeat;
+}
+
+.fileicon-styled:before {
+    background: url(./icons/file_type_styled.svg) no-repeat;
+}
+
+.fileicon-stylelint:before {
+    background: url(./icons/file_type_stylelint.svg) no-repeat;
+}
+
+.fileicon-stylish:before {
+    background: url(./icons/file_type_stylish.svg) no-repeat;
+}
+
+.fileicon-stylus:before {
+    background: url(./icons/file_type_stylus.svg) no-repeat;
+}
+
+.fileicon-sublime:before {
+    background: url(./icons/file_type_sublime.svg) no-repeat;
+}
+
+.fileicon-subversion:before {
+    background: url(./icons/file_type_subversion.svg) no-repeat;
+}
+
+.fileicon-svelte:before {
+    background: url(./icons/file_type_svelte.svg) no-repeat;
+}
+
+.fileicon-svelteconfig:before {
+    background: url(./icons/file_type_svelteconfig.svg) no-repeat;
+}
+
+.fileicon-svg:before {
+    background: url(./icons/file_type_svg.svg) no-repeat;
+}
+
+.fileicon-swagger:before {
+    background: url(./icons/file_type_swagger.svg) no-repeat;
+}
+
+.fileicon-swc:before {
+    background: url(./icons/file_type_swc.svg) no-repeat;
+}
+
+.fileicon-swift:before {
+    background: url(./icons/file_type_swift.svg) no-repeat;
+}
+
+.fileicon-swig:before {
+    background: url(./icons/file_type_swig.svg) no-repeat;
+}
+
+.fileicon-symfony:before {
+    background: url(./icons/file_type_symfony.svg) no-repeat;
+}
+
+.fileicon-systemd:before {
+    background: url(./icons/file_type_systemd.svg) no-repeat;
+}
+
+.fileicon-systemverilog:before {
+    background: url(./icons/file_type_systemverilog.svg) no-repeat;
+}
+
+.fileicon-t4tt:before {
+    background: url(./icons/file_type_t4tt.svg) no-repeat;
+}
+
+.fileicon-tailwind:before {
+    background: url(./icons/file_type_tailwind.svg) no-repeat;
+}
+
+.fileicon-tamagui:before {
+    background: url(./icons/file_type_tamagui.svg) no-repeat;
+}
+
+.fileicon-taskfile:before {
+    background: url(./icons/file_type_taskfile.svg) no-repeat;
+}
+
+.fileicon-tauri:before {
+    background: url(./icons/file_type_tauri.svg) no-repeat;
+}
+
+.fileicon-tcl:before {
+    background: url(./icons/file_type_tcl.svg) no-repeat;
+}
+
+.fileicon-teal:before {
+    background: url(./icons/file_type_teal.svg) no-repeat;
+}
+
+.fileicon-tera:before {
+    background: url(./icons/file_type_tera.svg) no-repeat;
+}
+
+.fileicon-terraform:before {
+    background: url(./icons/file_type_terraform.svg) no-repeat;
+}
+
+.fileicon-test:before {
+    background: url(./icons/file_type_test.svg) no-repeat;
+}
+
+.fileicon-testcafe:before {
+    background: url(./icons/file_type_testcafe.svg) no-repeat;
+}
+
+.fileicon-testjs:before {
+    background: url(./icons/file_type_testjs.svg) no-repeat;
+}
+
+.fileicon-testts:before {
+    background: url(./icons/file_type_testts.svg) no-repeat;
+}
+
+.fileicon-tex:before {
+    background: url(./icons/file_type_tex.svg) no-repeat;
+}
+
+.fileicon-text:before {
+    background: url(./icons/file_type_text.svg) no-repeat;
+}
+
+.fileicon-textile:before {
+    background: url(./icons/file_type_textile.svg) no-repeat;
+}
+
+.fileicon-tfs:before {
+    background: url(./icons/file_type_tfs.svg) no-repeat;
+}
+
+.fileicon-tiltfile:before {
+    background: url(./icons/file_type_tiltfile.svg) no-repeat;
+}
+
+.fileicon-todo:before {
+    background: url(./icons/file_type_todo.svg) no-repeat;
+}
+
+.fileicon-toit:before {
+    background: url(./icons/file_type_toit.svg) no-repeat;
+}
+
+.fileicon-toml:before {
+    background: url(./icons/file_type_toml.svg) no-repeat;
+}
+
+.fileicon-tox:before {
+    background: url(./icons/file_type_tox.svg) no-repeat;
+}
+
+.fileicon-travis:before {
+    background: url(./icons/file_type_travis.svg) no-repeat;
+}
+
+.fileicon-tree:before {
+    background: url(./icons/file_type_tree.svg) no-repeat;
+}
+
+.fileicon-tres:before {
+    background: url(./icons/file_type_tres.svg) no-repeat;
+}
+
+.fileicon-truffle:before {
+    background: url(./icons/file_type_truffle.svg) no-repeat;
+}
+
+.fileicon-trunk:before {
+    background: url(./icons/file_type_trunk.svg) no-repeat;
+}
+
+.fileicon-tsbuildinfo:before {
+    background: url(./icons/file_type_tsbuildinfo.svg) no-repeat;
+}
+
+.fileicon-tscn:before {
+    background: url(./icons/file_type_tscn.svg) no-repeat;
+}
+
+.fileicon-tsconfig:before {
+    background: url(./icons/file_type_tsconfig.svg) no-repeat;
+}
+
+.fileicon-tsconfig:before {
+    background: url(./icons/file_type_tsconfig.svg) no-repeat;
+}
+
+.fileicon-tslint:before {
+    background: url(./icons/file_type_tslint.svg) no-repeat;
+}
+
+.fileicon-tt:before {
+    background: url(./icons/file_type_tt.svg) no-repeat;
+}
+
+.fileicon-ttcn:before {
+    background: url(./icons/file_type_ttcn.svg) no-repeat;
+}
+
+.fileicon-tuc:before {
+    background: url(./icons/file_type_tuc.svg) no-repeat;
+}
+
+.fileicon-turbo:before {
+    background: url(./icons/file_type_turbo.svg) no-repeat;
+}
+
+.fileicon-twig:before {
+    background: url(./icons/file_type_twig.svg) no-repeat;
+}
+
+.fileicon-typedoc:before {
+    background: url(./icons/file_type_typedoc.svg) no-repeat;
+}
+
+.fileicon-typescript:before {
+    background: url(./icons/file_type_typescript.svg) no-repeat;
+}
+
+.fileicon-typescriptdef:before {
+    background: url(./icons/file_type_typescriptdef.svg) no-repeat;
+}
+
+.fileicon-typescript:before {
+    background: url(./icons/file_type_typescript.svg) no-repeat;
+}
+
+.fileicon-typo3:before {
+    background: url(./icons/file_type_typo3.svg) no-repeat;
+}
+
+.fileicon-uiua:before {
+    background: url(./icons/file_type_uiua.svg) no-repeat;
+}
+
+.fileicon-unibeautify:before {
+    background: url(./icons/file_type_unibeautify.svg) no-repeat;
+}
+
+.fileicon-unison:before {
+    background: url(./icons/file_type_unison.svg) no-repeat;
+}
+
+.fileicon-unlicense:before {
+    background: url(./icons/file_type_unlicense.svg) no-repeat;
+}
+
+.fileicon-unocss:before {
+    background: url(./icons/file_type_unocss.svg) no-repeat;
+}
+
+.fileicon-vagrant:before {
+    background: url(./icons/file_type_vagrant.svg) no-repeat;
+}
+
+.fileicon-vala:before {
+    background: url(./icons/file_type_vala.svg) no-repeat;
+}
+
+.fileicon-vanilla:before {
+    background: url(./icons/file_type_vanilla.svg) no-repeat;
+}
+
+.fileicon-vapi:before {
+    background: url(./icons/file_type_vapi.svg) no-repeat;
+}
+
+.fileicon-vapor:before {
+    background: url(./icons/file_type_vapor.svg) no-repeat;
+}
+
+.fileicon-vash:before {
+    background: url(./icons/file_type_vash.svg) no-repeat;
+}
+
+.fileicon-vb:before {
+    background: url(./icons/file_type_vb.svg) no-repeat;
+}
+
+.fileicon-vba:before {
+    background: url(./icons/file_type_vba.svg) no-repeat;
+}
+
+.fileicon-vbhtml:before {
+    background: url(./icons/file_type_vbhtml.svg) no-repeat;
+}
+
+.fileicon-vbproj:before {
+    background: url(./icons/file_type_vbproj.svg) no-repeat;
+}
+
+.fileicon-vcxproj:before {
+    background: url(./icons/file_type_vcxproj.svg) no-repeat;
+}
+
+.fileicon-velocity:before {
+    background: url(./icons/file_type_velocity.svg) no-repeat;
+}
+
+.fileicon-vercel:before {
+    background: url(./icons/file_type_vercel.svg) no-repeat;
+}
+
+.fileicon-verilog:before {
+    background: url(./icons/file_type_verilog.svg) no-repeat;
+}
+
+.fileicon-vhdl:before {
+    background: url(./icons/file_type_vhdl.svg) no-repeat;
+}
+
+.fileicon-video:before {
+    background: url(./icons/file_type_video.svg) no-repeat;
+}
+
+.fileicon-view:before {
+    background: url(./icons/file_type_view.svg) no-repeat;
+}
+
+.fileicon-vim:before {
+    background: url(./icons/file_type_vim.svg) no-repeat;
+}
+
+.fileicon-vite:before {
+    background: url(./icons/file_type_vite.svg) no-repeat;
+}
+
+.fileicon-vitest:before {
+    background: url(./icons/file_type_vitest.svg) no-repeat;
+}
+
+.fileicon-vlang:before {
+    background: url(./icons/file_type_vlang.svg) no-repeat;
+}
+
+.fileicon-volt:before {
+    background: url(./icons/file_type_volt.svg) no-repeat;
+}
+
+.fileicon-vscode-insiders:before {
+    background: url(./icons/file_type_vscode-insiders.svg) no-repeat;
+}
+
+.fileicon-vscode:before {
+    background: url(./icons/file_type_vscode.svg) no-repeat;
+}
+
+.fileicon-vscode2:before {
+    background: url(./icons/file_type_vscode2.svg) no-repeat;
+}
+
+.fileicon-vscode3:before {
+    background: url(./icons/file_type_vscode3.svg) no-repeat;
+}
+
+.fileicon-vsix:before {
+    background: url(./icons/file_type_vsix.svg) no-repeat;
+}
+
+.fileicon-vsixmanifest:before {
+    background: url(./icons/file_type_vsixmanifest.svg) no-repeat;
+}
+
+.fileicon-vue:before {
+    background: url(./icons/file_type_vue.svg) no-repeat;
+}
+
+.fileicon-vueconfig:before {
+    background: url(./icons/file_type_vueconfig.svg) no-repeat;
+}
+
+.fileicon-wallaby:before {
+    background: url(./icons/file_type_wallaby.svg) no-repeat;
+}
+
+.fileicon-wally:before {
+    background: url(./icons/file_type_wally.svg) no-repeat;
+}
+
+.fileicon-wasm:before {
+    background: url(./icons/file_type_wasm.svg) no-repeat;
+}
+
+.fileicon-watchmanconfig:before {
+    background: url(./icons/file_type_watchmanconfig.svg) no-repeat;
+}
+
+.fileicon-wdio:before {
+    background: url(./icons/file_type_wdio.svg) no-repeat;
+}
+
+.fileicon-webpack:before {
+    background: url(./icons/file_type_webpack.svg) no-repeat;
+}
+
+.fileicon-wenyan:before {
+    background: url(./icons/file_type_wenyan.svg) no-repeat;
+}
+
+.fileicon-wercker:before {
+    background: url(./icons/file_type_wercker.svg) no-repeat;
+}
+
+.fileicon-wgsl:before {
+    background: url(./icons/file_type_wgsl.svg) no-repeat;
+}
+
+.fileicon-wikitext:before {
+    background: url(./icons/file_type_wikitext.svg) no-repeat;
+}
+
+.fileicon-windi:before {
+    background: url(./icons/file_type_windi.svg) no-repeat;
+}
+
+.fileicon-wit:before {
+    background: url(./icons/file_type_wit.svg) no-repeat;
+}
+
+.fileicon-wolfram:before {
+    background: url(./icons/file_type_wolfram.svg) no-repeat;
+}
+
+.fileicon-word:before {
+    background: url(./icons/file_type_word.svg) no-repeat;
+}
+
+.fileicon-word2:before {
+    background: url(./icons/file_type_word2.svg) no-repeat;
+}
+
+.fileicon-wpml:before {
+    background: url(./icons/file_type_wpml.svg) no-repeat;
+}
+
+.fileicon-wurst:before {
+    background: url(./icons/file_type_wurst.svg) no-repeat;
+}
+
+.fileicon-wxml:before {
+    background: url(./icons/file_type_wxml.svg) no-repeat;
+}
+
+.fileicon-wxss:before {
+    background: url(./icons/file_type_wxss.svg) no-repeat;
+}
+
+.fileicon-xcode:before {
+    background: url(./icons/file_type_xcode.svg) no-repeat;
+}
+
+.fileicon-xfl:before {
+    background: url(./icons/file_type_xfl.svg) no-repeat;
+}
+
+.fileicon-xib:before {
+    background: url(./icons/file_type_xib.svg) no-repeat;
+}
+
+.fileicon-xliff:before {
+    background: url(./icons/file_type_xliff.svg) no-repeat;
+}
+
+.fileicon-xmake:before {
+    background: url(./icons/file_type_xmake.svg) no-repeat;
+}
+
+.fileicon-xml:before {
+    background: url(./icons/file_type_xml.svg) no-repeat;
+}
+
+.fileicon-xquery:before {
+    background: url(./icons/file_type_xquery.svg) no-repeat;
+}
+
+.fileicon-xsl:before {
+    background: url(./icons/file_type_xsl.svg) no-repeat;
+}
+
+.fileicon-yacc:before {
+    background: url(./icons/file_type_yacc.svg) no-repeat;
+}
+
+.fileicon-yaml:before {
+    background: url(./icons/file_type_yaml.svg) no-repeat;
+}
+
+.fileicon-yamllint:before {
+    background: url(./icons/file_type_yamllint.svg) no-repeat;
+}
+
+.fileicon-yandex:before {
+    background: url(./icons/file_type_yandex.svg) no-repeat;
+}
+
+.fileicon-yang:before {
+    background: url(./icons/file_type_yang.svg) no-repeat;
+}
+
+.fileicon-yarn:before {
+    background: url(./icons/file_type_yarn.svg) no-repeat;
+}
+
+.fileicon-yeoman:before {
+    background: url(./icons/file_type_yeoman.svg) no-repeat;
+}
+
+.fileicon-zig:before {
+    background: url(./icons/file_type_zig.svg) no-repeat;
+}
+
+.fileicon-zip:before {
+    background: url(./icons/file_type_zip.svg) no-repeat;
+}
+
+.fileicon-zip2:before {
+    background: url(./icons/file_type_zip2.svg) no-repeat;
+}
+
+.fileicon-mix:before {
+    background: url(./icons/file_type_mix.png) no-repeat;
+    width: 16px;
+    height: 16px;
+    top: 4px;
+}
+
+.fileicon-mil:before {
+    background: url(./icons/file_type_mil.png) no-repeat;
+    width: 16px;
+    height: 16px;
+    top: 4px;
+}
+
+.fileicon-shell:before {
+    background: url(./icons/file_type_shell.svg) no-repeat;
+}
+
+.fileicon-api_extractor:before {
+    background: url(./icons/file_type_api_extractor.svg) no-repeat;
+}

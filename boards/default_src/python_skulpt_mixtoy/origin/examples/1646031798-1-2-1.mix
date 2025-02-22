@@ -1,0 +1,1 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><block type="settedSimpleMap" id="s}/I)ojO+hD;T_+lom-c" x="426" y="123"><field name="level">4</field><next><block type="initialize" id="zp^+tz8}o3@]wEz(=s@+"><value name="character"><shadow type="game_get_character_img" id="KTDrJ;$Z_I^v//(HM~;H"><field name="type">'pegman'</field></shadow></value></block></next></block></xml>

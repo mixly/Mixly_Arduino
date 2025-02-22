@@ -1,0 +1,13 @@
+{
+    "language": "Python",
+    "nav": {
+        "webrun": true,
+        "webcancel": true,
+        "save": {
+            "py": true
+        },
+        "setting": {
+            "pythonToBlockly": true
+        }
+    }
+}

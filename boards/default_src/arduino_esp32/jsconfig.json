@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": "./",
+        "paths": {
+            "@mixly/arduino": [
+                "../arduino"
+            ],
+            "@mixly/arduino-avr": [
+                "../arduino_avr"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}

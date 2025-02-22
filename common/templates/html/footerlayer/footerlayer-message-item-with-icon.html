@@ -1,0 +1,23 @@
+<div class="toast show text-bg-{{ d.style }}" role="alert" aria-live="assertive" aria-atomic="true" style="margin-bottom: 8px;">
+    <div class="toast-header">
+        <img src="{{ d.src }}" width="22" height="22" class="rounded me-2">
+        <strong class="me-auto">{{-d.name}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        {{-d.message}}
+        {{# if (d.btns && d.btns.length) { }}
+        <div class="mt-2 pt-2 border-top btns">
+            {{# if (d.checkbox.show) { }}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="" id="{{-d.checkbox.id}}" {{d.checkbox.checked}}>
+                    <label class="form-check-label" for="{{-d.checkbox.id}}">{{d.checkbox.title}}</label>
+                </div>
+            {{# } }}
+            {{# layui.each(d.btns, function(index, item){ }}
+                <button type="button" m-id="{{ item.mId }}" class="btn btn-{{ item.style }} btn-sm">{{ item.text }}</button>
+            {{# }); }}
+        </div>
+        {{# } }}
+    </div>
+</div>

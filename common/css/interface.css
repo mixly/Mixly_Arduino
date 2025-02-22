@@ -1,0 +1,55 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: #fff;
+    margin: 0;
+    overflow: hidden;
+}
+
+body[class="dark"] {
+    background-color: #181818 !important;
+    color: #fff;
+}
+
+body[class="light"] {
+    background-color: #fff !important;
+}
+
+.setFontSize {
+    position: absolute;
+    right: 20px;
+    background-image: url('../media/sprites.png');
+    width: 32px;
+    height: 32px;
+    cursor:hand;
+    display:none;
+}
+
+.setFontSize[m-id="resetFontSize"] {
+    bottom: 120px;
+    background-position: -96px -92px;
+}
+
+.setFontSize[m-id="increaseFontSize"] {
+    bottom: 72px;
+    background-position: -32px -92px;
+}
+
+.setFontSize[m-id="decreaseFontSize"] {
+    bottom: 36px;
+    background-position: -64px -92px;
+}
+
+#content_blocks > div > div {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+
+/*Blocks*/
+span#span_blocks, span#span_arduino, select#languageMenu {
+    color: #fff;
+}

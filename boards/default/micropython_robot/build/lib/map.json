@@ -1,0 +1,64 @@
+{
+    "bot51": {
+        "__require__": [
+            "uframebuf",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 10425,
+        "__name__": "bot51.py"
+    },
+    "feiyi": {
+        "__require__": [
+            "time",
+            "gc",
+            "machine",
+            "ws2812",
+            "music",
+            "mxc6655xa",
+            "ltr553als",
+            "rc522",
+            "bot51",
+            "mmc5603"
+        ],
+        "__file__": true,
+        "__size__": 3586,
+        "__name__": "feiyi.py"
+    },
+    "mixbot": {
+        "__require__": [
+            "time",
+            "gc",
+            "random",
+            "uframebuf",
+            "micropython",
+            "machine",
+            "ws2812",
+            "music",
+            "icm42670"
+        ],
+        "__file__": true,
+        "__size__": 10967,
+        "__name__": "mixbot.py"
+    },
+    "mixbot_ext": {
+        "__require__": [
+            "i2cdevice",
+            "mixbot"
+        ],
+        "__file__": true,
+        "__size__": 993,
+        "__name__": "mixbot_ext.py"
+    },
+    "rm_e1": {
+        "__require__": [
+            "time",
+            "gc",
+            "machine",
+            "ws2812"
+        ],
+        "__file__": true,
+        "__size__": 4138,
+        "__name__": "rm_e1.py"
+    }
+}

@@ -1,0 +1,4 @@
+harmfulrefuse
+kitchenwaste
+othergarbage
+recyclable

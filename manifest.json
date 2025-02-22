@@ -1,0 +1,22 @@
+{
+  "short_name": "Mixly3.0",
+  "name": "Mixly3.0 Online",
+  "icons": [
+    {
+      "src": "files/icons/mixly-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "files/icons/mixly-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "./",
+  "display": "standalone",
+  "scope": "./",
+  "id": "./"
+}

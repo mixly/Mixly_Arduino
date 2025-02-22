@@ -1,0 +1,31 @@
+{
+    "version": "Mixly 3.0 rc0",
+    "board": {
+        "url": "http://download.mixlylibs.cloud/mixly3-packages/cloud-boards/boards.json"
+    },
+    "defaultPath": {
+        "win32": {
+            "arduinoCli": "None",
+            "python3": "None"
+        },
+        "darwin": {
+            "arduinoCli": "None",
+            "python3": "None"
+        },
+        "linux": {
+            "arduinoCli": "None",
+            "python3": "None"
+        }
+    },
+    "webSocket": {
+        "enabled": false
+    },
+    "webCompiler": {
+        "enabled": false
+    },
+    "behaviorRecord": {
+        "url": "",
+        "enabled": false
+    },
+    "debug": false
+}

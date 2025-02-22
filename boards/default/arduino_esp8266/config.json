@@ -1,0 +1,1101 @@
+{
+    "board": {
+        "Generic ESP8266 Module": {
+            "key": "esp8266:esp8266:generic",
+            "config": [
+                {
+                    "key": "xtal",
+                    "label": "CPU Frequency",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_XTAL",
+                    "options": [
+                        {
+                            "key": "80",
+                            "label": "80 MHz"
+                        }, {
+                            "key": "160",
+                            "label": "160 MHz"
+                        }
+                    ]
+                }, {
+                    "key": "vt",
+                    "label": "VTables",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_VT",
+                    "options": [
+                        {
+                            "key": "flash",
+                            "label": "Flash"
+                        }, {
+                            "key": "heap",
+                            "label": "Heap"
+                        }, {
+                            "key": "iram",
+                            "label": "IRAM"
+                        }
+                    ]
+                }, {
+                    "key": "exception",
+                    "label": "C++ Exceptions",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_EXCEPTION",
+                    "options": [
+                        {
+                            "key": "disabled",
+                            "label": "Disabled (new aborts on oom)"
+                        }, {
+                            "key": "enabled",
+                            "label": "Enabled"
+                        }
+                    ]
+                }, {
+                    "key": "stacksmash",
+                    "label": "Stack Protection",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_STACKSMASH",
+                    "options": [
+                        {
+                            "key": "disabled",
+                            "label": "Disabled"
+                        }, {
+                            "key": "enabled",
+                            "label": "Enabled"
+                        }
+                    ]
+                }, {
+                    "key": "ssl",
+                    "label": "SSL Support",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_SSL",
+                    "options": [
+                        {
+                            "key": "all",
+                            "label": "All SSL ciphers (most compatible)"
+                        }, {
+                            "key": "basic",
+                            "label": "Basic SSL ciphers (lower ROM use)"
+                        }
+                    ]
+                }, {
+                    "key": "mmu",
+                    "label": "MMU",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_MMU",
+                    "options": [
+                        {
+                            "key": "3232",
+                            "label": "32KB cache + 32KB IRAM (balanced)"
+                        }, {
+                            "key": "4816",
+                            "label": "16KB cache + 48KB IRAM (IRAM)"
+                        }, {
+                            "key": "4816H",
+                            "label": "16KB cache + 48KB IRAM and 2nd Heap (shared)"
+                        }, {
+                            "key": "3216",
+                            "label": "16KB cache + 32KB IRAM + 16KB 2nd Heap (not shared)"
+                        }, {
+                            "key": "ext128k",
+                            "label": "128K External 23LC1024"
+                        }, {
+                            "key": "ext1024k",
+                            "label": "1M External 64 MBit PSRAM"
+                        }
+                    ]
+                }, {
+                    "key": "non32xfer",
+                    "label": "Non-32-Bit Access",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_NON32XFER",
+                    "options": [
+                        {
+                            "key": "fast",
+                            "label": "Use pgm_read macros for IRAM/PROGMEM"
+                        }, {
+                            "key": "safe",
+                            "label": "Byte/Word access to IRAM/PROGMEM (very slow)"
+                        }
+                    ]
+                }, {
+                    "key": "ResetMethod",
+                    "label": "Reset Method",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_RESET_METHOD",
+                    "options": [
+                        {
+                            "key": "nodemcu",
+                            "label": "dtr (aka nodemcu)"
+                        }, {
+                            "key": "ck",
+                            "label": "no dtr (aka ck)"
+                        }, {
+                            "key": "nodtr_nosync",
+                            "label": "no dtr, no_sync"
+                        }
+                    ]
+                }, {
+                    "key": "CrystalFreq",
+                    "label": "Crystal Frequency",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_CRYSTAL_FREQ",
+                    "options": [
+                        {
+                            "key": "26",
+                            "label": "26 MHz"
+                        }, {
+                            "key": "40",
+                            "label": "40 MHz"
+                        }
+                    ]
+                }, {
+                    "key": "FlashFreq",
+                    "label": "Flash Frequency",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_FLASH_FREQ",
+                    "options": [
+                        {
+                            "key": "40",
+                            "label": "40MHz"
+                        }, {
+                            "key": "80",
+                            "label": "80MHz"
+                        }, {
+                            "key": "20",
+                            "label": "20MHz"
+                        }, {
+                            "key": "26",
+                            "label": "26MHz"
+                        }
+                    ]
+                }, {
+                    "key": "FlashMode",
+                    "label": "Flash Mode",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_FLASH_MODE",
+                    "options": [
+                        {
+                            "key": "dout",
+                            "label": "DOUT (compatible)"
+                        }, {
+                            "key": "dio",
+                            "label": "DIO"
+                        }, {
+                            "key": "qout",
+                            "label": "QOUT"
+                        }, {
+                            "key": "qio",
+                            "label": "QIO (fast)"
+                        }
+                    ]
+                }, {
+                    "key": "eesz",
+                    "label": "Flash Size",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_EESZ",
+                    "options": [
+                        {
+                            "key": "1M64",
+                            "label": "1MB (FS:64KB OTA:~470KB)"
+                        }, {
+                            "key": "1M128",
+                            "label": "1MB (FS:128KB OTA:~438KB)"
+                        }, {
+                            "key": "1M144",
+                            "label": "1MB (FS:144KB OTA:~430KB)"
+                        }, {
+                            "key": "1M160",
+                            "label": "1MB (FS:160KB OTA:~422KB)"
+                        }, {
+                            "key": "1M192",
+                            "label": "1MB (FS:192KB OTA:~406KB)"
+                        }, {
+                            "key": "1M256",
+                            "label": "1MB (FS:256KB OTA:~374KB)"
+                        }, {
+                            "key": "1M512",
+                            "label": "1MB (FS:512KB OTA:~246KB)"
+                        }, {
+                            "key": "1M",
+                            "label": "1MB (FS:none OTA:~502KB)"
+                        }, {
+                            "key": "2M64",
+                            "label": "2MB (FS:64KB OTA:~992KB)"
+                        }, {
+                            "key": "2M128",
+                            "label": "2MB (FS:128KB OTA:~960KB)"
+                        }, {
+                            "key": "2M256",
+                            "label": "2MB (FS:256KB OTA:~896KB)"
+                        }, {
+                            "key": "2M512",
+                            "label": "2MB (FS:512KB OTA:~768KB)"
+                        }, {
+                            "key": "2M1M",
+                            "label": "2MB (FS:1MB OTA:~512KB)"
+                        }, {
+                            "key": "2M",
+                            "label": "2MB (FS:none OTA:~1019KB)"
+                        }, {
+                            "key": "4M2M",
+                            "label": "4MB (FS:2MB OTA:~1019KB)"
+                        }, {
+                            "key": "4M3M",
+                            "label": "4MB (FS:3MB OTA:~512KB)"
+                        }, {
+                            "key": "4M1M",
+                            "label": "4MB (FS:1MB OTA:~1019KB)"
+                        }, {
+                            "key": "4M",
+                            "label": "4MB (FS:none OTA:~1019KB)"
+                        }, {
+                            "key": "8M6M",
+                            "label": "8MB (FS:6MB OTA:~1019KB)"
+                        }, {
+                            "key": "8M7M",
+                            "label": "8MB (FS:7MB OTA:~512KB)"
+                        }, {
+                            "key": "16M14M",
+                            "label": "16MB (FS:14MB OTA:~1019KB)"
+                        }, {
+                            "key": "16M15M",
+                            "label": "16MB (FS:15MB OTA:~512KB)"
+                        }, {
+                            "key": "512K32",
+                            "label": "512KB (FS:32KB OTA:~230KB)"
+                        }, {
+                            "key": "512K64",
+                            "label": "512KB (FS:64KB OTA:~214KB)"
+                        }, {
+                            "key": "512K128",
+                            "label": "512KB (FS:128KB OTA:~182KB)"
+                        }, {
+                            "key": "512K",
+                            "label": "512KB (FS:none OTA:~246KB)"
+                        }
+                    ]
+                }, {
+                    "key": "led",
+                    "label": "Builtin Led",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_LED",
+                    "options": [
+                        {
+                            "key": "2",
+                            "label": "2"
+                        }, {
+                            "key": "0",
+                            "label": "0"
+                        }, {
+                            "key": "1",
+                            "label": "1"
+                        }, {
+                            "key": "3",
+                            "label": "3"
+                        }, {
+                            "key": "4",
+                            "label": "4"
+                        }, {
+                            "key": "5",
+                            "label": "5"
+                        }, {
+                            "key": "6",
+                            "label": "6"
+                        }, {
+                            "key": "7",
+                            "label": "7"
+                        }, {
+                            "key": "8",
+                            "label": "8"
+                        }, {
+                            "key": "9",
+                            "label": "9"
+                        }, {
+                            "key": "10",
+                            "label": "10"
+                        }, {
+                            "key": "11",
+                            "label": "11"
+                        }, {
+                            "key": "12",
+                            "label": "12"
+                        }, {
+                            "key": "13",
+                            "label": "13"
+                        }, {
+                            "key": "14",
+                            "label": "14"
+                        }, {
+                            "key": "15",
+                            "label": "15"
+                        }, {
+                            "key": "16",
+                            "label": "16"
+                        }
+                    ]
+                }, {
+                    "key": "sdk",
+                    "label": "NONOS SDK Version",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_SDK",
+                    "options": [
+                        {
+                            "key": "nonosdk_190703",
+                            "label": "nonos-sdk 2.2.1+100 (190703)"
+                        }, {
+                            "key": "nonosdk_191122",
+                            "label": "nonos-sdk 2.2.1+119 (191122)"
+                        }, {
+                            "key": "nonosdk_191105",
+                            "label": "nonos-sdk 2.2.1+113 (191105)"
+                        }, {
+                            "key": "nonosdk_191024",
+                            "label": "nonos-sdk 2.2.1+111 (191024)"
+                        }, {
+                            "key": "nonosdk221",
+                            "label": "nonos-sdk 2.2.1 (legacy)"
+                        }
+                    ]
+                }, {
+                    "key": "ip",
+                    "label": "lwIP Variant",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_IP",
+                    "options": [
+                        {
+                            "key": "lm2f",
+                            "label": "v2 Lower Memory"
+                        }, {
+                            "key": "hb2f",
+                            "label": "v2 Higher Bandwidth"
+                        }, {
+                            "key": "lm2n",
+                            "label": "v2 Lower Memory (no features)"
+                        }, {
+                            "key": "hb2n",
+                            "label": "v2 Higher Bandwidth (no features)"
+                        }, {
+                            "key": "lm6f",
+                            "label": "v2 IPv6 Lower Memory"
+                        }, {
+                            "key": "hb6f",
+                            "label": "v2 IPv6 Higher Bandwidth"
+                        }
+                    ]
+                }, {
+                    "key": "dbg",
+                    "label": "Debug port",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_DBG",
+                    "options": [
+                        {
+                            "key": "Disabled",
+                            "label": "Disabled"
+                        }, {
+                            "key": "Serial",
+                            "label": "Serial"
+                        }, {
+                            "key": "Serial1",
+                            "label": "Serial1"
+                        }
+                    ]
+                }, {
+                    "key": "wipe",
+                    "label": "Erase Flash",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_WIPE",
+                    "options": [
+                        {
+                            "key": "none",
+                            "label": "Only Sketch"
+                        }, {
+                            "key": "sdk",
+                            "label": "Sketch + WiFi Settings"
+                        }, {
+                            "key": "all",
+                            "label": "All Flash Contents"
+                        }
+                    ]
+                }, {
+                    "key": "baud",
+                    "label": "Upload Speed",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_BAUD",
+                    "options": [
+                        {
+                            "key": "115200",
+                            "label": "115200"
+                        }, {
+                            "key": "57600",
+                            "label": "57600"
+                        }, {
+                            "key": "921600",
+                            "label": "921600"
+                        }, {
+                            "key": "3000000",
+                            "label": "3000000"
+                        }
+                    ]
+                }
+            ]
+        },
+        "NodeMCU 0.9 (ESP-12 Module)": {
+            "key": "esp8266:esp8266:nodemcu",
+            "config": [
+                {
+                    "key": "xtal",
+                    "label": "CPU Frequency",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_XTAL",
+                    "options": [
+                        {
+                            "key": "80",
+                            "label": "80 MHz"
+                        }, {
+                            "key": "160",
+                            "label": "160 MHz"
+                        }
+                    ]
+                }, {
+                    "key": "vt",
+                    "label": "VTables",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_VT",
+                    "options": [
+                        {
+                            "key": "flash",
+                            "label": "Flash"
+                        }, {
+                            "key": "heap",
+                            "label": "Heap"
+                        }, {
+                            "key": "iram",
+                            "label": "IRAM"
+                        }
+                    ]
+                }, {
+                    "key": "exception",
+                    "label": "C++ Exceptions",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_EXCEPTION",
+                    "options": [
+                        {
+                            "key": "disabled",
+                            "label": "Disabled (new aborts on oom)"
+                        }, {
+                            "key": "enabled",
+                            "label": "Enabled"
+                        }
+                    ]
+                }, {
+                    "key": "stacksmash",
+                    "label": "Stack Protection",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_STACKSMASH",
+                    "options": [
+                        {
+                            "key": "disabled",
+                            "label": "Disabled"
+                        }, {
+                            "key": "enabled",
+                            "label": "Enabled"
+                        }
+                    ]
+                }, {
+                    "key": "ssl",
+                    "label": "SSL Support",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_SSL",
+                    "options": [
+                        {
+                            "key": "all",
+                            "label": "All SSL ciphers (most compatible)"
+                        }, {
+                            "key": "basic",
+                            "label": "Basic SSL ciphers (lower ROM use)"
+                        }
+                    ]
+                }, {
+                    "key": "mmu",
+                    "label": "MMU",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_MMU",
+                    "options": [
+                        {
+                            "key": "3232",
+                            "label": "32KB cache + 32KB IRAM (balanced)"
+                        }, {
+                            "key": "4816",
+                            "label": "16KB cache + 48KB IRAM (IRAM)"
+                        }, {
+                            "key": "4816H",
+                            "label": "16KB cache + 48KB IRAM and 2nd Heap (shared)"
+                        }, {
+                            "key": "3216",
+                            "label": "16KB cache + 32KB IRAM + 16KB 2nd Heap (not shared)"
+                        }, {
+                            "key": "ext128k",
+                            "label": "128K External 23LC1024"
+                        }, {
+                            "key": "ext1024k",
+                            "label": "1M External 64 MBit PSRAM"
+                        }
+                    ]
+                }, {
+                    "key": "non32xfer",
+                    "label": "Non-32-Bit Access",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_NON32XFER",
+                    "options": [
+                        {
+                            "key": "fast",
+                            "label": "Use pgm_read macros for IRAM/PROGMEM"
+                        }, {
+                            "key": "safe",
+                            "label": "Byte/Word access to IRAM/PROGMEM (very slow)"
+                        }
+                    ]
+                }, {
+                    "key": "eesz",
+                    "label": "Flash Size",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_EESZ",
+                    "options": [
+                        {
+                            "key": "4M2M",
+                            "label": "4MB (FS:2MB OTA:~1019KB)"
+                        }, {
+                            "key": "4M3M",
+                            "label": "4MB (FS:3MB OTA:~512KB)"
+                        }, {
+                            "key": "4M1M",
+                            "label": "4MB (FS:1MB OTA:~1019KB)"
+                        }, {
+                            "key": "4M",
+                            "label": "4MB (FS:none OTA:~1019KB)"
+                        }
+                    ]
+                }, {
+                    "key": "ip",
+                    "label": "lwIP Variant",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_IP",
+                    "options": [
+                        {
+                            "key": "lm2f",
+                            "label": "v2 Lower Memory"
+                        }, {
+                            "key": "hb2f",
+                            "label": "v2 Higher Bandwidth"
+                        }, {
+                            "key": "lm2n",
+                            "label": "v2 Lower Memory (no features)"
+                        }, {
+                            "key": "hb2n",
+                            "label": "v2 Higher Bandwidth (no features)"
+                        }, {
+                            "key": "lm6f",
+                            "label": "v2 IPv6 Lower Memory"
+                        }, {
+                            "key": "hb6f",
+                            "label": "v2 IPv6 Higher Bandwidth"
+                        }
+                    ]
+                }, {
+                    "key": "dbg",
+                    "label": "Debug port",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_DBG",
+                    "options": [
+                        {
+                            "key": "Disabled",
+                            "label": "Disabled"
+                        }, {
+                            "key": "Serial",
+                            "label": "Serial"
+                        }, {
+                            "key": "Serial1",
+                            "label": "Serial1"
+                        }
+                    ]
+                }, {
+                    "key": "wipe",
+                    "label": "Erase Flash",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_WIPE",
+                    "options": [
+                        {
+                            "key": "none",
+                            "label": "Only Sketch"
+                        }, {
+                            "key": "sdk",
+                            "label": "Sketch + WiFi Settings"
+                        }, {
+                            "key": "all",
+                            "label": "All Flash Contents"
+                        }
+                    ]
+                }, {
+                    "key": "baud",
+                    "label": "Upload Speed",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_BAUD",
+                    "options": [
+                        {
+                            "key": "115200",
+                            "label": "115200"
+                        }, {
+                            "key": "57600",
+                            "label": "57600"
+                        }, {
+                            "key": "921600",
+                            "label": "921600"
+                        }, {
+                            "key": "3000000",
+                            "label": "3000000"
+                        }
+                    ]
+                }
+            ]
+        },
+        "NodeMCU 1.0 (ESP-12E Module)": {
+            "key": "esp8266:esp8266:nodemcuv2",
+            "config": [
+                {
+                    "key": "xtal",
+                    "label": "CPU Frequency",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_XTAL",
+                    "options": [
+                        {
+                            "key": "80",
+                            "label": "80 MHz"
+                        }, {
+                            "key": "160",
+                            "label": "160 MHz"
+                        }
+                    ]
+                }, {
+                    "key": "vt",
+                    "label": "VTables",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_VT",
+                    "options": [
+                        {
+                            "key": "flash",
+                            "label": "Flash"
+                        }, {
+                            "key": "heap",
+                            "label": "Heap"
+                        }, {
+                            "key": "iram",
+                            "label": "IRAM"
+                        }
+                    ]
+                }, {
+                    "key": "exception",
+                    "label": "C++ Exceptions",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_EXCEPTION",
+                    "options": [
+                        {
+                            "key": "disabled",
+                            "label": "Disabled (new aborts on oom)"
+                        }, {
+                            "key": "enabled",
+                            "label": "Enabled"
+                        }
+                    ]
+                }, {
+                    "key": "stacksmash",
+                    "label": "Stack Protection",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_STACKSMASH",
+                    "options": [
+                        {
+                            "key": "disabled",
+                            "label": "Disabled"
+                        }, {
+                            "key": "enabled",
+                            "label": "Enabled"
+                        }
+                    ]
+                }, {
+                    "key": "ssl",
+                    "label": "SSL Support",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_SSL",
+                    "options": [
+                        {
+                            "key": "all",
+                            "label": "All SSL ciphers (most compatible)"
+                        }, {
+                            "key": "basic",
+                            "label": "Basic SSL ciphers (lower ROM use)"
+                        }
+                    ]
+                }, {
+                    "key": "mmu",
+                    "label": "MMU",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_MMU",
+                    "options": [
+                        {
+                            "key": "3232",
+                            "label": "32KB cache + 32KB IRAM (balanced)"
+                        }, {
+                            "key": "4816",
+                            "label": "16KB cache + 48KB IRAM (IRAM)"
+                        }, {
+                            "key": "4816H",
+                            "label": "16KB cache + 48KB IRAM and 2nd Heap (shared)"
+                        }, {
+                            "key": "3216",
+                            "label": "16KB cache + 32KB IRAM + 16KB 2nd Heap (not shared)"
+                        }, {
+                            "key": "ext128k",
+                            "label": "128K External 23LC1024"
+                        }, {
+                            "key": "ext1024k",
+                            "label": "1M External 64 MBit PSRAM"
+                        }
+                    ]
+                }, {
+                    "key": "non32xfer",
+                    "label": "Non-32-Bit Access",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_NON32XFER",
+                    "options": [
+                        {
+                            "key": "fast",
+                            "label": "Use pgm_read macros for IRAM/PROGMEM"
+                        }, {
+                            "key": "safe",
+                            "label": "Byte/Word access to IRAM/PROGMEM (very slow)"
+                        }
+                    ]
+                }, {
+                    "key": "eesz",
+                    "label": "Flash Size",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_EESZ",
+                    "options": [
+                        {
+                            "key": "4M2M",
+                            "label": "4MB (FS:2MB OTA:~1019KB)"
+                        }, {
+                            "key": "4M3M",
+                            "label": "4MB (FS:3MB OTA:~512KB)"
+                        }, {
+                            "key": "4M1M",
+                            "label": "4MB (FS:1MB OTA:~1019KB)"
+                        }, {
+                            "key": "4M",
+                            "label": "4MB (FS:none OTA:~1019KB)"
+                        }
+                    ]
+                }, {
+                    "key": "led",
+                    "label": "Builtin Led",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_LED",
+                    "options": [
+                        {
+                            "key": "2",
+                            "label": "2"
+                        }, {
+                            "key": "16",
+                            "label": "16"
+                        }
+                    ]
+                }, {
+                    "key": "ip",
+                    "label": "lwIP Variant",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_IP",
+                    "options": [
+                        {
+                            "key": "lm2f",
+                            "label": "v2 Lower Memory"
+                        }, {
+                            "key": "hb2f",
+                            "label": "v2 Higher Bandwidth"
+                        }, {
+                            "key": "lm2n",
+                            "label": "v2 Lower Memory (no features)"
+                        }, {
+                            "key": "hb2n",
+                            "label": "v2 Higher Bandwidth (no features)"
+                        }, {
+                            "key": "lm6f",
+                            "label": "v2 IPv6 Lower Memory"
+                        }, {
+                            "key": "hb6f",
+                            "label": "v2 IPv6 Higher Bandwidth"
+                        }
+                    ]
+                }, {
+                    "key": "dbg",
+                    "label": "Debug port",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_DBG",
+                    "options": [
+                        {
+                            "key": "Disabled",
+                            "label": "Disabled"
+                        }, {
+                            "key": "Serial",
+                            "label": "Serial"
+                        }, {
+                            "key": "Serial1",
+                            "label": "Serial1"
+                        }
+                    ]
+                }, {
+                    "key": "wipe",
+                    "label": "Erase Flash",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_WIPE",
+                    "options": [
+                        {
+                            "key": "none",
+                            "label": "Only Sketch"
+                        }, {
+                            "key": "sdk",
+                            "label": "Sketch + WiFi Settings"
+                        }, {
+                            "key": "all",
+                            "label": "All Flash Contents"
+                        }
+                    ]
+                }, {
+                    "key": "baud",
+                    "label": "Upload Speed",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_BAUD",
+                    "options": [
+                        {
+                            "key": "115200",
+                            "label": "115200"
+                        }, {
+                            "key": "57600",
+                            "label": "57600"
+                        }, {
+                            "key": "921600",
+                            "label": "921600"
+                        }, {
+                            "key": "3000000",
+                            "label": "3000000"
+                        }
+                    ]
+                }
+            ]
+        },
+        "WeMos D1 R1": {
+            "key": "esp8266:esp8266:d1",
+            "config": [
+                {
+                    "key": "xtal",
+                    "label": "CPU Frequency",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_XTAL",
+                    "options": [
+                        {
+                            "key": "80",
+                            "label": "80 MHz"
+                        }, {
+                            "key": "160",
+                            "label": "160 MHz"
+                        }
+                    ]
+                }, {
+                    "key": "vt",
+                    "label": "VTables",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_VT",
+                    "options": [
+                        {
+                            "key": "flash",
+                            "label": "Flash"
+                        }, {
+                            "key": "heap",
+                            "label": "Heap"
+                        }, {
+                            "key": "iram",
+                            "label": "IRAM"
+                        }
+                    ]
+                }, {
+                    "key": "exception",
+                    "label": "C++ Exceptions",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_EXCEPTION",
+                    "options": [
+                        {
+                            "key": "disabled",
+                            "label": "Disabled (new aborts on oom)"
+                        }, {
+                            "key": "enabled",
+                            "label": "Enabled"
+                        }
+                    ]
+                }, {
+                    "key": "stacksmash",
+                    "label": "Stack Protection",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_STACKSMASH",
+                    "options": [
+                        {
+                            "key": "disabled",
+                            "label": "Disabled"
+                        }, {
+                            "key": "enabled",
+                            "label": "Enabled"
+                        }
+                    ]
+                }, {
+                    "key": "ssl",
+                    "label": "SSL Support",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_SSL",
+                    "options": [
+                        {
+                            "key": "all",
+                            "label": "All SSL ciphers (most compatible)"
+                        }, {
+                            "key": "basic",
+                            "label": "Basic SSL ciphers (lower ROM use)"
+                        }
+                    ]
+                }, {
+                    "key": "mmu",
+                    "label": "MMU",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_MMU",
+                    "options": [
+                        {
+                            "key": "3232",
+                            "label": "32KB cache + 32KB IRAM (balanced)"
+                        }, {
+                            "key": "4816",
+                            "label": "16KB cache + 48KB IRAM (IRAM)"
+                        }, {
+                            "key": "4816H",
+                            "label": "16KB cache + 48KB IRAM and 2nd Heap (shared)"
+                        }, {
+                            "key": "3216",
+                            "label": "16KB cache + 32KB IRAM + 16KB 2nd Heap (not shared)"
+                        }, {
+                            "key": "ext128k",
+                            "label": "128K External 23LC1024"
+                        }, {
+                            "key": "ext1024k",
+                            "label": "1M External 64 MBit PSRAM"
+                        }
+                    ]
+                }, {
+                    "key": "eesz",
+                    "label": "Flash Size",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_EESZ",
+                    "options": [
+                        {
+                            "key": "4M2M",
+                            "label": "4MB (FS:2MB OTA:~1019KB)"
+                        }, {
+                            "key": "4M3M",
+                            "label": "4MB (FS:3MB OTA:~512KB)"
+                        }, {
+                            "key": "4M1M",
+                            "label": "4MB (FS:1MB OTA:~1019KB)"
+                        }, {
+                            "key": "4M",
+                            "label": "4MB (FS:none OTA:~1019KB)"
+                        }
+                    ]
+                }, {
+                    "key": "ip",
+                    "label": "lwIP Variant",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_IP",
+                    "options": [
+                        {
+                            "key": "lm2f",
+                            "label": "v2 Lower Memory"
+                        }, {
+                            "key": "hb2f",
+                            "label": "v2 Higher Bandwidth"
+                        }, {
+                            "key": "lm2n",
+                            "label": "v2 Lower Memory (no features)"
+                        }, {
+                            "key": "hb2n",
+                            "label": "v2 Higher Bandwidth (no features)"
+                        }, {
+                            "key": "lm6f",
+                            "label": "v2 IPv6 Lower Memory"
+                        }, {
+                            "key": "hb6f",
+                            "label": "v2 IPv6 Higher Bandwidth"
+                        }
+                    ]
+                }, {
+                    "key": "dbg",
+                    "label": "Debug port",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_DBG",
+                    "options": [
+                        {
+                            "key": "Disabled",
+                            "label": "Disabled"
+                        }, {
+                            "key": "Serial",
+                            "label": "Serial"
+                        }, {
+                            "key": "Serial1",
+                            "label": "Serial1"
+                        }
+                    ]
+                }, {
+                    "key": "wipe",
+                    "label": "Erase Flash",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_WIPE",
+                    "options": [
+                        {
+                            "key": "none",
+                            "label": "Only Sketch"
+                        }, {
+                            "key": "sdk",
+                            "label": "Sketch + WiFi Settings"
+                        }, {
+                            "key": "all",
+                            "label": "All Flash Contents"
+                        }
+                    ]
+                }, {
+                    "key": "baud",
+                    "label": "Upload Speed",
+                    "messageId": "ESP8266_CONFIG_MESSAGE_BAUD",
+                    "options": [
+                        {
+                            "key": "115200",
+                            "label": "115200"
+                        }, {
+                            "key": "57600",
+                            "label": "57600"
+                        }, {
+                            "key": "921600",
+                            "label": "921600"
+                        }, {
+                            "key": "3000000",
+                            "label": "3000000"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "language": "C/C++",
+    "burn": "None",
+    "upload": {
+        "portSelect": "all"
+    },
+    "nav": {
+        "compile": true,
+        "upload": true,
+        "save": {
+            "ino": true,
+            "bin": true
+        },
+        "setting": {
+            "thirdPartyLibrary": true
+        }
+    },
+    "serial": {
+        "ctrlCBtn": false,
+        "ctrlDBtn": false,
+        "baudRates": 9600,
+        "yMax": 100,
+        "yMin": 0,
+        "pointNum": 100,
+        "rts": true,
+        "dtr": true
+    },
+    "lib": {
+        "mixly": {
+            "url": [
+                "http://download.mixlylibs.cloud/mixly3-packages/cloud-libs/arduino_esp8266/libs.json"
+            ]
+        }
+    },
+    "web": {
+        "com": "serial",
+        "upload": {
+            "reset": [
+                {
+                    "dtr": true,
+                    "rts": true
+                }, {
+                    "sleep": 500
+                }, {
+                    "dtr": false,
+                    "rts": true
+                }, {
+                    "sleep": 500
+                }, {
+                    "dtr": true,
+                    "rts": true
+                }, {
+                    "sleep": 500
+                }
+            ]
+        }
+    }
+}

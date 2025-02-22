@@ -1,0 +1,1016 @@
+html[data-bs-theme=dark] .markdown-body {
+  color-scheme: dark;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  color: #c9d1d9;
+  background-color: #1e1e1e;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+html[data-bs-theme=dark] .markdown-body .octicon {
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+html[data-bs-theme=dark] .markdown-body h1:hover .anchor .octicon-link:before,
+html[data-bs-theme=dark] .markdown-body h2:hover .anchor .octicon-link:before,
+html[data-bs-theme=dark] .markdown-body h3:hover .anchor .octicon-link:before,
+html[data-bs-theme=dark] .markdown-body h4:hover .anchor .octicon-link:before,
+html[data-bs-theme=dark] .markdown-body h5:hover .anchor .octicon-link:before,
+html[data-bs-theme=dark] .markdown-body h6:hover .anchor .octicon-link:before {
+  width: 16px;
+  height: 16px;
+  content: ' ';
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+}
+
+html[data-bs-theme=dark] .markdown-body details,
+html[data-bs-theme=dark] .markdown-body figcaption,
+html[data-bs-theme=dark] .markdown-body figure {
+  display: block;
+}
+
+html[data-bs-theme=dark] .markdown-body summary {
+  display: list-item;
+}
+
+html[data-bs-theme=dark] .markdown-body [hidden] {
+  display: none !important;
+}
+
+html[data-bs-theme=dark] .markdown-body a {
+  background-color: transparent;
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+html[data-bs-theme=dark] .markdown-body abbr[title] {
+  border-bottom: none;
+  text-decoration: underline dotted;
+}
+
+html[data-bs-theme=dark] .markdown-body b,
+html[data-bs-theme=dark] .markdown-body strong {
+  font-weight: 600;
+}
+
+html[data-bs-theme=dark] .markdown-body dfn {
+  font-style: italic;
+}
+
+html[data-bs-theme=dark] .markdown-body h1 {
+  margin: .67em 0;
+  font-weight: 600;
+  padding-bottom: .3em;
+  font-size: 2em;
+  border-bottom: 1px solid #21262d;
+}
+
+html[data-bs-theme=dark] .markdown-body mark {
+  background-color: rgba(187,128,9,0.15);
+  color: #c9d1d9;
+}
+
+html[data-bs-theme=dark] .markdown-body small {
+  font-size: 90%;
+}
+
+html[data-bs-theme=dark] .markdown-body sub,
+html[data-bs-theme=dark] .markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+html[data-bs-theme=dark] .markdown-body sub {
+  bottom: -0.25em;
+}
+
+html[data-bs-theme=dark] .markdown-body sup {
+  top: -0.5em;
+}
+
+html[data-bs-theme=dark] .markdown-body img {
+  border-style: none;
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #1e1e1e;
+}
+
+html[data-bs-theme=dark] .markdown-body code,
+html[data-bs-theme=dark] .markdown-body kbd,
+html[data-bs-theme=dark] .markdown-body pre,
+html[data-bs-theme=dark] .markdown-body samp {
+  font-family: monospace;
+  font-size: 1em;
+}
+
+html[data-bs-theme=dark] .markdown-body figure {
+  margin: 1em 40px;
+}
+
+html[data-bs-theme=dark] .markdown-body hr {
+  box-sizing: content-box;
+  overflow: hidden;
+  background: transparent;
+  border-bottom: 1px solid #21262d;
+  height: .25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #44484a;
+  border: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body input {
+  font: inherit;
+  margin: 0;
+  overflow: visible;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+html[data-bs-theme=dark] .markdown-body [type=button],
+html[data-bs-theme=dark] .markdown-body [type=reset],
+html[data-bs-theme=dark] .markdown-body [type=submit] {
+  -webkit-appearance: button;
+}
+
+html[data-bs-theme=dark] .markdown-body [type=checkbox],
+html[data-bs-theme=dark] .markdown-body [type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body [type=number]::-webkit-inner-spin-button,
+html[data-bs-theme=dark] .markdown-body [type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+html[data-bs-theme=dark] .markdown-body [type=search]::-webkit-search-cancel-button,
+html[data-bs-theme=dark] .markdown-body [type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+html[data-bs-theme=dark] .markdown-body ::-webkit-input-placeholder {
+  color: inherit;
+  opacity: .54;
+}
+
+html[data-bs-theme=dark] .markdown-body ::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+html[data-bs-theme=dark] .markdown-body a:hover {
+  text-decoration: underline;
+}
+
+html[data-bs-theme=dark] .markdown-body ::placeholder {
+  color: #6e7681;
+  opacity: 1;
+}
+
+html[data-bs-theme=dark] .markdown-body hr::before {
+  display: table;
+  content: "";
+}
+
+html[data-bs-theme=dark] .markdown-body hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+html[data-bs-theme=dark] .markdown-body table {
+  /*border-spacing: 0;
+  border-collapse: collapse;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;*/
+  display: table;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+html[data-bs-theme=dark] .markdown-body td,
+html[data-bs-theme=dark] .markdown-body th {
+  padding: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body details summary {
+  cursor: pointer;
+}
+
+html[data-bs-theme=dark] .markdown-body details:not([open])>*:not(summary) {
+  display: none !important;
+}
+
+html[data-bs-theme=dark] .markdown-body a:focus,
+html[data-bs-theme=dark] .markdown-body [role=button]:focus,
+html[data-bs-theme=dark] .markdown-body input[type=radio]:focus,
+html[data-bs-theme=dark] .markdown-body input[type=checkbox]:focus {
+  outline: 2px solid #58a6ff;
+  outline-offset: -2px;
+  box-shadow: none;
+}
+
+html[data-bs-theme=dark] .markdown-body a:focus:not(:focus-visible),
+html[data-bs-theme=dark] .markdown-body [role=button]:focus:not(:focus-visible),
+html[data-bs-theme=dark] .markdown-body input[type=radio]:focus:not(:focus-visible),
+html[data-bs-theme=dark] .markdown-body input[type=checkbox]:focus:not(:focus-visible) {
+  outline: solid 1px transparent;
+}
+
+html[data-bs-theme=dark] .markdown-body a:focus-visible,
+html[data-bs-theme=dark] .markdown-body [role=button]:focus-visible,
+html[data-bs-theme=dark] .markdown-body input[type=radio]:focus-visible,
+html[data-bs-theme=dark] .markdown-body input[type=checkbox]:focus-visible {
+  outline: 2px solid #58a6ff;
+  outline-offset: -2px;
+  box-shadow: none;
+}
+
+html[data-bs-theme=dark] .markdown-body a:not([class]):focus,
+html[data-bs-theme=dark] .markdown-body a:not([class]):focus-visible,
+html[data-bs-theme=dark] .markdown-body input[type=radio]:focus,
+html[data-bs-theme=dark] .markdown-body input[type=radio]:focus-visible,
+html[data-bs-theme=dark] .markdown-body input[type=checkbox]:focus,
+html[data-bs-theme=dark] .markdown-body input[type=checkbox]:focus-visible {
+  outline-offset: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  line-height: 10px;
+  color: #c9d1d9;
+  vertical-align: middle;
+  background-color: #161b22;
+  border: solid 1px rgba(110,118,129,0.4);
+  border-bottom-color: rgba(110,118,129,0.4);
+  border-radius: 6px;
+  box-shadow: inset 0 -1px 0 rgba(110,118,129,0.4);
+}
+
+html[data-bs-theme=dark] .markdown-body h1,
+html[data-bs-theme=dark] .markdown-body h2,
+html[data-bs-theme=dark] .markdown-body h3,
+html[data-bs-theme=dark] .markdown-body h4,
+html[data-bs-theme=dark] .markdown-body h5,
+html[data-bs-theme=dark] .markdown-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+html[data-bs-theme=dark] .markdown-body h2 {
+  font-weight: 600;
+  padding-bottom: .3em;
+  font-size: 1.5em;
+  border-bottom: 1px solid #21262d;
+}
+
+html[data-bs-theme=dark] .markdown-body h3 {
+  font-weight: 600;
+  font-size: 1.25em;
+}
+
+html[data-bs-theme=dark] .markdown-body h4 {
+  font-weight: 600;
+  font-size: 1em;
+}
+
+html[data-bs-theme=dark] .markdown-body h5 {
+  font-weight: 600;
+  font-size: .875em;
+}
+
+html[data-bs-theme=dark] .markdown-body h6 {
+  font-weight: 600;
+  font-size: .85em;
+  color: #8b949e;
+}
+
+html[data-bs-theme=dark] .markdown-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+html[data-bs-theme=dark] .markdown-body blockquote {
+  margin: 0;
+  padding: 0 1em;
+  color: #8b949e;
+  border-left: .25em solid #44484a;
+}
+
+html[data-bs-theme=dark] .markdown-body ul,
+html[data-bs-theme=dark] .markdown-body ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 2em;
+}
+
+html[data-bs-theme=dark] .markdown-body ol ol,
+html[data-bs-theme=dark] .markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+html[data-bs-theme=dark] .markdown-body ul ul ol,
+html[data-bs-theme=dark] .markdown-body ul ol ol,
+html[data-bs-theme=dark] .markdown-body ol ul ol,
+html[data-bs-theme=dark] .markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+html[data-bs-theme=dark] .markdown-body dd {
+  margin-left: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body tt,
+html[data-bs-theme=dark] .markdown-body code,
+html[data-bs-theme=dark] .markdown-body samp {
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  font-size: 12px;
+}
+
+html[data-bs-theme=dark] .markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  font-size: 12px;
+  word-wrap: normal;
+}
+
+html[data-bs-theme=dark] .markdown-body .octicon {
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+html[data-bs-theme=dark] .markdown-body input::-webkit-outer-spin-button,
+html[data-bs-theme=dark] .markdown-body input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+html[data-bs-theme=dark] .markdown-body::before {
+  display: table;
+  content: "";
+}
+
+html[data-bs-theme=dark] .markdown-body::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+html[data-bs-theme=dark] .markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+html[data-bs-theme=dark] .markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+html[data-bs-theme=dark] .markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+html[data-bs-theme=dark] .markdown-body .absent {
+  color: #f85149;
+}
+
+html[data-bs-theme=dark] .markdown-body .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+
+html[data-bs-theme=dark] .markdown-body .anchor:focus {
+  outline: none;
+}
+
+html[data-bs-theme=dark] .markdown-body p,
+html[data-bs-theme=dark] .markdown-body blockquote,
+html[data-bs-theme=dark] .markdown-body ul,
+html[data-bs-theme=dark] .markdown-body ol,
+html[data-bs-theme=dark] .markdown-body dl,
+html[data-bs-theme=dark] .markdown-body table,
+html[data-bs-theme=dark] .markdown-body pre,
+html[data-bs-theme=dark] .markdown-body details {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+html[data-bs-theme=dark] .markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body h1 .octicon-link,
+html[data-bs-theme=dark] .markdown-body h2 .octicon-link,
+html[data-bs-theme=dark] .markdown-body h3 .octicon-link,
+html[data-bs-theme=dark] .markdown-body h4 .octicon-link,
+html[data-bs-theme=dark] .markdown-body h5 .octicon-link,
+html[data-bs-theme=dark] .markdown-body h6 .octicon-link {
+  color: #c9d1d9;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+html[data-bs-theme=dark] .markdown-body h1:hover .anchor,
+html[data-bs-theme=dark] .markdown-body h2:hover .anchor,
+html[data-bs-theme=dark] .markdown-body h3:hover .anchor,
+html[data-bs-theme=dark] .markdown-body h4:hover .anchor,
+html[data-bs-theme=dark] .markdown-body h5:hover .anchor,
+html[data-bs-theme=dark] .markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+html[data-bs-theme=dark] .markdown-body h1:hover .anchor .octicon-link,
+html[data-bs-theme=dark] .markdown-body h2:hover .anchor .octicon-link,
+html[data-bs-theme=dark] .markdown-body h3:hover .anchor .octicon-link,
+html[data-bs-theme=dark] .markdown-body h4:hover .anchor .octicon-link,
+html[data-bs-theme=dark] .markdown-body h5:hover .anchor .octicon-link,
+html[data-bs-theme=dark] .markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+html[data-bs-theme=dark] .markdown-body h1 tt,
+html[data-bs-theme=dark] .markdown-body h1 code,
+html[data-bs-theme=dark] .markdown-body h2 tt,
+html[data-bs-theme=dark] .markdown-body h2 code,
+html[data-bs-theme=dark] .markdown-body h3 tt,
+html[data-bs-theme=dark] .markdown-body h3 code,
+html[data-bs-theme=dark] .markdown-body h4 tt,
+html[data-bs-theme=dark] .markdown-body h4 code,
+html[data-bs-theme=dark] .markdown-body h5 tt,
+html[data-bs-theme=dark] .markdown-body h5 code,
+html[data-bs-theme=dark] .markdown-body h6 tt,
+html[data-bs-theme=dark] .markdown-body h6 code {
+  padding: 0 .2em;
+  font-size: inherit;
+}
+
+html[data-bs-theme=dark] .markdown-body summary h1,
+html[data-bs-theme=dark] .markdown-body summary h2,
+html[data-bs-theme=dark] .markdown-body summary h3,
+html[data-bs-theme=dark] .markdown-body summary h4,
+html[data-bs-theme=dark] .markdown-body summary h5,
+html[data-bs-theme=dark] .markdown-body summary h6 {
+  display: inline-block;
+}
+
+html[data-bs-theme=dark] .markdown-body summary h1 .anchor,
+html[data-bs-theme=dark] .markdown-body summary h2 .anchor,
+html[data-bs-theme=dark] .markdown-body summary h3 .anchor,
+html[data-bs-theme=dark] .markdown-body summary h4 .anchor,
+html[data-bs-theme=dark] .markdown-body summary h5 .anchor,
+html[data-bs-theme=dark] .markdown-body summary h6 .anchor {
+  margin-left: -40px;
+}
+
+html[data-bs-theme=dark] .markdown-body summary h1,
+html[data-bs-theme=dark] .markdown-body summary h2 {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body ul.no-list,
+html[data-bs-theme=dark] .markdown-body ol.no-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+html[data-bs-theme=dark] .markdown-body ol[type=a] {
+  list-style-type: lower-alpha;
+}
+
+html[data-bs-theme=dark] .markdown-body ol[type=A] {
+  list-style-type: upper-alpha;
+}
+
+html[data-bs-theme=dark] .markdown-body ol[type=i] {
+  list-style-type: lower-roman;
+}
+
+html[data-bs-theme=dark] .markdown-body ol[type=I] {
+  list-style-type: upper-roman;
+}
+
+html[data-bs-theme=dark] .markdown-body ol[type="1"] {
+  list-style-type: decimal;
+}
+
+html[data-bs-theme=dark] .markdown-body div>ol:not([type]) {
+  list-style-type: decimal;
+}
+
+html[data-bs-theme=dark] .markdown-body ul ul,
+html[data-bs-theme=dark] .markdown-body ul ol,
+html[data-bs-theme=dark] .markdown-body ol ol,
+html[data-bs-theme=dark] .markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body li>p {
+  margin-top: 16px;
+}
+
+html[data-bs-theme=dark] .markdown-body li+li {
+  margin-top: .25em;
+}
+
+html[data-bs-theme=dark] .markdown-body dl {
+  padding: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+
+html[data-bs-theme=dark] .markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+html[data-bs-theme=dark] .markdown-body table th {
+  font-weight: 600;
+}
+
+html[data-bs-theme=dark] .markdown-body table th,
+html[data-bs-theme=dark] .markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #44484a;
+}
+
+html[data-bs-theme=dark] .markdown-body table tr {
+  background-color: #1e1e1e;
+  border-top: 1px solid #21262d;
+}
+
+html[data-bs-theme=dark] .markdown-body table tr:nth-child(2n) {
+  background-color: #242424;
+}
+
+html[data-bs-theme=dark] .markdown-body table img {
+  background-color: transparent;
+}
+
+html[data-bs-theme=dark] .markdown-body img[align=right] {
+  padding-left: 20px;
+}
+
+html[data-bs-theme=dark] .markdown-body img[align=left] {
+  padding-right: 20px;
+}
+
+html[data-bs-theme=dark] .markdown-body .emoji {
+  max-width: none;
+  vertical-align: text-top;
+  background-color: transparent;
+}
+
+html[data-bs-theme=dark] .markdown-body span.frame {
+  display: block;
+  overflow: hidden;
+}
+
+html[data-bs-theme=dark] .markdown-body span.frame>span {
+  display: block;
+  float: left;
+  width: auto;
+  padding: 7px;
+  margin: 13px 0 0;
+  overflow: hidden;
+  border: 1px solid #44484a;
+}
+
+html[data-bs-theme=dark] .markdown-body span.frame span img {
+  display: block;
+  float: left;
+}
+
+html[data-bs-theme=dark] .markdown-body span.frame span span {
+  display: block;
+  padding: 5px 0 0;
+  clear: both;
+  color: #c9d1d9;
+}
+
+html[data-bs-theme=dark] .markdown-body span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+html[data-bs-theme=dark] .markdown-body span.align-center>span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+html[data-bs-theme=dark] .markdown-body span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
+
+html[data-bs-theme=dark] .markdown-body span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+html[data-bs-theme=dark] .markdown-body span.align-right>span {
+  display: block;
+  margin: 13px 0 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+html[data-bs-theme=dark] .markdown-body span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
+
+html[data-bs-theme=dark] .markdown-body span.float-left {
+  display: block;
+  float: left;
+  margin-right: 13px;
+  overflow: hidden;
+}
+
+html[data-bs-theme=dark] .markdown-body span.float-left span {
+  margin: 13px 0 0;
+}
+
+html[data-bs-theme=dark] .markdown-body span.float-right {
+  display: block;
+  float: right;
+  margin-left: 13px;
+  overflow: hidden;
+}
+
+html[data-bs-theme=dark] .markdown-body span.float-right>span {
+  display: block;
+  margin: 13px auto 0;
+  overflow: hidden;
+  text-align: right;
+}
+
+html[data-bs-theme=dark] .markdown-body code,
+html[data-bs-theme=dark] .markdown-body tt {
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 85%;
+  white-space: break-spaces;
+  background-color: rgba(110,118,129,0.4);
+  border-radius: 6px;
+}
+
+html[data-bs-theme=dark] .markdown-body code br,
+html[data-bs-theme=dark] .markdown-body tt br {
+  display: none;
+}
+
+html[data-bs-theme=dark] .markdown-body del code {
+  text-decoration: inherit;
+}
+
+html[data-bs-theme=dark] .markdown-body samp {
+  font-size: 85%;
+}
+
+html[data-bs-theme=dark] .markdown-body pre code {
+  font-size: 100%;
+}
+
+html[data-bs-theme=dark] .markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+html[data-bs-theme=dark] .markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+html[data-bs-theme=dark] .markdown-body .highlight pre,
+html[data-bs-theme=dark] .markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #161b22;
+  border-radius: 6px;
+}
+
+html[data-bs-theme=dark] .markdown-body pre code,
+html[data-bs-theme=dark] .markdown-body pre tt {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body .csv-data td,
+html[data-bs-theme=dark] .markdown-body .csv-data th {
+  padding: 5px;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+}
+
+html[data-bs-theme=dark] .markdown-body .csv-data .blob-num {
+  padding: 10px 8px 9px;
+  text-align: right;
+  background: #0d1117;
+  border: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body .csv-data tr {
+  border-top: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body .csv-data th {
+  font-weight: 600;
+  background: #161b22;
+  border-top: 0;
+}
+
+html[data-bs-theme=dark] .markdown-body [data-footnote-ref]::before {
+  content: "[";
+}
+
+html[data-bs-theme=dark] .markdown-body [data-footnote-ref]::after {
+  content: "]";
+}
+
+html[data-bs-theme=dark] .markdown-body .footnotes {
+  font-size: 12px;
+  color: #8b949e;
+  border-top: 1px solid #44484a;
+}
+
+html[data-bs-theme=dark] .markdown-body .footnotes ol {
+  padding-left: 16px;
+}
+
+html[data-bs-theme=dark] .markdown-body .footnotes ol ul {
+  display: inline-block;
+  padding-left: 16px;
+  margin-top: 16px;
+}
+
+html[data-bs-theme=dark] .markdown-body .footnotes li {
+  position: relative;
+}
+
+html[data-bs-theme=dark] .markdown-body .footnotes li:target::before {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -24px;
+  pointer-events: none;
+  content: "";
+  border: 2px solid #1f6feb;
+  border-radius: 6px;
+}
+
+html[data-bs-theme=dark] .markdown-body .footnotes li:target {
+  color: #c9d1d9;
+}
+
+html[data-bs-theme=dark] .markdown-body .footnotes .data-footnote-backref g-emoji {
+  font-family: monospace;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-c {
+  color: #8b949e;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-c1,
+html[data-bs-theme=dark] .markdown-body .pl-s .pl-v {
+  color: #79c0ff;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-e,
+html[data-bs-theme=dark] .markdown-body .pl-en {
+  color: #d2a8ff;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-smi,
+html[data-bs-theme=dark] .markdown-body .pl-s .pl-s1 {
+  color: #c9d1d9;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-ent {
+  color: #7ee787;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-k {
+  color: #ff7b72;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-s,
+html[data-bs-theme=dark] .markdown-body .pl-pds,
+html[data-bs-theme=dark] .markdown-body .pl-s .pl-pse .pl-s1,
+html[data-bs-theme=dark] .markdown-body .pl-sr,
+html[data-bs-theme=dark] .markdown-body .pl-sr .pl-cce,
+html[data-bs-theme=dark] .markdown-body .pl-sr .pl-sre,
+html[data-bs-theme=dark] .markdown-body .pl-sr .pl-sra {
+  color: #a5d6ff;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-v,
+html[data-bs-theme=dark] .markdown-body .pl-smw {
+  color: #ffa657;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-bu {
+  color: #f85149;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-ii {
+  color: #f0f6fc;
+  background-color: #8e1519;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-c2 {
+  color: #f0f6fc;
+  background-color: #b62324;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #7ee787;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-ml {
+  color: #f2cc60;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-mh,
+html[data-bs-theme=dark] .markdown-body .pl-mh .pl-en,
+html[data-bs-theme=dark] .markdown-body .pl-ms {
+  font-weight: bold;
+  color: #1f6feb;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-mi {
+  font-style: italic;
+  color: #c9d1d9;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-mb {
+  font-weight: bold;
+  color: #c9d1d9;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-md {
+  color: #ffdcd7;
+  background-color: #67060c;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-mi1 {
+  color: #aff5b4;
+  background-color: #033a16;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-mc {
+  color: #ffdfb6;
+  background-color: #5a1e02;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-mi2 {
+  color: #c9d1d9;
+  background-color: #1158c7;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-mdr {
+  font-weight: bold;
+  color: #d2a8ff;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-ba {
+  color: #8b949e;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-sg {
+  color: #484f58;
+}
+
+html[data-bs-theme=dark] .markdown-body .pl-corl {
+  text-decoration: underline;
+  color: #a5d6ff;
+}
+
+html[data-bs-theme=dark] .markdown-body g-emoji {
+  display: inline-block;
+  min-width: 1ch;
+  font-family: "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1em;
+  font-style: normal !important;
+  font-weight: 400;
+  line-height: 1;
+  vertical-align: -0.075em;
+}
+
+html[data-bs-theme=dark] .markdown-body g-emoji img {
+  width: 1em;
+  height: 1em;
+}
+
+html[data-bs-theme=dark] .markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+html[data-bs-theme=dark] .markdown-body .task-list-item label {
+  font-weight: 400;
+}
+
+html[data-bs-theme=dark] .markdown-body .task-list-item.enabled label {
+  cursor: pointer;
+}
+
+html[data-bs-theme=dark] .markdown-body .task-list-item+.task-list-item {
+  margin-top: 4px;
+}
+
+html[data-bs-theme=dark] .markdown-body .task-list-item .handle {
+  display: none;
+}
+
+html[data-bs-theme=dark] .markdown-body .task-list-item-checkbox {
+  margin: 0 .2em .25em -1.4em;
+  vertical-align: middle;
+}
+
+html[data-bs-theme=dark] .markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox {
+  margin: 0 -1.6em .25em .2em;
+}
+
+html[data-bs-theme=dark] .markdown-body .contains-task-list {
+  position: relative;
+}
+
+html[data-bs-theme=dark] .markdown-body .contains-task-list:hover .task-list-item-convert-container,
+html[data-bs-theme=dark] .markdown-body .contains-task-list:focus-within .task-list-item-convert-container {
+  display: block;
+  width: auto;
+  height: 24px;
+  overflow: visible;
+  clip: auto;
+}
+
+html[data-bs-theme=dark] .markdown-body ::-webkit-calendar-picker-indicator {
+  filter: invert(50%);
+}
+
+html[data-bs-theme=dark] .markdown-body li {
+  list-style: unset;
+}

@@ -1,0 +1,177 @@
+{
+    "es8374": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 7908,
+        "__name__": "es8374.py"
+    },
+    "mixgo_nova": {
+        "__require__": [
+            "machine",
+            "time",
+            "gc",
+            "st7735",
+            "math",
+            "ws2812",
+            "_boot",
+            "mxc6655xa",
+            "ltr553als",
+            "ltr553als",
+            "rc522",
+            "mmc5603",
+            "hp203x",
+            "ahtx0",
+            "shtc3",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 9577,
+        "__name__": "mixgo_nova.py"
+    },
+    "mixgo_nova_voice": {
+        "__require__": [
+            "ustruct",
+            "time",
+            "music_spk",
+            "es8374",
+            "machine",
+            "mixgo_nova",
+            "urequests"
+        ],
+        "__file__": true,
+        "__size__": 3175,
+        "__name__": "mixgo_nova_voice.py"
+    },
+    "mixgo_sant": {
+        "__require__": [
+            "machine",
+            "time",
+            "gc",
+            "st7789_cf",
+            "math",
+            "ws2812",
+            "music",
+            "sant_bot",
+            "sc7a20",
+            "mk_pb4023",
+            "shtc3",
+            "mmc5603",
+            "spl06_001",
+            "ci130x"
+        ],
+        "__file__": true,
+        "__size__": 6753,
+        "__name__": "mixgo_sant.py"
+    },
+    "mixgo_zero": {
+        "__require__": [
+            "machine",
+            "time",
+            "gc",
+            "st7789_bf",
+            "math",
+            "ws2812",
+            "_boot",
+            "mxc6655xa",
+            "ltr553als",
+            "ltr553als",
+            "shtc3",
+            "rc522",
+            "mmc5603",
+            "spl06_001",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 8017,
+        "__name__": "mixgo_zero.py"
+    },
+    "mixgo_zero_voice": {
+        "__require__": [
+            "ustruct",
+            "time",
+            "music_spk",
+            "es8374",
+            "machine",
+            "mixgo_zero",
+            "urequests"
+        ],
+        "__file__": true,
+        "__size__": 3173,
+        "__name__": "mixgo_zero_voice.py"
+    },
+    "music_spk": {
+        "__require__": [
+            "time",
+            "math",
+            "array",
+            "struct"
+        ],
+        "__file__": true,
+        "__size__": 6541,
+        "__name__": "music_spk.py"
+    },
+    "nova_g1": {
+        "__require__": [
+            "micropython",
+            "mixgo_nova"
+        ],
+        "__file__": true,
+        "__size__": 3269,
+        "__name__": "nova_g1.py"
+    },
+    "sant_bot": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 3783,
+        "__name__": "sant_bot.py"
+    },
+    "sant_g2": {
+        "__require__": [
+            "gc",
+            "machine",
+            "rc522",
+            "cbr817"
+        ],
+        "__file__": true,
+        "__size__": 729,
+        "__name__": "sant_g2.py"
+    },
+    "sdcard": {
+        "__require__": [
+            "time",
+            "machine",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 8557,
+        "__name__": "sdcard.py"
+    },
+    "st7789_bf": {
+        "__require__": [
+            "time",
+            "uframebuf",
+            "machine",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 3191,
+        "__name__": "st7789_bf.py"
+    },
+    "st7789_cf": {
+        "__require__": [
+            "time",
+            "uframebuf",
+            "machine",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2825,
+        "__name__": "st7789_cf.py"
+    }
+}

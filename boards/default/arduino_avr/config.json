@@ -1,0 +1,109 @@
+{
+    "board": {
+        "Arduino/Genuino Uno": {
+            "key": "arduino:avr:uno",
+            "config": []
+        },
+        "Arduino Nano": {
+            "key": "arduino:avr:nano",
+            "config": [
+                {
+                    "label": "Processor",
+                    "key": "cpu",
+                    "options": [
+                        {
+                            "key": "atmega328old",
+                            "label": "ATmega328P (Old Bootloader)"
+                        }, {
+                            "key": "atmega328",
+                            "label": "ATmega328P"
+                        }, {
+                            "key": "atmega168",
+                            "label": "ATmega168"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Arduino Pro or Pro Mini": {
+            "key": "arduino:avr:pro",
+            "config": [
+                {
+                    "label": "Processor",
+                    "key": "cpu",
+                    "options": [
+                        {
+                            "key": "16MHzatmega328",
+                            "label": "ATmega328P (5V, 16 MHz)"
+                        }, {
+                            "key": "8MHzatmega328",
+                            "label": "ATmega328P (3.3V, 8 MHz)"
+                        }, {
+                            "key": "16MHzatmega168",
+                            "label": "ATmega168 (5V, 16 MHz)"
+                        }, {
+                            "key": "8MHzatmega168",
+                            "label": "ATmega168 (3.3V, 8 MHz)"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Arduino Mega or Mega 2560": {
+            "key": "arduino:avr:mega",
+            "config": [
+                {
+                    "label": "Processor",
+                    "key": "cpu",
+                    "options": [
+                        {
+                            "key": "atmega2560",
+                            "label": "ATmega2560 (Mega 2560)"
+                        }, {
+                            "key": "atmega1280",
+                            "label": "ATmega1280"
+                        }
+                    ]
+                }
+            ]
+        },
+        "Arduino Leonardo": "arduino:avr:leonardo"
+    },
+    "language": "C/C++",
+    "burn": "None",
+    "upload": {
+        "portSelect": "all"
+    },
+    "nav": {
+        "compile": true,
+        "upload": true,
+        "save": {
+            "ino": true,
+            "hex": true
+        },
+        "setting": {
+            "thirdPartyLibrary": true,
+            "wiki": true
+        }
+    },
+    "serial": {
+        "ctrlCBtn": false,
+        "ctrlDBtn": false,
+        "baudRates": 9600,
+        "yMax": 100,
+        "yMin": 0,
+        "pointNum": 100,
+        "rts": true,
+        "dtr": true
+    },
+    "lib": {
+        "mixly": {
+            "url": [
+                "http://download.mixlylibs.cloud/mixly3-packages/cloud-libs/arduino_avr/libs.json"
+            ]
+        }
+    },
+    "web": {
+        "com": "serial"
+    }
+}

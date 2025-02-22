@@ -1,0 +1,43 @@
+{
+    "mixgo": {
+        "__require__": [
+            "time",
+            "gc",
+            "machine",
+            "ws2812",
+            "music",
+            "mpu9250",
+            "matrix16x8"
+        ],
+        "__file__": true,
+        "__size__": 4507,
+        "__name__": "mixgo.py"
+    },
+    "mixgo_pe": {
+        "__require__": [
+            "time",
+            "gc",
+            "machine",
+            "matrix8x5",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 1328,
+        "__name__": "mixgo_pe.py"
+    },
+    "mpython": {
+        "__require__": [
+            "time",
+            "gc",
+            "machine",
+            "ws2812",
+            "music",
+            "oled128x64",
+            "mmc5603",
+            "qmi8658"
+        ],
+        "__file__": true,
+        "__size__": 3562,
+        "__name__": "mpython.py"
+    }
+}

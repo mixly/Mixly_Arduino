@@ -1,0 +1,13 @@
+<style>
+    .select2-dropdown.mixly-{{d.mId}} {
+        width: 100% !important;
+        transform: translate(calc(-50% + 50px), calc((var(--nav-height) - var(--nav-select-height)) / 2));
+    }
+
+    body > .select2-container:has(.mixly-{{d.mId}}) {
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+        animation-name: layui-upbit;
+    }
+</style>
+<select m-id={{d.mId}} id="ports-type"></select>

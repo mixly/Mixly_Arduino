@@ -1,0 +1,113 @@
+<style>
+    div[m-id="{{d.mId}}"] {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow-y: auto;
+    }
+
+    div[m-id="{{d.mId}}"] > .item {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+    }
+
+    div[m-id="{{d.mId}}"] .col-sm-4 {
+        width: 240px;
+        margin-top: 0px;
+        height: fit-content;
+    }
+
+    div[m-id="{{d.mId}}"] > .setting {
+        top: 0px;
+        font-weight: bold;
+        margin: 10px;
+        justify-content: center;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] > .setting * {
+        background-color: #fff;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] > .setting * {
+        background-color: #1e1e1e;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] > .setting input:focus,
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] > .setting select:focus {
+        border-color: var(--app-light-color) !important;
+        box-shadow: none;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] > .setting input:focus,
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] > .setting select:focus {
+        border-color: var(--app-dark-color) !important;
+        box-shadow: none;
+    }
+
+    div[m-id="{{d.mId}}"] > .setting .input-group {
+        height: 28px;
+    }
+
+    div[m-id="{{d.mId}}"] > .setting .input-group .input-group-text {
+        font-weight: bold;
+    }
+
+    div[m-id="{{d.mId}}"] > .setting .select2 > .selection * {
+        background: transparent;
+        text-align: left;
+        font-weight: 400;
+        color: var(--bs-body-color) !important;
+    }
+
+    div[m-id="{{d.mId}}"] > .setting .select2 > .selection > .select2-selection {
+        border-radius: 0.25rem;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border: var(--bs-border-width) solid var(--bs-border-color);
+    }
+
+    div[m-id="{{d.mId}}"] > .figure {
+        top: 40px;
+        bottom: 0px;
+        min-height: 80px;
+        margin: 0 0 10px 10px
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] > .figure {
+        background-color: #fff;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] > .figure {
+        background-color: #1e1e1e;
+    }
+</style>
+<div m-id="{{d.mId}}" class="page-item mixly-scrollbar">
+    <div class="item setting row g-3">
+        <div class="col-sm-4">
+            <div class="input-group flex-nowrap input-group-sm">
+                <span class="input-group-text">{{ d.pointsNum }}</span>
+                <select class="point-num form-select">
+                    <option value="100" selected>100</option>
+                    <option value="200">200</option>
+                    <option value="300">300</option>
+                    <option value="400">400</option>
+                    <option value="500">500</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="input-group flex-nowrap input-group-sm">
+                <span class="input-group-text">{{ d.yMin }}</span>
+                <input class="y-min form-control form-control-sm" type="text" value="0">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="input-group flex-nowrap input-group-sm">
+                <span class="input-group-text">{{ d.yMax }}</span>
+                <input class="y-max form-control form-control-sm" type="text" value="100">
+            </div>
+        </div>
+    </div>
+    <div class="item figure"></div>
+</div>

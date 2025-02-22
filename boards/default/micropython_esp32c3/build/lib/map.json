@@ -1,0 +1,77 @@
+{
+    "me_g1": {
+        "__require__": [
+            "time",
+            "gc",
+            "machine",
+            "hp203x",
+            "ahtx0",
+            "rc522"
+        ],
+        "__file__": true,
+        "__size__": 1327,
+        "__name__": "me_g1.py"
+    },
+    "me_go": {
+        "__require__": [
+            "time",
+            "gc",
+            "math",
+            "tm1931",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 8787,
+        "__name__": "me_go.py"
+    },
+    "mixgocar_c3": {
+        "__require__": [
+            "time",
+            "gc",
+            "ms32006",
+            "machine",
+            "ws2812",
+            "music"
+        ],
+        "__file__": true,
+        "__size__": 9865,
+        "__name__": "mixgocar_c3.py"
+    },
+    "mixgo_cc": {
+        "__require__": [
+            "time",
+            "gc",
+            "machine",
+            "ws2812",
+            "music",
+            "mxc6655xa",
+            "ltr553als",
+            "rc522",
+            "matrix32x12",
+            "mmc5603",
+            "hp203x",
+            "spl06_001",
+            "ahtx0",
+            "shtc3"
+        ],
+        "__file__": true,
+        "__size__": 7436,
+        "__name__": "mixgo_cc.py"
+    },
+    "mixgo_me": {
+        "__require__": [
+            "time",
+            "gc",
+            "machine",
+            "ws2812",
+            "music",
+            "mxc6655xa",
+            "ltr553als",
+            "matrix8x5",
+            "mmc5603"
+        ],
+        "__file__": true,
+        "__size__": 5363,
+        "__name__": "mixgo_me.py"
+    }
+}

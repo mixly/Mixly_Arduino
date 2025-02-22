@@ -1,0 +1,126 @@
+{
+    "board": {
+        "MixGo": "micropython:esp32:mixgo",
+        "MixGo PE": "micropython:esp32:mixgo_pe",
+        "mPython": "micropython:esp32:mpython",
+        "ESP32 Generic(4MB)": "micropython:esp32:generic"
+    },
+    "language": "MicroPython",
+    "burn": {
+        "type": "command",
+        "portSelect": "all",
+        "micropython:esp32:mixgo": {
+            "command": "\"{esptool}\" --chip esp32 --port {com} --baud 460800 erase_flash && \"{esptool}\" --port {com} --baud 460800 write_flash 0x1000 \"{indexPath}/build/Mixgo-v1.23.0.bin\" 0X3A0000 \"{indexPath}/../micropython/build/HZK12.bin\""
+        },
+        "micropython:esp32:mixgo_pe": {
+            "command": "\"{esptool}\" --chip esp32 --port {com} --baud 460800 erase_flash && \"{esptool}\" --port {com} --baud 460800 write_flash 0x1000 \"{indexPath}/build/Mixgo_PE-v1.23.0.bin\" 0x700000 \"{indexPath}/../micropython/build/HZK12.bin\""
+        },
+        "micropython:esp32:generic": {
+            "command": "\"{esptool}\" --chip esp32 --port {com} --baud 460800 erase_flash && \"{esptool}\" --port {com} --baud 460800 write_flash 0x1000 \"{indexPath}/build/Generic_ESP32-v1.23.0.bin\" 0X3A0000 \"{indexPath}/../micropython/build/HZK12.bin\""
+        },
+        "micropython:esp32:mpython": {
+            "command": "\"{esptool}\" --chip esp32 --port {com} --baud 460800 erase_flash && \"{esptool}\" --port {com} --baud 460800 write_flash 0x1000 \"{indexPath}/build/mPython-v1.23.0.bin\" 0x700000 \"{indexPath}/../micropython/build/HZK12.bin\""
+        }
+    },
+    "upload": {
+        "type": "command",
+        "portSelect": "all",
+        "libPath": [
+            "{indexPath}/build/lib",
+            "{indexPath}/../micropython/build/lib"
+        ],
+        "command": "\"{ampy}\" -p {com} -d 1 -r \"{reset}\" put \"{indexPath}/build/upload\"",
+        "filePath": "{indexPath}/build/upload/main.py",
+        "copyLib": true,
+        "reset": []
+    },
+    "nav": {
+        "burn": true,
+        "upload": true,
+        "save": {
+            "py": true
+        },
+        "setting": {
+            "thirdPartyLibrary": true
+        }
+    },
+    "serial": {
+        "ctrlCBtn": true,
+        "ctrlDBtn": true,
+        "baudRates": 115200,
+        "yMax": 100,
+        "yMin": 0,
+        "pointNum": 100,
+        "rts": false,
+        "dtr": true
+    },
+    "lib": {
+        "mixly": {
+            "url": [
+                "http://download.mixlylibs.cloud/mixly3-packages/cloud-libs/micropython_esp32/libs.json"
+            ]
+        }
+    },
+    "pythonToBlockly": false,
+    "web": {
+        "devices": {
+            "serial": true,
+            "hid": false,
+            "usb": false
+        },
+        "burn": {
+            "erase": true,
+            "micropython:esp32:mixgo": {
+                "binFile": [
+                    {
+                        "offset": "0x1000",
+                        "path": "./build/Mixgo_lib-v1.23.0.bin"
+                    },
+                    {
+                        "offset": "0X3A0000",
+                        "path": "../micropython/build/HZK12.bin"
+                    }
+                ]
+            },
+            "micropython:esp32:mixgo_pe": {
+                "binFile": [
+                    {
+                        "offset": "0x1000",
+                        "path": "./build/Mixgo_PE_lib-v1.23.0.bin"
+                    },
+                    {
+                        "offset": "0x700000",
+                        "path": "../micropython/build/HZK12.bin"
+                    }
+                ]
+            },
+            "micropython:esp32:generic": {
+                "binFile": [
+                    {
+                        "offset": "0x1000",
+                        "path": "./build/Generic_ESP32_lib-v1.23.0.bin"
+                    },
+                    {
+                        "offset": "0X3A0000",
+                        "path": "../micropython/build/HZK12.bin"
+                    }
+                ]
+            },
+            "micropython:esp32:mpython": {
+                "binFile": [
+                    {
+                        "offset": "0x1000",
+                        "path": "./build/mPython_lib-v1.23.0.bin"
+                    },
+                    {
+                        "offset": "0x700000",
+                        "path": "../micropython/build/HZK12.bin"
+                    }
+                ]
+            }
+        },
+        "upload": {
+            "reset": []
+        }
+    }
+}

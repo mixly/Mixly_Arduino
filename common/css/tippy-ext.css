@@ -1,0 +1,74 @@
+html[data-bs-theme=light] .tippy-box {
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bebebe;
+    color: #000;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 50%);
+}
+
+html[data-bs-theme=light] .tippy-arrow {
+    color: rgba(255,255,255,.85);
+}
+
+html[data-bs-theme=dark] .tippy-box {
+    background-color: #252525;
+    background-clip: padding-box;
+    border: 1px solid #454545;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 50%);
+    color: #fff;
+    border-radius: 0.25rem;
+}
+
+html[data-bs-theme=dark] .tippy-box .layui-layer-title {
+    background-color: #252525;
+}
+
+html[data-bs-theme=dark] .tippy-arrow {
+    color: #252525;
+}
+
+.tippy-content {
+    padding: 0;
+    margin: 0.3em;
+}
+
+.tippy-content .m-btn {
+    font-size: 12px;
+    line-height: 12px;
+    border-radius: 5px;
+    box-sizing: content-box;
+    padding: 4px 10px !important;
+    margin: 2px 0px;
+    border-radius: 5px;
+    min-width: unset;
+    cursor: pointer;
+}
+
+.tippy-content .m-btn:hover {
+    color: #fff !important;
+}
+
+html[data-bs-theme=light] .tippy-content .m-btn {
+    color: #000;
+}
+
+html[data-bs-theme=light] .tippy-content .m-btn:hover {
+    background-color: var(--app-light-color);
+}
+
+html[data-bs-theme=light] .tippy-content .m-btn.selected {
+    background-color: rgb(0 150 136 / 60%);
+}
+
+html[data-bs-theme=dark] .tippy-content .m-btn {
+    color: #fff;
+}
+
+html[data-bs-theme=dark] .tippy-content .m-btn:hover {
+    background-color: #2980b9;
+}
+
+html[data-bs-theme=dark] .tippy-content .m-btn.selected {
+    background-color: rgb(41 128 185 / 60%);
+}

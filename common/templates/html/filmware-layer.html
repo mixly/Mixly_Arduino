@@ -1,0 +1,19 @@
+<style>
+    div[m-id="{{d.mId}}"] > .select2-container {
+        margin: 20px;
+    }
+
+    div[m-id="{{d.mId}}"] > .layui-btn-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+<div m-id="{{d.mId}}" class="page-item">
+    <select class="type"></select>
+    <div class="layui-btn-container">
+        <button type="button" data-id="cancel" class="layui-btn layui-btn-sm self-adaption-btn">{{d.cancel}}</button>
+        <button type="button" data-id="burn" class="layui-btn layui-btn-sm self-adaption-btn">{{d.burn}}</button>
+    </div>
+</div>

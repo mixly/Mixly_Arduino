@@ -1,0 +1,135 @@
+<div id="{{ d.moveId }}" style="height: 10px;width: 100%;"></div>
+<div class="layui-tab mixly-scrollbar" lay-filter="{{ d.tabFilter }}" lay-unauto style="width: 100%;height: 100%;margin-top: 0px;margin-bottom: 0px;position: relative;">
+    <ul class="layui-tab-title" style="position: absolute;left: 0px;top: 0px;height: 40px;right: 0px;">
+        <li class="layui-this" lay-id="0">{{ d.Msg.monitor }}</li>
+        <li lay-id="1">{{ d.Msg.visualization }}</li>
+    </ul>
+    <div class="layui-tab-content" style="position: absolute;left: 0px;top: 40px;bottom: 10px;right: 0px;overflow: auto;padding-bottom: 0px;">
+        <div class="layui-tab-item layui-show">
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label" style="height: 44px;padding-top: 1px;padding-bottom: 1px;">
+                    <p style="display:inline;">{{ d.Msg.serial }}</p>
+                    <input style="display:none;">
+                    <input id="{{ d.setDtrId }}" type="checkbox" title="DTR" lay-filter="{{ d.setDtrFilter }}" lay-skin="primary" {{ d.dtr }}>
+                    <input id="{{ d.setRtsId }}" type="checkbox" title="RTS" lay-filter="{{ d.setRtsFilter }}" lay-skin="primary" {{ d.rts }}>
+                </label>
+                <div style="position: relative; height: 38px;">
+                    <div style="position: absolute; left: 0px; right: 64px;">
+                        <div class="layui-input-inline" style="width:50%;clear:none;">
+                            <select id="{{ d.selectPortId }}" lay-verify="required" lay-filter="{{ d.selectPortFilter }}"></select>
+                        </div>
+                        <div class="layui-input-inline" style="width:50%;clear:none;">
+                            <select id="{{ d.selectBaudId }}" lay-filter="{{ d.selectBaudFilter }}">
+                                {{# layui.each(d.baudRates, function(index, baud) { }}
+                                    {{# if (baud === d.selectedBaud) { }}
+                                    <option value="{{ baud }}" selected>{{ baud }}</option>
+                                    {{# } else { }}
+                                    <option value="{{ baud }}">{{ baud }}</option>
+                                    {{# } }}
+                                {{# }); }}
+                            </select>
+                        </div>
+                    </div>
+                    <button id="{{ d.connectBtnId }}" class="layui-btn layui-btn-normal" style="position: absolute; right: 0px; width: 64px;" lay-filter="{{ d.connectBtnFilter }}">{{ d.Msg.open }}</button>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label" style="height: 44px;padding-top: 1px;padding-bottom: 1px;">
+                    <p style="display:inline;">{{ d.Msg.sendData }}</p>
+                    <input style="display:none;">
+                    <input id="{{ d.sendTypeId }}" type="checkbox" title="{{ d.Msg.string }}" lay-filter="{{ d.sendTypeFilter }}" lay-skin="primary" checked>
+                </label>
+                <div style="position: relative; height: 38px;">
+                    <div class="layui-input-inline" style="position: absolute; right: 128px; left: 0px;clear: none;">
+                        <input id="{{ d.sendId }}" type="text" name="title" placeholder="{{ d.Msg.input }}" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-input-inline" style="position: absolute; right: 64px; width: 64px;clear: none;">
+                      <select id="{{ d.sendWithId }}" lay-filter="{{ d.sendWithFilter }}">
+                        <option value="no">no</option>
+                        <option value="\n">\n</option>
+                        <option value="\r">\r</option>
+                        <option value="\r\n" selected>\r\n</option>
+                      </select>
+                    </div>
+                    <button id="{{ d.sendBtnId }}" class="layui-btn layui-btn-normal" style="position: absolute; right: 0px; width: 64px;">{{ d.Msg.send }}</button>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label" style="height: 44px;padding-top: 1px;padding-bottom: 1px;">
+                    <p style="display:inline;">{{ d.Msg.receiveData }}</p>
+                    <input style="display:none;">
+                    <input id="{{ d.receiveTypeId }}" type="checkbox" title="{{ d.Msg.string }}" lay-filter="{{ d.receiveTypeFilter }}" lay-skin="primary" checked>
+                    <input id="{{ d.scrollId }}" type="checkbox" title="{{ d.Msg.scroll }}" lay-filter="{{ d.scrollFilter }}" lay-skin="primary" checked>
+                </label>
+                <div class="layui-input-block">
+                    <textarea
+                        readonly
+                        id="{{ d.receiveId }}"
+                        name="desc"
+                        wrap="off"
+                        spellcheck="false"
+                        placeholder="{{ d.output }}"
+                        class="layui-textarea"
+                        style="height: 220px;"
+                    ></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <div style="text-align: center;"> 
+                    <button id="{{ d.clearBtnId }}" class="layui-btn layui-btn-danger">{{ d.Msg.clear }}</button>
+                    {{# if (d.ctrlCBtn) { }}
+                        <button id="{{ d.ctrlCBtnId }}" class="layui-btn layui-btn-danger">{{ d.Msg.interrupt }}</button>
+                    {{# } }}
+                    {{# if (d.ctrlDBtn) { }}
+                        <button id="{{ d.ctrlDBtnId }}" class="layui-btn layui-btn-danger">{{ d.Msg.reset }}</button>
+                    {{# } }}
+                </div>
+            </div>
+        </div>
+        <div class="layui-tab-item">
+            <div class="layui-form-item layui-form-text">
+                <div class="layui-input-inline" style="width:15%;clear:none;">
+                    <label class="layui-form-label">{{ d.Msg.min }}</label>
+                    <input id="{{ d.yMinId }}" type="text" name="title" autocomplete="off" class="layui-input" value="{{ d.yMin }}">
+                </div>
+                <div class="layui-input-inline" style="width:15%;clear:none;">
+                    <label class="layui-form-label">{{ d.Msg.max }}</label>
+                    <input id="{{ d.yMaxId }}" type="text" name="title" autocomplete="off" class="layui-input" value="{{ d.yMax }}">
+                </div>
+                <div class="layui-input-inline" style="width:15%;clear:none;">
+                    <label class="layui-form-label">{{ d.Msg.pointNum }}</label>
+                    <select id="{{ d.pointNumId }}" lay-filter="{{ d.selectPointNumFilter }}">
+                        {{# for (var pointNum of d.pointList) { }}
+                            {{# if (pointNum === d.pointNum) { }}
+                            <option value="{{ pointNum }}" selected>{{ pointNum }}</option>
+                            {{# } else { }}
+                            <option value="{{ pointNum }}">{{ pointNum }}</option>
+                            {{# } }}
+                        {{# } }}
+                    </select>
+                </div>
+                <div class="layui-input-inline" style="width:55%;clear:none;">
+                    <label class="layui-form-label">{{ d.Msg.sendData }}</label>
+                    <div style="position: relative;width: 100%;height: 38px;">
+                        <div class="layui-input-inline" style="position: absolute;left: 0px;right: 128px;clear: none;bottom: 0px;top: 0px;">
+                            <input id="{{ d.chartSendId }}" type="text" name="title" placeholder="{{ d.Msg.input }}" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-input-inline" style="position: absolute;right: 64px;width: 64px;clear: none;bottom: 0px;top: 0px;">
+                            <select id="{{ d.chartSendWithId }}">
+                                <option value="no">no</option>
+                                <option value="\n">\n</option>
+                                <option value="\r">\r</option>
+                                <option value="\r\n" selected>\r\n</option>
+                            </select>
+                        </div>
+                        <button id="{{ d.chartSendBtnId }}" class="layui-btn layui-btn-normal" style="position: absolute;right: 0px;width: 64px;">{{ d.Msg.send }}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text" style="padding-top: 25px;">
+                <div id="{{ d.dataDrawId }}" style="width: 100%;overflow-x: auto;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

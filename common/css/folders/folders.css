@@ -1,0 +1,1220 @@
+[class*='foldericon-']:before {
+    content: '';
+    display: block;
+    width: 19px;
+    height: 19px;
+    background-size: 100% 100% !important;
+    top: 3px;
+}
+
+.foldericon-root-default:before {
+    background: url(./icons/default_root_folder.svg) no-repeat;
+    width: 17px;
+    height: 17px;
+    top: 4px;
+}
+
+.foldericon-root-default.opened:before {
+    background: url(./icons/default_root_folder_opened.svg) no-repeat;
+    width: 17px;
+    height: 17px;
+    top: 4px;
+}
+
+.foldericon-default:before {
+    background: url(./icons/default_folder.svg) no-repeat;
+    width: 17px;
+    height: 17px;
+    top: 4px;
+}
+
+.foldericon-default.opened:before {
+    background: url(./icons/default_folder_opened.svg) no-repeat;
+    width: 17px;
+    height: 17px;
+    top: 4px;
+}
+
+.foldericon-android:before {
+    background: url(./icons/folder_type_android.svg) no-repeat;
+}
+
+.foldericon-android.opened:before {
+    background: url(./icons/folder_type_android_opened.svg) no-repeat;
+}
+
+.foldericon-api:before {
+    background: url(./icons/folder_type_api.svg) no-repeat;
+}
+
+.foldericon-api.opened:before {
+    background: url(./icons/folder_type_api_opened.svg) no-repeat;
+}
+
+.foldericon-app:before {
+    background: url(./icons/folder_type_app.svg) no-repeat;
+}
+
+.foldericon-app.opened:before {
+    background: url(./icons/folder_type_app_opened.svg) no-repeat;
+}
+
+.foldericon-arangodb:before {
+    background: url(./icons/folder_type_arangodb.svg) no-repeat;
+}
+
+.foldericon-arangodb.opened:before {
+    background: url(./icons/folder_type_arangodb_opened.svg) no-repeat;
+}
+
+.foldericon-asset:before {
+    background: url(./icons/folder_type_asset.svg) no-repeat;
+}
+
+.foldericon-asset.opened:before {
+    background: url(./icons/folder_type_asset_opened.svg) no-repeat;
+}
+
+.foldericon-audio:before {
+    background: url(./icons/folder_type_audio.svg) no-repeat;
+}
+
+.foldericon-audio.opened:before {
+    background: url(./icons/folder_type_audio_opened.svg) no-repeat;
+}
+
+.foldericon-aurelia:before {
+    background: url(./icons/folder_type_aurelia.svg) no-repeat;
+}
+
+.foldericon-aurelia.opened:before {
+    background: url(./icons/folder_type_aurelia_opened.svg) no-repeat;
+}
+
+.foldericon-aws:before {
+    background: url(./icons/folder_type_aws.svg) no-repeat;
+}
+
+.foldericon-aws.opened:before {
+    background: url(./icons/folder_type_aws_opened.svg) no-repeat;
+}
+
+.foldericon-azure:before {
+    background: url(./icons/folder_type_azure.svg) no-repeat;
+}
+
+.foldericon-azure.opened:before {
+    background: url(./icons/folder_type_azure_opened.svg) no-repeat;
+}
+
+.foldericon-azurepipelines:before {
+    background: url(./icons/folder_type_azurepipelines.svg) no-repeat;
+}
+
+.foldericon-azurepipelines.opened:before {
+    background: url(./icons/folder_type_azurepipelines_opened.svg) no-repeat;
+}
+
+.foldericon-binary:before {
+    background: url(./icons/folder_type_binary.svg) no-repeat;
+}
+
+.foldericon-binary.opened:before {
+    background: url(./icons/folder_type_binary_opened.svg) no-repeat;
+}
+
+.foldericon-bloc:before {
+    background: url(./icons/folder_type_bloc.svg) no-repeat;
+}
+
+.foldericon-bloc.opened:before {
+    background: url(./icons/folder_type_bloc_opened.svg) no-repeat;
+}
+
+.foldericon-blueprint:before {
+    background: url(./icons/folder_type_blueprint.svg) no-repeat;
+}
+
+.foldericon-blueprint.opened:before {
+    background: url(./icons/folder_type_blueprint_opened.svg) no-repeat;
+}
+
+.foldericon-bot:before {
+    background: url(./icons/folder_type_bot.svg) no-repeat;
+}
+
+.foldericon-bot.opened:before {
+    background: url(./icons/folder_type_bot_opened.svg) no-repeat;
+}
+
+.foldericon-bower:before {
+    background: url(./icons/folder_type_bower.svg) no-repeat;
+}
+
+.foldericon-bower.opened:before {
+    background: url(./icons/folder_type_bower_opened.svg) no-repeat;
+}
+
+.foldericon-buildkite:before {
+    background: url(./icons/folder_type_buildkite.svg) no-repeat;
+}
+
+.foldericon-buildkite.opened:before {
+    background: url(./icons/folder_type_buildkite_opened.svg) no-repeat;
+}
+
+.foldericon-cake:before {
+    background: url(./icons/folder_type_cake.svg) no-repeat;
+}
+
+.foldericon-cake.opened:before {
+    background: url(./icons/folder_type_cake_opened.svg) no-repeat;
+}
+
+.foldericon-certificate:before {
+    background: url(./icons/folder_type_certificate.svg) no-repeat;
+}
+
+.foldericon-certificate.opened:before {
+    background: url(./icons/folder_type_certificate_opened.svg) no-repeat;
+}
+
+.foldericon-changesets:before {
+    background: url(./icons/folder_type_changesets.svg) no-repeat;
+}
+
+.foldericon-changesets.opened:before {
+    background: url(./icons/folder_type_changesets_opened.svg) no-repeat;
+}
+
+.foldericon-chef:before {
+    background: url(./icons/folder_type_chef.svg) no-repeat;
+}
+
+.foldericon-chef.opened:before {
+    background: url(./icons/folder_type_chef_opened.svg) no-repeat;
+}
+
+.foldericon-circleci:before {
+    background: url(./icons/folder_type_circleci.svg) no-repeat;
+}
+
+.foldericon-circleci.opened:before {
+    background: url(./icons/folder_type_circleci_opened.svg) no-repeat;
+}
+
+.foldericon-cli:before {
+    background: url(./icons/folder_type_cli.svg) no-repeat;
+}
+
+.foldericon-cli.opened:before {
+    background: url(./icons/folder_type_cli_opened.svg) no-repeat;
+}
+
+.foldericon-client:before {
+    background: url(./icons/folder_type_client.svg) no-repeat;
+}
+
+.foldericon-client.opened:before {
+    background: url(./icons/folder_type_client_opened.svg) no-repeat;
+}
+
+.foldericon-cmake:before {
+    background: url(./icons/folder_type_cmake.svg) no-repeat;
+}
+
+.foldericon-cmake.opened:before {
+    background: url(./icons/folder_type_cmake_opened.svg) no-repeat;
+}
+
+.foldericon-common:before {
+    background: url(./icons/folder_type_common.svg) no-repeat;
+}
+
+.foldericon-common.opened:before {
+    background: url(./icons/folder_type_common_opened.svg) no-repeat;
+}
+
+.foldericon-component:before {
+    background: url(./icons/folder_type_component.svg) no-repeat;
+}
+
+.foldericon-component.opened:before {
+    background: url(./icons/folder_type_component_opened.svg) no-repeat;
+}
+
+.foldericon-composer:before {
+    background: url(./icons/folder_type_composer.svg) no-repeat;
+}
+
+.foldericon-composer.opened:before {
+    background: url(./icons/folder_type_composer_opened.svg) no-repeat;
+}
+
+.foldericon-config:before {
+    background: url(./icons/folder_type_config.svg) no-repeat;
+}
+
+.foldericon-config.opened:before {
+    background: url(./icons/folder_type_config_opened.svg) no-repeat;
+}
+
+.foldericon-controller:before {
+    background: url(./icons/folder_type_controller.svg) no-repeat;
+}
+
+.foldericon-controller.opened:before {
+    background: url(./icons/folder_type_controller_opened.svg) no-repeat;
+}
+
+.foldericon-coverage:before {
+    background: url(./icons/folder_type_coverage.svg) no-repeat;
+}
+
+.foldericon-coverage.opened:before {
+    background: url(./icons/folder_type_coverage_opened.svg) no-repeat;
+}
+
+.foldericon-css:before {
+    background: url(./icons/folder_type_css.svg) no-repeat;
+}
+
+.foldericon-css.opened:before {
+    background: url(./icons/folder_type_css_opened.svg) no-repeat;
+}
+
+.foldericon-cubit:before {
+    background: url(./icons/folder_type_cubit.svg) no-repeat;
+}
+
+.foldericon-cubit.opened:before {
+    background: url(./icons/folder_type_cubit_opened.svg) no-repeat;
+}
+
+.foldericon-cypress:before {
+    background: url(./icons/folder_type_cypress.svg) no-repeat;
+}
+
+.foldericon-cypress.opened:before {
+    background: url(./icons/folder_type_cypress_opened.svg) no-repeat;
+}
+
+.foldericon-dapr:before {
+    background: url(./icons/folder_type_dapr.svg) no-repeat;
+}
+
+.foldericon-dapr.opened:before {
+    background: url(./icons/folder_type_dapr_opened.svg) no-repeat;
+}
+
+.foldericon-datadog:before {
+    background: url(./icons/folder_type_datadog.svg) no-repeat;
+}
+
+.foldericon-datadog.opened:before {
+    background: url(./icons/folder_type_datadog_opened.svg) no-repeat;
+}
+
+.foldericon-db:before {
+    background: url(./icons/folder_type_db.svg) no-repeat;
+}
+
+.foldericon-db.opened:before {
+    background: url(./icons/folder_type_db_opened.svg) no-repeat;
+}
+
+.foldericon-debian:before {
+    background: url(./icons/folder_type_debian.svg) no-repeat;
+}
+
+.foldericon-debian.opened:before {
+    background: url(./icons/folder_type_debian_opened.svg) no-repeat;
+}
+
+.foldericon-dependabot:before {
+    background: url(./icons/folder_type_dependabot.svg) no-repeat;
+}
+
+.foldericon-dependabot.opened:before {
+    background: url(./icons/folder_type_dependabot_opened.svg) no-repeat;
+}
+
+.foldericon-devcontainer:before {
+    background: url(./icons/folder_type_devcontainer.svg) no-repeat;
+}
+
+.foldericon-devcontainer.opened:before {
+    background: url(./icons/folder_type_devcontainer_opened.svg) no-repeat;
+}
+
+.foldericon-dist:before {
+    background: url(./icons/folder_type_dist.svg) no-repeat;
+}
+
+.foldericon-dist.opened:before {
+    background: url(./icons/folder_type_dist_opened.svg) no-repeat;
+}
+
+.foldericon-docker:before {
+    background: url(./icons/folder_type_docker.svg) no-repeat;
+}
+
+.foldericon-docker.opened:before {
+    background: url(./icons/folder_type_docker_opened.svg) no-repeat;
+}
+
+.foldericon-docs:before {
+    background: url(./icons/folder_type_docs.svg) no-repeat;
+}
+
+.foldericon-docs.opened:before {
+    background: url(./icons/folder_type_docs_opened.svg) no-repeat;
+}
+
+.foldericon-e2e:before {
+    background: url(./icons/folder_type_e2e.svg) no-repeat;
+}
+
+.foldericon-e2e.opened:before {
+    background: url(./icons/folder_type_e2e_opened.svg) no-repeat;
+}
+
+.foldericon-elasticbeanstalk:before {
+    background: url(./icons/folder_type_elasticbeanstalk.svg) no-repeat;
+}
+
+.foldericon-elasticbeanstalk.opened:before {
+    background: url(./icons/folder_type_elasticbeanstalk_opened.svg) no-repeat;
+}
+
+.foldericon-electron:before {
+    background: url(./icons/folder_type_electron.svg) no-repeat;
+}
+
+.foldericon-electron.opened:before {
+    background: url(./icons/folder_type_electron_opened.svg) no-repeat;
+}
+
+.foldericon-expo:before {
+    background: url(./icons/folder_type_expo.svg) no-repeat;
+}
+
+.foldericon-expo.opened:before {
+    background: url(./icons/folder_type_expo_opened.svg) no-repeat;
+}
+
+.foldericon-favicon:before {
+    background: url(./icons/folder_type_favicon.svg) no-repeat;
+}
+
+.foldericon-favicon.opened:before {
+    background: url(./icons/folder_type_favicon_opened.svg) no-repeat;
+}
+
+.foldericon-flow:before {
+    background: url(./icons/folder_type_flow.svg) no-repeat;
+}
+
+.foldericon-flow.opened:before {
+    background: url(./icons/folder_type_flow_opened.svg) no-repeat;
+}
+
+.foldericon-fonts:before {
+    background: url(./icons/folder_type_fonts.svg) no-repeat;
+}
+
+.foldericon-fonts.opened:before {
+    background: url(./icons/folder_type_fonts_opened.svg) no-repeat;
+}
+
+.foldericon-gcp:before {
+    background: url(./icons/folder_type_gcp.svg) no-repeat;
+}
+
+.foldericon-gcp.opened:before {
+    background: url(./icons/folder_type_gcp_opened.svg) no-repeat;
+}
+
+.foldericon-git:before {
+    background: url(./icons/folder_type_git.svg) no-repeat;
+}
+
+.foldericon-git.opened:before {
+    background: url(./icons/folder_type_git_opened.svg) no-repeat;
+}
+
+.foldericon-github:before {
+    background: url(./icons/folder_type_github.svg) no-repeat;
+}
+
+.foldericon-github.opened:before {
+    background: url(./icons/folder_type_github_opened.svg) no-repeat;
+}
+
+.foldericon-gitlab:before {
+    background: url(./icons/folder_type_gitlab.svg) no-repeat;
+}
+
+.foldericon-gitlab.opened:before {
+    background: url(./icons/folder_type_gitlab_opened.svg) no-repeat;
+}
+
+.foldericon-gradle:before {
+    background: url(./icons/folder_type_gradle.svg) no-repeat;
+}
+
+.foldericon-gradle.opened:before {
+    background: url(./icons/folder_type_gradle_opened.svg) no-repeat;
+}
+
+.foldericon-graphql:before {
+    background: url(./icons/folder_type_graphql.svg) no-repeat;
+}
+
+.foldericon-graphql.opened:before {
+    background: url(./icons/folder_type_graphql_opened.svg) no-repeat;
+}
+
+.foldericon-grunt:before {
+    background: url(./icons/folder_type_grunt.svg) no-repeat;
+}
+
+.foldericon-grunt.opened:before {
+    background: url(./icons/folder_type_grunt_opened.svg) no-repeat;
+}
+
+.foldericon-gulp:before {
+    background: url(./icons/folder_type_gulp.svg) no-repeat;
+}
+
+.foldericon-gulp.opened:before {
+    background: url(./icons/folder_type_gulp_opened.svg) no-repeat;
+}
+
+.foldericon-haxelib:before {
+    background: url(./icons/folder_type_haxelib.svg) no-repeat;
+}
+
+.foldericon-haxelib.opened:before {
+    background: url(./icons/folder_type_haxelib_opened.svg) no-repeat;
+}
+
+.foldericon-helper:before {
+    background: url(./icons/folder_type_helper.svg) no-repeat;
+}
+
+.foldericon-helper.opened:before {
+    background: url(./icons/folder_type_helper_opened.svg) no-repeat;
+}
+
+.foldericon-hook:before {
+    background: url(./icons/folder_type_hook.svg) no-repeat;
+}
+
+.foldericon-hook.opened:before {
+    background: url(./icons/folder_type_hook_opened.svg) no-repeat;
+}
+
+.foldericon-husky:before {
+    background: url(./icons/folder_type_husky.svg) no-repeat;
+}
+
+.foldericon-husky.opened:before {
+    background: url(./icons/folder_type_husky_opened.svg) no-repeat;
+}
+
+.foldericon-idea:before {
+    background: url(./icons/folder_type_idea.svg) no-repeat;
+}
+
+.foldericon-idea.opened:before {
+    background: url(./icons/folder_type_idea_opened.svg) no-repeat;
+}
+
+.foldericon-images:before {
+    background: url(./icons/folder_type_images.svg) no-repeat;
+}
+
+.foldericon-images.opened:before {
+    background: url(./icons/folder_type_images_opened.svg) no-repeat;
+}
+
+.foldericon-include:before {
+    background: url(./icons/folder_type_include.svg) no-repeat;
+}
+
+.foldericon-include.opened:before {
+    background: url(./icons/folder_type_include_opened.svg) no-repeat;
+}
+
+.foldericon-interfaces:before {
+    background: url(./icons/folder_type_interfaces.svg) no-repeat;
+}
+
+.foldericon-interfaces.opened:before {
+    background: url(./icons/folder_type_interfaces_opened.svg) no-repeat;
+}
+
+.foldericon-ios:before {
+    background: url(./icons/folder_type_ios.svg) no-repeat;
+}
+
+.foldericon-ios.opened:before {
+    background: url(./icons/folder_type_ios_opened.svg) no-repeat;
+}
+
+.foldericon-js:before {
+    background: url(./icons/folder_type_js.svg) no-repeat;
+}
+
+.foldericon-js.opened:before {
+    background: url(./icons/folder_type_js_opened.svg) no-repeat;
+}
+
+.foldericon-json:before {
+    background: url(./icons/folder_type_json.svg) no-repeat;
+}
+
+.foldericon-json.opened:before {
+    background: url(./icons/folder_type_json_opened.svg) no-repeat;
+}
+
+.foldericon-json:before {
+    background: url(./icons/folder_type_json.svg) no-repeat;
+}
+
+.foldericon-json.opened:before {
+    background: url(./icons/folder_type_json_opened.svg) no-repeat;
+}
+
+.foldericon-kubernetes:before {
+    background: url(./icons/folder_type_kubernetes.svg) no-repeat;
+}
+
+.foldericon-kubernetes.opened:before {
+    background: url(./icons/folder_type_kubernetes_opened.svg) no-repeat;
+}
+
+.foldericon-less:before {
+    background: url(./icons/folder_type_less.svg) no-repeat;
+}
+
+.foldericon-less.opened:before {
+    background: url(./icons/folder_type_less_opened.svg) no-repeat;
+}
+
+.foldericon-library:before {
+    background: url(./icons/folder_type_library.svg) no-repeat;
+}
+
+.foldericon-library.opened:before {
+    background: url(./icons/folder_type_library_opened.svg) no-repeat;
+}
+
+.foldericon-linux:before {
+    background: url(./icons/folder_type_linux.svg) no-repeat;
+}
+
+.foldericon-linux.opened:before {
+    background: url(./icons/folder_type_linux_opened.svg) no-repeat;
+}
+
+.foldericon-locale:before {
+    background: url(./icons/folder_type_locale.svg) no-repeat;
+}
+
+.foldericon-locale.opened:before {
+    background: url(./icons/folder_type_locale_opened.svg) no-repeat;
+}
+
+.foldericon-log:before {
+    background: url(./icons/folder_type_log.svg) no-repeat;
+}
+
+.foldericon-log.opened:before {
+    background: url(./icons/folder_type_log_opened.svg) no-repeat;
+}
+
+.foldericon-macos:before {
+    background: url(./icons/folder_type_macos.svg) no-repeat;
+}
+
+.foldericon-macos.opened:before {
+    background: url(./icons/folder_type_macos_opened.svg) no-repeat;
+}
+
+.foldericon-mariadb:before {
+    background: url(./icons/folder_type_mariadb.svg) no-repeat;
+}
+
+.foldericon-mariadb.opened:before {
+    background: url(./icons/folder_type_mariadb_opened.svg) no-repeat;
+}
+
+.foldericon-maven:before {
+    background: url(./icons/folder_type_maven.svg) no-repeat;
+}
+
+.foldericon-maven.opened:before {
+    background: url(./icons/folder_type_maven_opened.svg) no-repeat;
+}
+
+.foldericon-memcached:before {
+    background: url(./icons/folder_type_memcached.svg) no-repeat;
+}
+
+.foldericon-memcached.opened:before {
+    background: url(./icons/folder_type_memcached_opened.svg) no-repeat;
+}
+
+.foldericon-meteor:before {
+    background: url(./icons/folder_type_meteor.svg) no-repeat;
+}
+
+.foldericon-meteor.opened:before {
+    background: url(./icons/folder_type_meteor_opened.svg) no-repeat;
+}
+
+.foldericon-middleware:before {
+    background: url(./icons/folder_type_middleware.svg) no-repeat;
+}
+
+.foldericon-middleware.opened:before {
+    background: url(./icons/folder_type_middleware_opened.svg) no-repeat;
+}
+
+.foldericon-minikube:before {
+    background: url(./icons/folder_type_minikube.svg) no-repeat;
+}
+
+.foldericon-minikube.opened:before {
+    background: url(./icons/folder_type_minikube_opened.svg) no-repeat;
+}
+
+.foldericon-mjml:before {
+    background: url(./icons/folder_type_mjml.svg) no-repeat;
+}
+
+.foldericon-mjml.opened:before {
+    background: url(./icons/folder_type_mjml_opened.svg) no-repeat;
+}
+
+.foldericon-mock:before {
+    background: url(./icons/folder_type_mock.svg) no-repeat;
+}
+
+.foldericon-mock.opened:before {
+    background: url(./icons/folder_type_mock_opened.svg) no-repeat;
+}
+
+.foldericon-model:before {
+    background: url(./icons/folder_type_model.svg) no-repeat;
+}
+
+.foldericon-model.opened:before {
+    background: url(./icons/folder_type_model_opened.svg) no-repeat;
+}
+
+.foldericon-module:before {
+    background: url(./icons/folder_type_module.svg) no-repeat;
+}
+
+.foldericon-module.opened:before {
+    background: url(./icons/folder_type_module_opened.svg) no-repeat;
+}
+
+.foldericon-mojo:before {
+    background: url(./icons/folder_type_mojo.svg) no-repeat;
+}
+
+.foldericon-mojo.opened:before {
+    background: url(./icons/folder_type_mojo_opened.svg) no-repeat;
+}
+
+.foldericon-mongodb:before {
+    background: url(./icons/folder_type_mongodb.svg) no-repeat;
+}
+
+.foldericon-mongodb.opened:before {
+    background: url(./icons/folder_type_mongodb_opened.svg) no-repeat;
+}
+
+.foldericon-mysql:before {
+    background: url(./icons/folder_type_mysql.svg) no-repeat;
+}
+
+.foldericon-mysql.opened:before {
+    background: url(./icons/folder_type_mysql_opened.svg) no-repeat;
+}
+
+.foldericon-next:before {
+    background: url(./icons/folder_type_next.svg) no-repeat;
+}
+
+.foldericon-next.opened:before {
+    background: url(./icons/folder_type_next_opened.svg) no-repeat;
+}
+
+.foldericon-nginx:before {
+    background: url(./icons/folder_type_nginx.svg) no-repeat;
+}
+
+.foldericon-nginx.opened:before {
+    background: url(./icons/folder_type_nginx_opened.svg) no-repeat;
+}
+
+.foldericon-nix:before {
+    background: url(./icons/folder_type_nix.svg) no-repeat;
+}
+
+.foldericon-nix.opened:before {
+    background: url(./icons/folder_type_nix_opened.svg) no-repeat;
+}
+
+.foldericon-node:before {
+    background: url(./icons/folder_type_node.svg) no-repeat;
+}
+
+.foldericon-node.opened:before {
+    background: url(./icons/folder_type_node_opened.svg) no-repeat;
+}
+
+.foldericon-notebooks:before {
+    background: url(./icons/folder_type_notebooks.svg) no-repeat;
+}
+
+.foldericon-notebooks.opened:before {
+    background: url(./icons/folder_type_notebooks_opened.svg) no-repeat;
+}
+
+.foldericon-notification:before {
+    background: url(./icons/folder_type_notification.svg) no-repeat;
+}
+
+.foldericon-notification.opened:before {
+    background: url(./icons/folder_type_notification_opened.svg) no-repeat;
+}
+
+.foldericon-nuget:before {
+    background: url(./icons/folder_type_nuget.svg) no-repeat;
+}
+
+.foldericon-nuget.opened:before {
+    background: url(./icons/folder_type_nuget_opened.svg) no-repeat;
+}
+
+.foldericon-nuxt:before {
+    background: url(./icons/folder_type_nuxt.svg) no-repeat;
+}
+
+.foldericon-nuxt.opened:before {
+    background: url(./icons/folder_type_nuxt_opened.svg) no-repeat;
+}
+
+.foldericon-package:before {
+    background: url(./icons/folder_type_package.svg) no-repeat;
+}
+
+.foldericon-package.opened:before {
+    background: url(./icons/folder_type_package_opened.svg) no-repeat;
+}
+
+.foldericon-paket:before {
+    background: url(./icons/folder_type_paket.svg) no-repeat;
+}
+
+.foldericon-paket.opened:before {
+    background: url(./icons/folder_type_paket_opened.svg) no-repeat;
+}
+
+.foldericon-php:before {
+    background: url(./icons/folder_type_php.svg) no-repeat;
+}
+
+.foldericon-php.opened:before {
+    background: url(./icons/folder_type_php_opened.svg) no-repeat;
+}
+
+.foldericon-platformio:before {
+    background: url(./icons/folder_type_platformio.svg) no-repeat;
+}
+
+.foldericon-platformio.opened:before {
+    background: url(./icons/folder_type_platformio_opened.svg) no-repeat;
+}
+
+.foldericon-plugin:before {
+    background: url(./icons/folder_type_plugin.svg) no-repeat;
+}
+
+.foldericon-plugin.opened:before {
+    background: url(./icons/folder_type_plugin_opened.svg) no-repeat;
+}
+
+.foldericon-prisma:before {
+    background: url(./icons/folder_type_prisma.svg) no-repeat;
+}
+
+.foldericon-prisma.opened:before {
+    background: url(./icons/folder_type_prisma_opened.svg) no-repeat;
+}
+
+.foldericon-private:before {
+    background: url(./icons/folder_type_private.svg) no-repeat;
+}
+
+.foldericon-private.opened:before {
+    background: url(./icons/folder_type_private_opened.svg) no-repeat;
+}
+
+.foldericon-public:before {
+    background: url(./icons/folder_type_public.svg) no-repeat;
+}
+
+.foldericon-public.opened:before {
+    background: url(./icons/folder_type_public_opened.svg) no-repeat;
+}
+
+.foldericon-python:before {
+    background: url(./icons/folder_type_python.svg) no-repeat;
+}
+
+.foldericon-python.opened:before {
+    background: url(./icons/folder_type_python_opened.svg) no-repeat;
+}
+
+.foldericon-ravendb:before {
+    background: url(./icons/folder_type_ravendb.svg) no-repeat;
+}
+
+.foldericon-ravendb.opened:before {
+    background: url(./icons/folder_type_ravendb_opened.svg) no-repeat;
+}
+
+.foldericon-redis:before {
+    background: url(./icons/folder_type_redis.svg) no-repeat;
+}
+
+.foldericon-redis.opened:before {
+    background: url(./icons/folder_type_redis_opened.svg) no-repeat;
+}
+
+.foldericon-redux:before {
+    background: url(./icons/folder_type_redux.svg) no-repeat;
+}
+
+.foldericon-redux.opened:before {
+    background: url(./icons/folder_type_redux_opened.svg) no-repeat;
+}
+
+.foldericon-route:before {
+    background: url(./icons/folder_type_route.svg) no-repeat;
+}
+
+.foldericon-route.opened:before {
+    background: url(./icons/folder_type_route_opened.svg) no-repeat;
+}
+
+.foldericon-sass:before {
+    background: url(./icons/folder_type_sass.svg) no-repeat;
+}
+
+.foldericon-sass.opened:before {
+    background: url(./icons/folder_type_sass_opened.svg) no-repeat;
+}
+
+.foldericon-script:before {
+    background: url(./icons/folder_type_script.svg) no-repeat;
+}
+
+.foldericon-script.opened:before {
+    background: url(./icons/folder_type_script_opened.svg) no-repeat;
+}
+
+.foldericon-server:before {
+    background: url(./icons/folder_type_server.svg) no-repeat;
+}
+
+.foldericon-server.opened:before {
+    background: url(./icons/folder_type_server_opened.svg) no-repeat;
+}
+
+.foldericon-services:before {
+    background: url(./icons/folder_type_services.svg) no-repeat;
+}
+
+.foldericon-services.opened:before {
+    background: url(./icons/folder_type_services_opened.svg) no-repeat;
+}
+
+.foldericon-shared:before {
+    background: url(./icons/folder_type_shared.svg) no-repeat;
+}
+
+.foldericon-shared.opened:before {
+    background: url(./icons/folder_type_shared_opened.svg) no-repeat;
+}
+
+.foldericon-snaplet:before {
+    background: url(./icons/folder_type_snaplet.svg) no-repeat;
+}
+
+.foldericon-snaplet.opened:before {
+    background: url(./icons/folder_type_snaplet_opened.svg) no-repeat;
+}
+
+.foldericon-spin:before {
+    background: url(./icons/folder_type_spin.svg) no-repeat;
+}
+
+.foldericon-spin.opened:before {
+    background: url(./icons/folder_type_spin_opened.svg) no-repeat;
+}
+
+.foldericon-src:before {
+    background: url(./icons/folder_type_src.svg) no-repeat;
+}
+
+.foldericon-src.opened:before {
+    background: url(./icons/folder_type_src_opened.svg) no-repeat;
+}
+
+.foldericon-sso:before {
+    background: url(./icons/folder_type_sso.svg) no-repeat;
+}
+
+.foldericon-sso.opened:before {
+    background: url(./icons/folder_type_sso_opened.svg) no-repeat;
+}
+
+.foldericon-story:before {
+    background: url(./icons/folder_type_story.svg) no-repeat;
+}
+
+.foldericon-story.opened:before {
+    background: url(./icons/folder_type_story_opened.svg) no-repeat;
+}
+
+.foldericon-style:before {
+    background: url(./icons/folder_type_style.svg) no-repeat;
+}
+
+.foldericon-style.opened:before {
+    background: url(./icons/folder_type_style_opened.svg) no-repeat;
+}
+
+.foldericon-svelte:before {
+    background: url(./icons/folder_type_svelte.svg) no-repeat;
+}
+
+.foldericon-svelte.opened:before {
+    background: url(./icons/folder_type_svelte_opened.svg) no-repeat;
+}
+
+.foldericon-tauri:before {
+    background: url(./icons/folder_type_tauri.svg) no-repeat;
+}
+
+.foldericon-tauri.opened:before {
+    background: url(./icons/folder_type_tauri_opened.svg) no-repeat;
+}
+
+.foldericon-temp:before {
+    background: url(./icons/folder_type_temp.svg) no-repeat;
+}
+
+.foldericon-temp.opened:before {
+    background: url(./icons/folder_type_temp_opened.svg) no-repeat;
+}
+
+.foldericon-template:before {
+    background: url(./icons/folder_type_template.svg) no-repeat;
+}
+
+.foldericon-template.opened:before {
+    background: url(./icons/folder_type_template_opened.svg) no-repeat;
+}
+
+.foldericon-test:before {
+    background: url(./icons/folder_type_test.svg) no-repeat;
+}
+
+.foldericon-test.opened:before {
+    background: url(./icons/folder_type_test_opened.svg) no-repeat;
+}
+
+.foldericon-theme:before {
+    background: url(./icons/folder_type_theme.svg) no-repeat;
+}
+
+.foldericon-theme.opened:before {
+    background: url(./icons/folder_type_theme_opened.svg) no-repeat;
+}
+
+.foldericon-tools:before {
+    background: url(./icons/folder_type_tools.svg) no-repeat;
+}
+
+.foldericon-tools.opened:before {
+    background: url(./icons/folder_type_tools_opened.svg) no-repeat;
+}
+
+.foldericon-travis:before {
+    background: url(./icons/folder_type_travis.svg) no-repeat;
+}
+
+.foldericon-travis.opened:before {
+    background: url(./icons/folder_type_travis_opened.svg) no-repeat;
+}
+
+.foldericon-trunk:before {
+    background: url(./icons/folder_type_trunk.svg) no-repeat;
+}
+
+.foldericon-trunk.opened:before {
+    background: url(./icons/folder_type_trunk_opened.svg) no-repeat;
+}
+
+.foldericon-turbo:before {
+    background: url(./icons/folder_type_turbo.svg) no-repeat;
+}
+
+.foldericon-turbo.opened:before {
+    background: url(./icons/folder_type_turbo_opened.svg) no-repeat;
+}
+
+.foldericon-typescript:before {
+    background: url(./icons/folder_type_typescript.svg) no-repeat;
+}
+
+.foldericon-typescript.opened:before {
+    background: url(./icons/folder_type_typescript_opened.svg) no-repeat;
+}
+
+.foldericon-typings:before {
+    background: url(./icons/folder_type_typings.svg) no-repeat;
+}
+
+.foldericon-typings.opened:before {
+    background: url(./icons/folder_type_typings_opened.svg) no-repeat;
+}
+
+.foldericon-typings2:before {
+    background: url(./icons/folder_type_typings2.svg) no-repeat;
+}
+
+.foldericon-typings2.opened:before {
+    background: url(./icons/folder_type_typings2_opened.svg) no-repeat;
+}
+
+.foldericon-vagrant:before {
+    background: url(./icons/folder_type_vagrant.svg) no-repeat;
+}
+
+.foldericon-vagrant.opened:before {
+    background: url(./icons/folder_type_vagrant_opened.svg) no-repeat;
+}
+
+.foldericon-vercel:before {
+    background: url(./icons/folder_type_vercel.svg) no-repeat;
+}
+
+.foldericon-vercel.opened:before {
+    background: url(./icons/folder_type_vercel_opened.svg) no-repeat;
+}
+
+.foldericon-video:before {
+    background: url(./icons/folder_type_video.svg) no-repeat;
+}
+
+.foldericon-video.opened:before {
+    background: url(./icons/folder_type_video_opened.svg) no-repeat;
+}
+
+.foldericon-view:before {
+    background: url(./icons/folder_type_view.svg) no-repeat;
+}
+
+.foldericon-view.opened:before {
+    background: url(./icons/folder_type_view_opened.svg) no-repeat;
+}
+
+.foldericon-vs:before {
+    background: url(./icons/folder_type_vs.svg) no-repeat;
+}
+
+.foldericon-vs.opened:before {
+    background: url(./icons/folder_type_vs_opened.svg) no-repeat;
+}
+
+.foldericon-vs2:before {
+    background: url(./icons/folder_type_vs2.svg) no-repeat;
+}
+
+.foldericon-vs2.opened:before {
+    background: url(./icons/folder_type_vs2_opened.svg) no-repeat;
+}
+
+.foldericon-vscode:before {
+    background: url(./icons/folder_type_vscode.svg) no-repeat;
+}
+
+.foldericon-vscode.opened:before {
+    background: url(./icons/folder_type_vscode_opened.svg) no-repeat;
+}
+
+.foldericon-vscode2:before {
+    background: url(./icons/folder_type_vscode2.svg) no-repeat;
+}
+
+.foldericon-vscode2.opened:before {
+    background: url(./icons/folder_type_vscode2_opened.svg) no-repeat;
+}
+
+.foldericon-vscode3:before {
+    background: url(./icons/folder_type_vscode3.svg) no-repeat;
+}
+
+.foldericon-vscode3.opened:before {
+    background: url(./icons/folder_type_vscode3_opened.svg) no-repeat;
+}
+
+.foldericon-webpack:before {
+    background: url(./icons/folder_type_webpack.svg) no-repeat;
+}
+
+.foldericon-webpack.opened:before {
+    background: url(./icons/folder_type_webpack_opened.svg) no-repeat;
+}
+
+.foldericon-windows:before {
+    background: url(./icons/folder_type_windows.svg) no-repeat;
+}
+
+.foldericon-windows.opened:before {
+    background: url(./icons/folder_type_windows_opened.svg) no-repeat;
+}
+
+.foldericon-wit:before {
+    background: url(./icons/folder_type_wit.svg) no-repeat;
+}
+
+.foldericon-wit.opened:before {
+    background: url(./icons/folder_type_wit_opened.svg) no-repeat;
+}
+
+.foldericon-www:before {
+    background: url(./icons/folder_type_www.svg) no-repeat;
+}
+
+.foldericon-www.opened:before {
+    background: url(./icons/folder_type_www_opened.svg) no-repeat;
+}
+
+.foldericon-yarn:before {
+    background: url(./icons/folder_type_yarn.svg) no-repeat;
+}
+
+.foldericon-yarn.opened:before {
+    background: url(./icons/folder_type_yarn_opened.svg) no-repeat;
+}

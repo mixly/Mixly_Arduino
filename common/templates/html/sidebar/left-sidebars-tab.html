@@ -1,0 +1,80 @@
+<style>
+    div[m-id="{{d.mId}}"] {
+        width: 23px;
+        z-index: 3;
+        padding: 0px;
+        border-width: 0px 1px 0px 0px;
+        border-style: solid;
+        height: 100%;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] {
+        background-color: #f8f8f8;
+        border-color: #c9c9c9;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] {
+        background-color: #252526;
+        border-color: rgba(128, 128, 128, 0.35);
+    }
+
+    div[m-id="{{d.mId}}"] .x-scrollbar__content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        white-space: nowrap;
+    }
+
+    div[m-id="{{d.mId}}"] .chrome-tab {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        height: unset;
+    }
+
+    div[m-id="{{d.mId}}"] .chrome-tab > .chrome-tab-background {
+        top: 1px;
+        bottom: 1px;
+        left: 0px;
+        right: 0px;
+    }
+
+    div[m-id="{{d.mId}}"] .chrome-tab[active] > .chrome-tab-background {
+        border-width: 0 0 0 2px;
+    }
+
+    div[m-id="{{d.mId}}"] .chrome-tab > .chrome-tab-content {
+        padding: 2px 0;
+        height: fit-content;
+        flex-direction: column;
+    }
+
+    div[m-id="{{d.mId}}"] .chrome-tab > .chrome-tab-content > .chrome-tab-title {
+        writing-mode: tb-rl;
+        overflow: visible;
+        margin: 4px 0;
+    }
+
+    div[m-id="{{d.mId}}"] .chrome-tab > .chrome-tab-dividers {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 8px;
+        right: 8px;
+    }
+    div[m-id="{{d.mId}}"] .chrome-tab > .chrome-tab-dividers::before,
+    div[m-id="{{d.mId}}"] .chrome-tab > .chrome-tab-dividers::after {
+        left: 0;
+        right: 0;
+        height: 0.5px;
+        width: 100%;
+        background: #a9adb0;
+        opacity: 1;
+    }
+</style>
+<div m-id="{{d.mId}}" class="chrome-tabs">
+    <div class="chrome-tabs-content">
+    </div>
+</div>

@@ -1,0 +1,34 @@
+{
+    "name": "@mixly/micropython-k210-mixgoai",
+    "version": "1.3.0",
+    "description": "适用于mixly的micropython k210 mixgoai模块",
+    "scripts": {
+        "serve": "webpack-dev-server --config=webpack.dev.js",
+        "build:dev": "webpack --config=webpack.dev.js",
+        "build:prod": "npm run build:examples & webpack --config=webpack.prod.js & npm run build:libraries",
+        "build:examples": "node ../../../scripts/build-examples.js -t special",
+        "build:examples:ob": "node ../../../scripts/build-examples.js -t special --obfuscate",
+        "build:libraries": "python ../../../scripts/build-libraries.py ../../default/micropython_k210_mixgoai/build/lib",
+        "publish:board": "npm publish --registry https://registry.npmjs.org/"
+    },
+    "main": "./export.js",
+    "author": "Mixly Team",
+    "keywords": [
+        "mixly",
+        "mixly-plugin",
+        "micropython-k210-mixgoai"
+    ],
+    "homepage": "https://gitee.com/bnu_mixly/mixly3/tree/master/boards/default_src/micropython_k210_mixgoai",
+    "bugs": {
+        "url": "https://gitee.com/bnu_mixly/mixly3/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://gitee.com/bnu_mixly/mixly3.git",
+        "directory": "default_src/micropython_k210_mixgoai"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "license": "Apache 2.0"
+}

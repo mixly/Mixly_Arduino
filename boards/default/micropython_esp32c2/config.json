@@ -1,0 +1,128 @@
+{
+    "board": {
+        "MixGo MINI": "micropython:esp32c2:mixgo_mini",
+        "ESP32C2 Generic(2M)": "micropython:esp32c2:generic_2M"
+    },
+    "language": "MicroPython",
+    "burn": {
+        "type": "command",
+        "portSelect": "all",
+        "micropython:esp32c2:mixgo_mini": {
+            "command": "\"{esptool}\" --chip esp32c2 --port {com} --baud 115200 --after=no_reset_stub erase_flash && \"{esptool}\" --chip esp32c2 --port {com} --baud 460800 --after=no_reset_stub write_flash 0x0 \"{indexPath}/build/Mixgo_Mini-v1.23.0.bin\" 0X3A0000 \"{indexPath}/../micropython/build/HZK12.bin\"",
+            "special": [
+                {
+                    "name": "Firmware No Ble With SSL",
+                    "command": "\"{esptool}\" --chip esp32c2 --port {com} --baud 115200 --after=no_reset_stub erase_flash && \"{esptool}\" --chip esp32c2 --port {com} --baud 460800 --after=no_reset_stub write_flash 0x0 \"{indexPath}/build/Mixgo_Mini-v1.23.0.bin\" 0X3A0000 \"{indexPath}/../micropython/build/HZK12.bin\""
+                },
+                {
+                    "name": "Firmware With Ble No SSL",
+                    "command": "\"{esptool}\" --chip esp32c2 --port {com} --baud 115200 --after=no_reset_stub erase_flash && \"{esptool}\" --chip esp32c2 --port {com} --baud 460800 --after=no_reset_stub write_flash 0x0 \"{indexPath}/build/Mixgo_Mini_lib_ble-v1.23.0.bin\" 0X3A0000 \"{indexPath}/../micropython/build/HZK12.bin\""
+                }
+            ]
+        },
+        "micropython:esp32c2:generic_2M": {
+            "command": "\"{esptool}\" --chip esp32c2 --port {com} --baud 460800 erase_flash && \"{esptool}\" --chip esp32c2 --port {com} --baud 460800 write_flash 0x0 \"{indexPath}/build/Mixgo_Mini-v1.23.0-26mhz.bin\" "
+        }
+    },
+    "upload": {
+        "type": "command",
+        "portSelect": "all",
+        "libPath": [
+            "{indexPath}/../micropython/build/lib",
+            "{indexPath}/build/lib"
+        ],
+        "command": "\"{ampy}\" -p {com} -d 1 -r \"{reset}\" put \"{indexPath}/build/upload\"",
+        "filePath": "{indexPath}/build/upload/main.py",
+        "copyLib": true,
+        "reset": []
+    },
+    "nav": {
+        "burn": true,
+        "upload": true,
+        "save": {
+            "py": true
+        },
+        "setting": {
+            "thirdPartyLibrary": true
+        }
+    },
+    "serial": {
+        "ctrlCBtn": true,
+        "ctrlDBtn": true,
+        "baudRates": 115200,
+        "yMax": 100,
+        "yMin": 0,
+        "pointNum": 100,
+        "rts": false,
+        "dtr": false
+    },
+    "lib": {
+        "mixly": {
+            "url": [
+                "http://download.mixlylibs.cloud/mixly3-packages/cloud-libs/micropython_esp32c3/libs.json"
+            ]
+        }
+    },
+    "pythonToBlockly": false,
+    "web": {
+        "devices": {
+            "serial": true,
+            "hid": true,
+            "usb": true
+        },
+        "burn": {
+            "erase": true,
+            "micropython:esp32c2:mixgo_mini": {
+                "binFile": [
+                    {
+                        "offset": "0x0000",
+                        "path": "./build/Mixgo_Mini_lib-v1.23.0.bin"
+                    },
+                    {
+                        "offset": "0x3A0000",
+                        "path": "../micropython/build/HZK12.bin"
+                    }
+                ],
+                "special": [
+                    {
+                        "name": "Firmware No Ble With SSL",
+                        "binFile": [
+                            {
+                                "offset": "0x0000",
+                                "path": "./build/Mixgo_Mini_lib-v1.23.0.bin"
+                            },
+                            {
+                                "offset": "0x3A0000",
+                                "path": "../micropython/build/HZK12.bin"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Firmware With Ble No SSL",
+                        "binFile": [
+                            {
+                                "offset": "0x0000",
+                                "path": "./build/Mixgo_Mini_lib_ble-v1.23.0.bin"
+                            },
+                            {
+                                "offset": "0x3A0000",
+                                "path": "../micropython/build/HZK12.bin"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "micropython:esp32c2:generic_2M": {
+                "binFile": [
+                    {
+                        "offset": "0x0000",
+                        "path": "./build/Mixgo_Mini-v1.23.0-26mhz.bin"
+                    }
+                ]
+            }
+        },
+        "upload": {
+            "reset": []
+        }
+    }
+}

@@ -1,0 +1,80 @@
+.mixly-progress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    height: 15px;
+    border-radius: 2px;
+    font-size: 16px;
+}
+
+html[data-bs-theme=light] .mixly-progress {
+    color: rgb(0, 150, 136);
+    background-color: rgba(0, 150, 136, 0.12);
+}
+
+html[data-bs-theme=dark] .mixly-progress {
+    color: rgb(33, 150, 243);
+    background-color: rgba(33, 150, 243, 0.12);
+}
+
+.mixly-progress::-webkit-progress-bar {
+    background-color: transparent;
+}
+/* Determinate */
+
+.mixly-progress::-webkit-progress-value {
+    background-color: currentColor;
+    transition: all 0.2s;
+}
+
+.mixly-progress::-moz-progress-bar {
+    background-color: currentColor;
+    transition: all 0.2s;
+}
+
+.mixly-progress::-ms-fill {
+    border: none;
+    background-color: currentColor;
+    transition: all 0.2s;
+}
+/* Indeterminate */
+
+.mixly-progress:indeterminate {
+    background-size: 200% 100%;
+    background-image: linear-gradient(
+        to right,
+        transparent 50%,
+        currentColor 50%,
+        currentColor 60%,
+        transparent 60%,
+        transparent 71.5%,
+        currentColor 71.5%,
+        currentColor 84%,
+        transparent 84%
+    );
+    animation: mixly-progress 2s infinite linear;
+}
+
+.mixly-progress:indeterminate::-moz-progress-bar {
+    background-color: transparent;
+}
+
+.mixly-progress:indeterminate::-ms-fill {
+    animation-name: none;
+}
+
+@keyframes mixly-progress {
+    0% {
+        background-size: 200% 100%;
+        background-position: left -31.25% top 0%;
+    }
+    50% {
+        background-size: 800% 100%;
+        background-position: left -49% top 0%;
+    }
+    100% {
+        background-size: 400% 100%;
+        background-position: left -102% top 0%;
+    }
+}

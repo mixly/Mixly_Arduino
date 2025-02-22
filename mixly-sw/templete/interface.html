@@ -1,0 +1,143 @@
+<style>
+    .container {
+        width: 90%;
+    }
+
+    .blue_icons {
+        filter: invert(13%) sepia(24%) saturate(1450%) hue-rotate(207deg) brightness(93%) contrast(105%);
+    }
+
+    .slider-area {
+        height: 390px !important;
+    }
+
+    * {
+        -moz-user-select: none;
+        -o-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+</style>
+<script type="text/javascript">
+    $(window).scroll(function () {
+        if ($(window).scrollTop() >= 50) {
+            $('.header-area').css('background', '#1B173D');
+        } else {
+            $('.header-area').css('background', 'transparent');
+        }
+    });
+</script>
+<section class="slider-area" id="home">
+    <div class="container">
+        <div class="col-md-6 col-sm-6 hidden-xs">
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="row">
+                <div class="slider-inner text-right">
+                    <b>
+                        <h2>Mixly</h2>
+                    </b>
+                    <h5>Make Programming Easier</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    /*#add-board:hover {
+    -webkit-transform: rotate(0deg) scale(1.2) !important;
+    transform: rotate(1deg) scale(1.2) !important;
+  }*/
+
+    .setting-card>div:nth-child(1) {
+        opacity: 0;
+    }
+
+    .setting-card>div:nth-child(2) {
+        opacity: 1;
+        position: absolute;
+        left: 15px;
+        right: 15px;
+        top: 0px;
+        bottom: 0px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        box-shadow: 0 0 8px rgb(0 0 0 / 10%);
+    }
+
+    html[data-bs-theme=dark] .setting-card>div:nth-child(2) {
+        background-color: #2d2c2c;
+    }
+
+    html[data-bs-theme=light] .setting-card>div:nth-child(2) {
+        background-color: #fff;
+    }
+
+    .setting-card>div:nth-child(2):hover {
+        opacity: 1;
+        box-shadow: 0 0 15px rgb(0 0 0 / 30%);
+    }
+
+    .setting-card>div:nth-child(2)>div {
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+        display: flex;
+        align-items: center;
+    }
+
+    .setting-card>div:nth-child(2)>div>form {
+        width: 100%;
+        vertical-align: middle;
+    }
+
+    .setting-card>div:nth-child(2) .layui-form-switch {
+        height: 24px;
+        width: 50px;
+    }
+
+    .setting-card>div:nth-child(2) .layui-form-onswitch {
+        border-color: #686768;
+        background-color: #3f3e40;
+    }
+
+    .setting-card>div:nth-child(2) button {
+        width: 50px;
+        height: 24px;
+    }
+
+    .service-single img:hover {
+        -webkit-transform: rotate(0deg) scale(1.025);
+        transform: rotate(-3deg) scale(1.025);
+    }
+
+    html[data-bs-theme=light] .service-single:hover {
+        box-shadow: 0 0 15px rgb(0 0 0 / 30%) !important;
+    }
+
+    html[data-bs-theme=dark] .service-single:hover {
+        box-shadow: 0 0 15px rgb(85 85 85 / 30%) !important;
+    }
+
+    .fontello-icon {
+        font-family: "fontello" !important;
+        font-size: 16px;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+</style>
+<div class="service-area" id="board-area" style="padding-left: 0px;padding-right: 0px;">
+    <div class="container" style="width:100%;padding-left: 0px;padding-right: 0px;">
+        <div class="layui-carousel" id="board-switch" lay-filter="board-switch-filter"
+            style="background-color:rgba(0,0,0,0);padding-left: 0px;padding-right: 0px;">
+            <div id="mixly-board" carousel-item="" style="background-color:rgba(0,0,0,0);">
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="footer" role="contentinfo" style="position: absolute; bottom: 0px;left: 0px;width: 100%;"></footer>

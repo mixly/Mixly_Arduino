@@ -1,0 +1,24 @@
+<style>
+    div[m-id="{{d.mId}}"] {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        background-color: transparent !important;
+        font-size: 12px;
+        line-height: 12px;
+        color: #fff;
+        bottom: 0;
+        height: var(--footer-height);
+        width: 100%;
+    }
+
+    div[m-id="{{d.mId}}"] > p {
+        margin-left: 5px;
+    }
+</style>
+<div m-id="{{d.mId}}">
+    <div class="ui mini active inline slow loader"></div>
+    <p>{{d.msg.loading}}</p>
+</div>

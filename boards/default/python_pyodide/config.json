@@ -1,0 +1,12 @@
+{
+    "boardImg": "./media/webpy.png",
+    "boardType": "Python 3 Online",
+    "language": "Python",
+    "nav": {
+        "webrun": true,
+        "webcancel": true,
+        "save": {
+            "py": true
+        }
+    }
+}

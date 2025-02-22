@@ -1,0 +1,36 @@
+ <style>
+    div[m-id="{{d.mId}}"] {
+        height: 28px;
+        z-index: 3;
+        padding: 0px;
+        border-width: 1px 0px;
+        border-style: solid;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] {
+        background-color: #f8f8f8;
+        border-color: #c9c9c9;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] {
+        background-color: #252526;
+        border-color: rgba(128, 128, 128, 0.35);
+    }
+
+    div[m-id="{{d.mId}}"] > .chrome-tabs-content {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+    }
+
+    div[m-id="{{d.mId}}"] .x-scrollbar__content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: block;
+        white-space: nowrap;
+    }
+</style>
+<div m-id="{{d.mId}}" class="chrome-tabs">
+    <div class="chrome-tabs-content"></div>
+</div>

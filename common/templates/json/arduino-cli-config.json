@@ -1,0 +1,28 @@
+{
+    "board_manager": {
+        "additional_urls": []
+    },
+    "daemon": {
+        "port": "50051"
+    },
+    "directories": {
+        "data": "./arduino-cli/Arduino15",
+        "downloads": "./arduino-cli/staging",
+        "user": "./arduino-cli/Arduino"
+    },
+    "library": {
+        "enable_unsafe_install": true
+    },
+    "logging": {
+        "file": "",
+        "format": "text",
+        "level": "info"
+    },
+    "metrics": {
+        "addr": "9090",
+        "enabled": true
+    },
+    "sketch": {
+       "always_export_binaries": false 
+    }
+}

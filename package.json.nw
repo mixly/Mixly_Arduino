@@ -1,0 +1,39 @@
+{
+  "name": "Mixly3.0",
+  "version": "3.0.0",
+  "description": "Mixly，A Visual Program IDE for K12",
+  "repository": "",
+  "node-main": "./static-server/server.js",
+  "main": "http://localhost:7000",
+  "node-remote": "http://localhost:7000",
+  "scripts": {
+    "start": "nw .",
+    "build:nw:win:x64": "build --tasks win-x64 --mirror https://npmmirror.com/mirrors/nwjs/ .",
+    "build:nw:linux:x64": "build --tasks linux-x64 --mirror https://npmmirror.com/mirrors/nwjs/ .",
+    "build:nw:mac:x64": "build --tasks mac-x64 --mirror https://npmmirror.com/mirrors/nwjs/ ."
+  },
+  "window": {
+    "icon": "common/media/mixly.png",
+    "position": "center"
+  },
+  "keywords": [
+    "NW.js",
+    "server"
+  ],
+  "author": "Mixly TEAM",
+  "license": "other",
+  "build": {
+    "nwVersion": "0.91.0"
+  },
+  "devDependencies": {
+    "nw": "0.91.0-sdk",
+    "nwjs-builder-phoenix": "^1.15.0"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "path": "^0.12.7",
+    "url": "^0.11.0",
+    "express": "^4.18.1"
+  }
+}

@@ -1,0 +1,64 @@
+:root {
+    --nav-height: 35px;
+    --nav-left-btn-height: 28px;
+    --nav-left-btn-font-size: 14px;
+    --nav-right-btn-height: 26px;
+    --nav-right-btn-font-size: 16px;
+    --nav-select-height: 28px;
+    --footer-height: 22px;
+    --app-top-height: 30px;
+    --app-bottom-height: 22px;
+    --app-light-color: #009688;
+    --app-dark-color: #007acc;
+}
+
+html[data-bs-theme=light]:root {
+    --theme-color: #009688;
+    --theme-selected-color: rgb(0 150 136 / 60%);
+    --theme-highlight-color: #009688;
+}
+
+html[data-bs-theme=dark]:root {
+    --app-theme-color: #007ACC;
+    --theme-selected-color: rgb(41 128 185 / 60%);
+    --theme-highlight-color: #009688;
+}
+
+@font-face {
+    font-family: 'ravie';
+    src: url('../font/ravie.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.page-item {
+    width: 100%;
+    height: 100%;
+}
+
+html[data-bs-theme=light] .page-item {
+    background-color: #ffffff;
+}
+
+html[data-bs-theme=dark] .page-item {
+    background-color: #1e1e1e;
+}
+
+* {
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+html[data-bs-theme=light],
+html[data-bs-theme=light] > body {
+    background-color: #fff !important;
+}
+
+html[data-bs-theme=dark],
+html[data-bs-theme=dark] > body {
+    background-color: #181818 !important;
+}

@@ -1,0 +1,288 @@
+<div id="libs-menu" class="layui-layer-wrap">
+    <style type="text/css">
+        #libs-menu .layui-nav-tree .layui-nav-item > a {
+            padding-top: 1px;
+        }
+
+        #libs-menu-left {
+            width: 119px;
+            height: 100%;
+            position: absolute;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        html[data-bs-theme=light] #libs-menu-left {
+            background-color: #ffffff;
+            border-right: 1px solid #eee;
+        }
+
+        html[data-bs-theme=dark] #libs-menu-left {
+            border-right: 1px solid #454343;
+        }
+
+        #libs-menu-options {
+            margin: 5px;
+            width: 110px;
+            border-left-width: 10px;
+        }
+
+        #libs-menu-options > li > a {
+            cursor: pointer;
+        }
+
+        #libs-menu-body {
+            position: absolute;
+            right: 0px;
+            left: 120px;
+            height: 100%;
+            overflow: auto;
+        }
+
+        html[data-bs-theme=light] #libs-menu-body {
+            background-color: #fff;
+        }
+
+        #libs-menu-top {
+            position: absolute;
+            width: 100%;
+            top: 0px;
+            bottom: 10px;
+        }
+
+        #libs-menu-bottom {
+            position: absolute;
+            width: 100%;
+            bottom: 0px;
+            height: 10px;
+        }
+
+        html[data-bs-theme=light] #libs-menu-bottom {
+            background-color: #ffffff;
+            border-top: 1px solid #eee;
+        }
+
+        html[data-bs-theme=dark] #libs-menu-bottom {
+            border-top: 1px solid #454343;
+        }
+
+        #libs-menu-btn-group {
+            float: right;
+            padding-top: 4px;
+            padding-right: 10px;
+        }
+
+        #libs-menu .layui-table-header {
+            border-right-width: 5px !important;
+        }
+
+        .menu-body {
+            display: none;
+            overflow: hidden;
+        }
+
+        #libs-menu .layui-nav > li,
+        #libs-menu .layui-nav > li > a {
+            border-radius: 5px;
+        }
+
+        html[data-bs-theme=light] #libs-menu .layui-bg-cyan {
+            background-color: #ffffff !important;
+        }
+
+        html[data-bs-theme=light] #libs-menu .layui-nav .layui-this a {
+            color: #fff !important;
+            background-color: var(--app-light-color);
+        }
+
+        html[data-bs-theme=light] #libs-menu .layui-nav .layui-nav-item a {
+            color: #333;
+        }
+
+        html[data-bs-theme=light] #libs-menu .layui-nav-tree .layui-nav-item:hover {
+            background-color: #f2f2f2;
+            transition: 0.5s all;
+        }
+
+        html[data-bs-theme=dark] #libs-menu .layui-bg-cyan {
+            background-color: #2a2a2b !important;
+        }
+
+        html[data-bs-theme=dark] #libs-menu .layui-nav .layui-this a {
+            color: #fff !important;
+            background-color: var(--lay-color-normal);
+        }
+
+        html[data-bs-theme=dark] #libs-menu .layui-nav .layui-nav-item a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        html[data-bs-theme=dark] #libs-menu .layui-nav-tree .layui-nav-item:hover {
+            background-color: #afa7a7;
+            transition: 0.5s all;
+        }
+
+        html[data-bs-theme=light] #libs-menu .layui-table-tool {
+            background-color: #fff;
+            top: 1px;
+            border-bottom-width: 0px;
+        }
+
+        html[data-bs-theme=dark] #libs-menu .layui-table-tool {
+            background-color: #6c6969;
+            top: 1px;
+            border-bottom-width: 0px;
+        }
+
+        html[data-bs-theme=light] #libs-menu .layui-table-box {
+            bottom: 1px;
+            border: 4px solid #f8f8f8;
+        }
+
+        html[data-bs-theme=dark] #libs-menu .layui-table-box {
+            bottom: 1px;
+            border: 4px solid #302d2d;
+        }
+    </style>
+    <div id="libs-menu-top">
+        <div id="libs-menu-left">
+            <ul
+                id="libs-menu-options"
+                class="layui-nav layui-nav-tree layui-bg-cyan layui-inline"
+                lay-filter="libs-menu-filter"
+            >
+                <li class="layui-nav-item layui-this" lay-id="import">
+                    <a m-id="0">{{d.importBoard}}</a>
+                </li>
+                <li class="layui-nav-item" lay-id="delete">
+                    <a m-id="1">{{d.delBoard}}</a>
+                </li>
+            </ul>
+        </div>
+        <div id="libs-menu-body">
+            <div class="menu-body layui-show" style="height: 100%">
+                <div
+                    class="layui-tab layui-tab-brief"
+                    id="import-lib-page"
+                    lay-filter="import-lib-page-filter"
+                    lay-unauto
+                    style="margin: 0px;height: 100%;"
+                >
+                    <ul
+                        class="layui-tab-title"
+                        style="
+                            position: absolute;
+                            left: 0px;
+                            top: 0px;
+                            height: 40px;
+                            right: 0px;
+                        "
+                    >
+                        <li class="layui-this" lay-id="mixly" id="import-mixly-lib">
+                            {{d.mixlyLib}}
+                        </li>
+                        <li lay-id="code" id="import-code-lib">
+                            {{d.codeLib}}
+                        </li>
+                        <div class="layui-btn-group" style="float: right;padding: 5px;">
+                            <button type="button" class="layui-btn layui-btn-sm self-adaption-btn" title="{{d.cloudImport}}" m-id="cloud-import">
+                                <i class="icon-download-cloud-1"></i>
+                            </button>
+                            <button type="button" class="layui-btn layui-btn-sm self-adaption-btn" title="{{d.localImport}}" m-id="local-import">
+                                <i class="icon-download-2"></i>
+                            </button>
+                        </div>
+                    </ul>
+                    <div
+                        class="layui-tab-content"
+                        style="
+                            position: absolute;
+                            left: 0px;
+                            top: 40px;
+                            bottom: 0px;
+                            right: 0px;
+                            overflow: auto;
+                        "
+                    >
+                        <div class="layui-tab-item layui-show">
+                            <div
+                                class="layui-hide"
+                                id="import-mixly-lib-page"
+                                lay-filter="import-mixly-lib-page-filter"
+                            ></div>
+                        </div>
+                        <div class="layui-tab-item">
+                            <div
+                                class="layui-hide"
+                                id="import-code-lib-page"
+                                lay-filter="import-code-lib-page-filter"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-body" style="height: 100%">
+                <div
+                    class="layui-tab layui-tab-brief"
+                    id="del-lib-page"
+                    lay-filter="del-lib-page-filter"
+                    lay-unauto
+                    style="margin: 0px;height: 100%;"
+                >
+                    <ul
+                        class="layui-tab-title"
+                        style="
+                            position: absolute;
+                            left: 0px;
+                            top: 0px;
+                            height: 40px;
+                            right: 0px;
+                        "
+                    >
+                        <li class="layui-this" lay-id="mixly" id="del-mixly-lib">
+                            {{d.mixlyLib}}
+                        </li>
+                        <li lay-id="code" id="del-code-lib">
+                            {{d.codeLib}}
+                        </li>
+                        <div class="layui-btn-group" style="float: right;padding: 5px;">
+                            <button type="button" class="layui-btn layui-btn-sm self-adaption-btn" title="{{d.openFolder}}" m-id="open-folder">
+                                <i class="icon-folder-open-empty"></i>
+                            </button>
+                            <button type="button" class="layui-btn layui-btn-sm self-adaption-btn" title="{{d.del}}" m-id="del">
+                                <i class="icon-trash"></i>
+                            </button>
+                        </div>
+                    </ul>
+                    <div
+                        class="layui-tab-content"
+                        style="
+                            position: absolute;
+                            left: 0px;
+                            top: 40px;
+                            bottom: 0px;
+                            right: 0px;
+                            overflow: auto;
+                        "
+                    >
+                        <div class="layui-tab-item layui-show">
+                            <div
+                                class="layui-hide"
+                                id="del-mixly-lib-page"
+                                lay-filter="del-mixly-lib-page-filter"
+                            ></div>
+                        </div>
+                        <div class="layui-tab-item">
+                            <div
+                                class="layui-hide"
+                                id="del-code-lib-page"
+                                lay-filter="del-code-lib-page-filter"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="libs-menu-bottom"></div>
+</div>

@@ -1,0 +1,1 @@
+<xml version=\"1.0.7\" board=\"Arduino MixGo\" xmlns=\"http://www.w3.org/1999/xhtml\"><block type=\"serial_println\" id=\"iXPu~*uguB]ana+cA:(|\" x=\"9\" y=\"176\"><field name=\"serial_select\">Serial</field><value name=\"CONTENT\"><block type=\"mixgo_MPU9250\" id=\"(A;~WY9LNL^)x,GcMZ?k\"><field name=\"MixGo_MPU9250_GETAB\">a</field></block></value></block></xml>

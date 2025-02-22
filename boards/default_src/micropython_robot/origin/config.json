@@ -1,0 +1,128 @@
+{
+    "board": {
+        "飞乙": "micropython:esp32c3:feiyi",
+        "超霸大师": "micropython:esp32:mixbot",
+        "机器人大师": "micropython:esp32:rm_e1"
+    },
+    "language": "MicroPython",
+    "burn": {
+        "type": "command",
+        "portSelect": "all",        
+        "micropython:esp32c3:feiyi": {
+            "command": "\"{esptool}\" --chip esp32c3 --port {com} --baud 460800 erase_flash && \"{esptool}\" --chip esp32c3 --port {com} --baud 460800 write_flash 0x0 \"{indexPath}/build/Mixgo_FeiYi-v1.23.0.bin\" 0X3A0000 \"{indexPath}/../micropython/build/HZK12.bin\""
+        },
+        "micropython:esp32:rm_e1": {
+            "command": "\"{esptool}\" --chip esp32 --port {com} --baud 460800 erase_flash && \"{esptool}\" --port {com} --baud 460800 write_flash 0x1000 \"{indexPath}/build/RM_E1-v1.23.0.bin\""
+        },
+        "micropython:esp32:mixbot": {
+            "command": "\"{esptool}\" --chip esp32 --port {com} --baud 460800 erase_flash && \"{esptool}\" --port {com} --baud 460800 write_flash 0x1000 \"{indexPath}/build/MixBot-v1.23.0.bin\""
+        }
+    },
+    "upload": {
+        "type": "command",
+        "portSelect": "all",
+        "libPath": [
+            "{indexPath}/build/lib",
+            "{indexPath}/../micropython/build/lib"
+        ],
+        "command": "\"{ampy}\" -p {com} -d 1 -r \"{reset}\" put \"{indexPath}/build/upload\"",
+        "filePath": "{indexPath}/build/upload/main.py",
+        "copyLib": true,
+        "reset": [],
+        "micropython:esp32c3:feiyi": {
+            "reset": [
+                {
+                    "dtr": false,
+                    "rts": true
+                }, {
+                    "sleep": 300
+                }, {
+                    "dtr": false,
+                    "rts": false
+                }, {
+                    "sleep": 300
+                }, {
+                    "dtr": false,
+                    "rts": true
+                }, {
+                    "sleep": 300
+                }
+            ]
+        }
+    },
+    "nav": {
+        "burn": true,
+        "upload": true,
+        "save": {
+            "py": true
+        },
+        "setting": {
+            "thirdPartyLibrary": true
+        }
+    },
+    "serial": {
+        "ctrlCBtn": true,
+        "ctrlDBtn": true,
+        "baudRates": 115200,
+        "yMax": 100,
+        "yMin": 0,
+        "pointNum": 100,
+        "rts": false,
+        "dtr": false,
+        "micropython:esp32c3:feiyi": {
+            "rts": true,
+            "dtr": false
+        }
+    },
+    "lib": {
+        "mixly": {
+            "url": [
+                "http://download.mixlylibs.cloud/mixly3-packages/cloud-libs/micropython_esp32/libs.json"
+            ]
+        }
+    },
+    "pythonToBlockly": false,
+    "web": {
+        "devices": {
+            "serial": true,
+            "hid": true,
+            "usb": false
+        },
+        "burn": {
+            "erase": true,            
+            "micropython:esp32c3:feiyi": {
+                "binFile": [
+                    {
+                        "offset": "0x0000",
+                        "path": "./build/Mixgo_FeiYi_lib-v1.23.0.bin"
+                    },
+                    {
+                        "offset": "0X3A0000",
+                        "path": "../micropython/build/HZK12.bin"
+                    }
+                ]
+            },
+            "micropython:esp32:rm_e1": {
+                "binFile": [
+                    {
+                        "offset": "0x1000",
+                        "path": "./build/RM_E1_lib-v1.23.0.bin"
+                    }
+                ]
+            },
+            "micropython:esp32:mixbot": {
+                "binFile": [
+                    {
+                        "offset": "0x1000",
+                        "path": "./build/MixBot_lib-v1.23.0.bin"
+                    }
+                ]
+            }
+       
+        },
+        
+        "upload": {
+            "reset": []
+        }
+    }
+}

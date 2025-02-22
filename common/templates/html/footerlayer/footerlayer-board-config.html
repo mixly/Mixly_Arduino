@@ -1,0 +1,102 @@
+<style>
+    div[m-id="{{d.mId}}"] {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        align-items: center;
+    }
+
+    div[m-id="{{d.mId}}"] button {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    div[m-id="{{d.mId}}"] button.title {
+        white-space: nowrap;
+        margin: 2px 0px;
+        padding: 0px;
+    }
+
+    div[m-id="{{d.mId}}"] button.title > p {
+        width: 100%;
+        text-align: right;
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] button.title {
+        background-color: #ffffff;
+        border: 1px #fff;
+        color: #000;
+        font-size: 14px;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] button.title:hover {
+        color: #a5a5a5;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] button.title {
+        background-color: #252525;
+        border: 1px transparent;
+        color: #fff;
+        font-size: 14px;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] button.title:hover {
+        color: var(--lay-color-text-2);
+    }
+
+    div[m-id="{{d.mId}}"] button.option {
+        margin: 2px 0px;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] button.option {
+        background-color: var(--app-light-color);
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] button.option {
+        background-color: #007ACC;
+    }
+
+    div[m-id="{{d.mId}}"] .select2-selection--single {
+        height: 24px;
+    }
+
+    div[m-id="{{d.mId}}"] .select2-selection--single > span {
+        line-height: 24px !important;
+        height: 24px !important;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] .select2-container--open .select2-selection--single {
+        outline: 1px solid var(--app-light-color);
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] .select2-container--open .select2-selection--single {
+        outline: 1px solid var(--app-dark-color);
+    }
+
+    .footer-layer-board-config .footer-layer-btn.reset {
+        font-size: 13px;
+        line-height: 12px;
+    }
+
+    html[data-bs-theme=light] > body > .select2-container > .select2-board-config {
+        outline: 1px solid var(--app-light-color);
+    }
+
+    html[data-bs-theme=dark] > body > .select2-container > .select2-board-config {
+        outline: 1px solid var(--app-dark-color);
+    }
+</style>
+<div m-id="{{d.mId}}">
+    {{# layui.each(d.options, function(index, item){ }}
+    <button
+        mid="{{ item.key }}-label"
+        class="layui-btn layui-btn-fluid layui-btn-xs title">
+        <p>{{ item.name }}</p>
+    </button>
+    <p>&nbsp:&nbsp</p>
+    <select mid="{{ item.key }}"></select>
+    {{# }); }}
+</div>

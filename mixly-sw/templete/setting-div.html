@@ -1,0 +1,360 @@
+<style type="text/css">
+    #setting-menu {
+        display: none;
+    }
+
+    #setting-menu-left {
+        width: 160px;
+        height: 100%;
+        position: absolute;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    #setting-menu-options {
+        margin: 5px;
+        width: 150px;
+        border-left-width: 10px;
+    }
+
+    #setting-menu-options > li > a {
+        cursor: pointer;
+    }
+
+    #setting-menu-body {
+        position: absolute;
+        right: 0px;
+        left: 160px;
+        height: 100%;
+        overflow: auto;
+        /* border-radius: 0px 0px 5px 0px; */
+    }
+
+    html[data-bs-theme=light] #setting-menu-body {
+        background-color: #fff;
+    }
+
+    #setting-menu-top {
+        position: absolute;
+        width: 100%;
+        top: 0px;
+        bottom: 10px;
+    }
+
+    #setting-menu-bottom {
+        position: absolute;
+        width: 100%;
+        bottom: 0px;
+        height: 10px;
+    }
+
+    #setting-menu-btn-group {
+        float: right;
+        padding-top: 4px;
+        padding-right: 10px;
+    }
+
+    #setting-menu .layui-table-header {
+        border-right-width: 5px !important;
+    }
+
+    .layui-table-tips-c:before {
+        position: relative;
+        right: 1px;
+        top: -3px;
+    }
+
+    #setting-menu-body .menu-body {
+        height: 100%;
+        display: none;
+    }
+
+    #setting-menu .layui-nav .layui-nav-item {
+        border-radius: 5px;
+    }
+
+    #setting-menu .layui-nav .layui-nav-item a {
+        padding-top: 1px;
+        border-radius: 5px;
+    }
+
+    html[data-bs-theme=light] #setting-menu .layui-bg-cyan {
+        background-color: #ffffff !important;
+    }
+
+    html[data-bs-theme=light] #setting-menu .layui-nav .layui-nav-item.layui-this a {
+        color: #fff;
+        background-color: #009688;
+    }
+
+    html[data-bs-theme=light] #setting-menu .layui-nav .layui-nav-item a {
+        color: #333;
+    }
+
+    html[data-bs-theme=light] #setting-menu .layui-nav-tree .layui-nav-item:hover {
+        background-color: #f2f2f2;
+        transition: 0.5s all;
+    }
+
+    html[data-bs-theme=dark] #setting-menu .layui-bg-cyan {
+        background-color: #2a2a2b !important;
+    }
+
+    html[data-bs-theme=dark] #setting-menu .layui-nav .layui-this a {
+        color: #fff;
+        background-color: var(--lay-color-normal);
+    }
+
+    html[data-bs-theme=dark] #setting-menu .layui-nav .layui-nav-item a {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    html[data-bs-theme=dark] #setting-menu .layui-nav-tree .layui-nav-item:hover {
+        background-color: #afa7a7;
+        transition: 0.5s all;
+    }
+
+    html[data-bs-theme=light] #setting-menu .layui-table-tool {
+        background-color: #fff;
+        border-bottom-width: 0px;
+    }
+
+    html[data-bs-theme=light] #setting-menu .layui-table-box {
+        border: 4px solid #f8f8f8;
+    }
+
+    html[data-bs-theme=dark] #setting-menu .layui-table-box {
+        border: 4px solid #302d2d;
+    }
+
+    .setting-menu-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        flex-wrap: nowrap;
+        flex-grow: 1;
+    }
+
+    .setting-menu-info > div:nth-child(1) {
+        height: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        flex: 1;
+    }
+
+    .setting-menu-info > div:nth-child(2) {
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    html[data-bs-theme=light] .setting-menu-info > div:nth-child(2) {
+        border-top: 1px solid #eee;
+    }
+
+    html[data-bs-theme=dark] .setting-menu-info > div:nth-child(2) {
+        border-top: 1px solid #454343;
+    }
+
+    #setting-menu-user .layui-form-pane {
+        padding: 5px 5px 1px 5px;
+    }
+
+    #setting-menu-update .layui-panel {
+        margin: 5px;
+    }
+</style>
+<div id="setting-menu" class="layui-layer-wrap">
+    <div id="setting-menu-top">
+        <div id="setting-menu-left">
+            <ul id="setting-menu-options" class="layui-nav layui-nav-tree layui-bg-cyan layui-inline"
+                lay-filter="setting-menu-filter">
+                <li class="layui-nav-item layui-this" lay-id="0">
+                    <a m-id="0">{{ d.personalise }}</a>
+                </li>
+                {{# if(d.env === 'electron'){ }}
+                <li class="layui-nav-item" lay-id="1">
+                    <a m-id="1" href="javascript:;">{{ d.importBoard }}</a>
+                </li>
+                {{# } }}
+                {{# if(d.env === 'web-socket'){ }}
+                <li class="layui-nav-item" lay-id="2">
+                    <a m-id="2">{{ d.checkForUpdates }}</a>
+                </li>
+                {{# } }}
+            </ul>
+        </div>
+        <div id="setting-menu-body">
+            <div class="menu-body layui-show">
+                <div id="setting-menu-user" class="setting-menu-info">
+                    <div>
+                        <div class="layui-collapse" lay-filter="menu-user-collapse-filter" lay-accordion="">
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">{{ d.softwareSettings }}</h2>
+                                <div class="layui-colla-content layui-show">
+                                    <form class="layui-form layui-form-pane" action="">
+                                        <div class="layui-form-item layui-form-text">
+                                            <label class="layui-form-label">{{ d.theme }}</label>
+                                            <div class="layui-input-block layui-row layui-col-space10">
+                                                <select class="setting-menu-item" value="theme" lay-ignore>
+                                                    <option value="light">{{ d.light }}</option>
+                                                    <option value="dark">{{ d.dark }}</option>
+                                                    <option value="auto">{{ d.autoWithSys }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-form-text">
+                                            <label class="layui-form-label">{{ d.language }}</label>
+                                            <div class="layui-input-block layui-row layui-col-space10">
+                                                <select class="setting-menu-item" value="language" lay-ignore>
+                                                    <option value="zh-hans">简体中文</option>
+                                                    <option value="zh-hant">繁體中文</option>
+                                                    <option value="en">English</option>
+                                                    <option value="auto">{{ d.autoWithSys }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        {{# if(d.env === 'electron'){ }}
+                                        <div class="layui-form-item layui-form-text">
+                                            <label class="layui-form-label">{{ d.autoUpdate }}</label>
+                                            <div class="layui-input-block layui-row layui-col-space10">
+                                                <select class="setting-menu-item" value="autoUpdate" lay-ignore>
+                                                    <option value="yes">{{ d.yes }}</option>
+                                                    <option value="no">{{ d.no }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        {{# } }}
+                                    </form>
+                                </div>
+                            </div>
+                            {{# if(d.env === 'electron'){ }}
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">{{ d.boardSettings }}</h2>
+                                <div class="layui-colla-content">
+                                    <form class="layui-form layui-form-pane" action="">
+                                        <div class="layui-form-item layui-form-text">
+                                            <label class="layui-form-label">{{ d.compileCAndH }}</label>
+                                            <div class="layui-input-block layui-row layui-col-space10">
+                                                <select class="setting-menu-item" value="compileCAndH" lay-ignore>
+                                                    <option value="yes">{{ d.yes }}</option>
+                                                    <option value="no">{{ d.no }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-form-text">
+                                            <label class="layui-form-label">{{ d.autoOpenPort }}</label>
+                                            <div class="layui-input-block layui-row layui-col-space10">
+                                                <select class="setting-menu-item" value="autoOpenPort" lay-ignore>
+                                                    <option value="yes">{{ d.yes }}</option>
+                                                    <option value="no">{{ d.no }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            {{# } }}
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">Blockly</h2>
+                                <div class="layui-colla-content">
+                                    <form class="layui-form layui-form-pane" action="">
+                                        <div class="layui-form-item layui-form-text">
+                                            <label class="layui-form-label">{{ d.blocklyContentHighlight }}</label>
+                                            <div class="layui-input-block layui-row layui-col-space10">
+                                                <select class="setting-menu-item" value="blocklyContentHighlight"
+                                                    lay-ignore>
+                                                    <option value="no">{{ d.no }}</option>
+                                                    <option value="yes">{{ d.yes }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-form-text">
+                                            <label class="layui-form-label">{{ d.blocklyShowGrid }}</label>
+                                            <div class="layui-input-block layui-row layui-col-space10">
+                                                <select class="setting-menu-item" value="blocklyShowGrid" lay-ignore>
+                                                    <option value="no">{{ d.no }}</option>
+                                                    <option value="yes">{{ d.yes }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="layui-form-item layui-form-text">
+                                            <label class="layui-form-label">
+                                                {{ d.blocklyShowMinimap }}&nbsp;<a class="icon-beaker"
+                                                    style="font-size: 14px;" title="{{ d.experimental }}"></a>
+                                            </label>
+                                            <div class="layui-input-block layui-row layui-col-space10">
+                                                <select class="setting-menu-item" value="blocklyShowMinimap" lay-ignore>
+                                                    <option value="no">{{ d.no }}</option>
+                                                    <option value="yes">{{ d.yes }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-form-text">
+                                            <label class="layui-form-label">
+                                                {{ d.blocklyMultiselect }}&nbsp;<a class="icon-beaker"
+                                                    style="font-size: 14px;" title="{{ d.experimental }}"></a>
+                                            </label>
+                                            <div class="layui-input-block layui-row layui-col-space10">
+                                                <select class="setting-menu-item" value="blocklyMultiselect" lay-ignore>
+                                                    <option value="no">{{ d.no }}</option>
+                                                    <option value="yes">{{ d.yes }}</option>
+                                                </select>
+                                            </div>
+                                        </div> -->
+                                        <div class="layui-form-item layui-form-text">
+                                            <label class="layui-form-label">{{ d.blockRenderer }}</label>
+                                            <div class="layui-input-block layui-row layui-col-space10">
+                                                <select class="setting-menu-item" value="blockRenderer" lay-ignore>
+                                                    <option value="geras">geras</option>
+                                                    <option value="zelos">zelos</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="layui-btn self-adaption-btn layui-btn-sm" value="apply">{{ d.apply }}</button>
+                        <button class="layui-btn self-adaption-btn layui-btn-sm" value="reset">{{ d.reset }}</button>
+                    </div>
+                </div>
+            </div>
+            {{# if(d.env === 'electron'){ }}
+            <div class="menu-body" id="import-board">
+                <div class="layui-hide" id="import-board-page" lay-filter="import-board-page-filter"></div>
+            </div>
+            {{# } }}
+            {{# if(d.env === 'web-socket'){ }}
+            <div class="menu-body">
+                <div id="setting-menu-update" class="setting-menu-info">
+                    <div>
+                        <div id="setting-menu-update-server" class="layui-card layui-panel">
+                            <div class="layui-card-header">
+                                <label>{{ d.server }}</label>
+                                <span class="layui-badge layui-bg-green" value="latest">{{ d.latest }}</span>
+                                <span class="layui-badge" value="obsolete">{{ d.obsolete }}</span>
+                            </div>
+                            <div class="layui-card-body" class="">
+                                <label>{{ d.version }}: </label>
+                                <text>1.0.0</text>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="layui-btn self-adaption-btn layui-btn-sm" value="update">{{ d.update }}</button>
+                    </div>
+                </div>
+            </div>
+            {{# } }}
+        </div>
+    </div>
+    <div id="setting-menu-bottom">
+    </div>
+</div>

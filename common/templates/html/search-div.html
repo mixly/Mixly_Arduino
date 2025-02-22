@@ -1,0 +1,56 @@
+<style>
+    div[m-id="{{d.mId}}"] {
+        width: 100%;
+        position: relative;
+        height: 33px;
+        padding-bottom: 3px;
+    }
+
+    div[m-id="{{d.mId}}"] > input {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        height: 30px;
+        width: auto;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] > input {
+        background-color: #f8f8f8;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] > input:focus {
+        border-color: var(--app-light-color) !important;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] > input:focus {
+        border-color: var(--app-dark-color) !important;
+    }
+
+    div[m-id="{{d.mId}}"] > i {
+        position: absolute;
+        top: 7px;
+        right: 10px;
+        font-size: 20px;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] > i.disabled {
+        color: #c7cbcf;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] > i.disabled {
+        color: #333;
+    }
+</style>
+<div m-id="{{d.mId}}">
+    <input
+        type="text"
+        placeholder="{{d.search}}"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+        class="layui-input"
+    >
+    <i class="codicon-search-fuzzy layui-anim disabled"></i>
+</div>

@@ -1,0 +1,19 @@
+<div>
+    <h5 style="
+        font-weight: bold;
+        padding-bottom: 8px;
+        user-select: text;
+    ">{{-d.title}}</h5>
+    <div>
+        {{# if (d.message) { }}
+            <p style="white-space: normal;user-select: text;padding-bottom: 5px;">
+                {{-d.message}}
+            </p>
+        {{# } }}
+        {{# if (d.href === '#') { }}
+            <p style="user-select: text;">{{d.moreInfo}}: <a class="link-secondary" href="javascript:void(0)">{{-d.name}}</a></p>
+        {{# } else { }}
+            <p style="user-select: text;">{{d.moreInfo}}: <a class="link-primary" href="javascript:void(0)" onclick="Mixly.Url.open('{{-d.href}}')" style="user-select: text;">{{-d.name}}</a></p>
+        {{# } }}
+    </div>
+</div>

@@ -1,0 +1,112 @@
+.horizontal-line {
+    opacity: 0;
+    height: 4px;
+    width: 100%;
+    cursor: s-resize;
+    z-index: 100;
+}
+
+.vertical-line {
+    opacity: 0;
+    width: 4px;
+    height: 100%;
+    cursor: w-resize;
+    z-index: 100;
+}
+
+@-webkit-keyframes drag-fadein {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes drag-fadein {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.horizontal-line:hover,
+.vertical-line:hover {
+    -webkit-animation-name: drag-fadein;
+    animation-duration: 0.2s;
+    animation-delay: .3s;
+    animation-fill-mode: forwards;
+}
+
+.horizontal-line:active,
+.vertical-line:active {
+    -webkit-animation-name: drag-fadein;
+    animation-duration: 0.2s;
+    animation-delay: .3s;
+    animation-fill-mode: forwards;
+}
+
+.drag-w-resize * {
+    cursor: w-resize !important;
+}
+
+.drag-s-resize * {
+    cursor: s-resize !important;
+}
+
+/* 由于拖拽而产生尺寸改变元素的容器 */
+.drag-s-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.drag-w-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+/* 拖拽元素的容器 */
+.drag-elem {
+    position: absolute;
+    opacity: 0;
+}
+
+.drag-s-elem {
+    width: 100%;
+    height: 4px;
+    cursor: s-resize;
+}
+
+.drag-w-elem {
+    width: 4px;
+    height: 100%;
+    cursor: w-resize;
+}
+
+html[data-bs-theme=light] .horizontal-line,
+html[data-bs-theme=light] .vertical-line,
+html[data-bs-theme=light] .drag-s-elem,
+html[data-bs-theme=light] .drag-w-elem {
+    background-color: rgb(5 214 195);
+}
+
+html[data-bs-theme=dark] .horizontal-line,
+html[data-bs-theme=dark] .vertical-line,
+html[data-bs-theme=dark] .drag-s-elem,
+html[data-bs-theme=dark] .drag-w-elem {
+    background-color: rgb(8 105 170);
+}
+
+.drag-elem-shadow {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background-color: transparent;
+    opacity: 0;
+}
+
+.drag-elem-shadow.active {
+    display: block;
+}
+
+.drag-disable * {
+    pointer-events: none !important;
+}

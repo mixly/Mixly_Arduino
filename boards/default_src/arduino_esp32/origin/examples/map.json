@@ -1,0 +1,142 @@
+{
+    "ESP32 Dev Module": {
+        "Handbit": {
+            "buzzer play two tigers.mix": {
+                "__file__": true,
+                "__name__": "buzzer play two tigers.mix"
+            },
+            "display Chinese.mix": {
+                "__file__": true,
+                "__name__": "display Chinese.mix"
+            },
+            "display Text.mix": {
+                "__file__": true,
+                "__name__": "display Text.mix"
+            },
+            "RGB LED.mix": {
+                "__file__": true,
+                "__name__": "RGB LED.mix"
+            },
+            "__file__": false,
+            "__name__": "Handbit"
+        },
+        "MixGo": {
+            "MPU9250.mix": {
+                "__file__": true,
+                "__name__": "MPU9250.mix"
+            },
+            "__file__": false,
+            "__name__": "MixGo"
+        },
+        "MPU6050打印数值.mix": {
+            "__file__": true,
+            "__name__": "MPU6050打印数值.mix"
+        },
+        "PWM模拟输出.mix": {
+            "__file__": true,
+            "__name__": "PWM模拟输出.mix"
+        },
+        "SPIFFS读写数据测试.mix": {
+            "__file__": true,
+            "__name__": "SPIFFS读写数据测试.mix"
+        },
+        "URL和Base64编解码.mix": {
+            "__file__": true,
+            "__name__": "URL和Base64编解码.mix"
+        },
+        "WiFi事件.mix": {
+            "__file__": true,
+            "__name__": "WiFi事件.mix"
+        },
+        "wifi控制小车.mix": {
+            "__file__": true,
+            "__name__": "wifi控制小车.mix"
+        },
+        "中断控制.mix": {
+            "__file__": true,
+            "__name__": "中断控制.mix"
+        },
+        "使用http发送POST请求.mix": {
+            "__file__": true,
+            "__name__": "使用http发送POST请求.mix"
+        },
+        "定时器.mix": {
+            "__file__": true,
+            "__name__": "定时器.mix"
+        },
+        "心知天气.mix": {
+            "__file__": true,
+            "__name__": "心知天气.mix"
+        },
+        "旋转编码器读取数据.mix": {
+            "__file__": true,
+            "__name__": "旋转编码器读取数据.mix"
+        },
+        "简明教程": {
+            "ESP32双核的简单使用.mix": {
+                "__file__": true,
+                "__name__": "ESP32双核的简单使用.mix"
+            },
+            "ESPnow无线通讯简单案例.mix": {
+                "__file__": true,
+                "__name__": "ESPnow无线通讯简单案例.mix"
+            },
+            "__file__": false,
+            "__name__": "简明教程"
+        },
+        "触摸中断.mix": {
+            "__file__": true,
+            "__name__": "触摸中断.mix"
+        },
+        "__file__": false,
+        "__name__": "ESP32 Dev Module"
+    },
+    "ESP32C3 Dev Module": {
+        "URL和Base64编解码.mix": {
+            "__file__": true,
+            "__name__": "URL和Base64编解码.mix"
+        },
+        "使用http发送POST请求.mix": {
+            "__file__": true,
+            "__name__": "使用http发送POST请求.mix"
+        },
+        "心知天气.mix": {
+            "__file__": true,
+            "__name__": "心知天气.mix"
+        },
+        "__file__": false,
+        "__name__": "ESP32C3 Dev Module"
+    },
+    "ESP32S2 Dev Module": {
+        "URL和Base64编解码.mix": {
+            "__file__": true,
+            "__name__": "URL和Base64编解码.mix"
+        },
+        "使用http发送POST请求.mix": {
+            "__file__": true,
+            "__name__": "使用http发送POST请求.mix"
+        },
+        "心知天气.mix": {
+            "__file__": true,
+            "__name__": "心知天气.mix"
+        },
+        "__file__": false,
+        "__name__": "ESP32S2 Dev Module"
+    },
+    "ESP32S3 Dev Module": {
+        "URL和Base64编解码.mix": {
+            "__file__": true,
+            "__name__": "URL和Base64编解码.mix"
+        },
+        "使用http发送POST请求.mix": {
+            "__file__": true,
+            "__name__": "使用http发送POST请求.mix"
+        },
+        "心知天气.mix": {
+            "__file__": true,
+            "__name__": "心知天气.mix"
+        },
+        "__file__": false,
+        "__name__": "ESP32S3 Dev Module"
+    }
+}

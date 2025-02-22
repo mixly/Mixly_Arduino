@@ -1,0 +1,36 @@
+<style>
+    div[m-id="{{d.mId}}"] {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+    }
+
+    div[m-id="{{d.mId}}"] > .body {
+        position: absolute;
+        left: 0px;
+        right: 23px;
+        height: 100%;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] > .body {
+        background-color: #fff;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] > .body {
+        background-color: #1e1e1e;
+    }
+
+    div[m-id="{{d.mId}}"] > .tabs {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 23px;
+        height: 100%;
+    }
+</style>
+<div m-id="{{d.mId}}">
+    <div class="body"></div>
+    <div class="tabs"></div>
+</div>

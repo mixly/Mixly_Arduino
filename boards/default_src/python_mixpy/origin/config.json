@@ -1,0 +1,22 @@
+{
+    "language": "Python",
+    "nav": {
+        "run": true,
+        "cancel": true,
+        "save": {
+            "py": true
+        },
+        "setting": {
+            "thirdPartyLibrary": true,
+            "pythonToBlockly": true
+        }
+    },
+    "lib": {
+        "mixly": {
+            "url": [
+                "http://download.mixlylibs.cloud/mixly3-packages/cloud-libs/python/libs.json"
+            ]
+        }
+    },
+    "pythonToBlockly": false
+}

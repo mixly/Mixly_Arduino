@@ -1,0 +1,180 @@
+/* 全局滚动条样式 */
+
+/* 设置滚动条宽高 */
+::-webkit-scrollbar,
+body ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* 设置滚动条滑槽 */
+::-webkit-scrollbar-track,
+body ::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 1px;
+}
+
+/* 设置滚动条滑块 */
+::-webkit-scrollbar-thumb,
+body ::-webkit-scrollbar-thumb {
+    background-color: #C3C1C1;
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover,
+body ::-webkit-scrollbar-thumb:hover {
+    background-color: #AEB2AF;
+}
+
+::-webkit-scrollbar-thumb:active,
+body ::-webkit-scrollbar-thumb:active {
+    background-color: #989998;
+}
+
+/* 设置滚动条滑块 */
+html[data-bs-theme=light] ::-webkit-scrollbar-thumb,
+html[data-bs-theme=light] body ::-webkit-scrollbar-thumb {
+    background-color: #C3C1C1;
+    border-radius: 1px;
+}
+
+html[data-bs-theme=light] ::-webkit-scrollbar-thumb:hover,
+html[data-bs-theme=light] body ::-webkit-scrollbar-thumb:hover {
+    background-color: #AEB2AF;
+}
+
+html[data-bs-theme=light] ::-webkit-scrollbar-thumb:active,
+html[data-bs-theme=light] body ::-webkit-scrollbar-thumb:active {
+    background-color: #989998;
+}
+
+html[data-bs-theme=dark] ::-webkit-scrollbar-thumb,
+html[data-bs-theme=dark] body ::-webkit-scrollbar-thumb {
+    background-color: #5F5F5F;
+    border-radius: 1px;
+}
+
+html[data-bs-theme=dark] ::-webkit-scrollbar-thumb:hover,
+html[data-bs-theme=dark] body ::-webkit-scrollbar-thumb:hover {
+    background-color: #787878;
+}
+
+html[data-bs-theme=dark] ::-webkit-scrollbar-thumb:active,
+html[data-bs-theme=dark] body ::-webkit-scrollbar-thumb:active {
+    background-color: #989998;
+}
+
+/* 设置滚动条宽高 */
+.mixly-scrollbar ::-webkit-scrollbar,
+.mixly-scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+/* 设置滚动条滑槽 */
+.mixly-scrollbar ::-webkit-scrollbar-track,
+.mixly-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 0px;
+}
+
+/* 设置滚动条滑块 */
+html[data-bs-theme=light] .mixly-scrollbar ::-webkit-scrollbar-thumb,
+html[data-bs-theme=light] .mixly-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #C3C1C1;
+    border-radius: 1px;
+}
+
+html[data-bs-theme=light] .mixly-scrollbar ::-webkit-scrollbar-thumb:hover,
+html[data-bs-theme=light] .mixly-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #AEB2AF;
+}
+
+html[data-bs-theme=light] .mixly-scrollbar ::-webkit-scrollbar-thumb:active,
+html[data-bs-theme=light] .mixly-scrollbar::-webkit-scrollbar-thumb:active {
+    background-color: #989998;
+}
+
+html[data-bs-theme=dark] .mixly-scrollbar ::-webkit-scrollbar-thumb,
+html[data-bs-theme=dark] .mixly-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #5F5F5F;
+    border-radius: 1px;
+}
+
+html[data-bs-theme=dark] .mixly-scrollbar ::-webkit-scrollbar-thumb:hover,
+html[data-bs-theme=dark] .mixly-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #787878;
+}
+
+html[data-bs-theme=dark] .mixly-scrollbar ::-webkit-scrollbar-thumb:active,
+html[data-bs-theme=dark] .mixly-scrollbar::-webkit-scrollbar-thumb:active {
+    background-color: #989998;
+}
+
+html[data-bs-theme=light] ::-webkit-resizer {
+    background: url('../../common/media/resize-dark.png') no-repeat;
+    background-size: 100% auto;
+}
+
+html[data-bs-theme=dark] ::-webkit-resizer {
+    background: url('../../common/media/resize-light.png') no-repeat;
+    background-size: 100% auto;
+}
+
+html[data-bs-theme=light] ::-webkit-scrollbar-corner {
+    background-color: #fff;
+}
+
+html[data-bs-theme=dark] ::-webkit-scrollbar-corner {
+    background-color: #404041;
+}
+
+
+/* 修改Blockly工作区中滚动条样式 */
+
+/* 设置滚动条宽高 */
+.blocklyDropDownDiv ::-webkit-scrollbar,
+.blocklyWidgetDiv ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+/* 设置滚动条滑槽 */
+.blocklyDropDownDiv ::-webkit-scrollbar-track,
+.blocklyWidgetDiv ::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 0px;
+}
+
+/* 设置滚动条滑块 */
+html[data-bs-theme=light] .blocklyDropDownDiv ::-webkit-scrollbar-thumb,
+html[data-bs-theme=light] .blocklyWidgetDiv ::-webkit-scrollbar-thumb {
+    background-color: #C3C1C1;
+    border-radius: 1px;
+}
+
+html[data-bs-theme=light] .blocklyDropDownDiv ::-webkit-scrollbar-thumb:hover,
+html[data-bs-theme=light] .blocklyWidgetDiv ::-webkit-scrollbar-thumb:hover {
+    background-color: #AEB2AF;
+}
+
+html[data-bs-theme=light] .blocklyDropDownDiv ::-webkit-scrollbar-thumb:active,
+html[data-bs-theme=light] .blocklyWidgetDiv ::-webkit-scrollbar-thumb:active {
+    background-color: #989998;
+}
+
+html[data-bs-theme=dark] .blocklyDropDownDiv ::-webkit-scrollbar-thumb,
+html[data-bs-theme=dark] .blocklyWidgetDiv ::-webkit-scrollbar-thumb {
+    background-color: #5F5F5F;
+    border-radius: 1px;
+}
+
+html[data-bs-theme=dark] .blocklyDropDownDiv ::-webkit-scrollbar-thumb:hover,
+html[data-bs-theme=dark] .blocklyWidgetDiv ::-webkit-scrollbar-thumb:hover {
+    background-color: #787878;
+}
+
+html[data-bs-theme=dark] .blocklyDropDownDiv ::-webkit-scrollbar-thumb:active,
+html[data-bs-theme=dark] .blocklyWidgetDiv ::-webkit-scrollbar-thumb:active {
+    background-color: #989998;
+}

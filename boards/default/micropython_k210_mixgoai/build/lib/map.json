@@ -1,0 +1,243 @@
+{
+    "adxl345": {
+        "__require__": [
+            "machine",
+            "time",
+            "ustruct"
+        ],
+        "__file__": true,
+        "__size__": 2467,
+        "__name__": "adxl345.py"
+    },
+    "aionenet": {
+        "__require__": [
+            "network",
+            "time",
+            "random",
+            "request",
+            "base64",
+            "json",
+            "board",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 4362,
+        "__name__": "aionenet.py"
+    },
+    "ai_face": {
+        "__require__": [
+            "KPU",
+            "gc",
+            "image",
+            "time",
+            "board"
+        ],
+        "__file__": true,
+        "__size__": 3905,
+        "__name__": "ai_face.py"
+    },
+    "base64": {
+        "__require__": [
+            "re",
+            "struct",
+            "binascii",
+            "warnings",
+            "warnings",
+            "sys",
+            "getopt"
+        ],
+        "__file__": true,
+        "__size__": 8087,
+        "__name__": "base64.py"
+    },
+    "bmp280": {
+        "__require__": [
+            "ustruct",
+            "utime",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 6271,
+        "__name__": "bmp280.py"
+    },
+    "ce_com": {
+        "__require__": [],
+        "__file__": true,
+        "__size__": 628,
+        "__name__": "ce_com.py"
+    },
+    "dht11": {
+        "__require__": [
+            "time",
+            "board"
+        ],
+        "__file__": true,
+        "__size__": 1851,
+        "__name__": "dht11.py"
+    },
+    "hcr04": {
+        "__require__": [
+            "time",
+            "board"
+        ],
+        "__file__": true,
+        "__size__": 790,
+        "__name__": "hcr04.py"
+    },
+    "irremote": {
+        "__require__": [
+            "time",
+            "board"
+        ],
+        "__file__": true,
+        "__size__": 999,
+        "__name__": "irremote.py"
+    },
+    "matcher": {
+        "__require__": [],
+        "__file__": true,
+        "__size__": 3336,
+        "__name__": "matcher.py"
+    },
+    "miot_no": {
+        "__require__": [
+            "usocket",
+            "ustruct",
+            "network",
+            "time",
+            "board",
+            "ujson",
+            "machine",
+            "ussl"
+        ],
+        "__file__": true,
+        "__size__": 8532,
+        "__name__": "miot_no.py"
+    },
+    "mixiot": {
+        "__require__": [
+            "usocket",
+            "ustruct",
+            "time",
+            "machine",
+            "ubinascii",
+            "ujson",
+            "matcher",
+            "machine",
+            "ussl"
+        ],
+        "__file__": true,
+        "__size__": 11091,
+        "__name__": "mixiot.py"
+    },
+    "mixly_tool": {
+        "__require__": [
+            "hashlib",
+            "os",
+            "sys"
+        ],
+        "__file__": true,
+        "__size__": 688,
+        "__name__": "mixly_tool.py"
+    },
+    "mixpy": {
+        "__require__": [
+            "math"
+        ],
+        "__file__": true,
+        "__size__": 2689,
+        "__name__": "mixpy.py"
+    },
+    "mpu9250": {
+        "__require__": [
+            "micropython",
+            "ustruct",
+            "utime",
+            "time",
+            "math",
+            "math",
+            "os",
+            "compass_cfg"
+        ],
+        "__file__": true,
+        "__size__": 17641,
+        "__name__": "mpu9250.py"
+    },
+    "ms32006": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 4382,
+        "__name__": "ms32006.py"
+    },
+    "net_espat": {
+        "__require__": [
+            "network",
+            "time",
+            "board",
+            "machine",
+            "time"
+        ],
+        "__file__": true,
+        "__size__": 1364,
+        "__name__": "net_espat.py"
+    },
+    "pid": {
+        "__require__": [
+            "time",
+            "math"
+        ],
+        "__file__": true,
+        "__size__": 1789,
+        "__name__": "pid.py"
+    },
+    "player": {
+        "__require__": [
+            "board",
+            "audio",
+            "video",
+            "Maix",
+            "gc",
+            "sensor",
+            "lcd",
+            "lcd"
+        ],
+        "__file__": true,
+        "__size__": 4103,
+        "__name__": "player.py"
+    },
+    "reset": {
+        "__require__": [
+            "image",
+            "lcd",
+            "time",
+            "gc",
+            "machine",
+            "gc"
+        ],
+        "__file__": true,
+        "__size__": 968,
+        "__name__": "reset.py"
+    },
+    "servo": {
+        "__require__": [
+            "math",
+            "ustruct",
+            "time"
+        ],
+        "__file__": true,
+        "__size__": 3159,
+        "__name__": "servo.py"
+    },
+    "sht20": {
+        "__require__": [
+            "struct",
+            "time"
+        ],
+        "__file__": true,
+        "__size__": 1096,
+        "__name__": "sht20.py"
+    }
+}

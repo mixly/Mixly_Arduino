@@ -1,0 +1,34 @@
+{
+    "name": "@mixly/micropython-esp32s3",
+    "version": "1.4.0",
+    "description": "适用于mixly的micropython esp32s3模块",
+    "scripts": {
+        "serve": "webpack-dev-server --config=webpack.dev.js",
+        "build:dev": "webpack --config=webpack.dev.js",
+        "build:prod": "npm run build:examples & webpack --config=webpack.prod.js & npm run build:libraries",
+        "build:examples": "node ../../../scripts/build-examples.js -t special",
+        "build:examples:ob": "node ../../../scripts/build-examples.js -t special --obfuscate",
+        "build:libraries": "python ../../../scripts/build-libraries.py ../../default/micropython_esp32s3/build/lib",
+        "publish:board": "npm publish --registry https://registry.npmjs.org/"
+    },
+    "main": "./export.js",
+    "author": "Mixly Team",
+    "keywords": [
+        "mixly",
+        "mixly-plugin",
+        "micropython-esp32s3"
+    ],
+    "homepage": "https://gitee.com/bnu_mixly/mixly3/tree/master/boards/default_src/micropython_esp32s3",
+    "bugs": {
+        "url": "https://gitee.com/bnu_mixly/mixly3/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://gitee.com/bnu_mixly/mixly3.git",
+        "directory": "default_src/micropython_esp32s3"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "license": "Apache 2.0"
+}

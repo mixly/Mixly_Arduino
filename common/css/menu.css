@@ -1,0 +1,29 @@
+.menu-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.menu-line > div {
+    width: 20px;
+}
+
+.menu-line > label {
+    cursor: inherit;
+}
+
+.mixly-drapdown-menu > .tippy-box {
+    border: none !important;
+}
+
+.mixly-drapdown-menu > .tippy-box > .tippy-content {
+    margin: 0;
+    border: none;
+}
+
+.mixly-drapdown-menu .context-menu-list {
+    width: fit-content !important;
+    min-width: 5em;
+}

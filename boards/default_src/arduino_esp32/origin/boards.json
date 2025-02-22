@@ -1,0 +1,2869 @@
+{
+    "ESP32 Dev Module": {
+        "group": "ESP32",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:esp32",
+        "config": [
+            {
+                "key": "PSRAM",
+                "label": "PSRAM",
+                "messageId": "ESP32_CONFIG_MESSAGE_PSRAM",
+                "options": [
+                    {
+                        "key": "disabled",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "enabled",
+                        "label": "Enabled"
+                    }
+                ]
+            },
+            {
+                "key": "PartitionScheme",
+                "label": "Partition Scheme",
+                "messageId": "ESP32_CONFIG_MESSAGE_PARTITION_SCHEME",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Default 4MB with spiffs (1.2MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "defaultffat",
+                        "label": "Default 4MB with ffat (1.2MB APP/1.5MB FATFS)"
+                    },
+                    {
+                        "key": "default_8MB",
+                        "label": "8M with spiffs (3MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "minimal",
+                        "label": "Minimal (1.3MB APP/700KB SPIFFS)"
+                    },
+                    {
+                        "key": "no_ota",
+                        "label": "No OTA (2MB APP/2MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_3g",
+                        "label": "No OTA (1MB APP/3MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_ffat",
+                        "label": "No OTA (2MB APP/2MB FATFS)"
+                    },
+                    {
+                        "key": "noota_3gffat",
+                        "label": "No OTA (1MB APP/3MB FATFS)"
+                    },
+                    {
+                        "key": "huge_app",
+                        "label": "Huge APP (3MB No OTA/1MB SPIFFS)"
+                    },
+                    {
+                        "key": "min_spiffs",
+                        "label": "Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)"
+                    },
+                    {
+                        "key": "fatflash",
+                        "label": "16M Flash (2MB APP/12.5MB FATFS)"
+                    },
+                    {
+                        "key": "app3M_fat9M_16MB",
+                        "label": "16M Flash (3MB APP/9.9MB FATFS)"
+                    },
+                    {
+                        "key": "rainmaker",
+                        "label": "RainMaker"
+                    }
+                ]
+            },
+            {
+                "key": "CPUFreq",
+                "label": "CPU Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_CPU_FREQUENCY",
+                "options": [
+                    {
+                        "key": "240",
+                        "label": "240MHz (WiFi/BT)"
+                    },
+                    {
+                        "key": "160",
+                        "label": "160MHz (WiFi/BT)"
+                    },
+                    {
+                        "key": "80",
+                        "label": "80MHz (WiFi/BT)"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz (40MHz XTAL)"
+                    },
+                    {
+                        "key": "26",
+                        "label": "26MHz (26MHz XTAL)"
+                    },
+                    {
+                        "key": "20",
+                        "label": "20MHz (40MHz XTAL)"
+                    },
+                    {
+                        "key": "13",
+                        "label": "13MHz (26MHz XTAL)"
+                    },
+                    {
+                        "key": "10",
+                        "label": "10MHz (40MHz XTAL)"
+                    }
+                ]
+            },
+            {
+                "key": "FlashMode",
+                "label": "Flash Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_MODE",
+                "options": [
+                    {
+                        "key": "qio",
+                        "label": "QIO"
+                    },
+                    {
+                        "key": "dio",
+                        "label": "DIO"
+                    },
+                    {
+                        "key": "qout",
+                        "label": "QOUT"
+                    },
+                    {
+                        "key": "dout",
+                        "label": "DOUT"
+                    }
+                ]
+            },
+            {
+                "key": "FlashFreq",
+                "label": "Flash Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_FREQUENCY",
+                "options": [
+                    {
+                        "key": "80",
+                        "label": "80MHz"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    }
+                ]
+            },
+            {
+                "key": "FlashSize",
+                "label": "Flash Size",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_SIZE",
+                "options": [
+                    {
+                        "key": "4M",
+                        "label": "4MB (32Mb)"
+                    },
+                    {
+                        "key": "8M",
+                        "label": "8MB (64Mb)"
+                    },
+                    {
+                        "key": "2M",
+                        "label": "2MB (16Mb)"
+                    },
+                    {
+                        "key": "16M",
+                        "label": "16MB (128Mb)"
+                    }
+                ]
+            },
+            {
+                "key": "UploadSpeed",
+                "label": "Upload Speed",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_SPEED",
+                "options": [
+                    {
+                        "key": "921600",
+                        "label": "921600"
+                    },
+                    {
+                        "key": "115200",
+                        "label": "115200"
+                    },
+                    {
+                        "key": "230400",
+                        "label": "230400"
+                    }
+                ]
+            },
+            {
+                "key": "LoopCore",
+                "label": "Arduino Runs On",
+                "messageId": "ESP32_CONFIG_MESSAGE_ARDUINO_RUNS_ON",
+                "options": [
+                    {
+                        "key": "1",
+                        "label": "Core 1"
+                    },
+                    {
+                        "key": "0",
+                        "label": "Core 0"
+                    }
+                ]
+            },
+            {
+                "key": "EventsCore",
+                "label": "Events Run On",
+                "messageId": "ESP32_CONFIG_MESSAGE_EVENTS_RUN_ON",
+                "options": [
+                    {
+                        "key": "1",
+                        "label": "Core 1"
+                    },
+                    {
+                        "key": "0",
+                        "label": "Core 0"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    },
+    "Node32s": {
+        "group": "ESP32",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:node32s",
+        "config": [
+            {
+                "key": "PartitionScheme",
+                "label": "Partition Scheme",
+                "messageId": "ESP32_CONFIG_MESSAGE_PARTITION_SCHEME",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Default"
+                    },
+                    {
+                        "key": "no_ota",
+                        "label": "No OTA (Large APP)"
+                    },
+                    {
+                        "key": "min_spiffs",
+                        "label": "Minimal SPIFFS (Large APPS with OTA)"
+                    }
+                ]
+            },
+            {
+                "key": "FlashFreq",
+                "label": "Flash Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_FREQUENCY",
+                "options": [
+                    {
+                        "key": "80",
+                        "label": "80MHz"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    }
+                ]
+            },
+            {
+                "key": "UploadSpeed",
+                "label": "Upload Speed",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_SPEED",
+                "options": [
+                    {
+                        "key": "921600",
+                        "label": "921600"
+                    },
+                    {
+                        "key": "115200",
+                        "label": "115200"
+                    },
+                    {
+                        "key": "230400",
+                        "label": "230400"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    },
+    "NodeMCU-32S": {
+        "group": "ESP32",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:nodemcu-32s",
+        "config": [
+            {
+                "key": "FlashFreq",
+                "label": "Flash Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_FREQUENCY",
+                "options": [
+                    {
+                        "key": "80",
+                        "label": "80MHz"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    }
+                ]
+            },
+            {
+                "key": "UploadSpeed",
+                "label": "Upload Speed",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_SPEED",
+                "options": [
+                    {
+                        "key": "921600",
+                        "label": "921600"
+                    },
+                    {
+                        "key": "115200",
+                        "label": "115200"
+                    },
+                    {
+                        "key": "230400",
+                        "label": "230400"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    },
+    "M5Stick-C": {
+        "group": "ESP32",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:m5stick-c",
+        "config": [
+            {
+                "key": "PartitionScheme",
+                "label": "Partition Scheme",
+                "messageId": "ESP32_CONFIG_MESSAGE_PARTITION_SCHEME",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Default"
+                    },
+                    {
+                        "key": "no_ota",
+                        "label": "No OTA (Large APP)"
+                    },
+                    {
+                        "key": "min_spiffs",
+                        "label": "Minimal SPIFFS (Large APPS with OTA)"
+                    }
+                ]
+            },
+            {
+                "key": "UploadSpeed",
+                "label": "Upload Speed",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_SPEED",
+                "options": [
+                    {
+                        "key": "1500000",
+                        "label": "1500000"
+                    },
+                    {
+                        "key": "750000",
+                        "label": "750000"
+                    },
+                    {
+                        "key": "500000",
+                        "label": "500000"
+                    },
+                    {
+                        "key": "250000",
+                        "label": "250000"
+                    },
+                    {
+                        "key": "115200",
+                        "label": "115200"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    },
+    "M5Stack-Core-ESP32": {
+        "group": "ESP32",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:m5stack-core-esp32",
+        "config": [
+            {
+                "key": "FlashMode",
+                "label": "Flash Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_MODE",
+                "options": [
+                    {
+                        "key": "qio",
+                        "label": "QIO"
+                    },
+                    {
+                        "key": "dio",
+                        "label": "DIO"
+                    },
+                    {
+                        "key": "qout",
+                        "label": "QOUT"
+                    },
+                    {
+                        "key": "dout",
+                        "label": "DOUT"
+                    }
+                ]
+            },
+            {
+                "key": "FlashFreq",
+                "label": "Flash Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_FREQUENCY",
+                "options": [
+                    {
+                        "key": "80",
+                        "label": "80MHz"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    }
+                ]
+            },
+            {
+                "key": "PartitionScheme",
+                "label": "Partition Scheme",
+                "messageId": "ESP32_CONFIG_MESSAGE_PARTITION_SCHEME",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Default"
+                    },
+                    {
+                        "key": "no_ota",
+                        "label": "No OTA (Large APP)"
+                    },
+                    {
+                        "key": "min_spiffs",
+                        "label": "Minimal SPIFFS (Large APPS with OTA)"
+                    }
+                ]
+            },
+            {
+                "key": "UploadSpeed",
+                "label": "Upload Speed",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_SPEED",
+                "options": [
+                    {
+                        "key": "921600",
+                        "label": "921600"
+                    },
+                    {
+                        "key": "115200",
+                        "label": "115200"
+                    },
+                    {
+                        "key": "230400",
+                        "label": "230400"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    },
+    "M5Stack-FIRE": {
+        "group": "ESP32",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:m5stack-fire",
+        "config": [
+            {
+                "key": "PSRAM",
+                "label": "PSRAM",
+                "messageId": "ESP32_CONFIG_MESSAGE_PSRAM",
+                "options": [
+                    {
+                        "key": "enabled",
+                        "label": "Enabled"
+                    },
+                    {
+                        "key": "disabled",
+                        "label": "Disabled"
+                    }
+                ]
+            },
+            {
+                "key": "PartitionScheme",
+                "label": "Partition Scheme",
+                "messageId": "ESP32_CONFIG_MESSAGE_PARTITION_SCHEME",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Default (2 x 6.5 MB app, 3.6 MB SPIFFS)"
+                    },
+                    {
+                        "key": "large_spiffs",
+                        "label": "Large SPIFFS (7 MB)"
+                    }
+                ]
+            },
+            {
+                "key": "UploadSpeed",
+                "label": "Upload Speed",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_SPEED",
+                "options": [
+                    {
+                        "key": "921600",
+                        "label": "921600"
+                    },
+                    {
+                        "key": "115200",
+                        "label": "115200"
+                    },
+                    {
+                        "key": "230400",
+                        "label": "230400"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    },
+    "BPI-BIT": {
+        "group": "ESP32",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:bpi-bit",
+        "config": [
+            {
+                "key": "FlashFreq",
+                "label": "Flash Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_FREQUENCY",
+                "options": [
+                    {
+                        "key": "80",
+                        "label": "80MHz"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    }
+                ]
+            },
+            {
+                "key": "UploadSpeed",
+                "label": "Upload Speed",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_SPEED",
+                "options": [
+                    {
+                        "key": "921600",
+                        "label": "921600"
+                    },
+                    {
+                        "key": "115200",
+                        "label": "115200"
+                    },
+                    {
+                        "key": "230400",
+                        "label": "230400"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    },
+    "AI Thinker ESP32-CAM": {
+        "group": "ESP32",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:esp32cam",
+        "config": [
+            {
+                "key": "CPUFreq",
+                "label": "CPU Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_CPU_FREQUENCY",
+                "options": [
+                    {
+                        "key": "240",
+                        "label": "240MHz (WiFi/BT)"
+                    },
+                    {
+                        "key": "160",
+                        "label": "160MHz (WiFi/BT)"
+                    },
+                    {
+                        "key": "80",
+                        "label": "80MHz (WiFi/BT)"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz (40MHz XTAL)"
+                    },
+                    {
+                        "key": "26",
+                        "label": "26MHz (26MHz XTAL)"
+                    },
+                    {
+                        "key": "20",
+                        "label": "20MHz (40MHz XTAL)"
+                    },
+                    {
+                        "key": "13",
+                        "label": "13MHz (26MHz XTAL)"
+                    },
+                    {
+                        "key": "10",
+                        "label": "10MHz (40MHz XTAL)"
+                    }
+                ]
+            },
+            {
+                "key": "FlashMode",
+                "label": "Flash Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_MODE",
+                "options": [
+                    {
+                        "key": "qio",
+                        "label": "QIO"
+                    },
+                    {
+                        "key": "dio",
+                        "label": "DIO"
+                    },
+                    {
+                        "key": "qout",
+                        "label": "QOUT"
+                    },
+                    {
+                        "key": "dout",
+                        "label": "DOUT"
+                    }
+                ]
+            },
+            {
+                "key": "PartitionScheme",
+                "label": "Partition Scheme",
+                "messageId": "ESP32_CONFIG_MESSAGE_PARTITION_SCHEME",
+                "options": [
+                    {
+                        "key": "huge_app",
+                        "label": "Huge APP (3MB No OTA/1MB SPIFFS)"
+                    },
+                    {
+                        "key": "min_spiffs",
+                        "label": "Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)"
+                    },
+                    {
+                        "key": "default",
+                        "label": "Regular 4MB with spiffs (1.2MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "defaultffat",
+                        "label": "Regular 4MB with ffat (1.2MB APP/1.5MB FATFS)"
+                    },
+                    {
+                        "key": "minimal",
+                        "label": "Minimal (1.3MB APP/700KB SPIFFS)"
+                    },
+                    {
+                        "key": "no_ota",
+                        "label": "No OTA (2MB APP/2MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_3g",
+                        "label": "No OTA (1MB APP/3MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_ffat",
+                        "label": "No OTA (2MB APP/2MB FATFS)"
+                    },
+                    {
+                        "key": "noota_3gffat",
+                        "label": "No OTA (1MB APP/3MB FATFS)"
+                    }
+                ]
+            },
+            {
+                "key": "FlashFreq",
+                "label": "Flash Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_FREQUENCY",
+                "options": [
+                    {
+                        "key": "80",
+                        "label": "80MHz"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    },
+    "Labplus mPython": {
+        "group": "ESP32",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:mPython",
+        "config": [
+            {
+                "key": "PSRAM",
+                "label": "PSRAM",
+                "messageId": "ESP32_CONFIG_MESSAGE_PSRAM",
+                "options": [
+                    {
+                        "key": "disabled",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "enabled",
+                        "label": "Enabled"
+                    }
+                ]
+            },
+            {
+                "key": "PartitionScheme",
+                "label": "Partition Scheme",
+                "messageId": "ESP32_CONFIG_MESSAGE_PARTITION_SCHEME",
+                "options": [
+                    {
+                        "key": "huge_app",
+                        "label": "Huge APP (3MB No OTA/1MB SPIFFS)"
+                    },
+                    {
+                        "key": "default",
+                        "label": "Default 4MB with spiffs (1.2MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "defaultffat",
+                        "label": "Default 4MB with ffat (1.2MB APP/1.5MB FATFS)"
+                    },
+                    {
+                        "key": "minimal",
+                        "label": "Minimal (1.3MB APP/700KB SPIFFS)"
+                    },
+                    {
+                        "key": "no_ota",
+                        "label": "No OTA (2MB APP/2MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_3g",
+                        "label": "No OTA (1MB APP/3MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_ffat",
+                        "label": "No OTA (2MB APP/2MB FATFS)"
+                    },
+                    {
+                        "key": "noota_3gffat",
+                        "label": "No OTA (1MB APP/3MB FATFS)"
+                    },
+                    {
+                        "key": "min_spiffs",
+                        "label": "Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)"
+                    },
+                    {
+                        "key": "fatflash",
+                        "label": "16M Flash (2MB APP/12.5MB FATFS)"
+                    }
+                ]
+            },
+            {
+                "key": "CPUFreq",
+                "label": "CPU Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_CPU_FREQUENCY",
+                "options": [
+                    {
+                        "key": "240",
+                        "label": "240MHz (WiFi/BT)"
+                    }
+                ]
+            },
+            {
+                "key": "FlashMode",
+                "label": "Flash Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_MODE",
+                "options": [
+                    {
+                        "key": "qio",
+                        "label": "QIO"
+                    },
+                    {
+                        "key": "dio",
+                        "label": "DIO"
+                    },
+                    {
+                        "key": "qout",
+                        "label": "QOUT"
+                    },
+                    {
+                        "key": "dout",
+                        "label": "DOUT"
+                    }
+                ]
+            },
+            {
+                "key": "FlashFreq",
+                "label": "Flash Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_FREQUENCY",
+                "options": [
+                    {
+                        "key": "80",
+                        "label": "80MHz"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    }
+                ]
+            },
+            {
+                "key": "FlashSize",
+                "label": "Flash Size",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_SIZE",
+                "options": [
+                    {
+                        "key": "8M",
+                        "label": "8MB (64Mb)"
+                    }
+                ]
+            },
+            {
+                "key": "UploadSpeed",
+                "label": "Upload Speed",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_SPEED",
+                "options": [
+                    {
+                        "key": "921600",
+                        "label": "921600"
+                    },
+                    {
+                        "key": "115200",
+                        "label": "115200"
+                    },
+                    {
+                        "key": "230400",
+                        "label": "230400"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    },
+    "ESP32C3 Dev Module": {
+        "group": "ESP32C3",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:esp32c3",
+        "config": [
+            {
+                "key": "CDCOnBoot",
+                "label": "USB CDC On Boot",
+                "messageId": "ESP32_CONFIG_MESSAGE_USB_CDC_ON_BOOT",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "cdc",
+                        "label": "Enabled"
+                    }
+                ]
+            },
+            {
+                "key": "PartitionScheme",
+                "label": "Partition Scheme",
+                "messageId": "ESP32_CONFIG_MESSAGE_PARTITION_SCHEME",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Default 4MB with spiffs (1.2MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "defaultffat",
+                        "label": "Default 4MB with ffat (1.2MB APP/1.5MB FATFS)"
+                    },
+                    {
+                        "key": "default_8MB",
+                        "label": "8M with spiffs (3MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "minimal",
+                        "label": "Minimal (1.3MB APP/700KB SPIFFS)"
+                    },
+                    {
+                        "key": "no_ota",
+                        "label": "No OTA (2MB APP/2MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_3g",
+                        "label": "No OTA (1MB APP/3MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_ffat",
+                        "label": "No OTA (2MB APP/2MB FATFS)"
+                    },
+                    {
+                        "key": "noota_3gffat",
+                        "label": "No OTA (1MB APP/3MB FATFS)"
+                    },
+                    {
+                        "key": "huge_app",
+                        "label": "Huge APP (3MB No OTA/1MB SPIFFS)"
+                    },
+                    {
+                        "key": "min_spiffs",
+                        "label": "Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)"
+                    },
+                    {
+                        "key": "fatflash",
+                        "label": "16M Flash (2MB APP/12.5MB FATFS)"
+                    },
+                    {
+                        "key": "app3M_fat9M_16MB",
+                        "label": "16M Flash (3MB APP/9.9MB FATFS)"
+                    },
+                    {
+                        "key": "rainmaker",
+                        "label": "RainMaker"
+                    }
+                ]
+            },
+            {
+                "key": "CPUFreq",
+                "label": "CPU Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_CPU_FREQUENCY",
+                "options": [
+                    {
+                        "key": "160",
+                        "label": "160MHz (WiFi)"
+                    },
+                    {
+                        "key": "80",
+                        "label": "80MHz (WiFi)"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    },
+                    {
+                        "key": "20",
+                        "label": "20MHz"
+                    },
+                    {
+                        "key": "10",
+                        "label": "10MHz"
+                    }
+                ]
+            },
+            {
+                "key": "FlashMode",
+                "label": "Flash Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_MODE",
+                "options": [
+                    {
+                        "key": "qio",
+                        "label": "QIO"
+                    },
+                    {
+                        "key": "dio",
+                        "label": "DIO"
+                    },
+                    {
+                        "key": "qout",
+                        "label": "QOUT"
+                    },
+                    {
+                        "key": "dout",
+                        "label": "DOUT"
+                    }
+                ]
+            },
+            {
+                "key": "FlashFreq",
+                "label": "Flash Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_FREQUENCY",
+                "options": [
+                    {
+                        "key": "80",
+                        "label": "80MHz"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    }
+                ]
+            },
+            {
+                "key": "FlashSize",
+                "label": "Flash Size",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_SIZE",
+                "options": [
+                    {
+                        "key": "4M",
+                        "label": "4MB (32Mb)"
+                    },
+                    {
+                        "key": "8M",
+                        "label": "8MB (64Mb)"
+                    },
+                    {
+                        "key": "2M",
+                        "label": "2MB (16Mb)"
+                    },
+                    {
+                        "key": "16M",
+                        "label": "16MB (128Mb)"
+                    }
+                ]
+            },
+            {
+                "key": "UploadSpeed",
+                "label": "Upload Speed",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_SPEED",
+                "options": [
+                    {
+                        "key": "921600",
+                        "label": "921600"
+                    },
+                    {
+                        "key": "115200",
+                        "label": "115200"
+                    },
+                    {
+                        "key": "230400",
+                        "label": "230400"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    },
+    "CORE-ESP32-C3": {
+        "group": "ESP32C3",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:esp32c3@core",
+        "config": [
+            {
+                "key": "CDCOnBoot",
+                "label": "USB CDC On Boot",
+                "messageId": "ESP32_CONFIG_MESSAGE_USB_CDC_ON_BOOT",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "cdc",
+                        "label": "Enabled"
+                    }
+                ]
+            },
+            {
+                "key": "PartitionScheme",
+                "label": "Partition Scheme",
+                "messageId": "ESP32_CONFIG_MESSAGE_PARTITION_SCHEME",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Default 4MB with spiffs (1.2MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "defaultffat",
+                        "label": "Default 4MB with ffat (1.2MB APP/1.5MB FATFS)"
+                    },
+                    {
+                        "key": "minimal",
+                        "label": "Minimal (1.3MB APP/700KB SPIFFS)"
+                    },
+                    {
+                        "key": "no_ota",
+                        "label": "No OTA (2MB APP/2MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_3g",
+                        "label": "No OTA (1MB APP/3MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_ffat",
+                        "label": "No OTA (2MB APP/2MB FATFS)"
+                    },
+                    {
+                        "key": "noota_3gffat",
+                        "label": "No OTA (1MB APP/3MB FATFS)"
+                    },
+                    {
+                        "key": "huge_app",
+                        "label": "Huge APP (3MB No OTA/1MB SPIFFS)"
+                    },
+                    {
+                        "key": "min_spiffs",
+                        "label": "Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)"
+                    }
+                ]
+            },
+            {
+                "key": "CPUFreq",
+                "label": "CPU Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_CPU_FREQUENCY",
+                "options": [
+                    {
+                        "key": "160",
+                        "label": "160MHz (WiFi)"
+                    }
+                ]
+            },
+            {
+                "key": "FlashMode",
+                "label": "Flash Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_MODE",
+                "options": [
+                    {
+                        "key": "dio",
+                        "label": "DIO"
+                    }
+                ]
+            },
+            {
+                "key": "FlashFreq",
+                "label": "Flash Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_FREQUENCY",
+                "options": [
+                    {
+                        "key": "80",
+                        "label": "80MHz"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    }
+                ]
+            },
+            {
+                "key": "FlashSize",
+                "label": "Flash Size",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_SIZE",
+                "options": [
+                    {
+                        "key": "4M",
+                        "label": "4MB (32Mb)"
+                    }
+                ]
+            },
+            {
+                "key": "UploadSpeed",
+                "label": "Upload Speed",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_SPEED",
+                "options": [
+                    {
+                        "key": "921600",
+                        "label": "921600"
+                    },
+                    {
+                        "key": "115200",
+                        "label": "115200"
+                    },
+                    {
+                        "key": "230400",
+                        "label": "230400"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    },
+    "WiFiduinoV2": {
+        "group": "ESP32C3",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:wifiduino32c3",
+        "config": [
+            {
+                "key": "CDCOnBoot",
+                "label": "USB CDC On Boot",
+                "messageId": "ESP32_CONFIG_MESSAGE_USB_CDC_ON_BOOT",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "cdc",
+                        "label": "Enabled"
+                    }
+                ]
+            },
+            {
+                "key": "PartitionScheme",
+                "label": "Partition Scheme",
+                "messageId": "ESP32_CONFIG_MESSAGE_PARTITION_SCHEME",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Default 4MB with spiffs (1.2MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "defaultffat",
+                        "label": "Default 4MB with ffat (1.2MB APP/1.5MB FATFS)"
+                    },
+                    {
+                        "key": "default_8MB",
+                        "label": "8M with spiffs (3MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "minimal",
+                        "label": "Minimal (1.3MB APP/700KB SPIFFS)"
+                    },
+                    {
+                        "key": "no_ota",
+                        "label": "No OTA (2MB APP/2MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_3g",
+                        "label": "No OTA (1MB APP/3MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_ffat",
+                        "label": "No OTA (2MB APP/2MB FATFS)"
+                    },
+                    {
+                        "key": "noota_3gffat",
+                        "label": "No OTA (1MB APP/3MB FATFS)"
+                    },
+                    {
+                        "key": "huge_app",
+                        "label": "Huge APP (3MB No OTA/1MB SPIFFS)"
+                    },
+                    {
+                        "key": "min_spiffs",
+                        "label": "Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)"
+                    },
+                    {
+                        "key": "fatflash",
+                        "label": "16M Flash (2MB APP/12.5MB FATFS)"
+                    },
+                    {
+                        "key": "app3M_fat9M_16MB",
+                        "label": "16M Flash (3MB APP/9.9MB FATFS)"
+                    },
+                    {
+                        "key": "rainmaker",
+                        "label": "RainMaker"
+                    }
+                ]
+            },
+            {
+                "key": "CPUFreq",
+                "label": "CPU Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_CPU_FREQUENCY",
+                "options": [
+                    {
+                        "key": "160",
+                        "label": "160MHz (WiFi)"
+                    },
+                    {
+                        "key": "80",
+                        "label": "80MHz (WiFi)"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    },
+                    {
+                        "key": "20",
+                        "label": "20MHz"
+                    },
+                    {
+                        "key": "10",
+                        "label": "10MHz"
+                    }
+                ]
+            },
+            {
+                "key": "FlashMode",
+                "label": "Flash Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_MODE",
+                "options": [
+                    {
+                        "key": "qio",
+                        "label": "QIO"
+                    },
+                    {
+                        "key": "dio",
+                        "label": "DIO"
+                    },
+                    {
+                        "key": "qout",
+                        "label": "QOUT"
+                    },
+                    {
+                        "key": "dout",
+                        "label": "DOUT"
+                    }
+                ]
+            },
+            {
+                "key": "FlashFreq",
+                "label": "Flash Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_FREQUENCY",
+                "options": [
+                    {
+                        "key": "80",
+                        "label": "80MHz"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    }
+                ]
+            },
+            {
+                "key": "FlashSize",
+                "label": "Flash Size",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_SIZE",
+                "options": [
+                    {
+                        "key": "4M",
+                        "label": "4MB (32Mb)"
+                    },
+                    {
+                        "key": "8M",
+                        "label": "8MB (64Mb)"
+                    },
+                    {
+                        "key": "2M",
+                        "label": "2MB (16Mb)"
+                    },
+                    {
+                        "key": "16M",
+                        "label": "16MB (128Mb)"
+                    }
+                ]
+            },
+            {
+                "key": "UploadSpeed",
+                "label": "Upload Speed",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_SPEED",
+                "options": [
+                    {
+                        "key": "921600",
+                        "label": "921600"
+                    },
+                    {
+                        "key": "115200",
+                        "label": "115200"
+                    },
+                    {
+                        "key": "230400",
+                        "label": "230400"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    },
+    "ESP32S2 Dev Module": {
+        "group": "ESP32S2",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:esp32s2",
+        "config": [
+            {
+                "key": "CDCOnBoot",
+                "label": "USB CDC On Boot",
+                "messageId": "ESP32_CONFIG_MESSAGE_USB_CDC_ON_BOOT",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "cdc",
+                        "label": "Enabled"
+                    }
+                ]
+            },
+            {
+                "key": "MSCOnBoot",
+                "label": "USB MSC On Boot",
+                "messageId": "ESP32_CONFIG_MESSAGE_USB_FIRMWARE_MSC_ON_BOOT",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "msc",
+                        "label": "Enabled"
+                    }
+                ]
+            },
+            {
+                "key": "DFUOnBoot",
+                "label": "USB DFU On Boot",
+                "messageId": "ESP32_CONFIG_MESSAGE_USB_DFU_ON_BOOT",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "dfu",
+                        "label": "Enabled"
+                    }
+                ]
+            },
+            {
+                "key": "UploadMode",
+                "label": "Upload Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_MODE",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "UART0"
+                    },
+                    {
+                        "key": "cdc",
+                        "label": "Internal USB"
+                    }
+                ]
+            },
+            {
+                "key": "PSRAM",
+                "label": "PSRAM",
+                "messageId": "ESP32_CONFIG_MESSAGE_PSRAM",
+                "options": [
+                    {
+                        "key": "disabled",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "enabled",
+                        "label": "Enabled"
+                    }
+                ]
+            },
+            {
+                "key": "PartitionScheme",
+                "label": "Partition Scheme",
+                "messageId": "ESP32_CONFIG_MESSAGE_PARTITION_SCHEME",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Default 4MB with spiffs (1.2MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "defaultffat",
+                        "label": "Default 4MB with ffat (1.2MB APP/1.5MB FATFS)"
+                    },
+                    {
+                        "key": "default_8MB",
+                        "label": "8M with spiffs (3MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "minimal",
+                        "label": "Minimal (1.3MB APP/700KB SPIFFS)"
+                    },
+                    {
+                        "key": "no_ota",
+                        "label": "No OTA (2MB APP/2MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_3g",
+                        "label": "No OTA (1MB APP/3MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_ffat",
+                        "label": "No OTA (2MB APP/2MB FATFS)"
+                    },
+                    {
+                        "key": "noota_3gffat",
+                        "label": "No OTA (1MB APP/3MB FATFS)"
+                    },
+                    {
+                        "key": "huge_app",
+                        "label": "Huge APP (3MB No OTA/1MB SPIFFS)"
+                    },
+                    {
+                        "key": "min_spiffs",
+                        "label": "Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)"
+                    },
+                    {
+                        "key": "fatflash",
+                        "label": "16M Flash (2MB APP/12.5MB FATFS)"
+                    },
+                    {
+                        "key": "app3M_fat9M_16MB",
+                        "label": "16M Flash (3MB APP/9.9MB FATFS)"
+                    },
+                    {
+                        "key": "rainmaker",
+                        "label": "RainMaker"
+                    }
+                ]
+            },
+            {
+                "key": "CPUFreq",
+                "label": "CPU Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_CPU_FREQUENCY",
+                "options": [
+                    {
+                        "key": "240",
+                        "label": "240MHz (WiFi)"
+                    },
+                    {
+                        "key": "160",
+                        "label": "160MHz (WiFi)"
+                    },
+                    {
+                        "key": "80",
+                        "label": "80MHz (WiFi)"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    },
+                    {
+                        "key": "20",
+                        "label": "20MHz"
+                    },
+                    {
+                        "key": "10",
+                        "label": "10MHz"
+                    }
+                ]
+            },
+            {
+                "key": "FlashMode",
+                "label": "Flash Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_MODE",
+                "options": [
+                    {
+                        "key": "qio",
+                        "label": "QIO"
+                    },
+                    {
+                        "key": "dio",
+                        "label": "DIO"
+                    },
+                    {
+                        "key": "qout",
+                        "label": "QOUT"
+                    },
+                    {
+                        "key": "dout",
+                        "label": "DOUT"
+                    }
+                ]
+            },
+            {
+                "key": "FlashFreq",
+                "label": "Flash Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_FREQUENCY",
+                "options": [
+                    {
+                        "key": "80",
+                        "label": "80MHz"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    }
+                ]
+            },
+            {
+                "key": "FlashSize",
+                "label": "Flash Size",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_SIZE",
+                "options": [
+                    {
+                        "key": "4M",
+                        "label": "4MB (32Mb)"
+                    },
+                    {
+                        "key": "8M",
+                        "label": "8MB (64Mb)"
+                    },
+                    {
+                        "key": "2M",
+                        "label": "2MB (16Mb)"
+                    },
+                    {
+                        "key": "16M",
+                        "label": "16MB (128Mb)"
+                    }
+                ]
+            },
+            {
+                "key": "UploadSpeed",
+                "label": "Upload Speed",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_SPEED",
+                "options": [
+                    {
+                        "key": "921600",
+                        "label": "921600"
+                    },
+                    {
+                        "key": "115200",
+                        "label": "115200"
+                    },
+                    {
+                        "key": "230400",
+                        "label": "230400"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    },
+    "MixGo CE": {
+        "group": "ESP32S2",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:esp32s2@MixGo CE"
+    },
+    "MixGo Car": {
+        "group": "ESP32S2",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:esp32s2@MixGo Car"
+    },
+    "ESP32S3 Dev Module": {
+        "group": "ESP32S3",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:esp32s3",
+        "config": [
+            {
+                "key": "PSRAM",
+                "label": "PSRAM",
+                "messageId": "ESP32_CONFIG_MESSAGE_PSRAM",
+                "options": [
+                    {
+                        "key": "disabled",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "enabled",
+                        "label": "QSPI PSRAM"
+                    },
+                    {
+                        "key": "opi",
+                        "label": "OPI PSRAM"
+                    }
+                ]
+            },
+            {
+                "key": "FlashMode",
+                "label": "Flash Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_MODE",
+                "options": [
+                    {
+                        "key": "qio",
+                        "label": "QIO 80MHz"
+                    },
+                    {
+                        "key": "qio120",
+                        "label": "QIO 120MHz"
+                    },
+                    {
+                        "key": "dio",
+                        "label": "DIO 80MHz"
+                    },
+                    {
+                        "key": "opi",
+                        "label": "OPI 80MHz"
+                    }
+                ]
+            },
+            {
+                "key": "FlashSize",
+                "label": "Flash Size",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_SIZE",
+                "options": [
+                    {
+                        "key": "4M",
+                        "label": "4MB (32Mb)"
+                    },
+                    {
+                        "key": "8M",
+                        "label": "8MB (64Mb)"
+                    },
+                    {
+                        "key": "16M",
+                        "label": "16MB (128Mb)"
+                    },
+                    {
+                        "key": "32M",
+                        "label": "32MB (256Mb)"
+                    }
+                ]
+            },
+            {
+                "key": "LoopCore",
+                "label": "Arduino Runs On",
+                "messageId": "ESP32_CONFIG_MESSAGE_ARDUINO_RUNS_ON",
+                "options": [
+                    {
+                        "key": "1",
+                        "label": "Core 1"
+                    },
+                    {
+                        "key": "0",
+                        "label": "Core 0"
+                    }
+                ]
+            },
+            {
+                "key": "EventsCore",
+                "label": "Events Run On",
+                "messageId": "ESP32_CONFIG_MESSAGE_EVENTS_RUN_ON",
+                "options": [
+                    {
+                        "key": "1",
+                        "label": "Core 1"
+                    },
+                    {
+                        "key": "0",
+                        "label": "Core 0"
+                    }
+                ]
+            },
+            {
+                "key": "USBMode",
+                "label": "USB Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_USB_MODE",
+                "options": [
+                    {
+                        "key": "hwcdc",
+                        "label": "Hardware CDC and JTAG"
+                    },
+                    {
+                        "key": "default",
+                        "label": "USB-OTG (TinyUSB)"
+                    }
+                ]
+            },
+            {
+                "key": "CDCOnBoot",
+                "label": "USB CDC On Boot",
+                "messageId": "ESP32_CONFIG_MESSAGE_USB_CDC_ON_BOOT",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "cdc",
+                        "label": "Enabled"
+                    }
+                ]
+            },
+            {
+                "key": "MSCOnBoot",
+                "label": "USB MSC On Boot",
+                "messageId": "ESP32_CONFIG_MESSAGE_USB_FIRMWARE_MSC_ON_BOOT",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "msc",
+                        "label": "Enabled (Requires USB-OTG Mode)"
+                    }
+                ]
+            },
+            {
+                "key": "DFUOnBoot",
+                "label": "USB DFU On Boot",
+                "messageId": "ESP32_CONFIG_MESSAGE_USB_DFU_ON_BOOT",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "dfu",
+                        "label": "Enabled (Requires USB-OTG Mode)"
+                    }
+                ]
+            },
+            {
+                "key": "UploadMode",
+                "label": "Upload Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_MODE",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "UART0 / Hardware CDC"
+                    },
+                    {
+                        "key": "cdc",
+                        "label": "USB-OTG CDC (TinyUSB)"
+                    }
+                ]
+            },
+            {
+                "key": "PartitionScheme",
+                "label": "Partition Scheme",
+                "messageId": "ESP32_CONFIG_MESSAGE_PARTITION_SCHEME",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Default 4MB with spiffs (1.2MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "defaultffat",
+                        "label": "Default 4MB with ffat (1.2MB APP/1.5MB FATFS)"
+                    },
+                    {
+                        "key": "default_8MB",
+                        "label": "8M with spiffs (3MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "minimal",
+                        "label": "Minimal (1.3MB APP/700KB SPIFFS)"
+                    },
+                    {
+                        "key": "no_ota",
+                        "label": "No OTA (2MB APP/2MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_3g",
+                        "label": "No OTA (1MB APP/3MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_ffat",
+                        "label": "No OTA (2MB APP/2MB FATFS)"
+                    },
+                    {
+                        "key": "noota_3gffat",
+                        "label": "No OTA (1MB APP/3MB FATFS)"
+                    },
+                    {
+                        "key": "huge_app",
+                        "label": "Huge APP (3MB No OTA/1MB SPIFFS)"
+                    },
+                    {
+                        "key": "min_spiffs",
+                        "label": "Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)"
+                    },
+                    {
+                        "key": "fatflash",
+                        "label": "16M Flash (2MB APP/12.5MB FATFS)"
+                    },
+                    {
+                        "key": "app3M_fat9M_16MB",
+                        "label": "16M Flash (3MB APP/9.9MB FATFS)"
+                    },
+                    {
+                        "key": "rainmaker",
+                        "label": "RainMaker"
+                    }
+                ]
+            },
+            {
+                "key": "CPUFreq",
+                "label": "CPU Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_CPU_FREQUENCY",
+                "options": [
+                    {
+                        "key": "240",
+                        "label": "240MHz (WiFi)"
+                    },
+                    {
+                        "key": "160",
+                        "label": "160MHz (WiFi)"
+                    },
+                    {
+                        "key": "80",
+                        "label": "80MHz (WiFi)"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    },
+                    {
+                        "key": "20",
+                        "label": "20MHz"
+                    },
+                    {
+                        "key": "10",
+                        "label": "10MHz"
+                    }
+                ]
+            },
+            {
+                "key": "UploadSpeed",
+                "label": "Upload Speed",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_SPEED",
+                "options": [
+                    {
+                        "key": "921600",
+                        "label": "921600"
+                    },
+                    {
+                        "key": "115200",
+                        "label": "115200"
+                    },
+                    {
+                        "key": "230400",
+                        "label": "230400"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    },
+    "WiFiduino32S3": {
+        "group": "ESP32S3",
+        "xmlPath": "./xml/esp32.xml",
+        "key": "esp32:esp32:wifiduino32s3",
+        "config": [
+            {
+                "key": "PSRAM",
+                "label": "PSRAM",
+                "messageId": "ESP32_CONFIG_MESSAGE_PSRAM",
+                "options": [
+                    {
+                        "key": "disabled",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "enabled",
+                        "label": "QSPI PSRAM"
+                    },
+                    {
+                        "key": "opi",
+                        "label": "OPI PSRAM"
+                    }
+                ]
+            },
+            {
+                "key": "FlashMode",
+                "label": "Flash Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_MODE",
+                "options": [
+                    {
+                        "key": "qio",
+                        "label": "QIO 80MHz"
+                    },
+                    {
+                        "key": "qio120",
+                        "label": "QIO 120MHz"
+                    },
+                    {
+                        "key": "dio",
+                        "label": "DIO 80MHz"
+                    },
+                    {
+                        "key": "opi",
+                        "label": "OPI 80MHz"
+                    }
+                ]
+            },
+            {
+                "key": "FlashSize",
+                "label": "Flash Size",
+                "messageId": "ESP32_CONFIG_MESSAGE_FLASH_SIZE",
+                "options": [
+                    {
+                        "key": "4M",
+                        "label": "4MB (32Mb)"
+                    },
+                    {
+                        "key": "8M",
+                        "label": "8MB (64Mb)"
+                    },
+                    {
+                        "key": "16M",
+                        "label": "16MB (128Mb)"
+                    }
+                ]
+            },
+            {
+                "key": "LoopCore",
+                "label": "Arduino Runs On",
+                "messageId": "ESP32_CONFIG_MESSAGE_ARDUINO_RUNS_ON",
+                "options": [
+                    {
+                        "key": "1",
+                        "label": "Core 1"
+                    },
+                    {
+                        "key": "0",
+                        "label": "Core 0"
+                    }
+                ]
+            },
+            {
+                "key": "EventsCore",
+                "label": "Events Run On",
+                "messageId": "ESP32_CONFIG_MESSAGE_EVENTS_RUN_ON",
+                "options": [
+                    {
+                        "key": "1",
+                        "label": "Core 1"
+                    },
+                    {
+                        "key": "0",
+                        "label": "Core 0"
+                    }
+                ]
+            },
+            {
+                "key": "USBMode",
+                "label": "USB Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_USB_MODE",
+                "options": [
+                    {
+                        "key": "hwcdc",
+                        "label": "Hardware CDC and JTAG"
+                    },
+                    {
+                        "key": "default",
+                        "label": "USB-OTG (TinyUSB)"
+                    }
+                ]
+            },
+            {
+                "key": "CDCOnBoot",
+                "label": "USB CDC On Boot",
+                "messageId": "ESP32_CONFIG_MESSAGE_USB_CDC_ON_BOOT",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "cdc",
+                        "label": "Enabled"
+                    }
+                ]
+            },
+            {
+                "key": "MSCOnBoot",
+                "label": "USB MSC On Boot",
+                "messageId": "ESP32_CONFIG_MESSAGE_USB_FIRMWARE_MSC_ON_BOOT",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "msc",
+                        "label": "Enabled (Requires USB-OTG Mode)"
+                    }
+                ]
+            },
+            {
+                "key": "DFUOnBoot",
+                "label": "USB DFU On Boot",
+                "messageId": "ESP32_CONFIG_MESSAGE_USB_DFU_ON_BOOT",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "dfu",
+                        "label": "Enabled (Requires USB-OTG Mode)"
+                    }
+                ]
+            },
+            {
+                "key": "UploadMode",
+                "label": "Upload Mode",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_MODE",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "UART0 / Hardware CDC"
+                    },
+                    {
+                        "key": "cdc",
+                        "label": "USB-OTG CDC (TinyUSB)"
+                    }
+                ]
+            },
+            {
+                "key": "PartitionScheme",
+                "label": "Partition Scheme",
+                "messageId": "ESP32_CONFIG_MESSAGE_PARTITION_SCHEME",
+                "options": [
+                    {
+                        "key": "default",
+                        "label": "Default 4MB with spiffs (1.2MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "defaultffat",
+                        "label": "Default 4MB with ffat (1.2MB APP/1.5MB FATFS)"
+                    },
+                    {
+                        "key": "default_8MB",
+                        "label": "8M with spiffs (3MB APP/1.5MB SPIFFS)"
+                    },
+                    {
+                        "key": "minimal",
+                        "label": "Minimal (1.3MB APP/700KB SPIFFS)"
+                    },
+                    {
+                        "key": "no_ota",
+                        "label": "No OTA (2MB APP/2MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_3g",
+                        "label": "No OTA (1MB APP/3MB SPIFFS)"
+                    },
+                    {
+                        "key": "noota_ffat",
+                        "label": "No OTA (2MB APP/2MB FATFS)"
+                    },
+                    {
+                        "key": "noota_3gffat",
+                        "label": "No OTA (1MB APP/3MB FATFS)"
+                    },
+                    {
+                        "key": "huge_app",
+                        "label": "Huge APP (3MB No OTA/1MB SPIFFS)"
+                    },
+                    {
+                        "key": "min_spiffs",
+                        "label": "Minimal SPIFFS (1.9MB APP with OTA/190KB SPIFFS)"
+                    },
+                    {
+                        "key": "fatflash",
+                        "label": "16M Flash (2MB APP/12.5MB FATFS)"
+                    },
+                    {
+                        "key": "app3M_fat9M_16MB",
+                        "label": "16M Flash (3MB APP/9.9MB FATFS)"
+                    },
+                    {
+                        "key": "rainmaker",
+                        "label": "RainMaker"
+                    }
+                ]
+            },
+            {
+                "key": "CPUFreq",
+                "label": "CPU Frequency",
+                "messageId": "ESP32_CONFIG_MESSAGE_CPU_FREQUENCY",
+                "options": [
+                    {
+                        "key": "240",
+                        "label": "240MHz (WiFi)"
+                    },
+                    {
+                        "key": "160",
+                        "label": "160MHz (WiFi)"
+                    },
+                    {
+                        "key": "80",
+                        "label": "80MHz (WiFi)"
+                    },
+                    {
+                        "key": "40",
+                        "label": "40MHz"
+                    },
+                    {
+                        "key": "20",
+                        "label": "20MHz"
+                    },
+                    {
+                        "key": "10",
+                        "label": "10MHz"
+                    }
+                ]
+            },
+            {
+                "key": "UploadSpeed",
+                "label": "Upload Speed",
+                "messageId": "ESP32_CONFIG_MESSAGE_UPLOAD_SPEED",
+                "options": [
+                    {
+                        "key": "921600",
+                        "label": "921600"
+                    },
+                    {
+                        "key": "115200",
+                        "label": "115200"
+                    },
+                    {
+                        "key": "230400",
+                        "label": "230400"
+                    }
+                ]
+            },
+            {
+                "key": "DebugLevel",
+                "label": "Core Debug Level",
+                "messageId": "ESP32_CONFIG_MESSAGE_CORE_DEBUG_LEVEL",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "None"
+                    },
+                    {
+                        "key": "error",
+                        "label": "Error"
+                    },
+                    {
+                        "key": "warn",
+                        "label": "Warn"
+                    },
+                    {
+                        "key": "info",
+                        "label": "Info"
+                    },
+                    {
+                        "key": "debug",
+                        "label": "Debug"
+                    },
+                    {
+                        "key": "verbose",
+                        "label": "Verbose"
+                    }
+                ]
+            },
+            {
+                "key": "EraseFlash",
+                "label": "Erase All Flash",
+                "messageId": "ESP32_CONFIG_MESSAGE_ERASE_ALL_FLASH_BEFORE_SKETCH_UPLOAD",
+                "options": [
+                    {
+                        "key": "none",
+                        "label": "Disabled"
+                    },
+                    {
+                        "key": "all",
+                        "label": "Enabled"
+                    }
+                ]
+            }
+        ]
+    }
+}

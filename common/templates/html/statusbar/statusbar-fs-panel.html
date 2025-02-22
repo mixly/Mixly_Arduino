@@ -1,0 +1,142 @@
+<style>
+    div[m-id="{{d.mId}}"] {
+        height: fit-content;
+        margin: 0px 20px 20px 20px;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+
+    div[m-id="{{d.mId}}"] input {
+        font-family: Consolas, "Courier New", monospace;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] {
+        box-shadow: 0 0 5px 1px #ddd;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] {
+        box-shadow: 0 0 5px 1px #111;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] input:focus,
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] select:focus {
+        border-color: var(--app-light-color) !important;
+        box-shadow: none;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] input:focus,
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] select:focus {
+        border-color: var(--app-dark-color) !important;
+        box-shadow: none;
+    }
+
+    div[m-id="{{d.mId}}"] > .card-header {
+        position: relative;
+        padding: 5px 0px;
+        border-radius: 5px 5px 0 0;
+    }
+
+    div[m-id="{{d.mId}}"] > .card-header > .layui-icon {
+        cursor: pointer;
+        position: absolute;
+        right: 7px;
+        top: 7px;
+    }
+
+    div[m-id="{{d.mId}}"] > .card-header > .progress {
+        position: absolute;
+        bottom: 0px;
+        height: 3px;
+        width: 100%;
+        border-radius: 0;
+        display: none;
+        margin: 0 !important;
+    }
+
+    div[m-id="{{d.mId}}"] > .card-header > .progress > .bar {
+        height: 100%;
+        border-radius: 0;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] > .card-header > .progress > .bar {
+        background-color: #fff !important;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] > .card-header > .progress > .bar {
+        background-color: #1e1e1e !important;
+    }
+
+    div[m-id="{{d.mId}}"] > .card-header > .progress > .bar::before {
+        border-radius: 0;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] > .card-header > .progress > .bar::before {
+        background-color: var(--app-light-color);
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] > .card-header > .progress > .bar::before {
+        background-color: var(--app-dark-color);
+    }
+
+    div[m-id="{{d.mId}}"] > .card-body {
+        border-radius: 0 0 5px 5px;
+    }
+
+    div[m-id="{{d.mId}}"] > .card-body .input-group {
+        height: 28px;
+    }
+
+    div[m-id="{{d.mId}}"] > .card-body .input-group .input-group-text {
+        font-weight: bold;
+    }
+
+    div[m-id="{{d.mId}}"] .select2 > .selection * {
+        background: transparent;
+        text-align: left;
+        font-weight: 400;
+        color: var(--bs-body-color) !important;
+    }
+
+    div[m-id="{{d.mId}}"] .select2 > .selection > .select2-selection {
+        border-radius: 0.25rem;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border: var(--bs-border-width) solid var(--bs-border-color);
+    }
+</style>
+<div m-id="{{d.mId}}" class="card text-center">
+    <div class="card-header">
+        {{ d.mapFolder }}
+        <i class="close-btn layui-icon layui-icon-close"></i>
+        <div class="ui swinging indeterminate progress">
+            <div class="bar"></div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-sm-4 mb-3">
+                <div class="input-group flex-nowrap input-group-sm">
+                    <span class="input-group-text">{{ d.comment }}</span>
+                    <input class="form-control form-control-sm" type="text" placeholder="{{ d.commentInfo }}">
+                </div>
+            </div>
+            <div class="col-sm-3 mb-3">
+                <div class="input-group flex-nowrap input-group-sm">
+                    <span class="input-group-text">{{ d.filesystem }}</span>
+                    <select class="fs-type form-select"></select>
+                </div>
+            </div>
+            <div class="col-sm-5 mb-3">
+                <div class="input-group flex-nowrap input-group-sm">
+                    <span class="input-group-text">{{ d.path }}</span>
+                    <input class="folder-input form-control form-control-sm" type="text" placeholder="{{ d.mapFolder }}" disabled>
+                    <button type="button" class="folder-btn btn btn-primary btn-sm self-adaption-btn m-btn">{{ d.selectFolder }}</button>
+                </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <button class="download-btn btn btn-primary btn-sm self-adaption-btn m-btn" type="button">{{ d.download }}</button>
+            <button class="upload-btn btn btn-primary btn-sm self-adaption-btn m-btn" type="button">{{ d.upload }}</button>
+        </div>
+    </div>
+</div>

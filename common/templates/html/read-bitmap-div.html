@@ -1,0 +1,215 @@
+<div id="read-bitmap-div">
+    <style type="text/css">
+        /* 设置滚动条宽高 */
+        #read-bitmap-div ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+
+        /* 设置滚动条滑槽 */
+        #read-bitmap-div ::-webkit-scrollbar-track {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 0px;
+        }
+
+        /* 设置滚动条滑块 */
+        html[data-bs-theme=light] #read-bitmap-div ::-webkit-scrollbar-thumb {
+            background-color: #C3C1C1;
+            border-radius: 4px;
+        }
+
+        html[data-bs-theme=light] #read-bitmap-div ::-webkit-scrollbar-thumb:hover {
+            background-color: #AEB2AF;
+        }
+
+        html[data-bs-theme=light] #read-bitmap-div ::-webkit-scrollbar-thumb:active {
+            background-color: #989998;
+        }
+
+        html[data-bs-theme=dark] #read-bitmap-div ::-webkit-scrollbar-thumb {
+            background-color: #989998;
+            border-radius: 4px;
+        }
+
+        html[data-bs-theme=dark] #read-bitmap-div ::-webkit-scrollbar-thumb:hover {
+            background-color: #AEB2AF;
+        }
+
+        html[data-bs-theme=dark] #read-bitmap-div ::-webkit-scrollbar-thumb:active {
+            background-color: #C3C1C1;
+        }
+
+        #read-bitmap-div > div {
+
+        }
+
+        #test-bitmap-form label {
+            height: 25px;
+            line-height: 8px;
+        }
+
+        #test-bitmap-form input {
+            height: 25px;
+        }
+
+        #test-bitmap-form .layui-input-block {
+            min-height: 20px;
+        }
+
+        #read-bitmap-div-img-container {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            bottom: 15px;
+        }
+
+        #read-bitmap-div-img-container > div {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        #read-bitmap-div-img-container > div > div:nth-child(1) {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        #read-bitmap-div-img-container > div > div:nth-child(2) {
+            position: absolute;
+            left: 100px;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+            display: flex;
+        }
+
+        #read-bitmap-div-img-container > div > div:nth-child(2) > div:nth-child(1) {
+            border-width: 1px 0.5px 1px 1px !important;
+        }
+
+        #read-bitmap-div-img-container > div > div:nth-child(2) > div:nth-child(2) {
+            border-width: 1px 1px 1px 0.5px !important;
+        }
+
+        #read-bitmap-div-img-container > div > div:nth-child(2) > div {
+            position: relative;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+        }
+
+        html[data-bs-theme=dark] #read-bitmap-div-img-container > div > div:nth-child(2) > div {
+            border: solid #fff;
+        }
+
+        html[data-bs-theme=light] #read-bitmap-div-img-container > div > div:nth-child(2) > div  {
+            border: solid #000;
+        }
+
+        #read-bitmap-div-message {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            height: 15px;
+            font-size: 10px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        html[data-bs-theme=dark] #read-bitmap-div-message {
+            background-color: #444;
+        }
+
+        html[data-bs-theme=light] #read-bitmap-div-message {
+            background-color: #eee;
+        }
+    </style>
+    <div id="read-bitmap-div-img-container">
+        <div>
+            <div>
+                <div class="layui-form layui-form-pane">
+                    <div class="layui-form-item layui-form-text" style="margin-bottom: 0px;">
+                        <label class="layui-form-label">宽度</label>
+                        <input type="text" name="title" autocomplete="off" class="layui-input" value="100" m-id="0">
+                    </div>
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">高度</label>
+                        <input type="text" name="title" autocomplete="off" class="layui-input" value="100" m-id="1">
+                    </div>
+                    <div class="layui-form-item layui-form-text" style="margin-bottom: 5px;">
+                        <div class="layui-input-block" style="width: 100%;">
+                            <button class="layui-btn layui-btn-normal layui-btn-xs" m-id="0">{{d.btn1Name}}</button>
+                            <button class="layui-btn layui-btn-normal layui-btn-xs" m-id="1">{{d.btn2Name}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <div style="
+                        position: absolute;
+                        flex-direction: column;
+                        top: 0px;
+                        left: 0px;
+                        width: 100%;
+                        height: 20px;
+                    ">
+                        <h6>输入图像</h6>
+                    </div>
+                    <div style="
+                        position: absolute;
+                        top: 20px;
+                        left: 0px;
+                        bottom: 0px;
+                        width: 100%;
+                    ">
+                        <div id="read-bitmap-div-input-img" style="
+                            height: 100%;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                        ">
+                        </div>     
+                    </div>
+                </div>
+                <div>
+                    <div style="
+                        position: absolute;
+                        flex-direction: column;
+                        top: 0px;
+                        left: 0px;
+                        width: 100%;
+                        height: 20px;
+                    ">
+                        <h6>输出图像</h6>
+                    </div>
+                    <div style="
+                        position: absolute;
+                        top: 20px;
+                        left: 0px;
+                        bottom: 0px;
+                        width: 100%;
+                    ">
+                        <div id="read-bitmap-div-output-img" style="
+                            height: 100%;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                        ">
+                        </div>     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="read-bitmap-div-message">
+    </div>
+</div>

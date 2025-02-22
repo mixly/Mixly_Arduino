@@ -1,0 +1,75 @@
+<style>
+    div[m-id="{{d.mId}}"] {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    div[m-id="{{d.mId}}"] .layui-panel {
+        cursor: pointer;
+    }
+
+    div[m-id="{{d.mId}}"] .layui-panel > .background {
+        width: 100%;
+        padding: 32px;
+        border: 1px solid;
+        border-color: transparent;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] .layui-panel > .background {
+        background-color: #1e1e1e;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] .layui-panel > .background {
+        background-color: #1e1e1e;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] .layui-panel > .background:focus {
+        border-color: var(--app-light-color);
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] .layui-panel > .background:focus {
+        border-color: var(--app-dark-color);
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] .layui-panel > .background:hover {
+        background-color: #fff;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] .layui-panel > .background:hover {
+        background-color: #333;
+    }
+
+    div[m-id="{{d.mId}}"] .layui-panel > .content {
+        padding: 32px;
+        border: 1px solid;
+        border-color: transparent;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+    }
+</style>
+<div m-id={{d.mId}}>
+    <div class="layui-panel panel-item">
+        <button class="background">面板任意内容</button>
+    </div>
+    <div class="layui-panel panel-item">
+        <button class="background">面板任意内容</button>
+    </div>
+    <div class="layui-panel panel-item">
+        <button class="background">面板任意内容</button>
+    </div>
+    <div class="layui-panel panel-item">
+        <button class="background">面板任意内容</button>
+    </div>
+    <div class="layui-panel panel-item">
+        <button class="background">面板任意内容</button>
+    </div>
+    <div class="layui-panel panel-item">
+        <button class="background">面板任意内容</button>
+    </div>
+</div>

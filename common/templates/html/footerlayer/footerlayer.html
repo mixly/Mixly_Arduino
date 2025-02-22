@@ -1,0 +1,29 @@
+<div class="footer-layer">
+    <div class="footer-layer-content mixly-scrollbar">
+        <div class="layui-layer-title">
+            {{# layui.each(d.btns, function(index, item) { }}
+                <i
+                    class="footer-layer-btn layui-icon {{= item.icon }} {{= item.class }}"
+                    title="{{= item.title }}"
+                ></i>
+            {{# }); }}
+            <i
+                class="footer-layer-btn layui-icon layui-icon-close close"
+                title="{{ d.close }}"
+            ></i>
+        </div>
+        <div class="footer-layer-body"
+            style="
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                overflow-y: auto;
+                overflow-x: hidden;
+                padding: 5px;
+                font-size: 14px;
+            "
+        >
+            {{- d.content }}
+        </div>
+    </div>
+</div>

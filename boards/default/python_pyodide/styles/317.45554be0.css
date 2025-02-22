@@ -1,0 +1,146 @@
+.basthon-loader-root {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  z-index: 2000;
+  user-select: none;
+  transition: bottom 1s ease;
+}
+
+.basthon-loader-root.basthon-loader-full.basthon-loader-hide {
+  display: none;
+}
+
+.basthon-loader-root.basthon-loader-foot.basthon-loader-hide {
+  bottom: -30px;
+}
+
+.basthon-loader-root.basthon-loader-full {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.basthon-loader-root.basthon-loader-foot {
+  height: 30px;
+}
+
+.basthon-loader-container {
+  display: flex;
+  align-items: center;
+}
+
+.basthon-loader-container.basthon-loader-full {
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.basthon-loader-container.basthon-loader-foot {
+  position: relative;
+  left: 41%;
+}
+
+@keyframes basthon-loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.basthon-loader-spinner {
+  position: relative;
+  border-color: #fcc24a;
+  border-top-color: #3b749c;
+  border-bottom-color: #3b749c;
+  border-style: solid;
+  border-radius: 50%;
+  animation: basthon-loader-spin 2s linear infinite;
+  overflow: auto;
+  opacity: 0.8;
+}
+
+.basthon-loader-spinner.basthon-loader-full {
+  border-width: 16px;
+  width: 120px;
+  height: 120px;
+}
+
+.basthon-loader-spinner.basthon-loader-foot {
+  border-width: 3px;
+  width: 16px;
+  height: 16px;
+}
+
+.basthon-loader-break.basthon-loader-full {
+  flex-basis: 100%;
+  height: 20px;
+}
+
+.basthon-loader-break.basthon-loader-foot {
+  width: 10px;
+}
+
+.basthon-loader-text.basthon-loader-foot {
+  font-size: 16px;
+}
+
+.basthon-loader-error {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: 5em;
+  height: 5em;
+  /*margin: 1.25em auto 1.875em;*/
+  border: 0.25em solid transparent;
+  border-radius: 50%;
+  line-height: 5em;
+  cursor: default;
+  box-sizing: content-box;
+  user-select: none;
+  /* zoom: normal; */ /* zoom is deprecated */
+  border-color: #f27474;
+}
+
+.basthon-loader-error > span {
+  position: relative;
+  flex-grow: 1;
+}
+
+.basthon-loader-error > span > span {
+  display: block;
+  position: absolute;
+  top: 2.3125em;
+  width: 2.9375em;
+  height: 0.3125em;
+  border-radius: 0.125em;
+  background-color: #f27474;
+  left: 1.0625em;
+  transform: rotate(45deg);
+}
+
+.basthon-loader-error > span > span {
+  display: block;
+  position: absolute;
+  top: 2.3125em;
+  width: 2.9375em;
+  height: 0.3125em;
+  border-radius: 0.125em;
+  background-color: #f27474;
+}
+
+.basthon-loader-error > span > span:first-child {
+  left: 1.0625em;
+  transform: rotate(45deg);
+}
+
+.basthon-loader-error > span > span:last-child {
+  right: 1em;
+  transform: rotate(-45deg);
+}
+

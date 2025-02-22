@@ -1,0 +1,25 @@
+<style>
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"],
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] > .ace_gutter {
+        background-color: #fff;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"],
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] > .ace_gutter {
+        background-color: #1e1e1e;
+    }
+
+    div[m-id="{{d.mId}}"] > .ace_gutter {
+        border-right-style: solid;
+        border-right-width: 1px;
+    }
+
+    html[data-bs-theme=light] div[m-id="{{d.mId}}"] > .ace_gutter {
+        border-right-color: #c9c9c9;
+    }
+
+    html[data-bs-theme=dark] div[m-id="{{d.mId}}"] > .ace_gutter {
+        border-right-color: rgba(128, 128, 128, 0.35);
+    }
+</style>
+<div m-id="{{d.mId}}" class="editor page-item"></div>

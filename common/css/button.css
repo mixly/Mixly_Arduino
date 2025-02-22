@@ -1,0 +1,63 @@
+/* 一些按钮样式 */
+.m-btn:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #666 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.5s;
+}
+
+.m-btn:active:after {
+    transform: scale(0, 0);
+    opacity: 0.3;
+    transition: 0s;
+}
+
+.m-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html[data-bs-theme=light] .self-adaption-btn {
+    background-color: var(--app-light-color) !important;
+    border-color: var(--app-light-color) !important;
+}
+
+html[data-bs-theme=dark] .self-adaption-btn {
+    background-color: var(--app-dark-color) !important;
+    border-color: var(--app-dark-color) !important;
+}
+
+.statusbar-btn {
+    margin-left: 5px;
+    border-radius: 5px;
+}
+
+.statusbar-btn:hover {
+    background-color: rgba(90, 93, 94, 0.31) !important;
+}
+
+html[data-bs-theme=light] .statusbar-btn {
+    background-color: #f8f8f8;
+    color: #000;
+}
+
+html[data-bs-theme=dark] .statusbar-btn {
+    background-color: #252526;
+    color: #fff;
+}

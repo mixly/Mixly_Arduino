@@ -1,0 +1,940 @@
+{
+    "adxl345": {
+        "__require__": [
+            "time",
+            "ustruct",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 1644,
+        "__name__": "adxl345.py"
+    },
+    "ahtx0": {
+        "__require__": [
+            "utime",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 3204,
+        "__name__": "ahtx0.py"
+    },
+    "ap3216c": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 1786,
+        "__name__": "ap3216c.py"
+    },
+    "apds9960": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 12718,
+        "__name__": "apds9960.py"
+    },
+    "baidu_speech": {
+        "__require__": [
+            "json",
+            "gc",
+            "urequests",
+            "array",
+            "ubinascii",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 3703,
+        "__name__": "baidu_speech.py"
+    },
+    "ble_advertising": {
+        "__require__": [
+            "micropython",
+            "struct",
+            "bluetooth"
+        ],
+        "__file__": true,
+        "__size__": 2492,
+        "__name__": "ble_advertising.py"
+    },
+    "ble_central": {
+        "__require__": [
+            "time",
+            "gc",
+            "bluetooth",
+            "micropython",
+            "ubinascii",
+            "ble_advertising"
+        ],
+        "__file__": true,
+        "__size__": 7391,
+        "__name__": "ble_central.py"
+    },
+    "ble_handle": {
+        "__require__": [
+            "ble_peripheral"
+        ],
+        "__file__": true,
+        "__size__": 1034,
+        "__name__": "ble_handle.py"
+    },
+    "ble_hid": {
+        "__require__": [
+            "bluetooth",
+            "struct",
+            "time",
+            "micropython",
+            "ubinascii",
+            "ble_advertising",
+            "bluetooth",
+            "ble_hid_key"
+        ],
+        "__file__": true,
+        "__size__": 11263,
+        "__name__": "ble_hid.py"
+    },
+    "ble_hid_keyboard": {
+        "__require__": [
+            "bluetooth",
+            "struct",
+            "time",
+            "micropython",
+            "ubinascii",
+            "ble_advertising",
+            "bluetooth",
+            "ble_hid_key"
+        ],
+        "__file__": true,
+        "__size__": 9698,
+        "__name__": "ble_hid_keyboard.py"
+    },
+    "ble_hid_mouse": {
+        "__require__": [
+            "bluetooth",
+            "struct",
+            "time",
+            "micropython",
+            "ubinascii",
+            "ble_advertising",
+            "bluetooth",
+            "ble_hid_key"
+        ],
+        "__file__": true,
+        "__size__": 8209,
+        "__name__": "ble_hid_mouse.py"
+    },
+    "ble_peripheral": {
+        "__require__": [
+            "bluetooth",
+            "micropython",
+            "ubinascii",
+            "ble_advertising"
+        ],
+        "__file__": true,
+        "__size__": 2919,
+        "__name__": "ble_peripheral.py"
+    },
+    "ble_uart_peripheral": {
+        "__require__": [
+            "bluetooth",
+            "ble_advertising",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2846,
+        "__name__": "ble_uart_peripheral.py"
+    },
+    "ble_uart_repl": {
+        "__require__": [
+            "io",
+            "os",
+            "machine",
+            "micropython",
+            "ble_uart_peripheral"
+        ],
+        "__file__": true,
+        "__size__": 1824,
+        "__name__": "ble_uart_repl.py"
+    },
+    "blynklib": {
+        "__require__": [
+            "usocket",
+            "utime",
+            "ustruct",
+            "uselect",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 14064,
+        "__name__": "blynklib.py"
+    },
+    "blynktimer": {
+        "__require__": [
+            "time",
+            "select",
+            "utime",
+            "uselect"
+        ],
+        "__file__": true,
+        "__size__": 4600,
+        "__name__": "blynktimer.py"
+    },
+    "bmp280": {
+        "__require__": [
+            "ustruct",
+            "utime"
+        ],
+        "__file__": true,
+        "__size__": 6037,
+        "__name__": "bmp280.py"
+    },
+    "cbr817": {
+        "__require__": [
+            "time",
+            "machine",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 3913,
+        "__name__": "cbr817.py"
+    },
+    "cc_g1": {
+        "__require__": [
+            "micropython",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 2474,
+        "__name__": "cc_g1.py"
+    },
+    "ch914x_at": {
+        "__require__": [
+            "machine",
+            "time"
+        ],
+        "__file__": true,
+        "__size__": 4131,
+        "__name__": "ch914x_at.py"
+    },
+    "ci130x": {
+        "__require__": [
+            "time",
+            "struct",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2484,
+        "__name__": "ci130x.py"
+    },
+    "debugnet": {
+        "__require__": [
+            "time",
+            "umqtt",
+            "ubinascii",
+            "machine",
+            "urequests",
+            "usocket",
+            "mixiot",
+            "ussl",
+            "ujson"
+        ],
+        "__file__": true,
+        "__size__": 5719,
+        "__name__": "debugnet.py"
+    },
+    "dhtx": {
+        "__require__": [
+            "time",
+            "machine",
+            "esp",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 1627,
+        "__name__": "dhtx.py"
+    },
+    "ds18b20": {
+        "__require__": [
+            "onewire",
+            "machine",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2129,
+        "__name__": "ds18b20.py"
+    },
+    "expression_picture": {
+        "__require__": [],
+        "__file__": true,
+        "__size__": 31406,
+        "__name__": "expression_picture.py"
+    },
+    "eye_picture": {
+        "__require__": [],
+        "__file__": true,
+        "__size__": 82105,
+        "__name__": "eye_picture.py"
+    },
+    "gnss": {
+        "__require__": [
+            "time",
+            "ubinascii"
+        ],
+        "__file__": true,
+        "__size__": 3335,
+        "__name__": "gnss.py"
+    },
+    "hp203x": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2574,
+        "__name__": "hp203x.py"
+    },
+    "ht16k33": {
+        "__require__": [
+            "uframebuf",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 1834,
+        "__name__": "ht16k33.py"
+    },
+    "huskylens": {
+        "__require__": [
+            "time",
+            "ubinascii"
+        ],
+        "__file__": true,
+        "__size__": 9047,
+        "__name__": "huskylens.py"
+    },
+    "hx720": {
+        "__require__": [
+            "time",
+            "machine",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 1794,
+        "__name__": "hx720.py"
+    },
+    "i2cdevice": {
+        "__require__": [
+            "random",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 9852,
+        "__name__": "i2cdevice.py"
+    },
+    "i2clcd": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2839,
+        "__name__": "i2clcd.py"
+    },
+    "icm42670": {
+        "__require__": [
+            "time",
+            "micropython",
+            "math"
+        ],
+        "__file__": true,
+        "__size__": 3049,
+        "__name__": "icm42670.py"
+    },
+    "informatio_picture": {
+        "__require__": [],
+        "__file__": true,
+        "__size__": 39510,
+        "__name__": "informatio_picture.py"
+    },
+    "irremote": {
+        "__require__": [
+            "array",
+            "time",
+            "gc",
+            "esp32",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 6243,
+        "__name__": "irremote.py"
+    },
+    "ltr308al": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2049,
+        "__name__": "ltr308al.py"
+    },
+    "ltr381rgb": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2344,
+        "__name__": "ltr381rgb.py"
+    },
+    "ltr390uv": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2258,
+        "__name__": "ltr390uv.py"
+    },
+    "ltr553als": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 3221,
+        "__name__": "ltr553als.py"
+    },
+    "matcher": {
+        "__require__": [],
+        "__file__": true,
+        "__size__": 3336,
+        "__name__": "matcher.py"
+    },
+    "matrix16x8": {
+        "__require__": [
+            "ht16k33"
+        ],
+        "__file__": true,
+        "__size__": 4053,
+        "__name__": "matrix16x8.py"
+    },
+    "matrix32x12": {
+        "__require__": [
+            "tm1680"
+        ],
+        "__file__": true,
+        "__size__": 9947,
+        "__name__": "matrix32x12.py"
+    },
+    "matrix8x5": {
+        "__require__": [
+            "tm1652"
+        ],
+        "__file__": true,
+        "__size__": 1966,
+        "__name__": "matrix8x5.py"
+    },
+    "max30102": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 11529,
+        "__name__": "max30102.py"
+    },
+    "mixgo_ai": {
+        "__require__": [
+            "time",
+            "gc"
+        ],
+        "__file__": true,
+        "__size__": 5845,
+        "__name__": "mixgo_ai.py"
+    },
+    "mixiot": {
+        "__require__": [
+            "time",
+            "usocket",
+            "ustruct",
+            "machine",
+            "ubinascii",
+            "matcher",
+            "network",
+            "urequests",
+            "ussl"
+        ],
+        "__file__": true,
+        "__size__": 11930,
+        "__name__": "mixiot.py"
+    },
+    "mixpy": {
+        "__require__": [
+            "math",
+            "urequests",
+            "json"
+        ],
+        "__file__": true,
+        "__size__": 2892,
+        "__name__": "mixpy.py"
+    },
+    "mk_pb4023": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2079,
+        "__name__": "mk_pb4023.py"
+    },
+    "mmc5603": {
+        "__require__": [
+            "time",
+            "math",
+            "micropython",
+            "magnetic_cal"
+        ],
+        "__file__": true,
+        "__size__": 5888,
+        "__name__": "mmc5603.py"
+    },
+    "mpu9250": {
+        "__require__": [
+            "micropython",
+            "ustruct",
+            "time",
+            "math",
+            "machine",
+            "math",
+            "matrix16x8",
+            "os",
+            "compass_cfg",
+            "compass_cfg"
+        ],
+        "__file__": true,
+        "__size__": 15746,
+        "__name__": "mpu9250.py"
+    },
+    "ms32006": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 3671,
+        "__name__": "ms32006.py"
+    },
+    "msa301": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 1994,
+        "__name__": "msa301.py"
+    },
+    "music": {
+        "__require__": [
+            "time",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 6726,
+        "__name__": "music.py"
+    },
+    "mxc6655xa": {
+        "__require__": [
+            "time",
+            "math",
+            "micropython",
+            "math"
+        ],
+        "__file__": true,
+        "__size__": 2818,
+        "__name__": "mxc6655xa.py"
+    },
+    "ns9300": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 3593,
+        "__name__": "ns9300.py"
+    },
+    "ntptime": {
+        "__require__": [
+            "utime",
+            "gc",
+            "machine",
+            "usocket",
+            "ustruct"
+        ],
+        "__file__": true,
+        "__size__": 1424,
+        "__name__": "ntptime.py"
+    },
+    "object_picture": {
+        "__require__": [],
+        "__file__": true,
+        "__size__": 35094,
+        "__name__": "object_picture.py"
+    },
+    "oled128x64": {
+        "__require__": [
+            "ssd1106"
+        ],
+        "__file__": true,
+        "__size__": 481,
+        "__name__": "oled128x64.py"
+    },
+    "onenet": {
+        "__require__": [
+            "ujson",
+            "umqtt"
+        ],
+        "__file__": true,
+        "__size__": 1102,
+        "__name__": "onenet.py"
+    },
+    "pe_g1": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 3574,
+        "__name__": "pe_g1.py"
+    },
+    "pm2_5": {
+        "__require__": [
+            "time"
+        ],
+        "__file__": true,
+        "__size__": 1076,
+        "__name__": "pm2_5.py"
+    },
+    "progres_picture": {
+        "__require__": [],
+        "__file__": true,
+        "__size__": 77320,
+        "__name__": "progres_picture.py"
+    },
+    "ps2": {
+        "__require__": [
+            "time",
+            "machine",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 3369,
+        "__name__": "ps2.py"
+    },
+    "qmc5883l": {
+        "__require__": [
+            "math",
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 7226,
+        "__name__": "qmc5883l.py"
+    },
+    "qmi8658": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 4410,
+        "__name__": "qmi8658.py"
+    },
+    "radio": {
+        "__require__": [
+            "ubinascii",
+            "network",
+            "esp",
+            "espnow"
+        ],
+        "__file__": true,
+        "__size__": 5454,
+        "__name__": "radio.py"
+    },
+    "rc522": {
+        "__require__": [
+            "machine",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 7526,
+        "__name__": "rc522.py"
+    },
+    "rfm98": {
+        "__require__": [
+            "gc",
+            "time",
+            "machine",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 8617,
+        "__name__": "rfm98.py"
+    },
+    "rtctime": {
+        "__require__": [
+            "gc",
+            "time",
+            "machine",
+            "usocket",
+            "ustruct"
+        ],
+        "__file__": true,
+        "__size__": 1791,
+        "__name__": "rtctime.py"
+    },
+    "sc7a20": {
+        "__require__": [
+            "time",
+            "math",
+            "micropython",
+            "math"
+        ],
+        "__file__": true,
+        "__size__": 2454,
+        "__name__": "sc7a20.py"
+    },
+    "sdcard": {
+        "__require__": [
+            "time",
+            "machine",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 8738,
+        "__name__": "sdcard.py"
+    },
+    "seniverse_api": {
+        "__require__": [
+            "json",
+            "urequests"
+        ],
+        "__file__": true,
+        "__size__": 7264,
+        "__name__": "seniverse_api.py"
+    },
+    "servo": {
+        "__require__": [
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 1338,
+        "__name__": "servo.py"
+    },
+    "sht20": {
+        "__require__": [
+            "struct",
+            "time"
+        ],
+        "__file__": true,
+        "__size__": 1155,
+        "__name__": "sht20.py"
+    },
+    "shtc3": {
+        "__require__": [
+            "time",
+            "micropython",
+            "struct"
+        ],
+        "__file__": true,
+        "__size__": 3837,
+        "__name__": "shtc3.py"
+    },
+    "sonar": {
+        "__require__": [
+            "time",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 1103,
+        "__name__": "sonar.py"
+    },
+    "spl06_001": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 4309,
+        "__name__": "spl06_001.py"
+    },
+    "ssd1106": {
+        "__require__": [
+            "uframebuf",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 4247,
+        "__name__": "ssd1106.py"
+    },
+    "st7735": {
+        "__require__": [
+            "time",
+            "uframebuf",
+            "machine",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 3670,
+        "__name__": "st7735.py"
+    },
+    "st7789": {
+        "__require__": [
+            "time",
+            "machine",
+            "micropython",
+            "uframebuf",
+            "ustruct"
+        ],
+        "__file__": true,
+        "__size__": 10458,
+        "__name__": "st7789.py"
+    },
+    "syn6288": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2622,
+        "__name__": "syn6288.py"
+    },
+    "tm1650": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2008,
+        "__name__": "tm1650.py"
+    },
+    "tm1652": {
+        "__require__": [
+            "time",
+            "uframebuf",
+            "machine",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2222,
+        "__name__": "tm1652.py"
+    },
+    "tm1680": {
+        "__require__": [
+            "uframebuf",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2226,
+        "__name__": "tm1680.py"
+    },
+    "tm1931": {
+        "__require__": [
+            "time",
+            "framebuf",
+            "machine",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 1916,
+        "__name__": "tm1931.py"
+    },
+    "uart_com": {
+        "__require__": [],
+        "__file__": true,
+        "__size__": 588,
+        "__name__": "uart_com.py"
+    },
+    "ucs12071": {
+        "__require__": [
+            "time",
+            "micropython"
+        ],
+        "__file__": true,
+        "__size__": 2378,
+        "__name__": "ucs12071.py"
+    },
+    "uframebuf": {
+        "__require__": [
+            "esp",
+            "time",
+            "gc",
+            "framebuf"
+        ],
+        "__file__": true,
+        "__size__": 20872,
+        "__name__": "uframebuf.py"
+    },
+    "umqtt": {
+        "__require__": [
+            "usocket",
+            "ustruct",
+            "ussl"
+        ],
+        "__file__": true,
+        "__size__": 6687,
+        "__name__": "umqtt.py"
+    },
+    "urequests": {
+        "__require__": [
+            "usocket",
+            "ujson",
+            "ssl",
+            "ujson"
+        ],
+        "__file__": true,
+        "__size__": 4346,
+        "__name__": "urequests.py"
+    },
+    "vl53l0x": {
+        "__require__": [
+            "micropython",
+            "ustruct",
+            "utime"
+        ],
+        "__file__": true,
+        "__size__": 9639,
+        "__name__": "vl53l0x.py"
+    },
+    "ws2812": {
+        "__require__": [
+            "time",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 2374,
+        "__name__": "ws2812.py"
+    },
+    "ws_lora": {
+        "__require__": [
+            "json",
+            "rfm98",
+            "ubinascii",
+            "machine",
+            "hp203x"
+        ],
+        "__file__": true,
+        "__size__": 4484,
+        "__name__": "ws_lora.py"
+    },
+    "ws_solo": {
+        "__require__": [
+            "time",
+            "math",
+            "machine"
+        ],
+        "__file__": true,
+        "__size__": 3247,
+        "__name__": "ws_solo.py"
+    }
+}

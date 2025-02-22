@@ -1,0 +1,11 @@
+.markdown-body th[align="left"] {
+    text-align: left;
+}
+
+.markdown-body th[align="center"] {
+    text-align: center;
+}
+
+.markdown-body th[align="right"] {
+    text-align: right;
+}

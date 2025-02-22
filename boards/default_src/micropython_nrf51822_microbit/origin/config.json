@@ -1,0 +1,69 @@
+{
+    "board": {
+        "micro:bit v1": "micropython:nrf51822:v1",
+        "micro:bit v2": "micropython:nrf51822:v2"
+    },
+    "language": "MicroPython",
+    "burn": {
+        "type": "volume",
+        "volumeName": "MICROBIT",
+        "micropython:nrf51822:v1": {
+            "filePath": "{indexPath}/build/microbit-micropython-v1.hex"
+        },
+        "micropython:nrf51822:v2": {
+            "filePath": "{indexPath}/build/microbit-micropython-v2.hex"
+        }
+    },
+    "upload": {
+        "type": "command",
+        "portSelect": [
+            {
+                "vendorId": "0D28",
+                "productId": "0204"
+            }
+        ],
+        "libPath": [
+            "{indexPath}/build/lib"
+        ],
+        "command": "\"{ampy}\" -p {com} -d 1 -r \"{reset}\" put \"{indexPath}/build/upload\"",
+        "filePath": "{indexPath}/build/upload/main.py",
+        "copyLib": true,
+        "reset": []
+    },
+    "nav": {
+        "burn": true,
+        "upload": true,
+        "save": {
+            "py": true
+        },
+        "setting": {
+            "pythonToBlockly": true
+        }
+    },
+    "serial": {
+        "ctrlCBtn": true,
+        "ctrlDBtn": true,
+        "baudRates": 115200,
+        "yMax": 100,
+        "yMin": 0,
+        "pointNum": 100,
+        "rts": true,
+        "dtr": true
+    },
+    "pythonToBlockly": false,
+    "web": {
+        "devices": {
+            "serial": false,
+            "hid": false,
+            "usb": true
+        },
+        "burn": {
+            "micropython:nrf51822:v1": {
+                "filePath": "./build/microbit-micropython-v1.hex"
+            },
+            "micropython:nrf51822:v2": {
+                "filePath": "./build/microbit-micropython-v2.hex"
+            }
+        }
+    }
+}

@@ -1,0 +1,94 @@
+.mixly-app-loading {
+    position: absolute;
+    z-index: 100000;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+.mixly-app-loading > .top-div {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: var(--nav-height);
+    border-radius: 2px;
+}
+
+html[data-bs-theme=light] .mixly-app-loading > .top-div {
+    background-color: var(--app-light-color);
+}
+
+html[data-bs-theme=dark] .mixly-app-loading > .top-div {
+    background-color: #3c3c3c;
+}
+
+.mixly-app-loading > .center-div {
+    position: absolute;
+    top: var(--nav-height);
+    bottom: var(--footer-height);
+    width: 100%;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    overflow: auto;
+    font-family: 'ravie';
+    font-size: 80px;
+}
+
+html[data-bs-theme=light] .mixly-app-loading > .center-div {
+    background-color: #fff;
+    color: #b1b1b1;
+}
+
+html[data-bs-theme=dark] .mixly-app-loading > .center-div {
+    background-color: #1e1e1e;
+    color: #3c3c3c;
+}
+
+.mixly-app-loading > .bottom-div {
+    position: absolute;
+    bottom: 0px;
+    height: var(--footer-height);
+    width: 100%;
+    border-radius: 2px;
+}
+
+html[data-bs-theme=light] .mixly-app-loading > .bottom-div {
+    background-color: var(--app-light-color);
+}
+
+html[data-bs-theme=dark] .mixly-app-loading > .bottom-div {
+    background-color: var(--app-dark-color);
+}
+
+/* 骨架渐隐 */
+@-webkit-keyframes mixly-skeleton-fadeout {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes mixly-skeleton-fadeout {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.skeleton-fadeout {
+    -webkit-animation-duration: 0.3s;
+    -webkit-animation-fill-mode: forwards;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: mixly-skeleton-fadeout;
+    animation-name: mixly-skeleton-fadeout;
+}

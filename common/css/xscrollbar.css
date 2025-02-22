@@ -1,0 +1,101 @@
+.x-scrollbar {
+  position: relative;
+}
+
+.x-scrollbar__container {
+  position: relative;
+  z-index : 1;
+  width   : 100%;
+  height  : 100%;
+  overflow: auto;
+}
+
+.x-scrollbar__container--hideScrollbar {
+  scrollbar-width   : none !important;
+  -ms-overflow-style: none !important;
+}
+
+.x-scrollbar__container--hideScrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+
+.x-scrollbar__container--preventDefault {
+  overscroll-behavior: contain;
+  -ms-scroll-chaining: none;
+}
+
+.x-scrollbar__content {
+  display       : inline-block;
+  vertical-align: middle;
+  min-width     : 100%;
+}
+
+/* 轨道 */
+.x-scrollbar__track-x,
+.x-scrollbar__track-y {
+  opacity   : 0;
+  position  : absolute;
+  z-index   : 2;
+  transition: background-color .2s linear, opacity .2s linear;
+}
+
+.x-scrollbar__track-x {
+  left  : 0;
+  bottom: 0;
+  width : 100%;
+  height: 14px;
+}
+
+.x-scrollbar__track-y {
+  top   : 0;
+  right : 0;
+  height: 100%;
+  width : 14px;
+}
+
+/* 滑块 */
+.x-scrollbar__thumb-x,
+.x-scrollbar__thumb-y {
+  position        : absolute;
+  background-color: #5f5f5f;
+  border-radius   : 5px;
+  transition      : height .2s ease-in-out, width .2s ease-in-out;
+}
+
+.x-scrollbar__thumb-x {
+  height: 5px;
+  bottom: 2px;
+}
+
+.x-scrollbar__thumb-y {
+  width: 5px;
+  right: 2px;
+}
+
+/* 激活后大小 */
+.x-scrollbar__track-x:hover .x-scrollbar__thumb-x,
+.x-scrollbar__track--draging .x-scrollbar__thumb-x {
+  height: 10px;
+}
+
+.x-scrollbar__track-y:hover .x-scrollbar__thumb-y,
+.x-scrollbar__track--draging .x-scrollbar__thumb-y {
+  width: 10px;
+}
+
+/* 鼠标移入容器 => 显示滑块 */
+.x-scrollbar-keep>.x-scrollbar__track-x,
+.x-scrollbar-keep>.x-scrollbar__track-y,
+.x-scrollbar:hover>.x-scrollbar__track-x,
+.x-scrollbar:hover>.x-scrollbar__track-y {
+  opacity: .35;
+}
+
+/* 鼠标移入轨道 || 拖动过程中 => 显示轨道 & 高亮滑块 */
+.x-scrollbar__track-x:hover,
+.x-scrollbar__track-y:hover,
+.x-scrollbar__track-x.x-scrollbar__track--draging,
+.x-scrollbar__track-y.x-scrollbar__track--draging {
+  background-color: #ddd;
+  opacity         : .6 !important;
+}

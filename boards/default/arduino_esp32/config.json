@@ -1,0 +1,57 @@
+{
+    "board": "./boards.json",
+    "language": "C/C++",
+    "burn": "None",
+    "upload": {
+        "portSelect": "all"
+    },
+    "nav": {
+        "compile": true,
+        "upload": true,
+        "save": {
+            "ino": true,
+            "bin": true
+        },
+        "setting": {
+            "thirdPartyLibrary": true
+        }
+    },
+    "serial": {
+        "ctrlCBtn": false,
+        "ctrlDBtn": false,
+        "baudRates": 9600,
+        "yMax": 100,
+        "yMin": 0,
+        "pointNum": 100
+    },
+    "lib": {
+        "mixly": {
+            "url": [
+                "http://download.mixlylibs.cloud/mixly3-packages/cloud-libs/arduino_esp32/libs.json"
+            ]
+        }
+    },
+    "web": {
+        "com": "serial",
+        "upload": {
+            "reset": [
+                {
+                    "dtr": false,
+                    "rts": false
+                }, {
+                    "sleep": 500
+                }, {
+                    "dtr": false,
+                    "rts": true
+                }, {
+                    "sleep": 500
+                }, {
+                    "dtr": false,
+                    "rts": false
+                }, {
+                    "sleep": 500
+                }
+            ]
+        }
+    }
+}
