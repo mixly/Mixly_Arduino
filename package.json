@@ -36,7 +36,7 @@
         "shelljs": "^0.8.5",
         "shortid": "^2.2.16",
         "style-loader": "^3.3.3",
-        "webpack": "^5.89.0",
+        "webpack": "^5.98.0",
         "webpack-bundle-analyzer": "^4.9.1",
         "webpack-cli": "^5.1.4",
         "webpack-dev-server": "^4.15.1",
