@@ -8,7 +8,7 @@ Mixly is a visual programming editor for Arduino. Users can drag blocks together
 Step 1.Download and unzip the project.
 
 
-Step 2.Run Mixly.jar to start Mixly.
+Step 2.Run Mixly.exe to start Mixly.
 
 # Mixly Wiki
  [Mixly Wiki](https://mixly.readthedocs.io)
